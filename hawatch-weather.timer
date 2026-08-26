@@ -1,0 +1,12 @@
+[Unit]
+Description=Run هواچ weather collection every four hours
+
+[Timer]
+OnBootSec=2min
+OnCalendar=*-*-* 00/4:00:00
+Persistent=true
+RandomizedDelaySec=60s
+Unit=hawatch-weather.service
+
+[Install]
+WantedBy=timers.target

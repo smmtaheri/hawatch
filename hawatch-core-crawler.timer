@@ -1,0 +1,13 @@
+[Unit]
+Description=اجرای crawler نقاط هواچ هر چهار ساعت
+
+[Timer]
+OnBootSec=5min
+OnCalendar=*-*-* 00/4:00:00
+Persistent=true
+RandomizedDelaySec=120s
+AccuracySec=1min
+Unit=hawatch-core-crawler.service
+
+[Install]
+WantedBy=timers.target

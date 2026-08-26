@@ -1,0 +1,885 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-21T00:00:00+03:30",
+  "project": "هواچ",
+  "coordinate_reference_system": "WGS84 / EPSG:4326",
+  "purpose": "کاتالوگ اولیه نقاط مهم مسیرها برای دیتابیس و نمونه‌گیری هواشناسی نقطه‌ای",
+  "safety_policy": {
+    "rule": "فقط نقاط high و medium برای نمونه‌گیری خودکار هوا فعال‌اند. نقاط low یا مختصات null باید ابتدا با پین نقشه یا GPX تأیید شوند.",
+    "confidence_levels": {
+      "high": "عارضه یا ساختمان مشخص در نقشه عمومی یا چند منبع هم‌خوان؛ خطای معمول پین ده‌ها متر",
+      "medium": "منبع مسیر/قله معتبر ولی احتمال اختلاف پین یا ارتفاع وجود دارد؛ قبل از انتشار عمومی بازبینی شود",
+      "low": "فقط نام یا محدوده مسیر معلوم است؛ برای هواشناسی عملیاتی قابل استفاده نیست"
+    }
+  },
+  "backend_model": {
+    "Point": {
+      "fields": [
+        "id",
+        "name_fa",
+        "name_en",
+        "kind",
+        "is_destination",
+        "latitude",
+        "longitude",
+        "elevation_m",
+        "coordinate_confidence",
+        "verification_status",
+        "weather_sampling_enabled",
+        "source_refs",
+        "notes"
+      ],
+      "database_hint": "در PostgreSQL/PostGIS بهتر است latitude/longitude به geography(Point,4326) تبدیل شود و روی آن GiST index ساخته شود."
+    },
+    "Route": {
+      "fields": ["id", "name_fa", "destination_point_id", "distance_km", "geometry_status"]
+    },
+    "RoutePoint": {
+      "fields": ["route_id", "point_id", "sequence", "role", "is_critical", "weather_sample"],
+      "primary_key": ["route_id", "point_id"],
+      "note": "یک Point می‌تواند در چند مسیر استفاده شود؛ مقصد بودن نوع جداگانه‌ای از مختصات نیست."
+    }
+  },
+  "points": [
+    {
+      "id": "tochal-sarband-square",
+      "name_fa": "میدان سربند (میدان مجسمه)",
+      "name_en": "Sarband Square",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 35.82822,
+      "longitude": 51.42664,
+      "elevation_m": 1807,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_public_map",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/29244972"],
+      "notes": "مبدأ استاندارد مسیر جنوبی دربند."
+    },
+    {
+      "id": "tochal-pas-qaleh",
+      "name_fa": "پس‌قلعه",
+      "name_en": "Pas Qaleh",
+      "kind": "route_point",
+      "is_destination": false,
+      "latitude": 35.83686,
+      "longitude": 51.42338,
+      "elevation_m": 1936,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_public_map",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/12588244"],
+      "notes": "پین مرکز آبادی است؛ برای مسیر کافی است ولی محل دقیق عبور ترک می‌تواند چند ده متر تفاوت داشته باشد."
+    },
+    {
+      "id": "tochal-shirpala",
+      "name_fa": "پناهگاه شیرپلا",
+      "name_en": "Shirpala Shelter",
+      "kind": "hut",
+      "is_destination": true,
+      "latitude": 35.85508,
+      "longitude": 51.42953,
+      "elevation_m": 2750,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_osm_building",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/W630766309",
+        "https://www.wikiloc.com/mountaineering-trails/tochal-from-shirpala-7831721"
+      ],
+      "notes": "مختصات خود ساختمان پناهگاه است، نه سلول مدل هواشناسی."
+    },
+    {
+      "id": "tochal-amiri-shelter",
+      "name_fa": "جان‌پناه امیری (سیاه‌سنگ)",
+      "name_en": "Amiri Shelter",
+      "kind": "shelter",
+      "is_destination": true,
+      "latitude": 35.86917,
+      "longitude": 51.4197,
+      "elevation_m": 3390,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_osm_building",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/W706095863",
+        "https://www.wikiloc.com/mountaineering-trails/tochal-from-shirpala-7831721"
+      ],
+      "notes": "پین ساختمان جان‌پناه؛ برای مقایسه با شیرپلا و قله نقطه کلیدی است."
+    },
+    {
+      "id": "tochal-summit",
+      "name_fa": "قله توچال",
+      "name_en": "Tochal Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": 35.884228,
+      "longitude": 51.419909,
+      "elevation_m": 3964,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_multi_source",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/12570780",
+        "https://www.peakbagger.com/peak.aspx?pid=47237"
+      ],
+      "notes": "برای API ارتفاع 3964 متر ارسال شود؛ مختصات برگشتی API همچنان مختصات شبکه مدل است."
+    },
+    {
+      "id": "tochal-station-7",
+      "name_fa": "ایستگاه هفتم توچال",
+      "name_en": "Tochal Station 7",
+      "kind": "station",
+      "is_destination": false,
+      "latitude": 35.88192,
+      "longitude": 51.40838,
+      "elevation_m": 3740,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/29244982"],
+      "notes": "پین عارضه نام‌گذاری‌شده است؛ برای ورودی تله‌کابین بهتر است پین ساختمان/گیت با ترک تأیید شود."
+    },
+    {
+      "id": "tochal-jamshidieh",
+      "name_fa": "پارک جمشیدیه",
+      "name_en": "Jamshidieh Park",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 35.82613,
+      "longitude": 51.4646,
+      "elevation_m": 1833,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_area_centroid",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/25690598"],
+      "notes": "مرکز پارک است، نه دروازه دقیق شروع مسیر؛ برای ناوبری باید ورودی ترک جایگزین شود."
+    },
+    {
+      "id": "tochal-kolakchal-summit",
+      "name_fa": "قله کلکچال",
+      "name_en": "Kolakchal Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": 35.857778,
+      "longitude": 51.454167,
+      "elevation_m": 3350,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_named_peak",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://fr.wikipedia.org/wiki/Kolakchal"],
+      "notes": "برای مسیر خط‌الرأس کلکچال–توچال نقطه هواشناسی مهم است."
+    },
+    {
+      "id": "tochal-shahneshin-summit",
+      "name_fa": "قله شاه‌نشین",
+      "name_en": "Shahneshin Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": null,
+      "longitude": null,
+      "elevation_m": null,
+      "coordinate_confidence": "low",
+      "verification_status": "needs_gpx_or_map_pin",
+      "weather_sampling_enabled": false,
+      "source_refs": ["https://en.wikipedia.org/wiki/Tochal"],
+      "notes": "نام قله قطعی است اما نتایج جست‌وجوی عمومی چند قله هم‌نام را مخلوط می‌کنند؛ پین یا GPX لازم است."
+    },
+    {
+      "id": "tochal-shahrestanak-village",
+      "name_fa": "روستای شهرستانک",
+      "name_en": "Shahrestanak Village",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 35.96972,
+      "longitude": 51.35361,
+      "elevation_m": 2190,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_village_center",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://en.wikipedia.org/wiki/Shahrestanak%2C_Alborz",
+        "https://satellites.pro/Shahrestanak_map.Tehran_region.Iran"
+      ],
+      "notes": "مرکز روستا است؛ نقطه واقعی شروع صعود ممکن است در کلوا یا انتهای راه روستا باشد."
+    },
+    {
+      "id": "damavand-polour-camp",
+      "name_fa": "قرارگاه پلور",
+      "name_en": "Polour Camp",
+      "kind": "base_camp",
+      "is_destination": false,
+      "latitude": 35.847222,
+      "longitude": 52.06,
+      "elevation_m": 2270,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/Info-Tech/GPS.html"],
+      "notes": "هاب دسترسی جبهه جنوبی و غربی."
+    },
+    {
+      "id": "damavand-goosfandsara",
+      "name_fa": "گوسفندسرا / مسجد صاحب‌الزمان",
+      "name_en": "Goosfandsara Base Camp",
+      "kind": "base_camp",
+      "is_destination": false,
+      "latitude": 35.902778,
+      "longitude": 52.109444,
+      "elevation_m": 3040,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/Info-Tech/GPS.html"],
+      "notes": "شروع معمول صعود تابستانی جنوبی."
+    },
+    {
+      "id": "damavand-bargah-sevom",
+      "name_fa": "پناهگاه بارگاه سوم",
+      "name_en": "Bargah Sevom Shelter",
+      "kind": "hut",
+      "is_destination": true,
+      "latitude": 35.931667,
+      "longitude": 52.108333,
+      "elevation_m": 4220,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/Info-Tech/GPS.html"],
+      "notes": "پناهگاه قدیمی؛ ساختمان جدید در چند ده متر فاصله قرار دارد."
+    },
+    {
+      "id": "damavand-simorgh-shelter",
+      "name_fa": "پناهگاه سیمرغ",
+      "name_en": "Simorgh Shelter",
+      "kind": "hut",
+      "is_destination": true,
+      "latitude": 35.9564,
+      "longitude": 52.0825,
+      "elevation_m": 4200,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_source",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://damavand-guide.com/simorgh-shelter-mount-damavand-west-route-2/"],
+      "notes": "نقطه اصلی جبهه غربی."
+    },
+    {
+      "id": "damavand-nandal-house",
+      "name_fa": "خانه کوهنوردان ناندل",
+      "name_en": "Nandal Mountaineers House",
+      "kind": "base_camp",
+      "is_destination": false,
+      "latitude": 36.03033,
+      "longitude": 52.174072,
+      "elevation_m": 2350,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/How/nandal.html"],
+      "notes": "هاب مشترک جبهه شمالی و شمال‌شرقی."
+    },
+    {
+      "id": "damavand-big-stone",
+      "name_fa": "سنگ بزرگ، ابتدای مسیر شمالی",
+      "name_en": "Big Stone North Trailhead",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 36.011929,
+      "longitude": 52.12059,
+      "elevation_m": 2920,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/How/nandal.html"],
+      "notes": "مبدأ عملی صعود جبهه شمالی پس از مسیر خودرو دو دیفرانسیل."
+    },
+    {
+      "id": "damavand-north-4000-shelter",
+      "name_fa": "جان‌پناه ۴۰۰۰ جبهه شمالی",
+      "name_en": "Damavand North 4000 Shelter",
+      "kind": "shelter",
+      "is_destination": true,
+      "latitude": 35.978263,
+      "longitude": 52.111278,
+      "elevation_m": 3996,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://damavand-guide.com/4000-shelter-climbing-mount-damavand-north-route/"],
+      "notes": "نقطه کلیدی نیمه پایین جبهه شمالی."
+    },
+    {
+      "id": "damavand-north-5000-shelter",
+      "name_fa": "جان‌پناه ۵۰۰۰ جبهه شمالی",
+      "name_en": "Damavand North 5000 Shelter",
+      "kind": "shelter",
+      "is_destination": true,
+      "latitude": 35.968129,
+      "longitude": 52.114709,
+      "elevation_m": 4624,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_gps",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://damavand-guide.com/4000-shelter-climbing-mount-damavand-north-route/"],
+      "notes": "نام رایج ۵۰۰۰ است اما ارتفاع منبع حدود ۴۶۲۴ متر گزارش شده."
+    },
+    {
+      "id": "damavand-gardaneh-sar",
+      "name_fa": "گردنه‌سر، ابتدای مسیر شمال‌شرقی",
+      "name_en": "Gardaneh-Sar",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 35.9951,
+      "longitude": 52.1553,
+      "elevation_m": 2920,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_source",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://damavand-guide.com/takhte-fereydoun-shelter-mount-damavand-northeast-route-2/"],
+      "notes": "شروع عملی مسیر شمال‌شرقی از ناندل."
+    },
+    {
+      "id": "damavand-takht-fereydoun",
+      "name_fa": "پناهگاه تخت فریدون",
+      "name_en": "Takht-e Fereydoun Refuge",
+      "kind": "hut",
+      "is_destination": true,
+      "latitude": 35.9665,
+      "longitude": 52.1341,
+      "elevation_m": 4380,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_route_source",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://damavand-guide.com/takhte-fereydoun-shelter-mount-damavand-northeast-route-2/"],
+      "notes": "نقطه اصلی جبهه شمال‌شرقی."
+    },
+    {
+      "id": "damavand-summit",
+      "name_fa": "قله دماوند",
+      "name_en": "Mount Damavand Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": 35.955278,
+      "longitude": 52.11,
+      "elevation_m": 5610,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_coordinate_elevation_disputed",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.damawand.de/Info/Summit.html"],
+      "notes": "مختصات از 35°57′19″N, 52°06′36″E تبدیل شده؛ درباره ارتفاع منابع 5610 تا 5671 متر اختلاف دارند. برای هواچ 5610 به عنوان مقدار محافظه‌کارانه نگهداری شود و منبع ارتفاع جدا ثبت شود."
+    },
+    {
+      "id": "gahar-dorud-parking",
+      "name_fa": "پارکینگ مسیر دورود به گهر",
+      "name_en": "Gahar Dorud Trail Parking",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 33.375568,
+      "longitude": 49.192725,
+      "elevation_m": 2085,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_route_start",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.outdooractive.com/en/route/hiking-trail/iran/hike-to-gahar-lake-in-the-zagros-mountains/126583140/"],
+      "notes": "مختصات ابتدای یک ترک عمومی 24.1 کیلومتری رفت‌وبرگشت؛ با ترک مرجع نهایی هواچ تطبیق شود."
+    },
+    {
+      "id": "gahar-lake",
+      "name_fa": "دریاچه گهر بزرگ",
+      "name_en": "Gahar Lake",
+      "kind": "lake",
+      "is_destination": true,
+      "latitude": 33.30689,
+      "longitude": 49.28406,
+      "elevation_m": 2400,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/12349694",
+        "https://visitiran.ir/fa/attraction/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%DA%AF%D9%87%D8%B1"
+      ],
+      "notes": "مختصات مرکز پهنه آبی است؛ برای کمپ ساحل غربی/شرقی بهتر است دو Point جدا ساخته شود."
+    },
+    {
+      "id": "daryasar-asal-mahalleh",
+      "name_fa": "عسل‌محله",
+      "name_en": "Asal Mahalleh",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 36.60399,
+      "longitude": 50.73092,
+      "elevation_m": 1257,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/27596364"],
+      "notes": "مرکز عسل‌محله؛ ورودی دقیق جنگل باید از ترک نهایی استخراج شود."
+    },
+    {
+      "id": "daryasar-plain",
+      "name_fa": "دشت دریاسر",
+      "name_en": "Daryasar Plain",
+      "kind": "plain",
+      "is_destination": true,
+      "latitude": 36.57932,
+      "longitude": 50.72385,
+      "elevation_m": 1690,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_mapped_area",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/W328682024",
+        "https://gl.wikiloc.com/rutas-sendeirismo/daryasar-dsht-drysr-109251800"
+      ],
+      "notes": "پین دشت و ارتفاع بیشینه ترک‌های عمومی نزدیک 1680 تا 1695 متر است."
+    },
+    {
+      "id": "soha-lake",
+      "name_fa": "دریاچه سوها",
+      "name_en": "Soha Lake",
+      "kind": "lake",
+      "is_destination": false,
+      "latitude": 38.2846,
+      "longitude": 48.6325,
+      "elevation_m": 1750,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_route_waypoint",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://www.wikiloc.com/hiking-trails/sl-swh-ltwn-36204392"],
+      "notes": "مبدأ مسیر سوها به لاتون؛ ارتفاع تقریبی از پروفایل ترک عمومی."
+    },
+    {
+      "id": "laton-waterfall",
+      "name_fa": "آبشار لاتون",
+      "name_en": "Laton Waterfall",
+      "kind": "waterfall",
+      "is_destination": true,
+      "latitude": 38.321178,
+      "longitude": 48.728661,
+      "elevation_m": null,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_wikimedia_coordinate",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://commons.wikimedia.org/wiki/Category:Laton_waterfall",
+        "https://mapcarta.com/N5236642035"
+      ],
+      "notes": "برای ارتفاع، DEM روی پین اجرا شود؛ ارتفاع‌های منتشرشده معمولاً ارتفاع آبشار/افت را با ارتفاع محل مخلوط می‌کنند."
+    },
+    {
+      "id": "laton-kuteh-kumeh",
+      "name_fa": "کوته‌کومه",
+      "name_en": "Kuteh Kumeh",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 38.3076,
+      "longitude": 48.79736,
+      "elevation_m": 100,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/12421422"],
+      "notes": "انتهای رایج پیمایش یک‌طرفه سوها–لاتون."
+    },
+    {
+      "id": "alimestan-village",
+      "name_fa": "روستای الیمستان",
+      "name_en": "Alimestan Village",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 36.16491,
+      "longitude": 52.3956,
+      "elevation_m": 1602,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/12361910"],
+      "notes": "مرکز روستا؛ مبدأ واقعی بسیاری از ترک‌ها بالای امامزاده لهاش و حدود 1450 متر است."
+    },
+    {
+      "id": "alimestan-lahash",
+      "name_fa": "لهاش",
+      "name_en": "Lahash",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 36.16046,
+      "longitude": 52.38117,
+      "elevation_m": 1450,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_locality_adjusted_elevation",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/12597718",
+        "https://es.wikiloc.com/rutas-senderismo/swd-qlh-mm-zdh-qsm-hrz-lhsh-lymstn-climbing-imamzadeh-qasem-peak-haraz-road-lahash-village-road-ali-243404950"
+      ],
+      "notes": "مختصات آبادی/محدوده لهاش؛ ارتفاع 1450 از ترک مسیر گرفته شده و باید با DEM روی ورودی دقیق اصلاح شود."
+    },
+    {
+      "id": "alimestan-imamzadeh-qasem-summit",
+      "name_fa": "قله امامزاده قاسم الیمستان",
+      "name_en": "Alimestan Imamzadeh Qasem Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": null,
+      "longitude": null,
+      "elevation_m": 2513,
+      "coordinate_confidence": "low",
+      "verification_status": "needs_gpx_or_map_pin",
+      "weather_sampling_enabled": false,
+      "source_refs": [
+        "https://www.gaiagps.com/hike/381064/via/",
+        "https://es.wikiloc.com/rutas-senderismo/swd-qlh-mm-zdh-qsm-hrz-lhsh-lymstn-climbing-imamzadeh-qasem-peak-haraz-road-lahash-village-road-ali-243404950"
+      ],
+      "notes": "ارتفاع از ترک ثبت‌شده است؛ جست‌وجوی نام، امامزاده‌های هم‌نام را مخلوط می‌کند و مختصات بدون GPX قابل اعتماد نیست."
+    },
+    {
+      "id": "tirkan-seven-waterfalls-parking",
+      "name_fa": "پارکینگ هفت آبشار تیرکن",
+      "name_en": "Haft Abshar Parking",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": null,
+      "longitude": null,
+      "elevation_m": 550,
+      "coordinate_confidence": "low",
+      "verification_status": "needs_gpx_or_map_pin",
+      "weather_sampling_enabled": false,
+      "source_refs": ["https://www.wikiloc.com/hiking-trails/hft-abshr-tyrkhn-140303131"],
+      "notes": "نام پارکینگ روی OSM دیده می‌شود ولی مختصات مستقیم در خروجی عمومی نبود؛ از GPX یا پین کاربر استخراج شود."
+    },
+    {
+      "id": "tirkan-seven-waterfalls",
+      "name_fa": "هفت آبشار تیرکن",
+      "name_en": "Haft Abshar Tirkan",
+      "kind": "waterfall",
+      "is_destination": true,
+      "latitude": 36.268454,
+      "longitude": 52.740822,
+      "elevation_m": null,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_multi_source",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://mapcarta.com/N4857527721",
+        "https://www.climbers.ir/tourist-attractions/294-%D9%87%D9%81%D8%AA-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%AA%DB%8C%D8%B1%DA%A9%D9%86"
+      ],
+      "notes": "ارتفاع منابع محلی ناسازگار است؛ DEM روی همین پین ملاک قرار گیرد."
+    },
+    {
+      "id": "esklim-galesh-kola",
+      "name_fa": "گالش‌کلا",
+      "name_en": "Galesh Kola",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": 36.21008,
+      "longitude": 52.76985,
+      "elevation_m": 330,
+      "coordinate_confidence": "high",
+      "verification_status": "verified_named_feature",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://mapcarta.com/12368916"],
+      "notes": "مرکز آبادی؛ پارکینگ یا اقامتگاه شروع ترک باید جدا پین شود."
+    },
+    {
+      "id": "esklim-waterfall",
+      "name_fa": "آبشار آهکی اسکلیم",
+      "name_en": "Esklim Limestone Waterfall",
+      "kind": "waterfall",
+      "is_destination": true,
+      "latitude": null,
+      "longitude": null,
+      "elevation_m": 636,
+      "coordinate_confidence": "low",
+      "verification_status": "needs_gpx_or_map_pin",
+      "weather_sampling_enabled": false,
+      "source_refs": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/eskalim-waterfall-abshr-ahkhy-skhlym-lfwr-58179790",
+        "https://www.wikiloc.com/hiking-trails/eskelim-waterfall-abshr-skhlym-103585767"
+      ],
+      "notes": "ترک‌های عمومی مقصد و ارتفاع را تأیید می‌کنند اما مختصات نقطه مقصد در متن عمومی نمایش داده نشده؛ GPX لازم است."
+    },
+    {
+      "id": "kharonaro-varpey",
+      "name_fa": "روستای ورپی",
+      "name_en": "Varpey",
+      "kind": "trailhead",
+      "is_destination": false,
+      "latitude": null,
+      "longitude": null,
+      "elevation_m": 1750,
+      "coordinate_confidence": "low",
+      "verification_status": "needs_gpx_or_map_pin",
+      "weather_sampling_enabled": false,
+      "source_refs": ["https://www.wikiloc.com/mountaineering-trails/swd-qlh-khrwnrw-z-mbd-rwsty-wrpy-varpi-220322934"],
+      "notes": "ارتفاع کمینه ترک‌های ورپی حدود 1737 تا 1750 متر است؛ مختصات مبدأ باید از GPX استخراج شود."
+    },
+    {
+      "id": "kharonaro-zarjou",
+      "name_fa": "قله زرجو",
+      "name_en": "Zarjou Peak",
+      "kind": "ridge_point",
+      "is_destination": false,
+      "latitude": 35.979756,
+      "longitude": 53.220158,
+      "elevation_m": 3291,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_peak_database",
+      "weather_sampling_enabled": true,
+      "source_refs": ["https://peakvisor.com/peak/zrjw.html"],
+      "notes": "نقطه خط‌الرأس نزدیک خرونرو؛ ورود آن در توالی دقیق مسیر ورپی باید با ترک تأیید شود."
+    },
+    {
+      "id": "kharonaro-summit",
+      "name_fa": "قله خرونرو",
+      "name_en": "Khero Nero Summit",
+      "kind": "summit",
+      "is_destination": true,
+      "latitude": 35.975278,
+      "longitude": 53.2125,
+      "elevation_m": 3520,
+      "coordinate_confidence": "medium",
+      "verification_status": "verified_multi_source_coordinate_elevation_disputed",
+      "weather_sampling_enabled": true,
+      "source_refs": [
+        "https://peakvisor.com/peak/zrjw.html",
+        "https://www.wikidata.org/wiki/Q26871773",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AE%D8%B1%D9%88-%D9%86%D8%B1%D9%88/"
+      ],
+      "notes": "مختصات منابع هم‌خوان است؛ ارتفاع گزارش‌ها حدود 3520 تا 3620 متر اختلاف دارد. برای شروع 3520 ثبت و DEM/GPX مرجع ذخیره شود."
+    }
+  ],
+  "routes": [
+    {
+      "id": "tochal-darband-standard",
+      "name_fa": "دربند تا قله توچال",
+      "destination_point_id": "tochal-summit",
+      "distance_km": null,
+      "geometry_status": "important_points_only",
+      "point_sequence": [
+        {"point_id": "tochal-sarband-square", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-pas-qaleh", "sequence": 2, "role": "route_point", "is_critical": false, "weather_sample": true},
+        {"point_id": "tochal-shirpala", "sequence": 3, "role": "hut", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-amiri-shelter", "sequence": 4, "role": "shelter", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-summit", "sequence": 5, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "tochal-velenjak",
+      "name_fa": "ولنجک / ایستگاه هفتم تا قله توچال",
+      "destination_point_id": "tochal-summit",
+      "distance_km": null,
+      "geometry_status": "partial_points_needs_trailhead_pin",
+      "point_sequence": [
+        {"point_id": "tochal-station-7", "sequence": 1, "role": "station", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-summit", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "tochal-shahneshin",
+      "name_fa": "شاه‌نشین تا توچال",
+      "destination_point_id": "tochal-summit",
+      "distance_km": 15.1,
+      "geometry_status": "needs_gpx_for_shahneshin_pin",
+      "point_sequence": [
+        {"point_id": "tochal-shahneshin-summit", "sequence": 1, "role": "summit", "is_critical": true, "weather_sample": false},
+        {"point_id": "tochal-station-7", "sequence": 2, "role": "ridge_point", "is_critical": false, "weather_sample": true},
+        {"point_id": "tochal-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "tochal-kolakchal",
+      "name_fa": "کلکچال تا توچال",
+      "destination_point_id": "tochal-summit",
+      "distance_km": 17.4,
+      "geometry_status": "important_points_only",
+      "point_sequence": [
+        {"point_id": "tochal-jamshidieh", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-kolakchal-summit", "sequence": 2, "role": "summit", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "tochal-shahrestanak",
+      "name_fa": "شهرستانک تا توچال",
+      "destination_point_id": "tochal-summit",
+      "distance_km": 21.3,
+      "geometry_status": "important_points_only_needs_midpoints",
+      "point_sequence": [
+        {"point_id": "tochal-shahrestanak-village", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-station-7", "sequence": 2, "role": "ridge_point", "is_critical": true, "weather_sample": true},
+        {"point_id": "tochal-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "damavand-south",
+      "name_fa": "دماوند از جبهه جنوبی",
+      "destination_point_id": "damavand-summit",
+      "distance_km": null,
+      "geometry_status": "important_points_only",
+      "point_sequence": [
+        {"point_id": "damavand-polour-camp", "sequence": 1, "role": "access_hub", "is_critical": false, "weather_sample": true},
+        {"point_id": "damavand-goosfandsara", "sequence": 2, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-bargah-sevom", "sequence": 3, "role": "hut", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-summit", "sequence": 4, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "damavand-west",
+      "name_fa": "دماوند از جبهه غربی",
+      "destination_point_id": "damavand-summit",
+      "distance_km": null,
+      "geometry_status": "partial_points_needs_west_parking_pin",
+      "point_sequence": [
+        {"point_id": "damavand-polour-camp", "sequence": 1, "role": "access_hub", "is_critical": false, "weather_sample": true},
+        {"point_id": "damavand-simorgh-shelter", "sequence": 2, "role": "hut", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "damavand-north",
+      "name_fa": "دماوند از جبهه شمالی",
+      "destination_point_id": "damavand-summit",
+      "distance_km": null,
+      "geometry_status": "important_points_only",
+      "point_sequence": [
+        {"point_id": "damavand-nandal-house", "sequence": 1, "role": "access_hub", "is_critical": false, "weather_sample": true},
+        {"point_id": "damavand-big-stone", "sequence": 2, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-north-4000-shelter", "sequence": 3, "role": "shelter", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-north-5000-shelter", "sequence": 4, "role": "shelter", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-summit", "sequence": 5, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "damavand-northeast",
+      "name_fa": "دماوند از جبهه شمال‌شرقی",
+      "destination_point_id": "damavand-summit",
+      "distance_km": null,
+      "geometry_status": "important_points_only",
+      "point_sequence": [
+        {"point_id": "damavand-nandal-house", "sequence": 1, "role": "access_hub", "is_critical": false, "weather_sample": true},
+        {"point_id": "damavand-gardaneh-sar", "sequence": 2, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-takht-fereydoun", "sequence": 3, "role": "hut", "is_critical": true, "weather_sample": true},
+        {"point_id": "damavand-summit", "sequence": 4, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "gahar-from-dorud",
+      "name_fa": "مسیر دورود به دریاچه گهر",
+      "destination_point_id": "gahar-lake",
+      "distance_km": 12.0,
+      "geometry_status": "endpoints_only_needs_pass_and_spring_pins",
+      "point_sequence": [
+        {"point_id": "gahar-dorud-parking", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "gahar-lake", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "daryasar-from-asal-mahalleh",
+      "name_fa": "عسل‌محله تا دشت دریاسر",
+      "destination_point_id": "daryasar-plain",
+      "distance_km": 4.25,
+      "geometry_status": "endpoints_only",
+      "point_sequence": [
+        {"point_id": "daryasar-asal-mahalleh", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "daryasar-plain", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "soha-to-laton",
+      "name_fa": "دریاچه سوها تا آبشار لاتون و کوته‌کومه",
+      "destination_point_id": "laton-waterfall",
+      "distance_km": 22.5,
+      "geometry_status": "critical_endpoints_needs_espinas_ridge_pin",
+      "point_sequence": [
+        {"point_id": "soha-lake", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "laton-waterfall", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": true},
+        {"point_id": "laton-kuteh-kumeh", "sequence": 3, "role": "exit", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "alimestan-imamzadeh-qasem",
+      "name_fa": "لهاش / الیمستان تا قله امامزاده قاسم",
+      "destination_point_id": "alimestan-imamzadeh-qasem-summit",
+      "distance_km": 7.54,
+      "geometry_status": "destination_pin_missing",
+      "point_sequence": [
+        {"point_id": "alimestan-lahash", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "alimestan-village", "sequence": 2, "role": "route_area", "is_critical": false, "weather_sample": true},
+        {"point_id": "alimestan-imamzadeh-qasem-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": false}
+      ]
+    },
+    {
+      "id": "tirkan-seven-waterfalls",
+      "name_fa": "پارکینگ تیرکن تا هفت آبشار",
+      "destination_point_id": "tirkan-seven-waterfalls",
+      "distance_km": 1.75,
+      "geometry_status": "trailhead_pin_missing",
+      "point_sequence": [
+        {"point_id": "tirkan-seven-waterfalls-parking", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": false},
+        {"point_id": "tirkan-seven-waterfalls", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    },
+    {
+      "id": "esklim-from-galesh-kola",
+      "name_fa": "گالش‌کلا تا آبشار اسکلیم",
+      "destination_point_id": "esklim-waterfall",
+      "distance_km": 8.0,
+      "geometry_status": "destination_and_river_crossing_pins_missing",
+      "point_sequence": [
+        {"point_id": "esklim-galesh-kola", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": true},
+        {"point_id": "esklim-waterfall", "sequence": 2, "role": "destination", "is_critical": true, "weather_sample": false}
+      ]
+    },
+    {
+      "id": "kharonaro-from-varpey",
+      "name_fa": "ورپی تا قله خرونرو",
+      "destination_point_id": "kharonaro-summit",
+      "distance_km": 10.2,
+      "geometry_status": "trailhead_and_midpoints_need_gpx",
+      "point_sequence": [
+        {"point_id": "kharonaro-varpey", "sequence": 1, "role": "trailhead", "is_critical": true, "weather_sample": false},
+        {"point_id": "kharonaro-zarjou", "sequence": 2, "role": "ridge_point", "is_critical": true, "weather_sample": true},
+        {"point_id": "kharonaro-summit", "sequence": 3, "role": "destination", "is_critical": true, "weather_sample": true}
+      ]
+    }
+  ],
+  "verification_queue": [
+    {
+      "priority": 1,
+      "point_ids": [
+        "tochal-shahneshin-summit",
+        "alimestan-imamzadeh-qasem-summit",
+        "esklim-waterfall",
+        "tirkan-seven-waterfalls-parking",
+        "kharonaro-varpey"
+      ],
+      "required_input": "یک پین WGS84 به شکل latitude,longitude یا فایل GPX همان مسیر",
+      "reason": "مختصات فعلی null است و نمونه‌گیری هوا عمداً غیرفعال شده."
+    },
+    {
+      "priority": 2,
+      "route_ids": [
+        "tochal-velenjak",
+        "tochal-shahrestanak",
+        "damavand-west",
+        "gahar-from-dorud",
+        "soha-to-laton",
+        "esklim-from-galesh-kola",
+        "kharonaro-from-varpey"
+      ],
+      "required_input": "GPX کامل برای استخراج نقاط شکست ارتفاعی، گردنه‌ها، یال‌ها، عبور رودخانه و نقاط خروج اضطراری",
+      "reason": "دو سر مسیر کافی نیست؛ برای تحلیل هوا باید نقاط نماینده تغییر ارتفاع/جهت دامنه اضافه شوند."
+    }
+  ],
+  "import_rules": {
+    "reject_if": [
+      "latitude یا longitude خارج از محدوده معتبر باشد",
+      "weather_sampling_enabled=true ولی مختصات null باشد",
+      "Point تکراری با فاصله کمتر از 30 متر و نام/نوع مشابه ساخته شود"
+    ],
+    "deduplication": "قبل از INSERT، نقاط هم‌نام در شعاع 100 متر بررسی شوند.",
+    "weather_cache_key": "round(latitude,4):round(longitude,4):round(elevation_m/25)*25:model:forecast_run",
+    "elevation_policy": "ارتفاع ترک/نقشه و ارتفاع DEM هر دو ذخیره شوند؛ elevation_m مقدار منتخب و elevation_source در نسخه دیتابیس افزوده شود."
+  }
+}

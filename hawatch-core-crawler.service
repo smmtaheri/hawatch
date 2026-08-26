@@ -1,0 +1,37 @@
+[Unit]
+Description=هواچ core points discovery crawler
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/hawatch-core
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /opt/hawatch-core/hawatch_core_crawler_sqlite.py \
+  --db /opt/hawatch-core/data/hawatch-core.sqlite3 \
+  --log /opt/hawatch-core/logs/hawatch-core.jsonl \
+  --error-log /opt/hawatch-core/logs/hawatch-core-error.jsonl \
+  --state /opt/hawatch-core/state/hawatch-core-state.json \
+  --cache-dir /opt/hawatch-core/cache \
+  --lock /opt/hawatch-core/state/hawatch-core.lock \
+  --bbox 51.1,35.7,51.8,36.2 \
+  --sources osm,geonames,gns,wikidata,wikipedia_4k \
+  --max-records-per-source 500 \
+  --timeout 60 \
+  --osm-pbf /opt/hawatch-core/data/osm/iran-260824.osm.pbf \
+  --osm-max-records 0 \
+  --osm-pbf-timeout-seconds 900 \
+  --once
+TimeoutStartSec=45min
+TimeoutStopSec=30s
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/hawatch-core/data /opt/hawatch-core/state /opt/hawatch-core/logs /opt/hawatch-core/cache
+StandardOutput=journal
+StandardError=journal
+UMask=0027
+Nice=10

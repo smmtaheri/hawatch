@@ -1,0 +1,28 @@
+[Unit]
+Description=هواچ Open-Meteo weather collection cycle
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=hawatch
+Group=hawatch
+WorkingDirectory=/opt/hawatch-weather
+ExecStart=/usr/bin/python3 /opt/hawatch-weather/hawatch_weather_runner.py \
+  --catalog /opt/hawatch-weather/hawatch_route_points_catalog.json \
+  --data-dir /opt/hawatch-weather/data \
+  --state-dir /opt/hawatch-weather/state \
+  --logs-dir /opt/hawatch-weather/logs \
+  --batch-size 100 \
+  --pause-seconds 10 \
+  --timeout-seconds 60 \
+  --max-retries 3 \
+  --forecast-hours 72 \
+  --once
+TimeoutStartSec=30min
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/hawatch-weather/data /opt/hawatch-weather/state /opt/hawatch-weather/logs
+

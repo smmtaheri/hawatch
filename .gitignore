@@ -25,3 +25,8 @@ tmp/
 
 # Docker
 infra/compose/.env
+
+# Large local crawler inputs and SQLite runtime sidecars
+*.pbf
+*.sqlite3-shm
+*.sqlite3-wal
