@@ -1,0 +1,109 @@
+{
+  "product": "هواچ",
+  "direction": "rtl",
+  "fontFamily": "Vazirmatn",
+  "colors": {
+    "brand": {
+      "ink": "#102b3d",
+      "teal": "#1d7f86",
+      "tealBright": "#61c5c0",
+      "mist": "#e5efec",
+      "line": "#cbdedb",
+      "muted": "#62777a",
+      "amber": "#d09a35",
+      "coral": "#d9584c"
+    },
+    "light": {
+      "background": "#f0f6f4",
+      "surface": "#ffffff",
+      "surfaceRaised": "#ffffff",
+      "surfaceSoft": "#f4f9f7",
+      "border": "#d6e5e2",
+      "text": "#102b3d",
+      "muted": "#687a80",
+      "teal": "#1d7f86",
+      "amber": "#c18316",
+      "coral": "#d9584c"
+    },
+    "dark": {
+      "background": "#0b2732",
+      "surface": "#173844",
+      "surfaceRaised": "#1d4650",
+      "surfaceSoft": "#14333e",
+      "border": "#bee1dd2e",
+      "text": "#edf7f4",
+      "muted": "#a8c1c0",
+      "teal": "#61c5c0",
+      "amber": "#f0bd61",
+      "coral": "#ed897b"
+    },
+    "semantic": {
+      "normal": "teal",
+      "change": "amber",
+      "critical": "coral"
+    }
+  },
+  "typography": {
+    "family": "Vazirmatn",
+    "weights": [400, 500, 600, 700],
+    "body": { "size": "16px", "lineHeight": 1.6, "weight": 400 },
+    "label": { "size": "12px", "lineHeight": 1.5, "weight": 500 },
+    "sectionTitle": { "size": "20px", "lineHeight": 1.45, "weight": 600 },
+    "pageTitle": { "size": "44px desktop; responsive mobile", "lineHeight": 1.2, "weight": 600 }
+  },
+  "spacing": {
+    "base": "4px",
+    "scale": { "1": "4px", "2": "8px", "3": "12px", "4": "16px", "5": "20px", "6": "24px", "8": "32px", "10": "40px", "12": "48px" }
+  },
+  "shape": {
+    "cardRadius": "18px",
+    "heroRadius": "24px",
+    "controlRadius": "10px",
+    "pillRadius": "999px",
+    "shadow": "0 14px 32px #102b3d12",
+    "cardShadow": "0 10px 28px #102b3d0f"
+  },
+  "layout": {
+    "direction": "rtl",
+    "mobileReferenceWidth": 576,
+    "webReferenceWidth": 1905,
+    "mobileReferenceBreakpoint": "720px",
+    "horizontalOverflow": false,
+    "contentMaxWidth": "1500px"
+  },
+  "observedRuntime": {
+    "source": "live DOM/computed styles captured 2026-08-25",
+    "fontComputed": "Vazirmatn, Noto Sans Arabic, Tahoma, Arial, sans-serif",
+    "fontSize": "16px",
+    "lineHeight": "27.2px",
+    "home": {
+      "lightBackground": "#c9dcda",
+      "darkBackground": "#071d28",
+      "desktopHeader": "1500x89px",
+      "mobileHeader": "544x76px",
+      "desktopSearch": "610x74px",
+      "mobileSearch": "544x62px",
+      "desktopTile": "95x58px",
+      "mobileTile": "268.5x54px"
+    },
+    "destination": {
+      "lightBackground": "#c9dcda",
+      "darkBackground": "#0b2732",
+      "desktopHero": "1416x250px",
+      "mobileHero": "548x116px",
+      "desktopHeroRadius": "25px",
+      "mobileHeroRadius": "16px",
+      "desktopCardRadius": "18px",
+      "mobileCardRadius": "14px"
+    },
+    "route": {
+      "lightBackground": "#c9dcda",
+      "darkBackground": "#0b2732",
+      "desktopHero": "1416x230px",
+      "mobileHero": "552x116px",
+      "desktopDecisionWidth": "300px",
+      "mobileDecisionWidth": "552px"
+    },
+    "rootHorizontalOverflow": false
+  }
+}

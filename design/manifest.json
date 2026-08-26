@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "product": "هواچ",
+  "repository": "hawatch-product",
+  "language": "fa",
+  "direction": "rtl",
+  "generatedAt": "2026-08-25",
+  "sourceScreens": "design/source-screens",
+  "organizedScreens": "design/screens",
+  "qualityPolicy": "Source PNG files are preserved byte-for-byte; organized copies are uncompressed copies.",
+  "references": {
+    "liveSite": "https://hawatch-weather.admirer135.chatgpt.site/",
+    "destination": "https://hawatch-weather.admirer135.chatgpt.site/destination/touchal",
+    "route": "https://hawatch-weather.admirer135.chatgpt.site/routes/touchal-darband",
+    "localSitesSource": "/workspace/sites/hawatch-weather",
+    "visualIdentity": "/workspace/scratch/833eb743b44e/project_sources/01-Hawatch.docx",
+    "openMeteoProbe": "/workspace/scratch/833eb743b44e/project_sources/02-hawatch_openmeteo_1100_probe.py",
+    "openMeteoResult": "/workspace/scratch/833eb743b44e/project_sources/03-hawatch_openmeteo_1100_result-1-.json",
+    "localReferenceStatus": "The four /workspace reference paths were not available in this environment; they were not modified."
+  },
+  "assets": [
+    { "sourceFile": "hawatch_01_home_light_mobile.png", "organizedFile": "design/screens/home/light/mobile.png", "page": "home", "theme": "light", "device": "mobile", "width": 576, "height": 1077, "sha256": "99509410df6a7eed027b75afaa2d215dd04639166ac72651f4f464c7d5d85681" },
+    { "sourceFile": "hawatch_02_home_dark_mobile.png", "organizedFile": "design/screens/home/dark/mobile.png", "page": "home", "theme": "dark", "device": "mobile", "width": 576, "height": 1077, "sha256": "f52415fbde58efc6e4ff502a7bd33de457b82c108b667ec5b27db13adeae949a" },
+    { "sourceFile": "hawatch_03_home_light_web.png", "organizedFile": "design/screens/home/light/web.png", "page": "home", "theme": "light", "device": "web", "width": 1905, "height": 1047, "sha256": "c4fe4089284900b34c9f5516350fbb2a0a0b266b97e649cb9462c4c456b681a4" },
+    { "sourceFile": "hawatch_04_home_dark_web.png", "organizedFile": "design/screens/home/dark/web.png", "page": "home", "theme": "dark", "device": "web", "width": 1905, "height": 1047, "sha256": "c226aea3822c2486b0ce6581a2a28a5e019f8162d4637f4b4e48ef87fc064cea" },
+    { "sourceFile": "hawatch_05_login_light_mobile.png", "organizedFile": "design/screens/login/light/mobile.png", "page": "login", "theme": "light", "device": "mobile", "width": 576, "height": 1077, "sha256": "d183185c03658e8a6cf86a2243a05dd621919363e58bd676f5eed3667076fcfa" },
+    { "sourceFile": "hawatch_06_login_dark_mobile.png", "organizedFile": "design/screens/login/dark/mobile.png", "page": "login", "theme": "dark", "device": "mobile", "width": 576, "height": 1077, "sha256": "2600593d4ed2aa709110cdc15bb30c955a001e7a42c7aeb1ad67b1061c50907e" },
+    { "sourceFile": "hawatch_07_login_light_web.png", "organizedFile": "design/screens/login/light/web.png", "page": "login", "theme": "light", "device": "web", "width": 1905, "height": 1047, "sha256": "da7387b2e6f5cff4be951398edeec6fd903f2ff5e9a88d830ede47cf9102c1e9" },
+    { "sourceFile": "hawatch_08_login_dark_web.png", "organizedFile": "design/screens/login/dark/web.png", "page": "login", "theme": "dark", "device": "web", "width": 1905, "height": 1047, "sha256": "ed4e70c50e7307040c7b9f97b9deeb78fb3575751f6eb179eb2c8e69ffd455e8" },
+    { "sourceFile": "hawatch_09_destination_light_mobile.png", "organizedFile": "design/screens/destination/light/mobile.png", "page": "destination", "theme": "light", "device": "mobile", "width": 576, "height": 1729, "sha256": "f4c6aadf3416ead000ec7778d592b24a13f5b53ce2acdb542ba31b3d477c73c4" },
+    { "sourceFile": "hawatch_10_destination_dark_mobile.png", "organizedFile": "design/screens/destination/dark/mobile.png", "page": "destination", "theme": "dark", "device": "mobile", "width": 576, "height": 1729, "sha256": "9ca4366dbef8d809f0780ae9d79e4329325b16964576262190b21694c61ab63e" },
+    { "sourceFile": "hawatch_11_destination_light_web.png", "organizedFile": "design/screens/destination/light/web.png", "page": "destination", "theme": "light", "device": "web", "width": 1905, "height": 1602, "sha256": "7c78f7d8429d6d65e95033cf427e09c4847035e34ff72e86fb5f61b01fde21ff" },
+    { "sourceFile": "hawatch_12_destination_dark_web.png", "organizedFile": "design/screens/destination/dark/web.png", "page": "destination", "theme": "dark", "device": "web", "width": 1905, "height": 1602, "sha256": "5edb72d1c285cf688b7e82e3dec195201c50d494811b5c93f51bb9153e2f2db2" },
+    { "sourceFile": "hawatch_13_route_light_mobile.png", "organizedFile": "design/screens/route/light/mobile.png", "page": "route", "theme": "light", "device": "mobile", "width": 576, "height": 2528, "sha256": "a53fbd4338c7788d69e28ac2d6e1bdc17cacc41bbdae06f8d02ae1e8ea3ecf10" },
+    { "sourceFile": "hawatch_14_route_dark_mobile.png", "organizedFile": "design/screens/route/dark/mobile.png", "page": "route", "theme": "dark", "device": "mobile", "width": 576, "height": 2564, "sha256": "26344821c8818e171818829e608056a2c45bc6a1f772d2451046d32db09b17d9" },
+    { "sourceFile": "hawatch_15_route_light_web.png", "organizedFile": "design/screens/route/light/web.png", "page": "route", "theme": "light", "device": "web", "width": 1905, "height": 1457, "sha256": "25bee95b5d314e43587343c8952589749ff8b0f02b5fc2688100f4108c81bbf7" },
+    { "sourceFile": "hawatch_16_route_dark_web.png", "organizedFile": "design/screens/route/dark/web.png", "page": "route", "theme": "dark", "device": "web", "width": 1905, "height": 1457, "sha256": "dc39870888f00711cc21b29fffcb8848aa4ed4196aa30a911ee89e5dd05bb28d" }
+  ]
+}
