@@ -11,7 +11,8 @@ class Destination(models.Model):
     category_key = models.CharField(max_length=32)
     region = models.CharField(max_length=64)
     elevation_m = models.PositiveIntegerField()
-    location = models.PointField(srid=4326)
+    # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
+    location = models.PointField(srid=4326, spatial_index=False)
     image = models.CharField(max_length=255)
     image_alt = models.CharField(max_length=255)
     popular_order = models.PositiveSmallIntegerField(default=0)
@@ -23,9 +24,9 @@ class Destination(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=["is_popular", "popular_order"]),
-            models.Index(fields=["is_active"]),
-            GistIndex(fields=["location"]),
+            models.Index(fields=["is_popular", "popular_order"], name="destination_is_popu_idx"),
+            models.Index(fields=["is_active"], name="destination_is_acti_idx"),
+            GistIndex(fields=["location"], name="destination_location_gist"),
         ]
 
     def __str__(self) -> str:

@@ -10,7 +10,8 @@ class WeatherPoint(models.Model):
     slug = models.SlugField(max_length=96, unique=True)
     name = models.CharField(max_length=80)
     kind = models.CharField(max_length=16, choices=Kind.choices)
-    location = models.PointField(srid=4326)
+    # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
+    location = models.PointField(srid=4326, spatial_index=False)
     elevation_m = models.PositiveIntegerField()
     destination = models.ForeignKey(
         "destinations.Destination",
@@ -32,9 +33,9 @@ class WeatherPoint(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=["kind", "destination"]),
-            models.Index(fields=["slug"]),
-            GistIndex(fields=["location"]),
+            models.Index(fields=["kind", "destination"], name="weatherpoint_kind_dest_idx"),
+            models.Index(fields=["slug"], name="weatherpoint_slug_idx"),
+            GistIndex(fields=["location"], name="weatherpoint_location_gist"),
         ]
 
     def __str__(self) -> str:
@@ -92,10 +93,10 @@ class ForecastRecord(models.Model):
             )
         ]
         indexes = [
-            models.Index(fields=["weather_point", "forecast_at"]),
-            models.Index(fields=["forecast_at"]),
-            models.Index(fields=["valid_from", "valid_to"]),
-            models.Index(fields=["hour_bucket"]),
+            models.Index(fields=["weather_point", "forecast_at"], name="forecast_point_at_idx"),
+            models.Index(fields=["forecast_at"], name="forecast_at_idx"),
+            models.Index(fields=["valid_from", "valid_to"], name="forecast_valid_idx"),
+            models.Index(fields=["hour_bucket"], name="forecast_hour_bucket_idx"),
         ]
 
     def __str__(self) -> str:

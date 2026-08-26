@@ -9,7 +9,10 @@
 
 ```bash
 cp .env.example .env
-docker compose -f infra/compose/compose.yaml up -d --build
+# اگر 5432/6379 اشغال‌اند:
+# POSTGRES_PUBLISH_PORT=5433
+# REDIS_PUBLISH_PORT=6380
+docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 ```
 
 API هنگام start:
@@ -25,7 +28,8 @@ API هنگام start:
 | --- | --- |
 | web | http://localhost:5173 |
 | api | http://localhost:8000/api/v1/ |
-| postgres | localhost:5432 (override with `POSTGRES_PUBLISH_PORT`) |
+| postgres | localhost:`POSTGRES_PUBLISH_PORT` (پیش‌فرض 5432) |
+| redis (optional) | localhost:`REDIS_PUBLISH_PORT` (پیش‌فرض 6379؛ profile `cache`) |
 
 ## توقف و لاگ
 

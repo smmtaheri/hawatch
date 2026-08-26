@@ -1,39 +1,40 @@
 # checklist الزامات validation
 
-تاریخ: 2026-08-26
+تاریخ به‌روزرسانی: 2026-08-26
 
-این checklist دقیقاً ۱۶ الزام اعلام‌شدهٔ validation را پوشش می‌دهد. وضعیت کلی این milestone **PASS** است؛ implementation همچنان خارج از scope است.
+این checklist الزامات handoff اولیه را نگه می‌دارد و وضعیت را با implementation محلی فعلی هم‌تراز می‌کند.
 
 | # | الزام | وضعیت | evidence |
 | --- | --- | --- | --- |
-| 1 | دقیقاً ۱۶ تصویر وجود دارد | PASS | ۴ صفحه × ۲ تم × ۲ دستگاه = ۱۶ asset منطقی. ۱۶ organized copy نیز برای حفظ ساختار source/organized وجود دارد؛ مجموع فیزیکی ۳۲ و طبق تصمیم کاربر صحیح است. |
-| 2 | source screenshots بدون تغییر | PASS | manifest SHA-256 و hash جفت‌های source/organized در `docs/validation-report.md` و `design/manifest.json`. |
-| 3 | تصاویر در مسیر page/theme/device درست هستند | PASS | `design/screens/{page}/{light,dark}/{mobile,web}.png` و manifest. |
-| 4 | manifest با نام، فایل و ابعاد واقعی match است | PASS | ۱۶/۱۶ asset با filesystem و `identify` match شد. |
-| 5 | duplicate/missing/misnamed وجود ندارد | PASS | ۱۶ hash unique در هر مجموعه؛ duplicate بین source/organized فقط pair عمدی است؛ فایل خارج از دو مسیر صفر. |
-| 6 | DOCX خوانده و با design system تطبیق داده شده | PASS | `references/Hawatch.docx` با ۸۱ پاراگراف خوانده شد؛ طبق تصمیم کاربر `design/tokens/visual-tokens.json` تنها منبع canonical مقدارهاست و markdownها توضیح‌دهنده‌اند. |
-| 7 | مستندات Home/Destination/Route/Login وجود دارد | PASS | `design/pages/{home,destination,route,login}.md` و live inspection سه صفحه. |
-| 8 | layout/text/interaction/navigation/state/responsive برای هر صفحه مستند است | PASS | page docs، `docs/live-page-inspection/*` و acceptance/QA docs؛ stateهای مشاهده‌نشده صریحاً ثبت شده‌اند. |
-| 9 | light/dark و mobile/desktop مستند است | PASS | ۱۲ حالت live با Chrome در 576 و 1905؛ چهار screenshot برای هر page. |
-| 10 | flowهای Home → Destination → Route و back وجود دارد | PASS | `docs/user-flows/home-to-destination.md`، `destination-to-route.md` و `navigation-and-back.md`. |
-| 11 | API contract اولیه هست و API پیاده‌سازی نشده | PASS | `docs/api/api-overview.md` و `forecast-contract.md`؛ apps فقط `.gitkeep`. |
-| 12 | Django REST/PostgreSQL/Python 3.14/uv ثبت شده | PASS | `README.md` و `docs/architecture/backend.md`؛ compatibility به‌عنوان بررسی آینده ثبت شده. |
-| 13 | Redis/queue/Kafka/data lake/ingestion فقط future decision هستند | PASS | `docs/architecture/weather-data-pipeline.md` و ADR 0002؛ runtime ندارند. |
-| 14 | retention/raw/normalized/cleanup/retry/checkpoint/no-concurrent ثبت شده | PASS | pipeline doc و ADR 0002. |
-| 15 | implementation در `apps/web` یا `apps/api` شروع نشده | PASS | هیچ package/source/migration/model/API اجرایی وجود ندارد؛ فقط `.gitkeep`. |
-| 16 | هیچ فایل خارج از scope تغییر نکرده | PASS | فقط چهار سند validation تغییر محتوایی داده شدند؛ baseline اولیه با پیام تعیین‌شده ساخته و working tree نهایی clean کنترل شد. |
+| 1 | دقیقاً ۱۶ تصویر asset | PASS | `design/manifest.json` و `design/screens` |
+| 2 | source screenshots بدون تغییر | PASS | PNGها دست‌نخورده؛ بدون resize/re-encode |
+| 3 | مسیر page/theme/device | PASS | `design/screens/{page}/{theme}/{device}.png` |
+| 4 | manifest match | PASS | نام، ابعاد و SHA-256 |
+| 5 | duplicate/missing/misnamed | PASS | فقط pairهای عمدی source/organized |
+| 6 | DOCX و design system | PASS | `references/Hawatch.docx` + `visual-tokens.json` |
+| 7 | مستندات صفحات | PASS | `design/pages/*` و live inspection |
+| 8 | layout/interaction/state docs | PASS | page specs + live inspection |
+| 9 | light/dark و mobile/desktop | PASS | ۱۲ ترکیب مرجع + پیاده‌سازی محلی |
+| 10 | flowهای navigation | PASS | `docs/user-flows/*` و React Router |
+| 11 | API contract + API اجرایی | PASS | `docs/api/*` و `apps/api` endpointها |
+| 12 | Django/DRF/PostGIS/Python 3.14/uv | PASS | `apps/api/pyproject.toml` و Compose |
+| 13 | Redis/Kafka/ingestion scope | PASS | Redis فقط profile `cache`؛ Kafka/ingestion خارج از scope |
+| 14 | retention/retry/checkpoint docs | PASS | `docs/architecture/weather-data-pipeline.md` |
+| 15 | implementation محلی | PASS | `apps/web`، `apps/api`، `infra/compose` اجرایی‌اند (ادعای «فقط `.gitkeep`» منسوخ است) |
+| 16 | Login و design assets دست‌نخورده | PASS | Login فقط reference؛ screenshots تغییر نکرده‌اند |
 
 ## جمع وضعیت‌ها
 
 - PASS: `16`
 - FAIL: `0`
-- BLOCKED: `0`
-- NEEDS_USER_DECISION: `0`
+- BLOCKED (non-gating): source محلی `/workspace/sites/hawatch-weather`
+- خارج از scope عمدی: Login، live weather provider، Kafka، Kubernetes manifests
 
-## موارد non-gating و تصمیم‌های آینده
+## تست و اجرای محلی
 
-- `/workspace/sites/hawatch-weather` قابل‌دسترسی نیست و به‌عنوان reference unavailable ثبت شده است؛ طبق تصمیم کاربر مانع ادامه نیست.
-- provider/API، جزئیات forecast، route timing، share policy و scoped mobile axis در open questions برای implementation آینده باقی مانده‌اند.
-- Login برای مرحلهٔ بعد است و در milestone اول پیاده یا live-validated نمی‌شود.
+- `pnpm test` و `pnpm build`
+- `docker compose --env-file .env -f infra/compose/compose.yaml exec api pytest`
+- `makemigrations --check --dry-run`
+- health live/ready، destinations، forecast مقصد و مسیر
 
-تا تعیین این موارد، implementation، dependency، migration، build، deploy و commit انجام نمی‌شود.
+جزئیات اجرا: `docs/local-development.md` و `README.md`.

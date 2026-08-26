@@ -45,7 +45,10 @@ html:not([data-theme="light"]) .hawatch-state.stale {
 }
 
 .past-hour,
-.hour-item.is-past {
+.hour-item.is-past,
+.day-tabs button.is-yesterday,
+.day-tabs button.past-day:not(.selected),
+.day-tabs button.is-past:not(.selected) {
   opacity: 0.55;
 }
 
@@ -60,5 +63,304 @@ html:not([data-theme="light"]) .hawatch-state.stale {
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+/*
+  Restore mobile destination/route presentation to match design/screens.
+  A later compact layer in hawatch.css shrinks the hero to 116px and
+  over-compresses type; keep desktop rules untouched.
+*/
+@media (width <= 720px) {
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .destination-page .destination-hero {
+    position: relative;
+    display: block !important;
+    align-items: stretch !important;
+    width: 100%;
+    height: 310px !important;
+    min-height: 310px !important;
+    margin-top: 12px;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .destination-page .destination-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .destination-page .destination-heading {
+    position: absolute;
+    top: 22px;
+    right: 18px;
+    left: 18px;
+    width: auto;
+    max-width: none;
+    transform: none;
+    z-index: 2;
+  }
+
+  .destination-page .destination-heading h1 {
+    margin: 4px 0 0;
+    font-size: clamp(30px, 8.5vw, 38px);
+    line-height: 1.25;
+  }
+
+  .destination-page .destination-heading > p:last-child {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .destination-page .hero-status-stack {
+    position: absolute;
+    inset: auto auto 16px 14px;
+    top: auto;
+    transform: none;
+    width: min(58%, 210px);
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .destination-page .hero-status-stack .status-pill {
+    text-align: right;
+    border-radius: 12px;
+    min-height: 0;
+    padding: 8px 10px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .destination-page .mobile-back-link {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+  }
+
+  .destination-page .day-tabs {
+    display: flex !important;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin: 14px 0;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .destination-page .day-tabs button {
+    flex: 0 0 84px;
+    width: 84px;
+    min-height: 44px;
+    border-radius: 12px;
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+
+  .destination-page .mobile-route-picker {
+    margin: 8px 0 10px;
+    padding-top: 4px;
+  }
+
+  .destination-page .mobile-route-picker-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .destination-page .mobile-route-picker-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .destination-page .mobile-route-picker-button {
+    border-radius: 12px;
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .destination-page .destination-period-row {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle button {
+    border-radius: 12px;
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .destination-page .hourly-box {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .destination-page .hourly-head {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .destination-page .hours-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden !important;
+  }
+
+  .destination-page .hour-item {
+    min-width: 0;
+    min-height: 132px;
+    padding: 10px 3px 12px;
+  }
+
+  .destination-page .hour-item > strong {
+    font-size: 11px;
+  }
+
+  .destination-page .hour-item .weather-symbol {
+    margin: 8px 0 2px;
+    font-size: 22px;
+  }
+
+  .destination-page .hour-item b {
+    font-size: 16px;
+  }
+
+  .destination-page .hour-item small {
+    font-size: 10px;
+  }
+
+  .destination-page .weather-card,
+  .destination-page .technical-card,
+  .destination-page .destination-decision-card {
+    padding: 16px 14px;
+  }
+
+  .destination-page .technical-card .metric-label {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .destination-page .technical-card .metric strong {
+    margin-top: 4px;
+    font-size: 18px;
+  }
+
+  .destination-page .technical-card .metric small {
+    font-size: 11px;
+  }
+
+  .route-page .route-hero {
+    align-items: flex-start;
+    display: flex;
+    height: auto;
+    min-height: 132px;
+    padding: 18px 16px 16px;
+  }
+
+  .route-page .route-hero .breadcrumb {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+
+  .route-page .route-hero-copy {
+    width: 100%;
+    min-width: 0;
+    padding-left: 0;
+    padding-bottom: 52px;
+  }
+
+  .route-page .route-hero h1 {
+    margin: 2px 0 0;
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.25;
+  }
+
+  .route-page .route-hero-status-stack {
+    position: absolute;
+    inset: auto 14px 14px 14px;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+
+  .route-page .route-hero-status-stack .status-pill.change {
+    text-align: right;
+    white-space: normal;
+    border-radius: 12px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .route-page .day-tabs,
+  .route-page .route-day-tabs {
+    display: flex !important;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .route-page .day-tabs button,
+  .route-page .route-day-tabs button {
+    flex: 0 0 84px;
+    min-height: 44px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .planner-speed {
+    display: none !important;
+  }
+
+  .route-page .mobile-planner-selectors,
+  .route-page .route-overview-side .planner-quick-box .mobile-planner-selectors {
+    display: grid !important;
+  }
+
+  .route-page .mobile-planner-selector .segmented-control button {
+    min-height: 38px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+
+  .route-page .route-linear-scroll {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    max-width: 100%;
+  }
+
+  .route-page .route-point-weather-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .route-page .route-point-weather-card {
+    min-width: 0;
+    padding: 10px 8px;
+    border-radius: 12px;
+    font-size: 12px;
   }
 }

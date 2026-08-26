@@ -21,15 +21,16 @@ class Route(models.Model):
     default_start_minutes = models.PositiveIntegerField()
     featured = models.BooleanField(default=False)
     sort_order = models.PositiveSmallIntegerField(default=0)
-    origin_location = models.PointField(srid=4326)
+    # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
+    origin_location = models.PointField(srid=4326, spatial_index=False)
     data_mode = models.CharField(max_length=16, default="demo")
     seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
 
     class Meta:
         indexes = [
-            models.Index(fields=["destination", "sort_order"]),
-            models.Index(fields=["featured"]),
-            GistIndex(fields=["origin_location"]),
+            models.Index(fields=["destination", "sort_order"], name="route_dest_sort_idx"),
+            models.Index(fields=["featured"], name="route_featured_idx"),
+            GistIndex(fields=["origin_location"], name="route_origin_gist"),
         ]
 
     def __str__(self) -> str:
@@ -48,7 +49,8 @@ class RoutePoint(models.Model):
     slug = models.SlugField(max_length=80)
     name = models.CharField(max_length=80)
     elevation_m = models.PositiveIntegerField()
-    location = models.PointField(srid=4326)
+    # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
+    location = models.PointField(srid=4326, spatial_index=False)
     base_minutes = models.PositiveIntegerField()
     sort_order = models.PositiveSmallIntegerField()
     note = models.CharField(max_length=255, blank=True)
@@ -63,10 +65,10 @@ class RoutePoint(models.Model):
             models.UniqueConstraint(fields=["route", "slug"], name="uniq_route_point_slug"),
         ]
         indexes = [
-            models.Index(fields=["route", "sort_order"]),
-            models.Index(fields=["slug"]),
-            models.Index(fields=["destination"]),
-            GistIndex(fields=["location"]),
+            models.Index(fields=["route", "sort_order"], name="routepoint_route_sort_idx"),
+            models.Index(fields=["slug"], name="routepoint_slug_idx"),
+            models.Index(fields=["destination"], name="routepoint_dest_idx"),
+            GistIndex(fields=["location"], name="routepoint_location_gist"),
         ]
         ordering = ["sort_order"]
 

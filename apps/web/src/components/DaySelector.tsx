@@ -16,7 +16,13 @@ export function DaySelector({
       {days.map((day) => (
         <button
           key={day.date}
-          className={`${selected === day.date ? "selected " : ""}${day.is_yesterday ? "past-day" : ""}`}
+          className={[
+            selected === day.date ? "selected" : "",
+            day.is_yesterday ? "is-yesterday past-day" : "",
+            day.is_past && !day.is_today ? "is-past past-day" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           type="button"
           role="tab"
           aria-selected={selected === day.date}

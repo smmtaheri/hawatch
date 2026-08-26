@@ -11,7 +11,7 @@
 Redis با profile `cache` تعریف شده و در `up` عادی بالا نمی‌آید:
 
 ```bash
-docker compose -f infra/compose/compose.yaml --profile cache up -d redis
+docker compose --env-file .env -f infra/compose/compose.yaml --profile cache up -d redis
 ```
 
 Kafka در این milestone اضافه نشده است.
@@ -19,21 +19,24 @@ Kafka در این milestone اضافه نشده است.
 ## دستورها
 
 ```bash
-docker compose -f infra/compose/compose.yaml up -d --build
-docker compose -f infra/compose/compose.yaml up -d
-docker compose -f infra/compose/compose.yaml ps
-docker compose -f infra/compose/compose.yaml logs -f api
-docker compose -f infra/compose/compose.yaml down
+cp .env.example .env   # سپس پورت‌ها را در صورت نیاز تنظیم کن
+docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
+docker compose --env-file .env -f infra/compose/compose.yaml up -d
+docker compose --env-file .env -f infra/compose/compose.yaml ps
+docker compose --env-file .env -f infra/compose/compose.yaml logs -f api
+docker compose --env-file .env -f infra/compose/compose.yaml down
 ```
 
-## متغیرها
+## متغیرها و پورت‌های میزبان
 
-نام‌ها در `.env.example` هستند. داخل کد backend مقدار localhost برای دیتابیس hard-code نشده؛ `POSTGRES_HOST` در Compose برابر `postgres` است.
+نام‌ها در `.env.example` هستند. داخل شبکهٔ Compose:
 
-پورت منتشرشدهٔ Postgres روی میزبان پیش‌فرض `5432` است. اگر این پورت اشغال باشد:
+- API به `postgres:5432` وصل می‌شود
+- Redis داخلی روی `redis:6379` می‌ماند
+
+اگر پورت میزبان اشغال باشد، فقط publish port را در `.env` محلی تغییر بده:
 
 ```bash
-POSTGRES_PUBLISH_PORT=5433 docker compose -f infra/compose/compose.yaml up -d
+POSTGRES_PUBLISH_PORT=5433
+REDIS_PUBLISH_PORT=6380
 ```
-
-داخل شبکهٔ Compose، API همیشه به `postgres:5432` وصل می‌شود.

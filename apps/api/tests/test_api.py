@@ -158,6 +158,34 @@ def test_route_forecast_start_and_speed(api_client, seeded):
 
 
 @pytest.mark.django_db
+def test_point_fields_have_single_gist_index(seeded):
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            SELECT tablename, COUNT(*) AS gist_count
+            FROM pg_indexes
+            WHERE schemaname = 'public'
+              AND indexdef ILIKE '%USING gist%'
+              AND tablename IN (
+                'destinations_destination',
+                'routes_route',
+                'routes_routepoint',
+                'forecasts_weatherpoint'
+              )
+            GROUP BY tablename
+            ORDER BY tablename
+            """
+        )
+        rows = {name: count for name, count in cursor.fetchall()}
+    assert rows == {
+        "destinations_destination": 1,
+        "forecasts_weatherpoint": 1,
+        "routes_route": 1,
+        "routes_routepoint": 1,
+    }
+
+
+@pytest.mark.django_db
 def test_search_and_stale_flag(api_client, seeded):
     found = api_client.get("/api/v1/destinations/", {"query": "توچال"}).json()
     assert found["results"][0]["slug"] == "touchal"

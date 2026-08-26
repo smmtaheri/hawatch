@@ -13,15 +13,15 @@
 | OQ-005 | PASS | loading در Home، Destination و Route چه UI و timeout/fallback داشته باشد؟ | تصمیم قطعی: skeleton با حفظ layout. | در state contract گزارش‌ها ثبت شد؛ جزئیات timeout آینده است. |
 | OQ-006 | PASS | error و retry forecast/API چگونه نمایش داده شود؟ | تصمیم قطعی: پیام خطا داخل همان بخش + retry. | در state contract گزارش‌ها ثبت شد؛ live فعلی این branch را expose نمی‌کند. |
 | OQ-007 | PASS | stale/freshness بر چه timestamp، timezone و thresholdی تعیین شود؟ | تصمیم قطعی: دادهٔ قبلی با زمان آخرین بروزرسانی و هشدار کهربایی نمایش داده شود. | در state contract گزارش‌ها ثبت شد؛ threshold/timezone آینده باید با API contract نهایی شود. |
-| OQ-008 | NEEDS_USER_DECISION | provider نهایی، fallback و ownership API داخلی چیست؟ | live page-specific bundleها static data دارند و provider/Open-Meteo/API weather call ندارند؛ docs فقط contract آینده‌اند. | provider، backend boundary، fallback و data ownership را تأیید کن. |
-| OQ-009 | NEEDS_USER_DECISION | مدل forecast روزها، period دوم و unitها چیست؟ | live UI روزهای گذشته/امروز/آینده و صبح/بعدازظهر دارد؛ contract اجرایی backend موجود نیست. | timezone، horizon، semantics period، unit normalization و missing-data policy را نهایی کن. |
-| OQ-010 | NEEDS_USER_DECISION | domain rule محاسبهٔ route plan چیست؟ | bundle از `baseMinutes` و multiplierهای آرام `1.2`، متوسط `1` و سریع `.82` استفاده می‌کند؛ این فقط رفتار deployed sample است. | فرمول timing، توقف، elevation، برگشت و thresholdهای critical را تصویب کن. |
-| OQ-011 | NEEDS_USER_DECISION | share link دائمی است یا کوتاه‌عمر و چه داده‌ای encode می‌کند؟ | live copy به payload مسیر `/share?s=...` و Telegram URL می‌رسد؛ policy privacy/expiry/revocation موجود نیست. | expiry، storage، payload schema، privacy و revocation را تعیین کن. |
-| OQ-012 | NEEDS_USER_DECISION | empty route/forecast در catalog واقعی چه زمانی و با چه actionی نمایش داده شود؟ | branch `route-empty-state` در Destination bundle هست اما Touchal routeهای فعال دارد و branch در URL مرجع مشاهده نشد. | copy، fallback و معیار نبودن route/forecast را تأیید کن. |
-| OQ-013 | NEEDS_USER_DECISION | در mobile، route axis اجازهٔ scroll افقی scoped دارد یا باید layout دیگری داشته باشد؟ | root overflow در ۱۲ حالت مشاهده نشد؛ محدودیت محصول فقط overflow کل صفحه را ممنوع می‌کند. | inner scroll، keyboard/touch behavior و معیار پذیرش آن را مشخص کن. |
-| OQ-014 | PASS | Login فقط reference است یا باید live و interactive نیز validate شود؟ | تصمیم قطعی: Login برای مرحلهٔ بعد است؛ چهار screenshot و design doc فعلاً reference هستند. | Login در milestone اول پیاده یا live-validated نمی‌شود. |
-| OQ-015 | PASS | آیا می‌توان عدم تغییر فایل خارج از scope را اثبات کرد؟ | baseline اولیه با پیام `chore: add Hawatch design handoff` ساخته و working tree نهایی clean کنترل شد. | تصمیم/کنترل انجام شد. |
+| OQ-008 | OPEN | provider نهایی، fallback و ownership API داخلی چیست؟ | API داخلی محلی با demo mode پیاده شده؛ Open-Meteo هنوز فراخوانی نمی‌شود. | provider واقعی، fallback و ownership را تأیید کن. |
+| OQ-009 | PARTIAL | مدل forecast روزها، period و unitها چیست؟ | پنجرهٔ ۷روزه و hourly هر ۲ ساعت در API/UI محلی پیاده شده؛ semantics آینده می‌تواند تغییر کند. | timezone/horizon/unit policy نهایی را در صورت نیاز قفل کن. |
+| OQ-010 | PARTIAL | domain rule محاسبهٔ route plan چیست؟ | multiplierهای آرام/متوسط/سریع از sample زنده در seed محلی استفاده می‌شوند. | فرمول timing نهایی محصول را تصویب کن. |
+| OQ-011 | OPEN | share link دائمی است یا کوتاه‌عمر؟ | UI اشتراک لینک reconstructable با query params دارد؛ backend share ندارد. | expiry/privacy/revocation را تعیین کن. |
+| OQ-012 | PARTIAL | empty route/forecast چه زمانی؟ | empty/error/stale UI محلی پیاده شده؛ catalog فعلی مقصدها/مسیرهای مستند را دارد. | معیار catalog خالی در production را تأیید کن. |
+| OQ-013 | PARTIAL | mobile route axis و inner scroll؟ | root overflow در viewportهای مرجع بررسی شده؛ timeline/day tabs می‌توانند inner scroll داشته باشند. | معیار پذیرش نهایی inner scroll را قفل کن. |
+| OQ-014 | PASS | Login فقط reference است؟ | Login در milestone اول پیاده نشده است. | بدون تغییر. |
+| OQ-015 | PASS | کنترل خارج از scope؟ | design assets و Login docs دست‌نخورده‌اند. | بدون تغییر. |
 
 ## قاعدهٔ ادامهٔ کار
 
-OQهای BLOCKED فقط reference unavailable هستند و طبق تصمیم کاربر مانع ادامهٔ handoff نیستند. OQهای NEEDS_USER_DECISION باقی‌مانده (provider/API، مدل forecast، route timing، share policy و scoped mobile axis) تصمیم‌های آیندهٔ implementation هستند؛ در این milestone هیچ implementation شروع نمی‌شود.
+OQهای BLOCKED فقط reference unavailable هستند و مانع اجرای محلی نیستند. Login، provider واقعی، Kafka و Kubernetes همچنان خارج از scope این milestone‌اند.

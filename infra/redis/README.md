@@ -8,4 +8,6 @@ Redis در milestone اول اجباری نیست.
 - distributed lock برای ingestion
 - coordination جاب‌ها
 
-متغیر placeholder: `REDIS_URL=redis://localhost:6379/0`
+داخل شبکهٔ Compose همیشه `redis:6379` است. پورت میزبان با `REDIS_PUBLISH_PORT` تنظیم می‌شود (پیش‌فرض `6379`؛ اگر اشغال بود مثلاً `6380`).
+
+متغیر placeholder: `REDIS_URL=redis://localhost:${REDIS_PUBLISH_PORT:-6379}/0`

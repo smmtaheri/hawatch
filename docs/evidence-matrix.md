@@ -109,10 +109,10 @@
 | --- | --- | --- |
 | internal API و عدم اتصال مستقیم frontend | `PRODUCT` + docs | `AGENTS.md`، `docs/api/api-overview.md`، `docs/architecture/frontend.md` |
 | Django REST Framework، PostgreSQL، Python 3.14، uv | `PRODUCT` + docs | `README.md` و `docs/architecture/backend.md`؛ compatibility فقط به‌عنوان preflight آینده ثبت شده |
-| Redis/queue/Kafka/data lake | `PRODUCT` + ADR | `docs/architecture/weather-data-pipeline.md` و `docs/decisions/0002-weather-pipeline-options.md`؛ تصمیم نهایی و runtime ندارند |
+| Redis/queue/Kafka/data lake | `PRODUCT` + ADR + Compose | pipeline docs و ADR 0002/0003؛ Redis فقط profile `cache`؛ Kafka و data lake runtime ندارند |
 | raw/normalized، retention حداکثر یک هفته و cleanup | `PRODUCT` + pipeline doc | `docs/architecture/weather-data-pipeline.md` §raw، §retention و cleanup policy |
 | retry، backoff، checkpoint، heartbeat و no-concurrent-run | `PRODUCT` + ADR | pipeline doc و ADR 0002؛ فقط requirement آینده، بدون worker/queue اجرایی |
-| نبودن implementation | filesystem + `AGENTS.md` | `apps/web/.gitkeep`، `apps/api/.gitkeep`، `infra/.gitkeep`، `scripts/.gitkeep`؛ هیچ source یا manifest اجرایی وجود ندارد |
+| implementation محلی | filesystem + tests | `apps/web`، `apps/api`، `infra/compose`، seed دمو و تست‌های Vitest/pytest؛ ادعای «فقط `.gitkeep`» منسوخ است |
 
 ## evidenceهای مسدود
 
@@ -126,4 +126,4 @@
 
 ## قاعدهٔ استفاده
 
-هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت محسوب نمی‌شود. source محلی unavailable به‌صورت non-gating ثبت شده است؛ تصمیم‌های باقی‌ماندهٔ provider/API و جزئیات future implementation، خارج از validation این milestone هستند.
+هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت live محسوب نمی‌شود مگر با evidence جدا. source محلی unavailable به‌صورت non-gating ثبت شده است. implementation محلی فعلی از API داخلی و دادهٔ دمو استفاده می‌کند؛ Login و ingestion واقعی همچنان خارج از scope هستند.
