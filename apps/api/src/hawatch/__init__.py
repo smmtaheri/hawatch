@@ -1,0 +1,1 @@
+# Hawatch Django project package

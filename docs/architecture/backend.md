@@ -1,27 +1,28 @@
-# معماری آیندهٔ backend
-
-این سند تصمیم آینده را ثبت می‌کند؛ backend در این milestone ساخته نمی‌شود.
+# معماری backend هواچ
 
 ## تصمیم‌های پایه
 
-- API با Django REST Framework ساخته خواهد شد.
-- PostgreSQL دیتابیس اصلی خواهد بود.
-- Python نسخهٔ 3.14 هدف معماری است.
-- مدیریت محیط و dependency با `uv` انجام خواهد شد.
-- Redis فعلاً optional است و در صورت نیاز برای cache، lock، queue یا coordination اضافه می‌شود.
-- Kafka یا data lake فعلاً انتخاب قطعی نیستند.
+- Django 5.2 LTS (پشتیبانی Python 3.14 از 5.2.8)
+- Django REST Framework 3.17.x (اعلام پشتیبانی Python 3.14)
+- Python 3.14 و مدیریت dependency با uv
+- PostgreSQL 16 + PostGIS 3.5
+- psycopg 3
+- Redis و Kafka در این milestone اجرا نمی‌شوند
 
-## مرزهای پیشنهادی
+## ماژول‌ها
 
-- catalog مقصد و route مستقل از retention forecast نگه‌داری شوند.
-- ingestion provider از normalize/validate و API read model جدا باشد.
-- raw response با metadata قابل ردیابی ذخیره شود.
-- API فقط normalized/read model را در اختیار frontend قرار دهد.
-- jobها request id، ingestion run id، heartbeat و status قابل مشاهده داشته باشند.
+- `catalog`: بارگذاری fixture و seed دمو
+- `destinations`: مدل Destination
+- `routes`: مدل Route و RoutePoint
+- `forecasts`: WeatherPoint و ForecastRecord
+- `integrations.weather`: `WeatherProvider` و generator دمو
+- `jobs`: management command `seed_demo_data`
 
-## قبل از implementation
+## تنظیمات
 
-- compatibility نسخه‌های Django و DRF با Python 3.14 بررسی شود.
-- policy timezone، auth، error envelope، migration و backup مشخص شود.
-- ظرفیت، rate limit و provider terms بررسی شود.
+محیط از متغیرها خوانده می‌شود. host دیتابیس hard-code نیست. CORS فقط برای originهای توسعهٔ محلی.
 
+Health:
+
+- `GET /api/v1/health/live/`
+- `GET /api/v1/health/ready/` — اتصال DB و PostGIS

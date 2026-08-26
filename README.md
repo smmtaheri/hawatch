@@ -4,46 +4,71 @@
 
 ## وضعیت این repository
 
-این repository فعلاً فقط یک design handoff و محل نگهداری مستندات محصول است. تصاویر اصلی بدون تغییر کیفیت در `design/source-screens/` نگهداری شده‌اند و نسخه‌های مرتب‌شدهٔ قابل ارجاع در `design/screens/` قرار دارند.
+این repository شامل design handoff، مستندات محصول، و اولین نسخهٔ محلی اجرایی است:
 
-هیچ application code، frontend، backend، dependency یا زیرساخت اجرایی در این milestone وجود ندارد. Login فعلاً فقط به‌عنوان reference و بخشی از design system مستند شده و در milestone اول پیاده‌سازی نمی‌شود.
+- frontend: `apps/web` — React + TypeScript + Vite
+- backend: `apps/api` — Django + Django REST Framework + PostGIS
+- local stack: `infra/compose/compose.yaml` — web، api، postgres
 
-## صفحات اصلی
+Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
 
-- **Home**: جست‌وجوی مقصد و انتخاب از مقصدهای محبوب.
-- **Destination**: پیش‌بینی مقصد، هشدارها، مسیرهای موجود و جزئیات تخصصی.
-- **Route**: برنامه‌ریزی حرکت روی یک مسیر، آب‌وهوای نقاط مهم و کارت تصمیم.
-- **Login**: reference طراحی؛ خارج از milestone اول.
+## صفحات این نسخه
 
-## stack آینده
+- **Home** `/`
+- **Destination** `/destination/touchal` (و سایر slugهای catalog)
+- **Route** `/routes/touchal-darband` (و سایر مسیرهای مستند)
 
-- frontend: React + TypeScript
-- bundler پیشنهادی frontend: Vite
-- backend: Django + Django REST Framework
-- Python: 3.14
-- مدیریت محیط و dependency backend: uv
-- database اصلی: PostgreSQL
-- Redis: optional برای cache، distributed lock، queue یا job coordination
-- Kafka و data lake: مسیرهای رشد احتمالی، بدون تصمیم نهایی
+## اجرای محلی
+
+پیش‌نیاز: Docker و Docker Compose.
+
+```bash
+cp .env.example .env
+docker compose -f infra/compose/compose.yaml up -d --build
+```
+
+پس از ساخته‌شدن imageها:
+
+```bash
+docker compose -f infra/compose/compose.yaml up -d
+```
+
+- frontend: http://localhost:5173
+- API: http://localhost:8000/api/v1/
+- health live: http://localhost:8000/api/v1/health/live/
+- health ready: http://localhost:8000/api/v1/health/ready/
+- postgres: localhost:5432 (اگر اشغال بود: `POSTGRES_PUBLISH_PORT=5433`)
+
+توقف:
+
+```bash
+docker compose -f infra/compose/compose.yaml down
+```
+
+لاگ‌ها:
+
+```bash
+docker compose -f infra/compose/compose.yaml logs -f api web postgres
+```
+
+جزئیات بیشتر در `docs/local-development.md` و `infra/compose/README.md`.
+
+## stack
+
+- frontend: React + TypeScript + Vite + pnpm workspace
+- backend: Django 5.2 LTS + DRF + Python 3.14 + uv
+- database: PostgreSQL 16 + PostGIS 3.5
+- Redis: optional، profile `cache`؛ در این milestone لازم نیست
+- Kafka و data lake: خارج از این milestone
 
 ## ساختار repository
 
 ```text
 design/       تصاویر، tokenها، سیستم طراحی و مشخصات صفحه‌ها
-docs/         brief، flow، رفتار صفحه، API آینده، معماری، ADR و QA
-apps/         محل آیندهٔ web و api؛ فعلاً فقط placeholder
-infra/        محل آیندهٔ infrastructure؛ فعلاً فقط placeholder
-scripts/      محل آیندهٔ ابزارهای کمکی؛ فعلاً فقط placeholder
+docs/         brief، flow، رفتار صفحه، API، معماری، ADR و QA
+apps/web      frontend
+apps/api      Django API
+infra/        Compose و یادداشت Kubernetes آینده
+scripts/      ابزارهای کمکی
 AGENTS.md     قوانین ثابت همکاری روی محصول
 ```
-
-## مراحل بعدی پیشنهادی
-
-1. تأیید design handoff، tokenها و ابهام‌های ثبت‌شده.
-2. تبدیل acceptance criteria به تست‌های قابل مشاهدهٔ UI.
-3. ساخت milestone محدود frontend با مقایسهٔ screenshot به screenshot.
-4. تثبیت قرارداد forecast و سپس طراحی API داخلی.
-5. بررسی compatibility نسخه‌های Django/DRF با Python 3.14 پیش از شروع backend.
-
-فعلاً هیچ command اجرایی برای frontend یا backend در این repository وجود ندارد.
-

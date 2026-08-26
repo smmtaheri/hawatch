@@ -1,0 +1,64 @@
+.hawatch-state {
+  border-radius: 18px;
+  padding: 18px 20px;
+  margin: 16px 0;
+}
+
+.hawatch-state.loading {
+  min-height: 140px;
+  background: linear-gradient(90deg, #ffffff14, #ffffff2e, #ffffff14);
+  animation: hawatch-shimmer 1.4s ease infinite;
+}
+
+.hawatch-state.empty,
+.hawatch-state.error {
+  border: 1px solid #cbdedb;
+  background: #ffffffd9;
+  color: #102b3d;
+}
+
+html:not([data-theme="light"]) .hawatch-state.empty,
+html:not([data-theme="light"]) .hawatch-state.error {
+  border-color: #bee1dd2e;
+  background: #173844;
+  color: #edf7f4;
+}
+
+.hawatch-state.stale {
+  border: 1px solid #d09a35;
+  background: #f7edd6;
+  color: #102b3d;
+}
+
+html:not([data-theme="light"]) .hawatch-state.stale {
+  border-color: #f0bd61;
+  background: #3d3420;
+  color: #edf7f4;
+}
+
+.hawatch-state button {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 8px 14px;
+  background: #1d7f86;
+  color: #fff;
+}
+
+.past-hour,
+.hour-item.is-past {
+  opacity: 0.55;
+}
+
+.hour-item.is-current,
+.day-tabs button.selected {
+  opacity: 1;
+}
+
+@keyframes hawatch-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

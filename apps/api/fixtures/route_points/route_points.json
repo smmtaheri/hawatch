@@ -1,0 +1,71 @@
+[
+  {"route_slug": "touchal-darband", "slug": "darband", "name": "دربند", "elevation_m": 1800, "base_minutes": 0, "sort_order": 1, "note": "شروع آرام و دید خوب", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "touchal-darband", "slug": "shirpala", "name": "شیرپلا", "elevation_m": 2750, "base_minutes": 80, "sort_order": 2, "note": "نیمه‌ابری؛ مسیر خشک", "axis_x": 27, "axis_y": 68},
+  {"route_slug": "touchal-darband", "slug": "amiri-shelter", "name": "جان‌پناه امیری", "elevation_m": 3450, "base_minutes": 190, "sort_order": 3, "note": "باد روی یال در حال افزایش", "axis_x": 44, "axis_y": 53},
+  {"route_slug": "touchal-darband", "slug": "loop-pass", "name": "گردنهٔ لوپ", "elevation_m": 3650, "base_minutes": 285, "sort_order": 4, "note": "نقطهٔ حساس؛ زمان ذخیره داشته باش", "axis_x": 61, "axis_y": 39},
+  {"route_slug": "touchal-darband", "slug": "tochal-shelter", "name": "پناهگاه توچال", "elevation_m": 3800, "base_minutes": 370, "sort_order": 5, "note": "احتمال برف سبک از اینجا", "axis_x": 76, "axis_y": 25},
+  {"route_slug": "touchal-darband", "slug": "tochal-summit", "name": "قلهٔ توچال", "elevation_m": 3964, "base_minutes": 420, "sort_order": 6, "note": "قله سرد و بادخیز؛ بازگشت را دیر نکن", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "touchal-welanjak", "slug": "welenjak", "name": "ولنجک", "elevation_m": 1850, "base_minutes": 0, "sort_order": 1, "note": "شروع در هوای خنک", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "touchal-welanjak", "slug": "station-5", "name": "ایستگاه ۵", "elevation_m": 2950, "base_minutes": 90, "sort_order": 2, "note": "دید خوب روی یال جنوبی", "axis_x": 31, "axis_y": 66},
+  {"route_slug": "touchal-welanjak", "slug": "station-7", "name": "ایستگاه ۷", "elevation_m": 3450, "base_minutes": 180, "sort_order": 3, "note": "باد در حال بیشترشدن", "axis_x": 52, "axis_y": 50},
+  {"route_slug": "touchal-welanjak", "slug": "station-7-5", "name": "ایستگاه ۷٫۵", "elevation_m": 3750, "base_minutes": 285, "sort_order": 4, "note": "نقطهٔ حساس برای توقف", "axis_x": 72, "axis_y": 33},
+  {"route_slug": "touchal-welanjak", "slug": "tochal-summit", "name": "قلهٔ توچال", "elevation_m": 3964, "base_minutes": 390, "sort_order": 5, "note": "قله سرد و بادخیز", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "touchal-kalkchal", "slug": "kolakchal", "name": "کلکچال", "elevation_m": 2600, "base_minutes": 0, "sort_order": 1, "note": "شروع آرام از پناهگاه", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "touchal-kalkchal", "slug": "piyazchal-pass", "name": "گردنهٔ پیازچال", "elevation_m": 3150, "base_minutes": 95, "sort_order": 2, "note": "ابر کم و دید باز", "axis_x": 29, "axis_y": 67},
+  {"route_slug": "touchal-kalkchal", "slug": "piyazchal-summit", "name": "قلهٔ پیازچال", "elevation_m": 3450, "base_minutes": 190, "sort_order": 3, "note": "باد روی خط‌الرأس", "axis_x": 48, "axis_y": 51},
+  {"route_slug": "touchal-kalkchal", "slug": "sang-siah", "name": "سنگ‌سیاه", "elevation_m": 3750, "base_minutes": 320, "sort_order": 4, "note": "عبور حساس و زمان‌بر", "axis_x": 69, "axis_y": 34},
+  {"route_slug": "touchal-kalkchal", "slug": "tochal-summit", "name": "قلهٔ توچال", "elevation_m": 3964, "base_minutes": 450, "sort_order": 5, "note": "برف سبک و باد شدید", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "touchal-shahrestanak", "slug": "shahrestanak", "name": "شهرستانک", "elevation_m": 2100, "base_minutes": 0, "sort_order": 1, "note": "دره آرام و خنک", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "touchal-shahrestanak", "slug": "daughter-castle", "name": "قلعهٔ دختر", "elevation_m": 2650, "base_minutes": 105, "sort_order": 2, "note": "سایه و رطوبت بیشتر", "axis_x": 30, "axis_y": 67},
+  {"route_slug": "touchal-shahrestanak", "slug": "shahrestanak-pass", "name": "گردنهٔ شهرستانک", "elevation_m": 3200, "base_minutes": 210, "sort_order": 3, "note": "باد روی گردنه شروع می‌شود", "axis_x": 51, "axis_y": 50},
+  {"route_slug": "touchal-shahrestanak", "slug": "north-ridge", "name": "یال شمالی", "elevation_m": 3600, "base_minutes": 335, "sort_order": 4, "note": "دید متغیر و توقف کوتاه", "axis_x": 72, "axis_y": 33},
+  {"route_slug": "touchal-shahrestanak", "slug": "tochal-summit", "name": "قلهٔ توچال", "elevation_m": 3964, "base_minutes": 465, "sort_order": 5, "note": "قله سرد و بادخیز", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "touchal-ahar", "slug": "ahar", "name": "آهار", "elevation_m": 2150, "base_minutes": 0, "sort_order": 1, "note": "شروع در درهٔ خنک", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "touchal-ahar", "slug": "dehbahar", "name": "ده‌بهار", "elevation_m": 2500, "base_minutes": 90, "sort_order": 2, "note": "مسیر سایه‌دار و مرطوب", "axis_x": 30, "axis_y": 67},
+  {"route_slug": "touchal-ahar", "slug": "ahar-pass", "name": "گردنهٔ آهار", "elevation_m": 3150, "base_minutes": 185, "sort_order": 3, "note": "ابر روی گردنه می‌نشیند", "axis_x": 50, "axis_y": 51},
+  {"route_slug": "touchal-ahar", "slug": "tochal-ridge", "name": "یال توچال", "elevation_m": 3650, "base_minutes": 315, "sort_order": 4, "note": "باد و سرمای محسوس", "axis_x": 71, "axis_y": 34},
+  {"route_slug": "touchal-ahar", "slug": "tochal-summit", "name": "قلهٔ توچال", "elevation_m": 3964, "base_minutes": 450, "sort_order": 5, "note": "بازگشت را دیر نکن", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "daryasar-dohazar", "slug": "dohezar-parking", "name": "پارکینگ دوهزار", "elevation_m": 1050, "base_minutes": 0, "sort_order": 1, "note": "شروع مسیر؛ هوای خنک و دید خوب", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "daryasar-dohazar", "slug": "forest-trail", "name": "مسیر جنگلی", "elevation_m": 1450, "base_minutes": 95, "sort_order": 2, "note": "سایه و رطوبت جنگل؛ حرکت یکنواخت", "axis_x": 31, "axis_y": 67},
+  {"route_slug": "daryasar-dohazar", "slug": "trail-spring", "name": "چشمهٔ مسیر", "elevation_m": 1750, "base_minutes": 200, "sort_order": 3, "note": "ابرها روی یال در حال بیشترشدن", "axis_x": 51, "axis_y": 51},
+  {"route_slug": "daryasar-dohazar", "slug": "plain-entrance", "name": "ورودی دشت", "elevation_m": 2200, "base_minutes": 270, "sort_order": 4, "note": "نقطهٔ تصمیم؛ زمان برگشت را چک کن", "axis_x": 72, "axis_y": 34},
+  {"route_slug": "daryasar-dohazar", "slug": "daryasar-pass", "name": "گردنهٔ دریاسر", "elevation_m": 2450, "base_minutes": 320, "sort_order": 5, "note": "احتمال رگبار؛ توقف طولانی مناسب نیست", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "daryasar-dasht", "slug": "plain-edge", "name": "لبهٔ دشت", "elevation_m": 2100, "base_minutes": 0, "sort_order": 1, "note": "هوای آرام برای شروع", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "daryasar-dasht", "slug": "upper-spring", "name": "چشمهٔ بالادست", "elevation_m": 2250, "base_minutes": 65, "sort_order": 2, "note": "ابرهای پراکنده", "axis_x": 36, "axis_y": 63},
+  {"route_slug": "daryasar-dasht", "slug": "east-ridge", "name": "یال شرقی", "elevation_m": 2350, "base_minutes": 135, "sort_order": 3, "note": "تغییر باد روی یال", "axis_x": 63, "axis_y": 42},
+  {"route_slug": "daryasar-dasht", "slug": "daryasar-pass", "name": "گردنهٔ دریاسر", "elevation_m": 2450, "base_minutes": 210, "sort_order": 4, "note": "رگبار عصرگاهی محتمل", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "damavand-bargahe-sevom", "slug": "gosfandsara", "name": "گوسفندسرا", "elevation_m": 3000, "base_minutes": 0, "sort_order": 1, "note": "شروع سرد و صاف", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "damavand-bargahe-sevom", "slug": "icefall", "name": "آبشار یخی", "elevation_m": 3400, "base_minutes": 75, "sort_order": 2, "note": "سطح یخ‌زده؛ قدم‌ها کوتاه‌تر", "axis_x": 34, "axis_y": 64},
+  {"route_slug": "damavand-bargahe-sevom", "slug": "bargah-two-shelter", "name": "پناهگاه بارگاه دوم", "elevation_m": 3800, "base_minutes": 155, "sort_order": 3, "note": "باد در دهانهٔ دره بیشتر است", "axis_x": 61, "axis_y": 41},
+  {"route_slug": "damavand-bargahe-sevom", "slug": "bargah-three", "name": "بارگاه سوم", "elevation_m": 4200, "base_minutes": 240, "sort_order": 4, "note": "سرمای شدید؛ زمان برگشت مهم است", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "damavand-sabalan", "slug": "polur", "name": "پلور", "elevation_m": 2200, "base_minutes": 0, "sort_order": 1, "note": "هوای صاف و شروع آرام", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "damavand-sabalan", "slug": "rineh", "name": "رینه", "elevation_m": 2400, "base_minutes": 90, "sort_order": 2, "note": "ابر کم روی دامنه", "axis_x": 31, "axis_y": 66},
+  {"route_slug": "damavand-sabalan", "slug": "southern-parking", "name": "پارکینگ جنوبی", "elevation_m": 2900, "base_minutes": 185, "sort_order": 3, "note": "باد دامنه‌ای بیشتر می‌شود", "axis_x": 53, "axis_y": 50},
+  {"route_slug": "damavand-sabalan", "slug": "south-ridge", "name": "یال سنگی", "elevation_m": 3500, "base_minutes": 300, "sort_order": 4, "note": "نقطهٔ حساس برای توقف", "axis_x": 73, "axis_y": 33},
+  {"route_slug": "damavand-sabalan", "slug": "southern-shelter", "name": "پناهگاه جنوبی", "elevation_m": 3900, "base_minutes": 390, "sort_order": 5, "note": "پیش از تاریکی برگرد", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "jangal-abr-entrance", "slug": "abr-village", "name": "روستای ابر", "elevation_m": 2200, "base_minutes": 0, "sort_order": 1, "note": "شروع خنک و دید باز", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "jangal-abr-entrance", "slug": "qatri-spring", "name": "چشمهٔ قطری", "elevation_m": 2350, "base_minutes": 65, "sort_order": 2, "note": "رطوبت درختان بیشتر می‌شود", "axis_x": 32, "axis_y": 65},
+  {"route_slug": "jangal-abr-entrance", "slug": "mist-edge", "name": "لبهٔ مه", "elevation_m": 2450, "base_minutes": 140, "sort_order": 3, "note": "دید در حال کاهش", "axis_x": 55, "axis_y": 48},
+  {"route_slug": "jangal-abr-entrance", "slug": "forest-ridge", "name": "یال جنگلی", "elevation_m": 2550, "base_minutes": 210, "sort_order": 4, "note": "مسیر لغزنده؛ سرعت را کم کن", "axis_x": 75, "axis_y": 31},
+  {"route_slug": "jangal-abr-entrance", "slug": "abr-forest-heart", "name": "قلب جنگل ابر", "elevation_m": 2600, "base_minutes": 270, "sort_order": 5, "note": "مه پایدار و دید محدود", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "marnjab-reg", "slug": "caravanserai", "name": "کاروانسرا", "elevation_m": 820, "base_minutes": 0, "sort_order": 1, "note": "شروع خنک پیش از تابش مستقیم", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "marnjab-reg", "slug": "sand-dune", "name": "تپهٔ شنی", "elevation_m": 860, "base_minutes": 70, "sort_order": 2, "note": "سطح نرم؛ سرعت حرکت پایین‌تر", "axis_x": 37, "axis_y": 62},
+  {"route_slug": "marnjab-reg", "slug": "trail-well", "name": "چاه مسیر", "elevation_m": 890, "base_minutes": 135, "sort_order": 3, "note": "باد شن‌زا روی خط یال", "axis_x": 64, "axis_y": 41},
+  {"route_slug": "marnjab-reg", "slug": "high-sand", "name": "ریگ بلند", "elevation_m": 1000, "base_minutes": 205, "sort_order": 4, "note": "زمان توقف کوتاه و آب کافی", "axis_x": 91, "axis_y": 13},
+
+  {"route_slug": "gahar-lake", "slug": "darb-gonbad", "name": "درب گنبد", "elevation_m": 1900, "base_minutes": 0, "sort_order": 1, "note": "شروع مسیر در هوای خنک", "axis_x": 10, "axis_y": 83},
+  {"route_slug": "gahar-lake", "slug": "khorram-spring", "name": "چشمهٔ خرم", "elevation_m": 2150, "base_minutes": 95, "sort_order": 2, "note": "سایهٔ دره و آب روان", "axis_x": 31, "axis_y": 67},
+  {"route_slug": "gahar-lake", "slug": "pambekar-pass", "name": "گردنهٔ پنبه‌کار", "elevation_m": 2450, "base_minutes": 190, "sort_order": 3, "note": "باد روی گردنه بیشتر می‌شود", "axis_x": 52, "axis_y": 50},
+  {"route_slug": "gahar-lake", "slug": "gahar-river", "name": "درهٔ گهررود", "elevation_m": 2300, "base_minutes": 285, "sort_order": 4, "note": "ابر روی دره می‌ماند", "axis_x": 72, "axis_y": 33},
+  {"route_slug": "gahar-lake", "slug": "gahar-lake", "name": "دریاچه گهر", "elevation_m": 2350, "base_minutes": 360, "sort_order": 5, "note": "لب آب آرام؛ زمان برگشت را حفظ کن", "axis_x": 91, "axis_y": 13}
+]

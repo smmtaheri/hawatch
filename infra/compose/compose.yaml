@@ -1,0 +1,103 @@
+name: hawatch
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.5
+    container_name: hawatch-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hawatch}
+      POSTGRES_USER: ${POSTGRES_USER:-hawatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hawatch}
+    ports:
+      - "${POSTGRES_PUBLISH_PORT:-5432}:5432"
+    volumes:
+      - hawatch_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hawatch} -d ${POSTGRES_DB:-hawatch}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    container_name: hawatch-api
+    env_file:
+      - ../../.env.example
+    environment:
+      DJANGO_SETTINGS_MODULE: hawatch.config.settings.local
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-change-me-in-local-env}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-true}
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,api
+      DJANGO_CORS_ALLOWED_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      POSTGRES_DB: ${POSTGRES_DB:-hawatch}
+      POSTGRES_USER: ${POSTGRES_USER:-hawatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hawatch}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      HAWATCH_TIMEZONE: Asia/Tehran
+      DEMO_DATA_ENABLED: ${DEMO_DATA_ENABLED:-true}
+      DEMO_SEED_VERSION: ${DEMO_SEED_VERSION:-hawatch-demo-v1}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../apps/api:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/live/', timeout=3)",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+      start_period: 40s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile
+    container_name: hawatch-web
+    environment:
+      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../../apps/web:/repo/apps/web
+      - /repo/apps/web/node_modules
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:5173/').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+      start_period: 20s
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4.2
+    container_name: hawatch-redis
+    profiles: ["cache"]
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    restart: unless-stopped
+
+volumes:
+  hawatch_pgdata:

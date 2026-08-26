@@ -1,49 +1,46 @@
-# قرارداد آیندهٔ forecast
+# قرارداد forecast هواچ
 
-این قرارداد برای طراحی backend و UI ثبت شده است و implementation نیست.
+timezone پیش‌فرض: `Asia/Tehran`.
 
-## envelope پیشنهادی
+بازهٔ قابل مشاهدهٔ این نسخه، مطابق screenshot و live inspection:
+
+- ۷ روز: دیروز، امروز، و پنج روز بعد
+- hourly: هر دو ساعت، ۶ کارت در هر بازه
+- صبح: ۰۰، ۰۲، ۰۴، ۰۶، ۰۸، ۱۰
+- بعدازظهر: ۱۲، ۱۴، ۱۶، ۱۸، ۲۰، ۲۲
+
+اگر منبع دیگری بازهٔ متفاوت نشان دهد، همان ۷ روز و گام دوساعته مبنای UI است.
+
+## envelope
 
 ```text
 forecast
-├── destination
-├── current
-├── daily[]
+├── destination | route
+├── days[]
+├── current?
 ├── hourly[]
-├── alerts[]
-├── freshness
-└── metadata
+├── alerts?/hero
+├── decision
+├── freshness / meta
 ```
 
-## destination
+هر reading شامل temperature، apparent temperature، condition/code، wind speed/gust/direction، precipitation، visibility، cloud cover، UV در صورت وجود، و flagهای:
 
-شامل `slug`، نام نمایشی، latitude، longitude، elevation، timezone و منبع تأیید مختصات است.
+- `is_yesterday`
+- `is_today`
+- `is_past`
+- `is_current`
+- `is_future`
 
-## current و hourly
+## metadata
 
-هر reading باید در صورت وجود condition، temperature، apparent temperature، wind speed/direction، gust، visibility، precipitation، cloud cover، UV و valid time داشته باشد. واحد هر مقدار در contract ثبت شود؛ تبدیل display در لایهٔ مناسب انجام گیرد.
+- `data_mode`
+- `provider` / `source`
+- `generated_at`
+- `current_local_time`
+- `timezone`
+- `seed_version`
+- `freshness` (`ready` | `stale` | `partial`)
+- `valid_from` / `valid_to`
 
-## alerts
-
-هر alert شامل `severity` (`normal`، `change`، `critical`)، title، description، valid window، affected destination/points و action guidance است. رنگ semantic از severity مشتق می‌شود، نه برعکس.
-
-## freshness و metadata موردنیاز
-
-- provider
-- coordinates
-- elevation
-- fetched_at
-- valid_from
-- valid_to
-- model
-- request_id
-- ingestion_run_id
-- schema_version
-- content_hash
-- status
-- error information
-
-## freshness rules
-
-UI باید تفاوت `ready`، `stale` و `partial-data` را از روی contract تشخیص دهد. threshold دقیق stale، tolerance clock skew و fallback provider هنوز تصمیم باز است.
-
+دادهٔ دمو به‌عنوان مشاهدهٔ واقعی معرفی نمی‌شود؛ `data_mode=demo` است.

@@ -1,0 +1,27 @@
+from pathlib import Path
+
+import pytest
+
+
+def _find_compose_file() -> Path | None:
+    here = Path(__file__).resolve()
+    for parent in here.parents:
+        candidate = parent / "infra" / "compose" / "compose.yaml"
+        if candidate.exists():
+            return candidate
+    extra = Path("/workspace/infra/compose/compose.yaml")
+    return extra if extra.exists() else None
+
+
+def test_compose_default_services_and_pinned_postgis():
+    compose = _find_compose_file()
+    if compose is None:
+        pytest.skip("compose.yaml is not available in this test environment")
+    text = compose.read_text(encoding="utf-8")
+    assert "postgres:" in text
+    assert "api:" in text
+    assert "web:" in text
+    assert "postgis/postgis:16-3.5" in text
+    assert "image: postgis/postgis:latest" not in text
+    assert 'profiles: ["cache"]' in text
+    assert "kafka" not in text.lower()

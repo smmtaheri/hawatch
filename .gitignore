@@ -13,8 +13,15 @@ build/
 coverage/
 .idea/
 .vscode/
+*.egg-info/
+.pnpm-store/
+.uv-cache/
+htmlcov/
+.coverage
 
 # Local reference exports and temporary previews
 .tmp/
 tmp/
 
+# Docker
+infra/compose/.env

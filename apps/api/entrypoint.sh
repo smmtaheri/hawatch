@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+HOST="${POSTGRES_HOST:-postgres}"
+PORT="${POSTGRES_PORT:-5432}"
+USER="${POSTGRES_USER:-hawatch}"
+
+echo "Waiting for PostgreSQL at ${HOST}:${PORT}..."
+i=0
+until pg_isready -h "$HOST" -p "$PORT" -U "$USER" >/dev/null 2>&1; do
+  i=$((i + 1))
+  if [ "$i" -gt 60 ]; then
+    echo "PostgreSQL did not become ready in time."
+    exit 1
+  fi
+  sleep 2
+done
+
+echo "Running migrations..."
+python manage.py migrate --noinput
+
+if [ "${DEMO_DATA_ENABLED:-true}" = "true" ]; then
+  echo "Ensuring demo data..."
+  python manage.py seed_demo_data
+fi
+
+echo "Starting API..."
+exec gunicorn hawatch.config.wsgi:application \
+  --bind 0.0.0.0:8000 \
+  --workers "${GUNICORN_WORKERS:-2}" \
+  --timeout 60 \
+  --graceful-timeout 30 \
+  --access-logfile - \
+  --error-logfile -

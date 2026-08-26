@@ -1,0 +1,64 @@
+{
+  "alpine": {
+    "base_temp_c": 9,
+    "ref_elevation_m": 3964,
+    "base_wind_kmh": 10,
+    "afternoon_wind_boost": 18,
+    "precip_after_hour": 14,
+    "snow_possible": true,
+    "visibility_km": 10,
+    "uv_index": 7
+  },
+  "high_alpine": {
+    "base_temp_c": 2,
+    "ref_elevation_m": 4200,
+    "base_wind_kmh": 12,
+    "afternoon_wind_boost": 20,
+    "precip_after_hour": 14,
+    "snow_possible": true,
+    "visibility_km": 15,
+    "uv_index": 8
+  },
+  "meadow": {
+    "base_temp_c": 17,
+    "ref_elevation_m": 2450,
+    "base_wind_kmh": 8,
+    "afternoon_wind_boost": 10,
+    "precip_after_hour": 15,
+    "snow_possible": false,
+    "visibility_km": 12,
+    "uv_index": 6
+  },
+  "forest_fog": {
+    "base_temp_c": 12,
+    "ref_elevation_m": 2500,
+    "base_wind_kmh": 8,
+    "afternoon_wind_boost": 6,
+    "precip_after_hour": 13,
+    "snow_possible": false,
+    "foggy": true,
+    "visibility_km": 4,
+    "uv_index": 4
+  },
+  "desert": {
+    "base_temp_c": 26,
+    "ref_elevation_m": 900,
+    "base_wind_kmh": 10,
+    "afternoon_wind_boost": 12,
+    "precip_after_hour": 99,
+    "snow_possible": false,
+    "heat": true,
+    "visibility_km": 15,
+    "uv_index": 9
+  },
+  "lake_valley": {
+    "base_temp_c": 13,
+    "ref_elevation_m": 2350,
+    "base_wind_kmh": 9,
+    "afternoon_wind_boost": 8,
+    "precip_after_hour": 15,
+    "snow_possible": false,
+    "visibility_km": 14,
+    "uv_index": 6
+  }
+}

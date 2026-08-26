@@ -1,0 +1,56 @@
+:root {
+  --brand-ink: #102b3d;
+  --brand-teal: #1d7f86;
+  --brand-teal-bright: #61c5c0;
+  --brand-mist: #e5efec;
+  --brand-line: #cbdedb;
+  --brand-muted: #62777a;
+  --brand-amber: #d09a35;
+  --brand-coral: #d9584c;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-card: 18px;
+  --radius-hero: 24px;
+  --radius-control: 10px;
+  --radius-pill: 999px;
+  --font-family: Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --content-max: 1500px;
+}
+
+html[data-theme="light"] {
+  --bg: #f0f6f4;
+  --surface: #ffffff;
+  --text: #102b3d;
+  --muted: #687a80;
+  --teal: #1d7f86;
+  --amber: #c18316;
+  --coral: #d9584c;
+}
+
+html,
+html[data-theme="dark"] {
+  --bg: #0b2732;
+  --surface: #173844;
+  --text: #edf7f4;
+  --muted: #a8c1c0;
+  --teal: #61c5c0;
+  --amber: #f0bd61;
+  --coral: #ed897b;
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  direction: rtl;
+}

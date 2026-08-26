@@ -1,0 +1,15 @@
+{
+  "name": "hawatch-product",
+  "private": true,
+  "description": "هواچ — Persian RTL weather product for hikers and nature travelers",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @hawatch/web dev",
+    "build": "pnpm --filter @hawatch/web build",
+    "test": "pnpm --filter @hawatch/web test",
+    "test:web": "pnpm --filter @hawatch/web test"
+  }
+}
