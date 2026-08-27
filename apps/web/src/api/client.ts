@@ -1,4 +1,4 @@
-import type { DestinationForecast, DestinationSummary, RouteForecast } from "../types";
+import type { ApiMeta, DestinationForecast, DestinationSummary, RouteForecast, RouteSummary } from "../types";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000/api/v1";
 
@@ -26,12 +26,11 @@ async function getJson<T>(path: string, params?: Record<string, string | undefin
 
 export const api = {
   destinations: (query?: string) =>
-    getJson<{ results: DestinationSummary[]; empty: boolean; query: string; meta: { freshness: string } }>(
-      "destinations/",
-      { query },
-    ),
+    getJson<{ results: DestinationSummary[]; empty: boolean; query: string; meta: ApiMeta }>("destinations/", {
+      query,
+    }),
   destination: (slug: string) =>
-    getJson<{ destination: DestinationSummary & { routes: unknown[] } }>(`destinations/${slug}/`),
+    getJson<{ destination: DestinationSummary & { routes: RouteSummary[] }; meta: ApiMeta }>(`destinations/${slug}/`),
   destinationForecast: (slug: string, params: { date?: string; period?: string }) =>
     getJson<DestinationForecast>(`destinations/${slug}/forecast/`, params),
   routeForecast: (

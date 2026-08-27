@@ -16,6 +16,11 @@ export interface ApiMeta {
   freshness: Freshness;
   generated_at: string;
   last_generated_time: string | null;
+  forecast_validity?: { valid_from: string | null; valid_to: string | null };
+  selected_start_time?: string;
+  selected_speed?: string;
+  timing_pending?: boolean;
+  timing_status?: "curated" | "estimated" | "pending" | string;
 }
 
 export interface DestinationSummary {
@@ -40,12 +45,14 @@ export interface RouteSummary {
   trail_label: string;
   origin: string;
   destination_label: string;
-  distance_km: number;
+  distance_km: number | null;
   distance_label: string;
-  ascent_m: number;
+  ascent_m: number | null;
   ascent_label: string;
   featured: boolean;
   href: string;
+  timing_pending?: boolean;
+  timing_status?: "curated" | "estimated" | "pending" | string;
 }
 
 export interface DayInfo {
@@ -71,6 +78,10 @@ export interface HourlyReading {
   wind_label: string;
   severity: Severity;
   state: Severity;
+  snowfall_cm?: number | null;
+  cloud_cover_pct?: number | null;
+  uv_index?: number | null;
+  fields_unavailable?: string[];
   is_yesterday: boolean;
   is_today: boolean;
   is_past: boolean;
@@ -114,7 +125,9 @@ export interface RoutePointView {
   condition: string;
   state: Severity;
   note: string;
-  arrival_minutes: number;
+  arrival_minutes: number | null;
+  timing_pending?: boolean;
+  timing_estimated?: boolean;
 }
 
 export interface RouteForecast {
@@ -142,6 +155,8 @@ export interface RouteForecast {
   hourly: HourlyReading[];
   hero: { status: string };
   stats: { label: string; value: string }[];
+  timing_pending?: boolean;
+  timing_status?: "curated" | "estimated" | "pending" | string;
   decision: {
     chip: string;
     title: string;
@@ -156,6 +171,7 @@ export interface RouteForecast {
     start: string;
     finish: string;
     speed: string;
+    timing_pending?: boolean;
   };
   empty: boolean;
   meta: ApiMeta;

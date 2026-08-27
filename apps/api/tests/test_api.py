@@ -146,15 +146,40 @@ def test_route_forecast_start_and_speed(api_client, seeded):
         "/api/v1/routes/touchal-darband/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
     ).json()
-    assert medium["points"][0]["time"] == medium["start_time"]
-    assert fast["decision"]["finish"] != medium["decision"]["finish"] or fast["points"][-1]["arrival_minutes"] <= medium["points"][-1]["arrival_minutes"]
+    assert medium["timing_pending"] is True
+    assert medium["points"][0]["arrival_minutes"] is None
+    assert medium["points"][0]["time"] == "—"
+    assert fast["points"][0]["arrival_minutes"] is None
+    assert fast["points"][0]["time"] == "—"
     assert len(medium["points"]) == 6
+    assert [item["slug"] for item in medium["points"]] == [
+        "sarband",
+        "pas_ghaleh",
+        "shirpala",
+        "amiri",
+        "goleband",
+        "tochal_summit",
+    ]
     assert {item["slug"] for item in medium["route"]["siblings"]} == {
         "touchal-welanjak",
         "touchal-kalkchal",
         "touchal-shahrestanak",
         "touchal-ahar",
     }
+
+    # Non-Tochal estimated routes still honor start/speed timing.
+    estimated = api_client.get(
+        "/api/v1/routes/daryasar-dohazar/forecast/",
+        {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "متوسط"},
+    ).json()
+    estimated_fast = api_client.get(
+        "/api/v1/routes/daryasar-dohazar/forecast/",
+        {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
+    ).json()
+    assert estimated["timing_pending"] is False
+    assert estimated["points"][0]["time"] == estimated["start_time"]
+    assert estimated_fast["points"][-1]["arrival_minutes"] < estimated["points"][-1]["arrival_minutes"]
+    assert estimated_fast["decision"]["finish"] != estimated["decision"]["finish"]
 
 
 @pytest.mark.django_db

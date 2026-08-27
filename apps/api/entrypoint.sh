@@ -22,6 +22,10 @@ python manage.py migrate --noinput
 if [ "${DEMO_DATA_ENABLED:-true}" = "true" ]; then
   echo "Ensuring demo data..."
   python manage.py seed_demo_data
+else
+  # Catalog-only bootstrap for live mode — never calls Open-Meteo.
+  echo "Ensuring Tochal catalog (DEMO_DATA_ENABLED=false)..."
+  python manage.py seed_tochal_catalog
 fi
 
 echo "Starting API..."

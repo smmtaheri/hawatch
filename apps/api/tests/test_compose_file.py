@@ -25,3 +25,8 @@ def test_compose_default_services_and_pinned_postgis():
     assert "image: postgis/postgis:latest" not in text
     assert 'profiles: ["cache"]' in text
     assert "kafka" not in text.lower()
+    assert "../../.env.example" not in text
+    assert "env_file:" in text
+    assert "../../.env" in text
+    assert "OPEN_METEO_BASE_URL" in text
+    assert "FORECAST_STALE_AFTER_HOURS" in text

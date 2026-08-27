@@ -53,6 +53,25 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 
 جزئیات بیشتر در `docs/local-development.md` و `infra/compose/README.md`.
 
+## افزودن مقصد و اعتبارسنجی weather
+
+برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید:
+
+```bash
+python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_destination_v1.json
+```
+
+سپس فقط همان فایل را seed و ingest کنید:
+
+```bash
+docker compose -f infra/compose/compose.yaml exec api \
+  python manage.py seed_catalog --file catalog/my_destination_v1.json
+docker compose -f infra/compose/compose.yaml exec api \
+  python manage.py ingest_open_meteo --catalog catalog/my_destination_v1.json --seed-catalog
+```
+
+جزئیات قرارداد، تفاوت elevation catalog و DEM، و smoke test در `docs/catalog-and-weather-validation.md` است.
+
 ## stack
 
 - frontend: React + TypeScript + Vite + pnpm workspace

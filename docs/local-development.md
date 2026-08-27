@@ -15,12 +15,15 @@ cp .env.example .env
 docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 ```
 
+`.env.example` فقط مستندات است؛ Compose از `.env` واقعی برای runtime استفاده می‌کند.
+
 API هنگام start:
 
 1. منتظر health PostgreSQL می‌ماند
 2. migration اجرا می‌کند
-3. در صورت `DEMO_DATA_ENABLED=true`، `seed_demo_data` را به‌صورت idempotent اجرا می‌کند
-4. gunicorn را روی `:8000` بالا می‌آورد
+3. اگر `DEMO_DATA_ENABLED=true` باشد، `seed_demo_data` را idempotent اجرا می‌کند
+4. اگر `DEMO_DATA_ENABLED=false` باشد، فقط `seed_tochal_catalog` را اجرا می‌کند (بدون فراخوانی Open-Meteo)
+5. gunicorn را روی `:8000` بالا می‌آورد
 
 ## آدرس‌ها و پورت‌ها
 
@@ -48,13 +51,26 @@ docker compose -f infra/compose/compose.yaml down -v
 
 دادهٔ هوا از generator قطعی با timezone `Asia/Tehran` ساخته می‌شود. seed version پیش‌فرض `hawatch-demo-v1` است. همان صفحه در همان تاریخ/ساعت محلی مقدار یکسان می‌دهد و با تغییر date/hour عوض می‌شود.
 
-غیرفعال‌کردن دمو برای ingestion واقعی آینده:
+غیرفعال‌کردن دمو برای مسیر live:
 
 ```bash
 DEMO_DATA_ENABLED=false
 ```
 
-در این حالت catalog را دستی مدیریت کنید؛ این milestone ingestion واقعی ندارد.
+Bootstrap کاتالوگ توچال بدون ingestion:
+
+```bash
+cd apps/api
+uv run python manage.py seed_tochal_catalog
+```
+
+Ingestion جدا و فقط از طریق management command (هرگز از handlerهای API):
+
+```bash
+uv run python manage.py ingest_open_meteo
+```
+
+Retention: snapshotهای خام قدیمی‌تر از ۷ روز پاک می‌شوند؛ آخرین snapshot قابل‌استفاده قبل از جایگزین موفق حذف نمی‌شود. Ingest هم‌زمان با advisory lock مسدود می‌شود.
 
 ## توسعهٔ frontend بدون Docker web
 
@@ -73,8 +89,9 @@ pnpm dev
 cd apps/api
 uv sync --group dev
 export DJANGO_SETTINGS_MODULE=hawatch.config.settings.local
+# از .env محلی برای OPEN_METEO_* و DEMO_DATA_ENABLED استفاده کنید
 uv run python manage.py migrate
-uv run python manage.py seed_demo_data
+uv run python manage.py seed_demo_data   # یا seed_tochal_catalog وقتی DEMO_DATA_ENABLED=false
 uv run python manage.py runserver 0.0.0.0:8000
 ```
 
@@ -91,7 +108,7 @@ pytest روی میزبان بدون GDAL/PostGIS معمولاً fail می‌شو
 ## خارج از scope این milestone
 
 - Login / OTP
-- Open-Meteo یا هر provider واقعی
+- فراخوانی live Open-Meteo از handlerهای API یا از CI بدون mock
 - Redis اجباری، Celery، Kafka، data lake
 - Kubernetes manifests
 - صفحهٔ destination-point و share server-side

@@ -7,10 +7,12 @@ from pathlib import Path
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.db import transaction
+from django.db.models import F
 from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
+from hawatch.modules.catalog.tochal import TOCHAL_ROUTE_SLUGS, seed_tochal_catalog
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -54,6 +56,9 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
             },
         )
         destinations[obj.slug] = obj
+        if obj.slug == "touchal":
+            # Tochal destination weather point comes from the curated catalog seed.
+            continue
         WeatherPoint.objects.update_or_create(
             slug=f"dest:{obj.slug}",
             defaults={
@@ -62,8 +67,10 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "location": obj.location,
                 "elevation_m": obj.elevation_m,
                 "destination": obj,
-                "route_point": None,
                 "climate": obj.climate,
+                "status": WeatherPoint.Status.APPROVED,
+                "provenance": WeatherPoint.Provenance.DEMO_FIXTURE,
+                "catalog_version": "",
                 "data_mode": DATA_MODE,
                 "seed_version": seed_version,
             },
@@ -71,6 +78,8 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
 
     routes_by_slug = {}
     for item in _load("routes/routes.json"):
+        if item["slug"] in TOCHAL_ROUTE_SLUGS:
+            continue
         destination = destinations[item["destination_slug"]]
         origin = Point(item["origin_longitude"], item["origin_latitude"], srid=4326)
         obj, _ = Route.objects.update_or_create(
@@ -87,19 +96,27 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "ascent_m": item["ascent_m"],
                 "round_trip_minutes": item["round_trip_minutes"],
                 "default_start_minutes": item["default_start_minutes"],
+                "timing_status": Route.TimingStatus.ESTIMATED,
                 "featured": item["featured"],
                 "sort_order": item["sort_order"],
                 "origin_location": origin,
+                "catalog_key": "",
                 "data_mode": DATA_MODE,
                 "seed_version": seed_version,
             },
         )
         routes_by_slug[obj.slug] = obj
 
-    point_rows = _load("route_points/route_points.json")
+    point_rows = [item for item in _load("route_points/route_points.json") if item["route_slug"] not in TOCHAL_ROUTE_SLUGS]
     counts: dict[str, int] = {}
     for item in point_rows:
         counts[item["route_slug"]] = counts.get(item["route_slug"], 0) + 1
+
+    # Avoid unique(route, sort_order) collisions when an existing catalog
+    # changes point order. Every current order stays unique while the final
+    # orders are written below.
+    for route in routes_by_slug.values():
+        RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
 
     for item in point_rows:
         route = routes_by_slug[item["route_slug"]]
@@ -116,6 +133,11 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "elevation_m": item["elevation_m"],
                 "location": location,
                 "base_minutes": item["base_minutes"],
+                "segment_minutes": None,
+                "cumulative_minutes": item["base_minutes"],
+                "segment_distance_m": None,
+                "progress_pct": None,
+                "timing_status": RoutePoint.TimingStatus.ESTIMATED,
                 "sort_order": item["sort_order"],
                 "note": item["note"],
                 "axis_x": item["axis_x"],
@@ -124,7 +146,7 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "seed_version": seed_version,
             },
         )
-        WeatherPoint.objects.update_or_create(
+        weather_point, _ = WeatherPoint.objects.update_or_create(
             slug=f"route:{route.slug}:{point.slug}",
             defaults={
                 "name": point.name,
@@ -132,12 +154,20 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "location": point.location,
                 "elevation_m": point.elevation_m,
                 "destination": route.destination,
-                "route_point": point,
                 "climate": route.destination.climate,
+                "status": WeatherPoint.Status.APPROVED,
+                "provenance": WeatherPoint.Provenance.DEMO_FIXTURE,
+                "catalog_version": "",
                 "data_mode": DATA_MODE,
                 "seed_version": seed_version,
             },
         )
+        if point.weather_point_id != weather_point.id:
+            point.weather_point = weather_point
+            point.save(update_fields=["weather_point"])
+
+    # Curated Tochal catalog replaces fixture Tochal routes/points and shares weather points.
+    seed_tochal_catalog()
     return destinations
 
 
@@ -161,13 +191,16 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
     generated_at = dj_timezone.now()
     dates = day_window(today)
     records = []
-    for weather_point in WeatherPoint.objects.select_related("destination", "route_point").all():
+    for weather_point in WeatherPoint.objects.select_related("destination").all():
+        elevation = weather_point.elevation_m
+        if elevation is None:
+            elevation = weather_point.destination.elevation_m if weather_point.destination_id else 2000
         for day in dates:
             for hour in ALL_HOURS:
                 reading = generate_reading(
                     point_slug=weather_point.slug,
                     climate_key=weather_point.climate,
-                    elevation_m=weather_point.elevation_m,
+                    elevation_m=elevation,
                     local_date=day,
                     hour=hour,
                 )
@@ -175,6 +208,7 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
                 records.append(
                     ForecastRecord(
                         weather_point=weather_point,
+                        snapshot=None,
                         forecast_at=forecast_at,
                         valid_from=forecast_at,
                         valid_to=forecast_at + timedelta(hours=2),
@@ -190,6 +224,7 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
                         wind_direction_deg=reading["wind_direction_deg"],
                         precipitation_probability=reading["precipitation_probability"],
                         precipitation_mm=reading["precipitation_mm"],
+                        snowfall_cm=None,
                         visibility_km=reading["visibility_km"],
                         cloud_cover_pct=reading["cloud_cover_pct"],
                         uv_index=reading["uv_index"],
