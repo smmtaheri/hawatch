@@ -25,3 +25,9 @@ tmp/
 
 # Docker
 infra/compose/.env
+
+# Local crawler data and runtime sidecars
+data/hawatch-core.sqlite3
+data/hawatch-core.sqlite3-wal
+data/hawatch-core.sqlite3-shm
+data/osm/*.pbf
