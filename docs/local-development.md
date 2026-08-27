@@ -9,9 +9,7 @@
 
 ```bash
 cp .env.example .env
-# اگر 5432/6379 اشغال‌اند:
-# POSTGRES_PUBLISH_PORT=5433
-# REDIS_PUBLISH_PORT=6380
+# secretهای observability را طبق `docs/observability.md` در `.env` تنظیم کن.
 docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 ```
 
@@ -31,8 +29,10 @@ API هنگام start:
 | --- | --- |
 | web | http://localhost:5173 |
 | api | http://localhost:8000/api/v1/ |
-| postgres | localhost:`POSTGRES_PUBLISH_PORT` (پیش‌فرض 5432) |
-| redis (optional) | localhost:`REDIS_PUBLISH_PORT` (پیش‌فرض 6379؛ profile `cache`) |
+| postgres | فقط داخل شبکهٔ Compose روی `postgres:5432` |
+| redis (optional) | فقط داخل شبکهٔ Compose روی `redis:6379`؛ profile `cache` |
+| Grafana | localhost:`GRAFANA_PUBLISH_PORT` (پیش‌فرض 3000) |
+| OpenSearch Dashboards | localhost:`OPENSEARCH_DASHBOARDS_PUBLISH_PORT` (پیش‌فرض 5601) |
 
 ## توقف و لاگ
 

@@ -40,3 +40,11 @@ Interfaceهای آماده‌شده / استفاده‌شده:
 ## قرارداد مختصات provider
 
 Open-Meteo مختصات دقیق point را بازنمی‌گرداند؛ `latitude` و `longitude` پاسخ، مرکز سلول grid انتخاب‌شده هستند. بنابراین برابر نبودن آن‌ها با catalog به‌تنهایی خطا نیست. با این حال، ingest پیش از ذخیره‌سازی فاصلهٔ Haversine را کنترل می‌کند و هر پاسخ خارج از آستانهٔ ۵ کیلومتر، یا فاقد مختصات معتبر، قابل استفاده نیست و به‌عنوان batch ناموفق نگه داشته می‌شود. مختصات و ارتفاع برگشتی در `ForecastPointResolution` فقط metadata provider هستند و هرگز catalog truth را overwrite نمی‌کنند.
+
+## observability و retention اجرایی
+
+API متریک‌های داخلی Prometheus را در `/api/v1/metrics/` با Bearer token ارائه می‌کند. requestها با `request_id` و `trace_id` در logهای JSON ثبت می‌شوند؛ debug level به stack ارسال نمی‌شود. Vector فقط فایل‌های JSONL داخل volume اختصاصی Hawatch را به OpenSearch می‌فرستد.
+
+maintenance با command `cleanup_retention` اجرا می‌شود. سقف retention هفت روز است و همان window برای hourly forecast، فایل‌های rotated log، indexهای `hawatch-logs-*` و TSDB Prometheus اعمال می‌شود. در schema فعلی snapshot/assessment جداگانه وجود ندارد؛ command بدون ساختن model جدید این وضعیت را گزارش می‌کند.
+
+Open-Meteo می‌تواند provider آزمایشی باشد؛ انتخاب نهایی هنوز باز است.

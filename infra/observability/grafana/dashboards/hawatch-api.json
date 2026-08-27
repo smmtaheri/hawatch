@@ -1,0 +1,94 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "panels": [
+    {
+      "title": "Health / scrape",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"min": 0, "max": 1, "thresholds": {"mode": "absolute", "steps": [{"color": "red", "value": null}, {"color": "green", "value": 1}]}}, "overrides": []},
+      "targets": [
+        {"expr": "hawatch_health_status", "legendFormat": "health {{check}}", "refId": "A"},
+        {"expr": "up{job=\"hawatch-api\"}", "legendFormat": "Prometheus scrape", "refId": "B"}
+      ]
+    },
+    {
+      "title": "API request rate",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "reqps"}, "overrides": []},
+      "targets": [{"expr": "sum(rate(hawatch_http_requests_total[5m]))", "legendFormat": "requests/s", "refId": "A"}]
+    },
+    {
+      "title": "API errors",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 8, "x": 0, "y": 8},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "reqps", "color": {"mode": "fixed", "fixedColor": "red"}}, "overrides": []},
+      "targets": [{"expr": "sum(rate(hawatch_http_errors_total[5m])) or vector(0)", "legendFormat": "4xx/5xx", "refId": "A"}]
+    },
+    {
+      "title": "API latency p95",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 8, "x": 8, "y": 8},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []},
+      "targets": [{"expr": "histogram_quantile(0.95, sum(rate(hawatch_http_request_duration_seconds_bucket[5m])) by (le))", "legendFormat": "p95", "refId": "A"}]
+    },
+    {
+      "title": "Catalog inventory",
+      "type": "stat",
+      "gridPos": {"h": 8, "w": 8, "x": 16, "y": 8},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []},
+      "targets": [
+        {"expr": "hawatch_catalog_destinations", "legendFormat": "destinations", "refId": "A"},
+        {"expr": "hawatch_catalog_routes", "legendFormat": "routes", "refId": "B"},
+        {"expr": "hawatch_catalog_weather_points", "legendFormat": "weather points", "refId": "C"}
+      ]
+    },
+    {
+      "title": "Forecast freshness",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []},
+      "targets": [{"expr": "sum by (data_mode, freshness) (hawatch_forecast_freshness_records)", "legendFormat": "{{data_mode}} / {{freshness}}", "refId": "A"}]
+    },
+    {
+      "title": "Ingestion runs",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []},
+      "targets": [
+        {"expr": "sum by (status) (increase(hawatch_ingest_runs_total[24h])) or vector(0)", "legendFormat": "runs / {{status}}", "refId": "A"},
+        {"expr": "sum(increase(hawatch_ingest_retries_total[24h])) or vector(0)", "legendFormat": "retries", "refId": "B"},
+        {"expr": "sum by (status) (increase(hawatch_ingest_points_total[24h])) or vector(0)", "legendFormat": "points / {{status}}", "refId": "C"}
+      ]
+    },
+    {
+      "title": "Ingestion duration p95",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24},
+      "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
+      "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []},
+      "targets": [{"expr": "histogram_quantile(0.95, sum(rate(hawatch_ingest_duration_seconds_bucket[24h])) by (le))", "legendFormat": "p95", "refId": "A"}]
+    }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["hawatch", "api", "ingestion"],
+  "templating": {"list": []},
+  "time": {"from": "now-24h", "to": "now"},
+  "timepicker": {},
+  "timezone": "Asia/Tehran",
+  "title": "هواچ — API و Forecast Observability",
+  "uid": "hawatch-api-observability",
+  "version": 1
+}

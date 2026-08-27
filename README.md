@@ -8,7 +8,7 @@
 
 - frontend: `apps/web` — React + TypeScript + Vite
 - backend: `apps/api` — Django + Django REST Framework + PostGIS
-- local stack: `infra/compose/compose.yaml` — web، api، postgres
+- local stack: `infra/compose/compose.yaml` — web، api، postgres و observability داخلی
 
 Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
 
@@ -37,7 +37,8 @@ docker compose -f infra/compose/compose.yaml up -d
 - API: http://localhost:8000/api/v1/
 - health live: http://localhost:8000/api/v1/health/live/
 - health ready: http://localhost:8000/api/v1/health/ready/
-- postgres: localhost:5432 (اگر اشغال بود: `POSTGRES_PUBLISH_PORT=5433`)
+- Grafana: http://localhost:3000 (port با `GRAFANA_PUBLISH_PORT` قابل تنظیم است)
+- OpenSearch Dashboards: http://localhost:5601 (port با `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` قابل تنظیم است)
 
 توقف:
 
@@ -79,6 +80,7 @@ docker compose -f infra/compose/compose.yaml exec api \
 - database: PostgreSQL 16 + PostGIS 3.5
 - Redis: optional، profile `cache`؛ در این milestone لازم نیست
 - Kafka و data lake: خارج از این milestone
+- Observability: OpenSearch + Dashboards، Vector، Prometheus و Grafana؛ جزئیات در `docs/observability.md`
 
 ## ساختار repository
 

@@ -18,6 +18,7 @@ coverage/
 .uv-cache/
 htmlcov/
 .coverage
+.test-logs/
 
 # Local reference exports and temporary previews
 .tmp/
@@ -31,3 +32,6 @@ data/hawatch-core.sqlite3
 data/hawatch-core.sqlite3-wal
 data/hawatch-core.sqlite3-shm
 data/osm/*.pbf
+
+# Local observability data/secrets
+infra/observability/secrets/

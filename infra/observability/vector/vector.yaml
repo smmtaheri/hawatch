@@ -1,0 +1,48 @@
+data_dir: /var/lib/vector
+
+sources:
+  hawatch_json_logs:
+    type: file
+    include:
+      - /var/log/hawatch/*.jsonl
+      - /var/log/hawatch/*.jsonl.*
+    read_from: beginning
+    ignore_checkpoints: false
+
+transforms:
+  parse_hawatch_json:
+    type: remap
+    inputs: [hawatch_json_logs]
+    source: |
+      source_file = .file
+      parsed, err = parse_json(.message)
+      if err == null {
+        . = parsed
+      } else {
+        .event = "log.parse_failed"
+        .parse_error = true
+        .raw_message = .message
+      }
+      .service = "hawatch"
+      .source_file = source_file
+
+sinks:
+  hawatch_opensearch:
+    type: elasticsearch
+    inputs: [parse_hawatch_json]
+    endpoints:
+      - https://opensearch:9200
+    mode: bulk
+    api_version: v7
+    bulk:
+      index: hawatch-logs-%Y.%m.%d
+      max_events: 250
+      timeout_secs: 5
+    auth:
+      strategy: basic
+      user: ${OPENSEARCH_USER}
+      password: ${OPENSEARCH_PASSWORD}
+    tls:
+      verify_certificate: false
+    healthcheck:
+      enabled: true

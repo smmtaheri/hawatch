@@ -1,15 +1,18 @@
 name: hawatch
 
+x-logging: &hawatch-container-logging
+  driver: json-file
+  options:
+    max-size: "50m"
+    max-file: "7"
+
 services:
   postgres:
     image: postgis/postgis:16-3.5
-    container_name: hawatch-postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-hawatch}
       POSTGRES_USER: ${POSTGRES_USER:-hawatch}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hawatch}
-    ports:
-      - "${POSTGRES_PUBLISH_PORT:-5432}:5432"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong POSTGRES_PASSWORD in .env}
     volumes:
       - hawatch_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -17,6 +20,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 12
+    logging: *hawatch-container-logging
     restart: unless-stopped
 
   api:
@@ -26,15 +30,17 @@ services:
     container_name: hawatch-api
     env_file:
       - ../../.env
+    secrets:
+      - hawatch_metrics_token
     environment:
-      DJANGO_SETTINGS_MODULE: hawatch.config.settings.local
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-change-me-in-local-env}
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
       DJANGO_DEBUG: ${DJANGO_DEBUG:-true}
-      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,api
-      DJANGO_CORS_ALLOWED_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,api}
+      DJANGO_CORS_ALLOWED_ORIGINS: ${DJANGO_CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
       POSTGRES_DB: ${POSTGRES_DB:-hawatch}
       POSTGRES_USER: ${POSTGRES_USER:-hawatch}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hawatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong POSTGRES_PASSWORD in .env}
       POSTGRES_HOST: postgres
       POSTGRES_PORT: "5432"
       HAWATCH_TIMEZONE: Asia/Tehran
@@ -45,10 +51,20 @@ services:
       OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-1}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-3}
+      HAWATCH_LIVE_SEED_VERSION: ${HAWATCH_LIVE_SEED_VERSION:-hawatch-tochal-catalog-v1}
+      LIVE_INGEST_INTERVAL_SECONDS: ${LIVE_INGEST_INTERVAL_SECONDS:-1800}
+      HAWATCH_SERVICE_NAME: hawatch-api
+      HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
+      HAWATCH_LOG_DIR: /var/log/hawatch
+      HAWATCH_LOG_FILE: /var/log/hawatch/api.jsonl
+      HAWATCH_RETENTION_DAYS: ${HAWATCH_RETENTION_DAYS:-7}
+      METRICS_REQUIRE_AUTH: "true"
+      HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
     ports:
-      - "8000:8000"
+      - "${API_PUBLISH_PORT:-8000}:8000"
     volumes:
       - ../../apps/api:/app
+      - hawatch_logs:/var/log/hawatch
     depends_on:
       postgres:
         condition: service_healthy
@@ -64,17 +80,65 @@ services:
       timeout: 5s
       retries: 18
       start_period: 40s
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  ingest:
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    entrypoint: []
+    secrets:
+      - hawatch_metrics_token
+    environment:
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
+      DJANGO_DEBUG: "false"
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-api,ingest,localhost}
+      DJANGO_CORS_ALLOWED_ORIGINS: ${DJANGO_CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
+      POSTGRES_DB: ${POSTGRES_DB:-hawatch}
+      POSTGRES_USER: ${POSTGRES_USER:-hawatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong POSTGRES_PASSWORD in .env}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      HAWATCH_TIMEZONE: Asia/Tehran
+      HAWATCH_SERVICE_NAME: hawatch-ingest
+      HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
+      HAWATCH_LOG_DIR: /var/log/hawatch
+      HAWATCH_LOG_FILE: /var/log/hawatch/ingest.jsonl
+      HAWATCH_RETENTION_DAYS: ${HAWATCH_RETENTION_DAYS:-7}
+      HAWATCH_LIVE_SEED_VERSION: ${HAWATCH_LIVE_SEED_VERSION:-hawatch-tochal-catalog-v1}
+      OPEN_METEO_BASE_URL: ${OPEN_METEO_BASE_URL:-https://api.open-meteo.com}
+      OPEN_METEO_BATCH_SIZE: ${OPEN_METEO_BATCH_SIZE:-100}
+      OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
+      OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-1}
+      FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-3}
+      HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
+    volumes:
+      - ../../apps/api:/app
+      - hawatch_logs:/var/log/hawatch
+    depends_on:
+      api:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        while :; do
+          python manage.py ingest_open_meteo --seed-catalog --catalog catalog/tochal_v1.json
+          sleep "$${LIVE_INGEST_INTERVAL_SECONDS:-1800}"
+        done
+    logging: *hawatch-container-logging
     restart: unless-stopped
 
   web:
     build:
       context: ../..
       dockerfile: apps/web/Dockerfile
-    container_name: hawatch-web
     environment:
       VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
     ports:
-      - "5173:5173"
+      - "${WEB_PUBLISH_PORT:-5173}:5173"
     volumes:
       - ../../apps/web:/repo/apps/web
       - /repo/apps/web/node_modules
@@ -93,21 +157,245 @@ services:
       timeout: 5s
       retries: 18
       start_period: 20s
+    logging: *hawatch-container-logging
     restart: unless-stopped
 
   redis:
     image: redis:7.4.2
-    container_name: hawatch-redis
     profiles: ["cache"]
-    ports:
-      - "${REDIS_PUBLISH_PORT:-6379}:6379"
     command: ["redis-server", "--save", "", "--appendonly", "no"]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 3s
       retries: 10
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  opensearch:
+    image: opensearchproject/opensearch:2.19.3
+    environment:
+      discovery.type: single-node
+      bootstrap.memory_lock: "true"
+      OPENSEARCH_JAVA_OPTS: -Xms512m -Xmx512m
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
+      DISABLE_INSTALL_DEMO_CONFIG: "false"
+      DISABLE_SECURITY_PLUGIN: "false"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - hawatch_opensearch:/usr/share/opensearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsSk -u admin:$${OPENSEARCH_INITIAL_ADMIN_PASSWORD} https://127.0.0.1:9200/_cluster/health >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 60s
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.19.3
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
+      OPENSEARCH_USERNAME: ${OPENSEARCH_DASHBOARDS_SERVICE_USER:-hawatch-dashboards}
+      OPENSEARCH_PASSWORD: ${OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD:?Set a strong OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD in .env}
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "false"
+      SERVER_HOST: 0.0.0.0
+      OPENSEARCH_SSL_VERIFICATIONMODE: none
+      OPENSEARCH_SECURITY_COOKIE_SECURE: "false"
+    ports:
+      - "${OPENSEARCH_DASHBOARDS_PUBLISH_PORT:-5601}:5601"
+    depends_on:
+      opensearch:
+        condition: service_healthy
+      opensearch-auth-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:5601/ >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 60s
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  opensearch-auth-init:
+    image: curlimages/curl:8.12.1
+    environment:
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
+      OPENSEARCH_DASHBOARDS_SERVICE_USER: ${OPENSEARCH_DASHBOARDS_SERVICE_USER:-hawatch-dashboards}
+      OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD: ${OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD:?Set a strong OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD in .env}
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        curl --retry 20 --retry-delay 3 --retry-connrefused -fsS \
+          -u "admin:$${OPENSEARCH_INITIAL_ADMIN_PASSWORD}" \
+          -H 'Content-Type: application/json' \
+          -X PUT "https://opensearch:9200/_plugins/_security/api/internalusers/$${OPENSEARCH_DASHBOARDS_SERVICE_USER}" \
+          -d '{"password":"'$${OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD}'","opendistro_security_roles":["all_access"]}' \
+          --insecure
+        echo '{"service":"hawatch-opensearch-auth-init","level":"INFO","event":"service_user.ready"}'
+    logging: *hawatch-container-logging
+    restart: "no"
+
+  opensearch-provisioner:
+    image: curlimages/curl:8.12.1
+    environment:
+      OSD_USER: ${OPENSEARCH_DASHBOARDS_SERVICE_USER:-hawatch-dashboards}
+      OSD_PASSWORD: ${OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD:?Set a strong OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD in .env}
+    volumes:
+      - ../observability/opensearch-dashboards/dashboards/hawatch-logs.ndjson:/dashboards/hawatch-logs.ndjson:ro
+    depends_on:
+      opensearch-dashboards:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        curl --retry 20 --retry-delay 3 --retry-connrefused -fsS -u "$${OSD_USER}:$${OSD_PASSWORD}" \
+          -H 'osd-xsrf: true' \
+          -F file=@/dashboards/hawatch-logs.ndjson \
+          'http://opensearch-dashboards:5601/api/saved_objects/_import?overwrite=true'
+        echo '{"service":"hawatch-opensearch-provisioner","level":"INFO","event":"dashboards.provisioned"}'
+    logging: *hawatch-container-logging
+    restart: "no"
+
+  vector:
+    image: timberio/vector:0.48.0-alpine
+    environment:
+      OPENSEARCH_USER: admin
+      OPENSEARCH_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
+    volumes:
+      - ../observability/vector/vector.yaml:/etc/vector/vector.yaml:ro
+      - hawatch_logs:/var/log/hawatch:ro
+      - hawatch_vector_data:/var/lib/vector
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    command: ["--config", "/etc/vector/vector.yaml"]
+    healthcheck:
+      test: ["CMD", "vector", "validate", "/etc/vector/vector.yaml", "--skip-healthchecks"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    secrets:
+      - hawatch_metrics_token
+    volumes:
+      - ../observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - hawatch_prometheus:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+      - --web.enable-lifecycle
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/-/healthy"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:12.1.1
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:?Set GRAFANA_ADMIN_USER in .env}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set a strong GRAFANA_ADMIN_PASSWORD in .env}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_AUTH_DISABLE_LOGIN_FORM: "false"
+      GF_SERVER_ROOT_URL: ${GRAFANA_ROOT_URL:-http://localhost:3000}
+    ports:
+      - "${GRAFANA_PUBLISH_PORT:-3000}:3000"
+    volumes:
+      - ../observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - hawatch_grafana:/var/lib/grafana
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/api/health >/dev/null"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
+  maintenance:
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    entrypoint: []
+    secrets:
+      - hawatch_metrics_token
+    environment:
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
+      DJANGO_DEBUG: "false"
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-api,maintenance,localhost}
+      POSTGRES_DB: ${POSTGRES_DB:-hawatch}
+      POSTGRES_USER: ${POSTGRES_USER:-hawatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong POSTGRES_PASSWORD in .env}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      HAWATCH_TIMEZONE: Asia/Tehran
+      HAWATCH_SERVICE_NAME: hawatch-maintenance
+      HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
+      HAWATCH_LOG_DIR: /var/log/hawatch
+      HAWATCH_LOG_FILE: /var/log/hawatch/maintenance.jsonl
+      HAWATCH_RETENTION_DAYS: ${HAWATCH_RETENTION_DAYS:-7}
+      HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
+      OPENSEARCH_URL: https://opensearch:9200
+      OPENSEARCH_USERNAME: admin
+      OPENSEARCH_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
+      OPENSEARCH_VERIFY_SSL: "false"
+      RETENTION_INTERVAL_SECONDS: ${RETENTION_INTERVAL_SECONDS:-86400}
+    volumes:
+      - ../../apps/api:/app
+      - hawatch_logs:/var/log/hawatch
+    depends_on:
+      postgres:
+        condition: service_healthy
+      opensearch:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        while :; do
+          python manage.py cleanup_retention
+          sleep "$${RETENTION_INTERVAL_SECONDS}"
+        done
+    logging: *hawatch-container-logging
     restart: unless-stopped
 
 volumes:
   hawatch_pgdata:
+  hawatch_logs:
+  hawatch_opensearch:
+  hawatch_vector_data:
+  hawatch_prometheus:
+  hawatch_grafana:
+
+secrets:
+  hawatch_metrics_token:
+    environment: HAWATCH_METRICS_TOKEN

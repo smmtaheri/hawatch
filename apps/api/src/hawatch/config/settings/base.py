@@ -54,6 +54,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "hawatch.common.observability.RequestMetricsMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -124,6 +125,66 @@ OPEN_METEO_BATCH_SIZE = int(env("OPEN_METEO_BATCH_SIZE", "100"))
 OPEN_METEO_FORECAST_DAYS = int(env("OPEN_METEO_FORECAST_DAYS", "7"))
 OPEN_METEO_PAST_DAYS = int(env("OPEN_METEO_PAST_DAYS", "1"))
 FORECAST_STALE_AFTER_HOURS = int(env("FORECAST_STALE_AFTER_HOURS", "3"))
+
+# Observability is intentionally configured through environment variables. The
+# actual token/password values are supplied by Compose secrets or a local .env.
+OBSERVABILITY_SERVICE_NAME = env("HAWATCH_SERVICE_NAME", "hawatch-api")
+OBSERVABILITY_ENVIRONMENT = env("HAWATCH_ENVIRONMENT", "local")
+HAWATCH_LOG_DIR = Path(env("HAWATCH_LOG_DIR", "/var/log/hawatch"))
+HAWATCH_LOG_FILE = env("HAWATCH_LOG_FILE", str(HAWATCH_LOG_DIR / "api.jsonl"))
+HAWATCH_RETENTION_DAYS = int(env("HAWATCH_RETENTION_DAYS", "7"))
+METRICS_REQUIRE_AUTH = env_bool("METRICS_REQUIRE_AUTH", True)
+METRICS_TOKEN_FILE = env("HAWATCH_METRICS_TOKEN_FILE", "")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "hawatch_json": {
+            "()": "hawatch.common.observability.JsonFormatter",
+        },
+    },
+    "handlers": {
+        "console_json": {
+            "class": "logging.StreamHandler",
+            "formatter": "hawatch_json",
+            "level": "INFO",
+            "stream": "ext://sys.stdout",
+        },
+        "file_json": {
+            "class": "hawatch.common.observability.SafeTimedRotatingFileHandler",
+            "formatter": "hawatch_json",
+            "level": "INFO",
+            "filename": HAWATCH_LOG_FILE,
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 6,
+            "encoding": "utf-8",
+            "utc": True,
+        },
+    },
+    "loggers": {
+        "hawatch": {
+            "handlers": ["console_json", "file_json"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "django": {
+            "handlers": ["console_json", "file_json"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "gunicorn": {
+            "handlers": ["console_json", "file_json"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+    "root": {
+        "handlers": ["console_json", "file_json"],
+        "level": "INFO",
+    },
+}
 
 SECURE_PROXY_SSL_HEADER = None
 SESSION_COOKIE_SECURE = False

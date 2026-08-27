@@ -15,20 +15,27 @@ from hawatch.api.v1.serializers import (
     serialize_route,
 )
 from hawatch.common.time import now_tehran, parse_date, parse_period, parse_speed, parse_start_minutes
+from hawatch.common.observability import metrics_view, set_health
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 
 
 @api_view(["GET"])
 def health_live(_request):
+    set_health("live", True)
     return Response({"status": "live"})
 
 
 @api_view(["GET"])
 def health_ready(_request):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT 1")
-        cursor.execute("SELECT PostGIS_Version()")
-        version = cursor.fetchone()[0]
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            cursor.execute("SELECT PostGIS_Version()")
+            version = cursor.fetchone()[0]
+    except Exception:
+        set_health("ready", False)
+        return Response({"status": "not_ready", "database": "unavailable", "postgis": False}, status=503)
+    set_health("ready", True)
     return Response({"status": "ready", "database": "ok", "postgis": True, "postgis_version": version})
 
 

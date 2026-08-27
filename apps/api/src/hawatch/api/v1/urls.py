@@ -3,6 +3,7 @@ from django.urls import path
 from hawatch.api.v1 import views
 
 urlpatterns = [
+    path("metrics/", views.metrics_view),
     path("health/live/", views.health_live),
     path("health/ready/", views.health_ready),
     path("destinations/", views.destinations_list),
