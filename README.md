@@ -9,7 +9,7 @@
 - frontend: `apps/web` — React + TypeScript + Vite
 - backend: `apps/api` — Django + Django REST Framework + PostGIS
 - local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot و maintenance سبک
-- gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `8080`) برای health check و proxy وب/API
+- gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
 
 Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
 
@@ -36,7 +36,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml up -d
 
 - frontend: http://localhost:5173
 - API: http://localhost:8000/api/v1/
-- gateway: http://localhost:8080 (وب و API از یک ورودی)
+- gateway: http://localhost (وب و API از یک ورودی)
 - health live: http://localhost:8000/api/v1/health/live/
 - health ready: http://localhost:8000/api/v1/health/ready/
 - وضعیت عملیاتی: http://localhost:8000/api/v1/health/status/ (با Bearer token)

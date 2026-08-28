@@ -46,7 +46,7 @@ HAWATCH_DIR=/srv/hawatch PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 RUN_INITIAL_INGEST=0 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 
-پورت‌های پیش‌فرض host عبارت‌اند از gateway=`8080`، frontend مستقیم=`5173` و API=`8000`. آدرس browser API باید از دید مرورگر قابل دسترسی باشد و اسکریپت به‌طور پیش‌فرض آن را روی `http://SERVER_IP:8000/api/v1` می‌گذارد. در صورت نیاز آن را صریح تنظیم کنید:
+پورت‌های پیش‌فرض host عبارت‌اند از gateway=`80`، frontend مستقیم=`5173` و API=`8000`. آدرس browser API باید از دید مرورگر قابل دسترسی باشد و اسکریپت به‌طور پیش‌فرض آن را روی `http://SERVER_IP:8000/api/v1` می‌گذارد. در صورت نیاز آن را صریح تنظیم کنید:
 
 ```bash
 VITE_API_BASE_URL='http://SERVER_IP:8000/api/v1' \
@@ -60,7 +60,7 @@ PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```bash
 cd /root/hawatch
 docker compose --env-file .env -f infra/compose/compose.yaml ps
-curl -fsS http://127.0.0.1:8080/healthz
+curl -fsS http://127.0.0.1/healthz
 curl -fsS http://127.0.0.1:8000/api/v1/health/ready/
 curl -fsS -H "Authorization: Bearer $(awk -F= '$1=="HAWATCH_METRICS_TOKEN" {sub(/^[^=]*=/, ""); print; exit}' .env)" \
   http://127.0.0.1:8000/api/v1/health/status/

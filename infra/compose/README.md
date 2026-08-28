@@ -7,7 +7,7 @@
 - `postgres` — `postgis/postgis:16-3.5` با volume نام‌دار `hawatch_pgdata`
 - `api` — Django/DRF با یک worker روی `:8000`
 - `web` — build استاتیک Nginx روی `:5173`
-- `nginx` — gateway سبک روی port قابل‌تنظیم (پیش‌فرض `:8080`)؛ proxy وب/API و endpoint داخلی `healthz`
+- `nginx` — gateway سبک روی port قابل‌تنظیم (پیش‌فرض `:80`)؛ proxy وب/API و endpoint داخلی `healthz`
 - `ingest` — management command یک‌باره؛ scheduler خارجی هر ۶ ساعت آن را اجرا می‌کند
 - `maintenance` — cleanup سبک forecast و log، بدون وابستگی به OpenSearch
 

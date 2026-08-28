@@ -46,7 +46,7 @@ Optional environment variables:
   VITE_API_BASE_URL      Browser API URL (default: http://PUBLIC_HOST:8000/api/v1)
   API_PUBLISH_PORT       API host port (default: 8000)
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
-  NGINX_PUBLISH_PORT     Gateway host port (default: 8080)
+  NGINX_PUBLISH_PORT     Gateway host port (default: 80)
   RUN_INITIAL_INGEST     Set 0 to skip the first live ingest
   ENABLE_OBSERVABILITY   Set 1 only on a host sized for the heavy stack
 
@@ -182,7 +182,7 @@ configure_env() {
   NGINX_PUBLISH_PORT="${NGINX_PUBLISH_PORT:-$(get_env_value NGINX_PUBLISH_PORT)}"
   API_PUBLISH_PORT="${API_PUBLISH_PORT:-8000}"
   WEB_PUBLISH_PORT="${WEB_PUBLISH_PORT:-5173}"
-  NGINX_PUBLISH_PORT="${NGINX_PUBLISH_PORT:-8080}"
+  NGINX_PUBLISH_PORT="${NGINX_PUBLISH_PORT:-80}"
 
   VITE_API_BASE_URL="${VITE_API_BASE_URL:-$(get_env_value VITE_API_BASE_URL)}"
   if [[ -z "$VITE_API_BASE_URL" || "$VITE_API_BASE_URL" == "http://localhost:8000/api/v1" ]]; then
