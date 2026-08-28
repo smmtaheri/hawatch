@@ -320,18 +320,22 @@ run_stack() {
   "${compose[@]}" config --quiet
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --build postgres api web nginx maintenance \
+    "${compose[@]}" up -d --build postgres api web maintenance \
       opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
       vector prometheus grafana
   else
-    "${compose[@]}" up -d --build postgres api web nginx maintenance
+    "${compose[@]}" up -d --build postgres api web maintenance
   fi
 
   wait_for_healthy postgres
   wait_for_healthy api
   wait_for_healthy web
-  wait_for_healthy nginx
   wait_for_running maintenance
+
+  # Nginx resolves Docker service names when it starts. Recreate the gateway
+  # after API/Web replacement so it cannot retain a stale container IP.
+  "${compose[@]}" up -d --force-recreate nginx
+  wait_for_healthy nginx
 
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
