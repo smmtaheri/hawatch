@@ -11,7 +11,7 @@
 ## Home
 
 - `HeroCopy`: tagline و معرفی تصمیم.
-- `DestinationSearch`: input مقصد و action جست‌وجو.
+- `SearchCombobox`: autocomplete مقصد و WeatherPoint؛ keyboard و debounce.
 - `PopularDestinations`: heading و grid مقصدهای محبوب.
 - `DestinationTile`: نام، دستهٔ طبیعت، icon و navigation.
 
@@ -44,4 +44,11 @@
 - `RouteDecisionCard`: زمان رسیدن، نقطهٔ حساس و پیشنهاد تصمیم.
 - `ShareActions`: کپی لینک و اشتراک‌گذاری.
 - `RouteStats`: مسافت، صعود، زمان و زمان رسیدن.
+
+## Point (extension از Destination)
+
+- `PointHero`: breadcrumb، نام، مختصات، status pill.
+- `PointRouteBackLink`: CTA بازگشت به Route (فقط با navigation state).
+- `PointWeatherCard`: day/period، current reading، hourly — بدون planner.
+- `RelatedRoutesCard`: مسیرهای مرتبط وقتی standalone.
 

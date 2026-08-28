@@ -3,17 +3,19 @@
 ## قرارداد تعامل
 
 - `/` نقطهٔ ورود محصول است.
-- search با submit فرم و Enter فعال می‌شود.
+- autocomplete از `GET /api/v1/search/suggestions/?q=` با debounce ~۲۰۰ms و حداقل ۲ کاراکتر normalize‌شده.
+- stale responses نادیده گرفته می‌شوند (AbortController + request generation).
+- Enter روی highlight → navigate؛ Enter بدون highlight → submit fallback مقصدها.
+- Arrow keys، Escape، focus management و combobox semantics.
 - query باید trim و normalize شود و input پس از خطا حفظ بماند.
-- نتیجهٔ مقصد با slug داخلی به Destination می‌رود.
-- مقصد محبوب مستقیم به route مقصد لینک می‌شود.
+- نتیجهٔ مقصد: `/destination/{slug}`؛ نقطه: `/points/{weatherPointSlug}`.
+- submit fallback همان لیست `/destinations/?query=` را refresh می‌کند.
 - theme toggle global است.
 
 ## mobile و overflow
 
-input و button نباید روی هم قرار بگیرند. grid مقصدها باید با عرض viewport سازگار باشد و root scrollbar افقی نداشته باشد. اگر تعداد نتیجه‌ها زیاد است، overflow فقط داخل result container و با label قابل فهم مجاز است.
+combobox panel نباید hero را جابه‌جا کند یا overflow افقی بسازد. grid مقصدها با viewport سازگار باشد.
 
 ## observability آینده
 
-eventهای احتمالی: `destination_search_submitted`، `popular_destination_selected` و `theme_changed`. نام‌گذاری و حریم خصوصی باید پیش از instrumentation تصویب شود.
-
+eventهای احتمالی: `destination_search_submitted`، `search_suggestion_selected`، `popular_destination_selected`، `theme_changed`.

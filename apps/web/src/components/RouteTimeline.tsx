@@ -12,7 +12,7 @@ export function RouteTimeline({
   destination: string;
   title: string;
   points: RoutePointView[];
-  pointHref?: (point: RoutePointView) => string;
+  pointHref?: (point: RoutePointView) => string | { pathname: string; search?: string; state?: unknown };
 }) {
   return (
     <div className="route-linear-panel">

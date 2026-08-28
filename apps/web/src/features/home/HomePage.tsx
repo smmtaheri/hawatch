@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
+import { SearchCombobox } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { DestinationIcon } from "../../components/DestinationIcon";
 import type { DestinationSummary } from "../../types";
@@ -57,16 +58,18 @@ export function HomePage() {
                 load(next);
               }}
             >
-              <input
-                aria-label="جست‌وجوی مقصد"
-                placeholder="مثلاً توچال، دماوند یا دریاسر"
+              <SearchCombobox
                 value={query}
-                onChange={(event) => {
-                  setQuery(event.target.value);
+                onChange={(next) => {
+                  setQuery(next);
                   if (submitted) {
                     setSubmitted("");
                     load();
                   }
+                }}
+                onSubmitQuery={(next) => {
+                  setSubmitted(next);
+                  load(next);
                 }}
               />
               <button type="submit">جست‌وجو</button>

@@ -36,8 +36,8 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - day: تمام زمان‌ها، weather points و decision summary را برای روز جدید refresh می‌کند.
 - start-time gauge: زمان حرکت را تغییر می‌دهد و زمان رسیدن همهٔ نقاط را recompute می‌کند.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
-- morning/afternoon/night: فقط یک کنترل مشترک برای route points و hourly forecast در mobile.
-- point: جزئیات نقطه در `/routes/{routeSlug}/points/{pointSlug}` باز می‌شود.
+- morning/afternoon/night: یک کنترل مشترک سه‌گزینه‌ای برای route points و hourly forecast در mobile.
+- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ `location.state.fromRoute` برای back CTA.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: share target آینده را باز می‌کند؛ در این milestone API یا integration ساخته نمی‌شود.
 
@@ -55,7 +55,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - route: slug، origin، destination، distance، ascent، round-trip duration و نقاط مسیر.
 - هر point: مختصات، elevation، ترتیب، زمان پایه، temperature، wind، condition، note و severity.
 - start time، speed profile و محاسبهٔ arrival time.
-- forecast hourly برای بازهٔ انتخابی.
+- forecast hourly برای بازهٔ انتخابی؛ هر بازه چهار کارت دارد: صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱.
 - decision summary، recommendations و share payload.
 
 ## ۸. APIهای آینده
@@ -69,7 +69,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 
 ## ۹. تفاوت mobile و web
 
-- mobile: کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف؛ فقط یک morning/afternoon control مشترک.
+- mobile: کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف؛ فقط یک کنترل مشترک سه‌گزینه‌ای صبح/بعدازظهر/شب.
 - نقاط مسیر و کارت آب‌وهوا روی یک محور خوانا بمانند؛ axis در صورت نیاز در container خودش scroll شود، نه root.
 - گیج ساعت شروع بیش از حد بزرگ نشود.
 - web: layout اصلی و side planner می‌توانند چندستونه باشند؛ route axis و point cards فضای بیشتری دارند.

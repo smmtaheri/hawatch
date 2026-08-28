@@ -6,6 +6,7 @@ import { ThemeProvider } from "../src/app/theme";
 import { HomePage } from "../src/pages/HomePage";
 import { DestinationPage } from "../src/pages/DestinationPage";
 import { RoutePage } from "../src/pages/RoutePage";
+import { PointDetailPage } from "../src/pages/PointDetailPage";
 
 const destinationForecast = {
   destination: {
@@ -42,14 +43,14 @@ const destinationForecast = {
     { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
     { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
   ],
-  period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۲", headline: "تغییرات صبح · هر دو ساعت", hours: [2, 4, 6, 8, 10] },
+  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح · هر دو ساعت", hours: [3, 5, 7, 9] },
   current: null,
   hourly: [
-    { time: "۰۲:۰۰", hour: 2, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
+    { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
   ],
   metrics: [{ icon: "⌁", label: "باد میانگین", value: "۱۰ km/h", note: "جنوب‌غربی", color: "teal" }],
   hero: { status: "الان در قله ۹°", alert: "تغییر مهم" },
-  decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۲ آرام‌تر است." },
+  decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۱ آرام‌تر است." },
   updated_label: "آخرین به‌روزرسانی: امروز، ۰۵:۴۵",
   empty: false,
   meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
@@ -73,7 +74,7 @@ const routeForecast = {
     ],
   },
   days: destinationForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۲", hours: [2, 4, 6, 8, 10] },
+  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", hours: [3, 5, 7, 9] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
   speed: "متوسط",
@@ -135,6 +136,23 @@ describe("Hawatch pages", () => {
         if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
         if (url.includes("/destinations/")) {
           return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        if (url.includes("/search/suggestions")) {
+          return jsonResponse({
+            query: "پس",
+            results: [
+              {
+                type: "point",
+                slug: "pas_ghaleh",
+                label: "پس‌قلعه",
+                hint: "نقطهٔ مسیر · توچال",
+                href: "/points/pas_ghaleh",
+                match_kind: "name",
+              },
+            ],
+            empty: false,
+            meta: { freshness: "ready" },
+          });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -201,6 +219,81 @@ describe("Hawatch pages", () => {
     await screen.findByText("توچال");
     await user.click(screen.getAllByLabelText("تغییر تم")[0]);
     expect(document.documentElement.dataset.theme).toBe("light");
+  });
+
+  it("shows autocomplete suggestions while typing", async () => {
+    const user = userEvent.setup();
+    renderAt("/");
+    await screen.findByText("توچال");
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "پس");
+    expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
+    expect(screen.getByText(/نقطهٔ مسیر · توچال/)).toBeInTheDocument();
+  });
+
+  it("ignores stale autocomplete responses", async () => {
+    let resolveSlow: ((value: unknown) => void) | undefined;
+    const slow = new Promise((resolve) => {
+      resolveSlow = resolve;
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/search/suggestions?q=%D9%BE%D8%B3%D8%B3")) {
+          return slow;
+        }
+        if (url.includes("/search/suggestions")) {
+          return jsonResponse({
+            query: "پس",
+            results: [
+              {
+                type: "point",
+                slug: "pas_ghaleh",
+                label: "پس‌قلعه",
+                hint: "نقطهٔ مسیر · توچال",
+                href: "/points/pas_ghaleh",
+                match_kind: "name",
+              },
+            ],
+            empty: false,
+            meta: { freshness: "ready" },
+          });
+        }
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        return jsonResponse({}, false, 500);
+      }),
+    );
+    const user = userEvent.setup();
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/"]}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/points/:slug" element={<PointDetailPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByText("توچال");
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "پ");
+    await user.type(input, "s");
+    await user.type(input, "s");
+    resolveSlow?.({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        query: "pss",
+        results: [{ type: "point", slug: "stale", label: "قدیمی", hint: "", href: "/points/stale", match_kind: "name" }],
+        empty: false,
+        meta: { freshness: "ready" },
+      }),
+    });
+    expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
+    expect(screen.queryByText("قدیمی")).not.toBeInTheDocument();
   });
 
   it("does not create full-page horizontal overflow at the mobile reference width", async () => {

@@ -19,7 +19,6 @@ import { StatsGrid } from "../../components/StatsGrid";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import {
   asPeriodId,
-  appendRouteContext,
   buildForecastParams,
   formatClockDisplay,
   parseClockToMinutes,
@@ -27,7 +26,7 @@ import {
   periodTicks,
   toClock,
 } from "../../lib/periods";
-import type { PeriodId, RouteForecast } from "../../types";
+import type { PeriodId, RouteForecast, RoutePointView, RouteFromState } from "../../types";
 
 type RouteRequestInputs = {
   slug: string;
@@ -158,7 +157,23 @@ export function RoutePage() {
 
   const ticks = useMemo(() => periodTicks(displayPeriod), [displayPeriod]);
   const periodRange = PERIOD_RANGES[displayPeriod];
-  const pointHref = (href: string) => appendRouteContext(href, params);
+  const routeBackState = data
+    ? ({
+        fromRoute: {
+          slug: data.route.slug,
+          title: data.route.title,
+          href: data.route.href,
+        },
+      } satisfies { fromRoute: RouteFromState })
+    : undefined;
+
+  function pointLink(point: RoutePointView) {
+    return {
+      pathname: point.href,
+      search: "",
+      state: routeBackState,
+    };
+  }
 
   function scheduleCommit(minutes: number) {
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
@@ -257,7 +272,7 @@ export function RoutePage() {
                     destination={data.route.destination_label}
                     title={data.route.title}
                     points={data.points}
-                    pointHref={(point) => pointHref(point.href)}
+                    pointHref={(point) => pointLink(point)}
                   />
                   <div className="route-hourly-values">
                     <HourlyForecast hours={data.hourly} headline={data.period.headline ?? data.period.range_label} />
@@ -268,7 +283,7 @@ export function RoutePage() {
                         <Link
                           key={`${point.slug}-weather`}
                           className={`route-point-weather-card ${point.state}`}
-                          to={pointHref(point.href)}
+                          to={pointLink(point)}
                           aria-label={`آب‌وهوای ${point.name} در زمان ${point.time}`}
                         >
                           <strong>{point.time}</strong>

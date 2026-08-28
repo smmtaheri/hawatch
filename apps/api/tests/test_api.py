@@ -86,7 +86,7 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
     assert len(body["days"]) == 7
     assert body["days"][0]["is_yesterday"] is True
     assert body["days"][1]["is_today"] is True
-    assert [item["hour"] for item in body["hourly"]] == [2, 4, 6, 8, 10]
+    assert [item["hour"] for item in body["hourly"]] == [3, 5, 7, 9]
     assert "is_past" in body["hourly"][0]
     assert "is_current" in body["hourly"][0]
     assert "is_future" in body["hourly"][0]
@@ -94,7 +94,7 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
         "/api/v1/destinations/touchal/forecast/",
         {"date": today.isoformat(), "period": "afternoon"},
     ).json()
-    assert [item["hour"] for item in afternoon["hourly"]] == [12, 14, 16]
+    assert [item["hour"] for item in afternoon["hourly"]] == [11, 13, 15, 17]
 
 
 @pytest.mark.django_db
@@ -216,3 +216,70 @@ def test_search_and_stale_flag(api_client, seeded):
     assert empty["empty"] is True
     missing = api_client.get("/api/v1/destinations/unknown-place/")
     assert missing.status_code == 404
+
+
+@pytest.mark.django_db
+def test_point_forecast_pas_ghaleh(api_client, seeded):
+    today = now_tehran().date()
+    response = api_client.get(
+        "/api/v1/points/pas_ghaleh/forecast/",
+        {"date": today.isoformat(), "period": "morning"},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["point"]["slug"] == "pas_ghaleh"
+    assert body["point"]["name"] == "پس‌قلعه"
+    assert body["point"]["latitude"] == pytest.approx(35.8361950, rel=1e-4)
+    assert body["point"]["longitude"] == pytest.approx(51.4233411, rel=1e-4)
+    assert body["point"]["elevation_m"] == 1936
+    assert "arrival_minutes" not in body["point"]
+    assert "route_title" not in body["point"]
+    assert len(body["hourly"]) == 4
+    assert any(item["slug"] == "touchal-darband" for item in body["related_routes"])
+
+
+@pytest.mark.django_db
+def test_search_suggestions_destination_and_point(api_client, seeded):
+    dest = api_client.get("/api/v1/search/suggestions/", {"q": "تو"}).json()
+    assert any(item["type"] == "destination" and item["slug"] == "touchal" for item in dest["results"])
+    point = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
+    assert any(item["type"] == "point" and item["slug"] == "pas_ghaleh" for item in point["results"])
+    shir = api_client.get("/api/v1/search/suggestions/", {"q": "شیر"}).json()
+    assert any(item["type"] == "point" and item["slug"] == "shirpala" for item in shir["results"])
+
+
+@pytest.mark.django_db
+def test_search_alias_and_deduplication(api_client, seeded):
+    from hawatch.modules.catalog.models import SearchIndexEntry
+    from hawatch.modules.catalog.search import rebuild_search_index
+    from hawatch.modules.forecasts.models import WeatherPoint
+
+    WeatherPoint.objects.filter(slug="pas_ghaleh").update(aliases=["پسغلعه"])
+    rebuild_search_index()
+    assert SearchIndexEntry.objects.filter(
+        weather_point_slug="pas_ghaleh",
+        match_kind=SearchIndexEntry.MatchKind.ALIAS,
+    ).exists()
+
+    alias = api_client.get("/api/v1/search/suggestions/", {"q": "پسغل"}).json()
+    pas_matches = [item for item in alias["results"] if item.get("slug") == "pas_ghaleh"]
+    assert len(pas_matches) == 1
+    assert pas_matches[0]["match_kind"] == "alias"
+
+    shared = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
+    pas_slugs = [item["slug"] for item in shared["results"] if item["type"] == "point" and item["slug"] == "pas_ghaleh"]
+    assert len(pas_slugs) == 1
+
+
+@pytest.mark.django_db
+def test_route_point_forecast_backward_compatible(api_client, seeded):
+    today = now_tehran().date()
+    response = api_client.get(
+        "/api/v1/routes/touchal-darband/points/pas_ghaleh/forecast/",
+        {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "متوسط"},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["weather_point_slug"] == "pas_ghaleh"
+    assert body["canonical_href"] == "/points/pas_ghaleh"
+    assert body["point"]["href"] == "/points/pas_ghaleh"

@@ -139,6 +139,7 @@ export interface RoutePointView {
   latitude?: number | null;
   longitude?: number | null;
   elevation_m?: number | null;
+  weather_point_slug?: string | null;
 }
 
 export interface RoutePointForecast {
@@ -157,7 +158,55 @@ export interface RoutePointForecast {
   empty: boolean;
   partial: boolean;
   back_href: string;
+  canonical_href?: string | null;
+  weather_point_slug?: string | null;
   meta: ApiMeta;
+}
+
+export interface WeatherPointSummary {
+  slug: string;
+  name: string;
+  aliases: string[];
+  kind: string;
+  elevation_m: number | null;
+  elevation_label: string;
+  latitude: number;
+  longitude: number;
+  status: string;
+  provenance: string;
+  href: string;
+  destination: DestinationSummary | null;
+}
+
+export interface PointForecast {
+  point: WeatherPointSummary;
+  related_destinations: DestinationSummary[];
+  related_routes: RouteSummary[];
+  days: DayInfo[];
+  period: { id: PeriodId; label: string; range_label: string; headline: string; hours: number[] };
+  current: HourlyReading | null;
+  weather: HourlyReading | null;
+  hourly: HourlyReading[];
+  hero: { status: string };
+  updated_label: string;
+  empty: boolean;
+  partial: boolean;
+  meta: ApiMeta;
+}
+
+export interface SearchSuggestion {
+  type: "destination" | "point";
+  slug: string;
+  label: string;
+  hint: string;
+  href: string;
+  match_kind: "name" | "alias";
+}
+
+export interface RouteFromState {
+  slug: string;
+  title: string;
+  href: string;
 }
 
 export interface RouteForecast {

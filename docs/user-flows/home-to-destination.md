@@ -4,10 +4,10 @@
 
 ```text
 Home
-  → جست‌وجوی نام مقصد یا انتخاب مقصد محبوب
-  → resolve مقصد
-  → Destination با slug پایدار
-  → نمایش وضعیت فعلی و forecast
+  → autocomplete مقصد/نقطه یا انتخاب مقصد محبوب
+  → resolve slug
+  → Destination (/destination/{slug}) یا Point (/points/{slug})
+  → نمایش forecast
 ```
 
 ## حالت‌های جایگزین

@@ -10,6 +10,7 @@ from django.contrib.gis.geos import Point
 from django.db import transaction
 from django.db.models import F
 
+from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -100,6 +101,7 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
             "climate": dest_row["climate"],
             "is_popular": dest_row["is_popular"],
             "is_active": dest_row["is_active"],
+            "aliases": dest_row.get("aliases") or [],
             "data_mode": "live",
             "seed_version": version,
         },
@@ -122,6 +124,7 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
             slug=slug,
             defaults={
                 "name": row["name"],
+                "aliases": row.get("aliases") or [],
                 "kind": kind,
                 "location": Point(row["longitude"], row["latitude"], srid=4326),
                 "elevation_m": elevation,
@@ -233,4 +236,5 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         "weather_point_count": len(weather_points),
         "route_count": len(kept_route_ids),
         "shared_point_slugs": sorted(weather_points),
+        **rebuild_search_index(),
     }

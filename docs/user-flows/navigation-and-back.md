@@ -5,7 +5,8 @@
 - کلیک برند: همیشه Home.
 - Destination back: Home یا contextی که از آن آمده، با اولویت parent معنایی.
 - Route back: Destination همان route.
-- breadcrumb: context قابل فهم؛ current page لینک نیست.
+- Point back: فقط وقتی `fromRoute` در navigation state باشد → همان Route؛ وگرنه بدون back گمراه‌کننده.
+- breadcrumb Point: `مقصدها / {نام نقطه}` — بدون زنجیرهٔ مسیر.
 - browser back: state قابل بازسازی باید تا حد امکان حفظ شود.
 
 ## حالت‌های deep link

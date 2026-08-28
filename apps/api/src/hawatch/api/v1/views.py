@@ -12,13 +12,16 @@ from hawatch.api.v1.serializers import (
     get_destination,
     get_route,
     get_route_point,
+    get_weather_point,
     list_destinations,
     meta_base,
+    point_forecast,
     route_forecast,
     route_point_forecast,
     serialize_destination,
     serialize_route,
 )
+from hawatch.modules.catalog.search import search_suggestions
 from hawatch.common.time import (
     default_forecast_selection,
     now_tehran,
@@ -198,3 +201,24 @@ def route_point_forecast_view(request, route_slug: str, point_slug: str):
         "speed": request.query_params.get("speed"),
     }
     return Response(route_point_forecast(route_point, selected_date=selected, period=period, back_params=back_params))
+
+
+@api_view(["GET"])
+def point_forecast_view(request, slug: str):
+    weather_point = get_weather_point(slug)
+    selected, period = _resolve_date_period(request)
+    return Response(point_forecast(weather_point, selected_date=selected, period=period))
+
+
+@api_view(["GET"])
+def search_suggestions_view(request):
+    query = request.query_params.get("q", "")
+    results = search_suggestions(query=query)
+    return Response(
+        {
+            "query": query,
+            "results": results,
+            "empty": not results,
+            "meta": meta_base(selected_date=now_tehran().date(), period="morning"),
+        }
+    )

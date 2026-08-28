@@ -29,11 +29,11 @@ const destinationForecast = {
     { date: "2026-08-27", label: "دیروز", jalali: "۶ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: false, is_future: false, is_current: false },
     { date: "2026-08-28", label: "امروز", jalali: "۷ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
   ],
-  period: { id: "night", label: "شب", range_label: "۱۸ تا ۰۲", headline: "تغییرات شب", hours: [18, 20, 22, 0] },
+  period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب", hours: [19, 21, 23, 1] },
   current: {
     time: "۰۰:۰۰",
-    hour: 0,
-    forecast_at: "2026-08-28T00:00:00+03:30",
+    hour: 1,
+    forecast_at: "2026-08-28T01:00:00+03:30",
     temperature_c: 5,
     temperature_label: "۵°",
     condition: "صاف",
@@ -73,7 +73,7 @@ const routeForecast = {
     siblings: [],
   },
   days: destinationForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۲", headline: "تغییرات صبح", hours: [2, 4, 6, 8, 10] },
+  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح", hours: [3, 5, 7, 9] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
   speed: "متوسط",
@@ -84,7 +84,7 @@ const routeForecast = {
       slug: "shirpala",
       name: "شیرپلا",
       elevation_label: "۲۴۵۰ m",
-      href: "/routes/touchal-darband/points/shirpala",
+      href: "/points/shirpala",
       axis_x: 10,
       axis_y: 50,
       time: "۰۸:۰۰",
@@ -98,7 +98,7 @@ const routeForecast = {
     },
   ],
   hourly: [
-    { time: "۰۲:۰۰", hour: 2, forecast_at: "2026-08-26T02:00:00+03:30", temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
+    { time: "۰۳:۰۰", hour: 3, forecast_at: "2026-08-26T03:00:00+03:30", temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
   ],
   hero: { status: "شرایط آرام" },
   stats: [],
@@ -121,6 +121,49 @@ const routeForecast = {
   meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
 };
 
+const pointForecast = {
+  point: {
+    slug: "shirpala",
+    name: "شیرپلا",
+    aliases: [],
+    kind: "shared",
+    elevation_m: 2750,
+    elevation_label: "۲۴۵۰ m",
+    latitude: 35.855,
+    longitude: 51.429,
+    status: "approved",
+    provenance: "curated",
+    href: "/points/shirpala",
+    destination: routeForecast.route.parent,
+  },
+  related_destinations: [routeForecast.route.parent],
+  related_routes: [
+    {
+      slug: "touchal-darband",
+      title: "دربند تا توچال",
+      trail_label: "مسیر",
+      origin: "دربند",
+      destination_label: "قلهٔ توچال",
+      distance_km: 16.2,
+      distance_label: "۱۶٫۲ km",
+      ascent_m: 2260,
+      ascent_label: "۲۲۶۰ m",
+      featured: true,
+      href: "/routes/touchal-darband",
+    },
+  ],
+  days: routeForecast.days,
+  period: routeForecast.period,
+  current: routeForecast.hourly[0],
+  weather: routeForecast.hourly[0],
+  hourly: routeForecast.hourly,
+  hero: { status: "☼　در شیرپلا　۷°　·　صاف" },
+  updated_label: "امروز",
+  empty: false,
+  partial: false,
+  meta: routeForecast.meta,
+};
+
 function jsonResponse(data: unknown, ok = true, status = 200) {
   return Promise.resolve({ ok, status, json: async () => data });
 }
@@ -141,6 +184,7 @@ describe("periods and route planner", () => {
       const url = forecastUrl(input);
       if (url.includes("/destinations/touchal/forecast")) return jsonResponse(destinationForecast);
       if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
+      if (url.includes("/points/shirpala/forecast")) return jsonResponse(pointForecast);
       if (url.includes("/routes/touchal-darband/points/shirpala/forecast")) {
         return jsonResponse({
           point: {
@@ -151,6 +195,7 @@ describe("periods and route planner", () => {
             destination: routeForecast.route.parent,
             has_weather_point: true,
             has_forecast: true,
+            weather_point_slug: "shirpala",
           },
           days: routeForecast.days,
           period: routeForecast.period,
@@ -159,6 +204,8 @@ describe("periods and route planner", () => {
           empty: false,
           partial: false,
           back_href: "/routes/touchal-darband?date=2026-08-26&period=morning",
+          canonical_href: "/points/shirpala",
+          weather_point_slug: "shirpala",
           meta: routeForecast.meta,
         });
       }
@@ -186,10 +233,14 @@ describe("periods and route planner", () => {
     expect(screen.getByRole("button", { name: /شب/ })).toBeInTheDocument();
   });
 
-  it("keeps 10:00 in the Iran-time morning period", () => {
-    expect(PERIOD_OPTIONS.find((option) => option.id === "morning")?.rangeLabel).toBe("۰۲ تا ۱۲");
-    expect(PERIOD_RANGES.morning).toMatchObject({ min: 120, max: 720 });
-    expect(periodTicks("morning")).toContain("۱۰:۰۰");
+  it("uses four odd-hour slices in each Iran-time period", () => {
+    expect(PERIOD_OPTIONS.map((option) => option.rangeLabel)).toEqual(["۰۳ تا ۱۱", "۱۱ تا ۱۹", "۱۹ تا ۰۳"]);
+    expect(PERIOD_RANGES.morning).toMatchObject({ min: 180, max: 660 });
+    expect(PERIOD_RANGES.afternoon).toMatchObject({ min: 660, max: 1140 });
+    expect(PERIOD_RANGES.night).toMatchObject({ min: 1140, max: 1590 });
+    expect(periodTicks("morning")).toEqual(["۰۳:۰۰", "۰۵:۰۰", "۰۷:۰۰", "۰۹:۰۰", "۱۱:۰۰"]);
+    expect(periodTicks("afternoon")).toEqual(["۱۱:۰۰", "۱۳:۰۰", "۱۵:۰۰", "۱۷:۰۰", "۱۹:۰۰"]);
+    expect(periodTicks("night")).toEqual(["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"]);
   });
 
   it("does not send period=morning on no-query initial destination load", async () => {
@@ -231,7 +282,7 @@ describe("periods and route planner", () => {
         return jsonResponse({
           ...destinationForecast,
           meta: { ...destinationForecast.meta, selected_period: "afternoon" },
-          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۲ تا ۱۸", headline: "بعدازظهر", hours: [12, 14, 16] },
+          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۱ تا ۱۹", headline: "بعدازظهر", hours: [11, 13, 15, 17] },
         });
       }
       return jsonResponse(destinationForecast);
@@ -309,22 +360,68 @@ describe("periods and route planner", () => {
     expect(screen.getByLabelText("ساعت شروع حرکت")).toHaveValue("720");
   });
 
-  it("opens point detail page from route point card", async () => {
+  it("opens canonical point page from route point card with route back CTA", async () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
-            <Route path="/routes/:routeSlug/points/:pointSlug" element={<PointDetailPage />} />
+            <Route path="/points/:slug" element={<PointDetailPage />} />
           </Routes>
         </MemoryRouter>
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
-    await user.click(screen.getByLabelText(/آب‌وهوای شیرپلا/));
+    const weatherLink = screen.getByLabelText(/آب‌وهوای شیرپلا/);
+    expect(weatherLink).toHaveAttribute("href", "/points/shirpala");
+    await user.click(weatherLink);
     expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
-    expect(screen.getByLabelText("بازگشت به مسیر")).toHaveAttribute("href", expect.stringContaining("/routes/touchal-darband"));
+    expect(screen.getByText("مقصدها")).toBeInTheDocument();
+    expect(document.querySelector(".breadcrumb")?.textContent).not.toMatch(/دربند تا توچال/);
+  });
+
+  it("shows route back CTA when point page opened with navigation state", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter
+          initialEntries={[
+            {
+              pathname: "/points/shirpala",
+              state: {
+                fromRoute: {
+                  slug: "touchal-darband",
+                  title: "دربند تا توچال",
+                  href: "/routes/touchal-darband",
+                },
+              },
+            },
+          ]}
+        >
+          <Routes>
+            <Route path="/points/:slug" element={<PointDetailPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
+    expect(screen.getByLabelText("بازگشت به مسیر دربند تا توچال")).toHaveAttribute("href", "/routes/touchal-darband");
+    expect(screen.queryByText("مسیرهای مرتبط")).not.toBeInTheDocument();
+  });
+
+  it("renders point page in dark theme without light fallback cards", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/points/shirpala?date=2026-08-26&period=morning"]}>
+          <Routes>
+            <Route path="/points/:slug" element={<PointDetailPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "شیرپلا" });
+    expect(document.querySelector(".point-page")).toBeTruthy();
+    expect(document.querySelector(".point-weather-card")).toBeTruthy();
   });
 
   it("updates speed locally without fetch when timing is pending", async () => {

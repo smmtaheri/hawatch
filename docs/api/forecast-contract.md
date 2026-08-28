@@ -5,20 +5,20 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
 بازهٔ قابل مشاهدهٔ این نسخه:
 
 - ۷ روز: دیروز، امروز، و پنج روز بعد
-- hourly: هر دو ساعت؛ تعداد کارت‌ها بر اساس بازه است.
+- hourly: هر دو ساعت؛ هر بازه دقیقاً چهار کارت دارد.
 - سه بازهٔ غیرهم‌پوشان (نسخهٔ قبلی با دو بازهٔ ۰۰–۱۲ / ۱۲–۲۴ **جایگزین شده**):
 
 | `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
 | --- | --- | --- | --- |
-| `morning` | صبح | ۰۲:۰۰–۱۲:۰۰ | ۰۲، ۰۴، ۰۶، ۰۸، ۱۰ |
-| `afternoon` | بعدازظهر | ۱۲:۰۰–۱۸:۰۰ | ۱۲، ۱۴، ۱۶ |
-| `night` | شب | ۱۸:۰۰–۰۲:۰۰ روز بعد | ۱۸، ۲۰، ۲۲، ۰۰ |
+| `morning` | صبح | ۰۳:۰۰–۱۱:۰۰ | ۰۳، ۰۵، ۰۷، ۰۹ |
+| `afternoon` | بعدازظهر | ۱۱:۰۰–۱۹:۰۰ | ۱۱، ۱۳، ۱۵، ۱۷ |
+| `night` | شب | ۱۹:۰۰–۰۳:۰۰ روز بعد | ۱۹، ۲۱، ۲۳، ۰۱ |
 
 ## معنای تاریخ برای `night`
 
-برای `period=night`، `date` یعنی **شبِ همان روز** (شروع از ۱۸:۰۰). مثال:
+برای `period=night`، `date` یعنی **شبِ همان روز** (شروع از ۱۹:۰۰). مثال:
 
-`date=2026-08-28&period=night` → ۱۸:۰۰، ۲۰:۰۰، ۲۲:۰۰ در ۲۸ اوت + ۰۰:۰۰ در ۲۹ اوت.
+`date=2026-08-28&period=night` → ۱۹:۰۰، ۲۱:۰۰، ۲۳:۰۰ در ۲۸ اوت + ۰۱:۰۰ در ۲۹ اوت.
 
 فیلتر با پنجرهٔ timezone-aware انجام می‌شود؛ نباید فقط با یک تاریخ تقویمی فیلتر شود.
 
@@ -26,10 +26,10 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
 
 | ساعت محلی تهران | `selected_period` | `selected_date` |
 | --- | --- | --- |
-| ۰۰:۰۰–۰۱:۵۹ | `night` | دیروز |
-| ۰۲:۰۰–۱۱:۵۹ | `morning` | امروز |
-| ۱۲:۰۰–۱۷:۵۹ | `afternoon` | امروز |
-| ۱۸:۰۰–۲۳:۵۹ | `night` | امروز |
+| ۰۰:۰۰–۰۲:۵۹ | `night` | دیروز |
+| ۰۳:۰۰–۱۰:۵۹ | `morning` | امروز |
+| ۱۱:۰۰–۱۸:۵۹ | `afternoon` | امروز |
+| ۱۹:۰۰–۲۳:۵۹ | `night` | امروز |
 
 اگر کاربر `date` یا `period` را صریح بفرستد، API همان را برمی‌گرداند و frontend بعد از load آن را overwrite نمی‌کند. در بار اول بدون query، frontend نباید `period=morning` بفرستد؛ backend مقدار را در `meta` برمی‌گرداند.
 
@@ -77,14 +77,29 @@ forecast
 ## route planner
 
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
-- برای `night`، `00:00`–`01:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `02:00` متعلق به `morning` است.
+- برای `night`، `00:00`–`02:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `03:00` متعلق به `morning` است.
 - وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
 
-## نقطهٔ مسیر (point detail)
+## نقطهٔ canonical (standalone WeatherPoint)
+
+- `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
+- URL frontend: `/points/{weather_point_slug}` — مثال `/points/pas_ghaleh`
+- envelope: `point` (slug، name، aliases، مختصات، elevation، status، provenance)، `related_destinations[]`، `related_routes[]` (dedup)، `days`، `current`/`weather`، `hourly`، `hero`، `empty`/`partial`، `meta`
+- **بدون** `arrival_minutes`، ETA، ascent، speed، یا timing مسیر
+- نقاط بدون WeatherPoint فعال صفحهٔ standalone ندارند
+
+## legacy route-point (سازگاری موقت)
 
 - `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
-- لینک frontend: `/routes/{route_slug}/points/{point_slug}`
-- Back از صفحهٔ نقطه به مسیر مبدأ با حفظ `date`، `period`، `start_time`، `speed` (در صورت وجود در URL).
+- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز
+- frontend legacy `/routes/.../points/...` را redirect می‌کند؛ `start_time`/`speed` از URL حذف می‌شوند
+
+## جست‌وجوی پیشنهاد (Home)
+
+- `GET /api/v1/search/suggestions/?q=...`
+- حداقل ۲ کاراکتر normalize‌شده؛ prefix match؛ حداکثر ۸ نتیجه
+- انواع: `destination` → `/destination/{slug}`؛ `point` → `/points/{weather_point_slug}`
+- label نمونه: `قلهٔ توچال — مقصد` · `پس‌قلعه — نقطهٔ مسیر · توچال`
 
 ## slider commit
 

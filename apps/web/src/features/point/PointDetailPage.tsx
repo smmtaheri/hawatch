@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
-import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { DaySelector } from "../../components/DaySelector";
+import { DestinationCard } from "../../components/DestinationCard";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
@@ -12,12 +12,19 @@ import { LoadingState } from "../../components/LoadingState";
 import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { asPeriodId, buildForecastParams, PERIOD_RANGES } from "../../lib/periods";
-import type { PeriodId, RoutePointForecast } from "../../types";
+import type { PeriodId, PointForecast, RouteFromState } from "../../types";
+import { PointRouteBackLink } from "./PointNavigation";
+
+type PointLocationState = {
+  fromRoute?: RouteFromState;
+};
 
 export function PointDetailPage() {
-  const { routeSlug = "", pointSlug = "" } = useParams();
+  const { slug = "" } = useParams();
+  const location = useLocation();
+  const fromRoute = (location.state as PointLocationState | null)?.fromRoute;
   const [params, setParams] = useSearchParams();
-  const [data, setData] = useState<RoutePointForecast | null>(null);
+  const [data, setData] = useState<PointForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
   const requestId = useRef(0);
   const resolvedDefaultRequestKey = useRef<string | null>(null);
@@ -28,7 +35,7 @@ export function PointDetailPage() {
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
 
   function requestKey(nextDate = requestedDate, nextPeriod = requestedPeriod) {
-    return JSON.stringify([routeSlug, pointSlug, nextDate ?? "", nextPeriod ?? ""]);
+    return JSON.stringify([slug, nextDate ?? "", nextPeriod ?? ""]);
   }
 
   function update(next: Record<string, string | undefined>) {
@@ -44,9 +51,8 @@ export function PointDetailPage() {
     const currentRequest = ++requestId.current;
     setStatus("loading");
     api
-      .routePointForecast(
-        routeSlug,
-        pointSlug,
+      .pointForecast(
+        slug,
         buildForecastParams({
           date: requestedDate,
           period: requestedPeriod ?? undefined,
@@ -81,25 +87,20 @@ export function PointDetailPage() {
     }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [routeSlug, pointSlug, requestedDate, requestedPeriod]);
+  }, [slug, requestedDate, requestedPeriod]);
 
   if (status === "missing") {
     return (
       <main className="point-page">
-        <Header />
-        <EmptyState title="نقطهٔ مسیر پیدا نشد" detail="به مسیر برگرد و نقطهٔ دیگری را انتخاب کن." />
+        <div className="point-shell">
+          <Header />
+          <EmptyState title="نقطهٔ هواشناسی پیدا نشد" detail="از جست‌وجوی خانه نام دیگری را امتحان کن." />
+        </div>
       </main>
     );
   }
 
   const selected = requestedDate ?? data?.meta.selected_date ?? "";
-  const backHref = data?.back_href ?? `/routes/${routeSlug}`;
-  const routeParams = new URLSearchParams();
-  for (const key of ["date", "period", "start_time", "speed"]) {
-    const value = params.get(key);
-    if (value) routeParams.set(key, value);
-  }
-  const backTo = routeParams.toString() ? `${backHref.split("?")[0]}?${routeParams}` : backHref;
 
   return (
     <main className="point-page">
@@ -111,59 +112,70 @@ export function PointDetailPage() {
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice generatedAt={data.meta.generated_at} /> : null}
             <section className="point-hero card-surface">
-              <BackNavigation to={backTo} ariaLabel="بازگشت به مسیر" />
-              <Breadcrumbs
-                items={[
-                  { label: "مقصدها", to: "/#search-results" },
-                  { label: data.point.destination.name, to: data.point.destination.href },
-                  { label: data.point.route_title, to: data.point.route_href },
-                  { label: data.point.name },
-                ]}
-              />
+              {fromRoute ? <PointRouteBackLink fromRoute={fromRoute} /> : null}
+              <Breadcrumbs items={[{ label: "مقصدها", to: "/#search-results" }, { label: data.point.name }]} />
               <h1>{data.point.name}</h1>
               <p className="muted">
-                {data.point.route_title}　·　{data.point.elevation_label}
+                {data.point.elevation_label}
                 {data.point.latitude != null && data.point.longitude != null
                   ? `　·　${data.point.latitude.toFixed(4)}، ${data.point.longitude.toFixed(4)}`
                   : ""}
+                {data.point.destination ? `　·　${data.point.destination.region}` : ""}
               </p>
+              <div className="hero-status-stack point-hero-status-stack" aria-label="خلاصهٔ وضعیت نقطه">
+                <div className="status-pill now">{data.hero.status}</div>
+              </div>
             </section>
-            <section className="point-weather-card card-surface">
-              <div className="section-title-row">
-                <div>
-                  <h2>پیش‌بینی نقطه</h2>
-                  <p className="muted">بازه و روز را تغییر بده تا وضعیت این نقطه در مسیر را ببینی.</p>
-                </div>
-              </div>
-              <DaySelector days={data.days} selected={selected} onSelect={(next) => update({ date: next })} />
-              <div className="destination-period-row">
-                <span className="planner-label">بازهٔ نمایش هوا</span>
-                <PeriodToggle value={displayPeriod} onChange={(next) => update({ period: next })} />
-              </div>
-              {!data.point.has_weather_point ? (
-                <EmptyState
-                  title="نقطهٔ هواشناسی متصل نیست"
-                  detail="این نقطه در مسیر ثبت شده اما دادهٔ هواشناسی مستقل برای آن وجود ندارد."
-                />
-              ) : data.empty || data.partial ? (
-                <EmptyState
-                  title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی در دسترس نیست"}
-                  detail="برای این روز و بازه داده‌ای در پایگاه داده ثبت نشده است."
-                />
-              ) : (
-                <>
-                  {data.weather ? (
-                    <div className="point-current-reading">
-                      <span className="weather-symbol">{data.weather.icon}</span>
-                      <strong>{data.weather.temperature_label}</strong>
-                      <span>{data.weather.condition}</span>
-                      <small>{data.weather.wind_label}</small>
+            <div className="point-layout">
+              <div className="point-main">
+                <section className="point-weather-card card-surface">
+                  <div className="section-title-row">
+                    <div>
+                      <h2>پیش‌بینی {data.point.name}</h2>
+                      <p className="muted">روز و بازه را تغییر بده تا وضعیت این نقطه را قبل از حرکت ببینی.</p>
                     </div>
-                  ) : null}
-                  <HourlyForecast hours={data.hourly} headline={data.period.headline} />
-                </>
-              )}
-            </section>
+                    <span className="updated">{data.updated_label}</span>
+                  </div>
+                  <DaySelector days={data.days} selected={selected} onSelect={(next) => update({ date: next })} />
+                  <div className="destination-period-row">
+                    <span className="planner-label">بازهٔ نمایش هوا</span>
+                    <PeriodToggle value={displayPeriod} onChange={(next) => update({ period: next })} />
+                  </div>
+                  {data.empty || data.partial ? (
+                    <EmptyState
+                      title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی در دسترس نیست"}
+                      detail="برای این روز و بازه داده‌ای در پایگاه داده ثبت نشده است."
+                    />
+                  ) : (
+                    <>
+                      {data.weather ? (
+                        <div className="point-current-reading">
+                          <span className="weather-symbol">{data.weather.icon}</span>
+                          <strong>{data.weather.temperature_label}</strong>
+                          <span>{data.weather.condition}</span>
+                          <small>{data.weather.wind_label}</small>
+                        </div>
+                      ) : null}
+                      <HourlyForecast hours={data.hourly} headline={data.period.headline} />
+                    </>
+                  )}
+                </section>
+              </div>
+              {!fromRoute && data.related_routes.length ? (
+                <aside className="point-side">
+                  <section className="point-routes-card card-surface" aria-label="مسیرهای مرتبط">
+                    <div className="section-title-row">
+                      <h2>مسیرهای مرتبط</h2>
+                    </div>
+                    <div className="route-cards">
+                      {data.related_routes.map((route) => (
+                        <DestinationCard key={route.slug} route={route} />
+                      ))}
+                    </div>
+                  </section>
+                </aside>
+              ) : null}
+            </div>
             <footer className="site-footer">
               <span>هوای مقصد، برنامهٔ مسیر · بازهٔ {PERIOD_RANGES[displayPeriod].label}</span>
             </footer>

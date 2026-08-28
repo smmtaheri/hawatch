@@ -12,6 +12,7 @@ from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
+from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.catalog.tochal import TOCHAL_ROUTE_SLUGS, seed_tochal_catalog
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
@@ -168,6 +169,7 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
 
     # Curated Tochal catalog replaces fixture Tochal routes/points and shares weather points.
     seed_tochal_catalog()
+    rebuild_search_index()
     return destinations
 
 

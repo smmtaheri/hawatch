@@ -22,6 +22,7 @@ class WeatherPoint(models.Model):
 
     slug = models.SlugField(max_length=96, unique=True)
     name = models.CharField(max_length=80)
+    aliases = models.JSONField(default=list, blank=True)
     kind = models.CharField(max_length=16, choices=Kind.choices, default=Kind.SHARED)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     location = models.PointField(srid=4326, spatial_index=False)

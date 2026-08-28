@@ -5,9 +5,8 @@
 ```text
 Home /
 ├── Destination /destination/{destinationSlug}
-│   ├── مسیرهای مقصد
 │   └── Route /routes/{routeSlug}
-├── Destination point /destination-point/{pointSlug} (آینده)
+├── Point (canonical) /points/{weatherPointSlug}
 ├── Login /login (reference؛ خارج از milestone اول)
 └── Share /share (آینده)
 ```
@@ -15,6 +14,7 @@ Home /
 ## context و مالکیت داده
 
 - **Destination** مالک catalog مقصد، مختصات تأییدشده، forecast مقصد و فهرست routeهای مرتبط است.
+- **WeatherPoint** هویت canonical نقطهٔ هواشناسی مستقل است؛ `/points/{slug}`.
 - **Route** مالک ترتیب نقاط، زمان‌بندی، speed profile و forecast متناسب با زمان عبور از نقطه است.
 - **Weather data** در backend آینده normalize می‌شود؛ UI نباید provider response خام را مصرف کند.
 - **Share** باید payload کمینه و قابل بازسازی route plan را نگه دارد؛ جزئیات ماندگاری باز است.

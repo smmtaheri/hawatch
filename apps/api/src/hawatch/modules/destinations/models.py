@@ -19,6 +19,7 @@ class Destination(models.Model):
     climate = models.CharField(max_length=32)
     is_popular = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
+    aliases = models.JSONField(default=list, blank=True)
     data_mode = models.CharField(max_length=16, default="demo")
     seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
 

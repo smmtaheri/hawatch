@@ -1,6 +1,22 @@
-import type { ApiMeta, DestinationForecast, DestinationSummary, RouteForecast, RoutePointForecast, RouteSummary } from "../types";
+import type {
+  ApiMeta,
+  DestinationForecast,
+  DestinationSummary,
+  PointForecast,
+  RouteForecast,
+  RoutePointForecast,
+  RouteSummary,
+  SearchSuggestion,
+} from "../types";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000/api/v1";
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
+
+function apiUrl(path: string) {
+  const base = API_BASE.startsWith("/")
+    ? `${window.location.origin}${API_BASE}/`
+    : `${API_BASE}/`;
+  return new URL(path.replace(/^\/+/, ""), base);
+}
 
 export class ApiError extends Error {
   status: number;
@@ -11,7 +27,7 @@ export class ApiError extends Error {
 }
 
 async function getJson<T>(path: string, params?: Record<string, string | undefined>): Promise<T> {
-  const url = new URL(path.replace(/^\//, ""), API_BASE.endsWith("/") ? API_BASE : `${API_BASE}/`);
+  const url = apiUrl(path);
   if (params) {
     for (const [key, value] of Object.entries(params)) {
       if (value) url.searchParams.set(key, value);
@@ -42,6 +58,23 @@ export const api = {
     pointSlug: string,
     params: { date?: string; period?: string },
   ) => getJson<RoutePointForecast>(`routes/${routeSlug}/points/${pointSlug}/forecast/`, params),
+  pointForecast: (slug: string, params: { date?: string; period?: string }) =>
+    getJson<PointForecast>(`points/${slug}/forecast/`, params),
+  searchSuggestions: (query: string, signal?: AbortSignal) => {
+    const url = apiUrl("search/suggestions/");
+    url.searchParams.set("q", query);
+    return fetch(url.toString(), { signal }).then(async (response) => {
+      if (!response.ok) {
+        throw new ApiError("جست‌وجو ناموفق بود.", response.status);
+      }
+      return (await response.json()) as {
+        query: string;
+        results: SearchSuggestion[];
+        empty: boolean;
+        meta: ApiMeta;
+      };
+    });
+  },
 };
 
 export { API_BASE };
