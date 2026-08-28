@@ -6,6 +6,7 @@ export function StartTimeControl({
   rangeLabel,
   display,
   onChange,
+  onCommit,
 }: {
   minutes: number;
   min: number;
@@ -14,6 +15,7 @@ export function StartTimeControl({
   rangeLabel: string;
   display: string;
   onChange: (value: number) => void;
+  onCommit: (value: number) => void;
 }) {
   const percent = ((minutes - min) / Math.max(1, max - min)) * 100;
   return (
@@ -38,6 +40,14 @@ export function StartTimeControl({
           step={30}
           value={minutes}
           onChange={(event) => onChange(Number(event.target.value))}
+          onPointerUp={(event) => onCommit(Number((event.target as HTMLInputElement).value))}
+          onTouchEnd={(event) => onCommit(Number((event.target as HTMLInputElement).value))}
+          onKeyUp={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              onCommit(Number((event.target as HTMLInputElement).value));
+            }
+          }}
+          onBlur={(event) => onCommit(Number(event.target.value))}
         />
         <div className="gauge-ticks">
           {ticks.map((tick) => (

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
@@ -17,21 +17,22 @@ import { SpeedControl } from "../../components/SpeedControl";
 import { StartTimeControl } from "../../components/StartTimeControl";
 import { StatsGrid } from "../../components/StatsGrid";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { appendRouteContext, formatClockDisplay, PERIOD_RANGES, periodTicks, toClock } from "../../lib/periods";
 import type { PeriodId, RouteForecast } from "../../types";
-
-function toClock(minutes: number) {
-  const hour = Math.floor(minutes / 60) % 24;
-  const minute = minutes % 60;
-  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
-}
 
 export function RoutePage() {
   const { slug = "touchal-darband" } = useParams();
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState<RouteForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
+  const [draftMinutes, setDraftMinutes] = useState<number | null>(null);
+  const requestId = useRef(0);
+  const commitTimer = useRef<number | null>(null);
+  const plannerReady = useRef(false);
+  const explicitDate = params.has("date");
+  const explicitPeriod = params.has("period");
   const date = params.get("date") ?? undefined;
-  const period = (params.get("period") as PeriodId) || "morning";
+  const period = ((params.get("period") as PeriodId) || "morning") as PeriodId;
   const speed = params.get("speed") || undefined;
   const start = params.get("start_time") || undefined;
 
@@ -39,34 +40,71 @@ export function RoutePage() {
     const copy = new URLSearchParams(params);
     for (const [key, value] of Object.entries(next)) {
       if (value) copy.set(key, value);
+      else copy.delete(key);
     }
     setParams(copy, { replace: true });
   }
 
-  function load() {
+  function load(options?: { skipIfTimingPending?: boolean }) {
+    if (options?.skipIfTimingPending && data?.timing_pending) {
+      return;
+    }
+    const currentRequest = ++requestId.current;
     setStatus("loading");
     api
       .routeForecast(slug, { date, period, speed, start_time: start })
       .then((payload) => {
+        if (currentRequest !== requestId.current) return;
         setData(payload);
-        if (!date) {
-          const today = payload.days.find((day) => day.is_today)?.date;
-          if (today) update({ date: today, period, speed: payload.speed, start_time: toClock(payload.start_minutes) });
+        setDraftMinutes(payload.start_minutes);
+        if (!explicitDate || !explicitPeriod) {
+          const today = payload.days.find((day) => day.is_today)?.date ?? payload.meta.selected_date;
+          update({
+            date: explicitDate ? date : today,
+            period: explicitPeriod ? period : (payload.meta.selected_period as PeriodId),
+            speed: payload.speed,
+            start_time: toClock(payload.start_minutes),
+          });
         }
         setStatus("ready");
+        plannerReady.current = true;
       })
-      .catch((error) => setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error"));
+      .catch((error) => {
+        if (currentRequest !== requestId.current) return;
+        setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
+      });
   }
 
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, date, period, speed, start]);
+  }, [slug, date, period]);
 
-  const ticks = useMemo(
-    () => (period === "afternoon" ? ["۱۲:۰۰", "۱۴:۰۰", "۱۶:۰۰", "۱۸:۰۰", "۲۰:۰۰", "۲۲:۰۰"] : ["۰۰:۰۰", "۰۲:۰۰", "۰۴:۰۰", "۰۶:۰۰", "۰۸:۰۰", "۱۰:۰۰"]),
-    [period],
-  );
+  useEffect(() => {
+    if (!plannerReady.current) return;
+    load({ skipIfTimingPending: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [speed, start]);
+
+  const ticks = useMemo(() => periodTicks(period), [period]);
+  const periodRange = PERIOD_RANGES[period];
+  const pointHref = (href: string) => appendRouteContext(href, params);
+
+  function commitStartMinutes(minutes: number) {
+    setDraftMinutes(minutes);
+    if (data?.timing_pending) {
+      update({ start_time: toClock(minutes) });
+      return;
+    }
+    if (commitTimer.current) window.clearTimeout(commitTimer.current);
+    commitTimer.current = window.setTimeout(() => {
+      update({ start_time: toClock(minutes) });
+    }, 300);
+  }
+
+  function handlePeriodChange(next: PeriodId) {
+    update({ period: next, start_time: PERIOD_RANGES[next].defaultStart });
+  }
 
   if (status === "missing") {
     return (
@@ -78,8 +116,8 @@ export function RoutePage() {
   }
 
   const selected = date ?? data?.days.find((day) => day.is_today)?.date ?? "";
-  const startMinutes = data?.start_minutes ?? 360;
-  const periodRange = period === "afternoon" ? { min: 720, max: 1440, label: "۱۲ تا ۲۴" } : { min: 0, max: 720, label: "۰۰ تا ۱۲" };
+  const startMinutes = draftMinutes ?? data?.start_minutes ?? periodRange.min;
+  const startDisplay = formatClockDisplay(startMinutes);
 
   return (
     <main className="route-page">
@@ -128,7 +166,7 @@ export function RoutePage() {
                       <span className="decision-chip">نقاط مهم</span>
                     </div>
                     <div className="route-hourly-selector" aria-label="انتخاب بازهٔ زمانی پیش‌بینی">
-                      <PeriodToggle value={period} onChange={(next) => update({ period: next, start_time: next === "afternoon" ? "12:00" : "06:00" })} />
+                      <PeriodToggle value={period} onChange={handlePeriodChange} />
                     </div>
                   </div>
                   <RouteTimeline
@@ -136,12 +174,10 @@ export function RoutePage() {
                     destination={data.route.destination_label}
                     title={data.route.title}
                     points={data.points}
+                    pointHref={(point) => pointHref(point.href)}
                   />
                   <div className="route-hourly-values">
-                    <HourlyForecast
-                      hours={data.hourly}
-                      headline={period === "morning" ? "تغییرات نیمهٔ اول روز · هر دو ساعت" : "تغییرات نیمهٔ دوم روز · هر دو ساعت"}
-                    />
+                    <HourlyForecast hours={data.hourly} headline={data.period.headline ?? data.period.range_label} />
                   </div>
                   <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
                     <div className="route-point-weather-grid">
@@ -149,8 +185,7 @@ export function RoutePage() {
                         <Link
                           key={`${point.slug}-weather`}
                           className={`route-point-weather-card ${point.state}`}
-                          to={point.href}
-                          onClick={(event) => event.preventDefault()}
+                          to={pointHref(point.href)}
                           aria-label={`آب‌وهوای ${point.name} در زمان ${point.time}`}
                         >
                           <strong>{point.time}</strong>
@@ -191,8 +226,9 @@ export function RoutePage() {
                     max={periodRange.max}
                     ticks={ticks}
                     rangeLabel={periodRange.label}
-                    display={data.start_time}
-                    onChange={(value) => update({ start_time: toClock(value) })}
+                    display={startDisplay}
+                    onChange={setDraftMinutes}
+                    onCommit={commitStartMinutes}
                   />
                   <SpeedControl value={data.speed} options={data.speed_options} onChange={(value) => update({ speed: value })} />
                 </div>

@@ -7,9 +7,11 @@
 ## planner
 
 - date، period، start time و speed پارامترهای تصمیم‌اند.
-- تغییر هر پارامتر باید point arrival، weather mapping و decision card را هماهنگ update کند.
+- تغییر date/period باید point arrival، weather mapping و decision card را هماهنگ update کند.
+- تغییر start time/speed فقط وقتی `timing_pending` نیست forecast را refetch می‌کند؛ gauge با state محلی فوری حرکت می‌کند و commit با debounce/پایان تعامل انجام می‌شود.
 - mobile ساعت و speed را در یک row جمع‌وجور نشان می‌دهد.
-- فقط یک period control مشترک برای timeline و cards وجود دارد.
+- فقط یک period control مشترک (صبح / بعدازظهر / شب) برای timeline و cards وجود دارد.
+- کلیک روی نقطه به `/routes/{routeSlug}/points/{pointSlug}` می‌رود؛ Back همان مسیر با query قبلی را حفظ می‌کند.
 
 ## تصمیم و اشتراک
 

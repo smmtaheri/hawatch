@@ -12,4 +12,5 @@ urlpatterns = [
     path("destinations/<slug:slug>/forecast/", views.destination_forecast_view),
     path("routes/<slug:slug>/", views.route_detail),
     path("routes/<slug:slug>/forecast/", views.route_forecast_view),
+    path("routes/<slug:route_slug>/points/<slug:point_slug>/forecast/", views.route_point_forecast_view),
 ]

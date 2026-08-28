@@ -29,7 +29,7 @@ export function HourlyForecast({
       <div className="hours-grid">
         {hours.map((hour) => (
           <div
-            key={hour.time}
+            key={hour.forecast_at ?? hour.time}
             className={`hour-item ${hour.state} ${hour.is_past ? "is-past" : ""} ${hour.is_current ? "is-current" : ""}`}
           >
             <strong>{hour.time}</strong>

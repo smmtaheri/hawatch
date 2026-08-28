@@ -1,4 +1,4 @@
-import type { ApiMeta, DestinationForecast, DestinationSummary, RouteForecast, RouteSummary } from "../types";
+import type { ApiMeta, DestinationForecast, DestinationSummary, RouteForecast, RoutePointForecast, RouteSummary } from "../types";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000/api/v1";
 
@@ -37,6 +37,11 @@ export const api = {
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },
   ) => getJson<RouteForecast>(`routes/${slug}/forecast/`, params),
+  routePointForecast: (
+    routeSlug: string,
+    pointSlug: string,
+    params: { date?: string; period?: string },
+  ) => getJson<RoutePointForecast>(`routes/${routeSlug}/points/${pointSlug}/forecast/`, params),
 };
 
 export { API_BASE };

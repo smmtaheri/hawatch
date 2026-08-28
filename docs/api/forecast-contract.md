@@ -2,20 +2,46 @@
 
 timezone پیش‌فرض: `Asia/Tehran`.
 
-بازهٔ قابل مشاهدهٔ این نسخه، مطابق screenshot و live inspection:
+بازهٔ قابل مشاهدهٔ این نسخه:
 
 - ۷ روز: دیروز، امروز، و پنج روز بعد
-- hourly: هر دو ساعت، ۶ کارت در هر بازه
-- صبح: ۰۰، ۰۲، ۰۴، ۰۶، ۰۸، ۱۰
-- بعدازظهر: ۱۲، ۱۴، ۱۶، ۱۸، ۲۰، ۲۲
+- hourly: هر دو ساعت، **۴ کارت** در هر بازهٔ زمانی
+- سه بازهٔ غیرهم‌پوشان (نسخهٔ قبلی با دو بازهٔ ۰۰–۱۲ / ۱۲–۲۴ **جایگزین شده**):
 
-اگر منبع دیگری بازهٔ متفاوت نشان دهد، همان ۷ روز و گام دوساعته مبنای UI است. برای pilot کم‌هزینه، provider می‌تواند با override محیطی پنج روز forecast و بدون past day دریافت کند؛ در آن حالت باید قرارداد UI نیز عمداً به همان بازه کاهش یابد.
+| `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
+| --- | --- | --- | --- |
+| `morning` | صبح | ۰۲:۰۰–۱۰:۰۰ | ۰۲، ۰۴، ۰۶، ۰۸ |
+| `afternoon` | بعدازظهر | ۱۰:۰۰–۱۸:۰۰ | ۱۰، ۱۲، ۱۴، ۱۶ |
+| `night` | شب | ۱۸:۰۰–۰۲:۰۰ روز بعد | ۱۸، ۲۰، ۲۲، ۰۰ |
+
+## معنای تاریخ برای `night`
+
+برای `period=night`، `date` یعنی **شبِ همان روز** (شروع از ۱۸:۰۰). مثال:
+
+`date=2026-08-28&period=night` → ۱۸:۰۰، ۲۰:۰۰، ۲۲:۰۰ در ۲۸ اوت + ۰۰:۰۰ در ۲۹ اوت.
+
+فیلتر با پنجرهٔ timezone-aware انجام می‌شود؛ نباید فقط با یک تاریخ تقویمی فیلتر شود.
+
+## انتخاب پیش‌فرض (بدون query صریح)
+
+| ساعت محلی تهران | `selected_period` | `selected_date` |
+| --- | --- | --- |
+| ۰۰:۰۰–۰۱:۵۹ | `night` | دیروز |
+| ۰۲:۰۰–۰۹:۵۹ | `morning` | امروز |
+| ۱۰:۰۰–۱۷:۵۹ | `afternoon` | امروز |
+| ۱۸:۰۰–۲۳:۵۹ | `night` | امروز |
+
+اگر کاربر `date` یا `period` را صریح بفرستد، API همان را برمی‌گرداند و frontend بعد از load آن را overwrite نمی‌کند.
+
+## past / current / future
+
+flagها از **timestamp واقعی** هر reading (`forecast_at`) نسبت به `current_local_time` محاسبه می‌شوند. ساعت‌های گذشته dim می‌شوند؛ ساعت جاری مشخص است؛ دادهٔ cross-midnight در `night` همین قواعد را دارد.
 
 ## envelope
 
 ```text
 forecast
-├── destination | route
+├── destination | route | point
 ├── days[]
 ├── current?
 ├── hourly[]
@@ -41,6 +67,23 @@ forecast
 - `timezone`
 - `seed_version`
 - `freshness` (`ready` | `stale` | `partial`)
+- `selected_date` / `selected_period`
 - `valid_from` / `valid_to`
 
 دادهٔ دمو به‌عنوان مشاهدهٔ واقعی معرفی نمی‌شود؛ `data_mode=demo` است.
+
+## route planner
+
+- `start_time` در هر period به بازهٔ همان period محدود می‌شود.
+- برای `night`، `00:00`–`02:00` به‌عنوان ادامهٔ همان شب (نه ابتدای همان روز تقویمی) تفسیر می‌شود.
+- وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
+
+## نقطهٔ مسیر (point detail)
+
+- `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
+- لینک frontend: `/routes/{route_slug}/points/{point_slug}`
+- Back از صفحهٔ نقطه به مسیر مبدأ با حفظ `date`، `period`، `start_time`، `speed` (در صورت وجود در URL).
+
+## slider commit
+
+در Route، مقدار gauge بلافاصله با state محلی به‌روز می‌شود؛ commit به URL/API فقط در پایان تعامل (pointer/touch release، blur، Enter/Space) یا debounce کوتاه (~۳۰۰ms) انجام می‌شود.

@@ -21,8 +21,8 @@
 ۵. هشدار یا تغییر مهم.
 ۶. انتخاب روز.
 ۷. بخش مسیرها.
-۸. انتخاب صبح/بعدازظهر.
-۹. پیش‌بینی ساعتی شش‌تایی.
+۸. انتخاب صبح/بعدازظهر/شب.
+۹. پیش‌بینی ساعتی چهارتایی.
 ۱۰. جزئیات تخصصی.
 ۱۱. در web، decision card و خلاصهٔ مسیر در جایگاه side قرار می‌گیرند؛ در mobile به ترتیب خواندن تصمیم نزدیک داده می‌مانند.
 
@@ -36,14 +36,14 @@
 - breadcrumb: مقصدها به Home، نام مقصد current و غیرقابل کلیک.
 - day tabs: forecast و route recommendations را برای روز انتخابی refresh می‌کند.
 - مسیرها: مسیر انتخابی را active می‌کند و به Route می‌برد یا data context صفحه را تغییر می‌دهد.
-- صبح/بعدازظهر: hourly forecast و وضعیت نقاط مرتبط را عوض می‌کند.
+- صبح/بعدازظهر/شب: hourly forecast و وضعیت نقاط مرتبط را عوض می‌کند.
 - cardهای route: detail route را باز می‌کنند.
 - theme toggle: theme را تغییر می‌دهد، بدون reset کردن destination/day/period.
 
 ## ۶. stateهای loading، ready، empty، error، stale و partial-data
 
 - loading: hero می‌تواند اطلاعات پایه را حفظ کند و weather card skeleton داشته باشد.
-- ready: status، روزها، مسیرها، شش ساعت و metrics کامل نمایش داده شوند.
+- ready: status، روزها، مسیرها، چهار ساعت و metrics کامل نمایش داده شوند.
 - empty: برای روز یا مسیر بدون forecast پیام و جایگزین قابل اقدام نمایش داده شود.
 - error: شکست provider یا API داخلی با retry، زمان آخرین موفقیت و back path.
 - stale: timestamp و stale badge؛ تصمیم حساس نباید بدون هشدار از دادهٔ قدیمی نتیجه‌گیری کند.
@@ -53,7 +53,7 @@
 
 - مقصد: slug، نام، category، مختصات، elevation و hero asset.
 - وضعیت فعلی: condition، temperature، wind، visibility و fetched/valid times.
-- forecast روزانه و hourly شش‌تایی.
+- forecast روزانه و hourly چهارتایی.
 - route catalog همان مقصد.
 - metrics تخصصی مثل gust، freezing level، cloud base، UV، precipitation و sunrise/sunset.
 - هشدارها با severity normal/change/critical.

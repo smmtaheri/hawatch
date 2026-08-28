@@ -6,11 +6,13 @@ export function RouteTimeline({
   destination,
   title,
   points,
+  pointHref,
 }: {
   origin: string;
   destination: string;
   title: string;
   points: RoutePointView[];
+  pointHref?: (point: RoutePointView) => string;
 }) {
   return (
     <div className="route-linear-panel">
@@ -24,9 +26,8 @@ export function RouteTimeline({
             <Link
               key={point.slug}
               className={`route-linear-point ${point.state}`}
-              to={point.href}
-              aria-label={`مشاهدهٔ مقصد ${point.name}، ${point.time}`}
-              onClick={(event) => event.preventDefault()}
+              to={pointHref ? pointHref(point) : point.href}
+              aria-label={`مشاهدهٔ جزئیات ${point.name}، ${point.time}`}
             >
               <span className="route-linear-node">
                 <span className="marker-weather">{point.icon}</span>

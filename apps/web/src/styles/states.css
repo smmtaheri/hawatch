@@ -220,7 +220,7 @@ html:not([data-theme="light"]) .hawatch-state.stale {
 
   .destination-page .hours-grid {
     display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     width: 100%;
     min-width: 0;
     overflow: hidden !important;

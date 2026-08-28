@@ -11,8 +11,9 @@ Frontend فقط API داخلی هواچ را مصرف می‌کند.
 - `GET /api/v1/destinations/{slug}/forecast/?date=&period=`
 - `GET /api/v1/routes/{slug}/`
 - `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=`
+- `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
 
-`period`: `morning` | `afternoon`  
+`period`: `morning` | `afternoon` | `night`
 `speed`: `آرام` | `متوسط` | `سریع` یا معادل `slow` | `medium` | `fast`
 
-پاسخ‌ها `schema_version`، timezone تهران، freshness و data_mode دارند.
+پاسخ‌ها `schema_version`، timezone تهران، freshness و data_mode دارند. جزئیات بازه‌ها و انتخاب پیش‌فرض در [forecast-contract.md](./forecast-contract.md) است.

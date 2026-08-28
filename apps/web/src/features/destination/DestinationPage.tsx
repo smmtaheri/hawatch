@@ -18,20 +18,19 @@ import type { DestinationForecast, PeriodId } from "../../types";
 export function DestinationPage() {
   const { slug = "touchal" } = useParams();
   const [date, setDate] = useState<string>();
-  const [period, setPeriod] = useState<PeriodId>("morning");
+  const [period, setPeriod] = useState<PeriodId>();
   const [data, setData] = useState<DestinationForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
+  const activePeriod = period ?? (data?.meta.selected_period as PeriodId) ?? "morning";
 
-  function load(nextDate = date, nextPeriod = period) {
+  function load(nextDate = date, nextPeriod = activePeriod) {
     setStatus("loading");
     api
       .destinationForecast(slug, { date: nextDate, period: nextPeriod })
       .then((payload) => {
         setData(payload);
-        if (!nextDate) {
-          const today = payload.days.find((day) => day.is_today)?.date ?? payload.days[1]?.date;
-          setDate(today);
-        }
+        if (!nextDate) setDate(payload.meta.selected_date);
+        if (!period) setPeriod(payload.meta.selected_period as PeriodId);
         setStatus(payload.empty ? "ready" : "ready");
       })
       .catch((error) => setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error"));
@@ -111,7 +110,10 @@ export function DestinationPage() {
                     </div>
                     <div className="destination-period-row">
                       <span className="planner-label">بازهٔ نمایش هوا</span>
-                      <PeriodToggle value={period} onChange={setPeriod} />
+                      <PeriodToggle
+                        value={activePeriod}
+                        onChange={(next) => setPeriod(next)}
+                      />
                     </div>
                   </div>
                   {data.empty ? (

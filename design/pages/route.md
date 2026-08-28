@@ -36,8 +36,8 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - day: تمام زمان‌ها، weather points و decision summary را برای روز جدید refresh می‌کند.
 - start-time gauge: زمان حرکت را تغییر می‌دهد و زمان رسیدن همهٔ نقاط را recompute می‌کند.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
-- morning/afternoon: فقط یک کنترل مشترک برای route points و hourly forecast در mobile.
-- point: جزئیات destination-point آینده را باز می‌کند یا فعلاً anchor است.
+- morning/afternoon/night: فقط یک کنترل مشترک برای route points و hourly forecast در mobile.
+- point: جزئیات نقطه در `/routes/{routeSlug}/points/{pointSlug}` باز می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: share target آینده را باز می‌کند؛ در این milestone API یا integration ساخته نمی‌شود.
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from django.conf import settings
 from rest_framework.exceptions import NotFound
@@ -8,13 +8,16 @@ from rest_framework.exceptions import NotFound
 from hawatch.common.time import (
     PERIODS,
     SPEED_MULTIPLIERS,
+    arrival_forecast_at,
+    datetime_flags,
     day_payload,
     day_window,
     format_clock,
     format_duration,
     format_hhmm,
-    hour_flags,
     now_tehran,
+    period_hour_slots,
+    period_window,
     to_fa_digits,
     timezone,
 )
@@ -208,16 +211,16 @@ def serialize_point(point: RoutePoint) -> dict:
         "note": point.note,
         "axis_x": point.axis_x,
         "axis_y": point.axis_y,
-        "href": f"/destination-point/{point.slug}",
+        "href": f"/routes/{point.route.slug}/points/{point.slug}",
         "latitude": location.y if location else None,
         "longitude": location.x if location else None,
         "weather_point_slug": point.weather_point.slug if point.weather_point_id else None,
     }
 
 
-def reading_payload(record: ForecastRecord, *, today: date, current_hour: int) -> dict:
+def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> dict:
     local_at = record.forecast_at.astimezone(timezone())
-    flags = hour_flags(local_at.date(), local_at.hour, today, current_hour)
+    flags = datetime_flags(record.forecast_at, now)
     unavailable = []
     if record.cloud_cover_pct is None:
         unavailable.append("cloud_cover_pct")
@@ -300,14 +303,31 @@ def _forecast_qs_for_point(point: WeatherPoint):
     return qs
 
 
-def _records_for_day(point: WeatherPoint, selected_date: date) -> list[ForecastRecord]:
-    start = localize_dt_safe(selected_date, 0)
-    end = start + timedelta(days=1)
+def _records_for_window(point: WeatherPoint, start: datetime, end: datetime) -> list[ForecastRecord]:
     return list(
         _forecast_qs_for_point(point)
         .filter(forecast_at__gte=start, forecast_at__lt=end)
         .order_by("forecast_at")
     )
+
+
+def _records_for_day(point: WeatherPoint, selected_date: date) -> list[ForecastRecord]:
+    start = localize_dt_safe(selected_date, 0)
+    end = start + timedelta(days=1)
+    return _records_for_window(point, start, end)
+
+
+def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *, now: datetime) -> list[dict]:
+    window_start, window_end = period_window(selected_date, period)
+    records = _records_for_window(point, window_start, window_end)
+    by_at = {record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0): record for record in records}
+    hourly = []
+    for slot_date, hour in period_hour_slots(selected_date, period):
+        slot_at = localize_dt_safe(slot_date, hour).replace(minute=0, second=0, microsecond=0)
+        record = by_at.get(slot_at)
+        if record is not None:
+            hourly.append(reading_payload(record, now=now))
+    return hourly
 
 def destination_forecast(destination: Destination, *, selected_date: date, period: str) -> dict:
     refresh_if_bucket_changed()
@@ -317,12 +337,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
     if point is None:
         raise NotFound({"detail": "نقطهٔ هوای مقصد پیدا نشد."})
     records = _records_for_day(point, selected_date)
-    hours_spec = PERIODS[period]["hours"]
-    hourly = []
-    for record in records:
-        hour = record.forecast_at.astimezone(timezone()).hour
-        if hour in hours_spec:
-            hourly.append(reading_payload(record, today=today, current_hour=local.hour))
+    hourly = _hourly_for_period(point, selected_date, period, now=local)
 
     now_record = min(records, key=lambda item: abs(item.forecast_at.astimezone(timezone()).hour - local.hour), default=None) if records else None
     if selected_date != today:
@@ -408,7 +423,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
         "destination": serialize_destination(destination, include_routes=True),
         "days": days,
         "period": PERIODS[period],
-        "current": reading_payload(now_record, today=today, current_hour=local.hour) if now_record else None,
+        "current": reading_payload(now_record, now=local) if now_record else None,
         "hourly": hourly,
         "metrics": metrics,
         "alerts": [
@@ -449,21 +464,21 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     today = local.date()
     multiplier = SPEED_MULTIPLIERS[speed]
     timing_pending = route.timing_status == Route.TimingStatus.PENDING
-    points = list(route.points.select_related("weather_point").all())
+    points = list(route.points.select_related("weather_point", "route").all())
     planned = []
     for point in points:
         arrival = _point_arrival_minutes(point, start_minutes=start_minutes, multiplier=multiplier, timing_pending=timing_pending)
         wp = point.weather_point
         record = None
         if wp and arrival is not None:
-            hour = (arrival // 60) % 24
-            even_hour = hour - (hour % 2)
-            start = localize_dt_safe(selected_date, even_hour)
-            record = _forecast_qs_for_point(wp).filter(forecast_at=start).first()
+            target_at = arrival_forecast_at(selected_date, arrival)
+            even_hour = target_at.hour - (target_at.hour % 2)
+            lookup_at = target_at.replace(hour=even_hour, minute=0, second=0, microsecond=0)
+            record = _forecast_qs_for_point(wp).filter(forecast_at=lookup_at).first()
             if record is None:
                 record = (
                     _forecast_qs_for_point(wp)
-                    .filter(forecast_at__date=selected_date)
+                    .filter(forecast_at__gte=lookup_at - timedelta(hours=2), forecast_at__lte=lookup_at + timedelta(hours=2))
                     .order_by("forecast_at")
                     .first()
                 )
@@ -482,7 +497,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                     .order_by("forecast_at")
                     .first()
                 )
-        weather = reading_payload(record, today=today, current_hour=local.hour) if record else None
+        weather = reading_payload(record, now=local) if record else None
         arrival_state = weather["severity"] if weather else "normal"
         if arrival is not None:
             if arrival >= 900:
@@ -508,17 +523,12 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
 
     dest_point = destination_weather_point(route.destination)
     dest_records = _records_for_day(dest_point, selected_date) if dest_point else []
-    hours_spec = PERIODS[period]["hours"]
-    hourly = []
-    for record in dest_records:
-        hour = record.forecast_at.astimezone(timezone()).hour
-        if hour in hours_spec:
-            payload = reading_payload(record, today=today, current_hour=local.hour)
-            if not timing_pending and any(item["state"] == "critical" for item in planned):
-                if hour >= 8:
-                    payload["state"] = "critical"
-                    payload["severity"] = "critical"
-            hourly.append(payload)
+    hourly = _hourly_for_period(dest_point, selected_date, period, now=local) if dest_point else []
+    if not timing_pending and any(item["state"] == "critical" for item in planned):
+        for payload in hourly:
+            if payload["hour"] >= 8:
+                payload["state"] = "critical"
+                payload["severity"] = "critical"
 
     finish = planned[-1] if planned else None
     critical_point = next((item for item in planned if item["state"] == "critical"), finish)
@@ -637,6 +647,71 @@ def get_destination(slug: str) -> Destination:
         return Destination.objects.get(slug=slug, is_active=True)
     except Destination.DoesNotExist as exc:
         raise NotFound({"detail": "مقصد پیدا نشد."}) from exc
+
+
+def get_route_point(route_slug: str, point_slug: str) -> RoutePoint:
+    try:
+        return RoutePoint.objects.select_related("route", "route__destination", "weather_point").get(
+            route__slug=route_slug,
+            slug=point_slug,
+        )
+    except RoutePoint.DoesNotExist as exc:
+        raise NotFound({"detail": "نقطهٔ مسیر پیدا نشد."}) from exc
+
+
+def route_point_forecast(
+    route_point: RoutePoint,
+    *,
+    selected_date: date,
+    period: str,
+    back_params: dict | None = None,
+) -> dict:
+    refresh_if_bucket_changed()
+    local = now_tehran()
+    today = local.date()
+    route = route_point.route
+    wp = route_point.weather_point
+    weather = None
+    hourly: list[dict] = []
+    empty_weather = wp is None
+    if wp:
+        hourly = _hourly_for_period(wp, selected_date, period, now=local)
+        if hourly:
+            weather = hourly[min(len(hourly) // 2, len(hourly) - 1)]
+        else:
+            empty_weather = True
+    elevation = route_point.effective_elevation_m
+    location = route_point.effective_location
+    back_query_parts = [f"date={selected_date.isoformat()}", f"period={period}"]
+    if back_params:
+        for key in ("start_time", "speed"):
+            value = back_params.get(key)
+            if value:
+                back_query_parts.append(f"{key}={value}")
+    back_query = "&".join(back_query_parts)
+    return {
+        "point": {
+            **serialize_point(route_point),
+            "route_slug": route.slug,
+            "route_title": route.title,
+            "route_href": f"/routes/{route.slug}",
+            "destination": serialize_destination(route.destination),
+            "has_weather_point": wp is not None,
+            "has_forecast": bool(hourly),
+            "latitude": location.y if location else None,
+            "longitude": location.x if location else None,
+            "elevation_m": elevation,
+            "elevation_label": f"{to_fa_digits(elevation)} m" if elevation is not None else "ارتفاع نامشخص",
+        },
+        "days": [day_payload(day, today) for day in day_window(today)],
+        "period": PERIODS[period],
+        "weather": weather,
+        "hourly": hourly,
+        "empty": empty_weather and not hourly,
+        "partial": wp is not None and not hourly,
+        "back_href": f"/routes/{route.slug}?{back_query}",
+        "meta": meta_base(selected_date=selected_date, period=period),
+    }
 
 
 def get_route(slug: str) -> Route:

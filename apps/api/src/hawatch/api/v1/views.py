@@ -11,13 +11,22 @@ from hawatch.api.v1.serializers import (
     destination_forecast,
     get_destination,
     get_route,
+    get_route_point,
     list_destinations,
     meta_base,
     route_forecast,
+    route_point_forecast,
     serialize_destination,
     serialize_route,
 )
-from hawatch.common.time import now_tehran, parse_date, parse_period, parse_speed, parse_start_minutes
+from hawatch.common.time import (
+    default_forecast_selection,
+    now_tehran,
+    parse_date,
+    parse_period,
+    parse_speed,
+    parse_start_minutes,
+)
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.destinations.models import Destination
@@ -134,12 +143,20 @@ def destination_detail(request, slug: str):
     )
 
 
+def _resolve_date_period(request) -> tuple:
+    local = now_tehran()
+    explicit_date = "date" in request.query_params
+    explicit_period = "period" in request.query_params
+    default_date, default_period = default_forecast_selection(local)
+    selected = parse_date(request.query_params.get("date"), default_date) if explicit_date else default_date
+    period = parse_period(request.query_params.get("period")) if explicit_period else default_period
+    return selected, period
+
+
 @api_view(["GET"])
 def destination_forecast_view(request, slug: str):
     destination = get_destination(slug)
-    today = now_tehran().date()
-    selected = parse_date(request.query_params.get("date"), today)
-    period = parse_period(request.query_params.get("period"))
+    selected, period = _resolve_date_period(request)
     return Response(destination_forecast(destination, selected_date=selected, period=period))
 
 
@@ -154,9 +171,7 @@ def route_detail(request, slug: str):
 @api_view(["GET"])
 def route_forecast_view(request, slug: str):
     route = get_route(slug)
-    today = now_tehran().date()
-    selected = parse_date(request.query_params.get("date"), today)
-    period = parse_period(request.query_params.get("period"))
+    selected, period = _resolve_date_period(request)
     speed = parse_speed(request.query_params.get("speed"))
     start = parse_start_minutes(
         request.query_params.get("start_time"),
@@ -172,3 +187,14 @@ def route_forecast_view(request, slug: str):
             speed=speed,
         )
     )
+
+
+@api_view(["GET"])
+def route_point_forecast_view(request, route_slug: str, point_slug: str):
+    route_point = get_route_point(route_slug, point_slug)
+    selected, period = _resolve_date_period(request)
+    back_params = {
+        "start_time": request.query_params.get("start_time"),
+        "speed": request.query_params.get("speed"),
+    }
+    return Response(route_point_forecast(route_point, selected_date=selected, period=period, back_params=back_params))

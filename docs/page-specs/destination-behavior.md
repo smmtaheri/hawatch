@@ -8,7 +8,8 @@
 
 - انتخاب روز، date context را تغییر می‌دهد.
 - انتخاب مسیر، route recommendation یا navigation به Route را تغییر می‌دهد.
-- انتخاب صبح/بعدازظهر، hourly و route weather را هماهنگ تغییر می‌دهد.
+- انتخاب صبح/بعدازظهر/شب، hourly و route weather را هماهنگ تغییر می‌دهد.
+- بدون query صریح، API بر اساس ساعت تهران `date` و `period` پیش‌فرض برمی‌گرداند.
 - آخرین به‌روزرسانی، valid window و stale بودن باید کنار داده قابل مشاهده باشد.
 
 ## layout mobile

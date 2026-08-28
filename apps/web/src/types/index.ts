@@ -1,6 +1,6 @@
 export type Freshness = "ready" | "stale" | "partial";
 export type Severity = "normal" | "change" | "critical";
-export type PeriodId = "morning" | "afternoon";
+export type PeriodId = "morning" | "afternoon" | "night";
 
 export interface WindAlert {
   code: "windy" | "gale";
@@ -75,6 +75,7 @@ export interface DayInfo {
 
 export interface HourlyReading {
   time: string;
+  forecast_at?: string;
   hour: number;
   temperature_c: number;
   temperature_label: string;
@@ -135,6 +136,28 @@ export interface RoutePointView {
   arrival_minutes: number | null;
   timing_pending?: boolean;
   timing_estimated?: boolean;
+  latitude?: number | null;
+  longitude?: number | null;
+  elevation_m?: number | null;
+}
+
+export interface RoutePointForecast {
+  point: RoutePointView & {
+    route_slug: string;
+    route_title: string;
+    route_href: string;
+    destination: DestinationSummary;
+    has_weather_point: boolean;
+    has_forecast: boolean;
+  };
+  days: DayInfo[];
+  period: { id: PeriodId; label: string; range_label: string; headline: string; hours: number[] };
+  weather: HourlyReading | null;
+  hourly: HourlyReading[];
+  empty: boolean;
+  partial: boolean;
+  back_href: string;
+  meta: ApiMeta;
 }
 
 export interface RouteForecast {
@@ -153,7 +176,7 @@ export interface RouteForecast {
     href: string;
   };
   days: DayInfo[];
-  period: { id: PeriodId; label: string; range_label: string; hours: number[] };
+  period: { id: PeriodId; label: string; range_label: string; headline?: string; hours: number[] };
   start_minutes: number;
   start_time: string;
   speed: string;

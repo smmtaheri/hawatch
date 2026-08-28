@@ -1,3 +1,4 @@
+import { PERIOD_OPTIONS } from "../lib/periods";
 import type { PeriodId } from "../types";
 
 export function PeriodToggle({
@@ -9,24 +10,18 @@ export function PeriodToggle({
 }) {
   return (
     <div className="daypart-toggle" role="group" aria-label="انتخاب بازهٔ زمانی">
-      <button
-        className={value === "morning" ? "selected" : ""}
-        type="button"
-        aria-pressed={value === "morning"}
-        onClick={() => onChange("morning")}
-      >
-        <strong>صبح</strong>
-        <small>۰۰ تا ۱۲</small>
-      </button>
-      <button
-        className={value === "afternoon" ? "selected" : ""}
-        type="button"
-        aria-pressed={value === "afternoon"}
-        onClick={() => onChange("afternoon")}
-      >
-        <strong>بعدازظهر</strong>
-        <small>۱۲ تا ۲۴</small>
-      </button>
+      {PERIOD_OPTIONS.map((option) => (
+        <button
+          key={option.id}
+          className={value === option.id ? "selected" : ""}
+          type="button"
+          aria-pressed={value === option.id}
+          onClick={() => onChange(option.id)}
+        >
+          <strong>{option.label}</strong>
+          <small>{option.rangeLabel}</small>
+        </button>
+      ))}
     </div>
   );
 }
