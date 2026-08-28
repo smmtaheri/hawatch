@@ -32,7 +32,7 @@ status از PostgreSQL خوانده می‌شود و تعداد مقصد، مس�
 
 مقدار `HAWATCH_RETENTION_DAYS` عمداً بین ۱ و ۷ محدود است و مقدار پیش‌فرض آن ۷ روز است.
 
-- `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود؛ رکوردهای متصل به آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شوند.
+- `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود؛ رکوردهای متصل به آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شوند. این policy با دادهٔ demo و live یکسان اعمال می‌شود.
 - `ForecastSnapshot` فعلی raw JSON و metadata هر ingest را نگه می‌دارد و بر اساس `generated_at` پاک می‌شود؛ آخرین snapshot قابل‌استفاده استثنای fallback است. `ForecastAssessment` اگر در آینده اضافه شود، command آن را با timestamp استاندارد تشخیص می‌دهد.
 - فقط فایل‌های rotated با الگوی `*.jsonl.*` حذف می‌شوند؛ فایل active برای جلوگیری از حذف inode در حال استفاده نگه داشته می‌شود و handler با rotation روزانه و `backupCount=6` بیشتر از هفت روز فایل فعال/چرخیده نگه نمی‌دارد.
 - Prometheus با `--storage.tsdb.retention.time=7d` اجرا می‌شود.

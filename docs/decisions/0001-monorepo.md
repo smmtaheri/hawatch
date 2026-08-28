@@ -5,16 +5,15 @@
 
 ## زمینه
 
-هواچ هم‌زمان design handoff، تصاویر، مستندات، frontend آینده و backend آینده دارد. جدا کردن UI/UX از code در شروع می‌تواند باعث drift بین screenshot و implementation شود.
+هواچ هم‌زمان design handoff، تصاویر، مستندات، frontend و backend اجرایی دارد. جدا کردن UI/UX از code می‌تواند باعث drift بین screenshot و implementation شود.
 
 ## تصمیم
 
-یک repository با نام `hawatch-product` و ساختار monorepo استفاده می‌کنیم. design، docs، `apps/web`، `apps/api`، `infra` و `scripts` کنار هم version می‌شوند. در این مرحله appها فقط placeholder هستند.
+یک repository با نام `hawatch` و ساختار monorepo استفاده می‌کنیم. design، docs، `apps/web`، `apps/api`، `infra` و `scripts` کنار هم version می‌شوند. در وضعیت فعلی، `apps/web` و `apps/api` implementation قابل‌اجرا دارند و Login همچنان فقط reference طراحی است.
 
 ## پیامدها
 
-- مرجع بصری و implementation آینده در یک history قرار می‌گیرند.
+- مرجع بصری و implementation فعلی/آینده در یک history قرار می‌گیرند.
 - تغییرهای design و acceptance criteria قابل trace هستند.
 - ownership و release boundary آینده باید جداگانه تعریف شود.
 - repository فعلی Sites دست‌نخورده می‌ماند.
-

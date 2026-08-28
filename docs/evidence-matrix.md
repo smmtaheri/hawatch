@@ -1,6 +1,6 @@
 # ماتریس evidence هواچ
 
-تاریخ بررسی: 2026-08-26
+تاریخ بررسی: 2026-08-28
 
 این ماتریس منبع هر تصمیم validation را مشخص می‌کند. `LIVE-BUNDLE` یعنی JavaScript/CSS منتشرشدهٔ همان سایت، نه source محلی. موارد آینده از رفتار فعلی live جدا نگه داشته شده‌اند.
 
@@ -17,7 +17,8 @@
 | `LIVE-BUNDLE` | assetهای script/style لینک‌شده از HTML live شامل page/data/experience bundles |
 | `DOCX` | `references/Hawatch.docx`؛ فایل موجود و خوانده‌شده |
 | `LOCAL-SOURCE` | `/workspace/sites/hawatch-weather`؛ در این محیط موجود نیست و طبق تصمیم کاربر reference unavailable و non-gating است |
-| `GIT` | `git status --short --branch` و commit اولیه؛ baseline این handoff با پیام مشخص ساخته شد |
+| `GIT` | `git status --short --branch` و history فعلی؛ commitهای مستندشدهٔ repository |
+| `LOCAL-IMPLEMENTATION` | source فعلی همین repository در `apps/web` و `apps/api`؛ برای رفتار اجراشده، جدا از reference live |
 
 ## repository و تصاویر
 
@@ -103,7 +104,7 @@
 | responsive و light/dark | screenshot + page doc | چهار تصویر Login و `design/pages/login.md` §۹ و §۱۰ |
 | live Login | `PRODUCT` + `SCREENSHOT-SOURCE` | طبق تصمیم قطعی Login برای مرحلهٔ بعد است؛ live Login در این milestone validate یا implementation نمی‌شود |
 
-## API، معماری و عدم implementation
+## API، معماری و مرزبندی implementation
 
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
@@ -111,19 +112,31 @@
 | Django REST Framework، PostgreSQL، Python 3.14، uv | `PRODUCT` + docs | `README.md` و `docs/architecture/backend.md`؛ compatibility فقط به‌عنوان preflight آینده ثبت شده |
 | Redis/queue/Kafka/data lake | `PRODUCT` + ADR + Compose | pipeline docs و ADR 0002/0003؛ Redis فقط profile `cache`؛ Kafka و data lake runtime ندارند |
 | raw/normalized، retention حداکثر یک هفته و cleanup | `PRODUCT` + pipeline doc | `docs/architecture/weather-data-pipeline.md` §raw، §retention و cleanup policy |
-| retry، backoff، checkpoint، heartbeat و no-concurrent-run | `PRODUCT` + ADR | pipeline doc و ADR 0002؛ فقط requirement آینده، بدون worker/queue اجرایی |
+| retry، backoff، checkpoint، heartbeat و no-concurrent-run | `PRODUCT` + LOCAL implementation + ADR | ingest صریح retry/lock/checkpoint دارد و maintenance/retention جداست؛ queue/worker دائمی و Kafka runtime این milestone نیستند |
 | implementation محلی | filesystem + tests | `apps/web`، `apps/api`، `infra/compose`، seed دمو و تست‌های Vitest/pytest؛ ادعای «فقط `.gitkeep`» منسوخ است |
+
+## هم‌ترازی با implementation فعلی
+
+| جزئیات | منبع | evidence |
+| --- | --- | --- |
+| جست‌وجوی unified Home | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/components/SearchCombobox.tsx`، `features/home/HomePage.tsx` و `apps/web/src/api/client.ts`; پیشنهادها از `/api/v1/search/suggestions/` می‌آیند، حداقل دو کاراکتر و debounce حدود ۲۰۰ms دارند، و submit destination-only fallback ندارد. |
+| نتیجهٔ خطای جست‌وجو | `LOCAL-IMPLEMENTATION` | SearchCombobox وضعیت error را نگه می‌دارد و Home پیام خطا و retry ارائه می‌کند؛ query از بین نمی‌رود. |
+| صفحهٔ canonical نقطه | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/features/point/PointDetailPage.tsx` و `PointNavigation.tsx`؛ مسیر عمومی `/points/{slug}`، بدون timing planner و با related routes در ورود مستقیم. |
+| API نقطه و جست‌وجو | `LOCAL-IMPLEMENTATION` | `apps/api/src/hawatch/api/v1/urls.py` و `views.py`؛ endpointهای point forecast و search suggestions اجرایی‌اند. |
+| Route → Point و back context | `LOCAL-IMPLEMENTATION` | Route point links URL تمیز می‌سازند؛ `location.state.fromRoute` شامل pathname/search/href است و queryهای `date`، `period`، `start_time` و `speed` را برای بازگشت restore می‌کند. |
+| period فعلی | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/api/src/hawatch/common/time.py` و `apps/web/src/lib/periods.ts`؛ Asia/Tehran و سه پنجرهٔ ۰۳–۱۱، ۱۱–۱۹، ۱۹–۰۳ با چهار ساعت دوساعته در هر پنجره. |
+| Point در design handoff | `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | screenshot مستقل Point وجود ندارد؛ `design/pages/point.md` آن را extension سیستم Destination معرفی می‌کند و ادعای pixel-perfect ندارد. |
 
 ## evidenceهای مسدود
 
 | موضوع | وضعیت | دلیل |
 | --- | --- | --- |
 | source محلی | BLOCKED | `/workspace/sites/hawatch-weather` وجود ندارد؛ طبق تصمیم کاربر reference unavailable است و validation را متوقف نمی‌کند؛ OQ-001 |
-| referenceهای قدیمی probe/result | BLOCKED | مسیرهای manifest در `/workspace/scratch/...` موجود نیستند؛ OQ-002 |
+| referenceهای قدیمی probe/result | BLOCKED | فایل‌های تاریخی `/workspace/scratch/...` در checkout فعلی موجود نیستند؛ manifest به DOCX repository اشاره می‌کند؛ OQ-002 |
 | canonical tokenها | PASS | `design/tokens/visual-tokens.json` تنها منبع مقدارهاست؛ markdownها توضیح‌دهنده‌اند؛ OQ-004 resolved |
 | loading/error/stale و empty/error | PASS | contract قطعی کاربر ثبت شد؛ عدم مشاهدهٔ branch در live با پیاده‌سازی موجود اشتباه نمی‌شود |
-| تغییرات خارج از scope | PASS | baseline اولیه با پیام مشخص ساخته شد و working tree نهایی clean کنترل شد؛ OQ-015 resolved |
+| تغییرات خارج از scope | `GIT` + `PRODUCT` | وضعیت working tree در هر validation جداگانه بررسی می‌شود؛ تغییرات این هم‌ترازی فقط در docs/manifest است و فایل‌های کد یا PNG را stage نمی‌کند. |
 
 ## قاعدهٔ استفاده
 
-هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت live محسوب نمی‌شود مگر با evidence جدا. source محلی unavailable به‌صورت non-gating ثبت شده است. implementation محلی فعلی از API داخلی و دادهٔ دمو استفاده می‌کند؛ Login و ingestion واقعی همچنان خارج از scope هستند.
+هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت live محسوب نمی‌شود مگر با evidence جدا. source محلی unavailable به‌صورت non-gating ثبت شده است. implementation محلی فعلی از API داخلی و دادهٔ دمو استفاده می‌کند؛ مسیر ingest واقعی وجود دارد اما فقط با command/provider صریح اجرا می‌شود. Login و ingestion خودکار startup خارج از scope هستند.

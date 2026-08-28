@@ -10,7 +10,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 - ورود: از route card صفحهٔ Destination با `/routes/touchal-darband` یا route slug.
 - خروج: بازگشت به مقصد، انتخاب مسیر دیگر همان مقصد، کپی/اشتراک برنامه.
-- تغییر روز، ساعت شروع، سرعت و بازه باید URL/state قابل بازسازی داشته باشند؛ جزئیات query contract باز است.
+- تغییر روز، ساعت شروع، سرعت و بازه در query/state قابل بازسازی هستند؛ لینک نقطه canonical و تمیز است و context کامل planner را در navigation state نگه می‌دارد.
 
 ## ۳. ترتیب دقیق بخش‌ها
 
@@ -37,9 +37,9 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - start-time gauge: زمان حرکت را تغییر می‌دهد و زمان رسیدن همهٔ نقاط را recompute می‌کند.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
 - morning/afternoon/night: یک کنترل مشترک سه‌گزینه‌ای برای route points و hourly forecast در mobile.
-- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ `location.state.fromRoute` برای back CTA.
+- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ `location.state.fromRoute` برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
-- share: share target آینده را باز می‌کند؛ در این milestone API یا integration ساخته نمی‌شود.
+- share: لینک بازسازی‌پذیر فعلی را از queryهای planner آماده می‌کند؛ share server-side در این milestone ساخته نشده است.
 
 ## ۶. stateهای loading، ready، empty، error، stale و partial-data
 
@@ -58,12 +58,12 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - forecast hourly برای بازهٔ انتخابی؛ هر بازه چهار کارت دارد: صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱.
 - decision summary، recommendations و share payload.
 
-## ۸. APIهای آینده
+## ۸. API فعلی و مسیرهای توسعه
 
-- `GET /api/v1/routes/{slug}`
-- `GET /api/v1/routes/{slug}/plan?date={date}&start={time}&speed={speed}&period={period}`
-- `GET /api/v1/routes/{slug}/forecast`
-- `POST /api/v1/share/route-plans` یا قرارداد کوتاه‌عمر معادل.
+- `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=` پاسخ فعلی route و forecast را می‌دهد.
+- `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/` قرارداد legacy سازگار را نگه می‌دارد.
+- `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=` صفحهٔ مستقل نقطه را تغذیه می‌کند.
+- endpointهای plan جدا و share server-side هنوز مسیر توسعه‌اند.
 
 API plan باید idempotent/read-oriented باشد و provider را به frontend لو ندهد.
 
@@ -94,7 +94,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 - mobile یک کنترل مشترک period داشته باشد و جداکنندهٔ عمودی نداشته باشد.
 - نقاط مسیر و کارت‌های weather روی یک محور معنایی بمانند.
 - root overflow افقی نداشته باشد؛ هر scroll احتمالی scoped باشد.
-- کپی لینک، حداقل payload قابل بازسازی برنامه را منتقل کند؛ implementation آن milestone آینده است.
+- کپی لینک، queryهای `date`، `period`، `start_time` و `speed` را برای بازسازی برنامه منتقل می‌کند.
 
 ## ۱۳. تصویر مرجع
 

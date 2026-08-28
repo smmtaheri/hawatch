@@ -25,9 +25,9 @@
 
 ## ۴. navigation و back
 
-- از Route: `بازگشت به مسیر {route.title}` با React Router `location.state.fromRoute`
+- از Route: `بازگشت به مسیر {route.title}` با `location.state.fromRoute` شامل مسیر و query کامل برنامه‌ریزی
 - مستقیم/refresh/share/Home: بدون دکمهٔ back گمراه‌کنندهٔ مسیر؛ در صورت وجود، بخش «مسیرهای مرتبط»
-- URL legacy `/routes/{route}/points/{point}` باید به canonical resolve/redirect شود؛ planner params (`start_time`, `speed`) حذف شوند
+- URL legacy `/routes/{route}/points/{point}` به canonical resolve/redirect می‌شود؛ `start_time` و `speed` در URL عمومی نقطه نمی‌آیند، اما برای back context نگه داشته می‌شوند.
 
 ## ۵. stateها
 

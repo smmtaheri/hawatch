@@ -46,10 +46,10 @@ HAWATCH_DIR=/srv/hawatch PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 RUN_INITIAL_INGEST=0 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 
-پورت‌های پیش‌فرض host عبارت‌اند از gateway=`80`، frontend مستقیم=`5173` و API=`8000`. آدرس browser API باید از دید مرورگر قابل دسترسی باشد و اسکریپت به‌طور پیش‌فرض آن را روی `http://SERVER_IP:8000/api/v1` می‌گذارد. در صورت نیاز آن را صریح تنظیم کنید:
+پورت‌های پیش‌فرض host عبارت‌اند از gateway=`80`، frontend مستقیم=`5173` و API=`8000`. frontend به‌صورت پیش‌فرض API هم‌مبدأ `/api/v1` را صدا می‌زند؛ gateway فعلی HTTP است و HTTPS را terminate نمی‌کند. برای HTTPS باید یک TLS proxy یا CDN بیرونی جلوی gateway قرار گیرد؛ در آن حالت همچنان API هم‌مبدأ `/api/v1` را استفاده کنید. اگر API جداگانه‌ای دارید، می‌توانید آن را صریح تنظیم کنید:
 
 ```bash
-VITE_API_BASE_URL='http://SERVER_IP:8000/api/v1' \
+VITE_API_BASE_URL='https://api.example.com/api/v1' \
 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 

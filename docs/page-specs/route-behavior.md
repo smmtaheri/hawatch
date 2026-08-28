@@ -12,12 +12,12 @@
 - تغییر start time/speed فقط وقتی `timing_pending` نیست forecast را refetch می‌کند؛ gauge با state محلی فوری حرکت می‌کند و commit با debounce/پایان تعامل انجام می‌شود.
 - mobile ساعت و speed را در یک row جمع‌وجور نشان می‌دهد.
 - فقط یک period control مشترک (صبح / بعدازظهر / شب) برای timeline و cards وجود دارد.
-- کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + optional `fromRoute` state.
+- کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + `fromRoute` state شامل pathname/search/href برای بازگشت کامل.
 - legacy `/routes/.../points/...` redirect به canonical.
 
 ## تصمیم و اشتراک
 
-decision card باید risk point و زمان آن را برجسته کند و امکان کپی/اشتراک را نشان دهد. در این milestone این actionها فقط در سطح design contract هستند و integration واقعی ندارند.
+decision card باید risk point و زمان آن را برجسته کند و امکان کپی/اشتراک را نشان دهد. کپی لینک برنامه در frontend فعلی queryهای قابل‌بازسازی را کپی می‌کند و share Telegram با لینک فعلی ساخته می‌شود؛ share server-side وجود ندارد.
 
 ## محور و overflow
 

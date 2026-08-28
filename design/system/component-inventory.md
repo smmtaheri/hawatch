@@ -14,6 +14,7 @@
 - `SearchCombobox`: autocomplete مقصد و WeatherPoint؛ keyboard و debounce.
 - `PopularDestinations`: heading و grid مقصدهای محبوب.
 - `DestinationTile`: نام، دستهٔ طبیعت، icon و navigation.
+- `SearchResultsList`: فهرست unified نتیجه‌های مقصد و نقطه بعد از submit.
 
 ## Login reference
 
@@ -27,8 +28,8 @@
 - `StatusPill`: حالت عادی یا تغییر مهم.
 - `DayTabs`: انتخاب روز؛ دیروز کم‌رنگ‌تر از امروز.
 - `RoutePicker`: انتخاب مسیرهای همان مقصد.
-- `DaypartToggle`: صبح/بعدازظهر.
-- `HourlyForecast`: شش کارت ساعتی و legend وضعیت.
+- `PeriodToggle`: صبح/بعدازظهر/شب.
+- `HourlyForecast`: چهار کارت دوساعته در هر بازه و legend وضعیت.
 - `TechnicalMetrics`: grid جزئیات تخصصی.
 - `DecisionCard`: تفسیر قابل اقدام از forecast.
 
@@ -51,4 +52,3 @@
 - `PointRouteBackLink`: CTA بازگشت به Route (فقط با navigation state).
 - `PointWeatherCard`: day/period، current reading، hourly — بدون planner.
 - `RelatedRoutesCard`: مسیرهای مرتبط وقتی standalone.
-

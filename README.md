@@ -18,6 +18,9 @@ Login هنوز فقط reference طراحی است و در این milestone پی�
 - **Home** `/`
 - **Destination** `/destination/touchal` (و سایر slugهای catalog)
 - **Route** `/routes/touchal-darband` (و سایر مسیرهای مستند)
+- **Point** `/points/pas_ghaleh` (صفحهٔ مستقل WeatherPoint؛ بدون planner)
+
+Home جست‌وجوی unified مقصد و نقطهٔ مسیر را با پیشنهادهای prefix و debounce کوتاه انجام می‌دهد. کلیک روی نقطه از Route به URL canonical آن می‌رود و context برنامه‌ریزی مسیر را برای بازگشت حفظ می‌کند.
 
 ## اجرای محلی
 

@@ -16,7 +16,7 @@ Home /
 - **Destination** مالک catalog مقصد، مختصات تأییدشده، forecast مقصد و فهرست routeهای مرتبط است.
 - **WeatherPoint** هویت canonical نقطهٔ هواشناسی مستقل است؛ `/points/{slug}`.
 - **Route** مالک ترتیب نقاط، زمان‌بندی، speed profile و forecast متناسب با زمان عبور از نقطه است.
-- **Weather data** در backend آینده normalize می‌شود؛ UI نباید provider response خام را مصرف کند.
+- **Weather data** در backend normalize می‌شود؛ UI فقط envelope داخلی forecast را مصرف می‌کند و provider response خام را نمی‌بیند.
 - **Share** باید payload کمینه و قابل بازسازی route plan را نگه دارد؛ جزئیات ماندگاری باز است.
 
 ## navigation rules
@@ -26,4 +26,3 @@ Home /
 - back در mobile باید به parent معنایی برگردد، نه فقط به آخرین URL تصادفی.
 - تغییر theme global است اما day، period، route و plan context را reset نمی‌کند.
 - destination slug و route slug باید پایدار و قابل استفاده در لینک باشند.
-

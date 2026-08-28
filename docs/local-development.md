@@ -89,7 +89,7 @@ pnpm install
 pnpm dev
 ```
 
-`VITE_API_BASE_URL` باید به API منتشرشده در مرورگر اشاره کند، معمولاً `http://localhost:8000/api/v1`.
+`VITE_API_BASE_URL` به‌صورت portable روی `/api/v1` تنظیم می‌شود؛ Vite در development این مسیر را به `http://localhost:8000` proxy می‌کند.
 
 ## توسعهٔ API بدون Docker api
 

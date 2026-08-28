@@ -1,46 +1,70 @@
 # گزارش validation و بازبینی repository
 
-تاریخ بررسی اولیه (handoff): ۱۴۰۵/۰۶/۰۴ برابر با 2026-08-26  
-تاریخ به‌روزرسانی (implementation محلی): 2026-08-26
+تاریخ به‌روزرسانی: 2026-08-28
 
-## دامنه و نتیجه
+## نتیجهٔ فعلی
 
-این سند ابتدا برای validation دست‌آورد design/handoff نوشته شد. پس از scaffold اجرایی، وضعیت فعلی repository به‌روزرسانی شده است.
+repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Destination، Route و Point مستقل، API داخلی Django/DRF، catalog/search و Compose سبک است. Login همچنان فقط reference طراحی و خارج از milestone فعلی است.
 
-وضعیت فعلی: **implementation محلی موجود و قابل اجرا است** (Home، Destination، Route + Django API + Compose). Login همچنان reference و خارج از scope است.
+## منابع
 
-## وضعیت منابع
-
-| منبع | وضعیت | evidence |
+| منبع | وضعیت | توضیح |
 | --- | --- | --- |
-| `references/Hawatch.docx` | PASS | خوانده شده؛ اصول بصری با `design/tokens/visual-tokens.json` هم‌راستا ثبت شده‌اند. |
-| `/workspace/sites/hawatch-weather` | BLOCKED (non-gating) | مسیر در این محیط وجود ندارد؛ مانع اجرا نیست. |
-| `design/source-screens/` / `design/screens/` | PASS | ۱۶ asset منطقی × organized copy؛ بدون resize/re-encode. |
-| live reference URLs | PASS | قرارداد رفتار/بصری؛ دادهٔ محلی از API دمو می‌آید نه از live site. |
-| `apps/web` + `apps/api` + `infra/compose` | PASS | نسخهٔ محلی اجرایی با pnpm workspace، Django/DRF/PostGIS و Compose. |
+| `references/Hawatch.docx` | PASS | خوانده شده و اصول RTL، Vazirmatn، palette و hierarchy با design system تطبیق داده شده‌اند. |
+| `design/tokens/visual-tokens.json` | PASS | تنها منبع canonical مقدارهای token؛ markdownها توضیح‌دهنده‌اند. |
+| `design/source-screens/` و `design/screens/` | PASS | ۱۶ asset منطقی در چهار صفحه، دو theme و دو device؛ sourceها بدون تغییر. |
+| live reference URLs | PASS | برای ثبت رفتار و ظاهر reference استفاده شده‌اند؛ رفتار اجرای فعلی از source محلی می‌آید. |
+| `/workspace/sites/hawatch-weather` | BLOCKED (non-gating) | در این محیط موجود نیست؛ طبق تصمیم محصول reference unavailable است و اجرای این repository را متوقف نمی‌کند. |
 
-## وضعیت الزامات (نسبت به handoff قبلی)
+## دارایی‌های تصویری
 
-| # | الزام handoff | وضعیت فعلی |
-| --- | --- | --- |
-| 1–10 | design assets، docs، flows، light/dark، mobile/desktop | همچنان PASS؛ دارایی‌های design دست‌نخورده‌اند. |
-| 11 | API contract و پیاده‌سازی | **به‌روز شد:** قرارداد در `docs/api/*` و endpointهای `/api/v1/...` پیاده شده‌اند. |
-| 12 | Django/DRF/PostgreSQL/Python 3.14/uv | **به‌روز شد:** `apps/api` با Django 5.2، DRF، psycopg، PostGIS و uv. |
-| 13 | Redis/Kafka/ingestion | Redis فقط profile `cache`؛ Kafka و ingestion واقعی هنوز خارج از scope. |
-| 14 | retention/retry/checkpoint docs | در pipeline doc و ports آینده ثبت شده؛ runtime ingestion ندارد. |
-| 15 | نبود implementation | **منسوخ:** implementation محلی موجود است. |
-| 16 | خارج از scope | Login و design assets تغییر نکرده‌اند. |
+- چهار صفحهٔ دارای screenshot: Home، Login، Destination و Route.
+- برای هر صفحه light/dark و mobile/web وجود دارد؛ در مجموع ۱۶ asset منطقی و ۳۲ PNG فیزیکی source/organized وجود دارد.
+- manifest نام، مسیر، width، height و SHA-256 را ثبت می‌کند.
+- هیچ تصویر جدیدی برای Point ساخته نشده؛ Point به‌صراحت extension سیستم Destination است، چون screenshot مرجع مستقل ندارد.
 
 ## implementation فعلی
 
-- Frontend: `apps/web` — React + TypeScript + Vite + React Router؛ RTL و Vazirmatn؛ light/dark
-- Backend: `apps/api` — Django REST؛ destinations/routes/forecast؛ demo seed idempotent `hawatch-demo-v1`
-- Infra: `infra/compose/compose.yaml` — postgres (`postgis/postgis:16-3.5`)، api، web؛ Redis با `REDIS_PUBLISH_PORT`
-- تست‌ها: Vitest برای صفحات؛ pytest برای health/seed/API/migrations/indexes
+### Frontend
 
-## محدودیت‌های شناخته‌شده
+- React + TypeScript + Vite + React Router در `apps/web`.
+- Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، prefix match، debounce حدود ۲۰۰ms، keyboard navigation و retry.
+- Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
+- لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
+- RTL، Vazirmatn، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
 
-1. `/workspace/sites/hawatch-weather` unavailable است.
-2. Login، Open-Meteo، Kafka، Kubernetes manifests و share server-side پیاده نشده‌اند.
-3. دادهٔ هوا دمو است و نباید observation واقعی تلقی شود.
-4. مقایسهٔ visual با screenshotهای مرجع نزدیک شده اما ادعاهای pixel-perfect فقط پس از capture و بازرسی واقعی معتبرند.
+### Backend و داده
+
+- Django REST با endpointهای health، destinations، destination forecast، route forecast، point forecast و search suggestions.
+- PostgreSQL/PostGIS و migrationهای موجود؛ seed دمو idempotent و catalog جدا از forecast.
+- زمان و default selection با `Asia/Tehran`؛ بازه‌ها صبح ۰۳/۰۵/۰۷/۰۹، بعدازظهر ۱۱/۱۳/۱۵/۱۷ و شب ۱۹/۲۱/۲۳/۰۱.
+- loading/empty/error/stale/partial در قرارداد UI/API تفکیک شده‌اند؛ stale دادهٔ قبلی و زمان update را نگه می‌دارد و error retry دارد.
+
+### Runtime و مسیر توسعه
+
+- Compose سبک: PostgreSQL/PostGIS، API، frontend production، ingest one-shot و maintenance.
+- Redis و observability سنگین profile اختیاری‌اند؛ Kafka، data lake، Kubernetes و share server-side در runtime فعلی نیستند.
+- provider واقعی و Open-Meteo فقط از مسیر صریح ingest قابل فعال‌سازی‌اند؛ API و startup نباید بی‌اجازه provider را صدا بزنند.
+
+## وضعیت الزامات
+
+جزئیات ۱۶ مورد در [requirements-checklist.md](requirements-checklist.md) ثبت شده است. وضعیت کلی موارد قابل بررسی PASS است؛ تنها BLOCKED ثبت‌شده، نبود reference محلی `/workspace/sites/hawatch-weather` است و non-gating محسوب می‌شود.
+
+## validation اجرایی
+
+آخرین validation کد قبل از این به‌روزرسانی مستندات:
+
+- frontend tests: ۲۶ passed
+- backend pytest: ۵۷ passed، ۱ skipped
+- TypeScript check: passed
+- `git diff --check`: passed
+
+این commit فقط مستندات/manifest را هم‌راستا می‌کند؛ پس از تغییرات docs، تست‌های نرم‌افزار نیاز به تغییر ندارند اما `git diff --check` و validation دارایی‌ها باید پیش از commit دوباره اجرا شوند.
+
+## محدودیت‌ها و ابهام‌ها
+
+1. Login پیاده نشده و برای milestone بعدی است.
+2. Point screenshot مستقل ندارد؛ تطبیق آن pixel-perfect ادعا نمی‌شود.
+3. دادهٔ forecast در demo mode واقعی نیست؛ provider واقعی باید صریحاً ingest شود.
+4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.
+5. جزئیات domain زمان‌بندی route، share server-side و provider/fallback نهایی هنوز open هستند.

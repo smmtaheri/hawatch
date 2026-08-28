@@ -22,13 +22,13 @@
 ۶. انتخاب روز.
 ۷. بخش مسیرها.
 ۸. انتخاب صبح/بعدازظهر/شب.
-۹. پیش‌بینی ساعتی با تعداد کارت متناسب با بازه (صبح پنج، بعدازظهر سه، شب چهار).
+۹. پیش‌بینی ساعتی با چهار کارت دوساعته در هر بازه (صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱).
 ۱۰. جزئیات تخصصی.
 ۱۱. در web، decision card و خلاصهٔ مسیر در جایگاه side قرار می‌گیرند؛ در mobile به ترتیب خواندن تصمیم نزدیک داده می‌مانند.
 
 ## ۴. hierarchy کامپوننت‌ها
 
-`DestinationPage → SiteHeader + DestinationHero(StatusPill[]) + DestinationLayout → WeatherCard(DayTabs, RoutePicker, DaypartToggle, HourlyForecast) + TechnicalMetrics + RouteSummary/DecisionCard`.
+`DestinationPage → Header + DestinationHero + DaySelector + RouteSiblingNavigation + PeriodToggle + HourlyForecast + StatsGrid + DecisionCard`.
 
 ## ۵. رفتار کنترل‌ها
 
@@ -53,19 +53,19 @@
 
 - مقصد: slug، نام، category، مختصات، elevation و hero asset.
 - وضعیت فعلی: condition، temperature، wind، visibility و fetched/valid times.
-- forecast روزانه و hourly با بازه‌های صبح ۰۲–۱۲، بعدازظهر ۱۲–۱۸ و شب ۱۸–۰۲.
+- forecast روزانه و hourly با بازه‌های صبح ۰۳–۱۱، بعدازظهر ۱۱–۱۹ و شب ۱۹–۰۳ روز بعد.
 - route catalog همان مقصد.
 - metrics تخصصی مثل gust، freezing level، cloud base، UV، precipitation و sunrise/sunset.
 - هشدارها با severity normal/change/critical.
 
-## ۸. APIهای آینده
+## ۸. API فعلی و مسیرهای توسعه
 
-- `GET /api/v1/destinations/{slug}`
-- `GET /api/v1/destinations/{slug}/forecast?date={date}&period={period}`
-- `GET /api/v1/destinations/{slug}/routes`
-- `GET /api/v1/destinations/{slug}/alerts?date={date}`
+- `GET /api/v1/destinations/{slug}/`
+- `GET /api/v1/destinations/{slug}/forecast/?date={date}&period={period}`
+- فهرست routeهای مقصد در پاسخ destination برمی‌گردد.
+- alert و metricهای provider-specific در صورت وجود از envelope forecast خوانده می‌شوند؛ endpoint جدا برای آن‌ها فعلاً وجود ندارد.
 
-تمام این‌ها API داخلی‌اند و backend آینده provider را پشت خود پنهان می‌کند.
+تمام این‌ها API داخلی‌اند و backend provider را پشت خود پنهان می‌کند. endpointهای توسعهٔ آینده نباید frontend را مستقیم به provider وصل کنند.
 
 ## ۹. تفاوت mobile و web
 
@@ -91,7 +91,7 @@
 - ترتیب ده‌گانهٔ بخش‌ها در mobile و desktop با reference سازگار باشد.
 - روزها قبل از weather controls در mobile قرار بگیرند.
 - route picker دو ستونه و بدون overflow باشد.
-- forecast شش‌تایی، metrics و هشدارها برای ready و partial-data قابل خواندن باشند.
+- forecast چهار‌تایی، metrics و هشدارها برای ready و partial-data قابل خواندن باشند.
 - انتخاب روز/بازه state را حفظ و دادهٔ مرتبط را به‌روزرسانی کند.
 - کاربر بتواند از route card به Route برسد و از آنجا context مقصد را از دست ندهد.
 

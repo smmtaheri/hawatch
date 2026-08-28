@@ -5,7 +5,7 @@
 ## ورود
 
 - Home autocomplete → `/points/{slug}`
-- Route timeline/card → `/points/{slug}` + `state.fromRoute`
+- Route timeline/card → `/points/{slug}` + `state.fromRoute` شامل `pathname`، `search` و `href` مسیر
 - URL مستقیم / share / refresh
 - Legacy `/routes/{route}/points/{point}` → redirect به canonical
 
@@ -23,7 +23,7 @@
 
 | منبع ورود | رفتار |
 | --- | --- |
-| Route (با state) | `بازگشت به مسیر {title}` → href مسیر |
+| Route (با state) | `بازگشت به مسیر {title}` → همان مسیر با `date`، `period`، `start_time` و `speed` قبلی |
 | Home / direct / refresh | بدون back مسیر؛ optional «مسیرهای مرتبط» |
 
 ## controls
@@ -45,7 +45,7 @@
 ## theme / responsive
 
 - `point-page` در dark/light
-- mobile: layout تک‌ستونه؛ desktop: main + side routes
+- mobile: layout تک‌ستونه؛ desktop مستقیم: main + مسیرهای مرتبط؛ desktop با ورود از Route: تک‌ستونه و بدون sidebar خالی
 - max-width و padding هم‌تراز Destination
 
 ## acceptance
@@ -54,3 +54,4 @@
 - keyboard/back/accessibility برای CTA
 - shared point dedup
 - no horizontal overflow
+- بازگشت از Route تمام context برنامه‌ریزی را حفظ می‌کند

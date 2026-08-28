@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "product": "هواچ",
-  "repository": "hawatch-product",
+  "repository": "hawatch",
   "language": "fa",
   "direction": "rtl",
   "generatedAt": "2026-08-25",
@@ -13,10 +13,8 @@
     "destination": "https://hawatch-weather.admirer135.chatgpt.site/destination/touchal",
     "route": "https://hawatch-weather.admirer135.chatgpt.site/routes/touchal-darband",
     "localSitesSource": "/workspace/sites/hawatch-weather",
-    "visualIdentity": "/workspace/scratch/833eb743b44e/project_sources/01-Hawatch.docx",
-    "openMeteoProbe": "/workspace/scratch/833eb743b44e/project_sources/02-hawatch_openmeteo_1100_probe.py",
-    "openMeteoResult": "/workspace/scratch/833eb743b44e/project_sources/03-hawatch_openmeteo_1100_result-1-.json",
-    "localReferenceStatus": "The four /workspace reference paths were not available in this environment; they were not modified."
+    "visualIdentity": "references/Hawatch.docx",
+    "localReferenceStatus": "The repository DOCX is available; the historical /workspace source/probe/result paths are not part of this checkout."
   },
   "assets": [
     { "sourceFile": "hawatch_01_home_light_mobile.png", "organizedFile": "design/screens/home/light/mobile.png", "page": "home", "theme": "light", "device": "mobile", "width": 576, "height": 1077, "sha256": "99509410df6a7eed027b75afaa2d215dd04639166ac72651f4f464c7d5d85681" },

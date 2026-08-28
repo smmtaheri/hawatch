@@ -1,40 +1,28 @@
-# checklist الزامات validation
+# checklist الزامات validation و implementation
 
-تاریخ به‌روزرسانی: 2026-08-26
-
-این checklist الزامات handoff اولیه را نگه می‌دارد و وضعیت را با implementation محلی فعلی هم‌تراز می‌کند.
+تاریخ به‌روزرسانی: 2026-08-28
 
 | # | الزام | وضعیت | evidence |
 | --- | --- | --- | --- |
-| 1 | دقیقاً ۱۶ تصویر asset | PASS | `design/manifest.json` و `design/screens` |
-| 2 | source screenshots بدون تغییر | PASS | PNGها دست‌نخورده؛ بدون resize/re-encode |
+| 1 | دقیقاً ۱۶ تصویر منطقی | PASS | `design/manifest.json` و دو درخت `design/source-screens/` و `design/screens/` |
+| 2 | source screenshots بدون تغییر | PASS | SHA-256 و policy byte-for-byte در manifest؛ فایل‌های PNG تغییر نکرده‌اند |
 | 3 | مسیر page/theme/device | PASS | `design/screens/{page}/{theme}/{device}.png` |
-| 4 | manifest match | PASS | نام، ابعاد و SHA-256 |
-| 5 | duplicate/missing/misnamed | PASS | فقط pairهای عمدی source/organized |
-| 6 | DOCX و design system | PASS | `references/Hawatch.docx` + `visual-tokens.json` |
-| 7 | مستندات صفحات | PASS | `design/pages/*` و live inspection |
-| 8 | layout/interaction/state docs | PASS | page specs + live inspection |
-| 9 | light/dark و mobile/desktop | PASS | ۱۲ ترکیب مرجع + پیاده‌سازی محلی |
-| 10 | flowهای navigation | PASS | `docs/user-flows/*` و React Router |
-| 11 | API contract + API اجرایی | PASS | `docs/api/*` و `apps/api` endpointها |
-| 12 | Django/DRF/PostGIS/Python 3.14/uv | PASS | `apps/api/pyproject.toml` و Compose |
-| 13 | Redis/Kafka/ingestion scope | PASS | Redis فقط profile `cache`؛ Kafka/ingestion خارج از scope |
-| 14 | retention/retry/checkpoint docs | PASS | `docs/architecture/weather-data-pipeline.md` |
-| 15 | implementation محلی | PASS | `apps/web`، `apps/api`، `infra/compose` اجرایی‌اند (ادعای «فقط `.gitkeep`» منسوخ است) |
-| 16 | Login و design assets دست‌نخورده | PASS | Login فقط reference؛ screenshots تغییر نکرده‌اند |
+| 4 | تطبیق manifest با فایل واقعی | PASS | نام، ابعاد و hash ثبت‌شده در `design/manifest.json` |
+| 5 | نبود duplicate/missing/misnamed ناخواسته | PASS | source و organized pairهای عمدی‌اند؛ Point screenshot مستقل ندارد |
+| 6 | خواندن DOCX و تطبیق design system | PASS | `references/Hawatch.docx` و `design/tokens/visual-tokens.json` |
+| 7 | مستندات صفحات فعلی | PASS | Home، Destination، Route و Point؛ Login به‌عنوان reference مرحلهٔ بعد |
+| 8 | layout، متن، interaction، navigation و state | PASS | `design/pages/*` و `docs/page-specs/*` |
+| 9 | light/dark و mobile/desktop | PASS | screenshotهای ۱۶گانه، tokens و page specs؛ Point به‌عنوان extension مستند شده |
+| 10 | Home → Destination → Route و back | PASS | `docs/user-flows/*` و context بازگشت Point در React Router state |
+| 11 | API contract و endpoint اجرایی | PASS | `docs/api/*` و endpointهای catalog/search/destination/route/point |
+| 12 | Django/DRF/PostGIS/Python 3.14/uv | PASS | `apps/api/pyproject.toml`، settings و Compose |
+| 13 | scope سرویس‌های آینده | PASS | Redis اختیاری؛ observability profile؛ Kafka و data lake خارج از runtime فعلی |
+| 14 | retention/retry/checkpoint | PASS | `docs/architecture/weather-data-pipeline.md` و ingest/maintenance فعلی |
+| 15 | implementation فعلی | PASS | `apps/web`، `apps/api` و `infra/compose` اجرایی‌اند؛ ادعای placeholder منسوخ شد |
+| 16 | Login و assetها خارج از تغییر بی‌منبع | PASS | Login فقط reference؛ PNGهای موجود دست‌نخورده و Point بدون screenshot جعلی |
 
-## جمع وضعیت‌ها
+## موارد خارج از scope یا محدودیت
 
-- PASS: `16`
-- FAIL: `0`
-- BLOCKED (non-gating): source محلی `/workspace/sites/hawatch-weather`
-- خارج از scope عمدی: Login، live weather provider، Kafka، Kubernetes manifests
-
-## تست و اجرای محلی
-
-- `pnpm test` و `pnpm build`
-- `docker compose --env-file .env -f infra/compose/compose.yaml exec api pytest`
-- `makemigrations --check --dry-run`
-- health live/ready، destinations، forecast مقصد و مسیر
-
-جزئیات اجرا: `docs/local-development.md` و `README.md`.
+- `/workspace/sites/hawatch-weather` در این محیط در دسترس نیست و در `docs/open-questions.md` به‌عنوان reference unavailable ثبت شده است.
+- دادهٔ forecast فعلی بسته به mode می‌تواند demo باشد؛ provider واقعی فقط از مسیر صریح ingest استفاده می‌شود.
+- pixel-perfect بودن Point قابل ادعا نیست، چون screenshot مرجع مستقل برای آن وجود ندارد.

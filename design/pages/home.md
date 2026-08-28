@@ -18,14 +18,14 @@ Home باید در چند ثانیه به کاربر بگوید هواچ برا�
 ۱. header شامل لوگوی هواچ، ورود و theme toggle.
 ۲. hero copy با tagline «هوای مسیرت را ببین».
 ۳. جست‌وجوی unified (combobox): پیشنهاد مقصد و نقطهٔ مسیر while typing؛ debounce ~۲۰۰ms؛ از ۲ کاراکتر.
-۴. دکمهٔ «جست‌وجو» برای fallback submit-only مقصدها.
+۴. دکمهٔ «جست‌وجو» برای تکمیل جست‌وجوی unified.
 ۵. heading «مقصدهای محبوب».
-۵. tileهای دسته‌بندی‌شدهٔ طبیعت: توچال، دماوند، دشت دریاسر، جنگل ابر، کویر مرنجاب و دریاچه گهر.
-۶. در صورت وجود نتیجهٔ جست‌وجو، نتیجه باید در همین ناحیه و بدون ایجاد overflow نمایش داده شود.
+۶. tileهای دسته‌بندی‌شدهٔ طبیعت: توچال، دماوند، دشت دریاسر، جنگل ابر، کویر مرنجاب و دریاچه گهر.
+۷. در صورت وجود نتیجهٔ جست‌وجو، نتیجه باید در همین ناحیه و بدون ایجاد overflow نمایش داده شود.
 
 ## ۴. hierarchy کامپوننت‌ها
 
-`HomePage → HomeShell → HomeHero → SiteHeader + HeroCopy + DestinationSearch + PopularDestinations → DestinationTile[]`.
+`HomePage → SiteHeader + HeroCopy + SearchCombobox + SearchResultsList + PopularDestinations → DestinationTile[]`.
 
 ## ۵. رفتار کنترل‌ها
 
@@ -33,7 +33,8 @@ Home باید در چند ثانیه به کاربر بگوید هواچ برا�
 - theme toggle: بین light و dark جابه‌جا می‌شود و state فعال را اعلام می‌کند.
 - «ورود»: navigation به Login reference.
 - input جست‌وجو: combobox با keyboard (↑↓ Enter Escape)، aria listbox؛ نتایج با type label (`مقصد` / `نقطهٔ مسیر · {tile}`).
-- دکمهٔ «جست‌وجو»: اگر highlight نباشد، fallback به لیست مقصدها (submit).
+- دکمهٔ «جست‌وجو» و Enter هر دو همان endpoint unified را مصرف می‌کنند؛ با highlight انتخاب می‌کنند، با یک نتیجه مستقیم navigate می‌کنند و با چند نتیجه فهرست unified را نشان می‌دهند.
+- در خطای جست‌وجو، پیام خطا و امکان retry نمایش داده می‌شود و متن ورودی حفظ می‌شود.
 - destination tile: به صفحهٔ مقصد متناسب با slug می‌رود.
 - category tile: در milestone اول در همان destination search یا catalog resolve می‌شود؛ semantics نهایی category هنوز باز است.
 
@@ -53,11 +54,11 @@ Home باید در چند ثانیه به کاربر بگوید هواچ برا�
 - فهرست مقصدهای محبوب با ترتیب محصول.
 - theme فعلی و ترجیح کاربر.
 
-## ۸. APIهای آینده
+## ۸. API و دادهٔ فعلی
 
-- `GET /api/v1/destinations/popular`
-- `GET /api/v1/destinations?query={query}`
-- `GET /api/v1/destinations/{slug}` برای navigation contract یا prefetch.
+- `GET /api/v1/destinations/` برای catalog مقصدها.
+- `GET /api/v1/search/suggestions/?q={query}` برای پیشنهادهای unified مقصد و نقطه، با حداقل دو کاراکتر و تطبیق prefix.
+- لینک مقصد به `/destination/{slug}` و لینک نقطه به `/points/{weatherPointSlug}` می‌رود.
 
 Home هرگز مستقیماً به provider هواشناسی وصل نمی‌شود؛ فقط catalog داخلی را مصرف می‌کند.
 
@@ -85,7 +86,7 @@ Home هرگز مستقیماً به provider هواشناسی وصل نمی‌ش
 - کاربر بتواند با input یا tile به مقصد برسد.
 - در mobile دکمه روی input نیفتد.
 - هیچ scrollbar افقی در viewport ایجاد نشود.
-- چهار حالت reference از نظر ترتیب، رنگ، spacing و typography قابل مقایسه باشند.
+- چهار حالت reference از نظر ترتیب، رنگ، spacing و typography قابل مقایسه باشند؛ صفحهٔ Point reference screenshot مستقل ندارد و از extension سیستم Destination استفاده می‌کند.
 - empty و error، input کاربر را از بین نبرند.
 - Home هیچ دادهٔ forecast را مستقیم از provider دریافت نکند.
 
@@ -98,7 +99,7 @@ Home هرگز مستقیماً به provider هواشناسی وصل نمی‌ش
 
 ## ۱۴. موارد نامشخص و تصمیم‌های باز
 
-- قرارداد جست‌وجوی fuzzy، debounce و حداقل تعداد کاراکتر هنوز تعیین نشده است.
 - رفتار category tile در برابر نتیجهٔ چند مقصد باید مشخص شود.
 - منبع و cadence به‌روزرسانی catalog مقصدها هنوز تعیین نشده است.
-- حفظ theme بین sessionها و دامنهٔ ترجیح کاربر نیازمند تصمیم محصول است.
+- جست‌وجوی fuzzy در این نسخه قرارداد ندارد؛ جست‌وجو prefix و normalize‌شده است.
+- ماندگاری theme بین sessionها هنوز قرارداد محصولی مستقلی ندارد.
