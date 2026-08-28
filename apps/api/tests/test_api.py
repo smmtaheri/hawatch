@@ -86,8 +86,7 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
     assert len(body["days"]) == 7
     assert body["days"][0]["is_yesterday"] is True
     assert body["days"][1]["is_today"] is True
-    assert len(body["hourly"]) == 4
-    assert body["hourly"][0]["hour"] == 2
+    assert [item["hour"] for item in body["hourly"]] == [2, 4, 6, 8, 10]
     assert "is_past" in body["hourly"][0]
     assert "is_current" in body["hourly"][0]
     assert "is_future" in body["hourly"][0]
@@ -95,8 +94,7 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
         "/api/v1/destinations/touchal/forecast/",
         {"date": today.isoformat(), "period": "afternoon"},
     ).json()
-    assert afternoon["hourly"][0]["hour"] == 10
-    assert len(afternoon["hourly"]) == 4
+    assert [item["hour"] for item in afternoon["hourly"]] == [12, 14, 16]
 
 
 @pytest.mark.django_db
