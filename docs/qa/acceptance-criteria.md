@@ -17,6 +17,7 @@
 - [ ] نام، مسیر، ابعاد و SHA-256 در `design/manifest.json` با فایل واقعی match است.
 - [ ] هیچ تصویر resize، compress یا re-encode نشده است.
 - [ ] Point screenshot مستقل ندارد و مستندات آن را extension سیستم Destination معرفی می‌کنند؛ تصویر جدیدی بدون منبع ساخته نمی‌شود.
+- [ ] ۱۶ asset مرجع دست‌نخورده باقی می‌مانند؛ اصلاحات Point با reuse الگوی Destination مستند می‌شوند و تصویر ساختگی/بدون منبع اضافه نمی‌شود.
 
 ## صفحات و navigation
 
@@ -25,6 +26,7 @@
 - [ ] Destination (`/destination/{slug}`) مقصد، forecast، روز، سه بازه و مسیرهای مرتبط را نمایش می‌دهد.
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.
 - [ ] Point (`/points/{weatherPointSlug}`) صفحهٔ canonical مستقل برای WeatherPoint است و timing planner ندارد.
+- [ ] point مقصدی مثل `tochal_summit` به `/destination/touchal` canonical می‌رود و صفحهٔ standalone موازی ندارد.
 - [ ] لینک Route به Point تمیز است؛ context کامل Route در `location.state.fromRoute` نگه داشته می‌شود.
 - [ ] بازگشت Point که از Route باز شده، `date`، `period`، `start_time` و `speed` را restore می‌کند؛ ورود مستقیم/refresh دکمهٔ back گمراه‌کننده ندارد.
 
@@ -36,11 +38,17 @@
 - [ ] loading با skeleton و حفظ layout، error با پیام همان بخش و retry، empty مستقل از error، و stale با دادهٔ قبلی/زمان آخرین update/هشدار کهربایی نمایش داده می‌شوند.
 - [ ] partial data بدون صفرسازی یا مقدار ساختگی نمایش داده می‌شود.
 - [ ] تغییر روز یا period دادهٔ همان context را refresh می‌کند؛ route timing pending مقدار ساختگی برای ETA، distance یا ascent تولید نمی‌کند.
+- [ ] periodهای کاملاً گذشته با ساعت رسمی تهران dim هستند و period جاری واضح است.
+- [ ] Route در timing pending متن خام `timing pending`، ETA ساختگی یا fallback ثابت ظهر برای period انتخاب‌شده ندارد.
+- [ ] Route timeline دمای زیر marker و headline «تغییرات شب · هر دو ساعت» را نمایش نمی‌دهد.
+- [ ] Route cards زیر timeline برای هر RoutePoint و همان period انتخاب‌شده‌اند، نه forecast عمومی مقصد.
+- [ ] label بالای day tabs در Destination و Point «انتخاب روز» است و timestamp خام update نمایش داده نمی‌شود.
 
 ## responsive، theme و دسترسی‌پذیری
 
 - [ ] چهار حالت light/dark و mobile/desktop برای Home، Destination و Route بدون root horizontal overflow قابل استفاده‌اند.
 - [ ] Point در light/dark استایل هم‌خانواده با Destination دارد و در ورود از Route sidebar خالی ایجاد نمی‌کند.
+- [ ] Point در light/dark از همان surface، typography و spacing Destination استفاده می‌کند؛ related routes در sidebar فشرده و تک‌ستونه‌اند.
 - [ ] root و محتوای فارسی RTL، فونت Vazirmatn و focus/keyboard stateهای قابل دسترس دارند.
 - [ ] scroll داخلی، در صورت نیاز، scoped به همان محور/کانتینر است و root را عریض نمی‌کند.
 

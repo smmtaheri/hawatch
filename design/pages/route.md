@@ -20,10 +20,12 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 ۴. انتخاب روز.
 ۵. بازهٔ شروع حرکت و سرعت حرکت در یک کادر جمع‌وجور.
 ۶. نقاط مهم مسیر.
-۷. اطلاعات هوای هر نقطه.
+۷. کارت خلاصهٔ هوای هر نقطه در بازهٔ انتخاب‌شده.
 ۸. کارت تصمیم.
 ۹. اشتراک‌گذاری.
 ۱۰. اطلاعات فنی مسیر.
+
+محور نقاط فقط نام، ترتیب و marker را نشان می‌دهد؛ دمای تکراری زیر markerها بخشی از محور نیست. forecast عمومی مقصد/قله نباید به‌جای خلاصهٔ pointهای مسیر در این بخش نمایش داده شود.
 
 ## ۴. hierarchy کامپوننت‌ها
 
@@ -34,28 +36,29 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - back: به Destination parent برمی‌گردد.
 - sibling route: route جدید همان destination را باز می‌کند.
 - day: تمام زمان‌ها، weather points و decision summary را برای روز جدید refresh می‌کند.
-- start-time gauge: زمان حرکت را تغییر می‌دهد و زمان رسیدن همهٔ نقاط را recompute می‌کند.
+- start-time gauge: در ورود بدون start_time، برای تاریخ/بازهٔ جاری روی زمان فعلی `Asia/Tehran` قرار می‌گیرد؛ برای تاریخ‌های دیگر از default همان بازه استفاده می‌شود. قسمت قبل از زمان فعلی کم‌رنگ و قسمت آینده عادی است. بعد از تغییر، در صورت آماده‌بودن timing، زمان رسیدن نقاط recompute می‌شود.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
 - morning/afternoon/night: یک کنترل مشترک سه‌گزینه‌ای برای route points و hourly forecast در mobile.
-- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ `location.state.fromRoute` برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
+- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ اما WeatherPoint مقصدی مثل `tochal_summit` باید به `/destination/touchal` برود. `location.state.fromRoute` فقط برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: لینک بازسازی‌پذیر فعلی را از queryهای planner آماده می‌کند؛ share server-side در این milestone ساخته نشده است.
 
 ## ۶. stateهای loading، ready، empty، error، stale و partial-data
 
 - loading: axis، controls و card layout ثابت بمانند؛ مقدارها skeleton شوند.
-- ready: زمان‌ها، نقاط، آب‌وهوا، هشدار و stats با timestamp معتبرند.
+- ready: نقاط، خلاصهٔ آب‌وهوا، هشدار و stats با timestamp معتبرند؛ هر کارت point متعلق به همان point است.
 - empty: route یا forecast در تاریخ انتخابی موجود نیست؛ روز جایگزین و back پیشنهاد شود.
 - error: failure در normalize/forecast با retry و توضیح اینکه کدام بخش unavailable است.
 - stale: هشدار زمان داده و ممنوعیت تصمیم قطعی بدون acknowledge.
 - partial-data: route geometry/catalog حتی اگر weather برخی نقاط ناقص است نمایش داده شود؛ نقطهٔ ناقص جدا label شود.
+- timing pending: عبارت داخلی `timing pending` نمایش داده نمی‌شود؛ متن فارسی روشن نشان می‌دهد زمان‌بندی/ETA آماده نیست و هیچ ETA، زمان نقطه یا مسافت ساختگی تولید نمی‌شود.
 
 ## ۷. داده‌های موردنیاز
 
 - route: slug، origin، destination، distance، ascent، round-trip duration و نقاط مسیر.
-- هر point: مختصات، elevation، ترتیب، زمان پایه، temperature، wind، condition، note و severity.
+- هر point: مختصات، elevation، ترتیب، temperature، wind، condition، note و severity برای همان بازهٔ انتخاب‌شده. اگر timing آماده نیست، کارت نباید به‌عنوان وضعیت لحظهٔ رسیدن یا ETA تفسیر شود.
 - start time، speed profile و محاسبهٔ arrival time.
-- forecast hourly برای بازهٔ انتخابی؛ هر بازه چهار کارت دارد: صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱.
+- forecast point-level برای بازهٔ انتخابی؛ هر بازه چهار کارت دارد: صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱. forecast عمومی قله فقط در صفحهٔ مقصد مصرف شود.
 - decision summary، recommendations و share payload.
 
 ## ۸. API فعلی و مسیرهای توسعه
@@ -70,7 +73,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 ## ۹. تفاوت mobile و web
 
 - mobile: کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف؛ فقط یک کنترل مشترک سه‌گزینه‌ای صبح/بعدازظهر/شب.
-- نقاط مسیر و کارت آب‌وهوا روی یک محور خوانا بمانند؛ axis در صورت نیاز در container خودش scroll شود، نه root.
+- نقاط مسیر و کارت خلاصهٔ هوای همان نقاط روی یک محور خوانا بمانند؛ axis در صورت نیاز در container خودش scroll شود، نه root.
 - گیج ساعت شروع بیش از حد بزرگ نشود.
 - web: layout اصلی و side planner می‌توانند چندستونه باشند؛ route axis و point cards فضای بیشتری دارند.
 
@@ -92,7 +95,13 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 - ترتیب ده‌گانهٔ Route در mobile و web رعایت شود.
 - تغییر start time یا speed زمان همهٔ نقاط و کارت تصمیم را هماهنگ به‌روزرسانی کند.
 - mobile یک کنترل مشترک period داشته باشد و جداکنندهٔ عمودی نداشته باشد.
-- نقاط مسیر و کارت‌های weather روی یک محور معنایی بمانند.
+- نقاط مسیر و کارت خلاصهٔ weather همان نقاط روی یک محور معنایی بمانند.
+- دمای زیر markerهای محور حذف شده باشد.
+- عبارت «تغییرات شب · هر دو ساعت» از Route حذف شده باشد.
+- کارت‌های weather زیر محور برای هر RoutePoint ساخته شوند، نه forecast عمومی قله.
+- در timing pending، fallback ثابت ظهر برای periodهای دیگر استفاده نشود.
+- قلهٔ توچال از Route به صفحهٔ canonical مقصد می‌رود.
+- gauge در ورود به Route زمان فعلی تهران را نشان می‌دهد و بخش گذشته dim است.
 - root overflow افقی نداشته باشد؛ هر scroll احتمالی scoped باشد.
 - کپی لینک، queryهای `date`، `period`، `start_time` و `speed` را برای بازسازی برنامه منتقل می‌کند.
 

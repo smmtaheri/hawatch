@@ -17,6 +17,7 @@
 - `selected`: teal، متن خوانا و `aria-selected` یا `aria-pressed` متناسب.
 - `disabled`: کم‌رنگ اما قابل تشخیص؛ بدون از بین‌بردن context.
 - `pressed`: برای toggle و actionهای موقتی قابل بازشناسی.
+- `past-period`: بازه‌ای که تمام پنجره‌اش نسبت به `Asia/Tehran` گذشته است؛ با opacity/saturation کمتر نمایش داده شود، اما اگر انتخاب شده قابل خواندن بماند.
 
 ## semantic weather states
 
@@ -26,3 +27,8 @@
 
 هر state باید حداقل با دو نشانه منتقل شود: رنگ + متن یا icon. Stateهای forecast باید در light و dark از نظر کنتراست و خوانایی بازبینی شوند.
 
+## قواعد shared forecast UI
+
+- `PeriodToggle` در Destination، Route و Point باید state گذشته/جاری/آیندهٔ یکسان داشته باشد.
+- timestamp خام provider در UI نمایش داده نمی‌شود.
+- `timing_pending` فقط state داخلی/قراردادی است؛ copy کاربر باید فارسی و actionable باشد.

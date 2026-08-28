@@ -29,6 +29,7 @@
 - `DayTabs`: انتخاب روز؛ دیروز کم‌رنگ‌تر از امروز.
 - `RoutePicker`: انتخاب مسیرهای همان مقصد.
 - `PeriodToggle`: صبح/بعدازظهر/شب.
+- `PeriodToggle` باید period کاملاً گذشته را dim کند و period جاری را واضح نگه دارد.
 - `HourlyForecast`: چهار کارت دوساعته در هر بازه و legend وضعیت.
 - `TechnicalMetrics`: grid جزئیات تخصصی.
 - `DecisionCard`: تفسیر قابل اقدام از forecast.
@@ -45,6 +46,8 @@
 - `RouteDecisionCard`: زمان رسیدن، نقطهٔ حساس و پیشنهاد تصمیم.
 - `ShareActions`: کپی لینک و اشتراک‌گذاری.
 - `RouteStats`: مسافت، صعود، زمان و زمان رسیدن.
+- `RoutePointSummaryGrid`: خلاصهٔ point-level برای هر نقطه؛ جایگزین hourly forecast عمومی مقصد در Route.
+- `RouteTimeline`: بدون دمای تکراری زیر marker؛ دما/وضعیت در کارت خلاصه نمایش داده می‌شود.
 
 ## Point (extension از Destination)
 
@@ -52,3 +55,4 @@
 - `PointRouteBackLink`: CTA بازگشت به Route (فقط با navigation state).
 - `PointWeatherCard`: day/period، current reading، hourly — بدون planner.
 - `RelatedRoutesCard`: مسیرهای مرتبط وقتی standalone.
+- `RelatedRoutesCard`: در sidebar به‌صورت compact single-column؛ با surface و رنگ هم‌خانواده با Destination.

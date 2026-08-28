@@ -15,6 +15,13 @@
 
 پاسخ شامل: slug/name/aliases، مختصات/ارتفاع/status/provenance، forecast metadata، current/hourly/days/period، related destinations/routes (dedup)، بدون timing مسیر.
 
+## هویت و ظاهر
+
+- Point باید از همان shell، card surface، typography، period control و day selector صفحهٔ Destination استفاده کند.
+- صفحهٔ Point screenshot مستقل ندارد؛ ۱۶ تصویر مرجع موجود immutable هستند و Destination baseline بصری است.
+- Related routes در sidebar به‌صورت compact single-column نمایش داده می‌شوند؛ grid سه‌ستونهٔ generic مجاز نیست.
+- label بالای روزها «انتخاب روز» است و heading/description تکراری forecast نمایش داده نمی‌شود.
+
 ## breadcrumb
 
 همیشه: `مقصدها / {نام نقطه}`
@@ -42,6 +49,8 @@
 | error | retry |
 | stale | StaleDataNotice |
 
+هیچ timestamp خام یا عبارت داخلی `timing_pending` در متن کاربر نمایش داده نمی‌شود.
+
 ## theme / responsive
 
 - `point-page` در dark/light
@@ -53,5 +62,7 @@
 - canonical URL بدون planner noise
 - keyboard/back/accessibility برای CTA
 - shared point dedup
+- اگر point از نوع destination باشد، navigation به destination canonical انجام می‌شود.
+- theme و رنگ تمام cardها، از جمله related routes، با Destination یکسان است.
 - no horizontal overflow
 - بازگشت از Route تمام context برنامه‌ریزی را حفظ می‌کند

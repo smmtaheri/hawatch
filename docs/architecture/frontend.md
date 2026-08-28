@@ -28,6 +28,6 @@ frontend فقط `VITE_API_BASE_URL` را صدا می‌زند. لایهٔ client
 - `/routes/:slug`
 - `/points/:weatherPointSlug` — صفحهٔ مستقل WeatherPoint با URL canonical
 
-Home از search index داخلی، پیشنهادهای مقصد و نقطهٔ مسیر را با debounce و keyboard navigation مصرف می‌کند. کلیک روی نقطهٔ مسیر به URL تمیز `/points/{slug}` می‌رود و context بازگشت Route را در React Router state نگه می‌دارد.
+Home از search index داخلی، پیشنهادهای مقصد و نقطهٔ مسیر را با debounce و keyboard navigation مصرف می‌کند. کلیک روی point به URL تمیز می‌رود؛ pointهای عادی `/points/{slug}` و pointهای نوع destination به `/destination/{destinationSlug}` canonical می‌روند. context بازگشت Route فقط در React Router state نگه داشته می‌شود.
 
 Login پیاده نشده است.

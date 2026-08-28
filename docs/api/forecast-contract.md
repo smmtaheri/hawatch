@@ -79,6 +79,8 @@ forecast
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
 - برای `night`، `00:00`–`02:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `03:00` متعلق به `morning` است.
 - وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
+- وقتی `timing_pending=true` است، برای خلاصهٔ هر point فقط دادهٔ همان point و همان period انتخاب‌شده قابل نمایش است؛ fallback ثابت ساعت ۱۲ برای همهٔ periodها معتبر نیست و نباید استفاده شود. زمان point/ETA در این حالت `null` است.
+- `timing_pending` یک flag قراردادی برای client است و نباید عیناً در متن کاربر نمایش داده شود؛ UI باید پیام فارسی قابل فهم ارائه کند.
 
 ## نقطهٔ canonical (standalone WeatherPoint)
 
@@ -91,7 +93,7 @@ forecast
 ## legacy route-point (سازگاری موقت)
 
 - `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
-- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز
+- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز. اگر WeatherPoint از نوع `destination` باشد و به Destination متصل باشد، `canonical_href` باید `/destination/{destinationSlug}` باشد؛ در غیر این صورت `/points/{weather_point_slug}`.
 - frontend legacy `/routes/.../points/...` را redirect می‌کند؛ `start_time`/`speed` از URL حذف می‌شوند
 
 ## جست‌وجوی پیشنهاد (Home)
@@ -104,3 +106,10 @@ forecast
 ## slider commit
 
 در Route، مقدار gauge بلافاصله با state محلی به‌روز می‌شود؛ commit به URL/API فقط در پایان تعامل (pointer/touch release، blur، Enter/Space) یا debounce کوتاه (~۳۰۰ms) انجام می‌شود.
+
+## contract بصری مشترک
+
+- `meta.current_local_time` تنها مرجع تعیین بازهٔ جاری/گذشته در timezone رسمی ایران است.
+- UI باید periodهای کاملاً گذشته را کم‌رنگ کند و period جاری/آینده را عادی نگه دارد.
+- فیلد `updated_label` برای نمایش عمومی deprecated است؛ timestamp خام ISO نباید در UI رندر شود.
+- Route نباید `hourly` مقصد را به‌عنوان weather pointهای مسیر نمایش دهد؛ کارت‌های point باید از دادهٔ point-level همان point ساخته شوند.

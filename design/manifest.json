@@ -8,6 +8,12 @@
   "sourceScreens": "design/source-screens",
   "organizedScreens": "design/screens",
   "qualityPolicy": "Source PNG files are preserved byte-for-byte; organized copies are uncompressed copies.",
+  "visualContract": {
+    "referenceAssetCount": 16,
+    "pointPage": "Point is a Destination visual extension; no independent reference screenshot exists.",
+    "requestedVisualCorrections": "docs/qa/visual-regressions-2026-08-28.md",
+    "tokenSource": "design/tokens/visual-tokens.json"
+  },
   "references": {
     "liveSite": "https://hawatch-weather.admirer135.chatgpt.site/",
     "destination": "https://hawatch-weather.admirer135.chatgpt.site/destination/touchal",
