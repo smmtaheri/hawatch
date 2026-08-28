@@ -143,6 +143,21 @@ set_env_value() {
   fi
 }
 
+append_csv_value() {
+  local current="$1"
+  local value="$2"
+  case ",${current}," in
+    *,"${value}",*) printf '%s' "$current" ;;
+    *)
+      if [[ -n "$current" ]]; then
+        printf '%s,%s' "$current" "$value"
+      else
+        printf '%s' "$value"
+      fi
+      ;;
+  esac
+}
+
 random_hex() {
   openssl rand -hex 48
 }
@@ -199,8 +214,15 @@ configure_env() {
   set_env_value WEB_PUBLISH_PORT "$WEB_PUBLISH_PORT"
   set_env_value NGINX_PUBLISH_PORT "$NGINX_PUBLISH_PORT"
   set_env_value VITE_API_BASE_URL "$VITE_API_BASE_URL"
-  set_env_value DJANGO_ALLOWED_HOSTS "${DJANGO_ALLOWED_HOSTS:-${PUBLIC_HOST},localhost,127.0.0.1,api,nginx}"
-  set_env_value DJANGO_CORS_ALLOWED_ORIGINS "${DJANGO_CORS_ALLOWED_ORIGINS:-http://${PUBLIC_HOST}:${NGINX_PUBLISH_PORT},http://${PUBLIC_HOST}:${WEB_PUBLISH_PORT}}"
+  configured_hosts="${DJANGO_ALLOWED_HOSTS:-$(get_env_value DJANGO_ALLOWED_HOSTS)}"
+  configured_hosts="${configured_hosts:-localhost,127.0.0.1,api,nginx}"
+  configured_hosts="$(append_csv_value "$configured_hosts" "$PUBLIC_HOST")"
+  configured_cors="${DJANGO_CORS_ALLOWED_ORIGINS:-$(get_env_value DJANGO_CORS_ALLOWED_ORIGINS)}"
+  configured_cors="${configured_cors:-http://${PUBLIC_HOST}:${NGINX_PUBLISH_PORT},http://${PUBLIC_HOST}:${WEB_PUBLISH_PORT}}"
+  configured_cors="$(append_csv_value "$configured_cors" "http://${PUBLIC_HOST}")"
+  configured_cors="$(append_csv_value "$configured_cors" "https://${PUBLIC_HOST}")"
+  set_env_value DJANGO_ALLOWED_HOSTS "$configured_hosts"
+  set_env_value DJANGO_CORS_ALLOWED_ORIGINS "$configured_cors"
 
   validate_secret DJANGO_SECRET_KEY
   validate_secret POSTGRES_PASSWORD
