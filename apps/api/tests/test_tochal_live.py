@@ -17,7 +17,7 @@ from hawatch.integrations.weather.ingest import (
     snapshot_freshness,
     weather_points_to_provider_points,
 )
-from hawatch.integrations.weather.normalize import normalize_point_hourly, response_items
+from hawatch.integrations.weather.normalize import map_weather_code, normalize_point_hourly, response_items
 from hawatch.integrations.weather.providers.open_meteo import OpenMeteoProvider, ProviderPoint
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.tochal import load_tochal_catalog, seed_tochal_catalog
@@ -199,6 +199,27 @@ def test_normalize_does_not_synthesize_cloud_or_uv_and_sets_valid_to():
     assert rows[0]["valid_to"] - rows[0]["valid_from"] == timedelta(hours=1)
     assert response_items([raw]) == [raw]
     assert response_items([raw, "malformed", raw]) == []
+
+
+def test_wind_warning_does_not_replace_sky_condition():
+    assert map_weather_code(1, hour=14, wind_kmh=26, gust_kmh=51) == (
+        "mainly-clear",
+        "عمدتاً صاف",
+        "☼",
+        "critical",
+    )
+    assert map_weather_code(61, hour=14, wind_kmh=26, gust_kmh=51) == (
+        "rain",
+        "باران",
+        "☂",
+        "critical",
+    )
+    assert map_weather_code(0, hour=20, wind_kmh=31, gust_kmh=50) == (
+        "clear-night",
+        "صاف",
+        "☾",
+        "critical",
+    )
 
 
 def test_bounded_retry_on_429_and_transport():

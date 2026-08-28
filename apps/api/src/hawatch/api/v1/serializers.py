@@ -242,6 +242,7 @@ def reading_payload(record: ForecastRecord, *, today: date, current_hour: int) -
         "wind_speed_kmh": record.wind_speed_kmh,
         "wind_label": f"باد {to_fa_digits(record.wind_speed_kmh)} km/h",
         "wind_gust_kmh": record.wind_gust_kmh,
+        "wind_alert": wind_alert_payload(record),
         "wind_direction_deg": record.wind_direction_deg,
         "wind_direction_label": wind_compass(record.wind_direction_deg),
         "precipitation_probability": record.precipitation_probability,
@@ -260,6 +261,22 @@ def reading_payload(record: ForecastRecord, *, today: date, current_hour: int) -
         "data_mode": record.data_mode,
         **flags,
     }
+
+
+def wind_alert_payload(record: ForecastRecord) -> dict | None:
+    """Expose strong wind separately from the sky/precipitation condition."""
+    if record.wind_speed_kmh >= 30 or record.wind_gust_kmh >= 40:
+        return {"code": "gale", "label": "تندباد", "severity": "critical"}
+    if record.wind_speed_kmh >= 22:
+        return {"code": "windy", "label": "بادخیز", "severity": "change"}
+    return None
+
+
+def record_alert_label(record: ForecastRecord) -> str:
+    wind_alert = wind_alert_payload(record)
+    if wind_alert:
+        return f"{record.condition_label} · {wind_alert['label']}"
+    return record.condition_label
 
 
 def _uv_label(uv: int | None) -> str:
@@ -320,7 +337,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
         hero_status = "دادهٔ فعلی در دسترس نیست"
     if change:
         hour = change.forecast_at.astimezone(timezone()).hour
-        hero_alert = f"!　تغییر مهم: از ساعت {to_fa_digits(hour)} {change.condition_label}"
+        hero_alert = f"!　تغییر مهم: از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
     else:
         hero_alert = "✓　شرایط فعلاً آرام‌تر است"
 

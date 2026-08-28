@@ -49,14 +49,21 @@ WMO_MAP: dict[int, tuple[str, str, str, str]] = {
 
 
 def map_weather_code(code: int | float | None, *, hour: int, wind_kmh: int, gust_kmh: int) -> tuple[str, str, str, str]:
+    """Map the provider sky condition without hiding it behind a wind warning.
+
+    Wind is a separate hazard from the WMO sky/precipitation code.  Keep the
+    latter as the condition shown to users, while still escalating severity so
+    route and decision cards can warn about strong wind.
+    """
     raw = int(code or 0)
     weather_code, label, icon, severity = WMO_MAP.get(raw, ("unknown", "نامشخص", "◒", "change"))
-    if wind_kmh >= 30 or gust_kmh >= 40:
-        return "gale", "تندباد", "≋", "critical"
-    if wind_kmh >= 22 and severity == "normal":
-        return "windy", "بادخیز", "≋", "change"
     if raw == 0 and hour >= 19:
-        return "clear-night", "صاف", "☾", "normal"
+        weather_code, label, icon = "clear-night", "صاف", "☾"
+
+    if wind_kmh >= 30 or gust_kmh >= 40:
+        severity = "critical"
+    elif wind_kmh >= 22 and severity == "normal":
+        severity = "change"
     return weather_code, label, icon, severity
 
 

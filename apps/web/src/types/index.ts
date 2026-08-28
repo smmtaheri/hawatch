@@ -2,6 +2,12 @@ export type Freshness = "ready" | "stale" | "partial";
 export type Severity = "normal" | "change" | "critical";
 export type PeriodId = "morning" | "afternoon";
 
+export interface WindAlert {
+  code: "windy" | "gale";
+  label: string;
+  severity: Severity;
+}
+
 export interface ApiMeta {
   schema_version: string;
   timezone: string;
@@ -76,6 +82,7 @@ export interface HourlyReading {
   icon: string;
   wind_speed_kmh: number;
   wind_label: string;
+  wind_alert?: WindAlert | null;
   severity: Severity;
   state: Severity;
   snowfall_cm?: number | null;
