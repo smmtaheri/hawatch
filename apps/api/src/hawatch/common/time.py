@@ -68,7 +68,7 @@ PERIODS = {
         "label": "شب",
         "range_label": "۱۸ تا ۰۲",
         "start_minutes": 1080,
-        "end_minutes": 1560,
+        "end_minutes": 1530,
         "default_start": 1200,
         "hours": NIGHT_HOURS,
         "headline": "تغییرات شب · هر دو ساعت",

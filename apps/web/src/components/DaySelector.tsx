@@ -18,8 +18,8 @@ export function DaySelector({
           key={day.date}
           className={[
             selected === day.date ? "selected" : "",
-            day.is_yesterday ? "is-yesterday past-day" : "",
-            day.is_past && !day.is_today ? "is-past past-day" : "",
+            day.is_yesterday && selected !== day.date ? "is-yesterday past-day" : "",
+            day.is_past && !day.is_today && selected !== day.date ? "is-past past-day" : "",
           ]
             .filter(Boolean)
             .join(" ")}

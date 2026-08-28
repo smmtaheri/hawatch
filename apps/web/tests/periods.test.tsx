@@ -1,11 +1,61 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
+import { DestinationPage } from "../src/pages/DestinationPage";
 import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
 import { PERIOD_OPTIONS } from "../src/lib/periods";
+
+const destinationForecast = {
+  destination: {
+    slug: "touchal",
+    tile_name: "توچال",
+    name: "قلهٔ توچال",
+    short_category: "کوه",
+    category: "کوه",
+    category_key: "mountain",
+    region: "تهران",
+    elevation_m: 3964,
+    elevation_label: "۳۹۶۴ متر",
+    image: "/images/touchal-banner-clean.png",
+    image_alt: "توچال",
+    href: "/destination/touchal",
+    is_popular: true,
+    routes: [],
+  },
+  days: [
+    { date: "2026-08-27", label: "دیروز", jalali: "۶ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: false, is_future: false, is_current: false },
+    { date: "2026-08-28", label: "امروز", jalali: "۷ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
+  ],
+  period: { id: "night", label: "شب", range_label: "۱۸ تا ۰۲", headline: "تغییرات شب", hours: [18, 20, 22, 0] },
+  current: {
+    time: "۰۰:۰۰",
+    hour: 0,
+    forecast_at: "2026-08-28T00:00:00+03:30",
+    temperature_c: 5,
+    temperature_label: "۵°",
+    condition: "صاف",
+    icon: "☼",
+    wind_speed_kmh: 4,
+    wind_label: "باد ۴ km/h",
+    severity: "normal",
+    state: "normal",
+    is_yesterday: false,
+    is_today: true,
+    is_past: false,
+    is_current: true,
+    is_future: false,
+  },
+  hourly: [],
+  metrics: [],
+  hero: { status: "☼　الان در توچال　۵°　·　صاف", alert: "آرام" },
+  decision: { chip: "دیروز · جمع‌بندی هواچ", title: "صبح", text: "آرام" },
+  updated_label: "امروز",
+  empty: false,
+  meta: { freshness: "ready", generated_at: "2026-08-28T00:30:00+03:30", selected_date: "2026-08-27", selected_period: "night" },
+};
 
 const routeForecast = {
   route: {
@@ -18,25 +68,11 @@ const routeForecast = {
     ascent_label: "۲۲۶۰ m",
     default_start_minutes: 360,
     href: "/routes/touchal-darband",
-    parent: {
-      slug: "touchal",
-      tile_name: "توچال",
-      name: "قلهٔ توچال",
-      short_category: "کوه",
-      category: "کوه",
-      category_key: "mountain",
-      region: "تهران",
-      elevation_m: 3964,
-      elevation_label: "۳۹۶۴ متر",
-      image: "/images/touchal-banner-clean.png",
-      image_alt: "توچال",
-      href: "/destination/touchal",
-      is_popular: true,
-    },
+    parent: destinationForecast.destination,
     points: [],
     siblings: [],
   },
-  days: [{ date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true }],
+  days: destinationForecast.days,
   period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۰", headline: "تغییرات صبح", hours: [2, 4, 6, 8] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
@@ -89,12 +125,21 @@ function jsonResponse(data: unknown, ok = true, status = 200) {
   return Promise.resolve({ ok, status, json: async () => data });
 }
 
+function forecastUrl(input: RequestInfo) {
+  return String(input);
+}
+
+function destinationCalls(calls: unknown[][]) {
+  return calls.map((call) => forecastUrl(call[0] as RequestInfo)).filter((url) => url.includes("/destinations/touchal/forecast"));
+}
+
 describe("periods and route planner", () => {
   const fetchMock = vi.fn();
 
   beforeEach(() => {
     fetchMock.mockImplementation((input: RequestInfo) => {
-      const url = String(input);
+      const url = forecastUrl(input);
+      if (url.includes("/destinations/touchal/forecast")) return jsonResponse(destinationForecast);
       if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
       if (url.includes("/routes/touchal-darband/points/shirpala/forecast")) {
         return jsonResponse({
@@ -129,7 +174,7 @@ describe("periods and route planner", () => {
   it("renders three period buttons", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband"]}>
+        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -141,7 +186,107 @@ describe("periods and route planner", () => {
     expect(screen.getByRole("button", { name: /شب/ })).toBeInTheDocument();
   });
 
-  it("does not refetch on every slider input event", async () => {
+  it("does not send period=morning on no-query initial destination load", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal"]}>
+          <Routes>
+            <Route path="/destination/:slug" element={<DestinationPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    const destinationRequest = destinationCalls(fetchMock.mock.calls)[0];
+    expect(destinationRequest).toBeDefined();
+    expect(destinationRequest).not.toContain("period=morning");
+    expect(destinationRequest).not.toContain("period=");
+  });
+
+  it("renders night selected from backend default", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal"]}>
+          <Routes>
+            <Route path="/destination/:slug" element={<DestinationPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    expect(screen.getByRole("button", { name: /شب/ })).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("keeps explicit query period on destination load", async () => {
+    fetchMock.mockImplementation((input: RequestInfo) => {
+      const url = forecastUrl(input);
+      if (url.includes("period=afternoon")) {
+        return jsonResponse({
+          ...destinationForecast,
+          meta: { ...destinationForecast.meta, selected_period: "afternoon" },
+          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۰ تا ۱۸", headline: "بعدازظهر", hours: [10, 12, 14, 16] },
+        });
+      }
+      return jsonResponse(destinationForecast);
+    });
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal?period=afternoon"]}>
+          <Routes>
+            <Route path="/destination/:slug" element={<DestinationPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    const destinationRequest = destinationCalls(fetchMock.mock.calls).find((url) => url.includes("period=afternoon"));
+    expect(destinationRequest).toBeDefined();
+    expect(screen.getByRole("button", { name: /بعدازظهر/ })).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("does not fade the active overnight day tab", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal"]}>
+          <Routes>
+            <Route path="/destination/:slug" element={<DestinationPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    const yesterdayTab = screen.getByRole("tab", { name: /دیروز/ });
+    expect(yesterdayTab.className).toContain("selected");
+    expect(yesterdayTab.className).not.toContain("past-day");
+  });
+
+  it("does not refetch on repeated draft slider updates", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+          <Routes>
+            <Route path="/routes/:slug" element={<RoutePage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    const callsAfterLoad = fetchMock.mock.calls.length;
+    const slider = screen.getByLabelText("ساعت شروع حرکت") as HTMLInputElement;
+    fireEvent.change(slider, { target: { value: "390" } });
+    fireEvent.change(slider, { target: { value: "420" } });
+    fireEvent.change(slider, { target: { value: "450" } });
+    expect(fetchMock.mock.calls.length).toBe(callsAfterLoad);
+    await waitFor(
+      () => {
+        expect(fetchMock.mock.calls.length).toBeGreaterThan(callsAfterLoad);
+      },
+      { timeout: 1000 },
+    );
+    expect(fetchMock.mock.calls.length).toBe(callsAfterLoad + 1);
+  });
+
+  it("updates draft gauge immediately when switching period", async () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
@@ -153,10 +298,8 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
-    const initialCalls = fetchMock.mock.calls.length;
-    const slider = screen.getByLabelText("ساعت شروع حرکت");
-    await user.click(slider);
-    expect(fetchMock.mock.calls.length).toBe(initialCalls);
+    await user.click(screen.getByRole("button", { name: /بعدازظهر/ }));
+    expect(screen.getByLabelText("ساعت شروع حرکت")).toHaveValue("720");
   });
 
   it("opens point detail page from route point card", async () => {
@@ -177,14 +320,15 @@ describe("periods and route planner", () => {
     expect(screen.getByLabelText("بازگشت به مسیر")).toHaveAttribute("href", expect.stringContaining("/routes/touchal-darband"));
   });
 
-  it("skips planner refetch when timing is pending", async () => {
+  it("updates speed locally without fetch when timing is pending", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
-      const url = String(input);
+      const url = forecastUrl(input);
       if (url.includes("/routes/touchal-darband/forecast")) {
         return jsonResponse({ ...routeForecast, timing_pending: true });
       }
       return jsonResponse({}, false, 404);
     });
+    const user = userEvent.setup();
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
@@ -197,9 +341,8 @@ describe("periods and route planner", () => {
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     const callsAfterLoad = fetchMock.mock.calls.length;
     const speedButton = screen.getAllByRole("button", { name: "سریع" })[0];
-    await userEvent.click(speedButton);
-    await waitFor(() => {
-      expect(fetchMock.mock.calls.length).toBe(callsAfterLoad);
-    });
+    await user.click(speedButton);
+    expect(speedButton).toHaveClass("selected");
+    expect(fetchMock.mock.calls.length).toBe(callsAfterLoad);
   });
 });

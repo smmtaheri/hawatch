@@ -329,6 +329,36 @@ def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *,
             hourly.append(reading_payload(record, now=now))
     return hourly
 
+def _current_record_for_period(
+    point: WeatherPoint,
+    selected_date: date,
+    period: str,
+    local: datetime,
+) -> ForecastRecord | None:
+    window_start, window_end = period_window(selected_date, period)
+    period_records = _records_for_window(point, window_start, window_end)
+    if not period_records:
+        return None
+    if window_start <= local < window_end:
+        current_bucket = local.replace(minute=0, second=0, microsecond=0)
+        for record in period_records:
+            record_bucket = record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0)
+            if record_bucket == current_bucket:
+                return record
+        return min(
+            period_records,
+            key=lambda item: abs((item.forecast_at.astimezone(timezone()) - local).total_seconds()),
+        )
+    if selected_date == local.date():
+        today_records = _records_for_day(point, local.date())
+        if today_records:
+            return min(
+                today_records,
+                key=lambda item: abs(item.forecast_at.astimezone(timezone()).hour - local.hour),
+            )
+    return None
+
+
 def destination_forecast(destination: Destination, *, selected_date: date, period: str) -> dict:
     refresh_if_bucket_changed()
     local = now_tehran()
@@ -339,15 +369,16 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
     records = _records_for_day(point, selected_date)
     hourly = _hourly_for_period(point, selected_date, period, now=local)
 
-    now_record = min(records, key=lambda item: abs(item.forecast_at.astimezone(timezone()).hour - local.hour), default=None) if records else None
-    if selected_date != today:
-        now_record = records[len(records) // 2] if records else None
+    now_record = _current_record_for_period(point, selected_date, period, local)
+    current_payload = reading_payload(now_record, now=local) if now_record else None
 
     change = next((item for item in records if item.severity in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 12), None)
     critical = next((item for item in records if item.severity == "critical"), None)
 
-    if now_record:
+    if current_payload and current_payload["is_current"]:
         hero_status = f"{now_record.icon}　الان در {destination.tile_name}　{to_fa_digits(now_record.temperature_c)}°　·　{now_record.condition_label}"
+    elif current_payload:
+        hero_status = f"{current_payload['icon']}　در {destination.tile_name}　{current_payload['temperature_label']}　·　{current_payload['condition']}"
     else:
         hero_status = "دادهٔ فعلی در دسترس نیست"
     if change:
@@ -404,7 +435,13 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
             {"icon": "◷", "label": "طلوع / غروب", "value": f"{sunrise} / {sunset}", "note": "برای زمان‌بندی برگشت", "color": ""},
         ]
 
-    days = [day_payload(day, today) for day in day_window(today)]
+    active_overnight = local.hour < 2 and period == "night" and selected_date == today - timedelta(days=1)
+    days = []
+    for day in day_window(today):
+        payload = day_payload(day, today)
+        if active_overnight and day == selected_date:
+            payload = {**payload, "is_past": False}
+        days.append(payload)
     empty = not records
     meta = meta_base(selected_date=selected_date, period=period)
     if empty and not settings.DEMO_DATA_ENABLED:
@@ -423,7 +460,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
         "destination": serialize_destination(destination, include_routes=True),
         "days": days,
         "period": PERIODS[period],
-        "current": reading_payload(now_record, now=local) if now_record else None,
+        "current": current_payload,
         "hourly": hourly,
         "metrics": metrics,
         "alerts": [

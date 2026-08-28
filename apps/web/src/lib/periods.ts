@@ -6,10 +6,13 @@ export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: st
   { id: "night", label: "شب", rangeLabel: "۱۸ تا ۰۲" },
 ];
 
-export const PERIOD_RANGES: Record<PeriodId, { min: number; max: number; label: string; defaultStart: string }> = {
-  morning: { min: 120, max: 600, label: "۰۲ تا ۱۰", defaultStart: "06:00" },
-  afternoon: { min: 600, max: 1080, label: "۱۰ تا ۱۸", defaultStart: "12:00" },
-  night: { min: 1080, max: 1560, label: "۱۸ تا ۰۲", defaultStart: "20:00" },
+export const PERIOD_RANGES: Record<
+  PeriodId,
+  { min: number; max: number; label: string; defaultStart: string; defaultStartMinutes: number }
+> = {
+  morning: { min: 120, max: 600, label: "۰۲ تا ۱۰", defaultStart: "06:00", defaultStartMinutes: 360 },
+  afternoon: { min: 600, max: 1080, label: "۱۰ تا ۱۸", defaultStart: "12:00", defaultStartMinutes: 720 },
+  night: { min: 1080, max: 1530, label: "۱۸ تا ۰۲", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
 const PERIOD_TICKS: Record<PeriodId, string[]> = {
@@ -29,6 +32,15 @@ export function toClock(minutes: number) {
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 }
 
+export function parseClockToMinutes(clock: string, period: PeriodId) {
+  const [hours, minutes] = clock.split(":").map(Number);
+  let value = hours * 60 + minutes;
+  if (period === "night" && value < 180) {
+    value += 1440;
+  }
+  return value;
+}
+
 export function formatClockDisplay(minutes: number) {
   const fa = "۰۱۲۳۴۵۶۷۸۹";
   const clock = minutes % 1440;
@@ -46,4 +58,20 @@ export function appendRouteContext(href: string, params: URLSearchParams) {
     if (value) url.searchParams.set(key, value);
   }
   return `${url.pathname}${url.search}`;
+}
+
+export function buildForecastParams(options: {
+  date?: string;
+  period?: string;
+  start_time?: string;
+  speed?: string;
+  includeDate?: boolean;
+  includePeriod?: boolean;
+}) {
+  const params: Record<string, string | undefined> = {};
+  if (options.includeDate && options.date) params.date = options.date;
+  if (options.includePeriod && options.period) params.period = options.period;
+  if (options.start_time) params.start_time = options.start_time;
+  if (options.speed) params.speed = options.speed;
+  return params;
 }

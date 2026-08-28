@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
@@ -13,25 +13,37 @@ import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { buildForecastParams } from "../../lib/periods";
 import type { DestinationForecast, PeriodId } from "../../types";
 
 export function DestinationPage() {
   const { slug = "touchal" } = useParams();
-  const [date, setDate] = useState<string>();
-  const [period, setPeriod] = useState<PeriodId>();
+  const [searchParams] = useSearchParams();
+  const [date, setDate] = useState<string | undefined>(() => searchParams.get("date") ?? undefined);
+  const [period, setPeriod] = useState<PeriodId | undefined>(
+    () => (searchParams.get("period") as PeriodId | null) ?? undefined,
+  );
   const [data, setData] = useState<DestinationForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
-  const activePeriod = period ?? (data?.meta.selected_period as PeriodId) ?? "morning";
+  const displayPeriod = period ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
 
-  function load(nextDate = date, nextPeriod = activePeriod) {
+  function load() {
     setStatus("loading");
     api
-      .destinationForecast(slug, { date: nextDate, period: nextPeriod })
+      .destinationForecast(
+        slug,
+        buildForecastParams({
+          date,
+          period,
+          includeDate: Boolean(date),
+          includePeriod: Boolean(period),
+        }),
+      )
       .then((payload) => {
         setData(payload);
-        if (!nextDate) setDate(payload.meta.selected_date);
+        if (!date) setDate(payload.meta.selected_date);
         if (!period) setPeriod(payload.meta.selected_period as PeriodId);
-        setStatus(payload.empty ? "ready" : "ready");
+        setStatus("ready");
       })
       .catch((error) => setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error"));
   }
@@ -50,7 +62,7 @@ export function DestinationPage() {
     );
   }
 
-  const selected = date ?? data?.days.find((day) => day.is_today)?.date ?? "";
+  const selected = date ?? data?.meta.selected_date ?? "";
   const routes = data?.destination.routes ?? [];
 
   return (
@@ -110,10 +122,7 @@ export function DestinationPage() {
                     </div>
                     <div className="destination-period-row">
                       <span className="planner-label">بازهٔ نمایش هوا</span>
-                      <PeriodToggle
-                        value={activePeriod}
-                        onChange={(next) => setPeriod(next)}
-                      />
+                      <PeriodToggle value={displayPeriod} onChange={setPeriod} />
                     </div>
                   </div>
                   {data.empty ? (

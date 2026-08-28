@@ -11,7 +11,7 @@ import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { PERIOD_RANGES } from "../../lib/periods";
+import { buildForecastParams, PERIOD_RANGES } from "../../lib/periods";
 import type { PeriodId, RoutePointForecast } from "../../types";
 
 export function PointDetailPage() {
@@ -19,8 +19,11 @@ export function PointDetailPage() {
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState<RoutePointForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
-  const date = params.get("date") ?? undefined;
-  const period = (params.get("period") as PeriodId) || "morning";
+  const explicitDate = params.has("date");
+  const explicitPeriod = params.has("period");
+  const requestedDate = params.get("date") ?? undefined;
+  const requestedPeriod = params.get("period") as PeriodId | null;
+  const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -34,11 +37,23 @@ export function PointDetailPage() {
   function load() {
     setStatus("loading");
     api
-      .routePointForecast(routeSlug, pointSlug, { date, period })
+      .routePointForecast(
+        routeSlug,
+        pointSlug,
+        buildForecastParams({
+          date: requestedDate,
+          period: requestedPeriod ?? undefined,
+          includeDate: explicitDate,
+          includePeriod: explicitPeriod,
+        }),
+      )
       .then((payload) => {
         setData(payload);
-        if (!date) {
-          update({ date: payload.meta.selected_date, period: payload.meta.selected_period as PeriodId });
+        if (!explicitDate || !explicitPeriod) {
+          update({
+            date: explicitDate ? requestedDate : payload.meta.selected_date,
+            period: explicitPeriod ? requestedPeriod ?? undefined : (payload.meta.selected_period as PeriodId),
+          });
         }
         setStatus("ready");
       })
@@ -48,7 +63,7 @@ export function PointDetailPage() {
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [routeSlug, pointSlug, date, period]);
+  }, [routeSlug, pointSlug, requestedDate, requestedPeriod]);
 
   if (status === "missing") {
     return (
@@ -59,7 +74,7 @@ export function PointDetailPage() {
     );
   }
 
-  const selected = date ?? data?.meta.selected_date ?? "";
+  const selected = requestedDate ?? data?.meta.selected_date ?? "";
   const backHref = data?.back_href ?? `/routes/${routeSlug}`;
   const routeParams = new URLSearchParams();
   for (const key of ["date", "period", "start_time", "speed"]) {
@@ -105,12 +120,7 @@ export function PointDetailPage() {
               <DaySelector days={data.days} selected={selected} onSelect={(next) => update({ date: next })} />
               <div className="destination-period-row">
                 <span className="planner-label">بازهٔ نمایش هوا</span>
-                <PeriodToggle
-                  value={period}
-                  onChange={(next) =>
-                    update({ period: next, start_time: undefined, date: selected || undefined })
-                  }
-                />
+                <PeriodToggle value={displayPeriod} onChange={(next) => update({ period: next })} />
               </div>
               {!data.point.has_weather_point ? (
                 <EmptyState
@@ -137,7 +147,7 @@ export function PointDetailPage() {
               )}
             </section>
             <footer className="site-footer">
-              <span>هوای مقصد، برنامهٔ مسیر · بازهٔ {PERIOD_RANGES[period].label}</span>
+              <span>هوای مقصد، برنامهٔ مسیر · بازهٔ {PERIOD_RANGES[displayPeriod].label}</span>
             </footer>
           </>
         ) : null}

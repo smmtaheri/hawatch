@@ -109,6 +109,24 @@ def test_defaults_applied_without_query_params(mock_default, api_client, seeded)
 def test_night_start_minutes_cross_midnight():
     assert parse_start_minutes("00:30", "night", None) == 1470
     assert parse_start_minutes("01:30", "night", None) == 1530
+    assert parse_start_minutes("02:00", "night", None) == 1530
+
+
+@pytest.mark.django_db
+@patch("hawatch.common.time.now_tehran")
+def test_destination_overnight_current_at_0030(mock_now, api_client, seeded):
+    from hawatch.common.time import timezone
+
+    tz = timezone()
+    mock_now.return_value = datetime(2026, 8, 28, 0, 30, tzinfo=tz)
+    body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+    assert body["meta"]["selected_date"] == "2026-08-27"
+    assert body["meta"]["selected_period"] == "night"
+    assert body["current"] is not None
+    assert body["current"]["is_current"] is True
+    assert "الان" in body["hero"]["status"]
+    yesterday = next(day for day in body["days"] if day["date"] == "2026-08-27")
+    assert yesterday["is_past"] is False
 
 
 @pytest.mark.django_db

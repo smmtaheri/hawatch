@@ -17,7 +17,15 @@ import { SpeedControl } from "../../components/SpeedControl";
 import { StartTimeControl } from "../../components/StartTimeControl";
 import { StatsGrid } from "../../components/StatsGrid";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { appendRouteContext, formatClockDisplay, PERIOD_RANGES, periodTicks, toClock } from "../../lib/periods";
+import {
+  appendRouteContext,
+  buildForecastParams,
+  formatClockDisplay,
+  parseClockToMinutes,
+  PERIOD_RANGES,
+  periodTicks,
+  toClock,
+} from "../../lib/periods";
 import type { PeriodId, RouteForecast } from "../../types";
 
 export function RoutePage() {
@@ -26,15 +34,18 @@ export function RoutePage() {
   const [data, setData] = useState<RouteForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
   const [draftMinutes, setDraftMinutes] = useState<number | null>(null);
+  const [draftSpeed, setDraftSpeed] = useState<string | null>(null);
   const requestId = useRef(0);
   const commitTimer = useRef<number | null>(null);
   const plannerReady = useRef(false);
   const explicitDate = params.has("date");
   const explicitPeriod = params.has("period");
-  const date = params.get("date") ?? undefined;
-  const period = ((params.get("period") as PeriodId) || "morning") as PeriodId;
+  const requestedDate = params.get("date") ?? undefined;
+  const requestedPeriod = params.get("period") as PeriodId | null;
   const speed = params.get("speed") || undefined;
   const start = params.get("start_time") || undefined;
+  const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
+  const displaySpeed = draftSpeed ?? speed ?? data?.speed ?? "متوسط";
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -52,16 +63,27 @@ export function RoutePage() {
     const currentRequest = ++requestId.current;
     setStatus("loading");
     api
-      .routeForecast(slug, { date, period, speed, start_time: start })
+      .routeForecast(
+        slug,
+        buildForecastParams({
+          date: requestedDate,
+          period: requestedPeriod ?? undefined,
+          start_time: start,
+          speed,
+          includeDate: explicitDate,
+          includePeriod: explicitPeriod,
+        }),
+      )
       .then((payload) => {
         if (currentRequest !== requestId.current) return;
         setData(payload);
-        setDraftMinutes(payload.start_minutes);
+        const resolvedPeriod = (requestedPeriod ?? payload.meta.selected_period) as PeriodId;
+        setDraftMinutes(start ? parseClockToMinutes(start, resolvedPeriod) : payload.start_minutes);
+        setDraftSpeed(payload.speed);
         if (!explicitDate || !explicitPeriod) {
-          const today = payload.days.find((day) => day.is_today)?.date ?? payload.meta.selected_date;
           update({
-            date: explicitDate ? date : today,
-            period: explicitPeriod ? period : (payload.meta.selected_period as PeriodId),
+            date: explicitDate ? requestedDate : payload.meta.selected_date,
+            period: explicitPeriod ? requestedPeriod ?? undefined : (payload.meta.selected_period as PeriodId),
             speed: payload.speed,
             start_time: toClock(payload.start_minutes),
           });
@@ -78,7 +100,7 @@ export function RoutePage() {
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, date, period]);
+  }, [slug, requestedDate, requestedPeriod]);
 
   useEffect(() => {
     if (!plannerReady.current) return;
@@ -86,12 +108,11 @@ export function RoutePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [speed, start]);
 
-  const ticks = useMemo(() => periodTicks(period), [period]);
-  const periodRange = PERIOD_RANGES[period];
+  const ticks = useMemo(() => periodTicks(displayPeriod), [displayPeriod]);
+  const periodRange = PERIOD_RANGES[displayPeriod];
   const pointHref = (href: string) => appendRouteContext(href, params);
 
-  function commitStartMinutes(minutes: number) {
-    setDraftMinutes(minutes);
+  function scheduleCommit(minutes: number) {
     if (data?.timing_pending) {
       update({ start_time: toClock(minutes) });
       return;
@@ -102,8 +123,25 @@ export function RoutePage() {
     }, 300);
   }
 
+  function handleDraftChange(minutes: number) {
+    setDraftMinutes(minutes);
+    scheduleCommit(minutes);
+  }
+
+  function commitStartMinutes(minutes: number) {
+    if (commitTimer.current) window.clearTimeout(commitTimer.current);
+    setDraftMinutes(minutes);
+    update({ start_time: toClock(minutes) });
+  }
+
   function handlePeriodChange(next: PeriodId) {
+    setDraftMinutes(PERIOD_RANGES[next].defaultStartMinutes);
     update({ period: next, start_time: PERIOD_RANGES[next].defaultStart });
+  }
+
+  function handleSpeedChange(nextSpeed: string) {
+    setDraftSpeed(nextSpeed);
+    update({ speed: nextSpeed });
   }
 
   if (status === "missing") {
@@ -115,8 +153,8 @@ export function RoutePage() {
     );
   }
 
-  const selected = date ?? data?.days.find((day) => day.is_today)?.date ?? "";
-  const startMinutes = draftMinutes ?? data?.start_minutes ?? periodRange.min;
+  const selected = requestedDate ?? data?.meta.selected_date ?? "";
+  const startMinutes = draftMinutes ?? data?.start_minutes ?? periodRange.defaultStartMinutes;
   const startDisplay = formatClockDisplay(startMinutes);
 
   return (
@@ -166,7 +204,7 @@ export function RoutePage() {
                       <span className="decision-chip">نقاط مهم</span>
                     </div>
                     <div className="route-hourly-selector" aria-label="انتخاب بازهٔ زمانی پیش‌بینی">
-                      <PeriodToggle value={period} onChange={handlePeriodChange} />
+                      <PeriodToggle value={displayPeriod} onChange={handlePeriodChange} />
                     </div>
                   </div>
                   <RouteTimeline
@@ -210,9 +248,9 @@ export function RoutePage() {
                         {data.speed_options.map((option) => (
                           <button
                             key={`mobile-${option}`}
-                            className={data.speed === option ? "selected" : ""}
+                            className={displaySpeed === option ? "selected" : ""}
                             type="button"
-                            onClick={() => update({ speed: option })}
+                            onClick={() => handleSpeedChange(option)}
                           >
                             {option}
                           </button>
@@ -227,10 +265,10 @@ export function RoutePage() {
                     ticks={ticks}
                     rangeLabel={periodRange.label}
                     display={startDisplay}
-                    onChange={setDraftMinutes}
+                    onChange={handleDraftChange}
                     onCommit={commitStartMinutes}
                   />
-                  <SpeedControl value={data.speed} options={data.speed_options} onChange={(value) => update({ speed: value })} />
+                  <SpeedControl value={displaySpeed} options={data.speed_options} onChange={handleSpeedChange} />
                 </div>
                 <ShareCard forecast={data} />
               </aside>

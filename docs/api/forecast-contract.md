@@ -31,7 +31,7 @@ timezone پیش‌فرض: `Asia/Tehran`.
 | ۱۰:۰۰–۱۷:۵۹ | `afternoon` | امروز |
 | ۱۸:۰۰–۲۳:۵۹ | `night` | امروز |
 
-اگر کاربر `date` یا `period` را صریح بفرستد، API همان را برمی‌گرداند و frontend بعد از load آن را overwrite نمی‌کند.
+اگر کاربر `date` یا `period` را صریح بفرستد، API همان را برمی‌گرداند و frontend بعد از load آن را overwrite نمی‌کند. در بار اول بدون query، frontend نباید `period=morning` بفرستد؛ backend مقدار را در `meta` برمی‌گرداند.
 
 ## past / current / future
 
@@ -75,7 +75,7 @@ forecast
 ## route planner
 
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
-- برای `night`، `00:00`–`02:00` به‌عنوان ادامهٔ همان شب (نه ابتدای همان روز تقویمی) تفسیر می‌شود.
+- برای `night`، `00:00`–`01:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `02:00` متعلق به `morning` است.
 - وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
 
 ## نقطهٔ مسیر (point detail)
