@@ -3,7 +3,7 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-    dependencies = [("forecasts", "0006_alter_weatherpoint_climate")]
+    dependencies = [("forecasts", "0002_disable_auto_spatial_indexes")]
 
     operations = [
         migrations.CreateModel(
@@ -44,5 +44,4 @@ class Migration(migrations.Migration):
             index=models.Index(fields=["generated_at"], name="daily_generated_idx"),
         ),
     ]
-
 
