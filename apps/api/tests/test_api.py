@@ -249,6 +249,18 @@ def test_search_suggestions_destination_and_point(api_client, seeded):
 
 
 @pytest.mark.django_db
+def test_search_no_duplicate_touchal_destination_and_summit(api_client, seeded):
+    results = api_client.get("/api/v1/search/suggestions/", {"q": "توچال"}).json()["results"]
+    destinations = [item for item in results if item["type"] == "destination" and item["slug"] == "touchal"]
+    summit_points = [item for item in results if item["type"] == "point" and item["slug"] == "tochal_summit"]
+    assert len(destinations) == 1
+    assert len(summit_points) == 0
+
+    pas_results = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()["results"]
+    assert any(item["type"] == "point" and item["slug"] == "pas_ghaleh" for item in pas_results)
+
+
+@pytest.mark.django_db
 def test_search_alias_and_deduplication(api_client, seeded):
     from hawatch.modules.catalog.models import SearchIndexEntry
     from hawatch.modules.catalog.search import rebuild_search_index

@@ -26,7 +26,8 @@ import {
   periodTicks,
   toClock,
 } from "../../lib/periods";
-import type { PeriodId, RouteForecast, RoutePointView, RouteFromState } from "../../types";
+import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
+import type { PeriodId, RouteForecast, RoutePointView } from "../../types";
 
 type RouteRequestInputs = {
   slug: string;
@@ -157,22 +158,10 @@ export function RoutePage() {
 
   const ticks = useMemo(() => periodTicks(displayPeriod), [displayPeriod]);
   const periodRange = PERIOD_RANGES[displayPeriod];
-  const routeBackState = data
-    ? ({
-        fromRoute: {
-          slug: data.route.slug,
-          title: data.route.title,
-          href: data.route.href,
-        },
-      } satisfies { fromRoute: RouteFromState })
-    : undefined;
+  const fromRoute = data ? buildRouteBackState(data.route, params) : undefined;
 
   function pointLink(point: RoutePointView) {
-    return {
-      pathname: point.href,
-      search: "",
-      state: routeBackState,
-    };
+    return buildRoutePointLink(point.href, fromRoute);
   }
 
   function scheduleCommit(minutes: number) {

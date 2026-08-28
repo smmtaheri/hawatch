@@ -1,14 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../api/client";
 import { Header } from "../../components/Header";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
-import { SearchCombobox } from "../../components/SearchCombobox";
+import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { DestinationIcon } from "../../components/DestinationIcon";
-import type { DestinationSummary } from "../../types";
+import type { DestinationSummary, SearchSuggestion } from "../../types";
 
 function tileWords(name: string) {
   return name.split(" ").filter(Boolean);
@@ -16,19 +16,19 @@ function tileWords(name: string) {
 
 export function HomePage() {
   const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState("");
-  const [destinations, setDestinations] = useState<DestinationSummary[]>([]);
-  const [empty, setEmpty] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
+  const [popularDestinations, setPopularDestinations] = useState<DestinationSummary[]>([]);
   const [freshness, setFreshness] = useState("ready");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const searchRef = useRef<SearchComboboxHandle>(null);
 
-  function load(search = "") {
+  function loadPopular() {
     setStatus("loading");
     api
-      .destinations(search)
+      .destinations()
       .then((payload) => {
-        setDestinations(payload.results);
-        setEmpty(payload.empty);
+        setPopularDestinations(payload.results);
         setFreshness(payload.meta.freshness);
         setStatus("ready");
       })
@@ -36,11 +36,17 @@ export function HomePage() {
   }
 
   useEffect(() => {
-    load();
+    loadPopular();
   }, []);
 
-  const heading = submitted ? "نتایج مرتبط" : "مقصدهای محبوب";
-  const visible = useMemo(() => destinations, [destinations]);
+  function handleUnifiedSearch(nextQuery: string, results: SearchSuggestion[]) {
+    setSubmittedQuery(nextQuery);
+    setSearchResults(results);
+    setStatus("ready");
+  }
+
+  const showingSearch = Boolean(submittedQuery);
+  const heading = showingSearch ? "نتایج مرتبط" : "مقصدهای محبوب";
 
   return (
     <main className="home-page">
@@ -53,24 +59,18 @@ export function HomePage() {
               className="search-box"
               onSubmit={(event) => {
                 event.preventDefault();
-                const next = query.trim();
-                setSubmitted(next);
-                load(next);
+                searchRef.current?.submit();
               }}
             >
               <SearchCombobox
+                ref={searchRef}
                 value={query}
-                onChange={(next) => {
-                  setQuery(next);
-                  if (submitted) {
-                    setSubmitted("");
-                    load();
-                  }
+                onChange={setQuery}
+                onClearSubmitted={() => {
+                  setSubmittedQuery("");
+                  setSearchResults([]);
                 }}
-                onSubmitQuery={(next) => {
-                  setSubmitted(next);
-                  load(next);
-                }}
+                onUnifiedSearch={handleUnifiedSearch}
               />
               <button type="submit">جست‌وجو</button>
             </form>
@@ -80,17 +80,29 @@ export function HomePage() {
                 <i />
               </div>
               {freshness === "stale" ? <StaleDataNotice /> : null}
-              {status === "loading" ? <LoadingState label="در حال بارگذاری مقصدها…" /> : null}
-              {status === "error" ? <ErrorState onRetry={() => load(submitted)} /> : null}
-              {status === "ready" && empty ? (
+              {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری مقصدها…" /> : null}
+              {status === "error" && !showingSearch ? <ErrorState onRetry={loadPopular} /> : null}
+              {showingSearch && !searchResults.length ? (
                 <EmptyState
-                  title="مقصد مرتبطی پیدا نشد؛ نام مقصد دیگری را امتحان کن."
-                  detail="برای دیدن پیش‌بینی، روی مقصد موردنظرت بزن."
+                  title="نتیجه‌ای پیدا نشد؛ نام دیگری را امتحان کن."
+                  detail="مقصد یا نقطهٔ مسیر را با حداقل دو حرف جست‌وجو کن."
                 />
               ) : null}
-              {status === "ready" && !empty ? (
+              {showingSearch && searchResults.length ? (
+                <ul className="search-results-list" aria-label="نتایج جست‌وجو">
+                  {searchResults.map((item) => (
+                    <li key={`${item.type}-${item.slug}`}>
+                      <Link to={item.href} className="search-result-row">
+                        <span className="search-result-label">{item.label}</span>
+                        <span className="search-result-hint">— {item.hint}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {!showingSearch && status === "ready" ? (
                 <div className="destination-grid">
-                  {visible.map((item) => (
+                  {popularDestinations.map((item) => (
                     <Link key={item.slug} to={item.href} className="destination-tile">
                       <span className="destination-tile-copy">
                         <strong>
@@ -110,8 +122,8 @@ export function HomePage() {
                   ))}
                 </div>
               ) : null}
-              {status === "ready" && submitted && !empty ? (
-                <p className="muted">برای دیدن پیش‌بینی، روی مقصد موردنظرت بزن.</p>
+              {showingSearch && searchResults.length ? (
+                <p className="muted">برای دیدن پیش‌بینی، روی نتیجهٔ موردنظرت بزن.</p>
               ) : null}
             </div>
           </div>

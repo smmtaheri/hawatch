@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -191,12 +191,27 @@ describe("Hawatch pages", () => {
     vi.stubGlobal("fetch", vi.fn(() => jsonResponse({}, false, 500)));
     renderAt("/");
     expect(await screen.findByText("بارگذاری ناموفق بود")).toBeInTheDocument();
+    cleanup();
     vi.stubGlobal(
       "fetch",
-      vi.fn(() => jsonResponse({ results: [], empty: true, query: "xyz", meta: { freshness: "ready" } })),
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/search/suggestions")) {
+          return jsonResponse({ query: "xyz", results: [], empty: true, meta: { freshness: "ready" } });
+        }
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        return jsonResponse({}, false, 500);
+      }),
     );
+    const user = userEvent.setup();
     renderAt("/");
-    expect(await screen.findByText(/مقصد مرتبطی پیدا نشد/)).toBeInTheDocument();
+    await screen.findByText("توچال");
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "xyz");
+    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
+    expect(await screen.findByText(/نتیجه‌ای پیدا نشد/)).toBeInTheDocument();
   });
 
   it("shows stale notice", async () => {
@@ -294,6 +309,137 @@ describe("Hawatch pages", () => {
     });
     expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
     expect(screen.queryByText("قدیمی")).not.toBeInTheDocument();
+  });
+
+  it("submits unified search for a point query via search button", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/search/suggestions")) {
+          return jsonResponse({
+            query: "پس",
+            results: [
+              {
+                type: "point",
+                slug: "pas_ghaleh",
+                label: "پس‌قلعه",
+                hint: "نقطهٔ مسیر · توچال",
+                href: "/points/pas_ghaleh",
+                match_kind: "name",
+              },
+              {
+                type: "point",
+                slug: "other_point",
+                label: "نقطهٔ دیگر",
+                hint: "نقطهٔ مسیر · توچال",
+                href: "/points/other_point",
+                match_kind: "name",
+              },
+            ],
+            empty: false,
+            meta: { freshness: "ready" },
+          });
+        }
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        return jsonResponse({}, false, 500);
+      }),
+    );
+    const user = userEvent.setup();
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/"]}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByText("توچال");
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "پس");
+    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
+    expect(await screen.findByRole("link", { name: /پس‌قلعه/ })).toHaveAttribute("href", "/points/pas_ghaleh");
+    expect(screen.getAllByText(/نقطهٔ مسیر · توچال/).length).toBeGreaterThan(0);
+    expect(screen.getByText("نتایج مرتبط")).toBeInTheDocument();
+  });
+
+  it("navigates to point on Enter with active suggestion", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/search/suggestions")) {
+          return jsonResponse({
+            query: "پس",
+            results: [
+              {
+                type: "point",
+                slug: "pas_ghaleh",
+                label: "پس‌قلعه",
+                hint: "نقطهٔ مسیر · توچال",
+                href: "/points/pas_ghaleh",
+                match_kind: "name",
+              },
+            ],
+            empty: false,
+            meta: { freshness: "ready" },
+          });
+        }
+        if (url.includes("/points/pas_ghaleh/forecast")) {
+          return jsonResponse({
+            point: {
+              slug: "pas_ghaleh",
+              name: "پس‌قلعه",
+              aliases: [],
+              kind: "shared",
+              elevation_m: 1936,
+              elevation_label: "۱۹۳۶ m",
+              latitude: 35.836,
+              longitude: 51.423,
+              status: "approved",
+              provenance: "curated",
+              href: "/points/pas_ghaleh",
+              destination: destinationForecast.destination,
+            },
+            related_destinations: [destinationForecast.destination],
+            related_routes: [],
+            days: destinationForecast.days,
+            period: destinationForecast.period,
+            current: destinationForecast.hourly[0],
+            weather: destinationForecast.hourly[0],
+            hourly: destinationForecast.hourly,
+            hero: { status: "☼　در پس‌قلعه　۷°　·　صاف" },
+            updated_label: "امروز",
+            empty: false,
+            partial: false,
+            meta: destinationForecast.meta,
+          });
+        }
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        return jsonResponse({}, false, 500);
+      }),
+    );
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/"]}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/points/:slug" element={<PointDetailPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByText("توچال");
+    const user = userEvent.setup();
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "پس");
+    await user.keyboard("{Enter}");
+    expect(await screen.findByRole("heading", { name: "پس‌قلعه" })).toBeInTheDocument();
   });
 
   it("does not create full-page horizontal overflow at the mobile reference width", async () => {

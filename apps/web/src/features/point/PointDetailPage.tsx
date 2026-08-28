@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { DaySelector } from "../../components/DaySelector";
@@ -23,28 +23,40 @@ export function PointDetailPage() {
   const { slug = "" } = useParams();
   const location = useLocation();
   const fromRoute = (location.state as PointLocationState | null)?.fromRoute;
-  const [params, setParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [date, setDate] = useState<string | undefined>(() => searchParams.get("date") || undefined);
+  const [period, setPeriod] = useState<PeriodId | undefined>(() => asPeriodId(searchParams.get("period")));
   const [data, setData] = useState<PointForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
   const requestId = useRef(0);
   const resolvedDefaultRequestKey = useRef<string | null>(null);
-  const requestedDate = params.get("date") || undefined;
-  const explicitDate = Boolean(requestedDate);
-  const requestedPeriod = asPeriodId(params.get("period"));
-  const explicitPeriod = Boolean(requestedPeriod);
-  const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
+  const explicitDate = Boolean(searchParams.get("date"));
+  const explicitPeriod = Boolean(searchParams.get("period"));
+  const displayPeriod = period ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
 
-  function requestKey(nextDate = requestedDate, nextPeriod = requestedPeriod) {
+  function requestKey(nextDate = date, nextPeriod = period) {
     return JSON.stringify([slug, nextDate ?? "", nextPeriod ?? ""]);
   }
 
-  function update(next: Record<string, string | undefined>) {
-    const copy = new URLSearchParams(params);
+  function writeQuery(next: Record<string, string | undefined>) {
+    const copy = new URLSearchParams(searchParams);
     for (const [key, value] of Object.entries(next)) {
       if (value) copy.set(key, value);
       else copy.delete(key);
     }
-    setParams(copy, { replace: true });
+    setSearchParams(copy, { replace: true });
+  }
+
+  function selectDate(next: string) {
+    setDate(next);
+    const nextPeriod = period ?? (data?.meta.selected_period as PeriodId | undefined);
+    writeQuery({ date: next, period: nextPeriod });
+  }
+
+  function selectPeriod(next: PeriodId) {
+    setPeriod(next);
+    const nextDate = date ?? data?.meta.selected_date;
+    writeQuery({ date: nextDate, period: next });
   }
 
   function load() {
@@ -54,8 +66,8 @@ export function PointDetailPage() {
       .pointForecast(
         slug,
         buildForecastParams({
-          date: requestedDate,
-          period: requestedPeriod ?? undefined,
+          date,
+          period,
           includeDate: explicitDate,
           includePeriod: explicitPeriod,
         }),
@@ -63,14 +75,12 @@ export function PointDetailPage() {
       .then((payload) => {
         if (currentRequest !== requestId.current) return;
         setData(payload);
-        if (!explicitDate || !explicitPeriod) {
-          const resolvedDate = explicitDate ? requestedDate : payload.meta.selected_date;
-          const resolvedPeriod = explicitPeriod ? requestedPeriod : (payload.meta.selected_period as PeriodId);
+        if (!date || !period) {
+          const resolvedDate = date ?? payload.meta.selected_date;
+          const resolvedPeriod = period ?? (payload.meta.selected_period as PeriodId);
           resolvedDefaultRequestKey.current = requestKey(resolvedDate, resolvedPeriod);
-          update({
-            date: resolvedDate,
-            period: resolvedPeriod,
-          });
+          if (!date) setDate(resolvedDate);
+          if (!period) setPeriod(resolvedPeriod);
         }
         setStatus("ready");
       })
@@ -87,7 +97,7 @@ export function PointDetailPage() {
     }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, requestedDate, requestedPeriod]);
+  }, [slug, date, period]);
 
   if (status === "missing") {
     return (
@@ -100,7 +110,8 @@ export function PointDetailPage() {
     );
   }
 
-  const selected = requestedDate ?? data?.meta.selected_date ?? "";
+  const selected = date ?? data?.meta.selected_date ?? "";
+  const layoutClass = fromRoute ? "point-layout point-layout--single" : "point-layout";
 
   return (
     <main className="point-page">
@@ -126,7 +137,7 @@ export function PointDetailPage() {
                 <div className="status-pill now">{data.hero.status}</div>
               </div>
             </section>
-            <div className="point-layout">
+            <div className={layoutClass}>
               <div className="point-main">
                 <section className="point-weather-card card-surface">
                   <div className="section-title-row">
@@ -136,10 +147,10 @@ export function PointDetailPage() {
                     </div>
                     <span className="updated">{data.updated_label}</span>
                   </div>
-                  <DaySelector days={data.days} selected={selected} onSelect={(next) => update({ date: next })} />
+                  <DaySelector days={data.days} selected={selected} onSelect={selectDate} />
                   <div className="destination-period-row">
                     <span className="planner-label">بازهٔ نمایش هوا</span>
-                    <PeriodToggle value={displayPeriod} onChange={(next) => update({ period: next })} />
+                    <PeriodToggle value={displayPeriod} onChange={selectPeriod} />
                   </div>
                   {data.empty || data.partial ? (
                     <EmptyState

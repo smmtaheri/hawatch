@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { buildRouteBackState, buildRoutePointLink } from "../src/lib/routeNavigation";
+import { MemoryRouter, Route, Routes, useSearchParams } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
 import { DestinationPage } from "../src/pages/DestinationPage";
@@ -392,7 +393,9 @@ describe("periods and route planner", () => {
                 fromRoute: {
                   slug: "touchal-darband",
                   title: "دربند تا توچال",
-                  href: "/routes/touchal-darband",
+                  pathname: "/routes/touchal-darband",
+                  search: "?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط",
+                  href: "/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط",
                 },
               },
             },
@@ -405,8 +408,52 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
-    expect(screen.getByLabelText("بازگشت به مسیر دربند تا توچال")).toHaveAttribute("href", "/routes/touchal-darband");
+    const backLink = screen.getByLabelText("بازگشت به مسیر دربند تا توچال");
+    expect(backLink.getAttribute("href")).toContain("/routes/touchal-darband");
+    expect(backLink.getAttribute("href")).toContain("start_time=06");
+    expect(backLink.getAttribute("href")).toContain("speed=");
     expect(screen.queryByText("مسیرهای مرتبط")).not.toBeInTheDocument();
+    expect(document.querySelector(".point-layout--single")).toBeTruthy();
+  });
+
+  it("builds route back target with planner params for point links", () => {
+    const params = new URLSearchParams("date=2026-08-26&period=morning&start_time=06:00&speed=متوسط");
+    const fromRoute = buildRouteBackState(
+      { slug: "touchal-darband", title: "دربند تا توچال", href: "/routes/touchal-darband" },
+      params,
+    );
+    const link = buildRoutePointLink("/points/shirpala", fromRoute);
+    expect(link.pathname).toBe("/points/shirpala");
+    expect(link.search).toBe("");
+    expect(link.state?.fromRoute.pathname).toBe("/routes/touchal-darband");
+    expect(link.state?.fromRoute.search).toContain("start_time=06");
+    expect(link.state?.fromRoute.search).toContain("speed=");
+  });
+
+  it("does not write default date and period into point URL on fresh load", async () => {
+    function SearchEcho() {
+      const [params] = useSearchParams();
+      return <div data-testid="url-search">{params.toString()}</div>;
+    }
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/points/shirpala"]}>
+          <Routes>
+            <Route
+              path="/points/:slug"
+              element={
+                <>
+                  <PointDetailPage />
+                  <SearchEcho />
+                </>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "شیرپلا" });
+    expect(screen.getByTestId("url-search")).toHaveTextContent("");
   });
 
   it("renders point page in dark theme without light fallback cards", async () => {

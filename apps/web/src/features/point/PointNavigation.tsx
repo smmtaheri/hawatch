@@ -1,10 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { LoadingState } from "../../components/LoadingState";
 import { EmptyState } from "../../components/EmptyState";
 import { Header } from "../../components/Header";
 import { buildForecastParams } from "../../lib/periods";
+import {
+  buildLegacyRouteBackState,
+  routeBackTarget,
+} from "../../lib/routeNavigation";
 import type { RouteFromState } from "../../types";
 
 /** Resolve legacy route-scoped point URLs to the canonical /points/{slug} page. */
@@ -44,13 +48,14 @@ export function LegacyRoutePointRedirect() {
         if (period) nextParams.set("period", period);
         setTarget({
           pathname: canonical.split("?")[0],
-          search: nextParams.toString() ? `?${nextParams}` : "",
+          search: nextParams.toString() ? `?${nextParams.toString()}` : "",
           state: {
-            fromRoute: {
-              slug: routeSlug,
-              title: payload.point.route_title,
-              href: payload.point.route_href,
-            },
+            fromRoute: buildLegacyRouteBackState(
+              routeSlug,
+              payload.point.route_title,
+              payload.point.route_href,
+              params,
+            ),
           },
         });
       })
@@ -87,8 +92,13 @@ export function LegacyRoutePointRedirect() {
 }
 
 export function PointRouteBackLink({ fromRoute }: { fromRoute: RouteFromState }) {
+  const { pathname, search } = routeBackTarget(fromRoute);
   return (
-    <Link className="point-route-back card-surface" to={fromRoute.href} aria-label={`بازگشت به مسیر ${fromRoute.title}`}>
+    <Link
+      className="point-route-back card-surface"
+      to={{ pathname, search }}
+      aria-label={`بازگشت به مسیر ${fromRoute.title}`}
+    >
       بازگشت به مسیر {fromRoute.title}
     </Link>
   );

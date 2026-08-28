@@ -55,9 +55,9 @@ def _destination_entries(destination: Destination) -> list[SearchIndexEntry]:
 def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
     if point.slug.startswith("dest:"):
         return []
-    if point.kind == WeatherPoint.Kind.DESTINATION and point.slug != point.destination.slug:
-        # Legacy duplicate destination weather rows stay out of point search.
-        pass
+    # Primary destination weather rows (e.g. tochal_summit) are indexed as destinations only.
+    if point.kind == WeatherPoint.Kind.DESTINATION:
+        return []
     destination = point.destination
     if destination is None or not destination.is_active:
         return []

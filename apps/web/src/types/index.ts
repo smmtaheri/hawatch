@@ -206,7 +206,10 @@ export interface SearchSuggestion {
 export interface RouteFromState {
   slug: string;
   title: string;
+  /** Full return URL including planner query params when present. */
   href: string;
+  pathname: string;
+  search: string;
 }
 
 export interface RouteForecast {

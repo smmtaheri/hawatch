@@ -443,8 +443,9 @@ html:not([data-theme="light"]) .point-page {
 }
 
 .point-page .point-hero {
+  position: relative;
   margin-top: 12px;
-  padding: 20px 22px;
+  padding: 20px 22px 72px;
   border-radius: 24px;
   background: linear-gradient(145deg, var(--internal-surface-raised, #fff), var(--internal-surface, #fff));
   border: 1px solid var(--internal-border, #d6e5e2);
@@ -484,6 +485,10 @@ html:not([data-theme="light"]) .point-page .point-routes-card {
   margin-top: 20px;
 }
 
+.point-page .point-layout--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .point-page .point-weather-card,
 .point-page .point-routes-card {
   padding: 20px 22px;
@@ -513,6 +518,26 @@ html:not([data-theme="light"]) .point-page .point-current-reading {
   align-items: center;
   gap: 10px 14px;
   margin: 14px 0;
+}
+
+.point-page .point-hero-status-stack {
+  position: absolute;
+  inset: auto 18px 18px 18px;
+  width: auto;
+  max-width: none;
+  transform: none;
+  z-index: 2;
+}
+
+.point-page .point-hero-status-stack .status-pill {
+  text-align: right;
+  border-radius: 12px;
+  min-height: 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .point-page .hero-status-stack .status-pill {
@@ -595,8 +620,42 @@ html:not([data-theme="light"]) .search-combobox-panel li:hover {
   font-size: 0.9rem;
 }
 
+.search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.search-result-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--internal-border, #d6e5e2);
+  background: var(--internal-surface, #fff);
+  text-decoration: none;
+  color: inherit;
+}
+
+html:not([data-theme="light"]) .search-result-row {
+  background: var(--internal-surface, #173844);
+  border-color: #bee1dd2e;
+}
+
+.search-result-row:hover {
+  background: var(--internal-surface-soft, #f4f9f7);
+}
+
+html:not([data-theme="light"]) .search-result-row:hover {
+  background: var(--internal-surface-soft, #14333e);
+}
+
 @media (width <= 720px) {
-  .point-page .point-layout {
+  .point-page .point-layout,
+  .point-page .point-layout--single {
     grid-template-columns: minmax(0, 1fr);
   }
 

@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { forwardRef, useEffect, useId, useImperativeHandle, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import type { SearchSuggestion } from "../types";
@@ -10,15 +10,19 @@ function normalizeInput(value: string) {
   return value.trim().replace(/\s+/g, " ");
 }
 
-export function SearchCombobox({
-  value,
-  onChange,
-  onSubmitQuery,
-}: {
-  value: string;
-  onChange: (next: string) => void;
-  onSubmitQuery?: (query: string) => void;
-}) {
+export type SearchComboboxHandle = {
+  submit: () => void;
+};
+
+export const SearchCombobox = forwardRef<
+  SearchComboboxHandle,
+  {
+    value: string;
+    onChange: (next: string) => void;
+    onUnifiedSearch?: (query: string, results: SearchSuggestion[]) => void;
+    onClearSubmitted?: () => void;
+  }
+>(function SearchCombobox({ value, onChange, onUnifiedSearch, onClearSubmitted }, ref) {
   const inputId = useId();
   const listId = useId();
   const navigate = useNavigate();
@@ -80,18 +84,53 @@ export function SearchCombobox({
   function choose(item: SearchSuggestion) {
     setOpen(false);
     onChange("");
+    onClearSubmitted?.();
     navigate(item.href);
   }
 
   function submitFallback() {
     const query = normalizeInput(value);
+    if (query.length < MIN_CHARS) {
+      return;
+    }
     if (activeIndex >= 0 && results[activeIndex]) {
       choose(results[activeIndex]);
       return;
     }
+    if (results.length === 1) {
+      choose(results[0]);
+      return;
+    }
     setOpen(false);
-    onSubmitQuery?.(query);
+    if (results.length) {
+      onUnifiedSearch?.(query, results);
+      return;
+    }
+    const currentRequest = ++requestId.current;
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+    setStatus("loading");
+    api
+      .searchSuggestions(query, controller.signal)
+      .then((payload) => {
+        if (currentRequest !== requestId.current) return;
+        setResults(payload.results);
+        setStatus("ready");
+        if (payload.results.length === 1) {
+          choose(payload.results[0]);
+          return;
+        }
+        onUnifiedSearch?.(query, payload.results);
+      })
+      .catch(() => {
+        if (currentRequest !== requestId.current) return;
+        setStatus("error");
+        onUnifiedSearch?.(query, []);
+      });
   }
+
+  useImperativeHandle(ref, () => ({ submit: submitFallback }), [activeIndex, results, value]);
 
   return (
     <div className={`search-combobox ${open ? "is-open" : ""}`}>
@@ -109,7 +148,10 @@ export function SearchCombobox({
         placeholder="مثلاً توچال، پس‌قلعه یا شیرپلا"
         autoComplete="off"
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(event) => {
+          onChange(event.target.value);
+          onClearSubmitted?.();
+        }}
         onFocus={() => {
           if (results.length || status === "loading" || status === "error") setOpen(true);
         }}
@@ -166,4 +208,4 @@ export function SearchCombobox({
       ) : null}
     </div>
   );
-}
+});
