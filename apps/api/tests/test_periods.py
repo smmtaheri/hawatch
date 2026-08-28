@@ -10,11 +10,18 @@ from django.test import override_settings
 from rest_framework.test import APIClient
 
 from hawatch.common.time import (
+    StartTimeValidationError,
+    current_period_start_minutes,
     datetime_flags,
     default_forecast_selection,
+    format_start_time_wire,
+    normalize_start_minutes,
     parse_period,
     parse_start_minutes,
+    parse_start_time_value,
+    period_last_start_minute,
     period_window,
+    resolve_planner_start_minutes,
     timezone,
 )
 from hawatch.modules.catalog.seed import seed_demo_data
@@ -180,6 +187,28 @@ def test_forecast_clock_stays_on_official_iran_time():
 
 
 @pytest.mark.django_db
+def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
+    tz = timezone()
+    cases = [
+        (datetime(2026, 8, 28, 10, 29, tzinfo=tz), "morning", 600),
+        (datetime(2026, 8, 28, 10, 45, tzinfo=tz), "morning", 630),
+        (datetime(2026, 8, 28, 18, 45, tzinfo=tz), "afternoon", 1110),
+        (datetime(2026, 8, 28, 2, 45, tzinfo=tz), "night", 1590),
+        (datetime(2026, 8, 28, 11, 0, tzinfo=tz), "afternoon", 660),
+        (datetime(2026, 8, 28, 19, 0, tzinfo=tz), "night", 1140),
+    ]
+    for at, period, expected in cases:
+        assert current_period_start_minutes(period, at) == expected
+
+
+@pytest.mark.django_db
+def test_parse_start_minutes_respects_exclusive_period_end():
+    assert parse_start_minutes("11:00", "morning", None) == 630
+    assert parse_start_minutes("19:00", "afternoon", None) == 1110
+    assert parse_start_minutes("03:00", "night", None) == 1590
+
+
+@pytest.mark.django_db
 def test_route_point_forecast_and_missing_data(api_client, seeded):
     today = datetime(2026, 8, 28).date()
     response = api_client.get(
@@ -208,3 +237,176 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
     assert body["timing_pending"] is True
     assert all(point["arrival_minutes"] is None for point in body["points"])
     assert all(point["time"] == "—" for point in body["points"])
+    assert "timing pending" not in body["decision"]["title"].lower()
+    assert "حوالی —" not in body["hero"]["status"]
+    assert "ETA" not in " ".join(body["decision"]["recommendations"])
+    for point in body["points"]:
+        assert "weather_available" in point
+
+
+@pytest.mark.django_db
+def test_timing_pending_point_weather_stays_in_selected_period(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get(
+            "/api/v1/routes/touchal-darband/forecast/",
+            {"date": "2026-08-28", "period": "night"},
+        ).json()
+    assert body["timing_pending"] is True
+    allowed_hours = {19, 21, 23, 1}
+    for point in body["points"]:
+        if point["weather_available"]:
+            assert point["weather"]["hour"] in allowed_hours
+        else:
+            assert point["condition"] == "در دسترس نیست"
+
+
+@pytest.mark.django_db
+def test_tochal_summit_canonical_href(api_client, seeded):
+    body = api_client.get(
+        "/api/v1/routes/touchal-darband/points/tochal_summit/forecast/",
+        {"date": "2026-08-28", "period": "morning"},
+    ).json()
+    assert body["canonical_href"] == "/destination/touchal"
+    assert body["point"]["href"] == "/destination/touchal"
+
+
+@pytest.mark.django_db
+def test_route_default_start_uses_current_tehran_in_current_period(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 7, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get(
+            "/api/v1/routes/touchal-darband/forecast/",
+            {"date": "2026-08-28", "period": "morning"},
+        ).json()
+    assert body["start_minutes"] == 450
+
+
+@pytest.mark.django_db
+def test_destination_night_period_uses_in_window_reading_at_1030(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get(
+            "/api/v1/destinations/touchal/forecast/",
+            {"date": "2026-08-28", "period": "night"},
+        ).json()
+    allowed_hours = {19, 21, 23, 1}
+    assert body["current"] is not None
+    assert body["current"]["hour"] in allowed_hours
+    assert body["current"]["is_current"] is False
+    assert "الان" not in body["hero"]["status"]
+    assert all(item["hour"] in allowed_hours for item in body["hourly"])
+
+
+@pytest.mark.django_db
+def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get(
+            "/api/v1/points/shirpala/forecast/",
+            {"date": "2026-08-28", "period": "night"},
+        ).json()
+    allowed_hours = {19, 21, 23, 1}
+    assert body["current"] is not None
+    assert body["weather"]["hour"] in allowed_hours
+    assert body["weather"]["is_current"] is False
+    assert "الان" not in body["hero"]["status"]
+
+
+@pytest.mark.django_db
+def test_point_overnight_current_at_0130(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 1, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get("/api/v1/points/shirpala/forecast/").json()
+    assert body["meta"]["selected_date"] == "2026-08-27"
+    assert body["meta"]["selected_period"] == "night"
+    assert body["current"]["is_current"] is True
+    assert body["current"]["hour"] == 1
+    assert "الان" in body["hero"]["status"]
+
+
+@pytest.mark.django_db
+def test_route_period_switch_uses_period_default_not_route_default(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        afternoon = api_client.get(
+            "/api/v1/routes/touchal-darband/forecast/",
+            {"date": "2026-08-28", "period": "afternoon"},
+        ).json()
+        night = api_client.get(
+            "/api/v1/routes/touchal-darband/forecast/",
+            {"date": "2026-08-28", "period": "night"},
+        ).json()
+    assert afternoon["start_minutes"] == 720
+    assert night["start_minutes"] == 1200
+
+
+@pytest.mark.django_db
+def test_route_start_time_floors_off_step_minutes(api_client, seeded):
+    body = api_client.get(
+        "/api/v1/routes/touchal-darband/forecast/",
+        {"date": "2026-08-28", "period": "morning", "start_time": "10:15"},
+    ).json()
+    assert body["start_minutes"] == 600
+
+
+@pytest.mark.django_db
+def test_normalize_start_minutes_floors_persian_digits():
+    assert normalize_start_minutes("۱۰:۱۵", "morning") == 600
+    assert resolve_planner_start_minutes(
+        datetime(2026, 8, 28).date(),
+        "afternoon",
+        local=datetime(2026, 8, 28, 10, 30, tzinfo=timezone()),
+        raw_start="12:15",
+    ) == 720
+
+
+@pytest.mark.django_db
+def test_parse_start_time_value_rejects_malformed():
+    with pytest.raises(StartTimeValidationError):
+        parse_start_time_value("12:xx")
+    with pytest.raises(StartTimeValidationError):
+        parse_start_time_value("12:00:00")
+    with pytest.raises(StartTimeValidationError):
+        parse_start_time_value("25:00")
+    with pytest.raises(StartTimeValidationError):
+        parse_start_time_value("12:60")
+
+
+@pytest.mark.django_db
+def test_legacy_numeric_start_time_minutes():
+    assert normalize_start_minutes("360", "morning") == 360
+    assert normalize_start_minutes("90", "night") == 1530
+
+
+@pytest.mark.django_db
+def test_route_invalid_start_time_returns_400(api_client, seeded):
+    response = api_client.get(
+        "/api/v1/routes/touchal-darband/forecast/",
+        {"date": "2026-08-28", "period": "morning", "start_time": "12:xx"},
+    )
+    assert response.status_code == 400
+
+
+@pytest.mark.django_db
+def test_start_time_wire_format_is_ascii():
+    assert format_start_time_wire(360) == "06:00"
+    assert format_start_time_wire(720) == "12:00"

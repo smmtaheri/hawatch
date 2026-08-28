@@ -60,6 +60,8 @@ forecast
 
 تمام timestampهای public (`forecast_at`، `valid_from`، `valid_to`، `generated_at` و `current_local_time`) با offset `Asia/Tehran` برمی‌گردند؛ timestamp UTC در قرارداد frontend نمایش داده نمی‌شود.
 
+برای Destination و Point، `current`/`weather` باید **فقط** از reading داخل پنجرهٔ period انتخاب‌شده بیاید؛ fallback کل روز تقویمی ممنوع است. «الان» فقط وقتی مجاز است که reading واقعاً `is_current` باشد.
+
 ## metadata
 
 - `data_mode`
@@ -78,8 +80,29 @@ forecast
 
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
 - برای `night`، `00:00`–`02:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `03:00` متعلق به `morning` است.
+
+### ورودی و نرمال‌سازی `start_time`
+
+| ورودی | رفتار |
+| --- | --- |
+| `06:00` (ASCII) | پذیرفته؛ خروجی wire: `06:00` |
+| `۰۶:۰۰` / `٠٦:٠٠` (Persian/Arabic) | normalize به ASCII؛ همان دقیقه |
+| `360` (legacy bare minutes) | پذیرفته؛ تفسیر دقیقه از نیمه‌شب (۰–۱۴۳۹)؛ برای `night` اگر ≤۱۸۰ به شب extended اضافه می‌شود |
+| `10:15` (off-step) | floor به `10:00` سپس clamp داخل period |
+| `12:xx`، `12:00:00`، `25:00`، `12:60` | **رد** → HTTP `400` با پیام validation |
+
+- خروجی canonical در query و share URL همیشه **ASCII `HH:MM`** است (`format_start_time_wire` / `toClock`).
+- برچسب فارسی (`۰۶:۰۰`) فقط در فیلد display `start_time` پاسخ API برای UI است؛ authority عددی `start_minutes` است.
+- frontend بعد از پاسخ route باید `start_minutes` API را مرجع قرار دهد، نه URL خام.
+
+### سیاست پیش‌فرض (بدون `start_time` یا بعد از تغییر `date`/`period`)
+
+- اگر `date` + `period` همان بازهٔ جاری تهران باشد → ساعت فعلی floor‌شده به ۳۰ دقیقه؛
+- در غیر این صورت → `default_start` همان period (`morning=06:00`، `afternoon=12:00`، `night=20:00`)؛
+- `default_start_minutes` مسیر (مثلاً 06:00 برای دربند) **جایگزین** period default نمی‌شود.
+
 - وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
-- وقتی `timing_pending=true` است، برای خلاصهٔ هر point فقط دادهٔ همان point و همان period انتخاب‌شده قابل نمایش است؛ fallback ثابت ساعت ۱۲ برای همهٔ periodها معتبر نیست و نباید استفاده شود. زمان point/ETA در این حالت `null` است.
+- وقتی `timing_pending=true` است، برای خلاصهٔ هر point فقط دادهٔ همان point و همان period انتخاب‌شده قابل نمایش است؛ fallback ثابت ساعت ۱۲ برای همهٔ periodها معتبر نیست و نباید استفاده شود. زمان point/ETA در این حالت `null` است. فیلد `weather_available` در پاسخ route مشخص می‌کند آیا reading معتبر برای period وجود دارد.
 - `timing_pending` یک flag قراردادی برای client است و نباید عیناً در متن کاربر نمایش داده شود؛ UI باید پیام فارسی قابل فهم ارائه کند.
 
 ## نقطهٔ canonical (standalone WeatherPoint)

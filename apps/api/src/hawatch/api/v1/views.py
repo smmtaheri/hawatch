@@ -5,6 +5,7 @@ from datetime import timedelta
 from django.db import connection
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
 from hawatch.api.v1.serializers import (
@@ -23,12 +24,13 @@ from hawatch.api.v1.serializers import (
 )
 from hawatch.modules.catalog.search import search_suggestions
 from hawatch.common.time import (
+    StartTimeValidationError,
     default_forecast_selection,
     now_tehran,
     parse_date,
     parse_period,
     parse_speed,
-    parse_start_minutes,
+    resolve_planner_start_minutes,
 )
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
@@ -171,16 +173,21 @@ def route_detail(request, slug: str):
     return Response({"route": serialize_route(route), "meta": meta_base(selected_date=today, period="morning")})
 
 
+def _resolve_start_minutes(request, selected_date, period, local):
+    raw_start = request.query_params.get("start_time") if "start_time" in request.query_params else None
+    try:
+        return resolve_planner_start_minutes(selected_date, period, local=local, raw_start=raw_start)
+    except StartTimeValidationError as exc:
+        raise ValidationError(str(exc)) from exc
+
+
 @api_view(["GET"])
 def route_forecast_view(request, slug: str):
     route = get_route(slug)
     selected, period = _resolve_date_period(request)
+    local = now_tehran()
     speed = parse_speed(request.query_params.get("speed"))
-    start = parse_start_minutes(
-        request.query_params.get("start_time"),
-        period,
-        route.default_start_minutes,
-    )
+    start = _resolve_start_minutes(request, selected, period, local)
     return Response(
         route_forecast(
             route,

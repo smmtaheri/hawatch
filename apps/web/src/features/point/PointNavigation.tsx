@@ -95,7 +95,7 @@ export function PointRouteBackLink({ fromRoute }: { fromRoute: RouteFromState })
   const { pathname, search } = routeBackTarget(fromRoute);
   return (
     <Link
-      className="point-route-back card-surface"
+      className="contextual-route-back card-surface"
       to={{ pathname, search }}
       aria-label={`بازگشت به مسیر ${fromRoute.title}`}
     >

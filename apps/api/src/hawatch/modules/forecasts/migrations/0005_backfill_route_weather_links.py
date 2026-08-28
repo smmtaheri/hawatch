@@ -76,8 +76,8 @@ class Migration(migrations.Migration):
     atomic = False
 
     dependencies = [
-        ("forecasts", "0008_nullable_cloud_uv"),
-        ("routes", "0004_route_weather_links"),
+        ("forecasts", "0004_nullable_cloud_uv"),
+        ("routes", "0003_route_weather_links"),
     ]
 
     operations = [

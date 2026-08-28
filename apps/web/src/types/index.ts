@@ -136,6 +136,7 @@ export interface RoutePointView {
   arrival_minutes: number | null;
   timing_pending?: boolean;
   timing_estimated?: boolean;
+  weather_available?: boolean;
   latitude?: number | null;
   longitude?: number | null;
   elevation_m?: number | null;

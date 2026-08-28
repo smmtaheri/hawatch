@@ -4,13 +4,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("forecasts", "0006_alter_weatherpoint_climate"),
+        ("forecasts", "0002_disable_auto_spatial_indexes"),
         ("routes", "0002_disable_auto_spatial_indexes"),
         ("destinations", "0002_disable_auto_spatial_indexes"),
     ]
 
     operations = [
-        # Legacy catalog migrations run first; this migration adds provider snapshot storage.
+        # NOTE: WeatherPoint.route_point is intentionally kept here.
+        # routes.0003 adds RoutePoint.weather_point; forecasts.0005 backfills then removes
+        # the legacy OneToOne so associations are preserved safely.
         migrations.AlterField(
             model_name="weatherpoint",
             name="elevation_m",
@@ -31,6 +33,19 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="weatherpoint",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("approved", "approved"),
+                    ("provisional", "provisional"),
+                    ("unresolved_elevation", "unresolved_elevation"),
+                ],
+                default="approved",
+                max_length=32,
+            ),
+        ),
+        migrations.AddField(
+            model_name="weatherpoint",
             name="provenance",
             field=models.CharField(
                 choices=[
@@ -41,6 +56,11 @@ class Migration(migrations.Migration):
                 default="curated",
                 max_length=32,
             ),
+        ),
+        migrations.AddField(
+            model_name="weatherpoint",
+            name="catalog_version",
+            field=models.CharField(blank=True, default="", max_length=64),
         ),
         migrations.AddIndex(
             model_name="weatherpoint",
@@ -164,3 +184,4 @@ class Migration(migrations.Migration):
             index=models.Index(fields=["snapshot", "weather_point"], name="forecast_snap_point_idx"),
         ),
     ]
+

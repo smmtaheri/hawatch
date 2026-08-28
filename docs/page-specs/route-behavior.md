@@ -15,11 +15,12 @@
 - mobile ساعت و speed را در یک row جمع‌وجور نشان می‌دهد.
 - فقط یک period control مشترک (صبح / بعدازظهر / شب) برای timeline و cards وجود دارد.
 - کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + `fromRoute` state شامل pathname/search/href برای بازگشت کامل؛ exception: point مقصدی مثل قلهٔ توچال به `/destination/touchal` canonical می‌رود.
+- اگر Destination از Route باز شود و URL خودش `date`/`period` صریح نداشته باشد، forecast اولیه از `date`/`period` موجود در `fromRoute.search` initialize می‌شود؛ `start_time`/`speed` به URL مقصد اضافه نمی‌شوند.
 - legacy `/routes/.../points/...` redirect به canonical.
 
 ## تصمیم و اشتراک
 
-decision card باید risk point و زمان آن را برجسته کند و امکان کپی/اشتراک را نشان دهد. کپی لینک برنامه در frontend فعلی queryهای قابل‌بازسازی را کپی می‌کند و share Telegram با لینک فعلی ساخته می‌شود؛ share server-side وجود ندارد.
+decision card باید risk point و زمان آن را برجسته کند و امکان کپی/اشتراک را نشان دهد. helper مشترک `buildRouteShareUrl` برای «کپی لینک» و «ارسال در تلگرام» URL canonical با `date`، `period`، `start_time` ASCII و `speed` می‌سازد؛ Telegram از `window.location.href` خام استفاده نمی‌کند. share server-side وجود ندارد.
 
 وقتی timing pending است، متن خام `timing pending` ممنوع است؛ باید پیام فارسی قابل فهم نمایش داده شود و ETA/زمان رسیدن ساختگی نمایش داده نشود.
 

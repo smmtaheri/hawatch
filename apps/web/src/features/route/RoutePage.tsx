@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { DaySelector } from "../../components/DaySelector";
+import { DayPickerHeading, DaySelector, PeriodControlRow } from "../../components/DaySelector";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
-import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
-import { PeriodToggle } from "../../components/PeriodToggle";
 import { RouteSiblingNavigation } from "../../components/RouteSiblingNavigation";
 import { RouteTimeline } from "../../components/RouteTimeline";
+import { RoutePointLink } from "../../components/RoutePointLink";
 import { ShareCard } from "../../components/ShareCard";
 import { SpeedControl } from "../../components/SpeedControl";
 import { StartTimeControl } from "../../components/StartTimeControl";
@@ -21,11 +20,12 @@ import {
   asPeriodId,
   buildForecastParams,
   formatClockDisplay,
-  parseClockToMinutes,
+  isValidStartTimeInput,
   PERIOD_RANGES,
   periodTicks,
   toClock,
 } from "../../lib/periods";
+import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } from "../../lib/periodState";
 import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
 import type { PeriodId, RouteForecast, RoutePointView } from "../../types";
 
@@ -50,6 +50,12 @@ function isPlannerOnlyChange(previous: RouteRequestInputs, next: RouteRequestInp
   );
 }
 
+function pointWeatherLabel(point: RoutePointView, periodLabel: string, timingPending: boolean) {
+  if (timingPending) return `وضعیت ${periodLabel}`;
+  if (point.time && point.time !== "—") return `حوالی ${point.time}`;
+  return periodLabel;
+}
+
 export function RoutePage() {
   const { slug = "touchal-darband" } = useParams();
   const [params, setParams] = useSearchParams();
@@ -70,6 +76,7 @@ export function RoutePage() {
   const start = params.get("start_time") || undefined;
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
   const displaySpeed = draftSpeed ?? speed ?? data?.speed ?? "متوسط";
+  const timingPending = Boolean(data?.timing_pending);
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -80,16 +87,17 @@ export function RoutePage() {
     setParams(copy, { replace: true });
   }
 
-  function load() {
+  function load(omitInvalidStart = false) {
     const currentRequest = ++requestId.current;
     setStatus("loading");
+    const effectiveStart = omitInvalidStart ? undefined : start;
     api
       .routeForecast(
         slug,
         buildForecastParams({
           date: requestedDate,
           period: requestedPeriod ?? undefined,
-          start_time: start,
+          start_time: effectiveStart,
           speed,
           includeDate: explicitDate,
           includePeriod: explicitPeriod,
@@ -100,14 +108,22 @@ export function RoutePage() {
         setData(payload);
         timingPendingRef.current = Boolean(payload.timing_pending);
         const resolvedPeriod = (requestedPeriod ?? payload.meta.selected_period) as PeriodId;
-        setDraftMinutes(start ? parseClockToMinutes(start, resolvedPeriod) : payload.start_minutes);
+        const resolvedDate = explicitDate ? requestedDate! : payload.meta.selected_date;
+        setDraftMinutes(payload.start_minutes);
         setDraftSpeed(payload.speed);
-        if (!explicitDate || !explicitPeriod) {
+        const canonicalClock = toClock(payload.start_minutes);
+        const needsUrlSync =
+          !explicitDate ||
+          !explicitPeriod ||
+          !effectiveStart ||
+          effectiveStart !== canonicalClock ||
+          omitInvalidStart;
+        if (needsUrlSync) {
           const resolvedParams = {
-            date: explicitDate ? requestedDate : payload.meta.selected_date,
-            period: explicitPeriod ? requestedPeriod ?? undefined : (payload.meta.selected_period as PeriodId),
+            date: resolvedDate,
+            period: explicitPeriod ? requestedPeriod ?? undefined : resolvedPeriod,
             speed: payload.speed,
-            start_time: toClock(payload.start_minutes),
+            start_time: canonicalClock,
           };
           resolvedUrlRequestKey.current = requestKey({
             slug,
@@ -122,6 +138,10 @@ export function RoutePage() {
       })
       .catch((error) => {
         if (currentRequest !== requestId.current) return;
+        if (error instanceof ApiError && error.status === 400 && start && !omitInvalidStart) {
+          update({ start_time: undefined });
+          return;
+        }
         setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
       });
   }
@@ -143,6 +163,10 @@ export function RoutePage() {
       return;
     }
     if (previousInputs && isPlannerOnlyChange(previousInputs, nextInputs) && timingPendingRef.current) {
+      return;
+    }
+    if (start && !isValidStartTimeInput(start)) {
+      update({ start_time: undefined });
       return;
     }
     load();
@@ -184,8 +208,17 @@ export function RoutePage() {
 
   function handlePeriodChange(next: PeriodId) {
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
-    setDraftMinutes(PERIOD_RANGES[next].defaultStartMinutes);
-    update({ period: next, start_time: PERIOD_RANGES[next].defaultStart });
+    const selected = requestedDate ?? data?.meta.selected_date ?? "";
+    const canonical = resolveRouteStartMinutes(selected, next, data?.meta.current_local_time);
+    setDraftMinutes(canonical);
+    update({ period: next, start_time: toClock(canonical) });
+  }
+
+  function handleDateChange(next: string) {
+    if (commitTimer.current) window.clearTimeout(commitTimer.current);
+    const canonical = resolveRouteStartMinutes(next, displayPeriod, data?.meta.current_local_time);
+    setDraftMinutes(canonical);
+    update({ date: next, start_time: toClock(canonical) });
   }
 
   function handleSpeedChange(nextSpeed: string) {
@@ -205,6 +238,13 @@ export function RoutePage() {
   const selected = requestedDate ?? data?.meta.selected_date ?? "";
   const startMinutes = draftMinutes ?? data?.start_minutes ?? periodRange.defaultStartMinutes;
   const startDisplay = formatClockDisplay(startMinutes);
+  const periodStates =
+    data?.meta.current_local_time && selected
+      ? classifyAllPeriods(selected, data.meta.current_local_time)
+      : undefined;
+  const gaugeNow = data?.meta.current_local_time
+    ? gaugeCurrentMinutes(selected, displayPeriod, data.meta.current_local_time)
+    : undefined;
 
   return (
     <main className="route-page">
@@ -214,7 +254,7 @@ export function RoutePage() {
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
-            {data.meta.freshness === "stale" ? <StaleDataNotice generatedAt={data.meta.generated_at} /> : null}
+            {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className="route-hero">
               <BackNavigation to={data.route.parent.href} ariaLabel="بازگشت به صفحهٔ مقصد" />
               <div className="route-hero-copy">
@@ -235,15 +275,13 @@ export function RoutePage() {
             <div className="route-overview-grid">
               <div className="route-overview-main">
                 <section className="route-planner card-surface" id="planner">
-                  <div className="planner-heading">
-                    <span className="decision-chip">انتخاب روز</span>
-                  </div>
+                  <DayPickerHeading />
                   <div className="planner-day">
                     <DaySelector
                       className="route-day-tabs"
                       days={data.days}
                       selected={selected}
-                      onSelect={(next) => update({ date: next })}
+                      onSelect={handleDateChange}
                     />
                   </div>
                 </section>
@@ -253,7 +291,12 @@ export function RoutePage() {
                       <span className="decision-chip">نقاط مهم</span>
                     </div>
                     <div className="route-hourly-selector" aria-label="انتخاب بازهٔ زمانی پیش‌بینی">
-                      <PeriodToggle value={displayPeriod} onChange={handlePeriodChange} />
+                      <PeriodControlRow
+                        period={displayPeriod}
+                        onChange={handlePeriodChange}
+                        periodStates={periodStates}
+                        className="destination-period-row route-period-row"
+                      />
                     </div>
                   </div>
                   <RouteTimeline
@@ -263,26 +306,30 @@ export function RoutePage() {
                     points={data.points}
                     pointHref={(point) => pointLink(point)}
                   />
-                  <div className="route-hourly-values">
-                    <HourlyForecast hours={data.hourly} headline={data.period.headline ?? data.period.range_label} />
-                  </div>
                   <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
                     <div className="route-point-weather-grid">
-                      {data.points.map((point) => (
-                        <Link
-                          key={`${point.slug}-weather`}
-                          className={`route-point-weather-card ${point.state}`}
-                          to={pointLink(point)}
-                          aria-label={`آب‌وهوای ${point.name} در زمان ${point.time}`}
-                        >
-                          <strong>{point.time}</strong>
-                          <span className="route-point-weather-icon">{point.icon}</span>
-                          <span className="route-point-weather-condition">{point.condition}</span>
-                          <b>{point.temp != null ? `${point.temp}°` : "—"}</b>
-                          <small>باد {point.wind ?? "—"}</small>
-                          {point.state !== "normal" ? <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em> : null}
-                        </Link>
-                      ))}
+                      {data.points.map((point) => {
+                        const unavailable = point.weather_available === false;
+                        const label = pointWeatherLabel(point, data.period.label, timingPending);
+                        return (
+                          <RoutePointLink
+                            key={`${point.slug}-weather`}
+                            pointHref={point.href}
+                            fromRoute={fromRoute}
+                            className={`route-point-weather-card ${point.state} ${unavailable ? "weather-unavailable" : ""}`}
+                            ariaLabel={`آب‌وهوای ${point.name} · ${label}`}
+                          >
+                            <strong>{label}</strong>
+                            <span className="route-point-weather-icon">{point.icon}</span>
+                            <span className="route-point-weather-condition">
+                              {unavailable ? "در دسترس نیست" : point.condition}
+                            </span>
+                            <b>{point.temp != null ? `${point.temp}°` : "—"}</b>
+                            <small>باد {point.wind ?? "—"}</small>
+                            {point.state !== "normal" ? <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em> : null}
+                          </RoutePointLink>
+                        );
+                      })}
                     </div>
                   </div>
                 </section>
@@ -311,9 +358,11 @@ export function RoutePage() {
                     minutes={startMinutes}
                     min={periodRange.min}
                     max={periodRange.max}
+                    period={displayPeriod}
                     ticks={ticks}
                     rangeLabel={periodRange.label}
                     display={startDisplay}
+                    currentMinutes={gaugeNow}
                     onChange={handleDraftChange}
                     onCommit={commitStartMinutes}
                   />

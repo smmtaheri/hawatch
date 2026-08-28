@@ -19,6 +19,17 @@ export const PERIOD_RANGES: Record<
   night: { min: 1140, max: 1590, label: "۱۹ تا ۰۳", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
+/** Last valid 30-minute start slot; period ends are exclusive at `max`. */
+export function periodLastStartMinutes(period: PeriodId): number {
+  if (period === "night") return PERIOD_RANGES.night.max;
+  return PERIOD_RANGES[period].max - 30;
+}
+
+export function clampStartMinutes(minutes: number, period: PeriodId) {
+  const range = PERIOD_RANGES[period];
+  return Math.max(range.min, Math.min(periodLastStartMinutes(period), minutes));
+}
+
 const PERIOD_TICKS: Record<PeriodId, string[]> = {
   morning: ["۰۳:۰۰", "۰۵:۰۰", "۰۷:۰۰", "۰۹:۰۰", "۱۱:۰۰"],
   afternoon: ["۱۱:۰۰", "۱۳:۰۰", "۱۵:۰۰", "۱۷:۰۰", "۱۹:۰۰"],
@@ -36,14 +47,58 @@ export function toClock(minutes: number) {
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 }
 
+function normalizeAsciiClock(clock: string) {
+  const fa = "۰۱۲۳۴۵۶۷۸۹";
+  const ar = "٠١٢٣٤٥٦٧٨٩";
+  return clock
+    .trim()
+    .replace(/[۰-۹]/g, (digit) => String(fa.indexOf(digit)))
+    .replace(/[٠-٩]/g, (digit) => String(ar.indexOf(digit)));
+}
+
+export type StartTimeParseResult =
+  | { ok: true; wallMinutes: number }
+  | { ok: false; reason: "empty" | "malformed" | "range" };
+
+/** Parse start_time query input; mirrors backend parse_start_time_value. */
+export function parseStartTimeInput(raw: string): StartTimeParseResult {
+  const cleaned = normalizeAsciiClock(raw);
+  if (!cleaned) return { ok: false, reason: "empty" };
+
+  if (cleaned.includes(":")) {
+    if (cleaned.split(":").length !== 2) return { ok: false, reason: "malformed" };
+    const [hoursRaw, minutesRaw] = cleaned.split(":");
+    if (!/^\d{1,2}$/.test(hoursRaw) || !/^\d{2}$/.test(minutesRaw)) {
+      return { ok: false, reason: "malformed" };
+    }
+    const hours = Number(hoursRaw);
+    const minutes = Number(minutesRaw);
+    if (hours > 23 || minutes > 59) return { ok: false, reason: "range" };
+    return { ok: true, wallMinutes: hours * 60 + minutes };
+  }
+
+  if (/^\d+$/.test(cleaned)) {
+    return { ok: true, wallMinutes: Number(cleaned) };
+  }
+
+  return { ok: false, reason: "malformed" };
+}
+
 export function parseClockToMinutes(clock: string, period: PeriodId) {
-  const [hours, minutes] = clock.split(":").map(Number);
-  let value = hours * 60 + minutes;
+  const parsed = parseStartTimeInput(clock);
+  if (!parsed.ok) {
+    return PERIOD_RANGES[period].defaultStartMinutes;
+  }
+  let value = parsed.wallMinutes;
   if (period === "night" && value <= 180) {
     value += 1440;
   }
-  const range = PERIOD_RANGES[period];
-  return Math.max(range.min, Math.min(range.max, value));
+  value = Math.floor(value / 30) * 30;
+  return clampStartMinutes(value, period);
+}
+
+export function isValidStartTimeInput(raw: string) {
+  return parseStartTimeInput(raw).ok;
 }
 
 export function formatClockDisplay(minutes: number) {

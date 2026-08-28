@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import re
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
 TEHRAN = ZoneInfo("Asia/Tehran")
 PERSIAN_DIGITS = str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹")
+ASCII_DIGITS = str.maketrans("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩", "01234567890123456789")
 JALALI_MONTHS = [
     "فروردین",
     "اردیبهشت",
@@ -224,23 +226,103 @@ def parse_speed(raw: str | None) -> str:
     return SPEED_ALIASES.get(raw, "متوسط")
 
 
-def _clock_to_minutes(raw: str) -> int:
-    hours, minutes = raw.split(":", 1)
-    return int(hours) * 60 + int(minutes)
+class StartTimeValidationError(ValueError):
+    """Raised when a public start_time query value cannot be parsed."""
+
+
+def _normalize_clock_digits(raw: str) -> str:
+    return raw.strip().translate(ASCII_DIGITS)
+
+
+def format_start_time_wire(minutes: int) -> str:
+    """ASCII HH:MM for query parameters and share URLs."""
+    clock = minutes % 1440
+    hour, minute = divmod(clock, 60)
+    return f"{hour:02d}:{minute:02d}"
+
+
+def parse_start_time_value(raw: str) -> int:
+    """Parse start_time query input to wall-clock minutes (0–1439).
+
+    Accepts ASCII or Persian/Arabic digit clocks (HH:MM) and legacy bare minute integers.
+    """
+    cleaned = _normalize_clock_digits(raw)
+    if not cleaned:
+        raise StartTimeValidationError("مقدار start_time خالی است.")
+
+    if ":" in cleaned:
+        if cleaned.count(":") != 1:
+            raise StartTimeValidationError("فرمت start_time نامعتبر است.")
+        hours_str, minutes_str = cleaned.split(":", 1)
+        if not re.fullmatch(r"\d{1,2}", hours_str) or not re.fullmatch(r"\d{2}", minutes_str):
+            raise StartTimeValidationError("فرمت start_time نامعتبر است.")
+        hours = int(hours_str)
+        minutes = int(minutes_str)
+        if hours > 23 or minutes > 59:
+            raise StartTimeValidationError("ساعت یا دقیقهٔ start_time نامعتبر است.")
+        return hours * 60 + minutes
+
+    if cleaned.isdigit():
+        return int(cleaned)
+
+    raise StartTimeValidationError("فرمت start_time نامعتبر است.")
+
+
+def period_last_start_minute(period: str) -> int:
+    """Last valid 30-minute start slot; period window ends are exclusive."""
+    spec = PERIODS[period]
+    if period == "night":
+        return spec["end_minutes"]
+    return spec["end_minutes"] - 30
+
+
+def normalize_start_minutes(raw: str, period: str) -> int:
+    """Floor to 30-minute slots and clamp inside the selected period window."""
+    spec = PERIODS[period]
+    value = parse_start_time_value(raw)
+    if period == "night" and value <= 180:
+        value += 1440
+    value = (value // 30) * 30
+    last_start = period_last_start_minute(period)
+    return max(spec["start_minutes"], min(last_start, value))
+
+
+def resolve_planner_start_minutes(
+    selected_date: date,
+    period: str,
+    *,
+    local: datetime | None = None,
+    raw_start: str | None = None,
+) -> int:
+    """Canonical route start: explicit clock, live floored time, or period default."""
+    local = now_tehran(local)
+    if raw_start is not None and raw_start != "":
+        return normalize_start_minutes(raw_start, period)
+    default_date, default_period = default_forecast_selection(local)
+    if selected_date == default_date and period == default_period:
+        return current_period_start_minutes(period, local)
+    return PERIODS[period]["default_start"]
 
 
 def parse_start_minutes(raw: str | None, period: str, default: int | None) -> int:
     spec = PERIODS[period]
     fallback = spec["default_start"] if default is None else default
     if raw is None or raw == "":
-        value = fallback
-    elif ":" in raw:
-        value = _clock_to_minutes(raw)
-        if period == "night" and value <= 180:
-            value += 1440
-    else:
-        value = int(raw)
-    return max(spec["start_minutes"], min(spec["end_minutes"], value))
+        last_start = period_last_start_minute(period)
+        return max(spec["start_minutes"], min(last_start, fallback))
+    return normalize_start_minutes(raw, period)
+
+
+def current_period_start_minutes(period: str, at: datetime | None = None) -> int:
+    """Floor current Tehran local time to 30 minutes; never later than now."""
+    local = now_tehran(at)
+    spec = PERIODS[period]
+    now_minutes = local.hour * 60 + local.minute
+    if period == "night" and now_minutes <= 180:
+        now_minutes += 1440
+    floored = (now_minutes // 30) * 30
+    last_start = period_last_start_minute(period)
+    return max(spec["start_minutes"], min(floored, last_start))
 
 
 def datetime_flags(forecast_at: datetime, now: datetime | None = None) -> dict:

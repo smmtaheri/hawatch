@@ -1,18 +1,16 @@
 import { useState } from "react";
 import type { RouteForecast } from "../types";
+import { buildRouteShareUrl, buildRouteTelegramShareUrl } from "../lib/routeShare";
 
 export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   const decision = forecast.decision;
+  const timingPending = Boolean(forecast.timing_pending ?? decision.timing_pending);
   const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
+  const shareUrl = buildRouteShareUrl(forecast);
 
   async function copyLink() {
-    const url = new URL(window.location.href);
-    url.searchParams.set("date", forecast.meta.selected_date);
-    url.searchParams.set("period", String(forecast.period.id));
-    url.searchParams.set("start_time", forecast.start_time);
-    url.searchParams.set("speed", forecast.speed);
     try {
-      await navigator.clipboard.writeText(url.toString());
+      await navigator.clipboard.writeText(shareUrl);
       setCopyState("copied");
     } catch {
       setCopyState("failed");
@@ -20,7 +18,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
     window.setTimeout(() => setCopyState("idle"), 2400);
   }
 
-  const telegram = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`خلاصهٔ برنامهٔ ${forecast.route.title} در هواچ · ${decision.status}`)}`;
+  const telegram = buildRouteTelegramShareUrl(forecast);
 
   return (
     <section className={`route-decision route-forecast route-share-card share-state-${decision.state}`}>
@@ -35,6 +33,11 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
           {decision.status}
         </span>
       </div>
+      {timingPending ? (
+        <div className="timing-pending-notice" role="status">
+          زمان‌بندی دقیق مسیر هنوز نهایی نشده است؛ زمان رسیدن به نقاط فعلاً در دسترس نیست.
+        </div>
+      ) : null}
       <div className="share-summary">
         <div>
           <span>شروع حرکت</span>
@@ -42,7 +45,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         </div>
         <div>
           <span>رسیدن به مقصد</span>
-          <strong>{decision.finish}</strong>
+          <strong>{timingPending ? "نامشخص" : decision.finish}</strong>
         </div>
         <div>
           <span>سرعت</span>
@@ -50,14 +53,16 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         </div>
         <div>
           <span>نقطهٔ حساس</span>
-          <strong>{decision.critical_name}</strong>
+          <strong>{decision.critical_name || "—"}</strong>
         </div>
       </div>
       <div className="share-summary-copy">
         <strong>{decision.summary}</strong>
-        <span>
-          {decision.critical_time} · {decision.critical_note}
-        </span>
+        {!timingPending && decision.critical_time && decision.critical_time !== "—" ? (
+          <span>
+            {decision.critical_time} · {decision.critical_note}
+          </span>
+        ) : null}
       </div>
       <div className="share-recommendations">
         <span className="share-section-label">پیشنهادهای این برنامه</span>

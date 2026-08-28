@@ -295,3 +295,28 @@ def test_route_point_forecast_backward_compatible(api_client, seeded):
     assert body["weather_point_slug"] == "pas_ghaleh"
     assert body["canonical_href"] == "/points/pas_ghaleh"
     assert body["point"]["href"] == "/points/pas_ghaleh"
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "bad_start",
+    [
+        "12:xx",
+        "12:00:00",
+        "25:00",
+        "12:60",
+        "not-a-time",
+    ],
+)
+def test_route_forecast_malformed_start_time_returns_400_not_500(api_client, seeded, bad_start):
+    response = api_client.get(
+        "/api/v1/routes/touchal-darband/forecast/",
+        {"date": "2026-08-28", "period": "morning", "start_time": bad_start},
+    )
+    assert response.status_code == 400
+    assert response.status_code != 500
+    body = response.json()
+    assert "error" in body
+    assert body["error"]["code"] == 400
+    assert isinstance(body["error"]["message"], str)
+    assert body["error"]["message"]

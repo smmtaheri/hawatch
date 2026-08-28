@@ -48,17 +48,181 @@ html:not([data-theme="light"]) .hawatch-state.stale {
 .hour-item.is-past,
 .day-tabs button.is-yesterday,
 .day-tabs button.past-day:not(.selected),
-.day-tabs button.is-past:not(.selected) {
+.day-tabs button.is-past:not(.selected),
+.daypart-toggle button.past-period:not(.selected) {
   opacity: 0.55;
 }
 
 .hour-item.is-current,
-.day-tabs button.selected {
+.day-tabs button.selected,
+.daypart-toggle button.selected {
   opacity: 1;
+}
+
+.daypart-toggle button.current-period:not(.selected) {
+  opacity: 0.88;
 }
 
 .hour-item.is-future {
   opacity: 0.88;
+}
+
+.forecast-day-heading {
+  margin-bottom: 8px;
+}
+
+.time-gauge .gauge-line {
+  position: relative;
+  direction: ltr;
+}
+
+.route-page .gauge-line,
+.route-page .gauge-wrap input[type="range"],
+.route-page .gauge-ticks {
+  direction: ltr !important;
+}
+
+.time-gauge .gauge-fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  right: auto;
+  z-index: 1;
+}
+
+.time-gauge .gauge-dot {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: auto;
+  transform: translate(-50%, -50%);
+  transition: left 0.18s;
+}
+
+.route-page .gauge-fill {
+  margin: 0;
+  left: 0;
+  right: auto;
+}
+
+.route-page .gauge-dot {
+  left: auto;
+  right: auto;
+  transform: translate(-50%, -50%);
+  transition: left 0.18s;
+}
+
+.time-gauge .gauge-elapsed {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  right: auto;
+  height: 100%;
+  border-radius: inherit;
+  background: #102b3d18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
+  background: #edf7f422;
+}
+
+.route-linear-reading {
+  display: none;
+}
+
+.route-linear-order {
+  display: block;
+  font-size: 11px;
+  color: var(--internal-muted, #687a80);
+}
+
+.point-page .point-related-routes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.point-page .point-related-routes .destination-card,
+.point-page .point-related-routes .route-card {
+  width: 100%;
+}
+
+.point-page .compact-route-box {
+  margin: 0;
+  padding: 18px;
+  min-width: 0;
+}
+
+.point-page .compact-route-box > p,
+.point-page .compact-route-box .compact-route-heading {
+  margin: 0 0 12px;
+}
+
+.point-page .compact-route-box .compact-route-heading h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.point-page .compact-route-box .route-cards,
+.point-page .compact-route-box .point-related-routes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 7px;
+}
+
+.point-page .compact-route-box .route-card {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 0;
+  padding: 10px 11px;
+  border-radius: 12px;
+}
+
+.point-page .compact-route-box .route-card h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.point-page .compact-route-box .route-card p,
+.point-page .compact-route-box .route-card small {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.point-page .compact-route-box .compact-route-arrow {
+  font-size: 14px;
+  opacity: 0.72;
+}
+
+html:not([data-theme="light"]) .point-page .compact-route-box .route-card {
+  border-color: #bee1dd2e;
+}
+
+.timing-pending-notice {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #d09a3520;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.route-point-weather-card.weather-unavailable {
+  opacity: 0.85;
 }
 
 .hour-item.is-current {
@@ -466,16 +630,58 @@ html:not([data-theme="light"]) .point-page .point-routes-card {
   margin-top: 8px;
 }
 
-.point-page .point-route-back {
+.contextual-route-back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
   padding: 10px 14px;
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
   font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: min(100%, 420px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.point-page .contextual-route-back {
+  margin-bottom: 12px;
+}
+
+.destination-page .destination-hero .contextual-route-back {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 12px;
+  z-index: 4;
+  margin: 0;
+  border: 1px solid var(--internal-border, #d6e5e2);
+  background: color-mix(in srgb, var(--internal-surface-soft, #f4f9f7) 88%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px #102b3d1a;
+}
+
+html:not([data-theme="light"]) .destination-page .destination-hero .contextual-route-back {
+  background: color-mix(in srgb, var(--internal-surface-raised, #1d4650) 90%, transparent);
+  border-color: #bee1dd3d;
+  box-shadow: 0 4px 14px #00000040;
+}
+
+@media (max-width: 720px) {
+  .destination-page .destination-hero .contextual-route-back {
+    top: 40px;
+    inset-inline-end: 12px;
+    inset-inline-start: auto;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+}
+
+.point-page .point-route-back,
+.point-page .contextual-route-back {
+  border: 1px solid var(--internal-border, #d6e5e2);
 }
 
 .point-page .point-layout {

@@ -9,6 +9,7 @@ from hawatch.common.time import (
     PERIODS,
     SPEED_MULTIPLIERS,
     arrival_forecast_at,
+    current_period_start_minutes,
     datetime_flags,
     day_payload,
     day_window,
@@ -198,11 +199,18 @@ def serialize_route(route: Route) -> dict:
     }
 
 
+def weather_point_canonical_href(point: WeatherPoint) -> str:
+    """Resolve canonical frontend URL for a shared WeatherPoint."""
+    if point.kind == WeatherPoint.Kind.DESTINATION and point.destination_id:
+        return f"/destination/{point.destination.slug}"
+    return f"/points/{point.slug}"
+
+
 def serialize_point(point: RoutePoint) -> dict:
     elevation = point.effective_elevation_m
     location = point.effective_location
     if point.weather_point_id:
-        href = f"/points/{point.weather_point.slug}"
+        href = weather_point_canonical_href(point.weather_point)
     else:
         href = f"/routes/{point.route.slug}/points/{point.slug}"
     return {
@@ -339,12 +347,13 @@ def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *,
             hourly.append(reading_payload(record, now=now))
     return hourly
 
-def _current_record_for_period(
+def _reading_for_period_summary(
     point: WeatherPoint,
     selected_date: date,
     period: str,
     local: datetime,
-) -> ForecastRecord | None:
+) -> dict | None:
+    """Return a reading strictly inside the selected period window, without whole-day fallback."""
     window_start, window_end = period_window(selected_date, period)
     period_records = _records_for_window(point, window_start, window_end)
     if not period_records:
@@ -354,18 +363,15 @@ def _current_record_for_period(
         for record in period_records:
             record_bucket = record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0)
             if record_bucket == current_bucket:
-                return record
-        return min(
+                return reading_payload(record, now=local)
+        closest = min(
             period_records,
             key=lambda item: abs((item.forecast_at.astimezone(timezone()) - local).total_seconds()),
         )
-    if selected_date == local.date():
-        today_records = _records_for_day(point, local.date())
-        if today_records:
-            return min(
-                today_records,
-                key=lambda item: abs(item.forecast_at.astimezone(timezone()).hour - local.hour),
-            )
+        return reading_payload(closest, now=local)
+    hourly = _hourly_for_period(point, selected_date, period, now=local)
+    if hourly:
+        return hourly[len(hourly) // 2]
     return None
 
 
@@ -379,14 +385,13 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
     records = _records_for_day(point, selected_date)
     hourly = _hourly_for_period(point, selected_date, period, now=local)
 
-    now_record = _current_record_for_period(point, selected_date, period, local)
-    current_payload = reading_payload(now_record, now=local) if now_record else None
+    current_payload = _reading_for_period_summary(point, selected_date, period, local)
 
     change = next((item for item in records if item.severity in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11), None)
     critical = next((item for item in records if item.severity == "critical"), None)
 
     if current_payload and current_payload["is_current"]:
-        hero_status = f"{now_record.icon}　الان در {destination.tile_name}　{to_fa_digits(now_record.temperature_c)}°　·　{now_record.condition_label}"
+        hero_status = f"{current_payload['icon']}　الان در {destination.tile_name}　{current_payload['temperature_label']}　·　{current_payload['condition']}"
     elif current_payload:
         hero_status = f"{current_payload['icon']}　در {destination.tile_name}　{current_payload['temperature_label']}　·　{current_payload['condition']}"
     else:
@@ -516,7 +521,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     for point in points:
         arrival = _point_arrival_minutes(point, start_minutes=start_minutes, multiplier=multiplier, timing_pending=timing_pending)
         wp = point.weather_point
-        record = None
+        weather = None
         if wp and arrival is not None:
             target_at = arrival_forecast_at(selected_date, arrival)
             even_hour = target_at.hour - (target_at.hour % 2)
@@ -529,22 +534,10 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                     .order_by("forecast_at")
                     .first()
                 )
+            weather = reading_payload(record, now=local) if record else None
         elif wp:
-            # Timing pending: use midday sample so the UI still shows point weather without fake ETA.
-            record = (
-                _forecast_qs_for_point(wp)
-                .filter(forecast_at__date=selected_date, forecast_at__hour=12)
-                .order_by("forecast_at")
-                .first()
-            )
-            if record is None:
-                record = (
-                    _forecast_qs_for_point(wp)
-                    .filter(forecast_at__date=selected_date)
-                    .order_by("forecast_at")
-                    .first()
-                )
-        weather = reading_payload(record, now=local) if record else None
+            weather = _reading_for_period_summary(wp, selected_date, period, local)
+        weather_available = weather is not None
         arrival_state = weather["severity"] if weather else "normal"
         if arrival is not None:
             if arrival >= 900:
@@ -559,10 +552,11 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 "timing_estimated": route.timing_status == Route.TimingStatus.ESTIMATED,
                 "timing_pending": timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING,
                 "weather": weather,
+                "weather_available": weather_available,
                 "temp": weather["temperature_c"] if weather else None,
                 "wind": weather["wind_speed_kmh"] if weather else None,
-                "icon": weather["icon"] if weather else "☼",
-                "condition": weather["condition"] if weather else point.note,
+                "icon": weather["icon"] if weather else "—",
+                "condition": weather["condition"] if weather else "در دسترس نیست",
                 "state": arrival_state,
                 "note": point.note or ("زمان‌بندی مسیر هنوز نهایی نشده" if timing_pending else ""),
             }
@@ -581,12 +575,35 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     critical_point = next((item for item in planned if item["state"] == "critical"), finish)
     summary_state = "critical" if any(item["state"] == "critical" for item in planned) else "change" if any(item["state"] == "change" for item in planned) else "normal"
     state_label = {"critical": "هشدار", "change": "احتیاط", "normal": "حرکت مناسب"}[summary_state]
+
+    def _point_time_phrase(point: dict | None) -> str | None:
+        if not point or timing_pending:
+            return None
+        time_label = point.get("time")
+        if not time_label or time_label == "—":
+            return None
+        return f"حوالی {time_label}"
+
     if summary_state == "critical" and critical_point:
-        state_summary = f"در حوالی {critical_point['name']} شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار."
-        hero_status = f"نقطهٔ حساس: {critical_point['name']} · {critical_point['note']} · حوالی {critical_point['time']}"
+        time_phrase = _point_time_phrase(critical_point)
+        if timing_pending:
+            state_summary = f"در {critical_point['name']} شرایط پرریسک گزارش شده؛ زمان‌بندی مسیر هنوز نهایی نیست."
+            hero_status = f"نقطهٔ حساس: {critical_point['name']} · {critical_point['note'] or 'پیش‌بینی بازه‌ای'}"
+        else:
+            state_summary = f"در {time_phrase or 'مسیر'} شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار."
+            hero_status = f"نقطهٔ حساس: {critical_point['name']} · {critical_point['note']}"
+            if time_phrase:
+                hero_status += f" · {time_phrase}"
     elif summary_state == "change" and critical_point:
-        state_summary = f"از حوالی {critical_point['name']} تغییر شرایط شروع می‌شود؛ زمان برگشت و تجهیزات را جدی‌تر چک کن."
-        hero_status = f"تغییر مهم: {critical_point['name']} · حوالی {critical_point['time']}"
+        time_phrase = _point_time_phrase(critical_point)
+        if timing_pending:
+            state_summary = f"از {critical_point['name']} تغییر شرایط محتمل است؛ زمان‌بندی مسیر هنوز نهایی نیست."
+            hero_status = f"تغییر مهم: {critical_point['name']}"
+        else:
+            state_summary = f"از {time_phrase or critical_point['name']} تغییر شرایط شروع می‌شود؛ زمان برگشت و تجهیزات را جدی‌تر چک کن."
+            hero_status = f"تغییر مهم: {critical_point['name']}"
+            if time_phrase:
+                hero_status += f" · {time_phrase}"
     else:
         state_summary = "شرایط مسیر برای شروع آرام‌تر است؛ همچنان پیش‌بینی نقطه‌های بالاتر را دنبال کن."
         hero_status = "شرایط مسیر فعلاً آرام‌تر است"
@@ -594,7 +611,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
 
     recommendations = []
     if timing_pending:
-        recommendations.append("زمان‌بندی دقیق مسیر هنوز نهایی نشده؛ ETA و مسافت تجمعی فعلاً در دسترس نیست.")
+        recommendations.append("زمان‌بندی دقیق مسیر هنوز نهایی نشده؛ زمان رسیدن و مسافت تجمعی فعلاً در دسترس نیست.")
     if summary_state == "critical":
         recommendations.append("اگر رعدوبرق، باد شدید یا دید محدود فعال است، صعود را ادامه نده و زودتر برگرد.")
     if critical_point and (critical_point.get("wind") or 0) >= 25:
@@ -607,7 +624,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     start_label = format_hhmm(start_minutes)
     finish_label = finish["time"] if finish and finish["time"] != "—" else "—"
     if timing_pending:
-        decision_title = f"با حرکت ساعت {start_label}، زمان رسیدن هنوز مشخص نیست (timing pending)."
+        decision_title = f"با حرکت ساعت {start_label}، زمان رسیدن هنوز مشخص نیست."
         duration_label = "نامشخص"
         arrival_label = "—"
     else:
@@ -731,7 +748,7 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
         "longitude": point.location.x,
         "status": point.status,
         "provenance": point.provenance,
-        "href": f"/points/{point.slug}",
+        "href": weather_point_canonical_href(point),
         "destination": serialize_destination(destination) if destination else None,
     }
 
@@ -756,16 +773,13 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
     local = now_tehran()
     today = local.date()
     hourly = _hourly_for_period(weather_point, selected_date, period, now=local)
-    now_record = _current_record_for_period(weather_point, selected_date, period, local)
-    current_payload = reading_payload(now_record, now=local) if now_record else None
-    if hourly and current_payload is None:
-        current_payload = hourly[min(len(hourly) // 2, len(hourly) - 1)]
+    current_payload = _reading_for_period_summary(weather_point, selected_date, period, local)
     empty = not hourly
     partial = weather_point is not None and not hourly
     if current_payload and current_payload.get("is_current"):
         hero_status = (
-            f"{now_record.icon}　الان در {weather_point.name}　"
-            f"{to_fa_digits(now_record.temperature_c)}°　·　{now_record.condition_label}"
+            f"{current_payload['icon']}　الان در {weather_point.name}　"
+            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
         )
     elif current_payload:
         hero_status = (
@@ -830,7 +844,7 @@ def route_point_forecast(
             if value:
                 back_query_parts.append(f"{key}={value}")
     back_query = "&".join(back_query_parts)
-    canonical_href = f"/points/{wp.slug}" if wp else None
+    canonical_href = weather_point_canonical_href(wp) if wp else None
     return {
         "point": {
             **serialize_point(route_point),

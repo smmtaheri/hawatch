@@ -1,4 +1,10 @@
-import type { RouteFromState } from "../types";
+import type { PeriodId, RouteFromState } from "../types";
+import { asPeriodId } from "./periods";
+
+export type RoutePointLinkTarget = {
+  pathname: string;
+  state?: { fromRoute: RouteFromState };
+};
 
 export function buildRouteBackState(
   route: { slug: string; title: string; href: string },
@@ -28,11 +34,10 @@ export function buildLegacyRouteBackState(
   return buildRouteBackState({ slug: routeSlug, title: routeTitle, href: routeHref }, backParams);
 }
 
-export function buildRoutePointLink(pointHref: string, fromRoute: RouteFromState | undefined) {
+export function buildRoutePointLink(pointHref: string, fromRoute: RouteFromState | undefined): RoutePointLinkTarget {
   return {
     pathname: pointHref,
-    search: "",
-    state: fromRoute ? { fromRoute } : undefined,
+    ...(fromRoute ? { state: { fromRoute } } : {}),
   };
 }
 
@@ -40,4 +45,28 @@ export function routeBackTarget(fromRoute: RouteFromState) {
   const pathname = fromRoute.pathname || fromRoute.href.split("?")[0];
   const search = fromRoute.search?.startsWith("?") ? fromRoute.search.slice(1) : fromRoute.search ?? "";
   return { pathname, search };
+}
+
+/** Date/period from route planner search; excludes route-only params like start_time/speed. */
+export function plannerDatePeriodFromRouteSearch(search: string): { date?: string; period?: PeriodId } {
+  const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
+  return {
+    date: params.get("date") || undefined,
+    period: asPeriodId(params.get("period")),
+  };
+}
+
+export function initialDestinationPlanner(
+  urlParams: URLSearchParams,
+  fromRoute: RouteFromState | undefined,
+): { date?: string; period?: PeriodId } {
+  const urlDate = urlParams.get("date") || undefined;
+  const urlPeriod = asPeriodId(urlParams.get("period"));
+  if (urlDate || urlPeriod) {
+    return { date: urlDate, period: urlPeriod };
+  }
+  if (fromRoute?.search) {
+    return plannerDatePeriodFromRouteSearch(fromRoute.search);
+  }
+  return {};
 }

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { DaySelector } from "../../components/DaySelector";
+import { ForecastDayPeriodControls } from "../../components/DaySelector";
 import { DecisionCard } from "../../components/DecisionCard";
 import { DestinationCard } from "../../components/DestinationCard";
 import { EmptyState } from "../../components/EmptyState";
@@ -11,16 +11,25 @@ import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
-import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { asPeriodId, buildForecastParams } from "../../lib/periods";
-import type { DestinationForecast, PeriodId } from "../../types";
+import { classifyAllPeriods } from "../../lib/periodState";
+import { initialDestinationPlanner } from "../../lib/routeNavigation";
+import type { DestinationForecast, PeriodId, RouteFromState } from "../../types";
+import { PointRouteBackLink } from "../point/PointNavigation";
+
+type DestinationLocationState = {
+  fromRoute?: RouteFromState;
+};
 
 export function DestinationPage() {
   const { slug = "touchal" } = useParams();
+  const location = useLocation();
+  const fromRoute = (location.state as DestinationLocationState | null)?.fromRoute;
   const [searchParams] = useSearchParams();
-  const [date, setDate] = useState<string | undefined>(() => searchParams.get("date") || undefined);
-  const [period, setPeriod] = useState<PeriodId | undefined>(() => asPeriodId(searchParams.get("period")));
+  const initialPlanner = initialDestinationPlanner(searchParams, fromRoute);
+  const [date, setDate] = useState<string | undefined>(() => initialPlanner.date);
+  const [period, setPeriod] = useState<PeriodId | undefined>(() => initialPlanner.period);
   const [data, setData] = useState<DestinationForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
   const requestId = useRef(0);
@@ -82,6 +91,9 @@ export function DestinationPage() {
 
   const selected = date ?? data?.meta.selected_date ?? "";
   const routes = data?.destination.routes ?? [];
+  const periodStates = data?.meta.current_local_time
+    ? classifyAllPeriods(selected, data.meta.current_local_time)
+    : undefined;
 
   return (
     <main className={`destination-page destination-${slug}`}>
@@ -91,8 +103,9 @@ export function DestinationPage() {
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
-            {data.meta.freshness === "stale" ? <StaleDataNotice generatedAt={data.meta.generated_at} /> : null}
+            {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className="destination-hero">
+              {fromRoute ? <PointRouteBackLink fromRoute={fromRoute} /> : null}
               <BackNavigation to="/" ariaLabel="بازگشت به هوم" />
               <img src={data.destination.image} alt={data.destination.image_alt} />
               <div className="destination-hero-overlay" />
@@ -111,38 +124,36 @@ export function DestinationPage() {
             <div className="destination-layout">
               <div className="destination-main">
                 <section className="weather-card card-surface">
-                  <div className="section-title-row">
-                    <div>
-                      <h2>پیش‌بینی {data.destination.name}</h2>
-                      <p className="muted">روز و ساعت را انتخاب کن تا تغییر شرایط مقصد و مسیرهایش را قبل از حرکت ببینی.</p>
-                    </div>
-                    <span className="updated">{data.updated_label}</span>
-                  </div>
-                  <DaySelector days={data.days} selected={selected} onSelect={setDate} />
-                  <div className="mobile-weather-controls">
-                    <div className="mobile-route-picker" aria-label="انتخاب مسیر">
-                      <div className="mobile-route-picker-heading">
-                        <span>مسیرها</span>
-                        <small>{routes.length} مسیر</small>
+                  <ForecastDayPeriodControls
+                    days={data.days}
+                    selectedDate={selected}
+                    onSelectDate={setDate}
+                    period={displayPeriod}
+                    onSelectPeriod={setPeriod}
+                    periodStates={periodStates}
+                    middleSlot={
+                      <div className="mobile-weather-controls">
+                        <div className="mobile-route-picker" aria-label="انتخاب مسیر">
+                          <div className="mobile-route-picker-heading">
+                            <span>مسیرها</span>
+                            <small>{routes.length} مسیر</small>
+                          </div>
+                          <div className="mobile-route-picker-list">
+                            {routes.map((route) => (
+                              <Link
+                                key={route.slug}
+                                className={`mobile-route-picker-button ${route.featured ? "selected" : ""}`}
+                                to={route.href}
+                                aria-label={`مشاهدهٔ مسیر ${route.title}`}
+                              >
+                                {route.title}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                      <div className="mobile-route-picker-list">
-                        {routes.map((route) => (
-                          <Link
-                            key={route.slug}
-                            className={`mobile-route-picker-button ${route.featured ? "selected" : ""}`}
-                            to={route.href}
-                            aria-label={`مشاهدهٔ مسیر ${route.title}`}
-                          >
-                            {route.title}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="destination-period-row">
-                      <span className="planner-label">بازهٔ نمایش هوا</span>
-                      <PeriodToggle value={displayPeriod} onChange={setPeriod} />
-                    </div>
-                  </div>
+                    }
+                  />
                   {data.empty ? (
                     <EmptyState title="پیش‌بینی این روز در دسترس نیست" detail="روز دیگری را انتخاب کن یا بعداً دوباره سر بزن." />
                   ) : (

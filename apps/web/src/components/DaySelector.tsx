@@ -1,4 +1,72 @@
-import type { DayInfo } from "../types";
+import type { ReactNode } from "react";
+import type { DayInfo, PeriodId } from "../types";
+import type { PeriodPhase } from "../lib/periodState";
+import { PeriodToggle } from "./PeriodToggle";
+
+export function DayPickerHeading() {
+  return (
+    <div className="forecast-day-heading">
+      <span className="planner-label">انتخاب روز</span>
+    </div>
+  );
+}
+
+export function PeriodControlRow({
+  period,
+  onChange,
+  periodStates,
+  label = "بازهٔ نمایش هوا",
+  className = "destination-period-row",
+}: {
+  period: PeriodId;
+  onChange: (period: PeriodId) => void;
+  periodStates?: Partial<Record<PeriodId, PeriodPhase>>;
+  label?: string;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <span className="planner-label">{label}</span>
+      <PeriodToggle value={period} onChange={onChange} periodStates={periodStates} />
+    </div>
+  );
+}
+
+export function ForecastDayPeriodControls({
+  days,
+  selectedDate,
+  onSelectDate,
+  period,
+  onSelectPeriod,
+  periodStates,
+  dayClassName = "",
+  periodLabel = "بازهٔ نمایش هوا",
+  middleSlot,
+}: {
+  days: DayInfo[];
+  selectedDate: string;
+  onSelectDate: (date: string) => void;
+  period: PeriodId;
+  onSelectPeriod: (period: PeriodId) => void;
+  periodStates?: Partial<Record<PeriodId, PeriodPhase>>;
+  dayClassName?: string;
+  periodLabel?: string;
+  middleSlot?: ReactNode;
+}) {
+  return (
+    <>
+      <DayPickerHeading />
+      <DaySelector days={days} selected={selectedDate} onSelect={onSelectDate} className={dayClassName} />
+      {middleSlot}
+      <PeriodControlRow
+        period={period}
+        onChange={onSelectPeriod}
+        periodStates={periodStates}
+        label={periodLabel}
+      />
+    </>
+  );
+}
 
 export function DaySelector({
   days,
