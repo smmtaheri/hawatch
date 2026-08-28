@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import type { HourlyReading } from "../types";
 
 export function HourlyForecast({
@@ -26,7 +28,7 @@ export function HourlyForecast({
           </span>
         </div>
       </div>
-      <div className="hours-grid">
+      <div className="hours-grid" style={{ "--hour-count": Math.max(hours.length, 1) } as CSSProperties}>
         {hours.map((hour) => (
           <div
             key={hour.forecast_at ?? hour.time}

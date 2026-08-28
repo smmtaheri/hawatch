@@ -1,17 +1,17 @@
 # قرارداد forecast هواچ
 
-timezone پیش‌فرض: `Asia/Tehran`.
+timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل از timezone مرورگر یا سرور).
 
 بازهٔ قابل مشاهدهٔ این نسخه:
 
 - ۷ روز: دیروز، امروز، و پنج روز بعد
-- hourly: هر دو ساعت، **۴ کارت** در هر بازهٔ زمانی
+- hourly: هر دو ساعت؛ تعداد کارت‌ها بر اساس بازه است.
 - سه بازهٔ غیرهم‌پوشان (نسخهٔ قبلی با دو بازهٔ ۰۰–۱۲ / ۱۲–۲۴ **جایگزین شده**):
 
 | `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
 | --- | --- | --- | --- |
-| `morning` | صبح | ۰۲:۰۰–۱۰:۰۰ | ۰۲، ۰۴، ۰۶، ۰۸ |
-| `afternoon` | بعدازظهر | ۱۰:۰۰–۱۸:۰۰ | ۱۰، ۱۲، ۱۴، ۱۶ |
+| `morning` | صبح | ۰۲:۰۰–۱۲:۰۰ | ۰۲، ۰۴، ۰۶، ۰۸، ۱۰ |
+| `afternoon` | بعدازظهر | ۱۲:۰۰–۱۸:۰۰ | ۱۲، ۱۴، ۱۶ |
 | `night` | شب | ۱۸:۰۰–۰۲:۰۰ روز بعد | ۱۸، ۲۰، ۲۲، ۰۰ |
 
 ## معنای تاریخ برای `night`
@@ -27,8 +27,8 @@ timezone پیش‌فرض: `Asia/Tehran`.
 | ساعت محلی تهران | `selected_period` | `selected_date` |
 | --- | --- | --- |
 | ۰۰:۰۰–۰۱:۵۹ | `night` | دیروز |
-| ۰۲:۰۰–۰۹:۵۹ | `morning` | امروز |
-| ۱۰:۰۰–۱۷:۵۹ | `afternoon` | امروز |
+| ۰۲:۰۰–۱۱:۵۹ | `morning` | امروز |
+| ۱۲:۰۰–۱۷:۵۹ | `afternoon` | امروز |
 | ۱۸:۰۰–۲۳:۵۹ | `night` | امروز |
 
 اگر کاربر `date` یا `period` را صریح بفرستد، API همان را برمی‌گرداند و frontend بعد از load آن را overwrite نمی‌کند. در بار اول بدون query، frontend نباید `period=morning` بفرستد؛ backend مقدار را در `meta` برمی‌گرداند.
@@ -57,6 +57,8 @@ forecast
 - `is_past`
 - `is_current`
 - `is_future`
+
+تمام timestampهای public (`forecast_at`، `valid_from`، `valid_to`، `generated_at` و `current_local_time`) با offset `Asia/Tehran` برمی‌گردند؛ timestamp UTC در قرارداد frontend نمایش داده نمی‌شود.
 
 ## metadata
 

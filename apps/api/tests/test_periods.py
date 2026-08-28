@@ -2,17 +2,20 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone as utc_timezone
 from unittest.mock import patch
 
 import pytest
+from django.test import override_settings
 from rest_framework.test import APIClient
 
 from hawatch.common.time import (
+    datetime_flags,
     default_forecast_selection,
     parse_period,
     parse_start_minutes,
     period_window,
+    timezone,
 )
 from hawatch.modules.catalog.seed import seed_demo_data
 
@@ -37,14 +40,13 @@ def test_parse_period_accepts_three_periods():
 
 @pytest.mark.django_db
 def test_default_selection_boundaries():
-    from hawatch.common.time import timezone
-
     tz = timezone()
     cases = [
         (datetime(2026, 8, 28, 0, 30, tzinfo=tz), "2026-08-27", "night"),
         (datetime(2026, 8, 28, 2, 0, tzinfo=tz), "2026-08-28", "morning"),
-        (datetime(2026, 8, 28, 9, 59, tzinfo=tz), "2026-08-28", "morning"),
-        (datetime(2026, 8, 28, 10, 0, tzinfo=tz), "2026-08-28", "afternoon"),
+        (datetime(2026, 8, 28, 10, 30, tzinfo=tz), "2026-08-28", "morning"),
+        (datetime(2026, 8, 28, 11, 59, tzinfo=tz), "2026-08-28", "morning"),
+        (datetime(2026, 8, 28, 12, 0, tzinfo=tz), "2026-08-28", "afternoon"),
         (datetime(2026, 8, 28, 17, 59, tzinfo=tz), "2026-08-28", "afternoon"),
         (datetime(2026, 8, 28, 18, 0, tzinfo=tz), "2026-08-28", "night"),
     ]
@@ -73,16 +75,21 @@ def test_destination_forecast_three_periods_and_night_crossing(api_client, seede
     afternoon = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "afternoon"}).json()
     night = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "night"}).json()
 
-    assert [item["hour"] for item in morning["hourly"]] == [2, 4, 6, 8]
-    assert [item["hour"] for item in afternoon["hourly"]] == [10, 12, 14, 16]
+    assert [item["hour"] for item in morning["hourly"]] == [2, 4, 6, 8, 10]
+    assert [item["hour"] for item in afternoon["hourly"]] == [12, 14, 16]
     assert [item["hour"] for item in night["hourly"]] == [18, 20, 22, 0]
 
     night_times = {item["forecast_at"] for item in night["hourly"]}
     morning_times = {item["forecast_at"] for item in morning["hourly"]}
+    afternoon_times = {item["forecast_at"] for item in afternoon["hourly"]}
     assert night_times.isdisjoint(morning_times)
+    assert morning_times.isdisjoint(afternoon_times)
+    assert afternoon_times.isdisjoint(night_times)
 
     midnight = next(item for item in night["hourly"] if item["hour"] == 0)
     assert midnight["forecast_at"].startswith("2026-08-29T00")
+    assert midnight["forecast_at"].endswith("+03:30")
+    assert morning["meta"]["forecast_validity"]["valid_from"].endswith("+03:30")
 
 
 @pytest.mark.django_db
@@ -113,13 +120,13 @@ def test_night_start_minutes_cross_midnight():
 
 
 @pytest.mark.django_db
-@patch("hawatch.common.time.now_tehran")
-def test_destination_overnight_current_at_0030(mock_now, api_client, seeded):
-    from hawatch.common.time import timezone
-
+def test_destination_overnight_current_at_0030(api_client, seeded):
     tz = timezone()
-    mock_now.return_value = datetime(2026, 8, 28, 0, 30, tzinfo=tz)
-    body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+    at = datetime(2026, 8, 28, 0, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
     assert body["meta"]["selected_date"] == "2026-08-27"
     assert body["meta"]["selected_period"] == "night"
     assert body["current"] is not None
@@ -127,6 +134,36 @@ def test_destination_overnight_current_at_0030(mock_now, api_client, seeded):
     assert "الان" in body["hero"]["status"]
     yesterday = next(day for day in body["days"] if day["date"] == "2026-08-27")
     assert yesterday["is_past"] is False
+
+
+@pytest.mark.django_db
+def test_destination_default_at_1030_is_morning_with_current_ten(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+
+    assert body["meta"]["selected_period"] == "morning"
+    assert [item["hour"] for item in body["hourly"]] == [2, 4, 6, 8, 10]
+    assert body["current"]["hour"] == 10
+    assert body["current"]["is_current"] is True
+    assert all(item["is_past"] for item in body["hourly"] if item["hour"] < 10)
+
+
+@override_settings(TIME_ZONE="UTC")
+def test_forecast_clock_stays_on_official_iran_time():
+    assert timezone().key == "Asia/Tehran"
+    selected_date, period = default_forecast_selection(datetime(2026, 8, 28, 7, 0, tzinfo=utc_timezone.utc))
+    assert selected_date.isoformat() == "2026-08-28"
+    assert period == "morning"
+
+    flags = datetime_flags(
+        datetime(2026, 8, 28, 6, 30, tzinfo=utc_timezone.utc),
+        datetime(2026, 8, 28, 7, 0, tzinfo=utc_timezone.utc),
+    )
+    assert flags["is_current"] is True
 
 
 @pytest.mark.django_db

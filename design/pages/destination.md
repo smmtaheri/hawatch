@@ -22,7 +22,7 @@
 ۶. انتخاب روز.
 ۷. بخش مسیرها.
 ۸. انتخاب صبح/بعدازظهر/شب.
-۹. پیش‌بینی ساعتی چهارتایی.
+۹. پیش‌بینی ساعتی با تعداد کارت متناسب با بازه (صبح پنج، بعدازظهر سه، شب چهار).
 ۱۰. جزئیات تخصصی.
 ۱۱. در web، decision card و خلاصهٔ مسیر در جایگاه side قرار می‌گیرند؛ در mobile به ترتیب خواندن تصمیم نزدیک داده می‌مانند.
 
@@ -43,7 +43,7 @@
 ## ۶. stateهای loading، ready، empty، error، stale و partial-data
 
 - loading: hero می‌تواند اطلاعات پایه را حفظ کند و weather card skeleton داشته باشد.
-- ready: status، روزها، مسیرها، چهار ساعت و metrics کامل نمایش داده شوند.
+- ready: status، روزها، مسیرها، ساعت‌های بازهٔ انتخابی و metrics کامل نمایش داده شوند.
 - empty: برای روز یا مسیر بدون forecast پیام و جایگزین قابل اقدام نمایش داده شود.
 - error: شکست provider یا API داخلی با retry، زمان آخرین موفقیت و back path.
 - stale: timestamp و stale badge؛ تصمیم حساس نباید بدون هشدار از دادهٔ قدیمی نتیجه‌گیری کند.
@@ -53,7 +53,7 @@
 
 - مقصد: slug، نام، category، مختصات، elevation و hero asset.
 - وضعیت فعلی: condition، temperature، wind، visibility و fetched/valid times.
-- forecast روزانه و hourly چهارتایی.
+- forecast روزانه و hourly با بازه‌های صبح ۰۲–۱۲، بعدازظهر ۱۲–۱۸ و شب ۱۸–۰۲.
 - route catalog همان مقصد.
 - metrics تخصصی مثل gust، freezing level، cloud base، UV، precipitation و sunrise/sunset.
 - هشدارها با severity normal/change/critical.
@@ -69,8 +69,8 @@
 
 ## ۹. تفاوت mobile و web
 
-- mobile: روزها قبل از کنترل هوا باشند؛ مسیرها دو ستونه و کوچک؛ عنوان بخش فقط «مسیرها»؛ کنترل morning/afternoon کوتاه؛ cardها viewport را overflow ندهند.
-- web: weather card و side route summary می‌توانند دو ستون باشند؛ شش ساعت در یک ردیف خوانا بماند.
+- mobile: روزها قبل از کنترل هوا باشند؛ مسیرها دو ستونه و کوچک؛ عنوان بخش فقط «مسیرها»؛ کنترل سه‌گزینه‌ای صبح/بعدازظهر/شب در یک ردیف مستقل و خوانا باشد؛ cardها فقط در container خودشان scroll شوند.
+- web: weather card و side route summary می‌توانند دو ستون باشند؛ کارت‌های هر بازه متناسب با تعدادشان در یک ردیف خوانا بمانند.
 - timeline و cardها در mobile باید به ترتیب تصمیم خوانده شوند، نه بر اساس grid desktop.
 
 ## ۱۰. تفاوت light و dark

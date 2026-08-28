@@ -15,6 +15,7 @@ from hawatch.common.time import (
     format_clock,
     format_duration,
     format_hhmm,
+    localize_dt,
     now_tehran,
     period_hour_slots,
     period_window,
@@ -48,13 +49,18 @@ def _live_meta_parts() -> dict:
         "source": snapshot.source,
         "seed_version": snapshot.catalog_version or "open-meteo-live",
         "freshness": freshness,
-        "generated_at": snapshot.generated_at.isoformat(),
-        "last_generated_time": snapshot.generated_at.isoformat(),
+        "generated_at": _tehran_iso(snapshot.generated_at),
+        "last_generated_time": _tehran_iso(snapshot.generated_at),
         "forecast_validity": {
-            "valid_from": snapshot.valid_from.isoformat() if snapshot.valid_from else None,
-            "valid_to": snapshot.valid_to.isoformat() if snapshot.valid_to else None,
+            "valid_from": _tehran_iso(snapshot.valid_from),
+            "valid_to": _tehran_iso(snapshot.valid_to),
         },
     }
+
+
+def _tehran_iso(value: datetime | None) -> str | None:
+    """Serialize public timestamps in Hawatch's fixed product timezone."""
+    return now_tehran(value).isoformat() if value is not None else None
 
 
 def meta_base(*, selected_date: date, period: str, extra: dict | None = None) -> dict:
@@ -76,11 +82,11 @@ def meta_base(*, selected_date: date, period: str, extra: dict | None = None) ->
             "source": "hawatch-demo",
             "seed_version": settings.DEMO_SEED_VERSION,
             "freshness": freshness,
-            "generated_at": state.generated_at.isoformat() if state else local.isoformat(),
-            "last_generated_time": state.generated_at.isoformat() if state else None,
+            "generated_at": _tehran_iso(state.generated_at) if state else local.isoformat(),
+            "last_generated_time": _tehran_iso(state.generated_at) if state else None,
             "forecast_validity": {
-                "valid_from": (selected_date.isoformat() + "T00:00:00"),
-                "valid_to": ((selected_date + timedelta(days=1)).isoformat() + "T00:00:00"),
+                "valid_from": localize_dt(selected_date, 0).isoformat(),
+                "valid_to": localize_dt(selected_date + timedelta(days=1), 0).isoformat(),
             },
         }
     else:
@@ -96,8 +102,8 @@ def meta_base(*, selected_date: date, period: str, extra: dict | None = None) ->
         }
         if "forecast_validity" not in payload:
             payload["forecast_validity"] = {
-                "valid_from": (selected_date.isoformat() + "T00:00:00"),
-                "valid_to": ((selected_date + timedelta(days=1)).isoformat() + "T00:00:00"),
+                "valid_from": localize_dt(selected_date, 0).isoformat(),
+                "valid_to": localize_dt(selected_date + timedelta(days=1), 0).isoformat(),
             }
     if extra:
         payload.update(extra)
@@ -233,9 +239,9 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
     return {
         "time": format_clock(local_at.hour),
         "hour": local_at.hour,
-        "forecast_at": record.forecast_at.isoformat(),
-        "valid_from": record.valid_from.isoformat(),
-        "valid_to": record.valid_to.isoformat(),
+        "forecast_at": _tehran_iso(record.forecast_at),
+        "valid_from": _tehran_iso(record.valid_from),
+        "valid_to": _tehran_iso(record.valid_to),
         "temperature_c": record.temperature_c,
         "temperature_label": f"{to_fa_digits(record.temperature_c)}°",
         "apparent_temperature_c": record.apparent_temperature_c,
@@ -393,7 +399,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
         decision_text = "در کویر، زمان برگشت و آب مهم‌تر از رسیدن سریع است؛ از ظهر گرما و باد شن‌زا بیشتر می‌شود."
     elif morning_ok:
         decision_title = "صبح برای شروع برنامه مناسب‌تر است."
-        decision_text = "تا حدود ساعت ۱۰ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود."
+        decision_text = "تا حدود ساعت ۱۲ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود."
         if critical:
             decision_text += f" از ساعت {to_fa_digits(critical.forecast_at.astimezone(timezone()).hour)} شرایط حساس‌تر می‌شود."
     else:

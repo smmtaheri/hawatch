@@ -6,7 +6,7 @@ import { ThemeProvider } from "../src/app/theme";
 import { DestinationPage } from "../src/pages/DestinationPage";
 import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
-import { PERIOD_OPTIONS } from "../src/lib/periods";
+import { PERIOD_OPTIONS, PERIOD_RANGES, periodTicks } from "../src/lib/periods";
 
 const destinationForecast = {
   destination: {
@@ -73,7 +73,7 @@ const routeForecast = {
     siblings: [],
   },
   days: destinationForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۰", headline: "تغییرات صبح", hours: [2, 4, 6, 8] },
+  period: { id: "morning", label: "صبح", range_label: "۰۲ تا ۱۲", headline: "تغییرات صبح", hours: [2, 4, 6, 8, 10] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
   speed: "متوسط",
@@ -186,6 +186,12 @@ describe("periods and route planner", () => {
     expect(screen.getByRole("button", { name: /شب/ })).toBeInTheDocument();
   });
 
+  it("keeps 10:00 in the Iran-time morning period", () => {
+    expect(PERIOD_OPTIONS.find((option) => option.id === "morning")?.rangeLabel).toBe("۰۲ تا ۱۲");
+    expect(PERIOD_RANGES.morning).toMatchObject({ min: 120, max: 720 });
+    expect(periodTicks("morning")).toContain("۱۰:۰۰");
+  });
+
   it("does not send period=morning on no-query initial destination load", async () => {
     render(
       <ThemeProvider>
@@ -201,6 +207,7 @@ describe("periods and route planner", () => {
     expect(destinationRequest).toBeDefined();
     expect(destinationRequest).not.toContain("period=morning");
     expect(destinationRequest).not.toContain("period=");
+    expect(destinationCalls(fetchMock.mock.calls)).toHaveLength(1);
   });
 
   it("renders night selected from backend default", async () => {
@@ -224,7 +231,7 @@ describe("periods and route planner", () => {
         return jsonResponse({
           ...destinationForecast,
           meta: { ...destinationForecast.meta, selected_period: "afternoon" },
-          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۰ تا ۱۸", headline: "بعدازظهر", hours: [10, 12, 14, 16] },
+          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۲ تا ۱۸", headline: "بعدازظهر", hours: [12, 14, 16] },
         });
       }
       return jsonResponse(destinationForecast);

@@ -18,6 +18,7 @@ import { StartTimeControl } from "../../components/StartTimeControl";
 import { StatsGrid } from "../../components/StatsGrid";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import {
+  asPeriodId,
   appendRouteContext,
   buildForecastParams,
   formatClockDisplay,
@@ -28,6 +29,27 @@ import {
 } from "../../lib/periods";
 import type { PeriodId, RouteForecast } from "../../types";
 
+type RouteRequestInputs = {
+  slug: string;
+  date?: string;
+  period?: PeriodId;
+  speed?: string;
+  start?: string;
+};
+
+function requestKey({ slug, date, period, speed, start }: RouteRequestInputs) {
+  return JSON.stringify([slug, date ?? "", period ?? "", speed ?? "", start ?? ""]);
+}
+
+function isPlannerOnlyChange(previous: RouteRequestInputs, next: RouteRequestInputs) {
+  return (
+    previous.slug === next.slug &&
+    previous.date === next.date &&
+    previous.period === next.period &&
+    (previous.speed !== next.speed || previous.start !== next.start)
+  );
+}
+
 export function RoutePage() {
   const { slug = "touchal-darband" } = useParams();
   const [params, setParams] = useSearchParams();
@@ -37,11 +59,13 @@ export function RoutePage() {
   const [draftSpeed, setDraftSpeed] = useState<string | null>(null);
   const requestId = useRef(0);
   const commitTimer = useRef<number | null>(null);
-  const plannerReady = useRef(false);
-  const explicitDate = params.has("date");
-  const explicitPeriod = params.has("period");
-  const requestedDate = params.get("date") ?? undefined;
-  const requestedPeriod = params.get("period") as PeriodId | null;
+  const timingPendingRef = useRef(false);
+  const previousRequestInputs = useRef<RouteRequestInputs | null>(null);
+  const resolvedUrlRequestKey = useRef<string | null>(null);
+  const requestedDate = params.get("date") || undefined;
+  const explicitDate = Boolean(requestedDate);
+  const requestedPeriod = asPeriodId(params.get("period"));
+  const explicitPeriod = Boolean(requestedPeriod);
   const speed = params.get("speed") || undefined;
   const start = params.get("start_time") || undefined;
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
@@ -56,10 +80,7 @@ export function RoutePage() {
     setParams(copy, { replace: true });
   }
 
-  function load(options?: { skipIfTimingPending?: boolean }) {
-    if (options?.skipIfTimingPending && data?.timing_pending) {
-      return;
-    }
+  function load() {
     const currentRequest = ++requestId.current;
     setStatus("loading");
     api
@@ -77,19 +98,27 @@ export function RoutePage() {
       .then((payload) => {
         if (currentRequest !== requestId.current) return;
         setData(payload);
+        timingPendingRef.current = Boolean(payload.timing_pending);
         const resolvedPeriod = (requestedPeriod ?? payload.meta.selected_period) as PeriodId;
         setDraftMinutes(start ? parseClockToMinutes(start, resolvedPeriod) : payload.start_minutes);
         setDraftSpeed(payload.speed);
         if (!explicitDate || !explicitPeriod) {
-          update({
+          const resolvedParams = {
             date: explicitDate ? requestedDate : payload.meta.selected_date,
             period: explicitPeriod ? requestedPeriod ?? undefined : (payload.meta.selected_period as PeriodId),
             speed: payload.speed,
             start_time: toClock(payload.start_minutes),
+          };
+          resolvedUrlRequestKey.current = requestKey({
+            slug,
+            date: resolvedParams.date,
+            period: resolvedParams.period,
+            speed: resolvedParams.speed,
+            start: resolvedParams.start_time,
           });
+          update(resolvedParams);
         }
         setStatus("ready");
-        plannerReady.current = true;
       })
       .catch((error) => {
         if (currentRequest !== requestId.current) return;
@@ -98,25 +127,40 @@ export function RoutePage() {
   }
 
   useEffect(() => {
+    const nextInputs = {
+      slug,
+      date: requestedDate,
+      period: requestedPeriod ?? undefined,
+      speed,
+      start,
+    };
+    const nextKey = requestKey(nextInputs);
+    const previousInputs = previousRequestInputs.current;
+    previousRequestInputs.current = nextInputs;
+
+    if (resolvedUrlRequestKey.current === nextKey) {
+      resolvedUrlRequestKey.current = null;
+      return;
+    }
+    if (previousInputs && isPlannerOnlyChange(previousInputs, nextInputs) && timingPendingRef.current) {
+      return;
+    }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, requestedDate, requestedPeriod]);
+  }, [slug, requestedDate, requestedPeriod, speed, start]);
 
-  useEffect(() => {
-    if (!plannerReady.current) return;
-    load({ skipIfTimingPending: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [speed, start]);
+  useEffect(
+    () => () => {
+      if (commitTimer.current) window.clearTimeout(commitTimer.current);
+    },
+    [],
+  );
 
   const ticks = useMemo(() => periodTicks(displayPeriod), [displayPeriod]);
   const periodRange = PERIOD_RANGES[displayPeriod];
   const pointHref = (href: string) => appendRouteContext(href, params);
 
   function scheduleCommit(minutes: number) {
-    if (data?.timing_pending) {
-      update({ start_time: toClock(minutes) });
-      return;
-    }
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
     commitTimer.current = window.setTimeout(() => {
       update({ start_time: toClock(minutes) });
@@ -135,6 +179,7 @@ export function RoutePage() {
   }
 
   function handlePeriodChange(next: PeriodId) {
+    if (commitTimer.current) window.clearTimeout(commitTimer.current);
     setDraftMinutes(PERIOD_RANGES[next].defaultStartMinutes);
     update({ period: next, start_time: PERIOD_RANGES[next].defaultStart });
   }

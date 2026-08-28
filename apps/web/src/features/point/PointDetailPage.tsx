@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
@@ -11,7 +11,7 @@ import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { buildForecastParams, PERIOD_RANGES } from "../../lib/periods";
+import { asPeriodId, buildForecastParams, PERIOD_RANGES } from "../../lib/periods";
 import type { PeriodId, RoutePointForecast } from "../../types";
 
 export function PointDetailPage() {
@@ -19,11 +19,17 @@ export function PointDetailPage() {
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState<RoutePointForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
-  const explicitDate = params.has("date");
-  const explicitPeriod = params.has("period");
-  const requestedDate = params.get("date") ?? undefined;
-  const requestedPeriod = params.get("period") as PeriodId | null;
+  const requestId = useRef(0);
+  const resolvedDefaultRequestKey = useRef<string | null>(null);
+  const requestedDate = params.get("date") || undefined;
+  const explicitDate = Boolean(requestedDate);
+  const requestedPeriod = asPeriodId(params.get("period"));
+  const explicitPeriod = Boolean(requestedPeriod);
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
+
+  function requestKey(nextDate = requestedDate, nextPeriod = requestedPeriod) {
+    return JSON.stringify([routeSlug, pointSlug, nextDate ?? "", nextPeriod ?? ""]);
+  }
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -35,6 +41,7 @@ export function PointDetailPage() {
   }
 
   function load() {
+    const currentRequest = ++requestId.current;
     setStatus("loading");
     api
       .routePointForecast(
@@ -48,19 +55,30 @@ export function PointDetailPage() {
         }),
       )
       .then((payload) => {
+        if (currentRequest !== requestId.current) return;
         setData(payload);
         if (!explicitDate || !explicitPeriod) {
+          const resolvedDate = explicitDate ? requestedDate : payload.meta.selected_date;
+          const resolvedPeriod = explicitPeriod ? requestedPeriod : (payload.meta.selected_period as PeriodId);
+          resolvedDefaultRequestKey.current = requestKey(resolvedDate, resolvedPeriod);
           update({
-            date: explicitDate ? requestedDate : payload.meta.selected_date,
-            period: explicitPeriod ? requestedPeriod ?? undefined : (payload.meta.selected_period as PeriodId),
+            date: resolvedDate,
+            period: resolvedPeriod,
           });
         }
         setStatus("ready");
       })
-      .catch((error) => setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error"));
+      .catch((error) => {
+        if (currentRequest !== requestId.current) return;
+        setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
+      });
   }
 
   useEffect(() => {
+    if (resolvedDefaultRequestKey.current === requestKey()) {
+      resolvedDefaultRequestKey.current = null;
+      return;
+    }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [routeSlug, pointSlug, requestedDate, requestedPeriod]);

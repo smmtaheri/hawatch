@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
@@ -13,21 +13,26 @@ import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { PeriodToggle } from "../../components/PeriodToggle";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { buildForecastParams } from "../../lib/periods";
+import { asPeriodId, buildForecastParams } from "../../lib/periods";
 import type { DestinationForecast, PeriodId } from "../../types";
 
 export function DestinationPage() {
   const { slug = "touchal" } = useParams();
   const [searchParams] = useSearchParams();
-  const [date, setDate] = useState<string | undefined>(() => searchParams.get("date") ?? undefined);
-  const [period, setPeriod] = useState<PeriodId | undefined>(
-    () => (searchParams.get("period") as PeriodId | null) ?? undefined,
-  );
+  const [date, setDate] = useState<string | undefined>(() => searchParams.get("date") || undefined);
+  const [period, setPeriod] = useState<PeriodId | undefined>(() => asPeriodId(searchParams.get("period")));
   const [data, setData] = useState<DestinationForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
+  const requestId = useRef(0);
+  const resolvedDefaultRequestKey = useRef<string | null>(null);
   const displayPeriod = period ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
 
+  function requestKey(nextDate = date, nextPeriod = period) {
+    return JSON.stringify([slug, nextDate ?? "", nextPeriod ?? ""]);
+  }
+
   function load() {
+    const currentRequest = ++requestId.current;
     setStatus("loading");
     api
       .destinationForecast(
@@ -40,15 +45,28 @@ export function DestinationPage() {
         }),
       )
       .then((payload) => {
+        if (currentRequest !== requestId.current) return;
         setData(payload);
-        if (!date) setDate(payload.meta.selected_date);
-        if (!period) setPeriod(payload.meta.selected_period as PeriodId);
+        if (!date || !period) {
+          const resolvedDate = date ?? payload.meta.selected_date;
+          const resolvedPeriod = period ?? (payload.meta.selected_period as PeriodId);
+          resolvedDefaultRequestKey.current = requestKey(resolvedDate, resolvedPeriod);
+          if (!date) setDate(resolvedDate);
+          if (!period) setPeriod(resolvedPeriod);
+        }
         setStatus("ready");
       })
-      .catch((error) => setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error"));
+      .catch((error) => {
+        if (currentRequest !== requestId.current) return;
+        setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
+      });
   }
 
   useEffect(() => {
+    if (resolvedDefaultRequestKey.current === requestKey()) {
+      resolvedDefaultRequestKey.current = null;
+      return;
+    }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, date, period]);

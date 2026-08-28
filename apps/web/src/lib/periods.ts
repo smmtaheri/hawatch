@@ -1,23 +1,27 @@
 import type { PeriodId } from "../types";
 
 export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: string }> = [
-  { id: "morning", label: "صبح", rangeLabel: "۰۲ تا ۱۰" },
-  { id: "afternoon", label: "بعدازظهر", rangeLabel: "۱۰ تا ۱۸" },
+  { id: "morning", label: "صبح", rangeLabel: "۰۲ تا ۱۲" },
+  { id: "afternoon", label: "بعدازظهر", rangeLabel: "۱۲ تا ۱۸" },
   { id: "night", label: "شب", rangeLabel: "۱۸ تا ۰۲" },
 ];
+
+export function asPeriodId(value: string | null | undefined): PeriodId | undefined {
+  return PERIOD_OPTIONS.some((option) => option.id === value) ? (value as PeriodId) : undefined;
+}
 
 export const PERIOD_RANGES: Record<
   PeriodId,
   { min: number; max: number; label: string; defaultStart: string; defaultStartMinutes: number }
 > = {
-  morning: { min: 120, max: 600, label: "۰۲ تا ۱۰", defaultStart: "06:00", defaultStartMinutes: 360 },
-  afternoon: { min: 600, max: 1080, label: "۱۰ تا ۱۸", defaultStart: "12:00", defaultStartMinutes: 720 },
+  morning: { min: 120, max: 720, label: "۰۲ تا ۱۲", defaultStart: "06:00", defaultStartMinutes: 360 },
+  afternoon: { min: 720, max: 1080, label: "۱۲ تا ۱۸", defaultStart: "12:00", defaultStartMinutes: 720 },
   night: { min: 1080, max: 1530, label: "۱۸ تا ۰۲", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
 const PERIOD_TICKS: Record<PeriodId, string[]> = {
-  morning: ["۰۲:۰۰", "۰۴:۰۰", "۰۶:۰۰", "۰۸:۰۰", "۱۰:۰۰"],
-  afternoon: ["۱۰:۰۰", "۱۲:۰۰", "۱۴:۰۰", "۱۶:۰۰", "۱۸:۰۰"],
+  morning: ["۰۲:۰۰", "۰۴:۰۰", "۰۶:۰۰", "۰۸:۰۰", "۱۰:۰۰", "۱۲:۰۰"],
+  afternoon: ["۱۲:۰۰", "۱۴:۰۰", "۱۶:۰۰", "۱۸:۰۰"],
   night: ["۱۸:۰۰", "۲۰:۰۰", "۲۲:۰۰", "۰۰:۰۰", "۰۲:۰۰"],
 };
 

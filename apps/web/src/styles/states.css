@@ -220,7 +220,7 @@ html:not([data-theme="light"]) .hawatch-state.stale {
 
   .destination-page .hours-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(var(--hour-count, 4), minmax(0, 1fr)) !important;
     width: 100%;
     min-width: 0;
     overflow: hidden !important;
@@ -362,5 +362,54 @@ html:not([data-theme="light"]) .hawatch-state.stale {
     padding: 10px 8px;
     border-radius: 12px;
     font-size: 12px;
+  }
+}
+
+/* The three dayparts deliberately contain different numbers of forecast slots. */
+.hours-grid {
+  grid-template-columns: repeat(var(--hour-count, 4), minmax(0, 1fr)) !important;
+}
+
+.daypart-toggle,
+.route-page .daypart-toggle {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+@media (width <= 720px) {
+  .hours-grid,
+  .destination-page .hours-grid {
+    grid-template-columns: repeat(var(--hour-count, 4), 112px) !important;
+    overflow-x: auto !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .destination-page .mobile-weather-controls {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "routes"
+      "period" !important;
+  }
+
+  .destination-page .destination-period-row {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+
+  .destination-page .destination-period-row .planner-label {
+    flex: 0 0 auto !important;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle {
+    flex: 1 1 auto !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle button {
+    min-height: 32px !important;
+    max-height: none !important;
+    height: auto !important;
   }
 }

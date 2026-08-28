@@ -3,8 +3,6 @@ from __future__ import annotations
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
-from django.conf import settings
-
 TEHRAN = ZoneInfo("Asia/Tehran")
 PERSIAN_DIGITS = str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹")
 JALALI_MONTHS = [
@@ -25,8 +23,8 @@ WEEKDAYS = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنب
 
 FORECAST_DAY_COUNT = 7  # yesterday + today + 5 following days
 HOURLY_STEP = 2
-MORNING_HOURS = (2, 4, 6, 8)
-AFTERNOON_HOURS = (10, 12, 14, 16)
+MORNING_HOURS = (2, 4, 6, 8, 10)
+AFTERNOON_HOURS = (12, 14, 16)
 NIGHT_HOURS = (18, 20, 22, 0)
 ALL_HOURS = MORNING_HOURS + AFTERNOON_HOURS + NIGHT_HOURS
 
@@ -46,9 +44,9 @@ PERIODS = {
     "morning": {
         "id": "morning",
         "label": "صبح",
-        "range_label": "۰۲ تا ۱۰",
+        "range_label": "۰۲ تا ۱۲",
         "start_minutes": 120,
-        "end_minutes": 600,
+        "end_minutes": 720,
         "default_start": 360,
         "hours": MORNING_HOURS,
         "headline": "تغییرات صبح · هر دو ساعت",
@@ -56,8 +54,8 @@ PERIODS = {
     "afternoon": {
         "id": "afternoon",
         "label": "بعدازظهر",
-        "range_label": "۱۰ تا ۱۸",
-        "start_minutes": 600,
+        "range_label": "۱۲ تا ۱۸",
+        "start_minutes": 720,
         "end_minutes": 1080,
         "default_start": 720,
         "hours": AFTERNOON_HOURS,
@@ -77,7 +75,8 @@ PERIODS = {
 
 
 def timezone() -> ZoneInfo:
-    return ZoneInfo(getattr(settings, "TIME_ZONE", "Asia/Tehran"))
+    """Return Hawatch's product timezone, independent of browser/server locale."""
+    return TEHRAN
 
 
 def now_tehran(at: datetime | None = None) -> datetime:
@@ -187,9 +186,9 @@ def localize_dt(value: date, hour: int, minute: int = 0) -> datetime:
 def period_window(selected_date: date, period: str) -> tuple[datetime, datetime]:
     """Timezone-aware [start, end) window for the selected calendar date and period."""
     if period == "morning":
-        return localize_dt(selected_date, 2), localize_dt(selected_date, 10)
+        return localize_dt(selected_date, 2), localize_dt(selected_date, 12)
     if period == "afternoon":
-        return localize_dt(selected_date, 10), localize_dt(selected_date, 18)
+        return localize_dt(selected_date, 12), localize_dt(selected_date, 18)
     return localize_dt(selected_date, 18), localize_dt(selected_date + timedelta(days=1), 2)
 
 
@@ -200,7 +199,7 @@ def default_forecast_selection(at: datetime | None = None) -> tuple[date, str]:
     today = local.date()
     if hour < 2:
         return today - timedelta(days=1), "night"
-    if hour < 10:
+    if hour < 12:
         return today, "morning"
     if hour < 18:
         return today, "afternoon"
