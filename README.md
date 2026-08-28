@@ -67,6 +67,19 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 
 جزئیات بیشتر در `docs/local-development.md` و `infra/compose/README.md`.
 
+## استقرار سریع روی سرور
+
+برای نصب پیش‌نیازها، clone، ساخت امن `.env`، اجرای Compose سبک و health check از اسکریپت زیر استفاده کنید:
+
+```bash
+apt-get update && apt-get install -y ca-certificates curl
+curl -fsSL https://raw.githubusercontent.com/smmtaheri/hawatch/main/scripts/deploy.sh -o /root/hawatch-deploy.sh
+chmod 700 /root/hawatch-deploy.sh
+PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
+```
+
+راهنمای کامل، گزینه‌های اسکریپت و دستور توقف در `docs/deployment.md` است. این اسکریپت به‌صورت پیش‌فرض Redis و observability سنگین را اجرا نمی‌کند.
+
 ## افزودن مقصد و اعتبارسنجی weather
 
 برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید:
