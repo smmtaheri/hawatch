@@ -1,9 +1,9 @@
 import type { PeriodId } from "../types";
 
 export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: string }> = [
-  { id: "morning", label: "صبح", rangeLabel: "۰۲ تا ۱۲" },
-  { id: "afternoon", label: "بعدازظهر", rangeLabel: "۱۲ تا ۱۸" },
-  { id: "night", label: "شب", rangeLabel: "۱۸ تا ۰۲" },
+  { id: "morning", label: "صبح", rangeLabel: "۰۳ تا ۱۱" },
+  { id: "afternoon", label: "بعدازظهر", rangeLabel: "۱۱ تا ۱۹" },
+  { id: "night", label: "شب", rangeLabel: "۱۹ تا ۰۳" },
 ];
 
 export function asPeriodId(value: string | null | undefined): PeriodId | undefined {
@@ -14,15 +14,15 @@ export const PERIOD_RANGES: Record<
   PeriodId,
   { min: number; max: number; label: string; defaultStart: string; defaultStartMinutes: number }
 > = {
-  morning: { min: 120, max: 720, label: "۰۲ تا ۱۲", defaultStart: "06:00", defaultStartMinutes: 360 },
-  afternoon: { min: 720, max: 1080, label: "۱۲ تا ۱۸", defaultStart: "12:00", defaultStartMinutes: 720 },
-  night: { min: 1080, max: 1530, label: "۱۸ تا ۰۲", defaultStart: "20:00", defaultStartMinutes: 1200 },
+  morning: { min: 180, max: 660, label: "۰۳ تا ۱۱", defaultStart: "06:00", defaultStartMinutes: 360 },
+  afternoon: { min: 660, max: 1140, label: "۱۱ تا ۱۹", defaultStart: "12:00", defaultStartMinutes: 720 },
+  night: { min: 1140, max: 1590, label: "۱۹ تا ۰۳", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
 const PERIOD_TICKS: Record<PeriodId, string[]> = {
-  morning: ["۰۲:۰۰", "۰۴:۰۰", "۰۶:۰۰", "۰۸:۰۰", "۱۰:۰۰", "۱۲:۰۰"],
-  afternoon: ["۱۲:۰۰", "۱۴:۰۰", "۱۶:۰۰", "۱۸:۰۰"],
-  night: ["۱۸:۰۰", "۲۰:۰۰", "۲۲:۰۰", "۰۰:۰۰", "۰۲:۰۰"],
+  morning: ["۰۳:۰۰", "۰۵:۰۰", "۰۷:۰۰", "۰۹:۰۰", "۱۱:۰۰"],
+  afternoon: ["۱۱:۰۰", "۱۳:۰۰", "۱۵:۰۰", "۱۷:۰۰", "۱۹:۰۰"],
+  night: ["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"],
 };
 
 export function periodTicks(period: PeriodId) {
@@ -39,10 +39,11 @@ export function toClock(minutes: number) {
 export function parseClockToMinutes(clock: string, period: PeriodId) {
   const [hours, minutes] = clock.split(":").map(Number);
   let value = hours * 60 + minutes;
-  if (period === "night" && value < 180) {
+  if (period === "night" && value <= 180) {
     value += 1440;
   }
-  return value;
+  const range = PERIOD_RANGES[period];
+  return Math.max(range.min, Math.min(range.max, value));
 }
 
 export function formatClockDisplay(minutes: number) {

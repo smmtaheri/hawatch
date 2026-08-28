@@ -59,7 +59,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - TypeScript check: passed
 - `git diff --check`: passed
 
-این commit فقط مستندات/manifest را هم‌راستا می‌کند؛ پس از تغییرات docs، تست‌های نرم‌افزار نیاز به تغییر ندارند اما `git diff --check` و validation دارایی‌ها باید پیش از commit دوباره اجرا شوند.
+این بازبینی هم مستندات/manifest و هم تغییرات runtime مرتبط با period و same-origin gateway را در نظر می‌گیرد؛ تست‌های نرم‌افزار و `git diff --check` باید روی همین وضعیت نهایی اجرا شوند.
 
 ## محدودیت‌ها و ابهام‌ها
 

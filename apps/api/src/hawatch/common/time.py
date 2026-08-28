@@ -23,9 +23,9 @@ WEEKDAYS = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنب
 
 FORECAST_DAY_COUNT = 7  # yesterday + today + 5 following days
 HOURLY_STEP = 2
-MORNING_HOURS = (2, 4, 6, 8, 10)
-AFTERNOON_HOURS = (12, 14, 16)
-NIGHT_HOURS = (18, 20, 22, 0)
+MORNING_HOURS = (3, 5, 7, 9)
+AFTERNOON_HOURS = (11, 13, 15, 17)
+NIGHT_HOURS = (19, 21, 23, 1)
 ALL_HOURS = MORNING_HOURS + AFTERNOON_HOURS + NIGHT_HOURS
 
 SPEED_MULTIPLIERS = {"آرام": 1.2, "متوسط": 1.0, "سریع": 0.82}
@@ -44,9 +44,9 @@ PERIODS = {
     "morning": {
         "id": "morning",
         "label": "صبح",
-        "range_label": "۰۲ تا ۱۲",
-        "start_minutes": 120,
-        "end_minutes": 720,
+        "range_label": "۰۳ تا ۱۱",
+        "start_minutes": 180,
+        "end_minutes": 660,
         "default_start": 360,
         "hours": MORNING_HOURS,
         "headline": "تغییرات صبح · هر دو ساعت",
@@ -54,9 +54,9 @@ PERIODS = {
     "afternoon": {
         "id": "afternoon",
         "label": "بعدازظهر",
-        "range_label": "۱۲ تا ۱۸",
-        "start_minutes": 720,
-        "end_minutes": 1080,
+        "range_label": "۱۱ تا ۱۹",
+        "start_minutes": 660,
+        "end_minutes": 1140,
         "default_start": 720,
         "hours": AFTERNOON_HOURS,
         "headline": "تغییرات بعدازظهر · هر دو ساعت",
@@ -64,9 +64,9 @@ PERIODS = {
     "night": {
         "id": "night",
         "label": "شب",
-        "range_label": "۱۸ تا ۰۲",
-        "start_minutes": 1080,
-        "end_minutes": 1530,
+        "range_label": "۱۹ تا ۰۳",
+        "start_minutes": 1140,
+        "end_minutes": 1590,
         "default_start": 1200,
         "hours": NIGHT_HOURS,
         "headline": "تغییرات شب · هر دو ساعت",
@@ -186,10 +186,10 @@ def localize_dt(value: date, hour: int, minute: int = 0) -> datetime:
 def period_window(selected_date: date, period: str) -> tuple[datetime, datetime]:
     """Timezone-aware [start, end) window for the selected calendar date and period."""
     if period == "morning":
-        return localize_dt(selected_date, 2), localize_dt(selected_date, 12)
+        return localize_dt(selected_date, 3), localize_dt(selected_date, 11)
     if period == "afternoon":
-        return localize_dt(selected_date, 12), localize_dt(selected_date, 18)
-    return localize_dt(selected_date, 18), localize_dt(selected_date + timedelta(days=1), 2)
+        return localize_dt(selected_date, 11), localize_dt(selected_date, 19)
+    return localize_dt(selected_date, 19), localize_dt(selected_date + timedelta(days=1), 3)
 
 
 def default_forecast_selection(at: datetime | None = None) -> tuple[date, str]:
@@ -197,11 +197,11 @@ def default_forecast_selection(at: datetime | None = None) -> tuple[date, str]:
     local = now_tehran(at)
     hour = local.hour
     today = local.date()
-    if hour < 2:
+    if hour < 3:
         return today - timedelta(days=1), "night"
-    if hour < 12:
+    if hour < 11:
         return today, "morning"
-    if hour < 18:
+    if hour < 19:
         return today, "afternoon"
     return today, "night"
 
@@ -236,7 +236,7 @@ def parse_start_minutes(raw: str | None, period: str, default: int | None) -> in
         value = fallback
     elif ":" in raw:
         value = _clock_to_minutes(raw)
-        if period == "night" and value < 180:
+        if period == "night" and value <= 180:
             value += 1440
     else:
         value = int(raw)
@@ -283,7 +283,7 @@ def period_hour_slots(selected_date: date, period: str) -> list[tuple[date, int]
     """Calendar date + hour for each display card in the period."""
     slots: list[tuple[date, int]] = []
     for hour in PERIODS[period]["hours"]:
-        if period == "night" and hour == 0:
+        if period == "night" and hour < 3:
             slots.append((selected_date + timedelta(days=1), hour))
         else:
             slots.append((selected_date, hour))
@@ -291,7 +291,7 @@ def period_hour_slots(selected_date: date, period: str) -> list[tuple[date, int]
 
 
 def forecast_at_for_slot(selected_date: date, period: str, hour: int) -> datetime:
-    if period == "night" and hour == 0:
+    if period == "night" and hour < 3:
         return localize_dt(selected_date + timedelta(days=1), hour)
     return localize_dt(selected_date, hour)
 

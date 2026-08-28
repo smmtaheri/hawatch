@@ -135,7 +135,7 @@
 | referenceهای قدیمی probe/result | BLOCKED | فایل‌های تاریخی `/workspace/scratch/...` در checkout فعلی موجود نیستند؛ manifest به DOCX repository اشاره می‌کند؛ OQ-002 |
 | canonical tokenها | PASS | `design/tokens/visual-tokens.json` تنها منبع مقدارهاست؛ markdownها توضیح‌دهنده‌اند؛ OQ-004 resolved |
 | loading/error/stale و empty/error | PASS | contract قطعی کاربر ثبت شد؛ عدم مشاهدهٔ branch در live با پیاده‌سازی موجود اشتباه نمی‌شود |
-| تغییرات خارج از scope | `GIT` + `PRODUCT` | وضعیت working tree در هر validation جداگانه بررسی می‌شود؛ تغییرات این هم‌ترازی فقط در docs/manifest است و فایل‌های کد یا PNG را stage نمی‌کند. |
+| تغییرات خارج از scope | `GIT` + `PRODUCT` | وضعیت working tree در هر validation جداگانه بررسی می‌شود؛ تغییرات design/docs و runtime باید جداگانه review شوند و فایل‌های PNG بدون تغییر بمانند. |
 
 ## قاعدهٔ استفاده
 

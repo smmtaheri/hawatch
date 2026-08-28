@@ -28,7 +28,7 @@ PUBLIC_HOST="${HAWATCH_PUBLIC_HOST:-${PUBLIC_HOST:-$(env_value PUBLIC_HOST)}}"
 SERVER_IP="${HAWATCH_SERVER_IP:-$(env_value HAWATCH_SERVER_IP)}"
 PUBLIC_HOST="${PUBLIC_HOST:-$DEFAULT_PUBLIC_HOST}"
 SERVER_IP="${SERVER_IP:-$DEFAULT_SERVER_IP}"
-SERVER_API_URL="${HAWATCH_SERVER_API_URL:-http://${SERVER_IP}:8000/api/v1}"
+SERVER_API_URL="${HAWATCH_SERVER_API_URL:-/api/v1}"
 
 fail() {
   printf '[hawatch-publish] ERROR: %s\n' "$*" >&2
@@ -41,7 +41,7 @@ fail() {
   fail "Unexpected Git remote; refusing to deploy."
 [[ "$PUBLIC_HOST" =~ ^[A-Za-z0-9.-]+$ ]] || fail "Invalid public host: $PUBLIC_HOST"
 [[ "$SERVER_IP" =~ ^[A-Za-z0-9.-]+$ ]] || fail "Invalid server host: $SERVER_IP"
-[[ "$SERVER_API_URL" =~ ^https?://[A-Za-z0-9.-]+:[0-9]+/api/v1$ ]] || fail "Invalid server API URL: $SERVER_API_URL"
+[[ "$SERVER_API_URL" =~ ^(/api/v1|https?://[A-Za-z0-9.-]+:[0-9]+/api/v1)$ ]] || fail "Invalid server API URL: $SERVER_API_URL"
 [[ "$SERVER_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail "Invalid server directory: $SERVER_DIR"
 
 if [[ -n "$(git -C "$REPO_DIR" status --porcelain)" ]]; then

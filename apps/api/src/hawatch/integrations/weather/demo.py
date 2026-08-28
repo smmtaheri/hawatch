@@ -68,7 +68,7 @@ def generate_reading(
     temp = round(climate["base_temp_c"] + diurnal + lapse + day_shift + (u1 - 0.5) * 2 + heat_boost)
     apparent = temp - (2 if hour < 8 or hour > 18 else 0) + (1 if climate.get("heat") else 0)
 
-    wind = round(climate["base_wind_kmh"] + (climate["afternoon_wind_boost"] if hour >= 12 else 0) * ((hour - 10) / 10 if hour >= 12 else 0.15) + u2 * 6)
+    wind = round(climate["base_wind_kmh"] + (climate["afternoon_wind_boost"] if hour >= 11 else 0) * ((hour - 10) / 10 if hour >= 11 else 0.15) + u2 * 6)
     wind = max(3, wind)
     gust = round(wind + 8 + u3 * 12)
 
@@ -83,7 +83,7 @@ def generate_reading(
     fog = bool(climate.get("foggy")) and hour >= 11
     shower = precip_prob >= 35 and not snow
     windy = wind >= 22
-    cloudy = precip_prob >= 15 or fog or hour in {4, 6}
+    cloudy = precip_prob >= 15 or fog or hour in {5, 7}
 
     if snow:
         code, label, icon = "snow", "برف", "❄"
@@ -103,12 +103,12 @@ def generate_reading(
     elif cloudy:
         code, label, icon = "partly-cloudy", "نیمه‌ابری", "◒"
         severity = "change" if precip_prob >= 20 else "normal"
-    elif hour >= 18:
+    elif hour >= 19:
         code, label, icon = "clear-night", "سرد و ابری" if cloudy else "صاف", "☾"
         severity = "normal"
-    elif climate.get("heat") and hour >= 12:
+    elif climate.get("heat") and hour >= 11:
         code, label, icon = "hot", "گرم", "☼"
-        severity = "change" if hour >= 12 else "normal"
+        severity = "change" if hour >= 11 else "normal"
     else:
         code, label, icon = "clear", "صاف", "☼"
         severity = "normal"
@@ -122,7 +122,7 @@ def generate_reading(
     visibility = float(climate["visibility_km"])
     if fog or snow or shower:
         visibility = max(1.0, visibility * 0.35)
-    cloud = 70 if cloudy or snow or fog else 18 if hour in {4, 6} else 8
+    cloud = 70 if cloudy or snow or fog else 18 if hour in {5, 7} else 8
     uv = 0 if hour < 6 or hour > 18 else int(climate["uv_index"] * (1 if 10 <= hour <= 14 else 0.6))
     freezing = max(0, elevation_m + (4250 - 3964) + int((u1 - 0.5) * 200)) if climate.get("snow_possible") else None
     cloud_base = elevation_m + (400 if not cloudy else -80)

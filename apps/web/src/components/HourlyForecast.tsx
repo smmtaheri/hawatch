@@ -32,7 +32,7 @@ export function HourlyForecast({
         {hours.map((hour) => (
           <div
             key={hour.forecast_at ?? hour.time}
-            className={`hour-item ${hour.state} ${hour.is_past ? "is-past" : ""} ${hour.is_current ? "is-current" : ""}`}
+            className={`hour-item ${hour.state} ${hour.is_past ? "is-past" : ""} ${hour.is_current ? "is-current" : ""} ${hour.is_future ? "is-future" : ""}`}
           >
             <strong>{hour.time}</strong>
             <span className="weather-symbol">{hour.icon}</span>

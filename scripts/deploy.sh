@@ -43,7 +43,7 @@ Optional environment variables:
   HAWATCH_REPO_URL       Git URL (default: https://github.com/smmtaheri/hawatch.git)
   HAWATCH_BRANCH         Git branch (default: main)
   HAWATCH_DIR            Checkout directory (default: /root/hawatch)
-  VITE_API_BASE_URL      Browser API URL (default: http://PUBLIC_HOST:8000/api/v1)
+  VITE_API_BASE_URL      Browser API URL (default: same-origin /api/v1)
   API_PUBLISH_PORT       API host port (default: 8000)
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
   NGINX_PUBLISH_PORT     Gateway host port (default: 80)
@@ -201,7 +201,7 @@ configure_env() {
 
   VITE_API_BASE_URL="${VITE_API_BASE_URL:-$(get_env_value VITE_API_BASE_URL)}"
   if [[ -z "$VITE_API_BASE_URL" || "$VITE_API_BASE_URL" == "http://localhost:8000/api/v1" ]]; then
-    VITE_API_BASE_URL="http://${PUBLIC_HOST}:${API_PUBLISH_PORT}/api/v1"
+    VITE_API_BASE_URL="/api/v1"
   fi
 
   set_env_value DJANGO_SETTINGS_MODULE "${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.production}"
