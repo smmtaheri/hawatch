@@ -15,6 +15,8 @@ from urllib.request import Request, urlopen
 
 from django.conf import settings
 
+from hawatch.common.observability import record_ingest_retry
+
 HOURLY_VARIABLES = [
     "temperature_2m",
     "apparent_temperature",
@@ -187,6 +189,10 @@ class OpenMeteoProvider:
             if isinstance(payload, dict):
                 retry_after = payload.get("retry_after") or payload.get("Retry-After")
             delay = float(retry_after) if retry_after is not None else BASE_BACKOFF_SECONDS * (2 ** (attempts - 1))
+            record_ingest_retry(
+                "transport" if status == 0 else f"http_{status}",
+                provider="open-meteo",
+            )
             self._sleeper(min(delay, 30.0))
         return BatchResult(
             points=list(points),

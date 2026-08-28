@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("forecasts", "0005_backfill_route_weather_links"),
+        ("forecasts", "0005_legacy_route_relation_name"),
     ]
 
     operations = [

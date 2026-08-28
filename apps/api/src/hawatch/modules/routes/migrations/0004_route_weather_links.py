@@ -5,8 +5,8 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("routes", "0002_disable_auto_spatial_indexes"),
-        ("forecasts", "0003_live_forecast_models"),
+        ("routes", "0003_shared_weather_points"),
+        ("forecasts", "0008_nullable_cloud_uv"),
     ]
 
     operations = [
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
             model_name="route",
             index=models.Index(fields=["catalog_key"], name="route_catalog_key_idx"),
         ),
-        migrations.AddField(
+        migrations.AlterField(
             model_name="routepoint",
             name="weather_point",
             field=models.ForeignKey(
@@ -110,3 +110,4 @@ class Migration(migrations.Migration):
             index=models.Index(fields=["weather_point"], name="routepoint_weather_idx"),
         ),
     ]
+

@@ -163,6 +163,9 @@ metrics.gauge("hawatch_forecast_freshness_records", "Forecast records grouped by
 metrics.counter("hawatch_ingest_runs_total", "Forecast ingestion runs by provider and result.")
 metrics.counter("hawatch_ingest_points_total", "Forecast points processed by provider and result.")
 metrics.counter("hawatch_ingest_retries_total", "Retries made while fetching forecast data.")
+metrics.gauge("hawatch_ingest_last_duration_seconds", "Duration of the latest persisted ingest run.")
+metrics.gauge("hawatch_ingest_last_point_count", "Successful weather points in the latest ingest run.")
+metrics.gauge("hawatch_ingest_last_requested_point_count", "Requested weather points in the latest ingest run.")
 metrics.histogram(
     "hawatch_ingest_duration_seconds",
     "Forecast ingestion duration in seconds.",
@@ -207,7 +210,7 @@ def collect_database_metrics() -> None:
         from django.db.models import Count
 
         from hawatch.modules.destinations.models import Destination
-        from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
+        from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, WeatherPoint
         from hawatch.modules.routes.models import Route
 
         with connection.cursor() as cursor:
@@ -217,7 +220,7 @@ def collect_database_metrics() -> None:
         metrics.set("hawatch_health_status", 1, labels={"check": "ready"})
         metrics.set("hawatch_catalog_destinations", Destination.objects.filter(is_active=True).count())
         metrics.set("hawatch_catalog_routes", Route.objects.filter(destination__is_active=True).count())
-        metrics.set("hawatch_catalog_weather_points", WeatherPoint.objects.count())
+        metrics.set("hawatch_catalog_weather_points", WeatherPoint.objects.filter(destination__is_active=True).count())
         grouped = ForecastRecord.objects.values("data_mode", "freshness").annotate(count=Count("id"))
         for item in grouped:
             metrics.set(
@@ -225,6 +228,21 @@ def collect_database_metrics() -> None:
                 item["count"],
                 labels={"data_mode": item["data_mode"], "freshness": item["freshness"]},
             )
+        snapshots = ForecastSnapshot.objects.filter(provider="open-meteo")
+        for status in ("success", "partial", "failed"):
+            metrics.set(
+                "hawatch_ingest_runs_total",
+                snapshots.filter(status=status).count(),
+                labels={"mode": "live", "provider": "open-meteo", "status": status},
+            )
+        retry_total = sum(snapshot.retry_count for snapshot in snapshots.only("retry_count"))
+        metrics.set("hawatch_ingest_retries_total", retry_total, labels={"provider": "open-meteo", "reason": "all"})
+        latest = snapshots.order_by("-generated_at").first()
+        if latest is not None:
+            metrics.set("hawatch_ingest_last_point_count", latest.point_count)
+            metrics.set("hawatch_ingest_last_requested_point_count", latest.requested_point_count)
+            if latest.duration_seconds is not None:
+                metrics.set("hawatch_ingest_last_duration_seconds", latest.duration_seconds)
     except Exception:
         metrics.set("hawatch_database_up", 0)
         metrics.set("hawatch_health_status", 0, labels={"check": "ready"})

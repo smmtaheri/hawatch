@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("forecasts", "0003_live_forecast_models"),
+        ("forecasts", "0007_live_forecast_models"),
     ]
 
     operations = [
@@ -20,3 +20,4 @@ class Migration(migrations.Migration):
             field=models.PositiveSmallIntegerField(blank=True, null=True),
         ),
     ]
+

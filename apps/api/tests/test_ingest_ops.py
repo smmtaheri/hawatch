@@ -69,15 +69,15 @@ def _fail_batch(point_ids: list[str], *, status_code: int = 500) -> dict:
 
 @pytest.mark.django_db(transaction=True)
 def test_legacy_route_point_association_backfill():
-    """Prove 0005 copies WeatherPoint.route_point → RoutePoint.weather_point before drop."""
+    """Prove 0009 copies WeatherPoint.route_point → RoutePoint.weather_point before drop."""
     executor = MigrationExecutor(connection)
     executor.loader.build_graph()
 
     before = [
-        ("forecasts", "0004_nullable_cloud_uv"),
-        ("routes", "0003_route_weather_links"),
+        ("forecasts", "0008_nullable_cloud_uv"),
+        ("routes", "0004_route_weather_links"),
     ]
-    after = [("forecasts", "0005_backfill_route_weather_links"), ("routes", "0003_route_weather_links")]
+    after = [("forecasts", "0009_backfill_route_weather_links"), ("routes", "0004_route_weather_links")]
 
     executor.migrate(before)
     state = executor.loader.project_state(before)

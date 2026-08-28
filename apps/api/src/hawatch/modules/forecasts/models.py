@@ -27,6 +27,8 @@ class WeatherPoint(models.Model):
     location = models.PointField(srid=4326, spatial_index=False)
     # Catalog elevation; null means genuinely unresolved — never invent or copy provider elevation here.
     elevation_m = models.PositiveIntegerField(null=True, blank=True)
+    # Legacy provenance retained for compatibility with the pre-snapshot schema.
+    elevation_source = models.CharField(max_length=255, blank=True, default="")
     destination = models.ForeignKey(
         "destinations.Destination",
         on_delete=models.PROTECT,
@@ -76,6 +78,9 @@ class ForecastSnapshot(models.Model):
     past_days = models.PositiveSmallIntegerField(default=1)
     batch_size = models.PositiveSmallIntegerField(default=100)
     point_count = models.PositiveIntegerField(default=0)
+    requested_point_count = models.PositiveIntegerField(default=0)
+    retry_count = models.PositiveIntegerField(default=0)
+    duration_seconds = models.FloatField(null=True, blank=True)
     status = models.CharField(max_length=16, choices=Status.choices, default=Status.SUCCESS)
     freshness = models.CharField(max_length=16, choices=Freshness.choices, default=Freshness.READY)
     requested_at = models.DateTimeField()
@@ -206,6 +211,32 @@ class ForecastRecord(models.Model):
 
     def __str__(self) -> str:
         return f"{self.weather_point.slug}@{self.forecast_at.isoformat()}"
+
+
+class ForecastDaily(models.Model):
+    """Legacy daily provider values retained while hourly snapshots are primary."""
+
+    weather_point = models.ForeignKey(WeatherPoint, on_delete=models.CASCADE, related_name="daily_forecasts")
+    forecast_date = models.DateField()
+    sunrise_at = models.DateTimeField(null=True, blank=True)
+    sunset_at = models.DateTimeField(null=True, blank=True)
+    generated_at = models.DateTimeField()
+    data_mode = models.CharField(max_length=16, default="demo")
+    source = models.CharField(max_length=32, default="hawatch-demo")
+    seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
+    provider = models.CharField(max_length=32, default="demo")
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["weather_point", "forecast_date", "seed_version"],
+                name="uniq_daily_point_date_seed",
+            )
+        ]
+        indexes = [
+            models.Index(fields=["weather_point", "forecast_date"], name="daily_point_date_idx"),
+            models.Index(fields=["generated_at"], name="daily_generated_idx"),
+        ]
 
 
 class DemoSeedState(models.Model):

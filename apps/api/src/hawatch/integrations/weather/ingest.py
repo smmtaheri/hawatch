@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
 from contextlib import contextmanager
 from datetime import timedelta
 from threading import Lock
@@ -14,6 +15,11 @@ from django.db import connection, transaction
 from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import hour_bucket, now_tehran
+from hawatch.common.observability import (
+    record_ingest_duration,
+    record_ingest_points,
+    record_ingest_run,
+)
 from hawatch.integrations.weather.normalize import (
     extract_resolution,
     normalize_point_hourly,
@@ -150,6 +156,7 @@ def persist_ingest(
     batch_results: Sequence[dict],
     catalog_version: str = "",
     provider: OpenMeteoProvider | None = None,
+    duration_seconds: float | None = None,
 ) -> ForecastSnapshot:
     """Store raw batches, provider resolutions, and normalized hourly rows.
 
@@ -277,6 +284,9 @@ def persist_ingest(
             past_days=provider.past_days,
             batch_size=provider.batch_size,
             point_count=0,
+            requested_point_count=len(weather_points),
+            retry_count=sum(max(0, int(batch.get("attempts", 1)) - 1) for batch in batch_results),
+            duration_seconds=duration_seconds,
             status=ForecastSnapshot.Status.FAILED,
             freshness=ForecastSnapshot.Freshness.STALE,
             requested_at=requested_at,
@@ -318,6 +328,9 @@ def persist_ingest(
         past_days=provider.past_days,
         batch_size=provider.batch_size,
         point_count=len(successful_point_ids),
+        requested_point_count=len(weather_points),
+        retry_count=sum(max(0, int(batch.get("attempts", 1)) - 1) for batch in batch_results),
+        duration_seconds=duration_seconds,
         status=status,
         freshness=freshness,
         requested_at=requested_at,
@@ -363,6 +376,7 @@ def ingest_weather_points(
     acquire_lock: bool = True,
 ) -> ForecastSnapshot:
     provider = provider or OpenMeteoProvider()
+    started = time.monotonic()
 
     def _run() -> ForecastSnapshot:
         provider_points = weather_points_to_provider_points(points)
@@ -385,12 +399,27 @@ def ingest_weather_points(
             batch_results=serialized,
             catalog_version=catalog_version,
             provider=provider,
+            duration_seconds=time.monotonic() - started,
         )
 
-    if acquire_lock:
-        with ingest_lock():
-            return _run()
-    return _run()
+    try:
+        if acquire_lock:
+            with ingest_lock():
+                snapshot = _run()
+        else:
+            snapshot = _run()
+    except Exception:
+        record_ingest_run("failed", provider="open-meteo")
+        raise
+    finally:
+        record_ingest_duration(time.monotonic() - started, provider="open-meteo")
+    record_ingest_run(snapshot.status, provider="open-meteo")
+    if snapshot.point_count:
+        record_ingest_points(snapshot.point_count, "success", provider="open-meteo")
+    failed_points = max(0, snapshot.requested_point_count - snapshot.point_count)
+    if failed_points:
+        record_ingest_points(failed_points, "failed", provider="open-meteo")
+    return snapshot
 
 
 def ingest_tochal_catalog(*, provider: OpenMeteoProvider | None = None) -> ForecastSnapshot:
