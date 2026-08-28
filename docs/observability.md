@@ -1,6 +1,6 @@
 # Observability و retention هواچ
 
-این stack فقط برای هواچ است و هیچ SSH، deploy یا تنظیمی خارج از repository انجام نمی‌دهد.
+این stack فقط برای هواچ است و هیچ SSH، deploy یا تنظیمی خارج از repository انجام نمی‌دهد. برای pilot کم‌هزینه، observability سنگین پیش‌فرض خاموش است.
 
 ## اجزا
 
@@ -12,12 +12,28 @@
 - OpenSearch و OpenSearch Dashboards برای جست‌وجوی log provision می‌شوند. OpenSearch host port ندارد و OSD فقط port قابل‌تنظیم `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` دارد. اتصال داخلی OSD با کاربر service جداگانه و password قوی `OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD` انجام می‌شود؛ login خود OSD همچنان به credentialهای OpenSearch نیاز دارد.
 - `maintenance` هر `RETENTION_INTERVAL_SECONDS` یک‌بار `cleanup_retention` را اجرا می‌کند.
 
+## profile کم‌هزینه
+
+Compose به‌صورت عادی فقط PostgreSQL، API، web، ingest one-shot و maintenance سبک را اجرا می‌کند. OpenSearch، Dashboards، Vector، Prometheus و Grafana همگی در profile `observability` هستند:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml up -d
+docker compose --env-file .env -f infra/compose/compose.yaml --profile observability up -d
+```
+
+برای مشاهدهٔ روزانهٔ پایلوت، endpoint عمومی health برای availability و endpoint authenticated status برای freshness و ingest کافی هستند:
+
+- `GET /api/v1/health/ready/`
+- `GET /api/v1/health/status/` با `Authorization: Bearer <HAWATCH_METRICS_TOKEN>`
+
+status از PostgreSQL خوانده می‌شود و تعداد مقصد، مسیر، point، آخرین attempt، آخرین snapshot قابل‌استفاده، retry، خطای ۲۴ ساعت اخیر و تعداد رکورد live را گزارش می‌کند.
+
 ## retention
 
 مقدار `HAWATCH_RETENTION_DAYS` عمداً بین ۱ و ۷ محدود است و مقدار پیش‌فرض آن ۷ روز است.
 
-- `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود.
-- مدل‌های `ForecastSnapshot` و `ForecastAssessment` در schema فعلی وجود ندارند؛ command آن‌ها را ایجاد نمی‌کند، اما اگر بعداً در app forecasts با timestampهای استاندارد اضافه شوند، نام مدل و فیلد timestamp را تشخیص می‌دهد.
+- `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود؛ رکوردهای متصل به آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شوند.
+- `ForecastSnapshot` فعلی raw JSON و metadata هر ingest را نگه می‌دارد و بر اساس `generated_at` پاک می‌شود؛ آخرین snapshot قابل‌استفاده استثنای fallback است. `ForecastAssessment` اگر در آینده اضافه شود، command آن را با timestamp استاندارد تشخیص می‌دهد.
 - فقط فایل‌های rotated با الگوی `*.jsonl.*` حذف می‌شوند؛ فایل active برای جلوگیری از حذف inode در حال استفاده نگه داشته می‌شود و handler با rotation روزانه و `backupCount=6` بیشتر از هفت روز فایل فعال/چرخیده نگه نمی‌دارد.
 - Prometheus با `--storage.tsdb.retention.time=7d` اجرا می‌شود.
 - maintenance فقط indexهای دقیقاً با الگوی `hawatch-logs-YYYY.MM.DD` را که قدیمی‌تر از window هستند حذف می‌کند؛ هیچ index ناشناخته‌ای target نمی‌شود.
@@ -40,7 +56,7 @@
 
 توابع `record_ingest_run`، `record_ingest_points`، `record_ingest_retry` و `record_ingest_duration` در `apps/api/src/hawatch/common/observability.py` برای adapter واقعی provider آماده‌اند و در seed دمو به‌جای ingest metric جعلی ثبت نمی‌شوند.
 
-در این milestone registry متریک‌های counter/histogram داخل process است؛ gaugeهای catalog و freshness از DB هنگام scrape خوانده می‌شوند. چون provider live/worker هنوز در این checkout وجود ندارد، ingest counterها فعلاً صفر می‌مانند. پیش از اجرای چند worker یا ingest جداگانه در production باید registry مشترک یا multiprocess اضافه شود تا counterها بین processها کامل جمع شوند.
+registry متریک‌های counter/histogram داخل process است؛ gaugeهای catalog و freshness از DB هنگام scrape خوانده می‌شوند. برای pilot، status endpoint منبع قابل‌اعتماد وضعیت ingest بین processهاست. در صورت فعال‌سازی observability کامل و نیاز به counterهای دائمی، registry مشترک یا multiprocess باید در milestone بعدی اضافه شود.
 
 ## secret و اجرای محلی
 
@@ -58,10 +74,10 @@ openssl rand -base64 36  # برای OPENSEARCH_INITIAL_ADMIN_PASSWORD، OPENSEAR
 docker compose --env-file .env -f infra/compose/compose.yaml config --quiet
 ```
 
-اجرای کامل:
+اجرای observability کامل (اختیاری و مناسب سرور جدا):
 
 ```bash
-docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
+docker compose --env-file .env -f infra/compose/compose.yaml --profile observability up -d --build
 ```
 
 آدرس‌های قابل‌دسترسی فقط این‌ها هستند:
@@ -71,14 +87,14 @@ docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 - Grafana: `http://localhost:${GRAFANA_PUBLISH_PORT}`، پیش‌فرض `3000`
 - OpenSearch Dashboards: `http://localhost:${OPENSEARCH_DASHBOARDS_PUBLISH_PORT}`، پیش‌فرض `5601`
 
-PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. Redis همچنان optional و فقط با profile `cache` است.
+PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. Redis همچنان optional و فقط با profile `cache` است. OpenSearch، Dashboards، Vector، Prometheus و Grafana نیز فقط با profile `observability` اجرا می‌شوند.
 برای اجرای هم‌زمان یک checkout دیگر، فقط `API_PUBLISH_PORT`، `WEB_PUBLISH_PORT` و `VITE_API_BASE_URL` را در `.env` تغییر بده؛ port پیش‌فرض featureهای فعلی همان ۸۰۰۰ و ۵۱۷۳ است.
 
 برای اجرای دستی retention یا مشاهدهٔ نتیجه:
 
 ```bash
-docker compose --env-file .env -f infra/compose/compose.yaml exec api python manage.py cleanup_retention --dry-run
-docker compose --env-file .env -f infra/compose/compose.yaml logs -f api maintenance vector
+docker compose --env-file .env -f infra/compose/compose.yaml exec api python manage.py cleanup_retention --dry-run --skip-opensearch
+docker compose --env-file .env -f infra/compose/compose.yaml logs -f api maintenance
 ```
 
 خاموش‌کردن همهٔ سرویس‌های همین Compose بدون حذف volume:

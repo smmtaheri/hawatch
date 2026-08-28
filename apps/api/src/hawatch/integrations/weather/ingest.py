@@ -187,6 +187,7 @@ def persist_ingest(
     rejected_resolution_batches = 0
     hourly_rows: list[ForecastRecord] = []
     resolutions: list[ForecastPointResolution] = []
+    forecast_times_by_point: dict[str, set] = {}
     valid_from = None
     valid_to = None
     bucket = hour_bucket(now_tehran())
@@ -235,7 +236,12 @@ def persist_ingest(
                     timezone_abbreviation=resolved["timezone_abbreviation"],
                 )
             )
-            for row in normalize_point_hourly(raw_point, generated_at=generated_at):
+            point_rows = normalize_point_hourly(raw_point, generated_at=generated_at)
+            if point_rows:
+                forecast_times_by_point.setdefault(point_id, set()).update(
+                    row["forecast_at"] for row in point_rows
+                )
+            for row in point_rows:
                 valid_from = row["valid_from"] if valid_from is None else min(valid_from, row["valid_from"])
                 valid_to = row["valid_to"] if valid_to is None else max(valid_to, row["valid_to"])
                 hourly_rows.append(
@@ -354,14 +360,53 @@ def persist_ingest(
     if hourly_rows and succeeded_points:
         for row in hourly_rows:
             row.snapshot = snapshot
-        # Replace prior live rows only for points that succeeded in this ingest.
-        ForecastRecord.objects.filter(
-            weather_point__in=succeeded_points,
-            data_mode="live",
-            provider="open-meteo",
-            seed_version=LIVE_SEED_VERSION,
-        ).delete()
-        ForecastRecord.objects.bulk_create(hourly_rows, batch_size=1000)
+        # Upsert only the points returned successfully by this run. The whole
+        # operation is inside the transaction above, so a persistence error
+        # leaves the previous usable rows untouched.
+        ForecastRecord.objects.bulk_create(
+            hourly_rows,
+            batch_size=1000,
+            update_conflicts=True,
+            update_fields=[
+                "snapshot",
+                "valid_from",
+                "valid_to",
+                "generated_at",
+                "hour_bucket",
+                "temperature_c",
+                "apparent_temperature_c",
+                "weather_code",
+                "condition_label",
+                "icon",
+                "wind_speed_kmh",
+                "wind_gust_kmh",
+                "wind_direction_deg",
+                "precipitation_probability",
+                "precipitation_mm",
+                "snowfall_cm",
+                "visibility_km",
+                "cloud_cover_pct",
+                "uv_index",
+                "freezing_level_m",
+                "cloud_base_m",
+                "severity",
+                "freshness",
+                "data_mode",
+                "source",
+                "provider",
+            ],
+            unique_fields=["weather_point", "forecast_at", "seed_version"],
+        )
+        # Remove hours that disappeared from a successful point's new window.
+        # This runs after the upsert but remains inside the transaction, so an
+        # exception still restores both the old and newly upserted rows.
+        for point_id, forecast_times in forecast_times_by_point.items():
+            ForecastRecord.objects.filter(
+                weather_point=point_by_slug[point_id],
+                data_mode="live",
+                provider="open-meteo",
+                seed_version=LIVE_SEED_VERSION,
+            ).exclude(forecast_at__in=forecast_times).delete()
 
     mark_stale_snapshots()
     cleanup_old_snapshots()

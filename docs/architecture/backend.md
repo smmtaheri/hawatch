@@ -16,7 +16,7 @@
 - `routes`: مدل Route و RoutePoint
 - `forecasts`: WeatherPoint و ForecastRecord
 - `integrations.weather`: `WeatherProvider` و generator دمو
-- `jobs`: management command `seed_demo_data`
+- `jobs`: management commandهای seed، ingest one-shot و retention
 
 ## تنظیمات
 
@@ -26,3 +26,11 @@ Health:
 
 - `GET /api/v1/health/live/`
 - `GET /api/v1/health/ready/` — اتصال DB و PostGIS
+- `GET /api/v1/health/status/` — خلاصهٔ authenticated از catalog، آخرین ingest و freshness
+
+## اجرای pilot کم‌هزینه
+
+- API با یک worker gunicorn اجرا می‌شود.
+- web به‌صورت build استاتیک Nginx سرو می‌شود؛ Vite dev server فقط برای توسعه است.
+- ingest یک management command یک‌باره است و scheduler بیرونی آن را هر ۶ ساعت اجرا می‌کند.
+- OpenSearch، Dashboards، Vector، Prometheus و Grafana فقط با Compose profile `observability` فعال می‌شوند.

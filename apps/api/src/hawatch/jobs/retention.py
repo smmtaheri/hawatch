@@ -16,7 +16,7 @@ from django.apps import apps
 from django.conf import settings
 from django.utils import timezone as dj_timezone
 
-from hawatch.modules.forecasts.models import ForecastRecord
+from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot
 
 
 logger = logging.getLogger("hawatch.retention")
@@ -41,15 +41,22 @@ def cleanup_forecast_data(*, days: int = 7, dry_run: bool = False) -> dict[str, 
     days = retention_days(days)
     cutoff = dj_timezone.now() - timedelta(days=days)
     result: dict[str, int | str] = {"cutoff": cutoff.isoformat(), "hourly": 0}
+    latest_usable = (
+        ForecastSnapshot.objects.filter(provider="open-meteo", status__in=["success", "partial"])
+        .order_by("-generated_at")
+        .first()
+    )
 
     hourly = ForecastRecord.objects.filter(generated_at__lt=cutoff)
+    if latest_usable is not None:
+        # Keep the last usable fallback, even during a prolonged provider outage.
+        hourly = hourly.exclude(snapshot_id=latest_usable.pk)
     if dry_run:
         result["hourly"] = hourly.count()
     else:
         result["hourly"] = hourly.delete()[0]
 
     optional_specs = {
-        "ForecastSnapshot": "snapshot",
         "ForecastAssessment": "assessment",
     }
     for model_name, result_key in optional_specs.items():
@@ -69,6 +76,12 @@ def cleanup_forecast_data(*, days: int = 7, dry_run: bool = False) -> dict[str, 
         queryset = model.objects.filter(**{f"{timestamp_field}__lt": cutoff})
         result[result_key] = queryset.count() if dry_run else queryset.delete()[0]
         result[f"{result_key}_field"] = timestamp_field
+
+    snapshots = ForecastSnapshot.objects.filter(generated_at__lt=cutoff)
+    if latest_usable is not None:
+        snapshots = snapshots.exclude(pk=latest_usable.pk)
+    result["snapshot"] = snapshots.count() if dry_run else snapshots.delete()[0]
+    result["snapshot_field"] = "generated_at"
     return result
 
 

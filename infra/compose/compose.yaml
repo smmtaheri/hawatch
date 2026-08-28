@@ -33,9 +33,9 @@ services:
     secrets:
       - hawatch_metrics_token
     environment:
-      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.production}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
-      DJANGO_DEBUG: ${DJANGO_DEBUG:-true}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-false}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,api}
       DJANGO_CORS_ALLOWED_ORIGINS: ${DJANGO_CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173}
       POSTGRES_DB: ${POSTGRES_DB:-hawatch}
@@ -52,7 +52,7 @@ services:
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-1}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-3}
       HAWATCH_LIVE_SEED_VERSION: ${HAWATCH_LIVE_SEED_VERSION:-hawatch-tochal-catalog-v1}
-      LIVE_INGEST_INTERVAL_SECONDS: ${LIVE_INGEST_INTERVAL_SECONDS:-1800}
+      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-1}
       HAWATCH_SERVICE_NAME: hawatch-api
       HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
       HAWATCH_LOG_DIR: /var/log/hawatch
@@ -91,7 +91,7 @@ services:
     secrets:
       - hawatch_metrics_token
     environment:
-      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.production}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
       DJANGO_DEBUG: "false"
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-api,ingest,localhost}
@@ -123,25 +123,18 @@ services:
     command:
       - /bin/sh
       - -ec
-      - |
-        while :; do
-          python manage.py ingest_open_meteo --seed-catalog --catalog catalog/tochal_v1.json
-          sleep "$${LIVE_INGEST_INTERVAL_SECONDS:-1800}"
-        done
+      - python manage.py ingest_open_meteo --seed-catalog --catalog catalog/tochal_v1.json
     logging: *hawatch-container-logging
-    restart: unless-stopped
+    restart: "no"
 
   web:
     build:
       context: ../..
       dockerfile: apps/web/Dockerfile
-    environment:
-      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
     ports:
       - "${WEB_PUBLISH_PORT:-5173}:5173"
-    volumes:
-      - ../../apps/web:/repo/apps/web
-      - /repo/apps/web/node_modules
     depends_on:
       api:
         condition: service_healthy
@@ -160,6 +153,25 @@ services:
     logging: *hawatch-container-logging
     restart: unless-stopped
 
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "${NGINX_PUBLISH_PORT:-8080}:80"
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/healthz >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
   redis:
     image: redis:7.4.2
     profiles: ["cache"]
@@ -173,6 +185,7 @@ services:
     restart: unless-stopped
 
   opensearch:
+    profiles: ["observability"]
     image: opensearchproject/opensearch:2.19.3
     environment:
       discovery.type: single-node
@@ -200,6 +213,7 @@ services:
     restart: unless-stopped
 
   opensearch-dashboards:
+    profiles: ["observability"]
     image: opensearchproject/opensearch-dashboards:2.19.3
     environment:
       OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
@@ -226,6 +240,7 @@ services:
     restart: unless-stopped
 
   opensearch-auth-init:
+    profiles: ["observability"]
     image: curlimages/curl:8.12.1
     environment:
       OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
@@ -249,6 +264,7 @@ services:
     restart: "no"
 
   opensearch-provisioner:
+    profiles: ["observability"]
     image: curlimages/curl:8.12.1
     environment:
       OSD_USER: ${OPENSEARCH_DASHBOARDS_SERVICE_USER:-hawatch-dashboards}
@@ -271,6 +287,7 @@ services:
     restart: "no"
 
   vector:
+    profiles: ["observability"]
     image: timberio/vector:0.48.0-alpine
     environment:
       OPENSEARCH_USER: admin
@@ -292,6 +309,7 @@ services:
     restart: unless-stopped
 
   prometheus:
+    profiles: ["observability"]
     image: prom/prometheus:v2.55.1
     secrets:
       - hawatch_metrics_token
@@ -315,6 +333,7 @@ services:
     restart: unless-stopped
 
   grafana:
+    profiles: ["observability"]
     image: grafana/grafana:12.1.1
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:?Set GRAFANA_ADMIN_USER in .env}
@@ -348,7 +367,7 @@ services:
     secrets:
       - hawatch_metrics_token
     environment:
-      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.local}
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.production}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a strong DJANGO_SECRET_KEY in .env}
       DJANGO_DEBUG: "false"
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-api,maintenance,localhost}
@@ -364,10 +383,6 @@ services:
       HAWATCH_LOG_FILE: /var/log/hawatch/maintenance.jsonl
       HAWATCH_RETENTION_DAYS: ${HAWATCH_RETENTION_DAYS:-7}
       HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
-      OPENSEARCH_URL: https://opensearch:9200
-      OPENSEARCH_USERNAME: admin
-      OPENSEARCH_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?Set a strong OPENSEARCH_INITIAL_ADMIN_PASSWORD in .env}
-      OPENSEARCH_VERIFY_SSL: "false"
       RETENTION_INTERVAL_SECONDS: ${RETENTION_INTERVAL_SECONDS:-86400}
     volumes:
       - ../../apps/api:/app
@@ -375,14 +390,12 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      opensearch:
-        condition: service_healthy
     command:
       - /bin/sh
       - -ec
       - |
         while :; do
-          python manage.py cleanup_retention
+          python manage.py cleanup_retention --skip-opensearch
           sleep "$${RETENTION_INTERVAL_SECONDS}"
         done
     logging: *hawatch-container-logging

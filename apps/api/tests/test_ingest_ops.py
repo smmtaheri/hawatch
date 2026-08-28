@@ -290,6 +290,49 @@ def test_cleanup_never_deletes_latest_usable_even_if_stale_age():
     assert deleted == 0 or ForecastSnapshot.objects.filter(pk=usable.pk).exists()
 
 
+@pytest.mark.django_db
+def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_error(monkeypatch):
+    seed_tochal_catalog()
+    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    first = persist_ingest(
+        weather_points=[summit],
+        batch_results=[_ok_batch(["tochal_summit"], hours=4)],
+    )
+    old_ids = set(
+        ForecastRecord.objects.filter(weather_point=summit, data_mode="live")
+        .values_list("id", flat=True)
+    )
+    updated_batch = _ok_batch(["tochal_summit"], hours=3)
+    updated_batch["payload"][0]["hourly"]["temperature_2m"] = [12.0] * 3
+
+    second = persist_ingest(weather_points=[summit], batch_results=[updated_batch])
+    new_rows = ForecastRecord.objects.filter(weather_point=summit, data_mode="live")
+    assert second.pk != first.pk
+    assert new_rows.count() == 3
+    assert set(new_rows.values_list("id", flat=True)) < old_ids
+    assert set(new_rows.values_list("temperature_c", flat=True)) == {12}
+    current_ids = set(new_rows.values_list("id", flat=True))
+
+    snapshot_count = ForecastSnapshot.objects.count()
+
+    def fail_bulk_create(*_args, **_kwargs):
+        raise RuntimeError("simulated forecast write failure")
+
+    monkeypatch.setattr(ForecastRecord.objects, "bulk_create", fail_bulk_create)
+    failed_batch = _ok_batch(["tochal_summit"], hours=4)
+    failed_batch["payload"][0]["hourly"]["temperature_2m"] = [18.0] * 4
+    with pytest.raises(RuntimeError, match="simulated forecast write failure"):
+        persist_ingest(weather_points=[summit], batch_results=[failed_batch])
+
+    assert ForecastSnapshot.objects.count() == snapshot_count
+    assert set(
+        ForecastRecord.objects.filter(weather_point=summit, data_mode="live").values_list("id", flat=True)
+    ) == current_ids
+    assert set(
+        ForecastRecord.objects.filter(weather_point=summit, data_mode="live").values_list("temperature_c", flat=True)
+    ) == {12}
+
+
 def test_retry_transport_status_zero_and_limits():
     sleeps: list[float] = []
     calls = {"n": 0}

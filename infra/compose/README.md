@@ -1,20 +1,20 @@
-# Compose محلی و observability هواچ
+# Compose سبک پایلوت هواچ
 
 فایل اجرایی: `infra/compose/compose.yaml`
 
 ## سرویس‌های پیش‌فرض
 
 - `postgres` — `postgis/postgis:16-3.5` با volume نام‌دار `hawatch_pgdata`
-- `api` — Django/DRF روی `:8000`
-- `web` — Vite dev server روی `:5173`
-- `opensearch` — index داخلی log؛ بدون host port و با password اجباری
-- `opensearch-dashboards` — UI لاگ با port قابل‌تنظیم `5601` و service user/password از env
-- `opensearch-auth-init` — ساخت/به‌روزرسانی idempotent service user داخلی با password از env و سپس خروج
-- `opensearch-provisioner` — import idempotent dashboardهای log و سپس خروج
-- `vector` — فقط `hawatch_logs` را tail می‌کند و به OpenSearch می‌فرستد
-- `prometheus` — scrape داخلی API، retention برابر ۷ روز و بدون host port
-- `grafana` — dashboard provisioned متریک با login اجباری و port قابل‌تنظیم `3000`
-- `maintenance` — cleanup دوره‌ای forecast، rotated log و indexهای Hawatch
+- `api` — Django/DRF با یک worker روی `:8000`
+- `web` — build استاتیک Nginx روی `:5173`
+- `nginx` — gateway سبک روی port قابل‌تنظیم (پیش‌فرض `:8080`)؛ proxy وب/API و endpoint داخلی `healthz`
+- `ingest` — management command یک‌باره؛ scheduler خارجی هر ۶ ساعت آن را اجرا می‌کند
+- `maintenance` — cleanup سبک forecast و log، بدون وابستگی به OpenSearch
+
+سرویس‌های سنگین observability در profile `observability` هستند و در `up` عادی بالا نمی‌آیند:
+
+- `opensearch`، `opensearch-dashboards`، `opensearch-auth-init`، `opensearch-provisioner`
+- `vector`، `prometheus` و `grafana`
 
 Redis با profile `cache` تعریف شده و در `up` عادی بالا نمی‌آید:
 
@@ -30,6 +30,7 @@ Kafka در این milestone اضافه نشده است.
 cp .env.example .env   # secretهای قوی را فقط در .env وارد کن
 docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 docker compose --env-file .env -f infra/compose/compose.yaml up -d
+docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 docker compose --env-file .env -f infra/compose/compose.yaml ps
 docker compose --env-file .env -f infra/compose/compose.yaml logs -f api
 docker compose --env-file .env -f infra/compose/compose.yaml down
@@ -42,11 +43,17 @@ docker compose --env-file .env -f infra/compose/compose.yaml down
 - API به `postgres:5432` وصل می‌شود
 - Redis داخلی روی `redis:6379` می‌ماند
 
-فقط portهای UI observability publish می‌شوند:
+در حالت pilot، web، API و gateway port میزبان دارند. UIهای observability فقط با profile مربوط publish می‌شوند:
 
 ```bash
 OPENSEARCH_DASHBOARDS_PUBLISH_PORT=5601
 GRAFANA_PUBLISH_PORT=3000
 ```
 
-PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. جزئیات token، metricها و retention در `docs/observability.md` است.
+PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. برای فعال‌کردن observability کامل:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml --profile observability up -d
+```
+
+جزئیات token، metricها و retention در `docs/observability.md` است.

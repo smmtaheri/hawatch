@@ -21,6 +21,7 @@ def test_compose_default_services_and_pinned_postgis():
     assert "postgres:" in text
     assert "api:" in text
     assert "web:" in text
+    assert "nginx:" in text
     assert "postgis/postgis:16-3.5" in text
     assert "image: postgis/postgis:latest" not in text
     assert 'profiles: ["cache"]' in text
@@ -30,3 +31,6 @@ def test_compose_default_services_and_pinned_postgis():
     assert "../../.env" in text
     assert "OPEN_METEO_BASE_URL" in text
     assert "FORECAST_STALE_AFTER_HOURS" in text
+    assert 'profiles: ["observability"]' in text
+    assert "LIVE_INGEST_INTERVAL_SECONDS" not in text
+    assert "run --rm ingest" not in text

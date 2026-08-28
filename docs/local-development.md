@@ -9,7 +9,7 @@
 
 ```bash
 cp .env.example .env
-# secretهای observability را طبق `docs/observability.md` در `.env` تنظیم کن.
+# برای pilot، observability سنگین لازم نیست؛ secretهای آن فقط هنگام فعال‌کردن profile لازم‌اند.
 docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 ```
 
@@ -21,7 +21,8 @@ API هنگام start:
 2. migration اجرا می‌کند
 3. اگر `DEMO_DATA_ENABLED=true` باشد، `seed_demo_data` را idempotent اجرا می‌کند
 4. اگر `DEMO_DATA_ENABLED=false` باشد، فقط `seed_tochal_catalog` را اجرا می‌کند (بدون فراخوانی Open-Meteo)
-5. gunicorn را روی `:8000` بالا می‌آورد
+5. یک worker gunicorn را روی `:8000` بالا می‌آورد
+6. web به‌صورت static production با Nginx روی `:5173` سرو می‌شود
 
 ## آدرس‌ها و پورت‌ها
 
@@ -29,16 +30,17 @@ API هنگام start:
 | --- | --- |
 | web | http://localhost:5173 |
 | api | http://localhost:8000/api/v1/ |
+| status | http://localhost:8000/api/v1/health/status/ (Bearer token) |
 | postgres | فقط داخل شبکهٔ Compose روی `postgres:5432` |
 | redis (optional) | فقط داخل شبکهٔ Compose روی `redis:6379`؛ profile `cache` |
-| Grafana | localhost:`GRAFANA_PUBLISH_PORT` (پیش‌فرض 3000) |
-| OpenSearch Dashboards | localhost:`OPENSEARCH_DASHBOARDS_PUBLISH_PORT` (پیش‌فرض 5601) |
+| Grafana (optional) | localhost:`GRAFANA_PUBLISH_PORT`؛ فقط profile `observability` |
+| OpenSearch Dashboards (optional) | localhost:`OPENSEARCH_DASHBOARDS_PUBLISH_PORT`؛ فقط profile `observability` |
 
 ## توقف و لاگ
 
 ```bash
-docker compose -f infra/compose/compose.yaml logs -f
-docker compose -f infra/compose/compose.yaml down
+docker compose --env-file .env -f infra/compose/compose.yaml logs -f
+docker compose --env-file .env -f infra/compose/compose.yaml down
 ```
 
 حذف volume دیتابیس:
@@ -64,13 +66,21 @@ cd apps/api
 uv run python manage.py seed_tochal_catalog
 ```
 
-Ingestion جدا و فقط از طریق management command (هرگز از handlerهای API):
+Ingestion جدا و one-shot است؛ فقط از طریق management command اجرا می‌شود و هرگز از handlerهای API صدا زده نمی‌شود. برای pilot آن را هر ۶ ساعت با cron/systemd timer اجرا کن:
 
 ```bash
-uv run python manage.py ingest_open_meteo
+docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 ```
 
-Retention: snapshotهای خام قدیمی‌تر از ۷ روز پاک می‌شوند؛ آخرین snapshot قابل‌استفاده قبل از جایگزین موفق حذف نمی‌شود. Ingest هم‌زمان با advisory lock مسدود می‌شود.
+نمونهٔ زمان‌بندی cron (مسیر checkout را با مسیر واقعی عوض کن):
+
+```cron
+0 */6 * * * cd /path/to/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
+```
+
+Retention: snapshotهای خام و رکوردهای forecast قدیمی‌تر از ۷ روز پاک می‌شوند؛ آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شود. ingest با upsert داخل transaction انجام می‌شود و شکست کامل، دادهٔ قبلی را حذف نمی‌کند. maintenance سبک این cleanup را روزانه اجرا می‌کند.
+
+برای کاهش حجم در صورتی که قرارداد UI عمداً به پنج روز تغییر کرد، در `.env` مقدارهای `OPEN_METEO_FORECAST_DAYS=5` و `OPEN_METEO_PAST_DAYS=0` را تنظیم کن. قرارداد فعلی UI هفت‌روزه است و default آن تغییر نکرده است.
 
 ## توسعهٔ frontend بدون Docker web
 

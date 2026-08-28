@@ -8,7 +8,8 @@
 
 - frontend: `apps/web` — React + TypeScript + Vite
 - backend: `apps/api` — Django + Django REST Framework + PostGIS
-- local stack: `infra/compose/compose.yaml` — web، api، postgres و observability داخلی
+- local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot و maintenance سبک
+- gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `8080`) برای health check و proxy وب/API
 
 Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
 
@@ -24,26 +25,38 @@ Login هنوز فقط reference طراحی است و در این milestone پی�
 
 ```bash
 cp .env.example .env
-docker compose -f infra/compose/compose.yaml up -d --build
+docker compose --env-file .env -f infra/compose/compose.yaml up -d --build
 ```
 
 پس از ساخته‌شدن imageها:
 
 ```bash
-docker compose -f infra/compose/compose.yaml up -d
+docker compose --env-file .env -f infra/compose/compose.yaml up -d
 ```
 
 - frontend: http://localhost:5173
 - API: http://localhost:8000/api/v1/
+- gateway: http://localhost:8080 (وب و API از یک ورودی)
 - health live: http://localhost:8000/api/v1/health/live/
 - health ready: http://localhost:8000/api/v1/health/ready/
-- Grafana: http://localhost:3000 (port با `GRAFANA_PUBLISH_PORT` قابل تنظیم است)
-- OpenSearch Dashboards: http://localhost:5601 (port با `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` قابل تنظیم است)
+- وضعیت عملیاتی: http://localhost:8000/api/v1/health/status/ (با Bearer token)
+
+Ingest در Compose یک‌باره است. برای اجرای دوره‌ای، آن را از timer خارجی هر ۶ ساعت صدا بزن:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
+```
+
+Observability سنگین پیش‌فرض خاموش است و فقط در صورت نیاز فعال می‌شود:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml --profile observability up -d
+```
 
 توقف:
 
 ```bash
-docker compose -f infra/compose/compose.yaml down
+docker compose --env-file .env -f infra/compose/compose.yaml down
 ```
 
 لاگ‌ها:
@@ -80,7 +93,7 @@ docker compose -f infra/compose/compose.yaml exec api \
 - database: PostgreSQL 16 + PostGIS 3.5
 - Redis: optional، profile `cache`؛ در این milestone لازم نیست
 - Kafka و data lake: خارج از این milestone
-- Observability: OpenSearch + Dashboards، Vector، Prometheus و Grafana؛ جزئیات در `docs/observability.md`
+- Observability اختیاری: OpenSearch + Dashboards، Vector، Prometheus و Grafana با profile `observability`؛ جزئیات در `docs/observability.md`
 
 ## ساختار repository
 

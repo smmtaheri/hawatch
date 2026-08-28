@@ -331,13 +331,20 @@ def _metrics_token() -> str:
     return os.environ.get("HAWATCH_METRICS_TOKEN", "").strip()
 
 
+def metrics_authorized(request) -> bool:
+    """Share the fail-closed bearer-token check across ops endpoints."""
+
+    if not getattr(settings, "METRICS_REQUIRE_AUTH", True):
+        return True
+    expected = _metrics_token()
+    supplied = request.headers.get("Authorization", "")
+    return bool(expected) and supplied == f"Bearer {expected}"
+
+
 def metrics_view(request):
     if request.method != "GET":
         return HttpResponseNotAllowed(["GET"])
-    expected = _metrics_token()
-    if getattr(settings, "METRICS_REQUIRE_AUTH", True):
-        supplied = request.headers.get("Authorization", "")
-        if not expected or supplied != f"Bearer {expected}":
-            return JsonResponse({"detail": "Metrics authentication required."}, status=401)
+    if not metrics_authorized(request):
+        return JsonResponse({"detail": "Metrics authentication required."}, status=401)
     collect_database_metrics()
     return HttpResponse(metrics.render(), content_type="text/plain; version=0.0.4; charset=utf-8")

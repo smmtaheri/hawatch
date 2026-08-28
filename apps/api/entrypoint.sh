@@ -41,7 +41,7 @@ fi
 log_info "startup.api_started"
 exec gunicorn hawatch.config.wsgi:application \
   --bind 0.0.0.0:8000 \
-  --workers "${GUNICORN_WORKERS:-2}" \
+  --workers "${GUNICORN_WORKERS:-1}" \
   --timeout 60 \
   --graceful-timeout 30 \
   --access-logfile - \

@@ -15,7 +15,7 @@ from hawatch.common.observability import (
 )
 from hawatch.jobs.retention import cleanup_log_files
 from hawatch.modules.catalog.seed import seed_demo_data
-from hawatch.modules.forecasts.models import ForecastRecord
+from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot
 
 
 @pytest.fixture
@@ -62,15 +62,56 @@ def test_metrics_endpoint_fails_closed_when_auth_is_enabled(api_client, monkeypa
 
 
 @pytest.mark.django_db
+def test_status_endpoint_reports_catalog_and_live_freshness(api_client, seeded):
+    response = api_client.get("/api/v1/health/status/")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "degraded"
+    assert body["database"] == "ok"
+    assert body["postgis"] is True
+    assert body["catalog"]["destinations"] >= 1
+    assert body["catalog"]["routes"] >= 1
+    assert body["catalog"]["weather_points"] >= 1
+    assert body["forecast"]["latest_attempt_status"] is None
+
+
+def test_status_endpoint_requires_the_metrics_token(api_client, monkeypatch):
+    monkeypatch.delenv("HAWATCH_METRICS_TOKEN_FILE", raising=False)
+    monkeypatch.setenv("HAWATCH_METRICS_TOKEN", "test-status-token")
+    with override_settings(METRICS_REQUIRE_AUTH=True, METRICS_TOKEN_FILE=""):
+        assert api_client.get("/api/v1/health/status/").status_code == 401
+        response = api_client.get(
+            "/api/v1/health/status/",
+            HTTP_AUTHORIZATION="Bearer test-status-token",
+        )
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
 def test_retention_command_deletes_old_hourly_forecasts_but_keeps_recent(seeded):
     old = ForecastRecord.objects.first()
     old.generated_at = timezone.now() - timedelta(days=8)
     old.save(update_fields=["generated_at"])
+    fallback = ForecastSnapshot.objects.create(
+        provider="open-meteo",
+        source="open-meteo-forecast",
+        requested_at=old.generated_at,
+        generated_at=old.generated_at,
+        status=ForecastSnapshot.Status.SUCCESS,
+        freshness=ForecastSnapshot.Freshness.STALE,
+        point_count=1,
+        requested_point_count=1,
+        raw_response={"fallback": True},
+        checksum="fallback-snapshot",
+    )
+    old.snapshot = fallback
+    old.save(update_fields=["snapshot"])
     recent_pk = ForecastRecord.objects.exclude(pk=old.pk).values_list("pk", flat=True).first()
 
     call_command("cleanup_retention", "--skip-opensearch")
 
-    assert not ForecastRecord.objects.filter(pk=old.pk).exists()
+    assert ForecastRecord.objects.filter(pk=old.pk).exists()
+    assert ForecastSnapshot.objects.filter(pk=fallback.pk).exists()
     assert ForecastRecord.objects.filter(pk=recent_pk).exists()
 
 
