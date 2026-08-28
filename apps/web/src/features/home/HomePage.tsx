@@ -18,6 +18,7 @@ export function HomePage() {
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
+  const [searchError, setSearchError] = useState(false);
   const [popularDestinations, setPopularDestinations] = useState<DestinationSummary[]>([]);
   const [freshness, setFreshness] = useState("ready");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
@@ -42,6 +43,21 @@ export function HomePage() {
   function handleUnifiedSearch(nextQuery: string, results: SearchSuggestion[]) {
     setSubmittedQuery(nextQuery);
     setSearchResults(results);
+    setSearchError(false);
+    setStatus("ready");
+  }
+
+  function handleUnifiedSearchStart(nextQuery: string) {
+    setSubmittedQuery(nextQuery);
+    setSearchResults([]);
+    setSearchError(false);
+    setStatus("loading");
+  }
+
+  function handleUnifiedSearchError(nextQuery: string) {
+    setSubmittedQuery(nextQuery);
+    setSearchResults([]);
+    setSearchError(true);
     setStatus("ready");
   }
 
@@ -69,8 +85,11 @@ export function HomePage() {
                 onClearSubmitted={() => {
                   setSubmittedQuery("");
                   setSearchResults([]);
+                  setSearchError(false);
                 }}
+                onUnifiedSearchStart={handleUnifiedSearchStart}
                 onUnifiedSearch={handleUnifiedSearch}
+                onUnifiedSearchError={handleUnifiedSearchError}
               />
               <button type="submit">جست‌وجو</button>
             </form>
@@ -82,13 +101,22 @@ export function HomePage() {
               {freshness === "stale" ? <StaleDataNotice /> : null}
               {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری مقصدها…" /> : null}
               {status === "error" && !showingSearch ? <ErrorState onRetry={loadPopular} /> : null}
-              {showingSearch && !searchResults.length ? (
+              {showingSearch && searchError ? (
+                <ErrorState
+                  onRetry={() => searchRef.current?.submit()}
+                  message="جست‌وجوی مقصد یا نقطهٔ مسیر ناموفق بود. دوباره تلاش کن."
+                />
+              ) : null}
+              {showingSearch && !searchError && status === "loading" ? (
+                <LoadingState label="در حال جست‌وجو…" />
+              ) : null}
+              {showingSearch && !searchError && status === "ready" && !searchResults.length ? (
                 <EmptyState
                   title="نتیجه‌ای پیدا نشد؛ نام دیگری را امتحان کن."
                   detail="مقصد یا نقطهٔ مسیر را با حداقل دو حرف جست‌وجو کن."
                 />
               ) : null}
-              {showingSearch && searchResults.length ? (
+              {showingSearch && !searchError && status === "ready" && searchResults.length ? (
                 <ul className="search-results-list" aria-label="نتایج جست‌وجو">
                   {searchResults.map((item) => (
                     <li key={`${item.type}-${item.slug}`}>
@@ -122,7 +150,7 @@ export function HomePage() {
                   ))}
                 </div>
               ) : null}
-              {showingSearch && searchResults.length ? (
+              {showingSearch && !searchError && status === "ready" && searchResults.length ? (
                 <p className="muted">برای دیدن پیش‌بینی، روی نتیجهٔ موردنظرت بزن.</p>
               ) : null}
             </div>

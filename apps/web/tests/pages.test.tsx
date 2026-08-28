@@ -366,6 +366,28 @@ describe("Hawatch pages", () => {
     expect(screen.getByText("نتایج مرتبط")).toBeInTheDocument();
   });
 
+  it("shows an error and retry action when unified search fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/search/suggestions")) return jsonResponse({}, false, 503);
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        }
+        return jsonResponse({}, false, 500);
+      }),
+    );
+    const user = userEvent.setup();
+    renderAt("/");
+    await screen.findByText("توچال");
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    await user.type(input, "پس");
+    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
+    expect(await screen.findByText("جست‌وجوی مقصد یا نقطهٔ مسیر ناموفق بود. دوباره تلاش کن.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "تلاش دوباره" })).toBeInTheDocument();
+  });
+
   it("navigates to point on Enter with active suggestion", async () => {
     vi.stubGlobal(
       "fetch",

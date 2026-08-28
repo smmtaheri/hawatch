@@ -177,7 +177,8 @@ def test_route_point_forecast_and_missing_data(api_client, seeded):
     body = response.json()
     assert body["point"]["slug"] == "shirpala"
     assert body["point"]["route_slug"] == "touchal-darband"
-    assert body["point"]["href"].startswith("/routes/touchal-darband/points/")
+    assert body["point"]["href"] == "/points/shirpala"
+    assert body["canonical_href"] == "/points/shirpala"
     assert body["back_href"].startswith("/routes/touchal-darband?")
 
     missing = api_client.get("/api/v1/routes/touchal-darband/points/unknown-point/forecast/")

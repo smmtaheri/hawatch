@@ -74,10 +74,15 @@ def test_legacy_route_point_association_backfill():
     executor.loader.build_graph()
 
     before = [
+        ("destinations", "0002_disable_auto_spatial_indexes"),
         ("forecasts", "0008_nullable_cloud_uv"),
         ("routes", "0004_route_weather_links"),
     ]
-    after = [("forecasts", "0009_backfill_route_weather_links"), ("routes", "0004_route_weather_links")]
+    after = [
+        ("destinations", "0002_disable_auto_spatial_indexes"),
+        ("forecasts", "0009_backfill_route_weather_links"),
+        ("routes", "0004_route_weather_links"),
+    ]
 
     executor.migrate(before)
     state = executor.loader.project_state(before)

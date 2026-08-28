@@ -20,9 +20,14 @@ export const SearchCombobox = forwardRef<
     value: string;
     onChange: (next: string) => void;
     onUnifiedSearch?: (query: string, results: SearchSuggestion[]) => void;
+    onUnifiedSearchStart?: (query: string) => void;
+    onUnifiedSearchError?: (query: string) => void;
     onClearSubmitted?: () => void;
   }
->(function SearchCombobox({ value, onChange, onUnifiedSearch, onClearSubmitted }, ref) {
+>(function SearchCombobox(
+  { value, onChange, onUnifiedSearch, onUnifiedSearchStart, onUnifiedSearchError, onClearSubmitted },
+  ref,
+) {
   const inputId = useId();
   const listId = useId();
   const navigate = useNavigate();
@@ -106,6 +111,7 @@ export const SearchCombobox = forwardRef<
       onUnifiedSearch?.(query, results);
       return;
     }
+    onUnifiedSearchStart?.(query);
     const currentRequest = ++requestId.current;
     abortRef.current?.abort();
     const controller = new AbortController();
@@ -123,10 +129,11 @@ export const SearchCombobox = forwardRef<
         }
         onUnifiedSearch?.(query, payload.results);
       })
-      .catch(() => {
+      .catch((error) => {
         if (currentRequest !== requestId.current) return;
+        if (error instanceof DOMException && error.name === "AbortError") return;
         setStatus("error");
-        onUnifiedSearch?.(query, []);
+        onUnifiedSearchError?.(query);
       });
   }
 
