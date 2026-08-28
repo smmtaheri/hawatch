@@ -80,6 +80,24 @@ PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 
 راهنمای کامل، گزینه‌های اسکریپت و دستور توقف در `docs/deployment.md` است. این اسکریپت به‌صورت پیش‌فرض Redis و observability سنگین را اجرا نمی‌کند.
 
+## محل فایل `.env`
+
+فایل runtime در ریشهٔ پروژه قرار دارد:
+
+```text
+/root/hawatch/.env        # روی سرور
+./.env                    # در checkout محلی
+```
+
+`.env` عمداً در Git ignore است، permission آن باید `600` باشد و شامل secret واقعی است؛ آن را commit یا عمومی نکنید. برای انتقال همین تنظیمات به سرور بعدی، فایل را امن کپی کنید و فقط IP را در مقادیر مربوط به host عوض کنید:
+
+```bash
+scp .env root@NEW_SERVER:/root/hawatch/.env
+ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NEW_IP/g' /root/hawatch/.env"
+```
+
+پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
+
 ## افزودن مقصد و اعتبارسنجی weather
 
 برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید:
