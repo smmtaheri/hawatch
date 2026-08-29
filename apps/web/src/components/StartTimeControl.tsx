@@ -25,9 +25,14 @@ export function StartTimeControl({
   onCommit: (value: number) => void;
 }) {
   const sliderMax = period ? periodLastStartMinutes(period) : max;
-  const percent = ((minutes - min) / Math.max(1, sliderMax - min)) * 100;
+  const boundedMinutes = Math.max(min, Math.min(sliderMax, minutes));
+  const percent = ((boundedMinutes - min) / Math.max(1, sliderMax - min)) * 100;
+  const boundedCurrentMinutes =
+    currentMinutes === undefined ? undefined : Math.max(min, Math.min(sliderMax, currentMinutes));
   const elapsedPercent =
-    currentMinutes !== undefined ? ((currentMinutes - min) / Math.max(1, sliderMax - min)) * 100 : undefined;
+    boundedCurrentMinutes !== undefined
+      ? ((boundedCurrentMinutes - min) / Math.max(1, sliderMax - min)) * 100
+      : undefined;
 
   return (
     <div className="time-gauge">
@@ -55,7 +60,7 @@ export function StartTimeControl({
           min={min}
           max={sliderMax}
           step={30}
-          value={minutes}
+          value={boundedMinutes}
           onChange={(event) => onChange(Number(event.target.value))}
           onPointerUp={(event) => onCommit(Number((event.target as HTMLInputElement).value))}
           onTouchEnd={(event) => onCommit(Number((event.target as HTMLInputElement).value))}

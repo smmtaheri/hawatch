@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -185,6 +185,10 @@ describe("Hawatch pages", () => {
     expect(screen.getByText("ولنجک تا توچال")).toBeInTheDocument();
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
     expect(screen.getByLabelText("بازگشت به صفحهٔ مقصد")).toBeInTheDocument();
+
+    const pointWeather = screen.getByLabelText("آب‌وهوای متناظر با نقاط مهم مسیر");
+    expect(within(pointWeather).getByText("8°")).toBeInTheDocument();
+    expect(pointWeather.querySelector(".route-point-weather-condition")).toBeInTheDocument();
   });
 
   it("shows error and empty states", async () => {

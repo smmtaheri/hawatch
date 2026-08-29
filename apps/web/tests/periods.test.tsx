@@ -9,6 +9,7 @@ import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
 import { PERIOD_OPTIONS, PERIOD_RANGES, parseClockToMinutes, periodTicks, toClock } from "../src/lib/periods";
 import { classifyAllPeriods, resolveRouteStartMinutes } from "../src/lib/periodState";
+import { StartTimeControl } from "../src/components/StartTimeControl";
 
 const destinationForecast = {
   destination: {
@@ -712,6 +713,29 @@ describe("periods and route planner", () => {
     expect(resolveRouteStartMinutes("2026-08-28", "morning", at1030)).toBe(630);
     expect(resolveRouteStartMinutes("2026-08-28", "afternoon", at1030)).toBe(720);
     expect(resolveRouteStartMinutes("2026-08-28", "night", at1030)).toBe(1200);
+  });
+
+  it("keeps the route gauge inside the selected period when input is out of bounds", () => {
+    render(
+      <StartTimeControl
+        minutes={1620}
+        min={1140}
+        max={1620}
+        period="night"
+        ticks={["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"]}
+        rangeLabel="۱۹ تا ۰۳"
+        display="۰۲:۳۰"
+        currentMinutes={1620}
+        onChange={vi.fn()}
+        onCommit={vi.fn()}
+      />,
+    );
+
+    const slider = screen.getByRole("slider", { name: "ساعت شروع حرکت" });
+    expect(slider).toHaveAttribute("max", "1590");
+    expect(slider).toHaveValue("1590");
+    expect(document.querySelector(".gauge-fill")).toHaveStyle({ width: "100%" });
+    expect(document.querySelector(".gauge-dot")).toHaveStyle({ left: "100%" });
   });
 
   it("copies ASCII start_time in share URLs and reopens with the same planner state", async () => {

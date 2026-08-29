@@ -138,6 +138,122 @@ html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
   color: var(--internal-muted, #687a80);
 }
 
+/* Point-level weather belongs to the route axis on every viewport. */
+.route-page .route-point-weather-values {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.route-page .route-point-weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.route-page .route-point-weather-card {
+  min-width: 0;
+  min-height: 130px;
+  padding: 10px 8px;
+  border: 1px solid var(--internal-border, #bee1dd2e);
+  border-radius: 12px;
+  color: var(--internal-text, #edf7f4);
+  text-align: center;
+  background: var(--internal-surface-soft, #14364194);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.route-page .route-point-weather-card.change,
+.route-page .route-point-weather-card.critical {
+  background: #69482161;
+}
+
+.route-page .route-point-weather-card > strong {
+  color: var(--internal-text, #edf7f4);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.route-page .route-point-weather-icon {
+  width: 26px;
+  height: 28px;
+  color: var(--internal-teal, #61c5c0);
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.route-page .route-point-weather-condition {
+  max-width: 100%;
+  color: var(--internal-text, #edf7f4);
+  font-size: 10px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.route-page .route-point-weather-card > b {
+  color: var(--internal-teal, #61c5c0);
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.route-page .route-point-weather-card.change > b,
+.route-page .route-point-weather-card.critical > b {
+  color: var(--internal-coral, #ef847a);
+}
+
+.route-page .route-point-weather-card > small {
+  max-width: 100%;
+  color: var(--internal-muted, #9ab4b3);
+  font-size: 9px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.route-page .route-point-weather-card > em {
+  color: var(--internal-coral, #ef847a);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-size: 8px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+html[data-theme="light"] .route-page .route-point-weather-card {
+  border-color: #dbe8e5;
+  color: #173746;
+  background: #f4faf8;
+}
+
+html[data-theme="light"] .route-page .route-point-weather-card.change,
+html[data-theme="light"] .route-page .route-point-weather-card.critical {
+  background: #fff9ec;
+}
+
+html[data-theme="light"] .route-page .route-point-weather-card > strong,
+html[data-theme="light"] .route-page .route-point-weather-condition {
+  color: #173746;
+}
+
+html[data-theme="light"] .route-page .route-point-weather-card > small {
+  color: #687a80;
+}
+
 .point-page .point-related-routes {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
