@@ -5,7 +5,8 @@ set -Eeuo pipefail
 #
 # The script is intentionally scoped to one checkout and one Compose project:
 # it never runs `docker compose down -v`, removes files, changes firewall rules,
-# or enables the optional observability/cache profiles by default.
+# or enables the optional observability/cache profiles by default. Each deploy
+# does remove only stale containers from this Compose project before rebuilding.
 
 readonly DEFAULT_REPO_URL="https://github.com/smmtaheri/hawatch.git"
 readonly DEFAULT_BRANCH="main"
@@ -318,13 +319,19 @@ run_stack() {
   fi
 
   "${compose[@]}" config --quiet
+  # Restart only this named Compose project from a clean container state. This
+  # removes its orphaned containers and network, but deliberately preserves all
+  # named volumes (especially PostgreSQL data) and never touches other projects.
+  log "Stopping current Hawatch containers and removing Hawatch Compose orphans (volumes are preserved)."
+  "${compose[@]}" down --remove-orphans
+
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --build postgres api web maintenance \
+    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance \
       opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
       vector prometheus grafana
   else
-    "${compose[@]}" up -d --build postgres api web maintenance
+    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance
   fi
 
   wait_for_healthy postgres
@@ -334,7 +341,7 @@ run_stack() {
 
   # Nginx resolves Docker service names when it starts. Recreate the gateway
   # after API/Web replacement so it cannot retain a stale container IP.
-  "${compose[@]}" up -d --force-recreate nginx
+  "${compose[@]}" up -d --force-recreate --remove-orphans nginx
   wait_for_healthy nginx
 
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null

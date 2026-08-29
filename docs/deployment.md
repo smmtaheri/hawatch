@@ -10,6 +10,7 @@
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
 - اجرای `docker compose config`، build/up، health check و یک ingest اولیهٔ live؛
+- توقف کامل containerهای همان Compose project با `down --remove-orphans` و سپس بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate`؛ volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛
 - نمایش status و URLهای قابل تست.
 
 اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.

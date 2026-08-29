@@ -100,7 +100,7 @@ scp .env root@NEW_SERVER:/root/hawatch/.env
 ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NEW_IP/g' /root/hawatch/.env"
 ```
 
-پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
+پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. هر deploy ابتدا فقط containerهای Compose پروژهٔ Hawatch را با `down --remove-orphans` متوقف می‌کند و سپس با `--force-recreate` بالا می‌آورد؛ volumeهای دیتابیس حفظ می‌شوند. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
 
 ## افزودن مقصد و اعتبارسنجی weather
 
