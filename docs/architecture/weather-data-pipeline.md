@@ -5,7 +5,7 @@
 API از forecastهای دمو یا live در PostgreSQL می‌خواند. frontend منبع داده را نمی‌بیند؛ فقط contract داخلی را مصرف می‌کند.
 
 - `DEMO_DATA_ENABLED=true`: seed دمو برای توسعه
-- `DEMO_DATA_ENABLED=false`: catalog با `seed_tochal_catalog`؛ forecast فقط از snapshotهای live؛ API هرگز Open-Meteo را صدا نمی‌زند
+- `DEMO_DATA_ENABLED=false`: اگر catalog زنده خالی باشد `bootstrap_live_catalog_if_empty`؛ در غیر این صورت DB دست‌نخورده می‌ماند. forecast فقط از snapshotهای live؛ API هرگز Open-Meteo را صدا نمی‌زند. Ingest از WeatherPointهای فعال DB است (نه filename JSON).
 
 ## مسیر داده
 

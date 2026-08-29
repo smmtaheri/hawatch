@@ -42,9 +42,13 @@
 - [ ] تغییر روز یا period دادهٔ همان context را refresh می‌کند؛ route timing pending مقدار ساختگی برای ETA، distance یا ascent تولید نمی‌کند.
 - [ ] periodهای کاملاً گذشته با ساعت رسمی تهران dim هستند و period جاری واضح است.
 - [ ] Route در timing pending متن خام `timing pending`، ETA ساختگی یا fallback ثابت ظهر برای period انتخاب‌شده ندارد.
+- [ ] پنج مسیر توچال پس از seed با timing تخمینی v3 کار می‌کنند (شامل شهرستانک ترکیبی). نشان `تخمینی · ±N دقیقه`، بدون fallback قله و بدون ادعای زمان قطعی یا کالیبراسیون میدانی کامل.
+- [ ] مبدأ ولنجک `velenjak_parking` است؛ WeatherPoint عمومی `velenjak` حذف نمی‌شود.
+- [ ] تغییر start time یا speed arrival و انتخاب forecast نقطه را دوباره محاسبه می‌کند و می‌تواند از مرز period/نیمه‌شب عبور کند.
+- [ ] `state` کارت نقطه و تصمیم مسیر فقط از severity پیش‌بینی نقطه‌ای matched ساخته می‌شود؛ آستانهٔ دیررسیدن یا بازنویسی hourly مقصد از critical نقطه ممنوع است.
 - [ ] Route timeline دمای زیر marker و headline «تغییرات شب · هر دو ساعت» را نمایش نمی‌دهد.
 - [ ] Destination/Point هم `period.headline` را نشان نمی‌دهند؛ فقط کارت ساعتی + legend.
-- [ ] Route cards زیر timeline برای هر RoutePoint و همان period انتخاب‌شده‌اند، نه forecast عمومی مقصد.
+- [ ] Route cards زیر timeline برای هر RoutePoint و زمان رسیدن محاسبه‌شده‌اند، نه forecast عمومی مقصد یا عنوان period مشترک بالای همهٔ نقاط.
 - [ ] label بالای day tabs در Destination و Point «انتخاب روز» است و timestamp خام update نمایش داده نمی‌شود.
 
 ## responsive، theme و دسترسی‌پذیری

@@ -25,6 +25,7 @@ from hawatch.common.time import (
     timezone,
 )
 from hawatch.modules.catalog.seed import seed_demo_data
+from hawatch.modules.routes.models import Route, RoutePoint
 
 
 @pytest.fixture
@@ -229,6 +230,13 @@ def test_route_point_forecast_and_missing_data(api_client, seeded):
 
 @pytest.mark.django_db
 def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
+    # Force pending so the contract stays testable after Tochal v1 estimates ship.
+    Route.objects.filter(slug="touchal-darband").update(timing_status=Route.TimingStatus.PENDING)
+    RoutePoint.objects.filter(route__slug="touchal-darband").update(
+        timing_status=RoutePoint.TimingStatus.PENDING,
+        cumulative_minutes=None,
+        segment_minutes=None,
+    )
     today = datetime(2026, 8, 28).date()
     body = api_client.get(
         "/api/v1/routes/touchal-darband/forecast/",
@@ -246,6 +254,12 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
 
 @pytest.mark.django_db
 def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
+    Route.objects.filter(slug="touchal-darband").update(timing_status=Route.TimingStatus.PENDING)
+    RoutePoint.objects.filter(route__slug="touchal-darband").update(
+        timing_status=RoutePoint.TimingStatus.PENDING,
+        cumulative_minutes=None,
+        segment_minutes=None,
+    )
     tz = timezone()
     at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(

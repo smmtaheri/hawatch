@@ -6,8 +6,9 @@ from django.conf import settings
 from rest_framework.exceptions import NotFound
 
 from hawatch.common.time import (
+    ARRIVAL_FORECAST_TOLERANCE_MINUTES,
     PERIODS,
-    SPEED_MULTIPLIERS,
+    SPEED_TIME_FACTORS,
     arrival_forecast_at,
     current_period_start_minutes,
     datetime_flags,
@@ -18,6 +19,7 @@ from hawatch.common.time import (
     format_hhmm,
     localize_dt,
     now_tehran,
+    paced_duration_minutes,
     period_hour_slots,
     period_window,
     planner_period_payload,
@@ -141,25 +143,33 @@ def contextual_destination_for_point(point: WeatherPoint) -> Destination | None:
     if profile is not None:
         return profile
     via_route = (
-        Destination.objects.filter(routes__points__weather_point=point, is_active=True)
+        Destination.objects.filter(
+            routes__points__weather_point=point,
+            is_active=True,
+            routes__is_active=True,
+        )
         .order_by("popular_order", "slug")
         .first()
     )
     if via_route is not None:
         return via_route
-    if point.destination_id and point.destination.is_active:
-        return point.destination
     return None
 
 
 def weather_point_is_active(point: WeatherPoint) -> bool:
-    """A point is active via DestinationProfile, legacy destination FK, or active route membership."""
+    """A point is publicly active only when flagged active and exposed.
+
+    Exposure requires an active Destination profile or an active Route on an
+    active Destination. Legacy ``WeatherPoint.destination`` ownership alone is
+    not enough.
+    """
+    if not point.is_active:
+        return False
     if destination_profile_for_point(point) is not None:
-        return True
-    if point.destination_id and point.destination.is_active:
         return True
     return RoutePoint.objects.filter(
         weather_point=point,
+        route__is_active=True,
         route__destination__is_active=True,
     ).exists()
 
@@ -194,13 +204,17 @@ def serialize_destination(destination: Destination, *, include_routes: bool = Fa
         "weather_point_slug": wp.slug if wp is not None else None,
     }
     if include_routes:
-        data["routes"] = [serialize_route_summary(route) for route in destination.routes.all().order_by("sort_order")]
+        data["routes"] = [
+            serialize_route_summary(route)
+            for route in destination.routes.filter(is_active=True).order_by("sort_order")
+        ]
     return data
 
 
 def serialize_route_summary(route: Route) -> dict:
     distance_km = float(route.distance_km) if route.distance_km is not None else None
     ascent_m = route.ascent_m
+    timing_pending = not route_has_usable_timing(route)
     return {
         "slug": route.slug,
         "title": route.title,
@@ -214,7 +228,7 @@ def serialize_route_summary(route: Route) -> dict:
         "featured": route.featured,
         "href": f"/routes/{route.slug}",
         "timing_status": route.timing_status,
-        "timing_pending": route.timing_status == Route.TimingStatus.PENDING,
+        "timing_pending": timing_pending,
     }
 
 
@@ -222,9 +236,16 @@ def serialize_route(route: Route) -> dict:
     points = list(route.points.select_related("destination", "weather_point").all())
     siblings = [
         serialize_route_summary(item)
-        for item in Route.objects.filter(destination=route.destination).exclude(pk=route.pk).order_by("sort_order")
+        for item in Route.objects.filter(
+            destination=route.destination,
+            is_active=True,
+            destination__is_active=True,
+        )
+        .exclude(pk=route.pk)
+        .order_by("sort_order")
     ]
     distance_km = float(route.distance_km) if route.distance_km is not None else None
+    timing_pending = not route_has_usable_timing(route, points)
     return {
         "slug": route.slug,
         "title": route.title,
@@ -238,9 +259,15 @@ def serialize_route(route: Route) -> dict:
         "ascent_m": route.ascent_m,
         "ascent_label": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "—",
         "round_trip_minutes": route.round_trip_minutes,
+        "one_way_minutes": route.one_way_minutes,
         "default_start_minutes": route.default_start_minutes if route.default_start_minutes is not None else 360,
         "timing_status": route.timing_status,
-        "timing_pending": route.timing_status == Route.TimingStatus.PENDING,
+        "timing_pending": timing_pending,
+        "timing_method": route.timing_method or "",
+        "timing_version": route.timing_version or "",
+        "timing_confidence": route.timing_confidence or "",
+        "timing_uncertainty_minutes": route.timing_uncertainty_minutes,
+        "timing_source_urls": list(route.timing_source_urls or []),
         "featured": route.featured,
         "href": f"/routes/{route.slug}",
         "parent": serialize_destination(route.destination),
@@ -712,7 +739,10 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
     point = destination_weather_point(destination)
     if point is None:
         raise NotFound({"detail": "نقطهٔ هوای مقصد پیدا نشد."})
-    routes = [serialize_route_summary(route) for route in destination.routes.all().order_by("sort_order")]
+    routes = [
+        serialize_route_summary(route)
+        for route in destination.routes.filter(is_active=True).order_by("sort_order")
+    ]
     place = build_place_forecast(
         point,
         selected_date=selected_date,
@@ -743,54 +773,81 @@ def localize_dt_safe(value: date, hour: int):
     return localize_dt(value, hour)
 
 
-def _point_arrival_minutes(point: RoutePoint, *, start_minutes: int, multiplier: float, timing_pending: bool) -> int | None:
+def route_has_usable_timing(route: Route, points: list[RoutePoint] | None = None) -> bool:
+    """True only for complete estimated/curated timing; never uses base_minutes."""
+    from hawatch.modules.routes.timing import route_timing_complete
+
+    ordered = points if points is not None else list(route.points.all())
+    return route_timing_complete(
+        timing_status=route.timing_status,
+        one_way_minutes=route.one_way_minutes,
+        points=ordered,
+    )
+
+
+def _point_arrival_minutes(point: RoutePoint, *, start_minutes: int, speed: str, timing_pending: bool) -> int | None:
     if timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING:
         return None
-    minutes = point.cumulative_minutes
-    if minutes is None:
-        minutes = point.base_minutes
-    if minutes is None:
+    # Estimated/curated arrivals require cumulative_minutes only — never invent from base_minutes.
+    medium = point.cumulative_minutes
+    if medium is None:
         return None
-    return start_minutes + round(minutes * multiplier)
+    return start_minutes + paced_duration_minutes(medium, speed)
+
+
+def _closest_point_forecast(weather_point: WeatherPoint, target_at: datetime, *, now: datetime):
+    """Select this point's own forecast closest to arrival within ±tolerance.
+
+    Never substitutes another WeatherPoint (including summit/destination).
+    Tie-break when distances are equal: earlier forecast_at, then lower primary key.
+    Does not rely on queryset default ordering.
+    """
+    tolerance = timedelta(minutes=ARRIVAL_FORECAST_TOLERANCE_MINUTES)
+    candidates = list(
+        _forecast_qs_for_point(weather_point).filter(
+            forecast_at__gte=target_at - tolerance,
+            forecast_at__lte=target_at + tolerance,
+        )
+    )
+    if not candidates:
+        return None
+    record = min(
+        candidates,
+        key=lambda row: (
+            abs((row.forecast_at - target_at).total_seconds()),
+            row.forecast_at,
+            row.pk,
+        ),
+    )
+    return reading_payload(record, now=now)
 
 
 def route_forecast(route: Route, *, selected_date: date, period: str, start_minutes: int, speed: str) -> dict:
     refresh_if_bucket_changed()
     local = now_tehran()
     today = local.date()
-    multiplier = SPEED_MULTIPLIERS[speed]
-    timing_pending = route.timing_status == Route.TimingStatus.PENDING
     points = list(route.points.select_related("weather_point", "route").all())
+    timing_pending = not route_has_usable_timing(route, points)
     planned = []
     for point in points:
-        arrival = _point_arrival_minutes(point, start_minutes=start_minutes, multiplier=multiplier, timing_pending=timing_pending)
+        arrival = _point_arrival_minutes(point, start_minutes=start_minutes, speed=speed, timing_pending=timing_pending)
         wp = point.weather_point
         weather = None
-        point_timing_pending = timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING
-        # Arrival-based weather only when validated cumulative timing exists.
+        arrival_at = None
+        point_timing_pending = (
+            timing_pending
+            or point.timing_status == RoutePoint.TimingStatus.PENDING
+            or point.cumulative_minutes is None
+        )
+        # Arrival-based weather only when validated cumulative timing exists for THIS point's WeatherPoint.
         if wp and arrival is not None and not point_timing_pending:
-            target_at = arrival_forecast_at(selected_date, arrival)
-            even_hour = target_at.hour - (target_at.hour % 2)
-            lookup_at = target_at.replace(hour=even_hour, minute=0, second=0, microsecond=0)
-            record = _forecast_qs_for_point(wp).filter(forecast_at=lookup_at).first()
-            if record is None:
-                record = (
-                    _forecast_qs_for_point(wp)
-                    .filter(forecast_at__gte=lookup_at - timedelta(hours=2), forecast_at__lte=lookup_at + timedelta(hours=2))
-                    .order_by("forecast_at")
-                    .first()
-                )
-            weather = reading_payload(record, now=local) if record else None
+            arrival_at = arrival_forecast_at(selected_date, arrival)
+            weather = _closest_point_forecast(wp, arrival_at, now=local)
         else:
-            # Do not present period-level weather as if it were arrival forecast.
             weather = None
         weather_available = weather is not None
+        # Point-card state comes only from the matched forecast severity — never from elapsed-time thresholds.
         arrival_state = weather["severity"] if weather else "normal"
-        if arrival is not None and weather_available:
-            if arrival >= 900:
-                arrival_state = "critical"
-            elif arrival >= 720 and arrival_state == "normal":
-                arrival_state = "change"
         pending_note = "زمان‌بندی مسیر هنوز نهایی نشده"
         if point_timing_pending:
             condition = "زمان‌بندی در دسترس نیست"
@@ -805,11 +862,15 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             {
                 **serialize_point(point),
                 "arrival_minutes": arrival,
+                "arrival_at": arrival_at.isoformat() if arrival_at is not None else None,
                 "time": format_hhmm(arrival) if arrival is not None else "—",
-                "timing_estimated": route.timing_status == Route.TimingStatus.ESTIMATED,
+                "timing_estimated": route.timing_status == Route.TimingStatus.ESTIMATED and not timing_pending,
                 "timing_pending": point_timing_pending,
+                "timing_confidence": route.timing_confidence or "",
+                "timing_uncertainty_minutes": route.timing_uncertainty_minutes,
                 "weather": weather,
                 "weather_available": weather_available,
+                "forecast_at": weather.get("forecast_at") if weather else None,
                 "temp": weather["temperature_c"] if weather else None,
                 "wind": weather["wind_speed_kmh"] if weather else None,
                 "icon": weather["icon"] if weather else "—",
@@ -820,13 +881,8 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         )
 
     dest_point = destination_weather_point(route.destination)
-    dest_records = _records_for_day(dest_point, selected_date) if dest_point else []
+    # Destination hourly strip is independent of route-point severity; never rewrite it from ETA.
     hourly = _hourly_for_period(dest_point, selected_date, period, now=local) if dest_point else []
-    if not timing_pending and any(item["state"] == "critical" for item in planned):
-        for payload in hourly:
-            if payload["hour"] >= 8:
-                payload["state"] = "critical"
-                payload["severity"] = "critical"
 
     finish = planned[-1] if planned else None
     critical_point = next((item for item in planned if item["state"] == "critical"), finish)
@@ -839,7 +895,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         time_label = point.get("time")
         if not time_label or time_label == "—":
             return None
-        return f"حوالی {time_label}"
+        return f"حدود {time_label}"
 
     if summary_state == "critical" and critical_point:
         time_phrase = _point_time_phrase(critical_point)
@@ -869,6 +925,10 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     recommendations = []
     if timing_pending:
         recommendations.append("زمان‌بندی دقیق مسیر هنوز نهایی نشده؛ زمان رسیدن و مسافت تجمعی فعلاً در دسترس نیست.")
+    elif route.timing_status == Route.TimingStatus.ESTIMATED:
+        recommendations.append(
+            "زمان‌ها تخمینی‌اند (بدون استراحت طولانی) و بسته به آمادگی، زمین و شرایط هوا تغییر می‌کنند."
+        )
     if summary_state == "critical":
         recommendations.append("اگر رعدوبرق، باد شدید یا دید محدود فعال است، صعود را ادامه نده و زودتر برگرد.")
     if critical_point and (critical_point.get("wind") or 0) >= 25:
@@ -885,8 +945,8 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         duration_label = "نامشخص"
         arrival_label = "—"
     else:
-        duration = round((route.round_trip_minutes or 0) * multiplier) if route.round_trip_minutes else None
-        duration_label = format_duration(duration) if duration else "—"
+        duration = paced_duration_minutes(route.one_way_minutes, speed) if route.one_way_minutes else None
+        duration_label = format_duration(duration) if duration is not None else "—"
         arrival_label = finish_label
         decision_title = f"با حرکت ساعت {start_label}، حدود {finish_label} به مقصد می‌رسی."
 
@@ -900,7 +960,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             "label": "صعود",
             "value": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "نامشخص",
         },
-        {"label": "زمان رفت‌وبرگشت", "value": duration_label},
+        {"label": "زمان تخمینی مسیر", "value": duration_label},
         {"label": "رسیدن به مقصد", "value": arrival_label},
     ]
     return {
@@ -910,9 +970,12 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         "start_minutes": start_minutes,
         "start_time": start_label,
         "speed": speed,
-        "speed_options": list(SPEED_MULTIPLIERS.keys()),
+        "speed_options": list(SPEED_TIME_FACTORS.keys()),
         "timing_pending": timing_pending,
         "timing_status": route.timing_status,
+        "timing_confidence": route.timing_confidence or "",
+        "timing_uncertainty_minutes": route.timing_uncertainty_minutes,
+        "timing_version": route.timing_version or "",
         "points": planned,
         "hourly": hourly,
         "hero": {"status": hero_status},
@@ -942,6 +1005,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 "selected_speed": speed,
                 "timing_pending": timing_pending,
                 "timing_status": route.timing_status,
+                "timing_version": route.timing_version or "",
             },
         ),
     }
@@ -972,12 +1036,15 @@ def get_destination(slug: str) -> Destination:
 
 def get_route_point(route_slug: str, point_slug: str) -> RoutePoint:
     try:
-        return RoutePoint.objects.select_related("route", "route__destination", "weather_point").get(
+        point = RoutePoint.objects.select_related("route", "route__destination", "weather_point").get(
             route__slug=route_slug,
             slug=point_slug,
+            route__is_active=True,
+            route__destination__is_active=True,
         )
     except RoutePoint.DoesNotExist as exc:
         raise NotFound({"detail": "نقطهٔ مسیر پیدا نشد."}) from exc
+    return point
 
 
 def get_weather_point(slug: str) -> WeatherPoint:
@@ -988,7 +1055,7 @@ def get_weather_point(slug: str) -> WeatherPoint:
     if slug.startswith("dest:"):
         raise NotFound({"detail": "برای این مقصد از صفحهٔ مقصد استفاده کن."}) from None
     if not weather_point_is_active(point):
-        raise NotFound({"detail": "نقطهٔ هواشناسی فعال نیست."}) from None
+        raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from None
     return point
 
 
@@ -1013,7 +1080,11 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
 
 def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
     routes = (
-        Route.objects.filter(points__weather_point=point, destination__is_active=True)
+        Route.objects.filter(
+            points__weather_point=point,
+            is_active=True,
+            destination__is_active=True,
+        )
         .distinct()
         .order_by("sort_order", "slug")
     )
@@ -1112,6 +1183,11 @@ def route_point_forecast(
 
 def get_route(slug: str) -> Route:
     try:
-        return Route.objects.select_related("destination").get(slug=slug)
+        route = Route.objects.select_related("destination").get(
+            slug=slug,
+            is_active=True,
+            destination__is_active=True,
+        )
     except Route.DoesNotExist as exc:
         raise NotFound({"detail": "مسیر پیدا نشد."}) from exc
+    return route

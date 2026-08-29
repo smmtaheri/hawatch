@@ -131,7 +131,9 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     expected_points = set(catalog["weather_points"])
     assert WeatherPoint.objects.filter(slug__in=expected_points).count() == len(expected_points)
     assert not WeatherPoint.objects.filter(slug="dopestan").exists()
-    assert not WeatherPoint.objects.filter(name__icontains="جمشیدیه").exists()
+    jamshidieh = WeatherPoint.objects.get(slug="jamshidieh_park")
+    assert jamshidieh.status == WeatherPoint.Status.PROVISIONAL
+    assert jamshidieh.name == "پارک جمشیدیه"
 
     for slug in SHARED_SLUGS:
         assert WeatherPoint.objects.filter(slug=slug).count() == 1
@@ -139,14 +141,44 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     assert RoutePoint.objects.filter(weather_point__slug="tochal_summit").count() == 5
     assert RoutePoint.objects.filter(weather_point__slug="goleband").count() == 2
     assert RoutePoint.objects.filter(weather_point__slug="station_7").count() == 2
-    assert RoutePoint.objects.filter(weather_point__slug="tochal_hotel").count() == 2
+    # Hotel remains a WeatherPoint/POI but is not on the mandatory Velenjak chain.
+    assert RoutePoint.objects.filter(weather_point__slug="tochal_hotel").count() == 1
+    assert "tochal_hotel" not in list(
+        Route.objects.get(slug="touchal-welanjak").points.values_list("slug", flat=True)
+    )
 
     for key, row in catalog["routes"].items():
         route = Route.objects.get(slug=row["slug"], catalog_key=key)
         assert list(route.points.order_by("sort_order").values_list("slug", flat=True)) == row["points"]
-        assert route.timing_status == Route.TimingStatus.PENDING
-        assert route.distance_km is None
-        assert route.ascent_m is None
+        assert route.timing_status == row.get("timing_status", "pending")
+        assert route.distance_km is not None
+        assert route.ascent_m is not None
+        assert route.round_trip_minutes is None
+        if row.get("timing_status") == "estimated":
+            assert route.one_way_minutes is not None
+            assert route.timing_version == "tochal-timing-v3"
+        else:
+            assert route.one_way_minutes is None
+
+    parking = WeatherPoint.objects.get(slug="velenjak_parking")
+    assert parking.status == WeatherPoint.Status.PROVISIONAL
+    assert parking.elevation_m is None
+    assert WeatherPoint.objects.filter(slug="velenjak").exists()
+    assert list(Route.objects.get(slug="touchal-welanjak").points.order_by("sort_order").values_list("slug", flat=True))[0] == (
+        "velenjak_parking"
+    )
+
+    jamshidieh = WeatherPoint.objects.get(slug="jamshidieh_park")
+    assert jamshidieh.elevation_m == 1826
+    assert jamshidieh.location.y == pytest.approx(35.824629)
+    assert jamshidieh.location.x == pytest.approx(51.465985)
+
+    shah = Route.objects.get(slug="touchal-shahrestanak")
+    assert shah.timing_status == "estimated"
+    assert shah.one_way_minutes == 370
+    assert "naseri_junction" not in list(shah.points.values_list("slug", flat=True))
+    assert WeatherPoint.objects.filter(slug="shahrestanak_pass").exists()
+    assert WeatherPoint.objects.filter(slug="bazarek_pass").exists()
 
     # No obsolete demo Tochal route points from old fixtures.
     obsolete = {"darband", "amiri-shelter", "loop-pass", "welenjak", "station-7-5", "kolakchal", "dehbahar"}
@@ -373,7 +405,7 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     summit = WeatherPoint.objects.get(slug="tochal_summit")
     persist_ingest(
         weather_points=[summit],
-        batch_results=[_batch(["tochal_summit"], hours=48)],
+        batch_results=[_batch(["tochal_summit"], hours=120)],
     )
 
     def boom(*_args, **_kwargs):
@@ -392,10 +424,18 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     assert "cloud_cover_pct" in body["hourly"][0]["fields_unavailable"]
 
     route = api_client.get("/api/v1/routes/touchal-darband/forecast/").json()
-    assert route["timing_pending"] is True
-    assert route["points"][0]["arrival_minutes"] is None
-    assert route["points"][0]["time"] == "—"
+    assert route["timing_pending"] is False
+    assert route["timing_status"] == "estimated"
+    assert route["points"][0]["arrival_minutes"] is not None
+    assert route["points"][0]["time"] != "—"
+    assert "timing pending" not in str(route).lower()
 
+    shah = api_client.get("/api/v1/routes/touchal-shahrestanak/forecast/").json()
+    assert shah["timing_pending"] is False
+    assert shah["timing_status"] == "estimated"
+    assert shah["points"][0]["arrival_minutes"] is not None
+    assert shah["points"][0]["time"] != "—"
+    assert shah["points"][-1]["arrival_minutes"] is not None
 
 @pytest.mark.django_db
 def test_api_reads_do_not_write_catalog(api_client):

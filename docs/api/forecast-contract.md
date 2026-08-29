@@ -112,6 +112,25 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 - وقتی timing در دسترس نیست، خلاصهٔ آب‌وهوای نقطه به‌عنوان پیش‌بینی رسیدن ارائه نمی‌شود؛ حالت فشردهٔ فارسی «زمان‌بندی در دسترس نیست» نشان داده می‌شود (`weather_available=false`).
 - `timing_pending` یک flag قراردادی برای client است و نباید عیناً در متن کاربر نمایش داده شود؛ UI باید پیام فارسی قابل فهم ارائه کند.
 
+### زمان‌بندی تخمینی مسیر (Tochal v3)
+
+Catalog `hawatch-tochal-catalog-v4` / `tochal-timing-v3`. هر پنج مسیر توچال estimated:
+
+- Darband / Velenjak / Ahar: method `web-naismith-total+gpx-profile-v2` — totals از web/Naismith، پروفایل cumulative از GPX moving proportions (نه موتور per-segment).
+- Kalkchal: `gpx-geometry+web-naismith-v3` — هندسه کامل GPX؛ timestampهای مصنوعی (فاصلهٔ دقیق ۴۰ ثانیه) برای moving-time قابل استفاده نیستند؛ medium 390 دقیقه / uncertainty ≥45.
+- Shahrestanak: `composite-gpx+dem+web-reports-v1` — برآورد ترکیبی روستا→ناصری + ناصری→قله؛ medium 370 / uncertainty ≥50؛ estimated نه curated. زنجیرهٔ اجباری از گردنهٔ شهرستانک (`shahrestanak_pass`) می‌گذرد، نه بازارک.
+
+- `slow`/`medium`/`fast` ضریب زمان نسبی‌اند نه km/h: آرام `1.25`، متوسط `1.00`، سریع `0.80` (`SPEED_TIME_FACTORS`).
+- `paced_minutes = round_to_nearest_5(cumulative_medium_minutes * speed_time_factor)`.
+- `arrival_at` از `start_minutes` تهران + paced duration ساخته می‌شود و می‌تواند از مرز period و نیمه‌شب عبور کند.
+- برای هر RoutePoint فقط forecast همان `WeatherPoint` انتخاب می‌شود (نزدیک‌ترین ساعتی در ±۹۰ دقیقه به `arrival_at`). در تساوی فاصله، `forecast_at` زودتر و سپس primary key پایین‌تر برنده است؛ fallback به قله/مقصد ممنوع است؛ خارج از tolerance → `weather_available=false`.
+- `state` کارت نقطه فقط از `severity` همان forecast انتخاب‌شده می‌آید؛ آستانهٔ زمان سپری‌شده یا بازنویسی hourly مقصد از روی critical نقطه ممنوع است.
+- period انتخاب‌شده فقط پنجرهٔ مجاز حرکت را محدود می‌کند؛ بعد از محاسبهٔ رسیدن، خلاصهٔ period مبدأ به همهٔ نقاط تحمیل نمی‌شود.
+- فیلد `one_way_minutes` مدت صعود یک‌طرفهٔ متوسط است؛ نباید در `round_trip_minutes` ذخیره شود.
+- مسیر فقط وقتی usable است که status برابر `estimated`/`curated` باشد، `one_way_minutes` مثبت باشد، حداقل دو نقطه داشته باشد، همهٔ نقاط estimated/curated با cumulative کامل، cumulative اول صفر، strictly increasing، و cumulative نهایی برابر `one_way_minutes` باشد؛ در غیر این صورت `timing_pending=true`. `base_minutes` legacy برای arrival کافی نیست.
+- GPX فقط evidence داخلی است (`tracks/`، analyzer آفلاین)؛ در API/seed/ingest parse نمی‌شود و از Docker imageهای production حذف می‌شود.
+- پاسخ نقطه شامل `arrival_at`، `arrival_minutes`، برچسب تقریبی زمان (`حدود HH:MM` در UI)، `timing_status`/`confidence`/`uncertainty`، `forecast_at` و شرط/دما/باد/severity همان نقطه است.
+
 ## نقطهٔ canonical (Forecast Place — نقش point)
 
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`

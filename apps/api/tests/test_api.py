@@ -144,11 +144,13 @@ def test_route_forecast_start_and_speed(api_client, seeded):
         "/api/v1/routes/touchal-darband/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
     ).json()
-    assert medium["timing_pending"] is True
-    assert medium["points"][0]["arrival_minutes"] is None
-    assert medium["points"][0]["time"] == "—"
-    assert fast["points"][0]["arrival_minutes"] is None
-    assert fast["points"][0]["time"] == "—"
+    assert medium["timing_pending"] is False
+    assert medium["timing_status"] == "estimated"
+    assert medium["points"][0]["arrival_minutes"] == medium["start_minutes"]
+    assert medium["points"][0]["time"] == medium["start_time"]
+    assert "حدود" in medium["decision"]["title"]
+    assert "timing pending" not in str(medium).lower()
+    assert fast["points"][-1]["arrival_minutes"] < medium["points"][-1]["arrival_minutes"]
     assert len(medium["points"]) == 6
     assert [item["slug"] for item in medium["points"]] == [
         "sarband",

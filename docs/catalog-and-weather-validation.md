@@ -8,6 +8,82 @@
 - `destination` با فیلدهای متادیتای مقصد و `latitude`/`longitude` ده‌دهی WGS84
 - `weather_points` با `name`، مختصات و `elevation_m`؛ مقدار `null` یعنی ارتفاع هنوز منبع معتبر ندارد
 - `routes` با مشخصات نمایش و آرایهٔ مرتب `points` که فقط به slugهای همین فایل اشاره می‌کند
+- اختیاری: بلوک `timing` برای مسیرهای دارای زمان‌بندی تخمینی/curated
+
+## زمان‌بندی مسیر (catalog-driven)
+
+برای افزودن مقصد بعدی، timing باید از دادهٔ catalog بیاید نه کد اختصاصی:
+
+- `timing_status`: `pending` | `estimated` | `curated`
+- `one_way_minutes`: مدت صعود یک‌طرفه در pace متوسط؛ **هرگز** در `round_trip_minutes` ذخیره نشود
+- `timing.method` / `timing.version` / `timing.confidence` / `timing.uncertainty_minutes` / `timing.source_urls`
+- `timing.cumulative_minutes`: دیکشنری slug نقطه → دقیقه تجمعی متوسط از مبدأ (مبدأ = ۰)
+
+اعتبارسنجی seed:
+
+- همهٔ نقاط timed روی route وجود دارند و duplicate نیستند
+- اولین cumulative صفر است و بعد از مبدأ strictly monotonic است
+- `one_way_minutes` با cumulative نهایی برابر است
+- `segment_minutes` (در صورت ذکر) با اختلاف cumulativeها یکی است
+- اگر timing مبهم/ناقص است باید `pending` بماند؛ seed مقادیر را invent نمی‌کند
+- seed idempotent است
+
+### Tochal timing v3
+
+Catalog version `hawatch-tochal-catalog-v4` / timing version `tochal-timing-v3`:
+
+| route | status | method | notes |
+| --- | --- | --- | --- |
+| touchal-darband | estimated | `web-naismith-total+gpx-profile-v2` | GPX-profiled cumulatives; medium total 315 |
+| touchal-welanjak | estimated | `web-naismith-total+gpx-profile-v2` | origin `velenjak_parking`; medium total 360 |
+| touchal-ahar | estimated | `web-naismith-total+gpx-profile-v2` | medium total 380; qezqunchal ~212 m off-track |
+| touchal-kalkchal | estimated | `gpx-geometry+web-naismith-v3` | full geometry GPX; synthetic 40s timestamps unusable for moving time; medium 390 / ± 45 |
+| touchal-shahrestanak | estimated | `composite-gpx+dem+web-reports-v1` | composite village→Naseri + Naseri→summit; medium 370 / ± 50; not curated |
+
+GPX under `tracks/tochal/` is internal evidence (`license_status: unverified`) and is **gitignored** (`/tracks/`). Do not parse at API/seed/ingest runtime and do not redistribute until licensing is confirmed. Offline review (local only): `python3 scripts/analyze_route_tracks.py`. Manifest `timestamp_quality` must be respected: when not `recorded`, analyzer nulls elapsed/moving time.
+
+Device GPX `<ele>` is reference-only; PBF/DEM remain elevation truth. Route-level `distance_km`/`ascent_m` may be GPX-informed; verified per-segment distance/ascent/terrain remains a future curated upgrade.
+
+## Database-first catalog (runtime)
+
+The database is the runtime source of truth. JSON fixtures are bootstrap/import artifacts only.
+
+- Normal import (`seed_catalog` / `seed_tochal_catalog`) is **non-destructive**. Operator-managed rows (`fixture_managed=false`) survive and are never silently overwritten on slug collision (skip + conflict report; optional `--force-adopt`).
+- Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
+- Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
+- Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): seeds only if no live WeatherPoints exist.
+- Scheduled ingest selects points that are `is_active` + `ingest_enabled` and exposed by an active Destination **profile** or an active Route whose Destination is active. Legacy `WeatherPoint.destination` ownership alone is insufficient. Snapshot revision is `dbrev-…`.
+- Inactive Destination / Route / WeatherPoint rows are omitted from public APIs, siblings, related routes, search, and health catalog counts.
+- Admin and catalog import share `normalize_and_publish_route` for ordering, denormalized fields, origin/target, segments, axis, timing demotion, and search rebuild.
+- `tracks/` is local-only research evidence (gitignored); never commit GPX/manifest.
+
+### افزودن WeatherPoint و Route بدون deploy
+
+1. Django admin → WeatherPoint: مختصات، DEM elevation، `is_active`/`ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
+2. اختیاری: Destination profile روی همان نقطه.
+3. Route + مرتب‌سازی RoutePointها با cumulative کامل؛ سرویس publish نرمال‌سازی می‌کند؛ timing ناقص → `pending`.
+4. پس از commit، search index خودکار rebuild می‌شود (بدون restart).
+5. ingest بعدی همهٔ نقاط فعال واجد شرایط را می‌گیرد؛ برای فوری: `ingest_open_meteo --slugs your_slug`.
+
+ضریب زمان نسبی (نه km/h): آرام `1.25`، متوسط `1.00`، سریع `0.80`؛ مدت‌ها به نزدیک‌ترین ۵ دقیقه گرد می‌شوند.
+
+نکات ساختاری:
+
+- مبدأ کلکچال/پیازچال: `jamshidieh_park` در پارکینگ شرقی GPX (`35.824629`, `51.465985`، DEM `1826` m، provisional). `piyazchal_pass` ≈135 m و `lezoon_east` ≈217 m از track؛ مختصاتشان auto-update نشده‌اند.
+- مبدأ ولنجک: `velenjak_parking` (provisional؛ ارتفاع null تا DEM)؛ `velenjak` عمومی حذف نمی‌شود
+- `tochal_hotel` روی زنجیرهٔ اجباری ولنجک نیست؛ روی شهرستانک هست
+- گردنهٔ شهرستانک (`shahrestanak_pass`) از بازارک (`bazarek_pass`) متمایز است؛ `naseri_junction` / `bazarek_pass` / `shahneshin_pass` فقط برای variantهای آینده در catalog می‌مانند
+
+منبع‌های ثبت‌شده در catalog/Wikiloc evidence:
+
+- https://mojekooh.com/قله-توچال/
+- https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184
+- https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165
+- https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439
+- https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660
+- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848
+
+در catalog توچال، ارتفاع‌های دارای `ele` در PBF منبع اصلی هستند. ارتفاع‌های هشت point قبلیِ بدون `ele` اکنون با `status: provisional` و منبع مقایسه‌ای ثبت شده‌اند: ولنجک ۱۷۵۵، هتل توچال ۳۵۴۵، کمپ کلکچال ۲۶۰۰، آهار ۲۱۴۰، شکرآب ۲۴۰۰، شهرستانک ۲۲۰۰، کاخ ناصری ۲۳۱۶ و سه‌راه ناصری ۳۴۵۷ متر. مقدار کاخ ناصری و سه‌راه ناصری بر اساس DEM مختصات فیزیکی PBF است و برای elevation survey-grade ادعا نمی‌شود. `jamshidieh_park` نیز provisional است (دسترسی بالای مسیر؛ چند ورودی).
 
 ## ترتیب بررسی یک مقصد جدید
 
@@ -19,8 +95,6 @@ python3 scripts/validate_open_meteo_catalog.py \
 ```
 
 validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
-
-در catalog توچال، ارتفاع‌های دارای `ele` در PBF منبع اصلی هستند. ارتفاع‌های هشت point قبلیِ بدون `ele` اکنون با `status: provisional` و منبع مقایسه‌ای ثبت شده‌اند: ولنجک ۱۷۵۵، هتل توچال ۳۵۴۵، کمپ کلکچال ۲۶۰۰، آهار ۲۱۴۰، شکرآب ۲۴۰۰، شهرستانک ۲۲۰۰، کاخ ناصری ۲۳۱۶ و سه‌راه ناصری ۳۴۵۷ متر. مقدار کاخ ناصری و سه‌راه ناصری بر اساس DEM مختصات فیزیکی PBF است و برای elevation survey-grade ادعا نمی‌شود.
 
 برای smoke test مختصات وقتی بعضی pointها هنوز elevation معتبر ندارند:
 
@@ -39,11 +113,10 @@ docker compose -f infra/compose/compose.yaml exec api \
   python manage.py seed_catalog --file catalog/my_destination_v1.json
 
 docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py ingest_open_meteo \
-  --catalog catalog/my_destination_v1.json --seed-catalog
+  python manage.py ingest_open_meteo
 ```
 
-هر دو عملیات idempotent هستند. ingestion فقط pointهای همان `catalog_version` را می‌گیرد و از API handlerها جداست؛ frontend نیز مستقیماً به Open-Meteo وصل نمی‌شود.
+Import پیش‌فرض غیرتخریبی است (`--prune` فقط صریح). Ingest از WeatherPointهای فعال DB انتخاب می‌کند (نه filename JSON)؛ revision اسنپ‌شات `dbrev-…` است. برای ingest فوری چند slug: `--slugs a,b`. از API handlerها جداست؛ frontend نیز مستقیماً به Open-Meteo وصل نمی‌شود.
 
 ## ارتفاع در درخواست weather
 

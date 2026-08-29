@@ -20,7 +20,7 @@ API هنگام start:
 1. منتظر health PostgreSQL می‌ماند
 2. migration اجرا می‌کند
 3. اگر `DEMO_DATA_ENABLED=true` باشد، `seed_demo_data` را idempotent اجرا می‌کند
-4. اگر `DEMO_DATA_ENABLED=false` باشد، فقط `seed_tochal_catalog` را اجرا می‌کند (بدون فراخوانی Open-Meteo)
+4. اگر `DEMO_DATA_ENABLED=false` باشد و `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (پیش‌فرض)، فقط وقتی catalog زنده خالی است `bootstrap_live_catalog_if_empty` را اجرا می‌کند — بدون sync/prune در هر restart و بدون فراخوانی Open-Meteo
 5. یک worker gunicorn را روی `:8000` بالا می‌آورد
 6. web به‌صورت static production با Nginx روی `:5173` سرو می‌شود
 
@@ -63,7 +63,8 @@ Bootstrap کاتالوگ توچال بدون ingestion:
 
 ```bash
 cd apps/api
-uv run python manage.py seed_tochal_catalog
+uv run python manage.py bootstrap_live_catalog_if_empty
+# یا import صریح (غیرتخریبی): uv run python manage.py seed_tochal_catalog
 ```
 
 Ingestion جدا و one-shot است؛ فقط از طریق management command اجرا می‌شود و هرگز از handlerهای API صدا زده نمی‌شود. برای pilot آن را هر ۶ ساعت با cron/systemd timer اجرا کن:

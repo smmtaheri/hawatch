@@ -110,16 +110,53 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_destination_v1.json
 ```
 
-سپس فقط همان فایل را seed و ingest کنید:
+سپس همان فایل را import کنید (غیرتخریبی؛ prune فقط با `--prune`):
 
 ```bash
 docker compose -f infra/compose/compose.yaml exec api \
   python manage.py seed_catalog --file catalog/my_destination_v1.json
 docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py ingest_open_meteo --catalog catalog/my_destination_v1.json --seed-catalog
+  python manage.py ingest_open_meteo
 ```
 
 جزئیات قرارداد، تفاوت elevation catalog و DEM، و smoke test در `docs/catalog-and-weather-validation.md` است.
+
+## افزودن نقطه/مسیر بدون deploy
+
+Database منبع حقیقت runtime است؛ JSON فقط bootstrap/import است. `tracks/` فقط evidence محلی است و در Git ignore می‌شود.
+
+### Draft در برابر Active
+
+- `is_active=false` روی Destination / Route / WeatherPoint یعنی پیش‌نویس یا غیرفعال: از API عمومی، siblingها، related routes، search و شمارش health حذف می‌شود.
+- `ingest_enabled=false` نقطه را از ingest کنار می‌گذارد حتی اگر active باشد.
+- مالکیت سازمانی `WeatherPoint.destination` به‌تنهایی نقطه را public یا ingestible نمی‌کند؛ باید Destination profile فعال یا Route فعال روی Destination فعال داشته باشد.
+
+### افزودن WeatherPoint
+
+1. Django admin → WeatherPoint (`is_active`، `ingest_enabled=true`؛ elevation از DEM نه GPX `<ele>`؛ `fixture_managed` را دستی true نکنید).
+2. اختیاری: Destination profile (`Destination.weather_point`) برای صفحهٔ مقصد.
+3. برای نمایش عمومی یا ingest، نقطه را روی یک Route فعال لینک کنید یا Destination profile فعال بسازید.
+
+### افزودن و publish مسیر
+
+1. Route را با Destination فعال بسازید (`is_active=true`).
+2. RoutePointهای مرتب با WeatherPoint و `cumulative_minutes` کامل وارد کنید.
+3. پس از ذخیره، سرویس مشترک `normalize_and_publish_route` ترتیب، origin/target، segment، axis، progress را همگام می‌کند؛ timing ناقص → `pending`.
+4. Search بعد از commit بدون restart به‌روز می‌شود.
+5. Ingest بعدی نقاط فعال واجد شرایط را می‌گیرد؛ فوری بدون restart:
+
+```bash
+docker compose -f infra/compose/compose.yaml exec api \
+  python manage.py ingest_open_meteo --slugs your_point_slug
+```
+
+### Import غیرتخریبی و prune
+
+- `seed_catalog` / `seed_tochal_catalog` بدون `--prune` هیچ ردیف operator-managed را حذف یا overwrite نمی‌کند.
+- برخورد slug با ردیف `fixture_managed=false` گزارش می‌شود و skip می‌شود مگر `--force-adopt`.
+- `--prune` فقط ردیف‌های `fixture_managed` غایب از JSON را حذف می‌کند؛ اگر هنوز به ردیف دستی ارجاع داشته باشند، skip + گزارش می‌شوند.
+
+Startup زنده catalog را در هر restart بازنویسی نمی‌کند؛ فقط اگر catalog زنده خالی باشد و `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` باشد bootstrap می‌کند.
 
 ## stack
 

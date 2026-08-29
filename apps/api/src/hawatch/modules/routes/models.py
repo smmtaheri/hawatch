@@ -23,14 +23,27 @@ class Route(models.Model):
     distance_km = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
     ascent_m = models.PositiveIntegerField(null=True, blank=True)
     round_trip_minutes = models.PositiveIntegerField(null=True, blank=True)
+    # One-way ascent duration at medium pace; do not store ascent time in round_trip_minutes.
+    one_way_minutes = models.PositiveIntegerField(null=True, blank=True)
     default_start_minutes = models.PositiveIntegerField(null=True, blank=True)
     timing_status = models.CharField(
         max_length=16,
         choices=TimingStatus.choices,
-        default=TimingStatus.ESTIMATED,
+        default=TimingStatus.PENDING,
     )
+    timing_method = models.CharField(max_length=64, blank=True, default="")
+    timing_version = models.CharField(max_length=64, blank=True, default="")
+    timing_confidence = models.CharField(max_length=16, blank=True, default="")
+    timing_uncertainty_minutes = models.PositiveIntegerField(null=True, blank=True)
+    timing_source_urls = models.JSONField(default=list, blank=True)
     featured = models.BooleanField(default=False)
     sort_order = models.PositiveSmallIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    fixture_managed = models.BooleanField(
+        default=False,
+        help_text="True when created/updated from a JSON catalog import; prune only removes fixture_managed rows.",
+    )
+    updated_at = models.DateTimeField(auto_now=True)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     origin_location = models.PointField(srid=4326, spatial_index=False)
     catalog_key = models.SlugField(max_length=80, blank=True, default="")
@@ -112,6 +125,10 @@ class RoutePoint(models.Model):
     axis_y = models.PositiveSmallIntegerField(default=50)
     data_mode = models.CharField(max_length=16, default="demo")
     seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
+    fixture_managed = models.BooleanField(
+        default=False,
+        help_text="True when created/updated from a JSON catalog import; prune only removes fixture_managed rows.",
+    )
 
     class Meta:
         constraints = [

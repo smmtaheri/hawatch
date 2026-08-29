@@ -55,15 +55,16 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۷. داده‌های موردنیاز
 
-- route: slug، origin، destination، distance، ascent، round-trip duration و نقاط مسیر.
-- هر point: مختصات، elevation، ترتیب، temperature، wind، condition، note و severity برای همان بازهٔ انتخاب‌شده. اگر timing آماده نیست، کارت نباید به‌عنوان وضعیت لحظهٔ رسیدن یا ETA تفسیر شود.
-- start time، speed profile و محاسبهٔ arrival time.
-- forecast point-level برای بازهٔ انتخابی؛ هر بازه چهار کارت دارد: صبح ۰۳، ۰۵، ۰۷، ۰۹؛ بعدازظهر ۱۱، ۱۳، ۱۵، ۱۷؛ شب ۱۹، ۲۱، ۲۳، ۰۱. forecast عمومی قله فقط در صفحهٔ مقصد مصرف شود.
-- decision summary، recommendations و share payload.
+- route: slug، origin، destination، distance، ascent، `one_way_minutes` (صعود یک‌طرفهٔ متوسط) و نقاط مسیر. `round_trip_minutes` برای زمان صعود یک‌طرفه استفاده نمی‌شود.
+- هر point: نام، ترتیب، زمان رسیدن تقریبی (`حدود …`)، آیکون/شرط/دما/باد/severity همان نقطه در نزدیک‌ترین ساعت به رسیدن (±۹۰ دقیقه)، و نشان `تخمینی · ±N دقیقه` وقتی timing estimated و uncertainty موجود است. عنوان period عمومی بالای هر نقطه نمایش داده نمی‌شود. severity کارت فقط از forecast همان نقطه می‌آید.
+- اگر timing pending/unusable است (از جمله estimated ناقص بدون cumulative کامل)، کارت نباید ETA یا weather ساختگی نشان دهد؛ متن فارسی «زمان‌بندی در دسترس نیست» کافی است و رشتهٔ خام `timing_pending` نمایش داده نمی‌شود.
+- start time، speed profile (ضریب زمان آرام/متوسط/سریع) و محاسبهٔ arrival.
+- forecast point-level برای زمان رسیدن محاسبه شده؛ period انتخابی فقط پنجرهٔ حرکت را محدود می‌کند.
+- decision summary، recommendations و share payload؛ برای timing estimated یادآوری شود که زمان‌ها بدون استراحت طولانی‌اند و قطعی نیستند. تخمین‌های فعلی catalog-level v1 هستند نه موتور per-segment کالیبره‌شده.
 
 ## ۸. API فعلی و مسیرهای توسعه
 
-- `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=` پاسخ فعلی route و forecast را می‌دهد.
+- `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=` پاسخ فعلی route و forecast را می‌دهد؛ برای Tochal v1 شامل `timing_status=estimated`، provenance/confidence/uncertainty و arrival-aware point weather است.
 - `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/` قرارداد legacy سازگار را نگه می‌دارد.
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=` صفحهٔ مستقل نقطه را تغذیه می‌کند.
 - endpointهای plan جدا و share server-side هنوز مسیر توسعه‌اند.
@@ -93,12 +94,13 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 ## ۱۲. معیار پذیرش
 
 - ترتیب ده‌گانهٔ Route در mobile و web رعایت شود.
-- تغییر start time یا speed زمان همهٔ نقاط و کارت تصمیم را هماهنگ به‌روزرسانی کند.
+- تغییر start time یا speed زمان همهٔ نقاط و کارت تصمیم را هماهنگ به‌روزرسانی کند و ممکن است forecast ساعتی متفاوتی برای هر نقطه انتخاب شود.
+- پنج مسیر توچال بعد از seed دیگر timing-pending نیستند و ETA تقریبی نشان می‌دهند (نه قطعی).
 - mobile یک کنترل مشترک period داشته باشد و جداکنندهٔ عمودی نداشته باشد.
 - نقاط مسیر و کارت خلاصهٔ weather همان نقاط روی یک محور معنایی بمانند.
 - دمای زیر markerهای محور حذف شده باشد.
 - عبارت «تغییرات شب · هر دو ساعت» از Route حذف شده باشد.
-- کارت‌های weather زیر محور برای هر RoutePoint ساخته شوند، نه forecast عمومی قله.
+- کارت‌های weather زیر محور برای هر RoutePoint ساخته شوند، نه forecast عمومی قله؛ بدون fallback قله برای نقطهٔ بدون داده.
 - در timing pending، fallback ثابت ظهر برای periodهای دیگر استفاده نشود.
 - قلهٔ توچال از Route به صفحهٔ canonical مقصد می‌رود.
 - gauge در ورود به Route زمان فعلی تهران را نشان می‌دهد و بخش گذشته dim است.
@@ -115,6 +117,6 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 ## ۱۴. موارد نامشخص و تصمیم‌های باز
 
 - مدل دقیق route geometry و اینکه axis جایگزین map است یا مکمل آن مشخص نشده است.
-- تابع زمان‌بندی بر اساس speed و elevation نیازمند تعریف domain است.
+- زمان‌بندی Tochal v3: Darband/Velenjak/Ahar با پروفایل GPX؛ کلکچال هندسهٔ کامل GPX با timestamp مصنوعی؛ شهرستانک برآورد ترکیبی estimated (نه curated). GPX فقط evidence داخلی است و در runtime parse نمی‌شود.
 - share link دائمی یا کوتاه‌عمر و حریم خصوصی برنامه باید تعیین شود.
 - threshold تصمیم برگشت و مسئولیت محتوای safety copy باید با مالک محصول نهایی شود.

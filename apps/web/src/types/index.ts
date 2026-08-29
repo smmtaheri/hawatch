@@ -192,8 +192,12 @@ export interface RoutePointView {
   state: Severity;
   note: string;
   arrival_minutes: number | null;
+  arrival_at?: string | null;
+  forecast_at?: string | null;
   timing_pending?: boolean;
   timing_estimated?: boolean;
+  timing_confidence?: string;
+  timing_uncertainty_minutes?: number | null;
   weather_available?: boolean;
   latitude?: number | null;
   longitude?: number | null;
@@ -288,6 +292,9 @@ export interface RouteForecast {
   stats: { label: string; value: string }[];
   timing_pending?: boolean;
   timing_status?: "curated" | "estimated" | "pending" | string;
+  timing_confidence?: string;
+  timing_uncertainty_minutes?: number | null;
+  timing_version?: string;
   decision: {
     chip: string;
     title: string;

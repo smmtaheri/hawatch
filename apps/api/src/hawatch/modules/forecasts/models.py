@@ -43,12 +43,21 @@ class WeatherPoint(models.Model):
     catalog_version = models.CharField(max_length=64, blank=True, default="")
     data_mode = models.CharField(max_length=16, default="demo")
     seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
+    # Runtime lifecycle — database is source of truth; JSON fixtures only bootstrap/import.
+    is_active = models.BooleanField(default=True)
+    ingest_enabled = models.BooleanField(default=True)
+    fixture_managed = models.BooleanField(
+        default=False,
+        help_text="True when created/updated from a JSON catalog import; prune only removes fixture_managed rows.",
+    )
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         indexes = [
             models.Index(fields=["kind", "destination"], name="weatherpoint_kind_dest_idx"),
             models.Index(fields=["slug"], name="weatherpoint_slug_idx"),
             models.Index(fields=["catalog_version"], name="weatherpoint_catalog_ver_idx"),
+            models.Index(fields=["is_active", "ingest_enabled"], name="weatherpoint_ingest_idx"),
             GistIndex(fields=["location"], name="weatherpoint_location_gist"),
         ]
 

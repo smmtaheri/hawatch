@@ -32,7 +32,10 @@ AFTERNOON_HOURS = (11, 13, 15, 17)
 NIGHT_HOURS = (19, 21, 23, 1)
 ALL_HOURS = MORNING_HOURS + AFTERNOON_HOURS + NIGHT_HOURS
 
-SPEED_MULTIPLIERS = {"آرام": 1.2, "متوسط": 1.0, "سریع": 0.82}
+# Relative pace time factors (not literal km/h). Larger ⇒ more minutes on trail.
+SPEED_TIME_FACTORS = {"آرام": 1.25, "متوسط": 1.00, "سریع": 0.80}
+# Back-compat alias used by older call sites / docs during transition.
+SPEED_MULTIPLIERS = SPEED_TIME_FACTORS
 SPEED_ALIASES = {
     "slow": "آرام",
     "medium": "متوسط",
@@ -41,6 +44,8 @@ SPEED_ALIASES = {
     "متوسط": "متوسط",
     "سریع": "سریع",
 }
+ARRIVAL_FORECAST_TOLERANCE_MINUTES = 90
+
 
 PERIOD_IDS = ("morning", "afternoon", "night")
 
@@ -416,3 +421,14 @@ def arrival_forecast_at(selected_date: date, arrival_minutes: int) -> datetime:
     clock_minutes = arrival_minutes % 1440
     hour, minute = divmod(clock_minutes, 60)
     return localize_dt(selected_date + timedelta(days=day_offset), hour, minute)
+
+
+def round_to_nearest_5(minutes: float | int) -> int:
+    """Round a duration to the nearest 5 minutes (product display/ETA granularity)."""
+    return int(round(float(minutes) / 5.0) * 5)
+
+
+def paced_duration_minutes(medium_minutes: int, speed_label: str) -> int:
+    """Apply relative pace time factor then round to nearest 5 minutes."""
+    factor = SPEED_TIME_FACTORS[speed_label]
+    return round_to_nearest_5(medium_minutes * factor)

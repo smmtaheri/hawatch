@@ -49,10 +49,22 @@ function isPlannerOnlyChange(previous: RouteRequestInputs, next: RouteRequestInp
   );
 }
 
+function formatFaDigits(value: number | string) {
+  return String(value).replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
+}
+
 function pointWeatherLabel(point: RoutePointView, timingPending: boolean) {
   if (timingPending || point.timing_pending) return "زمان‌بندی در دسترس نیست";
-  if (point.time && point.time !== "—") return `حوالی ${point.time}`;
+  if (point.time && point.time !== "—") return `حدود ${point.time}`;
   return "پیش‌بینی رسیدن";
+}
+
+function timingEstimateBadgeLabel(point: RoutePointView) {
+  const uncertainty = point.timing_uncertainty_minutes;
+  if (uncertainty != null && uncertainty >= 0) {
+    return `تخمینی · ±${formatFaDigits(uncertainty)} دقیقه`;
+  }
+  return "تخمینی";
 }
 
 export function RoutePage() {
@@ -322,9 +334,15 @@ export function RoutePage() {
                     pointHref={(point) => pointLink(point)}
                   />
                   <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
+                    {!timingPending ? (
+                      <p className="route-timing-estimate-note">
+                        زمان رسیدن تخمینی است (بدون استراحت طولانی) و بسته به آمادگی، زمین و شرایط هوا تغییر می‌کند.
+                      </p>
+                    ) : null}
                     <div className="route-point-weather-grid">
                       {data.points.map((point) => {
-                        const unavailable = point.weather_available === false || point.timing_pending;
+                        const weatherMissing = point.weather_available === false;
+                        const unavailable = weatherMissing || point.timing_pending;
                         const label = pointWeatherLabel(point, timingPending);
                         return (
                           <RoutePointLink
@@ -336,12 +354,21 @@ export function RoutePage() {
                           >
                             <strong>{point.name}</strong>
                             <span className="route-point-weather-eta">{label}</span>
-                            <span className="route-point-weather-icon">{unavailable ? "—" : point.icon}</span>
+                            {point.timing_estimated && !timingPending ? (
+                              <span className="route-point-weather-badge">{timingEstimateBadgeLabel(point)}</span>
+                            ) : null}
+                            <span className="route-point-weather-icon">{weatherMissing || timingPending ? "—" : point.icon}</span>
                             <span className="route-point-weather-condition">
-                              {unavailable ? point.condition || "زمان‌بندی در دسترس نیست" : point.condition}
+                              {timingPending
+                                ? "زمان‌بندی در دسترس نیست"
+                                : weatherMissing
+                                  ? point.condition || "در دسترس نیست"
+                                  : point.condition}
                             </span>
                             <b>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</b>
-                            <small>{!unavailable && point.wind != null ? `باد ${point.wind}` : "باد —"}</small>
+                            <small>
+                              {!unavailable && point.wind != null ? `باد ${point.wind} km/h` : "باد —"}
+                            </small>
                             {!unavailable && point.state !== "normal" ? (
                               <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em>
                             ) : null}

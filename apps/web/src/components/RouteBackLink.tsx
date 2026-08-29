@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { routeBackTarget } from "../../lib/routeNavigation";
-import type { RouteFromState } from "../../types";
+import { routeBackTarget } from "../lib/routeNavigation";
+import type { RouteFromState } from "../types";
 
 /** Shared route-back CTA for Forecast Place (destination or point). */
 export function RouteBackLink({ fromRoute }: { fromRoute: RouteFromState }) {

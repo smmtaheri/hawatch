@@ -209,8 +209,9 @@ def collect_database_metrics() -> None:
         from django.db import connection
         from django.db.models import Count
 
+        from hawatch.modules.catalog.runtime import publicly_visible_weather_points
         from hawatch.modules.destinations.models import Destination
-        from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, WeatherPoint
+        from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot
         from hawatch.modules.routes.models import Route
 
         with connection.cursor() as cursor:
@@ -219,8 +220,11 @@ def collect_database_metrics() -> None:
         metrics.set("hawatch_database_up", 1)
         metrics.set("hawatch_health_status", 1, labels={"check": "ready"})
         metrics.set("hawatch_catalog_destinations", Destination.objects.filter(is_active=True).count())
-        metrics.set("hawatch_catalog_routes", Route.objects.filter(destination__is_active=True).count())
-        metrics.set("hawatch_catalog_weather_points", WeatherPoint.objects.filter(destination__is_active=True).count())
+        metrics.set(
+            "hawatch_catalog_routes",
+            Route.objects.filter(is_active=True, destination__is_active=True).count(),
+        )
+        metrics.set("hawatch_catalog_weather_points", publicly_visible_weather_points().count())
         grouped = ForecastRecord.objects.values("data_mode", "freshness").annotate(count=Count("id"))
         for item in grouped:
             metrics.set(

@@ -33,6 +33,7 @@ from hawatch.common.time import (
     resolve_planner_start_minutes,
 )
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
+from hawatch.modules.catalog.runtime import publicly_visible_weather_points
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
@@ -87,8 +88,8 @@ def health_status(request):
         live_records = ForecastRecord.objects.filter(data_mode="live", provider="open-meteo").count()
         catalog = {
             "destinations": Destination.objects.filter(is_active=True).count(),
-            "routes": Route.objects.filter(destination__is_active=True).count(),
-            "weather_points": WeatherPoint.objects.filter(destination__is_active=True).count(),
+            "routes": Route.objects.filter(is_active=True, destination__is_active=True).count(),
+            "weather_points": publicly_visible_weather_points().count(),
         }
         forecast = {
             "provider": "open-meteo",

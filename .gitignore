@@ -20,6 +20,9 @@ htmlcov/
 .coverage
 .test-logs/
 
+# Local route-track research evidence (never commit GPX/manifest)
+/tracks/
+
 # Local reference exports and temporary previews
 .tmp/
 tmp/

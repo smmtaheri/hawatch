@@ -1,0 +1,15 @@
+# API image build context is apps/api; keep an explicit exclude if context ever widens.
+.git
+.env
+.env.*
+**/tracks/
+../../tracks/
+.tmp/
+tmp/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyc
+.coverage
+htmlcov/

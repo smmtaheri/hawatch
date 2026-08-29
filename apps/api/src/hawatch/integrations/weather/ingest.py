@@ -467,15 +467,27 @@ def ingest_weather_points(
     return snapshot
 
 
-def ingest_tochal_catalog(*, provider: OpenMeteoProvider | None = None) -> ForecastSnapshot:
-    from hawatch.modules.catalog.catalog import load_catalog_file
+def ingest_active_catalog(
+    *,
+    provider: OpenMeteoProvider | None = None,
+    slugs: list[str] | None = None,
+) -> ForecastSnapshot:
+    """Ingest active DB WeatherPoints (database is runtime source of truth)."""
+    from hawatch.modules.catalog.runtime import compute_db_catalog_revision, ingestible_weather_points
 
-    catalog_version = load_catalog_file()["catalog_version"]
-    return ingest_catalog(catalog_version, provider=provider)
+    points = list(ingestible_weather_points(slugs=slugs))
+    if not points:
+        raise ValueError("No ingestible live WeatherPoints found in the database")
+    revision = compute_db_catalog_revision()
+    return ingest_weather_points(points, provider=provider, catalog_version=revision)
+
+
+def ingest_tochal_catalog(*, provider: OpenMeteoProvider | None = None) -> ForecastSnapshot:
+    return ingest_active_catalog(provider=provider)
 
 
 def ingest_catalog(catalog_version: str, *, provider: OpenMeteoProvider | None = None) -> ForecastSnapshot:
-    """Fetch the exact versioned catalog; never mix points from other destinations."""
+    """Legacy filter by fixture catalog_version string; prefer ingest_active_catalog."""
     points = list(
         WeatherPoint.objects.filter(catalog_version=catalog_version, data_mode="live")
         .exclude(slug__startswith="dest:")

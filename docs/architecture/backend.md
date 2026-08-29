@@ -11,14 +11,14 @@
 
 ## ماژول‌ها
 
-- `catalog`: بارگذاری fixture و seed دمو (بدون ساخت synthetic `dest:{slug}`)
+- `catalog`: بارگذاری fixture، bootstrap خالی، import غیرتخریبی با ownership/`fixture_managed`، و publish مشترک مسیر (DB منبع حقیقت runtime؛ بدون ساخت synthetic `dest:{slug}`)
 - `destinations`: مدل Destination به‌عنوان profile عمومی یک WeatherPoint (`weather_point` OneToOne)
-- `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`) و RoutePoint
+- `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`)
 - `forecasts`: WeatherPoint و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
 - `jobs`: management commandهای seed، ingest one-shot و retention
 
-Forecast Place برای destination و point از یک سرویس/serializer مشترک (`build_place_forecast`) ساخته می‌شود.
+Forecast Place برای destination و point از یک سرویس/serializer مشترک (`build_place_forecast`) ساخته می‌شود. Route forecast زمان رسیدن هر نقطه را از cumulative متوسط catalog × ضریب زمان pace می‌سازد و forecast همان WeatherPoint را نزدیک به `arrival_at` انتخاب می‌کند (بدون fallback قله؛ در تساوی فاصله، `forecast_at` زودتر). `state` نقطه فقط از severity همان forecast است. timing فقط با invariant کامل usable است (`routes.timing.route_timing_complete`). GPX فقط evidence آفلاین در `tracks/` است.
 
 ## تنظیمات
 

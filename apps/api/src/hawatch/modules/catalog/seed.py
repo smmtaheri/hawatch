@@ -245,6 +245,10 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
         if not ordered:
             continue
         updates = []
+        finish_minutes = ordered[-1].cumulative_minutes
+        if finish_minutes is not None and route.one_way_minutes != finish_minutes:
+            route.one_way_minutes = finish_minutes
+            updates.append("one_way_minutes")
         if route.origin_weather_point_id != ordered[0].weather_point_id:
             route.origin_weather_point = ordered[0].weather_point
             updates.append("origin_weather_point")
@@ -254,8 +258,10 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
         if updates:
             route.save(update_fields=updates)
 
-    # Curated Tochal catalog replaces fixture Tochal routes/points and shares weather points.
-    seed_tochal_catalog()
+    # Curated Tochal catalog: import once when missing. Do not overwrite DB-first
+    # operator/admin changes or inactive flags on every demo refresh.
+    if not Route.objects.filter(slug__in=TOCHAL_ROUTE_SLUGS).exists():
+        seed_tochal_catalog()
     rebuild_search_index()
     return destinations
 
