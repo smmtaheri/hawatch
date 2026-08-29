@@ -2,6 +2,7 @@ import type {
   ApiMeta,
   DestinationForecast,
   DestinationSummary,
+  PlaceForecastResponse,
   PointForecast,
   RouteForecast,
   RoutePointForecast,
@@ -48,7 +49,7 @@ export const api = {
   destination: (slug: string) =>
     getJson<{ destination: DestinationSummary & { routes: RouteSummary[] }; meta: ApiMeta }>(`destinations/${slug}/`),
   destinationForecast: (slug: string, params: { date?: string; period?: string }) =>
-    getJson<DestinationForecast>(`destinations/${slug}/forecast/`, params),
+    getJson<DestinationForecast & PlaceForecastResponse>(`destinations/${slug}/forecast/`, params),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },
@@ -59,7 +60,7 @@ export const api = {
     params: { date?: string; period?: string },
   ) => getJson<RoutePointForecast>(`routes/${routeSlug}/points/${pointSlug}/forecast/`, params),
   pointForecast: (slug: string, params: { date?: string; period?: string }) =>
-    getJson<PointForecast>(`points/${slug}/forecast/`, params),
+    getJson<PointForecast & PlaceForecastResponse>(`points/${slug}/forecast/`, params),
   searchSuggestions: (query: string, signal?: AbortSignal) => {
     const url = apiUrl("search/suggestions/");
     url.searchParams.set("q", query);

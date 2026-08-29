@@ -1,4 +1,7 @@
-import type { PeriodId } from "../types";
+import type { PeriodId, PlannerPeriodInfo } from "../types";
+
+/** Fallback only when route API has not yet provided planner bounds/step. */
+export const PLANNER_TIME_STEP_MINUTES = 60;
 
 export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: string }> = [
   { id: "morning", label: "صبح", rangeLabel: "۰۳ تا ۱۱" },
@@ -16,28 +19,79 @@ export const PERIOD_RANGES: Record<
 > = {
   morning: { min: 180, max: 660, label: "۰۳ تا ۱۱", defaultStart: "06:00", defaultStartMinutes: 360 },
   afternoon: { min: 660, max: 1140, label: "۱۱ تا ۱۹", defaultStart: "12:00", defaultStartMinutes: 720 },
-  night: { min: 1140, max: 1590, label: "۱۹ تا ۰۳", defaultStart: "20:00", defaultStartMinutes: 1200 },
+  night: { min: 1140, max: 1620, label: "۱۹ تا ۰۳", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
-/** Last valid 30-minute start slot; period ends are exclusive at `max`. */
-export function periodLastStartMinutes(period: PeriodId): number {
-  if (period === "night") return PERIOD_RANGES.night.max;
-  return PERIOD_RANGES[period].max - 30;
-}
-
-export function clampStartMinutes(minutes: number, period: PeriodId) {
-  const range = PERIOD_RANGES[period];
-  return Math.max(range.min, Math.min(periodLastStartMinutes(period), minutes));
-}
-
-const PERIOD_TICKS: Record<PeriodId, string[]> = {
-  morning: ["۰۳:۰۰", "۰۵:۰۰", "۰۷:۰۰", "۰۹:۰۰", "۱۱:۰۰"],
-  afternoon: ["۱۱:۰۰", "۱۳:۰۰", "۱۵:۰۰", "۱۷:۰۰", "۱۹:۰۰"],
-  night: ["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"],
+export type PlannerBounds = {
+  stepMinutes: number;
+  min: number;
+  maxExclusive: number;
+  lastStart: number;
+  defaultStartMinutes: number;
+  ticks: string[];
+  slots: number[];
+  label: string;
 };
 
-export function periodTicks(period: PeriodId) {
-  return PERIOD_TICKS[period];
+export function formatClockDisplay(minutes: number) {
+  const fa = "۰۱۲۳۴۵۶۷۸۹";
+  const clock = minutes % 1440;
+  const hour = Math.floor(clock / 60);
+  const minute = clock % 60;
+  const hh = String(hour).padStart(2, "0").replace(/\d/g, (d) => fa[Number(d)]);
+  const mm = String(minute).padStart(2, "0").replace(/\d/g, (d) => fa[Number(d)]);
+  return `${hh}:${mm}`;
+}
+
+export function buildPlannerSlots(min: number, lastStart: number, step: number): number[] {
+  const slots: number[] = [];
+  for (let value = min; value <= lastStart; value += step) {
+    slots.push(value);
+  }
+  return slots;
+}
+
+/** Prefer API period planner fields; fall back to local PERIOD_RANGES + step. */
+export function resolvePlannerBounds(period: PeriodId, apiPeriod?: PlannerPeriodInfo | null): PlannerBounds {
+  const fallback = PERIOD_RANGES[period];
+  const step = apiPeriod?.planner_step_minutes ?? PLANNER_TIME_STEP_MINUTES;
+  const min = apiPeriod?.planner_start_minutes ?? fallback.min;
+  const maxExclusive = apiPeriod?.planner_end_minutes ?? fallback.max;
+  const lastStart = apiPeriod?.planner_last_start_minutes ?? maxExclusive - step;
+  const defaultStartMinutes = apiPeriod?.planner_default_start_minutes ?? fallback.defaultStartMinutes;
+  const slots =
+    apiPeriod?.planner_slots && apiPeriod.planner_slots.length
+      ? apiPeriod.planner_slots
+      : buildPlannerSlots(min, lastStart, step);
+  const ticks =
+    apiPeriod?.planner_ticks && apiPeriod.planner_ticks.length
+      ? apiPeriod.planner_ticks
+      : slots.map((slot) => formatClockDisplay(slot));
+  return {
+    stepMinutes: step,
+    min,
+    maxExclusive,
+    lastStart,
+    defaultStartMinutes,
+    ticks,
+    slots,
+    label: apiPeriod?.range_label ?? fallback.label,
+  };
+}
+
+/** Last valid planner start slot; period ends are exclusive at `max`. */
+export function periodLastStartMinutes(period: PeriodId, apiPeriod?: PlannerPeriodInfo | null): number {
+  return resolvePlannerBounds(period, apiPeriod).lastStart;
+}
+
+export function clampStartMinutes(minutes: number, period: PeriodId, apiPeriod?: PlannerPeriodInfo | null) {
+  const bounds = resolvePlannerBounds(period, apiPeriod);
+  return Math.max(bounds.min, Math.min(bounds.lastStart, minutes));
+}
+
+/** Generate hourly (or step) ticks from period bounds — no hard-coded two-hour arrays. */
+export function periodTicks(period: PeriodId, apiPeriod?: PlannerPeriodInfo | null) {
+  return resolvePlannerBounds(period, apiPeriod).ticks;
 }
 
 export function toClock(minutes: number) {
@@ -84,31 +138,22 @@ export function parseStartTimeInput(raw: string): StartTimeParseResult {
   return { ok: false, reason: "malformed" };
 }
 
-export function parseClockToMinutes(clock: string, period: PeriodId) {
+export function parseClockToMinutes(clock: string, period: PeriodId, apiPeriod?: PlannerPeriodInfo | null) {
+  const bounds = resolvePlannerBounds(period, apiPeriod);
   const parsed = parseStartTimeInput(clock);
   if (!parsed.ok) {
-    return PERIOD_RANGES[period].defaultStartMinutes;
+    return bounds.defaultStartMinutes;
   }
   let value = parsed.wallMinutes;
   if (period === "night" && value <= 180) {
     value += 1440;
   }
-  value = Math.floor(value / 30) * 30;
-  return clampStartMinutes(value, period);
+  value = Math.floor(value / bounds.stepMinutes) * bounds.stepMinutes;
+  return clampStartMinutes(value, period, apiPeriod);
 }
 
 export function isValidStartTimeInput(raw: string) {
   return parseStartTimeInput(raw).ok;
-}
-
-export function formatClockDisplay(minutes: number) {
-  const fa = "۰۱۲۳۴۵۶۷۸۹";
-  const clock = minutes % 1440;
-  const hour = Math.floor(clock / 60);
-  const minute = clock % 60;
-  const hh = String(hour).padStart(2, "0").replace(/\d/g, (d) => fa[Number(d)]);
-  const mm = String(minute).padStart(2, "0").replace(/\d/g, (d) => fa[Number(d)]);
-  return `${hh}:${mm}`;
 }
 
 export function appendRouteContext(href: string, params: URLSearchParams) {

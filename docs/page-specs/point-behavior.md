@@ -1,68 +1,38 @@
-# رفتار صفحهٔ Point (Standalone)
+# رفتار صفحهٔ Point (محتوای Forecast Place)
 
-مرجع بصری: [design/pages/point.md](../../design/pages/point.md) — extension از Destination؛ screenshot مرجع جدا ندارد.
+مرجع بصری: [design/pages/place-forecast.md](../../design/pages/place-forecast.md) — **همان قالب Destination**؛ screenshot جدا وجود ندارد.
 
 ## ورود
 
 - Home autocomplete → `/points/{slug}`
-- Route timeline/card → `/points/{slug}` + `state.fromRoute` شامل `pathname`، `search` و `href` مسیر
+- Route timeline/card → `/points/{slug}` + `state.fromRoute`
 - URL مستقیم / share / refresh
 - Legacy `/routes/{route}/points/{point}` → redirect به canonical
+- WeatherPoint با Destination profile → `/destination/{slug}`
 
 ## API
 
 `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
 
-پاسخ شامل: slug/name/aliases، مختصات/ارتفاع/status/provenance، forecast metadata، current/hourly/days/period، related destinations/routes (dedup)، بدون timing مسیر.
+قرارداد اول: `subject` / `hero` / `forecast.{days,period,current,hourly,meta}` / `metrics` / `decision` / `related_routes`.
+aliasهای ریشه و `point` / `weather` فقط سازگاری‌اند.
 
 ## هویت و ظاهر
 
-- Point باید از همان shell، card surface، typography، period control و day selector صفحهٔ Destination استفاده کند.
-- صفحهٔ Point screenshot مستقل ندارد؛ ۱۶ تصویر مرجع موجود immutable هستند و Destination baseline بصری است.
-- Related routes در sidebar به‌صورت compact single-column نمایش داده می‌شوند؛ grid سه‌ستونهٔ generic مجاز نیست.
-- label بالای روزها «انتخاب روز» است و heading/description تکراری forecast نمایش داده نمی‌شود.
-
-## breadcrumb
-
-همیشه: `مقصدها / {نام نقطه}`
-
-## back CTA
-
-| منبع ورود | رفتار |
-| --- | --- |
-| Route (با state) | `بازگشت به مسیر {title}` → همان مسیر با `date`، `period`، `start_time` و `speed` قبلی |
-| Home / direct / refresh | بدون back مسیر؛ optional «مسیرهای مرتبط» |
+- root class: `destination-page` (نه `point-page`)
+- sidebar + mobile route-picker از همان قالب مشترک؛ عنوان sidebar: «مسیرهای عبوری از این نقطه»
+- technical-card همیشه (EmptyState اگر متریک نبود)
+- با `fromRoute`، CTA بازگشت فقط در hero؛ planner از `fromRoute` seed نمی‌شود
+- footer مشترک: «هوای مقصد، برنامهٔ مسیر»
+- headline بازه (`period.headline`) در UI نمایش داده نمی‌شود؛ فقط کارت‌های ساعتی و legend
 
 ## controls
 
-- day tabs و period toggle مانند Destination
-- **بدون** speed، start-time gauge، ETA، ascent، planner controls
-
-## states
-
-| state | UX |
-| --- | --- |
-| loading | skeleton/spinner در shell |
-| ready | hero + forecast کامل |
-| empty | پیام «پیش‌بینی در دسترس نیست» |
-| partial | «پیش‌بینی ناقص» |
-| error | retry |
-| stale | StaleDataNotice |
-
-هیچ timestamp خام یا عبارت داخلی `timing_pending` در متن کاربر نمایش داده نمی‌شود.
-
-## theme / responsive
-
-- `point-page` در dark/light
-- mobile: layout تک‌ستونه؛ desktop مستقیم: main + مسیرهای مرتبط؛ desktop با ورود از Route: تک‌ستونه و بدون sidebar خالی
-- max-width و padding هم‌تراز Destination
+day/period مانند Destination (URL بعد از انتخاب صریح sync می‌شود)؛ بدون planner gauge.
 
 ## acceptance
 
-- canonical URL بدون planner noise
-- keyboard/back/accessibility برای CTA
-- shared point dedup
-- اگر point از نوع destination باشد، navigation به destination canonical انجام می‌شود.
-- theme و رنگ تمام cardها، از جمله related routes، با Destination یکسان است.
-- no horizontal overflow
-- بازگشت از Route تمام context برنامه‌ریزی را حفظ می‌کند
+- [ ] همان shell مقصد
+- [ ] `/points/tochal_summit` → `/destination/touchal`
+- [ ] dark/light route cards روی surface مشترک
+- [ ] بدون overflow

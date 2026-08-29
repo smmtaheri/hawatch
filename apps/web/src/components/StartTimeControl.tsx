@@ -1,15 +1,17 @@
-import { periodLastStartMinutes } from "../lib/periods";
-import type { PeriodId } from "../types";
+import { resolvePlannerBounds } from "../lib/periods";
+import type { PeriodId, PlannerPeriodInfo } from "../types";
 
 export function StartTimeControl({
   minutes,
   min,
   max,
   period,
+  apiPeriod,
   ticks,
   rangeLabel,
   display,
   currentMinutes,
+  stepMinutes,
   onChange,
   onCommit,
 }: {
@@ -17,21 +19,27 @@ export function StartTimeControl({
   min: number;
   max: number;
   period?: PeriodId;
+  apiPeriod?: PlannerPeriodInfo | null;
   ticks: string[];
   rangeLabel: string;
   display: string;
   currentMinutes?: number;
+  stepMinutes?: number;
   onChange: (value: number) => void;
   onCommit: (value: number) => void;
 }) {
-  const sliderMax = period ? periodLastStartMinutes(period) : max;
-  const boundedMinutes = Math.max(min, Math.min(sliderMax, minutes));
-  const percent = ((boundedMinutes - min) / Math.max(1, sliderMax - min)) * 100;
+  const bounds = period ? resolvePlannerBounds(period, apiPeriod) : null;
+  const sliderMax = bounds?.lastStart ?? max;
+  const sliderMin = bounds?.min ?? min;
+  const step = stepMinutes ?? bounds?.stepMinutes ?? 60;
+  const boundedMinutes = Math.max(sliderMin, Math.min(sliderMax, minutes));
+  const span = Math.max(1, sliderMax - sliderMin);
+  const percent = ((boundedMinutes - sliderMin) / span) * 100;
   const boundedCurrentMinutes =
-    currentMinutes === undefined ? undefined : Math.max(min, Math.min(sliderMax, currentMinutes));
+    currentMinutes === undefined ? undefined : Math.max(sliderMin, Math.min(sliderMax, currentMinutes));
   const elapsedPercent =
     boundedCurrentMinutes !== undefined
-      ? ((boundedCurrentMinutes - min) / Math.max(1, sliderMax - min)) * 100
+      ? ((boundedCurrentMinutes - sliderMin) / span) * 100
       : undefined;
 
   return (
@@ -52,14 +60,14 @@ export function StartTimeControl({
             />
           ) : null}
           <span className="gauge-fill" style={{ width: `${percent}%` }} />
-          <span className="gauge-dot" style={{ left: `${percent}%` }} />
+          <span className="gauge-dot" style={{ right: `${percent}%` }} />
         </div>
         <input
           aria-label="ساعت شروع حرکت"
           type="range"
-          min={min}
+          min={sliderMin}
           max={sliderMax}
-          step={30}
+          step={step}
           value={boundedMinutes}
           onChange={(event) => onChange(Number(event.target.value))}
           onPointerUp={(event) => onCommit(Number((event.target as HTMLInputElement).value))}

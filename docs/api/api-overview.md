@@ -18,4 +18,6 @@ Frontend فقط API داخلی هواچ را مصرف می‌کند.
 `period`: `morning` | `afternoon` | `night`
 `speed`: `آرام` | `متوسط` | `سریع` یا معادل `slow` | `medium` | `fast`
 
+Destination و Point forecast هر دو از قرارداد مشترک Forecast Place (`subject` / `hero` / `metrics` / `decision` / `related_routes`) استفاده می‌کنند؛ aliasهای سازگاری `destination` و `point` حفظ شده‌اند.
+
 پاسخ‌ها `schema_version`، timezone تهران، freshness و data_mode دارند. جزئیات بازه‌ها و انتخاب پیش‌فرض در [forecast-contract.md](./forecast-contract.md) است.

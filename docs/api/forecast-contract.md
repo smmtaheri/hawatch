@@ -6,6 +6,7 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
 
 - ۷ روز: دیروز، امروز، و پنج روز بعد
 - hourly: هر دو ساعت؛ هر بازه دقیقاً چهار کارت دارد.
+- `period.headline` فقط فیلد سازگاری/داخلی است و در UI Destination/Point نمایش داده نمی‌شود.
 - سه بازهٔ غیرهم‌پوشان (نسخهٔ قبلی با دو بازهٔ ۰۰–۱۲ / ۱۲–۲۴ **جایگزین شده**):
 
 | `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
@@ -40,15 +41,17 @@ flagها از **timestamp واقعی** هر reading (`forecast_at`) نسبت ب�
 ## envelope
 
 ```text
-forecast
-├── destination | route | point
-├── days[]
-├── current?
-├── hourly[]
-├── alerts?/hero
+forecast (Forecast Place — destination یا point)
+├── subject { kind, slug, canonical_href, name, elevation, coords, hero_image, ... }
+├── hero { status, alert }
+├── forecast { days[], period, current?, hourly[], meta }
+├── metrics[]
 ├── decision
-├── freshness / meta
+├── related_routes[]
+├── (سازگاری) destination | point | weather | days | hourly | meta
 ```
+
+Route envelope جداگانه است و `route` / `points[]` / `timing_pending` دارد.
 
 هر reading شامل temperature، apparent temperature، condition/code، wind speed/gust/direction، precipitation، visibility، cloud cover، UV در صورت وجود، و flagهای:
 
@@ -79,7 +82,11 @@ forecast
 ## route planner
 
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
-- برای `night`، `00:00`–`02:30` به‌عنوان ادامهٔ همان شب تفسیر می‌شود؛ `03:00` متعلق به `morning` است.
+- granularity پیش‌فرض: `PLANNER_TIME_STEP_MINUTES = 60` در `hawatch.common.time` (منبع واحد؛ frontend از payload می‌خواند).
+- پاسخ `period` در route (و place) شامل `planner_step_minutes`، `planner_start_minutes`، `planner_end_minutes`، `planner_last_start_minutes`، `planner_default_start_minutes`، `planner_slots[]`، `planner_ticks[]` است.
+- صبح قابل انتخاب: ۰۳–۱۰؛ بعدازظهر: ۱۱–۱۸؛ شب: ۱۹، ۲۰، ۲۱، ۲۲، ۲۳، ۰۰، ۰۱، ۰۲.
+- Gauge بصری RTL است: زودترین زمان راست، دیرترین چپ.
+- برای `night`، `00:00`–`02:00` ادامهٔ همان شب است؛ `03:00` متعلق به `morning` است.
 
 ### ورودی و نرمال‌سازی `start_time`
 
@@ -88,7 +95,7 @@ forecast
 | `06:00` (ASCII) | پذیرفته؛ خروجی wire: `06:00` |
 | `۰۶:۰۰` / `٠٦:٠٠` (Persian/Arabic) | normalize به ASCII؛ همان دقیقه |
 | `360` (legacy bare minutes) | پذیرفته؛ تفسیر دقیقه از نیمه‌شب (۰–۱۴۳۹)؛ برای `night` اگر ≤۱۸۰ به شب extended اضافه می‌شود |
-| `10:15` (off-step) | floor به `10:00` سپس clamp داخل period |
+| `10:15` (off-step) | floor به step پیکربندی‌شده سپس clamp داخل period |
 | `12:xx`، `12:00:00`، `25:00`، `12:60` | **رد** → HTTP `400` با پیام validation |
 
 - خروجی canonical در query و share URL همیشه **ASCII `HH:MM`** است (`format_start_time_wire` / `toClock`).
@@ -97,32 +104,34 @@ forecast
 
 ### سیاست پیش‌فرض (بدون `start_time` یا بعد از تغییر `date`/`period`)
 
-- اگر `date` + `period` همان بازهٔ جاری تهران باشد → ساعت فعلی floor‌شده به ۳۰ دقیقه؛
+- اگر `date` + `period` همان بازهٔ جاری تهران باشد → ساعت فعلی floor‌شده به `PLANNER_TIME_STEP_MINUTES`؛
 - در غیر این صورت → `default_start` همان period (`morning=06:00`، `afternoon=12:00`، `night=20:00`)؛
 - `default_start_minutes` مسیر (مثلاً 06:00 برای دربند) **جایگزین** period default نمی‌شود.
 
 - وقتی `timing_pending=true` است، arrival/ETA ساخته نمی‌شود.
-- وقتی `timing_pending=true` است، برای خلاصهٔ هر point فقط دادهٔ همان point و همان period انتخاب‌شده قابل نمایش است؛ fallback ثابت ساعت ۱۲ برای همهٔ periodها معتبر نیست و نباید استفاده شود. زمان point/ETA در این حالت `null` است. فیلد `weather_available` در پاسخ route مشخص می‌کند آیا reading معتبر برای period وجود دارد.
+- وقتی timing در دسترس نیست، خلاصهٔ آب‌وهوای نقطه به‌عنوان پیش‌بینی رسیدن ارائه نمی‌شود؛ حالت فشردهٔ فارسی «زمان‌بندی در دسترس نیست» نشان داده می‌شود (`weather_available=false`).
 - `timing_pending` یک flag قراردادی برای client است و نباید عیناً در متن کاربر نمایش داده شود؛ UI باید پیام فارسی قابل فهم ارائه کند.
 
-## نقطهٔ canonical (standalone WeatherPoint)
+## نقطهٔ canonical (Forecast Place — نقش point)
 
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
-- URL frontend: `/points/{weather_point_slug}` — مثال `/points/pas_ghaleh`
-- envelope: `point` (slug، name، aliases، مختصات، elevation، status، provenance)، `related_destinations[]`، `related_routes[]` (dedup)، `days`، `current`/`weather`، `hourly`، `hero`، `empty`/`partial`، `meta`
-- **بدون** `arrival_minutes`، ETA، ascent، speed، یا timing مسیر
-- نقاط بدون WeatherPoint فعال صفحهٔ standalone ندارند
+- URL frontend: `/points/{weather_point_slug}` — مثال `/points/sarband`
+- همان قرارداد place مشترک با destination؛ frontend فقط `forecast.*` را مصرف می‌کند (alias ریشه سازگاری است)
+- اگر WeatherPoint دارای Destination profile باشد، `canonical_href=/destination/{slug}` و frontend redirect می‌کند (حفظ `date`/`period`؛ بدون `start_time`/`speed`)
+- **بدون** planner controls روی صفحه
+- mobile هم همان `mobile-route-picker` مقصد را برای مسیرهای مرتبط نشان می‌دهد
 
 ## legacy route-point (سازگاری موقت)
 
 - `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
-- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز. اگر WeatherPoint از نوع `destination` باشد و به Destination متصل باشد، `canonical_href` باید `/destination/{destinationSlug}` باشد؛ در غیر این صورت `/points/{weather_point_slug}`.
+- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز. اگر WeatherPoint Destination profile داشته باشد، `canonical_href` باید `/destination/{destinationSlug}` باشد؛ در غیر این صورت `/points/{weather_point_slug}`.
 - frontend legacy `/routes/.../points/...` را redirect می‌کند؛ `start_time`/`speed` از URL حذف می‌شوند
 
 ## جست‌وجوی پیشنهاد (Home)
 
 - `GET /api/v1/search/suggestions/?q=...`
 - حداقل ۲ کاراکتر normalize‌شده؛ prefix match؛ حداکثر ۸ نتیجه
+- مقصد یک‌بار برمی‌گردد (نه duplicate با WeatherPoint قله)
 - انواع: `destination` → `/destination/{slug}`؛ `point` → `/points/{weather_point_slug}`
 - label نمونه: `قلهٔ توچال — مقصد` · `پس‌قلعه — نقطهٔ مسیر · توچال`
 
@@ -135,4 +144,5 @@ forecast
 - `meta.current_local_time` تنها مرجع تعیین بازهٔ جاری/گذشته در timezone رسمی ایران است.
 - UI باید periodهای کاملاً گذشته را کم‌رنگ کند و period جاری/آینده را عادی نگه دارد.
 - فیلد `updated_label` برای نمایش عمومی deprecated است؛ timestamp خام ISO نباید در UI رندر شود.
-- Route نباید `hourly` مقصد را به‌عنوان weather pointهای مسیر نمایش دهد؛ کارت‌های point باید از دادهٔ point-level همان point ساخته شوند.
+- Route نباید period weather را به‌عنوان پیش‌بینی رسیدن نشان دهد وقتی timing pending است.
+- `/destination/*` و `/points/*` یک قالب Forecast Place دارند؛ baseline بصری screenshotهای Destination است.

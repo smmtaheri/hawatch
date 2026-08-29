@@ -11,12 +11,14 @@
 
 ## ماژول‌ها
 
-- `catalog`: بارگذاری fixture و seed دمو
-- `destinations`: مدل Destination
-- `routes`: مدل Route و RoutePoint
-- `forecasts`: WeatherPoint و ForecastRecord
+- `catalog`: بارگذاری fixture و seed دمو (بدون ساخت synthetic `dest:{slug}`)
+- `destinations`: مدل Destination به‌عنوان profile عمومی یک WeatherPoint (`weather_point` OneToOne)
+- `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`) و RoutePoint
+- `forecasts`: WeatherPoint و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
 - `jobs`: management commandهای seed، ingest one-shot و retention
+
+Forecast Place برای destination و point از یک سرویس/serializer مشترک (`build_place_forecast`) ساخته می‌شود.
 
 ## تنظیمات
 

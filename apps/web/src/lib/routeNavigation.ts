@@ -56,17 +56,13 @@ export function plannerDatePeriodFromRouteSearch(search: string): { date?: strin
   };
 }
 
+/** Date/period from public place URL only — never seed from fromRoute (back CTA only). */
 export function initialDestinationPlanner(
   urlParams: URLSearchParams,
-  fromRoute: RouteFromState | undefined,
+  _fromRoute?: RouteFromState,
 ): { date?: string; period?: PeriodId } {
-  const urlDate = urlParams.get("date") || undefined;
-  const urlPeriod = asPeriodId(urlParams.get("period"));
-  if (urlDate || urlPeriod) {
-    return { date: urlDate, period: urlPeriod };
-  }
-  if (fromRoute?.search) {
-    return plannerDatePeriodFromRouteSearch(fromRoute.search);
-  }
-  return {};
+  return {
+    date: urlParams.get("date") || undefined,
+    period: asPeriodId(urlParams.get("period")),
+  };
 }

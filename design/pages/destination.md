@@ -28,7 +28,9 @@
 
 ## ۴. hierarchy کامپوننت‌ها
 
-`DestinationPage → Header + DestinationHero + DaySelector + RouteSiblingNavigation + PeriodToggle + HourlyForecast + StatsGrid + DecisionCard`.
+`PlaceForecastPage → Header + DestinationHero + DaySelector + related routes + PeriodToggle + HourlyForecast + StatsGrid + DecisionCard`.
+
+هر دو URL `/destination/:slug` و `/points/:slug` همین درخت را رندر می‌کنند. مشخصات مشترک: [place-forecast.md](./place-forecast.md).
 
 ## ۵. رفتار کنترل‌ها
 

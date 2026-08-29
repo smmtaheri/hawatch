@@ -1,1 +1,1 @@
-export { PointDetailPage } from "../features/point/PointDetailPage";
+export { PointPlacePage as PointDetailPage } from "../features/place/PlaceForecastPage";

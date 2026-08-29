@@ -11,7 +11,56 @@ import { PERIOD_OPTIONS, PERIOD_RANGES, parseClockToMinutes, periodTicks, toCloc
 import { classifyAllPeriods, resolveRouteStartMinutes } from "../src/lib/periodState";
 import { StartTimeControl } from "../src/components/StartTimeControl";
 
+const destinationDays = [
+  { date: "2026-08-27", label: "دیروز", jalali: "۶ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: false, is_future: false, is_current: false },
+  { date: "2026-08-28", label: "امروز", jalali: "۷ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
+  { date: "2026-08-29", label: "فردا", jalali: "۸ شهریور", offset: 1, is_yesterday: false, is_today: false, is_past: false, is_future: true, is_current: false },
+];
+
+const destinationCurrent = {
+  time: "۰۰:۰۰",
+  hour: 1,
+  forecast_at: "2026-08-28T01:00:00+03:30",
+  temperature_c: 5,
+  temperature_label: "۵°",
+  condition: "صاف",
+  icon: "☼",
+  wind_speed_kmh: 4,
+  wind_label: "باد ۴ km/h",
+  severity: "normal",
+  state: "normal",
+  is_yesterday: false,
+  is_today: true,
+  is_past: false,
+  is_current: true,
+  is_future: false,
+};
+
+const destinationMeta = {
+  freshness: "ready",
+  generated_at: "2026-08-28T00:30:00+03:30",
+  current_local_time: "2026-08-28T01:00:00+03:30",
+  selected_date: "2026-08-27",
+  selected_period: "night",
+};
+
 const destinationForecast = {
+  subject: {
+    kind: "destination" as const,
+    slug: "touchal",
+    weather_point_slug: "tochal_summit",
+    canonical_href: "/destination/touchal",
+    name: "قلهٔ توچال",
+    elevation_m: 3964,
+    elevation_label: "۳۹۶۴ متر",
+    latitude: 35.88,
+    longitude: 51.42,
+    context_label: "کوه",
+    hero_image: "/images/touchal-banner-clean.png",
+    hero_image_alt: "توچال",
+    region: "تهران",
+    category: "کوه",
+  },
   destination: {
     slug: "touchal",
     tile_name: "توچال",
@@ -27,37 +76,27 @@ const destinationForecast = {
     href: "/destination/touchal",
     is_popular: true,
     routes: [],
+    weather_point_slug: "tochal_summit",
   },
-  days: [
-    { date: "2026-08-27", label: "دیروز", jalali: "۶ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: false, is_future: false, is_current: false },
-    { date: "2026-08-28", label: "امروز", jalali: "۷ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
-  ],
-  period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب", hours: [19, 21, 23, 1] },
-  current: {
-    time: "۰۰:۰۰",
-    hour: 1,
-    forecast_at: "2026-08-28T01:00:00+03:30",
-    temperature_c: 5,
-    temperature_label: "۵°",
-    condition: "صاف",
-    icon: "☼",
-    wind_speed_kmh: 4,
-    wind_label: "باد ۴ km/h",
-    severity: "normal",
-    state: "normal",
-    is_yesterday: false,
-    is_today: true,
-    is_past: false,
-    is_current: true,
-    is_future: false,
-  },
-  hourly: [],
-  metrics: [],
   hero: { status: "☼　الان در توچال　۵°　·　صاف", alert: "آرام" },
+  forecast: {
+    days: destinationDays,
+    period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب · هر دو ساعت", hours: [19, 21, 23, 1] },
+    current: destinationCurrent,
+    hourly: [] as typeof destinationCurrent[],
+    meta: destinationMeta,
+  },
+  metrics: [],
   decision: { chip: "دیروز · جمع‌بندی هواچ", title: "صبح", text: "آرام" },
+  related_routes: [],
+  related_routes_title: "مسیرهای منتهی به توچال",
   updated_label: "امروز",
   empty: false,
-  meta: { freshness: "ready", generated_at: "2026-08-28T00:30:00+03:30", current_local_time: "2026-08-28T01:00:00+03:30", selected_date: "2026-08-27", selected_period: "night" },
+  days: destinationDays,
+  period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب · هر دو ساعت", hours: [19, 21, 23, 1] },
+  current: destinationCurrent,
+  hourly: [] as typeof destinationCurrent[],
+  meta: destinationMeta,
 };
 
 const routeForecast = {
@@ -75,8 +114,21 @@ const routeForecast = {
     points: [],
     siblings: [],
   },
-  days: destinationForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح", hours: [3, 5, 7, 9] },
+  days: destinationForecast.forecast.days,
+  period: {
+    id: "morning",
+    label: "صبح",
+    range_label: "۰۳ تا ۱۱",
+    headline: "تغییرات صبح · هر دو ساعت",
+    hours: [3, 5, 7, 9],
+    planner_step_minutes: 60,
+    planner_start_minutes: 180,
+    planner_end_minutes: 660,
+    planner_last_start_minutes: 600,
+    planner_default_start_minutes: 360,
+    planner_slots: [180, 240, 300, 360, 420, 480, 540, 600],
+    planner_ticks: ["۰۳:۰۰", "۰۴:۰۰", "۰۵:۰۰", "۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰"],
+  },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
   speed: "متوسط",
@@ -126,6 +178,22 @@ const routeForecast = {
 };
 
 const pointForecast = {
+  subject: {
+    kind: "point" as const,
+    slug: "shirpala",
+    weather_point_slug: "shirpala",
+    canonical_href: "/points/shirpala",
+    name: "شیرپلا",
+    elevation_m: 2750,
+    elevation_label: "۲۴۵۰ متر",
+    latitude: 35.855,
+    longitude: 51.429,
+    context_label: "تهران",
+    hero_image: "/images/touchal-banner-clean.png",
+    hero_image_alt: "توچال",
+    region: "تهران",
+    category: "کوه",
+  },
   point: {
     slug: "shirpala",
     name: "شیرپلا",
@@ -138,6 +206,7 @@ const pointForecast = {
     status: "approved",
     provenance: "curated",
     href: "/points/shirpala",
+    canonical_href: "/points/shirpala",
     destination: routeForecast.route.parent,
   },
   related_destinations: [routeForecast.route.parent],
@@ -156,16 +225,44 @@ const pointForecast = {
       href: "/routes/touchal-darband",
     },
   ],
+  related_routes_title: "مسیرهای عبوری از این نقطه",
+  hero: { status: "☼　در شیرپلا　۷°　·　صاف", alert: "✓　شرایط فعلاً آرام‌تر است" },
+  forecast: {
+    days: routeForecast.days,
+    period: routeForecast.period,
+    current: routeForecast.hourly[0],
+    hourly: routeForecast.hourly,
+    meta: routeForecast.meta,
+  },
+  metrics: [{ icon: "⌁", label: "باد میانگین", value: "۷ km/h", note: "", color: "teal" }],
+  decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح مناسب است", text: "آرام" },
+  updated_label: "امروز",
+  empty: false,
+  partial: false,
   days: routeForecast.days,
   period: routeForecast.period,
   current: routeForecast.hourly[0],
   weather: routeForecast.hourly[0],
   hourly: routeForecast.hourly,
-  hero: { status: "☼　در شیرپلا　۷°　·　صاف" },
-  updated_label: "امروز",
-  empty: false,
-  partial: false,
   meta: routeForecast.meta,
+};
+
+const sarbandForecast = {
+  ...pointForecast,
+  subject: {
+    ...pointForecast.subject,
+    slug: "sarband",
+    weather_point_slug: "sarband",
+    canonical_href: "/points/sarband",
+    name: "سربند",
+  },
+  point: {
+    ...pointForecast.point,
+    slug: "sarband",
+    name: "سربند",
+    href: "/points/sarband",
+    canonical_href: "/points/sarband",
+  },
 };
 
 function jsonResponse(data: unknown, ok = true, status = 200) {
@@ -189,6 +286,27 @@ describe("periods and route planner", () => {
       if (url.includes("/destinations/touchal/forecast")) return jsonResponse(destinationForecast);
       if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
       if (url.includes("/points/shirpala/forecast")) return jsonResponse(pointForecast);
+      if (url.includes("/points/sarband/forecast")) return jsonResponse(sarbandForecast);
+      if (url.includes("/points/tochal_summit/forecast")) {
+        return jsonResponse({
+          ...pointForecast,
+          subject: {
+            ...pointForecast.subject,
+            kind: "point",
+            slug: "tochal_summit",
+            canonical_href: "/destination/touchal",
+            name: "قلهٔ توچال",
+          },
+          point: {
+            ...pointForecast.point,
+            slug: "tochal_summit",
+            name: "قلهٔ توچال",
+            kind: "destination",
+            href: "/destination/touchal",
+            canonical_href: "/destination/touchal",
+          },
+        });
+      }
       if (url.includes("/routes/touchal-darband/points/shirpala/forecast")) {
         return jsonResponse({
           point: {
@@ -237,14 +355,14 @@ describe("periods and route planner", () => {
     expect(screen.getByRole("button", { name: /شب/ })).toBeInTheDocument();
   });
 
-  it("uses four odd-hour slices in each Iran-time period", () => {
+  it("exposes hourly planner ticks for each Iran-time period", () => {
     expect(PERIOD_OPTIONS.map((option) => option.rangeLabel)).toEqual(["۰۳ تا ۱۱", "۱۱ تا ۱۹", "۱۹ تا ۰۳"]);
     expect(PERIOD_RANGES.morning).toMatchObject({ min: 180, max: 660 });
     expect(PERIOD_RANGES.afternoon).toMatchObject({ min: 660, max: 1140 });
-    expect(PERIOD_RANGES.night).toMatchObject({ min: 1140, max: 1590 });
-    expect(periodTicks("morning")).toEqual(["۰۳:۰۰", "۰۵:۰۰", "۰۷:۰۰", "۰۹:۰۰", "۱۱:۰۰"]);
-    expect(periodTicks("afternoon")).toEqual(["۱۱:۰۰", "۱۳:۰۰", "۱۵:۰۰", "۱۷:۰۰", "۱۹:۰۰"]);
-    expect(periodTicks("night")).toEqual(["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"]);
+    expect(PERIOD_RANGES.night).toMatchObject({ min: 1140, max: 1620 });
+    expect(periodTicks("morning")).toEqual(["۰۳:۰۰", "۰۴:۰۰", "۰۵:۰۰", "۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰"]);
+    expect(periodTicks("afternoon")).toEqual(["۱۱:۰۰", "۱۲:۰۰", "۱۳:۰۰", "۱۴:۰۰", "۱۵:۰۰", "۱۶:۰۰", "۱۷:۰۰", "۱۸:۰۰"]);
+    expect(periodTicks("night")).toEqual(["۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰", "۰۰:۰۰", "۰۱:۰۰", "۰۲:۰۰"]);
   });
 
   it("does not send period=morning on no-query initial destination load", async () => {
@@ -287,6 +405,11 @@ describe("periods and route planner", () => {
           ...destinationForecast,
           meta: { ...destinationForecast.meta, selected_period: "afternoon" },
           period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۱ تا ۱۹", headline: "بعدازظهر", hours: [11, 13, 15, 17] },
+          forecast: {
+            ...destinationForecast.forecast,
+            period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۱ تا ۱۹", headline: "بعدازظهر", hours: [11, 13, 15, 17] },
+            meta: { ...destinationForecast.forecast.meta, selected_period: "afternoon" },
+          },
         });
       }
       return jsonResponse(destinationForecast);
@@ -437,8 +560,10 @@ describe("periods and route planner", () => {
     expect(backLink.getAttribute("href")).toContain("/routes/touchal-darband");
     expect(backLink.getAttribute("href")).toContain("start_time=06");
     expect(backLink.getAttribute("href")).toContain("speed=");
-    expect(screen.queryByText("مسیرهای مرتبط")).not.toBeInTheDocument();
-    expect(document.querySelector(".point-layout--single")).toBeTruthy();
+    expect(screen.getByText("مسیرهای عبوری از این نقطه")).toBeInTheDocument();
+    expect(document.querySelector(".destination-page")).toBeTruthy();
+    expect(document.querySelector(".point-page")).toBeNull();
+    expect(document.querySelector(".destination-layout")).toBeTruthy();
   });
 
   it("builds route back target with planner params for point links", () => {
@@ -491,8 +616,10 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "شیرپلا" });
-    expect(document.querySelector(".point-page")).toBeTruthy();
-    expect(document.querySelector(".point-weather-card")).toBeTruthy();
+    expect(document.querySelector(".destination-page")).toBeTruthy();
+    expect(document.querySelector(".point-page")).toBeNull();
+    expect(document.querySelector(".weather-card")).toBeTruthy();
+    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
   });
 
   it("updates speed locally without fetch when timing is pending", async () => {
@@ -636,15 +763,7 @@ describe("periods and route planner", () => {
       }
       if (url.includes("/destinations/touchal/forecast")) {
         destinationRequestUrl = url;
-        return jsonResponse({
-          ...destinationForecast,
-          meta: {
-            ...destinationForecast.meta,
-            selected_date: "2026-08-26",
-            selected_period: "morning",
-          },
-          period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "صبح", hours: [3, 5, 7, 9] },
-        });
+        return jsonResponse(destinationForecast);
       }
       return jsonResponse({}, false, 404);
     });
@@ -670,10 +789,9 @@ describe("periods and route planner", () => {
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
     expect(router.state.location.pathname).toBe("/destination/touchal");
     expect(router.state.location.search).toBe("");
-    expect(destinationRequestUrl).toContain("date=2026-08-26");
-    expect(destinationRequestUrl).toContain("period=morning");
+    expect(destinationRequestUrl).not.toContain("date=");
+    expect(destinationRequestUrl).not.toContain("period=");
     expect(destinationRequestUrl).not.toContain("start_time");
-    expect(screen.getByRole("button", { name: /صبح/ })).toHaveAttribute("aria-pressed", "true");
     expect(router.state.location.state).toEqual(
       expect.objectContaining({
         fromRoute: expect.objectContaining({
@@ -688,7 +806,7 @@ describe("periods and route planner", () => {
     expect(backLink.getAttribute("href")).toContain("speed=");
   });
 
-  it("initializes destination planner from route context without polluting URL", () => {
+  it("does not seed place planner from fromRoute — only explicit URL date/period", () => {
     const planner = initialDestinationPlanner(
       new URLSearchParams(""),
       {
@@ -699,18 +817,21 @@ describe("periods and route planner", () => {
         href: "/routes/touchal-darband?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
       },
     );
-    expect(planner).toEqual({ date: "2026-08-26", period: "afternoon" });
+    expect(planner).toEqual({ date: undefined, period: undefined });
+    expect(
+      initialDestinationPlanner(new URLSearchParams("date=2026-08-26&period=afternoon"), undefined),
+    ).toEqual({ date: "2026-08-26", period: "afternoon" });
   });
 
   it("floors off-step and Persian-digit start times", () => {
     expect(parseClockToMinutes("10:15", "morning")).toBe(600);
     expect(parseClockToMinutes("۱۰:۱۵", "morning")).toBe(600);
-    expect(parseClockToMinutes("٠٦:٣٠", "morning")).toBe(390);
+    expect(parseClockToMinutes("٠٦:٣٠", "morning")).toBe(360);
   });
 
   it("resolves route start from period default when switching away from current period", () => {
     const at1030 = "2026-08-28T10:30:00+03:30";
-    expect(resolveRouteStartMinutes("2026-08-28", "morning", at1030)).toBe(630);
+    expect(resolveRouteStartMinutes("2026-08-28", "morning", at1030)).toBe(600);
     expect(resolveRouteStartMinutes("2026-08-28", "afternoon", at1030)).toBe(720);
     expect(resolveRouteStartMinutes("2026-08-28", "night", at1030)).toBe(1200);
   });
@@ -722,20 +843,112 @@ describe("periods and route planner", () => {
         min={1140}
         max={1620}
         period="night"
-        ticks={["۱۹:۰۰", "۲۱:۰۰", "۲۳:۰۰", "۰۱:۰۰", "۰۳:۰۰"]}
+        ticks={["۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰", "۰۰:۰۰", "۰۱:۰۰", "۰۲:۰۰"]}
         rangeLabel="۱۹ تا ۰۳"
-        display="۰۲:۳۰"
+        display="۰۲:۰۰"
         currentMinutes={1620}
+        stepMinutes={60}
         onChange={vi.fn()}
         onCommit={vi.fn()}
       />,
     );
 
     const slider = screen.getByRole("slider", { name: "ساعت شروع حرکت" });
-    expect(slider).toHaveAttribute("max", "1590");
-    expect(slider).toHaveValue("1590");
+    expect(slider).toHaveAttribute("max", "1560");
+    expect(slider).toHaveAttribute("step", "60");
+    expect(slider).toHaveValue("1560");
     expect(document.querySelector(".gauge-fill")).toHaveStyle({ width: "100%" });
-    expect(document.querySelector(".gauge-dot")).toHaveStyle({ left: "100%" });
+    expect(document.querySelector(".gauge-dot")).toHaveStyle({ right: "100%" });
+  });
+
+  it("builds one-hour planner ticks from period bounds", () => {
+    expect(periodTicks("morning")).toEqual([
+      "۰۳:۰۰",
+      "۰۴:۰۰",
+      "۰۵:۰۰",
+      "۰۶:۰۰",
+      "۰۷:۰۰",
+      "۰۸:۰۰",
+      "۰۹:۰۰",
+      "۱۰:۰۰",
+    ]);
+    expect(periodTicks("afternoon")).toHaveLength(8);
+    expect(periodTicks("night")).toEqual([
+      "۱۹:۰۰",
+      "۲۰:۰۰",
+      "۲۱:۰۰",
+      "۲۲:۰۰",
+      "۲۳:۰۰",
+      "۰۰:۰۰",
+      "۰۱:۰۰",
+      "۰۲:۰۰",
+    ]);
+  });
+
+  it("syncs date and period into the URL for destination after explicit selection", async () => {
+    const user = userEvent.setup();
+    function SearchEcho() {
+      const [params] = useSearchParams();
+      return <div data-testid="url-search">{params.toString()}</div>;
+    }
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal"]}>
+          <Routes>
+            <Route
+              path="/destination/:slug"
+              element={
+                <>
+                  <DestinationPage />
+                  <SearchEcho />
+                </>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    expect(screen.getByTestId("url-search")).toHaveTextContent("");
+    await user.click(screen.getByRole("tab", { name: /فردا/ }));
+    await waitFor(() => {
+      const q = screen.getByTestId("url-search").textContent ?? "";
+      expect(q).toContain("date=2026-08-29");
+      expect(q).toContain("period=night");
+    });
+  });
+
+  it("syncs date and period into the URL for point after explicit selection", async () => {
+    const user = userEvent.setup();
+    function SearchEcho() {
+      const [params] = useSearchParams();
+      return <div data-testid="url-search">{params.toString()}</div>;
+    }
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/points/shirpala"]}>
+          <Routes>
+            <Route
+              path="/points/:slug"
+              element={
+                <>
+                  <PointDetailPage />
+                  <SearchEcho />
+                </>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "شیرپلا" });
+    expect(screen.getByTestId("url-search")).toHaveTextContent("");
+    await user.click(screen.getByRole("button", { name: /بعدازظهر/ }));
+    await waitFor(() => {
+      const q = screen.getByTestId("url-search").textContent ?? "";
+      expect(q).toContain("period=afternoon");
+      expect(q).toContain("date=");
+    });
   });
 
   it("copies ASCII start_time in share URLs and reopens with the same planner state", async () => {
@@ -776,4 +989,135 @@ describe("periods and route planner", () => {
     expect(copied).toContain("date=2026-08-26");
     expect(copied).toContain("speed=");
   });
+
+  it("renders point and destination with the shared Forecast Place destination shell", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/points/sarband"]}>
+          <Routes>
+            <Route path="/points/:slug" element={<PointDetailPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    expect(await screen.findByRole("heading", { name: "سربند" })).toBeInTheDocument();
+    expect(document.querySelector(".destination-page")).toBeTruthy();
+    expect(document.querySelector(".destination-hero")).toBeTruthy();
+    expect(document.querySelector(".destination-layout")).toBeTruthy();
+    expect(document.querySelector(".weather-card")).toBeTruthy();
+    expect(document.querySelector(".destination-side")).toBeTruthy();
+    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
+    expect(document.querySelector(".point-page")).toBeNull();
+    expect(document.querySelector(".point-shell")).toBeNull();
+    expect(screen.getByText("هوای مقصد، برنامهٔ مسیر")).toBeInTheDocument();
+    expect(screen.queryByText(/هر دو ساعت/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/تغییرات صبح/)).not.toBeInTheDocument();
+  });
+
+  it("hides period headline on destination place page while keeping hourly legend", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/destination/touchal"]}>
+          <Routes>
+            <Route path="/destination/:slug" element={<DestinationPage />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    expect(screen.queryByText(/تغییرات شب/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/هر دو ساعت/)).not.toBeInTheDocument();
+    expect(document.querySelector(".legend")).toBeTruthy();
+    expect(screen.getByText("هوای مقصد، برنامهٔ مسیر")).toBeInTheDocument();
+    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
+    expect(document.querySelector(".destination-side")).toBeTruthy();
+  });
+
+  it("redirects destination-kind weather points to the destination canonical URL with query and fromRoute", async () => {
+    fetchMock.mockImplementation((input: RequestInfo) => {
+      const url = forecastUrl(input);
+      if (url.includes("/points/tochal_summit/forecast")) {
+        return jsonResponse({
+          ...pointForecast,
+          subject: {
+            ...pointForecast.subject,
+            slug: "tochal_summit",
+            weather_point_slug: "tochal_summit",
+            canonical_href: "/destination/touchal",
+            name: "قلهٔ توچال",
+          },
+          point: {
+            ...pointForecast.point,
+            slug: "tochal_summit",
+            name: "قلهٔ توچال",
+            kind: "destination",
+            href: "/destination/touchal",
+            canonical_href: "/destination/touchal",
+          },
+        });
+      }
+      if (url.includes("/destinations/touchal/forecast")) {
+        return jsonResponse({
+          ...destinationForecast,
+          forecast: {
+            ...destinationForecast.forecast,
+            meta: {
+              ...destinationForecast.forecast.meta,
+              selected_date: "2026-08-26",
+              selected_period: "afternoon",
+            },
+          },
+          meta: {
+            ...destinationForecast.meta,
+            selected_date: "2026-08-26",
+            selected_period: "afternoon",
+          },
+        });
+      }
+      return jsonResponse({}, false, 404);
+    });
+
+    const router = createMemoryRouter(
+      [
+        { path: "/points/:slug", element: <PointDetailPage /> },
+        { path: "/destination/:slug", element: <DestinationPage /> },
+      ],
+      {
+        initialEntries: [
+          {
+            pathname: "/points/tochal_summit",
+            search: "?date=2026-08-26&period=afternoon",
+            state: {
+              fromRoute: {
+                slug: "touchal-darband",
+                title: "دربند تا توچال",
+                pathname: "/routes/touchal-darband",
+                search: "?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
+                href: "/routes/touchal-darband?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
+              },
+            },
+          },
+        ],
+      },
+    );
+
+    render(
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>,
+    );
+    expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/destination/touchal");
+    expect(router.state.location.search).toBe("?date=2026-08-26&period=afternoon");
+    expect(router.state.location.search).not.toContain("start_time");
+    expect(router.state.location.state).toEqual(
+      expect.objectContaining({
+        fromRoute: expect.objectContaining({ title: "دربند تا توچال" }),
+      }),
+    );
+    expect(screen.getByLabelText("بازگشت به مسیر دربند تا توچال")).toBeInTheDocument();
+    expect(document.querySelector(".point-page")).toBeNull();
+  });
+
+
 });

@@ -4,25 +4,26 @@
 
 ```text
 Home /
-├── Destination /destination/{destinationSlug}
-│   └── Route /routes/{routeSlug}
-├── Point (canonical) /points/{weatherPointSlug}
+├── Forecast Place (قالب مشترک)
+│   ├── Destination role  /destination/{destinationSlug}
+│   └── Point role        /points/{weatherPointSlug}
+│       └── (اگر profile مقصد دارد → redirect به Destination)
+├── Route /routes/{routeSlug}
 ├── Login /login (reference؛ خارج از milestone اول)
 └── Share /share (آینده)
 ```
 
 ## context و مالکیت داده
 
-- **Destination** مالک catalog مقصد، مختصات تأییدشده، forecast مقصد و فهرست routeهای مرتبط است.
-- **WeatherPoint** هویت canonical نقطهٔ هواشناسی مستقل است؛ `/points/{slug}`.
-- **Route** مالک ترتیب نقاط، زمان‌بندی، speed profile و forecast متناسب با زمان عبور از نقطه است.
-- **Weather data** در backend normalize می‌شود؛ UI فقط envelope داخلی forecast را مصرف می‌کند و provider response خام را نمی‌بیند.
-- **Share** باید payload کمینه و قابل بازسازی route plan را نگه دارد؛ جزئیات ماندگاری باز است.
+- **WeatherPoint** حقیقت فیزیکی است: مختصات، ارتفاع، aliases، forecast.
+- **Destination** نقش عمومی/محصولی صفر یا یک روی یک WeatherPoint است (slug عمومی، hero، محبوبیت) — نه موجودیت فیزیکی جدا.
+- **Route** مجموعهٔ مرتب WeatherPointهاست با `origin_weather_point` و `target_weather_point`.
+- **RoutePoint** فقط عضویت مسیر‌محور (ترتیب، timing، note) است.
+- **Weather data** در backend normalize می‌شود؛ UI فقط envelope داخلی را مصرف می‌کند.
 
 ## navigation rules
 
 - برند همیشه Home است.
-- breadcrumb روی Destination و Route context را حفظ می‌کند.
-- back در mobile باید به parent معنایی برگردد، نه فقط به آخرین URL تصادفی.
-- تغییر theme global است اما day، period، route و plan context را reset نمی‌کند.
-- destination slug و route slug باید پایدار و قابل استفاده در لینک باشند.
+- `/destination/*` و `/points/*` یک قالب React مشترک (`PlaceForecastPage`) دارند.
+- تغییر theme global است اما day/period/route context را reset نمی‌کند.
+- slugها پایدار و قابل اشتراک‌اند.

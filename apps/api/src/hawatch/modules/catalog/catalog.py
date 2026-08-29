@@ -140,26 +140,16 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         weather_points[slug] = point
 
     destination_point = weather_points[_destination_point_slug(data)]
-    WeatherPoint.objects.update_or_create(
-        slug=f"dest:{destination.slug}",
-        defaults={
-            "name": destination.name,
-            "kind": WeatherPoint.Kind.DESTINATION,
-            "location": destination_point.location,
-            "elevation_m": destination_point.elevation_m,
-            "destination": destination,
-            "climate": destination.climate,
-            "status": WeatherPoint.Status.APPROVED,
-            "provenance": WeatherPoint.Provenance.CURATED,
-            "catalog_version": version,
-            "data_mode": "live",
-            "seed_version": version,
-        },
-    )
+    # Canonical profile link — do not create synthetic dest:{slug} WeatherPoints.
+    if destination.weather_point_id != destination_point.id:
+        destination.weather_point = destination_point
+        destination.save(update_fields=["weather_point"])
 
     kept_route_ids: list[int] = []
     for catalog_key, route_row in data["routes"].items():
         point_slugs = route_row["points"]
+        origin_wp = weather_points[point_slugs[0]]
+        target_wp = weather_points[point_slugs[-1]]
         route = Route.objects.update_or_create(
             slug=route_row["slug"],
             defaults={
@@ -177,7 +167,9 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
                 "timing_status": route_row.get("timing_status", Route.TimingStatus.PENDING),
                 "featured": route_row.get("featured", False),
                 "sort_order": route_row.get("sort_order", 0),
-                "origin_location": weather_points[point_slugs[0]].location,
+                "origin_location": origin_wp.location,
+                "origin_weather_point": origin_wp,
+                "target_weather_point": target_wp,
                 "catalog_key": catalog_key,
                 "data_mode": "live",
                 "seed_version": version,
@@ -223,12 +215,14 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         RoutePoint.objects.filter(route=route).delete()
         route.delete()
 
-    keep_point_slugs = {*weather_points, f"dest:{destination.slug}"}
+    keep_point_slugs = set(weather_points)
+    # Leave legacy dest:{slug} rows in place until a later cleanup migration;
+    # do not recreate them and do not delete them here (may still hold forecasts).
     WeatherPoint.objects.filter(
         destination=destination,
         provenance__in=[WeatherPoint.Provenance.DEMO_FIXTURE, WeatherPoint.Provenance.CURATED],
         data_mode="live",
-    ).exclude(slug__in=keep_point_slugs).delete()
+    ).exclude(slug__in=keep_point_slugs).exclude(slug__startswith="dest:").delete()
 
     return {
         "catalog_version": version,
@@ -236,5 +230,6 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         "weather_point_count": len(weather_points),
         "route_count": len(kept_route_ids),
         "shared_point_slugs": sorted(weather_points),
+        "destination_weather_point": destination_point.slug,
         **rebuild_search_index(),
     }

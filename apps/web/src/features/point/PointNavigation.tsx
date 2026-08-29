@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
+import { Navigate, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { LoadingState } from "../../components/LoadingState";
 import { EmptyState } from "../../components/EmptyState";
 import { Header } from "../../components/Header";
 import { buildForecastParams } from "../../lib/periods";
-import {
-  buildLegacyRouteBackState,
-  routeBackTarget,
-} from "../../lib/routeNavigation";
+import { buildLegacyRouteBackState } from "../../lib/routeNavigation";
 import type { RouteFromState } from "../../types";
 
-/** Resolve legacy route-scoped point URLs to the canonical /points/{slug} page. */
+/** Resolve legacy route-scoped point URLs to the canonical Forecast Place URL. */
 export function LegacyRoutePointRedirect() {
   const { routeSlug = "", pointSlug = "" } = useParams();
   const [params] = useSearchParams();
@@ -70,7 +67,7 @@ export function LegacyRoutePointRedirect() {
 
   if (missing) {
     return (
-      <main className="point-page">
+      <main className="destination-page">
         <Header />
         <EmptyState title="نقطهٔ مسیر پیدا نشد" detail="به مسیر برگرد و نقطهٔ دیگری را انتخاب کن." />
       </main>
@@ -82,8 +79,8 @@ export function LegacyRoutePointRedirect() {
   }
 
   return (
-    <main className="point-page">
-      <div className="point-shell">
+    <main className="destination-page">
+      <div className="destination-shell">
         <Header />
         <LoadingState />
       </div>
@@ -91,15 +88,5 @@ export function LegacyRoutePointRedirect() {
   );
 }
 
-export function PointRouteBackLink({ fromRoute }: { fromRoute: RouteFromState }) {
-  const { pathname, search } = routeBackTarget(fromRoute);
-  return (
-    <Link
-      className="contextual-route-back card-surface"
-      to={{ pathname, search }}
-      aria-label={`بازگشت به مسیر ${fromRoute.title}`}
-    >
-      بازگشت به مسیر {fromRoute.title}
-    </Link>
-  );
-}
+/** @deprecated Import RouteBackLink from components/RouteBackLink instead. */
+export { RouteBackLink as PointRouteBackLink } from "../../components/RouteBackLink";

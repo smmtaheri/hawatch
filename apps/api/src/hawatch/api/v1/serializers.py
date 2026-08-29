@@ -20,6 +20,7 @@ from hawatch.common.time import (
     now_tehran,
     period_hour_slots,
     period_window,
+    planner_period_payload,
     to_fa_digits,
     timezone,
 )
@@ -112,6 +113,9 @@ def meta_base(*, selected_date: date, period: str, extra: dict | None = None) ->
 
 
 def destination_weather_point(destination: Destination) -> WeatherPoint | None:
+    """Resolve the canonical WeatherPoint for a destination profile."""
+    if destination.weather_point_id:
+        return destination.weather_point
     point = (
         WeatherPoint.objects.filter(destination=destination, kind=WeatherPoint.Kind.DESTINATION)
         .exclude(slug__startswith="dest:")
@@ -120,10 +124,55 @@ def destination_weather_point(destination: Destination) -> WeatherPoint | None:
     )
     if point:
         return point
+    # Legacy synthetic fallback retained until cleanup migration removes dest: rows.
     return WeatherPoint.objects.filter(slug=f"dest:{destination.slug}").first()
 
 
+def destination_profile_for_point(point: WeatherPoint) -> Destination | None:
+    """Active DestinationProfile linked via Destination.weather_point (preferred)."""
+    if not point.id:
+        return None
+    return Destination.objects.filter(weather_point_id=point.id, is_active=True).first()
+
+
+def contextual_destination_for_point(point: WeatherPoint) -> Destination | None:
+    """Destination used for hero/context when the point is not itself a profile."""
+    profile = destination_profile_for_point(point)
+    if profile is not None:
+        return profile
+    via_route = (
+        Destination.objects.filter(routes__points__weather_point=point, is_active=True)
+        .order_by("popular_order", "slug")
+        .first()
+    )
+    if via_route is not None:
+        return via_route
+    if point.destination_id and point.destination.is_active:
+        return point.destination
+    return None
+
+
+def weather_point_is_active(point: WeatherPoint) -> bool:
+    """A point is active via DestinationProfile, legacy destination FK, or active route membership."""
+    if destination_profile_for_point(point) is not None:
+        return True
+    if point.destination_id and point.destination.is_active:
+        return True
+    return RoutePoint.objects.filter(
+        weather_point=point,
+        route__destination__is_active=True,
+    ).exists()
+
+
 def serialize_destination(destination: Destination, *, include_routes: bool = False) -> dict:
+    wp = destination.weather_point if destination.weather_point_id else None
+    elevation = wp.elevation_m if wp is not None and wp.elevation_m is not None else destination.elevation_m
+    if wp is not None and wp.location is not None:
+        latitude = wp.location.y
+        longitude = wp.location.x
+    else:
+        latitude = destination.location.y
+        longitude = destination.location.x
     data = {
         "slug": destination.slug,
         "tile_name": destination.tile_name,
@@ -132,16 +181,17 @@ def serialize_destination(destination: Destination, *, include_routes: bool = Fa
         "category": destination.category,
         "category_key": destination.category_key,
         "region": destination.region,
-        "elevation_m": destination.elevation_m,
-        "elevation_label": f"{to_fa_digits(destination.elevation_m)} متر",
-        "latitude": destination.location.y,
-        "longitude": destination.location.x,
+        "elevation_m": elevation,
+        "elevation_label": f"{to_fa_digits(elevation)} متر",
+        "latitude": latitude,
+        "longitude": longitude,
         "image": destination.image,
         "image_alt": destination.image_alt,
         "href": f"/destination/{destination.slug}",
         "is_popular": destination.is_popular,
         "popular_order": destination.popular_order,
         "data_mode": destination.data_mode,
+        "weather_point_slug": wp.slug if wp is not None else None,
     }
     if include_routes:
         data["routes"] = [serialize_route_summary(route) for route in destination.routes.all().order_by("sort_order")]
@@ -200,10 +250,293 @@ def serialize_route(route: Route) -> dict:
 
 
 def weather_point_canonical_href(point: WeatherPoint) -> str:
-    """Resolve canonical frontend URL for a shared WeatherPoint."""
+    """Resolve canonical frontend URL via DestinationProfile first."""
+    profile = destination_profile_for_point(point)
+    if profile is not None:
+        return f"/destination/{profile.slug}"
+    # Transitional fallback while kind/legacy FK still exist.
     if point.kind == WeatherPoint.Kind.DESTINATION and point.destination_id:
         return f"/destination/{point.destination.slug}"
     return f"/points/{point.slug}"
+
+
+def place_hero_assets(weather_point: WeatherPoint) -> tuple[str, str]:
+    """Hero image: DestinationProfile first, then contextual destination, then documented fallback."""
+    profile = destination_profile_for_point(weather_point)
+    if profile is not None and profile.image:
+        return profile.image, profile.image_alt or profile.name
+    contextual = contextual_destination_for_point(weather_point)
+    if contextual is not None and contextual.image:
+        return contextual.image, contextual.image_alt or contextual.name
+    return "", "سطح پیش‌فرض پیش‌بینی"
+
+
+def serialize_place_subject(
+    weather_point: WeatherPoint,
+    *,
+    kind: str,
+    display_name: str | None = None,
+    context_label: str | None = None,
+    elevation_m: int | None = None,
+    aliases: list | None = None,
+) -> dict:
+    profile = destination_profile_for_point(weather_point)
+    contextual = contextual_destination_for_point(weather_point)
+    hero_image, hero_alt = place_hero_assets(weather_point)
+    elev = elevation_m if elevation_m is not None else weather_point.elevation_m
+    name = display_name or weather_point.name
+    if kind == "destination" and profile is not None:
+        slug = profile.slug
+        region = profile.region
+        category = profile.category
+        default_context = profile.category
+    else:
+        slug = weather_point.slug
+        region = contextual.region if contextual else ""
+        category = contextual.category if contextual else ""
+        default_context = contextual.region if contextual else ""
+    return {
+        "kind": kind,
+        "slug": slug,
+        "weather_point_slug": weather_point.slug,
+        "canonical_href": weather_point_canonical_href(weather_point),
+        "name": name,
+        "aliases": aliases if aliases is not None else (weather_point.aliases or []),
+        "elevation_m": elev,
+        "elevation_label": f"{to_fa_digits(elev)} متر" if elev is not None else "ارتفاع نامشخص",
+        "latitude": weather_point.location.y,
+        "longitude": weather_point.location.x,
+        "context_label": context_label or default_context,
+        "hero_image": hero_image,
+        "hero_image_alt": hero_alt,
+        "region": region,
+        "category": category,
+    }
+
+
+def build_place_forecast(
+    weather_point: WeatherPoint,
+    *,
+    selected_date: date,
+    period: str,
+    kind: str,
+    related_routes: list[dict],
+    subject_overrides: dict | None = None,
+    climate: str | None = None,
+    elevation_for_metrics: int | None = None,
+) -> dict:
+    """Shared Forecast Place page contract for destination and point URLs."""
+    refresh_if_bucket_changed()
+    local = now_tehran()
+    today = local.date()
+    profile = destination_profile_for_point(weather_point)
+    contextual = contextual_destination_for_point(weather_point)
+    climate_key = climate or weather_point.climate or (
+        (profile or contextual).climate if (profile or contextual) else "alpine"
+    )
+    elev_ref = elevation_for_metrics
+    if elev_ref is None:
+        elev_ref = weather_point.elevation_m
+    if elev_ref is None and (profile or contextual) is not None:
+        elev_ref = (profile or contextual).elevation_m
+
+    display_name = None
+    context_label = None
+    if kind == "destination" and profile is not None:
+        display_name = profile.name
+        context_label = profile.category
+    subject = serialize_place_subject(
+        weather_point,
+        kind=kind,
+        display_name=display_name,
+        context_label=context_label,
+    )
+    if subject_overrides:
+        subject.update(subject_overrides)
+
+    records = _records_for_day(weather_point, selected_date)
+    hourly = _hourly_for_period(weather_point, selected_date, period, now=local)
+    current_payload = _reading_for_period_summary(weather_point, selected_date, period, local)
+
+    place_name = subject["name"]
+    short_name = profile.tile_name if kind == "destination" and profile else place_name
+    period_payload = planner_period_payload(period)
+
+    change = next(
+        (
+            item
+            for item in records
+            if item.severity in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11
+        ),
+        None,
+    )
+    critical = next((item for item in records if item.severity == "critical"), None)
+
+    if current_payload and current_payload["is_current"]:
+        hero_status = (
+            f"{current_payload['icon']}　الان در {short_name}　"
+            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
+        )
+    elif current_payload:
+        hero_status = (
+            f"{current_payload['icon']}　در {short_name}　"
+            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
+        )
+    else:
+        hero_status = "دادهٔ فعلی در دسترس نیست"
+    if change:
+        hour = change.forecast_at.astimezone(timezone()).hour
+        hero_alert = f"!　تغییر مهم: از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
+    else:
+        hero_alert = "✓　شرایط فعلاً آرام‌تر است"
+
+    morning_ok = (
+        all(item.severity == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11)
+        if records
+        else True
+    )
+    if climate_key == "desert":
+        decision_title = "حرکت پیش از تابش مستقیم، انتخاب بهتری است."
+        decision_text = "در کویر، زمان برگشت و آب مهم‌تر از رسیدن سریع است؛ از ظهر گرما و باد شن‌زا بیشتر می‌شود."
+    elif morning_ok:
+        decision_title = "صبح برای شروع برنامه مناسب‌تر است."
+        decision_text = "تا حدود ساعت ۱۱ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود."
+        if critical:
+            decision_text += f" از ساعت {to_fa_digits(critical.forecast_at.astimezone(timezone()).hour)} شرایط حساس‌تر می‌شود."
+    else:
+        decision_title = "برنامه را با احتیاط و زمان ذخیره بچین."
+        decision_text = "تغییر شرایط زودتر از معمول شروع می‌شود؛ مسیر کوتاه‌تر یا شروع زودتر را در نظر بگیر."
+
+    metrics: list[dict] = []
+    if records:
+        avg_wind = round(sum(item.wind_speed_kmh for item in records) / len(records))
+        gust = max(item.wind_gust_kmh for item in records)
+        vis = max(item.visibility_km for item in records)
+        uv_values = [item.uv_index for item in records if item.uv_index is not None]
+        uv = max(uv_values) if uv_values else None
+        precip = max(item.precipitation_probability for item in records)
+        freeze = next((item.freezing_level_m for item in records if item.freezing_level_m), None)
+        cloud_base = next((item.cloud_base_m for item in records if item.cloud_base_m), None)
+        sunrise = format_clock(5, 22 if climate_key != "desert" else 24)
+        sunset = format_clock(19, 46 if climate_key != "desert" else 38)
+        metrics = [
+            {
+                "icon": "⌁",
+                "label": "باد میانگین",
+                "value": f"{to_fa_digits(avg_wind)} km/h",
+                "note": wind_compass(records[0].wind_direction_deg),
+                "color": "teal",
+            },
+            {
+                "icon": "↯",
+                "label": "تندباد",
+                "value": f"{to_fa_digits(gust)} km/h",
+                "note": "بیشتر از ساعت ۱۱" if gust >= 20 else "آرام‌تر",
+                "color": "coral" if gust >= 30 else "teal",
+            },
+            {
+                "icon": "◌",
+                "label": "دید افقی",
+                "value": f"+{to_fa_digits(int(vis))} km" if vis >= 10 else f"{to_fa_digits(vis)} km",
+                "note": "کاهش دید در شرایط حساس",
+                "color": "coral" if vis < 6 else "teal",
+            },
+            {
+                "icon": "❄",
+                "label": "تراز صفر درجه",
+                "value": f"{to_fa_digits(freeze)} m" if freeze is not None else "نامشخص",
+                "note": (
+                    "بالاتر از قله"
+                    if freeze is not None and elev_ref is not None and freeze > elev_ref
+                    else ("نزدیک سطح" if freeze is not None else "از provider دریافت نشده")
+                ),
+                "color": "",
+            },
+            {
+                "icon": "☁",
+                "label": "پایهٔ ابر",
+                "value": f"{to_fa_digits(cloud_base)} m" if cloud_base is not None else "نامشخص",
+                "note": "نسبت به ارتفاع نقطه" if cloud_base is not None else "از provider دریافت نشده",
+                "color": "",
+            },
+            {
+                "icon": "☀",
+                "label": "تابش فرابنفش",
+                "value": _uv_label(uv),
+                "note": "برای بخش‌های باز مسیر",
+                "color": "amber" if (uv or 0) >= 6 else "teal",
+            },
+            {
+                "icon": "☂",
+                "label": "بارش",
+                "value": f"{to_fa_digits(precip)}٪",
+                "note": "بر اساس بازهٔ انتخابی",
+                "color": "amber" if precip else "teal",
+            },
+            {
+                "icon": "◷",
+                "label": "طلوع / غروب",
+                "value": f"{sunrise} / {sunset}",
+                "note": "برای زمان‌بندی برگشت",
+                "color": "",
+            },
+        ]
+
+    active_overnight = local.hour < 3 and period == "night" and selected_date == today - timedelta(days=1)
+    days = []
+    for day in day_window(today):
+        payload = day_payload(day, today)
+        if active_overnight and day == selected_date:
+            payload = {**payload, "is_past": False}
+        days.append(payload)
+
+    empty = not records and not hourly
+    partial = bool(records) and not hourly
+    meta = meta_base(selected_date=selected_date, period=period)
+    if empty and not settings.DEMO_DATA_ENABLED:
+        meta["freshness"] = "stale"
+        hero_status = "دادهٔ زنده در دسترس نیست"
+        hero_alert = "!　پیش‌بینی زنده هنوز ingest نشده است"
+        decision_title = "دادهٔ زنده موجود نیست."
+        decision_text = "تا زمان تکمیل ingestion، تصمیم قطعی از روی دادهٔ دمو ساخته نمی‌شود."
+
+    decision = {
+        "chip": f"{day_payload(selected_date, today)['label']} · جمع‌بندی هواچ",
+        "title": decision_title,
+        "text": decision_text,
+    }
+    hero = {"status": hero_status, "alert": hero_alert}
+    routes_title = (
+        f"مسیرهای منتهی به {short_name}"
+        if kind == "destination"
+        else "مسیرهای عبوری از این نقطه"
+    )
+
+    return {
+        "subject": subject,
+        "hero": hero,
+        "forecast": {
+            "days": days,
+            "period": period_payload,
+            "current": current_payload,
+            "hourly": hourly,
+            "meta": meta,
+        },
+        "metrics": metrics,
+        "decision": decision,
+        "related_routes": related_routes,
+        "related_routes_title": routes_title,
+        "alerts": [{"severity": "change", "title": hero_alert, "description": hero_alert}],
+        "empty": empty,
+        "partial": partial,
+        # Temporary compatibility aliases for older consumers.
+        "days": days,
+        "period": period_payload,
+        "current": current_payload,
+        "weather": current_payload,
+        "hourly": hourly,
+        "meta": meta,
+    }
 
 
 def serialize_point(point: RoutePoint) -> dict:
@@ -376,120 +709,31 @@ def _reading_for_period_summary(
 
 
 def destination_forecast(destination: Destination, *, selected_date: date, period: str) -> dict:
-    refresh_if_bucket_changed()
-    local = now_tehran()
-    today = local.date()
     point = destination_weather_point(destination)
     if point is None:
         raise NotFound({"detail": "نقطهٔ هوای مقصد پیدا نشد."})
-    records = _records_for_day(point, selected_date)
-    hourly = _hourly_for_period(point, selected_date, period, now=local)
-
-    current_payload = _reading_for_period_summary(point, selected_date, period, local)
-
-    change = next((item for item in records if item.severity in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11), None)
-    critical = next((item for item in records if item.severity == "critical"), None)
-
-    if current_payload and current_payload["is_current"]:
-        hero_status = f"{current_payload['icon']}　الان در {destination.tile_name}　{current_payload['temperature_label']}　·　{current_payload['condition']}"
-    elif current_payload:
-        hero_status = f"{current_payload['icon']}　در {destination.tile_name}　{current_payload['temperature_label']}　·　{current_payload['condition']}"
-    else:
-        hero_status = "دادهٔ فعلی در دسترس نیست"
-    if change:
-        hour = change.forecast_at.astimezone(timezone()).hour
-        hero_alert = f"!　تغییر مهم: از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
-    else:
-        hero_alert = "✓　شرایط فعلاً آرام‌تر است"
-
-    morning_ok = all(item.severity == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11) if records else True
-    if destination.climate == "desert":
-        decision_title = "حرکت پیش از تابش مستقیم، انتخاب بهتری است."
-        decision_text = "در کویر، زمان برگشت و آب مهم‌تر از رسیدن سریع است؛ از ظهر گرما و باد شن‌زا بیشتر می‌شود."
-    elif morning_ok:
-        decision_title = "صبح برای شروع برنامه مناسب‌تر است."
-        decision_text = "تا حدود ساعت ۱۱ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود."
-        if critical:
-            decision_text += f" از ساعت {to_fa_digits(critical.forecast_at.astimezone(timezone()).hour)} شرایط حساس‌تر می‌شود."
-    else:
-        decision_title = "برنامه را با احتیاط و زمان ذخیره بچین."
-        decision_text = "تغییر شرایط زودتر از معمول شروع می‌شود؛ مسیر کوتاه‌تر یا شروع زودتر را در نظر بگیر."
-
-    metrics = []
-    if records:
-        avg_wind = round(sum(item.wind_speed_kmh for item in records) / len(records))
-        gust = max(item.wind_gust_kmh for item in records)
-        vis = max(item.visibility_km for item in records)
-        uv_values = [item.uv_index for item in records if item.uv_index is not None]
-        uv = max(uv_values) if uv_values else None
-        precip = max(item.precipitation_probability for item in records)
-        freeze = next((item.freezing_level_m for item in records if item.freezing_level_m), None)
-        cloud_base = next((item.cloud_base_m for item in records if item.cloud_base_m), None)
-        sunrise = format_clock(5, 22 if destination.climate != "desert" else 24)
-        sunset = format_clock(19, 46 if destination.climate != "desert" else 38)
-        metrics = [
-            {"icon": "⌁", "label": "باد میانگین", "value": f"{to_fa_digits(avg_wind)} km/h", "note": wind_compass(records[0].wind_direction_deg), "color": "teal"},
-            {"icon": "↯", "label": "تندباد", "value": f"{to_fa_digits(gust)} km/h", "note": "بیشتر از ساعت ۱۱" if gust >= 20 else "آرام‌تر", "color": "coral" if gust >= 30 else "teal"},
-            {"icon": "◌", "label": "دید افقی", "value": f"+{to_fa_digits(int(vis))} km" if vis >= 10 else f"{to_fa_digits(vis)} km", "note": "کاهش دید در شرایط حساس", "color": "coral" if vis < 6 else "teal"},
-            {
-                "icon": "❄",
-                "label": "تراز صفر درجه",
-                "value": f"{to_fa_digits(freeze)} m" if freeze is not None else "نامشخص",
-                "note": "بالاتر از قله" if freeze is not None and freeze > destination.elevation_m else ("نزدیک سطح" if freeze is not None else "از provider دریافت نشده"),
-                "color": "",
-            },
-            {
-                "icon": "☁",
-                "label": "پایهٔ ابر",
-                "value": f"{to_fa_digits(cloud_base)} m" if cloud_base is not None else "نامشخص",
-                "note": "نسبت به ارتفاع مقصد" if cloud_base is not None else "از provider دریافت نشده",
-                "color": "",
-            },
-            {"icon": "☀", "label": "تابش فرابنفش", "value": _uv_label(uv), "note": "برای بخش‌های باز مسیر", "color": "amber" if (uv or 0) >= 6 else "teal"},
-            {"icon": "☂", "label": "بارش", "value": f"{to_fa_digits(precip)}٪", "note": "بر اساس بازهٔ انتخابی", "color": "amber" if precip else "teal"},
-            {"icon": "◷", "label": "طلوع / غروب", "value": f"{sunrise} / {sunset}", "note": "برای زمان‌بندی برگشت", "color": ""},
-        ]
-
-    active_overnight = local.hour < 3 and period == "night" and selected_date == today - timedelta(days=1)
-    days = []
-    for day in day_window(today):
-        payload = day_payload(day, today)
-        if active_overnight and day == selected_date:
-            payload = {**payload, "is_past": False}
-        days.append(payload)
-    empty = not records
-    meta = meta_base(selected_date=selected_date, period=period)
-    if empty and not settings.DEMO_DATA_ENABLED:
-        meta["freshness"] = "stale"
-        hero_status = "دادهٔ زنده در دسترس نیست"
-        hero_alert = "!　پیش‌بینی زنده هنوز ingest نشده است"
-        decision_title = "دادهٔ زنده موجود نیست."
-        decision_text = "تا زمان تکمیل ingestion، تصمیم قطعی از روی دادهٔ دمو ساخته نمی‌شود."
-    updated_label = f"آخرین به‌روزرسانی: امروز، {format_clock(local.hour, local.minute)}"
-    if meta.get("last_generated_time"):
-        generated = meta["last_generated_time"]
-        updated_label = f"آخرین به‌روزرسانی: {generated}"
-    elif empty and not settings.DEMO_DATA_ENABLED:
-        updated_label = "آخرین به‌روزرسانی: نامشخص"
+    routes = [serialize_route_summary(route) for route in destination.routes.all().order_by("sort_order")]
+    place = build_place_forecast(
+        point,
+        selected_date=selected_date,
+        period=period,
+        kind="destination",
+        related_routes=routes,
+        climate=destination.climate,
+        elevation_for_metrics=(
+            point.elevation_m if point.elevation_m is not None else destination.elevation_m
+        ),
+    )
+    # Compatibility aliases for existing frontend consumers.
     return {
-        "destination": serialize_destination(destination, include_routes=True),
-        "days": days,
-        "period": PERIODS[period],
-        "current": current_payload,
-        "hourly": hourly,
-        "metrics": metrics,
-        "alerts": [
-            {"severity": "change", "title": hero_alert, "description": hero_alert},
-        ],
-        "hero": {"status": hero_status, "alert": hero_alert},
-        "decision": {
-            "chip": f"{day_payload(selected_date, today)['label']} · جمع‌بندی هواچ",
-            "title": decision_title,
-            "text": decision_text,
+        **place,
+        "destination": {
+            **serialize_destination(destination, include_routes=True),
+            "image": place["subject"]["hero_image"] or destination.image,
+            "image_alt": place["subject"]["hero_image_alt"] or destination.image_alt,
         },
-        "updated_label": updated_label,
-        "empty": empty,
-        "meta": meta,
+        "related_routes": routes,
+        "updated_label": "",
     }
 
 
@@ -500,7 +744,7 @@ def localize_dt_safe(value: date, hour: int):
 
 
 def _point_arrival_minutes(point: RoutePoint, *, start_minutes: int, multiplier: float, timing_pending: bool) -> int | None:
-    if timing_pending:
+    if timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING:
         return None
     minutes = point.cumulative_minutes
     if minutes is None:
@@ -522,7 +766,9 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         arrival = _point_arrival_minutes(point, start_minutes=start_minutes, multiplier=multiplier, timing_pending=timing_pending)
         wp = point.weather_point
         weather = None
-        if wp and arrival is not None:
+        point_timing_pending = timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING
+        # Arrival-based weather only when validated cumulative timing exists.
+        if wp and arrival is not None and not point_timing_pending:
             target_at = arrival_forecast_at(selected_date, arrival)
             even_hour = target_at.hour - (target_at.hour % 2)
             lookup_at = target_at.replace(hour=even_hour, minute=0, second=0, microsecond=0)
@@ -535,30 +781,41 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                     .first()
                 )
             weather = reading_payload(record, now=local) if record else None
-        elif wp:
-            weather = _reading_for_period_summary(wp, selected_date, period, local)
+        else:
+            # Do not present period-level weather as if it were arrival forecast.
+            weather = None
         weather_available = weather is not None
         arrival_state = weather["severity"] if weather else "normal"
-        if arrival is not None:
+        if arrival is not None and weather_available:
             if arrival >= 900:
                 arrival_state = "critical"
             elif arrival >= 720 and arrival_state == "normal":
                 arrival_state = "change"
+        pending_note = "زمان‌بندی مسیر هنوز نهایی نشده"
+        if point_timing_pending:
+            condition = "زمان‌بندی در دسترس نیست"
+            note = point.note or pending_note
+        elif not weather_available:
+            condition = "در دسترس نیست"
+            note = point.note or ""
+        else:
+            condition = weather["condition"]
+            note = point.note or ""
         planned.append(
             {
                 **serialize_point(point),
                 "arrival_minutes": arrival,
                 "time": format_hhmm(arrival) if arrival is not None else "—",
                 "timing_estimated": route.timing_status == Route.TimingStatus.ESTIMATED,
-                "timing_pending": timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING,
+                "timing_pending": point_timing_pending,
                 "weather": weather,
                 "weather_available": weather_available,
                 "temp": weather["temperature_c"] if weather else None,
                 "wind": weather["wind_speed_kmh"] if weather else None,
                 "icon": weather["icon"] if weather else "—",
-                "condition": weather["condition"] if weather else "در دسترس نیست",
-                "state": arrival_state,
-                "note": point.note or ("زمان‌بندی مسیر هنوز نهایی نشده" if timing_pending else ""),
+                "condition": condition,
+                "state": arrival_state if weather_available else "normal",
+                "note": note,
             }
         )
 
@@ -649,7 +906,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     return {
         "route": serialize_route(route),
         "days": days,
-        "period": PERIODS[period],
+        "period": planner_period_payload(period),
         "start_minutes": start_minutes,
         "start_time": start_label,
         "speed": speed,
@@ -708,7 +965,7 @@ def list_destinations(*, query: str = "") -> list[Destination]:
 
 def get_destination(slug: str) -> Destination:
     try:
-        return Destination.objects.get(slug=slug, is_active=True)
+        return Destination.objects.select_related("weather_point").get(slug=slug, is_active=True)
     except Destination.DoesNotExist as exc:
         raise NotFound({"detail": "مقصد پیدا نشد."}) from exc
 
@@ -725,18 +982,18 @@ def get_route_point(route_slug: str, point_slug: str) -> RoutePoint:
 
 def get_weather_point(slug: str) -> WeatherPoint:
     try:
-        point = WeatherPoint.objects.select_related("destination").get(slug=slug)
+        point = WeatherPoint.objects.select_related("destination", "destination_profile").get(slug=slug)
     except WeatherPoint.DoesNotExist as exc:
         raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from exc
     if slug.startswith("dest:"):
         raise NotFound({"detail": "برای این مقصد از صفحهٔ مقصد استفاده کن."}) from None
-    if point.destination is None or not point.destination.is_active:
+    if not weather_point_is_active(point):
         raise NotFound({"detail": "نقطهٔ هواشناسی فعال نیست."}) from None
     return point
 
 
 def serialize_weather_point(point: WeatherPoint) -> dict:
-    destination = point.destination
+    contextual = contextual_destination_for_point(point)
     return {
         "slug": point.slug,
         "name": point.name,
@@ -749,7 +1006,8 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
         "status": point.status,
         "provenance": point.provenance,
         "href": weather_point_canonical_href(point),
-        "destination": serialize_destination(destination) if destination else None,
+        "canonical_href": weather_point_canonical_href(point),
+        "destination": serialize_destination(contextual) if contextual else None,
     }
 
 
@@ -757,60 +1015,40 @@ def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
     routes = (
         Route.objects.filter(points__weather_point=point, destination__is_active=True)
         .distinct()
-        .order_by("sort_order")
+        .order_by("sort_order", "slug")
     )
     return [serialize_route_summary(route) for route in routes]
 
 
 def related_destinations_for_weather_point(point: WeatherPoint) -> list[dict]:
-    if point.destination is None:
+    profile = destination_profile_for_point(point)
+    if profile is not None:
+        return [serialize_destination(profile)]
+    contextual = contextual_destination_for_point(point)
+    if contextual is None:
         return []
-    return [serialize_destination(point.destination)]
+    return [serialize_destination(contextual)]
 
 
 def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: str) -> dict:
-    refresh_if_bucket_changed()
-    local = now_tehran()
-    today = local.date()
-    hourly = _hourly_for_period(weather_point, selected_date, period, now=local)
-    current_payload = _reading_for_period_summary(weather_point, selected_date, period, local)
-    empty = not hourly
-    partial = weather_point is not None and not hourly
-    if current_payload and current_payload.get("is_current"):
-        hero_status = (
-            f"{current_payload['icon']}　الان در {weather_point.name}　"
-            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
-        )
-    elif current_payload:
-        hero_status = (
-            f"{current_payload['icon']}　در {weather_point.name}　"
-            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
-        )
-    else:
-        hero_status = "دادهٔ فعلی در دسترس نیست"
-    meta = meta_base(selected_date=selected_date, period=period)
-    if empty and not settings.DEMO_DATA_ENABLED:
-        meta["freshness"] = "stale"
-        hero_status = "دادهٔ زنده در دسترس نیست"
-    updated_label = f"آخرین به‌روزرسانی: امروز، {format_clock(local.hour, local.minute)}"
-    if meta.get("last_generated_time"):
-        updated_label = f"آخرین به‌روزرسانی: {meta['last_generated_time']}"
-    elif empty and not settings.DEMO_DATA_ENABLED:
-        updated_label = "آخرین به‌روزرسانی: نامشخص"
+    routes = related_routes_for_weather_point(weather_point)
+    place = build_place_forecast(
+        weather_point,
+        selected_date=selected_date,
+        period=period,
+        kind="point",
+        related_routes=routes,
+    )
+    # Compatibility aliases for existing frontend consumers.
     return {
-        "point": serialize_weather_point(weather_point),
+        **place,
+        "point": {
+            **serialize_weather_point(weather_point),
+            "canonical_href": place["subject"]["canonical_href"],
+        },
         "related_destinations": related_destinations_for_weather_point(weather_point),
-        "related_routes": related_routes_for_weather_point(weather_point),
-        "days": [day_payload(day, today) for day in day_window(today)],
-        "period": PERIODS[period],
-        "current": current_payload,
-        "weather": current_payload,
-        "hourly": hourly,
-        "hero": {"status": hero_status},
-        "updated_label": updated_label,
-        "empty": empty,
-        "partial": partial,
-        "meta": meta,
+        "related_routes": routes,
+        "updated_label": "",
     }
 
 

@@ -25,6 +25,8 @@ WEEKDAYS = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنب
 
 FORECAST_DAY_COUNT = 7  # yesterday + today + 5 following days
 HOURLY_STEP = 2
+# Planner gauge / start_time granularity (minutes). Change here for 30- or 5-minute steps later.
+PLANNER_TIME_STEP_MINUTES = 60
 MORNING_HOURS = (3, 5, 7, 9)
 AFTERNOON_HOURS = (11, 13, 15, 17)
 NIGHT_HOURS = (19, 21, 23, 1)
@@ -68,7 +70,8 @@ PERIODS = {
         "label": "شب",
         "range_label": "۱۹ تا ۰۳",
         "start_minutes": 1140,
-        "end_minutes": 1590,
+        # Exclusive end at 03:00 (1620) so last selectable planner start is 02:00 (1560).
+        "end_minutes": 1620,
         "default_start": 1200,
         "hours": NIGHT_HOURS,
         "headline": "تغییرات شب · هر دو ساعت",
@@ -269,20 +272,48 @@ def parse_start_time_value(raw: str) -> int:
 
 
 def period_last_start_minute(period: str) -> int:
-    """Last valid 30-minute start slot; period window ends are exclusive."""
+    """Last valid planner start slot; period window ends are exclusive."""
     spec = PERIODS[period]
-    if period == "night":
-        return spec["end_minutes"]
-    return spec["end_minutes"] - 30
+    step = PLANNER_TIME_STEP_MINUTES
+    return spec["end_minutes"] - step
+
+
+def planner_start_slots(period: str) -> list[int]:
+    """Selectable start minutes for a period at PLANNER_TIME_STEP_MINUTES granularity."""
+    spec = PERIODS[period]
+    step = PLANNER_TIME_STEP_MINUTES
+    last = period_last_start_minute(period)
+    return list(range(spec["start_minutes"], last + 1, step))
+
+
+def format_planner_tick(minutes: int) -> str:
+    return format_hhmm(minutes)
+
+
+def planner_period_payload(period: str) -> dict:
+    """Period display + planner bounds/step for route gauge (single source of truth)."""
+    spec = PERIODS[period]
+    slots = planner_start_slots(period)
+    return {
+        **spec,
+        "planner_step_minutes": PLANNER_TIME_STEP_MINUTES,
+        "planner_start_minutes": spec["start_minutes"],
+        "planner_end_minutes": spec["end_minutes"],
+        "planner_last_start_minutes": period_last_start_minute(period),
+        "planner_default_start_minutes": spec["default_start"],
+        "planner_ticks": [format_planner_tick(slot) for slot in slots],
+        "planner_slots": slots,
+    }
 
 
 def normalize_start_minutes(raw: str, period: str) -> int:
-    """Floor to 30-minute slots and clamp inside the selected period window."""
+    """Floor to PLANNER_TIME_STEP_MINUTES and clamp inside the selected period window."""
     spec = PERIODS[period]
+    step = PLANNER_TIME_STEP_MINUTES
     value = parse_start_time_value(raw)
     if period == "night" and value <= 180:
         value += 1440
-    value = (value // 30) * 30
+    value = (value // step) * step
     last_start = period_last_start_minute(period)
     return max(spec["start_minutes"], min(last_start, value))
 
@@ -314,13 +345,14 @@ def parse_start_minutes(raw: str | None, period: str, default: int | None) -> in
 
 
 def current_period_start_minutes(period: str, at: datetime | None = None) -> int:
-    """Floor current Tehran local time to 30 minutes; never later than now."""
+    """Floor current Tehran local time to PLANNER_TIME_STEP_MINUTES; never past last start."""
     local = now_tehran(at)
     spec = PERIODS[period]
+    step = PLANNER_TIME_STEP_MINUTES
     now_minutes = local.hour * 60 + local.minute
     if period == "night" and now_minutes <= 180:
         now_minutes += 1440
-    floored = (now_minutes // 30) * 30
+    floored = (now_minutes // step) * step
     last_start = period_last_start_minute(period)
     return max(spec["start_minutes"], min(floored, last_start))
 

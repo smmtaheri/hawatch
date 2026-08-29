@@ -105,18 +105,76 @@ export interface Metric {
   color: string;
 }
 
-export interface DestinationForecast {
-  destination: DestinationSummary & { routes: RouteSummary[] };
-  days: DayInfo[];
-  period: { id: PeriodId; label: string; range_label: string; headline: string; hours: number[] };
-  current: HourlyReading | null;
-  hourly: HourlyReading[];
-  metrics: Metric[];
+export type PlaceKind = "destination" | "point";
+
+export interface PlaceSubject {
+  kind: PlaceKind;
+  slug: string;
+  weather_point_slug?: string;
+  canonical_href: string;
+  name: string;
+  aliases?: string[];
+  elevation_m: number | null;
+  elevation_label: string;
+  latitude: number;
+  longitude: number;
+  context_label: string;
+  hero_image: string;
+  hero_image_alt: string;
+  region?: string;
+  category?: string;
+}
+
+export interface PlannerPeriodInfo {
+  id: PeriodId;
+  label: string;
+  range_label: string;
+  headline: string;
+  hours: number[];
+  start_minutes?: number;
+  end_minutes?: number;
+  default_start?: number;
+  planner_step_minutes?: number;
+  planner_start_minutes?: number;
+  planner_end_minutes?: number;
+  planner_last_start_minutes?: number;
+  planner_default_start_minutes?: number;
+  planner_ticks?: string[];
+  planner_slots?: number[];
+}
+
+/** First-class shared Forecast Place contract for destination and point endpoints. */
+export interface PlaceForecastResponse {
+  subject: PlaceSubject;
   hero: { status: string; alert: string };
+  forecast: {
+    days: DayInfo[];
+    period: PlannerPeriodInfo;
+    current: HourlyReading | null;
+    hourly: HourlyReading[];
+    meta: ApiMeta;
+  };
+  metrics: Metric[];
   decision: { chip: string; title: string; text: string };
-  updated_label: string;
+  related_routes: RouteSummary[];
+  related_routes_title?: string;
   empty: boolean;
-  meta: ApiMeta;
+  partial?: boolean;
+  /** Temporary backend compatibility aliases — prefer `forecast.*`. */
+  days?: DayInfo[];
+  period?: PlannerPeriodInfo;
+  current?: HourlyReading | null;
+  weather?: HourlyReading | null;
+  hourly?: HourlyReading[];
+  meta?: ApiMeta;
+  destination?: DestinationSummary & { routes?: RouteSummary[]; weather_point_slug?: string | null };
+  point?: WeatherPointSummary & { canonical_href?: string };
+  related_destinations?: DestinationSummary[];
+  updated_label?: string;
+}
+
+export interface DestinationForecast extends PlaceForecastResponse {
+  destination: DestinationSummary & { routes: RouteSummary[] };
 }
 
 export interface RoutePointView {
@@ -176,23 +234,13 @@ export interface WeatherPointSummary {
   status: string;
   provenance: string;
   href: string;
+  canonical_href?: string;
   destination: DestinationSummary | null;
 }
 
-export interface PointForecast {
+export interface PointForecast extends PlaceForecastResponse {
   point: WeatherPointSummary;
   related_destinations: DestinationSummary[];
-  related_routes: RouteSummary[];
-  days: DayInfo[];
-  period: { id: PeriodId; label: string; range_label: string; headline: string; hours: number[] };
-  current: HourlyReading | null;
-  weather: HourlyReading | null;
-  hourly: HourlyReading[];
-  hero: { status: string };
-  updated_label: string;
-  empty: boolean;
-  partial: boolean;
-  meta: ApiMeta;
 }
 
 export interface SearchSuggestion {
@@ -229,7 +277,7 @@ export interface RouteForecast {
     href: string;
   };
   days: DayInfo[];
-  period: { id: PeriodId; label: string; range_label: string; headline?: string; hours: number[] };
+  period: PlannerPeriodInfo;
   start_minutes: number;
   start_time: string;
   speed: string;

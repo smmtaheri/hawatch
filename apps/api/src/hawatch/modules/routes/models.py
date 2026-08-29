@@ -36,12 +36,29 @@ class Route(models.Model):
     catalog_key = models.SlugField(max_length=80, blank=True, default="")
     data_mode = models.CharField(max_length=16, default="demo")
     seed_version = models.CharField(max_length=32, default="hawatch-demo-v1")
+    # Canonical endpoints; backfilled from ordered RoutePoints (nullable until migrated).
+    origin_weather_point = models.ForeignKey(
+        "forecasts.WeatherPoint",
+        on_delete=models.PROTECT,
+        related_name="origin_routes",
+        null=True,
+        blank=True,
+    )
+    target_weather_point = models.ForeignKey(
+        "forecasts.WeatherPoint",
+        on_delete=models.PROTECT,
+        related_name="target_routes",
+        null=True,
+        blank=True,
+    )
 
     class Meta:
         indexes = [
             models.Index(fields=["destination", "sort_order"], name="route_dest_sort_idx"),
             models.Index(fields=["featured"], name="route_featured_idx"),
             models.Index(fields=["catalog_key"], name="route_catalog_key_idx"),
+            models.Index(fields=["origin_weather_point"], name="route_origin_wp_idx"),
+            models.Index(fields=["target_weather_point"], name="route_target_wp_idx"),
             GistIndex(fields=["origin_location"], name="route_origin_gist"),
         ]
 

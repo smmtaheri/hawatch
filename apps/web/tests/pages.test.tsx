@@ -9,6 +9,22 @@ import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
 
 const destinationForecast = {
+  subject: {
+    kind: "destination" as const,
+    slug: "touchal",
+    weather_point_slug: "tochal_summit",
+    canonical_href: "/destination/touchal",
+    name: "قلهٔ توچال",
+    elevation_m: 3964,
+    elevation_label: "۳۹۶۴ متر",
+    latitude: 35.88,
+    longitude: 51.42,
+    context_label: "کوه · البرز مرکزی",
+    hero_image: "/images/touchal-banner-clean.png",
+    hero_image_alt: "نمای کوهستان توچال",
+    region: "تهران",
+    category: "کوه · البرز مرکزی",
+  },
   destination: {
     slug: "touchal",
     tile_name: "توچال",
@@ -51,9 +67,37 @@ const destinationForecast = {
   metrics: [{ icon: "⌁", label: "باد میانگین", value: "۱۰ km/h", note: "جنوب‌غربی", color: "teal" }],
   hero: { status: "الان در قله ۹°", alert: "تغییر مهم" },
   decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۱ آرام‌تر است." },
+  related_routes: [
+    {
+      slug: "touchal-darband",
+      title: "دربند تا توچال",
+      trail_label: "ترک کوه‌پیمایی",
+      origin: "دربند",
+      destination_label: "قلهٔ توچال",
+      distance_km: 16.2,
+      distance_label: "۱۶٫۲ km",
+      ascent_m: 2260,
+      ascent_label: "۲۲۶۰ m",
+      featured: true,
+      href: "/routes/touchal-darband",
+    },
+  ],
+  related_routes_title: "مسیرهای منتهی به توچال",
   updated_label: "آخرین به‌روزرسانی: امروز، ۰۵:۴۵",
   empty: false,
-  meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
+  meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", current_local_time: "2026-08-26T06:00:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
+  forecast: {
+    days: [
+      { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
+      { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
+    ],
+    period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح · هر دو ساعت", hours: [3, 5, 7, 9] },
+    current: null,
+    hourly: [
+      { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
+    ],
+    meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", current_local_time: "2026-08-26T06:00:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
+  },
 };
 
 const routeForecast = {
@@ -225,6 +269,10 @@ describe("Hawatch pages", () => {
         jsonResponse({
           ...destinationForecast,
           meta: { ...destinationForecast.meta, freshness: "stale" },
+          forecast: {
+            ...destinationForecast.forecast,
+            meta: { ...destinationForecast.forecast.meta, freshness: "stale" },
+          },
         }),
       ),
     );
@@ -416,6 +464,22 @@ describe("Hawatch pages", () => {
         }
         if (url.includes("/points/pas_ghaleh/forecast")) {
           return jsonResponse({
+            subject: {
+              kind: "point" as const,
+              slug: "pas_ghaleh",
+              weather_point_slug: "pas_ghaleh",
+              canonical_href: "/points/pas_ghaleh",
+              name: "پس‌قلعه",
+              elevation_m: 1936,
+              elevation_label: "۱۹۳۶ متر",
+              latitude: 35.836,
+              longitude: 51.423,
+              context_label: "تهران",
+              hero_image: "/images/touchal-banner-clean.png",
+              hero_image_alt: "توچال",
+              region: "تهران",
+              category: "کوه",
+            },
             point: {
               slug: "pas_ghaleh",
               name: "پس‌قلعه",
@@ -428,20 +492,31 @@ describe("Hawatch pages", () => {
               status: "approved",
               provenance: "curated",
               href: "/points/pas_ghaleh",
+              canonical_href: "/points/pas_ghaleh",
               destination: destinationForecast.destination,
             },
             related_destinations: [destinationForecast.destination],
             related_routes: [],
+            related_routes_title: "مسیرهای عبوری از این نقطه",
             days: destinationForecast.days,
             period: destinationForecast.period,
             current: destinationForecast.hourly[0],
             weather: destinationForecast.hourly[0],
             hourly: destinationForecast.hourly,
-            hero: { status: "☼　در پس‌قلعه　۷°　·　صاف" },
+            metrics: [],
+            hero: { status: "☼　در پس‌قلعه　۷°　·　صاف", alert: "✓　شرایط فعلاً آرام‌تر است" },
+            decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح", text: "آرام" },
             updated_label: "امروز",
             empty: false,
             partial: false,
             meta: destinationForecast.meta,
+            forecast: {
+              days: destinationForecast.forecast.days,
+              period: destinationForecast.forecast.period,
+              current: destinationForecast.hourly[0],
+              hourly: destinationForecast.hourly,
+              meta: destinationForecast.forecast.meta,
+            },
           });
         }
         if (url.includes("/destinations/")) {

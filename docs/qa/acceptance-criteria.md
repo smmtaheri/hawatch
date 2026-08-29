@@ -27,6 +27,8 @@
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.
 - [ ] Point (`/points/{weatherPointSlug}`) صفحهٔ canonical مستقل برای WeatherPoint است و timing planner ندارد.
 - [ ] point مقصدی مثل `tochal_summit` به `/destination/touchal` canonical می‌رود و صفحهٔ standalone موازی ندارد.
+- [ ] `/points/sarband` همان shell بصری Destination را دارد (بدون `.point-page`).
+- [ ] Destination و Point از یک `PlaceForecastPage` رندر می‌شوند.
 - [ ] لینک Route به Point تمیز است؛ context کامل Route در `location.state.fromRoute` نگه داشته می‌شود.
 - [ ] بازگشت Point که از Route باز شده، `date`، `period`، `start_time` و `speed` را restore می‌کند؛ ورود مستقیم/refresh دکمهٔ back گمراه‌کننده ندارد.
 
@@ -41,6 +43,7 @@
 - [ ] periodهای کاملاً گذشته با ساعت رسمی تهران dim هستند و period جاری واضح است.
 - [ ] Route در timing pending متن خام `timing pending`، ETA ساختگی یا fallback ثابت ظهر برای period انتخاب‌شده ندارد.
 - [ ] Route timeline دمای زیر marker و headline «تغییرات شب · هر دو ساعت» را نمایش نمی‌دهد.
+- [ ] Destination/Point هم `period.headline` را نشان نمی‌دهند؛ فقط کارت ساعتی + legend.
 - [ ] Route cards زیر timeline برای هر RoutePoint و همان period انتخاب‌شده‌اند، نه forecast عمومی مقصد.
 - [ ] label بالای day tabs در Destination و Point «انتخاب روز» است و timestamp خام update نمایش داده نمی‌شود.
 

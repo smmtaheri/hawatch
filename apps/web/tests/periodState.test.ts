@@ -22,9 +22,9 @@ describe("periodState", () => {
     expect(tehranMinutesInPeriod("2026-08-28T01:30:00+03:30", "night")).toBe(1530);
   });
 
-  it("caps gauge minutes at the last valid start slot with 30-minute flooring", () => {
-    expect(gaugeCurrentMinutes("2026-08-28", "morning", "2026-08-28T10:45:00+03:30")).toBe(630);
-    expect(periodLastStartMinutes("morning")).toBe(630);
+  it("caps gauge minutes at the last valid start slot with configured hourly flooring", () => {
+    expect(gaugeCurrentMinutes("2026-08-28", "morning", "2026-08-28T10:45:00+03:30")).toBe(600);
+    expect(periodLastStartMinutes("morning")).toBe(600);
     expect(gaugeCurrentMinutes("2026-08-28", "morning", "2026-08-28T10:29:00+03:30")).toBe(600);
   });
 });

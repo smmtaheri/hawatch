@@ -1,5 +1,10 @@
-import type { PeriodId } from "../types";
-import { parseClockToMinutes, PERIOD_RANGES, periodLastStartMinutes } from "./periods";
+import type { PeriodId, PlannerPeriodInfo } from "../types";
+import {
+  parseClockToMinutes,
+  PERIOD_RANGES,
+  periodLastStartMinutes,
+  resolvePlannerBounds,
+} from "./periods";
 import { addTehranCalendarDays, compareTehranInstants, tehranClockMinutes, tehranLocalIso } from "./tehranTime";
 
 export type PeriodPhase = "past" | "current" | "future";
@@ -56,14 +61,14 @@ export function gaugeCurrentMinutes(
   selectedDate: string,
   period: PeriodId,
   currentLocalTime: string | undefined,
+  apiPeriod?: PlannerPeriodInfo | null,
 ): number | undefined {
   if (!currentLocalTime) return undefined;
   if (classifyPeriod(period, selectedDate, currentLocalTime) !== "current") return undefined;
   const minutes = tehranMinutesInPeriod(currentLocalTime, period);
-  const range = PERIOD_RANGES[period];
-  const maxStart = periodLastStartMinutes(period);
-  const floored = Math.floor(minutes / 30) * 30;
-  return Math.max(range.min, Math.min(maxStart, floored));
+  const bounds = resolvePlannerBounds(period, apiPeriod);
+  const floored = Math.floor(minutes / bounds.stepMinutes) * bounds.stepMinutes;
+  return Math.max(bounds.min, Math.min(bounds.lastStart, floored));
 }
 
 /** Canonical route start: explicit clock, live floored time, or period default. */
@@ -72,13 +77,16 @@ export function resolveRouteStartMinutes(
   period: PeriodId,
   currentLocalTime: string | undefined,
   explicitStart?: string,
+  apiPeriod?: PlannerPeriodInfo | null,
 ): number {
   if (explicitStart) {
-    return parseClockToMinutes(explicitStart, period);
+    return parseClockToMinutes(explicitStart, period, apiPeriod);
   }
   if (currentLocalTime && classifyPeriod(period, selectedDate, currentLocalTime) === "current") {
-    const live = gaugeCurrentMinutes(selectedDate, period, currentLocalTime);
+    const live = gaugeCurrentMinutes(selectedDate, period, currentLocalTime, apiPeriod);
     if (live !== undefined) return live;
   }
-  return PERIOD_RANGES[period].defaultStartMinutes;
+  return resolvePlannerBounds(period, apiPeriod).defaultStartMinutes;
 }
+
+export { periodLastStartMinutes, PERIOD_RANGES };

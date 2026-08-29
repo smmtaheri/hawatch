@@ -21,8 +21,7 @@ import {
   buildForecastParams,
   formatClockDisplay,
   isValidStartTimeInput,
-  PERIOD_RANGES,
-  periodTicks,
+  resolvePlannerBounds,
   toClock,
 } from "../../lib/periods";
 import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } from "../../lib/periodState";
@@ -50,10 +49,10 @@ function isPlannerOnlyChange(previous: RouteRequestInputs, next: RouteRequestInp
   );
 }
 
-function pointWeatherLabel(point: RoutePointView, periodLabel: string, timingPending: boolean) {
-  if (timingPending) return `وضعیت ${periodLabel}`;
+function pointWeatherLabel(point: RoutePointView, timingPending: boolean) {
+  if (timingPending || point.timing_pending) return "زمان‌بندی در دسترس نیست";
   if (point.time && point.time !== "—") return `حوالی ${point.time}`;
-  return periodLabel;
+  return "پیش‌بینی رسیدن";
 }
 
 export function RoutePage() {
@@ -180,8 +179,11 @@ export function RoutePage() {
     [],
   );
 
-  const ticks = useMemo(() => periodTicks(displayPeriod), [displayPeriod]);
-  const periodRange = PERIOD_RANGES[displayPeriod];
+  const plannerBounds = useMemo(
+    () => resolvePlannerBounds(displayPeriod, data?.period ?? null),
+    [displayPeriod, data?.period],
+  );
+  const ticks = plannerBounds.ticks;
   const fromRoute = data ? buildRouteBackState(data.route, params) : undefined;
 
   function pointLink(point: RoutePointView) {
@@ -209,14 +211,26 @@ export function RoutePage() {
   function handlePeriodChange(next: PeriodId) {
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
     const selected = requestedDate ?? data?.meta.selected_date ?? "";
-    const canonical = resolveRouteStartMinutes(selected, next, data?.meta.current_local_time);
+    const canonical = resolveRouteStartMinutes(
+      selected,
+      next,
+      data?.meta.current_local_time,
+      undefined,
+      data?.period?.id === next ? data.period : null,
+    );
     setDraftMinutes(canonical);
     update({ period: next, start_time: toClock(canonical) });
   }
 
   function handleDateChange(next: string) {
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
-    const canonical = resolveRouteStartMinutes(next, displayPeriod, data?.meta.current_local_time);
+    const canonical = resolveRouteStartMinutes(
+      next,
+      displayPeriod,
+      data?.meta.current_local_time,
+      undefined,
+      data?.period ?? null,
+    );
     setDraftMinutes(canonical);
     update({ date: next, start_time: toClock(canonical) });
   }
@@ -236,15 +250,16 @@ export function RoutePage() {
   }
 
   const selected = requestedDate ?? data?.meta.selected_date ?? "";
-  const startMinutes = draftMinutes ?? data?.start_minutes ?? periodRange.defaultStartMinutes;
+  const startMinutes = draftMinutes ?? data?.start_minutes ?? plannerBounds.defaultStartMinutes;
   const startDisplay = formatClockDisplay(startMinutes);
   const periodStates =
     data?.meta.current_local_time && selected
       ? classifyAllPeriods(selected, data.meta.current_local_time)
       : undefined;
-  const gaugeNow = data?.meta.current_local_time
-    ? gaugeCurrentMinutes(selected, displayPeriod, data.meta.current_local_time)
-    : undefined;
+  const gaugeNow =
+    data?.meta.current_local_time && selected
+      ? gaugeCurrentMinutes(selected, displayPeriod, data.meta.current_local_time, data.period)
+      : undefined;
 
   return (
     <main className="route-page">
@@ -309,8 +324,8 @@ export function RoutePage() {
                   <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
                     <div className="route-point-weather-grid">
                       {data.points.map((point) => {
-                        const unavailable = point.weather_available === false;
-                        const label = pointWeatherLabel(point, data.period.label, timingPending);
+                        const unavailable = point.weather_available === false || point.timing_pending;
+                        const label = pointWeatherLabel(point, timingPending);
                         return (
                           <RoutePointLink
                             key={`${point.slug}-weather`}
@@ -319,14 +334,17 @@ export function RoutePage() {
                             className={`route-point-weather-card ${point.state} ${unavailable ? "weather-unavailable" : ""}`}
                             ariaLabel={`آب‌وهوای ${point.name} · ${label}`}
                           >
-                            <strong>{label}</strong>
-                            <span className="route-point-weather-icon">{point.icon}</span>
+                            <strong>{point.name}</strong>
+                            <span className="route-point-weather-eta">{label}</span>
+                            <span className="route-point-weather-icon">{unavailable ? "—" : point.icon}</span>
                             <span className="route-point-weather-condition">
-                              {unavailable ? "در دسترس نیست" : point.condition}
+                              {unavailable ? point.condition || "زمان‌بندی در دسترس نیست" : point.condition}
                             </span>
-                            <b>{point.temp != null ? `${point.temp}°` : "—"}</b>
-                            <small>باد {point.wind ?? "—"}</small>
-                            {point.state !== "normal" ? <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em> : null}
+                            <b>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</b>
+                            <small>{!unavailable && point.wind != null ? `باد ${point.wind}` : "باد —"}</small>
+                            {!unavailable && point.state !== "normal" ? (
+                              <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em>
+                            ) : null}
                           </RoutePointLink>
                         );
                       })}
@@ -356,13 +374,15 @@ export function RoutePage() {
                   </div>
                   <StartTimeControl
                     minutes={startMinutes}
-                    min={periodRange.min}
-                    max={periodRange.max}
+                    min={plannerBounds.min}
+                    max={plannerBounds.maxExclusive}
                     period={displayPeriod}
+                    apiPeriod={data.period}
                     ticks={ticks}
-                    rangeLabel={periodRange.label}
+                    rangeLabel={plannerBounds.label}
                     display={startDisplay}
                     currentMinutes={gaugeNow}
+                    stepMinutes={plannerBounds.stepMinutes}
                     onChange={handleDraftChange}
                     onCommit={commitStartMinutes}
                   />

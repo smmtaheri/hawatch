@@ -7,7 +7,8 @@
 - Route back: Destination همان route.
 - Point back: فقط وقتی `fromRoute` در navigation state باشد → همان Route؛ وگرنه بدون back گمراه‌کننده.
 - breadcrumb Point: `مقصدها / {نام نقطه}` — بدون زنجیرهٔ مسیر.
-- WeatherPoint نوع destination، مثل `tochal_summit`، صفحهٔ standalone جدا ندارد و به Destination canonical هدایت می‌شود.
+- WeatherPoint با Destination profile، مثل `tochal_summit`، به Destination canonical هدایت می‌شود؛ هر دو URL از قالب مشترک Forecast Place استفاده می‌کنند.
+- sidebar نقطه حذف نمی‌شود حتی اگر از Route آمده باشد.
 - browser back: state قابل بازسازی باید تا حد امکان حفظ شود؛ Route queryهای برنامه‌ریزی را نگه می‌دارد.
 
 ## حالت‌های deep link

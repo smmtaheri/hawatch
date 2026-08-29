@@ -19,6 +19,10 @@
 - بالای day tabs فقط label «انتخاب روز» نمایش داده می‌شود.
 - heading و توضیح تکراری «پیش‌بینی ... / روز و ساعت را انتخاب کن...» حذف می‌شوند.
 
+## قالب مشترک
+
+Destination و Point هر دو از `PlaceForecastPage` استفاده می‌کنند. baseline بصری همان screenshotهای Destination است. جزئیات: [design/pages/place-forecast.md](../../design/pages/place-forecast.md).
+
 ## layout mobile
 
 روزها قبل از کنترل هوا قرار می‌گیرند. مسیرها دو ستونه و کوچک‌اند، عنوان «مسیرها» کوتاه است و کنترل بازه فشرده است. هیچ card یا grid نباید root را عریض‌تر کند.

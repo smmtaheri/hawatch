@@ -2,17 +2,11 @@ import type { CSSProperties } from "react";
 
 import type { HourlyReading } from "../types";
 
-export function HourlyForecast({
-  hours,
-  headline,
-}: {
-  hours: HourlyReading[];
-  headline: string;
-}) {
+/** Hourly cards + severity legend. Period `headline` is API-only and not shown. */
+export function HourlyForecast({ hours }: { hours: HourlyReading[] }) {
   return (
     <div className="hourly-box">
       <div className="hourly-head">
-        <span>{headline}</span>
         <div className="legend">
           <span>
             <i className="legend-dot teal-dot" />

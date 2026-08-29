@@ -133,10 +133,10 @@ def test_defaults_applied_without_query_params(mock_default, api_client, seeded)
 
 @pytest.mark.django_db
 def test_night_start_minutes_cross_midnight():
-    assert parse_start_minutes("00:30", "night", None) == 1470
-    assert parse_start_minutes("01:30", "night", None) == 1530
-    assert parse_start_minutes("02:30", "night", None) == 1590
-    assert parse_start_minutes("03:00", "night", None) == 1590
+    assert parse_start_minutes("00:30", "night", None) == 1440
+    assert parse_start_minutes("01:30", "night", None) == 1500
+    assert parse_start_minutes("02:30", "night", None) == 1560
+    assert parse_start_minutes("03:00", "night", None) == 1560
 
 
 @pytest.mark.django_db
@@ -191,9 +191,9 @@ def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
     tz = timezone()
     cases = [
         (datetime(2026, 8, 28, 10, 29, tzinfo=tz), "morning", 600),
-        (datetime(2026, 8, 28, 10, 45, tzinfo=tz), "morning", 630),
-        (datetime(2026, 8, 28, 18, 45, tzinfo=tz), "afternoon", 1110),
-        (datetime(2026, 8, 28, 2, 45, tzinfo=tz), "night", 1590),
+        (datetime(2026, 8, 28, 10, 45, tzinfo=tz), "morning", 600),
+        (datetime(2026, 8, 28, 18, 45, tzinfo=tz), "afternoon", 1080),
+        (datetime(2026, 8, 28, 2, 45, tzinfo=tz), "night", 1560),
         (datetime(2026, 8, 28, 11, 0, tzinfo=tz), "afternoon", 660),
         (datetime(2026, 8, 28, 19, 0, tzinfo=tz), "night", 1140),
     ]
@@ -203,9 +203,9 @@ def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
 
 @pytest.mark.django_db
 def test_parse_start_minutes_respects_exclusive_period_end():
-    assert parse_start_minutes("11:00", "morning", None) == 630
-    assert parse_start_minutes("19:00", "afternoon", None) == 1110
-    assert parse_start_minutes("03:00", "night", None) == 1590
+    assert parse_start_minutes("11:00", "morning", None) == 600
+    assert parse_start_minutes("19:00", "afternoon", None) == 1080
+    assert parse_start_minutes("03:00", "night", None) == 1560
 
 
 @pytest.mark.django_db
@@ -245,7 +245,7 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
 
 
 @pytest.mark.django_db
-def test_timing_pending_point_weather_stays_in_selected_period(api_client, seeded):
+def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
     tz = timezone()
     at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
@@ -256,12 +256,12 @@ def test_timing_pending_point_weather_stays_in_selected_period(api_client, seede
             {"date": "2026-08-28", "period": "night"},
         ).json()
     assert body["timing_pending"] is True
-    allowed_hours = {19, 21, 23, 1}
     for point in body["points"]:
-        if point["weather_available"]:
-            assert point["weather"]["hour"] in allowed_hours
-        else:
-            assert point["condition"] == "در دسترس نیست"
+        assert point["weather_available"] is False
+        assert point["weather"] is None
+        assert point["arrival_minutes"] is None
+        assert "زمان‌بندی" in point["condition"]
+        assert "timing pending" not in point["condition"].lower()
 
 
 @pytest.mark.django_db
@@ -285,7 +285,7 @@ def test_route_default_start_uses_current_tehran_in_current_period(api_client, s
             "/api/v1/routes/touchal-darband/forecast/",
             {"date": "2026-08-28", "period": "morning"},
         ).json()
-    assert body["start_minutes"] == 450
+    assert body["start_minutes"] == 420
 
 
 @pytest.mark.django_db
@@ -394,7 +394,7 @@ def test_parse_start_time_value_rejects_malformed():
 @pytest.mark.django_db
 def test_legacy_numeric_start_time_minutes():
     assert normalize_start_minutes("360", "morning") == 360
-    assert normalize_start_minutes("90", "night") == 1530
+    assert normalize_start_minutes("90", "night") == 1500
 
 
 @pytest.mark.django_db
@@ -410,3 +410,67 @@ def test_route_invalid_start_time_returns_400(api_client, seeded):
 def test_start_time_wire_format_is_ascii():
     assert format_start_time_wire(360) == "06:00"
     assert format_start_time_wire(720) == "12:00"
+
+
+@pytest.mark.django_db
+def test_destination_profile_links_canonical_weather_point(seeded):
+    from hawatch.modules.destinations.models import Destination
+    from hawatch.modules.forecasts.models import WeatherPoint
+
+    touchal = Destination.objects.get(slug="touchal")
+    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    assert touchal.weather_point_id == summit.id
+    assert summit.destination_profile.slug == "touchal"
+
+
+@pytest.mark.django_db
+def test_catalog_seed_does_not_create_synthetic_dest_points(seeded):
+    from hawatch.modules.catalog.catalog import seed_catalog
+    from hawatch.modules.forecasts.models import WeatherPoint
+
+    seed_catalog()
+    seed_catalog()
+    assert not WeatherPoint.objects.filter(slug="dest:touchal").exists()
+    assert WeatherPoint.objects.filter(slug="tochal_summit").exists()
+    # Demo destinations use canonical slugs, not dest: prefix.
+    assert WeatherPoint.objects.filter(slug="damavand", kind="destination").exists()
+    assert not WeatherPoint.objects.filter(slug="dest:damavand").exists()
+
+
+@pytest.mark.django_db
+def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
+    summit = api_client.get("/api/v1/points/tochal_summit/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    assert summit["subject"]["canonical_href"] == "/destination/touchal"
+    assert summit["point"]["href"] == "/destination/touchal"
+    sarband = api_client.get("/api/v1/points/sarband/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    assert sarband["subject"]["kind"] == "point"
+    assert sarband["subject"]["canonical_href"] == "/points/sarband"
+    assert "metrics" in sarband
+    assert "decision" in sarband
+    routes = {item["slug"] for item in sarband["related_routes"]}
+    assert "touchal-darband" in routes
+
+
+@pytest.mark.django_db
+def test_place_forecast_contract_shared_keys(api_client, seeded):
+    dest = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    point = api_client.get("/api/v1/points/sarband/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    for body in (dest, point):
+        assert "subject" in body
+        assert body["subject"]["kind"] in {"destination", "point"}
+        assert "hero" in body and "status" in body["hero"]
+        assert "metrics" in body
+        assert "decision" in body
+        assert "related_routes" in body
+        forecast = body["forecast"]
+        assert set(forecast) >= {"days", "period", "current", "hourly", "meta"}
+        assert forecast["period"]["id"] == "morning"
+        assert forecast["period"]["planner_step_minutes"] == 60
+        assert forecast["meta"]["selected_period"] == "morning"
+        # Root aliases remain for compatibility; nested forecast is authoritative.
+        assert body["days"] == forecast["days"]
+        assert body["meta"]["selected_date"] == forecast["meta"]["selected_date"]
+    assert dest["subject"]["weather_point_slug"] == "tochal_summit"
+    assert dest["destination"]["weather_point_slug"] == "tochal_summit"
+    assert dest["related_routes_title"].startswith("مسیرهای منتهی به")
+    assert point["related_routes_title"] == "مسیرهای عبوری از این نقطه"

@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 
 from django.db import transaction
+from django.db.models import Q
 
 from hawatch.modules.catalog.models import SearchIndexEntry
 from hawatch.modules.destinations.models import Destination
@@ -55,10 +56,16 @@ def _destination_entries(destination: Destination) -> list[SearchIndexEntry]:
 def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
     if point.slug.startswith("dest:"):
         return []
-    # Primary destination weather rows (e.g. tochal_summit) are indexed as destinations only.
-    if point.kind == WeatherPoint.Kind.DESTINATION:
+    # DestinationProfile weather points are indexed only as destinations.
+    if Destination.objects.filter(weather_point_id=point.id).exists():
         return []
-    destination = point.destination
+    destination = (
+        Destination.objects.filter(routes__points__weather_point=point, is_active=True)
+        .order_by("popular_order", "slug")
+        .first()
+    )
+    if destination is None and point.destination_id and point.destination.is_active:
+        destination = point.destination
     if destination is None or not destination.is_active:
         return []
     hint = f"نقطهٔ مسیر · {destination.tile_name}"
@@ -97,9 +104,14 @@ def rebuild_search_index() -> dict[str, int]:
     for destination in Destination.objects.filter(is_active=True):
         rows.extend(_destination_entries(destination))
     point_qs = (
-        WeatherPoint.objects.filter(destination__is_active=True)
-        .exclude(slug__startswith="dest:")
+        WeatherPoint.objects.exclude(slug__startswith="dest:")
+        .filter(
+            Q(destination__is_active=True)
+            | Q(route_links__route__destination__is_active=True)
+            | Q(destination_profile__is_active=True)
+        )
         .select_related("destination")
+        .distinct()
     )
     for point in point_qs:
         rows.extend(_point_entries(point))

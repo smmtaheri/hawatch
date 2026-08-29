@@ -1,1 +1,1 @@
-export { DestinationPage } from "../features/destination/DestinationPage";
+export { DestinationPlacePage as DestinationPage } from "../features/place/PlaceForecastPage";
