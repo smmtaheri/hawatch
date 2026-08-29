@@ -173,6 +173,24 @@ def test_destination_default_uses_current_tehran_hour(api_client, seeded):
     assert all(item["is_past"] for item in body["hourly"] if item["hour"] < 7)
 
 
+@pytest.mark.django_db
+def test_hourly_cards_mark_the_current_display_window(api_client, seeded):
+    tz = timezone()
+    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
+        "hawatch.api.v1.serializers.now_tehran", return_value=at
+    ):
+        body = api_client.get(
+            "/api/v1/destinations/touchal/forecast/",
+            {"date": "2026-08-28", "period": "morning"},
+        ).json()
+
+    by_hour = {item["hour"]: item for item in body["hourly"]}
+    assert by_hour[9]["is_current"] is True
+    assert all(by_hour[hour]["is_past"] is True for hour in (3, 5, 7))
+    assert sum(item["is_current"] for item in body["hourly"]) == 1
+
+
 @override_settings(TIME_ZONE="UTC")
 def test_forecast_clock_stays_on_official_iran_time():
     assert timezone().key == "Asia/Tehran"

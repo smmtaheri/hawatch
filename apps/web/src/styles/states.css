@@ -63,20 +63,6 @@ html:not([data-theme="light"]) .hawatch-state.stale {
   opacity: 0.88;
 }
 
-/* Keep Tehran's current daypart visible even when the visitor browses another one. */
-.destination-page .daypart-toggle button.current-period {
-  box-shadow: inset 0 -3px 0 var(--internal-teal, #61c5c0);
-}
-
-/* The selected current period uses a light underline so it remains visible on teal. */
-.destination-page .daypart-toggle button.current-period.selected {
-  box-shadow: inset 0 -3px 0 #ffffff;
-}
-
-html[data-theme="light"] .destination-page .daypart-toggle button.current-period:not(.selected) {
-  box-shadow: inset 0 -3px 0 #1d7f86;
-}
-
 .hour-item.is-future {
   opacity: 0.88;
 }
@@ -293,8 +279,22 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
   opacity: 0.85;
 }
 
-.hour-item.is-current {
-  box-shadow: inset 0 -3px 0 #1d7f86;
+.destination-page .hour-item.is-current {
+  position: relative;
+}
+
+.destination-page .hour-item.is-current::after {
+  position: absolute;
+  inset-inline: 18%;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px 999px 0 0;
+  background: var(--internal-teal, #61c5c0);
+  content: "";
+}
+
+html[data-theme="light"] .destination-page .hour-item.is-current::after {
+  background: #1d7f86;
 }
 
 @keyframes hawatch-shimmer {

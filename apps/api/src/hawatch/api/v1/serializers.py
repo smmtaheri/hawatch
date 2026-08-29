@@ -699,13 +699,38 @@ def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *,
     window_start, window_end = period_window(selected_date, period)
     records = _records_for_window(point, window_start, window_end)
     by_at = {record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0): record for record in records}
+    slots = period_hour_slots(selected_date, period)
     hourly = []
-    for slot_date, hour in period_hour_slots(selected_date, period):
+    for index, (slot_date, hour) in enumerate(slots):
         slot_at = localize_dt_safe(slot_date, hour).replace(minute=0, second=0, microsecond=0)
         record = by_at.get(slot_at)
         if record is not None:
-            hourly.append(reading_payload(record, now=now))
+            if index + 1 < len(slots):
+                next_slot_date, next_hour = slots[index + 1]
+                slot_end = localize_dt_safe(next_slot_date, next_hour).replace(minute=0, second=0, microsecond=0)
+            else:
+                slot_end = window_end
+            payload = reading_payload(record, now=now)
+            payload.update(_display_slot_flags(slot_at, slot_end, now))
+            hourly.append(payload)
     return hourly
+
+
+def _display_slot_flags(slot_start: datetime, slot_end: datetime, now: datetime) -> dict:
+    """Flag a rendered two-hour weather card by its displayed time window."""
+    local_now = now_tehran(now)
+    local_start = slot_start.astimezone(timezone())
+    local_end = slot_end.astimezone(timezone())
+    value_date = local_start.date()
+    is_current = local_start <= local_now < local_end
+    is_past = local_now >= local_end
+    return {
+        "is_yesterday": value_date == local_now.date() - timedelta(days=1),
+        "is_today": value_date == local_now.date(),
+        "is_past": is_past,
+        "is_current": is_current,
+        "is_future": not is_current and not is_past,
+    }
 
 def _reading_for_period_summary(
     point: WeatherPoint,

@@ -22,7 +22,7 @@ dev = [
 DJANGO_SETTINGS_MODULE = "hawatch.config.settings.test"
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-q --reuse-db"
 
 [tool.uv]
 package = false
