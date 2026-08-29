@@ -8,7 +8,6 @@ from pathlib import Path
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.db import transaction
-from django.db.models import F
 from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
@@ -18,6 +17,7 @@ from hawatch.modules.catalog.tochal import TOCHAL_ROUTE_SLUGS, seed_tochal_catal
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
+from hawatch.modules.routes.publish import shift_route_point_sort_orders
 
 DATA_MODE = "demo"
 logger = logging.getLogger(__name__)
@@ -185,7 +185,7 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
     # changes point order. Every current order stays unique while the final
     # orders are written below.
     for route in routes_by_slug.values():
-        RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
+        shift_route_point_sort_orders(route)
 
     for item in point_rows:
         route = routes_by_slug[item["route_slug"]]

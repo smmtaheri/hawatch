@@ -313,6 +313,44 @@ def test_manual_routepoint_preserved_without_prune():
 
 
 @pytest.mark.django_db
+def test_reimport_handles_stale_fixture_point_without_temporary_order_collision():
+    """A changed fixture may leave an old fixture point during non-prune import."""
+    seed_tochal_catalog()
+    route = Route.objects.get(slug="touchal-darband")
+    wp = WeatherPoint.objects.get(slug="tochal_hotel")
+    # Simulate an older fixture revision whose first point no longer exists in
+    # the current catalog. This reproduces the temporary 1001 collision that
+    # used to abort an otherwise atomic import.
+    RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 100)
+    RoutePoint.objects.create(
+        route=route,
+        slug="retired_fixture_point",
+        weather_point=wp,
+        name="نقطهٔ قدیمی fixture",
+        elevation_m=wp.elevation_m,
+        location=wp.location,
+        cumulative_minutes=None,
+        timing_status=RoutePoint.TimingStatus.PENDING,
+        sort_order=1,
+        data_mode="live",
+        fixture_managed=True,
+    )
+
+    seed_tochal_catalog(prune=False)
+
+    points = list(route.points.order_by("sort_order"))
+    assert [point.slug for point in points][:6] == [
+        "sarband",
+        "pas_ghaleh",
+        "shirpala",
+        "amiri",
+        "goleband",
+        "tochal_summit",
+    ]
+    assert points[-1].slug == "retired_fixture_point"
+
+
+@pytest.mark.django_db
 def test_same_slug_collision_skips_operator_managed_rows():
     seed_tochal_catalog()
     summit = WeatherPoint.objects.get(slug="tochal_summit")

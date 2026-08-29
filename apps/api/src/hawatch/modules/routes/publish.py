@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from django.db import transaction
-from django.db.models import F
+from django.db.models import F, Max
 
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -16,6 +16,21 @@ def axis_for_index(index: int, total: int) -> tuple[int, int]:
     x = 12 + round((76 * index) / (total - 1))
     y = 72 - round((44 * index) / (total - 1))
     return x, y
+
+
+def shift_route_point_sort_orders(route: Route) -> None:
+    """Move a route's orders above their current maximum without collisions.
+
+    A fixed ``+1000`` offset can collide with an existing stale point already
+    at that temporary value (for example while importing a changed fixture).
+    Moving every value above the current maximum is safe for the unique
+    ``(route, sort_order)`` constraint and is used only as a short-lived
+    intermediate state before dense ordering is written.
+    """
+    maximum = RoutePoint.objects.filter(route=route).aggregate(maximum=Max("sort_order"))["maximum"]
+    if maximum is None:
+        return
+    RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + int(maximum) + 1)
 
 
 def schedule_search_index_rebuild() -> None:
@@ -51,7 +66,7 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
 
     # Temporarily shift sort_order to avoid UniqueConstraint collisions while renumbering.
     if points:
-        RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
+        shift_route_point_sort_orders(route)
         points = list(route.points.select_related("weather_point").order_by("sort_order", "pk"))
 
     # Re-number sort_order densely and deterministically.

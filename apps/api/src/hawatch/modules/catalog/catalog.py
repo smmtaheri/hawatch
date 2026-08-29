@@ -8,13 +8,17 @@ from pathlib import Path
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.db import transaction
-from django.db.models import F, Q
+from django.db.models import Q
 
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
-from hawatch.modules.routes.publish import axis_for_index, normalize_and_publish_route
+from hawatch.modules.routes.publish import (
+    axis_for_index,
+    normalize_and_publish_route,
+    shift_route_point_sort_orders,
+)
 
 DEFAULT_CATALOG_FILE = "catalog/tochal_v1.json"
 TIMING_CONFIDENCE_VALUES = {"high", "medium", "low"}
@@ -94,7 +98,7 @@ def _restore_manual_route_point_positions(
 
     # Shift every row first so assigning dense orders cannot violate the unique
     # (route, sort_order) constraint.
-    RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
+    shift_route_point_sort_orders(route)
 
     manual_by_slot: dict[int, list[RoutePoint]] = {}
     for point_id, original_order in manual_positions:
@@ -473,7 +477,7 @@ def seed_catalog(
             continue
         # Free the dense fixture slots before assigning the imported ordering.
         # Manual rows are restored to their original ordinal slots below.
-        RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
+        shift_route_point_sort_orders(route)
 
         for index, point_slug in enumerate(point_slugs):
             wp = weather_points[point_slug]
