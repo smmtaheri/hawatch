@@ -147,13 +147,6 @@ html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
   overflow: hidden;
 }
 
-.route-page .route-timing-estimate-note {
-  margin: 0 0 10px;
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--internal-muted, #9eb8b3);
-}
-
 .route-page .route-point-weather-badge {
   display: inline-block;
   font-size: 10px;

@@ -334,11 +334,6 @@ export function RoutePage() {
                     pointHref={(point) => pointLink(point)}
                   />
                   <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
-                    {!timingPending ? (
-                      <p className="route-timing-estimate-note">
-                        زمان رسیدن تخمینی است (بدون استراحت طولانی) و بسته به آمادگی، زمین و شرایط هوا تغییر می‌کند.
-                      </p>
-                    ) : null}
                     <div className="route-point-weather-grid">
                       {data.points.map((point) => {
                         const weatherMissing = point.weather_available === false;
