@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from django.contrib.gis.geos import Point
+from django.db.models import F
 from django.test import override_settings
 
 import pytest
@@ -285,6 +286,10 @@ def test_manual_routepoint_preserved_without_prune():
     seed_tochal_catalog()
     route = Route.objects.get(slug="touchal-darband")
     wp = WeatherPoint.objects.get(slug="tochal_hotel")
+    # Make room for an operator-managed point at ordinal slot 2. The next
+    # fixture import must retain that placement rather than moving it to the
+    # end of the route.
+    RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 100)
     RoutePoint.objects.create(
         route=route,
         slug="manual_extra_on_darband",
@@ -294,33 +299,42 @@ def test_manual_routepoint_preserved_without_prune():
         location=wp.location,
         cumulative_minutes=None,
         timing_status=Route.TimingStatus.PENDING,
-        sort_order=99,
+        sort_order=2,
         data_mode="live",
         fixture_managed=False,
     )
     seed_tochal_catalog(prune=False)
-    assert RoutePoint.objects.filter(route=route, slug="manual_extra_on_darband", fixture_managed=False).exists()
+    points = list(route.points.order_by("sort_order"))
+    assert [point.slug for point in points][1] == "manual_extra_on_darband"
+    assert points[1].fixture_managed is False
     seed_tochal_catalog(prune=True)
-    assert RoutePoint.objects.filter(route=route, slug="manual_extra_on_darband").exists()
+    points = list(route.points.order_by("sort_order"))
+    assert [point.slug for point in points][1] == "manual_extra_on_darband"
 
 
 @pytest.mark.django_db
 def test_same_slug_collision_skips_operator_managed_rows():
     seed_tochal_catalog()
     summit = WeatherPoint.objects.get(slug="tochal_summit")
+    destination = Destination.objects.get(slug="touchal")
     summit.name = "قلهٔ دستی"
     summit.fixture_managed = False
     summit.save(update_fields=["name", "fixture_managed"])
     route = Route.objects.get(slug="touchal-darband")
-    route.title = "مسیر دستی"
-    route.fixture_managed = False
-    route.save(update_fields=["title", "fixture_managed"])
+    replacement = WeatherPoint.objects.get(slug="pas_ghaleh")
+    route.target_weather_point = replacement
+    route.save(update_fields=["target_weather_point"])
+    destination.weather_point = replacement
+    destination.save(update_fields=["weather_point"])
 
     result = seed_tochal_catalog(prune=False)
     assert any("tochal_summit" in item for item in result["conflicts"])
-    assert any("touchal-darband" in item for item in result["conflicts"])
     assert WeatherPoint.objects.get(slug="tochal_summit").name == "قلهٔ دستی"
-    assert Route.objects.get(slug="touchal-darband").title == "مسیر دستی"
+    route.refresh_from_db()
+    destination.refresh_from_db()
+    # A skipped fixture point must not be used as a substitute during import.
+    assert route.target_weather_point_id == replacement.id
+    assert destination.weather_point_id == replacement.id
 
 
 @pytest.mark.django_db

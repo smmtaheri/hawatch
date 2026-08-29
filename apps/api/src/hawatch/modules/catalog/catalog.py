@@ -68,6 +68,51 @@ def _derive_segment_minutes(cumulative: dict[str, int], ordered_slugs: list[str]
     return segments
 
 
+def _restore_manual_route_point_positions(
+    *,
+    route: Route,
+    fixture_point_slugs: list[str],
+    manual_positions: list[tuple[int, int]],
+) -> None:
+    """Merge manual points into a refreshed fixture route without moving them to the end.
+
+    A catalog refresh owns the relative order of fixture-managed points.  An
+    operator-managed RoutePoint keeps its previous ordinal slot: a manual point
+    at slot ``2`` is placed between fixture points 1 and 2, while a point after
+    the fixture range remains at the end.  This makes ordinary imports safe for
+    routes that have been extended from Admin.
+    """
+    fixture_points = {
+        point.slug: point
+        for point in RoutePoint.objects.filter(route=route, slug__in=fixture_point_slugs)
+    }
+    ordered_fixtures = [fixture_points[slug] for slug in fixture_point_slugs]
+    manual_points = {
+        point.pk: point
+        for point in RoutePoint.objects.filter(route=route, fixture_managed=False)
+    }
+
+    # Shift every row first so assigning dense orders cannot violate the unique
+    # (route, sort_order) constraint.
+    RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
+
+    manual_by_slot: dict[int, list[RoutePoint]] = {}
+    for point_id, original_order in manual_positions:
+        point = manual_points.get(point_id)
+        if point is not None:
+            manual_by_slot.setdefault(max(1, original_order), []).append(point)
+
+    combined: list[RoutePoint] = []
+    for fixture_index, fixture_point in enumerate(ordered_fixtures, start=1):
+        combined.extend(manual_by_slot.pop(fixture_index, []))
+        combined.append(fixture_point)
+    for slot in sorted(manual_by_slot):
+        combined.extend(manual_by_slot[slot])
+
+    for index, point in enumerate(combined, start=1):
+        RoutePoint.objects.filter(pk=point.pk).update(sort_order=index)
+
+
 def _validate_route_timing(route_key: str, route: dict, point_slugs: set[str]) -> None:
     """Validate optional route timing block; incomplete/ambiguous data must stay pending."""
     timing = route.get("timing")
@@ -277,6 +322,7 @@ def seed_catalog(
         destination = existing_destination
 
     weather_points: dict[str, WeatherPoint] = {}
+    skipped_weather_point_slugs: set[str] = set()
     for slug, row in data["weather_points"].items():
         elevation = row.get("elevation_m")
         kind = row.get("kind") or WeatherPoint.Kind.SHARED
@@ -312,7 +358,10 @@ def seed_catalog(
                 f"WeatherPoint slug={slug} exists as operator-managed; skipped "
                 "(pass force_adopt to overwrite)"
             )
-            weather_points[slug] = existing
+            # Do not use an operator-managed collision as a substitute for the
+            # fixture row.  Doing so could silently rewire a destination or a
+            # fixture route to an unrelated manually maintained point.
+            skipped_weather_point_slugs.add(slug)
             continue
         if existing is None:
             defaults["is_active"] = True
@@ -327,9 +376,15 @@ def seed_catalog(
         existing.save()
         weather_points[slug] = existing
 
-    destination_point = weather_points[_destination_point_slug(data)]
+    destination_point_slug = _destination_point_slug(data)
+    destination_point = weather_points.get(destination_point_slug)
     # Canonical profile link — do not create synthetic dest:{slug} WeatherPoints.
-    if destination.weather_point_id != destination_point.id:
+    if destination_point is None:
+        conflicts.append(
+            f"Destination slug={destination.slug} weather point={destination_point_slug} "
+            "is operator-managed; profile link unchanged"
+        )
+    elif destination.weather_point_id != destination_point.id:
         destination.weather_point = destination_point
         destination.save(update_fields=["weather_point"])
 
@@ -337,7 +392,14 @@ def seed_catalog(
     for catalog_key, route_row in data["routes"].items():
         point_slugs = route_row["points"]
         if any(slug not in weather_points for slug in point_slugs):
-            conflicts.append(f"Route {route_row['slug']} skipped: missing weather points after conflicts")
+            existing_route = Route.objects.filter(slug=route_row["slug"]).first()
+            if existing_route is not None:
+                kept_route_ids.append(existing_route.pk)
+            conflicting_slugs = sorted(set(point_slugs) & skipped_weather_point_slugs)
+            detail = f" ({', '.join(conflicting_slugs)})" if conflicting_slugs else ""
+            conflicts.append(
+                f"Route {route_row['slug']} skipped: missing weather points after conflicts{detail}"
+            )
             continue
         origin_wp = weather_points[point_slugs[0]]
         target_wp = weather_points[point_slugs[-1]]
@@ -393,7 +455,24 @@ def seed_catalog(
         kept_route_ids.append(route.pk)
 
         desired_slugs = set(point_slugs)
-        # Shift all points to avoid UniqueConstraint collisions while rewriting fixture rows.
+        manual_positions = list(
+            RoutePoint.objects.filter(route=route, fixture_managed=False)
+            .order_by("sort_order", "pk")
+            .values_list("pk", "sort_order")
+        )
+        manual_slug_collisions = set(
+            RoutePoint.objects.filter(route=route, fixture_managed=False, slug__in=desired_slugs).values_list(
+                "slug", flat=True
+            )
+        )
+        if manual_slug_collisions and not force_adopt:
+            conflicts.append(
+                f"Route {route.slug} skipped: operator-managed RoutePoint slug collision "
+                f"({', '.join(sorted(manual_slug_collisions))})"
+            )
+            continue
+        # Free the dense fixture slots before assigning the imported ordering.
+        # Manual rows are restored to their original ordinal slots below.
         RoutePoint.objects.filter(route=route).update(sort_order=F("sort_order") + 1000)
 
         for index, point_slug in enumerate(point_slugs):
@@ -447,6 +526,11 @@ def seed_catalog(
         if prune:
             RoutePoint.objects.filter(route=route, fixture_managed=True).exclude(slug__in=desired_slugs).delete()
         # Leave operator-managed RoutePoints (fixture_managed=False) even when absent from JSON.
+        _restore_manual_route_point_positions(
+            route=route,
+            fixture_point_slugs=point_slugs,
+            manual_positions=manual_positions,
+        )
         normalize_and_publish_route(route, rebuild_search=False)
 
     pruned_routes = 0
@@ -508,7 +592,7 @@ def seed_catalog(
         "weather_point_count": len(weather_points),
         "route_count": len(kept_route_ids),
         "shared_point_slugs": sorted(weather_points),
-        "destination_weather_point": destination_point.slug,
+        "destination_weather_point": destination_point.slug if destination_point is not None else None,
         "pruned": prune,
         "pruned_routes": pruned_routes,
         "pruned_points": pruned_points,
