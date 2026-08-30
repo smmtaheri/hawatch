@@ -2127,4 +2127,38 @@ html:not([data-theme="light"]) .search-result-row:hover {
   .route-page .route-hero h1 {
     font-size: 38px;
   }
+
+  /* Keep the desktop planner readable: select a day first, then select the
+   * weather window with its own breathing room.  Mobile retains its compact
+   * side-by-side control through the max-width rules above. */
+  .route-page .route-planner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .route-page .route-planner-day-period {
+    display: contents;
+  }
+
+  .route-page .route-planner-day-period .forecast-day-heading {
+    grid-row: 1;
+    margin-bottom: 8px;
+  }
+
+  .route-page .route-planner .planner-day {
+    grid-row: 2;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs {
+    margin: 0;
+  }
+
+  .route-page .route-planner-day-period .route-period-row {
+    display: grid;
+    grid-row: 3;
+    justify-self: start;
+    width: min(100%, 390px);
+    margin-top: 20px;
+    gap: 8px;
+  }
 }
