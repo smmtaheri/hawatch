@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useParams } from "react-router-dom";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
@@ -9,6 +9,7 @@ import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
+import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
@@ -98,6 +99,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 <div className="status-pill change">{data.hero.alert}</div>
               </div>
             </section>
+            <MobileRouteSelector routes={routes} title={data.related_routes_title} />
             <div className="destination-layout">
               <div className="destination-main">
                 <section className="weather-card card-surface">
@@ -108,32 +110,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     period={displayPeriod}
                     onSelectPeriod={selectPeriod as (next: PeriodId) => void}
                     periodStates={periodStates}
-                    middleSlot={
-                      <div className="mobile-weather-controls">
-                        <div className="mobile-route-picker" aria-label={data.related_routes_title}>
-                          <div className="mobile-route-picker-heading">
-                            <span>مسیرها</span>
-                            <small>{routes.length} مسیر</small>
-                          </div>
-                          <div className="mobile-route-picker-list">
-                            {routes.length ? (
-                              routes.map((route) => (
-                                <Link
-                                  key={route.slug}
-                                  className={`mobile-route-picker-button ${route.featured ? "selected" : ""}`}
-                                  to={route.href}
-                                  aria-label={`مشاهدهٔ مسیر ${route.title}`}
-                                >
-                                  {route.title}
-                                </Link>
-                              ))
-                            ) : (
-                              <span className="mobile-route-picker-empty">مسیری ثبت نشده</span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    }
                   />
                   {data.empty || data.partial ? (
                     <EmptyState

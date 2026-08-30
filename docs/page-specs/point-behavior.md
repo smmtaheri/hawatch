@@ -20,7 +20,7 @@ aliasهای ریشه و `point` / `weather` فقط سازگاری‌اند.
 ## هویت و ظاهر
 
 - root class: `destination-page` (نه `point-page`)
-- sidebar + mobile route-picker از همان قالب مشترک؛ عنوان sidebar: «مسیرهای عبوری از این نقطه»
+- sidebar در desktop و دو مسیر برتر + bottom sheet در mobile از همان قالب مشترک استفاده می‌کنند؛ عنوان: «مسیرهای عبوری از این نقطه»
 - technical-card همیشه (EmptyState اگر متریک نبود)
 - با `fromRoute`، CTA بازگشت فقط در hero؛ planner از `fromRoute` seed نمی‌شود
 - footer مشترک: «هوای مقصد، برنامهٔ مسیر»

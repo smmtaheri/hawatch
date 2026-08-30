@@ -31,16 +31,19 @@
 ۱. header  
 ۲. (اختیاری) CTA «بازگشت به مسیر …» فقط در slot اکشن hero (نه جایگزین sidebar)  
 ۳. hero تصویر + overlay + breadcrumb + عنوان + status/alert  
-۴. day selector («انتخاب روز») + period toggle + **mobile route picker** (برای هر دو kind)  
-۵. hourly forecast (کارت‌ها + legend؛ بدون نمایش `period.headline`)  
-۶. جزئیات تخصصی (metrics) — همیشه همان `technical-card`؛ اگر متریک نبود EmptyState پایدار  
-۷. sidebar مسیرهای مرتبط + decision card (و همان mobile route-picker برای هر دو kind)  
-۸. footer مشترک محصول: «هوای مقصد، برنامهٔ مسیر»
+۴. در موبایل، دو مسیر برتر + دکمهٔ انتخاب همه در bottom sheet؛ در desktop مسیرهای مرتبط در sidebar
+۵. day selector («انتخاب روز») + period toggle سه‌گزینه‌ای
+۶. hourly forecast (کارت‌ها + legend؛ بدون نمایش `period.headline`؛ کارت جاری در موبایل خودکار در viewport قرار می‌گیرد)
+۷. جزئیات تخصصی (metrics) — همیشه همان `technical-card`؛ اگر متریک نبود EmptyState پایدار
+۸. sidebar مسیرهای مرتبط + decision card
+۹. footer مشترک محصول: «هوای مقصد، برنامهٔ مسیر»
 
 برچسب مسیرها:
 
 - destination: «مسیرهای منتهی به …»
 - point: «مسیرهای عبوری از این نقطه»
+
+در موبایل فقط دو مسیر اول با اولویت `featured` به‌صورت inline دیده می‌شوند. باقی مسیرها در یک bottom sheet دسترس‌پذیر با بستن از طریق دکمه، backdrop، Escape یا swipe-down باز می‌شوند. انتخاب مسیر مستقیماً به route می‌رود و به forecast فعلی request اضافه‌ای نمی‌کند.
 
 ## ۴٫۱ قرارداد API و URL
 
@@ -60,6 +63,9 @@ timestamp خام ISO و `timing_pending` در متن UI نمایش داده نم
 - [ ] `/points/sarband` و `/destination/touchal` از یک template و کلاس‌های destination shell استفاده می‌کنند
 - [ ] dark/light و mobile/desktop بدون drift بصری بین دو URL
 - [ ] بدون overflow افقی
+- [ ] موبایل فقط دو مسیر برتر را inline نشان می‌دهد و بقیه را در bottom sheet باز می‌کند
+- [ ] سه period button هم‌اندازه و در یک ردیف موبایل نمایش داده می‌شوند
+- [ ] در موبایل کارت ساعتی جاری یا اولین کارت بازهٔ انتخاب‌شده خودکار در viewport قرار می‌گیرد
 - [ ] بدون کلاس/CSS اختصاصی point-page
 - [ ] نقطهٔ مقصدی به destination canonical هدایت می‌شود
 

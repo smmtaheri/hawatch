@@ -557,7 +557,7 @@ describe("periods and route planner", () => {
     );
     expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
-    expect(screen.getByText("مسیرهای عبوری از این نقطه")).toBeInTheDocument();
+    expect(screen.getAllByText("مسیرهای عبوری از این نقطه").length).toBeGreaterThan(0);
     expect(document.querySelector(".destination-page")).toBeTruthy();
     expect(document.querySelector(".point-page")).toBeNull();
     expect(document.querySelector(".destination-layout")).toBeTruthy();
@@ -616,7 +616,7 @@ describe("periods and route planner", () => {
     expect(document.querySelector(".destination-page")).toBeTruthy();
     expect(document.querySelector(".point-page")).toBeNull();
     expect(document.querySelector(".weather-card")).toBeTruthy();
-    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
+    expect(document.querySelector(".mobile-route-selection")).toBeTruthy();
   });
 
   it("updates speed locally without fetch when timing is pending", async () => {
@@ -1000,7 +1000,7 @@ describe("periods and route planner", () => {
     expect(document.querySelector(".destination-layout")).toBeTruthy();
     expect(document.querySelector(".weather-card")).toBeTruthy();
     expect(document.querySelector(".destination-side")).toBeTruthy();
-    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
+    expect(document.querySelector(".mobile-route-selection")).toBeTruthy();
     expect(document.querySelector(".point-page")).toBeNull();
     expect(document.querySelector(".point-shell")).toBeNull();
     expect(screen.getByText("هوای مقصد، برنامهٔ مسیر")).toBeInTheDocument();
@@ -1023,7 +1023,7 @@ describe("periods and route planner", () => {
     expect(screen.queryByText(/هر دو ساعت/)).not.toBeInTheDocument();
     expect(document.querySelector(".legend")).toBeTruthy();
     expect(screen.getByText("هوای مقصد، برنامهٔ مسیر")).toBeInTheDocument();
-    expect(document.querySelector(".mobile-route-picker")).toBeTruthy();
+    expect(document.querySelector(".mobile-route-selection")).toBeNull();
     expect(document.querySelector(".destination-side")).toBeTruthy();
   });
 

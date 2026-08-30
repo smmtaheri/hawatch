@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import type { DayInfo, PeriodId } from "../types";
 import type { PeriodPhase } from "../lib/periodState";
 import { PeriodToggle } from "./PeriodToggle";
@@ -41,7 +40,6 @@ export function ForecastDayPeriodControls({
   periodStates,
   dayClassName = "",
   periodLabel = "بازهٔ نمایش هوا",
-  middleSlot,
 }: {
   days: DayInfo[];
   selectedDate: string;
@@ -51,13 +49,11 @@ export function ForecastDayPeriodControls({
   periodStates?: Partial<Record<PeriodId, PeriodPhase>>;
   dayClassName?: string;
   periodLabel?: string;
-  middleSlot?: ReactNode;
 }) {
   return (
     <>
       <DayPickerHeading />
       <DaySelector days={days} selected={selectedDate} onSelect={onSelectDate} className={dayClassName} />
-      {middleSlot}
       <PeriodControlRow
         period={period}
         onChange={onSelectPeriod}
