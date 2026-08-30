@@ -113,7 +113,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 <div className="status-pill change">{data.hero.alert}</div>
               </div>
             </section>
-            <MobileRouteSelector routes={routes} title={data.related_routes_title} />
             <div className="destination-layout">
               <div className="destination-main">
                 <section className="weather-card card-surface">
@@ -134,6 +133,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     <HourlyForecast hours={data.hourly} />
                   )}
                 </section>
+                <MobileRouteSelector routes={routes} title={data.related_routes_title} />
                 <section className="technical-card card-surface">
                   <div className="section-title-row">
                     <h2>جزئیات تخصصی {dayLabel}</h2>

@@ -2224,7 +2224,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
   .route-page .route-hero .route-sibling-nav {
     position: absolute;
     z-index: 6;
-    right: 36px;
+    right: auto;
+    left: 36px;
     bottom: 14px;
     width: min(300px, 34%);
     margin: 0;
@@ -2276,7 +2277,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
   .route-page .route-sibling-panel {
     position: absolute;
     top: calc(100% + 8px);
-    right: 0;
+    right: auto;
+    left: 0;
     width: min(330px, 44vw);
     max-height: min(420px, 52vh);
     overflow-y: auto;
