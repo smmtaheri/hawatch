@@ -20,3 +20,7 @@ favicon و آیکون‌های PWA از `hawatch-tab-icon-pack` انتخاب ش�
 - `site.webmanifest` با مسیرهای `/brand/...`.
 
 favicon عمداً یک mark مستقل و ثابت است؛ لوگوی کاملِ هدر بر اساس تم light/dark تغییر می‌کند.
+
+## آیکون‌های تخصصی هوا
+
+هشت آیکون تخصصی weather در `apps/web/public/icons/specialist/` نگهداری می‌شوند. فایل canonical برای UI، `hawatch-specialist-icons.svg` است و `SpecialistMetricIcon` از symbolهای آن با `currentColor` استفاده می‌کند؛ SVGهای تک‌آیکون فقط fallback یا استفادهٔ مستقیم‌اند. اندازهٔ پایه ۲۴px و اندازهٔ کارت متریک ۲۸px است. source pack موقت یا preview آن نباید در ریشهٔ پروژه نگهداری یا به runtime اضافه شود.
