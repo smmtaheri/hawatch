@@ -7,13 +7,22 @@ function featuredRoutes(routes: RouteSummary[]): RouteSummary[] {
   return [...routes.filter((route) => route.featured), ...routes.filter((route) => !route.featured)].slice(0, 2);
 }
 
-export function MobileRouteSelector({ routes, title }: { routes: RouteSummary[]; title: string }) {
+export function MobileRouteSelector({
+  routes,
+  title,
+  variant = "featured",
+}: {
+  routes: RouteSummary[];
+  title: string;
+  variant?: "featured" | "trigger";
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartY = useRef<number | null>(null);
   const topRoutes = featuredRoutes(routes);
   const hasMoreRoutes = routes.length > topRoutes.length;
+  const triggerOnly = variant === "trigger";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -37,20 +46,24 @@ export function MobileRouteSelector({ routes, title }: { routes: RouteSummary[];
   if (!routes.length) return null;
 
   return (
-    <section className="mobile-route-selection" aria-label={title}>
-      <div className="mobile-route-selection-heading">
-        <div>
-          <span className="eyebrow teal-text">مسیرهای پیشنهادی</span>
-          <h2>{title}</h2>
-        </div>
-        <span className="mobile-route-selection-count">{routes.length} مسیر</span>
-      </div>
-      <div className="mobile-route-selection-top">
-        {topRoutes.map((route) => (
-          <DestinationCard key={route.slug} route={route} />
-        ))}
-      </div>
-      {hasMoreRoutes ? (
+    <section className={`mobile-route-selection ${triggerOnly ? "mobile-route-selection--trigger" : ""}`} aria-label={title}>
+      {!triggerOnly ? (
+        <>
+          <div className="mobile-route-selection-heading">
+            <div>
+              <span className="eyebrow teal-text">مسیرهای پیشنهادی</span>
+              <h2>{title}</h2>
+            </div>
+            <span className="mobile-route-selection-count">{routes.length} مسیر</span>
+          </div>
+          <div className="mobile-route-selection-top">
+            {topRoutes.map((route) => (
+              <DestinationCard key={route.slug} route={route} />
+            ))}
+          </div>
+        </>
+      ) : null}
+      {triggerOnly || hasMoreRoutes ? (
         <button
           ref={triggerRef}
           className="mobile-route-selection-trigger"
@@ -59,7 +72,7 @@ export function MobileRouteSelector({ routes, title }: { routes: RouteSummary[];
           aria-expanded={isOpen}
           onClick={() => setIsOpen(true)}
         >
-          انتخاب از بین {routes.length} مسیر
+          {triggerOnly ? "مسیرهای دیگر" : `انتخاب از بین ${routes.length} مسیر`}
           <span aria-hidden="true">←</span>
         </button>
       ) : null}

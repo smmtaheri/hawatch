@@ -8,6 +8,7 @@ import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { LoadingState } from "../../components/LoadingState";
+import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { RouteSiblingNavigation } from "../../components/RouteSiblingNavigation";
 import { RouteTimeline } from "../../components/RouteTimeline";
 import { RoutePointLink } from "../../components/RoutePointLink";
@@ -300,12 +301,25 @@ export function RoutePage() {
               <div className="hero-status-stack route-hero-status-stack" aria-label="خلاصهٔ وضعیت مسیر">
                 <div className="status-pill change">{data.hero.status}</div>
               </div>
+              <MobileRouteSelector
+                routes={data.route.siblings}
+                title={`مسیرهای دیگر ${data.route.parent.name}`}
+                variant="trigger"
+              />
             </section>
             <RouteSiblingNavigation parentName={data.route.parent.name} routes={data.route.siblings} />
             <div className="route-overview-grid">
               <div className="route-overview-main">
                 <section className="route-planner card-surface" id="planner">
-                  <DayPickerHeading />
+                  <div className="route-planner-day-period">
+                    <DayPickerHeading />
+                    <PeriodControlRow
+                      period={displayPeriod}
+                      onChange={handlePeriodChange}
+                      periodStates={periodStates}
+                      className="destination-period-row route-period-row"
+                    />
+                  </div>
                   <div className="planner-day">
                     <DaySelector
                       className="route-day-tabs"
@@ -317,17 +331,7 @@ export function RoutePage() {
                 </section>
                 <section className="route-weather-card card-surface" id="route-weather" aria-label="نقاط مهم و وضعیت مسیر در طول روز">
                   <div className="route-weather-heading">
-                    <div>
-                      <span className="decision-chip">نقاط مهم</span>
-                    </div>
-                    <div className="route-hourly-selector" aria-label="انتخاب بازهٔ زمانی پیش‌بینی">
-                      <PeriodControlRow
-                        period={displayPeriod}
-                        onChange={handlePeriodChange}
-                        periodStates={periodStates}
-                        className="destination-period-row route-period-row"
-                      />
-                    </div>
+                    <span className="decision-chip">نقاط مهم</span>
                   </div>
                   <RouteTimeline
                     origin={data.route.origin}

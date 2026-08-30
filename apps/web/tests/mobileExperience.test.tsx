@@ -131,6 +131,21 @@ describe("mobile route and forecast controls", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
+  it("uses a compact trigger when route alternatives belong in a route hero", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <MobileRouteSelector routes={routes.slice(1)} title="مسیرهای دیگر توچال" variant="trigger" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("button", { name: /مسیرهای دیگر/ })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /مسیر دوم/ })).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: /مسیرهای دیگر/ }));
+    expect(within(screen.getByRole("dialog", { name: "انتخاب مسیر" })).getByRole("link", { name: /مسیر دوم/ })).toBeInTheDocument();
+  });
+
   it("closes the route sheet through its backdrop", async () => {
     const user = userEvent.setup();
     render(

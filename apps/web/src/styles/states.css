@@ -1046,6 +1046,22 @@ html:not([data-theme="light"]) .search-result-row:hover {
   white-space: nowrap;
 }
 
+.route-page .route-planner-day-period {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.route-page .route-planner-day-period .forecast-day-heading,
+.route-page .route-planner-day-period .route-period-row {
+  margin: 0;
+}
+
+.route-page .route-planner-day-period .route-period-row {
+  flex: 0 1 270px;
+}
+
 /* The compact cards have room for exactly two factual rows.  Do not let the
  * old two-line clamp treat both facts as one truncatable text block. */
 .destination-page .compact-route-box .route-copy .route-details {
@@ -1053,6 +1069,164 @@ html:not([data-theme="light"]) .search-result-row:hover {
   -webkit-line-clamp: unset;
   -webkit-box-orient: initial;
   overflow: visible;
+}
+
+/* Route mobile follows the destination information hierarchy: date and
+ * period first, then movement controls, then route points. */
+@media (width <= 720px) {
+  .route-page .route-sibling-nav {
+    display: none;
+  }
+
+  .route-page .route-hero {
+    height: 112px !important;
+    min-height: 112px !important;
+    padding: 12px 14px !important;
+  }
+
+  .route-page .route-hero-copy {
+    width: 56%;
+  }
+
+  .route-page .route-hero h1 {
+    font-size: clamp(27px, 7.5vw, 34px);
+  }
+
+  .route-page .route-hero-status-stack {
+    inset: 50% auto auto 14px !important;
+    width: min(40%, 180px);
+    max-width: 40%;
+    transform: translateY(-50%);
+  }
+
+  .route-page .route-hero .mobile-route-selection--trigger {
+    position: absolute;
+    z-index: 3;
+    bottom: 9px;
+    left: 14px;
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .route-page .route-hero .mobile-route-selection--trigger .mobile-route-selection-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 25px;
+    margin: 0;
+    padding: 4px 8px;
+    border-color: var(--internal-border, #bee1dd2e);
+    border-radius: 8px;
+    color: var(--internal-teal, #61c5c0);
+    background: var(--internal-surface-soft, #14333e);
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+  .route-page .route-planner-day-period {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .route-page .route-planner-day-period .forecast-day-heading {
+    min-width: 0;
+  }
+
+  .route-page .route-planner-day-period .route-period-row {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .planner-label {
+    white-space: nowrap;
+    font-size: 8px;
+    line-height: 1.25;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    width: 120px;
+    gap: 3px;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+    min-width: 0;
+    min-height: 30px;
+    padding: 3px 2px;
+    border-radius: 8px;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button small {
+    display: none;
+  }
+
+  .route-page .route-overview-side .planner-quick-box {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: 1fr;
+    align-items: stretch;
+    gap: 6px !important;
+    padding: 6px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .mobile-planner-selectors {
+    display: block !important;
+    grid-area: 1 / 1 !important;
+    min-width: 0;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .mobile-planner-selector {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 4px;
+    min-height: 0;
+    padding: 3px 4px;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge {
+    display: block !important;
+    grid-area: 1 / 2 !important;
+    min-width: 0;
+    min-height: 0;
+    padding: 3px 4px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading {
+    padding: 0 1px;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading .planner-label {
+    font-size: 9px;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading small,
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-ticks {
+    display: none;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading > strong {
+    font-size: 16px;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-wrap {
+    margin-top: 3px;
+    padding: 0 1px;
+  }
 }
 
 .destination-page .compact-route-box .route-copy .route-detail {
