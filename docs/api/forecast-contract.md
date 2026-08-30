@@ -51,6 +51,23 @@ forecast (Forecast Place — destination یا point)
 ├── (سازگاری) destination | point | weather | days | hourly | meta
 ```
 
+`metrics[]` برای هر شاخص شامل `icon`، `label`، `value`، `note` و `color` است. مقدار `icon` یک
+نام معنایی پایدار است و glyph یا متن نمایشی نیست؛ کلاینت آن را از sprite رسمی
+`/icons/specialist/hawatch-specialist-icons.svg` رندر می‌کند. نگاشت فعلی:
+
+| `icon` | شاخص |
+| --- | --- |
+| `wind-average` | باد میانگین |
+| `wind-gust` | تندباد |
+| `visibility` | دید افقی |
+| `freezing-level` | تراز صفر درجه |
+| `cloud-base` | پایهٔ ابر |
+| `uv-index` | تابش فرابنفش |
+| `precipitation` | بارش |
+| `sunrise-sunset` | طلوع / غروب |
+
+آیکون فقط کمک بصری است؛ عنوان و مقدار متریک همیشه به‌صورت متنی نیز ارائه می‌شوند.
+
 Route envelope جداگانه است و `route` / `points[]` / `timing_pending` دارد.
 
 هر reading شامل temperature، apparent temperature، condition/code، wind speed/gust/direction، precipitation، visibility، cloud cover، UV در صورت وجود، و flagهای:

@@ -97,8 +97,22 @@ export interface HourlyReading {
   is_future: boolean;
 }
 
+export const SPECIALIST_METRIC_ICON_NAMES = [
+  "wind-average",
+  "wind-gust",
+  "visibility",
+  "freezing-level",
+  "cloud-base",
+  "uv-index",
+  "precipitation",
+  "sunrise-sunset",
+] as const;
+
+export type SpecialistMetricIconName = (typeof SPECIALIST_METRIC_ICON_NAMES)[number];
+
 export interface Metric {
-  icon: string;
+  /** Stable semantic icon name rendered from the specialist icon sprite. */
+  icon: SpecialistMetricIconName | string;
   label: string;
   value: string;
   note: string;

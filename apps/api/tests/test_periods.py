@@ -492,6 +492,16 @@ def test_place_forecast_contract_shared_keys(api_client, seeded):
         assert body["subject"]["kind"] in {"destination", "point"}
         assert "hero" in body and "status" in body["hero"]
         assert "metrics" in body
+        assert [item["icon"] for item in body["metrics"]] == [
+            "wind-average",
+            "wind-gust",
+            "visibility",
+            "freezing-level",
+            "cloud-base",
+            "uv-index",
+            "precipitation",
+            "sunrise-sunset",
+        ]
         assert "decision" in body
         assert "related_routes" in body
         forecast = body["forecast"]

@@ -448,28 +448,28 @@ def build_place_forecast(
         sunset = format_clock(19, 46 if climate_key != "desert" else 38)
         metrics = [
             {
-                "icon": "⌁",
+                "icon": "wind-average",
                 "label": "باد میانگین",
                 "value": f"{to_fa_digits(avg_wind)} km/h",
                 "note": wind_compass(records[0].wind_direction_deg),
                 "color": "teal",
             },
             {
-                "icon": "↯",
+                "icon": "wind-gust",
                 "label": "تندباد",
                 "value": f"{to_fa_digits(gust)} km/h",
                 "note": "بیشتر از ساعت ۱۱" if gust >= 20 else "آرام‌تر",
                 "color": "coral" if gust >= 30 else "teal",
             },
             {
-                "icon": "◌",
+                "icon": "visibility",
                 "label": "دید افقی",
                 "value": f"+{to_fa_digits(int(vis))} km" if vis >= 10 else f"{to_fa_digits(vis)} km",
                 "note": "کاهش دید در شرایط حساس",
                 "color": "coral" if vis < 6 else "teal",
             },
             {
-                "icon": "❄",
+                "icon": "freezing-level",
                 "label": "تراز صفر درجه",
                 "value": f"{to_fa_digits(freeze)} m" if freeze is not None else "نامشخص",
                 "note": (
@@ -480,28 +480,28 @@ def build_place_forecast(
                 "color": "",
             },
             {
-                "icon": "☁",
+                "icon": "cloud-base",
                 "label": "پایهٔ ابر",
                 "value": f"{to_fa_digits(cloud_base)} m" if cloud_base is not None else "نامشخص",
                 "note": "نسبت به ارتفاع نقطه" if cloud_base is not None else "از provider دریافت نشده",
                 "color": "",
             },
             {
-                "icon": "☀",
+                "icon": "uv-index",
                 "label": "تابش فرابنفش",
                 "value": _uv_label(uv),
                 "note": "برای بخش‌های باز مسیر",
                 "color": "amber" if (uv or 0) >= 6 else "teal",
             },
             {
-                "icon": "☂",
+                "icon": "precipitation",
                 "label": "بارش",
                 "value": f"{to_fa_digits(precip)}٪",
                 "note": "بر اساس بازهٔ انتخابی",
                 "color": "amber" if precip else "teal",
             },
             {
-                "icon": "◷",
+                "icon": "sunrise-sunset",
                 "label": "طلوع / غروب",
                 "value": f"{sunrise} / {sunset}",
                 "note": "برای زمان‌بندی برگشت",

@@ -234,7 +234,7 @@ const pointForecast = {
     hourly: routeForecast.hourly,
     meta: routeForecast.meta,
   },
-  metrics: [{ icon: "⌁", label: "باد میانگین", value: "۷ km/h", note: "", color: "teal" }],
+  metrics: [{ icon: "wind-average", label: "باد میانگین", value: "۷ km/h", note: "", color: "teal" }],
   decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح مناسب است", text: "آرام" },
   updated_label: "امروز",
   empty: false,

@@ -719,6 +719,35 @@ html[data-theme="light"] .brand-logo--light-surface {
   border: 0;
 }
 
+.technical-card .metric-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.specialist-metric-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  color: var(--internal-teal, #61c5c0);
+}
+
+.specialist-metric-icon--amber {
+  color: var(--internal-amber, var(--amber, #f0bd61));
+}
+
+.specialist-metric-icon--coral {
+  color: var(--internal-coral, var(--coral, #ed897b));
+}
+
+.specialist-metric-icon-fallback {
+  display: inline-grid;
+  place-items: center;
+  font-size: 20px;
+  line-height: 1;
+}
+
 .search-combobox {
   position: relative;
   flex: 1 1 auto;

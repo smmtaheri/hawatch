@@ -31,7 +31,7 @@
 - `RoutePicker` / related routes card: مسیرهای مرتبط با عنوان متناسب kind.
 - `PeriodToggle`: صبح/بعدازظهر/شب؛ period کاملاً گذشته dim می‌شود.
 - `HourlyForecast`: چهار کارت دوساعته در هر بازه و legend وضعیت.
-- `TechnicalMetrics`: grid جزئیات تخصصی.
+- `TechnicalMetrics`: grid جزئیات تخصصی با `SpecialistMetricIcon` و sprite رسمی شاخص‌ها.
 - `DecisionCard`: تفسیر قابل اقدام از forecast.
 
 ## Route

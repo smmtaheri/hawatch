@@ -11,6 +11,7 @@ import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { SpecialistMetricIcon } from "../../components/SpecialistMetricIcon";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
 import type { PeriodId } from "../../types";
@@ -129,7 +130,8 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       {data.metrics.map((metric) => (
                         <div className="metric" key={metric.label}>
                           <span className="metric-label">
-                            {metric.icon}　{metric.label}
+                            <SpecialistMetricIcon icon={metric.icon} tone={metric.color} />
+                            <span>{metric.label}</span>
                           </span>
                           <strong className={metric.color || ""}>{metric.value}</strong>
                           <small>{metric.note}</small>

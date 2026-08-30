@@ -65,7 +65,7 @@ const destinationForecast = {
   hourly: [
     { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
   ],
-  metrics: [{ icon: "⌁", label: "باد میانگین", value: "۱۰ km/h", note: "جنوب‌غربی", color: "teal" }],
+  metrics: [{ icon: "wind-average", label: "باد میانگین", value: "۱۰ km/h", note: "جنوب‌غربی", color: "teal" }],
   hero: { status: "الان در قله ۹°", alert: "تغییر مهم" },
   decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۱ آرام‌تر است." },
   related_routes: [
@@ -230,6 +230,10 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/destination/touchal");
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
+    expect(document.querySelector('.specialist-metric-icon use')).toHaveAttribute(
+      "href",
+      "/icons/specialist/hawatch-specialist-icons.svg#icon-wind-average",
+    );
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
     await user.click(screen.getAllByText("دربند تا توچال")[0]);
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();

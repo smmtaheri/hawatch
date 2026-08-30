@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-wind-average" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.25 8.2h9.1c1.5 0 2.65-1.03 2.65-2.4a2.3 2.3 0 0 0-4.35-1.04"/>
+    <path d="M3.25 12h14.5c1.66 0 3 1.16 3 2.7 0 1.5-1.2 2.7-2.72 2.7-1.2 0-2.13-.61-2.6-1.58"/>
+    <path d="M3.25 15.8H11"/>
+  </symbol>
+  <symbol id="icon-wind-gust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 7.5h7.45c1.4 0 2.55-.98 2.55-2.3 0-1.22-.96-2.2-2.15-2.2-.95 0-1.7.46-2.12 1.28"/>
+    <path d="M3 11.5h7.8M3 15.5h5.25"/>
+    <path d="m16.15 3-2.1 7.15h3.05L15.85 21 21 9.2h-3.25L19.05 3h-2.9Z"/>
+  </symbol>
+  <symbol id="icon-visibility" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.75 12s3.2-5.25 9.25-5.25S21.25 12 21.25 12 18.05 17.25 12 17.25 2.75 12 2.75 12Z"/>
+    <circle cx="12" cy="12" r="2.75"/>
+    <path d="M12.8 10.15c-.24-.1-.5-.15-.8-.15"/>
+  </symbol>
+  <symbol id="icon-freezing-level" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.75v9M8.1 5l7.8 4.5M15.9 5 8.1 9.5"/>
+    <circle cx="12" cy="7.25" r=".85" fill="currentColor" stroke="none"/>
+    <path d="M4 17.25h16M7 20.25h10M5.5 17.25l3.7-3.5 2.8 2.5 2.15-1.9 4.35 2.9"/>
+  </symbol>
+  <symbol id="icon-cloud-base" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.25 14.5a3 3 0 0 1 .58-5.94 5.25 5.25 0 0 1 10.03 1.52h.39a2.21 2.21 0 0 1 0 4.42h-11Z"/>
+    <path d="M8 17.25v2M12 16.75v2.5M16 17.25v2M6.25 21h11.5"/>
+  </symbol>
+  <symbol id="icon-uv-index" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3.25"/>
+    <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.28 5.28 7.4 7.4M16.6 16.6l2.12 2.12M18.72 5.28 16.6 7.4M7.4 16.6l-2.12 2.12"/>
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-precipitation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.25 13.75a3 3 0 0 1 .58-5.94 5.25 5.25 0 0 1 10.03 1.52h.39a2.21 2.21 0 0 1 0 4.42h-11Z"/>
+    <path d="m8.75 16.5-1 2.25M13 16.5l-1 2.25M17.25 16.5l-1 2.25M10.5 19.75l-.65 1.5M14.75 19.75l-.65 1.5"/>
+  </symbol>
+  <symbol id="icon-sunrise-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 18h18M5 21h14M7.5 18a4.5 4.5 0 0 1 9 0"/>
+    <path d="M12 5v3M5.8 8.2l2.1 2.1M18.2 8.2l-2.1 2.1M3.5 13h3M17.5 13h3"/>
+  </symbol>
+</svg>

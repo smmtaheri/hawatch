@@ -38,6 +38,12 @@
 ۸. sidebar مسیرهای مرتبط + decision card
 ۹. footer مشترک محصول: «هوای مقصد، برنامهٔ مسیر»
 
+جزئیات تخصصی از آیکون‌های رسمی `apps/web/public/icons/specialist/` استفاده می‌کند. هر
+متریک یک نام معنایی مثل `wind-average` یا `visibility` از API می‌گیرد و component
+`SpecialistMetricIcon` آن را از sprite رندر می‌کند؛ glyphهای موقت داخل متن متریک
+استفاده نمی‌شوند. رنگ آیکون با `color` متریک برای حالت‌های عادی، مهم و بحرانی هماهنگ
+می‌شود و label/value متنی همیشه باقی می‌ماند.
+
 برچسب مسیرها:
 
 - destination: «مسیرهای منتهی به …»
