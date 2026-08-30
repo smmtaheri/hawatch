@@ -97,6 +97,7 @@ describe("mobile route and forecast controls", () => {
 
     expect(screen.getByText("ارتفاع‌گیری: ۱۵۰۰ m")).toBeInTheDocument();
     expect(screen.getByText("مسافت: ۱۰ km")).toBeInTheDocument();
+    expect(document.querySelectorAll(".route-details .route-detail")).toHaveLength(2);
     expect(screen.queryByText(/مسیر کوهستانی/)).not.toBeInTheDocument();
     expect(screen.queryByText(/مبدأ اول/)).not.toBeInTheDocument();
   });

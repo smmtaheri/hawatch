@@ -1033,12 +1033,32 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
 .route-card .route-details {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2px;
+  width: 100%;
   margin-top: 8px;
 }
 
-.route-card .route-details span {
+.route-card .route-details .route-detail {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The compact cards have room for exactly two factual rows.  Do not let the
+ * old two-line clamp treat both facts as one truncatable text block. */
+.destination-page .compact-route-box .route-copy .route-details {
+  display: grid;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+  overflow: visible;
+}
+
+.destination-page .compact-route-box .route-copy .route-detail {
+  color: var(--internal-muted, #a8c1c0);
+  font-size: 9px;
+  line-height: 1.45;
 }
 
 @media (width <= 720px) {
