@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
+import { DestinationCard } from "../src/components/DestinationCard";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
 import type { HourlyReading, RouteSummary } from "../src/types";
 
@@ -80,6 +81,19 @@ afterEach(() => {
 });
 
 describe("mobile route and forecast controls", () => {
+  it("shows route elevation and distance without repeating the trail origin", () => {
+    render(
+      <MemoryRouter>
+        <DestinationCard route={routes[0]} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText("ارتفاع‌گیری: ۱۵۰۰ m")).toBeInTheDocument();
+    expect(screen.getByText("مسافت: ۱۰ km")).toBeInTheDocument();
+    expect(screen.queryByText(/مسیر کوهستانی/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/مبدأ اول/)).not.toBeInTheDocument();
+  });
+
   it("keeps two routes visible and opens the remaining routes in a sheet", async () => {
     const user = userEvent.setup();
     render(

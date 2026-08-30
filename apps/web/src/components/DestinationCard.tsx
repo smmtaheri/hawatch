@@ -8,11 +8,9 @@ export function DestinationCard({ route }: { route: RouteSummary }) {
       <span className="route-icon">⌁</span>
       <span className="route-copy">
         <h3>{route.title}</h3>
-        <p>
-          {route.trail_label} · {route.origin}
-        </p>
-        <small>
-          {route.distance_label} · {route.ascent_label} صعود
+        <small className="route-details">
+          <span>ارتفاع‌گیری: {route.ascent_label}</span>
+          <span>مسافت: {route.distance_label}</span>
         </small>
       </span>
       <span className="compact-route-arrow">←</span>
