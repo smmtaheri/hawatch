@@ -72,7 +72,7 @@ export function MobileRouteSelector({
           aria-expanded={isOpen}
           onClick={() => setIsOpen(true)}
         >
-          {triggerOnly ? "مسیرهای دیگر" : `انتخاب از بین ${routes.length} مسیر`}
+          {triggerOnly ? "مسیرهای دیگر" : "دیدن همهٔ مسیرها"}
           <span aria-hidden="true">←</span>
         </button>
       ) : null}

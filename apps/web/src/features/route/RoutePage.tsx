@@ -15,7 +15,6 @@ import { RoutePointLink } from "../../components/RoutePointLink";
 import { ShareCard } from "../../components/ShareCard";
 import { SpeedControl } from "../../components/SpeedControl";
 import { StartTimeControl } from "../../components/StartTimeControl";
-import { StatsGrid } from "../../components/StatsGrid";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import {
   asPeriodId,
@@ -380,7 +379,6 @@ export function RoutePage() {
                     </div>
                   </div>
                 </section>
-                <StatsGrid items={data.stats} />
               </div>
               <aside className="route-overview-side">
                 <div className="planner-quick-box" aria-label="تنظیم سریع حرکت">

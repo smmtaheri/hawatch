@@ -107,7 +107,7 @@ describe("mobile route and forecast controls", () => {
     render(<SpecialistMetrics metrics={metrics} dayLabel="امروز" />);
 
     expect(document.querySelectorAll(".specialist-metrics-preview .metric")).toHaveLength(2);
-    await user.click(screen.getByRole("button", { name: /دیدن ۱ جزئیات بیشتر/ }));
+    await user.click(screen.getByRole("button", { name: "دیدن همهٔ جزئیات تخصصی امروز" }));
     expect(within(screen.getByRole("dialog", { name: /جزئیات تخصصی امروز/ })).getByText("دید")).toBeInTheDocument();
   });
 
@@ -123,7 +123,7 @@ describe("mobile route and forecast controls", () => {
     expect(screen.getByRole("link", { name: /مسیر دوم/ })).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /مسیر سوم/ })).not.toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: /انتخاب از بین/ }));
+    await user.click(screen.getByRole("button", { name: "دیدن همهٔ مسیرها" }));
     const dialog = screen.getByRole("dialog", { name: "انتخاب مسیر" });
     expect(within(dialog).getByRole("link", { name: /مسیر سوم/ })).toBeInTheDocument();
 
@@ -153,7 +153,7 @@ describe("mobile route and forecast controls", () => {
         <MobileRouteSelector routes={routes} title="مسیرهای منتهی به توچال" />
       </MemoryRouter>,
     );
-    await user.click(screen.getByRole("button", { name: /انتخاب از بین/ }));
+    await user.click(screen.getByRole("button", { name: "دیدن همهٔ مسیرها" }));
     await user.click(screen.getByRole("button", { name: "بستن پنجرهٔ انتخاب مسیر" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });

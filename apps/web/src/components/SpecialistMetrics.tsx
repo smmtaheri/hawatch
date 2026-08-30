@@ -64,7 +64,7 @@ export function SpecialistMetrics({ metrics, dayLabel }: { metrics: Metric[]; da
             aria-expanded={isOpen}
             onClick={() => setIsOpen(true)}
           >
-            دیدن {remaining.toLocaleString("fa-IR")} جزئیات بیشتر
+            دیدن همهٔ جزئیات تخصصی {dayLabel}
             <span aria-hidden="true">←</span>
           </button>
         ) : null}
