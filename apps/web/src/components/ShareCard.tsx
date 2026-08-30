@@ -56,12 +56,6 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
       </div>
       <div className="share-summary-copy">
         <strong>{decision.summary}</strong>
-        {!timingPending && decision.critical_time && decision.critical_time !== "—" ? (
-          <span>
-            {decision.critical_time}
-            {decision.critical_note ? ` · ${decision.critical_note}` : ""}
-          </span>
-        ) : null}
       </div>
       <div className="share-recommendations">
         <span className="share-section-label">پیشنهادهای این برنامه</span>
