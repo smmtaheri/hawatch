@@ -2104,8 +2104,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
-/* Desktop keeps the same compact hero hierarchy as mobile without making the
- * forecast controls start too far below the page title. */
+/* Desktop keeps the route header compact while preserving a separate lane for
+ * Back above the route identity. */
 @media (min-width: 721px) {
   .destination-page .destination-hero {
     height: 220px !important;
@@ -2120,33 +2120,55 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 
   .route-page .route-hero {
-    min-height: 220px;
-    padding: 30px 36px;
+    min-height: 184px;
+    height: 184px;
+    padding: 22px 36px;
   }
 
   .route-page .route-hero h1 {
     font-size: 38px;
   }
 
+  .route-page .route-hero .hero-back-navigation {
+    top: 16px;
+    right: 36px;
+  }
+
+  .route-page .route-hero-copy {
+    align-self: center;
+    padding-top: 26px;
+  }
+
+  .route-page .route-hero-status-stack {
+    top: 50%;
+    left: 36px;
+    transform: translateY(-50%);
+  }
+
   /* Keep the desktop planner readable: select a day first, then select the
    * weather window with its own breathing room.  Mobile retains its compact
    * side-by-side control through the max-width rules above. */
   .route-page .route-planner {
-    display: grid;
+    display: grid !important;
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "heading"
+      "days"
+      "period";
+    row-gap: 20px;
   }
 
   .route-page .route-planner-day-period {
-    display: contents;
+    display: contents !important;
   }
 
   .route-page .route-planner-day-period .forecast-day-heading {
-    grid-row: 1;
-    margin-bottom: 8px;
+    grid-area: heading;
+    margin: 0;
   }
 
   .route-page .route-planner .planner-day {
-    grid-row: 2;
+    grid-area: days;
   }
 
   .route-page .route-planner .planner-day .day-tabs {
@@ -2154,11 +2176,11 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 
   .route-page .route-planner-day-period .route-period-row {
-    display: grid;
-    grid-row: 3;
+    display: grid !important;
+    grid-area: period;
     justify-self: start;
     width: min(100%, 390px);
-    margin-top: 20px;
+    margin: 0;
     gap: 8px;
   }
 }
