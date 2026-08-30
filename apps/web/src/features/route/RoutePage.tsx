@@ -323,8 +323,12 @@ export function RoutePage() {
                 title={`مسیرهای دیگر ${data.route.parent.name}`}
                 variant="trigger"
               />
+              <RouteSiblingNavigation
+                parentName={data.route.parent.name}
+                currentRoute={{ title: data.route.title, href: data.route.href }}
+                routes={data.route.siblings}
+              />
             </section>
-            <RouteSiblingNavigation parentName={data.route.parent.name} routes={data.route.siblings} />
             <div className="route-overview-grid">
               <div className="route-overview-main">
                 <section className="route-planner card-surface" id="planner">
