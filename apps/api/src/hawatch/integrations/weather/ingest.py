@@ -48,7 +48,7 @@ class IngestLockError(RuntimeError):
 
 
 def _stale_after() -> timedelta:
-    hours = int(getattr(settings, "FORECAST_STALE_AFTER_HOURS", 3))
+    hours = int(getattr(settings, "FORECAST_STALE_AFTER_HOURS", 7))
     return timedelta(hours=hours)
 
 

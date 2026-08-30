@@ -10,7 +10,7 @@ API از forecastهای دمو یا live در PostgreSQL می‌خواند. fron
 ## مسیر داده
 
 ```text
-provider (one-shot management command، هر ۶ ساعت با scheduler بیرونی)
+provider (one-shot management command، هر ۶ ساعت با `ingest-scheduler` داخلی در ساعت‌های ۰۰، ۰۶، ۱۲ و ۱۸ تهران)
   → raw weather ingestion + advisory lock
   → ForecastSnapshot (raw JSON, checksum)
   → normalization

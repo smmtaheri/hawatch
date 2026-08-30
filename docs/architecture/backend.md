@@ -16,7 +16,7 @@
 - `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`)
 - `forecasts`: WeatherPoint و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
-- `jobs`: management commandهای seed، ingest one-shot و retention
+- `jobs`: management commandهای seed، ingest one-shot، scheduler شش‌ساعته و retention
 
 Forecast Place برای destination و point از یک سرویس/serializer مشترک (`build_place_forecast`) ساخته می‌شود. Route forecast زمان رسیدن هر نقطه را از cumulative متوسط catalog × ضریب زمان pace می‌سازد و forecast همان WeatherPoint را نزدیک به `arrival_at` انتخاب می‌کند (بدون fallback قله؛ در تساوی فاصله، `forecast_at` زودتر). `state` نقطه فقط از severity همان forecast است. timing فقط با invariant کامل usable است (`routes.timing.route_timing_complete`). GPX فقط evidence آفلاین در `tracks/` است.
 
@@ -34,5 +34,5 @@ Health:
 
 - API با یک worker gunicorn اجرا می‌شود.
 - web به‌صورت build استاتیک Nginx سرو می‌شود؛ Vite dev server فقط برای توسعه است.
-- ingest یک management command یک‌باره است و scheduler بیرونی آن را هر ۶ ساعت اجرا می‌کند.
+- ingest یک management command یک‌باره است؛ سرویس سبک `ingest-scheduler` آن را هر روز ساعت ۰۰، ۰۶، ۱۲ و ۱۸ به وقت تهران اجرا می‌کند.
 - OpenSearch، Dashboards، Vector، Prometheus و Grafana فقط با Compose profile `observability` فعال می‌شوند.

@@ -124,7 +124,7 @@ OPEN_METEO_BASE_URL = env("OPEN_METEO_BASE_URL", "https://api.open-meteo.com/v1/
 OPEN_METEO_BATCH_SIZE = int(env("OPEN_METEO_BATCH_SIZE", "100"))
 OPEN_METEO_FORECAST_DAYS = int(env("OPEN_METEO_FORECAST_DAYS", "7"))
 OPEN_METEO_PAST_DAYS = int(env("OPEN_METEO_PAST_DAYS", "1"))
-FORECAST_STALE_AFTER_HOURS = int(env("FORECAST_STALE_AFTER_HOURS", "3"))
+FORECAST_STALE_AFTER_HOURS = int(env("FORECAST_STALE_AFTER_HOURS", "7"))
 
 # Observability is intentionally configured through environment variables. The
 # actual token/password values are supplied by Compose secrets or a local .env.

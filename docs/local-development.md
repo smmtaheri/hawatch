@@ -67,16 +67,16 @@ uv run python manage.py bootstrap_live_catalog_if_empty
 # یا import صریح (غیرتخریبی): uv run python manage.py seed_tochal_catalog
 ```
 
-Ingestion جدا و one-shot است؛ فقط از طریق management command اجرا می‌شود و هرگز از handlerهای API صدا زده نمی‌شود. برای pilot آن را هر ۶ ساعت با cron/systemd timer اجرا کن:
+Ingestion از handlerهای API صدا زده نمی‌شود. سرویس one-shot برای اجرای دستی وجود دارد و `ingest-scheduler` در Compose آن را هر روز ساعت ۰۰، ۰۶، ۱۲ و ۱۸ به وقت تهران اجرا می‌کند:
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 ```
 
-نمونهٔ زمان‌بندی cron (مسیر checkout را با مسیر واقعی عوض کن):
+برای مشاهدهٔ scheduler:
 
-```cron
-0 */6 * * * cd /path/to/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml logs -f ingest-scheduler
 ```
 
 Retention: snapshotهای خام و رکوردهای forecast قدیمی‌تر از ۷ روز پاک می‌شوند؛ آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شود. ingest با upsert داخل transaction انجام می‌شود و شکست کامل، دادهٔ قبلی را حذف نمی‌کند. maintenance سبک این cleanup را روزانه اجرا می‌کند.

@@ -8,7 +8,7 @@
 
 - frontend: `apps/web` — React + TypeScript + Vite
 - backend: `apps/api` — Django + Django REST Framework + PostGIS
-- local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot و maintenance سبک
+- local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot، scheduler شش‌ساعته و maintenance سبک
 - gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
 
 Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
@@ -45,11 +45,13 @@ docker compose --env-file .env -f infra/compose/compose.yaml up -d
 - health ready: http://localhost:8000/api/v1/health/ready/
 - وضعیت عملیاتی: http://localhost:8000/api/v1/health/status/ (با Bearer token)
 
-Ingest در Compose یک‌باره است. برای اجرای دوره‌ای، آن را از timer خارجی هر ۶ ساعت صدا بزن:
+در Compose، `ingest-scheduler` command یک‌بارهٔ ingest را هر روز ساعت ۰۰، ۰۶، ۱۲ و ۱۸ به وقت تهران اجرا می‌کند. اجرای دستی ingest همچنان ممکن است:
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 ```
+
+برای cadence شش‌ساعته، `FORECAST_STALE_AFTER_HOURS` را حداقل `7` نگه دارید؛ deploy script اگر این مقدار در `.env` وجود نداشته باشد مقدار ۷ را می‌گذارد.
 
 Observability سنگین پیش‌فرض خاموش است و فقط در صورت نیاز فعال می‌شود:
 

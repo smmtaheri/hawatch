@@ -14,7 +14,7 @@
 
 ## profile کم‌هزینه
 
-Compose به‌صورت عادی فقط PostgreSQL، API، web، ingest one-shot و maintenance سبک را اجرا می‌کند. OpenSearch، Dashboards، Vector، Prometheus و Grafana همگی در profile `observability` هستند:
+Compose به‌صورت عادی فقط PostgreSQL، API، web، ingest one-shot، `ingest-scheduler` و maintenance سبک را اجرا می‌کند. OpenSearch، Dashboards، Vector، Prometheus و Grafana همگی در profile `observability` هستند:
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml up -d

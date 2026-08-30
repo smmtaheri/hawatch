@@ -42,9 +42,9 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ### Runtime و مسیر توسعه
 
-- Compose سبک: PostgreSQL/PostGIS، API، frontend production، ingest one-shot و maintenance.
+- Compose سبک: PostgreSQL/PostGIS، API، frontend production، ingest one-shot، scheduler شش‌ساعته و maintenance.
 - Redis و observability سنگین profile اختیاری‌اند؛ Kafka، data lake، Kubernetes و share server-side در runtime فعلی نیستند.
-- provider واقعی و Open-Meteo فقط از مسیر صریح ingest قابل فعال‌سازی‌اند؛ API و startup نباید بی‌اجازه provider را صدا بزنند.
+- provider واقعی و Open-Meteo فقط از مسیر ingest صریح یا scheduler داخلی قابل فعال‌سازی‌اند؛ API و startup نباید بی‌اجازه provider را صدا بزنند.
 
 ## وضعیت الزامات
 

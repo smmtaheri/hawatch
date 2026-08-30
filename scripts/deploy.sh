@@ -49,6 +49,7 @@ Optional environment variables:
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
   NGINX_PUBLISH_PORT     Gateway host port (default: 80)
   RUN_INITIAL_INGEST     Set 0 to skip the first live ingest
+  FORECAST_STALE_AFTER_HOURS  Freshness threshold (default 7 for six-hour ingest)
   ENABLE_OBSERVABILITY   Set 1 only on a host sized for the heavy stack
 
 The script must run as root. It creates .env only when it does not exist.
@@ -215,6 +216,9 @@ configure_env() {
   set_env_value WEB_PUBLISH_PORT "$WEB_PUBLISH_PORT"
   set_env_value NGINX_PUBLISH_PORT "$NGINX_PUBLISH_PORT"
   set_env_value VITE_API_BASE_URL "$VITE_API_BASE_URL"
+  FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-$(get_env_value FORECAST_STALE_AFTER_HOURS)}"
+  FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-7}"
+  set_env_value FORECAST_STALE_AFTER_HOURS "$FORECAST_STALE_AFTER_HOURS"
   configured_hosts="${DJANGO_ALLOWED_HOSTS:-$(get_env_value DJANGO_ALLOWED_HOSTS)}"
   configured_hosts="${configured_hosts:-localhost,127.0.0.1,api,nginx}"
   configured_hosts="$(append_csv_value "$configured_hosts" "$PUBLIC_HOST")"
@@ -327,17 +331,18 @@ run_stack() {
 
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance \
+    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler \
       opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
       vector prometheus grafana
   else
-    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance
+    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler
   fi
 
   wait_for_healthy postgres
   wait_for_healthy api
   wait_for_healthy web
   wait_for_running maintenance
+  wait_for_running ingest-scheduler
 
   # Nginx resolves Docker service names when it starts. Recreate the gateway
   # after API/Web replacement so it cannot retain a stale container IP.

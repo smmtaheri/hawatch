@@ -19,4 +19,4 @@
 
 - توسعه‌دهنده با یک `compose up` به چهار صفحهٔ اجرایی Home، Destination، Route و Point می‌رسد؛ Login همچنان reference است
 - frontend به API داخلی وابسته است نه به fixture داخل component
-- ورود دادهٔ واقعی با `DEMO_DATA_ENABLED=false` و command/provider موجود قابل اجرای کنترل‌شده است؛ schedule و provider/fallback نهایی هنوز تصمیم عملیاتی جدا می‌خواهند
+- ورود دادهٔ واقعی با `DEMO_DATA_ENABLED=false` و command/provider موجود قابل اجرای کنترل‌شده است؛ scheduler داخلی با زمان‌های ثابت تهران (`۰۰، ۰۶، ۱۲، ۱۸`) command را اجرا می‌کند.

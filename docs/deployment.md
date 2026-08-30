@@ -9,7 +9,7 @@
 - clone یا fast-forward کردن فقط checkout مورد انتظار Hawatch؛
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
-- اجرای `docker compose config`، build/up، health check و یک ingest اولیهٔ live؛
+- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛
 - توقف کامل containerهای همان Compose project با `down --remove-orphans` و سپس بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate`؛ volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛
 - نمایش status و URLهای قابل تست.
 
@@ -75,11 +75,17 @@ cd /root/hawatch
 docker compose --env-file .env -f infra/compose/compose.yaml down
 ```
 
-اجرای ingest دوره‌ای نیز one-shot است و می‌تواند از cron یا systemd timer خارجی، هر ۶ ساعت، اجرا شود:
+سرویس `ingest-scheduler` اجرای دوره‌ای را بدون cron یا systemd خارجی انجام می‌دهد: هر روز در ساعت‌های ۰۰:۰۰، ۰۶:۰۰، ۱۲:۰۰ و ۱۸:۰۰ به وقت تهران. اجرای دستی one-shot همچنان ممکن است:
 
 ```bash
 cd /root/hawatch
 docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
+```
+
+لاگ زمان‌بندی و نتیجهٔ هر اجرا:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml logs --tail=100 ingest-scheduler
 ```
 
 فعال‌سازی observability فقط با تصمیم جداگانه و روی سرور بزرگ‌تر انجام شود:

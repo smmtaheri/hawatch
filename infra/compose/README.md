@@ -8,7 +8,8 @@
 - `api` — Django/DRF با یک worker روی `:8000`
 - `web` — build استاتیک Nginx روی `:5173`
 - `nginx` — gateway سبک روی port قابل‌تنظیم (پیش‌فرض `:80`)؛ proxy وب/API و endpoint داخلی `healthz`
-- `ingest` — management command یک‌باره؛ scheduler خارجی هر ۶ ساعت آن را اجرا می‌کند
+- `ingest` — management command یک‌باره برای اجرای دستی یا ingest اولیه
+- `ingest-scheduler` — scheduler سبک داخلی؛ ingest را هر روز ساعت ۰۰، ۰۶، ۱۲ و ۱۸ به وقت تهران اجرا می‌کند
 - `maintenance` — cleanup سبک forecast و log، بدون وابستگی به OpenSearch
 
 سرویس‌های سنگین observability در profile `observability` هستند و در `up` عادی بالا نمی‌آیند:
@@ -33,6 +34,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml up -d
 docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 docker compose --env-file .env -f infra/compose/compose.yaml ps
 docker compose --env-file .env -f infra/compose/compose.yaml logs -f api
+docker compose --env-file .env -f infra/compose/compose.yaml logs -f ingest-scheduler
 docker compose --env-file .env -f infra/compose/compose.yaml down
 ```
 

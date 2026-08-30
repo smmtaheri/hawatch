@@ -7,7 +7,7 @@
 - [ ] repository در مسیر checkout فعلی `hawatch` قرار دارد و ساختار monorepo شامل `apps/web`، `apps/api`، `infra` و `scripts` است.
 - [ ] frontend با React، TypeScript، Vite و React Router اجرا می‌شود.
 - [ ] backend با Django REST، PostgreSQL/PostGIS و migrationهای موجود اجرا می‌شود.
-- [ ] Compose سبک شامل postgres، api، web، ingest one-shot و maintenance است؛ Redis و observability profile اختیاری‌اند.
+- [ ] Compose سبک شامل postgres، api، web، ingest one-shot، `ingest-scheduler` و maintenance است؛ Redis و observability profile اختیاری‌اند.
 - [ ] frontend فقط API داخلی را مصرف می‌کند و مستقیماً به provider یا database وصل نمی‌شود.
 
 ## تصاویر و design handoff

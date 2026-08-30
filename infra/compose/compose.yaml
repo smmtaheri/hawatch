@@ -51,7 +51,7 @@ services:
       OPEN_METEO_BATCH_SIZE: ${OPEN_METEO_BATCH_SIZE:-100}
       OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-1}
-      FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-3}
+      FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
       GUNICORN_WORKERS: ${GUNICORN_WORKERS:-1}
       HAWATCH_SERVICE_NAME: hawatch-api
       HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
@@ -111,7 +111,7 @@ services:
       OPEN_METEO_BATCH_SIZE: ${OPEN_METEO_BATCH_SIZE:-100}
       OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-1}
-      FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-3}
+      FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
       HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
     volumes:
       - ../../apps/api:/app
@@ -125,6 +125,14 @@ services:
       - python manage.py ingest_open_meteo
     logging: *hawatch-container-logging
     restart: "no"
+
+  ingest-scheduler:
+    extends:
+      service: ingest
+    environment:
+      HAWATCH_INGEST_SCHEDULE: ${HAWATCH_INGEST_SCHEDULE:-00:00,06:00,12:00,18:00}
+    command: ["python", "-m", "hawatch.jobs.ingest_scheduler"]
+    restart: unless-stopped
 
   web:
     build:

@@ -457,13 +457,14 @@ def test_api_reads_do_not_write_catalog(api_client):
 
 @pytest.mark.django_db
 def test_freshness_stale_behavior():
-    seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
-    snapshot = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal_summit"], hours=6)])
-    assert snapshot_freshness(snapshot) == "ready"
-    snapshot.generated_at = dj_timezone.now() - timedelta(hours=5)
-    snapshot.save(update_fields=["generated_at"])
-    assert snapshot_freshness(snapshot) == "stale"
+    with override_settings(FORECAST_STALE_AFTER_HOURS=7):
+        seed_tochal_catalog()
+        summit = WeatherPoint.objects.get(slug="tochal_summit")
+        snapshot = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal_summit"], hours=6)])
+        assert snapshot_freshness(snapshot) == "ready"
+        snapshot.generated_at = dj_timezone.now() - timedelta(hours=8)
+        snapshot.save(update_fields=["generated_at"])
+        assert snapshot_freshness(snapshot) == "stale"
 
 
 @pytest.mark.django_db
