@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
@@ -332,50 +332,57 @@ export function RoutePage() {
                   <div className="route-weather-heading">
                     <span className="decision-chip">نقاط مهم</span>
                   </div>
-                  <RouteTimeline
-                    origin={data.route.origin}
-                    destination={data.route.destination_label}
-                    title={data.route.title}
-                    points={data.points}
-                    pointHref={(point) => pointLink(point)}
-                  />
-                  <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
-                    <div className="route-point-weather-grid">
-                      {data.points.map((point) => {
-                        const weatherMissing = point.weather_available === false;
-                        const unavailable = weatherMissing || point.timing_pending;
-                        const label = pointWeatherLabel(point, timingPending);
-                        return (
-                          <RoutePointLink
-                            key={`${point.slug}-weather`}
-                            pointHref={point.href}
-                            fromRoute={fromRoute}
-                            className={`route-point-weather-card ${point.state} ${unavailable ? "weather-unavailable" : ""}`}
-                            ariaLabel={`آب‌وهوای ${point.name} · ${label}`}
-                          >
-                            <strong>{point.name}</strong>
-                            <span className="route-point-weather-eta">{label}</span>
-                            {point.timing_estimated && !timingPending ? (
-                              <span className="route-point-weather-badge">{timingEstimateBadgeLabel(point)}</span>
-                            ) : null}
-                            <span className="route-point-weather-icon">{weatherMissing || timingPending ? "—" : point.icon}</span>
-                            <span className="route-point-weather-condition">
-                              {timingPending
-                                ? "زمان‌بندی در دسترس نیست"
-                                : weatherMissing
-                                  ? point.condition || "در دسترس نیست"
-                                  : point.condition}
-                            </span>
-                            <b>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</b>
-                            <small>
-                              {!unavailable && point.wind != null ? `باد ${point.wind} km/h` : "باد —"}
-                            </small>
-                            {!unavailable && point.state !== "normal" ? (
-                              <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em>
-                            ) : null}
-                          </RoutePointLink>
-                        );
-                      })}
+                  <div className="route-points-axis-scroll">
+                    <div
+                      className="route-points-axis-content"
+                      style={{ "--route-point-count": data.points.length } as CSSProperties}
+                    >
+                      <RouteTimeline
+                        origin={data.route.origin}
+                        destination={data.route.destination_label}
+                        title={data.route.title}
+                        points={data.points}
+                        pointHref={(point) => pointLink(point)}
+                      />
+                      <div className="route-point-weather-values" aria-label="آب‌وهوای متناظر با نقاط مهم مسیر">
+                        <div className="route-point-weather-grid">
+                          {data.points.map((point) => {
+                            const weatherMissing = point.weather_available === false;
+                            const unavailable = weatherMissing || point.timing_pending;
+                            const label = pointWeatherLabel(point, timingPending);
+                            return (
+                              <RoutePointLink
+                                key={`${point.slug}-weather`}
+                                pointHref={point.href}
+                                fromRoute={fromRoute}
+                                className={`route-point-weather-card ${point.state} ${unavailable ? "weather-unavailable" : ""}`}
+                                ariaLabel={`آب‌وهوای ${point.name} · ${label}`}
+                              >
+                                <strong>{point.name}</strong>
+                                <span className="route-point-weather-eta">{label}</span>
+                                {point.timing_estimated && !timingPending ? (
+                                  <span className="route-point-weather-badge">{timingEstimateBadgeLabel(point)}</span>
+                                ) : null}
+                                <span className="route-point-weather-icon">{weatherMissing || timingPending ? "—" : point.icon}</span>
+                                <span className="route-point-weather-condition">
+                                  {timingPending
+                                    ? "زمان‌بندی در دسترس نیست"
+                                    : weatherMissing
+                                      ? point.condition || "در دسترس نیست"
+                                      : point.condition}
+                                </span>
+                                <b>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</b>
+                                <small>
+                                  {!unavailable && point.wind != null ? `باد ${point.wind} km/h` : "باد —"}
+                                </small>
+                                {!unavailable && point.state !== "normal" ? (
+                                  <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em>
+                                ) : null}
+                              </RoutePointLink>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </section>

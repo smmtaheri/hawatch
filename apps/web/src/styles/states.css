@@ -1938,3 +1938,108 @@ html:not([data-theme="light"]) .search-result-row:hover {
     min-width: 132px !important;
   }
 }
+
+/* Route mobile refinement: the route axis and its weather cards are one
+ * scroll surface.  A point can never slide away from the card describing it. */
+@media (width <= 720px) {
+  .route-page .route-hero {
+    height: 100px !important;
+    min-height: 100px !important;
+    padding-block: 10px !important;
+  }
+
+  .route-page .route-hero h1 {
+    font-size: clamp(25px, 7vw, 31px) !important;
+    line-height: 1.2 !important;
+  }
+
+  .route-page .route-hero-status-stack {
+    width: min(42%, 174px) !important;
+  }
+
+  .route-page .route-planner {
+    padding-block: 10px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box {
+    min-height: 0 !important;
+    padding-block: 4px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .mobile-planner-selectors,
+  .route-page .route-overview-side .planner-quick-box .time-gauge {
+    align-self: center;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .route-page .route-weather-card {
+    padding-block: 14px !important;
+  }
+
+  .route-page .route-weather-heading {
+    margin-bottom: 5px !important;
+  }
+
+  .route-page .route-points-axis-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .route-page .route-points-axis-content {
+    --route-point-width: 124px;
+    --route-point-gap: 8px;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .route-page .route-points-axis-content .route-linear-scroll,
+  .route-page .route-points-axis-content .route-point-weather-values {
+    width: max-content !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+
+  .route-page .route-points-axis-content .route-linear-panel {
+    min-width: 0;
+  }
+
+  .route-page .route-points-axis-content .route-linear-endpoints,
+  .route-page .route-points-axis-content .route-linear-track,
+  .route-page .route-points-axis-content .route-point-weather-grid {
+    display: grid !important;
+    grid-template-columns: repeat(var(--route-point-count), var(--route-point-width)) !important;
+    gap: var(--route-point-gap) !important;
+    width: max-content !important;
+    min-width: 0 !important;
+  }
+
+  .route-page .route-points-axis-content .route-linear-endpoints {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100% !important;
+  }
+
+  .route-page .route-points-axis-content .route-linear-point,
+  .route-page .route-points-axis-content .route-point-weather-card {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  .route-page .route-points-axis-content .route-linear-point {
+    flex: none !important;
+  }
+
+  .route-page .route-points-axis-content .route-point-weather-card {
+    flex: none !important;
+  }
+}
