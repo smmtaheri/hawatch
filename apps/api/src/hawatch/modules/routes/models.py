@@ -120,7 +120,11 @@ class RoutePoint(models.Model):
         default=TimingStatus.PENDING,
     )
     sort_order = models.PositiveSmallIntegerField()
-    note = models.CharField(max_length=255, blank=True)
+    # Internal provenance/evidence is never serialized to the public route API.
+    internal_note = models.CharField(max_length=255, blank=True)
+    # Explicit, short copy approved for the route UI. Do not infer this from
+    # WeatherPoint provenance or catalog research notes.
+    public_note = models.CharField(max_length=255, blank=True)
     axis_x = models.PositiveSmallIntegerField(default=10)
     axis_y = models.PositiveSmallIntegerField(default=50)
     data_mode = models.CharField(max_length=16, default="demo")

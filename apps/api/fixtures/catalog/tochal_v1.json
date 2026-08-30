@@ -70,7 +70,7 @@
       "longitude": 51.400885,
       "elevation_m": null,
       "status": "provisional",
-      "note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). Device GPX elevation is reference-only; catalog elevation awaits DEM validation and must not be promoted from GPX <ele>."
+      "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). Device GPX elevation is reference-only; catalog elevation awaits DEM validation and must not be promoted from GPX <ele>."
     },
     "station_1": {
       "name": "ایستگاه ۱",
@@ -103,7 +103,7 @@
       "elevation_m": 3545,
       "status": "provisional",
       "elevation_source": "ToIran/IranHotelOnline and independent tourism listings: 3545 m; PBF hotel way has no ele; GLO-90 DEM 3581 m",
-      "note": "Related POI; not a mandatory timed point on the main Velenjak ascent."
+      "evidence_note": "Related POI; not a mandatory timed point on the main Velenjak ascent."
     },
     "kolakchal_camp": {
       "name": "کمپ کلکچال",
@@ -170,7 +170,7 @@
       "latitude": 35.897018,
       "longitude": 51.4085832,
       "elevation_m": 3780,
-      "note": "Corrected point for Shakarab/Dopestan; Yal Shakarab–Dopestan is a ridge label, not a WeatherPoint."
+      "evidence_note": "Corrected point for Shakarab/Dopestan; Yal Shakarab–Dopestan is a ridge label, not a WeatherPoint."
     },
     "homand_tochal": {
       "name": "هومند توچال",
@@ -217,7 +217,7 @@
       "elevation_m": 3577,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM",
-      "note": "Explicitly distinct from Bazarek Pass (bazarek_pass). Named in Shahrestanak valley GPX evidence."
+      "evidence_note": "Explicitly distinct from Bazarek Pass (bazarek_pass). Named in Shahrestanak valley GPX evidence."
     },
     "naseri_junction": {
       "name": "سه‌راه ناصری",
@@ -246,7 +246,7 @@
       "elevation_m": 1826,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM",
-      "note": "Route-specific eastern parking / trail access from GPX evidence for the Kolakchal traverse. The park has multiple entrances; DEM elevation is provisional. GPX <ele> is not catalog truth. piyazchal_pass and lezoon_east remain ~135 m and ~217 m from this track and were not auto-moved."
+      "evidence_note": "Route-specific eastern parking / trail access from GPX evidence for the Kolakchal traverse. The park has multiple entrances; DEM elevation is provisional. GPX <ele> is not catalog truth. piyazchal_pass and lezoon_east remain ~135 m and ~217 m from this track and were not auto-moved."
     }
   },
   "routes": {

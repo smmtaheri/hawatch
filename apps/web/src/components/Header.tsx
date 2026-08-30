@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -6,9 +7,9 @@ export function Header() {
     <header className="site-header">
       <Logo />
       <div className="header-actions">
-        <a href="/login" className="account-status" onClick={(event) => event.preventDefault()}>
+        <Link to="/login" className="account-status">
           ورود
-        </a>
+        </Link>
         <ThemeToggle />
       </div>
     </header>

@@ -231,6 +231,17 @@ def _validate_document_shape(data: dict) -> None:
         missing = sorted(set(points) - point_slugs)
         if missing:
             raise ValueError(f"Route {route_key} references missing points: {', '.join(missing)}")
+        public_notes = route.get("public_point_notes") or {}
+        if not isinstance(public_notes, dict):
+            raise ValueError(f"Route {route_key} public_point_notes must be an object")
+        unknown_note_slugs = sorted(set(public_notes) - set(points))
+        if unknown_note_slugs:
+            raise ValueError(
+                f"Route {route_key} public_point_notes references points outside the route: "
+                f"{', '.join(unknown_note_slugs)}"
+            )
+        if not all(isinstance(note, str) for note in public_notes.values()):
+            raise ValueError(f"Route {route_key} public_point_notes values must be strings")
         _validate_route_timing(route_key, route, point_slugs)
 
 
@@ -395,6 +406,7 @@ def seed_catalog(
     kept_route_ids: list[int] = []
     for catalog_key, route_row in data["routes"].items():
         point_slugs = route_row["points"]
+        public_notes = route_row.get("public_point_notes") or {}
         if any(slug not in weather_points for slug in point_slugs):
             existing_route = Route.objects.filter(slug=route_row["slug"]).first()
             if existing_route is not None:
@@ -489,7 +501,11 @@ def seed_catalog(
             progress = None
             if cumulative is not None and total:
                 progress = round((cumulative / total) * 100, 2)
-            note = str(point_row.get("note", "") or "")[:255]
+            # Evidence belongs to the internal audit trail. Public route copy
+            # must be explicitly supplied by the route, never inherited from a
+            # WeatherPoint's research/provenance metadata.
+            internal_note = str(point_row.get("evidence_note", "") or "")[:255]
+            public_note = str(public_notes.get(point_slug, "") or "")[:255]
             rp_defaults = {
                 "weather_point": wp,
                 "destination": destination if is_last else None,
@@ -503,7 +519,8 @@ def seed_catalog(
                 "progress_pct": progress,
                 "timing_status": timing["point_timing_status"],
                 "sort_order": index + 1,
-                "note": note,
+                "internal_note": internal_note,
+                "public_note": public_note,
                 "axis_x": axis_x,
                 "axis_y": axis_y,
                 "data_mode": "live",

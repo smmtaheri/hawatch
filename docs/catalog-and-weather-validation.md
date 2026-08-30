@@ -61,7 +61,7 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 
 1. Django admin → WeatherPoint: مختصات، DEM elevation، `is_active`/`ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
 2. اختیاری: Destination profile روی همان نقطه.
-3. Route + مرتب‌سازی RoutePointها با cumulative کامل؛ سرویس publish نرمال‌سازی می‌کند؛ timing ناقص → `pending`.
+3. Route + مرتب‌سازی RoutePointها با cumulative کامل؛ برای متن کاربر فقط `public_note` کوتاه وارد کنید. evidence/منبع/یادداشت GPX را در `internal_note` نگه دارید؛ سرویس publish نرمال‌سازی می‌کند؛ timing ناقص → `pending`.
 4. پس از commit، search index خودکار rebuild می‌شود (بدون restart).
 5. ingest بعدی همهٔ نقاط فعال واجد شرایط را می‌گیرد؛ برای فوری: `ingest_open_meteo --slugs your_slug`.
 

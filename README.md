@@ -11,7 +11,7 @@
 - local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot، scheduler شش‌ساعته و maintenance سبک
 - gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
 
-Login هنوز فقط reference طراحی است و در این milestone پیاده نشده است.
+مسیر `/login` و shell بصری Login در این milestone در دسترس است؛ احراز هویت واقعی، OTP و API ورود هنوز پیاده نشده‌اند.
 
 ## صفحات این نسخه
 

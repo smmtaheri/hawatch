@@ -25,8 +25,6 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
       <div className="share-card-heading">
         <div>
           <span className="decision-chip">{decision.chip}</span>
-          <h2>{decision.title}</h2>
-          <p>{decision.hero_status}</p>
         </div>
         <span className="share-status-badge">
           <i aria-hidden="true" />
@@ -60,7 +58,8 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         <strong>{decision.summary}</strong>
         {!timingPending && decision.critical_time && decision.critical_time !== "—" ? (
           <span>
-            {decision.critical_time} · {decision.critical_note}
+            {decision.critical_time}
+            {decision.critical_note ? ` · ${decision.critical_note}` : ""}
           </span>
         ) : null}
       </div>

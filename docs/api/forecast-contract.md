@@ -130,6 +130,7 @@ Catalog `hawatch-tochal-catalog-v4` / `tochal-timing-v3`. هر پنج مسیر �
 - مسیر فقط وقتی usable است که status برابر `estimated`/`curated` باشد، `one_way_minutes` مثبت باشد، حداقل دو نقطه داشته باشد، همهٔ نقاط estimated/curated با cumulative کامل، cumulative اول صفر، strictly increasing، و cumulative نهایی برابر `one_way_minutes` باشد؛ در غیر این صورت `timing_pending=true`. `base_minutes` legacy برای arrival کافی نیست.
 - GPX فقط evidence داخلی است (`tracks/`، analyzer آفلاین)؛ در API/seed/ingest parse نمی‌شود و از Docker imageهای production حذف می‌شود.
 - پاسخ نقطه شامل `arrival_at`، `arrival_minutes`، برچسب تقریبی زمان (`حدود HH:MM` در UI)، `timing_status`/`confidence`/`uncertainty`، `forecast_at` و شرط/دما/باد/severity همان نقطه است.
+- `points[].note` فقط از `RoutePoint.public_note` صریح و کوتاه می‌آید. evidence/GPX/DEM و یادداشت‌های catalog در `internal_note` نگه‌داری می‌شوند و در هیچ پاسخ public برنمی‌گردند.
 
 ## نقطهٔ canonical (Forecast Place — نقش point)
 

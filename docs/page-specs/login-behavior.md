@@ -1,6 +1,6 @@
 # رفتار Login reference
 
-Login در milestone اول اجرا نمی‌شود و این سند فقط قرارداد تجربهٔ آینده است.
+مسیر Login در milestone اول با shell بصری در دسترس است؛ این سند رفتار احراز هویت آینده و محدودیت‌های فعلی را مشخص می‌کند.
 
 ## قرارداد تعامل آینده
 
@@ -12,5 +12,4 @@ Login در milestone اول اجرا نمی‌شود و این سند فقط ق�
 
 ## محدودیت این milestone
 
-هیچ form handler، auth API، session، dependency یا backend ایجاد نشود. فقط screenshot و design page reference معتبر است.
-
+هیچ form handler، auth API، session، dependency یا backend احراز هویت ایجاد نشده است. صفحه فقط برای navigation و نمایش reference در دسترس است.

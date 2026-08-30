@@ -150,6 +150,16 @@ def test_route_forecast_start_and_speed(api_client, seeded):
     assert medium["points"][0]["time"] == medium["start_time"]
     assert "حدود" in medium["decision"]["title"]
     assert "timing pending" not in str(medium).lower()
+
+    kolakchal = api_client.get(
+        "/api/v1/routes/touchal-kalkchal/forecast/",
+        {"date": today.isoformat(), "period": "afternoon", "start_time": "17:00", "speed": "متوسط"},
+    ).json()
+    assert all(item["note"] == "" for item in kolakchal["points"])
+    assert kolakchal["decision"]["critical_note"] == ""
+    assert "Route-specific eastern parking" not in str(kolakchal)
+    assert "piyazchal_pass and lezoon_east" not in str(kolakchal)
+
     assert fast["points"][-1]["arrival_minutes"] < medium["points"][-1]["arrival_minutes"]
     assert len(medium["points"]) == 6
     assert [item["slug"] for item in medium["points"]] == [

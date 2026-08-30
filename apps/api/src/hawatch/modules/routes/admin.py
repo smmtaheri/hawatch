@@ -18,10 +18,11 @@ class RoutePointInline(admin.TabularInline):
         "segment_minutes",
         "timing_status",
         "elevation_m",
-        "note",
+        "public_note",
+        "internal_note",
         "fixture_managed",
     )
-    readonly_fields = ("fixture_managed",)
+    readonly_fields = ("fixture_managed", "internal_note")
     ordering = ("sort_order",)
 
 
@@ -134,7 +135,8 @@ class RoutePointAdmin(GISModelAdmin):
     list_filter = ("timing_status", "data_mode", "fixture_managed")
     search_fields = ("slug", "name", "route__slug")
     autocomplete_fields = ("route", "weather_point", "destination")
-    readonly_fields = ("fixture_managed",)
+    # Research/provenance may be inspected here but must not be edited as UI copy.
+    readonly_fields = ("fixture_managed", "internal_note")
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)

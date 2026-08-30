@@ -218,6 +218,13 @@ def test_tochal_timing_seed_idempotent(tochal_seeded):
 
 
 @pytest.mark.django_db
+def test_catalog_evidence_notes_are_internal_not_route_copy(tochal_seeded):
+    parking = RoutePoint.objects.get(route__slug="touchal-welanjak", slug="velenjak_parking")
+    assert parking.public_note == ""
+    assert parking.internal_note.startswith("Mandatory Velenjak trailhead parking")
+
+
+@pytest.mark.django_db
 def test_jamshidieh_is_kalkchal_origin_and_hotel_not_on_welanjak(tochal_seeded):
     kalkchal = Route.objects.get(slug="touchal-kalkchal")
     assert list(kalkchal.points.order_by("sort_order").values_list("slug", flat=True))[0] == "jamshidieh_park"

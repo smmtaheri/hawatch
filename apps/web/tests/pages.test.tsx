@@ -4,6 +4,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
 import { HomePage } from "../src/pages/HomePage";
+import { LoginPage } from "../src/pages/LoginPage";
 import { DestinationPage } from "../src/pages/DestinationPage";
 import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
@@ -162,6 +163,7 @@ function renderAt(path: string) {
       <MemoryRouter initialEntries={[path]}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/destination/:slug" element={<DestinationPage />} />
           <Route path="/routes/:slug" element={<RoutePage />} />
         </Routes>
@@ -212,6 +214,15 @@ describe("Hawatch pages", () => {
     renderAt("/");
     expect(await screen.findByText("توچال")).toBeInTheDocument();
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
+  });
+
+  it("opens the login section from the shared header", async () => {
+    const user = userEvent.setup();
+    renderAt("/");
+    await screen.findByText("توچال");
+    await user.click(screen.getByRole("link", { name: "ورود" }));
+    expect(await screen.findByRole("heading", { name: "ورود" })).toBeInTheDocument();
+    expect(document.title).toBe("هوای ورود | هواچ");
   });
 
   it("renders destination and can open a route", async () => {

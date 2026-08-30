@@ -586,7 +586,7 @@ def serialize_point(point: RoutePoint) -> dict:
         "timing_status": point.timing_status,
         "timing_pending": point.timing_status == RoutePoint.TimingStatus.PENDING,
         "sort_order": point.sort_order,
-        "note": point.note,
+        "note": point.public_note,
         "axis_x": point.axis_x,
         "axis_y": point.axis_y,
         "href": href,
@@ -876,13 +876,13 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         pending_note = "زمان‌بندی مسیر هنوز نهایی نشده"
         if point_timing_pending:
             condition = "زمان‌بندی در دسترس نیست"
-            note = point.note or pending_note
+            note = point.public_note or pending_note
         elif not weather_available:
             condition = "در دسترس نیست"
-            note = point.note or ""
+            note = point.public_note
         else:
             condition = weather["condition"]
-            note = point.note or ""
+            note = point.public_note
         planned.append(
             {
                 **serialize_point(point),
@@ -922,16 +922,20 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             return None
         return f"حدود {time_label}"
 
+    def _status_phrase(label: str, point: dict, detail: str | None = None) -> str:
+        parts = [f"{label}: {point['name']}"]
+        if detail:
+            parts.append(detail)
+        return " · ".join(parts)
+
     if summary_state == "critical" and critical_point:
         time_phrase = _point_time_phrase(critical_point)
         if timing_pending:
             state_summary = f"در {critical_point['name']} شرایط پرریسک گزارش شده؛ زمان‌بندی مسیر هنوز نهایی نیست."
-            hero_status = f"نقطهٔ حساس: {critical_point['name']} · {critical_point['note'] or 'پیش‌بینی بازه‌ای'}"
+            hero_status = _status_phrase("نقطهٔ حساس", critical_point, "پیش‌بینی بازه‌ای")
         else:
             state_summary = f"در {time_phrase or 'مسیر'} شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار."
-            hero_status = f"نقطهٔ حساس: {critical_point['name']} · {critical_point['note']}"
-            if time_phrase:
-                hero_status += f" · {time_phrase}"
+            hero_status = _status_phrase("نقطهٔ حساس", critical_point, time_phrase)
     elif summary_state == "change" and critical_point:
         time_phrase = _point_time_phrase(critical_point)
         if timing_pending:
@@ -939,9 +943,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             hero_status = f"تغییر مهم: {critical_point['name']}"
         else:
             state_summary = f"از {time_phrase or critical_point['name']} تغییر شرایط شروع می‌شود؛ زمان برگشت و تجهیزات را جدی‌تر چک کن."
-            hero_status = f"تغییر مهم: {critical_point['name']}"
-            if time_phrase:
-                hero_status += f" · {time_phrase}"
+            hero_status = _status_phrase("تغییر مهم", critical_point, time_phrase)
     else:
         state_summary = "شرایط مسیر برای شروع آرام‌تر است؛ همچنان پیش‌بینی نقطه‌های بالاتر را دنبال کن."
         hero_status = "شرایط مسیر فعلاً آرام‌تر است"

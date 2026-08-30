@@ -13,7 +13,7 @@
 
 - `catalog`: بارگذاری fixture، bootstrap خالی، import غیرتخریبی با ownership/`fixture_managed`، و publish مشترک مسیر (DB منبع حقیقت runtime؛ بدون ساخت synthetic `dest:{slug}`)
 - `destinations`: مدل Destination به‌عنوان profile عمومی یک WeatherPoint (`weather_point` OneToOne)
-- `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`)
+- `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`، `public_note` جدا از `internal_note`)
 - `forecasts`: WeatherPoint و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
 - `jobs`: management commandهای seed، ingest one-shot، scheduler شش‌ساعته و retention
