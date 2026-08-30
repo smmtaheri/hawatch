@@ -118,7 +118,7 @@ pytest روی میزبان بدون GDAL/PostGIS معمولاً fail می‌شو
 
 ## خارج از scope این milestone
 
-- Login / OTP
+- OTP واقعی و session ورود
 - فراخوانی live Open-Meteo از handlerهای API یا از CI بدون mock
 - Redis اجباری، Celery، Kafka، data lake
 - Kubernetes manifests

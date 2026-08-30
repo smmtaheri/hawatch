@@ -3,8 +3,7 @@ import type { RouteSummary } from "../types";
 
 export function DestinationCard({ route }: { route: RouteSummary }) {
   return (
-    <Link to={route.href} className={`route-card ${route.featured ? "recommended" : ""}`}>
-      {route.featured ? <span className="recommend-label">پیشنهاد هواچ</span> : null}
+    <Link to={route.href} className="route-card">
       <span className="route-icon">⌁</span>
       <span className="route-copy">
         <h3>{route.title}</h3>

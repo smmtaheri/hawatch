@@ -1,1 +1,1 @@
-export { LoginPage } from "../features/auth/LoginPage";
+export { LoginOverlay, LoginPage } from "../features/auth/LoginPage";

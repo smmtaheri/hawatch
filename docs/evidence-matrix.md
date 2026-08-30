@@ -99,10 +99,10 @@
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
 | وجود asset و metadata | `SCREENSHOT-SOURCE` + manifest | `hawatch_05` تا `hawatch_08` و مسیرهای `design/screens/login/{light,dark}/{mobile,web}.png` |
-| layout، component، text و interaction contract | `PRODUCT` + screenshot + design docs | `design/pages/login.md` و `docs/page-specs/login-behavior.md`؛ Login در این milestone reference است و implementation ندارد |
-| stateها | `PRODUCT` + design docs | `design/pages/login.md` §۶ و `design/system/component-states.md`؛ live Login برای این milestone ارائه نشده است |
-| responsive و light/dark | screenshot + page doc | چهار تصویر Login و `design/pages/login.md` §۹ و §۱۰ |
-| live Login | `PRODUCT` + `SCREENSHOT-SOURCE` | طبق تصمیم قطعی Login برای مرحلهٔ بعد است؛ live Login در این milestone validate یا implementation نمی‌شود |
+| layout، component، text و interaction contract | `PRODUCT` + screenshot + design docs | `design/pages/login.md` و `docs/page-specs/login-behavior.md`؛ Login route-backed overlay پیاده شده است |
+| stateها | `PRODUCT` + design docs | شماره input واقعی است، CTA OTP تا آماده‌شدن API disabled است و علت آن اعلام می‌شود |
+| responsive و light/dark | screenshot + page doc | چهار تصویر Login canonical به‌علاوهٔ دو reference flow در `design/screens/login/reference/` |
+| live Login | `LOCAL-IMPLEMENTATION` | mobile تمام‌صفحه، desktop dialog و direct `/login?returnTo=…` صفحهٔ کامل است؛ OTP/backend هنوز فعال نیست |
 
 ## API، معماری و مرزبندی implementation
 
@@ -139,4 +139,4 @@
 
 ## قاعدهٔ استفاده
 
-هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت live محسوب نمی‌شود مگر با evidence جدا. source محلی unavailable به‌صورت non-gating ثبت شده است. implementation محلی فعلی از API داخلی و دادهٔ دمو استفاده می‌کند؛ مسیر ingest واقعی وجود دارد اما فقط با command/provider صریح اجرا می‌شود. Login و ingestion خودکار startup خارج از scope هستند.
+هر مقدار دارای `[PRODUCT]` یا future docs، رفتار فعلی سایت live محسوب نمی‌شود مگر با evidence جدا. source محلی unavailable به‌صورت non-gating ثبت شده است. implementation محلی فعلی از API داخلی و دادهٔ دمو استفاده می‌کند؛ مسیر ingest واقعی وجود دارد اما فقط با command/provider صریح اجرا می‌شود. OTP واقعی و ingestion خودکار startup خارج از scope هستند.

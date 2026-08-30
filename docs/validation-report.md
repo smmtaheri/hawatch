@@ -4,7 +4,7 @@
 
 ## نتیجهٔ فعلی
 
-repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Destination، Route و Point مستقل، API داخلی Django/DRF، catalog/search و Compose سبک است. Login همچنان فقط reference طراحی و خارج از milestone فعلی است.
+repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Destination، Route و Point مستقل، API داخلی Django/DRF، catalog/search و Compose سبک است. Login به‌صورت UI route-backed (overlay در ورود عادی و صفحهٔ کامل در URL مستقیم) وجود دارد؛ OTP واقعی همچنان خارج از milestone فعلی است.
 
 ## منابع
 
@@ -32,6 +32,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
 - RTL، Vazirmatn، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
+- Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است، ولی CTA ارسال OTP تا آماده‌شدن backend غیرفعال می‌ماند.
 
 ### Backend و داده
 
@@ -63,7 +64,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ## محدودیت‌ها و ابهام‌ها
 
-1. Login پیاده نشده و برای milestone بعدی است.
+1. OTP، session و API ورود پیاده نشده‌اند؛ UI ورود فقط این وضعیت را شفاف نشان می‌دهد.
 2. Point screenshot مستقل ندارد؛ تطبیق آن pixel-perfect ادعا نمی‌شود.
 3. دادهٔ forecast در demo mode واقعی نیست؛ provider واقعی باید صریحاً ingest شود.
 4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.

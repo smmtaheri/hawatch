@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
+import { AppRoutes } from "../src/app/App";
 import { HomePage } from "../src/pages/HomePage";
 import { LoginPage } from "../src/pages/LoginPage";
 import { DestinationPage } from "../src/pages/DestinationPage";
@@ -172,6 +173,16 @@ function renderAt(path: string) {
   );
 }
 
+function renderApplication(path: string) {
+  return render(
+    <ThemeProvider>
+      <MemoryRouter initialEntries={[path]}>
+        <AppRoutes />
+      </MemoryRouter>
+    </ThemeProvider>,
+  );
+}
+
 describe("Hawatch pages", () => {
   beforeEach(() => {
     vi.stubGlobal(
@@ -216,14 +227,26 @@ describe("Hawatch pages", () => {
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
   });
 
-  it("opens the login section from the shared header", async () => {
+  it("opens a route-backed login overlay from the shared header", async () => {
     const user = userEvent.setup();
-    renderAt("/");
+    renderApplication("/");
     await screen.findByText("توچال");
     await user.click(screen.getByRole("link", { name: "ورود" }));
-    expect(await screen.findByRole("heading", { name: "ورود" })).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: "ورود" })).not.toBeInTheDocument();
+    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
+    expect(within(dialog).getByLabelText("شمارهٔ موبایل")).toBeInTheDocument();
+    expect(within(dialog).getByRole("button", { name: "دریافت کد ورود" })).toBeDisabled();
+    expect(within(dialog).getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
     expect(document.title).toBe("هوای ورود | هواچ");
+    await user.click(within(dialog).getByRole("button", { name: "بستن ورود" }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(document.title).toBe("هواچ | هوای مقصد، برنامهٔ مسیر");
+  });
+
+  it("renders a full login surface for a direct login URL", async () => {
+    renderAt("/login?returnTo=%2Fdestination%2Ftouchal");
+    expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
   });
 
   it("renders destination and can open a route", async () => {

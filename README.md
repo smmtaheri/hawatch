@@ -11,7 +11,7 @@
 - local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot، scheduler شش‌ساعته و maintenance سبک
 - gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
 
-مسیر `/login` و shell بصری Login در این milestone در دسترس است؛ احراز هویت واقعی، OTP و API ورود هنوز پیاده نشده‌اند.
+مسیر `/login?returnTo=…` و لایهٔ responsive ورود در دسترس است: ورود عادی روی همان صفحه به‌صورت overlay باز می‌شود (mobile تمام‌صفحه و desktop dialog). احراز هویت واقعی، ارسال OTP و API ورود هنوز پیاده نشده‌اند و UI این وضعیت را صریح نشان می‌دهد.
 
 ## صفحات این نسخه
 

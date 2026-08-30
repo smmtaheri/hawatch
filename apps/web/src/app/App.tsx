@@ -1,7 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation, type Location } from "react-router-dom";
 import { DestinationPage } from "../pages/DestinationPage";
 import { HomePage } from "../pages/HomePage";
-import { LoginPage } from "../pages/LoginPage";
+import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { LegacyRoutePointRedirect } from "../features/point/PointNavigation";
 import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
@@ -9,7 +9,28 @@ import { RoutePage } from "../pages/RoutePage";
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
+
+type LoginLocationState = {
+  backgroundLocation?: Location;
+};
+
+/**
+ * A normal login click keeps its originating route rendered below the overlay.
+ * A direct /login URL has no background location and therefore remains a
+ * refresh-safe full page route.
+ */
+export function AppRoutes() {
+  const location = useLocation();
+  const state = location.state as LoginLocationState | null;
+  const backgroundLocation = location.pathname === "/login" ? state?.backgroundLocation : undefined;
+
+  return (
+    <>
+      <Routes location={backgroundLocation ?? location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/destination/:slug" element={<DestinationPage />} />
@@ -18,6 +39,7 @@ export function App() {
         <Route path="/routes/:routeSlug/points/:pointSlug" element={<LegacyRoutePointRedirect />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+      {backgroundLocation ? <LoginOverlay /> : null}
+    </>
   );
 }

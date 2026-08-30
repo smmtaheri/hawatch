@@ -1,15 +1,15 @@
-# رفتار Login reference
+# رفتار ورود
 
-مسیر Login در milestone اول با shell بصری در دسترس است؛ این سند رفتار احراز هویت آینده و محدودیت‌های فعلی را مشخص می‌کند.
+## رفتار فعلی
 
-## قرارداد تعامل آینده
+- کلیک روی «ورود» از هر صفحهٔ عمومی route را به `/login?returnTo=…` می‌برد، اما صفحهٔ قبلی را به‌عنوان background حفظ می‌کند.
+- روی mobile ورود تمام‌صفحه است؛ روی desktop یک dialog متمرکز است. Back، Escape، backdrop و × همان context قبلی را بازیابی می‌کنند.
+- بازکردن مستقیم یا refresh مسیر `/login` یک صفحهٔ کامل و قابل‌بستن نشان می‌دهد.
+- شمارهٔ موبایل input واقعی است، ولی «دریافت کد ورود» disabled می‌ماند و دلیل آن را اعلام می‌کند. هیچ API، session یا auth mock وجود ندارد.
 
-- شمارهٔ موبایل معتبر → request OTP.
-- شمارهٔ نامعتبر → inline validation.
-- request در حال انجام → CTA disabled و feedback.
-- ارسال موفق → مرحلهٔ verify OTP یا مسیر توافق‌شده.
-- خطا و rate limit → پیام قابل اقدام و retry با محدودیت.
+## قرارداد لازم پیش از فعال‌سازی OTP
 
-## محدودیت این milestone
-
-هیچ form handler، auth API، session، dependency یا backend احراز هویت ایجاد نشده است. صفحه فقط برای navigation و نمایش reference در دسترس است.
+- اعتبارسنجی شمارهٔ ایران، `POST /api/v1/auth/otp/request`، پیام خطا و rate limit.
+- مرحلهٔ verify با پنج خانهٔ نمایشی و یک input واقعی برای paste/autofill.
+- `POST /api/v1/auth/otp/verify`، session و redirect امن به `returnTo`.
+- expiry، resend و محدودیت retry با متن فارسی و stateهای loading/error.

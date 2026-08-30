@@ -3,14 +3,20 @@ import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname } = location;
+  const returnTo = `${location.pathname}${location.search}`;
 
   return (
     <header className="site-header">
       <Logo />
       <div className="header-actions">
         {pathname !== "/login" ? (
-          <Link to="/login" className="account-status">
+          <Link
+            to={{ pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` }}
+            state={{ backgroundLocation: location }}
+            className="account-status"
+          >
             ورود
           </Link>
         ) : null}

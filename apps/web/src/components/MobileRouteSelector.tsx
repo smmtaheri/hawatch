@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import type { RouteSummary } from "../types";
 import { DestinationCard } from "./DestinationCard";
 
-function featuredRoutes(routes: RouteSummary[]): RouteSummary[] {
-  return [...routes.filter((route) => route.featured), ...routes.filter((route) => !route.featured)].slice(0, 2);
+function topRoutes(routes: RouteSummary[]): RouteSummary[] {
+  return routes.slice(0, 2);
 }
 
 export function MobileRouteSelector({
@@ -20,8 +20,8 @@ export function MobileRouteSelector({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartY = useRef<number | null>(null);
-  const topRoutes = featuredRoutes(routes);
-  const hasMoreRoutes = routes.length > topRoutes.length;
+  const visibleTopRoutes = topRoutes(routes);
+  const hasMoreRoutes = routes.length > visibleTopRoutes.length;
   const triggerOnly = variant === "trigger";
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export function MobileRouteSelector({
             <span className="mobile-route-selection-count">{routes.length} مسیر</span>
           </div>
           <div className="mobile-route-selection-top">
-            {topRoutes.map((route) => (
+            {visibleTopRoutes.map((route) => (
               <DestinationCard key={route.slug} route={route} />
             ))}
           </div>

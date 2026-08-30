@@ -1,6 +1,6 @@
 # معیارهای پذیرش نسخهٔ فعلی هواچ
 
-این سند معیار پذیرش repository اجرایی فعلی است، نه handoff اولیهٔ placeholder. منبع مقدارهای بصری فقط `design/tokens/visual-tokens.json` است و Login در این milestone فقط reference طراحی است.
+این سند معیار پذیرش repository اجرایی فعلی است، نه handoff اولیهٔ placeholder. منبع مقدارهای بصری فقط `design/tokens/visual-tokens.json` است؛ Login یک UI route-backed دارد اما OTP واقعی هنوز فعال نیست.
 
 ## repository و اجرای محلی
 
@@ -12,7 +12,7 @@
 
 ## تصاویر و design handoff
 
-- [ ] دقیقاً ۱۶ asset منطقی از چهار صفحهٔ Home، Login، Destination و Route، در دو theme و دو device وجود دارد.
+- [ ] ۱۶ asset canonical از چهار صفحهٔ Home، Login، Destination و Route، در دو theme و دو device وجود دارد؛ دو reference تکمیلیِ flow ورود در `design/screens/login/reference/` ثبت شده‌اند.
 - [ ] ۱۶ PNG در `design/source-screens/` byte-for-byte حفظ شده و ۱۶ organized copy در `design/screens/{page}/{theme}/{device}.png` قرار دارد.
 - [ ] نام، مسیر، ابعاد و SHA-256 در `design/manifest.json` با فایل واقعی match است.
 - [ ] هیچ تصویر resize، compress یا re-encode نشده است.
@@ -64,4 +64,4 @@
 - [ ] README، AGENTS، design pages، page specs، API contract، architecture، ADRها و user flowها با implementation فعلی تناقض ندارند.
 - [ ] `docs/open-questions.md` موارد تصمیم‌نشده و source unavailable را صریح ثبت می‌کند.
 - [ ] تست frontend، تست backend، type-check و `git diff --check` اجرا و نتیجهٔ واقعی ثبت می‌شوند.
-- [ ] Login، provider واقعی، Kafka، Kubernetes و share server-side فقط به‌عنوان خارج از scope/مسیر توسعه ثبت شده‌اند، نه قابلیت آمادهٔ فعلی.
+- [ ] OTP واقعی، provider واقعی، Kafka، Kubernetes و share server-side فقط به‌عنوان خارج از scope/مسیر توسعه ثبت شده‌اند، نه قابلیت آمادهٔ فعلی. UI ورود و navigation overlay آماده است.

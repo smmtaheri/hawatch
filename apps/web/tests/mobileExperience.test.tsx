@@ -100,6 +100,8 @@ describe("mobile route and forecast controls", () => {
     expect(document.querySelectorAll(".route-details .route-detail")).toHaveLength(2);
     expect(screen.queryByText(/مسیر کوهستانی/)).not.toBeInTheDocument();
     expect(screen.queryByText(/مبدأ اول/)).not.toBeInTheDocument();
+    expect(screen.queryByText("پیشنهاد هواچ")).not.toBeInTheDocument();
+    expect(screen.getByRole("link")).not.toHaveClass("recommended");
   });
 
   it("keeps two specialist metrics inline and opens the rest in a sheet", async () => {

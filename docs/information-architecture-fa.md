@@ -9,7 +9,7 @@ Home /
 │   └── Point role        /points/{weatherPointSlug}
 │       └── (اگر profile مقصد دارد → redirect به Destination)
 ├── Route /routes/{routeSlug}
-├── Login /login (reference؛ خارج از milestone اول)
+├── Login /login?returnTo=... (route-backed overlay؛ OTP هنوز غیرفعال)
 └── Share /share (آینده)
 ```
 

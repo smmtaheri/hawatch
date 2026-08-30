@@ -19,9 +19,9 @@
 | OQ-011 | OPEN | share link دائمی است یا کوتاه‌عمر؟ | UI اشتراک لینک reconstructable با query params دارد؛ backend share ندارد. | expiry/privacy/revocation را تعیین کن. |
 | OQ-012 | PARTIAL | empty route/forecast چه زمانی؟ | empty/error/stale UI محلی پیاده شده؛ catalog فعلی مقصدها/مسیرهای مستند را دارد. | معیار catalog خالی در production را تأیید کن. |
 | OQ-013 | PARTIAL | mobile route axis و inner scroll؟ | root overflow در viewportهای مرجع بررسی شده؛ timeline/day tabs می‌توانند inner scroll داشته باشند. | معیار پذیرش نهایی inner scroll را قفل کن. |
-| OQ-014 | PASS | Login فقط reference است؟ | Login در milestone اول پیاده نشده است. | بدون تغییر. |
-| OQ-015 | PASS | کنترل خارج از scope؟ | PNGها و Login reference دست‌نخورده‌اند؛ Point بدون screenshot بی‌منبع به‌عنوان extension مستند شده است. | بدون تغییر. |
+| OQ-014 | PARTIAL | ورود پیامکی چه زمانی فعال می‌شود؟ | UI route-backed ورود (mobile تمام‌صفحه، desktop dialog و `returnTo`) پیاده شده، اما API/session/OTP وجود ندارد. | قرارداد OTP، rate limit، expiry و session قبل از فعال‌کردن CTA تعیین شود. |
+| OQ-015 | PASS | کنترل خارج از scope؟ | PNGهای canonical دست‌نخورده‌اند؛ دو reference تکمیلی ورود ثبت شده و Point بدون screenshot بی‌منبع به‌عنوان extension مستند شده است. | بدون تغییر. |
 
 ## قاعدهٔ ادامهٔ کار
 
-OQهای BLOCKED فقط reference unavailable هستند و مانع اجرای محلی نیستند. Login، provider واقعی، Kafka و Kubernetes همچنان خارج از scope این milestone‌اند.
+OQهای BLOCKED فقط reference unavailable هستند و مانع اجرای محلی نیستند. OTP واقعی، provider واقعی، Kafka و Kubernetes همچنان خارج از scope این milestone‌اند.

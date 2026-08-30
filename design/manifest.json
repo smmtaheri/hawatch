@@ -9,7 +9,8 @@
   "organizedScreens": "design/screens",
   "qualityPolicy": "Source PNG files are preserved byte-for-byte; organized copies are uncompressed copies.",
   "visualContract": {
-    "referenceAssetCount": 16,
+    "referenceAssetCount": 18,
+    "canonicalScreenshotAssetCount": 16,
     "pointPage": "Point is a Destination visual extension; no independent reference screenshot exists.",
     "requestedVisualCorrections": "docs/qa/visual-regressions-2026-08-28.md",
     "tokenSource": "design/tokens/visual-tokens.json"
@@ -22,6 +23,10 @@
     "visualIdentity": "references/Hawatch.docx",
     "localReferenceStatus": "The repository DOCX is available; the historical /workspace source/probe/result paths are not part of this checkout."
   },
+  "supplementalReferences": [
+    { "organizedFile": "design/screens/login/reference/mobile-phone-step.png", "page": "login", "flowStep": "phone", "device": "mobile", "source": "product-provided" },
+    { "organizedFile": "design/screens/login/reference/mobile-otp-step.png", "page": "login", "flowStep": "otp", "device": "mobile", "source": "product-provided" }
+  ],
   "assets": [
     { "sourceFile": "hawatch_01_home_light_mobile.png", "organizedFile": "design/screens/home/light/mobile.png", "page": "home", "theme": "light", "device": "mobile", "width": 576, "height": 1077, "sha256": "99509410df6a7eed027b75afaa2d215dd04639166ac72651f4f464c7d5d85681" },
     { "sourceFile": "hawatch_02_home_dark_mobile.png", "organizedFile": "design/screens/home/dark/mobile.png", "page": "home", "theme": "dark", "device": "mobile", "width": 576, "height": 1077, "sha256": "f52415fbde58efc6e4ff502a7bd33de457b82c108b667ec5b27db13adeae949a" },

@@ -16,11 +16,12 @@
 - `DestinationTile`: نام، دستهٔ طبیعت، icon و navigation.
 - `SearchResultsList`: فهرست unified نتیجه‌های مقصد و نقطه بعد از submit.
 
-## Login reference
+## ورود
 
-- `LoginCard`: surface متمرکز فرم.
-- `PhoneInput`: کد کشور و شمارهٔ موبایل.
-- `RequestOtpButton`: اقدام اصلی دریافت کد ورود.
+- `LoginOverlay`: route-backed layer؛ تمام‌صفحه در mobile و dialog متمرکز در desktop.
+- `PhoneInput`: کد کشور و شمارهٔ موبایل با input واقعی و جهت LTR.
+- `RequestOtpButton`: CTA دریافت کد؛ تا آماده‌شدن API disabled و همراه علت.
+- `OtpCodeInput` (آینده): پنج خانهٔ بصری روی یک input واقعی برای paste و SMS autofill.
 
 ## Destination / Forecast Place
 
