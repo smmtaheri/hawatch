@@ -2161,12 +2161,12 @@ html:not([data-theme="light"]) .search-result-row:hover {
    * side-by-side control through the max-width rules above. */
   .route-page .route-planner {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 390px);
     grid-template-areas:
-      "heading"
-      "days"
-      "period";
-    row-gap: 20px;
+      "heading period"
+      "days days";
+    column-gap: 28px;
+    row-gap: 14px;
   }
 
   .route-page .route-planner-day-period {
@@ -2175,6 +2175,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .route-page .route-planner-day-period .forecast-day-heading {
     grid-area: heading;
+    align-self: start;
     margin: 0;
   }
 
@@ -2189,10 +2190,29 @@ html:not([data-theme="light"]) .search-result-row:hover {
   .route-page .route-planner-day-period .route-period-row {
     display: grid !important;
     grid-area: period;
-    justify-self: start;
-    width: min(100%, 390px);
+    justify-self: stretch;
+    width: 100%;
     margin: 0;
     gap: 8px;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle {
+    width: min(100%, 300px);
+    justify-self: start;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+    min-height: 42px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+    font-size: 12px;
+  }
+
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button small {
+    font-size: 10px;
   }
 
   /* Desktop route switching lives in the hero. The mobile selector and its
