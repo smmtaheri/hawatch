@@ -87,6 +87,3 @@ export function LegacyRoutePointRedirect() {
     </main>
   );
 }
-
-/** @deprecated Import RouteBackLink from components/RouteBackLink instead. */
-export { RouteBackLink as PointRouteBackLink } from "../../components/RouteBackLink";

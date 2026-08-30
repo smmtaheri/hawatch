@@ -228,7 +228,8 @@ describe("Hawatch pages", () => {
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
     expect(screen.getByText("ولنجک تا توچال")).toBeInTheDocument();
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
-    expect(screen.getByLabelText("بازگشت به صفحهٔ مقصد")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
+    expect(document.title).toBe("هوای دربند تا توچال | هواچ");
 
     const pointWeather = screen.getByLabelText("آب‌وهوای متناظر با نقاط مهم مسیر");
     expect(within(pointWeather).getByText("8°")).toBeInTheDocument();

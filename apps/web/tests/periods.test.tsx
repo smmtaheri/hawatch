@@ -509,7 +509,7 @@ describe("periods and route planner", () => {
     expect(screen.getByLabelText("ساعت شروع حرکت")).toHaveValue("720");
   });
 
-  it("opens canonical point page from route point card with route back CTA", async () => {
+  it("opens a canonical point page with the shared back action", async () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
@@ -530,7 +530,7 @@ describe("periods and route planner", () => {
     expect(document.querySelector(".breadcrumb")?.textContent).not.toMatch(/دربند تا توچال/);
   });
 
-  it("shows route back CTA when point page opened with navigation state", async () => {
+  it("shows the shared back action when point page opens with navigation state", async () => {
     render(
       <ThemeProvider>
         <MemoryRouter
@@ -556,10 +556,7 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
-    const backLink = screen.getByLabelText("بازگشت به مسیر دربند تا توچال");
-    expect(backLink.getAttribute("href")).toContain("/routes/touchal-darband");
-    expect(backLink.getAttribute("href")).toContain("start_time=06");
-    expect(backLink.getAttribute("href")).toContain("speed=");
+    expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
     expect(screen.getByText("مسیرهای عبوری از این نقطه")).toBeInTheDocument();
     expect(document.querySelector(".destination-page")).toBeTruthy();
     expect(document.querySelector(".point-page")).toBeNull();
@@ -800,10 +797,7 @@ describe("periods and route planner", () => {
         }),
       }),
     );
-    const backLink = screen.getByLabelText("بازگشت به مسیر دربند تا توچال");
-    expect(backLink.getAttribute("href")).toContain("/routes/touchal-darband");
-    expect(backLink.getAttribute("href")).toContain("start_time=06");
-    expect(backLink.getAttribute("href")).toContain("speed=");
+    expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
   });
 
   it("does not seed place planner from fromRoute — only explicit URL date/period", () => {
@@ -1115,7 +1109,7 @@ describe("periods and route planner", () => {
         fromRoute: expect.objectContaining({ title: "دربند تا توچال" }),
       }),
     );
-    expect(screen.getByLabelText("بازگشت به مسیر دربند تا توچال")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
     expect(document.querySelector(".point-page")).toBeNull();
   });
 

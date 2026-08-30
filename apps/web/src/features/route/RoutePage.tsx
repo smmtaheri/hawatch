@@ -25,6 +25,7 @@ import {
   toClock,
 } from "../../lib/periods";
 import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } from "../../lib/periodState";
+import { usePageTitle } from "../../lib/pageTitle";
 import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
 import type { PeriodId, RouteForecast, RoutePointView } from "../../types";
 
@@ -88,6 +89,7 @@ export function RoutePage() {
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
   const displaySpeed = draftSpeed ?? speed ?? data?.speed ?? "متوسط";
   const timingPending = Boolean(data?.timing_pending);
+  usePageTitle(data?.route.title);
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -256,6 +258,7 @@ export function RoutePage() {
     return (
       <main className="route-page">
         <Header />
+        <BackNavigation />
         <EmptyState title="مسیر پیدا نشد" detail="از صفحهٔ مقصد، مسیر دیگری را انتخاب کن." />
       </main>
     );
@@ -277,13 +280,13 @@ export function RoutePage() {
     <main className="route-page">
       <div className="route-shell">
         <Header />
+        <BackNavigation />
         {status === "error" ? <ErrorState onRetry={load} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className="route-hero">
-              <BackNavigation to={data.route.parent.href} ariaLabel="بازگشت به صفحهٔ مقصد" />
               <div className="route-hero-copy">
                 <Breadcrumbs
                   items={[

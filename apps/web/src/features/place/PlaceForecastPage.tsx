@@ -9,21 +9,16 @@ import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
-import { RouteBackLink } from "../../components/RouteBackLink";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
-import type { PeriodId, RouteFromState } from "../../types";
+import type { PeriodId } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
-
-type PlaceLocationState = {
-  fromRoute?: RouteFromState;
-};
 
 function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const { slug = kind === "destination" ? "touchal" : "" } = useParams();
   const location = useLocation();
-  const fromRoute = (location.state as PlaceLocationState | null)?.fromRoute;
   const {
     data,
     status,
@@ -34,6 +29,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     reload,
     canonicalRedirect,
   } = usePlaceForecast({ kind, slug });
+  usePageTitle(data?.subject.name);
 
   if (canonicalRedirect) {
     return <Navigate to={canonicalRedirect} replace state={location.state} />;
@@ -44,6 +40,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
       <main className="destination-page">
         <div className="destination-shell">
           <Header />
+          <BackNavigation />
           <EmptyState
             title={kind === "destination" ? "مقصد پیدا نشد" : "نقطهٔ هواشناسی پیدا نشد"}
             detail={
@@ -73,14 +70,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     <main className={pageClass} data-place-kind={kind}>
       <div className="destination-shell">
         <Header />
+        <BackNavigation />
         {status === "error" ? <ErrorState onRetry={() => reload()} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className={`destination-hero${heroImage ? "" : " destination-hero--fallback"}`}>
-              {fromRoute ? <RouteBackLink fromRoute={fromRoute} /> : null}
-              <BackNavigation to="/" ariaLabel="بازگشت به هوم" />
               {heroImage ? (
                 <img src={heroImage} alt={data.subject.hero_image_alt} />
               ) : (

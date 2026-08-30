@@ -380,13 +380,6 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     line-height: 1.5;
   }
 
-  .destination-page .mobile-back-link {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 3;
-  }
-
   .destination-page .day-tabs {
     display: flex !important;
     gap: 8px;
@@ -668,48 +661,63 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
   display: none;
 }
 
-.contextual-route-back {
+.brand-logo-picture {
+  display: block;
+  line-height: 0;
+}
+
+.brand-logo {
+  width: 132px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.brand-logo--light-surface {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo--dark-surface {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo--light-surface {
+  display: block;
+}
+
+.page-back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  color: var(--internal-teal, #61c5c0);
+  background: transparent;
+  cursor: pointer;
   font-weight: 500;
   font-size: 13px;
   line-height: 1.4;
-  max-width: min(100%, 420px);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.destination-page .destination-hero .contextual-route-back {
-  position: absolute;
-  top: 12px;
-  inset-inline-end: 12px;
-  z-index: 4;
-  margin: 0;
-  border: 1px solid var(--internal-border, #d6e5e2);
-  background: color-mix(in srgb, var(--internal-surface-soft, #f4f9f7) 88%, transparent);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px #102b3d1a;
+.page-back-link:hover,
+.page-back-link:focus-visible {
+  color: var(--internal-text, #102b3d);
+  outline: none;
 }
 
-html:not([data-theme="light"]) .destination-page .destination-hero .contextual-route-back {
-  background: color-mix(in srgb, var(--internal-surface-raised, #1d4650) 90%, transparent);
-  border-color: #bee1dd3d;
-  box-shadow: 0 4px 14px #00000040;
+.page-back-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (max-width: 720px) {
-  .destination-page .destination-hero .contextual-route-back {
-    top: 40px;
-    inset-inline-end: 12px;
-    inset-inline-start: auto;
+  .brand-logo {
+    width: 110px;
+    height: 33px;
+  }
+
+  .page-back-link {
     font-size: 11px;
-    padding: 7px 10px;
   }
 }
 

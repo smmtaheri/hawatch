@@ -3,10 +3,10 @@
 ## shell و navigation
 
 - `SiteHeader`: برند/لوگو، ورود و تغییر تم.
-- `BrandMark`: دو خط صعودی و سه نقطه؛ لینک خانه.
+- `BrandLogo`: wordmark کامل + mark رسمی؛ در dark از `hawatch-logo-light.svg` و در light از `hawatch-logo-dark.svg` استفاده می‌کند.
 - `ThemeToggle`: تغییر light/dark با label و state فعال.
 - `Breadcrumb`: context مقصد و مسیر.
-- `MobileBackLink`: بازگشت به context قبلی در mobile.
+- `BackNavigation`: دکمهٔ بازگشت ساده به صفحهٔ قبلی با fallback به Home در ورود مستقیم.
 
 ## Home
 
@@ -33,7 +33,6 @@
 - `HourlyForecast`: چهار کارت دوساعته در هر بازه و legend وضعیت.
 - `TechnicalMetrics`: grid جزئیات تخصصی.
 - `DecisionCard`: تفسیر قابل اقدام از forecast.
-- `RouteBackLink`: CTA بازگشت به Route (فقط با navigation state)؛ مشترک بین destination و point.
 
 ## Route
 

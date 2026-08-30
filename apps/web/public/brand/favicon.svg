@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">هواچ</title>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#093E48"/>
+  <path d="M12 19 L32 40 L52 17" fill="none" stroke="#C7EEEC" stroke-width="5.2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="12" cy="19" r="4.4" fill="#F5FAF9"/>
+  <circle cx="32" cy="40" r="5.5" fill="#59CFCC" stroke="#B9E8E6" stroke-width="2"/>
+  <circle cx="52" cy="17" r="4.4" fill="#F5FAF9"/>
+</svg>

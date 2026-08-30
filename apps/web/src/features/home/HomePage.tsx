@@ -8,6 +8,7 @@ import { LoadingState } from "../../components/LoadingState";
 import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { DestinationIcon } from "../../components/DestinationIcon";
+import { usePageTitle } from "../../lib/pageTitle";
 import type { DestinationSummary, SearchSuggestion } from "../../types";
 
 function tileWords(name: string) {
@@ -15,6 +16,7 @@ function tileWords(name: string) {
 }
 
 export function HomePage() {
+  usePageTitle();
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
