@@ -10,8 +10,8 @@ import { Header } from "../../components/Header";
 import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
+import { SpecialistMetrics } from "../../components/SpecialistMetrics";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { SpecialistMetricIcon } from "../../components/SpecialistMetricIcon";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
 import type { PeriodId } from "../../types";
@@ -123,18 +123,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     <h2>جزئیات تخصصی {dayLabel}</h2>
                   </div>
                   {data.metrics.length ? (
-                    <div className="metric-grid">
-                      {data.metrics.map((metric) => (
-                        <div className="metric" key={metric.label}>
-                          <span className="metric-label">
-                            <SpecialistMetricIcon icon={metric.icon} tone={metric.color} />
-                            <span>{metric.label}</span>
-                          </span>
-                          <strong className={metric.color || ""}>{metric.value}</strong>
-                          <small>{metric.note}</small>
-                        </div>
-                      ))}
-                    </div>
+                    <SpecialistMetrics metrics={data.metrics} dayLabel={dayLabel} />
                   ) : (
                     <EmptyState
                       title="جزئیات تخصصی در دسترس نیست"
@@ -142,6 +131,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     />
                   )}
                 </section>
+                <div className="mobile-destination-decision">
+                  <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
+                </div>
               </div>
               <aside className="destination-side">
                 <section
@@ -168,7 +160,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     )}
                   </div>
                 </section>
-                <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
+                <div className="desktop-destination-decision">
+                  <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
+                </div>
               </aside>
             </div>
             <footer className="site-footer">

@@ -5,7 +5,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { DestinationCard } from "../src/components/DestinationCard";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
-import type { HourlyReading, RouteSummary } from "../src/types";
+import { SpecialistMetrics } from "../src/components/SpecialistMetrics";
+import type { HourlyReading, Metric, RouteSummary } from "../src/types";
 
 const routes: RouteSummary[] = [
   {
@@ -55,6 +56,12 @@ const routes: RouteSummary[] = [
   },
 ];
 
+const metrics: Metric[] = [
+  { icon: "wind-average", label: "باد", value: "۱۰ km/h", note: "ملایم", color: "teal" },
+  { icon: "precipitation", label: "بارش", value: "۵٪", note: "کم", color: "teal" },
+  { icon: "visibility", label: "دید", value: "بیش از ۱۰ km", note: "خوب", color: "teal" },
+];
+
 function reading(time: string, isCurrent: boolean): HourlyReading {
   return {
     time,
@@ -92,6 +99,15 @@ describe("mobile route and forecast controls", () => {
     expect(screen.getByText("مسافت: ۱۰ km")).toBeInTheDocument();
     expect(screen.queryByText(/مسیر کوهستانی/)).not.toBeInTheDocument();
     expect(screen.queryByText(/مبدأ اول/)).not.toBeInTheDocument();
+  });
+
+  it("keeps two specialist metrics inline and opens the rest in a sheet", async () => {
+    const user = userEvent.setup();
+    render(<SpecialistMetrics metrics={metrics} dayLabel="امروز" />);
+
+    expect(document.querySelectorAll(".specialist-metrics-preview .metric")).toHaveLength(2);
+    await user.click(screen.getByRole("button", { name: /دیدن ۱ جزئیات بیشتر/ }));
+    expect(within(screen.getByRole("dialog", { name: /جزئیات تخصصی امروز/ })).getByText("دید")).toBeInTheDocument();
   });
 
   it("keeps two routes visible and opens the remaining routes in a sheet", async () => {

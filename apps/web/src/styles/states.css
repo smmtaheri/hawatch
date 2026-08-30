@@ -771,6 +771,158 @@ html[data-theme="light"] .brand-logo--light-surface {
   line-height: 1;
 }
 
+.specialist-metrics-mobile,
+.mobile-destination-decision {
+  display: none;
+}
+
+@media (width <= 720px) {
+  .destination-page .technical-card .specialist-metrics-desktop,
+  .destination-page .destination-side .desktop-destination-decision {
+    display: none;
+  }
+
+  .destination-page .technical-card .specialist-metrics-mobile,
+  .destination-page .mobile-destination-decision {
+    display: block;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview,
+  .specialist-metrics-sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview {
+    margin-top: 12px;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview .metric,
+  .specialist-metrics-sheet-grid .metric {
+    min-width: 0;
+    min-height: 104px;
+    padding: 10px;
+    border: 1px solid var(--internal-border, #bee1dd2e);
+    border-radius: 12px;
+    background: var(--internal-surface-soft, #14333e);
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview .metric-label,
+  .specialist-metrics-sheet-grid .metric-label {
+    gap: 5px;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview .specialist-metric-icon,
+  .specialist-metrics-sheet-grid .specialist-metric-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview .metric strong,
+  .specialist-metrics-sheet-grid .metric strong {
+    font-size: 17px;
+  }
+
+  .destination-page .technical-card .specialist-metrics-preview .metric small,
+  .specialist-metrics-sheet-grid .metric small {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+  .specialist-metrics-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40px;
+    margin-top: 9px;
+    padding: 8px 12px;
+    border: 1px solid var(--internal-teal, #61c5c0);
+    border-radius: 11px;
+    color: var(--internal-teal, #61c5c0);
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .specialist-metrics-trigger:focus-visible,
+  .specialist-metrics-sheet-close:focus-visible {
+    outline: 2px solid var(--internal-teal, #61c5c0);
+    outline-offset: 2px;
+  }
+
+  .specialist-metrics-sheet-layer {
+    position: fixed;
+    z-index: 50;
+    inset: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .specialist-metrics-sheet-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(4 18 24 / 72%);
+    cursor: pointer;
+  }
+
+  .specialist-metrics-sheet {
+    position: relative;
+    width: min(100%, 640px);
+    max-height: min(76vh, 640px);
+    overflow-y: auto;
+    padding: 10px 16px max(18px, env(safe-area-inset-bottom));
+    border: 1px solid var(--internal-teal, #61c5c0);
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+    color: var(--internal-text, #edf7f4);
+    background: var(--internal-surface, #173844);
+    box-shadow: 0 -12px 40px rgb(0 0 0 / 26%);
+  }
+
+  .specialist-metrics-sheet-handle {
+    width: 54px;
+    height: 4px;
+    margin: 0 auto 12px;
+    border-radius: 99px;
+    background: var(--internal-muted, #a8c1c0);
+  }
+
+  .specialist-metrics-sheet-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .specialist-metrics-sheet-heading h2 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .specialist-metrics-sheet-close {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--internal-border, #bee1dd2e);
+    border-radius: 50%;
+    color: var(--internal-text, #edf7f4);
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .destination-page .mobile-destination-decision {
+    margin-top: 16px;
+  }
+}
+
 .search-combobox {
   position: relative;
   flex: 1 1 auto;
