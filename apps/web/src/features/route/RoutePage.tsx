@@ -280,13 +280,15 @@ export function RoutePage() {
     <main className="route-page">
       <div className="route-shell">
         <Header />
-        <BackNavigation />
         {status === "error" ? <ErrorState onRetry={load} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className="route-hero">
+              <div className="hero-back-navigation">
+                <BackNavigation />
+              </div>
               <div className="route-hero-copy">
                 <Breadcrumbs
                   items={[

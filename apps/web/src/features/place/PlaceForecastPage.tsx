@@ -72,7 +72,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     <main className={pageClass} data-place-kind={kind}>
       <div className="destination-shell">
         <Header />
-        <BackNavigation />
         {status === "error" ? <ErrorState onRetry={() => reload()} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
@@ -82,6 +81,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
               <div className="destination-hero-fallback" aria-hidden="true" />
               {heroImage ? <img src={heroImage} alt={data.subject.hero_image_alt} /> : null}
               <div className="destination-hero-overlay" />
+              <div className="hero-back-navigation">
+                <BackNavigation />
+              </div>
               <div className="destination-heading">
                 <Breadcrumbs
                   items={[{ label: "مقصدها", to: "/#search-results" }, { label: data.subject.name }]}

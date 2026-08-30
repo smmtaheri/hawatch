@@ -2043,3 +2043,63 @@ html:not([data-theme="light"]) .search-result-row:hover {
     flex: none !important;
   }
 }
+
+/* Back is part of the place/route hero, not a separate horizontal strip.
+ * This keeps the title and its navigation context together on every viewport. */
+.destination-page .destination-hero .hero-back-navigation,
+.route-page .route-hero .hero-back-navigation {
+  position: absolute;
+  z-index: 4;
+  top: 18px;
+  right: 24px;
+}
+
+.destination-page .destination-hero .hero-back-navigation .page-back-link,
+.route-page .route-hero .hero-back-navigation .page-back-link {
+  margin: 0;
+}
+
+@media (width <= 720px) {
+  .destination-page .destination-shell > .site-header,
+  .route-page .route-shell > .site-header {
+    height: 62px;
+    min-height: 62px;
+    gap: 12px;
+  }
+
+  .destination-page .destination-shell > .site-header .brand-logo,
+  .route-page .route-shell > .site-header .brand-logo {
+    width: 92px;
+    height: 28px;
+  }
+
+  .destination-page .destination-shell > .site-header .header-actions,
+  .route-page .route-shell > .site-header .header-actions {
+    gap: 7px;
+  }
+
+  .destination-page .destination-shell > .site-header .account-status,
+  .route-page .route-shell > .site-header .account-status,
+  .destination-page .destination-shell > .site-header .theme-toggle,
+  .route-page .route-shell > .site-header .theme-toggle {
+    min-height: 32px;
+    padding-block: 4px;
+    font-size: 10px;
+  }
+
+  .destination-page .destination-hero .hero-back-navigation,
+  .route-page .route-hero .hero-back-navigation {
+    top: 8px;
+    right: 12px;
+  }
+
+  .destination-page .destination-hero .hero-back-navigation .page-back-link,
+  .route-page .route-hero .hero-back-navigation .page-back-link {
+    font-size: 9px;
+  }
+
+  .destination-page .destination-hero,
+  .route-page .route-hero {
+    margin-top: 10px !important;
+  }
+}

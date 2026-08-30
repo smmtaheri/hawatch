@@ -253,6 +253,9 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/destination/touchal");
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
+    expect(document.querySelector(".destination-hero .hero-back-navigation")).toContainElement(
+      screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
+    );
     expect(document.querySelector('.specialist-metric-icon use')).toHaveAttribute(
       "href",
       "/icons/specialist/hawatch-specialist-icons.svg#icon-wind-average",
@@ -268,6 +271,9 @@ describe("Hawatch pages", () => {
     expect(screen.getByText("ولنجک تا توچال")).toBeInTheDocument();
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
     expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
+    expect(document.querySelector(".route-hero .hero-back-navigation")).toContainElement(
+      screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
+    );
     expect(document.title).toBe("هوای دربند تا توچال | هواچ");
 
     const pointWeather = screen.getByLabelText("آب‌وهوای متناظر با نقاط مهم مسیر");
