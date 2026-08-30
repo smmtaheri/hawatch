@@ -2103,3 +2103,28 @@ html:not([data-theme="light"]) .search-result-row:hover {
     margin-top: 10px !important;
   }
 }
+
+/* Desktop keeps the same compact hero hierarchy as mobile without making the
+ * forecast controls start too far below the page title. */
+@media (min-width: 721px) {
+  .destination-page .destination-hero {
+    height: 220px !important;
+  }
+
+  .destination-page .destination-heading {
+    top: 48px;
+  }
+
+  .destination-page .hero-status-stack {
+    top: 40px;
+  }
+
+  .route-page .route-hero {
+    min-height: 220px;
+    padding: 30px 36px;
+  }
+
+  .route-page .route-hero h1 {
+    font-size: 38px;
+  }
+}

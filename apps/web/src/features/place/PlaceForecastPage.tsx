@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigate, useLocation, useParams } from "react-router-dom";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
@@ -32,6 +33,19 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     canonicalRedirect,
   } = usePlaceForecast({ kind, slug });
   usePageTitle(data?.subject.name);
+
+  // Detail pages open at their own hero, leaving global controls one short
+  // upward scroll away without re-scrolling on day or period selection.
+  useEffect(() => {
+    if (!data?.subject.slug) return;
+    const frame = window.requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>(".destination-page .destination-hero")?.scrollIntoView?.({
+        block: "start",
+        behavior: "auto",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [data?.subject.slug]);
 
   if (canonicalRedirect) {
     return <Navigate to={canonicalRedirect} replace state={location.state} />;
@@ -133,9 +147,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     />
                   )}
                 </section>
-                <div className="mobile-destination-decision">
-                  <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
-                </div>
               </div>
               <aside className="destination-side">
                 <section
@@ -166,6 +177,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
                 </div>
               </aside>
+            </div>
+            <div className="mobile-destination-decision">
+              <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
             </div>
             <footer className="site-footer">
               <span>هوای مقصد، برنامهٔ مسیر</span>

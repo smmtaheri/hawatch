@@ -193,6 +193,19 @@ export function RoutePage() {
     [],
   );
 
+  // Only route identity triggers this. Planner changes must keep the visitor's
+  // reading position intact while a fresh route opens at its hero.
+  useEffect(() => {
+    if (!data?.route.slug) return;
+    const frame = window.requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>(".route-page .route-hero")?.scrollIntoView?.({
+        block: "start",
+        behavior: "auto",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [data?.route.slug]);
+
   const plannerBounds = useMemo(
     () => resolvePlannerBounds(displayPeriod, data?.period ?? null),
     [displayPeriod, data?.period],
