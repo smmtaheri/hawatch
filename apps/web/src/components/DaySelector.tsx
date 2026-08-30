@@ -51,7 +51,7 @@ export function ForecastDayPeriodControls({
   periodLabel?: string;
 }) {
   return (
-    <>
+    <div className="forecast-day-period-controls">
       <DayPickerHeading />
       <DaySelector days={days} selected={selectedDate} onSelect={onSelectDate} className={dayClassName} />
       <PeriodControlRow
@@ -60,7 +60,7 @@ export function ForecastDayPeriodControls({
         periodStates={periodStates}
         label={periodLabel}
       />
-    </>
+    </div>
   );
 }
 

@@ -79,11 +79,8 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className={`destination-hero${heroImage ? "" : " destination-hero--fallback"}`}>
-              {heroImage ? (
-                <img src={heroImage} alt={data.subject.hero_image_alt} />
-              ) : (
-                <div className="destination-hero-fallback" aria-hidden="true" />
-              )}
+              <div className="destination-hero-fallback" aria-hidden="true" />
+              {heroImage ? <img src={heroImage} alt={data.subject.hero_image_alt} /> : null}
               <div className="destination-hero-overlay" />
               <div className="destination-heading">
                 <Breadcrumbs

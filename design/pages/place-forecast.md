@@ -84,4 +84,4 @@ timestamp خام ISO و `timing_pending` در متن UI نمایش داده نم
 - [light/web](../screens/destination/light/web.png)
 - [dark/web](../screens/destination/dark/web.png)
 
-Fallback بدون تصویر تأیید‌شده: سطح گرادیان مستند (`destination-hero--fallback`) — asset جدید اضافه نمی‌شود.
+Fallback بدون تصویر تأیید‌شده: سطح گرادیان مستند (`destination-hero--fallback`) — asset جدید اضافه نمی‌شود. در mobile، hero همهٔ Placeها عمداً به همین سطح کوتاه و بدون تصویر تبدیل می‌شود؛ breadcrumb تکراری پنهان است و عنوان و statusها در ارتفاع hero مرکز می‌گیرند.

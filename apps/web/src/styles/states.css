@@ -345,30 +345,30 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     display: block !important;
     align-items: stretch !important;
     width: 100%;
-    height: 170px !important;
-    min-height: 170px !important;
+    height: 112px !important;
+    min-height: 112px !important;
     margin-top: 12px;
     padding: 0 !important;
     overflow: hidden;
   }
 
   .destination-page .destination-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+    display: none;
   }
 
   .destination-page .destination-heading {
     position: absolute;
-    top: 16px;
+    top: 50%;
     right: 18px;
     left: 42%;
     width: auto;
     max-width: none;
-    transform: none;
+    transform: translateY(-50%);
     z-index: 2;
+  }
+
+  .destination-page .destination-heading .breadcrumb {
+    display: none;
   }
 
   .destination-page .destination-heading h1 {
@@ -384,8 +384,8 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
 
   .destination-page .hero-status-stack {
     position: absolute;
-    inset: 16px auto auto 14px;
-    transform: none;
+    inset: 50% auto auto 14px;
+    transform: translateY(-50%);
     width: min(40%, 180px);
     gap: 5px;
     z-index: 2;
@@ -496,17 +496,15 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
   }
 
   .route-page .route-hero {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
-    height: 150px;
-    min-height: 150px;
+    height: 112px;
+    min-height: 112px;
     padding: 16px 14px;
   }
 
   .route-page .route-hero .breadcrumb {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 11px;
+    display: none;
   }
 
   .route-page .route-hero-copy {
@@ -524,10 +522,10 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
 
   .route-page .route-hero-status-stack {
     position: absolute;
-    inset: 16px auto auto 14px;
+    inset: 50% auto auto 14px;
     width: min(40%, 180px);
     max-width: 40%;
-    transform: none;
+    transform: translateY(-50%);
   }
 
   .route-page .route-hero-status-stack .status-pill.change {
@@ -630,6 +628,31 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     min-height: 32px !important;
     max-height: none !important;
     height: auto !important;
+  }
+
+  .destination-page .forecast-day-period-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .destination-page .forecast-day-period-controls .forecast-day-heading {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  .destination-page .forecast-day-period-controls .destination-period-row {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    margin: 0;
+  }
+
+  .destination-page .forecast-day-period-controls .day-tabs {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }
 
