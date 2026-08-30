@@ -695,6 +695,8 @@ html[data-theme="light"] .brand-logo--light-surface {
 
 .page-back-link {
   display: inline-flex;
+  direction: rtl;
+  flex-direction: row;
   align-items: center;
   gap: 8px;
   margin-top: 14px;
@@ -1573,5 +1575,89 @@ html:not([data-theme="light"]) .search-result-row:hover {
     max-width: 40% !important;
     margin: 0 !important;
     transform: translateY(-50%) !important;
+  }
+}
+
+/* Final mobile route controls: keep speed and start time in one compact row,
+ * remove the legacy divider above the gauge, and make both route axes
+ * horizontally scrollable instead of wrapping into a second row. */
+@media (width <= 720px) {
+  .route-page .route-overview-side .planner-quick-box {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    gap: 0 8px !important;
+    min-height: 0 !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .mobile-planner-selectors {
+    display: block !important;
+    grid-area: 1 / 1 !important;
+    min-width: 0 !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: 1 / 2 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 3px 4px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading {
+    border-top: 0 !important;
+    margin: 0 !important;
+    padding: 3px 4px 0 !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-wrap {
+    margin-top: 3px !important;
+    padding: 0 4px 1px !important;
+  }
+
+  .route-page .route-overview-side .planner-quick-box .planner-speed {
+    display: none !important;
+  }
+
+  .route-page .route-linear-scroll,
+  .route-page .route-point-weather-values {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .route-page .route-linear-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    min-width: 720px !important;
+    grid-template-columns: none !important;
+  }
+
+  .route-page .route-linear-point {
+    flex: 0 0 110px !important;
+    width: 110px !important;
+    min-width: 110px !important;
+  }
+
+  .route-page .route-point-weather-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    gap: 8px !important;
+    grid-template-columns: none !important;
+  }
+
+  .route-page .route-point-weather-card {
+    flex: 0 0 132px !important;
+    width: 132px !important;
+    min-width: 132px !important;
   }
 }

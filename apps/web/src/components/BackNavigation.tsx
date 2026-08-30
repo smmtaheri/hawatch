@@ -14,8 +14,8 @@ export function BackNavigation({ ariaLabel }: { ariaLabel?: string }) {
 
   return (
     <button type="button" className="page-back-link" onClick={goBack} aria-label={ariaLabel ?? "بازگشت به صفحهٔ قبل"}>
+      <span aria-hidden="true">→</span>
       <span>بازگشت</span>
-      <span aria-hidden="true">←</span>
     </button>
   );
 }
