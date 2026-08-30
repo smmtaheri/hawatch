@@ -1513,3 +1513,65 @@ html:not([data-theme="light"]) .search-result-row:hover {
     padding-inline: 4px;
   }
 }
+
+/* Final mobile route overrides.  hawatch.css contains an older compact rule
+ * with a higher-specificity selector that stretches every day tab to the full
+ * row and clips the rest.  Keep the route planner's mobile contract explicit
+ * here so all seven tabs remain visible through horizontal scrolling. */
+@media (width <= 720px) {
+  .route-page .route-planner .planner-day .day-tabs {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 8px !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 14px 0 !important;
+    padding: 0 0 4px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    touch-action: pan-x;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs button {
+    flex: 0 0 84px !important;
+    width: 84px !important;
+    min-width: 84px !important;
+    max-width: 84px;
+  }
+
+  .route-page .route-hero {
+    display: flex !important;
+    align-items: center !important;
+    height: 112px !important;
+    min-height: 112px !important;
+    padding: 0 14px !important;
+  }
+
+  .route-page .route-hero-copy {
+    flex: 0 0 56% !important;
+    align-self: center !important;
+    width: 56% !important;
+    max-width: 56% !important;
+    min-width: 0;
+    padding: 0 !important;
+  }
+
+  .route-page .route-hero h1 {
+    margin: 0 !important;
+    line-height: 1.25;
+  }
+
+  .route-page .route-hero-status-stack {
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 14px !important;
+    width: min(40%, 180px) !important;
+    max-width: 40% !important;
+    margin: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+}
