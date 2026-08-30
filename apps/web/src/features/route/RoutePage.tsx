@@ -311,6 +311,9 @@ export function RoutePage() {
                   ]}
                 />
                 <h1>{data.route.title}</h1>
+                <p className="route-hero-meta">
+                  مسافت {data.route.distance_label}　·　صعود {data.route.ascent_label}
+                </p>
               </div>
               <div className="hero-status-stack route-hero-status-stack" aria-label="خلاصهٔ وضعیت مسیر">
                 <div className="status-pill change">{data.hero.status}</div>

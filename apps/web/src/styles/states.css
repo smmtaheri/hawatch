@@ -1388,6 +1388,10 @@ html:not([data-theme="light"]) .search-result-row:hover {
     font-size: clamp(27px, 7.5vw, 34px);
   }
 
+  .route-page .route-hero-meta {
+    display: none;
+  }
+
   .route-page .route-hero-status-stack {
     inset: 50% auto auto 14px !important;
     width: min(40%, 180px);
@@ -2127,6 +2131,13 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .route-page .route-hero h1 {
     font-size: 38px;
+  }
+
+  .route-page .route-hero-meta {
+    color: var(--internal-muted, #b9d9d5);
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .route-page .route-hero .hero-back-navigation {
