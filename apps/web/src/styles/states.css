@@ -138,6 +138,27 @@ html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
   color: var(--internal-muted, #687a80);
 }
 
+/* Keep the login page aligned with the same centered content shell as Home. */
+.auth-page {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: 0 42px 70px;
+}
+
+@media (max-width: 1050px) {
+  .auth-page {
+    padding-inline: 22px;
+    padding-bottom: 55px;
+  }
+}
+
+@media (max-width: 720px) {
+  .auth-page {
+    padding-inline: 14px;
+    padding-bottom: 45px;
+  }
+}
+
 /* Point-level weather belongs to the route axis on every viewport. */
 .route-page .route-point-weather-values {
   display: block;

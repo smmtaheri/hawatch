@@ -222,6 +222,7 @@ describe("Hawatch pages", () => {
     await screen.findByText("توچال");
     await user.click(screen.getByRole("link", { name: "ورود" }));
     expect(await screen.findByRole("heading", { name: "ورود" })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "ورود" })).not.toBeInTheDocument();
     expect(document.title).toBe("هوای ورود | هواچ");
   });
 
