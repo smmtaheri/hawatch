@@ -12,10 +12,6 @@ export function LoginPage() {
         <div className="auth-layout">
           <div className="auth-intro">
             <span className="auth-kicker">ورود به هواچ</span>
-            <h1>
-              برنامهٔ مسیرت را <em>آماده</em> کن.
-            </h1>
-            <p>با ورود به هواچ، مسیرها و مقصدهای مورد علاقه‌ات را ساده‌تر دنبال کن.</p>
           </div>
           <section className="auth-card" aria-labelledby="login-title">
             <div className="auth-card-heading">
