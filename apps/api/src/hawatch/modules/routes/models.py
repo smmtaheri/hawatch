@@ -24,7 +24,11 @@ class Route(models.Model):
     ascent_m = models.PositiveIntegerField(null=True, blank=True)
     round_trip_minutes = models.PositiveIntegerField(null=True, blank=True)
     # One-way ascent duration at medium pace; do not store ascent time in round_trip_minutes.
-    one_way_minutes = models.PositiveIntegerField(null=True, blank=True)
+    one_way_minutes = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        help_text="Estimated one-way ascent duration at medium pace (not round-trip).",
+    )
     default_start_minutes = models.PositiveIntegerField(null=True, blank=True)
     timing_status = models.CharField(
         max_length=16,
@@ -124,7 +128,11 @@ class RoutePoint(models.Model):
     internal_note = models.CharField(max_length=255, blank=True)
     # Explicit, short copy approved for the route UI. Do not infer this from
     # WeatherPoint provenance or catalog research notes.
-    public_note = models.CharField(max_length=255, blank=True)
+    public_note = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Short operator-approved copy allowed in the public route API.",
+    )
     axis_x = models.PositiveSmallIntegerField(default=10)
     axis_y = models.PositiveSmallIntegerField(default=50)
     data_mode = models.CharField(max_length=16, default="demo")
