@@ -106,6 +106,11 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 
 ## افزودن مقصد و اعتبارسنجی weather
 
+راهنمای کامل و مرجع workflow افزودن مقصد، نقطه و مسیر در
+[`docs/catalog-onboarding.md`](docs/catalog-onboarding.md) است. برای مقصد جدید
+ابتدا همان سند را بخوانید؛ خلاصهٔ سریع زیر برای دسترسی سریع به commandهای اصلی
+است.
+
 برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید:
 
 ```bash
@@ -120,6 +125,24 @@ docker compose -f infra/compose/compose.yaml exec api \
 docker compose -f infra/compose/compose.yaml exec api \
   python manage.py ingest_open_meteo
 ```
+
+برای جلوگیری از اجرای دستی و اشتباه مراحل local/server، می‌توانید catalog را
+مستقیماً از local با wrapper بررسی و publish کنید:
+
+```bash
+python3 scripts/publish_catalog.py \
+  --catalog /tmp/my_destination_v1.json \
+  --host root@SERVER_IP                 # check-only؛ بدون write
+
+python3 scripts/publish_catalog.py \
+  --catalog /tmp/my_destination_v1.json \
+  --host root@SERVER_IP \
+  --apply                                # import + ingest + preflight
+```
+
+این wrapper فایل JSON یا GPX را به سرور کپی نمی‌کند؛ catalog را فقط از stdin
+به کانتینر API می‌فرستد. `--apply` برای routeهای بدون timing متوقف می‌شود تا
+اطلاعات arrival به‌صورت ناخواسته ناقص منتشر نشود.
 
 جزئیات قرارداد، تفاوت elevation catalog و DEM، و smoke test در `docs/catalog-and-weather-validation.md` است.
 

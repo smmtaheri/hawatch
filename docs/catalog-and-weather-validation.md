@@ -1,5 +1,9 @@
 # Catalog و صحت‌سنجی آب‌وهوا
 
+برای workflow کامل و مرحله‌به‌مرحلهٔ onboarding، از
+[`catalog-onboarding.md`](catalog-onboarding.md) شروع کنید. این فایل قرارداد
+فنی و قواعد validation را نگه می‌دارد.
+
 کاتالوگ زنده در دیتابیس نگهداری می‌شود و seeder عمومی فقط ابزار bootstrap/import است. برای افزودن یک مقصد بزرگ مثل دماوند، می‌توان manifest JSON را فقط از stdin به کانتینر فرستاد؛ لازم نیست فایل manifest یا GPX داخل image، repository یا commit قرار بگیرد. برای shared pointهای بین چند مسیر فقط یک slug تعریف کنید و slug را در آرایهٔ `points` مسیرها تکرار کنید.
 
 حداقل قرارداد فایل:
