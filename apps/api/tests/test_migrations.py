@@ -17,5 +17,6 @@ def test_seed_command_registered():
     assert "seed_tochal_catalog" in commands
     assert "bootstrap_live_catalog_if_empty" in commands
     assert "ingest_open_meteo" in commands
+    assert "catalog_preflight" in commands
     command = load_command_class(commands["seed_demo_data"], "seed_demo_data")
     assert "Idempotently seed" in command.help

@@ -206,7 +206,7 @@ def serialize_destination(destination: Destination, *, include_routes: bool = Fa
     if include_routes:
         data["routes"] = [
             serialize_route_summary(route)
-            for route in destination.routes.filter(is_active=True).order_by("sort_order")
+            for route in destination.routes.filter(is_active=True).order_by("sort_order", "slug")
         ]
     return data
 
@@ -242,7 +242,7 @@ def serialize_route(route: Route) -> dict:
             destination__is_active=True,
         )
         .exclude(pk=route.pk)
-        .order_by("sort_order")
+        .order_by("sort_order", "slug")
     ]
     distance_km = float(route.distance_km) if route.distance_km is not None else None
     timing_pending = not route_has_usable_timing(route, points)
@@ -766,7 +766,7 @@ def destination_forecast(destination: Destination, *, selected_date: date, perio
         raise NotFound({"detail": "نقطهٔ هوای مقصد پیدا نشد."})
     routes = [
         serialize_route_summary(route)
-        for route in destination.routes.filter(is_active=True).order_by("sort_order")
+        for route in destination.routes.filter(is_active=True).order_by("sort_order", "slug")
     ]
     place = build_place_forecast(
         point,

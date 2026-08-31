@@ -1,6 +1,6 @@
 # Catalog و صحت‌سنجی آب‌وهوا
 
-هر مقصد جدید باید به‌صورت یک فایل JSON مستقل در `apps/api/fixtures/catalog/` اضافه شود. seeder عمومی routeها و `WeatherPoint`های مشترک را از همان فایل می‌سازد؛ برای shared pointهای بین چند مسیر فقط یک slug تعریف کنید و slug را در آرایهٔ `points` مسیرها تکرار کنید.
+کاتالوگ زنده در دیتابیس نگهداری می‌شود و seeder عمومی فقط ابزار bootstrap/import است. برای افزودن یک مقصد بزرگ مثل دماوند، می‌توان manifest JSON را فقط از stdin به کانتینر فرستاد؛ لازم نیست فایل manifest یا GPX داخل image، repository یا commit قرار بگیرد. برای shared pointهای بین چند مسیر فقط یک slug تعریف کنید و slug را در آرایهٔ `points` مسیرها تکرار کنید.
 
 حداقل قرارداد فایل:
 
@@ -9,6 +9,8 @@
 - `weather_points` با `name`، مختصات و `elevation_m`؛ مقدار `null` یعنی ارتفاع هنوز منبع معتبر ندارد
 - `routes` با مشخصات نمایش و آرایهٔ مرتب `points` که فقط به slugهای همین فایل اشاره می‌کند
 - اختیاری: بلوک `timing` برای مسیرهای دارای زمان‌بندی تخمینی/curated
+
+ورودی‌های لازم برای هر مقصد جدید: یک canonical destination WeatherPoint با مختصات WGS84، نام و منبع ارتفاع؛ برای هر route نیز slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق، evidence توصیه‌شده است.
 
 ## زمان‌بندی مسیر (catalog-driven)
 
@@ -57,6 +59,49 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 - Admin and catalog import share `normalize_and_publish_route` for ordering, denormalized fields, origin/target, segments, axis, timing demotion, and search rebuild.
 - `tracks/` is local-only research evidence (gitignored); never commit GPX/manifest.
 
+### فلوی استاندارد افزودن مقصد جدید
+
+این فلوی عمومی برای دماوند و مقصدهای بعدی است:
+
+1. در لوکال یک manifest بسازید؛ مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود.
+2. قبل از هر write، اعتبارسنجی provider را اجرا کنید:
+
+```bash
+python3 scripts/validate_open_meteo_catalog.py \
+  --catalog /tmp/damavand.json
+```
+
+این بررسی WGS84، مختصات تکراری، route references، DEM/provider elevation، وجود forecast ساعتی و فاصلهٔ مرکز grid تا مختصات را چک می‌کند؛ فاصلهٔ بیشتر از ۵ کیلومتر fail است. اگر ارتفاع هنوز قطعی نیست، فقط موقتاً از `--allow-unresolved-elevation` استفاده کنید و نقطه را provisional نگه دارید.
+
+3. manifest را بدون قرار دادن فایل در سرور یا image بررسی شکلی کنید:
+
+```bash
+cd /root/hawatch
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py seed_catalog --stdin --check-only < /tmp/damavand.json
+```
+
+4. پس از موفقیت preflight، آن را به‌صورت اتمیک و strict وارد دیتابیس کنید. این کار کد deploy نمی‌خواهد؛ فقط JSON از stdin منتقل می‌شود:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py seed_catalog --stdin --strict < /tmp/damavand.json
+```
+
+Import بدون `--prune` است؛ در slug conflict با ردیف operator-managed کل عملیات در حالت `--strict` rollback می‌شود. `--prune` فقط برای حذف عمدی fixture-managedهاست.
+
+5. ingest هدفمند را اجرا و فاصلهٔ provider را از دادهٔ واقعی ذخیره‌شده کنترل کنید:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py ingest_open_meteo --slugs damavand_summit,damavand_shelter
+
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py catalog_preflight --destination damavand --require-forecast --strict
+```
+
+`catalog_preflight` فقط read-only است و canonical link، فعال‌بودن مقصد/route/point، ترتیب route، زنجیرهٔ نقاط، endpointها، timing و آخرین resolution/forecast Open-Meteo را گزارش می‌کند. اگر timing ناقص باشد route همچنان قابل نمایش است اما `pending` می‌ماند و پیش‌بینی arrival برای آن ساخته نمی‌شود.
+
 ### افزودن WeatherPoint و Route بدون deploy
 
 1. Django admin → WeatherPoint: مختصات، DEM elevation، `is_active`/`ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
@@ -85,7 +130,7 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 
 در catalog توچال، ارتفاع‌های دارای `ele` در PBF منبع اصلی هستند. ارتفاع‌های هشت point قبلیِ بدون `ele` اکنون با `status: provisional` و منبع مقایسه‌ای ثبت شده‌اند: ولنجک ۱۷۵۵، هتل توچال ۳۵۴۵، کمپ کلکچال ۲۶۰۰، آهار ۲۱۴۰، شکرآب ۲۴۰۰، شهرستانک ۲۲۰۰، کاخ ناصری ۲۳۱۶ و سه‌راه ناصری ۳۴۵۷ متر. مقدار کاخ ناصری و سه‌راه ناصری بر اساس DEM مختصات فیزیکی PBF است و برای elevation survey-grade ادعا نمی‌شود. `jamshidieh_park` نیز provisional است (دسترسی بالای مسیر؛ چند ورودی).
 
-## ترتیب بررسی یک مقصد جدید
+## بررسی محلی و import catalog
 
 از ریشهٔ repository:
 
@@ -116,7 +161,7 @@ docker compose -f infra/compose/compose.yaml exec api \
   python manage.py ingest_open_meteo
 ```
 
-Import پیش‌فرض غیرتخریبی است (`--prune` فقط صریح). Ingest از WeatherPointهای فعال DB انتخاب می‌کند (نه filename JSON)؛ revision اسنپ‌شات `dbrev-…` است. برای ingest فوری چند slug: `--slugs a,b`. از API handlerها جداست؛ frontend نیز مستقیماً به Open-Meteo وصل نمی‌شود.
+Import پیش‌فرض غیرتخریبی است (`--prune` فقط صریح). `seed_catalog --stdin` برای افزودن/به‌روزرسانی داده بدون deploy فایل manifest است و `--check-only` هیچ writeای ندارد. Ingest از WeatherPointهای فعال DB انتخاب می‌کند (نه filename JSON)؛ revision اسنپ‌شات `dbrev-…` است. برای ingest فوری چند slug: `--slugs a,b`. از API handlerها جداست؛ frontend نیز مستقیماً به Open-Meteo وصل نمی‌شود.
 
 ## ارتفاع در درخواست weather
 
