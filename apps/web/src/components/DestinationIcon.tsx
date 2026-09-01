@@ -1,4 +1,13 @@
 export function DestinationIcon({ categoryKey }: { categoryKey: string }) {
+  if (categoryKey === "mountain") {
+    return (
+      <svg viewBox="0 0 48 48" className="destination-icon mountain" aria-hidden="true">
+        <path d="M5 36 19 16l7 10 4-6 13 16" />
+        <path d="m13 36 6-9 5 6 5-7 9 10" />
+        <path d="M19 16l3 4" />
+      </svg>
+    );
+  }
   if (categoryKey === "volcano") {
     return (
       <svg viewBox="0 0 48 48" className="destination-icon volcano" aria-hidden="true">
