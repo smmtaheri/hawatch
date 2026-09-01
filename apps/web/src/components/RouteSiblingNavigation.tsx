@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import type { RouteSummary } from "../types";
 
 export function RouteSiblingNavigation({
@@ -10,10 +11,17 @@ export function RouteSiblingNavigation({
   currentRoute: Pick<RouteSummary, "title" | "href">;
   routes: RouteSummary[];
 }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (detailsRef.current) detailsRef.current.open = false;
+  }, [location.pathname, location.search]);
+
   if (!routes.length) return null;
   return (
     <nav className="route-sibling-nav" aria-label={`مسیرهای دیگر ${parentName}`}>
-      <details className="route-sibling-details">
+      <details ref={detailsRef} className="route-sibling-details">
         <summary className="route-sibling-trigger">
           <span aria-hidden="true">⌁</span>
           <strong>تغییر مسیر</strong>
@@ -28,7 +36,15 @@ export function RouteSiblingNavigation({
               <span aria-hidden="true">✓</span>
             </div>
             {routes.map((route) => (
-              <Link key={route.slug} className="route-sibling-link" to={route.href} aria-label={`مشاهدهٔ مسیر ${route.title}`}>
+              <Link
+                key={route.slug}
+                className="route-sibling-link"
+                to={route.href}
+                aria-label={`مشاهدهٔ مسیر ${route.title}`}
+                onClick={() => {
+                  if (detailsRef.current) detailsRef.current.open = false;
+                }}
+              >
                 <strong>{route.title}</strong>
                 <small>{route.distance_label}</small>
                 <span aria-hidden="true">›</span>

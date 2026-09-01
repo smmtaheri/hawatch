@@ -4,7 +4,9 @@ import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { DestinationCard } from "../src/components/DestinationCard";
+import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
+import { RouteSiblingNavigation } from "../src/components/RouteSiblingNavigation";
 import { SpecialistMetrics } from "../src/components/SpecialistMetrics";
 import type { HourlyReading, Metric, RouteSummary } from "../src/types";
 
@@ -133,6 +135,56 @@ describe("mobile route and forecast controls", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
+  it("keeps the first four database-ranked routes visible on desktop", async () => {
+    const user = userEvent.setup();
+    const fiveRoutes = [
+      ...routes,
+      {
+        ...routes[0],
+        slug: "fourth-route",
+        title: "مسیر چهارم",
+        href: "/routes/fourth-route",
+      },
+      {
+        ...routes[0],
+        slug: "fifth-route",
+        title: "مسیر پنجم",
+        href: "/routes/fifth-route",
+      },
+    ];
+
+    render(
+      <MemoryRouter>
+        <DesktopRouteSelector routes={fiveRoutes} title="مسیرهای منتهی به توچال" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("link", { name: /مسیر پیشنهادی/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /مسیر چهارم/ })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /مسیر پنجم/ })).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "دیدن باقی مسیرها" }));
+    expect(within(screen.getByRole("menu", { name: "مسیرهای بیشتر" })).getByRole("menuitem", { name: /مسیر پنجم/ })).toBeInTheDocument();
+  });
+
+  it("keeps a single desktop route compact and restores missing numeric labels", () => {
+    const singleRoute = {
+      ...routes[0],
+      distance_label: "—",
+      ascent_label: "—",
+    };
+    render(
+      <MemoryRouter>
+        <DesktopRouteSelector routes={[singleRoute]} title="مسیرهای منتهی به توچال" />
+      </MemoryRouter>,
+    );
+
+    expect(document.querySelector(".desktop-route-selection")).toHaveClass("single-route");
+    expect(screen.queryByRole("button", { name: "دیدن باقی مسیرها" })).not.toBeInTheDocument();
+    expect(screen.getByText("ارتفاع‌گیری: ۱۵۰۰ m")).toBeInTheDocument();
+    expect(screen.getByText("مسافت: ۱۰ km")).toBeInTheDocument();
+  });
+
   it("uses a compact trigger when route alternatives belong in a route hero", async () => {
     const user = userEvent.setup();
     render(
@@ -146,6 +198,25 @@ describe("mobile route and forecast controls", () => {
 
     await user.click(screen.getByRole("button", { name: /مسیرهای دیگر/ }));
     expect(within(screen.getByRole("dialog", { name: "انتخاب مسیر" })).getByRole("link", { name: /مسیر دوم/ })).toBeInTheDocument();
+  });
+
+  it("closes the route menu as soon as another route is selected", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <RouteSiblingNavigation
+          parentName="توچال"
+          currentRoute={{ title: "مسیر فعلی", href: "/routes/current-route" }}
+          routes={[routes[1]]}
+        />
+      </MemoryRouter>,
+    );
+
+    await user.click(screen.getByText("تغییر مسیر"));
+    const details = document.querySelector(".route-sibling-details");
+    expect(details).toHaveAttribute("open");
+    await user.click(screen.getByRole("link", { name: /مسیر دوم/ }));
+    expect(details).not.toHaveAttribute("open");
   });
 
   it("closes the route sheet through its backdrop", async () => {

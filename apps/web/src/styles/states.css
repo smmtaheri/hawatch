@@ -2409,3 +2409,85 @@ html:not([data-theme="light"]) .search-result-row:hover {
     background: color-mix(in srgb, var(--internal-teal, #61c5c0) 14%, var(--internal-surface-soft, #14333e));
   }
 }
+
+/* Desktop route discovery: show the database-ranked first four routes and
+ * keep the remaining routes in a compact menu. Mobile has its own selector
+ * and remains governed by the max-width rules above. */
+@media (min-width: 721px) {
+  .destination-page .desktop-route-selection {
+    position: relative;
+  }
+
+  .destination-page .desktop-route-selection .desktop-route-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .destination-page .desktop-route-selection.single-route .desktop-route-cards {
+    grid-template-columns: minmax(0, 280px);
+    justify-content: start;
+  }
+
+  .desktop-route-overflow {
+    position: relative;
+    margin-top: 9px;
+  }
+
+  .desktop-route-overflow-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid var(--internal-teal, #61c5c0);
+    border-radius: 10px;
+    color: var(--internal-teal, #61c5c0);
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  .desktop-route-overflow-trigger:focus-visible {
+    outline: 2px solid var(--internal-teal, #61c5c0);
+    outline-offset: 2px;
+  }
+
+  .desktop-route-overflow-panel {
+    position: absolute;
+    z-index: 8;
+    top: calc(100% + 7px);
+    inset-inline-end: 0;
+    width: min(100%, 330px);
+    max-height: min(440px, 58vh);
+    overflow-y: auto;
+    display: grid;
+    gap: 7px;
+    padding: 10px;
+    border: 1px solid var(--internal-border, #bee1dd2e);
+    border-radius: 14px;
+    background: var(--internal-surface, #173844);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+  }
+
+  .desktop-route-overflow-panel > .route-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 100px;
+  }
+
+  .desktop-route-overflow-panel > .route-card .route-details {
+    overflow: visible;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1050px) {
+  .destination-page .desktop-route-selection .desktop-route-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .destination-page .desktop-route-selection {
+    display: none;
+  }
+}

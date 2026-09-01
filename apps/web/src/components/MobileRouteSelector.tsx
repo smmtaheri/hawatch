@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { RouteSummary } from "../types";
 import { DestinationCard } from "./DestinationCard";
 
@@ -17,12 +17,17 @@ export function MobileRouteSelector({
   variant?: "featured" | "trigger";
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartY = useRef<number | null>(null);
   const visibleTopRoutes = topRoutes(routes);
   const hasMoreRoutes = routes.length > visibleTopRoutes.length;
   const triggerOnly = variant === "trigger";
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     if (!isOpen) return;
