@@ -1,0 +1,34 @@
+{
+  "name": "Hawatch Gear Icons",
+  "version": "1.0.0",
+  "viewBox": "0 0 24 24",
+  "style": {
+    "fill": "none",
+    "stroke": "currentColor",
+    "strokeWidth": 1.8,
+    "linecap": "round",
+    "linejoin": "round"
+  },
+  "icons": [
+    {"id":"waterproof-shell","nameFa":"کاپشن ضدآب","nameEn":"Waterproof shell","suggestionFa":"لایهٔ ضدآب همراه داشته باش","triggers":["rain","snow","wet"]},
+    {"id":"insulated-jacket","nameFa":"کاپشن گرم","nameEn":"Insulated jacket","suggestionFa":"یک لایهٔ گرم اضافه بردار","triggers":["cold","wind_chill"]},
+    {"id":"base-layer","nameFa":"لایهٔ پایه","nameEn":"Thermal base layer","suggestionFa":"لباس لایه‌اول تنفسی بپوش","triggers":["cold","long_route"]},
+    {"id":"hiking-boots","nameFa":"کفش کوه","nameEn":"Hiking boots","suggestionFa":"کفش کوه مناسب مسیر بپوش","triggers":["all","rough_terrain"]},
+    {"id":"trekking-poles","nameFa":"باتوم","nameEn":"Trekking poles","suggestionFa":"برای شیب و فرود باتوم بردار","triggers":["steep","long_route"]},
+    {"id":"backpack","nameFa":"کوله‌پشتی","nameEn":"Backpack","suggestionFa":"کولهٔ سبک و متناسب با برنامه بردار","triggers":["all"]},
+    {"id":"gloves","nameFa":"دستکش گرم","nameEn":"Warm gloves","suggestionFa":"دستکش گرم همراهت باشد","triggers":["cold","wind","snow"]},
+    {"id":"beanie","nameFa":"کلاه گرم","nameEn":"Warm beanie","suggestionFa":"کلاه گرم و پوشش گوش بردار","triggers":["cold","wind_chill"]},
+    {"id":"sunglasses","nameFa":"عینک آفتابی","nameEn":"Sunglasses","suggestionFa":"عینک آفتابی با محافظ UV بزن","triggers":["sun","snow_glare","high_altitude"]},
+    {"id":"headlamp","nameFa":"هدلامپ","nameEn":"Headlamp","suggestionFa":"هدلامپ با باتری اضافه بردار","triggers":["night","late_return","long_route"]},
+    {"id":"water-bottle","nameFa":"آب","nameEn":"Water bottle","suggestionFa":"آب کافی برای کل مسیر بردار","triggers":["all","heat","long_route"]},
+    {"id":"energy-snack","nameFa":"خوراکی انرژی‌زا","nameEn":"Energy snack","suggestionFa":"خوراکی سبک و پرانرژی همراهت باشد","triggers":["long_route","cold"]},
+    {"id":"sunscreen","nameFa":"ضدآفتاب","nameEn":"Sunscreen","suggestionFa":"ضدآفتاب را قبل و حین برنامه تمدید کن","triggers":["sun","high_uv","high_altitude"]},
+    {"id":"first-aid","nameFa":"کمک‌های اولیه","nameEn":"First aid kit","suggestionFa":"کیت کوچک کمک‌های اولیه بردار","triggers":["all","remote_route"]},
+    {"id":"emergency-blanket","nameFa":"پتوی نجات","nameEn":"Emergency blanket","suggestionFa":"پتوی نجات سبک همراهت باشد","triggers":["cold","remote_route","high_altitude"]},
+    {"id":"compass","nameFa":"نقشه و قطب‌نما","nameEn":"Compass","suggestionFa":"مسیر آفلاین و ابزار جهت‌یابی داشته باش","triggers":["fog","low_visibility","remote_route"]},
+    {"id":"power-bank","nameFa":"پاوربانک","nameEn":"Power bank","suggestionFa":"گوشی و پاوربانک را کامل شارژ کن","triggers":["long_route","cold","navigation"]},
+    {"id":"gaiters","nameFa":"گتر","nameEn":"Gaiters","suggestionFa":"برای برف یا مسیر خیس گتر بردار","triggers":["snow","mud","wet"]},
+    {"id":"microspikes","nameFa":"یخ‌شکن","nameEn":"Microspikes","suggestionFa":"برای مسیر یخی یخ‌شکن مناسب بردار","triggers":["ice","packed_snow","freeze"]},
+    {"id":"whistle","nameFa":"سوت نجات","nameEn":"Emergency whistle","suggestionFa":"سوت نجات را در دسترس نگه دار","triggers":["remote_route","low_visibility","emergency"]}
+  ]
+}

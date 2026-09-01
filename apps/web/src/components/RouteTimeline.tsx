@@ -17,31 +17,29 @@ export function RouteTimeline({
 }) {
   return (
     <div className="route-linear-panel">
-      <div className="route-linear-scroll">
-        <div className="route-linear-endpoints" aria-hidden="true">
-          <span>مبدا · {origin}</span>
-          <span>مقصد · {destination}</span>
-        </div>
-        <div className="route-linear-track" aria-label={`نقاط مسیر ${title}`}>
-          {points.map((point, index) => {
-            const target = pointHref ? pointHref(point) : buildRoutePointLink(point.href, undefined);
-            return (
-              <Link
-                key={point.slug}
-                className={`route-linear-point ${point.state}`}
-                to={target.pathname}
-                state={target.state}
-                aria-label={`مشاهدهٔ جزئیات ${point.name}`}
-              >
-                <span className="route-linear-node">
-                  <span className="marker-weather">{point.icon}</span>
-                </span>
-                <span className="route-linear-point-name">{point.name}</span>
-                <span className="route-linear-order">{index + 1}</span>
-              </Link>
-            );
-          })}
-        </div>
+      <div className="route-linear-endpoints" aria-hidden="true">
+        <span>مبدا · {origin}</span>
+        <span>مقصد · {destination}</span>
+      </div>
+      <div className="route-linear-track" aria-label={`نقاط مسیر ${title}`}>
+        {points.map((point, index) => {
+          const target = pointHref ? pointHref(point) : buildRoutePointLink(point.href, undefined);
+          return (
+            <Link
+              key={point.slug}
+              className={`route-linear-point ${point.state}`}
+              to={target.pathname}
+              state={target.state}
+              aria-label={`مشاهدهٔ جزئیات ${point.name}`}
+            >
+              <span className="route-linear-node">
+                <span className="marker-weather">{point.icon}</span>
+              </span>
+              <span className="route-linear-point-name">{point.name}</span>
+              <span className="route-linear-order">{index + 1}</span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

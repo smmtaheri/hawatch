@@ -356,7 +356,7 @@ export function RoutePage() {
                   </div>
                   <div className="route-points-axis-scroll">
                     <div
-                      className="route-points-axis-content"
+                      className={`route-points-axis-content ${data.points.length > 6 ? "has-overflow" : ""}`}
                       style={{ "--route-point-count": data.points.length } as CSSProperties}
                     >
                       <RouteTimeline

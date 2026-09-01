@@ -297,6 +297,9 @@ describe("Hawatch pages", () => {
     const pointWeather = screen.getByLabelText("آب‌وهوای متناظر با نقاط مهم مسیر");
     expect(within(pointWeather).getByText("8°")).toBeInTheDocument();
     expect(pointWeather.querySelector(".route-point-weather-condition")).toBeInTheDocument();
+    expect(screen.getByText("تجهیزات پیشنهادی")).toBeInTheDocument();
+    expect(screen.queryByText("برگرد اگر دید محدود است.")).not.toBeInTheDocument();
+    expect(document.querySelector(".share-gear .hawatch-gear-icon")).toBeInTheDocument();
     const sharedAxis = document.querySelector(".route-points-axis-scroll");
     expect(sharedAxis).toContainElement(document.querySelector(".route-linear-panel"));
     expect(sharedAxis).toContainElement(pointWeather);

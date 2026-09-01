@@ -30,7 +30,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۴. hierarchy کامپوننت‌ها
 
-`RoutePage → SiteHeader + RouteHero + SiblingRouteNav + RouteLayout → DayPicker + PlannerControls(StartTimeGauge, SpeedSegmentedControl) + RoutePointAxis + PointWeatherCards + RouteDecisionCard(ShareActions) + RouteStats`.
+`RoutePage → SiteHeader + RouteHero + SiblingRouteNav + RouteLayout → DayPicker + PlannerControls(StartTimeGauge, SpeedSegmentedControl) + RoutePointAxis + PointWeatherCards + RouteDecisionCard(ShareActions, GearRecommendations) + RouteStats`.
 
 ## ۵. رفتار کنترل‌ها
 
@@ -61,7 +61,12 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - اگر timing pending/unusable است (از جمله estimated ناقص بدون cumulative کامل)، کارت نباید ETA یا weather ساختگی نشان دهد؛ متن فارسی «زمان‌بندی در دسترس نیست» کافی است و رشتهٔ خام `timing_pending` نمایش داده نمی‌شود.
 - start time، speed profile (ضریب زمان آرام/متوسط/سریع) و محاسبهٔ arrival.
 - forecast point-level برای زمان رسیدن محاسبه شده؛ period انتخابی فقط پنجرهٔ حرکت را محدود می‌کند.
-- decision summary، recommendations و share payload؛ برای timing estimated یادآوری شود که زمان‌ها بدون استراحت طولانی‌اند و قطعی نیستند. تخمین‌های فعلی catalog-level v1 هستند نه موتور per-segment کالیبره‌شده.
+- decision summary، `decision.gear[]` و share payload؛ `gear[]` کلیدهای معنایی
+  تجهیزات است و کارت share فقط نام و آیکون تجهیزات را در پایین خود نشان می‌دهد.
+  `recommendations[]` برای سازگاری API نگه داشته می‌شود اما متن توضیحی آن در
+  کارت نمایش داده نمی‌شود. برای timing estimated یادآوری‌ها همچنان در منطق
+  تصمیم API وجود دارند؛ تخمین‌های فعلی catalog-level v1 هستند نه موتور
+  per-segment کالیبره‌شده.
 
 ## ۸. API فعلی و مسیرهای توسعه
 
@@ -75,7 +80,10 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 ## ۹. تفاوت mobile و web
 
 - mobile: hero مسیر هم‌اندازهٔ hero فشردهٔ مقصد و بدون breadcrumb تکراری است؛ عنوان و status در دو سوی hero و در مرکز ارتفاع آن می‌مانند. «مسیرهای دیگر» فقط trigger فشردهٔ پایین hero است و siblingها را در bottom sheet باز می‌کند؛ grid دسکتاپ siblingها در mobile دیده نمی‌شود. اولین کارت بعد از hero، label انتخاب روز و کنترل مشترک سه‌گزینه‌ای صبح/بعدازظهر/شب را در یک ردیف و tabهای روز را در ردیف بعد دارد. کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف.
-- نقاط مسیر و کارت خلاصهٔ هوای همان نقاط روی یک محور خوانا بمانند؛ axis در صورت نیاز در container خودش scroll شود، نه root.
+- نقاط مسیر و کارت خلاصهٔ هوای همان نقاط روی یک محور و scroll-owner مشترک
+  بمانند؛ در web حداکثر شش نقطه هم‌زمان دیده شود و بقیه افقی scroll شوند.
+  در mobile نیز همین owner مشترک با اندازهٔ فشرده‌تر حفظ شود، نه دو اسکرول
+  جداگانه.
 - گیج ساعت شروع بیش از حد بزرگ نشود.
 - web: layout اصلی و side planner می‌توانند چندستونه باشند؛ route axis و point cards فضای بیشتری دارند.
 
@@ -107,6 +115,10 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 - gauge در ورود به Route زمان فعلی تهران را نشان می‌دهد و بخش گذشته dim است.
 - root overflow افقی نداشته باشد؛ هر scroll احتمالی scoped باشد.
 - کپی لینک، queryهای `date`، `period`، `start_time` و `speed` را برای بازسازی برنامه منتقل می‌کند.
+- در web برای routeهای بیش از شش نقطه، شش point اول در viewport قرار دارند و
+  point/weather card متناظر با یک `scrollLeft` مشترک حرکت می‌کند.
+- پایین share card فقط تجهیزات پیشنهادی دارای `GearIcon` و نام وسیله دیده می‌شود؛
+  متن‌های بلند recommendation در این بخش render نمی‌شوند.
 
 ## ۱۳. تصویر مرجع
 

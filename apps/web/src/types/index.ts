@@ -320,6 +320,8 @@ export interface RouteForecast {
     critical_time: string;
     critical_note: string;
     recommendations: string[];
+    /** Stable equipment icon keys for the share/decision card. */
+    gear?: string[];
     start: string;
     finish: string;
     speed: string;

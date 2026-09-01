@@ -949,6 +949,28 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         hero_status = "شرایط مسیر فعلاً آرام‌تر است"
         critical_point = finish
 
+    gear = []
+
+    def add_gear(*items: str) -> None:
+        for item in items:
+            if item not in gear:
+                gear.append(item)
+
+    # Keep equipment structured and language-independent. The prose below is
+    # retained for API compatibility, while the UI renders only these stable
+    # icon keys in the share card.
+    add_gear("hiking-boots", "backpack", "water-bottle")
+    if timing_pending:
+        add_gear("first-aid", "power-bank")
+    if route.one_way_minutes and route.one_way_minutes >= 360:
+        add_gear("energy-snack", "headlamp")
+    if summary_state == "critical":
+        add_gear("compass", "whistle")
+    if critical_point and (critical_point.get("wind") or 0) >= 25:
+        add_gear("waterproof-shell", "trekking-poles")
+    if critical_point and (critical_point.get("temp") is not None and critical_point["temp"] <= 2):
+        add_gear("gloves", "insulated-jacket", "beanie")
+
     recommendations = []
     if timing_pending:
         recommendations.append("زمان‌بندی دقیق مسیر هنوز نهایی نشده؛ زمان رسیدن و مسافت تجمعی فعلاً در دسترس نیست.")
@@ -1018,6 +1040,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             "critical_time": critical_point["time"] if critical_point else "",
             "critical_note": critical_point["note"] if critical_point else "",
             "recommendations": recommendations[:3],
+            "gear": gear[:8],
             "start": start_label,
             "finish": finish_label,
             "speed": speed,

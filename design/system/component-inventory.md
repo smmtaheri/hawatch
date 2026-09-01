@@ -46,6 +46,9 @@
 - `PointWeatherCard` / route point weather cards: خلاصهٔ رسیدن‌محور؛ وقتی timing pending، حالت «زمان‌بندی در دسترس نیست».
 - `RouteDecisionCard`: زمان رسیدن، نقطهٔ حساس و پیشنهاد تصمیم.
 - `ShareActions`: کپی لینک و اشتراک‌گذاری.
+- `GearIcon` / `GearRecommendations`: آیکون‌های معنایی تجهیزات از
+  `apps/web/public/icons/gear/` و نام وسیله‌های پیشنهادی در پایین share card؛
+  متن recommendation در این بخش نمایش داده نمی‌شود.
 - `RouteStats`: مسافت، صعود، زمان و زمان رسیدن.
 - `RoutePointSummaryGrid`: خلاصهٔ point-level برای هر نقطه.
 - `RouteTimeline`: بدون دمای تکراری زیر marker.

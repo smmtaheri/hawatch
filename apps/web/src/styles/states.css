@@ -594,6 +594,132 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
   opacity: 0.85;
 }
 
+/* Gear SVGs are consumed as masks so currentColor keeps them legible in both
+ * themes while the semantic filenames remain the single asset contract. */
+.hawatch-gear-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: var(--hawatch-gear-url) center / contain no-repeat;
+  mask: var(--hawatch-gear-url) center / contain no-repeat;
+}
+
+.route-page .share-gear {
+  margin-top: 12px;
+}
+
+.route-page .share-gear > .share-section-label {
+  display: block;
+  color: var(--internal-muted, #a8c1c0);
+  font-size: 11px;
+}
+
+.route-page .share-gear ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route-page .share-gear li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid var(--internal-border, #bee1dd2e);
+  border-radius: 10px;
+  color: var(--internal-teal, #61c5c0);
+  background: var(--internal-surface-soft, #14333e);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.route-page .share-gear li span:last-child {
+  color: var(--internal-text, #edf7f4);
+}
+
+html[data-theme="light"] .route-page .share-gear li {
+  border-color: #dbe8e5;
+  background: #f4faf8;
+}
+
+/* One scroll owner keeps every point marker directly above its weather card.
+ * A route with more than six points gets a fixed-width track, so desktop
+ * shows at most six points and the rest remain discoverable by scrolling. */
+.route-page .route-points-axis-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  container-type: inline-size;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.route-page .route-points-axis-content {
+  --route-point-gap: 8px;
+  --route-point-width: 150px;
+  width: 100%;
+  min-width: 100%;
+}
+
+.route-page .route-points-axis-content.has-overflow {
+  /* Five gaps separate the six cards visible in the scrollport. The cqi
+   * fallback keeps older browsers usable while modern browsers fill exactly
+   * six columns regardless of the desktop content width. */
+  --route-point-width: max(130px, calc((100cqi - 40px) / 6));
+  width: max-content;
+  min-width: max-content;
+}
+
+.route-page .route-points-axis-content .route-linear-scroll {
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+
+.route-page .route-points-axis-content .route-linear-endpoints {
+  width: 100%;
+  min-width: 0;
+}
+
+.route-page .route-points-axis-content .route-linear-track,
+.route-page .route-points-axis-content .route-point-weather-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--route-point-count), minmax(0, 1fr));
+  gap: var(--route-point-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+.route-page .route-points-axis-content.has-overflow .route-linear-track,
+.route-page .route-points-axis-content.has-overflow .route-point-weather-grid {
+  grid-template-columns: repeat(var(--route-point-count), var(--route-point-width));
+  width: max-content;
+  min-width: 0;
+}
+
+.route-page .route-points-axis-content .route-linear-point,
+.route-page .route-points-axis-content .route-point-weather-card {
+  width: auto;
+  min-width: 0;
+}
+
+.route-page .route-points-axis-content .route-point-weather-values {
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+
+@media (width <= 720px) {
+  .route-page .route-points-axis-content.has-overflow {
+    --route-point-width: 124px;
+  }
+}
+
 .destination-page .hour-item.is-current {
   position: relative;
 }

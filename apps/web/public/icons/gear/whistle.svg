@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <title>Emergency whistle</title>
+  <path d="M3 12h7a5 5 0 1 1 0 5H7l-4-2z"/>
+  <circle cx="15" cy="14.5" r="2"/>
+  <path d="M7 12V9h8l2 3M3 12v3M19 7l2-2M19 10h3"/>
+</svg>

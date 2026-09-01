@@ -1,6 +1,32 @@
 import { useState } from "react";
 import type { RouteForecast } from "../types";
+import { GearIcon } from "./GearIcon";
 import { buildRouteShareUrl, buildRouteTelegramShareUrl } from "../lib/routeShare";
+
+const GEAR_LABELS: Record<string, string> = {
+  "waterproof-shell": "کاپشن ضدآب",
+  "insulated-jacket": "کاپشن گرم",
+  "base-layer": "لایهٔ پایه",
+  "hiking-boots": "کفش کوه",
+  "trekking-poles": "باتوم",
+  backpack: "کوله‌پشتی",
+  gloves: "دستکش گرم",
+  beanie: "کلاه گرم",
+  sunglasses: "عینک آفتابی",
+  headlamp: "هدلامپ",
+  "water-bottle": "آب",
+  "energy-snack": "خوراکی انرژی‌زا",
+  sunscreen: "ضدآفتاب",
+  "first-aid": "کمک‌های اولیه",
+  "emergency-blanket": "پتوی نجات",
+  compass: "نقشه و قطب‌نما",
+  "power-bank": "پاوربانک",
+  gaiters: "گتر",
+  microspikes: "یخ‌شکن",
+  whistle: "سوت نجات",
+};
+
+const DEFAULT_GEAR = ["hiking-boots", "backpack", "water-bottle"];
 
 export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   const decision = forecast.decision;
@@ -19,6 +45,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   }
 
   const telegram = buildRouteTelegramShareUrl(forecast);
+  const gear = decision.gear?.length ? decision.gear : DEFAULT_GEAR;
 
   return (
     <section className={`route-decision route-forecast route-share-card share-state-${decision.state}`}>
@@ -57,11 +84,14 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
       <div className="share-summary-copy">
         <strong>{decision.summary}</strong>
       </div>
-      <div className="share-recommendations">
-        <span className="share-section-label">پیشنهادهای این برنامه</span>
+      <div className="share-gear" aria-label="تجهیزات پیشنهادی">
+        <span className="share-section-label">تجهیزات پیشنهادی</span>
         <ul>
-          {decision.recommendations.map((item) => (
-            <li key={item}>{item}</li>
+          {gear.map((item) => (
+            <li key={item}>
+              <GearIcon name={item} size={30} title={GEAR_LABELS[item] ?? item} />
+              <span>{GEAR_LABELS[item] ?? item}</span>
+            </li>
           ))}
         </ul>
       </div>

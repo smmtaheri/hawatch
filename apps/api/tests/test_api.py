@@ -150,6 +150,8 @@ def test_route_forecast_start_and_speed(api_client, seeded):
     assert medium["points"][0]["time"] == medium["start_time"]
     assert "حدود" in medium["decision"]["title"]
     assert "timing pending" not in str(medium).lower()
+    assert medium["decision"]["gear"]
+    assert {"hiking-boots", "backpack", "water-bottle"}.issubset(medium["decision"]["gear"])
 
     kolakchal = api_client.get(
         "/api/v1/routes/touchal-kalkchal/forecast/",

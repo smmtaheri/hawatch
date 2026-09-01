@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <title>Backpack</title>
+  <path d="M8 7V6a4 4 0 0 1 8 0v1M7 7h10l2 4v9H5v-9Z"/>
+  <path d="M8 12h8v5H8zM5 12l-2 2v4M19 12l2 2v4M9 7h6"/>
+</svg>

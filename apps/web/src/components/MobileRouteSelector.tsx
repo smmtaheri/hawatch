@@ -56,7 +56,7 @@ export function MobileRouteSelector({
         <>
           <div className="mobile-route-selection-heading">
             <div>
-              <span className="eyebrow teal-text">مسیرهای پیشنهادی</span>
+              <span className="eyebrow teal-text">تصمیم بعدی</span>
               <h2>{title}</h2>
             </div>
             <span className="mobile-route-selection-count">{routes.length} مسیر</span>

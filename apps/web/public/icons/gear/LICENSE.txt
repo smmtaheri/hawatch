@@ -1,0 +1,6 @@
+Hawatch Gear Icons v1
+
+Created for the Hawatch product. You may use, copy, modify, and distribute these
+icons as part of Hawatch and its related product interfaces without restriction.
+
+No third-party icon library or generated bitmap asset is embedded in this pack.

@@ -58,6 +58,14 @@ forecast (Forecast Place — destination یا point)
 نام معنایی پایدار است و glyph یا متن نمایشی نیست؛ کلاینت آن را از sprite رسمی
 `/icons/specialist/hawatch-specialist-icons.svg` رندر می‌کند. نگاشت فعلی:
 
+در پاسخ route forecast، `decision.gear[]` نیز آرایه‌ای از کلیدهای معنایی تجهیزات
+است. این کلیدها برای رندر آیکون و نام وسیله‌اند (مثلاً `backpack`،
+`waterproof-shell` و `microspikes`) و نباید با متن فارسی recommendation جایگزین
+شوند. فهرست کلیدها و assetهای نسخهٔ فعلی در
+`apps/web/public/icons/gear/manifest.fa.json` ثبت شده است. فیلد قدیمی
+`decision.recommendations[]` برای سازگاری کلاینت‌ها باقی می‌ماند، اما UI share
+کارت فقط `gear[]` را نمایش می‌دهد.
+
 | `icon` | شاخص |
 | --- | --- |
 | `wind-average` | باد میانگین |

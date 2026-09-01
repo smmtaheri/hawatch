@@ -135,6 +135,7 @@ describe("mobile route and forecast controls", () => {
       </MemoryRouter>,
     );
 
+    expect(screen.getByText("تصمیم بعدی")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /مسیر پیشنهادی/ })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /مسیر دوم/ })).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /مسیر سوم/ })).not.toBeInTheDocument();
