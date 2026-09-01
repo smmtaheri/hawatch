@@ -34,13 +34,12 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   } = usePlaceForecast({ kind, slug });
   usePageTitle(data?.subject.name);
 
-  // Detail pages open at their own back-navigation row, keeping the global
-  // controls one short upward scroll away without re-scrolling on day or
-  // period selection.
+  // Detail pages open at the top of the global header so the logo, theme and
+  // back controls are all visible without re-scrolling on day/period changes.
   useEffect(() => {
     if (!data?.subject.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".destination-page .page-back-navigation")?.scrollIntoView?.({
+      document.querySelector<HTMLElement>(".destination-page .site-header")?.scrollIntoView?.({
         block: "start",
         behavior: "auto",
       });

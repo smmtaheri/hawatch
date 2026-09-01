@@ -2416,7 +2416,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .destination-page .desktop-route-selection .desktop-route-cards {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .destination-page .desktop-route-selection.single-route .desktop-route-cards {

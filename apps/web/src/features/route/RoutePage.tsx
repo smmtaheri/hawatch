@@ -194,12 +194,12 @@ export function RoutePage() {
   );
 
   // Only route identity triggers this. Planner changes must keep the visitor's
-  // reading position intact while a fresh route opens at its back-navigation
-  // row.
+  // reading position intact while a fresh route opens at the top of the global
+  // header, with the logo/theme/back controls visible.
   useEffect(() => {
     if (!data?.route.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".route-page .page-back-navigation")?.scrollIntoView?.({
+      document.querySelector<HTMLElement>(".route-page .site-header")?.scrollIntoView?.({
         block: "start",
         behavior: "auto",
       });
