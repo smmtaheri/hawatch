@@ -2055,19 +2055,20 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
-/* Back is part of the place/route hero, not a separate horizontal strip.
- * This keeps the title and its navigation context together on every viewport. */
-.destination-page .destination-hero .hero-back-navigation,
-.route-page .route-hero .hero-back-navigation {
-  position: absolute;
-  z-index: 4;
-  top: 18px;
-  right: 24px;
+/* Back has its own row above the place/route hero so it remains clear and
+ * visible after the detail page's automatic initial scroll. */
+.destination-page .page-back-navigation,
+.route-page .page-back-navigation {
+  display: flex;
+  direction: rtl;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 40px;
 }
 
-.destination-page .destination-hero .hero-back-navigation .page-back-link,
-.route-page .route-hero .hero-back-navigation .page-back-link {
-  margin: 0;
+.destination-page .page-back-navigation .page-back-link,
+.route-page .page-back-navigation .page-back-link {
+  margin: 10px 0 8px;
 }
 
 @media (width <= 720px) {
@@ -2098,15 +2099,15 @@ html:not([data-theme="light"]) .search-result-row:hover {
     font-size: 10px;
   }
 
-  .destination-page .destination-hero .hero-back-navigation,
-  .route-page .route-hero .hero-back-navigation {
-    top: 8px;
-    right: 12px;
+  .destination-page .page-back-navigation,
+  .route-page .page-back-navigation {
+    min-height: 34px;
   }
 
-  .destination-page .destination-hero .hero-back-navigation .page-back-link,
-  .route-page .route-hero .hero-back-navigation .page-back-link {
-    font-size: 9px;
+  .destination-page .page-back-navigation .page-back-link,
+  .route-page .page-back-navigation .page-back-link {
+    margin: 7px 0 5px;
+    font-size: 10px;
   }
 
   .destination-page .destination-hero,
@@ -2216,11 +2217,6 @@ html:not([data-theme="light"]) .search-result-row:hover {
     margin: 4px 0 0;
     font-size: 14px;
     line-height: 1.4;
-  }
-
-  .route-page .route-hero .hero-back-navigation {
-    top: 16px;
-    right: 36px;
   }
 
   .route-page .route-hero-copy {

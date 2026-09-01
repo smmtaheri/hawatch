@@ -194,11 +194,12 @@ export function RoutePage() {
   );
 
   // Only route identity triggers this. Planner changes must keep the visitor's
-  // reading position intact while a fresh route opens at its hero.
+  // reading position intact while a fresh route opens at its back-navigation
+  // row.
   useEffect(() => {
     if (!data?.route.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".route-page .route-hero")?.scrollIntoView?.({
+      document.querySelector<HTMLElement>(".route-page .page-back-navigation")?.scrollIntoView?.({
         block: "start",
         behavior: "auto",
       });
@@ -271,7 +272,9 @@ export function RoutePage() {
     return (
       <main className="route-page">
         <Header />
-        <BackNavigation />
+        <div className="page-back-navigation">
+          <BackNavigation />
+        </div>
         <EmptyState title="مسیر پیدا نشد" detail="از صفحهٔ مقصد، مسیر دیگری را انتخاب کن." />
       </main>
     );
@@ -293,15 +296,15 @@ export function RoutePage() {
     <main className="route-page">
       <div className="route-shell">
         <Header />
+        <div className="page-back-navigation">
+          <BackNavigation />
+        </div>
         {status === "error" ? <ErrorState onRetry={load} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
             <section className="route-hero">
-              <div className="hero-back-navigation">
-                <BackNavigation />
-              </div>
               <div className="route-hero-copy">
                 <Breadcrumbs
                   items={[

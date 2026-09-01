@@ -34,12 +34,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   } = usePlaceForecast({ kind, slug });
   usePageTitle(data?.subject.name);
 
-  // Detail pages open at their own hero, leaving global controls one short
-  // upward scroll away without re-scrolling on day or period selection.
+  // Detail pages open at their own back-navigation row, keeping the global
+  // controls one short upward scroll away without re-scrolling on day or
+  // period selection.
   useEffect(() => {
     if (!data?.subject.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".destination-page .destination-hero")?.scrollIntoView?.({
+      document.querySelector<HTMLElement>(".destination-page .page-back-navigation")?.scrollIntoView?.({
         block: "start",
         behavior: "auto",
       });
@@ -56,7 +57,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
       <main className="destination-page">
         <div className="destination-shell">
           <Header />
-          <BackNavigation />
+          <div className="page-back-navigation">
+            <BackNavigation />
+          </div>
           <EmptyState
             title={kind === "destination" ? "مقصد پیدا نشد" : "نقطهٔ هواشناسی پیدا نشد"}
             detail={
@@ -86,6 +89,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     <main className={pageClass} data-place-kind={kind}>
       <div className="destination-shell">
         <Header />
+        <div className="page-back-navigation">
+          <BackNavigation />
+        </div>
         {status === "error" ? <ErrorState onRetry={() => reload()} /> : null}
         {status === "loading" && !data ? <LoadingState /> : null}
         {data ? (
@@ -95,9 +101,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
               <div className="destination-hero-fallback" aria-hidden="true" />
               {heroImage ? <img src={heroImage} alt={data.subject.hero_image_alt} /> : null}
               <div className="destination-hero-overlay" />
-              <div className="hero-back-navigation">
-                <BackNavigation />
-              </div>
               <div className="destination-heading">
                 <Breadcrumbs
                   items={[{ label: "مقصدها", to: "/#search-results" }, { label: data.subject.name }]}
