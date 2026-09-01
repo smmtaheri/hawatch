@@ -216,6 +216,10 @@ configure_env() {
   set_env_value WEB_PUBLISH_PORT "$WEB_PUBLISH_PORT"
   set_env_value NGINX_PUBLISH_PORT "$NGINX_PUBLISH_PORT"
   set_env_value VITE_API_BASE_URL "$VITE_API_BASE_URL"
+  # Keep the live provider window aligned with the product contract on existing
+  # servers too; older .env files may still contain the former past_days=1.
+  set_env_value OPEN_METEO_FORECAST_DAYS 7
+  set_env_value OPEN_METEO_PAST_DAYS 0
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-$(get_env_value FORECAST_STALE_AFTER_HOURS)}"
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-7}"
   set_env_value FORECAST_STALE_AFTER_HOURS "$FORECAST_STALE_AFTER_HOURS"

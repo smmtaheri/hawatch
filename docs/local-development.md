@@ -81,7 +81,9 @@ docker compose --env-file .env -f infra/compose/compose.yaml logs -f ingest-sche
 
 Retention: snapshotهای خام و رکوردهای forecast قدیمی‌تر از ۷ روز پاک می‌شوند؛ آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شود. ingest با upsert داخل transaction انجام می‌شود و شکست کامل، دادهٔ قبلی را حذف نمی‌کند. maintenance سبک این cleanup را روزانه اجرا می‌کند.
 
-برای کاهش حجم در صورتی که قرارداد UI عمداً به پنج روز تغییر کرد، در `.env` مقدارهای `OPEN_METEO_FORECAST_DAYS=5` و `OPEN_METEO_PAST_DAYS=0` را تنظیم کن. قرارداد فعلی UI هفت‌روزه است و default آن تغییر نکرده است.
+پنجرهٔ پیش‌فرض ingest هفت روز تقویمی است: امروز تا شش روز بعد
+(`OPEN_METEO_FORECAST_DAYS=7` و `OPEN_METEO_PAST_DAYS=0`). روز گذشته فقط از
+ingest قبلی در دیتابیس نگه داشته می‌شود و دوباره از Open-Meteo گرفته نمی‌شود.
 
 ## توسعهٔ frontend بدون Docker web
 

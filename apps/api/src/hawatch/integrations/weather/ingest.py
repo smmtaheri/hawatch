@@ -14,7 +14,7 @@ from django.conf import settings
 from django.db import connection, transaction
 from django.utils import timezone as dj_timezone
 
-from hawatch.common.time import hour_bucket, now_tehran
+from hawatch.common.time import hour_bucket, localize_dt, now_tehran
 from hawatch.common.observability import (
     record_ingest_duration,
     record_ingest_points,
@@ -397,16 +397,25 @@ def persist_ingest(
             ],
             unique_fields=["weather_point", "forecast_at", "seed_version"],
         )
-        # Remove hours that disappeared from a successful point's new window.
+        # Remove hours that disappeared from a successful point's new provider
+        # window.  The previous local calendar day is intentionally retained:
+        # it is already in the database from the preceding run, but is not
+        # requested from Open-Meteo again (past_days=0).
         # This runs after the upsert but remains inside the transaction, so an
         # exception still restores both the old and newly upserted rows.
+        local_today = now_tehran(generated_at).date()
+        yesterday_start = localize_dt(local_today - timedelta(days=1), 0)
+        today_start = localize_dt(local_today, 0)
         for point_id, forecast_times in forecast_times_by_point.items():
             ForecastRecord.objects.filter(
                 weather_point=point_by_slug[point_id],
                 data_mode="live",
                 provider="open-meteo",
                 seed_version=LIVE_SEED_VERSION,
-            ).exclude(forecast_at__in=forecast_times).delete()
+            ).exclude(forecast_at__in=forecast_times).exclude(
+                forecast_at__gte=yesterday_start,
+                forecast_at__lt=today_start,
+            ).delete()
 
     mark_stale_snapshots()
     cleanup_old_snapshots()

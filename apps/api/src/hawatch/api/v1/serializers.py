@@ -1051,7 +1051,10 @@ def list_destinations(*, query: str = "") -> list[Destination]:
             or normalized in item.category.lower()
         ]
         return qs[:6]
-    return list(qs)
+    # The no-query response is the home-page popular set.  Search remains
+    # available through the dedicated search endpoint and may return any
+    # active destination.
+    return list(qs.filter(is_popular=True)[:4])
 
 
 def get_destination(slug: str) -> Destination:

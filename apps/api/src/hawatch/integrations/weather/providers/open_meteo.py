@@ -32,7 +32,10 @@ HOURLY_VARIABLES = [
 
 DEFAULT_BATCH_SIZE = 100
 DEFAULT_FORECAST_DAYS = 7
-DEFAULT_PAST_DAYS = 1
+# Keep the previous local day in the database from the preceding ingest, but
+# do not ask Open-Meteo to fetch it again.  ``forecast_days=7`` then covers
+# today through six days ahead.
+DEFAULT_PAST_DAYS = 0
 DEFAULT_TIMEZONE = "Asia/Tehran"
 DEFAULT_MODELS = "best_match"
 DEFAULT_CELL_SELECTION = "land"

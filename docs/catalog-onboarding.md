@@ -35,7 +35,9 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 - مختصات canonical به‌صورت WGS84 ده‌دهی؛
 - ارتفاع معتبر و منبع آن؛
 - `climate`، تصویر و alt text؛
-- `popular_order` و `is_popular` برای ترتیب نمایش.
+- مقصد جدید به‌صورت پیش‌فرض محبوب نیست. مجموعهٔ حداکثر چهار مقصد محبوب هوم را با
+  command مدیریتی `set_popular_destinations` و به‌ترتیب دلخواه تنظیم کنید؛ لازم
+  نیست برای تغییر آن کد یا migration بسازید.
 
 `category_key` فقط متن دسته‌بندی نیست؛ کلید معنایی آیکون مقصد هم هست و از
 دیتابیس به فرانت می‌رسد. برای مثال، اسکلیم باید `waterfall` داشته باشد و دماوند
@@ -113,6 +115,31 @@ route باید timing کامل داشته باشد:
 
 سرعت‌های آرام و سریع در runtime از زمان متوسط مشتق می‌شوند (`1.25` و `0.80`).
 لازم نیست برای هر سرعت سه مجموعه timing جداگانه ذخیره شود.
+
+## تنظیم مقصدهای محبوب هوم
+
+لیست بدون query در `GET /api/v1/destinations/` همان لیست مقصدهای محبوب هوم است و
+حداکثر چهار رکورد برمی‌گرداند. جست‌وجوی endpoint جداگانه همچنان مقصدهای فعال
+غیرمحبوب را هم پیدا می‌کند. برای تغییر لیست روی local یا سرور، slugها را به
+ترتیب نمایش به command بدهید:
+
+```bash
+cd apps/api
+uv run python manage.py set_popular_destinations \
+  touchal damavand daryasar alamkuh
+```
+
+یا با comma-separated:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py set_popular_destinations \
+  --slugs touchal,damavand,daryasar,alamkuh
+```
+
+این command به‌صورت اتمیک همهٔ مقصدهای دیگر را از لیست محبوب خارج می‌کند، ترتیب
+را از ۱ تا ۴ می‌نویسد و اگر slug ناشناخته یا بیشتر از چهار مورد داده شود هیچ
+تغییری نگه نمی‌دارد. برای خالی‌کردن لیست از `--clear` استفاده کنید.
 
 ## GPX و manifest
 

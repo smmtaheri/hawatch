@@ -20,7 +20,9 @@ class Destination(models.Model):
     image_alt = models.CharField(max_length=255)
     popular_order = models.PositiveSmallIntegerField(default=0)
     climate = models.CharField(max_length=32)
-    is_popular = models.BooleanField(default=True)
+    # New destinations stay off the home-page popular list until an admin
+    # explicitly assigns them through ``set_popular_destinations``.
+    is_popular = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     aliases = models.JSONField(default=list, blank=True)
     data_mode = models.CharField(max_length=16, default="demo")

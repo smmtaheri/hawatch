@@ -35,7 +35,10 @@ Interfaceهای آماده‌شده / استفاده‌شده:
 - آخرین دادهٔ سالم برای نقاط موفق با bulk upsert داخل transaction جایگزین می‌شود؛ نقاط ناموفق batch قبلی را نگه می‌دارند
 - هیچ delete قبل از موفقیت persistence انجام نمی‌شود؛ شکست provider یا خطای DB، آخرین دادهٔ قابل‌استفاده را حفظ می‌کند
 - برای هر `WeatherPoint + forecast_at + seed_version` فقط یک رکورد live نگه داشته می‌شود
-- default پنجرهٔ provider برای قرارداد فعلی UI برابر `forecast_days=7` و `past_days=1` است؛ حالت compact پنج‌روزه (`5/0`) فقط با تصمیم مستقل برای تغییر UI فعال می‌شود
+- default پنجرهٔ provider برابر `forecast_days=7` و `past_days=0` است: امروز تا
+  شش روز بعد درخواست می‌شود. رکوردهای روز گذشته که از ingest قبلی در DB هستند
+  نگه داشته می‌شوند اما دوباره از provider درخواست نمی‌شوند؛ رکوردهای live قدیمی‌تر
+  از روز گذشته حذف می‌شوند.
 - پاسخ provider فقط وقتی به catalog point متصل می‌شود که `latitude` و `longitude` معتبر داشته باشد و مرکز grid حداکثر ۵ کیلومتر با مختصات درخواستی فاصله داشته باشد؛ پاسخ دور یا ناقص کل batch را رد می‌کند
 - برای pointهایی که ارتفاع catalog دارند، `cell_selection=land` همراه با elevation صریح استفاده می‌شود؛ برای pointهای بدون ارتفاع catalog، `cell_selection=nearest` استفاده می‌شود تا انتخاب land cell دور، weather نقطه را جابه‌جا نکند
 - تنظیم optional proxy (`WEATHER_PROXY_URL`) هنوز استفاده‌نشده است

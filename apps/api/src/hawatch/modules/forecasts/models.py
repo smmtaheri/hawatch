@@ -85,7 +85,7 @@ class ForecastSnapshot(models.Model):
     models_param = models.CharField(max_length=32, default="best_match")
     cell_selection = models.CharField(max_length=16, default="land")
     forecast_days = models.PositiveSmallIntegerField(default=7)
-    past_days = models.PositiveSmallIntegerField(default=1)
+    past_days = models.PositiveSmallIntegerField(default=0)
     batch_size = models.PositiveSmallIntegerField(default=100)
     point_count = models.PositiveIntegerField(default=0)
     requested_point_count = models.PositiveIntegerField(default=0)

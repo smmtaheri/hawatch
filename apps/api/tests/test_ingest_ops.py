@@ -12,6 +12,7 @@ from django.db import connection
 from django.db.migrations.executor import MigrationExecutor
 from django.utils import timezone as dj_timezone
 
+from hawatch.common.time import now_tehran
 from hawatch.integrations.weather.ingest import (
     IngestLockError,
     cleanup_old_snapshots,
@@ -54,6 +55,17 @@ def _ok_batch(point_ids: list[str], *, hours: int = 6) -> dict:
         "point_ids": point_ids,
         "status_code": 200,
         "payload": [_sample_hourly(hours=hours) for _ in point_ids],
+        "elevation_requested": True,
+    }
+
+
+def _ok_batch_at(point_ids: list[str], times: list[str]) -> dict:
+    payload = _sample_hourly(hours=len(times))
+    payload["hourly"]["time"] = times
+    return {
+        "point_ids": point_ids,
+        "status_code": 200,
+        "payload": [payload for _ in point_ids],
         "elevation_requested": True,
     }
 
@@ -336,6 +348,35 @@ def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_err
     assert set(
         ForecastRecord.objects.filter(weather_point=summit, data_mode="live").values_list("temperature_c", flat=True)
     ) == {12}
+
+
+@pytest.mark.django_db
+def test_ingest_keeps_previous_local_day_without_refetching_it():
+    seed_tochal_catalog()
+    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    today = now_tehran().date()
+    times = [
+        f"{(today - timedelta(days=2)).isoformat()}T12:00",
+        f"{(today - timedelta(days=1)).isoformat()}T12:00",
+        f"{today.isoformat()}T12:00",
+    ]
+    persist_ingest(weather_points=[summit], batch_results=[_ok_batch_at(["tochal_summit"], times)])
+
+    current_window = [
+        f"{today.isoformat()}T12:00",
+        f"{(today + timedelta(days=1)).isoformat()}T12:00",
+    ]
+    persist_ingest(
+        weather_points=[summit],
+        batch_results=[_ok_batch_at(["tochal_summit"], current_window)],
+    )
+
+    rows = list(
+        ForecastRecord.objects.filter(weather_point=summit, data_mode="live")
+        .order_by("forecast_at")
+        .values_list("forecast_at", flat=True)
+    )
+    assert [now_tehran(value).date() for value in rows] == [today - timedelta(days=1), today, today + timedelta(days=1)]
 
 
 def test_retry_transport_status_zero_and_limits():

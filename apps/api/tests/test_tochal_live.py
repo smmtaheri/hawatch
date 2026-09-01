@@ -186,6 +186,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     assert Destination.objects.get(slug="touchal").elevation_m == 3955
 
 
+@override_settings(OPEN_METEO_PAST_DAYS=0)
 def test_open_meteo_batching_and_elevation_partition():
     provider = OpenMeteoProvider(batch_size=2)
     points = [
@@ -202,6 +203,7 @@ def test_open_meteo_batching_and_elevation_partition():
     url_with = provider.build_url(with_e[:2], include_elevation=True)
     assert "elevation=" in url_with
     assert "forecast_days=7" in url_with
+    assert "past_days=0" in url_with
     url_without = provider.build_url(without_e, include_elevation=False)
     assert "elevation=" not in url_without
     assert "cell_selection=land" in url_without
@@ -399,7 +401,7 @@ def test_live_mode_never_returns_demo_records(api_client):
 
 
 @pytest.mark.django_db
-@override_settings(DEMO_DATA_ENABLED=False)
+@override_settings(DEMO_DATA_ENABLED=False, OPEN_METEO_PAST_DAYS=0)
 def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     seed_tochal_catalog()
     summit = WeatherPoint.objects.get(slug="tochal_summit")
@@ -414,7 +416,10 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     monkeypatch.setattr(OpenMeteoProvider, "fetch_all", boom)
     monkeypatch.setattr(OpenMeteoProvider, "fetch_batch", boom)
 
-    response = api_client.get("/api/v1/destinations/touchal/forecast/")
+    response = api_client.get(
+        "/api/v1/destinations/touchal/forecast/",
+        {"date": "2026-08-27", "period": "morning"},
+    )
     assert response.status_code == 200
     body = response.json()
     assert body["meta"]["provider"] == "open-meteo"
