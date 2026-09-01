@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { DestinationCard } from "../src/components/DestinationCard";
+import { DestinationIcon } from "../src/components/DestinationIcon";
 import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
 import { RouteSiblingNavigation } from "../src/components/RouteSiblingNavigation";
@@ -90,6 +91,17 @@ afterEach(() => {
 });
 
 describe("mobile route and forecast controls", () => {
+  it("renders a waterfall icon from the database category key", () => {
+    const { container } = render(<DestinationIcon categoryKey="waterfall" />);
+    expect(container.querySelector(".destination-icon.waterfall")).toBeInTheDocument();
+  });
+
+  it("does not mislabel an unsupported category as a mountain", () => {
+    const { container } = render(<DestinationIcon categoryKey="unknown-place-type" />);
+    expect(container.querySelector(".destination-icon.nature")).toBeInTheDocument();
+    expect(container.querySelector(".destination-icon.peak")).not.toBeInTheDocument();
+  });
+
   it("shows route elevation and distance without repeating the trail origin", () => {
     render(
       <MemoryRouter>

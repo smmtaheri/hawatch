@@ -39,11 +39,22 @@ export function DestinationIcon({ categoryKey }: { categoryKey: string }) {
       </svg>
     );
   }
+  if (categoryKey === "waterfall") {
+    return (
+      <svg viewBox="0 0 48 48" className="destination-icon waterfall" aria-hidden="true">
+        <path d="M7 12c5 6 10 6 15 0s10-6 19 0" />
+        <path d="M12 17v14c0 5 3 8 7 8s7-3 7-8V17M31 18v9c0 4 2 6 5 6s5-2 5-6v-5" />
+        <path d="M5 40h38" />
+      </svg>
+    );
+  }
+  // Unknown keys must not silently claim that a place is a mountain. The
+  // database remains free to use new semantic keys, while an unsupported key
+  // gets a neutral nature mark until its visual is intentionally introduced.
   return (
-    <svg viewBox="0 0 48 48" className="destination-icon peak" aria-hidden="true">
-      <path d="M5 36 19 16l7 10 4-6 13 16" />
-      <path d="m13 36 6-9 5 6 5-7 9 10" />
-      <path d="M19 16l3 4" />
+    <svg viewBox="0 0 48 48" className="destination-icon nature" aria-hidden="true">
+      <circle cx="34" cy="12" r="5" />
+      <path d="M5 36c7-8 12-8 18-2 5 5 10 5 20-2M5 41h38" />
     </svg>
   );
 }

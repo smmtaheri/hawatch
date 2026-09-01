@@ -218,6 +218,12 @@ def _validate_document_shape(data: dict) -> None:
             raise ValueError(f"Catalog is missing required key: {key}")
     if not data["weather_points"]:
         raise ValueError("Catalog must contain at least one weather point")
+    destination = data["destination"]
+    if not isinstance(destination, dict):
+        raise ValueError("destination must be an object")
+    for key in ("slug", "tile_name", "name", "short_category", "category", "category_key", "region", "climate"):
+        if not str(destination.get(key) or "").strip():
+            raise ValueError(f"destination.{key} is required")
     point_slugs = set(data["weather_points"])
     destination_slug = _destination_point_slug(data)
     if destination_slug not in point_slugs:

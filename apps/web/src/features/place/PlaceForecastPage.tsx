@@ -15,6 +15,7 @@ import { SpecialistMetrics } from "../../components/SpecialistMetrics";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
+import { scrollToDetailHero } from "../../lib/detailEntryScroll";
 import type { PeriodId } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
@@ -34,15 +35,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   } = usePlaceForecast({ kind, slug });
   usePageTitle(data?.subject.name);
 
-  // Detail pages open at the top of the global header so the logo, theme and
-  // back controls are all visible without re-scrolling on day/period changes.
+  // Detail pages open at their identity hero. The public site header is
+  // already at document top, so targeting it makes deep-link navigation look
+  // like no scroll happened at all.
   useEffect(() => {
     if (!data?.subject.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".destination-page .site-header")?.scrollIntoView?.({
-        block: "start",
-        behavior: "auto",
-      });
+      scrollToDetailHero(".destination-page .destination-hero");
     });
     return () => window.cancelAnimationFrame(frame);
   }, [data?.subject.slug]);

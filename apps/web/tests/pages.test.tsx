@@ -1,4 +1,4 @@
-import { render, screen, cleanup, within } from "@testing-library/react";
+import { render, screen, cleanup, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -263,6 +263,24 @@ describe("Hawatch pages", () => {
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
     await user.click(screen.getAllByText("دربند تا توچال")[0]);
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
+  });
+
+  it("opens destination and route detail views at their identity hero", async () => {
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+      configurable: true,
+      value: scrollIntoView,
+    });
+
+    const { unmount } = renderAt("/destination/touchal");
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
+    unmount();
+
+    scrollIntoView.mockClear();
+    renderAt("/routes/touchal-darband");
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
   });
 
   it("renders route sibling navigation and a single period control", async () => {

@@ -57,7 +57,7 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
     if not isinstance(destination, dict):
         errors.append("destination must be an object")
     else:
-        for key in ("slug", "tile_name", "name", "image", "image_alt", "climate"):
+        for key in ("slug", "tile_name", "name", "short_category", "category", "category_key", "region", "image", "image_alt", "climate"):
             if not destination.get(key):
                 errors.append(f"destination.{key} is required")
         try:

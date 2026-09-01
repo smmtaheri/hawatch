@@ -27,6 +27,7 @@ import {
 import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } from "../../lib/periodState";
 import { usePageTitle } from "../../lib/pageTitle";
 import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
+import { scrollToDetailHero } from "../../lib/detailEntryScroll";
 import type { PeriodId, RouteForecast, RoutePointView } from "../../types";
 
 type RouteRequestInputs = {
@@ -194,15 +195,11 @@ export function RoutePage() {
   );
 
   // Only route identity triggers this. Planner changes must keep the visitor's
-  // reading position intact while a fresh route opens at the top of the global
-  // header, with the logo/theme/back controls visible.
+  // reading position intact while a fresh route opens at its identity hero.
   useEffect(() => {
     if (!data?.route.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      document.querySelector<HTMLElement>(".route-page .site-header")?.scrollIntoView?.({
-        block: "start",
-        behavior: "auto",
-      });
+      scrollToDetailHero(".route-page .route-hero");
     });
     return () => window.cancelAnimationFrame(frame);
   }, [data?.route.slug]);
