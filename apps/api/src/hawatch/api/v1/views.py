@@ -126,12 +126,21 @@ def destinations_list(request):
     query = request.query_params.get("query", "")
     items = list_destinations(query=query)
     today = now_tehran().date()
+    catalog_counts = {
+        "destinations": Destination.objects.filter(is_active=True).count(),
+        "routes": Route.objects.filter(is_active=True, destination__is_active=True).count(),
+        "points": publicly_visible_weather_points().count(),
+    }
     return Response(
         {
             "results": [serialize_destination(item) for item in items],
             "empty": not items,
             "query": query,
-            "meta": meta_base(selected_date=today, period="morning"),
+            "meta": meta_base(
+                selected_date=today,
+                period="morning",
+                extra={"catalog_counts": catalog_counts},
+            ),
         }
     )
 

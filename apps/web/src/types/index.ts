@@ -2,6 +2,12 @@ export type Freshness = "ready" | "stale" | "partial";
 export type Severity = "normal" | "change" | "critical";
 export type PeriodId = "morning" | "afternoon" | "night";
 
+export interface CatalogCounts {
+  destinations: number;
+  routes: number;
+  points: number;
+}
+
 export interface WindAlert {
   code: "windy" | "gale";
   label: string;
@@ -27,6 +33,7 @@ export interface ApiMeta {
   selected_speed?: string;
   timing_pending?: boolean;
   timing_status?: "curated" | "estimated" | "pending" | string;
+  catalog_counts?: CatalogCounts;
 }
 
 export interface DestinationSummary {

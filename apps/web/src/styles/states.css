@@ -4,6 +4,67 @@
   margin: 16px 0;
 }
 
+/* Public catalog summary on the home hero. Counts come from the active
+ * database catalog, not from the four curated home tiles. */
+.home-catalog-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.home-catalog-stat {
+  min-width: 0;
+  padding: 11px 12px 10px;
+  border: 1px solid rgb(190 225 221 / 28%);
+  border-radius: 14px;
+  background: rgb(7 32 43 / 45%);
+  text-align: center;
+  backdrop-filter: blur(7px);
+}
+
+.home-catalog-stat strong,
+.home-catalog-stat span {
+  display: block;
+}
+
+.home-catalog-stat strong {
+  color: #8ce1dc;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.home-catalog-stat span {
+  margin-top: 2px;
+  color: #e2f1ef;
+  font-size: 11px;
+}
+
+html[data-theme="light"] .home-catalog-stat {
+  border-color: rgb(190 225 221 / 55%);
+  background: rgb(7 32 43 / 52%);
+}
+
+@media (width <= 720px) {
+  .home-catalog-stats {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .home-catalog-stat {
+    padding: 8px 5px;
+    border-radius: 11px;
+  }
+
+  .home-catalog-stat strong {
+    font-size: 18px;
+  }
+
+  .home-catalog-stat span {
+    font-size: 9px;
+  }
+}
+
 .hawatch-state.loading {
   min-height: 140px;
   background: linear-gradient(90deg, #ffffff14, #ffffff2e, #ffffff14);

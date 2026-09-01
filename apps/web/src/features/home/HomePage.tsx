@@ -9,7 +9,7 @@ import { SearchCombobox, type SearchComboboxHandle } from "../../components/Sear
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { DestinationIcon } from "../../components/DestinationIcon";
 import { usePageTitle } from "../../lib/pageTitle";
-import type { DestinationSummary, SearchSuggestion } from "../../types";
+import type { CatalogCounts, DestinationSummary, SearchSuggestion } from "../../types";
 
 function tileWords(name: string) {
   return name.split(" ").filter(Boolean);
@@ -22,6 +22,7 @@ export function HomePage() {
   const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
   const [searchError, setSearchError] = useState(false);
   const [popularDestinations, setPopularDestinations] = useState<DestinationSummary[]>([]);
+  const [catalogCounts, setCatalogCounts] = useState<CatalogCounts | null>(null);
   const [freshness, setFreshness] = useState("ready");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
   const searchRef = useRef<SearchComboboxHandle>(null);
@@ -32,6 +33,7 @@ export function HomePage() {
       .destinations()
       .then((payload) => {
         setPopularDestinations(payload.results);
+        setCatalogCounts(payload.meta.catalog_counts ?? null);
         setFreshness(payload.meta.freshness);
         setStatus("ready");
       })
@@ -151,6 +153,22 @@ export function HomePage() {
                     </Link>
                   ))}
                 </div>
+              ) : null}
+              {!showingSearch && catalogCounts ? (
+                <section className="home-catalog-stats" aria-label="آمار کاتالوگ هواچ">
+                  <div className="home-catalog-stat">
+                    <strong>{catalogCounts.destinations.toLocaleString("fa-IR")}</strong>
+                    <span>مقصد فعال</span>
+                  </div>
+                  <div className="home-catalog-stat">
+                    <strong>{catalogCounts.routes.toLocaleString("fa-IR")}</strong>
+                    <span>مسیر ثبت‌شده</span>
+                  </div>
+                  <div className="home-catalog-stat">
+                    <strong>{catalogCounts.points.toLocaleString("fa-IR")}</strong>
+                    <span>نقطهٔ هواشناسی</span>
+                  </div>
+                </section>
               ) : null}
               {showingSearch && !searchError && status === "ready" && searchResults.length ? (
                 <p className="muted">برای دیدن پیش‌بینی، روی نتیجهٔ موردنظرت بزن.</p>
