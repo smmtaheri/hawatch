@@ -1,0 +1,222 @@
+{
+  "catalog_version": "hawatch-azadkouh-catalog-v1",
+  "destination_weather_point": "azadkouh_summit",
+  "destination": {
+    "slug": "azadkouh",
+    "tile_name": "آزادکوه",
+    "name": "قلهٔ آزادکوه",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی",
+    "elevation_m": 4366,
+    "latitude": 36.169295,
+    "longitude": 51.503096,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی آزادکوه",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "weather_points": {
+    "azadkouh_kelakbala_start": {
+      "name": "کلاک علیا",
+      "latitude": 36.192713,
+      "longitude": 51.550886,
+      "elevation_m": 2645,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2645 m; GPX waypoint cross-check"
+    },
+    "azadkouh_kelakbala_camp1": {
+      "name": "کمپ اول کلاک",
+      "latitude": 36.175954,
+      "longitude": 51.539639,
+      "elevation_m": 2946,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2946 m; GPX waypoint cross-check"
+    },
+    "azadkouh_kelakbala_camp2": {
+      "name": "چشمه و کمپ دوم",
+      "latitude": 36.166324,
+      "longitude": 51.527183,
+      "elevation_m": 3356,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3356 m; GPX waypoint cross-check"
+    },
+    "azadkouh_kelakbala_camp3": {
+      "name": "کمپ سوم",
+      "latitude": 36.164445,
+      "longitude": 51.524223,
+      "elevation_m": 3414,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3414 m; GPX waypoint cross-check"
+    },
+    "azadkouh_choren_pass": {
+      "name": "گردنهٔ چورن",
+      "latitude": 36.161636,
+      "longitude": 51.509243,
+      "elevation_m": 3811,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3811 m; three-route GPX cross-check"
+    },
+    "azadkouh_final_slope": {
+      "name": "شیب نهایی قله",
+      "latitude": 36.166816,
+      "longitude": 51.503518,
+      "elevation_m": 4261,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 4261 m; GPX waypoint reference"
+    },
+    "azadkouh_summit": {
+      "name": "قلهٔ آزادکوه",
+      "latitude": 36.169295,
+      "longitude": 51.503096,
+      "elevation_m": 4366,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "Peak/GPX cross-check: ~4366 m; Open-Meteo GLO-90 DEM: 4261 m used only as provider-resolution evidence"
+    },
+    "azadkouh_varangerud_start": {
+      "name": "وارنگه‌رود",
+      "latitude": 36.128863,
+      "longitude": 51.370756,
+      "elevation_m": 2482,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2482 m; GPX track start"
+    },
+    "azadkouh_sotak_rest": {
+      "name": "محل استراحت مسیر",
+      "latitude": 36.136071,
+      "longitude": 51.406045,
+      "elevation_m": 2667,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2667 m; GPX waypoint reference"
+    },
+    "azadkouh_shirkamar_intersection": {
+      "name": "اتصال شیرکمر",
+      "latitude": 36.147164,
+      "longitude": 51.437037,
+      "elevation_m": 3512,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3512 m; GPX waypoint reference"
+    },
+    "azadkouh_kamankouh_lake": {
+      "name": "دریاچهٔ کمان‌کوه",
+      "latitude": 36.136197,
+      "longitude": 51.482820,
+      "elevation_m": 3716,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3716 m; GPX waypoint reference"
+    }
+  },
+  "routes": {
+    "kelakbala_to_azadkouh": {
+      "slug": "azadkouh-kelakbala",
+      "title": "کلاک‌بالا تا آزادکوه",
+      "subtitle": "از کلاک علیا و گردنهٔ چورن تا قلهٔ آزادکوه",
+      "trail_label": "مسیر کلاک‌بالا",
+      "origin": "کلاک علیا",
+      "destination_label": "قلهٔ آزادکوه",
+      "region": "البرز مرکزی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "azadkouh_kelakbala_start",
+        "azadkouh_kelakbala_camp1",
+        "azadkouh_kelakbala_camp2",
+        "azadkouh_kelakbala_camp3",
+        "azadkouh_choren_pass",
+        "azadkouh_final_slope",
+        "azadkouh_summit"
+      ],
+      "distance_km": 7.8,
+      "ascent_m": 1680,
+      "one_way_minutes": 390,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "azadkouh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 50,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
+          "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-azdkhwh-z-msyr-rwsty-khlkh-bl-1404-05-10-224622876",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841",
+          "https://decovel.com/page/azad-kuh-peak"
+        ],
+        "evidence_tracks": [
+          "tracks/azadkouh/azadkouh-ne-kelakbala-to-choren-summit-2023.gpx",
+          "tracks/azadkouh/azadkouh-ne-kelakbala-to-choren-summit-2024.gpx",
+          "tracks/azadkouh/azadkouh-ne-kelakbala-to-choren-summit-2025.gpx"
+        ],
+        "notes": [
+          "Three independent GPX files agree on the non-technical Kelak Bala approach and Choren/summit area.",
+          "GPX device elevation is reference evidence; provider requests use provisional nearest-cell resolution.",
+          "The source page for the 2024 download is mislabeled in its title; its GPX content is Kelak Bala and was not used as Nahiyeh evidence."
+        ],
+        "cumulative_minutes": {
+          "azadkouh_kelakbala_start": 0,
+          "azadkouh_kelakbala_camp1": 95,
+          "azadkouh_kelakbala_camp2": 190,
+          "azadkouh_kelakbala_camp3": 215,
+          "azadkouh_choren_pass": 305,
+          "azadkouh_final_slope": 360,
+          "azadkouh_summit": 390
+        }
+      }
+    },
+    "varangerud_to_azadkouh": {
+      "slug": "azadkouh-varangerud",
+      "title": "وارنگه‌رود تا آزادکوه",
+      "subtitle": "از وارنگه‌رود و کمان‌کوه تا گردنهٔ چورن و قله",
+      "trail_label": "مسیر وارنگه‌رود",
+      "origin": "وارنگه‌رود",
+      "destination_label": "قلهٔ آزادکوه",
+      "region": "البرز مرکزی",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "azadkouh_varangerud_start",
+        "azadkouh_sotak_rest",
+        "azadkouh_shirkamar_intersection",
+        "azadkouh_kamankouh_lake",
+        "azadkouh_choren_pass",
+        "azadkouh_summit"
+      ],
+      "distance_km": 20.2,
+      "ascent_m": 2150,
+      "one_way_minutes": 720,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "azadkouh-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",
+          "https://decovel.com/page/azad-kuh-peak",
+          "https://mojekooh.com/%D8%A2%D8%B2%D8%A7%D8%AF-%DA%A9%D9%88%D9%87/"
+        ],
+        "evidence_tracks": [
+          "tracks/azadkouh/azadkouh-sw-varangerud-to-choren-summit.gpx"
+        ],
+        "notes": [
+          "The GPX reaches the summit area and supports route geometry and waypoint placement.",
+          "Recorded timestamps are unavailable/unsuitable for moving-time; the long route total is an editorial estimate with high uncertainty.",
+          "This public route is the non-technical Varangeh Rud approach; technical ridges are out of scope."
+        ],
+        "cumulative_minutes": {
+          "azadkouh_varangerud_start": 0,
+          "azadkouh_sotak_rest": 150,
+          "azadkouh_shirkamar_intersection": 270,
+          "azadkouh_kamankouh_lake": 450,
+          "azadkouh_choren_pass": 630,
+          "azadkouh_summit": 720
+        }
+      }
+    }
+  }
+}
