@@ -272,6 +272,13 @@ def validate_catalog(
 
 def _print_report(report: dict) -> None:
     summary = report.get("summary", {})
+    summary = {
+        "point_count": summary.get("point_count", len(report.get("points", []))),
+        "provider_checked": summary.get("provider_checked", len(report.get("points", []))),
+        "error_count": summary.get("error_count", len(report.get("errors", []))),
+        "warning_count": summary.get("warning_count", len(report.get("warnings", []))),
+        "pass": summary.get("pass", not report.get("errors")),
+    }
     print(
         "catalog={catalog_version} points={point_count} provider_checked={provider_checked} "
         "errors={error_count} warnings={warning_count} pass={pass}".format(
