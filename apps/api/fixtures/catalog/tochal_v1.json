@@ -68,9 +68,10 @@
       "name": "پارکینگ ولنجک",
       "latitude": 35.814532,
       "longitude": 51.400885,
-      "elevation_m": null,
+      "elevation_m": 1852,
       "status": "provisional",
-      "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). Device GPX elevation is reference-only; catalog elevation awaits DEM validation and must not be promoted from GPX <ele>."
+      "elevation_source": "Wikiloc waypoint 1852 m; independent mountain report ~1845 m; Open-Meteo GLO-90 DEM at catalog coordinate 1869 m; provisional catalog value 1852 m",
+      "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). GPX elevation is reference-only; catalog value is based on independent waypoint/report evidence and DEM cross-check."
     },
     "station_1": {
       "name": "ایستگاه ۱",

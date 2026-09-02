@@ -119,7 +119,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
 نکات ساختاری:
 
 - مبدأ کلکچال/پیازچال: `jamshidieh_park` در پارکینگ شرقی GPX (`35.824629`, `51.465985`، DEM `1826` m، provisional). `piyazchal_pass` ≈135 m و `lezoon_east` ≈217 m از track؛ مختصاتشان auto-update نشده‌اند.
-- مبدأ ولنجک: `velenjak_parking` (provisional؛ ارتفاع null تا DEM)؛ `velenjak` عمومی حذف نمی‌شود
+- مبدأ ولنجک: `velenjak_parking` (provisional؛ کاتالوگ ۱۸۵۲ متر، با waypoint مستقل حدود ۱۸۴۵–۱۸۵۲ متر و DEM برابر ۱۸۶۹ متر در مختصات کاتالوگ)؛ `velenjak` عمومی حذف نمی‌شود
 - `tochal_hotel` روی زنجیرهٔ اجباری ولنجک نیست؛ روی شهرستانک هست
 - گردنهٔ شهرستانک (`shahrestanak_pass`) از بازارک (`bazarek_pass`) متمایز است؛ `naseri_junction` / `bazarek_pass` / `shahneshin_pass` فقط برای variantهای آینده در catalog می‌مانند
 

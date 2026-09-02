@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v3",
+  "catalog_version": "hawatch-azadkouh-catalog-v4",
   "destination_weather_point": "azadkouh_summit",
   "destination": {
     "slug": "azadkouh",
@@ -29,7 +29,7 @@
       "elevation_source": "Open-Meteo GLO-90 DEM: 2645 m; GPX waypoint cross-check"
     },
     "azadkouh_kelakbala_camp1": {
-      "name": "کمپ اول کلاک",
+      "name": "کمپ اول مسیر کلاک",
       "latitude": 36.175954,
       "longitude": 51.539639,
       "elevation_m": 2946,
@@ -37,7 +37,7 @@
       "elevation_source": "Open-Meteo GLO-90 DEM: 2946 m; GPX waypoint cross-check"
     },
     "azadkouh_kelakbala_camp2": {
-      "name": "چشمه و کمپ دوم",
+      "name": "چشمهٔ کمپ دوم کلاک",
       "latitude": 36.166324,
       "longitude": 51.527183,
       "elevation_m": 3356,
@@ -45,7 +45,7 @@
       "elevation_source": "Open-Meteo GLO-90 DEM: 3356 m; GPX waypoint cross-check"
     },
     "azadkouh_kelakbala_camp3": {
-      "name": "کمپ سوم",
+      "name": "کمپ سوم کلاک",
       "latitude": 36.164445,
       "longitude": 51.524223,
       "elevation_m": 3414,
@@ -59,14 +59,6 @@
       "elevation_m": 3811,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3811 m; four-route GPX cross-check"
-    },
-    "azadkouh_final_slope": {
-      "name": "شیب نهایی قله",
-      "latitude": 36.166816,
-      "longitude": 51.503518,
-      "elevation_m": 4261,
-      "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 4261 m; GPX waypoint reference"
     },
     "azadkouh_summit": {
       "name": "قلهٔ آزادکوه",
@@ -93,14 +85,6 @@
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2612 m; 2022 GPX waypoint cross-check (2615 m)"
     },
-    "azadkouh_nesen_rest": {
-      "name": "استراحت اول مسیر نسن",
-      "latitude": 36.186976,
-      "longitude": 51.478724,
-      "elevation_m": 2931,
-      "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2931 m; 2022 GPX waypoint cross-check (2915 m)"
-    },
     "azadkouh_varangerud_start": {
       "name": "وارنگه‌رود",
       "latitude": 36.128863,
@@ -109,16 +93,8 @@
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2482 m; GPX track start"
     },
-    "azadkouh_sotak_rest": {
-      "name": "محل استراحت مسیر",
-      "latitude": 36.136071,
-      "longitude": 51.406045,
-      "elevation_m": 2667,
-      "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2667 m; GPX waypoint reference"
-    },
     "azadkouh_shirkamar_intersection": {
-      "name": "اتصال شیرکمر",
+      "name": "محل اتصال شیرکمر به مسیر آزادکوه",
       "latitude": 36.147164,
       "longitude": 51.437037,
       "elevation_m": 3512,
@@ -151,7 +127,6 @@
         "azadkouh_kelakbala_camp2",
         "azadkouh_kelakbala_camp3",
         "azadkouh_choren_pass",
-        "azadkouh_final_slope",
         "azadkouh_summit"
       ],
       "distance_km": 7.8,
@@ -161,7 +136,7 @@
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-geometry+web-reports-v1",
-        "version": "azadkouh-timing-v1",
+        "version": "azadkouh-timing-v2",
         "confidence": "medium",
         "uncertainty_minutes": 50,
         "source_urls": [
@@ -186,7 +161,6 @@
           "azadkouh_kelakbala_camp2": 190,
           "azadkouh_kelakbala_camp3": 215,
           "azadkouh_choren_pass": 305,
-          "azadkouh_final_slope": 360,
           "azadkouh_summit": 390
         }
       }
@@ -203,7 +177,6 @@
       "sort_order": 2,
       "points": [
         "azadkouh_varangerud_start",
-        "azadkouh_sotak_rest",
         "azadkouh_shirkamar_intersection",
         "azadkouh_kamankouh_lake",
         "azadkouh_choren_pass",
@@ -216,7 +189,7 @@
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-geometry+web-reports-v1",
-        "version": "azadkouh-timing-v1",
+        "version": "azadkouh-timing-v2",
         "confidence": "low",
         "uncertainty_minutes": 120,
         "source_urls": [
@@ -234,7 +207,6 @@
         ],
         "cumulative_minutes": {
           "azadkouh_varangerud_start": 0,
-          "azadkouh_sotak_rest": 150,
           "azadkouh_shirkamar_intersection": 270,
           "azadkouh_kamankouh_lake": 450,
           "azadkouh_choren_pass": 630,
@@ -254,9 +226,7 @@
       "sort_order": 3,
       "points": [
         "azadkouh_nesen_start",
-        "azadkouh_nesen_rest",
         "azadkouh_choren_pass",
-        "azadkouh_final_slope",
         "azadkouh_summit"
       ],
       "distance_km": 14.5,
@@ -266,7 +236,7 @@
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-geometry+recorded-track+web-reports-v1",
-        "version": "azadkouh-timing-v2",
+        "version": "azadkouh-timing-v3",
         "confidence": "medium",
         "uncertainty_minutes": 90,
         "source_urls": [
@@ -286,9 +256,7 @@
         ],
         "cumulative_minutes": {
           "azadkouh_nesen_start": 0,
-          "azadkouh_nesen_rest": 120,
           "azadkouh_choren_pass": 330,
-          "azadkouh_final_slope": 415,
           "azadkouh_summit": 440
         }
       }
@@ -306,7 +274,6 @@
       "points": [
         "azadkouh_nahiyeh_start",
         "azadkouh_choren_pass",
-        "azadkouh_final_slope",
         "azadkouh_summit"
       ],
       "distance_km": 14.5,
@@ -316,7 +283,7 @@
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-geometry+recorded-track-v1",
-        "version": "azadkouh-timing-v3",
+        "version": "azadkouh-timing-v4",
         "confidence": "medium",
         "uncertainty_minutes": 90,
         "source_urls": [
@@ -338,7 +305,6 @@
         "cumulative_minutes": {
           "azadkouh_nahiyeh_start": 0,
           "azadkouh_choren_pass": 300,
-          "azadkouh_final_slope": 365,
           "azadkouh_summit": 385
         }
       }
