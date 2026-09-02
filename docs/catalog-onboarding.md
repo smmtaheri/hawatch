@@ -125,18 +125,43 @@ mkdir -p tracks/<destination-slug>
 `tracks/<destination-slug>/manifest.json` ثبت کنید. اگر یک فایل reverse یا فقط
 cross-check است، آن را در نام و manifest مشخص کنید.
 
+رینیم بخشی از workflow اجباری است، نه کار اختیاری بعد از import. بعد از دانلود،
+هر فایل را با نامی که مقصد، جبهه/مبدأ، مقصد مسیر و سال را نشان دهد به همان فولدر
+منتقل کنید؛ سپس نام جدید را عیناً در manifest بنویسید. نمونهٔ صریح برای هزار:
+
+```bash
+cd /path/to/hawatch
+mv tracks/hazar/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn.gpx \
+  tracks/hazar/hazar-rayen-waterfall-parking-to-summit-2023-roundtrip.gpx
+mv tracks/hazar/swd-bh-qlh-hzr-z-msyr-abshr-ryn.gpx \
+  tracks/hazar/hazar-rayen-waterfall-parking-to-summit-2019.gpx
+```
+
+قبل از ادامه، نام‌ها و local-only بودن فولدر را کنترل کنید:
+
+```bash
+find tracks/<destination-slug> -maxdepth 1 -type f -printf '%f\n' | sort
+git check-ignore -v tracks/<destination-slug>/*.gpx tracks/<destination-slug>/manifest.json
+```
+
+اگر `git check-ignore` برای همهٔ فایل‌ها خروجی نداد، قبل از ساخت catalog باید
+`.gitignore` را اصلاح کنید؛ GPX و manifest نباید هیچ‌وقت وارد commit، image یا
+سرور شوند.
+
 کل `tracks/` از ابتدا تا انتها local-only است: نه commit، نه Docker image، نه
 کپی روی سرور و نه سرو از API. manifest هم فقط برای تحلیل local است و runtime آن
 را نمی‌خواند. وضعیت license را تا زمان تأیید `unverified` نگه دارید.
 
 ترتیب کار با ترک:
 
-1. منبع و نوع فعالیت هر ترک را بررسی و ترک‌های دوچرخه/خودرو/فنی/پراکنده را حذف
+1. فایل‌های دانلودشده را با الگوی نام‌گذاری بالا rename کنید و نام نهایی را در
+   manifest ثبت کنید.
+2. منبع و نوع فعالیت هر ترک را بررسی و ترک‌های دوچرخه/خودرو/فنی/پراکنده را حذف
    کنید؛ مسیر انتخابی را با گزارش مستقل تطبیق دهید.
-2. نقاط named واقعی را از waypoint و geometry استخراج کنید؛ `Waypoint`،
+3. نقاط named واقعی را از waypoint و geometry استخراج کنید؛ `Waypoint`،
    `Park`، `Rest area` و «شیب نهایی» بدون landmark واقعی وارد catalog نشوند.
-3. manifest را بسازید، `timestamp_quality` و `license_status` را صریح ثبت کنید.
-4. analyzer را فقط local و read-only اجرا کنید و خروجی آن را با منبع مسیر مقایسه
+4. manifest را بسازید، `timestamp_quality` و `license_status` را صریح ثبت کنید.
+5. analyzer را فقط local و read-only اجرا کنید و خروجی آن را با منبع مسیر مقایسه
    کنید؛ analyzer خودش catalog را تغییر نمی‌دهد:
 
 ```bash
@@ -146,7 +171,7 @@ python3 scripts/analyze_route_tracks.py \
   > /tmp/<destination-slug>_tracks_report.json
 ```
 
-5. فقط پس از قبولی این gate، `distance_km`، `ascent_m`، نقاط میانی و cumulative
+6. فقط پس از قبولی این gate، `distance_km`، `ascent_m`، نقاط میانی و cumulative
    timing را وارد catalog کنید. GPX `<ele>` به‌تنهایی elevation truth نیست.
 
 ### Route
