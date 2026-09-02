@@ -309,13 +309,31 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog /tmp/damavand_v1.json
 ```
 
+این مرحله gate اجباری بعد از آماده‌کردن WeatherPointها و قبل از هر `seed` است.
+اگر حتی یک point خطا بگیرد، نباید catalog یا آن point وارد دیتابیس شود؛ همان
+خروجی شامل slug نقطه و علت خطا باید به درخواست‌کننده/چت گزارش شود و مختصات یا
+ارتفاع نباید بی‌دلیل حدس زده و silently اصلاح شود. خطاهای blocking شامل این‌هاست:
+
+- مختصات نامعتبر، پاسخ elevation نامعتبر یا نبودن elevation منبع‌دار؛
+- فاصلهٔ grid پاسخ Open-Meteo بیشتر از `۵ km`؛
+- نبودن `time`، دما، بارش یا `weather_code` ساعتی، یا ناهماهنگی طول آرایه‌ها؛
+- اختلاف بیشتر از `۱۰۰ m` بین ارتفاع catalog و DEM، مگر اینکه مقدار catalog
+  اصلاح و دوباره اعتبارسنجی شود.
+
+validator برای هر خطای بالا exit code غیرصفر می‌دهد. `publish_catalog.py --apply`
+این validator را قبل از اتصال به سرور اجرا می‌کند و در صورت خطا به مرحلهٔ
+`seed_catalog` نمی‌رسد. گزینه‌های `--skip-provider-validation` و
+`--allow-unresolved-elevation` فقط برای بررسی draft هستند و با `--apply` مجاز
+نیستند. `seed_catalog --check-only` فقط shape JSON را می‌سنجد و جای این gate
+را نمی‌گیرد.
+
 این بررسی باید نشان دهد:
 
 - مختصات در محدودهٔ WGS84 و تکراری نیستند؛
 - همهٔ routeها فقط به pointهای موجود اشاره می‌کنند؛
 - برای هر point دادهٔ ساعتی provider وجود دارد؛
 - فاصلهٔ مرکز grid provider حداکثر ۵ کیلومتر است؛
-- اختلاف elevation catalog و DEM در محدودهٔ قابل‌بررسی است.
+- اختلاف elevation catalog و DEM حداکثر `۱۰۰ متر` است؛ بیشتر از آن failure است.
 
 این تست ثابت نمی‌کند پیش‌بینی weather از نظر MAE در دنیای واقعی «دقیق» است؛
 فقط می‌سنجد نقطه به grid درست وصل است و forecast قابل دریافت است. سنجش دقت
@@ -349,10 +367,11 @@ python3 scripts/publish_catalog.py \
 
 در حالت apply، wrapper به‌ترتیب زیر عمل می‌کند:
 
-1. catalog را با `seed_catalog --stdin --strict` به‌صورت اتمیک import می‌کند؛
-2. فقط slugهای همین catalog را با `ingest_open_meteo` می‌گیرد؛
-3. `catalog_preflight --destination ... --require-forecast --strict` را اجرا می‌کند؛
-4. اگر همه‌چیز pass شود، مقصد آمادهٔ refresh صفحه است.
+1. دوباره از pass شدن gate محلی Open-Meteo/DEM مطمئن می‌شود؛
+2. catalog را با `seed_catalog --stdin --strict` به‌صورت اتمیک import می‌کند؛
+3. فقط slugهای همین catalog را با `ingest_open_meteo` می‌گیرد؛
+4. `catalog_preflight --destination ... --require-forecast --strict` را اجرا می‌کند؛
+5. اگر همه‌چیز pass شود، مقصد آمادهٔ refresh صفحه است.
 
 اگر عمداً route بدون timing اضافه می‌کنید، باید آگاهانه استفاده کنید:
 
@@ -369,6 +388,11 @@ weather آن در UI نمایش داده نمی‌شود. برای launch عمو
 کار کنید تا missing timing جلوی publish گرفته شود.
 
 ### ۴. معادل دستی روی سرور
+
+این مسیر فقط وقتی مجاز است که فرمان local validator بلافاصله قبل از آن با
+`pass=True` تمام شده باشد. `seed_catalog --check-only` به‌تنهایی اعتبار weather
+یا ارتفاع را بررسی نمی‌کند. اگر validator خطا داد، import را اجرا نکنید و همان
+خطای دارای slug نقطه را گزارش کنید.
 
 اگر wrapper در دسترس نبود، از root checkout سرور:
 
@@ -448,7 +472,8 @@ GPX شمالی timestamp معتبر برای محاسبهٔ moving time نداش
 4. همهٔ ترک‌های مورد استفاده، hiking مناسب و پیوسته باشند؛ هیچ ترک دوچرخه، فنی،
    پراکنده یا نامرتبط در محاسبهٔ route وارد نشده باشد.
 5. validator محلی، check-only remote، import strict، ingest و preflight strict
-   pass شده باشند و برای هر point forecast ذخیره‌شده وجود داشته باشد.
+   pass شده باشند؛ validator باید برای هر point پاسخ elevation، grid نزدیک و
+   دادهٔ ساعتی کامل گزارش کند و برای هر point forecast ذخیره‌شده وجود داشته باشد.
 6. صفحهٔ مقصد و تمام routeها با API واقعی refresh و از نظر نام، مختصات، timing و
    weather point بررسی شده باشند.
 7. `tracks/` و manifest local-only، ignored و خارج از commit باقی مانده باشند.
@@ -497,6 +522,8 @@ forecast ذخیره‌شدهٔ دیتابیس را می‌خواند.
 - [ ] برای هر route عمومی distance/ascent قابل‌دفاع است.
 - [ ] routeهای دارای arrival weather timing کامل و provenance دارند.
 - [ ] `validate_open_meteo_catalog.py` بدون error pass شده است.
+- [ ] هیچ pointی اختلاف catalog/DEM بیشتر از `۱۰۰ m`، grid دورتر از `۵ km` یا
+      hourly ناقص ندارد؛ در غیر این صورت import انجام نشده و خطا گزارش شده است.
 - [ ] remote `seed_catalog --stdin --check-only` pass شده است.
 - [ ] import strict انجام شده است.
 - [ ] ingest موفق بوده است.

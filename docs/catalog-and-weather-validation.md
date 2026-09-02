@@ -75,7 +75,13 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog /tmp/damavand.json
 ```
 
-این بررسی WGS84، مختصات تکراری، route references، DEM/provider elevation، وجود forecast ساعتی و فاصلهٔ مرکز grid تا مختصات را چک می‌کند؛ فاصلهٔ بیشتر از ۵ کیلومتر fail است. اگر ارتفاع هنوز قطعی نیست، فقط موقتاً از `--allow-unresolved-elevation` استفاده کنید و نقطه را provisional نگه دارید.
+این بررسی WGS84، مختصات تکراری، route references، DEM/provider elevation، وجود
+دادهٔ ساعتی دما/بارش/کد وضعیت و فاصلهٔ مرکز grid تا مختصات را چک می‌کند؛ فاصلهٔ
+بیشتر از ۵ کیلومتر یا اختلاف catalog/DEM بیشتر از ۱۰۰ متر failure است. اگر
+provider برای حتی یک point پاسخ معتبر ندهد، کل catalog رد می‌شود و نباید seed
+یا import انجام شود؛ slug و علت خطا باید به درخواست‌کننده گزارش شود. اگر ارتفاع
+هنوز قطعی نیست، `--allow-unresolved-elevation` فقط برای smoke test است و هرگز
+برای publish/import استفاده نمی‌شود.
 
 3. manifest را بدون قرار دادن فایل در سرور یا image بررسی شکلی کنید:
 

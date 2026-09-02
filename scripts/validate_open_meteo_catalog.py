@@ -16,7 +16,9 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 MAX_PROVIDER_DISTANCE_KM = 5.0
+MAX_CATALOG_DEM_DELTA_M = 100.0
 DEFAULT_FORECAST_VARIABLES = "temperature_2m,precipitation,weather_code"
+REQUIRED_HOURLY_FIELDS = ("time", "temperature_2m", "precipitation", "weather_code")
 
 
 def _request_json(url: str, *, timeout: float) -> dict | list:
@@ -171,9 +173,30 @@ def _query_forecast(points: list[dict], *, endpoint: str, forecast_days: int, ti
             resolved_lat = response.get("latitude")
             resolved_lon = response.get("longitude")
             distance = None
-            if isinstance(resolved_lat, (int, float)) and isinstance(resolved_lon, (int, float)):
+            if (
+                isinstance(resolved_lat, (int, float))
+                and isinstance(resolved_lon, (int, float))
+                and math.isfinite(float(resolved_lat))
+                and math.isfinite(float(resolved_lon))
+            ):
                 distance = _distance_km(point["latitude"], point["longitude"], resolved_lat, resolved_lon)
             hourly = response.get("hourly")
+            hour_count = (
+                len(hourly.get("time", []))
+                if isinstance(hourly, dict) and isinstance(hourly.get("time"), list)
+                else 0
+            )
+            missing_hourly_fields = [
+                field
+                for field in REQUIRED_HOURLY_FIELDS
+                if not isinstance(hourly, dict) or not isinstance(hourly.get(field), list) or not hourly.get(field)
+            ]
+            hourly_length_mismatches = []
+            if isinstance(hourly, dict) and hour_count:
+                for field in REQUIRED_HOURLY_FIELDS[1:]:
+                    values = hourly.get(field)
+                    if isinstance(values, list) and len(values) != hour_count:
+                        hourly_length_mismatches.append(f"{field}={len(values)} (time={hour_count})")
             all_results.append(
                 {
                     **point,
@@ -182,7 +205,9 @@ def _query_forecast(points: list[dict], *, endpoint: str, forecast_days: int, ti
                     "provider_longitude": resolved_lon,
                     "provider_elevation_m": response.get("elevation"),
                     "provider_distance_km": round(distance, 3) if distance is not None else None,
-                    "hour_count": len(hourly.get("time", [])) if isinstance(hourly, dict) else 0,
+                    "hour_count": hour_count,
+                    "missing_hourly_fields": missing_hourly_fields,
+                    "hourly_length_mismatches": hourly_length_mismatches,
                 }
             )
     return all_results
@@ -196,6 +221,7 @@ def validate_catalog(
     forecast_days: int = 1,
     timeout: float = 30.0,
     allow_unresolved_elevation: bool = False,
+    max_elevation_delta_m: float = MAX_CATALOG_DEM_DELTA_M,
 ) -> dict:
     catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
     errors, warnings, points = _catalog_checks(catalog)
@@ -230,7 +256,16 @@ def validate_catalog(
 
     by_slug = {point["slug"]: point for point in forecasts}
     for point in enriched:
-        result = by_slug.get(point["slug"], {**point, "provider_distance_km": None, "hour_count": 0})
+        result = by_slug.get(
+            point["slug"],
+            {
+                **point,
+                "provider_distance_km": None,
+                "hour_count": 0,
+                "missing_hourly_fields": list(REQUIRED_HOURLY_FIELDS),
+                "hourly_length_mismatches": [],
+            },
+        )
         catalog_elevation = point["catalog_elevation_m"]
         dem_elevation = point["dem_elevation_m"]
         delta = None
@@ -239,19 +274,37 @@ def validate_catalog(
         result["dem_delta_m"] = delta
         result["elevation_status"] = "catalog" if catalog_elevation is not None else "needs_catalog_enrichment"
         report["points"].append(result)
+        dem_elevation = result.get("dem_elevation_m")
+        if not isinstance(dem_elevation, (int, float)) or not math.isfinite(float(dem_elevation)):
+            report["errors"].append(f"{point['slug']}: DEM elevation response is invalid: {dem_elevation!r}")
         if catalog_elevation is None:
             report["warnings"].append(f"{point['slug']}: no catalog elevation; DEM is validation evidence only")
-        elif delta is not None and abs(delta) > 100:
-            report["warnings"].append(f"{point['slug']}: catalog/DEM elevation delta is {delta:g} m")
+        elif delta is not None and abs(delta) > max_elevation_delta_m:
+            report["errors"].append(
+                f"{point['slug']}: catalog/DEM elevation delta is {delta:g} m, "
+                f"limit={max_elevation_delta_m:g} m; correct the catalog elevation before import"
+            )
         distance = result.get("provider_distance_km")
         if distance is None or distance > MAX_PROVIDER_DISTANCE_KM:
             report["errors"].append(
                 f"{point['slug']}: provider grid resolution distance {distance!r} km exceeds {MAX_PROVIDER_DISTANCE_KM} km"
             )
-        if not isinstance(result.get("provider_elevation_m"), (int, float)):
+        provider_elevation = result.get("provider_elevation_m")
+        if not isinstance(provider_elevation, (int, float)) or not math.isfinite(float(provider_elevation)):
             report["errors"].append(f"{point['slug']}: provider returned no elevation metadata")
         if result.get("hour_count", 0) <= 0:
             report["errors"].append(f"{point['slug']}: provider returned no hourly data")
+        missing_hourly_fields = result.get("missing_hourly_fields") or []
+        if missing_hourly_fields:
+            report["errors"].append(
+                f"{point['slug']}: provider hourly data is missing {', '.join(missing_hourly_fields)}"
+            )
+        hourly_length_mismatches = result.get("hourly_length_mismatches") or []
+        if hourly_length_mismatches:
+            report["errors"].append(
+                f"{point['slug']}: provider hourly arrays have inconsistent lengths: "
+                + ", ".join(hourly_length_mismatches)
+            )
     unresolved = [point["slug"] for point in report["points"] if point["catalog_elevation_m"] is None]
     if unresolved and not allow_unresolved_elevation:
         report["errors"].append(
@@ -288,7 +341,8 @@ def _print_report(report: dict) -> None:
     for point in report.get("points", []):
         print(
             "{slug}: catalog={catalog_elevation_m!r} dem90={dem_elevation_m!r} "
-            "delta={dem_delta_m!r} cell={cell_selection} grid_distance_km={provider_distance_km!r}".format(
+            "delta={dem_delta_m!r} cell={cell_selection} grid_distance_km={provider_distance_km!r} "
+            "hours={hour_count} missing={missing_hourly_fields}".format(
                 **point
             )
         )
@@ -311,6 +365,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--forecast-days", type=int, default=1)
     parser.add_argument("--timeout", type=float, default=30.0)
     parser.add_argument(
+        "--max-elevation-delta-m",
+        type=float,
+        default=MAX_CATALOG_DEM_DELTA_M,
+        help="Fail when catalog elevation differs from Open-Meteo GLO-90 DEM by more than this many metres.",
+    )
+    parser.add_argument(
         "--allow-unresolved-elevation",
         action="store_true",
         help="Run coordinate/provider checks without requiring catalog elevation for every point.",
@@ -325,6 +385,7 @@ def main(argv: list[str] | None = None) -> int:
             forecast_days=args.forecast_days,
             timeout=args.timeout,
             allow_unresolved_elevation=args.allow_unresolved_elevation,
+            max_elevation_delta_m=args.max_elevation_delta_m,
         )
     except (OSError, json.JSONDecodeError, ValueError) as exc:
         print(f"ERROR: {type(exc).__name__}: {exc}", file=sys.stderr)

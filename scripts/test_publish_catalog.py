@@ -1,6 +1,7 @@
 import unittest
+from pathlib import Path
 
-from .publish_catalog import pending_timing_routes, remote_command
+from .publish_catalog import WorkflowError, build_parser, pending_timing_routes, remote_command, run_workflow
 
 
 class PublishCatalogTests(unittest.TestCase):
@@ -29,6 +30,38 @@ class PublishCatalogTests(unittest.TestCase):
         self.assertIn("-f /root/hawatch/infra/compose/compose.yaml", command[2])
         self.assertIn("seed_catalog --stdin --check-only", command[2])
         self.assertNotIn("cd ", command[2])
+
+    def test_apply_cannot_bypass_provider_validation(self):
+        repo = Path(__file__).resolve().parents[1]
+        args = build_parser().parse_args(
+            [
+                "--catalog",
+                str(repo / "apps/api/fixtures/catalog/hazar_v1.json"),
+                "--host",
+                "root@example.test",
+                "--apply",
+                "--skip-provider-validation",
+            ]
+        )
+
+        with self.assertRaisesRegex(WorkflowError, "provider/DEM validation is required"):
+            run_workflow(args)
+
+    def test_apply_cannot_publish_unresolved_elevation(self):
+        repo = Path(__file__).resolve().parents[1]
+        args = build_parser().parse_args(
+            [
+                "--catalog",
+                str(repo / "apps/api/fixtures/catalog/hazar_v1.json"),
+                "--host",
+                "root@example.test",
+                "--apply",
+                "--allow-unresolved-elevation",
+            ]
+        )
+
+        with self.assertRaisesRegex(WorkflowError, "every imported point needs a validated elevation"):
+            run_workflow(args)
 
 
 if __name__ == "__main__":

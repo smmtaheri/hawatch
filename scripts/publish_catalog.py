@@ -87,7 +87,8 @@ def _run_step(label: str, argv: Sequence[str], *, input_bytes: bytes | None = No
     except OSError as exc:
         raise WorkflowError(f"{label} could not start: {exc}") from exc
     if completed.returncode:
-        raise WorkflowError(f"{label} failed with exit code {completed.returncode}")
+        suffix = "; no database changes were made" if "validation" in label.lower() else ""
+        raise WorkflowError(f"{label} failed with exit code {completed.returncode}{suffix}")
 
 
 def _local_validator_command(
@@ -117,6 +118,15 @@ def run_workflow(args: argparse.Namespace) -> None:
         raise WorkflowError(f"catalog is not valid UTF-8 JSON: {exc}") from exc
     if not isinstance(catalog, dict):
         raise WorkflowError("catalog root must be a JSON object")
+
+    if args.apply and args.skip_provider_validation:
+        raise WorkflowError(
+            "refusing --apply with --skip-provider-validation; provider/DEM validation is required before import"
+        )
+    if args.apply and args.allow_unresolved_elevation:
+        raise WorkflowError(
+            "refusing --apply with --allow-unresolved-elevation; every imported point needs a validated elevation"
+        )
 
     destination = str(args.destination or (catalog.get("destination") or {}).get("slug") or "").strip()
     if not destination:
@@ -207,7 +217,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--skip-provider-validation",
         action="store_true",
-        help="Skip the local network/provider check; remote preflight still runs after --apply.",
+        help="Skip provider validation for a read-only draft check; cannot be combined with --apply.",
     )
     parser.add_argument(
         "--allow-pending-timing",
