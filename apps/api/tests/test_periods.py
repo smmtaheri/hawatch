@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone as utc_timezone
+from datetime import datetime, timedelta, timezone as utc_timezone
 from unittest.mock import patch
 
 import pytest
@@ -28,13 +28,40 @@ from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
+REFERENCE_DATE = datetime.now(tz=timezone()).date()
+
+
+def tehran_datetime(*, day_offset=0, hour=0, minute=0):
+    day = REFERENCE_DATE + timedelta(days=day_offset)
+    return datetime(day.year, day.month, day.day, hour, minute, tzinfo=timezone())
+
+
+def utc_datetime(*, day_offset=0, hour=0, minute=0):
+    day = REFERENCE_DATE + timedelta(days=day_offset)
+    return datetime(day.year, day.month, day.day, hour, minute, tzinfo=utc_timezone.utc)
+
+
 @pytest.fixture
 def api_client():
     return APIClient()
 
 
 @pytest.fixture
-def seeded(db):
+def seeded(db, monkeypatch):
+    # Keep the generated forecast window deterministic. The API itself uses
+    # the real Tehran clock; only this test fixture freezes the clock so the
+    # calendar dates below do not expire as the suite is run on later days.
+    fixed_now = tehran_datetime(hour=7, minute=30)
+    from hawatch.common.time import now_tehran as real_now_tehran
+
+    def fixed_clock(at=None):
+        # Keep the conversion form of now_tehran(at) intact. Serializers use
+        # that form for forecast timestamps while views use now_tehran().
+        return fixed_now if at is None else real_now_tehran(at)
+
+    monkeypatch.setattr("hawatch.modules.catalog.seed.now_tehran", fixed_clock)
+    monkeypatch.setattr("hawatch.api.v1.views.now_tehran", fixed_clock)
+    monkeypatch.setattr("hawatch.api.v1.serializers.now_tehran", fixed_clock)
     return seed_demo_data(force=True)
 
 
@@ -50,13 +77,13 @@ def test_parse_period_accepts_three_periods():
 def test_default_selection_boundaries():
     tz = timezone()
     cases = [
-        (datetime(2026, 8, 28, 0, 30, tzinfo=tz), "2026-08-27", "night"),
-        (datetime(2026, 8, 28, 2, 59, tzinfo=tz), "2026-08-27", "night"),
-        (datetime(2026, 8, 28, 3, 0, tzinfo=tz), "2026-08-28", "morning"),
-        (datetime(2026, 8, 28, 10, 59, tzinfo=tz), "2026-08-28", "morning"),
-        (datetime(2026, 8, 28, 11, 0, tzinfo=tz), "2026-08-28", "afternoon"),
-        (datetime(2026, 8, 28, 18, 59, tzinfo=tz), "2026-08-28", "afternoon"),
-        (datetime(2026, 8, 28, 19, 0, tzinfo=tz), "2026-08-28", "night"),
+        (tehran_datetime(hour=0, minute=30), (REFERENCE_DATE - timedelta(days=1)).isoformat(), "night"),
+        (tehran_datetime(hour=2, minute=59), (REFERENCE_DATE - timedelta(days=1)).isoformat(), "night"),
+        (tehran_datetime(hour=3), REFERENCE_DATE.isoformat(), "morning"),
+        (tehran_datetime(hour=10, minute=59), REFERENCE_DATE.isoformat(), "morning"),
+        (tehran_datetime(hour=11), REFERENCE_DATE.isoformat(), "afternoon"),
+        (tehran_datetime(hour=18, minute=59), REFERENCE_DATE.isoformat(), "afternoon"),
+        (tehran_datetime(hour=19), REFERENCE_DATE.isoformat(), "night"),
     ]
     for at, expected_date, expected_period in cases:
         selected_date, period = default_forecast_selection(at)
@@ -66,7 +93,7 @@ def test_default_selection_boundaries():
 
 @pytest.mark.django_db
 def test_period_windows_do_not_overlap():
-    day = datetime(2026, 8, 28).date()
+    day = REFERENCE_DATE
     windows = {name: period_window(day, name) for name in ("morning", "afternoon", "night")}
     morning_end = windows["morning"][1]
     afternoon_start = windows["afternoon"][0]
@@ -75,22 +102,22 @@ def test_period_windows_do_not_overlap():
     assert morning_end == afternoon_start
     assert afternoon_end == night_start
     assert windows["morning"] == (
-        datetime(2026, 8, 28, 3, 0, tzinfo=timezone()),
-        datetime(2026, 8, 28, 11, 0, tzinfo=timezone()),
+        tehran_datetime(hour=3),
+        tehran_datetime(hour=11),
     )
     assert windows["afternoon"] == (
-        datetime(2026, 8, 28, 11, 0, tzinfo=timezone()),
-        datetime(2026, 8, 28, 19, 0, tzinfo=timezone()),
+        tehran_datetime(hour=11),
+        tehran_datetime(hour=19),
     )
     assert windows["night"] == (
-        datetime(2026, 8, 28, 19, 0, tzinfo=timezone()),
-        datetime(2026, 8, 29, 3, 0, tzinfo=timezone()),
+        tehran_datetime(hour=19),
+        tehran_datetime(day_offset=1, hour=3),
     )
 
 
 @pytest.mark.django_db
 def test_destination_forecast_three_periods_and_night_crossing(api_client, seeded):
-    day = datetime(2026, 8, 28).date()
+    day = REFERENCE_DATE
     morning = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "morning"}).json()
     afternoon = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "afternoon"}).json()
     night = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "night"}).json()
@@ -107,27 +134,28 @@ def test_destination_forecast_three_periods_and_night_crossing(api_client, seede
     assert afternoon_times.isdisjoint(night_times)
 
     overnight_one = next(item for item in night["hourly"] if item["hour"] == 1)
-    assert overnight_one["forecast_at"].startswith("2026-08-29T01")
+    assert overnight_one["forecast_at"].startswith(f"{(REFERENCE_DATE + timedelta(days=1)).isoformat()}T01")
     assert overnight_one["forecast_at"].endswith("+03:30")
     assert morning["meta"]["forecast_validity"]["valid_from"].endswith("+03:30")
 
 
 @pytest.mark.django_db
 def test_explicit_query_params_override_defaults(api_client, seeded):
+    outside_window = REFERENCE_DATE - timedelta(days=8)
     response = api_client.get(
         "/api/v1/destinations/touchal/forecast/",
-        {"date": "2026-08-20", "period": "afternoon"},
+        {"date": outside_window.isoformat(), "period": "afternoon"},
     )
     body = response.json()
-    assert body["meta"]["selected_date"] == "2026-08-20"
+    assert body["meta"]["selected_date"] == outside_window.isoformat()
     assert body["meta"]["selected_period"] == "afternoon"
 
 
 @pytest.mark.django_db
-@patch("hawatch.api.v1.views.default_forecast_selection", return_value=(datetime(2026, 8, 28).date(), "morning"))
+@patch("hawatch.api.v1.views.default_forecast_selection", return_value=(REFERENCE_DATE, "morning"))
 def test_defaults_applied_without_query_params(mock_default, api_client, seeded):
     body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
-    assert body["meta"]["selected_date"] == "2026-08-28"
+    assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
     assert body["meta"]["selected_period"] == "morning"
     mock_default.assert_called_once()
 
@@ -143,24 +171,24 @@ def test_night_start_minutes_cross_midnight():
 @pytest.mark.django_db
 def test_destination_overnight_current_at_0130(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 1, 30, tzinfo=tz)
+    at = tehran_datetime(hour=1, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
-    assert body["meta"]["selected_date"] == "2026-08-27"
+    assert body["meta"]["selected_date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat()
     assert body["meta"]["selected_period"] == "night"
     assert body["current"] is not None
     assert body["current"]["is_current"] is True
     assert "الان" in body["hero"]["status"]
-    yesterday = next(day for day in body["days"] if day["date"] == "2026-08-27")
+    yesterday = next(day for day in body["days"] if day["date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat())
     assert yesterday["is_past"] is False
 
 
 @pytest.mark.django_db
 def test_destination_default_uses_current_tehran_hour(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 7, 30, tzinfo=tz)
+    at = tehran_datetime(hour=7, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
@@ -176,13 +204,13 @@ def test_destination_default_uses_current_tehran_hour(api_client, seeded):
 @pytest.mark.django_db
 def test_hourly_cards_mark_the_current_display_window(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    at = tehran_datetime(hour=10, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
             "/api/v1/destinations/touchal/forecast/",
-            {"date": "2026-08-28", "period": "morning"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
         ).json()
 
     by_hour = {item["hour"]: item for item in body["hourly"]}
@@ -194,13 +222,13 @@ def test_hourly_cards_mark_the_current_display_window(api_client, seeded):
 @override_settings(TIME_ZONE="UTC")
 def test_forecast_clock_stays_on_official_iran_time():
     assert timezone().key == "Asia/Tehran"
-    selected_date, period = default_forecast_selection(datetime(2026, 8, 28, 5, 0, tzinfo=utc_timezone.utc))
-    assert selected_date.isoformat() == "2026-08-28"
+    selected_date, period = default_forecast_selection(utc_datetime(hour=5))
+    assert selected_date == REFERENCE_DATE
     assert period == "morning"
 
     flags = datetime_flags(
-        datetime(2026, 8, 28, 4, 30, tzinfo=utc_timezone.utc),
-        datetime(2026, 8, 28, 5, 0, tzinfo=utc_timezone.utc),
+        utc_datetime(hour=4, minute=30),
+        utc_datetime(hour=5),
     )
     assert flags["is_current"] is True
 
@@ -209,12 +237,12 @@ def test_forecast_clock_stays_on_official_iran_time():
 def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
     tz = timezone()
     cases = [
-        (datetime(2026, 8, 28, 10, 29, tzinfo=tz), "morning", 600),
-        (datetime(2026, 8, 28, 10, 45, tzinfo=tz), "morning", 600),
-        (datetime(2026, 8, 28, 18, 45, tzinfo=tz), "afternoon", 1080),
-        (datetime(2026, 8, 28, 2, 45, tzinfo=tz), "night", 1560),
-        (datetime(2026, 8, 28, 11, 0, tzinfo=tz), "afternoon", 660),
-        (datetime(2026, 8, 28, 19, 0, tzinfo=tz), "night", 1140),
+        (tehran_datetime(hour=10, minute=29), "morning", 600),
+        (tehran_datetime(hour=10, minute=45), "morning", 600),
+        (tehran_datetime(hour=18, minute=45), "afternoon", 1080),
+        (tehran_datetime(hour=2, minute=45), "night", 1560),
+        (tehran_datetime(hour=11), "afternoon", 660),
+        (tehran_datetime(hour=19), "night", 1140),
     ]
     for at, period, expected in cases:
         assert current_period_start_minutes(period, at) == expected
@@ -229,7 +257,7 @@ def test_parse_start_minutes_respects_exclusive_period_end():
 
 @pytest.mark.django_db
 def test_route_point_forecast_and_missing_data(api_client, seeded):
-    today = datetime(2026, 8, 28).date()
+    today = REFERENCE_DATE
     response = api_client.get(
         "/api/v1/routes/touchal-darband/points/shirpala/forecast/",
         {"date": today.isoformat(), "period": "morning"},
@@ -255,7 +283,7 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
         cumulative_minutes=None,
         segment_minutes=None,
     )
-    today = datetime(2026, 8, 28).date()
+    today = REFERENCE_DATE
     body = api_client.get(
         "/api/v1/routes/touchal-darband/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
@@ -279,13 +307,13 @@ def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
         segment_minutes=None,
     )
     tz = timezone()
-    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    at = tehran_datetime(hour=10, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
-            {"date": "2026-08-28", "period": "night"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     assert body["timing_pending"] is True
     for point in body["points"]:
@@ -300,7 +328,7 @@ def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
 def test_tochal_summit_canonical_href(api_client, seeded):
     body = api_client.get(
         "/api/v1/routes/touchal-darband/points/tochal_summit/forecast/",
-        {"date": "2026-08-28", "period": "morning"},
+        {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
     ).json()
     assert body["canonical_href"] == "/destination/touchal"
     assert body["point"]["href"] == "/destination/touchal"
@@ -309,13 +337,13 @@ def test_tochal_summit_canonical_href(api_client, seeded):
 @pytest.mark.django_db
 def test_route_default_start_uses_current_tehran_in_current_period(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 7, 30, tzinfo=tz)
+    at = tehran_datetime(hour=7, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
-            {"date": "2026-08-28", "period": "morning"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
         ).json()
     assert body["start_minutes"] == 420
 
@@ -323,13 +351,13 @@ def test_route_default_start_uses_current_tehran_in_current_period(api_client, s
 @pytest.mark.django_db
 def test_destination_night_period_uses_in_window_reading_at_1030(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    at = tehran_datetime(hour=10, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
             "/api/v1/destinations/touchal/forecast/",
-            {"date": "2026-08-28", "period": "night"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     allowed_hours = {19, 21, 23, 1}
     assert body["current"] is not None
@@ -342,13 +370,13 @@ def test_destination_night_period_uses_in_window_reading_at_1030(api_client, see
 @pytest.mark.django_db
 def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    at = tehran_datetime(hour=10, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
             "/api/v1/points/shirpala/forecast/",
-            {"date": "2026-08-28", "period": "night"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     allowed_hours = {19, 21, 23, 1}
     assert body["current"] is not None
@@ -360,12 +388,12 @@ def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
 @pytest.mark.django_db
 def test_point_overnight_current_at_0130(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 1, 30, tzinfo=tz)
+    at = tehran_datetime(hour=1, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get("/api/v1/points/shirpala/forecast/").json()
-    assert body["meta"]["selected_date"] == "2026-08-27"
+    assert body["meta"]["selected_date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat()
     assert body["meta"]["selected_period"] == "night"
     assert body["current"]["is_current"] is True
     assert body["current"]["hour"] == 1
@@ -375,17 +403,17 @@ def test_point_overnight_current_at_0130(api_client, seeded):
 @pytest.mark.django_db
 def test_route_period_switch_uses_period_default_not_route_default(api_client, seeded):
     tz = timezone()
-    at = datetime(2026, 8, 28, 10, 30, tzinfo=tz)
+    at = tehran_datetime(hour=10, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         afternoon = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
-            {"date": "2026-08-28", "period": "afternoon"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "afternoon"},
         ).json()
         night = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
-            {"date": "2026-08-28", "period": "night"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     assert afternoon["start_minutes"] == 720
     assert night["start_minutes"] == 1200
@@ -395,7 +423,7 @@ def test_route_period_switch_uses_period_default_not_route_default(api_client, s
 def test_route_start_time_floors_off_step_minutes(api_client, seeded):
     body = api_client.get(
         "/api/v1/routes/touchal-darband/forecast/",
-        {"date": "2026-08-28", "period": "morning", "start_time": "10:15"},
+        {"date": REFERENCE_DATE.isoformat(), "period": "morning", "start_time": "10:15"},
     ).json()
     assert body["start_minutes"] == 600
 
@@ -404,9 +432,9 @@ def test_route_start_time_floors_off_step_minutes(api_client, seeded):
 def test_normalize_start_minutes_floors_persian_digits():
     assert normalize_start_minutes("۱۰:۱۵", "morning") == 600
     assert resolve_planner_start_minutes(
-        datetime(2026, 8, 28).date(),
+        REFERENCE_DATE,
         "afternoon",
-        local=datetime(2026, 8, 28, 10, 30, tzinfo=timezone()),
+        local=tehran_datetime(hour=10, minute=30),
         raw_start="12:15",
     ) == 720
 
@@ -433,7 +461,7 @@ def test_legacy_numeric_start_time_minutes():
 def test_route_invalid_start_time_returns_400(api_client, seeded):
     response = api_client.get(
         "/api/v1/routes/touchal-darband/forecast/",
-        {"date": "2026-08-28", "period": "morning", "start_time": "12:xx"},
+        {"date": REFERENCE_DATE.isoformat(), "period": "morning", "start_time": "12:xx"},
     )
     assert response.status_code == 400
 
@@ -471,10 +499,10 @@ def test_catalog_seed_does_not_create_synthetic_dest_points(seeded):
 
 @pytest.mark.django_db
 def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
-    summit = api_client.get("/api/v1/points/tochal_summit/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    summit = api_client.get("/api/v1/points/tochal_summit/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     assert summit["subject"]["canonical_href"] == "/destination/touchal"
     assert summit["point"]["href"] == "/destination/touchal"
-    sarband = api_client.get("/api/v1/points/sarband/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    sarband = api_client.get("/api/v1/points/sarband/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     assert sarband["subject"]["kind"] == "point"
     assert sarband["subject"]["canonical_href"] == "/points/sarband"
     assert "metrics" in sarband
@@ -485,8 +513,8 @@ def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
 
 @pytest.mark.django_db
 def test_place_forecast_contract_shared_keys(api_client, seeded):
-    dest = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
-    point = api_client.get("/api/v1/points/sarband/forecast/", {"date": "2026-08-28", "period": "morning"}).json()
+    dest = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    point = api_client.get("/api/v1/points/sarband/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     for body in (dest, point):
         assert "subject" in body
         assert body["subject"]["kind"] in {"destination", "point"}
