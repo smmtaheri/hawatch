@@ -1,7 +1,7 @@
 # راهنمای استاندارد افزودن مقصد، نقطه و مسیر
 
-این سند مرجع اصلی افزودن مقصدهای جدید به Hawatch است. برای شروع کار نفر بعدی
-همین سند را بخواند؛ قرارداد جزئی‌تر فیلدها در
+این سند مرجع اصلی افزودن مقصدهای جدید به هواچ است. برای شروع کار نفر بعدی
+همین سند را کامل بخواند؛ قرارداد جزئی‌تر فیلدها در
 [`catalog-and-weather-validation.md`](catalog-and-weather-validation.md) و رفتار
 forecast در [`api/forecast-contract.md`](api/forecast-contract.md) است.
 
@@ -77,6 +77,77 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 
 GPX برای گرفتن آب‌وهوا لازم نیست. مختصات و ارتفاع برای ساخت WeatherPoint
 کافی است؛ GPX فقط برای بررسی هندسه، فاصله، صعود و نقاط میانی مسیر استفاده می‌شود.
+
+### حداقل کیفیت route و انتخاب ترک
+
+این بخش gate اجباری قبل از ساخت catalog است. هر فایلی که فقط به گهر، دماوند یا
+هر مقصد دیگری نزدیک باشد، خودبه‌خود evidence معتبر route نیست.
+
+- مسیر باید با route محصول یکی باشد: مبدأ و مقصد یکسان، جهت پیمایش روشن، مسیر
+  پیوسته و قابل‌دنبال‌کردن، و یک access point واقعی داشته باشد.
+- برای محصول فعلی، ترک اصلی باید مسیر پیمایش پیاده/هiking باشد و در گزارش منبع
+  نیز با همین کاربری معرفی شده باشد. ترک دوچرخه، موتور، خودرو، اسب، trail پراکنده
+  یا مسیر نامرتبط را برای route پیاده رد کنید. چنین ترکی اگر فقط برای تطبیق یک
+  مختصات استفاده شود باید صریحاً cross-check نام‌گذاری شود و هرگز مبنای
+  `distance_km`، `ascent_m` یا ETA نباشد.
+- مسیرهای صخره‌نوردی، سنگ‌نوردی، یخچالی یا فنی که با پیمایش عادی مخاطب یکی نیستند
+  در فاز عمومی وارد نشوند؛ مگر اینکه محصول جداگانه و شواهد/برچسب‌گذاری جدا داشته
+  باشند.
+- مسیرهای بسیار پراکنده، بی‌نام، کم‌اعتبار یا بدون گزارش روشنِ مبدأ/مقصد را
+  انتخاب نکنید. برای route اصلی ترجیحاً دو ترک مستقلِ پیاده از منابع معتبر را
+  تطبیق دهید؛ اگر فقط یک ترک موجود است، فاصله و نقاط آن را با گزارش مسیر یا منبع
+  مستقل کنترل کنید و confidence/uncertainty را محافظه‌کارانه ثبت کنید.
+- عنوان، نوع فعالیت، توضیحات، distance، ascent و endpointهای منبع را قبل از
+  استفاده بخوانید. `hiking-trails` در URL به‌تنهایی کافی نیست؛ محتوای صفحه باید
+  واقعاً مسیر پیادهٔ موردنظر را تأیید کند.
+- ترک باید برای route یک خط پیوسته از origin تا target بدهد. فایل round-trip یا
+  نزولی فقط پس از تعیین جهت و نقطهٔ cut استفاده شود؛ timestamp خام GPX چندروزه
+  زمان حرکت معتبر نیست و برای moving time/ETA استفاده نمی‌شود.
+- هر route عمومی حداقل سه نقطهٔ واقعی دارد: مبدأ، حداقل یک landmark میانیِ
+  نام‌دار و مستند، و مقصد. اگر route واقعاً کوتاه است، باز هم نباید نقطهٔ جعلی
+  برای رسیدن به عدد سه ساخته شود؛ در آن حالت شواهد را تکمیل یا route را pending
+  نگه دارید.
+
+### قرارداد فولدر ترک
+
+به‌محض شروع مقصد جدید، فولدر را در checkout محلی بسازید؛ اگر وجود ندارد، agent
+باید خودش آن را بسازد و از کاربر بخواهد فایل‌ها را همان‌جا بگذارد:
+
+```bash
+cd /path/to/hawatch
+mkdir -p tracks/<destination-slug>
+```
+
+نام فایل باید بدون بازکردن فایل نیز قابل‌فهم باشد؛ الگوی پیشنهادی:
+`<destination>-<side-or-access>-<origin>-to-<target>-<year>.gpx`، مثلاً:
+`tracks/gahar/gahar-dorud-cheshmeh-khieh-to-lake-2014.gpx`.
+فایل‌های دانلودشدهٔ مبهم را قبل از تحلیل rename کنید و mapping را در
+`tracks/<destination-slug>/manifest.json` ثبت کنید. اگر یک فایل reverse یا فقط
+cross-check است، آن را در نام و manifest مشخص کنید.
+
+کل `tracks/` از ابتدا تا انتها local-only است: نه commit، نه Docker image، نه
+کپی روی سرور و نه سرو از API. manifest هم فقط برای تحلیل local است و runtime آن
+را نمی‌خواند. وضعیت license را تا زمان تأیید `unverified` نگه دارید.
+
+ترتیب کار با ترک:
+
+1. منبع و نوع فعالیت هر ترک را بررسی و ترک‌های دوچرخه/خودرو/فنی/پراکنده را حذف
+   کنید؛ مسیر انتخابی را با گزارش مستقل تطبیق دهید.
+2. نقاط named واقعی را از waypoint و geometry استخراج کنید؛ `Waypoint`،
+   `Park`، `Rest area` و «شیب نهایی» بدون landmark واقعی وارد catalog نشوند.
+3. manifest را بسازید، `timestamp_quality` و `license_status` را صریح ثبت کنید.
+4. analyzer را فقط local و read-only اجرا کنید و خروجی آن را با منبع مسیر مقایسه
+   کنید؛ analyzer خودش catalog را تغییر نمی‌دهد:
+
+```bash
+python3 scripts/analyze_route_tracks.py \
+  --manifest tracks/<destination-slug>/manifest.json \
+  --catalog /tmp/<destination-slug>_v1.json \
+  > /tmp/<destination-slug>_tracks_report.json
+```
+
+5. فقط پس از قبولی این gate، `distance_km`، `ascent_m`، نقاط میانی و cumulative
+   timing را وارد catalog کنید. GPX `<ele>` به‌تنهایی elevation truth نیست.
 
 ### Route
 
@@ -186,6 +257,12 @@ catalog را تغییر نمی‌دهد. timing نهایی تصمیم editorial 
 یک فایل مثل `/tmp/damavand_v1.json` بسازید. این فایل باید shape نمونهٔ
 `apps/api/fixtures/catalog/tochal_v1.json` را داشته باشد و route timing کامل
 داشته باشد اگر قرار است arrival weather نمایش داده شود.
+
+قبل از ساخت JSON، برای هر مقصد جدید فولدر `tracks/<destination-slug>/` را بسازید
+(حتی اگر فعلاً GPX ندارید) و معیارهای «حداقل کیفیت route و انتخاب ترک» را در
+همین سند اجرا کنید. برای هر route حداقل origin، یک landmark میانی واقعی و target
+را مشخص کنید. نبود GPX مانع forecast نقطه نیست، اما بدون evidence کافی نباید
+distance/ascent/ETA قطعی یا route عمومیِ ناقص منتشر شود.
 
 برای شروع می‌توان از
 [`templates/catalog-template.json`](templates/catalog-template.json) یک کپی
@@ -331,6 +408,25 @@ GPX شمالی timestamp معتبر برای محاسبهٔ moving time نداش
 
 برای اضافه‌کردن سریع مقصدهای متعدد، JSON + wrapper پیشنهاد می‌شود؛ Admin برای
 اصلاح یک رکورد یا override اپراتوری مناسب‌تر است.
+
+### Definition of Done برای مقصد جدید
+
+مقصد فقط وقتی «آمادهٔ نمایش» محسوب می‌شود که همهٔ این موارد برقرار باشند:
+
+1. category/icon از کلیدهای موجود انتخاب شده و مقصد ناخواسته وارد popular home
+   نشده باشد.
+2. canonical destination WeatherPoint و همهٔ route pointها مختصات WGS84، ارتفاع
+   منبع‌دار و نام قابل‌شناسایی داشته باشند؛ ارتفاع provisional باید همین‌طور
+   برچسب بخورد و GPX `<ele>` جای آن را نگیرد.
+3. هر route حداقل origin → landmark واقعی → target، ترتیب `sort_order` و timing
+   کامل یا وضعیت آگاهانهٔ `pending` داشته باشد.
+4. همهٔ ترک‌های مورد استفاده، hiking مناسب و پیوسته باشند؛ هیچ ترک دوچرخه، فنی،
+   پراکنده یا نامرتبط در محاسبهٔ route وارد نشده باشد.
+5. validator محلی، check-only remote، import strict، ingest و preflight strict
+   pass شده باشند و برای هر point forecast ذخیره‌شده وجود داشته باشد.
+6. صفحهٔ مقصد و تمام routeها با API واقعی refresh و از نظر نام، مختصات، timing و
+   weather point بررسی شده باشند.
+7. `tracks/` و manifest local-only، ignored و خارج از commit باقی مانده باشند.
 
 ## حل خطاهای رایج
 
