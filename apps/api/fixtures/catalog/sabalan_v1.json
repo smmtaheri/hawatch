@@ -1,0 +1,241 @@
+{
+  "catalog_version": "hawatch-sabalan-catalog-v1",
+  "destination_weather_point": "sabalan_summit",
+  "destination": {
+    "slug": "sabalan",
+    "tile_name": "سبلان",
+    "name": "قلهٔ سبلان",
+    "short_category": "آتشفشان",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "volcano",
+    "region": "آذربایجان · اردبیل",
+    "elevation_m": 4811,
+    "latitude": 38.2669186,
+    "longitude": 47.8367901,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سبلان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "weather_points": {
+    "sabalan_summit": {
+      "name": "قلهٔ سبلان",
+      "latitude": 38.2669186,
+      "longitude": 47.8367901,
+      "elevation_m": 4811,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "ارتفاع رایج قلهٔ سلطان سبلان حدود ۴۸۱۱ متر؛ مختصات با نزدیک‌ترین رسیدن ترک غربی و نقاط قلهٔ ترک شمال‌شرقی تطبیق شده؛ ارتفاع GPX مرجع است و DEM برای اعتبارسنجی provider استفاده می‌شود."
+    },
+    "sabalan_ne_shabil_trailhead": {
+      "name": "شابیل · ابتدای پیاده‌روی",
+      "latitude": 38.327692,
+      "longitude": 47.844205,
+      "elevation_m": 2696,
+      "status": "provisional",
+      "elevation_source": "Waypoint ترک شابیل تا قله: ۲۶۹۶ متر؛ Open-Meteo GLO-90 DEM و نقطهٔ آغاز پیاده‌روی برای cross-check."
+    },
+    "sabalan_ne_east_hut": {
+      "name": "پناهگاه شمال‌شرقی سبلان",
+      "latitude": 38.282997,
+      "longitude": 47.860844,
+      "elevation_m": 3689,
+      "status": "provisional",
+      "elevation_source": "Waypoint ترک مستقل پناهگاه تا قله: ۳۶۸۸.۹ متر؛ با پناهگاه ترک شابیل و DEM تطبیق می‌شود."
+    },
+    "sabalan_ne_crater_lake": {
+      "name": "دریاچهٔ دهانهٔ سبلان",
+      "latitude": 38.267809,
+      "longitude": 47.837558,
+      "elevation_m": 4789,
+      "status": "provisional",
+      "elevation_source": "Waypoint دریاچهٔ سبلان در ترک شابیل: ۴۷۸۸.۹ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "sabalan_west_trailhead": {
+      "name": "پای کار جبههٔ غربی سبلان",
+      "latitude": 38.282732,
+      "longitude": 47.801526,
+      "elevation_m": 3394,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۳۳۹۴ متر در مختصات پای کار غربی؛ مقدار GPX حدود ۳۲۰۵ متر به‌عنوان مرجع خام ثبت شده و به‌دلیل اختلاف، حقیقت catalog محسوب نشده است."
+    },
+    "sabalan_west_gateway": {
+      "name": "دروازهٔ جبههٔ غربی سبلان",
+      "latitude": 38.277288,
+      "longitude": 47.820931,
+      "elevation_m": 4112,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک صعود غربی: حدود ۴۱۱۲ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "sabalan_west_qartal_dashi": {
+      "name": "قارتال‌داشی · پناهگاه غربی",
+      "latitude": 38.273331,
+      "longitude": 47.822509,
+      "elevation_m": 4233,
+      "status": "provisional",
+      "elevation_source": "Waypoint قارتال‌داشی/پناهگاه غربی در ترک غربی: حدود ۴۲۳۳ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "sabalan_se_chay_goozi_trailhead": {
+      "name": "چای‌گوزی · ابتدای مسیر جنوب‌شرقی",
+      "latitude": 38.243351,
+      "longitude": 47.870979,
+      "elevation_m": 3441,
+      "status": "provisional",
+      "elevation_source": "ابتدای ترک آلوارس/چای‌گوزی تا قله: حدود ۳۴۴۱ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "sabalan_se_mehrab_dashi": {
+      "name": "محراب‌داشی جنوب‌شرقی سبلان",
+      "latitude": 38.266610,
+      "longitude": 47.842089,
+      "elevation_m": 4741,
+      "status": "provisional",
+      "elevation_source": "Waypoint محراب در ترک جنوب‌شرقی: حدود ۴۷۴۱ متر؛ عارضهٔ نام‌گذاری‌شده و نزدیک قله، با DEM cross-check."
+    }
+  },
+  "routes": {
+    "northeast_shabil_to_sabalan": {
+      "slug": "sabalan-northeast-shabil",
+      "title": "شابیل تا قلهٔ سبلان",
+      "subtitle": "مسیر شمال‌شرقی از ابتدای پیاده‌روی شابیل و پناهگاه تا قله",
+      "trail_label": "مسیر شمال‌شرقی شابیل",
+      "origin": "شابیل · ابتدای پیاده‌روی",
+      "destination_label": "قلهٔ سبلان",
+      "region": "آذربایجان · اردبیل",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sabalan_ne_shabil_trailhead",
+        "sabalan_ne_east_hut",
+        "sabalan_ne_crater_lake",
+        "sabalan_summit"
+      ],
+      "distance_km": 10.3,
+      "ascent_m": 2115,
+      "one_way_minutes": 570,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "sabalan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-pnhgh-sbln-t-qlh-sltn-swlnmsyr-shml-shrqy-shnbh-1401-05-08-110484540",
+          "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+        ],
+        "evidence_tracks": [
+          "tracks/sabalan/sabalan-ne-shabil-to-east-hut-and-summit-2018.gpx",
+          "tracks/sabalan/sabalan-ne-east-hut-to-summit-2022.gpx"
+        ],
+        "notes": [
+          "ترک کامل شابیل تا قله حدود ۱۰.۳ کیلومتر هندسه و پروفایل صعود را تأیید می‌کند؛ timestamp آن به‌دلیل توقف/شب‌مانی برای moving time استفاده نشده است.",
+          "پناهگاه شمال‌شرقی و دریاچهٔ دهانه نقاط واقعی و قابل‌شناسایی مسیر هستند.",
+          "این مسیر در ارتفاع بالا قرار دارد؛ نبود آب در بخش صعود طبق گزارش‌ها باید در متن ایمنی/تجهیزات لحاظ شود."
+        ],
+        "cumulative_minutes": {
+          "sabalan_ne_shabil_trailhead": 0,
+          "sabalan_ne_east_hut": 300,
+          "sabalan_ne_crater_lake": 540,
+          "sabalan_summit": 570
+        }
+      }
+    },
+    "west_qartal_dashi_to_sabalan": {
+      "slug": "sabalan-west-qartal-dashi",
+      "title": "جبههٔ غربی تا قلهٔ سبلان",
+      "subtitle": "از پای کار غربی و دروازه تا قارتال‌داشی و قله",
+      "trail_label": "مسیر غربی قارتال‌داشی",
+      "origin": "پای کار جبههٔ غربی",
+      "destination_label": "قلهٔ سبلان",
+      "region": "آذربایجان · اردبیل",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "sabalan_west_trailhead",
+        "sabalan_west_gateway",
+        "sabalan_west_qartal_dashi",
+        "sabalan_summit"
+      ],
+      "distance_km": 6.5,
+      "ascent_m": 1600,
+      "one_way_minutes": 420,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "sabalan-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
+          "https://www.wikiloc.com/hiking-trails/sbln-sltn-swln-4811-mtr-swd-z-grby-frwd-shml-shrqy-177135931",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-sbln-z-msyr-qrtl-w-frwd-bh-pnhgh-144282409"
+        ],
+        "evidence_tracks": [
+          "tracks/sabalan/sabalan-west-independent-route-2019.gpx",
+          "tracks/sabalan/sabalan-west-ascent-qaragol-to-summit-2024.gpx"
+        ],
+        "notes": [
+          "ترک ترکیبی ۲۰۲۴ فقط برای cross-check صعود غربی استفاده شده و فرود شمال‌شرقی آن وارد این route نشده است.",
+          "جبههٔ غربی در فصل برف می‌تواند فنی و پرخطر شود؛ این route برای هندسهٔ مسیر تابستانی/غیرفنی ثبت شده و مسیرهای یخچالی از scope خارج‌اند.",
+          "ارتفاع GPX مرجع است و برای weather point از مقدار catalog و اعتبارسنجی DEM/provider استفاده می‌شود."
+        ],
+        "cumulative_minutes": {
+          "sabalan_west_trailhead": 0,
+          "sabalan_west_gateway": 180,
+          "sabalan_west_qartal_dashi": 285,
+          "sabalan_summit": 420
+        }
+      }
+    },
+    "southeast_alvares_to_sabalan": {
+      "slug": "sabalan-southeast-alvares",
+      "title": "آلوارس تا قلهٔ سبلان",
+      "subtitle": "مسیر جنوب‌شرقی از چای‌گوزی و محراب‌داشی تا قله",
+      "trail_label": "مسیر جنوب‌شرقی آلوارس",
+      "origin": "چای‌گوزی · آلوارس",
+      "destination_label": "قلهٔ سبلان",
+      "region": "آذربایجان · اردبیل",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "sabalan_se_chay_goozi_trailhead",
+        "sabalan_se_mehrab_dashi",
+        "sabalan_summit"
+      ],
+      "distance_km": 4.8,
+      "ascent_m": 1370,
+      "one_way_minutes": 390,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "sabalan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361",
+          "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+        ],
+        "evidence_tracks": [
+          "tracks/sabalan/sabalan-se-chay-goozi-to-summit.gpx",
+          "tracks/sabalan/sabalan-se-alvares-to-summit-2024.gpx"
+        ],
+        "notes": [
+          "ترک چای‌گوزی تا قله حدود ۴.۸ کیلومتر هندسهٔ route را می‌دهد؛ ترک دوم برای cross-check استفاده شده است.",
+          "محراب‌داشی تنها نقطهٔ میانی نام‌گذاری‌شده و قابل‌اتکا در این قطعه است؛ نقاط generic کمپ/استراحت عمداً وارد catalog نشده‌اند.",
+          "مسیر جنوب‌شرقی شیب‌دار و ارتفاع‌بالاست و زمان آن تخمینی با عدم‌قطعیت ثبت شده است."
+        ],
+        "cumulative_minutes": {
+          "sabalan_se_chay_goozi_trailhead": 0,
+          "sabalan_se_mehrab_dashi": 345,
+          "sabalan_summit": 390
+        }
+      }
+    }
+  }
+}
