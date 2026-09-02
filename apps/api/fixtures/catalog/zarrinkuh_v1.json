@@ -63,8 +63,14 @@
       "elevation_source": "نقطهٔ میانی استخراج‌شده از هندسهٔ ترک دریاچهٔ تار تا قله، در مسیر یال شمالی؛ Open-Meteo GLO-90 DEM برای کنترل ارتفاع استفاده شده و ارتفاع خام GPX فقط reference است.",
       "climate": "alpine"
     },
-    "zarrinkuh_jaban_start": {
+    "zarrinkuh_jaban_village": {
       "name": "روستای جابان",
+      "aliases": [
+        "جابان",
+        "روستای جابان",
+        "جابان زرین‌کوه",
+        "Jaban"
+      ],
       "latitude": 35.651398,
       "longitude": 52.252742,
       "elevation_m": 2268,
@@ -174,7 +180,7 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "zarrinkuh_jaban_start",
+        "zarrinkuh_jaban_village",
         "zarrinkuh_jaban_waterfall",
         "zarrinkuh_summit"
       ],
@@ -201,7 +207,7 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "zarrinkuh_jaban_start": 0,
+          "zarrinkuh_jaban_village": 0,
           "zarrinkuh_jaban_waterfall": 45,
           "zarrinkuh_summit": 540
         }
