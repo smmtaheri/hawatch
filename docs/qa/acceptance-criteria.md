@@ -21,7 +21,7 @@
 
 ## صفحات و navigation
 
-- [ ] Home (`/`) جست‌وجوی unified مقصد و نقطه را با `GET /api/v1/search/suggestions/?q=` و حداقل دو کاراکتر، normalize، prefix match و debounce حدود ۲۰۰ms انجام می‌دهد.
+- [ ] Home (`/`) جست‌وجوی unified مقصد و نقطه را با `GET /api/v1/search/suggestions/?q=` و حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias و debounce حدود ۲۰۰ms انجام می‌دهد؛ مسیرها searchable نیستند.
 - [ ] Submit/Enter جست‌وجوی destination-only fallback ندارد؛ یک نتیجه مستقیم باز می‌شود و چند نتیجه در فهرست unified نمایش داده می‌شود.
 - [ ] Destination (`/destination/{slug}`) مقصد، forecast، روز، سه بازه و مسیرهای مرتبط را نمایش می‌دهد.
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.

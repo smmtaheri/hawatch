@@ -3,7 +3,9 @@
 ## قرارداد تعامل
 
 - `/` نقطهٔ ورود محصول است.
-- autocomplete از `GET /api/v1/search/suggestions/?q=` با debounce ~۲۰۰ms و حداقل ۲ کاراکتر normalize‌شده.
+- autocomplete از `GET /api/v1/search/suggestions/?q=` با debounce ~۲۰۰ms و حداقل ۲ کاراکتر normalize‌شده؛
+  جست‌وجو هم ابتدای عبارت و هم واژه‌های داخل نام/alias مقصد یا نقطه را پیدا می‌کند
+  (مثلاً «گهر» → «دریاچهٔ گهر»). عنوان و slug مسیرها عمداً در جست‌وجو نیستند.
 - stale responses نادیده گرفته می‌شوند (AbortController + request generation).
 - Enter روی highlight → navigate؛ Enter بدون highlight همان جست‌وجوی unified را submit می‌کند.
 - Arrow keys، Escape، focus management و combobox semantics.

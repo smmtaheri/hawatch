@@ -190,7 +190,8 @@ Catalog `hawatch-tochal-catalog-v4` / `tochal-timing-v3`. هر پنج مسیر �
 ## جست‌وجوی پیشنهاد (Home)
 
 - `GET /api/v1/search/suggestions/?q=...`
-- حداقل ۲ کاراکتر normalize‌شده؛ prefix match؛ حداکثر ۸ نتیجه
+- حداقل ۲ کاراکتر normalize‌شده؛ تطبیق substring برای پیدا کردن واژه‌های داخل نام/alias؛ حداکثر ۸ نتیجه
+- عنوان و slug مسیرها در این endpoint ایندکس نمی‌شوند و نباید نتیجهٔ جست‌وجو باشند.
 - مقصد یک‌بار برمی‌گردد (نه duplicate با WeatherPoint قله)
 - انواع: `destination` → `/destination/{slug}`؛ `point` → `/points/{weather_point_slug}`
 - label نمونه: `قلهٔ توچال — مقصد` · `پس‌قلعه — نقطهٔ مسیر · توچال`

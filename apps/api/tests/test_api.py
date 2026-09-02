@@ -263,6 +263,26 @@ def test_search_suggestions_destination_and_point(api_client, seeded):
 
 
 @pytest.mark.django_db
+def test_search_matches_words_inside_destination_and_point_names(api_client, seeded):
+    # ``گهر`` is not the first word in ``دریاچهٔ گهر``. A later word must be
+    # searchable for both destination profiles and route weather points.
+    gahar = api_client.get("/api/v1/search/suggestions/", {"q": "گهر"}).json()["results"]
+    assert any(item["type"] == "destination" and item["slug"] == "gahar" for item in gahar)
+    assert any(item["type"] == "point" and item["slug"] == "route:gahar-lake:gahar-lake" for item in gahar)
+
+    # Route titles are intentionally not searchable; only destinations and
+    # weather points are valid result types.
+    assert all(item["type"] in {"destination", "point"} for item in gahar)
+
+
+@pytest.mark.django_db
+def test_destination_list_search_uses_same_normalization(api_client, seeded):
+    response = api_client.get("/api/v1/destinations/", {"query": "گهر"})
+    assert response.status_code == 200
+    assert [item["slug"] for item in response.json()["results"]] == ["gahar"]
+
+
+@pytest.mark.django_db
 def test_search_no_duplicate_touchal_destination_and_summit(api_client, seeded):
     results = api_client.get("/api/v1/search/suggestions/", {"q": "توچال"}).json()["results"]
     destinations = [item for item in results if item["type"] == "destination" and item["slug"] == "touchal"]

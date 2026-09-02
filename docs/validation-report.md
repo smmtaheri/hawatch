@@ -28,7 +28,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 ### Frontend
 
 - React + TypeScript + Vite + React Router در `apps/web`.
-- Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، prefix match، debounce حدود ۲۰۰ms، keyboard navigation و retry.
+- Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias، debounce حدود ۲۰۰ms، keyboard navigation و retry؛ مسیرها در ایندکس نیستند.
 - Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
 - RTL، Vazirmatn، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class SearchIndexEntry(models.Model):
-    """Denormalized prefix-search row for destinations and canonical weather points."""
+    """Denormalized search row for destinations and canonical weather points."""
 
     class Kind(models.TextChoices):
         DESTINATION = "destination", "destination"

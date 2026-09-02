@@ -29,6 +29,7 @@ from hawatch.common.time import (
 from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
+from hawatch.modules.catalog.search import normalize_search_text
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -1126,14 +1127,20 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
 def list_destinations(*, query: str = "") -> list[Destination]:
     qs = Destination.objects.filter(is_active=True).order_by("popular_order", "slug")
     if query:
-        normalized = query.strip().replace("ي", "ی").replace("ك", "ک").lower()
+        normalized = normalize_search_text(query)
         qs = [
             item
             for item in qs
-            if normalized in item.name.lower()
-            or normalized in item.tile_name.lower()
-            or normalized in item.short_category.lower()
-            or normalized in item.category.lower()
+            if any(
+                normalized in normalize_search_text(str(value))
+                for value in (
+                    item.name,
+                    item.tile_name,
+                    item.short_category,
+                    item.category,
+                    *(item.aliases or []),
+                )
+            )
         ]
         return qs[:6]
     # The no-query response is the home-page popular set.  Search remains

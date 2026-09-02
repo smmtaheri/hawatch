@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 
 from django.db import transaction
-from django.db.models import Q
+from django.db.models import Case, IntegerField, Q, Value, When
 
 from hawatch.modules.catalog.models import SearchIndexEntry
 from hawatch.modules.destinations.models import Destination
@@ -127,9 +127,18 @@ def search_suggestions(*, query: str, limit: int = 8) -> list[dict]:
     if len(normalized) < 2:
         return []
     matches = list(
-        SearchIndexEntry.objects.filter(is_active=True, normalized_term__startswith=normalized).order_by(
-            "rank", "kind", "display_label"
-        )[: limit * 3]
+        SearchIndexEntry.objects.filter(is_active=True, normalized_term__contains=normalized)
+        .annotate(
+            # Keep exact/full-name prefix matches ahead of a query that occurs
+            # in a later word (e.g. ``گهر`` in ``دریاچهٔ گهر``).
+            match_position=Case(
+                When(normalized_term=normalized, then=Value(0)),
+                When(normalized_term__startswith=normalized, then=Value(1)),
+                default=Value(2),
+                output_field=IntegerField(),
+            )
+        )
+        .order_by("match_position", "rank", "kind", "display_label", "id")[: limit * 3]
     )
     results: list[dict] = []
     seen_keys: set[str] = set()
