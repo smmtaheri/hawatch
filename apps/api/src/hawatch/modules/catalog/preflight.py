@@ -68,8 +68,9 @@ def _inspect_destination(report: dict[str, Any], destination: Destination) -> li
         )
         .order_by("sort_order", "slug")
     )
-    if not routes:
-        _add(report, "warnings", f"Destination {destination.slug}: no active live routes")
+    # A destination may intentionally be destination-only. For example, an
+    # access road to a lake can be off-road/4x4 evidence rather than a curated
+    # hiking route. Its canonical profile point is still checked below.
 
     rank_counts = Counter(route.sort_order for route in routes)
     for route in routes:

@@ -11,10 +11,11 @@
 - `catalog_version` یکتا و versioned
 - `destination` با فیلدهای متادیتای مقصد و `latitude`/`longitude` ده‌دهی WGS84
 - `weather_points` با `name`، مختصات و `elevation_m`؛ مقدار `null` یعنی ارتفاع هنوز منبع معتبر ندارد
-- `routes` با مشخصات نمایش و آرایهٔ مرتب `points` که فقط به slugهای همین فایل اشاره می‌کند
+- `routes` با مشخصات نمایش و آرایهٔ مرتب `points` که فقط به slugهای همین فایل اشاره می‌کند؛
+  برای مقصد بدون route مقدار آن باید `{}` باشد
 - اختیاری: بلوک `timing` برای مسیرهای دارای زمان‌بندی تخمینی/curated
 
-ورودی‌های لازم برای هر مقصد جدید: یک canonical destination WeatherPoint با مختصات WGS84، نام و منبع ارتفاع؛ برای هر route نیز slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق، evidence توصیه‌شده است.
+ورودی‌های لازم برای هر مقصد جدید: یک canonical destination WeatherPoint با مختصات WGS84، نام و منبع ارتفاع. مقصد می‌تواند بدون route منتشر شود؛ در این حالت `routes: {}` کافی است و GPX لازم نیست. اگر route تعریف می‌شود، slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن لازم است. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق route، evidence توصیه‌شده است.
 
 ## زمان‌بندی مسیر (catalog-driven)
 
@@ -67,7 +68,7 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 
 این فلوی عمومی برای دماوند و مقصدهای بعدی است:
 
-1. در لوکال یک manifest بسازید؛ مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود.
+1. در لوکال یک catalog بسازید؛ اگر route دارید manifest هم بسازید. مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود. برای مقصد بدون route، manifest و GPX لازم نیست و `routes` را `{}` بگذارید.
 2. قبل از هر write، اعتبارسنجی provider را اجرا کنید:
 
 ```bash
@@ -110,7 +111,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
   python manage.py catalog_preflight --destination damavand --require-forecast --strict
 ```
 
-`catalog_preflight` فقط read-only است و canonical link، فعال‌بودن مقصد/route/point، ترتیب route، زنجیرهٔ نقاط، endpointها، timing و آخرین resolution/forecast Open-Meteo را گزارش می‌کند. اگر timing ناقص باشد route همچنان قابل نمایش است اما `pending` می‌ماند و پیش‌بینی arrival برای آن ساخته نمی‌شود.
+`catalog_preflight` فقط read-only است و canonical link، فعال‌بودن مقصد/route/point، ترتیب route، زنجیرهٔ نقاط، endpointها، timing و آخرین resolution/forecast Open-Meteo را گزارش می‌کند. مقصد بدون route معتبر است؛ در آن حالت route count صفر است و فقط canonical profile/provider بررسی می‌شود. برای نمونه، دریاچهٔ تار به‌دلیل دسترسی غالباً خاکی/آفرودی در این گروه قرار می‌گیرد و نباید ترک خودرو به‌عنوان route پیاده وارد شود. اگر timing ناقص باشد route همچنان قابل نمایش است اما `pending` می‌ماند و پیش‌بینی arrival برای آن ساخته نمی‌شود.
 
 ### افزودن WeatherPoint و Route بدون deploy
 

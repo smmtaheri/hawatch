@@ -111,7 +111,7 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 ابتدا همان سند را بخوانید؛ خلاصهٔ سریع زیر برای دسترسی سریع به commandهای اصلی
 است.
 
-برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید:
+برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید. مقصدهایی که route پیادهٔ معتبر ندارند هم مجازند؛ در این حالت از [`docs/templates/destination-only-catalog-template.json`](docs/templates/destination-only-catalog-template.json) استفاده کنید و `routes` را `{}` نگه دارید:
 
 ```bash
 python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_destination_v1.json

@@ -221,6 +221,8 @@ def _validate_document_shape(data: dict) -> None:
     destination = data["destination"]
     if not isinstance(destination, dict):
         raise ValueError("destination must be an object")
+    if not isinstance(data["routes"], dict):
+        raise ValueError("routes must be an object; use {} when no route is curated")
     for key in ("slug", "tile_name", "name", "short_category", "category", "category_key", "region", "climate"):
         if not str(destination.get(key) or "").strip():
             raise ValueError(f"destination.{key} is required")

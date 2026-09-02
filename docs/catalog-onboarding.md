@@ -47,7 +47,31 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 به‌جای کوه، نشان خنثی نشان می‌دهد.
 
 همان نقطهٔ مقصد باید در `weather_points` با `kind: "destination"` هم تعریف شود
-تا صفحهٔ مقصد و مسیرها به یک WeatherPoint canonical وصل باشند.
+تا صفحهٔ مقصد و در صورت وجود مسیرها به یک WeatherPoint canonical وصل باشند.
+
+### مقصد بدون مسیر
+
+همهٔ مقصدها الزاماً مسیر پیادهٔ عمومی ندارند. برای دریاچه، جادهٔ دسترسی
+آفرودی/خودرویی یا مقصدی که هنوز route پیادهٔ معتبر و مستند ندارد، مقصد را به‌صورت
+destination-only ثبت کنید؛ ترک خودرو را به route پیاده تبدیل نکنید. در این حالت:
+
+- یک canonical destination WeatherPoint با مختصات و ارتفاع معتبر کافی است؛
+- `routes` باید یک آبجکت خالی (`{}`) باشد، نه اینکه حذف شود؛
+- GPX لازم نیست و timing، distance و ascent مسیر نداریم؛
+- forecast همان نقطه با ingest عادی ذخیره می‌شود و `catalog_preflight` فقط
+  profile/provider را بررسی می‌کند؛
+- UI مقصد بدون route را با وضعیت «هنوز مسیری برای این نقطه ثبت نشده» نشان می‌دهد.
+
+اگر بعداً route پیادهٔ معتبر پیدا شد، همان catalog را با route، RoutePointهای
+واقعی و evidence جداگانه version کنید و دوباره از gate کامل route عبور دهید.
+
+نمونهٔ فعلی: دریاچهٔ تار با مختصات نمایندهٔ پهنهٔ آبی
+`35.730520, 52.227850` و elevation کاتالوگ `2896 m` ثبت شده است. Open-Meteo
+برای همین نقطه DEM برابر `2896 m` و نزدیک‌ترین grid در فاصلهٔ حدود `2.95 km`
+برگرداند؛ این برای forecast قابل‌قبول است اما دقت پیش‌بینی واقعی را تضمین
+نمی‌کند. منابع بررسی دسترسی و موقعیت: [OSM/Mapcarta](https://mapcarta.com/13159408)،
+[Wikipedia](https://en.wikipedia.org/wiki/Lake_Tar)، و
+[راهنمای دسترسی](https://zooomlite.ir/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%D8%AA%D8%A7%D8%B1-%D8%AF%D9%85%D8%A7%D9%88%D9%86%D8%AF/).
 
 ### WeatherPoint
 
@@ -80,8 +104,9 @@ GPX برای گرفتن آب‌وهوا لازم نیست. مختصات و ار�
 
 ### حداقل کیفیت route و انتخاب ترک
 
-این بخش gate اجباری قبل از ساخت catalog است. هر فایلی که فقط به گهر، دماوند یا
-هر مقصد دیگری نزدیک باشد، خودبه‌خود evidence معتبر route نیست.
+این بخش فقط وقتی مقصد route دارد gate اجباری قبل از ساخت catalog است. هر فایلی
+که فقط به گهر، دماوند یا هر مقصد دیگری نزدیک باشد، خودبه‌خود evidence معتبر route
+نیست. مقصد بدون route به GPX نیاز ندارد.
 
 - مسیر باید با route محصول یکی باشد: مبدأ و مقصد یکسان، جهت پیمایش روشن، مسیر
   پیوسته و قابل‌دنبال‌کردن، و یک access point واقعی داشته باشد.
@@ -174,9 +199,9 @@ python3 scripts/analyze_route_tracks.py \
 6. فقط پس از قبولی این gate، `distance_km`، `ascent_m`، نقاط میانی و cumulative
    timing را وارد catalog کنید. GPX `<ele>` به‌تنهایی elevation truth نیست.
 
-### Route
+### Route (اختیاری)
 
-برای هر مسیر:
+اگر مقصد route دارد، برای هر مسیر:
 
 - `slug`، عنوان، subtitle، برچسب جبهه و origin/destination label؛
 - آرایهٔ `points` به‌ترتیب حرکت از مبدأ تا مقصد؛
@@ -283,10 +308,10 @@ catalog را تغییر نمی‌دهد. timing نهایی تصمیم editorial 
 `apps/api/fixtures/catalog/tochal_v1.json` را داشته باشد و route timing کامل
 داشته باشد اگر قرار است arrival weather نمایش داده شود.
 
-قبل از ساخت JSON، برای هر مقصد جدید فولدر `tracks/<destination-slug>/` را بسازید
-(حتی اگر فعلاً GPX ندارید) و معیارهای «حداقل کیفیت route و انتخاب ترک» را در
-همین سند اجرا کنید. برای هر route حداقل origin، یک landmark میانی واقعی و target
-را مشخص کنید. نبود GPX مانع forecast نقطه نیست، اما بدون evidence کافی نباید
+قبل از ساخت JSON، اگر مقصد route دارد فولدر `tracks/<destination-slug>/` را بسازید
+و معیارهای «حداقل کیفیت route و انتخاب ترک» را در همین سند اجرا کنید. برای هر
+route حداقل origin، یک landmark میانی واقعی و target را مشخص کنید. نبود GPX مانع
+forecast مقصد یا destination-only نیست، اما بدون evidence کافی نباید
 distance/ascent/ETA قطعی یا route عمومیِ ناقص منتشر شود.
 
 برای شروع می‌توان از
@@ -467,9 +492,9 @@ GPX شمالی timestamp معتبر برای محاسبهٔ moving time نداش
 2. canonical destination WeatherPoint و همهٔ route pointها مختصات WGS84، ارتفاع
    منبع‌دار و نام قابل‌شناسایی داشته باشند؛ ارتفاع provisional باید همین‌طور
    برچسب بخورد و GPX `<ele>` جای آن را نگیرد.
-3. هر route حداقل origin → landmark واقعی → target، ترتیب `sort_order` و timing
-   کامل یا وضعیت آگاهانهٔ `pending` داشته باشد.
-4. همهٔ ترک‌های مورد استفاده، hiking مناسب و پیوسته باشند؛ هیچ ترک دوچرخه، فنی،
+3. اگر `routes` خالی نیست، هر route حداقل origin → landmark واقعی → target،
+   ترتیب `sort_order` و timing کامل یا وضعیت آگاهانهٔ `pending` داشته باشد.
+4. اگر route وجود دارد، همهٔ ترک‌های مورد استفاده، hiking مناسب و پیوسته باشند؛ هیچ ترک دوچرخه، فنی،
    پراکنده یا نامرتبط در محاسبهٔ route وارد نشده باشد.
 5. validator محلی، check-only remote، import strict، ingest و preflight strict
    pass شده باشند؛ validator باید برای هر point پاسخ elevation، grid نزدیک و
@@ -518,9 +543,8 @@ forecast ذخیره‌شدهٔ دیتابیس را می‌خواند.
 ## چک‌لیست قبل از اعلام آماده‌بودن
 
 - [ ] مقصد و canonical destination WeatherPoint مختصات و elevation منبع‌دار دارند.
-- [ ] هر route `sort_order` درست دارد و points از مبدأ تا مقصد مرتب‌اند.
-- [ ] برای هر route عمومی distance/ascent قابل‌دفاع است.
-- [ ] routeهای دارای arrival weather timing کامل و provenance دارند.
+- [ ] اگر مقصد route دارد، هر route `sort_order` درست و points مرتب از مبدأ تا مقصد دارد.
+- [ ] اگر route دارد، distance/ascent عمومی قابل‌دفاع و timingهای arrival دارای provenance هستند.
 - [ ] `validate_open_meteo_catalog.py` بدون error pass شده است.
 - [ ] هیچ pointی اختلاف catalog/DEM بیشتر از `۱۰۰ m`، grid دورتر از `۵ km` یا
       hourly ناقص ندارد؛ در غیر این صورت import انجام نشده و خطا گزارش شده است.

@@ -52,6 +52,18 @@ def test_catalog_preflight_detects_incomplete_active_route():
 
 
 @pytest.mark.django_db
+def test_catalog_preflight_accepts_destination_without_active_routes():
+    seed_tochal_catalog()
+    Route.objects.filter(destination__slug="touchal").update(is_active=False)
+
+    report = run_catalog_preflight(destination_slug="touchal")
+
+    assert report["summary"]["destination_count"] == 1
+    assert report["summary"]["route_count"] == 0
+    assert not any("no active live routes" in item for item in report["warnings"])
+
+
+@pytest.mark.django_db
 def test_seed_catalog_reads_stdin_and_check_only_does_not_write(capsys, monkeypatch):
     catalog = load_catalog_file()
     before = Route.objects.count()

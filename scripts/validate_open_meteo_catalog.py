@@ -115,8 +115,8 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
         )
 
     routes = catalog.get("routes")
-    if not isinstance(routes, dict) or not routes:
-        errors.append("routes must be a non-empty object")
+    if not isinstance(routes, dict):
+        errors.append("routes must be an object; use {} when no route is curated")
     else:
         point_slugs = set(raw_points)
         for route_slug, route in routes.items():

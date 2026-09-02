@@ -1,0 +1,47 @@
+{
+  "catalog_version": "hawatch-tar-lake-catalog-v1",
+  "destination_weather_point": "tar_lake",
+  "destination": {
+    "slug": "tar-lake",
+    "tile_name": "دریاچهٔ تار",
+    "name": "دریاچهٔ تار",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ کوهستانی",
+    "category_key": "lake",
+    "region": "البرز شرقی · دماوند",
+    "elevation_m": 2896,
+    "latitude": 35.73052,
+    "longitude": 52.22785,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ تار در نزدیکی دماوند",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "تار",
+      "دریاچه تار",
+      "دریاچهٔ تار",
+      "Lake Tar"
+    ]
+  },
+  "weather_points": {
+    "tar_lake": {
+      "name": "دریاچهٔ تار",
+      "aliases": [
+        "تار",
+        "دریاچه تار",
+        "دریاچهٔ تار",
+        "Lake Tar"
+      ],
+      "latitude": 35.73052,
+      "longitude": 52.22785,
+      "elevation_m": 2896,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ مرکز پهنهٔ آبی در OSM/Mapcarta: 35.73052, 52.22785؛ Open-Meteo GLO-90 DEM در همین مختصات 2896 متر برگرداند و با ارتفاع 2899 متری منبع نقشه در حدود 3 متر اختلاف دارد. مختصات و ارتفاع برای مقصد دریاچه‌اند، نه مسیر دسترسی آفرودی.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {}
+}

@@ -1,0 +1,37 @@
+{
+  "catalog_version": "hawatch-example-destination-only-v1",
+  "destination_weather_point": "example-lake",
+  "destination": {
+    "slug": "example-lake",
+    "tile_name": "نام کوتاه مقصد",
+    "name": "نام مقصد",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ کوهستانی",
+    "category_key": "lake",
+    "region": "استان · منطقه",
+    "elevation_m": 2000,
+    "latitude": 35.000000,
+    "longitude": 52.000000,
+    "image": "/images/home-scene.png",
+    "image_alt": "توضیح تصویر مقصد",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": ["نام کوتاه مقصد"]
+  },
+  "weather_points": {
+    "example-lake": {
+      "name": "نام مقصد",
+      "aliases": ["نام کوتاه مقصد"],
+      "latitude": 35.000000,
+      "longitude": 52.000000,
+      "elevation_m": 2000,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "Replace with a trusted source and provider/DEM cross-check.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {}
+}

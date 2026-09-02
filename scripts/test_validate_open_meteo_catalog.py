@@ -102,3 +102,26 @@ def test_provider_distance_and_hourly_shape_are_blocking(tmp_path, monkeypatch):
     assert any("grid resolution distance" in item for item in report["errors"])
     assert any("missing temperature_2m, precipitation" in item for item in report["errors"])
     assert any("no elevation metadata" in item for item in report["errors"])
+
+
+def test_destination_only_catalog_is_valid(tmp_path, monkeypatch):
+    path = _catalog(tmp_path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data["routes"] = {}
+    path.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(
+        validator,
+        "_query_elevation",
+        lambda points, *, endpoint, timeout: [{**point, "dem_elevation_m": 1000} for point in points],
+    )
+    monkeypatch.setattr(
+        validator,
+        "_query_forecast",
+        lambda points, *, endpoint, forecast_days, timeout: _forecast_rows(points),
+    )
+
+    report = validator.validate_catalog(path)
+
+    assert report["summary"]["pass"] is True
+    assert report["summary"]["point_count"] == 1
+    assert report["errors"] == []
