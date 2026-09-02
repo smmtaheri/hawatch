@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v2",
+  "catalog_version": "hawatch-azadkouh-catalog-v3",
   "destination_weather_point": "azadkouh_summit",
   "destination": {
     "slug": "azadkouh",
@@ -58,7 +58,7 @@
       "longitude": 51.509243,
       "elevation_m": 3811,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 3811 m; three-route GPX cross-check"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3811 m; four-route GPX cross-check"
     },
     "azadkouh_final_slope": {
       "name": "شیب نهایی قله",
@@ -76,6 +76,14 @@
       "kind": "destination",
       "status": "provisional",
       "elevation_source": "Peak/GPX cross-check: ~4366 m; Open-Meteo GLO-90 DEM: 4261 m used only as provider-resolution evidence"
+    },
+    "azadkouh_nahiyeh_start": {
+      "name": "ناحیه",
+      "latitude": 36.151621,
+      "longitude": 51.608454,
+      "elevation_m": 2528,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2528 m; GPX track start; Nahiyeh locality cross-check"
     },
     "azadkouh_nesen_start": {
       "name": "حسینیهٔ نسن",
@@ -282,6 +290,56 @@
           "azadkouh_choren_pass": 330,
           "azadkouh_final_slope": 415,
           "azadkouh_summit": 440
+        }
+      }
+    },
+    "nahiyeh_to_azadkouh": {
+      "slug": "azadkouh-nahiyeh",
+      "title": "ناحیه تا آزادکوه",
+      "subtitle": "از ناحیه و گردنهٔ چورن تا قلهٔ آزادکوه",
+      "trail_label": "مسیر ناحیه",
+      "origin": "ناحیه",
+      "destination_label": "قلهٔ آزادکوه",
+      "region": "البرز مرکزی",
+      "featured": true,
+      "sort_order": 4,
+      "points": [
+        "azadkouh_nahiyeh_start",
+        "azadkouh_choren_pass",
+        "azadkouh_final_slope",
+        "azadkouh_summit"
+      ],
+      "distance_km": 14.5,
+      "ascent_m": 2040,
+      "one_way_minutes": 385,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "azadkouh-timing-v3",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841",
+          "https://decovel.com/page/azad-kuh-peak"
+        ],
+        "evidence_tracks": [
+          "tracks/azadkouh/azadkouh-east-nahiyeh-to-summit-via-choren-then-kelak-2024.gpx",
+          "tracks/azadkouh/azadkouh-ne-kelakbala-to-choren-summit-2024.gpx",
+          "tracks/azadkouh/azadkouh-ne-kelakbala-to-choren-summit-2025.gpx"
+        ],
+        "notes": [
+          "The primary GPX is a Nahiyeh-to-summit traverse followed by descent to Kelak; only the first summit arrival is used for this one-way route.",
+          "The Nahiyeh-to-Choren leg is supported by the primary GPX; the Choren-to-summit geometry agrees with the independent Kelak tracks.",
+          "The GPX has no named waypoints, so only Nahiyeh, the shared Choren pass, the final slope and summit are catalog points.",
+          "GPX device elevation is reference evidence; catalog elevations remain DEM/source values."
+        ],
+        "cumulative_minutes": {
+          "azadkouh_nahiyeh_start": 0,
+          "azadkouh_choren_pass": 300,
+          "azadkouh_final_slope": 365,
+          "azadkouh_summit": 385
         }
       }
     }
