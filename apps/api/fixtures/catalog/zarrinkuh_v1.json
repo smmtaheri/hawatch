@@ -1,0 +1,299 @@
+{
+  "catalog_version": "hawatch-zarrinkuh-catalog-v1",
+  "destination_weather_point": "zarrinkuh_summit",
+  "destination": {
+    "slug": "zarrinkuh",
+    "tile_name": "زرین‌کوه",
+    "name": "قلهٔ زرین‌کوه",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز شرقی · دماوند",
+    "elevation_m": 3852,
+    "latitude": 35.70704,
+    "longitude": 52.22742,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ زرین‌کوه دماوند",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "زرین کوه",
+      "زرین‌کوه",
+      "زرینکوه",
+      "زرین کوه دماوند",
+      "زرین‌کوه دماوند",
+      "Zarrinkuh",
+      "Zarin Kuh"
+    ]
+  },
+  "weather_points": {
+    "zarrinkuh_summit": {
+      "name": "قلهٔ زرین‌کوه",
+      "aliases": [
+        "زرین کوه",
+        "زرین‌کوه",
+        "زرینکوه",
+        "قله زرین کوه"
+      ],
+      "latitude": 35.70704,
+      "longitude": 52.22742,
+      "elevation_m": 3852,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "مختصات قله با همگرایی چهار ترک مستقل در حدود 35.7070, 52.2274 و منبع معرفی مسیر زرین‌کوه تطبیق شده است. ارتفاع رایج منبع حدود 3852 متر است؛ Open-Meteo GLO-90 DEM در همین مختصات 3783 متر برگرداند و GPXها ارتفاع قله را حدود 3752 تا 3848 متر نشان می‌دهند. مقدار catalog برای نمایش provisional است و GPX <ele> حقیقت ارتفاعی قطعی نیست.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_tar_shore": {
+      "name": "کرانهٔ دریاچهٔ تار · شروع مسیر زرین‌کوه",
+      "latitude": 35.726682,
+      "longitude": 52.22378,
+      "elevation_m": 2965,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک پیاده‌روی دریاچهٔ تار تا زرین‌کوه؛ Open-Meteo GLO-90 DEM در مختصات ترک 2965 متر است. این نقطه مسیر دسترسی کنار دریاچه است، نه مرکز آب دریاچهٔ تار.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_tar_north_ridge": {
+      "name": "یال شمالی زرین‌کوه",
+      "latitude": 35.715724,
+      "longitude": 52.222628,
+      "elevation_m": 3606,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ میانی استخراج‌شده از هندسهٔ ترک دریاچهٔ تار تا قله، در مسیر یال شمالی؛ Open-Meteo GLO-90 DEM برای کنترل ارتفاع استفاده شده و ارتفاع خام GPX فقط reference است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_jaban_start": {
+      "name": "روستای جابان · شروع مسیر زرین‌کوه",
+      "latitude": 35.651398,
+      "longitude": 52.252742,
+      "elevation_m": 2268,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع پیمایش در ترک پیاده‌روی جابان تا قله؛ Open-Meteo GLO-90 DEM در مختصات waypoint برابر 2268 متر است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_jaban_waterfall": {
+      "name": "آبشار جابان",
+      "latitude": 35.66782,
+      "longitude": 52.248865,
+      "elevation_m": 2411,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ آبشار جابان در ترک مستقل جابان؛ Open-Meteo GLO-90 DEM مقدار 2411 متر را برگرداند و GPX حدود 2409 متر ثبت کرده است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_khosravan_start": {
+      "name": "روستای خسروان · شروع پاکوب زرین‌کوه",
+      "latitude": 35.662798,
+      "longitude": 52.226572,
+      "elevation_m": 2268,
+      "status": "provisional",
+      "elevation_source": "Waypoint ابتدای پاکوب در ترک پیاده‌روی خسروان تا قله؛ Open-Meteo GLO-90 DEM در مختصات مسیر برابر 2268 متر است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_khosravan_gosfandsara": {
+      "name": "گوسفندسرا درهٔ خسروان",
+      "latitude": 35.668821,
+      "longitude": 52.218766,
+      "elevation_m": 2369,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ گوسفندسرا در ترک خسروان؛ Open-Meteo GLO-90 DEM مقدار 2369 متر را برگرداند و GPX حدود 2366 متر ثبت کرده است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_aynehvarzan_start": {
+      "name": "پارکینگ آینه‌ورزان · شروع مسیر زرین‌کوه",
+      "latitude": 35.667556,
+      "longitude": 52.20868,
+      "elevation_m": 2379,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ در ترک آینه‌ورزان تا قله؛ Open-Meteo GLO-90 DEM مقدار 2379 متر را برگرداند. بخش جادهٔ خاکی منتهی به پارکینگ در توضیحات مسیر از بخش پیاده‌روی تفکیک شده است.",
+      "climate": "alpine"
+    },
+    "zarrinkuh_aynehvarzan_waterfall": {
+      "name": "آبشار آینه‌ورزان",
+      "latitude": 35.69038,
+      "longitude": 52.199665,
+      "elevation_m": 2741,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ آبشار در ترک آینه‌ورزان؛ Open-Meteo GLO-90 DEM مقدار 2741 متر را برگرداند و GPX حدود 2701 متر ثبت کرده است.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "tar_to_zarrinkuh": {
+      "slug": "zarrinkuh-tar-north",
+      "title": "دریاچهٔ تار تا قلهٔ زرین‌کوه",
+      "subtitle": "مسیر شمالی زرین‌کوه از کرانهٔ دریاچهٔ تار و یال شمالی تا قله",
+      "trail_label": "مسیر شمالی دریاچهٔ تار",
+      "origin": "کرانهٔ دریاچهٔ تار",
+      "destination_label": "قلهٔ زرین‌کوه",
+      "region": "البرز شرقی · دماوند",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "zarrinkuh_tar_shore",
+        "zarrinkuh_tar_north_ridge",
+        "zarrinkuh_summit"
+      ],
+      "distance_km": 2.7,
+      "ascent_m": 815,
+      "one_way_minutes": 170,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "zarrinkuh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 35,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-drychh-tr-140811868",
+          "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+        ],
+        "evidence_tracks": [
+          "tracks/zarrinkuh-damavand/zarrinkuh-damavand-tar-north-2023.gpx"
+        ],
+        "notes": [
+          "مسافت و صعود، بخش رفت تا اولین نزدیک‌شدن ترک حلقه‌ای به قله‌اند؛ برگشت ترک وارد route یک‌طرفه نشده است.",
+          "ترک منبع مسیر شمالی از دریاچهٔ تار را پوشش می‌دهد؛ در زمستان شیب و خطر بهمن باید جداگانه بررسی شود.",
+          "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
+        ],
+        "cumulative_minutes": {
+          "zarrinkuh_tar_shore": 0,
+          "zarrinkuh_tar_north_ridge": 110,
+          "zarrinkuh_summit": 170
+        }
+      }
+    },
+    "jaban_to_zarrinkuh": {
+      "slug": "zarrinkuh-jaban-southeast",
+      "title": "جابان تا قلهٔ زرین‌کوه",
+      "subtitle": "مسیر جنوب‌شرقی از روستای جابان و آبشار جابان تا قله",
+      "trail_label": "مسیر جنوب‌شرقی جابان",
+      "origin": "روستای جابان",
+      "destination_label": "قلهٔ زرین‌کوه",
+      "region": "البرز شرقی · دماوند",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "zarrinkuh_jaban_start",
+        "zarrinkuh_jaban_waterfall",
+        "zarrinkuh_summit"
+      ],
+      "distance_km": 7.8,
+      "ascent_m": 1515,
+      "one_way_minutes": 540,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "zarrinkuh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
+          "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+        ],
+        "evidence_tracks": [
+          "tracks/zarrinkuh-damavand/zarrinkuh-damavand-jaban-southeast-2023.gpx"
+        ],
+        "notes": [
+          "ترک مستقل جابان مسیر پیاده‌روی حلقه‌ای تا قله را ثبت می‌کند؛ فقط بخش رفت تا اولین رسیدن به قله استفاده شده است.",
+          "منبع مسیر آن را طولانی و دارای شیب‌های سخت توصیف می‌کند؛ زمان برای برنامه‌ریزی محافظه‌کارانه تخمینی است.",
+          "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
+        ],
+        "cumulative_minutes": {
+          "zarrinkuh_jaban_start": 0,
+          "zarrinkuh_jaban_waterfall": 45,
+          "zarrinkuh_summit": 540
+        }
+      }
+    },
+    "khosravan_to_zarrinkuh": {
+      "slug": "zarrinkuh-khosravan-south",
+      "title": "خسروان تا قلهٔ زرین‌کوه",
+      "subtitle": "مسیر جنوبی از ابتدای پاکوب خسروان و گوسفندسرا تا قله",
+      "trail_label": "مسیر جنوبی خسروان",
+      "origin": "روستای خسروان",
+      "destination_label": "قلهٔ زرین‌کوه",
+      "region": "البرز شرقی · دماوند",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "zarrinkuh_khosravan_start",
+        "zarrinkuh_khosravan_gosfandsara",
+        "zarrinkuh_summit"
+      ],
+      "distance_km": 7.7,
+      "ascent_m": 1484,
+      "one_way_minutes": 395,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "zarrinkuh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
+          "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+        ],
+        "evidence_tracks": [
+          "tracks/zarrinkuh-damavand/zarrinkuh-damavand-khosravan-south-2022.gpx"
+        ],
+        "notes": [
+          "ترک خسروان حلقه‌ای است و منبع دربارهٔ خطای بخش برگشت هشدار داده؛ برای route فقط مسیر رفت تا قله استفاده شده است.",
+          "گوسفندسرا تنها نقطهٔ میانی نام‌گذاری‌شده و قابل‌شناسایی این مسیر است؛ waypointهای عمومی و مبهم حذف شده‌اند.",
+          "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
+        ],
+        "cumulative_minutes": {
+          "zarrinkuh_khosravan_start": 0,
+          "zarrinkuh_khosravan_gosfandsara": 40,
+          "zarrinkuh_summit": 395
+        }
+      }
+    },
+    "aynehvarzan_to_zarrinkuh": {
+      "slug": "zarrinkuh-aynehvarzan-southwest",
+      "title": "آینه‌ورزان تا قلهٔ زرین‌کوه",
+      "subtitle": "مسیر جنوب‌غربی از پارکینگ و آبشار آینه‌ورزان تا قله",
+      "trail_label": "مسیر جنوب‌غربی آینه‌ورزان",
+      "origin": "پارکینگ آینه‌ورزان",
+      "destination_label": "قلهٔ زرین‌کوه",
+      "region": "البرز شرقی · دماوند",
+      "featured": false,
+      "sort_order": 4,
+      "points": [
+        "zarrinkuh_aynehvarzan_start",
+        "zarrinkuh_aynehvarzan_waterfall",
+        "zarrinkuh_summit"
+      ],
+      "distance_km": 8.7,
+      "ascent_m": 1522,
+      "one_way_minutes": 350,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "zarrinkuh-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 100,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827",
+          "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+        ],
+        "evidence_tracks": [
+          "tracks/zarrinkuh-damavand/zarrinkuh-damavand-aynehvarzan-southwest-2021.gpx"
+        ],
+        "notes": [
+          "منبع با برچسب mountaineering منتشر شده اما ترک بخش پیاده‌روی از پارکینگ، آبشار و یال تا قله را پوشش می‌دهد؛ مسیرهای فنی صخره‌ای وارد scope نشده‌اند.",
+          "بخش جادهٔ خاکی دسترسی تا پارکینگ از صعود پیاده تفکیک شده و زمان route برای پیاده‌روی تخمینی است.",
+          "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
+        ],
+        "cumulative_minutes": {
+          "zarrinkuh_aynehvarzan_start": 0,
+          "zarrinkuh_aynehvarzan_waterfall": 65,
+          "zarrinkuh_summit": 350
+        }
+      }
+    }
+  }
+}
