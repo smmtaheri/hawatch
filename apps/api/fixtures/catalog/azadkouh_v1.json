@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v1",
+  "catalog_version": "hawatch-azadkouh-catalog-v2",
   "destination_weather_point": "azadkouh_summit",
   "destination": {
     "slug": "azadkouh",
@@ -76,6 +76,22 @@
       "kind": "destination",
       "status": "provisional",
       "elevation_source": "Peak/GPX cross-check: ~4366 m; Open-Meteo GLO-90 DEM: 4261 m used only as provider-resolution evidence"
+    },
+    "azadkouh_nesen_start": {
+      "name": "حسینیهٔ نسن",
+      "latitude": 36.234937,
+      "longitude": 51.499276,
+      "elevation_m": 2612,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2612 m; 2022 GPX waypoint cross-check (2615 m)"
+    },
+    "azadkouh_nesen_rest": {
+      "name": "استراحت اول مسیر نسن",
+      "latitude": 36.186976,
+      "longitude": 51.478724,
+      "elevation_m": 2931,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2931 m; 2022 GPX waypoint cross-check (2915 m)"
     },
     "azadkouh_varangerud_start": {
       "name": "وارنگه‌رود",
@@ -215,6 +231,57 @@
           "azadkouh_kamankouh_lake": 450,
           "azadkouh_choren_pass": 630,
           "azadkouh_summit": 720
+        }
+      }
+    },
+    "nesen_to_azadkouh": {
+      "slug": "azadkouh-nesen",
+      "title": "نسن تا آزادکوه",
+      "subtitle": "از نسن و گردنهٔ چورن تا قلهٔ آزادکوه",
+      "trail_label": "مسیر نسن",
+      "origin": "نسن",
+      "destination_label": "قلهٔ آزادکوه",
+      "region": "البرز مرکزی",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "azadkouh_nesen_start",
+        "azadkouh_nesen_rest",
+        "azadkouh_choren_pass",
+        "azadkouh_final_slope",
+        "azadkouh_summit"
+      ],
+      "distance_km": 14.5,
+      "ascent_m": 1660,
+      "one_way_minutes": 440,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "azadkouh-timing-v2",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-swd-z-nsn-frwd-khlkh-bl-tyr-1401-106644204",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841"
+        ],
+        "evidence_tracks": [
+          "tracks/azadkouh/azadkouh-nw-nesen-to-choren-summit-2025.gpx",
+          "tracks/azadkouh/azadkouh-nw-nesen-to-choren-summit-2022-nesen-kelak.gpx"
+        ],
+        "notes": [
+          "The 2025 independent Nesen-to-summit GPX reaches the summit area within 1 m and records about 7 h 20 min elapsed / 6 h 48 min after pause filtering.",
+          "The 2022 independent Nesen-to-Kelak traverse reaches Choren within 5 m and the summit within 3 m; its post-summit continuation is not used for one-way timing.",
+          "GPX device elevation is reference evidence; provider requests use provisional nearest-cell resolution.",
+          "The old Nesen candidate GPX is incomplete and is not used as route evidence."
+        ],
+        "cumulative_minutes": {
+          "azadkouh_nesen_start": 0,
+          "azadkouh_nesen_rest": 120,
+          "azadkouh_choren_pass": 330,
+          "azadkouh_final_slope": 415,
+          "azadkouh_summit": 440
         }
       }
     }
