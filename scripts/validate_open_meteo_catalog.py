@@ -17,6 +17,8 @@ from urllib.request import Request, urlopen
 
 MAX_PROVIDER_DISTANCE_KM = 5.0
 MAX_CATALOG_DEM_DELTA_M = 100.0
+MAX_WEATHER_POINT_NAME_LENGTH = 80
+MAX_WEATHER_POINT_ELEVATION_SOURCE_LENGTH = 255
 DEFAULT_FORECAST_VARIABLES = "temperature_2m,precipitation,weather_code"
 REQUIRED_HOURLY_FIELDS = ("time", "temperature_2m", "precipitation", "weather_code")
 
@@ -79,6 +81,21 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
         if not isinstance(row, dict):
             errors.append(f"{slug}: point must be an object")
             continue
+        name = row.get("name")
+        if not isinstance(name, str) or not name.strip():
+            errors.append(f"{slug}: name is required")
+        elif len(name) > MAX_WEATHER_POINT_NAME_LENGTH:
+            errors.append(
+                f"{slug}: name length exceeds {MAX_WEATHER_POINT_NAME_LENGTH} characters"
+            )
+        elevation_source = row.get("elevation_source") or ""
+        if not isinstance(elevation_source, str):
+            errors.append(f"{slug}: elevation_source must be a string")
+        elif len(elevation_source) > MAX_WEATHER_POINT_ELEVATION_SOURCE_LENGTH:
+            errors.append(
+                f"{slug}: elevation_source length exceeds "
+                f"{MAX_WEATHER_POINT_ELEVATION_SOURCE_LENGTH} characters"
+            )
         try:
             latitude = float(row["latitude"])
             longitude = float(row["longitude"])

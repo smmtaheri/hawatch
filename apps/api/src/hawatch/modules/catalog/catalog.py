@@ -23,6 +23,8 @@ from hawatch.modules.routes.publish import (
 DEFAULT_CATALOG_FILE = "catalog/tochal_v1.json"
 TIMING_CONFIDENCE_VALUES = {"high", "medium", "low"}
 TIMING_STATUS_VALUES = {choice for choice, _label in Route.TimingStatus.choices}
+WEATHER_POINT_NAME_MAX_LENGTH = 80
+WEATHER_POINT_ELEVATION_SOURCE_MAX_LENGTH = 255
 
 
 class CatalogImportConflict(Exception):
@@ -227,6 +229,25 @@ def _validate_document_shape(data: dict) -> None:
         if not str(destination.get(key) or "").strip():
             raise ValueError(f"destination.{key} is required")
     point_slugs = set(data["weather_points"])
+    for point_slug, point in data["weather_points"].items():
+        if not isinstance(point, dict):
+            raise ValueError(f"WeatherPoint {point_slug} must be an object")
+        name = point.get("name")
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError(f"WeatherPoint {point_slug}.name is required")
+        if len(name) > WEATHER_POINT_NAME_MAX_LENGTH:
+            raise ValueError(
+                f"WeatherPoint {point_slug}.name must be at most "
+                f"{WEATHER_POINT_NAME_MAX_LENGTH} characters"
+            )
+        elevation_source = point.get("elevation_source") or ""
+        if not isinstance(elevation_source, str):
+            raise ValueError(f"WeatherPoint {point_slug}.elevation_source must be a string")
+        if len(elevation_source) > WEATHER_POINT_ELEVATION_SOURCE_MAX_LENGTH:
+            raise ValueError(
+                f"WeatherPoint {point_slug}.elevation_source must be at most "
+                f"{WEATHER_POINT_ELEVATION_SOURCE_MAX_LENGTH} characters"
+            )
     destination_slug = _destination_point_slug(data)
     if destination_slug not in point_slugs:
         raise ValueError(f"destination weather point does not exist: {destination_slug}")
