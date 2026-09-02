@@ -402,12 +402,12 @@ def build_place_forecast(
     if current_payload and current_payload["is_current"]:
         hero_status = (
             f"{current_payload['icon']}　الان در {short_name}　"
-            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
+            f"{current_payload.get('apparent_temperature_label', current_payload['temperature_label'])}　·　{current_payload['condition']}"
         )
     elif current_payload:
         hero_status = (
             f"{current_payload['icon']}　در {short_name}　"
-            f"{current_payload['temperature_label']}　·　{current_payload['condition']}"
+            f"{current_payload.get('apparent_temperature_label', current_payload['temperature_label'])}　·　{current_payload['condition']}"
         )
     else:
         hero_status = "دادهٔ فعلی در دسترس نیست"
@@ -436,17 +436,67 @@ def build_place_forecast(
 
     metrics: list[dict] = []
     if records:
+        absolute_temperatures = [item.temperature_c for item in records]
+        apparent_temperatures = [item.apparent_temperature_c for item in records]
+        absolute_average = round(sum(absolute_temperatures) / len(absolute_temperatures))
+        apparent_average = round(sum(apparent_temperatures) / len(apparent_temperatures))
+        minimum_temperature = min(absolute_temperatures)
+        maximum_temperature = max(absolute_temperatures)
         avg_wind = round(sum(item.wind_speed_kmh for item in records) / len(records))
         gust = max(item.wind_gust_kmh for item in records)
         vis = max(item.visibility_km for item in records)
         uv_values = [item.uv_index for item in records if item.uv_index is not None]
         uv = max(uv_values) if uv_values else None
         precip = max(item.precipitation_probability for item in records)
+        rain_mm = sum(float(item.rain_mm) for item in records)
+        snow_cm = sum(float(item.snowfall_cm or 0) for item in records)
         freeze = next((item.freezing_level_m for item in records if item.freezing_level_m), None)
         cloud_base = next((item.cloud_base_m for item in records if item.cloud_base_m), None)
         sunrise = format_clock(5, 22 if climate_key != "desert" else 24)
         sunset = format_clock(19, 46 if climate_key != "desert" else 38)
         metrics = [
+            {
+                "icon": "temperature",
+                "label": "دمای حسی",
+                "value": f"{to_fa_digits(apparent_average)}°",
+                "note": "میانگین بازهٔ انتخابی",
+                "color": "teal",
+            },
+            {
+                "icon": "temperature",
+                "label": "دمای مطلق",
+                "value": f"{to_fa_digits(absolute_average)}°",
+                "note": "دمای واقعی در ارتفاع نقطه",
+                "color": "",
+            },
+            {
+                "icon": "temperature",
+                "label": "کمینهٔ دما",
+                "value": f"{to_fa_digits(minimum_temperature)}°",
+                "note": "در بازهٔ انتخابی",
+                "color": "",
+            },
+            {
+                "icon": "temperature",
+                "label": "بیشینهٔ دما",
+                "value": f"{to_fa_digits(maximum_temperature)}°",
+                "note": "در بازهٔ انتخابی",
+                "color": "",
+            },
+            {
+                "icon": "precipitation",
+                "label": "باران",
+                "value": f"{_metric_number(rain_mm)} mm",
+                "note": "مجموع بازهٔ انتخابی",
+                "color": "amber" if rain_mm else "teal",
+            },
+            {
+                "icon": "precipitation",
+                "label": "برف",
+                "value": f"{_metric_number(snow_cm)} cm",
+                "note": "مجموع بازهٔ انتخابی",
+                "color": "amber" if snow_cm else "teal",
+            },
             {
                 "icon": "wind-average",
                 "label": "باد میانگین",
@@ -495,7 +545,7 @@ def build_place_forecast(
             },
             {
                 "icon": "precipitation",
-                "label": "بارش",
+                "label": "احتمال بارش",
                 "value": f"{to_fa_digits(precip)}٪",
                 "note": "بر اساس بازهٔ انتخابی",
                 "color": "amber" if precip else "teal",
@@ -617,6 +667,7 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
         "temperature_c": record.temperature_c,
         "temperature_label": f"{to_fa_digits(record.temperature_c)}°",
         "apparent_temperature_c": record.apparent_temperature_c,
+        "apparent_temperature_label": f"{to_fa_digits(record.apparent_temperature_c)}°",
         "condition": record.condition_label,
         "icon": record.icon,
         "weather_code": record.weather_code,
@@ -628,6 +679,7 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
         "wind_direction_label": wind_compass(record.wind_direction_deg),
         "precipitation_probability": record.precipitation_probability,
         "precipitation_mm": float(record.precipitation_mm),
+        "rain_mm": float(record.rain_mm),
         "snowfall_cm": float(record.snowfall_cm) if record.snowfall_cm is not None else None,
         "visibility_km": float(record.visibility_km),
         "cloud_cover_pct": record.cloud_cover_pct,
@@ -672,6 +724,12 @@ def _uv_label(uv: int | None) -> str:
     else:
         level = "کم"
     return f"{to_fa_digits(uv)} · {level}"
+
+
+def _metric_number(value: float) -> str:
+    """Format a specialist metric without noisy trailing zeroes."""
+    formatted = f"{value:.1f}".rstrip("0").rstrip(".")
+    return to_fa_digits(formatted)
 
 
 def _forecast_qs_for_point(point: WeatherPoint):
@@ -896,7 +954,11 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 "weather": weather,
                 "weather_available": weather_available,
                 "forecast_at": weather.get("forecast_at") if weather else None,
-                "temp": weather["temperature_c"] if weather else None,
+                # Route cards are user-facing weather summaries, so expose the
+                # apparent temperature there too. Keep absolute temperature
+                # available for specialist consumers and threshold logic.
+                "temp": weather["apparent_temperature_c"] if weather else None,
+                "temp_absolute": weather["temperature_c"] if weather else None,
                 "wind": weather["wind_speed_kmh"] if weather else None,
                 "icon": weather["icon"] if weather else "—",
                 "condition": condition,

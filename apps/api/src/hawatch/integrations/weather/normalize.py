@@ -13,7 +13,7 @@ TEHRAN = ZoneInfo("Asia/Tehran")
 MAX_PROVIDER_RESOLUTION_DISTANCE_KM = 5.0
 
 # Fields intentionally not requested from Open-Meteo in this vertical slice.
-UNAVAILABLE_HOURLY_FIELDS = ("cloud_cover_pct", "uv_index", "freezing_level_m", "cloud_base_m")
+UNAVAILABLE_HOURLY_FIELDS = ("cloud_cover_pct", "uv_index", "cloud_base_m")
 
 # WMO weather interpretation codes → UI condition/icon/severity.
 WMO_MAP: dict[int, tuple[str, str, str, str]] = {
@@ -91,6 +91,7 @@ def normalize_point_hourly(
         apparent = _num(hourly.get("apparent_temperature"), index, default=temp)
         precip_prob = int(round(_num(hourly.get("precipitation_probability"), index, default=0.0)))
         precip_mm = _num(hourly.get("precipitation"), index, default=0.0)
+        rain_mm = _num(hourly.get("rain"), index, default=0.0)
         snowfall = _num(hourly.get("snowfall"), index, default=0.0)
         code = _num(hourly.get("weather_code"), index, default=0.0)
         visibility_m = _num(hourly.get("visibility"), index, default=10000.0)
@@ -101,6 +102,7 @@ def normalize_point_hourly(
         # Never invent cloud cover / UV — leave unavailable when not provided by the provider payload.
         cloud_cover = _optional_int(hourly.get("cloud_cover"), index)
         uv_index = _optional_int(hourly.get("uv_index"), index)
+        freezing_level = _optional_int(hourly.get("freezing_level_height"), index)
         reading: NormalizedReading = {
             "temperature_c": int(round(temp)),
             "apparent_temperature_c": int(round(apparent)),
@@ -112,10 +114,12 @@ def normalize_point_hourly(
             "wind_direction_deg": direction,
             "precipitation_probability": max(0, min(100, precip_prob)),
             "precipitation_mm": round(max(0.0, precip_mm), 1),
+            "rain_mm": round(max(0.0, rain_mm), 1),
+            "snowfall_cm": round(max(0.0, snowfall), 1),
             "visibility_km": round(max(0.0, visibility_m / 1000.0), 1),
             "cloud_cover_pct": cloud_cover,
             "uv_index": uv_index,
-            "freezing_level_m": None,
+            "freezing_level_m": freezing_level,
             "cloud_base_m": None,
             "severity": severity,
         }
@@ -126,14 +130,14 @@ def normalize_point_hourly(
                 "valid_from": forecast_at,
                 "valid_to": interval_end,
                 "generated_at": generated_at,
-                "snowfall_cm": round(max(0.0, snowfall), 1),
+                "snowfall_cm": reading["snowfall_cm"],
                 "wmo_code": int(code),
                 "fields_unavailable": [
                     field
                     for field, value in (
                         ("cloud_cover_pct", cloud_cover),
                         ("uv_index", uv_index),
-                        ("freezing_level_m", None),
+                        ("freezing_level_m", freezing_level),
                         ("cloud_base_m", None),
                     )
                     if value is None

@@ -70,7 +70,9 @@ def _sample_hourly(
             "apparent_temperature": [base_temp - 1 + (i % 5) for i in range(hours)],
             "precipitation_probability": [10] * hours,
             "precipitation": [0.0] * hours,
+            "rain": [0.2] * hours,
             "snowfall": [snowfall] * hours,
+            "freezing_level_height": [4200.0] * hours,
             "weather_code": [71 if i % 6 == 0 else 2 for i in range(hours)],
             "visibility": [12000.0] * hours,
             "wind_speed_10m": [18.0] * hours,
@@ -204,6 +206,8 @@ def test_open_meteo_batching_and_elevation_partition():
     assert "elevation=" in url_with
     assert "forecast_days=7" in url_with
     assert "past_days=0" in url_with
+    assert "rain" in url_with
+    assert "freezing_level_height" in url_with
     url_without = provider.build_url(without_e, include_elevation=False)
     assert "elevation=" not in url_without
     assert "cell_selection=land" in url_without
@@ -229,6 +233,9 @@ def test_normalize_does_not_synthesize_cloud_or_uv_and_sets_valid_to():
     assert rows[0]["cloud_cover_pct"] is None
     assert rows[0]["uv_index"] is None
     assert "cloud_cover_pct" in rows[0]["fields_unavailable"]
+    assert rows[0]["rain_mm"] == 0.2
+    assert rows[0]["freezing_level_m"] == 4200
+    assert "freezing_level_m" not in rows[0]["fields_unavailable"]
     assert rows[0]["snowfall_cm"] == 1.5
     assert rows[0]["valid_to"] - rows[0]["valid_from"] == timedelta(hours=1)
     assert response_items([raw]) == [raw]
@@ -425,6 +432,20 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     assert body["meta"]["provider"] == "open-meteo"
     assert body["hourly"]
     assert "snowfall_cm" in body["hourly"][0]
+    assert "rain_mm" in body["hourly"][0]
+    assert "apparent_temperature_label" in body["hourly"][0]
+    assert body["hourly"][0]["freezing_level_m"] == 4200
+    assert body["hourly"][0]["temperature_c"] == -2
+    assert body["hourly"][0]["apparent_temperature_c"] == -3
+    assert body["metrics"][0]["label"] == "دمای حسی"
+    assert {item["label"] for item in body["metrics"]} >= {
+        "دمای مطلق",
+        "کمینهٔ دما",
+        "بیشینهٔ دما",
+        "باران",
+        "برف",
+        "تراز صفر درجه",
+    }
     assert body["hourly"][0]["cloud_cover_pct"] is None
     assert "cloud_cover_pct" in body["hourly"][0]["fields_unavailable"]
 

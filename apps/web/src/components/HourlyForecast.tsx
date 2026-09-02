@@ -61,7 +61,7 @@ export function HourlyForecast({ hours }: { hours: HourlyReading[] }) {
             <strong>{hour.time}</strong>
             <span className="weather-symbol">{hour.icon}</span>
             <span className="condition">{hour.condition}</span>
-            <b>{hour.temperature_label}</b>
+            <b>{hour.apparent_temperature_label ?? hour.temperature_label}</b>
             <small>{hour.wind_label}</small>
             {hour.state !== "normal" ? <em>{hour.state === "critical" ? "احتیاط" : "تغییر مهم"}</em> : null}
           </div>

@@ -76,12 +76,24 @@ forecast (Forecast Place — destination یا point)
 | `uv-index` | تابش فرابنفش |
 | `precipitation` | بارش |
 | `sunrise-sunset` | طلوع / غروب |
+| `temperature` | دما (حسی، مطلق، کمینه و بیشینه) |
 
 آیکون فقط کمک بصری است؛ عنوان و مقدار متریک همیشه به‌صورت متنی نیز ارائه می‌شوند.
 
+متریک‌های دما و بارش از رکوردهای همان بازهٔ انتخاب‌شده ساخته می‌شوند: دمای حسی و مطلق
+میانگین بازه‌اند، کمینه و بیشینه از `temperature_c` همان بازه محاسبه می‌شوند، و
+`باران`/`برف` مجموع مقدارهای ساعتی همان بازه هستند. `precipitation_mm` مقدار کل بارش
+(باران و برف) در هر ساعت است؛ `rain_mm` مؤلفهٔ باران به میلی‌متر و `snowfall_cm` مؤلفهٔ برف به
+سانتی‌متر است. کارت عمومی ساعتی و خلاصهٔ آب‌وهوای نقطهٔ مسیر `apparent_temperature`
+را نشان می‌دهند؛ مقدار مطلق برای جزئیات تخصصی نیز در payload باقی می‌ماند.
+
 Route envelope جداگانه است و `route` / `points[]` / `timing_pending` دارد.
 
-هر reading شامل temperature، apparent temperature، condition/code، wind speed/gust/direction، precipitation، visibility، cloud cover، UV در صورت وجود، و flagهای:
+هر reading شامل `temperature_c` (دمای مطلق)، `apparent_temperature_c` (دمای حسی)،
+`temperature_label` و `apparent_temperature_label`، condition/code، wind speed/gust/direction،
+`precipitation_probability`، `precipitation_mm` (مقدار کل بارش همان ساعت)، `rain_mm` (مؤلفهٔ باران)،
+`snowfall_cm` (مؤلفهٔ برف)، visibility، cloud cover، UV در صورت وجود، و
+`freezing_level_m` در صورت ارائهٔ provider، و flagهای:
 
 - `is_yesterday`
 - `is_today`

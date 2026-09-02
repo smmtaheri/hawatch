@@ -86,6 +86,8 @@ export interface HourlyReading {
   hour: number;
   temperature_c: number;
   temperature_label: string;
+  apparent_temperature_c?: number;
+  apparent_temperature_label?: string;
   condition: string;
   icon: string;
   wind_speed_kmh: number;
@@ -93,7 +95,12 @@ export interface HourlyReading {
   wind_alert?: WindAlert | null;
   severity: Severity;
   state: Severity;
+  precipitation_probability?: number;
+  precipitation_mm?: number;
+  rain_mm?: number;
   snowfall_cm?: number | null;
+  visibility_km?: number;
+  freezing_level_m?: number | null;
   cloud_cover_pct?: number | null;
   uv_index?: number | null;
   fields_unavailable?: string[];
@@ -105,6 +112,7 @@ export interface HourlyReading {
 }
 
 export const SPECIALIST_METRIC_ICON_NAMES = [
+  "temperature",
   "wind-average",
   "wind-gust",
   "visibility",
@@ -207,6 +215,7 @@ export interface RoutePointView {
   axis_y: number;
   time: string;
   temp: number | null;
+  temp_absolute?: number | null;
   wind: number | null;
   icon: string;
   condition: string;

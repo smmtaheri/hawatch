@@ -16,6 +16,8 @@ class NormalizedReading(TypedDict):
     wind_direction_deg: int
     precipitation_probability: int
     precipitation_mm: float
+    rain_mm: float
+    snowfall_cm: float
     visibility_km: float
     cloud_cover_pct: int | None
     uv_index: int | None

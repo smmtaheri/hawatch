@@ -191,6 +191,8 @@ class ForecastRecord(models.Model):
     wind_direction_deg = models.PositiveSmallIntegerField()
     precipitation_probability = models.PositiveSmallIntegerField()
     precipitation_mm = models.DecimalField(max_digits=5, decimal_places=1)
+    # Open-Meteo rain is the liquid precipitation component in mm for the hour.
+    rain_mm = models.DecimalField(max_digits=5, decimal_places=1, default=0)
     snowfall_cm = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
     visibility_km = models.DecimalField(max_digits=5, decimal_places=1)
     cloud_cover_pct = models.PositiveSmallIntegerField(null=True, blank=True)

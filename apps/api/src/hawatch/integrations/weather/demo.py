@@ -140,6 +140,8 @@ def generate_reading(
         "wind_direction_deg": wind_dir,
         "precipitation_probability": int(precip_prob),
         "precipitation_mm": round(precip_prob / 25, 1) if precip_prob else 0.0,
+        "rain_mm": round(precip_prob / 25, 1) if precip_prob and not snow else 0.0,
+        "snowfall_cm": round(precip_prob / 25, 1) if precip_prob and snow else 0.0,
         "visibility_km": round(visibility, 1),
         "cloud_cover_pct": int(cloud),
         "uv_index": max(0, uv),
