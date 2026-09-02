@@ -1,0 +1,196 @@
+{
+  "catalog_version": "hawatch-gahar-catalog-v1",
+  "destination_weather_point": "gahar_lake",
+  "destination": {
+    "slug": "gahar",
+    "tile_name": "دریاچهٔ گهر",
+    "name": "دریاچهٔ گهر",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ کوهستانی",
+    "category_key": "lake",
+    "region": "زاگرس مرکزی · لرستان",
+    "elevation_m": 2350,
+    "latitude": 33.306878,
+    "longitude": 49.2807614,
+    "image": "/images/gahar-hero.png",
+    "image_alt": "نمای دریاچهٔ گهر در اشترانکوه",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true
+  },
+  "weather_points": {
+    "gahar_lake": {
+      "name": "دریاچهٔ گهر",
+      "latitude": 33.306878,
+      "longitude": 49.2807614,
+      "elevation_m": 2350,
+      "kind": "destination",
+      "status": "provisional",
+      "elevation_source": "مرکز هندسی دریاچه در OSM: 33.306878, 49.2807614؛ ارتفاع رایج گزارش‌شده حدود ۲۳۵۰ متر؛ Open-Meteo GLO-90 DEM در این مختصات ۲۳۳۸ متر و برای cross-check استفاده شده است."
+    },
+    "gahar_dorud_cheshmeh_khieh": {
+      "name": "چشمه‌خیّه · پارکینگ گهر",
+      "latitude": 33.375173,
+      "longitude": 49.192894,
+      "elevation_m": 2341,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه‌خیّه در ترک دورود: حدود ۲۳۴۱ متر؛ گزارش مسیر آن را مبدأ پیمایش معرفی می‌کند و DEM برای cross-check استفاده شده است."
+    },
+    "gahar_dorud_pambekar_pass": {
+      "name": "گردنهٔ پنبه‌کار",
+      "latitude": 33.350832,
+      "longitude": 49.220253,
+      "elevation_m": 2544,
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنهٔ پنبه‌کار در ترک دورود: حدود ۲۵۴۴ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "gahar_dorud_pambekar_spring": {
+      "name": "چشمهٔ پنبه‌کار",
+      "latitude": 33.338471,
+      "longitude": 49.238913,
+      "elevation_m": 2084,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمهٔ پنبه‌کار در ترک مستقل: حدود ۲۰۸۴ متر؛ عارضهٔ واقعی مسیر و DEM برای cross-check."
+    },
+    "gahar_dorud_khodaghovat_pass": {
+      "name": "گردنهٔ خداقوت",
+      "latitude": 33.318620,
+      "longitude": 49.272790,
+      "elevation_m": 2353,
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنهٔ خداقوت در ترک دورود: حدود ۲۳۵۳ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "gahar_dorud_lake_shore": {
+      "name": "کرانهٔ غربی دریاچهٔ گهر",
+      "latitude": 33.311042,
+      "longitude": 49.278215,
+      "elevation_m": 2336,
+      "status": "provisional",
+      "elevation_source": "Waypoint رسیدن ترک دورود به گهر: حدود ۲۳۳۶ متر؛ برای زمان رسیدن route-specific است و مرکز دریاچه در gahar_lake نگه‌داری می‌شود."
+    },
+    "gahar_aligudarz_tapleh_trailhead": {
+      "name": "تپهٔ تاپله · ابتدای پیاده‌روی",
+      "latitude": 33.264067,
+      "longitude": 49.347371,
+      "elevation_m": 2671,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع پیاده‌روی ترک الیگودرز: حدود ۲۶۷۱ متر؛ GPX مرجع و DEM برای cross-check."
+    },
+    "gahar_aligudarz_lake_view": {
+      "name": "اولین دورنمای دریاچهٔ گهر",
+      "latitude": 33.297126,
+      "longitude": 49.309049,
+      "elevation_m": 2430,
+      "status": "provisional",
+      "elevation_source": "Waypoint اولین دورنمای دریاچه در ترک الیگودرز: حدود ۲۴۳۰ متر؛ عارضهٔ قابل‌شناسایی و DEM برای cross-check."
+    },
+    "gahar_aligudarz_lake_shore": {
+      "name": "کرانهٔ شرقی دریاچهٔ گهر",
+      "latitude": 33.303073,
+      "longitude": 49.294190,
+      "elevation_m": 2331,
+      "status": "provisional",
+      "elevation_source": "Waypoint دریاچهٔ گهر در انتهای ترک الیگودرز: حدود ۲۳۳۱ متر؛ نقطهٔ رسیدن route-specific است و با مرکز OSM دریاچه یکی فرض نشده است."
+    }
+  },
+  "routes": {
+    "dorud_to_gahar": {
+      "slug": "gahar-dorud",
+      "title": "چشمه‌خیّه تا دریاچهٔ گهر",
+      "subtitle": "مسیر رایج دورود از گردنهٔ پنبه‌کار و خداقوت تا کرانهٔ گهر",
+      "trail_label": "مسیر دورود",
+      "origin": "چشمه‌خیّه · پارکینگ گهر",
+      "destination_label": "دریاچهٔ گهر",
+      "region": "زاگرس مرکزی · لرستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gahar_dorud_cheshmeh_khieh",
+        "gahar_dorud_pambekar_pass",
+        "gahar_dorud_pambekar_spring",
+        "gahar_dorud_khodaghovat_pass",
+        "gahar_dorud_lake_shore"
+      ],
+      "distance_km": 12.1,
+      "ascent_m": 600,
+      "one_way_minutes": 270,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "gahar-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gahar-lake-pymysh-msyr-drychh-ghr-z-dwrwd-7656700",
+          "https://www.wikiloc.com/hiking-trails/msyr-drychh-ghr-z-chshmh-pnbh-khr-13982079",
+          "https://www.wikiloc.com/hiking-trails/drychh-ghr-z-pnbh-khr-138501782",
+          "https://www.karnaval.ir/things-to-do/gahar-lake-dorud"
+        ],
+        "evidence_tracks": [
+          "tracks/gahar/gahar-dorud-parking-to-lake-2014.gpx",
+          "tracks/gahar/gahar-dorud-panbekar-to-lake-2016.gpx",
+          "tracks/gahar/gahar-dorud-panbekar-to-lake-2023.gpx"
+        ],
+        "notes": [
+          "دو ترک مستقل ۲۰۱۴ و ۲۰۱۶ تا کرانهٔ گهر حدود ۱۲.۱ کیلومتر هندسهٔ هم‌راستا دارند؛ ترک ۲۰۲۳ در جهت برگشت است و فقط cross-check هندسه استفاده می‌شود.",
+          "ترک‌ها زمان خام قابل‌اعتماد برای moving time نیستند؛ ETA بر اساس هندسه و گزارش‌های مسیر با عدم‌قطعیت ۶۰ دقیقه برآورد شده است.",
+          "گردنهٔ پنبه‌کار، چشمهٔ پنبه‌کار و گردنهٔ خداقوت عارضه‌های واقعی مسیر هستند؛ نام‌های generic وارد زنجیرهٔ عمومی نشده‌اند."
+        ],
+        "cumulative_minutes": {
+          "gahar_dorud_cheshmeh_khieh": 0,
+          "gahar_dorud_pambekar_pass": 100,
+          "gahar_dorud_pambekar_spring": 155,
+          "gahar_dorud_khodaghovat_pass": 225,
+          "gahar_dorud_lake_shore": 270
+        }
+      }
+    },
+    "aligudarz_to_gahar": {
+      "slug": "gahar-aligudarz",
+      "title": "تپهٔ تاپله تا دریاچهٔ گهر",
+      "subtitle": "مسیر الیگودرز از ابتدای پیاده‌روی و دورنمای گهر تا کرانهٔ دریاچه",
+      "trail_label": "مسیر الیگودرز",
+      "origin": "تپهٔ تاپله · ابتدای پیاده‌روی",
+      "destination_label": "دریاچهٔ گهر",
+      "region": "زاگرس مرکزی · لرستان",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "gahar_aligudarz_tapleh_trailhead",
+        "gahar_aligudarz_lake_view",
+        "gahar_aligudarz_lake_shore"
+      ],
+      "distance_km": 7.1,
+      "ascent_m": 10,
+      "one_way_minutes": 120,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "gahar-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-pymysh-drychh-ghr-z-smt-lygwdrz-st-hrkht-11-05-zhr-st-rsydn-bh-drychh-14-11-b-twqfh-190151178",
+          "https://www.wikiloc.com/hiking-trails/drychh-ghr-msyr-pymysh-z-smt-lygwdrz-bh-qsmt-jngly-138135308",
+          "https://www.karnaval.ir/things-to-do/gahar-lake-dorud"
+        ],
+        "evidence_tracks": [
+          "tracks/gahar/gahar-aligudarz-tapleh-to-lake-2024.gpx"
+        ],
+        "notes": [
+          "این ترک از ابتدای پیاده‌روی در تپهٔ تاپله تا کرانهٔ شرقی گهر می‌رود و بخش جادهٔ خودرو را وارد route نکرده‌ایم.",
+          "مسیر در فایل شاهد عمدتاً نزولی است؛ ascent کم ثبت شده و زمان حرکت با توقف‌ها جدا از timestamp خام برآورد شده است.",
+          "اولین دورنمای دریاچه نقطهٔ میانی واقعی است؛ نقاطی با عنوان generic مانند Waypoint/Park حذف شده‌اند."
+        ],
+        "cumulative_minutes": {
+          "gahar_aligudarz_tapleh_trailhead": 0,
+          "gahar_aligudarz_lake_view": 85,
+          "gahar_aligudarz_lake_shore": 120
+        }
+      }
+    }
+  }
+}
