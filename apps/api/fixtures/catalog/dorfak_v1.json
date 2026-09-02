@@ -1,0 +1,270 @@
+{
+  "catalog_version": "hawatch-dorfak-catalog-v1",
+  "destination_weather_point": "dorfak_summit",
+  "destination": {
+    "slug": "dorfak",
+    "tile_name": "درفک",
+    "name": "قلهٔ درفک",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · گیلان",
+    "elevation_m": 2733,
+    "latitude": 36.89051,
+    "longitude": 49.69935,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ درفک",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "weather_points": {
+    "dorfak_summit": {
+      "name": "قلهٔ درفک",
+      "latitude": 36.89051,
+      "longitude": 49.69935,
+      "elevation_m": 2733,
+      "elevation_source": "منابع کوهنوردی: ۲۷۳۳ متر؛ waypointهای مستقل GPX حدود ۲۷۱۰ متر؛ Open-Meteo GLO-90 DEM در مختصات catalog حدود ۲۷۰۲ متر؛ مقدار catalog برای نمایش قله provisional است",
+      "status": "provisional",
+      "kind": "destination"
+    },
+    "dorfak_east_shah_shahidan": {
+      "name": "شاه‌شهیدان",
+      "latitude": 36.863635,
+      "longitude": 49.774007,
+      "elevation_m": 1814,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۸۱۴ متر؛ waypoint GPX شاه‌شهیدان: حدود ۱۸۱۹ متر",
+      "status": "provisional"
+    },
+    "dorfak_east_tir_bargh": {
+      "name": "تیرهای برق مسیر شاه‌شهیدان",
+      "latitude": 36.868047,
+      "longitude": 49.746113,
+      "elevation_m": 1985,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۸۵ متر؛ waypoint GPX تیر برق: حدود ۱۹۷۶ متر",
+      "status": "provisional"
+    },
+    "dorfak_east_cheshmeh": {
+      "name": "چشمهٔ مسیر شاه‌شهیدان",
+      "latitude": 36.883421,
+      "longitude": 49.723327,
+      "elevation_m": 2269,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۲۲۶۹ متر؛ waypoint GPX چشمه: حدود ۲۲۴۸ متر",
+      "status": "provisional"
+    },
+    "dorfak_east_ghar_yakhi": {
+      "name": "غار یخی درفک",
+      "latitude": 36.898340,
+      "longitude": 49.690817,
+      "elevation_m": 2421,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۲۴۲۱ متر؛ waypoint GPX غار یخی: حدود ۲۴۳۸ متر",
+      "status": "provisional"
+    },
+    "dorfak_west_shirkuh": {
+      "name": "شیرکوه",
+      "latitude": 36.889695,
+      "longitude": 49.563958,
+      "elevation_m": 401,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۴۰۱ متر؛ ابتدای ترک GPX در مسجد شیرکوه حدود ۴۰۳ متر",
+      "status": "provisional"
+    },
+    "dorfak_west_larneh": {
+      "name": "ابتدای لارنه",
+      "latitude": 36.888654,
+      "longitude": 49.618377,
+      "elevation_m": 1197,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۱۹۷ متر؛ waypoint GPX ابتدای لارنه حدود ۱۲۰۰ متر",
+      "status": "provisional"
+    },
+    "dorfak_west_jeyruni_spring": {
+      "name": "چشمهٔ جیرونی",
+      "latitude": 36.894767,
+      "longitude": 49.657720,
+      "elevation_m": 1902,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۰۲ متر؛ waypoint GPX چشمهٔ جیرونی حدود ۱۹۰۰ متر",
+      "status": "provisional"
+    },
+    "dorfak_west_defraz_ridge": {
+      "name": "گردنهٔ مسیر دفراز",
+      "latitude": 36.895964,
+      "longitude": 49.688880,
+      "elevation_m": 2513,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۲۵۱۳ متر؛ waypoint GPX گردنهٔ مسیر دفراز حدود ۲۵۰۰ متر",
+      "status": "provisional"
+    },
+    "dorfak_south_estakhrgah": {
+      "name": "روستای استخرگاه",
+      "latitude": 36.863216,
+      "longitude": 49.628591,
+      "elevation_m": 682,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۶۸۲ متر؛ waypoint GPX روستا حدود ۶۸۱ متر",
+      "status": "provisional"
+    },
+    "dorfak_south_spring": {
+      "name": "چشمهٔ مسیر استخرگاه",
+      "latitude": 36.894708,
+      "longitude": 49.657807,
+      "elevation_m": 1902,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۰۲ متر؛ waypoint GPX چشمه حدود ۱۹۱۰ متر",
+      "status": "provisional"
+    },
+    "dorfak_south_forest_edge": {
+      "name": "لبهٔ جنگل مسیر استخرگاه",
+      "latitude": 36.894637,
+      "longitude": 49.664585,
+      "elevation_m": 2130,
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۲۱۳۰ متر؛ waypoint GPX شروع جنگل حدود ۲۱۴۶ متر",
+      "status": "provisional"
+    }
+  },
+  "routes": {
+    "shah_shahidan_to_dorfak": {
+      "slug": "dorfak-shah-shahidan",
+      "title": "شاه‌شهیدان تا قلهٔ درفک",
+      "subtitle": "مسیر شرقی درفک از شاه‌شهیدان، تیرهای برق و چشمه تا قله",
+      "trail_label": "مسیر شرقی شاه‌شهیدان",
+      "origin": "شاه‌شهیدان",
+      "destination_label": "قلهٔ درفک",
+      "region": "البرز غربی · گیلان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "dorfak_east_shah_shahidan",
+        "dorfak_east_tir_bargh",
+        "dorfak_east_cheshmeh",
+        "dorfak_east_ghar_yakhi",
+        "dorfak_summit"
+      ],
+      "distance_km": 14.4,
+      "ascent_m": 1090,
+      "one_way_minutes": 360,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "dorfak-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+          "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+          "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+        ],
+        "evidence_tracks": [
+          "tracks/dorfak/dorfak-east-shah-shahidan-to-summit-2014.gpx",
+          "tracks/dorfak/dorfak-east-shah-shahidan-roundtrip-2024.gpx"
+        ],
+        "notes": [
+          "The 2014 GPX reaches the summit waypoint at approximately 14.43 km; its timestamp ordering is not usable for moving-time.",
+          "The 2024 independent GPX is a round-trip cross-check and is not used as a one-way timing source.",
+          "GPX elevation is reference evidence; catalog weather elevations use Open-Meteo GLO-90 DEM with waypoint cross-check."
+        ],
+        "cumulative_minutes": {
+          "dorfak_east_shah_shahidan": 0,
+          "dorfak_east_tir_bargh": 70,
+          "dorfak_east_cheshmeh": 165,
+          "dorfak_east_ghar_yakhi": 270,
+          "dorfak_summit": 360
+        }
+      }
+    },
+    "shirkuh_to_dorfak": {
+      "slug": "dorfak-shirkuh",
+      "title": "شیرکوه تا قلهٔ درفک",
+      "subtitle": "مسیر غربی درفک از شیرکوه، لارنه و جیرونی تا قله",
+      "trail_label": "مسیر غربی شیرکوه",
+      "origin": "شیرکوه",
+      "destination_label": "قلهٔ درفک",
+      "region": "البرز غربی · گیلان",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "dorfak_west_shirkuh",
+        "dorfak_west_larneh",
+        "dorfak_west_jeyruni_spring",
+        "dorfak_west_defraz_ridge",
+        "dorfak_summit"
+      ],
+      "distance_km": 15.8,
+      "ascent_m": 2460,
+      "one_way_minutes": 480,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "dorfak-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+          "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+          "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+        ],
+        "evidence_tracks": [
+          "tracks/dorfak/dorfak-west-shirkuh-larneh-jeyruni-to-summit-2017.gpx",
+          "tracks/dorfak/dorfak-west-shirkuh-to-jeyruni-2017.gpx"
+        ],
+        "notes": [
+          "The full 2017 GPX runs from the Shirkuh mosque area to the summit area and reports approximately 15.84 km geometry.",
+          "The full-track timestamps are export-generated and are used for geometry only; the shorter independent track is a route cross-check.",
+          "GPX elevation is reference evidence; catalog weather elevations use Open-Meteo GLO-90 DEM with waypoint cross-check."
+        ],
+        "cumulative_minutes": {
+          "dorfak_west_shirkuh": 0,
+          "dorfak_west_larneh": 145,
+          "dorfak_west_jeyruni_spring": 300,
+          "dorfak_west_defraz_ridge": 420,
+          "dorfak_summit": 480
+        }
+      }
+    },
+    "estakhrgah_to_dorfak": {
+      "slug": "dorfak-estakhrgah",
+      "title": "استخرگاه تا قلهٔ درفک",
+      "subtitle": "مسیر جنوبی جنگلی درفک از استخرگاه، چشمه و لبهٔ جنگل تا قله",
+      "trail_label": "مسیر جنوبی استخرگاه",
+      "origin": "استخرگاه",
+      "destination_label": "قلهٔ درفک",
+      "region": "البرز غربی · گیلان",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "dorfak_south_estakhrgah",
+        "dorfak_south_spring",
+        "dorfak_south_forest_edge",
+        "dorfak_summit"
+      ],
+      "distance_km": 11.5,
+      "ascent_m": 1835,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "reversed-gpx-geometry+web-report-v1",
+        "version": "dorfak-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848",
+          "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+        ],
+        "evidence_tracks": [
+          "tracks/dorfak/dorfak-south-summit-to-estakhrgah-descent-2017.gpx"
+        ],
+        "notes": [
+          "The source GPX and report are summit-to-Estakhrgah descent evidence; the route is displayed in the reverse direction as Estakhrgah-to-summit ascent.",
+          "The source track begins approximately 1 km from the canonical summit coordinate; the final summit point is catalog evidence and the route timing is provisional.",
+          "The generic source waypoint محل استراحت is intentionally excluded from public route points.",
+          "The source report describes one spring on the forest route; carry sufficient water."
+        ],
+        "cumulative_minutes": {
+          "dorfak_south_estakhrgah": 0,
+          "dorfak_south_spring": 180,
+          "dorfak_south_forest_edge": 215,
+          "dorfak_summit": 360
+        }
+      }
+    }
+  }
+}
