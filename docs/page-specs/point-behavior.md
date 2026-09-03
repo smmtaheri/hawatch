@@ -7,8 +7,8 @@
 - Home autocomplete → `/points/{slug}`
 - Route timeline/card → `/points/{slug}` + `state.fromRoute`
 - URL مستقیم / share / refresh
-- Legacy `/routes/{route}/points/{point}` → redirect به canonical
-- WeatherPoint با Destination profile → `/destination/{slug}`
+- لینک نقطهٔ مقصد از مسیر مستقیماً به `/destination/{slug}` ساخته می‌شود؛ endpoint
+  و URL legacy برای سازگاری نگه‌داری نمی‌شود.
 
 ## API
 
@@ -33,6 +33,6 @@ day/period مانند Destination (URL بعد از انتخاب صریح sync م
 ## acceptance
 
 - [ ] همان shell مقصد
-- [ ] `/points/tochal_summit` → `/destination/touchal`
+- [ ] نقطهٔ مقصد توچال فقط از `/destination/tochal` قابل دسترسی عمومی است
 - [ ] dark/light route cards روی surface مشترک
 - [ ] بدون overflow

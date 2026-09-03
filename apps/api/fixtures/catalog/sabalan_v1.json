@@ -27,71 +27,184 @@
       "elevation_m": 4811,
       "kind": "destination",
       "status": "provisional",
-      "elevation_source": "ارتفاع رایج قلهٔ سلطان سبلان حدود ۴۸۱۱ متر؛ مختصات با نزدیک‌ترین رسیدن ترک غربی و نقاط قلهٔ ترک شمال‌شرقی تطبیق شده؛ ارتفاع GPX مرجع است و DEM برای اعتبارسنجی provider استفاده می‌شود."
+      "elevation_source": "ارتفاع رایج قلهٔ سلطان سبلان حدود ۴۸۱۱ متر؛ مختصات با نزدیک‌ترین رسیدن ترک غربی و نقاط قلهٔ ترک شمال‌شرقی تطبیق شده؛ ارتفاع GPX مرجع است و DEM برای اعتبارسنجی provider استفاده می‌شود.",
+      "page_name": "قلهٔ سبلان",
+      "short_label": "قلهٔ سبلان",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ سبلان؛ نقطهٔ summit در محدودهٔ قلهٔ سبلان",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-pnhgh-sbln-t-qlh-sltn-swlnmsyr-shml-shrqy-shnbh-1401-05-08-110484540",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86",
+        "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
+        "https://www.wikiloc.com/hiking-trails/sbln-sltn-swln-4811-mtr-swd-z-grby-frwd-shml-shrqy-177135931",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-sbln-z-msyr-qrtl-w-frwd-bh-pnhgh-144282409",
+        "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361"
+      ]
     },
-    "sabalan_ne_shabil_trailhead": {
-      "name": "شابیل · ابتدای پیاده‌روی",
+    "sabalan-ne-shabil-trailhead": {
+      "name": "شابیل",
       "latitude": 38.327692,
       "longitude": 47.844205,
       "elevation_m": 2696,
       "status": "provisional",
-      "elevation_source": "Waypoint ترک شابیل تا قله: ۲۶۹۶ متر؛ Open-Meteo GLO-90 DEM و نقطهٔ آغاز پیاده‌روی برای cross-check."
+      "elevation_source": "Waypoint ترک شابیل تا قله: ۲۶۹۶ متر؛ Open-Meteo GLO-90 DEM و نقطهٔ آغاز پیاده‌روی برای cross-check.",
+      "page_name": "شابیل، ابتدای مسیر شمال‌شرقی سبلان",
+      "short_label": "شابیل",
+      "place_type": "trailhead",
+      "aliases": [],
+      "identity_summary": "شابیل · ابتدای پیاده‌روی؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-pnhgh-sbln-t-qlh-sltn-swlnmsyr-shml-shrqy-shnbh-1401-05-08-110484540",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+      ]
     },
-    "sabalan_ne_east_hut": {
+    "sabalan-ne-east-hut": {
       "name": "پناهگاه شمال‌شرقی سبلان",
       "latitude": 38.282997,
       "longitude": 47.860844,
       "elevation_m": 3689,
       "status": "provisional",
-      "elevation_source": "Waypoint ترک مستقل پناهگاه تا قله: ۳۶۸۸.۹ متر؛ با پناهگاه ترک شابیل و DEM تطبیق می‌شود."
+      "elevation_source": "Waypoint ترک مستقل پناهگاه تا قله: ۳۶۸۸.۹ متر؛ با پناهگاه ترک شابیل و DEM تطبیق می‌شود.",
+      "page_name": "پناهگاه شمال‌شرقی سبلان",
+      "short_label": "پناهگاه شمال‌شرقی سبلان",
+      "place_type": "shelter",
+      "aliases": [],
+      "identity_summary": "پناهگاه شمال‌شرقی سبلان؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-pnhgh-sbln-t-qlh-sltn-swlnmsyr-shml-shrqy-shnbh-1401-05-08-110484540",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+      ]
     },
-    "sabalan_ne_crater_lake": {
+    "sabalan-ne-crater-lake": {
       "name": "دریاچهٔ دهانهٔ سبلان",
       "latitude": 38.267809,
       "longitude": 47.837558,
       "elevation_m": 4789,
       "status": "provisional",
-      "elevation_source": "Waypoint دریاچهٔ سبلان در ترک شابیل: ۴۷۸۸.۹ متر؛ GPX مرجع و DEM برای cross-check."
+      "elevation_source": "Waypoint دریاچهٔ سبلان در ترک شابیل: ۴۷۸۸.۹ متر؛ GPX مرجع و DEM برای cross-check.",
+      "page_name": "دریاچهٔ دهانهٔ سبلان",
+      "short_label": "دریاچهٔ دهانهٔ سبلان",
+      "place_type": "lake",
+      "aliases": [],
+      "identity_summary": "دریاچهٔ دهانهٔ سبلان؛ نقطهٔ lake در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-pnhgh-sbln-t-qlh-sltn-swlnmsyr-shml-shrqy-shnbh-1401-05-08-110484540",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+      ]
     },
-    "sabalan_west_trailhead": {
+    "sabalan-west-trailhead": {
       "name": "پای کار جبههٔ غربی سبلان",
       "latitude": 38.282732,
       "longitude": 47.801526,
       "elevation_m": 3394,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: ۳۳۹۴ متر در مختصات پای کار غربی؛ مقدار GPX حدود ۳۲۰۵ متر به‌عنوان مرجع خام ثبت شده و به‌دلیل اختلاف، حقیقت catalog محسوب نشده است."
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۳۳۹۴ متر در مختصات پای کار غربی؛ مقدار GPX حدود ۳۲۰۵ متر به‌عنوان مرجع خام ثبت شده و به‌دلیل اختلاف، حقیقت catalog محسوب نشده است.",
+      "page_name": "پای کار جبههٔ غربی سبلان",
+      "short_label": "پای کار جبههٔ غربی سبلان",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "پای کار جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
+        "https://www.wikiloc.com/hiking-trails/sbln-sltn-swln-4811-mtr-swd-z-grby-frwd-shml-shrqy-177135931",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-sbln-z-msyr-qrtl-w-frwd-bh-pnhgh-144282409"
+      ]
     },
-    "sabalan_west_gateway": {
+    "sabalan-west-gateway": {
       "name": "دروازهٔ جبههٔ غربی سبلان",
       "latitude": 38.277288,
       "longitude": 47.820931,
       "elevation_m": 4112,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک صعود غربی: حدود ۴۱۱۲ متر؛ GPX مرجع و DEM برای cross-check."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک صعود غربی: حدود ۴۱۱۲ متر؛ GPX مرجع و DEM برای cross-check.",
+      "page_name": "دروازهٔ جبههٔ غربی سبلان",
+      "short_label": "دروازهٔ جبههٔ غربی سبلان",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "دروازهٔ جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
+        "https://www.wikiloc.com/hiking-trails/sbln-sltn-swln-4811-mtr-swd-z-grby-frwd-shml-shrqy-177135931",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-sbln-z-msyr-qrtl-w-frwd-bh-pnhgh-144282409"
+      ]
     },
-    "sabalan_west_qartal_dashi": {
-      "name": "قارتال‌داشی · پناهگاه غربی",
+    "sabalan-west-qartal-dashi": {
+      "name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)",
       "latitude": 38.273331,
       "longitude": 47.822509,
       "elevation_m": 4233,
       "status": "provisional",
-      "elevation_source": "Waypoint قارتال‌داشی/پناهگاه غربی در ترک غربی: حدود ۴۲۳۳ متر؛ GPX مرجع و DEM برای cross-check."
+      "elevation_source": "Waypoint قارتال‌داشی/پناهگاه غربی در ترک غربی: حدود ۴۲۳۳ متر؛ GPX مرجع و DEM برای cross-check.",
+      "page_name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)",
+      "short_label": "سنگ قارتال‌داشی",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "قارتال‌داشی · پناهگاه غربی؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
+        "https://www.wikiloc.com/hiking-trails/sbln-sltn-swln-4811-mtr-swd-z-grby-frwd-shml-shrqy-177135931",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-sbln-z-msyr-qrtl-w-frwd-bh-pnhgh-144282409"
+      ]
     },
-    "sabalan_se_chay_goozi_trailhead": {
-      "name": "چای‌گوزی · ابتدای مسیر جنوب‌شرقی",
+    "sabalan-se-chay-goozi-trailhead": {
+      "name": "چای‌گوزی",
       "latitude": 38.243351,
       "longitude": 47.870979,
       "elevation_m": 3441,
       "status": "provisional",
-      "elevation_source": "ابتدای ترک آلوارس/چای‌گوزی تا قله: حدود ۳۴۴۱ متر؛ GPX مرجع و DEM برای cross-check."
+      "elevation_source": "ابتدای ترک آلوارس/چای‌گوزی تا قله: حدود ۳۴۴۱ متر؛ GPX مرجع و DEM برای cross-check.",
+      "page_name": "چای‌گوزی، ابتدای مسیر جنوب‌شرقی سبلان",
+      "short_label": "چای‌گوزی",
+      "place_type": "trailhead",
+      "aliases": [],
+      "identity_summary": "چای‌گوزی · ابتدای مسیر جنوب‌شرقی؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+      ]
     },
-    "sabalan_se_mehrab_dashi": {
+    "sabalan-se-mehrab-dashi": {
       "name": "محراب‌داشی جنوب‌شرقی سبلان",
-      "latitude": 38.266610,
+      "latitude": 38.26661,
       "longitude": 47.842089,
       "elevation_m": 4741,
       "status": "provisional",
-      "elevation_source": "Waypoint محراب در ترک جنوب‌شرقی: حدود ۴۷۴۱ متر؛ عارضهٔ نام‌گذاری‌شده و نزدیک قله، با DEM cross-check."
+      "elevation_source": "Waypoint محراب در ترک جنوب‌شرقی: حدود ۴۷۴۱ متر؛ عارضهٔ نام‌گذاری‌شده و نزدیک قله، با DEM cross-check.",
+      "page_name": "محراب‌داشی جنوب‌شرقی سبلان",
+      "short_label": "محراب‌داشی جنوب‌شرقی سبلان",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "محراب‌داشی جنوب‌شرقی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361",
+        "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
+      ]
     }
   },
   "routes": {
@@ -106,9 +219,9 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "sabalan_ne_shabil_trailhead",
-        "sabalan_ne_east_hut",
-        "sabalan_ne_crater_lake",
+        "sabalan-ne-shabil-trailhead",
+        "sabalan-ne-east-hut",
+        "sabalan-ne-crater-lake",
         "sabalan_summit"
       ],
       "distance_km": 10.3,
@@ -136,12 +249,14 @@
           "این مسیر در ارتفاع بالا قرار دارد؛ نبود آب در بخش صعود طبق گزارش‌ها باید در متن ایمنی/تجهیزات لحاظ شود."
         ],
         "cumulative_minutes": {
-          "sabalan_ne_shabil_trailhead": 0,
-          "sabalan_ne_east_hut": 300,
-          "sabalan_ne_crater_lake": 540,
+          "sabalan-ne-shabil-trailhead": 0,
+          "sabalan-ne-east-hut": 300,
+          "sabalan-ne-crater-lake": 540,
           "sabalan_summit": 570
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "west_qartal_dashi_to_sabalan": {
       "slug": "sabalan-west-qartal-dashi",
@@ -154,9 +269,9 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "sabalan_west_trailhead",
-        "sabalan_west_gateway",
-        "sabalan_west_qartal_dashi",
+        "sabalan-west-trailhead",
+        "sabalan-west-gateway",
+        "sabalan-west-qartal-dashi",
         "sabalan_summit"
       ],
       "distance_km": 6.5,
@@ -184,12 +299,14 @@
           "ارتفاع GPX مرجع است و برای weather point از مقدار catalog و اعتبارسنجی DEM/provider استفاده می‌شود."
         ],
         "cumulative_minutes": {
-          "sabalan_west_trailhead": 0,
-          "sabalan_west_gateway": 180,
-          "sabalan_west_qartal_dashi": 285,
+          "sabalan-west-trailhead": 0,
+          "sabalan-west-gateway": 180,
+          "sabalan-west-qartal-dashi": 285,
           "sabalan_summit": 420
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "southeast_alvares_to_sabalan": {
       "slug": "sabalan-southeast-alvares",
@@ -202,8 +319,8 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "sabalan_se_chay_goozi_trailhead",
-        "sabalan_se_mehrab_dashi",
+        "sabalan-se-chay-goozi-trailhead",
+        "sabalan-se-mehrab-dashi",
         "sabalan_summit"
       ],
       "distance_km": 4.8,
@@ -231,11 +348,13 @@
           "مسیر جنوب‌شرقی شیب‌دار و ارتفاع‌بالاست و زمان آن تخمینی با عدم‌قطعیت ثبت شده است."
         ],
         "cumulative_minutes": {
-          "sabalan_se_chay_goozi_trailhead": 0,
-          "sabalan_se_mehrab_dashi": 345,
+          "sabalan-se-chay-goozi-trailhead": 0,
+          "sabalan-se-mehrab-dashi": 345,
           "sabalan_summit": 390
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

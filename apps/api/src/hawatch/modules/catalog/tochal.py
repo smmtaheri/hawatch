@@ -9,11 +9,11 @@ from hawatch.modules.catalog.catalog import (
 
 TOCHAL_CATALOG_FILE = DEFAULT_CATALOG_FILE
 TOCHAL_ROUTE_SLUGS = {
-    "touchal-darband",
-    "touchal-welanjak",
-    "touchal-kalkchal",
-    "touchal-ahar",
-    "touchal-shahrestanak",
+    "tochal-darband",
+    "tochal-velenjak",
+    "tochal-kolakchal",
+    "tochal-ahar",
+    "tochal-shahrestanak",
 }
 
 

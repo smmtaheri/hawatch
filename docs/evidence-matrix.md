@@ -121,7 +121,7 @@
 | --- | --- | --- |
 | جست‌وجوی unified Home | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/components/SearchCombobox.tsx`، `features/home/HomePage.tsx` و `apps/web/src/api/client.ts`; پیشنهادها از `/api/v1/search/suggestions/` می‌آیند، حداقل دو کاراکتر و debounce حدود ۲۰۰ms دارند، و submit destination-only fallback ندارد. |
 | نتیجهٔ خطای جست‌وجو | `LOCAL-IMPLEMENTATION` | SearchCombobox وضعیت error را نگه می‌دارد و Home پیام خطا و retry ارائه می‌کند؛ query از بین نمی‌رود. |
-| صفحهٔ canonical نقطه | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/features/point/PointDetailPage.tsx` و `PointNavigation.tsx`؛ مسیر عمومی `/points/{slug}`، بدون timing planner و با related routes در ورود مستقیم. |
+| صفحهٔ canonical نقطه | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/features/point/PointDetailPage.tsx` به‌عنوان wrapper و `apps/web/src/features/place/PlaceForecastPage.tsx`؛ مسیر عمومی `/points/{slug}`، بدون timing planner و با related routes در ورود مستقیم. |
 | API نقطه و جست‌وجو | `LOCAL-IMPLEMENTATION` | `apps/api/src/hawatch/api/v1/urls.py` و `views.py`؛ endpointهای point forecast و search suggestions اجرایی‌اند. |
 | Route → Point و back context | `LOCAL-IMPLEMENTATION` | Route point links URL تمیز می‌سازند؛ `location.state.fromRoute` شامل pathname/search/href است و queryهای `date`، `period`، `start_time` و `speed` را برای بازگشت restore می‌کند. |
 | period فعلی | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/api/src/hawatch/common/time.py` و `apps/web/src/lib/periods.ts`؛ Asia/Tehran و چهار پنجرهٔ نیمه‌شب ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ با سه ساعت دوساعته در هر پنجره. |

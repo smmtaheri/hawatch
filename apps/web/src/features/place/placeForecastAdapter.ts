@@ -58,27 +58,6 @@ export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecas
   };
 }
 
-export function shouldRedirectPointToDestination(payload: PlaceForecastResponse): string | null {
-  const canonical = payload.subject?.canonical_href;
-  if (canonical?.startsWith("/destination/")) {
-    return canonical;
-  }
-  return null;
-}
-
-export function buildCanonicalRedirectTarget(
-  canonicalPath: string,
-  searchParams: URLSearchParams,
-): string {
-  const next = new URLSearchParams();
-  const date = searchParams.get("date");
-  const period = searchParams.get("period");
-  if (date) next.set("date", date);
-  if (period) next.set("period", period);
-  const query = next.toString();
-  return query ? `${canonicalPath}?${query}` : canonicalPath;
-}
-
 export function asSelectedPeriod(value: string | undefined | null): PeriodId | undefined {
   return asPeriodId(value);
 }

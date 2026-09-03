@@ -2,7 +2,7 @@
 
 ## ورودی
 
-`destinationSlug` باید از catalog resolve شود. نمونهٔ اصلی `/destination/touchal` است. بدون مقصد معتبر، not-found با مسیر Home نمایش داده شود.
+`destinationSlug` باید از catalog resolve شود. نمونهٔ اصلی `/destination/tochal` است. بدون مقصد معتبر، not-found با مسیر Home نمایش داده شود.
 
 ## کنترل‌های forecast
 

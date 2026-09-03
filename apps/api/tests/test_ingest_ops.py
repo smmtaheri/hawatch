@@ -216,13 +216,13 @@ def test_legacy_route_point_association_backfill():
 @pytest.mark.django_db
 def test_retention_on_success_partial_and_total_failure():
     seed_tochal_catalog()
-    sarband = WeatherPoint.objects.get(slug="sarband")
-    shirpala = WeatherPoint.objects.get(slug="shirpala")
+    sarband = WeatherPoint.objects.get(slug="tochal-sarband-square")
+    shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
     now = dj_timezone.now()
 
     old_usable = persist_ingest(
         weather_points=[sarband],
-        batch_results=[_ok_batch(["sarband"], hours=4)],
+        batch_results=[_ok_batch(["tochal-sarband-square"], hours=4)],
     )
     ForecastSnapshot.objects.filter(pk=old_usable.pk).update(generated_at=now - timedelta(days=10))
     old_usable.refresh_from_db()
@@ -242,7 +242,7 @@ def test_retention_on_success_partial_and_total_failure():
     # Success path creates a new latest usable and must retain it while cleaning older raw rows.
     success = persist_ingest(
         weather_points=[sarband],
-        batch_results=[_ok_batch(["sarband"], hours=5)],
+        batch_results=[_ok_batch(["tochal-sarband-square"], hours=5)],
     )
     assert success.status == ForecastSnapshot.Status.SUCCESS
     assert not ForecastSnapshot.objects.filter(pk=old_failed.pk).exists()
@@ -268,7 +268,7 @@ def test_retention_on_success_partial_and_total_failure():
     # Total failure still runs retention and must not delete latest usable / its records.
     returned = persist_ingest(
         weather_points=[sarband, shirpala],
-        batch_results=[_fail_batch(["sarband"]), _fail_batch(["shirpala"])],
+        batch_results=[_fail_batch(["tochal-sarband-square"]), _fail_batch(["tochal-shirpala-shelter"])],
     )
     assert returned.pk == usable_before_fail
     assert ForecastSnapshot.objects.filter(pk=usable_before_fail).exists()
@@ -290,7 +290,7 @@ def test_retention_on_success_partial_and_total_failure():
     )
     persist_ingest(
         weather_points=[sarband, shirpala],
-        batch_results=[_ok_batch(["sarband"], hours=3), _fail_batch(["shirpala"])],
+        batch_results=[_ok_batch(["tochal-sarband-square"], hours=3), _fail_batch(["tochal-shirpala-shelter"])],
     )
     assert not ForecastSnapshot.objects.filter(pk=another_old_failed.pk).exists()
     assert ForecastSnapshot.objects.filter(status=ForecastSnapshot.Status.PARTIAL).exists()

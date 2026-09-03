@@ -1,7 +1,8 @@
 {
   "catalog_version": "hawatch-tochal-catalog-v6",
+  "destination_weather_point": "tochal_summit",
   "destination": {
-    "slug": "touchal",
+    "slug": "tochal",
     "tile_name": "توچال",
     "name": "قلهٔ توچال",
     "short_category": "کوهنوردی",
@@ -11,7 +12,7 @@
     "elevation_m": 3955,
     "latitude": 35.8843493,
     "longitude": 51.4198766,
-    "image": "/images/destinations/touchal.jpg",
+    "image": "/images/touchal-banner-clean.png",
     "image_alt": "قلهٔ توچال",
     "popular_order": 1,
     "climate": "alpine",
@@ -19,246 +20,680 @@
     "is_active": true
   },
   "weather_points": {
-    "sarband": {
-      "name": "سربند",
+    "tochal-sarband-square": {
+      "name": "میدان سربند",
       "latitude": 35.8280442,
       "longitude": 51.4266129,
-      "elevation_m": 1820
+      "elevation_m": 1820,
+      "page_name": "میدان سربند، ابتدای مسیر دربند–توچال",
+      "short_label": "سربند",
+      "place_type": "trailhead",
+      "aliases": [],
+      "identity_summary": "میدان سربند، ابتدای مسیر دربند–توچال؛ نقطهٔ trailhead در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184"
+      ]
     },
-    "pas_ghaleh": {
-      "name": "پس‌قلعه",
+    "tochal-pas-ghaleh-village": {
+      "name": "روستای پس‌قلعه",
       "latitude": 35.836195,
       "longitude": 51.4233411,
-      "elevation_m": 1936
+      "elevation_m": 1936,
+      "page_name": "روستای پس‌قلعه، ابتدای مسیر دربند–توچال",
+      "short_label": "پس‌قلعه",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای پس‌قلعه، ابتدای مسیر دربند–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184"
+      ]
     },
-    "shirpala": {
-      "name": "شیرپلا",
+    "tochal-shirpala-shelter": {
+      "name": "پناهگاه شیرپلا",
       "latitude": 35.8550662,
       "longitude": 51.4295976,
-      "elevation_m": 2750
+      "elevation_m": 2750,
+      "page_name": "پناهگاه شیرپلا در مسیر دربند–توچال",
+      "short_label": "شیرپلا",
+      "place_type": "shelter",
+      "aliases": [],
+      "identity_summary": "پناهگاه شیرپلا در مسیر دربند–توچال؛ نقطهٔ shelter در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184"
+      ]
     },
-    "amiri": {
+    "tochal-amiri-shelter": {
       "name": "جان‌پناه امیری",
-      "aliases": ["امیری", "جان پناه امیری", "پناهگاه امیری", "Amiri Shelter"],
+      "aliases": [
+        "امیری",
+        "جان پناه امیری",
+        "پناهگاه امیری",
+        "Amiri Shelter"
+      ],
       "latitude": 35.8690223,
       "longitude": 51.4194867,
-      "elevation_m": 3390
+      "elevation_m": 3390,
+      "page_name": "جان‌پناه امیری در مسیر دربند–توچال",
+      "short_label": "امیری",
+      "place_type": "shelter",
+      "identity_summary": "جان‌پناه امیری در مسیر دربند–توچال؛ نقطهٔ shelter در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184"
+      ]
     },
-    "goleband": {
-      "name": "گوله‌بند",
+    "tochal-goleband-ridge": {
+      "name": "یال گوله‌بند توچال",
       "latitude": 35.8809109,
       "longitude": 51.422138,
-      "elevation_m": 3860
+      "elevation_m": 3860,
+      "page_name": "یال گوله‌بند توچال",
+      "short_label": "یال گوله‌بند",
+      "place_type": "ridge",
+      "aliases": [
+        "یال کوله‌بند",
+        "گوله‌بند",
+        "کوله‌بند"
+      ],
+      "identity_summary": "یال گوله‌بند توچال؛ نقطهٔ ridge در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
     "tochal_summit": {
       "name": "قلهٔ توچال",
       "latitude": 35.8843493,
       "longitude": 51.4198766,
       "elevation_m": 3955,
-      "kind": "destination"
+      "kind": "destination",
+      "page_name": "قلهٔ توچال",
+      "short_label": "قلهٔ توچال",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "velenjak": {
+    "tochal-velenjak-village": {
       "name": "ولنجک",
       "latitude": 35.8066647,
       "longitude": 51.4013931,
       "elevation_m": 1755,
       "status": "provisional",
-      "elevation_source": "MAPLOGS 1755 m; Open-Meteo GLO-90 DEM 1754 m"
+      "elevation_source": "MAPLOGS 1755 m; Open-Meteo GLO-90 DEM 1754 m",
+      "page_name": "ولنجک",
+      "short_label": "ولنجک",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "ولنجک؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://open-meteo.com/en/docs"
+      ]
     },
-    "velenjak_parking": {
-      "name": "پارکینگ ولنجک",
+    "tochal-velenjak-parking": {
+      "name": "پارکینگ مجموعهٔ توچال در ولنجک",
       "latitude": 35.814532,
       "longitude": 51.400885,
       "elevation_m": 1852,
       "status": "provisional",
       "elevation_source": "Wikiloc waypoint 1852 m; independent mountain report ~1845 m; Open-Meteo GLO-90 DEM at catalog coordinate 1869 m; provisional catalog value 1852 m",
-      "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). GPX elevation is reference-only; catalog value is based on independent waypoint/report evidence and DEM cross-check."
+      "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). GPX elevation is reference-only; catalog value is based on independent waypoint/report evidence and DEM cross-check.",
+      "page_name": "پارکینگ مجموعهٔ توچال در ولنجک",
+      "short_label": "پارکینگ ولنجک",
+      "place_type": "parking",
+      "aliases": [],
+      "identity_summary": "پارکینگ مجموعهٔ توچال در ولنجک؛ نقطهٔ parking در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165"
+      ]
     },
-    "station_1": {
-      "name": "ایستگاه ۱ توچال",
-      "aliases": ["ایستگاه یک توچال", "ایستگاه ۱"],
+    "tochal-telecabin-station-1": {
+      "name": "ایستگاه ۱ تله‌کابین توچال",
+      "aliases": [
+        "ایستگاه یک توچال",
+        "ایستگاه ۱"
+      ],
       "latitude": 35.8197134,
       "longitude": 51.4073045,
-      "elevation_m": 1910
+      "elevation_m": 1910,
+      "page_name": "ایستگاه ۱ تله‌کابین توچال",
+      "short_label": "ایستگاه ۱",
+      "place_type": "landmark",
+      "identity_summary": "ایستگاه ۱ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165"
+      ]
     },
-    "station_2": {
-      "name": "ایستگاه ۲ توچال",
-      "aliases": ["ایستگاه دو توچال", "ایستگاه ۲"],
+    "tochal-telecabin-station-2": {
+      "name": "ایستگاه ۲ تله‌کابین توچال",
+      "aliases": [
+        "ایستگاه دو توچال",
+        "ایستگاه ۲"
+      ],
       "latitude": 35.8324887,
       "longitude": 51.4082985,
-      "elevation_m": 2400
+      "elevation_m": 2400,
+      "page_name": "ایستگاه ۲ تله‌کابین توچال",
+      "short_label": "ایستگاه ۲",
+      "place_type": "landmark",
+      "identity_summary": "ایستگاه ۲ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165"
+      ]
     },
-    "station_5": {
-      "name": "ایستگاه ۵ توچال",
-      "aliases": ["ایستگاه پنج توچال", "ایستگاه ۵"],
+    "tochal-telecabin-station-5": {
+      "name": "ایستگاه ۵ تله‌کابین توچال",
+      "aliases": [
+        "ایستگاه پنج توچال",
+        "ایستگاه ۵"
+      ],
       "latitude": 35.8577437,
       "longitude": 51.399779,
-      "elevation_m": 2935
+      "elevation_m": 2935,
+      "page_name": "ایستگاه ۵ تله‌کابین توچال",
+      "short_label": "ایستگاه ۵",
+      "place_type": "landmark",
+      "identity_summary": "ایستگاه ۵ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165"
+      ]
     },
-    "station_7": {
-      "name": "ایستگاه ۷ توچال",
-      "aliases": ["ایستگاه هفت توچال", "ایستگاه ۷"],
+    "tochal-telecabin-station-7": {
+      "name": "ایستگاه ۷ تله‌کابین توچال",
+      "aliases": [
+        "ایستگاه هفت توچال",
+        "ایستگاه ۷"
+      ],
       "latitude": 35.8818454,
       "longitude": 51.4083173,
-      "elevation_m": 3746
+      "elevation_m": 3746,
+      "page_name": "ایستگاه ۷ تله‌کابین توچال",
+      "short_label": "ایستگاه ۷",
+      "place_type": "landmark",
+      "identity_summary": "ایستگاه ۷ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "tochal_hotel": {
+    "tochal-hotel": {
       "name": "هتل توچال",
       "latitude": 35.8875022,
       "longitude": 51.4011816,
       "elevation_m": 3545,
       "status": "provisional",
       "elevation_source": "ToIran/IranHotelOnline and independent tourism listings: 3545 m; PBF hotel way has no ele; GLO-90 DEM 3581 m",
-      "evidence_note": "Related POI; not a mandatory timed point on the main Velenjak ascent."
+      "evidence_note": "Related POI; not a mandatory timed point on the main Velenjak ascent.",
+      "page_name": "هتل توچال",
+      "short_label": "هتل توچال",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "هتل توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "kolakchal_camp": {
-      "name": "کمپ کلکچال",
+    "tochal-kolakchal-camp": {
+      "name": "پناهگاه و اردوگاه کلک‌چال",
       "latitude": 35.8451707,
       "longitude": 51.4520154,
       "elevation_m": 2600,
       "status": "provisional",
-      "elevation_source": "Wikiloc/Tochal Club/kuhnavardi references: 2600 m; PBF shelter area has no ele; GLO-90 DEM 2618 m"
+      "elevation_source": "Wikiloc/Tochal Club/kuhnavardi references: 2600 m; PBF shelter area has no ele; GLO-90 DEM 2618 m",
+      "page_name": "پناهگاه و اردوگاه کلک‌چال در مسیر توچال",
+      "short_label": "کلک‌چال",
+      "place_type": "camp",
+      "aliases": [
+        "کلکچال",
+        "کولکچال",
+        "اردوگاه کلک‌چال"
+      ],
+      "identity_summary": "پناهگاه و اردوگاه کلک‌چال در مسیر توچال؛ نقطهٔ camp در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "espilat_sarlo_pass": {
+    "tochal-espilat-sarlo-pass": {
       "name": "گردنهٔ اسپیلات‌سرلو",
       "latitude": 35.8533575,
       "longitude": 51.4426133,
-      "elevation_m": 3030
+      "elevation_m": 3030,
+      "page_name": "گردنهٔ اسپیلات‌سرلو",
+      "short_label": "گردنهٔ اسپیلات‌سرلو",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ اسپیلات‌سرلو؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "piyazchal_pass": {
+    "tochal-piyazchal-pass": {
       "name": "گردنهٔ پیازچال",
       "latitude": 35.862396,
       "longitude": 51.4576764,
-      "elevation_m": 3240
+      "elevation_m": 3240,
+      "page_name": "گردنهٔ پیازچال",
+      "short_label": "گردنهٔ پیازچال",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ پیازچال؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "lezoon_east": {
-      "name": "لزون شرقی",
+    "tochal-lezoon-east": {
+      "name": "قلهٔ لزون شرقی",
       "latitude": 35.8694502,
       "longitude": 51.4560851,
-      "elevation_m": 3541
+      "elevation_m": 3541,
+      "page_name": "قلهٔ لزون شرقی",
+      "short_label": "لزون شرقی",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "لزون شرقی؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "lezoon_west": {
-      "name": "لزون غربی",
+    "tochal-lezoon-west": {
+      "name": "قلهٔ لزون غربی",
       "latitude": 35.8723391,
       "longitude": 51.4475049,
-      "elevation_m": 3585
+      "elevation_m": 3585,
+      "page_name": "قلهٔ لزون غربی",
+      "short_label": "لزون غربی",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "لزون غربی؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "barfchal": {
-      "name": "برف‌چال",
+    "tochal-barfchal-peak": {
+      "name": "قلهٔ برف‌چال توچال",
       "latitude": 35.8744485,
       "longitude": 51.437369,
-      "elevation_m": 3680
+      "elevation_m": 3680,
+      "page_name": "قلهٔ برف‌چال در مسیر توچال",
+      "short_label": "برف‌چال",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ برف‌چال در مسیر توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "chahar_paloon": {
-      "name": "چهارپالون",
+    "tochal-chahar-paloon": {
+      "name": "قلهٔ چهارپالون",
       "latitude": 35.8772831,
       "longitude": 51.430251,
-      "elevation_m": 3786
+      "elevation_m": 3786,
+      "page_name": "قلهٔ چهارپالون در مسیر توچال",
+      "short_label": "چهارپالون",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "چهارپالون؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     },
-    "ahar": {
-      "name": "آهار",
+    "tochal-ahar-village": {
+      "name": "روستای آهار",
       "latitude": 35.9353996,
       "longitude": 51.4635292,
       "elevation_m": 2140,
       "status": "provisional",
-      "elevation_source": "Karnaval/Gardeshgari724 references: 2140 m; PBF village has no ele; GLO-90 DEM 2087 m"
+      "elevation_source": "Karnaval/Gardeshgari724 references: 2140 m; PBF village has no ele; GLO-90 DEM 2087 m",
+      "page_name": "روستای آهار، مبدأ مسیر آهار–توچال",
+      "short_label": "آهار",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای آهار، مبدأ مسیر آهار–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
+      ]
     },
-    "shakarab": {
-      "name": "شکرآب",
+    "tochal-shakarab-ahaar": {
+      "name": "شکرآب آهار",
       "latitude": 35.9282559,
       "longitude": 51.4269378,
       "elevation_m": 2400,
       "status": "provisional",
-      "elevation_source": "Radio Koohestan reference: 2400 m; PBF village has no ele; GLO-90 DEM 2403 m"
+      "elevation_source": "Radio Koohestan reference: 2400 m; PBF village has no ele; GLO-90 DEM 2403 m",
+      "page_name": "شکرآب آهار، نقطهٔ مسیر آهار–توچال",
+      "short_label": "شکرآب آهار",
+      "place_type": "landmark",
+      "aliases": [
+        "آبشار شکرآب"
+      ],
+      "identity_summary": "شکرآب آهار، نقطهٔ مسیر آهار–توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
+      ]
     },
-    "qezqunchal_dopestan": {
-      "name": "قزقون‌چال دوپستان",
+    "tochal-qezqunchal-peak": {
+      "name": "قلهٔ قزقون‌چال",
       "latitude": 35.897018,
       "longitude": 51.4085832,
       "elevation_m": 3780,
-      "evidence_note": "Corrected point for Shakarab/Dopestan; Yal Shakarab–Dopestan is a ridge label, not a WeatherPoint."
+      "evidence_note": "Corrected point for Shakarab/Dopestan; Yal Shakarab–Dopestan is a ridge label, not a WeatherPoint.",
+      "page_name": "قلهٔ قزقون‌چال در مسیر آهار–توچال",
+      "short_label": "قزقون‌چال",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ قزقون‌چال در مسیر آهار–توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
+      ]
     },
-    "homand_tochal": {
-      "name": "هومند توچال",
+    "tochal-homand-tochal": {
+      "name": "قلهٔ هومند توچال",
       "latitude": 35.8851749,
       "longitude": 51.4147832,
-      "elevation_m": 3916
+      "elevation_m": 3916,
+      "page_name": "قلهٔ هومند توچال",
+      "short_label": "هومند توچال",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "هومند توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
+      ]
     },
-    "shahrestanak": {
-      "name": "شهرستانک",
+    "tochal-shahrestanak-village": {
+      "name": "روستای شهرستانک",
       "latitude": 35.9700314,
       "longitude": 51.3539433,
       "elevation_m": 2200,
       "status": "provisional",
-      "elevation_source": "kuhnavardi reference: 2200 m; PBF village has no ele; GLO-90 DEM 2196 m"
+      "elevation_source": "kuhnavardi reference: 2200 m; PBF village has no ele; GLO-90 DEM 2196 m",
+      "page_name": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال",
+      "short_label": "شهرستانک",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "naseri_palace": {
-      "name": "کاخ ناصری",
+    "shahrestanak-naseri-palace": {
+      "name": "کاخ ناصری شهرستانک",
       "latitude": 35.9448941,
       "longitude": 51.3748547,
       "elevation_m": 2316,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM at PBF palace polygon centroid: 2316 m; web waypoint 2319 m and tourism reference 2350 m conflict"
+      "elevation_source": "Open-Meteo GLO-90 DEM at PBF palace polygon centroid: 2316 m; web waypoint 2319 m and tourism reference 2350 m conflict",
+      "page_name": "کاخ ناصری شهرستانک",
+      "short_label": "کاخ ناصری",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "کاخ ناصری شهرستانک؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "shahrestanak_spring": {
+    "tochal-shahrestanak-spring": {
       "name": "چشمهٔ شهرستانک",
       "latitude": 35.937166,
       "longitude": 51.379663,
       "elevation_m": 2601,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM"
+      "elevation_source": "Open-Meteo GLO-90 DEM",
+      "page_name": "چشمهٔ شهرستانک در مسیر توچال",
+      "short_label": "چشمهٔ شهرستانک",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "چشمهٔ شهرستانک؛ نقطهٔ spring در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "shahrestanak_sheepfold_spring": {
+    "tochal-shahrestanak-sheepfold-spring": {
       "name": "چشمه و گوسفندسرا شهرستانک",
-      "aliases": ["چشمه و گوسفندسرا", "گوسفندسرا شهرستانک"],
+      "aliases": [
+        "چشمه و گوسفندسرا",
+        "گوسفندسرا شهرستانک"
+      ],
       "latitude": 35.922711,
       "longitude": 51.386806,
       "elevation_m": 2860,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM"
+      "elevation_source": "Open-Meteo GLO-90 DEM",
+      "page_name": "چشمه و گوسفندسرا شهرستانک در مسیر توچال",
+      "short_label": "چشمه و گوسفندسرا",
+      "place_type": "spring",
+      "identity_summary": "چشمه و گوسفندسرا شهرستانک؛ نقطهٔ spring در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "shahrestanak_pass": {
+    "tochal-shahrestanak-pass": {
       "name": "گردنهٔ شهرستانک",
       "latitude": 35.891651,
       "longitude": 51.389452,
       "elevation_m": 3577,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM",
-      "evidence_note": "Explicitly distinct from Bazarek Pass (bazarek_pass). Named in Shahrestanak valley GPX evidence."
+      "evidence_note": "Explicitly distinct from Bazarek Pass (bazarek_pass). Named in Shahrestanak valley GPX evidence.",
+      "page_name": "گردنهٔ شهرستانک در مسیر توچال",
+      "short_label": "گردنهٔ شهرستانک",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ شهرستانک؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-shhrstnkh-186308660",
+        "https://www.wikiloc.com/hiking-trails/shahrestanak-to-naseri-historical-building-pydh-rwy-z-shhrstnkh-t-khkh-nsry-52826694",
+        "https://www.wikiloc.com/hiking-trails/pydh-rwy-shhrstnkh-bh-khkh-nsry-74364287"
+      ]
     },
-    "naseri_junction": {
-      "name": "سه‌راه ناصری",
+    "tochal-naseri-junction": {
+      "name": "دو راهی کاخ ناصری و توچال",
       "latitude": 35.8876152,
       "longitude": 51.3690618,
       "elevation_m": 3457,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM at PBF junction node: 3457 m; no independent exact web elevation found"
+      "elevation_source": "Open-Meteo GLO-90 DEM at PBF junction node: 3457 m; no independent exact web elevation found",
+      "page_name": "دو راهی کاخ ناصری و توچال",
+      "short_label": "دو راهی ناصری",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "سه‌راه ناصری؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://open-meteo.com/en/docs"
+      ]
     },
-    "bazarek_pass": {
-      "name": "گردنهٔ بازارک",
+    "tochal-bazarek-pass": {
+      "name": "گردنهٔ بازَرک توچال",
       "latitude": 35.8970708,
       "longitude": 51.3659788,
-      "elevation_m": 3610
+      "elevation_m": 3610,
+      "page_name": "گردنهٔ بازَرک در مسیر توچال",
+      "short_label": "گردنهٔ بازَرک",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ بازارک؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://open-meteo.com/en/docs"
+      ]
     },
-    "shahneshin_pass": {
-      "name": "گردنهٔ شاه‌نشین",
+    "tochal-shahneshin-pass": {
+      "name": "گردنهٔ شاه‌نشین توچال",
       "latitude": 35.882724,
       "longitude": 51.3980657,
-      "elevation_m": 3700
+      "elevation_m": 3700,
+      "page_name": "گردنهٔ شاه‌نشین در مسیر توچال",
+      "short_label": "گردنهٔ شاه‌نشین",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ شاه‌نشین؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://open-meteo.com/en/docs"
+      ]
     },
-    "jamshidieh_park": {
+    "tochal-jamshidieh-park": {
       "name": "پارک جمشیدیه",
       "latitude": 35.824629,
       "longitude": 51.465985,
       "elevation_m": 1826,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM",
-      "evidence_note": "Route-specific eastern parking / trail access from GPX evidence for the Kolakchal traverse. The park has multiple entrances; DEM elevation is provisional. GPX <ele> is not catalog truth. piyazchal_pass and lezoon_east remain ~135 m and ~217 m from this track and were not auto-moved."
+      "evidence_note": "Route-specific eastern parking / trail access from GPX evidence for the Kolakchal traverse. The park has multiple entrances; DEM elevation is provisional. GPX <ele> is not catalog truth. piyazchal_pass and lezoon_east remain ~135 m and ~217 m from this track and were not auto-moved.",
+      "page_name": "پارک جمشیدیه",
+      "short_label": "پارک جمشیدیه",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "پارک جمشیدیه؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://mojekooh.com/قله-توچال/",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ]
     }
   },
   "routes": {
     "darband_to_tochal": {
-      "slug": "touchal-darband",
+      "slug": "tochal-darband",
       "title": "دربند تا توچال",
       "subtitle": "از سربند و شیرپلا تا قلهٔ توچال",
       "trail_label": "مسیر دربند",
@@ -268,11 +703,11 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "sarband",
-        "pas_ghaleh",
-        "shirpala",
-        "amiri",
-        "goleband",
+        "tochal-sarband-square",
+        "tochal-pas-ghaleh-village",
+        "tochal-shirpala-shelter",
+        "tochal-amiri-shelter",
+        "tochal-goleband-ridge",
         "tochal_summit"
       ],
       "distance_km": 10.3,
@@ -293,17 +728,19 @@
           "tracks/tochal/tochal-darband.gpx"
         ],
         "cumulative_minutes": {
-          "sarband": 0,
-          "pas_ghaleh": 20,
-          "shirpala": 125,
-          "amiri": 220,
-          "goleband": 295,
+          "tochal-sarband-square": 0,
+          "tochal-pas-ghaleh-village": 20,
+          "tochal-shirpala-shelter": 125,
+          "tochal-amiri-shelter": 220,
+          "tochal-goleband-ridge": 295,
           "tochal_summit": 315
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "velenjak_to_tochal": {
-      "slug": "touchal-welanjak",
+      "slug": "tochal-velenjak",
       "title": "ولنجک تا توچال",
       "subtitle": "از پارکینگ ولنجک تا قله",
       "trail_label": "مسیر ولنجک",
@@ -313,11 +750,11 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "velenjak_parking",
-        "station_1",
-        "station_2",
-        "station_5",
-        "station_7",
+        "tochal-velenjak-parking",
+        "tochal-telecabin-station-1",
+        "tochal-telecabin-station-2",
+        "tochal-telecabin-station-5",
+        "tochal-telecabin-station-7",
         "tochal_summit"
       ],
       "distance_km": 16.6,
@@ -338,17 +775,19 @@
           "tracks/tochal/tochal-velenjak.gpx"
         ],
         "cumulative_minutes": {
-          "velenjak_parking": 0,
-          "station_1": 10,
-          "station_2": 85,
-          "station_5": 195,
-          "station_7": 330,
+          "tochal-velenjak-parking": 0,
+          "tochal-telecabin-station-1": 10,
+          "tochal-telecabin-station-2": 85,
+          "tochal-telecabin-station-5": 195,
+          "tochal-telecabin-station-7": 330,
           "tochal_summit": 360
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "kolakchal_to_tochal": {
-      "slug": "touchal-kalkchal",
+      "slug": "tochal-kolakchal",
       "title": "جمشیدیه تا توچال",
       "subtitle": "از پارک جمشیدیه و یال شرقی پیازچال تا قله",
       "trail_label": "مسیر جمشیدیه / کلکچال",
@@ -358,15 +797,15 @@
       "featured": false,
       "sort_order": 3,
       "points": [
-        "jamshidieh_park",
-        "kolakchal_camp",
-        "espilat_sarlo_pass",
-        "piyazchal_pass",
-        "lezoon_east",
-        "lezoon_west",
-        "barfchal",
-        "chahar_paloon",
-        "goleband",
+        "tochal-jamshidieh-park",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "tochal-piyazchal-pass",
+        "tochal-lezoon-east",
+        "tochal-lezoon-west",
+        "tochal-barfchal-peak",
+        "tochal-chahar-paloon",
+        "tochal-goleband-ridge",
         "tochal_summit"
       ],
       "distance_km": 12.2,
@@ -393,21 +832,23 @@
           "piyazchal_pass ≈135 m and lezoon_east ≈217 m from track; coordinates not auto-updated."
         ],
         "cumulative_minutes": {
-          "jamshidieh_park": 0,
-          "kolakchal_camp": 135,
-          "espilat_sarlo_pass": 195,
-          "piyazchal_pass": 250,
-          "lezoon_east": 280,
-          "lezoon_west": 305,
-          "barfchal": 330,
-          "chahar_paloon": 355,
-          "goleband": 375,
+          "tochal-jamshidieh-park": 0,
+          "tochal-kolakchal-camp": 135,
+          "tochal-espilat-sarlo-pass": 195,
+          "tochal-piyazchal-pass": 250,
+          "tochal-lezoon-east": 280,
+          "tochal-lezoon-west": 305,
+          "tochal-barfchal-peak": 330,
+          "tochal-chahar-paloon": 355,
+          "tochal-goleband-ridge": 375,
           "tochal_summit": 390
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "ahar_to_tochal": {
-      "slug": "touchal-ahar",
+      "slug": "tochal-ahar",
       "title": "آهار تا توچال",
       "subtitle": "از آهار و شکرآب تا قله",
       "trail_label": "مسیر آهار",
@@ -417,10 +858,10 @@
       "featured": false,
       "sort_order": 5,
       "points": [
-        "ahar",
-        "shakarab",
-        "qezqunchal_dopestan",
-        "homand_tochal",
+        "tochal-ahar-village",
+        "tochal-shakarab-ahaar",
+        "tochal-qezqunchal-peak",
+        "tochal-homand-tochal",
         "tochal_summit"
       ],
       "distance_km": 12.5,
@@ -445,16 +886,18 @@
           "qezqunchal_dopestan remains estimated/uncertain (~212 m from this track); coordinates not auto-updated from GPX."
         ],
         "cumulative_minutes": {
-          "ahar": 0,
-          "shakarab": 95,
-          "qezqunchal_dopestan": 315,
-          "homand_tochal": 360,
+          "tochal-ahar-village": 0,
+          "tochal-shakarab-ahaar": 95,
+          "tochal-qezqunchal-peak": 315,
+          "tochal-homand-tochal": 360,
           "tochal_summit": 380
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "shahrestanak_to_tochal": {
-      "slug": "touchal-shahrestanak",
+      "slug": "tochal-shahrestanak",
       "title": "شهرستانک تا توچال",
       "subtitle": "از شهرستانک و کاخ ناصری تا قله",
       "trail_label": "مسیر شهرستانک",
@@ -464,13 +907,13 @@
       "featured": false,
       "sort_order": 4,
       "points": [
-        "shahrestanak",
-        "naseri_palace",
-        "shahrestanak_spring",
-        "shahrestanak_sheepfold_spring",
-        "shahrestanak_pass",
-        "tochal_hotel",
-        "station_7",
+        "tochal-shahrestanak-village",
+        "shahrestanak-naseri-palace",
+        "tochal-shahrestanak-spring",
+        "tochal-shahrestanak-sheepfold-spring",
+        "tochal-shahrestanak-pass",
+        "tochal-hotel",
+        "tochal-telecabin-station-7",
         "tochal_summit"
       ],
       "distance_km": 16.2,
@@ -498,16 +941,18 @@
           "Mandatory chain uses shahrestanak_pass (گردنه شهرستانک), distinct from bazarek_pass. naseri_junction/bazarek_pass/shahneshin_pass remain global WeatherPoints for future variants."
         ],
         "cumulative_minutes": {
-          "shahrestanak": 0,
-          "naseri_palace": 65,
-          "shahrestanak_spring": 115,
-          "shahrestanak_sheepfold_spring": 160,
-          "shahrestanak_pass": 285,
-          "tochal_hotel": 310,
-          "station_7": 335,
+          "tochal-shahrestanak-village": 0,
+          "shahrestanak-naseri-palace": 65,
+          "tochal-shahrestanak-spring": 115,
+          "tochal-shahrestanak-sheepfold-spring": 160,
+          "tochal-shahrestanak-pass": 285,
+          "tochal-hotel": 310,
+          "tochal-telecabin-station-7": 335,
           "tochal_summit": 370
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

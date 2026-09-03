@@ -18,7 +18,7 @@ from hawatch.modules.routes.timing import route_timing_complete
 @pytest.mark.django_db
 def test_admin_style_route_publish_without_fixture_import():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     start = WeatherPoint.objects.create(
         slug="admin_start",
         name="شروع ادمین",
@@ -48,7 +48,7 @@ def test_admin_style_route_publish_without_fixture_import():
     summit = WeatherPoint.objects.get(slug="tochal_summit")
 
     route = Route.objects.create(
-        slug="touchal-admin-publish",
+        slug="tochal-admin-publish",
         destination=destination,
         title="مسیر ادمین",
         subtitle="بدون fixture",
@@ -134,7 +134,7 @@ def test_admin_style_route_publish_without_fixture_import():
 
     client = APIClient()
     body = client.get(
-        "/api/v1/routes/touchal-admin-publish/forecast/",
+        "/api/v1/routes/tochal-admin-publish/forecast/",
         {"date": "2026-08-28", "period": "morning", "start_time": "06:00", "speed": "متوسط"},
     ).json()
     assert body["timing_pending"] is False
@@ -146,11 +146,11 @@ def test_admin_style_route_publish_without_fixture_import():
 @pytest.mark.django_db
 def test_incomplete_admin_route_demoted_to_pending():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
-    start = WeatherPoint.objects.get(slug="sarband")
+    destination = Destination.objects.get(slug="tochal")
+    start = WeatherPoint.objects.get(slug="tochal-sarband-square")
     summit = WeatherPoint.objects.get(slug="tochal_summit")
     route = Route.objects.create(
-        slug="touchal-admin-incomplete",
+        slug="tochal-admin-incomplete",
         destination=destination,
         title="ناقص",
         subtitle="",
@@ -172,7 +172,7 @@ def test_incomplete_admin_route_demoted_to_pending():
     )
     RoutePoint.objects.create(
         route=route,
-        slug="sarband",
+        slug="tochal-sarband-square",
         weather_point=start,
         name=start.name,
         elevation_m=start.elevation_m,

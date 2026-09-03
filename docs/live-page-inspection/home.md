@@ -43,7 +43,7 @@
 | --- | --- |
 | هواچ | `/` |
 | ورود | `/login` |
-| توچال | `/destination/touchal` |
+| توچال | `/destination/tochal` |
 | دماوند | `/destination/damavand` |
 | دشت دریاسر | `/destination/daryasar` |
 | جنگل ابر | `/destination/jangal-abr` |

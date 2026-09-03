@@ -17,7 +17,7 @@ from hawatch.modules.routes.models import Route
 def test_catalog_preflight_reports_pending_provider_data_without_mutating_catalog():
     seed_tochal_catalog()
 
-    report = run_catalog_preflight(destination_slug="touchal")
+    report = run_catalog_preflight(destination_slug="tochal")
 
     assert report["summary"]["destination_count"] == 1
     assert report["summary"]["route_count"] == 5
@@ -31,7 +31,7 @@ def test_catalog_preflight_reports_pending_provider_data_without_mutating_catalo
 def test_catalog_preflight_requires_provider_data_after_ingest():
     seed_tochal_catalog()
 
-    report = run_catalog_preflight(destination_slug="touchal", require_forecast=True)
+    report = run_catalog_preflight(destination_slug="tochal", require_forecast=True)
 
     assert report["summary"]["pass"] is False
     assert report["summary"]["error_count"] > 0
@@ -41,22 +41,22 @@ def test_catalog_preflight_requires_provider_data_after_ingest():
 @pytest.mark.django_db
 def test_catalog_preflight_detects_incomplete_active_route():
     seed_tochal_catalog()
-    route = Route.objects.get(slug="touchal-darband")
+    route = Route.objects.get(slug="tochal-darband")
     route.one_way_minutes = None
     route.timing_status = Route.TimingStatus.PENDING
     route.save(update_fields=["one_way_minutes", "timing_status"])
 
-    report = run_catalog_preflight(destination_slug="touchal")
+    report = run_catalog_preflight(destination_slug="tochal")
 
-    assert any("touchal-darband" in item and "timing is pending" in item for item in report["warnings"])
+    assert any("tochal-darband" in item and "timing is pending" in item for item in report["warnings"])
 
 
 @pytest.mark.django_db
 def test_catalog_preflight_accepts_destination_without_active_routes():
     seed_tochal_catalog()
-    Route.objects.filter(destination__slug="touchal").update(is_active=False)
+    Route.objects.filter(destination__slug="tochal").update(is_active=False)
 
-    report = run_catalog_preflight(destination_slug="touchal")
+    report = run_catalog_preflight(destination_slug="tochal")
 
     assert report["summary"]["destination_count"] == 1
     assert report["summary"]["route_count"] == 0

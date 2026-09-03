@@ -8,7 +8,7 @@
 
 ## ۲. مسیر ورود و خروج
 
-- ورود: از Home با `/destination/touchal` یا slug مقصد.
+- ورود: از Home با `/destination/tochal` یا slug مقصد.
 - خروج: بازگشت به Home، انتخاب مسیر به `/routes/{routeSlug}`، تغییر مقصد از breadcrumb یا انتخاب route دیگر.
 - theme و navigation context باید هنگام تغییر day/period حفظ شوند.
 

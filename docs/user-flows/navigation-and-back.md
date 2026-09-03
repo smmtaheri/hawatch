@@ -7,12 +7,13 @@
 - Route back: Destination همان route.
 - Point back: فقط وقتی `fromRoute` در navigation state باشد → همان Route؛ وگرنه بدون back گمراه‌کننده.
 - breadcrumb Point: `مقصدها / {نام نقطه}` — بدون زنجیرهٔ مسیر.
-- WeatherPoint با Destination profile، مثل `tochal_summit`، به Destination canonical هدایت می‌شود؛ هر دو URL از قالب مشترک Forecast Place استفاده می‌کنند.
+- WeatherPoint دارای profile مقصد، مثل `tochal_summit`، از ابتدا با لینک Destination
+  canonical نمایش داده می‌شود؛ صفحهٔ مستقل `/points/` برای آن وجود ندارد.
 - sidebar نقطه حذف نمی‌شود حتی اگر از Route آمده باشد.
 - browser back: state قابل بازسازی باید تا حد امکان حفظ شود؛ Route queryهای برنامه‌ریزی را نگه می‌دارد.
 
 ## حالت‌های deep link
 
-اگر کاربر مستقیم وارد `/destination/touchal` یا `/routes/touchal-darband` شد، صفحه باید بدون نیاز به Home context حداقلی را فراهم کند: نام مقصد، parent و back path.
+اگر کاربر مستقیم وارد `/destination/tochal` یا `/routes/tochal-darband` شد، صفحه باید بدون نیاز به Home context حداقلی را فراهم کند: نام مقصد، parent و back path.
 
-Destination و Route با `date` و `period` کار می‌کنند و Route علاوه بر آن `start_time` و `speed` را در URL نگه می‌دارد. لینک Route به point عادی فقط `/points/{slug}` است؛ context کامل Route در `location.state.fromRoute` ذخیره می‌شود تا CTA بازگشت همان queryها را restore کند. لینک قلهٔ توچال به `/destination/touchal` می‌رود. ورود مستقیم یا refresh روی Point دکمهٔ بازگشت مسیر ندارد.
+Destination و Route با `date` و `period` کار می‌کنند و Route علاوه بر آن `start_time` و `speed` را در URL نگه می‌دارد. لینک Route به point عادی فقط `/points/{slug}` است؛ context کامل Route در `location.state.fromRoute` ذخیره می‌شود تا CTA بازگشت همان queryها را restore کند. لینک قلهٔ توچال به `/destination/tochal` می‌رود. ورود مستقیم یا refresh روی Point دکمهٔ بازگشت مسیر ندارد.

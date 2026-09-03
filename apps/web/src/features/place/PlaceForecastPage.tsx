@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
@@ -20,8 +20,7 @@ import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
 
 function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
-  const { slug = kind === "destination" ? "touchal" : "" } = useParams();
-  const location = useLocation();
+  const { slug = kind === "destination" ? "tochal" : "" } = useParams();
   const {
     data,
     status,
@@ -30,7 +29,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     selectDate,
     selectPeriod,
     reload,
-    canonicalRedirect,
   } = usePlaceForecast({ kind, slug });
   usePageTitle(data?.subject.name);
 
@@ -45,9 +43,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     return () => window.cancelAnimationFrame(frame);
   }, [data?.subject.slug]);
 
-  if (canonicalRedirect) {
-    return <Navigate to={canonicalRedirect} replace state={location.state} />;
-  }
 
   if (status === "missing") {
     return (

@@ -3,13 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { asPeriodId, buildForecastParams } from "../../lib/periods";
 import type { PeriodId, PlaceForecastResponse } from "../../types";
-import {
-  adaptPlaceForecast,
-  buildCanonicalRedirectTarget,
-  shouldRedirectPointToDestination,
-  type PlaceForecastViewModel,
-  type PlaceKind,
-} from "./placeForecastAdapter";
+import { adaptPlaceForecast, type PlaceForecastViewModel, type PlaceKind } from "./placeForecastAdapter";
 
 type LoadStatus = "loading" | "ready" | "error" | "missing";
 
@@ -24,7 +18,6 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
   );
   const [data, setData] = useState<PlaceForecastViewModel | null>(null);
   const [status, setStatus] = useState<LoadStatus>("loading");
-  const [canonicalRedirect, setCanonicalRedirect] = useState<string | null>(null);
   const requestId = useRef(0);
   const resolvedDefaultRequestKey = useRef<string | null>(null);
   const explicitDate = Boolean(searchParams.get("date"));
@@ -75,14 +68,6 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
     request
       .then((payload: PlaceForecastResponse) => {
         if (currentRequest !== requestId.current) return;
-        if (kind === "point") {
-          const redirectPath = shouldRedirectPointToDestination(payload);
-          if (redirectPath) {
-            setCanonicalRedirect(buildCanonicalRedirectTarget(redirectPath, searchParams));
-            setStatus("ready");
-            return;
-          }
-        }
         const view = adaptPlaceForecast(payload);
         setData(view);
         if (!date || !period) {
@@ -117,7 +102,6 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
     displayPeriod,
     data,
     status,
-    canonicalRedirect,
     selected: date ?? data?.meta.selected_date ?? "",
     selectDate,
     selectPeriod,

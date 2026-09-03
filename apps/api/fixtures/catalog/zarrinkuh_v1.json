@@ -43,18 +43,42 @@
       "kind": "destination",
       "status": "provisional",
       "elevation_source": "مختصات قله با همگرایی چهار ترک مستقل در حدود 35.7070, 52.2274 و منبع مسیر تطبیق شده است. ارتفاع منبع حدود 3852 متر؛ DEM سرویس 3783 متر و ارتفاع GPXها 3752 تا 3848 متر است. مقدار catalog موقت است و GPX <ele> حقیقت قطعی نیست.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "قلهٔ زرین‌کوه",
+      "short_label": "قلهٔ زرین‌کوه",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ زرین‌کوه؛ نقطهٔ summit در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-drychh-tr-140811868",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807",
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
+        "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827"
+      ]
     },
-    "zarrinkuh_tar_north_ridge": {
+    "zarrinkuh-tar-north-ridge": {
       "name": "یال شمالی زرین‌کوه",
       "latitude": 35.715724,
       "longitude": 52.222628,
       "elevation_m": 3606,
       "status": "provisional",
       "elevation_source": "نقطهٔ میانی استخراج‌شده از هندسهٔ ترک دریاچهٔ تار تا قله، در مسیر یال شمالی؛ Open-Meteo GLO-90 DEM برای کنترل ارتفاع استفاده شده و ارتفاع خام GPX فقط reference است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "یال شمالی زرین‌کوه",
+      "short_label": "یال شمالی زرین‌کوه",
+      "place_type": "ridge",
+      "aliases": [],
+      "identity_summary": "یال شمالی زرین‌کوه؛ نقطهٔ ridge در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-drychh-tr-140811868",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_jaban_village": {
+    "zarrinkuh-jaban-village": {
       "name": "روستای جابان",
       "aliases": [
         "جابان",
@@ -67,52 +91,117 @@
       "elevation_m": 2268,
       "status": "provisional",
       "elevation_source": "Waypoint شروع پیمایش در ترک پیاده‌روی جابان تا قله؛ Open-Meteo GLO-90 DEM در مختصات waypoint برابر 2268 متر است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "روستای جابان",
+      "short_label": "روستای جابان",
+      "place_type": "village",
+      "identity_summary": "روستای جابان؛ نقطهٔ village در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_jaban_waterfall": {
+    "zarrinkuh-jaban-waterfall": {
       "name": "آبشار جابان",
       "latitude": 35.66782,
       "longitude": 52.248865,
       "elevation_m": 2411,
       "status": "provisional",
       "elevation_source": "Waypoint نام‌گذاری‌شدهٔ آبشار جابان در ترک مستقل جابان؛ Open-Meteo GLO-90 DEM مقدار 2411 متر را برگرداند و GPX حدود 2409 متر ثبت کرده است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "آبشار جابان",
+      "short_label": "آبشار جابان",
+      "place_type": "waterfall",
+      "aliases": [],
+      "identity_summary": "آبشار جابان؛ نقطهٔ waterfall در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_khosravan_start": {
-      "name": "روستای خسروان · شروع پاکوب زرین‌کوه",
+    "zarrinkuh-khosravan-village": {
+      "name": "روستای خسروان",
       "latitude": 35.662798,
       "longitude": 52.226572,
       "elevation_m": 2268,
       "status": "provisional",
       "elevation_source": "Waypoint ابتدای پاکوب در ترک پیاده‌روی خسروان تا قله؛ Open-Meteo GLO-90 DEM در مختصات مسیر برابر 2268 متر است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "روستای خسروان، ابتدای مسیر جنوبی زرین‌کوه",
+      "short_label": "خسروان",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای خسروان، ابتدای مسیر جنوبی زرین‌کوه؛ نقطهٔ village در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_khosravan_gosfandsara": {
+    "zarrinkuh-khosravan-gosfandsara": {
       "name": "گوسفندسرا درهٔ خسروان",
       "latitude": 35.668821,
       "longitude": 52.218766,
       "elevation_m": 2369,
       "status": "provisional",
       "elevation_source": "Waypoint نام‌گذاری‌شدهٔ گوسفندسرا در ترک خسروان؛ Open-Meteo GLO-90 DEM مقدار 2369 متر را برگرداند و GPX حدود 2366 متر ثبت کرده است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "گوسفندسرا درهٔ خسروان",
+      "short_label": "گوسفندسرا درهٔ خسروان",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "گوسفندسرا درهٔ خسروان؛ نقطهٔ landmark در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_aynehvarzan_start": {
-      "name": "پارکینگ آینه‌ورزان · شروع مسیر زرین‌کوه",
+    "zarrinkuh-aynehvarzan-parking": {
+      "name": "پارکینگ آیینه‌ورزان",
       "latitude": 35.667556,
       "longitude": 52.20868,
       "elevation_m": 2379,
       "status": "provisional",
       "elevation_source": "Waypoint پارکینگ در ترک آینه‌ورزان تا قله؛ Open-Meteo GLO-90 DEM مقدار 2379 متر را برگرداند. بخش جادهٔ خاکی منتهی به پارکینگ در توضیحات مسیر از بخش پیاده‌روی تفکیک شده است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "پارکینگ آیینه‌ورزان، ابتدای مسیر زرین‌کوه",
+      "short_label": "آیینه‌ورزان",
+      "place_type": "parking",
+      "aliases": [],
+      "identity_summary": "پارکینگ آیینه‌ورزان، ابتدای مسیر زرین‌کوه؛ نقطهٔ parking در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     },
-    "zarrinkuh_aynehvarzan_waterfall": {
+    "zarrinkuh-aynehvarzan-waterfall": {
       "name": "آبشار آینه‌ورزان",
       "latitude": 35.69038,
       "longitude": 52.199665,
       "elevation_m": 2741,
       "status": "provisional",
       "elevation_source": "Waypoint نام‌گذاری‌شدهٔ آبشار در ترک آینه‌ورزان؛ Open-Meteo GLO-90 DEM مقدار 2741 متر را برگرداند و GPX حدود 2701 متر ثبت کرده است.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "page_name": "آبشار آینه‌ورزان",
+      "short_label": "آبشار آینه‌ورزان",
+      "place_type": "waterfall",
+      "aliases": [],
+      "identity_summary": "آبشار آینه‌ورزان؛ نقطهٔ waterfall در محدودهٔ قلهٔ زرین‌کوه",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827",
+        "https://www.wikiloc.com/hiking-trails/zarinekooh-peak-from-havir-139855807"
+      ]
     }
   },
   "shared_weather_points": [
@@ -131,7 +220,7 @@
       "sort_order": 1,
       "points": [
         "tar_lake",
-        "zarrinkuh_tar_north_ridge",
+        "zarrinkuh-tar-north-ridge",
         "zarrinkuh_summit"
       ],
       "distance_km": 2.7,
@@ -158,10 +247,12 @@
         ],
         "cumulative_minutes": {
           "tar_lake": 0,
-          "zarrinkuh_tar_north_ridge": 110,
+          "zarrinkuh-tar-north-ridge": 110,
           "zarrinkuh_summit": 170
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "jaban_to_zarrinkuh": {
       "slug": "zarrinkuh-jaban-southeast",
@@ -174,8 +265,8 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "zarrinkuh_jaban_village",
-        "zarrinkuh_jaban_waterfall",
+        "zarrinkuh-jaban-village",
+        "zarrinkuh-jaban-waterfall",
         "zarrinkuh_summit"
       ],
       "distance_km": 7.8,
@@ -201,11 +292,13 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "zarrinkuh_jaban_village": 0,
-          "zarrinkuh_jaban_waterfall": 45,
+          "zarrinkuh-jaban-village": 0,
+          "zarrinkuh-jaban-waterfall": 45,
           "zarrinkuh_summit": 540
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "khosravan_to_zarrinkuh": {
       "slug": "zarrinkuh-khosravan-south",
@@ -218,8 +311,8 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "zarrinkuh_khosravan_start",
-        "zarrinkuh_khosravan_gosfandsara",
+        "zarrinkuh-khosravan-village",
+        "zarrinkuh-khosravan-gosfandsara",
         "zarrinkuh_summit"
       ],
       "distance_km": 7.7,
@@ -245,11 +338,13 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "zarrinkuh_khosravan_start": 0,
-          "zarrinkuh_khosravan_gosfandsara": 40,
+          "zarrinkuh-khosravan-village": 0,
+          "zarrinkuh-khosravan-gosfandsara": 40,
           "zarrinkuh_summit": 395
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "aynehvarzan_to_zarrinkuh": {
       "slug": "zarrinkuh-aynehvarzan-southwest",
@@ -262,8 +357,8 @@
       "featured": false,
       "sort_order": 4,
       "points": [
-        "zarrinkuh_aynehvarzan_start",
-        "zarrinkuh_aynehvarzan_waterfall",
+        "zarrinkuh-aynehvarzan-parking",
+        "zarrinkuh-aynehvarzan-waterfall",
         "zarrinkuh_summit"
       ],
       "distance_km": 8.7,
@@ -289,11 +384,13 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "zarrinkuh_aynehvarzan_start": 0,
-          "zarrinkuh_aynehvarzan_waterfall": 65,
+          "zarrinkuh-aynehvarzan-parking": 0,
+          "zarrinkuh-aynehvarzan-waterfall": 65,
           "zarrinkuh_summit": 350
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

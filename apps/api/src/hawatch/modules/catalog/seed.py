@@ -13,6 +13,7 @@ from django.utils import timezone as dj_timezone
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.search import rebuild_search_index
+from hawatch.modules.catalog.identity import canonical_point_slug, metadata_for_point
 from hawatch.modules.catalog.tochal import TOCHAL_ROUTE_SLUGS, seed_tochal_catalog
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
@@ -24,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 # Same explicit mappings as destinations.0004 backfill (Destination.slug → WeatherPoint.slug).
 KNOWN_DESTINATION_WEATHER_POINT_SLUGS = {
-    "touchal": "tochal_summit",
+    "tochal": "tochal_summit",
 }
 
 
@@ -77,6 +78,13 @@ def _ensure_destination_weather_point(destination: Destination, seed_version: st
 
     defaults = {
         "name": destination.name,
+        "page_name": destination.name,
+        "short_label": destination.tile_name,
+        "place_type": "summit" if destination.category_key in {"mountain", "volcano"} else destination.category_key,
+        "identity_summary": f"{destination.name}؛ مقصد اصلی برای پیش‌بینی هوا",
+        "importance": "primary",
+        "name_status": "established",
+        "source_urls": ["https://open-meteo.com/en/docs"],
         "kind": WeatherPoint.Kind.DESTINATION,
         "location": destination.location,
         "elevation_m": destination.elevation_m,
@@ -138,7 +146,7 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
             },
         )
         destinations[obj.slug] = obj
-        if obj.slug == "touchal":
+        if obj.slug == "tochal":
             # Tochal destination weather point comes from the curated catalog seed.
             continue
         # Canonical WeatherPoint — never adopt an unrelated slug collision.
@@ -216,10 +224,17 @@ def ensure_catalog(seed_version: str) -> dict[str, Destination]:
                 "seed_version": seed_version,
             },
         )
+        weather_point_slug = f"demo-{route.slug}-{canonical_point_slug(point.slug)}"
+        identity = metadata_for_point(
+            weather_point_slug,
+            {"name": point.name, "short_label": point.name},
+            destination_label=route.destination.tile_name,
+            source_urls=["https://open-meteo.com/en/docs"],
+        )
         weather_point, _ = WeatherPoint.objects.update_or_create(
-            slug=f"route:{route.slug}:{point.slug}",
+            slug=weather_point_slug,
             defaults={
-                "name": point.name,
+                **identity,
                 "kind": WeatherPoint.Kind.ROUTE_POINT,
                 "location": point.location,
                 "elevation_m": point.elevation_m,

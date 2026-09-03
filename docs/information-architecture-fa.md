@@ -7,7 +7,7 @@ Home /
 ├── Forecast Place (قالب مشترک)
 │   ├── Destination role  /destination/{destinationSlug}
 │   └── Point role        /points/{weatherPointSlug}
-│       └── (اگر profile مقصد دارد → redirect به Destination)
+│       └── (نقطهٔ دارای profile مقصد → لینک مستقیم به Destination canonical)
 ├── Route /routes/{routeSlug}
 ├── Login /login?returnTo=... (route-backed overlay؛ OTP هنوز غیرفعال)
 └── Share /share (آینده)

@@ -1,6 +1,6 @@
 export const sampleDestinations = [
   {
-    slug: "touchal",
+    slug: "tochal",
     tile_name: "توچال",
     name: "قلهٔ توچال",
     short_category: "کوه",
@@ -11,7 +11,7 @@ export const sampleDestinations = [
     elevation_label: "۳۹۶۴ متر",
     image: "/images/touchal-banner-clean.png",
     image_alt: "نمای کوهستان توچال",
-    href: "/destination/touchal",
+    href: "/destination/tochal",
     is_popular: true,
   },
 ];

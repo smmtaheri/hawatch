@@ -235,27 +235,6 @@ export interface RoutePointView {
   weather_point_slug?: string | null;
 }
 
-export interface RoutePointForecast {
-  point: RoutePointView & {
-    route_slug: string;
-    route_title: string;
-    route_href: string;
-    destination: DestinationSummary;
-    has_weather_point: boolean;
-    has_forecast: boolean;
-  };
-  days: DayInfo[];
-  period: { id: PeriodId; label: string; range_label: string; headline: string; hours: number[] };
-  weather: HourlyReading | null;
-  hourly: HourlyReading[];
-  empty: boolean;
-  partial: boolean;
-  back_href: string;
-  canonical_href?: string | null;
-  weather_point_slug?: string | null;
-  meta: ApiMeta;
-}
-
 export interface WeatherPointSummary {
   slug: string;
   name: string;

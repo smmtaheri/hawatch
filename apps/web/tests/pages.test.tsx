@@ -13,9 +13,9 @@ import { PointDetailPage } from "../src/pages/PointDetailPage";
 const destinationForecast = {
   subject: {
     kind: "destination" as const,
-    slug: "touchal",
+    slug: "tochal",
     weather_point_slug: "tochal_summit",
-    canonical_href: "/destination/touchal",
+    canonical_href: "/destination/tochal",
     name: "قلهٔ توچال",
     elevation_m: 3964,
     elevation_label: "۳۹۶۴ متر",
@@ -28,7 +28,7 @@ const destinationForecast = {
     category: "کوه · البرز مرکزی",
   },
   destination: {
-    slug: "touchal",
+    slug: "tochal",
     tile_name: "توچال",
     name: "قلهٔ توچال",
     short_category: "کوه",
@@ -39,11 +39,11 @@ const destinationForecast = {
     elevation_label: "۳۹۶۴ متر",
     image: "/images/touchal-banner-clean.png",
     image_alt: "نمای کوهستان توچال",
-    href: "/destination/touchal",
+    href: "/destination/tochal",
     is_popular: true,
     routes: [
       {
-        slug: "touchal-darband",
+        slug: "tochal-darband",
         title: "دربند تا توچال",
         trail_label: "ترک کوه‌پیمایی",
         origin: "دربند",
@@ -53,7 +53,7 @@ const destinationForecast = {
         ascent_m: 2260,
         ascent_label: "۲۲۶۰ m",
         featured: true,
-        href: "/routes/touchal-darband",
+        href: "/routes/tochal-darband",
       },
     ],
   },
@@ -71,7 +71,7 @@ const destinationForecast = {
   decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۱ آرام‌تر است." },
   related_routes: [
     {
-      slug: "touchal-darband",
+      slug: "tochal-darband",
       title: "دربند تا توچال",
       trail_label: "ترک کوه‌پیمایی",
       origin: "دربند",
@@ -81,7 +81,7 @@ const destinationForecast = {
       ascent_m: 2260,
       ascent_label: "۲۲۶۰ m",
       featured: true,
-      href: "/routes/touchal-darband",
+      href: "/routes/tochal-darband",
     },
   ],
   related_routes_title: "مسیرهای منتهی به توچال",
@@ -104,7 +104,7 @@ const destinationForecast = {
 
 const routeForecast = {
   route: {
-    slug: "touchal-darband",
+    slug: "tochal-darband",
     title: "دربند تا توچال",
     subtitle: "",
     origin: "دربند",
@@ -112,11 +112,11 @@ const routeForecast = {
     distance_label: "۱۶٫۲ km",
     ascent_label: "۲۲۶۰ m",
     default_start_minutes: 360,
-    href: "/routes/touchal-darband",
+    href: "/routes/tochal-darband",
     parent: destinationForecast.destination,
     points: [],
     siblings: [
-      { slug: "touchal-welanjak", title: "ولنجک تا توچال", trail_label: "ترک", origin: "ولنجک", destination_label: "قلهٔ توچال", distance_km: 14.8, distance_label: "۱۴٫۸ km", ascent_m: 2160, ascent_label: "۲۱۶۰ m", featured: false, href: "/routes/touchal-welanjak" },
+      { slug: "tochal-velenjak", title: "ولنجک تا توچال", trail_label: "ترک", origin: "ولنجک", destination_label: "قلهٔ توچال", distance_km: 14.8, distance_label: "۱۴٫۸ km", ascent_m: 2160, ascent_label: "۲۱۶۰ m", featured: false, href: "/routes/tochal-velenjak" },
     ],
   },
   days: destinationForecast.days,
@@ -126,7 +126,7 @@ const routeForecast = {
   speed: "متوسط",
   speed_options: ["آرام", "متوسط", "سریع"],
   points: [
-    { slug: "darband", name: "دربند", elevation_label: "۱۸۰۰ m", href: "/routes/touchal-darband/points/darband", axis_x: 10, axis_y: 83, time: "۰۶:۰۰", temp: 8, wind: 6, icon: "☼", condition: "شروع آرام", state: "normal", note: "شروع آرام", arrival_minutes: 360 },
+    { slug: "tochal-sarband-square", name: "سربند", elevation_label: "۱۸۰۰ m", href: "/points/tochal-sarband-square", axis_x: 10, axis_y: 83, time: "۰۶:۰۰", temp: 8, wind: 6, icon: "☼", condition: "شروع آرام", state: "normal", note: "شروع آرام", arrival_minutes: 360 },
   ],
   hourly: destinationForecast.hourly,
   hero: { status: "نقطهٔ حساس: گردنهٔ لوپ" },
@@ -189,8 +189,8 @@ describe("Hawatch pages", () => {
       "fetch",
       vi.fn((input: RequestInfo) => {
         const url = String(input);
-        if (url.includes("/destinations/touchal/forecast")) return jsonResponse(destinationForecast);
-        if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
+        if (url.includes("/destinations/tochal/forecast")) return jsonResponse(destinationForecast);
+        if (url.includes("/routes/tochal-darband/forecast")) return jsonResponse(routeForecast);
         if (url.includes("/destinations/")) {
           return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
         }
@@ -200,10 +200,10 @@ describe("Hawatch pages", () => {
             results: [
               {
                 type: "point",
-                slug: "pas_ghaleh",
+                slug: "tochal-pas-ghaleh-village",
                 label: "پس‌قلعه",
                 hint: "نقطهٔ مسیر · توچال",
-                href: "/points/pas_ghaleh",
+                href: "/points/tochal-pas-ghaleh-village",
                 match_kind: "name",
               },
             ],
@@ -243,7 +243,7 @@ describe("Hawatch pages", () => {
   });
 
   it("renders a full login surface for a direct login URL", async () => {
-    renderAt("/login?returnTo=%2Fdestination%2Ftouchal");
+    renderAt("/login?returnTo=%2Fdestination%2Ftochal");
     expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(screen.getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
@@ -251,7 +251,7 @@ describe("Hawatch pages", () => {
 
   it("renders destination and can open a route", async () => {
     const user = userEvent.setup();
-    renderAt("/destination/touchal");
+    renderAt("/destination/tochal");
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
     expect(document.querySelector(".destination-page .page-back-navigation")).toContainElement(
       screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
@@ -273,19 +273,19 @@ describe("Hawatch pages", () => {
       value: scrollIntoView,
     });
 
-    const { unmount } = renderAt("/destination/touchal");
+    const { unmount } = renderAt("/destination/tochal");
     await screen.findByRole("heading", { name: "قلهٔ توچال" });
     await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
     unmount();
 
     scrollIntoView.mockClear();
-    renderAt("/routes/touchal-darband");
+    renderAt("/routes/tochal-darband");
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
   });
 
   it("renders route sibling navigation and a single period control", async () => {
-    renderAt("/routes/touchal-darband");
+    renderAt("/routes/tochal-darband");
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
     expect(screen.getByText("ولنجک تا توچال")).toBeInTheDocument();
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
@@ -347,7 +347,7 @@ describe("Hawatch pages", () => {
         }),
       ),
     );
-    renderAt("/destination/touchal");
+    renderAt("/destination/tochal");
     expect(await screen.findByText(/ممکن است قدیمی باشد/)).toBeInTheDocument();
   });
 
@@ -387,10 +387,10 @@ describe("Hawatch pages", () => {
             results: [
               {
                 type: "point",
-                slug: "pas_ghaleh",
+                slug: "tochal-pas-ghaleh-village",
                 label: "پس‌قلعه",
                 hint: "نقطهٔ مسیر · توچال",
-                href: "/points/pas_ghaleh",
+                href: "/points/tochal-pas-ghaleh-village",
                 match_kind: "name",
               },
             ],
@@ -445,10 +445,10 @@ describe("Hawatch pages", () => {
             results: [
               {
                 type: "point",
-                slug: "pas_ghaleh",
+                slug: "tochal-pas-ghaleh-village",
                 label: "پس‌قلعه",
                 hint: "نقطهٔ مسیر · توچال",
-                href: "/points/pas_ghaleh",
+                href: "/points/tochal-pas-ghaleh-village",
                 match_kind: "name",
               },
               {
@@ -484,7 +484,7 @@ describe("Hawatch pages", () => {
     const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
-    expect(await screen.findByRole("link", { name: /پس‌قلعه/ })).toHaveAttribute("href", "/points/pas_ghaleh");
+    expect(await screen.findByRole("link", { name: /پس‌قلعه/ })).toHaveAttribute("href", "/points/tochal-pas-ghaleh-village");
     expect(screen.getAllByText(/نقطهٔ مسیر · توچال/).length).toBeGreaterThan(0);
     expect(screen.getByText("نتایج مرتبط")).toBeInTheDocument();
   });
@@ -522,10 +522,10 @@ describe("Hawatch pages", () => {
             results: [
               {
                 type: "point",
-                slug: "pas_ghaleh",
+                slug: "tochal-pas-ghaleh-village",
                 label: "پس‌قلعه",
                 hint: "نقطهٔ مسیر · توچال",
-                href: "/points/pas_ghaleh",
+                href: "/points/tochal-pas-ghaleh-village",
                 match_kind: "name",
               },
             ],
@@ -533,13 +533,13 @@ describe("Hawatch pages", () => {
             meta: { freshness: "ready" },
           });
         }
-        if (url.includes("/points/pas_ghaleh/forecast")) {
+        if (url.includes("/points/tochal-pas-ghaleh-village/forecast")) {
           return jsonResponse({
             subject: {
               kind: "point" as const,
-              slug: "pas_ghaleh",
-              weather_point_slug: "pas_ghaleh",
-              canonical_href: "/points/pas_ghaleh",
+              slug: "tochal-pas-ghaleh-village",
+              weather_point_slug: "tochal-pas-ghaleh-village",
+              canonical_href: "/points/tochal-pas-ghaleh-village",
               name: "پس‌قلعه",
               elevation_m: 1936,
               elevation_label: "۱۹۳۶ متر",
@@ -552,7 +552,7 @@ describe("Hawatch pages", () => {
               category: "کوه",
             },
             point: {
-              slug: "pas_ghaleh",
+              slug: "tochal-pas-ghaleh-village",
               name: "پس‌قلعه",
               aliases: [],
               kind: "shared",
@@ -562,8 +562,8 @@ describe("Hawatch pages", () => {
               longitude: 51.423,
               status: "approved",
               provenance: "curated",
-              href: "/points/pas_ghaleh",
-              canonical_href: "/points/pas_ghaleh",
+              href: "/points/tochal-pas-ghaleh-village",
+              canonical_href: "/points/tochal-pas-ghaleh-village",
               destination: destinationForecast.destination,
             },
             related_destinations: [destinationForecast.destination],

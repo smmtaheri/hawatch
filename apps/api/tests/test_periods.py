@@ -128,10 +128,10 @@ def test_period_windows_do_not_overlap():
 @pytest.mark.django_db
 def test_destination_forecast_four_periods_start_at_midnight(api_client, seeded):
     day = REFERENCE_DATE
-    midnight = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "midnight"}).json()
-    morning = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "morning"}).json()
-    noon = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "noon"}).json()
-    night = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "night"}).json()
+    midnight = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": day.isoformat(), "period": "midnight"}).json()
+    morning = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": day.isoformat(), "period": "morning"}).json()
+    noon = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": day.isoformat(), "period": "noon"}).json()
+    night = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": day.isoformat(), "period": "night"}).json()
 
     assert [item["hour"] for item in midnight["hourly"]] == [0, 2, 4]
     assert [item["hour"] for item in morning["hourly"]] == [6, 8, 10]
@@ -155,7 +155,7 @@ def test_destination_forecast_four_periods_start_at_midnight(api_client, seeded)
 def test_explicit_query_params_override_defaults(api_client, seeded):
     outside_window = REFERENCE_DATE - timedelta(days=8)
     response = api_client.get(
-        "/api/v1/destinations/touchal/forecast/",
+        "/api/v1/destinations/tochal/forecast/",
         {"date": outside_window.isoformat(), "period": "noon"},
     )
     body = response.json()
@@ -166,7 +166,7 @@ def test_explicit_query_params_override_defaults(api_client, seeded):
 @pytest.mark.django_db
 @patch("hawatch.api.v1.views.default_forecast_selection", return_value=(REFERENCE_DATE, "morning"))
 def test_defaults_applied_without_query_params(mock_default, api_client, seeded):
-    body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+    body = api_client.get("/api/v1/destinations/tochal/forecast/").json()
     assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
     assert body["meta"]["selected_period"] == "morning"
     mock_default.assert_called_once()
@@ -189,7 +189,7 @@ def test_destination_midnight_current_at_0130(api_client, seeded):
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
-        body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+        body = api_client.get("/api/v1/destinations/tochal/forecast/").json()
     assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
     assert body["meta"]["selected_period"] == "midnight"
     assert body["current"] is not None
@@ -206,7 +206,7 @@ def test_destination_default_uses_current_tehran_hour(api_client, seeded):
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
-        body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
+        body = api_client.get("/api/v1/destinations/tochal/forecast/").json()
 
     assert body["meta"]["selected_period"] == "morning"
     assert [item["hour"] for item in body["hourly"]] == [6, 8, 10]
@@ -224,7 +224,7 @@ def test_hourly_cards_mark_the_current_display_window(api_client, seeded):
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/destinations/touchal/forecast/",
+            "/api/v1/destinations/tochal/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
         ).json()
 
@@ -273,36 +273,26 @@ def test_parse_start_minutes_respects_exclusive_period_end():
 
 
 @pytest.mark.django_db
-def test_route_point_forecast_and_missing_data(api_client, seeded):
-    today = REFERENCE_DATE
+def test_route_point_forecast_endpoint_is_removed(api_client, seeded):
     response = api_client.get(
-        "/api/v1/routes/touchal-darband/points/shirpala/forecast/",
-        {"date": today.isoformat(), "period": "morning"},
+        "/api/v1/routes/tochal-darband/points/tochal-shirpala-shelter/forecast/",
+        {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
     )
-    assert response.status_code == 200
-    body = response.json()
-    assert body["point"]["slug"] == "shirpala"
-    assert body["point"]["route_slug"] == "touchal-darband"
-    assert body["point"]["href"] == "/points/shirpala"
-    assert body["canonical_href"] == "/points/shirpala"
-    assert body["back_href"].startswith("/routes/touchal-darband?")
-
-    missing = api_client.get("/api/v1/routes/touchal-darband/points/unknown-point/forecast/")
-    assert missing.status_code == 404
+    assert response.status_code == 404
 
 
 @pytest.mark.django_db
 def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
     # Force pending so the contract stays testable after Tochal v1 estimates ship.
-    Route.objects.filter(slug="touchal-darband").update(timing_status=Route.TimingStatus.PENDING)
-    RoutePoint.objects.filter(route__slug="touchal-darband").update(
+    Route.objects.filter(slug="tochal-darband").update(timing_status=Route.TimingStatus.PENDING)
+    RoutePoint.objects.filter(route__slug="tochal-darband").update(
         timing_status=RoutePoint.TimingStatus.PENDING,
         cumulative_minutes=None,
         segment_minutes=None,
     )
     today = REFERENCE_DATE
     body = api_client.get(
-        "/api/v1/routes/touchal-darband/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
     ).json()
     assert body["timing_pending"] is True
@@ -317,8 +307,8 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
 
 @pytest.mark.django_db
 def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
-    Route.objects.filter(slug="touchal-darband").update(timing_status=Route.TimingStatus.PENDING)
-    RoutePoint.objects.filter(route__slug="touchal-darband").update(
+    Route.objects.filter(slug="tochal-darband").update(timing_status=Route.TimingStatus.PENDING)
+    RoutePoint.objects.filter(route__slug="tochal-darband").update(
         timing_status=RoutePoint.TimingStatus.PENDING,
         cumulative_minutes=None,
         segment_minutes=None,
@@ -329,7 +319,7 @@ def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/routes/touchal-darband/forecast/",
+            "/api/v1/routes/tochal-darband/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     assert body["timing_pending"] is True
@@ -344,11 +334,11 @@ def test_timing_pending_point_weather_is_unavailable(api_client, seeded):
 @pytest.mark.django_db
 def test_tochal_summit_canonical_href(api_client, seeded):
     body = api_client.get(
-        "/api/v1/routes/touchal-darband/points/tochal_summit/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
     ).json()
-    assert body["canonical_href"] == "/destination/touchal"
-    assert body["point"]["href"] == "/destination/touchal"
+    summit = next(item for item in body["points"] if item["slug"] == "tochal_summit")
+    assert summit["href"] == "/destination/tochal"
 
 
 @pytest.mark.django_db
@@ -359,7 +349,7 @@ def test_route_default_start_uses_current_tehran_in_current_period(api_client, s
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/routes/touchal-darband/forecast/",
+            "/api/v1/routes/tochal-darband/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
         ).json()
     assert body["start_minutes"] == 420
@@ -373,7 +363,7 @@ def test_destination_night_period_uses_in_window_reading_at_1030(api_client, see
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/destinations/touchal/forecast/",
+            "/api/v1/destinations/tochal/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     allowed_hours = {18, 20, 22}
@@ -392,7 +382,7 @@ def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/points/shirpala/forecast/",
+            "/api/v1/points/tochal-shirpala-shelter/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     allowed_hours = {18, 20, 22}
@@ -409,7 +399,7 @@ def test_point_midnight_current_at_0130(api_client, seeded):
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
-        body = api_client.get("/api/v1/points/shirpala/forecast/").json()
+        body = api_client.get("/api/v1/points/tochal-shirpala-shelter/forecast/").json()
     assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
     assert body["meta"]["selected_period"] == "midnight"
     assert body["current"]["is_current"] is True
@@ -425,11 +415,11 @@ def test_route_period_switch_uses_period_default_not_route_default(api_client, s
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         noon = api_client.get(
-            "/api/v1/routes/touchal-darband/forecast/",
+            "/api/v1/routes/tochal-darband/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "noon"},
         ).json()
         night = api_client.get(
-            "/api/v1/routes/touchal-darband/forecast/",
+            "/api/v1/routes/tochal-darband/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     assert noon["start_minutes"] == 840
@@ -439,7 +429,7 @@ def test_route_period_switch_uses_period_default_not_route_default(api_client, s
 @pytest.mark.django_db
 def test_route_start_time_floors_off_step_minutes(api_client, seeded):
     body = api_client.get(
-        "/api/v1/routes/touchal-darband/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": REFERENCE_DATE.isoformat(), "period": "morning", "start_time": "10:15"},
     ).json()
     assert body["start_minutes"] == 600
@@ -477,7 +467,7 @@ def test_legacy_numeric_start_time_minutes():
 @pytest.mark.django_db
 def test_route_invalid_start_time_returns_400(api_client, seeded):
     response = api_client.get(
-        "/api/v1/routes/touchal-darband/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": REFERENCE_DATE.isoformat(), "period": "morning", "start_time": "12:xx"},
     )
     assert response.status_code == 400
@@ -494,10 +484,10 @@ def test_destination_profile_links_canonical_weather_point(seeded):
     from hawatch.modules.destinations.models import Destination
     from hawatch.modules.forecasts.models import WeatherPoint
 
-    touchal = Destination.objects.get(slug="touchal")
+    tochal = Destination.objects.get(slug="tochal")
     summit = WeatherPoint.objects.get(slug="tochal_summit")
-    assert touchal.weather_point_id == summit.id
-    assert summit.destination_profile.slug == "touchal"
+    assert tochal.weather_point_id == summit.id
+    assert summit.destination_profile.slug == "tochal"
 
 
 @pytest.mark.django_db
@@ -507,7 +497,7 @@ def test_catalog_seed_does_not_create_synthetic_dest_points(seeded):
 
     seed_catalog()
     seed_catalog()
-    assert not WeatherPoint.objects.filter(slug="dest:touchal").exists()
+    assert not WeatherPoint.objects.filter(slug="dest:tochal").exists()
     assert WeatherPoint.objects.filter(slug="tochal_summit").exists()
     # Demo destinations use canonical slugs, not dest: prefix.
     assert WeatherPoint.objects.filter(slug="damavand", kind="destination").exists()
@@ -517,21 +507,21 @@ def test_catalog_seed_does_not_create_synthetic_dest_points(seeded):
 @pytest.mark.django_db
 def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
     summit = api_client.get("/api/v1/points/tochal_summit/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
-    assert summit["subject"]["canonical_href"] == "/destination/touchal"
-    assert summit["point"]["href"] == "/destination/touchal"
-    sarband = api_client.get("/api/v1/points/sarband/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    assert summit["subject"]["canonical_href"] == "/destination/tochal"
+    assert summit["point"]["href"] == "/destination/tochal"
+    sarband = api_client.get("/api/v1/points/tochal-sarband-square/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     assert sarband["subject"]["kind"] == "point"
-    assert sarband["subject"]["canonical_href"] == "/points/sarband"
+    assert sarband["subject"]["canonical_href"] == "/points/tochal-sarband-square"
     assert "metrics" in sarband
     assert "decision" in sarband
     routes = {item["slug"] for item in sarband["related_routes"]}
-    assert "touchal-darband" in routes
+    assert "tochal-darband" in routes
 
 
 @pytest.mark.django_db
 def test_place_forecast_contract_shared_keys(api_client, seeded):
-    dest = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
-    point = api_client.get("/api/v1/points/sarband/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    dest = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    point = api_client.get("/api/v1/points/tochal-sarband-square/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     for body in (dest, point):
         assert "subject" in body
         assert body["subject"]["kind"] in {"destination", "point"}

@@ -176,17 +176,12 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 ## نقطهٔ canonical (Forecast Place — نقش point)
 
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
-- URL frontend: `/points/{weather_point_slug}` — مثال `/points/sarband`
+- URL frontend: `/points/{weather_point_slug}` — مثال `/points/tochal-sarband-square`
 - همان قرارداد place مشترک با destination؛ frontend فقط `forecast.*` را مصرف می‌کند (alias ریشه سازگاری است)
-- اگر WeatherPoint دارای Destination profile باشد، `canonical_href=/destination/{slug}` و frontend redirect می‌کند (حفظ `date`/`period`؛ بدون `start_time`/`speed`)
+- WeatherPoint مقصدی `canonical_href` عمومی در namespaceٔ `/points/` ندارد؛ frontend
+  باید از ابتدا `/destination/{slug}` را لینک کند.
 - **بدون** planner controls روی صفحه
 - mobile هم همان `mobile-route-picker` مقصد را برای مسیرهای مرتبط نشان می‌دهد
-
-## legacy route-point (سازگاری موقت)
-
-- `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/?date=&period=`
-- پاسخ شامل `canonical_href` و `weather_point_slug` برای resolve به URL تمیز. اگر WeatherPoint Destination profile داشته باشد، `canonical_href` باید `/destination/{destinationSlug}` باشد؛ در غیر این صورت `/points/{weather_point_slug}`.
-- frontend legacy `/routes/.../points/...` را redirect می‌کند؛ `start_time`/`speed` از URL حذف می‌شوند
 
 ## جست‌وجوی پیشنهاد (Home)
 

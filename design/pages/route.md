@@ -8,7 +8,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۲. مسیر ورود و خروج
 
-- ورود: از route card صفحهٔ Destination با `/routes/touchal-darband` یا route slug.
+- ورود: از route card صفحهٔ Destination با `/routes/tochal-darband` یا route slug.
 - خروج: بازگشت به مقصد، انتخاب مسیر دیگر همان مقصد، کپی/اشتراک برنامه.
 - تغییر روز، ساعت شروع، سرعت و بازه در query/state قابل بازسازی هستند؛ لینک نقطه canonical و تمیز است و context کامل planner را در navigation state نگه می‌دارد.
 
@@ -40,7 +40,9 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - start-time gauge: در ورود بدون start_time، برای تاریخ/بازهٔ جاری روی زمان فعلی `Asia/Tehran` قرار می‌گیرد؛ برای تاریخ‌های دیگر از default همان بازه استفاده می‌شود. قسمت قبل از زمان فعلی کم‌رنگ و قسمت آینده عادی است. بعد از تغییر، در صورت آماده‌بودن timing، زمان رسیدن نقاط recompute می‌شود.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
 - midnight/morning/noon/night: یک کنترل مشترک چهارگزینه‌ای برای route points و hourly forecast در mobile.
-- point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ اما WeatherPoint مقصدی مثل `tochal_summit` باید به `/destination/touchal` برود. `location.state.fromRoute` فقط برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
+- point: جزئیات مستقل در `/points/{weatherPointSlug}` باز می‌شود؛ نقطهٔ مقصدی مثل
+  `tochal_summit` مستقیماً به `/destination/tochal` لینک می‌شود و صفحهٔ مستقل ندارد.
+  `location.state.fromRoute` فقط برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: لینک بازسازی‌پذیر فعلی را از queryهای planner آماده می‌کند؛ share server-side در این milestone ساخته نشده است.
 
@@ -71,7 +73,8 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 ## ۸. API فعلی و مسیرهای توسعه
 
 - `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=` پاسخ فعلی route و forecast را می‌دهد؛ برای Tochal v1 شامل `timing_status=estimated`، provenance/confidence/uncertainty و arrival-aware point weather است.
-- `GET /api/v1/routes/{route_slug}/points/{point_slug}/forecast/` قرارداد legacy سازگار را نگه می‌دارد.
+- endpoint قدیمیِ route-point بخشی از قرارداد عمومی این مرحله نیست؛ نقطه‌ها فقط از
+  `/api/v1/points/{weather_point_slug}/forecast/` خوانده می‌شوند.
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=` صفحهٔ مستقل نقطه را تغذیه می‌کند.
 - endpointهای plan جدا و share server-side هنوز مسیر توسعه‌اند.
 

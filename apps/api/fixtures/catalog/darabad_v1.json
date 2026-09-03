@@ -20,93 +20,233 @@
     "is_active": true
   },
   "weather_points": {
-    "darabad_parking": {
+    "darabad-parking": {
       "name": "پارکینگ دارآباد",
       "latitude": 35.822431,
       "longitude": 51.491461,
       "elevation_m": 1736,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 1736 m; 2024 GPX parking waypoint: 1708 m; route-start cross-check"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1736 m; 2024 GPX parking waypoint: 1708 m; route-start cross-check",
+      "page_name": "پارکینگ دارآباد",
+      "short_label": "پارکینگ دارآباد",
+      "place_type": "parking",
+      "aliases": [],
+      "identity_summary": "پارکینگ دارآباد؛ نقطهٔ parking در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/"
+      ]
     },
-    "darabad_shensiyah_spring": {
+    "darabad-shensiyah-spring": {
       "name": "چشمهٔ یال شن‌سیاه دارآباد",
       "latitude": 35.834656,
       "longitude": 51.497711,
       "elevation_m": 2193,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2193 m; 2024 GPX waypoint: 2218 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2193 m; 2024 GPX waypoint: 2218 m",
+      "page_name": "چشمهٔ یال شن‌سیاه دارآباد",
+      "short_label": "چشمهٔ یال شن‌سیاه دارآباد",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "چشمهٔ یال شن‌سیاه دارآباد؛ نقطهٔ spring در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_abandoned_guardhouse": {
+    "darabad-abandoned-guardhouse": {
       "name": "پاسدارخانهٔ متروکهٔ دارآباد",
       "latitude": 35.837556,
       "longitude": 51.505672,
       "elevation_m": 2537,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2537 m; 2024 GPX waypoint سربازخونه: 2567 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2537 m; 2024 GPX waypoint سربازخونه: 2567 m",
+      "page_name": "پاسدارخانهٔ متروکهٔ دارآباد",
+      "short_label": "پاسدارخانهٔ متروکهٔ دارآباد",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "پاسدارخانهٔ متروکهٔ دارآباد؛ نقطهٔ landmark در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_shensiyah_tower": {
+    "darabad-shensiyah-tower": {
       "name": "دکل مسیر شن‌سیاه دارآباد",
-      "latitude": 35.845420,
+      "latitude": 35.84542,
       "longitude": 51.508256,
       "elevation_m": 2832,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2832 m; 2024 GPX waypoint: 2859 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2832 m; 2024 GPX waypoint: 2859 m",
+      "page_name": "دکل مسیر شن‌سیاه دارآباد",
+      "short_label": "دکل مسیر شن‌سیاه دارآباد",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "دکل مسیر شن‌سیاه دارآباد؛ نقطهٔ landmark در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_chalmags_waterfall": {
+    "darabad-chalmags-waterfall": {
       "name": "آبشار چال‌مگس دارآباد",
       "latitude": 35.841679,
       "longitude": 51.486609,
       "elevation_m": 2127,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2127 m; 2019 GPX waypoint: 2075 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2127 m; 2019 GPX waypoint: 2075 m",
+      "page_name": "آبشار چال‌مگس دارآباد",
+      "short_label": "آبشار چال‌مگس دارآباد",
+      "place_type": "waterfall",
+      "aliases": [],
+      "identity_summary": "آبشار چال‌مگس دارآباد؛ نقطهٔ waterfall در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_haft_hoz": {
+    "darabad-haft-hoz": {
       "name": "سر هفت‌حوض دارآباد",
       "latitude": 35.844338,
       "longitude": 51.485678,
       "elevation_m": 2189,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2189 m; 2019 GPX waypoint: 2160 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2189 m; 2019 GPX waypoint: 2160 m",
+      "page_name": "سر هفت‌حوض دارآباد",
+      "short_label": "سر هفت‌حوض دارآباد",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "سر هفت‌حوض دارآباد؛ نقطهٔ landmark در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_darazlash_spring": {
+    "darabad-darazlash-spring": {
       "name": "چشمهٔ درازلش دارآباد",
-      "latitude": 35.844960,
+      "latitude": 35.84496,
       "longitude": 51.485186,
       "elevation_m": 2189,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2189 m; 2019 GPX spring waypoint: 2177 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2189 m; 2019 GPX spring waypoint: 2177 m",
+      "page_name": "چشمهٔ درازلش دارآباد",
+      "short_label": "چشمهٔ درازلش دارآباد",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "چشمهٔ درازلش دارآباد؛ نقطهٔ spring در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_khalil_branch": {
+    "darabad-khalil-branch": {
       "name": "دوراهی چشمهٔ خلیل در مسیر فراخ‌سینه",
       "latitude": 35.850449,
       "longitude": 51.480251,
       "elevation_m": 2293,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2293 m; 2019 GPX route-decision waypoint: 2260 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2293 m; 2019 GPX route-decision waypoint: 2260 m",
+      "page_name": "دوراهی چشمهٔ خلیل در مسیر فراخ‌سینه",
+      "short_label": "دوراهی چشمهٔ خلیل در مسیر فراخ‌سینه",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "دوراهی چشمهٔ خلیل در مسیر فراخ‌سینه؛ نقطهٔ spring در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_ridge_entry": {
+    "darabad-ridge-entry": {
       "name": "ورود به خط‌الرأس دارآباد",
       "latitude": 35.850062,
-      "longitude": 51.502320,
+      "longitude": 51.50232,
       "elevation_m": 2970,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2970 m; 2019 GPX waypoint: 2966 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2970 m; 2019 GPX waypoint: 2966 m",
+      "page_name": "ورود به خط‌الرأس دارآباد",
+      "short_label": "ورود به خط‌الرأس دارآباد",
+      "place_type": "ridge",
+      "aliases": [],
+      "identity_summary": "ورود به خط‌الرأس دارآباد؛ نقطهٔ ridge در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_hajiabad_start": {
+    "darabad-hajiabad-start": {
       "name": "شروع مسیر حاجی‌آباد به دارآباد",
       "latitude": 35.870997,
       "longitude": 51.538225,
       "elevation_m": 1805,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 1805 m; 2023 Hajiabad GPX track start: 1815 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1805 m; 2023 Hajiabad GPX track start: 1815 m",
+      "page_name": "شروع مسیر حاجی‌آباد به دارآباد",
+      "short_label": "شروع مسیر حاجی‌آباد به دارآباد",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "شروع مسیر حاجی‌آباد به دارآباد؛ نقطهٔ landmark در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-z-msyr-rwsty-hjy-abd-156267671",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-hjy-abd-t-qlh-drabd-w-frwd-z-msyr-mwmy-drabd-t-prkhyng-jmh-1399-08-16-59930784",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
-    "darabad_hajiabad_ridge": {
+    "darabad-hajiabad-ridge": {
       "name": "یال شمالی دارآباد · مسیر حاجی‌آباد",
       "latitude": 35.854625,
-      "longitude": 51.525020,
+      "longitude": 51.52502,
       "elevation_m": 2387,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM: 2387 m; representative 2023 Hajiabad GPX mid-route point: 2399 m"
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2387 m; representative 2023 Hajiabad GPX mid-route point: 2399 m",
+      "page_name": "یال شمالی دارآباد · مسیر حاجی‌آباد",
+      "short_label": "یال شمالی دارآباد · مسیر حاجی‌آباد",
+      "place_type": "ridge",
+      "aliases": [],
+      "identity_summary": "یال شمالی دارآباد · مسیر حاجی‌آباد؛ نقطهٔ ridge در محدودهٔ قلهٔ دارآباد",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-z-msyr-rwsty-hjy-abd-156267671",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-hjy-abd-t-qlh-drabd-w-frwd-z-msyr-mwmy-drabd-t-prkhyng-jmh-1399-08-16-59930784",
+        "https://decovel.com/page/darabad-peak"
+      ]
     },
     "darabad_summit": {
       "name": "قلهٔ دارآباد",
@@ -115,7 +255,24 @@
       "elevation_m": 3167,
       "kind": "destination",
       "status": "provisional",
-      "elevation_source": "Wikiloc/Gholleh cross-check: approximately 3167–3170 m; Open-Meteo GLO-90 DEM: 3164 m; GPX summit endpoints: approximately 3170–3180 m"
+      "elevation_source": "Wikiloc/Gholleh cross-check: approximately 3167–3170 m; Open-Meteo GLO-90 DEM: 3164 m; GPX summit endpoints: approximately 3170–3180 m",
+      "page_name": "قلهٔ دارآباد",
+      "short_label": "قلهٔ دارآباد",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ دارآباد؛ نقطهٔ summit در محدودهٔ قلهٔ دارآباد",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://decovel.com/page/darabad-peak",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-drabd-42576630",
+        "https://www.wikiloc.com/hiking-trails/darabad-summit-9465718",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://www.wikiloc.com/hiking-trails/qlh-drabd-z-msyr-rwsty-hjy-abd-156267671",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-hjy-abd-t-qlh-drabd-w-frwd-z-msyr-mwmy-drabd-t-prkhyng-jmh-1399-08-16-59930784"
+      ]
     }
   },
   "routes": {
@@ -130,10 +287,10 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "darabad_parking",
-        "darabad_shensiyah_spring",
-        "darabad_abandoned_guardhouse",
-        "darabad_shensiyah_tower",
+        "darabad-parking",
+        "darabad-shensiyah-spring",
+        "darabad-abandoned-guardhouse",
+        "darabad-shensiyah-tower",
         "darabad_summit"
       ],
       "distance_km": 6.6,
@@ -161,13 +318,15 @@
           "The legacy GPX has synthetic 40-second timestamps and is used for geometry cross-check only, not timing."
         ],
         "cumulative_minutes": {
-          "darabad_parking": 0,
-          "darabad_shensiyah_spring": 85,
-          "darabad_abandoned_guardhouse": 135,
-          "darabad_shensiyah_tower": 205,
+          "darabad-parking": 0,
+          "darabad-shensiyah-spring": 85,
+          "darabad-abandoned-guardhouse": 135,
+          "darabad-shensiyah-tower": 205,
           "darabad_summit": 300
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "farakhsineh_to_darabad": {
       "slug": "darabad-farakhsineh",
@@ -180,12 +339,12 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "darabad_parking",
-        "darabad_chalmags_waterfall",
-        "darabad_haft_hoz",
-        "darabad_darazlash_spring",
-        "darabad_khalil_branch",
-        "darabad_ridge_entry",
+        "darabad-parking",
+        "darabad-chalmags-waterfall",
+        "darabad-haft-hoz",
+        "darabad-darazlash-spring",
+        "darabad-khalil-branch",
+        "darabad-ridge-entry",
         "darabad_summit"
       ],
       "distance_km": 11.2,
@@ -214,15 +373,17 @@
           "The legacy GPX has synthetic 40-second timestamps and is used for geometry cross-check only, not timing."
         ],
         "cumulative_minutes": {
-          "darabad_parking": 0,
-          "darabad_chalmags_waterfall": 85,
-          "darabad_haft_hoz": 100,
-          "darabad_darazlash_spring": 105,
-          "darabad_khalil_branch": 130,
-          "darabad_ridge_entry": 285,
+          "darabad-parking": 0,
+          "darabad-chalmags-waterfall": 85,
+          "darabad-haft-hoz": 100,
+          "darabad-darazlash-spring": 105,
+          "darabad-khalil-branch": 130,
+          "darabad-ridge-entry": 285,
           "darabad_summit": 330
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "hajiabad_to_darabad": {
       "slug": "darabad-hajiabad",
@@ -235,8 +396,8 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "darabad_hajiabad_start",
-        "darabad_hajiabad_ridge",
+        "darabad-hajiabad-start",
+        "darabad-hajiabad-ridge",
         "darabad_summit"
       ],
       "distance_km": 6.2,
@@ -264,11 +425,13 @@
           "The 2020 GPX is used as an independent ascent and summit cross-check; its post-summit descent is excluded from one-way timing."
         ],
         "cumulative_minutes": {
-          "darabad_hajiabad_start": 0,
-          "darabad_hajiabad_ridge": 125,
+          "darabad-hajiabad-start": 0,
+          "darabad-hajiabad-ridge": 125,
           "darabad_summit": 240
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

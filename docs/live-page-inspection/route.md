@@ -1,6 +1,6 @@
 # بررسی read-only صفحهٔ Route
 
-زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/routes/touchal-darband`
+زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/routes/tochal-darband`
 
 منبع labels: `[LIVE]` DOM/رفتار live، `[LIVE-BUNDLE]` assetهای JS/CSS live، `[SCREENSHOT]` تصاویر repository، `[PRODUCT]` درخواست محصول، `[BLOCKED]` منبع در دسترس‌نبوده.
 
@@ -66,13 +66,13 @@
 | --- | --- |
 | هواچ | `/` |
 | ورود | `/login` |
-| back mobile | `/destination/touchal` با aria-label `بازگشت به صفحهٔ مقصد` |
+| back mobile | `/destination/tochal` با aria-label `بازگشت به صفحهٔ مقصد` |
 | breadcrumb مقصدها | `/#search-results` |
-| breadcrumb قلهٔ توچال | `/destination/touchal` |
-| route sibling ولنجک | `/routes/touchal-welanjak` |
-| route sibling کلکچال | `/routes/touchal-kalkchal` |
-| route sibling شهرستانک | `/routes/touchal-shahrestanak` |
-| route sibling آهار | `/routes/touchal-ahar` |
+| breadcrumb قلهٔ توچال | `/destination/tochal` |
+| route sibling ولنجک | `/routes/tochal-velenjak` |
+| route sibling کلکچال | `/routes/tochal-kolakchal` |
+| route sibling شهرستانک | `/routes/tochal-shahrestanak` |
+| route sibling آهار | `/routes/tochal-ahar` |
 | route point | `/destination-point/{pointSlug}` |
 | share initial href | `/share`، target `_blank` |
 | Telegram after click | `https://t.me/share/url?...` با query رمزگذاری‌شدهٔ plan |
@@ -90,7 +90,7 @@
 
 ## ۵. بازگشت بین Home، Destination و Route
 
-Home → Destination با tile؛ Destination → Route با route card؛ Route → Destination با back link یا breadcrumb؛ brand از هر صفحه به Home. در Route breadcrumb مقصد نیز به `/destination/touchal` برمی‌گردد. [LIVE]
+Home → Destination با tile؛ Destination → Route با route card؛ Route → Destination با back link یا breadcrumb؛ brand از هر صفحه به Home. در Route breadcrumb مقصد نیز به `/destination/tochal` برمی‌گردد. [LIVE]
 
 ## ۶. انتخاب روز، صبح/بعدازظهر، ساعت شروع و سرعت
 
@@ -170,7 +170,7 @@ Home → Destination با tile؛ Destination → Route با route card؛ Route �
 
 | بخش | معیار تست |
 | --- | --- |
-| navigation | back به `/destination/touchal`، breadcrumb مقصد به همان URL و siblingها به routeهای درست می‌روند. |
+| navigation | back به `/destination/tochal`، breadcrumb مقصد به همان URL و siblingها به routeهای درست می‌روند. |
 | day/period | default امروز/صبح است؛ کلیک day و period state active و دادهٔ derived را تغییر می‌دهد. |
 | planner | start default ۰۶:۰۰ و speed متوسط است؛ تغییر start/speed زمان رسیدن و decision title را update می‌کند. |
 | points | شش نقطه با نام/زمان/دما/باد و href درست روی axis و cardها render می‌شوند. |

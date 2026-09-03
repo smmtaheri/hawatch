@@ -27,95 +27,221 @@
       "elevation_m": 2733,
       "elevation_source": "منابع کوهنوردی: ۲۷۳۳ متر؛ waypointهای مستقل GPX حدود ۲۷۱۰ متر؛ Open-Meteo GLO-90 DEM در مختصات catalog حدود ۲۷۰۲ متر؛ مقدار catalog برای نمایش قله provisional است",
       "status": "provisional",
-      "kind": "destination"
+      "kind": "destination",
+      "page_name": "قلهٔ درفک",
+      "short_label": "قلهٔ درفک",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ درفک؛ نقطهٔ summit در محدودهٔ قلهٔ درفک",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+        "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9",
+        "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+        "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+        "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848"
+      ]
     },
-    "dorfak_east_shah_shahidan": {
-      "name": "شاه‌شهیدان",
+    "dorfak-east-shah-shahidan": {
+      "name": "روستای شاه‌شهیدان",
       "latitude": 36.863635,
       "longitude": 49.774007,
       "elevation_m": 1814,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۱۸۱۴ متر؛ waypoint GPX شاه‌شهیدان: حدود ۱۸۱۹ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "روستای شاه‌شهیدان، ابتدای مسیر درفک",
+      "short_label": "شاه‌شهیدان",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "شاه‌شهیدان؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+        "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_east_tir_bargh": {
+    "dorfak-east-tir-bargh": {
       "name": "تیرهای برق مسیر شاه‌شهیدان",
       "latitude": 36.868047,
       "longitude": 49.746113,
       "elevation_m": 1985,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۸۵ متر؛ waypoint GPX تیر برق: حدود ۱۹۷۶ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "تیرهای برق مسیر شاه‌شهیدان",
+      "short_label": "تیرهای برق مسیر شاه‌شهیدان",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "تیرهای برق مسیر شاه‌شهیدان؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+        "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_east_cheshmeh": {
+    "dorfak-east-cheshmeh": {
       "name": "چشمهٔ مسیر شاه‌شهیدان",
       "latitude": 36.883421,
       "longitude": 49.723327,
       "elevation_m": 2269,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۲۲۶۹ متر؛ waypoint GPX چشمه: حدود ۲۲۴۸ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "چشمهٔ مسیر شاه‌شهیدان",
+      "short_label": "چشمهٔ مسیر شاه‌شهیدان",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "چشمهٔ مسیر شاه‌شهیدان؛ نقطهٔ spring در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+        "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_east_ghar_yakhi": {
+    "dorfak-east-ghar-yakhi": {
       "name": "غار یخی درفک",
-      "latitude": 36.898340,
+      "latitude": 36.89834,
       "longitude": 49.690817,
       "elevation_m": 2421,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۲۴۲۱ متر؛ waypoint GPX غار یخی: حدود ۲۴۳۸ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "غار یخی درفک",
+      "short_label": "غار یخی درفک",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "غار یخی درفک؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://uk.wikiloc.com/marshruty-alpinizm/dorfak-qlh-drfkh-z-shh-shhydn-7092663",
+        "https://is.wikiloc.com/fjallaferd-slodir/mmzdh-shh-shhydn-dorfak-peak-shah-shahidan-187933643",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_west_shirkuh": {
-      "name": "شیرکوه",
+    "dorfak-west-shirkuh": {
+      "name": "روستای شیرکوه",
       "latitude": 36.889695,
       "longitude": 49.563958,
       "elevation_m": 401,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۴۰۱ متر؛ ابتدای ترک GPX در مسجد شیرکوه حدود ۴۰۳ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "روستای شیرکوه، ابتدای مسیر درفک",
+      "short_label": "شیرکوه",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "شیرکوه؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+        "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_west_larneh": {
-      "name": "ابتدای لارنه",
+    "dorfak-west-larneh": {
+      "name": "دشت لارنه",
       "latitude": 36.888654,
       "longitude": 49.618377,
       "elevation_m": 1197,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۱۱۹۷ متر؛ waypoint GPX ابتدای لارنه حدود ۱۲۰۰ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "دشت لارنه در مسیر شیرکوه–درفک",
+      "short_label": "دشت لارنه",
+      "place_type": "meadow",
+      "aliases": [],
+      "identity_summary": "ابتدای لارنه؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+        "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_west_jeyruni_spring": {
-      "name": "چشمهٔ جیرونی",
+    "dorfak-jeyruni-spring": {
+      "name": "چشمهٔ جیرونی درفک",
       "latitude": 36.894767,
-      "longitude": 49.657720,
+      "longitude": 49.65772,
       "elevation_m": 1902,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۰۲ متر؛ waypoint GPX چشمهٔ جیرونی حدود ۱۹۰۰ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "aliases": [],
+      "page_name": "چشمهٔ جیرونی در مسیر درفک",
+      "short_label": "چشمهٔ جیرونی",
+      "place_type": "spring",
+      "identity_summary": "چشمهٔ جیرونی در مسیر درفک؛ نقطهٔ spring در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+        "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9",
+        "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848"
+      ]
     },
-    "dorfak_west_defraz_ridge": {
+    "dorfak-west-defraz-ridge": {
       "name": "گردنهٔ مسیر دفراز",
       "latitude": 36.895964,
-      "longitude": 49.688880,
+      "longitude": 49.68888,
       "elevation_m": 2513,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۲۵۱۳ متر؛ waypoint GPX گردنهٔ مسیر دفراز حدود ۲۵۰۰ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "گردنهٔ مسیر دفراز",
+      "short_label": "گردنهٔ مسیر دفراز",
+      "place_type": "pass",
+      "aliases": [],
+      "identity_summary": "گردنهٔ مسیر دفراز؛ نقطهٔ pass در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dorfak-az-shirkuh-960825amp-26-nima-edited-drfkh-z-shyrkhwh-21117531",
+        "https://www.wikiloc.com/hiking-trails/drfkh-shyrkhwh-t-jyrny-21032850",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_south_estakhrgah": {
+    "dorfak-south-estakhrgah": {
       "name": "روستای استخرگاه",
       "latitude": 36.863216,
       "longitude": 49.628591,
       "elevation_m": 682,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۶۸۲ متر؛ waypoint GPX روستا حدود ۶۸۱ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "روستای استخرگاه",
+      "short_label": "روستای استخرگاه",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای استخرگاه؛ نقطهٔ village در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     },
-    "dorfak_south_spring": {
-      "name": "چشمهٔ مسیر استخرگاه",
-      "latitude": 36.894708,
-      "longitude": 49.657807,
-      "elevation_m": 1902,
-      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۹۰۲ متر؛ waypoint GPX چشمه حدود ۱۹۱۰ متر",
-      "status": "provisional"
-    },
-    "dorfak_south_forest_edge": {
+    "dorfak-south-forest-edge": {
       "name": "لبهٔ جنگل مسیر استخرگاه",
       "latitude": 36.894637,
       "longitude": 49.664585,
       "elevation_m": 2130,
       "elevation_source": "Open-Meteo GLO-90 DEM: ۲۱۳۰ متر؛ waypoint GPX شروع جنگل حدود ۲۱۴۶ متر",
-      "status": "provisional"
+      "status": "provisional",
+      "page_name": "لبهٔ جنگل مسیر استخرگاه",
+      "short_label": "لبهٔ جنگل مسیر استخرگاه",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "لبهٔ جنگل مسیر استخرگاه؛ نقطهٔ landmark در محدودهٔ قلهٔ درفک",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848",
+        "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
+      ]
     }
   },
   "routes": {
@@ -130,10 +256,10 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "dorfak_east_shah_shahidan",
-        "dorfak_east_tir_bargh",
-        "dorfak_east_cheshmeh",
-        "dorfak_east_ghar_yakhi",
+        "dorfak-east-shah-shahidan",
+        "dorfak-east-tir-bargh",
+        "dorfak-east-cheshmeh",
+        "dorfak-east-ghar-yakhi",
         "dorfak_summit"
       ],
       "distance_km": 14.4,
@@ -161,13 +287,15 @@
           "GPX elevation is reference evidence; catalog weather elevations use Open-Meteo GLO-90 DEM with waypoint cross-check."
         ],
         "cumulative_minutes": {
-          "dorfak_east_shah_shahidan": 0,
-          "dorfak_east_tir_bargh": 70,
-          "dorfak_east_cheshmeh": 165,
-          "dorfak_east_ghar_yakhi": 270,
+          "dorfak-east-shah-shahidan": 0,
+          "dorfak-east-tir-bargh": 70,
+          "dorfak-east-cheshmeh": 165,
+          "dorfak-east-ghar-yakhi": 270,
           "dorfak_summit": 360
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "shirkuh_to_dorfak": {
       "slug": "dorfak-shirkuh",
@@ -180,10 +308,10 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "dorfak_west_shirkuh",
-        "dorfak_west_larneh",
-        "dorfak_west_jeyruni_spring",
-        "dorfak_west_defraz_ridge",
+        "dorfak-west-shirkuh",
+        "dorfak-west-larneh",
+        "dorfak-jeyruni-spring",
+        "dorfak-west-defraz-ridge",
         "dorfak_summit"
       ],
       "distance_km": 15.8,
@@ -211,13 +339,15 @@
           "GPX elevation is reference evidence; catalog weather elevations use Open-Meteo GLO-90 DEM with waypoint cross-check."
         ],
         "cumulative_minutes": {
-          "dorfak_west_shirkuh": 0,
-          "dorfak_west_larneh": 145,
-          "dorfak_west_jeyruni_spring": 300,
-          "dorfak_west_defraz_ridge": 420,
+          "dorfak-west-shirkuh": 0,
+          "dorfak-west-larneh": 145,
+          "dorfak-jeyruni-spring": 300,
+          "dorfak-west-defraz-ridge": 420,
           "dorfak_summit": 480
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "estakhrgah_to_dorfak": {
       "slug": "dorfak-estakhrgah",
@@ -230,9 +360,9 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "dorfak_south_estakhrgah",
-        "dorfak_south_spring",
-        "dorfak_south_forest_edge",
+        "dorfak-south-estakhrgah",
+        "dorfak-jeyruni-spring",
+        "dorfak-south-forest-edge",
         "dorfak_summit"
       ],
       "distance_km": 11.5,
@@ -259,12 +389,14 @@
           "The source report describes one spring on the forest route; carry sufficient water."
         ],
         "cumulative_minutes": {
-          "dorfak_south_estakhrgah": 0,
-          "dorfak_south_spring": 180,
-          "dorfak_south_forest_edge": 215,
+          "dorfak-south-estakhrgah": 0,
+          "dorfak-jeyruni-spring": 180,
+          "dorfak-south-forest-edge": 215,
           "dorfak_summit": 360
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

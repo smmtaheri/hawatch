@@ -127,8 +127,7 @@ def destination_weather_point(destination: Destination) -> WeatherPoint | None:
     )
     if point:
         return point
-    # Legacy synthetic fallback retained until cleanup migration removes dest: rows.
-    return WeatherPoint.objects.filter(slug=f"dest:{destination.slug}").first()
+    return None
 
 
 def destination_profile_for_point(point: WeatherPoint) -> Destination | None:
@@ -278,13 +277,10 @@ def serialize_route(route: Route) -> dict:
 
 
 def weather_point_canonical_href(point: WeatherPoint) -> str:
-    """Resolve canonical frontend URL via DestinationProfile first."""
+    """Return the canonical public URL for a WeatherPoint."""
     profile = destination_profile_for_point(point)
     if profile is not None:
         return f"/destination/{profile.slug}"
-    # Transitional fallback while kind/legacy FK still exist.
-    if point.kind == WeatherPoint.Kind.DESTINATION and point.destination_id:
-        return f"/destination/{point.destination.slug}"
     return f"/points/{point.slug}"
 
 
@@ -329,6 +325,13 @@ def serialize_place_subject(
         "weather_point_slug": weather_point.slug,
         "canonical_href": weather_point_canonical_href(weather_point),
         "name": name,
+        "page_name": weather_point.page_name or name,
+        "short_label": weather_point.short_label or name,
+        "place_type": weather_point.place_type or "landmark",
+        "identity_summary": weather_point.identity_summary or "",
+        "importance": weather_point.importance or "support",
+        "name_status": weather_point.name_status or "descriptive",
+        "source_urls": list(weather_point.source_urls or []),
         "aliases": aliases if aliases is not None else (weather_point.aliases or []),
         "elevation_m": elev,
         "elevation_label": f"{to_fa_digits(elev)} متر" if elev is not None else "ارتفاع نامشخص",
@@ -620,7 +623,7 @@ def serialize_point(point: RoutePoint) -> dict:
     if point.weather_point_id:
         href = weather_point_canonical_href(point.weather_point)
     else:
-        href = f"/routes/{point.route.slug}/points/{point.slug}"
+        href = ""
     return {
         "slug": point.slug,
         "name": point.name,
@@ -1176,25 +1179,16 @@ def get_destination(slug: str) -> Destination:
         raise NotFound({"detail": "مقصد پیدا نشد."}) from exc
 
 
-def get_route_point(route_slug: str, point_slug: str) -> RoutePoint:
-    try:
-        point = RoutePoint.objects.select_related("route", "route__destination", "weather_point").get(
-            route__slug=route_slug,
-            slug=point_slug,
-            route__is_active=True,
-            route__destination__is_active=True,
-        )
-    except RoutePoint.DoesNotExist as exc:
-        raise NotFound({"detail": "نقطهٔ مسیر پیدا نشد."}) from exc
-    return point
-
-
 def get_weather_point(slug: str) -> WeatherPoint:
     try:
         point = WeatherPoint.objects.select_related("destination", "destination_profile").get(slug=slug)
     except WeatherPoint.DoesNotExist as exc:
         raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from exc
-    if slug.startswith("dest:"):
+    # ``destination_profile`` is a reverse one-to-one relation, so Django
+    # does not expose a ``destination_profile_id`` attribute on WeatherPoint.
+    # Check the owning profile directly and keep destination canonical points
+    # out of the independent public-point endpoint.
+    if slug.startswith("dest:") or Destination.objects.filter(weather_point_id=point.id).exists():
         raise NotFound({"detail": "برای این مقصد از صفحهٔ مقصد استفاده کن."}) from None
     if not weather_point_is_active(point):
         raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from None
@@ -1206,6 +1200,13 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
     return {
         "slug": point.slug,
         "name": point.name,
+        "page_name": point.page_name or point.name,
+        "short_label": point.short_label or point.name,
+        "place_type": point.place_type or "landmark",
+        "identity_summary": point.identity_summary or "",
+        "importance": point.importance or "support",
+        "name_status": point.name_status or "descriptive",
+        "source_urls": list(point.source_urls or []),
         "aliases": point.aliases or [],
         "kind": point.kind,
         "elevation_m": point.elevation_m,
@@ -1262,64 +1263,6 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
         "related_destinations": related_destinations_for_weather_point(weather_point),
         "related_routes": routes,
         "updated_label": "",
-    }
-
-
-def route_point_forecast(
-    route_point: RoutePoint,
-    *,
-    selected_date: date,
-    period: str,
-    back_params: dict | None = None,
-) -> dict:
-    refresh_if_bucket_changed()
-    local = now_tehran()
-    today = local.date()
-    route = route_point.route
-    wp = route_point.weather_point
-    weather = None
-    hourly: list[dict] = []
-    empty_weather = wp is None
-    if wp:
-        hourly = _hourly_for_period(wp, selected_date, period, now=local)
-        if hourly:
-            weather = hourly[min(len(hourly) // 2, len(hourly) - 1)]
-        else:
-            empty_weather = True
-    elevation = route_point.effective_elevation_m
-    location = route_point.effective_location
-    back_query_parts = [f"date={selected_date.isoformat()}", f"period={period}"]
-    if back_params:
-        for key in ("start_time", "speed"):
-            value = back_params.get(key)
-            if value:
-                back_query_parts.append(f"{key}={value}")
-    back_query = "&".join(back_query_parts)
-    canonical_href = weather_point_canonical_href(wp) if wp else None
-    return {
-        "point": {
-            **serialize_point(route_point),
-            "route_slug": route.slug,
-            "route_title": route.title,
-            "route_href": f"/routes/{route.slug}",
-            "destination": serialize_destination(route.destination),
-            "has_weather_point": wp is not None,
-            "has_forecast": bool(hourly),
-            "latitude": location.y if location else None,
-            "longitude": location.x if location else None,
-            "elevation_m": elevation,
-            "elevation_label": f"{to_fa_digits(elevation)} m" if elevation is not None else "ارتفاع نامشخص",
-        },
-        "canonical_href": canonical_href,
-        "weather_point_slug": wp.slug if wp else None,
-        "days": [day_payload(day, today) for day in day_window(today)],
-        "period": PERIODS[period],
-        "weather": weather,
-        "hourly": hourly,
-        "empty": empty_weather and not hourly,
-        "partial": wp is not None and not hourly,
-        "back_href": f"/routes/{route.slug}?{back_query}",
-        "meta": meta_base(selected_date=selected_date, period=period),
     }
 
 

@@ -5,7 +5,6 @@ import type {
   PlaceForecastResponse,
   PointForecast,
   RouteForecast,
-  RoutePointForecast,
   RouteSummary,
   SearchSuggestion,
 } from "../types";
@@ -54,11 +53,6 @@ export const api = {
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },
   ) => getJson<RouteForecast>(`routes/${slug}/forecast/`, params),
-  routePointForecast: (
-    routeSlug: string,
-    pointSlug: string,
-    params: { date?: string; period?: string },
-  ) => getJson<RoutePointForecast>(`routes/${routeSlug}/points/${pointSlug}/forecast/`, params),
   pointForecast: (slug: string, params: { date?: string; period?: string }) =>
     getJson<PointForecast & PlaceForecastResponse>(`points/${slug}/forecast/`, params),
   searchSuggestions: (query: string, signal?: AbortSignal) => {

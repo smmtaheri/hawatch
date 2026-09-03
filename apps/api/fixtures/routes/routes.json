@@ -1,7 +1,7 @@
 [
   {
-    "slug": "touchal-darband",
-    "destination_slug": "touchal",
+    "slug": "tochal-darband",
+    "destination_slug": "tochal",
     "title": "دربند تا توچال",
     "subtitle": "هوای مسیرت را در هر نقطه ببین؛ نه فقط هوای قله را.",
     "trail_label": "ترک کوه‌پیمایی",
@@ -18,8 +18,8 @@
     "origin_longitude": 51.4283
   },
   {
-    "slug": "touchal-welanjak",
-    "destination_slug": "touchal",
+    "slug": "tochal-velenjak",
+    "destination_slug": "tochal",
     "title": "ولنجک تا توچال",
     "subtitle": "یال جنوبی را مرحله‌به‌مرحله با زمان رسیدن و تغییر باد دنبال کن.",
     "trail_label": "ترک پیاده‌روی",
@@ -36,8 +36,8 @@
     "origin_longitude": 51.41
   },
   {
-    "slug": "touchal-kalkchal",
-    "destination_slug": "touchal",
+    "slug": "tochal-kolakchal",
+    "destination_slug": "tochal",
     "title": "کلکچال تا توچال",
     "subtitle": "خط‌الرأس طولانی‌تر است؛ فاصلهٔ نقاط حساس را قبل از حرکت ببین.",
     "trail_label": "ترک فنی‌تر",
@@ -54,8 +54,8 @@
     "origin_longitude": 51.458
   },
   {
-    "slug": "touchal-shahrestanak",
-    "destination_slug": "touchal",
+    "slug": "tochal-shahrestanak",
+    "destination_slug": "tochal",
     "title": "شهرستانک تا توچال",
     "subtitle": "ترک شمالی و طولانی؛ زمان عبور از گردنه را با تغییر هوا بسنج.",
     "trail_label": "ترک طبیعت‌گردی",
@@ -72,8 +72,8 @@
     "origin_longitude": 51.353
   },
   {
-    "slug": "touchal-ahar",
-    "destination_slug": "touchal",
+    "slug": "tochal-ahar",
+    "destination_slug": "tochal",
     "title": "آهار تا توچال",
     "subtitle": "درهٔ آهار تا خط‌الرأس؛ برای شروع زود و برگشت منظم برنامه‌ریزی کن.",
     "trail_label": "کوه‌پیمایی",

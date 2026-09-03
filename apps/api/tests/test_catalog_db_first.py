@@ -109,7 +109,7 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
 @pytest.mark.django_db
 def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     manual = WeatherPoint.objects.create(
         slug="manual_ridge_point",
         name="یال دستی",
@@ -127,7 +127,7 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
         fixture_managed=False,
     )
     route = Route.objects.create(
-        slug="touchal-manual-ridge",
+        slug="tochal-manual-ridge",
         destination=destination,
         title="یال دستی",
         subtitle="مسیر آزمایشی",
@@ -175,14 +175,14 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
     assert bootstrap_live_catalog_if_empty() is None
     seed_tochal_catalog(prune=False)
     assert WeatherPoint.objects.filter(slug="manual_ridge_point").exists()
-    assert Route.objects.filter(slug="touchal-manual-ridge").exists()
+    assert Route.objects.filter(slug="tochal-manual-ridge").exists()
     assert WeatherPoint.objects.get(slug="manual_ridge_point").fixture_managed is False
 
 
 @pytest.mark.django_db
 def test_non_pruning_import_preserves_unrelated_rows():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     WeatherPoint.objects.create(
         slug="orphan_fixture_point",
         name="نقطهٔ یتیم",
@@ -215,7 +215,7 @@ def test_non_pruning_import_preserves_unrelated_rows():
 @pytest.mark.django_db
 def test_explicit_prune_only_removes_fixture_managed_absent_rows():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     WeatherPoint.objects.create(
         slug="stale_fixture_point",
         name="نقطهٔ کهنه",
@@ -250,7 +250,7 @@ def test_explicit_prune_only_removes_fixture_managed_absent_rows():
 @pytest.mark.django_db
 def test_db_added_ingest_enabled_point_is_selected():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     point = WeatherPoint.objects.create(
         slug="admin_ingest_point",
         name="نقطهٔ ingest",
@@ -264,7 +264,7 @@ def test_db_added_ingest_enabled_point_is_selected():
         fixture_managed=False,
     )
     Route.objects.create(
-        slug="touchal-admin-ingest",
+        slug="tochal-admin-ingest",
         destination=destination,
         title="ingest",
         subtitle="",
@@ -282,7 +282,7 @@ def test_db_added_ingest_enabled_point_is_selected():
         fixture_managed=False,
     )
     RoutePoint.objects.create(
-        route=Route.objects.get(slug="touchal-admin-ingest"),
+        route=Route.objects.get(slug="tochal-admin-ingest"),
         slug="admin_ingest_point",
         weather_point=point,
         name=point.name,
@@ -320,7 +320,7 @@ def test_db_added_ingest_enabled_point_is_selected():
 @pytest.mark.django_db
 def test_search_index_updates_after_publish():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     point = WeatherPoint.objects.create(
         slug="searchable_ridge",
         name="یال جستجوپذیر",
@@ -335,7 +335,7 @@ def test_search_index_updates_after_publish():
         fixture_managed=False,
     )
     route = Route.objects.create(
-        slug="touchal-searchable",
+        slug="tochal-searchable",
         destination=destination,
         title="جستجو",
         subtitle="",
@@ -372,8 +372,8 @@ def test_search_index_updates_after_publish():
 @pytest.mark.django_db
 def test_manual_routepoint_preserved_without_prune():
     seed_tochal_catalog()
-    route = Route.objects.get(slug="touchal-darband")
-    wp = WeatherPoint.objects.get(slug="tochal_hotel")
+    route = Route.objects.get(slug="tochal-darband")
+    wp = WeatherPoint.objects.get(slug="tochal-hotel")
     # Make room for an operator-managed point at ordinal slot 2. The next
     # fixture import must retain that placement rather than moving it to the
     # end of the route.
@@ -404,8 +404,8 @@ def test_manual_routepoint_preserved_without_prune():
 def test_reimport_handles_stale_fixture_point_without_temporary_order_collision():
     """A changed fixture may leave an old fixture point during non-prune import."""
     seed_tochal_catalog()
-    route = Route.objects.get(slug="touchal-darband")
-    wp = WeatherPoint.objects.get(slug="tochal_hotel")
+    route = Route.objects.get(slug="tochal-darband")
+    wp = WeatherPoint.objects.get(slug="tochal-hotel")
     # Simulate an older fixture revision whose first point no longer exists in
     # the current catalog. This reproduces the temporary 1001 collision that
     # used to abort an otherwise atomic import.
@@ -428,11 +428,11 @@ def test_reimport_handles_stale_fixture_point_without_temporary_order_collision(
 
     points = list(route.points.order_by("sort_order"))
     assert [point.slug for point in points][:6] == [
-        "sarband",
-        "pas_ghaleh",
-        "shirpala",
-        "amiri",
-        "goleband",
+        "tochal-sarband-square",
+        "tochal-pas-ghaleh-village",
+        "tochal-shirpala-shelter",
+        "tochal-amiri-shelter",
+        "tochal-goleband-ridge",
         "tochal_summit",
     ]
     assert points[-1].slug == "retired_fixture_point"
@@ -442,12 +442,12 @@ def test_reimport_handles_stale_fixture_point_without_temporary_order_collision(
 def test_same_slug_collision_skips_operator_managed_rows():
     seed_tochal_catalog()
     summit = WeatherPoint.objects.get(slug="tochal_summit")
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     summit.name = "قلهٔ دستی"
     summit.fixture_managed = False
     summit.save(update_fields=["name", "fixture_managed"])
-    route = Route.objects.get(slug="touchal-darband")
-    replacement = WeatherPoint.objects.get(slug="pas_ghaleh")
+    route = Route.objects.get(slug="tochal-darband")
+    replacement = WeatherPoint.objects.get(slug="tochal-pas-ghaleh-village")
     route.target_weather_point = replacement
     route.save(update_fields=["target_weather_point"])
     destination.weather_point = replacement
@@ -466,7 +466,7 @@ def test_same_slug_collision_skips_operator_managed_rows():
 @pytest.mark.django_db
 def test_prune_skips_fixture_point_still_referenced_by_manual_route():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="touchal")
+    destination = Destination.objects.get(slug="tochal")
     stale = WeatherPoint.objects.create(
         slug="stale_referenced_point",
         name="ارجاع دستی",
@@ -480,7 +480,7 @@ def test_prune_skips_fixture_point_still_referenced_by_manual_route():
         ingest_enabled=True,
     )
     Route.objects.create(
-        slug="touchal-keeps-stale",
+        slug="tochal-keeps-stale",
         destination=destination,
         title="نگهبان",
         subtitle="",
@@ -507,18 +507,18 @@ def test_repeated_imports_idempotent():
     second = seed_tochal_catalog()
     third = seed_tochal_catalog()
     assert first["weather_point_count"] == second["weather_point_count"] == third["weather_point_count"]
-    assert Route.objects.filter(destination__slug="touchal", fixture_managed=True).count() == 5
+    assert Route.objects.filter(destination__slug="tochal", fixture_managed=True).count() == 5
 
 
 @pytest.mark.django_db
 def test_incomplete_timing_remains_pending_and_invariants_hold():
     seed_tochal_catalog()
     for slug in (
-        "touchal-darband",
-        "touchal-welanjak",
-        "touchal-kalkchal",
-        "touchal-ahar",
-        "touchal-shahrestanak",
+        "tochal-darband",
+        "tochal-velenjak",
+        "tochal-kolakchal",
+        "tochal-ahar",
+        "tochal-shahrestanak",
     ):
         route = Route.objects.get(slug=slug)
         assert route_timing_complete(
@@ -527,7 +527,7 @@ def test_incomplete_timing_remains_pending_and_invariants_hold():
             points=route.points.all(),
         )
 
-    broken = Route.objects.get(slug="touchal-darband")
+    broken = Route.objects.get(slug="tochal-darband")
     broken.one_way_minutes = 999
     broken.timing_status = Route.TimingStatus.ESTIMATED
     broken.save(update_fields=["one_way_minutes", "timing_status"])

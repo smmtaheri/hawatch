@@ -21,10 +21,10 @@ def test_home_destination_list_contains_only_ordered_popular_four():
     call_command(
         "set_popular_destinations",
         "--slugs",
-        "gahar,touchal,damavand,daryasar",
+        "gahar,tochal,damavand,daryasar",
     )
 
-    assert [item.slug for item in list_destinations()] == ["gahar", "touchal", "damavand", "daryasar"]
+    assert [item.slug for item in list_destinations()] == ["gahar", "tochal", "damavand", "daryasar"]
     assert Destination.objects.filter(is_popular=True).count() == 4
     assert Destination.objects.get(slug="maranjab").is_popular is False
 
@@ -53,7 +53,7 @@ def test_new_destination_is_not_popular_by_default():
 def test_home_api_exposes_active_catalog_counts_not_popular_tile_count(api_client):
     seed_demo_data(force=True)
     Destination.objects.filter(slug="maranjab").update(is_active=False)
-    route = Route.objects.filter(destination__slug="touchal").first()
+    route = Route.objects.filter(destination__slug="tochal").first()
     assert route is not None
     route.is_active = False
     route.save(update_fields=["is_active"])

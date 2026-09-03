@@ -22,7 +22,8 @@
 | `/destination/{destinationSlug}` | `PlaceForecastPage` (`kind=destination`) | عنوان/هero از profile؛ sidebar: «مسیرهای منتهی به {مقصد}» |
 | `/points/{weatherPointSlug}` | همان `PlaceForecastPage` (`kind=point`) | عنوان/مختصات نقطه؛ sidebar: «مسیرهای عبوری از این نقطه» |
 
-- اگر WeatherPoint دارای Destination profile باشد، `/points/{slug}` به `/destination/{profileSlug}` resolve می‌شود (مثلاً `tochal_summit` → `touchal`).
+- WeatherPoint مقصدی صفحهٔ مستقل `/points/` ندارد؛ همهٔ لینک‌های آن مستقیماً به
+  `/destination/{profileSlug}` ساخته می‌شوند (مثلاً `tochal_summit` → `tochal`).
 - تصاویر مرجع Destination در `design/screens/destination/` baseline بصری برای **همهٔ** Forecast Placeها هستند — از جمله نقاط عادی مثل سربند.
 - صفحهٔ جدا با namespaceهای `.point-page` / `.point-shell` / `.point-hero` **بازنشسته** شده است.
 
@@ -57,7 +58,8 @@
 - aliasهای ریشه فقط سازگاری backend هستند؛ frontend از `forecast.*` می‌خواند
 - URL تمیز بدون `date`/`period` می‌ماند تا کاربر صریحاً روز/بازه را عوض کند؛ بعد هر دو kind با هم sync می‌شوند
 - `fromRoute` فقط برای دکمهٔ بازگشت است و planner مقصد/نقطه را seed نمی‌کند
-- redirect قله (`/points/tochal_summit` → `/destination/touchal`) فقط `date` و `period` را نگه می‌دارد؛ `start_time`/`speed` وارد URL عمومی نمی‌شود
+- برای قلهٔ مقصد فقط لینک canonical `/destination/tochal` ساخته می‌شود؛
+  `/points/tochal_summit` عمداً route عمومی نیست و redirect یا back-compat ندارد.
 
 ## ۵. stateها
 
@@ -66,7 +68,7 @@ timestamp خام ISO و `timing_pending` در متن UI نمایش داده نم
 
 ## ۶. acceptance
 
-- [ ] `/points/sarband` و `/destination/touchal` از یک template و کلاس‌های destination shell استفاده می‌کنند
+- [ ] `/points/tochal-sarband-square` و `/destination/tochal` از یک template و کلاس‌های destination shell استفاده می‌کنند
 - [ ] dark/light و mobile/desktop بدون drift بصری بین دو URL
 - [ ] بدون overflow افقی
 - [ ] موبایل فقط دو مسیر برتر را inline نشان می‌دهد و بقیه را در bottom sheet باز می‌کند

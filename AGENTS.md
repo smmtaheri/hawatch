@@ -12,6 +12,10 @@
 - هر کار مربوط به افزودن مقصد، WeatherPoint، Route یا RoutePoint باید از
   `docs/catalog-onboarding.md` و `docs/catalog-and-weather-validation.md` شروع
   شود؛ این دو سند مرجع اجباری workflow هستند و باید کامل خوانده شوند.
+- برای قرارداد یکپارچهٔ هویت، نام‌گذاری، validator و اجرای مرحله‌به‌مرحلهٔ
+  local/server، `docs/catalog-contribution.md` نیز باید بعد از دو سند بالا
+  کامل خوانده شود. slugهای قدیمی compatibility یا redirect ندارند و نقطهٔ
+  canonical مقصد صفحهٔ مستقل `/points/` ندارد.
 - هر Destination می‌تواند route-bearing یا destination-only باشد. برای
   destination-only فقط canonical WeatherPoint و forecast لازم است و catalog باید
   `routes: {}` داشته باشد؛ نبود route به‌خودی‌خود خطا نیست. مسیر جاده‌ای آفرود،

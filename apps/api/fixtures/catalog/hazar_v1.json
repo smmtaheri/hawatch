@@ -27,103 +27,243 @@
       "elevation_m": 4501,
       "kind": "destination",
       "status": "provisional",
-      "elevation_source": "ارتفاع رایج گزارش‌شده برای قلهٔ هزار حدود ۴۵۰۱ متر است؛ مختصات با نزدیک‌ترین نقاط چهار ترک GPX و منبع Gholleh تطبیق شده و تا بررسی DEM/PBF قطعی محسوب نمی‌شود. GPXها ارتفاع حدود ۴۳۲۰ تا ۴۵۱۰ متر را نشان می‌دهند."
+      "elevation_source": "ارتفاع رایج گزارش‌شده برای قلهٔ هزار حدود ۴۵۰۱ متر است؛ مختصات با نزدیک‌ترین نقاط چهار ترک GPX و منبع Gholleh تطبیق شده و تا بررسی DEM/PBF قطعی محسوب نمی‌شود. GPXها ارتفاع حدود ۴۳۲۰ تا ۴۵۱۰ متر را نشان می‌دهند.",
+      "page_name": "قلهٔ هزار",
+      "short_label": "قلهٔ هزار",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "قلهٔ هزار؛ نقطهٔ summit در محدودهٔ قلهٔ هزار",
+      "importance": "primary",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-bh-qlh-hzr-z-msyr-abshr-ryn-43315375",
+        "https://decovel.com/page/hezar-peak",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268"
+      ]
     },
-    "hazar_rayen_parking": {
+    "hazar-rayen-parking": {
       "name": "پارکینگ آبشار راین",
       "latitude": 29.554257,
       "longitude": 57.298659,
       "elevation_m": 2842,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود.",
+      "page_name": "پارکینگ آبشار راین",
+      "short_label": "پارکینگ آبشار راین",
+      "place_type": "parking",
+      "aliases": [],
+      "identity_summary": "پارکینگ آبشار راین؛ نقطهٔ parking در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-bh-qlh-hzr-z-msyr-abshr-ryn-43315375",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_rayen_shelter": {
-      "name": "پناهگاه هزار",
+    "hazar-rayen-shelter": {
+      "name": "پناهگاه قلهٔ هزار در مسیر راین",
       "latitude": 29.538905,
       "longitude": 57.291169,
       "elevation_m": 3169,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود.",
+      "page_name": "پناهگاه قلهٔ هزار در مسیر راین",
+      "short_label": "پناهگاه هزار",
+      "place_type": "shelter",
+      "aliases": [],
+      "identity_summary": "پناهگاه هزار؛ نقطهٔ shelter در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-bh-qlh-hzr-z-msyr-abshr-ryn-43315375",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_rayen_taj_khorus": {
+    "hazar-rayen-taj-khorus": {
       "name": "سنگ تاج‌خروس",
       "latitude": 29.527464,
       "longitude": 57.27555,
       "elevation_m": 3832,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود.",
+      "page_name": "سنگ تاج‌خروس",
+      "short_label": "سنگ تاج‌خروس",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "سنگ تاج‌خروس؛ نقطهٔ landmark در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-bh-qlh-hzr-z-msyr-abshr-ryn-43315375",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_rayen_shotor_khab": {
+    "hazar-rayen-shotor-khab": {
       "name": "صخرهٔ شترخواب",
       "latitude": 29.51669,
       "longitude": 57.271649,
       "elevation_m": 4220,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک آبشار راین ۲۰۲۳؛ ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود.",
+      "page_name": "صخرهٔ شترخواب",
+      "short_label": "صخرهٔ شترخواب",
+      "place_type": "landmark",
+      "aliases": [],
+      "identity_summary": "صخرهٔ شترخواب؛ نقطهٔ landmark در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-bh-qlh-hzr-z-msyr-abshr-ryn-43315375",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_babzangi_start": {
+    "hazar-babzangi-start": {
       "name": "روستای باب‌زنگی · ابتدای مسیر",
       "latitude": 29.474535,
       "longitude": 57.276863,
       "elevation_m": 3362,
       "status": "provisional",
-      "elevation_source": "نخستین نقطهٔ ترک پیاده‌روی باب‌زنگی ۲۰۲۲؛ endpoint مسیر و ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود."
+      "elevation_source": "نخستین نقطهٔ ترک پیاده‌روی باب‌زنگی ۲۰۲۲؛ endpoint مسیر و ارتفاع GPX مرجع است و برای catalog باید با DEM/PBF cross-check شود.",
+      "page_name": "روستای باب‌زنگی · ابتدای مسیر",
+      "short_label": "روستای باب‌زنگی · ابتدای مسیر",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای باب‌زنگی · ابتدای مسیر؛ نقطهٔ village در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_babzangi_camp_spring": {
+    "hazar-babzangi-camp-spring": {
       "name": "کمپ کنار آب باب‌زنگی",
       "latitude": 29.495023,
       "longitude": 57.278029,
       "elevation_m": 3677,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک باب‌زنگی ۲۰۲۲؛ عارضهٔ میانی واقعی مسیر و ارتفاع GPX مرجع است."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک باب‌زنگی ۲۰۲۲؛ عارضهٔ میانی واقعی مسیر و ارتفاع GPX مرجع است.",
+      "page_name": "کمپ کنار آب باب‌زنگی",
+      "short_label": "کمپ کنار آب باب‌زنگی",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "کمپ کنار آب باب‌زنگی؛ نقطهٔ spring در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_babzangi_breakfast_spring": {
+    "hazar-babzangi-breakfast-spring": {
       "name": "چشمهٔ مسیر باب‌زنگی",
       "latitude": 29.505179,
       "longitude": 57.274627,
       "elevation_m": 4004,
       "status": "provisional",
-      "elevation_source": "Waypoint چشمهٔ کوچک ترک باب‌زنگی ۲۰۲۲؛ عارضهٔ میانی واقعی مسیر و ارتفاع GPX مرجع است."
+      "elevation_source": "Waypoint چشمهٔ کوچک ترک باب‌زنگی ۲۰۲۲؛ عارضهٔ میانی واقعی مسیر و ارتفاع GPX مرجع است.",
+      "page_name": "چشمهٔ مسیر باب‌زنگی",
+      "short_label": "چشمهٔ مسیر باب‌زنگی",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "چشمهٔ مسیر باب‌زنگی؛ نقطهٔ spring در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_babzangi_route_junction": {
-      "name": "گدار دو راهی اردیکان و باب‌زنگی",
+    "hazar-ardikan-babzangi-junction": {
+      "name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی",
       "latitude": 29.508548,
       "longitude": 57.268578,
       "elevation_m": 4324,
       "status": "provisional",
-      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک باب‌زنگی ۲۰۲۲؛ دو راهی واقعی مسیر و ارتفاع GPX مرجع است."
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک باب‌زنگی ۲۰۲۲؛ دو راهی واقعی مسیر و ارتفاع GPX مرجع است.",
+      "aliases": [],
+      "page_name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار",
+      "short_label": "گدار دوراهی",
+      "place_type": "landmark",
+      "identity_summary": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار؛ نقطهٔ landmark در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak",
+        "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268"
+      ]
     },
-    "hazar_ardikan_start": {
+    "hazar-ardikan-start": {
       "name": "روستای اردیکان · ابتدای مسیر",
       "latitude": 29.501001,
       "longitude": 57.240322,
       "elevation_m": 3393,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات ابتدای ترک اردیکان: ۳۳۹۳ متر؛ ارتفاع خام GPX (حدود ۳۲۷۱ متر) به‌دلیل اختلاف بیش از ۱۰۰ متر حقیقت catalog محسوب نشده است."
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات ابتدای ترک اردیکان: ۳۳۹۳ متر؛ ارتفاع خام GPX (حدود ۳۲۷۱ متر) به‌دلیل اختلاف بیش از ۱۰۰ متر حقیقت catalog محسوب نشده است.",
+      "page_name": "روستای اردیکان · ابتدای مسیر",
+      "short_label": "روستای اردیکان · ابتدای مسیر",
+      "place_type": "village",
+      "aliases": [],
+      "identity_summary": "روستای اردیکان · ابتدای مسیر؛ نقطهٔ village در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_ardikan_camp_spring": {
+    "hazar-ardikan-camp-spring": {
       "name": "کمپ و چشمهٔ اردیکان",
       "latitude": 29.508158,
       "longitude": 57.254574,
       "elevation_m": 3799,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات کمپ و چشمهٔ اردیکان: ۳۷۹۹ متر؛ ارتفاع خام GPX (حدود ۳۶۶۶ متر) به‌دلیل اختلاف بیش از ۱۰۰ متر کنار گذاشته شده است."
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات کمپ و چشمهٔ اردیکان: ۳۷۹۹ متر؛ ارتفاع خام GPX (حدود ۳۶۶۶ متر) به‌دلیل اختلاف بیش از ۱۰۰ متر کنار گذاشته شده است.",
+      "page_name": "کمپ و چشمهٔ اردیکان",
+      "short_label": "کمپ و چشمهٔ اردیکان",
+      "place_type": "spring",
+      "aliases": [],
+      "identity_summary": "کمپ و چشمهٔ اردیکان؛ نقطهٔ spring در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     },
-    "hazar_ardikan_babzangi_ridge": {
-      "name": "یال منتهی به باب‌زنگی",
-      "latitude": 29.508642,
-      "longitude": 57.268628,
-      "elevation_m": 4347,
-      "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات یال منتهی به باب‌زنگی: ۴۳۴۷ متر؛ ارتفاع خام GPX (حدود ۴۱۵۰ متر) به‌دلیل اختلاف زیاد حقیقت catalog محسوب نشده است."
-    },
-    "hazar_ardikan_cairn": {
+    "hazar-ardikan-cairn": {
       "name": "سنگ‌چین زیر قلهٔ هزار",
       "latitude": 29.510842,
       "longitude": 57.273889,
       "elevation_m": 4440,
       "status": "provisional",
-      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات سنگ‌چین زیر قله: ۴۴۴۰ متر؛ ارتفاع خام GPX (حدود ۴۲۸۹ متر) به‌دلیل اختلاف زیاد حقیقت catalog محسوب نشده است."
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات سنگ‌چین زیر قله: ۴۴۴۰ متر؛ ارتفاع خام GPX (حدود ۴۲۸۹ متر) به‌دلیل اختلاف زیاد حقیقت catalog محسوب نشده است.",
+      "page_name": "سنگ‌چین زیر قلهٔ هزار",
+      "short_label": "سنگ‌چین زیر قلهٔ هزار",
+      "place_type": "summit",
+      "aliases": [],
+      "identity_summary": "سنگ‌چین زیر قلهٔ هزار؛ نقطهٔ summit در محدودهٔ قلهٔ هزار",
+      "importance": "support",
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268",
+        "https://www.wikiloc.com/hiking-trails/qlh-hzr-khrmn-197225824",
+        "https://decovel.com/page/hezar-peak"
+      ]
     }
   },
   "routes": {
@@ -138,10 +278,10 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "hazar_rayen_parking",
-        "hazar_rayen_shelter",
-        "hazar_rayen_taj_khorus",
-        "hazar_rayen_shotor_khab",
+        "hazar-rayen-parking",
+        "hazar-rayen-shelter",
+        "hazar-rayen-taj-khorus",
+        "hazar-rayen-shotor-khab",
         "hazar_summit"
       ],
       "distance_km": 8.45,
@@ -169,13 +309,15 @@
           "ارتفاع GPX مرجع است و ارتفاع catalog تا تأیید DEM/PBF provisional نگه داشته شده است."
         ],
         "cumulative_minutes": {
-          "hazar_rayen_parking": 0,
-          "hazar_rayen_shelter": 155,
-          "hazar_rayen_taj_khorus": 280,
-          "hazar_rayen_shotor_khab": 405,
+          "hazar-rayen-parking": 0,
+          "hazar-rayen-shelter": 155,
+          "hazar-rayen-taj-khorus": 280,
+          "hazar-rayen-shotor-khab": 405,
           "hazar_summit": 480
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "babzangi_to_hazar": {
       "slug": "hazar-babzangi",
@@ -188,10 +330,10 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "hazar_babzangi_start",
-        "hazar_babzangi_camp_spring",
-        "hazar_babzangi_breakfast_spring",
-        "hazar_babzangi_route_junction",
+        "hazar-babzangi-start",
+        "hazar-babzangi-camp-spring",
+        "hazar-babzangi-breakfast-spring",
+        "hazar-ardikan-babzangi-junction",
         "hazar_summit"
       ],
       "distance_km": 5.3,
@@ -218,13 +360,15 @@
           "ارتفاع GPX مرجع است و ارتفاع catalog تا تأیید DEM/PBF provisional نگه داشته شده است."
         ],
         "cumulative_minutes": {
-          "hazar_babzangi_start": 0,
-          "hazar_babzangi_camp_spring": 70,
-          "hazar_babzangi_breakfast_spring": 135,
-          "hazar_babzangi_route_junction": 270,
+          "hazar-babzangi-start": 0,
+          "hazar-babzangi-camp-spring": 70,
+          "hazar-babzangi-breakfast-spring": 135,
+          "hazar-ardikan-babzangi-junction": 270,
           "hazar_summit": 330
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     },
     "ardikan_to_hazar": {
       "slug": "hazar-ardikan",
@@ -237,10 +381,10 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "hazar_ardikan_start",
-        "hazar_ardikan_camp_spring",
-        "hazar_ardikan_babzangi_ridge",
-        "hazar_ardikan_cairn",
+        "hazar-ardikan-start",
+        "hazar-ardikan-camp-spring",
+        "hazar-ardikan-babzangi-junction",
+        "hazar-ardikan-cairn",
         "hazar_summit"
       ],
       "distance_km": 4.4,
@@ -267,13 +411,15 @@
           "ارتفاع GPX مرجع است و ارتفاع catalog تا تأیید DEM/PBF provisional نگه داشته شده است."
         ],
         "cumulative_minutes": {
-          "hazar_ardikan_start": 0,
-          "hazar_ardikan_camp_spring": 80,
-          "hazar_ardikan_babzangi_ridge": 170,
-          "hazar_ardikan_cairn": 210,
+          "hazar-ardikan-start": 0,
+          "hazar-ardikan-camp-spring": 80,
+          "hazar-ardikan-babzangi-junction": 170,
+          "hazar-ardikan-cairn": 210,
           "hazar_summit": 240
         }
-      }
+      },
+      "destination_slug": null,
+      "public_point_notes": {}
     }
   }
 }

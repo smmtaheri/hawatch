@@ -22,6 +22,16 @@ class WeatherPoint(models.Model):
 
     slug = models.SlugField(max_length=96, unique=True)
     name = models.CharField(max_length=80)
+    # Search/page identity is separate from the compact route label.  These
+    # fields make every independent point curatable without changing forecast
+    # storage or provider identifiers.
+    page_name = models.CharField(max_length=160, blank=True, default="")
+    short_label = models.CharField(max_length=80, blank=True, default="")
+    place_type = models.CharField(max_length=32, blank=True, default="")
+    identity_summary = models.CharField(max_length=255, blank=True, default="")
+    importance = models.CharField(max_length=16, default="support")
+    name_status = models.CharField(max_length=16, default="descriptive")
+    source_urls = models.JSONField(default=list, blank=True)
     aliases = models.JSONField(default=list, blank=True)
     kind = models.CharField(max_length=16, choices=Kind.choices, default=Kind.SHARED)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.

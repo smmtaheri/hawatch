@@ -134,21 +134,21 @@ def seeded(db):
 @pytest.mark.django_db
 def test_destination_profile_points_to_tochal_summit():
     seed_demo_data(force=True)
-    touchal = Destination.objects.get(slug="touchal")
+    tochal = Destination.objects.get(slug="tochal")
     summit = WeatherPoint.objects.get(slug="tochal_summit")
-    assert touchal.weather_point_id == summit.id
-    assert summit.destination_profile.slug == "touchal"
-    assert not WeatherPoint.objects.filter(slug="dest:touchal").exists()
+    assert tochal.weather_point_id == summit.id
+    assert summit.destination_profile.slug == "tochal"
+    assert not WeatherPoint.objects.filter(slug="dest:tochal").exists()
 
 
 @pytest.mark.django_db
-def test_seed_idempotent_never_creates_dest_touchal():
+def test_seed_idempotent_never_creates_dest_tochal():
     seed_demo_data(force=True)
     seed_catalog()
     seed_catalog()
     assert WeatherPoint.objects.filter(slug="tochal_summit").count() == 1
-    assert not WeatherPoint.objects.filter(slug="dest:touchal").exists()
-    assert Destination.objects.get(slug="touchal").weather_point.slug == "tochal_summit"
+    assert not WeatherPoint.objects.filter(slug="dest:tochal").exists()
+    assert Destination.objects.get(slug="tochal").weather_point.slug == "tochal_summit"
 
 
 @pytest.mark.django_db
@@ -344,7 +344,7 @@ def test_destination_weather_point_migration_path_skips_slug_collision():
             region="تهران",
             elevation_m=2200,
             location=Point(51.42, 35.82, srid=4326),
-            image="/images/touchal-banner-clean.png",
+        image="/images/touchal-banner-clean.png",
             image_alt="مهاجرت",
             popular_order=96,
             climate="alpine",
@@ -491,15 +491,15 @@ def test_ensure_catalog_skips_unrelated_destination_slug_collision(db, caplog):
 @pytest.mark.django_db
 def test_active_route_point_without_legacy_destination_fk(api_client, db):
     seed_demo_data(force=True)
-    point = WeatherPoint.objects.get(slug="sarband")
+    point = WeatherPoint.objects.get(slug="tochal-sarband-square")
     point.destination = None
     point.save(update_fields=["destination"])
     assert RoutePoint.objects.filter(weather_point=point).exists()
-    response = api_client.get("/api/v1/points/sarband/forecast/", {"date": "2026-08-28", "period": "morning"})
+    response = api_client.get("/api/v1/points/tochal-sarband-square/forecast/", {"date": "2026-08-28", "period": "morning"})
     assert response.status_code == 200
     body = response.json()
-    assert body["subject"]["slug"] == "sarband"
-    assert body["subject"]["canonical_href"] == "/points/sarband"
+    assert body["subject"]["slug"] == "tochal-sarband-square"
+    assert body["subject"]["canonical_href"] == "/points/tochal-sarband-square"
     assert "forecast" in body
     assert body["forecast"]["meta"]["selected_period"] == "morning"
 
@@ -507,7 +507,7 @@ def test_active_route_point_without_legacy_destination_fk(api_client, db):
 @pytest.mark.django_db
 def test_search_dedupes_destination_profile_weather_point(api_client, seeded):
     results = api_client.get("/api/v1/search/suggestions/", {"q": "توچال"}).json()["results"]
-    dests = [item for item in results if item["type"] == "destination" and item["slug"] == "touchal"]
+    dests = [item for item in results if item["type"] == "destination" and item["slug"] == "tochal"]
     points = [item for item in results if item["type"] == "point" and item["slug"] == "tochal_summit"]
     assert len(dests) == 1
     assert points == []
@@ -516,7 +516,7 @@ def test_search_dedupes_destination_profile_weather_point(api_client, seeded):
 @pytest.mark.django_db
 def test_route_planner_period_exposes_step_and_hourly_slots(api_client, seeded):
     body = api_client.get(
-        "/api/v1/routes/touchal-darband/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": "2026-08-28", "period": "morning", "start_time": "06:00"},
     ).json()
     period = body["period"]
@@ -526,7 +526,7 @@ def test_route_planner_period_exposes_step_and_hourly_slots(api_client, seeded):
     assert period["planner_slots"] == [360, 420, 480, 540, 600, 660]
     assert len(period["planner_ticks"]) == 6
     night = api_client.get(
-        "/api/v1/routes/touchal-darband/forecast/",
+        "/api/v1/routes/tochal-darband/forecast/",
         {"date": "2026-08-28", "period": "night", "start_time": "20:00"},
     ).json()["period"]
     assert night["planner_end_minutes"] == 1440

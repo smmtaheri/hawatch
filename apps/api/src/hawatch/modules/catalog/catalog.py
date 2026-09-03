@@ -11,6 +11,8 @@ from django.db import transaction
 from django.db.models import Q
 
 from hawatch.modules.catalog.search import rebuild_search_index
+from hawatch.modules.catalog.identity import metadata_for_point
+from hawatch.modules.catalog.validation import format_issues, validate_catalog_document
 from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -288,6 +290,11 @@ def _validate_document_shape(data: dict) -> None:
             raise ValueError(f"Route {route_key} public_point_notes values must be strings")
         _validate_route_timing(route_key, route, point_slugs)
 
+    identity_issues = validate_catalog_document(data)
+    errors = [issue for issue in identity_issues if issue.level == "error"]
+    if errors:
+        raise ValueError("Catalog identity validation failed:\n" + format_issues(errors))
+
 
 def _route_timing_defaults(route_row: dict) -> dict:
     timing = route_row.get("timing") or {}
@@ -394,9 +401,22 @@ def seed_catalog(
                 if elevation is None
                 else WeatherPoint.Status.APPROVED
             )
+        identity = metadata_for_point(
+            slug,
+            row,
+            destination_label=dest_row["name"],
+            is_destination=kind == WeatherPoint.Kind.DESTINATION,
+        )
         defaults = {
-            "name": row["name"],
-            "aliases": row.get("aliases") or [],
+            "name": identity["name"],
+            "page_name": identity["page_name"],
+            "short_label": identity["short_label"],
+            "place_type": identity["place_type"],
+            "identity_summary": identity["identity_summary"],
+            "importance": identity["importance"],
+            "name_status": identity["name_status"],
+            "source_urls": identity["source_urls"],
+            "aliases": identity["aliases"],
             "kind": kind,
             "location": Point(row["longitude"], row["latitude"], srid=4326),
             "elevation_m": elevation,

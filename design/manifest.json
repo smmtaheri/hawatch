@@ -17,8 +17,8 @@
   },
   "references": {
     "liveSite": "https://hawatch-weather.admirer135.chatgpt.site/",
-    "destination": "https://hawatch-weather.admirer135.chatgpt.site/destination/touchal",
-    "route": "https://hawatch-weather.admirer135.chatgpt.site/routes/touchal-darband",
+    "destination": "https://hawatch-weather.admirer135.chatgpt.site/destination/tochal",
+    "route": "https://hawatch-weather.admirer135.chatgpt.site/routes/tochal-darband",
     "localSitesSource": "/workspace/sites/hawatch-weather",
     "visualIdentity": "references/Hawatch.docx",
     "localReferenceStatus": "The repository DOCX is available; the historical /workspace source/probe/result paths are not part of this checkout."

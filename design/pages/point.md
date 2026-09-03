@@ -8,4 +8,6 @@
 - [destination.md](./destination.md) — baseline بصری و کنترل‌ها
 - [docs/page-specs/point-behavior.md](../../docs/page-specs/point-behavior.md) — فقط تفاوت‌های محتوایی URL نقطه
 
-URL عمومی `/points/{weatherPointSlug}` باقی می‌ماند، اما همان `PlaceForecastPage` را رندر می‌کند.
+URL عمومی `/points/{weatherPointSlug}` برای نقطه‌های مستقل باقی می‌ماند، اما همان
+`PlaceForecastPage` را رندر می‌کند؛ WeatherPoint مقصدی فقط از URL مقصد canonical
+لینک می‌شود و صفحهٔ مستقل ندارد.

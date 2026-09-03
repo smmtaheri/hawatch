@@ -26,21 +26,21 @@ from hawatch.modules.forecasts.models import ForecastPointResolution, ForecastRe
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
-SHARED_SLUGS = ("tochal_summit", "goleband", "tochal_hotel", "station_7")
+SHARED_SLUGS = ("tochal_summit", "tochal-goleband-ridge", "tochal-hotel", "tochal-telecabin-station-7")
 
 EXACT_POINTS = {
-    "pas_ghaleh": (35.8361950, 51.4233411, 1936),
-    "barfchal": (35.8744485, 51.4373690, 3680),
-    "goleband": (35.8809109, 51.4221380, 3860),
+    "tochal-pas-ghaleh-village": (35.8361950, 51.4233411, 1936),
+    "tochal-barfchal-peak": (35.8744485, 51.4373690, 3680),
+    "tochal-goleband-ridge": (35.8809109, 51.4221380, 3860),
     "tochal_summit": (35.8843493, 51.4198766, 3955),
-    "ahar": (35.9353996, 51.4635292, 2140),
-    "shakarab": (35.9282559, 51.4269378, 2400),
+    "tochal-ahar-village": (35.9353996, 51.4635292, 2140),
+    "tochal-shakarab-ahaar": (35.9282559, 51.4269378, 2400),
 }
 
 TEST_POINT_COORDINATES = {
-    "sarband": (35.8280442, 51.4266129),
-    "pas_ghaleh": (35.8361950, 51.4233411),
-    "shirpala": (35.8550662, 51.4295976),
+    "tochal-sarband-square": (35.8280442, 51.4266129),
+    "tochal-pas-ghaleh-village": (35.8361950, 51.4233411),
+    "tochal-shirpala-shelter": (35.8550662, 51.4295976),
     "tochal_summit": (35.8843493, 51.4198766),
 }
 
@@ -122,24 +122,24 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
         assert point.location.x == pytest.approx(lon)
         assert point.elevation_m == elev
 
-    for slug in ("velenjak", "tochal_hotel", "kolakchal_camp", "ahar", "shakarab", "shahrestanak", "naseri_palace", "naseri_junction"):
+    for slug in ("tochal-velenjak-village", "tochal-hotel", "tochal-kolakchal-camp", "tochal-ahar-village", "tochal-shakarab-ahaar", "tochal-shahrestanak-village", "shahrestanak-naseri-palace", "tochal-naseri-junction"):
         assert WeatherPoint.objects.get(slug=slug).status == WeatherPoint.Status.PROVISIONAL
 
-    goleband = WeatherPoint.objects.get(slug="goleband")
-    assert goleband.name == "گوله‌بند"
-    assert WeatherPoint.objects.get(slug="amiri").name == "جان‌پناه امیری"
-    assert WeatherPoint.objects.get(slug="shahrestanak_sheepfold_spring").name == "چشمه و گوسفندسرا شهرستانک"
-    assert WeatherPoint.objects.get(slug="station_1").name == "ایستگاه ۱ توچال"
-    assert WeatherPoint.objects.get(slug="station_2").name == "ایستگاه ۲ توچال"
-    assert WeatherPoint.objects.get(slug="station_5").name == "ایستگاه ۵ توچال"
-    assert WeatherPoint.objects.get(slug="station_7").name == "ایستگاه ۷ توچال"
-    assert WeatherPoint.objects.get(slug="lezoon_east").name == "لزون شرقی"
-    assert WeatherPoint.objects.get(slug="lezoon_west").name == "لزون غربی"
+    goleband = WeatherPoint.objects.get(slug="tochal-goleband-ridge")
+    assert goleband.name == "یال گوله‌بند توچال"
+    assert WeatherPoint.objects.get(slug="tochal-amiri-shelter").name == "جان‌پناه امیری"
+    assert WeatherPoint.objects.get(slug="tochal-shahrestanak-sheepfold-spring").name == "چشمه و گوسفندسرا شهرستانک"
+    assert WeatherPoint.objects.get(slug="tochal-telecabin-station-1").name == "ایستگاه ۱ تله‌کابین توچال"
+    assert WeatherPoint.objects.get(slug="tochal-telecabin-station-2").name == "ایستگاه ۲ تله‌کابین توچال"
+    assert WeatherPoint.objects.get(slug="tochal-telecabin-station-5").name == "ایستگاه ۵ تله‌کابین توچال"
+    assert WeatherPoint.objects.get(slug="tochal-telecabin-station-7").name == "ایستگاه ۷ تله‌کابین توچال"
+    assert WeatherPoint.objects.get(slug="tochal-lezoon-east").name == "قلهٔ لزون شرقی"
+    assert WeatherPoint.objects.get(slug="tochal-lezoon-west").name == "قلهٔ لزون غربی"
 
     expected_points = set(catalog["weather_points"])
     assert WeatherPoint.objects.filter(slug__in=expected_points).count() == len(expected_points)
     assert not WeatherPoint.objects.filter(slug="dopestan").exists()
-    jamshidieh = WeatherPoint.objects.get(slug="jamshidieh_park")
+    jamshidieh = WeatherPoint.objects.get(slug="tochal-jamshidieh-park")
     assert jamshidieh.status == WeatherPoint.Status.PROVISIONAL
     assert jamshidieh.name == "پارک جمشیدیه"
 
@@ -147,12 +147,12 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
         assert WeatherPoint.objects.filter(slug=slug).count() == 1
 
     assert RoutePoint.objects.filter(weather_point__slug="tochal_summit").count() == 5
-    assert RoutePoint.objects.filter(weather_point__slug="goleband").count() == 2
-    assert RoutePoint.objects.filter(weather_point__slug="station_7").count() == 2
+    assert RoutePoint.objects.filter(weather_point__slug="tochal-goleband-ridge").count() == 2
+    assert RoutePoint.objects.filter(weather_point__slug="tochal-telecabin-station-7").count() == 2
     # Hotel remains a WeatherPoint/POI but is not on the mandatory Velenjak chain.
-    assert RoutePoint.objects.filter(weather_point__slug="tochal_hotel").count() == 1
-    assert "tochal_hotel" not in list(
-        Route.objects.get(slug="touchal-welanjak").points.values_list("slug", flat=True)
+    assert RoutePoint.objects.filter(weather_point__slug="tochal-hotel").count() == 1
+    assert "tochal-hotel" not in list(
+        Route.objects.get(slug="tochal-velenjak").points.values_list("slug", flat=True)
     )
 
     for key, row in catalog["routes"].items():
@@ -168,30 +168,30 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
         else:
             assert route.one_way_minutes is None
 
-    parking = WeatherPoint.objects.get(slug="velenjak_parking")
+    parking = WeatherPoint.objects.get(slug="tochal-velenjak-parking")
     assert parking.status == WeatherPoint.Status.PROVISIONAL
     assert parking.elevation_m == 1852
-    assert WeatherPoint.objects.filter(slug="velenjak").exists()
-    assert list(Route.objects.get(slug="touchal-welanjak").points.order_by("sort_order").values_list("slug", flat=True))[0] == (
-        "velenjak_parking"
+    assert WeatherPoint.objects.filter(slug="tochal-velenjak-village").exists()
+    assert list(Route.objects.get(slug="tochal-velenjak").points.order_by("sort_order").values_list("slug", flat=True))[0] == (
+        "tochal-velenjak-parking"
     )
 
-    jamshidieh = WeatherPoint.objects.get(slug="jamshidieh_park")
+    jamshidieh = WeatherPoint.objects.get(slug="tochal-jamshidieh-park")
     assert jamshidieh.elevation_m == 1826
     assert jamshidieh.location.y == pytest.approx(35.824629)
     assert jamshidieh.location.x == pytest.approx(51.465985)
 
-    shah = Route.objects.get(slug="touchal-shahrestanak")
+    shah = Route.objects.get(slug="tochal-shahrestanak")
     assert shah.timing_status == "estimated"
     assert shah.one_way_minutes == 370
-    assert "naseri_junction" not in list(shah.points.values_list("slug", flat=True))
-    assert WeatherPoint.objects.filter(slug="shahrestanak_pass").exists()
-    assert WeatherPoint.objects.filter(slug="bazarek_pass").exists()
+    assert "tochal-naseri-junction" not in list(shah.points.values_list("slug", flat=True))
+    assert WeatherPoint.objects.filter(slug="tochal-shahrestanak-pass").exists()
+    assert WeatherPoint.objects.filter(slug="tochal-bazarek-pass").exists()
 
     # No obsolete demo Tochal route points from old fixtures.
     obsolete = {"darband", "amiri-shelter", "loop-pass", "welenjak", "station-7-5", "kolakchal", "dehbahar"}
-    assert not RoutePoint.objects.filter(route__destination__slug="touchal", slug__in=obsolete).exists()
-    assert Destination.objects.get(slug="touchal").elevation_m == 3955
+    assert not RoutePoint.objects.filter(route__destination__slug="tochal", slug__in=obsolete).exists()
+    assert Destination.objects.get(slug="tochal").elevation_m == 3955
 
 
 @override_settings(OPEN_METEO_PAST_DAYS=0)
@@ -226,7 +226,7 @@ def test_open_meteo_batching_and_elevation_partition():
 @pytest.mark.django_db
 def test_provisional_catalog_elevation_keeps_nearest_provider_cell():
     seed_tochal_catalog()
-    hotel, summit = WeatherPoint.objects.filter(slug__in=["tochal_hotel", "tochal_summit"]).order_by("slug")
+    hotel, summit = WeatherPoint.objects.filter(slug__in=["tochal-hotel", "tochal_summit"]).order_by("slug")
     points = weather_points_to_provider_points([hotel, summit])
     assert points[0].cell_selection == "nearest"
     assert points[1].cell_selection is None
@@ -304,7 +304,7 @@ def test_bounded_retry_on_429_and_transport():
 @pytest.mark.django_db
 def test_provider_resolution_preserved_and_not_copied_to_catalog():
     seed_tochal_catalog()
-    hotel = WeatherPoint.objects.get(slug="tochal_hotel")
+    hotel = WeatherPoint.objects.get(slug="tochal-hotel")
     assert hotel.elevation_m == 3545
     sample = _sample_hourly()
     sample["elevation"] = 3720.5
@@ -312,7 +312,7 @@ def test_provider_resolution_preserved_and_not_copied_to_catalog():
     sample["longitude"] = 51.4015
     snapshot = persist_ingest(
         weather_points=[hotel],
-        batch_results=[_batch(["tochal_hotel"], elevation_requested=True) | {"payload": [sample]}],
+        batch_results=[_batch(["tochal-hotel"], elevation_requested=True) | {"payload": [sample]}],
     )
     hotel.refresh_from_db()
     assert hotel.elevation_m == 3545
@@ -324,11 +324,11 @@ def test_provider_resolution_preserved_and_not_copied_to_catalog():
 @pytest.mark.django_db
 def test_partial_ingest_preserves_failed_point_rows():
     seed_tochal_catalog()
-    sarband = WeatherPoint.objects.get(slug="sarband")
-    shirpala = WeatherPoint.objects.get(slug="shirpala")
+    sarband = WeatherPoint.objects.get(slug="tochal-sarband-square")
+    shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
     first = persist_ingest(
         weather_points=[sarband, shirpala],
-        batch_results=[_batch(["sarband", "shirpala"], hours=6)],
+        batch_results=[_batch(["tochal-sarband-square", "tochal-shirpala-shelter"], hours=6)],
     )
     assert first.status == ForecastSnapshot.Status.SUCCESS
     assert ForecastRecord.objects.filter(weather_point=sarband, data_mode="live").count() == 6
@@ -340,8 +340,8 @@ def test_partial_ingest_preserves_failed_point_rows():
     partial = persist_ingest(
         weather_points=[sarband, shirpala],
         batch_results=[
-            _batch(["sarband"], hours=8),
-            _batch(["shirpala"], status_code=500),
+            _batch(["tochal-sarband-square"], hours=8),
+            _batch(["tochal-shirpala-shelter"], status_code=500),
         ],
     )
     assert partial.status == ForecastSnapshot.Status.PARTIAL
@@ -402,7 +402,7 @@ def test_live_mode_never_returns_demo_records(api_client):
         seed_version="hawatch-demo-v1",
         provider="demo",
     )
-    response = api_client.get("/api/v1/destinations/touchal/forecast/")
+    response = api_client.get("/api/v1/destinations/tochal/forecast/")
     assert response.status_code == 200
     body = response.json()
     assert body["empty"] is True
@@ -430,7 +430,7 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     monkeypatch.setattr(OpenMeteoProvider, "fetch_batch", boom)
 
     response = api_client.get(
-        "/api/v1/destinations/touchal/forecast/",
+        "/api/v1/destinations/tochal/forecast/",
         {"date": "2026-08-27", "period": "morning"},
     )
     assert response.status_code == 200
@@ -455,14 +455,14 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     assert body["hourly"][0]["cloud_cover_pct"] is None
     assert "cloud_cover_pct" in body["hourly"][0]["fields_unavailable"]
 
-    route = api_client.get("/api/v1/routes/touchal-darband/forecast/").json()
+    route = api_client.get("/api/v1/routes/tochal-darband/forecast/").json()
     assert route["timing_pending"] is False
     assert route["timing_status"] == "estimated"
     assert route["points"][0]["arrival_minutes"] is not None
     assert route["points"][0]["time"] != "—"
     assert "timing pending" not in str(route).lower()
 
-    shah = api_client.get("/api/v1/routes/touchal-shahrestanak/forecast/").json()
+    shah = api_client.get("/api/v1/routes/tochal-shahrestanak/forecast/").json()
     assert shah["timing_pending"] is False
     assert shah["timing_status"] == "estimated"
     assert shah["points"][0]["arrival_minutes"] is not None
@@ -478,8 +478,8 @@ def test_api_reads_do_not_write_catalog(api_client):
     updated_at_slugs = list(WeatherPoint.objects.order_by("slug").values_list("slug", "name", "elevation_m"))
 
     api_client.get("/api/v1/destinations/")
-    api_client.get("/api/v1/destinations/touchal/forecast/")
-    api_client.get("/api/v1/routes/touchal-darband/forecast/")
+    api_client.get("/api/v1/destinations/tochal/forecast/")
+    api_client.get("/api/v1/routes/tochal-darband/forecast/")
 
     assert WeatherPoint.objects.count() == before_points
     assert Route.objects.count() == before_routes
@@ -502,7 +502,7 @@ def test_freshness_stale_behavior():
 @pytest.mark.django_db
 def test_ingest_uses_mocked_provider_batches():
     seed_tochal_catalog()
-    points = list(WeatherPoint.objects.filter(slug__in=["sarband", "velenjak"]).order_by("slug"))
+    points = list(WeatherPoint.objects.filter(slug__in=["tochal-sarband-square", "tochal-velenjak-village"]).order_by("slug"))
 
     class FakeProvider(OpenMeteoProvider):
         def fetch_all(self, provider_points):
@@ -533,6 +533,6 @@ def test_ingest_uses_mocked_provider_batches():
     assert snapshot.status == ForecastSnapshot.Status.SUCCESS
     assert snapshot.point_count == 2
     assert ForecastRecord.objects.filter(snapshot=snapshot, seed_version=LIVE_SEED_VERSION).count() == 24
-    velenjak = WeatherPoint.objects.get(slug="velenjak")
+    velenjak = WeatherPoint.objects.get(slug="tochal-velenjak-village")
     assert velenjak.elevation_m == 1755
     assert ForecastPointResolution.objects.get(weather_point=velenjak, snapshot=snapshot).elevation_requested is True

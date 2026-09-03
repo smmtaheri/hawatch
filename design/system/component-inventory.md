@@ -55,4 +55,5 @@
 
 ## Point
 
-قالب جداگانه ندارد؛ به Forecast Place مراجعه شود. `design/pages/point.md` فقط redirect مستند است.
+قالب جداگانه ندارد؛ به Forecast Place مراجعه شود. نقطهٔ مقصد فقط از مسیر
+canonical مقصد لینک می‌شود و route عمومی جداگانه‌ای ندارد.

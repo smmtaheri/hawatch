@@ -1,6 +1,6 @@
 # بررسی read-only صفحهٔ Destination
 
-زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/destination/touchal`
+زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/destination/tochal`
 
 منبع labels: `[LIVE]` DOM/رفتار live، `[LIVE-BUNDLE]` assetهای JS/CSS live، `[SCREENSHOT]` تصاویر repository، `[PRODUCT]` درخواست محصول، `[BLOCKED]` منبع در دسترس‌نبوده.
 
@@ -55,11 +55,11 @@ metrics دقیق: باد میانگین `۱۰ km/h / جنوب‌غربی`؛ تن
 | ورود | `/login` |
 | بازگشت mobile | `/`، با aria-label `بازگشت به هوم` |
 | breadcrumb مقصدها | `/#search-results` |
-| دربند تا توچال | `/routes/touchal-darband` |
-| ولنجک تا توچال | `/routes/touchal-welanjak` |
-| کلکچال تا توچال | `/routes/touchal-kalkchal` |
-| شهرستانک تا توچال | `/routes/touchal-shahrestanak` |
-| آهار تا توچال | `/routes/touchal-ahar` |
+| دربند تا توچال | `/routes/tochal-darband` |
+| ولنجک تا توچال | `/routes/tochal-velenjak` |
+| کلکچال تا توچال | `/routes/tochal-kolakchal` |
+| شهرستانک تا توچال | `/routes/tochal-shahrestanak` |
+| آهار تا توچال | `/routes/tochal-ahar` |
 
 هر route دو بار در DOM دیده می‌شود: یک بار mobile route picker و یک بار web side route card. [LIVE]
 
@@ -77,7 +77,7 @@ metrics دقیق: باد میانگین `۱۰ km/h / جنوب‌غربی`؛ تن
 
 ## ۵. بازگشت بین Home، Destination و Route
 
-back mobile و برند به Home می‌روند. breadcrumb «مقصدها» به Home و route card به Route می‌رود. Route باید با back به همین Destination برگردد؛ این رفتار در Route live به‌صورت href `/destination/touchal` دیده شد. [LIVE]
+back mobile و برند به Home می‌روند. breadcrumb «مقصدها» به Home و route card به Route می‌رود. Route باید با back به همین Destination برگردد؛ این رفتار در Route live به‌صورت href `/destination/tochal` دیده شد. [LIVE]
 
 ## ۶. روز، صبح/بعدازظهر، ساعت شروع و سرعت
 

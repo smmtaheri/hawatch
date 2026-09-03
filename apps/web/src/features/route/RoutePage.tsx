@@ -70,7 +70,7 @@ function timingEstimateBadgeLabel(point: RoutePointView) {
 }
 
 export function RoutePage() {
-  const { slug = "touchal-darband" } = useParams();
+  const { slug = "tochal-darband" } = useParams();
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState<RouteForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");

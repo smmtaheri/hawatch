@@ -12,13 +12,11 @@ from hawatch.api.v1.serializers import (
     destination_forecast,
     get_destination,
     get_route,
-    get_route_point,
     get_weather_point,
     list_destinations,
     meta_base,
     point_forecast,
     route_forecast,
-    route_point_forecast,
     serialize_destination,
     serialize_route,
 )
@@ -207,17 +205,6 @@ def route_forecast_view(request, slug: str):
             speed=speed,
         )
     )
-
-
-@api_view(["GET"])
-def route_point_forecast_view(request, route_slug: str, point_slug: str):
-    route_point = get_route_point(route_slug, point_slug)
-    selected, period = _resolve_date_period(request)
-    back_params = {
-        "start_time": request.query_params.get("start_time"),
-        "speed": request.query_params.get("speed"),
-    }
-    return Response(route_point_forecast(route_point, selected_date=selected, period=period, back_params=back_params))
 
 
 @api_view(["GET"])

@@ -4,7 +4,7 @@ import { parseStartTimeInput, parseClockToMinutes, toClock } from "../src/lib/pe
 import type { RouteForecast } from "../src/types";
 
 const sampleForecast = {
-  route: { href: "/routes/touchal-darband", title: "دربند تا توچال" },
+  route: { href: "/routes/tochal-darband", title: "دربند تا توچال" },
   meta: { selected_date: "2026-08-26" },
   period: { id: "morning" },
   start_minutes: 600,
@@ -40,7 +40,7 @@ describe("route share URLs", () => {
   it("builds canonical ASCII planner URLs", () => {
     const url = buildRouteShareUrl(sampleForecast, "https://hawatch.test");
     expect(url).toBe(
-      "https://hawatch.test/routes/touchal-darband?date=2026-08-26&period=morning&start_time=10%3A00&speed=%D9%85%D8%AA%D9%88%D8%B3%D8%B7",
+      "https://hawatch.test/routes/tochal-darband?date=2026-08-26&period=morning&start_time=10%3A00&speed=%D9%85%D8%AA%D9%88%D8%B3%D8%B7",
     );
     expect(url).toMatch(/start_time=10(%3A|:)00/);
     expect(url).not.toMatch(/start_time=%D[89ABab]/);
@@ -50,7 +50,7 @@ describe("route share URLs", () => {
     const telegram = buildRouteTelegramShareUrl(sampleForecast, "https://hawatch.test");
     const shared = new URL(telegram).searchParams.get("url");
     expect(shared).toBeTruthy();
-    expect(decodeURIComponent(shared!)).toContain("/routes/touchal-darband");
+    expect(decodeURIComponent(shared!)).toContain("/routes/tochal-darband");
     expect(decodeURIComponent(shared!)).toContain("start_time=10:00");
     expect(telegram).not.toContain("window.location");
   });

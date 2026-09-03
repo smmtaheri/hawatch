@@ -47,9 +47,9 @@ const destinationMeta = {
 const destinationForecast = {
   subject: {
     kind: "destination" as const,
-    slug: "touchal",
+    slug: "tochal",
     weather_point_slug: "tochal_summit",
-    canonical_href: "/destination/touchal",
+    canonical_href: "/destination/tochal",
     name: "قلهٔ توچال",
     elevation_m: 3964,
     elevation_label: "۳۹۶۴ متر",
@@ -62,7 +62,7 @@ const destinationForecast = {
     category: "کوه",
   },
   destination: {
-    slug: "touchal",
+    slug: "tochal",
     tile_name: "توچال",
     name: "قلهٔ توچال",
     short_category: "کوه",
@@ -73,7 +73,7 @@ const destinationForecast = {
     elevation_label: "۳۹۶۴ متر",
     image: "/images/touchal-banner-clean.png",
     image_alt: "توچال",
-    href: "/destination/touchal",
+    href: "/destination/tochal",
     is_popular: true,
     routes: [],
     weather_point_slug: "tochal_summit",
@@ -101,7 +101,7 @@ const destinationForecast = {
 
 const routeForecast = {
   route: {
-    slug: "touchal-darband",
+    slug: "tochal-darband",
     title: "دربند تا توچال",
     subtitle: "",
     origin: "دربند",
@@ -109,7 +109,7 @@ const routeForecast = {
     distance_label: "۱۶٫۲ km",
     ascent_label: "۲۲۶۰ m",
     default_start_minutes: 360,
-    href: "/routes/touchal-darband",
+    href: "/routes/tochal-darband",
     parent: destinationForecast.destination,
     points: [],
     siblings: [],
@@ -136,10 +136,10 @@ const routeForecast = {
   timing_pending: false,
   points: [
     {
-      slug: "shirpala",
+      slug: "tochal-shirpala-shelter",
       name: "شیرپلا",
       elevation_label: "۲۴۵۰ m",
-      href: "/points/shirpala",
+      href: "/points/tochal-shirpala-shelter",
       axis_x: 10,
       axis_y: 50,
       time: "۰۸:۰۰",
@@ -180,9 +180,9 @@ const routeForecast = {
 const pointForecast = {
   subject: {
     kind: "point" as const,
-    slug: "shirpala",
-    weather_point_slug: "shirpala",
-    canonical_href: "/points/shirpala",
+    slug: "tochal-shirpala-shelter",
+    weather_point_slug: "tochal-shirpala-shelter",
+    canonical_href: "/points/tochal-shirpala-shelter",
     name: "شیرپلا",
     elevation_m: 2750,
     elevation_label: "۲۴۵۰ متر",
@@ -195,7 +195,7 @@ const pointForecast = {
     category: "کوه",
   },
   point: {
-    slug: "shirpala",
+    slug: "tochal-shirpala-shelter",
     name: "شیرپلا",
     aliases: [],
     kind: "shared",
@@ -205,14 +205,14 @@ const pointForecast = {
     longitude: 51.429,
     status: "approved",
     provenance: "curated",
-    href: "/points/shirpala",
-    canonical_href: "/points/shirpala",
+    href: "/points/tochal-shirpala-shelter",
+    canonical_href: "/points/tochal-shirpala-shelter",
     destination: routeForecast.route.parent,
   },
   related_destinations: [routeForecast.route.parent],
   related_routes: [
     {
-      slug: "touchal-darband",
+      slug: "tochal-darband",
       title: "دربند تا توچال",
       trail_label: "مسیر",
       origin: "دربند",
@@ -222,7 +222,7 @@ const pointForecast = {
       ascent_m: 2260,
       ascent_label: "۲۲۶۰ m",
       featured: true,
-      href: "/routes/touchal-darband",
+      href: "/routes/tochal-darband",
     },
   ],
   related_routes_title: "مسیرهای عبوری از این نقطه",
@@ -251,17 +251,17 @@ const sarbandForecast = {
   ...pointForecast,
   subject: {
     ...pointForecast.subject,
-    slug: "sarband",
-    weather_point_slug: "sarband",
-    canonical_href: "/points/sarband",
+    slug: "tochal-sarband-square",
+    weather_point_slug: "tochal-sarband-square",
+    canonical_href: "/points/tochal-sarband-square",
     name: "سربند",
   },
   point: {
     ...pointForecast.point,
-    slug: "sarband",
+    slug: "tochal-sarband-square",
     name: "سربند",
-    href: "/points/sarband",
-    canonical_href: "/points/sarband",
+    href: "/points/tochal-sarband-square",
+    canonical_href: "/points/tochal-sarband-square",
   },
 };
 
@@ -274,7 +274,7 @@ function forecastUrl(input: RequestInfo) {
 }
 
 function destinationCalls(calls: unknown[][]) {
-  return calls.map((call) => forecastUrl(call[0] as RequestInfo)).filter((url) => url.includes("/destinations/touchal/forecast"));
+  return calls.map((call) => forecastUrl(call[0] as RequestInfo)).filter((url) => url.includes("/destinations/tochal/forecast"));
 }
 
 describe("periods and route planner", () => {
@@ -283,10 +283,10 @@ describe("periods and route planner", () => {
   beforeEach(() => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/destinations/touchal/forecast")) return jsonResponse(destinationForecast);
-      if (url.includes("/routes/touchal-darband/forecast")) return jsonResponse(routeForecast);
-      if (url.includes("/points/shirpala/forecast")) return jsonResponse(pointForecast);
-      if (url.includes("/points/sarband/forecast")) return jsonResponse(sarbandForecast);
+      if (url.includes("/destinations/tochal/forecast")) return jsonResponse(destinationForecast);
+      if (url.includes("/routes/tochal-darband/forecast")) return jsonResponse(routeForecast);
+      if (url.includes("/points/tochal-shirpala-shelter/forecast")) return jsonResponse(pointForecast);
+      if (url.includes("/points/tochal-sarband-square/forecast")) return jsonResponse(sarbandForecast);
       if (url.includes("/points/tochal_summit/forecast")) {
         return jsonResponse({
           ...pointForecast,
@@ -294,7 +294,7 @@ describe("periods and route planner", () => {
             ...pointForecast.subject,
             kind: "point",
             slug: "tochal_summit",
-            canonical_href: "/destination/touchal",
+            canonical_href: "/destination/tochal",
             name: "قلهٔ توچال",
           },
           point: {
@@ -302,33 +302,9 @@ describe("periods and route planner", () => {
             slug: "tochal_summit",
             name: "قلهٔ توچال",
             kind: "destination",
-            href: "/destination/touchal",
-            canonical_href: "/destination/touchal",
+            href: "/destination/tochal",
+            canonical_href: "/destination/tochal",
           },
-        });
-      }
-      if (url.includes("/routes/touchal-darband/points/shirpala/forecast")) {
-        return jsonResponse({
-          point: {
-            ...routeForecast.points[0],
-            route_slug: "touchal-darband",
-            route_title: "دربند تا توچال",
-            route_href: "/routes/touchal-darband",
-            destination: routeForecast.route.parent,
-            has_weather_point: true,
-            has_forecast: true,
-            weather_point_slug: "shirpala",
-          },
-          days: routeForecast.days,
-          period: routeForecast.period,
-          weather: routeForecast.hourly[0],
-          hourly: routeForecast.hourly,
-          empty: false,
-          partial: false,
-          back_href: "/routes/touchal-darband?date=2026-08-26&period=morning",
-          canonical_href: "/points/shirpala",
-          weather_point_slug: "shirpala",
-          meta: routeForecast.meta,
         });
       }
       return jsonResponse({}, false, 404);
@@ -343,7 +319,7 @@ describe("periods and route planner", () => {
   it("renders four period buttons", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -371,7 +347,7 @@ describe("periods and route planner", () => {
   it("does not send period=morning on no-query initial destination load", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -389,7 +365,7 @@ describe("periods and route planner", () => {
   it("renders night selected from backend default", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -419,7 +395,7 @@ describe("periods and route planner", () => {
     });
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal?period=noon"]}>
+        <MemoryRouter initialEntries={["/destination/tochal?period=noon"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -435,7 +411,7 @@ describe("periods and route planner", () => {
   it("does not fade the active overnight day tab", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -451,7 +427,7 @@ describe("periods and route planner", () => {
   it("does not refetch on repeated draft slider updates", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -477,7 +453,7 @@ describe("periods and route planner", () => {
   it("updates draft gauge immediately when switching period", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         const period = url.includes("period=noon") ? "noon" : "morning";
         return jsonResponse({
           ...routeForecast,
@@ -500,7 +476,7 @@ describe("periods and route planner", () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -516,7 +492,7 @@ describe("periods and route planner", () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
             <Route path="/points/:slug" element={<PointDetailPage />} />
@@ -526,7 +502,7 @@ describe("periods and route planner", () => {
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     const weatherLink = screen.getByLabelText(/آب‌وهوای شیرپلا/);
-    expect(weatherLink).toHaveAttribute("href", "/points/shirpala");
+    expect(weatherLink).toHaveAttribute("href", "/points/tochal-shirpala-shelter");
     await user.click(weatherLink);
     expect(await screen.findByRole("heading", { name: "شیرپلا" })).toBeInTheDocument();
     expect(screen.getByText("مقصدها")).toBeInTheDocument();
@@ -539,14 +515,14 @@ describe("periods and route planner", () => {
         <MemoryRouter
           initialEntries={[
             {
-              pathname: "/points/shirpala",
+              pathname: "/points/tochal-shirpala-shelter",
               state: {
                 fromRoute: {
-                  slug: "touchal-darband",
+                  slug: "tochal-darband",
                   title: "دربند تا توچال",
-                  pathname: "/routes/touchal-darband",
+                  pathname: "/routes/tochal-darband",
                   search: "?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط",
-                  href: "/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط",
+                  href: "/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط",
                 },
               },
             },
@@ -569,12 +545,12 @@ describe("periods and route planner", () => {
   it("builds route back target with planner params for point links", () => {
     const params = new URLSearchParams("date=2026-08-26&period=morning&start_time=06:00&speed=متوسط");
     const fromRoute = buildRouteBackState(
-      { slug: "touchal-darband", title: "دربند تا توچال", href: "/routes/touchal-darband" },
+      { slug: "tochal-darband", title: "دربند تا توچال", href: "/routes/tochal-darband" },
       params,
     );
-    const link = buildRoutePointLink("/points/shirpala", fromRoute);
-    expect(link.pathname).toBe("/points/shirpala");
-    expect(link.state?.fromRoute.pathname).toBe("/routes/touchal-darband");
+    const link = buildRoutePointLink("/points/tochal-shirpala-shelter", fromRoute);
+    expect(link.pathname).toBe("/points/tochal-shirpala-shelter");
+    expect(link.state?.fromRoute.pathname).toBe("/routes/tochal-darband");
     expect(link.state?.fromRoute.search).toContain("start_time=06");
     expect(link.state?.fromRoute.search).toContain("speed=");
   });
@@ -586,7 +562,7 @@ describe("periods and route planner", () => {
     }
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/points/shirpala"]}>
+        <MemoryRouter initialEntries={["/points/tochal-shirpala-shelter"]}>
           <Routes>
             <Route
               path="/points/:slug"
@@ -608,7 +584,7 @@ describe("periods and route planner", () => {
   it("renders point page in dark theme without light fallback cards", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/points/shirpala?date=2026-08-26&period=morning"]}>
+        <MemoryRouter initialEntries={["/points/tochal-shirpala-shelter?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/points/:slug" element={<PointDetailPage />} />
           </Routes>
@@ -625,7 +601,7 @@ describe("periods and route planner", () => {
   it("updates speed locally without fetch when timing is pending", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         return jsonResponse({ ...routeForecast, timing_pending: true });
       }
       return jsonResponse({}, false, 404);
@@ -633,7 +609,7 @@ describe("periods and route planner", () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -651,7 +627,7 @@ describe("periods and route planner", () => {
   it("dims completely past period toggles from current_local_time", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -669,7 +645,7 @@ describe("periods and route planner", () => {
   it("does not render raw timing pending copy on route page", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         return jsonResponse({
           ...routeForecast,
           timing_pending: true,
@@ -685,7 +661,7 @@ describe("periods and route planner", () => {
     });
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -700,7 +676,7 @@ describe("periods and route planner", () => {
   it("does not render generic destination hourly block on route page", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -715,7 +691,7 @@ describe("periods and route planner", () => {
   it("navigates tochal summit to destination canonical href", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         return jsonResponse({
           ...routeForecast,
           points: [
@@ -723,7 +699,7 @@ describe("periods and route planner", () => {
               ...routeForecast.points[0],
               slug: "tochal_summit",
               name: "قلهٔ توچال",
-              href: "/destination/touchal",
+              href: "/destination/tochal",
             },
           ],
         });
@@ -732,7 +708,7 @@ describe("periods and route planner", () => {
     });
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -741,14 +717,14 @@ describe("periods and route planner", () => {
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     const summitLink = screen.getByLabelText(/آب‌وهوای قلهٔ توچال/);
-    expect(summitLink).toHaveAttribute("href", "/destination/touchal");
+    expect(summitLink).toHaveAttribute("href", "/destination/tochal");
   });
 
   it("preserves route back context when opening summit destination from route", async () => {
     let destinationRequestUrl = "";
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         return jsonResponse({
           ...routeForecast,
           points: [
@@ -756,12 +732,12 @@ describe("periods and route planner", () => {
               ...routeForecast.points[0],
               slug: "tochal_summit",
               name: "قلهٔ توچال",
-              href: "/destination/touchal",
+              href: "/destination/tochal",
             },
           ],
         });
       }
-      if (url.includes("/destinations/touchal/forecast")) {
+      if (url.includes("/destinations/tochal/forecast")) {
         destinationRequestUrl = url;
         return jsonResponse(destinationForecast);
       }
@@ -774,7 +750,7 @@ describe("periods and route planner", () => {
         { path: "/destination/:slug", element: <DestinationPage /> },
       ],
       {
-        initialEntries: ["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"],
+        initialEntries: ["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=06:00&speed=متوسط"],
       },
     );
 
@@ -787,7 +763,7 @@ describe("periods and route planner", () => {
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     await userEvent.click(screen.getByLabelText(/آب‌وهوای قلهٔ توچال/));
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
-    expect(router.state.location.pathname).toBe("/destination/touchal");
+    expect(router.state.location.pathname).toBe("/destination/tochal");
     expect(router.state.location.search).toBe("");
     expect(destinationRequestUrl).not.toContain("date=");
     expect(destinationRequestUrl).not.toContain("period=");
@@ -795,7 +771,7 @@ describe("periods and route planner", () => {
     expect(router.state.location.state).toEqual(
       expect.objectContaining({
         fromRoute: expect.objectContaining({
-          pathname: "/routes/touchal-darband",
+          pathname: "/routes/tochal-darband",
           title: "دربند تا توچال",
         }),
       }),
@@ -807,11 +783,11 @@ describe("periods and route planner", () => {
     const planner = initialDestinationPlanner(
       new URLSearchParams(""),
       {
-        slug: "touchal-darband",
+        slug: "tochal-darband",
         title: "دربند تا توچال",
-        pathname: "/routes/touchal-darband",
+        pathname: "/routes/tochal-darband",
         search: "?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
-        href: "/routes/touchal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
+        href: "/routes/tochal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
       },
     );
     expect(planner).toEqual({ date: undefined, period: undefined });
@@ -893,7 +869,7 @@ describe("periods and route planner", () => {
     }
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route
               path="/destination/:slug"
@@ -926,7 +902,7 @@ describe("periods and route planner", () => {
     }
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/points/shirpala"]}>
+        <MemoryRouter initialEntries={["/points/tochal-shirpala-shelter"]}>
           <Routes>
             <Route
               path="/points/:slug"
@@ -957,7 +933,7 @@ describe("periods and route planner", () => {
 
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/routes/touchal-darband/forecast")) {
+      if (url.includes("/routes/tochal-darband/forecast")) {
         const start = url.includes("start_time=10%3A15") || url.includes("start_time=10:15") ? 600 : 360;
         return jsonResponse({
           ...routeForecast,
@@ -970,7 +946,7 @@ describe("periods and route planner", () => {
 
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning&start_time=10:15&speed=متوسط"]}>
+        <MemoryRouter initialEntries={["/routes/tochal-darband?date=2026-08-26&period=morning&start_time=10:15&speed=متوسط"]}>
           <Routes>
             <Route path="/routes/:slug" element={<RoutePage />} />
           </Routes>
@@ -982,7 +958,7 @@ describe("periods and route planner", () => {
     await userEvent.click(screen.getByRole("button", { name: "کپی لینک برنامه" }));
 
     const copied = writeText.mock.calls.at(-1)?.[0] as string;
-    expect(copied).toContain("/routes/touchal-darband");
+    expect(copied).toContain("/routes/tochal-darband");
     expect(copied).toMatch(/start_time=10(%3A|:)00/);
     expect(copied).not.toMatch(/start_time=%D[89ABab]/);
     expect(copied).toContain("period=morning");
@@ -993,7 +969,7 @@ describe("periods and route planner", () => {
   it("renders point and destination with the shared Forecast Place destination shell", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/points/sarband"]}>
+        <MemoryRouter initialEntries={["/points/tochal-sarband-square"]}>
           <Routes>
             <Route path="/points/:slug" element={<PointDetailPage />} />
           </Routes>
@@ -1017,7 +993,7 @@ describe("periods and route planner", () => {
   it("hides period headline on destination place page while keeping hourly legend", async () => {
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal"]}>
+        <MemoryRouter initialEntries={["/destination/tochal"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -1033,30 +1009,11 @@ describe("periods and route planner", () => {
     expect(document.querySelector(".destination-side")).toBeTruthy();
   });
 
-  it("redirects destination-kind weather points to the destination canonical URL with query and fromRoute", async () => {
+  it("does not expose a destination profile as an independent point page", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("/points/tochal_summit/forecast")) {
-        return jsonResponse({
-          ...pointForecast,
-          subject: {
-            ...pointForecast.subject,
-            slug: "tochal_summit",
-            weather_point_slug: "tochal_summit",
-            canonical_href: "/destination/touchal",
-            name: "قلهٔ توچال",
-          },
-          point: {
-            ...pointForecast.point,
-            slug: "tochal_summit",
-            name: "قلهٔ توچال",
-            kind: "destination",
-            href: "/destination/touchal",
-            canonical_href: "/destination/touchal",
-          },
-        });
-      }
-      if (url.includes("/destinations/touchal/forecast")) {
+      if (url.includes("/points/tochal_summit/forecast")) return jsonResponse({}, false, 404);
+      if (url.includes("/destinations/tochal/forecast")) {
         return jsonResponse({
           ...destinationForecast,
           forecast: {
@@ -1089,11 +1046,11 @@ describe("periods and route planner", () => {
             search: "?date=2026-08-26&period=noon",
             state: {
               fromRoute: {
-                slug: "touchal-darband",
+                slug: "tochal-darband",
                 title: "دربند تا توچال",
-                pathname: "/routes/touchal-darband",
+                pathname: "/routes/tochal-darband",
                 search: "?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
-                href: "/routes/touchal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
+                href: "/routes/tochal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
               },
             },
           },
@@ -1106,8 +1063,8 @@ describe("periods and route planner", () => {
         <RouterProvider router={router} />
       </ThemeProvider>,
     );
-    expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
-    expect(router.state.location.pathname).toBe("/destination/touchal");
+    expect(await screen.findByText("نقطهٔ هواشناسی پیدا نشد")).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/points/tochal_summit");
     expect(router.state.location.search).toBe("?date=2026-08-26&period=noon");
     expect(router.state.location.search).not.toContain("start_time");
     expect(router.state.location.state).toEqual(

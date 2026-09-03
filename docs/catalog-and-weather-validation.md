@@ -41,11 +41,11 @@ Catalog version `hawatch-tochal-catalog-v6` / timing version `tochal-timing-v3`:
 
 | route | status | method | notes |
 | --- | --- | --- | --- |
-| touchal-darband | estimated | `web-naismith-total+gpx-profile-v2` | GPX-profiled cumulatives; medium total 315 |
-| touchal-welanjak | estimated | `web-naismith-total+gpx-profile-v2` | origin `velenjak_parking`; medium total 360 |
-| touchal-ahar | estimated | `web-naismith-total+gpx-profile-v2` | medium total 380; qezqunchal ~212 m off-track |
-| touchal-kalkchal | estimated | `gpx-geometry+web-naismith-v3` | full geometry GPX; synthetic 40s timestamps unusable for moving time; medium 390 / ± 45 |
-| touchal-shahrestanak | estimated | `composite-gpx+dem+web-reports-v1` | composite village→Naseri + Naseri→summit; medium 370 / ± 50; not curated |
+| tochal-darband | estimated | `web-naismith-total+gpx-profile-v2` | GPX-profiled cumulatives; medium total 315 |
+| tochal-velenjak | estimated | `web-naismith-total+gpx-profile-v2` | origin `tochal-velenjak-parking`; medium total 360 |
+| tochal-ahar | estimated | `web-naismith-total+gpx-profile-v2` | medium total 380; qezqunchal ~212 m off-track |
+| tochal-kolakchal | estimated | `gpx-geometry+web-naismith-v3` | full geometry GPX; synthetic 40s timestamps unusable for moving time; medium 390 / ± 45 |
+| tochal-shahrestanak | estimated | `composite-gpx+dem+web-reports-v1` | composite village→Naseri + Naseri→summit; medium 370 / ± 50; not curated |
 
 GPX under `tracks/tochal/` is internal evidence (`license_status: unverified`) and is **gitignored** (`/tracks/`). Do not parse at API/seed/ingest runtime and do not redistribute until licensing is confirmed. Offline review (local only): `python3 scripts/analyze_route_tracks.py`. Manifest `timestamp_quality` must be respected: when not `recorded`, analyzer nulls elapsed/moving time.
 
@@ -126,7 +126,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
 نکات ساختاری:
 
 - مبدأ کلکچال/پیازچال: `jamshidieh_park` در پارکینگ شرقی GPX (`35.824629`, `51.465985`، DEM `1826` m، provisional). `piyazchal_pass` ≈135 m و `lezoon_east` ≈217 m از track؛ مختصاتشان auto-update نشده‌اند.
-- مبدأ ولنجک: `velenjak_parking` (provisional؛ کاتالوگ ۱۸۵۲ متر، با waypoint مستقل حدود ۱۸۴۵–۱۸۵۲ متر و DEM برابر ۱۸۶۹ متر در مختصات کاتالوگ)؛ `velenjak` عمومی حذف نمی‌شود
+- مبدأ ولنجک: `tochal-velenjak-parking` (provisional؛ کاتالوگ ۱۸۵۲ متر، با waypoint مستقل حدود ۱۸۴۵–۱۸۵۲ متر و DEM برابر ۱۸۶۹ متر در مختصات کاتالوگ)؛ رکورد مبهم `tochal-velenjak-village` مبدأ این route نیست.
 - `tochal_hotel` روی زنجیرهٔ اجباری ولنجک نیست؛ روی شهرستانک هست
 - گردنهٔ شهرستانک (`shahrestanak_pass`) از بازارک (`bazarek_pass`) متمایز است؛ `naseri_junction` / `bazarek_pass` / `shahneshin_pass` فقط برای variantهای آینده در catalog می‌مانند
 

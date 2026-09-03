@@ -100,8 +100,9 @@ destination-only ثبت کنید؛ ترک خودرو را به route پیاده 
   توچال»، نه «ایستگاه ۱». برای پناهگاه‌ها و جان‌پناه‌ها نیز نوع عارضه را در
   نام بیاورید؛ مثلاً «جان‌پناه امیری»، نه «امیری».
 - `name` باید برچسب نمایشی یکتا و روشن باشد و `aliases` شکل‌های کوتاه، فاصله‌دار
-  یا رایج همان نام را پوشش دهد تا جست‌وجو حفظ شود. برای تغییر نام نمایشی، slug
-  پایدار را بی‌دلیل عوض نکنید؛ تغییر slug نیازمند redirect و نگاشت legacy است.
+  یا رایج همان نام را پوشش دهد تا جست‌وجو حفظ شود. اگر هویت نقطه تغییر کرد، slug
+  canonical را در همهٔ fixtureها، API، frontend و مستندات یک‌جا عوض کنید؛ URL قدیمی
+  عمداً redirect یا نگاشت legacy ندارد.
 - اگر ارتفاع هنوز قطعی نیست، مقدار `null` و وضعیت provisional استفاده شود؛
 - GPX `<ele>` به‌تنهایی حقیقت ارتفاع نیست.
 
@@ -227,9 +228,8 @@ python3 scripts/analyze_route_tracks.py \
 تغییر نمی‌دهد. اگر slug در دیتابیس موجود نباشد یا live/active نباشد، import
 fail می‌شود. نمونهٔ فعلی: route دریاچهٔ تار → زرین‌کوه از `tar_lake` مشترکِ
 کاتالوگ `tar_v1.json` استفاده می‌کند؛ بنابراین کلیک روی نقطهٔ شروع به صفحهٔ
-canonical `/destination/tar-lake` می‌رود. لینک قدیمی
-`/points/zarrinkuh_tar_shore` نیز در وب به همین مقصد redirect می‌شود تا لینک‌های
-ذخیره‌شدهٔ قبلی صفحهٔ ناموجود نشان ندهند.
+canonical `/destination/tar-lake` می‌رود. رکورد قدیمیِ ساحل تار صفحهٔ مستقلی ندارد
+و در لینک‌های جدید استفاده نمی‌شود.
 
 ### زمان‌بندی arrival-aware
 
@@ -281,7 +281,7 @@ route باید timing کامل داشته باشد:
 ```bash
 cd apps/api
 uv run python manage.py set_popular_destinations \
-  touchal damavand daryasar alamkuh
+  tochal damavand daryasar alamkuh
 ```
 
 یا با comma-separated:
@@ -289,7 +289,7 @@ uv run python manage.py set_popular_destinations \
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
   python manage.py set_popular_destinations \
-  --slugs touchal,damavand,daryasar,alamkuh
+  --slugs tochal,damavand,daryasar,alamkuh
 ```
 
 این command به‌صورت اتمیک همهٔ مقصدهای دیگر را از لیست محبوب خارج می‌کند، ترتیب
