@@ -36,7 +36,7 @@
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
 | نام محصول و هویت تصمیم‌محور | `DOCX` | پاراگراف‌های ۱ تا ۷: دیدن مقصد، تغییر مسیر و تصمیم زمان/مسیر |
-| فارسی، RTL و Vazirmatn | `DOCX` + `PRODUCT` + live | پاراگراف‌های ۸ تا ۱۶؛ HTML live دارای `lang=fa` و `dir=rtl`؛ `design/tokens/typography.md` |
+| فارسی، RTL و Estedad | `DOCX` + `PRODUCT` + local implementation | پاراگراف‌های ۸ تا ۱۶؛ HTML دارای `lang=fa` و `dir=rtl`؛ `design/tokens/typography.md` و `apps/web/public/fonts/` |
 | dark palette | `DOCX` + tokens + `PRODUCT` | پاراگراف‌های ۱۷ تا ۲۸؛ طبق تصمیم قطعی، مقدار canonical فقط از `design/tokens/visual-tokens.json` خوانده می‌شود |
 | light palette | `DOCX` + tokens + live + `PRODUCT` | پاراگراف‌های ۲۹ تا ۴۰ DOCX بررسی شد؛ اختلاف‌های قبلی با تصمیم canonical بودن `visual-tokens.json` حل و markdownها توضیحی تلقی شدند |
 | لوگو و icon طبیعت | `DOCX` + design system | پاراگراف‌های ۴۱ تا ۵۲؛ `design/system/design-system.md` و `component-inventory.md` |
@@ -55,7 +55,7 @@
 | flow و back | `LIVE-H` + `PRODUCT` | §۵ و `docs/user-flows/home-to-destination.md`؛ Home → Destination و brand/back context |
 | نبودن route/decision/share در Home | `LIVE-H` | §۶ تا §۸ |
 | mobile/desktop | `LIVE-H` + screenshots | §۹ و tokens observed: mobile 576، grid دو ستونه؛ web 1905، row شش‌تایی؛ root بدون overflow |
-| light/dark و visual values | `LIVE-H` + `SCREENSHOT-SOURCE` | §۱۰ و §۱۱: body، search/tile، radius، border، shadow و Vazirmatn |
+| light/dark و visual values | `LIVE-H` + `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | §۱۰ و §۱۱: body، search/tile، radius، border، shadow و Estedad |
 | loading/empty/error/stale | `LIVE-H` + `LIVE-BUNDLE` + `PRODUCT` | §۱۲: empty مشاهده شد؛ contract قطعی آینده skeleton، error همان بخش + retry، stale با دادهٔ قبلی/زمان/هشدار کهربایی و empty/error مستقل است |
 | future data/API | `PRODUCT` + `docs/api/*` | §۱۳ live static بودن را جدا از endpointهای پیشنهادی آینده ثبت می‌کند |
 | responsive constraint و acceptance | `LIVE-H` + `PRODUCT` | §۱۴ و §۱۵؛ search overlap/root overflow ممنوع |

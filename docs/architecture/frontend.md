@@ -17,7 +17,7 @@ frontend فقط `VITE_API_BASE_URL` را صدا می‌زند. لایهٔ client
 ## theme و RTL
 
 - `dir=rtl` و `lang=fa`
-- فونت Vazirmatn
+- فونت self-hosted و متغیر Estedad با stack مشترک `"Estedad", "Noto Sans Arabic", Tahoma, Arial, sans-serif`؛ تعریف `@font-face` در `apps/web/src/styles/tokens.css` و asset در `apps/web/public/fonts/`
 - theme با `data-theme` و `localStorage` key `hawatch-theme`
 - تغییر theme انتخاب روز/بازه/مسیر را reset نمی‌کند
 

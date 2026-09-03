@@ -5,7 +5,7 @@
 - [ ] صفحه، theme و device درست انتخاب شده است.
 - [ ] تصویر مرجع از `design/screens` استفاده شده است.
 - [ ] viewport با reference مقایسه شده است: mobile 576px، web 1905px.
-- [ ] font Vazirmatn و direction RTL فعال است.
+- [ ] font self-hosted Estedad و direction RTL فعال است.
 
 ## layout
 
@@ -29,4 +29,3 @@
 - [ ] Destination mobile: dayها قبل از controls، routeها دو ستونه و عنوان «مسیرها» است.
 - [ ] Route mobile: controls هم‌ارتفاع، ساعت و سرعت هم‌ردیف، خط عمودی حذف و period مشترک است.
 - [ ] Login به‌عنوان reference باقی مانده و implementation ندارد.
-

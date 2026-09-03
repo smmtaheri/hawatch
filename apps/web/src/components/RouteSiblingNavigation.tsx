@@ -46,7 +46,7 @@ export function RouteSiblingNavigation({
                 }}
               >
                 <strong>{route.title}</strong>
-                <small>{route.distance_label}</small>
+                <small><bdi>{route.distance_label}</bdi></small>
                 <span aria-hidden="true">›</span>
               </Link>
             ))}

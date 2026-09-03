@@ -121,7 +121,7 @@ Destination hero دو status دارد: current teal و change amber. تصمیم 
 
 ## ۱۱. اندازه، فاصله، border، radius، shadow و typography
 
-- font computed: `Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px. [LIVE]
+- font target: `Estedad, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px؛ live باید پس از انتشار دوباره تأیید شود. [LOCAL-IMPLEMENTATION]
 - desktop hero: border 1px solid light `rgb(169,197,191)` یا dark `rgba(190,225,221,.18)`؛ radius 25px؛ shadow light حدود `0 14px 32px rgba(16,43,61,.09)` و dark حدود `0 16px 36px rgba(0,0,0,.2)`.
 - first weather card observed desktop حدود 1080×568px با padding حدود `23px 25px`؛ mobile حدود 548×383px با padding 9px.
 - theme toggle desktop 33px height و mobile 38px height؛ radius 999px.
@@ -166,4 +166,3 @@ Destination hero دو status دارد: current teal و change amber. تصمیم 
 - سورس local `/workspace/sites/hawatch-weather`: `[BLOCKED]`.
 - Hawatch.docx: `[BLOCKED]`.
 - ترتیب محصول، RTL، ممنوعیت implementation: `[PRODUCT]`.
-

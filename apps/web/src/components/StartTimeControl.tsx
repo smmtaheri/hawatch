@@ -49,7 +49,7 @@ export function StartTimeControl({
           <span className="planner-label">ساعت شروع</span>
           <small>از {rangeLabel}</small>
         </div>
-        <strong>{display}</strong>
+        <strong><bdi>{display}</bdi></strong>
       </div>
       <div className="gauge-wrap">
         <div className="gauge-line">
@@ -81,7 +81,7 @@ export function StartTimeControl({
         />
         <div className="gauge-ticks">
           {ticks.map((tick) => (
-            <span key={tick}>{tick}</span>
+            <span key={tick}><bdi>{tick}</bdi></span>
           ))}
         </div>
       </div>

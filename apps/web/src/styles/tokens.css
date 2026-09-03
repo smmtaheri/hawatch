@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/estedad-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --brand-ink: #102b3d;
   --brand-teal: #1d7f86;
@@ -18,7 +26,22 @@
   --radius-hero: 24px;
   --radius-control: 10px;
   --radius-pill: 999px;
-  --font-family: Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --font-family: "Estedad", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --font-size-body: 1rem;
+  --font-size-meta: 0.875rem;
+  --font-size-label: 0.8125rem;
+  --font-size-control: 0.875rem;
+  --font-size-card-title: 1.125rem;
+  --font-size-section-title: clamp(1.5rem, 2.4vw, 1.875rem);
+  --font-size-page-title: clamp(2rem, 4vw, 3.25rem);
+  --font-size-key-value: 1.5rem;
+  --line-height-body: 1.7;
+  --line-height-heading: 1.2;
+  --line-height-section: 1.35;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
   --content-max: 1500px;
 }
 
@@ -43,6 +66,10 @@ html[data-theme="dark"] {
   --coral: #ed897b;
 }
 
+html {
+  font-family: var(--font-family);
+}
+
 html,
 body,
 #root {
@@ -52,5 +79,15 @@ body,
 
 body {
   font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   direction: rtl;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }

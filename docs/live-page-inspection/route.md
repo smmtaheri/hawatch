@@ -136,7 +136,7 @@ Home → Destination با tile؛ Destination → Route با route card؛ Route �
 
 ## ۱۱. اندازه، فاصله، رنگ، border، radius، shadow و typography
 
-- font computed: `Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px.
+- font target: `Estedad, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px؛ live باید پس از انتشار دوباره تأیید شود. [LOCAL-IMPLEMENTATION]
 - route hero desktop/mobile radius 25px؛ desktop shadow light حدود `0 11px 26px rgba(16,43,61,.12)` و dark حدود `0 16px 36px rgba(0,0,0,.2)`.
 - standard card radius 18px؛ mobile standard card observed radius 18px، decision mobile 14px.
 - theme toggle desktop height 33px و mobile 38px، radius 999px.
@@ -186,4 +186,3 @@ Home → Destination با tile؛ Destination → Route با route card؛ Route �
 - سورس local `/workspace/sites/hawatch-weather`: `[BLOCKED]`.
 - Hawatch.docx: `[BLOCKED]`.
 - الزام mobile/desktop، RTL، overflow و no implementation: `[PRODUCT]`.
-

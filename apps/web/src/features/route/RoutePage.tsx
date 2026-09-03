@@ -312,7 +312,7 @@ export function RoutePage() {
                 />
                 <h1>{data.route.title}</h1>
                 <p className="route-hero-meta">
-                  مسافت {data.route.distance_label}　·　صعود {data.route.ascent_label}
+                  مسافت <bdi>{data.route.distance_label}</bdi>　·　صعود <bdi>{data.route.ascent_label}</bdi>
                 </p>
               </div>
               <div className="hero-status-stack route-hero-status-stack" aria-label="خلاصهٔ وضعیت مسیر">
@@ -381,7 +381,7 @@ export function RoutePage() {
                                 ariaLabel={`آب‌وهوای ${point.name} · ${label}`}
                               >
                                 <strong>{point.name}</strong>
-                                <span className="route-point-weather-eta">{label}</span>
+                                <span className="route-point-weather-eta"><bdi>{label}</bdi></span>
                                 {point.timing_estimated && !timingPending ? (
                                   <span className="route-point-weather-badge">{timingEstimateBadgeLabel(point)}</span>
                                 ) : null}
@@ -393,9 +393,9 @@ export function RoutePage() {
                                       ? point.condition || "در دسترس نیست"
                                       : point.condition}
                                 </span>
-                                <b>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</b>
+                                <b><bdi>{!unavailable && point.temp != null ? `${point.temp}°` : "—"}</bdi></b>
                                 <small>
-                                  {!unavailable && point.wind != null ? `باد ${point.wind} km/h` : "باد —"}
+                                  <bdi>{!unavailable && point.wind != null ? `باد ${point.wind} km/h` : "باد —"}</bdi>
                                 </small>
                                 {!unavailable && point.state !== "normal" ? (
                                   <em>{point.state === "critical" ? "احتیاط" : "تغییر"}</em>

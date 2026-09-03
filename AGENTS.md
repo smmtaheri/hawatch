@@ -2,7 +2,7 @@
 
 - نام محصول همیشه «هواچ» است؛ از «هاواچ» استفاده نکن.
 - زبان محصول فارسی و layout آن RTL است.
-- فونت مرجع محصول Vazirmatn است.
+- فونت مرجع محصول Estedad Variable است؛ فایل رسمی self-hosted در `apps/web/public/fonts/estedad-variable.woff2` نگهداری می‌شود و `apps/web/public/fonts/OFL.txt` باید همراه آن باقی بماند.
 - هویت بصری فعلی نباید redesign یا با یک زبان بصری جدید جایگزین شود.
 - تصاویر `design/screens` قرارداد بصری هستند و باید کنار implementation version شوند.
 - هر تغییر برای mobile و desktop باید جداگانه بررسی شود.

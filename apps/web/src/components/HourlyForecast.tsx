@@ -58,11 +58,11 @@ export function HourlyForecast({ hours }: { hours: HourlyReading[] }) {
             key={hour.forecast_at ?? hour.time}
             className={`hour-item ${hour.state} ${hour.is_past ? "is-past" : ""} ${hour.is_current ? "is-current" : ""} ${hour.is_future ? "is-future" : ""}`}
           >
-            <strong>{hour.time}</strong>
+            <strong><bdi>{hour.time}</bdi></strong>
             <span className="weather-symbol">{hour.icon}</span>
             <span className="condition">{hour.condition}</span>
-            <b>{hour.apparent_temperature_label ?? hour.temperature_label}</b>
-            <small>{hour.wind_label}</small>
+            <b><bdi>{hour.apparent_temperature_label ?? hour.temperature_label}</bdi></b>
+            <small><bdi>{hour.wind_label}</bdi></small>
             {hour.state !== "normal" ? <em>{hour.state === "critical" ? "احتیاط" : "تغییر مهم"}</em> : null}
           </div>
         ))}

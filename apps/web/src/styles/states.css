@@ -2719,3 +2719,220 @@ html:not([data-theme="light"]) .search-result-row:hover {
     background: transparent;
   }
 }
+
+/* Unified typography contract. Keep the visual language shared by every
+ * page while letting the existing responsive layout own spacing and flow. */
+html,
+body,
+#root {
+  font-family: var(--font-family);
+}
+
+body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: normal;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: normal;
+}
+
+h1 {
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+h2,
+h3 {
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-section);
+}
+
+.hero-copy h1,
+.destination-heading h1,
+.route-hero h1,
+.login-overlay-content h1 {
+  max-width: 100%;
+  font-size: var(--font-size-page-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: normal;
+}
+
+.section-title-row h2,
+.compact-route-heading h2,
+.specialist-metrics-sheet-heading h2 {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-section);
+}
+
+.decision-card h2,
+.route-decision h2,
+.decision-note h2,
+.share-summary-copy strong {
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-section);
+}
+
+.route-card h3,
+.point-heading h3,
+.route-sibling-link strong,
+.mobile-route-sheet-item-copy strong,
+.destination-tile strong {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--weight-semibold);
+  line-height: 1.4;
+}
+
+.planner-label,
+.day-tabs button,
+.daypart-toggle button,
+.segmented-control button,
+.account-status,
+.theme-toggle,
+.page-back-link,
+.search-box button,
+.primary-button,
+.outline-button,
+.share-copy-button,
+.share-telegram-button,
+.hawatch-state button,
+.route-sibling-trigger,
+.desktop-route-overflow-trigger,
+.mobile-route-selection-trigger,
+.specialist-metrics-trigger {
+  font-size: var(--font-size-control);
+  line-height: 1.45;
+}
+
+.updated,
+.route-hero-meta,
+.route-details,
+.route-detail,
+.route-sibling-link small,
+.route-point-weather-eta,
+.route-point-weather-condition,
+.route-point-weather-card > small,
+.hour-item > small,
+.metric small,
+.destination-tile small,
+.home-catalog-stat span,
+.mobile-route-sheet-item-copy small,
+.route-linear-order,
+.route-linear-endpoints {
+  font-size: var(--font-size-meta);
+  line-height: 1.5;
+}
+
+.hour-item > strong,
+.day-tabs strong,
+.daypart-toggle button strong,
+.gauge-heading > strong {
+  font-size: var(--font-size-control);
+  font-weight: var(--weight-semibold);
+}
+
+.hour-item > b,
+.route-point-weather-card > b,
+.metric strong,
+.route-stat strong,
+.home-catalog-stat strong {
+  font-size: var(--font-size-key-value);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+bdi,
+.numeric-data,
+.route-detail,
+.route-hero-meta,
+.route-point-weather-eta,
+.route-point-weather-card > small,
+.hour-item > strong,
+.hour-item > b,
+.hour-item > small,
+.metric strong,
+.metric small,
+.route-stat strong,
+.gauge-heading > strong,
+.gauge-ticks {
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .hero-copy h1,
+  .destination-heading h1,
+  .route-hero h1,
+  .login-overlay-content h1 {
+    font-size: clamp(2rem, 9vw, 2.25rem);
+  }
+
+  .section-title-row h2,
+  .compact-route-heading h2,
+  .specialist-metrics-sheet-heading h2 {
+    font-size: 1.5rem;
+  }
+
+  .planner-label,
+  .day-tabs button,
+  .daypart-toggle button,
+  .segmented-control button,
+  .account-status,
+.theme-toggle,
+.page-back-link,
+.search-box button,
+.primary-button,
+.outline-button,
+.share-copy-button,
+.share-telegram-button,
+.hawatch-state button,
+.route-sibling-trigger,
+  .desktop-route-overflow-trigger,
+  .mobile-route-selection-trigger,
+  .specialist-metrics-trigger {
+    font-size: max(0.8125rem, var(--font-size-control));
+  }
+
+  .destination-page .day-tabs button,
+  .route-page .day-tabs button,
+  .route-page .route-day-tabs button,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button small,
+  .route-page .route-overview-side .planner-quick-box .time-gauge .gauge-heading .planner-label {
+    font-size: var(--font-size-label);
+  }
+
+  .route-page .route-hero h1 {
+    font-size: clamp(2rem, 9vw, 2.25rem) !important;
+  }
+
+  .destination-page .destination-heading h1 {
+    font-size: clamp(2rem, 9vw, 2.25rem) !important;
+  }
+
+  .route-page .route-point-weather-card > strong,
+  .route-page .route-point-weather-card > small,
+  .route-page .route-point-weather-condition,
+  .route-page .route-point-weather-card > em,
+  .route-page .route-sibling-link strong,
+  .route-page .route-sibling-link small,
+  .specialist-metrics-sheet-grid .metric small {
+    font-size: var(--font-size-label);
+  }
+}

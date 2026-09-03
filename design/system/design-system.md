@@ -6,7 +6,7 @@
 
 ## قراردادهای ثابت
 
-- زبان فارسی، RTL و فونت Vazirmatn.
+- زبان فارسی، RTL و فونت self-hosted و متغیر Estedad؛ جزئیات scale و قواعد عدد/واحد در [راهنمای typography](../tokens/typography.md) است.
 - رنگ هویت teal؛ amber برای تغییر مهم؛ coral برای وضعیت حساس.
 - light سفید اداری و dark مشکی کامل نیستند.
 - کارت‌ها سطح‌های لایه‌لایه، border ظریف، radius حدود ۱۶ تا ۲۲px و shadow نرم دارند.

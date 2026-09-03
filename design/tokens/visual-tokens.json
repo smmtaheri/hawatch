@@ -1,7 +1,7 @@
 {
   "product": "هواچ",
   "direction": "rtl",
-  "fontFamily": "Vazirmatn",
+  "fontFamily": "Estedad",
   "colors": {
     "brand": {
       "ink": "#102b3d",
@@ -44,12 +44,19 @@
     }
   },
   "typography": {
-    "family": "Vazirmatn",
-    "weights": [400, 500, 600, 700],
-    "body": { "size": "16px", "lineHeight": 1.6, "weight": 400 },
-    "label": { "size": "12px", "lineHeight": 1.5, "weight": 500 },
-    "sectionTitle": { "size": "20px", "lineHeight": 1.45, "weight": 600 },
-    "pageTitle": { "size": "44px desktop; responsive mobile", "lineHeight": 1.2, "weight": 600 }
+    "family": "Estedad",
+    "stack": "Estedad, Noto Sans Arabic, Tahoma, Arial, sans-serif",
+    "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    "body": { "size": "16px", "lineHeight": 1.7, "weight": 400 },
+    "metadata": { "size": "14px", "lineHeight": 1.5, "weight": 400 },
+    "label": { "size": "13px", "lineHeight": 1.45, "weight": 500 },
+    "control": { "size": "14px", "lineHeight": 1.4, "weight": 500 },
+    "cardTitle": { "size": "18px", "lineHeight": 1.4, "weight": 600 },
+    "sectionTitle": { "size": "30px desktop / 24px mobile", "lineHeight": 1.35, "weight": 700 },
+    "pageTitle": { "size": "52px desktop / 36px mobile", "lineHeight": 1.2, "weight": 700 },
+    "keyValue": { "size": "24px", "lineHeight": 1.2, "weight": 600 },
+    "letterSpacing": "normal",
+    "numeric": { "fontVariantNumeric": "tabular-nums", "unicodeBidi": "isolate" }
   },
   "spacing": {
     "base": "4px",
@@ -72,8 +79,8 @@
     "contentMaxWidth": "1500px"
   },
   "observedRuntime": {
-    "source": "live DOM/computed styles captured 2026-08-25",
-    "fontComputed": "Vazirmatn, Noto Sans Arabic, Tahoma, Arial, sans-serif",
+    "source": "local typography contract; layout values are historical live DOM/computed styles captured 2026-08-25",
+    "fontComputed": "Estedad, Noto Sans Arabic, Tahoma, Arial, sans-serif",
     "fontSize": "16px",
     "lineHeight": "27.2px",
     "home": {

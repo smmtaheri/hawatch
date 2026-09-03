@@ -99,7 +99,7 @@ Home نقطهٔ شروع است. tile مقصد مستقیماً به Destination
 
 ## ۱۱. اندازه، فاصله، رنگ، border، radius، shadow و typography
 
-- font computed: `Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px. [LIVE]
+- font target: `Estedad, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px؛ live باید پس از انتشار دوباره تأیید شود. [LOCAL-IMPLEMENTATION]
 - theme toggle: radius `999px`؛ desktop ارتفاع 33px و mobile ارتفاع 38px؛ padding desktop `7px 12px` و mobile `6px 9px`.
 - search: radius `14px`؛ light border `1px solid rgb(169,197,191)`؛ desktop shadow حدود `0 10px 24px rgba(16,43,61,.12)` و dark desktop `0 18px 45px rgba(0,0,0,.24)`.
 - destination tile: radius `13px`؛ light border `rgb(169,197,191)`؛ light shadow حدود `0 8px 20px rgba(16,43,61,.07)`؛ dark بدون shadow محسوس و border روشن translucent.

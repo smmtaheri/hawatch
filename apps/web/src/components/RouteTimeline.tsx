@@ -36,7 +36,7 @@ export function RouteTimeline({
                 <span className="marker-weather">{point.icon}</span>
               </span>
               <span className="route-linear-point-name">{point.name}</span>
-              <span className="route-linear-order">{index + 1}</span>
+              <span className="route-linear-order"><bdi>{index + 1}</bdi></span>
             </Link>
           );
         })}

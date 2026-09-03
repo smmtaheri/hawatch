@@ -9,8 +9,8 @@ function MetricTile({ metric }: { metric: Metric }) {
         <SpecialistMetricIcon icon={metric.icon} tone={metric.color} />
         <span>{metric.label}</span>
       </span>
-      <strong className={metric.color || ""}>{metric.value}</strong>
-      <small>{metric.note}</small>
+      <strong className={metric.color || ""}><bdi>{metric.value}</bdi></strong>
+      <small><bdi>{metric.note}</bdi></small>
     </div>
   );
 }

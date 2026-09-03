@@ -10,7 +10,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 | منبع | وضعیت | توضیح |
 | --- | --- | --- |
-| `references/Hawatch.docx` | PASS | خوانده شده و اصول RTL، Vazirmatn، palette و hierarchy با design system تطبیق داده شده‌اند. |
+| `references/Hawatch.docx` | PASS | خوانده شده و اصول RTL، Estedad، palette و hierarchy با design system تطبیق داده شده‌اند. |
 | `design/tokens/visual-tokens.json` | PASS | تنها منبع canonical مقدارهای token؛ markdownها توضیح‌دهنده‌اند. |
 | `design/source-screens/` و `design/screens/` | PASS | ۱۶ asset منطقی در چهار صفحه، دو theme و دو device؛ sourceها بدون تغییر. |
 | live reference URLs | PASS | برای ثبت رفتار و ظاهر reference استفاده شده‌اند؛ رفتار اجرای فعلی از source محلی می‌آید. |
@@ -31,7 +31,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias، debounce حدود ۲۰۰ms، keyboard navigation و retry؛ مسیرها در ایندکس نیستند.
 - Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
-- RTL، Vazirmatn، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
+- RTL، Estedad، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
 - Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است، ولی CTA ارسال OTP تا آماده‌شدن backend غیرفعال می‌ماند.
 
 ### Backend و داده

@@ -56,7 +56,7 @@
 - [ ] چهار حالت light/dark و mobile/desktop برای Home، Destination و Route بدون root horizontal overflow قابل استفاده‌اند.
 - [ ] Point در light/dark استایل هم‌خانواده با Destination دارد و در ورود از Route sidebar خالی ایجاد نمی‌کند.
 - [ ] Point در light/dark از همان surface، typography و spacing Destination استفاده می‌کند؛ related routes در sidebar فشرده و تک‌ستونه‌اند.
-- [ ] root و محتوای فارسی RTL، فونت Vazirmatn و focus/keyboard stateهای قابل دسترس دارند.
+- [ ] root و محتوای فارسی RTL، فونت self-hosted Estedad، stack fallback و focus/keyboard stateهای قابل دسترس دارند.
 - [ ] scroll داخلی، در صورت نیاز، scoped به همان محور/کانتینر است و root را عریض نمی‌کند.
 
 ## مستندات و کیفیت
