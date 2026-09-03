@@ -2674,3 +2674,48 @@ html:not([data-theme="light"]) .search-result-row:hover {
     display: none;
   }
 }
+
+/* Keep the destination/point planner visually identical to the route planner
+ * on desktop. The wrappers are intentionally unstyled below 720px, so the
+ * existing mobile weather-card layout remains unchanged. */
+@media (min-width: 721px) {
+  .destination-page .weather-card {
+    display: grid;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .destination-page .destination-planner-controls,
+  .destination-page .destination-forecast-output {
+    border: 1px solid var(--internal-border, #bee1dd2e);
+    border-radius: var(--brand-radius, 18px);
+    color: var(--internal-text, #edf7f4);
+    background: linear-gradient(
+      145deg,
+      var(--internal-surface-raised, #1d4650),
+      var(--internal-surface, #173844)
+    );
+    box-shadow: var(--brand-shadow, 0 14px 32px #102b3d12);
+  }
+
+  .destination-page .destination-planner-controls {
+    padding: 22px 24px;
+  }
+
+  .destination-page .destination-planner-controls .forecast-day-period-controls {
+    row-gap: 14px;
+  }
+
+  .destination-page .destination-forecast-output {
+    overflow: hidden;
+  }
+
+  .destination-page .destination-forecast-output .hourly-box {
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+  }
+}

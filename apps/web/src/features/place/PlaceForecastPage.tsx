@@ -116,22 +116,26 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
             <div className="destination-layout">
               <div className="destination-main">
                 <section className="weather-card card-surface">
-                  <ForecastDayPeriodControls
-                    days={data.days}
-                    selectedDate={selected}
-                    onSelectDate={selectDate}
-                    period={displayPeriod}
-                    onSelectPeriod={selectPeriod as (next: PeriodId) => void}
-                    periodStates={periodStates}
-                  />
-                  {data.empty || data.partial ? (
-                    <EmptyState
-                      title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی این روز در دسترس نیست"}
-                      detail="روز دیگری را انتخاب کن یا بعداً دوباره سر بزن."
+                  <div className="destination-planner-controls">
+                    <ForecastDayPeriodControls
+                      days={data.days}
+                      selectedDate={selected}
+                      onSelectDate={selectDate}
+                      period={displayPeriod}
+                      onSelectPeriod={selectPeriod as (next: PeriodId) => void}
+                      periodStates={periodStates}
                     />
-                  ) : (
-                    <HourlyForecast hours={data.hourly} />
-                  )}
+                  </div>
+                  <div className="destination-forecast-output">
+                    {data.empty || data.partial ? (
+                      <EmptyState
+                        title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی این روز در دسترس نیست"}
+                        detail="روز دیگری را انتخاب کن یا بعداً دوباره سر بزن."
+                      />
+                    ) : (
+                      <HourlyForecast hours={data.hourly} />
+                    )}
+                  </div>
                 </section>
                 <MobileRouteSelector routes={routes} title={data.related_routes_title} />
                 <section className="technical-card card-surface">
