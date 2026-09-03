@@ -612,6 +612,7 @@ describe("Hawatch pages", () => {
     await user.type(input, "پس");
     await user.keyboard("{Enter}");
     expect(await screen.findByRole("heading", { name: "پس‌قلعه" })).toBeInTheDocument();
+    expect(document.querySelector(".destination-decision-card")).not.toBeInTheDocument();
   });
 
   it("does not create full-page horizontal overflow at the mobile reference width", async () => {

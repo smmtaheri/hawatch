@@ -3,7 +3,6 @@ import { Navigate, useLocation, useParams } from "react-router-dom";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
-import { DecisionCard } from "../../components/DecisionCard";
 import { DesktopRouteSelector } from "../../components/DesktopRouteSelector";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
@@ -170,18 +169,8 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     </div>
                   </section>
                 )}
-                {kind === "point" ? (
-                  <div className="desktop-destination-decision">
-                    <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
-                  </div>
-                ) : null}
               </aside>
             </div>
-            {kind === "point" ? (
-              <div className="mobile-destination-decision">
-                <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
-              </div>
-            ) : null}
             <footer className="site-footer">
               <span>هوای مقصد، برنامهٔ مسیر</span>
             </footer>
