@@ -45,15 +45,6 @@
       "elevation_source": "مختصات قله با همگرایی چهار ترک مستقل در حدود 35.7070, 52.2274 و منبع مسیر تطبیق شده است. ارتفاع منبع حدود 3852 متر؛ DEM سرویس 3783 متر و ارتفاع GPXها 3752 تا 3848 متر است. مقدار catalog موقت است و GPX <ele> حقیقت قطعی نیست.",
       "climate": "alpine"
     },
-    "zarrinkuh_tar_shore": {
-      "name": "کرانهٔ دریاچهٔ تار · شروع مسیر زرین‌کوه",
-      "latitude": 35.726682,
-      "longitude": 52.22378,
-      "elevation_m": 2965,
-      "status": "provisional",
-      "elevation_source": "نقطهٔ شروع ترک پیاده‌روی دریاچهٔ تار تا زرین‌کوه؛ Open-Meteo GLO-90 DEM در مختصات ترک 2965 متر است. این نقطه مسیر دسترسی کنار دریاچه است، نه مرکز آب دریاچهٔ تار.",
-      "climate": "alpine"
-    },
     "zarrinkuh_tar_north_ridge": {
       "name": "یال شمالی زرین‌کوه",
       "latitude": 35.715724,
@@ -124,19 +115,22 @@
       "climate": "alpine"
     }
   },
+  "shared_weather_points": [
+    "tar_lake"
+  ],
   "routes": {
     "tar_to_zarrinkuh": {
       "slug": "zarrinkuh-tar-north",
       "title": "دریاچهٔ تار تا قلهٔ زرین‌کوه",
-      "subtitle": "مسیر شمالی زرین‌کوه از کرانهٔ دریاچهٔ تار و یال شمالی تا قله",
+      "subtitle": "مسیر شمالی زرین‌کوه از دریاچهٔ تار و یال شمالی تا قله",
       "trail_label": "مسیر شمالی دریاچهٔ تار",
-      "origin": "کرانهٔ دریاچهٔ تار",
+      "origin": "دریاچهٔ تار",
       "destination_label": "قلهٔ زرین‌کوه",
       "region": "البرز شرقی · دماوند",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "zarrinkuh_tar_shore",
+        "tar_lake",
         "zarrinkuh_tar_north_ridge",
         "zarrinkuh_summit"
       ],
@@ -163,7 +157,7 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "zarrinkuh_tar_shore": 0,
+          "tar_lake": 0,
           "zarrinkuh_tar_north_ridge": 110,
           "zarrinkuh_summit": 170
         }

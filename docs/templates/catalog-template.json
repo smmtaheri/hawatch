@@ -19,6 +19,7 @@
     "is_active": true
   },
   "destination_weather_point": "example_summit",
+  "shared_weather_points": [],
   "weather_points": {
     "example_summit": {
       "name": "قلهٔ نمونه",

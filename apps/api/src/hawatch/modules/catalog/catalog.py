@@ -229,6 +229,21 @@ def _validate_document_shape(data: dict) -> None:
         if not str(destination.get(key) or "").strip():
             raise ValueError(f"destination.{key} is required")
     point_slugs = set(data["weather_points"])
+    shared_weather_points = data.get("shared_weather_points") or []
+    if not isinstance(shared_weather_points, list) or not all(
+        isinstance(slug, str) and slug.strip() for slug in shared_weather_points
+    ):
+        raise ValueError("shared_weather_points must be a list of non-empty slugs")
+    if len(shared_weather_points) != len(set(shared_weather_points)):
+        raise ValueError("shared_weather_points must not contain duplicate slugs")
+    shared_slugs = set(shared_weather_points)
+    overlap = sorted(point_slugs & shared_slugs)
+    if overlap:
+        raise ValueError(
+            "shared_weather_points must not repeat local weather points: "
+            + ", ".join(overlap)
+        )
+    point_slugs |= shared_slugs
     for point_slug, point in data["weather_points"].items():
         if not isinstance(point, dict):
             raise ValueError(f"WeatherPoint {point_slug} must be an object")
@@ -420,6 +435,20 @@ def seed_catalog(
         existing.save()
         weather_points[slug] = existing
 
+    # A route may begin at a canonical WeatherPoint owned by another catalog,
+    # for example a mountain route that starts at an already-published lake
+    # destination. Shared references are resolved from the database and are
+    # never re-owned or overwritten by this catalog import.
+    for slug in data.get("shared_weather_points") or []:
+        shared_point = WeatherPoint.objects.filter(slug=slug).first()
+        if shared_point is None:
+            raise ValueError(f"Shared WeatherPoint does not exist: {slug}")
+        if not shared_point.is_active or shared_point.data_mode != "live":
+            raise ValueError(
+                f"Shared WeatherPoint must be active and live: {slug}"
+            )
+        weather_points[slug] = shared_point
+
     destination_point_slug = _destination_point_slug(data)
     destination_point = weather_points.get(destination_point_slug)
     # Canonical profile link — do not create synthetic dest:{slug} WeatherPoints.
@@ -522,7 +551,9 @@ def seed_catalog(
 
         for index, point_slug in enumerate(point_slugs):
             wp = weather_points[point_slug]
-            point_row = data["weather_points"][point_slug]
+            # Shared WeatherPoints intentionally have no duplicate local row;
+            # route-specific evidence belongs to the route block itself.
+            point_row = data["weather_points"].get(point_slug) or {}
             axis_x, axis_y = _axis_for_index(index, len(point_slugs))
             is_last = index == len(point_slugs) - 1
             cumulative = timing["point_cumulative"].get(point_slug)

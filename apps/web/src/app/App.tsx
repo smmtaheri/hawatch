@@ -35,11 +35,24 @@ export function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/destination/:slug" element={<DestinationPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
+        <Route path="/points/zarrinkuh_tar_shore" element={<LegacyTarShoreRedirect />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
         <Route path="/routes/:routeSlug/points/:pointSlug" element={<LegacyRoutePointRedirect />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {backgroundLocation ? <LoginOverlay /> : null}
     </>
+  );
+}
+
+/** Keep old shared-point links useful after the canonical Tar Lake page took ownership. */
+function LegacyTarShoreRedirect() {
+  const location = useLocation();
+  return (
+    <Navigate
+      to={{ pathname: "/destination/tar-lake", search: location.search, hash: location.hash }}
+      replace
+      state={location.state}
+    />
   );
 }

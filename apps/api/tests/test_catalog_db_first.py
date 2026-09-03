@@ -8,7 +8,7 @@ from django.test import override_settings
 
 import pytest
 
-from hawatch.modules.catalog.catalog import bootstrap_live_catalog_if_empty
+from hawatch.modules.catalog.catalog import bootstrap_live_catalog_if_empty, seed_catalog
 from hawatch.modules.catalog.runtime import compute_db_catalog_revision, ingestible_weather_points
 from hawatch.modules.catalog.search import rebuild_search_index, search_suggestions
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
@@ -16,6 +16,94 @@ from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.timing import route_timing_complete
+
+
+@pytest.mark.django_db
+def test_catalog_can_reference_shared_weather_point_without_reowning_it():
+    owner = Destination.objects.create(
+        slug="shared-point-owner",
+        tile_name="دریاچهٔ مالک",
+        name="دریاچهٔ مالک",
+        short_category="دریاچه",
+        category="دریاچهٔ کوهستانی",
+        category_key="lake",
+        region="استان",
+        elevation_m=2000,
+        location=Point(52.0, 35.0, srid=4326),
+        image="/images/home-scene.png",
+        image_alt="دریاچهٔ مالک",
+        climate="lake_valley",
+        data_mode="live",
+        is_active=True,
+    )
+    shared = WeatherPoint.objects.create(
+        slug="shared_lake_point",
+        name="دریاچهٔ مشترک",
+        kind=WeatherPoint.Kind.SHARED,
+        location=Point(52.01, 35.01, srid=4326),
+        elevation_m=2010,
+        destination=owner,
+        data_mode="live",
+        is_active=True,
+        ingest_enabled=True,
+        fixture_managed=False,
+    )
+    catalog = {
+        "catalog_version": "shared-reference-test-v1",
+        "destination_weather_point": "shared_reference_summit",
+        "destination": {
+            "slug": "shared-reference-destination",
+            "tile_name": "قلهٔ مقصد",
+            "name": "قلهٔ مقصد",
+            "short_category": "کوه",
+            "category": "قله و مسیرهای کوهستانی",
+            "category_key": "mountain",
+            "region": "استان",
+            "elevation_m": 3000,
+            "latitude": 35.1,
+            "longitude": 52.1,
+            "image": "/images/home-scene.png",
+            "image_alt": "قلهٔ مقصد",
+            "popular_order": 0,
+            "climate": "alpine",
+            "is_popular": False,
+            "is_active": True,
+        },
+        "weather_points": {
+            "shared_reference_summit": {
+                "name": "قلهٔ مقصد",
+                "latitude": 35.1,
+                "longitude": 52.1,
+                "elevation_m": 3000,
+                "kind": "destination",
+                "status": "provisional",
+                "elevation_source": "test",
+            }
+        },
+        "shared_weather_points": ["shared_lake_point"],
+        "routes": {
+            "shared_route": {
+                "slug": "shared-reference-route",
+                "title": "دریاچه تا قله",
+                "subtitle": "مسیر آزمایشی",
+                "trail_label": "مسیر اصلی",
+                "origin": "دریاچهٔ مشترک",
+                "destination_label": "قلهٔ مقصد",
+                "region": "استان",
+                "distance_km": 3.0,
+                "ascent_m": 990,
+                "timing_status": "pending",
+                "points": ["shared_lake_point", "shared_reference_summit"],
+            }
+        },
+    }
+
+    seed_catalog(catalog=catalog)
+
+    imported_route = Route.objects.get(slug="shared-reference-route")
+    assert imported_route.origin_weather_point_id == shared.pk
+    assert imported_route.points.order_by("sort_order").first().weather_point_id == shared.pk
+    assert WeatherPoint.objects.get(pk=shared.pk).destination_id == owner.pk
 
 
 @pytest.mark.django_db
