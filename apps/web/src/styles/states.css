@@ -2948,82 +2948,87 @@ bdi,
   }
 }
 
-/* Shared period-control contract. Keep destination, point, and route pages
- * identical while showing only the period name in the visual buttons. */
-.destination-page .destination-period-row,
-.route-page .route-planner-day-period .route-period-row {
+/* Final alignment for the shared period row. Route and place pages use
+ * different planner shells, but the label and four buttons must occupy the
+ * same compact group when users switch between them. */
+.period-control-row {
   display: flex !important;
-  align-items: center;
-  gap: 8px;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
   min-width: 0;
   direction: rtl;
 }
 
-.destination-page .destination-period-row .planner-label,
-.route-page .route-planner-day-period .route-period-row .planner-label {
+.period-control-row .planner-label {
+  display: flex;
+  align-items: center;
   flex: 0 0 auto;
+  height: 36px;
+  margin: 0 !important;
   white-space: nowrap;
+  line-height: 1.25;
 }
 
-.destination-page .destination-period-row .daypart-toggle,
-.route-page .route-planner-day-period .route-period-row .daypart-toggle {
+.period-control-row .daypart-toggle {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  flex: 0 0 220px;
-  width: 220px;
+  flex: 0 0 220px !important;
+  width: 220px !important;
   min-width: 0;
-  gap: 4px;
+  gap: 4px !important;
   direction: rtl;
 }
 
-.destination-page .destination-period-row .daypart-toggle button,
-.route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+.period-control-row .daypart-toggle button {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
   min-height: 36px;
+  height: 36px;
   padding: 4px 6px;
-  border-radius: 10px;
   white-space: nowrap;
 }
 
-.destination-page .destination-period-row .daypart-toggle button strong,
-.route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-.destination-page .destination-period-row .daypart-toggle button small,
-.route-page .route-planner-day-period .route-period-row .daypart-toggle button small {
-  display: none !important;
+@media (min-width: 721px) {
+  .destination-page .period-control-row,
+  .route-page .period-control-row {
+    justify-self: end !important;
+    width: max-content !important;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 720px) {
-  .destination-page .destination-period-row,
-  .route-page .route-planner-day-period .route-period-row {
-    gap: 5px;
+  .period-control-row {
+    gap: 5px !important;
     width: auto;
     max-width: 100%;
   }
 
-  .destination-page .destination-period-row .daypart-toggle,
-  .route-page .route-planner-day-period .route-period-row .daypart-toggle {
+  .period-control-row .planner-label {
+    height: 32px;
+    font-size: 8px;
+    line-height: 1.25;
+  }
+
+  .period-control-row .daypart-toggle {
     flex: 0 0 176px !important;
     width: 176px !important;
     min-width: 176px !important;
-    gap: 3px;
+    gap: 3px !important;
   }
 
-  .destination-page .destination-period-row .daypart-toggle button,
-  .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+  .period-control-row .daypart-toggle button {
     min-height: 32px;
+    height: 32px;
     padding: 4px 2px;
     border-radius: 8px;
   }
 
-  .destination-page .destination-period-row .daypart-toggle button strong,
-  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+  .period-control-row .daypart-toggle button strong {
     font-size: 9px;
+    line-height: 1.2;
   }
 }

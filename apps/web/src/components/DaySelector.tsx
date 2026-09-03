@@ -24,7 +24,7 @@ export function PeriodControlRow({
   className?: string;
 }) {
   return (
-    <div className={className}>
+    <div className={`period-control-row ${className}`.trim()}>
       <span className="planner-label">{label}</span>
       <PeriodToggle value={period} onChange={onChange} periodStates={periodStates} />
     </div>
