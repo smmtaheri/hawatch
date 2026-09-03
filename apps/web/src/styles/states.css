@@ -2720,6 +2720,17 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
+/* Desktop route planner: keep the period label and its three controls as a
+ * compact group on the physical left edge, matching place pages. Mobile has
+ * its own side-by-side layout and is intentionally excluded. */
+@media (min-width: 721px) {
+  .route-page .route-planner-day-period .route-period-row {
+    justify-self: end;
+    width: max-content;
+    max-width: 100%;
+  }
+}
+
 /* Unified typography contract. Keep the visual language shared by every
  * page while letting the existing responsive layout own spacing and flow. */
 html,
