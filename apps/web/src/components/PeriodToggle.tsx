@@ -29,10 +29,10 @@ export function PeriodToggle({
               .join(" ")}
             type="button"
             aria-pressed={isSelected}
+            aria-label={`${option.label}، ${option.rangeLabel}`}
             onClick={() => onChange(option.id)}
           >
             <strong>{option.label}</strong>
-            <small>{option.rangeLabel}</small>
           </button>
         );
       })}

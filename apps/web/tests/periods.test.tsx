@@ -353,6 +353,7 @@ describe("periods and route planner", () => {
     await screen.findByRole("heading", { name: "دربند تا توچال" });
     expect(PERIOD_OPTIONS).toHaveLength(4);
     expect(screen.getByRole("button", { name: /^شب/ })).toBeInTheDocument();
+    expect(document.querySelectorAll(".daypart-toggle small")).toHaveLength(0);
   });
 
   it("exposes hourly planner ticks for each Iran-time period", () => {

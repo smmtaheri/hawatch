@@ -2947,3 +2947,83 @@ bdi,
     font-size: var(--font-size-label);
   }
 }
+
+/* Shared period-control contract. Keep destination, point, and route pages
+ * identical while showing only the period name in the visual buttons. */
+.destination-page .destination-period-row,
+.route-page .route-planner-day-period .route-period-row {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  direction: rtl;
+}
+
+.destination-page .destination-period-row .planner-label,
+.route-page .route-planner-day-period .route-period-row .planner-label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.destination-page .destination-period-row .daypart-toggle,
+.route-page .route-planner-day-period .route-period-row .daypart-toggle {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  flex: 0 0 220px;
+  width: 220px;
+  min-width: 0;
+  gap: 4px;
+  direction: rtl;
+}
+
+.destination-page .destination-period-row .daypart-toggle button,
+.route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 36px;
+  padding: 4px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.destination-page .destination-period-row .daypart-toggle button strong,
+.route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.destination-page .destination-period-row .daypart-toggle button small,
+.route-page .route-planner-day-period .route-period-row .daypart-toggle button small {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  .destination-page .destination-period-row,
+  .route-page .route-planner-day-period .route-period-row {
+    gap: 5px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle {
+    flex: 0 0 176px !important;
+    width: 176px !important;
+    min-width: 176px !important;
+    gap: 3px;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle button,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+    min-height: 32px;
+    padding: 4px 2px;
+    border-radius: 8px;
+  }
+
+  .destination-page .destination-period-row .daypart-toggle button strong,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+    font-size: 9px;
+  }
+}
