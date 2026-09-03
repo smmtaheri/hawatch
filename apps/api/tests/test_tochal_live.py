@@ -128,6 +128,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     goleband = WeatherPoint.objects.get(slug="goleband")
     assert goleband.name == "گوله‌بند"
     assert WeatherPoint.objects.get(slug="amiri").name == "جان‌پناه امیری"
+    assert WeatherPoint.objects.get(slug="shahrestanak_sheepfold_spring").name == "چشمه و گوسفندسرا شهرستانک"
     assert WeatherPoint.objects.get(slug="station_1").name == "ایستگاه ۱ توچال"
     assert WeatherPoint.objects.get(slug="station_2").name == "ایستگاه ۲ توچال"
     assert WeatherPoint.objects.get(slug="station_5").name == "ایستگاه ۵ توچال"

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v5",
+  "catalog_version": "hawatch-tochal-catalog-v6",
   "destination": {
     "slug": "touchal",
     "tile_name": "توچال",
@@ -209,7 +209,8 @@
       "elevation_source": "Open-Meteo GLO-90 DEM"
     },
     "shahrestanak_sheepfold_spring": {
-      "name": "چشمه و گوسفندسرا",
+      "name": "چشمه و گوسفندسرا شهرستانک",
+      "aliases": ["چشمه و گوسفندسرا", "گوسفندسرا شهرستانک"],
       "latitude": 35.922711,
       "longitude": 51.386806,
       "elevation_m": 2860,

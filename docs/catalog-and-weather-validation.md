@@ -37,7 +37,7 @@
 
 ### Tochal timing v3
 
-Catalog version `hawatch-tochal-catalog-v5` / timing version `tochal-timing-v3`:
+Catalog version `hawatch-tochal-catalog-v6` / timing version `tochal-timing-v3`:
 
 | route | status | method | notes |
 | --- | --- | --- | --- |
