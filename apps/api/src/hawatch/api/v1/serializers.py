@@ -560,12 +560,9 @@ def build_place_forecast(
             },
         ]
 
-    active_overnight = local.hour < 3 and period == "night" and selected_date == today - timedelta(days=1)
     days = []
     for day in day_window(today):
         payload = day_payload(day, today)
-        if active_overnight and day == selected_date:
-            payload = {**payload, "is_past": False}
         days.append(payload)
 
     empty = not records and not hourly
@@ -803,11 +800,34 @@ def _reading_for_period_summary(
     if not period_records:
         return None
     if window_start <= local < window_end:
-        current_bucket = local.replace(minute=0, second=0, microsecond=0)
-        for record in period_records:
-            record_bucket = record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0)
-            if record_bucket == current_bucket:
-                return reading_payload(record, now=local)
+        slots = period_hour_slots(selected_date, period)
+        active_index = max(
+            (index for index, (slot_date, hour) in enumerate(slots) if local >= localize_dt_safe(slot_date, hour)),
+            default=0,
+        )
+        slot_date, slot_hour = slots[active_index]
+        slot_start = localize_dt_safe(slot_date, slot_hour).replace(minute=0, second=0, microsecond=0)
+        if active_index + 1 < len(slots):
+            next_slot_date, next_hour = slots[active_index + 1]
+            slot_end = localize_dt_safe(next_slot_date, next_hour).replace(minute=0, second=0, microsecond=0)
+        else:
+            slot_end = window_end
+        record = next(
+            (
+                item
+                for item in period_records
+                if item.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0) == slot_start
+            ),
+            None,
+        )
+        if record is None:
+            record = min(
+                period_records,
+                key=lambda item: abs((item.forecast_at.astimezone(timezone()) - slot_start).total_seconds()),
+            )
+        payload = reading_payload(record, now=local)
+        payload.update(_display_slot_flags(slot_start, slot_end, local))
+        return payload
         closest = min(
             period_records,
             key=lambda item: abs((item.forecast_at.astimezone(timezone()) - local).total_seconds()),

@@ -31,14 +31,14 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias، debounce حدود ۲۰۰ms، keyboard navigation و retry؛ مسیرها در ایندکس نیستند.
 - Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
-- RTL، Estedad، light/dark، period toggle سه‌گانه و چهار کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
+- RTL، Estedad، light/dark، period toggle چهارگانه و سه کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
 - Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است، ولی CTA ارسال OTP تا آماده‌شدن backend غیرفعال می‌ماند.
 
 ### Backend و داده
 
 - Django REST با endpointهای health، destinations، destination forecast، route forecast، point forecast و search suggestions.
 - PostgreSQL/PostGIS و migrationهای موجود؛ seed دمو idempotent و catalog جدا از forecast.
-- زمان و default selection با `Asia/Tehran`؛ بازه‌ها صبح ۰۳/۰۵/۰۷/۰۹، بعدازظهر ۱۱/۱۳/۱۵/۱۷ و شب ۱۹/۲۱/۲۳/۰۱.
+- زمان و default selection با `Asia/Tehran`؛ بازه‌ها نیمه‌شب ۰۰/۰۲/۰۴، صبح ۰۶/۰۸/۱۰، ظهر ۱۲/۱۴/۱۶ و شب ۱۸/۲۰/۲۲.
 - loading/empty/error/stale/partial در قرارداد UI/API تفکیک شده‌اند؛ stale دادهٔ قبلی و زمان update را نگه می‌دارد و error retry دارد.
 
 ### Runtime و مسیر توسعه

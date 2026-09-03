@@ -32,7 +32,7 @@
 ۲. (اختیاری) CTA «بازگشت به مسیر …» فقط در slot اکشن hero (نه جایگزین sidebar)  
 ۳. hero تصویر + overlay + breadcrumb + عنوان + status/alert  
 ۴. در موبایل، دو مسیر برتر + دکمهٔ انتخاب همه در bottom sheet؛ در desktop مسیرهای مرتبط در sidebar
-۵. day selector («انتخاب روز») + period toggle سه‌گزینه‌ای
+۵. day selector («انتخاب روز») + period toggle چهارگزینه‌ای
 ۶. hourly forecast (کارت‌ها + legend؛ بدون نمایش `period.headline`؛ کارت جاری در موبایل خودکار در viewport قرار می‌گیرد)
 ۷. جزئیات تخصصی (metrics) — همیشه همان `technical-card`؛ اگر متریک نبود EmptyState پایدار
 ۸. sidebar مسیرهای مرتبط + decision card

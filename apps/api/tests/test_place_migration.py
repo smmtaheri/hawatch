@@ -514,15 +514,15 @@ def test_route_planner_period_exposes_step_and_hourly_slots(api_client, seeded):
     ).json()
     period = body["period"]
     assert period["planner_step_minutes"] == 60
-    assert period["planner_start_minutes"] == 180
-    assert period["planner_last_start_minutes"] == 600
-    assert period["planner_slots"] == [180, 240, 300, 360, 420, 480, 540, 600]
-    assert len(period["planner_ticks"]) == 8
+    assert period["planner_start_minutes"] == 360
+    assert period["planner_last_start_minutes"] == 660
+    assert period["planner_slots"] == [360, 420, 480, 540, 600, 660]
+    assert len(period["planner_ticks"]) == 6
     night = api_client.get(
         "/api/v1/routes/touchal-darband/forecast/",
         {"date": "2026-08-28", "period": "night", "start_time": "20:00"},
     ).json()["period"]
-    assert night["planner_end_minutes"] == 1620
-    assert night["planner_last_start_minutes"] == 1560
-    assert night["planner_slots"] == [1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560]
-    assert len(night["planner_ticks"]) == 8
+    assert night["planner_end_minutes"] == 1440
+    assert night["planner_last_start_minutes"] == 1380
+    assert night["planner_slots"] == [1080, 1140, 1200, 1260, 1320, 1380]
+    assert len(night["planner_ticks"]) == 6

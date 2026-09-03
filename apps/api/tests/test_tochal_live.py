@@ -164,7 +164,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
 
     parking = WeatherPoint.objects.get(slug="velenjak_parking")
     assert parking.status == WeatherPoint.Status.PROVISIONAL
-    assert parking.elevation_m is None
+    assert parking.elevation_m == 1852
     assert WeatherPoint.objects.filter(slug="velenjak").exists()
     assert list(Route.objects.get(slug="touchal-welanjak").points.order_by("sort_order").values_list("slug", flat=True))[0] == (
         "velenjak_parking"
@@ -435,8 +435,8 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     assert "rain_mm" in body["hourly"][0]
     assert "apparent_temperature_label" in body["hourly"][0]
     assert body["hourly"][0]["freezing_level_m"] == 4200
-    assert body["hourly"][0]["temperature_c"] == -2
-    assert body["hourly"][0]["apparent_temperature_c"] == -3
+    assert body["hourly"][0]["temperature_c"] == -4
+    assert body["hourly"][0]["apparent_temperature_c"] == -5
     assert body["metrics"][0]["label"] == "دمای حسی"
     assert {item["label"] for item in body["metrics"]} >= {
         "دمای مطلق",

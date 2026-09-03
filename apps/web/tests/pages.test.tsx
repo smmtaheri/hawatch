@@ -61,7 +61,7 @@ const destinationForecast = {
     { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
     { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
   ],
-  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح · هر دو ساعت", hours: [3, 5, 7, 9] },
+  period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", headline: "تغییرات صبح · هر دو ساعت", hours: [6, 8, 10] },
   current: null,
   hourly: [
     { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
@@ -93,7 +93,7 @@ const destinationForecast = {
       { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
       { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
     ],
-    period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", headline: "تغییرات صبح · هر دو ساعت", hours: [3, 5, 7, 9] },
+    period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", headline: "تغییرات صبح · هر دو ساعت", hours: [6, 8, 10] },
     current: null,
     hourly: [
       { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
@@ -120,7 +120,7 @@ const routeForecast = {
     ],
   },
   days: destinationForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۳ تا ۱۱", hours: [3, 5, 7, 9] },
+  period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", hours: [6, 8, 10] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
   speed: "متوسط",

@@ -66,9 +66,11 @@ def seeded(db, monkeypatch):
 
 
 @pytest.mark.django_db
-def test_parse_period_accepts_three_periods():
+def test_parse_period_accepts_four_periods_and_legacy_noon_alias():
+    assert parse_period("midnight") == "midnight"
     assert parse_period("morning") == "morning"
-    assert parse_period("afternoon") == "afternoon"
+    assert parse_period("noon") == "noon"
+    assert parse_period("afternoon") == "noon"
     assert parse_period("night") == "night"
     assert parse_period(None) == "morning"
 
@@ -77,13 +79,14 @@ def test_parse_period_accepts_three_periods():
 def test_default_selection_boundaries():
     tz = timezone()
     cases = [
-        (tehran_datetime(hour=0, minute=30), (REFERENCE_DATE - timedelta(days=1)).isoformat(), "night"),
-        (tehran_datetime(hour=2, minute=59), (REFERENCE_DATE - timedelta(days=1)).isoformat(), "night"),
-        (tehran_datetime(hour=3), REFERENCE_DATE.isoformat(), "morning"),
-        (tehran_datetime(hour=10, minute=59), REFERENCE_DATE.isoformat(), "morning"),
-        (tehran_datetime(hour=11), REFERENCE_DATE.isoformat(), "afternoon"),
-        (tehran_datetime(hour=18, minute=59), REFERENCE_DATE.isoformat(), "afternoon"),
-        (tehran_datetime(hour=19), REFERENCE_DATE.isoformat(), "night"),
+        (tehran_datetime(hour=0, minute=0), REFERENCE_DATE.isoformat(), "midnight"),
+        (tehran_datetime(hour=5, minute=59), REFERENCE_DATE.isoformat(), "midnight"),
+        (tehran_datetime(hour=6), REFERENCE_DATE.isoformat(), "morning"),
+        (tehran_datetime(hour=11, minute=59), REFERENCE_DATE.isoformat(), "morning"),
+        (tehran_datetime(hour=12), REFERENCE_DATE.isoformat(), "noon"),
+        (tehran_datetime(hour=17, minute=59), REFERENCE_DATE.isoformat(), "noon"),
+        (tehran_datetime(hour=18), REFERENCE_DATE.isoformat(), "night"),
+        (tehran_datetime(hour=23, minute=59), REFERENCE_DATE.isoformat(), "night"),
     ]
     for at, expected_date, expected_period in cases:
         selected_date, period = default_forecast_selection(at)
@@ -94,48 +97,57 @@ def test_default_selection_boundaries():
 @pytest.mark.django_db
 def test_period_windows_do_not_overlap():
     day = REFERENCE_DATE
-    windows = {name: period_window(day, name) for name in ("morning", "afternoon", "night")}
+    windows = {name: period_window(day, name) for name in ("midnight", "morning", "noon", "night")}
+    midnight_end = windows["midnight"][1]
+    morning_start = windows["morning"][0]
     morning_end = windows["morning"][1]
-    afternoon_start = windows["afternoon"][0]
-    afternoon_end = windows["afternoon"][1]
+    noon_start = windows["noon"][0]
+    noon_end = windows["noon"][1]
     night_start = windows["night"][0]
-    assert morning_end == afternoon_start
-    assert afternoon_end == night_start
-    assert windows["morning"] == (
-        tehran_datetime(hour=3),
-        tehran_datetime(hour=11),
+    assert midnight_end == morning_start
+    assert morning_end == noon_start
+    assert noon_end == night_start
+    assert windows["midnight"] == (
+        tehran_datetime(hour=0),
+        tehran_datetime(hour=6),
     )
-    assert windows["afternoon"] == (
-        tehran_datetime(hour=11),
-        tehran_datetime(hour=19),
+    assert windows["morning"] == (
+        tehran_datetime(hour=6),
+        tehran_datetime(hour=12),
+    )
+    assert windows["noon"] == (
+        tehran_datetime(hour=12),
+        tehran_datetime(hour=18),
     )
     assert windows["night"] == (
-        tehran_datetime(hour=19),
-        tehran_datetime(day_offset=1, hour=3),
+        tehran_datetime(hour=18),
+        tehran_datetime(day_offset=1, hour=0),
     )
 
 
 @pytest.mark.django_db
-def test_destination_forecast_three_periods_and_night_crossing(api_client, seeded):
+def test_destination_forecast_four_periods_start_at_midnight(api_client, seeded):
     day = REFERENCE_DATE
+    midnight = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "midnight"}).json()
     morning = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "morning"}).json()
-    afternoon = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "afternoon"}).json()
+    noon = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "noon"}).json()
     night = api_client.get("/api/v1/destinations/touchal/forecast/", {"date": day.isoformat(), "period": "night"}).json()
 
-    assert [item["hour"] for item in morning["hourly"]] == [3, 5, 7, 9]
-    assert [item["hour"] for item in afternoon["hourly"]] == [11, 13, 15, 17]
-    assert [item["hour"] for item in night["hourly"]] == [19, 21, 23, 1]
+    assert [item["hour"] for item in midnight["hourly"]] == [0, 2, 4]
+    assert [item["hour"] for item in morning["hourly"]] == [6, 8, 10]
+    assert [item["hour"] for item in noon["hourly"]] == [12, 14, 16]
+    assert [item["hour"] for item in night["hourly"]] == [18, 20, 22]
 
+    midnight_times = {item["forecast_at"] for item in midnight["hourly"]}
     night_times = {item["forecast_at"] for item in night["hourly"]}
     morning_times = {item["forecast_at"] for item in morning["hourly"]}
-    afternoon_times = {item["forecast_at"] for item in afternoon["hourly"]}
+    noon_times = {item["forecast_at"] for item in noon["hourly"]}
+    assert midnight_times.isdisjoint(morning_times)
     assert night_times.isdisjoint(morning_times)
-    assert morning_times.isdisjoint(afternoon_times)
-    assert afternoon_times.isdisjoint(night_times)
+    assert morning_times.isdisjoint(noon_times)
+    assert noon_times.isdisjoint(night_times)
 
-    overnight_one = next(item for item in night["hourly"] if item["hour"] == 1)
-    assert overnight_one["forecast_at"].startswith(f"{(REFERENCE_DATE + timedelta(days=1)).isoformat()}T01")
-    assert overnight_one["forecast_at"].endswith("+03:30")
+    assert all(item["forecast_at"].startswith(REFERENCE_DATE.isoformat()) for item in midnight["hourly"] + night["hourly"])
     assert morning["meta"]["forecast_validity"]["valid_from"].endswith("+03:30")
 
 
@@ -144,11 +156,11 @@ def test_explicit_query_params_override_defaults(api_client, seeded):
     outside_window = REFERENCE_DATE - timedelta(days=8)
     response = api_client.get(
         "/api/v1/destinations/touchal/forecast/",
-        {"date": outside_window.isoformat(), "period": "afternoon"},
+        {"date": outside_window.isoformat(), "period": "noon"},
     )
     body = response.json()
     assert body["meta"]["selected_date"] == outside_window.isoformat()
-    assert body["meta"]["selected_period"] == "afternoon"
+    assert body["meta"]["selected_period"] == "noon"
 
 
 @pytest.mark.django_db
@@ -161,28 +173,30 @@ def test_defaults_applied_without_query_params(mock_default, api_client, seeded)
 
 
 @pytest.mark.django_db
-def test_night_start_minutes_cross_midnight():
-    assert parse_start_minutes("00:30", "night", None) == 1440
-    assert parse_start_minutes("01:30", "night", None) == 1500
-    assert parse_start_minutes("02:30", "night", None) == 1560
-    assert parse_start_minutes("03:00", "night", None) == 1560
+def test_period_start_minutes_stay_inside_same_day_windows():
+    assert parse_start_minutes("00:30", "midnight", None) == 0
+    assert parse_start_minutes("05:30", "midnight", None) == 300
+    assert parse_start_minutes("06:00", "morning", None) == 360
+    assert parse_start_minutes("11:30", "morning", None) == 660
+    assert parse_start_minutes("17:30", "noon", None) == 1020
+    assert parse_start_minutes("23:30", "night", None) == 1380
 
 
 @pytest.mark.django_db
-def test_destination_overnight_current_at_0130(api_client, seeded):
+def test_destination_midnight_current_at_0130(api_client, seeded):
     tz = timezone()
     at = tehran_datetime(hour=1, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
-    assert body["meta"]["selected_date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat()
-    assert body["meta"]["selected_period"] == "night"
+    assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
+    assert body["meta"]["selected_period"] == "midnight"
     assert body["current"] is not None
     assert body["current"]["is_current"] is True
     assert "الان" in body["hero"]["status"]
-    yesterday = next(day for day in body["days"] if day["date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat())
-    assert yesterday["is_past"] is False
+    today = next(day for day in body["days"] if day["date"] == REFERENCE_DATE.isoformat())
+    assert today["is_today"] is True
 
 
 @pytest.mark.django_db
@@ -195,10 +209,11 @@ def test_destination_default_uses_current_tehran_hour(api_client, seeded):
         body = api_client.get("/api/v1/destinations/touchal/forecast/").json()
 
     assert body["meta"]["selected_period"] == "morning"
-    assert [item["hour"] for item in body["hourly"]] == [3, 5, 7, 9]
-    assert body["current"]["hour"] == 7
+    assert [item["hour"] for item in body["hourly"]] == [6, 8, 10]
+    assert body["current"]["hour"] == 6
     assert body["current"]["is_current"] is True
-    assert all(item["is_past"] for item in body["hourly"] if item["hour"] < 7)
+    assert all(item["is_past"] for item in body["hourly"] if item["hour"] < 6)
+    assert body["current"]["hour"] == 6
 
 
 @pytest.mark.django_db
@@ -214,8 +229,8 @@ def test_hourly_cards_mark_the_current_display_window(api_client, seeded):
         ).json()
 
     by_hour = {item["hour"]: item for item in body["hourly"]}
-    assert by_hour[9]["is_current"] is True
-    assert all(by_hour[hour]["is_past"] is True for hour in (3, 5, 7))
+    assert by_hour[10]["is_current"] is True
+    assert all(by_hour[hour]["is_past"] is True for hour in (6, 8))
     assert sum(item["is_current"] for item in body["hourly"]) == 1
 
 
@@ -237,12 +252,13 @@ def test_forecast_clock_stays_on_official_iran_time():
 def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
     tz = timezone()
     cases = [
-        (tehran_datetime(hour=10, minute=29), "morning", 600),
-        (tehran_datetime(hour=10, minute=45), "morning", 600),
-        (tehran_datetime(hour=18, minute=45), "afternoon", 1080),
-        (tehran_datetime(hour=2, minute=45), "night", 1560),
-        (tehran_datetime(hour=11), "afternoon", 660),
-        (tehran_datetime(hour=19), "night", 1140),
+        (tehran_datetime(hour=5, minute=29), "midnight", 300),
+        (tehran_datetime(hour=5, minute=45), "midnight", 300),
+        (tehran_datetime(hour=11, minute=45), "morning", 660),
+        (tehran_datetime(hour=17, minute=45), "noon", 1020),
+        (tehran_datetime(hour=6), "morning", 360),
+        (tehran_datetime(hour=12), "noon", 720),
+        (tehran_datetime(hour=18), "night", 1080),
     ]
     for at, period, expected in cases:
         assert current_period_start_minutes(period, at) == expected
@@ -250,9 +266,10 @@ def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
 
 @pytest.mark.django_db
 def test_parse_start_minutes_respects_exclusive_period_end():
-    assert parse_start_minutes("11:00", "morning", None) == 600
-    assert parse_start_minutes("19:00", "afternoon", None) == 1080
-    assert parse_start_minutes("03:00", "night", None) == 1560
+    assert parse_start_minutes("06:00", "midnight", None) == 300
+    assert parse_start_minutes("12:00", "morning", None) == 660
+    assert parse_start_minutes("18:00", "noon", None) == 1020
+    assert parse_start_minutes("00:00", "night", None) == 1080
 
 
 @pytest.mark.django_db
@@ -359,7 +376,7 @@ def test_destination_night_period_uses_in_window_reading_at_1030(api_client, see
             "/api/v1/destinations/touchal/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
-    allowed_hours = {19, 21, 23, 1}
+    allowed_hours = {18, 20, 22}
     assert body["current"] is not None
     assert body["current"]["hour"] in allowed_hours
     assert body["current"]["is_current"] is False
@@ -378,7 +395,7 @@ def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
             "/api/v1/points/shirpala/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
-    allowed_hours = {19, 21, 23, 1}
+    allowed_hours = {18, 20, 22}
     assert body["current"] is not None
     assert body["weather"]["hour"] in allowed_hours
     assert body["weather"]["is_current"] is False
@@ -386,17 +403,17 @@ def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
 
 
 @pytest.mark.django_db
-def test_point_overnight_current_at_0130(api_client, seeded):
+def test_point_midnight_current_at_0130(api_client, seeded):
     tz = timezone()
     at = tehran_datetime(hour=1, minute=30)
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get("/api/v1/points/shirpala/forecast/").json()
-    assert body["meta"]["selected_date"] == (REFERENCE_DATE - timedelta(days=1)).isoformat()
-    assert body["meta"]["selected_period"] == "night"
+    assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
+    assert body["meta"]["selected_period"] == "midnight"
     assert body["current"]["is_current"] is True
-    assert body["current"]["hour"] == 1
+    assert body["current"]["hour"] == 0
     assert "الان" in body["hero"]["status"]
 
 
@@ -407,15 +424,15 @@ def test_route_period_switch_uses_period_default_not_route_default(api_client, s
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
-        afternoon = api_client.get(
+        noon = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
-            {"date": REFERENCE_DATE.isoformat(), "period": "afternoon"},
+            {"date": REFERENCE_DATE.isoformat(), "period": "noon"},
         ).json()
         night = api_client.get(
             "/api/v1/routes/touchal-darband/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
-    assert afternoon["start_minutes"] == 720
+    assert noon["start_minutes"] == 840
     assert night["start_minutes"] == 1200
 
 
@@ -433,10 +450,10 @@ def test_normalize_start_minutes_floors_persian_digits():
     assert normalize_start_minutes("۱۰:۱۵", "morning") == 600
     assert resolve_planner_start_minutes(
         REFERENCE_DATE,
-        "afternoon",
+        "noon",
         local=tehran_datetime(hour=10, minute=30),
-        raw_start="12:15",
-    ) == 720
+        raw_start="14:15",
+    ) == 840
 
 
 @pytest.mark.django_db
@@ -454,7 +471,7 @@ def test_parse_start_time_value_rejects_malformed():
 @pytest.mark.django_db
 def test_legacy_numeric_start_time_minutes():
     assert normalize_start_minutes("360", "morning") == 360
-    assert normalize_start_minutes("90", "night") == 1500
+    assert normalize_start_minutes("90", "midnight") == 60
 
 
 @pytest.mark.django_db

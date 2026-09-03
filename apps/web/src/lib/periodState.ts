@@ -10,21 +10,13 @@ import { addTehranCalendarDays, compareTehranInstants, tehranClockMinutes, tehra
 export type PeriodPhase = "past" | "current" | "future";
 
 function periodBoundsIso(selectedDate: string, period: PeriodId): { start: string; end: string } {
-  if (period === "morning") {
-    return {
-      start: tehranLocalIso(selectedDate, 3),
-      end: tehranLocalIso(selectedDate, 11),
-    };
-  }
-  if (period === "afternoon") {
-    return {
-      start: tehranLocalIso(selectedDate, 11),
-      end: tehranLocalIso(selectedDate, 19),
-    };
-  }
+  const range = PERIOD_RANGES[period];
+  const startHour = Math.floor(range.min / 60);
+  const endDay = range.max >= 1440 ? addTehranCalendarDays(selectedDate, 1) : selectedDate;
+  const endHour = (range.max % 1440) / 60;
   return {
-    start: tehranLocalIso(selectedDate, 19),
-    end: tehranLocalIso(addTehranCalendarDays(selectedDate, 1), 3),
+    start: tehranLocalIso(selectedDate, startHour),
+    end: tehranLocalIso(endDay, endHour),
   };
 }
 
@@ -42,19 +34,16 @@ export function classifyAllPeriods(
   currentLocalTime: string,
 ): Record<PeriodId, PeriodPhase> {
   return {
+    midnight: classifyPeriod("midnight", selectedDate, currentLocalTime),
     morning: classifyPeriod("morning", selectedDate, currentLocalTime),
-    afternoon: classifyPeriod("afternoon", selectedDate, currentLocalTime),
+    noon: classifyPeriod("noon", selectedDate, currentLocalTime),
     night: classifyPeriod("night", selectedDate, currentLocalTime),
   };
 }
 
-/** Extended minutes within the period window (night wraps past midnight). Uses Asia/Tehran wall clock. */
+/** Tehran wall-clock minutes used by the route gauge. Each period is a same-day window. */
 export function tehranMinutesInPeriod(currentLocalTime: string, period: PeriodId): number {
-  let minutes = tehranClockMinutes(currentLocalTime);
-  if (period === "night" && minutes <= 180) {
-    minutes += 1440;
-  }
-  return minutes;
+  return tehranClockMinutes(currentLocalTime);
 }
 
 export function gaugeCurrentMinutes(

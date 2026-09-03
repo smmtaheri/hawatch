@@ -39,7 +39,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 - day: تمام زمان‌ها، weather points و decision summary را برای روز جدید refresh می‌کند.
 - start-time gauge: در ورود بدون start_time، برای تاریخ/بازهٔ جاری روی زمان فعلی `Asia/Tehran` قرار می‌گیرد؛ برای تاریخ‌های دیگر از default همان بازه استفاده می‌شود. قسمت قبل از زمان فعلی کم‌رنگ و قسمت آینده عادی است. بعد از تغییر، در صورت آماده‌بودن timing، زمان رسیدن نقاط recompute می‌شود.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
-- morning/afternoon/night: یک کنترل مشترک سه‌گزینه‌ای برای route points و hourly forecast در mobile.
+- midnight/morning/noon/night: یک کنترل مشترک چهارگزینه‌ای برای route points و hourly forecast در mobile.
 - point: جزئیات canonical در `/points/{weatherPointSlug}` باز می‌شود؛ اما WeatherPoint مقصدی مثل `tochal_summit` باید به `/destination/touchal` برود. `location.state.fromRoute` فقط برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: لینک بازسازی‌پذیر فعلی را از queryهای planner آماده می‌کند؛ share server-side در این milestone ساخته نشده است.
@@ -79,7 +79,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 
 ## ۹. تفاوت mobile و web
 
-- mobile: hero مسیر هم‌اندازهٔ hero فشردهٔ مقصد و بدون breadcrumb تکراری است؛ عنوان و status در دو سوی hero و در مرکز ارتفاع آن می‌مانند. «مسیرهای دیگر» فقط trigger فشردهٔ پایین hero است و siblingها را در bottom sheet باز می‌کند؛ grid دسکتاپ siblingها در mobile دیده نمی‌شود. اولین کارت بعد از hero، label انتخاب روز و کنترل مشترک سه‌گزینه‌ای صبح/بعدازظهر/شب را در یک ردیف و tabهای روز را در ردیف بعد دارد. کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف.
+- mobile: hero مسیر هم‌اندازهٔ hero فشردهٔ مقصد و بدون breadcrumb تکراری است؛ عنوان و status در دو سوی hero و در مرکز ارتفاع آن می‌مانند. «مسیرهای دیگر» فقط trigger فشردهٔ پایین hero است و siblingها را در bottom sheet باز می‌کند؛ grid دسکتاپ siblingها در mobile دیده نمی‌شود. اولین کارت بعد از hero، label انتخاب روز و کنترل مشترک چهارگزینه‌ای نیمه‌شب/صبح/ظهر/شب را در یک ردیف و tabهای روز را در ردیف بعد دارد. کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف.
 - نقاط مسیر و کارت خلاصهٔ هوای همان نقاط روی یک محور و scroll-owner مشترک
   بمانند؛ در web حداکثر شش نقطه هم‌زمان دیده شود و بقیه افقی scroll شوند.
   در mobile نیز همین owner مشترک با اندازهٔ فشرده‌تر حفظ شود، نه دو اسکرول

@@ -27,10 +27,11 @@ FORECAST_DAY_COUNT = 7  # yesterday + today + 5 following days
 HOURLY_STEP = 2
 # Planner gauge / start_time granularity (minutes). Change here for 30- or 5-minute steps later.
 PLANNER_TIME_STEP_MINUTES = 60
-MORNING_HOURS = (3, 5, 7, 9)
-AFTERNOON_HOURS = (11, 13, 15, 17)
-NIGHT_HOURS = (19, 21, 23, 1)
-ALL_HOURS = MORNING_HOURS + AFTERNOON_HOURS + NIGHT_HOURS
+MIDNIGHT_HOURS = (0, 2, 4)
+MORNING_HOURS = (6, 8, 10)
+NOON_HOURS = (12, 14, 16)
+NIGHT_HOURS = (18, 20, 22)
+ALL_HOURS = MIDNIGHT_HOURS + MORNING_HOURS + NOON_HOURS + NIGHT_HOURS
 
 # Relative pace time factors (not literal km/h). Larger ⇒ more minutes on trail.
 SPEED_TIME_FACTORS = {"آرام": 1.25, "متوسط": 1.00, "سریع": 0.80}
@@ -47,36 +48,51 @@ SPEED_ALIASES = {
 ARRIVAL_FORECAST_TOLERANCE_MINUTES = 90
 
 
-PERIOD_IDS = ("morning", "afternoon", "night")
+PERIOD_IDS = ("midnight", "morning", "noon", "night")
+
+# ``afternoon`` was the public identifier used by the original three-period
+# contract. Keep accepting it at the API boundary while returning the new
+# canonical ``noon`` identifier everywhere else.
+LEGACY_PERIOD_ALIASES = {"afternoon": "noon"}
 
 PERIODS = {
+    "midnight": {
+        "id": "midnight",
+        "label": "نیمه‌شب",
+        "range_label": "۰۰ تا ۰۶",
+        "start_minutes": 0,
+        "end_minutes": 360,
+        "default_start": 120,
+        "hours": MIDNIGHT_HOURS,
+        "headline": "تغییرات نیمه‌شب · هر دو ساعت",
+    },
     "morning": {
         "id": "morning",
         "label": "صبح",
-        "range_label": "۰۳ تا ۱۱",
-        "start_minutes": 180,
-        "end_minutes": 660,
-        "default_start": 360,
+        "range_label": "۰۶ تا ۱۲",
+        "start_minutes": 360,
+        "end_minutes": 720,
+        "default_start": 480,
         "hours": MORNING_HOURS,
         "headline": "تغییرات صبح · هر دو ساعت",
     },
-    "afternoon": {
-        "id": "afternoon",
-        "label": "بعدازظهر",
-        "range_label": "۱۱ تا ۱۹",
-        "start_minutes": 660,
-        "end_minutes": 1140,
-        "default_start": 720,
-        "hours": AFTERNOON_HOURS,
-        "headline": "تغییرات بعدازظهر · هر دو ساعت",
+    "noon": {
+        "id": "noon",
+        "label": "ظهر",
+        "range_label": "۱۲ تا ۱۸",
+        "start_minutes": 720,
+        "end_minutes": 1080,
+        "default_start": 840,
+        "hours": NOON_HOURS,
+        "headline": "تغییرات ظهر · هر دو ساعت",
     },
     "night": {
         "id": "night",
         "label": "شب",
-        "range_label": "۱۹ تا ۰۳",
-        "start_minutes": 1140,
-        # Exclusive end at 03:00 (1620) so last selectable planner start is 02:00 (1560).
-        "end_minutes": 1620,
+        "range_label": "۱۸ تا ۲۴",
+        "start_minutes": 1080,
+        # Exclusive end at the following midnight so last selectable planner start is 23:00.
+        "end_minutes": 1440,
         "default_start": 1200,
         "hours": NIGHT_HOURS,
         "headline": "تغییرات شب · هر دو ساعت",
@@ -195,11 +211,15 @@ def localize_dt(value: date, hour: int, minute: int = 0) -> datetime:
 
 def period_window(selected_date: date, period: str) -> tuple[datetime, datetime]:
     """Timezone-aware [start, end) window for the selected calendar date and period."""
-    if period == "morning":
-        return localize_dt(selected_date, 3), localize_dt(selected_date, 11)
-    if period == "afternoon":
-        return localize_dt(selected_date, 11), localize_dt(selected_date, 19)
-    return localize_dt(selected_date, 19), localize_dt(selected_date + timedelta(days=1), 3)
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
+    spec = PERIODS[period]
+
+    def at_period_minute(minutes: int) -> datetime:
+        day_offset, minute_of_day = divmod(minutes, 1440)
+        hour, minute = divmod(minute_of_day, 60)
+        return localize_dt(selected_date + timedelta(days=day_offset), hour, minute)
+
+    return at_period_minute(spec["start_minutes"]), at_period_minute(spec["end_minutes"])
 
 
 def default_forecast_selection(at: datetime | None = None) -> tuple[date, str]:
@@ -207,12 +227,12 @@ def default_forecast_selection(at: datetime | None = None) -> tuple[date, str]:
     local = now_tehran(at)
     hour = local.hour
     today = local.date()
-    if hour < 3:
-        return today - timedelta(days=1), "night"
-    if hour < 11:
+    if hour < 6:
+        return today, "midnight"
+    if hour < 12:
         return today, "morning"
-    if hour < 19:
-        return today, "afternoon"
+    if hour < 18:
+        return today, "noon"
     return today, "night"
 
 
@@ -223,6 +243,7 @@ def parse_date(raw: str | None, today: date) -> date:
 
 
 def parse_period(raw: str | None) -> str:
+    raw = LEGACY_PERIOD_ALIASES.get(raw, raw)
     if raw in PERIOD_IDS:
         return raw
     return "morning"
@@ -278,6 +299,7 @@ def parse_start_time_value(raw: str) -> int:
 
 def period_last_start_minute(period: str) -> int:
     """Last valid planner start slot; period window ends are exclusive."""
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     step = PLANNER_TIME_STEP_MINUTES
     return spec["end_minutes"] - step
@@ -285,6 +307,7 @@ def period_last_start_minute(period: str) -> int:
 
 def planner_start_slots(period: str) -> list[int]:
     """Selectable start minutes for a period at PLANNER_TIME_STEP_MINUTES granularity."""
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     step = PLANNER_TIME_STEP_MINUTES
     last = period_last_start_minute(period)
@@ -297,6 +320,7 @@ def format_planner_tick(minutes: int) -> str:
 
 def planner_period_payload(period: str) -> dict:
     """Period display + planner bounds/step for route gauge (single source of truth)."""
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     slots = planner_start_slots(period)
     return {
@@ -313,11 +337,10 @@ def planner_period_payload(period: str) -> dict:
 
 def normalize_start_minutes(raw: str, period: str) -> int:
     """Floor to PLANNER_TIME_STEP_MINUTES and clamp inside the selected period window."""
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     step = PLANNER_TIME_STEP_MINUTES
     value = parse_start_time_value(raw)
-    if period == "night" and value <= 180:
-        value += 1440
     value = (value // step) * step
     last_start = period_last_start_minute(period)
     return max(spec["start_minutes"], min(last_start, value))
@@ -332,6 +355,7 @@ def resolve_planner_start_minutes(
 ) -> int:
     """Canonical route start: explicit clock, live floored time, or period default."""
     local = now_tehran(local)
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     if raw_start is not None and raw_start != "":
         return normalize_start_minutes(raw_start, period)
     default_date, default_period = default_forecast_selection(local)
@@ -341,6 +365,7 @@ def resolve_planner_start_minutes(
 
 
 def parse_start_minutes(raw: str | None, period: str, default: int | None) -> int:
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     fallback = spec["default_start"] if default is None else default
     if raw is None or raw == "":
@@ -352,11 +377,10 @@ def parse_start_minutes(raw: str | None, period: str, default: int | None) -> in
 def current_period_start_minutes(period: str, at: datetime | None = None) -> int:
     """Floor current Tehran local time to PLANNER_TIME_STEP_MINUTES; never past last start."""
     local = now_tehran(at)
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     spec = PERIODS[period]
     step = PLANNER_TIME_STEP_MINUTES
     now_minutes = local.hour * 60 + local.minute
-    if period == "night" and now_minutes <= 180:
-        now_minutes += 1440
     floored = (now_minutes // step) * step
     last_start = period_last_start_minute(period)
     return max(spec["start_minutes"], min(floored, last_start))
@@ -400,18 +424,14 @@ def hour_flags(value: date, hour: int, today: date, current_hour: int) -> dict:
 
 def period_hour_slots(selected_date: date, period: str) -> list[tuple[date, int]]:
     """Calendar date + hour for each display card in the period."""
+    period = LEGACY_PERIOD_ALIASES.get(period, period)
     slots: list[tuple[date, int]] = []
     for hour in PERIODS[period]["hours"]:
-        if period == "night" and hour < 3:
-            slots.append((selected_date + timedelta(days=1), hour))
-        else:
-            slots.append((selected_date, hour))
+        slots.append((selected_date, hour))
     return slots
 
 
 def forecast_at_for_slot(selected_date: date, period: str, hour: int) -> datetime:
-    if period == "night" and hour < 3:
-        return localize_dt(selected_date + timedelta(days=1), hour)
     return localize_dt(selected_date, hour)
 
 

@@ -86,15 +86,15 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
     assert len(body["days"]) == 7
     assert body["days"][0]["is_yesterday"] is True
     assert body["days"][1]["is_today"] is True
-    assert [item["hour"] for item in body["hourly"]] == [3, 5, 7, 9]
+    assert [item["hour"] for item in body["hourly"]] == [6, 8, 10]
     assert "is_past" in body["hourly"][0]
     assert "is_current" in body["hourly"][0]
     assert "is_future" in body["hourly"][0]
-    afternoon = api_client.get(
+    noon = api_client.get(
         "/api/v1/destinations/touchal/forecast/",
         {"date": today.isoformat(), "period": "afternoon"},
     ).json()
-    assert [item["hour"] for item in afternoon["hourly"]] == [11, 13, 15, 17]
+    assert [item["hour"] for item in noon["hourly"]] == [12, 14, 16]
 
 
 @pytest.mark.django_db
@@ -248,7 +248,7 @@ def test_point_forecast_pas_ghaleh(api_client, seeded):
     assert body["point"]["elevation_m"] == 1936
     assert "arrival_minutes" not in body["point"]
     assert "route_title" not in body["point"]
-    assert len(body["hourly"]) == 4
+    assert len(body["hourly"]) == 3
     assert any(item["slug"] == "touchal-darband" for item in body["related_routes"])
 
 

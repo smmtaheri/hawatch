@@ -81,7 +81,7 @@ const destinationForecast = {
   hero: { status: "☼　الان در توچال　۵°　·　صاف", alert: "آرام" },
   forecast: {
     days: destinationDays,
-    period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب · هر دو ساعت", hours: [19, 21, 23, 1] },
+    period: { id: "night", label: "شب", range_label: "۱۸ تا ۲۴", headline: "تغییرات شب · هر دو ساعت", hours: [18, 20, 22] },
     current: destinationCurrent,
     hourly: [] as typeof destinationCurrent[],
     meta: destinationMeta,
@@ -93,7 +93,7 @@ const destinationForecast = {
   updated_label: "امروز",
   empty: false,
   days: destinationDays,
-  period: { id: "night", label: "شب", range_label: "۱۹ تا ۰۳", headline: "تغییرات شب · هر دو ساعت", hours: [19, 21, 23, 1] },
+  period: { id: "night", label: "شب", range_label: "۱۸ تا ۲۴", headline: "تغییرات شب · هر دو ساعت", hours: [18, 20, 22] },
   current: destinationCurrent,
   hourly: [] as typeof destinationCurrent[],
   meta: destinationMeta,
@@ -118,16 +118,16 @@ const routeForecast = {
   period: {
     id: "morning",
     label: "صبح",
-    range_label: "۰۳ تا ۱۱",
+    range_label: "۰۶ تا ۱۲",
     headline: "تغییرات صبح · هر دو ساعت",
-    hours: [3, 5, 7, 9],
+    hours: [6, 8, 10],
     planner_step_minutes: 60,
-    planner_start_minutes: 180,
-    planner_end_minutes: 660,
-    planner_last_start_minutes: 600,
-    planner_default_start_minutes: 360,
-    planner_slots: [180, 240, 300, 360, 420, 480, 540, 600],
-    planner_ticks: ["۰۳:۰۰", "۰۴:۰۰", "۰۵:۰۰", "۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰"],
+    planner_start_minutes: 360,
+    planner_end_minutes: 720,
+    planner_last_start_minutes: 660,
+    planner_default_start_minutes: 480,
+    planner_slots: [360, 420, 480, 540, 600, 660],
+    planner_ticks: ["۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰", "۱۱:۰۰"],
   },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
@@ -340,7 +340,7 @@ describe("periods and route planner", () => {
     vi.unstubAllGlobals();
   });
 
-  it("renders three period buttons", async () => {
+  it("renders four period buttons", async () => {
     render(
       <ThemeProvider>
         <MemoryRouter initialEntries={["/routes/touchal-darband?date=2026-08-26&period=morning"]}>
@@ -351,18 +351,20 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
-    expect(PERIOD_OPTIONS).toHaveLength(3);
-    expect(screen.getByRole("button", { name: /شب/ })).toBeInTheDocument();
+    expect(PERIOD_OPTIONS).toHaveLength(4);
+    expect(screen.getByRole("button", { name: /^شب/ })).toBeInTheDocument();
   });
 
   it("exposes hourly planner ticks for each Iran-time period", () => {
-    expect(PERIOD_OPTIONS.map((option) => option.rangeLabel)).toEqual(["۰۳ تا ۱۱", "۱۱ تا ۱۹", "۱۹ تا ۰۳"]);
-    expect(PERIOD_RANGES.morning).toMatchObject({ min: 180, max: 660 });
-    expect(PERIOD_RANGES.afternoon).toMatchObject({ min: 660, max: 1140 });
-    expect(PERIOD_RANGES.night).toMatchObject({ min: 1140, max: 1620 });
-    expect(periodTicks("morning")).toEqual(["۰۳:۰۰", "۰۴:۰۰", "۰۵:۰۰", "۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰"]);
-    expect(periodTicks("afternoon")).toEqual(["۱۱:۰۰", "۱۲:۰۰", "۱۳:۰۰", "۱۴:۰۰", "۱۵:۰۰", "۱۶:۰۰", "۱۷:۰۰", "۱۸:۰۰"]);
-    expect(periodTicks("night")).toEqual(["۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰", "۰۰:۰۰", "۰۱:۰۰", "۰۲:۰۰"]);
+    expect(PERIOD_OPTIONS.map((option) => option.rangeLabel)).toEqual(["۰۰ تا ۰۶", "۰۶ تا ۱۲", "۱۲ تا ۱۸", "۱۸ تا ۲۴"]);
+    expect(PERIOD_RANGES.midnight).toMatchObject({ min: 0, max: 360 });
+    expect(PERIOD_RANGES.morning).toMatchObject({ min: 360, max: 720 });
+    expect(PERIOD_RANGES.noon).toMatchObject({ min: 720, max: 1080 });
+    expect(PERIOD_RANGES.night).toMatchObject({ min: 1080, max: 1440 });
+    expect(periodTicks("midnight")).toEqual(["۰۰:۰۰", "۰۱:۰۰", "۰۲:۰۰", "۰۳:۰۰", "۰۴:۰۰", "۰۵:۰۰"]);
+    expect(periodTicks("morning")).toEqual(["۰۶:۰۰", "۰۷:۰۰", "۰۸:۰۰", "۰۹:۰۰", "۱۰:۰۰", "۱۱:۰۰"]);
+    expect(periodTicks("noon")).toEqual(["۱۲:۰۰", "۱۳:۰۰", "۱۴:۰۰", "۱۵:۰۰", "۱۶:۰۰", "۱۷:۰۰"]);
+    expect(periodTicks("night")).toEqual(["۱۸:۰۰", "۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰"]);
   });
 
   it("does not send period=morning on no-query initial destination load", async () => {
@@ -394,21 +396,21 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "قلهٔ توچال" });
-    expect(screen.getByRole("button", { name: /شب/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /^شب/ })).toHaveAttribute("aria-pressed", "true");
   });
 
   it("keeps explicit query period on destination load", async () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
-      if (url.includes("period=afternoon")) {
+      if (url.includes("period=noon")) {
         return jsonResponse({
           ...destinationForecast,
-          meta: { ...destinationForecast.meta, selected_period: "afternoon" },
-          period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۱ تا ۱۹", headline: "بعدازظهر", hours: [11, 13, 15, 17] },
+          meta: { ...destinationForecast.meta, selected_period: "noon" },
+          period: { id: "noon", label: "ظهر", range_label: "۱۲ تا ۱۸", headline: "ظهر", hours: [12, 14, 16] },
           forecast: {
             ...destinationForecast.forecast,
-            period: { id: "afternoon", label: "بعدازظهر", range_label: "۱۱ تا ۱۹", headline: "بعدازظهر", hours: [11, 13, 15, 17] },
-            meta: { ...destinationForecast.forecast.meta, selected_period: "afternoon" },
+            period: { id: "noon", label: "ظهر", range_label: "۱۲ تا ۱۸", headline: "ظهر", hours: [12, 14, 16] },
+            meta: { ...destinationForecast.forecast.meta, selected_period: "noon" },
           },
         });
       }
@@ -416,7 +418,7 @@ describe("periods and route planner", () => {
     });
     render(
       <ThemeProvider>
-        <MemoryRouter initialEntries={["/destination/touchal?period=afternoon"]}>
+        <MemoryRouter initialEntries={["/destination/touchal?period=noon"]}>
           <Routes>
             <Route path="/destination/:slug" element={<DestinationPage />} />
           </Routes>
@@ -424,9 +426,9 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "قلهٔ توچال" });
-    const destinationRequest = destinationCalls(fetchMock.mock.calls).find((url) => url.includes("period=afternoon"));
+    const destinationRequest = destinationCalls(fetchMock.mock.calls).find((url) => url.includes("period=noon"));
     expect(destinationRequest).toBeDefined();
-    expect(screen.getByRole("button", { name: /بعدازظهر/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: /^ظهر/ })).toHaveAttribute("aria-pressed", "true");
   });
 
   it("does not fade the active overnight day tab", async () => {
@@ -475,17 +477,17 @@ describe("periods and route planner", () => {
     fetchMock.mockImplementation((input: RequestInfo) => {
       const url = forecastUrl(input);
       if (url.includes("/routes/touchal-darband/forecast")) {
-        const period = url.includes("period=afternoon") ? "afternoon" : "morning";
+        const period = url.includes("period=noon") ? "noon" : "morning";
         return jsonResponse({
           ...routeForecast,
           period: {
             id: period,
-            label: period === "afternoon" ? "بعدازظهر" : "صبح",
-            range_label: period === "afternoon" ? "۱۱ تا ۱۹" : "۰۳ تا ۱۱",
-            headline: period === "afternoon" ? "بعدازظهر" : "صبح",
-            hours: period === "afternoon" ? [11, 13, 15, 17] : [3, 5, 7, 9],
+            label: period === "noon" ? "ظهر" : "صبح",
+            range_label: period === "noon" ? "۱۲ تا ۱۸" : "۰۶ تا ۱۲",
+            headline: period === "noon" ? "ظهر" : "صبح",
+            hours: period === "noon" ? [12, 14, 16] : [6, 8, 10],
           },
-          start_minutes: period === "afternoon" ? 720 : 360,
+          start_minutes: period === "noon" ? 720 : 360,
           meta: {
             ...routeForecast.meta,
             selected_period: period,
@@ -505,7 +507,7 @@ describe("periods and route planner", () => {
       </ThemeProvider>,
     );
     await screen.findByRole("heading", { name: "دربند تا توچال" });
-    await user.click(screen.getByRole("button", { name: /بعدازظهر/ }));
+    await user.click(screen.getByRole("button", { name: /ظهر/ }));
     expect(screen.getByLabelText("ساعت شروع حرکت")).toHaveValue("720");
   });
 
@@ -659,8 +661,8 @@ describe("periods and route planner", () => {
     const states = classifyAllPeriods("2026-08-27", destinationForecast.meta.current_local_time);
     expect(states.morning).toBe("past");
     expect(screen.getByRole("button", { name: /صبح/ })).toHaveClass("past-period");
-    expect(screen.getByRole("button", { name: /شب/ })).toHaveClass("selected");
-    expect(screen.getByRole("button", { name: /شب/ })).not.toHaveClass("past-period");
+    expect(screen.getByRole("button", { name: /^شب/ })).toHaveClass("selected");
+    expect(screen.getByRole("button", { name: /^شب/ })).not.toHaveClass("past-period");
   });
 
   it("does not render raw timing pending copy on route page", async () => {
@@ -807,14 +809,14 @@ describe("periods and route planner", () => {
         slug: "touchal-darband",
         title: "دربند تا توچال",
         pathname: "/routes/touchal-darband",
-        search: "?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
-        href: "/routes/touchal-darband?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
+        search: "?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
+        href: "/routes/touchal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
       },
     );
     expect(planner).toEqual({ date: undefined, period: undefined });
     expect(
-      initialDestinationPlanner(new URLSearchParams("date=2026-08-26&period=afternoon"), undefined),
-    ).toEqual({ date: "2026-08-26", period: "afternoon" });
+      initialDestinationPlanner(new URLSearchParams("date=2026-08-26&period=noon"), undefined),
+    ).toEqual({ date: "2026-08-26", period: "noon" });
   });
 
   it("floors off-step and Persian-digit start times", () => {
@@ -826,21 +828,21 @@ describe("periods and route planner", () => {
   it("resolves route start from period default when switching away from current period", () => {
     const at1030 = "2026-08-28T10:30:00+03:30";
     expect(resolveRouteStartMinutes("2026-08-28", "morning", at1030)).toBe(600);
-    expect(resolveRouteStartMinutes("2026-08-28", "afternoon", at1030)).toBe(720);
+    expect(resolveRouteStartMinutes("2026-08-28", "noon", at1030)).toBe(840);
     expect(resolveRouteStartMinutes("2026-08-28", "night", at1030)).toBe(1200);
   });
 
   it("keeps the route gauge inside the selected period when input is out of bounds", () => {
     render(
       <StartTimeControl
-        minutes={1620}
-        min={1140}
-        max={1620}
+        minutes={1440}
+        min={1080}
+        max={1440}
         period="night"
-        ticks={["۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰", "۰۰:۰۰", "۰۱:۰۰", "۰۲:۰۰"]}
-        rangeLabel="۱۹ تا ۰۳"
-        display="۰۲:۰۰"
-        currentMinutes={1620}
+        ticks={["۱۸:۰۰", "۱۹:۰۰", "۲۰:۰۰", "۲۱:۰۰", "۲۲:۰۰", "۲۳:۰۰"]}
+        rangeLabel="۱۸ تا ۲۴"
+        display="۲۳:۰۰"
+        currentMinutes={1380}
         stepMinutes={60}
         onChange={vi.fn()}
         onCommit={vi.fn()}
@@ -848,34 +850,37 @@ describe("periods and route planner", () => {
     );
 
     const slider = screen.getByRole("slider", { name: "ساعت شروع حرکت" });
-    expect(slider).toHaveAttribute("max", "1560");
+    expect(slider).toHaveAttribute("max", "1380");
     expect(slider).toHaveAttribute("step", "60");
-    expect(slider).toHaveValue("1560");
+    expect(slider).toHaveValue("1380");
     expect(document.querySelector(".gauge-fill")).toHaveStyle({ width: "100%" });
     expect(document.querySelector(".gauge-dot")).toHaveStyle({ right: "100%" });
   });
 
   it("builds one-hour planner ticks from period bounds", () => {
     expect(periodTicks("morning")).toEqual([
-      "۰۳:۰۰",
-      "۰۴:۰۰",
-      "۰۵:۰۰",
       "۰۶:۰۰",
       "۰۷:۰۰",
       "۰۸:۰۰",
       "۰۹:۰۰",
       "۱۰:۰۰",
+      "۱۱:۰۰",
     ]);
-    expect(periodTicks("afternoon")).toHaveLength(8);
+    expect(periodTicks("noon")).toEqual([
+      "۱۲:۰۰",
+      "۱۳:۰۰",
+      "۱۴:۰۰",
+      "۱۵:۰۰",
+      "۱۶:۰۰",
+      "۱۷:۰۰",
+    ]);
     expect(periodTicks("night")).toEqual([
+      "۱۸:۰۰",
       "۱۹:۰۰",
       "۲۰:۰۰",
       "۲۱:۰۰",
       "۲۲:۰۰",
       "۲۳:۰۰",
-      "۰۰:۰۰",
-      "۰۱:۰۰",
-      "۰۲:۰۰",
     ]);
   });
 
@@ -937,10 +942,10 @@ describe("periods and route planner", () => {
     );
     await screen.findByRole("heading", { name: "شیرپلا" });
     expect(screen.getByTestId("url-search")).toHaveTextContent("");
-    await user.click(screen.getByRole("button", { name: /بعدازظهر/ }));
+    await user.click(screen.getByRole("button", { name: /ظهر/ }));
     await waitFor(() => {
       const q = screen.getByTestId("url-search").textContent ?? "";
-      expect(q).toContain("period=afternoon");
+      expect(q).toContain("period=noon");
       expect(q).toContain("date=");
     });
   });
@@ -1058,13 +1063,13 @@ describe("periods and route planner", () => {
             meta: {
               ...destinationForecast.forecast.meta,
               selected_date: "2026-08-26",
-              selected_period: "afternoon",
+              selected_period: "noon",
             },
           },
           meta: {
             ...destinationForecast.meta,
             selected_date: "2026-08-26",
-            selected_period: "afternoon",
+            selected_period: "noon",
           },
         });
       }
@@ -1080,14 +1085,14 @@ describe("periods and route planner", () => {
         initialEntries: [
           {
             pathname: "/points/tochal_summit",
-            search: "?date=2026-08-26&period=afternoon",
+            search: "?date=2026-08-26&period=noon",
             state: {
               fromRoute: {
                 slug: "touchal-darband",
                 title: "دربند تا توچال",
                 pathname: "/routes/touchal-darband",
-                search: "?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
-                href: "/routes/touchal-darband?date=2026-08-26&period=afternoon&start_time=12:00&speed=متوسط",
+                search: "?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
+                href: "/routes/touchal-darband?date=2026-08-26&period=noon&start_time=12:00&speed=متوسط",
               },
             },
           },
@@ -1102,7 +1107,7 @@ describe("periods and route planner", () => {
     );
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
     expect(router.state.location.pathname).toBe("/destination/touchal");
-    expect(router.state.location.search).toBe("?date=2026-08-26&period=afternoon");
+    expect(router.state.location.search).toBe("?date=2026-08-26&period=noon");
     expect(router.state.location.search).not.toContain("start_time");
     expect(router.state.location.state).toEqual(
       expect.objectContaining({

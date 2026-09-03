@@ -23,7 +23,7 @@
 
 - [ ] Home (`/`) جست‌وجوی unified مقصد و نقطه را با `GET /api/v1/search/suggestions/?q=` و حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias و debounce حدود ۲۰۰ms انجام می‌دهد؛ مسیرها searchable نیستند.
 - [ ] Submit/Enter جست‌وجوی destination-only fallback ندارد؛ یک نتیجه مستقیم باز می‌شود و چند نتیجه در فهرست unified نمایش داده می‌شود.
-- [ ] Destination (`/destination/{slug}`) مقصد، forecast، روز، سه بازه و مسیرهای مرتبط را نمایش می‌دهد.
+- [ ] Destination (`/destination/{slug}`) مقصد، forecast، روز، چهار بازه و مسیرهای مرتبط را نمایش می‌دهد.
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.
 - [ ] Point (`/points/{weatherPointSlug}`) صفحهٔ canonical مستقل برای WeatherPoint است و timing planner ندارد.
 - [ ] point مقصدی مثل `tochal_summit` به `/destination/touchal` canonical می‌رود و صفحهٔ standalone موازی ندارد.
@@ -35,7 +35,7 @@
 ## forecast، period و stateها
 
 - [ ] همهٔ صفحات forecast از timezone رسمی `Asia/Tehran` استفاده می‌کنند.
-- [ ] بازه‌ها غیرهم‌پوشان و چهار کارت دوساعته دارند: صبح ۰۳/۰۵/۰۷/۰۹، بعدازظهر ۱۱/۱۳/۱۵/۱۷، شب ۱۹/۲۱/۲۳/۰۱.
+- [ ] بازه‌ها غیرهم‌پوشان و سه کارت دوساعته دارند: نیمه‌شب ۰۰/۰۲/۰۴، صبح ۰۶/۰۸/۱۰، ظهر ۱۲/۱۴/۱۶، شب ۱۸/۲۰/۲۲.
 - [ ] بدون query صریح، backend بازه و روز را بر اساس ساعت تهران تعیین می‌کند؛ query صریح اولویت دارد.
 - [ ] loading با skeleton و حفظ layout، error با پیام همان بخش و retry، empty مستقل از error، و stale با دادهٔ قبلی/زمان آخرین update/هشدار کهربایی نمایش داده می‌شوند.
 - [ ] partial data بدون صفرسازی یا مقدار ساختگی نمایش داده می‌شود.

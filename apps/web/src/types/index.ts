@@ -1,6 +1,6 @@
 export type Freshness = "ready" | "stale" | "partial";
 export type Severity = "normal" | "change" | "critical";
-export type PeriodId = "morning" | "afternoon" | "night";
+export type PeriodId = "midnight" | "morning" | "noon" | "night";
 
 export interface CatalogCounts {
   destinations: number;

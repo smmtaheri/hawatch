@@ -242,7 +242,7 @@ def test_jamshidieh_is_kalkchal_origin_and_hotel_not_on_welanjak(tochal_seeded):
     assert welanjak.origin == "پارکینگ ولنجک"
     parking = WeatherPoint.objects.get(slug="velenjak_parking")
     assert parking.status == WeatherPoint.Status.PROVISIONAL
-    assert parking.elevation_m is None
+    assert parking.elevation_m == 1852
     assert "tochal_hotel" not in list(welanjak.points.values_list("slug", flat=True))
     assert WeatherPoint.objects.filter(slug="tochal_hotel").exists()
     assert WeatherPoint.objects.filter(slug="velenjak").exists()
@@ -418,10 +418,10 @@ def test_critical_route_point_does_not_rewrite_destination_hourly(api_client, to
     summit = WeatherPoint.objects.get(slug="tochal_summit")
     shirpala = WeatherPoint.objects.get(slug="shirpala")
     _seed_point_hourly(
-        summit, day=day, hours=[11, 13, 15, 17], temperature_base=-2, severity="normal", data_mode="live", provider="open-meteo"
+        summit, day=day, hours=[12, 14, 16], temperature_base=-2, severity="normal", data_mode="live", provider="open-meteo"
     )
     _seed_point_hourly(
-        shirpala, day=day, hours=[11, 13, 15], temperature_base=8, severity="critical", data_mode="live", provider="open-meteo"
+        shirpala, day=day, hours=[12, 14], temperature_base=8, severity="critical", data_mode="live", provider="open-meteo"
     )
 
     body = api_client.get(

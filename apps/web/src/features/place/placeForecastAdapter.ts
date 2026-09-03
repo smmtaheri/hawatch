@@ -1,4 +1,5 @@
 import type { PlaceForecastResponse, PlaceKind, PeriodId } from "../../types";
+import { asPeriodId } from "../../lib/periods";
 
 export type { PlaceKind };
 
@@ -79,6 +80,5 @@ export function buildCanonicalRedirectTarget(
 }
 
 export function asSelectedPeriod(value: string | undefined | null): PeriodId | undefined {
-  if (value === "morning" || value === "afternoon" || value === "night") return value;
-  return undefined;
+  return asPeriodId(value);
 }

@@ -927,7 +927,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
 
   .destination-page .hours-grid {
     display: grid !important;
-    grid-template-columns: repeat(var(--hour-count, 4), minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(var(--hour-count, 3), minmax(0, 1fr)) !important;
     width: 100%;
     min-width: 0;
     overflow: hidden !important;
@@ -1070,21 +1070,21 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
   }
 }
 
-/* Each daypart deliberately contains four forecast slots. */
+/* Each daypart deliberately contains three two-hour forecast slots. */
 .hours-grid {
-  grid-template-columns: repeat(var(--hour-count, 4), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--hour-count, 3), minmax(0, 1fr)) !important;
 }
 
 .daypart-toggle,
 .route-page .daypart-toggle {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }
 
 @media (width <= 720px) {
   .hours-grid,
   .destination-page .hours-grid {
-    grid-template-columns: repeat(var(--hour-count, 4), 112px) !important;
+    grid-template-columns: repeat(var(--hour-count, 3), 112px) !important;
     overflow-x: auto !important;
     overscroll-behavior-inline: contain;
     scrollbar-width: thin;
@@ -1106,7 +1106,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
   .destination-page .destination-period-row .daypart-toggle {
     display: grid !important;
     flex: 0 0 120px !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     width: 120px !important;
     gap: 3px;
   }
@@ -1648,8 +1648,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .route-page .route-planner-day-period .route-period-row .daypart-toggle {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    width: 120px;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    width: 176px;
     gap: 3px;
   }
 
@@ -1980,7 +1980,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .destination-page .destination-period-row .daypart-toggle {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 5px;
     width: 100%;
   }
@@ -2720,7 +2720,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
-/* Desktop route planner: keep the period label and its three controls as a
+/* Desktop route planner: keep the period label and its four controls as a
  * compact group on the physical left edge, matching place pages. Mobile has
  * its own side-by-side layout and is intentionally excluded. */
 @media (min-width: 721px) {

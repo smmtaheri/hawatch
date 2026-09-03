@@ -4,12 +4,14 @@ import type { PeriodId, PlannerPeriodInfo } from "../types";
 export const PLANNER_TIME_STEP_MINUTES = 60;
 
 export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: string }> = [
-  { id: "morning", label: "صبح", rangeLabel: "۰۳ تا ۱۱" },
-  { id: "afternoon", label: "بعدازظهر", rangeLabel: "۱۱ تا ۱۹" },
-  { id: "night", label: "شب", rangeLabel: "۱۹ تا ۰۳" },
+  { id: "midnight", label: "نیمه‌شب", rangeLabel: "۰۰ تا ۰۶" },
+  { id: "morning", label: "صبح", rangeLabel: "۰۶ تا ۱۲" },
+  { id: "noon", label: "ظهر", rangeLabel: "۱۲ تا ۱۸" },
+  { id: "night", label: "شب", rangeLabel: "۱۸ تا ۲۴" },
 ];
 
 export function asPeriodId(value: string | null | undefined): PeriodId | undefined {
+  if (value === "afternoon") return "noon";
   return PERIOD_OPTIONS.some((option) => option.id === value) ? (value as PeriodId) : undefined;
 }
 
@@ -17,9 +19,10 @@ export const PERIOD_RANGES: Record<
   PeriodId,
   { min: number; max: number; label: string; defaultStart: string; defaultStartMinutes: number }
 > = {
-  morning: { min: 180, max: 660, label: "۰۳ تا ۱۱", defaultStart: "06:00", defaultStartMinutes: 360 },
-  afternoon: { min: 660, max: 1140, label: "۱۱ تا ۱۹", defaultStart: "12:00", defaultStartMinutes: 720 },
-  night: { min: 1140, max: 1620, label: "۱۹ تا ۰۳", defaultStart: "20:00", defaultStartMinutes: 1200 },
+  midnight: { min: 0, max: 360, label: "۰۰ تا ۰۶", defaultStart: "02:00", defaultStartMinutes: 120 },
+  morning: { min: 360, max: 720, label: "۰۶ تا ۱۲", defaultStart: "08:00", defaultStartMinutes: 480 },
+  noon: { min: 720, max: 1080, label: "۱۲ تا ۱۸", defaultStart: "14:00", defaultStartMinutes: 840 },
+  night: { min: 1080, max: 1440, label: "۱۸ تا ۲۴", defaultStart: "20:00", defaultStartMinutes: 1200 },
 };
 
 export type PlannerBounds = {
@@ -145,9 +148,6 @@ export function parseClockToMinutes(clock: string, period: PeriodId, apiPeriod?:
     return bounds.defaultStartMinutes;
   }
   let value = parsed.wallMinutes;
-  if (period === "night" && value <= 180) {
-    value += 1440;
-  }
   value = Math.floor(value / bounds.stepMinutes) * bounds.stepMinutes;
   return clampStartMinutes(value, period, apiPeriod);
 }
