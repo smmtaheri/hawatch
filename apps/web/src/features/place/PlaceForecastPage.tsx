@@ -170,14 +170,18 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     </div>
                   </section>
                 )}
-                <div className="desktop-destination-decision">
-                  <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
-                </div>
+                {kind === "point" ? (
+                  <div className="desktop-destination-decision">
+                    <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
+                  </div>
+                ) : null}
               </aside>
             </div>
-            <div className="mobile-destination-decision">
-              <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
-            </div>
+            {kind === "point" ? (
+              <div className="mobile-destination-decision">
+                <DecisionCard chip={data.decision.chip} title={data.decision.title} text={data.decision.text} />
+              </div>
+            ) : null}
             <footer className="site-footer">
               <span>هوای مقصد، برنامهٔ مسیر</span>
             </footer>

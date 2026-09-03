@@ -260,6 +260,7 @@ describe("Hawatch pages", () => {
       "href",
       "/icons/specialist/hawatch-specialist-icons.svg#icon-wind-average",
     );
+    expect(screen.queryByText("صبح برای شروع برنامه مناسب‌تر است.")).not.toBeInTheDocument();
     expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
     await user.click(screen.getAllByText("دربند تا توچال")[0]);
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
