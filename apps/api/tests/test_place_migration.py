@@ -319,6 +319,11 @@ def test_destination_weather_point_migration_path_skips_slug_collision():
 
     try:
         executor.migrate(before)
+        # MigrationExecutor caches the applied graph. Reload it after the
+        # historical rollback so the forward step is planned from the
+        # actual database state, rather than attempting the rollback twice.
+        executor = MigrationExecutor(connection)
+        executor.loader.build_graph()
         state = executor.loader.project_state(before)
         apps = state.apps
 
@@ -437,7 +442,9 @@ def test_destination_weather_point_migration_path_skips_slug_collision():
         assert FinalForecastPointResolution.objects.filter(weather_point_id=synthetic.id).count() == 1
     finally:
         # Always restore leaf state for the rest of the suite.
-        executor.migrate(executor.loader.graph.leaf_nodes())
+        restore_executor = MigrationExecutor(connection)
+        restore_executor.loader.build_graph()
+        restore_executor.migrate(restore_executor.loader.graph.leaf_nodes())
 
 
 @pytest.mark.django_db

@@ -13,7 +13,11 @@ def _merge_forecast_records(ForecastRecord, synthetic_id, canonical_id):
     for record in ForecastRecord.objects.filter(weather_point_id=synthetic_id).iterator():
         conflict = ForecastRecord.objects.filter(
             weather_point_id=canonical_id,
-            forecast_at=record.forecast_at,
+            # ``forecast_at`` can differ by sub-second precision between two
+            # legacy ingest rows.  ``hour_bucket`` is the stable logical slot
+            # used by the forecast pipeline, so use it to avoid duplicating the
+            # same hourly reading while moving synthetic destination data.
+            hour_bucket=record.hour_bucket,
             seed_version=record.seed_version,
         ).exists()
         if conflict:
