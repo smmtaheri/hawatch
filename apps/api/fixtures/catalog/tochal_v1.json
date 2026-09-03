@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v4",
+  "catalog_version": "hawatch-tochal-catalog-v5",
   "destination": {
     "slug": "touchal",
     "tile_name": "توچال",
@@ -38,7 +38,8 @@
       "elevation_m": 2750
     },
     "amiri": {
-      "name": "امیری",
+      "name": "جان‌پناه امیری",
+      "aliases": ["امیری", "جان پناه امیری", "پناهگاه امیری", "Amiri Shelter"],
       "latitude": 35.8690223,
       "longitude": 51.4194867,
       "elevation_m": 3390
@@ -74,25 +75,29 @@
       "evidence_note": "Mandatory Velenjak trailhead parking from local GPX evidence (approx 875 m from general velenjak WeatherPoint). GPX elevation is reference-only; catalog value is based on independent waypoint/report evidence and DEM cross-check."
     },
     "station_1": {
-      "name": "ایستگاه ۱",
+      "name": "ایستگاه ۱ توچال",
+      "aliases": ["ایستگاه یک توچال", "ایستگاه ۱"],
       "latitude": 35.8197134,
       "longitude": 51.4073045,
       "elevation_m": 1910
     },
     "station_2": {
-      "name": "ایستگاه ۲",
+      "name": "ایستگاه ۲ توچال",
+      "aliases": ["ایستگاه دو توچال", "ایستگاه ۲"],
       "latitude": 35.8324887,
       "longitude": 51.4082985,
       "elevation_m": 2400
     },
     "station_5": {
-      "name": "ایستگاه ۵",
+      "name": "ایستگاه ۵ توچال",
+      "aliases": ["ایستگاه پنج توچال", "ایستگاه ۵"],
       "latitude": 35.8577437,
       "longitude": 51.399779,
       "elevation_m": 2935
     },
     "station_7": {
-      "name": "ایستگاه ۷",
+      "name": "ایستگاه ۷ توچال",
+      "aliases": ["ایستگاه هفت توچال", "ایستگاه ۷"],
       "latitude": 35.8818454,
       "longitude": 51.4083173,
       "elevation_m": 3746

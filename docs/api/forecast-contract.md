@@ -155,7 +155,7 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 
 ### زمان‌بندی تخمینی مسیر (Tochal v3)
 
-Catalog `hawatch-tochal-catalog-v4` / `tochal-timing-v3`. هر پنج مسیر توچال estimated:
+Catalog `hawatch-tochal-catalog-v5` / `tochal-timing-v3`. هر پنج مسیر توچال estimated:
 
 - Darband / Velenjak / Ahar: method `web-naismith-total+gpx-profile-v2` — totals از web/Naismith، پروفایل cumulative از GPX moving proportions (نه موتور per-segment).
 - Kalkchal: `gpx-geometry+web-naismith-v3` — هندسه کامل GPX؛ timestampهای مصنوعی (فاصلهٔ دقیق ۴۰ ثانیه) برای moving-time قابل استفاده نیستند؛ medium 390 دقیقه / uncertainty ≥45.
