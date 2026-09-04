@@ -4,10 +4,10 @@ import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { DayPickerHeading, DaySelector, PeriodControlRow } from "../../components/DaySelector";
-import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { LoadingState } from "../../components/LoadingState";
+import { NotFoundPage } from "../../pages/NotFoundPage";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { RouteSiblingNavigation } from "../../components/RouteSiblingNavigation";
 import { RouteTimeline } from "../../components/RouteTimeline";
@@ -266,15 +266,7 @@ export function RoutePage() {
   }
 
   if (status === "missing") {
-    return (
-      <main className="route-page">
-        <Header />
-        <div className="page-back-navigation">
-          <BackNavigation />
-        </div>
-        <EmptyState title="مسیر پیدا نشد" detail="از صفحهٔ نقطه، مسیر دیگری را انتخاب کن." />
-      </main>
-    );
+    return <NotFoundPage title="مسیر پیدا نشد" detail="از صفحهٔ نقطه، مسیر دیگری را انتخاب کن." />;
   }
 
   const selected = requestedDate ?? data?.meta.selected_date ?? "";

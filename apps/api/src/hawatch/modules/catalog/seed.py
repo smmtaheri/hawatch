@@ -21,7 +21,7 @@ def ensure_catalog(seed_version: str) -> dict[str, WeatherPoint]:
     result: dict[str, WeatherPoint] = {}
     for path in sorted(glob.glob(str(Path(settings.FIXTURES_DIR) / "catalog/*_v*.json"))):
         relative = Path(path).relative_to(settings.FIXTURES_DIR).as_posix()
-        seed_catalog(catalog_file=relative, prune=False, force_adopt=False)
+        seed_catalog(catalog_file=relative, prune=False, force_adopt=False, rebuild_search=False)
     result.update({point.slug: point for point in WeatherPoint.objects.filter(data_mode="live")})
     rebuild_search_index()
     return result

@@ -1,5 +1,8 @@
+from xml.etree import ElementTree
+
 import pytest
 from django.db import connection
+from django.db.models import Q
 from rest_framework.test import APIClient
 
 from hawatch.common.time import day_window, now_tehran
@@ -62,6 +65,41 @@ def test_known_points_and_routes_exist(seeded):
     assert len(route_slugs) == 35
     assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
+
+
+@pytest.mark.django_db
+def test_all_active_catalog_points_are_indexable(seeded):
+    public_points = WeatherPoint.objects.filter(is_active=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
+
+    assert public_points.count() == 127
+    assert not public_points.filter(seo_indexable=False).exists()
+
+
+@pytest.mark.django_db
+def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, seeded):
+    response = api_client.get("/api/v1/seo/sitemap.xml")
+
+    assert response.status_code == 200
+    root = ElementTree.fromstring(response.content)
+    locations = [node.text for node in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+    assert len(locations) == 163
+    assert len(locations) == len(set(locations))
+    assert locations[0] == "https://hawatch.ir/"
+    assert all(url.startswith("https://hawatch.ir/") and "?" not in url for url in locations)
+    assert sum("/points/" in url for url in locations) == 127
+    assert sum("/routes/" in url for url in locations) == 35
+
+
+@pytest.mark.django_db
+def test_robots_advertises_public_sitemap(api_client):
+    response = api_client.get("/api/v1/seo/robots.txt")
+
+    assert response.status_code == 200
+    body = response.content.decode()
+    assert "Allow: /" in body
+    assert "Disallow: /api/" in body
+    assert "Disallow: /admin/" in body
+    assert "Sitemap: /sitemap.xml" in body
 
 
 @pytest.mark.django_db

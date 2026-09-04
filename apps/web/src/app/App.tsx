@@ -1,8 +1,9 @@
-import { BrowserRouter, Navigate, Route, Routes, useLocation, type Location } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, type Location } from "react-router-dom";
 import { HomePage } from "../pages/HomePage";
 import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
+import { NotFoundPage } from "../pages/NotFoundPage";
 
 export function App() {
   return (
@@ -33,7 +34,7 @@ export function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {backgroundLocation ? <LoginOverlay /> : null}
     </>

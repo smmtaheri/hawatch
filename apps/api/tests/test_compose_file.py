@@ -34,3 +34,14 @@ def test_compose_default_services_and_pinned_postgis():
     assert 'profiles: ["observability"]' in text
     assert "LIVE_INGEST_INTERVAL_SECONDS" not in text
     assert "run --rm ingest" not in text
+
+
+def test_web_gateway_returns_real_404_for_unknown_spa_paths():
+    config = Path(__file__).parents[3] / "apps" / "web" / "nginx.conf"
+    text = config.read_text(encoding="utf-8")
+
+    assert "auth_request /__point_exists;" in text
+    assert "auth_request /__route_exists;" in text
+    assert "error_page 401 =404 @spa_not_found;" in text
+    assert "error_page 404 =404 @spa_not_found;" in text
+    assert "try_files $uri =404;" in text

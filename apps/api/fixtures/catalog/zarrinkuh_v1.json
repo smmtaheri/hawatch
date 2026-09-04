@@ -21,6 +21,7 @@
       "place_type": "summit",
       "identity_summary": "قلهٔ زرین‌کوه؛ نقطهٔ summit در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "primary",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-drychh-tr-140811868",
@@ -44,6 +45,7 @@
       "aliases": [],
       "identity_summary": "یال شمالی زرین‌کوه؛ نقطهٔ ridge در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-drychh-tr-140811868",
@@ -69,6 +71,7 @@
       "place_type": "village",
       "identity_summary": "روستای جابان؛ نقطهٔ village در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
@@ -89,6 +92,7 @@
       "aliases": [],
       "identity_summary": "آبشار جابان؛ نقطهٔ waterfall در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-jbn-135216187",
@@ -109,6 +113,7 @@
       "aliases": [],
       "identity_summary": "روستای خسروان، ابتدای مسیر جنوبی زرین‌کوه؛ نقطهٔ village در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
@@ -129,6 +134,7 @@
       "aliases": [],
       "identity_summary": "گوسفندسرا درهٔ خسروان؛ نقطهٔ landmark در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
@@ -149,6 +155,7 @@
       "aliases": [],
       "identity_summary": "پارکینگ آیینه‌ورزان، ابتدای مسیر زرین‌کوه؛ نقطهٔ parking در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827",
@@ -169,6 +176,7 @@
       "aliases": [],
       "identity_summary": "آبشار آینه‌ورزان؛ نقطهٔ waterfall در محدودهٔ قلهٔ زرین‌کوه",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/zryn-khwh-z-aynh-wrzn-70150827",

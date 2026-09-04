@@ -15,6 +15,7 @@
       "aliases": [],
       "identity_summary": "قلهٔ سبلان؛ نقطهٔ summit در محدودهٔ قلهٔ سبلان",
       "importance": "primary",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
@@ -40,6 +41,7 @@
       "aliases": [],
       "identity_summary": "شابیل · ابتدای پیاده‌روی؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
@@ -60,6 +62,7 @@
       "aliases": [],
       "identity_summary": "پناهگاه شمال‌شرقی سبلان؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
@@ -80,6 +83,7 @@
       "aliases": [],
       "identity_summary": "دریاچهٔ دهانهٔ سبلان؛ نقطهٔ lake در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/msyr-khwhnwrdy-qlh-sbln-z-shbyl-t-pnhgh-w-pnhgh-t-qlh-26413213",
@@ -100,6 +104,7 @@
       "aliases": [],
       "identity_summary": "پای کار جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
@@ -120,6 +125,7 @@
       "aliases": [],
       "identity_summary": "دروازهٔ جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
@@ -140,6 +146,7 @@
       "aliases": [],
       "identity_summary": "قارتال‌داشی · پناهگاه غربی؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-sbln-b-nrwn-sabalan-40303425",
@@ -160,6 +167,7 @@
       "aliases": [],
       "identity_summary": "چای‌گوزی · ابتدای مسیر جنوب‌شرقی؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",
@@ -180,6 +188,7 @@
       "aliases": [],
       "identity_summary": "محراب‌داشی جنوب‌شرقی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/msyr-alwrs-chy-gwzy-bh-qlh-sbln-14451420",

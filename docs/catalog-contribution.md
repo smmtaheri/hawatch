@@ -24,8 +24,9 @@ sitemap نقطه/مسیر در همین قرارداد فعال است.
 - `importance` یکی از `primary`/`support` و `name_status` یکی از
   `official`/`established`/`descriptive`؛
 - `climate` باید یکی از profileهای demo (`alpine`، `desert`، `forest_fog`، `high_alpine`، `lake_valley` یا `meadow`) باشد؛ validator و Admin مقدار ناشناخته را قبل از import/save رد می‌کنند؛
-- `seo_indexable` فقط برای نقطهٔ شاخصی که عمداً برای ایندکس عمومی تأیید شده است؛
-  نقطهٔ متصل به route فعال بدون این flag هم برای forecast و search قابل‌دسترسی است؛
+- تمام WeatherPointهای فعال و عمومی `seo_indexable=true` هستند و صفحهٔ مستقل
+  آن‌ها در sitemap می‌آید؛ نقطهٔ inactive یا synthetic مستثنی است. نقطهٔ متصل
+  به route فعال بدون این flag فقط یک وضعیت ناسازگار است و validator آن را خطا می‌کند؛
 - `aliases` برای شکل‌های رایج جست‌وجو و `source_urls` برای منابع هویت/موقعیت؛
 - مختصات دقیق و `elevation_m` معتبر به‌همراه `elevation_source` یا evidence.
 
@@ -157,5 +158,26 @@ uv run pytest
 همچنین با `git grep` مطمئن شوید slug قدیمی در catalog، API، frontend و docs
 فعلی نمانده است. migrationهای تاریخی تنها سابقهٔ بازپخش schema هستند و نباید
 برای compatibility URL جدید استفاده شوند. SEO عمومی P0 همین حالا روی `page_name`
-و slug canonical اعمال می‌شود: فقط نقطهٔ `seo_indexable` و route فعال وارد sitemap
+و slug canonical اعمال می‌شود: تمام نقاط فعال و عمومی و routeهای فعال وارد sitemap
 می‌شوند و queryهای برنامه‌ریزی `noindex,follow` هستند.
+
+برای همگام‌سازی release روی دیتابیس موجود، bootstrap ضمنی کافی نیست. ابتدا backup
+بگیرید و command را در حالت امن اجرا کنید:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --dry-run
+```
+
+گزارش، created/updated/unchanged، فهرست دقیق RoutePointها و رکوردهای
+fixture-managed قابل حذف یا غیرفعال‌سازی و conflictهای operator-managed را نشان
+می‌دهد. پس از بازبینی همان برنامه را اتمیک اعمال کنید:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --apply
+```
+
+این command فقط ردیف‌های `fixture_managed=true` را برای stale cleanup هدف می‌گیرد؛
+رکوردهای دستی حفظ می‌شوند و conflict مبهم باعث توقف sync می‌شود. اجرای دوبارهٔ
+`--apply` روی دادهٔ همگام‌شده باید همهٔ رکوردهای موجود را unchanged گزارش کند.

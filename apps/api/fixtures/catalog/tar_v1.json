@@ -21,6 +21,7 @@
       "place_type": "lake",
       "identity_summary": "دریاچهٔ تار؛ نقطهٔ lake در محدودهٔ دریاچهٔ تار",
       "importance": "primary",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://open-meteo.com/en/docs"

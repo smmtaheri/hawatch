@@ -56,10 +56,16 @@ Device GPX `<ele>` is reference-only; PBF/DEM remain elevation truth. Route-leve
 The database is the runtime source of truth. JSON fixtures are bootstrap/import artifacts only.
 
 - Normal import (`seed_catalog` / `seed_tochal_catalog`) is **non-destructive**. Operator-managed rows (`fixture_managed=false`) survive and are never silently overwritten on slug collision (skip + conflict report; optional `--force-adopt`).
+- برای release روی دیتابیس موجود از `sync_catalog --dry-run` و سپس
+  `sync_catalog --apply` استفاده کنید؛ این command فقط fixture-managedهای stale را
+  پاک/غیرفعال می‌کند و conflict مبهم را متوقف می‌کند.
 - Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
 - Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
 - Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): seeds only if no live WeatherPoints exist.
-- Scheduled ingest selects points that are `is_active` + `ingest_enabled` and either `seo_indexable=true` or linked to an active Route. Snapshot revision is `dbrev-…`.
+- تمام WeatherPointهای فعال و عمومی باید `seo_indexable=true` باشند؛ validator این
+  invariant را کنترل می‌کند. Scheduled ingest نقاط `is_active` + `ingest_enabled`
+  را بر اساس همین وضعیت یا پیوند به Route فعال انتخاب می‌کند. Snapshot revision is
+  `dbrev-…`.
 - Inactive Point / Route / WeatherPoint rows are omitted from public APIs, siblings, related routes, search, and health catalog counts.
 - Admin and catalog import share `normalize_and_publish_route` for ordering, denormalized fields, origin/target, segments, axis, timing demotion, and search rebuild.
 - `tracks/` is local-only research evidence (gitignored); never commit GPX/manifest.

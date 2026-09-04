@@ -333,6 +333,15 @@ describe("Hawatch pages", () => {
     expect(await screen.findByText(/نتیجه‌ای پیدا نشد/)).toBeInTheDocument();
   });
 
+  it("renders a noindex Not Found page without a canonical URL", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => jsonResponse({}, false, 404)));
+    renderApplication("/points/not-a-real-point");
+
+    expect(await screen.findByRole("heading", { name: "نقطه پیدا نشد" })).toBeInTheDocument();
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex,follow");
+    expect(document.querySelector('link[rel="canonical"]')).not.toBeInTheDocument();
+  });
+
   it("shows stale notice", async () => {
     vi.stubGlobal(
       "fetch",

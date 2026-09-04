@@ -12,6 +12,7 @@
       "aliases": [],
       "identity_summary": "میدان سربند، ابتدای مسیر دربند–توچال؛ نقطهٔ trailhead در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -30,6 +31,7 @@
       "aliases": [],
       "identity_summary": "روستای پس‌قلعه، ابتدای مسیر دربند–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -48,6 +50,7 @@
       "aliases": [],
       "identity_summary": "پناهگاه شیرپلا در مسیر دربند–توچال؛ نقطهٔ shelter در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -71,6 +74,7 @@
       "place_type": "shelter",
       "identity_summary": "جان‌پناه امیری در مسیر دربند–توچال؛ نقطهٔ shelter در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -93,6 +97,7 @@
       ],
       "identity_summary": "یال گوله‌بند توچال؛ نقطهٔ ridge در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -113,6 +118,7 @@
       "aliases": [],
       "identity_summary": "قلهٔ توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
       "importance": "primary",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -139,6 +145,7 @@
       "aliases": [],
       "identity_summary": "ولنجک؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://open-meteo.com/en/docs"
@@ -158,6 +165,7 @@
       "aliases": [],
       "identity_summary": "پارکینگ مجموعهٔ توچال در ولنجک؛ نقطهٔ parking در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -179,6 +187,7 @@
       "place_type": "landmark",
       "identity_summary": "ایستگاه ۱ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -200,6 +209,7 @@
       "place_type": "landmark",
       "identity_summary": "ایستگاه ۲ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -221,6 +231,7 @@
       "place_type": "landmark",
       "identity_summary": "ایستگاه ۵ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -242,6 +253,7 @@
       "place_type": "landmark",
       "identity_summary": "ایستگاه ۷ تله‌کابین توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -266,6 +278,7 @@
       "aliases": [],
       "identity_summary": "هتل توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -292,6 +305,7 @@
       ],
       "identity_summary": "پناهگاه و اردوگاه کلک‌چال در مسیر توچال؛ نقطهٔ camp در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -310,6 +324,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ اسپیلات‌سرلو؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -328,6 +343,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ پیازچال؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -346,6 +362,7 @@
       "aliases": [],
       "identity_summary": "لزون شرقی؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -364,6 +381,7 @@
       "aliases": [],
       "identity_summary": "لزون غربی؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -382,6 +400,7 @@
       "aliases": [],
       "identity_summary": "قلهٔ برف‌چال در مسیر توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -400,6 +419,7 @@
       "aliases": [],
       "identity_summary": "چهارپالون؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -420,6 +440,7 @@
       "aliases": [],
       "identity_summary": "روستای آهار، مبدأ مسیر آهار–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -442,6 +463,7 @@
       ],
       "identity_summary": "شکرآب آهار، نقطهٔ مسیر آهار–توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -461,6 +483,7 @@
       "aliases": [],
       "identity_summary": "قلهٔ قزقون‌چال در مسیر آهار–توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -479,6 +502,7 @@
       "aliases": [],
       "identity_summary": "هومند توچال؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -499,6 +523,7 @@
       "aliases": [],
       "identity_summary": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -521,6 +546,7 @@
       "aliases": [],
       "identity_summary": "کاخ ناصری شهرستانک؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -543,6 +569,7 @@
       "aliases": [],
       "identity_summary": "چشمهٔ شهرستانک؛ نقطهٔ spring در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -568,6 +595,7 @@
       "place_type": "spring",
       "identity_summary": "چشمه و گوسفندسرا شهرستانک؛ نقطهٔ spring در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -591,6 +619,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ شهرستانک؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
@@ -613,6 +642,7 @@
       "aliases": [],
       "identity_summary": "سه‌راه ناصری؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://open-meteo.com/en/docs"
@@ -629,6 +659,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ بازارک؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://open-meteo.com/en/docs"
@@ -645,6 +676,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ شاه‌نشین؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://open-meteo.com/en/docs"
@@ -664,6 +696,7 @@
       "aliases": [],
       "identity_summary": "پارک جمشیدیه؛ نقطهٔ landmark در محدودهٔ قلهٔ توچال",
       "importance": "support",
+      "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",

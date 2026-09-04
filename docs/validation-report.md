@@ -75,3 +75,16 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
    Open-Meteo GLO-90 DEM و پاسخ hourly اعتبارسنجی شده‌اند. نقطه‌های دارای
    elevation/provenance موقت از nearest cell استفاده می‌کنند تا grid دورتر از
    ۵ کیلومتر انتخاب نشود.
+
+## وضعیت تغییرات قبل از deploy
+
+در آخرین تغییرات، تمام ۱۲۷ ردیف WeatherPoint کاتالوگ صریحاً
+`seo_indexable=true` دارند و sitemap پایه شامل ۱ Home، ۱۲۷ Point و ۳۵ Route
+است. برای دیتابیس موجود command کنترل‌شدهٔ `sync_catalog` با حالت
+`--dry-run`/`--apply` اضافه شده است؛ staleهای fixture-managed را با گزارش دقیق
+پاک یا غیرفعال می‌کند و به رکوردهای دستی دست نمی‌زند. catch-all قبلی SPA نیز با
+Not Found قابل‌مشاهده و بررسی وجود Point/Route در Nginx جایگزین شده است.
+
+تست‌ها، build، lint، migration ارتقا و browser smoke test این commit عمداً اجرا
+نشده‌اند؛ اجرای آن‌ها باید پیش از deploy طبق چک‌لیست release انجام شود. این
+repository هیچ اتصال یا تغییری روی production انجام نداده است.

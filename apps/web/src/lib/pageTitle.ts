@@ -2,19 +2,27 @@ import { useLayoutEffect } from "react";
 
 const DEFAULT_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر";
 
+type PageTitleOptions = {
+  robots?: "index,follow" | "noindex,follow";
+  canonical?: boolean;
+};
+
 /** Keep the browser tab tied to the place or route currently being viewed. */
-export function usePageTitle(name?: string) {
+export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
   useLayoutEffect(() => {
     const title = name ? `هوای ${name} | هواچ` : DEFAULT_TITLE;
     document.title = title;
-    const canonical = `${window.location.origin}${window.location.pathname}`;
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "canonical";
-      document.head.appendChild(link);
+    if (options.canonical === false) {
+      link?.remove();
+    } else {
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "canonical";
+        document.head.appendChild(link);
+      }
+      link.href = `${window.location.origin}${window.location.pathname}`;
     }
-    link.href = canonical;
     let description = document.head.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (!description) {
       description = document.createElement("meta");
@@ -28,6 +36,6 @@ export function usePageTitle(name?: string) {
       robots.name = "robots";
       document.head.appendChild(robots);
     }
-    robots.content = window.location.search ? "noindex,follow" : "index,follow";
-  }, [name]);
+    robots.content = options.robots ?? (window.location.search ? "noindex,follow" : "index,follow");
+  }, [name, options.canonical, options.robots]);
 }

@@ -144,6 +144,28 @@ python3 scripts/publish_catalog.py \
 به کانتینر API می‌فرستد. `--apply` برای routeهای بدون timing متوقف می‌شود تا
 اطلاعات arrival به‌صورت ناخواسته ناقص منتشر نشود.
 
+برای اعمال نسخهٔ جدید همهٔ کاتالوگ‌ها روی دیتابیس موجود، bootstrap ضمنی کافی
+نیست. ابتدا backup بگیرید، سپس برنامهٔ تغییر را بدون write ببینید و بعد از
+بازبینی صریحاً اعمال کنید:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --dry-run
+
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --apply
+```
+
+این command فقط ردیف‌های `fixture_managed=true` را برای stale cleanup هدف می‌گیرد؛
+رکوردهای دستی حفظ می‌شوند و conflict مبهم باعث توقف atomic sync می‌شود.
+
+ترتیب release روی سرور: ابتدا backup دیتابیس، سپس `migrate`، اجرای
+`sync_catalog --dry-run` و بازبینی گزارش، اجرای `sync_catalog --apply`، بعد
+`validate_catalog --all --database --strict` و در پایان smoke test با curl و
+مرورگر برای Home، Point، Route، search، canonical، query/noindex، robots، sitemap
+و 404. این مراحل باید توسط اپراتور اجرا شوند و در این تغییر روی production اجرا
+نشده‌اند.
+
 جزئیات قرارداد، تفاوت elevation catalog و DEM، و smoke test در `docs/catalog-and-weather-validation.md` است.
 
 ## افزودن نقطه/مسیر بدون deploy
@@ -159,7 +181,10 @@ Database منبع حقیقت runtime است؛ JSON فقط bootstrap/import اس�
 ### افزودن WeatherPoint
 
 1. Django admin → WeatherPoint (`is_active`، `ingest_enabled=true`؛ elevation از DEM نه GPX `<ele>`؛ `fixture_managed` را دستی true نکنید).
-2. برای نمایش عمومی یا ingest، خود نقطه را فعال و `seo_indexable=true` کنید یا آن را روی یک Route فعال لینک کنید.
+2. برای نمایش عمومی و SEO، خود نقطه را فعال و `seo_indexable=true` کنید؛ تمام
+   نقاط فعال و عمومی fixture باید این flag را داشته باشند. نقطهٔ متصل به Route
+   فعال بدون این flag فقط برای سازگاری ingest/search پشتیبانی می‌شود و خطای
+   validation است.
 
 ### افزودن و publish مسیر
 

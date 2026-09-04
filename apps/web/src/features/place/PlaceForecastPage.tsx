@@ -9,6 +9,7 @@ import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { HourlyForecast } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
+import { NotFoundPage } from "../../pages/NotFoundPage";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { SpecialistMetrics } from "../../components/SpecialistMetrics";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
@@ -45,20 +46,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
 
 
   if (status === "missing") {
-    return (
-      <main className="point-page">
-        <div className="point-shell">
-          <Header />
-          <div className="page-back-navigation">
-            <BackNavigation />
-          </div>
-          <EmptyState
-            title="نقطه پیدا نشد"
-            detail="از جست‌وجوی خانه نام دیگری را امتحان کن."
-          />
-        </div>
-      </main>
-    );
+    return <NotFoundPage title="نقطه پیدا نشد" detail="از جست‌وجوی خانه نام دیگری را امتحان کن." />;
   }
 
   const routes = data?.related_routes ?? [];

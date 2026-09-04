@@ -83,11 +83,9 @@ def _restore_manual_route_point_positions(
     if not ordered_fixtures and not manual_points:
         return
 
-    # Free all slots before writing the dense order, then put manual rows back
-    # into the slots they occupied before the fixture refresh.
-    from hawatch.modules.routes.publish import shift_route_point_sort_orders
-
-    shift_route_point_sort_orders(route)
+    # Put manual rows back into the slots they occupied before the fixture
+    # refresh. Do not touch sort orders when the desired order is already
+    # present; repeated imports must remain genuinely idempotent.
     manual_by_slot: dict[int, list[RoutePoint]] = {}
     for point_id, original_order in manual_positions:
         point = manual_points.get(point_id)
@@ -101,6 +99,13 @@ def _restore_manual_route_point_positions(
     for slot in sorted(manual_by_slot):
         combined.extend(manual_by_slot[slot])
 
+    current = list(route.points.order_by("sort_order", "pk").values_list("pk", "sort_order"))
+    desired = [(point.pk, index) for index, point in enumerate(combined, start=1)]
+    if current == desired:
+        return
+    from hawatch.modules.routes.publish import shift_route_point_sort_orders
+
+    shift_route_point_sort_orders(route)
     for index, point in enumerate(combined, start=1):
         RoutePoint.objects.filter(pk=point.pk).update(sort_order=index)
 
@@ -235,7 +240,15 @@ def _timing(route_row: dict) -> dict:
 
 
 @transaction.atomic
-def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None, prune: bool = False, force_adopt: bool = False, raise_on_conflict: bool = False) -> dict:
+def seed_catalog(
+    *,
+    catalog: dict | None = None,
+    catalog_file: str | None = None,
+    prune: bool = False,
+    force_adopt: bool = False,
+    raise_on_conflict: bool = False,
+    rebuild_search: bool = True,
+) -> dict:
     if catalog is not None and catalog_file is not None:
         raise ValueError("Pass catalog or catalog_file, not both")
     data = catalog or load_catalog_file(catalog_file or DEFAULT_CATALOG_FILE)
@@ -260,16 +273,19 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
             "tile_name": row.get("tile_name") or (profile.get("tile_name", "") if slug == _point_slug(data) else ""), "short_category": row.get("short_category") or (profile.get("short_category", "") if slug == _point_slug(data) else ""),
             "category": row.get("category") or (profile.get("category", "") if slug == _point_slug(data) else ""), "category_key": row.get("category_key") or (profile.get("category_key", "") if slug == _point_slug(data) else ""),
             "region": row.get("region") or (profile.get("region", "") if slug == _point_slug(data) else ""), "image": row.get("image") or (profile.get("image", "") if slug == _point_slug(data) else ""), "image_alt": row.get("image_alt") or (profile.get("image_alt", "") if slug == _point_slug(data) else ""),
-            "popular_order": profile.get("popular_order", 0) if slug == _point_slug(data) else 0, "is_popular": bool(profile.get("is_popular", False)) if slug == _point_slug(data) else False, "seo_indexable": bool(profile.get("seo_indexable", kind == WeatherPoint.Kind.PRIMARY)),
+            "popular_order": profile.get("popular_order", 0) if slug == _point_slug(data) else 0, "is_popular": bool(profile.get("is_popular", False)) if slug == _point_slug(data) else False, "seo_indexable": bool(profile.get("seo_indexable", True)),
             "climate": row.get("climate") or profile.get("climate", "alpine"), "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED), "provenance": WeatherPoint.Provenance.CURATED,
             "catalog_version": version, "data_mode": "live", "seed_version": version, "ingest_enabled": True, "fixture_managed": True,
+            "is_active": bool(row.get("is_active", profile.get("is_active", True))),
         }
         if existing is None:
-            defaults["is_active"] = bool(row.get("is_active", profile.get("is_active", True)))
             existing = WeatherPoint.objects.create(slug=slug, **defaults)
         else:
-            for key, value in defaults.items(): setattr(existing, key, value)
-            existing.save()
+            changed_fields = [key for key, value in defaults.items() if getattr(existing, key) != value]
+            for key, value in defaults.items():
+                setattr(existing, key, value)
+            if changed_fields:
+                existing.save(update_fields=sorted(set(changed_fields + ["updated_at"])))
         points[slug] = existing
     for slug in data.get("shared_weather_points") or []:
         shared = WeatherPoint.objects.filter(slug=slug, is_active=True).first()
@@ -303,13 +319,23 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
             conflicts.append(f"Route slug={route.slug} is operator-managed; skipped")
             kept_routes.append(route.pk)
             continue
-        route.title, route.subtitle, route.trail_label, route.origin, route.target_label, route.region = row["title"], row["subtitle"], row["trail_label"], row["origin"], row["target_label"], row["region"]
-        route.distance_km, route.ascent_m, route.one_way_minutes = row.get("distance_km"), row.get("ascent_m"), timing["one_way"]
-        route.default_start_minutes, route.timing_status, route.timing_method, route.timing_version = row.get("default_start_minutes", 360), timing["status"], timing["method"], timing["version"]
-        route.timing_confidence, route.timing_uncertainty_minutes, route.timing_source_urls = timing["confidence"], timing["uncertainty"], timing["sources"]
-        route.featured, route.sort_order, route.origin_location, route.origin_weather_point, route.target_weather_point = row.get("featured", False), row.get("sort_order", 0), points[ordered[0]].location, points[ordered[0]], points[ordered[-1]]
-        route.catalog_key, route.data_mode, route.seed_version, route.fixture_managed = catalog_key, "live", version, True
-        route.save()
+        route_values = {
+            "title": row["title"], "subtitle": row["subtitle"], "trail_label": row["trail_label"],
+            "origin": row["origin"], "target_label": row["target_label"], "region": row["region"],
+            "distance_km": row.get("distance_km"), "ascent_m": row.get("ascent_m"), "one_way_minutes": timing["one_way"],
+            "default_start_minutes": row.get("default_start_minutes", 360), "timing_status": timing["status"],
+            "timing_method": timing["method"], "timing_version": timing["version"], "timing_confidence": timing["confidence"],
+            "timing_uncertainty_minutes": timing["uncertainty"], "timing_source_urls": timing["sources"],
+            "featured": row.get("featured", False), "sort_order": row.get("sort_order", 0),
+            "origin_location": points[ordered[0]].location, "origin_weather_point": points[ordered[0]],
+            "target_weather_point": points[ordered[-1]], "catalog_key": catalog_key, "data_mode": "live",
+            "seed_version": version, "fixture_managed": True,
+        }
+        changed_route_fields = [field for field, value in route_values.items() if getattr(route, field) != value]
+        for field, value in route_values.items():
+            setattr(route, field, value)
+        if changed_route_fields:
+            route.save(update_fields=sorted(set(changed_route_fields + ["updated_at"])))
         # Preserve operator-managed RoutePoints in the slots where the
         # operator placed them. Fixture rows are rewritten from catalog truth.
         manual_positions = list(
@@ -331,7 +357,10 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
 
         from hawatch.modules.routes.publish import shift_route_point_sort_orders
 
-        shift_route_point_sort_orders(route)
+        current_rows = list(route.points.order_by("sort_order", "pk").values_list("slug", "sort_order", flat=False))
+        current_slugs = [slug for slug, _sort_order in current_rows]
+        if current_slugs != ordered or [sort_order for _slug, sort_order in current_rows] != list(range(1, len(current_rows) + 1)):
+            shift_route_point_sort_orders(route)
         for index, slug in enumerate(ordered):
             wp = points[slug]
             rp, _ = RoutePoint.objects.get_or_create(
@@ -368,8 +397,10 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
                 "seed_version": version,
                 "fixture_managed": True,
             }
+            changed_fields = [key for key, value in values.items() if getattr(rp, key) != value]
             for key, value in values.items(): setattr(rp, key, value)
-            rp.save()
+            if changed_fields:
+                rp.save(update_fields=sorted(set(changed_fields + ["updated_at"])))
         if prune:
             route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()
         _restore_manual_route_point_positions(
@@ -414,7 +445,7 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
             pruned_points += 1
     if raise_on_conflict and conflicts:
         raise CatalogImportConflict(conflicts)
-    search = rebuild_search_index()
+    search = rebuild_search_index() if rebuild_search else {"entries": 0}
     return {
         "catalog_version": version,
         "point": _point_slug(data),

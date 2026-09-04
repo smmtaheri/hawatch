@@ -232,12 +232,9 @@ def sitemap_xml(_request):
     from django.conf import settings
 
     base = settings.PUBLIC_SITE_ORIGIN
-    points = WeatherPoint.objects.filter(
-        is_active=True,
-        seo_indexable=True,
-    ).exclude(slug__startswith="dest:").exclude(slug__startswith="route:").values_list("slug", flat=True)
+    points = publicly_visible_weather_points().order_by("slug").values_list("slug", flat=True)
     routes = Route.objects.filter(is_active=True).values_list("slug", flat=True)
-    urls = [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
+    urls = [f"{base}/"] + [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     xml.extend(f"<url><loc>{escape(url)}</loc></url>" for url in urls)
     xml.append("</urlset>")

@@ -64,8 +64,10 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
     points = list(route.points.select_related("weather_point").order_by("sort_order", "pk"))
     total = len(points)
 
-    # Temporarily shift sort_order to avoid UniqueConstraint collisions while renumbering.
-    if points:
+    # Temporarily shift sort_order only when renumbering is needed; repeated
+    # catalog syncs must not rewrite every RoutePoint.
+    needs_renumber = [point.sort_order for point in points] != list(range(1, total + 1))
+    if points and needs_renumber:
         shift_route_point_sort_orders(route)
         points = list(route.points.select_related("weather_point").order_by("sort_order", "pk"))
 
@@ -73,8 +75,9 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
     for index, point in enumerate(points):
         desired_order = index + 1
         fields = synchronize_route_point_from_weather_point(point)
-        point.sort_order = desired_order
-        fields.append("sort_order")
+        if point.sort_order != desired_order:
+            point.sort_order = desired_order
+            fields.append("sort_order")
         axis_x, axis_y = axis_for_index(index, total)
         if point.axis_x != axis_x:
             point.axis_x = axis_x
