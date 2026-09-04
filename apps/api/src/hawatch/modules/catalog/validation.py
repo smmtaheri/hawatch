@@ -71,6 +71,14 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
     primary_slug = str(data.get("primary_point") or profile.get("slug") or "")
     if primary_slug not in point_slugs:
         issues.append(_issue("error", "primary-point", f"primary point is missing: {primary_slug!r}"))
+    elif primary_slug in point_rows and point_rows[primary_slug].get("kind") != "primary":
+        issues.append(
+            _issue(
+                "error",
+                "primary-point-kind",
+                f"primary point {primary_slug!r} must set kind=primary",
+            )
+        )
     page_names: dict[str, list[str]] = defaultdict(list)
     aliases: dict[str, list[str]] = defaultdict(list)
     supported_climates = supported_climate_keys()

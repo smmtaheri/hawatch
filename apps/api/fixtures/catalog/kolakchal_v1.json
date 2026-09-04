@@ -31,6 +31,7 @@
       "latitude": 35.858214,
       "longitude": 51.456313,
       "elevation_m": 3341,
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "Mapcarta/OSM: 3341 m؛ SummitPost: 3350 m؛ Open-Meteo GLO-90 DEM: 3318 m در نزدیک‌ترین grid؛ مقدار نهایی 3341 m با اختلاف 23 m از DEM",
       "page_name": "قلهٔ کلک‌چال تهران",

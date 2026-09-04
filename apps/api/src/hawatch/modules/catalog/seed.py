@@ -80,6 +80,13 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
         .exclude(slug__startswith="dest:")
         .exclude(slug__startswith="route:")
     )
+    # Test settings may restrict deterministic demo generation to the points
+    # exercised by API/period tests. Production settings leave this unset, so
+    # every active point continues to receive a complete demo forecast.
+    configured_slugs = getattr(settings, "DEMO_FORECAST_POINT_SLUGS", None)
+    if configured_slugs is not None:
+        allowed_slugs = {str(slug) for slug in configured_slugs}
+        points = [point for point in points if point.slug in allowed_slugs]
     supported_climates = supported_climate_keys()
     invalid_points = [point for point in points if point.climate not in supported_climates]
     if invalid_points:

@@ -65,7 +65,6 @@ def seeded(db, monkeypatch):
     return seed_demo_data(force=True)
 
 
-@pytest.mark.django_db
 def test_parse_period_accepts_four_periods_and_legacy_noon_alias():
     assert parse_period("midnight") == "midnight"
     assert parse_period("morning") == "morning"
@@ -75,7 +74,6 @@ def test_parse_period_accepts_four_periods_and_legacy_noon_alias():
     assert parse_period(None) == "morning"
 
 
-@pytest.mark.django_db
 def test_default_selection_boundaries():
     tz = timezone()
     cases = [
@@ -94,7 +92,6 @@ def test_default_selection_boundaries():
         assert period == expected_period
 
 
-@pytest.mark.django_db
 def test_period_windows_do_not_overlap():
     day = REFERENCE_DATE
     windows = {name: period_window(day, name) for name in ("midnight", "morning", "noon", "night")}
@@ -172,7 +169,6 @@ def test_defaults_applied_without_query_params(mock_default, api_client, seeded)
     mock_default.assert_called_once()
 
 
-@pytest.mark.django_db
 def test_period_start_minutes_stay_inside_same_day_windows():
     assert parse_start_minutes("00:30", "midnight", None) == 0
     assert parse_start_minutes("05:30", "midnight", None) == 300
@@ -248,7 +244,6 @@ def test_forecast_clock_stays_on_official_iran_time():
     assert flags["is_current"] is True
 
 
-@pytest.mark.django_db
 def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
     tz = timezone()
     cases = [
@@ -264,7 +259,6 @@ def test_current_period_start_minutes_floors_without_crossing_exclusive_end():
         assert current_period_start_minutes(period, at) == expected
 
 
-@pytest.mark.django_db
 def test_parse_start_minutes_respects_exclusive_period_end():
     assert parse_start_minutes("06:00", "midnight", None) == 300
     assert parse_start_minutes("12:00", "morning", None) == 660
@@ -435,7 +429,6 @@ def test_route_start_time_floors_off_step_minutes(api_client, seeded):
     assert body["start_minutes"] == 600
 
 
-@pytest.mark.django_db
 def test_normalize_start_minutes_floors_persian_digits():
     assert normalize_start_minutes("۱۰:۱۵", "morning") == 600
     assert resolve_planner_start_minutes(
@@ -446,7 +439,6 @@ def test_normalize_start_minutes_floors_persian_digits():
     ) == 840
 
 
-@pytest.mark.django_db
 def test_parse_start_time_value_rejects_malformed():
     with pytest.raises(StartTimeValidationError):
         parse_start_time_value("12:xx")
@@ -458,7 +450,6 @@ def test_parse_start_time_value_rejects_malformed():
         parse_start_time_value("12:60")
 
 
-@pytest.mark.django_db
 def test_legacy_numeric_start_time_minutes():
     assert normalize_start_minutes("360", "morning") == 360
     assert normalize_start_minutes("90", "midnight") == 60
@@ -473,7 +464,6 @@ def test_route_invalid_start_time_returns_400(api_client, seeded):
     assert response.status_code == 400
 
 
-@pytest.mark.django_db
 def test_start_time_wire_format_is_ascii():
     assert format_start_time_wire(360) == "06:00"
     assert format_start_time_wire(720) == "12:00"

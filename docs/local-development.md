@@ -118,6 +118,12 @@ docker compose -f infra/compose/compose.yaml config
 
 pytest روی میزبان بدون GDAL/PostGIS معمولاً fail می‌شود؛ تست backend را داخل container اجرا کنید.
 
+تنظیمات pytest، catalog کامل را برای تست‌های جست‌وجو و API وارد می‌کند اما
+Forecast دمو را فقط برای نقاط زنجیرهٔ مسیرهای توچال و گهر می‌سازد؛ این نقاط تمام
+endpointهای forecast مورد استفادهٔ suite را پوشش می‌دهند و از ساخت ده‌ها هزار
+رکورد تکراری برای تست‌های بدون نیاز جلوگیری می‌کنند. تنظیم فوق فقط در
+`hawatch.config.settings.test` فعال است و روی runtime یا ingest واقعی اثری ندارد.
+
 ## خارج از scope این milestone
 
 - OTP واقعی و session ورود

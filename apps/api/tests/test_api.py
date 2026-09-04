@@ -8,6 +8,7 @@ from rest_framework.test import APIClient
 from hawatch.common.time import day_window, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
+from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
@@ -22,7 +23,6 @@ def seeded(db):
     return seed_demo_data(force=True)
 
 
-@pytest.mark.django_db
 def test_live_health(api_client):
     response = api_client.get("/api/v1/health/live/")
     assert response.status_code == 200
@@ -43,26 +43,17 @@ def test_ready_health_postgis(api_client, seeded):
 
 @pytest.mark.django_db
 def test_known_points_and_routes_exist(seeded):
+    desired = load_packaged_catalogs()
     slugs = set(WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY).values_list("slug", flat=True))
-    assert slugs == {
-        "alamkuh",
-        "azadkouh",
-        "damavand",
-        "darabad",
-        "daryasar",
-        "dorfak",
-        "eskelim",
-        "gahar",
-        "hazar",
-        "sabalan",
-        "tar-lake",
-        "tochal",
-        "zarrinkuh",
+    expected_primary = {
+        str(data.get("primary_point") or data["point"].get("slug"))
+        for _relative, data in desired.files
     }
+    assert slugs == expected_primary
     route_slugs = set(Route.objects.values_list("slug", flat=True))
+    assert route_slugs == set(desired.route_slugs)
     assert "tochal-darband" in route_slugs
     assert {"gahar-dorud", "gahar-aligudarz"} <= route_slugs
-    assert len(route_slugs) == 35
     assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
 
@@ -70,8 +61,9 @@ def test_known_points_and_routes_exist(seeded):
 @pytest.mark.django_db
 def test_all_active_catalog_points_are_indexable(seeded):
     public_points = WeatherPoint.objects.filter(is_active=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
+    desired = load_packaged_catalogs()
 
-    assert public_points.count() == 127
+    assert set(public_points.values_list("slug", flat=True)) == set(desired.point_slugs)
     assert not public_points.filter(seo_indexable=False).exists()
 
 
@@ -82,12 +74,17 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     assert response.status_code == 200
     root = ElementTree.fromstring(response.content)
     locations = [node.text for node in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
-    assert len(locations) == 163
+    desired = load_packaged_catalogs()
+    expected_points = {f"https://hawatch.ir/points/{slug}" for slug in desired.point_slugs}
+    expected_routes = {f"https://hawatch.ir/routes/{slug}" for slug in desired.route_slugs}
+    expected_locations = {"https://hawatch.ir/"} | expected_points | expected_routes
+    assert set(locations) == expected_locations
+    assert len(locations) == 1 + len(expected_points) + len(expected_routes)
     assert len(locations) == len(set(locations))
     assert locations[0] == "https://hawatch.ir/"
     assert all(url.startswith("https://hawatch.ir/") and "?" not in url for url in locations)
-    assert sum("/points/" in url for url in locations) == 127
-    assert sum("/routes/" in url for url in locations) == 35
+    assert sum("/points/" in url for url in locations) == len(expected_points)
+    assert sum("/routes/" in url for url in locations) == len(expected_routes)
 
 
 @pytest.mark.django_db

@@ -212,6 +212,7 @@
       "latitude": 36.064683,
       "longitude": 51.551772,
       "elevation_m": 4375,
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "منابع رایج کوهنوردی: 4375 m؛ Mapcarta/OSM: 4369 m؛ Open-Meteo GLO-90 DEM: 4349 m در نزدیک‌ترین grid؛ اختلاف مقدار نهایی با DEM برابر 26 m",
       "page_name": "قلهٔ خلنو بزرگ، بلندترین قلهٔ استان تهران",

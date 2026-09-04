@@ -7,9 +7,10 @@ from django.contrib.gis.geos import Point
 from django.core.management import call_command
 from django.db.models import Q
 
+from hawatch.modules.catalog.sync import load_packaged_catalogs
+from hawatch.modules.catalog.tochal import seed_tochal_catalog
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
-from hawatch.modules.catalog.tochal import seed_tochal_catalog
 
 
 def _point(slug: str, *, fixture_managed: bool) -> WeatherPoint:
@@ -62,8 +63,9 @@ def test_catalog_sync_upgrades_existing_database_and_is_idempotent():
 
     call_command("sync_catalog", "--apply", stdout=StringIO())
 
-    assert WeatherPoint.objects.filter(is_active=True, fixture_managed=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:")).count() == 127
-    assert Route.objects.filter(is_active=True).count() == 35
+    desired = load_packaged_catalogs()
+    assert WeatherPoint.objects.filter(is_active=True, fixture_managed=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:")).count() == len(desired.point_slugs)
+    assert Route.objects.filter(is_active=True).count() == len(desired.route_slugs)
     assert not WeatherPoint.objects.get(pk=stale.pk).is_active
     assert not Route.objects.get(pk=stale_route.pk).is_active
     assert WeatherPoint.objects.get(pk=manual.pk).is_active
