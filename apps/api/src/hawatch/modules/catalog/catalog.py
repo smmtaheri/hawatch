@@ -400,7 +400,7 @@ def seed_catalog(
             changed_fields = [key for key, value in values.items() if getattr(rp, key) != value]
             for key, value in values.items(): setattr(rp, key, value)
             if changed_fields:
-                rp.save(update_fields=sorted(set(changed_fields + ["updated_at"])))
+                rp.save(update_fields=sorted(set(changed_fields)))
         if prune:
             route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()
         _restore_manual_route_point_positions(
