@@ -353,6 +353,14 @@ run_stack() {
   "${compose[@]}" up -d --force-recreate --remove-orphans nginx
   wait_for_healthy nginx
 
+  # A release may target an existing database whose catalog predates the
+  # current canonical point/route graph. Synchronize fixture-managed rows
+  # before smoke checks; the command is atomic and preserves operator-managed
+  # rows. On an empty database the startup bootstrap has already populated the
+  # catalogs, so this is an idempotent no-op.
+  log "Synchronizing packaged catalogs on the live database."
+  "${compose[@]}" exec -T api python manage.py sync_catalog --apply
+
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/" >/dev/null
