@@ -33,11 +33,11 @@ if [ "${DEMO_DATA_ENABLED:-true}" = "true" ]; then
   log_info "startup.demo_seed_started"
   python manage.py seed_demo_data
 else
-  # Live mode: bootstrap packaged catalog only when DB has no live points.
-  # Never re-sync or prune Tochal JSON on every restart.
+  # Live mode: bootstrap every packaged catalog only when DB has no live
+  # points. Never re-sync or prune catalog data on a normal restart.
   if [ "${HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY:-true}" = "true" ]; then
     log_info "startup.live_catalog_bootstrap_check"
-    python manage.py bootstrap_live_catalog_if_empty
+    python manage.py bootstrap_live_catalog_if_empty --all
   else
     log_info "startup.live_catalog_bootstrap_skipped"
   fi

@@ -61,7 +61,7 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
   پاک/غیرفعال می‌کند و conflict مبهم را متوقف می‌کند.
 - Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
 - Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
-- Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): seeds only if no live WeatherPoints exist.
+- Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty --all` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): atomically restores every packaged catalog only if no live WeatherPoints exist. A normal restart never re-syncs or prunes an existing catalog.
 - تمام WeatherPointهای فعال و عمومی باید `seo_indexable=true` باشند؛ validator این
   invariant را کنترل می‌کند. Scheduled ingest نقاط `is_active` + `ingest_enabled`
   را بر اساس همین وضعیت یا پیوند به Route فعال انتخاب می‌کند. Snapshot revision is
