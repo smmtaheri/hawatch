@@ -8,7 +8,7 @@ unspecified point.
 from __future__ import annotations
 
 import json
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
 from django.conf import settings
@@ -31,7 +31,7 @@ def _route_distance_km(value: object) -> Decimal | None:
     if value is None:
         return None
     decimal_places = Route._meta.get_field("distance_km").decimal_places
-    return Decimal(str(value)).quantize(Decimal(1).scaleb(-decimal_places))
+    return Decimal(str(value)).quantize(Decimal(1).scaleb(-decimal_places), rounding=ROUND_HALF_UP)
 
 
 class CatalogImportConflict(Exception):
