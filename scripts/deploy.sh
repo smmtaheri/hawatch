@@ -377,6 +377,12 @@ run_stack() {
 
   if [[ "$RUN_INITIAL_INGEST" == "1" ]]; then
     log "Running one initial live ingest. Set RUN_INITIAL_INGEST=0 to skip it."
+    # `ingest` is intentionally not part of the detached `up` set because it
+    # is a one-shot job.  Build it explicitly here; otherwise Compose may run
+    # a stale image left over from an older release even though the API and
+    # scheduler images were rebuilt above.
+    log "Building the one-shot ingest image before running it."
+    "${compose[@]}" build ingest
     "${compose[@]}" run --rm ingest
   else
     log "Initial ingest skipped (RUN_INITIAL_INGEST=${RUN_INITIAL_INGEST})."

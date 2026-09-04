@@ -9,7 +9,7 @@
 - clone یا fast-forward کردن فقط checkout مورد انتظار Hawatch؛
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
-- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛
+- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛ image سرویس one-shot `ingest` درست قبل از اجرای اولیه build می‌شود تا از image قدیمی با dependencyهای ناقص استفاده نشود؛
 - همگام‌سازی atomic همهٔ catalogهای versioned با دیتابیس موجود پیش از smoke check؛
 - توقف کامل containerهای همان Compose project با `down --remove-orphans` و سپس بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate`؛ volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛
 - نمایش status و URLهای قابل تست.
