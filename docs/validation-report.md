@@ -57,7 +57,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 - frontend Vitest: ۶۷ passed در ۶ فایل
 - frontend TypeScript و Vite build: passed
-- validator کاتالوگ: ۹ فایل، بدون خطا/هشدار
+- validator کاتالوگ: ۱۳ فایل، بدون خطا/هشدار
 - تست اسکریپت‌های provider/publish: ۸ passed
 - Docker Django `check` و `makemigrations --check --dry-run`: بدون تغییر migration و بدون خطای system check
 - `compileall` و `git diff --check`: passed
@@ -71,3 +71,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.
 5. validator Open-Meteo برای آزادکوه: ۱۱ نقطه پاسخ hourly و grid معتبر دارند. ارتفاع canonical قلهٔ `azadkouh` با اتکا به منابع منتشرشده و گزارش تابلوی قله روی ۴۳۵۵ متر تثبیت شده است؛ GLO-90 مقدار ۴۲۶۱ متر برمی‌گرداند و اختلاف ۹۴ متر، داخل سقف ۱۰۰ متر، است. مقدار ۴۳۹۰ متر که در برخی نقشه/پایگاه‌ها آمده به‌عنوان اختلاف منبع ثبت شده، نه مقدار catalog.
 6. جزئیات domain زمان‌بندی route، share server-side و provider/fallback نهایی هنوز open هستند.
+7. چهار fixture بازگردانده‌شدهٔ علم‌کوه، دماوند، دشت دریاسر و آبشار اسکلیم با
+   Open-Meteo GLO-90 DEM و پاسخ hourly اعتبارسنجی شده‌اند. نقطه‌های دارای
+   elevation/provenance موقت از nearest cell استفاده می‌کنند تا grid دورتر از
+   ۵ کیلومتر انتخاب نشود.

@@ -41,11 +41,25 @@ def test_ready_health_postgis(api_client, seeded):
 @pytest.mark.django_db
 def test_known_points_and_routes_exist(seeded):
     slugs = set(WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY).values_list("slug", flat=True))
-    assert slugs == {"azadkouh", "darabad", "dorfak", "gahar", "hazar", "sabalan", "tar-lake", "tochal", "zarrinkuh"}
+    assert slugs == {
+        "alamkuh",
+        "azadkouh",
+        "damavand",
+        "darabad",
+        "daryasar",
+        "dorfak",
+        "eskelim",
+        "gahar",
+        "hazar",
+        "sabalan",
+        "tar-lake",
+        "tochal",
+        "zarrinkuh",
+    }
     route_slugs = set(Route.objects.values_list("slug", flat=True))
     assert "tochal-darband" in route_slugs
     assert {"gahar-dorud", "gahar-aligudarz"} <= route_slugs
-    assert len(route_slugs) == 27
+    assert len(route_slugs) == 35
     assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
 
