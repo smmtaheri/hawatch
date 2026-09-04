@@ -8,6 +8,7 @@ unspecified point.
 from __future__ import annotations
 
 import json
+from decimal import Decimal
 from pathlib import Path
 
 from django.conf import settings
@@ -23,6 +24,14 @@ from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.publish import axis_for_index, normalize_and_publish_route
 
 DEFAULT_CATALOG_FILE = "catalog/tochal_v1.json"
+
+
+def _route_distance_km(value: object) -> Decimal | None:
+    """Match the persisted precision of Route.distance_km before comparison."""
+    if value is None:
+        return None
+    decimal_places = Route._meta.get_field("distance_km").decimal_places
+    return Decimal(str(value)).quantize(Decimal(1).scaleb(-decimal_places))
 
 
 class CatalogImportConflict(Exception):
@@ -322,7 +331,7 @@ def seed_catalog(
         route_values = {
             "title": row["title"], "subtitle": row["subtitle"], "trail_label": row["trail_label"],
             "origin": row["origin"], "target_label": row["target_label"], "region": row["region"],
-            "distance_km": row.get("distance_km"), "ascent_m": row.get("ascent_m"), "one_way_minutes": timing["one_way"],
+            "distance_km": _route_distance_km(row.get("distance_km")), "ascent_m": row.get("ascent_m"), "one_way_minutes": timing["one_way"],
             "default_start_minutes": row.get("default_start_minutes", 360), "timing_status": timing["status"],
             "timing_method": timing["method"], "timing_version": timing["version"], "timing_confidence": timing["confidence"],
             "timing_uncertainty_minutes": timing["uncertainty"], "timing_source_urls": timing["sources"],

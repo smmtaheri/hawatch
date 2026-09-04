@@ -92,8 +92,11 @@ uv run python manage.py validate_catalog --all --strict
 
 این validator duplicate slug، underscore، page name/alias collision، metadata
 ناقص، coordinate/elevation نامعتبر، route کمتر از سه نقطه، reference شکسته و
-sort order تکراری را گزارش می‌کند. با `--database`، دیتابیس فعلی نیز read-only
-بررسی می‌شود:
+sort order تکراری را گزارش می‌کند. دو نقطهٔ فعال با فاصلهٔ کمتر از ۲۵ متر خطای
+قطعی‌اند و باید merge شوند. فاصلهٔ ۲۵ تا ۱۰۰ متر هشدار curator می‌دهد، مگر این‌که
+در همان catalog با `reviewed_nearby_point_pairs`، دو slug و علتِ روشن ثبت شده باشد؛
+این استثنا فقط برای دو عارضهٔ واقعی و نام‌دار است و فاصلهٔ کمتر از ۲۵ متر را هرگز
+مجاز نمی‌کند. با `--database`، دیتابیس فعلی نیز read-only بررسی می‌شود:
 
 ```bash
 uv run python manage.py validate_catalog --all --database --strict

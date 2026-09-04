@@ -22,7 +22,10 @@ dev = [
 DJANGO_SETTINGS_MODULE = "hawatch.config.settings.test"
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "-q --reuse-db"
+# The API Compose service runs in production mode. Keep the ordinary
+# `docker compose … exec api pytest` command isolated from that runtime
+# configuration as well as from its live database and provider settings.
+addopts = "-q --reuse-db --ds=hawatch.config.settings.test"
 
 [tool.uv]
 package = false

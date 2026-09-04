@@ -78,10 +78,12 @@ def test_ingest_ignores_unlinked_non_indexable_point(tochal):
 
 
 @pytest.mark.django_db
-def test_ingest_excludes_inactive_route_only_point(tochal):
+def test_ingest_keeps_active_indexable_point_when_its_routes_are_inactive(tochal):
     point = WeatherPoint.objects.get(slug="tochal-sarband-square")
     Route.objects.filter(points__weather_point=point).update(is_active=False)
-    assert point.slug not in list(ingestible_weather_points().values_list("slug", flat=True))
+    # All public Points are now indexable by policy, so ingest does not depend
+    # on at least one active Route for this point.
+    assert point.slug in list(ingestible_weather_points().values_list("slug", flat=True))
 
     Route.objects.filter(points__weather_point=point).update(is_active=True)
     point.is_active = False

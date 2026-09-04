@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import json
 import math
 from collections import defaultdict
 from collections.abc import Iterable
 from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
+
+from django.conf import settings
 
 from hawatch.integrations.weather.demo import supported_climate_keys
 from hawatch.modules.catalog.identity import IDENTITY_IMPORTANCE, NAME_STATUSES, PLACE_TYPES, SLUG_RE, normalize_identity_text
@@ -46,6 +51,23 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         issues.append(_issue("error", "shared-points", "shared_weather_points must be a unique list"))
         shared = []
     point_slugs = set(point_rows) | set(shared)
+    reviewed_pairs = data.get("reviewed_nearby_point_pairs") or []
+    if not isinstance(reviewed_pairs, list):
+        issues.append(_issue("error", "reviewed-nearby-points", "reviewed_nearby_point_pairs must be a list"))
+        reviewed_pairs = []
+    for pair in reviewed_pairs:
+        if not isinstance(pair, dict):
+            issues.append(_issue("error", "reviewed-nearby-points", "each reviewed nearby-point pair must be an object"))
+            continue
+        slugs = pair.get("slugs")
+        reason = pair.get("reason")
+        if not isinstance(slugs, list) or len(slugs) != 2 or len(set(slugs)) != 2:
+            issues.append(_issue("error", "reviewed-nearby-points", "a reviewed nearby-point pair needs exactly two distinct slugs"))
+            continue
+        if any(slug not in point_slugs for slug in slugs):
+            issues.append(_issue("error", "reviewed-nearby-points", "a reviewed nearby-point pair references a missing point"))
+        if not isinstance(reason, str) or not reason.strip():
+            issues.append(_issue("error", "reviewed-nearby-points", "a reviewed nearby-point pair needs a curator reason"))
     primary_slug = str(data.get("primary_point") or profile.get("slug") or "")
     if primary_slug not in point_slugs:
         issues.append(_issue("error", "primary-point", f"primary point is missing: {primary_slug!r}"))
@@ -132,6 +154,24 @@ def _distance_m(first: Any, second: Any) -> float:
     return 6_371_000 * 2 * math.asin(min(1, math.sqrt(a)))
 
 
+@lru_cache
+def _reviewed_nearby_point_pairs() -> frozenset[frozenset[str]]:
+    """Return the explicitly curated 25--100m point-pair exceptions.
+
+    These entries document distinct, named features that intentionally share a
+    small area. They never exempt pairs closer than 25m, which remain errors.
+    """
+    catalog_dir = Path(settings.FIXTURES_DIR) / "catalog"
+    pairs: set[frozenset[str]] = set()
+    for path in catalog_dir.glob("*_v*.json"):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for pair in data.get("reviewed_nearby_point_pairs") or []:
+            slugs = pair.get("slugs") if isinstance(pair, dict) else None
+            if isinstance(slugs, list) and len(slugs) == 2 and len(set(slugs)) == 2:
+                pairs.add(frozenset(str(slug) for slug in slugs))
+    return frozenset(pairs)
+
+
 def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
     from hawatch.modules.forecasts.models import WeatherPoint
     from hawatch.modules.routes.models import Route
@@ -159,12 +199,13 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
     for normalized, slugs in names.items():
         if normalized and len(slugs) > 1:
             issues.append(_issue("error", "duplicate-page-name", f"duplicate page_name: {', '.join(slugs)}"))
+    reviewed_pairs = _reviewed_nearby_point_pairs()
     for index, first in enumerate(points):
         for second in points[index + 1 :]:
             distance = _distance_m(first, second)
             if distance < 25:
                 issues.append(_issue("error", "near-duplicate-point", f"points {first.slug} and {second.slug} are {distance:.1f}m apart; merge them before publish"))
-            elif distance < 100:
+            elif distance < 100 and frozenset((first.slug, second.slug)) not in reviewed_pairs:
                 issues.append(_issue("warning", "near-point", f"points {first.slug} and {second.slug} are {distance:.1f}m apart; curator review required"))
     for route in Route.objects.filter(is_active=True).prefetch_related("points"):
         ordered = list(route.points.order_by("sort_order"))

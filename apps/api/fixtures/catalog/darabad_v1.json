@@ -1,5 +1,14 @@
 {
   "catalog_version": "hawatch-darabad-catalog-v1",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": [
+        "darabad-haft-hoz",
+        "darabad-darazlash-spring"
+      ],
+      "reason": "سر هفت‌حوض و چشمهٔ درازلش دو waypoint نام‌دار و متفاوت در GPX مسیر دارآباد هستند؛ هر دو باید در زنجیرهٔ عمومی مسیر باقی بمانند."
+    }
+  ],
   "weather_points": {
     "darabad-parking": {
       "name": "پارکینگ دارآباد",

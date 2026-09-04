@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
@@ -11,7 +10,7 @@ from django.conf import settings
 from django.db import transaction
 from django.db.models import Q
 
-from hawatch.modules.catalog.catalog import _validate_document_shape, load_catalog_file, seed_catalog
+from hawatch.modules.catalog.catalog import _route_distance_km, _validate_document_shape, load_catalog_file, seed_catalog
 from hawatch.modules.catalog.identity import metadata_for_point
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -158,7 +157,7 @@ def _route_matches_catalog(route: Route, slug: str, desired: DesiredCatalog) -> 
         "origin": row.get("origin", ""),
         "target_label": row.get("target_label", ""),
         "region": row.get("region", ""),
-        "distance_km": Decimal(str(row["distance_km"])) if row.get("distance_km") is not None else None,
+        "distance_km": _route_distance_km(row.get("distance_km")),
         "ascent_m": row.get("ascent_m"),
         "featured": bool(row.get("featured", False)),
         "sort_order": row.get("sort_order", 0),
