@@ -9,7 +9,7 @@ from django.db import transaction
 from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
-from hawatch.integrations.weather.demo import generate_reading
+from hawatch.integrations.weather.demo import generate_reading, supported_climate_keys
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
@@ -34,8 +34,23 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
     if not force and not created and state.last_hour_bucket == bucket and state.seed_version == seed_version:
         return state
     generated_at = dj_timezone.now()
+    points = list(
+        WeatherPoint.objects.filter(is_active=True)
+        .exclude(slug__startswith="dest:")
+        .exclude(slug__startswith="route:")
+    )
+    supported_climates = supported_climate_keys()
+    invalid_points = [point for point in points if point.climate not in supported_climates]
+    if invalid_points:
+        details = ", ".join(f"{point.slug}={point.climate!r}" for point in invalid_points)
+        allowed = ", ".join(sorted(supported_climates))
+        raise ValueError(
+            "Cannot generate demo forecasts; unsupported climate profile(s): "
+            f"{details}. Allowed values: {allowed}"
+        )
+
     records = []
-    for point in WeatherPoint.objects.filter(is_active=True).exclude(slug__startswith="dest:").exclude(slug__startswith="route:"):
+    for point in points:
         elevation = point.elevation_m or 2000
         for day in day_window(local.date()):
             for hour in ALL_HOURS:

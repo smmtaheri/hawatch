@@ -1,5 +1,8 @@
 from django.contrib.gis.db import models
 from django.contrib.postgres.indexes import GistIndex
+from django.core.exceptions import ValidationError
+
+from hawatch.integrations.weather.demo import supported_climate_keys
 
 
 class WeatherPoint(models.Model):
@@ -78,6 +81,13 @@ class WeatherPoint(models.Model):
 
     def __str__(self) -> str:
         return self.slug
+
+    def clean(self) -> None:
+        super().clean()
+        supported_climates = supported_climate_keys()
+        if self.climate not in supported_climates:
+            allowed = ", ".join(sorted(supported_climates))
+            raise ValidationError({"climate": f"Unsupported demo climate profile. Allowed values: {allowed}"})
 
 
 class ForecastSnapshot(models.Model):

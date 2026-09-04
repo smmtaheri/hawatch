@@ -23,6 +23,7 @@ sitemap نقطه/مسیر در همین قرارداد فعال است.
 - `page_name` یکتا و قابل جست‌وجوی مستقل، `place_type`، `identity_summary`؛
 - `importance` یکی از `primary`/`support` و `name_status` یکی از
   `official`/`established`/`descriptive`؛
+- `climate` باید یکی از profileهای demo (`alpine`، `desert`، `forest_fog`، `high_alpine`، `lake_valley` یا `meadow`) باشد؛ validator و Admin مقدار ناشناخته را قبل از import/save رد می‌کنند؛
 - `seo_indexable` فقط برای نقطهٔ شاخصی که عمداً برای ایندکس عمومی تأیید شده است؛
   نقطهٔ متصل به route فعال بدون این flag هم برای forecast و search قابل‌دسترسی است؛
 - `aliases` برای شکل‌های رایج جست‌وجو و `source_urls` برای منابع هویت/موقعیت؛

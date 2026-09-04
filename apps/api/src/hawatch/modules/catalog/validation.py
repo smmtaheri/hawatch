@@ -8,6 +8,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Any
 
+from hawatch.integrations.weather.demo import supported_climate_keys
 from hawatch.modules.catalog.identity import IDENTITY_IMPORTANCE, NAME_STATUSES, PLACE_TYPES, SLUG_RE, normalize_identity_text
 
 
@@ -50,12 +51,31 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         issues.append(_issue("error", "primary-point", f"primary point is missing: {primary_slug!r}"))
     page_names: dict[str, list[str]] = defaultdict(list)
     aliases: dict[str, list[str]] = defaultdict(list)
+    supported_climates = supported_climate_keys()
+    profile_climate = profile.get("climate", "alpine") if isinstance(profile, dict) else "alpine"
+    if profile_climate not in supported_climates:
+        issues.append(
+            _issue(
+                "error",
+                "climate-profile",
+                f"point profile has unsupported climate {profile_climate!r}; allowed: {', '.join(sorted(supported_climates))}",
+            )
+        )
     for slug, row in point_rows.items():
         if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
             issues.append(_issue("error", "point-slug", f"invalid point slug: {slug!r}"))
         if not isinstance(row, dict):
             issues.append(_issue("error", "point", f"point {slug!r} must be an object"))
             continue
+        climate = row.get("climate") or profile_climate
+        if climate not in supported_climates:
+            issues.append(
+                _issue(
+                    "error",
+                    "climate-profile",
+                    f"point {slug!r} has unsupported climate {climate!r}; allowed: {', '.join(sorted(supported_climates))}",
+                )
+            )
         for key in ("name", "page_name", "short_label", "place_type", "identity_summary", "importance", "name_status", "source_urls"):
             if not row.get(key):
                 issues.append(_issue("error", "point-metadata", f"point {slug!r} is missing {key}"))
@@ -114,12 +134,21 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
 
     issues: list[CatalogIssue] = []
     points = list(WeatherPoint.objects.filter(is_active=True))
+    supported_climates = supported_climate_keys()
     names: dict[str, list[str]] = defaultdict(list)
     for point in points:
         if point.slug.startswith(("dest:", "route:")) or not SLUG_RE.fullmatch(point.slug) or "_" in point.slug:
             issues.append(_issue("error", "point-slug", f"invalid DB point slug: {point.slug}"))
         if not point.page_name or not point.short_label or not point.place_type or not point.identity_summary or not point.source_urls:
             issues.append(_issue("error", "point-metadata", f"point metadata incomplete: {point.slug}"))
+        if point.climate not in supported_climates:
+            issues.append(
+                _issue(
+                    "error",
+                    "climate-profile",
+                    f"point has unsupported climate {point.climate!r}: {point.slug}",
+                )
+            )
         names[normalize_identity_text(point.page_name)].append(point.slug)
     for normalized, slugs in names.items():
         if normalized and len(slugs) > 1:

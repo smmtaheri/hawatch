@@ -4,10 +4,14 @@ import json
 from pathlib import Path
 
 import pytest
+from django.contrib.gis.geos import Point
+from django.core.exceptions import ValidationError
 
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
+from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.validation import validate_catalog_document
 from hawatch.modules.catalog.validation import validate_database_catalog
+from hawatch.modules.forecasts.models import WeatherPoint
 
 
 def _catalog_paths() -> list[Path]:
@@ -101,6 +105,40 @@ def test_route_requires_origin_landmark_and_target():
     }
 
     assert any(issue.code == "route-chain" for issue in validate_catalog_document(catalog))
+
+
+def test_catalog_rejects_an_unsupported_demo_climate_before_import():
+    path = Path(__file__).parents[1] / "fixtures/catalog/eskelim_v1.json"
+    catalog = json.loads(path.read_text(encoding="utf-8"))
+    catalog["weather_points"]["eskelim-parking"]["climate"] = "forest"
+
+    issues = validate_catalog_document(catalog)
+
+    assert any(issue.code == "climate-profile" and issue.level == "error" for issue in issues)
+
+
+def test_weather_point_model_validation_rejects_an_unsupported_demo_climate():
+    point = WeatherPoint(
+        slug="test-forest-point",
+        name="نقطهٔ تست جنگلی",
+        location=Point(52.0, 35.0, srid=4326),
+        climate="forest",
+    )
+
+    with pytest.raises(ValidationError, match="Unsupported demo climate profile"):
+        point.full_clean()
+
+
+@pytest.mark.django_db
+def test_seed_catalog_rejects_an_unsupported_demo_climate_without_writing_rows():
+    path = Path(__file__).parents[1] / "fixtures/catalog/eskelim_v1.json"
+    catalog = json.loads(path.read_text(encoding="utf-8"))
+    catalog["weather_points"]["eskelim-parking"]["climate"] = "forest"
+
+    with pytest.raises(ValueError, match="climate-profile"):
+        seed_catalog(catalog=catalog)
+
+    assert WeatherPoint.objects.count() == 0
 
 
 @pytest.mark.django_db

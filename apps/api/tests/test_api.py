@@ -145,6 +145,17 @@ def test_deterministic_seed_same_hour(seeded):
     assert first != other_day
 
 
+def test_demo_reading_rejects_unknown_climate_with_an_actionable_error():
+    with pytest.raises(ValueError, match="Unsupported demo climate profile 'forest'"):
+        generate_reading(
+            point_slug="eskelim-parking",
+            climate_key="forest",
+            elevation_m=900,
+            local_date=now_tehran().date(),
+            hour=0,
+        )
+
+
 @pytest.mark.django_db
 def test_route_forecast_start_and_speed(api_client, seeded):
     today = now_tehran().date()

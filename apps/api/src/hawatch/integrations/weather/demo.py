@@ -10,6 +10,7 @@ import hashlib
 import json
 import math
 from datetime import date
+from functools import lru_cache
 from pathlib import Path
 
 from django.conf import settings
@@ -28,9 +29,16 @@ WIND_LABELS = {
 }
 
 
-def _profiles() -> dict:
+@lru_cache(maxsize=1)
+def climate_profiles() -> dict[str, dict]:
+    """Load the finite set of demo climates once per process."""
     path = Path(settings.FIXTURES_DIR) / "weather" / "climate_profiles.json"
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def supported_climate_keys() -> frozenset[str]:
+    """Climate keys accepted by catalog imports, Admin, and demo forecasts."""
+    return frozenset(climate_profiles())
 
 
 def unit(seed: str) -> float:
@@ -56,8 +64,14 @@ def generate_reading(
     local_date: date,
     hour: int,
 ) -> NormalizedReading:
-    profiles = _profiles()
-    climate = profiles[climate_key]
+    profiles = climate_profiles()
+    try:
+        climate = profiles[climate_key]
+    except KeyError as exc:
+        allowed = ", ".join(sorted(profiles))
+        raise ValueError(
+            f"Unsupported demo climate profile {climate_key!r}; allowed values: {allowed}"
+        ) from exc
     base = seed_key(point_slug, local_date.isoformat(), hour)
     u1, u2, u3, u4 = unit(base + "|a"), unit(base + "|b"), unit(base + "|c"), unit(base + "|d")
 
