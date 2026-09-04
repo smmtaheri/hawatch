@@ -10,7 +10,7 @@ from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import ALL_HOURS, day_window, hour_bucket, localize_dt, now_tehran
 from hawatch.integrations.weather.demo import generate_reading, supported_climate_keys
-from hawatch.modules.catalog.catalog import seed_catalog
+from hawatch.modules.catalog.catalog import load_catalog_file, seed_catalog
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 
@@ -18,9 +18,50 @@ DATA_MODE = "demo"
 
 
 def ensure_catalog(seed_version: str) -> dict[str, WeatherPoint]:
+    """Import packaged catalogs after the owners of their shared points.
+
+    Filename order is not a catalog dependency contract: a newly added catalog
+    can reference a shared Point in any existing catalog.  Resolve those
+    dependencies from the versioned documents before the first bootstrap so a
+    fresh database is reproducible and does not depend on stale test data.
+    """
+
+    documents = {
+        Path(path).relative_to(settings.FIXTURES_DIR).as_posix(): load_catalog_file(
+            Path(path).relative_to(settings.FIXTURES_DIR).as_posix()
+        )
+        for path in sorted(glob.glob(str(Path(settings.FIXTURES_DIR) / "catalog/*_v*.json")))
+    }
+    owners: dict[str, str] = {}
+    for relative, document in documents.items():
+        for slug in document["weather_points"]:
+            existing_owner = owners.setdefault(slug, relative)
+            if existing_owner != relative:
+                raise ValueError(f"WeatherPoint {slug} has multiple catalog owners: {existing_owner}, {relative}")
+
+    dependencies = {
+        relative: {
+            owners[slug]
+            for slug in document.get("shared_weather_points") or []
+            if slug in owners and owners[slug] != relative
+        }
+        for relative, document in documents.items()
+    }
+    ordered_catalogs: list[str] = []
+    remaining = set(documents)
+    while remaining:
+        ready = sorted(relative for relative in remaining if dependencies[relative] <= set(ordered_catalogs))
+        if not ready:
+            blocked = "; ".join(
+                f"{relative} -> {', '.join(sorted(dependencies[relative] & remaining))}"
+                for relative in sorted(remaining)
+            )
+            raise ValueError(f"Catalog shared-point dependency cycle: {blocked}")
+        ordered_catalogs.extend(ready)
+        remaining.difference_update(ready)
+
     result: dict[str, WeatherPoint] = {}
-    for path in sorted(glob.glob(str(Path(settings.FIXTURES_DIR) / "catalog/*_v*.json"))):
-        relative = Path(path).relative_to(settings.FIXTURES_DIR).as_posix()
+    for relative in ordered_catalogs:
         seed_catalog(catalog_file=relative, prune=False, force_adopt=False, rebuild_search=False)
     result.update({point.slug: point for point in WeatherPoint.objects.filter(data_mode="live")})
     rebuild_search_index()

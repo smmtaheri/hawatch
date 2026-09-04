@@ -1,10 +1,19 @@
+import pytest
 from django.contrib.gis.geos import Point
 
+from hawatch.modules.catalog.seed import ensure_catalog
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
 
-def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seeded):
+@pytest.fixture
+def seo_catalog(db):
+    """SEO HTML only needs catalog identities, not generated forecast records."""
+
+    return ensure_catalog("hawatch-test-demo-v1")
+
+
+def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_catalog):
     response = api_client.get("/")
 
     assert response.status_code == 200
@@ -18,7 +27,7 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seeded):
     assert response["X-Robots-Tag"] == "index,follow"
 
 
-def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seeded):
+def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catalog):
     point = WeatherPoint.objects.create(
         slug="seo-test-ridge",
         name="یال آزمایشی",
@@ -60,7 +69,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seeded):
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in trailing_response.content.decode()
 
 
-def test_route_html_is_database_driven(api_client, seeded):
+def test_route_html_is_database_driven(api_client, seo_catalog):
     route = Route.objects.create(
         slug="seo-test-route",
         title="مسیر آزمایشی تهران",
@@ -87,7 +96,7 @@ def test_route_html_is_database_driven(api_client, seeded):
     assert "12.5 کیلومتر" in body
 
 
-def test_invalid_public_slug_is_a_real_noindex_404(api_client, seeded):
+def test_invalid_public_slug_is_a_real_noindex_404(api_client, seo_catalog):
     response = api_client.get("/points/not-a-real-point")
 
     assert response.status_code == 404
