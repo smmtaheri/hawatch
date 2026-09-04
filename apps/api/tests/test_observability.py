@@ -43,7 +43,7 @@ def test_metrics_expose_catalog_health_and_request_data(api_client, seeded):
     assert metrics_response.status_code == 200
     body = metrics_response.content.decode()
     assert "# TYPE hawatch_http_requests_total counter" in body
-    assert "hawatch_catalog_destinations" in body
+    assert "hawatch_catalog_points" in body
     assert "hawatch_catalog_routes" in body
     assert "hawatch_catalog_weather_points" in body
     assert 'hawatch_health_status{check="live"} 1' in body
@@ -69,7 +69,7 @@ def test_status_endpoint_reports_catalog_and_live_freshness(api_client, seeded):
     assert body["status"] == "degraded"
     assert body["database"] == "ok"
     assert body["postgis"] is True
-    assert body["catalog"]["destinations"] >= 1
+    assert body["catalog"]["points"] >= 1
     assert body["catalog"]["routes"] >= 1
     assert body["catalog"]["weather_points"] >= 1
     assert body["forecast"]["latest_attempt_status"] is None

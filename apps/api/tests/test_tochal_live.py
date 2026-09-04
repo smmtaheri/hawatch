@@ -21,18 +21,17 @@ from hawatch.integrations.weather.normalize import map_weather_code, normalize_p
 from hawatch.integrations.weather.providers.open_meteo import OpenMeteoProvider, ProviderPoint
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.tochal import load_tochal_catalog, seed_tochal_catalog
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import ForecastPointResolution, ForecastRecord, ForecastSnapshot, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
-SHARED_SLUGS = ("tochal_summit", "tochal-goleband-ridge", "tochal-hotel", "tochal-telecabin-station-7")
+SHARED_SLUGS = ("tochal", "tochal-goleband-ridge", "tochal-hotel", "tochal-telecabin-station-7")
 
 EXACT_POINTS = {
     "tochal-pas-ghaleh-village": (35.8361950, 51.4233411, 1936),
     "tochal-barfchal-peak": (35.8744485, 51.4373690, 3680),
     "tochal-goleband-ridge": (35.8809109, 51.4221380, 3860),
-    "tochal_summit": (35.8843493, 51.4198766, 3955),
+    "tochal": (35.8843493, 51.4198766, 3955),
     "tochal-ahar-village": (35.9353996, 51.4635292, 2140),
     "tochal-shakarab-ahaar": (35.9282559, 51.4269378, 2400),
 }
@@ -41,7 +40,7 @@ TEST_POINT_COORDINATES = {
     "tochal-sarband-square": (35.8280442, 51.4266129),
     "tochal-pas-ghaleh-village": (35.8361950, 51.4233411),
     "tochal-shirpala-shelter": (35.8550662, 51.4295976),
-    "tochal_summit": (35.8843493, 51.4198766),
+    "tochal": (35.8843493, 51.4198766),
 }
 
 
@@ -146,7 +145,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     for slug in SHARED_SLUGS:
         assert WeatherPoint.objects.filter(slug=slug).count() == 1
 
-    assert RoutePoint.objects.filter(weather_point__slug="tochal_summit").count() == 5
+    assert RoutePoint.objects.filter(weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(weather_point__slug="tochal-goleband-ridge").count() == 2
     assert RoutePoint.objects.filter(weather_point__slug="tochal-telecabin-station-7").count() == 2
     # Hotel remains a WeatherPoint/POI but is not on the mandatory Velenjak chain.
@@ -190,8 +189,8 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
 
     # No obsolete demo Tochal route points from old fixtures.
     obsolete = {"darband", "amiri-shelter", "loop-pass", "welenjak", "station-7-5", "kolakchal", "dehbahar"}
-    assert not RoutePoint.objects.filter(route__destination__slug="tochal", slug__in=obsolete).exists()
-    assert Destination.objects.get(slug="tochal").elevation_m == 3955
+    assert not RoutePoint.objects.filter(route__target_weather_point__slug="tochal", slug__in=obsolete).exists()
+    assert WeatherPoint.objects.get(slug="tochal").elevation_m == 3955
 
 
 @override_settings(OPEN_METEO_PAST_DAYS=0)
@@ -226,7 +225,7 @@ def test_open_meteo_batching_and_elevation_partition():
 @pytest.mark.django_db
 def test_provisional_catalog_elevation_keeps_nearest_provider_cell():
     seed_tochal_catalog()
-    hotel, summit = WeatherPoint.objects.filter(slug__in=["tochal-hotel", "tochal_summit"]).order_by("slug")
+    hotel, summit = WeatherPoint.objects.filter(slug__in=["tochal-hotel", "tochal"]).order_by("slug")
     points = weather_points_to_provider_points([hotel, summit])
     assert points[0].cell_selection == "nearest"
     assert points[1].cell_selection is None
@@ -354,14 +353,14 @@ def test_partial_ingest_preserves_failed_point_rows():
 @pytest.mark.django_db
 def test_failed_ingest_preserves_previous_usable_snapshot():
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
-    good = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal_summit"], hours=6)])
+    summit = WeatherPoint.objects.get(slug="tochal")
+    good = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal"], hours=6)])
     assert good.status == ForecastSnapshot.Status.SUCCESS
     before_count = ForecastRecord.objects.filter(weather_point=summit, data_mode="live").count()
 
     returned = persist_ingest(
         weather_points=[summit],
-        batch_results=[_batch(["tochal_summit"], status_code=503)],
+        batch_results=[_batch(["tochal"], status_code=503)],
     )
     assert returned.pk == good.pk
     assert ForecastSnapshot.objects.filter(status=ForecastSnapshot.Status.FAILED).exists()
@@ -374,7 +373,7 @@ def test_failed_ingest_preserves_previous_usable_snapshot():
 @override_settings(DEMO_DATA_ENABLED=False)
 def test_live_mode_never_returns_demo_records(api_client):
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     # Plant a demo row that must never be served in live mode.
     ForecastRecord.objects.create(
         weather_point=summit,
@@ -402,7 +401,7 @@ def test_live_mode_never_returns_demo_records(api_client):
         seed_version="hawatch-demo-v1",
         provider="demo",
     )
-    response = api_client.get("/api/v1/destinations/tochal/forecast/")
+    response = api_client.get("/api/v1/points/tochal/forecast/")
     assert response.status_code == 200
     body = response.json()
     assert body["empty"] is True
@@ -417,10 +416,10 @@ def test_live_mode_never_returns_demo_records(api_client):
 @override_settings(DEMO_DATA_ENABLED=False, OPEN_METEO_PAST_DAYS=0)
 def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     persist_ingest(
         weather_points=[summit],
-        batch_results=[_batch(["tochal_summit"], hours=120)],
+        batch_results=[_batch(["tochal"], hours=120)],
     )
 
     def boom(*_args, **_kwargs):
@@ -430,7 +429,7 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
     monkeypatch.setattr(OpenMeteoProvider, "fetch_batch", boom)
 
     response = api_client.get(
-        "/api/v1/destinations/tochal/forecast/",
+        "/api/v1/points/tochal/forecast/",
         {"date": "2026-08-27", "period": "morning"},
     )
     assert response.status_code == 200
@@ -477,8 +476,8 @@ def test_api_reads_do_not_write_catalog(api_client):
     before_links = RoutePoint.objects.count()
     updated_at_slugs = list(WeatherPoint.objects.order_by("slug").values_list("slug", "name", "elevation_m"))
 
-    api_client.get("/api/v1/destinations/")
-    api_client.get("/api/v1/destinations/tochal/forecast/")
+    api_client.get("/api/v1/points/")
+    api_client.get("/api/v1/points/tochal/forecast/")
     api_client.get("/api/v1/routes/tochal-darband/forecast/")
 
     assert WeatherPoint.objects.count() == before_points
@@ -491,8 +490,8 @@ def test_api_reads_do_not_write_catalog(api_client):
 def test_freshness_stale_behavior():
     with override_settings(FORECAST_STALE_AFTER_HOURS=7):
         seed_tochal_catalog()
-        summit = WeatherPoint.objects.get(slug="tochal_summit")
-        snapshot = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal_summit"], hours=6)])
+        summit = WeatherPoint.objects.get(slug="tochal")
+        snapshot = persist_ingest(weather_points=[summit], batch_results=[_batch(["tochal"], hours=6)])
         assert snapshot_freshness(snapshot) == "ready"
         snapshot.generated_at = dj_timezone.now() - timedelta(hours=8)
         snapshot.save(update_fields=["generated_at"])

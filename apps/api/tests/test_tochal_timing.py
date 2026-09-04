@@ -28,7 +28,7 @@ EXPECTED_CUMULATIVE = {
         "tochal-shirpala-shelter": 125,
         "tochal-amiri-shelter": 220,
         "tochal-goleband-ridge": 295,
-        "tochal_summit": 315,
+        "tochal": 315,
     },
     "tochal-velenjak": {
         "tochal-velenjak-parking": 0,
@@ -36,7 +36,7 @@ EXPECTED_CUMULATIVE = {
         "tochal-telecabin-station-2": 85,
         "tochal-telecabin-station-5": 195,
         "tochal-telecabin-station-7": 330,
-        "tochal_summit": 360,
+        "tochal": 360,
     },
     "tochal-kolakchal": {
         "tochal-jamshidieh-park": 0,
@@ -48,14 +48,14 @@ EXPECTED_CUMULATIVE = {
         "tochal-barfchal-peak": 330,
         "tochal-chahar-paloon": 355,
         "tochal-goleband-ridge": 375,
-        "tochal_summit": 390,
+        "tochal": 390,
     },
     "tochal-ahar": {
         "tochal-ahar-village": 0,
         "tochal-shakarab-ahaar": 95,
         "tochal-qezqunchal-peak": 315,
         "tochal-homand-tochal": 360,
-        "tochal_summit": 380,
+        "tochal": 380,
     },
     "tochal-shahrestanak": {
         "tochal-shahrestanak-village": 0,
@@ -65,7 +65,7 @@ EXPECTED_CUMULATIVE = {
         "tochal-shahrestanak-pass": 285,
         "tochal-hotel": 310,
         "tochal-telecabin-station-7": 335,
-        "tochal_summit": 370,
+        "tochal": 370,
     },
 }
 
@@ -197,7 +197,7 @@ def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
         "tochal-shahrestanak-pass",
         "tochal-hotel",
         "tochal-telecabin-station-7",
-        "tochal_summit",
+        "tochal",
     ]
     # Valley variant points remain available globally but are not on this mandatory chain.
     for slug in ("tochal-naseri-junction", "tochal-bazarek-pass", "tochal-shahneshin-pass"):
@@ -209,8 +209,8 @@ def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
 def test_tochal_timing_seed_idempotent(tochal_seeded):
     seed_tochal_catalog()
     seed_tochal_catalog()
-    assert Route.objects.filter(destination__slug="tochal", timing_status="estimated").count() == 5
-    assert WeatherPoint.objects.filter(slug="tochal_summit").count() == 1
+    assert Route.objects.filter(target_weather_point__slug="tochal", timing_status="estimated").count() == 5
+    assert WeatherPoint.objects.filter(slug="tochal").count() == 1
     assert WeatherPoint.objects.filter(slug="tochal-jamshidieh-park").count() == 1
     assert WeatherPoint.objects.filter(slug="tochal-velenjak-parking").count() == 1
     assert WeatherPoint.objects.filter(slug="tochal-velenjak-village").count() == 1
@@ -275,7 +275,7 @@ def test_routes_are_not_timing_pending_after_seed(api_client, tochal_seeded):
 @pytest.mark.django_db
 def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
-    for slug in ("tochal-shirpala-shelter", "tochal_summit", "tochal-pas-ghaleh-village"):
+    for slug in ("tochal-shirpala-shelter", "tochal", "tochal-pas-ghaleh-village"):
         _seed_point_hourly(
             WeatherPoint.objects.get(slug=slug),
             day=day,
@@ -312,7 +312,7 @@ def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_se
 def test_arrival_crosses_midnight(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
     next_day = day + timedelta(days=1)
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     _seed_point_hourly(summit, day=day, hours=[19, 21, 23], temperature_base=-2)
     _seed_point_hourly(summit, day=next_day, hours=[1, 3, 5], temperature_base=-4)
 
@@ -321,13 +321,13 @@ def test_arrival_crosses_midnight(api_client, tochal_seeded):
         {"date": "2026-08-28", "period": "night", "start_time": "20:00", "speed": "متوسط"},
     ).json()
     finish = body["points"][-1]
-    assert finish["slug"] == "tochal_summit"
+    assert finish["slug"] == "tochal"
     assert finish["arrival_minutes"] == 1200 + 380  # 20:00 + 380 → next calendar day
     arrival_at = arrival_forecast_at(day, finish["arrival_minutes"])
     assert arrival_at.date() == next_day
     assert finish["arrival_at"].startswith("2026-08-29")
     assert finish["weather_available"] is True
-    assert finish["weather_point_slug"] == "tochal_summit"
+    assert finish["weather_point_slug"] == "tochal"
     assert finish["forecast_at"].startswith("2026-08-29T02:") or finish["forecast_at"].startswith("2026-08-29T01:") or finish["forecast_at"].startswith("2026-08-29T03:")
     assert finish["temp"] is not None
     assert finish["state"] == "normal"
@@ -353,7 +353,7 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
         "tochal-shahrestanak-pass",
         "tochal-hotel",
         "tochal-telecabin-station-7",
-        "tochal_summit",
+        "tochal",
     ]
 
 
@@ -361,7 +361,7 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
 @override_settings(DEMO_DATA_ENABLED=False)
 def test_each_point_uses_own_weather_no_summit_fallback(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
     _seed_point_hourly(
         summit, day=day, hours=list(range(0, 24, 2)), temperature_base=-10, data_mode="live", provider="open-meteo"
@@ -380,16 +380,16 @@ def test_each_point_uses_own_weather_no_summit_fallback(api_client, tochal_seede
     assert shirpala_card["weather_available"] is False
     assert shirpala_card["temp"] is None
     assert "summit" not in (shirpala_card["condition"] or "").lower()
-    summit_card = next(item for item in body["points"] if item["slug"] == "tochal_summit")
+    summit_card = next(item for item in body["points"] if item["slug"] == "tochal")
     # Summit still may have weather from its own records near arrival.
-    assert summit_card["weather_point_slug"] == "tochal_summit"
+    assert summit_card["weather_point_slug"] == "tochal"
 
 
 @pytest.mark.django_db
 @override_settings(DEMO_DATA_ENABLED=False)
 def test_late_arrival_keeps_matched_forecast_severity(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     # Late arrival (~16:15 for medium Darband from 11:00) must not invent change/critical.
     _seed_point_hourly(
         summit,
@@ -413,9 +413,9 @@ def test_late_arrival_keeps_matched_forecast_severity(api_client, tochal_seeded)
 
 @pytest.mark.django_db
 @override_settings(DEMO_DATA_ENABLED=False)
-def test_critical_route_point_does_not_rewrite_destination_hourly(api_client, tochal_seeded):
+def test_critical_route_point_does_not_rewrite_target_hourly(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
     _seed_point_hourly(
         summit, day=day, hours=[12, 14, 16], temperature_base=-2, severity="normal", data_mode="live", provider="open-meteo"
@@ -539,7 +539,7 @@ def test_non_monotonic_or_mismatched_cumulative_is_unusable(api_client, tochal_s
     # Restore monotonicity but break final == one_way.
     for slug, value in EXPECTED_CUMULATIVE["tochal-darband"].items():
         route.points.filter(slug=slug).update(cumulative_minutes=value)
-    summit = route.points.get(slug="tochal_summit")
+    summit = route.points.get(slug="tochal")
     summit.cumulative_minutes = route.one_way_minutes - 5
     summit.save(update_fields=["cumulative_minutes"])
     assert route_has_usable_timing(route) is False

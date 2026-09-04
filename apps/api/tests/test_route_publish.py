@@ -8,7 +8,6 @@ import pytest
 from rest_framework.test import APIClient
 
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.publish import normalize_and_publish_route
@@ -18,14 +17,12 @@ from hawatch.modules.routes.timing import route_timing_complete
 @pytest.mark.django_db
 def test_admin_style_route_publish_without_fixture_import():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     start = WeatherPoint.objects.create(
         slug="admin_start",
         name="شروع ادمین",
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.42, 35.83, srid=4326),
         elevation_m=1800,
-        destination=destination,
         data_mode="live",
         is_active=True,
         ingest_enabled=True,
@@ -38,23 +35,21 @@ def test_admin_style_route_publish_without_fixture_import():
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.425, 35.85, srid=4326),
         elevation_m=2500,
-        destination=destination,
         data_mode="live",
         is_active=True,
         ingest_enabled=True,
         fixture_managed=False,
         status=WeatherPoint.Status.PROVISIONAL,
     )
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
 
     route = Route.objects.create(
         slug="tochal-admin-publish",
-        destination=destination,
         title="مسیر ادمین",
         subtitle="بدون fixture",
         trail_label="ادمین",
         origin="شروع",
-        destination_label="قله",
+        target_label="قله",
         region="تهران",
         distance_km=8.0,
         ascent_m=2100,
@@ -101,7 +96,7 @@ def test_admin_style_route_publish_without_fixture_import():
     )
     RoutePoint.objects.create(
         route=route,
-        slug="tochal_summit",
+        slug="tochal",
         weather_point=summit,
         name="stale-summit",
         elevation_m=1,
@@ -118,7 +113,7 @@ def test_admin_style_route_publish_without_fixture_import():
 
     route.refresh_from_db()
     points = list(route.points.order_by("sort_order"))
-    assert [point.slug for point in points] == ["admin_start", "admin_mid", "tochal_summit"]
+    assert [point.slug for point in points] == ["admin_start", "admin_mid", "tochal"]
     assert [point.sort_order for point in points] == [1, 2, 3]
     assert [point.segment_minutes for point in points] == [0, 90, 90]
     assert points[0].name == "شروع ادمین"
@@ -138,7 +133,7 @@ def test_admin_style_route_publish_without_fixture_import():
         {"date": "2026-08-28", "period": "morning", "start_time": "06:00", "speed": "متوسط"},
     ).json()
     assert body["timing_pending"] is False
-    assert [point["slug"] for point in body["points"]] == ["admin_start", "admin_mid", "tochal_summit"]
+    assert [point["slug"] for point in body["points"]] == ["admin_start", "admin_mid", "tochal"]
     assert body["points"][0]["arrival_minutes"] == 360
     assert body["points"][-1]["arrival_minutes"] == 360 + 180
 
@@ -146,17 +141,15 @@ def test_admin_style_route_publish_without_fixture_import():
 @pytest.mark.django_db
 def test_incomplete_admin_route_demoted_to_pending():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     start = WeatherPoint.objects.get(slug="tochal-sarband-square")
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     route = Route.objects.create(
         slug="tochal-admin-incomplete",
-        destination=destination,
         title="ناقص",
         subtitle="",
         trail_label="",
         origin="a",
-        destination_label="b",
+        target_label="b",
         region="تهران",
         one_way_minutes=100,
         timing_status=Route.TimingStatus.ESTIMATED,
@@ -184,7 +177,7 @@ def test_incomplete_admin_route_demoted_to_pending():
     )
     RoutePoint.objects.create(
         route=route,
-        slug="tochal_summit",
+        slug="tochal",
         weather_point=summit,
         name=summit.name,
         elevation_m=summit.elevation_m,

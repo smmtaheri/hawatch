@@ -299,8 +299,8 @@ def test_retention_on_success_partial_and_total_failure():
 @pytest.mark.django_db
 def test_cleanup_never_deletes_latest_usable_even_if_stale_age():
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
-    usable = persist_ingest(weather_points=[summit], batch_results=[_ok_batch(["tochal_summit"], hours=3)])
+    summit = WeatherPoint.objects.get(slug="tochal")
+    usable = persist_ingest(weather_points=[summit], batch_results=[_ok_batch(["tochal"], hours=3)])
     ForecastSnapshot.objects.filter(pk=usable.pk).update(generated_at=dj_timezone.now() - timedelta(days=30))
     deleted = cleanup_old_snapshots(keep_days=7)
     assert ForecastSnapshot.objects.filter(pk=usable.pk).exists()
@@ -310,16 +310,16 @@ def test_cleanup_never_deletes_latest_usable_even_if_stale_age():
 @pytest.mark.django_db
 def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_error(monkeypatch):
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     first = persist_ingest(
         weather_points=[summit],
-        batch_results=[_ok_batch(["tochal_summit"], hours=4)],
+        batch_results=[_ok_batch(["tochal"], hours=4)],
     )
     old_ids = set(
         ForecastRecord.objects.filter(weather_point=summit, data_mode="live")
         .values_list("id", flat=True)
     )
-    updated_batch = _ok_batch(["tochal_summit"], hours=3)
+    updated_batch = _ok_batch(["tochal"], hours=3)
     updated_batch["payload"][0]["hourly"]["temperature_2m"] = [12.0] * 3
 
     second = persist_ingest(weather_points=[summit], batch_results=[updated_batch])
@@ -336,7 +336,7 @@ def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_err
         raise RuntimeError("simulated forecast write failure")
 
     monkeypatch.setattr(ForecastRecord.objects, "bulk_create", fail_bulk_create)
-    failed_batch = _ok_batch(["tochal_summit"], hours=4)
+    failed_batch = _ok_batch(["tochal"], hours=4)
     failed_batch["payload"][0]["hourly"]["temperature_2m"] = [18.0] * 4
     with pytest.raises(RuntimeError, match="simulated forecast write failure"):
         persist_ingest(weather_points=[summit], batch_results=[failed_batch])
@@ -353,14 +353,14 @@ def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_err
 @pytest.mark.django_db
 def test_ingest_keeps_previous_local_day_without_refetching_it():
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
+    summit = WeatherPoint.objects.get(slug="tochal")
     today = now_tehran().date()
     times = [
         f"{(today - timedelta(days=2)).isoformat()}T12:00",
         f"{(today - timedelta(days=1)).isoformat()}T12:00",
         f"{today.isoformat()}T12:00",
     ]
-    persist_ingest(weather_points=[summit], batch_results=[_ok_batch_at(["tochal_summit"], times)])
+    persist_ingest(weather_points=[summit], batch_results=[_ok_batch_at(["tochal"], times)])
 
     current_window = [
         f"{today.isoformat()}T12:00",
@@ -368,7 +368,7 @@ def test_ingest_keeps_previous_local_day_without_refetching_it():
     ]
     persist_ingest(
         weather_points=[summit],
-        batch_results=[_ok_batch_at(["tochal_summit"], current_window)],
+        batch_results=[_ok_batch_at(["tochal"], current_window)],
     )
 
     rows = list(
@@ -466,7 +466,7 @@ def test_retry_http_error_exception_path():
 @pytest.mark.django_db
 def test_ingest_lock_covers_fetch_and_persist_and_releases_on_error():
     seed_tochal_catalog()
-    points = list(WeatherPoint.objects.filter(slug="tochal_summit"))
+    points = list(WeatherPoint.objects.filter(slug="tochal"))
     events: list[str] = []
 
     class TrackingProvider(OpenMeteoProvider):

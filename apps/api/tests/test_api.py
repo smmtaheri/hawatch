@@ -5,8 +5,7 @@ from rest_framework.test import APIClient
 from hawatch.common.time import day_window, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
-from hawatch.modules.destinations.models import Destination
-from hawatch.modules.forecasts.models import ForecastRecord
+from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
@@ -40,27 +39,27 @@ def test_ready_health_postgis(api_client, seeded):
 
 
 @pytest.mark.django_db
-def test_known_destinations_and_routes_exist(seeded):
-    slugs = set(Destination.objects.values_list("slug", flat=True))
-    assert slugs == {"tochal", "damavand", "daryasar", "jangal-abr", "maranjab", "gahar"}
+def test_known_points_and_routes_exist(seeded):
+    slugs = set(WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY).values_list("slug", flat=True))
+    assert slugs >= {"tochal", "damavand", "daryasar", "jangal-abr", "maranjab", "gahar"}
     route_slugs = set(Route.objects.values_list("slug", flat=True))
     assert "tochal-darband" in route_slugs
     assert "daryasar-dohazar" in route_slugs
     assert "gahar-lake" in route_slugs
     assert "marnjab-reg" in route_slugs
-    assert Route.objects.filter(destination__slug="tochal").count() == 5
+    assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
 
 
 @pytest.mark.django_db
 def test_seed_is_idempotent(seeded):
-    dest_count = Destination.objects.count()
+    point_catalog_count = WeatherPoint.objects.count()
     route_count = Route.objects.count()
     point_count = RoutePoint.objects.count()
     forecast_count = ForecastRecord.objects.count()
     seed_demo_data(force=True)
     seed_demo_data(force=False)
-    assert Destination.objects.count() == dest_count
+    assert WeatherPoint.objects.count() == point_catalog_count
     assert Route.objects.count() == route_count
     assert RoutePoint.objects.count() == point_count
     assert ForecastRecord.objects.count() == forecast_count
@@ -75,9 +74,9 @@ def test_seed_is_idempotent(seeded):
 
 
 @pytest.mark.django_db
-def test_destination_forecast_shape_and_flags(api_client, seeded):
+def test_point_forecast_shape_and_flags(api_client, seeded):
     today = now_tehran().date()
-    response = api_client.get("/api/v1/destinations/tochal/forecast/", {"date": today.isoformat(), "period": "morning"})
+    response = api_client.get("/api/v1/points/tochal/forecast/", {"date": today.isoformat(), "period": "morning"})
     assert response.status_code == 200
     body = response.json()
     assert body["meta"]["timezone"] == "Asia/Tehran"
@@ -91,7 +90,7 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
     assert "is_current" in body["hourly"][0]
     assert "is_future" in body["hourly"][0]
     noon = api_client.get(
-        "/api/v1/destinations/tochal/forecast/",
+        "/api/v1/points/tochal/forecast/",
         {"date": today.isoformat(), "period": "afternoon"},
     ).json()
     assert [item["hour"] for item in noon["hourly"]] == [12, 14, 16]
@@ -101,14 +100,14 @@ def test_destination_forecast_shape_and_flags(api_client, seeded):
 def test_deterministic_seed_same_hour(seeded):
     today = now_tehran().date()
     first = generate_reading(
-        point_slug="dest:tochal",
+        point_slug="tochal",
         climate_key="alpine",
         elevation_m=3964,
         local_date=today,
         hour=10,
     )
     second = generate_reading(
-        point_slug="dest:tochal",
+        point_slug="tochal",
         climate_key="alpine",
         elevation_m=3964,
         local_date=today,
@@ -116,14 +115,14 @@ def test_deterministic_seed_same_hour(seeded):
     )
     assert first == second
     other_hour = generate_reading(
-        point_slug="dest:tochal",
+        point_slug="tochal",
         climate_key="alpine",
         elevation_m=3964,
         local_date=today,
         hour=16,
     )
     other_day = generate_reading(
-        point_slug="dest:tochal",
+        point_slug="tochal",
         climate_key="alpine",
         elevation_m=3964,
         local_date=day_window(today)[0],
@@ -170,7 +169,7 @@ def test_route_forecast_start_and_speed(api_client, seeded):
         "tochal-shirpala-shelter",
         "tochal-amiri-shelter",
         "tochal-goleband-ridge",
-        "tochal_summit",
+        "tochal",
     ]
     assert {item["slug"] for item in medium["route"]["siblings"]} == {
         "tochal-velenjak",
@@ -204,7 +203,6 @@ def test_point_fields_have_single_gist_index(seeded):
             WHERE schemaname = 'public'
               AND indexdef ILIKE '%USING gist%'
               AND tablename IN (
-                'destinations_destination',
                 'routes_route',
                 'routes_routepoint',
                 'forecasts_weatherpoint'
@@ -215,7 +213,6 @@ def test_point_fields_have_single_gist_index(seeded):
         )
         rows = {name: count for name, count in cursor.fetchall()}
     assert rows == {
-        "destinations_destination": 1,
         "forecasts_weatherpoint": 1,
         "routes_route": 1,
         "routes_routepoint": 1,
@@ -224,11 +221,11 @@ def test_point_fields_have_single_gist_index(seeded):
 
 @pytest.mark.django_db
 def test_search_and_stale_flag(api_client, seeded):
-    found = api_client.get("/api/v1/destinations/", {"query": "توچال"}).json()
+    found = api_client.get("/api/v1/points/", {"query": "توچال"}).json()
     assert found["results"][0]["slug"] == "tochal"
-    empty = api_client.get("/api/v1/destinations/", {"query": "xyz-not-a-place"}).json()
+    empty = api_client.get("/api/v1/points/", {"query": "xyz-not-a-place"}).json()
     assert empty["empty"] is True
-    missing = api_client.get("/api/v1/destinations/unknown-place/")
+    missing = api_client.get("/api/v1/points/unknown-place/")
     assert missing.status_code == 404
 
 
@@ -253,9 +250,9 @@ def test_point_forecast_pas_ghaleh(api_client, seeded):
 
 
 @pytest.mark.django_db
-def test_search_suggestions_destination_and_point(api_client, seeded):
-    dest = api_client.get("/api/v1/search/suggestions/", {"q": "تو"}).json()
-    assert any(item["type"] == "destination" and item["slug"] == "tochal" for item in dest["results"])
+def test_search_suggestions_points(api_client, seeded):
+    points = api_client.get("/api/v1/search/suggestions/", {"q": "تو"}).json()
+    assert any(item["type"] == "point" and item["slug"] == "tochal" for item in points["results"])
     point = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
     assert any(item["type"] == "point" and item["slug"] == "tochal-pas-ghaleh-village" for item in point["results"])
     shir = api_client.get("/api/v1/search/suggestions/", {"q": "شیر"}).json()
@@ -263,32 +260,27 @@ def test_search_suggestions_destination_and_point(api_client, seeded):
 
 
 @pytest.mark.django_db
-def test_search_matches_words_inside_destination_and_point_names(api_client, seeded):
-    # ``گهر`` is not the first word in ``دریاچهٔ گهر``. A later word must be
-    # searchable for both destination profiles and route weather points.
+def test_search_matches_words_inside_point_names(api_client, seeded):
+    # ``گهر`` is not the first word in ``دریاچهٔ گهر``. A later word must be searchable.
     gahar = api_client.get("/api/v1/search/suggestions/", {"q": "گهر"}).json()["results"]
-    assert any(item["type"] == "destination" and item["slug"] == "gahar" for item in gahar)
-    assert any(item["type"] == "point" and item["slug"] == "route:gahar-lake:gahar-lake" for item in gahar)
+    assert any(item["type"] == "point" and item["slug"] == "gahar" for item in gahar)
 
-    # Route titles are intentionally not searchable; only destinations and
-    # weather points are valid result types.
-    assert all(item["type"] in {"destination", "point"} for item in gahar)
+    # Route titles are intentionally not searchable; only points are valid result types.
+    assert all(item["type"] == "point" for item in gahar)
 
 
 @pytest.mark.django_db
-def test_destination_list_search_uses_same_normalization(api_client, seeded):
-    response = api_client.get("/api/v1/destinations/", {"query": "گهر"})
+def test_point_list_search_uses_same_normalization(api_client, seeded):
+    response = api_client.get("/api/v1/points/", {"query": "گهر"})
     assert response.status_code == 200
-    assert [item["slug"] for item in response.json()["results"]] == ["gahar"]
+    assert "gahar" in [item["slug"] for item in response.json()["results"]]
 
 
 @pytest.mark.django_db
-def test_search_no_duplicate_tochal_destination_and_summit(api_client, seeded):
+def test_search_no_duplicate_tochal_point(api_client, seeded):
     results = api_client.get("/api/v1/search/suggestions/", {"q": "توچال"}).json()["results"]
-    destinations = [item for item in results if item["type"] == "destination" and item["slug"] == "tochal"]
-    summit_points = [item for item in results if item["type"] == "point" and item["slug"] == "tochal_summit"]
-    assert len(destinations) == 1
-    assert len(summit_points) == 0
+    summit_points = [item for item in results if item["type"] == "point" and item["slug"] == "tochal"]
+    assert len(summit_points) == 1
 
     pas_results = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()["results"]
     assert any(item["type"] == "point" and item["slug"] == "tochal-pas-ghaleh-village" for item in pas_results)

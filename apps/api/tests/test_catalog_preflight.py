@@ -4,6 +4,7 @@ import json
 from io import StringIO
 
 import pytest
+from django.contrib.gis.geos import Point
 from django.core.management import call_command
 from django.core.management.base import CommandError
 
@@ -17,9 +18,9 @@ from hawatch.modules.routes.models import Route
 def test_catalog_preflight_reports_pending_provider_data_without_mutating_catalog():
     seed_tochal_catalog()
 
-    report = run_catalog_preflight(destination_slug="tochal")
+    report = run_catalog_preflight(point_slug="tochal")
 
-    assert report["summary"]["destination_count"] == 1
+    assert report["summary"]["point_count"] == 1
     assert report["summary"]["route_count"] == 5
     assert report["summary"]["ingestible_point_count"] > 0
     assert report["summary"]["error_count"] == 0
@@ -31,7 +32,7 @@ def test_catalog_preflight_reports_pending_provider_data_without_mutating_catalo
 def test_catalog_preflight_requires_provider_data_after_ingest():
     seed_tochal_catalog()
 
-    report = run_catalog_preflight(destination_slug="tochal", require_forecast=True)
+    report = run_catalog_preflight(point_slug="tochal", require_forecast=True)
 
     assert report["summary"]["pass"] is False
     assert report["summary"]["error_count"] > 0
@@ -46,19 +47,19 @@ def test_catalog_preflight_detects_incomplete_active_route():
     route.timing_status = Route.TimingStatus.PENDING
     route.save(update_fields=["one_way_minutes", "timing_status"])
 
-    report = run_catalog_preflight(destination_slug="tochal")
+    report = run_catalog_preflight(point_slug="tochal")
 
     assert any("tochal-darband" in item and "timing is pending" in item for item in report["warnings"])
 
 
 @pytest.mark.django_db
-def test_catalog_preflight_accepts_destination_without_active_routes():
+def test_catalog_preflight_accepts_point_without_active_routes():
     seed_tochal_catalog()
-    Route.objects.filter(destination__slug="tochal").update(is_active=False)
+    Route.objects.filter(target_weather_point__slug="tochal").update(is_active=False)
 
-    report = run_catalog_preflight(destination_slug="tochal")
+    report = run_catalog_preflight(point_slug="tochal")
 
-    assert report["summary"]["destination_count"] == 1
+    assert report["summary"]["point_count"] == 1
     assert report["summary"]["route_count"] == 0
     assert not any("no active live routes" in item for item in report["warnings"])
 
@@ -78,40 +79,21 @@ def test_seed_catalog_reads_stdin_and_check_only_does_not_write(capsys, monkeypa
 @pytest.mark.django_db
 def test_seed_catalog_strict_conflict_fails_without_partial_import(monkeypatch):
     catalog = load_catalog_file()
-    catalog["destination"]["slug"] = "strict-conflict"
-    catalog["weather_points"]["strict-conflict-point"] = {
-        "name": "تداخل دستی",
-        "latitude": 35.8,
-        "longitude": 51.4,
-        "elevation_m": 1000,
-    }
-    catalog["destination_weather_point"] = "strict-conflict-point"
     from hawatch.modules.forecasts.models import WeatherPoint
-    from django.contrib.gis.geos import Point
-    from hawatch.modules.destinations.models import Destination
 
-    destination = Destination.objects.create(
-        slug="strict-conflict",
-        tile_name="تداخل",
-        name="تداخل",
-        short_category="کوه",
-        category="کوه",
-        category_key="mountain",
-        region="تهران",
-        elevation_m=1000,
-        location=Point(51.4, 35.8, srid=4326),
-        image="/images/fallback.png",
-        image_alt="تداخل",
-        popular_order=999,
-        climate="alpine",
-    )
     WeatherPoint.objects.create(
-        slug="strict-conflict-point",
+        slug=catalog["point"]["slug"],
         name="نقطهٔ دستی",
-        kind=WeatherPoint.Kind.SHARED,
+        page_name="نقطهٔ دستی",
+        short_label="نقطهٔ دستی",
+        place_type="summit",
+        identity_summary="نقطهٔ دستی برای تست تعارض",
+        importance="primary",
+        name_status="descriptive",
+        source_urls=["https://example.test/manual"],
+        kind=WeatherPoint.Kind.PRIMARY,
         location=Point(51.4, 35.8, srid=4326),
         elevation_m=1000,
-        destination=destination,
         data_mode="live",
         fixture_managed=False,
     )
@@ -124,4 +106,4 @@ def test_seed_catalog_strict_conflict_fails_without_partial_import(monkeypatch):
             "--strict",
         )
 
-    assert not Route.objects.filter(destination=destination).exists()
+    assert not Route.objects.filter(catalog_key__in=list(catalog["routes"])).exists()

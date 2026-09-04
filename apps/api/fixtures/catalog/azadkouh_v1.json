@@ -115,10 +115,10 @@
       "name": "قلهٔ آزادکوه",
       "latitude": 36.169295,
       "longitude": 51.503096,
-      "elevation_m": 4366,
+      "elevation_m": 4355,
       "kind": "primary",
       "status": "provisional",
-      "elevation_source": "Peak/GPX cross-check: ~4366 m; Open-Meteo GLO-90 DEM: 4261 m used only as provider-resolution evidence",
+      "elevation_source": "Canonical published elevation: 4355 m (Wikidata and summit-sign report); Peakbagger/SummitPost also cite 4390 m from a 1:50,000 map; Open-Meteo GLO-90 DEM: 4261 m is provider-resolution evidence only",
       "page_name": "قلهٔ آزادکوه",
       "short_label": "قلهٔ آزادکوه",
       "place_type": "summit",
@@ -135,7 +135,10 @@
         "https://mojekooh.com/%D8%A2%D8%B2%D8%A7%D8%AF-%DA%A9%D9%88%D9%87/",
         "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810",
         "https://www.wikiloc.com/hiking-trails/azd-khwh-swd-z-nsn-frwd-khlkh-bl-tyr-1401-106644204",
-        "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490"
+        "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490",
+        "https://www.wikidata.org/wiki/Q793442",
+        "https://peakbagger.com/peak.aspx?pid=98739",
+        "https://www.summitpost.org/kholeno-paloon-gardan-massif/353079"
       ]
     },
     "azadkouh-nahiyeh-start": {
@@ -451,7 +454,7 @@
     "category": "قله و مسیرهای کوهستانی",
     "category_key": "mountain",
     "region": "البرز مرکزی",
-    "elevation_m": 4366,
+    "elevation_m": 4355,
     "latitude": 36.169295,
     "longitude": 51.503096,
     "image": "/images/home-scene.png",

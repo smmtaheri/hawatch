@@ -12,7 +12,6 @@ from hawatch.modules.catalog.catalog import bootstrap_live_catalog_if_empty, see
 from hawatch.modules.catalog.runtime import compute_db_catalog_revision, ingestible_weather_points
 from hawatch.modules.catalog.search import rebuild_search_index, search_suggestions
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.timing import route_timing_complete
@@ -20,29 +19,19 @@ from hawatch.modules.routes.timing import route_timing_complete
 
 @pytest.mark.django_db
 def test_catalog_can_reference_shared_weather_point_without_reowning_it():
-    owner = Destination.objects.create(
-        slug="shared-point-owner",
-        tile_name="دریاچهٔ مالک",
-        name="دریاچهٔ مالک",
-        short_category="دریاچه",
-        category="دریاچهٔ کوهستانی",
-        category_key="lake",
-        region="استان",
-        elevation_m=2000,
-        location=Point(52.0, 35.0, srid=4326),
-        image="/images/home-scene.png",
-        image_alt="دریاچهٔ مالک",
-        climate="lake_valley",
-        data_mode="live",
-        is_active=True,
-    )
     shared = WeatherPoint.objects.create(
         slug="shared_lake_point",
         name="دریاچهٔ مشترک",
+        page_name="دریاچهٔ مشترک",
+        short_label="دریاچهٔ مشترک",
+        place_type="lake",
+        identity_summary="دریاچهٔ مشترک برای تست",
+        importance="support",
+        name_status="established",
+        source_urls=["https://example.test/shared-lake"],
         kind=WeatherPoint.Kind.SHARED,
         location=Point(52.01, 35.01, srid=4326),
         elevation_m=2010,
-        destination=owner,
         data_mode="live",
         is_active=True,
         ingest_enabled=True,
@@ -50,9 +39,8 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
     )
     catalog = {
         "catalog_version": "shared-reference-test-v1",
-        "destination_weather_point": "shared_reference_summit",
-        "destination": {
-            "slug": "shared-reference-destination",
+        "point": {
+            "slug": "shared-reference-summit",
             "tile_name": "قلهٔ مقصد",
             "name": "قلهٔ مقصد",
             "short_category": "کوه",
@@ -69,16 +57,37 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
             "is_popular": False,
             "is_active": True,
         },
+        "primary_point": "shared-reference-summit",
         "weather_points": {
             "shared_reference_summit": {
                 "name": "قلهٔ مقصد",
+                "page_name": "قلهٔ مقصد",
+                "short_label": "قلهٔ مقصد",
+                "place_type": "summit",
+                "identity_summary": "قلهٔ مقصد برای تست",
+                "importance": "primary",
+                "name_status": "established",
+                "source_urls": ["https://example.test/shared-reference-summit"],
                 "latitude": 35.1,
                 "longitude": 52.1,
                 "elevation_m": 3000,
-                "kind": "destination",
+                "kind": "primary",
                 "status": "provisional",
                 "elevation_source": "test",
-            }
+            },
+            "shared_reference_landmark": {
+                "name": "گردنهٔ مقصد",
+                "page_name": "گردنهٔ مقصد",
+                "short_label": "گردنهٔ مقصد",
+                "place_type": "pass",
+                "identity_summary": "گردنهٔ مقصد برای تست",
+                "importance": "support",
+                "name_status": "descriptive",
+                "source_urls": ["https://example.test/landmark"],
+                "latitude": 35.05,
+                "longitude": 52.05,
+                "elevation_m": 2500,
+            },
         },
         "shared_weather_points": ["shared_lake_point"],
         "routes": {
@@ -88,12 +97,12 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
                 "subtitle": "مسیر آزمایشی",
                 "trail_label": "مسیر اصلی",
                 "origin": "دریاچهٔ مشترک",
-                "destination_label": "قلهٔ مقصد",
+                "target_label": "قلهٔ مقصد",
                 "region": "استان",
                 "distance_km": 3.0,
                 "ascent_m": 990,
                 "timing_status": "pending",
-                "points": ["shared_lake_point", "shared_reference_summit"],
+                "points": ["shared_lake_point", "shared_reference_landmark", "shared_reference_summit"],
             }
         },
     }
@@ -103,13 +112,12 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
     imported_route = Route.objects.get(slug="shared-reference-route")
     assert imported_route.origin_weather_point_id == shared.pk
     assert imported_route.points.order_by("sort_order").first().weather_point_id == shared.pk
-    assert WeatherPoint.objects.get(pk=shared.pk).destination_id == owner.pk
+    assert WeatherPoint.objects.get(pk=shared.pk).slug == "shared_lake_point"
 
 
 @pytest.mark.django_db
 def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     manual = WeatherPoint.objects.create(
         slug="manual_ridge_point",
         name="یال دستی",
@@ -117,7 +125,6 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
         location=Point(51.41, 35.87, srid=4326),
         elevation_m=3500,
         elevation_source="Open-Meteo GLO-90 DEM",
-        destination=destination,
         status=WeatherPoint.Status.PROVISIONAL,
         provenance=WeatherPoint.Provenance.CURATED,
         catalog_version="",
@@ -128,12 +135,11 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
     )
     route = Route.objects.create(
         slug="tochal-manual-ridge",
-        destination=destination,
         title="یال دستی",
         subtitle="مسیر آزمایشی",
         trail_label="یال دستی",
         origin="شروع",
-        destination_label="قله",
+        target_label="قله",
         region="تهران",
         distance_km=5.0,
         ascent_m=800,
@@ -146,7 +152,7 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
         timing_source_urls=["https://example.test/manual"],
         origin_location=manual.location,
         origin_weather_point=manual,
-        target_weather_point=WeatherPoint.objects.get(slug="tochal_summit"),
+        target_weather_point=WeatherPoint.objects.get(slug="tochal"),
         catalog_key="manual_ridge",
         data_mode="live",
         is_active=True,
@@ -155,7 +161,7 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
     for index, (slug, wp, minutes) in enumerate(
         [
             ("manual_ridge_point", manual, 0),
-            ("tochal_summit", WeatherPoint.objects.get(slug="tochal_summit"), 120),
+            ("tochal", WeatherPoint.objects.get(slug="tochal"), 120),
         ]
     ):
         RoutePoint.objects.create(
@@ -182,14 +188,12 @@ def test_manual_weather_point_and_route_survive_bootstrap_and_reimport():
 @pytest.mark.django_db
 def test_non_pruning_import_preserves_unrelated_rows():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     WeatherPoint.objects.create(
         slug="orphan_fixture_point",
         name="نقطهٔ یتیم",
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.40, 35.86, srid=4326),
         elevation_m=3000,
-        destination=destination,
         data_mode="live",
         fixture_managed=True,
         is_active=True,
@@ -201,7 +205,6 @@ def test_non_pruning_import_preserves_unrelated_rows():
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.402, 35.861, srid=4326),
         elevation_m=3010,
-        destination=destination,
         data_mode="live",
         fixture_managed=False,
         is_active=True,
@@ -215,14 +218,12 @@ def test_non_pruning_import_preserves_unrelated_rows():
 @pytest.mark.django_db
 def test_explicit_prune_only_removes_fixture_managed_absent_rows():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     WeatherPoint.objects.create(
         slug="stale_fixture_point",
         name="نقطهٔ کهنه",
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.40, 35.86, srid=4326),
         elevation_m=3000,
-        destination=destination,
         data_mode="live",
         fixture_managed=True,
         is_active=True,
@@ -234,7 +235,6 @@ def test_explicit_prune_only_removes_fixture_managed_absent_rows():
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.403, 35.862, srid=4326),
         elevation_m=3020,
-        destination=destination,
         data_mode="live",
         fixture_managed=False,
         is_active=True,
@@ -244,20 +244,18 @@ def test_explicit_prune_only_removes_fixture_managed_absent_rows():
     assert result["pruned"] is True
     assert not WeatherPoint.objects.filter(slug="stale_fixture_point").exists()
     assert WeatherPoint.objects.filter(slug="manual_keep_on_prune").exists()
-    assert WeatherPoint.objects.filter(slug="tochal_summit").exists()
+    assert WeatherPoint.objects.filter(slug="tochal").exists()
 
 
 @pytest.mark.django_db
 def test_db_added_ingest_enabled_point_is_selected():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     point = WeatherPoint.objects.create(
         slug="admin_ingest_point",
         name="نقطهٔ ingest",
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.415, 35.875, srid=4326),
         elevation_m=3400,
-        destination=destination,
         data_mode="live",
         is_active=True,
         ingest_enabled=True,
@@ -265,12 +263,11 @@ def test_db_added_ingest_enabled_point_is_selected():
     )
     Route.objects.create(
         slug="tochal-admin-ingest",
-        destination=destination,
         title="ingest",
         subtitle="",
         trail_label="",
         origin="a",
-        destination_label="b",
+        target_label="b",
         region="تهران",
         one_way_minutes=60,
         timing_status=Route.TimingStatus.PENDING,
@@ -297,7 +294,7 @@ def test_db_added_ingest_enabled_point_is_selected():
 
     selected = list(ingestible_weather_points().values_list("slug", flat=True))
     assert "admin_ingest_point" in selected
-    assert "tochal_summit" in selected
+    assert "tochal" in selected
 
     inactive = WeatherPoint.objects.get(slug="admin_ingest_point")
     inactive.is_active = False
@@ -309,8 +306,8 @@ def test_db_added_ingest_enabled_point_is_selected():
     inactive.save(update_fields=["is_active", "ingest_enabled"])
     assert "admin_ingest_point" not in list(ingestible_weather_points().values_list("slug", flat=True))
 
-    slugs = list(ingestible_weather_points(slugs=["tochal_summit"]).values_list("slug", flat=True))
-    assert slugs == ["tochal_summit"]
+    slugs = list(ingestible_weather_points(slugs=["tochal"]).values_list("slug", flat=True))
+    assert slugs == ["tochal"]
     revision = compute_db_catalog_revision()
     assert revision.startswith("dbrev-")
     assert "tochal_v1" not in revision
@@ -320,7 +317,6 @@ def test_db_added_ingest_enabled_point_is_selected():
 @pytest.mark.django_db
 def test_search_index_updates_after_publish():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     point = WeatherPoint.objects.create(
         slug="searchable_ridge",
         name="یال جستجوپذیر",
@@ -328,7 +324,6 @@ def test_search_index_updates_after_publish():
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.41, 35.88, srid=4326),
         elevation_m=3600,
-        destination=destination,
         data_mode="live",
         is_active=True,
         ingest_enabled=True,
@@ -336,12 +331,11 @@ def test_search_index_updates_after_publish():
     )
     route = Route.objects.create(
         slug="tochal-searchable",
-        destination=destination,
         title="جستجو",
         subtitle="",
         trail_label="",
         origin="a",
-        destination_label="b",
+        target_label="b",
         region="تهران",
         timing_status=Route.TimingStatus.PENDING,
         origin_location=point.location,
@@ -433,7 +427,7 @@ def test_reimport_handles_stale_fixture_point_without_temporary_order_collision(
         "tochal-shirpala-shelter",
         "tochal-amiri-shelter",
         "tochal-goleband-ridge",
-        "tochal_summit",
+        "tochal",
     ]
     assert points[-1].slug == "retired_fixture_point"
 
@@ -441,8 +435,7 @@ def test_reimport_handles_stale_fixture_point_without_temporary_order_collision(
 @pytest.mark.django_db
 def test_same_slug_collision_skips_operator_managed_rows():
     seed_tochal_catalog()
-    summit = WeatherPoint.objects.get(slug="tochal_summit")
-    destination = Destination.objects.get(slug="tochal")
+    summit = WeatherPoint.objects.get(slug="tochal")
     summit.name = "قلهٔ دستی"
     summit.fixture_managed = False
     summit.save(update_fields=["name", "fixture_managed"])
@@ -450,30 +443,24 @@ def test_same_slug_collision_skips_operator_managed_rows():
     replacement = WeatherPoint.objects.get(slug="tochal-pas-ghaleh-village")
     route.target_weather_point = replacement
     route.save(update_fields=["target_weather_point"])
-    destination.weather_point = replacement
-    destination.save(update_fields=["weather_point"])
 
     result = seed_tochal_catalog(prune=False)
-    assert any("tochal_summit" in item for item in result["conflicts"])
-    assert WeatherPoint.objects.get(slug="tochal_summit").name == "قلهٔ دستی"
+    assert any("tochal" in item for item in result["conflicts"])
+    assert WeatherPoint.objects.get(slug="tochal").name == "قلهٔ دستی"
     route.refresh_from_db()
-    destination.refresh_from_db()
     # A skipped fixture point must not be used as a substitute during import.
     assert route.target_weather_point_id == replacement.id
-    assert destination.weather_point_id == replacement.id
 
 
 @pytest.mark.django_db
 def test_prune_skips_fixture_point_still_referenced_by_manual_route():
     seed_tochal_catalog()
-    destination = Destination.objects.get(slug="tochal")
     stale = WeatherPoint.objects.create(
         slug="stale_referenced_point",
         name="ارجاع دستی",
         kind=WeatherPoint.Kind.SHARED,
         location=Point(51.401, 35.861, srid=4326),
         elevation_m=3100,
-        destination=destination,
         data_mode="live",
         fixture_managed=True,
         is_active=True,
@@ -481,12 +468,11 @@ def test_prune_skips_fixture_point_still_referenced_by_manual_route():
     )
     Route.objects.create(
         slug="tochal-keeps-stale",
-        destination=destination,
         title="نگهبان",
         subtitle="",
         trail_label="",
         origin="a",
-        destination_label="b",
+        target_label="b",
         region="تهران",
         timing_status=Route.TimingStatus.PENDING,
         origin_location=stale.location,
@@ -507,7 +493,7 @@ def test_repeated_imports_idempotent():
     second = seed_tochal_catalog()
     third = seed_tochal_catalog()
     assert first["weather_point_count"] == second["weather_point_count"] == third["weather_point_count"]
-    assert Route.objects.filter(destination__slug="tochal", fixture_managed=True).count() == 5
+    assert Route.objects.filter(target_weather_point__slug="tochal", fixture_managed=True).count() == 5
 
 
 @pytest.mark.django_db
@@ -544,6 +530,6 @@ def test_bootstrap_only_when_empty():
     assert WeatherPoint.objects.filter(data_mode="live").exclude(slug__startswith="dest:").count() == 0
     first = bootstrap_live_catalog_if_empty()
     assert first is not None
-    assert WeatherPoint.objects.filter(slug="tochal_summit").exists()
+    assert WeatherPoint.objects.filter(slug="tochal").exists()
     second = bootstrap_live_catalog_if_empty()
     assert second is None

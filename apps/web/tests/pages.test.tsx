@@ -14,7 +14,7 @@ const pointForecast = {
   subject: {
     kind: "point" as const,
     slug: "tochal",
-    weather_point_slug: "tochal_summit",
+    weather_point_slug: "tochal",
     canonical_href: "/points/tochal",
     name: "قلهٔ توچال",
     elevation_m: 3964,

@@ -61,7 +61,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - تست اسکریپت‌های provider/publish: ۸ passed
 - Docker Django `check` و `makemigrations --check --dry-run`: بدون تغییر migration و بدون خطای system check
 - `compileall` و `git diff --check`: passed
-- تست کامل backend عمداً اجرا نشد؛ طبق تصمیم محصول به اجرای Compose/PostGIS موکول است و collect-only روی چند تست legacy که هنوز مدل حذف‌شدهٔ Destination را import می‌کنند متوقف می‌شود.
+- تست کامل backend عمداً اجرا نشد؛ طبق تصمیم محصول اجرای آن به Compose/PostGIS موکول است. تست‌های فعلی با قرارداد point/route هم‌راستا شده‌اند و اجرای کامل‌شان باید در محیط Compose انجام شود.
 
 ## محدودیت‌ها و ابهام‌ها
 
@@ -69,5 +69,5 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 2. Point screenshot مستقل ندارد؛ تطبیق آن pixel-perfect ادعا نمی‌شود.
 3. دادهٔ forecast در demo mode واقعی نیست؛ provider واقعی باید صریحاً ingest شود.
 4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.
-5. validator Open-Meteo برای آزادکوه: ۱۱ نقطه پاسخ hourly و grid معتبر دارند، اما `azadkouh` در catalog ارتفاع ۴۳۶۶ و در GLO-90 مقدار ۴۲۶۱ متر دارد؛ اختلاف ۱۰۵ متر از سقف ۱۰۰ متر بیشتر است و import را متوقف می‌کند. چون دادهٔ نقطه‌ها قطعی فرض شده، مقدار حدس‌زده اصلاح نشده است.
+5. validator Open-Meteo برای آزادکوه: ۱۱ نقطه پاسخ hourly و grid معتبر دارند. ارتفاع canonical قلهٔ `azadkouh` با اتکا به منابع منتشرشده و گزارش تابلوی قله روی ۴۳۵۵ متر تثبیت شده است؛ GLO-90 مقدار ۴۲۶۱ متر برمی‌گرداند و اختلاف ۹۴ متر، داخل سقف ۱۰۰ متر، است. مقدار ۴۳۹۰ متر که در برخی نقشه/پایگاه‌ها آمده به‌عنوان اختلاف منبع ثبت شده، نه مقدار catalog.
 6. جزئیات domain زمان‌بندی route، share server-side و provider/fallback نهایی هنوز open هستند.

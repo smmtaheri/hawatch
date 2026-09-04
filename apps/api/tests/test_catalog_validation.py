@@ -24,11 +24,11 @@ def test_checked_in_catalogs_have_valid_identity_and_route_contracts():
 def test_independent_point_slug_must_be_lowercase_hyphenated():
     catalog = {
         "catalog_version": "test-v1",
-        "destination": {"slug": "test-place"},
-        "destination_weather_point": "test_summit",
+        "point": {"slug": "test-summit"},
+        "primary_point": "test-summit",
         "weather_points": {
             "test_summit": {
-                "kind": "destination",
+                "kind": "primary",
                 "name": "قلهٔ تست",
                 "page_name": "قلهٔ تست",
                 "short_label": "تست",
@@ -61,14 +61,14 @@ def test_independent_point_slug_must_be_lowercase_hyphenated():
     assert any(issue.code == "point-slug" for issue in validate_catalog_document(catalog))
 
 
-def test_route_requires_origin_landmark_and_destination():
+def test_route_requires_origin_landmark_and_target():
     catalog = {
         "catalog_version": "test-v1",
-        "destination": {"slug": "test-place"},
-        "destination_weather_point": "test-summit",
+        "point": {"slug": "test-summit"},
+        "primary_point": "test-summit",
         "weather_points": {
             "test-summit": {
-                "kind": "destination",
+                "kind": "primary",
                 "name": "قلهٔ تست",
                 "page_name": "قلهٔ تست",
                 "short_label": "تست",
