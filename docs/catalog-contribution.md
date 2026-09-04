@@ -54,6 +54,11 @@ repository نیست.
 
 - slug انگلیسی lowercase با hyphen، بدون underscore، `name` و `short_label`؛
 - `page_name` یکتا و قابل جست‌وجوی مستقل، `place_type`، `identity_summary`؛
+- نام نقطه باید زمینه‌دار و از نظر جست‌وجو مستقل باشد. نام‌هایی مثل «تپهٔ
+  گوگردی» یا «استراحتگاه» به‌تنهایی قابل انتشار نیستند؛ آن‌ها را به شکل
+  «تپهٔ گوگردی دماوند» یا «استراحتگاه مسیر شمالی علم‌کوه» بنویسید تا با نقاط
+  مشابه قاطی نشوند. اگر چنین نام یکتایی برای عارضه وجود ندارد، نقطه را اضافه
+  نکنید و صرفاً برای بهترشدن SEO نام ساختگی نسازید.
 - `importance` یکی از `primary`/`support` و `name_status` یکی از
   `official`/`established`/`descriptive`؛
 - `climate` باید یکی از profileهای demo (`alpine`، `desert`، `forest_fog`، `high_alpine`، `lake_valley` یا `meadow`) باشد؛ validator و Admin مقدار ناشناخته را قبل از import/save رد می‌کنند؛
