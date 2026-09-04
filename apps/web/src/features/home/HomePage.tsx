@@ -75,6 +75,7 @@ export function HomePage() {
           <Header />
           <div className="hero-copy">
             <p className="eyebrow">هوای مسیرت را ببین</p>
+            <h1>هوای مسیرت را ببین</h1>
             <form
               className="search-box"
               onSubmit={(event) => {

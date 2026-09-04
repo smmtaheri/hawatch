@@ -9,13 +9,16 @@ SEO-ready without adding a hard-coded URL to the frontend build.
 
 from __future__ import annotations
 
+import re
 from decimal import Decimal
 
 from django.conf import settings
+from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
+from hawatch.modules.catalog.identity import place_type_label
 from hawatch.modules.catalog.runtime import publicly_visible_weather_points
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -23,6 +26,7 @@ from hawatch.modules.routes.models import Route
 
 HOME_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر"
 HOME_DESCRIPTION = "هواچ؛ هوای نقاط و برنامهٔ مسیر."
+_PLACE_TYPE_TOKEN_RE = re.compile(r"(نقطهٔ\s+)([a-z][a-z0-9_]*)", re.IGNORECASE)
 
 
 def _canonical(path: str) -> str:
@@ -39,6 +43,17 @@ def _format_decimal(value: Decimal | None, suffix: str) -> str | None:
     if value is None:
         return None
     return f"{value.normalize()} {suffix}"
+
+
+def _localized_identity_summary(point: WeatherPoint) -> str:
+    """Hide stable English enum codes from the public semantic HTML."""
+
+    summary = point.identity_summary or f"{point.page_name or point.name}؛ نقطهٔ {point.place_type}"
+
+    def replace(match: re.Match[str]) -> str:
+        return f"{match.group(1)}{place_type_label(match.group(2))}"
+
+    return _PLACE_TYPE_TOKEN_RE.sub(replace, summary)
 
 
 def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpResponse:
@@ -78,8 +93,18 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 
 def _point_page(point: WeatherPoint) -> dict:
     name = point.page_name or point.name
+    route_filter = (
+        Q(points__weather_point=point)
+        | Q(origin_weather_point=point)
+        | Q(target_weather_point=point)
+    )
+    # A primary Point can represent a destination whose physical endpoint is
+    # a named shore/landing WeatherPoint (for example, Lake Gahar).  The
+    # catalog's explicit target label is the only fallback used here.
+    if point.kind == WeatherPoint.Kind.PRIMARY:
+        route_filter |= Q(target_label=point.name) | Q(target_label=name)
     route_rows = (
-        Route.objects.filter(points__weather_point=point, is_active=True)
+        Route.objects.filter(route_filter, is_active=True)
         .distinct()
         .order_by("sort_order", "slug")
     )
@@ -89,9 +114,10 @@ def _point_page(point: WeatherPoint) -> dict:
         "description": f"پیش‌بینی هوا و وضعیت مسیر برای {name} در هواچ.",
         "canonical": _canonical(f"/points/{point.slug}"),
         "headline": name,
-        "summary": point.identity_summary or f"پیش‌بینی هوا و اطلاعات مسیرهای مرتبط با {name} در هواچ.",
+        "summary": _localized_identity_summary(point) or f"پیش‌بینی هوا و اطلاعات مسیرهای مرتبط با {name} در هواچ.",
         "region": point.region,
         "category": point.category,
+        "place_type": place_type_label(point.place_type),
         "elevation": f"{point.elevation_m} متر" if point.elevation_m is not None else "ارتفاع نامشخص",
         "routes": [
             {
@@ -116,6 +142,8 @@ def _route_page(route: Route) -> dict:
         "region": route.region,
         "origin": route.origin,
         "target": route.target_label,
+        "origin_href": f"/points/{route.origin_weather_point.slug}" if route.origin_weather_point_id else "",
+        "target_href": f"/points/{route.target_weather_point.slug}" if route.target_weather_point_id else "",
         "distance": _format_decimal(route.distance_km, "کیلومتر"),
         "ascent": f"{route.ascent_m} متر" if route.ascent_m is not None else None,
         "points": [

@@ -224,6 +224,7 @@ describe("Hawatch pages", () => {
   it("renders home, point and route", async () => {
     renderAt("/");
     expect(await screen.findByText("توچال")).toBeInTheDocument();
+    expect(document.querySelectorAll("h1")).toHaveLength(1);
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
   });
 

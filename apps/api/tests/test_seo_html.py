@@ -69,6 +69,58 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in trailing_response.content.decode()
 
 
+def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, seo_catalog):
+    gahar = api_client.get("/points/gahar")
+    assert gahar.status_code == 200
+    gahar_body = gahar.content.decode()
+    assert 'href="/routes/gahar-dorud"' in gahar_body
+    assert 'href="/routes/gahar-aligudarz"' in gahar_body
+    assert 'href="/points/gahar"' in api_client.get("/routes/gahar-dorud").content.decode()
+
+    # These points are intentionally retained for search/future variants, but
+    # are not members or endpoints of an active route today.
+    for slug in (
+        "kholeno-borj-summit",
+        "kholeno-lalan-village",
+        "kholeno-small-summit",
+        "tochal-bazarek-pass",
+        "tochal-naseri-junction",
+        "tochal-shahneshin-pass",
+        "tochal-velenjak-village",
+    ):
+        body = api_client.get(f"/points/{slug}").content.decode()
+        assert "مسیرهای مرتبط" not in body
+        assert "/routes/" not in body
+
+    point = WeatherPoint.objects.create(
+        slug="seo-test-summit",
+        name="قلهٔ آزمایشی",
+        page_name="قلهٔ آزمایشی تهران",
+        place_type="summit",
+        identity_summary="قلهٔ آزمایشی تهران؛ نقطهٔ summit در محدودهٔ تهران",
+        region="تهران",
+        elevation_m=3000,
+        location=Point(51.5, 35.8, srid=4326),
+        seo_indexable=True,
+        is_active=True,
+    )
+    body = api_client.get(f"/points/{point.slug}").content.decode()
+    assert "<dt>نوع نقطه</dt><dd>قله</dd>" in body
+    assert "نقطهٔ قله" in body
+    assert "نقطهٔ summit" not in body
+
+    point.place_type = "operator_extension"
+    point.identity_summary = "نقطهٔ operator_extension در محدودهٔ تهران"
+    point.save(update_fields=["place_type", "identity_summary"])
+    fallback_body = api_client.get(f"/points/{point.slug}").content.decode()
+    assert "<dt>نوع نقطه</dt><dd>عارضهٔ ثبت‌شده</dd>" in fallback_body
+    assert "نقطهٔ operator_extension" not in fallback_body
+
+    hazar_body = api_client.get("/points/hazar-ardikan-babzangi-junction").content.decode()
+    assert "<title>هوای دوراهی اردیکان–باب‌زنگی در مسیر هزار | هواچ</title>" in hazar_body
+    assert "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار" not in hazar_body
+
+
 def test_route_html_is_database_driven(api_client, seo_catalog):
     route = Route.objects.create(
         slug="seo-test-route",

@@ -1,4 +1,5 @@
 import { useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const DEFAULT_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر";
 export const DEFAULT_DESCRIPTION = "هواچ؛ هوای نقاط و برنامهٔ مسیر.";
@@ -18,6 +19,7 @@ export function robotsForSearch(search: string) {
 
 /** Keep the browser tab tied to the place or route currently being viewed. */
 export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
+  const location = useLocation();
   useLayoutEffect(() => {
     const title = name ? `هوای ${name} | هواچ` : DEFAULT_TITLE;
     document.title = title;
@@ -30,7 +32,8 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
         link.rel = "canonical";
         document.head.appendChild(link);
       }
-      link.href = canonicalPageUrl(window.location.origin, window.location.pathname);
+      const cleanPath = location.pathname === "/" ? "/" : location.pathname.replace(/\/+$/, "");
+      link.href = canonicalPageUrl(window.location.origin, cleanPath);
     }
     let description = document.head.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (!description) {
@@ -45,6 +48,6 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
       robots.name = "robots";
       document.head.appendChild(robots);
     }
-    robots.content = options.robots ?? robotsForSearch(window.location.search);
-  }, [name, options.canonical, options.robots]);
+    robots.content = options.robots ?? robotsForSearch(location.search);
+  }, [location.pathname, location.search, name, options.canonical, options.robots]);
 }

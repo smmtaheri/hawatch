@@ -20,6 +20,11 @@ Django HTML اولیهٔ catalog-driven را render می‌کند و web bundle 
 نیاز ندارد؛ HTML اولیهٔ آن از دیتابیس runtime خوانده می‌شود. راهنمای بررسی raw
 HTML در [`seo.md`](seo.md) است.
 
+اگر دامنه پشت CDN است، cache عمومی را فقط برای assetهای versioned فعال کنید.
+HTML مسیرهای `/`، `/points/*` و `/routes/*` باید با `Cache-Control: no-cache`
+revalidate شوند و `/admin/*` و `/api/*` نباید در cache عمومی قرار بگیرند؛ جزئیات
+قواعد purge و header در [`seo.md`](seo.md#تنظیم-cdn-و-cache) آمده است.
+
 اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.
 
 ## اجرای مستقیم روی یک سرور تازه

@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime, timedelta
 
 from django.conf import settings
+from django.db.models import Q
 from rest_framework.exceptions import NotFound
 
 from hawatch.common.time import (
@@ -1120,9 +1121,16 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
 
 
 def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
+    route_filter = (
+        Q(points__weather_point=point)
+        | Q(origin_weather_point=point)
+        | Q(target_weather_point=point)
+    )
+    if point.kind == WeatherPoint.Kind.PRIMARY:
+        route_filter |= Q(target_label=point.name) | Q(target_label=point.page_name or point.name)
     routes = (
         Route.objects.filter(
-            points__weather_point=point,
+            route_filter,
             is_active=True,
         )
         .distinct()

@@ -121,29 +121,20 @@ export function RoutePage() {
         if (currentRequest !== requestId.current) return;
         setData(payload);
         timingPendingRef.current = Boolean(payload.timing_pending);
-        const resolvedPeriod = (requestedPeriod ?? payload.meta.selected_period) as PeriodId;
-        const resolvedDate = explicitDate ? requestedDate! : payload.meta.selected_date;
         setDraftMinutes(payload.start_minutes);
         setDraftSpeed(payload.speed);
         const canonicalClock = toClock(payload.start_minutes);
-        const needsUrlSync =
-          !explicitDate ||
-          !explicitPeriod ||
-          !effectiveStart ||
-          effectiveStart !== canonicalClock ||
-          omitInvalidStart;
-        if (needsUrlSync) {
-          const resolvedParams = {
-            date: resolvedDate,
-            period: explicitPeriod ? requestedPeriod ?? undefined : resolvedPeriod,
-            speed: payload.speed,
-            start_time: canonicalClock,
-          };
+        // Keep API-selected defaults in React state. Writing them into a clean
+        // URL turns every route into a query variant (and therefore noindex).
+        // Only normalize a start_time that the visitor explicitly supplied.
+        const needsStartNormalization = Boolean(start) && (effectiveStart !== canonicalClock || omitInvalidStart);
+        if (needsStartNormalization) {
+          const resolvedParams = { start_time: canonicalClock };
           resolvedUrlRequestKey.current = requestKey({
             slug,
-            date: resolvedParams.date,
-            period: resolvedParams.period,
-            speed: resolvedParams.speed,
+            date: requestedDate,
+            period: requestedPeriod ?? undefined,
+            speed,
             start: resolvedParams.start_time,
           });
           update(resolvedParams);
@@ -234,6 +225,7 @@ export function RoutePage() {
   }
 
   function handlePeriodChange(next: PeriodId) {
+    if (next === displayPeriod) return;
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
     const selected = requestedDate ?? data?.meta.selected_date ?? "";
     const canonical = resolveRouteStartMinutes(
@@ -248,6 +240,7 @@ export function RoutePage() {
   }
 
   function handleDateChange(next: string) {
+    if (next === selected) return;
     if (commitTimer.current) window.clearTimeout(commitTimer.current);
     const canonical = resolveRouteStartMinutes(
       next,
@@ -261,6 +254,7 @@ export function RoutePage() {
   }
 
   function handleSpeedChange(nextSpeed: string) {
+    if (nextSpeed === displaySpeed) return;
     setDraftSpeed(nextSpeed);
     update({ speed: nextSpeed });
   }

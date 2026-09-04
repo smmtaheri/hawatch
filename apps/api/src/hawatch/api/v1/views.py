@@ -221,7 +221,12 @@ def search_suggestions_view(request):
 
 @api_view(["GET"])
 def robots_txt(_request):
-    body = "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nSitemap: /sitemap.xml\n"
+    from django.conf import settings
+
+    body = (
+        "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\n"
+        f"Sitemap: {settings.PUBLIC_SITE_ORIGIN}/sitemap.xml\n"
+    )
     return HttpResponse(body, content_type="text/plain; charset=utf-8")
 
 

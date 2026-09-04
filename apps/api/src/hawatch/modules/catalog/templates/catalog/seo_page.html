@@ -55,6 +55,7 @@
               <dl>
                 <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>
                 <div><dt>دسته‌بندی</dt><dd>{{ page.category }}</dd></div>
+                <div><dt>نوع نقطه</dt><dd>{{ page.place_type }}</dd></div>
                 <div><dt>ارتفاع</dt><dd>{{ page.elevation }}</dd></div>
               </dl>
               {% if page.routes %}
@@ -69,8 +70,8 @@
               {% endif %}
             {% elif page.kind == "route" %}
               <dl>
-                <div><dt>مبدأ</dt><dd>{{ page.origin }}</dd></div>
-                <div><dt>مقصد</dt><dd>{{ page.target }}</dd></div>
+                <div><dt>مبدأ</dt><dd>{% if page.origin_href %}<a href="{{ page.origin_href }}">{{ page.origin }}</a>{% else %}{{ page.origin }}{% endif %}</dd></div>
+                <div><dt>مقصد</dt><dd>{% if page.target_href %}<a href="{{ page.target_href }}">{{ page.target }}</a>{% else %}{{ page.target }}{% endif %}</dd></div>
                 <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>
                 {% if page.distance %}<div><dt>مسافت</dt><dd>{{ page.distance }}</dd></div>{% endif %}
                 {% if page.ascent %}<div><dt>صعود</dt><dd>{{ page.ascent }}</dd></div>{% endif %}

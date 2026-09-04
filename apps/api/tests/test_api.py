@@ -96,7 +96,7 @@ def test_robots_advertises_public_sitemap(api_client):
     assert "Allow: /" in body
     assert "Disallow: /api/" in body
     assert "Disallow: /admin/" in body
-    assert "Sitemap: /sitemap.xml" in body
+    assert "Sitemap: https://hawatch.ir/sitemap.xml" in body
 
 
 @pytest.mark.django_db
@@ -322,9 +322,15 @@ def test_search_matches_words_inside_point_names(api_client, seeded):
     # ``گهر`` is not the first word in ``دریاچهٔ گهر``. A later word must be searchable.
     gahar = api_client.get("/api/v1/search/suggestions/", {"q": "گهر"}).json()["results"]
     assert any(item["type"] == "point" and item["slug"] == "gahar" for item in gahar)
-
     # Route titles are intentionally not searchable; only points are valid result types.
     assert all(item["type"] == "point" for item in gahar)
+
+
+@pytest.mark.django_db
+def test_primary_destination_exposes_routes_when_endpoint_is_named_shore(api_client, seeded):
+    body = api_client.get("/api/v1/points/gahar/forecast/").json()
+    routes = {item["slug"] for item in body["related_routes"]}
+    assert {"gahar-dorud", "gahar-aligudarz"} <= routes
 
 
 @pytest.mark.django_db

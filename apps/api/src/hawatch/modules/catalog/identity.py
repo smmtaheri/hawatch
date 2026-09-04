@@ -28,6 +28,36 @@ PLACE_TYPES = {
     "technical_point",
 }
 
+# Public SEO copy must not expose the catalog's stable English enum values.
+# Keep this mapping next to PLACE_TYPES so a newly supported type cannot be
+# rendered accidentally as an implementation detail.  The fallback is
+# intentionally Persian for operator-managed rows with an unknown value.
+PLACE_TYPE_LABELS = {
+    "summit": "قله",
+    "village": "روستا",
+    "shelter": "پناهگاه",
+    "spring": "چشمه",
+    "pass": "گردنه",
+    "parking": "پارکینگ",
+    "waterfall": "آبشار",
+    "lake": "دریاچه",
+    "meadow": "دشت",
+    "ridge": "یال",
+    "landmark": "عارضهٔ شاخص",
+    "trailhead": "مبدأ مسیر",
+    "camp": "اردوگاه",
+    "forest": "جنگل",
+    "desert": "کویر",
+    "technical_point": "نقطهٔ فنی",
+}
+
+
+def place_type_label(value: str | None) -> str:
+    """Return safe Persian copy for a catalog ``place_type`` enum."""
+
+    key = str(value or "").strip().casefold()
+    return PLACE_TYPE_LABELS.get(key, "عارضهٔ ثبت‌شده")
+
 
 ROUTE_SLUG_MAP = {
     "touchal-darband": "tochal-darband",
@@ -246,7 +276,7 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "daryasar-spring": {"name": "چشمهٔ مسیر اِسِل‌محله تا دشت دریاسر", "page_name": "چشمهٔ مسیر اِسِل‌محله تا دشت دریاسر", "short_label": "چشمهٔ دریاسر", "place_type": "spring", "name_status": "descriptive"},
     "alamkuh-siahsang": {"name": "سیاه‌سنگ علم‌کوه", "page_name": "سیاه‌سنگ علم‌کوه", "short_label": "سیاه‌سنگ", "place_type": "technical_point", "name_status": "established"},
     "gahar-tapleh-trailhead": {"name": "تپهٔ تاپله", "page_name": "تپهٔ تاپله، ابتدای مسیر الیگودرز به دریاچهٔ گهر", "short_label": "تپهٔ تاپله", "place_type": "trailhead", "name_status": "established"},
-    "hazar-ardikan-babzangi-junction": {"name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی", "page_name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار", "short_label": "گدار دوراهی", "place_type": "landmark", "name_status": "established"},
+    "hazar-ardikan-babzangi-junction": {"name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی", "page_name": "دوراهی اردیکان–باب‌زنگی در مسیر هزار", "short_label": "گدار دوراهی", "place_type": "landmark", "name_status": "established"},
     "dorfak-jeyruni-spring": {"name": "چشمهٔ جیرونی درفک", "page_name": "چشمهٔ جیرونی در مسیر درفک", "short_label": "چشمهٔ جیرونی", "place_type": "spring", "name_status": "established"},
     "zarrinkuh-khosravan-village": {"name": "روستای خسروان", "page_name": "روستای خسروان، ابتدای مسیر جنوبی زرین‌کوه", "short_label": "خسروان", "place_type": "village", "name_status": "official"},
     "zarrinkuh-aynehvarzan-parking": {"name": "پارکینگ آیینه‌ورزان", "page_name": "پارکینگ آیینه‌ورزان، ابتدای مسیر زرین‌کوه", "short_label": "آیینه‌ورزان", "place_type": "parking", "name_status": "established"},
@@ -339,7 +369,7 @@ def metadata_for_point(
     name_status = str(override.get("name_status") or row.get("name_status") or "descriptive")
     summary = str(
         row.get("identity_summary")
-        or f"{page_name}؛ نقطهٔ {place_type} در محدودهٔ {primary_label or 'مسیر ثبت‌شده'}"
+        or f"{page_name}؛ نقطهٔ {place_type_label(place_type)} در محدودهٔ {primary_label or 'مسیر ثبت‌شده'}"
     )
     return {
         "name": name,

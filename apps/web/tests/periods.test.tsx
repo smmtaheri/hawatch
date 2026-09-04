@@ -340,6 +340,37 @@ describe("periods and route planner", () => {
     expect(pointCalls(fetchMock.mock.calls)).toHaveLength(1);
   });
 
+  it("keeps a clean route URL and indexable robots until the visitor changes the planner", async () => {
+    function SearchEcho() {
+      const [params] = useSearchParams();
+      return <div data-testid="url-search">{params.toString()}</div>;
+    }
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/routes/tochal-darband"]}>
+          <Routes>
+            <Route
+              path="/routes/:slug"
+              element={
+                <>
+                  <RoutePage />
+                  <SearchEcho />
+                </>
+              }
+            />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    expect(screen.getByTestId("url-search")).toHaveTextContent("");
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "index,follow");
+
+    await userEvent.click(screen.getByRole("button", { name: /ظهر/ }));
+    await waitFor(() => expect(screen.getByTestId("url-search")).toHaveTextContent("period=noon"));
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex,follow");
+  });
+
   it("renders night selected from backend default", async () => {
     render(
       <ThemeProvider>

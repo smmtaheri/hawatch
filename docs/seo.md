@@ -21,7 +21,7 @@ Nginx gateway این سه surface عمومی را به Django می‌فرستد.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
 ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
-را بدون تغییر ادامه می‌دهد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
+را بدون تغییر ادامه می‌دهد. Home در هر دو لایه دقیقاً یک `h1` دارد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
 و `hawatch.js`) می‌سازد تا Django به hashهای build وابسته نباشد؛ chunkهای داخلی
 همچنان hashدار هستند.
 
@@ -40,6 +40,36 @@ URL و بدون prerender مجدد، در HTML اولیه هم منعکس می�
 
 `X-Robots-Tag` نیز با meta robots هم‌راستاست. پاسخ‌های HTML با
 `Cache-Control: no-cache` برمی‌گردند تا تغییرات کاتالوگ با revalidation دیده شوند.
+در Route تمیز، تاریخ/بازه/سرعت/ساعت پیش‌فرض فقط در state React قرار می‌گیرند و
+به URL نوشته نمی‌شوند؛ با اولین تغییر واقعی کاربر query به URL اضافه و صفحه
+`noindex,follow` می‌شود. canonical در هر دو حالت بدون query می‌ماند و React با
+تغییر navigation، meta robots را دوباره محاسبه می‌کند.
+
+کدهای داخلی `place_type` در HTML عمومی نمایش داده نمی‌شوند. mapping مرکزی
+`PLACE_TYPE_LABELS` در `modules/catalog/identity.py` آن‌ها را به برچسب فارسی
+تبدیل می‌کند و برای مقدار ناشناخته از «عارضهٔ ثبت‌شده» استفاده می‌شود.
+صفحهٔ Point فقط به Routeهایی لینک می‌دهد که نقطه واقعاً عضو زنجیره یا مبدأ/مقصد
+آن Route فعال باشد. برای Point اصلیِ یک مقصد، تطبیق دقیق `target_label` با نام
+کانونیکال مقصد نیز مجاز است تا مقصدهایی مثل دریاچهٔ گهر که endpoint فیزیکیِ
+جداگانه دارند از مسیرهای واقعی خود جدا نشوند؛ رابطهٔ محتواییِ حدسی ساخته نمی‌شود.
+
+## تنظیم CDN و cache
+
+اگر CDN یا reverse proxy بیرونی جلوی gateway قرار دارد، این قواعد را اعمال کنید:
+
+- `/`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
+  عبور دهید) و query string را در cache key نگه ندارید؛ canonical خود HTML بدون
+  query است اما queryها باید `noindex,follow` بمانند.
+- `/admin/*` و `/api/*` خصوصی/پویا هستند و نباید در cache عمومی ذخیره شوند؛ هدر
+  `Cache-Control: private, no-store` را برای Admin حفظ کنید.
+- `/assets/*` و فونت/برند versioned را می‌توان با `public, max-age=31536000,
+  immutable` cache کرد. پس از هر build، فایل‌های hashدار و entryهای پایدار باید
+  یک‌جا purge شوند.
+- `/robots.txt` و `/sitemap.xml` عمومی‌اند ولی پویا هستند؛ cache کوتاه (حداکثر
+  چند دقیقه) یا revalidation فعال بگذارید و آدرس کامل sitemap را نگه دارید.
+
+gateway فعلی cache داخلی ندارد و هدر no-cache Django را عبور می‌دهد؛ این قواعد
+برای CDN بیرونیِ production است و به deploy یا تغییر catalog وابسته نیست.
 
 ## بررسی محلی پس از build
 
