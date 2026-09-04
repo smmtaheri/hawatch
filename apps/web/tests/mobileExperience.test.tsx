@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
-import { DestinationCard } from "../src/components/DestinationCard";
-import { DestinationIcon } from "../src/components/DestinationIcon";
+import { PointCard } from "../src/components/PointCard";
+import { PointIcon } from "../src/components/PointIcon";
 import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
 import { RouteSiblingNavigation } from "../src/components/RouteSiblingNavigation";
@@ -17,7 +17,7 @@ const routes: RouteSummary[] = [
     title: "مسیر پیشنهادی",
     trail_label: "مسیر کوهستانی",
     origin: "مبدأ اول",
-    destination_label: "توچال",
+    target_label: "توچال",
     distance_km: 10,
     distance_label: "۱۰ km",
     ascent_m: 1500,
@@ -32,7 +32,7 @@ const routes: RouteSummary[] = [
     title: "مسیر دوم",
     trail_label: "مسیر جنگلی",
     origin: "مبدأ دوم",
-    destination_label: "توچال",
+    target_label: "توچال",
     distance_km: 12,
     distance_label: "۱۲ km",
     ascent_m: 1600,
@@ -47,7 +47,7 @@ const routes: RouteSummary[] = [
     title: "مسیر سوم",
     trail_label: "مسیر فرعی",
     origin: "مبدأ سوم",
-    destination_label: "توچال",
+    target_label: "توچال",
     distance_km: 14,
     distance_label: "۱۴ km",
     ascent_m: 1700,
@@ -92,20 +92,20 @@ afterEach(() => {
 
 describe("mobile route and forecast controls", () => {
   it("renders a waterfall icon from the database category key", () => {
-    const { container } = render(<DestinationIcon categoryKey="waterfall" />);
-    expect(container.querySelector(".destination-icon.waterfall")).toBeInTheDocument();
+    const { container } = render(<PointIcon categoryKey="waterfall" />);
+    expect(container.querySelector(".point-icon.waterfall")).toBeInTheDocument();
   });
 
   it("does not mislabel an unsupported category as a mountain", () => {
-    const { container } = render(<DestinationIcon categoryKey="unknown-place-type" />);
-    expect(container.querySelector(".destination-icon.nature")).toBeInTheDocument();
-    expect(container.querySelector(".destination-icon.peak")).not.toBeInTheDocument();
+    const { container } = render(<PointIcon categoryKey="unknown-place-type" />);
+    expect(container.querySelector(".point-icon.nature")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.peak")).not.toBeInTheDocument();
   });
 
   it("shows route elevation and distance without repeating the trail origin", () => {
     render(
       <MemoryRouter>
-        <DestinationCard route={routes[0]} />
+        <PointCard route={routes[0]} />
       </MemoryRouter>,
     );
 

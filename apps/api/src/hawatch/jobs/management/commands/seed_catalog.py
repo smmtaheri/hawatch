@@ -14,7 +14,7 @@ from hawatch.modules.catalog.catalog import (
 
 class Command(BaseCommand):
     help = (
-        "Idempotently import a versioned destination catalog from JSON. "
+        "Idempotently import a versioned point catalog from JSON. "
         "Non-destructive by default; use --prune only for intentional fixture cleanup."
     )
 
@@ -38,7 +38,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--prune",
             action="store_true",
-            help="Remove fixture_managed rows for this destination that are absent from the JSON.",
+            help="Remove fixture_managed rows for this point catalog that are absent from the JSON.",
         )
 
         parser.add_argument(
@@ -88,14 +88,11 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"Conflict: {item}"))
         self.stdout.write(
             self.style.SUCCESS(
-                "Catalog {version}: {points} weather points, {routes} routes for {destination} "
-                "(pruned_routes={pruned_routes}, pruned_points={pruned_points}).".format(
+                "Catalog {version}: {points} weather points, {routes} routes for {point}.".format(
                     version=result["catalog_version"],
                     points=result["weather_point_count"],
                     routes=result["route_count"],
-                    destination=result["destination"],
-                    pruned_routes=result.get("pruned_routes", 0),
-                    pruned_points=result.get("pruned_points", 0),
+                    point=result["point"],
                 )
             )
         )

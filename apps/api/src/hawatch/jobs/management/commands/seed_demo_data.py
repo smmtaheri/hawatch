@@ -5,7 +5,7 @@ from hawatch.modules.catalog.seed import seed_demo_data
 
 
 class Command(BaseCommand):
-    help = "Idempotently seed Hawatch demo destinations, routes, points, and forecasts."
+    help = "Idempotently seed Hawatch demo points, routes, and forecasts."
 
     def add_arguments(self, parser):
         parser.add_argument("--force", action="store_true", help="Regenerate forecasts even if the hour bucket is unchanged.")

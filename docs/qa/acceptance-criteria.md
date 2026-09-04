@@ -12,23 +12,23 @@
 
 ## تصاویر و design handoff
 
-- [ ] ۱۶ asset canonical از چهار صفحهٔ Home، Login، Destination و Route، در دو theme و دو device وجود دارد؛ دو reference تکمیلیِ flow ورود در `design/screens/login/reference/` ثبت شده‌اند.
+- [ ] ۱۶ asset canonical از چهار صفحهٔ Home، Login، Point و Route، در دو theme و دو device وجود دارد؛ دو reference تکمیلیِ flow ورود در `design/screens/login/reference/` ثبت شده‌اند.
 - [ ] ۱۶ PNG در `design/source-screens/` byte-for-byte حفظ شده و ۱۶ organized copy در `design/screens/{page}/{theme}/{device}.png` قرار دارد.
 - [ ] نام، مسیر، ابعاد و SHA-256 در `design/manifest.json` با فایل واقعی match است.
 - [ ] هیچ تصویر resize، compress یا re-encode نشده است.
-- [ ] Point screenshot مستقل ندارد و مستندات آن را extension سیستم Destination معرفی می‌کنند؛ تصویر جدیدی بدون منبع ساخته نمی‌شود.
-- [ ] ۱۶ asset مرجع دست‌نخورده باقی می‌مانند؛ اصلاحات Point با reuse الگوی Destination مستند می‌شوند و تصویر ساختگی/بدون منبع اضافه نمی‌شود.
+- [ ] Point screenshot مستقل ندارد و مستندات آن را extension سیستم Point معرفی می‌کنند؛ تصویر جدیدی بدون منبع ساخته نمی‌شود.
+- [ ] ۱۶ asset مرجع دست‌نخورده باقی می‌مانند؛ اصلاحات Point با reuse الگوی Point مستند می‌شوند و تصویر ساختگی/بدون منبع اضافه نمی‌شود.
 
 ## صفحات و navigation
 
-- [ ] Home (`/`) جست‌وجوی unified مقصد و نقطه را با `GET /api/v1/search/suggestions/?q=` و حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias و debounce حدود ۲۰۰ms انجام می‌دهد؛ مسیرها searchable نیستند.
-- [ ] Submit/Enter جست‌وجوی destination-only fallback ندارد؛ یک نتیجه مستقیم باز می‌شود و چند نتیجه در فهرست unified نمایش داده می‌شود.
-- [ ] Destination (`/destination/{slug}`) مقصد، forecast، روز، چهار بازه و مسیرهای مرتبط را نمایش می‌دهد.
+- [ ] Home (`/`) جست‌وجوی unified نقاط را با `GET /api/v1/search/suggestions/?q=` و حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias و debounce حدود ۲۰۰ms انجام می‌دهد؛ مسیرها searchable نیستند.
+- [ ] Submit/Enter جست‌وجوی point-only fallback ندارد؛ یک نتیجه مستقیم باز می‌شود و چند نتیجه در فهرست unified نمایش داده می‌شود.
+- [ ] Point (`/points/{slug}`) نقطه، forecast، روز، چهار بازه و مسیرهای مرتبط را نمایش می‌دهد.
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.
 - [ ] Point (`/points/{weatherPointSlug}`) صفحهٔ canonical مستقل برای WeatherPoint است و timing planner ندارد.
-- [ ] point مقصدی مثل `tochal_summit` فقط از `/destination/tochal` لینک می‌شود و صفحهٔ standalone موازی ندارد.
-- [ ] `/points/tochal-sarband-square` همان shell بصری Destination را دارد (بدون `.point-page`).
-- [ ] Destination و Point از یک `PlaceForecastPage` رندر می‌شوند.
+- [ ] نقطهٔ شاخص مثل `tochal` فقط از `/points/tochal` لینک می‌شود و صفحهٔ موازی ندارد.
+- [ ] `/points/tochal-sarband-square` همان shell بصری Point را دارد (`.point-page`).
+- [ ] همهٔ صفحات Point از یک `PlaceForecastPage` رندر می‌شوند.
 - [ ] لینک Route به Point تمیز است؛ context کامل Route در `location.state.fromRoute` نگه داشته می‌شود.
 - [ ] بازگشت Point که از Route باز شده، `date`، `period`، `start_time` و `speed` را restore می‌کند؛ ورود مستقیم/refresh دکمهٔ back گمراه‌کننده ندارد.
 
@@ -46,17 +46,17 @@
 - [ ] مبدأ ولنجک `tochal-velenjak-parking` است؛ نقطهٔ قدیمیِ مبهم `velenjak` در
   کاتالوگ canonical باقی نمی‌ماند.
 - [ ] تغییر start time یا speed arrival و انتخاب forecast نقطه را دوباره محاسبه می‌کند و می‌تواند از مرز period/نیمه‌شب عبور کند.
-- [ ] `state` کارت نقطه و تصمیم مسیر فقط از severity پیش‌بینی نقطه‌ای matched ساخته می‌شود؛ آستانهٔ دیررسیدن یا بازنویسی hourly مقصد از critical نقطه ممنوع است.
+- [ ] `state` کارت نقطه و تصمیم مسیر فقط از severity پیش‌بینی نقطه‌ای matched ساخته می‌شود؛ آستانهٔ دیررسیدن یا بازنویسی hourly نقطه از critical نقطه ممنوع است.
 - [ ] Route timeline دمای زیر marker و headline «تغییرات شب · هر دو ساعت» را نمایش نمی‌دهد.
-- [ ] Destination/Point هم `period.headline` را نشان نمی‌دهند؛ فقط کارت ساعتی + legend.
-- [ ] Route cards زیر timeline برای هر RoutePoint و زمان رسیدن محاسبه‌شده‌اند، نه forecast عمومی مقصد یا عنوان period مشترک بالای همهٔ نقاط.
-- [ ] label بالای day tabs در Destination و Point «انتخاب روز» است و timestamp خام update نمایش داده نمی‌شود.
+- [ ] Point/Point هم `period.headline` را نشان نمی‌دهند؛ فقط کارت ساعتی + legend.
+- [ ] Route cards زیر timeline برای هر RoutePoint و زمان رسیدن محاسبه‌شده‌اند، نه forecast عمومی نقطه یا عنوان period مشترک بالای همهٔ نقاط.
+- [ ] label بالای day tabs در Point و Point «انتخاب روز» است و timestamp خام update نمایش داده نمی‌شود.
 
 ## responsive، theme و دسترسی‌پذیری
 
-- [ ] چهار حالت light/dark و mobile/desktop برای Home، Destination و Route بدون root horizontal overflow قابل استفاده‌اند.
-- [ ] Point در light/dark استایل هم‌خانواده با Destination دارد و در ورود از Route sidebar خالی ایجاد نمی‌کند.
-- [ ] Point در light/dark از همان surface، typography و spacing Destination استفاده می‌کند؛ related routes در sidebar فشرده و تک‌ستونه‌اند.
+- [ ] چهار حالت light/dark و mobile/desktop برای Home، Point و Route بدون root horizontal overflow قابل استفاده‌اند.
+- [ ] Point در light/dark استایل هم‌خانواده با Point دارد و در ورود از Route sidebar خالی ایجاد نمی‌کند.
+- [ ] Point در light/dark از همان surface، typography و spacing Point استفاده می‌کند؛ related routes در sidebar فشرده و تک‌ستونه‌اند.
 - [ ] root و محتوای فارسی RTL، فونت self-hosted Estedad، stack fallback و focus/keyboard stateهای قابل دسترس دارند.
 - [ ] scroll داخلی، در صورت نیاز، scoped به همان محور/کانتینر است و root را عریض نمی‌کند.
 

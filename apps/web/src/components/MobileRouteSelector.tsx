@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { RouteSummary } from "../types";
-import { DestinationCard } from "./DestinationCard";
+import { PointCard } from "./PointCard";
 
 function topRoutes(routes: RouteSummary[]): RouteSummary[] {
   return routes.slice(0, 2);
@@ -63,7 +63,7 @@ export function MobileRouteSelector({
           </div>
           <div className="mobile-route-selection-top">
             {visibleTopRoutes.map((route) => (
-              <DestinationCard key={route.slug} route={route} />
+              <PointCard key={route.slug} route={route} />
             ))}
           </div>
         </>

@@ -1,24 +1,5 @@
 {
   "catalog_version": "hawatch-darabad-catalog-v1",
-  "destination_weather_point": "darabad_summit",
-  "destination": {
-    "slug": "darabad",
-    "tile_name": "دارآباد",
-    "name": "قلهٔ دارآباد",
-    "short_category": "کوه",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "البرز مرکزی",
-    "elevation_m": 3167,
-    "latitude": 35.8614,
-    "longitude": 51.4979,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی قلهٔ دارآباد",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
     "darabad-parking": {
       "name": "پارکینگ دارآباد",
@@ -248,12 +229,12 @@
         "https://decovel.com/page/darabad-peak"
       ]
     },
-    "darabad_summit": {
+    "darabad": {
       "name": "قلهٔ دارآباد",
       "latitude": 35.8614,
       "longitude": 51.4979,
       "elevation_m": 3167,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "Wikiloc/Gholleh cross-check: approximately 3167–3170 m; Open-Meteo GLO-90 DEM: 3164 m; GPX summit endpoints: approximately 3170–3180 m",
       "page_name": "قلهٔ دارآباد",
@@ -282,7 +263,6 @@
       "subtitle": "از پارکینگ دارآباد، چشمه و دکل تا قلهٔ دارآباد",
       "trail_label": "مسیر یال شن‌سیاه",
       "origin": "پارکینگ دارآباد",
-      "destination_label": "قلهٔ دارآباد",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 1,
@@ -291,7 +271,7 @@
         "darabad-shensiyah-spring",
         "darabad-abandoned-guardhouse",
         "darabad-shensiyah-tower",
-        "darabad_summit"
+        "darabad"
       ],
       "distance_km": 6.6,
       "ascent_m": 1431,
@@ -322,11 +302,11 @@
           "darabad-shensiyah-spring": 85,
           "darabad-abandoned-guardhouse": 135,
           "darabad-shensiyah-tower": 205,
-          "darabad_summit": 300
+          "darabad": 300
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ دارآباد"
     },
     "farakhsineh_to_darabad": {
       "slug": "darabad-farakhsineh",
@@ -334,7 +314,6 @@
       "subtitle": "از درهٔ دارآباد و چشمهٔ خلیل تا خط‌الرأس و قله",
       "trail_label": "مسیر فراخ‌سینه و درازلش",
       "origin": "پارکینگ دارآباد",
-      "destination_label": "قلهٔ دارآباد",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 2,
@@ -345,7 +324,7 @@
         "darabad-darazlash-spring",
         "darabad-khalil-branch",
         "darabad-ridge-entry",
-        "darabad_summit"
+        "darabad"
       ],
       "distance_km": 11.2,
       "ascent_m": 1498,
@@ -379,11 +358,11 @@
           "darabad-darazlash-spring": 105,
           "darabad-khalil-branch": 130,
           "darabad-ridge-entry": 285,
-          "darabad_summit": 330
+          "darabad": 330
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ دارآباد"
     },
     "hajiabad_to_darabad": {
       "slug": "darabad-hajiabad",
@@ -391,14 +370,13 @@
       "subtitle": "از مسیر شمالی حاجی‌آباد تا قلهٔ دارآباد",
       "trail_label": "مسیر حاجی‌آباد",
       "origin": "حاجی‌آباد",
-      "destination_label": "قلهٔ دارآباد",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 3,
       "points": [
         "darabad-hajiabad-start",
         "darabad-hajiabad-ridge",
-        "darabad_summit"
+        "darabad"
       ],
       "distance_km": 6.2,
       "ascent_m": 1362,
@@ -427,11 +405,30 @@
         "cumulative_minutes": {
           "darabad-hajiabad-start": 0,
           "darabad-hajiabad-ridge": 125,
-          "darabad_summit": 240
+          "darabad": 240
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ دارآباد"
     }
-  }
+  },
+  "point": {
+    "slug": "darabad",
+    "tile_name": "دارآباد",
+    "name": "قلهٔ دارآباد",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی",
+    "elevation_m": 3167,
+    "latitude": 35.8614,
+    "longitude": 51.4979,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ دارآباد",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "darabad"
 }

@@ -7,9 +7,9 @@ import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
 import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { DestinationIcon } from "../../components/DestinationIcon";
+import { PointIcon } from "../../components/PointIcon";
 import { usePageTitle } from "../../lib/pageTitle";
-import type { CatalogCounts, DestinationSummary, SearchSuggestion } from "../../types";
+import type { CatalogCounts, PointSummary, SearchSuggestion } from "../../types";
 
 function tileWords(name: string) {
   return name.split(" ").filter(Boolean);
@@ -21,7 +21,7 @@ export function HomePage() {
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
   const [searchError, setSearchError] = useState(false);
-  const [popularDestinations, setPopularDestinations] = useState<DestinationSummary[]>([]);
+  const [popularPoints, setPopularPoints] = useState<PointSummary[]>([]);
   const [catalogCounts, setCatalogCounts] = useState<CatalogCounts | null>(null);
   const [freshness, setFreshness] = useState("ready");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
@@ -30,9 +30,9 @@ export function HomePage() {
   function loadPopular() {
     setStatus("loading");
     api
-      .destinations()
+      .points()
       .then((payload) => {
-        setPopularDestinations(payload.results);
+        setPopularPoints(payload.results);
         setCatalogCounts(payload.meta.catalog_counts ?? null);
         setFreshness(payload.meta.freshness);
         setStatus("ready");
@@ -66,7 +66,7 @@ export function HomePage() {
   }
 
   const showingSearch = Boolean(submittedQuery);
-  const heading = showingSearch ? "نتایج مرتبط" : "مقصدهای محبوب";
+  const heading = showingSearch ? "نتایج مرتبط" : "نقاط شاخص";
 
   return (
     <main className="home-page">
@@ -97,18 +97,18 @@ export function HomePage() {
               />
               <button type="submit">جست‌وجو</button>
             </form>
-            <div className="hero-destinations" id="search-results">
-              <div className="hero-destinations-heading">
+            <div className="hero-points" id="search-results">
+              <div className="hero-points-heading">
                 <span>{heading}</span>
                 <i />
               </div>
               {freshness === "stale" ? <StaleDataNotice /> : null}
-              {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری مقصدها…" /> : null}
+              {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری نقاط…" /> : null}
               {status === "error" && !showingSearch ? <ErrorState onRetry={loadPopular} /> : null}
               {showingSearch && searchError ? (
                 <ErrorState
                   onRetry={() => searchRef.current?.submit()}
-                  message="جست‌وجوی مقصد یا نقطهٔ مسیر ناموفق بود. دوباره تلاش کن."
+                  message="جست‌وجوی نقطه ناموفق بود. دوباره تلاش کن."
                 />
               ) : null}
               {showingSearch && !searchError && status === "loading" ? (
@@ -117,7 +117,7 @@ export function HomePage() {
               {showingSearch && !searchError && status === "ready" && !searchResults.length ? (
                 <EmptyState
                   title="نتیجه‌ای پیدا نشد؛ نام دیگری را امتحان کن."
-                  detail="مقصد یا نقطهٔ مسیر را با حداقل دو حرف جست‌وجو کن."
+                  detail="نام نقطه را با حداقل دو حرف جست‌وجو کن."
                 />
               ) : null}
               {showingSearch && !searchError && status === "ready" && searchResults.length ? (
@@ -133,13 +133,13 @@ export function HomePage() {
                 </ul>
               ) : null}
               {!showingSearch && status === "ready" ? (
-                <div className="destination-grid">
-                  {popularDestinations.map((item) => (
-                    <Link key={item.slug} to={item.href} className="destination-tile">
-                      <span className="destination-tile-copy">
+                <div className="point-grid">
+                  {popularPoints.map((item) => (
+                    <Link key={item.slug} to={item.href} className="point-tile">
+                      <span className="point-tile-copy">
                         <strong>
                           {tileWords(item.tile_name).map((word) => (
-                            <span className="destination-name-word" key={word}>
+                            <span className="point-name-word" key={word}>
                               {word}
                             </span>
                           ))}
@@ -147,7 +147,7 @@ export function HomePage() {
                         <small>{item.short_category}</small>
                       </span>
                       <span className="tile-icon">
-                        <DestinationIcon categoryKey={item.category_key} />
+                        <PointIcon categoryKey={item.category_key} />
                       </span>
                       <span className="tile-arrow">←</span>
                     </Link>
@@ -157,16 +157,12 @@ export function HomePage() {
               {!showingSearch && catalogCounts ? (
                 <section className="home-catalog-stats" aria-label="آمار کاتالوگ هواچ">
                   <div className="home-catalog-stat">
-                    <strong>{catalogCounts.destinations.toLocaleString("fa-IR")}</strong>
-                    <span>مقصد فعال</span>
+                    <strong>{catalogCounts.points.toLocaleString("fa-IR")}</strong>
+                    <span>نقطهٔ فعال</span>
                   </div>
                   <div className="home-catalog-stat">
                     <strong>{catalogCounts.routes.toLocaleString("fa-IR")}</strong>
                     <span>مسیر ثبت‌شده</span>
-                  </div>
-                  <div className="home-catalog-stat">
-                    <strong>{catalogCounts.points.toLocaleString("fa-IR")}</strong>
-                    <span>نقطهٔ هواشناسی</span>
                   </div>
                 </section>
               ) : null}

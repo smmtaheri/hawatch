@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation, type Location } from "react-router-dom";
-import { DestinationPage } from "../pages/DestinationPage";
 import { HomePage } from "../pages/HomePage";
 import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
@@ -32,7 +31,6 @@ export function AppRoutes() {
       <Routes location={backgroundLocation ?? location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/destination/:slug" element={<DestinationPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

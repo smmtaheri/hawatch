@@ -1,31 +1,12 @@
 {
   "catalog_version": "hawatch-gahar-catalog-v1",
-  "destination_weather_point": "gahar_lake",
-  "destination": {
-    "slug": "gahar",
-    "tile_name": "دریاچهٔ گهر",
-    "name": "دریاچهٔ گهر",
-    "short_category": "دریاچه",
-    "category": "دریاچهٔ کوهستانی",
-    "category_key": "lake",
-    "region": "زاگرس مرکزی · لرستان",
-    "elevation_m": 2350,
-    "latitude": 33.306878,
-    "longitude": 49.2807614,
-    "image": "/images/gahar-hero.png",
-    "image_alt": "نمای دریاچهٔ گهر در اشترانکوه",
-    "popular_order": 0,
-    "climate": "lake_valley",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
-    "gahar_lake": {
+    "gahar": {
       "name": "دریاچهٔ گهر",
       "latitude": 33.306878,
       "longitude": 49.2807614,
       "elevation_m": 2350,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "مرکز هندسی دریاچه در OSM: 33.306878, 49.2807614؛ ارتفاع رایج گزارش‌شده حدود ۲۳۵۰ متر؛ Open-Meteo GLO-90 DEM در این مختصات ۲۳۳۸ متر و برای cross-check استفاده شده است.",
       "page_name": "دریاچهٔ گهر",
@@ -129,7 +110,7 @@
       "longitude": 49.278215,
       "elevation_m": 2336,
       "status": "provisional",
-      "elevation_source": "Waypoint رسیدن ترک دورود به گهر: حدود ۲۳۳۶ متر؛ برای زمان رسیدن route-specific است و مرکز دریاچه در gahar_lake نگه‌داری می‌شود.",
+      "elevation_source": "Waypoint رسیدن ترک دورود به گهر: حدود ۲۳۳۶ متر؛ برای زمان رسیدن route-specific است و مرکز دریاچه در gahar نگه‌داری می‌شود.",
       "page_name": "کرانهٔ غربی دریاچهٔ گهر",
       "short_label": "کرانهٔ غربی دریاچهٔ گهر",
       "place_type": "lake",
@@ -212,7 +193,6 @@
       "subtitle": "مسیر رایج دورود از گردنهٔ پنبه‌کار و خداقوت تا کرانهٔ گهر",
       "trail_label": "مسیر دورود",
       "origin": "چشمه‌خیّه · پارکینگ گهر",
-      "destination_label": "دریاچهٔ گهر",
       "region": "زاگرس مرکزی · لرستان",
       "featured": true,
       "sort_order": 1,
@@ -257,8 +237,8 @@
           "gahar-dorud-lake-shore": 270
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "دریاچهٔ گهر"
     },
     "aligudarz_to_gahar": {
       "slug": "gahar-aligudarz",
@@ -266,7 +246,6 @@
       "subtitle": "مسیر الیگودرز از ابتدای پیاده‌روی و دورنمای گهر تا کرانهٔ دریاچه",
       "trail_label": "مسیر الیگودرز",
       "origin": "تپهٔ تاپله · ابتدای پیاده‌روی",
-      "destination_label": "دریاچهٔ گهر",
       "region": "زاگرس مرکزی · لرستان",
       "featured": true,
       "sort_order": 2,
@@ -304,8 +283,27 @@
           "gahar-aligudarz-lake-shore": 120
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "دریاچهٔ گهر"
     }
-  }
+  },
+  "point": {
+    "slug": "gahar",
+    "tile_name": "دریاچهٔ گهر",
+    "name": "دریاچهٔ گهر",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ کوهستانی",
+    "category_key": "lake",
+    "region": "زاگرس مرکزی · لرستان",
+    "elevation_m": 2350,
+    "latitude": 33.306878,
+    "longitude": 49.2807614,
+    "image": "/images/gahar-hero.png",
+    "image_alt": "نمای دریاچهٔ گهر در اشترانکوه",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "gahar"
 }

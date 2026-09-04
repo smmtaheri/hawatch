@@ -9,7 +9,7 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
   اگر از ingest قبلی در دیتابیس موجود باشد نگه داشته می‌شود و دوباره از provider
   درخواست نمی‌شود.
 - hourly: هر دو ساعت؛ هر بازه دقیقاً سه کارت دارد.
-- `period.headline` فقط فیلد سازگاری/داخلی است و در UI Destination/Point نمایش داده نمی‌شود.
+- `period.headline` فقط فیلد سازگاری/داخلی است و در UI Point/Point نمایش داده نمی‌شود.
 - چهار بازهٔ غیرهم‌پوشان از نیمه‌شب تا پایان همان روز (قرارداد قدیمیِ سه‌بازه‌ای با این برنامه **جایگزین شده**):
 
 | `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
@@ -45,14 +45,14 @@ flagها از **timestamp واقعی** هر reading (`forecast_at`) نسبت ب�
 ## envelope
 
 ```text
-forecast (Forecast Place — destination یا point)
+forecast (Point Forecast)
 ├── subject { kind, slug, canonical_href, name, elevation, coords, hero_image, ... }
 ├── hero { status, alert }
 ├── forecast { days[], period, current?, hourly[], meta }
 ├── metrics[]
 ├── decision
 ├── related_routes[]
-├── (سازگاری) destination | point | weather | days | hourly | meta
+├── (سازگاری) point | weather | days | hourly | meta
 ```
 
 `metrics[]` برای هر شاخص شامل `icon`، `label`، `value`، `note` و `color` است. مقدار `icon` یک
@@ -104,7 +104,7 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 
 تمام timestampهای public (`forecast_at`، `valid_from`، `valid_to`، `generated_at` و `current_local_time`) با offset `Asia/Tehran` برمی‌گردند؛ timestamp UTC در قرارداد frontend نمایش داده نمی‌شود.
 
-برای Destination و Point، `current`/`weather` باید **فقط** از reading داخل پنجرهٔ period انتخاب‌شده بیاید؛ fallback کل روز تقویمی ممنوع است. «الان» فقط وقتی مجاز است که reading واقعاً `is_current` باشد.
+برای همهٔ صفحات نقطه، `current`/`weather` باید **فقط** از reading داخل پنجرهٔ period انتخاب‌شده بیاید؛ fallback کل روز تقویمی ممنوع است. «الان» فقط وقتی مجاز است که reading واقعاً `is_current` باشد.
 
 ## metadata
 
@@ -164,8 +164,8 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 - `slow`/`medium`/`fast` ضریب زمان نسبی‌اند نه km/h: آرام `1.25`، متوسط `1.00`، سریع `0.80` (`SPEED_TIME_FACTORS`).
 - `paced_minutes = round_to_nearest_5(cumulative_medium_minutes * speed_time_factor)`.
 - `arrival_at` از `start_minutes` تهران + paced duration ساخته می‌شود و می‌تواند از مرز period و نیمه‌شب عبور کند.
-- برای هر RoutePoint فقط forecast همان `WeatherPoint` انتخاب می‌شود (نزدیک‌ترین ساعتی در ±۹۰ دقیقه به `arrival_at`). در تساوی فاصله، `forecast_at` زودتر و سپس primary key پایین‌تر برنده است؛ fallback به قله/مقصد ممنوع است؛ خارج از tolerance → `weather_available=false`.
-- `state` کارت نقطه فقط از `severity` همان forecast انتخاب‌شده می‌آید؛ آستانهٔ زمان سپری‌شده یا بازنویسی hourly مقصد از روی critical نقطه ممنوع است.
+- برای هر RoutePoint فقط forecast همان `WeatherPoint` انتخاب می‌شود (نزدیک‌ترین ساعتی در ±۹۰ دقیقه به `arrival_at`). در تساوی فاصله، `forecast_at` زودتر و سپس primary key پایین‌تر برنده است؛ fallback به قله/نقطه ممنوع است؛ خارج از tolerance → `weather_available=false`.
+- `state` کارت نقطه فقط از `severity` همان forecast انتخاب‌شده می‌آید؛ آستانهٔ زمان سپری‌شده یا بازنویسی hourly نقطه از روی critical نقطه ممنوع است.
 - period انتخاب‌شده فقط پنجرهٔ مجاز حرکت را محدود می‌کند؛ بعد از محاسبهٔ رسیدن، خلاصهٔ period مبدأ به همهٔ نقاط تحمیل نمی‌شود.
 - فیلد `one_way_minutes` مدت صعود یک‌طرفهٔ متوسط است؛ نباید در `round_trip_minutes` ذخیره شود.
 - مسیر فقط وقتی usable است که status برابر `estimated`/`curated` باشد، `one_way_minutes` مثبت باشد، حداقل دو نقطه داشته باشد، همهٔ نقاط estimated/curated با cumulative کامل، cumulative اول صفر، strictly increasing، و cumulative نهایی برابر `one_way_minutes` باشد؛ در غیر این صورت `timing_pending=true`. `base_minutes` legacy برای arrival کافی نیست.
@@ -173,24 +173,24 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 - پاسخ نقطه شامل `arrival_at`، `arrival_minutes`، برچسب تقریبی زمان (`حدود HH:MM` در UI)، `timing_status`/`confidence`/`uncertainty`، `forecast_at` و شرط/دما/باد/severity همان نقطه است.
 - `points[].note` فقط از `RoutePoint.public_note` صریح و کوتاه می‌آید. evidence/GPX/DEM و یادداشت‌های catalog در `internal_note` نگه‌داری می‌شوند و در هیچ پاسخ public برنمی‌گردند.
 
-## نقطهٔ canonical (Forecast Place — نقش point)
+## نقطهٔ canonical (Point Forecast)
 
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
 - URL frontend: `/points/{weather_point_slug}` — مثال `/points/tochal-sarband-square`
-- همان قرارداد place مشترک با destination؛ frontend فقط `forecast.*` را مصرف می‌کند (alias ریشه سازگاری است)
-- WeatherPoint مقصدی `canonical_href` عمومی در namespaceٔ `/points/` ندارد؛ frontend
-  باید از ابتدا `/destination/{slug}` را لینک کند.
+- همین قرارداد مشترک برای هر WeatherPoint؛ frontend فقط `forecast.*` را مصرف می‌کند (alias ریشه سازگاری است)
+- هر WeatherPoint فعال `canonical_href` عمومی در namespaceٔ `/points/` دارد؛ frontend
+  باید از ابتدا `/points/{slug}` را لینک کند.
 - **بدون** planner controls روی صفحه
-- mobile هم همان `mobile-route-picker` مقصد را برای مسیرهای مرتبط نشان می‌دهد
+- mobile هم همان `mobile-route-picker` نقطه را برای مسیرهای مرتبط نشان می‌دهد
 
 ## جست‌وجوی پیشنهاد (Home)
 
 - `GET /api/v1/search/suggestions/?q=...`
 - حداقل ۲ کاراکتر normalize‌شده؛ تطبیق substring برای پیدا کردن واژه‌های داخل نام/alias؛ حداکثر ۸ نتیجه
 - عنوان و slug مسیرها در این endpoint ایندکس نمی‌شوند و نباید نتیجهٔ جست‌وجو باشند.
-- مقصد یک‌بار برمی‌گردد (نه duplicate با WeatherPoint قله)
-- انواع: `destination` → `/destination/{slug}`؛ `point` → `/points/{weather_point_slug}`
-- label نمونه: `قلهٔ توچال — مقصد` · `پس‌قلعه — نقطهٔ مسیر · توچال`
+- نقطه یک‌بار برمی‌گردد (نه duplicate با WeatherPoint قله)
+- نوع نتیجه همیشه `point` است و به `/points/{weather_point_slug}` می‌رود.
+- label نمونه: `قلهٔ توچال — نقطه` · `پس‌قلعه — نقطهٔ مسیر · توچال`
 
 ## slider commit
 
@@ -202,4 +202,4 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 - UI باید periodهای کاملاً گذشته را کم‌رنگ کند و period جاری/آینده را عادی نگه دارد.
 - فیلد `updated_label` برای نمایش عمومی deprecated است؛ timestamp خام ISO نباید در UI رندر شود.
 - Route نباید period weather را به‌عنوان پیش‌بینی رسیدن نشان دهد وقتی timing pending است.
-- `/destination/*` و `/points/*` یک قالب Forecast Place دارند؛ baseline بصری screenshotهای Destination است.
+- همهٔ `/points/*`ها یک قالب Point Forecast دارند؛ baseline بصری screenshotهای Point است.

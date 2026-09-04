@@ -93,7 +93,7 @@
       "desktopTile": "95x58px",
       "mobileTile": "268.5x54px"
     },
-    "destination": {
+    "point": {
       "lightBackground": "#c9dcda",
       "darkBackground": "#0b2732",
       "desktopHero": "1416x250px",

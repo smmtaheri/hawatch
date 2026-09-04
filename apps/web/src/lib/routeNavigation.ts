@@ -57,7 +57,7 @@ export function plannerDatePeriodFromRouteSearch(search: string): { date?: strin
 }
 
 /** Date/period from public place URL only — never seed from fromRoute (back CTA only). */
-export function initialDestinationPlanner(
+export function initialPointPlanner(
   urlParams: URLSearchParams,
   _fromRoute?: RouteFromState,
 ): { date?: string; period?: PeriodId } {

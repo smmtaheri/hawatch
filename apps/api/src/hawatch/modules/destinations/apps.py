@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class DestinationsConfig(AppConfig):
+class CatalogHistoryConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "hawatch.modules.destinations"
     label = "destinations"
-    verbose_name = "Destinations"
+    verbose_name = "Catalog history"

@@ -128,9 +128,14 @@ def run_workflow(args: argparse.Namespace) -> None:
             "refusing --apply with --allow-unresolved-elevation; every imported point needs a validated elevation"
         )
 
-    destination = str(args.destination or (catalog.get("destination") or {}).get("slug") or "").strip()
-    if not destination:
-        raise WorkflowError("destination slug is missing; use --destination or catalog.destination.slug")
+    point = str(
+        args.point
+        or catalog.get("primary_point")
+        or (catalog.get("point") or {}).get("slug")
+        or ""
+    ).strip()
+    if not point:
+        raise WorkflowError("point slug is missing; use --point or catalog.primary_point")
     point_slugs = [str(slug) for slug in (catalog.get("weather_points") or {})]
     if not point_slugs:
         raise WorkflowError("catalog.weather_points must contain at least one point")
@@ -189,7 +194,7 @@ def run_workflow(args: argparse.Namespace) -> None:
     )
     _run_step("targeted Open-Meteo ingest", remote_ingest)
 
-    preflight_args = ["catalog_preflight", "--destination", destination, "--require-forecast"]
+    preflight_args = ["catalog_preflight", "--point", point, "--require-forecast"]
     if not pending:
         preflight_args.append("--strict")
     remote_preflight = remote_command(
@@ -200,7 +205,7 @@ def run_workflow(args: argparse.Namespace) -> None:
         manage_args=preflight_args,
     )
     _run_step("post-import database preflight", remote_preflight)
-    print(f"[catalog] published {destination}; refresh the destination/route page to verify arrival weather")
+    print(f"[catalog] published {point}; refresh the point/route page to verify arrival weather")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -208,7 +213,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalog", type=Path, required=True, help="Local catalog JSON; it is sent over SSH stdin.")
     parser.add_argument("--host", required=True, help="SSH target, for example root@203.0.113.10.")
-    parser.add_argument("--destination", default="", help="Destination slug; defaults to catalog.destination.slug.")
+    parser.add_argument("--point", default="", help="Primary point slug; defaults to catalog.primary_point.")
     parser.add_argument("--remote-dir", default="/root/hawatch")
     parser.add_argument("--env-file", default=".env")
     parser.add_argument("--compose-file", default="infra/compose/compose.yaml")

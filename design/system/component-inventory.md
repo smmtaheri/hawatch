@@ -5,16 +5,16 @@
 - `SiteHeader`: برند/لوگو، ورود و تغییر تم.
 - `BrandLogo`: wordmark کامل + mark رسمی؛ در dark از `hawatch-logo-light.svg` و در light از `hawatch-logo-dark.svg` استفاده می‌کند.
 - `ThemeToggle`: تغییر light/dark با label و state فعال.
-- `Breadcrumb`: context مقصد و مسیر.
+- `Breadcrumb`: context نقطه و مسیر.
 - `BackNavigation`: دکمهٔ بازگشت ساده به صفحهٔ قبلی با fallback به Home در ورود مستقیم.
 
 ## Home
 
 - `HeroCopy`: tagline و معرفی تصمیم.
-- `SearchCombobox`: autocomplete مقصد و WeatherPoint؛ keyboard و debounce.
-- `PopularDestinations`: heading و grid مقصدهای محبوب.
-- `DestinationTile`: نام، دستهٔ طبیعت، icon و navigation.
-- `SearchResultsList`: فهرست unified نتیجه‌های مقصد و نقطه بعد از submit.
+- `SearchCombobox`: autocomplete نقطه و WeatherPoint؛ keyboard و debounce.
+- `PopularPoints`: heading و grid نقاط شاخص.
+- `PointTile`: نام، دستهٔ طبیعت، icon و navigation.
+- `SearchResultsList`: فهرست unified نتیجه‌های نقطه بعد از submit.
 
 ## ورود
 
@@ -23,10 +23,10 @@
 - `RequestOtpButton`: CTA دریافت کد؛ تا آماده‌شدن API disabled و همراه علت.
 - `OtpCodeInput` (آینده): پنج خانهٔ بصری روی یک input واقعی برای paste و SMS autofill.
 
-## Destination / Forecast Place
+## Point Forecast
 
-- `PlaceForecastPage`: قالب مشترک `/destination/:slug` و `/points/:slug`.
-- `DestinationHero`: تصویر (یا fallback سطح)، عنوان، breadcrumb و وضعیت فعلی.
+- `PlaceForecastPage`: قالب `/points/:slug`.
+- `PointHero`: تصویر (یا fallback سطح)، عنوان، breadcrumb و وضعیت فعلی.
 - `StatusPill`: حالت عادی یا تغییر مهم.
 - `DayTabs`: انتخاب روز؛ دیروز کم‌رنگ‌تر از امروز.
 - `RoutePicker` / related routes card: مسیرهای مرتبط با عنوان متناسب kind.
@@ -37,8 +37,8 @@
 
 ## Route
 
-- `RouteHero`: نام مسیر، مقصد parent و هشدار برجسته.
-- `SiblingRouteNav`: مسیرهای دیگر همان مقصد.
+- `RouteHero`: نام مسیر، نقطهٔ target و هشدار برجسته.
+- `SiblingRouteNav`: مسیرهای دیگر متصل به همان نقطه.
 - `DayPicker`: انتخاب روز.
 - `StartTimeGauge`: بازه و slider ساعت شروع (RTL، step پیکربندی‌شده).
 - `SpeedSegmentedControl`: آرام/متوسط/سریع.
@@ -55,5 +55,5 @@
 
 ## Point
 
-قالب جداگانه ندارد؛ به Forecast Place مراجعه شود. نقطهٔ مقصد فقط از مسیر
-canonical مقصد لینک می‌شود و route عمومی جداگانه‌ای ندارد.
+قالب جداگانه ندارد؛ از Point Forecast مشترک استفاده می‌کند. همهٔ نقطه‌ها از مسیر
+canonical خودشان لینک می‌شوند.

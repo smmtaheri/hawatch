@@ -16,7 +16,7 @@ class PublishCatalogTests(unittest.TestCase):
 
         self.assertEqual(pending_timing_routes(catalog), ["route-first", "route-second"])
 
-    def test_destination_only_catalog_has_no_pending_routes(self):
+    def test_point_only_catalog_has_no_pending_routes(self):
         self.assertEqual(pending_timing_routes({"routes": {}}), [])
 
     def test_remote_command_uses_explicit_paths_and_no_directory_mutation(self):

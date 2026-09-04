@@ -8,7 +8,7 @@ from hawatch.modules.routes.publish import normalize_and_publish_route, schedule
 class RoutePointInline(admin.TabularInline):
     model = RoutePoint
     extra = 0
-    autocomplete_fields = ("weather_point", "destination")
+    autocomplete_fields = ("weather_point",)
     fields = (
         "sort_order",
         "slug",
@@ -31,7 +31,7 @@ class RouteAdmin(GISModelAdmin):
     list_display = (
         "slug",
         "title",
-        "destination",
+        "target_weather_point",
         "timing_status",
         "one_way_minutes",
         "is_active",
@@ -43,19 +43,18 @@ class RouteAdmin(GISModelAdmin):
     search_fields = ("slug", "title", "origin")
     readonly_fields = ("updated_at", "fixture_managed")
     inlines = [RoutePointInline]
-    autocomplete_fields = ("destination", "origin_weather_point", "target_weather_point")
+    autocomplete_fields = ("origin_weather_point", "target_weather_point")
     fieldsets = (
         (
             None,
             {
                 "fields": (
                     "slug",
-                    "destination",
                     "title",
                     "subtitle",
                     "trail_label",
                     "origin",
-                    "destination_label",
+                    "target_label",
                     "region",
                     "featured",
                     "sort_order",
@@ -134,7 +133,7 @@ class RoutePointAdmin(GISModelAdmin):
     )
     list_filter = ("timing_status", "data_mode", "fixture_managed")
     search_fields = ("slug", "name", "route__slug")
-    autocomplete_fields = ("route", "weather_point", "destination")
+    autocomplete_fields = ("route", "weather_point")
     # Research/provenance may be inspected here but must not be edited as UI copy.
     readonly_fields = ("fixture_managed", "internal_note")
 

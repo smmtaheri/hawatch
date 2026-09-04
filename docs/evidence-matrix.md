@@ -12,7 +12,7 @@
 | `SCREENSHOT-SOURCE` | PNGهای اصلی در `design/source-screens/` |
 | `SCREENSHOT-ORG` | PNGهای مرتب‌شده در `design/screens/` |
 | `LIVE-H` | DOM، computed style و interaction صفحهٔ Home live |
-| `LIVE-D` | DOM، computed style و interaction صفحهٔ Destination live |
+| `LIVE-D` | DOM، computed style و interaction صفحهٔ Point live |
 | `LIVE-R` | DOM، computed style و interaction صفحهٔ Route live |
 | `LIVE-BUNDLE` | assetهای script/style لینک‌شده از HTML live شامل page/data/experience bundles |
 | `DOCX` | `references/Hawatch.docx`؛ فایل موجود و خوانده‌شده |
@@ -27,7 +27,7 @@
 | تعداد assetهای منطقی | `SCREENSHOT-SOURCE` + `SCREENSHOT-ORG` + manifest + `PRODUCT` | ۴ صفحه × ۲ تم × ۲ دستگاه = ۱۶ asset؛ ۱۶ source و ۱۶ organized copy طبق تصمیم قطعی کاربر |
 | تعداد فایل فیزیکی | `SCREENSHOT-SOURCE` + `SCREENSHOT-ORG` + `PRODUCT` | ۳۲ PNG فیزیکی؛ duplicateهای source/organized عمدی و مجاز هستند و شمارش منطقی همچنان ۱۶ است |
 | نام و مسیر هر تصویر | manifest + filesystem | `design/manifest.json`، مسیرهای `design/source-screens/` و `design/screens/{page}/{theme}/{device}.png` |
-| width/height | manifest + `identify` | 576×1077 یا 1905×1047 برای Home/Login؛ 576×1729 یا 1905×1602 برای Destination؛ Route mobile 576×2528/2564 و web 1905×1457 |
+| width/height | manifest + `identify` | 576×1077 یا 1905×1047 برای Home/Login؛ 576×1729 یا 1905×1602 برای Point؛ Route mobile 576×2528/2564 و web 1905×1457 |
 | hash و عدم re-encode pairها | manifest + filesystem | ۱۶/۱۶ SHA-256 source و organized match؛ source و organized هرکدام ۱۶ hash unique دارند |
 | نبودن PNG خارج از scope | filesystem | جست‌وجوی repository به‌جز `.git` فقط دو مجموعهٔ مجاز را یافت |
 
@@ -35,7 +35,7 @@
 
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
-| نام محصول و هویت تصمیم‌محور | `DOCX` | پاراگراف‌های ۱ تا ۷: دیدن مقصد، تغییر مسیر و تصمیم زمان/مسیر |
+| نام محصول و هویت تصمیم‌محور | `DOCX` | پاراگراف‌های ۱ تا ۷: دیدن نقطه، تغییر مسیر و تصمیم زمان/مسیر |
 | فارسی، RTL و Estedad | `DOCX` + `PRODUCT` + local implementation | پاراگراف‌های ۸ تا ۱۶؛ HTML دارای `lang=fa` و `dir=rtl`؛ `design/tokens/typography.md` و `apps/web/public/fonts/` |
 | dark palette | `DOCX` + tokens + `PRODUCT` | پاراگراف‌های ۱۷ تا ۲۸؛ طبق تصمیم قطعی، مقدار canonical فقط از `design/tokens/visual-tokens.json` خوانده می‌شود |
 | light palette | `DOCX` + tokens + live + `PRODUCT` | پاراگراف‌های ۲۹ تا ۴۰ DOCX بررسی شد؛ اختلاف‌های قبلی با تصمیم canonical بودن `visual-tokens.json` حل و markdownها توضیحی تلقی شدند |
@@ -48,11 +48,11 @@
 
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
-| ترتیب بخش‌ها | `LIVE-H` + `SCREENSHOT-SOURCE` | `docs/live-page-inspection/home.md` §۱: header، hero copy، search، heading، destination grid |
-| متن‌ها، title، label و CTA | `LIVE-H` + `LIVE-BUNDLE` | همان سند §۲: title/description، «هوای مسیرت را ببین»، placeholder، «جست‌وجو»، «مقصدهای محبوب/نتایج مرتبط» و empty copy |
-| لینک‌ها و navigation | `LIVE-H` | §۳: brand `/`، Login `/login` و شش destination href |
+| ترتیب بخش‌ها | `LIVE-H` + `SCREENSHOT-SOURCE` | `docs/live-page-inspection/home.md` §۱: header، hero copy، search، heading، point grid |
+| متن‌ها، title، label و CTA | `LIVE-H` + `LIVE-BUNDLE` | همان سند §۲: title/description، «هوای مسیرت را ببین»، placeholder، «جست‌وجو»، «نقاطی محبوب/نتایج مرتبط» و empty copy |
+| لینک‌ها و navigation | `LIVE-H` | §۳: brand `/`، Login `/login` و شش point href |
 | theme، input، search و tile behavior | `LIVE-H` + `LIVE-BUNDLE` | §۴: `hawatch-theme`، normalize فارسی، filter روی name/type، max شش result و submit بدون provider/API |
-| flow و back | `LIVE-H` + `PRODUCT` | §۵ و `docs/user-flows/home-to-destination.md`؛ Home → Destination و brand/back context |
+| flow و back | `LIVE-H` + `PRODUCT` | §۵ و `docs/user-flows/home-to-point.md`؛ Home → Point و brand/back context |
 | نبودن route/decision/share در Home | `LIVE-H` | §۶ تا §۸ |
 | mobile/desktop | `LIVE-H` + screenshots | §۹ و tokens observed: mobile 576، grid دو ستونه؛ web 1905، row شش‌تایی؛ root بدون overflow |
 | light/dark و visual values | `LIVE-H` + `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | §۱۰ و §۱۱: body، search/tile، radius، border، shadow و Estedad |
@@ -60,16 +60,16 @@
 | future data/API | `PRODUCT` + `docs/api/*` | §۱۳ live static بودن را جدا از endpointهای پیشنهادی آینده ثبت می‌کند |
 | responsive constraint و acceptance | `LIVE-H` + `PRODUCT` | §۱۴ و §۱۵؛ search overlap/root overflow ممنوع |
 
-## Destination
+## Point
 
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
-| ترتیب بخش‌ها | `LIVE-D` + screenshots | `docs/live-page-inspection/destination.md` §۱: header، breadcrumb/hero، forecast، day tabs، period، hourly، metrics، routes، decision |
+| ترتیب بخش‌ها | `LIVE-D` + screenshots | `docs/live-page-inspection/point.md` §۱: header، breadcrumb/hero، forecast، day tabs، period، hourly، metrics، routes، decision |
 | متن‌ها و داده‌های قابل مشاهده | `LIVE-D` + `LIVE-BUNDLE` | §۲: title توچال، current، alert، updated، hourly، metrics و decision copy |
 | لینک‌ها و routeهای دیگر | `LIVE-D` | §۳ و §۷: پنج route Touchal و hrefهای دقیق |
 | انتخاب day و period | `LIVE-D` + `LIVE-BUNDLE` | §۴ و §۶: هفت day tab، `aria-selected`، صبح/بعدازظهر و تغییر hourly heading |
 | forecast cards، legend و metrics | `LIVE-D` | §۱ و §۸: normal/change/critical، باد، دید، UV، بارش، طلوع/غروب |
-| flow و back | `LIVE-D` + `docs/user-flows/destination-to-route.md` | §۵: Home → Destination → Route و parent destination |
+| flow و back | `LIVE-D` + `docs/user-flows/point-to-route.md` | §۵: Home → Point → Route و parent point |
 | mobile/desktop | `LIVE-D` + screenshots | §۹: hero 548×116 mobile و 1416×250 web، route grid، root بدون overflow |
 | light/dark و visual values | `LIVE-D` + `SCREENSHOT-SOURCE` | §۱۰ و §۱۱: body/surface/text/teal/amber/coral، border/radius/shadow/type |
 | loading/empty/error/stale | `LIVE-D` + `LIVE-BUNDLE` + `PRODUCT` | §۱۲: route-empty branch در Touchal active نیست؛ contract قطعی stateها در بخش DOCX/product ثبت شده و رفتار live مشاهده‌نشده به‌عنوان implementation ادعا نمی‌شود |
@@ -87,7 +87,7 @@
 | day/period/start/speed | `LIVE-R` + `LIVE-BUNDLE` | §۴ و §۶: روز، صبح/بعدازظهر، range با step=30، default 06:00، speed آرام/متوسط/سریع و multiplierهای sample |
 | derived arrival و critical decision | `LIVE-R` + `LIVE-BUNDLE` | §۴ و §۸: زمان رسیدن، نقطهٔ حساس، warning و recommendation |
 | share copy و Telegram | `LIVE-R` + `LIVE-BUNDLE` | §۴ و §۸: clipboard/fallback، success/failure copy و dynamic Telegram URL |
-| flow و back | `LIVE-R` + `docs/user-flows/navigation-and-back.md` | §۵: brand → Home، breadcrumb/back → Destination و sibling route |
+| flow و back | `LIVE-R` + `docs/user-flows/navigation-and-back.md` | §۵: brand → Home، breadcrumb/back → Point و sibling route |
 | mobile/desktop | `LIVE-R` + screenshots | §۹: hero 552×116 mobile، decision full width؛ web hero 1416×230 و decision حدود 300px؛ root بدون overflow |
 | light/dark و visual values | `LIVE-R` + `SCREENSHOT-SOURCE` | §۱۰ و §۱۱: semantic severity، body/surface، border/radius/shadow/type |
 | loading/empty/error/stale | `LIVE-R` + `LIVE-BUNDLE` + `PRODUCT` | §۱۲: loading/stale در live expose نشده و copy failure partial است؛ contract قطعی stateها برای آینده ثبت شده و empty/error مستقل می‌مانند |
@@ -119,13 +119,13 @@
 
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
-| جست‌وجوی unified Home | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/components/SearchCombobox.tsx`، `features/home/HomePage.tsx` و `apps/web/src/api/client.ts`; پیشنهادها از `/api/v1/search/suggestions/` می‌آیند، حداقل دو کاراکتر و debounce حدود ۲۰۰ms دارند، و submit destination-only fallback ندارد. |
+| جست‌وجوی unified Home | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/components/SearchCombobox.tsx`، `features/home/HomePage.tsx` و `apps/web/src/api/client.ts`; پیشنهادها از `/api/v1/search/suggestions/` می‌آیند، حداقل دو کاراکتر و debounce حدود ۲۰۰ms دارند، و submit point-only fallback ندارد. |
 | نتیجهٔ خطای جست‌وجو | `LOCAL-IMPLEMENTATION` | SearchCombobox وضعیت error را نگه می‌دارد و Home پیام خطا و retry ارائه می‌کند؛ query از بین نمی‌رود. |
 | صفحهٔ canonical نقطه | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/features/point/PointDetailPage.tsx` به‌عنوان wrapper و `apps/web/src/features/place/PlaceForecastPage.tsx`؛ مسیر عمومی `/points/{slug}`، بدون timing planner و با related routes در ورود مستقیم. |
 | API نقطه و جست‌وجو | `LOCAL-IMPLEMENTATION` | `apps/api/src/hawatch/api/v1/urls.py` و `views.py`؛ endpointهای point forecast و search suggestions اجرایی‌اند. |
 | Route → Point و back context | `LOCAL-IMPLEMENTATION` | Route point links URL تمیز می‌سازند؛ `location.state.fromRoute` شامل pathname/search/href است و queryهای `date`، `period`، `start_time` و `speed` را برای بازگشت restore می‌کند. |
 | period فعلی | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/api/src/hawatch/common/time.py` و `apps/web/src/lib/periods.ts`؛ Asia/Tehran و چهار پنجرهٔ نیمه‌شب ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ با سه ساعت دوساعته در هر پنجره. |
-| Point در design handoff | `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | screenshot مستقل Point وجود ندارد؛ `design/pages/point.md` آن را extension سیستم Destination معرفی می‌کند و ادعای pixel-perfect ندارد. |
+| Point در design handoff | `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | screenshot مستقل Point وجود ندارد؛ `design/pages/point.md` آن را extension سیستم Point معرفی می‌کند و ادعای pixel-perfect ندارد. |
 
 ## evidenceهای مسدود
 

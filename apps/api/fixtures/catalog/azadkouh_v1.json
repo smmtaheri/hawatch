@@ -1,24 +1,5 @@
 {
   "catalog_version": "hawatch-azadkouh-catalog-v4",
-  "destination_weather_point": "azadkouh_summit",
-  "destination": {
-    "slug": "azadkouh",
-    "tile_name": "آزادکوه",
-    "name": "قلهٔ آزادکوه",
-    "short_category": "کوه",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "البرز مرکزی",
-    "elevation_m": 4366,
-    "latitude": 36.169295,
-    "longitude": 51.503096,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی آزادکوه",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
     "azadkouh-kelakbala-start": {
       "name": "روستای کلاک بالا",
@@ -130,12 +111,12 @@
         "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490"
       ]
     },
-    "azadkouh_summit": {
+    "azadkouh": {
       "name": "قلهٔ آزادکوه",
       "latitude": 36.169295,
       "longitude": 51.503096,
       "elevation_m": 4366,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "Peak/GPX cross-check: ~4366 m; Open-Meteo GLO-90 DEM: 4261 m used only as provider-resolution evidence",
       "page_name": "قلهٔ آزادکوه",
@@ -265,7 +246,6 @@
       "subtitle": "از کلاک علیا و گردنهٔ چورن تا قلهٔ آزادکوه",
       "trail_label": "مسیر کلاک‌بالا",
       "origin": "کلاک علیا",
-      "destination_label": "قلهٔ آزادکوه",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 1,
@@ -275,7 +255,7 @@
         "azadkouh-kelakbala-camp2",
         "azadkouh-kelakbala-camp3",
         "azadkouh-choren-pass",
-        "azadkouh_summit"
+        "azadkouh"
       ],
       "distance_km": 7.8,
       "ascent_m": 1680,
@@ -309,11 +289,11 @@
           "azadkouh-kelakbala-camp2": 190,
           "azadkouh-kelakbala-camp3": 215,
           "azadkouh-choren-pass": 305,
-          "azadkouh_summit": 390
+          "azadkouh": 390
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ آزادکوه"
     },
     "varangerud_to_azadkouh": {
       "slug": "azadkouh-varangerud",
@@ -321,7 +301,6 @@
       "subtitle": "از وارنگه‌رود و کمان‌کوه تا گردنهٔ چورن و قله",
       "trail_label": "مسیر وارنگه‌رود",
       "origin": "وارنگه‌رود",
-      "destination_label": "قلهٔ آزادکوه",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 2,
@@ -330,7 +309,7 @@
         "azadkouh-shirkamar-intersection",
         "azadkouh-kamankouh-lake",
         "azadkouh-choren-pass",
-        "azadkouh_summit"
+        "azadkouh"
       ],
       "distance_km": 20.2,
       "ascent_m": 2150,
@@ -360,11 +339,11 @@
           "azadkouh-shirkamar-intersection": 270,
           "azadkouh-kamankouh-lake": 450,
           "azadkouh-choren-pass": 630,
-          "azadkouh_summit": 720
+          "azadkouh": 720
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ آزادکوه"
     },
     "nesen_to_azadkouh": {
       "slug": "azadkouh-nesen",
@@ -372,14 +351,13 @@
       "subtitle": "از نسن و گردنهٔ چورن تا قلهٔ آزادکوه",
       "trail_label": "مسیر نسن",
       "origin": "نسن",
-      "destination_label": "قلهٔ آزادکوه",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 3,
       "points": [
         "azadkouh-nesen-start",
         "azadkouh-choren-pass",
-        "azadkouh_summit"
+        "azadkouh"
       ],
       "distance_km": 14.5,
       "ascent_m": 1660,
@@ -409,11 +387,11 @@
         "cumulative_minutes": {
           "azadkouh-nesen-start": 0,
           "azadkouh-choren-pass": 330,
-          "azadkouh_summit": 440
+          "azadkouh": 440
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ آزادکوه"
     },
     "nahiyeh_to_azadkouh": {
       "slug": "azadkouh-nahiyeh",
@@ -421,14 +399,13 @@
       "subtitle": "از ناحیه و گردنهٔ چورن تا قلهٔ آزادکوه",
       "trail_label": "مسیر ناحیه",
       "origin": "ناحیه",
-      "destination_label": "قلهٔ آزادکوه",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 4,
       "points": [
         "azadkouh-nahiyeh-start",
         "azadkouh-choren-pass",
-        "azadkouh_summit"
+        "azadkouh"
       ],
       "distance_km": 14.5,
       "ascent_m": 2040,
@@ -459,11 +436,30 @@
         "cumulative_minutes": {
           "azadkouh-nahiyeh-start": 0,
           "azadkouh-choren-pass": 300,
-          "azadkouh_summit": 385
+          "azadkouh": 385
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ آزادکوه"
     }
-  }
+  },
+  "point": {
+    "slug": "azadkouh",
+    "tile_name": "آزادکوه",
+    "name": "قلهٔ آزادکوه",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی",
+    "elevation_m": 4366,
+    "latitude": 36.169295,
+    "longitude": 51.503096,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی آزادکوه",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "azadkouh"
 }

@@ -18,23 +18,19 @@ export interface PlaceForecastViewModel {
   empty: boolean;
   partial: boolean;
   meta: PlaceForecastResponse["forecast"]["meta"];
-  destinationSlug?: string;
 }
 
-/** Normalize destination or point place responses onto one view model. */
+/** Normalize the point forecast response onto one view model. */
 export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecastViewModel {
   const subject = payload.subject;
   const forecast = payload.forecast;
   const kind = subject.kind;
   const relatedRoutes =
     payload.related_routes ??
-    payload.destination?.routes ??
     [];
   const title =
     payload.related_routes_title ??
-    (kind === "destination"
-      ? `مسیرهای منتهی به ${subject.name}`
-      : "مسیرهای عبوری از این نقطه");
+    "مسیرهای متصل به این نقطه";
 
   return {
     kind,
@@ -54,7 +50,6 @@ export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecas
     empty: payload.empty,
     partial: Boolean(payload.partial),
     meta: forecast.meta,
-    destinationSlug: kind === "destination" ? subject.slug : undefined,
   };
 }
 

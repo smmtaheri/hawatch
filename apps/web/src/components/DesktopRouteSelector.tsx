@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import type { RouteSummary } from "../types";
-import { DestinationCard } from "./DestinationCard";
+import { PointCard } from "./PointCard";
 
 const MAX_VISIBLE_DESKTOP_ROUTES = 4;
 
 /**
  * Desktop route discovery keeps the first four routes in the page flow and
  * puts the rest behind an explicit menu. The API order is intentional: it is
- * the database's destination/route sort order and therefore the operator's
+ * the database's point/route sort order and therefore the operator's
  * display ranking.
  */
 export function DesktopRouteSelector({
@@ -55,7 +55,7 @@ export function DesktopRouteSelector({
 
       <div className="route-cards desktop-route-cards">
         {visibleRoutes.map((route) => (
-          <DestinationCard key={route.slug} route={route} />
+          <PointCard key={route.slug} route={route} />
         ))}
       </div>
 
@@ -74,7 +74,7 @@ export function DesktopRouteSelector({
           {isOpen ? (
             <div className="desktop-route-overflow-panel" role="menu" aria-label="مسیرهای بیشتر">
               {additionalRoutes.map((route) => (
-                <DestinationCard key={route.slug} route={route} role="menuitem" onNavigate={() => setIsOpen(false)} />
+                <PointCard key={route.slug} route={route} role="menuitem" onNavigate={() => setIsOpen(false)} />
               ))}
             </div>
           ) : null}

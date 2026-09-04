@@ -11,8 +11,8 @@
 ۱. `site-header`: برند «هواچ»، لینک «ورود»، و theme toggle.
 ۲. hero copy با متن «هوای مسیرت را ببین».
 ۳. فرم `search-box` شامل input و CTA «جست‌وجو».
-۴. heading مقصدها که در حالت عادی «مقصدهای محبوب» و پس از جست‌وجو «نتایج مرتبط» است.
-۵. grid مقصدها؛ در حالت عادی شش tile: توچال، دماوند، دشت دریاسر، جنگل ابر، کویر مرنجاب، دریاچه گهر.
+۴. heading نقاط که در حالت عادی «نقاطی محبوب» و پس از جست‌وجو «نتایج مرتبط» است.
+۵. grid نقاط؛ در حالت عادی شش tile: توچال، دماوند، دشت دریاسر، جنگل ابر، کویر مرنجاب، دریاچه گهر.
 
 [LIVE] فقط `home-hero` در main وجود دارد و Home footer یا section جداگانهٔ دیگری ندارد.
 
@@ -20,20 +20,20 @@
 
 | عنصر | متن دقیق |
 | --- | --- |
-| document title | `هواچ &#124; هوای مقصد، برنامهٔ مسیر` |
+| document title | `هواچ &#124; هوای نقطه، برنامهٔ مسیر` |
 | description | `هواچ؛ هوای مسیرت را ببین.` |
 | brand aria-label | `هواچ، خانه` |
 | header link | `ورود` |
 | theme dark | `☼ روشن` |
 | theme light | `◐ تیره` |
 | hero eyebrow | `هوای مسیرت را ببین` |
-| search aria-label | `جست‌وجوی مقصد` |
+| search aria-label | `جست‌وجوی نقطه` |
 | search placeholder | `مثلاً توچال، دماوند یا دریاسر` |
 | search CTA | `جست‌وجو` |
-| default heading | `مقصدهای محبوب` |
+| default heading | `نقاطی محبوب` |
 | search heading | `نتایج مرتبط` |
-| empty result | `مقصد مرتبطی پیدا نشد؛ نام مقصد دیگری را امتحان کن.` |
-| result hint | `برای دیدن پیش‌بینی، روی مقصد موردنظرت بزن.` |
+| empty result | `نقطه مرتبطی پیدا نشد؛ نام نقطه دیگری را امتحان کن.` |
+| result hint | `برای دیدن پیش‌بینی، روی نقطه موردنظرت بزن.` |
 
 نام و category tileها: `توچال / کوه`، `دماوند / آتشفشان`، `دشت دریاسر / دشت`، `جنگل ابر / جنگل`، `کویر مرنجاب / کویر`، `دریاچه گهر / دریاچه`. [LIVE-BUNDLE]
 
@@ -43,12 +43,12 @@
 | --- | --- |
 | هواچ | `/` |
 | ورود | `/login` |
-| توچال | `/destination/tochal` |
-| دماوند | `/destination/damavand` |
-| دشت دریاسر | `/destination/daryasar` |
-| جنگل ابر | `/destination/jangal-abr` |
-| کویر مرنجاب | `/destination/maranjab` |
-| دریاچه گهر | `/destination/gahar` |
+| توچال | `/points/tochal` |
+| دماوند | `/points/damavand` |
+| دشت دریاسر | `/points/daryasar` |
+| جنگل ابر | `/points/jangal-abr` |
+| کویر مرنجاب | `/points/maranjab` |
+| دریاچه گهر | `/points/gahar` |
 
 هر tile یک icon طبیعت و arrow `←` نیز دارد. [LIVE]
 
@@ -58,21 +58,21 @@
 - «ورود» به `/login` می‌رود.
 - theme toggle با کلیک، `data-theme` و `color-scheme` را عوض می‌کند و مقدار `hawatch-theme` را در localStorage می‌نویسد. [LIVE-BUNDLE]
 - input با `onChange` مقدار را تغییر می‌دهد و search result visibility را reset می‌کند.
-- search مقدار را trim و به lowercase تبدیل می‌کند و `ي/ی` و `ك/ک` را normalize می‌کند؛ query را در `name + type` مقصدها جست‌وجو می‌کند. [LIVE-BUNDLE]
+- search مقدار را trim و به lowercase تبدیل می‌کند و `ي/ی` و `ك/ک` را normalize می‌کند؛ query را در `name + type` نقاط جست‌وجو می‌کند. [LIVE-BUNDLE]
 - submit فرم فقط نتیجه را آشکار می‌کند؛ provider یا API فراخوانی نمی‌شود.
-- نتیجه حداکثر شش مقصد است. در query معتبر، hint قابل مشاهده و tile قابل کلیک است.
+- نتیجه حداکثر شش نقطه است. در query معتبر، hint قابل مشاهده و tile قابل کلیک است.
 
-## ۵. بازگشت بین Home، Destination و Route
+## ۵. بازگشت بین Home، Point و Route
 
-Home نقطهٔ شروع است. tile مقصد مستقیماً به Destination می‌رود. Home back control ندارد؛ بازگشت از Destination با brand یا back link مقصد انجام می‌شود و بازگشت از Route با parent destination. [LIVE][PRODUCT]
+Home نقطهٔ شروع است. tile نقطه مستقیماً به Point می‌رود. Home back control ندارد؛ بازگشت از Point با brand یا back link نقطه انجام می‌شود و بازگشت از Route با parent point. [LIVE][PRODUCT]
 
 ## ۶. انتخاب روز، صبح/بعدازظهر، ساعت شروع و سرعت
 
-این کنترل‌ها در Home وجود ندارند و برای Destination/Route هستند. [LIVE]
+این کنترل‌ها در Home وجود ندارند و برای Point/Route هستند. [LIVE]
 
-## ۷. مسیرهای دیگر همان مقصد
+## ۷. مسیرهای دیگر همان نقطه
 
-در Home مسیر نمایش داده نمی‌شود؛ کاربر ابتدا باید مقصد را انتخاب کند. [LIVE]
+در Home مسیر نمایش داده نمی‌شود؛ کاربر ابتدا باید نقطه را انتخاب کند. [LIVE]
 
 ## ۸. کارت تصمیم، هشدار، اشتراک‌گذاری و نقاط مسیر
 
@@ -102,7 +102,7 @@ Home نقطهٔ شروع است. tile مقصد مستقیماً به Destination
 - font target: `Estedad, "Noto Sans Arabic", Tahoma, Arial, sans-serif`، 16px، line-height 27.2px؛ live باید پس از انتشار دوباره تأیید شود. [LOCAL-IMPLEMENTATION]
 - theme toggle: radius `999px`؛ desktop ارتفاع 33px و mobile ارتفاع 38px؛ padding desktop `7px 12px` و mobile `6px 9px`.
 - search: radius `14px`؛ light border `1px solid rgb(169,197,191)`؛ desktop shadow حدود `0 10px 24px rgba(16,43,61,.12)` و dark desktop `0 18px 45px rgba(0,0,0,.24)`.
-- destination tile: radius `13px`؛ light border `rgb(169,197,191)`؛ light shadow حدود `0 8px 20px rgba(16,43,61,.07)`؛ dark بدون shadow محسوس و border روشن translucent.
+- point tile: radius `13px`؛ light border `rgb(169,197,191)`؛ light shadow حدود `0 8px 20px rgba(16,43,61,.07)`؛ dark بدون shadow محسوس و border روشن translucent.
 - layout بر پایهٔ 1500px max-width در header desktop و padding responsive انجام شده است. [LIVE CSS/DOM]
 
 ## ۱۲. loading، empty، error و stale-data
@@ -116,9 +116,9 @@ Home نقطهٔ شروع است. tile مقصد مستقیماً به Destination
 
 ## ۱۳. داده‌ها و API آینده
 
-- رفتار فعلی: array ثابت مقصدها در `page-C3o0Of17.js`؛ هیچ `fetch`، `/api`، Open-Meteo یا geolocation در page-specific bundle دیده نشد. [LIVE-BUNDLE]
-- قرارداد آیندهٔ موردنیاز محصول: catalog مقصدهای محبوب و query search داخلی. [PRODUCT]
-- API پیشنهادی برای آینده: `GET /api/v1/destinations/popular` و `GET /api/v1/destinations?query=...`؛ این‌ها رفتار فعلی نیستند.
+- رفتار فعلی: array ثابت نقاط در `page-C3o0Of17.js`؛ هیچ `fetch`، `/api`، Open-Meteo یا geolocation در page-specific bundle دیده نشد. [LIVE-BUNDLE]
+- قرارداد آیندهٔ موردنیاز محصول: catalog نقاطی محبوب و query search داخلی. [PRODUCT]
+- API پیشنهادی برای آینده: `GET /api/v1/points/popular` و `GET /api/v1/points?query=...`؛ این‌ها رفتار فعلی نیستند.
 
 ## ۱۴. محدودیت overflow و responsive
 
@@ -132,7 +132,7 @@ Home نقطهٔ شروع است. tile مقصد مستقیماً به Destination
 | --- | --- |
 | header | brand به `/`، ورود به `/login` و theme toggle به theme دیگر می‌روند. |
 | search | submit با `توچال` فقط tile توچال را می‌دهد و query ناموجود empty message دقیق را نشان می‌دهد. |
-| tile | هر شش مقصد href درست و نام/category درست دارد. |
+| tile | هر شش نقطه href درست و نام/category درست دارد. |
 | responsive | در 576px search overlap و root horizontal overflow وجود ندارد؛ در 1905px شش tile در row قابل مشاهده‌اند. |
 | theme | بعد از toggle، text/search/tile contrast و label روشن/تیره تغییر می‌کند و context از بین نمی‌رود. |
 | state gaps | loading/error/stale تا زمان تصمیم محصول implementation نهایی‌شده تلقی نشوند. |

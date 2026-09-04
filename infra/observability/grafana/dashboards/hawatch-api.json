@@ -46,7 +46,7 @@
       "datasource": {"type": "prometheus", "uid": "hawatch-prometheus"},
       "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []},
       "targets": [
-        {"expr": "hawatch_catalog_destinations", "legendFormat": "destinations", "refId": "A"},
+        {"expr": "hawatch_catalog_points", "legendFormat": "points", "refId": "A"},
         {"expr": "hawatch_catalog_routes", "legendFormat": "routes", "refId": "B"},
         {"expr": "hawatch_catalog_weather_points", "legendFormat": "weather points", "refId": "C"}
       ]

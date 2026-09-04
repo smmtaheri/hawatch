@@ -42,7 +42,8 @@ class WeatherPointAdmin(GISModelAdmin):
     search_fields = ("slug", "name")
     readonly_fields = ("updated_at", "fixture_managed")
     fieldsets = (
-        (None, {"fields": ("slug", "name", "aliases", "kind", "destination")}),
+        (None, {"fields": ("slug", "name", "page_name", "short_label", "aliases", "kind", "importance", "seo_indexable")}),
+        ("Profile", {"fields": ("tile_name", "short_category", "category", "category_key", "region", "image", "image_alt", "is_popular", "popular_order")}),
         ("Location", {"fields": ("location", "elevation_m", "elevation_source", "status")}),
         (
             "Runtime",

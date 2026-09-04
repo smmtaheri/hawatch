@@ -1,6 +1,6 @@
-# بررسی read-only صفحهٔ Destination
+# بررسی read-only صفحهٔ Point
 
-زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/destination/tochal`
+زمان بررسی: 2026-08-25. URL: `https://hawatch-weather.admirer135.chatgpt.site/points/tochal`
 
 منبع labels: `[LIVE]` DOM/رفتار live، `[LIVE-BUNDLE]` assetهای JS/CSS live، `[SCREENSHOT]` تصاویر repository، `[PRODUCT]` درخواست محصول، `[BLOCKED]` منبع در دسترس‌نبوده.
 
@@ -9,11 +9,11 @@
 ترتیب DOM و layout مشاهده‌شده:
 
 ۱. header کوچک با برند، ورود و theme toggle.
-۲. `destination-hero` شامل تصویر توچال، breadcrumb/title، وضعیت فعلی و تغییر مهم.
+۲. `point-hero` شامل تصویر توچال، breadcrumb/title، وضعیت فعلی و تغییر مهم.
 ۳. `weather-card`: عنوان forecast، توضیح، آخرین به‌روزرسانی، day tabs، کنترل مسیر mobile، period toggle و hourly forecast.
 ۴. `technical-card`: جزئیات تخصصی روز انتخاب‌شده.
 ۵. در web، aside شامل `top-routes-card` با heading «تصمیم بعدی / مسیرها».
-۶. `destination-decision-card`: جمع‌بندی هواچ.
+۶. `point-decision-card`: جمع‌بندی هواچ.
 ۷. footer با tagline.
 
 در mobile، back link داخل hero قابل مشاهده است؛ در desktop breadcrumb جای آن را می‌گیرد. [LIVE]
@@ -22,13 +22,13 @@
 
 | عنصر | متن دقیق مشاهده‌شده |
 | --- | --- |
-| breadcrumb | `مقصدها / قلهٔ توچال` |
+| breadcrumb | `نقاط / قلهٔ توچال` |
 | title | `قلهٔ توچال` |
 | subtitle | `کوه · البرز مرکزی · ۳۹۶۴ متر` |
 | current status | `☼ الان در قله ۹° · صاف` |
 | alert | `! تغییر مهم: از ساعت ۱۴ برف و باد بیشتر` |
 | forecast heading | `پیش‌بینی قلهٔ توچال` |
-| forecast helper | `روز و ساعت را انتخاب کن تا تغییر شرایط مقصد و مسیرهایش را قبل از حرکت ببینی.` |
+| forecast helper | `روز و ساعت را انتخاب کن تا تغییر شرایط نقطه و مسیرهایش را قبل از حرکت ببینی.` |
 | updated | `آخرین به‌روزرسانی: امروز، ۰۵:۴۵` |
 | period label | `بازهٔ نمایش هوا` |
 | morning | `صبح / ۰۰ تا ۱۲` |
@@ -41,7 +41,7 @@
 | decision chip | `امروز · جمع‌بندی هواچ` |
 | decision title | `صبح برای شروع برنامه مناسب‌تر است.` |
 | decision text | `تا حدود ساعت ۱۰ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود و از ساعت ۱۴ احتمال برف بالا می‌رود.` |
-| footer | `هوای مقصد، برنامهٔ مسیر` |
+| footer | `هوای نقطه، برنامهٔ مسیر` |
 
 hourly صبح: `۰۰:۰۰ صاف ۷° باد ۷ km/h`، `۰۲:۰۰ صاف ۷° باد ۷ km/h`، `۰۴:۰۰ نیمه‌ابری ۹° باد ۱۳ km/h`، `۰۶:۰۰ نیمه‌ابری ۹° باد ۱۲ km/h`، `۰۸:۰۰ بادخیز ۱۲° باد ۲۸ km/h`، `۱۰:۰۰ بادخیز ۱۲° باد ۲۹ km/h`. [LIVE]
 
@@ -54,7 +54,7 @@ metrics دقیق: باد میانگین `۱۰ km/h / جنوب‌غربی`؛ تن
 | هواچ | `/` |
 | ورود | `/login` |
 | بازگشت mobile | `/`، با aria-label `بازگشت به هوم` |
-| breadcrumb مقصدها | `/#search-results` |
+| breadcrumb نقاط | `/#search-results` |
 | دربند تا توچال | `/routes/tochal-darband` |
 | ولنجک تا توچال | `/routes/tochal-velenjak` |
 | کلکچال تا توچال | `/routes/tochal-kolakchal` |
@@ -75,15 +75,15 @@ metrics دقیق: باد میانگین `۱۰ km/h / جنوب‌غربی`؛ تن
 - technical metrics در live card تعاملی نیستند.
 - side route card با class `recommended` و label «پیشنهاد هواچ» مسیر featured را مشخص می‌کند.
 
-## ۵. بازگشت بین Home، Destination و Route
+## ۵. بازگشت بین Home، Point و Route
 
-back mobile و برند به Home می‌روند. breadcrumb «مقصدها» به Home و route card به Route می‌رود. Route باید با back به همین Destination برگردد؛ این رفتار در Route live به‌صورت href `/destination/tochal` دیده شد. [LIVE]
+back mobile و برند به Home می‌روند. breadcrumb «نقاط» به Home و route card به Route می‌رود. Route باید با back به همین Point برگردد؛ این رفتار در Route live به‌صورت href `/points/tochal` دیده شد. [LIVE]
 
 ## ۶. روز، صبح/بعدازظهر، ساعت شروع و سرعت
 
-Destination فقط روز و period دارد. ساعت شروع و سرعت در Route است. Day tab روی Destination forecast و decision همان روز اثر می‌گذارد؛ period روی hourly cards و headline اثر می‌گذارد. [LIVE-BUNDLE]
+Point فقط روز و period دارد. ساعت شروع و سرعت در Route است. Day tab روی Point forecast و decision همان روز اثر می‌گذارد؛ period روی hourly cards و headline اثر می‌گذارد. [LIVE-BUNDLE]
 
-## ۷. مسیرهای دیگر همان مقصد
+## ۷. مسیرهای دیگر همان نقطه
 
 برای Touchal پنج مسیر live است:
 
@@ -93,11 +93,11 @@ Destination فقط روز و period دارد. ساعت شروع و سرعت در
 - شهرستانک تا توچال، `ترک طبیعت‌گردی · شهرستانک · ۱۸٫۶ km · ۱۹۸۰ m صعود`.
 - آهار تا توچال، `کوه‌پیمایی · آهار · ۱۸٫۶ km · ۲۰۵۰ m صعود`.
 
-در live source اگر `g.length === 0` باشد route empty state با متن `هنوز ترکی برای این مقصد ثبت نشده` و توضیح `این صفحه فقط پیش‌بینی مقصد را نشان می‌دهد؛ به‌محض ثبت ترک پیاده‌روی، اینجا اضافه می‌شود.` render می‌شود؛ برای Touchal این branch فعال نیست. [LIVE-BUNDLE]
+در live source اگر `g.length === 0` باشد route empty state با متن `هنوز ترکی برای این نقطه ثبت نشده` و توضیح `این صفحه فقط پیش‌بینی نقطه را نشان می‌دهد؛ به‌محض ثبت ترک پیاده‌روی، اینجا اضافه می‌شود.` render می‌شود؛ برای Touchal این branch فعال نیست. [LIVE-BUNDLE]
 
 ## ۸. هشدار، decision و نقاط مسیر
 
-Destination hero دو status دارد: current teal و change amber. تصمیم پایین side/صفحه با chip، title و متن توضیحی می‌گوید صبح مناسب‌تر است و باد/برف بعدی چه زمانی افزایش می‌گیرد. Share و route points در Destination وجود ندارند و در Route ارائه می‌شوند. [LIVE]
+Point hero دو status دارد: current teal و change amber. تصمیم پایین side/صفحه با chip، title و متن توضیحی می‌گوید صبح مناسب‌تر است و باد/برف بعدی چه زمانی افزایش می‌گیرد. Share و route points در Point وجود ندارند و در Route ارائه می‌شوند. [LIVE]
 
 ## ۹. تفاوت mobile و desktop
 
@@ -136,9 +136,9 @@ Destination hero دو status دارد: current teal و change amber. تصمیم 
 
 ## ۱۳. داده‌ها و API آینده
 
-- live: destination object از `site-data-DQ0UR-FX.js` شامل image، name، heroStatus، heroAlert، days، hours، metrics، routeSlugs و decision است؛ fetch provider/API ندارد. [LIVE-BUNDLE]
-- future product API: destination catalog، current/hourly forecast، alerts و route catalog. [PRODUCT]
-- endpointهای پیشنهادی مستندشده ولی not-live: `GET /api/v1/destinations/{slug}`، `GET /api/v1/destinations/{slug}/forecast?date=&period=`، `GET /api/v1/destinations/{slug}/routes`.
+- live: point object از `site-data-DQ0UR-FX.js` شامل image، name، heroStatus، heroAlert، days، hours، metrics، routeSlugs و decision است؛ fetch provider/API ندارد. [LIVE-BUNDLE]
+- future product API: point catalog، current/hourly forecast، alerts و route catalog. [PRODUCT]
+- endpointهای پیشنهادی مستندشده ولی not-live: `GET /api/v1/points/{slug}`، `GET /api/v1/points/{slug}/forecast?date=&period=`، `GET /api/v1/points/{slug}/routes`.
 
 ## ۱۴. محدودیت overflow و responsive
 
@@ -162,7 +162,7 @@ Destination hero دو status دارد: current teal و change amber. تصمیم 
 ## منابع و محدودیت evidence
 
 - live DOM، CSS computed style، screenshot و JS bundle: `[LIVE]`/`[LIVE-BUNDLE]`.
-- images: `design/screens/destination/{light,dark}/{mobile,web}.png`. `[SCREENSHOT]`
+- images: `design/screens/points/{light,dark}/{mobile,web}.png`. `[SCREENSHOT]`
 - سورس local `/workspace/sites/hawatch-weather`: `[BLOCKED]`.
 - Hawatch.docx: `[BLOCKED]`.
 - ترتیب محصول، RTL، ممنوعیت implementation: `[PRODUCT]`.

@@ -1,35 +1,7 @@
 {
   "catalog_version": "hawatch-zarrinkuh-catalog-v1",
-  "destination_weather_point": "zarrinkuh_summit",
-  "destination": {
-    "slug": "zarrinkuh",
-    "tile_name": "زرین‌کوه",
-    "name": "قلهٔ زرین‌کوه",
-    "short_category": "کوه",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "البرز شرقی · دماوند",
-    "elevation_m": 3852,
-    "latitude": 35.70704,
-    "longitude": 52.22742,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی قلهٔ زرین‌کوه دماوند",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true,
-    "aliases": [
-      "زرین کوه",
-      "زرین‌کوه",
-      "زرینکوه",
-      "زرین کوه دماوند",
-      "زرین‌کوه دماوند",
-      "Zarrinkuh",
-      "Zarin Kuh"
-    ]
-  },
   "weather_points": {
-    "zarrinkuh_summit": {
+    "zarrinkuh": {
       "name": "قلهٔ زرین‌کوه",
       "aliases": [
         "زرین کوه",
@@ -40,7 +12,7 @@
       "latitude": 35.70704,
       "longitude": 52.22742,
       "elevation_m": 3852,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "مختصات قله با همگرایی چهار ترک مستقل در حدود 35.7070, 52.2274 و منبع مسیر تطبیق شده است. ارتفاع منبع حدود 3852 متر؛ DEM سرویس 3783 متر و ارتفاع GPXها 3752 تا 3848 متر است. مقدار catalog موقت است و GPX <ele> حقیقت قطعی نیست.",
       "climate": "alpine",
@@ -205,7 +177,7 @@
     }
   },
   "shared_weather_points": [
-    "tar_lake"
+    "tar-lake"
   ],
   "routes": {
     "tar_to_zarrinkuh": {
@@ -214,14 +186,13 @@
       "subtitle": "مسیر شمالی زرین‌کوه از دریاچهٔ تار و یال شمالی تا قله",
       "trail_label": "مسیر شمالی دریاچهٔ تار",
       "origin": "دریاچهٔ تار",
-      "destination_label": "قلهٔ زرین‌کوه",
       "region": "البرز شرقی · دماوند",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "tar_lake",
+        "tar-lake",
         "zarrinkuh-tar-north-ridge",
-        "zarrinkuh_summit"
+        "zarrinkuh"
       ],
       "distance_km": 2.7,
       "ascent_m": 815,
@@ -246,13 +217,13 @@
           "ارتفاع GPX فقط evidence است و ارتفاع نقاط هواشناسی با DEM/provider کنترل می‌شود."
         ],
         "cumulative_minutes": {
-          "tar_lake": 0,
+          "tar-lake": 0,
           "zarrinkuh-tar-north-ridge": 110,
-          "zarrinkuh_summit": 170
+          "zarrinkuh": 170
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ زرین‌کوه"
     },
     "jaban_to_zarrinkuh": {
       "slug": "zarrinkuh-jaban-southeast",
@@ -260,14 +231,13 @@
       "subtitle": "مسیر جنوب‌شرقی از روستای جابان و آبشار جابان تا قله",
       "trail_label": "مسیر جنوب‌شرقی جابان",
       "origin": "روستای جابان",
-      "destination_label": "قلهٔ زرین‌کوه",
       "region": "البرز شرقی · دماوند",
       "featured": true,
       "sort_order": 2,
       "points": [
         "zarrinkuh-jaban-village",
         "zarrinkuh-jaban-waterfall",
-        "zarrinkuh_summit"
+        "zarrinkuh"
       ],
       "distance_km": 7.8,
       "ascent_m": 1515,
@@ -294,11 +264,11 @@
         "cumulative_minutes": {
           "zarrinkuh-jaban-village": 0,
           "zarrinkuh-jaban-waterfall": 45,
-          "zarrinkuh_summit": 540
+          "zarrinkuh": 540
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ زرین‌کوه"
     },
     "khosravan_to_zarrinkuh": {
       "slug": "zarrinkuh-khosravan-south",
@@ -306,14 +276,13 @@
       "subtitle": "مسیر جنوبی از ابتدای پاکوب خسروان و گوسفندسرا تا قله",
       "trail_label": "مسیر جنوبی خسروان",
       "origin": "روستای خسروان",
-      "destination_label": "قلهٔ زرین‌کوه",
       "region": "البرز شرقی · دماوند",
       "featured": true,
       "sort_order": 3,
       "points": [
         "zarrinkuh-khosravan-village",
         "zarrinkuh-khosravan-gosfandsara",
-        "zarrinkuh_summit"
+        "zarrinkuh"
       ],
       "distance_km": 7.7,
       "ascent_m": 1484,
@@ -340,11 +309,11 @@
         "cumulative_minutes": {
           "zarrinkuh-khosravan-village": 0,
           "zarrinkuh-khosravan-gosfandsara": 40,
-          "zarrinkuh_summit": 395
+          "zarrinkuh": 395
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ زرین‌کوه"
     },
     "aynehvarzan_to_zarrinkuh": {
       "slug": "zarrinkuh-aynehvarzan-southwest",
@@ -352,14 +321,13 @@
       "subtitle": "مسیر جنوب‌غربی از پارکینگ و آبشار آینه‌ورزان تا قله",
       "trail_label": "مسیر جنوب‌غربی آینه‌ورزان",
       "origin": "پارکینگ آینه‌ورزان",
-      "destination_label": "قلهٔ زرین‌کوه",
       "region": "البرز شرقی · دماوند",
       "featured": false,
       "sort_order": 4,
       "points": [
         "zarrinkuh-aynehvarzan-parking",
         "zarrinkuh-aynehvarzan-waterfall",
-        "zarrinkuh_summit"
+        "zarrinkuh"
       ],
       "distance_km": 8.7,
       "ascent_m": 1522,
@@ -386,11 +354,39 @@
         "cumulative_minutes": {
           "zarrinkuh-aynehvarzan-parking": 0,
           "zarrinkuh-aynehvarzan-waterfall": 65,
-          "zarrinkuh_summit": 350
+          "zarrinkuh": 350
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ زرین‌کوه"
     }
-  }
+  },
+  "point": {
+    "slug": "zarrinkuh",
+    "tile_name": "زرین‌کوه",
+    "name": "قلهٔ زرین‌کوه",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز شرقی · دماوند",
+    "elevation_m": 3852,
+    "latitude": 35.70704,
+    "longitude": 52.22742,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ زرین‌کوه دماوند",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "زرین کوه",
+      "زرین‌کوه",
+      "زرینکوه",
+      "زرین کوه دماوند",
+      "زرین‌کوه دماوند",
+      "Zarrinkuh",
+      "Zarin Kuh"
+    ]
+  },
+  "primary_point": "zarrinkuh"
 }

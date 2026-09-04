@@ -1,22 +1,22 @@
-# مشخصات صفحهٔ Destination
+# مشخصات صفحهٔ پیش‌بینی نقطه
 
-جزئیات استخراج‌شدهٔ read-only از سایت زنده در [بررسی live Destination](../../docs/live-page-inspection/destination.md) ثبت شده است؛ source محلی معرفی‌شده در handoff در این محیط در دسترس نبود.
+جزئیات استخراج‌شدهٔ read-only از سایت زنده در [بررسی live Point](../../docs/live-page-inspection/point.md) ثبت شده است؛ source محلی معرفی‌شده در handoff در این محیط در دسترس نبود.
 
 ## ۱. هدف صفحه و تصمیم کاربر
 
-صفحهٔ مقصد باید به کاربر کمک کند بفهمد شرایط فعلی مقصد چیست، چه تغییری در طول روز رخ می‌دهد و کدام مسیر/بازه برای برنامه‌ریزی مناسب‌تر است. تصمیم اصلی، انتخاب روز، بازه و مسیر برای رفتن به Route یا اصلاح برنامه است.
+صفحهٔ نقطه باید به کاربر کمک کند بفهمد شرایط فعلی نقطه چیست، چه تغییری در طول روز رخ می‌دهد و کدام مسیر/بازه برای برنامه‌ریزی مناسب‌تر است. تصمیم اصلی، انتخاب روز، بازه و مسیر برای رفتن به Route یا اصلاح برنامه است.
 
 ## ۲. مسیر ورود و خروج
 
-- ورود: از Home با `/destination/tochal` یا slug مقصد.
-- خروج: بازگشت به Home، انتخاب مسیر به `/routes/{routeSlug}`، تغییر مقصد از breadcrumb یا انتخاب route دیگر.
+- ورود: از Home با `/points/tochal` یا slug نقطه.
+- خروج: بازگشت به Home، انتخاب مسیر به `/routes/{routeSlug}`، تغییر نقطه از breadcrumb یا انتخاب route دیگر.
 - theme و navigation context باید هنگام تغییر day/period حفظ شوند.
 
 ## ۳. ترتیب دقیق بخش‌ها
 
 ۱. header کوچک.
 ۲. دکمهٔ بازگشت به Home.
-۳. تصویر و عنوان مقصد.
+۳. تصویر و عنوان نقطه.
 ۴. وضعیت فعلی.
 ۵. هشدار یا تغییر مهم.
 ۶. label «انتخاب روز» و انتخاب روز.
@@ -28,21 +28,21 @@
 
 ## ۴. hierarchy کامپوننت‌ها
 
-`PlaceForecastPage → Header + DestinationHero + DaySelector + related routes + PeriodToggle + HourlyForecast + StatsGrid + DecisionCard`.
+`PlaceForecastPage → Header + PointHero + DaySelector + related routes + PeriodToggle + HourlyForecast + StatsGrid + DecisionCard`.
 
-هر دو URL `/destination/:slug` و `/points/:slug` همین درخت را رندر می‌کنند. مشخصات مشترک: [place-forecast.md](./place-forecast.md).
+URL `/points/:slug` همین درخت را رندر می‌کند. مشخصات مشترک: [place-forecast.md](./place-forecast.md).
 
 ## ۵. رفتار کنترل‌ها
 
 - back: به Home و context قبلی می‌رود.
-- breadcrumb: مقصدها به Home، نام مقصد current و غیرقابل کلیک.
+- breadcrumb: نقطه به Home، نام نقطهٔ فعلی و غیرقابل کلیک.
 - day tabs: forecast و route recommendations را برای روز انتخابی refresh می‌کند.
 - مسیرها: مسیر انتخابی را active می‌کند و به Route می‌برد یا data context صفحه را تغییر می‌دهد.
 - نیمه‌شب/صبح/ظهر/شب: hourly forecast و وضعیت نقاط مرتبط را عوض می‌کند.
 - در ورود بدون query، روز و بازهٔ فعلی تهران انتخاب می‌شوند. بازه‌های کاملاً سپری‌شده با opacity/saturation کمتر نمایش داده می‌شوند؛ بازهٔ انتخاب‌شده حتی اگر گذشته باشد باید خوانا و قابل تشخیص بماند.
 - مبنای بازهٔ جاری فقط `meta.current_local_time` با timezone `Asia/Tehran` است؛ هیچ ساعت نمونه‌ای مثل ۱۰:۳۰ قاعدهٔ ویژه ندارد.
 - cardهای route: detail route را باز می‌کنند.
-- theme toggle: theme را تغییر می‌دهد، بدون reset کردن destination/day/period.
+- theme toggle: theme را تغییر می‌دهد، بدون reset کردن point/day/period.
 
 ## ۶. stateهای loading، ready، empty، error، stale و partial-data
 
@@ -55,25 +55,25 @@
 
 ## ۷. داده‌های موردنیاز
 
-- مقصد: slug، نام، category، مختصات، elevation و hero asset.
+- نقطه: slug، نام، category، مختصات، elevation و hero asset.
 - وضعیت فعلی: condition، temperature، wind، visibility و fetched/valid times.
 - forecast روزانه و hourly با بازه‌های نیمه‌شب ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴.
-- route catalog همان مقصد.
+- route catalog مسیرهای متصل به همین نقطه.
 - metrics تخصصی مثل gust، freezing level، cloud base، UV، precipitation و sunrise/sunset.
 - هشدارها با severity normal/change/critical.
 
 ## ۸. API فعلی و مسیرهای توسعه
 
-- `GET /api/v1/destinations/{slug}/`
-- `GET /api/v1/destinations/{slug}/forecast/?date={date}&period={period}`
-- فهرست routeهای مقصد در پاسخ destination برمی‌گردد.
+- `GET /api/v1/points/{slug}/`
+- `GET /api/v1/points/{slug}/forecast/?date={date}&period={period}`
+- فهرست routeهای متصل در پاسخ point برمی‌گردد.
 - alert و metricهای provider-specific در صورت وجود از envelope forecast خوانده می‌شوند؛ endpoint جدا برای آن‌ها فعلاً وجود ندارد.
 
 تمام این‌ها API داخلی‌اند و backend provider را پشت خود پنهان می‌کند. endpointهای توسعهٔ آینده نباید frontend را مستقیم به provider وصل کنند.
 
 ## ۹. تفاوت mobile و web
 
-- mobile: روزها با label «انتخاب روز» قبل از کنترل هوا باشند؛ مسیرهای مرتبط/مقصد در کارت‌های فشرده و بدون کشیدگی باشند. هر route card فقط نام مسیر و دو خط facts کامل دارد: «ارتفاع‌گیری» و «مسافت»؛ هیچ‌کدام به‌دلیل clamp یا کمبود عرض حذف/بریده نمی‌شود و trail/origin تکراری زیر نام نمی‌آید. در کارت featured، نشان «پیشنهاد هواچ» یک ردیف مستقل بالای نام مسیر است و هرگز با icon یا عنوان overlap ندارد. در «جزئیات تخصصی»، فقط دو metric اول inline دیده می‌شوند و باقی metricها با دکمهٔ «دیدن همهٔ جزئیات تخصصی {روز}» در bottom sheet نیم‌صفحه باز می‌شوند. برای مسیرهای بیشتر از دو مورد، trigger «دیدن همهٔ مسیرها» sheet مسیرها را باز می‌کند. جمع‌بندی هواچ در mobile بلافاصله بعد از همین کارت می‌آید. کنترل چهارگزینه‌ای نیمه‌شب/صبح/ظهر/شب در یک ردیف مستقل و خوانا باشد؛ cardها فقط در container خودشان scroll شوند.
+- mobile: روزها با label «انتخاب روز» قبل از کنترل هوا باشند؛ مسیرهای متصل/نقطه در کارت‌های فشرده و بدون کشیدگی باشند. هر route card فقط نام مسیر و دو خط facts کامل دارد: «ارتفاع‌گیری» و «مسافت»؛ هیچ‌کدام به‌دلیل clamp یا کمبود عرض حذف/بریده نمی‌شود و trail/origin تکراری زیر نام نمی‌آید. در کارت featured، نشان «پیشنهاد هواچ» یک ردیف مستقل بالای نام مسیر است و هرگز با icon یا عنوان overlap ندارد. در «جزئیات تخصصی»، فقط دو metric اول inline دیده می‌شوند و باقی metricها با دکمهٔ «دیدن همهٔ جزئیات تخصصی {روز}» در bottom sheet نیم‌صفحه باز می‌شوند. برای مسیرهای بیشتر از دو مورد، trigger «دیدن همهٔ مسیرها» sheet مسیرها را باز می‌کند. جمع‌بندی هواچ در mobile بلافاصله بعد از همین کارت می‌آید. کنترل چهارگزینه‌ای نیمه‌شب/صبح/ظهر/شب در یک ردیف مستقل و خوانا باشد؛ cardها فقط در container خودشان scroll شوند.
 - web: weather card و side route summary می‌توانند دو ستون باشند؛ کارت‌های هر بازه متناسب با تعدادشان در یک ردیف خوانا بمانند.
 - timeline و cardها در mobile باید به ترتیب تصمیم خوانده شوند، نه بر اساس grid desktop.
 
@@ -81,7 +81,7 @@
 
 - light: زمینهٔ سبز-مه‌آلود، کارت روشن، teal action، amber change و coral critical.
 - dark: زمینهٔ آبی-سبز عمیق، surfaceهای raised، teal روشن و semanticهای روشن. period toggle و route card نباید به surface سفید generic برگردند.
-- overlay تصویر مقصد در هر theme باید title/status را خوانا کند.
+- overlay تصویر نقطه در هر theme باید title/status را خوانا کند.
 
 ## ۱۱. قواعد RTL و دسترسی‌پذیری
 
@@ -100,14 +100,14 @@
 - route picker/related routes فشرده، خوانا و بدون overflow باشد.
 - forecast سه‌تایی، metrics و هشدارها برای ready و partial-data قابل خواندن باشند.
 - انتخاب روز/بازه state را حفظ و دادهٔ مرتبط را به‌روزرسانی کند.
-- کاربر بتواند از route card به Route برسد و از آنجا context مقصد را از دست ندهد.
+- کاربر بتواند از route card به Route برسد و از آنجا context نقطه را از دست ندهد.
 
 ## ۱۳. تصویر مرجع
 
-- [light/mobile](../screens/destination/light/mobile.png)
-- [dark/mobile](../screens/destination/dark/mobile.png)
-- [light/web](../screens/destination/light/web.png)
-- [dark/web](../screens/destination/dark/web.png)
+- [light/mobile](../screens/point/light/mobile.png)
+- [dark/mobile](../screens/point/dark/mobile.png)
+- [light/web](../screens/point/light/web.png)
+- [dark/web](../screens/point/dark/web.png)
 
 ## ۱۴. موارد نامشخص و تصمیم‌های باز
 

@@ -6,10 +6,10 @@
 
 | ناحیه | مشاهده | الزام طراحی/پیاده‌سازی | منبع |
 | --- | --- | --- | --- |
-| Destination period toggle | بازه‌های سپری‌شده مثل ساعت‌های گذشته کم‌رنگ نیستند | محاسبه از `meta.current_local_time` در `Asia/Tehran`؛ هیچ ساعت نمونهٔ ویژه‌ای مجاز نیست | screenshot + سورس فعلی + درخواست محصول |
-| Destination heading | heading/description و timestamp خام فضای اضافی می‌سازند | label دقیق «انتخاب روز»؛ حذف timestamp خام از UI | screenshot + درخواست محصول |
-| Point surface | Pas Ghal’eh در dark/light از Destination جدا شده و کارت‌های مسیر باریک/بلندند | shared Destination visual contract؛ related routes compact single-column | screenshot + سورس فعلی |
-| Point identity | قلهٔ توچال به صفحهٔ standalone می‌رود | `WeatherPoint(kind=destination)` به Destination canonical resolve شود؛ رکورد و forecast duplicate نشوند | screenshot + سورس فعلی + مدل داده |
+| Point period toggle | بازه‌های سپری‌شده مثل ساعت‌های گذشته کم‌رنگ نیستند | محاسبه از `meta.current_local_time` در `Asia/Tehran`؛ هیچ ساعت نمونهٔ ویژه‌ای مجاز نیست | screenshot + سورس فعلی + درخواست محصول |
+| Point heading | heading/description و timestamp خام فضای اضافی می‌سازند | label دقیق «انتخاب روز»؛ حذف timestamp خام از UI | screenshot + درخواست محصول |
+| Point surface | Pas Ghal’eh در dark/light از Point جدا شده و کارت‌های مسیر باریک/بلندند | shared Point visual contract؛ related routes compact single-column | screenshot + سورس فعلی |
+| Point identity | قلهٔ توچال به صفحهٔ standalone می‌رود | همان `WeatherPoint(kind=primary)` صفحهٔ canonical `/points/tochal` را بسازد؛ رکورد و forecast duplicate نشوند | screenshot + سورس فعلی + مدل داده |
 | Route timing | `timing pending` به کاربر leak شده و ETA آماده نیست | copy فارسی؛ بدون ETA/arrival ساختگی | screenshot + سورس فعلی |
 | Route gauge | مقدار شروع روی default ثابت می‌ماند | در current Tehran period روی ساعت فعلی؛ گذشته dim، آینده عادی | screenshot + سورس فعلی + درخواست محصول |
 | Route timeline | دما زیر markerها تکرار شده و hourly عمومی قله دیده می‌شود | marker فقط نام/ترتیب؛ point-level summary cards؛ حذف headline «تغییرات شب · هر دو ساعت» | screenshot + سورس فعلی |
@@ -19,4 +19,4 @@
 
 - برای Point screenshot مرجع مستقل در handoff اولیه وجود ندارد.
 - تصویر جدید بدون منبع معتبر اضافه نمی‌شود.
-- مقصد، Point و Route باید با tokenهای `design/tokens/visual-tokens.json` و componentهای مشترک به یک قرارداد بصری برسند.
+- نقطه، Point و Route باید با tokenهای `design/tokens/visual-tokens.json` و componentهای مشترک به یک قرارداد بصری برسند.

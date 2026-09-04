@@ -9,7 +9,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from django.contrib.gis.geos import Point
 from django.db import migrations
 from django.db.models import Q
 
@@ -23,19 +22,19 @@ from hawatch.modules.catalog.identity import (
 
 DESTINATION_SLUG_MAP = {"touchal": "tochal"}
 DESTINATION_WEATHER_POINT_SLUGS = {
-    "alamkuh": "alamkuh_summit",
-    "azadkouh": "azadkouh_summit",
-    "damavand": "damavand_summit",
-    "darabad": "darabad_summit",
-    "daryasar": "daryasar_plain",
-    "dorfak": "dorfak_summit",
-    "eskelim": "eskelim_waterfall",
-    "gahar": "gahar_lake",
-    "hazar": "hazar_summit",
-    "sabalan": "sabalan_summit",
-    "tar-lake": "tar_lake",
-    "tochal": "tochal_summit",
-    "zarrinkuh": "zarrinkuh_summit",
+    "alamkuh": "alamkuh",
+    "azadkouh": "azadkouh",
+    "damavand": "damavand",
+    "darabad": "darabad",
+    "daryasar": "daryasar",
+    "dorfak": "dorfak",
+    "eskelim": "eskelim",
+    "gahar": "gahar",
+    "hazar": "hazar",
+    "sabalan": "sabalan",
+    "tar-lake": "tar-lake",
+    "tochal": "tochal",
+    "zarrinkuh": "zarrinkuh",
 }
 ROUTE_SLUG_MAP = {
     "touchal-darband": "tochal-darband",
@@ -47,6 +46,21 @@ ROUTE_SLUG_MAP = {
     "daryasar-asalmahaleh": "daryasar-esel-mahalleh",
 }
 CANONICAL_DESTINATION_POINT_SLUGS = set(DESTINATION_WEATHER_POINT_SLUGS.values())
+LEGACY_CANONICAL_POINT_SLUGS = {
+    "alamkuh_summit": "alamkuh",
+    "azadkouh_summit": "azadkouh",
+    "damavand_summit": "damavand",
+    "darabad_summit": "darabad",
+    "daryasar_plain": "daryasar",
+    "dorfak_summit": "dorfak",
+    "eskelim_waterfall": "eskelim",
+    "gahar_lake": "gahar",
+    "hazar_summit": "hazar",
+    "sabalan_summit": "sabalan",
+    "tar_lake": "tar-lake",
+    "tochal_summit": "tochal",
+    "zarrinkuh_summit": "zarrinkuh",
+}
 
 
 def _temporary_slug(prefix: str, pk: int) -> str:
@@ -54,16 +68,20 @@ def _temporary_slug(prefix: str, pk: int) -> str:
 
 
 def _canonical_weather_point_slug(old_slug: str, *, kind: str, destination_slug: str | None) -> str:
+    if old_slug in LEGACY_CANONICAL_POINT_SLUGS:
+        return LEGACY_CANONICAL_POINT_SLUGS[old_slug]
     if old_slug in CANONICAL_DESTINATION_POINT_SLUGS and kind == "destination":
         return old_slug
     if old_slug.startswith("dest:"):
         return DESTINATION_WEATHER_POINT_SLUGS.get(old_slug.split(":", 1)[1], old_slug.replace(":", "-"))
     if old_slug.startswith("route:"):
         _prefix, _route, point_slug = old_slug.split(":", 2)
+        if point_slug in LEGACY_CANONICAL_POINT_SLUGS:
+            return LEGACY_CANONICAL_POINT_SLUGS[point_slug]
         if point_slug in CANONICAL_DESTINATION_POINT_SLUGS:
             return point_slug
-        return canonical_point_slug(point_slug, destination_slug=destination_slug)
-    return canonical_point_slug(old_slug, destination_slug=destination_slug)
+        return canonical_point_slug(point_slug, primary_slug=destination_slug)
+    return canonical_point_slug(old_slug, primary_slug=destination_slug)
 
 
 def _merge_forecast_dependents(apps, old_id: int, new_id: int) -> None:
@@ -200,75 +218,6 @@ def _rename_route_points(apps) -> None:
         RoutePoint.objects.filter(pk=point.pk).update(**values)
 
 
-def _add_damavand_simorgh(apps) -> None:
-    Route = apps.get_model("routes", "Route")
-    RoutePoint = apps.get_model("routes", "RoutePoint")
-    WeatherPoint = apps.get_model("forecasts", "WeatherPoint")
-    route = Route.objects.filter(slug="damavand-western", is_active=True).first()
-    if route is None:
-        return
-    if RoutePoint.objects.filter(route_id=route.pk, slug="damavand-simorgh-shelter").exists():
-        return
-    target = RoutePoint.objects.filter(route_id=route.pk, slug="damavand-west-5008").first()
-    if target is None:
-        return
-    source_urls = list(route.timing_source_urls or []) or ["https://open-meteo.com/en/docs"]
-    point = WeatherPoint.objects.filter(slug="damavand-simorgh-shelter").first()
-    if point is None:
-        point = WeatherPoint.objects.create(
-            slug="damavand-simorgh-shelter",
-            name="پناهگاه سیمرغ دماوند",
-            page_name="پناهگاه سیمرغ دماوند",
-            short_label="پناهگاه سیمرغ",
-            place_type="shelter",
-            identity_summary="پناهگاه سیمرغ در مسیر غربی دماوند",
-            importance="support",
-            name_status="established",
-            source_urls=source_urls,
-            aliases=["سیمرغ دماوند", "پناهگاه سیمرغ"],
-            kind="route_point",
-            location=Point(52.082304, 35.956441, srid=4326),
-            elevation_m=4205,
-            elevation_source="GPX waypoint: Seemorgh Shelter 4205؛ مختصات مستقیم waypoint",
-            destination=route.destination,
-            climate=route.destination.climate,
-            status="provisional",
-            provenance="curated",
-            catalog_version="catalog-identity-cleanup",
-            data_mode="live",
-            seed_version=route.seed_version,
-            is_active=True,
-            ingest_enabled=True,
-            fixture_managed=True,
-        )
-    old_order = target.sort_order
-    for route_point in RoutePoint.objects.filter(route_id=route.pk, sort_order__gte=old_order).order_by("-sort_order"):
-        route_point.sort_order += 1
-        route_point.save(update_fields=["sort_order"])
-    RoutePoint.objects.create(
-        route=route,
-        weather_point=point,
-        destination=None,
-        slug=point.slug,
-        name=point.name,
-        elevation_m=point.elevation_m,
-        location=point.location,
-        base_minutes=None,
-        segment_minutes=None,
-        cumulative_minutes=None,
-        progress_pct=None,
-        timing_status="pending",
-        sort_order=old_order,
-        internal_note="GPX waypoint Seemorgh Shelter 4205",
-        public_note="",
-        axis_x=50,
-        axis_y=50,
-        data_mode="live",
-        seed_version=route.seed_version,
-        fixture_managed=True,
-    )
-
-
 def _populate_identity_metadata(apps) -> None:
     WeatherPoint = apps.get_model("forecasts", "WeatherPoint")
     RoutePoint = apps.get_model("routes", "RoutePoint")
@@ -366,7 +315,6 @@ def cleanup_catalog_identity(apps, schema_editor):
     _rename_destinations_and_routes(apps)
     _rename_and_merge_weather_points(apps)
     _rename_route_points(apps)
-    _add_damavand_simorgh(apps)
     _populate_identity_metadata(apps)
     _rebuild_search_index(apps)
 

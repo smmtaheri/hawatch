@@ -69,7 +69,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
           <strong>{decision.start}</strong>
         </div>
         <div>
-          <span>رسیدن به مقصد</span>
+          <span>رسیدن به نقطه</span>
           <strong>{timingPending ? "نامشخص" : decision.finish}</strong>
         </div>
         <div>

@@ -30,7 +30,6 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
@@ -115,98 +114,46 @@ def meta_base(*, selected_date: date, period: str, extra: dict | None = None) ->
     return payload
 
 
-def destination_weather_point(destination: Destination) -> WeatherPoint | None:
-    """Resolve the canonical WeatherPoint for a destination profile."""
-    if destination.weather_point_id:
-        return destination.weather_point
-    point = (
-        WeatherPoint.objects.filter(destination=destination, kind=WeatherPoint.Kind.DESTINATION)
-        .exclude(slug__startswith="dest:")
-        .order_by("id")
-        .first()
-    )
-    if point:
-        return point
-    return None
-
-
-def destination_profile_for_point(point: WeatherPoint) -> Destination | None:
-    """Active DestinationProfile linked via Destination.weather_point (preferred)."""
-    if not point.id:
-        return None
-    return Destination.objects.filter(weather_point_id=point.id, is_active=True).first()
-
-
-def contextual_destination_for_point(point: WeatherPoint) -> Destination | None:
-    """Destination used for hero/context when the point is not itself a profile."""
-    profile = destination_profile_for_point(point)
-    if profile is not None:
-        return profile
-    via_route = (
-        Destination.objects.filter(
-            routes__points__weather_point=point,
-            is_active=True,
-            routes__is_active=True,
-        )
-        .order_by("popular_order", "slug")
-        .first()
-    )
-    if via_route is not None:
-        return via_route
-    return None
-
-
 def weather_point_is_active(point: WeatherPoint) -> bool:
-    """A point is publicly active only when flagged active and exposed.
-
-    Exposure requires an active Destination profile or an active Route on an
-    active Destination. Legacy ``WeatherPoint.destination`` ownership alone is
-    not enough.
-    """
-    if not point.is_active:
-        return False
-    if destination_profile_for_point(point) is not None:
-        return True
-    return RoutePoint.objects.filter(
-        weather_point=point,
-        route__is_active=True,
-        route__destination__is_active=True,
-    ).exists()
+    """A point is public when active and linked to at least one active route."""
+    return bool(
+        point.is_active
+        and (point.seo_indexable or RoutePoint.objects.filter(weather_point=point, route__is_active=True).exists())
+    )
 
 
-def serialize_destination(destination: Destination, *, include_routes: bool = False) -> dict:
-    wp = destination.weather_point if destination.weather_point_id else None
-    elevation = wp.elevation_m if wp is not None and wp.elevation_m is not None else destination.elevation_m
-    if wp is not None and wp.location is not None:
-        latitude = wp.location.y
-        longitude = wp.location.x
-    else:
-        latitude = destination.location.y
-        longitude = destination.location.x
+def serialize_point_profile(point: WeatherPoint, *, include_routes: bool = False) -> dict:
+    elevation = point.elevation_m
+    latitude = point.location.y if point.location else None
+    longitude = point.location.x if point.location else None
     data = {
-        "slug": destination.slug,
-        "tile_name": destination.tile_name,
-        "name": destination.name,
-        "short_category": destination.short_category,
-        "category": destination.category,
-        "category_key": destination.category_key,
-        "region": destination.region,
+        "slug": point.slug,
+        "tile_name": point.tile_name or point.short_label or point.name,
+        "name": point.page_name or point.name,
+        "short_category": point.short_category,
+        "category": point.category,
+        "category_key": point.category_key,
+        "region": point.region,
         "elevation_m": elevation,
-        "elevation_label": f"{to_fa_digits(elevation)} متر",
+        "elevation_label": f"{to_fa_digits(elevation)} متر" if elevation is not None else "ارتفاع نامشخص",
         "latitude": latitude,
         "longitude": longitude,
-        "image": destination.image,
-        "image_alt": destination.image_alt,
-        "href": f"/destination/{destination.slug}",
-        "is_popular": destination.is_popular,
-        "popular_order": destination.popular_order,
-        "data_mode": destination.data_mode,
-        "weather_point_slug": wp.slug if wp is not None else None,
+        "image": point.image,
+        "image_alt": point.image_alt,
+        "href": f"/points/{point.slug}",
+        "is_popular": point.is_popular,
+        "popular_order": point.popular_order,
+        "seo_indexable": point.seo_indexable,
+        "data_mode": point.data_mode,
+        "weather_point_slug": point.slug,
     }
     if include_routes:
         data["routes"] = [
             serialize_route_summary(route)
-            for route in destination.routes.filter(is_active=True).order_by("sort_order", "slug")
+            for route in Route.objects.filter(
+                points__weather_point=point,
+                is_active=True,
+            ).distinct().order_by("sort_order", "slug")
         ]
     return data
 
@@ -220,7 +167,7 @@ def serialize_route_summary(route: Route) -> dict:
         "title": route.title,
         "trail_label": route.trail_label,
         "origin": route.origin,
-        "destination_label": route.destination_label,
+        "target_label": route.target_label,
         "distance_km": distance_km,
         "distance_label": f"{to_fa_digits(distance_km)} km" if distance_km is not None else "—",
         "ascent_m": ascent_m,
@@ -233,13 +180,12 @@ def serialize_route_summary(route: Route) -> dict:
 
 
 def serialize_route(route: Route) -> dict:
-    points = list(route.points.select_related("destination", "weather_point").all())
+    points = list(route.points.select_related("weather_point").all())
     siblings = [
         serialize_route_summary(item)
         for item in Route.objects.filter(
-            destination=route.destination,
             is_active=True,
-            destination__is_active=True,
+            target_weather_point=route.target_weather_point,
         )
         .exclude(pk=route.pk)
         .order_by("sort_order", "slug")
@@ -252,7 +198,7 @@ def serialize_route(route: Route) -> dict:
         "subtitle": route.subtitle,
         "trail_label": route.trail_label,
         "origin": route.origin,
-        "destination_label": route.destination_label,
+        "target_label": route.target_label,
         "region": route.region,
         "distance_km": distance_km,
         "distance_label": f"{to_fa_digits(distance_km)} km" if distance_km is not None else "—",
@@ -270,29 +216,20 @@ def serialize_route(route: Route) -> dict:
         "timing_source_urls": list(route.timing_source_urls or []),
         "featured": route.featured,
         "href": f"/routes/{route.slug}",
-        "parent": serialize_destination(route.destination),
+        "target_point": serialize_point_profile(route.target_weather_point) if route.target_weather_point else None,
         "points": [serialize_point(point) for point in points],
         "siblings": siblings,
     }
 
 
 def weather_point_canonical_href(point: WeatherPoint) -> str:
-    """Return the canonical public URL for a WeatherPoint."""
-    profile = destination_profile_for_point(point)
-    if profile is not None:
-        return f"/destination/{profile.slug}"
+    """Return the canonical public URL for a point."""
     return f"/points/{point.slug}"
 
 
 def place_hero_assets(weather_point: WeatherPoint) -> tuple[str, str]:
-    """Hero image: DestinationProfile first, then contextual destination, then documented fallback."""
-    profile = destination_profile_for_point(weather_point)
-    if profile is not None and profile.image:
-        return profile.image, profile.image_alt or profile.name
-    contextual = contextual_destination_for_point(weather_point)
-    if contextual is not None and contextual.image:
-        return contextual.image, contextual.image_alt or contextual.name
-    return "", "سطح پیش‌فرض پیش‌بینی"
+    """Return the point's curated hero image, if any."""
+    return (weather_point.image, weather_point.image_alt or weather_point.name) if weather_point.image else ("", "سطح پیش‌فرض پیش‌بینی")
 
 
 def serialize_place_subject(
@@ -304,21 +241,13 @@ def serialize_place_subject(
     elevation_m: int | None = None,
     aliases: list | None = None,
 ) -> dict:
-    profile = destination_profile_for_point(weather_point)
-    contextual = contextual_destination_for_point(weather_point)
     hero_image, hero_alt = place_hero_assets(weather_point)
     elev = elevation_m if elevation_m is not None else weather_point.elevation_m
     name = display_name or weather_point.name
-    if kind == "destination" and profile is not None:
-        slug = profile.slug
-        region = profile.region
-        category = profile.category
-        default_context = profile.category
-    else:
-        slug = weather_point.slug
-        region = contextual.region if contextual else ""
-        category = contextual.category if contextual else ""
-        default_context = contextual.region if contextual else ""
+    slug = weather_point.slug
+    region = weather_point.region
+    category = weather_point.category
+    default_context = weather_point.region
     return {
         "kind": kind,
         "slug": slug,
@@ -356,31 +285,17 @@ def build_place_forecast(
     climate: str | None = None,
     elevation_for_metrics: int | None = None,
 ) -> dict:
-    """Shared Forecast Place page contract for destination and point URLs."""
+    """Shared forecast contract for point URLs."""
     refresh_if_bucket_changed()
     local = now_tehran()
     today = local.date()
-    profile = destination_profile_for_point(weather_point)
-    contextual = contextual_destination_for_point(weather_point)
-    climate_key = climate or weather_point.climate or (
-        (profile or contextual).climate if (profile or contextual) else "alpine"
-    )
+    climate_key = climate or weather_point.climate or "alpine"
     elev_ref = elevation_for_metrics
     if elev_ref is None:
         elev_ref = weather_point.elevation_m
-    if elev_ref is None and (profile or contextual) is not None:
-        elev_ref = (profile or contextual).elevation_m
-
-    display_name = None
-    context_label = None
-    if kind == "destination" and profile is not None:
-        display_name = profile.name
-        context_label = profile.category
     subject = serialize_place_subject(
         weather_point,
         kind=kind,
-        display_name=display_name,
-        context_label=context_label,
     )
     if subject_overrides:
         subject.update(subject_overrides)
@@ -390,7 +305,7 @@ def build_place_forecast(
     current_payload = _reading_for_period_summary(weather_point, selected_date, period, local)
 
     place_name = subject["name"]
-    short_name = profile.tile_name if kind == "destination" and profile else place_name
+    short_name = weather_point.tile_name or weather_point.short_label or place_name
     period_payload = planner_period_payload(period)
 
     change = next(
@@ -584,11 +499,7 @@ def build_place_forecast(
         "text": decision_text,
     }
     hero = {"status": hero_status, "alert": hero_alert}
-    routes_title = (
-        f"مسیرهای منتهی به {short_name}"
-        if kind == "destination"
-        else "مسیرهای عبوری از این نقطه"
-    )
+    routes_title = f"مسیرهای متصل به {short_name}"
 
     return {
         "subject": subject,
@@ -842,36 +753,21 @@ def _reading_for_period_summary(
     return None
 
 
-def destination_forecast(destination: Destination, *, selected_date: date, period: str) -> dict:
-    point = destination_weather_point(destination)
-    if point is None:
-        raise NotFound({"detail": "نقطهٔ هوای مقصد پیدا نشد."})
+def point_profile_forecast(point: WeatherPoint, *, selected_date: date, period: str) -> dict:
     routes = [
         serialize_route_summary(route)
-        for route in destination.routes.filter(is_active=True).order_by("sort_order", "slug")
+        for route in Route.objects.filter(points__weather_point=point, is_active=True).distinct().order_by("sort_order", "slug")
     ]
     place = build_place_forecast(
         point,
         selected_date=selected_date,
         period=period,
-        kind="destination",
+        kind="point",
         related_routes=routes,
-        climate=destination.climate,
-        elevation_for_metrics=(
-            point.elevation_m if point.elevation_m is not None else destination.elevation_m
-        ),
+        climate=point.climate,
+        elevation_for_metrics=point.elevation_m,
     )
-    # Compatibility aliases for existing frontend consumers.
-    return {
-        **place,
-        "destination": {
-            **serialize_destination(destination, include_routes=True),
-            "image": place["subject"]["hero_image"] or destination.image,
-            "image_alt": place["subject"]["hero_image_alt"] or destination.image_alt,
-        },
-        "related_routes": routes,
-        "updated_label": "",
-    }
+    return {**place, "point": serialize_point_profile(point, include_routes=True), "updated_label": ""}
 
 
 def localize_dt_safe(value: date, hour: int):
@@ -905,7 +801,7 @@ def _point_arrival_minutes(point: RoutePoint, *, start_minutes: int, speed: str,
 def _closest_point_forecast(weather_point: WeatherPoint, target_at: datetime, *, now: datetime):
     """Select this point's own forecast closest to arrival within ±tolerance.
 
-    Never substitutes another WeatherPoint (including summit/destination).
+    Never substitutes another WeatherPoint (including the target point).
     Tie-break when distances are equal: earlier forecast_at, then lower primary key.
     Does not rely on queryset default ordering.
     """
@@ -991,9 +887,9 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             }
         )
 
-    dest_point = destination_weather_point(route.destination)
-    # Destination hourly strip is independent of route-point severity; never rewrite it from ETA.
-    hourly = _hourly_for_period(dest_point, selected_date, period, now=local) if dest_point else []
+    target_point = route.target_weather_point
+    # Target-point hourly strip is independent of route-point severity.
+    hourly = _hourly_for_period(target_point, selected_date, period, now=local) if target_point else []
 
     finish = planned[-1] if planned else None
     critical_point = next((item for item in planned if item["state"] == "critical"), finish)
@@ -1083,7 +979,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         duration = paced_duration_minutes(route.one_way_minutes, speed) if route.one_way_minutes else None
         duration_label = format_duration(duration) if duration is not None else "—"
         arrival_label = finish_label
-        decision_title = f"با حرکت ساعت {start_label}، حدود {finish_label} به مقصد می‌رسی."
+        decision_title = f"با حرکت ساعت {start_label}، حدود {finish_label} به نقطه می‌رسی."
 
     days = [day_payload(day, today) for day in day_window(today)]
     stats = [
@@ -1096,7 +992,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             "value": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "نامشخص",
         },
         {"label": "زمان تخمینی مسیر", "value": duration_label},
-        {"label": "رسیدن به مقصد", "value": arrival_label},
+        {"label": "رسیدن به نقطه", "value": arrival_label},
     ]
     return {
         "route": serialize_route(route),
@@ -1147,8 +1043,8 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     }
 
 
-def list_destinations(*, query: str = "") -> list[Destination]:
-    qs = Destination.objects.filter(is_active=True).order_by("popular_order", "slug")
+def list_points(*, query: str = "") -> list[WeatherPoint]:
+    qs = WeatherPoint.objects.filter(is_active=True).order_by("-is_popular", "popular_order", "slug")
     if query:
         normalized = normalize_search_text(query)
         qs = [
@@ -1157,7 +1053,7 @@ def list_destinations(*, query: str = "") -> list[Destination]:
             if any(
                 normalized in normalize_search_text(str(value))
                 for value in (
-                    item.name,
+                    item.page_name or item.name,
                     item.tile_name,
                     item.short_category,
                     item.category,
@@ -1166,37 +1062,32 @@ def list_destinations(*, query: str = "") -> list[Destination]:
             )
         ]
         return qs[:6]
-    # The no-query response is the home-page popular set.  Search remains
-    # available through the dedicated search endpoint and may return any
-    # active destination.
     return list(qs.filter(is_popular=True)[:4])
 
 
-def get_destination(slug: str) -> Destination:
+def get_point(slug: str) -> WeatherPoint:
     try:
-        return Destination.objects.select_related("weather_point").get(slug=slug, is_active=True)
-    except Destination.DoesNotExist as exc:
-        raise NotFound({"detail": "مقصد پیدا نشد."}) from exc
+        point = WeatherPoint.objects.get(slug=slug, is_active=True)
+    except WeatherPoint.DoesNotExist as exc:
+        raise NotFound({"detail": "نقطه پیدا نشد."}) from exc
+    if not weather_point_is_active(point):
+        raise NotFound({"detail": "نقطه پیدا نشد."})
+    return point
 
 
 def get_weather_point(slug: str) -> WeatherPoint:
     try:
-        point = WeatherPoint.objects.select_related("destination", "destination_profile").get(slug=slug)
+        point = WeatherPoint.objects.get(slug=slug)
     except WeatherPoint.DoesNotExist as exc:
         raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from exc
-    # ``destination_profile`` is a reverse one-to-one relation, so Django
-    # does not expose a ``destination_profile_id`` attribute on WeatherPoint.
-    # Check the owning profile directly and keep destination canonical points
-    # out of the independent public-point endpoint.
-    if slug.startswith("dest:") or Destination.objects.filter(weather_point_id=point.id).exists():
-        raise NotFound({"detail": "برای این مقصد از صفحهٔ مقصد استفاده کن."}) from None
+    if slug.startswith(("dest:", "route:")):
+        raise NotFound({"detail": "نقطه پیدا نشد."}) from None
     if not weather_point_is_active(point):
         raise NotFound({"detail": "نقطهٔ هواشناسی پیدا نشد."}) from None
     return point
 
 
 def serialize_weather_point(point: WeatherPoint) -> dict:
-    contextual = contextual_destination_for_point(point)
     return {
         "slug": point.slug,
         "name": point.name,
@@ -1217,7 +1108,13 @@ def serialize_weather_point(point: WeatherPoint) -> dict:
         "provenance": point.provenance,
         "href": weather_point_canonical_href(point),
         "canonical_href": weather_point_canonical_href(point),
-        "destination": serialize_destination(contextual) if contextual else None,
+        "tile_name": point.tile_name or point.short_label or point.name,
+        "category": point.category,
+        "category_key": point.category_key,
+        "region": point.region,
+        "image": point.image,
+        "image_alt": point.image_alt,
+        "seo_indexable": point.seo_indexable,
     }
 
 
@@ -1226,22 +1123,11 @@ def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
         Route.objects.filter(
             points__weather_point=point,
             is_active=True,
-            destination__is_active=True,
         )
         .distinct()
         .order_by("sort_order", "slug")
     )
     return [serialize_route_summary(route) for route in routes]
-
-
-def related_destinations_for_weather_point(point: WeatherPoint) -> list[dict]:
-    profile = destination_profile_for_point(point)
-    if profile is not None:
-        return [serialize_destination(profile)]
-    contextual = contextual_destination_for_point(point)
-    if contextual is None:
-        return []
-    return [serialize_destination(contextual)]
 
 
 def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: str) -> dict:
@@ -1253,14 +1139,12 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
         kind="point",
         related_routes=routes,
     )
-    # Compatibility aliases for existing frontend consumers.
     return {
         **place,
         "point": {
             **serialize_weather_point(weather_point),
             "canonical_href": place["subject"]["canonical_href"],
         },
-        "related_destinations": related_destinations_for_weather_point(weather_point),
         "related_routes": routes,
         "updated_label": "",
     }
@@ -1268,11 +1152,7 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
 
 def get_route(slug: str) -> Route:
     try:
-        route = Route.objects.select_related("destination").get(
-            slug=slug,
-            is_active=True,
-            destination__is_active=True,
-        )
+        route = Route.objects.select_related("origin_weather_point", "target_weather_point").get(slug=slug, is_active=True)
     except Route.DoesNotExist as exc:
         raise NotFound({"detail": "مسیر پیدا نشد."}) from exc
     return route

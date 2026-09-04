@@ -8,8 +8,8 @@ from . import validate_open_meteo_catalog as validator
 def _catalog(tmp_path):
     catalog = {
         "catalog_version": "hawatch-test-v1",
-        "destination_weather_point": "test_summit",
-        "destination": {
+        "primary_point": "test_summit",
+        "point": {
             "slug": "test-mountain",
             "tile_name": "آزمایشی",
             "name": "قلهٔ آزمایشی",
@@ -104,7 +104,7 @@ def test_provider_distance_and_hourly_shape_are_blocking(tmp_path, monkeypatch):
     assert any("no elevation metadata" in item for item in report["errors"])
 
 
-def test_destination_only_catalog_is_valid(tmp_path, monkeypatch):
+def test_point_only_catalog_is_valid(tmp_path, monkeypatch):
     path = _catalog(tmp_path)
     data = json.loads(path.read_text(encoding="utf-8"))
     data["routes"] = {}

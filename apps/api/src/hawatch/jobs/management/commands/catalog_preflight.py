@@ -10,9 +10,10 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--destination",
+            "--point",
+            dest="point",
             default="",
-            help="Limit checks to one destination slug; default checks all active live destinations.",
+            help="Limit checks to one point slug; default checks all active live points.",
         )
         parser.add_argument(
             "--require-forecast",
@@ -28,7 +29,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         report = run_catalog_preflight(
-            destination_slug=options["destination"].strip() or None,
+            point_slug=options["point"].strip() or None,
             require_forecast=options["require_forecast"],
             strict=options["strict"],
         )
@@ -37,7 +38,7 @@ class Command(BaseCommand):
         else:
             summary = report["summary"]
             self.stdout.write(
-                "catalog preflight: destinations={destination_count} routes={route_count} "
+                "catalog preflight: points={point_count} routes={route_count} "
                 "ingestible_points={ingestible_point_count} provider_checked={provider_checked_point_count} "
                 "timed_routes={timed_route_count} errors={error_count} warnings={warning_count} pass={pass}".format(
                     **summary

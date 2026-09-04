@@ -3,80 +3,28 @@ from __future__ import annotations
 import re
 
 from django.db import transaction
-from django.db.models import Case, IntegerField, Q, Value, When
+from django.db.models import Case, IntegerField, Value, When
 
 from hawatch.modules.catalog.models import SearchIndexEntry
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import WeatherPoint
 
 _ZWNJ = "\u200c"
-_ARABIC_Y = "ي"
-_PERSIAN_Y = "ی"
-_ARABIC_K = "ك"
-_PERSIAN_K = "ک"
 
 
 def normalize_search_text(value: str) -> str:
-    text = value.strip().replace(_ARABIC_Y, _PERSIAN_Y).replace(_ARABIC_K, _PERSIAN_K)
+    text = str(value or "").strip().replace("ي", "ی").replace("ك", "ک")
     text = text.replace(_ZWNJ, "")
-    text = re.sub(r"\s+", "", text)
-    return text.casefold()
-
-
-def _destination_entries(destination: Destination) -> list[SearchIndexEntry]:
-    rows: list[SearchIndexEntry] = []
-    terms: list[tuple[str, SearchIndexEntry.MatchKind, int]] = [
-        (destination.name, SearchIndexEntry.MatchKind.NAME, 0),
-        (destination.tile_name, SearchIndexEntry.MatchKind.ALIAS, 1),
-    ]
-    for alias in destination.aliases or []:
-        terms.append((alias, SearchIndexEntry.MatchKind.ALIAS, 1))
-    seen: set[str] = set()
-    for label, match_kind, rank in terms:
-        normalized = normalize_search_text(label)
-        if len(normalized) < 2 or normalized in seen:
-            continue
-        seen.add(normalized)
-        rows.append(
-            SearchIndexEntry(
-                kind=SearchIndexEntry.Kind.DESTINATION,
-                match_kind=match_kind,
-                normalized_term=normalized,
-                display_label=destination.name,
-                display_hint="مقصد",
-                destination_slug=destination.slug,
-                weather_point_slug="",
-                rank=rank,
-                is_active=True,
-            )
-        )
-    return rows
+    return re.sub(r"\s+", "", text).casefold()
 
 
 def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
-    if point.slug.startswith("dest:") or not point.is_active:
+    if not point.is_active or point.slug.startswith(("dest:", "route:")):
         return []
-    # DestinationProfile weather points are indexed only as destinations.
-    if Destination.objects.filter(weather_point_id=point.id, is_active=True).exists():
-        return []
-    destination = (
-        Destination.objects.filter(
-            routes__points__weather_point=point,
-            is_active=True,
-            routes__is_active=True,
-        )
-        .order_by("popular_order", "slug")
-        .first()
-    )
-    if destination is None or not destination.is_active:
-        return []
-    hint = f"نقطهٔ مسیر · {destination.tile_name}"
+    terms = [(point.name, SearchIndexEntry.MatchKind.NAME, 0)]
+    if point.page_name and point.page_name != point.name:
+        terms.append((point.page_name, SearchIndexEntry.MatchKind.ALIAS, 1))
+    terms.extend((alias, SearchIndexEntry.MatchKind.ALIAS, 1) for alias in point.aliases or [])
     rows: list[SearchIndexEntry] = []
-    terms: list[tuple[str, SearchIndexEntry.MatchKind, int]] = [
-        (point.name, SearchIndexEntry.MatchKind.NAME, 0),
-    ]
-    for alias in point.aliases or []:
-        terms.append((alias, SearchIndexEntry.MatchKind.ALIAS, 1))
     seen: set[str] = set()
     for label, match_kind, rank in terms:
         normalized = normalize_search_text(label)
@@ -88,11 +36,10 @@ def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
                 kind=SearchIndexEntry.Kind.POINT,
                 match_kind=match_kind,
                 normalized_term=normalized,
-                display_label=point.name,
-                display_hint=hint,
-                destination_slug=destination.slug,
+                display_label=point.page_name or point.name,
+                display_hint="نقطهٔ شاخص" if point.importance == "primary" else "نقطهٔ مسیر",
                 weather_point_slug=point.slug,
-                rank=rank,
+                rank=rank if point.importance != "primary" else max(0, rank - 1),
                 is_active=True,
             )
         )
@@ -103,19 +50,7 @@ def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
 def rebuild_search_index() -> dict[str, int]:
     SearchIndexEntry.objects.all().delete()
     rows: list[SearchIndexEntry] = []
-    for destination in Destination.objects.filter(is_active=True):
-        rows.extend(_destination_entries(destination))
-    point_qs = (
-        WeatherPoint.objects.exclude(slug__startswith="dest:")
-        .filter(is_active=True)
-        .filter(
-            Q(destination_profile__is_active=True)
-            | Q(route_links__route__is_active=True, route_links__route__destination__is_active=True)
-        )
-        .select_related("destination")
-        .distinct()
-    )
-    for point in point_qs:
+    for point in WeatherPoint.objects.filter(is_active=True).order_by("importance", "popular_order", "slug"):
         rows.extend(_point_entries(point))
     if rows:
         SearchIndexEntry.objects.bulk_create(rows, batch_size=500)
@@ -129,8 +64,6 @@ def search_suggestions(*, query: str, limit: int = 8) -> list[dict]:
     matches = list(
         SearchIndexEntry.objects.filter(is_active=True, normalized_term__contains=normalized)
         .annotate(
-            # Keep exact/full-name prefix matches ahead of a query that occurs
-            # in a later word (e.g. ``گهر`` in ``دریاچهٔ گهر``).
             match_position=Case(
                 When(normalized_term=normalized, then=Value(0)),
                 When(normalized_term__startswith=normalized, then=Value(1)),
@@ -138,30 +71,22 @@ def search_suggestions(*, query: str, limit: int = 8) -> list[dict]:
                 output_field=IntegerField(),
             )
         )
-        .order_by("match_position", "rank", "kind", "display_label", "id")[: limit * 3]
+        .order_by("match_position", "rank", "display_label", "id")[: limit * 3]
     )
     results: list[dict] = []
-    seen_keys: set[str] = set()
+    seen: set[str] = set()
     for row in matches:
-        key = f"{row.kind}:{row.destination_slug}:{row.weather_point_slug}"
-        if key in seen_keys:
+        slug = row.weather_point_slug
+        if not slug or slug in seen:
             continue
-        seen_keys.add(key)
-        if row.kind == SearchIndexEntry.Kind.DESTINATION:
-            href = f"/destination/{row.destination_slug}"
-            result_type = "destination"
-            slug = row.destination_slug
-        else:
-            href = f"/points/{row.weather_point_slug}"
-            result_type = "point"
-            slug = row.weather_point_slug
+        seen.add(slug)
         results.append(
             {
-                "type": result_type,
+                "type": "point",
                 "slug": slug,
                 "label": row.display_label,
                 "hint": row.display_hint,
-                "href": href,
+                "href": f"/points/{slug}",
                 "match_kind": row.match_kind,
             }
         )

@@ -1,31 +1,12 @@
 {
   "catalog_version": "hawatch-sabalan-catalog-v1",
-  "destination_weather_point": "sabalan_summit",
-  "destination": {
-    "slug": "sabalan",
-    "tile_name": "سبلان",
-    "name": "قلهٔ سبلان",
-    "short_category": "آتشفشان",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "volcano",
-    "region": "آذربایجان · اردبیل",
-    "elevation_m": 4811,
-    "latitude": 38.2669186,
-    "longitude": 47.8367901,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی قلهٔ سبلان",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
-    "sabalan_summit": {
+    "sabalan": {
       "name": "قلهٔ سبلان",
       "latitude": 38.2669186,
       "longitude": 47.8367901,
       "elevation_m": 4811,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "ارتفاع رایج قلهٔ سلطان سبلان حدود ۴۸۱۱ متر؛ مختصات با نزدیک‌ترین رسیدن ترک غربی و نقاط قلهٔ ترک شمال‌شرقی تطبیق شده؛ ارتفاع GPX مرجع است و DEM برای اعتبارسنجی provider استفاده می‌شود.",
       "page_name": "قلهٔ سبلان",
@@ -214,7 +195,6 @@
       "subtitle": "مسیر شمال‌شرقی از ابتدای پیاده‌روی شابیل و پناهگاه تا قله",
       "trail_label": "مسیر شمال‌شرقی شابیل",
       "origin": "شابیل · ابتدای پیاده‌روی",
-      "destination_label": "قلهٔ سبلان",
       "region": "آذربایجان · اردبیل",
       "featured": true,
       "sort_order": 1,
@@ -222,7 +202,7 @@
         "sabalan-ne-shabil-trailhead",
         "sabalan-ne-east-hut",
         "sabalan-ne-crater-lake",
-        "sabalan_summit"
+        "sabalan"
       ],
       "distance_km": 10.3,
       "ascent_m": 2115,
@@ -252,11 +232,11 @@
           "sabalan-ne-shabil-trailhead": 0,
           "sabalan-ne-east-hut": 300,
           "sabalan-ne-crater-lake": 540,
-          "sabalan_summit": 570
+          "sabalan": 570
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ سبلان"
     },
     "west_qartal_dashi_to_sabalan": {
       "slug": "sabalan-west-qartal-dashi",
@@ -264,7 +244,6 @@
       "subtitle": "از پای کار غربی و دروازه تا قارتال‌داشی و قله",
       "trail_label": "مسیر غربی قارتال‌داشی",
       "origin": "پای کار جبههٔ غربی",
-      "destination_label": "قلهٔ سبلان",
       "region": "آذربایجان · اردبیل",
       "featured": true,
       "sort_order": 2,
@@ -272,7 +251,7 @@
         "sabalan-west-trailhead",
         "sabalan-west-gateway",
         "sabalan-west-qartal-dashi",
-        "sabalan_summit"
+        "sabalan"
       ],
       "distance_km": 6.5,
       "ascent_m": 1600,
@@ -302,11 +281,11 @@
           "sabalan-west-trailhead": 0,
           "sabalan-west-gateway": 180,
           "sabalan-west-qartal-dashi": 285,
-          "sabalan_summit": 420
+          "sabalan": 420
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ سبلان"
     },
     "southeast_alvares_to_sabalan": {
       "slug": "sabalan-southeast-alvares",
@@ -314,14 +293,13 @@
       "subtitle": "مسیر جنوب‌شرقی از چای‌گوزی و محراب‌داشی تا قله",
       "trail_label": "مسیر جنوب‌شرقی آلوارس",
       "origin": "چای‌گوزی · آلوارس",
-      "destination_label": "قلهٔ سبلان",
       "region": "آذربایجان · اردبیل",
       "featured": true,
       "sort_order": 3,
       "points": [
         "sabalan-se-chay-goozi-trailhead",
         "sabalan-se-mehrab-dashi",
-        "sabalan_summit"
+        "sabalan"
       ],
       "distance_km": 4.8,
       "ascent_m": 1370,
@@ -350,11 +328,30 @@
         "cumulative_minutes": {
           "sabalan-se-chay-goozi-trailhead": 0,
           "sabalan-se-mehrab-dashi": 345,
-          "sabalan_summit": 390
+          "sabalan": 390
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ سبلان"
     }
-  }
+  },
+  "point": {
+    "slug": "sabalan",
+    "tile_name": "سبلان",
+    "name": "قلهٔ سبلان",
+    "short_category": "آتشفشان",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "volcano",
+    "region": "آذربایجان · اردبیل",
+    "elevation_m": 4811,
+    "latitude": 38.2669186,
+    "longitude": 47.8367901,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سبلان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "sabalan"
 }

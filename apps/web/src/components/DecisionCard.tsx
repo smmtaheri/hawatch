@@ -8,7 +8,7 @@ export function DecisionCard({
   text: string;
 }) {
   return (
-    <section className="destination-decision-card card-surface">
+    <section className="point-decision-card card-surface">
       <span className="decision-chip">{chip}</span>
       <h2>{title}</h2>
       <p>{text}</p>

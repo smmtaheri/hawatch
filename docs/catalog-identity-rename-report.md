@@ -1,24 +1,24 @@
 # گزارش یکدست‌سازی هویت کاتالوگ
 
 این گزارش نتیجهٔ مرحلهٔ پاک‌سازی کاتالوگ پیش از کار SEO است. هدف آن است که
-هر مقصد، مسیر و نقطهٔ مستقل یک هویت پایدار، قابل جست‌وجو و قابل تشخیص داشته
+هر نقطه، مسیر و نقطهٔ مستقل یک هویت پایدار، قابل جست‌وجو و قابل تشخیص داشته
 باشد. این تغییر فقط روی نام و شناسهٔ داده‌هاست؛ مختصات، ارتفاع، forecast و
 داده‌های Open-Meteo منبع جدیدی پیدا نکرده‌اند.
 
 ## قواعد نهایی
 
-- slug مقصد و مسیر با حروف کوچک انگلیسی و خط تیره است؛ برای مثال
+- slug نقطه و مسیر با حروف کوچک انگلیسی و خط تیره است؛ برای مثال
   `tochal-velenjak`.
-- نقطهٔ مستقل باید در slug زمینهٔ مقصد یا نوع مکان را داشته باشد؛ برای مثال
+- نقطهٔ مستقل باید در slug زمینهٔ نقطه یا نوع مکان را داشته باشد؛ برای مثال
   `damavand-shelter-4000`، نه `shelter_4000`.
 - `page_name` نام کامل و مناسب عنوان صفحه است و باید مستقل از route خوانده
   شود. `short_label` فقط برای کارت‌های فشرده است.
-- نقطهٔ canonical مقصد مثل `tochal_summit` هویت داخلی پروفایل مقصد است و صفحهٔ
-  مستقل `/points/` ندارد. نقطه‌های مستقل به `/points/{slug}` می‌روند.
+- نقطهٔ شاخص مثل `tochal` همان هویت عمومی نقطه است و به
+  `/points/{slug}` می‌رود. هیچ پروفایل یا موجودیت جداگانه‌ای وجود ندارد.
 - endpoint قدیمی route-point و URLهای قدیمی redirect یا alias ندارند؛ لینک‌های
   داخلی و دادهٔ seed باید از slug نهایی استفاده کنند.
 
-## تغییر مقصدها و مسیرها
+## تغییر نقاط و مسیرها
 
 | قدیمی | نهایی |
 | --- | --- |
@@ -56,7 +56,7 @@
 | `shakarab` | `tochal-shakarab-ahaar` | شکرآب آهار |
 | `naseri_palace` | `shahrestanak-naseri-palace` | کاخ ناصری شهرستانک |
 
-`tochal_summit` مقصد canonical است و عمداً تغییر نکرده است. نقطهٔ `tochal_hotel`
+`tochal` نقطهٔ canonical است و slug سادهٔ نقطه را نگه می‌دارد. نقطهٔ `tochal_hotel`
 نیز به `tochal-hotel` و `kolakchal_camp` به `tochal-kolakchal-camp` تبدیل شده‌اند.
 
 ### دماوند
@@ -64,14 +64,16 @@
 `damavand_sulfur_hill` → `damavand-sulfur-hill` (تپهٔ گوگردی دماوند)،
 `damavand_west_5008` → `damavand-west-5008`،
 `damavand_western_parking` → `damavand-western-parking`،
-`damavand_simorgh` → `damavand-simorgh-shelter`،
+هیچ رکورد تازه‌ای به کاتالوگ اضافه نشده است؛ داده‌های موجود عمداً در migration و
+fixtureهای فعلی حفظ شده‌اند.
 `damavand_northeast_north_join` → `damavand-northeast-north-junction`،
 `damavand_sang_bozorg` → `damavand-sang-bozorg`، و
 `damavand_shelter_4000`/`damavand_shelter_5000` →
-`damavand-shelter-4000`/`damavand-shelter-5000` شدند. نقطهٔ سیمرغ در مسیر غربی
-نیز در migration به زنجیره اضافه شد؛ زمان‌بندی آن تا تأیید GPX، `pending` است.
+`damavand-shelter-4000`/`damavand-shelter-5000` شدند. اگر مسیر غربی بعداً به
+عارضهٔ میانی معتبر نیاز داشته باشد، تا زمان اثبات آن `pending` می‌ماند و نقطهٔ
+ساختگی اضافه نمی‌شود.
 
-### سایر مقصدها
+### سایر نقاط
 
 - دشت دریاسر: `daryasar_spring` → `daryasar-spring`؛ نام صفحه «چشمهٔ مسیر
   اِسِل‌محله تا دشت دریاسر» است.
@@ -85,7 +87,7 @@
   `hazar-ardikan-babzangi-junction` تبدیل شدند.
 - درفک: `dorfak_south_spring` و `dorfak_west_jeyruni_spring` به نقطهٔ واحد
   `dorfak-jeyruni-spring` merge شدند.
-- همهٔ نقطه‌های باقی‌ماندهٔ کاتالوگ‌های آزادکوه، دارآباد، سبلان و سایر مقصدها
+- همهٔ نقطه‌های باقی‌ماندهٔ کاتالوگ‌های آزادکوه، دارآباد، سبلان و سایر نقاط
   از underscore به slug خط‌تیره‌ای تبدیل شده‌اند و metadata هویتی گرفته‌اند.
 
 ## حذف و merge
@@ -94,7 +96,7 @@
   در migration به canonical یا نقطهٔ مستقل متناظر منتقل و رکوردهای تکراری
   merge شدند.
 - forecastهای ساعتی، روزانه و resolutionهای نقاط mergeشده به winner منتقل
-  شدند و وابستگی RoutePoint، مبدأ/مقصد مسیر و پروفایل مقصد دوباره وصل شد.
+  شدند و وابستگی RoutePoint، مبدأ/نقطه مسیر و پروفایل نقطه دوباره وصل شد.
 - نقاط مستقل غیرقابل استفاده یا duplicate هویت عمومی نگه نداشتند. migration
   فقط duplicateهای قابل اثبات را حذف می‌کند و نقطهٔ operator-managed نامرتبط
   را خودکار تصاحب نمی‌کند.

@@ -124,4 +124,4 @@ pytest روی میزبان بدون GDAL/PostGIS معمولاً fail می‌شو
 - فراخوانی live Open-Meteo از handlerهای API یا از CI بدون mock
 - Redis اجباری، Celery، Kafka، data lake
 - Kubernetes manifests
-- صفحهٔ destination-point و share server-side
+- صفحهٔ point link و share server-side

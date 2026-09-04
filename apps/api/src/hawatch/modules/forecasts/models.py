@@ -6,7 +6,7 @@ class WeatherPoint(models.Model):
     """Shared weather-point catalog entry (coordinates/elevation are catalog truth)."""
 
     class Kind(models.TextChoices):
-        DESTINATION = "destination", "destination"
+        PRIMARY = "primary", "primary"
         ROUTE_POINT = "route_point", "route_point"
         SHARED = "shared", "shared"
 
@@ -33,6 +33,18 @@ class WeatherPoint(models.Model):
     name_status = models.CharField(max_length=16, default="descriptive")
     source_urls = models.JSONField(default=list, blank=True)
     aliases = models.JSONField(default=list, blank=True)
+    # Public point profile fields. A primary point uses the same fields as any
+    # other point; ``importance`` controls prominence in search/home.
+    tile_name = models.CharField(max_length=64, blank=True, default="")
+    short_category = models.CharField(max_length=32, blank=True, default="")
+    category = models.CharField(max_length=128, blank=True, default="")
+    category_key = models.CharField(max_length=32, blank=True, default="")
+    region = models.CharField(max_length=64, blank=True, default="")
+    image = models.CharField(max_length=255, blank=True, default="")
+    image_alt = models.CharField(max_length=255, blank=True, default="")
+    popular_order = models.PositiveSmallIntegerField(default=0)
+    is_popular = models.BooleanField(default=False)
+    seo_indexable = models.BooleanField(default=False)
     kind = models.CharField(max_length=16, choices=Kind.choices, default=Kind.SHARED)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     location = models.PointField(srid=4326, spatial_index=False)
@@ -40,13 +52,6 @@ class WeatherPoint(models.Model):
     elevation_m = models.PositiveIntegerField(null=True, blank=True)
     # Legacy provenance retained for compatibility with the pre-snapshot schema.
     elevation_source = models.CharField(max_length=255, blank=True, default="")
-    destination = models.ForeignKey(
-        "destinations.Destination",
-        on_delete=models.PROTECT,
-        related_name="weather_points",
-        null=True,
-        blank=True,
-    )
     climate = models.CharField(max_length=32, default="alpine")
     status = models.CharField(max_length=32, choices=Status.choices, default=Status.APPROVED)
     provenance = models.CharField(max_length=32, choices=Provenance.choices, default=Provenance.CURATED)
@@ -64,7 +69,7 @@ class WeatherPoint(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=["kind", "destination"], name="weatherpoint_kind_dest_idx"),
+            models.Index(fields=["kind", "importance"], name="weatherpoint_kind_imp_idx"),
             models.Index(fields=["slug"], name="weatherpoint_slug_idx"),
             models.Index(fields=["catalog_version"], name="weatherpoint_catalog_ver_idx"),
             models.Index(fields=["is_active", "ingest_enabled"], name="weatherpoint_ingest_idx"),

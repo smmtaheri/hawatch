@@ -1,6 +1,6 @@
 # هواچ (Hawatch)
 
-هواچ محصولی فارسی و تصمیم‌محور برای دیدن هوای مقصد و برنامه‌ریزی مسیر است. کاربر به‌جای دیدن یک دمای منفرد، شرایط مقصد و تغییرات آب‌وهوا را در طول مسیر می‌بیند تا بتواند زمان حرکت، مسیر و امکان ادامه‌دادن یا برگشتن را آگاهانه‌تر انتخاب کند.
+هواچ محصولی فارسی و تصمیم‌محور برای دیدن هوای نقطه و برنامه‌ریزی مسیر است. کاربر به‌جای دیدن یک دمای منفرد، شرایط نقطه و تغییرات آب‌وهوا را در طول مسیر می‌بیند تا بتواند زمان حرکت، مسیر و امکان ادامه‌دادن یا برگشتن را آگاهانه‌تر انتخاب کند.
 
 ## وضعیت این repository
 
@@ -16,12 +16,12 @@
 ## صفحات این نسخه
 
 - **Home** `/`
-- **Forecast Place**
-  - Destination role: `/destination/touchal`
-  - Point role: `/points/sarband` (همان قالب بصری Destination؛ بدون planner)
-- **Route** `/routes/touchal-darband` (و سایر مسیرهای مستند)
+- **Point Forecast**
+  - Point role: `/points/tochal`
+  - Point role: `/points/tochal-sarband-square` (همان قالب بصری Point؛ بدون planner)
+- **Route** `/routes/tochal-darband` (و سایر مسیرهای مستند)
 
-Home جست‌وجوی unified مقصد و نقطهٔ مسیر را با پیشنهادهای prefix و debounce کوتاه انجام می‌دهد. کلیک روی نقطه از Route به URL canonical آن می‌رود و context برنامه‌ریزی مسیر را برای بازگشت حفظ می‌کند.
+Home جست‌وجوی unified همهٔ نقاط را با پیشنهادهای prefix و debounce کوتاه انجام می‌دهد. کلیک روی نقطه از Route به URL canonical آن می‌رود و context برنامه‌ریزی مسیر را برای بازگشت حفظ می‌کند.
 
 ## اجرای محلی
 
@@ -104,24 +104,24 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 
 پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. هر deploy ابتدا فقط containerهای Compose پروژهٔ Hawatch را با `down --remove-orphans` متوقف می‌کند و سپس با `--force-recreate` بالا می‌آورد؛ volumeهای دیتابیس حفظ می‌شوند. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
 
-## افزودن مقصد و اعتبارسنجی weather
+## افزودن نقطه و اعتبارسنجی weather
 
-راهنمای کامل و مرجع workflow افزودن مقصد، نقطه و مسیر در
-[`docs/catalog-onboarding.md`](docs/catalog-onboarding.md) است. برای مقصد جدید
+راهنمای کامل و مرجع workflow افزودن نقطه و مسیر در
+[`docs/catalog-onboarding.md`](docs/catalog-onboarding.md) است. برای نقطه جدید
 ابتدا همان سند را بخوانید؛ خلاصهٔ سریع زیر برای دسترسی سریع به commandهای اصلی
 است.
 
-برای افزودن مقصد بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید. مقصدهایی که route پیادهٔ معتبر ندارند هم مجازند؛ در این حالت از [`docs/templates/destination-only-catalog-template.json`](docs/templates/destination-only-catalog-template.json) استفاده کنید و `routes` را `{}` نگه دارید:
+برای افزودن نقطه بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید. نقاطی که route پیادهٔ معتبر ندارند هم مجازند؛ در این حالت از [`docs/templates/point-only-catalog-template.json`](docs/templates/point-only-catalog-template.json) استفاده کنید و `routes` را `{}` نگه دارید:
 
 ```bash
-python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_destination_v1.json
+python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_point_v1.json
 ```
 
 سپس همان فایل را import کنید (غیرتخریبی؛ prune فقط با `--prune`):
 
 ```bash
 docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py seed_catalog --file catalog/my_destination_v1.json
+  python manage.py seed_catalog --file catalog/my_point_v1.json
 docker compose -f infra/compose/compose.yaml exec api \
   python manage.py ingest_open_meteo
 ```
@@ -131,11 +131,11 @@ docker compose -f infra/compose/compose.yaml exec api \
 
 ```bash
 python3 scripts/publish_catalog.py \
-  --catalog /tmp/my_destination_v1.json \
+  --catalog /tmp/my_point_v1.json \
   --host root@SERVER_IP                 # check-only؛ بدون write
 
 python3 scripts/publish_catalog.py \
-  --catalog /tmp/my_destination_v1.json \
+  --catalog /tmp/my_point_v1.json \
   --host root@SERVER_IP \
   --apply                                # import + ingest + preflight
 ```
@@ -152,19 +152,18 @@ Database منبع حقیقت runtime است؛ JSON فقط bootstrap/import اس�
 
 ### Draft در برابر Active
 
-- `is_active=false` روی Destination / Route / WeatherPoint یعنی پیش‌نویس یا غیرفعال: از API عمومی، siblingها، related routes، search و شمارش health حذف می‌شود.
+- `is_active=false` روی Point / Route / WeatherPoint یعنی پیش‌نویس یا غیرفعال: از API عمومی، siblingها، related routes، search و شمارش health حذف می‌شود.
 - `ingest_enabled=false` نقطه را از ingest کنار می‌گذارد حتی اگر active باشد.
-- مالکیت سازمانی `WeatherPoint.destination` به‌تنهایی نقطه را public یا ingestible نمی‌کند؛ باید Destination profile فعال یا Route فعال روی Destination فعال داشته باشد.
+- فعال‌بودن خود WeatherPoint و یا پیوند آن به Route فعال، وضعیت عمومی و ingest را تعیین می‌کند.
 
 ### افزودن WeatherPoint
 
 1. Django admin → WeatherPoint (`is_active`، `ingest_enabled=true`؛ elevation از DEM نه GPX `<ele>`؛ `fixture_managed` را دستی true نکنید).
-2. اختیاری: Destination profile (`Destination.weather_point`) برای صفحهٔ مقصد.
-3. برای نمایش عمومی یا ingest، نقطه را روی یک Route فعال لینک کنید یا Destination profile فعال بسازید.
+2. برای نمایش عمومی یا ingest، خود نقطه را فعال و `seo_indexable=true` کنید یا آن را روی یک Route فعال لینک کنید.
 
 ### افزودن و publish مسیر
 
-1. Route را با Destination فعال بسازید (`is_active=true`).
+1. Route را با Point فعال بسازید (`is_active=true`).
 2. RoutePointهای مرتب با WeatherPoint و `cumulative_minutes` کامل وارد کنید.
 3. پس از ذخیره، سرویس مشترک `normalize_and_publish_route` ترتیب، origin/target، segment، axis، progress را همگام می‌کند؛ timing ناقص → `pending`.
 4. Search بعد از commit بدون restart به‌روز می‌شود.

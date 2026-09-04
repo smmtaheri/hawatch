@@ -272,7 +272,7 @@ export function RoutePage() {
         <div className="page-back-navigation">
           <BackNavigation />
         </div>
-        <EmptyState title="مسیر پیدا نشد" detail="از صفحهٔ مقصد، مسیر دیگری را انتخاب کن." />
+        <EmptyState title="مسیر پیدا نشد" detail="از صفحهٔ نقطه، مسیر دیگری را انتخاب کن." />
       </main>
     );
   }
@@ -305,8 +305,8 @@ export function RoutePage() {
               <div className="route-hero-copy">
                 <Breadcrumbs
                   items={[
-                    { label: "مقصدها", to: "/#search-results" },
-                    { label: data.route.parent.name, to: data.route.parent.href },
+                    { label: "نقاط", to: "/#search-results" },
+                    ...(data.route.target_point ? [{ label: data.route.target_point.name, to: data.route.target_point.href }] : []),
                     { label: data.route.title },
                   ]}
                 />
@@ -320,11 +320,11 @@ export function RoutePage() {
               </div>
               <MobileRouteSelector
                 routes={data.route.siblings}
-                title={`مسیرهای دیگر ${data.route.parent.name}`}
+                title={`مسیرهای دیگر ${data.route.target_point?.name ?? data.route.target_label}`}
                 variant="trigger"
               />
               <RouteSiblingNavigation
-                parentName={data.route.parent.name}
+                parentName={data.route.target_point?.name ?? data.route.target_label}
                 currentRoute={{ title: data.route.title, href: data.route.href }}
                 routes={data.route.siblings}
               />
@@ -338,7 +338,7 @@ export function RoutePage() {
                       period={displayPeriod}
                       onChange={handlePeriodChange}
                       periodStates={periodStates}
-                      className="destination-period-row route-period-row"
+                      className="point-period-row route-period-row"
                     />
                   </div>
                   <div className="planner-day">
@@ -361,7 +361,7 @@ export function RoutePage() {
                     >
                       <RouteTimeline
                         origin={data.route.origin}
-                        destination={data.route.destination_label}
+                        target={data.route.target_label}
                         title={data.route.title}
                         points={data.points}
                         pointHref={(point) => pointLink(point)}
@@ -448,7 +448,7 @@ export function RoutePage() {
               </aside>
             </div>
             <footer className="site-footer">
-              <span>هوای مقصد، برنامهٔ مسیر</span>
+              <span>هوای نقطه، برنامهٔ مسیر</span>
             </footer>
           </>
         ) : null}

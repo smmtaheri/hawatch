@@ -60,10 +60,7 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
       includeDate: explicitDate || selectionCommitted,
       includePeriod: explicitPeriod || selectionCommitted,
     });
-    const request =
-      kind === "destination"
-        ? api.destinationForecast(slug, requestParams)
-        : api.pointForecast(slug, requestParams);
+    const request = api.pointForecast(slug, requestParams);
 
     request
       .then((payload: PlaceForecastResponse) => {

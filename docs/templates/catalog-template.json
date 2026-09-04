@@ -1,39 +1,20 @@
 {
   "catalog_version": "hawatch-example-v1",
-  "destination": {
-    "slug": "example-mountain",
-    "tile_name": "نام کوتاه مقصد",
-    "name": "قلهٔ نمونه",
-    "short_category": "کوهنوردی",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "استان",
-    "elevation_m": 3000,
-    "latitude": 35.000000,
-    "longitude": 51.000000,
-    "image": "/images/fallback.png",
-    "image_alt": "قلهٔ نمونه",
-    "popular_order": 99,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
-  "destination_weather_point": "example_summit",
   "shared_weather_points": [],
   "weather_points": {
     "example_summit": {
       "name": "قلهٔ نمونه",
-      "latitude": 35.000000,
-      "longitude": 51.000000,
+      "latitude": 35.0,
+      "longitude": 51.0,
       "elevation_m": 3000,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "Replace with a trusted DEM/PBF/source reference."
     },
     "example_trailhead": {
       "name": "مبدأ مسیر",
-      "latitude": 34.950000,
-      "longitude": 51.000000,
+      "latitude": 34.95,
+      "longitude": 51.0,
       "elevation_m": 1800,
       "status": "provisional",
       "elevation_source": "Replace with a trusted DEM/PBF/source reference."
@@ -46,14 +27,36 @@
       "subtitle": "مسیر اصلی صعود",
       "trail_label": "جبههٔ اصلی",
       "origin": "مبدأ مسیر",
-      "destination_label": "قلهٔ نمونه",
       "region": "استان",
       "distance_km": 8.0,
       "ascent_m": 1200,
       "featured": true,
       "sort_order": 1,
       "timing_status": "pending",
-      "points": ["example_trailhead", "example_summit"]
+      "points": [
+        "example_trailhead",
+        "example_summit"
+      ],
+      "target_label": "قلهٔ نمونه"
     }
-  }
+  },
+  "point": {
+    "slug": "example-mountain",
+    "tile_name": "نام کوتاه نقطه",
+    "name": "قلهٔ نمونه",
+    "short_category": "کوهنوردی",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "استان",
+    "elevation_m": 3000,
+    "latitude": 35.0,
+    "longitude": 51.0,
+    "image": "/images/fallback.png",
+    "image_alt": "قلهٔ نمونه",
+    "popular_order": 99,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "example_summit"
 }

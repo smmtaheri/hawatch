@@ -1,10 +1,10 @@
 # گزارش validation و بازبینی repository
 
-تاریخ به‌روزرسانی: 2026-08-28
+تاریخ به‌روزرسانی: 2026-09-04
 
 ## نتیجهٔ فعلی
 
-repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Destination، Route و Point مستقل، API داخلی Django/DRF، catalog/search و Compose سبک است. Login به‌صورت UI route-backed (overlay در ورود عادی و صفحهٔ کامل در URL مستقیم) وجود دارد؛ OTP واقعی همچنان خارج از milestone فعلی است.
+repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Point، Route، API داخلی Django/DRF، catalog/search و Compose سبک است. مدل عمومی فقط WeatherPoint و Route/RoutePoint است و پروفایل قدیمی Destination با migration بازنشسته می‌شود. Login به‌صورت UI route-backed (overlay در ورود عادی و صفحهٔ کامل در URL مستقیم) وجود دارد؛ OTP واقعی همچنان خارج از milestone فعلی است.
 
 ## منابع
 
@@ -18,25 +18,25 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ## دارایی‌های تصویری
 
-- چهار صفحهٔ دارای screenshot: Home، Login، Destination و Route.
+- چهار صفحهٔ دارای screenshot: Home، Login، Point و Route.
 - برای هر صفحه light/dark و mobile/web وجود دارد؛ در مجموع ۱۶ asset منطقی و ۳۲ PNG فیزیکی source/organized وجود دارد.
 - manifest نام، مسیر، width، height و SHA-256 را ثبت می‌کند.
-- هیچ تصویر جدیدی برای Point ساخته نشده؛ Point به‌صراحت extension سیستم Destination است، چون screenshot مرجع مستقل ندارد.
+- هیچ تصویر جدیدی برای Point ساخته نشده؛ Point به‌صراحت extension سیستم Point است، چون screenshot مرجع مستقل ندارد.
 
 ## implementation فعلی
 
 ### Frontend
 
 - React + TypeScript + Vite + React Router در `apps/web`.
-- Home با جست‌وجوی unified مقصد/نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias، debounce حدود ۲۰۰ms، keyboard navigation و retry؛ مسیرها در ایندکس نیستند.
-- Destination در `/destination/{slug}`، Route در `/routes/{slug}` و Point مستقل در `/points/{weatherPointSlug}`.
+- Home با جست‌وجوی unified نقطه از مسیر `/api/v1/search/suggestions/?q=`؛ حداقل دو کاراکتر، normalize، تطبیق داخل نام/alias، debounce حدود ۲۰۰ms، keyboard navigation و retry؛ مسیرها در ایندکس نیستند.
+- هر WeatherPoint در `/points/{slug}` و هر Route در `/routes/{slug}` صفحهٔ canonical دارد.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
 - RTL، Estedad، light/dark، period toggle چهارگانه و سه کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
 - Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است، ولی CTA ارسال OTP تا آماده‌شدن backend غیرفعال می‌ماند.
 
 ### Backend و داده
 
-- Django REST با endpointهای health، destinations، destination forecast، route forecast، point forecast و search suggestions.
+- Django REST با endpointهای health، points، point forecast، route forecast و search suggestions.
 - PostgreSQL/PostGIS و migrationهای موجود؛ seed دمو idempotent و catalog جدا از forecast.
 - زمان و default selection با `Asia/Tehran`؛ بازه‌ها نیمه‌شب ۰۰/۰۲/۰۴، صبح ۰۶/۰۸/۱۰، ظهر ۱۲/۱۴/۱۶ و شب ۱۸/۲۰/۲۲.
 - loading/empty/error/stale/partial در قرارداد UI/API تفکیک شده‌اند؛ stale دادهٔ قبلی و زمان update را نگه می‌دارد و error retry دارد.
@@ -49,18 +49,19 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ## وضعیت الزامات
 
-جزئیات ۱۶ مورد در [requirements-checklist.md](requirements-checklist.md) ثبت شده است. وضعیت کلی موارد قابل بررسی PASS است؛ تنها BLOCKED ثبت‌شده، نبود reference محلی `/workspace/sites/hawatch-weather` است و non-gating محسوب می‌شود.
+جزئیات ۱۶ مورد در [requirements-checklist.md](requirements-checklist.md) ثبت شده است. موارد فنی P0 قابل بررسی PASS هستند؛ reference محلی `/workspace/sites/hawatch-weather` همچنان BLOCKED و non-gating است. گیت provider برای یک ارتفاع آزادکوه در بخش محدودیت‌ها ثبت شده است.
 
 ## validation اجرایی
 
-آخرین validation کد قبل از این به‌روزرسانی مستندات:
+آخرین validation اجرایی این وضعیت:
 
-- frontend tests: ۲۶ passed
-- backend pytest: ۵۷ passed، ۱ skipped
-- TypeScript check: passed
-- `git diff --check`: passed
-
-این بازبینی هم مستندات/manifest و هم تغییرات runtime مرتبط با period و same-origin gateway را در نظر می‌گیرد؛ تست‌های نرم‌افزار و `git diff --check` باید روی همین وضعیت نهایی اجرا شوند.
+- frontend Vitest: ۶۷ passed در ۶ فایل
+- frontend TypeScript و Vite build: passed
+- validator کاتالوگ: ۹ فایل، بدون خطا/هشدار
+- تست اسکریپت‌های provider/publish: ۸ passed
+- Docker Django `check` و `makemigrations --check --dry-run`: بدون تغییر migration و بدون خطای system check
+- `compileall` و `git diff --check`: passed
+- تست کامل backend عمداً اجرا نشد؛ طبق تصمیم محصول به اجرای Compose/PostGIS موکول است و collect-only روی چند تست legacy که هنوز مدل حذف‌شدهٔ Destination را import می‌کنند متوقف می‌شود.
 
 ## محدودیت‌ها و ابهام‌ها
 
@@ -68,4 +69,5 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 2. Point screenshot مستقل ندارد؛ تطبیق آن pixel-perfect ادعا نمی‌شود.
 3. دادهٔ forecast در demo mode واقعی نیست؛ provider واقعی باید صریحاً ingest شود.
 4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.
-5. جزئیات domain زمان‌بندی route، share server-side و provider/fallback نهایی هنوز open هستند.
+5. validator Open-Meteo برای آزادکوه: ۱۱ نقطه پاسخ hourly و grid معتبر دارند، اما `azadkouh` در catalog ارتفاع ۴۳۶۶ و در GLO-90 مقدار ۴۲۶۱ متر دارد؛ اختلاف ۱۰۵ متر از سقف ۱۰۰ متر بیشتر است و import را متوقف می‌کند. چون دادهٔ نقطه‌ها قطعی فرض شده، مقدار حدس‌زده اصلاح نشده است.
+6. جزئیات domain زمان‌بندی route، share server-side و provider/fallback نهایی هنوز open هستند.

@@ -57,20 +57,20 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
     warnings: list[str] = []
     if not isinstance(catalog.get("catalog_version"), str) or not catalog["catalog_version"].strip():
         errors.append("catalog_version must be a non-empty string")
-    destination = catalog.get("destination")
-    if not isinstance(destination, dict):
-        errors.append("destination must be an object")
+    point_profile = catalog.get("point")
+    if not isinstance(point_profile, dict):
+        errors.append("point must be an object")
     else:
         for key in ("slug", "tile_name", "name", "short_category", "category", "category_key", "region", "image", "image_alt", "climate"):
-            if not destination.get(key):
-                errors.append(f"destination.{key} is required")
+            if not point_profile.get(key):
+                errors.append(f"point.{key} is required")
         try:
-            latitude = float(destination["latitude"])
-            longitude = float(destination["longitude"])
+            latitude = float(point_profile["latitude"])
+            longitude = float(point_profile["longitude"])
             if not -90 <= latitude <= 90 or not -180 <= longitude <= 180:
                 raise ValueError
         except (KeyError, TypeError, ValueError):
-            errors.append("destination latitude/longitude must be valid WGS84 coordinates")
+            errors.append("point latitude/longitude must be valid WGS84 coordinates")
     raw_points = catalog.get("weather_points")
     if not isinstance(raw_points, dict) or not raw_points:
         return ["weather_points must be a non-empty object"], warnings, []
@@ -135,7 +135,14 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
     if not isinstance(routes, dict):
         errors.append("routes must be an object; use {} when no route is curated")
     else:
-        point_slugs = set(raw_points)
+        shared_points = catalog.get("shared_weather_points") or []
+        if not isinstance(shared_points, list) or len(shared_points) != len(set(shared_points)):
+            errors.append("shared_weather_points must be a unique list")
+            shared_points = []
+        point_slugs = set(raw_points) | set(shared_points)
+        primary_slug = catalog.get("primary_point")
+        if not isinstance(primary_slug, str) or primary_slug not in point_slugs:
+            errors.append("primary_point must reference a point in weather_points")
         for route_slug, route in routes.items():
             route_points = route.get("points") if isinstance(route, dict) else None
             if not route_points:

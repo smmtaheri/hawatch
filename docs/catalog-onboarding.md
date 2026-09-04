@@ -1,13 +1,13 @@
-# راهنمای استاندارد افزودن مقصد، نقطه و مسیر
+# راهنمای استاندارد افزودن نقطه و مسیر
 
-این سند مرجع اصلی افزودن مقصدهای جدید به هواچ است. برای شروع کار نفر بعدی
+این سند مرجع اصلی افزودن نقاطی جدید به هواچ است. برای شروع کار نفر بعدی
 همین سند را کامل بخواند؛ قرارداد جزئی‌تر فیلدها در
 [`catalog-and-weather-validation.md`](catalog-and-weather-validation.md) و رفتار
 forecast در [`api/forecast-contract.md`](api/forecast-contract.md) است.
 
 ## اصل معماری
 
-دیتابیس منبع حقیقت runtime است. مقصد، WeatherPoint، Route و RoutePoint بعد از
+دیتابیس منبع حقیقت runtime است. نقطه، WeatherPoint، Route و RoutePoint بعد از
 import در دیتابیس ذخیره می‌شوند و برای اضافه‌کردن آن‌ها deploy یا migration لازم
 نیست.
 
@@ -26,41 +26,42 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 
 ## داده‌های لازم
 
-### مقصد
+### نقطه
 
-برای هر مقصد یک رکورد با این اطلاعات لازم است:
+برای هر نقطه یک رکورد با این اطلاعات لازم است:
 
 - `slug` یکتا و پایدار، مثلاً `damavand`؛
 - نام، نام کوتاه، منطقه و `category_key`؛ برای دماوند `volcano`؛
 - مختصات canonical به‌صورت WGS84 ده‌دهی؛
 - ارتفاع معتبر و منبع آن؛
 - `climate`، تصویر و alt text؛
-- مقصد جدید به‌صورت پیش‌فرض محبوب نیست. مجموعهٔ حداکثر چهار مقصد محبوب هوم را با
-  command مدیریتی `set_popular_destinations` و به‌ترتیب دلخواه تنظیم کنید؛ لازم
+- نقطه جدید به‌صورت پیش‌فرض محبوب نیست. مجموعهٔ حداکثر چهار نقطه محبوب هوم را با
+  command مدیریتی `set_popular_points` و به‌ترتیب دلخواه تنظیم کنید؛ لازم
   نیست برای تغییر آن کد یا migration بسازید.
 
-`category_key` فقط متن دسته‌بندی نیست؛ کلید معنایی آیکون مقصد هم هست و از
+`category_key` فقط متن دسته‌بندی نیست؛ کلید معنایی آیکون نقطه هم هست و از
 دیتابیس به فرانت می‌رسد. برای مثال، اسکلیم باید `waterfall` داشته باشد و دماوند
-`volcano`. بعد از اضافه‌شدن یک کلید به مجموعهٔ runtime، ثبت مقصدهای بعدی با یکی
+`volcano`. بعد از اضافه‌شدن یک کلید به مجموعهٔ runtime، ثبت نقاطی بعدی با یکی
 از کلیدهای موجود فقط با import کاتالوگ یا Admin انجام می‌شود و deploy جداگانه
 لازم ندارد. کلید ناشناخته نباید استفاده شود؛ UI برای جلوگیری از نمایش گمراه‌کننده
 به‌جای کوه، نشان خنثی نشان می‌دهد.
 
-همان نقطهٔ مقصد باید در `weather_points` با `kind: "destination"` هم تعریف شود
-تا صفحهٔ مقصد و در صورت وجود مسیرها به یک WeatherPoint canonical وصل باشند.
+هر نقطه باید فقط یک بار در `weather_points` تعریف شود. نقطهٔ شاخص با
+`kind: "primary"` مشخص می‌شود و صفحهٔ آن نیز همان `/points/{slug}` است؛ سایر
+نقاط مسیر با `kind: "shared"` یا `kind: "route_point"` ثبت می‌شوند.
 
-### مقصد بدون مسیر
+### نقطه بدون مسیر
 
-همهٔ مقصدها الزاماً مسیر پیادهٔ عمومی ندارند. برای دریاچه، جادهٔ دسترسی
-آفرودی/خودرویی یا مقصدی که هنوز route پیادهٔ معتبر و مستند ندارد، مقصد را به‌صورت
-destination-only ثبت کنید؛ ترک خودرو را به route پیاده تبدیل نکنید. در این حالت:
+همهٔ نقاط الزاماً مسیر پیادهٔ عمومی ندارند. برای دریاچه، جادهٔ دسترسی
+آفرودی/خودرویی یا نقطه‌ای که هنوز route پیادهٔ معتبر و مستند ندارد، نقطه را به‌صورت
+point-only ثبت کنید؛ ترک خودرو را به route پیاده تبدیل نکنید. در این حالت:
 
-- یک canonical destination WeatherPoint با مختصات و ارتفاع معتبر کافی است؛
+- یک canonical point WeatherPoint با مختصات و ارتفاع معتبر کافی است؛
 - `routes` باید یک آبجکت خالی (`{}`) باشد، نه اینکه حذف شود؛
 - GPX لازم نیست و timing، distance و ascent مسیر نداریم؛
 - forecast همان نقطه با ingest عادی ذخیره می‌شود و `catalog_preflight` فقط
   profile/provider را بررسی می‌کند؛
-- UI مقصد بدون route را با وضعیت «هنوز مسیری برای این نقطه ثبت نشده» نشان می‌دهد.
+- UI نقطه بدون route را با وضعیت «هنوز مسیری برای این نقطه ثبت نشده» نشان می‌دهد.
 
 اگر بعداً route پیادهٔ معتبر پیدا شد، همان catalog را با route، RoutePointهای
 واقعی و evidence جداگانه version کنید و دوباره از gate کامل route عبور دهید.
@@ -111,11 +112,11 @@ GPX برای گرفتن آب‌وهوا لازم نیست. مختصات و ار�
 
 ### حداقل کیفیت route و انتخاب ترک
 
-این بخش فقط وقتی مقصد route دارد gate اجباری قبل از ساخت catalog است. هر فایلی
-که فقط به گهر، دماوند یا هر مقصد دیگری نزدیک باشد، خودبه‌خود evidence معتبر route
-نیست. مقصد بدون route به GPX نیاز ندارد.
+این بخش فقط وقتی نقطه route دارد gate اجباری قبل از ساخت catalog است. هر فایلی
+که فقط به گهر، دماوند یا هر نقطه دیگری نزدیک باشد، خودبه‌خود evidence معتبر route
+نیست. نقطه بدون route به GPX نیاز ندارد.
 
-- مسیر باید با route محصول یکی باشد: مبدأ و مقصد یکسان، جهت پیمایش روشن، مسیر
+- مسیر باید با route محصول یکی باشد: مبدأ و نقطه یکسان، جهت پیمایش روشن، مسیر
   پیوسته و قابل‌دنبال‌کردن، و یک access point واقعی داشته باشد.
 - برای محصول فعلی، ترک اصلی باید مسیر پیمایش پیاده/هiking باشد و در گزارش منبع
   نیز با همین کاربری معرفی شده باشد. ترک دوچرخه، موتور، خودرو، اسب، trail پراکنده
@@ -125,7 +126,7 @@ GPX برای گرفتن آب‌وهوا لازم نیست. مختصات و ار�
 - مسیرهای صخره‌نوردی، سنگ‌نوردی، یخچالی یا فنی که با پیمایش عادی مخاطب یکی نیستند
   در فاز عمومی وارد نشوند؛ مگر اینکه محصول جداگانه و شواهد/برچسب‌گذاری جدا داشته
   باشند.
-- مسیرهای بسیار پراکنده، بی‌نام، کم‌اعتبار یا بدون گزارش روشنِ مبدأ/مقصد را
+- مسیرهای بسیار پراکنده، بی‌نام، کم‌اعتبار یا بدون گزارش روشنِ مبدأ/نقطه را
   انتخاب نکنید. برای route اصلی ترجیحاً دو ترک مستقلِ پیاده از منابع معتبر را
   تطبیق دهید؛ اگر فقط یک ترک موجود است، فاصله و نقاط آن را با گزارش مسیر یا منبع
   مستقل کنترل کنید و confidence/uncertainty را محافظه‌کارانه ثبت کنید.
@@ -136,29 +137,29 @@ GPX برای گرفتن آب‌وهوا لازم نیست. مختصات و ار�
   نزولی فقط پس از تعیین جهت و نقطهٔ cut استفاده شود؛ timestamp خام GPX چندروزه
   زمان حرکت معتبر نیست و برای moving time/ETA استفاده نمی‌شود.
 - هر route عمومی حداقل سه نقطهٔ واقعی دارد: مبدأ، حداقل یک landmark میانیِ
-  نام‌دار و مستند، و مقصد. اگر route واقعاً کوتاه است، باز هم نباید نقطهٔ جعلی
+  نام‌دار و مستند، و نقطه. اگر route واقعاً کوتاه است، باز هم نباید نقطهٔ جعلی
   برای رسیدن به عدد سه ساخته شود؛ در آن حالت شواهد را تکمیل یا route را pending
   نگه دارید.
 
 ### قرارداد فولدر ترک
 
-به‌محض شروع مقصد جدید، فولدر را در checkout محلی بسازید؛ اگر وجود ندارد، agent
+به‌محض شروع نقطه جدید، فولدر را در checkout محلی بسازید؛ اگر وجود ندارد، agent
 باید خودش آن را بسازد و از کاربر بخواهد فایل‌ها را همان‌جا بگذارد:
 
 ```bash
 cd /path/to/hawatch
-mkdir -p tracks/<destination-slug>
+mkdir -p tracks/<point-slug>
 ```
 
 نام فایل باید بدون بازکردن فایل نیز قابل‌فهم باشد؛ الگوی پیشنهادی:
-`<destination>-<side-or-access>-<origin>-to-<target>-<year>.gpx`، مثلاً:
+`<point>-<side-or-access>-<origin>-to-<target>-<year>.gpx`، مثلاً:
 `tracks/gahar/gahar-dorud-cheshmeh-khieh-to-lake-2014.gpx`.
 فایل‌های دانلودشدهٔ مبهم را قبل از تحلیل rename کنید و mapping را در
-`tracks/<destination-slug>/manifest.json` ثبت کنید. اگر یک فایل reverse یا فقط
+`tracks/<point-slug>/manifest.json` ثبت کنید. اگر یک فایل reverse یا فقط
 cross-check است، آن را در نام و manifest مشخص کنید.
 
 رینیم بخشی از workflow اجباری است، نه کار اختیاری بعد از import. بعد از دانلود،
-هر فایل را با نامی که مقصد، جبهه/مبدأ، مقصد مسیر و سال را نشان دهد به همان فولدر
+هر فایل را با نامی که نقطه، جبهه/مبدأ، نقطه مسیر و سال را نشان دهد به همان فولدر
 منتقل کنید؛ سپس نام جدید را عیناً در manifest بنویسید. نمونهٔ صریح برای هزار:
 
 ```bash
@@ -172,8 +173,8 @@ mv tracks/hazar/swd-bh-qlh-hzr-z-msyr-abshr-ryn.gpx \
 قبل از ادامه، نام‌ها و local-only بودن فولدر را کنترل کنید:
 
 ```bash
-find tracks/<destination-slug> -maxdepth 1 -type f -printf '%f\n' | sort
-git check-ignore -v tracks/<destination-slug>/*.gpx tracks/<destination-slug>/manifest.json
+find tracks/<point-slug> -maxdepth 1 -type f -printf '%f\n' | sort
+git check-ignore -v tracks/<point-slug>/*.gpx tracks/<point-slug>/manifest.json
 ```
 
 اگر `git check-ignore` برای همهٔ فایل‌ها خروجی نداد، قبل از ساخت catalog باید
@@ -198,9 +199,9 @@ git check-ignore -v tracks/<destination-slug>/*.gpx tracks/<destination-slug>/ma
 
 ```bash
 python3 scripts/analyze_route_tracks.py \
-  --manifest tracks/<destination-slug>/manifest.json \
-  --catalog /tmp/<destination-slug>_v1.json \
-  > /tmp/<destination-slug>_tracks_report.json
+  --manifest tracks/<point-slug>/manifest.json \
+  --catalog /tmp/<point-slug>_v1.json \
+  > /tmp/<point-slug>_tracks_report.json
 ```
 
 6. فقط پس از قبولی این gate، `distance_km`، `ascent_m`، نقاط میانی و cumulative
@@ -208,10 +209,10 @@ python3 scripts/analyze_route_tracks.py \
 
 ### Route (اختیاری)
 
-اگر مقصد route دارد، برای هر مسیر:
+اگر نقطه route دارد، برای هر مسیر:
 
-- `slug`، عنوان، subtitle، برچسب جبهه و origin/destination label؛
-- آرایهٔ `points` به‌ترتیب حرکت از مبدأ تا مقصد؛
+- `slug`، عنوان، subtitle، برچسب جبهه و origin/point label؛
+- آرایهٔ `points` به‌ترتیب حرکت از مبدأ تا نقطه؛
 - `sort_order` مثبت؛ عدد کمتر زودتر نمایش داده می‌شود؛
 - `featured: true` فقط برای مسیرهای پیشنهادی UI است و ترتیب را تعیین نمی‌کند؛
 - `distance_km` و `ascent_m` فقط وقتی ثبت شوند که evidence کافی دارند.
@@ -220,15 +221,15 @@ python3 scripts/analyze_route_tracks.py \
 همان slug را در چند مسیر استفاده کنید؛ برای هر مسیر RoutePoint جداگانه ساخته
 می‌شود و timing آن مسیر را دارد.
 
-اگر یک مسیر در کاتالوگ مقصد جدید از نقطهٔ canonical یک مقصد موجود شروع یا عبور
+اگر یک مسیر در کاتالوگ نقطه جدید از نقطهٔ canonical یک نقطه موجود شروع یا عبور
 می‌کند، آن نقطه را دوباره در `weather_points` کپی نکنید. ابتدا کاتالوگ مالک آن
 نقطه را import کنید، سپس slug آن را در آرایهٔ اختیاری
 `shared_weather_points` بگذارید و همان slug را در `routes.*.points` استفاده
 کنید. Loader نقطه را از دیتابیس resolve می‌کند و مالکیت، مختصات و ارتفاع آن را
 تغییر نمی‌دهد. اگر slug در دیتابیس موجود نباشد یا live/active نباشد، import
-fail می‌شود. نمونهٔ فعلی: route دریاچهٔ تار → زرین‌کوه از `tar_lake` مشترکِ
+fail می‌شود. نمونهٔ فعلی: route دریاچهٔ تار → زرین‌کوه از `tar-lake` مشترکِ
 کاتالوگ `tar_v1.json` استفاده می‌کند؛ بنابراین کلیک روی نقطهٔ شروع به صفحهٔ
-canonical `/destination/tar-lake` می‌رود. رکورد قدیمیِ ساحل تار صفحهٔ مستقلی ندارد
+canonical `/points/tar-lake` می‌رود. رکورد قدیمیِ ساحل تار صفحهٔ مستقلی ندارد
 و در لینک‌های جدید استفاده نمی‌شود.
 
 ### زمان‌بندی arrival-aware
@@ -271,16 +272,16 @@ route باید timing کامل داشته باشد:
 سرعت‌های آرام و سریع در runtime از زمان متوسط مشتق می‌شوند (`1.25` و `0.80`).
 لازم نیست برای هر سرعت سه مجموعه timing جداگانه ذخیره شود.
 
-## تنظیم مقصدهای محبوب هوم
+## تنظیم نقاطی محبوب هوم
 
-لیست بدون query در `GET /api/v1/destinations/` همان لیست مقصدهای محبوب هوم است و
-حداکثر چهار رکورد برمی‌گرداند. جست‌وجوی endpoint جداگانه همچنان مقصدهای فعال
+لیست بدون query در `GET /api/v1/points/` همان لیست نقاطی محبوب هوم است و
+حداکثر چهار رکورد برمی‌گرداند. جست‌وجوی endpoint جداگانه همچنان نقاطی فعال
 غیرمحبوب را هم پیدا می‌کند. برای تغییر لیست روی local یا سرور، slugها را به
 ترتیب نمایش به command بدهید:
 
 ```bash
 cd apps/api
-uv run python manage.py set_popular_destinations \
+uv run python manage.py set_popular_points \
   tochal damavand daryasar alamkuh
 ```
 
@@ -288,17 +289,17 @@ uv run python manage.py set_popular_destinations \
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py set_popular_destinations \
+  python manage.py set_popular_points \
   --slugs tochal,damavand,daryasar,alamkuh
 ```
 
-این command به‌صورت اتمیک همهٔ مقصدهای دیگر را از لیست محبوب خارج می‌کند، ترتیب
+این command به‌صورت اتمیک همهٔ نقاطی دیگر را از لیست محبوب خارج می‌کند، ترتیب
 را از ۱ تا ۴ می‌نویسد و اگر slug ناشناخته یا بیشتر از چهار مورد داده شود هیچ
 تغییری نگه نمی‌دارد. برای خالی‌کردن لیست از `--clear` استفاده کنید.
 
 ## GPX و manifest
 
-اگر GPX دارید، آن را فقط در checkout محلی زیر `tracks/<destination>/` بگذارید.
+اگر GPX دارید، آن را فقط در checkout محلی زیر `tracks/<point>/` بگذارید.
 کل `tracks/` در Git ignore است و نباید commit، image یا سرور شود. `manifest.json`
 فقط mapping فایل GPX به route، کیفیت timestamp و وضعیت license است؛ API در زمان
 seed یا ingest آن را نمی‌خواند.
@@ -326,18 +327,18 @@ catalog را تغییر نمی‌دهد. timing نهایی تصمیم editorial 
 `apps/api/fixtures/catalog/tochal_v1.json` را داشته باشد و route timing کامل
 داشته باشد اگر قرار است arrival weather نمایش داده شود.
 
-قبل از ساخت JSON، اگر مقصد route دارد فولدر `tracks/<destination-slug>/` را بسازید
+قبل از ساخت JSON، اگر نقطه route دارد فولدر `tracks/<point-slug>/` را بسازید
 و معیارهای «حداقل کیفیت route و انتخاب ترک» را در همین سند اجرا کنید. برای هر
 route حداقل origin، یک landmark میانی واقعی و target را مشخص کنید. نبود GPX مانع
-forecast مقصد یا destination-only نیست، اما بدون evidence کافی نباید
+forecast نقطه یا point-only نیست، اما بدون evidence کافی نباید
 distance/ascent/ETA قطعی یا route عمومیِ ناقص منتشر شود.
 
 برای شروع می‌توان از
 [`templates/catalog-template.json`](templates/catalog-template.json) یک کپی
-گرفت و همهٔ مقادیر نمونه را با دادهٔ مقصد واقعی جایگزین کرد. فایل template عمداً
+گرفت و همهٔ مقادیر نمونه را با دادهٔ نقطه واقعی جایگزین کرد. فایل template عمداً
 یک route `pending` دارد تا مسیر ناقص به‌اشتباه به‌عنوان arrival-ready منتشر نشود.
 
-برای مقصد جدید لازم نیست فایل را در repository یا سرور قرار دهید. اگر بخواهید
+برای نقطه جدید لازم نیست فایل را در repository یا سرور قرار دهید. اگر بخواهید
 نسخهٔ داده قابل بازبینی داشته باشید، آن را در یک محل خصوصی/محلی نگه دارید؛
 runtime بعد از import دیتابیس است.
 
@@ -413,8 +414,8 @@ python3 scripts/publish_catalog.py \
 1. دوباره از pass شدن gate محلی Open-Meteo/DEM مطمئن می‌شود؛
 2. catalog را با `seed_catalog --stdin --strict` به‌صورت اتمیک import می‌کند؛
 3. فقط slugهای همین catalog را با `ingest_open_meteo` می‌گیرد؛
-4. `catalog_preflight --destination ... --require-forecast --strict` را اجرا می‌کند؛
-5. اگر همه‌چیز pass شود، مقصد آمادهٔ refresh صفحه است.
+4. `catalog_preflight --point ... --require-forecast --strict` را اجرا می‌کند؛
+5. اگر همه‌چیز pass شود، نقطه آمادهٔ refresh صفحه است.
 
 اگر عمداً route بدون timing اضافه می‌کنید، باید آگاهانه استفاده کنید:
 
@@ -452,21 +453,21 @@ ssh root@SERVER_IP \
   'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py ingest_open_meteo'
 
 ssh root@SERVER_IP \
-  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py catalog_preflight --destination damavand --require-forecast --strict'
+  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py catalog_preflight --point damavand --require-forecast --strict'
 ```
 
 در فرمان‌های بالا `/tmp/damavand_v1.json` روی local خوانده می‌شود و از stdin
 عبور می‌کند؛ لازم نیست `/tmp` روی سرور وجود داشته باشد.
 
-برای بررسی مقصد بدون تغییر:
+برای بررسی نقطه بدون تغییر:
 
 ```bash
 ssh root@SERVER_IP \
-  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py catalog_preflight --destination damavand --require-forecast'
+  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py catalog_preflight --point damavand --require-forecast'
 ```
 
 در `catalog_preflight`، حالت `--strict` warningهای timing را هم failure می‌کند.
-برای مقصدی که هنوز timing ندارد، `pass=False` با warning طبیعی است؛ این نشانهٔ
+برای نقطه‌ای که هنوز timing ندارد، `pass=False` با warning طبیعی است؛ این نشانهٔ
 خرابی ingest نیست.
 
 ### وضعیت فعلی دماوند
@@ -491,23 +492,23 @@ GPX شمالی timestamp معتبر برای محاسبهٔ moving time نداش
 
 1. Admin → WeatherPoint: slug، نام، مختصات، elevation، `is_active=true` و
    `ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
-2. در صورت نیاز Destination profile را به WeatherPoint canonical وصل کنید.
-3. Admin → Route: مقصد فعال، عنوان، `sort_order` و active.
+2. فیلدهای metadata و `seo_indexable` را روی همان WeatherPoint canonical تکمیل کنید.
+3. Admin → Route: نقطه فعال، عنوان، `sort_order` و active.
 4. RoutePointها را به‌ترتیب بسازید و برای همه `cumulative_minutes` وارد کنید.
 5. بعد از save، publish service ترتیب، origin/target، segment، axis و timing را
    normalize می‌کند؛ timing ناقص عمداً pending می‌شود.
 6. ingest هدفمند را اجرا و preflight را چک کنید.
 
-برای اضافه‌کردن سریع مقصدهای متعدد، JSON + wrapper پیشنهاد می‌شود؛ Admin برای
+برای اضافه‌کردن سریع نقاطی متعدد، JSON + wrapper پیشنهاد می‌شود؛ Admin برای
 اصلاح یک رکورد یا override اپراتوری مناسب‌تر است.
 
-### Definition of Done برای مقصد جدید
+### Definition of Done برای نقطه جدید
 
-مقصد فقط وقتی «آمادهٔ نمایش» محسوب می‌شود که همهٔ این موارد برقرار باشند:
+نقطه فقط وقتی «آمادهٔ نمایش» محسوب می‌شود که همهٔ این موارد برقرار باشند:
 
-1. category/icon از کلیدهای موجود انتخاب شده و مقصد ناخواسته وارد popular home
+1. category/icon از کلیدهای موجود انتخاب شده و نقطه ناخواسته وارد popular home
    نشده باشد.
-2. canonical destination WeatherPoint و همهٔ route pointها مختصات WGS84، ارتفاع
+2. canonical point WeatherPoint و همهٔ route pointها مختصات WGS84، ارتفاع
    منبع‌دار و نام قابل‌شناسایی داشته باشند؛ ارتفاع provisional باید همین‌طور
    برچسب بخورد و GPX `<ele>` جای آن را نگیرد.
 3. اگر `routes` خالی نیست، هر route حداقل origin → landmark واقعی → target،
@@ -517,7 +518,7 @@ GPX شمالی timestamp معتبر برای محاسبهٔ moving time نداش
 5. validator محلی، check-only remote، import strict، ingest و preflight strict
    pass شده باشند؛ validator باید برای هر point پاسخ elevation، grid نزدیک و
    دادهٔ ساعتی کامل گزارش کند و برای هر point forecast ذخیره‌شده وجود داشته باشد.
-6. صفحهٔ مقصد و تمام routeها با API واقعی refresh و از نظر نام، مختصات، timing و
+6. صفحهٔ نقطه و تمام routeها با API واقعی refresh و از نظر نام، مختصات، timing و
    weather point بررسی شده باشند.
 7. `tracks/` و manifest local-only، ignored و خارج از commit باقی مانده باشند.
 
@@ -560,8 +561,8 @@ forecast ذخیره‌شدهٔ دیتابیس را می‌خواند.
 
 ## چک‌لیست قبل از اعلام آماده‌بودن
 
-- [ ] مقصد و canonical destination WeatherPoint مختصات و elevation منبع‌دار دارند.
-- [ ] اگر مقصد route دارد، هر route `sort_order` درست و points مرتب از مبدأ تا مقصد دارد.
+- [ ] نقطه و canonical point WeatherPoint مختصات و elevation منبع‌دار دارند.
+- [ ] اگر نقطه route دارد، هر route `sort_order` درست و points مرتب از مبدأ تا نقطه دارد.
 - [ ] اگر route دارد، distance/ascent عمومی قابل‌دفاع و timingهای arrival دارای provenance هستند.
 - [ ] `validate_open_meteo_catalog.py` بدون error pass شده است.
 - [ ] هیچ pointی اختلاف catalog/DEM بیشتر از `۱۰۰ m`، grid دورتر از `۵ km` یا
@@ -570,5 +571,5 @@ forecast ذخیره‌شدهٔ دیتابیس را می‌خواند.
 - [ ] import strict انجام شده است.
 - [ ] ingest موفق بوده است.
 - [ ] preflight با `--require-forecast --strict` pass شده است.
-- [ ] صفحهٔ مقصد و هر route با date/period/start_time واقعی refresh و بررسی شده‌اند.
+- [ ] صفحهٔ نقطه و هر route با date/period/start_time واقعی refresh و بررسی شده‌اند.
 - [ ] GPX و manifest داخل `tracks/` باقی مانده و commit نشده‌اند.

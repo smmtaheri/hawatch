@@ -20,7 +20,7 @@ import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
 
 function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
-  const { slug = kind === "destination" ? "tochal" : "" } = useParams();
+  const { slug = "" } = useParams();
   const {
     data,
     status,
@@ -38,7 +38,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   useEffect(() => {
     if (!data?.subject.slug) return;
     const frame = window.requestAnimationFrame(() => {
-      scrollToDetailHero(".destination-page .destination-hero");
+      scrollToDetailHero(".point-page .point-hero");
     });
     return () => window.cancelAnimationFrame(frame);
   }, [data?.subject.slug]);
@@ -46,19 +46,15 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
 
   if (status === "missing") {
     return (
-      <main className="destination-page">
-        <div className="destination-shell">
+      <main className="point-page">
+        <div className="point-shell">
           <Header />
           <div className="page-back-navigation">
             <BackNavigation />
           </div>
           <EmptyState
-            title={kind === "destination" ? "مقصد پیدا نشد" : "نقطهٔ هواشناسی پیدا نشد"}
-            detail={
-              kind === "destination"
-                ? "به صفحهٔ خانه برگرد و مقصد دیگری را انتخاب کن."
-                : "از جست‌وجوی خانه نام دیگری را امتحان کن."
-            }
+            title="نقطه پیدا نشد"
+            detail="از جست‌وجوی خانه نام دیگری را امتحان کن."
           />
         </div>
       </main>
@@ -72,14 +68,12 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
       : undefined;
   const heroImage = data?.subject.hero_image;
   const pageClass =
-    kind === "destination" && data?.destinationSlug
-      ? `destination-page destination-${data.destinationSlug}`
-      : "destination-page";
+    "point-page";
   const dayLabel = data?.days.find((day) => day.date === selected)?.label ?? "امروز";
 
   return (
-    <main className={pageClass} data-place-kind={kind}>
-      <div className="destination-shell">
+    <main className={pageClass} data-place-kind="point">
+      <div className="point-shell">
         <Header />
         <div className="page-back-navigation">
           <BackNavigation />
@@ -89,13 +83,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
         {data ? (
           <>
             {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
-            <section className={`destination-hero${heroImage ? "" : " destination-hero--fallback"}`}>
-              <div className="destination-hero-fallback" aria-hidden="true" />
+            <section className={`point-hero${heroImage ? "" : " point-hero--fallback"}`}>
+              <div className="point-hero-fallback" aria-hidden="true" />
               {heroImage ? <img src={heroImage} alt={data.subject.hero_image_alt} /> : null}
-              <div className="destination-hero-overlay" />
-              <div className="destination-heading">
+              <div className="point-hero-overlay" />
+              <div className="point-heading">
                 <Breadcrumbs
-                  items={[{ label: "مقصدها", to: "/#search-results" }, { label: data.subject.name }]}
+                  items={[{ label: "نقاط", to: "/#search-results" }, { label: data.subject.name }]}
                 />
                 <h1>{data.subject.name}</h1>
                 <p>
@@ -108,10 +102,10 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 <div className="status-pill change">{data.hero.alert}</div>
               </div>
             </section>
-            <div className="destination-layout">
-              <div className="destination-main">
+            <div className="point-layout">
+              <div className="point-main">
                 <section className="weather-card card-surface">
-                  <div className="destination-planner-controls">
+                  <div className="point-planner-controls">
                     <ForecastDayPeriodControls
                       days={data.days}
                       selectedDate={selected}
@@ -121,7 +115,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       periodStates={periodStates}
                     />
                   </div>
-                  <div className="destination-forecast-output">
+                  <div className="point-forecast-output">
                     {data.empty || data.partial ? (
                       <EmptyState
                         title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی این روز در دسترس نیست"}
@@ -147,7 +141,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   )}
                 </section>
               </div>
-              <aside className="destination-side">
+              <aside className="point-side">
                 {routes.length ? (
                   <DesktopRouteSelector routes={routes} title={data.related_routes_title} />
                 ) : (
@@ -171,17 +165,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
               </aside>
             </div>
             <footer className="site-footer">
-              <span>هوای مقصد، برنامهٔ مسیر</span>
+              <span>هوای نقطه، برنامهٔ مسیر</span>
             </footer>
           </>
         ) : null}
       </div>
     </main>
   );
-}
-
-export function DestinationPlacePage() {
-  return <PlaceForecastPage kind="destination" />;
 }
 
 export function PointPlacePage() {

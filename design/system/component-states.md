@@ -29,6 +29,6 @@
 
 ## قواعد shared forecast UI
 
-- `PeriodToggle` در Destination، Route و Point باید state گذشته/جاری/آیندهٔ یکسان داشته باشد.
+- `PeriodToggle` در Point و Route باید state گذشته/جاری/آیندهٔ یکسان داشته باشد.
 - timestamp خام provider در UI نمایش داده نمی‌شود.
 - `timing_pending` فقط state داخلی/قراردادی است؛ copy کاربر باید فارسی و actionable باشد.

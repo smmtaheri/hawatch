@@ -10,10 +10,10 @@
 
 ۱. header کوچک.
 ۲. `route-hero`: breadcrumb، title `دربند تا توچال` و status هشدار.
-۳. `route-sibling-nav`: مسیرهای دیگر همان مقصد.
+۳. `route-sibling-nav`: مسیرهای دیگر همان نقطه.
 ۴. `route-planner`: chip `انتخاب روز` و day tabs.
 ۵. `route-weather-card`: period toggle، محور نقاط مهم، hourly values و point weather cards.
-۶. `stats-grid`: مسافت، صعود، زمان رفت‌وبرگشت، رسیدن به مقصد.
+۶. `stats-grid`: مسافت، صعود، زمان رفت‌وبرگشت، رسیدن به نقطه.
 ۷. side planner: ساعت شروع، speed controls و gauge.
 ۸. `route-decision`: forecast summary، وضعیت، decision، پیشنهادها و share actions.
 ۹. footer.
@@ -24,7 +24,7 @@
 
 | عنصر | متن دقیق مشاهده‌شده |
 | --- | --- |
-| breadcrumb | `مقصدها / قلهٔ توچال / دربند تا توچال` |
+| breadcrumb | `نقاط / قلهٔ توچال / دربند تا توچال` |
 | title | `دربند تا توچال` |
 | hero status | `نقطهٔ حساس: گردنهٔ لوپ · نقطهٔ حساس؛ زمان ذخیره داشته باش · حوالی ۱۰:۴۵` |
 | sibling chip | `مسیرهای دیگر` |
@@ -32,13 +32,13 @@
 | planner chip | `انتخاب روز` |
 | weather chip | `نقاط مهم` |
 | period | `صبح / ۰۰ تا ۱۲` و `بعدازظهر / ۱۲ تا ۲۴` |
-| endpoint labels | `مبدا · دربند` و `مقصد · قلهٔ توچال` |
+| endpoint labels | `مبدا · دربند` و `نقطه · قلهٔ توچال` |
 | quick label | `تنظیم سریع حرکت` |
 | start label | `ساعت شروع` |
 | speed label | `سرعت حرکت` |
 | speed helper | `زمان رسیدن همهٔ نقاط با این انتخاب تغییر می‌کند.` |
 | decision chip | `پیش‌بینی مسیر · امروز` |
-| decision title | `با حرکت ساعت ۰۶:۰۰، حدود ۱۳:۰۰ به مقصد می‌رسی.` |
+| decision title | `با حرکت ساعت ۰۶:۰۰، حدود ۱۳:۰۰ به نقطه می‌رسی.` |
 | decision status | `هشدار` |
 | decision summary | `در حوالی گردنهٔ لوپ شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار.` |
 | summary time | `۱۰:۴۵ · نقطهٔ حساس؛ زمان ذخیره داشته باش` |
@@ -47,18 +47,18 @@
 | recommendation 2 | `باد در بخش حساس بالاست؛ بندهای کوله و باتوم را محکم کن و روی یال توقف طولانی نداشته باش.` |
 | copy CTA | `کپی لینک برنامه` |
 | Telegram CTA | `ارسال در تلگرام ↗` |
-| footer | `هوای مقصد، برنامهٔ مسیر` |
+| footer | `هوای نقطه، برنامهٔ مسیر` |
 
 نقاط مسیر و دادهٔ متناظر live:
 
 | نقطه | زمان | دما | باد | state | href |
 | --- | --- | --- | --- | --- | --- |
-| دربند | ۰۶:۰۰ | ۸° | ۶ | normal | `/destination-point/darband` |
-| شیرپلا | ۰۷:۲۰ | ۷° | ۱۱ | normal | `/destination-point/shirpala` |
-| جان‌پناه امیری | ۰۹:۱۰ | ۵° | ۲۲ | change | `/destination-point/amiri-shelter` |
-| گردنهٔ لوپ | ۱۰:۴۵ | ۳° | ۳۱ | critical | `/destination-point/loop-pass` |
-| پناهگاه توچال | ۱۲:۱۰ | ۲° | ۳۶ | critical | `/destination-point/tochal-shelter` |
-| قلهٔ توچال | ۱۳:۰۰ | ۱° | ۳۹ | critical | `/destination-point/tochal-summit` |
+| دربند | ۰۶:۰۰ | ۸° | ۶ | normal | `/points/darband` |
+| شیرپلا | ۰۷:۲۰ | ۷° | ۱۱ | normal | `/points/shirpala` |
+| جان‌پناه امیری | ۰۹:۱۰ | ۵° | ۲۲ | change | `/points/amiri-shelter` |
+| گردنهٔ لوپ | ۱۰:۴۵ | ۳° | ۳۱ | critical | `/points/loop-pass` |
+| پناهگاه توچال | ۱۲:۱۰ | ۲° | ۳۶ | critical | `/points/tochal-shelter` |
+| قلهٔ توچال | ۱۳:۰۰ | ۱° | ۳۹ | critical | `/points/tochal` |
 
 ## ۳. لینک‌ها و navigation
 
@@ -66,14 +66,14 @@
 | --- | --- |
 | هواچ | `/` |
 | ورود | `/login` |
-| back mobile | `/destination/tochal` با aria-label `بازگشت به صفحهٔ مقصد` |
-| breadcrumb مقصدها | `/#search-results` |
-| breadcrumb قلهٔ توچال | `/destination/tochal` |
+| back mobile | `/points/tochal` با aria-label `بازگشت به صفحهٔ نقطه` |
+| breadcrumb نقاط | `/#search-results` |
+| breadcrumb قلهٔ توچال | `/points/tochal` |
 | route sibling ولنجک | `/routes/tochal-velenjak` |
 | route sibling کلکچال | `/routes/tochal-kolakchal` |
 | route sibling شهرستانک | `/routes/tochal-shahrestanak` |
 | route sibling آهار | `/routes/tochal-ahar` |
-| route point | `/destination-point/{pointSlug}` |
+| route point | `/points/{pointSlug}` |
 | share initial href | `/share`، target `_blank` |
 | Telegram after click | `https://t.me/share/url?...` با query رمزگذاری‌شدهٔ plan |
 
@@ -84,13 +84,13 @@
 - period با `صبح`/`بعدازظهر` در UI و stateهای `morning`/`night` در bundle کنترل می‌شود؛ helperهای route point و hourly با آن تغییر می‌کنند.
 - speed options دقیقاً `آرام`، `متوسط`، `سریع` هستند و multiplierهای bundle به‌ترتیب `1.2`، `1` و `.82` است. انتخاب در localStorage key `hawatch-plan-speed-{slug}` ذخیره می‌شود.
 - start range input با aria-label `ساعت شروع حرکت`، `step=30` و min/max بازهٔ period دارد. onChange ساعت شروع را ذخیره و زمان همهٔ نقاط را update می‌کند.
-- point axis card و point weather card هر دو به destination-point link هستند و state خود را با class `normal/change/critical` نشان می‌دهند.
+- point axis card و point weather card هر دو به point link link هستند و state خود را با class `normal/change/critical` نشان می‌دهند.
 - copy CTA لینک plan را با `navigator.clipboard.writeText` یا fallback textarea کپی می‌کند؛ success text `لینک کپی شد ✓`، failure text `کپی ناموفق بود` و بعد از ۲۴۰۰ms به idle برمی‌گردد. [LIVE-BUNDLE]
 - Telegram CTA ابتدا `/share` دارد و هنگام click href را با URL رمزگذاری‌شدهٔ t.me جایگزین می‌کند.
 
-## ۵. بازگشت بین Home، Destination و Route
+## ۵. بازگشت بین Home، Point و Route
 
-Home → Destination با tile؛ Destination → Route با route card؛ Route → Destination با back link یا breadcrumb؛ brand از هر صفحه به Home. در Route breadcrumb مقصد نیز به `/destination/tochal` برمی‌گردد. [LIVE]
+Home → Point با tile؛ Point → Route با route card؛ Route → Point با back link یا breadcrumb؛ brand از هر صفحه به Home. در Route breadcrumb نقطه نیز به `/points/tochal` برمی‌گردد. [LIVE]
 
 ## ۶. انتخاب روز، صبح/بعدازظهر، ساعت شروع و سرعت
 
@@ -101,14 +101,14 @@ Home → Destination با tile؛ Destination → Route با route card؛ Route �
 - speed default: متوسط.
 - route plan زمان رسیدن را با speed multiplier و baseMinutes نقاط محاسبه می‌کند؛ state critical در نقطه یا arrival time بالا decision state را تعیین می‌کند. [LIVE-BUNDLE]
 
-## ۷. مسیرهای دیگر همان مقصد
+## ۷. مسیرهای دیگر همان نقطه
 
 در sibling nav مسیر current حذف شده و چهار مسیر دیگر با distance نمایش داده می‌شوند: ولنجک تا توچال `۱۴٫۸ km`، کلکچال تا توچال `۱۷٫۴ km`، شهرستانک تا توچال `۱۸٫۶ km`، آهار تا توچال `۱۸٫۶ km`. [LIVE]
 
 ## ۸. کارت تصمیم، هشدار، اشتراک‌گذاری و نقاط مسیر
 
 - hero warning نقطهٔ حساس و زمان آن را برجسته می‌کند.
-- route axis از origin دربند تا destination قلهٔ توچال شش node دارد.
+- route axis از origin دربند تا point قلهٔ توچال شش node دارد.
 - hourly grid شش بازهٔ ۰۰:۰۰، ۰۲:۰۰، ۰۴:۰۰، ۰۶:۰۰، ۰۸:۰۰ و ۱۰:۰۰ دارد؛ ۰۴:۰۰ change و ۰۶:۰۰ تا ۱۰:۰۰ critical هستند.
 - point weather grid برای هر نقطه time، icon، condition، temperature، wind و status label دارد.
 - decision card در نمونهٔ live critical است، `هشدار` دارد، زمان شروع/رسیدن/سرعت/نقطهٔ حساس را خلاصه می‌کند، دو recommendation دارد و دو share action ارائه می‌دهد.
@@ -164,13 +164,13 @@ Home → Destination با tile؛ Destination → Route با route card؛ Route �
 - root document/body در هر چهار ترکیب اندازه‌گیری‌شده overflow افقی نداشت.
 - در mobile route linear axis باید در container خودش قابل اسکن/scroll باشد و root را عریض نکند.
 - زمان، سرعت و gauge باید در یک composition فشرده بمانند؛ خط جداکنندهٔ عمودی desktop نباید به mobile منتقل شود. `[PRODUCT]` و `[SCREENSHOT]`
-- route point axis و weather cards باید از نظر ترتیب origin→destination هم‌معنا بمانند، حتی اگر layout فشرده شود.
+- route point axis و weather cards باید از نظر ترتیب origin→point هم‌معنا بمانند، حتی اگر layout فشرده شود.
 
 ## ۱۵. معیار پذیرش قابل تست
 
 | بخش | معیار تست |
 | --- | --- |
-| navigation | back به `/destination/tochal`، breadcrumb مقصد به همان URL و siblingها به routeهای درست می‌روند. |
+| navigation | back به `/points/tochal`، breadcrumb نقطه به همان URL و siblingها به routeهای درست می‌روند. |
 | day/period | default امروز/صبح است؛ کلیک day و period state active و دادهٔ derived را تغییر می‌دهد. |
 | planner | start default ۰۶:۰۰ و speed متوسط است؛ تغییر start/speed زمان رسیدن و decision title را update می‌کند. |
 | points | شش نقطه با نام/زمان/دما/باد و href درست روی axis و cardها render می‌شوند. |

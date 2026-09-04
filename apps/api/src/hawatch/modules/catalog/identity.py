@@ -1,9 +1,4 @@
-"""Canonical catalog identity rules shared by import, validation and reports.
-
-The public slug is an identity, not a translation of the Persian display name.
-Destination profile WeatherPoints are deliberately kept as internal catalog
-identities; independent points use a contextual, URL-safe slug.
-"""
+"""Canonical identity rules for the point graph."""
 
 from __future__ import annotations
 
@@ -34,8 +29,6 @@ PLACE_TYPES = {
 }
 
 
-DESTINATION_SLUG_MAP = {"touchal": "tochal"}
-
 ROUTE_SLUG_MAP = {
     "touchal-darband": "tochal-darband",
     "touchal-welanjak": "tochal-velenjak",
@@ -50,6 +43,21 @@ ROUTE_SLUG_MAP = {
 # weak standalone page. All other independent legacy slugs are normalized by
 # replacing underscores with hyphens.
 POINT_SLUG_MAP = {
+    # Legacy primary-point spellings are normalized to the same public point
+    # slug as their catalog profile. No redirect is provided; this mapping is
+    # only used while importing/normalizing pre-unification rows.
+    "tochal_summit": "tochal",
+    "damavand_summit": "damavand",
+    "azadkouh_summit": "azadkouh",
+    "darabad_summit": "darabad",
+    "dorfak_summit": "dorfak",
+    "gahar_lake": "gahar",
+    "hazar_summit": "hazar",
+    "sabalan_summit": "sabalan",
+    "zarrinkuh_summit": "zarrinkuh",
+    "daryasar_plain": "daryasar",
+    "eskelim_waterfall": "eskelim",
+    "tar_lake": "tar-lake",
     "ahar": "tochal-ahar-village",
     "amiri": "tochal-amiri-shelter",
     "barfchal": "tochal-barfchal-peak",
@@ -92,7 +100,6 @@ POINT_SLUG_MAP = {
     "damavand_sulfur_hill": "damavand-sulfur-hill",
     "damavand_west_5008": "damavand-west-5008",
     "damavand_western_parking": "damavand-western-parking",
-    "damavand_simorgh": "damavand-simorgh-shelter",
     "damavand_northeast_north_join": "damavand-northeast-north-junction",
     "damavand_sang_bozorg": "damavand-sang-bozorg",
     "damavand_shelter_4000": "damavand-shelter-4000",
@@ -232,7 +239,6 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "tochal-shahneshin-pass": {"name": "گردنهٔ شاه‌نشین توچال", "page_name": "گردنهٔ شاه‌نشین در مسیر توچال", "short_label": "گردنهٔ شاه‌نشین", "place_type": "pass", "name_status": "established"},
     "damavand-sulfur-hill": {"name": "تپهٔ گوگردی دماوند", "page_name": "تپهٔ گوگردی دماوند", "short_label": "تپهٔ گوگردی", "place_type": "landmark", "name_status": "established"},
     "damavand-western-parking": {"name": "پارکینگ غربی دماوند", "page_name": "پارکینگ غربی دماوند", "short_label": "پارکینگ غربی", "place_type": "parking", "name_status": "established"},
-    "damavand-simorgh-shelter": {"name": "پناهگاه سیمرغ دماوند", "page_name": "پناهگاه سیمرغ دماوند", "short_label": "پناهگاه سیمرغ", "place_type": "shelter", "name_status": "established"},
     "damavand-northeast-north-junction": {"name": "دوراهی شمالی و شمال‌شرقی دماوند", "page_name": "دوراهی شمالی و شمال‌شرقی دماوند", "short_label": "دوراهی شمالی–شمال‌شرقی", "place_type": "landmark", "name_status": "descriptive"},
     "damavand-sang-bozorg": {"name": "سنگ بزرگ دماوند", "page_name": "سنگ بزرگ دماوند، ابتدای مسیر شمالی", "short_label": "سنگ بزرگ", "place_type": "trailhead", "name_status": "established"},
     "damavand-shelter-4000": {"name": "جان‌پناه ۴۰۰۰ دماوند", "page_name": "جان‌پناه ۴۰۰۰ دماوند", "short_label": "جان‌پناه ۴۰۰۰", "place_type": "shelter", "name_status": "established"},
@@ -258,27 +264,20 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
 }
 
 
-def canonical_destination_slug(slug: str) -> str:
-    return DESTINATION_SLUG_MAP.get(slug, slug)
-
-
 def canonical_route_slug(slug: str) -> str:
     return ROUTE_SLUG_MAP.get(slug, slug)
 
 
-def canonical_point_slug(slug: str, *, destination_slug: str | None = None, preserve_destination: bool = False) -> str:
+def canonical_point_slug(slug: str, *, primary_slug: str | None = None) -> str:
     """Return the public slug for an independent point.
 
-    Canonical destination WeatherPoints are intentionally preserved because
-    they are internal profile identities and have no ``/points`` page.
+    All public places are points and therefore use a point URL.
     """
-    if preserve_destination:
-        return slug
     if slug in POINT_SLUG_MAP:
         return POINT_SLUG_MAP[slug]
     if slug.startswith("route:"):
-        _route, _destination, point = slug.split(":", 2)
-        return canonical_point_slug(point, destination_slug=destination_slug)
+        _route, _primary, point = slug.split(":", 2)
+        return canonical_point_slug(point, primary_slug=primary_slug)
     return slug.replace("_", "-")
 
 
@@ -320,9 +319,9 @@ def metadata_for_point(
     slug: str,
     row: Mapping[str, object],
     *,
-    destination_label: str = "",
+    primary_label: str = "",
     source_urls: list[str] | None = None,
-    is_destination: bool = False,
+    is_primary: bool = False,
 ) -> dict[str, object]:
     """Fill a catalog point's identity block without inventing coordinates."""
     override = dict(POINT_IDENTITY_OVERRIDES.get(slug, {}))
@@ -333,14 +332,14 @@ def metadata_for_point(
     for alias in override.get("aliases", []) or []:
         if alias not in aliases:
             aliases.append(alias)
-    if is_destination:
+    if is_primary:
         importance = "primary"
     else:
         importance = str(row.get("importance") or "support")
     name_status = str(override.get("name_status") or row.get("name_status") or "descriptive")
     summary = str(
         row.get("identity_summary")
-        or f"{page_name}؛ نقطهٔ {place_type} در محدودهٔ {destination_label or 'مسیر ثبت‌شده'}"
+        or f"{page_name}؛ نقطهٔ {place_type} در محدودهٔ {primary_label or 'مسیر ثبت‌شده'}"
     )
     return {
         "name": name,

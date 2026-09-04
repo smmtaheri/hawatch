@@ -1,31 +1,12 @@
 {
   "catalog_version": "hawatch-hazar-catalog-v1",
-  "destination_weather_point": "hazar_summit",
-  "destination": {
-    "slug": "hazar",
-    "tile_name": "هزار",
-    "name": "قلهٔ هزار",
-    "short_category": "کوه",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "کرمان · راین",
-    "elevation_m": 4501,
-    "latitude": 29.51172,
-    "longitude": 57.271083,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی قلهٔ هزار کرمان",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
-    "hazar_summit": {
+    "hazar": {
       "name": "قلهٔ هزار",
       "latitude": 29.51172,
       "longitude": 57.271083,
       "elevation_m": 4501,
-      "kind": "destination",
+      "kind": "primary",
       "status": "provisional",
       "elevation_source": "ارتفاع رایج گزارش‌شده برای قلهٔ هزار حدود ۴۵۰۱ متر است؛ مختصات با نزدیک‌ترین نقاط چهار ترک GPX و منبع Gholleh تطبیق شده و تا بررسی DEM/PBF قطعی محسوب نمی‌شود. GPXها ارتفاع حدود ۴۳۲۰ تا ۴۵۱۰ متر را نشان می‌دهند.",
       "page_name": "قلهٔ هزار",
@@ -273,7 +254,6 @@
       "subtitle": "مسیر شمالی از پارکینگ آبشار راین، پناهگاه و تاج‌خروس تا قله",
       "trail_label": "مسیر آبشار راین",
       "origin": "پارکینگ آبشار راین",
-      "destination_label": "قلهٔ هزار",
       "region": "کرمان · راین",
       "featured": true,
       "sort_order": 1,
@@ -282,7 +262,7 @@
         "hazar-rayen-shelter",
         "hazar-rayen-taj-khorus",
         "hazar-rayen-shotor-khab",
-        "hazar_summit"
+        "hazar"
       ],
       "distance_km": 8.45,
       "ascent_m": 1671,
@@ -313,11 +293,11 @@
           "hazar-rayen-shelter": 155,
           "hazar-rayen-taj-khorus": 280,
           "hazar-rayen-shotor-khab": 405,
-          "hazar_summit": 480
+          "hazar": 480
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ هزار"
     },
     "babzangi_to_hazar": {
       "slug": "hazar-babzangi",
@@ -325,7 +305,6 @@
       "subtitle": "مسیر جنوبی از روستای باب‌زنگی و چشمه تا دو راهی قله",
       "trail_label": "مسیر باب‌زنگی",
       "origin": "روستای باب‌زنگی · ابتدای مسیر",
-      "destination_label": "قلهٔ هزار",
       "region": "کرمان · راین",
       "featured": true,
       "sort_order": 2,
@@ -334,7 +313,7 @@
         "hazar-babzangi-camp-spring",
         "hazar-babzangi-breakfast-spring",
         "hazar-ardikan-babzangi-junction",
-        "hazar_summit"
+        "hazar"
       ],
       "distance_km": 5.3,
       "ascent_m": 1132,
@@ -364,11 +343,11 @@
           "hazar-babzangi-camp-spring": 70,
           "hazar-babzangi-breakfast-spring": 135,
           "hazar-ardikan-babzangi-junction": 270,
-          "hazar_summit": 330
+          "hazar": 330
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ هزار"
     },
     "ardikan_to_hazar": {
       "slug": "hazar-ardikan",
@@ -376,7 +355,6 @@
       "subtitle": "مسیر جنوب‌غربی از روستای اردیکان و کمپ چشمه تا قله",
       "trail_label": "مسیر اردیکان",
       "origin": "روستای اردیکان · ابتدای مسیر",
-      "destination_label": "قلهٔ هزار",
       "region": "کرمان · راین",
       "featured": true,
       "sort_order": 3,
@@ -385,7 +363,7 @@
         "hazar-ardikan-camp-spring",
         "hazar-ardikan-babzangi-junction",
         "hazar-ardikan-cairn",
-        "hazar_summit"
+        "hazar"
       ],
       "distance_km": 4.4,
       "ascent_m": 1038,
@@ -415,11 +393,30 @@
           "hazar-ardikan-camp-spring": 80,
           "hazar-ardikan-babzangi-junction": 170,
           "hazar-ardikan-cairn": 210,
-          "hazar_summit": 240
+          "hazar": 240
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ هزار"
     }
-  }
+  },
+  "point": {
+    "slug": "hazar",
+    "tile_name": "هزار",
+    "name": "قلهٔ هزار",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "کرمان · راین",
+    "elevation_m": 4501,
+    "latitude": 29.51172,
+    "longitude": 57.271083,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ هزار کرمان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "hazar"
 }

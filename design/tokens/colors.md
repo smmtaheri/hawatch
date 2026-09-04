@@ -30,4 +30,4 @@ light باید روشن، طبیعی و غیراداری باشد؛ سفید خ�
 - در dark از نسخه‌های روشن‌تر semantic استفاده شود تا کنتراست با surface حفظ شود.
 - عکس‌های hero باید با overlay خوانایی متن را حفظ کنند.
 
-مقادیر runtime، ابعاد و selectorهای مشاهده‌شده در [بررسی live Home](../../docs/live-page-inspection/home.md)، [بررسی live Destination](../../docs/live-page-inspection/destination.md) و [بررسی live Route](../../docs/live-page-inspection/route.md) ثبت شده‌اند.
+مقادیر runtime، ابعاد و selectorهای مشاهده‌شده در [بررسی live Home](../../docs/live-page-inspection/home.md)، [بررسی live Point](../../docs/live-page-inspection/point.md) و [بررسی live Route](../../docs/live-page-inspection/route.md) ثبت شده‌اند.

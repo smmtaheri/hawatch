@@ -7,7 +7,7 @@
 - API با `RequestMetricsMiddleware`، request/trace id و logهای JSON در console و `hawatch_logs` کار می‌کند.
 - `/api/v1/metrics/` exposition استاندارد Prometheus است و با Bearer token محافظت می‌شود. token از Compose secret می‌آید.
 - Prometheus فقط API داخلی `api:8000` را scrape می‌کند؛ host port ندارد.
-- Grafana با login اجباری و dashboard provisioned، health، inventory مقصد/مسیر/point، error rate، latency، ingest، retry و freshness را نشان می‌دهد.
+- Grafana با login اجباری و dashboard provisioned، health، inventory نقطه/مسیر/point، error rate، latency، ingest، retry و freshness را نشان می‌دهد.
 - Vector فقط volumeی را می‌بیند که API و maintenance برای logهای Hawatch روی آن می‌نویسند و فقط همان JSONLها را به indexهای `hawatch-logs-YYYY.MM.DD` در OpenSearch می‌فرستد.
 - OpenSearch و OpenSearch Dashboards برای جست‌وجوی log provision می‌شوند. OpenSearch host port ندارد و OSD فقط port قابل‌تنظیم `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` دارد. اتصال داخلی OSD با کاربر service جداگانه و password قوی `OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD` انجام می‌شود؛ login خود OSD همچنان به credentialهای OpenSearch نیاز دارد.
 - `maintenance` هر `RETENTION_INTERVAL_SECONDS` یک‌بار `cleanup_retention` را اجرا می‌کند.
@@ -26,7 +26,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml --profile observabi
 - `GET /api/v1/health/ready/`
 - `GET /api/v1/health/status/` با `Authorization: Bearer <HAWATCH_METRICS_TOKEN>`
 
-status از PostgreSQL خوانده می‌شود و تعداد مقصد، مسیر، point، آخرین attempt، آخرین snapshot قابل‌استفاده، retry، خطای ۲۴ ساعت اخیر و تعداد رکورد live را گزارش می‌کند.
+status از PostgreSQL خوانده می‌شود و تعداد نقطه، مسیر، point، آخرین attempt، آخرین snapshot قابل‌استفاده، retry، خطای ۲۴ ساعت اخیر و تعداد رکورد live را گزارش می‌کند.
 
 ## retention
 
@@ -44,7 +44,7 @@ status از PostgreSQL خوانده می‌شود و تعداد مقصد، مس�
 | --- | --- |
 | `hawatch_health_status` | آخرین وضعیت live/ready |
 | `hawatch_database_up` | دسترسی DB در scrape اخیر |
-| `hawatch_catalog_destinations` / `routes` / `weather_points` | تعداد فعلی catalog |
+| `hawatch_catalog_points` / `routes` / `weather_points` | تعداد فعلی catalog |
 | `hawatch_http_requests_total` | تعداد request بر اساس route/status |
 | `hawatch_http_errors_total` | پاسخ‌های 4xx/5xx |
 | `hawatch_http_request_duration_seconds` | histogram latency |

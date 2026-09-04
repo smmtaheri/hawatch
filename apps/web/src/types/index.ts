@@ -3,9 +3,8 @@ export type Severity = "normal" | "change" | "critical";
 export type PeriodId = "midnight" | "morning" | "noon" | "night";
 
 export interface CatalogCounts {
-  destinations: number;
-  routes: number;
   points: number;
+  routes: number;
 }
 
 export interface WindAlert {
@@ -36,7 +35,7 @@ export interface ApiMeta {
   catalog_counts?: CatalogCounts;
 }
 
-export interface DestinationSummary {
+export interface PointSummary {
   slug: string;
   tile_name: string;
   name: string;
@@ -44,12 +43,13 @@ export interface DestinationSummary {
   category: string;
   category_key: string;
   region: string;
-  elevation_m: number;
+  elevation_m: number | null;
   elevation_label: string;
   image: string;
   image_alt: string;
   href: string;
   is_popular: boolean;
+  seo_indexable?: boolean;
 }
 
 export interface RouteSummary {
@@ -57,7 +57,7 @@ export interface RouteSummary {
   title: string;
   trail_label: string;
   origin: string;
-  destination_label: string;
+  target_label: string;
   distance_km: number | null;
   distance_label: string;
   ascent_m: number | null;
@@ -134,7 +134,7 @@ export interface Metric {
   color: string;
 }
 
-export type PlaceKind = "destination" | "point";
+export type PlaceKind = "point";
 
 export interface PlaceSubject {
   kind: PlaceKind;
@@ -172,7 +172,7 @@ export interface PlannerPeriodInfo {
   planner_slots?: number[];
 }
 
-/** First-class shared Forecast Place contract for destination and point endpoints. */
+/** Shared forecast contract for point pages. */
 export interface PlaceForecastResponse {
   subject: PlaceSubject;
   hero: { status: string; alert: string };
@@ -196,14 +196,8 @@ export interface PlaceForecastResponse {
   weather?: HourlyReading | null;
   hourly?: HourlyReading[];
   meta?: ApiMeta;
-  destination?: DestinationSummary & { routes?: RouteSummary[]; weather_point_slug?: string | null };
   point?: WeatherPointSummary & { canonical_href?: string };
-  related_destinations?: DestinationSummary[];
   updated_label?: string;
-}
-
-export interface DestinationForecast extends PlaceForecastResponse {
-  destination: DestinationSummary & { routes: RouteSummary[] };
 }
 
 export interface RoutePointView {
@@ -238,7 +232,6 @@ export interface RoutePointView {
 export interface WeatherPointSummary {
   slug: string;
   name: string;
-  aliases: string[];
   kind: string;
   elevation_m: number | null;
   elevation_label: string;
@@ -248,16 +241,29 @@ export interface WeatherPointSummary {
   provenance: string;
   href: string;
   canonical_href?: string;
-  destination: DestinationSummary | null;
+  page_name?: string;
+  short_label?: string;
+  place_type?: string;
+  identity_summary?: string;
+  importance?: string;
+  name_status?: string;
+  source_urls?: string[];
+  aliases: string[];
+  tile_name?: string;
+  category?: string;
+  category_key?: string;
+  region?: string;
+  image?: string;
+  image_alt?: string;
+  seo_indexable?: boolean;
 }
 
 export interface PointForecast extends PlaceForecastResponse {
   point: WeatherPointSummary;
-  related_destinations: DestinationSummary[];
 }
 
 export interface SearchSuggestion {
-  type: "destination" | "point";
+  type: "point";
   slug: string;
   label: string;
   hint: string;
@@ -280,11 +286,11 @@ export interface RouteForecast {
     title: string;
     subtitle: string;
     origin: string;
-    destination_label: string;
+    target_label: string;
     distance_label: string;
     ascent_label: string;
     default_start_minutes: number;
-    parent: DestinationSummary;
+    target_point: PointSummary | null;
     points: RoutePointView[];
     siblings: RouteSummary[];
     href: string;

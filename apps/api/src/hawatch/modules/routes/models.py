@@ -9,16 +9,11 @@ class Route(models.Model):
         PENDING = "pending", "pending"
 
     slug = models.SlugField(max_length=80, unique=True)
-    destination = models.ForeignKey(
-        "destinations.Destination",
-        on_delete=models.PROTECT,
-        related_name="routes",
-    )
     title = models.CharField(max_length=160)
     subtitle = models.CharField(max_length=255)
     trail_label = models.CharField(max_length=64)
     origin = models.CharField(max_length=64)
-    destination_label = models.CharField(max_length=64)
+    target_label = models.CharField(max_length=64)
     region = models.CharField(max_length=64)
     distance_km = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
     ascent_m = models.PositiveIntegerField(null=True, blank=True)
@@ -71,7 +66,7 @@ class Route(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=["destination", "sort_order"], name="route_dest_sort_idx"),
+            models.Index(fields=["target_weather_point", "sort_order"], name="route_target_sort_idx"),
             models.Index(fields=["featured"], name="route_featured_idx"),
             models.Index(fields=["catalog_key"], name="route_catalog_key_idx"),
             models.Index(fields=["origin_weather_point"], name="route_origin_wp_idx"),
@@ -96,13 +91,6 @@ class RoutePoint(models.Model):
         "forecasts.WeatherPoint",
         on_delete=models.PROTECT,
         related_name="route_links",
-        null=True,
-        blank=True,
-    )
-    destination = models.ForeignKey(
-        "destinations.Destination",
-        on_delete=models.PROTECT,
-        related_name="route_points",
         null=True,
         blank=True,
     )
@@ -150,7 +138,6 @@ class RoutePoint(models.Model):
         indexes = [
             models.Index(fields=["route", "sort_order"], name="routepoint_route_sort_idx"),
             models.Index(fields=["slug"], name="routepoint_slug_idx"),
-            models.Index(fields=["destination"], name="routepoint_dest_idx"),
             models.Index(fields=["weather_point"], name="routepoint_weather_idx"),
             GistIndex(fields=["location"], name="routepoint_location_gist"),
         ]

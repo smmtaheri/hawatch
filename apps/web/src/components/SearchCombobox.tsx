@@ -93,12 +93,12 @@ export const SearchCombobox = forwardRef<
     navigate(item.href);
   }
 
-  function submitFallback() {
+  function submitFallback(preferActiveSuggestion = false) {
     const query = normalizeInput(value);
     if (query.length < MIN_CHARS) {
       return;
     }
-    if (activeIndex >= 0 && results[activeIndex]) {
+    if (preferActiveSuggestion && activeIndex >= 0 && results[activeIndex]) {
       choose(results[activeIndex]);
       return;
     }
@@ -137,12 +137,12 @@ export const SearchCombobox = forwardRef<
       });
   }
 
-  useImperativeHandle(ref, () => ({ submit: submitFallback }), [activeIndex, results, value]);
+  useImperativeHandle(ref, () => ({ submit: () => submitFallback() }), [activeIndex, results, value]);
 
   return (
     <div className={`search-combobox ${open ? "is-open" : ""}`}>
       <label className="sr-only" htmlFor={inputId}>
-        جست‌وجوی مقصد یا نقطهٔ مسیر
+        جست‌وجوی نقطه یا نقطهٔ مسیر
       </label>
       <input
         id={inputId}
@@ -151,7 +151,7 @@ export const SearchCombobox = forwardRef<
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={activeIndex >= 0 ? `${listId}-${activeIndex}` : undefined}
-        aria-label="جست‌وجوی مقصد یا نقطهٔ مسیر"
+        aria-label="جست‌وجوی نقطه یا نقطهٔ مسیر"
         placeholder="مثلاً توچال، پس‌قلعه یا شیرپلا"
         autoComplete="off"
         value={value}
@@ -181,7 +181,7 @@ export const SearchCombobox = forwardRef<
             setActiveIndex(-1);
           } else if (event.key === "Enter") {
             event.preventDefault();
-            submitFallback();
+            submitFallback(true);
           }
         }}
       />

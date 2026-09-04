@@ -1,8 +1,7 @@
 import type {
   ApiMeta,
-  DestinationForecast,
-  DestinationSummary,
   PlaceForecastResponse,
+  PointSummary,
   PointForecast,
   RouteForecast,
   RouteSummary,
@@ -41,14 +40,10 @@ async function getJson<T>(path: string, params?: Record<string, string | undefin
 }
 
 export const api = {
-  destinations: (query?: string) =>
-    getJson<{ results: DestinationSummary[]; empty: boolean; query: string; meta: ApiMeta }>("destinations/", {
+  points: (query?: string) =>
+    getJson<{ results: PointSummary[]; empty: boolean; query: string; meta: ApiMeta }>("points/", {
       query,
     }),
-  destination: (slug: string) =>
-    getJson<{ destination: DestinationSummary & { routes: RouteSummary[] }; meta: ApiMeta }>(`destinations/${slug}/`),
-  destinationForecast: (slug: string, params: { date?: string; period?: string }) =>
-    getJson<DestinationForecast & PlaceForecastResponse>(`destinations/${slug}/forecast/`, params),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },

@@ -8,15 +8,15 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۲. مسیر ورود و خروج
 
-- ورود: از route card صفحهٔ Destination با `/routes/tochal-darband` یا route slug.
-- خروج: بازگشت به مقصد، انتخاب مسیر دیگر همان مقصد، کپی/اشتراک برنامه.
+- ورود: از route card صفحهٔ Point با `/routes/tochal-darband` یا route slug.
+- خروج: بازگشت به نقطه، انتخاب مسیر دیگر متصل به همان نقطه، کپی/اشتراک برنامه.
 - تغییر روز، ساعت شروع، سرعت و بازه در query/state قابل بازسازی هستند؛ لینک نقطه canonical و تمیز است و context کامل planner را در navigation state نگه می‌دارد.
 
 ## ۳. ترتیب دقیق بخش‌ها
 
 ۱. header کوچک مسیر.
-۲. بازگشت به مقصد.
-۳. مسیرهای دیگر همان مقصد.
+۲. بازگشت به نقطه.
+۳. مسیرهای دیگر متصل به همان نقطه.
 ۴. انتخاب روز.
 ۵. بازهٔ شروع حرکت و سرعت حرکت در یک کادر جمع‌وجور.
 ۶. نقاط مهم مسیر.
@@ -26,7 +26,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 آمار کلی تکراری مسیر (مسافت، صعود، زمان تخمینی و ساعت پایان) در انتهای صفحهٔ Route نمایش داده نمی‌شود؛ این اطلاعات در کارت‌ها و خلاصه‌های بالاتر، جایی که برای تصمیم کاربر لازم است، ارائه می‌شوند.
 
-محور نقاط فقط نام، ترتیب و marker را نشان می‌دهد؛ دمای تکراری زیر markerها بخشی از محور نیست. forecast عمومی مقصد/قله نباید به‌جای خلاصهٔ pointهای مسیر در این بخش نمایش داده شود.
+محور نقاط فقط نام، ترتیب و marker را نشان می‌دهد؛ دمای تکراری زیر markerها بخشی از محور نیست. forecast نقطهٔ اصلی نباید به‌جای خلاصهٔ pointهای مسیر در این بخش نمایش داده شود.
 
 ## ۴. hierarchy کامپوننت‌ها
 
@@ -34,14 +34,14 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۵. رفتار کنترل‌ها
 
-- back: به Destination parent برمی‌گردد.
-- sibling route: route جدید همان destination را باز می‌کند.
+- back: به نقطهٔ والد برمی‌گردد.
+- sibling route: route جدید متصل به همان نقطه را باز می‌کند.
 - day: تمام زمان‌ها، weather points و decision summary را برای روز جدید refresh می‌کند.
 - start-time gauge: در ورود بدون start_time، برای تاریخ/بازهٔ جاری روی زمان فعلی `Asia/Tehran` قرار می‌گیرد؛ برای تاریخ‌های دیگر از default همان بازه استفاده می‌شود. قسمت قبل از زمان فعلی کم‌رنگ و قسمت آینده عادی است. بعد از تغییر، در صورت آماده‌بودن timing، زمان رسیدن نقاط recompute می‌شود.
 - speed segmented control: آرام/متوسط/سریع؛ زمان نقاط و کارت تصمیم به‌روزرسانی می‌شوند.
 - midnight/morning/noon/night: یک کنترل مشترک چهارگزینه‌ای برای route points و hourly forecast در mobile.
-- point: جزئیات مستقل در `/points/{weatherPointSlug}` باز می‌شود؛ نقطهٔ مقصدی مثل
-  `tochal_summit` مستقیماً به `/destination/tochal` لینک می‌شود و صفحهٔ مستقل ندارد.
+- point: جزئیات مستقل در `/points/{weatherPointSlug}` باز می‌شود؛ نقطهٔ اصلی مثل
+  `tochal` نیز همان URL canonical نقطه را دارد.
   `location.state.fromRoute` فقط برای back CTA و بازگرداندن queryهای planner استفاده می‌شود.
 - copy link: لینک بازسازی‌پذیر برنامه را کپی می‌کند و feedback کوتاه می‌دهد.
 - share: لینک بازسازی‌پذیر فعلی را از queryهای planner آماده می‌کند؛ share server-side در این milestone ساخته نشده است.
@@ -58,7 +58,7 @@ Route باید زمان شروع، سرعت حرکت، تغییر شرایط د�
 
 ## ۷. داده‌های موردنیاز
 
-- route: slug، origin، destination، distance، ascent، `one_way_minutes` (صعود یک‌طرفهٔ متوسط) و نقاط مسیر. `round_trip_minutes` برای زمان صعود یک‌طرفه استفاده نمی‌شود.
+- route: slug، origin، target point، distance، ascent، `one_way_minutes` (صعود یک‌طرفهٔ متوسط) و نقاط مسیر. `round_trip_minutes` برای زمان صعود یک‌طرفه استفاده نمی‌شود.
 - هر point: نام، ترتیب، زمان رسیدن تقریبی (`حدود …`)، آیکون/شرط/دما/باد/severity همان نقطه در نزدیک‌ترین ساعت به رسیدن (±۹۰ دقیقه)، و نشان `تخمینی · ±N دقیقه` وقتی timing estimated و uncertainty موجود است. عنوان period عمومی بالای هر نقطه نمایش داده نمی‌شود. severity کارت فقط از forecast همان نقطه می‌آید.
 - اگر timing pending/unusable است (از جمله estimated ناقص بدون cumulative کامل)، کارت نباید ETA یا weather ساختگی نشان دهد؛ متن فارسی «زمان‌بندی در دسترس نیست» کافی است و رشتهٔ خام `timing_pending` نمایش داده نمی‌شود.
 - start time، speed profile (ضریب زمان آرام/متوسط/سریع) و محاسبهٔ arrival.
@@ -82,7 +82,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 
 ## ۹. تفاوت mobile و web
 
-- mobile: hero مسیر هم‌اندازهٔ hero فشردهٔ مقصد و بدون breadcrumb تکراری است؛ عنوان و status در دو سوی hero و در مرکز ارتفاع آن می‌مانند. «مسیرهای دیگر» فقط trigger فشردهٔ پایین hero است و siblingها را در bottom sheet باز می‌کند؛ grid دسکتاپ siblingها در mobile دیده نمی‌شود. اولین کارت بعد از hero، label انتخاب روز و کنترل مشترک چهارگزینه‌ای نیمه‌شب/صبح/ظهر/شب را در یک ردیف و tabهای روز را در ردیف بعد دارد. کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف.
+- mobile: hero مسیر هم‌اندازهٔ hero فشردهٔ نقطه و بدون breadcrumb تکراری است؛ عنوان و status در دو سوی hero و در مرکز ارتفاع آن می‌مانند. «مسیرهای دیگر» فقط trigger فشردهٔ پایین hero است و siblingها را در bottom sheet باز می‌کند؛ grid دسکتاپ siblingها در mobile دیده نمی‌شود. اولین کارت بعد از hero، label انتخاب روز و کنترل مشترک چهارگزینه‌ای نیمه‌شب/صبح/ظهر/شب را در یک ردیف و tabهای روز را در ردیف بعد دارد. کنترل‌ها کوچک و هم‌ارتفاع؛ ساعت و سرعت در یک ردیف؛ خط جداکنندهٔ عمودی حذف.
 - نقاط مسیر و کارت خلاصهٔ هوای همان نقاط روی یک محور و scroll-owner مشترک
   بمانند؛ در web حداکثر شش نقطه هم‌زمان دیده شود و بقیه افقی scroll شوند.
   در mobile نیز همین owner مشترک با اندازهٔ فشرده‌تر حفظ شود، نه دو اسکرول
@@ -98,7 +98,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 
 ## ۱۱. قواعد RTL و دسترسی‌پذیری
 
-- متن و navigation RTL؛ axis از origin به destination از نظر معنایی واضح و با label ابتدا/انتها مشخص باشد.
+- متن و navigation RTL؛ axis از origin به target point از نظر معنایی واضح و با label ابتدا/انتها مشخص باشد.
 - slider ساعت label، value و keyboard step داشته باشد؛ جهت فیزیکی slider نباید کاربر RTL را گمراه کند.
 - سرعت و period با role مناسب و state اعلام‌شده پیاده شوند.
 - کارت decision هشدار را با heading و متن توضیحی ارائه کند؛ coral به‌تنهایی کافی نیست.
@@ -114,7 +114,7 @@ API plan باید idempotent/read-oriented باشد و provider را به fronte
 - عبارت «تغییرات شب · هر دو ساعت» از Route حذف شده باشد.
 - کارت‌های weather زیر محور برای هر RoutePoint ساخته شوند، نه forecast عمومی قله؛ بدون fallback قله برای نقطهٔ بدون داده.
 - در timing pending، fallback ثابت ظهر برای periodهای دیگر استفاده نشود.
-- قلهٔ توچال از Route به صفحهٔ canonical مقصد می‌رود.
+- قلهٔ توچال از Route به صفحهٔ canonical نقطه `/points/tochal` می‌رود.
 - gauge در ورود به Route زمان فعلی تهران را نشان می‌دهد و بخش گذشته dim است.
 - root overflow افقی نداشته باشد؛ هر scroll احتمالی scoped باشد.
 - کپی لینک، queryهای `date`، `period`، `start_time` و `speed` را برای بازسازی برنامه منتقل می‌کند.

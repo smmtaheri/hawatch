@@ -18,7 +18,7 @@
 ## محتوا و interaction
 
 - [ ] نام محصول «هواچ» است.
-- [ ] مقصد، مسیر، روز و period انتخاب‌شده قابل تشخیص‌اند.
+- [ ] نقطه، مسیر، روز و period انتخاب‌شده قابل تشخیص‌اند.
 - [ ] وضعیت normal/change/critical هم متن دارد و هم نشانهٔ بصری.
 - [ ] loading، ready، empty، error، stale و partial-data فضای معتبر دارند.
 - [ ] focus و keyboard order قابل استفاده‌اند.
@@ -26,6 +26,6 @@
 ## صفحه‌های ویژه
 
 - [ ] Home: search input و button overlap ندارند.
-- [ ] Destination mobile: dayها قبل از controls، routeها دو ستونه و عنوان «مسیرها» است.
+- [ ] Point mobile: dayها قبل از controls، routeها دو ستونه و عنوان «مسیرها» است.
 - [ ] Route mobile: controls هم‌ارتفاع، ساعت و سرعت هم‌ردیف، خط عمودی حذف و period مشترک است.
 - [ ] Login به‌عنوان reference باقی مانده و implementation ندارد.

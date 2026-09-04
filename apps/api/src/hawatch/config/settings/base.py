@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "hawatch.modules.catalog",
+    # Historical migration namespace only; 0006 drops its legacy table.
     "hawatch.modules.destinations",
     "hawatch.modules.routes",
     "hawatch.modules.forecasts",
@@ -118,6 +119,7 @@ CORS_ALLOW_CREDENTIALS = False
 DEMO_DATA_ENABLED = env_bool("DEMO_DATA_ENABLED", True)
 DEMO_SEED_VERSION = env("DEMO_SEED_VERSION", "hawatch-demo-v1")
 HAWATCH_SCHEMA_VERSION = "1"
+PUBLIC_SITE_ORIGIN = env("HAWATCH_PUBLIC_ORIGIN", "https://hawatch.ir").rstrip("/")
 REDIS_URL = os.environ.get("REDIS_URL", "")
 WEATHER_PROXY_URL = os.environ.get("WEATHER_PROXY_URL", "")
 OPEN_METEO_BASE_URL = env("OPEN_METEO_BASE_URL", "https://api.open-meteo.com/v1/forecast")

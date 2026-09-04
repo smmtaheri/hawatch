@@ -356,11 +356,11 @@ run_stack() {
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/" >/dev/null
-  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/destinations/" >/dev/null
-  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/destinations/touchal/" >/dev/null
-  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/destinations/touchal/forecast/" >/dev/null
-  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/routes/touchal-darband/" >/dev/null
-  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/routes/touchal-darband/forecast/" >/dev/null
+  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/" >/dev/null
+  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/tochal/" >/dev/null
+  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/tochal/forecast/" >/dev/null
+  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/routes/tochal-darband/" >/dev/null
+  curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/routes/tochal-darband/forecast/" >/dev/null
 
   if [[ "$RUN_INITIAL_INGEST" == "1" ]]; then
     log "Running one initial live ingest. Set RUN_INITIAL_INGEST=0 to skip it."

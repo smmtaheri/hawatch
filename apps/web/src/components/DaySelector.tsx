@@ -15,7 +15,7 @@ export function PeriodControlRow({
   onChange,
   periodStates,
   label = "بازهٔ نمایش هوا",
-  className = "destination-period-row",
+  className = "point-period-row",
 }: {
   period: PeriodId;
   onChange: (period: PeriodId) => void;

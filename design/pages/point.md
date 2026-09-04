@@ -1,13 +1,12 @@
-# مشخصات صفحهٔ Point → هدایت به Forecast Place
+# مشخصات صفحهٔ Point
 
 > **بازنشسته.** قالب بصری مستقل Point وجود ندارد.
 
 محتوای رفتاری و acceptance به قالب مشترک منتقل شده است:
 
-- [place-forecast.md](./place-forecast.md) — قالب مشترک Destination و Point
-- [destination.md](./destination.md) — baseline بصری و کنترل‌ها
+- [place-forecast.md](./place-forecast.md) — قالب پیش‌بینی نقطه
+- [point-forecast.md](./point-forecast.md) — baseline بصری و کنترل‌ها
 - [docs/page-specs/point-behavior.md](../../docs/page-specs/point-behavior.md) — فقط تفاوت‌های محتوایی URL نقطه
 
-URL عمومی `/points/{weatherPointSlug}` برای نقطه‌های مستقل باقی می‌ماند، اما همان
-`PlaceForecastPage` را رندر می‌کند؛ WeatherPoint مقصدی فقط از URL مقصد canonical
-لینک می‌شود و صفحهٔ مستقل ندارد.
+URL عمومی `/points/{weatherPointSlug}` برای همهٔ نقطه‌هاست و همان
+`PlaceForecastPage` را رندر می‌کند؛ هر نقطه با شناسهٔ canonical خودش لینک می‌شود.

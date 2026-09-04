@@ -1,33 +1,14 @@
 {
   "catalog_version": "hawatch-dorfak-catalog-v1",
-  "destination_weather_point": "dorfak_summit",
-  "destination": {
-    "slug": "dorfak",
-    "tile_name": "درفک",
-    "name": "قلهٔ درفک",
-    "short_category": "کوه",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "البرز غربی · گیلان",
-    "elevation_m": 2733,
-    "latitude": 36.89051,
-    "longitude": 49.69935,
-    "image": "/images/home-scene.png",
-    "image_alt": "نمای کوهستانی قلهٔ درفک",
-    "popular_order": 0,
-    "climate": "alpine",
-    "is_popular": false,
-    "is_active": true
-  },
   "weather_points": {
-    "dorfak_summit": {
+    "dorfak": {
       "name": "قلهٔ درفک",
       "latitude": 36.89051,
       "longitude": 49.69935,
       "elevation_m": 2733,
       "elevation_source": "منابع کوهنوردی: ۲۷۳۳ متر؛ waypointهای مستقل GPX حدود ۲۷۱۰ متر؛ Open-Meteo GLO-90 DEM در مختصات catalog حدود ۲۷۰۲ متر؛ مقدار catalog برای نمایش قله provisional است",
       "status": "provisional",
-      "kind": "destination",
+      "kind": "primary",
       "page_name": "قلهٔ درفک",
       "short_label": "قلهٔ درفک",
       "place_type": "summit",
@@ -251,7 +232,6 @@
       "subtitle": "مسیر شرقی درفک از شاه‌شهیدان، تیرهای برق و چشمه تا قله",
       "trail_label": "مسیر شرقی شاه‌شهیدان",
       "origin": "شاه‌شهیدان",
-      "destination_label": "قلهٔ درفک",
       "region": "البرز غربی · گیلان",
       "featured": true,
       "sort_order": 1,
@@ -260,7 +240,7 @@
         "dorfak-east-tir-bargh",
         "dorfak-east-cheshmeh",
         "dorfak-east-ghar-yakhi",
-        "dorfak_summit"
+        "dorfak"
       ],
       "distance_km": 14.4,
       "ascent_m": 1090,
@@ -291,11 +271,11 @@
           "dorfak-east-tir-bargh": 70,
           "dorfak-east-cheshmeh": 165,
           "dorfak-east-ghar-yakhi": 270,
-          "dorfak_summit": 360
+          "dorfak": 360
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ درفک"
     },
     "shirkuh_to_dorfak": {
       "slug": "dorfak-shirkuh",
@@ -303,7 +283,6 @@
       "subtitle": "مسیر غربی درفک از شیرکوه، لارنه و جیرونی تا قله",
       "trail_label": "مسیر غربی شیرکوه",
       "origin": "شیرکوه",
-      "destination_label": "قلهٔ درفک",
       "region": "البرز غربی · گیلان",
       "featured": true,
       "sort_order": 2,
@@ -312,7 +291,7 @@
         "dorfak-west-larneh",
         "dorfak-jeyruni-spring",
         "dorfak-west-defraz-ridge",
-        "dorfak_summit"
+        "dorfak"
       ],
       "distance_km": 15.8,
       "ascent_m": 2460,
@@ -343,11 +322,11 @@
           "dorfak-west-larneh": 145,
           "dorfak-jeyruni-spring": 300,
           "dorfak-west-defraz-ridge": 420,
-          "dorfak_summit": 480
+          "dorfak": 480
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ درفک"
     },
     "estakhrgah_to_dorfak": {
       "slug": "dorfak-estakhrgah",
@@ -355,7 +334,6 @@
       "subtitle": "مسیر جنوبی جنگلی درفک از استخرگاه، چشمه و لبهٔ جنگل تا قله",
       "trail_label": "مسیر جنوبی استخرگاه",
       "origin": "استخرگاه",
-      "destination_label": "قلهٔ درفک",
       "region": "البرز غربی · گیلان",
       "featured": true,
       "sort_order": 3,
@@ -363,7 +341,7 @@
         "dorfak-south-estakhrgah",
         "dorfak-jeyruni-spring",
         "dorfak-south-forest-edge",
-        "dorfak_summit"
+        "dorfak"
       ],
       "distance_km": 11.5,
       "ascent_m": 1835,
@@ -392,11 +370,30 @@
           "dorfak-south-estakhrgah": 0,
           "dorfak-jeyruni-spring": 180,
           "dorfak-south-forest-edge": 215,
-          "dorfak_summit": 360
+          "dorfak": 360
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ درفک"
     }
-  }
+  },
+  "point": {
+    "slug": "dorfak",
+    "tile_name": "درفک",
+    "name": "قلهٔ درفک",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · گیلان",
+    "elevation_m": 2733,
+    "latitude": 36.89051,
+    "longitude": 49.69935,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ درفک",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true
+  },
+  "primary_point": "dorfak"
 }

@@ -781,11 +781,11 @@ html[data-theme="light"] .route-page .share-gear li {
   }
 }
 
-.destination-page .hour-item.is-current {
+.point-page .hour-item.is-current {
   position: relative;
 }
 
-.destination-page .hour-item.is-current::after {
+.point-page .hour-item.is-current::after {
   position: absolute;
   inset-inline: 18%;
   bottom: 0;
@@ -795,7 +795,7 @@ html[data-theme="light"] .route-page .share-gear li {
   content: "";
 }
 
-html[data-theme="light"] .destination-page .hour-item.is-current::after {
+html[data-theme="light"] .point-page .hour-item.is-current::after {
   background: #1d7f86;
 }
 
@@ -809,7 +809,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
 }
 
 /*
-  Restore mobile destination/route presentation to match design/screens.
+  Restore mobile point/route presentation to match design/screens.
   A later compact layer in hawatch.css shrinks the hero to 116px and
   over-compresses type; keep desktop rules untouched.
 */
@@ -821,7 +821,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     overflow-x: hidden;
   }
 
-  .destination-page .destination-hero {
+  .point-page .point-hero {
     position: relative;
     display: block !important;
     align-items: stretch !important;
@@ -833,11 +833,11 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     overflow: hidden;
   }
 
-  .destination-page .destination-hero img {
+  .point-page .point-hero img {
     display: none;
   }
 
-  .destination-page .destination-heading {
+  .point-page .point-heading {
     position: absolute;
     top: 50%;
     right: 18px;
@@ -848,22 +848,22 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     z-index: 2;
   }
 
-  .destination-page .destination-heading .breadcrumb {
+  .point-page .point-heading .breadcrumb {
     display: none;
   }
 
-  .destination-page .destination-heading h1 {
+  .point-page .point-heading h1 {
     margin: 4px 0 0;
     font-size: clamp(27px, 7.5vw, 34px);
     line-height: 1.25;
   }
 
-  .destination-page .destination-heading > p:last-child {
+  .point-page .point-heading > p:last-child {
     margin-top: 4px;
     font-size: 10px;
   }
 
-  .destination-page .hero-status-stack {
+  .point-page .hero-status-stack {
     position: absolute;
     inset: 50% auto auto 14px;
     transform: translateY(-50%);
@@ -872,7 +872,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     z-index: 2;
   }
 
-  .destination-page .hero-status-stack .status-pill {
+  .point-page .hero-status-stack .status-pill {
     text-align: center;
     border-radius: 12px;
     min-height: 0;
@@ -881,7 +881,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     line-height: 1.35;
   }
 
-  .destination-page .day-tabs {
+  .point-page .day-tabs {
     display: flex !important;
     gap: 8px;
     width: 100%;
@@ -893,7 +893,7 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     scrollbar-width: thin;
   }
 
-  .destination-page .day-tabs button {
+  .point-page .day-tabs button {
     flex: 0 0 84px;
     width: 84px;
     min-height: 44px;
@@ -902,30 +902,30 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     font-size: 12px;
   }
 
-  .destination-page .destination-period-row {
+  .point-page .point-period-row {
     display: grid;
     gap: 8px;
     margin-bottom: 12px;
   }
 
-  .destination-page .destination-period-row .daypart-toggle button {
+  .point-page .point-period-row .daypart-toggle button {
     border-radius: 12px;
     min-height: 40px;
     padding: 8px 10px;
     font-size: 13px;
   }
 
-  .destination-page .hourly-box {
+  .point-page .hourly-box {
     border-radius: 16px;
     overflow: hidden;
   }
 
-  .destination-page .hourly-head {
+  .point-page .hourly-head {
     padding: 10px 12px;
     font-size: 12px;
   }
 
-  .destination-page .hours-grid {
+  .point-page .hours-grid {
     display: grid !important;
     grid-template-columns: repeat(var(--hour-count, 3), minmax(0, 1fr)) !important;
     width: 100%;
@@ -933,46 +933,46 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     overflow: hidden !important;
   }
 
-  .destination-page .hour-item {
+  .point-page .hour-item {
     min-width: 0;
     min-height: 132px;
     padding: 10px 3px 12px;
   }
 
-  .destination-page .hour-item > strong {
+  .point-page .hour-item > strong {
     font-size: 11px;
   }
 
-  .destination-page .hour-item .weather-symbol {
+  .point-page .hour-item .weather-symbol {
     margin: 8px 0 2px;
     font-size: 22px;
   }
 
-  .destination-page .hour-item b {
+  .point-page .hour-item b {
     font-size: 16px;
   }
 
-  .destination-page .hour-item small {
+  .point-page .hour-item small {
     font-size: 10px;
   }
 
-  .destination-page .weather-card,
-  .destination-page .technical-card,
-  .destination-page .destination-decision-card {
+  .point-page .weather-card,
+  .point-page .technical-card,
+  .point-page .point-decision-card {
     padding: 16px 14px;
   }
 
-  .destination-page .technical-card .metric-label {
+  .point-page .technical-card .metric-label {
     font-size: 11px;
     line-height: 1.35;
   }
 
-  .destination-page .technical-card .metric strong {
+  .point-page .technical-card .metric strong {
     margin-top: 4px;
     font-size: 18px;
   }
 
-  .destination-page .technical-card .metric small {
+  .point-page .technical-card .metric small {
     font-size: 11px;
   }
 
@@ -1083,14 +1083,14 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
 
 @media (width <= 720px) {
   .hours-grid,
-  .destination-page .hours-grid {
+  .point-page .hours-grid {
     grid-template-columns: repeat(var(--hour-count, 3), 112px) !important;
     overflow-x: auto !important;
     overscroll-behavior-inline: contain;
     scrollbar-width: thin;
   }
 
-  .destination-page .destination-period-row {
+  .point-page .point-period-row {
     display: flex !important;
     flex: 0 0 auto;
     flex-direction: row !important;
@@ -1099,11 +1099,11 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     min-width: 0;
   }
 
-  .destination-page .destination-period-row .planner-label {
+  .point-page .point-period-row .planner-label {
     flex: 0 0 auto !important;
   }
 
-  .destination-page .destination-period-row .daypart-toggle {
+  .point-page .point-period-row .daypart-toggle {
     display: grid !important;
     flex: 0 0 120px !important;
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
@@ -1111,50 +1111,50 @@ html[data-theme="light"] .destination-page .hour-item.is-current::after {
     gap: 3px;
   }
 
-  .destination-page .destination-period-row .daypart-toggle button {
+  .point-page .point-period-row .daypart-toggle button {
     min-width: 0;
     min-height: 30px !important;
     padding: 3px 2px;
     border-radius: 8px;
   }
 
-  .destination-page .forecast-day-period-controls {
+  .point-page .forecast-day-period-controls {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     column-gap: 10px;
   }
 
-  .destination-page .forecast-day-period-controls .forecast-day-heading {
+  .point-page .forecast-day-period-controls .forecast-day-heading {
     grid-column: 1;
     grid-row: 1;
     margin: 0;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row {
+  .point-page .forecast-day-period-controls .point-period-row {
     grid-column: 2;
     grid-row: 1;
     width: auto;
     margin: 0;
   }
 
-  .destination-page .forecast-day-period-controls .day-tabs {
+  .point-page .forecast-day-period-controls .day-tabs {
     grid-column: 1 / -1;
     grid-row: 2;
   }
 }
 
-/* Forecast Place uses destination shell for both /destination and /points */
+/* Point Forecast uses the shared point shell for every /points page. */
 
-.destination-page .destination-hero--fallback .destination-hero-fallback,
-.destination-page .destination-hero-fallback {
+.point-page .point-hero--fallback .point-hero-fallback,
+.point-page .point-hero-fallback {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(145deg, #1a4a55 0%, #0f3340 45%, #173846 100%);
 }
 
-.destination-page .destination-hero--fallback img {
+.point-page .point-hero--fallback img {
   display: none;
 }
 
@@ -1262,33 +1262,33 @@ html[data-theme="light"] .brand-logo--light-surface {
 }
 
 .specialist-metrics-mobile,
-.mobile-destination-decision {
+.mobile-point-decision {
   display: none;
 }
 
 @media (width <= 720px) {
-  .destination-page .technical-card .specialist-metrics-desktop,
-  .destination-page .destination-side .desktop-destination-decision {
+  .point-page .technical-card .specialist-metrics-desktop,
+  .point-page .point-side .desktop-point-decision {
     display: none;
   }
 
-  .destination-page .technical-card .specialist-metrics-mobile,
-  .destination-page .mobile-destination-decision {
+  .point-page .technical-card .specialist-metrics-mobile,
+  .point-page .mobile-point-decision {
     display: block;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview,
+  .point-page .technical-card .specialist-metrics-preview,
   .specialist-metrics-sheet-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview {
+  .point-page .technical-card .specialist-metrics-preview {
     margin-top: 12px;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview .metric,
+  .point-page .technical-card .specialist-metrics-preview .metric,
   .specialist-metrics-sheet-grid .metric {
     min-width: 0;
     min-height: 104px;
@@ -1298,25 +1298,25 @@ html[data-theme="light"] .brand-logo--light-surface {
     background: var(--internal-surface-soft, #14333e);
   }
 
-  .destination-page .technical-card .specialist-metrics-preview .metric-label,
+  .point-page .technical-card .specialist-metrics-preview .metric-label,
   .specialist-metrics-sheet-grid .metric-label {
     gap: 5px;
     font-size: 10px;
     line-height: 1.35;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview .specialist-metric-icon,
+  .point-page .technical-card .specialist-metrics-preview .specialist-metric-icon,
   .specialist-metrics-sheet-grid .specialist-metric-icon {
     width: 22px;
     height: 22px;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview .metric strong,
+  .point-page .technical-card .specialist-metrics-preview .metric strong,
   .specialist-metrics-sheet-grid .metric strong {
     font-size: 17px;
   }
 
-  .destination-page .technical-card .specialist-metrics-preview .metric small,
+  .point-page .technical-card .specialist-metrics-preview .metric small,
   .specialist-metrics-sheet-grid .metric small {
     font-size: 9px;
     line-height: 1.35;
@@ -1408,7 +1408,7 @@ html[data-theme="light"] .brand-logo--light-surface {
     line-height: 1;
   }
 
-  .destination-page .mobile-destination-decision {
+  .point-page .mobile-point-decision {
     margin-top: 16px;
   }
 }
@@ -1554,14 +1554,14 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
 /* The compact cards have room for exactly two factual rows.  Do not let the
  * old two-line clamp treat both facts as one truncatable text block. */
-.destination-page .compact-route-box .route-copy .route-details {
+.point-page .compact-route-box .route-copy .route-details {
   display: grid;
   -webkit-line-clamp: unset;
   -webkit-box-orient: initial;
   overflow: visible;
 }
 
-/* Route mobile follows the destination information hierarchy: date and
+/* Route mobile follows the point information hierarchy: date and
  * period first, then movement controls, then route points. */
 @media (width <= 720px) {
   .route-page .route-sibling-nav {
@@ -1723,7 +1723,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
-.destination-page .compact-route-box .route-copy .route-detail {
+.point-page .compact-route-box .route-copy .route-detail {
   color: var(--internal-muted, #a8c1c0);
   font-size: 9px;
   line-height: 1.45;
@@ -1973,19 +1973,19 @@ html:not([data-theme="light"]) .search-result-row:hover {
     font-size: 20px;
   }
 
-  .destination-page > .destination-shell > .destination-side > .top-routes-card,
-  .destination-page .destination-side > .top-routes-card {
+  .point-page > .point-shell > .point-side > .top-routes-card,
+  .point-page .point-side > .top-routes-card {
     display: none;
   }
 
-  .destination-page .destination-period-row .daypart-toggle {
+  .point-page .point-period-row .daypart-toggle {
     display: grid !important;
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 5px;
     width: 100%;
   }
 
-  .destination-page .destination-period-row .daypart-toggle button {
+  .point-page .point-period-row .daypart-toggle button {
     min-width: 0;
     padding-inline: 4px;
   }
@@ -2244,7 +2244,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
 /* Back has its own row above the place/route hero so it remains clear and
  * visible after the detail page's automatic initial scroll. */
-.destination-page .page-back-navigation,
+.point-page .page-back-navigation,
 .route-page .page-back-navigation {
   display: flex;
   direction: rtl;
@@ -2253,51 +2253,51 @@ html:not([data-theme="light"]) .search-result-row:hover {
   min-height: 40px;
 }
 
-.destination-page .page-back-navigation .page-back-link,
+.point-page .page-back-navigation .page-back-link,
 .route-page .page-back-navigation .page-back-link {
   margin: 10px 0 8px;
 }
 
 @media (width <= 720px) {
-  .destination-page .destination-shell > .site-header,
+  .point-page .point-shell > .site-header,
   .route-page .route-shell > .site-header {
     height: 62px;
     min-height: 62px;
     gap: 12px;
   }
 
-  .destination-page .destination-shell > .site-header .brand-logo,
+  .point-page .point-shell > .site-header .brand-logo,
   .route-page .route-shell > .site-header .brand-logo {
     width: 92px;
     height: 28px;
   }
 
-  .destination-page .destination-shell > .site-header .header-actions,
+  .point-page .point-shell > .site-header .header-actions,
   .route-page .route-shell > .site-header .header-actions {
     gap: 7px;
   }
 
-  .destination-page .destination-shell > .site-header .account-status,
+  .point-page .point-shell > .site-header .account-status,
   .route-page .route-shell > .site-header .account-status,
-  .destination-page .destination-shell > .site-header .theme-toggle,
+  .point-page .point-shell > .site-header .theme-toggle,
   .route-page .route-shell > .site-header .theme-toggle {
     min-height: 32px;
     padding-block: 4px;
     font-size: 10px;
   }
 
-  .destination-page .page-back-navigation,
+  .point-page .page-back-navigation,
   .route-page .page-back-navigation {
     min-height: 34px;
   }
 
-  .destination-page .page-back-navigation .page-back-link,
+  .point-page .page-back-navigation .page-back-link,
   .route-page .page-back-navigation .page-back-link {
     margin: 7px 0 5px;
     font-size: 10px;
   }
 
-  .destination-page .destination-hero,
+  .point-page .point-hero,
   .route-page .route-hero {
     margin-top: 10px !important;
   }
@@ -2306,23 +2306,23 @@ html:not([data-theme="light"]) .search-result-row:hover {
 /* Desktop keeps the route header compact while preserving a separate lane for
  * Back above the route identity. */
 @media (min-width: 721px) {
-  .destination-page .destination-hero {
+  .point-page .point-hero {
     height: 220px !important;
   }
 
-  .destination-page .destination-heading {
+  .point-page .point-heading {
     top: 48px;
   }
 
-  .destination-page .hero-status-stack {
+  .point-page .hero-status-stack {
     top: 40px;
   }
 
-  /* Keep destination and route planning controls identical on desktop: the
+  /* Keep point and route planning controls identical on desktop: the
    * day label and compact period control share the top row, while the day
    * tabs occupy the full row beneath them. Mobile has its own compact layout
    * below this breakpoint and must not inherit these dimensions. */
-  .destination-page .forecast-day-period-controls {
+  .point-page .forecast-day-period-controls {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(250px, 390px);
     grid-template-areas:
@@ -2332,18 +2332,18 @@ html:not([data-theme="light"]) .search-result-row:hover {
     row-gap: 10px;
   }
 
-  .destination-page .forecast-day-period-controls .forecast-day-heading {
+  .point-page .forecast-day-period-controls .forecast-day-heading {
     grid-area: heading;
     align-self: start;
     margin: 0;
   }
 
-  .destination-page .forecast-day-period-controls .day-tabs {
+  .point-page .forecast-day-period-controls .day-tabs {
     grid-area: days;
     margin: 0;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row {
+  .point-page .forecast-day-period-controls .point-period-row {
     display: flex !important;
     grid-area: period;
     align-items: center;
@@ -2353,7 +2353,7 @@ html:not([data-theme="light"]) .search-result-row:hover {
     margin: 0;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row .planner-label,
+  .point-page .forecast-day-period-controls .point-period-row .planner-label,
   .route-page .route-planner-day-period .route-period-row .planner-label {
     flex: 0 0 auto;
     white-space: nowrap;
@@ -2361,14 +2361,14 @@ html:not([data-theme="light"]) .search-result-row:hover {
     line-height: 1.3;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row .daypart-toggle,
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle {
     flex: 0 0 220px;
     width: 220px;
     gap: 4px;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row .daypart-toggle button,
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
     min-width: 0;
     min-height: 36px;
@@ -2377,13 +2377,13 @@ html:not([data-theme="light"]) .search-result-row:hover {
     font-size: 11px;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row .daypart-toggle button strong,
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button strong,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
     font-size: 11px;
     line-height: 1.2;
   }
 
-  .destination-page .forecast-day-period-controls .destination-period-row .daypart-toggle button small,
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button small,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle button small {
     font-size: 9px;
     line-height: 1.2;
@@ -2597,16 +2597,16 @@ html:not([data-theme="light"]) .search-result-row:hover {
  * keep the remaining routes in a compact menu. Mobile has its own selector
  * and remains governed by the max-width rules above. */
 @media (min-width: 721px) {
-  .destination-page .desktop-route-selection {
+  .point-page .desktop-route-selection {
     position: relative;
   }
 
-  .destination-page .desktop-route-selection .desktop-route-cards {
+  .point-page .desktop-route-selection .desktop-route-cards {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .destination-page .desktop-route-selection.single-route .desktop-route-cards {
+  .point-page .desktop-route-selection.single-route .desktop-route-cards {
     grid-template-columns: minmax(0, 280px);
     justify-content: start;
   }
@@ -2664,22 +2664,22 @@ html:not([data-theme="light"]) .search-result-row:hover {
 }
 
 @media (min-width: 721px) and (max-width: 1050px) {
-  .destination-page .desktop-route-selection .desktop-route-cards {
+  .point-page .desktop-route-selection .desktop-route-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 720px) {
-  .destination-page .desktop-route-selection {
+  .point-page .desktop-route-selection {
     display: none;
   }
 }
 
-/* Keep the destination/point planner visually identical to the route planner
+/* Keep the point planner visually identical to the route planner
  * on desktop. The wrappers are intentionally unstyled below 720px, so the
  * existing mobile weather-card layout remains unchanged. */
 @media (min-width: 721px) {
-  .destination-page .weather-card {
+  .point-page .weather-card {
     display: grid;
     gap: 14px;
     padding: 0;
@@ -2688,8 +2688,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
     box-shadow: none;
   }
 
-  .destination-page .destination-planner-controls,
-  .destination-page .destination-forecast-output {
+  .point-page .point-planner-controls,
+  .point-page .point-forecast-output {
     border: 1px solid var(--internal-border, #bee1dd2e);
     border-radius: var(--brand-radius, 18px);
     color: var(--internal-text, #edf7f4);
@@ -2701,19 +2701,19 @@ html:not([data-theme="light"]) .search-result-row:hover {
     box-shadow: var(--brand-shadow, 0 14px 32px #102b3d12);
   }
 
-  .destination-page .destination-planner-controls {
+  .point-page .point-planner-controls {
     padding: 22px 24px;
   }
 
-  .destination-page .destination-planner-controls .forecast-day-period-controls {
+  .point-page .point-planner-controls .forecast-day-period-controls {
     row-gap: 14px;
   }
 
-  .destination-page .destination-forecast-output {
+  .point-page .point-forecast-output {
     overflow: hidden;
   }
 
-  .destination-page .destination-forecast-output .hourly-box {
+  .point-page .point-forecast-output .hourly-box {
     border: 0;
     border-radius: inherit;
     background: transparent;
@@ -2774,7 +2774,7 @@ h3 {
 }
 
 .hero-copy h1,
-.destination-heading h1,
+.point-heading h1,
 .route-hero h1,
 .login-overlay-content h1 {
   max-width: 100%;
@@ -2804,7 +2804,7 @@ h3 {
 .point-heading h3,
 .route-sibling-link strong,
 .mobile-route-sheet-item-copy strong,
-.destination-tile strong {
+.point-tile strong {
   font-size: var(--font-size-card-title);
   font-weight: var(--weight-semibold);
   line-height: 1.4;
@@ -2841,7 +2841,7 @@ h3 {
 .route-point-weather-card > small,
 .hour-item > small,
 .metric small,
-.destination-tile small,
+.point-tile small,
 .home-catalog-stat span,
 .mobile-route-sheet-item-copy small,
 .route-linear-order,
@@ -2888,7 +2888,7 @@ bdi,
 
 @media (max-width: 720px) {
   .hero-copy h1,
-  .destination-heading h1,
+  .point-heading h1,
   .route-hero h1,
   .login-overlay-content h1 {
     font-size: clamp(2rem, 9vw, 2.25rem);
@@ -2920,7 +2920,7 @@ bdi,
     font-size: max(0.8125rem, var(--font-size-control));
   }
 
-  .destination-page .day-tabs button,
+  .point-page .day-tabs button,
   .route-page .day-tabs button,
   .route-page .route-day-tabs button,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong,
@@ -2933,7 +2933,7 @@ bdi,
     font-size: clamp(2rem, 9vw, 2.25rem) !important;
   }
 
-  .destination-page .destination-heading h1 {
+  .point-page .point-heading h1 {
     font-size: clamp(2rem, 9vw, 2.25rem) !important;
   }
 
@@ -2992,7 +2992,7 @@ bdi,
 }
 
 @media (min-width: 721px) {
-  .destination-page .period-control-row,
+  .point-page .period-control-row,
   .route-page .period-control-row {
     justify-self: end !important;
     width: max-content !important;

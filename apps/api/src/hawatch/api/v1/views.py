@@ -3,21 +3,21 @@ from __future__ import annotations
 from datetime import timedelta
 
 from django.db import connection
+from django.http import HttpResponse
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
 from hawatch.api.v1.serializers import (
-    destination_forecast,
-    get_destination,
+    get_point,
     get_route,
     get_weather_point,
-    list_destinations,
+    list_points,
     meta_base,
     point_forecast,
     route_forecast,
-    serialize_destination,
+    serialize_point_profile,
     serialize_route,
 )
 from hawatch.modules.catalog.search import search_suggestions
@@ -33,7 +33,6 @@ from hawatch.common.time import (
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
 from hawatch.modules.catalog.runtime import publicly_visible_weather_points
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
-from hawatch.modules.destinations.models import Destination
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
 from hawatch.integrations.weather.ingest import snapshot_freshness
@@ -85,8 +84,8 @@ def health_status(request):
         ).count()
         live_records = ForecastRecord.objects.filter(data_mode="live", provider="open-meteo").count()
         catalog = {
-            "destinations": Destination.objects.filter(is_active=True).count(),
-            "routes": Route.objects.filter(is_active=True, destination__is_active=True).count(),
+            "points": WeatherPoint.objects.filter(is_active=True).count(),
+            "routes": Route.objects.filter(is_active=True).count(),
             "weather_points": publicly_visible_weather_points().count(),
         }
         forecast = {
@@ -119,19 +118,18 @@ def health_status(request):
 
 
 @api_view(["GET"])
-def destinations_list(request):
+def points_list(request):
     refresh_if_bucket_changed()
     query = request.query_params.get("query", "")
-    items = list_destinations(query=query)
+    items = list_points(query=query)
     today = now_tehran().date()
     catalog_counts = {
-        "destinations": Destination.objects.filter(is_active=True).count(),
-        "routes": Route.objects.filter(is_active=True, destination__is_active=True).count(),
-        "points": publicly_visible_weather_points().count(),
+        "points": WeatherPoint.objects.filter(is_active=True).count(),
+        "routes": Route.objects.filter(is_active=True).count(),
     }
     return Response(
         {
-            "results": [serialize_destination(item) for item in items],
+            "results": [serialize_point_profile(item) for item in items],
             "empty": not items,
             "query": query,
             "meta": meta_base(
@@ -144,13 +142,13 @@ def destinations_list(request):
 
 
 @api_view(["GET"])
-def destination_detail(request, slug: str):
+def point_detail(request, slug: str):
     refresh_if_bucket_changed()
-    destination = get_destination(slug)
+    point = get_point(slug)
     today = now_tehran().date()
     return Response(
         {
-            "destination": serialize_destination(destination, include_routes=True),
+            "point": serialize_point_profile(point, include_routes=True),
             "meta": meta_base(selected_date=today, period="morning"),
         }
     )
@@ -164,13 +162,6 @@ def _resolve_date_period(request) -> tuple:
     selected = parse_date(request.query_params.get("date"), default_date) if explicit_date else default_date
     period = parse_period(request.query_params.get("period")) if explicit_period else default_period
     return selected, period
-
-
-@api_view(["GET"])
-def destination_forecast_view(request, slug: str):
-    destination = get_destination(slug)
-    selected, period = _resolve_date_period(request)
-    return Response(destination_forecast(destination, selected_date=selected, period=period))
 
 
 @api_view(["GET"])
@@ -226,3 +217,28 @@ def search_suggestions_view(request):
             "meta": meta_base(selected_date=now_tehran().date(), period="morning"),
         }
     )
+
+
+@api_view(["GET"])
+def robots_txt(_request):
+    body = "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nSitemap: /sitemap.xml\n"
+    return HttpResponse(body, content_type="text/plain; charset=utf-8")
+
+
+@api_view(["GET"])
+def sitemap_xml(_request):
+    from django.utils.html import escape
+
+    from django.conf import settings
+
+    base = settings.PUBLIC_SITE_ORIGIN
+    points = WeatherPoint.objects.filter(
+        is_active=True,
+        seo_indexable=True,
+    ).exclude(slug__startswith="dest:").exclude(slug__startswith="route:").values_list("slug", flat=True)
+    routes = Route.objects.filter(is_active=True).values_list("slug", flat=True)
+    urls = [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    xml.extend(f"<url><loc>{escape(url)}</loc></url>" for url in urls)
+    xml.append("</urlset>")
+    return HttpResponse("".join(xml), content_type="application/xml; charset=utf-8")

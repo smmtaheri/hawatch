@@ -4,22 +4,22 @@
 [`catalog-onboarding.md`](catalog-onboarding.md) شروع کنید. این فایل قرارداد
 فنی و قواعد validation را نگه می‌دارد.
 
-کاتالوگ زنده در دیتابیس نگهداری می‌شود و seeder عمومی فقط ابزار bootstrap/import است. برای افزودن یک مقصد بزرگ مثل دماوند، می‌توان manifest JSON را فقط از stdin به کانتینر فرستاد؛ لازم نیست فایل manifest یا GPX داخل image، repository یا commit قرار بگیرد. برای shared pointهای بین چند مسیر فقط یک slug تعریف کنید و slug را در آرایهٔ `points` مسیرها تکرار کنید.
+کاتالوگ زنده در دیتابیس نگهداری می‌شود و seeder عمومی فقط ابزار bootstrap/import است. برای افزودن یک نقطه بزرگ مثل دماوند، می‌توان manifest JSON را فقط از stdin به کانتینر فرستاد؛ لازم نیست فایل manifest یا GPX داخل image، repository یا commit قرار بگیرد. برای shared pointهای بین چند مسیر فقط یک slug تعریف کنید و slug را در آرایهٔ `points` مسیرها تکرار کنید.
 
 حداقل قرارداد فایل:
 
 - `catalog_version` یکتا و versioned
-- `destination` با فیلدهای متادیتای مقصد و `latitude`/`longitude` ده‌دهی WGS84
+- `point` با فیلدهای متادیتای نقطه و `latitude`/`longitude` ده‌دهی WGS84
 - `weather_points` با `name`، مختصات و `elevation_m`؛ مقدار `null` یعنی ارتفاع هنوز منبع معتبر ندارد
 - `routes` با مشخصات نمایش و آرایهٔ مرتب `points` که فقط به slugهای همین فایل اشاره می‌کند؛
-  برای مقصد بدون route مقدار آن باید `{}` باشد
+  برای نقطه بدون route مقدار آن باید `{}` باشد
 - اختیاری: بلوک `timing` برای مسیرهای دارای زمان‌بندی تخمینی/curated
 
-ورودی‌های لازم برای هر مقصد جدید: یک canonical destination WeatherPoint با مختصات WGS84، نام و منبع ارتفاع. مقصد می‌تواند بدون route منتشر شود؛ در این حالت `routes: {}` کافی است و GPX لازم نیست. اگر route تعریف می‌شود، slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن لازم است. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق route، evidence توصیه‌شده است.
+ورودی‌های لازم برای هر نقطه جدید: یک canonical point WeatherPoint با مختصات WGS84، نام و منبع ارتفاع. نقطه می‌تواند بدون route منتشر شود؛ در این حالت `routes: {}` کافی است و GPX لازم نیست. اگر route تعریف می‌شود، slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن لازم است. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق route، evidence توصیه‌شده است.
 
 ## زمان‌بندی مسیر (catalog-driven)
 
-برای افزودن مقصد بعدی، timing باید از دادهٔ catalog بیاید نه کد اختصاصی:
+برای افزودن نقطه بعدی، timing باید از دادهٔ catalog بیاید نه کد اختصاصی:
 
 - `timing_status`: `pending` | `estimated` | `curated`
 - `one_way_minutes`: مدت صعود یک‌طرفه در pace متوسط؛ **هرگز** در `round_trip_minutes` ذخیره نشود
@@ -59,16 +59,16 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 - Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
 - Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
 - Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): seeds only if no live WeatherPoints exist.
-- Scheduled ingest selects points that are `is_active` + `ingest_enabled` and exposed by an active Destination **profile** or an active Route whose Destination is active. Legacy `WeatherPoint.destination` ownership alone is insufficient. Snapshot revision is `dbrev-…`.
-- Inactive Destination / Route / WeatherPoint rows are omitted from public APIs, siblings, related routes, search, and health catalog counts.
+- Scheduled ingest selects points that are `is_active` + `ingest_enabled` and either `seo_indexable=true` or linked to an active Route. Snapshot revision is `dbrev-…`.
+- Inactive Point / Route / WeatherPoint rows are omitted from public APIs, siblings, related routes, search, and health catalog counts.
 - Admin and catalog import share `normalize_and_publish_route` for ordering, denormalized fields, origin/target, segments, axis, timing demotion, and search rebuild.
 - `tracks/` is local-only research evidence (gitignored); never commit GPX/manifest.
 
-### فلوی استاندارد افزودن مقصد جدید
+### فلوی استاندارد افزودن نقطه جدید
 
-این فلوی عمومی برای دماوند و مقصدهای بعدی است:
+این فلوی عمومی برای دماوند و نقاطی بعدی است:
 
-1. در لوکال یک catalog بسازید؛ اگر route دارید manifest هم بسازید. مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود. برای مقصد بدون route، manifest و GPX لازم نیست و `routes` را `{}` بگذارید.
+1. در لوکال یک catalog بسازید؛ اگر route دارید manifest هم بسازید. مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود. برای نقطه بدون route، manifest و GPX لازم نیست و `routes` را `{}` بگذارید.
 2. قبل از هر write، اعتبارسنجی provider را اجرا کنید:
 
 ```bash
@@ -105,19 +105,18 @@ Import بدون `--prune` است؛ در slug conflict با ردیف operator-man
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py ingest_open_meteo --slugs damavand_summit,damavand_shelter
+  python manage.py ingest_open_meteo --slugs damavand,damavand-shelter-4000
 
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py catalog_preflight --destination damavand --require-forecast --strict
+  python manage.py catalog_preflight --point damavand --require-forecast --strict
 ```
 
-`catalog_preflight` فقط read-only است و canonical link، فعال‌بودن مقصد/route/point، ترتیب route، زنجیرهٔ نقاط، endpointها، timing و آخرین resolution/forecast Open-Meteo را گزارش می‌کند. مقصد بدون route معتبر است؛ در آن حالت route count صفر است و فقط canonical profile/provider بررسی می‌شود. برای نمونه، دریاچهٔ تار به‌دلیل دسترسی غالباً خاکی/آفرودی در این گروه قرار می‌گیرد و نباید ترک خودرو به‌عنوان route پیاده وارد شود. اگر timing ناقص باشد route همچنان قابل نمایش است اما `pending` می‌ماند و پیش‌بینی arrival برای آن ساخته نمی‌شود.
+`catalog_preflight` فقط read-only است و canonical link، فعال‌بودن نقطه/route/point، ترتیب route، زنجیرهٔ نقاط، endpointها، timing و آخرین resolution/forecast Open-Meteo را گزارش می‌کند. نقطه بدون route معتبر است؛ در آن حالت route count صفر است و فقط canonical profile/provider بررسی می‌شود. برای نمونه، دریاچهٔ تار به‌دلیل دسترسی غالباً خاکی/آفرودی در این گروه قرار می‌گیرد و نباید ترک خودرو به‌عنوان route پیاده وارد شود. اگر timing ناقص باشد route همچنان قابل نمایش است اما `pending` می‌ماند و پیش‌بینی arrival برای آن ساخته نمی‌شود.
 
 ### افزودن WeatherPoint و Route بدون deploy
 
 1. Django admin → WeatherPoint: مختصات، DEM elevation، `is_active`/`ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
-2. اختیاری: Destination profile روی همان نقطه.
-3. Route + مرتب‌سازی RoutePointها با cumulative کامل؛ برای متن کاربر فقط `public_note` کوتاه وارد کنید. evidence/منبع/یادداشت GPX را در `internal_note` نگه دارید؛ سرویس publish نرمال‌سازی می‌کند؛ timing ناقص → `pending`.
+2. Route + مرتب‌سازی RoutePointها با cumulative کامل؛ برای متن کاربر فقط `public_note` کوتاه وارد کنید. evidence/منبع/یادداشت GPX را در `internal_note` نگه دارید؛ سرویس publish نرمال‌سازی می‌کند؛ timing ناقص → `pending`.
 4. پس از commit، search index خودکار rebuild می‌شود (بدون restart).
 5. ingest بعدی همهٔ نقاط فعال واجد شرایط را می‌گیرد؛ برای فوری: `ingest_open_meteo --slugs your_slug`.
 
@@ -147,7 +146,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
 
 ```bash
 python3 scripts/validate_open_meteo_catalog.py \
-  --catalog apps/api/fixtures/catalog/my_destination_v1.json
+  --catalog apps/api/fixtures/catalog/my_point_v1.json
 ```
 
 validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
@@ -156,7 +155,7 @@ validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مخ
 
 ```bash
 python3 scripts/validate_open_meteo_catalog.py \
-  --catalog apps/api/fixtures/catalog/my_destination_v1.json \
+  --catalog apps/api/fixtures/catalog/my_point_v1.json \
   --allow-unresolved-elevation
 ```
 
@@ -166,7 +165,7 @@ python3 scripts/validate_open_meteo_catalog.py \
 
 ```bash
 docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py seed_catalog --file catalog/my_destination_v1.json
+  python manage.py seed_catalog --file catalog/my_point_v1.json
 
 docker compose -f infra/compose/compose.yaml exec api \
   python manage.py ingest_open_meteo

@@ -1,0 +1,42 @@
+{
+  "catalog_version": "hawatch-example-point-only-v1",
+  "weather_points": {
+    "example-lake": {
+      "name": "نام نقطه",
+      "aliases": [
+        "نام کوتاه نقطه"
+      ],
+      "latitude": 35.0,
+      "longitude": 52.0,
+      "elevation_m": 2000,
+      "kind": "primary",
+      "status": "provisional",
+      "elevation_source": "Replace with a trusted source and provider/DEM cross-check.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "example-lake",
+    "tile_name": "نام کوتاه نقطه",
+    "name": "نام نقطه",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ کوهستانی",
+    "category_key": "lake",
+    "region": "استان · منطقه",
+    "elevation_m": 2000,
+    "latitude": 35.0,
+    "longitude": 52.0,
+    "image": "/images/home-scene.png",
+    "image_alt": "توضیح تصویر نقطه",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "نام کوتاه نقطه"
+    ]
+  },
+  "primary_point": "example-lake"
+}

@@ -4,10 +4,8 @@
 
 ```text
 Home /
-├── Forecast Place (قالب مشترک)
-│   ├── Destination role  /destination/{destinationSlug}
-│   └── Point role        /points/{weatherPointSlug}
-│       └── (نقطهٔ دارای profile مقصد → لینک مستقیم به Destination canonical)
+├── Points /points/{pointSlug}
+│   └── WeatherPoint با پروفایل و forecast خودش؛ مسیرهای مرتبط
 ├── Route /routes/{routeSlug}
 ├── Login /login?returnTo=... (route-backed overlay؛ OTP هنوز غیرفعال)
 └── Share /share (آینده)
@@ -15,8 +13,7 @@ Home /
 
 ## context و مالکیت داده
 
-- **WeatherPoint** حقیقت فیزیکی است: مختصات، ارتفاع، aliases، forecast.
-- **Destination** نقش عمومی/محصولی صفر یا یک روی یک WeatherPoint است (slug عمومی، hero، محبوبیت) — نه موجودیت فیزیکی جدا.
+- **WeatherPoint** تنها موجودیت نقطه است و هم‌زمان حقیقت فیزیکی، هویت عمومی، پروفایل و forecast را نگه می‌دارد؛ `kind=primary|route_point|shared` فقط ویژگی همین رکورد است.
 - **Route** مجموعهٔ مرتب WeatherPointهاست با `origin_weather_point` و `target_weather_point`.
 - **RoutePoint** فقط عضویت مسیر‌محور است: ترتیب و timing، `public_note` کوتاهِ تأییدشده برای UI، و `internal_note` برای evidence داخلی. `internal_note` هرگز public نمی‌شود.
 - **Weather data** در backend normalize می‌شود؛ UI فقط envelope داخلی را مصرف می‌کند.
@@ -24,6 +21,6 @@ Home /
 ## navigation rules
 
 - برند همیشه Home است.
-- `/destination/*` و `/points/*` یک قالب React مشترک (`PlaceForecastPage`) دارند.
+- همهٔ `/points/*`ها یک قالب React مشترک (`PlaceForecastPage`) دارند.
 - تغییر theme global است اما day/period/route context را reset نمی‌کند.
 - slugها پایدار و قابل اشتراک‌اند.

@@ -13,7 +13,7 @@ function metricLabel(label: string | null | undefined, value: number | null, uni
   return `${toFaDigits(formatted)} ${unit}`;
 }
 
-export function DestinationCard({
+export function PointCard({
   route,
   role,
   onNavigate,

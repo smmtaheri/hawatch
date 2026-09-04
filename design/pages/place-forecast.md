@@ -1,17 +1,17 @@
-# مشخصات قالب مشترک Forecast Place
+# مشخصات قالب مشترک Point Forecast
 
-> **تصمیم محصول:** قالب بصری جداگانه‌ای برای Point وجود ندارد. Destination و Point هر دو همان صفحهٔ React، همان component tree، همان responsive layout و همان theme را رندر می‌کنند. فقط داده و wording ممکن است فرق کند.
+> **تصمیم محصول:** قالب بصری جداگانه‌ای برای Point وجود ندارد. همهٔ نقطه‌ها همان صفحهٔ React، همان component tree، همان responsive layout و همان theme را رندر می‌کنند. فقط داده و wording ممکن است فرق کند.
 
 ## ۱. هدف
 
-کاربر باید بتواند پیش‌بینی یک مکان فیزیکی (WeatherPoint) را ببیند — چه آن نقطه نقش مقصد عمومی داشته باشد (`/destination/{slug}`) و چه نقطهٔ عادی مسیر (`/points/{slug}`).
+کاربر باید بتواند پیش‌بینی یک مکان فیزیکی (WeatherPoint) را ببیند؛ همهٔ مکان‌ها از `/points/{slug}` قابل دسترسی‌اند.
 
 ## ۲. هویت domain
 
 | مفهوم | نقش |
 | --- | --- |
-| **WeatherPoint** | موجودیت فیزیکی: مختصات، ارتفاع، forecast، aliases |
-| **Destination (profile)** | نقش عمومی/محصولی صفر یا یک برای یک WeatherPoint (تصویر، عنوان، محبوبیت، slug عمومی) |
+| **WeatherPoint** | تنها موجودیت نقطه: مختصات، ارتفاع، هویت، پروفایل، forecast و aliases |
+| **kind/importance** | ویژگی همان WeatherPoint برای تشخیص نقطهٔ شاخص، مسیر یا نقطهٔ مشترک؛ موجودیت جدا نیست |
 | **Route** | مجموعهٔ مرتب WeatherPointها با origin/target |
 | **RoutePoint** | عضویت مسیر‌محور: ترتیب، timing، note — نه حقیقت فیزیکی |
 
@@ -19,15 +19,14 @@
 
 | URL | قالب React | تفاوت محتوا |
 | --- | --- | --- |
-| `/destination/{destinationSlug}` | `PlaceForecastPage` (`kind=destination`) | عنوان/هero از profile؛ sidebar: «مسیرهای منتهی به {مقصد}» |
-| `/points/{weatherPointSlug}` | همان `PlaceForecastPage` (`kind=point`) | عنوان/مختصات نقطه؛ sidebar: «مسیرهای عبوری از این نقطه» |
+| `/points/{slug}` | `PlaceForecastPage` (`kind=point`) | عنوان/hero و مختصات از همان WeatherPoint؛ sidebar مسیرهای مرتبط |
 
-- WeatherPoint مقصدی صفحهٔ مستقل `/points/` ندارد؛ همهٔ لینک‌های آن مستقیماً به
-  `/destination/{profileSlug}` ساخته می‌شوند (مثلاً `tochal_summit` → `tochal`).
-- تصاویر مرجع Destination در `design/screens/destination/` baseline بصری برای **همهٔ** Forecast Placeها هستند — از جمله نقاط عادی مثل سربند.
-- صفحهٔ جدا با namespaceهای `.point-page` / `.point-shell` / `.point-hero` **بازنشسته** شده است.
+- همهٔ WeatherPointها صفحهٔ مستقل `/points/{slug}` دارند (مثلاً `tochal`).
+- تصاویر مرجع Point در `design/screens/point/` baseline بصری برای همهٔ Point Forecastها هستند.
+- صفحهٔ جدا و template موازی بازنشسته شده است؛ همهٔ pointها از shell مشترک
+  `.point-page` / `.point-shell` / `.point-hero` استفاده می‌کنند.
 
-## ۴. ترتیب بخش‌ها (همان Destination)
+## ۴. ترتیب بخش‌ها (همان Point)
 
 ۱. header  
 ۲. (اختیاری) CTA «بازگشت به مسیر …» فقط در slot اکشن hero (نه جایگزین sidebar)  
@@ -37,7 +36,7 @@
 ۶. hourly forecast (کارت‌ها + legend؛ بدون نمایش `period.headline`؛ کارت جاری در موبایل خودکار در viewport قرار می‌گیرد)
 ۷. جزئیات تخصصی (metrics) — همیشه همان `technical-card`؛ اگر متریک نبود EmptyState پایدار
 ۸. sidebar مسیرهای مرتبط + decision card
-۹. footer مشترک محصول: «هوای مقصد، برنامهٔ مسیر»
+۹. footer مشترک محصول: «هوای نقطه، برنامهٔ مسیر»
 
 جزئیات تخصصی از آیکون‌های رسمی `apps/web/public/icons/specialist/` استفاده می‌کند. هر
 متریک یک نام معنایی مثل `wind-average` یا `visibility` از API می‌گیرد و component
@@ -47,7 +46,7 @@
 
 برچسب مسیرها:
 
-- destination: «مسیرهای منتهی به …»
+- point: «مسیرهای متصل به …»
 - point: «مسیرهای عبوری از این نقطه»
 
 در موبایل فقط دو مسیر اول با اولویت `featured` به‌صورت inline دیده می‌شوند. باقی مسیرها در یک bottom sheet دسترس‌پذیر با بستن از طریق دکمه، backdrop، Escape یا swipe-down باز می‌شوند. انتخاب مسیر مستقیماً به route می‌رود و به forecast فعلی request اضافه‌ای نمی‌کند.
@@ -57,9 +56,10 @@
 - قرارداد اول: `subject` / `hero` / `forecast.{days,period,current,hourly,meta}` / `metrics` / `decision` / `related_routes`
 - aliasهای ریشه فقط سازگاری backend هستند؛ frontend از `forecast.*` می‌خواند
 - URL تمیز بدون `date`/`period` می‌ماند تا کاربر صریحاً روز/بازه را عوض کند؛ بعد هر دو kind با هم sync می‌شوند
-- `fromRoute` فقط برای دکمهٔ بازگشت است و planner مقصد/نقطه را seed نمی‌کند
-- برای قلهٔ مقصد فقط لینک canonical `/destination/tochal` ساخته می‌شود؛
-  `/points/tochal_summit` عمداً route عمومی نیست و redirect یا back-compat ندارد.
+- `fromRoute` فقط برای دکمهٔ بازگشت است و planner نقطه را seed نمی‌کند
+- برای قلهٔ اصلی نیز لینک canonical `/points/tochal` ساخته می‌شود؛ نام‌های قدیمی
+  فقط در migrationهای تاریخی برای upgrade دیتابیس دیده می‌شوند و route عمومی یا
+  redirect/back-compat جداگانه ندارند.
 
 ## ۵. stateها
 
@@ -68,22 +68,22 @@ timestamp خام ISO و `timing_pending` در متن UI نمایش داده نم
 
 ## ۶. acceptance
 
-- [ ] `/points/tochal-sarband-square` و `/destination/tochal` از یک template و کلاس‌های destination shell استفاده می‌کنند
+- [ ] `/points/tochal-sarband-square` و `/points/tochal` از یک template و کلاس‌های point shell استفاده می‌کنند
 - [ ] dark/light و mobile/desktop بدون drift بصری بین دو URL
 - [ ] بدون overflow افقی
 - [ ] موبایل فقط دو مسیر برتر را inline نشان می‌دهد و بقیه را در bottom sheet باز می‌کند
 - [ ] سه period button هم‌اندازه و در یک ردیف موبایل نمایش داده می‌شوند
 - [ ] در موبایل کارت ساعتی جاری یا اولین کارت بازهٔ انتخاب‌شده خودکار در viewport قرار می‌گیرد
-- [ ] بدون کلاس/CSS اختصاصی point-page
-- [ ] نقطهٔ مقصدی به destination canonical هدایت می‌شود
+- [ ] shell مشترک `.point-page` استفاده می‌شود؛ زبان بصری جداگانه‌ای برای نقطه ساخته نمی‌شود
+- [ ] نقطهٔ اصلی و نقطهٔ مسیر هر دو به canonical point URL هدایت می‌شوند
 
 ## ۷. تصویر مرجع
 
-همان چهار تصویر Destination:
+همان چهار تصویر Point:
 
-- [light/mobile](../screens/destination/light/mobile.png)
-- [dark/mobile](../screens/destination/dark/mobile.png)
-- [light/web](../screens/destination/light/web.png)
-- [dark/web](../screens/destination/dark/web.png)
+- [light/mobile](../screens/point/light/mobile.png)
+- [dark/mobile](../screens/point/dark/mobile.png)
+- [light/web](../screens/point/light/web.png)
+- [dark/web](../screens/point/dark/web.png)
 
-Fallback بدون تصویر تأیید‌شده: سطح گرادیان مستند (`destination-hero--fallback`) — asset جدید اضافه نمی‌شود. در mobile، hero همهٔ Placeها عمداً به همین سطح کوتاه و بدون تصویر تبدیل می‌شود؛ breadcrumb تکراری پنهان است و عنوان و statusها در ارتفاع hero مرکز می‌گیرند.
+Fallback بدون تصویر تأیید‌شده: سطح گرادیان مستند (`point-hero--fallback`) — asset جدید اضافه نمی‌شود. در mobile، hero همهٔ Placeها عمداً به همین سطح کوتاه و بدون تصویر تبدیل می‌شود؛ breadcrumb تکراری پنهان است و عنوان و statusها در ارتفاع hero مرکز می‌گیرند.

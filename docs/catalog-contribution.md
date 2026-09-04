@@ -1,17 +1,19 @@
-# قرارداد واحد افزودن مقصد، مسیر و نقطه
+# قرارداد واحد افزودن نقطه و مسیر
 
-این سند مسیر مرجع برای هر مقصد جدید است. کاتالوگ JSON ورودی قابل بازتولید است؛
-دیتابیس منبع حقیقت runtime است. در این مرحله SEO عمومی و redirect قدیمی نداریم:
-slug جدید canonical است و URL قبلی عمداً ممکن است 404 شود.
+این سند مسیر مرجع برای هر نقطه جدید است. کاتالوگ JSON ورودی قابل بازتولید است؛
+دیتابیس منبع حقیقت runtime است. redirect قدیمی نداریم: slug جدید canonical است
+و URL قبلی عمداً ممکن است 404 شود. SEO عمومی P0 با gate `seo_indexable` و
+sitemap نقطه/مسیر در همین قرارداد فعال است.
 
 ## ۱. اطلاعات لازم
 
-برای هر مقصد:
+برای هر نقطه:
 
-- `destination.slug` یکتا، نام فارسی، `category_key`، منطقه، مختصات WGS84،
+- `point.slug` یکتا، نام فارسی، `category_key`، منطقه، مختصات WGS84،
   ارتفاع و منبع ارتفاع، `climate`، تصویر و alt؛
-- یک WeatherPoint با همان مختصات/ارتفاع و `kind: "destination"`؛ این رکورد برای
-  forecast لازم است اما صفحهٔ عمومی آن `/points/` نیست و به `/destination/` تعلق دارد؛
+- همان WeatherPoint با همان مختصات/ارتفاع؛ نقطهٔ شاخص `kind: "primary"` و سایر
+  نقاط `kind: "shared"` یا `kind: "route_point"` می‌گیرند. همین رکورد تنها
+  هویت عمومی نقطه و منبع forecast است و به `/points/{slug}` می‌رود؛
 - اگر مسیر پیادهٔ معتبر نداریم، `routes: {}` کافی است. مسیر آفرودی، خودرو،
   دوچرخه یا صخره‌نوردی را hiking route ثبت نکنید.
 
@@ -21,14 +23,16 @@ slug جدید canonical است و URL قبلی عمداً ممکن است 404 ش
 - `page_name` یکتا و قابل جست‌وجوی مستقل، `place_type`، `identity_summary`؛
 - `importance` یکی از `primary`/`support` و `name_status` یکی از
   `official`/`established`/`descriptive`؛
+- `seo_indexable` فقط برای نقطهٔ شاخصی که عمداً برای ایندکس عمومی تأیید شده است؛
+  نقطهٔ متصل به route فعال بدون این flag هم برای forecast و search قابل‌دسترسی است؛
 - `aliases` برای شکل‌های رایج جست‌وجو و `source_urls` برای منابع هویت/موقعیت؛
 - مختصات دقیق و `elevation_m` معتبر به‌همراه `elevation_source` یا evidence.
 
 `page_name` نباید عبارت عمومی مثل «استراحتگاه مسیر» یا «شیب نهایی قله» باشد.
-نام باید عارضهٔ واقعی را با زمینهٔ مقصد مشخص کند؛ برای مثال «پناهگاه سیمرغ
-دماوند» یا «روستای کلاک بالا». نقطهٔ destination canonical در slug داخلی خود
-می‌تواند underscore داشته باشد چون صفحهٔ مستقل ندارد؛ این استثنا فقط برای همان
-رکورد canonical مقصد است.
+نام باید عارضهٔ واقعی را با زمینهٔ نقطه مشخص کند؛ برای مثال «جان‌پناه امیری
+توچال» یا «روستای کلاک بالا». نقطهٔ شاخص در slug خود
+باید بدون underscore باشد؛ همهٔ نقاط، از جمله نقاط شاخص، صفحهٔ canonical خود را
+در `/points/{slug}` دارند.
 
 ## ۲. ترک و نقاط مسیر
 
@@ -36,22 +40,22 @@ slug جدید canonical است و URL قبلی عمداً ممکن است 404 ش
 
 ```bash
 cd /path/to/hawatch
-mkdir -p tracks/<destination-slug>
+mkdir -p tracks/<point-slug>
 ```
 
-هر ترک باید مسیر پیادهٔ شناخته‌شده و پیوسته‌ای با مبدأ و مقصد مشخص باشد. ترک
+هر ترک باید مسیر پیادهٔ شناخته‌شده و پیوسته‌ای با مبدأ و نقطه مشخص باشد. ترک
 دوچرخه، خودرو، موتور، مسیر صخره‌نوردی/یخچالی فنی، ترک پراکنده یا مسیر نامرتبط
 برای route قابل قبول نیست. اگر یک ترک نزولی است، فقط پس از تعیین جهت و تطبیق
 با منبع مستقل می‌توان آن را برعکس تحلیل کرد؛ timestamp و ارتفاع خام GPX به‌تنهایی
 حقیقت نیستند.
 
 برای route اصلی ترجیحاً دو ترک مستقل تطبیق داده شود. هر route عمومی باید حداقل
-زنجیرهٔ `مبدأ → یک عارضهٔ واقعی میانی → مقصد` داشته باشد. نقطهٔ ساختگی یا generic
+زنجیرهٔ `مبدأ → یک عارضهٔ واقعی میانی → نقطه` داشته باشد. نقطهٔ ساختگی یا generic
 برای پرکردن این زنجیره اضافه نشود؛ اگر landmark میانی اثبات نشده، route pending
 بماند.
 
 نام فایل دانلودی را قبل از تحلیل روشن کنید:
-`<destination>-<side>-<origin>-to-<target>-<year>.gpx`.
+`<point>-<side>-<origin>-to-<target>-<year>.gpx`.
 فایل‌ها و `manifest.json` در `.gitignore` هستند و هرگز commit، image یا server
 نمی‌شوند. manifest فقط mapping فایل، route، منبع و نقش `primary`/`crosscheck`
 را نگه می‌دارد.
@@ -62,11 +66,11 @@ mkdir -p tracks/<destination-slug>
 
 ```bash
 python3 scripts/analyze_route_tracks.py \
-  --manifest tracks/<destination-slug>/manifest.json \
-  --catalog /tmp/<destination-slug>_v1.json
+  --manifest tracks/<point-slug>/manifest.json \
+  --catalog /tmp/<point-slug>_v1.json
 
 python3 scripts/validate_open_meteo_catalog.py \
-  --catalog /tmp/<destination-slug>_v1.json
+  --catalog /tmp/<point-slug>_v1.json
 ```
 
 دستور دوم برای تک‌تک pointها Open-Meteo را read-only صدا می‌زند و وجود elevation،
@@ -100,12 +104,12 @@ cd apps/api
 uv run python manage.py migrate
 uv run python manage.py seed_catalog --file catalog/<file>.json --strict
 uv run python manage.py ingest_open_meteo --slugs <point-1>,<point-2>
-uv run python manage.py catalog_preflight --destination <destination-slug> --require-forecast --strict
+uv run python manage.py catalog_preflight --point <point-slug> --require-forecast --strict
 ```
 
 `seed_catalog` اتمیک و idempotent است. `--prune` فقط وقتی استفاده شود که حذف
 رکوردهای fixture-managed عمداً بررسی شده باشد. پس از ingest، preflight باید برای
-همهٔ pointهای مقصد `provider_checked` و forecast قابل استفاده نشان دهد. پیش‌بینی
+همهٔ pointهای نقطه `provider_checked` و forecast قابل استفاده نشان دهد. پیش‌بینی
 از DB خوانده می‌شود؛ frontend مستقیماً Open-Meteo را صدا نمی‌زند.
 
 ## ۵. import به سرور از روی local
@@ -116,9 +120,9 @@ uv run python manage.py catalog_preflight --destination <destination-slug> --req
 ```bash
 cd /path/to/hawatch
 python3 scripts/publish_catalog.py \
-  --catalog /tmp/<destination-slug>_v1.json \
+  --catalog /tmp/<point-slug>_v1.json \
   --host hawatch \
-  --destination <destination-slug> \
+  --point <point-slug> \
   --apply
 ```
 
@@ -127,14 +131,14 @@ python3 scripts/publish_catalog.py \
 ولی arrival weather مسیر ساخته نمی‌شود. بدون `--apply` همین دستور فقط check می‌کند
 و هیچ writeای ندارد.
 
-پس از import، برای تغییر مقصدهای محبوب فقط از command ادمین استفاده کنید؛ مقصد
+پس از import، برای تغییر نقاطی محبوب فقط از command ادمین استفاده کنید؛ نقطه
 جدید خودکار روی Home نمی‌رود:
 
 ```bash
-uv run python manage.py set_popular_destinations --slugs a,b,c,d
+uv run python manage.py set_popular_points --slugs a,b,c,d
 ```
 
-حداکثر چهار مقصد محبوب است. همهٔ مقصدهای فعال در search قابل پیدا شدن‌اند، اما
+حداکثر چهار نقطه محبوب است. همهٔ نقاطی فعال در search قابل پیدا شدن‌اند، اما
 صفحهٔ Home فقط همین چهار مورد را نشان می‌دهد.
 
 ## ۶. کنترل‌های اجباری بعد از تغییر
@@ -151,5 +155,6 @@ uv run pytest
 
 همچنین با `git grep` مطمئن شوید slug قدیمی در catalog، API، frontend و docs
 فعلی نمانده است. migrationهای تاریخی تنها سابقهٔ بازپخش schema هستند و نباید
-برای compatibility URL جدید استفاده شوند. بعد از افزودن رکورد، SEO/sitemap
-عمومی در milestone جداگانه روی همین `page_name` و slug canonical ساخته می‌شود.
+برای compatibility URL جدید استفاده شوند. SEO عمومی P0 همین حالا روی `page_name`
+و slug canonical اعمال می‌شود: فقط نقطهٔ `seo_indexable` و route فعال وارد sitemap
+می‌شوند و queryهای برنامه‌ریزی `noindex,follow` هستند.

@@ -2,7 +2,7 @@
 
 ## ورودی
 
-نمونهٔ اصلی `/routes/tochal-darband` است. route باید parent destination، origin، destination و نقاط مرتب‌شده داشته باشد.
+نمونهٔ اصلی `/routes/tochal-darband` است. route باید parent point، origin، point و نقاط مرتب‌شده داشته باشد.
 
 ## planner
 
@@ -16,8 +16,8 @@
 - کارت نقطه زمان تقریبی (`حدود …`)، آیکون/شرط/دما/باد و در صورت نیاز نشان `تخمینی · ±N دقیقه` را نشان می‌دهد؛ عنوان period عمومی بالای هر نقطه نیست. `state` فقط از severity پیش‌بینی همان نقطه می‌آید.
 - mobile ساعت و speed را در یک row جمع‌وجور نشان می‌دهد.
 - فقط یک period control مشترک (نیمه‌شب / صبح / ظهر / شب) برای timeline و cards وجود دارد.
-- کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + `fromRoute` state شامل pathname/search/href برای بازگشت کامل؛ نقطهٔ مقصدی مثل قلهٔ توچال از ابتدا `/destination/tochal` را لینک می‌کند.
-- اگر Destination از Route باز شود و URL خودش `date`/`period` صریح نداشته باشد، forecast اولیه از `date`/`period` موجود در `fromRoute.search` initialize می‌شود؛ `start_time`/`speed` به URL مقصد اضافه نمی‌شوند.
+- کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + `fromRoute` state شامل pathname/search/href برای بازگشت کامل؛ نقطهٔ شاخصی مثل قلهٔ توچال نیز همان URL نقطه را لینک می‌کند.
+- اگر Point از Route باز شود و URL خودش `date`/`period` صریح نداشته باشد، forecast اولیه از `date`/`period` موجود در `fromRoute.search` initialize می‌شود؛ `start_time`/`speed` به URL نقطه اضافه نمی‌شوند.
 - مسیر قدیمیِ `/routes/.../points/...` بخشی از URLهای عمومی نیست و redirect ندارد.
 
 ## تصمیم و اشتراک

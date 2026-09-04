@@ -1,24 +1,5 @@
 {
   "catalog_version": "hawatch-tochal-catalog-v6",
-  "destination_weather_point": "tochal_summit",
-  "destination": {
-    "slug": "tochal",
-    "tile_name": "توچال",
-    "name": "قلهٔ توچال",
-    "short_category": "کوهنوردی",
-    "category": "قله و مسیرهای کوهستانی",
-    "category_key": "mountain",
-    "region": "تهران",
-    "elevation_m": 3955,
-    "latitude": 35.8843493,
-    "longitude": 51.4198766,
-    "image": "/images/touchal-banner-clean.png",
-    "image_alt": "قلهٔ توچال",
-    "popular_order": 1,
-    "climate": "alpine",
-    "is_popular": true,
-    "is_active": true
-  },
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -120,12 +101,12 @@
         "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
       ]
     },
-    "tochal_summit": {
+    "tochal": {
       "name": "قلهٔ توچال",
       "latitude": 35.8843493,
       "longitude": 51.4198766,
       "elevation_m": 3955,
-      "kind": "destination",
+      "kind": "primary",
       "page_name": "قلهٔ توچال",
       "short_label": "قلهٔ توچال",
       "place_type": "summit",
@@ -698,7 +679,6 @@
       "subtitle": "از سربند و شیرپلا تا قلهٔ توچال",
       "trail_label": "مسیر دربند",
       "origin": "سربند",
-      "destination_label": "قلهٔ توچال",
       "region": "تهران",
       "featured": true,
       "sort_order": 1,
@@ -708,7 +688,7 @@
         "tochal-shirpala-shelter",
         "tochal-amiri-shelter",
         "tochal-goleband-ridge",
-        "tochal_summit"
+        "tochal"
       ],
       "distance_km": 10.3,
       "ascent_m": 2150,
@@ -733,11 +713,11 @@
           "tochal-shirpala-shelter": 125,
           "tochal-amiri-shelter": 220,
           "tochal-goleband-ridge": 295,
-          "tochal_summit": 315
+          "tochal": 315
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ توچال"
     },
     "velenjak_to_tochal": {
       "slug": "tochal-velenjak",
@@ -745,7 +725,6 @@
       "subtitle": "از پارکینگ ولنجک تا قله",
       "trail_label": "مسیر ولنجک",
       "origin": "پارکینگ ولنجک",
-      "destination_label": "قلهٔ توچال",
       "region": "تهران",
       "featured": false,
       "sort_order": 2,
@@ -755,7 +734,7 @@
         "tochal-telecabin-station-2",
         "tochal-telecabin-station-5",
         "tochal-telecabin-station-7",
-        "tochal_summit"
+        "tochal"
       ],
       "distance_km": 16.6,
       "ascent_m": 2150,
@@ -780,11 +759,11 @@
           "tochal-telecabin-station-2": 85,
           "tochal-telecabin-station-5": 195,
           "tochal-telecabin-station-7": 330,
-          "tochal_summit": 360
+          "tochal": 360
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ توچال"
     },
     "kolakchal_to_tochal": {
       "slug": "tochal-kolakchal",
@@ -792,7 +771,6 @@
       "subtitle": "از پارک جمشیدیه و یال شرقی پیازچال تا قله",
       "trail_label": "مسیر جمشیدیه / کلکچال",
       "origin": "جمشیدیه",
-      "destination_label": "قلهٔ توچال",
       "region": "تهران",
       "featured": false,
       "sort_order": 3,
@@ -806,7 +784,7 @@
         "tochal-barfchal-peak",
         "tochal-chahar-paloon",
         "tochal-goleband-ridge",
-        "tochal_summit"
+        "tochal"
       ],
       "distance_km": 12.2,
       "ascent_m": 2210,
@@ -841,11 +819,11 @@
           "tochal-barfchal-peak": 330,
           "tochal-chahar-paloon": 355,
           "tochal-goleband-ridge": 375,
-          "tochal_summit": 390
+          "tochal": 390
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ توچال"
     },
     "ahar_to_tochal": {
       "slug": "tochal-ahar",
@@ -853,7 +831,6 @@
       "subtitle": "از آهار و شکرآب تا قله",
       "trail_label": "مسیر آهار",
       "origin": "آهار",
-      "destination_label": "قلهٔ توچال",
       "region": "تهران",
       "featured": false,
       "sort_order": 5,
@@ -862,7 +839,7 @@
         "tochal-shakarab-ahaar",
         "tochal-qezqunchal-peak",
         "tochal-homand-tochal",
-        "tochal_summit"
+        "tochal"
       ],
       "distance_km": 12.5,
       "ascent_m": 1870,
@@ -883,18 +860,18 @@
         ],
         "notes": [
           "Medium total preserved at 380 minutes so one athlete recording is not treated as universal pace.",
-          "qezqunchal_dopestan remains estimated/uncertain (~212 m from this track); coordinates not auto-updated from GPX."
+          "tochal-qezqunchal-peak remains estimated/uncertain (~212 m from this track); coordinates not auto-updated from GPX."
         ],
         "cumulative_minutes": {
           "tochal-ahar-village": 0,
           "tochal-shakarab-ahaar": 95,
           "tochal-qezqunchal-peak": 315,
           "tochal-homand-tochal": 360,
-          "tochal_summit": 380
+          "tochal": 380
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ توچال"
     },
     "shahrestanak_to_tochal": {
       "slug": "tochal-shahrestanak",
@@ -902,7 +879,6 @@
       "subtitle": "از شهرستانک و کاخ ناصری تا قله",
       "trail_label": "مسیر شهرستانک",
       "origin": "شهرستانک",
-      "destination_label": "قلهٔ توچال",
       "region": "تهران",
       "featured": false,
       "sort_order": 4,
@@ -914,7 +890,7 @@
         "tochal-shahrestanak-pass",
         "tochal-hotel",
         "tochal-telecabin-station-7",
-        "tochal_summit"
+        "tochal"
       ],
       "distance_km": 16.2,
       "ascent_m": 1710,
@@ -948,11 +924,30 @@
           "tochal-shahrestanak-pass": 285,
           "tochal-hotel": 310,
           "tochal-telecabin-station-7": 335,
-          "tochal_summit": 370
+          "tochal": 370
         }
       },
-      "destination_slug": null,
-      "public_point_notes": {}
+      "public_point_notes": {},
+      "target_label": "قلهٔ توچال"
     }
-  }
+  },
+  "point": {
+    "slug": "tochal",
+    "tile_name": "توچال",
+    "name": "قلهٔ توچال",
+    "short_category": "کوهنوردی",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "تهران",
+    "elevation_m": 3955,
+    "latitude": 35.8843493,
+    "longitude": 51.4198766,
+    "image": "/images/touchal-banner-clean.png",
+    "image_alt": "قلهٔ توچال",
+    "popular_order": 1,
+    "climate": "alpine",
+    "is_popular": true,
+    "is_active": true
+  },
+  "primary_point": "tochal"
 }

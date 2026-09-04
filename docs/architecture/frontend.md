@@ -24,9 +24,9 @@ frontend فقط `VITE_API_BASE_URL` را صدا می‌زند. لایهٔ client
 ## صفحات این milestone
 
 - `/`
-- `/destination/:slug` و `/points/:weatherPointSlug` — هر دو `PlaceForecastPage` (قالب Forecast Place)
+- `/points/:slug` — `PlaceForecastPage` (قالب مشترک Point Forecast)
 - `/routes/:slug`
 
-Home از search index داخلی، پیشنهادهای مقصد و نقطهٔ مسیر را با debounce و keyboard navigation مصرف می‌کند. کلیک روی point به URL تمیز می‌رود؛ pointهای دارای Destination profile به `/destination/{destinationSlug}` canonical می‌روند. context بازگشت Route فقط در React Router state نگه داشته می‌شود.
+Home از search index داخلی، پیشنهادهای همهٔ نقاط را با debounce و keyboard navigation مصرف می‌کند. کلیک روی point به URL تمیز `/points/{pointSlug}` می‌رود و context بازگشت Route فقط در React Router state نگه داشته می‌شود.
 
 Login پیاده نشده است.

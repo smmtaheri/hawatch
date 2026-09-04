@@ -1,4 +1,4 @@
-export const sampleDestinations = [
+export const samplePoints = [
   {
     slug: "tochal",
     tile_name: "توچال",
@@ -11,7 +11,7 @@ export const sampleDestinations = [
     elevation_label: "۳۹۶۴ متر",
     image: "/images/touchal-banner-clean.png",
     image_alt: "نمای کوهستان توچال",
-    href: "/destination/tochal",
+    href: "/points/tochal",
     is_popular: true,
   },
 ];

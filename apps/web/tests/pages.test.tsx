@@ -6,16 +6,16 @@ import { ThemeProvider } from "../src/app/theme";
 import { AppRoutes } from "../src/app/App";
 import { HomePage } from "../src/pages/HomePage";
 import { LoginPage } from "../src/pages/LoginPage";
-import { DestinationPage } from "../src/pages/DestinationPage";
+import { PointDetailPage as PointPage } from "../src/pages/PointDetailPage";
 import { RoutePage } from "../src/pages/RoutePage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
 
-const destinationForecast = {
+const pointForecast = {
   subject: {
-    kind: "destination" as const,
+    kind: "point" as const,
     slug: "tochal",
     weather_point_slug: "tochal_summit",
-    canonical_href: "/destination/tochal",
+    canonical_href: "/points/tochal",
     name: "قلهٔ توچال",
     elevation_m: 3964,
     elevation_label: "۳۹۶۴ متر",
@@ -27,7 +27,7 @@ const destinationForecast = {
     region: "تهران",
     category: "کوه · البرز مرکزی",
   },
-  destination: {
+  point: {
     slug: "tochal",
     tile_name: "توچال",
     name: "قلهٔ توچال",
@@ -39,7 +39,7 @@ const destinationForecast = {
     elevation_label: "۳۹۶۴ متر",
     image: "/images/touchal-banner-clean.png",
     image_alt: "نمای کوهستان توچال",
-    href: "/destination/tochal",
+    href: "/points/tochal",
     is_popular: true,
     routes: [
       {
@@ -47,7 +47,7 @@ const destinationForecast = {
         title: "دربند تا توچال",
         trail_label: "ترک کوه‌پیمایی",
         origin: "دربند",
-        destination_label: "قلهٔ توچال",
+        target_label: "قلهٔ توچال",
         distance_km: 16.2,
         distance_label: "۱۶٫۲ km",
         ascent_m: 2260,
@@ -75,7 +75,7 @@ const destinationForecast = {
       title: "دربند تا توچال",
       trail_label: "ترک کوه‌پیمایی",
       origin: "دربند",
-      destination_label: "قلهٔ توچال",
+      target_label: "قلهٔ توچال",
       distance_km: 16.2,
       distance_label: "۱۶٫۲ km",
       ascent_m: 2260,
@@ -108,18 +108,18 @@ const routeForecast = {
     title: "دربند تا توچال",
     subtitle: "",
     origin: "دربند",
-    destination_label: "قلهٔ توچال",
+    target_label: "قلهٔ توچال",
     distance_label: "۱۶٫۲ km",
     ascent_label: "۲۲۶۰ m",
     default_start_minutes: 360,
     href: "/routes/tochal-darband",
-    parent: destinationForecast.destination,
+    target_point: pointForecast.point,
     points: [],
     siblings: [
-      { slug: "tochal-velenjak", title: "ولنجک تا توچال", trail_label: "ترک", origin: "ولنجک", destination_label: "قلهٔ توچال", distance_km: 14.8, distance_label: "۱۴٫۸ km", ascent_m: 2160, ascent_label: "۲۱۶۰ m", featured: false, href: "/routes/tochal-velenjak" },
+      { slug: "tochal-velenjak", title: "ولنجک تا توچال", trail_label: "ترک", origin: "ولنجک", target_label: "قلهٔ توچال", distance_km: 14.8, distance_label: "۱۴٫۸ km", ascent_m: 2160, ascent_label: "۲۱۶۰ m", featured: false, href: "/routes/tochal-velenjak" },
     ],
   },
-  days: destinationForecast.days,
+  days: pointForecast.days,
   period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", hours: [6, 8, 10] },
   start_minutes: 360,
   start_time: "۰۶:۰۰",
@@ -128,12 +128,12 @@ const routeForecast = {
   points: [
     { slug: "tochal-sarband-square", name: "سربند", elevation_label: "۱۸۰۰ m", href: "/points/tochal-sarband-square", axis_x: 10, axis_y: 83, time: "۰۶:۰۰", temp: 8, wind: 6, icon: "☼", condition: "شروع آرام", state: "normal", note: "شروع آرام", arrival_minutes: 360 },
   ],
-  hourly: destinationForecast.hourly,
+  hourly: pointForecast.hourly,
   hero: { status: "نقطهٔ حساس: گردنهٔ لوپ" },
   stats: [{ label: "مسافت", value: "۱۶٫۲ km" }],
   decision: {
     chip: "پیش‌بینی مسیر · امروز",
-    title: "با حرکت ساعت ۰۶:۰۰، حدود ۱۳:۰۰ به مقصد می‌رسی.",
+    title: "با حرکت ساعت ۰۶:۰۰، حدود ۱۳:۰۰ به نقطه می‌رسی.",
     status: "هشدار",
     state: "critical",
     summary: "شرایط پرریسک",
@@ -147,7 +147,7 @@ const routeForecast = {
     speed: "متوسط",
   },
   empty: false,
-  meta: destinationForecast.meta,
+  meta: pointForecast.meta,
 };
 
 function jsonResponse(data: unknown, ok = true, status = 200) {
@@ -165,7 +165,7 @@ function renderAt(path: string) {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/destination/:slug" element={<DestinationPage />} />
+          <Route path="/points/:slug" element={<PointPage />} />
           <Route path="/routes/:slug" element={<RoutePage />} />
         </Routes>
       </MemoryRouter>
@@ -189,10 +189,10 @@ describe("Hawatch pages", () => {
       "fetch",
       vi.fn((input: RequestInfo) => {
         const url = String(input);
-        if (url.includes("/destinations/tochal/forecast")) return jsonResponse(destinationForecast);
+        if (url.includes("/points/tochal/forecast")) return jsonResponse(pointForecast);
         if (url.includes("/routes/tochal-darband/forecast")) return jsonResponse(routeForecast);
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         if (url.includes("/search/suggestions")) {
           return jsonResponse({
@@ -221,7 +221,7 @@ describe("Hawatch pages", () => {
     document.documentElement.removeAttribute("style");
   });
 
-  it("renders home, destination and route", async () => {
+  it("renders home, point and route", async () => {
     renderAt("/");
     expect(await screen.findByText("توچال")).toBeInTheDocument();
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
@@ -239,21 +239,21 @@ describe("Hawatch pages", () => {
     expect(document.title).toBe("هوای ورود | هواچ");
     await user.click(within(dialog).getByRole("button", { name: "بستن ورود" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(document.title).toBe("هواچ | هوای مقصد، برنامهٔ مسیر");
+    expect(document.title).toBe("هواچ | هوای نقطه، برنامهٔ مسیر");
   });
 
   it("renders a full login surface for a direct login URL", async () => {
-    renderAt("/login?returnTo=%2Fdestination%2Ftochal");
+    renderAt("/login?returnTo=%2Fpoint%2Ftochal");
     expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(screen.getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
   });
 
-  it("renders destination and can open a route", async () => {
+  it("renders point and can open a route", async () => {
     const user = userEvent.setup();
-    renderAt("/destination/tochal");
+    renderAt("/points/tochal");
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
-    expect(document.querySelector(".destination-page .page-back-navigation")).toContainElement(
+    expect(document.querySelector(".point-page .page-back-navigation")).toContainElement(
       screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
     );
     expect(document.querySelector('.specialist-metric-icon use')).toHaveAttribute(
@@ -266,14 +266,14 @@ describe("Hawatch pages", () => {
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
   });
 
-  it("opens destination and route detail views at their identity hero", async () => {
+  it("opens point and route detail views at their identity hero", async () => {
     const scrollIntoView = vi.fn();
     Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
       configurable: true,
       value: scrollIntoView,
     });
 
-    const { unmount } = renderAt("/destination/tochal");
+    const { unmount } = renderAt("/points/tochal");
     await screen.findByRole("heading", { name: "قلهٔ توچال" });
     await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
     unmount();
@@ -318,8 +318,8 @@ describe("Hawatch pages", () => {
         if (url.includes("/search/suggestions")) {
           return jsonResponse({ query: "xyz", results: [], empty: true, meta: { freshness: "ready" } });
         }
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -327,7 +327,7 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/");
     await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "xyz");
     await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
     expect(await screen.findByText(/نتیجه‌ای پیدا نشد/)).toBeInTheDocument();
@@ -338,16 +338,16 @@ describe("Hawatch pages", () => {
       "fetch",
       vi.fn(() =>
         jsonResponse({
-          ...destinationForecast,
-          meta: { ...destinationForecast.meta, freshness: "stale" },
+          ...pointForecast,
+          meta: { ...pointForecast.meta, freshness: "stale" },
           forecast: {
-            ...destinationForecast.forecast,
-            meta: { ...destinationForecast.forecast.meta, freshness: "stale" },
+            ...pointForecast.forecast,
+            meta: { ...pointForecast.forecast.meta, freshness: "stale" },
           },
         }),
       ),
     );
-    renderAt("/destination/tochal");
+    renderAt("/points/tochal");
     expect(await screen.findByText(/ممکن است قدیمی باشد/)).toBeInTheDocument();
   });
 
@@ -363,7 +363,7 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/");
     await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
     expect(screen.getByText(/نقطهٔ مسیر · توچال/)).toBeInTheDocument();
@@ -398,8 +398,8 @@ describe("Hawatch pages", () => {
             meta: { freshness: "ready" },
           });
         }
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -416,7 +416,7 @@ describe("Hawatch pages", () => {
       </ThemeProvider>,
     );
     await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پ");
     await user.type(input, "s");
     await user.type(input, "s");
@@ -464,8 +464,8 @@ describe("Hawatch pages", () => {
             meta: { freshness: "ready" },
           });
         }
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -481,7 +481,7 @@ describe("Hawatch pages", () => {
       </ThemeProvider>,
     );
     await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
     expect(await screen.findByRole("link", { name: /پس‌قلعه/ })).toHaveAttribute("href", "/points/tochal-pas-ghaleh-village");
@@ -495,8 +495,8 @@ describe("Hawatch pages", () => {
       vi.fn((input: RequestInfo) => {
         const url = String(input);
         if (url.includes("/search/suggestions")) return jsonResponse({}, false, 503);
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -504,10 +504,10 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/");
     await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
-    expect(await screen.findByText("جست‌وجوی مقصد یا نقطهٔ مسیر ناموفق بود. دوباره تلاش کن.")).toBeInTheDocument();
+    expect(await screen.findByText("جست‌وجوی نقطه ناموفق بود. دوباره تلاش کن.")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "تلاش دوباره" })).toBeInTheDocument();
   });
 
@@ -564,34 +564,33 @@ describe("Hawatch pages", () => {
               provenance: "curated",
               href: "/points/tochal-pas-ghaleh-village",
               canonical_href: "/points/tochal-pas-ghaleh-village",
-              destination: destinationForecast.destination,
+              point: pointForecast.point,
             },
-            related_destinations: [destinationForecast.destination],
             related_routes: [],
             related_routes_title: "مسیرهای عبوری از این نقطه",
-            days: destinationForecast.days,
-            period: destinationForecast.period,
-            current: destinationForecast.hourly[0],
-            weather: destinationForecast.hourly[0],
-            hourly: destinationForecast.hourly,
+            days: pointForecast.days,
+            period: pointForecast.period,
+            current: pointForecast.hourly[0],
+            weather: pointForecast.hourly[0],
+            hourly: pointForecast.hourly,
             metrics: [],
             hero: { status: "☼　در پس‌قلعه　۷°　·　صاف", alert: "✓　شرایط فعلاً آرام‌تر است" },
             decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح", text: "آرام" },
             updated_label: "امروز",
             empty: false,
             partial: false,
-            meta: destinationForecast.meta,
+            meta: pointForecast.meta,
             forecast: {
-              days: destinationForecast.forecast.days,
-              period: destinationForecast.forecast.period,
-              current: destinationForecast.hourly[0],
-              hourly: destinationForecast.hourly,
-              meta: destinationForecast.forecast.meta,
+              days: pointForecast.forecast.days,
+              period: pointForecast.forecast.period,
+              current: pointForecast.hourly[0],
+              hourly: pointForecast.hourly,
+              meta: pointForecast.forecast.meta,
             },
           });
         }
-        if (url.includes("/destinations/")) {
-          return jsonResponse({ results: [destinationForecast.destination], empty: false, query: "", meta: { freshness: "ready" } });
+        if (url.includes("/points/")) {
+          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
         return jsonResponse({}, false, 500);
       }),
@@ -608,11 +607,11 @@ describe("Hawatch pages", () => {
     );
     await screen.findByText("توچال");
     const user = userEvent.setup();
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی مقصد یا نقطهٔ مسیر" });
+    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     await user.keyboard("{Enter}");
     expect(await screen.findByRole("heading", { name: "پس‌قلعه" })).toBeInTheDocument();
-    expect(document.querySelector(".destination-decision-card")).not.toBeInTheDocument();
+    expect(document.querySelector(".point-decision-card")).not.toBeInTheDocument();
   });
 
   it("does not create full-page horizontal overflow at the mobile reference width", async () => {

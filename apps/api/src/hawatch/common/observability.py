@@ -156,7 +156,7 @@ metrics.histogram(
 )
 metrics.gauge("hawatch_health_status", "Last observed Hawatch health status (1=healthy).")
 metrics.gauge("hawatch_database_up", "Last observed database status (1=reachable).")
-metrics.gauge("hawatch_catalog_destinations", "Number of active destinations in the catalog.")
+metrics.gauge("hawatch_catalog_points", "Number of active points in the catalog.")
 metrics.gauge("hawatch_catalog_routes", "Number of active routes in the catalog.")
 metrics.gauge("hawatch_catalog_weather_points", "Number of weather points in the catalog.")
 metrics.gauge("hawatch_forecast_freshness_records", "Forecast records grouped by data mode and freshness.")
@@ -210,8 +210,7 @@ def collect_database_metrics() -> None:
         from django.db.models import Count
 
         from hawatch.modules.catalog.runtime import publicly_visible_weather_points
-        from hawatch.modules.destinations.models import Destination
-        from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot
+        from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, WeatherPoint
         from hawatch.modules.routes.models import Route
 
         with connection.cursor() as cursor:
@@ -219,10 +218,10 @@ def collect_database_metrics() -> None:
             cursor.fetchone()
         metrics.set("hawatch_database_up", 1)
         metrics.set("hawatch_health_status", 1, labels={"check": "ready"})
-        metrics.set("hawatch_catalog_destinations", Destination.objects.filter(is_active=True).count())
+        metrics.set("hawatch_catalog_points", WeatherPoint.objects.filter(is_active=True).count())
         metrics.set(
             "hawatch_catalog_routes",
-            Route.objects.filter(is_active=True, destination__is_active=True).count(),
+            Route.objects.filter(is_active=True).count(),
         )
         metrics.set("hawatch_catalog_weather_points", publicly_visible_weather_points().count())
         grouped = ForecastRecord.objects.values("data_mode", "freshness").annotate(count=Count("id"))
