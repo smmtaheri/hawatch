@@ -132,6 +132,20 @@ def _point_page(point: WeatherPoint) -> dict:
 
 def _route_page(route: Route) -> dict:
     route_points = list(route.points.select_related("weather_point").all())
+    target_href = f"/points/{route.target_weather_point.slug}" if route.target_weather_point_id else ""
+    # Some routes finish at a physical endpoint such as a lake shore while
+    # their public target is the canonical primary destination. Resolve that
+    # exact catalog label so the semantic route page points to the same
+    # canonical destination page as the Point page, without guessing by slug.
+    destination = (
+        publicly_visible_weather_points()
+        .filter(kind=WeatherPoint.Kind.PRIMARY)
+        .filter(Q(name=route.target_label) | Q(page_name=route.target_label))
+        .only("slug")
+        .first()
+    )
+    if destination is not None:
+        target_href = f"/points/{destination.slug}"
     return {
         "kind": "route",
         "title": f"هوای {route.title} | هواچ",
@@ -143,7 +157,7 @@ def _route_page(route: Route) -> dict:
         "origin": route.origin,
         "target": route.target_label,
         "origin_href": f"/points/{route.origin_weather_point.slug}" if route.origin_weather_point_id else "",
-        "target_href": f"/points/{route.target_weather_point.slug}" if route.target_weather_point_id else "",
+        "target_href": target_href,
         "distance": _format_decimal(route.distance_km, "کیلومتر"),
         "ascent": f"{route.ascent_m} متر" if route.ascent_m is not None else None,
         "points": [
