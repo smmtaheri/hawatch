@@ -37,7 +37,8 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 - `climate`، تصویر و alt text؛
 - نقطه جدید به‌صورت پیش‌فرض محبوب نیست. مجموعهٔ حداکثر چهار نقطه محبوب هوم را با
   command مدیریتی `set_popular_points` و به‌ترتیب دلخواه تنظیم کنید؛ لازم
-  نیست برای تغییر آن کد یا migration بسازید.
+  نیست برای تغییر آن کد یا migration بسازید. انتخاب محبوب یک تنظیم اپراتوری
+  است و `sync_catalog` در deployهای بعدی آن را بازنشانی نمی‌کند.
 
 `category_key` فقط متن دسته‌بندی نیست؛ کلید معنایی آیکون نقطه هم هست و از
 دیتابیس به فرانت می‌رسد. برای مثال، اسکلیم باید `waterfall` داشته باشد و دماوند
@@ -301,7 +302,7 @@ route باید timing کامل داشته باشد:
 ```bash
 cd apps/api
 uv run python manage.py set_popular_points \
-  tochal damavand daryasar alamkuh
+  tochal damavand alamkuh tar-lake
 ```
 
 یا با comma-separated:
@@ -309,7 +310,7 @@ uv run python manage.py set_popular_points \
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
   python manage.py set_popular_points \
-  --slugs tochal,damavand,daryasar,alamkuh
+  --slugs tochal,damavand,alamkuh,tar-lake
 ```
 
 این command به‌صورت اتمیک همهٔ نقاطی دیگر را از لیست محبوب خارج می‌کند، ترتیب

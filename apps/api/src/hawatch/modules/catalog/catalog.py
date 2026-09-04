@@ -288,6 +288,13 @@ def seed_catalog(
             "catalog_version": version, "data_mode": "live", "seed_version": version, "ingest_enabled": True, "fixture_managed": True,
             "is_active": bool(row.get("is_active", profile.get("is_active", True))),
         }
+        # Home popularity is an operator-controlled presentation setting, not
+        # catalog identity. Preserve an existing fixture-managed choice during
+        # catalog sync/import; otherwise every deploy would silently reset the
+        # Home tiles to whichever catalog happens to declare a default.
+        if existing is not None:
+            defaults["popular_order"] = existing.popular_order
+            defaults["is_popular"] = existing.is_popular
         if existing is None:
             existing = WeatherPoint.objects.create(slug=slug, **defaults)
         else:

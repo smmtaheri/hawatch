@@ -28,6 +28,17 @@ def test_home_point_list_contains_only_ordered_popular_four():
 
 
 @pytest.mark.django_db
+def test_packaged_home_defaults_and_catalog_sync_keep_popular_selection():
+    seed_demo_data(force=True)
+    assert [item.slug for item in list_points()] == ["tochal", "damavand", "alamkuh", "tar-lake"]
+
+    call_command("set_popular_points", "--slugs", "tochal,damavand,alamkuh,tar-lake")
+    call_command("sync_catalog", "--apply")
+
+    assert [item.slug for item in list_points()] == ["tochal", "damavand", "alamkuh", "tar-lake"]
+
+
+@pytest.mark.django_db
 def test_new_point_is_not_popular_by_default():
     point = WeatherPoint.objects.create(
         slug="new-point",

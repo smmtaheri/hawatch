@@ -34,7 +34,8 @@ slug مسیر باید در کل پوشهٔ `apps/api/fixtures/catalog/` فقط 
 بعد از تغییر، validator provider و catalog را اجرا کنید، سپس برای انتشار روی
 دیتابیس موجود ابتدا `sync_catalog --dry-run` و بعد `sync_catalog --apply` را
 استفاده کنید. این sync همهٔ catalogهای package‌شده را با هم و به‌صورت atomic
-همگام می‌کند؛ رکوردهای دستی را overwrite نمی‌کند. `publish_catalog.py` برای
+همگام می‌کند؛ رکوردهای دستی را overwrite نمی‌کند. انتخاب محبوب Home با
+`set_popular_points` نیز در syncهای بعدی حفظ می‌شود. `publish_catalog.py` برای
 ارسال یک catalog موقت از stdin مناسب است، اما جایگزین ثبت fixture versioned در
 repository نیست.
 

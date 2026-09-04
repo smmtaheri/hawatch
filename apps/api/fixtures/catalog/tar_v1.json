@@ -42,9 +42,9 @@
     "longitude": 52.22785,
     "image": "/images/home-scene.png",
     "image_alt": "دریاچهٔ تار در نزدیکی دماوند",
-    "popular_order": 0,
+    "popular_order": 4,
     "climate": "lake_valley",
-    "is_popular": false,
+    "is_popular": true,
     "is_active": true,
     "aliases": [
       "تار",

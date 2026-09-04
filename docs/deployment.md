@@ -69,6 +69,16 @@ curl -fsS -H "Authorization: Bearer $(awk -F= '$1=="HAWATCH_METRICS_TOKEN" {sub(
 docker compose --env-file .env -f infra/compose/compose.yaml logs --tail=100 api ingest
 ```
 
+نقاط شاخص Home در دیتابیس تنظیم می‌شوند و `sync_catalog` آن‌ها را در deployهای
+بعدی بازنشانی نمی‌کند. برای ارتقای یک دیتابیس قدیمی که فقط توچال را در Home
+دارد، یک‌بار از روی local یا با SSH این انتخاب را اعمال کنید:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py set_popular_points \
+  --slugs tochal,damavand,alamkuh,tar-lake
+```
+
 توقف بدون حذف volumeها:
 
 ```bash
