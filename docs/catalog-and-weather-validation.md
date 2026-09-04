@@ -38,6 +38,13 @@
 - `timing.method` / `timing.version` / `timing.confidence` / `timing.uncertainty_minutes` / `timing.source_urls`
 - `timing.cumulative_minutes`: دیکشنری slug نقطه → دقیقه تجمعی متوسط از مبدأ (مبدأ = ۰)
 
+در یک Route، نزدیکی دو نقطه به‌تنهایی دلیل ساختن WeatherPoint جدید نیست. فاصلهٔ
+کمتر از ۲۵ متر duplicate و قابل merge است؛ فاصلهٔ ۲۵ تا ۱۰۰ متر فقط برای دو
+عارضهٔ واقعاً مستقل با نام، کاربرد و ارزش مرحله‌ای/forecast متفاوت پذیرفته می‌شود
+و باید در `reviewed_nearby_point_pairs` مستند شود. نقطهٔ صرفاً نزدیک به waypoint
+قبلی که اطلاعات تازه‌ای به کاربر نمی‌دهد نباید وارد زنجیره شود؛ حذف آن نباید
+cumulative timing نقاط باقی‌مانده را از حالت strictly increasing خارج کند.
+
 اعتبارسنجی seed:
 
 - همهٔ نقاط timed روی route وجود دارند و duplicate نیستند
