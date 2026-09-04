@@ -73,6 +73,9 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 
 جزئیات بیشتر در `docs/local-development.md` و `infra/compose/README.md`.
 
+آمار بازدید داخلی Point و Route (بدون ابزار خارجی) در Django Admin توضیح داده
+شده است: [`docs/analytics.md`](docs/analytics.md).
+
 ## استقرار سریع روی سرور
 
 برای نصب پیش‌نیازها، clone، ساخت امن `.env`، اجرای Compose سبک و health check از اسکریپت زیر استفاده کنید:

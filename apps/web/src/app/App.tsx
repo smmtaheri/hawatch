@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation, type Location } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
 import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
@@ -24,8 +26,18 @@ type LoginLocationState = {
  */
 export function AppRoutes() {
   const location = useLocation();
+  const trackedNavigationRef = useRef<string | null>(null);
   const state = location.state as LoginLocationState | null;
   const backgroundLocation = location.pathname === "/login" ? state?.backgroundLocation : undefined;
+
+  useEffect(() => {
+    const match = location.pathname.match(/^\/(points|routes)\/([^/]+)\/?$/);
+    if (!match) return;
+    const fingerprint = `${location.key}:${location.pathname}`;
+    if (trackedNavigationRef.current === fingerprint) return;
+    trackedNavigationRef.current = fingerprint;
+    trackPageView(match[1] === "points" ? "point" : "route", match[2]);
+  }, [location.key, location.pathname]);
 
   return (
     <>

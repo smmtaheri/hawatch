@@ -1,6 +1,7 @@
 from django.urls import path
 
 from hawatch.api.v1 import views
+from hawatch.modules.analytics.api import page_view_event
 
 urlpatterns = [
     path("metrics/", views.metrics_view),
@@ -13,6 +14,7 @@ urlpatterns = [
     path("routes/<slug:slug>/forecast/", views.route_forecast_view),
     path("points/<slug:slug>/forecast/", views.point_forecast_view),
     path("search/suggestions/", views.search_suggestions_view),
+    path("analytics/pageview/", page_view_event),
     path("seo/robots.txt", views.robots_txt),
     path("seo/sitemap.xml", views.sitemap_xml),
 ]

@@ -1,0 +1,42 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<div id="content-main">
+  <form method="get" class="module aligned">
+    <label>نوع صفحه
+      <select name="type">
+        <option value="all" {% if selected_type == "all" %}selected{% endif %}>همه</option>
+        <option value="point" {% if selected_type == "point" %}selected{% endif %}>Point</option>
+        <option value="route" {% if selected_type == "route" %}selected{% endif %}>Route</option>
+      </select>
+    </label>
+    <label>بازه
+      <select name="range">
+        {% for key, label in ranges.items %}<option value="{{ key }}" {% if selected_range == key %}selected{% endif %}>{{ label }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>مرتب‌سازی بر اساس
+      <select name="metric">
+        <option value="page_views" {% if selected_metric == "page_views" %}selected{% endif %}>Page View</option>
+        <option value="unique_visitors" {% if selected_metric == "unique_visitors" %}selected{% endif %}>بازدیدکنندهٔ یکتا</option>
+      </select>
+    </label>
+    <label>ترتیب
+      <select name="order">
+        <option value="desc" {% if selected_order == "desc" %}selected{% endif %}>نزولی</option>
+        <option value="asc" {% if selected_order == "asc" %}selected{% endif %}>صعودی</option>
+      </select>
+    </label>
+    <button type="submit" class="button">اعمال</button>
+  </form>
+
+  <h2>خلاصهٔ بازه‌ها</h2>
+  <table class="adminlist"><thead><tr><th>بازه</th><th>Page View</th><th>بازدیدکنندهٔ یکتا</th></tr></thead><tbody>
+    {% for summary in summary_rows %}<tr><td>{{ summary.label }}</td><td>{{ summary.page_views }}</td><td>{{ summary.unique_visitors }}</td></tr>{% endfor %}
+  </tbody></table>
+
+  <h2>صفحات ({{ selected_range_label }})</h2>
+  <table id="result_list" class="adminlist"><thead><tr><th>نوع</th><th>نام فارسی</th><th>slug</th><th>Page View</th><th>بازدیدکنندهٔ یکتا</th></tr></thead><tbody>
+    {% for row in rows %}<tr><td>{{ row.page_type_label }}</td><td>{{ row.name }}</td><td>{{ row.slug }}</td><td>{{ row.page_views }}</td><td>{{ row.unique_visitors }}</td></tr>{% empty %}<tr><td colspan="5">صفحه‌ای پیدا نشد.</td></tr>{% endfor %}
+  </tbody></table>
+</div>
+{% endblock %}
