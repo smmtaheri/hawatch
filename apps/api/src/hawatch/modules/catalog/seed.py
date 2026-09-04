@@ -54,9 +54,26 @@ def seed_demo_data(*, force: bool = False) -> DemoSeedState | None:
     if not settings.DEMO_DATA_ENABLED:
         return DemoSeedState.objects.filter(key="demo").first()
     seed_version = settings.DEMO_SEED_VERSION
-    ensure_catalog(seed_version)
+    # Catalog import is bootstrap-only. Once live points exist, generating or
+    # refreshing demo forecasts must not overwrite operator-managed edits made
+    # through Admin or an explicit catalog import.
+    if not WeatherPoint.objects.filter(is_active=True, data_mode="live").exists():
+        ensure_catalog(seed_version)
     return ensure_forecasts(seed_version, force=force)
 
 
 def refresh_if_bucket_changed() -> DemoSeedState | None:
-    return seed_demo_data(force=False) if settings.DEMO_DATA_ENABLED else None
+    if not settings.DEMO_DATA_ENABLED:
+        return None
+
+    # API reads must not re-import the JSON catalog on every request. Apart
+    # from unnecessary work, that would overwrite operator edits (for example
+    # a deliberately pending RoutePoint) before the serializer can observe
+    # them. Re-seed only when the demo clock bucket or seed version changed;
+    # callers that explicitly need a catalog refresh use force=True.
+    local = now_tehran()
+    bucket = hour_bucket(local)
+    state = DemoSeedState.objects.filter(key="demo").first()
+    if state and state.seed_version == settings.DEMO_SEED_VERSION and state.last_hour_bucket == bucket:
+        return state
+    return seed_demo_data(force=False)

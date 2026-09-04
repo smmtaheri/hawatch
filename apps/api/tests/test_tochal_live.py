@@ -225,7 +225,8 @@ def test_open_meteo_batching_and_elevation_partition():
 @pytest.mark.django_db
 def test_provisional_catalog_elevation_keeps_nearest_provider_cell():
     seed_tochal_catalog()
-    hotel, summit = WeatherPoint.objects.filter(slug__in=["tochal-hotel", "tochal"]).order_by("slug")
+    hotel = WeatherPoint.objects.get(slug="tochal-hotel")
+    summit = WeatherPoint.objects.get(slug="tochal")
     points = weather_points_to_provider_points([hotel, summit])
     assert points[0].cell_selection == "nearest"
     assert points[1].cell_selection is None

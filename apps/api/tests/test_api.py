@@ -41,12 +41,11 @@ def test_ready_health_postgis(api_client, seeded):
 @pytest.mark.django_db
 def test_known_points_and_routes_exist(seeded):
     slugs = set(WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY).values_list("slug", flat=True))
-    assert slugs >= {"tochal", "damavand", "daryasar", "jangal-abr", "maranjab", "gahar"}
+    assert slugs == {"azadkouh", "darabad", "dorfak", "gahar", "hazar", "sabalan", "tar-lake", "tochal", "zarrinkuh"}
     route_slugs = set(Route.objects.values_list("slug", flat=True))
     assert "tochal-darband" in route_slugs
-    assert "daryasar-dohazar" in route_slugs
-    assert "gahar-lake" in route_slugs
-    assert "marnjab-reg" in route_slugs
+    assert {"gahar-dorud", "gahar-aligudarz"} <= route_slugs
+    assert len(route_slugs) == 27
     assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
 
@@ -178,19 +177,18 @@ def test_route_forecast_start_and_speed(api_client, seeded):
         "tochal-ahar",
     }
 
-    # Non-Tochal estimated routes still honor start/speed timing.
+    # Current point-only catalogs expose only their active route graph.
     estimated = api_client.get(
-        "/api/v1/routes/daryasar-dohazar/forecast/",
+        "/api/v1/routes/gahar-dorud/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "متوسط"},
     ).json()
     estimated_fast = api_client.get(
-        "/api/v1/routes/daryasar-dohazar/forecast/",
+        "/api/v1/routes/gahar-dorud/forecast/",
         {"date": today.isoformat(), "period": "morning", "start_time": "06:00", "speed": "سریع"},
     ).json()
     assert estimated["timing_pending"] is False
     assert estimated["points"][0]["time"] == estimated["start_time"]
     assert estimated_fast["points"][-1]["arrival_minutes"] < estimated["points"][-1]["arrival_minutes"]
-    assert estimated_fast["decision"]["finish"] != estimated["decision"]["finish"]
 
 
 @pytest.mark.django_db

@@ -13,6 +13,7 @@ from pathlib import Path
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.db import transaction
+from django.db.models import Q
 
 from hawatch.modules.catalog.identity import metadata_for_point
 from hawatch.modules.catalog.search import rebuild_search_index
@@ -61,6 +62,116 @@ def _derive_segments(cumulative: dict[str, int], ordered: list[str]) -> dict[str
     return segments
 
 
+TIMING_CONFIDENCE_VALUES = {"high", "medium", "low"}
+TIMING_STATUS_VALUES = {choice for choice, _label in Route.TimingStatus.choices}
+
+
+def _restore_manual_route_point_positions(
+    *, route: Route, fixture_point_slugs: list[str], manual_positions: list[tuple[int, int]]
+) -> None:
+    """Reinsert operator-managed RoutePoints at their previous ordinal slots."""
+    fixture_points = {
+        point.slug: point
+        for point in RoutePoint.objects.filter(route=route, slug__in=fixture_point_slugs)
+    }
+    ordered_fixtures = [fixture_points[slug] for slug in fixture_point_slugs if slug in fixture_points]
+    manual_points = {
+        point.pk: point
+        for point in RoutePoint.objects.filter(route=route, fixture_managed=False)
+    }
+
+    if not ordered_fixtures and not manual_points:
+        return
+
+    # Free all slots before writing the dense order, then put manual rows back
+    # into the slots they occupied before the fixture refresh.
+    from hawatch.modules.routes.publish import shift_route_point_sort_orders
+
+    shift_route_point_sort_orders(route)
+    manual_by_slot: dict[int, list[RoutePoint]] = {}
+    for point_id, original_order in manual_positions:
+        point = manual_points.get(point_id)
+        if point is not None:
+            manual_by_slot.setdefault(max(1, original_order), []).append(point)
+
+    combined: list[RoutePoint] = []
+    for fixture_index, fixture_point in enumerate(ordered_fixtures, start=1):
+        combined.extend(manual_by_slot.pop(fixture_index, []))
+        combined.append(fixture_point)
+    for slot in sorted(manual_by_slot):
+        combined.extend(manual_by_slot[slot])
+
+    for index, point in enumerate(combined, start=1):
+        RoutePoint.objects.filter(pk=point.pk).update(sort_order=index)
+
+
+def _validate_route_timing(route_key: str, route: dict, point_slugs: set[str]) -> None:
+    """Validate a complete timing block; ambiguous routes remain pending."""
+    timing = route.get("timing")
+    status = route.get("timing_status", Route.TimingStatus.PENDING)
+    if status not in TIMING_STATUS_VALUES:
+        raise ValueError(f"Route {route_key} has invalid timing_status: {status}")
+    if timing is None:
+        if status != Route.TimingStatus.PENDING:
+            raise ValueError(f"Route {route_key} has timing_status={status} but no timing block")
+        return
+    if status == Route.TimingStatus.PENDING:
+        raise ValueError(f"Route {route_key} has a timing block but timing_status=pending")
+
+    ordered = list(route.get("points") or [])
+    cumulative = timing.get("cumulative_minutes")
+    if not isinstance(cumulative, dict) or not cumulative:
+        raise ValueError(f"Route {route_key} timing.cumulative_minutes is required when timing is present")
+    missing = sorted(set(ordered) - set(cumulative))
+    extra = sorted(set(cumulative) - set(ordered))
+    if missing:
+        raise ValueError(f"Route {route_key} timing missing cumulative entries: {', '.join(missing)}")
+    if extra:
+        raise ValueError(f"Route {route_key} timing includes points not on the route: {', '.join(extra)}")
+    try:
+        values = [int(cumulative[slug]) for slug in ordered]
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError(f"Route {route_key} timing cumulative values must be integers") from exc
+    if not values or values[0] != 0:
+        raise ValueError(f"Route {route_key} first cumulative_minutes must be 0")
+    for previous, current in zip(values, values[1:]):
+        if current <= previous:
+            raise ValueError(f"Route {route_key} cumulative_minutes must be strictly monotonic")
+    one_way = route.get("one_way_minutes")
+    if one_way is None:
+        raise ValueError(f"Route {route_key} one_way_minutes is required when timing is present")
+    if int(one_way) != values[-1]:
+        raise ValueError(f"Route {route_key} one_way_minutes ({one_way}) must equal final cumulative ({values[-1]})")
+    if route.get("round_trip_minutes") is not None:
+        raise ValueError(f"Route {route_key} must not set round_trip_minutes; use one_way_minutes")
+    method = str(timing.get("method") or "").strip()
+    if not method:
+        raise ValueError(f"Route {route_key} timing.method is required for {status}")
+    version = str(timing.get("version") or "").strip()
+    if not version:
+        raise ValueError(f"Route {route_key} timing.version is required for {status}")
+    confidence = str(timing.get("confidence") or "").strip()
+    if confidence not in TIMING_CONFIDENCE_VALUES:
+        raise ValueError(f"Route {route_key} timing.confidence must be one of {sorted(TIMING_CONFIDENCE_VALUES)}")
+    uncertainty = timing.get("uncertainty_minutes")
+    try:
+        if uncertainty is None or int(uncertainty) < 0:
+            raise ValueError
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"Route {route_key} timing.uncertainty_minutes must be a non-negative integer") from exc
+    sources = timing.get("source_urls")
+    if not isinstance(sources, list) or not sources or not all(isinstance(url, str) and url.strip() for url in sources):
+        raise ValueError(f"Route {route_key} timing.source_urls must be a non-empty list")
+    segments = timing.get("segment_minutes")
+    if segments is not None:
+        if not isinstance(segments, dict) or set(segments) != set(ordered):
+            raise ValueError(f"Route {route_key} segment_minutes keys must match route points")
+        derived = _derive_segments({slug: int(cumulative[slug]) for slug in ordered}, ordered)
+        for slug in ordered:
+            if int(segments[slug]) != derived[slug]:
+                raise ValueError(f"Route {route_key} segment_minutes[{slug}] must match cumulative difference")
+
+
 def _validate_document_shape(data: dict) -> None:
     for key in ("catalog_version", "point", "weather_points", "routes"):
         if key not in data:
@@ -69,21 +180,35 @@ def _validate_document_shape(data: dict) -> None:
         raise ValueError("point must be an object")
     if not isinstance(data["routes"], dict):
         raise ValueError("routes must be an object")
+    if not isinstance(data["weather_points"], dict) or not data["weather_points"]:
+        raise ValueError("weather_points must be a non-empty object")
     points = set(data["weather_points"])
     for slug, row in data["weather_points"].items():
         if not isinstance(row, dict) or not str(row.get("name") or "").strip():
             raise ValueError(f"WeatherPoint {slug}.name is required")
     if _point_slug(data) not in points:
         raise ValueError("primary point does not exist in weather_points")
-    shared = set(data.get("shared_weather_points") or [])
+    shared_rows = data.get("shared_weather_points") or []
+    if not isinstance(shared_rows, list) or len(shared_rows) != len(set(shared_rows)):
+        raise ValueError("shared_weather_points must be a unique list")
+    shared = set(shared_rows)
+    overlap = points & shared
+    if overlap:
+        raise ValueError("shared_weather_points must not repeat local weather points: " + ", ".join(sorted(overlap)))
     points |= shared
     for key, route in data["routes"].items():
+        if not isinstance(route, dict):
+            raise ValueError(f"Route {key} must be an object")
         ordered = route.get("points") or []
         if not ordered or len(ordered) != len(set(ordered)):
             raise ValueError(f"Route {key} must contain unique ordered points")
         missing = sorted(set(ordered) - points)
         if missing:
             raise ValueError(f"Route {key} references missing points: {', '.join(missing)}")
+        public_notes = route.get("public_point_notes") or {}
+        if not isinstance(public_notes, dict) or not set(public_notes).issubset(set(ordered)):
+            raise ValueError(f"Route {key} public_point_notes references points outside the route")
+        _validate_route_timing(key, route, points)
     issues = [issue for issue in validate_catalog_document(data) if issue.level == "error"]
     if issues:
         raise ValueError("Catalog identity validation failed:\n" + format_issues(issues))
@@ -153,13 +278,27 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         points[slug] = shared
 
     kept_routes: list[int] = []
+    pruned_routes = 0
+    pruned_points = 0
     for catalog_key, row in data["routes"].items():
         ordered = list(row["points"])
         if any(slug not in points for slug in ordered):
             conflicts.append(f"Route {row['slug']} skipped: missing point")
             continue
         timing = _timing(row)
-        route, created = Route.objects.get_or_create(slug=row["slug"], defaults={"title": row["title"], "subtitle": row["subtitle"], "trail_label": row["trail_label"], "origin": row["origin"], "target_label": row["target_label"], "region": row["region"], "origin_location": points[ordered[0]].location})
+        route, created = Route.objects.get_or_create(
+            slug=row["slug"],
+            defaults={
+                "title": row["title"],
+                "subtitle": row["subtitle"],
+                "trail_label": row["trail_label"],
+                "origin": row["origin"],
+                "target_label": row["target_label"],
+                "region": row["region"],
+                "origin_location": points[ordered[0]].location,
+                "fixture_managed": True,
+            },
+        )
         if not created and not route.fixture_managed and not force_adopt:
             conflicts.append(f"Route slug={route.slug} is operator-managed; skipped")
             kept_routes.append(route.pk)
@@ -171,27 +310,123 @@ def seed_catalog(*, catalog: dict | None = None, catalog_file: str | None = None
         route.featured, route.sort_order, route.origin_location, route.origin_weather_point, route.target_weather_point = row.get("featured", False), row.get("sort_order", 0), points[ordered[0]].location, points[ordered[0]], points[ordered[-1]]
         route.catalog_key, route.data_mode, route.seed_version, route.fixture_managed = catalog_key, "live", version, True
         route.save()
-        existing = {rp.slug: rp for rp in route.points.all()}
+        # Preserve operator-managed RoutePoints in the slots where the
+        # operator placed them. Fixture rows are rewritten from catalog truth.
+        manual_positions = list(
+            RoutePoint.objects.filter(route=route, fixture_managed=False)
+            .order_by("sort_order", "pk")
+            .values_list("pk", "sort_order")
+        )
+        manual_slug_collisions = set(
+            RoutePoint.objects.filter(route=route, fixture_managed=False, slug__in=ordered)
+            .values_list("slug", flat=True)
+        )
+        if manual_slug_collisions and not force_adopt:
+            conflicts.append(
+                f"Route {route.slug} skipped: operator-managed RoutePoint slug collision "
+                f"({', '.join(sorted(manual_slug_collisions))})"
+            )
+            kept_routes.append(route.pk)
+            continue
+
+        from hawatch.modules.routes.publish import shift_route_point_sort_orders
+
+        shift_route_point_sort_orders(route)
         for index, slug in enumerate(ordered):
             wp = points[slug]
-            rp, _ = RoutePoint.objects.get_or_create(route=route, slug=slug, defaults={"weather_point": wp, "name": wp.name, "sort_order": index + 1})
+            rp, _ = RoutePoint.objects.get_or_create(
+                route=route,
+                slug=slug,
+                defaults={
+                    "weather_point": wp,
+                    "name": wp.name,
+                    "sort_order": index + 1,
+                    "fixture_managed": True,
+                },
+            )
             if not rp.fixture_managed and not force_adopt:
                 conflicts.append(f"RoutePoint {route.slug}:{slug} is operator-managed; skipped")
                 continue
             x, y = axis_for_index(index, len(ordered))
-            values = {"weather_point": wp, "name": wp.name, "elevation_m": wp.elevation_m, "location": wp.location, "base_minutes": timing["cumulative"].get(slug), "segment_minutes": timing["segments"].get(slug), "cumulative_minutes": timing["cumulative"].get(slug), "progress_pct": round(timing["cumulative"].get(slug, 0) / timing["one_way"] * 100, 2) if timing["one_way"] else None, "timing_status": timing["status"] if timing["status"] != Route.TimingStatus.PENDING else RoutePoint.TimingStatus.PENDING, "sort_order": index + 1, "public_note": str((row.get("public_point_notes") or {}).get(slug, ""))[:255], "axis_x": x, "axis_y": y, "data_mode": "live", "seed_version": version, "fixture_managed": True}
+            point_row = data["weather_points"].get(slug) or {}
+            values = {
+                "weather_point": wp,
+                "name": wp.name,
+                "elevation_m": wp.elevation_m,
+                "location": wp.location,
+                "base_minutes": timing["cumulative"].get(slug),
+                "segment_minutes": timing["segments"].get(slug),
+                "cumulative_minutes": timing["cumulative"].get(slug),
+                "progress_pct": round(timing["cumulative"].get(slug, 0) / timing["one_way"] * 100, 2) if timing["one_way"] else None,
+                "timing_status": timing["status"] if timing["status"] != Route.TimingStatus.PENDING else RoutePoint.TimingStatus.PENDING,
+                "sort_order": index + 1,
+                "internal_note": str(point_row.get("evidence_note", "") or "")[:255],
+                "public_note": str((row.get("public_point_notes") or {}).get(slug, ""))[:255],
+                "axis_x": x,
+                "axis_y": y,
+                "data_mode": "live",
+                "seed_version": version,
+                "fixture_managed": True,
+            }
             for key, value in values.items(): setattr(rp, key, value)
             rp.save()
         if prune:
             route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()
+        _restore_manual_route_point_positions(
+            route=route,
+            fixture_point_slugs=ordered,
+            manual_positions=manual_positions,
+        )
         normalize_and_publish_route(route, rebuild_search=False)
         kept_routes.append(route.pk)
     if prune:
-        Route.objects.filter(fixture_managed=True, data_mode="live").exclude(pk__in=kept_routes).delete()
+        stale_routes = Route.objects.filter(
+            fixture_managed=True,
+            data_mode="live",
+            seed_version=version,
+        ).exclude(pk__in=kept_routes)
+        for stale_route in stale_routes:
+            if stale_route.points.filter(fixture_managed=False).exists():
+                conflicts.append(f"Route slug={stale_route.slug} still has operator-managed RoutePoints; not pruned")
+                continue
+            stale_route.delete()
+            pruned_routes += 1
+
+        # There is no Destination owner after point unification. Restrict
+        # pruning to rows from this catalog (plus unversioned fixture rows,
+        # which are the explicit stale-import case) and never remove a point
+        # still referenced by any route/operator record.
+        stale_points = WeatherPoint.objects.filter(
+            fixture_managed=True,
+            data_mode="live",
+        ).filter(Q(catalog_version=version) | Q(catalog_version="")).exclude(slug__in=set(points))
+        for stale_point in stale_points:
+            if RoutePoint.objects.filter(weather_point=stale_point).exists():
+                conflicts.append(f"WeatherPoint slug={stale_point.slug} still linked by RoutePoint rows; not pruned")
+                continue
+            referenced = Route.objects.filter(fixture_managed=False).filter(
+                Q(origin_weather_point=stale_point) | Q(target_weather_point=stale_point)
+            ).exists()
+            if referenced:
+                conflicts.append(f"WeatherPoint slug={stale_point.slug} still referenced by operator-managed rows; not pruned")
+                continue
+            stale_point.delete()
+            pruned_points += 1
     if raise_on_conflict and conflicts:
         raise CatalogImportConflict(conflicts)
     search = rebuild_search_index()
-    return {"catalog_version": version, "point": _point_slug(data), "weather_point_count": len(points), "route_count": len(kept_routes), "shared_point_slugs": sorted(points), "pruned": prune, "conflicts": conflicts, **search}
+    return {
+        "catalog_version": version,
+        "point": _point_slug(data),
+        "weather_point_count": len(points),
+        "route_count": len(kept_routes),
+        "shared_point_slugs": sorted(points),
+        "pruned": prune,
+        "pruned_routes": pruned_routes,
+        "pruned_points": pruned_points,
+        "conflicts": conflicts,
+        **search,
+    }
 
 
 def bootstrap_live_catalog_if_empty(*, catalog_file: str = DEFAULT_CATALOG_FILE) -> dict | None:

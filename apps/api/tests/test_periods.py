@@ -497,8 +497,8 @@ def test_catalog_seed_does_not_create_synthetic_point_slugs(seeded):
     seed_catalog()
     assert not WeatherPoint.objects.filter(slug="dest:tochal").exists()
     assert WeatherPoint.objects.filter(slug="tochal").exists()
-    assert WeatherPoint.objects.filter(slug="damavand", kind=WeatherPoint.Kind.PRIMARY).exists()
-    assert not WeatherPoint.objects.filter(slug="dest:damavand").exists()
+    assert WeatherPoint.objects.filter(slug="azadkouh", kind=WeatherPoint.Kind.PRIMARY).exists()
+    assert not WeatherPoint.objects.filter(slug="dest:azadkouh").exists()
 
 
 @pytest.mark.django_db
@@ -552,5 +552,5 @@ def test_place_forecast_contract_shared_keys(api_client, seeded):
         assert body["meta"]["selected_date"] == forecast["meta"]["selected_date"]
     assert primary["subject"]["weather_point_slug"] == "tochal"
     assert primary["point"]["weather_point_slug"] == "tochal"
-    assert primary["related_routes_title"].startswith("مسیرهای منتهی به")
-    assert point["related_routes_title"] == "مسیرهای عبوری از این نقطه"
+    assert primary["related_routes_title"].startswith("مسیرهای متصل به")
+    assert point["related_routes_title"].startswith("مسیرهای متصل به")

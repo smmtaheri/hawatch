@@ -1090,6 +1090,7 @@ def get_weather_point(slug: str) -> WeatherPoint:
 def serialize_weather_point(point: WeatherPoint) -> dict:
     return {
         "slug": point.slug,
+        "weather_point_slug": point.slug,
         "name": point.name,
         "page_name": point.page_name or point.name,
         "short_label": point.short_label or point.name,

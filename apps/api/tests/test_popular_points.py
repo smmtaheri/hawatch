@@ -20,11 +20,11 @@ def api_client():
 @pytest.mark.django_db
 def test_home_point_list_contains_only_ordered_popular_four():
     seed_demo_data(force=True)
-    call_command("set_popular_points", "--slugs", "gahar,tochal,damavand,daryasar")
+    call_command("set_popular_points", "--slugs", "gahar,tochal,azadkouh,sabalan")
 
-    assert [item.slug for item in list_points()] == ["gahar", "tochal", "damavand", "daryasar"]
+    assert [item.slug for item in list_points()] == ["gahar", "tochal", "azadkouh", "sabalan"]
     assert WeatherPoint.objects.filter(is_popular=True).count() == 4
-    assert WeatherPoint.objects.get(slug="maranjab").is_popular is False
+    assert WeatherPoint.objects.get(slug="darabad").is_popular is False
 
 
 @pytest.mark.django_db
@@ -51,7 +51,7 @@ def test_new_point_is_not_popular_by_default():
 @pytest.mark.django_db
 def test_home_api_exposes_active_catalog_counts_not_popular_tile_count(api_client):
     seed_demo_data(force=True)
-    WeatherPoint.objects.filter(slug="maranjab").update(is_active=False)
+    WeatherPoint.objects.filter(slug="darabad").update(is_active=False)
     route = Route.objects.filter(target_weather_point__slug="tochal").first()
     assert route is not None
     route.is_active = False

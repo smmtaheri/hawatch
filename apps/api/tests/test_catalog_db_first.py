@@ -59,7 +59,7 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
         },
         "primary_point": "shared-reference-summit",
         "weather_points": {
-            "shared_reference_summit": {
+            "shared-reference-summit": {
                 "name": "قلهٔ مقصد",
                 "page_name": "قلهٔ مقصد",
                 "short_label": "قلهٔ مقصد",
@@ -75,7 +75,7 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
                 "status": "provisional",
                 "elevation_source": "test",
             },
-            "shared_reference_landmark": {
+            "shared-reference-landmark": {
                 "name": "گردنهٔ مقصد",
                 "page_name": "گردنهٔ مقصد",
                 "short_label": "گردنهٔ مقصد",
@@ -102,7 +102,7 @@ def test_catalog_can_reference_shared_weather_point_without_reowning_it():
                 "distance_km": 3.0,
                 "ascent_m": 990,
                 "timing_status": "pending",
-                "points": ["shared_lake_point", "shared_reference_landmark", "shared_reference_summit"],
+                "points": ["shared_lake_point", "shared-reference-landmark", "shared-reference-summit"],
             }
         },
     }
