@@ -7,6 +7,13 @@ from hawatch.modules.analytics.models import PageViewEvent
 from hawatch.modules.catalog.seed import seed_demo_data
 
 
+def assert_private_no_store(response):
+    """Django's admin adds its own no-cache directives to private pages."""
+    directives = {directive.strip().lower() for directive in response["Cache-Control"].split(",")}
+    assert "private" in directives
+    assert "no-store" in directives
+
+
 @pytest.fixture
 def api_client():
     return APIClient()
@@ -99,7 +106,7 @@ def test_admin_overview_contains_zero_view_pages_and_filters(seeded, client):
     assert response.status_code == 200
     assert "tochal" in response.content.decode()
     assert "Page View" in response.content.decode()
-    assert response["Cache-Control"] == "private, no-store"
+    assert_private_no_store(response)
 
 
 @pytest.mark.django_db
@@ -122,7 +129,7 @@ def test_analytics_admin_is_private_to_superusers(client):
     client.force_login(superuser)
     response = client.get(overview_url)
     assert response.status_code == 200
-    assert response["Cache-Control"] == "private, no-store"
+    assert_private_no_store(response)
     event = PageViewEvent.objects.create(
         page_type="point",
         page_slug="tochal",
@@ -132,6 +139,6 @@ def test_analytics_admin_is_private_to_superusers(client):
     detail = client.get(reverse("admin:analytics_pageviewevent_change", args=[event.pk]))
     listing = client.get(changelist_url)
     assert detail.status_code == 200
-    assert detail["Cache-Control"] == "private, no-store"
+    assert_private_no_store(detail)
     assert listing.status_code == 200
-    assert listing["Cache-Control"] == "private, no-store"
+    assert_private_no_store(listing)
