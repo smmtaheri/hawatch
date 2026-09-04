@@ -1,0 +1,138 @@
+{
+  "catalog_version": "hawatch-kolakchal-catalog-v1",
+  "weather_points": {
+    "kolakchal-jamshidieh-station-3": {
+      "name": "ایستگاه سوم مسیر کلک‌چال",
+      "latitude": 35.836151,
+      "longitude": 51.451684,
+      "elevation_m": 2307,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2307 m؛ waypoint ایستگاه سوم در ترک مستقل مسیر جمشیدیه–کلک‌چال: 2288 m",
+      "evidence_note": "ایستگاه سوم یک عارضهٔ نام‌دار و قابل‌شناسایی در مسیر جمشیدیه به اردوگاه کلک‌چال است؛ نام صفحه با زمینهٔ کلک‌چال برای جلوگیری از ابهام جست‌وجو ثبت شده است.",
+      "page_name": "ایستگاه سوم مسیر جمشیدیه–کلک‌چال",
+      "short_label": "ایستگاه سوم کلک‌چال",
+      "place_type": "landmark",
+      "aliases": [
+        "ایستگاه ۳ کلک‌چال",
+        "ایستگاه سوم جمشیدیه"
+      ],
+      "identity_summary": "ایستگاه سوم مسیر جمشیدیه–کلک‌چال؛ نقطهٔ landmark پیش از اردوگاه کلک‌چال",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040",
+        "https://www.wikiloc.com/mountaineering-trails/kolakchal-peak-from-jamshidieh-park-qlh-khlkhchl-z-prkh-jmshydyh-145181769",
+        "https://mojekooh.com/from-kalakchal-to-tochal-guide-to-a-ridge-in-tehran/"
+      ]
+    },
+    "kolakchal": {
+      "name": "قلهٔ کلک‌چال",
+      "latitude": 35.858214,
+      "longitude": 51.456313,
+      "elevation_m": 3341,
+      "status": "provisional",
+      "elevation_source": "Mapcarta/OSM: 3341 m؛ SummitPost: 3350 m؛ Open-Meteo GLO-90 DEM: 3318 m در نزدیک‌ترین grid؛ مقدار نهایی 3341 m با اختلاف 23 m از DEM",
+      "page_name": "قلهٔ کلک‌چال تهران",
+      "short_label": "قلهٔ کلک‌چال",
+      "place_type": "summit",
+      "aliases": [
+        "قله کلکچال",
+        "قله کولکچال",
+        "Kolakchal Peak"
+      ],
+      "identity_summary": "قلهٔ کلک‌چال تهران؛ نقطهٔ summit مسیر جمشیدیه به کلک‌چال",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/kolakchal/154126",
+        "https://mapcarta.com/N5825487118",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%A9%D9%84%DA%A9%DA%86%D8%A7%D9%84/",
+        "https://www.wikiloc.com/mountaineering-trails/kolakchal-peak-from-jamshidieh-park-qlh-khlkhchl-z-prkh-jmshydyh-145181769",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlkhchl-z-prkh-jmshydyh-kolakchal-22176710"
+      ]
+    }
+  },
+  "shared_weather_points": [
+    "tochal-jamshidieh-park",
+    "tochal-kolakchal-camp",
+    "tochal-espilat-sarlo-pass"
+  ],
+  "routes": {
+    "jamshidieh_to_kolakchal": {
+      "slug": "kolakchal-jamshidieh",
+      "title": "جمشیدیه تا قلهٔ کلک‌چال",
+      "subtitle": "از پارک جمشیدیه، ایستگاه سوم و اردوگاه تا قلهٔ کلک‌چال",
+      "trail_label": "مسیر جمشیدیه–کلک‌چال",
+      "origin": "پارک جمشیدیه",
+      "target_label": "قلهٔ کلک‌چال",
+      "region": "تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "tochal-jamshidieh-park",
+        "kolakchal-jamshidieh-station-3",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "kolakchal"
+      ],
+      "distance_km": 8.4,
+      "ascent_m": 1500,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-naismith-v1",
+        "version": "kolakchal-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 40,
+        "source_urls": [
+          "https://mojekooh.com/from-kalakchal-to-tochal-guide-to-a-ridge-in-tehran/",
+          "https://mojekooh.com/%DA%A9%D9%84%DA%A9-%DA%86%D8%A7%D9%84/",
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%A9%D9%84%DA%A9%DA%86%D8%A7%D9%84/",
+          "https://www.wikiloc.com/mountaineering-trails/kolakchal-peak-from-jamshidieh-park-qlh-khlkhchl-z-prkh-jmshydyh-145181769",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khlkhchl-z-prkh-jmshydyh-kolakchal-22176710"
+        ],
+        "evidence_tracks": [
+          "tracks/kolakchal/kolakchal-jamshidieh-to-summit-primary.gpx",
+          "tracks/kolakchal/kolakchal-jamshidieh-to-summit-crosscheck.gpx",
+          "tracks/kolakchal/kolakchal-jamshidieh-to-tochal-crosscheck.gpx"
+        ],
+        "notes": [
+          "ایستگاه سوم فقط یک‌بار در route ثبت شده و با مختصات مشترک اردوگاه ادغام نشده است.",
+          "ترک‌های Wikiloc شامل بخش بازگشت هستند؛ distance و ascent بر اساس بخش صعود تا نزدیک‌ترین نقطهٔ قله و با ارتفاع GPX به‌عنوان مرجع محاسبه شده‌اند.",
+          "قلهٔ کلک‌چال از مسیر جمشیدیه یک مقصد مستقل است؛ نقاط مشترک مسیر توچال دوباره تعریف نشده‌اند."
+        ],
+        "cumulative_minutes": {
+          "tochal-jamshidieh-park": 0,
+          "kolakchal-jamshidieh-station-3": 60,
+          "tochal-kolakchal-camp": 120,
+          "tochal-espilat-sarlo-pass": 210,
+          "kolakchal": 300
+        }
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kolakchal",
+    "tile_name": "کلک‌چال",
+    "name": "قلهٔ کلک‌چال",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 3341,
+    "latitude": 35.858214,
+    "longitude": 51.456313,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کلک‌چال تهران",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "kolakchal"
+}
