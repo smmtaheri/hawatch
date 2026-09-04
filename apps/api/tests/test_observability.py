@@ -75,6 +75,7 @@ def test_status_endpoint_reports_catalog_and_live_freshness(api_client, seeded):
     assert body["forecast"]["latest_attempt_status"] is None
 
 
+@pytest.mark.django_db
 def test_status_endpoint_requires_the_metrics_token(api_client, monkeypatch):
     monkeypatch.delenv("HAWATCH_METRICS_TOKEN_FILE", raising=False)
     monkeypatch.setenv("HAWATCH_METRICS_TOKEN", "test-status-token")

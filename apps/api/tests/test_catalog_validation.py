@@ -126,7 +126,7 @@ def test_weather_point_model_validation_rejects_an_unsupported_demo_climate():
     )
 
     with pytest.raises(ValidationError, match="Unsupported demo climate profile"):
-        point.full_clean()
+        point.full_clean(validate_unique=False)
 
 
 @pytest.mark.django_db
