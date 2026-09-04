@@ -10,7 +10,9 @@
 - Grafana با login اجباری و dashboard provisioned، health، inventory نقطه/مسیر/point، error rate، latency، ingest، retry و freshness را نشان می‌دهد.
 - Vector فقط volumeی را می‌بیند که API و maintenance برای logهای Hawatch روی آن می‌نویسند و فقط همان JSONLها را به indexهای `hawatch-logs-YYYY.MM.DD` در OpenSearch می‌فرستد.
 - OpenSearch و OpenSearch Dashboards برای جست‌وجوی log provision می‌شوند. OpenSearch host port ندارد و OSD فقط port قابل‌تنظیم `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` دارد. اتصال داخلی OSD با کاربر service جداگانه و password قوی `OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD` انجام می‌شود؛ login خود OSD همچنان به credentialهای OpenSearch نیاز دارد.
-- `maintenance` هر `RETENTION_INTERVAL_SECONDS` یک‌بار `cleanup_retention` را اجرا می‌کند.
+- `maintenance` هر `RETENTION_INTERVAL_SECONDS` یک‌بار `cleanup_retention` و
+  `cleanup_analytics_retention` را اجرا می‌کند. دومی بررسی روزانهٔ idempotent
+  دارد و eventهای analytics را پس از ۳۰ روز به aggregate ماهانه تبدیل می‌کند.
 
 ## profile کم‌هزینه
 
@@ -31,6 +33,11 @@ status از PostgreSQL خوانده می‌شود و تعداد نقطه، مس�
 ## retention
 
 مقدار `HAWATCH_RETENTION_DAYS` عمداً بین ۱ و ۷ محدود است و مقدار پیش‌فرض آن ۷ روز است.
+
+Retention analytics مستقل از این مقدار است: event خام ۳۰ روز نگهداری می‌شود و
+سپس با `cleanup_analytics_retention` به شمارندهٔ ماهانه تبدیل و حذف می‌شود. این
+command در maintenance روزانه اجرا می‌شود تا نوبت‌های عقب‌افتاده را هم پوشش دهد؛
+تجمیع ماهانه در Admin با برچسب تقریبی Unique Visitor نمایش داده می‌شود.
 
 - `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود؛ رکوردهای متصل به آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شوند. این policy با دادهٔ demo و live یکسان اعمال می‌شود.
 - `ForecastSnapshot` فعلی raw JSON و metadata هر ingest را نگه می‌دارد و بر اساس `generated_at` پاک می‌شود؛ آخرین snapshot قابل‌استفاده استثنای fallback است. `ForecastAssessment` اگر در آینده اضافه شود، command آن را با timestamp استاندارد تشخیص می‌دهد.
@@ -94,6 +101,7 @@ PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. R
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec api python manage.py cleanup_retention --dry-run --skip-opensearch
+docker compose --env-file .env -f infra/compose/compose.yaml exec api python manage.py cleanup_analytics_retention --dry-run
 docker compose --env-file .env -f infra/compose/compose.yaml logs -f api maintenance
 ```
 

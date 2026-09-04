@@ -33,3 +33,29 @@ class PageViewEvent(models.Model):
 
     def __str__(self) -> str:
         return f"{self.page_type}:{self.page_slug}"
+
+
+class MonthlyPageViewAggregate(models.Model):
+    """Monthly counters retained after raw page-view events expire."""
+
+    page_type = models.CharField(max_length=8, choices=PageViewEvent.PageType.choices)
+    page_slug = models.SlugField(max_length=96)
+    month_start = models.DateField()
+    page_views = models.PositiveBigIntegerField(default=0)
+    # This is intentionally a monthly distinct count. Summing months is an
+    # approximation because a visitor can appear in more than one month.
+    unique_visitors = models.PositiveBigIntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["page_type", "page_slug", "month_start"],
+                name="uniq_analytics_monthly_page",
+            )
+        ]
+        indexes = [
+            models.Index(fields=["month_start", "page_type", "page_slug"], name="analytics_month_page_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.month_start}:{self.page_type}:{self.page_slug}"

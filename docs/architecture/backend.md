@@ -15,7 +15,8 @@
 - `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`، `public_note` جدا از `internal_note`)
 - `forecasts`: WeatherPoint (هویت، پروفایل و مختصات همان رکورد) و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
-- `jobs`: management commandهای seed، ingest one-shot، scheduler شش‌ساعته و retention
+- `jobs`: management commandهای seed، ingest one-shot، scheduler شش‌ساعته و retention؛
+  پاک‌سازی analytics با `cleanup_analytics_retention` به aggregate ماهانه انجام می‌شود
 
 پیش‌بینی هر point از یک سرویس/serializer مشترک (`build_place_forecast`) ساخته می‌شود. Route forecast زمان رسیدن هر نقطه را از cumulative متوسط catalog × ضریب زمان pace می‌سازد و forecast همان WeatherPoint را نزدیک به `arrival_at` انتخاب می‌کند (بدون fallback قله؛ در تساوی فاصله، `forecast_at` زودتر). `state` نقطه فقط از severity همان forecast است. timing فقط با invariant کامل usable است (`routes.timing.route_timing_complete`). GPX فقط evidence آفلاین در `tracks/` است.
 

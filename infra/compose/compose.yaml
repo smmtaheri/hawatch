@@ -397,6 +397,7 @@ services:
       - |
         while :; do
           python manage.py cleanup_retention --skip-opensearch
+          python manage.py cleanup_analytics_retention
           sleep "$${RETENTION_INTERVAL_SECONDS}"
         done
     logging: *hawatch-container-logging

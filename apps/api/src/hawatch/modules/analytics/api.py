@@ -62,7 +62,8 @@ def page_view_event(request):
     if too_large:
         raise ValidationError("بدنهٔ درخواست بیش از حد بزرگ است.")
 
-    if getattr(request.user, "is_staff", False):
+    django_user = getattr(getattr(request, "_request", None), "user", None)
+    if getattr(request.user, "is_staff", False) or getattr(django_user, "is_staff", False):
         return Response({"accepted": False, "ignored": "staff"})
     if _BOT_RE.search(request.META.get("HTTP_USER_AGENT", "")):
         return Response({"accepted": False, "ignored": "bot"})

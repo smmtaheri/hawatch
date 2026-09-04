@@ -30,6 +30,7 @@
   </form>
 
   <h2>خلاصهٔ بازه‌ها</h2>
+  {% if has_historical_aggregates %}<p class="help">داده‌های خام فقط ۳۰ روز نگهداری می‌شوند. اعداد «کل زمان» شامل تجمیع‌های ماهانه‌اند و Unique Visitor تاریخی به‌دلیل جمع distinct ماه‌ها تقریبی است.</p>{% endif %}
   <table class="adminlist"><thead><tr><th>بازه</th><th>Page View</th><th>بازدیدکنندهٔ یکتا</th></tr></thead><tbody>
     {% for summary in summary_rows %}<tr><td>{{ summary.label }}</td><td>{{ summary.page_views }}</td><td>{{ summary.unique_visitors }}</td></tr>{% endfor %}
   </tbody></table>

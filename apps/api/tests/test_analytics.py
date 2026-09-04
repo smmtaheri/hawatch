@@ -99,3 +99,39 @@ def test_admin_overview_contains_zero_view_pages_and_filters(seeded, client):
     assert response.status_code == 200
     assert "tochal" in response.content.decode()
     assert "Page View" in response.content.decode()
+    assert response["Cache-Control"] == "private, no-store"
+
+
+@pytest.mark.django_db
+def test_analytics_admin_is_private_to_superusers(client):
+    overview_url = reverse("admin:analytics_pageviewevent_overview")
+    changelist_url = reverse("admin:analytics_pageviewevent_changelist")
+
+    assert client.get(overview_url).status_code == 302
+
+    regular = get_user_model().objects.create_user(username="regular", password="safe-password")
+    client.force_login(regular)
+    assert client.get(overview_url).status_code == 302
+
+    staff = get_user_model().objects.create_user(username="staff-reader", password="safe-password", is_staff=True)
+    client.force_login(staff)
+    assert client.get(overview_url).status_code == 403
+    assert client.get(changelist_url).status_code == 403
+
+    superuser = get_user_model().objects.create_superuser(username="super-reader", password="safe-password")
+    client.force_login(superuser)
+    response = client.get(overview_url)
+    assert response.status_code == 200
+    assert response["Cache-Control"] == "private, no-store"
+    event = PageViewEvent.objects.create(
+        page_type="point",
+        page_slug="tochal",
+        visitor_hash="d" * 64,
+        navigation_id="admin-detail-navigation",
+    )
+    detail = client.get(reverse("admin:analytics_pageviewevent_change", args=[event.pk]))
+    listing = client.get(changelist_url)
+    assert detail.status_code == 200
+    assert detail["Cache-Control"] == "private, no-store"
+    assert listing.status_code == 200
+    assert listing["Cache-Control"] == "private, no-store"

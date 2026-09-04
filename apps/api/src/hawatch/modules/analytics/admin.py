@@ -3,7 +3,9 @@ from __future__ import annotations
 from datetime import timedelta
 
 from django.contrib import admin
-from django.db.models import Count
+from django.db.models import Count, Sum
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseForbidden
 from django.template.response import TemplateResponse
 from django.urls import path
 from django.utils import timezone
@@ -11,7 +13,7 @@ from django.utils import timezone
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
-from .models import PageViewEvent
+from .models import MonthlyPageViewAggregate, PageViewEvent
 
 
 RANGES = {
@@ -34,20 +36,56 @@ class PageViewEventAdmin(admin.ModelAdmin):
         return False
 
     def has_change_permission(self, request, obj=None):
-        return False
+        return bool(request.user.is_active and request.user.is_superuser)
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+    def has_module_permission(self, request):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def has_view_permission(self, request, obj=None):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def get_readonly_fields(self, request, obj=None):
+        return tuple(field.name for field in self.model._meta.fields)
+
+    def save_model(self, request, obj, form, change):
+        raise PermissionDenied("رویدادهای analytics فقط خواندنی هستند.")
 
     def get_urls(self):
         custom_urls = [
             path(
                 "overview/",
-                self.admin_site.admin_view(self.overview_view),
+                self.admin_site.admin_view(self._superuser_only(self.overview_view)),
                 name="analytics_pageviewevent_overview",
             )
         ]
         return custom_urls + super().get_urls()
+
+    @staticmethod
+    def _superuser_only(view):
+        def wrapped(request, *args, **kwargs):
+            if not request.user.is_authenticated or not request.user.is_superuser:
+                return HttpResponseForbidden("دسترسی فقط برای superuser مجاز است.")
+            return view(request, *args, **kwargs)
+
+        return wrapped
+
+    @staticmethod
+    def _private(response):
+        response["Cache-Control"] = "private, no-store"
+        response["Pragma"] = "no-cache"
+        return response
+
+    def changelist_view(self, request, extra_context=None):
+        return self._private(super().changelist_view(request, extra_context=extra_context))
+
+    def change_view(self, request, object_id, form_url="", extra_context=None):
+        return self._private(super().change_view(request, object_id, form_url, extra_context))
+
+    def history_view(self, request, object_id, extra_context=None):
+        return self._private(super().history_view(request, object_id, extra_context))
 
     @staticmethod
     def _starts(now):
@@ -112,6 +150,27 @@ class PageViewEventAdmin(admin.ModelAdmin):
                 unique_visitors=Count("visitor_hash", distinct=True),
             )
 
+        # Raw events older than 30 days are represented by monthly counters.
+        # They belong in the all-time view only; the rolling windows contain
+        # raw events by definition. Summing monthly distinct counts is clearly
+        # marked approximate in the template.
+        historical = MonthlyPageViewAggregate.objects.all()
+        if page_type in {PageViewEvent.PageType.POINT, PageViewEvent.PageType.ROUTE}:
+            historical = historical.filter(page_type=page_type)
+        historical_groups = historical.values("page_type", "page_slug").annotate(
+            page_views=Sum("page_views"), unique_visitors=Sum("unique_visitors")
+        )
+        for item in historical_groups:
+            key = (item["page_type"], item["page_slug"])
+            bucket = metrics["all"].setdefault(key, {"page_views": 0, "unique_visitors": 0})
+            bucket["page_views"] += int(item["page_views"] or 0)
+            bucket["unique_visitors"] += int(item["unique_visitors"] or 0)
+        historical_summary = historical.aggregate(
+            page_views=Sum("page_views"), unique_visitors=Sum("unique_visitors")
+        )
+        summaries["all"]["page_views"] += int(historical_summary["page_views"] or 0)
+        summaries["all"]["unique_visitors"] += int(historical_summary["unique_visitors"] or 0)
+
         selected_metrics = metrics[selected_range]
         rows = []
         for page in pages:
@@ -149,5 +208,6 @@ class PageViewEventAdmin(admin.ModelAdmin):
             "selected_range": selected_range,
             "selected_metric": metric,
             "selected_order": order,
+            "has_historical_aggregates": MonthlyPageViewAggregate.objects.exists(),
         }
-        return TemplateResponse(request, "admin/analytics/pageviewevent/overview.html", context)
+        return self._private(TemplateResponse(request, "admin/analytics/pageviewevent/overview.html", context))
