@@ -29,6 +29,9 @@ done
 log_info "startup.migrations_started"
 python manage.py migrate --noinput
 
+log_info "startup.collectstatic_started"
+python manage.py collectstatic --noinput
+
 if [ "${DEMO_DATA_ENABLED:-true}" = "true" ]; then
   log_info "startup.demo_seed_started"
   python manage.py seed_demo_data

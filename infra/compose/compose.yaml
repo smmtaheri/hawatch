@@ -64,6 +64,7 @@ services:
       - "${API_PUBLISH_PORT:-8000}:8000"
     volumes:
       - ../../apps/api:/app
+      - hawatch_staticfiles:/app/staticfiles
       - hawatch_logs:/var/log/hawatch
     depends_on:
       postgres:
@@ -160,6 +161,7 @@ services:
       - "${NGINX_PUBLISH_PORT:-80}:80"
     volumes:
       - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - hawatch_staticfiles:/usr/share/nginx/html/django-static:ro
     depends_on:
       web:
         condition: service_healthy
@@ -405,6 +407,7 @@ services:
 
 volumes:
   hawatch_pgdata:
+  hawatch_staticfiles:
   hawatch_logs:
   hawatch_opensearch:
   hawatch_vector_data:
