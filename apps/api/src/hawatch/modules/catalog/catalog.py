@@ -254,6 +254,7 @@ def seed_catalog(
     catalog: dict | None = None,
     catalog_file: str | None = None,
     prune: bool = False,
+    prune_stale_route_points: bool = False,
     force_adopt: bool = False,
     raise_on_conflict: bool = False,
     rebuild_search: bool = True,
@@ -410,7 +411,7 @@ def seed_catalog(
             for key, value in values.items(): setattr(rp, key, value)
             if changed_fields:
                 rp.save(update_fields=sorted(set(changed_fields)))
-        if prune:
+        if prune or prune_stale_route_points:
             route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()
         _restore_manual_route_point_positions(
             route=route,

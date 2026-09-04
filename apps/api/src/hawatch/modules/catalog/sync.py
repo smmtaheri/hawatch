@@ -265,11 +265,19 @@ def apply_sync(desired: DesiredCatalog, plan: dict[str, Any]) -> dict[str, int]:
     before_points = {point.slug: _point_state(point) for point in WeatherPoint.objects.all()}
     before_routes = {route.slug: _route_state(route) for route in Route.objects.all()}
     for relative, _data in desired.files:
-        # Prune stale fixture-managed RoutePoints while importing each catalog
-        # so route normalization never sees an obsolete point with an older
-        # cumulative timestamp (which could produce a negative segment). The
-        # operator-managed rows are still protected by seed_catalog's guards.
-        seed_catalog(catalog_file=relative, prune=True, force_adopt=False, raise_on_conflict=True, rebuild_search=False)
+        # Remove only stale fixture-managed RoutePoints while importing each
+        # catalog so normalization never sees an obsolete point with an older
+        # cumulative timestamp (which could produce a negative segment). Keep
+        # WeatherPoint pruning for the final global cleanup because shared
+        # points can be referenced by a catalog processed later in this loop.
+        seed_catalog(
+            catalog_file=relative,
+            prune=False,
+            prune_stale_route_points=True,
+            force_adopt=False,
+            raise_on_conflict=True,
+            rebuild_search=False,
+        )
     deleted_route_points = 0
     for item in plan["stale_route_points"]:
         deleted_route_points += Route.objects.get(slug=item["route"]).points.filter(
