@@ -1,11 +1,20 @@
 import { useLayoutEffect } from "react";
 
-const DEFAULT_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر";
+export const DEFAULT_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر";
+export const DEFAULT_DESCRIPTION = "هواچ؛ هوای نقاط و برنامهٔ مسیر.";
 
 type PageTitleOptions = {
   robots?: "index,follow" | "noindex,follow";
   canonical?: boolean;
 };
+
+export function canonicalPageUrl(origin: string, pathname: string) {
+  return `${origin}${pathname}`;
+}
+
+export function robotsForSearch(search: string) {
+  return search ? "noindex,follow" : "index,follow";
+}
 
 /** Keep the browser tab tied to the place or route currently being viewed. */
 export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
@@ -21,7 +30,7 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
         link.rel = "canonical";
         document.head.appendChild(link);
       }
-      link.href = `${window.location.origin}${window.location.pathname}`;
+      link.href = canonicalPageUrl(window.location.origin, window.location.pathname);
     }
     let description = document.head.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (!description) {
@@ -29,13 +38,13 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
       description.name = "description";
       document.head.appendChild(description);
     }
-    description.content = name ? `پیش‌بینی هوا و وضعیت مسیر برای ${name} در هواچ.` : "هواچ؛ هوای نقاط و برنامهٔ مسیر.";
+    description.content = name ? `پیش‌بینی هوا و وضعیت مسیر برای ${name} در هواچ.` : DEFAULT_DESCRIPTION;
     let robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
     if (!robots) {
       robots = document.createElement("meta");
       robots.name = "robots";
       document.head.appendChild(robots);
     }
-    robots.content = options.robots ?? (window.location.search ? "noindex,follow" : "index,follow");
+    robots.content = options.robots ?? robotsForSearch(window.location.search);
   }, [name, options.canonical, options.robots]);
 }

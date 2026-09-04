@@ -76,6 +76,9 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 آمار بازدید داخلی Point و Route (بدون ابزار خارجی) در Django Admin توضیح داده
 شده است: [`docs/analytics.md`](docs/analytics.md).
 
+SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
+[`docs/seo.md`](docs/seo.md) توضیح داده شده است.
+
 ## استقرار سریع روی سرور
 
 برای نصب پیش‌نیازها، clone، ساخت امن `.env`، اجرای Compose سبک و health check از اسکریپت زیر استفاده کنید:

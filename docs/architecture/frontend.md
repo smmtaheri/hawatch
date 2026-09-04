@@ -14,6 +14,12 @@ Tailwind به‌عنوان dependency اضافه نشده است. هویت بص�
 
 frontend فقط `VITE_API_BASE_URL` را صدا می‌زند. لایهٔ client در `apps/web/src/api/` است. componentها catalog یا forecast را hard-code نمی‌کنند.
 
+برای SEO، gateway درخواست‌های Home و URLهای canonical Point/Route را به Django
+می‌فرستد تا `title`، metaها و fallback معنایی از دیتابیس runtime قبل از اجرای
+JavaScript در HTML حاضر باشند. React همچنان پس از load شدن bundle همان SPA را
+render می‌کند؛ جزئیات در [`../seo.md`](../seo.md) است. entryهای build با نام
+پایدار تولید می‌شوند تا template Django به hashهای Vite وابسته نباشد.
+
 ## theme و RTL
 
 - `dir=rtl` و `lang=fa`

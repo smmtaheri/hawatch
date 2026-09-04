@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="robots" content="{{ robots }}" />
+    {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}" />{% endif %}
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ page.description }}" />
+    {% if page.canonical %}<meta property="og:url" content="{{ page.canonical }}" />{% endif %}
+    <link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/brand/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/brand/site.webmanifest" />
+    <link rel="stylesheet" href="/assets/hawatch.css" />
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem("hawatch-theme") || "dark";
+      } catch (e) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <main class="seo-shell" data-seo-initial="true">
+        <header>
+          <a href="/" aria-label="صفحهٔ اصلی هواچ">هواچ</a>
+        </header>
+        <article>
+          {% if page.kind == "not-found" %}
+            <h1>{{ page.headline }}</h1>
+            <p>{{ page.summary }}</p>
+            <p><a href="/">بازگشت به صفحهٔ اصلی هواچ</a></p>
+          {% else %}
+            <p>هواچ</p>
+            <h1>{{ page.headline }}</h1>
+            <p>{{ page.summary }}</p>
+
+            {% if page.kind == "home" %}
+              {% if page.popular_points %}
+                <section aria-labelledby="seo-popular-points">
+                  <h2 id="seo-popular-points">نقاط شاخص هواچ</h2>
+                  <ul>
+                    {% for point in page.popular_points %}
+                      <li><a href="{{ point.href }}">{{ point.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
+            {% elif page.kind == "point" %}
+              <dl>
+                <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>
+                <div><dt>دسته‌بندی</dt><dd>{{ page.category }}</dd></div>
+                <div><dt>ارتفاع</dt><dd>{{ page.elevation }}</dd></div>
+              </dl>
+              {% if page.routes %}
+                <section aria-labelledby="seo-related-routes">
+                  <h2 id="seo-related-routes">مسیرهای مرتبط</h2>
+                  <ul>
+                    {% for route in page.routes %}
+                      <li><a href="{{ route.href }}">{{ route.title }}</a> — {{ route.description }}</li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
+            {% elif page.kind == "route" %}
+              <dl>
+                <div><dt>مبدأ</dt><dd>{{ page.origin }}</dd></div>
+                <div><dt>مقصد</dt><dd>{{ page.target }}</dd></div>
+                <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>
+                {% if page.distance %}<div><dt>مسافت</dt><dd>{{ page.distance }}</dd></div>{% endif %}
+                {% if page.ascent %}<div><dt>صعود</dt><dd>{{ page.ascent }}</dd></div>{% endif %}
+              </dl>
+              {% if page.points %}
+                <section aria-labelledby="seo-route-points">
+                  <h2 id="seo-route-points">نقاط مهم مسیر</h2>
+                  <ol>
+                    {% for point in page.points %}
+                      <li><a href="{{ point.href }}">{{ point.name }}</a></li>
+                    {% endfor %}
+                  </ol>
+                </section>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </article>
+      </main>
+    </div>
+    <script type="module" src="/assets/hawatch.js"></script>
+  </body>
+</html>

@@ -39,6 +39,12 @@ slug مسیر باید در کل پوشهٔ `apps/api/fixtures/catalog/` فقط 
 ارسال یک catalog موقت از stdin مناسب است، اما جایگزین ثبت fixture versioned در
 repository نیست.
 
+HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. بنابراین Point یا Route جدید
+پس از import/sync، بدون افزودن URL hardcode، prerender جداگانه یا build frontend
+در `/points/<slug>` یا `/routes/<slug>` هم title، canonical و محتوای اولیهٔ
+اختصاصی می‌گیرد. تنها تغییر کد renderer به deploy معمول imageهای API و web نیاز
+دارد؛ جزئیات در [`seo.md`](seo.md) است.
+
 ## ۱. اطلاعات لازم
 
 برای هر نقطه:

@@ -12,6 +12,7 @@
 ## ماژول‌ها
 
 - `catalog`: بارگذاری fixture، bootstrap خالی، import غیرتخریبی با ownership/`fixture_managed`، جست‌وجوی pointها و publish مشترک مسیر (DB منبع حقیقت runtime؛ بدون ساخت synthetic `dest:{slug}`)
+- `catalog.seo_pages`: HTML اولیهٔ عمومی Home/Point/Route را از همان دیتابیس runtime render می‌کند؛ head و fallback برای bot و کاربر یکسان است و React بعداً آن را به SPA تعاملی ارتقا می‌دهد
 - `routes`: مدل Route (با `origin_weather_point` / `target_weather_point`، `one_way_minutes` و provenance timing) و RoutePoint (`cumulative_minutes` / `segment_minutes`، `public_note` جدا از `internal_note`)
 - `forecasts`: WeatherPoint (هویت، پروفایل و مختصات همان رکورد) و ForecastRecord — حقیقت فیزیکی و منبع forecast
 - `integrations.weather`: `WeatherProvider` و generator دمو
@@ -34,5 +35,6 @@ Health:
 
 - API با یک worker gunicorn اجرا می‌شود.
 - web به‌صورت build استاتیک Nginx سرو می‌شود؛ Vite dev server فقط برای توسعه است.
+- gateway فقط Home و مسیرهای canonical Point/Route را برای HTML اولیه به Django proxy می‌کند؛ assets و رفتار تعاملی همچنان از web می‌آیند. جزئیات SEO در [`../seo.md`](../seo.md) است.
 - ingest یک management command یک‌باره است؛ سرویس سبک `ingest-scheduler` آن را هر روز ساعت ۰۰، ۰۶، ۱۲ و ۱۸ به وقت تهران اجرا می‌کند.
 - OpenSearch، Dashboards، Vector، Prometheus و Grafana فقط با Compose profile `observability` فعال می‌شوند.

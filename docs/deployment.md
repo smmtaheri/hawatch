@@ -14,6 +14,12 @@
 - توقف کامل containerهای همان Compose project با `down --remove-orphans` و سپس بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate`؛ volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛
 - نمایش status و URLهای قابل تست.
 
+در deployهای شامل تغییر renderer SEO، هر دو image `api` و `web` باید build شوند:
+Django HTML اولیهٔ catalog-driven را render می‌کند و web bundle با نام پایدار
+بارگذاری می‌شود. import یا `sync_catalog` یک Point/Route جدید به build یا restart
+نیاز ندارد؛ HTML اولیهٔ آن از دیتابیس runtime خوانده می‌شود. راهنمای بررسی raw
+HTML در [`seo.md`](seo.md) است.
+
 اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.
 
 ## اجرای مستقیم روی یک سرور تازه
