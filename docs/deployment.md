@@ -79,6 +79,27 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
   --slugs tochal,damavand,alamkuh,tar-lake
 ```
 
+### ورود به گزارش analytics
+
+Admin از مسیر `/admin/` روی gateway به Django وصل می‌شود و فقط superuserهای
+فعال اجازهٔ مشاهدهٔ گزارش analytics را دارند. برای ساخت superuser روی سرور:
+
+```bash
+cd /root/hawatch
+docker compose --env-file .env -f infra/compose/compose.yaml exec api \
+  python manage.py createsuperuser
+```
+
+این command کاربر را ایجاد می‌کند و `is_staff` و `is_superuser` را برای او
+تنظیم می‌کند؛ کاربرهای موجود حذف یا بازنشانی نمی‌شوند. گزارش از مسیر زیر
+قابل مشاهده است:
+
+`https://<PUBLIC_HOST>/admin/analytics/pageviewevent/overview/`
+
+اگر دامنهٔ دیگری استفاده می‌شود، آن را در `DJANGO_ALLOWED_HOSTS` و
+`DJANGO_CSRF_TRUSTED_ORIGINS` (با scheme کامل `https://`) در `.env` قرار دهید و
+دوباره deploy کنید؛ در غیر این صورت login پشت HTTPS با خطای CSRF رد می‌شود.
+
 توقف بدون حذف volumeها:
 
 ```bash
