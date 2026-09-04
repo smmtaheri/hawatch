@@ -53,6 +53,12 @@ docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 
 برای cadence شش‌ساعته، `FORECAST_STALE_AFTER_HOURS` را حداقل `7` نگه دارید؛ deploy script اگر این مقدار در `.env` وجود نداشته باشد مقدار ۷ را می‌گذارد.
 
+درخواست‌های provider هواشناسی از proxyهای SOCKS5 فعال در مدل `WeatherProxy` با
+چرخش round-robin عبور می‌کنند. credentialها رمزنگاری‌شده در DB هستند و فقط
+superuser آن‌ها را در Admin مدیریت می‌کند. برای ورود اولیهٔ دو proxy، بعد از
+اجرای migration از `python manage.py seed_weather_proxies --interactive` استفاده
+کنید؛ اگر هیچ proxy فعالی نباشد رفتار به درخواست مستقیم برمی‌گردد.
+
 Observability سنگین پیش‌فرض خاموش است و فقط در صورت نیاز فعال می‌شود:
 
 ```bash

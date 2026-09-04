@@ -2,6 +2,8 @@ from django.contrib.gis.db import models
 from django.contrib.postgres.indexes import GistIndex
 from django.core.exceptions import ValidationError
 
+from hawatch.common.crypto import EncryptedTextField
+from hawatch.common.proxy import validate_proxy_uri
 from hawatch.integrations.weather.demo import supported_climate_keys
 
 
@@ -88,6 +90,75 @@ class WeatherPoint(models.Model):
         if self.climate not in supported_climates:
             allowed = ", ".join(sorted(supported_climates))
             raise ValidationError({"climate": f"Unsupported demo climate profile. Allowed values: {allowed}"})
+
+
+class WeatherProxy(models.Model):
+    """Operator-managed SOCKS proxy used by all weather providers."""
+
+    name = models.CharField(max_length=80)
+    country_code = models.CharField(
+        max_length=2,
+        help_text="Two-letter ISO country code, for example CA or US.",
+    )
+    # The clear URI exists only in Python after decryption; the DB column stores
+    # an encrypted Fernet payload.
+    proxy_url = EncryptedTextField(help_text="SOCKS5/SOCKS5H URI; encrypted at rest.")
+    sort_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    last_used_at = models.DateTimeField(null=True, blank=True)
+    last_success_at = models.DateTimeField(null=True, blank=True)
+    last_failure_at = models.DateTimeField(null=True, blank=True)
+    failure_count = models.PositiveIntegerField(default=0)
+    last_error = models.CharField(max_length=64, blank=True, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["sort_order", "pk"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "country_code"],
+                name="uniq_weatherproxy_name_country",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["is_active", "sort_order"], name="weatherproxy_active_order_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.country_code})"
+
+    def clean(self) -> None:
+        super().clean()
+        errors: dict[str, str] = {}
+        country = str(self.country_code or "").strip().upper()
+        if len(country) != 2 or not country.isascii() or not country.isalpha():
+            errors["country_code"] = "Country must be a two-letter ISO code."
+        else:
+            self.country_code = country
+        try:
+            self.proxy_url = validate_proxy_uri(self.proxy_url)
+        except ValueError as exc:
+            errors["proxy_url"] = str(exc)
+        if errors:
+            raise ValidationError(errors)
+
+
+class WeatherProxyRotation(models.Model):
+    """Durable round-robin cursor, locked while selecting a proxy."""
+
+    scope = models.CharField(max_length=32, unique=True, default="weather")
+    last_proxy = models.ForeignKey(
+        WeatherProxy,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="rotation_cursors",
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.scope
 
 
 class ForecastSnapshot(models.Model):

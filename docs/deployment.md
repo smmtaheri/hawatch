@@ -25,7 +25,7 @@ HTML مسیرهای `/`، `/points/*` و `/routes/*` باید با `Cache-Contro
 revalidate شوند و `/admin/*` و `/api/*` نباید در cache عمومی قرار بگیرند؛ جزئیات
 قواعد purge و header در [`seo.md`](seo.md#تنظیم-cdn-و-cache) آمده است.
 
-اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.
+اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. کلید `WEATHER_PROXY_ENCRYPTION_KEY` نیز در صورت نبودن با مقدار تصادفی ساخته می‌شود و باید بین سرویس‌ها ثابت بماند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.
 
 ## اجرای مستقیم روی یک سرور تازه
 
@@ -130,6 +130,32 @@ docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml logs --tail=100 ingest-scheduler
 ```
+
+### مدیریت proxyهای هواشناسی
+
+proxyها در Admin از بخش `Forecasts → Weather proxies` فقط برای superuser قابل
+مدیریت‌اند. credential به‌صورت encrypted در DB ذخیره می‌شود و در فهرست Admin
+mask است. ترتیب چرخش از `sort_order` می‌آید. برای ثبت اولیهٔ دو proxy بدون قرار
+دادن credential در Git، پس از migration یکی از دو روش زیر را اجرا کنید:
+
+```bash
+cd /root/hawatch
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py seed_weather_proxies --interactive
+```
+
+یا credentialها را فقط موقتاً در محیط همان command قرار دهید:
+
+```bash
+WEATHER_PROXY_CA_URL='socks5h://USER:PASSWORD@HOST:PORT' \
+WEATHER_PROXY_US_URL='socks5h://USER:PASSWORD@HOST:PORT' \
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py seed_weather_proxies
+```
+
+وقتی حداقل یک proxy فعال باشد، ingest و تمام providerهای هواشناسی با round-robin
+از آن‌ها استفاده می‌کنند. اگر هیچ ردیف فعالی باقی نماند، رفتار عمداً به direct
+request برمی‌گردد. مقدار قدیمی `WEATHER_PROXY_URL` دیگر استفاده نمی‌شود.
 
 فعال‌سازی observability فقط با تصمیم جداگانه و روی سرور بزرگ‌تر انجام شود:
 

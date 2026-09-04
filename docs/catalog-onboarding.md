@@ -373,6 +373,12 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog /tmp/damavand_v1.json
 ```
 
+validator مستقل عمداً stdlib-only و بدون اتصال به DB باقی مانده است تا قبل از
+نصب محیط API نیز قابل اجرا باشد؛ این مسیر، استثنای آفلاین workflow است. تمام
+درخواست‌های runtime (`ingest_open_meteo` و providerهای آینده) باید فقط از
+`WeatherHttpTransport` و pool فعال `WeatherProxy` استفاده کنند و مستقیماً
+`urlopen` را صدا نزنند.
+
 این مرحله gate اجباری بعد از آماده‌کردن WeatherPointها و قبل از هر `seed` است.
 اگر حتی یک point خطا بگیرد، نباید catalog یا آن point وارد دیتابیس شود؛ همان
 خروجی شامل slug نقطه و علت خطا باید به درخواست‌کننده/چت گزارش شود و مختصات یا

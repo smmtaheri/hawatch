@@ -41,7 +41,20 @@ Interfaceهای آماده‌شده / استفاده‌شده:
   از روز گذشته حذف می‌شوند.
 - پاسخ provider فقط وقتی به catalog point متصل می‌شود که `latitude` و `longitude` معتبر داشته باشد و مرکز grid حداکثر ۵ کیلومتر با مختصات درخواستی فاصله داشته باشد؛ پاسخ دور یا ناقص کل batch را رد می‌کند
 - برای pointهایی که ارتفاع catalog دارند، `cell_selection=land` همراه با elevation صریح استفاده می‌شود؛ برای pointهای بدون ارتفاع catalog، `cell_selection=nearest` استفاده می‌شود تا انتخاب land cell دور، weather نقطه را جابه‌جا نکند
-- تنظیم optional proxy (`WEATHER_PROXY_URL`) هنوز استفاده‌نشده است
+- تمام درخواست‌های providerهای هواشناسی از `WeatherHttpTransport` عبور می‌کنند.
+  پروکسی‌های SOCKS5 در مدل `WeatherProxy` و داخل PostgreSQL نگه‌داری می‌شوند؛
+  URI رمزنگاری‌شده است و فقط superuser می‌تواند آن را در Admin مدیریت کند.
+  انتخاب فعال‌ها با cursor قفل‌شدهٔ `WeatherProxyRotation` به‌صورت round-robin
+  انجام می‌شود (بر اساس `sort_order` و سپس شناسه). هر retry نیز درخواست جدیدی
+  است و proxy بعدی را می‌گیرد. اگر هیچ proxy فعال نباشد، درخواست مستقیم است؛ در
+  صورت وجود proxy فعال، شکست همهٔ آن‌ها به direct fallback تبدیل نمی‌شود.
+- مقدار `WEATHER_PROXY_ENCRYPTION_KEY` باید بین api، ingest و scheduler یکسان و
+  خارج از Git باشد. `scripts/deploy.sh` آن را در `.env` سرور در صورت نبودن
+  تولید می‌کند. credentialها هرگز در fixture/migration یا log چاپ نمی‌شوند.
+- اجرای `seed_weather_proxies --interactive` یا مقدارهای موقت
+  `WEATHER_PROXY_CA_URL` و `WEATHER_PROXY_US_URL` دو proxy اولیه را به‌صورت
+  idempotent وارد DB می‌کند؛ پس از ورود می‌توان آن‌ها را از Admin ویرایش، فعال،
+  غیرفعال یا حذف کرد.
 
 ## قرارداد مختصات provider
 
@@ -53,4 +66,6 @@ API متریک‌های داخلی Prometheus را در `/api/v1/metrics/` با 
 
 maintenance سبک با command `cleanup_retention --skip-opensearch` اجرا می‌شود. سقف retention هفت روز است و برای hourly forecast، raw snapshot و فایل‌های rotated log اعمال می‌شود؛ آخرین snapshot قابل‌استفاده و رکوردهای متصل به آن برای fallback استثنا هستند. OpenSearch index و Prometheus TSDB فقط وقتی profile `observability` فعال باشد و maintenance متصل به آن stack اجرا شود پاک‌سازی می‌شوند. `ForecastAssessment` در schema فعلی وجود ندارد و command بدون ساختن model جدید، نبود آن را گزارش می‌کند.
 
-Open-Meteo می‌تواند provider آزمایشی باشد؛ انتخاب نهایی هنوز باز است.
+Open-Meteo می‌تواند provider آزمایشی باشد؛ providerهای بعدی باید از همین
+transport مشترک استفاده کنند و نباید مستقیماً `urlopen` یا client دیگری را صدا
+بزنند.

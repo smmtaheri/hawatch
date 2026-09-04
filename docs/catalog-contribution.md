@@ -127,6 +127,11 @@ DEM بیشتر از ۱۰۰ متر، grid دورتر از ۵ کیلومتر، پ�
 GPX برای forecast لازم نیست، ولی برای distance/ascent/ETA و یافتن landmark لازم
 است.
 
+این validator مستقل برای اجرای پیش از نصب محیط API همچنان بدون DB و stdlib-only
+است. درخواست‌های runtime و providerهای آینده باید از `WeatherHttpTransport` و
+pool فعال `WeatherProxy` عبور کنند؛ credential را در fixture، migration یا
+manifest قرار ندهید.
+
 سپس قرارداد هویت و route را بررسی کنید:
 
 ```bash

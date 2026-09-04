@@ -176,6 +176,11 @@ python3 scripts/validate_open_meteo_catalog.py \
 
 validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
 
+این validator مستقل برای قابلیت اجرای قبل از نصب محیط API، همچنان stdlib-only و
+بدون DB باقی مانده است. مسیر runtime (`ingest_open_meteo` و providerهای آینده)
+باید از `WeatherHttpTransport` و pool فعال `WeatherProxy` استفاده کند؛ هیچ
+provider runtimeای نباید مستقیم `urlopen` را صدا بزند.
+
 برای smoke test مختصات وقتی بعضی pointها هنوز elevation معتبر ندارند:
 
 ```bash

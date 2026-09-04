@@ -5,17 +5,15 @@ API request handlers must never call this module. Use management commands / jobs
 
 from __future__ import annotations
 
-import json
 import time
 from dataclasses import dataclass
 from typing import Any, Sequence
-from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
-from urllib.request import Request, urlopen
 
 from django.conf import settings
 
 from hawatch.common.observability import record_ingest_retry
+from hawatch.integrations.weather.transport import WeatherHttpTransport
 
 HOURLY_VARIABLES = [
     "temperature_2m",
@@ -91,6 +89,7 @@ class OpenMeteoProvider:
         max_retries: int = MAX_RETRIES,
         opener=None,
         sleeper=None,
+        requester=None,
     ) -> None:
         self.base_url = _forecast_endpoint(
             base_url or getattr(settings, "OPEN_METEO_BASE_URL", "https://api.open-meteo.com/v1/forecast")
@@ -100,8 +99,8 @@ class OpenMeteoProvider:
         self.past_days = past_days if past_days is not None else int(getattr(settings, "OPEN_METEO_PAST_DAYS", DEFAULT_PAST_DAYS))
         self.timeout_seconds = timeout_seconds
         self.max_retries = max(0, max_retries)
-        self._opener = opener
         self._sleeper = sleeper or time.sleep
+        self._transport = WeatherHttpTransport(opener=opener, requester=requester)
 
     def split_batches(self, points: Sequence[ProviderPoint]) -> list[list[ProviderPoint]]:
         size = max(1, self.batch_size)
@@ -140,26 +139,12 @@ class OpenMeteoProvider:
         return f"{self.base_url}?{urlencode(params)}"
 
     def _once(self, url: str) -> tuple[int, Any]:
-        request = Request(url, headers={"User-Agent": USER_AGENT})
-        try:
-            if self._opener is not None:
-                response = self._opener(request, timeout=self.timeout_seconds)
-                body = response.read().decode("utf-8")
-                status = getattr(response, "status", 200)
-            else:
-                with urlopen(request, timeout=self.timeout_seconds) as response:
-                    body = response.read().decode("utf-8")
-                    status = response.status
-            return status, json.loads(body)
-        except HTTPError as error:
-            body = error.read().decode("utf-8", errors="replace")
-            try:
-                parsed = json.loads(body)
-            except json.JSONDecodeError:
-                parsed = {"raw_error": body}
-            return error.code, parsed
-        except (URLError, TimeoutError, json.JSONDecodeError) as error:
-            return 0, {"transport_error": str(error)}
+        response = self._transport.get_json(
+            url,
+            timeout=self.timeout_seconds,
+            user_agent=USER_AGENT,
+        )
+        return response.status_code, response.payload
 
     def fetch_batch(
         self,

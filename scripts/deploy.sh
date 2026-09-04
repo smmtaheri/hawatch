@@ -216,6 +216,10 @@ configure_env() {
   set_env_value WEB_PUBLISH_PORT "$WEB_PUBLISH_PORT"
   set_env_value NGINX_PUBLISH_PORT "$NGINX_PUBLISH_PORT"
   set_env_value VITE_API_BASE_URL "$VITE_API_BASE_URL"
+  proxy_encryption_key="$(get_env_value WEATHER_PROXY_ENCRYPTION_KEY)"
+  if [[ -z "$proxy_encryption_key" || "$proxy_encryption_key" == replace-with-* ]]; then
+    set_env_value WEATHER_PROXY_ENCRYPTION_KEY "$(random_hex)"
+  fi
   # Keep the live provider window aligned with the product contract on existing
   # servers too; older .env files may still contain the former past_days=1.
   set_env_value OPEN_METEO_FORECAST_DAYS 7
@@ -236,6 +240,7 @@ configure_env() {
   validate_secret DJANGO_SECRET_KEY
   validate_secret POSTGRES_PASSWORD
   validate_secret HAWATCH_METRICS_TOKEN
+  validate_secret WEATHER_PROXY_ENCRYPTION_KEY
   validate_secret OPENSEARCH_INITIAL_ADMIN_PASSWORD
   validate_secret OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD
   validate_secret GRAFANA_ADMIN_PASSWORD

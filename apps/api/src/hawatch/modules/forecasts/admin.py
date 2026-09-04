@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.gis.admin import GISModelAdmin
+from django import forms
 from django.db import transaction
 
 from hawatch.modules.catalog.search import rebuild_search_index
@@ -9,7 +10,9 @@ from hawatch.modules.forecasts.models import (
     ForecastRecord,
     ForecastSnapshot,
     WeatherPoint,
+    WeatherProxy,
 )
+from hawatch.common.proxy import masked_proxy_uri, validate_proxy_uri
 
 
 def _rebuild_search_after_commit() -> None:
@@ -74,6 +77,73 @@ class WeatherPointAdmin(GISModelAdmin):
     def delete_queryset(self, request, queryset):
         super().delete_queryset(request, queryset)
         _rebuild_search_after_commit()
+
+
+class WeatherProxyAdminForm(forms.ModelForm):
+    proxy_url = forms.CharField(
+        label="آدرس پروکسی",
+        widget=forms.PasswordInput(render_value=False),
+        required=False,
+        help_text="socks5:// یا socks5h://؛ مقدار قبلی را برای حفظ آن خالی بگذارید.",
+    )
+
+    class Meta:
+        model = WeatherProxy
+        fields = "__all__"
+
+    def clean_proxy_url(self):
+        value = self.cleaned_data.get("proxy_url", "").strip()
+        if not value and self.instance.pk:
+            return self.instance.proxy_url
+        if not value:
+            raise forms.ValidationError("آدرس پروکسی الزامی است.")
+        try:
+            return validate_proxy_uri(value)
+        except ValueError as exc:
+            raise forms.ValidationError(str(exc)) from exc
+
+
+@admin.register(WeatherProxy)
+class WeatherProxyAdmin(admin.ModelAdmin):
+    form = WeatherProxyAdminForm
+    list_display = (
+        "name",
+        "country_code",
+        "masked_uri",
+        "sort_order",
+        "is_active",
+        "failure_count",
+        "last_used_at",
+        "last_success_at",
+        "last_failure_at",
+    )
+    list_filter = ("country_code", "is_active")
+    ordering = ("sort_order", "pk")
+    readonly_fields = ("masked_uri", "last_used_at", "last_success_at", "last_failure_at", "failure_count", "last_error", "created_at", "updated_at")
+    fieldsets = (
+        (None, {"fields": ("name", "country_code", "proxy_url", "sort_order", "is_active")}),
+        ("وضعیت اتصال", {"fields": ("masked_uri", "failure_count", "last_error", "last_used_at", "last_success_at", "last_failure_at")}),
+        ("سیستم", {"fields": ("created_at", "updated_at")}),
+    )
+
+    @admin.display(description="نشانی mask‌شده")
+    def masked_uri(self, obj):
+        return masked_proxy_uri(obj.proxy_url)
+
+    def has_module_permission(self, request):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def has_view_permission(self, request, obj=None):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def has_add_permission(self, request):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def has_change_permission(self, request, obj=None):
+        return bool(request.user.is_active and request.user.is_superuser)
+
+    def has_delete_permission(self, request, obj=None):
+        return bool(request.user.is_active and request.user.is_superuser)
 
 
 @admin.register(ForecastSnapshot)

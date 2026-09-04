@@ -11,6 +11,7 @@ DEBUG = False
 DEMO_DATA_ENABLED = True
 DEMO_SEED_VERSION = "hawatch-test-demo-v1"
 OPEN_METEO_BASE_URL = "http://open-meteo.invalid"
+WEATHER_PROXY_ENCRYPTION_KEY = "hawatch-test-weather-proxy-key"
 METRICS_REQUIRE_AUTH = False
 HAWATCH_ENVIRONMENT = "test"
 OBSERVABILITY_ENVIRONMENT = "test"
