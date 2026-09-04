@@ -1,0 +1,421 @@
+{
+  "catalog_version": "hawatch-kholeno-catalog-v1",
+  "weather_points": {
+    "kholeno-lalan-trailhead": {
+      "name": "پارکینگ بالای روستای لالان",
+      "latitude": 36.003152,
+      "longitude": 51.582656,
+      "elevation_m": 2520,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2506 m؛ waypoint پارک ماشین در ترک استاندارد Wikiloc: حدود 2506 m",
+      "page_name": "پارکینگ ابتدای مسیر خلنو در لالان",
+      "short_label": "پارکینگ لالان",
+      "place_type": "parking",
+      "aliases": ["پارکینگ لالون", "محل پارک ماشین لالان", "Lalan trailhead"],
+      "identity_summary": "پارکینگ بالای روستای لالان؛ ابتدای پیمایش عمومی صعود به قلهٔ خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://decovel.com/page/guide-to-climbing-kholeno-peak"
+      ]
+    },
+    "kholeno-lalan-village": {
+      "name": "روستای لالان",
+      "latitude": 35.993599,
+      "longitude": 51.578741,
+      "elevation_m": 2418,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2417 m؛ waypoint روستای لالان در ترک Wikiloc: حدود 2401 m",
+      "page_name": "روستای لالان در مسیر قلهٔ خلنو",
+      "short_label": "روستای لالان",
+      "place_type": "village",
+      "aliases": ["روستای لالون", "لالون", "Lalan village"],
+      "identity_summary": "روستای لالان؛ آبادی جنوبی و دسترسی جاده‌ای مسیر صعود به قلهٔ خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978"
+      ]
+    },
+    "kholeno-lalon-gorge": {
+      "name": "تنگهٔ لالون",
+      "latitude": 36.014395,
+      "longitude": 51.584115,
+      "elevation_m": 2662,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2713 m؛ waypoint تنگ لالان در ترک Wikiloc: 2662 m",
+      "page_name": "تنگهٔ لالون در مسیر خلنو",
+      "short_label": "تنگهٔ لالون",
+      "place_type": "landmark",
+      "aliases": ["درهٔ لالون", "تنگ لالان"],
+      "identity_summary": "تنگهٔ لالون؛ بخش شاخص و مشترک مسیر پیاده‌روی روستای لالان به خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978"
+      ]
+    },
+    "kholeno-talkhab-spring": {
+      "name": "چشمهٔ تلخاب خلنو",
+      "latitude": 36.030202,
+      "longitude": 51.572445,
+      "elevation_m": 3060,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3074 m؛ waypoint چشمه تلخاب در ترک مستقل Wikiloc: 3027 m",
+      "page_name": "چشمهٔ تلخاب در مسیر قلهٔ خلنو",
+      "short_label": "چشمهٔ تلخاب خلنو",
+      "place_type": "spring",
+      "aliases": ["تلخ‌آب خلنو", "چشمه تلخ آب"],
+      "identity_summary": "چشمهٔ تلخاب؛ نقطهٔ آب و استراحت شناخته‌شده در مسیر لالان به خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
+        "https://mojekooh.com/%D8%AE%D9%84%D9%86%D9%88/"
+      ]
+    },
+    "kholeno-lalon-waterfall": {
+      "name": "آبشار لالون",
+      "latitude": 36.039556,
+      "longitude": 51.567217,
+      "elevation_m": 3320,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3332 m؛ waypoint آبشار لالون در ترک Wikiloc: 3279 m",
+      "page_name": "آبشار لالون در مسیر قلهٔ خلنو",
+      "short_label": "آبشار لالون",
+      "place_type": "waterfall",
+      "aliases": ["آبشار لالان", "آبشار خلنو"],
+      "identity_summary": "آبشار لالون؛ عارضهٔ طبیعی و محل رایج استراحت و کمپ در مسیر خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
+        "https://mojekooh.com/%D8%AE%D9%84%D9%86%D9%88/"
+      ]
+    },
+    "kholeno-last-spring": {
+      "name": "آخرین چشمهٔ مسیر خلنو",
+      "latitude": 36.044500,
+      "longitude": 51.565063,
+      "elevation_m": 3505,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3567 m؛ waypoint چشمه در ترک تطبیقی Wikiloc: 3504 m",
+      "page_name": "آخرین چشمهٔ مسیر لالون به گردنهٔ ورزاب",
+      "short_label": "آخرین چشمهٔ خلنو",
+      "place_type": "spring",
+      "aliases": ["چشمهٔ بالای آبشار لالون", "آخرین چشمهٔ ورزاب"],
+      "identity_summary": "آخرین چشمهٔ نام‌گذاری‌شده در مسیر آبشار لالون به گردنهٔ ورزاب؛ پس از آن منبع آب مطمئن گزارش نشده است",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802"
+      ]
+    },
+    "kholeno-varzab-pass": {
+      "name": "گردنهٔ ورزاب خلنو",
+      "latitude": 36.051014,
+      "longitude": 51.563434,
+      "elevation_m": 3950,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3921 m؛ waypoint گردنه ورزاب در ترک Wikiloc: 3913 m؛ گزارش‌های کوهنوردی حدود 3950 m",
+      "page_name": "گردنهٔ ورزاب در مسیر قلهٔ خلنو",
+      "short_label": "گردنهٔ ورزاب",
+      "place_type": "pass",
+      "aliases": ["گردنه وزوا", "گردنه ورزآب", "Varzab Pass"],
+      "identity_summary": "گردنهٔ ورزاب؛ محل انشعاب مسیر سادهٔ کاسه و مسیر فنی برج و تیغه‌های ژاندارک",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://el.wikiloc.com/mountaineering-diadromes/swd-qlh-khlnw-bzrg-110126956",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlnw-180376411"
+      ]
+    },
+    "kholeno-asbchal-basin": {
+      "name": "دشت اسب‌چال خلنو",
+      "latitude": 36.056075,
+      "longitude": 51.567299,
+      "elevation_m": 3800,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3809 m؛ waypoint اسب‌چال در ترک Wikiloc: 3798 m",
+      "page_name": "دشت اسب‌چال در مسیر قلهٔ خلنو",
+      "short_label": "دشت اسب‌چال",
+      "place_type": "meadow",
+      "aliases": ["اسب چال خلنو", "دشت اسب چال"],
+      "identity_summary": "دشت اسب‌چال؛ فضای طبیعی شاخص زیر قله و گزینهٔ مسیر ساده‌تر از گردنهٔ ورزاب",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlnw-180376411"
+      ]
+    },
+    "kholeno-borj-summit": {
+      "name": "قلهٔ برج خلنو",
+      "latitude": 36.053566,
+      "longitude": 51.550648,
+      "elevation_m": 4325,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 4253 m؛ waypoint قله برج در ترک ژاندارک: 4246–4319 m؛ گزارش کوهنوردی حدود 4325 m",
+      "page_name": "قلهٔ برج خلنو در خط‌الرأس ژاندارک",
+      "short_label": "قلهٔ برج خلنو",
+      "place_type": "summit",
+      "aliases": ["برج خلنو", "قله برج"],
+      "identity_summary": "قلهٔ برج خلنو؛ قلهٔ مستقل پیش از تیغه‌های ژاندارک در مسیر فنی خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-alpinismo/pymysh-qlh-khlnw-bzrg-w-khwchkh-z-tygh-hy-jndrkh-kholeno-summit-from-zhandark-ridge-109145358",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-brj-khlnw-qlh-wrzb1w2w3w4w5-qlh-jnstwn-z-lln-177806687",
+        "https://mountaindream.ir/%D8%B1%D8%B2%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D9%82%D9%84%D9%84-%D8%A8%D8%B1%D8%AC-%D9%88-%D8%AE%D9%84%D9%86%D9%88"
+      ]
+    },
+    "kholeno-small-summit": {
+      "name": "قلهٔ خلنو کوچک",
+      "latitude": 36.060340,
+      "longitude": 51.552682,
+      "elevation_m": 4348,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 4307 m؛ waypoint خلنو کوچک در ترک ژاندارک: 4275–4339 m؛ منابع ارتفاعی حدود 4348 m",
+      "page_name": "قلهٔ خلنو کوچک در مسیر ژاندارک",
+      "short_label": "خلنو کوچک",
+      "place_type": "summit",
+      "aliases": ["قله خلنوی کوچک", "خلنو کوچک"],
+      "identity_summary": "قلهٔ خلنو کوچک؛ قلهٔ مستقل میان تیغه‌های ژاندارک و خلنو بزرگ",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-alpinismo/pymysh-qlh-khlnw-bzrg-w-khwchkh-z-tygh-hy-jndrkh-kholeno-summit-from-zhandark-ridge-109145358",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlnw-z-lln-kholeno-az-lalan-27949860",
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802"
+      ]
+    },
+    "kholeno": {
+      "name": "قلهٔ خلنو بزرگ",
+      "latitude": 36.064683,
+      "longitude": 51.551772,
+      "elevation_m": 4375,
+      "status": "provisional",
+      "elevation_source": "منابع رایج کوهنوردی: 4375 m؛ Mapcarta/OSM: 4369 m؛ Open-Meteo GLO-90 DEM: 4349 m در نزدیک‌ترین grid؛ اختلاف مقدار نهایی با DEM برابر 26 m",
+      "page_name": "قلهٔ خلنو بزرگ، بلندترین قلهٔ استان تهران",
+      "short_label": "قلهٔ خلنو",
+      "place_type": "summit",
+      "aliases": ["خلنو", "خلنو بزرگ", "Kholeno Peak"],
+      "identity_summary": "قلهٔ خلنو بزرگ؛ قلهٔ اصلی و بلندترین نقطهٔ استان تهران در البرز مرکزی",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N3337995119",
+        "https://www.mountain-forecast.com/peaks/Kholeno",
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978"
+      ]
+    },
+    "kholeno-shirkamar": {
+      "name": "شیرکمر وارنگه‌رود",
+      "latitude": 36.134368,
+      "longitude": 51.404481,
+      "elevation_m": 2637,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2662 m؛ waypoint شیرکمر در ترک وارنگه‌رود Wikiloc: 2637 m",
+      "page_name": "شیرکمر در مسیر وارنگه‌رود به خلنو",
+      "short_label": "شیرکمر",
+      "place_type": "landmark",
+      "aliases": ["شیر کمر", "Shirkamar"],
+      "identity_summary": "شیرکمر؛ عارضهٔ نام‌دار در درهٔ وارنگه‌رود و بخش آغازین مسیر شمالی خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413"
+      ]
+    },
+    "kholeno-duab": {
+      "name": "دوآب خلنو",
+      "latitude": 36.093028,
+      "longitude": 51.516454,
+      "elevation_m": 3106,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3085 m؛ waypoint دوآب در ترک وارنگه‌رود Wikiloc: 3106 m",
+      "page_name": "دوآب درهٔ وارنگه‌رود به خلنو",
+      "short_label": "دوآب خلنو",
+      "place_type": "landmark",
+      "aliases": ["دوآب وارنگه‌رود", "دو آب خلنو"],
+      "identity_summary": "دوآب خلنو؛ محل شاخص پیوند آبراهه‌ها در مسیر طولانی وارنگه‌رود به دریاچهٔ خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413",
+        "https://www.wikiloc.com/hiking-trails/pymysh-wrngh-rwd-bh-qlh-khlnw-5-w-6-tyr-99-51705644"
+      ]
+    },
+    "kholeno-lake": {
+      "name": "دریاچهٔ خلنو",
+      "latitude": 36.065336,
+      "longitude": 51.537527,
+      "elevation_m": 3800,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3802 m؛ waypoint دریاچه در ترک وارنگه‌رود Wikiloc: 3799 m",
+      "page_name": "دریاچهٔ خلنو در درهٔ وارنگه‌رود",
+      "short_label": "دریاچهٔ خلنو",
+      "place_type": "lake",
+      "aliases": ["Kholeno Lake", "دریاچه خلنو"],
+      "identity_summary": "دریاچهٔ خلنو؛ عارضهٔ طبیعی شاخص در مسیر وارنگه‌رود و پای قلهٔ خلنو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413",
+        "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802"
+      ]
+    }
+  },
+  "shared_weather_points": ["azadkouh-varangerud-start"],
+  "routes": {
+    "lalan_to_kholeno": {
+      "slug": "kholeno-lalan",
+      "title": "لالان تا قلهٔ خلنو",
+      "subtitle": "از تنگه و آبشار لالون، گردنهٔ ورزاب و کاسه تا قلهٔ خلنو",
+      "trail_label": "مسیر لالان–خلنو",
+      "origin": "روستای لالان",
+      "target_label": "قلهٔ خلنو بزرگ",
+      "region": "البرز مرکزی · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kholeno-lalan-trailhead",
+        "kholeno-lalon-gorge",
+        "kholeno-talkhab-spring",
+        "kholeno-lalon-waterfall",
+        "kholeno-last-spring",
+        "kholeno-varzab-pass",
+        "kholeno-asbchal-basin",
+        "kholeno"
+      ],
+      "distance_km": 9.7,
+      "ascent_m": 1880,
+      "one_way_minutes": 330,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "kholeno-lalan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
+          "https://el.wikiloc.com/mountaineering-diadromes/swd-qlh-khlnw-bzrg-110126956",
+          "https://mojekooh.com/%D8%AE%D9%84%D9%86%D9%88/"
+        ],
+        "evidence_tracks": [
+          "tracks/kholeno/kholeno-lalan-to-summit-standard-2025.gpx",
+          "tracks/kholeno/kholeno-lalan-to-summit-crosscheck-2014.gpx"
+        ],
+        "notes": [
+          "مسیر کاسه از گردنهٔ ورزاب مسیر عمومی و ساده‌تر است؛ ترک ژاندارک به‌عنوان route عمومی استفاده نشده است.",
+          "ترک استاندارد به قله ختم می‌شود؛ ارتفاع خام GPX فقط برای cross-check است و حقیقت catalog نیست.",
+          "قله‌های برج و خلنو کوچک نقاط مستقل هستند و برای جلوگیری از ادعای مسیر فنی، در زنجیرهٔ این route نیامده‌اند."
+        ],
+        "cumulative_minutes": {
+          "kholeno-lalan-trailhead": 0,
+          "kholeno-lalon-gorge": 35,
+          "kholeno-talkhab-spring": 90,
+          "kholeno-lalon-waterfall": 125,
+          "kholeno-last-spring": 165,
+          "kholeno-varzab-pass": 240,
+          "kholeno-asbchal-basin": 285,
+          "kholeno": 330
+        }
+      },
+      "public_point_notes": {}
+    },
+    "varangerud_to_kholeno": {
+      "slug": "kholeno-varangerud",
+      "title": "وارنگه‌رود تا قلهٔ خلنو",
+      "subtitle": "از وارنگه‌رود و دوآب تا دریاچهٔ خلنو و قله",
+      "trail_label": "مسیر وارنگه‌رود–خلنو",
+      "origin": "روستای وارنگه‌رود",
+      "target_label": "قلهٔ خلنو بزرگ",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "azadkouh-varangerud-start",
+        "kholeno-shirkamar",
+        "kholeno-duab",
+        "kholeno-lake",
+        "kholeno"
+      ],
+      "distance_km": 24.4,
+      "ascent_m": 2100,
+      "one_way_minutes": 900,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-report-v1",
+        "version": "kholeno-varangerud-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413",
+          "https://www.wikiloc.com/hiking-trails/pymysh-wrngh-rwd-bh-qlh-khlnw-5-w-6-tyr-99-51705644"
+        ],
+        "evidence_tracks": [
+          "tracks/kholeno/kholeno-varangerud-to-summit-2019.gpx"
+        ],
+        "notes": [
+          "این ترک یک مسیر بسیار طولانی و مناسب برنامهٔ چندروزه است؛ زمان و ascent تخمینی و با عدم‌قطعیت بالا ثبت شده‌اند.",
+          "نقطهٔ آغاز با azadkouh-varangerud-start در catalog آزادکوه مشترک است و دوباره تعریف نشده است.",
+          "ارتفاع‌های پرت GPX در بخش‌هایی از ترک برای مقدار catalog استفاده نشده‌اند."
+        ],
+        "cumulative_minutes": {
+          "azadkouh-varangerud-start": 0,
+          "kholeno-shirkamar": 90,
+          "kholeno-duab": 300,
+          "kholeno-lake": 690,
+          "kholeno": 900
+        }
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kholeno",
+    "tile_name": "خلنو",
+    "name": "قلهٔ خلنو بزرگ",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 4375,
+    "latitude": 36.064683,
+    "longitude": 51.551772,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ خلنو بزرگ",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "kholeno"
+}
