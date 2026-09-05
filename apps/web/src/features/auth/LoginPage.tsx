@@ -20,7 +20,7 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
   const panelRef = useRef<HTMLElement>(null);
   const returnTo = validReturnTo(new URLSearchParams(location.search).get("returnTo"));
   const isOverlay = presentation === "dialog";
-  const { isAuthenticated, login } = useAuth();
+  const { isAuthenticated, loading, login } = useAuth();
   const [submitting, setSubmitting] = useState(false);
   const [step, setStep] = useState<"phone" | "otp">("phone");
   const [phone, setPhone] = useState("");
@@ -28,8 +28,8 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (isAuthenticated) navigate(returnTo, { replace: true });
-  }, [isAuthenticated, navigate, returnTo]);
+    if (!loading && isAuthenticated) navigate(returnTo, { replace: true });
+  }, [isAuthenticated, loading, navigate, returnTo]);
 
   useEffect(() => () => {
     document.title = previousTitle.current;

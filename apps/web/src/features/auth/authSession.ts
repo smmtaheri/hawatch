@@ -47,7 +47,10 @@ async function readMe(): Promise<AuthSession | null> {
   try {
     const response = await fetch(apiUrl("auth/me/").toString(), { credentials: "same-origin" });
     if (!response.ok) return null;
-    return await response.json() as AuthSession;
+    const payload = await response.json() as Partial<AuthSession>;
+    // Some proxies normalize an unauthenticated response to HTTP 200. The
+    // explicit server flag must remain authoritative for the client session.
+    return payload.authenticated === true ? payload as AuthSession : null;
   } catch {
     return null;
   }
