@@ -13,6 +13,7 @@ import { NotFoundPage } from "../../pages/NotFoundPage";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { SpecialistMetrics } from "../../components/SpecialistMetrics";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { SiteFooter } from "../../components/SiteFooter";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
 import { scrollToDetailHero } from "../../lib/detailEntryScroll";
@@ -152,11 +153,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 )}
               </aside>
             </div>
-            <footer className="site-footer">
-              <span>هوای نقطه، برنامهٔ مسیر</span>
-            </footer>
           </>
         ) : null}
+        <SiteFooter />
       </div>
     </main>
   );

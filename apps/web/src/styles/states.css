@@ -3032,3 +3032,87 @@ bdi,
     line-height: 1.2;
   }
 }
+
+/* Compact social footer shared by public pages. The social controls stay
+ * icon-only so they remain quiet on data-heavy point and route pages. */
+.site-footer {
+  justify-content: center;
+  margin-top: 34px;
+  padding: 18px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--teal) 30%, transparent);
+  color: var(--teal);
+}
+
+.site-footer-social {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer-social-link {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid color-mix(in srgb, var(--teal) 55%, transparent);
+  border-radius: 10px;
+  color: var(--teal);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+
+.site-footer-social-link:hover {
+  border-color: var(--teal);
+  background: color-mix(in srgb, var(--teal) 12%, var(--surface));
+  transform: translateY(-1px);
+}
+
+.site-footer-social-link:focus-visible {
+  border-color: var(--teal);
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.site-footer-social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-footer-social-link svg path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.site-footer-social-icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+@supports not (color: color-mix(in srgb, black, white)) {
+  .site-footer {
+    border-top-color: var(--line);
+  }
+
+  .site-footer-social-link {
+    border-color: var(--line);
+    background: var(--surface);
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer {
+    margin-top: 24px;
+    padding-top: 14px;
+  }
+
+  .site-footer-social-link {
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -8,6 +8,7 @@ import { LoadingState } from "../../components/LoadingState";
 import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { PointIcon } from "../../components/PointIcon";
+import { SiteFooter } from "../../components/SiteFooter";
 import { usePageTitle } from "../../lib/pageTitle";
 import type { CatalogCounts, PointSummary, SearchSuggestion } from "../../types";
 
@@ -173,6 +174,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
+        <SiteFooter />
       </div>
     </main>
   );

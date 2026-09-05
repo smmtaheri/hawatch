@@ -1,5 +1,6 @@
 import { BackNavigation } from "../components/BackNavigation";
 import { Header } from "../components/Header";
+import { SiteFooter } from "../components/SiteFooter";
 import { usePageTitle } from "../lib/pageTitle";
 
 export function NotFoundPage({
@@ -20,6 +21,7 @@ export function NotFoundPage({
           <p>{detail}</p>
           <BackNavigation />
         </section>
+        <SiteFooter />
       </div>
     </main>
   );
