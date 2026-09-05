@@ -184,6 +184,7 @@ function renderApplication(path: string) {
 }
 
 describe("Hawatch pages", () => {
+  const allowedTestPhone = "989111111111";
   let mockedAuthenticated = false;
   beforeEach(() => {
     window.localStorage.clear();
@@ -202,7 +203,7 @@ describe("Hawatch pages", () => {
         }
         if (url.includes("/auth/login")) {
           const body = JSON.parse(String(init?.body || "{}")) as { phone?: string };
-          if (body.phone !== "989386759479") return jsonResponse({ detail: "این شماره اجازهٔ ورود ندارد." }, false, 400);
+          if (body.phone !== allowedTestPhone) return jsonResponse({ detail: "این شماره اجازهٔ ورود ندارد." }, false, 400);
           mockedAuthenticated = true;
           return jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } });
         }
@@ -255,9 +256,11 @@ describe("Hawatch pages", () => {
     const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
     const phone = within(dialog).getByLabelText("شمارهٔ موبایل");
     expect(phone).toBeInTheDocument();
-    await user.type(phone, "989386759479");
+    expect(phone).toHaveValue("");
+    await user.type(phone, allowedTestPhone);
     await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
     const otp = await within(dialog).findByLabelText("کد ورود");
+    expect(otp).toHaveValue("");
     await user.type(otp, "1234");
     await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument());
