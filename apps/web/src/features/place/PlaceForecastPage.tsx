@@ -81,8 +81,12 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 />
                 <h1>{data.subject.name}</h1>
                 <p className="point-hero-meta point-hero-meta-mobile">
-                  {data.subject.context_label || data.subject.category || data.subject.region}
-                  {data.subject.elevation_label ? `　·　${data.subject.elevation_label}` : ""}
+                  <span className="point-hero-context">
+                    {data.subject.context_label || data.subject.category || data.subject.region}
+                  </span>
+                  <span className="point-hero-elevation">
+                    {data.subject.elevation_label || "ارتفاع نامشخص"}
+                  </span>
                 </p>
                 <p className="point-hero-meta point-hero-meta-desktop">
                   {data.subject.elevation_label ? `ارتفاع ${data.subject.elevation_label}` : "ارتفاع نامشخص"}

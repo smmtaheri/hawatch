@@ -276,6 +276,8 @@ describe("Hawatch pages", () => {
     const user = userEvent.setup();
     renderAt("/points/tochal");
     expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
+    expect(document.querySelector(".point-hero-meta-mobile .point-hero-context")).toHaveTextContent("کوه · البرز مرکزی");
+    expect(document.querySelector(".point-hero-meta-mobile .point-hero-elevation")).toHaveTextContent("۳۹۶۴ متر");
     expect(document.querySelector(".point-page .page-back-navigation")).toContainElement(
       screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
     );

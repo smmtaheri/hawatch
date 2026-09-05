@@ -3538,12 +3538,55 @@ bdi,
 }
 
 @media (max-width: 720px) {
-  /* Preserve the existing mobile identity line; desktop gets a separate
-   * metadata treatment below. */
+  /* A point name can be substantially longer than a short summit name.
+   * Keep the identity and elevation in their own predictable lines rather
+   * than relying on an inline separator that can wrap or collide with the
+   * status pills. */
+  .point-page .point-hero {
+    height: clamp(132px, 38vw, 154px) !important;
+    min-height: clamp(132px, 38vw, 154px) !important;
+  }
+
+  .point-page .point-heading {
+    top: 50%;
+    right: 18px;
+    left: 42%;
+    min-width: 0;
+  }
+
+  .point-page .point-heading h1 {
+    max-width: 100%;
+    margin: 0;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+    font-size: clamp(1.45rem, 7.25vw, 2rem) !important;
+    line-height: 1.18;
+  }
+
   .point-page .point-hero-meta-mobile {
-    display: block;
-    margin-top: 4px;
-    font-size: 10px;
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+    margin-top: 6px;
+    color: var(--internal-muted, #a8c1c0);
+    font-family: var(--font-family);
+    font-size: clamp(0.625rem, 2.7vw, 0.75rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.35;
+  }
+
+  .point-page .point-hero-meta-mobile > span {
+    min-width: 0;
+  }
+
+  .point-page .point-hero-context {
+    overflow-wrap: anywhere;
+  }
+
+  .point-page .point-hero-elevation {
+    color: var(--internal-text, #edf7f4);
+    white-space: nowrap;
+    font-weight: var(--weight-semibold);
   }
 }
 
