@@ -3192,7 +3192,12 @@ bdi,
 .route-page .time-gauge .planner-label {
   color: var(--internal-muted, var(--muted));
   font-size: var(--font-size-label);
+  font-weight: var(--weight-semibold);
   line-height: 1.4;
+}
+
+.forecast-day-heading .planner-label {
+  font-weight: var(--weight-semibold);
 }
 
 .period-control-row .daypart-toggle button {
@@ -3296,7 +3301,9 @@ bdi,
 @media (max-width: 720px) {
   .point-page .forecast-day-period-controls,
   .route-page .route-planner-day-period {
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr) !important;
+    column-gap: 8px !important;
+    row-gap: 8px !important;
   }
 
   .point-page .forecast-day-period-controls .forecast-day-heading,
@@ -3307,8 +3314,8 @@ bdi,
 
   .point-page .forecast-day-period-controls .point-period-row,
   .route-page .route-planner-day-period .route-period-row {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
     width: 100% !important;
     min-width: 0 !important;
     align-items: center !important;
@@ -3320,6 +3327,7 @@ bdi,
     align-self: center !important;
     flex: 0 0 auto !important;
     font-size: var(--font-size-label) !important;
+    font-weight: var(--weight-semibold) !important;
     line-height: 1.35 !important;
   }
 
@@ -3333,8 +3341,8 @@ bdi,
   }
 
   .point-page .forecast-day-period-controls .day-tabs {
-    grid-column: 1 !important;
-    grid-row: 3 !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
   }
 
   .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button,
@@ -3350,7 +3358,7 @@ bdi,
   .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button strong,
   .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong,
   .period-control-row .daypart-toggle button strong {
-    font-size: 10px !important;
+    font-size: 9px !important;
     line-height: 1.2 !important;
   }
 
