@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
@@ -11,6 +12,7 @@ export function Header() {
     <header className="site-header">
       <Logo />
       <div className="header-actions">
+        <SocialLinks />
         {pathname !== "/login" ? (
           <Link
             to={{ pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` }}

@@ -13,7 +13,6 @@ import { RouteSiblingNavigation } from "../../components/RouteSiblingNavigation"
 import { RouteTimeline } from "../../components/RouteTimeline";
 import { RoutePointLink } from "../../components/RoutePointLink";
 import { ShareCard } from "../../components/ShareCard";
-import { SiteFooter } from "../../components/SiteFooter";
 import { SpeedControl } from "../../components/SpeedControl";
 import { StartTimeControl } from "../../components/StartTimeControl";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
@@ -436,7 +435,6 @@ export function RoutePage() {
             </div>
           </>
         ) : null}
-        <SiteFooter />
       </div>
     </main>
   );

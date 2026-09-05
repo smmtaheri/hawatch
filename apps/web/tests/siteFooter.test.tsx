@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { SiteFooter } from "../src/components/SiteFooter";
+import { SocialLinks } from "../src/components/SocialLinks";
 
-describe("SiteFooter", () => {
+describe("SocialLinks", () => {
   it("renders compact icon-only links for Hawatch social profiles", () => {
-    render(<SiteFooter />);
+    render(<SocialLinks />);
 
     const socialNav = screen.getByRole("navigation", { name: "شبکه‌های اجتماعی هواچ" });
     const links = Array.from(socialNav.querySelectorAll("a"));
