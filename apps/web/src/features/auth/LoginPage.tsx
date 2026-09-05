@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePageTitle } from "../../lib/pageTitle";
-import { DEMO_LOGIN_OTP, DEMO_LOGIN_PHONE, isDemoPhone, useAuth } from "./authSession";
+import { DEMO_LOGIN_OTP, isDemoPhone, useAuth } from "./authSession";
 
 type LoginSurfaceProps = {
   presentation: "dialog" | "page";
@@ -140,7 +140,7 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
                 value={otp}
                 onChange={(event) => setOtp(event.target.value)}
                 placeholder="۱۲۳۴"
-                aria-describedby="login-error login-demo-code"
+                aria-describedby="login-error"
               />
               <button className="login-overlay-submit" type="submit">
                 ورود به هواچ
@@ -151,8 +151,8 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
             </form>
           )}
 
-          <p id="login-demo-code" className="login-overlay-unavailable" role="status">
-            شمارهٔ آزمایشی: <b dir="ltr">+{DEMO_LOGIN_PHONE}</b> · کد: <b dir="ltr">{DEMO_LOGIN_OTP}</b>
+          <p className="login-overlay-unavailable" role="status">
+            کد چهاررقمی را وارد کنید.
           </p>
           {error ? <p id="login-error" className="login-overlay-error" role="alert">{error}</p> : null}
         </div>

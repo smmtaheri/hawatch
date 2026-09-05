@@ -126,7 +126,7 @@ endpointهای forecast مورد استفادهٔ suite را پوشش می‌د�
 
 ## خارج از scope این milestone
 
-- OTP واقعی و session ورود (فعلاً flow آزمایشی frontend با شمارهٔ `+989386759479` و کد `۱۲۳۴`، با انقضای ۳۰روزه، فعال است)
+- OTP واقعی و session ورود (فعلاً flow آزمایشی frontend با مقادیر ثابتِ فقط داخل کد و انقضای ۳۰روزه فعال است؛ مقدارها در UI نمایش داده نمی‌شوند)
 - فراخوانی live Open-Meteo از handlerهای API یا از CI بدون mock
 - Redis اجباری، Celery، Kafka، data lake
 - Kubernetes manifests

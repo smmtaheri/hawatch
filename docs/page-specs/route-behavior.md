@@ -8,14 +8,14 @@
 
 - date، period، start time و speed پارامترهای تصمیم‌اند.
 - تغییر date/period باید point arrival، weather mapping و decision card را هماهنگ update کند.
-- periodها در ساعت رسمی `Asia/Tehran` از چهار پنجرهٔ نیمه‌شب ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ استفاده می‌کنند و هرکدام سه برش دوساعته دارند.
+- periodها در ساعت رسمی `Asia/Tehran` از چهار پنجرهٔ بامداد ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ استفاده می‌کنند و هرکدام سه برش دوساعته دارند.
 - periodهای کاملاً گذشته نسبت به `meta.current_local_time` کم‌رنگ می‌شوند؛ این قاعده به ساعت نمونهٔ خاصی وابسته نیست.
 - اگر start_time در URL نباشد و تاریخ/period جاری باشد، gauge روی ساعت فعلی تهران قرار می‌گیرد؛ بخش گذشتهٔ gauge کم‌رنگ و بخش آینده عادی است.
 - تغییر start time/speed فقط وقتی `timing_pending` نیست forecast را refetch می‌کند؛ gauge با state محلی فوری حرکت می‌کند و commit با debounce/پایان تعامل انجام می‌شود.
 - برای مسیرهای estimated (مثل Tochal v3)، arrival هر نقطه از cumulative متوسط × ضریب زمان pace با گرد ۵ دقیقه‌ای ساخته می‌شود؛ forecast همان WeatherPoint نزدیک به `arrival_at` (±۹۰ دقیقه؛ در تساوی، `forecast_at` زودتر) انتخاب می‌شود. شهرستانک نیز estimated ترکیبی است (نه curated).
 - کارت نقطه زمان تقریبی (`حدود …`)، آیکون/شرط/دما/باد و در صورت نیاز نشان `تخمینی · ±N دقیقه` را نشان می‌دهد؛ عنوان period عمومی بالای هر نقطه نیست. `state` فقط از severity پیش‌بینی همان نقطه می‌آید.
 - mobile ساعت و speed را در یک row جمع‌وجور نشان می‌دهد.
-- فقط یک period control مشترک (نیمه‌شب / صبح / ظهر / شب) برای timeline و cards وجود دارد.
+- فقط یک period control مشترک (بامداد / صبح / ظهر / شب) برای timeline و cards وجود دارد.
 - کلیک روی نقطه → `/points/{weatherPointSlug}` (بدون planner query) + `fromRoute` state شامل pathname/search/href برای بازگشت کامل؛ نقطهٔ شاخصی مثل قلهٔ توچال نیز همان URL نقطه را لینک می‌کند.
 - اگر Point از Route باز شود و URL خودش `date`/`period` صریح نداشته باشد، forecast اولیه از `date`/`period` موجود در `fromRoute.search` initialize می‌شود؛ `start_time`/`speed` به URL نقطه اضافه نمی‌شوند.
 - مسیر قدیمیِ `/routes/.../points/...` بخشی از URLهای عمومی نیست و redirect ندارد.

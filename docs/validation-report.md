@@ -32,13 +32,13 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - هر WeatherPoint در `/points/{slug}` و هر Route در `/routes/{slug}` صفحهٔ canonical دارد.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
 - RTL، Estedad، light/dark، period toggle چهارگانه و سه کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
-- Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است. flow آزمایشی فقط شمارهٔ `+989386759479` و کد `۱۲۳۴` را می‌پذیرد و session آن ۳۰ روزه است.
+- Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است. flow آزمایشی فقط مقدارهای ثابت داخلی را می‌پذیرد، آن‌ها را در UI نمایش نمی‌دهد و session آن ۳۰ روزه است.
 
 ### Backend و داده
 
 - Django REST با endpointهای health، points، point forecast، route forecast و search suggestions.
 - PostgreSQL/PostGIS و migrationهای موجود؛ seed دمو idempotent و catalog جدا از forecast.
-- زمان و default selection با `Asia/Tehran`؛ بازه‌ها نیمه‌شب ۰۰/۰۲/۰۴، صبح ۰۶/۰۸/۱۰، ظهر ۱۲/۱۴/۱۶ و شب ۱۸/۲۰/۲۲.
+- زمان و default selection با `Asia/Tehran`؛ بازه‌ها بامداد ۰۰/۰۲/۰۴، صبح ۰۶/۰۸/۱۰، ظهر ۱۲/۱۴/۱۶ و شب ۱۸/۲۰/۲۲.
 - loading/empty/error/stale/partial در قرارداد UI/API تفکیک شده‌اند؛ stale دادهٔ قبلی و زمان update را نگه می‌دارد و error retry دارد.
 
 ### Runtime و مسیر توسعه

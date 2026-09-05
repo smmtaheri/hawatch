@@ -3377,7 +3377,7 @@ bdi,
 }
 
 /* Keep the period caption vertically centered and give all four labels enough
- * room for «نیمه‌شب» on narrow screens. */
+ * room for «بامداد» on narrow screens. */
 @media (max-width: 720px) {
   .point-page .forecast-day-period-controls,
   .route-page .route-planner-day-period {
@@ -3566,7 +3566,7 @@ bdi,
     line-height: 1.45;
   }
 
-  /* Keep «نیمه‌شب» and the other period labels identical on Point and Route
+  /* Keep «بامداد» and the other period labels identical on Point and Route
    * pages. This explicit shared rule wins over the legacy route planner
    * selectors without touching the mobile controls. */
   .point-page .forecast-day-period-controls .point-period-row .daypart-toggle,

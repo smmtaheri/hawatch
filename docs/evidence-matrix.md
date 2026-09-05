@@ -124,7 +124,7 @@
 | صفحهٔ canonical نقطه | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/web/src/features/point/PointDetailPage.tsx` به‌عنوان wrapper و `apps/web/src/features/place/PlaceForecastPage.tsx`؛ مسیر عمومی `/points/{slug}`، بدون timing planner و با related routes در ورود مستقیم. |
 | API نقطه و جست‌وجو | `LOCAL-IMPLEMENTATION` | `apps/api/src/hawatch/api/v1/urls.py` و `views.py`؛ endpointهای point forecast و search suggestions اجرایی‌اند. |
 | Route → Point و back context | `LOCAL-IMPLEMENTATION` | Route point links URL تمیز می‌سازند؛ `location.state.fromRoute` شامل pathname/search/href است و queryهای `date`، `period`، `start_time` و `speed` را برای بازگشت restore می‌کند. |
-| period فعلی | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/api/src/hawatch/common/time.py` و `apps/web/src/lib/periods.ts`؛ Asia/Tehran و چهار پنجرهٔ نیمه‌شب ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ با سه ساعت دوساعته در هر پنجره. |
+| period فعلی | `LOCAL-IMPLEMENTATION` + `PRODUCT` | `apps/api/src/hawatch/common/time.py` و `apps/web/src/lib/periods.ts`؛ Asia/Tehran و چهار پنجرهٔ بامداد ۰۰–۰۶، صبح ۰۶–۱۲، ظهر ۱۲–۱۸ و شب ۱۸–۲۴ با سه ساعت دوساعته در هر پنجره. |
 | Point در design handoff | `SCREENSHOT-SOURCE` + `LOCAL-IMPLEMENTATION` | screenshot مستقل Point وجود ندارد؛ `design/pages/point.md` آن را extension سیستم Point معرفی می‌کند و ادعای pixel-perfect ندارد. |
 
 ## evidenceهای مسدود

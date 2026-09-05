@@ -4,7 +4,7 @@ import type { PeriodId, PlannerPeriodInfo } from "../types";
 export const PLANNER_TIME_STEP_MINUTES = 60;
 
 export const PERIOD_OPTIONS: Array<{ id: PeriodId; label: string; rangeLabel: string }> = [
-  { id: "midnight", label: "نیمه‌شب", rangeLabel: "۰۰ تا ۰۶" },
+  { id: "midnight", label: "بامداد", rangeLabel: "۰۰ تا ۰۶" },
   { id: "morning", label: "صبح", rangeLabel: "۰۶ تا ۱۲" },
   { id: "noon", label: "ظهر", rangeLabel: "۱۲ تا ۱۸" },
   { id: "night", label: "شب", rangeLabel: "۱۸ تا ۲۴" },

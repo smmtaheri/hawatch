@@ -257,7 +257,7 @@ describe("Hawatch pages", () => {
     renderAt("/login?returnTo=%2Fpoint%2Ftochal");
     expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(screen.getByText(/شمارهٔ آزمایشی/)).toBeInTheDocument();
+    expect(screen.getByText("کد چهاررقمی را وارد کنید.")).toBeInTheDocument();
   });
 
   it("rejects phone numbers outside the temporary allowlist", async () => {

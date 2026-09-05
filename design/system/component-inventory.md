@@ -30,7 +30,7 @@
 - `StatusPill`: حالت عادی یا تغییر مهم.
 - `DayTabs`: انتخاب روز؛ دیروز کم‌رنگ‌تر از امروز.
 - `RoutePicker` / related routes card: مسیرهای مرتبط با عنوان متناسب kind.
-- `PeriodToggle`: نیمه‌شب/صبح/ظهر/شب؛ period کاملاً گذشته dim می‌شود.
+- `PeriodToggle`: بامداد/صبح/ظهر/شب؛ period کاملاً گذشته dim می‌شود.
 - `HourlyForecast`: سه کارت دوساعته در هر بازه و legend وضعیت.
 - `TechnicalMetrics`: grid جزئیات تخصصی با `SpecialistMetricIcon` و sprite رسمی شاخص‌ها. هشت نام معنایی (`wind-average`، `wind-gust`، `visibility`، `freezing-level`، `cloud-base`، `uv-index`، `precipitation` و `sunrise-sunset`) فقط از `apps/web/public/icons/specialist/` می‌آیند؛ اندازهٔ پایه ۲۴px و داخل metric card برابر ۲۸px است.
 - `DecisionCard`: تفسیر قابل اقدام از forecast.

@@ -58,13 +58,13 @@ LEGACY_PERIOD_ALIASES = {"afternoon": "noon"}
 PERIODS = {
     "midnight": {
         "id": "midnight",
-        "label": "نیمه‌شب",
+        "label": "بامداد",
         "range_label": "۰۰ تا ۰۶",
         "start_minutes": 0,
         "end_minutes": 360,
         "default_start": 120,
         "hours": MIDNIGHT_HOURS,
-        "headline": "تغییرات نیمه‌شب · هر دو ساعت",
+        "headline": "تغییرات بامداد · هر دو ساعت",
     },
     "morning": {
         "id": "morning",

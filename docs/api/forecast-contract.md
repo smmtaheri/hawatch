@@ -10,11 +10,11 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
   درخواست نمی‌شود.
 - hourly: هر دو ساعت؛ هر بازه دقیقاً سه کارت دارد.
 - `period.headline` فقط فیلد سازگاری/داخلی است و در UI Point/Point نمایش داده نمی‌شود.
-- چهار بازهٔ غیرهم‌پوشان از نیمه‌شب تا پایان همان روز (قرارداد قدیمیِ سه‌بازه‌ای با این برنامه **جایگزین شده**):
+- چهار بازهٔ غیرهم‌پوشان از بامداد تا پایان همان روز (قرارداد قدیمیِ سه‌بازه‌ای با این برنامه **جایگزین شده**):
 
 | `period` | برچسب | پنجرهٔ منطقی | کارت‌ها |
 | --- | --- | --- | --- |
-| `midnight` | نیمه‌شب | ۰۰:۰۰–۰۶:۰۰ | ۰۰، ۰۲، ۰۴ |
+| `midnight` | بامداد | ۰۰:۰۰–۰۶:۰۰ | ۰۰، ۰۲، ۰۴ |
 | `morning` | صبح | ۰۶:۰۰–۱۲:۰۰ | ۰۶، ۰۸، ۱۰ |
 | `noon` | ظهر | ۱۲:۰۰–۱۸:۰۰ | ۱۲، ۱۴، ۱۶ |
 | `night` | شب | ۱۸:۰۰–۲۴:۰۰ | ۱۸، ۲۰، ۲۲ |
@@ -24,7 +24,7 @@ timezone محصول: `Asia/Tehran` (زمان رسمی ایران، مستقل ا
 ## معنای تاریخ برای همهٔ بازه‌ها
 
 `date` تاریخ تقویمیِ همان بازه است. هر چهار بازه در همان روز قرار دارند؛
-`period=night` شامل ۱۸:۰۰، ۲۰:۰۰ و ۲۲:۰۰ همان روز است و از نیمه‌شب عبور نمی‌کند.
+`period=night` شامل ۱۸:۰۰، ۲۰:۰۰ و ۲۲:۰۰ همان روز است و از بامداد عبور نمی‌کند.
 فیلتر همچنان با پنجرهٔ timezone-aware انجام می‌شود.
 
 ## انتخاب پیش‌فرض (بدون query صریح)
@@ -125,7 +125,7 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 - `start_time` در هر period به بازهٔ همان period محدود می‌شود.
 - granularity پیش‌فرض: `PLANNER_TIME_STEP_MINUTES = 60` در `hawatch.common.time` (منبع واحد؛ frontend از payload می‌خواند).
 - پاسخ `period` در route (و place) شامل `planner_step_minutes`، `planner_start_minutes`، `planner_end_minutes`، `planner_last_start_minutes`، `planner_default_start_minutes`، `planner_slots[]`، `planner_ticks[]` است.
-- نیمه‌شب قابل انتخاب: ۰۰–۰۵؛ صبح: ۰۶–۱۱؛ ظهر: ۱۲–۱۷؛ شب: ۱۸–۲۳.
+- بامداد قابل انتخاب: ۰۰–۰۵؛ صبح: ۰۶–۱۱؛ ظهر: ۱۲–۱۷؛ شب: ۱۸–۲۳.
 - Gauge بصری RTL است: زودترین زمان راست، دیرترین چپ.
 - هر period فقط همان بازهٔ شش‌ساعتهٔ روز را پوشش می‌دهد؛ `00:00` متعلق به `midnight` و `18:00` متعلق به `night` است.
 
@@ -135,7 +135,7 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 | --- | --- |
 | `06:00` (ASCII) | پذیرفته؛ خروجی wire: `06:00` |
 | `۰۶:۰۰` / `٠٦:٠٠` (Persian/Arabic) | normalize به ASCII؛ همان دقیقه |
-| `360` (legacy bare minutes) | پذیرفته؛ تفسیر دقیقه از نیمه‌شب (۰–۱۴۳۹) و clamp داخل period |
+| `360` (legacy bare minutes) | پذیرفته؛ تفسیر دقیقه از بامداد (۰–۱۴۳۹) و clamp داخل period |
 | `10:15` (off-step) | floor به step پیکربندی‌شده سپس clamp داخل period |
 | `12:xx`، `12:00:00`، `25:00`، `12:60` | **رد** → HTTP `400` با پیام validation |
 
@@ -163,7 +163,7 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 
 - `slow`/`medium`/`fast` ضریب زمان نسبی‌اند نه km/h: آرام `1.25`، متوسط `1.00`، سریع `0.80` (`SPEED_TIME_FACTORS`).
 - `paced_minutes = round_to_nearest_5(cumulative_medium_minutes * speed_time_factor)`.
-- `arrival_at` از `start_minutes` تهران + paced duration ساخته می‌شود و می‌تواند از مرز period و نیمه‌شب عبور کند.
+- `arrival_at` از `start_minutes` تهران + paced duration ساخته می‌شود و می‌تواند از مرز period و بامداد عبور کند.
 - برای هر RoutePoint فقط forecast همان `WeatherPoint` انتخاب می‌شود (نزدیک‌ترین ساعتی در ±۹۰ دقیقه به `arrival_at`). در تساوی فاصله، `forecast_at` زودتر و سپس primary key پایین‌تر برنده است؛ fallback به قله/نقطه ممنوع است؛ خارج از tolerance → `weather_available=false`.
 - `state` کارت نقطه فقط از `severity` همان forecast انتخاب‌شده می‌آید؛ آستانهٔ زمان سپری‌شده یا بازنویسی hourly نقطه از روی critical نقطه ممنوع است.
 - period انتخاب‌شده فقط پنجرهٔ مجاز حرکت را محدود می‌کند؛ بعد از محاسبهٔ رسیدن، خلاصهٔ period مبدأ به همهٔ نقاط تحمیل نمی‌شود.
