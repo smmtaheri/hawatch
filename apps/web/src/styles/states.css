@@ -3692,6 +3692,7 @@ bdi,
     top: 50% !important;
     right: 16px !important;
     left: 37% !important;
+    display: block !important;
     transform: translateY(-50%);
   }
 
