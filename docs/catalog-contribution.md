@@ -39,6 +39,19 @@ slug مسیر باید در کل پوشهٔ `apps/api/fixtures/catalog/` فقط 
 ارسال یک catalog موقت از stdin مناسب است، اما جایگزین ثبت fixture versioned در
 repository نیست.
 
+### دروازهٔ سراسری duplicate قبل از هر افزودن
+
+این کنترل برای همهٔ نقاط جدید و همهٔ catalogهاست، نه فقط برای catalog یا Route
+در حال ویرایش. قبل از ثبت هر نقطه، مختصات candidate را با تمام
+WeatherPointهای فعال در کل `apps/api/fixtures/catalog/` و دیتابیس مقایسه کنید.
+اگر نقطهٔ موجود همان عارضه است، slug و رکورد موجود را دوباره استفاده کنید و
+تعریف جدید نسازید. فاصلهٔ کمتر از ۲۵ متر duplicate قطعی است؛ فاصلهٔ ۲۵ تا ۱۰۰
+متر فقط برای دو عارضهٔ واقعی و نام‌دار، با ثبت slugها و دلیل در
+`reviewed_nearby_point_pairs`، پذیرفته می‌شود. نام متفاوت یا قرارگرفتن نقطه در
+Route دیگر به‌تنهایی مجوز ساخت duplicate نیست. اجرای
+`validate_catalog --all --database --strict` باید بعد از این مقایسه انجام شود؛
+در صورت ابهام، نقطه تا بررسی منابع و مختصات دقیق در وضعیت pending می‌ماند.
+
 HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. بنابراین Point یا Route جدید
 پس از import/sync، بدون افزودن URL hardcode، prerender جداگانه یا build frontend
 در `/points/<slug>` یا `/routes/<slug>` هم title، canonical و محتوای اولیهٔ

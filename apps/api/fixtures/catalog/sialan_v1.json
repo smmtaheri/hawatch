@@ -1,0 +1,193 @@
+{
+  "catalog_version": "hawatch-sialan-catalog-v1",
+  "weather_points": {
+    "sialan-hertung-shelter": {
+      "name": "جان‌پناه هرتنگ سیالان",
+      "page_name": "جان‌پناه هرتنگ در مسیر سیالان",
+      "short_label": "جان‌پناه هرتنگ",
+      "place_type": "shelter",
+      "aliases": ["پناهگاه هرتنگ", "جانپناه هرتنگ سیالان", "Hertung shelter"],
+      "identity_summary": "جان‌پناه هرتنگ؛ عارضهٔ شناخته‌شدهٔ مسیر شمالی صعود به سیالان",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+      ],
+      "latitude": 36.563665,
+      "longitude": 50.712535,
+      "elevation_m": 1849,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1849 m؛ waypoint جان‌پناه هرتنگ در ترک مسیر شمالی"
+    },
+    "sialan-gourkhani-spring": {
+      "name": "چشمهٔ گورخانی سیالان",
+      "page_name": "چشمهٔ گورخانی در مسیر سیالان",
+      "short_label": "چشمهٔ گورخانی",
+      "place_type": "spring",
+      "aliases": ["چشمه گورخانی سیالان", "Gourkhani spring"],
+      "identity_summary": "چشمهٔ گورخانی؛ منبع آب نام‌دار در بخش بالادست مسیر شمالی سیالان",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+      ],
+      "latitude": 36.542969,
+      "longitude": 50.692354,
+      "elevation_m": 2695,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2695 m؛ waypoint چشمه گورخانی در ترک مسیر شمالی"
+    },
+    "sialan-vini-sheepfold": {
+      "name": "گوسفندسرا وِنی سیالان",
+      "page_name": "گوسفندسرا وِنی در مسیر سیالان",
+      "short_label": "گوسفندسرا وِنی",
+      "place_type": "shelter",
+      "aliases": ["گوسفندسرای وینی", "گوسفندسرا ونی سیالان", "Vini sheepfold"],
+      "identity_summary": "گوسفندسرا وِنی؛ محل شناخته‌شدهٔ شب‌مانی در مسیر شمالی سیالان",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+      ],
+      "latitude": 36.53149,
+      "longitude": 50.688724,
+      "elevation_m": 3254,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3254 m؛ waypoint گوسفندسرای وِنی در ترک مسیر شمالی"
+    },
+    "sialan-pass": {
+      "name": "گردنهٔ سیالان",
+      "page_name": "گردنهٔ سیالان پیش از قله",
+      "short_label": "گردنهٔ سیالان",
+      "place_type": "pass",
+      "aliases": ["گردنه سیالان", "Sialan pass"],
+      "identity_summary": "گردنهٔ سیالان؛ گردنهٔ مرتفع و نام‌دار پیش از یال قله",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+      ],
+      "latitude": 36.518718,
+      "longitude": 50.681506,
+      "elevation_m": 3845,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3845 m؛ waypoint گردنه سیالان در ترک مسیر شمالی"
+    },
+    "sialan": {
+      "name": "قلهٔ سیالان",
+      "page_name": "قلهٔ سیالان در مسیر شمالی",
+      "short_label": "قلهٔ سیالان",
+      "place_type": "summit",
+      "aliases": ["سیالان", "قله سیلان", "Sialan Peak"],
+      "identity_summary": "قلهٔ سیالان در مرز مازندران و قزوین؛ مقصد مسیر شمالی از اِسِل‌محله و دشت دریاسر",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://commons.wikimedia.org/wiki/File:Sialan_peak_and_hut.jpg",
+        "https://en.wikipedia.org/wiki/Sialan",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+      ],
+      "latitude": 36.511696,
+      "longitude": 50.698432,
+      "elevation_m": 4185,
+      "status": "provisional",
+      "elevation_source": "Wikimedia Commons/فهرست قلل ایران: 4185 m؛ Open-Meteo GLO-90 DEM: 4124 m (اختلاف 61 m)"
+    }
+  },
+  "shared_weather_points": [
+    "daryasar-esel-mahalleh",
+    "daryasar-spring",
+    "daryasar"
+  ],
+  "routes": {
+    "esel_mahalleh_to_sialan": {
+      "slug": "sialan-esel-mahalleh",
+      "title": "اِسِل‌محله تا قلهٔ سیالان",
+      "subtitle": "مسیر شمالی از اِسِل‌محله و دشت دریاسر تا قلهٔ سیالان",
+      "trail_label": "مسیر شمالی سیالان",
+      "origin": "اِسِل‌محله",
+      "target_label": "قلهٔ سیالان",
+      "region": "مازندران · تنکابن",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "daryasar-esel-mahalleh",
+        "daryasar-spring",
+        "daryasar",
+        "sialan-hertung-shelter",
+        "sialan-gourkhani-spring",
+        "sialan-vini-sheepfold",
+        "sialan-pass",
+        "sialan"
+      ],
+      "distance_km": 15.9,
+      "ascent_m": 2884,
+      "one_way_minutes": 690,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "sialan-northern-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+          "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639",
+          "https://www.wikiloc.com/hiking-trails/qlh-syln-t-drysr-gpx-139827951"
+        ],
+        "evidence_tracks": [
+          "tracks/sialan/sialan-esel-mahalleh-to-summit-primary-2026.gpx",
+          "tracks/sialan/sialan-esel-mahalleh-to-summit-crosscheck-2022.gpx",
+          "tracks/sialan/sialan-summit-to-daryasar-crosscheck-2023.gpx"
+        ],
+        "notes": [
+          "دشت دریاسر در catalog دریاسر مالکیت دارد و در این مسیر فقط reference مشترک است.",
+          "مسیر شمالی طولانی و سخت است؛ بخش‌های فنی یا یخچالی بدون تأیید ایمنی به‌عنوان مسیر ساده معرفی نمی‌شوند.",
+          "distance و ascent پس از تحلیل ترک primary نهایی می‌شوند؛ ارتفاع GPX فقط مرجع هندسه است."
+        ],
+        "cumulative_minutes": {
+          "daryasar-esel-mahalleh": 0,
+          "daryasar-spring": 65,
+          "daryasar": 90,
+          "sialan-hertung-shelter": 240,
+          "sialan-gourkhani-spring": 390,
+          "sialan-vini-sheepfold": 510,
+          "sialan-pass": 630,
+          "sialan": 690
+        }
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "sialan",
+    "tile_name": "سیالان",
+    "name": "قلهٔ سیالان",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · تنکابن",
+    "elevation_m": 4185,
+    "latitude": 36.511696,
+    "longitude": 50.698432,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سیالان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "sialan"
+}
