@@ -10,7 +10,7 @@ import type {
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
 
-function apiUrl(path: string) {
+export function apiUrl(path: string) {
   const base = API_BASE.startsWith("/")
     ? `${window.location.origin}${API_BASE}/`
     : `${API_BASE}/`;
@@ -51,9 +51,13 @@ export function trackPageView(pageType: "point" | "route", slug: string, navigat
 
 export class ApiError extends Error {
   status: number;
-  constructor(message: string, status: number) {
+  code?: string;
+  payload?: unknown;
+  constructor(message: string, status: number, code?: string, payload?: unknown) {
     super(message);
     this.status = status;
+    this.code = code;
+    this.payload = payload;
   }
 }
 
@@ -64,9 +68,10 @@ async function getJson<T>(path: string, params?: Record<string, string | undefin
       if (value) url.searchParams.set(key, value);
     }
   }
-  const response = await fetch(url.toString());
+  const response = await fetch(url.toString(), { credentials: "same-origin" });
   if (!response.ok) {
-    throw new ApiError("بارگذاری داده ناموفق بود.", response.status);
+    const payload = await response.json().catch(() => null) as { detail?: string; code?: string } | null;
+    throw new ApiError(payload?.detail || "بارگذاری داده ناموفق بود.", response.status, payload?.code, payload);
   }
   return (await response.json()) as T;
 }

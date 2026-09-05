@@ -11,7 +11,7 @@
 - local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot، scheduler شش‌ساعته و maintenance سبک
 - gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
 
-مسیر `/login?returnTo=…` و لایهٔ responsive ورود در دسترس است: ورود عادی روی همان صفحه به‌صورت overlay باز می‌شود (mobile تمام‌صفحه و desktop dialog). احراز هویت واقعی، ارسال OTP و API ورود هنوز پیاده نشده‌اند و UI این وضعیت را صریح نشان می‌دهد.
+مسیر `/login?returnTo=…` و لایهٔ responsive ورود در دسترس است: ورود عادی روی همان صفحه به‌صورت overlay باز می‌شود (mobile تمام‌صفحه و desktop dialog). login موقت allowlist و کد ثابت را فقط از env سرور می‌خواند و session امن Django می‌سازد؛ OTP واقعی هنوز جایگزین نشده است. سیاست روزهای forecast و طرح‌های دسترسی از Django Admin مدیریت می‌شوند؛ جزئیات در [`docs/page-specs/login-behavior.md`](docs/page-specs/login-behavior.md) است.
 
 ## صفحات این نسخه
 

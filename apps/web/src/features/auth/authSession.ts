@@ -1,34 +1,14 @@
 import { useEffect, useState } from "react";
+import { apiUrl } from "../../api/client";
+import type { ForecastAccess } from "../../types";
 
-/** Temporary first-party demo login; replace with the real OTP contract later. */
-export const DEMO_LOGIN_PHONE = "989386759479";
-export const DEMO_LOGIN_OTP = "1234";
-export const AUTH_SESSION_KEY = "hawatch.auth.session";
-export const AUTH_SESSION_DURATION_MS = 30 * 24 * 60 * 60 * 1000;
-
-type StoredSession = {
-  phone: string;
-  expiresAt: number;
+export type AuthSession = {
+  authenticated: true;
+  plan: { code: string; title: string; tier: "free" | "paid" } | null;
+  forecast_access: ForecastAccess;
 };
 
 const AUTH_CHANGED_EVENT = "hawatch-auth-changed";
-const MAX_TIMEOUT_MS = 2_147_000_000;
-
-function readSession(): StoredSession | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = window.localStorage.getItem(AUTH_SESSION_KEY);
-    if (!raw) return null;
-    const session = JSON.parse(raw) as Partial<StoredSession>;
-    if (session.phone !== DEMO_LOGIN_PHONE || typeof session.expiresAt !== "number" || session.expiresAt <= Date.now()) {
-      window.localStorage.removeItem(AUTH_SESSION_KEY);
-      return null;
-    }
-    return { phone: session.phone, expiresAt: session.expiresAt };
-  } catch {
-    return null;
-  }
-}
 
 function notifyAuthChanged() {
   window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
@@ -53,46 +33,75 @@ export function normalizeIranPhone(value: string): string {
   return digits;
 }
 
-export function isDemoPhone(value: string): boolean {
-  return normalizeIranPhone(value) === DEMO_LOGIN_PHONE;
+async function csrfHeaders(): Promise<Record<string, string>> {
+  try {
+    const response = await fetch(apiUrl("auth/csrf/").toString(), { credentials: "same-origin" });
+    const payload = await response.json() as { csrf_token?: string };
+    return payload.csrf_token ? { "X-CSRFToken": payload.csrf_token } : {};
+  } catch {
+    return {};
+  }
 }
 
-export function loginDemoSession(): StoredSession {
-  const session: StoredSession = {
-    phone: DEMO_LOGIN_PHONE,
-    expiresAt: Date.now() + AUTH_SESSION_DURATION_MS,
-  };
-  window.localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify(session));
-  notifyAuthChanged();
-  return session;
+async function readMe(): Promise<AuthSession | null> {
+  try {
+    const response = await fetch(apiUrl("auth/me/").toString(), { credentials: "same-origin" });
+    if (!response.ok) return null;
+    return await response.json() as AuthSession;
+  } catch {
+    return null;
+  }
 }
 
-export function logoutSession() {
-  window.localStorage.removeItem(AUTH_SESSION_KEY);
-  notifyAuthChanged();
+async function postAuth(path: string, payload?: object): Promise<AuthSession | null> {
+  const csrf = await csrfHeaders();
+  const response = await fetch(apiUrl(path).toString(), {
+    method: "POST",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json", ...csrf },
+    body: payload ? JSON.stringify(payload) : undefined,
+  });
+  const body = await response.json().catch(() => ({})) as AuthSession & { detail?: string };
+  if (!response.ok) throw new Error(body.detail || "ورود ناموفق بود.");
+  return body.authenticated ? body : null;
 }
 
 export function useAuth() {
-  const [session, setSession] = useState<StoredSession | null>(() => readSession());
+  const [session, setSession] = useState<AuthSession | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const refresh = () => setSession(readSession());
-    const timer = session
-      ? window.setTimeout(refresh, Math.min(Math.max(0, session.expiresAt - Date.now()), MAX_TIMEOUT_MS))
-      : undefined;
-    window.addEventListener(AUTH_CHANGED_EVENT, refresh);
-    window.addEventListener("storage", refresh);
-    return () => {
-      if (timer !== undefined) window.clearTimeout(timer);
-      window.removeEventListener(AUTH_CHANGED_EVENT, refresh);
-      window.removeEventListener("storage", refresh);
+    let mounted = true;
+    const refresh = () => {
+      void readMe().then((next) => {
+        if (!mounted) return;
+        setSession(next);
+        setLoading(false);
+      });
     };
-  }, [session]);
+    refresh();
+    window.addEventListener(AUTH_CHANGED_EVENT, refresh);
+    return () => {
+      mounted = false;
+      window.removeEventListener(AUTH_CHANGED_EVENT, refresh);
+    };
+  }, []);
 
   return {
     session,
+    loading,
     isAuthenticated: session !== null,
-    login: loginDemoSession,
-    logout: logoutSession,
+    async login(phone: string, code: string) {
+      const next = await postAuth("auth/login/", { phone: normalizeIranPhone(phone), code });
+      setSession(next);
+      setLoading(false);
+      notifyAuthChanged();
+      return next;
+    },
+    async logout() {
+      await postAuth("auth/logout/");
+      setSession(null);
+      notifyAuthChanged();
+    },
   };
 }

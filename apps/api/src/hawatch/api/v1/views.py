@@ -36,6 +36,7 @@ from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
 from hawatch.integrations.weather.ingest import snapshot_freshness
+from hawatch.modules.accounts.services import decorate_forecast_payload, resolve_forecast_access
 
 
 @api_view(["GET"])
@@ -161,7 +162,31 @@ def _resolve_date_period(request) -> tuple:
     default_date, default_period = default_forecast_selection(local)
     selected = parse_date(request.query_params.get("date"), default_date) if explicit_date else default_date
     period = parse_period(request.query_params.get("period")) if explicit_period else default_period
-    return selected, period
+    access = resolve_forecast_access(request, today=local.date())
+    # A clean public URL always resolves to the last date this viewer can read;
+    # it never writes a query variant merely to enforce the access policy.
+    if not explicit_date and selected > access.available_through:
+        selected = access.available_through
+    return selected, period, access
+
+
+def _forecast_access_denied(access, selected):
+    return Response(
+        {
+            "code": access.status_for(selected),
+            "detail": "برای دیدن پیش‌بینی این روز وارد شوید یا طرح خود را ارتقا دهید.",
+            "forecast_access": access.payload(),
+        },
+        status=403,
+        headers={"Cache-Control": "private, no-store", "Vary": "Cookie"},
+    )
+
+
+def _private_forecast(payload, access):
+    return Response(
+        decorate_forecast_payload(payload, access),
+        headers={"Cache-Control": "private, no-store", "Vary": "Cookie"},
+    )
 
 
 @api_view(["GET"])
@@ -183,26 +208,31 @@ def _resolve_start_minutes(request, selected_date, period, local):
 @api_view(["GET"])
 def route_forecast_view(request, slug: str):
     route = get_route(slug)
-    selected, period = _resolve_date_period(request)
+    selected, period, access = _resolve_date_period(request)
+    if access.status_for(selected) != "available":
+        return _forecast_access_denied(access, selected)
     local = now_tehran()
     speed = parse_speed(request.query_params.get("speed"))
     start = _resolve_start_minutes(request, selected, period, local)
-    return Response(
+    return _private_forecast(
         route_forecast(
             route,
             selected_date=selected,
             period=period,
             start_minutes=start,
             speed=speed,
-        )
+        ),
+        access,
     )
 
 
 @api_view(["GET"])
 def point_forecast_view(request, slug: str):
     weather_point = get_weather_point(slug)
-    selected, period = _resolve_date_period(request)
-    return Response(point_forecast(weather_point, selected_date=selected, period=period))
+    selected, period, access = _resolve_date_period(request)
+    if access.status_for(selected) != "available":
+        return _forecast_access_denied(access, selected)
+    return _private_forecast(point_forecast(weather_point, selected_date=selected, period=period), access)
 
 
 @api_view(["GET"])

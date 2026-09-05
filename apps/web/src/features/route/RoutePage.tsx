@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
@@ -28,7 +28,7 @@ import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } fro
 import { usePageTitle } from "../../lib/pageTitle";
 import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
 import { scrollToDetailHero } from "../../lib/detailEntryScroll";
-import type { PeriodId, RouteForecast, RoutePointView } from "../../types";
+import type { DayInfo, PeriodId, RouteForecast, RoutePointView } from "../../types";
 
 type RouteRequestInputs = {
   slug: string;
@@ -71,6 +71,8 @@ function timingEstimateBadgeLabel(point: RoutePointView) {
 
 export function RoutePage() {
   const { slug = "tochal-darband" } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState<RouteForecast | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
@@ -253,6 +255,18 @@ export function RoutePage() {
     update({ date: next, start_time: toClock(canonical) });
   }
 
+  function handleLockedDate(day: DayInfo) {
+    if (day.access !== "login_required") return;
+    const returnParams = new URLSearchParams(location.search);
+    returnParams.set("date", day.date);
+    returnParams.set("period", displayPeriod);
+    const returnTo = `${location.pathname}?${returnParams.toString()}`;
+    navigate(
+      { pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` },
+      { state: { backgroundLocation: location } },
+    );
+  }
+
   function handleSpeedChange(nextSpeed: string) {
     if (nextSpeed === displaySpeed) return;
     setDraftSpeed(nextSpeed);
@@ -333,6 +347,7 @@ export function RoutePage() {
                       days={data.days}
                       selected={selected}
                       onSelect={handleDateChange}
+                      onLocked={handleLockedDate}
                     />
                   </div>
                 </section>

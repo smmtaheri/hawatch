@@ -40,6 +40,7 @@ export function ForecastDayPeriodControls({
   periodStates,
   dayClassName = "",
   periodLabel = "بازهٔ نمایش هوا",
+  onLockedDate,
 }: {
   days: DayInfo[];
   selectedDate: string;
@@ -49,11 +50,12 @@ export function ForecastDayPeriodControls({
   periodStates?: Partial<Record<PeriodId, PeriodPhase>>;
   dayClassName?: string;
   periodLabel?: string;
+  onLockedDate?: (day: DayInfo) => void;
 }) {
   return (
     <div className="forecast-day-period-controls">
       <DayPickerHeading />
-      <DaySelector days={days} selected={selectedDate} onSelect={onSelectDate} className={dayClassName} />
+      <DaySelector days={days} selected={selectedDate} onSelect={onSelectDate} onLocked={onLockedDate} className={dayClassName} />
       <PeriodControlRow
         period={period}
         onChange={onSelectPeriod}
@@ -68,11 +70,13 @@ export function DaySelector({
   days,
   selected,
   onSelect,
+  onLocked,
   className = "",
 }: {
   days: DayInfo[];
   selected: string;
   onSelect: (date: string) => void;
+  onLocked?: (day: DayInfo) => void;
   className?: string;
 }) {
   return (
@@ -84,16 +88,19 @@ export function DaySelector({
             selected === day.date ? "selected" : "",
             day.is_yesterday && selected !== day.date ? "is-yesterday past-day" : "",
             day.is_past && !day.is_today && selected !== day.date ? "is-past past-day" : "",
+            day.access && day.access !== "available" ? "is-locked" : "",
           ]
             .filter(Boolean)
             .join(" ")}
           type="button"
           role="tab"
           aria-selected={selected === day.date}
-          onClick={() => onSelect(day.date)}
+          aria-label={day.access === "login_required" ? `${day.label}، نیازمند ورود` : day.access === "plan_required" ? `${day.label}، نیازمند طرح بالاتر` : undefined}
+          onClick={() => (day.access && day.access !== "available" ? onLocked?.(day) : onSelect(day.date))}
         >
           <strong>{day.label}</strong>
           <span>{day.jalali}</span>
+          {day.access && day.access !== "available" ? <i aria-hidden="true">قفل</i> : null}
         </button>
       ))}
     </div>

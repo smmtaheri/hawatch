@@ -517,6 +517,10 @@ html[data-theme="light"] .login-overlay-error {
 .logout-dialog-actions button { min-height: 44px; padding: 8px 18px; border-radius: 11px; cursor: pointer; font-weight: 600; }
 .logout-dialog-cancel { border: 1px solid var(--internal-border, #bee1dd52); }
 .logout-dialog-confirm { color: #07303d; background: linear-gradient(120deg, #61d9d2, #27bdb8); }
+.account-dialog-panel p strong { color: var(--internal-text, #f3fbfa); font-weight: 700; }
+.day-tabs button.is-locked { cursor: pointer; border-style: dashed; }
+.day-tabs button.is-locked i { display: block; margin-top: 1px; color: var(--internal-muted, #a8c1c0); font-size: 9px; font-style: normal; line-height: 1; }
+.day-tabs button.is-locked:not(.selected) strong { color: var(--internal-muted, #a8c1c0); }
 html[data-theme="light"] .logout-dialog-panel { color: #123441; background: linear-gradient(145deg, #fafffe, #ecf8f6); box-shadow: 0 24px 72px rgb(15 54 62 / 18%); }
 html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
 
@@ -2753,6 +2757,37 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 }
 
+/* Long Persian Point names (for example Sialan and Gahar) must keep their
+ * identity block inside the mobile hero.  This final rule intentionally wins
+ * over the legacy fixed 2rem title rule above and leaves desktop untouched. */
+@media (max-width: 720px) {
+  .point-page .point-hero {
+    height: clamp(154px, 42vw, 190px) !important;
+    min-height: 154px !important;
+  }
+
+  .point-page .point-heading {
+    top: 50% !important;
+    right: 16px !important;
+    left: 37% !important;
+    transform: translateY(-50%);
+  }
+
+  .point-page .point-heading h1 {
+    max-width: 100%;
+    font-size: clamp(1.35rem, 6.4vw, 1.9rem) !important;
+    line-height: 1.22 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .point-page .point-hero-meta-mobile {
+    margin-top: 5px !important;
+    font-size: clamp(0.58rem, 2.45vw, 0.72rem) !important;
+    line-height: 1.3 !important;
+  }
+}
+
 /* Desktop route discovery: show the database-ranked first four routes and
  * keep the remaining routes in a compact menu. Mobile has its own selector
  * and remains governed by the max-width rules above. */
@@ -3642,5 +3677,35 @@ bdi,
     font-size: var(--font-size-label) !important;
     font-weight: var(--weight-semibold);
     line-height: 1.25;
+  }
+}
+
+/* Final mobile guard for long Point identities; this block intentionally
+ * comes after all legacy mobile overrides. */
+@media (max-width: 720px) {
+  .point-page .point-hero {
+    height: clamp(154px, 42vw, 190px) !important;
+    min-height: 154px !important;
+  }
+
+  .point-page .point-heading {
+    top: 50% !important;
+    right: 16px !important;
+    left: 37% !important;
+    transform: translateY(-50%);
+  }
+
+  .point-page .point-heading h1 {
+    max-width: 100%;
+    font-size: clamp(1.35rem, 6.4vw, 1.9rem) !important;
+    line-height: 1.22 !important;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .point-page .point-hero-meta-mobile {
+    margin-top: 5px !important;
+    font-size: clamp(0.58rem, 2.45vw, 0.72rem) !important;
+    line-height: 1.3 !important;
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BackNavigation } from "../../components/BackNavigation";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
@@ -16,12 +16,14 @@ import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
 import { scrollToDetailHero } from "../../lib/detailEntryScroll";
-import type { PeriodId } from "../../types";
+import type { DayInfo, PeriodId } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
 
 function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const { slug = "" } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     data,
     status,
@@ -58,6 +60,18 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const pageClass =
     "point-page";
   const dayLabel = data?.days.find((day) => day.date === selected)?.label ?? "امروز";
+
+  function openAccess(day: DayInfo) {
+    if (day.access !== "login_required") return;
+    const returnParams = new URLSearchParams(location.search);
+    returnParams.set("date", day.date);
+    returnParams.set("period", displayPeriod);
+    const returnTo = `${location.pathname}?${returnParams.toString()}`;
+    navigate(
+      { pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` },
+      { state: { backgroundLocation: location } },
+    );
+  }
 
   return (
     <main className={pageClass} data-place-kind="point">
@@ -109,6 +123,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       period={displayPeriod}
                       onSelectPeriod={selectPeriod as (next: PeriodId) => void}
                       periodStates={periodStates}
+                      onLockedDate={openAccess}
                     />
                   </div>
                   <div className="point-forecast-output">

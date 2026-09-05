@@ -118,6 +118,18 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 - `selected_date` / `selected_period`
 - `valid_from` / `valid_to`
 
+## دسترسی روزها
+
+هر پاسخ موفق forecast علاوه بر `days[]` یک `forecast_access` دارد. هر روز `access` برابر
+`available`، `login_required` یا `plan_required` است. این داده فقط برای نمایش tab قفل‌شده
+است؛ مرجع قطعی backend است. درخواست مستقیم روز قفل‌شده با HTTP `403` و `code` متناظر
+پاسخ می‌گیرد و hourly، metrics و forecast مسیر را دریافت نمی‌کند.
+
+`visible_days_from_yesterday` قرارداد بدون ابهام تنظیم Admin است: `۰` یعنی فقط دیروز،
+`۱` تا امروز، `۲` تا فردا. `display_day_count` تعداد tabهای نمایش‌داده‌شده است و از پنجرهٔ
+دادهٔ provider بیشتر نمی‌شود. پاسخ‌های forecast به‌دلیل وابستگی به session با
+`Cache-Control: private, no-store` و `Vary: Cookie` ارسال می‌شوند.
+
 دادهٔ دمو به‌عنوان مشاهدهٔ واقعی معرفی نمی‌شود؛ `data_mode=demo` است.
 
 ## route planner

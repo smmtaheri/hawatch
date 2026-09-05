@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
 import { ThemeToggle } from "./ThemeToggle";
-import { LogoutDialog } from "../features/auth/LogoutDialog";
+import { AccountDialog } from "../features/auth/AccountDialog";
 import { useAuth } from "../features/auth/authSession";
 import { useState } from "react";
 
@@ -10,12 +10,12 @@ export function Header() {
   const location = useLocation();
   const { pathname } = location;
   const returnTo = `${location.pathname}${location.search}`;
-  const { isAuthenticated, logout } = useAuth();
-  const [logoutOpen, setLogoutOpen] = useState(false);
+  const { isAuthenticated, logout, session } = useAuth();
+  const [accountOpen, setAccountOpen] = useState(false);
 
   const confirmLogout = () => {
     logout();
-    setLogoutOpen(false);
+    setAccountOpen(false);
   };
 
   return (
@@ -33,13 +33,13 @@ export function Header() {
           </Link>
         ) : null}
         {pathname !== "/login" && isAuthenticated ? (
-          <button type="button" className="account-status signed-in" onClick={() => setLogoutOpen(true)}>
-            خروج
+          <button type="button" className="account-status signed-in" onClick={() => setAccountOpen(true)}>
+            حساب
           </button>
         ) : null}
         <ThemeToggle />
       </div>
-      {logoutOpen ? <LogoutDialog onCancel={() => setLogoutOpen(false)} onConfirm={confirmLogout} /> : null}
+      {accountOpen ? <AccountDialog planTitle={session?.plan?.title || "عضویت رایگان"} onClose={() => setAccountOpen(false)} onLogout={() => { void confirmLogout(); }} /> : null}
     </header>
   );
 }

@@ -184,12 +184,28 @@ function renderApplication(path: string) {
 }
 
 describe("Hawatch pages", () => {
+  let mockedAuthenticated = false;
   beforeEach(() => {
     window.localStorage.clear();
+    mockedAuthenticated = false;
     vi.stubGlobal(
       "fetch",
-      vi.fn((input: RequestInfo) => {
+      vi.fn((input: RequestInfo, init?: RequestInit) => {
         const url = String(input);
+        if (url.includes("/auth/me")) return mockedAuthenticated
+          ? jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } })
+          : jsonResponse({}, false, 403);
+        if (url.includes("/auth/csrf")) return jsonResponse({ csrf_token: "test-csrf" });
+        if (url.includes("/auth/logout")) {
+          mockedAuthenticated = false;
+          return jsonResponse({ authenticated: false });
+        }
+        if (url.includes("/auth/login")) {
+          const body = JSON.parse(String(init?.body || "{}")) as { phone?: string };
+          if (body.phone !== "989386759479") return jsonResponse({ detail: "این شماره اجازهٔ ورود ندارد." }, false, 400);
+          mockedAuthenticated = true;
+          return jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } });
+        }
         if (url.includes("/points/tochal/forecast")) return jsonResponse(pointForecast);
         if (url.includes("/routes/tochal-darband/forecast")) return jsonResponse(routeForecast);
         if (url.includes("/points/")) {
@@ -241,15 +257,16 @@ describe("Hawatch pages", () => {
     expect(phone).toBeInTheDocument();
     await user.type(phone, "989386759479");
     await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
-    const otp = await within(dialog).findByLabelText("کد ورود آزمایشی");
+    const otp = await within(dialog).findByLabelText("کد ورود");
     await user.type(otp, "1234");
     await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
-    expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "خروج" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument());
+    expect(screen.getByRole("button", { name: "حساب" })).toBeInTheDocument();
     expect(document.title).toBe("هواچ | هوای نقطه، برنامهٔ مسیر");
-    await user.click(screen.getByRole("button", { name: "خروج" }));
-    const logoutDialog = await screen.findByRole("dialog", { name: "خروج از حساب" });
-    await user.click(within(logoutDialog).getByRole("button", { name: "خروج" }));
+    await user.click(screen.getByRole("button", { name: "حساب" }));
+    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
+    expect(within(accountDialog).getByText("طرح فعلی:")).toBeInTheDocument();
+    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
     expect(screen.getByRole("link", { name: "ورود" })).toBeInTheDocument();
   });
 
@@ -257,10 +274,10 @@ describe("Hawatch pages", () => {
     renderAt("/login?returnTo=%2Fpoint%2Ftochal");
     expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(screen.getByText("کد چهاررقمی را وارد کنید.")).toBeInTheDocument();
+    expect(screen.getByLabelText("شمارهٔ موبایل")).toBeInTheDocument();
   });
 
-  it("rejects phone numbers outside the temporary allowlist", async () => {
+  it("keeps the server as the authority for the temporary allowlist", async () => {
     const user = userEvent.setup();
     renderApplication("/");
     await screen.findByText("توچال");
@@ -268,8 +285,10 @@ describe("Hawatch pages", () => {
     const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
     await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), "989121234567");
     await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
+    const otp = await within(dialog).findByLabelText("کد ورود");
+    await user.type(otp, "0000");
+    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
     expect(await within(dialog).findByRole("alert")).toHaveTextContent("اجازهٔ ورود");
-    expect(within(dialog).queryByLabelText("کد ورود آزمایشی")).not.toBeInTheDocument();
   });
 
   it("renders point and can open a route", async () => {

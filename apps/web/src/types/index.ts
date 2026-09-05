@@ -78,6 +78,15 @@ export interface DayInfo {
   is_past: boolean;
   is_future: boolean;
   is_current: boolean;
+  access?: "available" | "login_required" | "plan_required";
+}
+
+export interface ForecastAccess {
+  viewer: "anonymous" | "member";
+  plan_title: string | null;
+  display_day_count: number;
+  visible_days_from_yesterday: number;
+  available_through: string;
 }
 
 export interface HourlyReading {
@@ -189,6 +198,7 @@ export interface PlaceForecastResponse {
   related_routes_title?: string;
   empty: boolean;
   partial?: boolean;
+  forecast_access?: ForecastAccess;
   /** Temporary backend compatibility aliases — prefer `forecast.*`. */
   days?: DayInfo[];
   period?: PlannerPeriodInfo;
@@ -330,4 +340,5 @@ export interface RouteForecast {
   };
   empty: boolean;
   meta: ApiMeta;
+  forecast_access?: ForecastAccess;
 }

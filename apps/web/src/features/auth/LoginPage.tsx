@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePageTitle } from "../../lib/pageTitle";
-import { DEMO_LOGIN_OTP, isDemoPhone, useAuth } from "./authSession";
+import { useAuth } from "./authSession";
 
 type LoginSurfaceProps = {
   presentation: "dialog" | "page";
@@ -21,6 +21,7 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
   const returnTo = validReturnTo(new URLSearchParams(location.search).get("returnTo"));
   const isOverlay = presentation === "dialog";
   const { isAuthenticated, login } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
   const [step, setStep] = useState<"phone" | "otp">("phone");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
@@ -93,8 +94,8 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
           {step === "phone" ? (
             <form className="login-overlay-form" onSubmit={(event) => {
               event.preventDefault();
-              if (!isDemoPhone(phone)) {
-                setError("این شماره فعلاً اجازهٔ ورود به هواچ را ندارد.");
+              if (!phone.trim()) {
+                setError("شمارهٔ موبایل را وارد کنید.");
                 return;
               }
               setError("");
@@ -111,7 +112,7 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
                   dir="ltr"
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
-                  placeholder="938 675 9479"
+                  placeholder="شمارهٔ موبایل"
                   aria-describedby="login-error"
                 />
               </div>
@@ -120,16 +121,19 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
               </button>
             </form>
           ) : (
-            <form className="login-overlay-form" onSubmit={(event) => {
+            <form className="login-overlay-form" onSubmit={async (event) => {
               event.preventDefault();
-              if (otp.replace(/\D/g, "") !== DEMO_LOGIN_OTP) {
-                setError("کد ورود صحیح نیست.");
-                return;
+              setSubmitting(true);
+              try {
+                await login(phone, otp);
+                navigate(returnTo, { replace: true });
+              } catch (error) {
+                setError(error instanceof Error ? error.message : "ورود ناموفق بود.");
+              } finally {
+                setSubmitting(false);
               }
-              login();
-              navigate(returnTo, { replace: true });
             }}>
-              <label htmlFor="login-otp">کد ورود آزمایشی</label>
+              <label htmlFor="login-otp">کد ورود</label>
               <input
                 id="login-otp"
                 className="login-overlay-otp-input"
@@ -139,11 +143,11 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
                 dir="ltr"
                 value={otp}
                 onChange={(event) => setOtp(event.target.value)}
-                placeholder="۱۲۳۴"
+                placeholder=""
                 aria-describedby="login-error"
               />
-              <button className="login-overlay-submit" type="submit">
-                ورود به هواچ
+              <button className="login-overlay-submit" type="submit" disabled={submitting}>
+                {submitting ? "در حال ورود…" : "ورود به هواچ"}
               </button>
               <button type="button" className="login-overlay-back-step" onClick={() => { setError(""); setStep("phone"); }}>
                 تغییر شماره
@@ -151,9 +155,6 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
             </form>
           )}
 
-          <p className="login-overlay-unavailable" role="status">
-            کد چهاررقمی را وارد کنید.
-          </p>
           {error ? <p id="login-error" className="login-overlay-error" role="alert">{error}</p> : null}
         </div>
       </section>

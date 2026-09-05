@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "hawatch.modules.routes",
     "hawatch.modules.forecasts",
     "hawatch.modules.analytics",
+    "hawatch.modules.accounts",
     "hawatch.jobs",
 ]
 
@@ -102,7 +103,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
-    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.SessionAuthentication"],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "EXCEPTION_HANDLER": "hawatch.common.errors.api_exception_handler",
 }
@@ -116,6 +117,14 @@ CORS_ALLOWED_ORIGINS = [
     if item.strip()
 ]
 CORS_ALLOW_CREDENTIALS = False
+
+# Temporary allowlisted login is server-only. Never put its phone or code in
+# frontend source, fixtures, or default settings.
+DEMO_AUTH_ALLOWED_PHONE = os.environ.get("DEMO_AUTH_ALLOWED_PHONE", "")
+DEMO_AUTH_FIXED_OTP = os.environ.get("DEMO_AUTH_FIXED_OTP", "")
+AUTH_SESSION_AGE_SECONDS = int(os.environ.get("AUTH_SESSION_AGE_SECONDS", str(30 * 24 * 60 * 60)))
+SESSION_COOKIE_AGE = AUTH_SESSION_AGE_SECONDS
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 DEMO_DATA_ENABLED = env_bool("DEMO_DATA_ENABLED", True)
 DEMO_SEED_VERSION = env("DEMO_SEED_VERSION", "hawatch-demo-v1")
