@@ -36,13 +36,21 @@ export function Header() {
           </Link>
         ) : null}
         {pathname !== "/login" && isAuthenticated ? (
-          <button type="button" className="account-status signed-in" onClick={() => setAccountOpen(true)}>
-            حساب
-          </button>
+          <div className="account-menu-anchor">
+            <button
+              type="button"
+              className="account-status signed-in"
+              aria-expanded={accountOpen}
+              aria-controls="account-menu"
+              onClick={() => setAccountOpen(true)}
+            >
+              حساب
+            </button>
+            {accountOpen ? <AccountDialog planTitle={session?.plan?.title || "عضویت رایگان"} onClose={() => setAccountOpen(false)} onLogout={() => { void confirmLogout(); }} /> : null}
+          </div>
         ) : null}
         <ThemeToggle />
       </div>
-      {accountOpen ? <AccountDialog planTitle={session?.plan?.title || "عضویت رایگان"} onClose={() => setAccountOpen(false)} onLogout={() => { void confirmLogout(); }} /> : null}
     </header>
   );
 }

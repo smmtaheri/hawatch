@@ -518,6 +518,68 @@ html[data-theme="light"] .login-overlay-error {
 .logout-dialog-cancel { border: 1px solid var(--internal-border, #bee1dd52); }
 .logout-dialog-confirm { color: #07303d; background: linear-gradient(120deg, #61d9d2, #27bdb8); }
 .account-dialog-panel p strong { color: var(--internal-text, #f3fbfa); font-weight: 700; }
+
+/* The account action is an anchored menu, not a blocking modal. */
+.account-menu-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.account-menu-popover {
+  position: absolute;
+  z-index: 220;
+  top: calc(100% + 10px);
+  inset-inline-end: 0;
+  width: min(250px, calc(100vw - 28px));
+  padding: 16px;
+  border: 1px solid var(--internal-border, #bee1dd52);
+  border-radius: 16px;
+  color: var(--internal-text, #edf7f4);
+  background: linear-gradient(145deg, rgb(18 59 71 / 98%), rgb(8 34 46 / 98%));
+  box-shadow: 0 18px 42px rgb(0 0 0 / 34%);
+  direction: rtl;
+}
+
+.account-menu-popover:focus { outline: none; }
+.account-menu-popover h2 { margin: 0; font-size: 16px; line-height: 1.4; }
+.account-menu-popover p { margin: 7px 0 13px; color: var(--internal-muted, #a8c1c0); font-size: 12px; line-height: 1.5; }
+.account-menu-popover p strong { color: var(--internal-text, #f3fbfa); font-weight: 700; }
+.account-menu-actions { display: flex; }
+.account-menu-logout {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--internal-border, #bee1dd52);
+  border-radius: 10px;
+  color: #07303d;
+  background: linear-gradient(120deg, #61d9d2, #27bdb8);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .account-menu-popover {
+  color: #123441;
+  background: linear-gradient(145deg, #fafffe, #ecf8f6);
+  box-shadow: 0 18px 42px rgb(15 54 62 / 18%);
+}
+
+html[data-theme="light"] .account-menu-popover p { color: #687a80; }
+html[data-theme="light"] .account-menu-popover p strong { color: #123441; }
+
+@media (max-width: 720px) {
+  .account-menu-popover {
+    top: calc(100% + 8px);
+    width: min(230px, calc(100vw - 24px));
+    padding: 14px;
+  }
+
+  .account-menu-popover h2 { font-size: 14px; }
+  .account-menu-popover p { margin-block: 5px 11px; font-size: 11px; }
+  .account-menu-logout { min-height: 34px; font-size: 11px; }
+}
+
 .day-tabs button.is-locked { cursor: pointer; border-style: dashed; }
 .day-tabs button.is-locked i { display: block; margin-top: 1px; color: var(--internal-muted, #a8c1c0); font-size: 9px; font-style: normal; line-height: 1; }
 .day-tabs button.is-locked:not(.selected) strong { color: var(--internal-muted, #a8c1c0); }

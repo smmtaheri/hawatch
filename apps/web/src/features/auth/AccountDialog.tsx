@@ -8,20 +8,24 @@ export function AccountDialog({ planTitle, onClose, onLogout }: { planTitle: str
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
     };
+    const onPointerDown = (event: PointerEvent) => {
+      if (!panelRef.current?.contains(event.target as Node)) onClose();
+    };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
   }, [onClose]);
 
   return (
-    <div className="logout-dialog" role="presentation">
-      <button className="logout-dialog-backdrop" type="button" aria-label="بستن حساب" onClick={onClose} />
-      <section ref={panelRef} className="logout-dialog-panel account-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="account-dialog-title" tabIndex={-1}>
+    <section id="account-menu" ref={panelRef} className="account-menu-popover" role="dialog" aria-labelledby="account-dialog-title" tabIndex={-1}>
         <h2 id="account-dialog-title">حساب کاربری</h2>
         <p>طرح فعلی: <strong>{planTitle}</strong></p>
-        <div className="logout-dialog-actions">
-          <button type="button" className="logout-dialog-confirm" onClick={onLogout}>خروج از حساب</button>
+        <div className="account-menu-actions">
+          <button type="button" className="account-menu-logout" onClick={onLogout}>خروج از حساب</button>
         </div>
-      </section>
-    </div>
+    </section>
   );
 }
