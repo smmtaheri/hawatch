@@ -93,19 +93,21 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 <Breadcrumbs
                   items={[{ label: "نقاط", to: "/#search-results" }, { label: data.subject.name }]}
                 />
-                <h1>{data.subject.name}</h1>
-                <p className="point-hero-meta point-hero-meta-mobile">
-                  <span className="point-hero-context">
-                    {data.subject.context_label || data.subject.category || data.subject.region}
-                  </span>
-                  <span className="point-hero-elevation">
-                    {data.subject.elevation_label || "ارتفاع نامشخص"}
-                  </span>
-                </p>
-                <p className="point-hero-meta point-hero-meta-desktop">
-                  {data.subject.elevation_label ? `ارتفاع ${data.subject.elevation_label}` : "ارتفاع نامشخص"}
-                  {data.subject.region ? `　·　${data.subject.region}` : ""}
-                </p>
+                <div className="point-heading-identity">
+                  <h1>{data.subject.name}</h1>
+                  <p className="point-hero-meta point-hero-meta-mobile">
+                    <span className="point-hero-context">
+                      {data.subject.context_label || data.subject.category || data.subject.region}
+                    </span>
+                    <span className="point-hero-elevation">
+                      {data.subject.elevation_label || "ارتفاع نامشخص"}
+                    </span>
+                  </p>
+                  <p className="point-hero-meta point-hero-meta-desktop">
+                    {data.subject.elevation_label ? `ارتفاع ${data.subject.elevation_label}` : "ارتفاع نامشخص"}
+                    {data.subject.region ? `　·　${data.subject.region}` : ""}
+                  </p>
+                </div>
               </div>
               <div className="hero-status-stack">
                 <div className="status-pill now">{data.hero.status}</div>

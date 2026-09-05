@@ -3572,6 +3572,12 @@ bdi,
   display: none;
 }
 
+/* Keep the title and its metadata in one vertical identity block. This also
+ * protects the hero from the legacy generic `.point-heading` flex rule. */
+.point-page .point-heading-identity {
+  min-width: 0;
+}
+
 @media (max-width: 720px) {
   /* A point name can be substantially longer than a short summit name.
    * Keep the identity and elevation in their own predictable lines rather
@@ -3694,6 +3700,11 @@ bdi,
     left: 37% !important;
     display: block !important;
     transform: translateY(-50%);
+  }
+
+  .point-page .point-heading-identity {
+    display: block;
+    width: 100%;
   }
 
   .point-page .point-heading h1 {
