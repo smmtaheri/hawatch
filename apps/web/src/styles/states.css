@@ -3395,3 +3395,71 @@ bdi,
     font-size: var(--font-size-key-value);
   }
 }
+
+/* Desktop identity metadata and planner controls share the same visual
+ * contract. The mobile selectors intentionally retain their existing layout
+ * and typography below the 720px breakpoint. */
+.point-hero-meta-desktop {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  /* Preserve the existing mobile identity line; desktop gets a separate
+   * metadata treatment below. */
+  .point-page .point-hero-meta-mobile {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 721px) {
+  .point-page .point-hero-meta-mobile {
+    display: none;
+  }
+
+  .point-page .point-hero-meta-desktop {
+    display: block;
+    margin: 0;
+    color: var(--internal-muted, #a8c1c0);
+    font-family: var(--font-family);
+    font-size: var(--font-size-meta);
+    font-weight: var(--weight-medium);
+    line-height: 1.45;
+  }
+
+  /* Keep «نیمه‌شب» and the other period labels identical on Point and Route
+   * pages. This explicit shared rule wins over the legacy route planner
+   * selectors without touching the mobile controls. */
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle {
+    flex: 0 0 220px !important;
+    width: 220px !important;
+    gap: 4px !important;
+  }
+
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button {
+    min-width: 0 !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    padding: 4px 6px !important;
+    font-family: var(--font-family);
+    font-size: var(--font-size-label) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap;
+  }
+
+  .point-page .forecast-day-period-controls .point-period-row .daypart-toggle button strong,
+  .route-page .route-planner-day-period .route-period-row .daypart-toggle button strong {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    font-family: var(--font-family);
+    font-size: var(--font-size-label) !important;
+    font-weight: var(--weight-semibold);
+    line-height: 1.25;
+  }
+}

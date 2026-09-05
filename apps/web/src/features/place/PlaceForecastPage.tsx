@@ -80,9 +80,13 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   items={[{ label: "نقاط", to: "/#search-results" }, { label: data.subject.name }]}
                 />
                 <h1>{data.subject.name}</h1>
-                <p>
+                <p className="point-hero-meta point-hero-meta-mobile">
                   {data.subject.context_label || data.subject.category || data.subject.region}
                   {data.subject.elevation_label ? `　·　${data.subject.elevation_label}` : ""}
+                </p>
+                <p className="point-hero-meta point-hero-meta-desktop">
+                  {data.subject.elevation_label ? `ارتفاع ${data.subject.elevation_label}` : "ارتفاع نامشخص"}
+                  {data.subject.region ? `　·　${data.subject.region}` : ""}
                 </p>
               </div>
               <div className="hero-status-stack">
