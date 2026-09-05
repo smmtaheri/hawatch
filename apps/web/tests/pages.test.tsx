@@ -225,6 +225,8 @@ describe("Hawatch pages", () => {
     renderAt("/");
     expect(await screen.findByText("توچال")).toBeInTheDocument();
     expect(document.querySelectorAll("h1")).toHaveLength(1);
+    expect(screen.getAllByText("هوای مسیرت را ببین")).toHaveLength(1);
+    expect(screen.getByText("مقصدهای محبوب")).toBeInTheDocument();
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
   });
 

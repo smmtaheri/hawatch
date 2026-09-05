@@ -43,7 +43,7 @@
             {% if page.kind == "home" %}
               {% if page.popular_points %}
                 <section aria-labelledby="seo-popular-points">
-                  <h2 id="seo-popular-points">نقاط شاخص هواچ</h2>
+                  <h2 id="seo-popular-points">مقصدهای محبوب هواچ</h2>
                   <ul>
                     {% for point in page.popular_points %}
                       <li><a href="{{ point.href }}">{{ point.name }}</a></li>

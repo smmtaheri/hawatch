@@ -49,7 +49,7 @@
 | جزئیات | منبع | evidence |
 | --- | --- | --- |
 | ترتیب بخش‌ها | `LIVE-H` + `SCREENSHOT-SOURCE` | `docs/live-page-inspection/home.md` §۱: header، hero copy، search، heading، point grid |
-| متن‌ها، title، label و CTA | `LIVE-H` + `LIVE-BUNDLE` | همان سند §۲: title/description، «هوای مسیرت را ببین»، placeholder، «جست‌وجو»، «نقاطی محبوب/نتایج مرتبط» و empty copy |
+| متن‌ها، title، label و CTA | `LIVE-H` + `LIVE-BUNDLE` | همان سند §۲: title/description، «هوای مسیرت را ببین»، placeholder، «جست‌وجو»، «مقصدهای محبوب/نتایج مرتبط» و empty copy |
 | لینک‌ها و navigation | `LIVE-H` | §۳: brand `/`، Login `/login` و شش point href |
 | theme، input، search و tile behavior | `LIVE-H` + `LIVE-BUNDLE` | §۴: `hawatch-theme`، normalize فارسی، filter روی name/type، max شش result و submit بدون provider/API |
 | flow و back | `LIVE-H` + `PRODUCT` | §۵ و `docs/user-flows/home-to-point.md`؛ Home → Point و brand/back context |

@@ -67,7 +67,7 @@ export function HomePage() {
   }
 
   const showingSearch = Boolean(submittedQuery);
-  const heading = showingSearch ? "نتایج مرتبط" : "نقاط شاخص";
+  const heading = showingSearch ? "نتایج مرتبط" : "مقصدهای محبوب";
 
   return (
     <main className="home-page">
@@ -75,7 +75,6 @@ export function HomePage() {
         <section className="home-hero">
           <Header />
           <div className="hero-copy">
-            <p className="eyebrow">هوای مسیرت را ببین</p>
             <h1>هوای مسیرت را ببین</h1>
             <form
               className="search-box"
