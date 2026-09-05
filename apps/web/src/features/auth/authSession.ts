@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { apiUrl } from "../../api/client";
 import type { ForecastAccess } from "../../types";
 
@@ -35,7 +35,7 @@ export function normalizeIranPhone(value: string): string {
 
 async function csrfHeaders(): Promise<Record<string, string>> {
   try {
-    const response = await fetch(apiUrl("auth/csrf/").toString(), { credentials: "same-origin" });
+    const response = await fetch(apiUrl("auth/csrf/").toString(), { credentials: "same-origin", cache: "no-store" });
     const payload = await response.json() as { csrf_token?: string };
     return payload.csrf_token ? { "X-CSRFToken": payload.csrf_token } : {};
   } catch {
@@ -45,7 +45,7 @@ async function csrfHeaders(): Promise<Record<string, string>> {
 
 async function readMe(): Promise<AuthSession | null> {
   try {
-    const response = await fetch(apiUrl("auth/me/").toString(), { credentials: "same-origin" });
+    const response = await fetch(apiUrl("auth/me/").toString(), { credentials: "same-origin", cache: "no-store" });
     if (!response.ok) return null;
     const payload = await response.json() as Partial<AuthSession>;
     // Some proxies normalize an unauthenticated response to HTTP 200. The
@@ -61,6 +61,7 @@ async function postAuth(path: string, payload?: object): Promise<AuthSession | n
   const response = await fetch(apiUrl(path).toString(), {
     method: "POST",
     credentials: "same-origin",
+    cache: "no-store",
     headers: { "Content-Type": "application/json", ...csrf },
     body: payload ? JSON.stringify(payload) : undefined,
   });
@@ -72,12 +73,14 @@ async function postAuth(path: string, payload?: object): Promise<AuthSession | n
 export function useAuth() {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [loading, setLoading] = useState(true);
+  const requestVersionRef = useRef(0);
 
   useEffect(() => {
     let mounted = true;
     const refresh = () => {
+      const requestVersion = ++requestVersionRef.current;
       void readMe().then((next) => {
-        if (!mounted) return;
+        if (!mounted || requestVersion !== requestVersionRef.current) return;
         setSession(next);
         setLoading(false);
       });
@@ -95,6 +98,7 @@ export function useAuth() {
     loading,
     isAuthenticated: session !== null,
     async login(phone: string, code: string) {
+      ++requestVersionRef.current;
       const next = await postAuth("auth/login/", { phone: normalizeIranPhone(phone), code });
       setSession(next);
       setLoading(false);
@@ -102,9 +106,17 @@ export function useAuth() {
       return next;
     },
     async logout() {
-      await postAuth("auth/logout/");
-      setSession(null);
-      notifyAuthChanged();
+      ++requestVersionRef.current;
+      try {
+        await postAuth("auth/logout/");
+      } finally {
+        // Clear the local view even if the network request fails. The next
+        // auth refresh is explicitly no-store and will reconcile with server
+        // state instead of leaving a stale account button on screen.
+        setSession(null);
+        setLoading(false);
+        notifyAuthChanged();
+      }
     },
   };
 }

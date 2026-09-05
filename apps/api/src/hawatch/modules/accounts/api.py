@@ -3,6 +3,7 @@ from __future__ import annotations
 from django.conf import settings
 from django.contrib.auth import get_user_model, login, logout
 from django.middleware.csrf import get_token
+from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import NotAuthenticated, ValidationError
@@ -40,12 +41,14 @@ def _account_payload(request) -> dict:
     }
 
 
+@never_cache
 @ensure_csrf_cookie
 @api_view(["GET"])
 def csrf(request):
     return Response({"csrf_token": get_token(request)})
 
 
+@never_cache
 @csrf_protect
 @api_view(["POST"])
 def demo_login(request):
@@ -66,6 +69,7 @@ def demo_login(request):
     return Response(_account_payload(request))
 
 
+@never_cache
 @csrf_protect
 @api_view(["POST"])
 def session_logout(request):
@@ -73,6 +77,7 @@ def session_logout(request):
     return Response({"authenticated": False})
 
 
+@never_cache
 @api_view(["GET"])
 def me(request):
     return Response(_account_payload(request))

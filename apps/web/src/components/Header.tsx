@@ -13,9 +13,12 @@ export function Header() {
   const { isAuthenticated, logout, session } = useAuth();
   const [accountOpen, setAccountOpen] = useState(false);
 
-  const confirmLogout = () => {
-    logout();
-    setAccountOpen(false);
+  const confirmLogout = async () => {
+    try {
+      await logout();
+    } finally {
+      setAccountOpen(false);
+    }
   };
 
   return (
