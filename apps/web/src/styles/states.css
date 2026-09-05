@@ -3396,6 +3396,60 @@ bdi,
   }
 }
 
+/* Match the mobile Route day picker to the established Point day picker.
+ * This is intentionally scoped to the route page and mobile breakpoint only. */
+@media (max-width: 720px) {
+  .route-page .route-planner {
+    padding: 16px 14px !important;
+  }
+
+  .route-page .route-planner-day-period .forecast-day-heading .planner-label {
+    color: var(--internal-text, #edf7f4) !important;
+    font-family: var(--font-family);
+    font-size: var(--font-size-control) !important;
+    font-weight: var(--weight-semibold) !important;
+    line-height: 1.35 !important;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs {
+    display: flex !important;
+    gap: 8px !important;
+    margin: 14px 0 !important;
+    padding: 0 0 4px !important;
+    overflow-x: auto !important;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs button {
+    flex: 0 0 84px !important;
+    width: 84px !important;
+    min-width: 84px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    max-width: 84px !important;
+    padding: 6px 4px !important;
+    border-radius: 12px !important;
+    font-family: var(--font-family);
+    font-size: var(--font-size-control) !important;
+    font-weight: var(--weight-semibold) !important;
+    line-height: 1.35 !important;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs button strong {
+    color: inherit;
+    font-family: var(--font-family);
+    font-size: var(--font-size-control) !important;
+    font-weight: var(--weight-semibold) !important;
+    line-height: 1.35 !important;
+  }
+
+  .route-page .route-planner .planner-day .day-tabs button span {
+    color: inherit;
+    font-family: var(--font-family);
+    font-size: var(--font-size-label) !important;
+    line-height: 1.35 !important;
+  }
+}
+
 /* Desktop identity metadata and planner controls share the same visual
  * contract. The mobile selectors intentionally retain their existing layout
  * and typography below the 720px breakpoint. */
