@@ -10,7 +10,7 @@
 | 4 | تطبیق manifest با فایل واقعی | PASS | نام، ابعاد و hash ثبت‌شده در `design/manifest.json` |
 | 5 | نبود duplicate/missing/misnamed ناخواسته | PASS | source و organized pairهای عمدی‌اند؛ Point screenshot مستقل ندارد |
 | 6 | خواندن DOCX و تطبیق design system | PASS | `references/Hawatch.docx` و `design/tokens/visual-tokens.json` |
-| 7 | مستندات صفحات فعلی | PASS | Home، Point، Route، Point و Login route-backed؛ OTP به‌عنوان مرحلهٔ بعد |
+| 7 | مستندات صفحات فعلی | PASS | Home، Point، Route و Login route-backed؛ ورود فعلاً با flow آزمایشی محدود مستند است |
 | 8 | layout، متن، interaction، navigation و state | PASS | `design/pages/*` و `docs/page-specs/*` |
 | 9 | light/dark و mobile/desktop | PASS | screenshotهای ۱۶گانه، tokens و page specs؛ Point به‌عنوان extension مستند شده |
 | 10 | Home → Point → Route و back | PASS | `docs/user-flows/*` و context بازگشت Point در React Router state |

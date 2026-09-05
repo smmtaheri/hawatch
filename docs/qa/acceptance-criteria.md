@@ -1,6 +1,6 @@
 # معیارهای پذیرش نسخهٔ فعلی هواچ
 
-این سند معیار پذیرش repository اجرایی فعلی است، نه handoff اولیهٔ placeholder. منبع مقدارهای بصری فقط `design/tokens/visual-tokens.json` است؛ Login یک UI route-backed دارد اما OTP واقعی هنوز فعال نیست.
+این سند معیار پذیرش repository اجرایی فعلی است، نه handoff اولیهٔ placeholder. منبع مقدارهای بصری فقط `design/tokens/visual-tokens.json` است؛ Login یک UI route-backed دارد و فعلاً flow آزمایشی محدود اجرا می‌شود، اما OTP واقعی هنوز فعال نیست.
 
 ## repository و اجرای محلی
 
@@ -65,4 +65,4 @@
 - [ ] README، AGENTS، design pages، page specs، API contract، architecture، ADRها و user flowها با implementation فعلی تناقض ندارند.
 - [ ] `docs/open-questions.md` موارد تصمیم‌نشده و source unavailable را صریح ثبت می‌کند.
 - [ ] تست frontend، تست backend، type-check و `git diff --check` اجرا و نتیجهٔ واقعی ثبت می‌شوند.
-- [ ] OTP واقعی، provider واقعی، Kafka، Kubernetes و share server-side فقط به‌عنوان خارج از scope/مسیر توسعه ثبت شده‌اند، نه قابلیت آمادهٔ فعلی. UI ورود و navigation overlay آماده است.
+- [ ] OTP واقعی، provider واقعی، Kafka، Kubernetes و share server-side فقط به‌عنوان خارج از scope/مسیر توسعه ثبت شده‌اند؛ UI ورود، session آزمایشی و navigation overlay آماده است.

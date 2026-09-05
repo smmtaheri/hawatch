@@ -7,7 +7,7 @@ Home /
 ├── Points /points/{pointSlug}
 │   └── WeatherPoint با پروفایل و forecast خودش؛ مسیرهای مرتبط
 ├── Route /routes/{routeSlug}
-├── Login /login?returnTo=... (route-backed overlay؛ OTP هنوز غیرفعال)
+├── Login /login?returnTo=... (route-backed overlay؛ ورود آزمایشی شمارهٔ مجاز و کد ثابت)
 └── Share /share (آینده)
 ```
 

@@ -100,9 +100,9 @@
 | --- | --- | --- |
 | وجود asset و metadata | `SCREENSHOT-SOURCE` + manifest | `hawatch_05` تا `hawatch_08` و مسیرهای `design/screens/login/{light,dark}/{mobile,web}.png` |
 | layout، component، text و interaction contract | `PRODUCT` + screenshot + design docs | `design/pages/login.md` و `docs/page-specs/login-behavior.md`؛ Login route-backed overlay پیاده شده است |
-| stateها | `PRODUCT` + design docs | شماره input واقعی است، CTA OTP تا آماده‌شدن API disabled است و علت آن اعلام می‌شود |
+| stateها | `PRODUCT` + design docs | ورود آزمایشی دو مرحله‌ای با شمارهٔ مجاز و کد ثابت؛ خطای شماره/کد و انقضای session پوشش داده می‌شود |
 | responsive و light/dark | screenshot + page doc | چهار تصویر Login canonical به‌علاوهٔ دو reference flow در `design/screens/login/reference/` |
-| live Login | `LOCAL-IMPLEMENTATION` | mobile تمام‌صفحه، desktop dialog و direct `/login?returnTo=…` صفحهٔ کامل است؛ OTP/backend هنوز فعال نیست |
+| live Login | `LOCAL-IMPLEMENTATION` | mobile تمام‌صفحه، desktop dialog و direct `/login?returnTo=…` صفحهٔ کامل است؛ OTP واقعی/backend هنوز فعال نیست و flow آزمایشی frontend فعال است |
 
 ## API، معماری و مرزبندی implementation
 

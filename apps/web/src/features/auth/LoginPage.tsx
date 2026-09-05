@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePageTitle } from "../../lib/pageTitle";
+import { DEMO_LOGIN_OTP, DEMO_LOGIN_PHONE, isDemoPhone, useAuth } from "./authSession";
 
 type LoginSurfaceProps = {
   presentation: "dialog" | "page";
@@ -19,6 +20,15 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
   const panelRef = useRef<HTMLElement>(null);
   const returnTo = validReturnTo(new URLSearchParams(location.search).get("returnTo"));
   const isOverlay = presentation === "dialog";
+  const { isAuthenticated, login } = useAuth();
+  const [step, setStep] = useState<"phone" | "otp">("phone");
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (isAuthenticated) navigate(returnTo, { replace: true });
+  }, [isAuthenticated, navigate, returnTo]);
 
   useEffect(() => () => {
     document.title = previousTitle.current;
@@ -74,34 +84,77 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
           <h1 id="login-title">ورود به هواچ</h1>
           <p className="login-overlay-lede">برای ذخیرهٔ مسیرها و ادامهٔ برنامه‌ریزی، شمارهٔ موبایلت را وارد کن.</p>
 
-          <div className="login-overlay-step" aria-label="مرحلهٔ ۱ از ۲">
-            <span className="is-active" aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span>مرحلهٔ ۱ از ۲</span>
+          <div className="login-overlay-step" aria-label={`مرحلهٔ ${step === "phone" ? "۱" : "۲"} از ۲`}>
+            <span className={step === "phone" ? "is-active" : "is-complete"} aria-hidden="true" />
+            <span className={step === "otp" ? "is-active" : ""} aria-hidden="true" />
+            <span>مرحلهٔ {step === "phone" ? "۱" : "۲"} از ۲</span>
           </div>
 
-          <form className="login-overlay-form" onSubmit={(event) => event.preventDefault()}>
-            <label htmlFor="login-phone">شمارهٔ موبایل</label>
-            <div className="login-overlay-phone-field">
-              <span dir="ltr" aria-hidden="true">+98</span>
+          {step === "phone" ? (
+            <form className="login-overlay-form" onSubmit={(event) => {
+              event.preventDefault();
+              if (!isDemoPhone(phone)) {
+                setError("این شماره فعلاً اجازهٔ ورود به هواچ را ندارد.");
+                return;
+              }
+              setError("");
+              setStep("otp");
+            }}>
+              <label htmlFor="login-phone">شمارهٔ موبایل</label>
+              <div className="login-overlay-phone-field">
+                <span dir="ltr" aria-hidden="true">+98</span>
+                <input
+                  id="login-phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  dir="ltr"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  placeholder="938 675 9479"
+                  aria-describedby="login-error"
+                />
+              </div>
+              <button className="login-overlay-submit" type="submit">
+                ادامه
+              </button>
+            </form>
+          ) : (
+            <form className="login-overlay-form" onSubmit={(event) => {
+              event.preventDefault();
+              if (otp.replace(/\D/g, "") !== DEMO_LOGIN_OTP) {
+                setError("کد ورود صحیح نیست.");
+                return;
+              }
+              login();
+              navigate(returnTo, { replace: true });
+            }}>
+              <label htmlFor="login-otp">کد ورود آزمایشی</label>
               <input
-                id="login-phone"
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
+                id="login-otp"
+                className="login-overlay-otp-input"
+                type="text"
+                inputMode="numeric"
+                autoComplete="one-time-code"
                 dir="ltr"
-                placeholder="0912 123 4567"
-                aria-describedby="login-unavailable"
+                value={otp}
+                onChange={(event) => setOtp(event.target.value)}
+                placeholder="۱۲۳۴"
+                aria-describedby="login-error login-demo-code"
               />
-            </div>
-            <button className="login-overlay-submit" type="submit" disabled>
-              دریافت کد ورود
-            </button>
-          </form>
+              <button className="login-overlay-submit" type="submit">
+                ورود به هواچ
+              </button>
+              <button type="button" className="login-overlay-back-step" onClick={() => { setError(""); setStep("phone"); }}>
+                تغییر شماره
+              </button>
+            </form>
+          )}
 
-          <p id="login-unavailable" className="login-overlay-unavailable" role="status">
-            ورود پیامکی هنوز فعال نشده است.
+          <p id="login-demo-code" className="login-overlay-unavailable" role="status">
+            شمارهٔ آزمایشی: <b dir="ltr">+{DEMO_LOGIN_PHONE}</b> · کد: <b dir="ltr">{DEMO_LOGIN_OTP}</b>
           </p>
+          {error ? <p id="login-error" className="login-overlay-error" role="alert">{error}</p> : null}
         </div>
       </section>
     </div>

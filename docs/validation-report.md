@@ -4,7 +4,7 @@
 
 ## نتیجهٔ فعلی
 
-repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Point، Route، API داخلی Django/DRF، catalog/search و Compose سبک است. مدل عمومی فقط WeatherPoint و Route/RoutePoint است و پروفایل قدیمی Destination با migration بازنشسته می‌شود. Login به‌صورت UI route-backed (overlay در ورود عادی و صفحهٔ کامل در URL مستقیم) وجود دارد؛ OTP واقعی همچنان خارج از milestone فعلی است.
+repository از handoff اولیه عبور کرده و اکنون یک monorepo اجرایی برای pilot است. پیاده‌سازی شامل Home، Point، Route، API داخلی Django/DRF، catalog/search و Compose سبک است. مدل عمومی فقط WeatherPoint و Route/RoutePoint است و پروفایل قدیمی Destination با migration بازنشسته می‌شود. Login به‌صورت UI route-backed (overlay در ورود عادی و صفحهٔ کامل در URL مستقیم) وجود دارد؛ ورود آزمایشی frontend با شماره و کد ثابت فعال است و OTP واقعی هنوز برای مرحلهٔ بعد است.
 
 ## منابع
 
@@ -32,7 +32,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 - هر WeatherPoint در `/points/{slug}` و هر Route در `/routes/{slug}` صفحهٔ canonical دارد.
 - لینک Route → Point تمیز است و `date`، `period`، `start_time` و `speed` در `location.state.fromRoute` برای back context حفظ می‌شوند.
 - RTL، Estedad، light/dark، period toggle چهارگانه و سه کارت دوساعته در هر بازه مستند و در source فعلی پشتیبانی می‌شوند.
-- Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است، ولی CTA ارسال OTP تا آماده‌شدن backend غیرفعال می‌ماند.
+- Login از هر صفحه با `returnTo` باز می‌شود؛ mobile تمام‌صفحه و desktop dialog است. flow آزمایشی فقط شمارهٔ `+989386759479` و کد `۱۲۳۴` را می‌پذیرد و session آن ۳۰ روزه است.
 
 ### Backend و داده
 
@@ -65,7 +65,7 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ## محدودیت‌ها و ابهام‌ها
 
-1. OTP، session و API ورود پیاده نشده‌اند؛ UI ورود فقط این وضعیت را شفاف نشان می‌دهد.
+1. OTP واقعی و API ورود پیاده نشده‌اند؛ flow فعلی فقط برای تست UI و session یک‌ماهه است.
 2. Point screenshot مستقل ندارد؛ تطبیق آن pixel-perfect ادعا نمی‌شود.
 3. دادهٔ forecast در demo mode واقعی نیست؛ provider واقعی باید صریحاً ingest شود.
 4. source قدیمی `/workspace/sites/hawatch-weather` و بعضی reference pathهای `/workspace/scratch` در محیط فعلی قابل‌خواندن نیستند و در `docs/open-questions.md` ثبت شده‌اند.

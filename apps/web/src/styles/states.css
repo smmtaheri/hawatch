@@ -371,6 +371,10 @@ html[data-theme="light"] .login-overlay-logo--light {
   box-shadow: 0 0 0 4px rgb(97 197 192 / 15%);
 }
 
+.login-overlay-step > span.is-complete {
+  background: var(--internal-teal, #61c5c0);
+}
+
 .login-overlay-form {
   display: grid;
   gap: 10px;
@@ -439,6 +443,82 @@ html[data-theme="light"] .login-overlay-form label {
   font-size: 13px;
   line-height: 1.7;
 }
+
+.login-overlay-otp-input {
+  width: 100%;
+  min-height: 62px;
+  border: 1px solid var(--internal-teal, #61c5c0);
+  border-radius: 14px;
+  padding: 14px 16px;
+  outline: none;
+  color: inherit;
+  background: rgb(2 20 29 / 24%);
+  font-size: 24px;
+  letter-spacing: .18em;
+  text-align: center;
+}
+
+html[data-theme="light"] .login-overlay-otp-input {
+  background: #fff;
+}
+
+.login-overlay-back-step {
+  color: var(--internal-muted, #a8c1c0);
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.login-overlay-error {
+  margin-top: 12px;
+  color: #ffb5a8;
+  font-size: 13px;
+}
+
+html[data-theme="light"] .login-overlay-error {
+  color: #b74e41;
+}
+
+.logout-dialog {
+  position: fixed;
+  z-index: 210;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  direction: rtl;
+}
+
+.logout-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: rgb(3 17 24 / 64%);
+  backdrop-filter: blur(8px);
+}
+
+.logout-dialog-panel {
+  position: relative;
+  width: min(100%, 390px);
+  border: 1px solid var(--internal-border, #bee1dd52);
+  border-radius: 20px;
+  padding: 28px;
+  color: var(--internal-text, #edf7f4);
+  background: linear-gradient(145deg, rgb(18 59 71 / 98%), rgb(8 34 46 / 98%));
+  box-shadow: 0 24px 72px rgb(0 0 0 / 42%);
+}
+
+.logout-dialog-panel:focus { outline: none; }
+.logout-dialog-panel h2 { margin: 0; font-size: 24px; }
+.logout-dialog-panel p { margin: 10px 0 22px; color: var(--internal-muted, #a8c1c0); font-size: 14px; }
+.logout-dialog-actions { display: flex; gap: 10px; justify-content: flex-start; }
+.logout-dialog-actions button { min-height: 44px; padding: 8px 18px; border-radius: 11px; cursor: pointer; font-weight: 600; }
+.logout-dialog-cancel { border: 1px solid var(--internal-border, #bee1dd52); }
+.logout-dialog-confirm { color: #07303d; background: linear-gradient(120deg, #61d9d2, #27bdb8); }
+html[data-theme="light"] .logout-dialog-panel { color: #123441; background: linear-gradient(145deg, #fafffe, #ecf8f6); box-shadow: 0 24px 72px rgb(15 54 62 / 18%); }
+html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
 
 html[data-theme="light"] .login-overlay-phone-field {
   background: #fff;

@@ -28,4 +28,4 @@
 - [ ] Home: search input و button overlap ندارند.
 - [ ] Point mobile: dayها قبل از controls، routeها دو ستونه و عنوان «مسیرها» است.
 - [ ] Route mobile: controls هم‌ارتفاع، ساعت و سرعت هم‌ردیف، خط عمودی حذف و period مشترک است.
-- [ ] Login به‌عنوان reference باقی مانده و implementation ندارد.
+- [ ] Login در هر دو theme و اندازهٔ صفحه با flow آزمایشی دو مرحله‌ای، خطاهای شماره/کد و popup خروج بررسی شود.

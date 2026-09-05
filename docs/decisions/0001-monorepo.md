@@ -9,7 +9,7 @@
 
 ## تصمیم
 
-یک repository با نام `hawatch` و ساختار monorepo استفاده می‌کنیم. design، docs، `apps/web`، `apps/api`، `infra` و `scripts` کنار هم version می‌شوند. در وضعیت فعلی، `apps/web` و `apps/api` implementation قابل‌اجرا دارند و Login همچنان فقط reference طراحی است.
+یک repository با نام `hawatch` و ساختار monorepo استفاده می‌کنیم. design، docs، `apps/web`، `apps/api`، `infra` و `scripts` کنار هم version می‌شوند. در وضعیت فعلی، `apps/web` و `apps/api` implementation قابل‌اجرا دارند و Login به‌صورت route-backed با flow آزمایشی محدود در وب فعال است.
 
 ## پیامدها
 

@@ -35,4 +35,4 @@ render می‌کند؛ جزئیات در [`../seo.md`](../seo.md) است. entry�
 
 Home از search index داخلی، پیشنهادهای همهٔ نقاط را با debounce و keyboard navigation مصرف می‌کند. کلیک روی point به URL تمیز `/points/{pointSlug}` می‌رود و context بازگشت Route فقط در React Router state نگه داشته می‌شود.
 
-Login پیاده نشده است.
+Login به‌صورت route-backed پیاده شده است؛ در وضعیت فعلی یک flow آزمایشی محدود frontend با شمارهٔ مجاز، کد ثابت و session یک‌ماهه دارد. OTP واقعی و احراز هویت backend هنوز باید جداگانه طراحی شوند.

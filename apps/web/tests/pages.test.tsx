@@ -185,6 +185,7 @@ function renderApplication(path: string) {
 
 describe("Hawatch pages", () => {
   beforeEach(() => {
+    window.localStorage.clear();
     vi.stubGlobal(
       "fetch",
       vi.fn((input: RequestInfo) => {
@@ -236,20 +237,39 @@ describe("Hawatch pages", () => {
     await screen.findByText("توچال");
     await user.click(screen.getByRole("link", { name: "ورود" }));
     const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
-    expect(within(dialog).getByLabelText("شمارهٔ موبایل")).toBeInTheDocument();
-    expect(within(dialog).getByRole("button", { name: "دریافت کد ورود" })).toBeDisabled();
-    expect(within(dialog).getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
-    expect(document.title).toBe("هوای ورود | هواچ");
-    await user.click(within(dialog).getByRole("button", { name: "بستن ورود" }));
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    const phone = within(dialog).getByLabelText("شمارهٔ موبایل");
+    expect(phone).toBeInTheDocument();
+    await user.type(phone, "989386759479");
+    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
+    const otp = await within(dialog).findByLabelText("کد ورود آزمایشی");
+    await user.type(otp, "1234");
+    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
+    expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "خروج" })).toBeInTheDocument();
     expect(document.title).toBe("هواچ | هوای نقطه، برنامهٔ مسیر");
+    await user.click(screen.getByRole("button", { name: "خروج" }));
+    const logoutDialog = await screen.findByRole("dialog", { name: "خروج از حساب" });
+    await user.click(within(logoutDialog).getByRole("button", { name: "خروج" }));
+    expect(screen.getByRole("link", { name: "ورود" })).toBeInTheDocument();
   });
 
   it("renders a full login surface for a direct login URL", async () => {
     renderAt("/login?returnTo=%2Fpoint%2Ftochal");
     expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(screen.getByText("ورود پیامکی هنوز فعال نشده است.")).toBeInTheDocument();
+    expect(screen.getByText(/شمارهٔ آزمایشی/)).toBeInTheDocument();
+  });
+
+  it("rejects phone numbers outside the temporary allowlist", async () => {
+    const user = userEvent.setup();
+    renderApplication("/");
+    await screen.findByText("توچال");
+    await user.click(screen.getByRole("link", { name: "ورود" }));
+    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
+    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), "989121234567");
+    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
+    expect(await within(dialog).findByRole("alert")).toHaveTextContent("اجازهٔ ورود");
+    expect(within(dialog).queryByLabelText("کد ورود آزمایشی")).not.toBeInTheDocument();
   });
 
   it("renders point and can open a route", async () => {
