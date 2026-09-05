@@ -3468,6 +3468,10 @@ bdi,
 }
 
 @media (min-width: 721px) {
+  .point-page .point-heading {
+    display: block;
+  }
+
   .point-page .point-hero-meta-mobile {
     display: none;
   }
