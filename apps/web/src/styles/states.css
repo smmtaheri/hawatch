@@ -2722,16 +2722,21 @@ html:not([data-theme="light"]) .search-result-row:hover {
 /* Desktop keeps the route header compact while preserving a separate lane for
  * Back above the route identity. */
 @media (min-width: 721px) {
+  /* Keep the point identity hero as tight as its content: the title block
+   * and status stack are centered so their top and bottom breathing room is
+   * equal instead of leaving an oversized empty lower half. */
   .point-page .point-hero {
-    height: 220px !important;
+    height: 160px !important;
   }
 
   .point-page .point-heading {
-    top: 48px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .point-page .hero-status-stack {
-    top: 40px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   /* Keep point and route planning controls identical on desktop: the
@@ -3010,11 +3015,11 @@ html:not([data-theme="light"]) .search-result-row:hover {
 }
 
 /* Long Persian Point names (for example Sialan and Gahar) must keep their
- * identity block inside the mobile hero.  This final rule intentionally wins
- * over the legacy fixed 2rem title rule above and leaves desktop untouched. */
+ * identity block inside the mobile hero. This rule wins over the legacy
+ * fixed title rule above while keeping the compact hero height. */
 @media (max-width: 720px) {
   .point-page .point-hero {
-    height: clamp(154px, 42vw, 190px) !important;
+    height: clamp(154px, 36vw, 160px) !important;
     min-height: 154px !important;
   }
 
@@ -3942,7 +3947,7 @@ bdi,
  * comes after all legacy mobile overrides. */
 @media (max-width: 720px) {
   .point-page .point-hero {
-    height: clamp(154px, 42vw, 190px) !important;
+    height: clamp(154px, 36vw, 160px) !important;
     min-height: 154px !important;
   }
 
