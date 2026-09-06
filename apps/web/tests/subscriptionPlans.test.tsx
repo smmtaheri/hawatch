@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useLocation } from "react-router-dom";
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
 import { AppRoutes } from "../src/app/App";
@@ -8,6 +8,11 @@ import { DaySelector } from "../src/components/DaySelector";
 
 function jsonResponse(data: unknown, ok = true, status = 200) {
   return Promise.resolve({ ok, status, json: async () => data });
+}
+
+function LocationProbe() {
+  const location = useLocation();
+  return <output data-testid="location">{location.pathname}{location.search}</output>;
 }
 
 describe("subscription plans", () => {
@@ -47,6 +52,19 @@ describe("subscription plans", () => {
     expect(cards.querySelector(".subscription-plan-card.paid")).toBeTruthy();
     await user.click(screen.getByRole("button", { name: "ورود برای خرید" }));
     await waitFor(() => expect(screen.getByRole("dialog", { name: "ورود به هواچ" })).toBeInTheDocument());
+  });
+
+  it("uses the clean plans URL even when an older continuation query is opened", async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={["/account/plans?returnTo=%2Fpoints%2Fdamavand%3Fdate%3D2026-09-12"]}>
+          <AppRoutes />
+          <LocationProbe />
+        </MemoryRouter>
+      </ThemeProvider>,
+    );
+
+    await waitFor(() => expect(screen.getByTestId("location")).toHaveTextContent(/^\/account\/plans$/));
   });
 
   it("keeps locked-day actions accessible while rendering an icon-only lock", async () => {

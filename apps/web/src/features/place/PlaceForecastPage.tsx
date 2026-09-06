@@ -62,14 +62,14 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const dayLabel = data?.days.find((day) => day.date === selected)?.label ?? "امروز";
 
   function openAccess(day: DayInfo) {
+    if (day.access === "plan_required") {
+      navigate("/account/plans");
+      return;
+    }
     const returnParams = new URLSearchParams(location.search);
     returnParams.set("date", day.date);
     returnParams.set("period", displayPeriod);
     const returnTo = `${location.pathname}?${returnParams.toString()}`;
-    if (day.access === "plan_required") {
-      navigate({ pathname: "/account/plans", search: `?${new URLSearchParams({ returnTo }).toString()}` });
-      return;
-    }
     if (day.access !== "login_required") return;
     navigate(
       { pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` },

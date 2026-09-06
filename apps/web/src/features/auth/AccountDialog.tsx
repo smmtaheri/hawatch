@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function AccountDialog({
   planTitle,
@@ -13,7 +13,6 @@ export function AccountDialog({
   onLogout: () => void;
 }) {
   const panelRef = useRef<HTMLElement>(null);
-  const location = useLocation();
 
   useEffect(() => {
     panelRef.current?.focus();
@@ -39,7 +38,7 @@ export function AccountDialog({
           {planTier !== "paid" ? (
             <Link
               className="account-menu-plans"
-              to={{ pathname: "/account/plans", search: `?${new URLSearchParams({ returnTo: `${location.pathname}${location.search}` }).toString()}` }}
+              to="/account/plans"
               onClick={onClose}
             >
               خرید اشتراک
