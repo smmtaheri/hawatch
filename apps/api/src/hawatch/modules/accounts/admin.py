@@ -28,7 +28,7 @@ class ForecastAccessPolicyAdmin(SuperuserOnlyAdmin):
 
 @admin.register(ForecastPlan)
 class ForecastPlanAdmin(SuperuserOnlyAdmin):
-    list_display = ("title", "code", "tier", "visible_days_from_yesterday", "is_active", "sort_order")
+    list_display = ("title", "code", "tier", "duration_months", "visible_days_from_yesterday", "is_active", "sort_order")
     list_editable = ("visible_days_from_yesterday", "is_active", "sort_order")
     search_fields = ("title", "code")
 

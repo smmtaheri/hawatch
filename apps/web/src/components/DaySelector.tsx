@@ -95,12 +95,17 @@ export function DaySelector({
           type="button"
           role="tab"
           aria-selected={selected === day.date}
-          aria-label={day.access === "login_required" ? `${day.label}، نیازمند ورود` : day.access === "plan_required" ? `${day.label}، نیازمند طرح بالاتر` : undefined}
+          aria-label={day.access === "login_required" ? `${day.label}، ورود` : day.access === "plan_required" ? `${day.label}، خرید اشتراک` : undefined}
           onClick={() => (day.access && day.access !== "available" ? onLocked?.(day) : onSelect(day.date))}
         >
           <strong>{day.label}</strong>
           <span>{day.jalali}</span>
-          {day.access && day.access !== "available" ? <i aria-hidden="true">قفل</i> : null}
+          {day.access && day.access !== "available" ? (
+            <i className="day-lock-action" aria-hidden="true">
+              <span className="day-lock-symbol">⌑</span>
+              <span>{day.access === "login_required" ? "ورود" : "خرید اشتراک"}</span>
+            </i>
+          ) : null}
         </button>
       ))}
     </div>

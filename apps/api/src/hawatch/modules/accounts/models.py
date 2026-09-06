@@ -18,6 +18,8 @@ class ForecastPlan(models.Model):
     tier = models.CharField(max_length=12, choices=Tier.choices, default=Tier.FREE)
     # 0 = only yesterday, 1 = through today, 2 = through tomorrow, …
     visible_days_from_yesterday = models.PositiveSmallIntegerField(default=1)
+    # Operators can adjust the plan policy in Admin without a deploy.
+    duration_months = models.PositiveSmallIntegerField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     sort_order = models.PositiveSmallIntegerField(default=0)
 
@@ -29,6 +31,8 @@ class ForecastPlan(models.Model):
     def clean(self):
         if self.visible_days_from_yesterday > FORECAST_DAY_COUNT - 1:
             raise ValidationError({"visible_days_from_yesterday": "از سقف روزهای قابل‌نمایش بیشتر است."})
+        if self.tier == self.Tier.PAID and self.duration_months != 3:
+            raise ValidationError({"duration_months": "طرح حرفه‌ای فعلاً فقط باید سه‌ماهه باشد."})
 
     def __str__(self) -> str:
         return self.title

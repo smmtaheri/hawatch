@@ -1,7 +1,19 @@
 import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-export function AccountDialog({ planTitle, onClose, onLogout }: { planTitle: string; onClose: () => void; onLogout: () => void }) {
+export function AccountDialog({
+  planTitle,
+  planTier,
+  onClose,
+  onLogout,
+}: {
+  planTitle: string;
+  planTier?: "free" | "paid" | string;
+  onClose: () => void;
+  onLogout: () => void;
+}) {
   const panelRef = useRef<HTMLElement>(null);
+  const location = useLocation();
 
   useEffect(() => {
     panelRef.current?.focus();
@@ -24,6 +36,15 @@ export function AccountDialog({ planTitle, onClose, onLogout }: { planTitle: str
         <h2 id="account-dialog-title">حساب کاربری</h2>
         <p>طرح فعلی: <strong>{planTitle}</strong></p>
         <div className="account-menu-actions">
+          {planTier !== "paid" ? (
+            <Link
+              className="account-menu-plans"
+              to={{ pathname: "/account/plans", search: `?${new URLSearchParams({ returnTo: `${location.pathname}${location.search}` }).toString()}` }}
+              onClick={onClose}
+            >
+              خرید اشتراک
+            </Link>
+          ) : null}
           <button type="button" className="account-menu-logout" onClick={onLogout}>خروج از حساب</button>
         </div>
     </section>

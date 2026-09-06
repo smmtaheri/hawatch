@@ -68,3 +68,17 @@ def test_allowlisted_login_is_a_server_session_and_exposes_free_plan(settings):
     assert client.get("/api/v1/auth/me/").status_code == 200
     assert client.post("/api/v1/auth/logout/", {}, format="json").status_code == 200
     assert client.get("/api/v1/auth/me/").status_code == 403
+
+
+@pytest.mark.django_db
+def test_plans_endpoint_exposes_runtime_config_without_account_data(seeded):
+    client = APIClient()
+    response = client.get("/api/v1/auth/plans/")
+
+    assert response.status_code == 200
+    assert response["Cache-Control"].startswith("no-store")
+    body = response.json()
+    assert {plan["tier"] for plan in body["plans"]} >= {"free", "paid"}
+    professional = next(plan for plan in body["plans"] if plan["code"] == "professional")
+    assert professional["duration_months"] == 3
+    assert "accounts" not in body

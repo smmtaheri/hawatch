@@ -20,6 +20,7 @@ urlpatterns = [
     path("auth/login/", account_api.demo_login),
     path("auth/logout/", account_api.session_logout),
     path("auth/me/", account_api.me),
+    path("auth/plans/", account_api.plans),
     path("seo/robots.txt", views.robots_txt),
     path("seo/sitemap.xml", views.sitemap_xml),
 ]

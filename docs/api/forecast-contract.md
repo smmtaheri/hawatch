@@ -215,3 +215,11 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 - فیلد `updated_label` برای نمایش عمومی deprecated است؛ timestamp خام ISO نباید در UI رندر شود.
 - Route نباید period weather را به‌عنوان پیش‌بینی رسیدن نشان دهد وقتی timing pending است.
 - همهٔ `/points/*`ها یک قالب Point Forecast دارند؛ baseline بصری screenshotهای Point است.
+
+## طرح‌های اشتراک
+
+`GET /api/v1/auth/plans/` فهرست طرح‌های فعال را برای صفحهٔ `/account/plans` برمی‌گرداند.
+فقط عنوان، tier، مدت ماه و سقف روز در این پاسخ است؛ هیچ آمار یا اطلاعات حسابی ارائه نمی‌شود
+و پاسخ `Cache-Control: no-store` دارد تا تغییرات Django Admin بدون deploy یا restart اعمال شوند.
+طرح پولی فعلی `professional` سه‌ماهه (`duration_months=3`) است؛ پرداخت و درگاه در milestone
+بعدی اضافه می‌شود.

@@ -46,7 +46,14 @@ export function Header() {
             >
               حساب
             </button>
-            {accountOpen ? <AccountDialog planTitle={session?.plan?.title || "عضویت رایگان"} onClose={() => setAccountOpen(false)} onLogout={() => { void confirmLogout(); }} /> : null}
+            {accountOpen ? (
+              <AccountDialog
+                planTitle={session?.plan?.title || "عضویت رایگان"}
+                planTier={session?.plan?.tier}
+                onClose={() => setAccountOpen(false)}
+                onLogout={() => { void confirmLogout(); }}
+              />
+            ) : null}
           </div>
         ) : null}
         <ThemeToggle />

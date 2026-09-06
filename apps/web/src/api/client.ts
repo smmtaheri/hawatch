@@ -6,6 +6,7 @@ import type {
   RouteForecast,
   RouteSummary,
   SearchSuggestion,
+  ForecastPlanSummary,
 } from "../types";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
@@ -102,6 +103,12 @@ export const api = {
       };
     });
   },
+  plans: () =>
+    getJson<{
+      plans: ForecastPlanSummary[];
+      display_day_count: number;
+      anonymous_visible_days_from_yesterday: number;
+    }>("auth/plans/"),
 };
 
 export { API_BASE };

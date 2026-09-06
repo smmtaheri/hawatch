@@ -6,6 +6,7 @@ import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
+import { SubscriptionPlansPage } from "../pages/SubscriptionPlansPage";
 
 export function App() {
   return (
@@ -44,6 +45,7 @@ export function AppRoutes() {
       <Routes location={backgroundLocation ?? location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/account/plans" element={<SubscriptionPlansPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />

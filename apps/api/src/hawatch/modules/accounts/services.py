@@ -27,9 +27,12 @@ class ForecastAccess:
     def status_for(self, selected: date) -> str:
         if selected <= self.available_through:
             return "available"
-        if self.is_authenticated:
-            return "plan_required"
-        return "login_required" if selected <= self.member_available_through else "plan_required"
+        # A guest always gets the login CTA first. Once authenticated, the
+        # same date is evaluated against the member's plan and can become a
+        # subscription CTA. This keeps the flow unambiguous for visitors.
+        if not self.is_authenticated:
+            return "login_required"
+        return "plan_required"
 
     def payload(self) -> dict:
         return {

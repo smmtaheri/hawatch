@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 from rest_framework.exceptions import NotAuthenticated, ValidationError
 from rest_framework.response import Response
 
-from .models import AccountProfile
+from .models import AccountProfile, ForecastPlan
 from .services import active_policy, effective_plan, resolve_forecast_access
 
 
@@ -36,9 +36,40 @@ def _account_payload(request) -> dict:
     access = resolve_forecast_access(request)
     return {
         "authenticated": True,
-        "plan": {"code": plan.code, "title": plan.title, "tier": plan.tier} if plan else None,
+        "plan": {
+            "code": plan.code,
+            "title": plan.title,
+            "tier": plan.tier,
+            "duration_months": plan.duration_months,
+        } if plan else None,
         "forecast_access": access.payload(),
     }
+
+
+@never_cache
+@api_view(["GET"])
+def plans(request):
+    """Return operator-configured cards; never expose account or payment data."""
+    policy = active_policy()
+    rows = ForecastPlan.objects.filter(is_active=True).order_by("sort_order", "id")
+    return Response(
+        {
+            "plans": [
+                {
+                    "code": plan.code,
+                    "title": plan.title,
+                    "tier": plan.tier,
+                    "duration_months": plan.duration_months,
+                    "visible_days_from_yesterday": plan.visible_days_from_yesterday,
+                    "is_default": plan.id == policy.default_authenticated_plan_id,
+                }
+                for plan in rows
+            ],
+            "display_day_count": policy.display_day_count,
+            "anonymous_visible_days_from_yesterday": policy.anonymous_visible_days_from_yesterday,
+        },
+        headers={"Cache-Control": "no-store"},
+    )
 
 
 @never_cache

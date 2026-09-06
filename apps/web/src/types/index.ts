@@ -89,6 +89,15 @@ export interface ForecastAccess {
   available_through: string;
 }
 
+export interface ForecastPlanSummary {
+  code: string;
+  title: string;
+  tier: "free" | "paid" | string;
+  duration_months: number | null;
+  visible_days_from_yesterday: number;
+  is_default?: boolean;
+}
+
 export interface HourlyReading {
   time: string;
   forecast_at?: string;

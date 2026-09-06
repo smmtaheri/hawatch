@@ -4,7 +4,7 @@ import type { ForecastAccess } from "../../types";
 
 export type AuthSession = {
   authenticated: true;
-  plan: { code: string; title: string; tier: "free" | "paid" } | null;
+  plan: { code: string; title: string; tier: "free" | "paid"; duration_months?: number | null } | null;
   forecast_access: ForecastAccess;
 };
 
