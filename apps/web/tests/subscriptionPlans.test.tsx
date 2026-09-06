@@ -69,6 +69,7 @@ describe("subscription plans", () => {
     expect(onLocked).toHaveBeenCalledWith(expect.objectContaining({ access: "login_required" }));
     expect(document.querySelectorAll(".day-lock-badge")).toHaveLength(2);
     expect(document.querySelectorAll(".day-lock-badge .day-lock-symbol")).toHaveLength(2);
+    expect(document.querySelectorAll(".day-tab-label > .day-lock-badge")).toHaveLength(2);
     expect(screen.queryByText("ورود")).not.toBeInTheDocument();
     expect(screen.queryByText("خرید اشتراک")).not.toBeInTheDocument();
   });

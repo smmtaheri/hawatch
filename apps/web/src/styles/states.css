@@ -4045,22 +4045,39 @@ bdi,
   }
 }
 
-/* Final mobile enforcement for the compact forecast-access affordance. The
- * route card uses the same 12px rhythm as hero → day picker, while a locked
- * day remains an icon-only gold lock in its physical upper-left corner. */
+/* Final mobile enforcement for the compact forecast-access affordance.
+ * Point layout itself is a grid on mobile, so its established gap remains
+ * the single source of vertical rhythm. A margin on the route card would add
+ * to that grid gap and recreate the empty band between forecast and next
+ * decision. */
 @media (max-width: 720px) {
   .point-page .mobile-route-selection {
-    margin: 12px 0 0 !important;
+    grid-area: decision;
+    margin: 0 !important;
+  }
+
+  /* Keep the lock in a reserved first column instead of absolutely placing
+   * it over a centered Persian day label. The icon stays compact and on the
+   * physical upper-left edge at every mobile width. */
+  .day-tabs button.is-locked .day-tab-label {
+    display: grid;
+    grid-template-columns: 12px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 3px;
+    width: 100%;
+    min-width: 0;
+    direction: ltr;
   }
 
   .day-tabs button.is-locked .day-lock-badge {
-    top: 6px !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: 6px !important;
-    width: 14px;
-    height: 16px;
+    position: static !important;
+    grid-column: 1;
+    align-self: start;
+    justify-self: start;
+    width: 12px;
+    height: 14px;
     font-size: 0;
+    filter: drop-shadow(0 1px 1px rgb(4 24 32 / 36%));
   }
 
   .day-tabs button.is-locked .day-lock-symbol {
@@ -4068,8 +4085,17 @@ bdi,
     height: 14px;
   }
 
-  .day-tabs button.is-locked > strong {
-    /* Reserve the physical left edge for the lock in RTL day cards. */
-    padding-left: 14px;
+  .day-tabs button.is-locked .day-tab-label > strong {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    text-align: center;
+  }
+
+  .day-tabs button.is-locked .day-tab-date {
+    width: 100%;
+    text-align: center;
   }
 }
