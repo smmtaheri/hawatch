@@ -101,10 +101,13 @@ export function DaySelector({
           <strong>{day.label}</strong>
           <span>{day.jalali}</span>
           {day.access && day.access !== "available" ? (
-            <i className="day-lock-action" aria-hidden="true">
-              <span className="day-lock-symbol">⌑</span>
+            <span className="day-lock-badge" aria-hidden="true">
+              <svg className="day-lock-symbol" viewBox="0 0 16 18" focusable="false">
+                <rect x="2" y="7" width="12" height="9" rx="2" />
+                <path d="M5 7V5a3 3 0 0 1 6 0v2" />
+              </svg>
               <span>{day.access === "login_required" ? "ورود" : "خرید اشتراک"}</span>
-            </i>
+            </span>
           ) : null}
         </button>
       ))}
