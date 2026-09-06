@@ -4020,3 +4020,20 @@ bdi,
     transform: none !important;
   }
 }
+
+/* Final mobile enforcement for the compact forecast-access affordance. The
+ * route card uses the same 12px rhythm as hero → day picker, while a locked
+ * day remains an icon-only gold lock in its physical upper-left corner. */
+@media (max-width: 720px) {
+  .point-page .mobile-route-selection {
+    margin: 12px 0 0 !important;
+  }
+
+  .day-tabs button.is-locked .day-lock-badge {
+    top: 5px !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 6px !important;
+    font-size: 0;
+  }
+}
