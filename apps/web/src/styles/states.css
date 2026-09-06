@@ -2146,7 +2146,9 @@ html:not([data-theme="light"]) .search-result-row:hover {
 @media (width <= 720px) {
   .mobile-route-selection {
     display: block;
-    margin-top: 16px;
+    /* Keep the related-routes card as close to the weather card as the
+     * point hero is to the day selector. */
+    margin-top: 12px;
     padding: 16px;
     border: 1px solid var(--internal-border, #bee1dd2e);
     border-radius: 18px;
