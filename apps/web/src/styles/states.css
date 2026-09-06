@@ -592,33 +592,55 @@ html[data-theme="light"] .account-menu-popover p strong { color: #123441; }
   .account-menu-logout { min-height: 34px; font-size: 11px; }
 }
 
-.day-tabs button.is-locked { cursor: pointer; border-style: dashed; position: relative; }
+.day-tabs button.is-locked {
+  position: relative;
+  cursor: pointer;
+  border-color: color-mix(in srgb, var(--internal-amber, #f0bd61) 68%, var(--internal-border, #bee1dd2e));
+  border-style: dashed;
+}
+
 .day-lock-badge {
   position: absolute;
-  z-index: 1;
-  top: 6px;
-  inset-inline-start: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  color: var(--internal-amber, #f0bd61);
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
+  z-index: 2;
+  top: 5px;
+  right: auto;
+  left: 6px;
+  display: grid;
+  width: 19px;
+  height: 21px;
+  place-items: center;
+  color: #f1bb4e;
+  filter: drop-shadow(0 1px 2px rgb(4 24 32 / 42%));
   pointer-events: none;
 }
+
 .day-lock-badge .day-lock-symbol {
   display: block;
-  width: 12px;
-  height: 14px;
+  width: 18px;
+  height: 20px;
+  overflow: visible;
+}
+
+.day-lock-symbol .day-lock-shackle {
   fill: none;
-  stroke: currentColor;
+  stroke: #ffdf8c;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.5;
+  stroke-width: 2.1;
 }
-.day-tabs button.is-locked > strong { margin-top: 5px; }
+
+.day-lock-symbol .day-lock-body {
+  fill: #efb849;
+  stroke: #ffd982;
+  stroke-linejoin: round;
+  stroke-width: 1;
+}
+
+.day-lock-symbol .day-lock-keyhole {
+  fill: #123541;
+}
+
+.day-tabs button.is-locked > strong { margin-top: 0; }
 .day-tabs button.is-locked:not(.selected) strong { color: var(--internal-muted, #a8c1c0); }
 html[data-theme="light"] .logout-dialog-panel { color: #123441; background: linear-gradient(145deg, #fafffe, #ecf8f6); box-shadow: 0 24px 72px rgb(15 54 62 / 18%); }
 html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }

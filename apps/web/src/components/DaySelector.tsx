@@ -102,11 +102,11 @@ export function DaySelector({
           <span>{day.jalali}</span>
           {day.access && day.access !== "available" ? (
             <span className="day-lock-badge" aria-hidden="true">
-              <svg className="day-lock-symbol" viewBox="0 0 16 18" focusable="false">
-                <rect x="2" y="7" width="12" height="9" rx="2" />
-                <path d="M5 7V5a3 3 0 0 1 6 0v2" />
+              <svg className="day-lock-symbol" viewBox="0 0 20 22" focusable="false">
+                <path className="day-lock-shackle" d="M5.75 9.25V6.5a4.25 4.25 0 0 1 8.5 0v2.75" />
+                <path className="day-lock-body" d="M4 9.25h12v8.5A2.25 2.25 0 0 1 13.75 20h-7.5A2.25 2.25 0 0 1 4 17.75v-8.5Z" />
+                <path className="day-lock-keyhole" d="M10 12a1.55 1.55 0 0 0-.95 2.78L8.6 16.7h2.8l-.45-1.92A1.55 1.55 0 0 0 10 12Z" />
               </svg>
-              <span>{day.access === "login_required" ? "ورود" : "خرید اشتراک"}</span>
             </span>
           ) : null}
         </button>

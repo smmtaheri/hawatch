@@ -49,7 +49,7 @@ describe("subscription plans", () => {
     await waitFor(() => expect(screen.getByRole("dialog", { name: "ورود به هواچ" })).toBeInTheDocument());
   });
 
-  it("labels the two server-side lock actions clearly", async () => {
+  it("keeps locked-day actions accessible while rendering an icon-only lock", async () => {
     const onLocked = vi.fn();
     render(
       <DaySelector
@@ -62,9 +62,14 @@ describe("subscription plans", () => {
         onLocked={onLocked}
       />,
     );
-    await userEvent.setup().click(screen.getByRole("tab", { name: "فردا، خرید اشتراک" }));
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("tab", { name: "فردا، خرید اشتراک" }));
     expect(onLocked).toHaveBeenCalledWith(expect.objectContaining({ access: "plan_required" }));
-    expect(screen.getByText("ورود")).toBeInTheDocument();
-    expect(screen.getByText("خرید اشتراک")).toBeInTheDocument();
+    await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
+    expect(onLocked).toHaveBeenCalledWith(expect.objectContaining({ access: "login_required" }));
+    expect(document.querySelectorAll(".day-lock-badge")).toHaveLength(2);
+    expect(document.querySelectorAll(".day-lock-badge .day-lock-symbol")).toHaveLength(2);
+    expect(screen.queryByText("ورود")).not.toBeInTheDocument();
+    expect(screen.queryByText("خرید اشتراک")).not.toBeInTheDocument();
   });
 });
