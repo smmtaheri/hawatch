@@ -4030,10 +4030,22 @@ bdi,
   }
 
   .day-tabs button.is-locked .day-lock-badge {
-    top: 5px !important;
+    top: 6px !important;
     right: auto !important;
     bottom: auto !important;
     left: 6px !important;
+    width: 14px;
+    height: 16px;
     font-size: 0;
+  }
+
+  .day-tabs button.is-locked .day-lock-symbol {
+    width: 12px;
+    height: 14px;
+  }
+
+  .day-tabs button.is-locked > strong {
+    /* Reserve the physical left edge for the lock in RTL day cards. */
+    padding-left: 14px;
   }
 }
