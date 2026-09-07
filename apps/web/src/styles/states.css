@@ -4124,24 +4124,13 @@ bdi,
     margin: 0 !important;
   }
 
-  /* Keep the lock in a reserved first column instead of absolutely placing
-   * it over a centered Persian day label. The icon stays compact and on the
-   * physical upper-left edge at every mobile width. */
-  .day-tabs button.is-locked .day-tab-label {
-    display: grid;
-    grid-template-columns: 12px minmax(0, 1fr);
-    align-items: start;
-    column-gap: 3px;
-    width: 100%;
-    min-width: 0;
-    direction: ltr;
-  }
-
+  /* This stays out of normal layout: the weekday/date baseline must be
+   * identical for locked and available days. */
   .day-tabs button.is-locked .day-lock-badge {
-    position: static !important;
-    grid-column: 1;
-    align-self: start;
-    justify-self: start;
+    position: absolute !important;
+    top: 4px;
+    right: auto;
+    left: 5px;
     width: 12px;
     height: 14px;
     font-size: 0;
@@ -4151,19 +4140,5 @@ bdi,
   .day-tabs button.is-locked .day-lock-symbol {
     width: 12px;
     height: 14px;
-  }
-
-  .day-tabs button.is-locked .day-tab-label > strong {
-    grid-column: 2;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    direction: rtl;
-    text-align: center;
-  }
-
-  .day-tabs button.is-locked .day-tab-date {
-    width: 100%;
-    text-align: center;
   }
 }

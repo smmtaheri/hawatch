@@ -102,6 +102,22 @@ const pointForecast = {
   },
 };
 
+function pointForecastForAccess(authenticated: boolean) {
+  const selectedDate = authenticated ? "2026-08-26" : "2026-08-25";
+  const days = pointForecast.days.map((day) => (
+    day.date === "2026-08-26"
+      ? { ...day, access: authenticated ? "available" : "login_required" }
+      : { ...day, access: "available" }
+  ));
+  const meta = { ...pointForecast.meta, selected_date: selectedDate };
+  return {
+    ...pointForecast,
+    days,
+    meta,
+    forecast: { ...pointForecast.forecast, days, meta },
+  };
+}
+
 const routeForecast = {
   route: {
     slug: "tochal-darband",
@@ -149,6 +165,20 @@ const routeForecast = {
   empty: false,
   meta: pointForecast.meta,
 };
+
+function routeForecastForAccess(authenticated: boolean) {
+  const selectedDate = authenticated ? "2026-08-26" : "2026-08-25";
+  const days = routeForecast.days.map((day) => (
+    day.date === "2026-08-26"
+      ? { ...day, access: authenticated ? "available" : "login_required" }
+      : { ...day, access: "available" }
+  ));
+  return {
+    ...routeForecast,
+    days,
+    meta: { ...routeForecast.meta, selected_date: selectedDate },
+  };
+}
 
 function jsonResponse(data: unknown, ok = true, status = 200) {
   return Promise.resolve({
@@ -207,8 +237,14 @@ describe("Hawatch pages", () => {
           mockedAuthenticated = true;
           return jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } });
         }
-        if (url.includes("/points/tochal/forecast")) return jsonResponse(pointForecast);
-        if (url.includes("/routes/tochal-darband/forecast")) return jsonResponse(routeForecast);
+        if (url.includes("/points/tochal/forecast")) return jsonResponse(pointForecastForAccess(mockedAuthenticated));
+        if (url.includes("/routes/tochal-darband/forecast")) {
+          const requestedDate = new URL(url).searchParams.get("date");
+          if (!mockedAuthenticated && requestedDate === "2026-08-26") {
+            return jsonResponse({ code: "login_required" }, false, 403);
+          }
+          return jsonResponse(routeForecastForAccess(mockedAuthenticated));
+        }
         if (url.includes("/points/")) {
           return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
@@ -271,6 +307,46 @@ describe("Hawatch pages", () => {
     expect(within(accountDialog).getByText("طرح فعلی:")).toBeInTheDocument();
     await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
     expect(screen.getByRole("link", { name: "ورود" })).toBeInTheDocument();
+  });
+
+  it("refreshes forecast access after login and logout without a page reload", async () => {
+    const user = userEvent.setup();
+    renderApplication("/points/tochal");
+    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(1);
+
+    await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
+    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
+    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), allowedTestPhone);
+    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
+    await user.type(await within(dialog).findByLabelText("کد ورود"), "1234");
+    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
+
+    await waitFor(() => expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(0));
+    await user.click(screen.getByRole("button", { name: "حساب" }));
+    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
+    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
+    await waitFor(() => expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(1));
+  });
+
+  it("returns a route to its readable day after logout and restores its locks", async () => {
+    const user = userEvent.setup();
+    renderApplication("/routes/tochal-darband");
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(1);
+
+    await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
+    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
+    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), allowedTestPhone);
+    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
+    await user.type(await within(dialog).findByLabelText("کد ورود"), "1234");
+    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
+
+    await waitFor(() => expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(0));
+    await user.click(screen.getByRole("button", { name: "حساب" }));
+    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
+    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
+    await waitFor(() => expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(1));
   });
 
   it("renders a full login surface for a direct login URL", async () => {

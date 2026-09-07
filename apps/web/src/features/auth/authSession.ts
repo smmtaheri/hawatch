@@ -33,6 +33,24 @@ export function normalizeIranPhone(value: string): string {
   return digits;
 }
 
+/**
+ * A forecast response contains access flags that are evaluated by Django for
+ * the current session. Keep a small shared revision for consumers of those
+ * responses so a completed login or logout re-reads the flags immediately,
+ * rather than waiting for a browser refresh.
+ */
+export function useAuthChangeVersion() {
+  const [version, setVersion] = useState(0);
+
+  useEffect(() => {
+    const bumpVersion = () => setVersion((current) => current + 1);
+    window.addEventListener(AUTH_CHANGED_EVENT, bumpVersion);
+    return () => window.removeEventListener(AUTH_CHANGED_EVENT, bumpVersion);
+  }, []);
+
+  return version;
+}
+
 async function csrfHeaders(): Promise<Record<string, string>> {
   try {
     const response = await fetch(apiUrl("auth/csrf/").toString(), { credentials: "same-origin", cache: "no-store" });

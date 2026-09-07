@@ -28,6 +28,7 @@ import { classifyAllPeriods, gaugeCurrentMinutes, resolveRouteStartMinutes } fro
 import { usePageTitle } from "../../lib/pageTitle";
 import { buildRouteBackState, buildRoutePointLink } from "../../lib/routeNavigation";
 import { scrollToDetailHero } from "../../lib/detailEntryScroll";
+import { useAuthChangeVersion } from "../auth/authSession";
 import type { DayInfo, PeriodId, RouteForecast, RoutePointView } from "../../types";
 
 type RouteRequestInputs = {
@@ -78,6 +79,7 @@ export function RoutePage() {
   const [status, setStatus] = useState<"loading" | "ready" | "error" | "missing">("loading");
   const [draftMinutes, setDraftMinutes] = useState<number | null>(null);
   const [draftSpeed, setDraftSpeed] = useState<string | null>(null);
+  const authChangeVersion = useAuthChangeVersion();
   const requestId = useRef(0);
   const commitTimer = useRef<number | null>(null);
   const timingPendingRef = useRef(false);
@@ -149,6 +151,18 @@ export function RoutePage() {
           update({ start_time: undefined });
           return;
         }
+        // Login state can change while this route remains open. If the
+        // selected URL is no longer readable after logout, return to a clean
+        // route URL and fetch Django's currently allowed day plus its locks.
+        if (
+          error instanceof ApiError &&
+          error.status === 403 &&
+          (error.code === "login_required" || error.code === "plan_required") &&
+          (requestedDate || requestedPeriod || start)
+        ) {
+          update({ date: undefined, period: undefined, start_time: undefined });
+          return;
+        }
         setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
       });
   }
@@ -178,7 +192,7 @@ export function RoutePage() {
     }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, requestedDate, requestedPeriod, speed, start]);
+  }, [slug, requestedDate, requestedPeriod, speed, start, authChangeVersion]);
 
   useEffect(
     () => () => {

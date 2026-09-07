@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../../api/client";
+import { useAuthChangeVersion } from "../auth/authSession";
 import { asPeriodId, buildForecastParams } from "../../lib/periods";
 import type { PeriodId, PlaceForecastResponse } from "../../types";
 import { adaptPlaceForecast, type PlaceForecastViewModel, type PlaceKind } from "./placeForecastAdapter";
@@ -18,6 +19,7 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
   );
   const [data, setData] = useState<PlaceForecastViewModel | null>(null);
   const [status, setStatus] = useState<LoadStatus>("loading");
+  const authChangeVersion = useAuthChangeVersion();
   const requestId = useRef(0);
   const resolvedDefaultRequestKey = useRef<string | null>(null);
   const explicitDate = Boolean(searchParams.get("date"));
@@ -80,6 +82,22 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
       })
       .catch((error) => {
         if (currentRequest !== requestId.current) return;
+        // A previously permitted explicit day can become private immediately
+        // after logout. Fall back to the clean URL so Django can select the
+        // last readable day and return the new locked-tab affordances.
+        if (
+          error instanceof ApiError &&
+          error.status === 403 &&
+          (error.code === "login_required" || error.code === "plan_required") &&
+          (explicitDate || explicitPeriod || selectionCommitted)
+        ) {
+          resolvedDefaultRequestKey.current = null;
+          setSelectionCommitted(false);
+          setDate(undefined);
+          setPeriod(undefined);
+          writeQuery({ date: undefined, period: undefined });
+          return;
+        }
         setStatus(error instanceof ApiError && error.status === 404 ? "missing" : "error");
       });
   }
@@ -91,7 +109,7 @@ export function usePlaceForecast(options: { kind: PlaceKind; slug: string }) {
     }
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [kind, slug, date, period, selectionCommitted]);
+  }, [kind, slug, date, period, selectionCommitted, authChangeVersion]);
 
   return {
     date,
