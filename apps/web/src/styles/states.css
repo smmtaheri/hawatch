@@ -645,9 +645,9 @@ html[data-theme="light"] .account-menu-popover p strong { color: #123441; }
 html[data-theme="light"] .logout-dialog-panel { color: #123441; background: linear-gradient(145deg, #fafffe, #ecf8f6); box-shadow: 0 24px 72px rgb(15 54 62 / 18%); }
 html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
 
-/* Subscription page: the free card stays on the right in RTL and the
- * professional three-month card stays on the left. Both cards use the same
- * surfaces and spacing in dark and light themes. */
+/* Subscription page. The composition deliberately follows the approved
+ * subscription mockup: two equal dark-glass cards on desktop, with the
+ * free plan on the physical right and the professional plan on the left. */
 .subscription-page {
   min-height: 100vh;
   background: var(--bg);
@@ -659,13 +659,27 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
   padding: 0 42px 70px;
 }
 .subscription-heading {
-  max-width: 760px;
-  margin: 48px auto 26px;
+  max-width: 680px;
+  margin: 42px auto 32px;
   text-align: center;
+}
+.subscription-heading::before {
+  content: "✧";
+  display: grid;
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 10px;
+  place-items: center;
+  border: 1px solid var(--internal-teal, var(--teal));
+  border-radius: 50%;
+  color: var(--internal-teal, var(--teal));
+  font-size: 22px;
+  line-height: 1;
 }
 .subscription-heading h1 {
   margin: 6px 0 10px;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.25;
 }
 .subscription-heading p {
   margin: 0;
@@ -675,15 +689,16 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
 .subscription-plan-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-areas: "paid free";
+  gap: 26px;
   direction: ltr;
-  max-width: 920px;
+  max-width: 880px;
   margin: 0 auto;
 }
 .subscription-plan-card {
   min-width: 0;
-  min-height: 286px;
-  padding: 28px;
+  min-height: 376px;
+  padding: 28px 30px;
   border: 1px solid var(--internal-border);
   border-radius: 22px;
   color: var(--text);
@@ -694,8 +709,8 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
   position: relative;
   overflow: hidden;
 }
-.subscription-plan-card.free { grid-column: 2; grid-row: 1; }
-.subscription-plan-card.paid { grid-column: 1; grid-row: 1; }
+.subscription-plan-card.free { grid-area: free; }
+.subscription-plan-card.paid { grid-area: paid; }
 .subscription-plan-badge {
   display: inline-flex;
   align-items: center;
@@ -708,33 +723,86 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
   font-weight: 700;
 }
 .subscription-plan-badge.paid-badge {
-  border-color: color-mix(in srgb, var(--amber) 68%, transparent);
-  color: var(--internal-amber, var(--amber));
+  position: absolute;
+  top: 18px;
+  right: -37px;
+  min-width: 154px;
+  min-height: 26px;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  color: #0c3540;
+  background: linear-gradient(135deg, #7de0d9, #45bdb9);
+  box-shadow: 0 3px 12px rgb(3 25 34 / 24%);
+  font-size: 10px;
+  transform: rotate(-45deg);
+}
+.subscription-plan-mark {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  margin: 16px auto 14px;
+  place-items: center;
+  border: 1px solid rgb(126 221 215 / 38%);
+  border-radius: 50%;
+  color: var(--internal-teal, var(--teal));
+  background: linear-gradient(145deg, rgb(91 199 193 / 28%), rgb(17 62 75 / 30%));
+}
+.subscription-plan-mark svg {
+  width: 29px;
+  height: 29px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
 }
 .subscription-plan-card h2 {
-  margin: 18px 0 8px;
+  width: 100%;
+  margin: 0 0 8px;
   color: var(--text);
+  text-align: center;
   font-size: clamp(22px, 2.7vw, 30px);
   line-height: 1.3;
 }
 .subscription-plan-access {
+  width: 100%;
   margin: 0;
   color: var(--internal-teal, var(--teal));
+  text-align: center;
   font-size: 16px;
   font-weight: 700;
 }
-.subscription-plan-note {
-  max-width: 34rem;
-  margin: 10px 0 0;
+.subscription-plan-features {
+  display: grid;
+  width: 100%;
+  gap: 8px;
+  margin: 22px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--internal-border);
   color: var(--internal-muted, var(--muted));
   font-size: 13px;
+  line-height: 1.65;
+}
+.subscription-plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.subscription-plan-features li::before {
+  content: "✓";
+  flex: 0 0 auto;
+  color: var(--internal-teal, var(--teal));
+  font-weight: 800;
 }
 .subscription-current {
+  align-self: center;
   margin-top: auto;
   color: var(--internal-muted);
   font-size: 11px;
 }
 .subscription-plan-cta {
+  align-self: stretch;
   min-height: 44px;
   margin-top: auto;
   padding: 8px 20px;
@@ -757,15 +825,6 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
   padding: 20px;
   text-align: center;
 }
-.subscription-return-link {
-  display: block;
-  margin: 22px auto 0;
-  border: 0;
-  color: var(--internal-teal, var(--teal));
-  background: transparent;
-  cursor: pointer;
-  font-size: 13px;
-}
 html[data-theme="light"] .subscription-page {
   --internal-border: #bdd5d1;
   --internal-muted: #687a80;
@@ -773,14 +832,19 @@ html[data-theme="light"] .subscription-page {
   --internal-amber: #9a6a16;
 }
 html[data-theme="light"] .subscription-plan-card.free {
-  background: linear-gradient(145deg, #ffffff, #eef8f6);
+  border-color: #bddbd6;
+  color: #123441;
+  background: linear-gradient(145deg, #ffffff, #eef8f6) !important;
   box-shadow: 0 16px 36px rgb(16 43 61 / 10%);
 }
 html[data-theme="light"] .subscription-plan-card.paid {
   border-color: #d59a35;
-  background: linear-gradient(145deg, #fffefa, #fff7e7);
+  color: #123441;
+  background: linear-gradient(145deg, #fffefa, #fff7e7) !important;
   box-shadow: 0 16px 36px rgb(111 76 16 / 12%);
 }
+html[data-theme="light"] .subscription-plan-card h2 { color: #123441; }
+html[data-theme="light"] .subscription-plan-mark { background: linear-gradient(145deg, #e5f5f2, #d0ebe7); }
 html:not([data-theme="light"]) .subscription-page {
   --internal-border: rgb(190 225 221 / 28%);
   --internal-muted: #a8c1c0;
@@ -789,14 +853,17 @@ html:not([data-theme="light"]) .subscription-page {
 }
 html:not([data-theme="light"]) .subscription-plan-card.free {
   border-color: rgb(190 225 221 / 32%);
-  background: linear-gradient(145deg, #1c4852, #133843);
+  color: #f2fbf9;
+  background: linear-gradient(145deg, #194550, #0f303c) !important;
   box-shadow: 0 18px 42px rgb(2 20 29 / 28%);
 }
 html:not([data-theme="light"]) .subscription-plan-card.paid {
-  border-color: rgb(240 189 97 / 72%);
-  background: linear-gradient(145deg, #245057, #173b46);
+  border-color: #65d5cf;
+  color: #f2fbf9;
+  background: linear-gradient(145deg, #1c505b, #103642) !important;
   box-shadow: 0 18px 42px rgb(2 20 29 / 34%), inset 0 1px rgb(255 232 176 / 10%);
 }
+html:not([data-theme="light"]) .subscription-plan-card h2 { color: #f7fffd; }
 @media (max-width: 720px) {
   .subscription-shell { padding: 0 14px 45px; }
   .subscription-heading { margin: 32px auto 20px; }
@@ -804,19 +871,20 @@ html:not([data-theme="light"]) .subscription-plan-card.paid {
   .subscription-heading p { font-size: 12px; }
   .subscription-plan-grid {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "free" "paid";
     gap: 12px;
+    direction: rtl;
   }
   .subscription-plan-card.free,
   .subscription-plan-card.paid {
-    grid-column: 1;
+    grid-column: auto;
     grid-row: auto;
   }
-  .subscription-plan-card.free { order: 1; }
-  .subscription-plan-card.paid { order: 2; }
-  .subscription-plan-card { min-height: 235px; padding: 20px; border-radius: 18px; }
-  .subscription-plan-card h2 { margin-top: 14px; font-size: 22px; }
+  .subscription-plan-card { min-height: 330px; padding: 20px; border-radius: 18px; }
+  .subscription-plan-card h2 { font-size: 22px; }
+  .subscription-plan-mark { width: 48px; height: 48px; margin: 12px auto; }
+  .subscription-plan-features { margin-top: 16px; padding-top: 12px; font-size: 12px; }
   .subscription-plan-access { font-size: 14px; }
-  .subscription-plan-note { font-size: 12px; }
   .subscription-plan-cta { width: 100%; min-height: 42px; font-size: 13px; }
 }
 

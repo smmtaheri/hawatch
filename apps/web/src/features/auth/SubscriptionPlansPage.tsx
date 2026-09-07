@@ -19,6 +19,24 @@ function accessLabel(plan: ForecastPlanSummary | undefined) {
   return `دسترسی تا ${faDigits(futureDays)} روز آینده`;
 }
 
+function PlanMark({ kind }: { kind: "free" | "professional" }) {
+  return (
+    <span className={`subscription-plan-mark ${kind}`} aria-hidden="true">
+      {kind === "free" ? (
+        <svg viewBox="0 0 32 32" focusable="false">
+          <circle cx="16" cy="10" r="5" />
+          <path d="M6.5 27c1.8-5.1 5.1-7.7 9.5-7.7s7.7 2.6 9.5 7.7" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 32 32" focusable="false">
+          <path d="m4 25 8.1-13L17 20l3.4-5.2L28 25H4Z" />
+          <path d="m12.1 12 2.5 4.1 2.4-3.2" />
+        </svg>
+      )}
+    </span>
+  );
+}
+
 export function SubscriptionPlansPage() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -89,20 +107,29 @@ export function SubscriptionPlansPage() {
         ) : null}
         {status === "ready" ? (
           <section className="subscription-plan-grid" aria-label="طرح‌های اشتراک">
-            <article className="subscription-plan-card free card-surface">
+            <article className="subscription-plan-card free">
               <span className="subscription-plan-badge">فعلی</span>
+              <PlanMark kind="free" />
               <h2>{freePlan?.title ?? "عضویت رایگان"}</h2>
               <p className="subscription-plan-access">{accessLabel(freePlan)}</p>
-              <p className="subscription-plan-note">برای شروع، همین حالا بدون پرداخت استفاده کن.</p>
+              <ul className="subscription-plan-features">
+                <li>برای شروع، بدون پرداخت استفاده کن.</li>
+                <li>پیش‌بینی روزهای مجاز همهٔ نقاط.</li>
+              </ul>
               {session?.plan?.tier === "free" ? <span className="subscription-current">طرح فعال حساب تو</span> : null}
             </article>
-            <article className="subscription-plan-card paid card-surface">
+            <article className="subscription-plan-card paid">
               <span className="subscription-plan-badge paid-badge">پیشنهاد حرفه‌ای</span>
+              <PlanMark kind="professional" />
               <h2>{professionalPlan?.title ?? "طرح حرفه‌ای"}</h2>
               <p className="subscription-plan-access">
                 {professionalPlan?.duration_months === 3 ? "عضویت سه‌ماهه" : "عضویت حرفه‌ای"}
               </p>
-              <p className="subscription-plan-note">دسترسی گسترده‌تر به پیش‌بینی روزهای آینده.</p>
+              <ul className="subscription-plan-features">
+                <li>{accessLabel(professionalPlan)}</li>
+                <li>دسترسی گسترده‌تر به پیش‌بینی روزهای آینده.</li>
+                <li>عضویت سه‌ماهه.</li>
+              </ul>
               <button type="button" className="subscription-plan-cta" onClick={beginPurchase}>
                 {isAuthenticated ? "خرید اشتراک" : "ورود برای خرید"}
               </button>
