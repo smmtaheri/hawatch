@@ -4179,7 +4179,7 @@ bdi,
   .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge {
     position: absolute !important;
     z-index: 3;
-    top: 1px !important;
+    top: 3px !important;
     right: auto !important;
     bottom: auto !important;
     left: 3px !important;
