@@ -145,7 +145,7 @@ const routeForecast = {
     { slug: "tochal-sarband-square", name: "سربند", elevation_label: "۱۸۰۰ m", href: "/points/tochal-sarband-square", axis_x: 10, axis_y: 83, time: "۰۶:۰۰", temp: 8, wind: 6, icon: "☼", condition: "شروع آرام", state: "normal", note: "شروع آرام", arrival_minutes: 360 },
   ],
   hourly: pointForecast.hourly,
-  hero: { status: "نقطهٔ حساس: گردنهٔ لوپ" },
+  hero: { status: "گردنهٔ لوپ" },
   stats: [{ label: "مسافت", value: "۱۶٫۲ km" }],
   decision: {
     chip: "پیش‌بینی مسیر · امروز",
@@ -153,7 +153,7 @@ const routeForecast = {
     status: "هشدار",
     state: "critical",
     summary: "شرایط پرریسک",
-    hero_status: "نقطهٔ حساس",
+    hero_status: "گردنهٔ لوپ",
     critical_name: "گردنهٔ لوپ",
     critical_time: "۱۰:۴۵",
     critical_note: "زمان ذخیره",

@@ -907,7 +907,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         return f"حدود {time_label}"
 
     def _status_phrase(label: str, point: dict, detail: str | None = None) -> str:
-        parts = [f"{label}: {point['name']}"]
+        parts = [f"{label}: {point['name']}" if label else point["name"]]
         if detail:
             parts.append(detail)
         return " · ".join(parts)
@@ -916,10 +916,10 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         time_phrase = _point_time_phrase(critical_point)
         if timing_pending:
             state_summary = f"در {critical_point['name']} شرایط پرریسک گزارش شده؛ زمان‌بندی مسیر هنوز نهایی نیست."
-            hero_status = _status_phrase("نقطهٔ حساس", critical_point, "پیش‌بینی بازه‌ای")
+            hero_status = _status_phrase("", critical_point, "پیش‌بینی بازه‌ای")
         else:
             state_summary = f"در {time_phrase or 'مسیر'} شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار."
-            hero_status = _status_phrase("نقطهٔ حساس", critical_point, time_phrase)
+            hero_status = _status_phrase("", critical_point, time_phrase)
     elif summary_state == "change" and critical_point:
         time_phrase = _point_time_phrase(critical_point)
         if timing_pending:
