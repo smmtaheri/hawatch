@@ -22,7 +22,7 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_cata
     assert 'name="description" content="هواچ؛ هوای نقاط و برنامهٔ مسیر."' in body
     assert 'rel="canonical" href="https://hawatch.ir/"' in body
     assert 'name="robots" content="index,follow"' in body
-    assert "<h1>هوای مسیرت را ببین</h1>" in body
+    assert "<h1>پیش‌بینی هوای نقاط و مسیرها</h1>" in body
     assert 'id="seo-popular-points">مقصدهای محبوب هواچ</h2>' in body
     assert 'src="/assets/hawatch.js"' in body
     assert response["X-Robots-Tag"] == "index,follow"

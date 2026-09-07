@@ -221,7 +221,7 @@ def seo_home(request: HttpRequest) -> HttpResponse:
             "title": HOME_TITLE,
             "description": HOME_DESCRIPTION,
             "canonical": _canonical("/"),
-            "headline": "هوای مسیرت را ببین",
+            "headline": "پیش‌بینی هوای نقاط و مسیرها",
             "summary": "هواچ پیش‌بینی هوای نقاط و اطلاعات مسیرهای کوه‌پیمایی را برای برنامه‌ریزی آگاهانه کنار هم می‌آورد.",
             "structured_data": _structured_breadcrumb(("هواچ", "/")),
             "popular_points": [
