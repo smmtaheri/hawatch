@@ -52,22 +52,10 @@ function isPlannerOnlyChange(previous: RouteRequestInputs, next: RouteRequestInp
   );
 }
 
-function formatFaDigits(value: number | string) {
-  return String(value).replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
-}
-
 function pointWeatherLabel(point: RoutePointView, timingPending: boolean) {
   if (timingPending || point.timing_pending) return "زمان‌بندی در دسترس نیست";
   if (point.time && point.time !== "—") return `حدود ${point.time}`;
   return "پیش‌بینی رسیدن";
-}
-
-function timingEstimateBadgeLabel(point: RoutePointView) {
-  const uncertainty = point.timing_uncertainty_minutes;
-  if (uncertainty != null && uncertainty >= 0) {
-    return `تخمینی · ±${formatFaDigits(uncertainty)} دقیقه`;
-  }
-  return "تخمینی";
 }
 
 export function RoutePage() {
@@ -401,9 +389,6 @@ export function RoutePage() {
                               >
                                 <strong>{point.name}</strong>
                                 <span className="route-point-weather-eta"><bdi>{label}</bdi></span>
-                                {point.timing_estimated && !timingPending ? (
-                                  <span className="route-point-weather-badge">{timingEstimateBadgeLabel(point)}</span>
-                                ) : null}
                                 <span className="route-point-weather-icon">{weatherMissing || timingPending ? "—" : point.icon}</span>
                                 <span className="route-point-weather-condition">
                                   {timingPending
