@@ -9,8 +9,10 @@ SEO-ready without adding a hard-coded URL to the frontend build.
 
 from __future__ import annotations
 
+import json
 import re
 from decimal import Decimal
+from itertools import groupby
 
 from django.conf import settings
 from django.db.models import Q
@@ -20,6 +22,7 @@ from django.views.decorators.http import require_GET
 
 from hawatch.modules.catalog.identity import place_type_label
 from hawatch.modules.catalog.runtime import publicly_visible_weather_points
+from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
@@ -75,6 +78,28 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
     return response
 
 
+def _structured_breadcrumb(*items: tuple[str, str]) -> str:
+    """Serialize a valid BreadcrumbList without exposing request-specific URLs."""
+
+    value = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": index, "name": name, "item": _canonical(path)}
+            for index, (name, path) in enumerate(items, start=1)
+        ],
+    }
+    # Django's ``safe`` template marker is appropriate only after escaping the
+    # three characters that could terminate a script element.
+    return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def _forecast_source_label(source: str | None) -> str | None:
+    if not source:
+        return None
+    return "Open-Meteo" if source.startswith("open-meteo") else source
+
+
 def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
     label = "نقطه" if content_type == "point" else "مسیر"
     return _render(
@@ -93,6 +118,7 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 
 def _point_page(point: WeatherPoint) -> dict:
     name = point.page_name or point.name
+    seo = point_seo_copy(point)
     route_filter = (
         Q(points__weather_point=point)
         | Q(origin_weather_point=point)
@@ -110,11 +136,18 @@ def _point_page(point: WeatherPoint) -> dict:
     )
     return {
         "kind": "point",
-        "title": f"هوای {name} | هواچ",
-        "description": f"پیش‌بینی هوا و وضعیت مسیر برای {name} در هواچ.",
+        "title": seo["title"],
+        "description": seo["description"],
         "canonical": _canonical(f"/points/{point.slug}"),
-        "headline": name,
-        "summary": _localized_identity_summary(point) or f"پیش‌بینی هوا و اطلاعات مسیرهای مرتبط با {name} در هواچ.",
+        "headline": point.name,
+        "summary": seo["subtitle"],
+        "identity_summary": _localized_identity_summary(point),
+        "seo_content": seo["content"],
+        "forecast_duration": seo["forecast_duration"],
+        "forecast_source": _forecast_source_label(seo["forecast_source"]),
+        "forecast_generated_at": seo["forecast_generated_at"],
+        "forecast_summary": seo["forecast_summary"],
+        "structured_data": _structured_breadcrumb(("هواچ", "/"), ("نقاط", "/points"), (point.name, f"/points/{point.slug}")),
         "region": point.region,
         "category": point.category,
         "place_type": place_type_label(point.place_type),
@@ -131,6 +164,7 @@ def _point_page(point: WeatherPoint) -> dict:
 
 
 def _route_page(route: Route) -> dict:
+    seo = route_seo_copy(route)
     route_points = list(route.points.select_related("weather_point").all())
     target_href = f"/points/{route.target_weather_point.slug}" if route.target_weather_point_id else ""
     # Some routes finish at a physical endpoint such as a lake shore while
@@ -148,11 +182,17 @@ def _route_page(route: Route) -> dict:
         target_href = f"/points/{destination.slug}"
     return {
         "kind": "route",
-        "title": f"هوای {route.title} | هواچ",
-        "description": f"پیش‌بینی هوا و وضعیت مسیر {route.title} در هواچ.",
+        "title": seo["title"],
+        "description": seo["description"],
         "canonical": _canonical(f"/routes/{route.slug}"),
         "headline": route.title,
-        "summary": route.subtitle or f"مسیر پیاده‌روی از {route.origin} تا {route.target_label} در {route.region}.",
+        "summary": seo["subtitle"],
+        "identity_summary": route.subtitle,
+        "seo_content": seo["content"],
+        "forecast_source": _forecast_source_label(seo.get("forecast_source")),
+        "forecast_generated_at": seo.get("forecast_generated_at"),
+        "forecast_summary": seo.get("forecast_summary"),
+        "structured_data": _structured_breadcrumb(("هواچ", "/"), ("مسیرها", "/routes"), (route.title, f"/routes/{route.slug}")),
         "region": route.region,
         "origin": route.origin,
         "target": route.target_label,
@@ -183,10 +223,66 @@ def seo_home(request: HttpRequest) -> HttpResponse:
             "canonical": _canonical("/"),
             "headline": "هوای مسیرت را ببین",
             "summary": "هواچ پیش‌بینی هوای نقاط و اطلاعات مسیرهای کوه‌پیمایی را برای برنامه‌ریزی آگاهانه کنار هم می‌آورد.",
+            "structured_data": _structured_breadcrumb(("هواچ", "/")),
             "popular_points": [
                 {"name": point.page_name or point.name, "href": f"/points/{point.slug}"}
                 for point in popular_points
             ],
+        },
+    )
+
+
+@require_GET
+def seo_points_index(request: HttpRequest) -> HttpResponse:
+    points = list(publicly_visible_weather_points().order_by("place_type", "page_name", "name"))
+    groups = []
+    for place_type, rows in groupby(points, key=lambda item: place_type_label(item.place_type)):
+        groups.append(
+            {
+                "label": place_type,
+                "items": [{"name": point.page_name or point.name, "href": f"/points/{point.slug}"} for point in rows],
+            }
+        )
+    return _render(
+        request,
+        page={
+            "kind": "point-index",
+            "title": "همهٔ نقاط هواچ | پیش‌بینی آب‌وهوا",
+            "description": "فهرست نقاط عمومی هواچ برای مشاهدهٔ پیش‌بینی آب‌وهوا و مسیرهای مرتبط.",
+            "canonical": _canonical("/points"),
+            "headline": "نقاط هواچ",
+            "summary": "همهٔ نقاط عمومی بر اساس نوع عارضه دسته‌بندی شده‌اند.",
+            "catalog_groups": groups,
+            "structured_data": _structured_breadcrumb(("هواچ", "/"), ("نقاط", "/points")),
+        },
+    )
+
+
+@require_GET
+def seo_routes_index(request: HttpRequest) -> HttpResponse:
+    routes = list(Route.objects.filter(is_active=True).order_by("region", "sort_order", "slug"))
+    groups = []
+    for region, rows in groupby(routes, key=lambda item: item.region or "سایر مناطق"):
+        groups.append(
+            {
+                "label": region,
+                "items": [
+                    {"name": route.title, "href": f"/routes/{route.slug}", "description": f"از {route.origin} تا {route.target_label}"}
+                    for route in rows
+                ],
+            }
+        )
+    return _render(
+        request,
+        page={
+            "kind": "route-index",
+            "title": "همهٔ مسیرهای هواچ | پیش‌بینی آب‌وهوا",
+            "description": "فهرست مسیرهای پیاده‌روی عمومی هواچ با پیوند به نقاط و پیش‌بینی مسیر.",
+            "canonical": _canonical("/routes"),
+            "headline": "مسیرهای هواچ",
+            "summary": "مسیرهای عمومی بر اساس منطقه دسته‌بندی شده‌اند.",
+            "catalog_groups": groups,
+            "structured_data": _structured_breadcrumb(("هواچ", "/"), ("مسیرها", "/routes")),
         },
     )
 

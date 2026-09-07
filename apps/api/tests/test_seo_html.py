@@ -34,6 +34,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
         name="یال آزمایشی",
         page_name="یال آزمایشی تهران",
         identity_summary="یک عارضهٔ مستقل برای کنترل رندر اولیهٔ هواچ.",
+        place_type="ridge",
         category="یال کوهستانی",
         region="تهران",
         elevation_m=2500,
@@ -46,12 +47,13 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>هوای یال آزمایشی تهران | هواچ</title>" in body
-    assert 'name="description" content="پیش‌بینی هوا و وضعیت مسیر برای یال آزمایشی تهران در هواچ."' in body
+    assert "<title>پیش‌بینی آب‌وهوای یال آزمایشی تهران در ارتفاع ۲۵۰۰ متر | هواچ</title>" in body
+    assert 'name="description" content="پیش‌بینی آب‌وهوای یال آزمایشی تهران در ارتفاع ۲۵۰۰ متر در تهران. اطلاعات نقطه و مسیرهای مرتبط در هواچ."' in body
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in body
     assert 'name="robots" content="index,follow"' in body
-    assert "<h1>یال آزمایشی تهران</h1>" in body
+    assert "<h1>یال آزمایشی</h1>" in body
     assert "یک عارضهٔ مستقل برای کنترل رندر اولیهٔ هواچ." in body
+    assert 'application/ld+json' in body
 
     bot_response = api_client.get(f"/points/{point.slug}", HTTP_USER_AGENT="Googlebot")
     assert bot_response.status_code == 200
@@ -118,7 +120,7 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
     assert "نقطهٔ operator_extension" not in fallback_body
 
     hazar_body = api_client.get("/points/hazar-ardikan-babzangi-junction").content.decode()
-    assert "<title>هوای دوراهی اردیکان–باب‌زنگی در مسیر هزار | هواچ</title>" in hazar_body
+    assert "<title>پیش‌بینی آب‌وهوای" in hazar_body
     assert "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار" not in hazar_body
 
 
@@ -141,12 +143,46 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>هوای مسیر آزمایشی تهران | هواچ</title>" in body
+    assert "<title>پیش‌بینی آب‌وهوا در مسیر مسیر آزمایشی تهران از مبدأ آزمایشی تا مقصد آزمایشی | هواچ</title>" in body
     assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in body
     assert '<h1>مسیر آزمایشی تهران</h1>' in body
     assert "مبدأ آزمایشی" in body
     assert "مقصد آزمایشی" in body
     assert "12.5 کیلومتر" in body
+
+    query_response = api_client.get(f"/routes/{route.slug}?date=2026-09-04&period=morning")
+    assert query_response.status_code == 200
+    assert 'name="robots" content="noindex,follow"' in query_response.content.decode()
+    assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in query_response.content.decode()
+
+
+def test_catalog_indexes_and_curated_seo_override_are_rendered(api_client, seo_catalog):
+    point = WeatherPoint.objects.create(
+        slug="seo-override-lake",
+        name="دریاچهٔ آزمایشی",
+        page_name="دریاچهٔ آزمایشی تهران",
+        place_type="lake",
+        identity_summary="دریاچهٔ آزمایشی با موقعیت ثبت‌شده.",
+        category="دریاچه",
+        region="تهران",
+        elevation_m=2400,
+        location=Point(51.6, 35.8, srid=4326),
+        seo_title="راهنمای مستند دریاچهٔ آزمایشی | هواچ",
+        seo_description="توضیح curated و مبتنی بر دادهٔ ثبت‌شده.",
+        seo_content="این متن تکمیلی فقط به‌دلیل وجود دادهٔ واقعی نمایش داده می‌شود.",
+        seo_indexable=True,
+        is_active=True,
+    )
+
+    point_body = api_client.get(f"/points/{point.slug}").content.decode()
+    assert "<title>راهنمای مستند دریاچهٔ آزمایشی | هواچ</title>" in point_body
+    assert "اطلاعات تکمیلی" in point_body
+
+    points_body = api_client.get("/points").content.decode()
+    routes_body = api_client.get("/routes").content.decode()
+    assert f'href="/points/{point.slug}"' in points_body
+    assert 'rel="canonical" href="https://hawatch.ir/points"' in points_body
+    assert 'rel="canonical" href="https://hawatch.ir/routes"' in routes_body
 
 
 def test_invalid_public_slug_is_a_real_noindex_404(api_client, seo_catalog):

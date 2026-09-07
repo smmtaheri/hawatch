@@ -31,6 +31,7 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
+from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
@@ -134,6 +135,7 @@ def serialize_point_profile(point: WeatherPoint, *, include_routes: bool = False
         "short_category": point.short_category,
         "category": point.category,
         "category_key": point.category_key,
+        "place_type": point.place_type,
         "region": point.region,
         "elevation_m": elevation,
         "elevation_label": f"{to_fa_digits(elevation)} متر" if elevation is not None else "ارتفاع نامشخص",
@@ -193,10 +195,13 @@ def serialize_route(route: Route) -> dict:
     ]
     distance_km = float(route.distance_km) if route.distance_km is not None else None
     timing_pending = not route_has_usable_timing(route, points)
+    seo = route_seo_copy(route)
     return {
         "slug": route.slug,
         "title": route.title,
         "subtitle": route.subtitle,
+        "seo_title": seo["title"],
+        "seo_description": seo["description"],
         "trail_label": route.trail_label,
         "origin": route.origin,
         "target_label": route.target_label,
@@ -249,6 +254,7 @@ def serialize_place_subject(
     region = weather_point.region
     category = weather_point.category
     default_context = weather_point.region
+    seo = point_seo_copy(weather_point)
     return {
         "kind": kind,
         "slug": slug,
@@ -272,6 +278,9 @@ def serialize_place_subject(
         "hero_image_alt": hero_alt,
         "region": region,
         "category": category,
+        "seo_title": seo["title"],
+        "seo_description": seo["description"],
+        "seo_subtitle": seo["subtitle"],
     }
 
 

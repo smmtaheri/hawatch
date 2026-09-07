@@ -24,6 +24,10 @@ export function Header() {
   return (
     <header className="site-header">
       <Logo />
+      <nav className="header-catalog-links" aria-label="فهرست عمومی">
+        <Link to="/points">نقاط</Link>
+        <Link to="/routes">مسیرها</Link>
+      </nav>
       <div className="header-actions">
         <SocialLinks />
         {pathname !== "/login" && !isAuthenticated ? (

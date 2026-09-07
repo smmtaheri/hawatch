@@ -50,6 +50,12 @@ class WeatherPoint(models.Model):
     popular_order = models.PositiveSmallIntegerField(default=0)
     is_popular = models.BooleanField(default=False)
     seo_indexable = models.BooleanField(default=False)
+    # Optional curator-approved SEO copy. Blank values deliberately fall back
+    # to the shared, data-derived copy builder rather than creating generic
+    # text for every point.
+    seo_title = models.CharField(max_length=160, blank=True, default="")
+    seo_description = models.CharField(max_length=320, blank=True, default="")
+    seo_content = models.TextField(blank=True, default="")
     kind = models.CharField(max_length=16, choices=Kind.choices, default=Kind.SHARED)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     location = models.PointField(srid=4326, spatial_index=False)

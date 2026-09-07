@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from collections import defaultdict
 from collections.abc import Iterable
 from dataclasses import dataclass
@@ -29,6 +30,33 @@ class CatalogIssue:
 
 def _issue(level: str, code: str, message: str) -> CatalogIssue:
     return CatalogIssue(level, code, message)
+
+
+def _validate_seo_override(*, row: dict[str, Any], label: str, issues: list[CatalogIssue]) -> str:
+    """Validate optional, human-written copy without requiring boilerplate."""
+
+    value = row.get("seo")
+    if value is None:
+        return ""
+    if not isinstance(value, dict):
+        issues.append(_issue("error", "seo", f"{label} seo must be an object"))
+        return ""
+    unknown = set(value) - {"title", "description", "content"}
+    if unknown:
+        issues.append(_issue("error", "seo", f"{label} seo has unsupported keys: {', '.join(sorted(unknown))}"))
+    limits = {"title": 160, "description": 320, "content": 4000}
+    for key, limit in limits.items():
+        copy = value.get(key, "")
+        if not isinstance(copy, str):
+            issues.append(_issue("error", "seo", f"{label} seo.{key} must be a string"))
+            continue
+        text = " ".join(copy.split())
+        if len(text) > limit:
+            issues.append(_issue("error", "seo", f"{label} seo.{key} exceeds {limit} characters"))
+        words = [word for word in re.findall(r"[\w‌آ-ی]+", text.casefold()) if len(word) > 2]
+        if words and max(words.count(word) for word in set(words)) > 3:
+            issues.append(_issue("error", "seo-keyword-stuffing", f"{label} seo.{key} repeats a keyword too often"))
+    return " ".join(str(value.get("title") or "").split())
 
 
 def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
@@ -80,6 +108,8 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
             )
         )
     page_names: dict[str, list[str]] = defaultdict(list)
+    route_titles: dict[str, list[str]] = defaultdict(list)
+    seo_titles: dict[str, list[str]] = defaultdict(list)
     aliases: dict[str, list[str]] = defaultdict(list)
     supported_climates = supported_climate_keys()
     profile_climate = profile.get("climate", "alpine") if isinstance(profile, dict) else "alpine"
@@ -126,6 +156,9 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         if not isinstance(row.get("longitude"), (int, float)) or not -180 <= row.get("longitude") <= 180:
             issues.append(_issue("error", "coordinates", f"point {slug!r} has invalid longitude"))
         page_names[normalize_identity_text(row.get("page_name", ""))].append(slug)
+        title = _validate_seo_override(row=row, label=f"point {slug!r}", issues=issues)
+        if title:
+            seo_titles[normalize_identity_text(title)].append(slug)
         for alias in row.get("aliases") or []:
             aliases[normalize_identity_text(alias)].append(slug)
     for normalized, slugs in page_names.items():
@@ -141,6 +174,11 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         slug = str(route.get("slug") or "")
         if not SLUG_RE.fullmatch(slug):
             issues.append(_issue("error", "route-slug", f"invalid route slug: {slug!r}"))
+        title = " ".join(str(route.get("title") or "").split())
+        if not title:
+            issues.append(_issue("error", "route-metadata", f"route {slug or route_key!r} is missing title"))
+        else:
+            route_titles[normalize_identity_text(title)].append(slug or route_key)
         points = route.get("points") or []
         if len(points) < 3:
             issues.append(_issue("error", "route-chain", f"route {slug or route_key!r} needs origin, landmark and target"))
@@ -150,8 +188,17 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
             if point_slug not in point_slugs:
                 issues.append(_issue("error", "route-reference", f"route {slug or route_key!r} references missing point {point_slug!r}"))
         route_orders.append((int(route.get("sort_order", 0)), slug or route_key))
+        override_title = _validate_seo_override(row=route, label=f"route {slug or route_key!r}", issues=issues)
+        if override_title:
+            seo_titles[normalize_identity_text(override_title)].append(slug or route_key)
     if len(route_orders) != len({slug for _order, slug in route_orders}):
         issues.append(_issue("error", "route-slug", "route slug is not unique"))
+    for normalized, slugs in seo_titles.items():
+        if normalized and len(slugs) > 1:
+            issues.append(_issue("error", "duplicate-seo-title", f"seo title collision: {', '.join(slugs)}"))
+    for normalized, slugs in route_titles.items():
+        if normalized and len(slugs) > 1:
+            issues.append(_issue("error", "duplicate-route-title", f"route title collision: {', '.join(slugs)}"))
     return issues
 
 

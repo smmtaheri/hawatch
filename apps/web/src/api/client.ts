@@ -82,6 +82,11 @@ export const api = {
     getJson<{ results: PointSummary[]; empty: boolean; query: string; meta: ApiMeta }>("points/", {
       query,
     }),
+  catalogIndex: () =>
+    getJson<{
+      points: PointSummary[];
+      routes: Array<{ title: string; origin: string; target_label: string; href: string; region: string }>;
+    }>("catalog-index/"),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },

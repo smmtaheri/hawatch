@@ -75,6 +75,13 @@ class RouteAdmin(GISModelAdmin):
             },
         ),
         (
+            "SEO",
+            {
+                "fields": ("seo_title", "seo_description", "seo_content"),
+                "description": "خالی بگذارید تا title و توضیح از مشخصات واقعی مسیر ساخته شود.",
+            },
+        ),
+        (
             "Timing / provenance",
             {
                 "fields": (

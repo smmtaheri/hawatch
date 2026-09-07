@@ -7,6 +7,8 @@ export const DEFAULT_DESCRIPTION = "هواچ؛ هوای نقاط و برنامه
 type PageTitleOptions = {
   robots?: "index,follow" | "noindex,follow";
   canonical?: boolean;
+  title?: string;
+  description?: string;
 };
 
 export function canonicalPageUrl(origin: string, pathname: string) {
@@ -21,7 +23,7 @@ export function robotsForSearch(search: string) {
 export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
   const location = useLocation();
   useLayoutEffect(() => {
-    const title = name ? `هوای ${name} | هواچ` : DEFAULT_TITLE;
+    const title = options.title || (name ? `هوای ${name} | هواچ` : DEFAULT_TITLE);
     document.title = title;
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (options.canonical === false) {
@@ -41,7 +43,7 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
       description.name = "description";
       document.head.appendChild(description);
     }
-    description.content = name ? `پیش‌بینی هوا و وضعیت مسیر برای ${name} در هواچ.` : DEFAULT_DESCRIPTION;
+    description.content = options.description || (name ? `پیش‌بینی هوا و وضعیت مسیر برای ${name} در هواچ.` : DEFAULT_DESCRIPTION);
     let robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
     if (!robots) {
       robots = document.createElement("meta");
@@ -49,5 +51,5 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
       document.head.appendChild(robots);
     }
     robots.content = options.robots ?? robotsForSearch(location.search);
-  }, [location.pathname, location.search, name, options.canonical, options.robots]);
+  }, [location.pathname, location.search, name, options.canonical, options.description, options.robots, options.title]);
 }

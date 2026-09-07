@@ -2,7 +2,7 @@
 
 ## هدف
 
-Home، تمام Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در
+Home، indexهای عمومی `/points` و `/routes`، تمام Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در
 `/routes/<slug>` باید پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته
 باشند. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
 planner، مانند `?date=…&period=…`، با `noindex,follow` منتشر می‌شوند تا لینک‌ها
@@ -18,6 +18,8 @@ Nginx gateway این سه surface عمومی را به Django می‌فرستد.
 - یک `h1` و خلاصهٔ معنادار؛
 - برای Point: منطقه، دسته‌بندی، ارتفاع و مسیرهای مرتبط؛
 - برای Route: مبدأ، مقصد، مسافت/صعود و زنجیرهٔ نقاط مسیر.
+- اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما/وضعیت، منبع و زمان تولید نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
+- برای indexها: فهرست دسته‌بندی‌شده با لینک واقعی `<a href>` به همهٔ آیتم‌های عمومی.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
 ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
@@ -32,11 +34,44 @@ Nginx gateway این سه surface عمومی را به Django می‌فرستد.
 اضافه‌شدن یا ویرایش یک Point/Route از طریق catalog sync یا Admin، بدون hardcode
 URL و بدون prerender مجدد، در HTML اولیه هم منعکس می‌شود.
 
+## copy پویا و override اختیاری
+
+`modules/catalog/seo.py` تنها سازندهٔ عمومی copy است. Point از نام canonical،
+نوع عارضهٔ فارسی، ارتفاع، منطقه و فقط بازهٔ forecast واقعاً ذخیره‌شده استفاده
+می‌کند؛ بنابراین دریاچه، جنگل و کویر هرگز «قله» نامیده نمی‌شوند و مدت یا منبع
+نداشته ساخته نمی‌شود. Route از عنوان، مبدأ/مقصد، مسافت و زمان یک‌طرفهٔ ثبت‌شده
+استفاده می‌کند.
+
+برای copy واقعاً curated، بلوک اختیاری زیر در همان row Point یا Route catalog و
+همان فیلدها در Django Admin وجود دارد. همهٔ فیلدها اختیاری‌اند؛ خالی‌بودن یعنی
+قالب عمومی پویا، نه متن تکراریِ backfill‌شده:
+
+```json
+"seo": {
+  "title": "عنوان یکتا | هواچ",
+  "description": "توضیح کوتاه و مبتنی بر دادهٔ مستند.",
+  "content": "متن تکمیلی کوتاه با واقعیت قابل‌اتکا."
+}
+```
+
+`content` فقط در صورت وجود به‌شکل accordion پایین HTML اولیه دیده می‌شود؛ متن
+پنهان ویژهٔ موتور جست‌وجو نداریم. validator catalog نوع، طول، کلید ناشناخته،
+title تکراری و تکرار غیرطبیعی keyword را رد می‌کند. زیر H1 در HTML و React فقط
+یک subtitle کوتاه است؛ منبع و آخرین به‌روزرسانی نیز کوچک و تنها با دادهٔ واقعی
+provider نشان داده می‌شود. `BreadcrumbList` تنها schema این مرحله است و صرفاً
+URLهای canonical واقعی را بازتاب می‌دهد.
+
+`sync_catalog --apply` overrideهای catalog را اتمیک وارد می‌کند. Point/Route
+جدید بدون URL hardcode یا prerender/build جدا، title/description/subtitle عمومی،
+sitemap و لینک index را خودکار می‌گیرد؛ migration فقط برای ذخیرهٔ override لازم
+است.
+
 ## رفتار URL
 
 | وضعیت | status | robots | canonical |
 | --- | --- | --- | --- |
 | URL تمیز Home/Point/Route | 200 | `index,follow` | همان URL تمیز |
+| URL تمیز index نقاط/مسیرها | 200 | `index,follow` | همان URL تمیز |
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 
@@ -83,6 +118,8 @@ server صرفاً برای توسعهٔ SPA است:
 
 ```bash
 curl -fsS http://localhost/points/tochal | sed -n '1,80p'
+curl -fsS http://localhost/points | sed -n '1,100p'
+curl -fsS http://localhost/routes | sed -n '1,100p'
 curl -fsS 'http://localhost/routes/tochal-darband?date=2026-09-04&period=morning' | sed -n '1,80p'
 curl -i http://localhost/points/not-a-real-point
 ```

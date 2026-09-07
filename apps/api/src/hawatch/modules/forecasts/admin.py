@@ -46,6 +46,7 @@ class WeatherPointAdmin(GISModelAdmin):
     readonly_fields = ("updated_at", "fixture_managed")
     fieldsets = (
         (None, {"fields": ("slug", "name", "page_name", "short_label", "aliases", "kind", "importance", "seo_indexable")}),
+        ("SEO", {"fields": ("seo_title", "seo_description", "seo_content"), "description": "خالی بگذارید تا title و توضیح از هویت نقطه و دادهٔ واقعی پیش‌بینی ساخته شود."}),
         ("Profile", {"fields": ("tile_name", "short_category", "category", "category_key", "region", "image", "image_alt", "is_popular", "popular_order")}),
         ("Location", {"fields": ("location", "elevation_m", "elevation_source", "status")}),
         (

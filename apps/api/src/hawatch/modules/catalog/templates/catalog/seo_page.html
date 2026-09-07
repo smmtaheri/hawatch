@@ -10,6 +10,7 @@
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="og:description" content="{{ page.description }}" />
     {% if page.canonical %}<meta property="og:url" content="{{ page.canonical }}" />{% endif %}
+    {% if page.structured_data %}<script type="application/ld+json">{{ page.structured_data|safe }}</script>{% endif %}
     <link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/brand/favicon.ico" sizes="any" />
@@ -29,6 +30,12 @@
       <main class="seo-shell" data-seo-initial="true">
         <header>
           <a href="/" aria-label="صفحهٔ اصلی هواچ">هواچ</a>
+          {% if page.kind != "not-found" %}
+            <nav aria-label="فهرست عمومی">
+              <a href="/points">نقاط</a>
+              <a href="/routes">مسیرها</a>
+            </nav>
+          {% endif %}
         </header>
         <article>
           {% if page.kind == "not-found" %}
@@ -39,6 +46,10 @@
             <p>هواچ</p>
             <h1>{{ page.headline }}</h1>
             <p>{{ page.summary }}</p>
+            {% if page.forecast_source or page.forecast_generated_at %}
+              <small>منبع داده: {{ page.forecast_source|default:"ثبت‌شده" }}{% if page.forecast_generated_at %} · آخرین به‌روزرسانی: {{ page.forecast_generated_at|date:"Y/m/d H:i" }}{% endif %}</small>
+            {% endif %}
+            {% if page.forecast_summary %}<p class="seo-forecast-summary">{{ page.forecast_summary }}</p>{% endif %}
 
             {% if page.kind == "home" %}
               {% if page.popular_points %}
@@ -86,6 +97,23 @@
                   </ol>
                 </section>
               {% endif %}
+            {% elif page.kind == "point-index" or page.kind == "route-index" %}
+              {% for group in page.catalog_groups %}
+                <section aria-labelledby="catalog-group-{{ forloop.counter }}">
+                  <h2 id="catalog-group-{{ forloop.counter }}">{{ group.label }}</h2>
+                  <ul>
+                    {% for item in group.items %}
+                      <li><a href="{{ item.href }}">{{ item.name }}</a>{% if item.description %} — {{ item.description }}{% endif %}</li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endfor %}
+            {% endif %}
+            {% if page.seo_content or page.identity_summary %}
+              <details>
+                <summary>اطلاعات تکمیلی</summary>
+                <p>{% if page.seo_content %}{{ page.seo_content|linebreaksbr }}{% else %}{{ page.identity_summary }}{% endif %}</p>
+              </details>
             {% endif %}
           {% endif %}
         </article>

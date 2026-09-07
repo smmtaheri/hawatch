@@ -75,6 +75,21 @@ TIMING_CONFIDENCE_VALUES = {"high", "medium", "low"}
 TIMING_STATUS_VALUES = {choice for choice, _label in Route.TimingStatus.choices}
 
 
+def seo_overrides(row: dict) -> dict[str, str]:
+    """Normalize optional curator copy from a catalog row.
+
+    The validator owns input validity; this helper keeps catalog import and
+    full catalog sync on the exact same persistence contract.
+    """
+
+    seo = row.get("seo") or {}
+    return {
+        "seo_title": str(seo.get("title") or "").strip(),
+        "seo_description": str(seo.get("description") or "").strip(),
+        "seo_content": str(seo.get("content") or "").strip(),
+    }
+
+
 def _restore_manual_route_point_positions(
     *, route: Route, fixture_point_slugs: list[str], manual_positions: list[tuple[int, int]]
 ) -> None:
@@ -287,6 +302,7 @@ def seed_catalog(
             "climate": row.get("climate") or profile.get("climate", "alpine"), "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED), "provenance": WeatherPoint.Provenance.CURATED,
             "catalog_version": version, "data_mode": "live", "seed_version": version, "ingest_enabled": True, "fixture_managed": True,
             "is_active": bool(row.get("is_active", profile.get("is_active", True))),
+            **seo_overrides(row),
         }
         # Home popularity is an operator-controlled presentation setting, not
         # catalog identity. Preserve an existing fixture-managed choice during
@@ -347,6 +363,7 @@ def seed_catalog(
             "origin_location": points[ordered[0]].location, "origin_weather_point": points[ordered[0]],
             "target_weather_point": points[ordered[-1]], "catalog_key": catalog_key, "data_mode": "live",
             "seed_version": version, "fixture_managed": True,
+            **seo_overrides(row),
         }
         changed_route_fields = [field for field, value in route_values.items() if getattr(route, field) != value]
         for field, value in route_values.items():

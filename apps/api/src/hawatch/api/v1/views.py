@@ -143,6 +143,25 @@ def points_list(request):
 
 
 @api_view(["GET"])
+def catalog_index(request):
+    """Small public index used by the two crawlable catalog pages."""
+
+    refresh_if_bucket_changed()
+    return Response(
+        {
+            "points": [
+                serialize_point_profile(point)
+                for point in publicly_visible_weather_points().order_by("place_type", "page_name", "name")
+            ],
+            "routes": [
+                {"title": route.title, "origin": route.origin, "target_label": route.target_label, "href": f"/routes/{route.slug}", "region": route.region}
+                for route in Route.objects.filter(is_active=True).order_by("region", "sort_order", "slug")
+            ],
+        }
+    )
+
+
+@api_view(["GET"])
 def point_detail(request, slug: str):
     refresh_if_bucket_changed()
     point = get_point(slug)
@@ -269,7 +288,7 @@ def sitemap_xml(_request):
     base = settings.PUBLIC_SITE_ORIGIN
     points = publicly_visible_weather_points().order_by("slug").values_list("slug", flat=True)
     routes = Route.objects.filter(is_active=True).values_list("slug", flat=True)
-    urls = [f"{base}/"] + [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
+    urls = [f"{base}/", f"{base}/points", f"{base}/routes"] + [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     xml.extend(f"<url><loc>{escape(url)}</loc></url>" for url in urls)
     xml.append("</urlset>")

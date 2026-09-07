@@ -38,6 +38,11 @@ class Route(models.Model):
     featured = models.BooleanField(default=False)
     sort_order = models.PositiveSmallIntegerField(default=0)
     is_active = models.BooleanField(default=True)
+    # Blank fields use the shared SEO copy builder. They are intentionally
+    # optional so catalog additions remain data-first without copy boilerplate.
+    seo_title = models.CharField(max_length=160, blank=True, default="")
+    seo_description = models.CharField(max_length=320, blank=True, default="")
+    seo_content = models.TextField(blank=True, default="")
     fixture_managed = models.BooleanField(
         default=False,
         help_text="True when created/updated from a JSON catalog import; prune only removes fixture_managed rows.",

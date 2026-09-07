@@ -4024,6 +4024,102 @@ bdi,
   min-width: 0;
 }
 
+.header-catalog-links {
+  display: flex;
+  gap: 10px;
+  color: var(--internal-muted, #a8c1c0);
+  font-size: var(--font-size-meta);
+}
+
+.header-catalog-links a:hover,
+.header-catalog-links a:focus-visible {
+  color: var(--internal-teal, #61c5c0);
+}
+
+.catalog-index-heading {
+  margin: 30px 0 18px;
+}
+
+.catalog-index-heading h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.catalog-index-heading > p:last-child {
+  margin: 6px 0 0;
+  color: var(--internal-muted, #a8c1c0);
+}
+
+.catalog-index-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.catalog-index-group {
+  padding: 18px;
+}
+
+.catalog-index-group h2 {
+  margin: 0 0 9px;
+  font-size: 18px;
+}
+
+.catalog-index-group li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--internal-border, var(--line));
+}
+
+.catalog-index-group a {
+  color: var(--internal-text, var(--text));
+  font-weight: var(--weight-semibold);
+}
+
+.catalog-index-group small {
+  color: var(--internal-muted, #a8c1c0);
+  text-align: left;
+}
+
+@media (width <= 720px) {
+  .header-catalog-links {
+    display: none;
+  }
+
+  .catalog-index-heading {
+    margin-top: 20px;
+  }
+
+  .catalog-index-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.point-page .point-hero-subtitle {
+  margin: 5px 0 0;
+  color: var(--internal-muted, #a8c1c0);
+  font-family: var(--font-family);
+  font-size: var(--font-size-meta);
+  font-weight: var(--weight-medium);
+  line-height: 1.45;
+}
+
+.forecast-source-note {
+  display: block;
+  margin-top: 5px;
+  color: var(--internal-muted, #a8c1c0);
+  font-size: var(--font-size-label);
+  line-height: 1.35;
+}
+
+.seo-forecast-summary {
+  margin: 6px 0 0;
+  color: var(--internal-text, #edf7f4);
+  font-size: var(--font-size-label);
+}
+
 @media (max-width: 720px) {
   /* A point name can be substantially longer than a short summit name.
    * Keep the identity and elevation in their own predictable lines rather
@@ -4048,6 +4144,12 @@ bdi,
     text-wrap: balance;
     font-size: clamp(1.45rem, 7.25vw, 2rem) !important;
     line-height: 1.18;
+  }
+
+  .point-page .point-hero-subtitle {
+    margin-top: 5px;
+    font-size: clamp(0.58rem, 2.45vw, 0.72rem);
+    line-height: 1.3;
   }
 
   .point-page .point-hero-meta-mobile {

@@ -10,7 +10,7 @@ from django.conf import settings
 from django.db import transaction
 from django.db.models import Q
 
-from hawatch.modules.catalog.catalog import _route_distance_km, _validate_document_shape, load_catalog_file, seed_catalog
+from hawatch.modules.catalog.catalog import _route_distance_km, _validate_document_shape, load_catalog_file, seed_catalog, seo_overrides
 from hawatch.modules.catalog.identity import metadata_for_point
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -90,6 +90,9 @@ def _point_state(point: WeatherPoint) -> tuple[Any, ...]:
         round(location.x, 7) if location else None,
         point.elevation_m,
         point.status,
+        point.seo_title,
+        point.seo_description,
+        point.seo_content,
     )
 
 
@@ -106,6 +109,9 @@ def _route_state(route: Route) -> tuple[Any, ...]:
         route.catalog_key,
         route.seed_version,
         route.is_active,
+        route.seo_title,
+        route.seo_description,
+        route.seo_content,
         tuple(route.points.order_by("sort_order", "pk").values_list("slug", flat=True)),
     )
 
@@ -144,6 +150,7 @@ def _point_matches_catalog(point: WeatherPoint, slug: str, desired: DesiredCatal
         "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED),
         "seo_indexable": bool(profile.get("seo_indexable", True)),
         "is_active": bool(row.get("is_active", profile.get("is_active", True))),
+        **seo_overrides(row),
     }
     return all(getattr(point, field) == value for field, value in expected.items()) and point.catalog_version == desired.point_versions[slug]
 
@@ -162,6 +169,7 @@ def _route_matches_catalog(route: Route, slug: str, desired: DesiredCatalog) -> 
         "featured": bool(row.get("featured", False)),
         "sort_order": row.get("sort_order", 0),
         "catalog_key": desired.route_catalog_keys[slug],
+        **seo_overrides(row),
     }
     return (
         all(getattr(route, field) == value for field, value in expected.items())

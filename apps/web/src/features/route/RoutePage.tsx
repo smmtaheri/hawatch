@@ -82,7 +82,7 @@ export function RoutePage() {
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
   const displaySpeed = draftSpeed ?? speed ?? data?.speed ?? "متوسط";
   const timingPending = Boolean(data?.timing_pending);
-  usePageTitle(data?.route.title);
+  usePageTitle(undefined, { title: data?.route.seo_title, description: data?.route.seo_description });
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
@@ -356,6 +356,10 @@ export function RoutePage() {
                       onLocked={handleLockedDate}
                     />
                   </div>
+                  <small className="forecast-source-note">
+                    منبع: {data.meta.provider === "open-meteo" ? "Open-Meteo" : data.meta.provider}
+                    {data.meta.last_generated_time ? ` · به‌روزرسانی: ${new Date(data.meta.last_generated_time).toLocaleString("fa-IR")}` : ""}
+                  </small>
                 </section>
                 <section className="route-weather-card card-surface" id="route-weather" aria-label="نقاط مهم و وضعیت مسیر در طول روز">
                   <div className="route-weather-heading">

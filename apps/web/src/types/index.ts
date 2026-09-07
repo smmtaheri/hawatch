@@ -42,6 +42,7 @@ export interface PointSummary {
   short_category: string;
   category: string;
   category_key: string;
+  place_type?: string;
   region: string;
   elevation_m: number | null;
   elevation_label: string;
@@ -170,6 +171,9 @@ export interface PlaceSubject {
   hero_image_alt: string;
   region?: string;
   category?: string;
+  seo_title?: string;
+  seo_description?: string;
+  seo_subtitle?: string;
 }
 
 export interface PlannerPeriodInfo {
@@ -304,6 +308,8 @@ export interface RouteForecast {
     slug: string;
     title: string;
     subtitle: string;
+    seo_title?: string;
+    seo_description?: string;
     origin: string;
     target_label: string;
     distance_label: string;
