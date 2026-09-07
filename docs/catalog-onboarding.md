@@ -42,8 +42,10 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 
 برای SEO، title/description/content را فقط در صورت داشتن copy مستند در بلوک
 اختیاری `seo` همان row بنویسید. در غیر این صورت renderer نام، نوع عارضه، ارتفاع،
-منطقه و forecast واقعی را خودکار به copy یکتا تبدیل و صفحه را در `/points` یا
-`/routes` و sitemap وارد می‌کند. جزئیات در [`seo.md`](seo.md) است.
+منطقه و forecast واقعی را خودکار به copy یکتا تبدیل می‌کند. همهٔ ردیف‌های فعال
+در فهرست و مسیرهای اپ باقی می‌مانند؛ فقط ردیف‌های `seo_indexable=false` از
+sitemap خارج و صفحهٔ مستقلشان با وجود ۲۰۰ بودن `noindex,follow` می‌شود. جزئیات
+در [`seo.md`](seo.md) است.
 
 `category_key` فقط متن دسته‌بندی نیست؛ کلید معنایی آیکون نقطه هم هست و از
 دیتابیس به فرانت می‌رسد. برای مثال، اسکلیم باید `waterfall` داشته باشد و دماوند
@@ -93,7 +95,11 @@ point-only ثبت کنید؛ ترک خودرو را به route پیاده تبد
 ارجاع می‌گیرد. برای تغییر catalog موجود، فایل فعال را version بعدی کنید و فایل
 version قبلی را در پوشهٔ package نگه ندارید، چون loader مالکیت تکراری را رد می‌کند.
 نقطهٔ جدید در Home محبوب نمی‌شود مگر آن‌که صریحاً با `set_popular_points` انتخاب
-شود؛ با این حال هر نقطهٔ فعال عمومی باید `seo_indexable: true` داشته باشد.
+شود. `seo_indexable` فقط discoverability را مشخص می‌کند: برای نقطهٔ مستقلِ قابل
+جست‌وجو `true` و برای waypoint فنی/بین‌راهی `false` بگذارید. مقدار false رکورد را
+غیرفعال نمی‌کند و آن نقطه همچنان در route، search، API و forecast باقی می‌ماند؛
+فقط صفحهٔ مستقل noindex و خارج از sitemap می‌شود. اگر point type فنی بدون این
+فیلد باشد، policy مرکزی به‌صورت پیش‌فرض noindex اعمال می‌کند.
 
 ### قواعد نام‌گذاری نقطه‌ها
 
@@ -540,7 +546,8 @@ Destination نیستند و تمام URLها از الگوی `/points/{slug}` پ
 
 1. Admin → WeatherPoint: slug، نام، مختصات، elevation، `is_active=true` و
    `ingest_enabled=true`؛ `fixture_managed` را دستی true نکنید.
-2. فیلدهای metadata و `seo_indexable` را روی همان WeatherPoint canonical تکمیل کنید.
+2. فیلدهای metadata و `seo_indexable` را روی همان WeatherPoint canonical تکمیل
+   کنید؛ برای waypoint فنی false و برای مقصد مستقل/عارضهٔ شاخص true است.
 3. Admin → Route: نقطه فعال، عنوان، `sort_order` و active.
 4. RoutePointها را به‌ترتیب بسازید و برای همه `cumulative_minutes` وارد کنید.
 5. بعد از save، publish service ترتیب، origin/target، segment، axis و timing را

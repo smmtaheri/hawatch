@@ -52,7 +52,7 @@
       "aliases": ["کلبه تارو", "کلبه تاروم", "Tarom cabin"],
       "identity_summary": "کلبهٔ تاروم، عارضهٔ نام‌دار و محل توقف در مسیر آریم به خرونرو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-khrwnrw-233348689",
@@ -72,7 +72,7 @@
       "aliases": ["گردنه خرمار", "خرمار خرونرو", "Kharmar pass"],
       "identity_summary": "گردنهٔ خرمار؛ گردنهٔ شناخته‌شدهٔ مسیر آریم پیش از یال خرونرو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-khrwnrw-65630685",
@@ -113,7 +113,7 @@
       "aliases": ["محیط بانی سنگده", "پاسگاه محیط بانی سنگده", "Sangdeh ranger station"],
       "identity_summary": "محیط‌بانی سنگده؛ نقطهٔ شناخته‌شدهٔ آغاز بخش پیادهٔ مسیر جنگلی خرونرو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/rwsty-sng-dh-t-qlh-khrwnrw-186361967",
@@ -153,7 +153,7 @@
       "aliases": ["چشمه و گوسفندسرا سنگده", "محل کمپ سنگده", "Sangdeh sheepfold"],
       "identity_summary": "گوسفندسرا و چشمهٔ مسیر سنگده؛ محل توقف و آبِ مستند در بخش میانی مسیر",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/rwsty-sng-dh-t-qlh-khrwnrw-186361967",
@@ -194,7 +194,7 @@
       "aliases": ["پارکینگ جنگلبانی ورپی", "مبدأ ورپی", "Varpi trailhead parking"],
       "identity_summary": "پارکینگ کوهنوردان و جنگلبانی ورپی؛ دسترسی واقعی آغاز مسیر پیادهٔ خرونرو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/swd-qlh-khrwnrw-z-mbd-rwsty-wrpy-varpi-220322934",
@@ -214,7 +214,7 @@
       "aliases": ["گوسفندسرا خرو", "خرو ورپی", "Kharou sheepfold"],
       "identity_summary": "گوسفندسرای خرو؛ محل توقف و عارضهٔ واقعی در بخش مرتفع مسیر ورپی",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/swd-qlh-khrwnrw-z-mbd-rwsty-wrpy-varpi-220322934"

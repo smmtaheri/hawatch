@@ -117,11 +117,8 @@ def meta_base(*, selected_date: date, period: str, extra: dict | None = None) ->
 
 
 def weather_point_is_active(point: WeatherPoint) -> bool:
-    """A point is public when active and linked to at least one active route."""
-    return bool(
-        point.is_active
-        and (point.seo_indexable or RoutePoint.objects.filter(weather_point=point, route__is_active=True).exists())
-    )
+    """SEO indexability never removes an active point from the application."""
+    return bool(point.is_active)
 
 
 def serialize_point_profile(point: WeatherPoint, *, include_routes: bool = False) -> dict:
@@ -281,6 +278,7 @@ def serialize_place_subject(
         "seo_title": seo["title"],
         "seo_description": seo["description"],
         "seo_subtitle": seo["subtitle"],
+        "seo_indexable": weather_point.seo_indexable,
     }
 
 

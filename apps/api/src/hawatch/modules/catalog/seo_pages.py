@@ -60,7 +60,7 @@ def _localized_identity_summary(point: WeatherPoint) -> str:
 
 
 def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpResponse:
-    robots = _robots(request) if status == 200 else "noindex,follow"
+    robots = _robots(request) if status == 200 and page.get("indexable", True) else "noindex,follow"
     response = render(
         request,
         "catalog/seo_page.html",
@@ -133,6 +133,7 @@ def _point_page(point: WeatherPoint) -> dict:
         "title": seo["title"],
         "description": seo["description"],
         "canonical": _canonical(f"/points/{point.slug}"),
+        "indexable": bool(point.seo_indexable),
         "headline": point.name,
         "summary": seo["subtitle"],
         "identity_summary": _localized_identity_summary(point),
@@ -279,7 +280,7 @@ def seo_routes_index(request: HttpRequest) -> HttpResponse:
 
 @require_GET
 def seo_point(request: HttpRequest, slug: str) -> HttpResponse:
-    point = publicly_visible_weather_points().filter(slug=slug).first()
+    point = WeatherPoint.objects.filter(slug=slug, is_active=True).first()
     if point is None:
         return _not_found(request, content_type="point")
     return _render(request, page=_point_page(point))

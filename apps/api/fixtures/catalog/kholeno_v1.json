@@ -14,7 +14,7 @@
       "aliases": ["پارکینگ لالون", "محل پارک ماشین لالان", "Lalan trailhead"],
       "identity_summary": "پارکینگ بالای روستای لالان؛ ابتدای پیمایش عمومی صعود به قلهٔ خلنو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "official",
       "source_urls": [
         "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
@@ -75,7 +75,7 @@
       "aliases": ["تلخ‌آب خلنو", "چشمه تلخ آب"],
       "identity_summary": "چشمهٔ تلخاب؛ نقطهٔ آب و استراحت شناخته‌شده در مسیر لالان به خلنو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
@@ -117,7 +117,7 @@
       "aliases": ["چشمهٔ بالای آبشار لالون", "آخرین چشمهٔ ورزاب"],
       "identity_summary": "آخرین چشمهٔ نام‌گذاری‌شده در مسیر آبشار لالون به گردنهٔ ورزاب؛ پس از آن منبع آب مطمئن گزارش نشده است",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://is.wikiloc.com/fjallaferd-slodir/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978",
@@ -137,7 +137,7 @@
       "aliases": ["گردنه وزوا", "گردنه ورزآب", "Varzab Pass"],
       "identity_summary": "گردنهٔ ورزاب؛ محل انشعاب مسیر سادهٔ کاسه و مسیر فنی برج و تیغه‌های ژاندارک",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/kholeno-summit-qlh-khulnw-4181802",
@@ -243,7 +243,7 @@
       "aliases": ["شیر کمر", "Shirkamar"],
       "identity_summary": "شیرکمر؛ عارضهٔ نام‌دار در درهٔ وارنگه‌رود و بخش آغازین مسیر شمالی خلنو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413"
@@ -262,7 +262,7 @@
       "aliases": ["دوآب وارنگه‌رود", "دو آب خلنو"],
       "identity_summary": "دوآب خلنو؛ محل شاخص پیوند آبراهه‌ها در مسیر طولانی وارنگه‌رود به دریاچهٔ خلنو",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/khlnw-z-wrngh-rwd-39398413",

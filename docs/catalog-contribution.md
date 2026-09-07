@@ -28,8 +28,13 @@ slug مسیر باید در کل پوشهٔ `apps/api/fixtures/catalog/` فقط 
   متر duplicate محسوب می‌شود و باید merge شود؛ بازهٔ ۲۵ تا ۱۰۰ متر فقط با
   بررسی و ثبت علت روشن در `reviewed_nearby_point_pairs` مجاز است.
 - slug باید lowercase، hyphenated، بدون underscore و پایدار باشد؛ `page_name`
-  نیز در تمام catalogها یکتا و زمینه‌دار باشد. تمام نقاط فعال عمومی
-  `seo_indexable: true` دارند و نقطهٔ جدید خودکار محبوب Home نمی‌شود.
+  نیز در تمام catalogها یکتا و زمینه‌دار باشد. `seo_indexable` فقط قابلیت
+  ایندکس‌شدن را کنترل می‌کند، نه فعال‌بودن یا نمایش نقطه: نقاط فنی و بین‌راهی
+  مثل پارکینگ، چشمهٔ مسیر، گردنه، یال و مبدأ فنی را صریحاً `false` کنید. این
+  نقاط همچنان در مسیر، جست‌وجو، API و forecast می‌مانند، اما صفحهٔ مستقلشان
+  `noindex,follow` است و در sitemap نمی‌آید. برای عارضهٔ مستقلِ قابل جست‌وجو
+  `true` بگذارید؛ اگر یک نوع فنی بدون این فیلد اضافه شود، policy مرکزی آن را
+  به‌طور پیش‌فرض noindex می‌کند. نقطهٔ جدید خودکار محبوب Home نمی‌شود.
 
 بعد از تغییر، validator provider و catalog را اجرا کنید، سپس برای انتشار روی
 دیتابیس موجود ابتدا `sync_catalog --dry-run` و بعد `sync_catalog --apply` را
@@ -82,9 +87,13 @@ HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. بن
 - `importance` یکی از `primary`/`support` و `name_status` یکی از
   `official`/`established`/`descriptive`؛
 - `climate` باید یکی از profileهای demo (`alpine`، `desert`، `forest_fog`، `high_alpine`، `lake_valley` یا `meadow`) باشد؛ validator و Admin مقدار ناشناخته را قبل از import/save رد می‌کنند؛
-- تمام WeatherPointهای فعال و عمومی `seo_indexable=true` هستند و صفحهٔ مستقل
-  آن‌ها در sitemap می‌آید؛ نقطهٔ inactive یا synthetic مستثنی است. نقطهٔ متصل
-  به route فعال بدون این flag فقط یک وضعیت ناسازگار است و validator آن را خطا می‌کند؛
+- `seo_indexable` را برای discoverability تعیین کنید: مقدار `false` برای
+  waypointهای صرفاً فنی مجاز است و آن رکورد نباید از `is_active` یا زنجیرهٔ
+  Route خارج شود. نقطهٔ noindex همچنان صفحهٔ ۲۰۰، API، جست‌وجو و forecast دارد؛
+  فقط meta/X-Robots آن `noindex,follow` و sitemap از آن خالی است؛ فهرست داخلی
+  برای حفظ مسیر و جست‌وجو آن را نگه می‌دارد.
+  نبود flag برای place typeهای فنی طبق policy مرکزی noindex می‌شود؛ برای
+  استثناهای مهم مثل ایستگاه تله‌کابین یا پناهگاه معروف، `true` را صریح بنویسید؛
 - `aliases` برای شکل‌های رایج جست‌وجو و `source_urls` برای منابع هویت/موقعیت؛
 - مختصات دقیق و `elevation_m` معتبر به‌همراه `elevation_source` یا evidence.
 - بلوک اختیاری `seo` فقط وقتی اضافه شود که copy آن کوتاه، منبع‌دار و واقعاً
@@ -228,8 +237,9 @@ uv run pytest
 همچنین با `git grep` مطمئن شوید slug قدیمی در catalog، API، frontend و docs
 فعلی نمانده است. migrationهای تاریخی تنها سابقهٔ بازپخش schema هستند و نباید
 برای compatibility URL جدید استفاده شوند. SEO عمومی P0 همین حالا روی `page_name`
-و slug canonical اعمال می‌شود: تمام نقاط فعال و عمومی و routeهای فعال وارد sitemap
-می‌شوند و queryهای برنامه‌ریزی `noindex,follow` هستند.
+و slug canonical اعمال می‌شود: نقاط فعالِ indexable و routeهای فعال وارد sitemap
+می‌شوند؛ waypointهای فعالِ فنی نیز قابل بازشدن‌اند اما `noindex,follow` هستند و
+از sitemap بیرون می‌مانند. queryهای برنامه‌ریزی نیز `noindex,follow` هستند.
 
 برای همگام‌سازی release روی دیتابیس موجود، bootstrap ضمنی کافی نیست. ابتدا backup
 بگیرید و command را در حالت امن اجرا کنید:

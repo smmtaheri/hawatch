@@ -11,7 +11,7 @@ from django.db import transaction
 from django.db.models import Q
 
 from hawatch.modules.catalog.catalog import _route_distance_km, _validate_document_shape, load_catalog_file, seed_catalog, seo_overrides
-from hawatch.modules.catalog.identity import metadata_for_point
+from hawatch.modules.catalog.identity import metadata_for_point, seo_indexable_for_row
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -148,7 +148,7 @@ def _point_matches_catalog(point: WeatherPoint, slug: str, desired: DesiredCatal
         "climate": row.get("climate") or profile.get("climate", "alpine"),
         "elevation_m": row.get("elevation_m"),
         "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED),
-        "seo_indexable": bool(profile.get("seo_indexable", True)),
+        "seo_indexable": seo_indexable_for_row(row, profile),
         "is_active": bool(row.get("is_active", profile.get("is_active", True))),
         **seo_overrides(row),
     }
@@ -190,7 +190,6 @@ def build_sync_plan(desired: DesiredCatalog) -> dict[str, Any]:
         if points[slug].fixture_managed and (
             points[slug].catalog_version != desired.point_versions.get(slug, points[slug].catalog_version)
             or not points[slug].is_active
-            or not points[slug].seo_indexable
             or not _point_matches_catalog(points[slug], slug, desired)
         )
     )

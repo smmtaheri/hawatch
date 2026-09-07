@@ -16,7 +16,7 @@ from django.contrib.gis.geos import Point
 from django.db import transaction
 from django.db.models import Q
 
-from hawatch.modules.catalog.identity import metadata_for_point
+from hawatch.modules.catalog.identity import metadata_for_point, seo_indexable_for_row
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.catalog.validation import format_issues, validate_catalog_document
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -298,7 +298,7 @@ def seed_catalog(
             "tile_name": row.get("tile_name") or (profile.get("tile_name", "") if slug == _point_slug(data) else ""), "short_category": row.get("short_category") or (profile.get("short_category", "") if slug == _point_slug(data) else ""),
             "category": row.get("category") or (profile.get("category", "") if slug == _point_slug(data) else ""), "category_key": row.get("category_key") or (profile.get("category_key", "") if slug == _point_slug(data) else ""),
             "region": row.get("region") or (profile.get("region", "") if slug == _point_slug(data) else ""), "image": row.get("image") or (profile.get("image", "") if slug == _point_slug(data) else ""), "image_alt": row.get("image_alt") or (profile.get("image_alt", "") if slug == _point_slug(data) else ""),
-            "popular_order": profile.get("popular_order", 0) if slug == _point_slug(data) else 0, "is_popular": bool(profile.get("is_popular", False)) if slug == _point_slug(data) else False, "seo_indexable": bool(profile.get("seo_indexable", True)),
+            "popular_order": profile.get("popular_order", 0) if slug == _point_slug(data) else 0, "is_popular": bool(profile.get("is_popular", False)) if slug == _point_slug(data) else False, "seo_indexable": seo_indexable_for_row(row, profile),
             "climate": row.get("climate") or profile.get("climate", "alpine"), "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED), "provenance": WeatherPoint.Provenance.CURATED,
             "catalog_version": version, "data_mode": "live", "seed_version": version, "ingest_enabled": True, "fixture_managed": True,
             "is_active": bool(row.get("is_active", profile.get("is_active", True))),

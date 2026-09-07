@@ -36,7 +36,7 @@
       "aliases": [],
       "identity_summary": "کمپ اول مسیر کلاک؛ نقطهٔ camp در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
@@ -58,7 +58,7 @@
       "aliases": [],
       "identity_summary": "چشمهٔ کمپ دوم کلاک؛ نقطهٔ spring در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
@@ -80,7 +80,7 @@
       "aliases": [],
       "identity_summary": "کمپ سوم کلاک؛ نقطهٔ camp در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
@@ -102,7 +102,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ چورن؛ نقطهٔ pass در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
@@ -181,7 +181,7 @@
       "aliases": [],
       "identity_summary": "حسینیهٔ نسن؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810",
@@ -223,7 +223,7 @@
       "aliases": [],
       "identity_summary": "محل اتصال شیرکمر به مسیر آزادکوه؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",

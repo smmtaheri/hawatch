@@ -25,11 +25,16 @@ def ingestible_weather_points(*, slugs: list[str] | None = None) -> QuerySet[Wea
 
 
 def publicly_visible_weather_points() -> QuerySet[WeatherPoint]:
+    """Return every active catalog point available to the application.
+
+    SEO indexability is deliberately not an application-visibility flag:
+    technical waypoints must remain available to routes, search and the API.
+    Callers that build a sitemap should add ``seo_indexable=True`` explicitly.
+    """
+
     return (
         WeatherPoint.objects.filter(is_active=True)
         .exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
-        .filter(Q(seo_indexable=True) | Q(route_links__route__is_active=True))
-        .distinct()
     )
 
 

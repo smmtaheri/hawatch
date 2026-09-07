@@ -33,7 +33,11 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     selectPeriod,
     reload,
   } = usePlaceForecast({ kind, slug });
-  usePageTitle(undefined, { title: data?.subject.seo_title, description: data?.subject.seo_description });
+  usePageTitle(undefined, {
+    title: data?.subject.seo_title,
+    description: data?.subject.seo_description,
+    robots: data?.subject.seo_indexable === false ? "noindex,follow" : undefined,
+  });
 
   // Detail pages open at their identity hero. The public site header is
   // already at document top, so targeting it makes deep-link navigation look

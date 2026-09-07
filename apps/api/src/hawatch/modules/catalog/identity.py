@@ -28,6 +28,27 @@ PLACE_TYPES = {
     "technical_point",
 }
 
+# Technical route waypoints are useful to the planner but rarely make useful
+# standalone search results.  A catalog row may explicitly override this
+# default (for example a known cable-car station or a famous shelter).
+SEO_TECHNICAL_PLACE_TYPES = frozenset({"parking", "spring", "pass", "ridge", "trailhead", "technical_point"})
+
+
+def seo_indexable_for_row(row: Mapping[str, object], profile: Mapping[str, object] | None = None) -> bool:
+    """Resolve the catalog's SEO policy without changing runtime visibility.
+
+    The row is the source of truth when it declares ``seo_indexable``.  New
+    technical waypoints that omit the flag default to noindex; independent
+    destination types keep the catalog profile's default.
+    """
+
+    explicit = row.get("seo_indexable")
+    if isinstance(explicit, bool):
+        return explicit
+    if str(row.get("place_type") or "").strip() in SEO_TECHNICAL_PLACE_TYPES:
+        return False
+    return bool((profile or {}).get("seo_indexable", True))
+
 # Public SEO copy must not expose the catalog's stable English enum values.
 # Keep this mapping next to PLACE_TYPES so a newly supported type cannot be
 # rendered accidentally as an implementation detail.  The fallback is

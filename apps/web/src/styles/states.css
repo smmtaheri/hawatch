@@ -4,6 +4,25 @@
   margin: 16px 0;
 }
 
+.forecast-attribution {
+  max-width: var(--content-max);
+  margin: 10px auto 0;
+  padding: 0 42px 16px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0.72;
+  text-align: right;
+}
+
+@media (width <= 720px) {
+  .forecast-attribution {
+    padding-inline: 14px;
+    padding-bottom: 12px;
+    font-size: 9px;
+  }
+}
+
 /* Public catalog summary on the home hero. Counts come from the active
  * database catalog, not from the four curated home tiles. */
 .home-catalog-stats {

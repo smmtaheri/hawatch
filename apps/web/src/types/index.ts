@@ -174,6 +174,7 @@ export interface PlaceSubject {
   seo_title?: string;
   seo_description?: string;
   seo_subtitle?: string;
+  seo_indexable?: boolean;
 }
 
 export interface PlannerPeriodInfo {

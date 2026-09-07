@@ -65,6 +65,27 @@ URLهای canonical واقعی را بازتاب می‌دهد.
 sitemap و لینک index را خودکار می‌گیرد؛ migration فقط برای ذخیرهٔ override لازم
 است.
 
+## indexability نقاط فنی
+
+`seo_indexable` در هر row از Catalog منبع سیاست discoverability است. مقدار
+`false` نقطه را حذف یا غیرفعال نمی‌کند: WeatherPoint فعال همچنان در زنجیرهٔ
+Route، جست‌وجوی داخلی، API و ingest/forecast باقی می‌ماند. فقط صفحهٔ مستقل آن
+با status 200 و canonical تمیز، `noindex,follow` و `X-Robots-Tag` متناظر می‌گیرد
+و از sitemap کنار گذاشته می‌شود. فهرست و لینک‌های داخل اپ همچنان همهٔ نقاط فعال
+را نشان می‌دهند تا مسیر، جست‌وجو و timeline بدون تغییر کار کنند. View خود نقطه
+از query عمومی جداست تا این URL همچنان برای timeline مسیر قابل بازشدن باشد.
+
+Policy مرکزی برای point typeهای فنی (`parking`، `spring`، `pass`، `ridge`،
+`trailhead` و `technical_point`) وقتی flag حذف شده باشد، noindex را پیش‌فرض
+می‌کند. استثناهای واقعی مانند ایستگاه تله‌کابین، پناهگاه معروف یا مبدأی که
+خودش مقصد مستقل است باید در Catalog صریحاً `seo_indexable: true` داشته باشند.
+این resolution در seed و `sync_catalog` مشترک است و syncهای بعدی flag را
+برنمی‌گردانند. Duplicate بررسی‌شده باید یک slug canonical داشته باشد؛ تا وقتی
+هم‌هویتی با مختصات/منبع ثابت نشده، رکوردها حذف یا redirect نمی‌شوند.
+
+Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo` در footer است؛ منبع و
+زمان به‌روزرسانی داخل کارت‌های forecast یا محتوای اصلی قرار نمی‌گیرد.
+
 ## رفتار URL
 
 | وضعیت | status | robots | canonical |

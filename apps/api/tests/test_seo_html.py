@@ -72,6 +72,42 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in trailing_response.content.decode()
 
 
+def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_client, seo_catalog):
+    point = WeatherPoint.objects.create(
+        slug="seo-test-trailhead",
+        name="مبدأ فنی آزمایشی",
+        page_name="مبدأ فنی آزمایشی",
+        short_label="مبدأ فنی",
+        identity_summary="مبدأ فنی آزمایشی در مسیر ثبت‌شدهٔ هواچ.",
+        place_type="trailhead",
+        category="مبدأ مسیر",
+        region="تهران",
+        elevation_m=2100,
+        location=Point(51.5, 35.8, srid=4326),
+        seo_indexable=False,
+        is_active=True,
+    )
+
+    page = api_client.get(f"/points/{point.slug}")
+    assert page.status_code == 200
+    body = page.content.decode()
+    assert 'name="robots" content="noindex,follow"' in body
+    assert f'rel="canonical" href="https://hawatch.ir/points/{point.slug}"' in body
+    assert page["X-Robots-Tag"] == "noindex,follow"
+
+    # Indexability is not an application-visibility flag: detail/search/API
+    # still expose the active waypoint for route planning.
+    assert api_client.get(f"/api/v1/points/{point.slug}/").status_code == 200
+    assert api_client.get(f"/api/v1/points/{point.slug}/forecast/").status_code == 200
+    search = api_client.get("/api/v1/points/", {"query": "مبدأ فنی"}).json()
+    assert any(item["slug"] == point.slug for item in search["results"])
+    # The crawlable catalog and the application keep technical waypoints
+    # discoverable; only their own document and the sitemap are noindex.
+    assert f"/points/{point.slug}" in api_client.get("/points").content.decode()
+    sitemap = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
+    assert f"/points/{point.slug}" not in sitemap
+
+
 def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, seo_catalog):
     gahar = api_client.get("/points/gahar")
     assert gahar.status_code == 200

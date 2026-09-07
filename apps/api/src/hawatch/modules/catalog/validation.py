@@ -136,10 +136,9 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
                     f"point {slug!r} has unsupported climate {climate!r}; allowed: {', '.join(sorted(supported_climates))}",
                 )
             )
-        is_active = row.get("is_active", profile.get("is_active", True))
         seo_indexable = row.get("seo_indexable", profile.get("seo_indexable", True))
-        if is_active and seo_indexable is not True:
-            issues.append(_issue("error", "seo-indexability", f"active public point {slug!r} must set seo_indexable=true"))
+        if not isinstance(seo_indexable, bool):
+            issues.append(_issue("error", "seo-indexability", f"point {slug!r} seo_indexable must be boolean"))
         for key in ("name", "page_name", "short_label", "place_type", "identity_summary", "importance", "name_status", "source_urls"):
             if not row.get(key):
                 issues.append(_issue("error", "point-metadata", f"point {slug!r} is missing {key}"))
@@ -248,8 +247,6 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
                     f"point has unsupported climate {point.climate!r}: {point.slug}",
                 )
             )
-        if not point.slug.startswith(("dest:", "route:")) and not point.seo_indexable:
-            issues.append(_issue("error", "seo-indexability", f"active public point is unexpectedly noindex: {point.slug}"))
         names[normalize_identity_text(point.page_name)].append(point.slug)
     for normalized, slugs in names.items():
         if normalized and len(slugs) > 1:

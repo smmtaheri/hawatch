@@ -29,7 +29,7 @@
       "aliases": ["چشمه گورخانی سیالان", "Gourkhani spring"],
       "identity_summary": "چشمهٔ گورخانی؛ منبع آب نام‌دار در بخش بالادست مسیر شمالی سیالان",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
@@ -49,7 +49,7 @@
       "aliases": ["گوسفندسرای وینی", "گوسفندسرا ونی سیالان", "Vini sheepfold"],
       "identity_summary": "گوسفندسرا وِنی؛ محل شناخته‌شدهٔ شب‌مانی در مسیر شمالی سیالان",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
@@ -69,7 +69,7 @@
       "aliases": ["گردنه سیالان", "Sialan pass"],
       "identity_summary": "گردنهٔ سیالان؛ گردنهٔ مرتفع و نام‌دار پیش از یال قله",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",

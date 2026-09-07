@@ -59,12 +59,16 @@ def test_known_points_and_routes_exist(seeded):
 
 
 @pytest.mark.django_db
-def test_all_active_catalog_points_are_indexable(seeded):
+def test_all_active_catalog_points_honor_catalog_indexability(seeded):
     public_points = WeatherPoint.objects.filter(is_active=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
     desired = load_packaged_catalogs()
 
     assert set(public_points.values_list("slug", flat=True)) == set(desired.point_slugs)
-    assert not public_points.filter(seo_indexable=False).exists()
+    expected_indexable = {
+        slug for slug, row in desired.point_rows.items() if row.get("seo_indexable", True)
+    }
+    assert set(public_points.filter(seo_indexable=True).values_list("slug", flat=True)) == expected_indexable
+    assert public_points.filter(seo_indexable=False).exists()
 
 
 @pytest.mark.django_db
@@ -75,7 +79,12 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     root = ElementTree.fromstring(response.content)
     locations = [node.text for node in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     desired = load_packaged_catalogs()
-    expected_points = {f"https://hawatch.ir/points/{slug}" for slug in desired.point_slugs}
+    expected_points = {
+        f"https://hawatch.ir/points/{slug}"
+        for slug in WeatherPoint.objects.filter(is_active=True, seo_indexable=True)
+        .exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
+        .values_list("slug", flat=True)
+    }
     expected_routes = {f"https://hawatch.ir/routes/{slug}" for slug in desired.route_slugs}
     expected_locations = {"https://hawatch.ir/"} | expected_points | expected_routes
     assert set(locations) == expected_locations

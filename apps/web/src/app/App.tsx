@@ -54,6 +54,9 @@ export function AppRoutes() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {backgroundLocation ? <LoginOverlay /> : null}
+      <footer className="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">
+        دادهٔ هواشناسی: Open-Meteo
+      </footer>
     </>
   );
 }

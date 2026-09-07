@@ -81,9 +81,12 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 - Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
 - Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
 - Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty --all` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): atomically restores every packaged catalog only if no live WeatherPoints exist. A normal restart never re-syncs or prunes an existing catalog.
-- تمام WeatherPointهای فعال و عمومی باید `seo_indexable=true` باشند؛ validator این
-  invariant را کنترل می‌کند. Scheduled ingest نقاط `is_active` + `ingest_enabled`
-  را بر اساس همین وضعیت یا پیوند به Route فعال انتخاب می‌کند. Snapshot revision is
+- `seo_indexable` فقط discoverability است و false بودن آن برای WeatherPoint فعال
+  مجاز است. چنین نقطه‌ای از مسیر، جست‌وجو، API و ingest/forecast حذف نمی‌شود؛ فقط
+  صفحهٔ مستقل آن `noindex,follow` است و از sitemap کنار گذاشته می‌شود؛ فهرست
+  داخلی و لینک‌های مسیر همچنان آن را نشان می‌دهند. `ingestible_weather_points` همچنان نقطهٔ متصل به Route فعال را برای
+  forecast انتخاب می‌کند. اگر place type فنی بدون flag وارد شود، policy مرکزی
+  آن را noindex می‌کند؛ استثناهای مقصدی باید صریحاً true باشند. Snapshot revision is
   `dbrev-…`.
 - Inactive Point / Route / WeatherPoint rows are omitted from public APIs, siblings, related routes, search, and health catalog counts.
 - Admin and catalog import share `normalize_and_publish_route` for ordering, denormalized fields, origin/target, segments, axis, timing demotion, and search rebuild.

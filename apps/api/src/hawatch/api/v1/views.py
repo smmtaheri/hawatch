@@ -286,7 +286,7 @@ def sitemap_xml(_request):
     from django.conf import settings
 
     base = settings.PUBLIC_SITE_ORIGIN
-    points = publicly_visible_weather_points().order_by("slug").values_list("slug", flat=True)
+    points = publicly_visible_weather_points().filter(seo_indexable=True).order_by("slug").values_list("slug", flat=True)
     routes = Route.objects.filter(is_active=True).values_list("slug", flat=True)
     urls = [f"{base}/", f"{base}/points", f"{base}/routes"] + [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

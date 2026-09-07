@@ -78,9 +78,10 @@ repository از handoff اولیه عبور کرده و اکنون یک monorepo
 
 ## وضعیت تغییرات قبل از deploy
 
-در آخرین تغییرات، تمام ۱۴۳ ردیف WeatherPoint کاتالوگ صریحاً
-`seo_indexable=true` دارند و sitemap پایه شامل ۱ Home، ۱۴۳ Point و ۳۸ Route
-است. برای دیتابیس موجود command کنترل‌شدهٔ `sync_catalog` با حالت
+این پاراگراف snapshot تاریخیِ قبل از policy indexability است. در Catalog فعلی
+۱۵۹ WeatherPoint وجود دارد: ۸۱ ردیف indexable و ۷۸ waypoint فنیِ فعال اما
+noindex. فقط ۸۱ ردیف در sitemap نقطه‌ها می‌آیند؛ هر ۱۵۹ ردیف همچنان در فهرست
+و برای مسیر، search، API و forecast قابل استفاده‌اند. برای دیتابیس موجود command کنترل‌شدهٔ `sync_catalog` با حالت
 `--dry-run`/`--apply` اضافه شده است؛ staleهای fixture-managed را با گزارش دقیق
 پاک یا غیرفعال می‌کند و به رکوردهای دستی دست نمی‌زند. catch-all قبلی SPA نیز با
 Not Found قابل‌مشاهده و بررسی وجود Point/Route در Nginx جایگزین شده است.
