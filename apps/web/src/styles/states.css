@@ -4182,10 +4182,10 @@ bdi,
   .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge {
     position: absolute !important;
     z-index: 3;
-    top: 8px !important;
+    top: 6px !important;
     right: auto !important;
     bottom: auto !important;
-    left: 8px !important;
+    left: 6px !important;
     display: grid !important;
     width: 13px !important;
     height: 13px !important;
