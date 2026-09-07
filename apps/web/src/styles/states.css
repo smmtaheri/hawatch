@@ -4128,23 +4128,6 @@ bdi,
     margin: 0 !important;
   }
 
-  /* This stays out of normal layout: the weekday/date baseline must be
-   * identical for locked and available days. */
-  .day-tabs button.is-locked .day-lock-badge {
-    position: absolute !important;
-    top: 4px;
-    right: auto;
-    left: 5px;
-    width: 12px;
-    height: 14px;
-    font-size: 0;
-    filter: drop-shadow(0 1px 1px rgb(4 24 32 / 36%));
-  }
-
-  .day-tabs button.is-locked .day-lock-symbol {
-    width: 12px;
-    height: 14px;
-  }
 }
 
 /* Mobile forecast access tabs are deliberately one shared component. The
@@ -4192,17 +4175,17 @@ bdi,
     line-height: 1.35 !important;
   }
 
-  .day-tabs button.is-locked .day-lock-badge,
-  .route-page .route-planner .planner-day .day-tabs button.is-locked .day-lock-badge {
+  .day-tabs button.is-locked > .day-lock-badge,
+  .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge {
     position: absolute !important;
     z-index: 3;
-    top: 6px !important;
+    top: 1px !important;
     right: auto !important;
     bottom: auto !important;
-    left: 6px !important;
+    left: 3px !important;
     display: grid !important;
-    width: 13px !important;
-    height: 15px !important;
+    width: 10px !important;
+    height: 11px !important;
     margin: 0 !important;
     padding: 0 !important;
     place-items: center;
@@ -4211,10 +4194,10 @@ bdi,
     pointer-events: none;
   }
 
-  .day-tabs button.is-locked .day-lock-symbol,
-  .route-page .route-planner .planner-day .day-tabs button.is-locked .day-lock-symbol {
+  .day-tabs button.is-locked > .day-lock-badge .day-lock-symbol,
+  .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge .day-lock-symbol {
     display: block;
-    width: 13px !important;
-    height: 15px !important;
+    width: 10px !important;
+    height: 11px !important;
   }
 }
