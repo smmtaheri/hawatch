@@ -19,7 +19,7 @@ export function RouteTimeline({
     <div className="route-linear-panel">
       <div className="route-linear-endpoints" aria-hidden="true">
         <span>مبدا · {origin}</span>
-        <span>هدف مسیر · {target}</span>
+        <span>مقصد · {target}</span>
       </div>
       <div className="route-linear-track" aria-label={`نقاط مسیر ${title}`}>
         {points.map((point, index) => {
