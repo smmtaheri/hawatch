@@ -916,7 +916,9 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         return f"حدود {time_label}"
 
     def _status_phrase(label: str, point: dict, detail: str | None = None) -> str:
-        parts = [f"{label}: {point['name']}" if label else point["name"]]
+        point_label = f"{label}: {point['name']}" if label else point["name"]
+        icon = str(point.get("icon") or "").strip()
+        parts = [f"{icon}　{point_label}" if icon and icon != "—" else point_label]
         if detail:
             parts.append(detail)
         return " · ".join(parts)
