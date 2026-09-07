@@ -1102,8 +1102,28 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
   opacity: 0.85;
 }
 
-.route-mobile-endpoints {
-  display: none;
+.route-page .route-weather-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.route-page .route-mobile-endpoints {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--internal-muted, #a8c1c0);
+  font-size: var(--font-size-meta, 11px);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.route-page .route-mobile-endpoints > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Gear SVGs are consumed as masks so currentColor keeps them legible in both
@@ -1196,6 +1216,7 @@ html[data-theme="light"] .route-page .share-gear li {
 .route-page .route-points-axis-content .route-linear-endpoints {
   width: 100%;
   min-width: 0;
+  display: none !important;
 }
 
 .route-page .route-points-axis-content .route-linear-track,
