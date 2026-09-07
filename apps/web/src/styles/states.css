@@ -1102,6 +1102,10 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
   opacity: 0.85;
 }
 
+.route-mobile-endpoints {
+  display: none;
+}
+
 /* Gear SVGs are consumed as masks so currentColor keeps them legible in both
  * themes while the semantic filenames remain the single asset contract. */
 .hawatch-gear-icon {
@@ -2772,6 +2776,38 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .route-page .route-points-axis-content .route-point-weather-card {
     flex: none !important;
+  }
+
+  .route-page .route-weather-heading {
+    display: flex !important;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .route-page .route-mobile-endpoints {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 0;
+    color: var(--internal-muted, #a8c1c0);
+    font-size: 8px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .route-page .route-mobile-endpoints > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .route-page .route-points-axis-content .route-linear-endpoints {
+    display: none !important;
+  }
+
+  .route-page .route-points-axis-content .route-point-weather-grid {
+    border-top: 0 !important;
   }
 }
 

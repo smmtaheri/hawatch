@@ -360,6 +360,10 @@ export function RoutePage() {
                 <section className="route-weather-card card-surface" id="route-weather" aria-label="نقاط مهم و وضعیت مسیر در طول روز">
                   <div className="route-weather-heading">
                     <span className="decision-chip">نقاط مهم</span>
+                    <span className="route-mobile-endpoints">
+                      <span>مبدا · {data.route.origin}</span>
+                      <span>هدف مسیر · {data.route.target_label}</span>
+                    </span>
                   </div>
                   <div className="route-points-axis-scroll">
                     <div
