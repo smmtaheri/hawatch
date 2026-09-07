@@ -9,9 +9,9 @@
 - clone یا fast-forward کردن فقط checkout مورد انتظار Hawatch؛
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
-- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛ image سرویس one-shot `ingest` درست قبل از اجرای اولیه build می‌شود تا از image قدیمی با dependencyهای ناقص استفاده نشود؛
+- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛ همهٔ imageهای لازم، از جمله سرویس one-shot `ingest`، قبل از جایگزینی کانتینرهای در حال اجرا build می‌شوند؛ اگر registry یا شبکه timeout بدهد، release فعلی دست‌نخورده می‌ماند؛
 - همگام‌سازی atomic همهٔ catalogهای versioned با دیتابیس موجود پیش از smoke check؛
-- توقف کامل containerهای همان Compose project با `down --remove-orphans` و سپس بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate`؛ volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛
+- بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate` پس از موفقیت build؛ orphanهای همان Compose project پاک می‌شوند و volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛ اسکریپت قبل از build دیگر `down` نمی‌زند؛
 - نمایش status و URLهای قابل تست.
 
 در deployهای شامل تغییر renderer SEO، هر دو image `api` و `web` باید build شوند:
@@ -26,6 +26,30 @@ revalidate شوند و `/admin/*` و `/api/*` نباید در cache عمومی �
 قواعد purge و header در [`seo.md`](seo.md#تنظیم-cdn-و-cache) آمده است.
 
 اسکریپت root می‌خواهد و اگر checkout موجود dirty باشد، remote ناشناخته باشد، یا `.env` موجود placeholder داشته باشد متوقف می‌شود. `.env` موجود را جایگزین نمی‌کند و secretهای موجود را overwrite نمی‌کند؛ فقط تنظیمات runtime لازم برای deploy را به‌روزرسانی می‌کند. کلید `WEATHER_PROXY_ENCRYPTION_KEY` نیز در صورت نبودن با مقدار تصادفی ساخته می‌شود و باید بین سرویس‌ها ثابت بماند. هیچ فایل یا volumeای را حذف نمی‌کند و firewall را تغییر نمی‌دهد. قبل از اجرای ingest، migration و seed کاتالوگ طبق entrypoint فعلی API اجرا می‌شوند.
+
+### خطای اتصال به Docker Hub
+
+خطایی مانند `TLS handshake timeout` برای `registry-1.docker.io` مشکل دسترسی
+Docker به registry است، نه خرابی daemon. اسکریپت دو بار build را retry می‌کند و
+تا وقتی build موفق نشده، کانتینرهای سالم release قبلی را متوقف یا حذف نمی‌کند.
+برای بررسی شبکه روی خود سرور:
+
+```bash
+docker info
+curl -Iv --connect-timeout 10 https://registry-1.docker.io/v2/
+docker pull python:3.14-slim-bookworm
+docker pull node:22-bookworm-slim
+```
+
+اگر pull همچنان timeout شد، DNS/خروجی HTTPS سرور یا محدودیت Docker Hub را رفع
+کنید (در صورت نیاز registry mirror یا proxy سازمانی تنظیم کنید) و deploy را
+دوباره اجرا کنید. تا آن زمان، اگر imageهای release قبلی روی سرور موجود باشند،
+سرویس را با `docker compose ... up -d --no-build` بالا بیاورید؛ این کار build یا
+تغییر دیتابیس انجام نمی‌دهد. برای افزایش retry موقت:
+
+```bash
+DOCKER_BUILD_RETRIES=4 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
+```
 
 ## اجرای مستقیم روی یک سرور تازه
 

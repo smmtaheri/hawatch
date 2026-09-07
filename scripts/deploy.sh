@@ -5,8 +5,9 @@ set -Eeuo pipefail
 #
 # The script is intentionally scoped to one checkout and one Compose project:
 # it never runs `docker compose down -v`, removes files, changes firewall rules,
-# or enables the optional observability/cache profiles by default. Each deploy
-# does remove only stale containers from this Compose project before rebuilding.
+# or enables the optional observability/cache profiles by default. Images are
+# built before any running containers are replaced, so a registry/build outage
+# never takes down a healthy release.
 
 readonly DEFAULT_REPO_URL="https://github.com/smmtaheri/hawatch.git"
 readonly DEFAULT_BRANCH="main"
@@ -18,6 +19,7 @@ BRANCH="${HAWATCH_BRANCH:-$DEFAULT_BRANCH}"
 REPO_DIR="${HAWATCH_DIR:-$DEFAULT_DIR}"
 RUN_INITIAL_INGEST="${RUN_INITIAL_INGEST:-1}"
 ENABLE_OBSERVABILITY="${ENABLE_OBSERVABILITY:-0}"
+DOCKER_BUILD_RETRIES="${DOCKER_BUILD_RETRIES:-2}"
 
 log() {
   printf '[hawatch] %s\n' "$*"
@@ -49,6 +51,7 @@ Optional environment variables:
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
   NGINX_PUBLISH_PORT     Gateway host port (default: 80)
   RUN_INITIAL_INGEST     Set 0 to skip the first live ingest
+  DOCKER_BUILD_RETRIES   Number of build retries for transient registry errors (default 2)
   FORECAST_STALE_AFTER_HOURS  Freshness threshold (default 7 for six-hour ingest)
   ENABLE_OBSERVABILITY   Set 1 only on a host sized for the heavy stack
 
@@ -64,6 +67,7 @@ fi
 
 [[ "$(uname -s)" == "Linux" ]] || fail "This deployment script supports Linux servers only."
 [[ "${EUID}" -eq 0 ]] || fail "Run as root, or set HAWATCH_DIR and adapt the package installation for a non-root user."
+[[ "$DOCKER_BUILD_RETRIES" =~ ^[1-9][0-9]*$ ]] || fail "DOCKER_BUILD_RETRIES must be a positive integer."
 
 install_base_packages() {
   local package_manager=""
@@ -332,19 +336,38 @@ run_stack() {
   fi
 
   "${compose[@]}" config --quiet
-  # Restart only this named Compose project from a clean container state. This
-  # removes its orphaned containers and network, but deliberately preserves all
-  # named volumes (especially PostgreSQL data) and never touches other projects.
-  log "Stopping current Hawatch containers and removing Hawatch Compose orphans (volumes are preserved)."
-  "${compose[@]}" down --remove-orphans
+
+  local -a build_targets=(api web maintenance ingest-scheduler ingest)
+  local build_attempt=1
+  local build_succeeded=0
+  while [[ "$build_attempt" -le "$DOCKER_BUILD_RETRIES" ]]; do
+    log "Building release images (attempt ${build_attempt}/${DOCKER_BUILD_RETRIES}); running containers remain untouched."
+    if "${compose[@]}" build "${build_targets[@]}"; then
+      build_succeeded=1
+      break
+    fi
+    if [[ "$build_attempt" -lt "$DOCKER_BUILD_RETRIES" ]]; then
+      log "Image build failed, likely a transient registry/network error; retrying in 5 seconds."
+      sleep 5
+    fi
+    build_attempt=$((build_attempt + 1))
+  done
+  [[ "$build_succeeded" -eq 1 ]] || fail "Release image build failed; existing containers were not stopped. Check Docker Hub connectivity and retry."
+
+  # Replace only this named Compose project after every required image exists.
+  # Volumes (especially PostgreSQL data) remain intact and other projects are
+  # never touched. If build fails, the currently running containers are still
+  # serving the previous release and can be left alone while the registry issue
+  # is fixed. Startup failures are reported by the health checks below.
+  log "Starting the new release and removing Hawatch Compose orphans (volumes are preserved)."
 
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler \
+    "${compose[@]}" up -d --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler \
       opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
       vector prometheus grafana
   else
-    "${compose[@]}" up -d --build --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler
+    "${compose[@]}" up -d --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler
   fi
 
   wait_for_healthy postgres
@@ -378,11 +401,8 @@ run_stack() {
   if [[ "$RUN_INITIAL_INGEST" == "1" ]]; then
     log "Running one initial live ingest. Set RUN_INITIAL_INGEST=0 to skip it."
     # `ingest` is intentionally not part of the detached `up` set because it
-    # is a one-shot job.  Build it explicitly here; otherwise Compose may run
-    # a stale image left over from an older release even though the API and
-    # scheduler images were rebuilt above.
-    log "Building the one-shot ingest image before running it."
-    "${compose[@]}" build ingest
+    # is a one-shot job. Its image was built with the release images above, so
+    # this run cannot silently use an older dependency set.
     "${compose[@]}" run --rm ingest
   else
     log "Initial ingest skipped (RUN_INITIAL_INGEST=${RUN_INITIAL_INGEST})."
