@@ -23,7 +23,9 @@ Nginx gateway این سه surface عمومی را به Django می‌فرستد.
 ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
 را بدون تغییر ادامه می‌دهد. Home در هر دو لایه دقیقاً یک `h1` دارد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
 و `hawatch.js`) می‌سازد تا Django به hashهای build وابسته نباشد؛ chunkهای داخلی
-همچنان hashدار هستند.
+همچنان hashدار هستند. چون نام این دو entry پایدار است، web Nginx آن‌ها را با
+`Cache-Control: no-store, no-cache, must-revalidate, max-age=0` پاسخ می‌دهد: browser و CDN
+نباید نسخهٔ قبلی را نگه دارند و navigation بعدی فایل تازه را می‌گیرد.
 
 این یک SSR کامل React نیست: Django فقط shell معنایی اولیه و head را render
 می‌کند. مزیت آن این است که دادهٔ اولیه مستقیم از منبع حقیقت runtime می‌آید و
@@ -62,9 +64,12 @@ URL و بدون prerender مجدد، در HTML اولیه هم منعکس می�
   query است اما queryها باید `noindex,follow` بمانند.
 - `/admin/*` و `/api/*` خصوصی/پویا هستند و نباید در cache عمومی ذخیره شوند؛ هدر
   `Cache-Control: private, no-store` را برای Admin حفظ کنید.
-- `/assets/*` و فونت/برند versioned را می‌توان با `public, max-age=31536000,
-  immutable` cache کرد. پس از هر build، فایل‌های hashدار و entryهای پایدار باید
-  یک‌جا purge شوند.
+- chunkهای hashدارِ `/assets/chunks/*` و فونت/برند versioned را می‌توان با
+  `public, max-age=31536000, immutable` cache کرد. دو entry پایدار
+  `/assets/hawatch.css` و `/assets/hawatch.js` نباید immutable یا با TTL بلند
+  cache شوند؛ header origin آن‌ها باید عبور کند. پس از deploy این تغییر، یک‌بار
+  cache قدیمی همین دو URL را در CDN purge کنید تا clientهای cache‌شده فوراً
+  نسخهٔ جدید را بگیرند.
 - `/robots.txt` و `/sitemap.xml` عمومی‌اند ولی پویا هستند؛ cache کوتاه (حداکثر
   چند دقیقه) یا revalidation فعال بگذارید و آدرس کامل sitemap را نگه دارید.
 

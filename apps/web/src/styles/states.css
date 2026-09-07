@@ -3621,9 +3621,11 @@ bdi,
 }
 
 .point-page .day-tabs button strong,
-.point-page .day-tabs button span,
+.point-page .day-tabs button .day-tab-copy,
+.point-page .day-tabs button .day-tab-date,
 .route-page .day-tabs button strong,
-.route-page .day-tabs button span {
+.route-page .day-tabs button .day-tab-copy,
+.route-page .day-tabs button .day-tab-date {
   font-family: var(--font-family);
   color: inherit;
   line-height: 1.35;
@@ -3635,8 +3637,8 @@ bdi,
   font-weight: var(--weight-semibold);
 }
 
-.point-page .day-tabs button span,
-.route-page .day-tabs button span {
+.point-page .day-tabs button .day-tab-date,
+.route-page .day-tabs button .day-tab-date {
   font-size: var(--font-size-label);
 }
 
@@ -3651,9 +3653,11 @@ bdi,
 }
 
 .point-page .day-tabs button.selected strong,
-.point-page .day-tabs button.selected span,
+.point-page .day-tabs button.selected .day-tab-copy,
+.point-page .day-tabs button.selected .day-tab-date,
 .route-page .day-tabs button.selected strong,
-.route-page .day-tabs button.selected span,
+.route-page .day-tabs button.selected .day-tab-copy,
+.route-page .day-tabs button.selected .day-tab-date,
 .period-control-row .daypart-toggle button.selected strong,
 .period-control-row .daypart-toggle button.selected small {
   color: #fff;
@@ -4140,5 +4144,77 @@ bdi,
   .day-tabs button.is-locked .day-lock-symbol {
     width: 12px;
     height: 14px;
+  }
+}
+
+/* Mobile forecast access tabs are deliberately one shared component. The
+ * weekday/date copy is an isolated two-line stack; the lock is its sibling,
+ * so it can never enter text flow or change either baseline. This also
+ * replaces the route-only 44px height inherited from older layout layers. */
+@media (max-width: 720px) {
+  .point-page .day-tabs button,
+  .route-page .day-tabs button,
+  .route-page .route-planner .planner-day .day-tabs button {
+    display: grid !important;
+    place-items: center !important;
+    box-sizing: border-box;
+    min-height: 64px !important;
+    height: auto !important;
+    padding: 6px 4px !important;
+  }
+
+  .point-page .day-tabs button .day-tab-copy,
+  .route-page .day-tabs button .day-tab-copy,
+  .route-page .route-planner .planner-day .day-tabs button .day-tab-copy {
+    display: grid !important;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-content: center;
+    justify-items: center;
+    row-gap: 2px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .point-page .day-tabs button .day-tab-copy > strong,
+  .route-page .day-tabs button .day-tab-copy > strong,
+  .route-page .route-planner .planner-day .day-tabs button .day-tab-copy > strong,
+  .point-page .day-tabs button .day-tab-date,
+  .route-page .day-tabs button .day-tab-date,
+  .route-page .route-planner .planner-day .day-tabs button .day-tab-date {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.35 !important;
+  }
+
+  .day-tabs button.is-locked .day-lock-badge,
+  .route-page .route-planner .planner-day .day-tabs button.is-locked .day-lock-badge {
+    position: absolute !important;
+    z-index: 3;
+    top: 6px !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 6px !important;
+    display: grid !important;
+    width: 13px !important;
+    height: 15px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    place-items: center;
+    line-height: 0 !important;
+    filter: drop-shadow(0 1px 1px rgb(4 24 32 / 42%));
+    pointer-events: none;
+  }
+
+  .day-tabs button.is-locked .day-lock-symbol,
+  .route-page .route-planner .planner-day .day-tabs button.is-locked .day-lock-symbol {
+    display: block;
+    width: 13px !important;
+    height: 15px !important;
   }
 }
