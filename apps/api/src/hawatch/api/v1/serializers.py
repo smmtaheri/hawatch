@@ -319,23 +319,18 @@ def build_place_forecast(
     )
     critical = next((item for item in records if item.severity == "critical"), None)
 
-    if current_payload and current_payload["is_current"]:
-        hero_status = (
-            f"{current_payload['icon']}　الان در {short_name}　"
-            f"{current_payload.get('apparent_temperature_label', current_payload['temperature_label'])}　·　{current_payload['condition']}"
-        )
-    elif current_payload:
-        hero_status = (
-            f"{current_payload['icon']}　در {short_name}　"
-            f"{current_payload.get('apparent_temperature_label', current_payload['temperature_label'])}　·　{current_payload['condition']}"
-        )
+    if current_payload:
+        # Keep the hero pill compact and scannable: the icon carries the
+        # condition while the temperature is the only textual value needed.
+        # The point name and location already live in the identity heading.
+        hero_status = f"{current_payload['icon']}　{current_payload['temperature_label']}"
     else:
         hero_status = "دادهٔ فعلی در دسترس نیست"
     if change:
         hour = change.forecast_at.astimezone(timezone()).hour
-        hero_alert = f"!　تغییر مهم: از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
+        hero_alert = f"از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
     else:
-        hero_alert = "✓　شرایط فعلاً آرام‌تر است"
+        hero_alert = None
 
     morning_ok = (
         all(item.severity == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11)
@@ -516,7 +511,11 @@ def build_place_forecast(
         "decision": decision,
         "related_routes": related_routes,
         "related_routes_title": routes_title,
-        "alerts": [{"severity": "change", "title": hero_alert, "description": hero_alert}],
+        "alerts": (
+            [{"severity": "change", "title": hero_alert, "description": hero_alert}]
+            if hero_alert
+            else []
+        ),
         "empty": empty,
         "partial": partial,
         # Temporary compatibility aliases for older consumers.
@@ -621,6 +620,8 @@ def wind_alert_payload(record: ForecastRecord) -> dict | None:
 def record_alert_label(record: ForecastRecord) -> str:
     wind_alert = wind_alert_payload(record)
     if wind_alert:
+        if record.condition_label == wind_alert["label"]:
+            return wind_alert["label"]
         return f"{record.condition_label} · {wind_alert['label']}"
     return record.condition_label
 

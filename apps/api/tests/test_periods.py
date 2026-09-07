@@ -190,7 +190,8 @@ def test_point_midnight_current_at_0130(api_client, seeded):
     assert body["meta"]["selected_period"] == "midnight"
     assert body["current"] is not None
     assert body["current"]["is_current"] is True
-    assert "الان" in body["hero"]["status"]
+    assert body["hero"]["status"] == f'{body["current"]["icon"]}　{body["current"]["temperature_label"]}'
+    assert "الان" not in body["hero"]["status"]
     today = next(day for day in body["days"] if day["date"] == REFERENCE_DATE.isoformat())
     assert today["is_today"] is True
 
@@ -398,7 +399,8 @@ def test_point_midnight_current_at_0130(api_client, seeded):
     assert body["meta"]["selected_period"] == "midnight"
     assert body["current"]["is_current"] is True
     assert body["current"]["hour"] == 0
-    assert "الان" in body["hero"]["status"]
+    assert body["hero"]["status"] == f'{body["current"]["icon"]}　{body["current"]["temperature_label"]}'
+    assert "الان" not in body["hero"]["status"]
 
 
 @pytest.mark.django_db

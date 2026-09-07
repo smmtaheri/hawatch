@@ -78,7 +78,7 @@ const primaryPointForecast = {
     routes: [],
     weather_point_slug: "tochal",
   },
-  hero: { status: "☼　الان در توچال　۵°　·　صاف", alert: "آرام" },
+  hero: { status: "☼　۵°", alert: null },
   forecast: {
     days: pointDays,
     period: { id: "night", label: "شب", range_label: "۱۸ تا ۲۴", headline: "تغییرات شب · هر دو ساعت", hours: [18, 20, 22] },
@@ -224,7 +224,7 @@ const pointForecast = {
     },
   ],
   related_routes_title: "مسیرهای عبوری از این نقطه",
-  hero: { status: "☼　در شیرپلا　۷°　·　صاف", alert: "✓　شرایط فعلاً آرام‌تر است" },
+  hero: { status: "☼　۷°", alert: null },
   forecast: {
     days: routeForecast.days,
     period: routeForecast.period,

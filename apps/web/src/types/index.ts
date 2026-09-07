@@ -193,7 +193,7 @@ export interface PlannerPeriodInfo {
 /** Shared forecast contract for point pages. */
 export interface PlaceForecastResponse {
   subject: PlaceSubject;
-  hero: { status: string; alert: string };
+  hero: { status: string; alert: string | null };
   forecast: {
     days: DayInfo[];
     period: PlannerPeriodInfo;

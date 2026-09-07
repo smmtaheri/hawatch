@@ -115,7 +115,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
               </div>
               <div className="hero-status-stack">
                 <div className="status-pill now">{data.hero.status}</div>
-                <div className="status-pill change">{data.hero.alert}</div>
+                {data.hero.alert ? <div className="status-pill change">{data.hero.alert}</div> : null}
               </div>
             </section>
             <div className="point-layout">

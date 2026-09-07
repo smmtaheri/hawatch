@@ -47,7 +47,7 @@ flagها از **timestamp واقعی** هر reading (`forecast_at`) نسبت ب�
 ```text
 forecast (Point Forecast)
 ├── subject { kind, slug, canonical_href, name, elevation, coords, hero_image, ... }
-├── hero { status, alert }
+├── hero { status, alert: string | null }
 ├── forecast { days[], period, current?, hourly[], meta }
 ├── metrics[]
 ├── decision
@@ -58,6 +58,12 @@ forecast (Point Forecast)
 `metrics[]` برای هر شاخص شامل `icon`، `label`، `value`، `note` و `color` است. مقدار `icon` یک
 نام معنایی پایدار است و glyph یا متن نمایشی نیست؛ کلاینت آن را از sprite رسمی
 `/icons/specialist/hawatch-specialist-icons.svg` رندر می‌کند. نگاشت فعلی:
+
+در Point Forecast، `hero.status` عمداً خلاصه است و فقط glyph وضعیت هوا و دمای واقعی
+(مثلاً `☼　۸°`) را شامل می‌شود؛ نام مکان و نوع هوا در عنوان hero و کارت پیش‌بینی
+نمایش داده می‌شوند. `hero.alert` فقط هنگام وجود تغییر یا هشدار واقعی یک رشتهٔ
+فارسی مانند «از ساعت ۱۱ تندباد» است و در حالت عادی `null` است؛ در این حالت کلاینت
+نباید pill هشدار خالی یا متن آرامش پیش‌فرض رندر کند.
 
 در پاسخ route forecast، `decision.gear[]` نیز آرایه‌ای از کلیدهای معنایی تجهیزات
 است. این کلیدها برای رندر آیکون و نام وسیله‌اند (مثلاً `backpack`،

@@ -42,7 +42,7 @@ export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecas
     metrics: payload.metrics ?? [],
     hero: {
       status: payload.hero.status,
-      alert: payload.hero.alert ?? "✓　شرایط فعلاً آرام‌تر است",
+      alert: payload.hero.alert ?? null,
     },
     decision: payload.decision,
     related_routes: relatedRoutes,
