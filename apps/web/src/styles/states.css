@@ -1112,7 +1112,9 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
 .route-page .route-mobile-endpoints {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  gap: 12px;
   min-width: 0;
   color: var(--internal-muted, #a8c1c0);
   font-size: var(--font-size-meta, 11px);
@@ -1121,9 +1123,18 @@ html[data-theme="light"] .route-page .route-point-weather-card > small {
 }
 
 .route-page .route-mobile-endpoints > span {
+  flex: 1 1 0;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.route-page .route-mobile-endpoints > span:first-child {
+  text-align: right;
+}
+
+.route-page .route-mobile-endpoints > span:last-child {
+  text-align: left;
 }
 
 /* Gear SVGs are consumed as masks so currentColor keeps them legible in both
@@ -2808,8 +2819,8 @@ html:not([data-theme="light"]) .search-result-row:hover {
   .route-page .route-mobile-endpoints {
     display: flex;
     flex: 1 1 auto;
-    justify-content: flex-end;
-    gap: 6px;
+    justify-content: space-between;
+    gap: 8px;
     min-width: 0;
     color: var(--internal-muted, #a8c1c0);
     font-size: 8px;
