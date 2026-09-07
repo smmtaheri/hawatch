@@ -602,42 +602,31 @@ html[data-theme="light"] .account-menu-popover p strong { color: #123441; }
 .day-lock-badge {
   position: absolute;
   z-index: 2;
-  top: 5px;
+  top: 9px;
   right: auto;
-  left: 6px;
+  left: 10px;
   display: grid;
-  width: 19px;
-  height: 21px;
+  width: 13px;
+  height: 13px;
   place-items: center;
-  color: #f1bb4e;
-  filter: drop-shadow(0 1px 2px rgb(4 24 32 / 42%));
+  color: var(--internal-muted, #82aeb2);
   pointer-events: none;
 }
 
 .day-lock-badge .day-lock-symbol {
   display: block;
-  width: 18px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
   overflow: visible;
 }
 
-.day-lock-symbol .day-lock-shackle {
+.day-lock-symbol rect,
+.day-lock-symbol path {
   fill: none;
-  stroke: #ffdf8c;
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.1;
-}
-
-.day-lock-symbol .day-lock-body {
-  fill: #efb849;
-  stroke: #ffd982;
-  stroke-linejoin: round;
-  stroke-width: 1;
-}
-
-.day-lock-symbol .day-lock-keyhole {
-  fill: #123541;
+  stroke-width: 1.5;
 }
 
 .day-tabs button.is-locked > strong { margin-top: 0; }
@@ -4179,25 +4168,24 @@ bdi,
   .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge {
     position: absolute !important;
     z-index: 3;
-    top: 3px !important;
+    top: 11px !important;
     right: auto !important;
     bottom: auto !important;
-    left: 3px !important;
+    left: 12px !important;
     display: grid !important;
-    width: 10px !important;
-    height: 11px !important;
+    width: 13px !important;
+    height: 13px !important;
     margin: 0 !important;
     padding: 0 !important;
     place-items: center;
     line-height: 0 !important;
-    filter: drop-shadow(0 1px 1px rgb(4 24 32 / 42%));
     pointer-events: none;
   }
 
   .day-tabs button.is-locked > .day-lock-badge .day-lock-symbol,
   .route-page .route-planner .planner-day .day-tabs button.is-locked > .day-lock-badge .day-lock-symbol {
     display: block;
-    width: 10px !important;
-    height: 11px !important;
+    width: 13px !important;
+    height: 13px !important;
   }
 }
