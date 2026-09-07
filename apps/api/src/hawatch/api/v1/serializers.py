@@ -328,7 +328,7 @@ def build_place_forecast(
         hero_status = "دادهٔ فعلی در دسترس نیست"
     if change:
         hour = change.forecast_at.astimezone(timezone()).hour
-        hero_alert = f"از ساعت {to_fa_digits(hour)} {record_alert_label(change)}"
+        hero_alert = f"{change.icon}　از ساعت {to_fa_digits(hour)}"
     else:
         hero_alert = None
 
