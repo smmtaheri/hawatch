@@ -2114,10 +2114,13 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 
   .route-page .route-hero-status-stack {
-    inset: 50% auto auto 14px !important;
+    /* Reserve the lower-left lane for the route switcher. A route warning can
+     * wrap to two lines, so centering it vertically would let it collide with
+     * the trigger below. */
+    inset: 12px auto auto 14px !important;
     width: min(40%, 180px);
     max-width: 40%;
-    transform: translateY(-50%);
+    transform: none;
   }
 
   .route-page .route-hero .mobile-route-selection--trigger {
@@ -2571,14 +2574,15 @@ html:not([data-theme="light"]) .search-result-row:hover {
   }
 
   .route-page .route-hero-status-stack {
-    top: 50% !important;
+    /* Keep wrapped warnings above the route switcher in the lower-left lane. */
+    top: 12px !important;
     right: auto !important;
     bottom: auto !important;
     left: 14px !important;
     width: min(40%, 180px) !important;
     max-width: 40% !important;
     margin: 0 !important;
-    transform: translateY(-50%) !important;
+    transform: none !important;
   }
 }
 
