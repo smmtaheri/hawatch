@@ -47,11 +47,12 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>پیش‌بینی آب‌وهوای یال آزمایشی تهران در ارتفاع ۲۵۰۰ متر | هواچ</title>" in body
-    assert 'name="description" content="پیش‌بینی آب‌وهوای یال آزمایشی تهران در ارتفاع ۲۵۰۰ متر در تهران. اطلاعات نقطه و مسیرهای مرتبط در هواچ."' in body
+    assert "<title>آب‌وهوای یال آزمایشی تهران؛ دما، باد و بارش | هواچ</title>" in body
+    assert 'name="description" content="پیش‌بینی آب‌وهوای یال آزمایشی تهران در ارتفاع ۲۵۰۰ متر در تهران؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."' in body
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in body
     assert 'name="robots" content="index,follow"' in body
-    assert "<h1>یال آزمایشی</h1>" in body
+    assert "<h1>آب‌وهوای یال آزمایشی تهران</h1>" in body
+    assert "۶ روز" not in body
     assert "یک عارضهٔ مستقل برای کنترل رندر اولیهٔ هواچ." in body
     assert 'application/ld+json' in body
 
@@ -101,9 +102,11 @@ def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_
     assert api_client.get(f"/api/v1/points/{point.slug}/forecast/").status_code == 200
     search = api_client.get("/api/v1/points/", {"query": "مبدأ فنی"}).json()
     assert any(item["slug"] == point.slug for item in search["results"])
-    # The crawlable catalog and the application keep technical waypoints
-    # discoverable; only their own document and the sitemap are noindex.
-    assert f"/points/{point.slug}" in api_client.get("/points").content.decode()
+    # The application catalog/search API keeps technical waypoints discoverable;
+    # only their own document and the sitemap are noindex. The public catalog
+    # index page itself is intentionally retired and redirects to Home.
+    catalog = api_client.get("/api/v1/catalog-index/").json()
+    assert any(item["slug"] == point.slug for item in catalog["points"])
     sitemap = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
     assert f"/points/{point.slug}" not in sitemap
 
@@ -156,7 +159,7 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
     assert "نقطهٔ operator_extension" not in fallback_body
 
     hazar_body = api_client.get("/points/hazar-ardikan-babzangi-junction").content.decode()
-    assert "<title>پیش‌بینی آب‌وهوای" in hazar_body
+    assert "<title>آب‌وهوای" in hazar_body
     assert "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار" not in hazar_body
 
 
@@ -179,7 +182,7 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>پیش‌بینی آب‌وهوا در مسیر مسیر آزمایشی تهران از مبدأ آزمایشی تا مقصد آزمایشی | هواچ</title>" in body
+    assert "<title>آب‌وهوای مسیر آزمایشی تهران؛ زمان، مسافت و وضعیت مسیر | هواچ</title>" in body
     assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in body
     assert '<h1>مسیر آزمایشی تهران</h1>' in body
     assert "مبدأ آزمایشی" in body
@@ -192,7 +195,7 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
     assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in query_response.content.decode()
 
 
-def test_catalog_indexes_and_curated_seo_override_are_rendered(api_client, seo_catalog):
+def test_removed_catalog_indexes_redirect_and_curated_seo_override_is_rendered(api_client, seo_catalog):
     point = WeatherPoint.objects.create(
         slug="seo-override-lake",
         name="دریاچهٔ آزمایشی",
@@ -214,11 +217,18 @@ def test_catalog_indexes_and_curated_seo_override_are_rendered(api_client, seo_c
     assert "<title>راهنمای مستند دریاچهٔ آزمایشی | هواچ</title>" in point_body
     assert "اطلاعات تکمیلی" in point_body
 
-    points_body = api_client.get("/points").content.decode()
-    routes_body = api_client.get("/routes").content.decode()
-    assert f'href="/points/{point.slug}"' in points_body
-    assert 'rel="canonical" href="https://hawatch.ir/points"' in points_body
-    assert 'rel="canonical" href="https://hawatch.ir/routes"' in routes_body
+    for path in ("/points", "/points/", "/routes", "/routes/"):
+        response = api_client.get(path)
+        assert response.status_code == 301
+        assert response["Location"] == "https://hawatch.ir/"
+
+
+def test_public_sitemap_contains_only_detail_urls(api_client, seo_catalog):
+    body = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
+    assert "<loc>https://hawatch.ir/points</loc>" not in body
+    assert "<loc>https://hawatch.ir/routes</loc>" not in body
+    assert "<loc>https://hawatch.ir/points/</loc>" not in body
+    assert "<loc>https://hawatch.ir/routes/</loc>" not in body
 
 
 def test_invalid_public_slug_is_a_real_noindex_404(api_client, seo_catalog):

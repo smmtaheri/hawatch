@@ -7,7 +7,6 @@ import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { SubscriptionPlansPage } from "../pages/SubscriptionPlansPage";
-import { CatalogIndexPage } from "../pages/CatalogIndexPage";
 
 export function App() {
   return (
@@ -47,8 +46,6 @@ export function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account/plans" element={<SubscriptionPlansPage />} />
-        <Route path="/points" element={<CatalogIndexPage kind="points" />} />
-        <Route path="/routes" element={<CatalogIndexPage kind="routes" />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />

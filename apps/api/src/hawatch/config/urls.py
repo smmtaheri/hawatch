@@ -1,16 +1,22 @@
+from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponsePermanentRedirect
 from django.urls import include, path
 
 from hawatch.modules.catalog import seo_pages
 
+
+def redirect_removed_catalog_index(_request):
+    return HttpResponsePermanentRedirect(f"{settings.PUBLIC_SITE_ORIGIN}/")
+
 urlpatterns = [
     path("", seo_pages.seo_home, name="seo-home"),
-    path("points", seo_pages.seo_points_index, name="seo-points-index"),
-    path("points/", seo_pages.seo_points_index),
+    path("points", redirect_removed_catalog_index, name="removed-points-index"),
+    path("points/", redirect_removed_catalog_index),
     path("points/<slug:slug>", seo_pages.seo_point, name="seo-point"),
     path("points/<slug:slug>/", seo_pages.seo_point),
-    path("routes", seo_pages.seo_routes_index, name="seo-routes-index"),
-    path("routes/", seo_pages.seo_routes_index),
+    path("routes", redirect_removed_catalog_index, name="removed-routes-index"),
+    path("routes/", redirect_removed_catalog_index),
     path("routes/<slug:slug>", seo_pages.seo_route, name="seo-route"),
     path("routes/<slug:slug>/", seo_pages.seo_route),
     path("admin/", admin.site.urls),

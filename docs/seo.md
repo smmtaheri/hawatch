@@ -2,15 +2,17 @@
 
 ## هدف
 
-Home، indexهای عمومی `/points` و `/routes`، تمام Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در
+Home، تمام Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در
 `/routes/<slug>` باید پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته
-باشند. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
+باشند. مسیرهای فهرست قدیمی `/points` و `/routes` محصول نیستند و پیش از SPA با
+redirect دائمی یک‌مرحله‌ای به `/` می‌روند. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
 planner، مانند `?date=…&period=…`، با `noindex,follow` منتشر می‌شوند تا لینک‌ها
 دنبال شوند اما نسخه‌های پارامتردار وارد نتایج گوگل نشوند.
 
 ## معماری
 
-Nginx gateway این سه surface عمومی را به Django می‌فرستد. viewهای
+Nginx gateway Home و صفحات detail را به Django می‌فرستد و indexهای حذف‌شده را
+پیش از fallback به SPA redirect می‌کند. viewهای
 `hawatch.modules.catalog.seo_pages` از دیتابیس runtime می‌خوانند و در HTML اولیه
 موارد زیر را می‌سازند:
 
@@ -19,7 +21,6 @@ Nginx gateway این سه surface عمومی را به Django می‌فرستد.
 - برای Point: منطقه، دسته‌بندی، ارتفاع و مسیرهای مرتبط؛
 - برای Route: مبدأ، مقصد، مسافت/صعود و زنجیرهٔ نقاط مسیر.
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
-- برای indexها: فهرست دسته‌بندی‌شده با لینک واقعی `<a href>` به همهٔ آیتم‌های عمومی.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
 ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
@@ -37,10 +38,9 @@ URL و بدون prerender مجدد، در HTML اولیه هم منعکس می�
 ## copy پویا و override اختیاری
 
 `modules/catalog/seo.py` تنها سازندهٔ عمومی copy است. Point از نام canonical،
-نوع عارضهٔ فارسی، ارتفاع، منطقه و فقط بازهٔ forecast واقعاً ذخیره‌شده استفاده
-می‌کند؛ بنابراین دریاچه، جنگل و کویر هرگز «قله» نامیده نمی‌شوند و مدت یا منبع
-نداشته ساخته نمی‌شود. Route از عنوان، مبدأ/مقصد، مسافت و زمان یک‌طرفهٔ ثبت‌شده
-استفاده می‌کند.
+نوع عارضهٔ فارسی، ارتفاع و منطقه استفاده می‌کند؛ بنابراین دریاچه، جنگل و کویر
+هرگز «قله» نامیده نمی‌شوند و عنوان/توضیح به تعداد روز ثابت وابسته نیست. Route از
+عنوان، مبدأ/مقصد، مسافت و زمان یک‌طرفهٔ ثبت‌شده استفاده می‌کند.
 
 برای copy واقعاً curated، بلوک اختیاری زیر در همان row Point یا Route catalog و
 همان فیلدها در Django Admin وجود دارد. همهٔ فیلدها اختیاری‌اند؛ خالی‌بودن یعنی
@@ -60,10 +60,15 @@ title تکراری و تکرار غیرطبیعی keyword را رد می‌کن�
 یک subtitle کوتاه است. `BreadcrumbList` تنها schema این مرحله است و صرفاً
 URLهای canonical واقعی را بازتاب می‌دهد.
 
+قالب fallback نقطه چنین است: عنوان `آب‌وهوای {نام کامل نقطه}؛ دما، باد و بارش |
+هواچ`، توضیحی مبتنی بر نام/ارتفاع/منطقه و امکانات واقعی دما، باد، تندباد، بارش،
+برف و وضعیت ساعتی، و H1 برابر `آب‌وهوای {نام کامل نقطه}`. مقدارهای `seo.title` و
+`seo.description` دستی همچنان اولویت دارند؛ SSR و React همین مقادیر را مصرف می‌کنند.
+
 `sync_catalog --apply` overrideهای catalog را اتمیک وارد می‌کند. Point/Route
-جدید بدون URL hardcode یا prerender/build جدا، title/description/subtitle عمومی،
-sitemap و لینک index را خودکار می‌گیرد؛ migration فقط برای ذخیرهٔ override لازم
-است.
+جدید بدون URL hardcode یا prerender/build جدا، title/description/subtitle عمومی
+و در صورت indexable بودن، URL detail در sitemap را خودکار می‌گیرد؛ migration فقط
+برای ذخیرهٔ override لازم است.
 
 ## indexability نقاط فنی
 
@@ -91,7 +96,7 @@ Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo
 | وضعیت | status | robots | canonical |
 | --- | --- | --- | --- |
 | URL تمیز Home/Point/Route | 200 | `index,follow` | همان URL تمیز |
-| URL تمیز index نقاط/مسیرها | 200 | `index,follow` | همان URL تمیز |
+| `/points`، `/points/`، `/routes`، `/routes/` | 301 | — | `/` |
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 
@@ -117,6 +122,8 @@ Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo
 - `/`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
   عبور دهید) و query string را در cache key نگه ندارید؛ canonical خود HTML بدون
   query است اما queryها باید `noindex,follow` بمانند.
+- redirectهای دقیق `/points`، `/points/`، `/routes` و `/routes/` را در CDN به‌صورت
+  یک 301 مستقیم به `https://hawatch.ir/` عبور دهید و به SPA fallback نسپارید.
 - `/admin/*` و `/api/*` خصوصی/پویا هستند و نباید در cache عمومی ذخیره شوند؛ هدر
   `Cache-Control: private, no-store` را برای Admin حفظ کنید.
 - chunkهای hashدارِ `/assets/chunks/*` و فونت/برند versioned را می‌توان با
@@ -138,8 +145,11 @@ server صرفاً برای توسعهٔ SPA است:
 
 ```bash
 curl -fsS http://localhost/points/tochal | sed -n '1,80p'
-curl -fsS http://localhost/points | sed -n '1,100p'
-curl -fsS http://localhost/routes | sed -n '1,100p'
+curl -i http://localhost/points
+curl -i http://localhost/points/
+curl -i http://localhost/routes
+curl -i http://localhost/routes/
+curl -fsS http://localhost/api/v1/seo/sitemap.xml | sed -n '1,100p'
 curl -fsS 'http://localhost/routes/tochal-darband?date=2026-09-04&period=morning' | sed -n '1,80p'
 curl -i http://localhost/points/not-a-real-point
 ```

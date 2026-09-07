@@ -174,6 +174,7 @@ export interface PlaceSubject {
   seo_title?: string;
   seo_description?: string;
   seo_subtitle?: string;
+  seo_h1?: string;
   seo_indexable?: boolean;
 }
 

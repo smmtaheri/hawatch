@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from django.utils import timezone as django_timezone
 
-from hawatch.common.time import now_tehran, to_fa_digits
+from hawatch.common.time import to_fa_digits
 from hawatch.modules.catalog.identity import place_type_label
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -25,16 +25,9 @@ def _bounded_copy(value: str, limit: int) -> str:
 
 @dataclass(frozen=True)
 class ForecastSeoContext:
-    days: int | None
     temperature_c: int | None = None
     condition_label: str | None = None
     icon: str | None = None
-
-    @property
-    def duration_label(self) -> str | None:
-        if not self.days:
-            return None
-        return f"پیش‌بینی {to_fa_digits(self.days)} روز آینده"
 
 
 def point_forecast_context(point: WeatherPoint) -> ForecastSeoContext:
@@ -49,11 +42,8 @@ def point_forecast_context(point: WeatherPoint) -> ForecastSeoContext:
         "icon",
     ).first()
     if first is None:
-        return ForecastSeoContext(days=None)
-    last = records.order_by("-forecast_at").only("forecast_at").first()
-    day_count = (last.forecast_at.astimezone(now_tehran().tzinfo).date() - first.forecast_at.astimezone(now_tehran().tzinfo).date()).days + 1
+        return ForecastSeoContext()
     return ForecastSeoContext(
-        days=max(1, day_count),
         temperature_c=first.temperature_c,
         condition_label=first.condition_label or None,
         icon=first.icon or None,
@@ -68,26 +58,23 @@ def point_subject(point: WeatherPoint) -> str:
     return name if place_type in name else f"{place_type} {name}"
 
 
-def point_subtitle(point: WeatherPoint, *, forecast: ForecastSeoContext | None = None) -> str:
+def point_subtitle(point: WeatherPoint) -> str:
     subject = point_subject(point)
     pieces = [f"پیش‌بینی آب‌وهوای {subject}"]
     if point.elevation_m is not None:
         pieces.append(f"در ارتفاع {to_fa_digits(point.elevation_m)} متر")
-    context = forecast or point_forecast_context(point)
-    if context.duration_label:
-        pieces.append(context.duration_label)
     return " ".join(pieces)
 
 
 def point_seo_copy(point: WeatherPoint) -> dict[str, str | None]:
     forecast = point_forecast_context(point)
-    subtitle = point_subtitle(point, forecast=forecast)
-    region = f" در {point.region}" if point.region else ""
-    description = f"{subtitle}{region}."
-    if forecast.duration_label:
-        description += " داده‌های موجود و مسیرهای مرتبط در هواچ."
-    else:
-        description += " اطلاعات نقطه و مسیرهای مرتبط در هواچ."
+    subtitle = point_subtitle(point)
+    description = f"پیش‌بینی آب‌وهوای {point_subject(point)}"
+    if point.elevation_m is not None:
+        description += f" در ارتفاع {to_fa_digits(point.elevation_m)} متر"
+    if point.region:
+        description += f" در {point.region}"
+    description += "؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."
     forecast_summary = None
     if forecast.temperature_c is not None and forecast.condition_label:
         forecast_summary = (
@@ -95,19 +82,20 @@ def point_seo_copy(point: WeatherPoint) -> dict[str, str | None]:
             f"{to_fa_digits(forecast.temperature_c)} درجه در نزدیک‌ترین بازهٔ پیش‌بینی."
         ).strip()
     return {
-        "title": _bounded_copy(point.seo_title.strip() or f"{subtitle} | هواچ", 160),
+        "title": _bounded_copy(point.seo_title.strip() or f"آب‌وهوای {point_subject(point)}؛ دما، باد و بارش | هواچ", 160),
         "description": _bounded_copy(point.seo_description.strip() or description, 320),
         "subtitle": subtitle,
+        "h1": f"آب‌وهوای {point.page_name or point.name}",
         "content": point.seo_content.strip() or None,
-        "forecast_duration": forecast.duration_label,
         "forecast_summary": forecast_summary,
     }
 
 
 def route_seo_copy(route: Route) -> dict[str, str | None]:
     subject = route.title
+    route_subject = subject if subject.startswith("مسیر") else f"مسیر {subject}"
     duration = f"زمان یک‌طرفه حدود {to_fa_digits(route.one_way_minutes)} دقیقه" if route.one_way_minutes else None
-    subtitle = f"پیش‌بینی آب‌وهوا در مسیر {subject} از {route.origin} تا {route.target_label}"
+    subtitle = f"پیش‌بینی آب‌وهوای {route_subject} از {route.origin} تا {route.target_label}"
     pieces = [subtitle]
     if route.region:
         pieces.append(f"منطقهٔ {route.region}")
@@ -115,7 +103,7 @@ def route_seo_copy(route: Route) -> dict[str, str | None]:
         pieces.append(f"مسافت {to_fa_digits(route.distance_km)} کیلومتر")
     if duration:
         pieces.append(duration)
-    description = "؛ ".join(pieces) + "."
+    description = "؛ ".join(pieces) + "؛ وضعیت نقاط مسیر و شرایط ساعتی."
     forecast = point_forecast_context(route.target_weather_point) if route.target_weather_point_id else None
     forecast_summary = None
     if forecast and forecast.temperature_c is not None and forecast.condition_label:
@@ -124,7 +112,7 @@ def route_seo_copy(route: Route) -> dict[str, str | None]:
             f"{to_fa_digits(forecast.temperature_c)} درجه در نزدیک‌ترین بازهٔ مقصد."
         ).strip()
     return {
-        "title": _bounded_copy(route.seo_title.strip() or f"{subtitle} | هواچ", 160),
+        "title": _bounded_copy(route.seo_title.strip() or f"آب‌وهوای {route_subject}؛ زمان، مسافت و وضعیت مسیر | هواچ", 160),
         "description": _bounded_copy(route.seo_description.strip() or description, 320),
         "subtitle": subtitle,
         "content": route.seo_content.strip() or None,

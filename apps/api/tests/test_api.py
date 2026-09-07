@@ -92,6 +92,10 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     assert len(locations) == len(set(locations))
     assert locations[0] == "https://hawatch.ir/"
     assert all(url.startswith("https://hawatch.ir/") and "?" not in url for url in locations)
+    assert "https://hawatch.ir/points" not in locations
+    assert "https://hawatch.ir/routes" not in locations
+    assert "https://hawatch.ir/points/" not in locations
+    assert "https://hawatch.ir/routes/" not in locations
     assert sum("/points/" in url for url in locations) == len(expected_points)
     assert sum("/routes/" in url for url in locations) == len(expected_routes)
 

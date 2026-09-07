@@ -278,6 +278,7 @@ def serialize_place_subject(
         "seo_title": seo["title"],
         "seo_description": seo["description"],
         "seo_subtitle": seo["subtitle"],
+        "seo_h1": seo["h1"],
         "seo_indexable": weather_point.seo_indexable,
     }
 

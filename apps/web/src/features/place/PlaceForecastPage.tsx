@@ -102,7 +102,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   items={[{ label: "نقاط", to: "/#search-results" }, { label: data.subject.name }]}
                 />
                 <div className="point-heading-identity">
-                  <h1>{data.subject.name}</h1>
+                  <h1>{data.subject.seo_h1 || `آب‌وهوای ${data.subject.name}`}</h1>
                   <p className="point-hero-subtitle">
                     {data.subject.seo_subtitle || (data.subject.elevation_label ? `پیش‌بینی آب‌وهوای این نقطه در ارتفاع ${data.subject.elevation_label}` : "پیش‌بینی آب‌وهوای این نقطه")}
                   </p>

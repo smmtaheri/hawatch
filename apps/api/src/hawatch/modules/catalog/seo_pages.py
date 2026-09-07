@@ -12,7 +12,6 @@ from __future__ import annotations
 import json
 import re
 from decimal import Decimal
-from itertools import groupby
 
 from django.conf import settings
 from django.db.models import Q
@@ -134,13 +133,12 @@ def _point_page(point: WeatherPoint) -> dict:
         "description": seo["description"],
         "canonical": _canonical(f"/points/{point.slug}"),
         "indexable": bool(point.seo_indexable),
-        "headline": point.name,
+        "headline": seo["h1"],
         "summary": seo["subtitle"],
         "identity_summary": _localized_identity_summary(point),
         "seo_content": seo["content"],
-        "forecast_duration": seo["forecast_duration"],
         "forecast_summary": seo["forecast_summary"],
-        "structured_data": _structured_breadcrumb(("هواچ", "/"), ("نقاط", "/points"), (point.name, f"/points/{point.slug}")),
+        "structured_data": _structured_breadcrumb(("هواچ", "/"), (point.name, f"/points/{point.slug}")),
         "region": point.region,
         "category": point.category,
         "place_type": place_type_label(point.place_type),
@@ -183,7 +181,7 @@ def _route_page(route: Route) -> dict:
         "identity_summary": route.subtitle,
         "seo_content": seo["content"],
         "forecast_summary": seo.get("forecast_summary"),
-        "structured_data": _structured_breadcrumb(("هواچ", "/"), ("مسیرها", "/routes"), (route.title, f"/routes/{route.slug}")),
+        "structured_data": _structured_breadcrumb(("هواچ", "/"), (route.title, f"/routes/{route.slug}")),
         "region": route.region,
         "origin": route.origin,
         "target": route.target_label,
@@ -219,61 +217,6 @@ def seo_home(request: HttpRequest) -> HttpResponse:
                 {"name": point.page_name or point.name, "href": f"/points/{point.slug}"}
                 for point in popular_points
             ],
-        },
-    )
-
-
-@require_GET
-def seo_points_index(request: HttpRequest) -> HttpResponse:
-    points = list(publicly_visible_weather_points().order_by("place_type", "page_name", "name"))
-    groups = []
-    for place_type, rows in groupby(points, key=lambda item: place_type_label(item.place_type)):
-        groups.append(
-            {
-                "label": place_type,
-                "items": [{"name": point.page_name or point.name, "href": f"/points/{point.slug}"} for point in rows],
-            }
-        )
-    return _render(
-        request,
-        page={
-            "kind": "point-index",
-            "title": "همهٔ نقاط هواچ | پیش‌بینی آب‌وهوا",
-            "description": "فهرست نقاط عمومی هواچ برای مشاهدهٔ پیش‌بینی آب‌وهوا و مسیرهای مرتبط.",
-            "canonical": _canonical("/points"),
-            "headline": "نقاط هواچ",
-            "summary": "همهٔ نقاط عمومی بر اساس نوع عارضه دسته‌بندی شده‌اند.",
-            "catalog_groups": groups,
-            "structured_data": _structured_breadcrumb(("هواچ", "/"), ("نقاط", "/points")),
-        },
-    )
-
-
-@require_GET
-def seo_routes_index(request: HttpRequest) -> HttpResponse:
-    routes = list(Route.objects.filter(is_active=True).order_by("region", "sort_order", "slug"))
-    groups = []
-    for region, rows in groupby(routes, key=lambda item: item.region or "سایر مناطق"):
-        groups.append(
-            {
-                "label": region,
-                "items": [
-                    {"name": route.title, "href": f"/routes/{route.slug}", "description": f"از {route.origin} تا {route.target_label}"}
-                    for route in rows
-                ],
-            }
-        )
-    return _render(
-        request,
-        page={
-            "kind": "route-index",
-            "title": "همهٔ مسیرهای هواچ | پیش‌بینی آب‌وهوا",
-            "description": "فهرست مسیرهای پیاده‌روی عمومی هواچ با پیوند به نقاط و پیش‌بینی مسیر.",
-            "canonical": _canonical("/routes"),
-            "headline": "مسیرهای هواچ",
-            "summary": "مسیرهای عمومی بر اساس منطقه دسته‌بندی شده‌اند.",
-            "catalog_groups": groups,
-            "structured_data": _structured_breadcrumb(("هواچ", "/"), ("مسیرها", "/routes")),
         },
     )
 

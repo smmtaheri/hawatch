@@ -5,7 +5,7 @@ import { canonicalPageUrl, robotsForSearch, usePageTitle } from "../src/lib/page
 
 function SeoHarness() {
   usePageTitle(undefined, {
-    title: "پیش‌بینی آب‌وهوای دریاچهٔ آزمایشی | هواچ",
+    title: "آب‌وهوای دریاچهٔ آزمایشی؛ دما، باد و بارش | هواچ",
     description: "توضیح یکتای مبتنی بر دادهٔ واقعی.",
   });
   return null;
@@ -25,7 +25,7 @@ describe("SEO document helpers", () => {
 
   it("keeps the data-derived title and description after SPA hydration", () => {
     render(<MemoryRouter initialEntries={["/points/seo-test-lake"]}><SeoHarness /></MemoryRouter>);
-    expect(document.title).toBe("پیش‌بینی آب‌وهوای دریاچهٔ آزمایشی | هواچ");
+    expect(document.title).toBe("آب‌وهوای دریاچهٔ آزمایشی؛ دما، باد و بارش | هواچ");
     expect(document.head.querySelector('meta[name="description"]')?.getAttribute("content")).toBe("توضیح یکتای مبتنی بر دادهٔ واقعی.");
   });
 });
