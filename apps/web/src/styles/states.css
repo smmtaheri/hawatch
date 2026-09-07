@@ -631,6 +631,16 @@ html[data-theme="light"] .account-menu-popover p strong { color: #123441; }
 
 .day-tabs button.is-locked > strong { margin-top: 0; }
 .day-tabs button.is-locked:not(.selected) strong { color: var(--internal-muted, #a8c1c0); }
+
+/* Keep the status copy optically centered inside both hero pills. The flex
+ * alignment applies to the desktop and mobile Point header without changing
+ * the pill's dimensions or the surrounding hero layout. */
+.point-page .hero-status-stack .status-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 html[data-theme="light"] .logout-dialog-panel { color: #123441; background: linear-gradient(145deg, #fafffe, #ecf8f6); box-shadow: 0 24px 72px rgb(15 54 62 / 18%); }
 html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
 
