@@ -123,10 +123,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       onLockedDate={openAccess}
                     />
                   </div>
-                  <small className="forecast-source-note">
-                    منبع: {data.meta.provider === "open-meteo" ? "Open-Meteo" : data.meta.provider}
-                    {data.meta.last_generated_time ? ` · به‌روزرسانی: ${new Date(data.meta.last_generated_time).toLocaleString("fa-IR")}` : ""}
-                  </small>
                   <div className="point-forecast-output">
                     {data.empty || data.partial ? (
                       <EmptyState

@@ -356,10 +356,6 @@ export function RoutePage() {
                       onLocked={handleLockedDate}
                     />
                   </div>
-                  <small className="forecast-source-note">
-                    منبع: {data.meta.provider === "open-meteo" ? "Open-Meteo" : data.meta.provider}
-                    {data.meta.last_generated_time ? ` · به‌روزرسانی: ${new Date(data.meta.last_generated_time).toLocaleString("fa-IR")}` : ""}
-                  </small>
                 </section>
                 <section className="route-weather-card card-surface" id="route-weather" aria-label="نقاط مهم و وضعیت مسیر در طول روز">
                   <div className="route-weather-heading">

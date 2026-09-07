@@ -8,8 +8,6 @@ claim, date range, or editorial paragraph is invented for a sparse record.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
-
 from django.utils import timezone as django_timezone
 
 from hawatch.common.time import now_tehran, to_fa_digits
@@ -28,8 +26,6 @@ def _bounded_copy(value: str, limit: int) -> str:
 @dataclass(frozen=True)
 class ForecastSeoContext:
     days: int | None
-    source: str | None
-    generated_at: datetime | None
     temperature_c: int | None = None
     condition_label: str | None = None
     icon: str | None = None
@@ -48,20 +44,16 @@ def point_forecast_context(point: WeatherPoint) -> ForecastSeoContext:
     records = ForecastRecord.objects.filter(weather_point=point, forecast_at__gte=now)
     first = records.order_by("forecast_at").only(
         "forecast_at",
-        "source",
-        "generated_at",
         "temperature_c",
         "condition_label",
         "icon",
     ).first()
     if first is None:
-        return ForecastSeoContext(days=None, source=None, generated_at=None)
+        return ForecastSeoContext(days=None)
     last = records.order_by("-forecast_at").only("forecast_at").first()
     day_count = (last.forecast_at.astimezone(now_tehran().tzinfo).date() - first.forecast_at.astimezone(now_tehran().tzinfo).date()).days + 1
     return ForecastSeoContext(
         days=max(1, day_count),
-        source=first.source or None,
-        generated_at=first.generated_at,
         temperature_c=first.temperature_c,
         condition_label=first.condition_label or None,
         icon=first.icon or None,
@@ -108,8 +100,6 @@ def point_seo_copy(point: WeatherPoint) -> dict[str, str | None]:
         "subtitle": subtitle,
         "content": point.seo_content.strip() or None,
         "forecast_duration": forecast.duration_label,
-        "forecast_source": forecast.source,
-        "forecast_generated_at": forecast.generated_at,
         "forecast_summary": forecast_summary,
     }
 

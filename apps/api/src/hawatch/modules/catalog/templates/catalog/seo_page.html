@@ -46,9 +46,6 @@
             <p>هواچ</p>
             <h1>{{ page.headline }}</h1>
             <p>{{ page.summary }}</p>
-            {% if page.forecast_source or page.forecast_generated_at %}
-              <small>منبع داده: {{ page.forecast_source|default:"ثبت‌شده" }}{% if page.forecast_generated_at %} · آخرین به‌روزرسانی: {{ page.forecast_generated_at|date:"Y/m/d H:i" }}{% endif %}</small>
-            {% endif %}
             {% if page.forecast_summary %}<p class="seo-forecast-summary">{{ page.forecast_summary }}</p>{% endif %}
 
             {% if page.kind == "home" %}

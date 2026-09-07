@@ -4106,14 +4106,6 @@ bdi,
   line-height: 1.45;
 }
 
-.forecast-source-note {
-  display: block;
-  margin-top: 5px;
-  color: var(--internal-muted, #a8c1c0);
-  font-size: var(--font-size-label);
-  line-height: 1.35;
-}
-
 .seo-forecast-summary {
   margin: 6px 0 0;
   color: var(--internal-text, #edf7f4);

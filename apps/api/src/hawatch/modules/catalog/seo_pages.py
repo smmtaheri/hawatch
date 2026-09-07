@@ -94,12 +94,6 @@ def _structured_breadcrumb(*items: tuple[str, str]) -> str:
     return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
 
-def _forecast_source_label(source: str | None) -> str | None:
-    if not source:
-        return None
-    return "Open-Meteo" if source.startswith("open-meteo") else source
-
-
 def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
     label = "نقطه" if content_type == "point" else "مسیر"
     return _render(
@@ -144,8 +138,6 @@ def _point_page(point: WeatherPoint) -> dict:
         "identity_summary": _localized_identity_summary(point),
         "seo_content": seo["content"],
         "forecast_duration": seo["forecast_duration"],
-        "forecast_source": _forecast_source_label(seo["forecast_source"]),
-        "forecast_generated_at": seo["forecast_generated_at"],
         "forecast_summary": seo["forecast_summary"],
         "structured_data": _structured_breadcrumb(("هواچ", "/"), ("نقاط", "/points"), (point.name, f"/points/{point.slug}")),
         "region": point.region,
@@ -189,8 +181,6 @@ def _route_page(route: Route) -> dict:
         "summary": seo["subtitle"],
         "identity_summary": route.subtitle,
         "seo_content": seo["content"],
-        "forecast_source": _forecast_source_label(seo.get("forecast_source")),
-        "forecast_generated_at": seo.get("forecast_generated_at"),
         "forecast_summary": seo.get("forecast_summary"),
         "structured_data": _structured_breadcrumb(("هواچ", "/"), ("مسیرها", "/routes"), (route.title, f"/routes/{route.slug}")),
         "region": route.region,
