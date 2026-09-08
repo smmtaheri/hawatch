@@ -38,7 +38,7 @@ describe("SEO document helpers", () => {
 
   it("preserves semantic SSR metadata while loading, then applies page data", () => {
     document.title = "آب‌وهوای قلهٔ توچال؛ دما، باد و بارش | هواچ";
-    const description = document.head.querySelector('meta[name="description"]') ?? document.createElement("meta");
+    const description = document.head.querySelector<HTMLMetaElement>('meta[name="description"]') ?? document.createElement("meta");
     description.setAttribute("name", "description");
     description.content = "توضیح SSR قلهٔ توچال.";
     document.head.appendChild(description);
