@@ -82,7 +82,15 @@ export function RoutePage() {
   const displayPeriod = requestedPeriod ?? (data?.meta.selected_period as PeriodId | undefined) ?? "morning";
   const displaySpeed = draftSpeed ?? speed ?? data?.speed ?? "متوسط";
   const timingPending = Boolean(data?.timing_pending);
-  usePageTitle(undefined, { title: data?.route.seo_title, description: data?.route.seo_description });
+  // Route data remains visible while a sibling route is loading; only apply
+  // its SEO copy while it still belongs to the current URL slug.
+  const seoRoute = data?.route.slug === slug ? data.route : undefined;
+  usePageTitle(undefined, {
+    title: seoRoute?.seo_title,
+    description: seoRoute?.seo_description,
+    robots: status === "missing" ? "noindex,follow" : undefined,
+    canonical: status === "missing" ? false : undefined,
+  });
 
   function update(next: Record<string, string | undefined>) {
     const copy = new URLSearchParams(params);
