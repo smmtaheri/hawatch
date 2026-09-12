@@ -1,0 +1,170 @@
+{
+  "catalog_version": "hawatch-shir-kuh-catalog-v1",
+  "weather_points": {
+    "shir-kuh": {
+      "name": "قلهٔ شیرکوه",
+      "page_name": "قلهٔ شیرکوه یزد",
+      "short_label": "قلهٔ شیرکوه",
+      "place_type": "summit",
+      "aliases": ["شیرکوه", "شیر کوه", "قله شیرکوه", "Shirkuh Peak"],
+      "identity_summary": "قلهٔ شیرکوه؛ بلندترین قلهٔ استان یزد در رشته‌کوه شیرکوه",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://fa.wikipedia.org/wiki/شیرکوه_(یزد)",
+        "https://www.wikiloc.com/hiking-trails/shyrkhwh-yzd-228456119",
+        "https://www.wikiloc.com/hiking-trails/msyr-jy-py-s-qlh-shyrkhwh-yzd-swd-ykhrwzh-w-shb-mny-br-rwy-qlh-55229151",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyr-khwh-z-dh-bl-187858430"
+      ],
+      "latitude": 31.60567,
+      "longitude": 54.06783,
+      "elevation_m": 4075,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۴۰۷۵ متر در منابع جغرافیایی و گزارش‌های مستقل؛ چهار ترک مختصات قله را همگرا می‌کنند. Open-Meteo GLO-90 DEM برابر ۴۰۲۹ متر است (اختلاف ۴۶ متر).",
+      "climate": "high_alpine"
+    },
+    "shir-kuh-deh-bala": {
+      "name": "روستای ده‌بالا تفت",
+      "page_name": "روستای ده‌بالا؛ مبدأ مسیر شیرکوه",
+      "short_label": "روستای ده‌بالا",
+      "place_type": "village",
+      "aliases": ["ده بالا", "ده‌بالا", "روستا ده بالا", "Deh Bala Shirkuh"],
+      "identity_summary": "روستای ده‌بالا در تفت؛ مبدأ رایج پیمایش پیادهٔ قلهٔ شیرکوه",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shyrkhwh-yzd-228456119",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyr-khwh-z-dh-bl-187858430",
+        "https://www.wikiloc.com/hiking-trails/msyr-jy-py-s-qlh-shyrkhwh-yzd-swd-ykhrwzh-w-shb-mny-br-rwy-qlh-55229151"
+      ],
+      "latitude": 31.61405,
+      "longitude": 54.10517,
+      "elevation_m": 2568,
+      "status": "provisional",
+      "elevation_source": "محل شروع پیمایش در محدودهٔ ده‌بالا با ارتفاع حدود ۲۵۶۰ متر در گزارش‌های مسیر؛ Open-Meteo GLO-90 DEM برابر ۲۵۶۹ متر است (اختلاف ۱ متر). نقطهٔ پارکینگ جداگانه ساخته نشده است.",
+      "climate": "meadow"
+    },
+    "shir-kuh-tabestankhaneh-spring": {
+      "name": "چشمهٔ تابستان‌خانه شیرکوه",
+      "page_name": "چشمهٔ تابستان‌خانه در مسیر شیرکوه",
+      "short_label": "چشمهٔ تابستان‌خانه",
+      "place_type": "spring",
+      "aliases": ["تابستانخانه", "تابستان‌خانه", "چشمه تابستان خانه", "Tabestankhaneh spring"],
+      "identity_summary": "چشمهٔ نام‌دار تابستان‌خانه در بخش میانی مسیر ده‌بالا به شیرکوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shyrkhwh-yzd-228456119",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyr-khwh-z-dh-bl-187858430",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrkhwh-207554560"
+      ],
+      "latitude": 31.62647,
+      "longitude": 54.09021,
+      "elevation_m": 3143,
+      "status": "provisional",
+      "elevation_source": "چشمهٔ تابستان‌خانه در waypointهای ترک‌های مستقل؛ Open-Meteo GLO-90 DEM برابر ۳۱۱۱ متر است (اختلاف ۳۲ متر).",
+      "climate": "high_alpine"
+    },
+    "shir-kuh-shelter": {
+      "name": "پناهگاه شیرکوه",
+      "page_name": "پناهگاه شیرکوه یزد",
+      "short_label": "پناهگاه شیرکوه",
+      "place_type": "shelter",
+      "aliases": ["پناهگاه شیر کوه", "جان‌پناه شیرکوه", "Shirkuh shelter"],
+      "identity_summary": "پناهگاه شناخته‌شدهٔ شیرکوه در ارتفاعات مسیر قله و نزدیک چشمه",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shyrkhwh-yzd-228456119",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyr-khwh-z-dh-bl-187858430",
+        "https://www.wikiloc.com/hiking-trails/msyr-jy-py-s-qlh-shyrkhwh-yzd-swd-ykhrwzh-w-shb-mny-br-rwy-qlh-55229151"
+      ],
+      "latitude": 31.63131,
+      "longitude": 54.08342,
+      "elevation_m": 3500,
+      "status": "provisional",
+      "elevation_source": "ارتفاع حدود ۳۵۰۰ متر در waypointهای چند ترک مستقل؛ Open-Meteo GLO-90 DEM برابر ۳۵۱۷ متر است (اختلاف ۱۷ متر). ارتفاع خام GPX صرفاً evidence است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "deh_bala_to_shir_kuh": {
+      "slug": "shir-kuh-deh-bala",
+      "title": "روستای ده‌بالا تا قلهٔ شیرکوه",
+      "subtitle": "مسیر رایج از ده‌بالا، چشمهٔ تابستان‌خانه و پناهگاه تا قلهٔ شیرکوه",
+      "trail_label": "مسیر ده‌بالا–شیرکوه",
+      "origin": "روستای ده‌بالا",
+      "target_label": "قلهٔ شیرکوه",
+      "region": "شیرکوه · استان یزد",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shir-kuh-deh-bala",
+        "shir-kuh-tabestankhaneh-spring",
+        "shir-kuh-shelter",
+        "shir-kuh"
+      ],
+      "distance_km": 8.3,
+      "ascent_m": 1500,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "shir-kuh-deh-bala-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/shyrkhwh-yzd-228456119",
+          "https://www.wikiloc.com/hiking-trails/qlh-shyr-khwh-z-dh-bl-187858430",
+          "https://www.wikiloc.com/hiking-trails/msyr-jy-py-s-qlh-shyrkhwh-yzd-swd-ykhrwzh-w-shb-mny-br-rwy-qlh-55229151"
+        ],
+        "evidence_tracks": [
+          "tracks/shir-kuh/shir-kuh-deh-bala-primary-2025.gpx",
+          "tracks/shir-kuh/shir-kuh-deh-bala-crosscheck-2024.gpx",
+          "tracks/shir-kuh/shir-kuh-deh-bala-classic-2020.gpx"
+        ],
+        "cumulative_minutes": {
+          "shir-kuh-deh-bala": 0,
+          "shir-kuh-tabestankhaneh-spring": 90,
+          "shir-kuh-shelter": 200,
+          "shir-kuh": 360
+        },
+        "notes": [
+          "محل پارک و شروع پیمایش نزدیک ده‌بالا با نقطهٔ canonical روستا ادغام شده است؛ WeatherPoint جدا برای پارکینگ ساخته نشده است.",
+          "درهٔ نجیب و چشمهٔ آن در ترک‌ها در فاصلهٔ کمتر از ۱۰۰ متر از چشمهٔ تابستان‌خانه ثبت شده‌اند و برای جلوگیری از duplicate، نقطهٔ canonical چشمهٔ تابستان‌خانه استفاده شده است.",
+          "مسیر ارتفاع‌بالا و زمان/فاصله تقریبی‌اند؛ شرایط زمستانی و بخش‌های سنگی نیازمند بررسی میدانی است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "shir-kuh",
+    "tile_name": "شیرکوه",
+    "name": "قلهٔ شیرکوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "شیرکوه · استان یزد",
+    "elevation_m": 4075,
+    "latitude": 31.60567,
+    "longitude": 54.06783,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شیرکوه",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "shir-kuh"
+}
