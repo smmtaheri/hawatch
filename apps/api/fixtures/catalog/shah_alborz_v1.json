@@ -1,0 +1,226 @@
+{
+  "catalog_version": "hawatch-shah-alborz-catalog-v1",
+  "weather_points": {
+    "shah-alborz": {
+      "name": "قلهٔ شاه‌البرز",
+      "page_name": "قلهٔ شاه‌البرز در طالقان و الموت",
+      "short_label": "قلهٔ شاه‌البرز",
+      "place_type": "summit",
+      "aliases": ["شاه البرز", "شاه‌البرز", "قله شاه البرز", "Shah Alborz Peak"],
+      "identity_summary": "قلهٔ شاه‌البرز؛ قلهٔ مرتفع خط‌الرأس میان طالقان و الموت در البرز غربی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shh-lbrz-ykhrwzh-139193481",
+        "https://www.wikiloc.com/hiking-trails/shh-lbrz-z-hsnjwn-220946088",
+        "https://www.wikiloc.com/mountaineering-trails/shh-lbrz-jbhh-shmly-5740897"
+      ],
+      "latitude": 36.31482,
+      "longitude": 50.75262,
+      "elevation_m": 4170,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۴۱۷۰ متر در گزارش‌های مستقل شاه‌البرز؛ waypointهای ترک‌ها در مختصات مشترک قله قرار دارند و Open-Meteo GLO-90 DEM برابر ۴۱۰۰ متر است (اختلاف ۷۰ متر).",
+      "climate": "high_alpine"
+    },
+    "shah-alborz-hasanjoun-village": {
+      "name": "روستای حسنجون طالقان",
+      "page_name": "روستای حسنجون؛ مبدأ مسیر شاه‌البرز",
+      "short_label": "روستای حسنجون",
+      "place_type": "village",
+      "aliases": ["حسنجون", "حسن‌جون", "روستا حسنجون", "Hasanjoun village"],
+      "identity_summary": "روستای حسنجون طالقان؛ مبدأ اصلی مسیر جنوبی شاه‌البرز",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shh-lbrz-ykhrwzh-139193481",
+        "https://www.wikiloc.com/hiking-trails/hsnjwn-bh-qlh-shh-lbrz-108750573",
+        "https://www.wikiloc.com/hiking-trails/shh-lbrz-1400-07-01-84571427"
+      ],
+      "latitude": 36.20424,
+      "longitude": 50.75464,
+      "elevation_m": 1975,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع مشترک ترک‌های حسنجون؛ Open-Meteo GLO-90 DEM برابر ۱۹۷۶ متر و ارتفاع waypointهای GPX حدود ۱۹۶۸ متر است.",
+      "climate": "meadow"
+    },
+    "shah-alborz-miano-sheepfold": {
+      "name": "گوسفندسرای میانو شاه‌البرز",
+      "page_name": "گوسفندسرای میانو در مسیر شاه‌البرز",
+      "short_label": "گوسفندسرای میانو",
+      "place_type": "camp",
+      "aliases": ["میانو", "کمپ میانو", "گوسفندسرا میانو", "Miano sheepfold"],
+      "identity_summary": "گوسفندسرای میانو؛ محل کمپ و چشمهٔ مسیر جنوبی شاه‌البرز",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shh-lbrz-ykhrwzh-139193481",
+        "https://www.wikiloc.com/hiking-trails/hsnjwn-bh-qlh-shh-lbrz-108750573"
+      ],
+      "latitude": 36.27535,
+      "longitude": 50.76145,
+      "elevation_m": 2876,
+      "status": "provisional",
+      "elevation_source": "waypoint گوسفندسرای میانو در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM برابر ۲۸۷۶ متر و ارتفاع GPX حدود ۲۸۷۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "shah-alborz-dineh-rud-village": {
+      "name": "روستای دینه‌رود الموت",
+      "page_name": "روستای دینه‌رود؛ مبدأ مسیر شمالی شاه‌البرز",
+      "short_label": "روستای دینه‌رود",
+      "place_type": "village",
+      "aliases": ["دینه رود", "دینه‌رود", "روستا دینه‌رود", "Dineh Rud village"],
+      "identity_summary": "روستای دینه‌رود در الموت؛ مبدأ مسیر شمالی شاه‌البرز",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shh-lbrz-jbhh-shmly-5740897"
+      ],
+      "latitude": 36.35531,
+      "longitude": 50.77640,
+      "elevation_m": 2170,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک جبههٔ شمالی دینه‌رود؛ Open-Meteo GLO-90 DEM برابر ۲۱۷۰ متر و ارتفاع GPX حدود ۲۱۹۴ متر است.",
+      "climate": "meadow"
+    },
+    "shah-alborz-dineh-permanent-spring": {
+      "name": "چشمهٔ دائمی دینه‌رود",
+      "page_name": "چشمهٔ دائمی دینه‌رود در مسیر شاه‌البرز",
+      "short_label": "چشمهٔ دائمی دینه‌رود",
+      "place_type": "spring",
+      "aliases": ["چشمه دائمی دینه رود", "چشمه دینه‌رود", "Dineh Rud permanent spring"],
+      "identity_summary": "چشمهٔ دائمی نام‌گذاری‌شده در بخش میانی مسیر شمالی شاه‌البرز",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shh-lbrz-jbhh-shmly-5740897"
+      ],
+      "latitude": 36.33701,
+      "longitude": 50.77474,
+      "elevation_m": 2843,
+      "status": "provisional",
+      "elevation_source": "waypoint CHESHME DAEM (چشمهٔ دائمی) در ترک جبههٔ شمالی؛ Open-Meteo GLO-90 DEM برابر ۲۸۴۳ متر و waypoint GPX حدود ۲۸۷۰ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "hasanjoun_to_shah_alborz": {
+      "slug": "shah-alborz-hasanjoun",
+      "title": "روستای حسنجون تا قلهٔ شاه‌البرز",
+      "subtitle": "مسیر جنوبی از حسنجون و گوسفندسرای میانو تا قلهٔ شاه‌البرز",
+      "trail_label": "مسیر جنوبی شاه‌البرز",
+      "origin": "روستای حسنجون",
+      "target_label": "قلهٔ شاه‌البرز",
+      "region": "طالقان · استان البرز",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shah-alborz-hasanjoun-village",
+        "shah-alborz-miano-sheepfold",
+        "shah-alborz"
+      ],
+      "distance_km": 16.7,
+      "ascent_m": 2200,
+      "one_way_minutes": 600,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "shah-alborz-hasanjoun-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-shh-lbrz-ykhrwzh-139193481",
+          "https://www.wikiloc.com/hiking-trails/hsnjwn-bh-qlh-shh-lbrz-108750573",
+          "https://www.wikiloc.com/hiking-trails/shh-lbrz-z-hsnjwn-220946088"
+        ],
+        "evidence_tracks": [
+          "tracks/shah-alborz/shah-alborz-hasanjoun-primary-2023.gpx",
+          "tracks/shah-alborz/shah-alborz-hasanjoun-crosscheck-2025.gpx",
+          "tracks/shah-alborz/shah-alborz-hasanjoun-crosscheck-2021-loop.gpx"
+        ],
+        "cumulative_minutes": {
+          "shah-alborz-hasanjoun-village": 0,
+          "shah-alborz-miano-sheepfold": 240,
+          "shah-alborz": 600
+        },
+        "notes": [
+          "پارکینگ و نقطهٔ شروع نزدیک با روستای حسنجون ادغام شده‌اند؛ WeatherPoint جدا برای access point ساخته نشده است.",
+          "مسیر طولانی و ارتفاع‌بالاست و معمولاً برای برنامهٔ دو روزه و کمپ میانو استفاده می‌شود.",
+          "فاصله و زمان تقریبی‌اند و عدم‌قطعیت ۱۸۰ دقیقه دارند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "dineh_rud_to_shah_alborz": {
+      "slug": "shah-alborz-dineh-rud",
+      "title": "روستای دینه‌رود تا قلهٔ شاه‌البرز",
+      "subtitle": "مسیر شمالی از دینه‌رود و چشمهٔ دائمی تا قلهٔ شاه‌البرز",
+      "trail_label": "مسیر شمالی شاه‌البرز",
+      "origin": "روستای دینه‌رود",
+      "target_label": "قلهٔ شاه‌البرز",
+      "region": "الموت · استان قزوین",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "shah-alborz-dineh-rud-village",
+        "shah-alborz-dineh-permanent-spring",
+        "shah-alborz"
+      ],
+      "distance_km": 11.4,
+      "ascent_m": 2000,
+      "one_way_minutes": 480,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "shah-alborz-dineh-rud-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/shh-lbrz-jbhh-shmly-5740897",
+          "https://www.wikiloc.com/hiking-trails/qlh-shh-lbrz-z-jbhhy-shmly-dynh-rwd-223312140"
+        ],
+        "evidence_tracks": [
+          "tracks/shah-alborz/shah-alborz-dineh-rud-crosscheck-2013.gpx"
+        ],
+        "cumulative_minutes": {
+          "shah-alborz-dineh-rud-village": 0,
+          "shah-alborz-dineh-permanent-spring": 180,
+          "shah-alborz": 480
+        },
+        "notes": [
+          "ترک GPX جبههٔ شمالی قدیمی است و برای هندسهٔ مسیر استفاده می‌شود.",
+          "گزارش جدیدتر دربارهٔ تیغهٔ ریزشی زیر قله هشدار می‌دهد؛ این مسیر برای کوهنورد باتجربه و با بررسی شرایط قابل طرح است.",
+          "فاصله و زمان با عدم‌قطعیت زیاد ثبت شده‌اند و معرفی مسیر به‌معنی تأیید ایمنی نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "shah-alborz",
+    "tile_name": "شاه‌البرز",
+    "name": "قلهٔ شاه‌البرز",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · طالقان و الموت",
+    "elevation_m": 4170,
+    "latitude": 36.31482,
+    "longitude": 50.75262,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شاه‌البرز",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "shah-alborz"
+}
