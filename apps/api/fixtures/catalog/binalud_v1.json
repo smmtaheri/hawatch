@@ -1,0 +1,190 @@
+{
+  "catalog_version": "hawatch-binalud-catalog-v1",
+  "weather_points": {
+    "binalud": {
+      "name": "قلهٔ بینالود",
+      "page_name": "قلهٔ بینالود خراسان رضوی",
+      "short_label": "قلهٔ بینالود",
+      "place_type": "summit",
+      "aliases": ["بینالود", "قله بینالود", "بام خراسان", "Binalud Peak"],
+      "identity_summary": "قلهٔ بینالود؛ قلهٔ شاخص رشته‌کوه بینالود در خراسان رضوی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-rwsty-fryzy-1404-04-20-mount-binaloud-221462633",
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-zyr-jnpnh-ymny-1405-03-29-270168216",
+        "https://www.wikiloc.com/hiking-trails/bynlwd-z-drh-w-brgsht-z-jnpnh-ymny-85597073"
+      ],
+      "latitude": 36.42670,
+      "longitude": 58.84768,
+      "elevation_m": 3211,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۲۱۱ متر در گزارش‌های مسیر؛ سه ترک مستقل waypoint قله را در مختصات مشترک ثبت می‌کنند و Open-Meteo GLO-90 DEM برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "binalud-frizi-village": {
+      "name": "روستای فریزی گلبهار",
+      "page_name": "روستای فریزی؛ دسترسی مسیر بینالود",
+      "short_label": "روستای فریزی",
+      "place_type": "village",
+      "aliases": ["فریزی", "روستا فریزی", "Frizi village", "Ferizi"],
+      "identity_summary": "روستای فریزی در گلبهار؛ دسترسی شناخته‌شده به مسیر شمال‌شرقی بینالود",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-zyr-jnpnh-ymny-1405-03-29-270168216",
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-rwsty-fryzy-1404-04-20-mount-binaloud-221462633"
+      ],
+      "latitude": 36.48878,
+      "longitude": 58.98057,
+      "elevation_m": 1596,
+      "status": "provisional",
+      "elevation_source": "waypoint روستای فریزی در ترک مستقل ۲۰۲۶؛ Open-Meteo GLO-90 DEM برای کنترل ارتفاع و forecast استفاده می‌شود.",
+      "climate": "meadow"
+    },
+    "binalud-frizi-trailhead": {
+      "name": "پای‌کار مسیر بینالود در فریزی",
+      "page_name": "پای‌کار مسیر بینالود؛ بعد از فریزی",
+      "short_label": "پای‌کار بینالود",
+      "place_type": "parking",
+      "aliases": ["پارکینگ بینالود", "پای کار فریزی", "Binalud trailhead"],
+      "identity_summary": "پای‌کار پیادهٔ مسیر بینالود پس از جادهٔ دسترسی فریزی؛ مبدأ بخش کوهپیمایی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-rwsty-fryzy-1404-04-20-mount-binaloud-221462633",
+        "https://www.wikiloc.com/hiking-trails/bynlwd-z-drh-w-brgsht-z-jnpnh-ymny-85597073"
+      ],
+      "latitude": 36.46460,
+      "longitude": 58.92165,
+      "elevation_m": 1778,
+      "status": "provisional",
+      "elevation_source": "پارکینگ/پای‌کار مشترک ترک‌های پیادهٔ فریزی؛ Open-Meteo GLO-90 DEM برای مختصات canonical کنترل می‌شود و بخش جاده‌ای وارد ETA نیست.",
+      "climate": "meadow"
+    },
+    "binalud-imani-shelter": {
+      "name": "پناهگاه ایمانی بینالود",
+      "page_name": "پناهگاه ایمانی در مسیر بینالود",
+      "short_label": "پناهگاه ایمانی",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه ایمانی", "جانپناه اول بینالود", "Imani shelter"],
+      "identity_summary": "پناهگاه ایمانی؛ جان‌پناه شناخته‌شدهٔ بخش پایینی مسیر فریزی به بینالود",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-rwsty-fryzy-1404-04-20-mount-binaloud-221462633",
+        "https://www.wikiloc.com/hiking-trails/swd-ykh-rwzh-bh-bynlwd-binalood-summit-10680572",
+        "https://www.wikiloc.com/hiking-trails/bynlwd-z-drh-w-brgsht-z-jnpnh-ymny-85597073"
+      ],
+      "latitude": 36.45007,
+      "longitude": 58.90000,
+      "elevation_m": 2260,
+      "status": "provisional",
+      "elevation_source": "waypoint پناهگاه ایمانی در چند ترک مستقل؛ Open-Meteo GLO-90 DEM برای کنترل elevation و forecast استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "binalud-modares-shelter": {
+      "name": "پناهگاه شهید مدرس بینالود",
+      "page_name": "پناهگاه شهید مدرس در مسیر بینالود",
+      "short_label": "پناهگاه مدرس",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه مدرس", "جانپناه شهید مدرس", "Modares shelter"],
+      "identity_summary": "پناهگاه شهید مدرس؛ جان‌پناه نام‌دار بخش مرتفع مسیر شمالی بینالود",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-zyr-jnpnh-ymny-1405-03-29-270168216",
+        "https://www.wikiloc.com/hiking-trails/bynlwd-z-drh-w-brgsht-z-jnpnh-ymny-85597073",
+        "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-1400-02-23-72951429"
+      ],
+      "latitude": 36.42633,
+      "longitude": 58.86753,
+      "elevation_m": 2800,
+      "status": "provisional",
+      "elevation_source": "waypoint پناهگاه شهید مدرس در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM برای کنترل اختلاف ارتفاع استفاده می‌شود و GPX صرفاً evidence است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "frizi_trailhead_to_binalud": {
+      "slug": "binalud-frizi",
+      "title": "پای‌کار فریزی تا قلهٔ بینالود",
+      "subtitle": "مسیر پیاده از پای‌کار فریزی، پناهگاه ایمانی و پناهگاه مدرس تا قلهٔ بینالود",
+      "trail_label": "مسیر فریزی–بینالود",
+      "origin": "پای‌کار فریزی",
+      "target_label": "قلهٔ بینالود",
+      "region": "رشته‌کوه بینالود · خراسان رضوی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "binalud-frizi-trailhead",
+        "binalud-imani-shelter",
+        "binalud-modares-shelter",
+        "binalud"
+      ],
+      "distance_km": 10.9,
+      "ascent_m": 1550,
+      "one_way_minutes": 270,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "binalud-frizi-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-z-rwsty-fryzy-1404-04-20-mount-binaloud-221462633",
+          "https://www.wikiloc.com/hiking-trails/bynlwd-z-drh-w-brgsht-z-jnpnh-ymny-85597073",
+          "https://www.wikiloc.com/hiking-trails/qlh-bynlwd-1400-02-23-72951429"
+        ],
+        "evidence_tracks": [
+          "tracks/binalud/binalud-frizi-primary-2025.gpx",
+          "tracks/binalud/binalud-frizi-valley-crosscheck-2021.gpx",
+          "tracks/binalud/binalud-frizi-shelters-crosscheck-2021.gpx"
+        ],
+        "cumulative_minutes": {
+          "binalud-frizi-trailhead": 0,
+          "binalud-imani-shelter": 60,
+          "binalud-modares-shelter": 180,
+          "binalud": 270
+        },
+        "notes": [
+          "روستای فریزی و پای‌کار حدود ۶ کیلومتر فاصله دارند؛ بخش جاده‌ای/خودرویی حذف شده و پای‌کار مستقلِ noindex مبدأ مسیر پیاده است.",
+          "پناهگاه ایمانی و پناهگاه شهید مدرس عوارض نام‌دار و مشترک چند ترک‌اند؛ پارکینگ‌ها، چشمه‌ها و waypointهای generic جداگانه نشده‌اند.",
+          "مسافت، صعود و زمان تقریبی‌اند و شرایط ارتفاعی/فصل روی برنامه اثر مستقیم دارد."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "binalud",
+    "tile_name": "بینالود",
+    "name": "قلهٔ بینالود",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "رشته‌کوه بینالود · خراسان رضوی",
+    "elevation_m": 3211,
+    "latitude": 36.42670,
+    "longitude": 58.84768,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بینالود",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "binalud"
+}
