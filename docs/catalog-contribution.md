@@ -127,6 +127,12 @@ mkdir -p tracks/<point-slug>
 برای پرکردن این زنجیره اضافه نشود؛ اگر landmark میانی اثبات نشده، route pending
 بماند.
 
+مبدأ نزدیک روستا باید با نقطهٔ canonical همان روستا ادغام شود، نه اینکه برای
+مسجد، پارکینگ یا waypoint شروعِ داخل بافت روستا صفحهٔ دوم ساخته شود. تنها
+access point مستقل و واقعاً دور از روستا با نام مستند می‌تواند نقطهٔ جدا باشد؛
+جزئیات بررسی فاصله و `reviewed_nearby_point_pairs` در بخش «ادغام مبدأهای نزدیک
+روستا» راهنمای onboarding آمده است.
+
 نام فایل دانلودی را قبل از تحلیل روشن کنید:
 `<point>-<side>-<origin>-to-<target>-<year>.gpx`.
 فایل‌ها و `manifest.json` در `.gitignore` هستند و هرگز commit، image یا server

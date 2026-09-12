@@ -1,0 +1,307 @@
+{
+  "catalog_version": "hawatch-sanboran-catalog-v1",
+  "weather_points": {
+    "sanboran": {
+      "name": "قلهٔ سنبران",
+      "page_name": "قلهٔ سنبران اشترانکوه",
+      "short_label": "قلهٔ سنبران",
+      "place_type": "summit",
+      "aliases": ["سن‌بران", "سن بران", "قله سنبران", "Sanboran Peak"],
+      "identity_summary": "قلهٔ سنبران، بلندترین قلهٔ اشترانکوه در لرستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://fa.wikipedia.org/wiki/سن‌بران",
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263"
+      ],
+      "latitude": 33.34022,
+      "longitude": 49.30443,
+      "elevation_m": 4150,
+      "status": "provisional",
+      "elevation_source": "ارتفاع منتشرشدهٔ ۴۱۵۰ متر در منابع کوهنوردی و ویکی‌پدیای فارسی؛ چند ترک مستقل مختصات قله را تأیید می‌کنند و Open-Meteo GLO-90 DEM در مختصات canonical برابر ۴۰۵۵ متر است (اختلاف ۹۵ متر).",
+      "climate": "high_alpine"
+    },
+    "sanboran-tian-village": {
+      "name": "روستای تیان لرستان",
+      "page_name": "روستای تیان؛ مبدأ مسیر سنبران",
+      "short_label": "روستای تیان",
+      "place_type": "village",
+      "aliases": ["تیان", "طیان", "روستا تیان", "Tiyan village"],
+      "identity_summary": "روستای تیان؛ مبدأ شناخته‌شدهٔ مسیر جنوبی صعود به سنبران",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/snbrn-shtrnkhwh-z-tyn-18415611",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+        "https://fa.wikipedia.org/wiki/سن‌بران"
+      ],
+      "latitude": 33.41905,
+      "longitude": 49.28737,
+      "elevation_m": 1780,
+      "status": "provisional",
+      "elevation_source": "مختصات مسجد/مبدأ ترک‌های مستقل تیان با مرکز canonical روستا ادغام شده است؛ Open-Meteo GLO-90 DEM برابر ۱۷۷۴ متر و waypointهای GPX حدود ۱۷۷۸ مترند.",
+      "climate": "meadow"
+    },
+    "sanboran-bidastaneh-village": {
+      "name": "روستای بیدستانه",
+      "page_name": "روستای بیدستانه؛ مبدأ مسیر سنبران",
+      "short_label": "روستای بیدستانه",
+      "place_type": "village",
+      "aliases": ["بیدستانه", "روستا بیدستانه", "Bidastaneh village"],
+      "identity_summary": "روستای بیدستانه؛ مبدأ مسیر غربی صعود به سنبران",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-z-msyr-rwsty-bydstnh-77711653",
+        "https://www.wikiloc.com/hiking-trails/snbrn-6-shhrywr-1405-282622351",
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838"
+      ],
+      "latitude": 33.39895,
+      "longitude": 49.27350,
+      "elevation_m": 1963,
+      "status": "provisional",
+      "elevation_source": "مرکز روستا از شروع ترک‌های مستقل بیدستانه تعیین شده است؛ Open-Meteo GLO-90 DEM برابر ۱۹۶۳ متر و waypoint مسجد روستا در GPX حدود ۱۹۳۳ متر است.",
+      "climate": "meadow"
+    },
+    "sanboran-gol-gol-shelter": {
+      "name": "پناهگاه گل‌گل سنبران",
+      "page_name": "پناهگاه گل‌گل در مسیر سنبران",
+      "short_label": "پناهگاه گل‌گل",
+      "place_type": "shelter",
+      "aliases": ["پناهگاه گل گل", "جان‌پناه گل‌گل", "Gol Gol shelter"],
+      "identity_summary": "پناهگاه گل‌گل، جان‌پناه نام‌دار در مسیر جنوبی سنبران",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838",
+        "https://fa.wikipedia.org/wiki/سن‌بران"
+      ],
+      "latitude": 33.37274,
+      "longitude": 49.30069,
+      "elevation_m": 2700,
+      "status": "provisional",
+      "elevation_source": "ارتفاع تقریبی ۲۷۰۰ متر در گزارش‌های مسیر؛ Open-Meteo GLO-90 DEM برابر ۲۷۱۴ متر و waypointهای GPX حدود ۲۶۸۸ مترند.",
+      "climate": "high_alpine"
+    },
+    "sanboran-sang-mesqal-ridge": {
+      "name": "سنگ مثقال (گرده‌ماهی) سنبران",
+      "page_name": "سنگ مثقال (گرده‌ماهی) در مسیر سنبران",
+      "short_label": "سنگ مثقال",
+      "place_type": "landmark",
+      "aliases": ["گرده‌ماهی", "سنگ مثقال سنبران", "Sang Mesqal"],
+      "identity_summary": "سنگ مثقال یا گرده‌ماهی؛ عارضهٔ نام‌دار بخش مرتفع مسیر سنبران",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+        "https://www.wikiloc.com/hiking-trails/snbrn-6-shhrywr-1405-282622351",
+        "https://www.wikiloc.com/hiking-trails/swd-snbrn-w-frwd-bh-drychh-ghr-73980003"
+      ],
+      "latitude": 33.35698,
+      "longitude": 49.29966,
+      "elevation_m": 3320,
+      "status": "provisional",
+      "elevation_source": "مختصات سنگ مثقال/گرده‌ماهی در چند ترک مستقل؛ Open-Meteo GLO-90 DEM برابر ۳۳۲۰ متر.",
+      "climate": "high_alpine"
+    },
+    "sanboran-chal-kabud-shelter": {
+      "name": "پناهگاه چال‌کبود",
+      "page_name": "پناهگاه چال‌کبود در مسیر سنبران",
+      "short_label": "پناهگاه چال‌کبود",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه چال‌کبود", "چال کبود", "Chalkaboud Shelter"],
+      "identity_summary": "پناهگاه چال‌کبود؛ جان‌پناه شناخته‌شدهٔ زیر قلهٔ سنبران",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+        "https://www.wikiloc.com/hiking-trails/snbrn-6-shhrywr-1405-282622351",
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838",
+        "https://fa.wikipedia.org/wiki/سن‌بران"
+      ],
+      "latitude": 33.34988,
+      "longitude": 49.29785,
+      "elevation_m": 3650,
+      "status": "provisional",
+      "elevation_source": "ارتفاع تقریبی ۳۶۵۰ متر در منابع مسیر؛ Open-Meteo GLO-90 DEM برابر ۳۶۲۵ متر و waypointهای GPX حدود ۳۵۳۳ تا ۳۶۱۶ مترند.",
+      "climate": "high_alpine"
+    },
+    "sanboran-gheif-waterfall": {
+      "name": "آبشار قیف سنبران",
+      "page_name": "آبشار قیف در مسیر سنبران تا گهر",
+      "short_label": "آبشار قیف سنبران",
+      "place_type": "waterfall",
+      "aliases": ["قیف سنبران", "آبشار قیف", "Gheif waterfall"],
+      "identity_summary": "آبشار قیف سنبران؛ عارضهٔ طبیعی مسیر فرود از سنبران به دریاچهٔ گهر",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-snbrn-w-frwd-bh-drychh-ghr-73980003"
+      ],
+      "latitude": 33.32752,
+      "longitude": 49.29273,
+      "elevation_m": 2977,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار قیف از ترک سنبران–گهر؛ Open-Meteo GLO-90 DEM برابر ۲۹۷۷ متر است و ارتفاع GPX با اختلاف بیش از ۱۰۰ متر صرفاً cross-check هندسه محسوب می‌شود.",
+      "climate": "lake_valley"
+    }
+  },
+  "shared_weather_points": ["gahar"],
+  "routes": {
+    "tian_to_sanboran": {
+      "slug": "sanboran-tian",
+      "title": "روستای تیان تا قلهٔ سنبران",
+      "subtitle": "مسیر اصلی از روستای تیان، پناهگاه گل‌گل و چال‌کبود تا قلهٔ سنبران",
+      "trail_label": "مسیر تیان–سنبران",
+      "origin": "روستای تیان",
+      "target_label": "قلهٔ سنبران",
+      "region": "اشترانکوه · لرستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sanboran-tian-village",
+        "sanboran-gol-gol-shelter",
+        "sanboran-sang-mesqal-ridge",
+        "sanboran-chal-kabud-shelter",
+        "sanboran"
+      ],
+      "distance_km": 13.1,
+      "ascent_m": 2150,
+      "one_way_minutes": 900,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "sanboran-tian-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/snbrn-shtrnkhwh-z-tyn-18415611",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+          "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838"
+        ],
+        "evidence_tracks": [
+          "tracks/san-boran/sanboran-tian-primary-74934263.gpx",
+          "tracks/san-boran/sanboran-tian-crosscheck-18415611.gpx"
+        ],
+        "cumulative_minutes": {
+          "sanboran-tian-village": 0,
+          "sanboran-gol-gol-shelter": 240,
+          "sanboran-sang-mesqal-ridge": 430,
+          "sanboran-chal-kabud-shelter": 570,
+          "sanboran": 900
+        },
+        "notes": [
+          "نقطهٔ مبدأ مسجد/پارکینگ نزدیک روستای تیان با نقطهٔ canonical روستا ادغام شده است.",
+          "ارتفاع GPX برای ETA استفاده نشده و مسیر ارتفاع‌بالا با احتیاط طی شود.",
+          "فاصله و زمان تقریبی‌اند و پس از تحلیل ترک primary با عدم‌قطعیت نمایش داده می‌شوند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "bidastaneh_to_sanboran": {
+      "slug": "sanboran-bidastaneh",
+      "title": "روستای بیدستانه تا قلهٔ سنبران",
+      "subtitle": "مسیر بیدستانه از سنگ مثقال و پناهگاه چال‌کبود تا قلهٔ سنبران",
+      "trail_label": "مسیر بیدستانه–سنبران",
+      "origin": "روستای بیدستانه",
+      "target_label": "قلهٔ سنبران",
+      "region": "اشترانکوه · لرستان",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "sanboran-bidastaneh-village",
+        "sanboran-sang-mesqal-ridge",
+        "sanboran-chal-kabud-shelter",
+        "sanboran"
+      ],
+      "distance_km": 9.1,
+      "ascent_m": 2100,
+      "one_way_minutes": 600,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "sanboran-bidastaneh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-snbrn-z-msyr-rwsty-bydstnh-77711653",
+          "https://www.wikiloc.com/hiking-trails/snbrn-6-shhrywr-1405-282622351",
+          "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-snbrn-39770944"
+        ],
+        "evidence_tracks": [
+          "tracks/san-boran/sanboran-bidastaneh-primary-77711653.gpx",
+          "tracks/san-boran/sanboran-bidastaneh-crosscheck-282622351.gpx"
+        ],
+        "cumulative_minutes": {
+          "sanboran-bidastaneh-village": 0,
+          "sanboran-sang-mesqal-ridge": 210,
+          "sanboran-chal-kabud-shelter": 360,
+          "sanboran": 600
+        },
+        "notes": [
+          "نقطهٔ شروع ترک نزدیک مسجد روستای بیدستانه با خود روستا ادغام شده است.",
+          "فاصله و زمان تقریبی‌اند و برای شرایط ارتفاع‌بالا عدم‌قطعیت ۱۲۰ دقیقه ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "tian_to_gahar_via_sanboran": {
+      "slug": "sanboran-gahar",
+      "title": "روستای تیان تا دریاچهٔ گهر از سنبران",
+      "subtitle": "مسیر کوهستانی تیان، سنبران و فرود از قیف تا دریاچهٔ گهر",
+      "trail_label": "مسیر سنبران–گهر",
+      "origin": "روستای تیان",
+      "target_label": "دریاچهٔ گهر",
+      "region": "اشترانکوه · لرستان",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "sanboran-tian-village",
+        "sanboran-gol-gol-shelter",
+        "sanboran-chal-kabud-shelter",
+        "sanboran",
+        "sanboran-gheif-waterfall",
+        "gahar"
+      ],
+      "distance_km": 30.3,
+      "ascent_m": 2500,
+      "default_start_minutes": 240,
+      "timing_status": "pending",
+      "public_point_notes": {
+        "sanboran-gheif-waterfall": "فرود از قیف سنبران فنی و وابسته به شرایط مسیر است؛ ETA عمومی برای این اتصال ثبت نشده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "sanboran",
+    "tile_name": "سنبران",
+    "name": "قلهٔ سنبران",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "اشترانکوه · لرستان",
+    "elevation_m": 4150,
+    "latitude": 33.34022,
+    "longitude": 49.30443,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سنبران",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "sanboran"
+}
