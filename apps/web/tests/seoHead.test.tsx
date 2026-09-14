@@ -76,10 +76,10 @@ describe("SEO document helpers", () => {
         <LoadingSeoHarness />
       </MemoryRouter>,
     );
-    expect(document.title).toBe("هواچ | هوای نقطه، برنامهٔ مسیر");
+    expect(document.title).toBe("هواچ | پیش‌بینی هوای کوهستان و مسیرها");
     expect(document.head.querySelector('meta[name="description"]')).toHaveAttribute(
       "content",
-      "هواچ؛ هوای نقاط و برنامهٔ مسیر.",
+      "هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر.",
     );
     expect(document.head.querySelector('link[rel="canonical"]')).toHaveAttribute(
       "href",

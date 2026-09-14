@@ -271,5 +271,59 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
     return issues
 
 
+def validate_indexable_link_graph() -> list[CatalogIssue]:
+    """Check that every indexable public page has a real SSR entry point.
+
+    The destination hub owns primary destinations.  Other indexable points
+    must be part of an active route, and every active route must be reachable
+    from at least one primary destination through the same relationship query
+    used by the SSR point page.  Technical/noindex points are intentionally
+    excluded from this check.
+    """
+
+    from hawatch.modules.catalog.internal_links import related_public_routes
+    from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
+    from hawatch.modules.routes.models import Route
+
+    issues: list[CatalogIssue] = []
+    destinations = list(publicly_visible_destinations().only("id", "slug"))
+    destination_ids = {point.pk for point in destinations}
+    indexable_points = list(
+        publicly_visible_weather_points()
+        .filter(seo_indexable=True)
+        .only("id", "slug", "kind", "name", "page_name")
+    )
+
+    if indexable_points and not destinations:
+        issues.append(_issue("error", "destination-hub-empty", "indexable points exist but the destination hub has no primary destination"))
+
+    destination_route_ids: set[int] = set()
+    for destination in destinations:
+        destination_route_ids.update(related_public_routes(destination).values_list("pk", flat=True))
+
+    for point in indexable_points:
+        if point.pk in destination_ids:
+            continue
+        if not related_public_routes(point).exists():
+            issues.append(
+                _issue(
+                    "warning",
+                    "orphan-indexable-point",
+                    f"indexable point has no SSR link from a destination or active route: {point.slug}",
+                )
+            )
+
+    for route in Route.objects.filter(is_active=True).only("id", "slug"):
+        if route.pk not in destination_route_ids:
+            issues.append(
+                _issue(
+                    "warning",
+                    "orphan-indexable-route",
+                    f"active route has no SSR link from a primary destination: {route.slug}",
+                )
+            )
+    return issues
+
+
 def format_issues(issues: Iterable[CatalogIssue]) -> str:
     return "\n".join(str(issue) for issue in issues)

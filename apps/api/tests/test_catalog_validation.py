@@ -11,6 +11,7 @@ from hawatch.modules.catalog.tochal import seed_tochal_catalog
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.validation import validate_catalog_document
 from hawatch.modules.catalog.validation import validate_database_catalog
+from hawatch.modules.catalog.validation import validate_indexable_link_graph
 from hawatch.modules.forecasts.models import WeatherPoint
 
 
@@ -149,3 +150,15 @@ def test_seeded_catalog_passes_database_identity_validation():
 
     assert not [issue for issue in issues if issue.level == "error"], issues
     assert not [issue for issue in issues if issue.level == "warning"], issues
+
+
+@pytest.mark.django_db
+def test_indexable_link_graph_reports_indexable_points_without_a_real_route_entry():
+    seed_tochal_catalog()
+
+    issues = validate_indexable_link_graph()
+
+    assert any(
+        issue.code == "orphan-indexable-point" and "tochal-velenjak-village" in issue.message
+        for issue in issues
+    )

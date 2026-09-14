@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import timedelta
 
 from django.db import connection
+from django.db.models import Max
 from django.http import HttpResponse
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
@@ -31,7 +32,7 @@ from hawatch.common.time import (
     resolve_planner_start_minutes,
 )
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
-from hawatch.modules.catalog.runtime import publicly_visible_weather_points
+from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -162,6 +163,20 @@ def catalog_index(request):
 
 
 @api_view(["GET"])
+def destinations_index(request):
+    """Return only independent, indexable destination points for the hub."""
+
+    refresh_if_bucket_changed()
+    destinations = publicly_visible_destinations().order_by(
+        "-is_popular",
+        "popular_order",
+        "page_name",
+        "slug",
+    )
+    return Response({"destinations": [serialize_point_profile(point) for point in destinations]})
+
+
+@api_view(["GET"])
 def point_detail(request, slug: str):
     refresh_if_bucket_changed()
     point = get_point(slug)
@@ -286,10 +301,49 @@ def sitemap_xml(_request):
     from django.conf import settings
 
     base = settings.PUBLIC_SITE_ORIGIN
-    points = publicly_visible_weather_points().filter(seo_indexable=True).order_by("slug").values_list("slug", flat=True)
-    routes = Route.objects.filter(is_active=True).values_list("slug", flat=True)
-    urls = [f"{base}/"] + [f"{base}/points/{slug}" for slug in points] + [f"{base}/routes/{slug}" for slug in routes]
+    point_rows = list(
+        publicly_visible_weather_points()
+        .filter(seo_indexable=True)
+        .order_by("slug")
+        .values("slug", "updated_at")
+    )
+    route_rows = list(
+        Route.objects.filter(is_active=True)
+        .annotate(points_updated_at=Max("points__weather_point__updated_at"))
+        .order_by("slug")
+        .values("slug", "updated_at", "points_updated_at")
+    )
+    destination_lastmod = (
+        WeatherPoint.objects.filter(
+            kind=WeatherPoint.Kind.PRIMARY,
+            importance="primary",
+        )
+        .order_by("-updated_at")
+        .values_list("updated_at", flat=True)
+        .first()
+    )
+
+    def entry(url: str, updated_at=None) -> str:
+        lastmod = (
+            f"<lastmod>{dj_timezone.localtime(updated_at).date().isoformat()}</lastmod>"
+            if updated_at is not None
+            else ""
+        )
+        return f"<url><loc>{escape(url)}</loc>{lastmod}</url>"
+
+    urls = [
+        entry(f"{base}/"),
+        entry(f"{base}/destinations", destination_lastmod),
+        *(entry(f"{base}/points/{row['slug']}", row["updated_at"]) for row in point_rows),
+        *(
+            entry(
+                f"{base}/routes/{row['slug']}",
+                max(value for value in (row["updated_at"], row["points_updated_at"]) if value is not None),
+            )
+            for row in route_rows
+        ),
+    ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    xml.extend(f"<url><loc>{escape(url)}</loc></url>" for url in urls)
+    xml.extend(urls)
     xml.append("</urlset>")
     return HttpResponse("".join(xml), content_type="application/xml; charset=utf-8")

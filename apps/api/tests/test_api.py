@@ -9,6 +9,7 @@ from hawatch.common.time import day_window, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.sync import load_packaged_catalogs
+from hawatch.modules.catalog.runtime import publicly_visible_destinations
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
@@ -86,11 +87,12 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
         .values_list("slug", flat=True)
     }
     expected_routes = {f"https://hawatch.ir/routes/{slug}" for slug in desired.route_slugs}
-    expected_locations = {"https://hawatch.ir/"} | expected_points | expected_routes
+    expected_locations = {"https://hawatch.ir/", "https://hawatch.ir/destinations"} | expected_points | expected_routes
     assert set(locations) == expected_locations
-    assert len(locations) == 1 + len(expected_points) + len(expected_routes)
+    assert len(locations) == 2 + len(expected_points) + len(expected_routes)
     assert len(locations) == len(set(locations))
     assert locations[0] == "https://hawatch.ir/"
+    assert locations[1] == "https://hawatch.ir/destinations"
     assert all(url.startswith("https://hawatch.ir/") and "?" not in url for url in locations)
     assert "https://hawatch.ir/points" not in locations
     assert "https://hawatch.ir/routes" not in locations
@@ -98,6 +100,29 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     assert "https://hawatch.ir/routes/" not in locations
     assert sum("/points/" in url for url in locations) == len(expected_points)
     assert sum("/routes/" in url for url in locations) == len(expected_routes)
+    url_nodes = root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url")
+    lastmods = {
+        node.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc").text: node.find(
+            "{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod"
+        )
+        for node in url_nodes
+    }
+    assert lastmods["https://hawatch.ir/"] is None
+    assert all(lastmods[url] is not None for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"})
+    assert all(lastmods[url].text and len(lastmods[url].text) == 10 for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"})
+
+
+@pytest.mark.django_db
+def test_destination_index_contains_only_primary_indexable_points(api_client, seeded):
+    response = api_client.get("/api/v1/destinations/")
+
+    assert response.status_code == 200
+    payload = response.json()
+    slugs = {item["slug"] for item in payload["destinations"]}
+    expected = set(publicly_visible_destinations().values_list("slug", flat=True))
+    assert slugs == expected
+    assert slugs
+    assert all(item["seo_indexable"] for item in payload["destinations"])
 
 
 @pytest.mark.django_db

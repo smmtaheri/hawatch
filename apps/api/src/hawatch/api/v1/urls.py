@@ -10,6 +10,7 @@ urlpatterns = [
     path("health/ready/", views.health_ready),
     path("health/status/", views.health_status),
     path("points/", views.points_list),
+    path("destinations/", views.destinations_index),
     path("catalog-index/", views.catalog_index),
     path("points/<slug:slug>/", views.point_detail),
     path("routes/<slug:slug>/", views.route_detail),

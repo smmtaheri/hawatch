@@ -8,6 +8,7 @@ import { HomePage } from "../src/pages/HomePage";
 import { LoginPage } from "../src/pages/LoginPage";
 import { PointDetailPage as PointPage } from "../src/pages/PointDetailPage";
 import { RoutePage } from "../src/pages/RoutePage";
+import { DestinationsPage } from "../src/pages/DestinationsPage";
 import { PointDetailPage } from "../src/pages/PointDetailPage";
 
 const pointForecast = {
@@ -194,6 +195,8 @@ function renderAt(path: string) {
       <MemoryRouter initialEntries={[path]}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/destinations" element={<DestinationsPage />} />
+          <Route path="/destinations/" element={<DestinationsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/points/:slug" element={<PointPage />} />
           <Route path="/routes/:slug" element={<RoutePage />} />
@@ -245,6 +248,9 @@ describe("Hawatch pages", () => {
           }
           return jsonResponse(routeForecastForAccess(mockedAuthenticated));
         }
+        if (url.includes("/destinations/")) {
+          return jsonResponse({ destinations: [pointForecast.point] });
+        }
         if (url.includes("/points/")) {
           return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
         }
@@ -284,6 +290,14 @@ describe("Hawatch pages", () => {
     expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
   });
 
+  it("renders the destination hub from its crawlable route", async () => {
+    renderAt("/destinations");
+
+    expect(await screen.findByRole("heading", { level: 1, name: "مقصدهای اصلی هواچ" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "قلهٔ توچال" })).toHaveAttribute("href", "/points/tochal");
+    expect(document.title).toBe("مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها");
+  });
+
   it("opens a route-backed login overlay from the shared header", async () => {
     const user = userEvent.setup();
     renderApplication("/");
@@ -301,7 +315,7 @@ describe("Hawatch pages", () => {
     await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument());
     expect(screen.getByRole("button", { name: "حساب" })).toBeInTheDocument();
-    expect(document.title).toBe("هواچ | هوای نقطه، برنامهٔ مسیر");
+    expect(document.title).toBe("هواچ | پیش‌بینی هوای کوهستان و مسیرها");
     await user.click(screen.getByRole("button", { name: "حساب" }));
     const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
     expect(within(accountDialog).getByText("طرح فعلی:")).toBeInTheDocument();

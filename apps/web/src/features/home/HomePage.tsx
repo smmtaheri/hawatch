@@ -98,10 +98,10 @@ export function HomePage() {
               <button type="submit">جست‌وجو</button>
             </form>
             <div className="hero-points" id="search-results">
-              <div className="hero-points-heading">
+              <h2 className="hero-points-heading">
                 <span>{heading}</span>
                 <i />
-              </div>
+              </h2>
               {freshness === "stale" ? <StaleDataNotice /> : null}
               {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری نقاط…" /> : null}
               {status === "error" && !showingSearch ? <ErrorState onRetry={loadPopular} /> : null}
@@ -153,6 +153,11 @@ export function HomePage() {
                     </Link>
                   ))}
                 </div>
+              ) : null}
+              {!showingSearch && status === "ready" ? (
+                <Link to="/destinations" className="home-destinations-link">
+                  مشاهدهٔ همهٔ مقصدها <span aria-hidden="true">←</span>
+                </Link>
               ) : null}
               {!showingSearch && catalogCounts ? (
                 <section className="home-catalog-stats" aria-label="آمار کاتالوگ هواچ">

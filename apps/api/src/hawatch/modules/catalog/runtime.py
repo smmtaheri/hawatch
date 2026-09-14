@@ -38,6 +38,22 @@ def publicly_visible_weather_points() -> QuerySet[WeatherPoint]:
     )
 
 
+def publicly_visible_destinations() -> QuerySet[WeatherPoint]:
+    """Return the catalog's independent, indexable destination points.
+
+    ``kind=primary`` and ``importance=primary`` are the explicit catalog
+    contract for a destination.  Keeping this policy in one query means the
+    destination hub, its API payload, sitemap and link validator all discover
+    future destinations without maintaining a second hard-coded list.
+    """
+
+    return publicly_visible_weather_points().filter(
+        kind=WeatherPoint.Kind.PRIMARY,
+        importance="primary",
+        seo_indexable=True,
+    )
+
+
 def compute_db_catalog_revision() -> str:
     payload_points = [
         {

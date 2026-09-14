@@ -53,6 +53,22 @@
                   </ul>
                 </section>
               {% endif %}
+              <p class="seo-destinations-link"><a href="{{ page.destinations_href }}">مشاهدهٔ همهٔ مقصدها</a></p>
+            {% elif page.kind == "destinations" %}
+              {% if page.destinations %}
+                <section aria-labelledby="seo-destinations-list">
+                  <h2 id="seo-destinations-list">مقصدهای اصلی</h2>
+                  <ul>
+                    {% for destination in page.destinations %}
+                      <li>
+                        <a href="{{ destination.href }}">{{ destination.name }}</a>
+                        {% if destination.place_type %} — {{ destination.place_type }}{% endif %}
+                        {% if destination.region %} · {{ destination.region }}{% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
             {% elif page.kind == "point" %}
               <dl>
                 <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>

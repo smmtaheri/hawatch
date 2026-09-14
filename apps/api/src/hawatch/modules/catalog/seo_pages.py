@@ -3,8 +3,8 @@
 The React application remains the interactive surface.  These views only own
 the document head and a small semantic fallback which is replaced by React
 after ``/assets/hawatch.js`` loads.  They intentionally read the runtime
-database, rather than catalog fixtures, so an imported Point or Route becomes
-SEO-ready without adding a hard-coded URL to the frontend build.
+database, rather than catalog fixtures, so an imported destination, Point or
+Route becomes SEO-ready without adding a hard-coded URL to the frontend build.
 """
 
 from __future__ import annotations
@@ -20,14 +20,17 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 from hawatch.modules.catalog.identity import place_type_label
-from hawatch.modules.catalog.runtime import publicly_visible_weather_points
+from hawatch.modules.catalog.internal_links import related_public_routes
+from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
 
-HOME_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر"
-HOME_DESCRIPTION = "هواچ؛ هوای نقاط و برنامهٔ مسیر."
+HOME_TITLE = "هواچ | پیش‌بینی هوای کوهستان و مسیرها"
+HOME_DESCRIPTION = "هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر."
+DESTINATIONS_TITLE = "مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها"
+DESTINATIONS_DESCRIPTION = "مقصدهای اصلی هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و عارضه‌های مهم برای برنامه‌ریزی مسیر."
 _PLACE_TYPE_TOKEN_RE = re.compile(r"(نقطهٔ\s+)([a-z][a-z0-9_]*)", re.IGNORECASE)
 
 
@@ -93,6 +96,41 @@ def _structured_breadcrumb(*items: tuple[str, str]) -> str:
     return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
 
+def _structured_website() -> str:
+    value = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "هواچ",
+        "alternateName": "Hawatch",
+        "url": _canonical("/"),
+        "description": HOME_DESCRIPTION,
+    }
+    return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def _structured_destination_list(points: list[WeatherPoint]) -> str:
+    value = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": DESTINATIONS_TITLE,
+        "url": _canonical("/destinations"),
+        "description": DESTINATIONS_DESCRIPTION,
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": index,
+                    "name": point.page_name or point.name,
+                    "url": _canonical(f"/points/{point.slug}"),
+                }
+                for index, point in enumerate(points, start=1)
+            ],
+        },
+    }
+    return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
 def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
     label = "نقطه" if content_type == "point" else "مسیر"
     return _render(
@@ -110,23 +148,8 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 
 
 def _point_page(point: WeatherPoint) -> dict:
-    name = point.page_name or point.name
     seo = point_seo_copy(point)
-    route_filter = (
-        Q(points__weather_point=point)
-        | Q(origin_weather_point=point)
-        | Q(target_weather_point=point)
-    )
-    # A primary Point can represent a destination whose physical endpoint is
-    # a named shore/landing WeatherPoint (for example, Lake Gahar).  The
-    # catalog's explicit target label is the only fallback used here.
-    if point.kind == WeatherPoint.Kind.PRIMARY:
-        route_filter |= Q(target_label=point.name) | Q(target_label=name)
-    route_rows = (
-        Route.objects.filter(route_filter, is_active=True)
-        .distinct()
-        .order_by("sort_order", "slug")
-    )
+    route_rows = related_public_routes(point)
     return {
         "kind": "point",
         "title": seo["title"],
@@ -200,6 +223,37 @@ def _route_page(route: Route) -> dict:
     }
 
 
+def _destinations_page() -> dict:
+    points = list(
+        publicly_visible_destinations().order_by(
+            "-is_popular",
+            "popular_order",
+            "page_name",
+            "slug",
+        )
+    )
+    return {
+        "kind": "destinations",
+        "title": DESTINATIONS_TITLE,
+        "description": DESTINATIONS_DESCRIPTION,
+        "canonical": _canonical("/destinations"),
+        "indexable": True,
+        "headline": "مقصدهای اصلی هواچ",
+        "summary": "قله‌ها، دریاچه‌ها و عارضه‌های مستقلی را ببین که برایشان پیش‌بینی هوا و اطلاعات مسیر در هواچ ثبت شده است.",
+        "structured_data": _structured_destination_list(points),
+        "destinations": [
+            {
+                "name": point.page_name or point.name,
+                "href": f"/points/{point.slug}",
+                "place_type": place_type_label(point.place_type),
+                "region": point.region,
+                "elevation": f"{point.elevation_m} متر" if point.elevation_m is not None else None,
+            }
+            for point in points
+        ],
+    }
+
+
 @require_GET
 def seo_home(request: HttpRequest) -> HttpResponse:
     popular_points = publicly_visible_weather_points().filter(is_popular=True).order_by("popular_order", "slug")[:4]
@@ -212,7 +266,8 @@ def seo_home(request: HttpRequest) -> HttpResponse:
             "canonical": _canonical("/"),
             "headline": "پیش‌بینی هوای نقاط و مسیرها",
             "summary": "هواچ پیش‌بینی هوای نقاط و اطلاعات مسیرهای کوه‌پیمایی را برای برنامه‌ریزی آگاهانه کنار هم می‌آورد.",
-            "structured_data": _structured_breadcrumb(("هواچ", "/")),
+            "structured_data": _structured_website(),
+            "destinations_href": "/destinations",
             "popular_points": [
                 {"name": point.page_name or point.name, "href": f"/points/{point.slug}"}
                 for point in popular_points
@@ -227,6 +282,11 @@ def seo_point(request: HttpRequest, slug: str) -> HttpResponse:
     if point is None:
         return _not_found(request, content_type="point")
     return _render(request, page=_point_page(point))
+
+
+@require_GET
+def seo_destinations(request: HttpRequest) -> HttpResponse:
+    return _render(request, page=_destinations_page())
 
 
 @require_GET

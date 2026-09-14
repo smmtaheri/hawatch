@@ -2,8 +2,8 @@
 
 ## هدف
 
-Home، تمام Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در
-`/routes/<slug>` باید پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته
+Home، Hub مقصدهای اصلی در `/destinations`، تمام Pointهای عمومی در
+`/points/<slug>` و تمام Routeهای فعال در `/routes/<slug>` باید پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته
 باشند. مسیرهای فهرست قدیمی `/points` و `/routes` محصول نیستند و پیش از SPA با
 redirect دائمی یک‌مرحله‌ای به `/` می‌روند. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
 planner، مانند `?date=…&period=…`، با `noindex,follow` منتشر می‌شوند تا لینک‌ها
@@ -20,6 +20,9 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
 - یک `h1` و خلاصهٔ معنادار؛
 - برای Point: منطقه، دسته‌بندی، ارتفاع و مسیرهای مرتبط؛
 - برای Route: مبدأ، مقصد، مسافت/صعود و زنجیرهٔ نقاط مسیر.
+- برای `/destinations`: فقط Pointهای مستقل با `kind: "primary"`،
+  `importance: "primary"` و `seo_indexable: true`. Hub و API آن از دیتابیس
+  runtime کشف می‌شوند و برای مقصد جدید به فهرست hardcode نیاز ندارند.
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
@@ -57,8 +60,10 @@ URL و بدون prerender مجدد، در HTML اولیه هم منعکس می�
 `content` فقط در صورت وجود به‌شکل accordion پایین HTML اولیه دیده می‌شود؛ متن
 پنهان ویژهٔ موتور جست‌وجو نداریم. validator catalog نوع، طول، کلید ناشناخته،
 title تکراری و تکرار غیرطبیعی keyword را رد می‌کند. زیر H1 در HTML و React فقط
-یک subtitle کوتاه است. `BreadcrumbList` تنها schema این مرحله است و صرفاً
-URLهای canonical واقعی را بازتاب می‌دهد.
+یک subtitle کوتاه است. Home از `WebSite`، Hub مقصدها از
+`CollectionPage`/`ItemList` و صفحه‌های detail از `BreadcrumbList` استفاده
+می‌کنند؛ همهٔ schemaها فقط URLهای canonical و دادهٔ واقعی Catalog را بازتاب
+می‌دهند.
 
 قالب fallback نقطه چنین است: عنوان `آب‌وهوای {نام کامل نقطه}؛ دما، باد و بارش |
 هواچ`، توضیحی مبتنی بر نام/ارتفاع/منطقه و امکانات واقعی دما، باد، تندباد، بارش،
@@ -91,11 +96,34 @@ Policy مرکزی برای point typeهای فنی (`parking`، `spring`، `pass
 Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo` در footer است؛ منبع و
 زمان به‌روزرسانی داخل کارت‌های forecast یا محتوای اصلی قرار نمی‌گیرد.
 
+## Hub مقصدها و گراف لینک‌های ورودی
+
+`/destinations` یک صفحهٔ SSR کم‌حجم برای مقصدهای مستقل است؛ waypointهای فنی و
+Routeها در آن فهرست نمی‌شوند. Home چهار کارت محبوب فعلی را حفظ می‌کند و فقط
+لینک کوچک «مشاهدهٔ همهٔ مقصدها» را به Hub اضافه می‌کند. Point و Routeهای مرتبط
+همچنان از صفحات detail با `<a href>` واقعی به یکدیگر متصل‌اند.
+
+برای بررسی قابل‌خزش‌بودن گراف، این گیت اختیاری را اجرا کنید:
+
+```bash
+python manage.py validate_catalog --all --database --check-links --strict
+```
+
+این بررسی مقصدها را مالک لینک Hub، Routeهای فعال را فرزندان مقصد، و Pointهای
+indexable غیرمقصد را اعضای یک Route واقعی در نظر می‌گیرد. warningهای orphan
+راهنمای اصلاح Catalog هستند؛ Point فنی/noindex عمداً از این گیت کنار گذاشته
+می‌شود و از Route، جست‌وجو یا API حذف نمی‌گردد.
+
+Sitemap فقط Home، `/destinations`، Pointهای فعال و indexable و Routeهای فعال را
+دارد. `lastmod` برای Hub از بیشترین `WeatherPoint.updated_at` مقصدها و برای
+detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت یا refresh forecast
+این مقدار را تغییر نمی‌دهد. Home چون رکورد محتوایی مستقل ندارد `lastmod` ندارد.
+
 ## رفتار URL
 
 | وضعیت | status | robots | canonical |
 | --- | --- | --- | --- |
-| URL تمیز Home/Point/Route | 200 | `index,follow` | همان URL تمیز |
+| URL تمیز Home/Hub/Point/Route | 200 | `index,follow` | همان URL تمیز |
 | `/points`، `/points/`، `/routes`، `/routes/` | 301 | — | `/` |
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
@@ -119,7 +147,7 @@ Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo
 
 اگر CDN یا reverse proxy بیرونی جلوی gateway قرار دارد، این قواعد را اعمال کنید:
 
-- `/`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
+- `/`، `/destinations`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
   عبور دهید) و query string را در cache key نگه ندارید؛ canonical خود HTML بدون
   query است اما queryها باید `noindex,follow` بمانند.
 - redirectهای دقیق `/points`، `/points/`، `/routes` و `/routes/` را در CDN به‌صورت

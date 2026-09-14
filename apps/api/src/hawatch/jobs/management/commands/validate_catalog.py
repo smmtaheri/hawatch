@@ -8,6 +8,7 @@ from hawatch.modules.catalog.validation import (
     format_issues,
     validate_catalog_document,
     validate_database_catalog,
+    validate_indexable_link_graph,
 )
 
 
@@ -18,6 +19,11 @@ class Command(BaseCommand):
         parser.add_argument("--file", help="Catalog path relative to fixtures; defaults to every catalog/*.json.")
         parser.add_argument("--all", action="store_true", help="Validate every checked-in catalog fixture (default when --file is omitted).")
         parser.add_argument("--database", action="store_true", help="Also validate the current database catalog.")
+        parser.add_argument(
+            "--check-links",
+            action="store_true",
+            help="Also validate the database SSR entry-point graph for indexable destinations, points and routes.",
+        )
         parser.add_argument("--strict", action="store_true", help="Treat warnings as failures.")
 
     def handle(self, *args, **options):
@@ -36,9 +42,11 @@ class Command(BaseCommand):
             file_issues = validate_catalog_document(data)
             issues.extend(file_issues)
             self.stdout.write(f"{path.relative_to(fixtures)}: points={len(data.get('weather_points', {}))} routes={len(data.get('routes', {}))}")
-        if options["database"]:
+        if options["database"] or options["check_links"]:
             db_issues = validate_database_catalog(strict=options["strict"])
             issues.extend(db_issues)
+            if options["check_links"]:
+                issues.extend(validate_indexable_link_graph())
         if issues:
             self.stdout.write(format_issues(issues))
         errors = [issue for issue in issues if issue.level == "error" or (options["strict"] and issue.level == "warning")]

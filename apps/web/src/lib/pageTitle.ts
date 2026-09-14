@@ -1,8 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-export const DEFAULT_TITLE = "هواچ | هوای نقطه، برنامهٔ مسیر";
-export const DEFAULT_DESCRIPTION = "هواچ؛ هوای نقاط و برنامهٔ مسیر.";
+export const DEFAULT_TITLE = "هواچ | پیش‌بینی هوای کوهستان و مسیرها";
+export const DEFAULT_DESCRIPTION = "هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر.";
 // The API sends a semantic SSR document for public detail pages. Capture this
 // before React replaces #root so the first loading effect can leave that
 // document head untouched. A static SPA shell has no marker and therefore

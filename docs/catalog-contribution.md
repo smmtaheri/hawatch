@@ -57,11 +57,25 @@ Route دیگر به‌تنهایی مجوز ساخت duplicate نیست. اجر�
 `validate_catalog --all --database --strict` باید بعد از این مقایسه انجام شود؛
 در صورت ابهام، نقطه تا بررسی منابع و مختصات دقیق در وضعیت pending می‌ماند.
 
-HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. بنابراین Point یا Route جدید
+HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. مقصدهای مستقل برای Hub
+`/destinations` باید در Catalog با `kind: "primary"`، `importance: "primary"`
+و `seo_indexable: true` ثبت شوند؛ Hub آن‌ها را خودکار پیدا می‌کند و فهرست
+hardcode ندارد. بنابراین Point یا Route جدید
 پس از import/sync، بدون افزودن URL hardcode، prerender جداگانه یا build frontend
 در `/points/<slug>` یا `/routes/<slug>` هم title، canonical و محتوای اولیهٔ
 اختصاصی می‌گیرد. تنها تغییر کد renderer به deploy معمول imageهای API و web نیاز
 دارد؛ جزئیات در [`seo.md`](seo.md) است.
+
+پس از افزودن یا تغییر Catalog، گراف لینک‌های قابل‌خزش را هم بررسی کنید:
+
+```bash
+python manage.py validate_catalog --all --database --check-links --strict
+```
+
+این validator باید برای هر مقصد ورودی Hub، برای هر Route ورودی از مقصد، و برای
+هر Point indexable غیرمقصد ورودی از مقصد یا Route واقعی پیدا کند. اگر Point
+مستقلِ بدون مسیر دارید، آن را مقصد اصلی کنید؛ برای waypoint فنی
+`seo_indexable: false` بگذارید تا صفحه‌اش فقط `noindex,follow` باشد.
 
 ## ۱. اطلاعات لازم
 

@@ -18,14 +18,39 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_cata
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>هواچ | هوای نقطه، برنامهٔ مسیر</title>" in body
-    assert 'name="description" content="هواچ؛ هوای نقاط و برنامهٔ مسیر."' in body
+    assert "<title>هواچ | پیش‌بینی هوای کوهستان و مسیرها</title>" in body
+    assert 'name="description" content="هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر."' in body
     assert 'rel="canonical" href="https://hawatch.ir/"' in body
     assert 'name="robots" content="index,follow"' in body
     assert "<h1>پیش‌بینی هوای نقاط و مسیرها</h1>" in body
     assert 'id="seo-popular-points">مقصدهای محبوب هواچ</h2>' in body
+    assert 'href="/destinations">مشاهدهٔ همهٔ مقصدها</a>' in body
+    assert '"@type": "WebSite"' in body
+    assert "۶ روز آینده" not in body
+    assert "۶ روزه" not in body
     assert 'src="/assets/hawatch.js"' in body
     assert response["X-Robots-Tag"] == "index,follow"
+
+
+def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_catalog):
+    response = api_client.get("/destinations")
+
+    assert response.status_code == 200
+    body = response.content.decode()
+    assert "<title>مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها</title>" in body
+    assert 'rel="canonical" href="https://hawatch.ir/destinations"' in body
+    assert 'name="robots" content="index,follow"' in body
+    assert "<h1>مقصدهای اصلی هواچ</h1>" in body
+    assert 'id="seo-destinations-list">مقصدهای اصلی</h2>' in body
+    assert 'href="/points/tochal"' in body
+    assert 'href="/points/tochal-sarband-square"' not in body
+    assert '"@type": "CollectionPage"' in body
+    assert '"@type": "ItemList"' in body
+    assert response["X-Robots-Tag"] == "index,follow"
+
+    trailing = api_client.get("/destinations/")
+    assert trailing.status_code == 200
+    assert 'rel="canonical" href="https://hawatch.ir/destinations"' in trailing.content.decode()
 
 
 def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catalog):
@@ -182,7 +207,7 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
 
     assert response.status_code == 200
     body = response.content.decode()
-    assert "<title>آب‌وهوای مسیر آزمایشی تهران؛ زمان، مسافت و وضعیت مسیر | هواچ</title>" in body
+    assert "<title>آب‌وهوای مسیر آزمایشی تهران | هواچ</title>" in body
     assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in body
     assert '<h1>مسیر آزمایشی تهران</h1>' in body
     assert "مبدأ آزمایشی" in body

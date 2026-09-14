@@ -87,6 +87,8 @@ export const api = {
       points: PointSummary[];
       routes: Array<{ title: string; origin: string; target_label: string; href: string; region: string }>;
     }>("catalog-index/"),
+  destinations: () =>
+    getJson<{ destinations: PointSummary[] }>("destinations/"),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },

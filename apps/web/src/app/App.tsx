@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, useLocation, type Location } from "react-
 import { useEffect, useRef } from "react";
 import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
+import { DestinationsPage } from "../pages/DestinationsPage";
 import { LoginOverlay, LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
@@ -44,6 +45,8 @@ export function AppRoutes() {
     <>
       <Routes location={backgroundLocation ?? location}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/destinations" element={<DestinationsPage />} />
+        <Route path="/destinations/" element={<DestinationsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account/plans" element={<SubscriptionPlansPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />

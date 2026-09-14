@@ -103,7 +103,7 @@ def route_seo_copy(route: Route) -> dict[str, str | None]:
         pieces.append(f"مسافت {to_fa_digits(route.distance_km)} کیلومتر")
     if duration:
         pieces.append(duration)
-    description = "؛ ".join(pieces) + "؛ وضعیت نقاط مسیر و شرایط ساعتی."
+    description = "؛ ".join(pieces) + "؛ وضعیت ساعتی نقاط مسیر."
     forecast = point_forecast_context(route.target_weather_point) if route.target_weather_point_id else None
     forecast_summary = None
     if forecast and forecast.temperature_c is not None and forecast.condition_label:
@@ -112,7 +112,7 @@ def route_seo_copy(route: Route) -> dict[str, str | None]:
             f"{to_fa_digits(forecast.temperature_c)} درجه در نزدیک‌ترین بازهٔ مقصد."
         ).strip()
     return {
-        "title": _bounded_copy(route.seo_title.strip() or f"آب‌وهوای {route_subject}؛ زمان، مسافت و وضعیت مسیر | هواچ", 160),
+        "title": _bounded_copy(route.seo_title.strip() or f"آب‌وهوای {route_subject} | هواچ", 160),
         "description": _bounded_copy(route.seo_description.strip() or description, 320),
         "subtitle": subtitle,
         "content": route.seo_content.strip() or None,
