@@ -294,7 +294,7 @@ describe("Hawatch pages", () => {
     renderAt("/destinations");
 
     expect(await screen.findByRole("heading", { level: 1, name: "مقصدهای اصلی هواچ" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "قلهٔ توچال" })).toHaveAttribute("href", "/points/tochal");
+    expect(screen.getByRole("link", { name: /قلهٔ توچال/ })).toHaveAttribute("href", "/points/tochal");
     expect(document.title).toBe("مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها");
   });
 
@@ -326,7 +326,7 @@ describe("Hawatch pages", () => {
   it("refreshes forecast access after login and logout without a page reload", async () => {
     const user = userEvent.setup();
     renderApplication("/points/tochal");
-    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
     expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(1);
 
     await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
@@ -387,9 +387,8 @@ describe("Hawatch pages", () => {
   it("renders point and can open a route", async () => {
     const user = userEvent.setup();
     renderAt("/points/tochal");
-    expect(await screen.findByRole("heading", { name: "قلهٔ توچال" })).toBeInTheDocument();
-    expect(document.querySelector(".point-hero-meta-mobile .point-hero-context")).toHaveTextContent("کوه · البرز مرکزی");
-    expect(document.querySelector(".point-hero-meta-mobile .point-hero-elevation")).toHaveTextContent("۳۹۶۴ متر");
+    expect(await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" })).toBeInTheDocument();
+    expect(screen.getByText("پیش‌بینی آب‌وهوای این نقطه در ارتفاع ۳۹۶۴ متر")).toBeInTheDocument();
     expect(document.querySelector(".point-page .page-back-navigation")).toContainElement(
       screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
     );
@@ -411,7 +410,7 @@ describe("Hawatch pages", () => {
     });
 
     const { unmount } = renderAt("/points/tochal");
-    await screen.findByRole("heading", { name: "قلهٔ توچال" });
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
     await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
     unmount();
 
@@ -756,7 +755,7 @@ describe("Hawatch pages", () => {
     const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
     await user.type(input, "پس");
     await user.keyboard("{Enter}");
-    expect(await screen.findByRole("heading", { name: "پس‌قلعه" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "آب‌وهوای پس‌قلعه" })).toBeInTheDocument();
     expect(document.querySelector(".point-decision-card")).not.toBeInTheDocument();
   });
 

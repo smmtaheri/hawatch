@@ -24,6 +24,8 @@ type PageTitleOptions = {
   canonical?: boolean;
   title?: string;
   description?: string;
+  /** Disable metadata writes for transient UI such as an in-app overlay. */
+  enabled?: boolean;
 };
 
 export function canonicalPageUrl(origin: string, pathname: string) {
@@ -60,6 +62,7 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
   const initialLocationRef = useRef(`${location.pathname}${location.search}`);
   const preserveSsrWhileLoadingRef = useRef<boolean | null>(null);
   useLayoutEffect(() => {
+    if (options.enabled === false) return;
     const hasExplicitMetadata = Boolean(
       name || options.title || options.description || options.robots || options.canonical === false,
     );
@@ -118,5 +121,5 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
     // ready, explicit point policy wins; query variants remain noindex while
     // retaining their clean canonical links.
     robots.content = options.robots ?? robotsForSearch(location.search);
-  }, [location.pathname, location.search, name, options.canonical, options.description, options.robots, options.title]);
+  }, [location.pathname, location.search, name, options.canonical, options.description, options.enabled, options.robots, options.title]);
 }

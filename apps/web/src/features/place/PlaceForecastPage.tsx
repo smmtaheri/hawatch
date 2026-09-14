@@ -36,7 +36,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   // The forecast hook keeps the previous payload while a new slug is
   // loading. Never let that payload rewrite the new page's head metadata.
   const seoSubject = data?.subject.slug === slug ? data.subject : undefined;
-  usePageTitle(undefined, {
+  usePageTitle(seoSubject?.name, {
     title: seoSubject?.seo_title,
     description: seoSubject?.seo_description,
     robots: status === "missing" || seoSubject?.seo_indexable === false ? "noindex,follow" : undefined,

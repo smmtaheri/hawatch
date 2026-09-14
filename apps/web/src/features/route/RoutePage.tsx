@@ -85,7 +85,7 @@ export function RoutePage() {
   // Route data remains visible while a sibling route is loading; only apply
   // its SEO copy while it still belongs to the current URL slug.
   const seoRoute = data?.route.slug === slug ? data.route : undefined;
-  usePageTitle(undefined, {
+  usePageTitle(seoRoute?.title, {
     title: seoRoute?.seo_title,
     description: seoRoute?.seo_description,
     robots: status === "missing" ? "noindex,follow" : undefined,

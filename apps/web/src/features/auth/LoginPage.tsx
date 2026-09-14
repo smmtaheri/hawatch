@@ -13,8 +13,9 @@ function validReturnTo(value: string | null) {
 }
 
 function LoginSurface({ presentation }: LoginSurfaceProps) {
-  const previousTitle = useRef(document.title);
-  usePageTitle("ورود");
+  // An in-app login overlay must leave the underlying page metadata untouched.
+  // Direct /login navigation still receives the normal login title.
+  usePageTitle("ورود", { enabled: presentation !== "dialog" });
   const navigate = useNavigate();
   const location = useLocation();
   const panelRef = useRef<HTMLElement>(null);
@@ -30,10 +31,6 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
   useEffect(() => {
     if (!loading && isAuthenticated) navigate(returnTo, { replace: true });
   }, [isAuthenticated, loading, navigate, returnTo]);
-
-  useEffect(() => () => {
-    document.title = previousTitle.current;
-  }, []);
 
   useEffect(() => {
     if (!isOverlay) return;
