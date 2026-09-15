@@ -1,0 +1,162 @@
+{
+  "catalog_version": "hawatch-abbas-ali-catalog-v1",
+  "weather_points": {
+    "abbas-ali": {
+      "name": "قلهٔ عباسعلی (لاکمر)",
+      "page_name": "قلهٔ عباسعلی (لاکمر) سوادکوه",
+      "short_label": "قلهٔ عباسعلی",
+      "place_type": "summit",
+      "aliases": [
+        "عباسعلی",
+        "قله عباسعلی",
+        "لاکمر",
+        "قله لاکمر",
+        "قله امامزاده عباسعلی",
+        "Abbas Ali Peak",
+        "Lakamar"
+      ],
+      "identity_summary": "قلهٔ جنگلی عباسعلی (لاکمر) در سوادکوه، با مسیر پیاده از روستای کمرپشت",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bsly-z-khmrpsht-234505918",
+        "https://www.wikiloc.com/hiking-trails/qlh-bsly-khmrpsht-210581958",
+        "https://www.wikiloc.com/hiking-trails/khmrpsht-bh-qlh-mmzdh-bsly-lkhmr-pyyz-151506481",
+        "https://www.wikiloc.com/hiking-trails/swdkhwh-rwsty-khmrpsht-qlh-bsly-135188403"
+      ],
+      "latitude": 35.963621,
+      "longitude": 53.086614,
+      "elevation_m": 2273,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات waypoint نام‌گذاری‌شدهٔ قله ۲۲۷۳ متر؛ waypointهای GPX مستقل حدود ۲۲۷۵ تا ۲۳۱۷ متر و صرفاً مرجع‌اند.",
+      "climate": "forest_fog"
+    },
+    "abbas-ali-kamar-posht-village": {
+      "name": "روستای کمرپشت سوادکوه",
+      "page_name": "روستای کمرپشت؛ مبدأ مسیر عباسعلی",
+      "short_label": "کمرپشت",
+      "place_type": "village",
+      "aliases": [
+        "کمر پشت",
+        "روستای کمرپشت",
+        "Kamar Posht",
+        "Kamarposht"
+      ],
+      "identity_summary": "روستای کمرپشت سوادکوه و مبدأ canonical مسیر پیادهٔ قلهٔ عباسعلی (لاکمر)",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bsly-z-khmrpsht-234505918",
+        "https://www.wikiloc.com/hiking-trails/swdkhwh-rwsty-khmrpsht-qlh-bsly-135188403",
+        "https://www.wikiloc.com/hiking-trails/khmrpsht-bh-qlh-mmzdh-bsly-lkhmr-pyyz-151506481"
+      ],
+      "latitude": 35.973657,
+      "longitude": 53.061056,
+      "elevation_m": 1561,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات waypoint روستای کمرپشت ۱۵۶۱ متر؛ GPXهای مستقل شروع روستا را حدود ۱۵۷۳ تا ۱۶۵۹ متر ثبت می‌کنند.",
+      "climate": "forest_fog"
+    },
+    "abbas-ali-kamar-posht-spring": {
+      "name": "چشمهٔ مسیر کمرپشت",
+      "page_name": "چشمهٔ مسیر کمرپشت تا عباسعلی",
+      "short_label": "چشمهٔ کمرپشت",
+      "place_type": "spring",
+      "aliases": [
+        "چشمه کمرپشت",
+        "چشمه مسیر عباسعلی",
+        "Kamar Posht spring"
+      ],
+      "identity_summary": "چشمهٔ نام‌گذاری‌شده در بخش میانی مسیر جنگلی کمرپشت تا قلهٔ عباسعلی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bsly-z-khmrpsht-234505918",
+        "https://www.wikiloc.com/hiking-trails/khmrpsht-bh-qlh-mmzdh-bsly-lkhmr-pyyz-151506481",
+        "https://www.wikiloc.com/hiking-trails/swdkhwh-rwsty-khmrpsht-qlh-bsly-135188403"
+      ],
+      "latitude": 35.965565,
+      "longitude": 53.068657,
+      "elevation_m": 1878,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات waypoint چشمه ۱۸۷۸ متر؛ waypointهای مستقل GPX در فاصلهٔ حدود چند ده متر همین عارضه را ثبت می‌کنند.",
+      "climate": "forest_fog"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "kamar_posht_to_abbas_ali": {
+      "slug": "abbas-ali-kamar-posht",
+      "title": "کمرپشت تا قلهٔ عباسعلی",
+      "subtitle": "مسیر جنگلی روستای کمرپشت تا قلهٔ عباسعلی (لاکمر)",
+      "trail_label": "مسیر کمرپشت–عباسعلی",
+      "origin": "روستای کمرپشت سوادکوه",
+      "target_label": "قلهٔ عباسعلی (لاکمر)",
+      "region": "سوادکوه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "abbas-ali-kamar-posht-village",
+        "abbas-ali-kamar-posht-spring",
+        "abbas-ali"
+      ],
+      "distance_km": 4.1,
+      "ascent_m": 675,
+      "one_way_minutes": 215,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "abbas-ali-kamar-posht-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-bsly-z-khmrpsht-234505918",
+          "https://www.wikiloc.com/hiking-trails/qlh-bsly-khmrpsht-210581958",
+          "https://www.wikiloc.com/hiking-trails/khmrpsht-bh-qlh-mmzdh-bsly-lkhmr-pyyz-151506481"
+        ],
+        "evidence_tracks": [
+          "tracks/abbas-ali/qlh-bsly-z-khmrpsht.gpx",
+          "tracks/abbas-ali/qlh-bsly-khmrpsht.gpx",
+          "tracks/abbas-ali/khmrpsht-bh-qlh-mmzdh-bsly-lkhmr-pyyz.gpx"
+        ],
+        "cumulative_minutes": {
+          "abbas-ali-kamar-posht-village": 0,
+          "abbas-ali-kamar-posht-spring": 100,
+          "abbas-ali": 215
+        },
+        "notes": [
+          "سه ترک مستقلِ پیاده از کمرپشت تا محدودهٔ قله برای هندسه و مبدأ مشترک تطبیق داده شدند؛ ترک چهارم حدود ۴۱۰ متر پیش از قله متوقف می‌شود و در timing استفاده نشده است.",
+          "پارکینگ، آخرین نقطهٔ خودرو و دسترسی جاده‌ای با روستای کمرپشت ادغام شده‌اند و نقطهٔ جداگانه‌ای برای آن‌ها ساخته نشده است.",
+          "فاصله و صعود از هندسهٔ ترک اصلی و cross-checkها به‌صورت محافظه‌کارانه گرد شده‌اند؛ ارتفاع خام GPX مبنای elevation catalog نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "abbas-ali",
+    "tile_name": "عباسعلی",
+    "name": "قلهٔ عباسعلی (لاکمر)",
+    "short_category": "قله",
+    "category": "قله‌های جنگلی سوادکوه",
+    "category_key": "mountain",
+    "region": "سوادکوه · مازندران",
+    "elevation_m": 2273,
+    "latitude": 35.963621,
+    "longitude": 53.086614,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگلی قلهٔ عباسعلی (لاکمر)",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "abbas-ali"
+}
