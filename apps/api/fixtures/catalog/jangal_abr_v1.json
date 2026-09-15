@@ -1,0 +1,173 @@
+{
+  "catalog_version": "hawatch-jangal-abr-catalog-v1",
+  "weather_points": {
+    "jangal-abr": {
+      "name": "جنگل ابر",
+      "aliases": ["ابر", "جنگل ابر شاهرود", "جنگل هیرکانی ابر", "Clouds Forest", "Abr Forest"],
+      "latitude": 36.74309,
+      "longitude": 55.04701,
+      "elevation_m": 2120,
+      "kind": "primary",
+      "status": "provisional",
+    "elevation_source": "مختصات نمایندهٔ پهنهٔ جنگل ابر از OSM/Mapcarta؛ ارتفاع GLO-90 سرویس Open-Meteo در همین مختصات ۲۱۲۰ متر است. این نقطه نمایندهٔ پهنهٔ جنگل است، نه ورودی یا پارکینگ.",
+      "climate": "forest_fog",
+      "page_name": "جنگل ابر شاهرود",
+      "short_label": "جنگل ابر",
+      "place_type": "forest",
+      "identity_summary": "جنگل ابر در البرز شرقی و مرز سمنان و گلستان، با مسیرهای پیاده از روستاهای ابر و شیرین‌آباد",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N703064767",
+        "https://www.wikiloc.com/hiking-trails/abr-shirin-abad-153560563",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-shyrynabd-bh-jngl-br-187910385",
+        "https://www.wikiloc.com/hiking-trails/msyr-dln-bhsht-jngl-br-84040246"
+      ]
+    },
+    "abr-village": {
+      "name": "روستای ابر",
+      "aliases": ["روستای ابر", "ده ابر", "Abr village"],
+      "latitude": 36.70714,
+      "longitude": 55.0871,
+      "elevation_m": 1713,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع روستای ابر از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در همین مختصات ۱۶۹۹ متر است و ترک مستقل ابر تا شیرین‌آباد در فاصلهٔ حدود ۱۵۵ متر از مرکز روستا آغاز می‌شود.",
+      "climate": "forest_fog",
+      "page_name": "روستای ابر، مبدأ مسیر جنگل ابر",
+      "short_label": "روستای ابر",
+      "place_type": "village",
+      "identity_summary": "روستای ابر در شهرستان شاهرود و مبدأ جنوبی مسیرهای جنگل ابر",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12635560",
+        "https://www.wikiloc.com/hiking-trails/abr-shirin-abad-153560563"
+      ]
+    },
+    "shirinabad-village": {
+      "name": "روستای شیرین‌آباد",
+      "aliases": ["شیرین آباد", "شیرین‌آباد گلستان", "Shirinabad"],
+      "latitude": 36.79169,
+      "longitude": 55.01738,
+      "elevation_m": 900,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع روستای شیرین‌آباد از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در همین مختصات ۸۹۷ متر است و دو ترک مستقل از محدودهٔ روستا آغاز می‌شوند.",
+      "climate": "forest_fog",
+      "page_name": "روستای شیرین‌آباد، مبدأ مسیر جنگل ابر",
+      "short_label": "شیرین‌آباد",
+      "place_type": "village",
+      "identity_summary": "روستای شناخته‌شدهٔ شیرین‌آباد در دهانهٔ زرین‌گل و مبدأ شمالی مسیرهای جنگل ابر",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12424608",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-shyrynabd-bh-jngl-br-187910385",
+        "https://www.wikiloc.com/hiking-trails/shyryn-abd-bh-sr-tkht-jngl-br-220584278"
+      ]
+    },
+    "dalan-behesht": {
+      "name": "دالان بهشت جنگل ابر",
+      "aliases": ["دالان بهشت ابر", "Dalan Behesht"],
+      "latitude": 36.74095,
+      "longitude": 55.0349,
+      "elevation_m": 1861,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از همگرایی ترک مستقل دالان بهشت و ترک ابر تا شیرین‌آباد؛ Open-Meteo GLO-90 DEM برابر ۱۸۶۱ متر است و ارتفاع خام GPX به‌عنوان مرجع قطعی استفاده نشده است.",
+      "climate": "forest_fog",
+      "page_name": "دالان بهشت جنگل ابر",
+      "short_label": "دالان بهشت",
+      "place_type": "landmark",
+      "identity_summary": "دالان بهشت، عارضهٔ نام‌دار و بخش جنگلی شناخته‌شده در مسیر ابر به شیرین‌آباد",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-dln-bhsht-jngl-br-84040246",
+        "https://www.wikiloc.com/hiking-trails/abr-shirin-abad-153560563",
+        "https://www.wikiloc.com/hiking-trails/jngl-br-tph-zyny-bh-dln-bhsht-w-chlh-zyb-26075989"
+      ]
+    }
+  },
+  "routes": {
+    "abr_to_forest": {
+      "slug": "jangal-abr-abr-to-forest",
+      "title": "روستای ابر تا جنگل ابر",
+      "subtitle": "مسیر پیاده از روستای ابر و دالان بهشت تا محدودهٔ جنگل ابر",
+      "trail_label": "مسیر جنگل ابر",
+      "origin": "روستای ابر",
+      "target_label": "جنگل ابر",
+      "region": "شاهرود · سمنان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["abr-village", "dalan-behesht", "jangal-abr"],
+      "distance_km": 7.9,
+      "ascent_m": 334,
+      "one_way_minutes": 180,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "jangal-abr-abr-to-forest-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": ["https://www.wikiloc.com/hiking-trails/abr-shirin-abad-153560563"],
+        "evidence_tracks": ["tracks/jangal-abr/abr-shirin-abad.gpx"],
+        "cumulative_minutes": {"abr-village": 0, "dalan-behesht": 165, "jangal-abr": 180}
+      },
+      "public_point_notes": {}
+    },
+    "shirinabad_to_forest": {
+      "slug": "jangal-abr-shirinabad-to-forest",
+      "title": "شیرین‌آباد تا جنگل ابر",
+      "subtitle": "پیمایش جنگلی از روستای شیرین‌آباد تا دالان بهشت و جنگل ابر",
+      "trail_label": "مسیر شیرین‌آباد",
+      "origin": "روستای شیرین‌آباد",
+      "target_label": "جنگل ابر",
+      "region": "شیرین‌آباد · گلستان",
+      "featured": false,
+      "sort_order": 2,
+      "points": ["shirinabad-village", "dalan-behesht", "jangal-abr"],
+      "distance_km": 9.1,
+      "ascent_m": 990,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "jangal-abr-shirinabad-to-forest-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": ["https://www.wikiloc.com/hiking-trails/pymysh-rwsty-shyrynabd-bh-jngl-br-187910385"],
+        "evidence_tracks": ["tracks/jangal-abr/pymysh-rwsty-shyrynabd-bh-jngl-br.gpx"],
+        "cumulative_minutes": {"shirinabad-village": 0, "dalan-behesht": 285, "jangal-abr": 300}
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "jangal-abr",
+    "tile_name": "جنگل ابر",
+    "name": "جنگل ابر",
+    "short_category": "جنگل",
+    "category": "جنگل هیرکانی · شاهرود",
+    "category_key": "forest",
+    "region": "البرز شرقی · سمنان و گلستان",
+    "elevation_m": 2120,
+    "latitude": 36.74309,
+    "longitude": 55.04701,
+    "image": "/images/jangal-abr-hero.png",
+    "image_alt": "نمای مه‌آلود جنگل ابر",
+  "popular_order": 0,
+    "climate": "forest_fog",
+  "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "jangal-abr"
+}
