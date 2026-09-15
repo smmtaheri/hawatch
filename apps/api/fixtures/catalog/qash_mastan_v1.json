@@ -1,0 +1,373 @@
+{
+  "catalog_version": "hawatch-qash-mastan-catalog-v1",
+  "weather_points": {
+    "qash-mastan": {
+      "name": "قلهٔ قاش‌مستان دنا",
+      "aliases": [
+        "قاش مستان",
+        "قاش‌مستان",
+        "قاشمستان",
+        "بیژن ۳",
+        "قله قاش مستان دنا",
+        "Qash Mastan",
+        "Qash-Mastan Peak"
+      ],
+      "latitude": 30.95118,
+      "longitude": 51.43613,
+      "elevation_m": 4410,
+      "kind": "primary",
+      "status": "provisional",
+      "elevation_source": "Waypointهای نام‌گذاری‌شدهٔ ترک‌های مستقل قاش‌مستان ارتفاع حدود ۴۴۱۰ تا ۴۴۵۱ متر را ثبت می‌کنند؛ مقدار ۴۴۱۰ متر برای تطبیق با DEM و دادهٔ Open‑Meteo موقت است و ارتفاع نهایی پس از gate provider تثبیت می‌شود.",
+      "climate": "high_alpine",
+      "page_name": "قلهٔ قاش‌مستان دنا",
+      "short_label": "قاش‌مستان",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ قاش‌مستان، بلندترین قلهٔ دنا در زاگرس، در مسیرهای صعود خفر پادنا",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765",
+        "https://en.wikipedia.org/wiki/List_of_Iranian_four-thousanders"
+      ],
+      "tile_name": "قاش‌مستان دنا",
+      "short_category": "قله",
+      "category": "قله و مسیرهای دنا",
+      "category_key": "mountain",
+      "region": "دنا · کهگیلویه و بویراحمد",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی قلهٔ قاش‌مستان دنا",
+      "is_active": true
+    },
+    "qash-mastan-khafr-village": {
+      "name": "روستای خفر پادنا",
+      "aliases": ["خفر", "خفر پادنا", "روستای خفر سمیرم", "Khafr Padena"],
+      "latitude": 30.99831,
+      "longitude": 51.48318,
+      "elevation_m": 2220,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک مستقل از داخل روستای خفر و گزارش‌های مسیر؛ ارتفاع ۲۲۲۰ متر برای تطبیق provider موقت است.",
+      "climate": "high_alpine",
+      "page_name": "روستای خفر پادنا، مبدأ مسیر قاش‌مستان",
+      "short_label": "خفر پادنا",
+      "place_type": "village",
+      "identity_summary": "روستای خفر در پادنا و مبدأ ثبت‌شدهٔ مسیرهای صعود قاش‌مستان",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Khafr,_Semirom",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-khafr-shelter-trailhead": {
+      "name": "پای‌کار مسیر پناهگاه قاش‌مستان",
+      "aliases": ["ابتدای پاکوب قاش مستان", "پای صعود قاش مستان"],
+      "latitude": 30.98647,
+      "longitude": 51.471916,
+      "elevation_m": 2484,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint ابتدای پاکوب در ترک مستقل مسیر پناهگاه؛ ارتفاع GPX حدود ۲۴۸۴ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine",
+      "page_name": "پای‌کار مسیر پناهگاه قاش‌مستان",
+      "short_label": "پای‌کار پناهگاه",
+      "place_type": "trailhead",
+      "identity_summary": "مبدأ پیاده‌روی مسیر پناهگاه قاش‌مستان، خارج از بافت روستای خفر",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-omid-waterfall": {
+      "name": "آبشار پیش از جان‌پناه امید",
+      "aliases": ["آبشار مسیر پناهگاه قاش مستان", "آبشار و آب لوله قاش مستان"],
+      "latitude": 30.981247,
+      "longitude": 51.445302,
+      "elevation_m": 3002,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار و آب لوله قبل از پناهگاه در ترک مستقل؛ ارتفاع GPX حدود ۳۰۰۲ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine",
+      "page_name": "آبشار مسیر پناهگاه قاش‌مستان",
+      "short_label": "آبشار مسیر",
+      "place_type": "waterfall",
+      "identity_summary": "آبشار و محل عبور آب در مسیر پناهگاه قاش‌مستان، پیش از جان‌پناه امید",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-omid-shelter": {
+      "name": "جان‌پناه امید قاش‌مستان",
+      "aliases": ["پناهگاه امید قاش مستان", "جانپناه قاش مستان", "پناهگاه قاش مستان"],
+      "latitude": 30.981578,
+      "longitude": 51.443535,
+      "elevation_m": 3015,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ جانپناه امید در ترک مستقل؛ ارتفاع GPX حدود ۳۰۱۵ متر و گزارش‌های مسیر ارتفاع پناهگاه را نزدیک ۳۰۰۰ متر تأیید می‌کنند.",
+      "climate": "high_alpine",
+      "page_name": "جان‌پناه امید قاش‌مستان",
+      "short_label": "جان‌پناه امید",
+      "place_type": "shelter",
+      "identity_summary": "جان‌پناه شناخته‌شدهٔ مسیر شمالی قاش‌مستان، نزدیک چشمه و آبشار مسیر",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462",
+        "https://www.wikiloc.com/hiking-trails/swd-zmstny-qlh-qsh-mstn-dn-65560481"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-keykhosrow-trailhead": {
+      "name": "پای‌کار مسیر کیخسرو قاش‌مستان",
+      "aliases": ["باغ انتهای خفر", "شروع پیاده‌روی کیخسرو", "پای کار کیخسرو"],
+      "latitude": 30.973598,
+      "longitude": 51.48086,
+      "elevation_m": 2579,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint باغ انتهای روستا و شروع پیاده‌روی در ترک مستقل کیخسرو؛ ارتفاع GPX حدود ۲۵۷۹ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine",
+      "page_name": "پای‌کار مسیر کیخسرو قاش‌مستان",
+      "short_label": "پای‌کار کیخسرو",
+      "place_type": "trailhead",
+      "identity_summary": "مبدأ مستقل مسیر کیخسرو در باغ‌های بالادست خفر، جدا از مبدأ مسیر پناهگاه",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-keykhosrow-pass": {
+      "name": "گردنهٔ مسیر کیخسرو قاش‌مستان",
+      "aliases": ["گردنه کیخسرو قاش مستان"],
+      "latitude": 30.96991,
+      "longitude": 51.467432,
+      "elevation_m": 2875,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنه در ترک مستقل کیخسرو؛ ارتفاع GPX حدود ۲۸۷۵ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine",
+      "page_name": "گردنهٔ مسیر کیخسرو قاش‌مستان",
+      "short_label": "گردنهٔ کیخسرو",
+      "place_type": "pass",
+      "identity_summary": "گردنهٔ مشخص مسیر کیخسرو پس از آبشار و پیش از بخش‌های سنگین صعود",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420"
+      ],
+      "is_active": true
+    },
+    "qash-mastan-benroud": {
+      "name": "قلهٔ بن‌رود دنا",
+      "aliases": ["بن رود", "قله بن‌رود", "بن‌رود دنا", "Bonrud Peak"],
+      "latitude": 30.945392,
+      "longitude": 51.436181,
+      "elevation_m": 4215,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ قلهٔ بن‌رود در ترک مستقل کیخسرو–بن‌رود–قاش‌مستان؛ ارتفاع GPX حدود ۴۲۱۵ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine",
+      "page_name": "قلهٔ بن‌رود دنا",
+      "short_label": "بن‌رود",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ بن‌رود در خط‌الرأس مرکزی دنا، پیش از قاش‌مستان در مسیر ترکیبی خفر",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765"
+      ],
+      "is_active": true
+    }
+  },
+  "routes": {
+    "khafr_shelter_to_qash_mastan": {
+      "slug": "qash-mastan-khafr-shelter",
+      "title": "پای‌کار پناهگاه تا قلهٔ قاش‌مستان",
+      "subtitle": "مسیر کلاسیک خفر از آبشار و جان‌پناه امید تا قلهٔ قاش‌مستان",
+      "trail_label": "مسیر پناهگاه قاش‌مستان",
+      "origin": "پای‌کار مسیر پناهگاه قاش‌مستان",
+      "target_label": "قلهٔ قاش‌مستان",
+      "region": "خفر پادنا · دنا",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "qash-mastan-khafr-shelter-trailhead",
+        "qash-mastan-omid-waterfall",
+        "qash-mastan-omid-shelter",
+        "qash-mastan"
+      ],
+      "distance_km": 7.9,
+      "ascent_m": 1980,
+      "one_way_minutes": 600,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "qash-mastan-khafr-shelter-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+          "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462",
+          "https://www.wikiloc.com/hiking-trails/swd-zmstny-qlh-qsh-mstn-dn-65560481"
+        ],
+        "evidence_tracks": [
+          "tracks/qash-mastan/msyr-swd-bh-qlh-qshmstn-dn.gpx",
+          "tracks/qash-mastan/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12.gpx",
+          "tracks/qash-mastan/swd-zmstny-qlh-qsh-mstn-dn.gpx"
+        ],
+        "cumulative_minutes": {
+          "qash-mastan-khafr-shelter-trailhead": 0,
+          "qash-mastan-omid-waterfall": 150,
+          "qash-mastan-omid-shelter": 240,
+          "qash-mastan": 600
+        },
+        "notes": [
+          "دو ترک مستقل مسیر کلاسیک خفر تا جان‌پناه و قله را تأیید می‌کنند؛ فاصلهٔ cut شدهٔ مسیر اصلی تا قله حدود ۷٫۹ کیلومتر و صعود نرم‌شده حدود ۱۹۸۰ متر است.",
+          "ارتفاع بالا، شیب‌های سنگین و عبور کنار یخچال‌های فصلی دارد؛ برای برنامهٔ چندمرحله‌ای و شرایط زمستانی زمان بیشتری لازم است.",
+          "timestampهای چندروزهٔ GPX برای ETA استفاده نشده‌اند و زمان‌ها از هندسه و گزارش‌های مستقل محافظه‌کارانه انتخاب شده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "keykhosrow_to_qash_mastan": {
+      "slug": "qash-mastan-keykhosrow",
+      "title": "پای‌کار کیخسرو تا قلهٔ قاش‌مستان",
+      "subtitle": "مسیر کیخسرو از باغ‌های بالادست خفر و گردنه تا قلهٔ قاش‌مستان",
+      "trail_label": "مسیر کیخسرو قاش‌مستان",
+      "origin": "پای‌کار مسیر کیخسرو قاش‌مستان",
+      "target_label": "قلهٔ قاش‌مستان",
+      "region": "خفر پادنا · دنا",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "qash-mastan-keykhosrow-trailhead",
+        "qash-mastan-keykhosrow-pass",
+        "qash-mastan"
+      ],
+      "distance_km": 9.2,
+      "ascent_m": 1892,
+      "one_way_minutes": 840,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "qash-mastan-keykhosrow-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765"
+        ],
+        "evidence_tracks": [
+          "tracks/qash-mastan/qlh-qsh-mstn-dn-msyr-khykhsrw.gpx",
+          "tracks/qash-mastan/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr.gpx"
+        ],
+        "cumulative_minutes": {
+          "qash-mastan-keykhosrow-trailhead": 0,
+          "qash-mastan-keykhosrow-pass": 180,
+          "qash-mastan": 840
+        },
+        "notes": [
+          "ترک اصلی کیخسرو مسیر پیوستهٔ حدود ۹٫۲ کیلومتر تا قله را نشان می‌دهد و ترک مستقل بن‌رود مسیر مشترک پایین‌دست را cross-check می‌کند.",
+          "مسیر نسبت به مسیر پناهگاه طولانی‌تر و سنگین‌تر است؛ آب و یخچال‌های مسیر فصلی‌اند و باید پیش از حرکت بررسی شوند.",
+          "زمان ثبت‌شدهٔ GPX به‌دلیل توقف و شب‌مانی معیار ETA نیست؛ زمان تخمینی با عدم‌قطعیت بالا ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "khafr_benroud_to_qash_mastan": {
+      "slug": "qash-mastan-benroud",
+      "title": "خفر تا قاش‌مستان از مسیر بن‌رود",
+      "subtitle": "مسیر ترکیبی خفر و کیخسرو با عبور از قلهٔ بن‌رود تا قاش‌مستان",
+      "trail_label": "مسیر بن‌رود–قاش‌مستان",
+      "origin": "روستای خفر پادنا",
+      "target_label": "قلهٔ قاش‌مستان",
+      "region": "خفر پادنا · خط‌الرأس مرکزی دنا",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "qash-mastan-khafr-village",
+        "qash-mastan-keykhosrow-pass",
+        "qash-mastan-benroud",
+        "qash-mastan"
+      ],
+      "distance_km": 12.1,
+      "ascent_m": 2136,
+      "one_way_minutes": 900,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "qash-mastan-benroud-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 240,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420"
+        ],
+        "evidence_tracks": [
+          "tracks/qash-mastan/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr.gpx"
+        ],
+        "cumulative_minutes": {
+          "qash-mastan-khafr-village": 0,
+          "qash-mastan-keykhosrow-pass": 360,
+          "qash-mastan-benroud": 780,
+          "qash-mastan": 900
+        },
+        "notes": [
+          "ترک مستقل از داخل روستای خفر تا بن‌رود و سپس قاش‌مستان ادامه دارد؛ بخش بعد از قلهٔ هدف در فایل اصلی فرود است و برای route فقط تا اولین رسیدن به قاش‌مستان cut شده است.",
+          "بن‌رود یک قلهٔ واقعی و جدا از قاش‌مستان است و به‌عنوان نقطهٔ میانی مشترک ثبت شده، نه duplicate قلهٔ هدف.",
+          "این مسیر طولانی‌تر و کم‌اطمینان‌تر از دو مسیر مستقیم است؛ زمان/هندسه با عدم‌قطعیت محافظه‌کارانه نمایش داده می‌شود."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "qash-mastan",
+    "tile_name": "قاش‌مستان دنا",
+    "name": "قلهٔ قاش‌مستان دنا",
+    "short_category": "قله",
+    "category": "قله و مسیرهای دنا",
+    "category_key": "mountain",
+    "region": "دنا · کهگیلویه و بویراحمد",
+    "elevation_m": 4410,
+    "latitude": 30.95118,
+    "longitude": 51.43613,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ قاش‌مستان دنا",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": ["قاش مستان", "قاش‌مستان", "قاشمستان", "بیژن ۳", "Qash Mastan"]
+  },
+  "primary_point": "qash-mastan"
+}
