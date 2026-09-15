@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-zingalo-catalog-v1",
+  "catalog_version": "hawatch-zingalo-catalog-v2",
   "weather_points": {
     "zingalo": {
       "name": "قلهٔ زینگالو",
@@ -20,7 +20,7 @@
       "page_name": "قلهٔ زینگالو سوادکوه",
       "short_label": "زینگالو",
       "place_type": "summit",
-      "identity_summary": "قلهٔ جنگلی زینگالو در سوادکوه، نزدیک زیراب و روستای کنیج‌کلا",
+      "identity_summary": "قلهٔ جنگلی زینگالو در سوادکوه، با مسیر پیاده از روستای معدن و محدودهٔ کنیج‌کلا",
       "importance": "primary",
       "seo_indexable": true,
       "name_status": "established",
@@ -32,9 +32,117 @@
         "https://www.wikiloc.com/mountaineering-trails/1-236446765",
         "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-zynglw-mwrkh-1404-02-18-212640307"
       ]
+    },
+    "zingalo-madan-village": {
+      "name": "روستای معدن سوادکوه",
+      "aliases": [
+        "معدن",
+        "روستای معدن",
+        "معدن زیراب",
+        "Madan village",
+        "Madan-e Zirab"
+      ],
+      "latitude": 36.1668374,
+      "longitude": 52.9645407,
+      "elevation_m": 579,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "گره روستای معدن در OpenStreetMap؛ Open-Meteo GLO-90 DEM در مختصات 36.1668374,52.9645407 ارتفاع ۵۷۹ متر برمی‌گرداند.",
+      "climate": "forest_fog",
+      "page_name": "روستای معدن سوادکوه، مبدأ مسیر زینگالو",
+      "short_label": "معدن",
+      "place_type": "village",
+      "identity_summary": "روستای معدن در زیراب سوادکوه و مبدأ مسیر پیادهٔ قلهٔ زینگالو",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.openstreetmap.org/way/585749920",
+        "https://www.wikiloc.com/hiking-trails/qlh-jngly-zynglw-z-rwsty-khnyj-khl-259639091",
+        "https://www.wikiloc.com/mountaineering-trails/1-236446765",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-zynglw-mwrkh-1404-02-18-212640307"
+      ]
+    },
+    "zingalo-madan-football-field": {
+      "name": "زمین فوتبال معدن کنیج‌کلا",
+      "aliases": [
+        "زمین فوتبال معدن",
+        "کمپ زمین فوتبال زینگالو",
+        "Madan football field"
+      ],
+      "latitude": 36.161915,
+      "longitude": 52.963815,
+      "elevation_m": 618,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ زمین فوتبال در ترک صعود زینگالو؛ Open-Meteo GLO-90 DEM در مختصات 36.161915,52.963815 ارتفاع ۶۱۸ متر برمی‌گرداند.",
+      "climate": "forest_fog",
+      "page_name": "زمین فوتبال معدن در مسیر زینگالو",
+      "short_label": "زمین فوتبال معدن",
+      "place_type": "landmark",
+      "identity_summary": "زمین فوتبال و محل کمپ نام‌گذاری‌شده در ابتدای مسیر جنگلی معدن تا زینگالو",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-jngly-zynglw-z-rwsty-khnyj-khl-259639091",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-zynglw-mwrkh-1404-02-18-212640307"
+      ]
     }
   },
-  "routes": {},
+  "routes": {
+    "madan_to_zingalo": {
+      "slug": "zingalo-madan",
+      "title": "معدن تا قلهٔ زینگالو",
+      "subtitle": "مسیر جنگلی از روستای معدن سوادکوه تا قلهٔ زینگالو",
+      "trail_label": "مسیر معدن–زینگالو",
+      "origin": "روستای معدن سوادکوه",
+      "target_label": "قلهٔ زینگالو",
+      "region": "سوادکوه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "zingalo-madan-village",
+        "zingalo-madan-football-field",
+        "zingalo"
+      ],
+      "distance_km": 6.4,
+      "ascent_m": 830,
+      "one_way_minutes": 240,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "zingalo-madan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-jngly-zynglw-z-rwsty-khnyj-khl-259639091",
+          "https://www.wikiloc.com/mountaineering-trails/1-236446765",
+          "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-zynglw-mwrkh-1404-02-18-212640307",
+          "https://www.wikiloc.com/hiking-trails/swdkhwh-rwsty-khnyj-khyl-qlh-zynglw-162032897"
+        ],
+        "evidence_tracks": [
+          "tracks/zingalo/qlh-jngly-zynglw-z-rwsty-khnyj-khl.gpx",
+          "tracks/zingalo/1.gpx",
+          "tracks/zingalo/swd-bh-qlh-zynglw-mwrkh-1404-02-18.gpx",
+          "tracks/zingalo/swdkhwh-rwsty-khnyj-khyl-qlh-zynglw.gpx"
+        ],
+        "cumulative_minutes": {
+          "zingalo-madan-village": 0,
+          "zingalo-madan-football-field": 15,
+          "zingalo": 210
+        },
+        "notes": [
+          "چهار ترک مستقل مسیر پیادهٔ معدن/کنیج‌کلا تا قله را تأیید می‌کنند؛ ترک کوتاه‌تر زیراب تا ابتدای خط‌الرأس فقط reference است و Route مستقل نیست.",
+          "مبدأ ترک‌ها در محدودهٔ روستای معدن قرار دارد؛ زمین فوتبال به‌عنوان landmark میانی نام‌دار حفظ شده و waypointهای generic حذف شده‌اند.",
+          "فاصله و صعود از هندسهٔ ترک اصلی و cross-checkها به‌صورت محافظه‌کارانه گرد شده‌اند؛ ارتفاع خام GPX مبنای elevation catalog نیست.",
+          "timestampهای ترک‌ها برای ETA مبنا نیستند؛ زمان مسیر از هندسه و گزارش‌های مستقل برآورد شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
   "point": {
     "slug": "zingalo",
     "tile_name": "زینگالو",
