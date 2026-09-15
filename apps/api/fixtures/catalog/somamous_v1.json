@@ -1,0 +1,328 @@
+{
+  "catalog_version": "hawatch-somamous-catalog-v1",
+  "weather_points": {
+    "somamous": {
+      "name": "قلهٔ سماموس",
+      "aliases": [
+        "سماموس",
+        "سماموس گیلان",
+        "قله سمام",
+        "بام گیلان",
+        "Somamous Peak",
+        "Somamoos Peak"
+      ],
+      "latitude": 36.84067,
+      "longitude": 50.3844,
+      "elevation_m": 3721,
+      "kind": "primary",
+      "status": "provisional",
+      "elevation_source": "Waypointهای نام‌گذاری‌شدهٔ ترک‌های مستقل سماموس ارتفاع حدود ۳۶۸۹ تا ۳۷۲۱ متر را ثبت می‌کنند؛ مقدار ۳۷۲۱ متر برای تطبیق با DEM و Open‑Meteo موقت است.",
+      "climate": "high_alpine",
+      "page_name": "قلهٔ سماموس",
+      "short_label": "سماموس",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ سماموس، بلندترین قلهٔ گیلان در البرز غربی، با مسیرهای صعود از جواهرده و جواهردشت",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-gyln-267678954",
+        "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-jwhrdh-bh-sjyrn-149781497",
+        "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170"
+      ],
+      "tile_name": "سماموس",
+      "short_category": "قله",
+      "category": "قله و مسیرهای جنگلی البرز غربی",
+      "category_key": "mountain",
+      "region": "البرز غربی · گیلان و مازندران",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی قلهٔ سماموس",
+      "is_active": true
+    },
+    "somamous-javaherdeh": {
+      "name": "روستای جواهرده",
+      "aliases": ["جواهرده", "جواهر ده", "Javaherdeh", "Javaher Deh"],
+      "latitude": 36.852114,
+      "longitude": 50.466856,
+      "elevation_m": 1868,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypointهای چند ترک مستقل در محدودهٔ روستای جواهرده ارتفاع حدود ۱۸۶۸ تا ۱۸۸۹ متر را ثبت می‌کنند؛ مقدار ۱۸۶۸ متر برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "روستای جواهرده، مبدأ مسیر سماموس",
+      "short_label": "جواهرده",
+      "place_type": "village",
+      "identity_summary": "روستای شناخته‌شدهٔ جواهرده و مبدأ چند مسیر صعود به سماموس",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-jwhrdh-bh-sjyrn-149781497",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-gyln-267678954"
+      ],
+      "is_active": true
+    },
+    "somamous-javaherdasht": {
+      "name": "روستای جواهردشت",
+      "aliases": ["جواهردشت", "جواهر دشت", "Javaherdasht", "Javaher Dasht"],
+      "latitude": 36.887695,
+      "longitude": 50.379894,
+      "elevation_m": 2136,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypoint و نقطهٔ آغاز ترک صعود از جواهردشت؛ ارتفاع GPX حدود ۲۱۳۶ متر و برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "روستای جواهردشت، مبدأ مسیر سماموس",
+      "short_label": "جواهردشت",
+      "place_type": "village",
+      "identity_summary": "ییلاق و روستای جواهردشت در مسیر شمالی صعود به سماموس",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170",
+        "https://www.wikiloc.com/hiking-trails/gt-184920415"
+      ],
+      "is_active": true
+    },
+    "somamous-javaherdeh-waterfall": {
+      "name": "آبشار جواهرده",
+      "aliases": ["آبشار مسیر سماموس", "آبشار جواهرده رامسر", "Javaherdeh Waterfall"],
+      "latitude": 36.851775,
+      "longitude": 50.459571,
+      "elevation_m": 1944,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ آبشار جواهرده در ترک مسیر صعود؛ ارتفاع GPX حدود ۱۹۴۴ متر و برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "آبشار جواهرده در مسیر سماموس",
+      "short_label": "آبشار جواهرده",
+      "place_type": "waterfall",
+      "identity_summary": "آبشار نام‌دار جواهرده در بخش جنگلی مسیر صعود سماموس",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-jwhrdh-bh-sjyrn-149781497"
+      ],
+      "is_active": true
+    },
+    "somamous-javaherdeh-spring": {
+      "name": "چشمهٔ بالادست آبشار جواهرده",
+      "aliases": ["چشمه مسیر سماموس", "چشمه جواهرده سماموس"],
+      "latitude": 36.848082,
+      "longitude": 50.446784,
+      "elevation_m": 2309,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه در ترک مسیر آبشار جواهرده؛ ارتفاع GPX حدود ۲۳۰۹ متر و برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "چشمهٔ مسیر آبشار جواهرده تا سماموس",
+      "short_label": "چشمهٔ مسیر",
+      "place_type": "spring",
+      "identity_summary": "چشمهٔ مسیر پیاده‌روی بالادست آبشار جواهرده، پیش از معدن متروکه",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537"
+      ],
+      "is_active": true
+    },
+    "somamous-abandoned-mine": {
+      "name": "کارگاه معدنی متروکهٔ سماموس",
+      "aliases": ["معدن سماموس", "کارگاه شن و ماسه سماموس", "معدن متروکه جواهرده"],
+      "latitude": 36.83705,
+      "longitude": 50.4274,
+      "elevation_m": 2980,
+      "kind": "shared",
+      "status": "provisional",
+      "elevation_source": "Waypointهای معدن/کارگاه معدنی در دو ترک مستقل در محدودهٔ یکسان؛ مختصات canonical ادغام‌شده و ارتفاع ۲۹۸۰ متر برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "کارگاه معدنی متروکهٔ مسیر سماموس",
+      "short_label": "کارگاه معدنی",
+      "place_type": "landmark",
+      "identity_summary": "کارگاه معدنی متروکه و landmark مشترک در مسیرهای جواهرده تا سماموس",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-gyln-267678954",
+        "https://www.wikiloc.com/hiking-trails/qlh-smmws-jwhrdh-bh-sjyrn-149781497"
+      ],
+      "is_active": true
+    },
+    "somamous-javaherdasht-hali-spring": {
+      "name": "چشمهٔ هالی جواهردشت",
+      "aliases": ["چشمه هالی سماموس", "چشمه هالی جاده مال‌رو"],
+      "latitude": 36.880577,
+      "longitude": 50.381941,
+      "elevation_m": 2215,
+      "kind": "route_point",
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ چشمهٔ هالی در ترک صعود جواهردشت؛ ارتفاع GPX حدود ۲۲۱۵ متر و برای تطبیق provider موقت است.",
+      "climate": "forest_fog",
+      "page_name": "چشمهٔ هالی در مسیر جواهردشت تا سماموس",
+      "short_label": "چشمهٔ هالی",
+      "place_type": "spring",
+      "identity_summary": "چشمهٔ نام‌دار در بخش آغازین مسیر پیادهٔ جواهردشت به سماموس",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170"
+      ],
+      "is_active": true
+    }
+  },
+  "routes": {
+    "javaherdeh_current": {
+      "slug": "somamous-javaherdeh",
+      "title": "جواهرده تا قلهٔ سماموس",
+      "subtitle": "مسیر صعود از روستای جواهرده تا قلهٔ سماموس",
+      "trail_label": "مسیر جواهرده",
+      "origin": "روستای جواهرده",
+      "target_label": "قلهٔ سماموس",
+      "region": "جواهرده · رامسر · البرز غربی",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["somamous-javaherdeh", "somamous-abandoned-mine", "somamous"],
+      "distance_km": 12.2,
+      "ascent_m": 1880,
+      "one_way_minutes": 510,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "somamous-javaherdeh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-smmws-gyln-267678954",
+          "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537"
+        ],
+        "evidence_tracks": ["tracks/somamous/qlh-smmws-gyln.gpx"],
+        "cumulative_minutes": {
+          "somamous-javaherdeh": 0,
+          "somamous-abandoned-mine": 270,
+          "somamous": 510
+        },
+        "notes": [
+          "ترک جدید از جواهرده تا اولین رسیدن به قله حدود ۱۲٫۲ کیلومتر و صعود نرم‌شده حدود ۱۸۸۰ متر دارد.",
+          "بخش‌هایی از دسترسی بالادست جادهٔ خاکی دارد؛ فقط قطعهٔ پیادهٔ پیوسته تا قله در Route عمومی مبناست.",
+          "زمان از هندسه و گزارش‌های مستقل انتخاب شده و timestamp خام ترک برای ETA استفاده نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "javaherdeh_waterfall": {
+      "slug": "somamous-javaherdeh-waterfall",
+      "title": "مسیر آبشار جواهرده تا قلهٔ سماموس",
+      "subtitle": "صعود جنگلی از آبشار جواهرده، چشمه و معدن متروکه تا قله",
+      "trail_label": "مسیر آبشار جواهرده",
+      "origin": "روستای جواهرده",
+      "target_label": "قلهٔ سماموس",
+      "region": "جواهرده · رامسر · البرز غربی",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "somamous-javaherdeh",
+        "somamous-javaherdeh-waterfall",
+        "somamous-javaherdeh-spring",
+        "somamous-abandoned-mine",
+        "somamous"
+      ],
+      "distance_km": 10.7,
+      "ascent_m": 1820,
+      "one_way_minutes": 570,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "somamous-javaherdeh-waterfall-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-y-smmws-z-msyr-abshr-jwhrdh-106211537",
+          "https://www.wikiloc.com/hiking-trails/qlh-smmws-jwhrdh-bh-sjyrn-149781497"
+        ],
+        "evidence_tracks": ["tracks/somamous/qlh-y-smmws-z-msyr-abshr-jwhrdh.gpx"],
+        "cumulative_minutes": {
+          "somamous-javaherdeh": 0,
+          "somamous-javaherdeh-waterfall": 35,
+          "somamous-javaherdeh-spring": 95,
+          "somamous-abandoned-mine": 235,
+          "somamous": 570
+        },
+        "notes": [
+          "ترک رفت‌وبرگشت تا اولین رسیدن به قله cut شده است؛ فاصلهٔ قطعهٔ صعود حدود ۱۰٫۷ کیلومتر است.",
+          "آبشار جواهرده نقطهٔ مشترک routeهای جنگلی است و duplicate waypointهای نزدیک آن ادغام شده‌اند.",
+          "timestampهای GPX برای زمان رسیدن استفاده نشده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "javaherdasht": {
+      "slug": "somamous-javaherdasht",
+      "title": "جواهردشت تا قلهٔ سماموس",
+      "subtitle": "مسیر شمالی از جواهردشت و چشمهٔ هالی تا قلهٔ سماموس",
+      "trail_label": "مسیر جواهردشت",
+      "origin": "روستای جواهردشت",
+      "target_label": "قلهٔ سماموس",
+      "region": "جواهردشت · گیلان · البرز غربی",
+      "featured": false,
+      "sort_order": 4,
+      "points": ["somamous-javaherdasht", "somamous-javaherdasht-hali-spring", "somamous"],
+      "distance_km": 7.4,
+      "ascent_m": 1575,
+      "one_way_minutes": 405,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "somamous-javaherdasht-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170",
+          "https://www.wikiloc.com/hiking-trails/gt-184920415"
+        ],
+        "evidence_tracks": ["tracks/somamous/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh.gpx"],
+        "cumulative_minutes": {
+          "somamous-javaherdasht": 0,
+          "somamous-javaherdasht-hali-spring": 65,
+          "somamous": 405
+        },
+        "notes": [
+          "ترک یک‌طرفهٔ جواهردشت تا اولین رسیدن به قله حدود ۷٫۴ کیلومتر و صعود نرم‌شده حدود ۱۵۷۵ متر دارد.",
+          "چشمهٔ هالی تنها landmark نام‌گذاری‌شدهٔ قابل اتکا در بخش ابتدایی مسیر است؛ waypointهای generic حذف شده‌اند.",
+          "ترک با برچسب زمستان/بهار cross-check شده و شرایط پاییزی/زمستانی باید جداگانه بررسی شود."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "somamous",
+    "tile_name": "سماموس",
+    "name": "قلهٔ سماموس",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای جنگلی البرز غربی",
+    "category_key": "mountain",
+    "region": "البرز غربی · گیلان و مازندران",
+    "elevation_m": 3721,
+    "latitude": 36.84067,
+    "longitude": 50.3844,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سماموس",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "somamous"
+}
