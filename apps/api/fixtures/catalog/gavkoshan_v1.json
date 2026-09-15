@@ -1,0 +1,291 @@
+{
+  "catalog_version": "hawatch-gavkoshan-catalog-v1",
+  "weather_points": {
+    "gavkoshan": {
+      "name": "قلهٔ گاوکشان",
+      "page_name": "قلهٔ گاوکشان در البرز شرقی",
+      "short_label": "قلهٔ گاوکشان",
+      "place_type": "summit",
+      "aliases": [
+        "گاوکشان",
+        "قله گاوکشان",
+        "قلهٔ گاوکشان سمنان",
+        "Gavkoshan",
+        "Gavkoshan Peak"
+      ],
+      "identity_summary": "قلهٔ گاوکشان؛ قله‌ای مرتفع در البرز شرقی و نزدیک شاهکوه سفلی در استان سمنان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://climbers.ir/tourist-attractions/185-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D8%B4%D8%A7%D9%86",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.5236344&lon=54.4562574&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D8%B4%D8%A7%D9%86&pkidentifier=325",
+        "https://mojekooh.com/gav-koshan-peak/",
+        "https://www.wikiloc.com/hiking-trails/qlh-3813-mtry-gwkhshn-z-shhkhwh-grwh-hwzwy-afq-78495936",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhshn-qlh-khhkhshn-shhkhwh-sfly-gavkoshan-peak-kahkeshan-peak-173282066",
+        "https://www.wikiloc.com/hiking-trails/qlh-mnr-qlh-gwkhshn-shhkhwh-sfly-menar-peak-gavkhshan-peak-223289079",
+        "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964"
+      ],
+      "latitude": 36.52352544,
+      "longitude": 54.45620011,
+      "elevation_m": 3813,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۸۱۳ متر در منابع مستقل؛ ترک‌های مستقل شاهکوه و تنگهٔ زندان قله را در مختصات حدودی ۳۶٫۵۲۳۵۴ و ۵۴٫۴۵۶۲ تأیید می‌کنند.",
+      "climate": "high_alpine"
+    },
+    "gavkoshan-shahkouh-trailhead": {
+      "name": "پای‌کار شاهکوه سفلی",
+      "page_name": "پای‌کار شاهکوه سفلی؛ مبدأ مسیر گاوکشان",
+      "short_label": "پای‌کار شاهکوه",
+      "place_type": "trailhead",
+      "aliases": [
+        "پای کار شاهکوه",
+        "محل پارک شاهکوه سفلی",
+        "Shahkouh Sofla trailhead"
+      ],
+      "identity_summary": "پای‌کار و محل آغاز مسیر پیادهٔ شاهکوه سفلی به قلهٔ گاوکشان؛ دسترسی جاده‌ای روستا تا این نقطه در ترک‌ها ثبت شده است",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-3813-mtry-gwkhshn-z-shhkhwh-grwh-hwzwy-afq-78495936",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhshn-qlh-khhkhshn-shhkhwh-sfly-gavkoshan-peak-kahkeshan-peak-173282066",
+        "https://www.wikiloc.com/hiking-trails/qlh-mnr-qlh-gwkhshn-shhkhwh-sfly-menar-peak-gavkhshan-peak-223289079"
+      ],
+      "latitude": 36.5401,
+      "longitude": 54.4202,
+      "elevation_m": 2570,
+      "status": "provisional",
+      "elevation_source": "مختصات پای‌کار مشترک در سه ترک مستقل شاهکوه سفلی؛ نقاط شروع بین ۲۵۲۱ تا ۲۵۷۳ متر ثبت شده‌اند و مقدار محافظه‌کارانهٔ ۲۵۷۰ متر برای forecast انتخاب شده است.",
+      "climate": "forest_fog"
+    },
+    "gavkoshan-sang-ben": {
+      "name": "سنگ‌بن گاوکشان",
+      "page_name": "سنگ‌بن در مسیر شاهکوه–گاوکشان",
+      "short_label": "سنگ‌بن",
+      "place_type": "landmark",
+      "aliases": [
+        "سنگ بن گاوکشان",
+        "سنگ‌بن شاهکوه",
+        "Sang Bon"
+      ],
+      "identity_summary": "سنگ‌بن؛ landmark نام‌دار بخش ابتدایی مسیر شاهکوه سفلی به گاوکشان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/gav-koshan-peak/",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhshn-qlh-khhkhshn-shhkhwh-sfly-gavkoshan-peak-kahkeshan-peak-173282066",
+        "https://www.wikiloc.com/hiking-trails/qlh-mnr-qlh-gwkhshn-shhkhwh-sfly-menar-peak-gavkhshan-peak-223289079"
+      ],
+      "latitude": 36.5341,
+      "longitude": 54.4256,
+      "elevation_m": 2690,
+      "status": "provisional",
+      "elevation_source": "Waypoint «سنگ بن» در دو ترک مستقل شاهکوه سفلی؛ Open-Meteo GLO-90 DEM برای کنترل ارتفاع استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "gavkoshan-tang-zendan-trailhead": {
+      "name": "پای‌کار تنگهٔ زندان گاوکشان",
+      "page_name": "پای‌کار تنگهٔ زندان؛ مبدأ مسیر گاوکشان",
+      "short_label": "تنگهٔ زندان",
+      "place_type": "trailhead",
+      "aliases": [
+        "تنگه زندان گاوکشان",
+        "پارکینگ تنگه زندان",
+        "Tang-e Zendan trailhead"
+      ],
+      "identity_summary": "پای‌کار و ورودی مسیر جنوبی تنگهٔ زندان به قلهٔ گاوکشان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-gwkhshn-gavkoshan-peak-30761693",
+        "https://climbers.ir/tourist-attractions/185-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D8%B4%D8%A7%D9%86"
+      ],
+      "latitude": 36.4783,
+      "longitude": 54.3847,
+      "elevation_m": 2560,
+      "status": "provisional",
+      "elevation_source": "مختصات ورودی/پارکینگ تنگهٔ زندان در ترک مستقل جنوبی؛ دو waypoint آغازین ترک ارتفاع حدود ۲۵۵۰ تا ۲۵۶۰ متر دارند.",
+      "climate": "forest_fog"
+    },
+    "gavkoshan-tang-zendan-waterfall": {
+      "name": "آبشار تنگهٔ زندان گاوکشان",
+      "page_name": "آبشار تنگهٔ زندان در مسیر گاوکشان",
+      "short_label": "آبشار تنگهٔ زندان",
+      "place_type": "waterfall",
+      "aliases": [
+        "آبشار تنگه زندان",
+        "آبشار گاوکشان",
+        "Tang-e Zendan waterfall"
+      ],
+      "identity_summary": "آبشار نام‌گذاری‌شدهٔ بخش ابتدایی مسیر جنوبی تنگهٔ زندان به گاوکشان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-gwkhshn-gavkoshan-peak-30761693"
+      ],
+      "latitude": 36.480248,
+      "longitude": 54.384284,
+      "elevation_m": 2590,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار در ترک مستقل تنگهٔ زندان؛ ارتفاع GPX حدود ۲۵۹۰ متر است و برای forecast با DEM کنترل می‌شود.",
+      "climate": "forest_fog"
+    },
+    "gavkoshan-siah-cheshmeh": {
+      "name": "سیاه‌چشمهٔ گاوکشان",
+      "page_name": "سیاه‌چشمه در مسیر تنگهٔ زندان گاوکشان",
+      "short_label": "سیاه‌چشمه",
+      "place_type": "spring",
+      "aliases": [
+        "سیاه چشمه گاوکشان",
+        "Siah Cheshmeh"
+      ],
+      "identity_summary": "سیاه‌چشمه؛ عارضهٔ آبی نام‌دار و landmark میانی مسیر جنوبی تنگهٔ زندان به گاوکشان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-gwkhshn-gavkoshan-peak-30761693"
+      ],
+      "latitude": 36.49788,
+      "longitude": 54.401054,
+      "elevation_m": 3130,
+      "status": "provisional",
+      "elevation_source": "Waypoint سیاه‌چشمه در ترک مستقل جنوبی؛ ارتفاع GPX حدود ۳۱۲۷ متر است و با DEM کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "shahkouh_to_gavkoshan": {
+      "slug": "gavkoshan-shahkouh-summit",
+      "title": "شاهکوه سفلی تا قلهٔ گاوکشان",
+      "subtitle": "مسیر صعود از پای‌کار شاهکوه سفلی و سنگ‌بن تا قلهٔ گاوکشان",
+      "trail_label": "مسیر شاهکوه–گاوکشان",
+      "origin": "پای‌کار شاهکوه سفلی",
+      "target_label": "قلهٔ گاوکشان",
+      "region": "البرز شرقی · استان سمنان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gavkoshan-shahkouh-trailhead",
+        "gavkoshan-sang-ben",
+        "gavkoshan"
+      ],
+      "distance_km": 4.9,
+      "ascent_m": 1280,
+      "one_way_minutes": 420,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "gavkoshan-shahkouh-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-3813-mtry-gwkhshn-z-shhkhwh-grwh-hwzwy-afq-78495936",
+          "https://www.wikiloc.com/hiking-trails/qlh-gwkhshn-qlh-khhkhshn-shhkhwh-sfly-gavkoshan-peak-kahkeshan-peak-173282066",
+          "https://mojekooh.com/gav-koshan-peak/"
+        ],
+        "evidence_tracks": [
+          "tracks/gavkoshan/qlh-3813-mtry-gwkhshn-z-shhkhwh-grwh-hwzwy-afq.gpx",
+          "tracks/gavkoshan/qlh-gwkhshn-qlh-khhkhshn-shhkhwh-sfly-gavkoshan-peak-kahkesh.gpx"
+        ],
+        "cumulative_minutes": {
+          "gavkoshan-shahkouh-trailhead": 0,
+          "gavkoshan-sang-ben": 90,
+          "gavkoshan": 420
+        },
+        "notes": [
+          "دو ترک مستقل شاهکوه سفلی، کریدور پای‌کار تا قله را در مختصات مشترک تأیید می‌کنند.",
+          "پای‌کارهای نزدیک در امتداد جادهٔ دسترسی به‌عنوان یک مبدأ canonical ادغام شده‌اند و نقطهٔ جاده‌ای جداگانه ساخته نشده است.",
+          "فاصله و زمان از هندسهٔ بخش صعود و گزارش مسیر برآورد شده‌اند؛ timestamp خام GPX مبنای ETA نیست."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "tang_zendan_to_gavkoshan": {
+      "slug": "gavkoshan-tang-zendan-summit",
+      "title": "تنگهٔ زندان تا قلهٔ گاوکشان",
+      "subtitle": "مسیر جنوبی از تنگهٔ زندان، آبشار و سیاه‌چشمه تا قلهٔ گاوکشان",
+      "trail_label": "مسیر تنگهٔ زندان–گاوکشان",
+      "origin": "پای‌کار تنگهٔ زندان گاوکشان",
+      "target_label": "قلهٔ گاوکشان",
+      "region": "البرز شرقی · استان سمنان",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "gavkoshan-tang-zendan-trailhead",
+        "gavkoshan-tang-zendan-waterfall",
+        "gavkoshan-siah-cheshmeh",
+        "gavkoshan"
+      ],
+      "distance_km": 10.2,
+      "ascent_m": 1390,
+      "one_way_minutes": 480,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "gavkoshan-tang-zendan-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-gwkhshn-gavkoshan-peak-30761693",
+          "https://climbers.ir/tourist-attractions/185-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D8%B4%D8%A7%D9%86"
+        ],
+        "evidence_tracks": [
+          "tracks/gavkoshan/gwkhshnkhhkhshn-z-tngh-zndn.gpx"
+        ],
+        "cumulative_minutes": {
+          "gavkoshan-tang-zendan-trailhead": 0,
+          "gavkoshan-tang-zendan-waterfall": 30,
+          "gavkoshan-siah-cheshmeh": 210,
+          "gavkoshan": 480
+        },
+        "notes": [
+          "ترک مستقل تنگهٔ زندان تا نزدیک قله، ورودی تنگه، آبشار و سیاه‌چشمه را به‌عنوان عوارض واقعی مسیر ثبت کرده است.",
+          "ترک دیباج/تنگهٔ زندان با نام‌گذاری‌های متفاوت برای تطبیق هویت بررسی شد و مبنای این route قرار نگرفت.",
+          "فاصله و زمان تقریبی‌اند و برای مسیر جنوبی عدم‌قطعیت ۱۲۰ دقیقه ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "gavkoshan",
+    "tile_name": "گاوکشان",
+    "name": "قلهٔ گاوکشان",
+    "short_category": "قله",
+    "category": "قله و مسیرهای البرز شرقی",
+    "category_key": "mountain",
+    "region": "البرز شرقی · استان سمنان",
+    "elevation_m": 3813,
+    "latitude": 36.52352544,
+    "longitude": 54.45620011,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ گاوکشان در البرز شرقی",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "گاوکشان",
+      "قله گاوکشان",
+      "Gavkoshan Peak"
+    ]
+  },
+  "primary_point": "gavkoshan"
+}
