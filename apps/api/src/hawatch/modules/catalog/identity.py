@@ -378,7 +378,11 @@ def metadata_for_point(
     override = dict(POINT_IDENTITY_OVERRIDES.get(slug, {}))
     name = str(override.get("name") or row.get("name") or slug)
     page_name = str(override.get("page_name") or name)
-    place_type = str(override.get("place_type") or infer_place_type(slug, name))
+    # Catalog rows are the source of truth for semantic place type.  Falling
+    # back to name inference is useful for legacy/operator rows, but must not
+    # replace an explicit value (for example ``forest`` has no reliable
+    # Persian name marker in every language).
+    place_type = str(override.get("place_type") or row.get("place_type") or infer_place_type(slug, name))
     aliases = list(row.get("aliases") or [])
     for alias in override.get("aliases", []) or []:
         if alias not in aliases:
