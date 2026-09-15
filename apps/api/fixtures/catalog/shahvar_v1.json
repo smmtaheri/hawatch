@@ -1,0 +1,341 @@
+{
+  "catalog_version": "hawatch-shahvar-catalog-v1",
+  "weather_points": {
+    "shahvar": {
+      "name": "قلهٔ شاهوار",
+      "page_name": "قلهٔ شاهوار در شاهرود",
+      "short_label": "قلهٔ شاهوار",
+      "place_type": "summit",
+      "aliases": [
+        "شاهوار",
+        "شاه‌وار",
+        "قله شاهوار",
+        "بام استان سمنان",
+        "Shahvar",
+        "Shahvar Peak"
+      ],
+      "identity_summary": "قلهٔ شاهوار؛ بلندترین قلهٔ استان سمنان در البرز شرقی، میان شاهرود و روستاهای تاش و نکارمن",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://climbers.ir/tourist-attractions/155-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.580239&lon=54.765912&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1&pkidentifier=3554",
+        "https://mojekooh.com/shahvar-peak/",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-bh-qlh-shhwr-z-rwsty-tsh-41093249",
+        "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258"
+      ],
+      "latitude": 36.576249,
+      "longitude": 54.763668,
+      "elevation_m": 3945,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۹۴۵ متر در منابع مستقل و waypointهای نام‌گذاری‌شدهٔ چند ترک شاهوار؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۳۸۷۹ متر است و اختلاف ۶۶ متر در محدودهٔ اعتبارسنجی قرار دارد.",
+      "climate": "high_alpine"
+    },
+    "shahvar-tash-village": {
+      "name": "روستای تاش علیا",
+      "page_name": "روستای تاش علیا؛ مبدأ مسیر شاهوار",
+      "short_label": "تاش علیا",
+      "place_type": "village",
+      "aliases": ["تاش", "تاش بالا", "روستای تاش", "Tash village", "Tash-e Olya"],
+      "identity_summary": "روستای تاش علیا در شاهرود و مبدأ مسیر غربی صعود به شاهوار",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/shahvar-peak/",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-bh-qlh-shhwr-z-rwsty-tsh-41093249",
+        "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298"
+      ],
+      "latitude": 36.566249,
+      "longitude": 54.681194,
+      "elevation_m": 2277,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک صعود از روستای تاش؛ Open-Meteo GLO-90 DEM در مختصات ترک برابر ۲۲۷۷ متر است و برای کنترل ارتفاع روستا استفاده شده است.",
+      "climate": "forest_fog"
+    },
+    "shahvar-pirmishi-trailhead": {
+      "name": "پای کار پیرمیشی شاهوار",
+      "page_name": "پای کار پیرمیشی؛ مبدأ مسیر شاهوار",
+      "short_label": "پیرمیشی",
+      "place_type": "trailhead",
+      "aliases": ["چشمه پیرمیشی", "پیرمیشی شاهوار", "پای کار شاهوار", "Pirmishi trailhead"],
+      "identity_summary": "پای کار و محل پارک آغاز مسیر پیادهٔ پیرمیشی به قلهٔ شاهوار در بالادست تاش",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-shhwr-bm-stn-smnn-rft-z-msyr-chshmh-pyrmyshy-brgs-283800680",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-qlh-shhwr-smnn-z-msyr-chshmh-pyr-myshy-141831473"
+      ],
+      "latitude": 36.582247,
+      "longitude": 54.720048,
+      "elevation_m": 2640,
+      "status": "provisional",
+      "elevation_source": "مختصات مشترک پارکینگ/پای کار پیرمیشی در سه ترک مستقل؛ Open-Meteo GLO-90 DEM برابر ۲۶۴۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "shahvar-khersi-spring": {
+      "name": "چشمهٔ خرسی شاهوار",
+      "page_name": "چشمهٔ خرسی در مسیر شاهوار",
+      "short_label": "چشمهٔ خرسی",
+      "place_type": "spring",
+      "aliases": ["دره خرسی", "چشمه خرسی", "Khersi Spring", "Khersi Valley"],
+      "identity_summary": "چشمهٔ خرسی؛ عارضهٔ طبیعی و landmark مشترک در مسیرهای غربی و جنوبی شاهوار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-shhwr-bm-stn-smnn-rft-z-msyr-chshmh-pyrmyshy-brgs-283800680",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.580239&lon=54.765912&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1&pkidentifier=3554"
+      ],
+      "latitude": 36.586028,
+      "longitude": 54.755758,
+      "elevation_m": 3415,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ چشمهٔ خرسی در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۳۴۱۵ متر است.",
+      "climate": "high_alpine"
+    },
+    "shahvar-pirmishi-ridge": {
+      "name": "یال پیرمیشی شاهوار",
+      "page_name": "یال پیرمیشی در مسیر شاهوار",
+      "short_label": "یال پیرمیشی",
+      "place_type": "ridge",
+      "aliases": ["یال قله شاهوار", "یال غربی شاهوار", "Pirmishi ridge"],
+      "identity_summary": "یال نام‌گذاری‌شدهٔ بخش بالادست مسیر پیرمیشی تا قلهٔ شاهوار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-shhwr-bm-stn-smnn-rft-z-msyr-chshmh-pyrmyshy-brgs-283800680",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-qlh-shhwr-smnn-z-msyr-chshmh-pyr-myshy-141831473"
+      ],
+      "latitude": 36.577236,
+      "longitude": 54.75016,
+      "elevation_m": 3720,
+      "status": "provisional",
+      "elevation_source": "Waypoint «یال قله» در ترک‌های مستقل پیرمیشی؛ Open-Meteo GLO-90 DEM در مختصات canonical برای کنترل ارتفاع استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "shahvar-nakaraman-village": {
+      "name": "روستای نکارمن",
+      "page_name": "روستای نکارمن؛ مبدأ مسیر جنوبی شاهوار",
+      "short_label": "نکارمن",
+      "place_type": "village",
+      "aliases": ["نکارمن", "نکارمن شاهرود", "روستا نکارمن", "Nakaraman", "Nekarman"],
+      "identity_summary": "روستای نکارمن در شاهرود و مبدأ مسیر جنوبی و یال جنوب‌غربی شاهوار",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mojekooh.com/shahvar-peak/",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.580239&lon=54.765912&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1&pkidentifier=3554"
+      ],
+      "latitude": 36.53411,
+      "longitude": 54.840375,
+      "elevation_m": 2073,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک مستقل نکارمن تا شاهوار؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۲۰۷۳ متر است.",
+      "climate": "forest_fog"
+    },
+    "shahvar-southern-ridge": {
+      "name": "یال جنوبی شاهوار",
+      "page_name": "یال جنوبی شاهوار در مسیر نکارمن",
+      "short_label": "یال جنوبی",
+      "place_type": "ridge",
+      "aliases": ["یال جنوب‌غربی شاهوار", "خط‌الرأس جنوبی شاهوار", "Southern ridge of Shahvar"],
+      "identity_summary": "یال جنوبی شاهوار؛ عارضهٔ طبیعی میانی در مسیر صعود از نکارمن",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258",
+        "https://mojekooh.com/shahvar-peak/",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.580239&lon=54.765912&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1&pkidentifier=3554"
+      ],
+      "latitude": 36.558437,
+      "longitude": 54.792634,
+      "elevation_m": 2721,
+      "status": "provisional",
+      "elevation_source": "Waypoint و شرح مسیر نکارمن که یال جنوبی را به‌عنوان بخش میانی مسیر معرفی می‌کنند؛ Open-Meteo GLO-90 DEM برابر ۲۷۲۱ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "tash_to_shahvar": {
+      "slug": "shahvar-tash-summit",
+      "title": "تاش تا قلهٔ شاهوار",
+      "subtitle": "مسیر غربی از روستای تاش و پیرمیشی تا قلهٔ شاهوار",
+      "trail_label": "مسیر تاش–شاهوار",
+      "origin": "روستای تاش علیا",
+      "target_label": "قلهٔ شاهوار",
+      "region": "شاهرود · سمنان · البرز شرقی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shahvar-tash-village",
+        "shahvar-pirmishi-trailhead",
+        "shahvar-khersi-spring",
+        "shahvar"
+      ],
+      "distance_km": 12.0,
+      "ascent_m": 1600,
+      "one_way_minutes": 420,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "shahvar-tash-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/msyr-swd-bh-qlh-shhwr-z-rwsty-tsh-41093249",
+          "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298",
+          "https://climbers.ir/tourist-attractions/155-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1"
+        ],
+        "evidence_tracks": [
+          "tracks/shahvar/shahvar-tash-to-summit.gpx",
+          "tracks/shahvar/shahvar-tash-pirmishi-up-khersi-down.gpx"
+        ],
+        "cumulative_minutes": {
+          "shahvar-tash-village": 0,
+          "shahvar-pirmishi-trailhead": 170,
+          "shahvar-khersi-spring": 330,
+          "shahvar": 420
+        },
+        "notes": [
+          "ترک اصلی از روستای تاش تا قله و ترک مستقل پیرمیشی/چشمهٔ خرسی، یک کریدور غربی مشترک را تأیید می‌کنند.",
+          "پیرمیشی و چشمهٔ خرسی به‌عنوان landmarkهای نام‌دار حفظ شده‌اند؛ waypointهای generic و مسیرهای جاده‌ای جداگانه وارد زنجیره نشده‌اند.",
+          "زمان از هندسهٔ ترک و گزارش‌های مستقل برآورد شده و timestamp خام GPX مبنای ETA نیست."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "pirmishi_to_shahvar": {
+      "slug": "shahvar-pirmishi-summit",
+      "title": "پیرمیشی تا قلهٔ شاهوار",
+      "subtitle": "مسیر کوتاه‌تر از پای کار پیرمیشی و چشمهٔ خرسی تا قلهٔ شاهوار",
+      "trail_label": "مسیر پیرمیشی",
+      "origin": "پای کار پیرمیشی شاهوار",
+      "target_label": "قلهٔ شاهوار",
+      "region": "شاهرود · سمنان · البرز شرقی",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "shahvar-pirmishi-trailhead",
+        "shahvar-pirmishi-ridge",
+        "shahvar"
+      ],
+      "distance_km": 5.0,
+      "ascent_m": 1240,
+      "one_way_minutes": 270,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "shahvar-pirmishi-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-shhwr-bm-stn-smnn-rft-z-msyr-chshmh-pyrmyshy-brgs-283800680",
+          "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-qlh-shhwr-smnn-z-msyr-chshmh-pyr-myshy-141831473",
+          "https://www.wikiloc.com/hiking-trails/shahvar-peak-qlh-shhwr-swd-pyrmyshy-frwd-chshmh-khrsy-221522298"
+        ],
+        "evidence_tracks": [
+          "tracks/shahvar/shahvar-pirmishi-roundtrip.gpx",
+          "tracks/shahvar/shahvar-pirmishi-signposted-roundtrip.gpx",
+          "tracks/shahvar/shahvar-mine-road-summit.gpx"
+        ],
+        "cumulative_minutes": {
+          "shahvar-pirmishi-trailhead": 0,
+          "shahvar-pirmishi-ridge": 210,
+          "shahvar": 270
+        },
+        "notes": [
+          "سه ترک مستقل هندسهٔ بخش پیرمیشی تا شاهوار را تأیید می‌کنند؛ ترک‌های رفت‌وبرگشت در نخستین رسیدن به قله cut شده‌اند.",
+          "مسیر معدن فقط cross-check بالادست است و به‌عنوان مسیر خودرویی مستقل منتشر نشده است.",
+          "فاصله و زمان تقریبی‌اند و برای شرایط برف، باد و ارتفاع بالا عدم‌قطعیت دارند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "nakaraman_to_shahvar": {
+      "slug": "shahvar-nakaraman-summit",
+      "title": "نکارمن تا قلهٔ شاهوار",
+      "subtitle": "مسیر جنوبی از روستای نکارمن و یال جنوبی تا قلهٔ شاهوار",
+      "trail_label": "مسیر نکارمن",
+      "origin": "روستای نکارمن",
+      "target_label": "قلهٔ شاهوار",
+      "region": "شاهرود · سمنان · البرز شرقی",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "shahvar-nakaraman-village",
+        "shahvar-southern-ridge",
+        "shahvar"
+      ],
+      "distance_km": 10.2,
+      "ascent_m": 1790,
+      "one_way_minutes": 420,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-route-description-v1",
+        "version": "shahvar-nakaraman-summit-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258",
+          "https://mojekooh.com/shahvar-peak/",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.580239&lon=54.765912&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87%D9%88%D8%A7%D8%B1&pkidentifier=3554"
+        ],
+        "evidence_tracks": [
+          "tracks/shahvar/shahvar-nakaraman-to-summit.gpx"
+        ],
+        "cumulative_minutes": {
+          "shahvar-nakaraman-village": 0,
+          "shahvar-southern-ridge": 240,
+          "shahvar": 420
+        },
+        "notes": [
+          "ترک نکارمن تا تاش در نخستین رسیدن به شاهوار cut شده و ادامهٔ آن به سمت تاش در این Route وارد نشده است.",
+          "یال جنوبی عارضهٔ واقعیِ مسیر و landmark میانیِ مستند است؛ waypointهای generic و آب/استراحت حذف شده‌اند.",
+          "به‌دلیل تک‌ترک بودن evidence و اختلاف شرایط ارتفاعی، confidence زمان‌بندی low و عدم‌قطعیت زیاد ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "shahvar",
+    "tile_name": "شاهوار",
+    "name": "قلهٔ شاهوار",
+    "short_category": "قله",
+    "category": "قله و مسیرهای البرز شرقی",
+    "category_key": "mountain",
+    "region": "البرز شرقی · شاهرود · سمنان",
+    "elevation_m": 3945,
+    "latitude": 36.576249,
+    "longitude": 54.763668,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شاهوار",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "shahvar"
+}
