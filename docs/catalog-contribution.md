@@ -36,6 +36,17 @@ slug مسیر باید در کل پوشهٔ `apps/api/fixtures/catalog/` فقط 
   `true` بگذارید؛ اگر یک نوع فنی بدون این فیلد اضافه شود، policy مرکزی آن را
   به‌طور پیش‌فرض noindex می‌کند. نقطهٔ جدید خودکار محبوب Home نمی‌شود.
 
+### عضویت خودکار مقصدهای مستقل در Hub
+
+اگر نقطه یک مقصد مستقل و معروف برای جست‌وجوی کاربر است (برای نمونه قله، دریاچه،
+آبشار، دشت یا روستای شناخته‌شده)، آن را در همان catalog با
+`kind: "primary"`، `importance: "primary"` و `seo_indexable: true` ثبت کنید.
+Hub داده‌محور `/destinations` همین رکوردها را خودکار پیدا می‌کند؛ بنابراین برای
+هر مقصد جدید URL یا لیست دستی در frontend نسازید. waypointهای فنی و نقاط صرفاً
+بین‌راهی با `seo_indexable: false` همچنان در route/API/search می‌مانند اما وارد
+Hub و sitemap نمی‌شوند. قبل از import duplicate مختصات/نام را در کل catalog و
+دیتابیس بررسی کنید و نوع واقعی عارضه را ثبت کنید.
+
 بعد از تغییر، validator provider و catalog را اجرا کنید، سپس برای انتشار روی
 دیتابیس موجود ابتدا `sync_catalog --dry-run` و بعد `sync_catalog --apply` را
 استفاده کنید. این sync همهٔ catalogهای package‌شده را با هم و به‌صورت atomic

@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-kolonchin-catalog-v1",
+  "weather_points": {
+    "kolonchin": {
+      "name": "قلهٔ کلونچین",
+      "aliases": [
+        "کلونچین",
+        "قله کلونچین",
+        "قلهٔ کلونچی",
+        "کلونچی",
+        "Kouloonchi Peak",
+        "Clonchin Peak"
+      ],
+      "latitude": 32.36499,
+      "longitude": 50.07736,
+      "elevation_m": 4220,
+      "kind": "primary",
+      "status": "provisional",
+      "elevation_source": "چهار ترک مستقل Wikiloc مختصات قله را در 32.36499, 50.07736 و ارتفاع خام 4211 تا 4218 متر ثبت کرده‌اند؛ DEM سرویس Open-Meteo در این مختصات 4122 متر است (اختلاف 98 متر). ارتفاع 4220 متر موقت است و GPX منبع قطعی نیست.",
+      "climate": "high_alpine",
+      "page_name": "قلهٔ کلونچین",
+      "short_label": "قلهٔ کلونچین",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ کلونچین در زردکوه بختیاری و محدودهٔ کوهرنگ",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/clonchin-peak-qlh-khlwnchyn-83463551",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-z-msyr-khwl-khdng-bm-stn-chhrmhl-w-bkhtyry-241646069",
+        "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-zrdkhwh-qll-symrgy-405-5-30-kouloonchi-peak-at-281255487"
+      ]
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "kolonchin",
+    "tile_name": "قلهٔ کلونچین",
+    "name": "قلهٔ کلونچین",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "چهارمحال و بختیاری · کوهرنگ",
+    "elevation_m": 4220,
+    "latitude": 32.36499,
+    "longitude": 50.07736,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کلونچین در زردکوه بختیاری",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "کلونچین",
+      "قله کلونچین",
+      "قلهٔ کلونچی",
+      "کلونچی",
+      "Kouloonchi Peak",
+      "Clonchin Peak"
+    ]
+  },
+  "primary_point": "kolonchin"
+}
