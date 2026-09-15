@@ -1,0 +1,329 @@
+{
+  "catalog_version": "hawatch-barf-anbar-catalog-v1",
+  "weather_points": {
+    "barf-anbar": {
+      "name": "قلهٔ برف‌انبار",
+      "page_name": "قلهٔ برف‌انبار در استان قم",
+      "short_label": "قلهٔ برف‌انبار",
+      "place_type": "summit",
+      "aliases": [
+        "برف‌انبار",
+        "برف انبار",
+        "قله برف انبار قم",
+        "Barf Anbar",
+        "Barf Anbar Peak"
+      ],
+      "identity_summary": "قلهٔ برف‌انبار؛ بلندترین نقطهٔ طبیعی استان قم در جنوب روستای فردو و بخش کهک",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://climbers.ir/tourist-attractions/250-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81%E2%80%8C%D8%A7%D9%86%D8%A8%D8%A7%D8%B1",
+        "https://decovel.com/page/barf-anbar-peak",
+        "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-197474250",
+        "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-z-rwsty-frdw-94445465",
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-1401-03-20-105245115",
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw-186099416"
+      ],
+      "latitude": 34.19792285,
+      "longitude": 50.87955360,
+      "elevation_m": 3224,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۲۲۴ متر در منبع مستقل؛ مختصات ۳۴٫۱۹۷۹۲۲۸۵ و ۵۰٫۸۷۹۵۵۳۶۰ در چند ترک مستقل فردو و احمدآباد به قله می‌رسد.",
+      "climate": "high_alpine"
+    },
+    "barf-anbar-fordo-trailhead": {
+      "name": "پای‌کار باغ‌های فردو",
+      "page_name": "پای‌کار باغ‌های فردو؛ مبدأ مسیر برف‌انبار",
+      "short_label": "پای‌کار فردو",
+      "place_type": "trailhead",
+      "aliases": [
+        "پارکینگ فردو",
+        "باغ‌های فردو",
+        "پای کار برف انبار",
+        "Fordo trailhead"
+      ],
+      "identity_summary": "پای‌کار پیادهٔ مسیر شمالی برف‌انبار در باغ‌های جنوبی فردو؛ نزدیک‌ترین access point ترک‌های صعود فردو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-197474250",
+        "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-z-rwsty-frdw-94445465",
+        "https://www.wikiloc.com/mountaineering-trails/brf-nbr-frdw-21989992"
+      ],
+      "latitude": 34.227192,
+      "longitude": 50.902663,
+      "elevation_m": 2340,
+      "status": "provisional",
+      "elevation_source": "مختصات پای‌کار/پارکینگ ترک‌های فردو؛ ارتفاع GPX حدود ۲۳۳۷ تا ۲۳۴۰ متر است و با DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "barf-anbar-four-imamzadeh": {
+      "name": "چهارامامزادهٔ فردو",
+      "page_name": "چهارامامزادهٔ فردو؛ مبدأ صعود برف‌انبار",
+      "short_label": "چهارامامزاده",
+      "place_type": "trailhead",
+      "aliases": [
+        "چهار امامزاده فردو",
+        "چشمهٔ چهارامامزاده",
+        "Four Imamzadeh"
+      ],
+      "identity_summary": "چشمه و پای‌کار شناخته‌شدهٔ مسیر پاکوب شمالی برف‌انبار در جنوب روستای فردو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-1401-03-20-105245115",
+        "https://climbers.ir/tourist-attractions/250-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81%E2%80%8C%D8%A7%D9%86%D8%A8%D8%A7%D8%B1"
+      ],
+      "latitude": 34.215237,
+      "longitude": 50.890292,
+      "elevation_m": 2530,
+      "status": "provisional",
+      "elevation_source": "Waypoint «شروع» در ترک چهارامامزاده؛ ارتفاع GPX حدود ۲۵۲۹ متر است و برای forecast با DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "barf-anbar-northern-ridge": {
+      "name": "یال شمالی برف‌انبار",
+      "page_name": "یال شمالی در مسیر صعود برف‌انبار",
+      "short_label": "یال شمالی",
+      "place_type": "ridge",
+      "aliases": [
+        "ابتدای خط‌الرأس برف‌انبار",
+        "خط الراس شمالی برف انبار",
+        "Northern ridge of Barf Anbar"
+      ],
+      "identity_summary": "یال و خط‌الرأس شمالی؛ landmark واقعی و مشترک در پاکوب‌های صعود فردو به برف‌انبار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-1401-03-20-105245115",
+        "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-197474250",
+        "https://www.wikiloc.com/mountaineering-trails/brf-nbr-frdw-21989992"
+      ],
+      "latitude": 34.211872,
+      "longitude": 50.881599,
+      "elevation_m": 2780,
+      "status": "provisional",
+      "elevation_source": "Waypoint «ابتدای خط‌الرأس» در ترک مستقل فردو؛ ارتفاع GPX حدود ۲۷۸۰ متر است و با DEM کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "barf-anbar-ahmadabad-trailhead": {
+      "name": "قنات احمدآباد فردو",
+      "page_name": "قنات احمدآباد فردو؛ مبدأ مسیر جایگزین برف‌انبار",
+      "short_label": "احمدآباد فردو",
+      "place_type": "trailhead",
+      "aliases": [
+        "احمدآباد فردو",
+        "قنات احمدآباد",
+        "Ahmadabad Fordo trailhead"
+      ],
+      "identity_summary": "قنات و پای‌کار مسیر جایگزین احمدآباد فردو به قلهٔ برف‌انبار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw-186099416"
+      ],
+      "latitude": 34.210007,
+      "longitude": 50.920455,
+      "elevation_m": 2430,
+      "status": "provisional",
+      "elevation_source": "Waypoint قنات احمدآباد در ترک مسیر جایگزین؛ ارتفاع GPX حدود ۲۴۳۲ متر است و با DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "barf-anbar-siah-kuh-pass": {
+      "name": "گردنهٔ قلهٔ سیاه‌کوه",
+      "page_name": "گردنهٔ قلهٔ سیاه‌کوه در مسیر برف‌انبار",
+      "short_label": "گردنهٔ سیاه‌کوه",
+      "place_type": "pass",
+      "aliases": [
+        "گردنه قله سیاه کوه",
+        "Siah Kuh pass"
+      ],
+      "identity_summary": "گردنهٔ قلهٔ سیاه‌کوه؛ landmark نام‌دار مسیر جایگزین احمدآباد فردو تا برف‌انبار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw-186099416"
+      ],
+      "latitude": 34.192822,
+      "longitude": 50.882918,
+      "elevation_m": 3200,
+      "status": "provisional",
+      "elevation_source": "Waypoint «گردنه قله سیاه کوه» در ترک احمدآباد؛ ارتفاع GPX حدود ۳۲۰۱ متر است و با DEM کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "fordo_to_barf_anbar": {
+      "slug": "barf-anbar-fordo-summit",
+      "title": "فردو تا قلهٔ برف‌انبار",
+      "subtitle": "مسیر اصلی از پای‌کار باغ‌های فردو و یال شمالی تا قلهٔ برف‌انبار",
+      "trail_label": "مسیر فردو–برف‌انبار",
+      "origin": "پای‌کار باغ‌های فردو",
+      "target_label": "قلهٔ برف‌انبار",
+      "region": "استان قم · بخش کهک · روستای فردو",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "barf-anbar-fordo-trailhead",
+        "barf-anbar-northern-ridge",
+        "barf-anbar"
+      ],
+      "distance_km": 5.2,
+      "ascent_m": 825,
+      "one_way_minutes": 240,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "barf-anbar-fordo-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-197474250",
+          "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-z-rwsty-frdw-94445465",
+          "https://climbers.ir/tourist-attractions/250-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81%E2%80%8C%D8%A7%D9%86%D8%A8%D8%A7%D8%B1"
+        ],
+        "evidence_tracks": [
+          "tracks/barf-anbar-qom/qlh-brf-nbr.gpx",
+          "tracks/barf-anbar-qom/qlh-brf-nbr-qm-z-rwsty-frdw.gpx"
+        ],
+        "cumulative_minutes": {
+          "barf-anbar-fordo-trailhead": 0,
+          "barf-anbar-northern-ridge": 120,
+          "barf-anbar": 240
+        },
+        "notes": [
+          "دو ترک مستقل فردو به همان قله می‌رسند و مسیر شمالی را به‌عنوان مسیر اصلی تأیید می‌کنند.",
+          "پای‌کارهای داخل باغ‌ها و روستا به‌عنوان نقطهٔ فنی جداگانهٔ متعدد ثبت نشده‌اند تا duplicate ساخته نشود.",
+          "فاصله و زمان از بخش پیادهٔ ترک و گزارش مستقل برآورد شده‌اند؛ جادهٔ دسترسی وارد ETA پیاده نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "four_imamzadeh_to_barf_anbar": {
+      "slug": "barf-anbar-four-imamzadeh-summit",
+      "title": "چهارامامزاده تا قلهٔ برف‌انبار",
+      "subtitle": "مسیر پاکوب از چشمهٔ چهارامامزاده و یال شمالی تا قلهٔ برف‌انبار",
+      "trail_label": "مسیر چهارامامزاده–برف‌انبار",
+      "origin": "چهارامامزادهٔ فردو",
+      "target_label": "قلهٔ برف‌انبار",
+      "region": "استان قم · بخش کهک · روستای فردو",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "barf-anbar-four-imamzadeh",
+        "barf-anbar-northern-ridge",
+        "barf-anbar"
+      ],
+      "distance_km": 3.8,
+      "ascent_m": 645,
+      "one_way_minutes": 210,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "barf-anbar-four-imamzadeh-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/brf-nbr-1401-03-20-105245115",
+          "https://climbers.ir/tourist-attractions/250-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81%E2%80%8C%D8%A7%D9%86%D8%A8%D8%A7%D8%B1"
+        ],
+        "evidence_tracks": [
+          "tracks/barf-anbar-qom/brf-nbr-1401-03-20.gpx"
+        ],
+        "cumulative_minutes": {
+          "barf-anbar-four-imamzadeh": 0,
+          "barf-anbar-northern-ridge": 90,
+          "barf-anbar": 210
+        },
+        "notes": [
+          "ترک چهارامامزاده مسیر پاکوب و یال شمالی را تا فاصلهٔ چند متری قله ثبت می‌کند.",
+          "چشمهٔ چهارامامزاده مبدأ مستقل این ترک است و با پای‌کار باغ‌های فردو ادغام نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "ahmadabad_to_barf_anbar": {
+      "slug": "barf-anbar-ahmadabad-summit",
+      "title": "احمدآباد فردو تا قلهٔ برف‌انبار",
+      "subtitle": "مسیر جایگزین از قنات احمدآباد و گردنهٔ سیاه‌کوه تا قلهٔ برف‌انبار",
+      "trail_label": "مسیر احمدآباد–برف‌انبار",
+      "origin": "قنات احمدآباد فردو",
+      "target_label": "قلهٔ برف‌انبار",
+      "region": "استان قم · بخش کهک · فردو",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "barf-anbar-ahmadabad-trailhead",
+        "barf-anbar-siah-kuh-pass",
+        "barf-anbar"
+      ],
+      "distance_km": 6.2,
+      "ascent_m": 790,
+      "one_way_minutes": 300,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "barf-anbar-ahmadabad-summit-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw-186099416",
+          "https://climbers.ir/tourist-attractions/250-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81%E2%80%8C%D8%A7%D9%86%D8%A8%D8%A7%D8%B1"
+        ],
+        "evidence_tracks": [
+          "tracks/barf-anbar-qom/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw.gpx"
+        ],
+        "cumulative_minutes": {
+          "barf-anbar-ahmadabad-trailhead": 0,
+          "barf-anbar-siah-kuh-pass": 270,
+          "barf-anbar": 300
+        },
+        "notes": [
+          "منبع مسیر دو شاخهٔ جایگزین احمدآباد را معرفی می‌کند؛ این route یکی از کریدورهای ثبت‌شده تا قله است.",
+          "timestamp ترک برای زمان واقعی حرکت قابل اتکا نیست و زمان محافظه‌کارانه با عدم‌قطعیت ۱۲۰ دقیقه ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "barf-anbar",
+    "tile_name": "برف‌انبار",
+    "name": "قلهٔ برف‌انبار",
+    "short_category": "قله",
+    "category": "قله و مسیرهای استان قم",
+    "category_key": "mountain",
+    "region": "استان قم · بخش کهک · روستای فردو",
+    "elevation_m": 3224,
+    "latitude": 34.19792285,
+    "longitude": 50.87955360,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ برف‌انبار در استان قم",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "برف‌انبار",
+      "برف انبار",
+      "قله برف انبار قم",
+      "Barf Anbar Peak"
+    ]
+  },
+  "primary_point": "barf-anbar"
+}
