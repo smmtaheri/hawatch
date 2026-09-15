@@ -1,0 +1,63 @@
+{
+  "catalog_version": "hawatch-zingalo-catalog-v1",
+  "weather_points": {
+    "zingalo": {
+      "name": "قلهٔ زینگالو",
+      "aliases": [
+        "زینگالو",
+        "قله زینگالو",
+        "قلهٔ جنگلی زینگالو",
+        "Zingalo Peak",
+        "Zingalou Peak"
+      ],
+      "latitude": 36.1437611,
+      "longitude": 52.9517951,
+      "elevation_m": 1475,
+      "kind": "primary",
+      "status": "provisional",
+      "elevation_source": "گره قلهٔ زینگالو در OpenStreetMap ارتفاع ۱۵۰۰ متر دارد؛ Open-Meteo GLO-90 DEM در مختصات 36.1437611,52.9517951 ارتفاع ۱۴۷۵ متر برمی‌گرداند و ترک‌های Wikiloc ارتفاع بیشینهٔ حدود ۱۴۵۰ تا ۱۴۶۶ متر را ثبت می‌کنند؛ مقدار ۱۴۷۵ متر موقت است.",
+      "climate": "forest_fog",
+      "page_name": "قلهٔ زینگالو سوادکوه",
+      "short_label": "زینگالو",
+      "place_type": "summit",
+      "identity_summary": "قلهٔ جنگلی زینگالو در سوادکوه، نزدیک زیراب و روستای کنیج‌کلا",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/13324844366",
+        "https://www.wikiloc.com/hiking-trails/qlh-jngly-zynglw-z-rwsty-khnyj-khl-259639091",
+        "https://www.wikiloc.com/hiking-trails/qlh-jngly-zynglw-zingalo-peak-237348869",
+        "https://www.wikiloc.com/hiking-trails/qlh-zynglw-z-zyrb-rwsty-khnyj-khl-t-btdy-kht-lrs-qlh-139191404",
+        "https://www.wikiloc.com/mountaineering-trails/1-236446765",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-zynglw-mwrkh-1404-02-18-212640307"
+      ]
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "zingalo",
+    "tile_name": "زینگالو",
+    "name": "قلهٔ زینگالو",
+    "short_category": "قله",
+    "category": "قله‌های جنگلی سوادکوه",
+    "category_key": "mountain",
+    "region": "سوادکوه · مازندران",
+    "elevation_m": 1475,
+    "latitude": 36.1437611,
+    "longitude": 52.9517951,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگلی قلهٔ زینگالو",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "زینگالو",
+      "قله زینگالو",
+      "قلهٔ جنگلی زینگالو",
+      "Zingalo Peak",
+      "Zingalou Peak"
+    ]
+  },
+  "primary_point": "zingalo"
+}
