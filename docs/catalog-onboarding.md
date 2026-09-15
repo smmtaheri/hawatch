@@ -510,6 +510,46 @@ python3 scripts/publish_catalog.py \
 4. `catalog_preflight --point ... --require-forecast --strict` را اجرا می‌کند؛
 5. اگر همه‌چیز pass شود، نقطه آمادهٔ refresh صفحه است.
 
+### ترتیب انتشار و بررسی URL عمومی (برای جلوگیری از cache شدن 404)
+
+هرگز URL canonical نقطه یا مسیر جدید را قبل از رسیدن fixture به سرور و sync شدن
+دیتابیس از طریق دامنهٔ عمومی بررسی نکنید. اگر origin هنوز آن slug را نمی‌شناسد،
+CDN ممکن است همان پاسخ `404` موقت را cache کند و بعد از اصلاح origin نیز آن را
+تحویل دهد. این اتفاق به معنی خرابی catalog یا نیاز به تغییر کد CDN نیست.
+
+ترتیب اجباری برای هر انتشار نقطه/مسیر جدید:
+
+1. commit و push شدن catalog روی `origin/main`؛
+2. pull سریع و fast-forward روی checkout سرور؛
+3. اجرای `sync_catalog --dry-run` و بازبینی شمارش و slugهای جدید؛
+4. اجرای `sync_catalog --apply` و سپس ingest/preflight نقاط؛
+5. بررسی read-only از origin/API یا nginx داخلی سرور و اطمینان از پاسخ `200`؛
+6. فقط پس از مراحل بالا، بازکردن URL canonical عمومی و بررسی HTML/SEO.
+
+برای تغییرات صرفاً catalog، مراحل pull، sync و ingest به restart یا recreate سرویس
+نیاز ندارند. نمونهٔ اجرای دستی روی سرور:
+
+```bash
+ssh hawatch 'cd /root/hawatch && git pull --ff-only origin main'
+
+ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --dry-run'
+
+ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py sync_catalog --apply'
+
+ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
+  python manage.py ingest_open_meteo --slugs <point-slug>,<route-point-slug>'
+
+ssh hawatch 'curl -fsS -o /dev/null -w "%{http_code}\\n" \
+  -H "Host: hawatch.ir" http://127.0.0.1/points/<point-slug>'
+```
+
+اگر origin `200` است اما دامنهٔ عمومی هنوز `404` می‌دهد، ابتدا همان URL canonical
+و در صورت نیاز URL مسیر را در CDN purge کنید؛ از purge گسترده استفاده نکنید.
+برای تشخیص read-only می‌توان یک query موقت هم زد، اما query به‌دلیل سیاست SEO
+ممکن است `noindex,follow` باشد و نباید جایگزین بررسی canonical شود.
+
 اگر عمداً route بدون timing اضافه می‌کنید، باید آگاهانه استفاده کنید:
 
 ```bash
