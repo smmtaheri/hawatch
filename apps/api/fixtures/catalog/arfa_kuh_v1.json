@@ -1,0 +1,213 @@
+{
+  "catalog_version": "hawatch-arfa-kuh-catalog-v1",
+  "weather_points": {
+    "arfa-kuh": {
+      "name": "قلهٔ ارفع‌کوه",
+      "page_name": "قلهٔ ارفع‌کوه سوادکوه",
+      "short_label": "ارفع‌کوه",
+      "place_type": "summit",
+      "aliases": [
+        "ارفع کوه",
+        "ارفعه کوه",
+        "ارفه کوه",
+        "قله ارفع",
+        "Arfa Kuh",
+        "Arfeh Kuh"
+      ],
+      "identity_summary": "قلهٔ ارفع‌کوه در سوادکوه، با مسیرهای جنگلی از ارفع‌ده و چشمهٔ پراو",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/rfh-khwh-rf-khwh-z-msyr-rfh-dhmsyr-grby-220632114",
+        "https://www.wikiloc.com/hiking-trails/rf-khwh-rfh-khwh-z-rf-dh-151593125",
+        "https://www.wikiloc.com/hiking-trails/arfa-kooh-rf-khwh-rft-z-msyr-shmly-brgsht-z-msyr-jnwby-chshmh-prwa-13242467",
+        "https://www.wikiloc.com/hiking-trails/jngl-rfdh-t-chshmh-prw-w-swd-bh-qlh-rf-khwh-grwh-hwzwy-afq-78613509"
+      ],
+      "latitude": 35.9993,
+      "longitude": 52.9913,
+      "elevation_m": 2730,
+      "status": "provisional",
+      "elevation_source": "ارتفاع تقریبی ۲۷۲۰ تا ۲۷۳۵ متر و مختصات همگرا در waypointهای چند ترک مستقل ارفع‌کوه؛ مقدار و مختصات برای کنترل DEM و Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "arfa-deh": {
+      "name": "روستای ارفع‌ده سوادکوه",
+      "page_name": "روستای ارفع‌ده، مبدأ مسیر ارفع‌کوه",
+      "short_label": "ارفع‌ده",
+      "place_type": "village",
+      "aliases": ["ارفع ده", "ارفه ده", "روستای ارفع‌ده", "Arfa Deh", "Arfeh Deh"],
+      "identity_summary": "روستای شناخته‌شدهٔ ارفع‌ده در سوادکوه و مبدأ مسیرهای صعود ارفع‌کوه",
+      "importance": "support",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/arfa-kooh-rf-khwh-8254280",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rf-dh-t-qlh-rf-khwh-rfh-khwh-pnj-shnbh-1401-08-05-117440201"
+      ],
+      "latitude": 35.986133,
+      "longitude": 53.005936,
+      "elevation_m": 1532,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ روستای ارفع‌ده در ترک مستقل؛ ارتفاع GPX حدود ۱۵۳۲ متر و برای کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "arfa-kuh-under-summit-camp": {
+      "name": "محل کمپ زیر قلهٔ ارفع‌کوه",
+      "page_name": "محل کمپ زیر قلهٔ ارفع‌کوه",
+      "short_label": "کمپ زیر قله",
+      "place_type": "camp",
+      "aliases": ["جای مناسب کمپ زیر قله ارفع", "کمپ ارفع‌کوه"],
+      "identity_summary": "محل کمپ و شب‌مانی نام‌گذاری‌شده در بخش بالادست مسیر غربی ارفع‌ده به قله",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/rfh-khwh-rf-khwh-z-msyr-rfh-dhmsyr-grby-220632114"
+      ],
+      "latitude": 35.994084,
+      "longitude": 52.982438,
+      "elevation_m": 2475,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ جای کمپ و شب‌مانی زیر قله در ترک غربی؛ ارتفاع خام GPX حدود ۲۴۷۴ متر و برای کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "arfa-kuh-cheshmeh-paro": {
+      "name": "چشمهٔ پراو ارفع‌کوه",
+      "page_name": "چشمهٔ پراو در مسیر ارفع‌کوه",
+      "short_label": "چشمهٔ پراو",
+      "place_type": "spring",
+      "aliases": ["سرچشمه پراو", "چشمه پرو", "چشمه پرآو", "Paro Spring"],
+      "identity_summary": "چشمهٔ پراو، عارضهٔ طبیعی و نقطهٔ میانی مسیر جنگلی ارفع‌ده تا قلهٔ ارفع‌کوه",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-rfdh-t-chshmh-prw-w-swd-bh-qlh-rf-khwh-grwh-hwzwy-afq-78613509",
+        "https://www.wikiloc.com/hiking-trails/arfa-kooh-rf-khwh-rft-z-msyr-shmly-brgsht-z-msyr-jnwby-chshmh-prwa-13242467"
+      ],
+      "latitude": 36.013666,
+      "longitude": 53.01336,
+      "elevation_m": 1825,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ سرچشمهٔ پراو در ترک مستقل مسیر چشمه؛ DEM سرویس Open-Meteo در مختصات 36.013666,53.01336 حدود ۱۸۲۵ متر است و ارتفاع GPX نامعتبر/صفر است.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "arfa_deh_to_summit": {
+      "slug": "arfa-kuh-arfa-deh",
+      "title": "ارفع‌ده تا قلهٔ ارفع‌کوه",
+      "subtitle": "مسیر جنگلی و رایج از روستای ارفع‌ده تا قلهٔ ارفع‌کوه",
+      "trail_label": "مسیر ارفع‌ده",
+      "origin": "روستای ارفع‌ده",
+      "target_label": "قلهٔ ارفع‌کوه",
+      "region": "سوادکوه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "arfa-deh",
+        "arfa-kuh-under-summit-camp",
+        "arfa-kuh"
+      ],
+      "distance_km": 6.1,
+      "ascent_m": 1120,
+      "one_way_minutes": 270,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "arfa-kuh-arfa-deh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/rfh-khwh-rf-khwh-z-msyr-rfh-dhmsyr-grby-220632114",
+          "https://www.wikiloc.com/hiking-trails/rf-khwh-rfh-khwh-z-rf-dh-151593125",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rf-dh-t-qlh-rf-khwh-rfh-khwh-pnj-shnbh-1401-08-05-117440201"
+        ],
+        "evidence_tracks": [
+          "tracks/arfa-kuh/rfh-khwh-rf-khwh-z-msyr-rfh-dhmsyr-grby.gpx",
+          "tracks/arfa-kuh/rf-khwh-rfh-khwh-z-rf-dh.gpx",
+          "tracks/arfa-kuh/arfa-kooh-rf-khwh.gpx"
+        ],
+        "cumulative_minutes": {
+          "arfa-deh": 0,
+          "arfa-kuh-under-summit-camp": 205,
+          "arfa-kuh": 270
+        },
+        "notes": [
+          "ترک غربی از ارفع‌ده کوتاه‌ترین و رایج‌ترین مسیر گزارش‌شده است و ترک ۲۰۲۳ برای cross-check استفاده می‌شود.",
+          "فایل ۲۰۱۴ از پایین‌تر از بافت روستا شروع می‌شود و فقط برای cross-check هندسه نگه داشته شده است.",
+          "ارتفاع خام GPX مبنای ارتفاع نقطه یا محاسبهٔ نهایی نیست."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "arfa_deh_via_cheshmeh_paro": {
+      "slug": "arfa-kuh-cheshmeh-paro",
+      "title": "ارفع‌ده از مسیر چشمهٔ پراو تا قلهٔ ارفع‌کوه",
+      "subtitle": "مسیر جنگلی ارفع‌ده و چشمهٔ پراو تا قلهٔ ارفع‌کوه",
+      "trail_label": "مسیر چشمهٔ پراو",
+      "origin": "روستای ارفع‌ده",
+      "target_label": "قلهٔ ارفع‌کوه",
+      "region": "سوادکوه · مازندران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "arfa-deh",
+        "arfa-kuh-cheshmeh-paro",
+        "arfa-kuh"
+      ],
+      "distance_km": 8.5,
+      "ascent_m": 1200,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "arfa-kuh-cheshmeh-paro-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jngl-rfdh-t-chshmh-prw-w-swd-bh-qlh-rf-khwh-grwh-hwzwy-afq-78613509",
+          "https://www.wikiloc.com/hiking-trails/arfa-kooh-rf-khwh-rft-z-msyr-shmly-brgsht-z-msyr-jnwby-chshmh-prwa-13242467"
+        ],
+        "evidence_tracks": [
+          "tracks/arfa-kuh/jngl-rfdh-t-chshmh-prw-w-swd-bh-qlh-rf-khwh-grwh-hwzwy-afq.gpx",
+          "tracks/arfa-kuh/arfa-kooh-rf-khwh-rft-z-msyr-shmly-brgsht-z-msyr-jnwby-chshm.gpx"
+        ],
+        "cumulative_minutes": {
+          "arfa-deh": 0,
+          "arfa-kuh-cheshmeh-paro": 180,
+          "arfa-kuh": 300
+        },
+        "notes": [
+          "ترک چشمهٔ پراو شامل بخش‌های طولانی‌تر و شب‌مانی است؛ timestamp خام آن برای ETA استفاده نمی‌شود.",
+          "ترک شمالی–جنوبی برای تطبیق هندسه و وجود مسیر جایگزین استفاده می‌شود، نه به‌عنوان مسیر جداگانهٔ رفت‌وبرگشت.",
+          "بخش‌های فرعی و نقاط generic ترک به نقطهٔ عمومی تبدیل نشده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "arfa-kuh",
+    "tile_name": "ارفع‌کوه",
+    "name": "قلهٔ ارفع‌کوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای جنگلی سوادکوه",
+    "category_key": "mountain",
+    "region": "سوادکوه · مازندران",
+    "elevation_m": 2730,
+    "latitude": 35.9993,
+    "longitude": 52.9913,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگلی قلهٔ ارفع‌کوه",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "arfa-kuh"
+}
