@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kolonchin-catalog-v1",
+  "catalog_version": "hawatch-kolonchin-catalog-v2",
   "weather_points": {
     "kolonchin": {
       "name": "قلهٔ کلونچین",
@@ -29,11 +29,227 @@
         "https://www.wikiloc.com/mountaineering-trails/clonchin-peak-qlh-khlwnchyn-83463551",
         "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-z-msyr-khwl-khdng-bm-stn-chhrmhl-w-bkhtyry-241646069",
         "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799",
-        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-zrdkhwh-qll-symrgy-405-5-30-kouloonchi-peak-at-281255487"
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-zrdkhwh-qll-symrgy-405-5-30-kouloonchi-peak-at-281255487",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985",
+        "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+        "https://www.wikiloc.com/hiking-trails/swd-zmstnh-qlh-khlwnchyn-z-msyr-pnh-gh-khlwnchyn-251334951",
+        "https://lastsecond.ir/itineraries/s998723-chahrmahal-isfahan-ansari-99",
+        "https://mojekooh.com/kloonchin-climbing-guide/"
       ]
+    },
+    "kolonchin-kol-khadang-trailhead": {
+      "name": "پای‌کار تنگهٔ کول‌خدنگ",
+      "page_name": "پای‌کار تنگهٔ کول‌خدنگ، مسیر کلونچین",
+      "short_label": "پای‌کار کول‌خدنگ",
+      "place_type": "trailhead",
+      "aliases": ["پای کار کول خدنگ", "پارکینگ کول خدنگ", "نقطهٔ الف کلونچین"],
+      "identity_summary": "پای‌کار و محل آغاز پیمایش درهٔ شرقی تنگهٔ کول‌خدنگ به قلهٔ کلونچین",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchynkhwh-grdh-zrdkhwh-chrmhl-bkhtyry-27648744",
+        "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-z-msyr-khwl-khdng-bm-stn-chhrmhl-w-bkhtyry-241646069"
+      ],
+      "latitude": 32.409202,
+      "longitude": 50.128722,
+      "elevation_m": 2363,
+      "status": "provisional",
+      "elevation_source": "Waypoint Car park در ترک مستقل کول‌خدنگ؛ مقدار ۲۳۶۳ متر و مختصات 32.409202,50.128722 از GPX منبع و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine"
+    },
+    "kolonchin-kol-khadang-entrance": {
+      "name": "ورودی تنگهٔ کول‌خدنگ",
+      "page_name": "ورودی تنگهٔ کول‌خدنگ در مسیر کلونچین",
+      "short_label": "ورودی کول‌خدنگ",
+      "place_type": "landmark",
+      "aliases": ["تنگه کول خدنگ", "ورودی تنگ خدنگ", "تنگ کلونچین"],
+      "identity_summary": "ورودی نام‌گذاری‌شدهٔ تنگهٔ کول‌خدنگ در مسیر درهٔ شرقی کلونچین",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchynkhwh-grdh-zrdkhwh-chrmhl-bkhtyry-27648744",
+        "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799"
+      ],
+      "latitude": 32.396795,
+      "longitude": 50.124102,
+      "elevation_m": 2504,
+      "status": "provisional",
+      "elevation_source": "Waypoint ابتدای مسیر درهٔ کول‌خدنگ در ترک مستقل؛ ارتفاع GPX حدود ۲۵۰۴ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine"
+    },
+    "kolonchin-khersan-trailhead": {
+      "name": "پای‌کار یال خرسان",
+      "page_name": "پای‌کار یال خرسان، مسیر کلونچین",
+      "short_label": "پای‌کار یال خرسان",
+      "place_type": "trailhead",
+      "aliases": ["شروع یال خرسان", "نقطهٔ آغاز خرسان", "پای کار خرسان"],
+      "identity_summary": "محل آغاز پیمایش یال شرقی خرسان به قلهٔ کلونچین در محدودهٔ کوهرنگ",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985"
+      ],
+      "latitude": 32.414193,
+      "longitude": 50.126659,
+      "elevation_m": 2443,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع کار مسیرهای کول‌خدنگ و یال خرسان در ترک مستقل؛ ارتفاع GPX حدود ۲۴۴۳ متر و برای مقایسهٔ DEM ثبت شده است.",
+      "climate": "high_alpine"
+    },
+    "kolonchin-khersan-shelter": {
+      "name": "پناهگاه خرسان",
+      "page_name": "پناهگاه خرسان در مسیر یال شرقی کلونچین",
+      "short_label": "پناهگاه خرسان",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه خرسان", "جانپناه خرسان", "خرسان shelter", "Khersan shelter"],
+      "identity_summary": "پناهگاه خرسان در یال شرقی مسیر صعود به قلهٔ کلونچین",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985",
+        "https://lastsecond.ir/itineraries/s998723-chahrmahal-isfahan-ansari-99"
+      ],
+      "latitude": 32.384273,
+      "longitude": 50.108151,
+      "elevation_m": 3485,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه خرسان در دو ترک مستقل؛ ارتفاع GPX حدود ۳۴۸۰ تا ۳۴۸۵ متر و منبع مستقل مسیر آن را به‌عنوان پناهگاه یال شرقی تأیید می‌کند.",
+      "climate": "high_alpine"
+    },
+    "khersan": {
+      "name": "قلهٔ خرسان",
+      "page_name": "قلهٔ خرسان در زردکوه بختیاری",
+      "short_label": "قلهٔ خرسان",
+      "place_type": "summit",
+      "aliases": ["خرسان", "قله خرسان", "قلهٔ خرسان زردکوه", "Khersan Peak"],
+      "identity_summary": "قلهٔ خرسان در یال شرقی زردکوه و مرحلهٔ واقعی مسیر صعود کلونچین",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985",
+        "https://www.wikiloc.com/hiking-trails/swd-zmstnh-qlh-khlwnchyn-z-msyr-pnh-gh-khlwnchyn-251334951",
+        "https://en.wikipedia.org/wiki/List_of_Iranian_four-thousanders"
+      ],
+      "latitude": 32.370132,
+      "longitude": 50.082689,
+      "elevation_m": 4153,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ خرسان در ترک مستقل با ارتفاع ۴۱۵۳ متر؛ مقدار و مختصات با ترک‌های یال خرسان و فهرست قلل چهار‌هزارمتری تطبیق داده شده و برای مقایسهٔ DEM provisional است.",
+      "climate": "high_alpine"
     }
   },
-  "routes": {},
+  "routes": {
+    "kol_khadang_to_kolonchin": {
+      "slug": "kolonchin-kol-khadang",
+      "title": "کول‌خدنگ تا قلهٔ کلونچین",
+      "subtitle": "مسیر درهٔ شرقی از پای‌کار و ورودی تنگه تا قلهٔ کلونچین",
+      "trail_label": "مسیر کول‌خدنگ",
+      "origin": "پای‌کار تنگهٔ کول‌خدنگ",
+      "target_label": "قلهٔ کلونچین",
+      "region": "کوهرنگ · چهارمحال و بختیاری",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kolonchin-kol-khadang-trailhead",
+        "kolonchin-kol-khadang-entrance",
+        "kolonchin"
+      ],
+      "distance_km": 12.9,
+      "ascent_m": 1825,
+      "one_way_minutes": 540,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "kolonchin-kol-khadang-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khlwnchynkhwh-grdh-zrdkhwh-chrmhl-bkhtyry-27648744",
+          "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799",
+          "https://lastsecond.ir/itineraries/s998723-chahrmahal-isfahan-ansari-99"
+        ],
+        "evidence_tracks": [
+          "tracks/kolonchin/kolonchin-kol-khadang-crosscheck-2025.gpx",
+          "tracks/kolonchin/kolonchin-kol-khadang-crosscheck-2021.gpx",
+          "tracks/kolonchin/kolonchin-kol-khadang-reference-2021.gpx",
+          "tracks/kolonchin/kolonchin-kol-khadang-reference-2026.gpx"
+        ],
+        "cumulative_minutes": {
+          "kolonchin-kol-khadang-trailhead": 0,
+          "kolonchin-kol-khadang-entrance": 75,
+          "kolonchin": 540
+        },
+        "notes": [
+          "مسیر Hiking شناخته‌شدهٔ درهٔ شرقی است و در ترک‌های مستقل با برچسب Moderate ثبت شده، اما ارتفاع زیاد و بخش‌های برفی/یخچالی دارد.",
+          "کول‌خدنگ برای فصل گرم رایج‌تر است؛ خطر بهمن و وضعیت یخچال باید پیش از حرکت بررسی شود.",
+          "مسافت و زمان تقریبی‌اند و از ترک اصلی و گزارش‌های مستقل محافظه‌کارانه انتخاب شده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "khersan_ridge_to_kolonchin": {
+      "slug": "kolonchin-khersan",
+      "title": "یال خرسان تا قلهٔ کلونچین",
+      "subtitle": "مسیر یال شرقی از پای‌کار و پناهگاه خرسان تا قلهٔ کلونچین",
+      "trail_label": "مسیر یال خرسان",
+      "origin": "پای‌کار یال خرسان",
+      "target_label": "قلهٔ کلونچین",
+      "region": "کوهرنگ · چهارمحال و بختیاری",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "kolonchin-khersan-trailhead",
+        "kolonchin-khersan-shelter",
+        "khersan",
+        "kolonchin"
+      ],
+      "distance_km": 12.6,
+      "ascent_m": 1975,
+      "one_way_minutes": 600,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "kolonchin-khersan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+          "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985",
+          "https://www.wikiloc.com/hiking-trails/swd-zmstnh-qlh-khlwnchyn-z-msyr-pnh-gh-khlwnchyn-251334951",
+          "https://lastsecond.ir/itineraries/s998723-chahrmahal-isfahan-ansari-99"
+        ],
+        "evidence_tracks": [
+          "tracks/kolonchin/kolonchin-khersan-combined-2020.gpx",
+          "tracks/kolonchin/kolonchin-khersan-combined-2025.gpx",
+          "tracks/kolonchin/kolonchin-khersan-winter-shelter-2026.gpx"
+        ],
+        "cumulative_minutes": {
+          "kolonchin-khersan-trailhead": 0,
+          "kolonchin-khersan-shelter": 330,
+          "khersan": 500,
+          "kolonchin": 600
+        },
+        "notes": [
+          "یال خرسان مسیر مستقل شرقی است؛ در گزارش‌های مسیر به‌عنوان گزینهٔ مناسب‌تر زمستانی و قابل استفاده در تابستان معرفی شده است.",
+          "ترک‌های ثبت‌شدهٔ ۲۰۲۰ و ۲۰۲۵ ترکیبی‌اند؛ فقط بخش صعود یال خرسان تا قله در این Route مبنا قرار گرفته و فرود کول‌خدنگ تکرار نشده است.",
+          "پناهگاه خرسان آب شرب دائمی ندارد و مسیر در ارتفاع بالا و سنگین است؛ زمان و مسافت تقریبی‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
   "point": {
     "slug": "kolonchin",
     "tile_name": "قلهٔ کلونچین",
