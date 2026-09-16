@@ -1,0 +1,176 @@
+{
+  "catalog_version": "hawatch-googeli-catalog-v1",
+  "weather_points": {
+    "googeli": {
+      "name": "ارتفاعات گوگلی",
+      "page_name": "خط‌الرأس گوگلی اوپرت",
+      "short_label": "گوگلی",
+      "place_type": "ridge",
+      "aliases": ["قله گوگلی", "گوگولی", "خط‌الرأس اوپرت", "Googeli", "Googeli ridge"],
+      "identity_summary": "ارتفاعات گوگلی؛ نقطهٔ شاخص خط‌الرأس اوپرت در مرز طبیعی مازندران و سمنان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%87%D8%A7%DB%8C-%DA%AF%D9%88%DA%AF%D9%84%DB%8C-%D9%88-%D8%B3%D9%88%D8%B2%D9%86%D8%A7-%D8%B3%D9%88%D8%A7%D8%AF%DA%A9%D9%88%D9%87/",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-143408188",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-212787124",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-212791232",
+        "https://www.wikiloc.com/hiking-trails/googeli-soozna-1404-03-01-nima-qlh-hy-gwgly-wswzn-z-rwsty-myn-swdkhwh-215099730"
+      ],
+      "latitude": 36.03132,
+      "longitude": 53.32345,
+      "elevation_m": 2495,
+      "status": "provisional",
+      "elevation_source": "گزارش منطقه ارتفاع گوگلی را حدود ۲۵۰۰ متر معرفی می‌کند؛ سه ترک مستقل میانا و ترک ترکیبی گوگلی–سوزنا در مختصات خط‌الرأس همگرا هستند و DEM نود Open-Meteo برابر ۲۴۸۹ متر است.",
+      "climate": "forest_fog",
+      "tile_name": "گوگلی",
+      "short_category": "ارتفاعات",
+      "category": "ارتفاعات و خط‌الرأس اوپرت",
+      "category_key": "ridge",
+      "region": "میانا · سوادکوه · مرز مازندران و سمنان",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای خط‌الرأس و ارتفاعات گوگلی در منطقهٔ اوپرت",
+      "is_active": true
+    },
+    "googeli-miana-trailhead": {
+      "name": "جنگلبانی میانا",
+      "page_name": "جنگلبانی میانا؛ پای‌کار گوگلی",
+      "short_label": "جنگلبانی میانا",
+      "place_type": "trailhead",
+      "aliases": ["پای‌کار میانا", "محیط‌بانی میانا", "Miana forest guard station"],
+      "identity_summary": "پای‌کار و نقطهٔ آغاز مسیر پیادهٔ میانا به ارتفاعات گوگلی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-143408188",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-212787124",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-212791232"
+      ],
+      "latitude": 36.06667,
+      "longitude": 53.26960,
+      "elevation_m": 1245,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع از جنگلبانی/محیط‌بانی میانا در ترک‌های مستقل؛ DEM نود Open-Meteo برابر ۱۲۴۰ متر است.",
+      "climate": "forest_fog"
+    },
+    "googeli-kharman-jinga": {
+      "name": "دشت خرمن جینگاه",
+      "page_name": "دشت خرمن جینگاه در مسیر گوگلی",
+      "short_label": "دشت خرمن جینگاه",
+      "place_type": "meadow",
+      "aliases": ["خرمن جینکا", "خرمن جینگاه", "Kharman Jinga meadow"],
+      "identity_summary": "دشت نام‌بردهٔ میانی در مسیر جنگلبانی میانا به خط‌الرأس گوگلی و اوپرت",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%87%D8%A7%DB%8C-%DA%AF%D9%88%DA%AF%D9%84%DB%8C-%D9%88-%D8%B3%D9%88%D8%B2%D9%86%D8%A7-%D8%B3%D9%88%D8%A7%D8%AF%DA%A9%D9%88%D9%87/",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-212791232",
+        "https://www.wikiloc.com/hiking-trails/googeli-soozna-1404-03-01-nima-qlh-hy-gwgly-wswzn-z-rwsty-myn-swdkhwh-215099730"
+      ],
+      "latitude": 36.04910,
+      "longitude": 53.30530,
+      "elevation_m": 1560,
+      "status": "provisional",
+      "elevation_source": "Waypoint/دشت خرمن جینگاه در ترک ترکیبی و ترک رفت‌وبرگشت گوگلی؛ DEM نود Open-Meteo برابر ۱۵۵۹ متر است.",
+      "climate": "forest_fog"
+    },
+    "googeli-mian-visheh": {
+      "name": "دشت میان‌ویشه",
+      "page_name": "دشت میان‌ویشه در خط‌الرأس گوگلی",
+      "short_label": "دشت میان‌ویشه",
+      "place_type": "meadow",
+      "aliases": ["میون ویشه", "میان ویشه", "Mian Visheh meadow"],
+      "identity_summary": "دشت و عارضهٔ محلیِ ثبت‌شده پیش از رسیدن به خط‌الرأس گوگلی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/myn-pjy-bh-dsht-myn-wyshh-qlh-gwgly-miyana-pachi-opert-136836876",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-143408188"
+      ],
+      "latitude": 36.04189,
+      "longitude": 53.31514,
+      "elevation_m": 1933,
+      "status": "provisional",
+      "elevation_source": "Waypoint/منطقهٔ میان‌ویشه در ترک‌های میانا؛ DEM نود Open-Meteo برابر ۱۹۴۵ متر است.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "miana_to_googeli": {
+      "slug": "googeli-miana-ridge",
+      "title": "میانا تا ارتفاعات گوگلی",
+      "subtitle": "مسیر جنگلی از جنگلبانی میانا، دشت خرمن جینگاه و میان‌ویشه تا خط‌الرأس گوگلی",
+      "trail_label": "مسیر میانا–گوگلی",
+      "origin": "جنگلبانی میانا",
+      "target_label": "ارتفاعات گوگلی",
+      "region": "سوادکوه · مرز مازندران و سمنان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["googeli-miana-trailhead", "googeli-kharman-jinga", "googeli-mian-visheh", "googeli"],
+      "distance_km": 9.4,
+      "ascent_m": 1325,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "googeli-miana-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%87%D8%A7%DB%8C-%DA%AF%D9%88%DA%AF%D9%84%DB%8C-%D9%88-%D8%B3%D9%88%D8%B2%D9%86%D8%A7-%D8%B3%D9%88%D8%A7%D8%AF%DA%A9%D9%88%D9%87/",
+          "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-143408188",
+          "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-212787124",
+          "https://www.wikiloc.com/hiking-trails/qlh-gwgly-212791232",
+          "https://www.wikiloc.com/hiking-trails/googeli-soozna-1404-03-01-nima-qlh-hy-gwgly-wswzn-z-rwsty-myn-swdkhwh-215099730"
+        ],
+        "evidence_tracks": [
+          "tracks/googeli/qlh-gwgly-z-myn.gpx",
+          "tracks/googeli/qlh-gwgly-z-myn (1).gpx",
+          "tracks/googeli/qlh-gwgly.gpx",
+          "tracks/googeli/googeli-soozna-1404-03-01-nima-qlh-hy-gwgly-wswzn-z-rwsty-my.gpx"
+        ],
+        "cumulative_minutes": {
+          "googeli-miana-trailhead": 0,
+          "googeli-kharman-jinga": 90,
+          "googeli-mian-visheh": 210,
+          "googeli": 300
+        },
+        "notes": [
+          "سه ترک مستقل میانا و یک ترک ترکیبی مسیر پیادهٔ جنگلبانی میانا تا گوگلی را تأیید می‌کنند.",
+          "ترک پاچی تا میان‌ویشه به دلیل نرسیدن به نقطهٔ گوگلی فقط reference است و در metrics وارد نشده است.",
+          "گوگلی در کاتالوگ به‌عنوان نقطهٔ شاخص خط‌الرأس ثبت شده، نه قلهٔ مستقل؛ ترک دوچرخه و مسیرهای جاده‌ای حذف شده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "googeli",
+    "tile_name": "گوگلی",
+    "name": "ارتفاعات گوگلی",
+    "short_category": "ارتفاعات",
+    "category": "ارتفاعات و خط‌الرأس اوپرت",
+    "category_key": "ridge",
+    "region": "میانا · سوادکوه · مرز مازندران و سمنان",
+    "elevation_m": 2495,
+    "latitude": 36.03132,
+    "longitude": 53.32345,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای خط‌الرأس و ارتفاعات گوگلی در منطقهٔ اوپرت",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قله گوگلی", "گوگولی", "خط‌الرأس اوپرت", "Googeli"]
+  },
+  "primary_point": "googeli"
+}
