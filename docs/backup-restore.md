@@ -29,9 +29,10 @@
   `HAWATCH_PUBLIC_ORIGIN` در صورت تغییر دامنه یا مبدأ.
 
 این runbook encryption فایل backup را اجباری نمی‌کند. اگر فعلاً encryption
-نمی‌خواهید، فایل env را فقط روی دیسک قابل‌اعتماد با permission `600` و در دو
-محل جدا نگه دارید و آن را در Git، پیام‌رسان یا فضای عمومی قرار ندهید. مقدارهای
-secret را در log یا خروجی command چاپ نکنید.
+نمی‌خواهید، کل پوشهٔ backup را با permission `700` و فایل‌های داخل آن را با
+permission `600` روی دیسک قابل‌اعتماد نگه دارید و از آن در دو محل جدا نسخه داشته
+باشید. آن را در Git، پیام‌رسان یا فضای عمومی قرار ندهید. مقدارهای secret را در
+log یا خروجی command چاپ نکنید.
 
 فایل‌ها و stateهای دیگر:
 
@@ -63,6 +64,7 @@ backup_root="$repo/backups"
 stamp=$(date +%Y%m%d-%H%M%S)
 target="$backup_root/$stamp"
 mkdir -p "$target"
+chmod 700 "$backup_root" "$target"
 ```
 
 بک‌آپ عمداً داخل فولدر پروژه و در مسیر `backups/` ساخته می‌شود؛ این مسیر در
@@ -133,6 +135,7 @@ base image build آفلاین را تضمین نمی‌کند. برای بازی
 pg_restore --list "$target/hawatch.dump" >/dev/null
 gzip -t "$target/hawatch-images.tar.gz"
 sha256sum "$target"/* > "$target/SHA256SUMS"
+chmod 600 "$target"/*
 ```
 
 اگر `pg_restore --list` یا `gzip -t` خطا داد، snapshot ناقص است و باید دوباره
@@ -153,11 +156,47 @@ PostGIS هم‌نسخه انجام دهید؛ داشتن فایل بدون تس�
   سیاست حساب: snapshot فوری؛
 - با تغییر کد: `git bundle`/source archive جدید؛
 - با تغییر image یا Dockerfile: image archive جدید؛
-- حداقل ۷ snapshot روزانه و ۴ snapshot هفتگی را نگه دارید.
+- حداقل ۷ snapshot روزانهٔ سبک و ۴ snapshot کامل هفتگی/انتشار را نگه دارید.
 
-برای snapshot جدید همان سناریوی اول را با timestamp جدید تکرار کنید. dump جدید
-نباید روی dump قبلی نوشته شود. پس از انتقال، `pg_restore --list`، `gzip -t` و
-`sha256sum -c` را اجرا کنید.
+برای update بهینه، دو نوع snapshot داشته باشید:
+
+1. snapshot روزانهٔ سبک فقط شامل `.env`، dump دیتابیس، `source-commit.txt` و
+   checksum باشد؛ این snapshot برای تغییرات forecast و آمار مناسب است و imageها
+   را دوباره کپی نمی‌کند.
+2. snapshot کامل سناریوی اول پیش از هر deploy، migration، `sync_catalog --apply`،
+   تغییر proxy، تغییر سیاست حساب، تغییر Dockerfile یا تغییر dependency گرفته
+   شود. این snapshot مرجع source و imageهای قابل restore آفلاین است.
+
+برای snapshot روزانهٔ سبک، این commandها را با timestamp جدید اجرا کنید:
+
+```bash
+repo=/home/nobitex/Desktop/Tasks/Nobitex/hawatch
+backup_root="$repo/backups"
+stamp=$(date +%Y%m%d-%H%M%S)
+target="$backup_root/$stamp"
+mkdir -p "$target"
+chmod 700 "$backup_root" "$target"
+
+scp hawatch:/root/hawatch/.env "$target/server.env"
+chmod 600 "$target/server.env"
+
+ssh hawatch \
+  'docker exec hawatch-postgres-1 pg_dump -U hawatch -d hawatch -Fc --no-owner --no-acl' \
+  > "$target/hawatch.dump.part"
+mv "$target/hawatch.dump.part" "$target/hawatch.dump"
+
+git -C "$repo" rev-parse HEAD > "$target/source-commit.txt"
+printf 'database-env\n' > "$target/backup-kind.txt"
+pg_restore --list "$target/hawatch.dump" >/dev/null
+sha256sum "$target"/* > "$target/SHA256SUMS"
+chmod 600 "$target"/*
+```
+
+در restore، `server.env` و dump را از جدیدترین snapshot معتبر بردارید، اما
+source و image را از جدیدترین snapshot کاملِ هم‌دوره بردارید. `source-commit.txt`
+باید با نسخهٔ source انتخاب‌شده سازگار باشد؛ snapshot روزانه را با image یا
+sourceٔ قدیمی‌تر از آخرین deploy جفت نکنید. dump جدید نباید روی dump قبلی نوشته
+شود. پس از انتقال، `pg_restore --list`، `gzip -t` و `sha256sum -c` را اجرا کنید.
 
 برای اطمینان از اینکه snapshot واقعاً جدید است، این metadata را کنار آن ثبت
 کنید:
