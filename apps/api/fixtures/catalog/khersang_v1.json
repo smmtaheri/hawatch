@@ -1,0 +1,198 @@
+{
+  "catalog_version": "hawatch-khersang-catalog-v1",
+  "weather_points": {
+    "khersang": {
+      "name": "قلهٔ خرسنگ",
+      "page_name": "قلهٔ خرسنگ میانی در رودبار قصران",
+      "short_label": "قلهٔ خرسنگ",
+      "place_type": "summit",
+      "aliases": [
+        "خرسنگ",
+        "قله خرسنگ",
+        "خرسنگ میانی",
+        "قلهٔ خرسنگ میانی",
+        "Khersang Peak",
+        "Middle Khersang"
+      ],
+      "identity_summary": "قلهٔ خرسنگ میانی از خط‌الرأس سه‌قلهٔ خرسنگ در البرز مرکزی و مسیر آبنیک رودبار قصران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-abnykh-t-qlh-khrsng-shmly-jmh-1399-07-04-57411236",
+        "https://www.wikiloc.com/mountaineering-trails/qll-khrsng-myny-w-khrsng-jnwby-52276065"
+      ],
+      "latitude": 36.0266300,
+      "longitude": 51.6388060,
+      "elevation_m": 3860,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۸۶۰ متر در گزارش مستقل صعود؛ ترک‌های ۲۰۲۰ و ۲۰۲۲ مختصات قلهٔ میانی را در همین نقطه تأیید می‌کنند و مقدار برای کنترل DEM موقت است.",
+      "climate": "high_alpine"
+    },
+    "khersang-abnik-village": {
+      "name": "روستای آبنیک",
+      "page_name": "روستای آبنیک؛ مبدأ مسیر خرسنگ",
+      "short_label": "آبنیک",
+      "place_type": "village",
+      "aliases": [
+        "آبنیک",
+        "آب نیک",
+        "روستای آب نیک",
+        "Abnik",
+        "Ab Nik"
+      ],
+      "identity_summary": "روستای آبنیک در رودبار قصران و مبدأ canonical مسیر پیادهٔ صعود به خرسنگ",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q610513",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-abnykh-t-qlh-khrsng-shmly-jmh-1399-07-04-57411236",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853"
+      ],
+      "latitude": 35.9891670,
+      "longitude": 51.6183330,
+      "elevation_m": 2400,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع ۲۴۰۰ متر روستای آبنیک از GeoNames/Wikidata و گزارش‌های مسیر؛ مقدار برای کنترل DEM موقت است.",
+      "climate": "forest_fog"
+    },
+    "khersang-dasht-johnston": {
+      "name": "دشت جانستون در مسیر خرسنگ",
+      "page_name": "دشت جانستون؛ landmark مسیر خرسنگ",
+      "short_label": "دشت جانستون",
+      "place_type": "meadow",
+      "aliases": [
+        "دشت جانستون",
+        "دشت جانستان",
+        "Johnston plain",
+        "Dasht-e Johnston"
+      ],
+      "identity_summary": "دشت جانستون، عارضهٔ طبیعیِ میانی در مسیر آبنیک به خط‌الرأس خرسنگ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853",
+        "https://www.wikiloc.com/mountaineering-trails/qll-khrsng-myny-w-khrsng-jnwby-52276065"
+      ],
+      "latitude": 36.0136380,
+      "longitude": 51.6225610,
+      "elevation_m": 2773,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ابتدای دشت جانستون در ترک‌های مستقل؛ DEM برای این مختصات در اعتبارسنجی کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "khersang-lari-gardan": {
+      "name": "گردنهٔ ولاره در مسیر خرسنگ",
+      "page_name": "گردنهٔ ولاره؛ landmark مسیر خرسنگ",
+      "short_label": "گردنهٔ ولاره",
+      "place_type": "pass",
+      "aliases": [
+        "گردنه ولاره",
+        "گردنه لاری‌گردن",
+        "لاری گردن",
+        "Lari Gardan",
+        "Velareh pass"
+      ],
+      "identity_summary": "گردنهٔ ولاره یا لاری‌گردن، عارضهٔ مرتفع و نام‌دار پیش از صعود نهایی خرسنگ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-abnykh-t-qlh-khrsng-shmly-jmh-1399-07-04-57411236",
+        "https://www.wikiloc.com/mountaineering-trails/qll-khrsng-myny-w-khrsng-jnwby-52276065"
+      ],
+      "latitude": 36.0329840,
+      "longitude": 51.6366300,
+      "elevation_m": 3680,
+      "status": "provisional",
+      "elevation_source": "Waypoint مشترک گردنهٔ ولاره در ترک‌های مستقل صعود؛ DEM برای این مختصات در اعتبارسنجی کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "abnik_to_khersang_middle": {
+      "slug": "khersang-abnik-middle",
+      "title": "آبنیک تا قلهٔ خرسنگ",
+      "subtitle": "مسیر پیاده از روستای آبنیک، دشت جانستون و گردنهٔ ولاره تا قلهٔ خرسنگ",
+      "trail_label": "مسیر آبنیک–خرسنگ",
+      "origin": "روستای آبنیک",
+      "target_label": "قلهٔ خرسنگ",
+      "region": "رودبار قصران · تهران · البرز مرکزی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "khersang-abnik-village",
+        "khersang-dasht-johnston",
+        "khersang-lari-gardan",
+        "khersang"
+      ],
+      "distance_km": 8.5,
+      "ascent_m": 1400,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "khersang-abnik-middle-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853",
+          "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-abnykh-t-qlh-khrsng-shmly-jmh-1399-07-04-57411236",
+          "https://www.wikiloc.com/mountaineering-trails/qll-khrsng-myny-w-khrsng-jnwby-52276065"
+        ],
+        "evidence_tracks": [
+          "tracks/khersang/qlh-khrsng-z-rwsty-abnykh-1404-04-20.gpx",
+          "tracks/khersang/pymysh-rwsty-abnykh-t-qlh-khrsng-shmly-jmh-1399-07-04.gpx",
+          "tracks/khersang/qlh-khrsng-shmly-jnwby-myny.gpx"
+        ],
+        "cumulative_minutes": {
+          "khersang-abnik-village": 0,
+          "khersang-dasht-johnston": 90,
+          "khersang-lari-gardan": 300,
+          "khersang": 360
+        },
+        "notes": [
+          "سه ترک مستقل پیاده، مسیر آبنیک تا خرسنگ میانی و landmarkهای دشت جانستون و گردنهٔ ولاره را تأیید می‌کنند.",
+          "شروع‌های بالادستِ پارکینگ و آخر جاده در ترک‌ها با روستای آبنیک ادغام شده‌اند؛ access road به‌عنوان route پیادهٔ جداگانه محاسبه نشده است.",
+          "فاصله و صعود محافظه‌کارانه از هندسهٔ ترک اصلی و cross-checkها گرد شده‌اند؛ ارتفاع خام GPX مبنای elevation catalog نیست و timestamp خام مبنای ETA نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "khersang",
+    "tile_name": "خرسنگ",
+    "name": "قلهٔ خرسنگ",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "رودبار قصران · تهران",
+    "elevation_m": 3860,
+    "latitude": 36.0266300,
+    "longitude": 51.6388060,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ خرسنگ",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "خرسنگ",
+      "قله خرسنگ",
+      "خرسنگ میانی",
+      "قلهٔ خرسنگ میانی",
+      "Khersang Peak",
+      "Middle Khersang"
+    ]
+  },
+  "primary_point": "khersang"
+}
