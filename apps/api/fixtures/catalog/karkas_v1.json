@@ -1,0 +1,368 @@
+{
+  "catalog_version": "hawatch-karkas-catalog-v1",
+  "weather_points": {
+    "karkas": {
+      "name": "قلهٔ کرکس",
+      "page_name": "قلهٔ کرکس نطنز",
+      "short_label": "قلهٔ کرکس",
+      "place_type": "summit",
+      "aliases": ["کرکس", "قله کرکس", "کرکس نطنز", "Mount Karkas", "Karkas Peak"],
+      "identity_summary": "قلهٔ کرکس؛ بلندترین قلهٔ کوهستان کرکس در استان اصفهان و نزدیک نطنز",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/where-is-mount-karkas-climbing-guide/",
+        "https://de.wikipedia.org/wiki/Kuh-e_Karkas",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368",
+        "https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279"
+      ],
+      "latitude": 33.45535,
+      "longitude": 51.79980,
+      "elevation_m": 3895,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۸۹۵ متر در منابع کوهنوردی؛ چهار ترک مستقل مختصات قله را در حدود ۳۳٫۴۵۵۳ و ۵۱٫۷۹۹۸ تأیید می‌کنند و Open-Meteo GLO-90 DEM برابر ۳۸۲۷ متر است.",
+      "climate": "high_alpine"
+    },
+    "karkas-kesheh-village": {
+      "name": "روستای کشه",
+      "page_name": "روستای کشه؛ مبدأ جنوبی کرکس",
+      "short_label": "روستای کشه",
+      "place_type": "village",
+      "aliases": ["کشه", "روستا کشه", "Kesheh", "Kesheh village"],
+      "identity_summary": "روستای کشه و پای‌کار شناخته‌شدهٔ مسیر جنوبی صعود به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Kesheh,_Isfahan",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-rwsty-khshh-tyrmh-98-38180660"
+      ],
+      "latitude": 33.414616,
+      "longitude": 51.771259,
+      "elevation_m": 2605,
+      "status": "provisional",
+      "elevation_source": "پای‌کار/پارکینگ بالادست روستای کشه در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM برابر ۲۶۱۱ متر است.",
+      "climate": "meadow"
+    },
+    "karkas-kesheh-lyasen-spring": {
+      "name": "چشمهٔ لیاسن (درختان گردو)",
+      "page_name": "چشمهٔ لیاسن در مسیر جنوبی کرکس",
+      "short_label": "چشمهٔ لیاسن",
+      "place_type": "spring",
+      "aliases": ["درختان گردو کرکس", "لیاسن", "چشمه لیاسن", "Liasen spring"],
+      "identity_summary": "چشمهٔ لیاسن یا درختان گردو؛ عارضهٔ آبی نام‌دار مسیر جنوبی از کشه به کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-rwsty-khshh-tyrmh-98-38180660",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368"
+      ],
+      "latitude": 33.435646,
+      "longitude": 51.787975,
+      "elevation_m": 2976,
+      "status": "provisional",
+      "elevation_source": "Waypoint «چشمه» و «درختان گردو/لیاسن» در ترک‌های مستقل کشه؛ Open-Meteo GLO-90 DEM برابر ۳۰۰۴ متر است.",
+      "climate": "alpine"
+    },
+    "karkas-shelter": {
+      "name": "پناهگاه کرکس",
+      "page_name": "پناهگاه کرکس در مسیر جنوبی",
+      "short_label": "پناهگاه کرکس",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه کرکس", "جانپناه کرکس", "پناهگاه قله کرکس", "Karkas shelter"],
+      "identity_summary": "پناهگاه و جان‌پناه شناخته‌شدهٔ مسیرهای جنوبی و شرقی صعود به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/where-is-mount-karkas-climbing-guide/",
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khrkhs-ntnz-rft-w-brgsht-z-rwsty-khshh-15662848",
+        "https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279"
+      ],
+      "latitude": 33.44570,
+      "longitude": 51.79098,
+      "elevation_m": 3305,
+      "status": "provisional",
+      "elevation_source": "پناهگاه کرکس در waypointهای مستقل با ارتفاع حدود ۳۳۰۰ متر؛ Open-Meteo GLO-90 DEM برای مختصات canonical کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "karkas-tameh-village": {
+      "name": "روستای طامه",
+      "page_name": "روستای طامه؛ مبدأ شرقی کرکس",
+      "short_label": "روستای طامه",
+      "place_type": "village",
+      "aliases": ["طامه", "روستا طامه", "Tameh", "Tammeh village"],
+      "identity_summary": "روستای طامه؛ مبدأ شناخته‌شدهٔ مسیر شرقی و طولانی صعود به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/where-is-mount-karkas-climbing-guide/",
+        "https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279",
+        "https://www.wikiloc.com/mountaineering-trails/karkas-via-tameh-khrkhs-z-msyr-rwsty-tmh-rtf-3895-mtr-49163419"
+      ],
+      "latitude": 33.468669,
+      "longitude": 51.874327,
+      "elevation_m": 2041,
+      "status": "provisional",
+      "elevation_source": "مبدأ روستای طامه در ترک‌های مستقل شرقی؛ Open-Meteo GLO-90 DEM برابر ۲۰۴۱ متر است.",
+      "climate": "meadow"
+    },
+    "karkas-tameh-gardaneh": {
+      "name": "گردنهٔ طامه",
+      "page_name": "گردنهٔ طامه در مسیر شرقی کرکس",
+      "short_label": "گردنهٔ طامه",
+      "place_type": "pass",
+      "aliases": ["گردنه طامه کرکس", "Gardaneh Tameh", "Tameh pass"],
+      "identity_summary": "گردنهٔ ثبت‌شده در مسیر استاندارد شرقی روستای طامه به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279"],
+      "latitude": 33.461161,
+      "longitude": 51.860636,
+      "elevation_m": 2207,
+      "status": "provisional",
+      "elevation_source": "Waypoint Gardaneh در ترک استاندارد طامه؛ Open-Meteo GLO-90 DEM برای مختصات canonical کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "karkas-tameh-spring": {
+      "name": "چشمهٔ مسیر طامه–کرکس",
+      "page_name": "چشمهٔ مسیر طامه–کرکس",
+      "short_label": "چشمهٔ طامه",
+      "place_type": "spring",
+      "aliases": ["چشمه طامه کرکس", "Spring Tameh Karkas"],
+      "identity_summary": "چشمهٔ ثبت‌شده در مسیر استاندارد شرقی طامه به قلهٔ کرکس؛ نام محلی مستقل در منبع ثبت نشده است",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279"],
+      "latitude": 33.450106,
+      "longitude": 51.820796,
+      "elevation_m": 2758,
+      "status": "provisional",
+      "elevation_source": "Waypoint Spring در ترک استاندارد طامه؛ Open-Meteo GLO-90 DEM برای مختصات canonical کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "karkas-tameh-sangchin": {
+      "name": "سنگ‌چین کرکس",
+      "page_name": "سنگ‌چین در مسیر طامه–کرکس",
+      "short_label": "سنگ‌چین کرکس",
+      "place_type": "landmark",
+      "aliases": ["سنگ چین کرکس", "Sang Chin Karkas"],
+      "identity_summary": "سنگ‌چین؛ عارضهٔ نام‌دار بخش مرتفع مسیر شرقی طامه به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279"],
+      "latitude": 33.447873,
+      "longitude": 51.803421,
+      "elevation_m": 3626,
+      "status": "provisional",
+      "elevation_source": "Waypoint Sang Chin در ترک استاندارد طامه؛ Open-Meteo GLO-90 DEM برابر ۳۶۰۵ متر است.",
+      "climate": "high_alpine"
+    },
+    "karkas-bidhand-village": {
+      "name": "روستای بیدهند",
+      "page_name": "روستای بیدهند؛ مبدأ شمال‌غربی کرکس",
+      "short_label": "روستای بیدهند",
+      "place_type": "village",
+      "aliases": ["بیدهند", "بیدهند نطنز", "Bidhand", "Bid Hend village"],
+      "identity_summary": "روستای بیدهند؛ مبدأ مسیر شمال‌غربی پیمایش و صعود به قلهٔ کرکس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-bydhnd-174493343",
+        "https://mojekooh.com/where-is-mount-karkas-climbing-guide/"
+      ],
+      "latitude": 33.500763,
+      "longitude": 51.757678,
+      "elevation_m": 2296,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک بیدهند؛ Open-Meteo GLO-90 DEM برابر ۲۲۹۶ متر است.",
+      "climate": "meadow"
+    },
+    "karkas-bidhand-spring": {
+      "name": "چشمهٔ مسیر بیدهند–کرکس",
+      "page_name": "چشمهٔ مسیر بیدهند–کرکس",
+      "short_label": "چشمهٔ بیدهند",
+      "place_type": "spring",
+      "aliases": ["چشمه بیدهند کرکس", "Fountain Bidhand Karkas"],
+      "identity_summary": "چشمهٔ ثبت‌شده در ترک صعود شمال‌غربی بیدهند به قلهٔ کرکس؛ نام محلی مستقل در منبع ثبت نشده است",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-bydhnd-174493343"],
+      "latitude": 33.470348,
+      "longitude": 51.784358,
+      "elevation_m": 2774,
+      "status": "provisional",
+      "elevation_source": "Waypoint Fountain در ترک بیدهند؛ Open-Meteo GLO-90 DEM برابر ۲۷۷۱ متر است و نام مستقل چشمه در منبع ذکر نشده است.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "kesheh_to_karkas": {
+      "slug": "karkas-kesheh-summit",
+      "title": "کشه تا قلهٔ کرکس",
+      "subtitle": "مسیر جنوبی و متداول از روستای کشه، چشمهٔ لیاسن و پناهگاه کرکس تا قله",
+      "trail_label": "مسیر کشه–کرکس",
+      "origin": "روستای کشه",
+      "target_label": "قلهٔ کرکس",
+      "region": "نطنز · استان اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["karkas-kesheh-village", "karkas-kesheh-lyasen-spring", "karkas-shelter", "karkas"],
+      "distance_km": 6.1,
+      "ascent_m": 1260,
+      "one_way_minutes": 300,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "karkas-kesheh-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khrkhs-ntnz-rft-w-brgsht-z-rwsty-khshh-15662848",
+          "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-rwsty-khshh-tyrmh-98-38180660"
+        ],
+        "evidence_tracks": [
+          "tracks/karkas/karkas-kesheh-standard-2023.gpx",
+          "tracks/karkas/karkas-kesheh-classic.gpx"
+        ],
+        "cumulative_minutes": {
+          "karkas-kesheh-village": 0,
+          "karkas-kesheh-lyasen-spring": 75,
+          "karkas-shelter": 180,
+          "karkas": 300
+        },
+        "notes": [
+          "مبدأ پارکینگ بالادست با روستای کشه به‌عنوان مبدأ canonical ادغام شده است.",
+          "ترک استاندارد رفت‌وبرگشت در نخستین رسیدن به قله قطع شده و فرود در metrics وارد نشده است.",
+          "ارتفاع GPX برای حقیقت ارتفاع یا ETA استفاده نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "tameh_to_karkas": {
+      "slug": "karkas-tameh-summit",
+      "title": "طامه تا قلهٔ کرکس",
+      "subtitle": "مسیر شرقی و طولانی از روستای طامه، آبشار طامه و سنگ‌چین تا قله",
+      "trail_label": "مسیر طامه–کرکس",
+      "origin": "روستای طامه",
+      "target_label": "قلهٔ کرکس",
+      "region": "نطنز · استان اصفهان",
+      "featured": true,
+      "sort_order": 2,
+      "points": ["karkas-tameh-village", "karkas-tameh-gardaneh", "karkas-tameh-spring", "karkas-tameh-sangchin", "karkas"],
+      "distance_km": 10.1,
+      "ascent_m": 1820,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "karkas-tameh-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khrkhs-msyr-abshr-tmh-183175077",
+          "https://mojekooh.com/where-is-mount-karkas-climbing-guide/"
+        ],
+        "evidence_tracks": [
+          "tracks/karkas/karkas-tameh-standard.gpx"
+        ],
+        "cumulative_minutes": {
+          "karkas-tameh-village": 0,
+          "karkas-tameh-gardaneh": 45,
+          "karkas-tameh-spring": 120,
+          "karkas-tameh-sangchin": 300,
+          "karkas": 360
+        },
+        "notes": [
+          "ترک آبشار طامه به‌دلیل هشدار منبع دربارهٔ انحراف و بخش‌های فنی فقط reference است و در metrics استفاده نشده است.",
+          "مسیر استاندارد طامه طبق منبع مستقل حدود ۶ ساعت تا قله زمان می‌برد؛ بخش‌های لغزنده و سنگی باید پیش از حرکت بررسی شوند.",
+          "پناهگاه کرکس در دو کریدور کشه و طامه یک WeatherPoint مشترک است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "bidhand_to_karkas": {
+      "slug": "karkas-bidhand-summit",
+      "title": "بیدهند تا قلهٔ کرکس",
+      "subtitle": "مسیر شمال‌غربی از روستای بیدهند و چشمهٔ مسیر تا قلهٔ کرکس",
+      "trail_label": "مسیر بیدهند–کرکس",
+      "origin": "روستای بیدهند",
+      "target_label": "قلهٔ کرکس",
+      "region": "نطنز · استان اصفهان",
+      "featured": false,
+      "sort_order": 3,
+      "points": ["karkas-bidhand-village", "karkas-bidhand-spring", "karkas"],
+      "distance_km": 7.9,
+      "ascent_m": 1570,
+      "one_way_minutes": 300,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+wikiloc-hiking-report-v1",
+        "version": "karkas-bidhand-summit-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-bydhnd-174493343",
+          "https://mojekooh.com/where-is-mount-karkas-climbing-guide/"
+        ],
+        "evidence_tracks": ["tracks/karkas/karkas-bidhand-summit-2024.gpx"],
+        "cumulative_minutes": {
+          "karkas-bidhand-village": 0,
+          "karkas-bidhand-spring": 120,
+          "karkas": 300
+        },
+        "notes": [
+          "ترک بیدهند یک مسیر یک‌طرفهٔ Hiking با دشواری متوسط و زمان حرکت ثبت‌شدهٔ حدود ۳ ساعت است.",
+          "نام چشمه در منبع فقط Fountain است؛ بنابراین نقطه با نام توصیفی، seo_indexable=false و عدم‌قطعیت بالاتر ثبت شده است.",
+          "زمان و صعود از هندسهٔ ترک و گزارش منبع برآورد شده‌اند و timestamp خام GPX مبنای ETA نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "karkas",
+    "tile_name": "کرکس",
+    "name": "قلهٔ کرکس",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی نطنز",
+    "category_key": "mountain",
+    "region": "نطنز · استان اصفهان",
+    "elevation_m": 3895,
+    "latitude": 33.45535,
+    "longitude": 51.79980,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کرکس در نطنز",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کرکس", "قله کرکس", "کرکس نطنز", "Karkas Peak"]
+  },
+  "primary_point": "karkas"
+}
