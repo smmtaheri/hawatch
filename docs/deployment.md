@@ -1,5 +1,9 @@
 # استقرار سریع Hawatch روی سرور
 
+برای بازیابی اضطراری بدون دسترسی به سرور قبلی یا registry خارجی، ابتدا
+[`backup-restore.md`](backup-restore.md) را بخوانید. آن runbook ترتیب دقیق dump
+دیتابیس، env، imageهای نهایی و restore با `--no-build` را مشخص می‌کند.
+
 این مسیر برای pilot سبک است: PostgreSQL/PostGIS، API، frontend production، Nginx gateway و maintenance بالا می‌آیند. Redis و observability سنگین (`OpenSearch`، Dashboards، Vector، Prometheus و Grafana) به‌صورت پیش‌فرض اجرا نمی‌شوند.
 
 اسکریپت `scripts/deploy.sh` روی Linux این کارها را انجام می‌دهد:

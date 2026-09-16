@@ -85,6 +85,9 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 [`docs/seo.md`](docs/seo.md) توضیح داده شده است.
 
+سناریوی کامل backup، به‌روزرسانی backup و restore اضطراری روی سرور جدید در
+[`docs/backup-restore.md`](docs/backup-restore.md) مستند شده است.
+
 ## استقرار سریع روی سرور
 
 برای نصب پیش‌نیازها، clone، ساخت امن `.env`، اجرای Compose سبک و health check از اسکریپت زیر استفاده کنید:
