@@ -1,0 +1,229 @@
+{
+  "catalog_version": "hawatch-domir-catalog-v1",
+  "weather_points": {
+    "domir": {
+      "name": "قلهٔ دومیر",
+      "page_name": "قلهٔ دومیر اردهال",
+      "short_label": "قلهٔ دومیر",
+      "place_type": "summit",
+      "aliases": ["دومیر", "قله دومیر", "دومیر اردهال", "Domir Peak", "Mount Domir"],
+      "identity_summary": "قلهٔ دومیر؛ بلندترین قلهٔ استان مرکزی در مرز طبیعی استان‌های مرکزی و اصفهان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-rwsty-mzwsh-97613009",
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-msyr-mzwsh-26377882",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy-213868265"
+      ],
+      "latitude": 33.92670,
+      "longitude": 51.04305,
+      "elevation_m": 3505,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۵۰۵ متر در شرح مسیرهای مستقل؛ مختصات قله در چهار ترک در حدود ۳۳٫۹۲۶۷ و ۵۱٫۰۴۳۰۵ همگراست و DEM نود Open-Meteo برابر ۳۴۴۱ متر است.",
+      "climate": "high_alpine",
+      "tile_name": "دومیر",
+      "short_category": "قله",
+      "category": "قله و مسیرهای کوهستانی اردهال",
+      "category_key": "mountain",
+      "region": "اردهال · استان مرکزی",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی قلهٔ دومیر اردهال",
+      "is_active": true
+    },
+    "domir-mozvash-mine-parking": {
+      "name": "پارکینگ معدن مزوش",
+      "page_name": "پارکینگ معدن مزوش؛ پای‌کار غربی دومیر",
+      "short_label": "پارکینگ معدن مزوش",
+      "place_type": "parking",
+      "aliases": ["پای کار مزوش", "پارکینگ معدن دومیر", "Mozvash mine parking"],
+      "identity_summary": "پارکینگ معدن در بالادست روستای مزوش و آغاز قطعهٔ پیادهٔ مسیر غربی قلهٔ دومیر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-rwsty-mzwsh-97613009",
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-msyr-mzwsh-26377882",
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-mzwsh-57364675"
+      ],
+      "latitude": 33.942536,
+      "longitude": 51.022433,
+      "elevation_m": 2608,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک‌های پیادهٔ مزوش در پارکینگ معدن؛ ارتفاع GPX حدود ۲۶۰۸ متر و DEM نود Open-Meteo برابر ۲۶۲۰ متر است.",
+      "climate": "alpine"
+    },
+    "domir-mozvash-saddle": {
+      "name": "زین‌اسبی مسیر مزوش–دومیر",
+      "page_name": "زین‌اسبی مسیر غربی دومیر",
+      "short_label": "زین‌اسبی دومیر",
+      "place_type": "landmark",
+      "aliases": ["زین اسبی دومیر", "زین اسبی مزوش", "Domir saddle"],
+      "identity_summary": "زین‌اسبی نام‌برده در گزارش صعود غربی مزوش و عارضهٔ میانی مسیر رسیدن به یال دومیر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-mzwsh-57364675",
+        "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-msyr-mzwsh-26377882"
+      ],
+      "latitude": 33.934073,
+      "longitude": 51.033018,
+      "elevation_m": 3151,
+      "status": "provisional",
+      "elevation_source": "Waypoint ثبت‌شدهٔ ترک مزوش در محدودهٔ زین‌اسبی؛ ارتفاع GPX حدود ۳۱۵۱ متر و DEM نود Open-Meteo برابر ۳۱۲۷ متر است.",
+      "climate": "high_alpine"
+    },
+    "domir-neshlaj-village": {
+      "name": "روستای نشلج",
+      "page_name": "روستای نشلج؛ مبدأ شمالی دومیر",
+      "short_label": "روستای نشلج",
+      "place_type": "village",
+      "aliases": ["نشلج", "روستا نشلج", "Neshlaj", "Neshlaj village"],
+      "identity_summary": "روستای نشلج در شمال دومیر و مبدأ مسیر شمالی و طولانی صعود به قله",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy-213868265"
+      ],
+      "latitude": 33.985862,
+      "longitude": 51.073970,
+      "elevation_m": 2000,
+      "status": "provisional",
+      "elevation_source": "Waypoint روستا و نقطهٔ آغاز ترک شمالی نشلج؛ ارتفاع GPX حدود ۱۹۹۹ متر و DEM نود Open-Meteo برابر ۲۰۰۰ متر است.",
+      "climate": "meadow"
+    },
+    "domir-neshlaj-ridge": {
+      "name": "یال شمالی دومیر",
+      "page_name": "یال شمالی مسیر دومیر",
+      "short_label": "یال شمالی دومیر",
+      "place_type": "ridge",
+      "aliases": ["قرارگیری روی یال دومیر", "یال نشلج دومیر", "Domir north ridge"],
+      "identity_summary": "یال شمالی ثبت‌شده در مسیر نشلج که بخش مرتفع و قابل‌شناسایی صعود تا قلهٔ دومیر است",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy-213868265"
+      ],
+      "latitude": 33.939997,
+      "longitude": 51.047596,
+      "elevation_m": 3027,
+      "status": "provisional",
+      "elevation_source": "Waypoint «قرارگیری روی یال» در ترک شمالی نشلج؛ ارتفاع GPX حدود ۳۰۲۷ متر و DEM نود Open-Meteo برابر ۳۰۳۴ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "mozvash_to_domir": {
+      "slug": "domir-mozvash-summit",
+      "title": "مزوش تا قلهٔ دومیر",
+      "subtitle": "مسیر غربی از پارکینگ معدن مزوش، زین‌اسبی و یال تا قلهٔ دومیر",
+      "trail_label": "مسیر مزوش",
+      "origin": "پارکینگ معدن مزوش",
+      "target_label": "قلهٔ دومیر",
+      "region": "مزوش · اردهال · استان مرکزی",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["domir-mozvash-mine-parking", "domir-mozvash-saddle", "domir"],
+      "distance_km": 3.1,
+      "ascent_m": 836,
+      "one_way_minutes": 180,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "domir-mozvash-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-rwsty-mzwsh-97613009",
+          "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-msyr-mzwsh-26377882",
+          "https://www.wikiloc.com/hiking-trails/qlh-dwmyr-z-mzwsh-57364675"
+        ],
+        "evidence_tracks": [
+          "tracks/domir/qlh-dwmyr-z-rwsty-mzwsh.gpx",
+          "tracks/domir/qlh-dwmyr-z-msyr-mzwsh.gpx",
+          "tracks/domir/qlh-dwmyr-z-mzwsh.gpx"
+        ],
+        "cumulative_minutes": {
+          "domir-mozvash-mine-parking": 0,
+          "domir-mozvash-saddle": 120,
+          "domir": 180
+        },
+        "notes": [
+          "پارکینگ معدن حدود ۷ کیلومتر بالاتر از روستای مزوش است؛ بنابراین با روستا ادغام نشده و به‌عنوان مبدأ بالادستِ مسیر ثبت شده است.",
+          "بخش جادهٔ معدن در route پیاده وارد نشده است؛ metrics از قطعهٔ پیادهٔ پارکینگ تا قله است.",
+          "ترک‌های رفت‌وبرگشت در نخستین رسیدن به قله cut شده‌اند و ارتفاع GPX فقط evidence است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "neshlaj_to_domir": {
+      "slug": "domir-neshlaj-summit",
+      "title": "نشلج تا قلهٔ دومیر",
+      "subtitle": "مسیر شمالی و طولانی از روستای نشلج، یال شمالی و عوارض مسیر تا قلهٔ دومیر",
+      "trail_label": "مسیر نشلج",
+      "origin": "روستای نشلج",
+      "target_label": "قلهٔ دومیر",
+      "region": "نشلج · اردهال · استان اصفهان و مرکزی",
+      "featured": false,
+      "sort_order": 2,
+      "points": ["domir-neshlaj-village", "domir-neshlaj-ridge", "domir"],
+      "distance_km": 9.2,
+      "ascent_m": 1449,
+      "one_way_minutes": 430,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "domir-neshlaj-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy-213868265"
+        ],
+        "evidence_tracks": [
+          "tracks/domir/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy.gpx"
+        ],
+        "cumulative_minutes": {
+          "domir-neshlaj-village": 0,
+          "domir-neshlaj-ridge": 300,
+          "domir": 430
+        },
+        "notes": [
+          "ترک شمالی از روستای نشلج تا نخستین رسیدن به قله حدود ۹٫۲ کیلومتر است و به‌عنوان مسیر طولانی شمالی ثبت شده است.",
+          "waypointهای generic، باغات، گذرگاه‌ها و چشمهٔ نامطلوب به‌عنوان نقطهٔ مستقل وارد نشده‌اند.",
+          "زمان و صعود بر پایهٔ هندسهٔ ترک و شرح صعود تنظیم شده و timestamp خام GPX مبنای ETA نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "domir",
+    "tile_name": "دومیر",
+    "name": "قلهٔ دومیر",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی اردهال",
+    "category_key": "mountain",
+    "region": "اردهال · استان مرکزی",
+    "elevation_m": 3505,
+    "latitude": 33.92670,
+    "longitude": 51.04305,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ دومیر اردهال",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دومیر", "قله دومیر", "دومیر اردهال", "Domir Peak"]
+  },
+  "primary_point": "domir"
+}
