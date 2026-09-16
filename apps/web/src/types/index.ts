@@ -330,7 +330,7 @@ export interface RouteForecast {
   speed_options: string[];
   points: RoutePointView[];
   hourly: HourlyReading[];
-  hero: { status: string };
+  hero: { status: string | null };
   stats: { label: string; value: string }[];
   timing_pending?: boolean;
   timing_status?: "curated" | "estimated" | "pending" | string;
@@ -343,7 +343,7 @@ export interface RouteForecast {
     status: string;
     state: Severity;
     summary: string;
-    hero_status: string;
+    hero_status: string | null;
     critical_name: string;
     critical_time: string;
     critical_note: string;

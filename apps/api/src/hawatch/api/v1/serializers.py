@@ -940,7 +940,10 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             hero_status = _status_phrase("تغییر مهم", critical_point, time_phrase)
     else:
         state_summary = "شرایط مسیر برای شروع آرام‌تر است؛ همچنان پیش‌بینی نقطه‌های بالاتر را دنبال کن."
-        hero_status = "شرایط مسیر فعلاً آرام‌تر است"
+        # The route hero is reserved for actionable weather changes.  A calm
+        # route has no alert to surface, so keep the field empty instead of
+        # rendering a misleading status pill in both desktop and mobile UI.
+        hero_status = None
         critical_point = finish
 
     gear = []

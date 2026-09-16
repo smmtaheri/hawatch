@@ -329,9 +329,11 @@ export function RoutePage() {
                   مسافت <bdi>{data.route.distance_label}</bdi>　·　صعود <bdi>{data.route.ascent_label}</bdi>
                 </p>
               </div>
-              <div className="hero-status-stack route-hero-status-stack" aria-label="خلاصهٔ وضعیت مسیر">
-                <div className="status-pill change">{data.hero.status}</div>
-              </div>
+              {data.hero.status ? (
+                <div className="hero-status-stack route-hero-status-stack" aria-label="خلاصهٔ وضعیت مسیر">
+                  <div className="status-pill change">{data.hero.status}</div>
+                </div>
+              ) : null}
               <MobileRouteSelector
                 routes={data.route.siblings}
                 title={`مسیرهای دیگر ${data.route.target_point?.name ?? data.route.target_label}`}
