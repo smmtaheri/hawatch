@@ -1,0 +1,174 @@
+{
+  "catalog_version": "hawatch-bel-catalog-v1",
+  "weather_points": {
+    "bel": {
+      "name": "قلهٔ بُل",
+      "page_name": "قلهٔ بُل اقلید",
+      "short_label": "قلهٔ بُل",
+      "place_type": "summit",
+      "aliases": ["بل", "قله بل", "بل اقلید", "قلهٔ بُل اقلید", "Bel Peak", "Mount Bel"],
+      "identity_summary": "قلهٔ بُل؛ بلندترین قلهٔ استان فارس در رشته‌کوه زاگرس جنوبی و نزدیک اقلید",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-38854926",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-245672682",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-stn-frs-115482141",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-235187727"
+      ],
+      "latitude": 30.77720,
+      "longitude": 52.75060,
+      "elevation_m": 3961,
+      "status": "provisional",
+      "elevation_source": "منابع و ترک‌های مستقل ارتفاع قله را حدود ۳۹۴۴ تا ۳۹۶۱ متر ثبت می‌کنند؛ مختصات قله در چهار ترک همگراست و DEM نود Open-Meteo برابر ۳۹۲۵ متر است.",
+      "climate": "high_alpine",
+      "tile_name": "بُل اقلید",
+      "short_category": "قله",
+      "category": "قله و مسیرهای زاگرس جنوبی",
+      "category_key": "mountain",
+      "region": "اقلید · استان فارس",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی قلهٔ بُل اقلید",
+      "is_active": true
+    },
+    "bel-layeshkaft-trailhead": {
+      "name": "پای‌کار لایشکفت",
+      "page_name": "پای‌کار لایشکفت؛ آغاز صعود بُل",
+      "short_label": "پای‌کار لایشکفت",
+      "place_type": "trailhead",
+      "aliases": ["پارکینگ بُل", "پارکینگ لایشکفت", "لای‌اشکفت", "Layeshkaft trailhead"],
+      "identity_summary": "پارکینگ و پای‌کار ثبت‌شدهٔ مسیر غربی لایشکفت تا قلهٔ بُل اقلید",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-38854926",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-245672682",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-stn-frs-115482141"
+      ],
+      "latitude": 30.79510,
+      "longitude": 52.71250,
+      "elevation_m": 2724,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز/پارکینگ ترک‌های مستقل لایشکفت؛ DEM نود Open-Meteo برابر ۲۷۲۴ متر است.",
+      "climate": "meadow"
+    },
+    "bel-albalou-spring": {
+      "name": "چشمهٔ درهٔ آلبالو",
+      "page_name": "چشمهٔ درهٔ آلبالو در مسیر بُل",
+      "short_label": "چشمهٔ درهٔ آلبالو",
+      "place_type": "spring",
+      "aliases": ["چشمه دره آلبالو", "چشمهٔ مسیر بُل", "Albalou valley spring"],
+      "identity_summary": "چشمهٔ نام‌برده در بخش میانی مسیر لایشکفت از پای‌کار تا قلهٔ بُل",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-stn-frs-115482141",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-245672682"
+      ],
+      "latitude": 30.78590,
+      "longitude": 52.72420,
+      "elevation_m": 3054,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ چشمهٔ درهٔ آلبالو در ترک‌های مستقل؛ DEM نود Open-Meteo برابر ۳۰۵۴ متر است.",
+      "climate": "alpine"
+    },
+    "bel-shelter": {
+      "name": "پناهگاه بُل",
+      "page_name": "پناهگاه بُل در مسیر لایشکفت",
+      "short_label": "پناهگاه بُل",
+      "place_type": "shelter",
+      "aliases": ["جان‌پناه بُل", "جانپناه بل", "Bel shelter"],
+      "identity_summary": "جان‌پناه شناخته‌شدهٔ مسیر لایشکفت و آخرین عارضهٔ اصلی پیش از قلهٔ بُل",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-38854926",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-245672682",
+        "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-stn-frs-115482141"
+      ],
+      "latitude": 30.77930,
+      "longitude": 52.73500,
+      "elevation_m": 3544,
+      "status": "provisional",
+      "elevation_source": "Waypoint جان‌پناه در چند ترک مستقل؛ DEM نود Open-Meteo برابر ۳۵۴۴ متر است و ارتفاع‌های گزارش‌شدهٔ منبع حدود ۳۵۰۰ تا ۳۶۱۳ مترند.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "layeshkaft_to_bel": {
+      "slug": "bel-layeshkaft-summit",
+      "title": "لایشکفت تا قلهٔ بُل",
+      "subtitle": "مسیر غربی از پای‌کار لایشکفت، چشمهٔ درهٔ آلبالو و پناهگاه بُل تا قله",
+      "trail_label": "مسیر لایشکفت",
+      "origin": "پای‌کار لایشکفت",
+      "target_label": "قلهٔ بُل",
+      "region": "اقلید · استان فارس",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["bel-layeshkaft-trailhead", "bel-albalou-spring", "bel-shelter", "bel"],
+      "distance_km": 4.9,
+      "ascent_m": 1165,
+      "one_way_minutes": 230,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "bel-layeshkaft-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-38854926",
+          "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-235187727",
+          "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-245672682",
+          "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-stn-frs-115482141"
+        ],
+        "evidence_tracks": [
+          "tracks/bel/qlh-bl-qlyd (1).gpx",
+          "tracks/bel/qlh-bl-qlyd (2).gpx",
+          "tracks/bel/qlh-bl-qlyd.gpx",
+          "tracks/bel/qlh-bl-qlyd-stn-frs.gpx"
+        ],
+        "cumulative_minutes": {
+          "bel-layeshkaft-trailhead": 0,
+          "bel-albalou-spring": 80,
+          "bel-shelter": 170,
+          "bel": 230
+        },
+        "notes": [
+          "چهار ترک مستقل قطعهٔ پیادهٔ پای‌کار لایشکفت تا قله و دو عارضهٔ اصلی چشمه و پناهگاه را تأیید می‌کنند.",
+          "جادهٔ دسترسی تا پای‌کار در metrics مسیر پیاده وارد نشده است.",
+          "ترک‌های رفت‌وبرگشت در نخستین رسیدن به قله cut شده‌اند و ارتفاع GPX فقط evidence است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "bel",
+    "tile_name": "بُل اقلید",
+    "name": "قلهٔ بُل",
+    "short_category": "قله",
+    "category": "قله و مسیرهای زاگرس جنوبی",
+    "category_key": "mountain",
+    "region": "اقلید · استان فارس",
+    "elevation_m": 3961,
+    "latitude": 30.77720,
+    "longitude": 52.75060,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بُل اقلید",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["بل", "قله بل", "بل اقلید", "Bel Peak"]
+  },
+  "primary_point": "bel"
+}
