@@ -58,14 +58,17 @@ proxy یا deploy مهم انجام دهید. dump از PostgreSQL سازگار 
 ### ۱. ساخت پوشهٔ snapshot روی لپ‌تاپ
 
 ```bash
-backup_root=/home/nobitex/Backups/hawatch
+repo=/home/nobitex/Desktop/Tasks/Nobitex/hawatch
+backup_root="$repo/backups"
 stamp=$(date +%Y%m%d-%H%M%S)
 target="$backup_root/$stamp"
 mkdir -p "$target"
 ```
 
-مسیر `target` را در تمام commandهای این snapshot ثابت نگه دارید. اگر commandی
-قطع شد، فایل `.part` را backup کامل حساب نکنید.
+بک‌آپ عمداً داخل فولدر پروژه و در مسیر `backups/` ساخته می‌شود؛ این مسیر در
+`.gitignore` است و هیچ dump، env یا imageای نباید وارد Git شود. مسیر `target` را
+در تمام commandهای این snapshot ثابت نگه دارید. اگر commandی قطع شد، فایل
+`.part` را backup کامل حساب نکنید.
 
 ### ۲. کپی env
 
@@ -99,7 +102,6 @@ state، catalog، forecast، proxyهای encrypted، حساب‌ها و analytic
 در checkout local که commit موردنظر روی آن است:
 
 ```bash
-repo=/home/nobitex/Desktop/Tasks/Nobitex/hawatch
 git -C "$repo" bundle create "$target/hawatch.git.bundle" --all
 git -C "$repo" archive --format=tar.gz --output="$target/hawatch-source.tar.gz" HEAD
 tar -C "$repo" -czf "$target/hawatch-tracks.tar.gz" tracks

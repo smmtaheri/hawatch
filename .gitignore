@@ -28,6 +28,9 @@ htmlcov/
 .tmp/
 tmp/
 
+# Local Hawatch backups (database dumps, env copies and image archives)
+/backups/
+
 # Docker
 infra/compose/.env
 
