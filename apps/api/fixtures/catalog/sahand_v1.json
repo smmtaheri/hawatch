@@ -1,0 +1,178 @@
+{
+  "catalog_version": "hawatch-sahand-kamal-catalog-v1",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["sahand-qouch-goli-lake", "sahand-qouch-goli-shelter"],
+      "reason": "دریاچهٔ قوچ‌گلی و جان‌پناه قوچ‌گلی دو عارضهٔ نام‌دار و مستقل‌اند؛ فاصلهٔ مختصات canonical بیش از ۱۰۰ متر است و هر دو در منابع مسیر و منبع مستقل تأیید شده‌اند."
+    }
+  ],
+  "weather_points": {
+    "kamal-sahand": {
+      "name": "قلهٔ کمال سهند",
+      "page_name": "قلهٔ کمال سهند؛ قوچ‌گلی داغی",
+      "short_label": "قلهٔ کمال",
+      "place_type": "summit",
+      "aliases": ["کمال سهند", "کمال داغی", "قوچ‌گلی داغی", "قوش گلی داغی", "Kamal Peak", "Kamal Sahand"],
+      "identity_summary": "قلهٔ کمال یا قوچ‌گلی داغی؛ بلندترین قلهٔ رشته‌کوه سهند و مقصد شناخته‌شدهٔ صعود از پیست اسکی سهند",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://climbers.ir/tourist-attractions/188-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%84",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd-216902986",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-kml-shnd-25581940",
+        "https://www.gholleh.com/peakszoom.aspx?lat=37.7294379&lon=46.5003277&peak-name=%D9%82%D9%88%D8%B4+%DA%AF%D9%84%DB%8C+%D8%AF%D8%A7%D8%BA%DB%8C%28%DA%A9%D9%85%D8%A7%D9%84%29&pkidentifier=268"
+      ],
+      "latitude": 37.72990,
+      "longitude": 46.49993,
+      "elevation_m": 3707,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۷۰۷ متر در منبع مستقل قلهٔ کمال و waypointهای سه ترک مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برای cross-check استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "sahand-kamal-ski-trailhead": {
+      "name": "پای‌کار پیست اسکی سهند",
+      "page_name": "پای‌کار پیست اسکی سهند؛ مسیر قلهٔ کمال",
+      "short_label": "پای‌کار پیست سهند",
+      "place_type": "trailhead",
+      "aliases": ["پارکینگ پیست اسکی سهند", "پیست اسکی سهند", "Kamal trailhead", "Sahand ski resort"],
+      "identity_summary": "پای‌کار و پارکینگ بالادست پیست اسکی سهند، مبدأ قطعهٔ پیادهٔ صعود به قلهٔ کمال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd-216902986",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-kml-shnd-25581940"
+      ],
+      "latitude": 37.75865,
+      "longitude": 46.51145,
+      "elevation_m": 2921,
+      "status": "provisional",
+      "elevation_source": "پارکینگ مشترک در سه ترک مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر حدود ۲۹۱۸ متر است.",
+      "climate": "high_alpine"
+    },
+    "sahand-qouch-goli-lake": {
+      "name": "دریاچهٔ قوچ‌گلی",
+      "page_name": "دریاچهٔ قوچ‌گلی سهند",
+      "short_label": "دریاچهٔ قوچ‌گلی",
+      "place_type": "lake",
+      "aliases": ["قوچ گلی", "قوش گلی", "برکه قوچ گلی", "Quch Goli", "Quch Goli Lake"],
+      "identity_summary": "دریاچهٔ قوچ‌گلی در شمال قلهٔ کمال و عارضهٔ شاخص مسیرهای پیادهٔ سهند",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/25779898",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd-216902986",
+        "https://climbers.ir/tourist-attractions/188-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%84"
+      ],
+      "latitude": 37.73950,
+      "longitude": 46.50470,
+      "elevation_m": 3240,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع در Mapcarta/GeoNames و waypointهای ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر حدود ۳۲۳۸ متر است.",
+      "climate": "high_alpine"
+    },
+    "sahand-qouch-goli-shelter": {
+      "name": "جان‌پناه قوچ‌گلی",
+      "page_name": "جان‌پناه قوچ‌گلی در مسیر کمال سهند",
+      "short_label": "جان‌پناه قوچ‌گلی",
+      "place_type": "shelter",
+      "aliases": ["پناهگاه قوچ گلی", "جانپناه قوچ گلی", "Quch Goli shelter"],
+      "identity_summary": "جان‌پناه شناخته‌شدهٔ کنار دریاچهٔ قوچ‌گلی در مسیر پیادهٔ پیست اسکی تا کمال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mik7318.blogfa.com/post/12",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769"
+      ],
+      "latitude": 37.74000,
+      "longitude": 46.50300,
+      "elevation_m": 3240,
+      "status": "provisional",
+      "elevation_source": "مختصات جان‌پناه قوچ‌گلی در منبع مستقل و waypoint جان‌پناه ترک؛ Open-Meteo GLO-90 DEM برای این محدوده حدود ۳۲۳۹ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "kamal_ski_summit": {
+      "slug": "kamal-sahand-ski-summit",
+      "title": "پیست اسکی سهند تا قلهٔ کمال",
+      "subtitle": "مسیر پیاده از پای‌کار پیست اسکی، دریاچه و جان‌پناه قوچ‌گلی تا قلهٔ کمال سهند",
+      "trail_label": "مسیر کمال سهند",
+      "origin": "پای‌کار پیست اسکی سهند",
+      "target_label": "قلهٔ کمال سهند",
+      "region": "سهند · آذربایجان شرقی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sahand-kamal-ski-trailhead",
+        "sahand-qouch-goli-shelter",
+        "sahand-qouch-goli-lake",
+        "kamal-sahand"
+      ],
+      "distance_km": 4.2,
+      "ascent_m": 790,
+      "one_way_minutes": 180,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "kamal-sahand-ski-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd-216902986",
+          "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-kml-shnd-25581940",
+          "https://climbers.ir/tourist-attractions/188-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%84"
+        ],
+        "evidence_tracks": [
+          "tracks/sahand/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd.gpx",
+          "tracks/sahand/qlh-khml-bm-rshth-khwh-shnd-3725-mtr.gpx",
+          "tracks/sahand/qlh-kml-shnd.gpx"
+        ],
+        "cumulative_minutes": {
+          "sahand-kamal-ski-trailhead": 0,
+          "sahand-qouch-goli-shelter": 105,
+          "sahand-qouch-goli-lake": 110,
+          "kamal-sahand": 180
+        },
+        "notes": [
+          "سه ترک مستقلِ پیاده از محدودهٔ پیست اسکی به مختصات مشترک قلهٔ کمال می‌رسند؛ ترک‌های جاده‌ای در metrics وارد نشده‌اند.",
+          "دریاچهٔ قوچ‌گلی و جان‌پناه قوچ‌گلی عوارض واقعی مسیرند؛ مختصات lake از منبع جغرافیایی و مختصات shelter از منبع مستقل انتخاب شده است.",
+          "ترک‌های رفت‌وبرگشت در نخستین رسیدن به قله cut می‌شوند و ارتفاع خام GPX فقط evidence است؛ زمان حرکت برآوردی است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kamal-sahand",
+    "tile_name": "قلهٔ کمال سهند",
+    "name": "قلهٔ کمال سهند",
+    "short_category": "قله",
+    "category": "قله و دریاچه‌های سهند",
+    "category_key": "mountain",
+    "region": "سهند · آذربایجان شرقی",
+    "elevation_m": 3707,
+    "latitude": 37.72990,
+    "longitude": 46.49993,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کمال سهند",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کمال سهند", "کمال داغی", "قوچ‌گلی داغی", "Kamal Peak"]
+  },
+  "primary_point": "kamal-sahand"
+}
