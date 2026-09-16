@@ -4408,7 +4408,11 @@ bdi,
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
     grid-template-areas: "identity status";
-    align-items: center;
+    /* The earlier compact mobile layer keeps `align-items: stretch !important`
+     * for the legacy block layout.  Once this hero becomes a grid that rule
+     * would stretch a single status pill to the full hero height, so the
+     * intrinsic status height must win in the final mobile layout. */
+    align-items: center !important;
     gap: 12px;
     height: auto !important;
     min-height: 0 !important;
@@ -4451,6 +4455,7 @@ bdi,
     z-index: 2;
     inset: auto !important;
     grid-area: status;
+    align-self: center !important;
     width: 100%;
     max-width: none;
     transform: none !important;
