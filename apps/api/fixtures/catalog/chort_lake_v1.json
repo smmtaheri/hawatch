@@ -1,0 +1,161 @@
+{
+  "catalog_version": "hawatch-chort-lake-catalog-v1",
+  "weather_points": {
+    "chort-lake": {
+      "name": "دریاچهٔ چورت (میانشه)",
+      "page_name": "دریاچهٔ چورت (میانشه)",
+      "short_label": "دریاچهٔ چورت",
+      "place_type": "lake",
+      "aliases": [
+        "دریاچه چورت",
+        "دریاچه میانشه",
+        "میانشه",
+        "Choret Lake",
+        "Lake Churat"
+      ],
+      "identity_summary": "دریاچهٔ چورت، معروف به میانشه، در جنگل‌های چهاردانگهٔ ساری",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q5870508",
+        "https://mapcarta.com/36739754",
+        "https://iranpedia.net/wiki/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87_%DA%86%D9%88%D8%B1%D8%AA",
+        "https://www.wikiloc.com/hiking-trails/drychh-chwrt-mynshh-z-rwsty-chwrt-155212551"
+      ],
+      "latitude": 36.37208,
+      "longitude": 53.50105,
+      "elevation_m": 1027,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۰۲۷ متر و مختصات نمایندهٔ دریاچه از Wikidata/Mapcarta؛ DEM و provider در preflight Open-Meteo کنترل می‌شوند.",
+      "climate": "lake_valley"
+    },
+    "chort-village": {
+      "name": "روستای چورت",
+      "page_name": "روستای چورت؛ مبدأ مسیر دریاچهٔ چورت",
+      "short_label": "روستای چورت",
+      "place_type": "village",
+      "aliases": [
+        "چورت",
+        "روستای چورت ساری",
+        "Churet village"
+      ],
+      "identity_summary": "روستای چورت در چهاردانگهٔ ساری و مبدأ مسیر پیادهٔ دریاچهٔ چورت",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://profilbaru.com/en/Churet",
+        "https://www.wikiloc.com/hiking-trails/drychh-chwrt-mynshh-z-rwsty-chwrt-155212551",
+        "https://www.wikiloc.com/hiking-trails/drychh-chwrt-27936642"
+      ],
+      "latitude": 36.37222,
+      "longitude": 53.46833,
+      "elevation_m": 1030,
+      "status": "provisional",
+      "elevation_source": "مختصات روستای چورت از منبع جغرافیایی و نقطهٔ شروع ترک‌های مستقل؛ DEM و provider در preflight Open-Meteo کنترل می‌شوند.",
+      "climate": "forest_fog"
+    },
+    "chort-spring": {
+      "name": "چشمهٔ مسیر روستای چورت تا دریاچه",
+      "page_name": "چشمهٔ مسیر روستای چورت تا دریاچهٔ چورت",
+      "short_label": "چشمهٔ مسیر چورت",
+      "place_type": "spring",
+      "aliases": [
+        "چشمهٔ چورت",
+        "CHESHME چورت"
+      ],
+      "identity_summary": "چشمهٔ نام‌گذاری‌شده در مسیر پیادهٔ روستای چورت تا دریاچهٔ چورت",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/choret-lake-msyr-pkhwb-drychh-chwrt-11446686",
+        "https://www.wikiloc.com/hiking-trails/drychh-chwrt-mynshh-z-rwsty-chwrt-155212551"
+      ],
+      "latitude": 36.369518,
+      "longitude": 53.498378,
+      "elevation_m": 1000,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ CHESHME در ترک پیاده و cross-check مستقل؛ ارتفاع خام GPX مرجع قطعی نیست و DEM در preflight کنترل می‌شود.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "chort_village_to_lake": {
+      "slug": "chort-lake-chort-village",
+      "title": "روستای چورت تا دریاچهٔ چورت",
+      "subtitle": "مسیر پیاده از روستای چورت و چشمهٔ مسیر تا دریاچهٔ چورت",
+      "trail_label": "مسیر دریاچهٔ چورت",
+      "origin": "روستای چورت",
+      "target_label": "دریاچهٔ چورت",
+      "region": "چهاردانگه · ساری · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "chort-village",
+        "chort-spring",
+        "chort-lake"
+      ],
+      "distance_km": 5.1,
+      "ascent_m": 160,
+      "one_way_minutes": 150,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-crosscheck-v1",
+        "version": "chort-lake-chort-village-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drychh-chwrt-mynshh-z-rwsty-chwrt-155212551",
+          "https://www.wikiloc.com/hiking-trails/drychh-chwrt-27936642"
+        ],
+        "evidence_tracks": [
+          "tracks/chort-lake/drychh-chwrt-mynshh-z-rwsty-chwrt.gpx",
+          "tracks/chort-lake/drychh-chwrt.gpx",
+          "tracks/chort-lake/choret-lake-msyr-pkhwb-drychh-chwrt.gpx"
+        ],
+        "cumulative_minutes": {
+          "chort-village": 0,
+          "chort-spring": 115,
+          "chort-lake": 150
+        },
+        "notes": [
+          "دو ترک مستقل پیاده مسیر روستای چورت تا دریاچه را cross-check می‌کنند؛ ترک سوم بخش دسترسی جاده‌ای دارد و فقط برای تطبیق عارضه‌ها استفاده شده است.",
+          "شروع‌های نزدیک دکل مخابرات با روستای چورت ادغام شده‌اند و access point جداگانه‌ای ساخته نشده است.",
+          "فاصله، صعود و زمان تقریبی‌اند؛ timestampهای GPX مصنوعی‌اند و مبنای زمان حرکت قرار نگرفته‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "chort-lake",
+    "tile_name": "دریاچهٔ چورت",
+    "name": "دریاچهٔ چورت (میانشه)",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ جنگلی · مازندران",
+    "category_key": "lake",
+    "region": "چهاردانگه · ساری",
+    "elevation_m": 1027,
+    "latitude": 36.37208,
+    "longitude": 53.50105,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ چورت در جنگل‌های مازندران",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچهٔ چورت",
+      "دریاچه میانشه",
+      "میانشه"
+    ]
+  },
+  "primary_point": "chort-lake"
+}
