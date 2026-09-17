@@ -1,0 +1,170 @@
+{
+  "catalog_version": "hawatch-kaboudval-catalog-v1",
+  "weather_points": {
+    "kaboudval-waterfall": {
+      "name": "آبشار کبودوال",
+      "page_name": "آبشار کبودوال علی‌آباد کتول",
+      "short_label": "آبشار کبودوال",
+      "place_type": "waterfall",
+      "aliases": [
+        "کبودوال",
+        "آبشار کبودوال گلستان",
+        "آبشار کبود وال",
+        "Kaboudval Waterfall",
+        "Kaboud-val Waterfall"
+      ],
+      "identity_summary": "آبشار کبودوال در جنگل‌های هیرکانی نزدیک علی‌آباد کتول، در انتهای مسیر سنگ‌فرش مجموعهٔ آبشار",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N6342613086",
+        "https://iranpedia.net/wiki/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1_%DA%A9%D8%A8%D9%88%D8%AF%D9%88%D8%A7%D9%84",
+        "https://tourism-golestan.com/about-golestan/waterfalls/kabodval/",
+        "https://www.wikiloc.com/walking-trails/abshr-khbwdwl-ly-abd-khtwl-114180986",
+        "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-25148372",
+        "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-ly-abd-khtwl-244335222",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.87099,
+      "longitude": 54.88938,
+      "elevation_m": 382,
+      "status": "provisional",
+      "elevation_source": "نود آبشار در OSM/Mapcarta؛ Open-Meteo GLO-90 DEM برای مختصات canonical برابر ۳۸۲ متر است و سه ترک مستقل آبشار را در همین محدوده تأیید می‌کنند.",
+      "climate": "forest_fog"
+    },
+    "kaboudval-waterfall-parking": {
+      "name": "پارکینگ مجموعهٔ آبشار کبودوال",
+      "page_name": "پارکینگ مجموعهٔ آبشار کبودوال، ابتدای مسیر پیاده‌روی",
+      "short_label": "پارکینگ کبودوال",
+      "place_type": "parking",
+      "aliases": [
+        "پارکینگ آبشار کبودوال",
+        "پارکینگ کبودوال",
+        "Kaboudval waterfall parking"
+      ],
+      "identity_summary": "پارکینگ مجموعهٔ آبشار کبودوال و مبدأ بخش پیادهٔ مسیر سنگ‌فرش تا آبشار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/walking-trails/abshr-khbwdwl-ly-abd-khtwl-114180986",
+        "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-25148372",
+        "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-ly-abd-khtwl-244335222"
+      ],
+      "latitude": 36.877509,
+      "longitude": 54.887254,
+      "elevation_m": 270,
+      "status": "provisional",
+      "elevation_source": "Waypoint «پارکینگ مجموعه آبشار» در ترک مستقل کبودوال؛ Open-Meteo GLO-90 DEM برای مختصات canonical برابر ۲۷۰ متر است.",
+      "climate": "forest_fog"
+    },
+    "kaboudval-lower-waterfall": {
+      "name": "آبشار پایینی کبودوال",
+      "page_name": "آبشار پایینی کبودوال در مسیر پیاده‌روی",
+      "short_label": "آبشار پایینی",
+      "place_type": "waterfall",
+      "aliases": [
+        "آبشار پایینی کبودوال",
+        "آبشار پایین کبودوال",
+        "Lower Kaboudval Waterfall"
+      ],
+      "identity_summary": "آبشار پایینیِ نام‌گذاری‌شده در بخش پایانی مسیر پیادهٔ پارکینگ تا آبشار کبودوال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/walking-trails/abshr-khbwdwl-ly-abd-khtwl-114180986",
+        "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-25148372"
+      ],
+      "latitude": 36.871225,
+      "longitude": 54.888933,
+      "elevation_m": 370,
+      "status": "provisional",
+      "elevation_source": "Waypoint «آبشار پایینی» در ترک مستقل کبودوال؛ Open-Meteo GLO-90 DEM برای مختصات canonical برابر ۳۷۰ متر است.",
+      "climate": "forest_fog"
+    }
+  },
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["kaboudval-lower-waterfall", "kaboudval-waterfall"],
+      "reason": "دو عارضهٔ واقعی و نام‌گذاری‌شدهٔ آبشار پایینی و آبشار اصلی کبودوال در انتهای مسیر قرار دارند؛ فاصلهٔ حدود ۴۲ متر حاصل تفاوت محل دو آبشار است، نه duplicate مختصات."
+    }
+  ],
+  "routes": {
+    "parking_to_waterfall": {
+      "slug": "kaboudval-parking-to-waterfall",
+      "title": "پارکینگ تا آبشار کبودوال",
+      "subtitle": "مسیر پیادهٔ سنگ‌فرش از پارکینگ مجموعه تا آبشار کبودوال",
+      "trail_label": "مسیر آبشار کبودوال",
+      "origin": "پارکینگ مجموعهٔ آبشار کبودوال",
+      "target_label": "آبشار کبودوال",
+      "region": "علی‌آباد کتول · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kaboudval-waterfall-parking",
+        "kaboudval-lower-waterfall",
+        "kaboudval-waterfall"
+      ],
+      "distance_km": 0.8,
+      "ascent_m": 110,
+      "one_way_minutes": 30,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-walking-reports-v1",
+        "version": "kaboudval-parking-to-waterfall-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 15,
+        "source_urls": [
+          "https://www.wikiloc.com/walking-trails/abshr-khbwdwl-ly-abd-khtwl-114180986",
+          "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-25148372",
+          "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-ly-abd-khtwl-244335222",
+          "https://iranpedia.net/wiki/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1_%DA%A9%D8%A8%D9%88%D8%AF%D9%88%D8%A7%D9%84",
+          "https://tourism-golestan.com/about-golestan/waterfalls/kabodval/"
+        ],
+        "evidence_tracks": [
+          "tracks/kaboudval-waterfall/abshr-khbwdwl-ly-abd-khtwl (1).gpx",
+          "tracks/kaboudval-waterfall/abshr-khbwdwl.gpx",
+          "tracks/kaboudval-waterfall/abshr-khbwdwl-ly-abd-khtwl.gpx"
+        ],
+        "cumulative_minutes": {
+          "kaboudval-waterfall-parking": 0,
+          "kaboudval-lower-waterfall": 20,
+          "kaboudval-waterfall": 30
+        },
+        "notes": [
+          "سه ترک مستقل بخش پیادهٔ پارکینگ تا آبشار را حدود ۰٫۶۹ تا ۰٫۸۶ کیلومتر تأیید می‌کنند؛ بخش جاده‌ای دسترسی از Route حذف شده است.",
+          "آبشار پایینی یک waypoint نام‌گذاری‌شده و عارضهٔ واقعی در مسیر است و برای زنجیرهٔ مبدأ تا مقصد استفاده شده، نه یک نقطهٔ ساختگی.",
+          "زمان حدود ۲۰ تا ۴۰ دقیقه در منابع مستقل گزارش شده و مقدار Route برابر ۳۰ دقیقه با عدم‌قطعیت ۱۵ دقیقه است؛ ارتفاع GPX فقط مرجع هندسه است و elevation canonical از DEM می‌آید.",
+          "ترک ۲۰۲۲ از ابتدای مسیر پیاده آغاز می‌شود و دو ترک دیگر پارکینگ را با فاصلهٔ کمتر از ۲۰ متر ثبت می‌کنند؛ مسیر مشترک فقط از پارکینگ تا آبشار محاسبه شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kaboudval-waterfall",
+    "tile_name": "آبشار کبودوال",
+    "name": "آبشار کبودوال",
+    "short_category": "آبشار",
+    "category": "آبشار · گلستان",
+    "category_key": "waterfall",
+    "region": "استان گلستان · علی‌آباد کتول",
+    "elevation_m": 382,
+    "latitude": 36.87099,
+    "longitude": 54.88938,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار کبودوال در جنگل‌های هیرکانی گلستان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "kaboudval-waterfall"
+}
