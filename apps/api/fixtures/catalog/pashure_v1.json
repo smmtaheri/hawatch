@@ -1,0 +1,204 @@
+{
+  "catalog_version": "hawatch-pashure-catalog-v1",
+  "weather_points": {
+    "pashure": {
+      "name": "قلهٔ پاشوره",
+      "page_name": "قلهٔ پاشوره در نوا و دشت آزو",
+      "short_label": "قلهٔ پاشوره",
+      "place_type": "summit",
+      "aliases": [
+        "پاشوره",
+        "قله پاشوره",
+        "پاشورهٔ جدید",
+        "Pashoreh Peak",
+        "Pashureh Peak"
+      ],
+      "identity_summary": "قلهٔ پاشوره در البرز شرقی، در مسیر پیادهٔ روستای نوا و دشت آزو",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B4%D9%88%D8%B1%D9%87/",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-pshwrh-rtf-3855-mtr-rwsty-nw-jdh-hrz-29-khrdd-1405-270260730",
+        "https://www.wikiloc.com/hiking-trails/qlh-pshwrh-dsht-azw-51674109",
+        "https://www.wikiloc.com/mountaineering-trails/pashoreh-95-03-14-nima-qlh-pshwrh-13588025",
+        "https://es.wikiloc.com/rutas-senderismo/swd-bh-qlh-pshwrh-z-ab-mdny-nw-264317426",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.831684,
+      "longitude": 52.277386,
+      "elevation_m": 3855,
+      "status": "provisional",
+      "elevation_source": "سه ترک مستقل جدید به مختصات قلهٔ فعلی نزدیک‌اند؛ Open-Meteo GLO-90 DEM در 35.831684,52.277386 برابر 3836 متر است و اختلاف 19 متر با ارتفاع گزارش‌شدهٔ 3855 متر دارد. ترک 2016 به تابلوی قدیمی/قلهٔ ابرت نزدیک می‌شود و برای مختصات فعلی مبنای اصلی نیست.",
+      "climate": "high_alpine"
+    },
+    "nava-village": {
+      "name": "روستای نوا",
+      "page_name": "روستای نوا، مبدأ مسیر قلهٔ پاشوره",
+      "short_label": "روستای نوا",
+      "place_type": "village",
+      "aliases": [
+        "نوا",
+        "روستا نوا",
+        "Nava village"
+      ],
+      "identity_summary": "روستای نوا در جادهٔ هراز و مبدأ مشترک ترک‌های پیادهٔ قلهٔ پاشوره",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B4%D9%88%D8%B1%D9%87/",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-pshwrh-rtf-3855-mtr-rwsty-nw-jdh-hrz-29-khrdd-1405-270260730",
+        "https://www.wikiloc.com/hiking-trails/qlh-pshwrh-dsht-azw-51674109",
+        "https://es.wikiloc.com/rutas-senderismo/swd-bh-qlh-pshwrh-z-ab-mdny-nw-264317426"
+      ],
+      "latitude": 35.85355,
+      "longitude": 52.21465,
+      "elevation_m": 2253,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز آب‌معدنی نوا در چهار ترک پیاده؛ Open-Meteo GLO-90 DEM در 35.853550,52.214650 برابر 2253 متر است و این نقطه به‌عنوان مبدأ روستا/دسترسی canonical ثبت شده است.",
+      "climate": "high_alpine"
+    },
+    "pashure-azo-plain": {
+      "name": "دشت آزو",
+      "page_name": "دشت آزو در مسیر پاشوره",
+      "short_label": "دشت آزو",
+      "place_type": "meadow",
+      "aliases": [
+        "آزو",
+        "دشت آزو نوا",
+        "Azo plain"
+      ],
+      "identity_summary": "دشت آزو، عارضهٔ واقعی و میانی در مسیر پیادهٔ نوا تا قلهٔ پاشوره",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B4%D9%88%D8%B1%D9%87/",
+        "https://www.wikiloc.com/hiking-trails/qlh-pshwrh-dsht-azw-51674109",
+        "https://es.wikiloc.com/rutas-senderismo/swd-bh-qlh-pshwrh-z-ab-mdny-nw-264317426"
+      ],
+      "latitude": 35.84455,
+      "longitude": 52.23573,
+      "elevation_m": 2565,
+      "status": "provisional",
+      "elevation_source": "Waypoint دشت آزو در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در 35.844550,52.235730 برابر 2565 متر است و ارتفاع خام ترک حدود 2585 متر فقط مرجع هندسه است.",
+      "climate": "high_alpine"
+    },
+    "pashure-ebrat-pass": {
+      "name": "گردنهٔ ابرت",
+      "page_name": "گردنهٔ ابرت در مسیر پاشوره",
+      "short_label": "گردنهٔ ابرت",
+      "place_type": "pass",
+      "aliases": [
+        "ابرت",
+        "گردنه ابرت",
+        "Ebrat pass"
+      ],
+      "identity_summary": "گردنهٔ ابرت، landmark نام‌گذاری‌شدهٔ بخش میانی مسیر نوا و دشت آزو تا پاشوره",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B4%D9%88%D8%B1%D9%87/",
+        "https://www.wikiloc.com/mountaineering-trails/pashoreh-95-03-14-nima-qlh-pshwrh-13588025",
+        "https://www.wikiloc.com/hiking-trails/qlh-pshwrh-dsht-azw-51674109",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-pshwrh-rtf-3855-mtr-rwsty-nw-jdh-hrz-29-khrdd-1405-270260730"
+      ],
+      "latitude": 35.831095,
+      "longitude": 52.243053,
+      "elevation_m": 3150,
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنهٔ ابرت در ترک 2016 و نقاط گردنهٔ نزدیک در ترک‌های جدید؛ Open-Meteo GLO-90 DEM در 35.831095,52.243053 برابر 3149 متر است. اختلاف مختصات ترک‌های مستقل برای این landmark حدود 35 متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "nava_to_pashure": {
+      "slug": "pashure-nava",
+      "title": "روستای نوا تا قلهٔ پاشوره",
+      "subtitle": "مسیر پیاده از نوا و دشت آزو، گردنهٔ ابرت تا قلهٔ پاشوره",
+      "trail_label": "مسیر نوا–پاشوره",
+      "origin": "روستای نوا",
+      "target_label": "قلهٔ پاشوره",
+      "region": "نوا · دشت آزو · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "nava-village",
+        "pashure-azo-plain",
+        "pashure-ebrat-pass",
+        "pashure"
+      ],
+      "distance_km": 8.3,
+      "ascent_m": 1600,
+      "one_way_minutes": 390,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "pashure-nava-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B4%D9%88%D8%B1%D9%87/",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-pshwrh-rtf-3855-mtr-rwsty-nw-jdh-hrz-29-khrdd-1405-270260730",
+          "https://www.wikiloc.com/hiking-trails/qlh-pshwrh-dsht-azw-51674109",
+          "https://www.wikiloc.com/mountaineering-trails/pashoreh-95-03-14-nima-qlh-pshwrh-13588025",
+          "https://es.wikiloc.com/rutas-senderismo/swd-bh-qlh-pshwrh-z-ab-mdny-nw-264317426"
+        ],
+        "evidence_tracks": [
+          "tracks/pashure/swd-bh-qlh-pshwrh-rtf-3855-mtr-rwsty-nw-jdh-hrz-29-khrdd-140.gpx",
+          "tracks/pashure/qlh-pshwrh-dsht-azw.gpx",
+          "tracks/pashure/swd-bh-qlh-pshwrh-z-ab-mdny-nw.gpx",
+          "tracks/pashure/pashoreh-95-03-14-nima-qlh-pshwrh.gpx"
+        ],
+        "cumulative_minutes": {
+          "nava-village": 0,
+          "pashure-azo-plain": 120,
+          "pashure-ebrat-pass": 270,
+          "pashure": 390
+        },
+        "notes": [
+          "سه ترک مستقل جدید از آب‌معدنی نوا تا قلهٔ فعلی با مختصات حدود 35.83168,52.27739 همگرا می‌شوند؛ فاصلهٔ یک‌طرفهٔ بریده‌شده حدود 8.1 تا 8.3 کیلومتر است.",
+          "ترک 2016 به تابلوی قدیمی و قلهٔ ابرت نزدیک می‌شود؛ به‌عنوان cross-check نگه داشته شده و قلهٔ جداگانه یا duplicate ساخته نمی‌شود.",
+          "نوا به‌عنوان مبدأ canonical روستایی ثبت شده و آب‌معدنی/پارکینگ نقطهٔ جداگانه نیست؛ دشت آزو و گردنهٔ ابرت landmarkهای واقعی مسیرند.",
+          "زمان یک‌طرفه از هندسهٔ چهار ترک و گزارش مستقل حدود 6 تا 8 ساعت برآورد شده و عدم‌قطعیت 120 دقیقه دارد؛ timestamp ترک شب‌مانی برای ETA استفاده نشده است.",
+          "مسیر جنوبی لاسِم در منابع ذکر شده است، اما برای آن ترک پیادهٔ کافی در این بسته وجود ندارد و فعلاً Route جداگانه منتشر نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "pashure",
+    "tile_name": "پاشوره",
+    "name": "قلهٔ پاشوره",
+    "short_category": "قله",
+    "category": "قله‌های البرز شرقی",
+    "category_key": "mountain",
+    "region": "نوا · دشت آزو · مازندران",
+    "elevation_m": 3855,
+    "latitude": 35.831684,
+    "longitude": 52.277386,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ پاشوره در نوا و دشت آزو",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پاشوره",
+      "قله پاشوره",
+      "پاشورهٔ جدید",
+      "Pashoreh Peak",
+      "Pashureh Peak"
+    ]
+  },
+  "primary_point": "pashure"
+}
