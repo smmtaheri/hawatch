@@ -1,0 +1,185 @@
+{
+  "catalog_version": "hawatch-orin-catalog-v1",
+  "weather_points": {
+    "orin": {
+      "name": "قلهٔ اورین",
+      "page_name": "قلهٔ اورین خوی",
+      "short_label": "اورین",
+      "place_type": "summit",
+      "aliases": [
+        "اورین",
+        "قله اورین",
+        "کوه اورین",
+        "Avrin",
+        "Mount Avrin",
+        "Avrin Peak"
+      ],
+      "identity_summary": "قلهٔ اورین؛ بلندترین قلهٔ استان آذربایجان غربی در شهرستان خوی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Mount_Avrin",
+        "https://fa.teknopedia.teknokrat.ac.id/wiki/%DA%A9%D9%88%D9%87_%D8%A7%D9%88%D8%B1%DB%8C%D9%86",
+        "https://decovel.com/page/guide-to-climbing-avrin-peak",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wryn-symrg-adhrbyjn-grby-215806696",
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-symrgy-wryn-bm-stn-adhrbyjn-grby15khrdd403-173068890",
+        "https://www.wikiloc.com/hiking-trails/qlh-wryn-z-hsr-khwy-adhrbyjn-grby-1403-4-1-174818342",
+        "https://gl.wikiloc.com/rutas-alpinismo/avrin-peak-from-qlh-wryn-bm-stn-adhrbyjn-grby-btrykh-5-mrdd-1405-276423018",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 38.55414,
+      "longitude": 44.57373,
+      "elevation_m": 3702,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۷۰۲ متر در منابع عمومی؛ چهار ترک مستقل مسیر حصار مختصات چکاد را نزدیک ۳۸٫۵۵۴۱۴، ۴۴٫۵۷۳۷۳ همگرا می‌کنند و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "orin-shelter": {
+      "name": "پناهگاه اورین",
+      "page_name": "پناهگاه اورین؛ مبدأ مسیر قلهٔ اورین",
+      "short_label": "پناهگاه اورین",
+      "place_type": "shelter",
+      "aliases": [
+        "پناهگاه قله اورین",
+        "پناه اورین",
+        "Orin refuge",
+        "Avrin shelter"
+      ],
+      "identity_summary": "پناهگاه شناخته‌شدهٔ مسیر حصار در دامنهٔ اورین و مبدأ قطعهٔ پیادهٔ صعود قله",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://decovel.com/page/guide-to-climbing-avrin-peak",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wryn-symrg-adhrbyjn-grby-215806696",
+        "https://gl.wikiloc.com/rutas-alpinismo/avrin-peak-from-qlh-wryn-bm-stn-adhrbyjn-grby-btrykh-5-mrdd-1405-276423018",
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-symrgy-wryn-bm-stn-adhrbyjn-grby15khrdd403-173068890"
+      ],
+      "latitude": 38.565852,
+      "longitude": 44.623000,
+      "elevation_m": 2371,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ پناهگاه در دو ترک مستقل نزدیک ۳۸٫۵۶۵۸۵، ۴۴٫۶۲۳۰۰ ثبت شده است؛ DEM/Open-Meteo برای کنترل ارتفاع استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "orin-golar-lake": {
+      "name": "دریاچهٔ گولار اورین",
+      "page_name": "دریاچهٔ گولار اورین در مسیر قله",
+      "short_label": "دریاچهٔ گولار اورین",
+      "place_type": "lake",
+      "aliases": [
+        "دریاچه اورین",
+        "گول‌لار اورین",
+        "گولار اورین",
+        "Orin lake",
+        "Gol Lar lake"
+      ],
+      "identity_summary": "دریاچهٔ فصلی گولار در مسیر حصار به قلهٔ اورین، عارضهٔ طبیعی میانی مسیر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://decovel.com/page/guide-to-climbing-avrin-peak",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wryn-symrg-adhrbyjn-grby-215806696",
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-symrgy-wryn-bm-stn-adhrbyjn-grby15khrdd403-173068890",
+        "https://gl.wikiloc.com/rutas-alpinismo/avrin-peak-from-qlh-wryn-bm-stn-adhrbyjn-grby-btrykh-5-mrdd-1405-276423018"
+      ],
+      "latitude": 38.55550,
+      "longitude": 44.59040,
+      "elevation_m": 3144,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ دریاچه در ترک اصلی و ترک cross-check حدود ۳۸٫۵۵۵۵، ۴۴٫۵۹۰۴ همگراست؛ ترک‌ها ارتفاع حدود ۳۱۳۰ متر و DEM/Open-Meteo مقدار ۳۱۴۴ متر را نشان می‌دهند.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "hessar_to_orin": {
+      "slug": "orin-hesar",
+      "title": "پناهگاه اورین تا قلهٔ اورین",
+      "subtitle": "مسیر پیاده از پناهگاه اورین، دریاچهٔ گولار و یال شرقی تا قله",
+      "trail_label": "مسیر پناهگاه–اورین",
+      "origin": "پناهگاه اورین",
+      "target_label": "قلهٔ اورین",
+      "region": "خوی · آذربایجان غربی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "orin-shelter",
+        "orin-golar-lake",
+        "orin"
+      ],
+      "distance_km": 6.0,
+      "ascent_m": 1330,
+      "one_way_minutes": 270,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "orin-hesar-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://decovel.com/page/guide-to-climbing-avrin-peak",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-wryn-symrg-adhrbyjn-grby-215806696",
+          "https://www.wikiloc.com/hiking-trails/swd-qlh-symrgy-wryn-bm-stn-adhrbyjn-grby15khrdd403-173068890",
+          "https://www.wikiloc.com/hiking-trails/qlh-wryn-z-hsr-khwy-adhrbyjn-grby-1403-4-1-174818342",
+          "https://gl.wikiloc.com/rutas-alpinismo/avrin-peak-from-qlh-wryn-bm-stn-adhrbyjn-grby-btrykh-5-mrdd-1405-276423018"
+        ],
+        "evidence_tracks": [
+          "tracks/orin/qlh-wryn-symrg-adhrbyjn-grby.gpx",
+          "tracks/orin/avrin-peak-from-qlh-wryn-bm-stn-adhrbyjn-grby-btrykh-5-mrdd-.gpx",
+          "tracks/orin/swd-qlh-symrgy-wryn-bm-stn-adhrbyjn-grby15khrdd403.gpx",
+          "tracks/orin/qlh-wryn-z-hsr-khwy-adhrbyjn-grby-1403-4-1.gpx"
+        ],
+        "cumulative_minutes": {
+          "orin-shelter": 0,
+          "orin-golar-lake": 180,
+          "orin": 270
+        },
+        "notes": [
+          "چهار ترک مستقل مسیر حصار/پناهگاه را تا قله و دریاچهٔ میانی تأیید می‌کنند؛ ترک جنوبی گوگرد مسیر جایگزین جداگانه است و در metrics این Route مخلوط نشده است.",
+          "پارکینگ و جادهٔ خاکی نزدیک حصار از metrics قطعهٔ پیاده حذف شده و مبدأ روی پناهگاه شناخته‌شدهٔ اورین تثبیت شده است.",
+          "دریاچهٔ گولار عارضهٔ واقعی و نام‌دار میانی است؛ نقطهٔ generic برای پرکردن زنجیره اضافه نشده است.",
+          "زمان خام GPX به‌دلیل توقف‌ها برای ETA قابل اتکا نیست؛ ۲۷۰ دقیقه با عدم‌قطعیت ۶۰ دقیقه از هندسه و گزارش‌های مستقل برآورد شده است.",
+          "اورین در محدودهٔ مرزی قرار دارد؛ پیش از حرکت وضعیت مجوز و محدودیت‌های روز را از منابع محلی بررسی کنید."
+        ]
+      },
+      "public_point_notes": {
+        "orin-shelter": "پناهگاه اورین مبدأ قطعهٔ پیادهٔ این Route است؛ مسیر جاده‌ای تا آن جداگانه محاسبه نشده است.",
+        "orin-golar-lake": "دریاچهٔ گولار عارضهٔ میانی مسیر است و ممکن است فصلی باشد."
+      }
+    }
+  },
+  "point": {
+    "slug": "orin",
+    "tile_name": "اورین",
+    "name": "قلهٔ اورین",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان غربی",
+    "category_key": "mountain",
+    "region": "خوی · آذربایجان غربی",
+    "elevation_m": 3702,
+    "latitude": 38.55414,
+    "longitude": 44.57373,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ اورین خوی",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "اورین",
+      "قله اورین",
+      "کوه اورین",
+      "Avrin",
+      "Mount Avrin",
+      "Avrin Peak"
+    ]
+  },
+  "primary_point": "orin"
+}
