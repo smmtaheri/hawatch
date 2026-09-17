@@ -1,0 +1,210 @@
+{
+  "catalog_version": "hawatch-balqis-catalog-v1",
+  "weather_points": {
+    "balqis": {
+      "name": "قلهٔ بلقیس",
+      "page_name": "قلهٔ بلقیس در تخت‌سلیمان",
+      "short_label": "بلقیس",
+      "place_type": "summit",
+      "aliases": [
+        "بلقیس",
+        "قله بلقیس",
+        "قله بلقیس زنجان",
+        "قله بلقیس تکاب",
+        "Belqeys Peak",
+        "Belghis Peak",
+        "Hacha Dagi",
+        "Balqiz Dagi"
+      ],
+      "identity_summary": "قلهٔ بلقیس در نزدیکی تخت‌سلیمان و روستای قراولخانه، در محدودهٔ مرزی زنجان و آذربایجان غربی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-ykhrwzh-bh-qlh-blqys-belghis-peak-one-day-ascent-229483003",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-belqeys-peak-17939642",
+        "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-qlh-blqys-znjn-trh-symrg-110573471",
+        "https://www.wikiloc.com/hiking-trails/qlh-blqys-znjn-z-qrwlkhnh-adhr-98-44596261",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-znjn-trh-symrg-403-3-26-belqeys-peak-at-zanjan-174722396",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.668993,
+      "longitude": 47.29849,
+      "elevation_m": 3340,
+      "status": "provisional",
+      "elevation_source": "مختصات چکاد شمالی در دو ترک مستقل اخیر نزدیک ۳۶٫۶۶۸۹۹۳، ۴۷٫۲۹۸۴۹ همگراست؛ ارتفاع عمومی حدود ۳۳۴۰ متر گزارش شده و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "balqis-qaravolkhaneh-village": {
+      "name": "روستای قراولخانه",
+      "page_name": "روستای قراولخانه، مبدأ مسیر قلهٔ بلقیس",
+      "short_label": "قراولخانه",
+      "place_type": "village",
+      "aliases": [
+        "قراولخانه",
+        "قراول‌خانه",
+        "Qaravolkhaneh",
+        "Gharavolkhaneh"
+      ],
+      "identity_summary": "روستای قراولخانه در نزدیکی تخت‌سلیمان و مبدأ مشترک ترک‌های پیادهٔ قلهٔ بلقیس",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-ykhrwzh-bh-qlh-blqys-belghis-peak-one-day-ascent-229483003",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-belqeys-peak-17939642",
+        "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-qlh-blqys-znjn-trh-symrg-110573471",
+        "https://www.wikiloc.com/hiking-trails/qlh-blqys-znjn-z-qrwlkhnh-adhr-98-44596261"
+      ],
+      "latitude": 36.613294,
+      "longitude": 47.315755,
+      "elevation_m": 2290,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ روستا در waypoint ترک‌های قراولخانه؛ ارتفاع خام آغاز مسیر نزدیک ۲۳۰۰ متر است و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "balqis-osti-ortli-spring": {
+      "name": "چشمهٔ اوستی‌اورتلی‌بولاغ",
+      "page_name": "چشمهٔ اوستی‌اورتلی‌بولاغ در مسیر بلقیس",
+      "short_label": "چشمهٔ اوستی‌اورتلی‌بولاغ",
+      "place_type": "spring",
+      "aliases": [
+        "اوستی اورتلی بولاغ",
+        "چشمه اوستی اورتلی بولاغ",
+        "Osti Ortli Bolagh"
+      ],
+      "identity_summary": "چشمهٔ نام‌دار ثبت‌شده در بخش میانی مسیر قراولخانه تا قلهٔ بلقیس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-belqeys-peak-17939642"
+      ],
+      "latitude": 36.65206,
+      "longitude": 47.296825,
+      "elevation_m": 2940,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمهٔ اوستی‌اورتلی‌بولاغ در ترک مستقل قراولخانه؛ ارتفاع خام نزدیک ۲۹۴۲ متر است و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    },
+    "balqis-historical-castle": {
+      "name": "قلعهٔ تاریخی بلقیس",
+      "page_name": "قلعهٔ تاریخی بلقیس در مسیر قله",
+      "short_label": "قلعهٔ بلقیس",
+      "place_type": "landmark",
+      "aliases": [
+        "قلعه بلقیس",
+        "Belgheys Summit",
+        "Belqeys castle"
+      ],
+      "identity_summary": "بقایای قلعهٔ تاریخی بلقیس در قلهٔ جنوبی و عارضهٔ شاخص پیش از چکاد شمالی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-belqeys-peak-17939642",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-znjn-trh-symrg-403-3-26-belqeys-peak-at-zanjan-174722396"
+      ],
+      "latitude": 36.664192,
+      "longitude": 47.30039,
+      "elevation_m": 3320,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلعهٔ بلقیس در دو ترک مستقل نزدیک ۳۶٫۶۶۴۱۹۲، ۴۷٫۳۰۰۳۹؛ ارتفاع خام ترک‌ها حدود ۳۳۲۰ متر است و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "qaravolkhaneh_to_balqis": {
+      "slug": "balqis-qaravolkhaneh",
+      "title": "روستای قراولخانه تا قلهٔ بلقیس",
+      "subtitle": "مسیر پیاده از قراولخانه، چشمهٔ اوستی‌اورتلی‌بولاغ و قلعهٔ بلقیس تا چکاد شمالی",
+      "trail_label": "مسیر قراولخانه–بلقیس",
+      "origin": "روستای قراولخانه",
+      "target_label": "قلهٔ بلقیس",
+      "region": "تخت‌سلیمان · مرز زنجان و آذربایجان غربی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "balqis-qaravolkhaneh-village",
+        "balqis-osti-ortli-spring",
+        "balqis-historical-castle",
+        "balqis"
+      ],
+      "distance_km": 8.5,
+      "ascent_m": 1160,
+      "one_way_minutes": 300,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "balqis-qaravolkhaneh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/swd-ykhrwzh-bh-qlh-blqys-belghis-peak-one-day-ascent-229483003",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-blqys-belqeys-peak-17939642",
+          "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-qlh-blqys-znjn-trh-symrg-110573471",
+          "https://www.wikiloc.com/hiking-trails/qlh-blqys-znjn-z-qrwlkhnh-adhr-98-44596261"
+        ],
+        "evidence_tracks": [
+          "tracks/balqis/swd-ykhrwzh-bh-qlh-blqys-belghis-peak-one-day-ascent.gpx",
+          "tracks/balqis/qlh-blqys-belqeys-peak.gpx",
+          "tracks/balqis/jy-py-s-msyr-qlh-blqys-znjn-trh-symrg.gpx",
+          "tracks/balqis/qlh-blqys-znjn-z-qrwlkhnh-adhr-98.gpx"
+        ],
+        "cumulative_minutes": {
+          "balqis-qaravolkhaneh-village": 0,
+          "balqis-osti-ortli-spring": 150,
+          "balqis-historical-castle": 270,
+          "balqis": 300
+        },
+        "notes": [
+          "ترک اصلی ۲۰۲۵ یک مسیر حلقه‌ای پیاده از قراولخانه تا هر دو قله است؛ برای ETA فقط قطعهٔ رفت تا چکاد شمالی در نظر گرفته شده است.",
+          "ترک‌های ۲۰۱۷ و ۲۰۱۹ عمدتاً در قلهٔ جنوبی/قلعه پایان می‌یابند و برای تطبیق corridor و landmark استفاده شده‌اند؛ به‌عنوان مسیر دوم مستقل ثبت نشده‌اند.",
+          "ترک ۲۰۲۴ از سمت معدن شامل حدود ۱۰ کیلومتر دسترسی جاده‌ای است و در metrics این Route مخلوط نشده است.",
+          "ارتفاع خام GPX مرجع هندسه است؛ ارتفاع نهایی نقطه‌ها با DEM/Open-Meteo کنترل می‌شود.",
+          "بلقیس در محدودهٔ نزدیک تخت‌سلیمان و مرز زنجان و آذربایجان غربی گزارش شده است؛ پیش از حرکت محدودیت‌های محلی و وضعیت مسیر را بررسی کنید."
+        ]
+      },
+      "public_point_notes": {
+        "balqis-qaravolkhaneh-village": "قراولخانه مبدأ canonical مسیر است و پارکینگ/محل توقف نزدیک آن نقطهٔ جداگانه نیست.",
+        "balqis-osti-ortli-spring": "چشمهٔ نام‌دار بخش میانی مسیر است و صفحهٔ مستقل آن noindex می‌ماند.",
+        "balqis-historical-castle": "قلعهٔ تاریخی روی قلهٔ جنوبی landmark مسیر است؛ هدف هواچ چکاد شمالی قلهٔ بلقیس است."
+      }
+    }
+  },
+  "point": {
+    "slug": "balqis",
+    "tile_name": "بلقیس",
+    "name": "قلهٔ بلقیس",
+    "short_category": "قله",
+    "category": "قله‌های زنجان و آذربایجان غربی",
+    "category_key": "mountain",
+    "region": "تخت‌سلیمان · مرز زنجان و آذربایجان غربی",
+    "elevation_m": 3340,
+    "latitude": 36.668993,
+    "longitude": 47.29849,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بلقیس در تخت‌سلیمان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "بلقیس",
+      "قله بلقیس",
+      "قله بلقیس زنجان",
+      "قله بلقیس تکاب",
+      "Belqeys Peak",
+      "Belghis Peak",
+      "Hacha Dagi",
+      "Balqiz Dagi"
+    ]
+  },
+  "primary_point": "balqis"
+}
