@@ -1414,6 +1414,20 @@ html[data-theme="light"] .route-page .share-gear li {
   min-width: 0;
 }
 
+/* Keep the route rail aligned with the node centres. The old fixed 8% inset
+ * left a visible half-segment before the origin and after the destination;
+ * account for the actual card count and inter-card gap instead. */
+.route-page .route-points-axis-content .route-linear-track::before {
+  left: calc(
+    (100% - (var(--route-point-count) - 1) * var(--route-point-gap)) /
+      (2 * var(--route-point-count))
+  );
+  right: calc(
+    (100% - (var(--route-point-count) - 1) * var(--route-point-gap)) /
+      (2 * var(--route-point-count))
+  );
+}
+
 .route-page .route-points-axis-content.has-overflow .route-linear-track,
 .route-page .route-points-axis-content.has-overflow .route-point-weather-grid {
   grid-template-columns: repeat(var(--route-point-count), var(--route-point-width));
