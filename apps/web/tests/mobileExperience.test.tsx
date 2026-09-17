@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
-import { DestinationArtwork } from "../src/components/DestinationArtwork";
 import { PointCard } from "../src/components/PointCard";
 import { DestinationIcon, PointIcon } from "../src/components/PointIcon";
 import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
@@ -114,19 +113,29 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
-  it("routes the legacy destination artwork facade through the shared SVG icon", () => {
-    const { container } = render(<DestinationArtwork categoryKey="waterfall" />);
+  it("keeps approved destination artwork inside the shared icon frame", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="waterfall" className="destination-card-icon" />,
+    );
     expect(container.querySelector(".destination-icon.destination-card-icon")).toBeInTheDocument();
-    expect(container.querySelector(".point-icon.waterfall")).toBeInTheDocument();
-    expect(container.querySelector(".destination-artwork")).not.toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork.waterfall")).toBeInTheDocument();
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
   });
 
-  it("keeps destination wrappers and glyphs shared across card surfaces", () => {
+  it("uses approved artwork through the shared destination wrapper", () => {
     const { container } = render(
       <DestinationIcon categoryKey="desert" className="tile-icon" />,
     );
     expect(container.querySelector(".destination-icon.tile-icon")).toBeInTheDocument();
-    expect(container.querySelector(".point-icon.desert")).toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork.desert")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.desert")).not.toBeInTheDocument();
+  });
+
+  it("keeps the coast alias in the approved beach-artwork family", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="coast" className="tile-icon" />,
+    );
+    expect(container.querySelector(".destination-artwork.beach")).toBeInTheDocument();
   });
 
   it("keeps the destination wrapper's place-type fallback for lakes", () => {

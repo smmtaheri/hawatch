@@ -1,3 +1,5 @@
+import { DestinationArtwork, hasDestinationArtwork } from "./DestinationArtwork";
+
 const MOUNTAIN_CATEGORY_KEYS = new Set(["mountain", "ridge", "highland", "highlands"]);
 const BEACH_CATEGORY_KEYS = new Set(["beach", "coast"]);
 const PLACE_TYPE_CATEGORY_KEYS: Record<string, string> = {
@@ -21,8 +23,9 @@ export function resolvePointCategoryKey(categoryKey: string, placeType?: string)
 /**
  * The single destination-icon entry point used by every card surface.
  * Callers may supply their layout class (for example `tile-icon` or
- * `destination-card-icon`), but category resolution and the glyph itself stay
- * in this component so a destination cannot drift between pages.
+ * `destination-card-icon`), but category resolution, artwork selection and
+ * the fallback glyph all stay in this component so a destination cannot drift
+ * between pages.
  */
 export function DestinationIcon({
   categoryKey,
@@ -33,9 +36,16 @@ export function DestinationIcon({
   placeType?: string;
   className: string;
 }) {
+  const key = resolvePointCategoryKey(categoryKey, placeType);
+  const artworkKey = BEACH_CATEGORY_KEYS.has(key) ? "beach" : key;
+
   return (
     <span className={`destination-icon ${className}`} aria-hidden="true">
-      <PointIcon categoryKey={categoryKey} placeType={placeType} />
+      {hasDestinationArtwork(artworkKey) ? (
+        <DestinationArtwork categoryKey={artworkKey} />
+      ) : (
+        <PointIcon categoryKey={key} />
+      )}
     </span>
   );
 }
