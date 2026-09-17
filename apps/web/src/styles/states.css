@@ -1419,12 +1419,14 @@ html[data-theme="light"] .route-page .share-gear li {
  * account for the actual card count and inter-card gap instead. */
 .route-page .route-points-axis-content .route-linear-track::before {
   left: calc(
-    (100% - (var(--route-point-count) - 1) * var(--route-point-gap)) /
-      (2 * var(--route-point-count))
+    4px
+      + (100% - 8px - (var(--route-point-count) - 1) * var(--route-point-gap)) /
+        (2 * var(--route-point-count))
   );
   right: calc(
-    (100% - (var(--route-point-count) - 1) * var(--route-point-gap)) /
-      (2 * var(--route-point-count))
+    4px
+      + (100% - 8px - (var(--route-point-count) - 1) * var(--route-point-gap)) /
+        (2 * var(--route-point-count))
   );
 }
 
