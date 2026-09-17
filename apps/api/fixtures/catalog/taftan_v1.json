@@ -1,0 +1,173 @@
+{
+  "catalog_version": "hawatch-taftan-catalog-v1",
+  "weather_points": {
+    "taftan": {
+      "name": "قلهٔ تفتان",
+      "page_name": "قلهٔ تفتان در سیستان و بلوچستان",
+      "short_label": "قلهٔ تفتان",
+      "place_type": "summit",
+      "aliases": [
+        "تفتان",
+        "قله تفتان",
+        "کوه تفتان",
+        "Taftan",
+        "Taftan Peak"
+      ],
+      "identity_summary": "قلهٔ تفتان، آتشفشان بلند سیستان و بلوچستان و مقصد مسیرهای غربی از دره‌گل",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/کوه-تفتان/",
+        "https://www.wikiloc.com/walking-trails/tftn-z-drh-gl-164691363",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-tftn-trh-symrg-bm-systn-w-blwchstn-404-7-17-taftan-peak-at-sistan-235525661",
+        "https://www.wikiloc.com/hiking-trails/qlh-tftn-taftan-summit-5912333",
+        "https://www.wikiloc.com/mountaineering-trails/rft-w-brgsht-swd-qlh-y-tftn-z-rwsty-drh-gl-42914851",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 28.59888,
+      "longitude": 61.13190,
+      "elevation_m": 3941,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۹۴۱ متر در گزارش‌های کوهنوردی؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۳۹۰۳ متر است و اختلاف ۳۸ متر دارد.",
+      "climate": "high_alpine"
+    },
+    "taftan-darreh-gol-camp": {
+      "name": "اردوگاه دره‌گل تفتان",
+      "page_name": "اردوگاه دره‌گل؛ مبدأ مسیر تفتان",
+      "short_label": "اردوگاه دره‌گل",
+      "place_type": "trailhead",
+      "aliases": [
+        "دره گل تفتان",
+        "اردوگاه دره گل",
+        "پای‌کار تفتان",
+        "Darreh Gol camp"
+      ],
+      "identity_summary": "اردوگاه آموزش و پرورش دره‌گل، محل دسترسی جاده‌ای و آغاز مسیر پیادهٔ غربی تفتان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/کوه-تفتان/",
+        "https://www.wikiloc.com/walking-trails/tftn-z-drh-gl-164691363",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-tftn-trh-symrg-bm-systn-w-blwchstn-404-7-17-taftan-peak-at-sistan-235525661",
+        "https://www.wikiloc.com/hiking-trails/qlh-tftn-taftan-summit-5912333"
+      ],
+      "latitude": 28.60750,
+      "longitude": 61.07650,
+      "elevation_m": 2500,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ اردوگاه دره‌گل در چهار ترک مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۲۴۹۵ متر است.",
+      "climate": "high_alpine"
+    },
+    "taftan-sobh-shelter": {
+      "name": "پناهگاه صبح تفتان",
+      "page_name": "پناهگاه صبح در مسیر قلهٔ تفتان",
+      "short_label": "پناهگاه صبح",
+      "place_type": "shelter",
+      "aliases": [
+        "پناه صبح تفتان",
+        "پناهگاه تفتان",
+        "Sobh refuge",
+        "Sobh shelter"
+      ],
+      "identity_summary": "پناهگاه صبح، جان‌پناه شناخته‌شدهٔ میانهٔ مسیر غربی اردوگاه دره‌گل تا قلهٔ تفتان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/کوه-تفتان/",
+        "https://www.wikiloc.com/walking-trails/tftn-z-drh-gl-164691363",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-tftn-trh-symrg-bm-systn-w-blwchstn-404-7-17-taftan-peak-at-sistan-235525661",
+        "https://www.wikiloc.com/hiking-trails/qlh-tftn-taftan-summit-5912333"
+      ],
+      "latitude": 28.59950,
+      "longitude": 61.11280,
+      "elevation_m": 3228,
+      "status": "provisional",
+      "elevation_source": "ارتفاع حدود ۳۲۲۸ متر در گزارش‌های مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۳۲۲۶ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "darreh_gol_to_taftan": {
+      "slug": "taftan-darreh-gol",
+      "title": "اردوگاه دره‌گل تا قلهٔ تفتان",
+      "subtitle": "مسیر غربی از اردوگاه دره‌گل و پناهگاه صبح تا قلهٔ تفتان",
+      "trail_label": "مسیر دره‌گل–تفتان",
+      "origin": "اردوگاه دره‌گل",
+      "target_label": "قلهٔ تفتان",
+      "region": "تفتان · سیستان و بلوچستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "taftan-darreh-gol-camp",
+        "taftan-sobh-shelter",
+        "taftan"
+      ],
+      "distance_km": 8.95,
+      "ascent_m": 1450,
+      "one_way_minutes": 360,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "taftan-darreh-gol-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://mojekooh.com/کوه-تفتان/",
+          "https://www.wikiloc.com/walking-trails/tftn-z-drh-gl-164691363",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-tftn-trh-symrg-bm-systn-w-blwchstn-404-7-17-taftan-peak-at-sistan-235525661",
+          "https://www.wikiloc.com/hiking-trails/qlh-tftn-taftan-summit-5912333",
+          "https://www.wikiloc.com/mountaineering-trails/rft-w-brgsht-swd-qlh-y-tftn-z-rwsty-drh-gl-42914851"
+        ],
+        "evidence_tracks": [
+          "tracks/taftan/tftn-z-drh-gl.gpx",
+          "tracks/taftan/qlh-tftn-trh-symrg-bm-systn-w-blwchstn-404-7-17-taftan-peak-.gpx",
+          "tracks/taftan/qlh-tftn-taftan-summit.gpx",
+          "tracks/taftan/rft-w-brgsht-swd-qlh-y-tftn-z-rwsty-drh-gl.gpx",
+          "tracks/taftan/qlh-tftn-msyr-brgshttrkh-msyr-zatshfshn-t-nrkhwh-w-sps-brgsh.gpx"
+        ],
+        "cumulative_minutes": {
+          "taftan-darreh-gol-camp": 0,
+          "taftan-sobh-shelter": 180,
+          "taftan": 360
+        },
+        "notes": [
+          "ترک primary سال ۲۰۲۴ مسیر پیادهٔ اردوگاه دره‌گل تا قله را در ۸٫۹۵ کیلومتر یک‌طرفه نشان می‌دهد؛ ترک‌های مستقل دیگر کریدور پناهگاه صبح و قله را تأیید می‌کنند.",
+          "اردوگاه دره‌گل نقطهٔ دسترسی/پای‌کار است و پارکینگ یا waypoint جاده‌ای جداگانه ساخته نشده است.",
+          "ترک‌های دارای نرکوه یا بخش فنی تنگ‌گلو فقط cross-check هستند و Route پیش‌فرض را به مسیر فنی یا چندقله‌ای تبدیل نمی‌کنند.",
+          "زمان و فاصله تقریبی‌اند؛ timestampهای شب‌مانی و ارتفاع خام GPX برای ETA مبنا نیستند."
+        ]
+      },
+      "public_point_notes": {
+        "taftan-darreh-gol-camp": "اردوگاه دره‌گل محل دسترسی جاده‌ای و آغاز مسیر پیاده است.",
+        "taftan-sobh-shelter": "پناهگاه صبح landmark میانی و محل استراحت مسیر غربی تفتان است."
+      }
+    }
+  },
+  "point": {
+    "slug": "taftan",
+    "tile_name": "تفتان",
+    "name": "قلهٔ تفتان",
+    "short_category": "قله",
+    "category": "قله‌های سیستان و بلوچستان",
+    "category_key": "mountain",
+    "region": "دره‌گل · تفتان · سیستان و بلوچستان",
+    "elevation_m": 3941,
+    "latitude": 28.59888,
+    "longitude": 61.13190,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ تفتان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "taftan"
+}
