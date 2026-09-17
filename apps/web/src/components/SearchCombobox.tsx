@@ -152,7 +152,7 @@ export const SearchCombobox = forwardRef<
         aria-autocomplete="list"
         aria-activedescendant={activeIndex >= 0 ? `${listId}-${activeIndex}` : undefined}
         aria-label="جست‌وجوی نقطه یا نقطهٔ مسیر"
-        placeholder="مثلاً توچال، پس‌قلعه یا شیرپلا"
+        placeholder="مثلاً دماوند، دشت دریاسر یا کویر مصر"
         autoComplete="off"
         value={value}
         onChange={(event) => {
