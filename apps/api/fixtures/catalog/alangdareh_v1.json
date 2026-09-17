@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-alangdareh-catalog-v1",
+  "weather_points": {
+    "alangdareh": {
+      "name": "جنگل النگدره",
+      "page_name": "جنگل النگدره گرگان",
+      "short_label": "النگدره",
+      "place_type": "forest",
+      "aliases": [
+        "پارک جنگلی النگدره",
+        "النگ‌دره",
+        "جنگل النگ دره",
+        "Alangdareh Forest",
+        "Alangdareh Forest Park"
+      ],
+      "identity_summary": "پارک جنگلی النگدره در نزدیکی گرگان، از مقصدهای شناخته‌شدهٔ جنگلی پاییزی استان گلستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://tourism-golestan.com/about-golestan/%D8%A7%D9%84%D9%86%DA%AF%D8%AF%D8%B1%D9%87-%D8%9B-%D8%AA%D8%A7%D8%A8%D9%84%D9%88%DB%8C-%D8%B1%D9%86%DA%AF%D8%A7%D8%B1%D9%86%DA%AF-%D8%B7%D8%A8%DB%8C%D8%B9%D8%AA/",
+        "https://mapcarta.com/W686549724",
+        "https://www.openstreetmap.org/way/686549724",
+        "https://www.wikiloc.com/walking-trails/lng-drh-88654947",
+        "https://www.wikiloc.com/walking-trails/pydh-rwy-khnwdgy-dr-prkh-jngly-lngdrh-grgn-56002875",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.78671,
+      "longitude": 54.45217,
+      "elevation_m": 363,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ عارضهٔ پارک جنگلی در OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در 36٫78671,54٫45217 مقدار ۳۶۳ متر برگرداند و دو ترک پیادهٔ مستقل محدودهٔ حدود ۳۱۵ تا ۳۵۳ متر را تأیید می‌کنند.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "alangdareh",
+    "tile_name": "النگدره",
+    "name": "جنگل النگدره",
+    "short_category": "جنگل",
+    "category": "جنگل‌های گلستان",
+    "category_key": "forest",
+    "region": "گرگان · استان گلستان",
+    "elevation_m": 363,
+    "latitude": 36.78671,
+    "longitude": 54.45217,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگل النگدره گرگان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک جنگلی النگدره",
+      "النگ‌دره",
+      "جنگل النگ دره",
+      "Alangdareh Forest",
+      "Alangdareh Forest Park"
+    ]
+  },
+  "primary_point": "alangdareh"
+}
