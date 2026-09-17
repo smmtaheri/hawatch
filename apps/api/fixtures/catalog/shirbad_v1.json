@@ -1,0 +1,288 @@
+{
+  "catalog_version": "hawatch-shirbad-catalog-v1",
+  "weather_points": {
+    "shirbad": {
+      "name": "قلهٔ شیرباد",
+      "page_name": "قلهٔ شیرباد خراسان رضوی",
+      "short_label": "قلهٔ شیرباد",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "شیرباد",
+        "قله شیرباد",
+        "بام خراسان",
+        "Shirbad",
+        "Shirbad Peak"
+      ],
+      "identity_summary": "قلهٔ شیرباد، بلندترین قلهٔ رشته‌کوه بینالود و مقصد شناخته‌شدهٔ کوه‌پیمایی در خراسان رضوی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-bwjn-210439992",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-shirbad-peak-113105954",
+        "https://decovel.com/page/shirbad-peak",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.2799521&lon=59.0495367&peak-name=%D9%82%D9%84%D9%87+%D8%B4%DB%8C%D8%B1%D8%A8%D8%A7%D8%AF",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.28010,
+      "longitude": 59.04910,
+      "elevation_m": 3320,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ترک‌های مستقل قله حدود ۳۳۰۰ تا ۳۳۳۹ متر است؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۳۲۹۶ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "shirbad-bojan-village": {
+      "name": "روستای بوژان نیشابور",
+      "page_name": "روستای بوژان؛ مبدأ مسیر جنوبی شیرباد",
+      "short_label": "روستای بوژان",
+      "place_type": "village",
+      "aliases": [
+        "بوژان",
+        "روستا بوژان",
+        "Bojan village",
+        "Būzhān"
+      ],
+      "identity_summary": "روستای بوژان در نیشابور؛ مبدأ شناخته‌شدهٔ مسیر جنوبی قلهٔ شیرباد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-bwjn-210439992",
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-bynlwd-qlh-shyrbd-4634078",
+        "https://en.wikipedia.org/wiki/Buzhan,_Nishapur"
+      ],
+      "latitude": 36.24616,
+      "longitude": 58.97247,
+      "elevation_m": 1600,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک بوژان در انتهای روستا؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۱۶۳۹ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "meadow"
+    },
+    "shirbad-shakarab-junction": {
+      "name": "سه‌راهی شکرآب شیرباد",
+      "page_name": "سه‌راهی شکرآب در مسیر بوژان تا شیرباد",
+      "short_label": "سه‌راهی شکرآب",
+      "place_type": "pass",
+      "aliases": [
+        "سه راهی شکرآب",
+        "سه‌راه شکراب",
+        "Shakarab junction"
+      ],
+      "identity_summary": "سه‌راهی شکرآب، انشعاب نام‌دار مسیر جنوبی بوژان به یال شیرباد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-bynlwd-qlh-shyrbd-4634078",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-bwjn-210439992"
+      ],
+      "latitude": 36.26263,
+      "longitude": 58.99537,
+      "elevation_m": 1785,
+      "status": "provisional",
+      "elevation_source": "waypoint سه‌راهی شکرآب در ترک مستقل؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۱۸۳۰ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "shirbad-bagh-hamzeh-trailhead": {
+      "name": "پای‌کار باغ حمزه و استخر پرورش ماهی شیرباد",
+      "page_name": "پای‌کار باغ حمزه؛ مبدأ مسیر درهٔ نهل شیرباد",
+      "short_label": "پای‌کار باغ حمزه",
+      "place_type": "trailhead",
+      "aliases": [
+        "باغ حمزه",
+        "استخر پرورش ماهی باغ حمزه",
+        "خانچه حمزه",
+        "Bagh Hamzeh trailhead"
+      ],
+      "identity_summary": "پای‌کار و استخر پرورش ماهی باغ حمزه در مسیر دسترسی زشک؛ مبدأ بخش پیادهٔ مسیر درهٔ نهل شیرباد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-jnpnh-brgsht-z-nhl-22967494",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-shirbad-peak-113105954"
+      ],
+      "latitude": 36.29094,
+      "longitude": 59.13710,
+      "elevation_m": 2017,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز پیاده‌روی کنار پارکینگ/استخر باغ حمزه در ترک مستقل؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۲۰۷۲ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "meadow"
+    },
+    "shirbad-nahal-junction": {
+      "name": "دوراهی درهٔ نهل و یال جان‌پناه شیرباد",
+      "page_name": "دوراهی درهٔ نهل در مسیر شیرباد",
+      "short_label": "دوراهی نهل",
+      "place_type": "pass",
+      "aliases": [
+        "دوراهی مسیر دره و جانپناه",
+        "دوراهی نهل و جانپناه",
+        "Nahal junction"
+      ],
+      "identity_summary": "دوراهی نام‌دار ابتدای دو کریدور شرقی شیرباد؛ انشعاب درهٔ نهل و یال جان‌پناه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-shirbad-peak-113105954"
+      ],
+      "latitude": 36.28348,
+      "longitude": 59.12939,
+      "elevation_m": 2110,
+      "status": "provisional",
+      "elevation_source": "waypoint دوراهی مسیر دره و جان‌پناه در ترک شرقی؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۲۱۲۰ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "shirbad-nahal-spring": {
+      "name": "چشمهٔ نهل شیرباد",
+      "page_name": "چشمهٔ نهل در مسیر شرقی شیرباد",
+      "short_label": "چشمهٔ نهل",
+      "place_type": "spring",
+      "aliases": [
+        "چشمه نهل",
+        "Nahal spring"
+      ],
+      "identity_summary": "چشمهٔ نام‌دار درهٔ نهل، منبع آب میانی مسیر شرقی صعود شیرباد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+        "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-shirbad-peak-113105954"
+      ],
+      "latitude": 36.27416,
+      "longitude": 59.08493,
+      "elevation_m": 2619,
+      "status": "provisional",
+      "elevation_source": "waypoint چشمهٔ نهل در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۲۶۶۳ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "bojan_to_shirbad": {
+      "slug": "shirbad-bojan",
+      "title": "روستای بوژان تا قلهٔ شیرباد",
+      "subtitle": "مسیر جنوبی از بوژان و سه‌راهی شکرآب تا قلهٔ شیرباد",
+      "trail_label": "مسیر جنوبی شیرباد",
+      "origin": "روستای بوژان",
+      "target_label": "قلهٔ شیرباد",
+      "region": "نیشابور · خراسان رضوی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shirbad-bojan-village",
+        "shirbad-shakarab-junction",
+        "shirbad"
+      ],
+      "distance_km": 10.85,
+      "ascent_m": 1680,
+      "one_way_minutes": 345,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "shirbad-bojan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-bwjn-210439992",
+          "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-bynlwd-qlh-shyrbd-4634078"
+        ],
+        "evidence_tracks": [
+          "tracks/shirbad/qlh-shyrbd-z-bwjn.gpx",
+          "tracks/shirbad/shirbad-peak-bynlwd-qlh-shyrbd.gpx"
+        ],
+        "cumulative_minutes": {
+          "shirbad-bojan-village": 0,
+          "shirbad-shakarab-junction": 95,
+          "shirbad": 345
+        },
+        "notes": [
+          "ترک اصلی از پارکینگ شملرهٔ ۳ در انتهای بوژان آغاز می‌شود؛ چون این access point در بافت مبدأ روستا قرار دارد، با روستای بوژان ادغام شده و WeatherPoint جدا برای پارکینگ ساخته نشده است.",
+          "سه‌راهی شکرآب landmark نام‌دار مسیر است و در ترک مستقلِ کریدور بوژان نیز ثبت شده؛ فاصلهٔ آن با ترک اصلی حدود ۴۰ متر است.",
+          "مسافت، صعود و زمان تقریبی‌اند؛ زمان ثبت‌شدهٔ ترک اصلی حدود ۵ ساعت و ۴۸ دقیقه تا قله است و توقف‌ها برای ETA محصول مبنا نیستند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "bagh_hamzeh_to_shirbad_via_nahal": {
+      "slug": "shirbad-bagh-hamzeh-nahal",
+      "title": "باغ حمزه تا قلهٔ شیرباد از درهٔ نهل",
+      "subtitle": "مسیر شرقی از پای‌کار باغ حمزه، دوراهی نهل و چشمهٔ نهل تا قلهٔ شیرباد",
+      "trail_label": "مسیر درهٔ نهل شیرباد",
+      "origin": "پای‌کار باغ حمزه",
+      "target_label": "قلهٔ شیرباد",
+      "region": "زشک · خراسان رضوی",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "shirbad-bagh-hamzeh-trailhead",
+        "shirbad-nahal-junction",
+        "shirbad-nahal-spring",
+        "shirbad"
+      ],
+      "distance_km": 9.82,
+      "ascent_m": 1300,
+      "one_way_minutes": 250,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "shirbad-bagh-hamzeh-nahal-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+          "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-shirbad-peak-113105954",
+          "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-jnpnh-brgsht-z-nhl-22967494"
+        ],
+        "evidence_tracks": [
+          "tracks/shirbad/shirbad-peak-qlh-shyrbd.gpx",
+          "tracks/shirbad/qlh-shyrbd-z-jnpnh-brgsht-z-nhl.gpx"
+        ],
+        "cumulative_minutes": {
+          "shirbad-bagh-hamzeh-trailhead": 0,
+          "shirbad-nahal-junction": 30,
+          "shirbad-nahal-spring": 155,
+          "shirbad": 250
+        },
+        "notes": [
+          "ترک اصلی از پای‌کار باغ حمزه و استخر پرورش ماهی تا قله از مسیر درهٔ نهل صعود می‌کند؛ ترک مستقل loop کریدور شرقی را cross-check می‌کند اما زمان خام آن به‌دلیل ترتیب timestamp قابل استفاده نیست.",
+          "چشمهٔ نهل landmark و منبع آب مستند مسیر است؛ دوراهی ابتدای دره نیز به‌عنوان نقطهٔ فنی noindex در زنجیره باقی می‌ماند.",
+          "مسافت، صعود و زمان تقریبی‌اند و به برف، باد و شرایط مسیر وابستگی زیادی دارند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "shirbad",
+    "tile_name": "شیرباد",
+    "name": "قلهٔ شیرباد",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "رشته‌کوه بینالود · خراسان رضوی",
+    "elevation_m": 3320,
+    "latitude": 36.28010,
+    "longitude": 59.04910,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شیرباد",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "shirbad"
+}
