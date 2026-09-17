@@ -1,0 +1,61 @@
+{
+  "catalog_version": "hawatch-abuzeydabad-catalog-v1",
+  "weather_points": {
+    "abuzeydabad": {
+      "name": "کویر ابوزیدآباد",
+      "page_name": "کویر ابوزیدآباد (سیازگه)",
+      "short_label": "کویر ابوزیدآباد",
+      "place_type": "desert",
+      "aliases": [
+        "کویر سیازگه",
+        "بیابان سیازگه",
+        "کویر ابوزید آباد",
+        "Abuzeydabad Desert",
+        "Siazgeh Desert"
+      ],
+      "identity_summary": "کویر سیازگه در شمال ابوزیدآباد و بخش جنوبی ریگزار بندریگ",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N6200523289",
+        "https://www.irandeserts.com/article/%D8%A8%DB%8C%D8%A7%D8%A8%D8%A7%D9%86-%D8%B3%DB%8C%D8%A7%D8%B2%DA%AF%D9%87%D8%8C-%D8%A7%D8%A8%D9%88%D8%B2%DB%8C%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://www.wikiloc.com/walking-trails/khwyr-bwzydabd-abuzeydabad-desert-164646143",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 33.94773,
+      "longitude": 51.80238,
+      "elevation_m": 962,
+      "status": "provisional",
+      "elevation_source": "مختصات کمپ سیازگه در OSM/Mapcarta: 33.94773, 51.80238؛ Open-Meteo GLO-90 DEM در همین مختصات 962 متر برگرداند.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "abuzeydabad",
+    "tile_name": "کویر ابوزیدآباد",
+    "name": "کویر ابوزیدآباد (سیازگه)",
+    "short_category": "کویر",
+    "category": "کویر · آران و بیدگل",
+    "category_key": "desert",
+    "region": "استان اصفهان · آران و بیدگل",
+    "elevation_m": 962,
+    "latitude": 33.94773,
+    "longitude": 51.80238,
+    "image": "/images/home-scene.png",
+    "image_alt": "تپه‌های ماسه‌ای کویر سیازگه در ابوزیدآباد",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کویر ابوزیدآباد",
+      "کویر سیازگه",
+      "بیابان سیازگه"
+    ]
+  },
+  "primary_point": "abuzeydabad"
+}
