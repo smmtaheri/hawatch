@@ -1,0 +1,60 @@
+{
+  "catalog_version": "hawatch-shahdad-kaluts-v1",
+  "weather_points": {
+    "shahdad-kaluts": {
+      "name": "کلوت‌های شهداد",
+      "page_name": "کلوت‌های شهداد در دشت لوت",
+      "short_label": "کلوت‌های شهداد",
+      "place_type": "desert",
+      "aliases": [
+        "کلوت شهداد",
+        "کلوت‌های کویر شهداد",
+        "یاردانگ‌های شهداد",
+        "Shahdad Kaluts",
+        "Shahdad Yardangs"
+      ],
+      "identity_summary": "کلوت‌های شهداد، عارضه‌های یاردانگی در حاشیهٔ غربی دشت لوت",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/klwt-h-shhdd-ushahdad-kaluts-6197779",
+        "https://whc.unesco.org/en/list/1505/",
+        "https://www.irandeserts.com/article/%DA%A9%D9%84%D9%88%D8%AA/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.793263,
+      "longitude": 57.780218,
+      "elevation_m": 327,
+      "status": "provisional",
+      "elevation_source": "ارتفاع waypoint شمارهٔ ۱ در ترک پیادهٔ کلوت‌های شهداد؛ مقدار نهایی elevation و grid با validator Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shahdad-kaluts",
+    "tile_name": "کلوت‌های شهداد",
+    "name": "کلوت‌های شهداد",
+    "short_category": "کلوت",
+    "category": "کلوت‌های شهداد · دشت لوت",
+    "category_key": "desert",
+    "region": "شهداد · استان کرمان",
+    "elevation_m": 327,
+    "latitude": 30.793263,
+    "longitude": 57.780218,
+    "image": "/images/home-scene.png",
+    "image_alt": "کلوت‌های یاردانگی شهداد در دشت لوت",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کلوت شهداد",
+      "کلوت‌های کویر شهداد",
+      "یاردانگ‌های شهداد"
+    ]
+  },
+  "primary_point": "shahdad-kaluts"
+}
