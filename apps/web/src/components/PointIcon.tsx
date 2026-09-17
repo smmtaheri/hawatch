@@ -1,8 +1,25 @@
 const MOUNTAIN_CATEGORY_KEYS = new Set(["mountain", "ridge", "highland", "highlands"]);
 const BEACH_CATEGORY_KEYS = new Set(["beach", "coast"]);
+const PLACE_TYPE_CATEGORY_KEYS: Record<string, string> = {
+  summit: "mountain",
+  ridge: "ridge",
+  volcano: "volcano",
+  waterfall: "waterfall",
+  lake: "lake",
+  meadow: "meadow",
+  forest: "forest",
+  desert: "desert",
+  beach: "beach",
+};
 
-export function PointIcon({ categoryKey }: { categoryKey: string }) {
-  const key = String(categoryKey ?? "").trim().toLowerCase();
+export function resolvePointCategoryKey(categoryKey: string, placeType?: string) {
+  const explicit = String(categoryKey ?? "").trim().toLowerCase();
+  if (explicit) return explicit;
+  return PLACE_TYPE_CATEGORY_KEYS[String(placeType ?? "").trim().toLowerCase()] || "";
+}
+
+export function PointIcon({ categoryKey, placeType }: { categoryKey: string; placeType?: string }) {
+  const key = resolvePointCategoryKey(categoryKey, placeType);
 
   // Ridges and highlands belong to the mountain family visually. Keeping the
   // alias here lets the catalog retain its more precise semantic type without

@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
+import { DestinationArtwork } from "../src/components/DestinationArtwork";
 import { PointCard } from "../src/components/PointCard";
 import { PointIcon } from "../src/components/PointIcon";
 import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
@@ -105,6 +106,18 @@ describe("mobile route and forecast controls", () => {
   it("renders the beach category as its own destination icon", () => {
     const { container } = render(<PointIcon categoryKey="beach" />);
     expect(container.querySelector(".point-icon.beach")).toBeInTheDocument();
+  });
+
+  it("derives the lake icon when an older profile omitted category_key", () => {
+    const { container } = render(<PointIcon categoryKey="" placeType="lake" />);
+    expect(container.querySelector(".point-icon.lake")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
+  });
+
+  it("renders the approved destination artwork for nature categories", () => {
+    const { container } = render(<DestinationArtwork categoryKey="waterfall" />);
+    expect(container.querySelector(".destination-artwork.waterfall")).toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork-label")).toHaveTextContent("آبشار");
   });
 
   it("does not mislabel an unsupported category as a mountain", () => {

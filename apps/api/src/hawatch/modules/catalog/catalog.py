@@ -16,7 +16,7 @@ from django.contrib.gis.geos import Point
 from django.db import transaction
 from django.db.models import Q
 
-from hawatch.modules.catalog.identity import metadata_for_point, seo_indexable_for_row
+from hawatch.modules.catalog.identity import category_key_for_point, metadata_for_point, seo_indexable_for_row
 from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.catalog.validation import format_issues, validate_catalog_document
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -291,12 +291,14 @@ def seed_catalog(
         if kind not in {choice for choice, _label in WeatherPoint.Kind.choices}:
             kind = WeatherPoint.Kind.SHARED
         identity = metadata_for_point(slug, row, primary_label=profile.get("name", ""), is_primary=kind == WeatherPoint.Kind.PRIMARY)
+        profile_category_key = profile.get("category_key", "") if slug == _point_slug(data) else ""
+        category_key = category_key_for_point(row.get("category_key") or profile_category_key, identity["place_type"])
         defaults = {
             "name": identity["name"], "page_name": identity["page_name"], "short_label": identity["short_label"], "place_type": identity["place_type"],
             "identity_summary": identity["identity_summary"], "importance": identity["importance"], "name_status": identity["name_status"], "source_urls": identity["source_urls"], "aliases": identity["aliases"],
             "kind": kind, "location": Point(row["longitude"], row["latitude"], srid=4326), "elevation_m": row.get("elevation_m"), "elevation_source": row.get("elevation_source") or "",
             "tile_name": row.get("tile_name") or (profile.get("tile_name", "") if slug == _point_slug(data) else ""), "short_category": row.get("short_category") or (profile.get("short_category", "") if slug == _point_slug(data) else ""),
-            "category": row.get("category") or (profile.get("category", "") if slug == _point_slug(data) else ""), "category_key": row.get("category_key") or (profile.get("category_key", "") if slug == _point_slug(data) else ""),
+            "category": row.get("category") or (profile.get("category", "") if slug == _point_slug(data) else ""), "category_key": category_key,
             "region": row.get("region") or (profile.get("region", "") if slug == _point_slug(data) else ""), "image": row.get("image") or (profile.get("image", "") if slug == _point_slug(data) else ""), "image_alt": row.get("image_alt") or (profile.get("image_alt", "") if slug == _point_slug(data) else ""),
             "popular_order": profile.get("popular_order", 0) if slug == _point_slug(data) else 0, "is_popular": bool(profile.get("is_popular", False)) if slug == _point_slug(data) else False, "seo_indexable": seo_indexable_for_row(row, profile),
             "climate": row.get("climate") or profile.get("climate", "alpine"), "status": row.get("status") or (WeatherPoint.Status.UNRESOLVED_ELEVATION if row.get("elevation_m") is None else WeatherPoint.Status.APPROVED), "provenance": WeatherPoint.Provenance.CURATED,

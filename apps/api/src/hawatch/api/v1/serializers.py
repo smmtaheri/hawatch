@@ -31,6 +31,7 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
+from hawatch.modules.catalog.identity import category_key_for_point
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -131,7 +132,7 @@ def serialize_point_profile(point: WeatherPoint, *, include_routes: bool = False
         "name": point.page_name or point.name,
         "short_category": point.short_category,
         "category": point.category,
-        "category_key": point.category_key,
+        "category_key": category_key_for_point(point.category_key, point.place_type),
         "place_type": point.place_type,
         "region": point.region,
         "elevation_m": elevation,

@@ -28,6 +28,37 @@ PLACE_TYPES = {
     "technical_point",
 }
 
+# A few catalog rows describe a primary destination in the shared
+# ``weather_points`` block and therefore do not repeat the presentation
+# profile's ``category_key``.  Keep the visual family derivation central so
+# those rows never fall back to the neutral mark in API or catalog imports.
+PLACE_TYPE_CATEGORY_KEYS = {
+    "summit": "mountain",
+    "ridge": "ridge",
+    "volcano": "volcano",
+    "waterfall": "waterfall",
+    "lake": "lake",
+    "meadow": "meadow",
+    "forest": "forest",
+    "desert": "desert",
+    "beach": "beach",
+}
+
+
+def category_key_for_point(category_key: object, place_type: object) -> str:
+    """Return an explicit category key or derive one from the place type.
+
+    ``category_key`` remains authoritative when present.  The fallback is
+    intentionally limited to known semantic place types; unknown values stay
+    empty so they continue to use the neutral artwork rather than being
+    mislabelled as a mountain.
+    """
+
+    explicit = str(category_key or "").strip().casefold()
+    if explicit:
+        return explicit
+    return PLACE_TYPE_CATEGORY_KEYS.get(str(place_type or "").strip().casefold(), "")
+
 # Technical route waypoints are useful to the planner but rarely make useful
 # standalone search results.  A catalog row may explicitly override this
 # default (for example a known cable-car station or a famous shelter).

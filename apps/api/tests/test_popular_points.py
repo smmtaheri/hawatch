@@ -5,7 +5,7 @@ from django.contrib.gis.geos import Point
 from django.core.management import call_command
 from rest_framework.test import APIClient
 
-from hawatch.api.v1.serializers import list_points
+from hawatch.api.v1.serializers import list_points, serialize_point_profile
 from hawatch.modules.catalog.runtime import publicly_visible_weather_points
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -57,6 +57,24 @@ def test_new_point_is_not_popular_by_default():
     )
 
     assert point.is_popular is False
+
+
+@pytest.mark.django_db
+def test_point_profile_derives_visual_category_from_place_type():
+    lake = WeatherPoint.objects.create(
+        slug="category-fallback-lake",
+        name="دریاچهٔ آزمایشی",
+        page_name="دریاچهٔ آزمایشی",
+        short_label="دریاچهٔ آزمایشی",
+        place_type="lake",
+        kind=WeatherPoint.Kind.PRIMARY,
+        location=Point(46.5, 37.7, srid=4326),
+        elevation_m=3200,
+        data_mode="live",
+        is_active=True,
+    )
+
+    assert serialize_point_profile(lake)["category_key"] == "lake"
 
 
 @pytest.mark.django_db
