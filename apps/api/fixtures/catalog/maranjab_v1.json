@@ -1,0 +1,64 @@
+{
+  "catalog_version": "hawatch-maranjab-catalog-v1",
+  "weather_points": {
+    "maranjab": {
+      "name": "کویر مرنجاب",
+      "page_name": "کویر مرنجاب آران و بیدگل",
+      "short_label": "مرنجاب",
+      "place_type": "desert",
+      "aliases": [
+        "مرنجاب",
+        "کویر آران و بیدگل",
+        "Maranjab Desert",
+        "Maranjab"
+      ],
+      "identity_summary": "کویر مرنجاب در شمال آران و بیدگل، در کنار دریاچهٔ نمک و کاروانسرای تاریخی شاه‌عباسی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.tourismonline.co/news/101608/%D9%85%D8%B1%D9%86%D8%AC%D8%A7%D8%A8%D8%8C-%D9%82%D9%84%D8%A8-%D8%AA%D9%BE%D9%86%D8%AF%D9%87-%DA%A9%D9%88%DB%8C%D8%B1%D9%87%D8%A7%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86",
+        "https://www.wikidata.org/wiki/Q1107362",
+        "https://www.wikidata.org/wiki/Q5730585",
+        "https://en.wikipedia.org/wiki/Maranjab_Desert",
+        "https://www.wikiloc.com/hiking-trails/maranjab-desert-khwyr-mrnjb-43893379",
+        "https://www.wikiloc.com/offroading-trails/aran-o-bidgol-to-maranjab-castle-236682724",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.29914,
+      "longitude": 51.81239,
+      "elevation_m": 819,
+      "status": "provisional",
+      "elevation_source": "مختصات کاروانسرای شاه‌عباسی در قلب مقصد گردشگری مرنجاب؛ Wikidata ارتفاع ۸۱۹ متر گزارش می‌کند و DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود. این مختصات نمایندهٔ مقصد است، نه مسیر دسترسی جاده‌ای.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "maranjab",
+    "tile_name": "مرنجاب",
+    "name": "کویر مرنجاب",
+    "short_category": "کویر",
+    "category": "کویر · آران و بیدگل",
+    "category_key": "desert",
+    "region": "آران و بیدگل · استان اصفهان",
+    "elevation_m": 819,
+    "latitude": 34.29914,
+    "longitude": 51.81239,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کویر و تپه‌های شنی مرنجاب",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مرنجاب",
+      "کویر آران و بیدگل",
+      "Maranjab Desert",
+      "Maranjab"
+    ]
+  },
+  "primary_point": "maranjab"
+}
