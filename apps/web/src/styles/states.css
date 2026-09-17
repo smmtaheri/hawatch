@@ -12,6 +12,13 @@
   color: var(--text);
 }
 
+/* Legacy base styles use the light mist token on body. Keep the page-level
+ * attribution/footer area on the same surface as dark catalog pages too. */
+html:not([data-theme="light"]) body {
+  background: var(--bg);
+  color: var(--text);
+}
+
 .destinations-shell {
   max-width: var(--content-max);
   margin: 0 auto;

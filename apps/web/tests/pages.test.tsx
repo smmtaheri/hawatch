@@ -295,6 +295,7 @@ describe("Hawatch pages", () => {
 
     expect(await screen.findByRole("heading", { level: 1, name: "مقصدهای اصلی هواچ" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /قلهٔ توچال/ })).toHaveAttribute("href", "/points/tochal");
+    expect(screen.queryByText("دسترسی سریع هواچ")).not.toBeInTheDocument();
     expect(document.title).toBe("مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها");
   });
 

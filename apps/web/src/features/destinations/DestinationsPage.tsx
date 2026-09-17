@@ -46,7 +46,6 @@ export function DestinationsPage() {
       <div className="destinations-shell">
         <Header />
         <section className="destinations-heading" aria-labelledby="destinations-title">
-          <span className="eyebrow teal-text">دسترسی سریع هواچ</span>
           <h1 id="destinations-title">مقصدهای اصلی هواچ</h1>
           <p>مقصدهای مستقل و شناخته‌شده را برای دیدن پیش‌بینی هوا انتخاب کن.</p>
         </section>
