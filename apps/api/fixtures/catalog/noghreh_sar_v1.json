@@ -1,0 +1,237 @@
+{
+  "catalog_version": "hawatch-noghreh-sar-catalog-v1",
+  "weather_points": {
+    "noghre-sar": {
+      "name": "قلهٔ نقره‌سر (نقل‌سر)",
+      "page_name": "قلهٔ نقره‌سر (نقل‌سر)",
+      "short_label": "نقره‌سر",
+      "place_type": "summit",
+      "aliases": [
+        "قله نقره سر",
+        "قلهٔ نقل‌سر",
+        "نقره سر",
+        "نقل سر",
+        "Noghreh Sar",
+        "Naql Sar"
+      ],
+      "identity_summary": "قلهٔ جنگلی نقره‌سر، شناخته‌شده با نام نقل‌سر، در جادهٔ هراز و منطقهٔ سیاه‌بیشهٔ مازندران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+        "https://www.wikiloc.com/hiking-trails/noghrehsar-nqrh-sr-87659585",
+        "https://www.wikiloc.com/hiking-trails/qlhy-nqrh-sr-nuqlhsr-91263014",
+        "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+      ],
+      "latitude": 36.1131,
+      "longitude": 52.32968,
+      "elevation_m": 2150,
+      "status": "provisional",
+      "elevation_source": "پنج ترک مستقل مختصات قله را در حدود 36.1131,52.3297 همگرا می‌کنند؛ ارتفاع منابع حدود 2145 تا 2160 متر است و مقدار 2150 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "noghre-sar-bagh-safa-trailhead": {
+      "name": "پای‌کار باغ صفا نقره‌سر",
+      "page_name": "پای‌کار باغ صفا؛ مبدأ مسیر نقره‌سر",
+      "short_label": "پای‌کار باغ صفا",
+      "place_type": "trailhead",
+      "aliases": [
+        "رستوران باغ صفا نقره‌سر",
+        "شروع مسیر نقره سر",
+        "Noghreh Sar trailhead"
+      ],
+      "identity_summary": "مبدأ نام‌گذاری‌شدهٔ مسیر پیادهٔ نقره‌سر کنار رستوران باغ صفا در جادهٔ هراز، نه مقصد مستقل",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+        "https://www.wikiloc.com/hiking-trails/noghrehsar-nqrh-sr-87659585",
+        "https://www.wikiloc.com/hiking-trails/qlhy-nqrh-sr-nuqlhsr-91263014",
+        "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+      ],
+      "latitude": 36.1359,
+      "longitude": 52.3389,
+      "elevation_m": 666,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ دسترسی کنار باغ صفا در پنج ترک پیاده؛ ارتفاع خام منابع حدود 645 تا 674 متر و مقدار 666 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "noghre-sar-first-talar": {
+      "name": "تلار اول نقره‌سر",
+      "page_name": "تلار اول در مسیر قلهٔ نقره‌سر",
+      "short_label": "تلار اول",
+      "place_type": "landmark",
+      "aliases": [
+        "دشت و تلار اول نقره‌سر",
+        "تلاربن نقره‌سر",
+        "Noghreh Sar first talar"
+      ],
+      "identity_summary": "دشت و تلار اول، عارضهٔ نام‌گذاری‌شده و میانی در مسیر باغ صفا تا قلهٔ نقره‌سر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+        "https://www.wikiloc.com/hiking-trails/noghrehsar-nqrh-sr-87659585",
+        "https://www.wikiloc.com/hiking-trails/qlhy-nqrh-sr-nuqlhsr-91263014",
+        "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+      ],
+      "latitude": 36.1263,
+      "longitude": 52.3201,
+      "elevation_m": 1517,
+      "status": "provisional",
+      "elevation_source": "Waypoint تلار اول در ترک‌های مستقل نقره‌سر؛ مقدار 1517 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "noghre-sar-second-talar": {
+      "name": "تلار دوم نقره‌سر",
+      "page_name": "تلار دوم در مسیر قلهٔ نقره‌سر",
+      "short_label": "تلار دوم",
+      "place_type": "landmark",
+      "aliases": [
+        "دشت و تلار دوم نقره‌سر",
+        "تلار دوم نقل‌سر",
+        "Noghreh Sar second talar"
+      ],
+      "identity_summary": "دشت و تلار دوم روی یال، عارضهٔ نام‌گذاری‌شده و میانی در مسیر قلهٔ نقره‌سر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+        "https://www.wikiloc.com/hiking-trails/noghrehsar-nqrh-sr-87659585",
+        "https://www.wikiloc.com/hiking-trails/qlhy-nqrh-sr-nuqlhsr-91263014",
+        "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+      ],
+      "latitude": 36.1144,
+      "longitude": 52.3233,
+      "elevation_m": 2045,
+      "status": "provisional",
+      "elevation_source": "Waypoint تلار دوم در چند ترک مستقل؛ مختصات و ارتفاع منابع در یک پهنهٔ باز اختلاف جزئی دارند و مقدار 2045 متر موقت است.",
+      "climate": "forest_fog"
+    },
+    "noghre-sar-chang-maryam": {
+      "name": "تلار سوم چنگ مریم نقره‌سر",
+      "page_name": "تلار سوم چنگ مریم در مسیر نقره‌سر",
+      "short_label": "چنگ مریم",
+      "place_type": "landmark",
+      "aliases": [
+        "دشت و تلار سوم چنگ مریم",
+        "تلار چنگ مریم نقره‌سر",
+        "Chang Maryam Noghreh Sar"
+      ],
+      "identity_summary": "تلار سوم چنگ مریم، عارضهٔ نام‌گذاری‌شدهٔ روی یال پیش از قلهٔ نقره‌سر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+        "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+      ],
+      "latitude": 36.1141,
+      "longitude": 52.3259,
+      "elevation_m": 2077,
+      "status": "provisional",
+      "elevation_source": "Waypoint تلار سوم/چنگ مریم در ترک‌های مستقل؛ مقدار 2077 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "bagh_safa_to_noghre_sar": {
+      "slug": "noghre-sar-bagh-safa",
+      "title": "باغ صفا تا قلهٔ نقره‌سر",
+      "subtitle": "مسیر جنگلی از جادهٔ هراز و باغ صفا، تلارها و یال چنگ مریم تا قله",
+      "trail_label": "مسیر باغ صفا–نقره‌سر",
+      "origin": "پای‌کار باغ صفا نقره‌سر",
+      "target_label": "قلهٔ نقره‌سر (نقل‌سر)",
+      "region": "جادهٔ هراز · سیاه‌بیشه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "noghre-sar-bagh-safa-trailhead",
+        "noghre-sar-first-talar",
+        "noghre-sar-second-talar",
+        "noghre-sar-chang-maryam",
+        "noghre-sar"
+      ],
+      "distance_km": 7.6,
+      "ascent_m": 1500,
+      "one_way_minutes": 360,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "noghre-sar-bagh-safa-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-nqrh-nqlhsr-wq-dr-jdh-hrz-40-khylwmtry-aml-148678357",
+          "https://www.wikiloc.com/hiking-trails/noghrehsar-nqrh-sr-87659585",
+          "https://www.wikiloc.com/hiking-trails/qlhy-nqrh-sr-nuqlhsr-91263014",
+          "https://www.wikiloc.com/hiking-trails/nql-sr-nqrh-sr-2150-mtr-grwh-afq-208975633"
+        ],
+        "evidence_tracks": [
+          "tracks/noghreh-sar/noghre-sar-bagh-safa-2025-roundtrip.gpx",
+          "tracks/noghreh-sar/noghre-sar-bagh-safa-2023-roundtrip.gpx",
+          "tracks/noghreh-sar/noghre-sar-bagh-safa-2021-roundtrip.gpx",
+          "tracks/noghreh-sar/noghre-sar-bagh-safa-2021-oneway.gpx",
+          "tracks/noghreh-sar/noghre-sar-bagh-safa-2025-oneway.gpx"
+        ],
+        "cumulative_minutes": {
+          "noghre-sar-bagh-safa-trailhead": 0,
+          "noghre-sar-first-talar": 170,
+          "noghre-sar-second-talar": 300,
+          "noghre-sar-chang-maryam": 330,
+          "noghre-sar": 360
+        },
+        "notes": [
+          "پنج ترک مستقل مسیر استاندارد پیاده از باغ صفا تا قله را تأیید می‌کنند؛ نسخهٔ جداگانه برای هر ترک ساخته نشد.",
+          "ترک‌های رفت‌وبرگشت فقط برای تحلیل نیمهٔ صعودی خوانده شدند و timestamp خام مبنای ETA نیست.",
+          "فاصلهٔ یک‌طرفهٔ ترک‌ها حدود 7.0 تا 8.3 کیلومتر و اختلاف ارتفاع خالص حدود 1480 تا 1500 متر است؛ مقادیر route محافظه‌کارانه گرد شده‌اند.",
+          "تلار اول، تلار دوم و تلار سوم چنگ مریم نقاط میانی نام‌دارند؛ چشمهٔ فصلی و پارکینگ به‌عنوان مقصد مستقل ثبت نشده‌اند.",
+          "مسیر طولانی الیمستان–نقره‌سر به‌عنوان route جداگانه وارد نشده و برای این کریدور استاندارد نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "noghre-sar",
+    "tile_name": "نقره‌سر",
+    "name": "قلهٔ نقره‌سر (نقل‌سر)",
+    "short_category": "قله",
+    "category": "قله‌های جنگلی مازندران",
+    "category_key": "mountain",
+    "region": "جادهٔ هراز · سیاه‌بیشه · مازندران",
+    "elevation_m": 2150,
+    "latitude": 36.1131,
+    "longitude": 52.32968,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگلی قلهٔ نقره‌سر در جادهٔ هراز",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "قله نقره سر",
+      "قلهٔ نقل‌سر",
+      "نقره سر",
+      "نقل سر",
+      "Noghreh Sar",
+      "Naql Sar"
+    ]
+  },
+  "primary_point": "noghre-sar"
+}
