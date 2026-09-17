@@ -1,0 +1,228 @@
+{
+  "catalog_version": "hawatch-alimestan-catalog-v1",
+  "weather_points": {
+    "imamzadeh-qasem": {
+      "name": "قلهٔ امام‌زاده قاسم (الیمستان)",
+      "page_name": "قلهٔ امام‌زاده قاسم الیمستان",
+      "short_label": "امام‌زاده قاسم",
+      "place_type": "summit",
+      "aliases": [
+        "قلهٔ الیمستان",
+        "قله امامزاده قاسم",
+        "امام زاده قاسم الیمستان",
+        "Imamzadeh Qasem",
+        "Alimestan Peak"
+      ],
+      "identity_summary": "قلهٔ جنگلی امام‌زاده قاسم، شناخته‌شده به نام قلهٔ الیمستان، در منطقهٔ چلاو مازندران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+        "https://www.wikiloc.com/hiking-trails/qlh-mmzdh-qsm-lymstn-117358673",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-mmzdh-qsm-z-jngl-lymstn-59614793",
+        "https://www.gaiagps.com/hike/381064/via/",
+        "https://kuhnavardi.com/%D8%AC%D9%86%DA%AF%D9%84-%D8%A7%D9%84%DB%8C%D9%85%D8%B3%D8%AA%D8%A7%D9%86/"
+      ],
+      "latitude": 36.1513,
+      "longitude": 52.4141,
+      "elevation_m": 2500,
+      "status": "provisional",
+      "elevation_source": "چهار ترک مستقل مختصات قله را در حدود 36.1513,52.4141 و ارتفاع خام 2491 تا 2510 متر همگرا می‌کنند؛ مقدار 2500 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "alimestan": {
+      "name": "جنگل الیمستان",
+      "page_name": "جنگل الیمستان در چلاو مازندران",
+      "short_label": "جنگل الیمستان",
+      "place_type": "forest",
+      "aliases": [
+        "الیمستان",
+        "جنگل هزاررنگ الیمستان",
+        "Alimestan Forest",
+        "Alimastan Jungle"
+      ],
+      "identity_summary": "جنگل الیمستان و دشت اولِ مسیر شناخته‌شدهٔ الیمستان در منطقهٔ چلاو مازندران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Alimestan",
+        "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+        "https://www.gaiagps.com/hike/381064/via/",
+        "https://kuhnavardi.com/%D8%AC%D9%86%DA%AF%D9%84-%D8%A7%D9%84%DB%8C%D9%85%D8%B3%D8%AA%D8%A7%D9%86/"
+      ],
+      "latitude": 36.1766,
+      "longitude": 52.390272,
+      "elevation_m": 1755,
+      "status": "provisional",
+      "elevation_source": "Waypoint دشت اول در ترک پاییزی مستقل 20740039؛ DEM GLO-90 Open-Meteo در مختصات 36.1766,52.390272 حدود 1755 متر برمی‌گرداند.",
+      "climate": "forest_fog"
+    },
+    "alimestan-forest-trailhead": {
+      "name": "پای‌کار جنگل الیمستان",
+      "page_name": "پای‌کار جنگل الیمستان؛ مبدأ مسیر قله",
+      "short_label": "پای‌کار الیمستان",
+      "place_type": "trailhead",
+      "aliases": [
+        "شروع جنگل الیمستان",
+        "ورودی مسیر الیمستان",
+        "Alimestan trailhead"
+      ],
+      "identity_summary": "مبدأ نام‌گذاری‌شدهٔ مسیر پیادهٔ جنگل الیمستان به قلهٔ امام‌زاده قاسم، بیرون از بافت روستا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+        "https://www.wikiloc.com/hiking-trails/qlh-mmzdh-qsm-lymstn-117358673",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-mmzdh-qsm-z-jngl-lymstn-59614793",
+        "https://www.gaiagps.com/hike/381064/via/"
+      ],
+      "latitude": 36.16865,
+      "longitude": 52.3867,
+      "elevation_m": 1483,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع مشترک چهار ترک پیادهٔ الیمستان؛ DEM GLO-90 Open-Meteo حدود 1483 متر و ارتفاع خام ترک‌ها 1429 تا 1455 متر است.",
+      "climate": "forest_fog"
+    },
+    "alimestan-wooden-fence": {
+      "name": "حصار چوبی جنگل الیمستان",
+      "page_name": "حصار چوبی در مسیر جنگل الیمستان",
+      "short_label": "حصار چوبی",
+      "place_type": "landmark",
+      "aliases": [
+        "درب چوبی الیمستان",
+        "حصار چوبی الیمستان",
+        "Alimestan wooden fence"
+      ],
+      "identity_summary": "حصار چوبی نام‌گذاری‌شده در مرز بخش جنگلی و ادامهٔ مسیر قلهٔ الیمستان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039"
+      ],
+      "latitude": 36.170661,
+      "longitude": 52.408549,
+      "elevation_m": 2013,
+      "status": "provisional",
+      "elevation_source": "Waypoint حصار چوبی در ترک پاییزی 20740039؛ DEM GLO-90 Open-Meteo حدود 2013 متر است.",
+      "climate": "forest_fog"
+    },
+    "alimestan-rostam-chal": {
+      "name": "رستم‌چال الیمستان",
+      "page_name": "رستم‌چال در مسیر قلهٔ الیمستان",
+      "short_label": "رستم‌چال",
+      "place_type": "landmark",
+      "aliases": [
+        "چال رستم الیمستان",
+        "رد پای رستم الیمستان",
+        "Rostam Chal"
+      ],
+      "identity_summary": "عارضهٔ نام‌گذاری‌شدهٔ رستم‌چال در بخش بالادست مسیر جنگل الیمستان تا قله",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+        "https://www.wikiloc.com/hiking-trails/qlh-mmzdh-qsm-lymstn-117358673",
+        "https://www.gaiagps.com/hike/381064/via/"
+      ],
+      "latitude": 36.154933,
+      "longitude": 52.410677,
+      "elevation_m": 2365,
+      "status": "provisional",
+      "elevation_source": "Waypoint رستم‌چال در ترک پاییزی 20740039؛ DEM GLO-90 Open-Meteo حدود 2365 متر است. نسبت‌دادن زمین‌شناسی یا شهاب‌سنگی بدون منبع معتبر انجام نمی‌شود.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "forest_to_imamzadeh_qasem": {
+      "slug": "alimestan-imamzadeh-qasem",
+      "title": "جنگل الیمستان تا قلهٔ امام‌زاده قاسم",
+      "subtitle": "مسیر جنگلی از پای‌کار الیمستان، دشت اول و رستم‌چال تا قله",
+      "trail_label": "مسیر جنگل الیمستان–امام‌زاده قاسم",
+      "origin": "پای‌کار جنگل الیمستان",
+      "target_label": "قلهٔ امام‌زاده قاسم (الیمستان)",
+      "region": "چلاو · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "alimestan-forest-trailhead",
+        "alimestan",
+        "alimestan-wooden-fence",
+        "alimestan-rostam-chal",
+        "imamzadeh-qasem"
+      ],
+      "distance_km": 7.6,
+      "ascent_m": 1050,
+      "one_way_minutes": 270,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "alimestan-imamzadeh-qasem-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+          "https://www.wikiloc.com/hiking-trails/qlh-mmzdh-qsm-lymstn-117358673",
+          "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-mmzdh-qsm-z-jngl-lymstn-59614793",
+          "https://www.gaiagps.com/hike/381064/via/",
+          "https://kuhnavardi.com/%D8%AC%D9%86%DA%AF%D9%84-%D8%A7%D9%84%DB%8C%D9%85%D8%B3%D8%AA%D8%A7%D9%86/"
+        ],
+        "evidence_tracks": [
+          "tracks/alimestan/alimestan-forest-to-imamzadeh-qasem-2017-roundtrip.gpx",
+          "tracks/alimestan/alimestan-village-to-imamzadeh-qasem-2022.gpx",
+          "tracks/alimestan/alimestan-forest-to-imamzadeh-qasem-2020.gpx",
+          "tracks/alimestan/alimestan-imamzadeh-qasem-gaia-reference.gpx"
+        ],
+        "cumulative_minutes": {
+          "alimestan-forest-trailhead": 0,
+          "alimestan": 55,
+          "alimestan-wooden-fence": 170,
+          "alimestan-rostam-chal": 225,
+          "imamzadeh-qasem": 270
+        },
+        "notes": [
+          "چهار ترک مستقل یک کریدور پیادهٔ مشترک از پای‌کار جنگل الیمستان تا قله را تأیید می‌کنند؛ route تکراری جدا ساخته نشد.",
+          "فایل ۲۰۱۷ رفت‌وبرگشت است و برای فاصله و صعود فقط نیمهٔ صعودی آن در نظر گرفته شد؛ timestamp خام GPX مبنای ETA نیست.",
+          "فاصلهٔ ترک‌های یک‌طرفه حدود 7.1 تا 8.3 کیلومتر و صعود ثبت‌شده حدود 1020 تا 1100 متر است؛ مقادیر route محافظه‌کارانه گرد شده‌اند.",
+          "دشت اول، حصار چوبی و رستم‌چال نقاط میانی نام‌دار ترک هستند؛ پارکینگ، جاده و ادعاهای افسانه‌ای به محتوای factual تبدیل نشده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "imamzadeh-qasem",
+    "tile_name": "امام‌زاده قاسم",
+    "name": "قلهٔ امام‌زاده قاسم (الیمستان)",
+    "short_category": "قله",
+    "category": "قله‌های جنگلی مازندران",
+    "category_key": "mountain",
+    "region": "چلاو · مازندران",
+    "elevation_m": 2500,
+    "latitude": 36.1513,
+    "longitude": 52.4141,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگلی قلهٔ امام‌زاده قاسم در الیمستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "aliases": [
+      "قلهٔ الیمستان",
+      "قله امامزاده قاسم",
+      "امام زاده قاسم الیمستان",
+      "Imamzadeh Qasem",
+      "Alimestan Peak"
+    ]
+  },
+  "primary_point": "imamzadeh-qasem"
+}
