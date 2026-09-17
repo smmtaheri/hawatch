@@ -96,6 +96,17 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.waterfall")).toBeInTheDocument();
   });
 
+  it("keeps ridge destinations in the mountain icon family", () => {
+    const { container } = render(<PointIcon categoryKey="ridge" />);
+    expect(container.querySelector(".point-icon.mountain")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
+  });
+
+  it("renders the beach category as its own destination icon", () => {
+    const { container } = render(<PointIcon categoryKey="beach" />);
+    expect(container.querySelector(".point-icon.beach")).toBeInTheDocument();
+  });
+
   it("does not mislabel an unsupported category as a mountain", () => {
     const { container } = render(<PointIcon categoryKey="unknown-place-type" />);
     expect(container.querySelector(".point-icon.nature")).toBeInTheDocument();

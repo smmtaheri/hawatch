@@ -1,5 +1,13 @@
+const MOUNTAIN_CATEGORY_KEYS = new Set(["mountain", "ridge", "highland", "highlands"]);
+const BEACH_CATEGORY_KEYS = new Set(["beach", "coast"]);
+
 export function PointIcon({ categoryKey }: { categoryKey: string }) {
-  if (categoryKey === "mountain") {
+  const key = String(categoryKey ?? "").trim().toLowerCase();
+
+  // Ridges and highlands belong to the mountain family visually. Keeping the
+  // alias here lets the catalog retain its more precise semantic type without
+  // falling back to the generic nature icon.
+  if (MOUNTAIN_CATEGORY_KEYS.has(key)) {
     return (
       <svg viewBox="0 0 48 48" className="point-icon mountain" aria-hidden="true">
         <path d="M5 36 19 16l7 10 4-6 13 16" />
@@ -8,7 +16,7 @@ export function PointIcon({ categoryKey }: { categoryKey: string }) {
       </svg>
     );
   }
-  if (categoryKey === "volcano") {
+  if (key === "volcano") {
     return (
       <svg viewBox="0 0 48 48" className="point-icon volcano" aria-hidden="true">
         <path d="M5 39 16 20l7 5 5-10 15 24" />
@@ -17,15 +25,16 @@ export function PointIcon({ categoryKey }: { categoryKey: string }) {
       </svg>
     );
   }
-  if (categoryKey === "meadow") {
+  if (key === "meadow") {
     return (
-      <svg viewBox="0 0 48 48" className="point-icon plain" aria-hidden="true">
-        <circle cx="34" cy="12" r="5" />
-        <path d="M5 35c6-9 10-10 15-2 4-6 8-7 13 1 4-5 7-4 10 1M5 41h38" />
+      <svg viewBox="0 0 48 48" className="point-icon meadow plain" aria-hidden="true">
+        <path d="M5 29c7-7 13-8 20-3 5 4 10 5 18 0" />
+        <path d="M5 40h38" />
+        <path d="M12 36c0-3 2-5 4-7M16 37c1-3 3-5 5-6M36 37c0-3-2-5-4-7M32 37c-1-3-3-5-5-6" />
       </svg>
     );
   }
-  if (categoryKey === "forest") {
+  if (key === "forest") {
     return (
       <svg viewBox="0 0 48 48" className="point-icon forest" aria-hidden="true">
         <path d="M12 38V24M12 12 5 25h5L4 34h16l-6-9h5L12 12ZM34 39V27M34 17l-7 12h5l-6 8h16l-6-8h5l-7-12Z" />
@@ -33,7 +42,7 @@ export function PointIcon({ categoryKey }: { categoryKey: string }) {
       </svg>
     );
   }
-  if (categoryKey === "desert") {
+  if (key === "desert") {
     return (
       <svg viewBox="0 0 48 48" className="point-icon desert" aria-hidden="true">
         <circle cx="35" cy="12" r="5" />
@@ -41,19 +50,28 @@ export function PointIcon({ categoryKey }: { categoryKey: string }) {
       </svg>
     );
   }
-  if (categoryKey === "lake") {
+  if (key === "lake") {
     return (
-      <svg viewBox="0 0 48 48" className="point-icon sea" aria-hidden="true">
+      <svg viewBox="0 0 48 48" className="point-icon lake sea" aria-hidden="true">
         <path d="M5 20c5-5 9-5 14 0s9 5 14 0 9-5 10 0M5 29c5-5 9-5 14 0s9 5 14 0 9-5 10 0M5 38c5-5 9-5 14 0s9 5 14 0 9-5 10 0" />
       </svg>
     );
   }
-  if (categoryKey === "waterfall") {
+  if (key === "waterfall") {
     return (
       <svg viewBox="0 0 48 48" className="point-icon waterfall" aria-hidden="true">
-        <path d="M7 12c5 6 10 6 15 0s10-6 19 0" />
-        <path d="M12 17v14c0 5 3 8 7 8s7-3 7-8V17M31 18v9c0 4 2 6 5 6s5-2 5-6v-5" />
-        <path d="M5 40h38" />
+        <path d="M6 13c7 5 12 5 18 0 5-4 10-4 18 1" />
+        <path d="M14 17v13M21 17v16M29 16v14M36 18v10" />
+        <path d="M8 36c5-3 9-3 14 0s9 3 14 0 5-3 7-1M5 41h38" />
+      </svg>
+    );
+  }
+  if (BEACH_CATEGORY_KEYS.has(key)) {
+    return (
+      <svg viewBox="0 0 48 48" className="point-icon beach" aria-hidden="true">
+        <path d="M5 19c7-1 11 2 13 8 2 6 7 10 14 11 5 1 8 2 11 4" />
+        <path d="M24 16c5-3 10-3 17 0M26 23c5-2 10-2 16 0" />
+        <path d="M5 41h38" />
       </svg>
     );
   }
