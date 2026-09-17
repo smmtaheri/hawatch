@@ -97,7 +97,7 @@
     }
   },
   "routes": {
-    "hessar_to_orin": {
+    "hesar_to_orin": {
       "slug": "orin-hesar",
       "title": "پناهگاه اورین تا قلهٔ اورین",
       "subtitle": "مسیر پیاده از پناهگاه اورین، دریاچهٔ گولار و یال شرقی تا قله",
