@@ -1,0 +1,61 @@
+{
+  "catalog_version": "hawatch-varzaneh-v1",
+  "weather_points": {
+    "varzaneh-desert": {
+      "name": "کویر ورزنه",
+      "page_name": "کویر ورزنه",
+      "short_label": "کویر ورزنه",
+      "place_type": "desert",
+      "aliases": [
+        "تپه‌های شنی ورزنه",
+        "کویر ورزنه اصفهان",
+        "Varzaneh Desert",
+        "Varzaneh sand dunes"
+      ],
+      "identity_summary": "تپه‌های شنی و پهنهٔ کویری ورزنه در شرق اصفهان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5346905822",
+        "https://www.wikiloc.com/hiking-trails/il-deserto-di-varzaneh-varzaneh-desert-22217667",
+        "https://www.wikiloc.com/hiking-trails/97-09-15-khwyr-wrznh-31142556",
+        "https://www.wikiloc.com/hiking-trails/98-09-14-khwyr-wrznh-44146958",
+        "https://www.wikiloc.com/hiking-trails/r3168-dunas-del-desierto-de-varzaneh-18496528",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 32.341065,
+      "longitude": 52.676933,
+      "elevation_m": 1471,
+      "status": "provisional",
+      "elevation_source": "Waypoint کمپ در ترک R3168 ورزنه؛ ارتفاع 1471 متر و مختصات تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "varzaneh-desert",
+    "tile_name": "کویر ورزنه",
+    "name": "کویر ورزنه",
+    "short_category": "کویر",
+    "category": "کویر · اصفهان",
+    "category_key": "desert",
+    "region": "استان اصفهان · ورزنه",
+    "elevation_m": 1471,
+    "latitude": 32.341065,
+    "longitude": 52.676933,
+    "image": "/images/home-scene.png",
+    "image_alt": "تپه‌های شنی کویر ورزنه در استان اصفهان",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تپه‌های شنی ورزنه",
+      "کویر ورزنه اصفهان"
+    ]
+  },
+  "primary_point": "varzaneh-desert"
+}

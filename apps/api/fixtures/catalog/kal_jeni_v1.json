@@ -1,0 +1,224 @@
+{
+  "catalog_version": "hawatch-kal-jeni-catalog-v1",
+  "weather_points": {
+    "kal-jeni": {
+      "name": "کال جنی",
+      "page_name": "کال جنی طبس",
+      "short_label": "کال جنی",
+      "place_type": "landmark",
+      "aliases": [
+        "درهٔ کال جنی",
+        "کال جنی طبس",
+        "Kal Jeni",
+        "Kal Jenni Canyon"
+      ],
+      "identity_summary": "درهٔ کال جنی و آبراههٔ طبیعی آن در شهرستان طبس",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kl-jn-tbs-7126469",
+        "https://www.wikiloc.com/hiking-trails/khl-jny-22539488",
+        "https://www.wikiloc.com/hiking-trails/pymysh-drh-khl-jny-85624749",
+        "https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 33.817485,
+      "longitude": 56.830676,
+      "elevation_m": 822,
+      "status": "provisional",
+      "elevation_source": "Waypoint END POINT در ترک پیادهٔ کال جنی؛ ارتفاع 821.6 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    },
+    "kal-jeni-trailhead": {
+      "name": "شروع پیاده‌روی کال جنی",
+      "page_name": "شروع پیاده‌روی کال جنی",
+      "short_label": "شروع پیاده‌روی",
+      "place_type": "trailhead",
+      "aliases": [
+        "پارکینگ کال جنی",
+        "شروع مسیر کال جنی",
+        "Kal Jeni trailhead"
+      ],
+      "identity_summary": "مبدأ نام‌گذاری‌شدهٔ پیاده‌روی درهٔ کال جنی، جدا از راه خاکی دسترسی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kl-jn-tbs-7126469",
+        "https://www.wikiloc.com/hiking-trails/khl-jny-22539488",
+        "https://www.wikiloc.com/hiking-trails/pymysh-drh-khl-jny-85624749"
+      ],
+      "latitude": 33.82487,
+      "longitude": 56.832017,
+      "elevation_m": 841,
+      "status": "provisional",
+      "elevation_source": "Waypoint START/پارکینگ در سه ترک مستقل کال جنی؛ مقدار 841 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    },
+    "kal-jeni-nakhl": {
+      "name": "نخل‌های کال جنی",
+      "page_name": "نخل‌های مسیر کال جنی",
+      "short_label": "نخل‌های کال جنی",
+      "place_type": "landmark",
+      "aliases": ["نخل کال جنی", "NAKHL Kal Jeni"],
+      "identity_summary": "نخل‌های نام‌گذاری‌شده در مسیر پیادهٔ درهٔ کال جنی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768"],
+      "latitude": 33.828439,
+      "longitude": 56.835281,
+      "elevation_m": 840,
+      "status": "provisional",
+      "elevation_source": "Waypoint NAKHL در ترک پیادهٔ کال جنی؛ مقدار 840 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    },
+    "kal-jeni-river": {
+      "name": "آب کال جنی",
+      "page_name": "آبراههٔ کال جنی",
+      "short_label": "آب کال جنی",
+      "place_type": "landmark",
+      "aliases": ["رود کال جنی", "RIVER Kal Jeni"],
+      "identity_summary": "آبراههٔ نام‌گذاری‌شده در درهٔ کال جنی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768"],
+      "latitude": 33.823628,
+      "longitude": 56.834853,
+      "elevation_m": 835,
+      "status": "provisional",
+      "elevation_source": "Waypoint RIVER در ترک پیادهٔ کال جنی؛ مقدار 835 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    },
+    "kal-jeni-main-canyon": {
+      "name": "کال اصلی کال جنی",
+      "page_name": "کال اصلی کال جنی",
+      "short_label": "کال اصلی",
+      "place_type": "landmark",
+      "aliases": ["رسیدن به کال اصلی و آب", "MAIN KAAL", "Main Kal Jeni"],
+      "identity_summary": "بخش اصلی و آب‌دار درهٔ کال جنی در مسیر پیاده‌روی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kl-jn-tbs-7126469",
+        "https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768"
+      ],
+      "latitude": 33.820599,
+      "longitude": 56.83204,
+      "elevation_m": 822,
+      "status": "provisional",
+      "elevation_source": "Waypoint MAIN KAAL/کال اصلی در دو ترک مستقل؛ مقدار 822 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    },
+    "kal-jeni-house-gabr": {
+      "name": "خانهٔ گبر کال جنی",
+      "page_name": "خانهٔ گبر در کال جنی",
+      "short_label": "خانهٔ گبر",
+      "place_type": "landmark",
+      "aliases": ["خانه گبر کال جنی", "KHANEH GABR", "Kal Jeni House Gabre"],
+      "identity_summary": "سازهٔ تاریخی شناخته‌شده در ادامهٔ مسیر پیادهٔ کال جنی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768"],
+      "latitude": 33.81374,
+      "longitude": 56.836672,
+      "elevation_m": 799,
+      "status": "provisional",
+      "elevation_source": "Waypoint KHANEH GABR در ترک پیادهٔ کال جنی؛ مقدار 799 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "climate": "desert"
+    }
+  },
+  "routes": {
+    "trailhead_to_kal_jeni": {
+      "slug": "kal-jeni-trailhead",
+      "title": "شروع پیاده‌روی تا کال جنی",
+      "subtitle": "مسیر پیاده از پارکینگ، نخل‌ها و آبراهه تا بخش اصلی کال جنی",
+      "trail_label": "مسیر پیادهٔ کال جنی",
+      "origin": "شروع پیاده‌روی کال جنی",
+      "target_label": "کال جنی",
+      "region": "طبس · خراسان جنوبی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kal-jeni-trailhead",
+        "kal-jeni-nakhl",
+        "kal-jeni-river",
+        "kal-jeni-main-canyon",
+        "kal-jeni-house-gabr",
+        "kal-jeni"
+      ],
+      "distance_km": 5.9,
+      "ascent_m": 60,
+      "one_way_minutes": 210,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-crosscheck-v1",
+        "version": "kal-jeni-trailhead-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kal-jenni-khl-jny-tbs-8460768",
+          "https://www.wikiloc.com/hiking-trails/kl-jn-tbs-7126469",
+          "https://www.wikiloc.com/hiking-trails/khl-jny-22539488",
+          "https://www.wikiloc.com/hiking-trails/pymysh-drh-khl-jny-85624749"
+        ],
+        "evidence_tracks": [
+          "tracks/kal-jeni/kal-jenni-khl-jny-tbs.gpx",
+          "tracks/kal-jeni/kl-jn-tbs.gpx",
+          "tracks/kal-jeni/khl-jny.gpx",
+          "tracks/kal-jeni/pymysh-drh-khl-jny.gpx"
+        ],
+        "cumulative_minutes": {
+          "kal-jeni-trailhead": 0,
+          "kal-jeni-nakhl": 25,
+          "kal-jeni-river": 65,
+          "kal-jeni-main-canyon": 120,
+          "kal-jeni-house-gabr": 165,
+          "kal-jeni": 210
+        },
+        "notes": [
+          "بخش جادهٔ خاکی و دسترسی خودرو پیش از START/پارکینگ از Route حذف شد؛ فاصله و زمان فقط برای پیمایش پیادهٔ داخل دره است.",
+          "چهار ترک مستقل وجود مسیر را تأیید می‌کنند؛ ترک kal-jenni-khl-jny-tbs برای محاسبه از waypoint START تا END POINT بریده شد.",
+          "نخل‌ها، آبراهه، کال اصلی و خانهٔ گبر waypointهای نام‌گذاری‌شده و عارضه‌های واقعی مسیرند؛ نقطهٔ ساختگی برای پرکردن زنجیره اضافه نشده است.",
+          "مسافت هندسی بخش پیاده حدود 5.9 کیلومتر و زمان ثبت‌شدهٔ شاهد حدود 202 دقیقه است؛ مقدار route محافظه‌کارانه گرد شده و عدم‌قطعیت 45 دقیقه دارد."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kal-jeni",
+    "tile_name": "کال جنی",
+    "name": "کال جنی",
+    "short_category": "دره",
+    "category": "دره · طبس",
+    "category_key": "desert",
+    "region": "استان خراسان جنوبی · طبس",
+    "elevation_m": 822,
+    "latitude": 33.817485,
+    "longitude": 56.830676,
+    "image": "/images/home-scene.png",
+    "image_alt": "درهٔ کال جنی در شهرستان طبس",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "درهٔ کال جنی",
+      "کال جنی طبس"
+    ]
+  },
+  "primary_point": "kal-jeni"
+}
