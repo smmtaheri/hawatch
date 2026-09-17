@@ -1,0 +1,67 @@
+{
+  "catalog_version": "hawatch-zarivar-lake-catalog-v1",
+  "weather_points": {
+    "zarivar-lake": {
+      "name": "دریاچهٔ زریوار",
+      "page_name": "دریاچهٔ زریوار مریوان",
+      "short_label": "زریوار",
+      "place_type": "lake",
+      "aliases": [
+        "دریاچه زریوار",
+        "دریاچهٔ زریبار",
+        "زریبار",
+        "زریوار",
+        "Zarivar Lake",
+        "Zrebar Lake"
+      ],
+      "identity_summary": "دریاچهٔ زریوار (زریبار) در غرب مریوان، تالاب آب شیرین ثبت‌شده در کنوانسیون رامسر",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.ramsar.org/news/islamic-republic-iran-designates-zarivar-as-ramsar-site",
+        "https://rsis.ramsar.org/sites/default/files/rsiswp_search/exports/Ramsar-Sites-annotated-summary-Iran-Islamic-Republic-of.pdf",
+        "https://visitiran.ir/fa/destination/%D9%85%D8%B1%DB%8C%D9%88%D8%A7%D9%86-%28%D8%B4%D9%87%D8%B1-%D8%AC%D9%87%D8%A7%D9%86%DB%8C-%DA%A9%D9%84%D8%A7%D8%B4%29",
+        "https://mapcarta.com/W76873079",
+        "https://link.springer.com/article/10.1007/s13201-024-02354-5",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.541944,
+      "longitude": 46.125278,
+      "elevation_m": 1285,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز تالاب از خلاصهٔ رسمی سایت رامسر (35°32′31″N, 46°07′31″E) و ارتفاع میانگین ۱۲۸۵ متر از مطالعهٔ پژوهشی زریوار؛ DEM/Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "zarivar-lake",
+    "tile_name": "دریاچهٔ زریوار",
+    "name": "دریاچهٔ زریوار",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ زریوار · مریوان",
+    "category_key": "lake",
+    "region": "مریوان · استان کردستان",
+    "elevation_m": 1285,
+    "latitude": 35.541944,
+    "longitude": 46.125278,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ زریوار در نزدیکی مریوان",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه زریوار",
+      "دریاچهٔ زریبار",
+      "زریبار",
+      "زریوار",
+      "Zarivar Lake",
+      "Zrebar Lake"
+    ]
+  },
+  "primary_point": "zarivar-lake"
+}
