@@ -904,19 +904,6 @@ html[data-theme="light"] .logout-dialog-panel p { color: #687a80; }
   margin: 42px auto 32px;
   text-align: center;
 }
-.subscription-heading::before {
-  content: "✧";
-  display: grid;
-  width: 38px;
-  height: 38px;
-  margin: 0 auto 10px;
-  place-items: center;
-  border: 1px solid var(--internal-teal, var(--teal));
-  border-radius: 50%;
-  color: var(--internal-teal, var(--teal));
-  font-size: 22px;
-  line-height: 1;
-}
 .subscription-heading h1 {
   margin: 6px 0 10px;
   font-size: clamp(30px, 4vw, 46px);

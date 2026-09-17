@@ -95,9 +95,7 @@ export function SubscriptionPlansPage() {
           <BackNavigation />
         </div>
         <section className="subscription-heading" aria-labelledby="subscription-title">
-          <span className="eyebrow teal-text">دسترسی هواچ</span>
-          <h1 id="subscription-title">طرح مناسب پیش‌بینی را انتخاب کن</h1>
-          <p>روزهای قابل‌نمایش از تنظیمات پنل مدیریت خوانده می‌شوند و هر زمان قابل تغییرند.</p>
+          <h1 id="subscription-title">طرح مناسب خودت را انتخاب کن</h1>
         </section>
         {status === "loading" ? <LoadingState /> : null}
         {status === "error" ? (

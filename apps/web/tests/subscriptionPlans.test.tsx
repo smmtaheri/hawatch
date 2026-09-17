@@ -46,7 +46,9 @@ describe("subscription plans", () => {
       </ThemeProvider>,
     );
 
-    expect(await screen.findByRole("heading", { name: "طرح مناسب پیش‌بینی را انتخاب کن" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "طرح مناسب خودت را انتخاب کن" })).toBeInTheDocument();
+    expect(screen.queryByText("دسترسی هواچ")).not.toBeInTheDocument();
+    expect(screen.queryByText("روزهای قابل‌نمایش از تنظیمات پنل مدیریت خوانده می‌شوند و هر زمان قابل تغییرند.")).not.toBeInTheDocument();
     const cards = screen.getByRole("region", { name: "طرح‌های اشتراک" });
     expect(cards.querySelector(".subscription-plan-card.free")).toBeTruthy();
     expect(cards.querySelector(".subscription-plan-card.paid")).toBeTruthy();
