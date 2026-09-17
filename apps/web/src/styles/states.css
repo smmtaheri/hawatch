@@ -89,11 +89,10 @@ html:not([data-theme="light"]) body {
   height: 27px;
 }
 
-/* The approved artwork stays inside the same destination-icon frame as every
- * SVG glyph. Its source PNGs have different transparent insets, so a shared
- * mask scale would make their visible drawings different sizes. These values
- * normalize the visible artwork to the 27px/25px SVG-glyph footprint without
- * changing the artwork files themselves. */
+/* Artwork uses frame-less alpha masks inside the same destination-icon frame
+ * as every SVG glyph. The source illustrations remain versioned unchanged;
+ * their display masks only remove the duplicated inner frame. Keeping one
+ * natural canvas scale leaves the same breathing room on every card. */
 .destination-artwork {
   display: block;
   width: 100%;
@@ -101,34 +100,30 @@ html:not([data-theme="light"]) body {
   background: currentColor;
   mask-position: center;
   mask-repeat: no-repeat;
-  mask-size: var(--destination-artwork-scale);
+  mask-size: 100%;
   -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: var(--destination-artwork-scale);
+  -webkit-mask-size: 100%;
 }
 
 .destination-artwork.waterfall {
-  --destination-artwork-scale: 120%;
-  mask-image: url("/images/destination-artwork/waterfall-simplified.png");
-  -webkit-mask-image: url("/images/destination-artwork/waterfall-simplified.png");
+  mask-image: url("/images/destination-artwork/glyphs/waterfall.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/waterfall.png");
 }
 
 .destination-artwork.desert {
-  --destination-artwork-scale: 94%;
-  mask-image: url("/images/destination-artwork/desert.png");
-  -webkit-mask-image: url("/images/destination-artwork/desert.png");
+  mask-image: url("/images/destination-artwork/glyphs/desert.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/desert.png");
 }
 
 .destination-artwork.meadow {
-  --destination-artwork-scale: 90%;
-  mask-image: url("/images/destination-artwork/meadow.png");
-  -webkit-mask-image: url("/images/destination-artwork/meadow.png");
+  mask-image: url("/images/destination-artwork/glyphs/meadow.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/meadow.png");
 }
 
 .destination-artwork.beach {
-  --destination-artwork-scale: 97%;
-  mask-image: url("/images/destination-artwork/beach.png");
-  -webkit-mask-image: url("/images/destination-artwork/beach.png");
+  mask-image: url("/images/destination-artwork/glyphs/beach.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/beach.png");
 }
 
 .destination-card-copy {
