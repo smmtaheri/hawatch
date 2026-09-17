@@ -49,6 +49,20 @@ def test_web_gateway_returns_real_404_for_unknown_spa_paths():
     assert "try_files $uri =404;" in text
 
 
+def test_web_gateway_serves_subscription_plans_for_direct_requests():
+    config = _find_web_nginx_file()
+    if config is None:
+        pytest.skip("apps/web/nginx.conf is not mounted in this API-only test container")
+    text = config.read_text(encoding="utf-8")
+
+    # BrowserRouter needs the entry document for a refresh or a link opened
+    # directly. Keep both canonical browser forms covered without widening the
+    # catch-all fallback used for unknown paths.
+    assert "location = /account/plans {" in text
+    assert "location = /account/plans/ {" in text
+    assert text.count("try_files /index.html =404;") >= 4
+
+
 def _find_web_nginx_file() -> Path | None:
     here = Path(__file__).resolve()
     for parent in here.parents:
