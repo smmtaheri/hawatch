@@ -114,10 +114,11 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
-  it("renders the approved destination artwork for nature categories", () => {
+  it("renders text-free destination artwork for nature categories", () => {
     const { container } = render(<DestinationArtwork categoryKey="waterfall" />);
     expect(container.querySelector(".destination-artwork.waterfall")).toBeInTheDocument();
-    expect(container.querySelector(".destination-artwork-label")).toHaveTextContent("آبشار");
+    expect(container.querySelector(".destination-artwork-label")).not.toBeInTheDocument();
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
   });
 
   it("does not mislabel an unsupported category as a mountain", () => {

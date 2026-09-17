@@ -87,11 +87,8 @@ html:not([data-theme="light"]) body {
 }
 
 .destination-card-icon.has-artwork {
-  width: 64px;
-  height: 72px;
   border: 0;
-  border-radius: 15px;
-  overflow: hidden;
+  border-radius: 0;
   background: transparent;
 }
 
@@ -99,45 +96,33 @@ html:not([data-theme="light"]) body {
   display: block;
   width: 100%;
   height: 100%;
+  background: var(--teal);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 132%;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 132%;
 }
 
-.destination-artwork-surface {
-  fill: var(--destination-artwork-surface);
+.destination-artwork.waterfall {
+  mask-image: url("/images/destination-artwork/waterfall.png");
+  -webkit-mask-image: url("/images/destination-artwork/waterfall.png");
 }
 
-.destination-artwork-frame,
-.destination-artwork-line {
-  fill: none;
-  stroke: var(--destination-artwork-line);
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.destination-artwork.desert {
+  mask-image: url("/images/destination-artwork/desert.png");
+  -webkit-mask-image: url("/images/destination-artwork/desert.png");
 }
 
-.destination-artwork-frame {
-  stroke-width: 1.6;
+.destination-artwork.meadow {
+  mask-image: url("/images/destination-artwork/meadow.png");
+  -webkit-mask-image: url("/images/destination-artwork/meadow.png");
 }
 
-.destination-artwork-line {
-  stroke-width: 1.6;
-}
-
-.destination-artwork-label {
-  fill: var(--destination-artwork-label);
-  font-family: var(--font-family);
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.destinations-page {
-  --destination-artwork-surface: #06484b;
-  --destination-artwork-line: #2bd7d8;
-  --destination-artwork-label: #edf7f4;
-}
-
-html[data-theme="light"] .destinations-page {
-  --destination-artwork-surface: #dcefea;
-  --destination-artwork-line: #1d7f86;
-  --destination-artwork-label: #102b3d;
+.destination-artwork.beach {
+  mask-image: url("/images/destination-artwork/beach.png");
+  -webkit-mask-image: url("/images/destination-artwork/beach.png");
 }
 
 .destination-card-copy {
@@ -214,12 +199,6 @@ html[data-theme="light"] .destinations-page {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-  }
-
-  .destination-card-icon.has-artwork {
-    width: 58px;
-    height: 66px;
-    border-radius: 13px;
   }
 
   .destination-card-copy strong {
