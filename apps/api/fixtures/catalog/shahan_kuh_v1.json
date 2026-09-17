@@ -1,0 +1,207 @@
+{
+  "catalog_version": "hawatch-shahan-kuh-catalog-v1",
+  "weather_points": {
+    "shahan-kuh": {
+      "name": "قلهٔ شاهان‌کوه",
+      "page_name": "قلهٔ شاهان‌کوه اصفهان",
+      "short_label": "شاهان‌کوه",
+      "place_type": "summit",
+      "aliases": [
+        "شاهان کوه",
+        "قله شاهان کوه",
+        "شاهان‌کوه فریدون‌شهر",
+        "Shahan Kuh",
+        "Shahankuh Peak"
+      ],
+      "identity_summary": "قلهٔ شاهان‌کوه؛ بلندترین قلهٔ استان اصفهان در شهرستان فریدون‌شهر و زاگرس مرکزی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+        "https://www.wikiloc.com/mountaineering-trails/shahan-peak-qlh-shhn-85243934",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-shhn-khwh-20424095",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-tyr-1404-shahankuh-peak-4040m-isfahan-222468297",
+        "https://en.wikipedia.org/wiki/Shahankuh",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 32.80306,
+      "longitude": 49.98283,
+      "elevation_m": 4040,
+      "status": "provisional",
+      "elevation_source": "چهار ترک مستقل مختصات قله را در حدود ۳۲٫۸۰۳۰۶، ۴۹٫۹۸۲۸۳ همگرا می‌کنند و ارتفاع گزارش‌شده حدود ۴۰۳۰ تا ۴۰۴۰ متر است؛ DEM نود Open-Meteo برابر ۴۰۰۷ متر است.",
+      "climate": "high_alpine"
+    },
+    "shahan-kuh-sardab-camp": {
+      "name": "کمپ عشایر سرداب بالا، مبدأ صعود شاهان‌کوه",
+      "page_name": "کمپ عشایر سرداب بالا؛ مبدأ صعود شاهان‌کوه",
+      "short_label": "کمپ سرداب بالا",
+      "place_type": "trailhead",
+      "aliases": [
+        "محل کمپ ییلاق عشایر منطقه",
+        "پارکینگ شاهان کوه",
+        "پای‌کار شاهان‌کوه",
+        "Sardab Bala camp"
+      ],
+      "identity_summary": "کمپ ییلاق عشایر و آخرین نقطهٔ دسترسی خودرو پیش از قطعهٔ پیادهٔ صعود شاهان‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+        "https://www.wikiloc.com/mountaineering-trails/shahan-peak-qlh-shhn-85243934",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-shhn-khwh-20424095",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-tyr-1404-shahankuh-peak-4040m-isfahan-222468297"
+      ],
+      "latitude": 32.79307,
+      "longitude": 50.02019,
+      "elevation_m": 2770,
+      "status": "provisional",
+      "elevation_source": "Waypoint محل کمپ ییلاق عشایر در ترک یک‌طرفه و نقطهٔ پارکینگ در ترک مستقل نزدیک هم‌اند؛ DEM نود Open-Meteo برابر ۲۷۶۹ متر است و ارتفاع خام ترک حدود ۲۶۷۵ متر است.",
+      "climate": "high_alpine"
+    },
+    "shahan-kuh-natural-well": {
+      "name": "چاه طبیعی مسیر شاهان‌کوه",
+      "page_name": "چاه طبیعی در مسیر صعود شاهان‌کوه",
+      "short_label": "چاه طبیعی شاهان‌کوه",
+      "place_type": "landmark",
+      "aliases": [
+        "یک چاه طبیعی شاهان‌کوه",
+        "چاه بسیار خطرناک شاهان‌کوه",
+        "Natural well Shahan Kuh"
+      ],
+      "identity_summary": "چاه طبیعی نام‌گذاری‌شده در بخش میانی مسیر پیادهٔ سرداب بالا تا شاهان‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+        "https://www.wikiloc.com/mountaineering-trails/shahan-peak-qlh-shhn-85243934",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-tyr-1404-shahankuh-peak-4040m-isfahan-222468297"
+      ],
+      "latitude": 32.799617,
+      "longitude": 49.99626,
+      "elevation_m": 3110,
+      "status": "provisional",
+      "elevation_source": "Waypoint چاه طبیعی در دو ترک مستقل حدود ۳۰۲۶ تا ۳۱۷۴ متر است؛ به‌دلیل شبکهٔ DEM، مقدار ۳۱۱۰ متر بین شواهد ترک و DEM نود Open-Meteo (۳۱۹۰ متر) انتخاب شده است.",
+      "climate": "high_alpine"
+    },
+    "shahan-kuh-summit-ridge": {
+      "name": "گردهٔ زیر قلهٔ شاهان‌کوه",
+      "page_name": "گردهٔ زیر قلهٔ شاهان‌کوه در مسیر صعود",
+      "short_label": "گردهٔ زیر قله",
+      "place_type": "ridge",
+      "aliases": [
+        "گرده و شیب زیر قله شاهان",
+        "شیب زیر قله شاهان‌کوه",
+        "Shahan Kuh summit ridge"
+      ],
+      "identity_summary": "گرده و شیب نام‌گذاری‌شدهٔ پیش از قله در قطعهٔ مرتفع مسیر صعود شاهان‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+        "https://www.wikiloc.com/hiking-trails/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-tyr-1404-shahankuh-peak-4040m-isfahan-222468297",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-shhn-khwh-20424095"
+      ],
+      "latitude": 32.800796,
+      "longitude": 49.981355,
+      "elevation_m": 3875,
+      "status": "provisional",
+      "elevation_source": "Waypoint گرده و شیب زیر قله در ترک مستقل و گردنهٔ نزدیک در ترک‌های دیگر همگراست؛ DEM نود Open-Meteo در مختصات گرده برابر ۳۸۷۶ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "sardab_to_shahan_kuh": {
+      "slug": "shahan-kuh-sardab",
+      "title": "کمپ سرداب بالا تا قلهٔ شاهان‌کوه",
+      "subtitle": "مسیر پیاده از کمپ عشایر سرداب بالا، چاه طبیعی و گردهٔ زیر قله تا شاهان‌کوه",
+      "trail_label": "مسیر سرداب بالا–شاهان‌کوه",
+      "origin": "کمپ عشایر سرداب بالا",
+      "target_label": "قلهٔ شاهان‌کوه",
+      "region": "فریدون‌شهر · استان اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shahan-kuh-sardab-camp",
+        "shahan-kuh-natural-well",
+        "shahan-kuh-summit-ridge",
+        "shahan-kuh"
+      ],
+      "distance_km": 5.7,
+      "ascent_m": 1200,
+      "one_way_minutes": 280,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-crosscheck-v1",
+        "version": "shahan-kuh-sardab-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+          "https://www.wikiloc.com/mountaineering-trails/shahan-peak-qlh-shhn-85243934",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-shhn-khwh-20424095",
+          "https://www.wikiloc.com/hiking-trails/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-tyr-1404-shahankuh-peak-4040m-isfahan-222468297",
+          "https://en.wikipedia.org/wiki/Shahankuh"
+        ],
+        "evidence_tracks": [
+          "tracks/shahan-kuh/shhn-khwh-frydwnshhr-sfhn.gpx",
+          "tracks/shahan-kuh/qlh-shhn-khwh-rtf-4040-mtr-bm-stn-sfhn-shhrstn-frydwnshhr-ty.gpx",
+          "tracks/shahan-kuh/shahan-peak-qlh-shhn.gpx",
+          "tracks/shahan-kuh/qlh-shhn-khwh-shahan-kooh.gpx"
+        ],
+        "cumulative_minutes": {
+          "shahan-kuh-sardab-camp": 0,
+          "shahan-kuh-natural-well": 145,
+          "shahan-kuh-summit-ridge": 235,
+          "shahan-kuh": 280
+        },
+        "notes": [
+          "ترک یک‌طرفهٔ ۲۰۱۸ از کمپ عشایر نزدیک سرداب بالا تا قله حدود ۵٫۷ کیلومتر است؛ سه ترک مستقل دیگر همین کریدور و مختصات قله را cross-check می‌کنند.",
+          "جادهٔ خاکی و دسترسی خودرو تا کمپ/پارکینگ از metrics مسیر پیاده حذف شده است؛ مبدأهای نزدیک در یک WeatherPoint فنی ادغام شده‌اند.",
+          "چاه طبیعی و گردهٔ زیر قله waypointهای نام‌گذاری‌شده و عارضه‌های واقعی مسیرند؛ نقطهٔ generic برای پرکردن زنجیره اضافه نشده است.",
+          "بخش کوتاه دست‌به‌سنگ در منابع ثبت شده است؛ route برای پیمایش کوهستانی دشوار معرفی می‌شود و زمان/ایمنی آن تضمین نیست.",
+          "ارتفاع خام GPX و timestampهای مسیر برای ETA مبنا نیستند؛ زمان ۲۸۰ دقیقه با عدم‌قطعیت ۹۰ دقیقه محافظه‌کارانه ثبت شده است."
+        ]
+      },
+      "public_point_notes": {
+        "shahan-kuh-natural-well": "چاه طبیعی عارضهٔ میانی مسیر است؛ به لبهٔ آن نزدیک نشوید.",
+        "shahan-kuh-summit-ridge": "گردهٔ زیر قله بخش مرتفع و دشوار مسیر است و به شرایط روز وابسته است."
+      }
+    }
+  },
+  "point": {
+    "slug": "shahan-kuh",
+    "tile_name": "شاهان‌کوه",
+    "name": "قلهٔ شاهان‌کوه",
+    "short_category": "قله",
+    "category": "قله‌های زاگرس مرکزی",
+    "category_key": "mountain",
+    "region": "فریدون‌شهر · استان اصفهان",
+    "elevation_m": 4040,
+    "latitude": 32.80306,
+    "longitude": 49.98283,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شاهان‌کوه اصفهان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "شاهان کوه",
+      "قله شاهان کوه",
+      "شاهان‌کوه فریدون‌شهر",
+      "Shahan Kuh",
+      "Shahankuh Peak"
+    ]
+  },
+  "primary_point": "shahan-kuh"
+}

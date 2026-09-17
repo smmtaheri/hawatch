@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kal-jeni-catalog-v1",
+  "catalog_version": "hawatch-kal-jeni-catalog-v2",
   "weather_points": {
     "kal-jeni": {
       "name": "کال جنی",
@@ -32,16 +32,16 @@
       "climate": "desert"
     },
     "kal-jeni-trailhead": {
-      "name": "شروع پیاده‌روی کال جنی",
-      "page_name": "شروع پیاده‌روی کال جنی",
-      "short_label": "شروع پیاده‌روی",
+      "name": "پارکینگ و ورودی کال جنی",
+      "page_name": "پارکینگ و ورودی کال جنی، طبس",
+      "short_label": "پارکینگ کال جنی",
       "place_type": "trailhead",
       "aliases": [
         "پارکینگ کال جنی",
         "شروع مسیر کال جنی",
         "Kal Jeni trailhead"
       ],
-      "identity_summary": "مبدأ نام‌گذاری‌شدهٔ پیاده‌روی درهٔ کال جنی، جدا از راه خاکی دسترسی",
+      "identity_summary": "پارکینگ و ورودی پیادهٔ کال جنی در انتهای جادهٔ خاکی دسترسی، پیش از ورود به دره",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -55,7 +55,7 @@
       "longitude": 56.832017,
       "elevation_m": 841,
       "status": "provisional",
-      "elevation_source": "Waypoint START/پارکینگ در سه ترک مستقل کال جنی؛ مقدار 841 متر تا کنترل DEM/Open-Meteo موقت است.",
+      "elevation_source": "Waypoint START و پارکینگ در سه ترک مستقل کال جنی؛ مقدار 841 متر تا کنترل DEM/Open-Meteo موقت است.",
       "climate": "desert"
     },
     "kal-jeni-nakhl": {
@@ -141,10 +141,10 @@
   "routes": {
     "trailhead_to_kal_jeni": {
       "slug": "kal-jeni-trailhead",
-      "title": "شروع پیاده‌روی تا کال جنی",
-      "subtitle": "مسیر پیاده از پارکینگ، نخل‌ها و آبراهه تا بخش اصلی کال جنی",
-      "trail_label": "مسیر پیادهٔ کال جنی",
-      "origin": "شروع پیاده‌روی کال جنی",
+      "title": "مسیر پارکینگ کال جنی تا انتهای دره",
+      "subtitle": "پیمایش پیاده از انتهای جادهٔ کال جنی، میان نخل‌ها و آبراهه تا انتهای دره",
+      "trail_label": "مسیر پارکینگ تا انتهای کال جنی",
+      "origin": "پارکینگ و ورودی کال جنی",
       "target_label": "کال جنی",
       "region": "طبس · خراسان جنوبی",
       "featured": true,
