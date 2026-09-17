@@ -106,8 +106,8 @@ html:not([data-theme="light"]) body {
 }
 
 .destination-artwork.waterfall {
-  mask-image: url("/images/destination-artwork/waterfall.png");
-  -webkit-mask-image: url("/images/destination-artwork/waterfall.png");
+  mask-image: url("/images/destination-artwork/waterfall-simplified.png");
+  -webkit-mask-image: url("/images/destination-artwork/waterfall-simplified.png");
 }
 
 .destination-artwork.desert {
