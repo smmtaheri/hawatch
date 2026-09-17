@@ -18,6 +18,28 @@ export function resolvePointCategoryKey(categoryKey: string, placeType?: string)
   return PLACE_TYPE_CATEGORY_KEYS[String(placeType ?? "").trim().toLowerCase()] || "";
 }
 
+/**
+ * The single destination-icon entry point used by every card surface.
+ * Callers may supply their layout class (for example `tile-icon` or
+ * `destination-card-icon`), but category resolution and the glyph itself stay
+ * in this component so a destination cannot drift between pages.
+ */
+export function DestinationIcon({
+  categoryKey,
+  placeType,
+  className,
+}: {
+  categoryKey: string;
+  placeType?: string;
+  className: string;
+}) {
+  return (
+    <span className={`destination-icon ${className}`} aria-hidden="true">
+      <PointIcon categoryKey={categoryKey} placeType={placeType} />
+    </span>
+  );
+}
+
 export function PointIcon({ categoryKey, placeType }: { categoryKey: string; placeType?: string }) {
   const key = resolvePointCategoryKey(categoryKey, placeType);
 

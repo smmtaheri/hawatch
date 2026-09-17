@@ -5,8 +5,7 @@ import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
 import { Header } from "../../components/Header";
 import { LoadingState } from "../../components/LoadingState";
-import { DestinationArtwork, hasDestinationArtwork } from "../../components/DestinationArtwork";
-import { PointIcon, resolvePointCategoryKey } from "../../components/PointIcon";
+import { DestinationIcon } from "../../components/PointIcon";
 import { usePageTitle } from "../../lib/pageTitle";
 import type { PointSummary } from "../../types";
 
@@ -59,16 +58,11 @@ export function DestinationsPage() {
           <section className="destination-grid" aria-label="فهرست مقصدهای اصلی">
             {destinations.map((destination) => (
               <Link key={destination.slug} to={destination.href} className="destination-card">
-                <span
-                  className={`destination-card-icon${hasDestinationArtwork(resolvePointCategoryKey(destination.category_key, destination.place_type)) ? " has-artwork" : ""}`}
-                  aria-hidden="true"
-                >
-                  {hasDestinationArtwork(resolvePointCategoryKey(destination.category_key, destination.place_type)) ? (
-                    <DestinationArtwork categoryKey={resolvePointCategoryKey(destination.category_key, destination.place_type)} />
-                  ) : (
-                    <PointIcon categoryKey={destination.category_key} placeType={destination.place_type} />
-                  )}
-                </span>
+                <DestinationIcon
+                  className="destination-card-icon"
+                  categoryKey={destination.category_key}
+                  placeType={destination.place_type}
+                />
                 <span className="destination-card-copy">
                   <strong>{destination.name}</strong>
                   <small>{destinationMeta(destination)}</small>

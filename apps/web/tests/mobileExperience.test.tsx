@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { DestinationArtwork } from "../src/components/DestinationArtwork";
 import { PointCard } from "../src/components/PointCard";
-import { PointIcon } from "../src/components/PointIcon";
+import { DestinationIcon, PointIcon } from "../src/components/PointIcon";
 import { DesktopRouteSelector } from "../src/components/DesktopRouteSelector";
 import { MobileRouteSelector } from "../src/components/MobileRouteSelector";
 import { RouteSiblingNavigation } from "../src/components/RouteSiblingNavigation";
@@ -114,11 +114,26 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
-  it("renders text-free destination artwork for nature categories", () => {
+  it("routes the legacy destination artwork facade through the shared SVG icon", () => {
     const { container } = render(<DestinationArtwork categoryKey="waterfall" />);
-    expect(container.querySelector(".destination-artwork.waterfall")).toBeInTheDocument();
-    expect(container.querySelector(".destination-artwork-label")).not.toBeInTheDocument();
-    expect(container.querySelector("svg")).not.toBeInTheDocument();
+    expect(container.querySelector(".destination-icon.destination-card-icon")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.waterfall")).toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork")).not.toBeInTheDocument();
+  });
+
+  it("keeps destination wrappers and glyphs shared across card surfaces", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="desert" className="tile-icon" />,
+    );
+    expect(container.querySelector(".destination-icon.tile-icon")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.desert")).toBeInTheDocument();
+  });
+
+  it("keeps the destination wrapper's place-type fallback for lakes", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="" placeType="lake" className="destination-card-icon" />,
+    );
+    expect(container.querySelector(".point-icon.lake")).toBeInTheDocument();
   });
 
   it("does not mislabel an unsupported category as a mountain", () => {

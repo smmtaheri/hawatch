@@ -7,7 +7,7 @@ import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
 import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { PointIcon } from "../../components/PointIcon";
+import { DestinationIcon } from "../../components/PointIcon";
 import { usePageTitle } from "../../lib/pageTitle";
 import type { CatalogCounts, PointSummary, SearchSuggestion } from "../../types";
 
@@ -146,9 +146,11 @@ export function HomePage() {
                         </strong>
                         <small>{item.short_category}</small>
                       </span>
-                      <span className="tile-icon">
-                        <PointIcon categoryKey={item.category_key} />
-                      </span>
+                      <DestinationIcon
+                        className="tile-icon"
+                        categoryKey={item.category_key}
+                        placeType={item.place_type}
+                      />
                       <span className="tile-arrow">←</span>
                     </Link>
                   ))}
