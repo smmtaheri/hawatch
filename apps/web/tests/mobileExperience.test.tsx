@@ -102,6 +102,12 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
+  it("renders volcanic destinations with the volcano icon", () => {
+    const { container } = render(<PointIcon categoryKey="volcano" />);
+    expect(container.querySelector(".point-icon.volcano")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.mountain")).not.toBeInTheDocument();
+  });
+
   it("renders the beach category as its own destination icon", () => {
     const { container } = render(<PointIcon categoryKey="beach" />);
     expect(container.querySelector(".point-icon.beach")).toBeInTheDocument();

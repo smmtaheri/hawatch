@@ -6,6 +6,7 @@
       "page_name": "قلهٔ تفتان در سیستان و بلوچستان",
       "short_label": "قلهٔ تفتان",
       "place_type": "summit",
+      "category_key": "volcano",
       "aliases": [
         "تفتان",
         "قله تفتان",
@@ -156,7 +157,7 @@
     "name": "قلهٔ تفتان",
     "short_category": "قله",
     "category": "قله‌های سیستان و بلوچستان",
-    "category_key": "mountain",
+    "category_key": "volcano",
     "region": "دره‌گل · تفتان · سیستان و بلوچستان",
     "elevation_m": 3941,
     "latitude": 28.59888,
