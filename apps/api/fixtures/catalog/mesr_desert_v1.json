@@ -1,0 +1,184 @@
+{
+  "catalog_version": "hawatch-mesr-desert-catalog-v1",
+  "weather_points": {
+    "mesr-desert": {
+      "name": "کویر مصر",
+      "page_name": "کویر مصر",
+      "short_label": "کویر مصر",
+      "place_type": "desert",
+      "aliases": [
+        "رمل‌های مصر",
+        "تپه‌های شنی مصر",
+        "کویر مصر خور و بیابانک",
+        "Mesr Desert",
+        "Mesr sand dunes"
+      ],
+      "identity_summary": "کویر مصر و تپه‌های شنی آن در شهرستان خور و بیابانک",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12594890",
+        "https://mapcarta.com/N5274810121",
+        "https://www.wikiloc.com/hiking-trails/khwyr-msr-mesr-desert-16402699",
+        "https://ca.wikiloc.com/rutes-senderisme/khwyr-msr-mesr-desert-198304886",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.067181,
+      "longitude": 54.79688,
+      "elevation_m": 848,
+      "status": "provisional",
+      "elevation_source": "مختصات روستای مصر و دسترسی اصلی کویر از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در 34.067181, 54.796880 برابر 848 متر است. تپه‌های شنی در همین پهنه قرار دارند.",
+      "climate": "desert"
+    },
+    "mesr-farahzad-village": {
+      "name": "روستای فرحزاد",
+      "page_name": "روستای فرحزاد، مبدأ مسیر کویر مصر",
+      "short_label": "فرحزاد",
+      "place_type": "village",
+      "aliases": [
+        "فرحزاد",
+        "روستای فرحزاد خور",
+        "Farahzad"
+      ],
+      "identity_summary": "روستای فرحزاد در مسیر پیادهٔ کویر مصر",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwyr-msr-mesr-desert-16402699",
+        "https://ca.wikiloc.com/rutes-senderisme/khwyr-msr-mesr-desert-198304886"
+      ],
+      "latitude": 34.096344,
+      "longitude": 54.784848,
+      "elevation_m": 840,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint روستای فرحزاد در دو ترک مستقل؛ Open-Meteo GLO-90 DEM در 34.096344, 54.784848 برابر 840 متر است.",
+      "climate": "desert"
+    },
+    "mesr-sand-dunes": {
+      "name": "رمل‌های کویر مصر",
+      "page_name": "رمل‌های کویر مصر",
+      "short_label": "رمل‌های مصر",
+      "place_type": "landmark",
+      "aliases": [
+        "تپه‌های شنی مصر",
+        "رمل های کویر مصر",
+        "Mesr sand dunes"
+      ],
+      "identity_summary": "رمل‌ها و تپه‌های شنی نام‌دار در مسیر پیادهٔ کویر مصر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5274810121",
+        "https://www.wikiloc.com/hiking-trails/khwyr-msr-mesr-desert-16402699",
+        "https://ca.wikiloc.com/rutes-senderisme/khwyr-msr-mesr-desert-198304886"
+      ],
+      "latitude": 34.132278,
+      "longitude": 54.826847,
+      "elevation_m": 849,
+      "status": "provisional",
+      "elevation_source": "مختصات تپه‌های شنی مصر از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در 34.132278, 54.826847 برابر 849 متر است.",
+      "climate": "desert"
+    },
+    "mesr-neyzaar": {
+      "name": "نیزار مصر",
+      "page_name": "نیزار مصر در مسیر کویر",
+      "short_label": "نیزار مصر",
+      "place_type": "landmark",
+      "aliases": [
+        "نیزار کویر مصر",
+        "Neyzaar"
+      ],
+      "identity_summary": "نیزار نام‌دار در مسیر پیادهٔ رمل‌های کویر مصر تا روستای مصر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwyr-msr-mesr-desert-16402699",
+        "https://ca.wikiloc.com/rutes-senderisme/khwyr-msr-mesr-desert-198304886"
+      ],
+      "latitude": 34.096906,
+      "longitude": 54.813203,
+      "elevation_m": 833,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نیزار در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در 34.096906, 54.813203 برابر 833 متر است.",
+      "climate": "desert"
+    }
+  },
+  "routes": {
+    "farahzad_to_mesr_desert": {
+      "slug": "mesr-farahzad",
+      "title": "روستای فرحزاد تا کویر مصر",
+      "subtitle": "مسیر پیاده از فرحزاد، میان رمل‌ها و نیزار، تا روستای مصر",
+      "trail_label": "مسیر فرحزاد–مصر",
+      "origin": "روستای فرحزاد",
+      "target_label": "کویر مصر",
+      "region": "خور و بیابانک · اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "mesr-farahzad-village",
+        "mesr-sand-dunes",
+        "mesr-neyzaar",
+        "mesr-desert"
+      ],
+      "distance_km": 17.8,
+      "ascent_m": 90,
+      "one_way_minutes": 450,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-walking-crosscheck-v1",
+        "version": "mesr-farahzad-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/khwyr-msr-mesr-desert-16402699",
+          "https://ca.wikiloc.com/rutes-senderisme/khwyr-msr-mesr-desert-198304886"
+        ],
+        "evidence_tracks": [
+          "tracks/mesr-desert/khwyr-msr-mesr-desert.gpx",
+          "tracks/mesr-desert/khwyr-msr-mesr-desert (1).gpx"
+        ],
+        "cumulative_minutes": {
+          "mesr-farahzad-village": 0,
+          "mesr-sand-dunes": 210,
+          "mesr-neyzaar": 360,
+          "mesr-desert": 450
+        },
+        "notes": [
+          "دو ترک مستقل پیاده بررسی شدند؛ یکی مسیر فرحزاد تا مصر و دیگری حلقهٔ پیادهٔ مصر–فرحزاد در دی ۱۴۰۳ است.",
+          "رمل‌های مصر و نیزار نقاط میانی واقعی‌اند؛ بخش جاده‌ای بین روستاها و ترک‌های آفرودی مبنای Route پیاده قرار نگرفتند.",
+          "مسافت و زمان به‌دلیل ناوبری در رمل و اختلاف زمان ثبت‌شدهٔ ترک‌ها تخمینی‌اند و عدم‌قطعیت ۶۰ دقیقه دارند؛ GPX elevation فقط مرجع هندسه است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "mesr-desert",
+    "tile_name": "کویر مصر",
+    "name": "کویر مصر",
+    "short_category": "کویر",
+    "category": "کویر مرکزی · خور و بیابانک",
+    "category_key": "desert",
+    "region": "استان اصفهان · خور و بیابانک",
+    "elevation_m": 848,
+    "latitude": 34.067181,
+    "longitude": 54.79688,
+    "image": "/images/home-scene.png",
+    "image_alt": "تپه‌های شنی کویر مصر در خور و بیابانک",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "mesr-desert"
+}
