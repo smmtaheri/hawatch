@@ -1,0 +1,62 @@
+{
+  "catalog_version": "hawatch-tochal-ski-v1",
+  "weather_points": {
+    "tochal-ski-resort": {
+      "name": "پیست اسکی توچال",
+      "page_name": "پیست اسکی توچال؛ ارتفاعات شمال تهران",
+      "short_label": "پیست اسکی توچال",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "پیست بین‌المللی اسکی توچال",
+        "پیست توچال",
+        "Tochal Ski Resort",
+        "Tochal International Ski Resort"
+      ],
+      "identity_summary": "پیست اسکی توچال در محدودهٔ ایستگاه هفتم تله‌کابین و دامنهٔ قلهٔ توچال؛ مقصد مستقل ورزش‌های زمستانی در شمال تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://tochal.org/",
+        "https://ir.geoview.info/pyst_byn_almlly_asky_twchal,20632945271w",
+        "https://www.ventusky.com/35.885;51.405",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.88553,
+      "longitude": 51.40692,
+      "elevation_m": 3615,
+      "status": "provisional",
+      "elevation_source": "محدودهٔ پیست از دادهٔ OpenStreetMap/GeoView (مرکز عارضه: 35.88553, 51.40692)؛ ارتفاع اولیه بر اساس دادهٔ ارتفاعی همان مختصات و بازهٔ ۳۵۵۰ تا ۳۸۵۰ متر منابع معرفی پیست، با کنترل نهایی Open-Meteo GLO-90.",
+      "region": "تهران · شمیرانات",
+      "climate": "alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "tochal-ski-resort",
+    "tile_name": "پیست اسکی توچال",
+    "name": "پیست اسکی توچال",
+    "short_category": "پیست اسکی",
+    "category": "پیست اسکی · ارتفاعات شمال تهران",
+    "category_key": "mountain",
+    "region": "تهران · شمیرانات",
+    "elevation_m": 3615,
+    "latitude": 35.88553,
+    "longitude": 51.40692,
+    "image": "/images/home-scene.png",
+    "image_alt": "پیست اسکی توچال در ارتفاعات شمال تهران",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پیست اسکی توچال",
+      "پیست بین‌المللی اسکی توچال",
+      "پیست توچال"
+    ]
+  },
+  "primary_point": "tochal-ski-resort"
+}
