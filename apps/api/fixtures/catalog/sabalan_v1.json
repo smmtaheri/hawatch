@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sabalan-catalog-v2",
+  "catalog_version": "hawatch-sabalan-catalog-v3",
   "weather_points": {
     "sabalan-alvares-village": {
       "name": "روستای آلوارس",
@@ -54,11 +54,11 @@
       "elevation_m": 2696,
       "status": "provisional",
       "elevation_source": "Waypoint ترک شابیل تا قله: ۲۶۹۶ متر؛ Open-Meteo GLO-90 DEM و نقطهٔ آغاز پیاده‌روی برای cross-check.",
-      "page_name": "شابیل، ابتدای مسیر شمال‌شرقی سبلان",
+      "page_name": "شابیل؛ پای کار سبلان",
       "short_label": "شابیل",
       "place_type": "trailhead",
-      "aliases": [],
-      "identity_summary": "شابیل · ابتدای پیاده‌روی؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "aliases": ["پای کار شابیل", "مبدأ شابیل", "آبگرم شابیل", "Shabil trailhead"],
+      "identity_summary": "شابیل؛ پای کار و مبدأ مسیر شمال‌شرقی سبلان، با صفحهٔ مستقل پیش‌بینی هوا",
       "importance": "support",
       "seo_indexable": true,
       "name_status": "official",
