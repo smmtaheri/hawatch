@@ -1,0 +1,54 @@
+{
+  "catalog_version": "hawatch-chin-kalagh-catalog-v1",
+  "weather_points": {
+    "chin-kalagh": {
+      "name": "قلهٔ چین‌کلاغ",
+      "page_name": "قلهٔ چین‌کلاغ",
+      "short_label": "چین‌کلاغ",
+      "place_type": "summit",
+      "aliases": ["چین کلاغ", "قله چین کلاغ", "چین‌کلاغ", "Chin Kalagh"],
+      "identity_summary": "قلهٔ چین‌کلاغ در البرز مرکزی، میان دره‌های درکه و فرحزاد در شمال تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peak-information.aspx?lat=35.8300883&lon=51.3551034&peak-name=%D9%82%D9%84%D9%87+%DA%86%DB%8C%D9%86+%DA%A9%D9%84%D8%A7%D8%BA&pkidentifier=2145",
+        "https://mapcarta.com/N5731690831",
+        "https://www.wikiloc.com/hiking-trails/qlh-chyn-khlg-202637679"
+      ],
+      "latitude": 35.8300883,
+      "longitude": 51.3551034,
+      "elevation_m": 2801,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از قله و OpenStreetMap/Mapcarta؛ ارتفاع Mapcarta برابر ۲۸۰۱ متر است و با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "category_key": "mountain",
+      "category": "قله‌های شمال تهران",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 1
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "chin-kalagh",
+    "tile_name": "چین‌کلاغ",
+    "name": "قلهٔ چین‌کلاغ",
+    "short_category": "کوه",
+    "category": "قله‌های شمال تهران",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 2801,
+    "latitude": 35.8300883,
+    "longitude": 51.3551034,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ چین‌کلاغ",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["چین کلاغ", "قله چین کلاغ", "چین‌کلاغ", "Chin Kalagh"]
+  },
+  "primary_point": "chin-kalagh"
+}
