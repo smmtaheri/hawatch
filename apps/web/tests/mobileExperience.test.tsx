@@ -96,6 +96,14 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.waterfall")).toBeInTheDocument();
   });
 
+  it("renders a dedicated ski-resort artwork from the database category key", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="ski" className="destination-card-icon" />,
+    );
+    expect(container.querySelector(".destination-artwork.ski")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.mountain")).not.toBeInTheDocument();
+  });
+
   it("keeps ridge destinations in the mountain icon family", () => {
     const { container } = render(<PointIcon categoryKey="ridge" />);
     expect(container.querySelector(".point-icon.mountain")).toBeInTheDocument();

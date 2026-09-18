@@ -136,6 +136,11 @@ html:not([data-theme="light"]) body {
   -webkit-mask-image: url("/images/destination-artwork/glyphs/neighborhood.svg");
 }
 
+.destination-artwork.ski {
+  mask-image: url("/images/destination-artwork/glyphs/ski.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/ski.png");
+}
+
 .destination-artwork.city {
   mask-image: url("/images/destination-artwork/glyphs/city.png");
   -webkit-mask-image: url("/images/destination-artwork/glyphs/city.png");

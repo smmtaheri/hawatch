@@ -6,7 +6,7 @@
       "page_name": "پیست اسکی آبعلی؛ جادهٔ هراز",
       "short_label": "پیست اسکی آبعلی",
       "place_type": "landmark",
-      "category_key": "mountain",
+      "category_key": "ski",
       "aliases": [
         "پیست آبعلی",
         "پیست اسکی آب‌علی",
@@ -38,7 +38,7 @@
     "name": "پیست اسکی آبعلی",
     "short_category": "پیست اسکی",
     "category": "پیست اسکی · جادهٔ هراز",
-    "category_key": "mountain",
+    "category_key": "ski",
     "region": "تهران · دماوند",
     "elevation_m": 2490,
     "latitude": 35.76484,

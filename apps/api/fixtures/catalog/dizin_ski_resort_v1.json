@@ -6,7 +6,7 @@
       "page_name": "پیست اسکی دیزین؛ البرز مرکزی",
       "short_label": "پیست اسکی دیزین",
       "place_type": "landmark",
-      "category_key": "mountain",
+      "category_key": "ski",
       "aliases": [
         "پیست دیزین",
         "پیست بین‌المللی دیزین",
@@ -39,7 +39,7 @@
     "name": "پیست اسکی دیزین",
     "short_category": "پیست اسکی",
     "category": "پیست اسکی · البرز مرکزی",
-    "category_key": "mountain",
+    "category_key": "ski",
     "region": "البرز · کرج",
     "elevation_m": 3129,
     "latitude": 36.03086,

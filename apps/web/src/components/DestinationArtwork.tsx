@@ -6,6 +6,7 @@ const ILLUSTRATED_CATEGORIES = new Set([
   "city",
   "village",
   "neighborhood",
+  "ski",
 ]);
 
 function normalizedCategoryKey(categoryKey: string) {

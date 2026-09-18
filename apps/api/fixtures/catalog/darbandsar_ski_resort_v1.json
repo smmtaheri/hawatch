@@ -6,7 +6,7 @@
       "page_name": "پیست اسکی دربندسر؛ رودبار قصران",
       "short_label": "پیست اسکی دربندسر",
       "place_type": "landmark",
-      "category_key": "mountain",
+      "category_key": "ski",
       "aliases": [
         "پیست بین‌المللی دربندسر",
         "پیست دربندسر",
@@ -40,7 +40,7 @@
     "name": "پیست اسکی دربندسر",
     "short_category": "پیست اسکی",
     "category": "پیست اسکی · رودبار قصران",
-    "category_key": "mountain",
+    "category_key": "ski",
     "region": "تهران · شمیرانات",
     "elevation_m": 3025,
     "latitude": 36.0156,

@@ -6,7 +6,7 @@
       "page_name": "پیست اسکی توچال؛ ارتفاعات شمال تهران",
       "short_label": "پیست اسکی توچال",
       "place_type": "landmark",
-      "category_key": "mountain",
+      "category_key": "ski",
       "aliases": [
         "پیست بین‌المللی اسکی توچال",
         "پیست توچال",
@@ -40,7 +40,7 @@
     "name": "پیست اسکی توچال",
     "short_category": "پیست اسکی",
     "category": "پیست اسکی · ارتفاعات شمال تهران",
-    "category_key": "mountain",
+    "category_key": "ski",
     "region": "تهران · شمیرانات",
     "elevation_m": 3615,
     "latitude": 35.88553,
