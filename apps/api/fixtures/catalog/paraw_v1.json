@@ -1,0 +1,223 @@
+{
+  "catalog_version": "hawatch-paraw-catalog-v1",
+  "weather_points": {
+    "paraw": {
+      "name": "قلهٔ پراو",
+      "page_name": "قلهٔ پراو کرمانشاه",
+      "short_label": "قلهٔ پراو",
+      "place_type": "summit",
+      "aliases": [
+        "پراو",
+        "قله پرآو",
+        "کوه پراو",
+        "Paraw Peak",
+        "Parau Peak"
+      ],
+      "identity_summary": "قلهٔ پراو در رشته‌کوه پراو، مقصد شناخته‌شدهٔ مسیر تنگهٔ چروبر و چشمهٔ دوزه‌ری در کرمانشاه",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716",
+        "https://www.wikiloc.com/hiking-trails/prw-86465344",
+        "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+        "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.418321,
+      "longitude": 47.243294,
+      "elevation_m": 3324,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات canonical برابر ۳۳۲۴ متر است؛ چهار ترک مستقل نقطهٔ قله را در همین کریدور و ارتفاع خام حدود ۳۳۵۰ متر تأیید می‌کنند.",
+      "climate": "high_alpine"
+    },
+    "paraw-environmental-parking": {
+      "name": "پارکینگ حفاظت محیط‌زیست پراو",
+      "page_name": "پارکینگ حفاظت محیط‌زیست؛ مبدأ مسیر قلهٔ پراو",
+      "short_label": "پارکینگ پراو",
+      "place_type": "parking",
+      "aliases": [
+        "پارکینگ تنگه چروبر",
+        "پارکینگ پراو",
+        "Environmental Protection Parking"
+      ],
+      "identity_summary": "پارکینگ حفاظت محیط‌زیست در ابتدای بخش پیادهٔ مسیر تنگهٔ چروبر تا قلهٔ پراو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+        "https://www.wikiloc.com/hiking-trails/prw-86465344",
+        "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887"
+      ],
+      "latitude": 34.371807,
+      "longitude": 47.276978,
+      "elevation_m": 1507,
+      "status": "provisional",
+      "elevation_source": "Waypoint Environmental Protection Parking در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۱۵۰۷ متر است.",
+      "climate": "high_alpine"
+    },
+    "paraw-cherober-gorge": {
+      "name": "تنگهٔ چروبر",
+      "page_name": "تنگهٔ چروبر در مسیر قلهٔ پراو",
+      "short_label": "تنگهٔ چروبر",
+      "place_type": "landmark",
+      "aliases": [
+        "چروبر",
+        "تنگ چروبر",
+        "CheroBer Strait"
+      ],
+      "identity_summary": "تنگهٔ چروبر، عارضهٔ طبیعی و بخش شناخته‌شدهٔ ابتدای مسیر پیادهٔ پراو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716",
+        "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+        "https://www.wikiloc.com/hiking-trails/prw-86465344"
+      ],
+      "latitude": 34.386134,
+      "longitude": 47.271581,
+      "elevation_m": 1640,
+      "status": "provisional",
+      "elevation_source": "Waypoint تنگهٔ چروبر در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۱۶۴۰ متر است.",
+      "climate": "high_alpine"
+    },
+    "paraw-dozari-spring": {
+      "name": "چشمهٔ دوزه‌ری",
+      "page_name": "چشمهٔ دوزه‌ری در مسیر قلهٔ پراو",
+      "short_label": "چشمهٔ دوزه‌ری",
+      "place_type": "spring",
+      "aliases": [
+        "کانی دوزه‌ری",
+        "چشمه دوزری",
+        "Kani Dozari Spring"
+      ],
+      "identity_summary": "چشمهٔ دوزه‌ری، عارضهٔ آب و توقف شناخته‌شده در بخش میانی مسیر تنگهٔ چروبر تا قلهٔ پراو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716",
+        "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+        "https://www.wikiloc.com/hiking-trails/prw-86465344",
+        "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887"
+      ],
+      "latitude": 34.397130,
+      "longitude": 47.262906,
+      "elevation_m": 2123,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمهٔ دوزه‌ری در دو ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۲۱۲۳ متر است.",
+      "climate": "high_alpine"
+    },
+    "paraw-shelter": {
+      "name": "پناهگاه پراو",
+      "page_name": "پناهگاه پراو در مسیر قلهٔ پراو",
+      "short_label": "پناهگاه پراو",
+      "place_type": "shelter",
+      "aliases": [
+        "جان‌پناه پراو",
+        "پناهگاه قله پراو",
+        "Paraw Shelter"
+      ],
+      "identity_summary": "پناهگاه پراو، عارضهٔ شناخته‌شدهٔ بخش پایانی مسیر پیادهٔ چروبر تا قلهٔ پراو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716",
+        "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+        "https://www.wikiloc.com/hiking-trails/prw-86465344",
+        "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887"
+      ],
+      "latitude": 34.413502,
+      "longitude": 47.247759,
+      "elevation_m": 3107,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه پراو در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۳۱۰۷ متر است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "paraw-chalabeh-summit": {
+      "slug": "paraw-chalabeh-summit",
+      "title": "پارکینگ چروبر تا قلهٔ پراو",
+      "subtitle": "مسیر پیادهٔ تنگهٔ چروبر، چشمهٔ دوزه‌ری و پناهگاه پراو تا قله",
+      "trail_label": "مسیر چروبر–پراو",
+      "origin": "پارکینگ حفاظت محیط‌زیست پراو",
+      "target_label": "قلهٔ پراو",
+      "region": "کرمانشاه · رشته‌کوه پراو",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "paraw-environmental-parking",
+        "paraw-cherober-gorge",
+        "paraw-dozari-spring",
+        "paraw-shelter",
+        "paraw"
+      ],
+      "distance_km": 8.0,
+      "ascent_m": 1800,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "paraw-cherober-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716",
+          "https://www.wikiloc.com/hiking-trails/prw-86465344",
+          "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+          "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887"
+        ],
+        "evidence_tracks": [
+          "tracks/paraw/paraw-summit-qlh-prw.gpx",
+          "tracks/paraw/prw.gpx",
+          "tracks/paraw/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn.gpx",
+          "tracks/paraw/qlh-praw-zmstnh-paraw-summit-1401-11-7.gpx"
+        ],
+        "cumulative_minutes": {
+          "paraw-environmental-parking": 0,
+          "paraw-cherober-gorge": 30,
+          "paraw-dozari-spring": 120,
+          "paraw-shelter": 270,
+          "paraw": 360
+        },
+        "notes": [
+          "سه ترک مستقلِ فصل گرم و یک ترک زمستانه، کریدور مشترک پارکینگ حفاظت محیط‌زیست، تنگهٔ چروبر، چشمهٔ دوزه‌ری، پناهگاه و قله را تأیید می‌کنند.",
+          "مسیرهای برگشت و بخش دسترسی جاده‌ای حذف شده‌اند؛ فاصلهٔ یک‌طرفه از پارکینگ تا قله حدود ۷٫۴ تا ۸٫۵ کیلومتر در ترک‌های مستقل است.",
+          "ترک زمستانه برای cross-check مسیر و زمان استفاده شده و Route عمومی را به مسیر فنی یا زمستانه محدود نمی‌کند.",
+          "ارتفاع خام GPX فقط evidence است؛ ارتفاع canonical همهٔ نقاط با DEM سرویس Open-Meteo کنترل شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "paraw",
+    "tile_name": "پراو",
+    "name": "قلهٔ پراو",
+    "short_category": "قله",
+    "category": "قله و مسیرهای پراو · کرمانشاه",
+    "category_key": "mountain",
+    "region": "رشته‌کوه پراو · کرمانشاه",
+    "elevation_m": 3324,
+    "latitude": 34.418321,
+    "longitude": 47.243294,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ پراو کرمانشاه",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "paraw"
+}
