@@ -1,0 +1,272 @@
+{
+  "catalog_version": "hawatch-opert-catalog-v1",
+  "weather_points": {
+    "opert-village": {
+      "name": "روستای اوپرت",
+      "page_name": "روستای اوپرت؛ سکونتگاه و دسترسی به خط‌الرأس اوپرت",
+      "short_label": "روستای اوپرت",
+      "place_type": "village",
+      "aliases": ["اوپرت", "روستا اوپرت", "Owpert village"],
+      "identity_summary": "روستای ییلاقی اوپرت در دهستان چاشم سمنان، در دامنهٔ جنوبی خط‌الرأس اوپرت",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Owpert",
+        "https://www.karnaval.ir/things-to-do/darreh-ye-owpart"
+      ],
+      "latitude": 36.02833,
+      "longitude": 53.32806,
+      "elevation_m": 2360,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از Wikipedia/OSM؛ Open-Meteo GLO-90 DEM برابر 2360 متر در مختصات canonical",
+      "climate": "forest_fog",
+      "category_key": "village",
+      "category": "روستا · دامنهٔ جنوبی اوپرت",
+      "region": "شهمیرزاد · سمنان"
+    },
+    "soozna": {
+      "name": "قلهٔ سوزنا",
+      "page_name": "قلهٔ سوزنا در خط‌الرأس اوپرت",
+      "short_label": "سوزنا",
+      "place_type": "summit",
+      "aliases": ["سوزنا", "قله سوزنا", "Soozna peak"],
+      "identity_summary": "قلهٔ سوزنا؛ چکاد نام‌دار و جدا از گوگلی در خط‌الرأس اوپرت",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-swzn-z-jnglbny-myn-230233951",
+        "https://www.wikiloc.com/hiking-trails/grdnh-wprt-w-qlh-swzn-171156119",
+        "https://irantripadviser.ir/gpstrack.php?id=50"
+      ],
+      "latitude": 36.03230,
+      "longitude": 53.32398,
+      "elevation_m": 2512,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ سوزنا در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM برابر 2512 متر",
+      "climate": "forest_fog",
+      "category_key": "ridge",
+      "category": "خط‌الرأس و قله‌های اوپرت",
+      "region": "مرز مازندران و سمنان"
+    },
+    "oben-waterfall": {
+      "name": "آبشار اوبن",
+      "page_name": "آبشار اوبن در جنگل‌های شمال اوپرت",
+      "short_label": "آبشار اوبن",
+      "place_type": "waterfall",
+      "aliases": ["آبشار بولا", "آبشار اوبِن", "Oben waterfall", "Ouben waterfall"],
+      "identity_summary": "آبشار اوبن در جنگل‌های شمالی اوپرت و محدودهٔ بولا؛ مقصد طبیعی مستقل با دسترسی جاده‌ای و جنگلی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://irantripadviser.ir/attraction.php?id=50",
+        "https://www.wikiloc.com/hiking-trails/abshr-wbn-z-sngdh-ouben-waterfall-20746274",
+        "https://www.karnaval.ir/things-to-do/darreh-ye-owpart"
+      ],
+      "latitude": 36.07915,
+      "longitude": 53.37666,
+      "elevation_m": 1511,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار اصلی در ترک سنگده–اوبن؛ Open-Meteo GLO-90 DEM برابر 1511 متر",
+      "climate": "forest_fog",
+      "category_key": "waterfall",
+      "category": "آبشار · جنگل بولا",
+      "region": "سوادکوه · مازندران"
+    },
+    "nizva": {
+      "name": "قلهٔ نیزوا",
+      "page_name": "قلهٔ نیزوا از مسیر چاشم و هیکو",
+      "short_label": "نیزوا",
+      "place_type": "summit",
+      "aliases": ["نیزوا", "قله نیزوا", "Nizva peak"],
+      "identity_summary": "قلهٔ نیزوا در جنوب اوپرت؛ چکاد مرتفع و مستقل با مسیر دسترسی از چاشم–هیکو",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikisemnan.com/item/%D9%82%D9%84%D9%87-%D9%86%DB%8C%D8%B2%D9%88%D8%A7/",
+        "https://gl.wikiloc.com/rutas-sendeirismo/nyzw-3740-mtr-z-chshm-grwh-afq-217739287"
+      ],
+      "latitude": 35.94356,
+      "longitude": 53.32509,
+      "elevation_m": 3717,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک چاشم؛ Open-Meteo GLO-90 DEM برابر 3717 متر",
+      "climate": "alpine",
+      "category_key": "mountain",
+      "category": "قله‌های جنوبی اوپرت",
+      "region": "شهمیرزاد · سمنان"
+    },
+    "nizva-chashm-trailhead": {
+      "name": "پای‌کار مسیر چاشم–هیکو",
+      "page_name": "پای‌کار مسیر چاشم–هیکو به قلهٔ نیزوا",
+      "short_label": "پای‌کار چاشم–هیکو",
+      "place_type": "trailhead",
+      "aliases": ["جاده خاکی چاشم هیکو", "Chashm Hiko trailhead"],
+      "identity_summary": "نقطهٔ آغاز بخش پیادهٔ ثبت‌شدهٔ مسیر چاشم–هیکو به قلهٔ نیزوا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/nyzw-3740-mtr-z-chshm-grwh-afq-217739287"
+      ],
+      "latitude": 35.90778,
+      "longitude": 53.26191,
+      "elevation_m": 2326,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک چاشم–هیکو؛ Open-Meteo GLO-90 DEM برابر 2326 متر",
+      "climate": "alpine"
+    },
+    "nizva-spring": {
+      "name": "چشمهٔ مسیر نیزوا",
+      "page_name": "چشمهٔ مسیر چاشم–هیکو به نیزوا",
+      "short_label": "چشمهٔ مسیر نیزوا",
+      "place_type": "spring",
+      "aliases": ["چشمه نیزوا", "Nizva route spring"],
+      "identity_summary": "چشمهٔ نام‌برده در بخش میانی مسیر پیادهٔ چاشم–هیکو به قلهٔ نیزوا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/nyzw-3740-mtr-z-chshm-grwh-afq-217739287"
+      ],
+      "latitude": 35.93321,
+      "longitude": 53.27402,
+      "elevation_m": 2914,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه در ترک چاشم–هیکو؛ Open-Meteo GLO-90 DEM برای نقطهٔ مسیر کنترل می‌شود",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "googeli-miana-trailhead",
+    "googeli-kharman-jinga",
+    "googeli-mian-visheh",
+    "googeli"
+  ],
+  "routes": {
+    "miana_to_soozna": {
+      "slug": "soozna-miana-ridge",
+      "title": "میانا تا قلهٔ سوزنا",
+      "subtitle": "مسیر جنگلی از جنگلبانی میانا، خرمن جینگاه و میان‌ویشه تا خط‌الرأس و قلهٔ سوزنا",
+      "trail_label": "مسیر میانا–سوزنا",
+      "origin": "جنگلبانی میانا",
+      "target_label": "قلهٔ سوزنا",
+      "region": "سوادکوه · مرز مازندران و سمنان",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "googeli-miana-trailhead",
+        "googeli-kharman-jinga",
+        "googeli-mian-visheh",
+        "googeli",
+        "soozna"
+      ],
+      "distance_km": 9.95,
+      "ascent_m": 1322,
+      "one_way_minutes": 390,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "soozna-miana-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-swzn-z-jnglbny-myn-230233951",
+          "https://www.wikiloc.com/hiking-trails/grdnh-wprt-w-qlh-swzn-171156119"
+        ],
+        "evidence_tracks": [
+          "tracks/opert/qlh-swzn-z-jnglbny-myn.gpx",
+          "tracks/opert/grdnh-wprt-w-qlh-swzn.gpx"
+        ],
+        "cumulative_minutes": {
+          "googeli-miana-trailhead": 0,
+          "googeli-kharman-jinga": 90,
+          "googeli-mian-visheh": 210,
+          "googeli": 300,
+          "soozna": 390
+        },
+        "notes": [
+          "این Route بخش مشترک میانا تا گوگلی را با Route موجود گوگلی به‌اشتراک می‌گذارد و فقط به‌دلیل مقصد مستقل سوزنا جدا شده است.",
+          "مسیر طولانی و دشوار است؛ منبع اصلی آن را بسیار دشوار و دارای terrain فنی علامت‌گذاری کرده، بنابراین در هوای بد یا بدون آمادگی کوهستانی نباید مسیر ساده تلقی شود.",
+          "ترک دوم حلقه‌ای است و فقط قطعهٔ رفت تا نزدیک سوزنا برای distance و ascent تحلیل شده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "chashm_to_nizva": {
+      "slug": "nizva-chashm",
+      "title": "چاشم–هیکو تا قلهٔ نیزوا",
+      "subtitle": "مسیر ارتفاعی از پای‌کار جادهٔ چاشم–هیکو، چشمهٔ مسیر و یال جنوبی تا قلهٔ نیزوا",
+      "trail_label": "مسیر چاشم–نیزوا",
+      "origin": "پای‌کار مسیر چاشم–هیکو",
+      "target_label": "قلهٔ نیزوا",
+      "region": "جنوب اوپرت · سمنان",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "nizva-chashm-trailhead",
+        "nizva-spring",
+        "nizva"
+      ],
+      "distance_km": 10.21,
+      "ascent_m": 1401,
+      "one_way_minutes": 375,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "nizva-chashm-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikisemnan.com/item/%D9%82%D9%84%D9%87-%D9%86%DB%8C%D8%B2%D9%88%D8%A7/",
+          "https://gl.wikiloc.com/rutas-sendeirismo/nyzw-3740-mtr-z-chshm-grwh-afq-217739287"
+        ],
+        "evidence_tracks": [
+          "tracks/opert/nyzw-3740-mtr-z-chshm-grwh-afq.gpx"
+        ],
+        "cumulative_minutes": {
+          "nizva-chashm-trailhead": 0,
+          "nizva-spring": 115,
+          "nizva": 375
+        },
+        "notes": [
+          "ترک ثبت‌شده حلقه‌ای است؛ فقط قطعهٔ رفت تا قله برای metrics استفاده شده است.",
+          "دسترسی جادهٔ خاکی تا پای‌کار از Route پیاده جداست و به‌عنوان پیمایش پیادهٔ سایت محاسبه نشده است.",
+          "مسیر ارتفاع‌بالا و طولانی است و زمان با عدم‌قطعیت بالا ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "soozna",
+    "tile_name": "سوزنا",
+    "name": "قلهٔ سوزنا",
+    "short_category": "خط‌الرأس",
+    "category": "خط‌الرأس و قله‌های اوپرت",
+    "category_key": "ridge",
+    "region": "مرز مازندران و سمنان",
+    "elevation_m": 2512,
+    "latitude": 36.03230,
+    "longitude": 53.32398,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای خط‌الرأس و قلهٔ سوزنا در منطقهٔ اوپرت",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سوزنا", "قله سوزنا", "Soozna peak"]
+  },
+  "primary_point": "soozna"
+}
