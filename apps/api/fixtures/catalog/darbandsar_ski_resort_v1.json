@@ -1,0 +1,62 @@
+{
+  "catalog_version": "hawatch-darbandsar-ski-v1",
+  "weather_points": {
+    "darbandsar-ski-resort": {
+      "name": "پیست اسکی دربندسر",
+      "page_name": "پیست اسکی دربندسر؛ رودبار قصران",
+      "short_label": "پیست اسکی دربندسر",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "پیست بین‌المللی دربندسر",
+        "پیست دربندسر",
+        "Darbandsar Ski Resort",
+        "Darbandsar International Ski Resort"
+      ],
+      "identity_summary": "پیست اسکی دربندسر در رودبار قصران، از مقصدهای شناخته‌شدهٔ ورزش‌های زمستانی در شمال‌شرق تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/W632850967",
+        "https://www.openstreetmap.org/way/632850967",
+        "https://telecabiniran.com/projects/darbandsar/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.0156,
+      "longitude": 51.458,
+      "elevation_m": 3025,
+      "status": "provisional",
+      "elevation_source": "مرکز عارضهٔ پیست در OpenStreetMap/Mapcarta: 36.0156, 51.458؛ ارتفاع GLO-90 سرویس Open-Meteo در همین مختصات ۳۰۲۵ متر است. ایستگاه‌های تله‌کابین پیست در منابع فنی در بازهٔ ۲۶۴۴ تا ۳۳۳۱ متر گزارش شده‌اند.",
+      "region": "تهران · شمیرانات",
+      "climate": "alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "darbandsar-ski-resort",
+    "tile_name": "پیست اسکی دربندسر",
+    "name": "پیست اسکی دربندسر",
+    "short_category": "پیست اسکی",
+    "category": "پیست اسکی · رودبار قصران",
+    "category_key": "mountain",
+    "region": "تهران · شمیرانات",
+    "elevation_m": 3025,
+    "latitude": 36.0156,
+    "longitude": 51.458,
+    "image": "/images/home-scene.png",
+    "image_alt": "پیست اسکی دربندسر در رودبار قصران",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پیست اسکی دربندسر",
+      "پیست بین‌المللی دربندسر",
+      "پیست دربندسر"
+    ]
+  },
+  "primary_point": "darbandsar-ski-resort"
+}
