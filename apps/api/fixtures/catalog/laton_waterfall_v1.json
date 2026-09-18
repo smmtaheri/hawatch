@@ -1,0 +1,249 @@
+{
+  "catalog_version": "hawatch-laton-catalog-v1",
+  "weather_points": {
+    "laton-waterfall": {
+      "name": "آبشار لاتون",
+      "page_name": "آبشار لاتون آستارا",
+      "short_label": "آبشار لاتون",
+      "place_type": "waterfall",
+      "aliases": [
+        "لاتون",
+        "آبشار بارزاو",
+        "آبشار لوندویل",
+        "Laton Waterfall",
+        "Latoon Waterfall"
+      ],
+      "identity_summary": "آبشار لاتون در جنگل‌های اطراف لوندویل آستارا، مقصد مسیر پیادهٔ کوته‌کومه",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-rwsty-khwth-khwmh-25894332",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891",
+        "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948",
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 38.320999,
+      "longitude": 48.727909,
+      "elevation_m": 851,
+      "status": "provisional",
+      "elevation_source": "Waypoint‌های مستقل آبشار در ترک‌های پیاده؛ DEM نود Open-Meteo برای مختصات canonical برابر ۸۵۱ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-kuteh-kumeh-village": {
+      "name": "روستای کوته‌کومه",
+      "page_name": "روستای کوته‌کومه؛ مبدأ مسیر آبشار لاتون",
+      "short_label": "کوته‌کومه",
+      "place_type": "village",
+      "aliases": [
+        "کوته کومه",
+        "روستای کوته کومه",
+        "Kuteh Kumeh"
+      ],
+      "identity_summary": "روستای کوته‌کومه در لوندویل آستارا و مبدأ شناخته‌شدهٔ مسیر پیادهٔ آبشار لاتون",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-rwsty-khwth-khwmh-25894332",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891",
+        "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948"
+      ],
+      "latitude": 38.308145,
+      "longitude": 48.796751,
+      "elevation_m": 106,
+      "status": "provisional",
+      "elevation_source": "Waypoint روستای کوته‌کومه در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۱۰۶ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-kuteh-kumeh-parking": {
+      "name": "پارکینگ ابتدای مسیر لاتون",
+      "page_name": "پارکینگ ابتدای مسیر پیادهٔ آبشار لاتون",
+      "short_label": "پارکینگ لاتون",
+      "place_type": "parking",
+      "aliases": [
+        "پارکینگ کوته‌کومه",
+        "پارکینگ آبشار لاتون",
+        "Laton trailhead parking"
+      ],
+      "identity_summary": "پارکینگ نام‌گذاری‌شدهٔ ابتدای بخش پیادهٔ مسیر کوته‌کومه تا آبشار لاتون",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891",
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-astr-lwndwyl-167764835",
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-1400-12-13-96894429"
+      ],
+      "latitude": 38.307440,
+      "longitude": 48.787836,
+      "elevation_m": 135,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ و ابتدای مسیر در ترک مستقل؛ DEM نود Open-Meteo برابر ۱۳۵ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-asioshavan": {
+      "name": "آسیو شوان",
+      "page_name": "آسیو شوان در مسیر آبشار لاتون",
+      "short_label": "آسیو شوان",
+      "place_type": "landmark",
+      "aliases": [
+        "مسجد آسیو شوان",
+        "آسیاشوان",
+        "Asioshvan"
+      ],
+      "identity_summary": "آسیو شوان، landmark نام‌گذاری‌شده در بخش جنگلی مسیر کوته‌کومه تا آبشار لاتون",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948",
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-rwsty-khwth-khwmh-25894332",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891"
+      ],
+      "latitude": 38.306519,
+      "longitude": 48.748605,
+      "elevation_m": 353,
+      "status": "provisional",
+      "elevation_source": "Waypoint مسجد آسیو شوان و نقاط همگرا در سه ترک؛ DEM نود Open-Meteo برابر ۳۵۳ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-khoshnood-cafe": {
+      "name": "کافهٔ خشنود",
+      "page_name": "کافهٔ خشنود در مسیر آبشار لاتون",
+      "short_label": "کافهٔ خشنود",
+      "place_type": "landmark",
+      "aliases": [
+        "خشنود",
+        "کلبهٔ خشنود",
+        "Khoshnood Cafe"
+      ],
+      "identity_summary": "کافهٔ خشنود، landmark و محل توقف نام‌گذاری‌شده در مسیر پیادهٔ آبشار لاتون",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948",
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-1400-12-13-96894429",
+        "https://www.wikiloc.com/hiking-trails/abshr-ltwn-rwsty-khwth-khwmh-25894332"
+      ],
+      "latitude": 38.305249,
+      "longitude": 48.744242,
+      "elevation_m": 394,
+      "status": "provisional",
+      "elevation_source": "Waypoint Khoshnood Cafe در ترک مستقل و تطبیق ترک‌های دیگر؛ DEM نود Open-Meteo برابر ۳۹۴ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-small-waterfall": {
+      "name": "آبشار کوچک لاتون",
+      "page_name": "آبشار کوچک در مسیر لاتون",
+      "short_label": "آبشار کوچک لاتون",
+      "place_type": "waterfall",
+      "aliases": [
+        "آبشار کوچک لاتون",
+        "آبشار فرعی لاتون",
+        "Small Laton Waterfall"
+      ],
+      "identity_summary": "آبشار کوچک نام‌گذاری‌شده در بخش پایانی مسیر پیادهٔ آبشار لاتون",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891"
+      ],
+      "latitude": 38.320421,
+      "longitude": 48.741053,
+      "elevation_m": 723,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار کوچک در دو ترک مستقل و نزدیک‌ترین track point؛ DEM نود Open-Meteo برابر ۷۲۳ متر است.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "laton-kuteh-kumeh": {
+      "slug": "laton-kuteh-kumeh",
+      "title": "کوته‌کومه تا آبشار لاتون",
+      "subtitle": "مسیر پیادهٔ جنگلی از کوته‌کومه، آسیو شوان و کافهٔ خشنود تا آبشار لاتون",
+      "trail_label": "مسیر آبشار لاتون",
+      "origin": "روستای کوته‌کومه",
+      "target_label": "آبشار لاتون",
+      "region": "لوندویل · آستارا · گیلان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "laton-kuteh-kumeh-village",
+        "laton-kuteh-kumeh-parking",
+        "laton-asioshavan",
+        "laton-khoshnood-cafe",
+        "laton-small-waterfall",
+        "laton-waterfall"
+      ],
+      "distance_km": 9.0,
+      "ascent_m": 720,
+      "one_way_minutes": 225,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "laton-kuteh-kumeh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-ltwn-rwsty-khwth-khwmh-25894332",
+          "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl-108534891",
+          "https://www.wikiloc.com/hiking-trails/latoon-waterfall-abshr-ltwn-8188948",
+          "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+        ],
+        "evidence_tracks": [
+          "tracks/laton-waterfall/abshr-ltwn-rwsty-khwth-khwmh.gpx",
+          "tracks/laton-waterfall/msyr-rft-w-brgsht-abshr-ltwn-z-khwth-khwmhlwndwyl.gpx",
+          "tracks/laton-waterfall/latoon-waterfall-abshr-ltwn.gpx",
+          "tracks/laton-waterfall/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh.gpx"
+        ],
+        "cumulative_minutes": {
+          "laton-kuteh-kumeh-village": 0,
+          "laton-kuteh-kumeh-parking": 15,
+          "laton-asioshavan": 105,
+          "laton-khoshnood-cafe": 120,
+          "laton-small-waterfall": 190,
+          "laton-waterfall": 225
+        },
+        "notes": [
+          "ترک مستقل رفت‌وبرگشت از پارکینگ تا آبشار، قطعهٔ پیادهٔ حدود ۸٫۲ کیلومتر و زمان حرکتی حدود ۱۸۱ دقیقه را نشان می‌دهد؛ فاصلهٔ روستا تا پارکینگ جداگانه و کوتاه است.",
+          "آسیو شوان، کافهٔ خشنود و آبشار کوچک لاتون فقط به‌دلیل waypoint نام‌گذاری‌شده و همگرایی ترک‌ها وارد زنجیره شده‌اند؛ نقطهٔ عمومی جدیدی برای برچسب مبهم ساخته نشده است.",
+          "ترک سوها–اسپیناس–لاتون برای cross-check جغرافیا استفاده شده و به‌عنوان Route اصلی مستقل منتشر نشده است؛ بخش‌های آفرودی، جاده‌ای و برگشت از metrics حذف شده‌اند.",
+          "ارتفاع خام GPX مبنای elevation نیست؛ ارتفاع canonical همهٔ نقاط با DEM سرویس Open-Meteo کنترل شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "laton-waterfall",
+    "tile_name": "آبشار لاتون",
+    "name": "آبشار لاتون",
+    "short_category": "آبشار",
+    "category": "آبشار و جنگل هیرکانی · گیلان",
+    "category_key": "waterfall",
+    "region": "لوندویل · آستارا · گیلان",
+    "elevation_m": 851,
+    "latitude": 38.320999,
+    "longitude": 48.727909,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار لاتون در جنگل‌های گیلان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "laton-waterfall"
+}
