@@ -31,10 +31,12 @@ favicon عمداً یک mark مستقل و ثابت است؛ لوگوی کامل
 خوانده می‌شود؛ بنابراین برای ثبت نقطه جدید، آیکون را با همین فیلد انتخاب کنید
 و نیازی به تغییر کد یا deploy برای هر رکورد جدید نیست. کلیدهای فعلی عبارت‌اند
 از `mountain`، `ridge`، `volcano`، `waterfall`، `meadow`، `forest`، `desert`،
-`lake`، `beach`، `village` و `neighborhood`. کلید `village` از glyph خانهٔ روستایی
-و کلید `neighborhood` از glyph بافت ساختمانی محله استفاده می‌کند تا محله با روستا
-یا شهر اشتباه نشود. اگر شهرها اضافه شوند، باید با یک `place_type` و `category_key`
-مستقل ثبت شوند. کلید `ridge` برای ارتفاعات و خط‌الرأس به‌صورت بصری در خانوادهٔ
+`lake`، `beach`، `city`، `village` و `neighborhood`. کلید `city` از glyph بافت
+شهری، کلید `neighborhood` از glyph محلهٔ کم‌تراکم و کلید `village` از glyph خانهٔ
+روستایی استفاده می‌کند تا شهر، محله و روستا با هم اشتباه نشوند. هر شهر باید با
+`place_type: "city"` و `category_key: "city"` ثبت شود و هر محلهٔ شهری با
+`place_type: "neighborhood"` و `category_key: "neighborhood"`. کلید `ridge` برای
+ارتفاعات و خط‌الرأس به‌صورت بصری در خانوادهٔ
 کوه نمایش داده می‌شود تا ارتفاعات گوگلی و مقصدهای هم‌معنا از قله‌ها جدا و
 گمراه‌کننده نشوند؛ `beach` نیز آیکون ساحل مستقل دارد.
 
@@ -51,7 +53,7 @@ favicon عمداً یک mark مستقل و ثابت است؛ لوگوی کامل
 
 ## تصویر دستهٔ مقصد
 
-برای دسته‌های `waterfall`، `desert`، `meadow`، `beach`، `village` و `neighborhood`، آرت‌ورک‌های بدون
+برای دسته‌های `waterfall`، `desert`، `meadow`، `beach`، `city`، `village` و `neighborhood`، آرت‌ورک‌های بدون
 متن در `apps/web/public/images/destination-artwork/` نگهداری می‌شوند. این
 فایل‌ها در UI به‌صورت mask و با توکن `--teal` رنگ می‌گیرند تا در هر دو تم با
 سیستم طراحی یکدست بمانند. نام دسته یا هر کپشن دیگری نباید داخل خود تصویر تکرار

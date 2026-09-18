@@ -112,9 +112,9 @@ python manage.py validate_catalog --all --database --check-links --strict
 ```
 
 این بررسی مقصدها را مالک لینک Hub، Routeهای فعال را فرزندان مقصد، و Pointهای
-indexable غیرمقصد را اعضای یک Route واقعی در نظر می‌گیرد. روستای indexable و
-بدون Route باید در همان catalog یک مقصد اصلی غیرروستاییِ مرتبط داشته باشد تا
-صفحهٔ مقصد و صفحهٔ روستا هر دو لینک SSR واقعی داشته باشند. warningهای orphan
+indexable غیرمقصد را اعضای یک Route واقعی در نظر می‌گیرد. شهر، روستا یا محلهٔ
+indexable و بدون Route باید در همان catalog یک مقصد اصلیِ مرتبط داشته باشد تا
+صفحهٔ مقصد و صفحهٔ نقطهٔ دسترسی هر دو لینک SSR واقعی داشته باشند. warningهای orphan
 راهنمای اصلاح Catalog هستند؛ Point فنی/noindex عمداً از این گیت کنار گذاشته
 می‌شود و از Route، جست‌وجو یا API حذف نمی‌گردد.
 

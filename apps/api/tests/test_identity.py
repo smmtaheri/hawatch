@@ -11,3 +11,7 @@ def test_explicit_category_key_remains_authoritative_for_villages():
 
 def test_neighborhood_place_type_uses_a_distinct_category_key():
     assert category_key_for_point("", "neighborhood") == "neighborhood"
+
+
+def test_city_place_type_uses_a_distinct_category_key():
+    assert category_key_for_point("", "city") == "city"

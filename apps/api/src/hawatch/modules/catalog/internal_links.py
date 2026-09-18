@@ -42,7 +42,7 @@ def related_public_routes(point: WeatherPoint) -> QuerySet[Route]:
 def related_public_destinations(point: WeatherPoint) -> QuerySet[WeatherPoint]:
     """Return destination siblings that provide an SSR entry for an access settlement.
 
-    A point-only village or neighborhood is stored in the same versioned catalog as the
+    A point-only city, village, or neighborhood is stored in the same versioned catalog as the
     independent destination it serves (for example a mountain or forest).
     That catalog grouping is the source of truth for this relationship; no
     slug list or geographic guess is maintained in the renderer. Restricting
@@ -63,7 +63,7 @@ def related_public_destinations(point: WeatherPoint) -> QuerySet[WeatherPoint]:
 
 
 def related_public_villages(destination: WeatherPoint) -> QuerySet[WeatherPoint]:
-    """Return indexable villages/neighborhoods linked from a destination.
+    """Return indexable cities, villages, and neighborhoods linked from a destination.
 
     The inverse of :func:`related_public_destinations` is kept as a separate
     query so the destination page itself provides the required crawlable

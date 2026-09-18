@@ -135,6 +135,14 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".destination-artwork.village")).not.toBeInTheDocument();
   });
 
+  it("uses a separate city artwork for city destinations", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="" placeType="city" className="destination-card-icon" />,
+    );
+    expect(container.querySelector(".destination-artwork.city")).toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork.neighborhood")).not.toBeInTheDocument();
+  });
+
   it("keeps approved destination artwork inside the shared icon frame", () => {
     const { container } = render(
       <DestinationIcon categoryKey="waterfall" className="destination-card-icon" />,

@@ -3,6 +3,7 @@ const ILLUSTRATED_CATEGORIES = new Set([
   "desert",
   "meadow",
   "beach",
+  "city",
   "village",
   "neighborhood",
 ]);

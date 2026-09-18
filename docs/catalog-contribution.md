@@ -88,9 +88,10 @@ python manage.py validate_catalog --all --database --check-links --strict
 ```
 
 این validator باید برای هر مقصد ورودی Hub، برای هر Route ورودی از مقصد، و برای
-هر Point indexable غیرمقصد ورودی از مقصد یا Route واقعی پیدا کند. روستای
-indexableِ بدون Route باید در همان catalog نسخه‌دار کنار مقصد اصلیِ غیرروستایی
-ثبت شده باشد تا renderer لینک واقعی از مقصد به روستا و از روستا به مقصد بسازد؛
+هر Point indexable غیرمقصد ورودی از مقصد یا Route واقعی پیدا کند. شهر، روستا یا
+محلهٔ indexableِ بدون Route باید در همان catalog نسخه‌دار کنار مقصد اصلیِ مرتبط
+ثبت شده باشد تا renderer لینک واقعی از مقصد به نقطهٔ دسترسی و از نقطهٔ دسترسی به
+مقصد بسازد؛
 این رابطه برای catalogهای آینده هم بدون فهرست slug دستی کار می‌کند. اگر Point
 مستقلِ بدون مسیر دارید، آن را مقصد اصلی کنید؛ برای waypoint فنی
 `seo_indexable: false` بگذارید تا صفحه‌اش فقط `noindex,follow` باشد.

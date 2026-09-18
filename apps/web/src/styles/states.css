@@ -136,6 +136,11 @@ html:not([data-theme="light"]) body {
   -webkit-mask-image: url("/images/destination-artwork/glyphs/neighborhood.png");
 }
 
+.destination-artwork.city {
+  mask-image: url("/images/destination-artwork/glyphs/city.png");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/city.png");
+}
+
 .destination-card-copy {
   display: grid;
   min-width: 0;
