@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kholeno-catalog-v1",
+  "catalog_version": "hawatch-kholeno-catalog-v2",
   "weather_points": {
     "kholeno-lalan-trailhead": {
       "name": "پارکینگ بالای روستای لالان",
@@ -34,7 +34,8 @@
       "place_type": "village",
       "aliases": ["روستای لالون", "لالون", "Lalan village"],
       "identity_summary": "روستای لالان؛ آبادی جنوبی و دسترسی جاده‌ای مسیر صعود به قلهٔ خلنو",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "official",
       "source_urls": [

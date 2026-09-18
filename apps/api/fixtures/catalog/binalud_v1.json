@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-binalud-catalog-v1",
+  "catalog_version": "hawatch-binalud-catalog-v2",
   "weather_points": {
     "binalud": {
       "name": "قلهٔ بینالود",
@@ -31,8 +31,8 @@
       "place_type": "village",
       "aliases": ["فریزی", "روستا فریزی", "Frizi village", "Ferizi"],
       "identity_summary": "روستای فریزی در گلبهار؛ دسترسی شناخته‌شده به مسیر شمال‌شرقی بینالود",
-      "importance": "support",
-      "kind": "shared",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
