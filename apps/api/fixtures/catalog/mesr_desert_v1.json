@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-mesr-desert-catalog-v1",
+  "catalog_version": "hawatch-mesr-desert-catalog-v2",
   "weather_points": {
     "mesr-desert": {
       "name": "کویر مصر",
@@ -64,9 +64,7 @@
       "short_label": "رمل‌های مصر",
       "place_type": "landmark",
       "aliases": [
-        "تپه‌های شنی مصر",
-        "رمل های کویر مصر",
-        "Mesr sand dunes"
+        "رمل های کویر مصر"
       ],
       "identity_summary": "رمل‌ها و تپه‌های شنی نام‌دار در مسیر پیادهٔ کویر مصر",
       "importance": "support",

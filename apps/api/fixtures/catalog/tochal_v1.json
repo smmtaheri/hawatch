@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v6",
+  "catalog_version": "hawatch-tochal-catalog-v7",
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -144,7 +144,8 @@
       "place_type": "village",
       "aliases": [],
       "identity_summary": "ولنجک؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "descriptive",
       "source_urls": [

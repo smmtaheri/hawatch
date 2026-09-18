@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kholeno-catalog-v2",
+  "catalog_version": "hawatch-kholeno-catalog-v3",
   "weather_points": {
     "kholeno-lalan-trailhead": {
       "name": "پارکینگ بالای روستای لالان",
@@ -178,7 +178,8 @@
       "place_type": "summit",
       "aliases": ["برج خلنو", "قله برج"],
       "identity_summary": "قلهٔ برج خلنو؛ قلهٔ مستقل پیش از تیغه‌های ژاندارک در مسیر فنی خلنو",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
@@ -199,7 +200,8 @@
       "place_type": "summit",
       "aliases": ["قله خلنوی کوچک", "خلنو کوچک"],
       "identity_summary": "قلهٔ خلنو کوچک؛ قلهٔ مستقل میان تیغه‌های ژاندارک و خلنو بزرگ",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
