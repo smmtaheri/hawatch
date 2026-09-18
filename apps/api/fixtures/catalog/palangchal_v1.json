@@ -201,6 +201,7 @@
         "chin-kalagh-darakeh-trailhead",
         "palangchal-kara-junction",
         "palangchal-zoghalchal",
+        "palangchal-black-bend",
         "palangchal-shelter"
       ],
       "distance_km": 6.55,
@@ -222,6 +223,7 @@
           "chin-kalagh-darakeh-trailhead": 0,
           "palangchal-kara-junction": 45,
           "palangchal-zoghalchal": 105,
+          "palangchal-black-bend": 125,
           "palangchal-shelter": 180
         },
         "notes": [
@@ -244,6 +246,7 @@
       "points": [
         "chin-kalagh-darakeh-trailhead",
         "palangchal-kara-junction",
+        "palangchal-black-bend",
         "palangchal-shelter",
         "palangchal-ridge-junction",
         "palangchal-shahneshin-junction",
@@ -267,6 +270,7 @@
         "cumulative_minutes": {
           "chin-kalagh-darakeh-trailhead": 0,
           "palangchal-kara-junction": 55,
+          "palangchal-black-bend": 105,
           "palangchal-shelter": 165,
           "palangchal-ridge-junction": 255,
           "palangchal-shahneshin-junction": 345,
