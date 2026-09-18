@@ -12,6 +12,7 @@ const PLACE_TYPE_CATEGORY_KEYS: Record<string, string> = {
   forest: "forest",
   desert: "desert",
   beach: "beach",
+  village: "village",
 };
 
 export function resolvePointCategoryKey(categoryKey: string, placeType?: string) {
@@ -112,6 +113,16 @@ export function PointIcon({ categoryKey, placeType }: { categoryKey: string; pla
         <path d="M6 13c7 5 12 5 18 0 5-4 10-4 18 1" />
         <path d="M14 17v13M21 17v16M29 16v14M36 18v10" />
         <path d="M8 36c5-3 9-3 14 0s9 3 14 0 5-3 7-1M5 41h38" />
+      </svg>
+    );
+  }
+  if (key === "village") {
+    return (
+      <svg viewBox="0 0 48 48" className="point-icon village" aria-hidden="true">
+        <path d="M5 23 24 9l19 14" />
+        <path d="M10 21v19h28V21" />
+        <path d="M20 40V28h8v12M15 27h6v6h-6zM30 27h6v6h-6z" />
+        <path d="M31 14V8h5v10M5 41h38" />
       </svg>
     );
   }

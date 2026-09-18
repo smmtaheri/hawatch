@@ -119,6 +119,14 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
+  it("derives the rural-village artwork when an older profile omitted category_key", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="" placeType="village" className="destination-card-icon" />,
+    );
+    expect(container.querySelector(".destination-artwork.village")).toBeInTheDocument();
+    expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
+  });
+
   it("keeps approved destination artwork inside the shared icon frame", () => {
     const { container } = render(
       <DestinationIcon categoryKey="waterfall" className="destination-card-icon" />,

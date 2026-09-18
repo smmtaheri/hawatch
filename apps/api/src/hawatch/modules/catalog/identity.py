@@ -42,6 +42,7 @@ PLACE_TYPE_CATEGORY_KEYS = {
     "forest": "forest",
     "desert": "desert",
     "beach": "beach",
+    "village": "village",
 }
 
 

@@ -1,4 +1,4 @@
-const ILLUSTRATED_CATEGORIES = new Set(["waterfall", "desert", "meadow", "beach"]);
+const ILLUSTRATED_CATEGORIES = new Set(["waterfall", "desert", "meadow", "beach", "village"]);
 
 function normalizedCategoryKey(categoryKey: string) {
   return String(categoryKey ?? "").trim().toLowerCase();
