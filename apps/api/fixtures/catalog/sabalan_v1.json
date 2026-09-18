@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sabalan-catalog-v3",
+  "catalog_version": "hawatch-sabalan-catalog-v4",
   "weather_points": {
     "sabalan-alvares-village": {
       "name": "روستای آلوارس",
@@ -47,7 +47,7 @@
         "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361"
       ]
     },
-    "sabalan-ne-shabil-trailhead": {
+    "sabalan-shabil": {
       "name": "شابیل",
       "latitude": 38.327692,
       "longitude": 47.844205,
@@ -227,7 +227,7 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "sabalan-ne-shabil-trailhead",
+        "sabalan-shabil",
         "sabalan-ne-east-hut",
         "sabalan-ne-crater-lake",
         "sabalan"
@@ -257,7 +257,7 @@
           "این مسیر در ارتفاع بالا قرار دارد؛ نبود آب در بخش صعود طبق گزارش‌ها باید در متن ایمنی/تجهیزات لحاظ شود."
         ],
         "cumulative_minutes": {
-          "sabalan-ne-shabil-trailhead": 0,
+          "sabalan-shabil": 0,
           "sabalan-ne-east-hut": 300,
           "sabalan-ne-crater-lake": 540,
           "sabalan": 570
