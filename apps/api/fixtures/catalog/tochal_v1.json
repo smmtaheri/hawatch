@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v7",
+  "catalog_version": "hawatch-tochal-catalog-v8",
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -150,7 +150,12 @@
       "name_status": "descriptive",
       "source_urls": [
         "https://open-meteo.com/en/docs"
-      ]
+      ],
+      "identity_summary": "ولنجک؛ محدودهٔ شهری و مبدأ دسترسی به مجموعهٔ توچال",
+      "seo": {
+        "title": "آب‌وهوای ولنجک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ولنجک در ارتفاع ۱۷۵۵ متر در شمال تهران؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."
+      }
     },
     "tochal-velenjak-parking": {
       "name": "پارکینگ مجموعهٔ توچال در ولنجک",
