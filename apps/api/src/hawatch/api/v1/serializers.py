@@ -31,7 +31,7 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
-from hawatch.modules.catalog.identity import category_key_for_point, place_type_label
+from hawatch.modules.catalog.identity import category_key_for_point
 from hawatch.modules.catalog.internal_links import (
     related_public_similar_destinations,
     similar_destinations_title,
@@ -192,7 +192,8 @@ def serialize_similar_destination(point: WeatherPoint) -> dict:
         "name": point.page_name or point.name,
         "short_label": point.short_label or point.name,
         "place_type": point.place_type or "landmark",
-        "place_type_label": place_type_label(point.place_type),
+        "short_category": point.short_category or "",
+        "category": point.category or "",
         "category_key": category_key_for_point(point.category_key, point.place_type),
         "region": point.region or "",
         "elevation_m": point.elevation_m,

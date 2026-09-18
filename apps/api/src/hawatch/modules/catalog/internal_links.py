@@ -101,6 +101,8 @@ def related_public_similar_destinations(
             "name",
             "page_name",
             "short_label",
+            "short_category",
+            "category",
             "place_type",
             "category_key",
             "region",

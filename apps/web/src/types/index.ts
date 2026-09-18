@@ -86,8 +86,9 @@ export interface SimilarDestinationSummary {
   slug: string;
   name: string;
   short_label: string;
+  short_category: string;
+  category: string;
   place_type: string;
-  place_type_label: string;
   category_key: string;
   region: string;
   elevation_m: number | null;

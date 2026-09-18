@@ -2352,110 +2352,20 @@ html:not([data-theme="light"]) .search-result-row:hover {
   display: none;
 }
 
-/* Point-only pages use the same decision surface for crawlable discovery.
- * Keep the section quiet when no trustworthy candidate exists; the API caps
- * this list at four and both responsive variants share the same links. */
-.similar-destinations-card {
-  padding: 20px;
-}
-
-.similar-destinations-card--mobile {
-  display: none;
-}
-
-.similar-destinations-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.similar-destinations-heading .eyebrow {
-  margin-bottom: 2px;
-}
-
-.similar-destinations-heading h2 {
-  margin: 0;
-  color: var(--internal-text, #edf7f4);
-  font-size: var(--font-size-section-title, 1.25rem);
-  line-height: 1.4;
-}
-
-.similar-destinations-count {
-  color: var(--internal-muted, #a8c1c0);
-  white-space: nowrap;
-  font-size: var(--font-size-meta, 0.75rem);
-}
-
-.similar-destinations-grid {
-  display: grid;
-  gap: 8px;
-}
-
-.similar-destination-card {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-  padding: 11px 10px;
-  border: 1px solid var(--internal-border, #bee1dd2e);
-  border-radius: 13px;
-  background: var(--internal-surface-soft, #14333e);
-  color: var(--internal-text, #edf7f4);
-  transition: border-color 0.18s ease, transform 0.18s ease;
-}
-
-.similar-destination-card:hover,
-.similar-destination-card:focus-visible {
-  border-color: var(--internal-teal, #61c5c0);
-  outline: none;
-  transform: translateY(-1px);
-}
-
+/* Point-only discovery deliberately reuses the route selector markup and
+ * metrics, so its heading, cards, spacing and responsive layout cannot drift. */
 .similar-destination-icon {
-  width: 40px;
-  height: 40px;
-  border: 1px solid color-mix(in srgb, var(--internal-teal, #61c5c0) 55%, transparent);
-  border-radius: 12px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 0;
+  flex: none;
   color: var(--internal-teal, #61c5c0);
 }
 
 .similar-destination-icon .point-icon {
-  width: 27px;
-  height: 27px;
-}
-
-.similar-destination-copy {
-  display: grid;
-  min-width: 0;
-  gap: 1px;
-}
-
-.similar-destination-copy strong,
-.similar-destination-copy small {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.similar-destination-copy strong {
-  font-size: var(--font-size-card-title, 1rem);
-  font-weight: var(--weight-semibold, 600);
-  line-height: 1.4;
-}
-
-.similar-destination-copy small {
-  color: var(--internal-muted, #a8c1c0);
-  font-size: var(--font-size-meta, 0.75rem);
-  line-height: 1.4;
-}
-
-.similar-destination-arrow {
-  color: var(--internal-teal, #61c5c0);
-  font-size: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .route-card .route-details {
