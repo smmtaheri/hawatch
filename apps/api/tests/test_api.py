@@ -190,6 +190,33 @@ def test_sitemap_route_lastmod_uses_latest_linked_point_forecast(api_client, see
 
 
 @pytest.mark.django_db
+def test_sitemap_destinations_lastmod_ignores_forecast_and_tracks_catalog_changes(api_client, seeded):
+    destination_at = datetime(2026, 9, 8, 7, 30, tzinfo=dt_timezone.utc)
+    destination_points = publicly_visible_destinations()
+    destination_points.update(updated_at=destination_at)
+
+    destinations_url = "https://hawatch.ir/destinations"
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), destinations_url) == destination_at
+
+    point = WeatherPoint.objects.get(slug="azadkouh")
+    forecast_at = datetime(2026, 9, 12, 7, 30, tzinfo=dt_timezone.utc)
+    _persist_live_forecast_record(point, forecast_at)
+
+    # The point and its routes use the successful forecast timestamp, while
+    # the catalog-only destinations hub remains unchanged.
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), "https://hawatch.ir/points/azadkouh") == forecast_at
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), destinations_url) == destination_at
+
+    catalog_at = datetime(2026, 9, 15, 7, 30, tzinfo=dt_timezone.utc)
+    WeatherPoint.objects.filter(pk=point.pk).update(updated_at=catalog_at)
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), destinations_url) == catalog_at
+
+    removed_at = datetime(2026, 9, 16, 7, 30, tzinfo=dt_timezone.utc)
+    WeatherPoint.objects.filter(pk=point.pk).update(is_active=False, updated_at=removed_at)
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), destinations_url) == removed_at
+
+
+@pytest.mark.django_db
 def test_destination_index_contains_only_primary_indexable_points(api_client, seeded):
     response = api_client.get("/api/v1/destinations/")
 

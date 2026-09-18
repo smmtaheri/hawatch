@@ -9,6 +9,7 @@ from typing import Any
 from django.conf import settings
 from django.db import transaction
 from django.db.models import Q
+from django.utils import timezone
 
 from hawatch.modules.catalog.catalog import _route_distance_km, _validate_document_shape, load_catalog_file, seed_catalog, seo_overrides
 from hawatch.modules.catalog.identity import metadata_for_point, seo_indexable_for_row
@@ -296,7 +297,10 @@ def apply_sync(desired: DesiredCatalog, plan: dict[str, Any]) -> dict[str, int]:
         route.is_active = False
         route.save(update_fields=["is_active", "updated_at"])
     for item in plan["stale_points"]:
-        WeatherPoint.objects.filter(slug=item["slug"], fixture_managed=True).update(is_active=False)
+        WeatherPoint.objects.filter(slug=item["slug"], fixture_managed=True).update(
+            is_active=False,
+            updated_at=timezone.now(),
+        )
     change_counts = _count_changes(before_points, before_routes, desired)
     if plan["stale_routes"] or plan["stale_points"] or plan["stale_route_points"] or change_counts["created"] or change_counts["updated"]:
         rebuild_search_index()

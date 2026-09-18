@@ -32,7 +32,11 @@ from hawatch.common.time import (
     resolve_planner_start_minutes,
 )
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
-from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
+from hawatch.modules.catalog.runtime import (
+    destination_catalog_timestamp_points,
+    publicly_visible_destinations,
+    publicly_visible_weather_points,
+)
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -344,17 +348,17 @@ def sitemap_xml(_request):
         .order_by("slug")
         .values("slug", "updated_at", "points_updated_at", "forecast_updated_at")
     )
-    destination_rows = publicly_visible_destinations().annotate(
-        forecast_updated_at=Subquery(point_forecast_lastmod)
-    ).values("updated_at", "forecast_updated_at")
+    # The destinations hub renders catalog identity/order only; forecast
+    # refreshes must not make this URL look changed.  Include retired primary
+    # rows because sync keeps them as tombstones and timestamps their
+    # deactivation, so removing a destination is observable.
+    destination_rows = destination_catalog_timestamp_points().values("updated_at")
 
     def latest_timestamp(*values):
         available = [value for value in values if value is not None]
         return max(available) if available else None
 
-    destination_lastmod = latest_timestamp(
-        *(latest_timestamp(row["updated_at"], row["forecast_updated_at"]) for row in destination_rows)
-    )
+    destination_lastmod = latest_timestamp(*(row["updated_at"] for row in destination_rows))
 
     def entry(url: str, updated_at=None) -> str:
         lastmod = (

@@ -54,6 +54,23 @@ def publicly_visible_destinations() -> QuerySet[WeatherPoint]:
     )
 
 
+def destination_catalog_timestamp_points() -> QuerySet[WeatherPoint]:
+    """Return catalog rows whose timestamps can change the destinations hub.
+
+    Primary points are the rows rendered by the hub when they are active,
+    indexable and marked as destinations.  Retaining every primary row here
+    also covers an indexability/importance change or a sync retirement: the
+    row remains as a catalog tombstone and its deactivation timestamp is then
+    visible in ``lastmod``.  Forecast records are deliberately not part of
+    this query.
+    """
+
+    return (
+        WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY)
+        .exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
+    )
+
+
 def compute_db_catalog_revision() -> str:
     payload_points = [
         {

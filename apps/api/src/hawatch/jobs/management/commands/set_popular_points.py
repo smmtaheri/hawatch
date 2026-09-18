@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.utils import timezone
 
 from hawatch.modules.forecasts.models import WeatherPoint
 
@@ -33,7 +34,19 @@ class Command(BaseCommand):
         if missing:
             raise CommandError(f"Unknown or inactive point slug(s): {', '.join(missing)}")
         with transaction.atomic():
-            WeatherPoint.objects.update(is_popular=False, popular_order=0)
-            for order, slug in enumerate(slugs, start=1):
-                WeatherPoint.objects.filter(pk=selected[slug].pk).update(is_popular=True, popular_order=order)
+            desired = {
+                selected[slug].pk: (True, order)
+                for order, slug in enumerate(slugs, start=1)
+            }
+            changed = []
+            for point in WeatherPoint.objects.all().only("pk", "is_popular", "popular_order"):
+                target = desired.get(point.pk, (False, 0))
+                if (point.is_popular, point.popular_order) != target:
+                    point.is_popular, point.popular_order = target
+                    changed.append(point)
+            if changed:
+                changed_at = timezone.now()
+                for point in changed:
+                    point.updated_at = changed_at
+                WeatherPoint.objects.bulk_update(changed, ["is_popular", "popular_order", "updated_at"])
         self.stdout.write(self.style.SUCCESS("Popular points updated."))
