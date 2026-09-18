@@ -132,8 +132,8 @@ html:not([data-theme="light"]) body {
 }
 
 .destination-artwork.neighborhood {
-  mask-image: url("/images/destination-artwork/glyphs/neighborhood.png");
-  -webkit-mask-image: url("/images/destination-artwork/glyphs/neighborhood.png");
+  mask-image: url("/images/destination-artwork/glyphs/neighborhood.svg");
+  -webkit-mask-image: url("/images/destination-artwork/glyphs/neighborhood.svg");
 }
 
 .destination-artwork.city {

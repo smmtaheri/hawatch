@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" fill="none">
+  <g stroke="#18c2c6" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Two compact homes: one single-storey and one two-storey. -->
+    <path d="M285 925h755" />
+    <path d="M330 925V655h260v270" />
+    <path d="m305 655 155-138 155 138" />
+    <path d="M420 925V790h80v135" />
+    <path d="M385 735h48M487 735h48" />
+    <path d="M650 925V505h270v420" />
+    <path d="m625 505 160-145 160 145" />
+    <path d="M700 610h55v58h-55zM815 610h55v58h-55z" />
+    <path d="M700 745h55v58h-55zM815 745h55v58h-55z" />
+    <path d="M755 925V840h70v85" />
+    <!-- One small tree keeps the neighbourhood distinct from the dense city mark. -->
+    <path d="M1060 925V735M1060 790l-55-45M1060 815l55-55" />
+    <path d="M1060 610c-63 0-105 46-105 100 0 53 42 93 105 93s105-40 105-93c0-54-42-100-105-100Z" />
+  </g>
+</svg>
