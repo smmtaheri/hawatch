@@ -167,6 +167,7 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         if normalized and len(set(slugs)) > 1:
             issues.append(_issue("warning", "alias-collision", f"alias collision: {', '.join(slugs)}"))
     route_orders: list[tuple[int, str]] = []
+    route_point_slugs: set[str] = set()
     for route_key, route in data["routes"].items():
         if not isinstance(route, dict):
             issues.append(_issue("error", "route", f"route {route_key!r} must be an object")); continue
@@ -179,6 +180,7 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         else:
             route_titles[normalize_identity_text(title)].append(slug or route_key)
         points = route.get("points") or []
+        route_point_slugs.update(points)
         if len(points) < 3:
             issues.append(_issue("error", "route-chain", f"route {slug or route_key!r} needs origin, landmark and target"))
         if len(points) != len(set(points)):
@@ -198,6 +200,29 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
     for normalized, slugs in route_titles.items():
         if normalized and len(slugs) > 1:
             issues.append(_issue("error", "duplicate-route-title", f"route title collision: {', '.join(slugs)}"))
+    primary_destinations = {
+        slug: row
+        for slug, row in point_rows.items()
+        if isinstance(row, dict)
+        and row.get("kind") == "primary"
+        and row.get("importance") == "primary"
+        and row.get("seo_indexable", profile.get("seo_indexable", True)) is True
+    }
+    for slug, row in primary_destinations.items():
+        if row.get("place_type") != "village" or slug in route_point_slugs:
+            continue
+        has_related_destination = any(
+            other_slug != slug and other.get("place_type") != "village"
+            for other_slug, other in primary_destinations.items()
+        )
+        if not has_related_destination:
+            issues.append(
+                _issue(
+                    "error",
+                    "point-only-village-parent",
+                    f"point-only indexable village {slug!r} needs a related primary destination in the same catalog",
+                )
+            )
     return issues
 
 
@@ -274,14 +299,15 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
 def validate_indexable_link_graph() -> list[CatalogIssue]:
     """Check that every indexable public page has a real SSR entry point.
 
-    The destination hub owns primary destinations.  Other indexable points
-    must be part of an active route, and every active route must be reachable
-    from at least one primary destination through the same relationship query
-    used by the SSR point page.  Technical/noindex points are intentionally
-    excluded from this check.
+    The destination hub owns primary destinations. Other indexable points
+    must be part of an active route; an indexable point-only village instead
+    needs a related primary destination in the same catalog. Every active
+    route must be reachable from at least one primary destination through the
+    same relationship query used by the SSR point page. Technical/noindex
+    points are intentionally excluded from this check.
     """
 
-    from hawatch.modules.catalog.internal_links import related_public_routes
+    from hawatch.modules.catalog.internal_links import related_public_destinations, related_public_routes, related_public_villages
     from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
     from hawatch.modules.routes.models import Route
 
@@ -291,7 +317,7 @@ def validate_indexable_link_graph() -> list[CatalogIssue]:
     indexable_points = list(
         publicly_visible_weather_points()
         .filter(seo_indexable=True)
-        .only("id", "slug", "kind", "name", "page_name")
+        .only("id", "slug", "kind", "name", "page_name", "place_type", "catalog_version")
     )
 
     if indexable_points and not destinations:
@@ -303,6 +329,25 @@ def validate_indexable_link_graph() -> list[CatalogIssue]:
 
     for point in indexable_points:
         if point.pk in destination_ids:
+            # A village without a route is still a valid point-only page, but
+            # it must be reachable from the independent destination it serves.
+            # The relationship is resolved from the shared catalog version,
+            # keeping future villages data-driven rather than hard-coded.
+            if (
+                point.place_type == "village"
+                and not related_public_routes(point).exists()
+                and not any(
+                    related_public_villages(destination).filter(pk=point.pk).exists()
+                    for destination in related_public_destinations(point)
+                )
+            ):
+                issues.append(
+                    _issue(
+                        "warning",
+                        "orphan-indexable-village",
+                        f"indexable point-only village has no SSR link from a related destination: {point.slug}",
+                    )
+                )
             continue
         if not related_public_routes(point).exists():
             issues.append(

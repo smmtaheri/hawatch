@@ -18,7 +18,9 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
 
 - `title`، `meta description`، `canonical` و `robots`؛
 - یک `h1` و خلاصهٔ معنادار؛
-- برای Point: منطقه، دسته‌بندی، ارتفاع و مسیرهای مرتبط؛
+- برای Point: منطقه، دسته‌بندی، ارتفاع و مسیرهای مرتبط؛ روستای `point-only`
+  علاوه بر این از همان catalog نسخه‌دار به مقصد مستقل مرتبطش لینک SSR می‌گیرد؛
+  صفحهٔ مقصد نیز لینک واقعی به روستا دارد؛
 - برای Route: مبدأ، مقصد، مسافت/صعود و زنجیرهٔ نقاط مسیر.
 - برای `/destinations`: فقط Pointهای مستقل با `kind: "primary"`،
   `importance: "primary"` و `seo_indexable: true`. Hub و API آن از دیتابیس
@@ -110,7 +112,9 @@ python manage.py validate_catalog --all --database --check-links --strict
 ```
 
 این بررسی مقصدها را مالک لینک Hub، Routeهای فعال را فرزندان مقصد، و Pointهای
-indexable غیرمقصد را اعضای یک Route واقعی در نظر می‌گیرد. warningهای orphan
+indexable غیرمقصد را اعضای یک Route واقعی در نظر می‌گیرد. روستای indexable و
+بدون Route باید در همان catalog یک مقصد اصلی غیرروستاییِ مرتبط داشته باشد تا
+صفحهٔ مقصد و صفحهٔ روستا هر دو لینک SSR واقعی داشته باشند. warningهای orphan
 راهنمای اصلاح Catalog هستند؛ Point فنی/noindex عمداً از این گیت کنار گذاشته
 می‌شود و از Route، جست‌وجو یا API حذف نمی‌گردد.
 

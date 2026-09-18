@@ -43,6 +43,7 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert "<h1>مقصدهای اصلی هواچ</h1>" in body
     assert 'id="seo-destinations-list">مقصدهای اصلی</h2>' in body
     assert 'href="/points/tochal"' in body
+    assert 'href="/points/tochal-velenjak-village"' in body
     assert 'href="/points/tochal-sarband-square"' not in body
     assert '"@type": "CollectionPage"' in body
     assert '"@type": "ItemList"' in body
@@ -158,6 +159,14 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
         body = api_client.get(f"/points/{slug}").content.decode()
         assert "مسیرهای مرتبط" not in body
         assert "/routes/" not in body
+
+    village_body = api_client.get("/points/tochal-velenjak-village").content.decode()
+    assert 'id="seo-related-destinations"' in village_body
+    assert 'href="/points/tochal"' in village_body
+
+    destination_body = api_client.get("/points/tochal").content.decode()
+    assert 'id="seo-related-villages"' in destination_body
+    assert 'href="/points/tochal-velenjak-village"' in destination_body
 
     point = WeatherPoint.objects.create(
         slug="seo-test-summit",

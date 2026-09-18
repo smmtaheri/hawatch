@@ -86,6 +86,26 @@
                   </ul>
                 </section>
               {% endif %}
+              {% if page.related_destinations %}
+                <section aria-labelledby="seo-related-destinations">
+                  <h2 id="seo-related-destinations">مقصدهای مرتبط</h2>
+                  <ul>
+                    {% for destination in page.related_destinations %}
+                      <li><a href="{{ destination.href }}">{{ destination.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
+              {% if page.related_villages %}
+                <section aria-labelledby="seo-related-villages">
+                  <h2 id="seo-related-villages">روستاهای مرتبط</h2>
+                  <ul>
+                    {% for village in page.related_villages %}
+                      <li><a href="{{ village.href }}">{{ village.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
             {% elif page.kind == "route" %}
               <dl>
                 <div><dt>مبدأ</dt><dd>{% if page.origin_href %}<a href="{{ page.origin_href }}">{{ page.origin }}</a>{% else %}{{ page.origin }}{% endif %}</dd></div>

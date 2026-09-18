@@ -108,6 +108,36 @@ def test_route_requires_origin_landmark_and_target():
     assert any(issue.code == "route-chain" for issue in validate_catalog_document(catalog))
 
 
+def test_point_only_indexable_village_requires_a_related_primary_destination():
+    catalog = {
+        "catalog_version": "village-only-v1",
+        "point": {"slug": "test-village", "seo_indexable": True},
+        "primary_point": "test-village",
+        "weather_points": {
+            "test-village": {
+                "kind": "primary",
+                "name": "روستای آزمایشی",
+                "page_name": "روستای آزمایشی",
+                "short_label": "روستای آزمایشی",
+                "place_type": "village",
+                "identity_summary": "روستای آزمایشی برای آزمون point-only",
+                "importance": "primary",
+                "name_status": "official",
+                "source_urls": ["https://example.com"],
+                "latitude": 35.0,
+                "longitude": 52.0,
+                "elevation_m": 1800,
+                "seo_indexable": True,
+            }
+        },
+        "routes": {},
+    }
+
+    issues = validate_catalog_document(catalog)
+
+    assert any(issue.code == "point-only-village-parent" for issue in issues)
+
+
 def test_catalog_rejects_an_unsupported_demo_climate_before_import():
     path = Path(__file__).parents[1] / "fixtures/catalog/eskelim_v1.json"
     catalog = json.loads(path.read_text(encoding="utf-8"))
@@ -153,12 +183,30 @@ def test_seeded_catalog_passes_database_identity_validation():
 
 
 @pytest.mark.django_db
-def test_indexable_link_graph_reports_indexable_points_without_a_real_route_entry():
+def test_indexable_link_graph_reports_point_only_village_without_a_related_destination():
     seed_tochal_catalog()
+
+    orphan = WeatherPoint.objects.create(
+        slug="seo-orphan-village",
+        name="روستای یتیم",
+        page_name="روستای یتیم",
+        short_label="روستای یتیم",
+        identity_summary="روستای یتیم بدون مقصد مرتبط برای آزمون گراف SEO",
+        place_type="village",
+        category="روستا",
+        region="تهران",
+        elevation_m=1800,
+        location=Point(51.5, 35.8, srid=4326),
+        seo_indexable=True,
+        kind=WeatherPoint.Kind.PRIMARY,
+        importance="primary",
+        catalog_version="orphan-village-catalog-v1",
+        is_active=True,
+    )
 
     issues = validate_indexable_link_graph()
 
     assert any(
-        issue.code == "orphan-indexable-point" and "tochal-velenjak-village" in issue.message
+        issue.code == "orphan-indexable-village" and orphan.slug in issue.message
         for issue in issues
     )

@@ -20,7 +20,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 from hawatch.modules.catalog.identity import place_type_label
-from hawatch.modules.catalog.internal_links import related_public_routes
+from hawatch.modules.catalog.internal_links import related_public_destinations, related_public_routes, related_public_villages
 from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
@@ -150,6 +150,8 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 def _point_page(point: WeatherPoint) -> dict:
     seo = point_seo_copy(point)
     route_rows = related_public_routes(point)
+    destination_rows = related_public_destinations(point) if point.place_type == "village" and not route_rows.exists() else ()
+    village_rows = related_public_villages(point) if point.place_type != "village" else ()
     return {
         "kind": "point",
         "title": seo["title"],
@@ -173,6 +175,20 @@ def _point_page(point: WeatherPoint) -> dict:
                 "description": f"از {route.origin} تا {route.target_label}",
             }
             for route in route_rows
+        ],
+        "related_destinations": [
+            {
+                "name": destination.page_name or destination.name,
+                "href": f"/points/{destination.slug}",
+            }
+            for destination in destination_rows
+        ],
+        "related_villages": [
+            {
+                "name": village.page_name or village.name,
+                "href": f"/points/{village.slug}",
+            }
+            for village in village_rows
         ],
     }
 
