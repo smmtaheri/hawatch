@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import timedelta, timezone as dt_timezone
 
 from django.db import connection
-from django.db.models import Max
+from django.db.models import Max, OuterRef, Subquery
 from django.http import HttpResponse
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
@@ -301,31 +301,64 @@ def sitemap_xml(_request):
     from django.conf import settings
 
     base = settings.PUBLIC_SITE_ORIGIN
+    successful_forecast_statuses = (
+        ForecastSnapshot.Status.SUCCESS,
+        ForecastSnapshot.Status.PARTIAL,
+    )
+
+    # ForecastRecord.generated_at is written only when normalized hourly data
+    # is persisted for a point.  Looking at records (rather than an ingest
+    # attempt or the latest global snapshot) means a failed/empty point batch
+    # cannot move its sitemap timestamp.
+    point_forecast_lastmod = (
+        ForecastRecord.objects.filter(
+            weather_point_id=OuterRef("pk"),
+            data_mode="live",
+            provider="open-meteo",
+            snapshot__status__in=successful_forecast_statuses,
+        )
+        .order_by("-generated_at", "-pk")
+        .values("generated_at")[:1]
+    )
     point_rows = list(
         publicly_visible_weather_points()
         .filter(seo_indexable=True)
+        .annotate(forecast_updated_at=Subquery(point_forecast_lastmod))
         .order_by("slug")
-        .values("slug", "updated_at")
+        .values("slug", "updated_at", "forecast_updated_at")
+    )
+    route_forecast_lastmod = (
+        ForecastRecord.objects.filter(
+            weather_point__route_links__route_id=OuterRef("pk"),
+            data_mode="live",
+            provider="open-meteo",
+            snapshot__status__in=successful_forecast_statuses,
+        )
+        .order_by("-generated_at", "-pk")
+        .values("generated_at")[:1]
     )
     route_rows = list(
         Route.objects.filter(is_active=True)
         .annotate(points_updated_at=Max("points__weather_point__updated_at"))
+        .annotate(forecast_updated_at=Subquery(route_forecast_lastmod))
         .order_by("slug")
-        .values("slug", "updated_at", "points_updated_at")
+        .values("slug", "updated_at", "points_updated_at", "forecast_updated_at")
     )
-    destination_lastmod = (
-        WeatherPoint.objects.filter(
-            kind=WeatherPoint.Kind.PRIMARY,
-            importance="primary",
-        )
-        .order_by("-updated_at")
-        .values_list("updated_at", flat=True)
-        .first()
+    destination_rows = publicly_visible_destinations().annotate(
+        forecast_updated_at=Subquery(point_forecast_lastmod)
+    ).values("updated_at", "forecast_updated_at")
+
+    def latest_timestamp(*values):
+        available = [value for value in values if value is not None]
+        return max(available) if available else None
+
+    destination_lastmod = latest_timestamp(
+        *(latest_timestamp(row["updated_at"], row["forecast_updated_at"]) for row in destination_rows)
     )
 
     def entry(url: str, updated_at=None) -> str:
         lastmod = (
-            f"<lastmod>{dj_timezone.localtime(updated_at).date().isoformat()}</lastmod>"
+            f"<lastmod>{updated_at.astimezone(dt_timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')}</lastmod>"
             if updated_at is not None
             else ""
         )
@@ -334,11 +367,21 @@ def sitemap_xml(_request):
     urls = [
         entry(f"{base}/"),
         entry(f"{base}/destinations", destination_lastmod),
-        *(entry(f"{base}/points/{row['slug']}", row["updated_at"]) for row in point_rows),
+        *(
+            entry(
+                f"{base}/points/{row['slug']}",
+                latest_timestamp(row["updated_at"], row["forecast_updated_at"]),
+            )
+            for row in point_rows
+        ),
         *(
             entry(
                 f"{base}/routes/{row['slug']}",
-                max(value for value in (row["updated_at"], row["points_updated_at"]) if value is not None),
+                latest_timestamp(
+                    row["updated_at"],
+                    row["points_updated_at"],
+                    row["forecast_updated_at"],
+                ),
             )
             for row in route_rows
         ),
@@ -346,4 +389,8 @@ def sitemap_xml(_request):
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     xml.extend(urls)
     xml.append("</urlset>")
-    return HttpResponse("".join(xml), content_type="application/xml; charset=utf-8")
+    response = HttpResponse("".join(xml), content_type="application/xml; charset=utf-8")
+    # Keep CDN storage possible, but require revalidation so a successful
+    # forecast write cannot leave an old lastmod cached for a full day.
+    response["Cache-Control"] = "public, no-cache, must-revalidate"
+    return response

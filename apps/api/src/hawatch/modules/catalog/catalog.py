@@ -395,7 +395,11 @@ def seed_catalog(
 
         current_rows = list(route.points.order_by("sort_order", "pk").values_list("slug", "sort_order", flat=False))
         current_slugs = [slug for slug, _sort_order in current_rows]
-        if current_slugs != ordered or [sort_order for _slug, sort_order in current_rows] != list(range(1, len(current_rows) + 1)):
+        route_points_structure_changed = (
+            current_slugs != ordered
+            or [sort_order for _slug, sort_order in current_rows] != list(range(1, len(current_rows) + 1))
+        )
+        if route_points_structure_changed:
             shift_route_point_sort_orders(route)
         for index, slug in enumerate(ordered):
             wp = points[slug]
@@ -438,13 +442,18 @@ def seed_catalog(
             if changed_fields:
                 rp.save(update_fields=sorted(set(changed_fields)))
         if prune or prune_stale_route_points:
-            route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()
+            deleted = route.points.filter(fixture_managed=True).exclude(slug__in=ordered).delete()[0]
+            route_points_structure_changed = route_points_structure_changed or bool(deleted)
         _restore_manual_route_point_positions(
             route=route,
             fixture_point_slugs=ordered,
             manual_positions=manual_positions,
         )
-        normalize_and_publish_route(route, rebuild_search=False)
+        normalize_and_publish_route(
+            route,
+            rebuild_search=False,
+            touch_route=route_points_structure_changed,
+        )
         kept_routes.append(route.pk)
     if prune:
         stale_routes = Route.objects.filter(

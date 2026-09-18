@@ -147,18 +147,18 @@ class RoutePointAdmin(GISModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         if obj.route_id:
-            normalize_and_publish_route(obj.route, rebuild_search=True)
+            normalize_and_publish_route(obj.route, rebuild_search=True, touch_route=True)
 
     def delete_model(self, request, obj):
         route = obj.route
         super().delete_model(request, obj)
         if route is not None:
-            normalize_and_publish_route(route, rebuild_search=True)
+            normalize_and_publish_route(route, rebuild_search=True, touch_route=True)
 
     def delete_queryset(self, request, queryset):
         routes = {item.route_id: item.route for item in queryset.select_related("route")}
         super().delete_queryset(request, queryset)
         for route in routes.values():
             if route is not None:
-                normalize_and_publish_route(route, rebuild_search=False)
+                normalize_and_publish_route(route, rebuild_search=False, touch_route=True)
         schedule_search_index_rebuild()

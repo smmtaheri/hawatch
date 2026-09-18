@@ -55,7 +55,12 @@ def synchronize_route_point_from_weather_point(point: RoutePoint) -> list[str]:
     return updated
 
 
-def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) -> Route:
+def normalize_and_publish_route(
+    route: Route,
+    *,
+    rebuild_search: bool = True,
+    touch_route: bool = False,
+) -> Route:
     """Normalize ordered RoutePoints and demote incomplete timing to pending.
 
     Used by Django Admin and catalog import so both paths produce the same
@@ -63,6 +68,7 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
     """
     points = list(route.points.select_related("weather_point").order_by("sort_order", "pk"))
     total = len(points)
+    route_point_changed = False
 
     # Temporarily shift sort_order only when renumbering is needed; repeated
     # catalog syncs must not rewrite every RoutePoint.
@@ -110,6 +116,7 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
 
         if fields:
             point.save(update_fields=sorted(set(fields)))
+            route_point_changed = True
 
     origin = points[0].weather_point if points else None
     target = points[-1].weather_point if points else None
@@ -137,7 +144,7 @@ def normalize_and_publish_route(route: Route, *, rebuild_search: bool = True) ->
                 point.timing_status = RoutePoint.TimingStatus.PENDING
                 point.save(update_fields=["timing_status"])
 
-    if route_fields:
+    if route_fields or route_point_changed or touch_route:
         route.save(update_fields=sorted(set(route_fields + ["updated_at"])))
 
     if rebuild_search:

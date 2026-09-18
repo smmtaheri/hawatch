@@ -1,3 +1,4 @@
+from datetime import datetime, timezone as dt_timezone
 from xml.etree import ElementTree
 
 import pytest
@@ -10,7 +11,7 @@ from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.catalog.runtime import publicly_visible_destinations
-from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
+from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
@@ -22,6 +23,39 @@ def api_client():
 @pytest.fixture
 def seeded(db):
     return seed_demo_data(force=True)
+
+
+def _sitemap_lastmod(response, url):
+    root = ElementTree.fromstring(response.content)
+    namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    for node in root.findall(f"{namespace}url"):
+        loc = node.find(f"{namespace}loc")
+        if loc is not None and loc.text == url:
+            value = node.find(f"{namespace}lastmod")
+            return datetime.fromisoformat(value.text.replace("Z", "+00:00")) if value is not None else None
+    return None
+
+
+def _persist_live_forecast_record(point, generated_at):
+    snapshot = ForecastSnapshot.objects.create(
+        provider="open-meteo",
+        requested_at=generated_at,
+        generated_at=generated_at,
+        status=ForecastSnapshot.Status.SUCCESS,
+        freshness=ForecastSnapshot.Freshness.READY,
+    )
+    record = ForecastRecord.objects.filter(weather_point=point).first()
+    assert record is not None
+    record.pk = None
+    record.snapshot = snapshot
+    record.generated_at = generated_at
+    record.data_mode = "live"
+    record.provider = "open-meteo"
+    record.source = "open-meteo-forecast"
+    record.seed_version = "open-meteo-live"
+    record.freshness = ForecastRecord.Freshness.READY
+    record.save()
+    return snapshot
 
 
 def test_live_health(api_client):
@@ -77,6 +111,7 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     response = api_client.get("/api/v1/seo/sitemap.xml")
 
     assert response.status_code == 200
+    assert response["Cache-Control"] == "public, no-cache, must-revalidate"
     root = ElementTree.fromstring(response.content)
     locations = [node.text for node in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     desired = load_packaged_catalogs()
@@ -109,7 +144,49 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
     }
     assert lastmods["https://hawatch.ir/"] is None
     assert all(lastmods[url] is not None for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"})
-    assert all(lastmods[url].text and len(lastmods[url].text) == 10 for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"})
+    for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"}:
+        assert lastmods[url].text.endswith("Z")
+        parsed = datetime.fromisoformat(lastmods[url].text.replace("Z", "+00:00"))
+        assert parsed.tzinfo == dt_timezone.utc
+
+
+@pytest.mark.django_db
+def test_sitemap_lastmod_uses_successful_point_forecast_and_catalog_fallback(api_client, seeded):
+    point = WeatherPoint.objects.get(slug="azadkouh")
+    forecast_at = datetime(2026, 9, 10, 7, 30, tzinfo=dt_timezone.utc)
+    catalog_at = datetime(2026, 9, 8, 7, 30, tzinfo=dt_timezone.utc)
+    WeatherPoint.objects.filter(pk=point.pk).update(updated_at=catalog_at)
+    _persist_live_forecast_record(point, forecast_at)
+
+    url = "https://hawatch.ir/points/azadkouh"
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), url) == forecast_at
+
+    catalog_newer = datetime(2026, 9, 12, 7, 30, tzinfo=dt_timezone.utc)
+    WeatherPoint.objects.filter(pk=point.pk).update(updated_at=catalog_newer)
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), url) == catalog_newer
+
+    failed_at = datetime(2026, 9, 15, 7, 30, tzinfo=dt_timezone.utc)
+    ForecastSnapshot.objects.create(
+        provider="open-meteo",
+        requested_at=failed_at,
+        generated_at=failed_at,
+        status=ForecastSnapshot.Status.FAILED,
+        freshness=ForecastSnapshot.Freshness.STALE,
+    )
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), url) == catalog_newer
+
+
+@pytest.mark.django_db
+def test_sitemap_route_lastmod_uses_latest_linked_point_forecast(api_client, seeded):
+    route = Route.objects.get(slug="tochal-darband")
+    route_at = datetime(2026, 9, 8, 7, 30, tzinfo=dt_timezone.utc)
+    Route.objects.filter(pk=route.pk).update(updated_at=route_at)
+    route_point = route.points.select_related("weather_point").first()
+    forecast_at = datetime(2026, 9, 11, 7, 30, tzinfo=dt_timezone.utc)
+    _persist_live_forecast_record(route_point.weather_point, forecast_at)
+
+    url = "https://hawatch.ir/routes/tochal-darband"
+    assert _sitemap_lastmod(api_client.get("/api/v1/seo/sitemap.xml"), url) == forecast_at
 
 
 @pytest.mark.django_db
