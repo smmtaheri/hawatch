@@ -163,6 +163,7 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
     village_body = api_client.get("/points/tochal-velenjak-village").content.decode()
     assert 'id="seo-related-destinations"' in village_body
     assert 'href="/points/tochal"' in village_body
+    assert "<dt>نوع نقطه</dt><dd>محله</dd>" in village_body
 
     destination_body = api_client.get("/points/tochal").content.decode()
     assert 'id="seo-related-villages"' in destination_body

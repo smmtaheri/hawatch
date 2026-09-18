@@ -141,9 +141,9 @@
       "elevation_source": "MAPLOGS 1755 m; Open-Meteo GLO-90 DEM 1754 m",
       "page_name": "ولنجک",
       "short_label": "ولنجک",
-      "place_type": "village",
+      "place_type": "neighborhood",
       "aliases": [],
-      "identity_summary": "ولنجک؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "identity_summary": "ولنجک؛ محلهٔ شهری و مبدأ دسترسی به مجموعهٔ توچال",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -151,7 +151,7 @@
       "source_urls": [
         "https://open-meteo.com/en/docs"
       ],
-      "identity_summary": "ولنجک؛ محدودهٔ شهری و مبدأ دسترسی به مجموعهٔ توچال",
+      "identity_summary": "ولنجک؛ محلهٔ شهری و مبدأ دسترسی به مجموعهٔ توچال",
       "seo": {
         "title": "آب‌وهوای ولنجک؛ دما، باد و بارش | هواچ",
         "description": "پیش‌بینی آب‌وهوای ولنجک در ارتفاع ۱۷۵۵ متر در شمال تهران؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."

@@ -15,7 +15,7 @@ from typing import Any
 from django.conf import settings
 
 from hawatch.integrations.weather.demo import supported_climate_keys
-from hawatch.modules.catalog.identity import IDENTITY_IMPORTANCE, NAME_STATUSES, PLACE_TYPES, SLUG_RE, normalize_identity_text
+from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, IDENTITY_IMPORTANCE, NAME_STATUSES, PLACE_TYPES, SLUG_RE, normalize_identity_text
 
 
 @dataclass(frozen=True)
@@ -209,10 +209,10 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
         and row.get("seo_indexable", profile.get("seo_indexable", True)) is True
     }
     for slug, row in primary_destinations.items():
-        if row.get("place_type") != "village" or slug in route_point_slugs:
+        if row.get("place_type") not in ACCESS_PLACE_TYPES or slug in route_point_slugs:
             continue
         has_related_destination = any(
-            other_slug != slug and other.get("place_type") != "village"
+            other_slug != slug and other.get("place_type") not in ACCESS_PLACE_TYPES
             for other_slug, other in primary_destinations.items()
         )
         if not has_related_destination:
@@ -220,7 +220,7 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
                 _issue(
                     "error",
                     "point-only-village-parent",
-                    f"point-only indexable village {slug!r} needs a related primary destination in the same catalog",
+                    f"point-only indexable {row.get('place_type')} {slug!r} needs a related primary destination in the same catalog",
                 )
             )
     return issues
@@ -329,12 +329,12 @@ def validate_indexable_link_graph() -> list[CatalogIssue]:
 
     for point in indexable_points:
         if point.pk in destination_ids:
-            # A village without a route is still a valid point-only page, but
+            # An access settlement without a route is still a valid point-only page, but
             # it must be reachable from the independent destination it serves.
             # The relationship is resolved from the shared catalog version,
             # keeping future villages data-driven rather than hard-coded.
             if (
-                point.place_type == "village"
+                point.place_type in ACCESS_PLACE_TYPES
                 and not related_public_routes(point).exists()
                 and not any(
                     related_public_villages(destination).filter(pk=point.pk).exists()
@@ -345,7 +345,7 @@ def validate_indexable_link_graph() -> list[CatalogIssue]:
                     _issue(
                         "warning",
                         "orphan-indexable-village",
-                        f"indexable point-only village has no SSR link from a related destination: {point.slug}",
+                        f"indexable point-only {point.place_type} has no SSR link from a related destination: {point.slug}",
                     )
                 )
             continue

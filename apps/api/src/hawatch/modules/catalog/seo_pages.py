@@ -19,7 +19,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
-from hawatch.modules.catalog.identity import place_type_label
+from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, place_type_label
 from hawatch.modules.catalog.internal_links import related_public_destinations, related_public_routes, related_public_villages
 from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
@@ -150,8 +150,8 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 def _point_page(point: WeatherPoint) -> dict:
     seo = point_seo_copy(point)
     route_rows = related_public_routes(point)
-    destination_rows = related_public_destinations(point) if point.place_type == "village" and not route_rows.exists() else ()
-    village_rows = related_public_villages(point) if point.place_type != "village" else ()
+    destination_rows = related_public_destinations(point) if point.place_type in ACCESS_PLACE_TYPES and not route_rows.exists() else ()
+    village_rows = related_public_villages(point) if point.place_type not in ACCESS_PLACE_TYPES else ()
     return {
         "kind": "point",
         "title": seo["title"],

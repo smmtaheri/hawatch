@@ -13,6 +13,7 @@ const PLACE_TYPE_CATEGORY_KEYS: Record<string, string> = {
   desert: "desert",
   beach: "beach",
   village: "village",
+  neighborhood: "neighborhood",
 };
 
 export function resolvePointCategoryKey(categoryKey: string, placeType?: string) {
@@ -123,6 +124,15 @@ export function PointIcon({ categoryKey, placeType }: { categoryKey: string; pla
         <path d="M10 21v19h28V21" />
         <path d="M20 40V28h8v12M15 27h6v6h-6zM30 27h6v6h-6z" />
         <path d="M31 14V8h5v10M5 41h38" />
+      </svg>
+    );
+  }
+  if (key === "neighborhood") {
+    return (
+      <svg viewBox="0 0 48 48" className="point-icon neighborhood" aria-hidden="true">
+        <path d="M5 40h38M9 40V19h10v21M19 40V11h10v29M29 40V22h10v18" />
+        <path d="M12 25h4M12 31h4M22 18h4M22 24h4M22 30h4M32 28h4M32 34h4" />
+        <path d="M6 40c3-5 6-5 9 0M36 40c2-4 4-4 6 0" />
       </svg>
     );
   }

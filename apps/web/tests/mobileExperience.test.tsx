@@ -127,6 +127,14 @@ describe("mobile route and forecast controls", () => {
     expect(container.querySelector(".point-icon.nature")).not.toBeInTheDocument();
   });
 
+  it("keeps neighborhoods distinct from rural-village artwork", () => {
+    const { container } = render(
+      <DestinationIcon categoryKey="" placeType="neighborhood" className="destination-card-icon" />,
+    );
+    expect(container.querySelector(".destination-artwork.neighborhood")).toBeInTheDocument();
+    expect(container.querySelector(".destination-artwork.village")).not.toBeInTheDocument();
+  });
+
   it("keeps approved destination artwork inside the shared icon frame", () => {
     const { container } = render(
       <DestinationIcon categoryKey="waterfall" className="destination-card-icon" />,

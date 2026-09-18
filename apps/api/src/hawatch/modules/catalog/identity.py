@@ -12,6 +12,7 @@ NAME_STATUSES = {"official", "established", "descriptive"}
 PLACE_TYPES = {
     "summit",
     "village",
+    "neighborhood",
     "shelter",
     "spring",
     "pass",
@@ -43,7 +44,12 @@ PLACE_TYPE_CATEGORY_KEYS = {
     "desert": "desert",
     "beach": "beach",
     "village": "village",
+    "neighborhood": "neighborhood",
 }
+
+# Settlements used as an access/discovery point share the catalog relationship
+# rules, while retaining distinct semantic types and icons.
+ACCESS_PLACE_TYPES = frozenset({"village", "neighborhood"})
 
 
 def category_key_for_point(category_key: object, place_type: object) -> str:
@@ -88,6 +94,7 @@ def seo_indexable_for_row(row: Mapping[str, object], profile: Mapping[str, objec
 PLACE_TYPE_LABELS = {
     "summit": "قله",
     "village": "روستا",
+    "neighborhood": "محله",
     "shelter": "پناهگاه",
     "spring": "چشمه",
     "pass": "گردنه",
@@ -383,6 +390,8 @@ def infer_place_type(slug: str, name: str) -> str:
         return "spring"
     if "waterfall" in text or "آبشار" in text:
         return "waterfall"
+    if "neighborhood" in text or "district" in text or "محله" in text:
+        return "neighborhood"
     if "village" in text or "روستا" in text:
         return "village"
     if "pass" in text or "گردنه" in text:
