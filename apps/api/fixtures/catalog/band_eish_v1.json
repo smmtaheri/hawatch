@@ -1,0 +1,224 @@
+{
+  "catalog_version": "hawatch-band-eish-catalog-v1",
+  "weather_points": {
+    "band-eish-hesarak-trailhead": {
+      "name": "مبدأ حصارک؛ مسیر بند عیش",
+      "page_name": "مبدأ حصارک در مسیر بند عیش",
+      "short_label": "مبدأ حصارک",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["حصارک شروع بند عیش", "خیابان آبرسانی حصارک", "Hesarak trailhead"],
+      "identity_summary": "مبدأ پیاده‌روی درهٔ حصارک به قلهٔ بند عیش در غرب تهران",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%A8%D9%86%D8%AF-%D8%B9%DB%8C%D8%B4/",
+        "https://www.wikiloc.com/hiking-trails/qlh-bnd-ysh-z-hsrkh-210027386"
+      ],
+      "latitude": 35.785097,
+      "longitude": 51.312392,
+      "elevation_m": 1750,
+      "status": "provisional",
+      "elevation_source": "مختصات پارک خودرو و مبدأ حصارک از راهنمای مسیر؛ ارتفاع باید با DEM Open-Meteo کنترل شود.",
+      "climate": "alpine"
+    },
+    "band-eish-hesarak-spring": {
+      "name": "چشمهٔ درهٔ حصارک؛ مسیر بند عیش",
+      "page_name": "چشمهٔ درهٔ حصارک در مسیر بند عیش",
+      "short_label": "چشمهٔ حصارک",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه حصارک بند عیش", "چشمه مسیر بند عیش", "Hesarak spring"],
+      "identity_summary": "چشمهٔ نام‌برده در درهٔ حصارک و مسیر صعود قلهٔ بند عیش",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-drh-hsrkh-t-qlh-bnd-ysh-jmh-1399-09-28-62408712",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%A8%D9%86%D8%AF-%D8%B9%DB%8C%D8%B4/"
+      ],
+      "latitude": 35.820115,
+      "longitude": 51.307510,
+      "elevation_m": 2125,
+      "status": "provisional",
+      "elevation_source": "نزدیک‌ترین waypoint چشمه در ترک حصارک؛ ارتفاع باید با DEM Open-Meteo کنترل شود.",
+      "climate": "alpine"
+    },
+    "band-eish-koohsar-trailhead": {
+      "name": "پارکینگ پارک کوهسار؛ مسیر بند عیش",
+      "page_name": "پارک کوهسار در مسیر بند عیش",
+      "short_label": "پارک کوهسار",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["پارک کوهسار شروع بند عیش", "مبدأ کوهسار", "Koohsar Park trailhead"],
+      "identity_summary": "پارکینگ و نگهبانی انتهای پارک کوهسار، مبدأ مسیر پیادهٔ بند عیش",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-prkh-kwhsr-t-qlh-bnd-ysh-jmh-1403-10-21-197495034",
+        "https://en.wikipedia.org/wiki/Kuhsar_Park"
+      ],
+      "latitude": 35.783247,
+      "longitude": 51.282940,
+      "elevation_m": 1671,
+      "status": "provisional",
+      "elevation_source": "waypoint پارکینگ و نگهبانی در ترک پارک کوهسار؛ ارتفاع باید با DEM Open-Meteo کنترل شود.",
+      "climate": "alpine"
+    },
+    "band-eish-under-wall": {
+      "name": "دیوارهٔ زیر قلهٔ بند عیش",
+      "page_name": "دیوارهٔ زیر قلهٔ بند عیش در مسیر کوهسار",
+      "short_label": "دیوارهٔ زیر قله",
+      "place_type": "cliff",
+      "category_key": "mountain",
+      "aliases": ["زیر دیواره بند عیش", "بخش سنگی بند عیش", "Band-e Eish wall"],
+      "identity_summary": "دیواره و بخش سنگی زیر قله در مسیر کوهسار به بند عیش",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-prkh-kwhsr-t-qlh-bnd-ysh-jmh-1403-10-21-197495034"
+      ],
+      "latitude": 35.834838,
+      "longitude": 51.293817,
+      "elevation_m": 2610,
+      "status": "provisional",
+      "elevation_source": "waypoint دیوارهٔ زیر قله در ترک پارک کوهسار؛ ارتفاع باید با DEM Open-Meteo کنترل شود.",
+      "climate": "alpine"
+    },
+    "band-eish": {
+      "name": "قلهٔ بند عیش",
+      "page_name": "قلهٔ بند عیش",
+      "short_label": "بند عیش",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["بندعیش", "قله بند عیش", "Band-e Eysh", "Band Eish"],
+      "identity_summary": "قلهٔ بند عیش در منطقهٔ کن و حصارک، شمال‌غرب تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.peakbagger.com/peak.aspx?pid=-62521",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%A8%D9%86%D8%AF-%D8%B9%DB%8C%D8%B4/",
+        "https://www.wikiloc.com/hiking-trails/qlh-bnd-ysh-z-hsrkh-210027386",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-prkh-kwhsr-t-qlh-bnd-ysh-jmh-1403-10-21-197495034"
+      ],
+      "latitude": 35.836520,
+      "longitude": 51.296090,
+      "elevation_m": 2766,
+      "status": "provisional",
+      "elevation_source": "مختصات endpoint مشترک در ترک‌های مستقل؛ ارتفاع ۲۷۶۶ متر از Peakbagger و راهنماهای صعود، با DEM Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "hesarak_to_band_eish": {
+      "slug": "band-eish-hesarak",
+      "title": "حصارک تا قلهٔ بند عیش",
+      "subtitle": "مسیر درهٔ حصارک، چشمه و یال جنوبی تا قلهٔ بند عیش",
+      "trail_label": "مسیر حصارک–بند عیش",
+      "origin": "مبدأ حصارک",
+      "target_label": "قلهٔ بند عیش",
+      "region": "البرز مرکزی · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["band-eish-hesarak-trailhead", "band-eish-hesarak-spring", "band-eish"],
+      "distance_km": 8.0,
+      "ascent_m": 1050,
+      "one_way_minutes": 240,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "pending-local-gpx-analysis",
+        "version": "band-eish-hesarak-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-bnd-ysh-z-hsrkh-210027386",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-drh-hsrkh-t-qlh-bnd-ysh-jmh-1399-09-28-62408712",
+          "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%A8%D9%86%D8%AF-%D8%B9%DB%8C%D8%B4/"
+        ],
+        "evidence_tracks": [
+          "tracks/band-eish/band-eish-hesarak-crosscheck-2020.gpx",
+          "tracks/band-eish/band-eish-hesarak-primary.gpx",
+          "tracks/band-eish/band-eish-hesarak-scramble-crosscheck-2022.gpx"
+        ],
+        "cumulative_minutes": {
+          "band-eish-hesarak-trailhead": 0,
+          "band-eish-hesarak-spring": 150,
+          "band-eish": 240
+        },
+        "notes": [
+          "چشمه به‌عنوان عارضهٔ میانی واقعی در گزارش‌های مستقل مسیر حصارک آمده است.",
+          "ترک دست‌به‌سنگ فقط cross-check است و مسیر عمومی مستقل فنی ایجاد نمی‌کند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "koohsar_to_band_eish": {
+      "slug": "band-eish-koohsar",
+      "title": "پارک کوهسار تا قلهٔ بند عیش",
+      "subtitle": "مسیر پارک کوهسار، خط‌الرأس و دیوارهٔ زیر قله تا بند عیش",
+      "trail_label": "مسیر کوهسار–بند عیش",
+      "origin": "پارک کوهسار",
+      "target_label": "قلهٔ بند عیش",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": ["band-eish-koohsar-trailhead", "band-eish-under-wall", "band-eish"],
+      "distance_km": 7.4,
+      "ascent_m": 1050,
+      "one_way_minutes": 300,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "pending-local-gpx-analysis",
+        "version": "band-eish-koohsar-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-prkh-kwhsr-t-qlh-bnd-ysh-jmh-1403-10-21-197495034",
+          "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%A8%D9%86%D8%AF-%D8%B9%DB%8C%D8%B4/"
+        ],
+        "evidence_tracks": ["tracks/band-eish/band-eish-koohsar-primary-2025.gpx"],
+        "cumulative_minutes": {
+          "band-eish-koohsar-trailhead": 0,
+          "band-eish-under-wall": 240,
+          "band-eish": 300
+        },
+        "notes": [
+          "دیوارهٔ زیر قله عارضهٔ واقعی و قابل‌شناسایی در شرح مسیر و ترک است؛ waypointهای نامطمئن مانند قلهٔ نیمرو وارد catalog نشده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "band-eish",
+    "tile_name": "بند عیش",
+    "name": "قلهٔ بند عیش",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 2766,
+    "latitude": 35.836520,
+    "longitude": 51.296090,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بند عیش",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["بند عیش", "بندعیش", "قله بند عیش", "Band-e Eysh", "Band Eish"]
+  },
+  "primary_point": "band-eish"
+}
