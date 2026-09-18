@@ -30,6 +30,9 @@ render می‌کند؛ جزئیات در [`../seo.md`](../seo.md) است. entry�
 ## صفحات این milestone
 
 - `/`
+- `/destinations` و `/destinations/page/:page` — فهرست مقصدهای مستقل با SSR
+  صفحه‌بندی‌شده؛ شبکهٔ React برش بعدی را هنگام نزدیک‌شدن اسکرول به انتها اضافه
+  می‌کند و در نبود قابلیت observer لینک قابل‌خزشِ ادامهٔ فهرست را نشان می‌دهد.
 - `/points/:slug` — `PlaceForecastPage` (قالب مشترک Point Forecast)
 - `/routes/:slug`
 

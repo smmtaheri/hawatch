@@ -68,6 +68,12 @@
                     {% endfor %}
                   </ul>
                 </section>
+                {% if page.previous_destinations_href or page.next_destinations_href %}
+                  <nav aria-label="ادامهٔ فهرست مقصدها">
+                    {% if page.previous_destinations_href %}<a href="{{ page.previous_destinations_href }}">مقصدهای قبلی</a>{% endif %}
+                    {% if page.next_destinations_href %}<a href="{{ page.next_destinations_href }}">مقصدهای بیشتر</a>{% endif %}
+                  </nav>
+                {% endif %}
               {% endif %}
             {% elif page.kind == "point" %}
               <dl>

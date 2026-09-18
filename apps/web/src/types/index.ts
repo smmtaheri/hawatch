@@ -53,6 +53,19 @@ export interface PointSummary {
   seo_indexable?: boolean;
 }
 
+export interface DestinationPage {
+  destinations: PointSummary[];
+  pagination: {
+    page: number;
+    page_size: number;
+    total: number;
+    has_next: boolean;
+    next_page: number | null;
+    next_href: string | null;
+    previous_href: string | null;
+  };
+}
+
 export interface RouteSummary {
   slug: string;
   title: string;

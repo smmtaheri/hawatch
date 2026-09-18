@@ -1,3 +1,5 @@
+import re
+
 import pytest
 from django.contrib.gis.geos import Point
 
@@ -43,15 +45,42 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert "<h1>مقصدهای اصلی هواچ</h1>" in body
     assert 'id="seo-destinations-list">مقصدهای اصلی</h2>' in body
     assert 'href="/points/tochal"' in body
-    assert 'href="/points/tochal-velenjak-village"' in body
     assert 'href="/points/tochal-sarband-square"' not in body
     assert '"@type": "CollectionPage"' in body
     assert '"@type": "ItemList"' in body
+    assert 'href="/destinations/page/2"' in body
     assert response["X-Robots-Tag"] == "index,follow"
+
+    page_two = api_client.get("/destinations/page/2")
+    assert page_two.status_code == 200
+    page_two_body = page_two.content.decode()
+    assert "<title>مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها | بخش 2</title>" in page_two_body
+    assert 'rel="canonical" href="https://hawatch.ir/destinations/page/2"' in page_two_body
+    assert 'href="/destinations">مقصدهای قبلی</a>' in page_two_body
+    assert '"position": 17' in page_two_body
+    assert '"numberOfItems"' in page_two_body
+
+    # Crawl the SSR pagination chain and ensure the destination hub, rather
+    # than client-side rendering, exposes every primary destination link.
+    pages = [body]
+    next_page = 2
+    while True:
+        next_links = re.findall(r'href="/destinations/page/(\d+)">مقصدهای بیشتر', pages[-1])
+        if not next_links:
+            break
+        next_page = max(int(value) for value in next_links)
+        page_response = api_client.get(f"/destinations/page/{next_page}")
+        assert page_response.status_code == 200
+        pages.append(page_response.content.decode())
+    assert any('href="/points/tochal-velenjak-village"' in page_body for page_body in pages)
 
     trailing = api_client.get("/destinations/")
     assert trailing.status_code == 200
     assert 'rel="canonical" href="https://hawatch.ir/destinations"' in trailing.content.decode()
+
+    query_variant = api_client.get("/destinations?page=2")
+    assert query_variant.status_code == 200
+    assert 'name="robots" content="noindex,follow"' in query_variant.content.decode()
 
 
 def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catalog):

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import timedelta, timezone as dt_timezone
 
+from django.core.paginator import EmptyPage, Paginator
 from django.db import connection
 from django.db.models import Max, OuterRef, Subquery
 from django.http import HttpResponse
@@ -33,7 +34,9 @@ from hawatch.common.time import (
 )
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
 from hawatch.modules.catalog.runtime import (
+    DESTINATIONS_PAGE_SIZE,
     destination_catalog_timestamp_points,
+    ordered_publicly_visible_destinations,
     publicly_visible_destinations,
     publicly_visible_weather_points,
 )
@@ -168,16 +171,44 @@ def catalog_index(request):
 
 @api_view(["GET"])
 def destinations_index(request):
-    """Return only independent, indexable destination points for the hub."""
+    """Return one crawlable destination slice for the hub's infinite scroll."""
 
     refresh_if_bucket_changed()
-    destinations = publicly_visible_destinations().order_by(
-        "-is_popular",
-        "popular_order",
-        "page_name",
-        "slug",
+    raw_page = request.query_params.get("page", "1")
+    try:
+        page_number = int(raw_page)
+    except (TypeError, ValueError) as exc:
+        raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."}) from exc
+    if page_number < 1:
+        raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
+
+    paginator = Paginator(ordered_publicly_visible_destinations(), DESTINATIONS_PAGE_SIZE)
+    try:
+        page = paginator.page(page_number)
+    except EmptyPage as exc:
+        raise ValidationError({"page": "این بخش از مقصدها وجود ندارد."}) from exc
+
+    has_next = page.has_next()
+    return Response(
+        {
+            "destinations": [serialize_point_profile(point) for point in page.object_list],
+            "pagination": {
+                "page": page.number,
+                "page_size": DESTINATIONS_PAGE_SIZE,
+                "total": paginator.count,
+                "has_next": has_next,
+                "next_page": page.next_page_number() if has_next else None,
+                "next_href": f"/destinations/page/{page.next_page_number()}" if has_next else None,
+                "previous_href": (
+                    "/destinations"
+                    if page.number == 2
+                    else f"/destinations/page/{page.previous_page_number()}"
+                    if page.has_previous()
+                    else None
+                ),
+            },
+        }
     )
-    return Response({"destinations": [serialize_point_profile(point) for point in destinations]})
 
 
 @api_view(["GET"])

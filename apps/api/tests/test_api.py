@@ -10,7 +10,7 @@ from hawatch.common.time import day_window, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.sync import load_packaged_catalogs
-from hawatch.modules.catalog.runtime import publicly_visible_destinations
+from hawatch.modules.catalog.runtime import DESTINATIONS_PAGE_SIZE, publicly_visible_destinations
 from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
@@ -217,16 +217,34 @@ def test_sitemap_destinations_lastmod_ignores_forecast_and_tracks_catalog_change
 
 
 @pytest.mark.django_db
-def test_destination_index_contains_only_primary_indexable_points(api_client, seeded):
-    response = api_client.get("/api/v1/destinations/")
-
-    assert response.status_code == 200
-    payload = response.json()
-    slugs = {item["slug"] for item in payload["destinations"]}
+def test_destination_index_is_paginated_and_contains_only_primary_indexable_points(api_client, seeded):
     expected = set(publicly_visible_destinations().values_list("slug", flat=True))
-    assert slugs == expected
-    assert slugs
-    assert all(item["seo_indexable"] for item in payload["destinations"])
+    assert expected
+    pages: list[set[str]] = []
+    page_number = 1
+
+    while True:
+        response = api_client.get(f"/api/v1/destinations/?page={page_number}")
+        assert response.status_code == 200
+        payload = response.json()
+        pagination = payload["pagination"]
+        slugs = {item["slug"] for item in payload["destinations"]}
+        assert len(slugs) <= DESTINATIONS_PAGE_SIZE
+        assert all(item["seo_indexable"] for item in payload["destinations"])
+        assert slugs.isdisjoint(set().union(*pages) if pages else set())
+        pages.append(slugs)
+        if not pagination["has_next"]:
+            assert pagination["next_page"] is None
+            assert pagination["next_href"] is None
+            break
+        assert pagination["next_page"] == page_number + 1
+        assert pagination["next_href"] == f"/destinations/page/{page_number + 1}"
+        page_number += 1
+
+    assert set().union(*pages) == expected
+    assert sum(len(page) for page in pages) == len(expected)
+    assert api_client.get(f"/api/v1/destinations/?page={page_number + 1}").status_code == 400
+    assert api_client.get("/api/v1/destinations/?page=not-a-page").status_code == 400
 
 
 @pytest.mark.django_db

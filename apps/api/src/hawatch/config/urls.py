@@ -17,6 +17,8 @@ urlpatterns = [
     path("points/<slug:slug>/", seo_pages.seo_point),
     path("destinations", seo_pages.seo_destinations, name="seo-destinations"),
     path("destinations/", seo_pages.seo_destinations),
+    path("destinations/page/<int:page>", seo_pages.seo_destinations, name="seo-destinations-page"),
+    path("destinations/page/<int:page>/", seo_pages.seo_destinations),
     path("routes", redirect_removed_catalog_index, name="removed-routes-index"),
     path("routes/", redirect_removed_catalog_index),
     path("routes/<slug:slug>", seo_pages.seo_route, name="seo-route"),

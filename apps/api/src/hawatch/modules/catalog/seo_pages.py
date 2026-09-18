@@ -14,6 +14,7 @@ import re
 from decimal import Decimal
 
 from django.conf import settings
+from django.core.paginator import EmptyPage, Paginator
 from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -21,7 +22,11 @@ from django.views.decorators.http import require_GET
 
 from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, place_type_label
 from hawatch.modules.catalog.internal_links import related_public_destinations, related_public_routes, related_public_villages
-from hawatch.modules.catalog.runtime import publicly_visible_destinations, publicly_visible_weather_points
+from hawatch.modules.catalog.runtime import (
+    DESTINATIONS_PAGE_SIZE,
+    ordered_publicly_visible_destinations,
+    publicly_visible_weather_points,
+)
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -108,19 +113,26 @@ def _structured_website() -> str:
     return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
 
-def _structured_destination_list(points: list[WeatherPoint]) -> str:
+def _structured_destination_list(
+    points: list[WeatherPoint],
+    *,
+    canonical_path: str = "/destinations",
+    position_offset: int = 0,
+    total: int | None = None,
+) -> str:
     value = {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": DESTINATIONS_TITLE,
-        "url": _canonical("/destinations"),
+        "url": _canonical(canonical_path),
         "description": DESTINATIONS_DESCRIPTION,
         "mainEntity": {
             "@type": "ItemList",
+            "numberOfItems": total if total is not None else len(points),
             "itemListElement": [
                 {
                     "@type": "ListItem",
-                    "position": index,
+                    "position": position_offset + index,
                     "name": point.page_name or point.name,
                     "url": _canonical(f"/points/{point.slug}"),
                 }
@@ -132,7 +144,7 @@ def _structured_destination_list(points: list[WeatherPoint]) -> str:
 
 
 def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
-    label = "نقطه" if content_type == "point" else "مسیر"
+    label = {"point": "نقطه", "route": "مسیر", "destinations": "مقصدها"}.get(content_type, "صفحه")
     return _render(
         request,
         status=404,
@@ -239,24 +251,34 @@ def _route_page(route: Route) -> dict:
     }
 
 
-def _destinations_page() -> dict:
-    points = list(
-        publicly_visible_destinations().order_by(
-            "-is_popular",
-            "popular_order",
-            "page_name",
-            "slug",
-        )
-    )
+def _destinations_page(page_number: int = 1) -> dict:
+    paginator = Paginator(ordered_publicly_visible_destinations(), DESTINATIONS_PAGE_SIZE)
+    page = paginator.page(page_number)
+    points = list(page.object_list)
+    canonical_path = "/destinations" if page.number == 1 else f"/destinations/page/{page.number}"
+    title = DESTINATIONS_TITLE if page.number == 1 else f"{DESTINATIONS_TITLE} | بخش {page.number}"
     return {
         "kind": "destinations",
-        "title": DESTINATIONS_TITLE,
+        "title": title,
         "description": DESTINATIONS_DESCRIPTION,
-        "canonical": _canonical("/destinations"),
+        "canonical": _canonical(canonical_path),
         "indexable": True,
         "headline": "مقصدهای اصلی هواچ",
         "summary": "قله‌ها، دریاچه‌ها و عارضه‌های مستقلی را ببین که برایشان پیش‌بینی هوا و اطلاعات مسیر در هواچ ثبت شده است.",
-        "structured_data": _structured_destination_list(points),
+        "structured_data": _structured_destination_list(
+            points,
+            canonical_path=canonical_path,
+            position_offset=(page.number - 1) * DESTINATIONS_PAGE_SIZE,
+            total=paginator.count,
+        ),
+        "previous_destinations_href": (
+            "/destinations"
+            if page.number == 2
+            else f"/destinations/page/{page.previous_page_number()}"
+            if page.has_previous()
+            else None
+        ),
+        "next_destinations_href": f"/destinations/page/{page.next_page_number()}" if page.has_next() else None,
         "destinations": [
             {
                 "name": point.page_name or point.name,
@@ -301,8 +323,14 @@ def seo_point(request: HttpRequest, slug: str) -> HttpResponse:
 
 
 @require_GET
-def seo_destinations(request: HttpRequest) -> HttpResponse:
-    return _render(request, page=_destinations_page())
+def seo_destinations(request: HttpRequest, page: int = 1) -> HttpResponse:
+    if page < 1:
+        return _not_found(request, content_type="destinations")
+    try:
+        destination_page = _destinations_page(page)
+    except EmptyPage:
+        return _not_found(request, content_type="destinations")
+    return _render(request, page=destination_page)
 
 
 @require_GET

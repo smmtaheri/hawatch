@@ -7,6 +7,7 @@ import type {
   RouteSummary,
   SearchSuggestion,
   ForecastPlanSummary,
+  DestinationPage,
 } from "../types";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
@@ -87,8 +88,8 @@ export const api = {
       points: PointSummary[];
       routes: Array<{ title: string; origin: string; target_label: string; href: string; region: string }>;
     }>("catalog-index/"),
-  destinations: () =>
-    getJson<{ destinations: PointSummary[] }>("destinations/"),
+  destinations: (page = 1) =>
+    getJson<DestinationPage>("destinations/", { page: String(page) }),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },

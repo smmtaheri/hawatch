@@ -11,6 +11,11 @@ from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
 
+# Keep the destination hub's first paint and each crawlable SSR slice small.
+# The frontend uses the same page size for its automatic infinite scroll.
+DESTINATIONS_PAGE_SIZE = 16
+
+
 def ingestible_weather_points(*, slugs: list[str] | None = None) -> QuerySet[WeatherPoint]:
     qs = (
         WeatherPoint.objects.filter(is_active=True, ingest_enabled=True, data_mode="live")
@@ -51,6 +56,17 @@ def publicly_visible_destinations() -> QuerySet[WeatherPoint]:
         kind=WeatherPoint.Kind.PRIMARY,
         importance="primary",
         seo_indexable=True,
+    )
+
+
+def ordered_publicly_visible_destinations() -> QuerySet[WeatherPoint]:
+    """Return destinations in the stable order shared by API and SSR pages."""
+
+    return publicly_visible_destinations().order_by(
+        "-is_popular",
+        "popular_order",
+        "page_name",
+        "slug",
     )
 
 

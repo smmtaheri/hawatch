@@ -197,6 +197,8 @@ function renderAt(path: string) {
           <Route path="/" element={<HomePage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/destinations/" element={<DestinationsPage />} />
+          <Route path="/destinations/page/:page" element={<DestinationsPage />} />
+          <Route path="/destinations/page/:page/" element={<DestinationsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/points/:slug" element={<PointPage />} />
           <Route path="/routes/:slug" element={<RoutePage />} />
@@ -249,7 +251,25 @@ describe("Hawatch pages", () => {
           return jsonResponse(routeForecastForAccess(mockedAuthenticated));
         }
         if (url.includes("/destinations/")) {
-          return jsonResponse({ destinations: [pointForecast.point] });
+          const page = Number(new URL(url).searchParams.get("page") || "1");
+          const nextPoint = {
+            ...pointForecast.point,
+            slug: "damavand",
+            name: "قلهٔ دماوند",
+            href: "/points/damavand",
+          };
+          return jsonResponse({
+            destinations: [page === 1 ? pointForecast.point : nextPoint],
+            pagination: {
+              page,
+              page_size: 1,
+              total: 2,
+              has_next: page === 1,
+              next_page: page === 1 ? 2 : null,
+              next_href: page === 1 ? "/destinations/page/2" : null,
+              previous_href: page === 2 ? "/destinations" : null,
+            },
+          });
         }
         if (url.includes("/points/")) {
           return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
@@ -295,8 +315,45 @@ describe("Hawatch pages", () => {
 
     expect(await screen.findByRole("heading", { level: 1, name: "مقصدهای اصلی هواچ" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /قلهٔ توچال/ })).toHaveAttribute("href", "/points/tochal");
+    expect(screen.getByRole("link", { name: "نمایش مقصدهای بیشتر" })).toHaveAttribute("href", "/destinations/page/2");
     expect(screen.queryByText("دسترسی سریع هواچ")).not.toBeInTheDocument();
     expect(document.title).toBe("مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها");
+  });
+
+  it("loads the next destination slice automatically before the end of the grid", async () => {
+    class FakeIntersectionObserver {
+      callback: IntersectionObserverCallback;
+
+      constructor(callback: IntersectionObserverCallback) {
+        this.callback = callback;
+      }
+
+      observe() {
+        this.callback(
+          [{ isIntersecting: true } as IntersectionObserverEntry],
+          this as unknown as IntersectionObserver,
+        );
+      }
+
+      disconnect() {}
+      unobserve() {}
+      takeRecords() { return []; }
+      root = null;
+      rootMargin = "600px 0px";
+      thresholds = [0];
+    }
+    vi.stubGlobal("IntersectionObserver", FakeIntersectionObserver);
+
+    renderApplication("/destinations");
+
+    expect(await screen.findByRole("link", { name: /قلهٔ توچال/ })).toBeInTheDocument();
+    expect(await screen.findByRole("link", { name: /قلهٔ دماوند/ })).toHaveAttribute("href", "/points/damavand");
+    expect(screen.queryByRole("link", { name: "نمایش مقصدهای بیشتر" })).not.toBeInTheDocument();
+    const destinationRequests = vi.mocked(fetch).mock.calls
+      .map(([input]) => String(input))
+      .filter((input) => input.includes("/destinations/"));
+    expect(destinationRequests.some((input) => input.includes("page=1"))).toBe(true);
+    expect(destinationRequests.some((input) => input.includes("page=2"))).toBe(true);
   });
 
   it("opens a route-backed login overlay from the shared header", async () => {

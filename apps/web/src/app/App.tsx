@@ -47,6 +47,8 @@ export function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/destinations" element={<DestinationsPage />} />
         <Route path="/destinations/" element={<DestinationsPage />} />
+        <Route path="/destinations/page/:page" element={<DestinationsPage />} />
+        <Route path="/destinations/page/:page/" element={<DestinationsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account/plans" element={<SubscriptionPlansPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
