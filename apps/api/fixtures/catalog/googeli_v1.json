@@ -1,6 +1,25 @@
 {
-  "catalog_version": "hawatch-googeli-catalog-v1",
+  "catalog_version": "hawatch-googeli-catalog-v2",
   "weather_points": {
+    "googeli-miana-village": {
+      "name": "روستای میانا",
+      "page_name": "روستای میانا؛ مبدأ دسترسی به ارتفاعات گوگلی",
+      "short_label": "روستای میانا",
+      "place_type": "village",
+      "aliases": ["میانا", "روستا میانا", "Miana village"],
+      "identity_summary": "روستای میانا در دهستان بنافت ساری؛ سکونتگاه نزدیک مسیر جنگلبانی میانا و ارتفاعات گوگلی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": ["https://commons.wikimedia.org/wiki/Category%3AMiana%2C_Iran", "https://en.wikipedia.org/wiki/Miana%2C_Iran", "https://satellites.pro/Google_plan/Miana_map.Iran"],
+      "latitude": 36.07583,
+      "longitude": 53.26889,
+      "elevation_m": 1053,
+      "status": "provisional",
+      "elevation_source": "ارتفاع و مختصات روستای میانا از منابع جغرافیایی و OSM؛ DEM سرویس Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "forest_fog"
+    },
     "googeli": {
       "name": "ارتفاعات گوگلی",
       "page_name": "خط‌الرأس گوگلی اوپرت",

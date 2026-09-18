@@ -1,6 +1,25 @@
 {
-  "catalog_version": "hawatch-alimestan-catalog-v1",
+  "catalog_version": "hawatch-alimestan-catalog-v2",
   "weather_points": {
+    "alimestan-village": {
+      "name": "روستای الیمستان",
+      "page_name": "روستای الیمستان؛ مبدأ جنگل و قلهٔ امام‌زاده قاسم",
+      "short_label": "روستای الیمستان",
+      "place_type": "village",
+      "aliases": ["روستا الیمستان", "روستای الیمستان", "Alimestan village"],
+      "identity_summary": "روستای الیمستان در چلاو آمل؛ سکونتگاه و مبدأ شناخته‌شدهٔ گردشگری جنگل الیمستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": ["https://mapcarta.com/12361910", "https://en.wikipedia.org/wiki/Alimestan", "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039"],
+      "latitude": 36.16491,
+      "longitude": 52.3956,
+      "elevation_m": 1602,
+      "status": "provisional",
+      "elevation_source": "ارتفاع و مختصات روستای الیمستان از Mapcarta/GeoNames؛ DEM سرویس Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "forest_fog"
+    },
     "imamzadeh-qasem": {
       "name": "قلهٔ امام‌زاده قاسم (الیمستان)",
       "page_name": "قلهٔ امام‌زاده قاسم الیمستان",

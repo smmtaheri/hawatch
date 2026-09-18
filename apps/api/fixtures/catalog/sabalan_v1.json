@@ -1,6 +1,25 @@
 {
-  "catalog_version": "hawatch-sabalan-catalog-v1",
+  "catalog_version": "hawatch-sabalan-catalog-v2",
   "weather_points": {
+    "sabalan-alvares-village": {
+      "name": "روستای آلوارس",
+      "page_name": "روستای آلوارس؛ مبدأ دسترسی به مسیر جنوب‌شرقی سبلان",
+      "short_label": "روستای آلوارس",
+      "place_type": "village",
+      "aliases": ["آلوارس", "الو ارس", "روستا آلوارس", "Alvares village", "Alvars"],
+      "identity_summary": "روستای ییلاقی آلوارس در سرعین؛ سکونتگاه نزدیک پیست و مسیر جنوب‌شرقی سبلان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": ["https://mapcarta.com/fr/12633154", "https://en.wikipedia.org/wiki/Alvars%2C_Iran", "https://visitiran.ir/fa/attraction/%D9%BE%DB%8C%D8%B3%D8%AA-%D8%A7%D8%B3%DA%A9%DB%8C-%D9%88-%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D8%A2%D9%84%D9%88%D8%A7%D8%B1%D8%B3"],
+      "latitude": 38.15715,
+      "longitude": 47.94516,
+      "elevation_m": 2188,
+      "status": "provisional",
+      "elevation_source": "ارتفاع و مختصات روستای آلوارس از OpenStreetMap/GeoNames در Mapcarta؛ DEM سرویس Open-Meteo برای کنترل نهایی استفاده می‌شود.",
+      "climate": "alpine"
+    },
     "sabalan": {
       "name": "قلهٔ سبلان",
       "latitude": 38.2669186,
