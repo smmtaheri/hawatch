@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-laton-catalog-v1",
+  "catalog_version": "hawatch-laton-catalog-v2",
   "weather_points": {
     "laton-waterfall": {
       "name": "آبشار لاتون",
@@ -165,6 +165,130 @@
       "status": "provisional",
       "elevation_source": "Waypoint آبشار کوچک در دو ترک مستقل و نزدیک‌ترین track point؛ DEM نود Open-Meteo برابر ۷۲۳ متر است.",
       "climate": "forest_fog"
+    },
+    "suha-lake": {
+      "name": "دریاچهٔ سوها",
+      "page_name": "دریاچهٔ سوها در مسیر اسپیناس و لاتون",
+      "short_label": "دریاچهٔ سوها",
+      "place_type": "lake",
+      "aliases": [
+        "سوها",
+        "دریاچه سوها",
+        "Lake Soha",
+        "Lake Suha"
+      ],
+      "identity_summary": "دریاچهٔ سوها در مرز جنگل‌های فندقلو و مبدأ شناخته‌شدهٔ پیمایش سوها، اسپیناس و لاتون",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+      ],
+      "latitude": 38.277791,
+      "longitude": 48.685611,
+      "elevation_m": 1754,
+      "status": "provisional",
+      "elevation_source": "Waypoint دریاچهٔ سوها در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۱۷۵۴ متر است.",
+      "climate": "lake_valley"
+    },
+    "laton-suha-spring": {
+      "name": "چشمهٔ مسیر سوها",
+      "page_name": "چشمهٔ مسیر دریاچهٔ سوها تا اسپیناس",
+      "short_label": "چشمهٔ مسیر سوها",
+      "place_type": "spring",
+      "aliases": [
+        "چشمهٔ سوها",
+        "چشمه در مسیر اسپیناس"
+      ],
+      "identity_summary": "چشمهٔ نام‌گذاری‌شده در بخش ابتدایی ترک پیادهٔ دریاچهٔ سوها تا قلهٔ اسپیناس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+      ],
+      "latitude": 38.287769,
+      "longitude": 48.676550,
+      "elevation_m": 1733,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه در ترک سوها–اسپیناس–لاتون؛ DEM نود Open-Meteo برابر ۱۷۳۳ متر است.",
+      "climate": "forest_fog"
+    },
+    "spinas": {
+      "name": "قلهٔ اسپیناس",
+      "page_name": "قلهٔ اسپیناس در مسیر سوها تا لاتون",
+      "short_label": "قلهٔ اسپیناس",
+      "place_type": "summit",
+      "aliases": [
+        "اسپیناس",
+        "قله اسپیناس",
+        "Spinas Peak",
+        "Espinas Peak"
+      ],
+      "identity_summary": "قلهٔ اسپیناس، عارضهٔ شاخص پیمایش دریاچهٔ سوها تا آبشار لاتون در منطقهٔ آستارا",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+      ],
+      "latitude": 38.316762,
+      "longitude": 48.687148,
+      "elevation_m": 1791,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ اسپیناس در ترک مستقل؛ DEM نود Open-Meteo برای مختصات canonical برابر ۱۷۹۱ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-spinas-paradise-corridor": {
+      "name": "دالان بهشتی اسپیناس",
+      "page_name": "دالان بهشتی در مسیر اسپیناس تا لاتون",
+      "short_label": "دالان بهشتی",
+      "place_type": "landmark",
+      "aliases": [
+        "دالان بهشتی",
+        "Paradise Corridor"
+      ],
+      "identity_summary": "دالان بهشتی، عارضهٔ نام‌گذاری‌شده در بخش جنگلی مسیر اسپیناس تا آبشار لاتون",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+      ],
+      "latitude": 38.319598,
+      "longitude": 48.693292,
+      "elevation_m": 1586,
+      "status": "provisional",
+      "elevation_source": "Waypoint دالان بهشتی در ترک سوها–اسپیناس–لاتون؛ DEM نود Open-Meteo برابر ۱۵۸۶ متر است.",
+      "climate": "forest_fog"
+    },
+    "laton-spinas-waterfall-junction": {
+      "name": "دوراهی آبشار لاتون",
+      "page_name": "دوراهی آبشار لاتون در مسیر اسپیناس",
+      "short_label": "دوراهی آبشار لاتون",
+      "place_type": "landmark",
+      "aliases": [
+        "دوراهی به سمت آبشار لاتون",
+        "Laton waterfall junction"
+      ],
+      "identity_summary": "دوراهی نام‌گذاری‌شدهٔ شاخهٔ آبشار لاتون در بخش پایانی مسیر اسپیناس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+      ],
+      "latitude": 38.318254,
+      "longitude": 48.739370,
+      "elevation_m": 745,
+      "status": "provisional",
+      "elevation_source": "Waypoint دوراهی شاخهٔ آبشار در ترک سوها–اسپیناس–لاتون؛ DEM نود Open-Meteo برابر ۷۴۵ متر است.",
+      "climate": "forest_fog"
     }
   },
   "routes": {
@@ -220,6 +344,60 @@
           "ترک مستقل رفت‌وبرگشت از پارکینگ تا آبشار، قطعهٔ پیادهٔ حدود ۸٫۲ کیلومتر و زمان حرکتی حدود ۱۸۱ دقیقه را نشان می‌دهد؛ فاصلهٔ روستا تا پارکینگ جداگانه و کوتاه است.",
           "آسیو شوان، کافهٔ خشنود و آبشار کوچک لاتون فقط به‌دلیل waypoint نام‌گذاری‌شده و همگرایی ترک‌ها وارد زنجیره شده‌اند؛ نقطهٔ عمومی جدیدی برای برچسب مبهم ساخته نشده است.",
           "ترک سوها–اسپیناس–لاتون برای cross-check جغرافیا استفاده شده و به‌عنوان Route اصلی مستقل منتشر نشده است؛ بخش‌های آفرودی، جاده‌ای و برگشت از metrics حذف شده‌اند.",
+          "ارتفاع خام GPX مبنای elevation نیست؛ ارتفاع canonical همهٔ نقاط با DEM سرویس Open-Meteo کنترل شده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "suha-spinas-laton": {
+      "slug": "suha-spinas-laton",
+      "title": "دریاچهٔ سوها تا آبشار لاتون",
+      "subtitle": "پیمایش پیادهٔ دریاچهٔ سوها، قلهٔ اسپیناس و مسیر جنگلی تا آبشار لاتون",
+      "trail_label": "مسیر سوها–اسپیناس–لاتون",
+      "origin": "دریاچهٔ سوها",
+      "target_label": "آبشار لاتون",
+      "region": "سوها · اسپیناس · آستارا",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "suha-lake",
+        "laton-suha-spring",
+        "spinas",
+        "laton-spinas-paradise-corridor",
+        "laton-small-waterfall",
+        "laton-spinas-waterfall-junction",
+        "laton-waterfall"
+      ],
+      "distance_km": 17.1,
+      "ascent_m": 788,
+      "one_way_minutes": 465,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+timestamp-crosscheck-v1",
+        "version": "suha-spinas-laton-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+        ],
+        "evidence_tracks": [
+          "tracks/laton-waterfall/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh.gpx"
+        ],
+        "cumulative_minutes": {
+          "suha-lake": 0,
+          "laton-suha-spring": 40,
+          "spinas": 155,
+          "laton-spinas-paradise-corridor": 195,
+          "laton-small-waterfall": 385,
+          "laton-spinas-waterfall-junction": 395,
+          "laton-waterfall": 465
+        },
+        "notes": [
+          "فاصله و صعود از هندسهٔ ترک تا نخستین رسیدن به مختصات canonical آبشار لاتون محاسبه شده است؛ ادامهٔ ترک به سمت کوته‌کومه جزو این Route نیست.",
+          "قلهٔ اسپیناس و دالان بهشتی عارضه‌های نام‌گذاری‌شدهٔ ترک‌اند؛ چشمه و دوراهی نیز فقط با waypoint واقعی وارد زنجیره شده‌اند.",
+          "آبشار کوچک لاتون و آبشار لاتون از کاتالوگ موجود reuse شده‌اند و صفحهٔ تکراری ساخته نشده است.",
+          "timestamp ترک فقط برای cross-check ترتیب و مدت استفاده شده و زمان نهایی به‌صورت تقریبی با عدم‌قطعیت ۹۰ دقیقه ثبت شده است.",
           "ارتفاع خام GPX مبنای elevation نیست؛ ارتفاع canonical همهٔ نقاط با DEM سرویس Open-Meteo کنترل شده است."
         ]
       },
