@@ -1,0 +1,217 @@
+{
+  "catalog_version": "hawatch-chin-kalagh-catalog-v2",
+  "weather_points": {
+    "chin-kalagh-fatehan-trailhead": {
+      "name": "مبدأ شهرک بام تهران؛ فاتحان",
+      "page_name": "مبدأ شهرک بام تهران؛ مسیر چین‌کلاغ",
+      "short_label": "مبدأ بام تهران",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["پای‌کار فاتحان", "انتهای خیابان فاتحان", "مبدأ شهرک بام تهران", "Fatehan trailhead"],
+      "identity_summary": "مبدأ پیاده‌روی قلهٔ چین‌کلاغ در انتهای خیابان فاتحان، کنار شهرک بام تهران",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/summit-chin-kalagh-qlh-chyn-khlg-z-bm-sdt-abd-shhrkh-lwm-pzshkhy-dnshgh-thrn-180572314",
+        "https://hu.wikiloc.com/hegymaszas-nyomvonalak/trkh-qlh-chyn-khlg-108127645",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%86%DB%8C%D9%86-%DA%A9%D9%84%D8%A7%D8%BA-%D8%A7%D8%B2-%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA-%D8%A2%D8%A8%D8%A7%D8%AF/"
+      ],
+      "latitude": 35.800223,
+      "longitude": 51.359364,
+      "elevation_m": 1819,
+      "status": "provisional",
+      "elevation_source": "waypoint شروع پیمایش در ترک بام تهران؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    },
+    "chin-kalagh-bidestan-spring": {
+      "name": "چشمهٔ بیدستان چین‌کلاغ",
+      "page_name": "چشمهٔ بیدستان در مسیر چین‌کلاغ",
+      "short_label": "چشمهٔ بیدستان",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه بیدستان", "لولهٔ آب بیدستان", "Bidestan spring"],
+      "identity_summary": "چشمهٔ بیدستان در انتهای درهٔ بهرود و میانهٔ مسیر صعود از بام تهران به چین‌کلاغ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/summit-chin-kalagh-qlh-chyn-khlg-z-bm-sdt-abd-shhrkh-lwm-pzshkhy-dnshgh-thrn-180572314",
+        "https://hu.wikiloc.com/hegymaszas-nyomvonalak/trkh-qlh-chyn-khlg-108127645"
+      ],
+      "latitude": 35.818540,
+      "longitude": 51.354313,
+      "elevation_m": 2255,
+      "status": "provisional",
+      "elevation_source": "waypoint چشمه در ترک‌های مستقل بام تهران؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    },
+    "chin-kalagh-darakeh-trailhead": {
+      "name": "مبدأ درکه؛ مسیر چین‌کلاغ",
+      "page_name": "مبدأ درکه در مسیر چین‌کلاغ",
+      "short_label": "مبدأ درکه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["درکه شروع مسیر چین کلاغ", "Darakeh trailhead"],
+      "identity_summary": "مبدأ مسیر پیادهٔ درکه به قلهٔ چین‌کلاغ، پیش از دوراهی جنگل کارا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-chyn-khlg-z-drkhh-w-jngl-khr-47521291"],
+      "latitude": 35.806172,
+      "longitude": 51.384758,
+      "elevation_m": 1699,
+      "status": "provisional",
+      "elevation_source": "waypoint درکه در ترک مستقل؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "chin-kalagh-kara-forest": {
+      "name": "جنگل کارا؛ مسیر چین‌کلاغ",
+      "page_name": "جنگل کارا در مسیر درکه تا چین‌کلاغ",
+      "short_label": "جنگل کارا",
+      "place_type": "forest",
+      "category_key": "forest",
+      "aliases": ["جنگل کارا", "Kara forest"],
+      "identity_summary": "جنگل کارا و ابتدای یال مسیر درکه به قلهٔ چین‌کلاغ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-chyn-khlg-z-drkhh-w-jngl-khr-47521291"],
+      "latitude": 35.827899,
+      "longitude": 51.375486,
+      "elevation_m": 1978,
+      "status": "provisional",
+      "elevation_source": "نزدیک‌ترین track point به waypoint جنگل کارا در ترک مستقل؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "chin-kalagh": {
+      "name": "قلهٔ چین‌کلاغ",
+      "page_name": "قلهٔ چین‌کلاغ",
+      "short_label": "چین‌کلاغ",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["چین کلاغ", "قله چین کلاغ", "چین‌کلاغ", "Chin Kalagh"],
+      "identity_summary": "قلهٔ چین‌کلاغ در البرز مرکزی، میان دره‌های درکه و فرحزاد در شمال تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peak-information.aspx?lat=35.8300883&lon=51.3551034&peak-name=%D9%82%D9%84%D9%87+%DA%86%DB%8C%D9%86+%DA%A9%D9%84%D8%A7%D8%BA&pkidentifier=2145",
+        "https://mapcarta.com/N5731690831",
+        "https://www.wikiloc.com/hiking-trails/qlh-chyn-khlg-202637679",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-chyn-khlg-z-drkhh-w-jngl-khr-47521291"
+      ],
+      "latitude": 35.8300883,
+      "longitude": 51.3551034,
+      "elevation_m": 2801,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از قله و OpenStreetMap/Mapcarta؛ ارتفاع Mapcarta برابر ۲۸۰۱ متر است و با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "fatehan_to_chin_kalagh": {
+      "slug": "chin-kalagh-fatehan",
+      "title": "مبدأ شهرک بام تهران تا قلهٔ چین‌کلاغ",
+      "subtitle": "مسیر کوتاه بام تهران از چشمهٔ بیدستان و یال چین‌کلاغ تا قله",
+      "trail_label": "مسیر بام تهران–چین‌کلاغ",
+      "origin": "مبدأ شهرک بام تهران",
+      "target_label": "قلهٔ چین‌کلاغ",
+      "region": "البرز مرکزی · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["chin-kalagh-fatehan-trailhead", "chin-kalagh-bidestan-spring", "chin-kalagh"],
+      "distance_km": 3.8,
+      "ascent_m": 945,
+      "one_way_minutes": 220,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "chin-kalagh-fatehan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://gl.wikiloc.com/rutas-sendeirismo/summit-chin-kalagh-qlh-chyn-khlg-z-bm-sdt-abd-shhrkh-lwm-pzshkhy-dnshgh-thrn-180572314",
+          "https://hu.wikiloc.com/hegymaszas-nyomvonalak/trkh-qlh-chyn-khlg-108127645",
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%86%DB%8C%D9%86-%DA%A9%D9%84%D8%A7%D8%BA-%D8%A7%D8%B2-%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA-%D8%A2%D8%A8%D8%A7%D8%AF/"
+        ],
+        "evidence_tracks": [
+          "tracks/chin-kalagh/chin-kalagh-fatehan-primary-180572314.gpx",
+          "tracks/chin-kalagh/chin-kalagh-bameh-crosscheck-108127645.gpx"
+        ],
+        "cumulative_minutes": {
+          "chin-kalagh-fatehan-trailhead": 0,
+          "chin-kalagh-bidestan-spring": 100,
+          "chin-kalagh": 220
+        },
+        "notes": [
+          "مبدأ در انتهای خیابان فاتحان کنار شهرک بام تهران است و روستا نیست؛ به‌عنوان پای‌کار فنی noindex ثبت شده است.",
+          "چشمهٔ بیدستان عارضهٔ میانی نام‌دار در گزارش مسیر و هر دو ترک بام تهران است.",
+          "مسافت و صعود از هندسهٔ GPX و زمان صعود ۳ ساعت و ۴۰ دقیقه در گزارش مستقل برآورد شده‌اند؛ توقف‌ها در ETA مبنا نیستند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "darakeh_to_chin_kalagh": {
+      "slug": "chin-kalagh-darakeh",
+      "title": "درکه تا قلهٔ چین‌کلاغ از جنگل کارا",
+      "subtitle": "مسیر درکه، دوراهی کارا و جنگل کارا تا یال و قلهٔ چین‌کلاغ",
+      "trail_label": "مسیر درکه–جنگل کارا–چین‌کلاغ",
+      "origin": "مبدأ درکه",
+      "target_label": "قلهٔ چین‌کلاغ",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": ["chin-kalagh-darakeh-trailhead", "chin-kalagh-kara-forest", "chin-kalagh"],
+      "distance_km": 6.2,
+      "ascent_m": 1085,
+      "one_way_minutes": 210,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "chin-kalagh-darakeh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-chyn-khlg-z-drkhh-w-jngl-khr-47521291"],
+        "evidence_tracks": ["tracks/chin-kalagh/chin-kalagh-darakeh-primary-47521291.gpx"],
+        "cumulative_minutes": {
+          "chin-kalagh-darakeh-trailhead": 0,
+          "chin-kalagh-kara-forest": 135,
+          "chin-kalagh": 210
+        },
+        "notes": [
+          "ترک Wikiloc مسیر یک‌طرفهٔ درکه تا قله را با عبور از جنگل کارا ثبت می‌کند و نقطهٔ مبدأ/عارضهٔ میانی نام‌دار دارد.",
+          "گزارش مستقل زمان صعود را ۳ تا ۴ ساعت بدون توقف اعلام می‌کند؛ زمان محصول محافظه‌کارانه و تقریبی است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "chin-kalagh",
+    "tile_name": "چین‌کلاغ",
+    "name": "قلهٔ چین‌کلاغ",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 2801,
+    "latitude": 35.8300883,
+    "longitude": 51.3551034,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ چین‌کلاغ",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["چین کلاغ", "قله چین کلاغ", "چین‌کلاغ", "Chin Kalagh"]
+  },
+  "primary_point": "chin-kalagh"
+}
