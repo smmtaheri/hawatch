@@ -12,6 +12,7 @@ import { LoadingState } from "../../components/LoadingState";
 import { NotFoundPage } from "../../pages/NotFoundPage";
 import { MobileRouteSelector } from "../../components/MobileRouteSelector";
 import { SpecialistMetrics } from "../../components/SpecialistMetrics";
+import { SimilarDestinations } from "../../components/SimilarDestinations";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
@@ -60,6 +61,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   }
 
   const routes = data?.related_routes ?? [];
+  const similarDestinations = data?.related_destinations ?? [];
   const periodStates =
     data?.meta.current_local_time && selected
       ? classifyAllPeriods(selected, data.meta.current_local_time)
@@ -142,7 +144,15 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                     )}
                   </div>
                 </section>
-                <MobileRouteSelector routes={routes} title={data.related_routes_title} />
+                {routes.length ? (
+                  <MobileRouteSelector routes={routes} title={data.related_routes_title} />
+                ) : (
+                  <SimilarDestinations
+                    destinations={similarDestinations}
+                    title={data.related_destinations_title}
+                    variant="mobile"
+                  />
+                )}
                 <section className="technical-card card-surface">
                   <div className="section-title-row">
                     <h2>جزئیات تخصصی {dayLabel}</h2>
@@ -161,22 +171,11 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                 {routes.length ? (
                   <DesktopRouteSelector routes={routes} title={data.related_routes_title} />
                 ) : (
-                  <section className="top-routes-card compact-route-box no-routes card-surface" id="routes" aria-label={data.related_routes_title}>
-                    <div className="compact-route-heading">
-                      <div>
-                        <span className="eyebrow teal-text">تصمیم بعدی</span>
-                        <h2>{data.related_routes_title}</h2>
-                      </div>
-                    </div>
-                    <div className="route-cards">
-                      <div className="route-empty-state">
-                        <strong>هنوز مسیری برای این نقطه ثبت نشده</strong>
-                        <span>
-                          این صفحه فقط پیش‌بینی را نشان می‌دهد؛ به‌محض ثبت ترک پیاده‌روی، اینجا اضافه می‌شود.
-                        </span>
-                      </div>
-                    </div>
-                  </section>
+                  <SimilarDestinations
+                    destinations={similarDestinations}
+                    title={data.related_destinations_title}
+                    variant="desktop"
+                  />
                 )}
               </aside>
             </div>

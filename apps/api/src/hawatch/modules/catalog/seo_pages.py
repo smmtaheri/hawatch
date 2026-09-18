@@ -21,7 +21,13 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, place_type_label
-from hawatch.modules.catalog.internal_links import related_public_destinations, related_public_routes, related_public_villages
+from hawatch.modules.catalog.internal_links import (
+    related_public_destinations,
+    related_public_routes,
+    related_public_similar_destinations,
+    related_public_villages,
+    similar_destinations_title,
+)
 from hawatch.modules.catalog.runtime import (
     DESTINATIONS_PAGE_SIZE,
     ordered_publicly_visible_destinations,
@@ -162,8 +168,10 @@ def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
 def _point_page(point: WeatherPoint) -> dict:
     seo = point_seo_copy(point)
     route_rows = related_public_routes(point)
-    destination_rows = related_public_destinations(point) if point.place_type in ACCESS_PLACE_TYPES and not route_rows.exists() else ()
+    has_routes = route_rows.exists()
+    destination_rows = related_public_destinations(point) if point.place_type in ACCESS_PLACE_TYPES and not has_routes else ()
     village_rows = related_public_villages(point) if point.place_type not in ACCESS_PLACE_TYPES else ()
+    similar_rows = related_public_similar_destinations(point) if not has_routes else ()
     return {
         "kind": "point",
         "title": seo["title"],
@@ -202,6 +210,14 @@ def _point_page(point: WeatherPoint) -> dict:
             }
             for village in village_rows
         ],
+        "similar_destinations": [
+            {
+                "name": destination.page_name or destination.name,
+                "href": f"/points/{destination.slug}",
+            }
+            for destination in similar_rows
+        ],
+        "similar_destinations_title": similar_destinations_title(point),
     }
 
 

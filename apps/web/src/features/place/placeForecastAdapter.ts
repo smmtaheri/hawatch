@@ -15,6 +15,8 @@ export interface PlaceForecastViewModel {
   decision: PlaceForecastResponse["decision"];
   related_routes: PlaceForecastResponse["related_routes"];
   related_routes_title: string;
+  related_destinations: NonNullable<PlaceForecastResponse["related_destinations"]>;
+  related_destinations_title: string;
   empty: boolean;
   partial: boolean;
   meta: PlaceForecastResponse["forecast"]["meta"];
@@ -31,6 +33,8 @@ export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecas
   const title =
     payload.related_routes_title ??
     "مسیرهای متصل به این نقطه";
+  const relatedDestinations = payload.related_destinations ?? [];
+  const relatedDestinationsTitle = payload.related_destinations_title ?? "مقصدهای مشابه";
 
   return {
     kind,
@@ -47,6 +51,8 @@ export function adaptPlaceForecast(payload: PlaceForecastResponse): PlaceForecas
     decision: payload.decision,
     related_routes: relatedRoutes,
     related_routes_title: title,
+    related_destinations: relatedDestinations,
+    related_destinations_title: relatedDestinationsTitle,
     empty: payload.empty,
     partial: Boolean(payload.partial),
     meta: forecast.meta,

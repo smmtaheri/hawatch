@@ -112,6 +112,16 @@
                   </ul>
                 </section>
               {% endif %}
+              {% if page.similar_destinations %}
+                <section aria-labelledby="seo-similar-destinations">
+                  <h2 id="seo-similar-destinations">{{ page.similar_destinations_title }}</h2>
+                  <ul>
+                    {% for destination in page.similar_destinations %}
+                      <li><a href="{{ destination.href }}">{{ destination.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endif %}
             {% elif page.kind == "route" %}
               <dl>
                 <div><dt>مبدأ</dt><dd>{% if page.origin_href %}<a href="{{ page.origin_href }}">{{ page.origin }}</a>{% else %}{{ page.origin }}{% endif %}</dd></div>

@@ -31,7 +31,11 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
-from hawatch.modules.catalog.identity import category_key_for_point
+from hawatch.modules.catalog.identity import category_key_for_point, place_type_label
+from hawatch.modules.catalog.internal_links import (
+    related_public_similar_destinations,
+    similar_destinations_title,
+)
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
@@ -180,6 +184,23 @@ def serialize_route_summary(route: Route) -> dict:
     }
 
 
+def serialize_similar_destination(point: WeatherPoint) -> dict:
+    """Serialize a canonical, indexable point for discovery cards."""
+
+    return {
+        "slug": point.slug,
+        "name": point.page_name or point.name,
+        "short_label": point.short_label or point.name,
+        "place_type": point.place_type or "landmark",
+        "place_type_label": place_type_label(point.place_type),
+        "category_key": category_key_for_point(point.category_key, point.place_type),
+        "region": point.region or "",
+        "elevation_m": point.elevation_m,
+        "elevation_label": f"{to_fa_digits(point.elevation_m)} متر" if point.elevation_m is not None else "ارتفاع نامشخص",
+        "href": weather_point_canonical_href(point),
+    }
+
+
 def serialize_route(route: Route) -> dict:
     points = list(route.points.select_related("weather_point").all())
     siblings = [
@@ -291,6 +312,8 @@ def build_place_forecast(
     period: str,
     kind: str,
     related_routes: list[dict],
+    related_destinations: list[dict] | None = None,
+    related_destinations_title: str | None = None,
     subject_overrides: dict | None = None,
     climate: str | None = None,
     elevation_for_metrics: int | None = None,
@@ -520,6 +543,8 @@ def build_place_forecast(
         "decision": decision,
         "related_routes": related_routes,
         "related_routes_title": routes_title,
+        "related_destinations": related_destinations or [],
+        "related_destinations_title": related_destinations_title or "مقصدهای مشابه",
         "alerts": (
             [{"severity": "change", "title": hero_alert, "description": hero_alert}]
             if hero_alert
@@ -1156,12 +1181,21 @@ def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
 
 def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: str) -> dict:
     routes = related_routes_for_weather_point(weather_point)
+    similar_destinations = []
+    similar_title = similar_destinations_title(weather_point)
+    if not routes:
+        similar_destinations = [
+            serialize_similar_destination(point)
+            for point in related_public_similar_destinations(weather_point)
+        ]
     place = build_place_forecast(
         weather_point,
         selected_date=selected_date,
         period=period,
         kind="point",
         related_routes=routes,
+        related_destinations=similar_destinations,
+        related_destinations_title=similar_title,
     )
     return {
         **place,
@@ -1170,6 +1204,8 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
             "canonical_href": place["subject"]["canonical_href"],
         },
         "related_routes": routes,
+        "related_destinations": similar_destinations,
+        "related_destinations_title": similar_title,
         "updated_label": "",
     }
 

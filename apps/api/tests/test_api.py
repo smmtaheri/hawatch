@@ -494,6 +494,20 @@ def test_primary_destination_exposes_routes_when_endpoint_is_named_shore(api_cli
 
 
 @pytest.mark.django_db
+def test_point_only_forecast_exposes_curated_similar_destinations(api_client, seeded):
+    body = api_client.get("/api/v1/points/dizin-ski-resort/forecast/").json()
+
+    assert body["related_routes"] == []
+    assert body["related_destinations_title"] == "پیست‌های اسکی مشابه"
+    assert [item["slug"] for item in body["related_destinations"]] == [
+        "darbandsar-ski-resort",
+        "tochal-ski-resort",
+        "abali-ski-resort",
+        "sabalan-alvares-ski-resort",
+    ]
+
+
+@pytest.mark.django_db
 def test_point_list_search_uses_same_normalization(api_client, seeded):
     response = api_client.get("/api/v1/points/", {"query": "گهر"})
     assert response.status_code == 200

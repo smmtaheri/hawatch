@@ -82,6 +82,19 @@ export interface RouteSummary {
   timing_status?: "curated" | "estimated" | "pending" | string;
 }
 
+export interface SimilarDestinationSummary {
+  slug: string;
+  name: string;
+  short_label: string;
+  place_type: string;
+  place_type_label: string;
+  category_key: string;
+  region: string;
+  elevation_m: number | null;
+  elevation_label: string;
+  href: string;
+}
+
 export interface DayInfo {
   date: string;
   label: string;
@@ -224,6 +237,8 @@ export interface PlaceForecastResponse {
   decision: { chip: string; title: string; text: string };
   related_routes: RouteSummary[];
   related_routes_title?: string;
+  related_destinations?: SimilarDestinationSummary[];
+  related_destinations_title?: string;
   empty: boolean;
   partial?: boolean;
   forecast_access?: ForecastAccess;

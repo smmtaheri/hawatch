@@ -460,6 +460,45 @@ describe("Hawatch pages", () => {
     expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
   });
 
+  it("replaces the empty route state with similar destination links", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo) => {
+        const url = String(input);
+        if (url.includes("/points/tochal/forecast")) {
+          return jsonResponse({
+            ...pointForecast,
+            related_routes: [],
+            related_destinations_title: "پیست‌های اسکی مشابه",
+            related_destinations: [
+              {
+                slug: "darbandsar-ski-resort",
+                name: "پیست اسکی دربندسر",
+                short_label: "دربندسر",
+                place_type: "landmark",
+                place_type_label: "عارضهٔ شاخص",
+                category_key: "ski",
+                region: "البرز",
+                elevation_m: 2500,
+                elevation_label: "۲۵۰۰ متر",
+                href: "/points/darbandsar-ski-resort",
+              },
+            ],
+          });
+        }
+        return jsonResponse({}, false, 500);
+      }),
+    );
+    renderAt("/points/tochal");
+
+    expect((await screen.findAllByRole("heading", { name: "پیست‌های اسکی مشابه" }))).toHaveLength(2);
+    expect(screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })).toHaveLength(2);
+    for (const link of screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })) {
+      expect(link).toHaveAttribute("href", "/points/darbandsar-ski-resort");
+    }
+    expect(screen.queryByText("هنوز مسیری برای این نقطه ثبت نشده")).not.toBeInTheDocument();
+  });
+
   it("opens point and route detail views at their identity hero", async () => {
     const scrollIntoView = vi.fn();
     Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {

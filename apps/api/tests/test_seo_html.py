@@ -227,6 +227,14 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
     assert "گدار دوراهی مسیرهای اردیکان و باب‌زنگی در مسیر قلهٔ هزار" not in hazar_body
 
 
+def test_point_only_html_exposes_crawlable_similar_destinations(api_client, seo_catalog):
+    body = api_client.get("/points/dizin-ski-resort").content.decode()
+
+    assert 'id="seo-similar-destinations"' in body
+    assert 'href="/points/darbandsar-ski-resort"' in body
+    assert 'href="/points/tochal-ski-resort"' in body
+
+
 def test_route_html_is_database_driven(api_client, seo_catalog):
     route = Route.objects.create(
         slug="seo-test-route",
