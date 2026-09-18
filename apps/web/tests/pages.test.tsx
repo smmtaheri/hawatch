@@ -469,7 +469,7 @@ describe("Hawatch pages", () => {
           return jsonResponse({
             ...pointForecast,
             related_routes: [],
-            related_destinations_title: "پیست‌های اسکی مشابه",
+            related_destinations_title: "مقصدهای مشابه",
             related_destinations: [
               {
                 slug: "darbandsar-ski-resort",
@@ -492,7 +492,7 @@ describe("Hawatch pages", () => {
     );
     renderAt("/points/tochal");
 
-    expect((await screen.findAllByRole("heading", { name: "پیست‌های اسکی مشابه" }))).toHaveLength(2);
+    expect((await screen.findAllByRole("heading", { name: "مقصدهای مشابه" }))).toHaveLength(2);
     expect(screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })).toHaveLength(2);
     for (const link of screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })) {
       expect(link).toHaveAttribute("href", "/points/darbandsar-ski-resort");

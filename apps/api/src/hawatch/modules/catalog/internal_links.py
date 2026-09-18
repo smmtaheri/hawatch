@@ -54,7 +54,7 @@ def similar_destinations_title(point: WeatherPoint) -> str:
     category = str(point.category_key or "").strip().casefold()
     place_type = str(point.place_type or "").strip().casefold()
     if category == "ski":
-        return "پیست‌های اسکی مشابه"
+        return "مقصدهای مشابه"
     if place_type == "neighborhood":
         return "محله‌های مشابه"
     if place_type == "city":

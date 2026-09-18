@@ -498,7 +498,7 @@ def test_point_only_forecast_exposes_curated_similar_destinations(api_client, se
     body = api_client.get("/api/v1/points/dizin-ski-resort/forecast/").json()
 
     assert body["related_routes"] == []
-    assert body["related_destinations_title"] == "پیست‌های اسکی مشابه"
+    assert body["related_destinations_title"] == "مقصدهای مشابه"
     assert [item["slug"] for item in body["related_destinations"]] == [
         "darbandsar-ski-resort",
         "tochal-ski-resort",
