@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sabalan-catalog-v5",
+  "catalog_version": "hawatch-sabalan-catalog-v6",
   "weather_points": {
     "sabalan-alvares-village": {
       "name": "روستای آلوارس",
@@ -200,7 +200,8 @@
       "place_type": "trailhead",
       "aliases": ["پای کار شابیل", "مبدأ شابیل", "آبگرم شابیل", "Shabil trailhead"],
       "identity_summary": "شابیل؛ پای کار و مبدأ مسیر شمال‌شرقی سبلان",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
