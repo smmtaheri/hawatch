@@ -1,0 +1,362 @@
+{
+  "catalog_version": "hawatch-north-tehran-catalog-v1",
+  "primary_point": "tochal-golabdarreh-park",
+  "point": {
+    "slug": "tochal-golabdarreh-park",
+    "tile_name": "گلابدره",
+    "name": "پارک گلابدره",
+    "short_category": "پارک",
+    "category": "پارک و مسیرهای شمال تهران",
+    "category_key": "landmark",
+    "region": "تهران · شمیرانات",
+    "elevation_m": 1810,
+    "latitude": 35.825432,
+    "longitude": 51.434524,
+    "image": "/images/home-scene.png",
+    "image_alt": "پارک گلابدره در شمال تهران",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "weather_points": {
+    "tochal-golabdarreh-park": {
+      "name": "پارک گلابدره",
+      "page_name": "پارک گلابدره؛ مبدأ مسیر اسپیلت و کلک‌چال",
+      "short_label": "گلابدره",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": ["پارک گلابدره", "گلابدره تهران", "Golabdarreh Park"],
+      "identity_summary": "پارک گلابدره در شمال تهران و مبدأ شناخته‌شدهٔ پیمایش به اسپیلت و کلک‌چال",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W614198771",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-glbdrh-t-qlh-spylt-jmh-1402-06-17-146457094",
+        "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
+      ],
+      "latitude": 35.825432,
+      "longitude": 51.434524,
+      "elevation_m": 1810,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک‌های گلابدره؛ ارتفاع با DEM سرویس Open-Meteo در preflight نهایی می‌شود.",
+      "climate": "forest_fog",
+      "region": "تهران · شمیرانات"
+    },
+    "tochal-espilat-peak": {
+      "name": "قلهٔ اسپیلت",
+      "page_name": "قلهٔ اسپیلت تهران",
+      "short_label": "اسپیلت",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله اسپیلت", "اسپیلت", "Espilat Peak"],
+      "identity_summary": "قلهٔ اسپیلت در ارتفاعات شمال تهران، مقصد مسیر گلابدره و گردنهٔ اسپیلات‌سرلو",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-glbdrh-t-qlh-spylt-jmh-1402-06-17-146457094",
+        "https://mapcarta.com/N4622261173"
+      ],
+      "latitude": 35.851677,
+      "longitude": 51.440108,
+      "elevation_m": 3032,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ اسپیلت در ترک گلابدره؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "البرز مرکزی · تهران"
+    },
+    "tochal-bandyakhchal": {
+      "name": "بند یخچال",
+      "page_name": "بند یخچال در مسیر پناهگاه شروین",
+      "short_label": "بند یخچال",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": ["بند یخچال دربند", "Band Yakhchal"],
+      "identity_summary": "بند یخچال، عارضهٔ واقعی و میانی مسیر سربند تا پناهگاه شروین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-mydn-srbndmjsmh-t-bnd-ykhchl-jnpnh-shrwyn-pnhgh-shyrpl-drh-wswn-jmh-1403-02-14-169432932"
+      ],
+      "latitude": 35.846207,
+      "longitude": 51.427213,
+      "elevation_m": 2219,
+      "status": "provisional",
+      "elevation_source": "Waypoint بند یخچال در ترک سربند–شروین؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "forest_fog",
+      "region": "البرز مرکزی · تهران"
+    },
+    "tochal-shervin-shelter": {
+      "name": "پناهگاه شروین",
+      "page_name": "پناهگاه شروین در بند یخچال",
+      "short_label": "پناهگاه شروین",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["جان‌پناه شروین", "پناهگاه شروین دربند", "Shervin Shelter"],
+      "identity_summary": "پناهگاه شروین، مقصد شناخته‌شدهٔ مسیر بند یخچال در ارتفاعات دربند تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-mydn-srbndmjsmh-t-bnd-ykhchl-jnpnh-shrwyn-pnhgh-shyrpl-drh-wswn-jmh-1403-02-14-169432932",
+        "https://www.wikiloc.com/hiking-trails/jnpnh-shrwyn-22129706"
+      ],
+      "latitude": 35.852491,
+      "longitude": 51.431907,
+      "elevation_m": 2693,
+      "status": "provisional",
+      "elevation_source": "Waypoint جان‌پناه شروین در دو ترک مستقل؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "البرز مرکزی · تهران"
+    },
+    "tochal-kamachal": {
+      "name": "قلهٔ کماچال",
+      "page_name": "قلهٔ کماچال از ولنجک",
+      "short_label": "کماچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله کماچال", "کماچال تهران", "Kamachal Peak"],
+      "identity_summary": "قلهٔ کماچال در شمال تهران و مقصد پیمایش از ولنجک و دامنهٔ توچال",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlhy-khmchl-z-wlnjkh-62762580",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-hdwd-3000-mtry-khmchl-z-wlnjkh-103879559"
+      ],
+      "latitude": 35.844645,
+      "longitude": 51.398086,
+      "elevation_m": 2900,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ کماچال در ترک ولنجک؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "البرز مرکزی · تهران"
+    },
+    "tochal-imamzadeh-davoud-village": {
+      "name": "روستای امام‌زاده داوود",
+      "page_name": "روستای امام‌زاده داوود؛ مبدأ مسیر شاه‌نشین",
+      "short_label": "امام‌زاده داوود",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": ["امامزاده داوود", "روستای امام زاده داوود", "Imamzadeh Davoud"],
+      "identity_summary": "روستای امام‌زاده داوود در غرب تهران و مبدأ مستند صعود به خط‌الرأس شاه‌نشین",
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shhnshyn-shh-nshyn-z-mmzdh-dwwd-146105866"
+      ],
+      "latitude": 35.877206,
+      "longitude": 51.337409,
+      "elevation_m": 2578,
+      "status": "provisional",
+      "elevation_source": "Waypoint ابتدای روستای امام‌زاده داوود در ترک صعود؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "تهران · کن"
+    },
+    "tochal-ashtargardan-pass": {
+      "name": "گردنهٔ اشترگردن",
+      "page_name": "گردنهٔ اشترگردن در مسیر شاه‌نشین",
+      "short_label": "اشترگردن",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["اشتر گردن", "شترگردنه", "Ashtargardan Pass"],
+      "identity_summary": "گردنهٔ اشترگردن، عارضهٔ میانی نام‌دار مسیر امام‌زاده داوود تا قلهٔ شاه‌نشین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shhnshyn-shh-nshyn-z-mmzdh-dwwd-146105866"
+      ],
+      "latitude": 35.884341,
+      "longitude": 51.367172,
+      "elevation_m": 3433,
+      "status": "provisional",
+      "elevation_source": "Waypoint اشترگردن در ترک امام‌زاده داوود–شاه‌نشین؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "البرز مرکزی · تهران"
+    },
+    "tochal-shahneshin": {
+      "name": "قلهٔ شاه‌نشین",
+      "page_name": "قلهٔ شاه‌نشین توچال",
+      "short_label": "شاه‌نشین",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["شاه نشین", "قله شاهنشین", "Shahneshin Peak"],
+      "identity_summary": "قلهٔ شاه‌نشین در خط‌الرأس توچال، قابل پیمایش از امام‌زاده داوود و ایستگاه ۷",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shhnshyn-shh-nshyn-z-mmzdh-dwwd-146105866",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-ystgh-7-twchl-t-qlh-shhnshyn-pnjshnbh-1405-05-22-279663254",
+        "https://www.gholleh.com/peak-information.aspx?lat=35.8891517&lon=51.378645&peak-name=shahneshin"
+      ],
+      "latitude": 35.888623,
+      "longitude": 51.3801,
+      "elevation_m": 3848,
+      "status": "provisional",
+      "elevation_source": "همگرایی waypoint قله در دو ترک مستقل؛ ارتفاع مرجع قله از منبع کوهنوردی و DEM در preflight کنترل می‌شود.",
+      "climate": "high_alpine",
+      "region": "البرز مرکزی · تهران"
+    }
+  },
+  "shared_weather_points": [
+    "tochal-sarband-square",
+    "tochal-velenjak-parking",
+    "tochal-telecabin-station-1",
+    "tochal-telecabin-station-2",
+    "tochal-telecabin-station-7",
+    "tochal-shahneshin-pass",
+    "tochal-kolakchal-camp",
+    "tochal-espilat-sarlo-pass"
+  ],
+  "routes": {
+    "golabdarreh_to_espilat": {
+      "slug": "tochal-golabdarreh-espilat",
+      "title": "گلابدره تا قلهٔ اسپیلت",
+      "subtitle": "از پارک گلابدره، اردوگاه کلک‌چال و گردنهٔ اسپیلات‌سرلو تا قله",
+      "trail_label": "مسیر گلابدره–اسپیلت",
+      "origin": "پارک گلابدره",
+      "target_label": "قلهٔ اسپیلت",
+      "region": "تهران · البرز مرکزی",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "tochal-golabdarreh-park",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "tochal-espilat-peak"
+      ],
+      "distance_km": 10.63,
+      "ascent_m": 1316,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-glbdrh-t-qlh-spylt-jmh-1402-06-17-146457094"
+      ],
+      "evidence_tracks": ["tracks/espilat/espilat-golabdarreh-primary.gpx"]
+    },
+    "sarband_to_shervin": {
+      "slug": "tochal-sarband-shervin",
+      "title": "سربند تا پناهگاه شروین",
+      "subtitle": "از میدان سربند و بند یخچال تا پناهگاه شروین",
+      "trail_label": "مسیر سربند–شروین",
+      "origin": "میدان سربند",
+      "target_label": "پناهگاه شروین",
+      "region": "تهران · دربند",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "tochal-sarband-square",
+        "tochal-bandyakhchal",
+        "tochal-shervin-shelter"
+      ],
+      "distance_km": 4.8,
+      "ascent_m": 900,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-mydn-srbndmjsmh-t-bnd-ykhchl-jnpnh-shrwyn-pnhgh-shyrpl-drh-wswn-jmh-1403-02-14-169432932",
+        "https://www.wikiloc.com/hiking-trails/jnpnh-shrwyn-22129706"
+      ],
+      "evidence_tracks": [
+        "tracks/shervin/shervin-sarband-to-shelter-primary.gpx",
+        "tracks/shervin/shervin-direct-crosscheck.gpx"
+      ]
+    },
+    "velenjak_to_kamachal": {
+      "slug": "tochal-velenjak-kamachal",
+      "title": "ولنجک تا قلهٔ کماچال",
+      "subtitle": "از پارکینگ ولنجک و ایستگاه‌های توچال تا قلهٔ کماچال",
+      "trail_label": "مسیر ولنجک–کماچال",
+      "origin": "پارکینگ مجموعهٔ توچال در ولنجک",
+      "target_label": "قلهٔ کماچال",
+      "region": "تهران · البرز مرکزی",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "tochal-velenjak-parking",
+        "tochal-telecabin-station-2",
+        "tochal-kamachal"
+      ],
+      "distance_km": 10.44,
+      "ascent_m": 1019,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlhy-khmchl-z-wlnjkh-62762580",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-hdwd-3000-mtry-khmchl-z-wlnjkh-103879559"
+      ],
+      "evidence_tracks": [
+        "tracks/kamachal/kamachal-velenjak-primary.gpx",
+        "tracks/kamachal/kamachal-velenjak-crosscheck.gpx"
+      ]
+    },
+    "imamzadeh_davoud_to_shahneshin": {
+      "slug": "tochal-imamzadeh-davoud-shahneshin",
+      "title": "امام‌زاده داوود تا قلهٔ شاه‌نشین",
+      "subtitle": "از روستای امام‌زاده داوود و گردنهٔ اشترگردن تا قله",
+      "trail_label": "مسیر امام‌زاده داوود–شاه‌نشین",
+      "origin": "روستای امام‌زاده داوود",
+      "target_label": "قلهٔ شاه‌نشین",
+      "region": "تهران · البرز مرکزی",
+      "featured": false,
+      "sort_order": 4,
+      "points": [
+        "tochal-imamzadeh-davoud-village",
+        "tochal-ashtargardan-pass",
+        "tochal-shahneshin"
+      ],
+      "distance_km": 9.7,
+      "ascent_m": 1529,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shhnshyn-shh-nshyn-z-mmzdh-dwwd-146105866"
+      ],
+      "evidence_tracks": ["tracks/shahneshin/shahneshin-imamzadeh-davoud-primary.gpx"]
+    },
+    "station7_to_shahneshin": {
+      "slug": "tochal-station7-shahneshin",
+      "title": "ایستگاه ۷ توچال تا قلهٔ شاه‌نشین",
+      "subtitle": "مسیر خط‌الرأس از ایستگاه ۷ و گردنهٔ شاه‌نشین تا قله",
+      "trail_label": "مسیر ایستگاه ۷–شاه‌نشین",
+      "origin": "ایستگاه ۷ تله‌کابین توچال",
+      "target_label": "قلهٔ شاه‌نشین",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 5,
+      "points": [
+        "tochal-telecabin-station-7",
+        "tochal-shahneshin-pass",
+        "tochal-shahneshin"
+      ],
+      "distance_km": 5.31,
+      "ascent_m": 308,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-ystgh-7-twchl-t-qlh-shhnshyn-pnjshnbh-1405-05-22-279663254"
+      ],
+      "evidence_tracks": ["tracks/shahneshin/shahneshin-station7-crosscheck.gpx"]
+    }
+  }
+}
