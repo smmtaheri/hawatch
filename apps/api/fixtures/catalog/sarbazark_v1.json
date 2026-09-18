@@ -1,0 +1,85 @@
+{
+  "catalog_version": "hawatch-sarbazark-catalog-v1",
+  "weather_points": {
+    "sarbazark": {
+      "name": "قلهٔ سربازارک",
+      "page_name": "قلهٔ سربازارک تهران",
+      "short_label": "سربازارک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["سربازارک", "قله سربازارک", "Sarbazark Peak"],
+      "identity_summary": "قلهٔ سربازارک در خط‌الرأس شمال تهران، میان پلنگچال و شاه‌نشین",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774"
+      ],
+      "latitude": 35.889718,
+      "longitude": 51.375461,
+      "elevation_m": 3847,
+      "status": "provisional",
+      "elevation_source": "waypoint نام‌دار قله در ترک خط‌الرأس چین‌کلاغ تا توچال؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine",
+      "region": "البرز مرکزی · تهران"
+    }
+  },
+  "shared_weather_points": [
+    "chin-kalagh-fatehan-trailhead",
+    "chin-kalagh",
+    "palangchal",
+    "tochal-ashtargardan-pass"
+  ],
+  "routes": {
+    "chin_kalagh_to_sarbazark": {
+      "slug": "chin-kalagh-sarbazark",
+      "title": "مبدأ بام تهران تا قلهٔ سربازارک",
+      "subtitle": "خط‌الرأس چین‌کلاغ، پلنگچال و اشترگردن تا قلهٔ سربازارک",
+      "trail_label": "مسیر بام تهران–سربازارک",
+      "origin": "مبدأ شهرک بام تهران",
+      "target_label": "قلهٔ سربازارک",
+      "region": "البرز مرکزی · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "chin-kalagh-fatehan-trailhead",
+        "chin-kalagh",
+        "palangchal",
+        "tochal-ashtargardan-pass",
+        "sarbazark"
+      ],
+      "distance_km": 13.14,
+      "ascent_m": 2264,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774"
+      ],
+      "evidence_tracks": [
+        "tracks/sarbazark/sarbazark-chin-kalagh-to-tochal-2024.gpx"
+      ],
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "sarbazark",
+    "tile_name": "سربازارک",
+    "name": "قلهٔ سربازارک",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 3847,
+    "latitude": 35.889718,
+    "longitude": 51.375461,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سربازارک",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سربازارک", "قله سربازارک", "Sarbazark Peak"]
+  },
+  "primary_point": "sarbazark"
+}

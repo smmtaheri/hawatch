@@ -1,0 +1,122 @@
+{
+  "catalog_version": "hawatch-rendan-waterfall-catalog-v1",
+  "weather_points": {
+    "rendan-village": {
+      "name": "روستای رندان",
+      "page_name": "روستای رندان تهران",
+      "short_label": "روستای رندان",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": ["رندان", "روستای رندان", "Rendan village"],
+      "identity_summary": "روستای رندان در شمال‌غرب تهران و مبدأ شناخته‌شدهٔ مسیر آبشار رندان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+        "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+      ],
+      "latitude": 35.889947,
+      "longitude": 51.280290,
+      "elevation_m": 2029,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک پیادهٔ روستای رندان تا آبشار؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "forest_fog",
+      "region": "تهران · کن"
+    },
+    "rendan-valley": {
+      "name": "درهٔ رندان",
+      "page_name": "درهٔ رندان در مسیر آبشار",
+      "short_label": "درهٔ رندان",
+      "place_type": "landmark",
+      "category_key": "forest",
+      "aliases": ["دره رندان", "مسیل رندان", "Rendan valley"],
+      "identity_summary": "دره و مسیل نام‌بردهٔ رندان در بخش میانی مسیر پیاده‌روی روستا تا آبشار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+        "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+      ],
+      "latitude": 35.894968,
+      "longitude": 51.289162,
+      "elevation_m": 2079,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ میانی هندسهٔ ترک درهٔ رندان؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "forest_fog"
+    },
+    "rendan-waterfall": {
+      "name": "آبشار رندان",
+      "page_name": "آبشار رندان تهران",
+      "short_label": "آبشار رندان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار رندان تهران", "Rendan waterfall"],
+      "identity_summary": "آبشار رندان در انتهای مسیر درهٔ رندان، نزدیک روستای رندان در شمال‌غرب تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+        "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+      ],
+      "latitude": 35.901580,
+      "longitude": 51.298627,
+      "elevation_m": 2140,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ پایان ترک پیادهٔ روستای رندان تا آبشار؛ ارتفاع با DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "forest_fog",
+      "region": "تهران · کن"
+    }
+  },
+  "routes": {
+    "rendan_village_to_waterfall": {
+      "slug": "rendan-village-waterfall",
+      "title": "روستای رندان تا آبشار رندان",
+      "subtitle": "مسیر پیاده‌روی درهٔ رندان و مسیل تا آبشار",
+      "trail_label": "مسیر روستا–آبشار رندان",
+      "origin": "روستای رندان",
+      "target_label": "آبشار رندان",
+      "region": "تهران · کن",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["rendan-village", "rendan-valley", "rendan-waterfall"],
+      "distance_km": 2.7,
+      "ascent_m": 169,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+        "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+      ],
+      "evidence_tracks": [
+        "tracks/rendan-waterfall/rendan-village-to-waterfall-2023.gpx"
+      ],
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "rendan-waterfall",
+    "tile_name": "آبشار رندان",
+    "name": "آبشار رندان",
+    "short_category": "آبشار",
+    "category": "آبشار و طبیعت تهران",
+    "category_key": "waterfall",
+    "region": "تهران · کن",
+    "elevation_m": 2140,
+    "latitude": 35.901580,
+    "longitude": 51.298627,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای آبشار رندان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آبشار رندان تهران", "Rendan waterfall"]
+  },
+  "primary_point": "rendan-waterfall"
+}
