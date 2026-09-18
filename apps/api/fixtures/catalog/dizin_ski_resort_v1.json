@@ -1,0 +1,61 @@
+{
+  "catalog_version": "hawatch-dizin-ski-v1",
+  "weather_points": {
+    "dizin-ski-resort": {
+      "name": "پیست اسکی دیزین",
+      "page_name": "پیست اسکی دیزین؛ البرز مرکزی",
+      "short_label": "پیست اسکی دیزین",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "پیست دیزین",
+        "پیست بین‌المللی دیزین",
+        "Dizin Ski Resort",
+        "Dizin International Ski Resort"
+      ],
+      "identity_summary": "پیست اسکی دیزین، مجموعهٔ بزرگ ورزش‌های زمستانی در البرز مرکزی و یکی از مقصدهای شاخص اسکی نزدیک تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/27259818",
+        "https://www.wikidata.org/wiki/Q259613",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.03086,
+      "longitude": 51.42157,
+      "elevation_m": 3129,
+      "status": "provisional",
+      "elevation_source": "مرکز عارضهٔ پیست در OpenStreetMap/Mapcarta: 36.03086, 51.42157؛ ارتفاع GLO-90 سرویس Open-Meteo در همین مختصات ۳۱۲۹ متر است و با ارتفاع ثبت‌شدهٔ عارضه در Mapcarta هم‌خوانی دارد.",
+      "region": "البرز · کرج",
+      "climate": "alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "dizin-ski-resort",
+    "tile_name": "پیست اسکی دیزین",
+    "name": "پیست اسکی دیزین",
+    "short_category": "پیست اسکی",
+    "category": "پیست اسکی · البرز مرکزی",
+    "category_key": "mountain",
+    "region": "البرز · کرج",
+    "elevation_m": 3129,
+    "latitude": 36.03086,
+    "longitude": 51.42157,
+    "image": "/images/home-scene.png",
+    "image_alt": "پیست اسکی دیزین در البرز مرکزی",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پیست اسکی دیزین",
+      "پیست دیزین",
+      "پیست بین‌المللی دیزین"
+    ]
+  },
+  "primary_point": "dizin-ski-resort"
+}

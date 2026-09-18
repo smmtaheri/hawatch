@@ -1,0 +1,60 @@
+{
+  "catalog_version": "hawatch-abali-ski-v1",
+  "weather_points": {
+    "abali-ski-resort": {
+      "name": "پیست اسکی آبعلی",
+      "page_name": "پیست اسکی آبعلی؛ جادهٔ هراز",
+      "short_label": "پیست اسکی آبعلی",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "پیست آبعلی",
+        "پیست اسکی آب‌علی",
+        "Abali Ski Resort"
+      ],
+      "identity_summary": "پیست اسکی آبعلی در جادهٔ هراز، مقصد شناخته‌شدهٔ ورزش‌های زمستانی در شرق تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/W482805588",
+        "https://fa.tripyar.com/iran/%D8%AA%D9%87%D8%B1%D8%A7%D9%86/%D8%AF%D9%85%D8%A7%D9%88%D9%86%D8%AF/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D9%88%D8%B1%D8%B2%D8%B4-%D9%88-%D8%B3%D8%B1%DA%AF%D8%B1%D9%85%DB%8C/%D8%A7%D8%B3%DA%A9%DB%8C/%D9%BE%DB%8C%D8%B3%D8%AA-%D8%A7%D8%B3%DA%A9%DB%8C-%D8%A2%D8%A8%D8%B9%D9%84%DB%8C.html",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.76484,
+      "longitude": 51.99009,
+      "elevation_m": 2490,
+      "status": "provisional",
+      "elevation_source": "مرکز عارضهٔ پیست در OpenStreetMap/Mapcarta: 35.76484, 51.99009؛ ارتفاع GLO-90 سرویس Open-Meteo در همین مختصات ۲۴۹۰ متر است و در بازهٔ ۲۴۰۰ تا ۲۶۵۰ متر گزارش‌شده برای پیست قرار دارد.",
+      "region": "تهران · دماوند",
+      "climate": "alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "abali-ski-resort",
+    "tile_name": "پیست اسکی آبعلی",
+    "name": "پیست اسکی آبعلی",
+    "short_category": "پیست اسکی",
+    "category": "پیست اسکی · جادهٔ هراز",
+    "category_key": "mountain",
+    "region": "تهران · دماوند",
+    "elevation_m": 2490,
+    "latitude": 35.76484,
+    "longitude": 51.99009,
+    "image": "/images/home-scene.png",
+    "image_alt": "پیست اسکی آبعلی در جادهٔ هراز",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پیست اسکی آبعلی",
+      "پیست آبعلی",
+      "پیست اسکی آب‌علی"
+    ]
+  },
+  "primary_point": "abali-ski-resort"
+}
