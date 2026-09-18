@@ -1,0 +1,352 @@
+{
+  "catalog_version": "hawatch-palangchal-catalog-v1",
+  "weather_points": {
+    "palangchal-shelter": {
+      "name": "پناهگاه پلنگچال",
+      "page_name": "پناهگاه پلنگچال در مسیر درکه",
+      "short_label": "پناهگاه پلنگچال",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["مجتمع کوهستانی پلنگچال", "اردوگاه پلنگچال", "Palang Chal shelter"],
+      "identity_summary": "پناهگاه و مجتمع کوهستانی شناخته‌شدهٔ پلنگچال در مسیر درکه به ارتفاعات توچال",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W724654207",
+        "https://www.wikiloc.com/hiking-trails/palangchal-drkhh-bh-pnhgh-plngchl-23108991",
+        "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880"
+      ],
+      "latitude": 35.85417,
+      "longitude": 51.38150,
+      "elevation_m": 2415,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع Mapcarta/OSM و تطبیق waypoint پناهگاه در سه ترک مستقل؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "palangchal-kara-junction": {
+      "name": "دوراهی کارا",
+      "page_name": "دوراهی کارا در مسیر پلنگچال",
+      "short_label": "دوراهی کارا",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["دوراهی جنگل کارا", "Kara junction"],
+      "identity_summary": "دوراهی نام‌دار مسیر درکه که راه پلنگچال از مسیر جنگل کارا جدا می‌شود",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880",
+        "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+      ],
+      "latitude": 35.825494,
+      "longitude": 51.381694,
+      "elevation_m": 1863,
+      "status": "provisional",
+      "elevation_source": "waypoint دوراهی کارا در ترک‌های مستقل درکه–پلنگچال؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "palangchal-zoghalchal": {
+      "name": "اذغال‌چال",
+      "page_name": "اذغال‌چال در مسیر درکه–پلنگچال",
+      "short_label": "اذغال‌چال",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["زغال‌چال", "اذغال چال", "Zoghalchal"],
+      "identity_summary": "منطقهٔ نام‌بردهٔ اذغال‌چال در بخش میانی مسیر درکه به پناهگاه پلنگچال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880",
+        "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+      ],
+      "latitude": 35.83917,
+      "longitude": 51.38137,
+      "elevation_m": 2021,
+      "status": "provisional",
+      "elevation_source": "waypoint اذغال‌چال در ترک‌های مستقل؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "palangchal-black-bend": {
+      "name": "بند سیاه کرک",
+      "page_name": "بند سیاه کرک در مسیر پلنگچال",
+      "short_label": "بند سیاه کرک",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["بندسیاه", "بند سیاه", "Band Siah Kark"],
+      "identity_summary": "عارضهٔ نام‌بردهٔ بند سیاه کرک در مسیر صعود درکه به پناهگاه پلنگچال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570",
+        "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+      ],
+      "latitude": 35.84124,
+      "longitude": 51.38207,
+      "elevation_m": 2074,
+      "status": "provisional",
+      "elevation_source": "waypoint بند سیاه کرک در ترک قلهٔ پلنگچال؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    },
+    "palangchal-ridge-junction": {
+      "name": "دوآب اول شاهنشین و پلنگچال",
+      "page_name": "دوآب اول شاهنشین و پلنگچال",
+      "short_label": "دوآب اول پلنگچال",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["مسیر هفت‌چشمه", "دوآب اول پلنگچال", "Palangchal first junction"],
+      "identity_summary": "دوآب و دوراهی نام‌گذاری‌شده در یال شمالی پناهگاه، پیش از صعود قلهٔ پلنگچال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570"],
+      "latitude": 35.864041,
+      "longitude": 51.381803,
+      "elevation_m": 2592,
+      "status": "provisional",
+      "elevation_source": "waypoint دوآب اول در ترک صعود قله؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    },
+    "palangchal-shahneshin-junction": {
+      "name": "دوآب دوم شاهنشین و پلنگچال",
+      "page_name": "دوآب دوم شاهنشین و پلنگچال",
+      "short_label": "دوآب دوم پلنگچال",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["سنگ سبز", "دوآب دوم پلنگچال", "Palangchal second junction"],
+      "identity_summary": "دوآب و محل جداشدن مسیر قلهٔ پلنگچال از مسیر شاه‌نشین در بخش بالادست",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570"],
+      "latitude": 35.873591,
+      "longitude": 51.372125,
+      "elevation_m": 2906,
+      "status": "provisional",
+      "elevation_source": "waypoint دوآب دوم در ترک صعود قله؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    },
+    "palangchal-station5-junction": {
+      "name": "گردنهٔ مسیر ایستگاه ۵",
+      "page_name": "گردنهٔ مسیر پلنگچال به ایستگاه ۵ توچال",
+      "short_label": "گردنهٔ ایستگاه ۵",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["سمت ایستگاه ۵ و قلهٔ توچال", "Palangchal station 5 junction"],
+      "identity_summary": "گردنه و دو راهی نام‌بردهٔ مسیر پلنگچال به ایستگاه ۵ و قلهٔ توچال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880",
+        "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+      ],
+      "latitude": 35.859069,
+      "longitude": 51.396103,
+      "elevation_m": 2966,
+      "status": "provisional",
+      "elevation_source": "waypoint دو راهی ایستگاه ۵ در ترک مستقل درکه–ایستگاه ۵؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    },
+    "palangchal": {
+      "name": "قلهٔ پلنگچال",
+      "page_name": "قلهٔ پلنگچال",
+      "short_label": "پلنگچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["پلنگ چال", "قله پلنگچال", "Palang Chal peak"],
+      "identity_summary": "قلهٔ پلنگچال در البرز مرکزی، در امتداد مسیر درکه و شمال تهران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4622274342",
+        "https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570",
+        "https://www.wikiloc.com/hiking-trails/qlh-plngchl-z-msyr-pnhgh-plng-chl-80262399"
+      ],
+      "latitude": 35.8812,
+      "longitude": 51.3633,
+      "elevation_m": 3513,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع قله از OSM/Mapcarta و تطبیق endpoint ترک مستقل صعود؛ اختلاف با DEM سرویس Open-Meteo باید در preflight زیر ۱۰۰ متر بماند.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "chin-kalagh-darakeh-trailhead",
+    "tochal-telecabin-station-5"
+  ],
+  "routes": {
+    "darakeh_to_palangchal_shelter": {
+      "slug": "palangchal-darakeh-shelter",
+      "title": "درکه تا پناهگاه پلنگچال",
+      "subtitle": "مسیر درکه، دوراهی کارا و اذغال‌چال تا پناهگاه پلنگچال",
+      "trail_label": "مسیر درکه–پناهگاه پلنگچال",
+      "origin": "درکه",
+      "target_label": "پناهگاه پلنگچال",
+      "region": "البرز مرکزی · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "palangchal-zoghalchal",
+        "palangchal-shelter"
+      ],
+      "distance_km": 6.55,
+      "ascent_m": 720,
+      "one_way_minutes": 180,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "palangchal-darakeh-shelter-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/palangchal-drkhh-bh-pnhgh-plngchl-23108991",
+          "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880"
+        ],
+        "evidence_tracks": ["tracks/palangchal/palangchal-darakeh-shelter-primary.gpx"],
+        "cumulative_minutes": {
+          "chin-kalagh-darakeh-trailhead": 0,
+          "palangchal-kara-junction": 45,
+          "palangchal-zoghalchal": 105,
+          "palangchal-shelter": 180
+        },
+        "notes": [
+          "ترک اصلی یک رفت‌وبرگشت ثبت‌شده است؛ distance و زمان فقط برای بخش رفت تا پناهگاه برآورد شده‌اند.",
+          "دوراهی کارا و اذغال‌چال waypointهای نام‌گذاری‌شده و عارضه‌های واقعی مسیرند؛ نقطهٔ ساختگی اضافه نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "darakeh_to_palangchal_peak": {
+      "slug": "palangchal-darakeh-summit",
+      "title": "درکه تا قلهٔ پلنگچال",
+      "subtitle": "صعود از درکه و پناهگاه پلنگچال، از دوآب‌های شاه‌نشین تا قله",
+      "trail_label": "مسیر درکه–پناهگاه–قلهٔ پلنگچال",
+      "origin": "درکه",
+      "target_label": "قلهٔ پلنگچال",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "palangchal-shelter",
+        "palangchal-ridge-junction",
+        "palangchal-shahneshin-junction",
+        "palangchal"
+      ],
+      "distance_km": 18.76,
+      "ascent_m": 1846,
+      "one_way_minutes": 420,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "palangchal-darakeh-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570",
+          "https://www.wikiloc.com/hiking-trails/qlh-plngchl-z-msyr-pnhgh-plng-chl-80262399"
+        ],
+        "evidence_tracks": ["tracks/palangchal/palangchal-darakeh-summit-primary.gpx"],
+        "cumulative_minutes": {
+          "chin-kalagh-darakeh-trailhead": 0,
+          "palangchal-kara-junction": 55,
+          "palangchal-shelter": 165,
+          "palangchal-ridge-junction": 255,
+          "palangchal-shahneshin-junction": 345,
+          "palangchal": 420
+        },
+        "notes": [
+          "ترک اصلی waypointهای پناهگاه، دو دوآب و قله را ثبت می‌کند و برای مسیر پیادهٔ کامل استفاده شده است.",
+          "مسیر ارتفاعی و دشوار است؛ در برف یا دید کم نباید مسیر ساده تلقی شود و برای route عمومی فقط پس از گذراندن preflight ثبت می‌شود."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "darakeh_to_station5": {
+      "slug": "palangchal-darakeh-station-5",
+      "title": "درکه تا ایستگاه ۵ توچال از پلنگچال",
+      "subtitle": "مسیر مستقل درکه، پناهگاه پلنگچال و گردنهٔ ایستگاه ۵ تا ایستگاه پنجم تله‌کابین",
+      "trail_label": "مسیر درکه–پلنگچال–ایستگاه ۵",
+      "origin": "درکه",
+      "target_label": "ایستگاه ۵ تله‌کابین توچال",
+      "region": "البرز مرکزی · تهران",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "palangchal-shelter",
+        "palangchal-station5-junction",
+        "tochal-telecabin-station-5"
+      ],
+      "distance_km": 9.34,
+      "ascent_m": 1254,
+      "one_way_minutes": 240,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-crosscheck-v1",
+        "version": "palangchal-darakeh-station5-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880",
+          "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+        ],
+        "evidence_tracks": [
+          "tracks/palangchal/palangchal-darakeh-station5-primary.gpx",
+          "tracks/palangchal/palangchal-darakeh-station5-crosscheck.gpx"
+        ],
+        "cumulative_minutes": {
+          "chin-kalagh-darakeh-trailhead": 0,
+          "palangchal-kara-junction": 45,
+          "palangchal-shelter": 150,
+          "palangchal-station5-junction": 205,
+          "tochal-telecabin-station-5": 240
+        },
+        "notes": [
+          "این route عمداً مستقل از Routeهای صعود توچال ثبت شده و ایستگاه ۵ را از کاتالوگ توچال به‌صورت shared استفاده می‌کند.",
+          "دو ترک مستقل درکه–ایستگاه ۵ مسیر مشترک تا پناهگاه و ادامهٔ گردنه را تأیید می‌کنند؛ ترک خودرویی یا تله‌کابینی وارد محاسبه نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "palangchal",
+    "tile_name": "پلنگچال",
+    "name": "قلهٔ پلنگچال",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · تهران",
+    "elevation_m": 3513,
+    "latitude": 35.8812,
+    "longitude": 51.3633,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ پلنگچال",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["پلنگ چال", "قله پلنگچال", "Palang Chal"]
+  },
+  "primary_point": "palangchal"
+}
