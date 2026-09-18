@@ -351,7 +351,7 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "dorfak-west-shirkuh": {"name": "روستای شیرکوه", "page_name": "روستای شیرکوه، ابتدای مسیر درفک", "short_label": "شیرکوه", "place_type": "village", "name_status": "official"},
     "dorfak-west-larneh": {"name": "دشت لارنه", "page_name": "دشت لارنه در مسیر شیرکوه–درفک", "short_label": "دشت لارنه", "place_type": "meadow", "name_status": "established"},
     "hazar-rayen-shelter": {"name": "پناهگاه قلهٔ هزار در مسیر راین", "page_name": "پناهگاه قلهٔ هزار در مسیر راین", "short_label": "پناهگاه هزار", "place_type": "shelter", "name_status": "established"},
-    "sabalan-shabil": {"name": "شابیل", "page_name": "شابیل؛ پای کار سبلان", "short_label": "شابیل", "place_type": "trailhead", "name_status": "official"},
+    "sabalan-shabil": {"name": "شابیل", "page_name": "شابیل", "short_label": "شابیل", "place_type": "trailhead", "name_status": "official"},
     "sabalan-se-chay-goozi-trailhead": {"name": "چای‌گوزی", "page_name": "چای‌گوزی، ابتدای مسیر جنوب‌شرقی سبلان", "short_label": "چای‌گوزی", "place_type": "trailhead", "name_status": "established"},
     "sabalan-west-qartal-dashi": {"name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)", "page_name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)", "short_label": "سنگ قارتال‌داشی", "place_type": "landmark", "name_status": "established"},
 }
