@@ -69,8 +69,7 @@ function LoginSurface({ presentation }: LoginSurfaceProps) {
       >
         <div className="login-overlay-topbar">
           <span className="login-overlay-brand" aria-label="هواچ">
-            <img className="login-overlay-logo login-overlay-logo--dark" src="/brand/hawatch-logo-light.svg" alt="" />
-            <img className="login-overlay-logo login-overlay-logo--light" src="/brand/hawatch-logo-dark.svg" alt="" />
+            <img className="login-overlay-logo" src="/brand/hawatch-logo-mark.svg" alt="" />
           </span>
           <button className="login-overlay-close" type="button" onClick={close} aria-label="بستن ورود">
             ×

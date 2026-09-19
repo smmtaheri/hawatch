@@ -3,7 +3,7 @@
 ## shell و navigation
 
 - `SiteHeader`: برند/لوگو، ورود و تغییر تم.
-- `BrandLogo`: wordmark کامل + mark رسمی؛ در dark از `hawatch-logo-light.svg` و در light از `hawatch-logo-dark.svg` استفاده می‌کند.
+- `BrandLogo`: نشان رسمی کوه، پیچ مسیر و ابر از `hawatch-logo-mark.svg`؛ سطح مشکی آن خوانایی ابر سفید را در هر دو تم حفظ می‌کند.
 - `ThemeToggle`: تغییر light/dark با label و state فعال.
 - `Breadcrumb`: context نقطه و مسیر.
 - `BackNavigation`: دکمهٔ بازگشت ساده به صفحهٔ قبلی با fallback به Home در ورود مستقیم.

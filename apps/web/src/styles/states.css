@@ -212,6 +212,23 @@ html:not([data-theme="light"]) body {
   margin-top: 10px;
 }
 
+.seo-brand {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 12px;
+  background: #000;
+}
+
+.seo-brand img {
+  width: 64px;
+  height: 64px;
+  max-width: none;
+  object-fit: contain;
+}
+
 @media (width <= 720px) {
   .destinations-shell {
     padding: 0 14px 45px;
@@ -521,17 +538,21 @@ html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
 }
 
 .login-overlay-brand {
-  display: block;
-  width: 118px;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 12px;
+  background: #000;
+  line-height: 0;
 }
 
 .login-overlay-logo {
-  width: 100%;
-  height: auto;
-}
-
-.login-overlay-logo--light {
-  display: none;
+  width: 64px;
+  height: 64px;
+  max-width: none;
+  object-fit: contain;
 }
 
 html[data-theme="light"] .login-overlay-panel {
@@ -546,14 +567,6 @@ html[data-theme="light"] .login-overlay--page {
   background:
     radial-gradient(circle at 72% 16%, rgb(34 156 149 / 17%), transparent 27%),
     linear-gradient(135deg, #e7f4f0, #f8fcfa 55%, #eaf6f3);
-}
-
-html[data-theme="light"] .login-overlay-logo--dark {
-  display: none;
-}
-
-html[data-theme="light"] .login-overlay-logo--light {
-  display: block;
 }
 
 .login-overlay-close {
@@ -1178,10 +1191,6 @@ html[data-theme="light"] .login-overlay-phone-field > span {
   .login-overlay-topbar {
     min-height: 88px;
     padding: max(22px, env(safe-area-inset-top)) 24px 18px;
-  }
-
-  .login-overlay-brand {
-    width: 128px;
   }
 
   .login-overlay-content {
@@ -1910,26 +1919,21 @@ html[data-theme="light"] .point-page .hour-item.is-current::after {
 }
 
 .brand-logo-picture {
-  display: block;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: 12px;
+  background: #000;
   line-height: 0;
 }
 
 .brand-logo {
-  width: 132px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
+  max-width: none;
   object-fit: contain;
-}
-
-.brand-logo--light-surface {
-  display: none;
-}
-
-html[data-theme="light"] .brand-logo--dark-surface {
-  display: none;
-}
-
-html[data-theme="light"] .brand-logo--light-surface {
-  display: block;
 }
 
 .page-back-link {
@@ -1961,9 +1965,15 @@ html[data-theme="light"] .brand-logo--light-surface {
 }
 
 @media (max-width: 720px) {
+  .brand-logo-picture {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
   .brand-logo {
-    width: 110px;
-    height: 33px;
+    width: 56px;
+    height: 56px;
   }
 
   .page-back-link {
@@ -3209,10 +3219,17 @@ html:not([data-theme="light"]) .search-result-row:hover {
     gap: 12px;
   }
 
+  .point-page .point-shell > .site-header .brand-logo-picture,
+  .route-page .route-shell > .site-header .brand-logo-picture {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
   .point-page .point-shell > .site-header .brand-logo,
   .route-page .route-shell > .site-header .brand-logo {
-    width: 92px;
-    height: 28px;
+    width: 52px;
+    height: 52px;
   }
 
   .point-page .point-shell > .site-header .header-actions,
