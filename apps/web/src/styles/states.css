@@ -4483,6 +4483,15 @@ bdi,
   line-height: 1.45;
 }
 
+/* The light hero keeps a tinted image overlay, so muted body text loses
+ * contrast in the point identity block. Keep the breadcrumb and forecast
+ * context bright on that surface, without changing the SEO text or title. */
+html[data-theme="light"] .point-page .point-heading .breadcrumb,
+html[data-theme="light"] .point-page .point-hero-subtitle {
+  color: #edf7f4;
+  text-shadow: 0 1px 4px rgb(16 43 61 / 42%);
+}
+
 .seo-forecast-summary {
   margin: 6px 0 0;
   color: var(--internal-text, #edf7f4);
