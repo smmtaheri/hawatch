@@ -213,20 +213,28 @@ html:not([data-theme="light"]) body {
 }
 
 .seo-brand {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  overflow: hidden;
-  place-items: center;
-  border-radius: 12px;
-  background: #000;
+  display: block;
+  width: 72px;
+  line-height: 0;
 }
 
-.seo-brand img {
-  width: 64px;
-  height: 64px;
-  max-width: none;
+.seo-brand-logo {
+  display: block;
+  width: 72px;
+  height: 46px;
   object-fit: contain;
+}
+
+.seo-brand-logo--light-surface {
+  display: none;
+}
+
+html[data-theme="light"] .seo-brand-logo--dark-surface {
+  display: none;
+}
+
+html[data-theme="light"] .seo-brand-logo--light-surface {
+  display: block;
 }
 
 @media (width <= 720px) {
@@ -538,21 +546,28 @@ html:not([data-theme="light"]) .time-gauge .gauge-elapsed {
 }
 
 .login-overlay-brand {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  overflow: hidden;
-  place-items: center;
-  border-radius: 12px;
-  background: #000;
+  display: block;
+  width: 76px;
   line-height: 0;
 }
 
 .login-overlay-logo {
-  width: 64px;
-  height: 64px;
-  max-width: none;
+  display: block;
+  width: 76px;
+  height: 48px;
   object-fit: contain;
+}
+
+.login-overlay-logo--light-surface {
+  display: none;
+}
+
+html[data-theme="light"] .login-overlay-logo--dark-surface {
+  display: none;
+}
+
+html[data-theme="light"] .login-overlay-logo--light-surface {
+  display: block;
 }
 
 html[data-theme="light"] .login-overlay-panel {
@@ -1919,21 +1934,28 @@ html[data-theme="light"] .point-page .hour-item.is-current::after {
 }
 
 .brand-logo-picture {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  overflow: hidden;
-  place-items: center;
-  border-radius: 12px;
-  background: #000;
+  display: block;
+  width: 72px;
   line-height: 0;
 }
 
 .brand-logo {
-  width: 64px;
-  height: 64px;
-  max-width: none;
+  display: block;
+  width: 72px;
+  height: 46px;
   object-fit: contain;
+}
+
+.brand-logo--light-surface {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo--dark-surface {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo--light-surface {
+  display: block;
 }
 
 .page-back-link {
@@ -1966,14 +1988,12 @@ html[data-theme="light"] .point-page .hour-item.is-current::after {
 
 @media (max-width: 720px) {
   .brand-logo-picture {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
+    width: 64px;
   }
 
   .brand-logo {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 41px;
   }
 
   .page-back-link {
@@ -3221,15 +3241,13 @@ html:not([data-theme="light"]) .search-result-row:hover {
 
   .point-page .point-shell > .site-header .brand-logo-picture,
   .route-page .route-shell > .site-header .brand-logo-picture {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 56px;
   }
 
   .point-page .point-shell > .site-header .brand-logo,
   .route-page .route-shell > .site-header .brand-logo {
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 36px;
   }
 
   .point-page .point-shell > .site-header .header-actions,
