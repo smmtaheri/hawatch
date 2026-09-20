@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-khornoro-catalog-v1",
+  "catalog_version": "hawatch-khornoro-catalog-v2",
   "weather_points": {
     "khornoro": {
       "name": "قلهٔ خرونرو",
@@ -91,7 +91,8 @@
       "place_type": "village",
       "aliases": ["سنگده", "روستا سنگده", "Sangdeh village"],
       "identity_summary": "روستای سنگده سوادکوه؛ مبدأ دسترسی جنگلی به خرونرو",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
@@ -172,7 +173,8 @@
       "place_type": "village",
       "aliases": ["ورپی", "روستا ورپی", "Varpi village"],
       "identity_summary": "روستای ورپی سوادکوه؛ مبدأ مسیر شرقی صعود به خرونرو",
-      "importance": "support",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
