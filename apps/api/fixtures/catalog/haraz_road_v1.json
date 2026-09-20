@@ -1,5 +1,11 @@
 {
   "catalog_version": "hawatch-haraz-road-v1",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["shahandasht-waterfall", "malek-bahman-castle"],
+      "reason": "آبشار شاهاندشت و قلعهٔ ملک‌بهمن دو عارضهٔ تاریخی/طبیعی مستقل و نام‌دار در یک مجموعهٔ بازدیدی مشترک‌اند؛ فاصلهٔ مستقیم آن‌ها حدود ۷۲ متر است."
+    }
+  ],
   "weather_points": {
     "damavand-city": {
       "name": "شهر دماوند",
