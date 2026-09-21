@@ -1,0 +1,211 @@
+{
+  "catalog_version": "hawatch-naz-kahar-catalog-v1",
+  "shared_weather_points": [],
+  "weather_points": {
+    "kahar": {
+      "name": "قلهٔ کهار",
+      "page_name": "قلهٔ کهار البرز",
+      "short_label": "قلهٔ کهار",
+      "place_type": "summit",
+      "aliases": ["کهار", "قله کهار", "Kahar", "Kahar Peak"],
+      "identity_summary": "قلهٔ کهار در خط‌الرأس غربی البرز و مسیر کلوان–ناز",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+      ],
+      "latitude": 36.117109,
+      "longitude": 51.084734,
+      "elevation_m": 3981,
+      "status": "provisional",
+      "elevation_source": "Waypointهای دو ترک مستقل؛ ارتفاع رایج قله حدود ۴۰۴۰ متر و ارتفاع GPX برابر ۳۹۸۱ متر است؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "naz": {
+      "name": "قلهٔ ناز",
+      "page_name": "قلهٔ ناز البرز",
+      "short_label": "قلهٔ ناز",
+      "place_type": "summit",
+      "aliases": ["ناز", "قله ناز", "Naz Peak"],
+      "identity_summary": "قلهٔ ناز در خط‌الرأس غربی البرز و مقصد پیمایش کلوان–کهار–ناز",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+      ],
+      "latitude": 36.108388,
+      "longitude": 51.040851,
+      "elevation_m": 4025,
+      "status": "provisional",
+      "elevation_source": "Waypointهای دو ترک مستقل؛ ارتفاع رایج قله حدود ۴۰۸۶ متر و ارتفاع GPX برابر ۴۰۲۵ متر است؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "klavan-village": {
+      "name": "روستای کلوان",
+      "page_name": "روستای کلوان؛ مبدأ مسیر کهار و ناز",
+      "short_label": "کلوان",
+      "place_type": "village",
+      "aliases": ["کلوان", "روستای کلوان", "Kelavan", "Kolvan"],
+      "identity_summary": "روستای کلوان در جادهٔ چالوس؛ مبدأ رایج پیمایش پیادهٔ قلهٔ کهار و ناز",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+      ],
+      "latitude": 36.072804,
+      "longitude": 51.120435,
+      "elevation_m": 2132,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ روستای کلوان در ترک ۲۰۲۵ و نقطهٔ شروع ترک ۲۰۱۷؛ ارتفاع GPX حدود ۲۱۳۲ متر است؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "kahar-shelter": {
+      "name": "جان‌پناه کهار",
+      "page_name": "جان‌پناه کهار در مسیر کلوان",
+      "short_label": "جان‌پناه کهار",
+      "place_type": "shelter",
+      "aliases": ["پناهگاه کهار", "جانپناه کهار", "Kahar shelter"],
+      "identity_summary": "جان‌پناه نام‌دار مسیر کلوان به قلهٔ کهار؛ landmark میانی route",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+      ],
+      "latitude": 36.095706,
+      "longitude": 51.102614,
+      "elevation_m": 3136,
+      "status": "provisional",
+      "elevation_source": "Waypoint جان‌پناه در دو ترک مستقل؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "kahar-small": {
+      "name": "قلهٔ کهار کوچک (میان‌کهار)",
+      "page_name": "قلهٔ کهار کوچک؛ میان‌کهار",
+      "short_label": "کهار کوچک",
+      "place_type": "summit",
+      "aliases": ["میان‌کهار", "میان کهار", "کهار کوچک", "Kahar Small"],
+      "identity_summary": "قلهٔ نام‌دار میانی خط‌الرأس بین کهار و میشینه‌نو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+      ],
+      "latitude": 36.116733,
+      "longitude": 51.059783,
+      "elevation_m": 3872,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک چهارقلهٔ ۲۰۲۵؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "mishineh-now": {
+      "name": "قلهٔ میشینه‌نو",
+      "page_name": "قلهٔ میشینه‌نو در خط‌الرأس ناز",
+      "short_label": "میشینه‌نو",
+      "place_type": "summit",
+      "aliases": ["میشینه نو", "میشینه‌نو", "Mishineh Now"],
+      "identity_summary": "قلهٔ نام‌دار خط‌الرأس بین کهار کوچک و قلهٔ ناز",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544"
+      ],
+      "latitude": 36.107764,
+      "longitude": 51.050696,
+      "elevation_m": 3983,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک چهارقلهٔ ۲۰۲۵؛ Open-Meteo/DEM در مرحلهٔ preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "klavan_to_naz_ridge": {
+      "slug": "klavan-kahar-naz-ridge",
+      "title": "کلوان تا قلهٔ ناز از خط‌الرأس کهار",
+      "subtitle": "از روستای کلوان، جان‌پناه کهار، کهار کوچک و میشینه‌نو تا قلهٔ ناز",
+      "trail_label": "مسیر کلوان–کهار–ناز",
+      "origin": "روستای کلوان",
+      "target_label": "قلهٔ ناز",
+      "region": "البرز غربی · آسارا",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "klavan-village",
+        "kahar-shelter",
+        "kahar",
+        "kahar-small",
+        "mishineh-now",
+        "naz"
+      ],
+      "distance_km": 13.0,
+      "ascent_m": 2280,
+      "one_way_minutes": 500,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-track-crosscheck-v1",
+        "version": "klavan-kahar-naz-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khhr-bh-nz-kahar-to-naz-17823797"
+        ],
+        "evidence_tracks": [
+          "tracks/naz/naz-kahar-klavan-four-summits-primary-2025.gpx",
+          "tracks/kahar/kahar-to-naz-klavan-crosscheck-2017.gpx"
+        ],
+        "cumulative_minutes": {
+          "klavan-village": 0,
+          "kahar-shelter": 185,
+          "kahar": 330,
+          "kahar-small": 410,
+          "mishineh-now": 465,
+          "naz": 500
+        },
+        "notes": [
+          "پارکینگ و ابتدای مسیر در بافت روستای کلوان با نقطهٔ canonical روستا ادغام شده و نقطهٔ دوم برای پارکینگ ساخته نشده است.",
+          "فاصله، صعود و زمان، برش یک‌طرفهٔ کلوان تا ناز از دو ترک ثبت‌شده‌اند؛ خود فایل‌ها loop/رفت‌وبرگشت دارند و زمان توقف از ETA حذف شده است.",
+          "تراورس کهار تا ناز در زمستان مستعد باد و بهمن است؛ زمان و وضعیت مسیر با فصل تغییر می‌کند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "kahar",
+    "tile_name": "کهار",
+    "name": "قلهٔ کهار",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · آسارا",
+    "elevation_m": 3981,
+    "latitude": 36.117109,
+    "longitude": 51.084734,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کهار",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "kahar"
+}
