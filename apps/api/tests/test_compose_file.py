@@ -63,6 +63,19 @@ def test_web_gateway_serves_subscription_plans_for_direct_requests():
     assert text.count("try_files /index.html =404;") >= 4
 
 
+def test_web_gateway_proxies_destination_pagination_to_ssr():
+    config = _find_web_nginx_file()
+    if config is None:
+        pytest.skip("apps/web/nginx.conf is not mounted in this API-only test container")
+    text = config.read_text(encoding="utf-8")
+
+    # SSR pagination is the crawlable fallback for the JavaScript infinite
+    # scroll. Keep positive page paths on the Django proxy instead of letting
+    # the static SPA fallback turn them into 404 responses.
+    assert "location ~ ^/destinations(?:/page/[1-9][0-9]*)?/?$ {" in text
+    assert text.count("proxy_pass http://api:8000;") >= 2
+
+
 def _find_web_nginx_file() -> Path | None:
     here = Path(__file__).resolve()
     for parent in here.parents:
