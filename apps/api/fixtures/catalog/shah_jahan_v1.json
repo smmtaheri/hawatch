@@ -1,0 +1,141 @@
+{
+  "catalog_version": "hawatch-shah-jahan-catalog-v1",
+  "weather_points": {
+    "shah-jahan-trailhead": {
+      "name": "پارکینگ بالادست رویین؛ مبدأ شاه‌جهان",
+      "page_name": "پارکینگ بالادست رویین در مسیر شاه‌جهان",
+      "short_label": "مبدأ شاه‌جهان",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["پارکینگ شاه‌جهان", "مبدأ رویین", "شاه‌جهان از رویین", "Shah Jahan trailhead"],
+      "identity_summary": "پارکینگ بالادست روستای رویین و مبدأ پیاده‌روی صعود قلهٔ شاه‌جهان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-jhn-bm-khrsn-shmly-shah-jahan-peak-234932599"
+      ],
+      "latitude": 36.980424,
+      "longitude": 57.921455,
+      "elevation_m": 1904,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ خودرو در ترک ثبت‌شدهٔ مسیر؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "shah-jahan-garden-spring": {
+      "name": "باغ و چشمهٔ مسیر شاه‌جهان",
+      "page_name": "باغ و چشمهٔ مسیر شاه‌جهان",
+      "short_label": "باغ و چشمه",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمهٔ شاه‌جهان", "باغ مسیر شاه‌جهان", "Shah Jahan spring"],
+      "identity_summary": "باغ و چشمهٔ نام‌برده در بخش پایینی مسیر صعود شاه‌جهان از رویین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-jhn-bm-khrsn-shmly-shah-jahan-peak-234932599"
+      ],
+      "latitude": 36.989475,
+      "longitude": 57.916174,
+      "elevation_m": 1971,
+      "status": "provisional",
+      "elevation_source": "Waypoint باغ و چشمه در ترک ثبت‌شدهٔ مسیر؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "shah-jahan": {
+      "name": "قلهٔ شاه‌جهان",
+      "page_name": "قلهٔ شاه‌جهان؛ بام خراسان شمالی",
+      "short_label": "شاه‌جهان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["شاه‌جهان", "شاه جهان", "بام خراسان شمالی", "Shah Jahan Peak"],
+      "identity_summary": "قلهٔ شاه‌جهان در رشته‌کوه آلاداغ و بلندترین قلهٔ خراسان شمالی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-jhn-bm-khrsn-shmly-shah-jahan-peak-234932599",
+        "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+      ],
+      "latitude": 37.032438,
+      "longitude": 57.900408,
+      "elevation_m": 3073,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک ثبت‌شدهٔ مسیر؛ ارتفاع رایج قله حدود ۳۰۴۲ تا ۳۰۷۳ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "upper_ruyin_to_shah_jahan": {
+      "slug": "shah-jahan-upper-ruyin",
+      "title": "پارکینگ بالادست رویین تا قلهٔ شاه‌جهان",
+      "subtitle": "از باغ و چشمهٔ مسیر تا بام خراسان شمالی",
+      "trail_label": "مسیر رویین–شاه‌جهان",
+      "origin": "پارکینگ بالادست رویین",
+      "target_label": "قلهٔ شاه‌جهان",
+      "region": "آلاداغ · خراسان شمالی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shah-jahan-trailhead",
+        "shah-jahan-garden-spring",
+        "shah-jahan"
+      ],
+      "distance_km": 8.1,
+      "ascent_m": 1210,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "shah-jahan-upper-ruyin-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/shh-jhn-bm-khrsn-shmly-shah-jahan-peak-234932599",
+          "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+        ],
+        "evidence_tracks": [
+          "tracks/shah-jahan/shah-jahan-upper-ruyin-to-summit-2025.gpx"
+        ],
+        "cumulative_minutes": {
+          "shah-jahan-trailhead": 0,
+          "shah-jahan-garden-spring": 30,
+          "shah-jahan": 300
+        },
+        "notes": [
+          "ترک موجود یک مسیر صعود از پارکینگ بالادست رویین تا قله است و loop یا مسیر خودرویی مبنای route قرار نگرفته است.",
+          "باغ و چشمه تنها عارضهٔ میانی نام‌برده و قابل‌شناسایی در ترک انتخاب شده است؛ waypointهای عمومی مانند پاکوب و تقاطع به catalog اضافه نشده‌اند.",
+          "زمان پنج ساعت صعود با گزارش مسیر هم‌خوان است؛ زمان توقف و بازگشت در route یک‌طرفه لحاظ نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "shah-jahan",
+    "tile_name": "شاه‌جهان",
+    "name": "قلهٔ شاه‌جهان",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "آلاداغ · خراسان شمالی",
+    "elevation_m": 3073,
+    "latitude": 37.032438,
+    "longitude": 57.900408,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ شاه‌جهان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["شاه‌جهان", "شاه جهان", "قلهٔ شاه‌جهان", "بام خراسان شمالی", "Shah Jahan Peak"]
+  },
+  "primary_point": "shah-jahan"
+}
