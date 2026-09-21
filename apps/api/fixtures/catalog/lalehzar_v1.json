@@ -1,0 +1,139 @@
+{
+  "catalog_version": "hawatch-lalehzar-catalog-v1",
+  "weather_points": {
+    "lalehzar-trailhead": {
+      "name": "پارکینگ مسیر قلهٔ لاله‌زار",
+      "page_name": "پارکینگ مسیر قلهٔ لاله‌زار کرمان",
+      "short_label": "پای کار لاله‌زار",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ لاله‌زار", "پارکینگ لاله‌زار", "Lalehzar trailhead"],
+      "identity_summary": "محل پارک خودرو و مبدأ ترک پیاده‌روی قلهٔ لاله‌زار در درهٔ لاله‌زار کرمان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-267847421",
+        "https://www.gholleh.com/peak-information.aspx?lat=29.4029069&lon=56.8146869"
+      ],
+      "latitude": 29.472593,
+      "longitude": 56.807849,
+      "elevation_m": 3091,
+      "status": "provisional",
+      "elevation_source": "Waypoint جای پارک ماشین در ترک ثبت‌شده؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "lalehzar-lone-waterfall": {
+      "name": "آبشار تنها در مسیر لاله‌زار",
+      "page_name": "آبشار تنها در مسیر قلهٔ لاله‌زار",
+      "short_label": "آبشار تنها",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار تنها لاله‌زار", "آبشار مسیر لاله‌زار", "Lalehzar Lone Waterfall"],
+      "identity_summary": "آبشار تنها؛ عارضهٔ طبیعی نام‌برده در مسیر پیاده‌روی درهٔ لاله‌زار تا قلهٔ ننو",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-267847421",
+        "https://www.gholleh.com/peak-information.aspx?lat=29.4029069&lon=56.8146869"
+      ],
+      "latitude": 29.424746,
+      "longitude": 56.808220,
+      "elevation_m": 3673,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار تنها در ترک ثبت‌شده؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "lalehzar": {
+      "name": "قلهٔ لاله‌زار کرمان (ننو)",
+      "page_name": "قلهٔ لاله‌زار کرمان (ننو)",
+      "short_label": "لاله‌زار (ننو)",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["لاله‌زار", "قله لاله‌زار", "قله لاله زار کرمان", "ننو", "Nenoo", "Lalehzar Peak"],
+      "identity_summary": "قلهٔ لاله‌زار (ننو) در رشته‌کوه هزاران، از قله‌های بلند استان کرمان در محدودهٔ بردسیر",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-267847421",
+        "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-krmn-29016365",
+        "https://www.gholleh.com/peak-information.aspx?lat=29.4029069&lon=56.8146869",
+        "https://kermankoh.blogfa.com/post/40"
+      ],
+      "latitude": 29.403101,
+      "longitude": 56.814679,
+      "elevation_m": 4376,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک پیاده‌روی و مختصات راهنمای قله؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "lalehzar_to_summit": {
+      "slug": "lalehzar-summit",
+      "title": "پای کار لاله‌زار تا قلهٔ لاله‌زار (ننو)",
+      "subtitle": "مسیر درهٔ لاله‌زار، آبشار تنها و یال پایانی تا قلهٔ کرمان",
+      "trail_label": "مسیر لاله‌زار–ننو",
+      "origin": "پای کار لاله‌زار",
+      "target_label": "قلهٔ لاله‌زار (ننو)",
+      "region": "رشته‌کوه هزاران · کرمان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["lalehzar-trailhead", "lalehzar-lone-waterfall", "lalehzar"],
+      "distance_km": 12.2,
+      "ascent_m": 1264,
+      "one_way_minutes": 460,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "lalehzar-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-267847421",
+          "https://www.wikiloc.com/hiking-trails/qlh-llh-zr-krmn-29016365",
+          "https://www.gholleh.com/peak-information.aspx?lat=29.4029069&lon=56.8146869"
+        ],
+        "evidence_tracks": ["tracks/lalehzar/lalehzar-primary.gpx"],
+        "cumulative_minutes": {
+          "lalehzar-trailhead": 0,
+          "lalehzar-lone-waterfall": 265,
+          "lalehzar": 460
+        },
+        "notes": [
+          "ترک پیاده‌روی از محل پارک خودرو تا نزدیک‌ترین waypoint قله بریده شده و برگشت انتهایی وارد مسافت نشده است.",
+          "آبشار تنها عارضهٔ طبیعی نام‌گذاری‌شده در ترک و landmark میانی route است؛ زمان‌ها تخمینی‌اند و توقف‌ها جدا از ETA در نظر گرفته شده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "lalehzar",
+    "tile_name": "لاله‌زار",
+    "name": "قلهٔ لاله‌زار کرمان (ننو)",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "کرمان · بردسیر",
+    "elevation_m": 4376,
+    "latitude": 29.403101,
+    "longitude": 56.814679,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ لاله‌زار کرمان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["لاله‌زار", "قله لاله‌زار", "قله لاله زار کرمان", "ننو", "Nenoo", "Lalehzar Peak"]
+  },
+  "primary_point": "lalehzar"
+}
