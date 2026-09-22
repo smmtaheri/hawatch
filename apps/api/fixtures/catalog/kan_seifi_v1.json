@@ -1,0 +1,230 @@
+{
+  "catalog_version": "hawatch-kan-seifi-catalog-v1",
+  "weather_points": {
+    "kan-seifi-ganjeh": {
+      "name": "روستای گنجه",
+      "page_name": "روستای گنجه؛ مبدأ مسیر شمالی کان‌صیفی",
+      "short_label": "گنجه",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": ["گنجه", "روستای گنجه ایلام", "Ganjeh village"],
+      "identity_summary": "روستای گنجه و مبدأ مستند مسیر شمالی صعود قلهٔ کان‌صیفی در کبیرکوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+        "https://kieasan.blogfa.com/1393/03"
+      ],
+      "latitude": 33.406939,
+      "longitude": 46.825069,
+      "elevation_m": 1076,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک شمالی؛ منبع ترک مسیر را از روستای گنجه معرفی می‌کند و ارتفاع برای کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "kan-seifi-north-spring": {
+      "name": "چشمهٔ کان‌صیفی",
+      "page_name": "چشمهٔ کان‌صیفی در دامنهٔ شمالی کبیرکوه",
+      "short_label": "چشمهٔ کان‌صیفی",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه صیفی", "چشمه کان صیفی", "Kan Seifi spring"],
+      "identity_summary": "چشمهٔ نام‌گذاری‌شده در دامنهٔ شمالی قلهٔ کان‌صیفی که نام قله از آن گرفته شده است",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+        "https://www.wikiloc.com/caving-trails/aghamir-cave-gr-aq-myr-5524688",
+        "https://decovel.com/page/kan-seifi-peak"
+      ],
+      "latitude": 33.389776,
+      "longitude": 46.802547,
+      "elevation_m": 2350,
+      "status": "provisional",
+      "elevation_source": "ارتفاع حدود ۲۳۵۰ متر در گزارش مستقل؛ مختصات نزدیک‌ترین نقطهٔ ترک شمالی در همان ارتفاع و برای کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "kan-seifi-south-trailhead": {
+      "name": "پای‌کار جنوبی کان‌صیفی",
+      "page_name": "پای‌کار جنوبی قلهٔ کان‌صیفی نزدیک چشمه‌پهن",
+      "short_label": "پای‌کار چشمه‌پهن",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ جنوبی کان صیفی", "پای کار کان صیفی", "Cheshmeh Pahn trailhead"],
+      "identity_summary": "مبدأ پیاده‌روی جبههٔ جنوبی کان‌صیفی در کنار جاده و نزدیک روستای چشمه‌پهن",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303",
+        "https://ansari244.blogfa.com/post/12",
+        "https://www.wikiloc.com/caving-trails/aghamir-cave-gr-aq-myr-5524688"
+      ],
+      "latitude": 33.361317,
+      "longitude": 46.749062,
+      "elevation_m": 1356,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک جنوبی؛ گزارش مستقل مبدأ را نزدیک روستای چشمه‌پهن و در ارتفاع حدود ۱۳۵۶ متر معرفی می‌کند.",
+      "climate": "forest_fog"
+    },
+    "kan-seifi-agha-mir-cave": {
+      "name": "غار آقامیر",
+      "page_name": "غار آقامیر در جبههٔ جنوبی کان‌صیفی",
+      "short_label": "غار آقامیر",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["غار آقا میر", "اشکفت آقامیر", "کُنا آقامیر", "Aghamir Cave"],
+      "identity_summary": "غار آقامیر، عارضهٔ طبیعی مستند در جبههٔ جنوبی کان‌صیفی و بخش میانی صعود از چشمه‌پهن",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/caving-trails/aghamir-cave-gr-aq-myr-5524688",
+        "https://telegram.me/s/KoohGram?q=%23%D8%B1%D9%88%DA%98%D9%87%D9%84%D8%A7%D8%AA",
+        "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303"
+      ],
+      "latitude": 33.385304,
+      "longitude": 46.775681,
+      "elevation_m": 2350,
+      "status": "provisional",
+      "elevation_source": "گزارش مستقل غار را در ارتفاع حدود ۲۳۵۰ متر ثبت می‌کند؛ مختصات نزدیک‌ترین نقطهٔ ترک جنوبی در همان ارتفاع و برای کنترل DEM/Open-Meteo موقت است.",
+      "climate": "forest_fog"
+    },
+    "kan-seifi": {
+      "name": "قلهٔ کان‌صیفی؛ بام ایلام",
+      "page_name": "قلهٔ کان‌صیفی؛ بام استان ایلام",
+      "short_label": "کان‌صیفی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["کان صیفی", "قله کان صیفی", "کبیرکوه", "بام ایلام", "Kan Seifi", "Kan Seifi Peak"],
+      "identity_summary": "قلهٔ کان‌صیفی، بلندترین قلهٔ کبیرکوه و بام شناخته‌شدهٔ استان ایلام در زاگرس غربی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+        "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303",
+        "https://ansari244.blogfa.com/post/12",
+        "https://mapcarta.com/N6364525494",
+        "https://decovel.com/page/kan-seifi-peak"
+      ],
+      "latitude": 33.393304,
+      "longitude": 46.781001,
+      "elevation_m": 2805,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع حدود ۲۸۰۵ متر در گزارش مستقل قله و نقطهٔ نزدیک قله در دو ترک؛ DEM/Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "kan_seifi_north_route": {
+      "slug": "kan-seifi-north",
+      "title": "روستای گنجه تا قلهٔ کان‌صیفی",
+      "subtitle": "مسیر شمالی کبیرکوه از روستای گنجه و چشمهٔ کان‌صیفی تا بام ایلام",
+      "trail_label": "مسیر شمالی کان‌صیفی",
+      "origin": "روستای گنجه",
+      "target_label": "قلهٔ کان‌صیفی",
+      "region": "کبیرکوه · ایلام",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["kan-seifi-ganjeh", "kan-seifi-north-spring", "kan-seifi"],
+      "distance_km": 8.65,
+      "ascent_m": 1686,
+      "one_way_minutes": 390,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "kan-seifi-north-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+          "https://decovel.com/page/kan-seifi-peak",
+          "https://www.wikiloc.com/caving-trails/aghamir-cave-gr-aq-myr-5524688"
+        ],
+        "evidence_tracks": ["tracks/kan-seifi/kan-seifi-north-ganjeh-to-summit-2018.gpx"],
+        "cumulative_minutes": {
+          "kan-seifi-ganjeh": 0,
+          "kan-seifi-north-spring": 300,
+          "kan-seifi": 390
+        },
+        "notes": [
+          "ترک شمالی از گنجه در نخستین نزدیک‌شدن به مختصات قله بریده شده و دمِ برگشت وارد distance و ETA نشده است.",
+          "چشمهٔ کان‌صیفی landmark واقعی و نام‌گذاری‌شدهٔ جبههٔ شمالی است؛ مختصات آن از نزدیک‌ترین نقطهٔ ترک در ارتفاع گزارش‌شده انتخاب شده است.",
+          "جبههٔ شمالی صخره‌ای و ریزشی گزارش شده است؛ زمان و صعود تخمینی‌اند و برای پیمایش معمول با احتیاط نمایش داده می‌شوند."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "kan_seifi_south_route": {
+      "slug": "kan-seifi-south",
+      "title": "پای‌کار چشمه‌پهن تا قلهٔ کان‌صیفی",
+      "subtitle": "مسیر جنوبی از پای‌کار چشمه‌پهن و غار آقامیر تا بام ایلام",
+      "trail_label": "مسیر جنوبی کان‌صیفی",
+      "origin": "پای‌کار جنوبی کان‌صیفی",
+      "target_label": "قلهٔ کان‌صیفی",
+      "region": "ملکشاهی · ایلام",
+      "featured": true,
+      "sort_order": 2,
+      "points": ["kan-seifi-south-trailhead", "kan-seifi-agha-mir-cave", "kan-seifi"],
+      "distance_km": 7.34,
+      "ascent_m": 1406,
+      "one_way_minutes": 390,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "kan-seifi-south-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303",
+          "https://ansari244.blogfa.com/post/12",
+          "https://www.wikiloc.com/caving-trails/aghamir-cave-gr-aq-myr-5524688"
+        ],
+        "evidence_tracks": ["tracks/kan-seifi/kan-seifi-south-cheshmeh-pahn-to-summit-2023.gpx"],
+        "cumulative_minutes": {
+          "kan-seifi-south-trailhead": 0,
+          "kan-seifi-agha-mir-cave": 300,
+          "kan-seifi": 390
+        },
+        "notes": [
+          "ترک جنوبی از پای‌کار نزدیک چشمه‌پهن تا نخستین رسیدن به مختصات قله تحلیل شده است.",
+          "غار آقامیر landmark واقعیِ جبههٔ جنوبی و در ارتفاع حدود ۲۳۵۰ متر گزارش شده است؛ مختصات از نزدیک‌ترین نقطهٔ ترک در همان ارتفاع انتخاب شده است.",
+          "مسیر جنوبی در منابع رایج‌تر و ساده‌تر از جبههٔ شمالی معرفی شده، اما timing همچنان تخمینی است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "kan-seifi",
+    "tile_name": "کان‌صیفی",
+    "name": "قلهٔ کان‌صیفی؛ بام ایلام",
+    "short_category": "قله",
+    "category": "قله‌های ایلام و کبیرکوه",
+    "category_key": "mountain",
+    "region": "کبیرکوه · ایلام",
+    "elevation_m": 2805,
+    "latitude": 33.393304,
+    "longitude": 46.781001,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کان‌صیفی در کبیرکوه ایلام",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کان صیفی", "قله کان صیفی", "کبیرکوه", "بام ایلام", "Kan Seifi Peak"]
+  },
+  "primary_point": "kan-seifi"
+}
