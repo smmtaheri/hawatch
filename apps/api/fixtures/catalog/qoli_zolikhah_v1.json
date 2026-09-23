@@ -1,0 +1,189 @@
+{
+  "catalog_version": "hawatch-qoli-zolikhah-catalog-v1",
+  "weather_points": {
+    "qoli-zolikhah-best-trailhead": {
+      "name": "قرارگاه کوهنوردی روستای بست؛ مبدأ چهل‌چشمه",
+      "page_name": "قرارگاه روستای بست؛ مبدأ مسیر قولی‌زلیخا",
+      "short_label": "مبدأ بست",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["روستای بست", "خانهٔ کوهنوردی بست", "مبدأ چهل‌چشمه", "Best trailhead"],
+      "identity_summary": "قرارگاه و خانهٔ کوهنوردی بالادست روستای بست، مبدأ مسیر پیادهٔ چهل‌چشمه و قولی‌زلیخا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220",
+        "https://www.wikiloc.com/hiking-trails/qlh-qwly-zlykh-dr-rwsty-bst-77890076"
+      ],
+      "latitude": 35.88025,
+      "longitude": 46.58345,
+      "elevation_m": 1800,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع مشترک دو ترک در قرارگاه/خانهٔ کوهنوردی بالادست روستای بست؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "qoli-zolikhah-kani-chawresh": {
+      "name": "چشمهٔ کانی چاوره‌ش",
+      "page_name": "چشمهٔ کانی چاوره‌ش در مسیر قولی‌زلیخا",
+      "short_label": "کانی چاوره‌ش",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه کانی ره‌ش", "کانی چاوره ش", "چشمهٔ چشم سیاه", "Kani Chawresh"],
+      "identity_summary": "چشمهٔ نام‌دار و محل برداشت آب در بخش میانی مسیر چهل‌چشمه از بست تا خط‌الرأس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220",
+        "https://www.wikiloc.com/hiking-trails/qlh-qwly-zlykh-dr-rwsty-bst-77890076"
+      ],
+      "latitude": 35.86991,
+      "longitude": 46.53104,
+      "elevation_m": 2424,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار چشمهٔ کانی چاوره‌ش در هر دو ترک؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "qoli-zolikhah-shahneshin": {
+      "name": "قلهٔ شاه‌نشین چهل‌چشمه",
+      "page_name": "قلهٔ شاه‌نشین در خط‌الرأس چهل‌چشمه",
+      "short_label": "شاه‌نشین",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["شاه نشین چهل چشمه", "قله شاه‌نشین", "Shahneshin Chahl Cheshmeh"],
+      "identity_summary": "قلهٔ نام‌دار شاه‌نشین، نخستین قلهٔ خط‌الرأس سه‌قله‌ای مسیر قولی‌زلیخا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220"],
+      "latitude": 35.83316,
+      "longitude": 46.51849,
+      "elevation_m": 3153,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ شاه‌نشین در ترک خط‌الرأس؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "qoli-zolikhah-gavalan": {
+      "name": "قلهٔ گاوه‌لان چهل‌چشمه",
+      "page_name": "قلهٔ گاوه‌لان در خط‌الرأس چهل‌چشمه",
+      "short_label": "گاوه‌لان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["گاوه لان", "قله گاوه‌لان", "Gavalan Chahl Cheshmeh"],
+      "identity_summary": "قلهٔ نام‌دار گاوه‌لان، قلهٔ میانی خط‌الرأس مسیر قولی‌زلیخا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220"],
+      "latitude": 35.82549,
+      "longitude": 46.53132,
+      "elevation_m": 3151,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ گاوه‌لان در ترک خط‌الرأس؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "qoli-zolikhah": {
+      "name": "قلهٔ قولی‌زلیخا (چهل‌چشمه)",
+      "page_name": "قلهٔ قولی‌زلیخا؛ بام استان کردستان",
+      "short_label": "قولی‌زلیخا",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قولی زلیخا", "چهل‌چشمه", "قله چهل چشمه", "بام کردستان", "Qoli Zolikhah", "Chehel Cheshmeh"],
+      "identity_summary": "قلهٔ قولی‌زلیخا، بلندترین نقطهٔ استان کردستان در رشته‌کوه چهل‌چشمه",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220",
+        "https://www.wikiloc.com/hiking-trails/qlh-qwly-zlykh-dr-rwsty-bst-77890076",
+        "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+      ],
+      "latitude": 35.81895,
+      "longitude": 46.53645,
+      "elevation_m": 3180,
+      "status": "provisional",
+      "elevation_source": "مختصات قله در waypointهای نزدیک و همگرای دو ترک مستقل؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "qoli-zolikhah-best": {
+      "slug": "qoli-zolikhah-best",
+      "title": "قرارگاه بست تا قلهٔ قولی‌زلیخا",
+      "subtitle": "مسیر چشمهٔ کانی چاوره‌ش و خط‌الرأس شاه‌نشین و گاوه‌لان",
+      "trail_label": "مسیر بست–قولی‌زلیخا",
+      "origin": "قرارگاه روستای بست",
+      "target_label": "قلهٔ قولی‌زلیخا",
+      "region": "چهل‌چشمه · کردستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "qoli-zolikhah-best-trailhead",
+        "qoli-zolikhah-kani-chawresh",
+        "qoli-zolikhah-shahneshin",
+        "qoli-zolikhah-gavalan",
+        "qoli-zolikhah"
+      ],
+      "distance_km": 17.8,
+      "ascent_m": 1606,
+      "one_way_minutes": 420,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "qoli-zolikhah-best-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220",
+          "https://www.wikiloc.com/hiking-trails/qlh-qwly-zlykh-dr-rwsty-bst-77890076"
+        ],
+        "evidence_tracks": [
+          "tracks/chehel-cheshmeh/chehel-cheshmeh-kani-chawresh-ridge-primary.gpx",
+          "tracks/chehel-cheshmeh/chehel-cheshmeh-best-crosscheck.gpx"
+        ],
+        "cumulative_minutes": {
+          "qoli-zolikhah-best-trailhead": 0,
+          "qoli-zolikhah-kani-chawresh": 120,
+          "qoli-zolikhah-shahneshin": 300,
+          "qoli-zolikhah-gavalan": 360,
+          "qoli-zolikhah": 420
+        },
+        "notes": [
+          "دو ترک مستقل مسیر بست تا چشمهٔ کانی چاوره‌ش و خط‌الرأس سه‌قله‌ای شاه‌نشین، گاوه‌لان و قولی‌زلیخا را تأیید می‌کنند.",
+          "جاده یا انتقال خودرویی تا چشمه در گزارش‌ها به‌عنوان دسترسی جداست و Route عمومی از قرارگاه کوهنوردی آغاز می‌شود.",
+          "فاصله و صعود از تحلیل ترک اصلی حدود ۱۷٫۸ کیلومتر و ۱۶۰۶ متر است؛ زمان estimated است چون ترک‌ها timestamp قابل اتکا ندارند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "qoli-zolikhah",
+    "tile_name": "قولی‌زلیخا",
+    "name": "قلهٔ قولی‌زلیخا (چهل‌چشمه)",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "چهل‌چشمه · کردستان",
+    "elevation_m": 3180,
+    "latitude": 35.81895,
+    "longitude": 46.53645,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ قولی‌زلیخا چهل‌چشمه",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قولی زلیخا", "چهل‌چشمه", "قله چهل چشمه", "بام کردستان", "Qoli Zolikhah", "Chehel Cheshmeh"]
+  },
+  "primary_point": "qoli-zolikhah"
+}
