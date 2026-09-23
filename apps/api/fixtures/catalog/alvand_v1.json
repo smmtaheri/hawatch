@@ -1,0 +1,171 @@
+{
+  "catalog_version": "hawatch-alvand-catalog-v1",
+  "weather_points": {
+    "alvand-ganjnameh-trailhead": {
+      "name": "پارکینگ گنجنامه؛ مبدأ صعود الوند",
+      "page_name": "پارکینگ گنجنامه؛ مبدأ مسیر قلهٔ الوند",
+      "short_label": "مبدأ گنجنامه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["گنجنامه", "مبدأ الوند", "پارکینگ گنجنامه", "Alvand Ganjnameh trailhead"],
+      "identity_summary": "پارکینگ مجموعهٔ گنجنامه و پای‌کار رایج مسیر پیاده‌روی قلهٔ الوند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+        "https://www.wikiloc.com/mountaineering-trails/north-side-road-to-summit-alvand-msyr-swd-bh-qlh-lwnd-z-jbhh-shmly-14503403"
+      ],
+      "latitude": 34.763412,
+      "longitude": 48.440577,
+      "elevation_m": 2184,
+      "status": "provisional",
+      "elevation_source": "Waypoint گنجنامه/پارکینگ در دو ترک مستقل الوند؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "alvand-mishan-shelter": {
+      "name": "پناهگاه میدان میشان",
+      "page_name": "پناهگاه میدان میشان در مسیر الوند",
+      "short_label": "پناهگاه میشان",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["پناهگاه اول میشان", "میدان میشان", "Mishan shelter"],
+      "identity_summary": "پناهگاه نام‌دار میدان میشان در مسیر رایج گنجنامه تا قلهٔ الوند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+        "https://www.wikiloc.com/mountaineering-trails/north-side-road-to-summit-alvand-msyr-swd-bh-qlh-lwnd-z-jbhh-shmly-14503403"
+      ],
+      "latitude": 34.769309,
+      "longitude": 48.426731,
+      "elevation_m": 2653,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه میشان در ترک‌های مستقل الوند؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "alvand-takht-nader": {
+      "name": "تخت نادر الوند",
+      "page_name": "تخت نادر در مسیر قلهٔ الوند",
+      "short_label": "تخت نادر",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "aliases": ["تخت نادر", "چشمه تخت نادر", "Takht-e Nader"],
+      "identity_summary": "دشت و چشمهٔ تخت نادر، عارضهٔ میانی شناخته‌شدهٔ مسیر صعود الوند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+        "https://www.wikiloc.com/mountaineering-trails/north-side-road-to-summit-alvand-msyr-swd-bh-qlh-lwnd-z-jbhh-shmly-14503403"
+      ],
+      "latitude": 34.770766,
+      "longitude": 48.411899,
+      "elevation_m": 3007,
+      "status": "provisional",
+      "elevation_source": "Waypoint تخت نادر و چشمهٔ آن در ترک‌های مستقل الوند؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "alvand": {
+      "name": "قلهٔ الوند",
+      "page_name": "قلهٔ الوند؛ بام استان همدان",
+      "short_label": "الوند",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["الوند", "قله الوند", "بام همدان", "Alvand Peak"],
+      "identity_summary": "قلهٔ الوند، بلندترین قلهٔ استان همدان و مقصد اصلی کوهستان الوند",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+        "https://www.wikiloc.com/mountaineering-trails/north-side-road-to-summit-alvand-msyr-swd-bh-qlh-lwnd-z-jbhh-shmly-14503403",
+        "https://www.peakbagger.com/list.aspx?cid=29906&lid=12312"
+      ],
+      "latitude": 34.763401,
+      "longitude": 48.402442,
+      "elevation_m": 3306,
+      "status": "provisional",
+      "elevation_source": "مختصات summit در waypoint نام‌دار هر دو ترک الوند؛ ارتفاع منبع مسیر حدود ۳۳۰۰ تا ۳۳۷۰ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "alvand-ganjnameh": {
+      "slug": "alvand-ganjnameh",
+      "title": "گنجنامه تا قلهٔ الوند",
+      "subtitle": "مسیر رایج از گنجنامه، میدان میشان و تخت نادر تا بام همدان",
+      "trail_label": "مسیر گنجنامه–الوند",
+      "origin": "گنجنامهٔ همدان",
+      "target_label": "قلهٔ الوند",
+      "region": "الوند · همدان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "alvand-ganjnameh-trailhead",
+        "alvand-mishan-shelter",
+        "alvand-takht-nader",
+        "alvand"
+      ],
+      "distance_km": 5.5,
+      "ascent_m": 1061,
+      "one_way_minutes": 300,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "alvand-ganjnameh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+          "https://www.wikiloc.com/mountaineering-trails/north-side-road-to-summit-alvand-msyr-swd-bh-qlh-lwnd-z-jbhh-shmly-14503403"
+        ],
+        "evidence_tracks": [
+          "tracks/alvand/alvand-main-gol-gangeh-to-summit-2026.gpx",
+          "tracks/alvand/alvand-north-road-to-summit-2015.gpx"
+        ],
+        "cumulative_minutes": {
+          "alvand-ganjnameh-trailhead": 0,
+          "alvand-mishan-shelter": 100,
+          "alvand-takht-nader": 190,
+          "alvand": 300
+        },
+        "notes": [
+          "دو ترک دانلودشده یک کریدور پیادهٔ رایج از گنجنامه تا قله را تأیید می‌کنند و به‌عنوان دو Route تکراری ثبت نمی‌شوند.",
+          "ترک‌ها timestamp قابل اتکا ندارند؛ زمان مسیر از گزارش منبع و با وضعیت estimated ثبت شده است.",
+          "پارکینگ، ایستگاه تله‌کابین و waypointهای عمومی به‌عنوان نقطهٔ مستقل وارد زنجیره نشده‌اند.",
+          "تخت نادر و پناهگاه میدان میشان عارضه‌های میانی نام‌دار و قابل‌شناسایی مسیر هستند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "alvand",
+    "tile_name": "الوند",
+    "name": "قلهٔ الوند",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "الوند · همدان",
+    "elevation_m": 3306,
+    "latitude": 34.763401,
+    "longitude": 48.402442,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ الوند",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["الوند", "قله الوند", "بام همدان", "Alvand Peak"]
+  },
+  "primary_point": "alvand"
+}
