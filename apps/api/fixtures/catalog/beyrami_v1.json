@@ -1,0 +1,173 @@
+{
+  "catalog_version": "hawatch-beyrami-catalog-v1",
+  "weather_points": {
+    "beyrami-gashi-trailhead": {
+      "name": "روستای گشی؛ مبدأ بیرمی",
+      "page_name": "روستای گشی؛ مبدأ مسیر قلهٔ بیرمی",
+      "short_label": "مبدأ گشی",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": [
+        "گشی",
+        "روستای گشی",
+        "مبدأ قله بیرمی",
+        "Beyrami Gashi trailhead"
+      ],
+      "identity_summary": "محدودهٔ امامزاده و خانهٔ ورزش روستای گشی، مبدأ پیاده‌روی رایج قلهٔ بیرمی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-byrmy-bm-stn-bwshhr-245655247",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-byrmy-qlh-pznn-bm-stn-bwshhr-z-qll-trh-symrg-mwrkhh-20-bhmn-402-160650207"
+      ],
+      "latitude": 28.77460,
+      "longitude": 51.45880,
+      "elevation_m": 341,
+      "status": "provisional",
+      "elevation_source": "Waypoint نقطهٔ شروع در محدودهٔ امامزاده و خانهٔ ورزش روستای گشی در ترک اصلی؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "beyrami-tang-ravan": {
+      "name": "تنگ روان بیرمی",
+      "page_name": "تنگ روان در مسیر قلهٔ بیرمی",
+      "short_label": "تنگ روان",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "تنگ روان",
+        "درهٔ تنگ روان",
+        "Tang Ravan",
+        "Beyrami Tang Ravan"
+      ],
+      "identity_summary": "دره و گذرگاه نام‌دار تنگ روان در بخش پایینی مسیر گشی تا قلهٔ بیرمی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-byrmy-bm-stn-bwshhr-245655247",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-byrmy-qlh-pznn-bm-stn-bwshhr-z-qll-trh-symrg-mwrkhh-20-bhmn-402-160650207"
+      ],
+      "latitude": 28.76600,
+      "longitude": 51.45564,
+      "elevation_m": 395,
+      "status": "provisional",
+      "elevation_source": "Waypoint توضیح‌دهندهٔ درهٔ تنگ روان در ترک اصلی؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "beyrami": {
+      "name": "قلهٔ بیرمی",
+      "page_name": "قلهٔ بیرمی؛ بام استان بوشهر",
+      "short_label": "بیرمی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "بیرمی",
+        "قله بیرمی",
+        "قلهٔ پازنان",
+        "پازنان",
+        "بام بوشهر",
+        "Beyrami Peak",
+        "Paznan Peak"
+      ],
+      "identity_summary": "قلهٔ بیرمی یا پازنان، بلندترین قلهٔ استان بوشهر و مقصد اصلی مسیر تنگ روان از روستای گشی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-byrmy-bm-stn-bwshhr-245655247",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-byrmy-qlh-pznn-bm-stn-bwshhr-z-qll-trh-symrg-mwrkhh-20-bhmn-402-160650207",
+        "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+      ],
+      "latitude": 28.72053,
+      "longitude": 51.46697,
+      "elevation_m": 1960,
+      "status": "provisional",
+      "elevation_source": "مختصات summit در waypoint نام‌دار هر دو ترک مستقل بیرمی همگراست؛ ارتفاع خام قله حدود ۱۹۶۰ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "beyrami-gashi": {
+      "slug": "beyrami-gashi",
+      "title": "روستای گشی تا قلهٔ بیرمی",
+      "subtitle": "مسیر تنگ روان تا بام استان بوشهر",
+      "trail_label": "مسیر گشی–بیرمی",
+      "origin": "روستای گشی",
+      "target_label": "قلهٔ بیرمی",
+      "region": "بیرمی · بوشهر",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "beyrami-gashi-trailhead",
+        "beyrami-tang-ravan",
+        "beyrami"
+      ],
+      "distance_km": 9.4,
+      "ascent_m": 1600,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "beyrami-gashi-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-byrmy-bm-stn-bwshhr-245655247",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-byrmy-qlh-pznn-bm-stn-bwshhr-z-qll-trh-symrg-mwrkhh-20-bhmn-402-160650207",
+          "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+        ],
+        "evidence_tracks": [
+          "tracks/beyrami/beyrami-gashi-tang-ravan-primary.gpx",
+          "tracks/beyrami/beyrami-gashi-tang-ravan-crosscheck.gpx"
+        ],
+        "cumulative_minutes": {
+          "beyrami-gashi-trailhead": 0,
+          "beyrami-tang-ravan": 45,
+          "beyrami": 360
+        },
+        "notes": [
+          "دو ترک مستقل یک کریدور پیادهٔ مشترک از محدودهٔ روستای گشی، تنگ روان و خط‌الراس تا قله را تأیید می‌کنند و به‌عنوان دو Route تکراری ثبت نمی‌شوند.",
+          "مسیر برگشت، نقاط عمومی و waypointهای صرفاً توصیفی مثل خان‌ها به‌عنوان نقطهٔ مستقل وارد زنجیره نشده‌اند.",
+          "فاصله و صعود از برش مسیر رفت تا قله در تحلیل GPX به‌ترتیب حدود ۹٫۴ کیلومتر و ۱۶۰۰ متر به‌دست آمد؛ زمان صعود estimated است چون ترک‌ها timestamp قابل اتکا ندارند.",
+          "تنگ روان تنها عارضهٔ میانی نام‌دار و قابل‌شناسایی این کریدور است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "beyrami",
+    "tile_name": "بیرمی",
+    "name": "قلهٔ بیرمی",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "بیرمی · بوشهر",
+    "elevation_m": 1960,
+    "latitude": 28.72053,
+    "longitude": 51.46697,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بیرمی بوشهر",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "بیرمی",
+      "قله بیرمی",
+      "قلهٔ پازنان",
+      "پازنان",
+      "بام بوشهر",
+      "Beyrami Peak",
+      "Paznan Peak"
+    ]
+  },
+  "primary_point": "beyrami"
+}
