@@ -1,0 +1,51 @@
+{
+  "catalog_version": "hawatch-kolon-bastak-catalog-v1",
+  "weather_points": {
+    "kolon-bastak": {
+      "name": "قلهٔ کلون‌بستک (تلاغار)",
+      "page_name": "قلهٔ کلون‌بستک؛ تلاغار در خط‌الرأس البرز مرکزی",
+      "short_label": "کلون‌بستک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["کلون بستک", "کلونبستک", "تلاغار", "خورتوئک", "Kolun Bastak", "Telagar"],
+      "identity_summary": "قلهٔ کلون‌بستک یا تلاغار در خط‌الرأس شمالی توچال، میان گردنهٔ دیزین و سرکچال",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-4150-mtry-khlwn-bstkh-grwh-hwzwy-afq-79710089",
+        "https://mojekooh.com/%DA%A9%D9%84%D9%88%D9%86-%D8%A8%D8%B3%D8%AA%DA%A9/"
+      ],
+      "latitude": 36.05351,
+      "longitude": 51.46536,
+      "elevation_m": 4156,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع قله از منابع مسیر گردنهٔ دیزین و فهرست قلل؛ با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "kolon-bastak",
+    "tile_name": "کلون‌بستک",
+    "name": "قلهٔ کلون‌بستک (تلاغار)",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · شمشک و دیزین",
+    "elevation_m": 4156,
+    "latitude": 36.05351,
+    "longitude": 51.46536,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کلون‌بستک در البرز مرکزی",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کلون بستک", "کلونبستک", "تلاغار", "خورتوئک", "Kolun Bastak", "Telagar"]
+  },
+  "primary_point": "kolon-bastak"
+}
