@@ -1,6 +1,46 @@
 {
-  "catalog_version": "hawatch-kolon-bastak-catalog-v1",
+  "catalog_version": "hawatch-kolon-bastak-catalog-v2",
   "weather_points": {
+    "kolon-bastak-telecom-tower-trailhead": {
+      "name": "دکل مخابراتی گردنهٔ دیزین؛ مبدأ کلون‌بستک",
+      "page_name": "دکل مخابراتی گردنهٔ دیزین؛ مبدأ مسیر کلون‌بستک",
+      "short_label": "مبدأ دکل مخابراتی",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["دکل مخابرات شمشک", "پارکینگ کلون‌بستک", "مبدأ جنوبی کلون‌بستک", "Kolon Bastak telecom trailhead"],
+      "identity_summary": "پای‌کار پیادهٔ دکل مخابراتی بالای گردنهٔ دیزین؛ جادهٔ دسترسی خودرو از Route پیاده جداست",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-khlwn-bstkh-z-dkhl-mkhbrt-shmshkh-79440858"],
+      "latitude": 36.04233,
+      "longitude": 51.44363,
+      "elevation_m": 3424,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع پیادهٔ دکل مخابراتی در ترک کلون‌بستک؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "kolon-bastak-south-ridge-camp": {
+      "name": "کمپ یال جنوبی کلون‌بستک",
+      "page_name": "کمپ یال جنوبی در مسیر کلون‌بستک",
+      "short_label": "کمپ یال جنوبی",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["محل استراحت و کمپ کلون‌بستک", "کمپ مسیر جنوبی کلون‌بستک", "Kolon Bastak south ridge camp"],
+      "identity_summary": "محل استراحت و کمپ نام‌گذاری‌شده در یال جنوبی مسیر دکل مخابراتی تا قلهٔ کلون‌بستک",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-khlwn-bstkh-z-dkhl-mkhbrt-shmshkh-79440858"],
+      "latitude": 36.04547,
+      "longitude": 51.45776,
+      "elevation_m": 3673,
+      "status": "provisional",
+      "elevation_source": "Waypoint محل مناسب استراحت و کمپ در ترک کلون‌بستک؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
     "kolon-bastak": {
       "name": "قلهٔ کلون‌بستک (تلاغار)",
       "page_name": "قلهٔ کلون‌بستک؛ تلاغار در خط‌الرأس البرز مرکزی",
@@ -14,18 +54,60 @@
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwn-bstkh-z-dkhl-mkhbrt-shmshkh-79440858",
         "https://www.wikiloc.com/hiking-trails/qlh-4150-mtry-khlwn-bstkh-grwh-hwzwy-afq-79710089",
         "https://mojekooh.com/%DA%A9%D9%84%D9%88%D9%86-%D8%A8%D8%B3%D8%AA%DA%A9/"
       ],
-      "latitude": 36.05351,
-      "longitude": 51.46536,
-      "elevation_m": 4156,
+      "latitude": 36.05324,
+      "longitude": 51.46555,
+      "elevation_m": 4138,
       "status": "provisional",
-      "elevation_source": "مختصات و ارتفاع قله از منابع مسیر گردنهٔ دیزین و فهرست قلل؛ با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "elevation_source": "Waypoint نام‌دار قله در ترک دکل مخابراتی؛ ارتفاع با DEM و Open-Meteo در preflight کنترل می‌شود.",
       "climate": "high_alpine"
     }
   },
-  "routes": {},
+  "routes": {
+    "kolon-bastak-telecom-tower": {
+      "slug": "kolon-bastak-telecom-tower",
+      "title": "دکل مخابراتی تا قلهٔ کلون‌بستک",
+      "subtitle": "مسیر یال جنوبی از پای‌کار گردنهٔ دیزین تا تلاغار",
+      "trail_label": "مسیر دکل مخابراتی–کلون‌بستک",
+      "origin": "دکل مخابراتی گردنهٔ دیزین",
+      "target_label": "قلهٔ کلون‌بستک",
+      "region": "البرز مرکزی · شمشک و دیزین",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kolon-bastak-telecom-tower-trailhead",
+        "kolon-bastak-south-ridge-camp",
+        "kolon-bastak"
+      ],
+      "distance_km": 3.0,
+      "ascent_m": 695,
+      "one_way_minutes": 136,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "kolon-bastak-telecom-tower-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": ["https://www.wikiloc.com/mountaineering-trails/qlh-khlwn-bstkh-z-dkhl-mkhbrt-shmshkh-79440858"],
+        "evidence_tracks": ["tracks/kolon-bastak/kolon-bastak-telecom-tower.gpx"],
+        "cumulative_minutes": {
+          "kolon-bastak-telecom-tower-trailhead": 0,
+          "kolon-bastak-south-ridge-camp": 70,
+          "kolon-bastak": 136
+        },
+        "notes": [
+          "جادهٔ خاکی تا دکل دسترسی خودرو است و در محاسبهٔ Route پیاده وارد نشده؛ Route از waypoint شروع پیاده آغاز می‌شود.",
+          "ترک یک مسیر پیوسته از دکل مخابراتی تا قله و عارضهٔ میانی کمپ یال جنوبی را ثبت می‌کند.",
+          "فاصله و صعود یک‌طرفه از تحلیل GPX حدود ۳ کیلومتر و ۶۹۵ متر است؛ زمان estimated است چون timestamp ترک مبنای زمان حرکت نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
   "shared_weather_points": [],
   "point": {
     "slug": "kolon-bastak",
@@ -35,9 +117,9 @@
     "category": "قله و مسیرهای کوهستانی",
     "category_key": "mountain",
     "region": "البرز مرکزی · شمشک و دیزین",
-    "elevation_m": 4156,
-    "latitude": 36.05351,
-    "longitude": 51.46536,
+    "elevation_m": 4138,
+    "latitude": 36.05324,
+    "longitude": 51.46555,
     "image": "/images/home-scene.png",
     "image_alt": "نمای کوهستانی قلهٔ کلون‌بستک در البرز مرکزی",
     "popular_order": 0,
