@@ -1,0 +1,168 @@
+{
+  "catalog_version": "hawatch-nayband-catalog-v1",
+  "weather_points": {
+    "nayband-aliabad-trailhead": {
+      "name": "پای‌کار علی‌آباد؛ مبدأ نایبند",
+      "page_name": "پای‌کار علی‌آباد؛ مبدأ مسیر قلهٔ نایبند",
+      "short_label": "پای‌کار نایبند",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": [
+        "پای کار نایبند",
+        "مبدأ نایبند",
+        "شروع حرکت قله نایبند",
+        "Nayband trailhead"
+      ],
+      "identity_summary": "محل شروع پیاده‌روی قلهٔ نایبند در مسیر دسترسی علی‌آباد، جدا از جادهٔ خاکی دسترسی از روستای نایبند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-bm-khrsn-jnwby-154379641",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-nayband-peak-31695546"
+      ],
+      "latitude": 32.46550,
+      "longitude": 57.40115,
+      "elevation_m": 1670,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع حرکت قله در دو ترک مستقل نایبند؛ ارتفاع پای‌کار حدود ۱۶۷۰ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "desert"
+    },
+    "nayband-zin-asbi": {
+      "name": "زین‌اسبی نایبند",
+      "page_name": "زین‌اسبی نایبند در مسیر قله",
+      "short_label": "زین‌اسبی نایبند",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "زین اسبی نایبند",
+        "گردنهٔ زین‌اسبی نایبند",
+        "Zin Asbi Nayband"
+      ],
+      "identity_summary": "عارضهٔ میانی نام‌دار زین‌اسبی در بخش بالایی مسیر پیاده‌روی پای‌کار علی‌آباد تا قلهٔ نایبند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-nayband-peak-31695546",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-bm-khrsn-jnwby-154379641"
+      ],
+      "latitude": 32.44310,
+      "longitude": 57.37233,
+      "elevation_m": 2845,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار زین‌اسبی در ترک مستقل نایبند؛ ارتفاع خام حدود ۲۸۴۵ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "desert"
+    },
+    "nayband": {
+      "name": "قلهٔ نایبند",
+      "page_name": "قلهٔ نایبند؛ بام خراسان جنوبی",
+      "short_label": "نایبند",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "نایبند",
+        "قله نایبند",
+        "کوه نایبند",
+        "بام خراسان جنوبی",
+        "Nayband Peak"
+      ],
+      "identity_summary": "قلهٔ نایبند، بلندترین قلهٔ خراسان جنوبی در رشته‌کوه نایبند و مقصد مسیر پای‌کار علی‌آباد",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-bm-khrsn-jnwby-154379641",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-nayband-peak-31695546",
+        "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+      ],
+      "latitude": 32.44048,
+      "longitude": 57.36872,
+      "elevation_m": 3005,
+      "status": "provisional",
+      "elevation_source": "مختصات قله در waypointهای نام‌دار دو ترک مستقل همگراست؛ ارتفاع رایج قله ۳۰۰۵ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "desert"
+    }
+  },
+  "routes": {
+    "nayband-aliabad": {
+      "slug": "nayband-aliabad",
+      "title": "پای‌کار علی‌آباد تا قلهٔ نایبند",
+      "subtitle": "مسیر پیادهٔ زین‌اسبی تا بام خراسان جنوبی",
+      "trail_label": "مسیر پای‌کار نایبند",
+      "origin": "پای‌کار علی‌آباد",
+      "target_label": "قلهٔ نایبند",
+      "region": "نایبند · خراسان جنوبی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "nayband-aliabad-trailhead",
+        "nayband-zin-asbi",
+        "nayband"
+      ],
+      "distance_km": 6.6,
+      "ascent_m": 1350,
+      "one_way_minutes": 330,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-report-v1",
+        "version": "nayband-aliabad-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-bm-khrsn-jnwby-154379641",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-nayband-peak-31695546",
+          "https://www.amir.ahmadi.li/list-of-peaks-of-the-national-simorgh-project-of-iran/"
+        ],
+        "evidence_tracks": [
+          "tracks/nayband/nayband-naiband-village-to-summit-2023.gpx",
+          "tracks/nayband/nayband-aliabad-to-summit-crosscheck-2018.gpx"
+        ],
+        "cumulative_minutes": {
+          "nayband-aliabad-trailhead": 0,
+          "nayband-zin-asbi": 240,
+          "nayband": 330
+        },
+        "notes": [
+          "دو ترک مستقل مسیر مشترک پیاده از پای‌کار علی‌آباد تا قلهٔ نایبند و عارضهٔ زین‌اسبی را تأیید می‌کنند و به‌عنوان دو Route تکراری ثبت نمی‌شوند.",
+          "جادهٔ خاکی طولانی روستای نایبند تا پای‌کار، مسیر دسترسی خودرویی است و در distance و ETA این Route پیاده محاسبه نشده است.",
+          "فاصله و صعود از برش مسیر رفت تا قله در تحلیل GPX حدود ۶٫۶ کیلومتر و ۱۳۵۰ متر است؛ زمان صعود از گزارش مسیر گرفته شده و estimated است چون ترک‌ها timestamp قابل اتکا ندارند.",
+          "زین‌اسبی تنها عارضهٔ میانی نام‌دار و قابل‌شناسایی در کریدور انتخاب‌شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "nayband",
+    "tile_name": "نایبند",
+    "name": "قلهٔ نایبند",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "نایبند · خراسان جنوبی",
+    "elevation_m": 3005,
+    "latitude": 32.44048,
+    "longitude": 57.36872,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ نایبند خراسان جنوبی",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "نایبند",
+      "قله نایبند",
+      "کوه نایبند",
+      "بام خراسان جنوبی",
+      "Nayband Peak"
+    ]
+  },
+  "primary_point": "nayband"
+}
