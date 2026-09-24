@@ -1,0 +1,161 @@
+{
+  "catalog_version": "hawatch-dalankooh-catalog-v1",
+  "weather_points": {
+    "dalankooh": {
+      "name": "قلهٔ دالان‌کوه",
+      "page_name": "قلهٔ دالان‌کوه اصفهان",
+      "short_label": "قلهٔ دالان‌کوه",
+      "place_type": "summit",
+      "aliases": [
+        "دالان‌کوه",
+        "دالان کوه",
+        "قله دالانکوه",
+        "مادرشاه",
+        "قله مادرشاه",
+        "دماوند اصفهان",
+        "Dalankooh",
+        "Dalan Kuh"
+      ],
+      "identity_summary": "قلهٔ دالان‌کوه یا مادرشاه؛ قلهٔ شناخته‌شدهٔ رشته‌کوه دالان‌کوه در غرب استان اصفهان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/dalankooh-track-25496957",
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-qlh-dlnkhwh-20275986",
+        "https://www.wikiloc.com/mountaineering-trails/dalankoh-peak-hiking-trail-qlh-dlnkhwh-48144309",
+        "https://alirezasaberi63.blogfa.com/post/4/%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D8%AF%D8%A7%D9%84%D8%A7%D9%86%DA%A9%D9%88%D9%87"
+      ],
+      "latitude": 32.936981,
+      "longitude": 50.617465,
+      "elevation_m": 3636,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۶۳۶ متر در شرح مسیرهای مستقل دالان‌کوه؛ مختصات از waypoint نام‌دار قله در ترک اصلی و Open-Meteo GLO-90 DEM در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "dalankooh-shelter": {
+      "name": "پناهگاه دالان‌کوه",
+      "page_name": "پناهگاه دالان‌کوه؛ پای‌کار قلهٔ دالان‌کوه",
+      "short_label": "پناهگاه دالان‌کوه",
+      "place_type": "shelter",
+      "aliases": [
+        "جان‌پناه دالان‌کوه",
+        "پناهگاه پیست اسکی دالان‌کوه",
+        "پای کار دالان‌کوه",
+        "Dalankooh shelter"
+      ],
+      "identity_summary": "پناهگاه و مدرسهٔ کوهنوردی دالان‌کوه در پای‌کار مسیر معمول صعود قله",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/dalankooh-track-25496957",
+        "https://www.wikiloc.com/mountaineering-trails/dalankoh-peak-hiking-trail-qlh-dlnkhwh-48144309",
+        "https://alirezasaberi63.blogfa.com/post/4/%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D8%AF%D8%A7%D9%84%D8%A7%D9%86%DA%A9%D9%88%D9%87"
+      ],
+      "latitude": 32.950176,
+      "longitude": 50.650397,
+      "elevation_m": 2511,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز مشترک ترک دالان‌کوه در پناهگاه؛ Open-Meteo GLO-90 DEM در مختصات canonical در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "dalankooh-piazi-spring": {
+      "name": "چشمهٔ پیازی دالان‌کوه",
+      "page_name": "چشمهٔ پیازی در مسیر قلهٔ دالان‌کوه",
+      "short_label": "چشمهٔ پیازی",
+      "place_type": "spring",
+      "aliases": [
+        "چشمه پیازی دالانکوه",
+        "چشمهٔ پیازی مسیر دالان‌کوه",
+        "چشمه پیازک دالانکوه",
+        "Piazi spring"
+      ],
+      "identity_summary": "چشمهٔ پیازی، عارضهٔ نام‌بردهٔ میانی در مسیر پناهگاه تا قلهٔ دالان‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-qlh-dlnkhwh-20275986",
+        "https://www.wikiloc.com/hiking-trails/dalankooh-track-25496957",
+        "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-dlnkhwh-03-2-15-169606470"
+      ],
+      "latitude": 32.934660,
+      "longitude": 50.633539,
+      "elevation_m": 3095,
+      "status": "provisional",
+      "elevation_source": "waypoint Spring در ترک اصلی و نام چشمهٔ پیازی در گزارش‌های مستقل مسیر؛ Open-Meteo GLO-90 DEM در preflight کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "dalankooh_shelter_summit": {
+      "slug": "dalankooh-shelter-summit",
+      "title": "پناهگاه دالان‌کوه تا قلهٔ دالان‌کوه",
+      "subtitle": "مسیر معمول صعود از پناهگاه و پیست اسکی قدیم، چشمهٔ پیازی و خط‌الرأس تا قلهٔ دالان‌کوه",
+      "trail_label": "مسیر پناهگاه دالان‌کوه",
+      "origin": "پناهگاه دالان‌کوه",
+      "target_label": "قلهٔ دالان‌کوه",
+      "region": "دالان‌کوه · استان اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "dalankooh-shelter",
+        "dalankooh-piazi-spring",
+        "dalankooh"
+      ],
+      "distance_km": 5.45,
+      "ascent_m": 1085,
+      "one_way_minutes": 265,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "dalankooh-shelter-summit-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/dalankooh-track-25496957",
+          "https://www.wikiloc.com/hiking-trails/msyr-swd-qlh-dlnkhwh-20275986",
+          "https://www.wikiloc.com/mountaineering-trails/swd-bh-qlh-dlnkhwh-03-2-15-169606470"
+        ],
+        "evidence_tracks": [
+          "tracks/dalankooh/dalankooh-north-shelter-to-summit-2018.gpx"
+        ],
+        "cumulative_minutes": {
+          "dalankooh-shelter": 0,
+          "dalankooh-piazi-spring": 120,
+          "dalankooh": 265
+        },
+        "notes": [
+          "ترک رفت‌وبرگشت در نخستین رسیدن به قله برای محاسبهٔ مسیر صعود cut می‌شود.",
+          "پناهگاه و مدرسهٔ کوهنوردی دالان‌کوه پای‌کار واقعی قطعهٔ پیاده است؛ جادهٔ دسترسی خودرو در metrics مسیر وارد نشده است.",
+          "مسافت، صعود و زمان تقریبی‌اند و ترک GPX برای ارتفاع survey-grade استفاده نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "dalankooh",
+    "tile_name": "دالان‌کوه",
+    "name": "قلهٔ دالان‌کوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی اصفهان",
+    "category_key": "mountain",
+    "region": "دالان‌کوه · استان اصفهان",
+    "elevation_m": 3636,
+    "latitude": 32.936981,
+    "longitude": 50.617465,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ دالان‌کوه اصفهان",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "dalankooh"
+}
