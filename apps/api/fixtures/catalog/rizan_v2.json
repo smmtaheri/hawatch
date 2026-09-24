@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-rizan-catalog-v1",
+  "catalog_version": "hawatch-rizan-catalog-v2",
   "weather_points": {
     "rizan-afjeh-trailhead": {
       "name": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
@@ -9,9 +9,9 @@
       "category_key": "mountain",
       "aliases": ["مبدأ ریزان افجه", "نگهبانی آخر روستا افجه", "Rizan Afjeh trailhead"],
       "identity_summary": "آغاز بخش پیادهٔ مسیر افجه و دشت هویج به قلهٔ ریزان در انتهای بافت روستا",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
@@ -70,16 +70,16 @@
       "climate": "alpine"
     },
     "rizan-person": {
-      "name": "قلهٔ پرسون در مسیر ریزان",
-      "page_name": "قلهٔ پرسون در مسیر خط‌الرأس ریزان",
+      "name": "قلهٔ پرسون",
+      "page_name": "قلهٔ پرسون لواسانات",
       "short_label": "پرسون",
       "place_type": "summit",
-      "category_key": "ridge",
+      "category_key": "mountain",
       "aliases": ["قله پرسون", "پرسون لواسان", "Person peak"],
-      "identity_summary": "قلهٔ پرسون، عارضهٔ شناخته‌شدهٔ خط‌الرأس و نقطهٔ میانی مسیر اندار به ریزان",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "identity_summary": "قلهٔ پرسون در ارتفاعات دشت هویج و خط‌الرأس لواسانات، با مسیرهای صعود از افجه و برگ‌جهان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
@@ -89,7 +89,13 @@
       "elevation_m": 3167,
       "status": "provisional",
       "elevation_source": "Waypoint قلهٔ پرسون در ترک خط‌الرأس اندار و پرسون به ریزان؛ ارتفاع با DEM نوداد Open-Meteo کنترل می‌شود.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "tile_name": "پرسون",
+      "short_category": "قله",
+      "category": "قله و مسیرهای کوهستانی",
+      "region": "البرز مرکزی · دشت هویج و خط‌الرأس لواسانات",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی قلهٔ پرسون"
     },
     "rizan": {
       "name": "قلهٔ ریزان",
@@ -181,6 +187,38 @@
         "rizan-hoyej-meadow": "دشت هویج عارضهٔ میانی مشترک با مسیر استاندارد افجه–ریزان است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است.",
         "rizan-person": "قلهٔ پرسون عارضهٔ واقعیِ خط‌الرأس پیش از ریزان است."
+      }
+    },
+    "afjeh-hoyej-person": {
+      "slug": "afjeh-hoyej-person",
+      "title": "افجه و دشت هویج تا قلهٔ پرسون",
+      "subtitle": "از مبدأ افجه و دشت هویج، با عبور از اندار تا قلهٔ پرسون",
+      "trail_label": "مسیر افجه–دشت هویج–اندر–پرسون",
+      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "target_label": "قلهٔ پرسون",
+      "region": "البرز مرکزی · لواسانات و دشت هویج",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "rizan-afjeh-trailhead",
+        "rizan-hoyej-meadow",
+        "rizan-andar",
+        "rizan-person"
+      ],
+      "distance_km": 6.26,
+      "ascent_m": 1103,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "evidence_tracks": [
+        "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
+      ],
+      "public_point_notes": {
+        "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "rizan-hoyej-meadow": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر است.",
+        "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است."
       }
     }
   },
