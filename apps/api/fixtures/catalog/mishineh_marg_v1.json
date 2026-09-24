@@ -1,0 +1,128 @@
+{
+  "catalog_version": "hawatch-mishineh-marg-catalog-v1",
+  "weather_points": {
+    "mishineh-marg-lasak-gorge": {
+      "name": "ابتدای تنگهٔ لاسک؛ مسیر میشینه‌مرگ",
+      "page_name": "ابتدای تنگهٔ لاسک در مسیر میشینه‌مرگ",
+      "short_label": "تنگهٔ لاسک",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["تنگه لاسک", "ابتدای تنگه میشینه مرگ", "Lasak Gorge trailhead"],
+      "identity_summary": "آغاز بخش پیاده‌روی مسیر جنوبی قلهٔ میشینه‌مرگ پس از جادهٔ دسترسی لزور",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434",
+        "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/"
+      ],
+      "latitude": 35.888019,
+      "longitude": 52.557489,
+      "elevation_m": 2591,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ ابتدای تنگهٔ لاسک در ترک میشینه‌مرگ؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "mishineh-marg-siah-rud-lake": {
+      "name": "دریاچهٔ سیاهرود؛ مسیر میشینه‌مرگ",
+      "page_name": "دریاچهٔ سیاهرود در مسیر میشینه‌مرگ",
+      "short_label": "دریاچهٔ سیاهرود",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": ["دریاچه لزور در مسیر میشینه مرگ", "سد سیاهرود", "Siah Rud Lake"],
+      "identity_summary": "دریاچه و سد سیاهرود در میانهٔ مسیر پیاده‌روی تنگهٔ لاسک تا قلهٔ میشینه‌مرگ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434",
+        "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/"
+      ],
+      "latitude": 35.914848,
+      "longitude": 52.544734,
+      "elevation_m": 3003,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ دریاچهٔ سیاهرود در ترک میشینه‌مرگ؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "mishineh-marg": {
+      "name": "قلهٔ میشینه‌مرگ",
+      "page_name": "قلهٔ میشینه‌مرگ فیروزکوه",
+      "short_label": "میشینه‌مرگ",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["میشینه مرگ", "قله میشینه مرگ", "Mishineh Marg", "Mishineh-Marg Peak"],
+      "identity_summary": "قلهٔ میشینه‌مرگ در البرز شرقی، شمال روستای لزور و در مسیر دریاچهٔ سیاهرود",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434",
+        "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/"
+      ],
+      "latitude": 35.94288,
+      "longitude": 52.521275,
+      "elevation_m": 3943,
+      "status": "provisional",
+      "elevation_source": "مختصات قله و ارتفاع مرجع از ترک معتبر؛ ارتفاع کاتالوگ با DEM Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "lasak-to-mishineh-marg": {
+      "slug": "lasak-gorge-mishineh-marg",
+      "title": "تنگهٔ لاسک تا قلهٔ میشینه‌مرگ",
+      "subtitle": "از ابتدای تنگهٔ لاسک، دریاچهٔ سیاهرود و یال جنوبی تا قلهٔ میشینه‌مرگ",
+      "trail_label": "مسیر تنگهٔ لاسک–میشینه‌مرگ",
+      "origin": "ابتدای تنگهٔ لاسک",
+      "target_label": "قلهٔ میشینه‌مرگ",
+      "region": "البرز شرقی · فیروزکوه",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "mishineh-marg-lasak-gorge",
+        "mishineh-marg-siah-rud-lake",
+        "mishineh-marg"
+      ],
+      "distance_km": 10.66,
+      "ascent_m": 1445,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434",
+        "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/"
+      ],
+      "evidence_tracks": [
+        "tracks/mishineh-marg/mishineh-marg-lazur-primary.gpx"
+      ],
+      "public_point_notes": {
+        "mishineh-marg-lasak-gorge": "شروع بخش پیاده؛ جادهٔ دسترسی روستای لزور در distance و ETA مسیر وارد نشده است.",
+        "mishineh-marg-siah-rud-lake": "عارضهٔ میانی واقعی و نام‌دار مسیر؛ با دریاچهٔ لزورِ فهرست مقصدها یکی فرض نشده چون مختصات آن‌ها متفاوت است."
+      }
+    }
+  },
+  "point": {
+    "slug": "mishineh-marg",
+    "tile_name": "میشینه‌مرگ",
+    "name": "قلهٔ میشینه‌مرگ",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز شرقی · فیروزکوه",
+    "elevation_m": 3943,
+    "latitude": 35.94288,
+    "longitude": 52.521275,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ میشینه‌مرگ",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["میشینه مرگ", "قله میشینه مرگ", "Mishineh Marg"]
+  },
+  "primary_point": "mishineh-marg"
+}
