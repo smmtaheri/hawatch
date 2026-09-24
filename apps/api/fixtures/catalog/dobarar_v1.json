@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-dobarar-catalog-v2",
+  "catalog_version": "hawatch-dobarar-catalog-v3",
   "weather_points": {
     "dobrar-west": {
       "name": "قلهٔ دوبرار غربی",
@@ -51,9 +51,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 4038 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-bazmchal": {
+    "bazmchal": {
       "name": "قلهٔ بزم‌چال",
-      "page_name": "قلهٔ بزم‌چال در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ بزم‌چال در البرز شرقی",
       "short_label": "بزم‌چال",
       "place_type": "summit",
       "aliases": [
@@ -61,7 +61,7 @@
         "قله بزم چال",
         "Bazm Chal"
       ],
-      "identity_summary": "قلهٔ بزم‌چال؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ بزم‌چال؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -76,9 +76,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3403 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-mianrud": {
+    "mianrud": {
       "name": "قلهٔ میانرود",
-      "page_name": "قلهٔ میانرود در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ میانرود در البرز شرقی",
       "short_label": "میانرود",
       "place_type": "summit",
       "aliases": [
@@ -86,7 +86,7 @@
         "قله میانرود",
         "Mianrud"
       ],
-      "identity_summary": "قلهٔ میانرود؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ میانرود؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -101,9 +101,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3404 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-nur": {
+    "nur": {
       "name": "قلهٔ نور",
-      "page_name": "قلهٔ نور در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ نور در البرز شرقی",
       "short_label": "نور",
       "place_type": "summit",
       "aliases": [
@@ -111,7 +111,7 @@
         "نور دوبرار",
         "Nur Peak"
       ],
-      "identity_summary": "قلهٔ نور؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ نور؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -126,9 +126,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3388 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-lasem-peak": {
+    "lasem-peak": {
       "name": "قلهٔ لاسم",
-      "page_name": "قلهٔ لاسم در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ لاسم در البرز شرقی",
       "short_label": "قلهٔ لاسم",
       "place_type": "summit",
       "aliases": [
@@ -136,7 +136,7 @@
         "لاسِم",
         "Lasem Peak"
       ],
-      "identity_summary": "قلهٔ لاسم؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ لاسم؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -151,17 +151,17 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3402 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-star": {
-      "name": "قلهٔ ستارهٔ دوبرار",
-      "page_name": "قلهٔ ستاره در امتداد خط‌الرأس دوبرار",
-      "short_label": "ستارهٔ دوبرار",
+    "setareh-dobrar": {
+      "name": "قلهٔ ستاره",
+      "page_name": "قلهٔ ستاره در البرز شرقی",
+      "short_label": "ستاره",
       "place_type": "summit",
       "aliases": [
         "قله ستاره",
         "ستاره دوبرار",
         "Setareh Dobarar"
       ],
-      "identity_summary": "قلهٔ ستارهٔ دوبرار؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ ستاره؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -176,9 +176,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3400 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-changizchal-1": {
+    "changizchal-1": {
       "name": "قلهٔ چنگیزچال ۱",
-      "page_name": "قلهٔ چنگیزچال ۱ در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ چنگیزچال ۱ در البرز شرقی",
       "short_label": "چنگیزچال ۱",
       "place_type": "summit",
       "aliases": [
@@ -186,7 +186,7 @@
         "قله چنگیزچال ۱",
         "Changiz Chal 1"
       ],
-      "identity_summary": "قلهٔ چنگیزچال ۱؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ چنگیزچال ۱؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -201,9 +201,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3596 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-changizchal-2": {
+    "changizchal-2": {
       "name": "قلهٔ چنگیزچال ۲",
-      "page_name": "قلهٔ چنگیزچال ۲ در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ چنگیزچال ۲ در البرز شرقی",
       "short_label": "چنگیزچال ۲",
       "place_type": "summit",
       "aliases": [
@@ -211,7 +211,7 @@
         "قله چنگیزچال ۲",
         "Changiz Chal 2"
       ],
-      "identity_summary": "قلهٔ چنگیزچال ۲؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ چنگیزچال ۲؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -226,9 +226,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3610 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-changizchal-3": {
+    "changizchal-3": {
       "name": "قلهٔ چنگیزچال ۳",
-      "page_name": "قلهٔ چنگیزچال ۳ در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ چنگیزچال ۳ در البرز شرقی",
       "short_label": "چنگیزچال ۳",
       "place_type": "summit",
       "aliases": [
@@ -236,7 +236,7 @@
         "قله چنگیزچال ۳",
         "Changiz Chal 3"
       ],
-      "identity_summary": "قلهٔ چنگیزچال ۳؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ چنگیزچال ۳؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -251,9 +251,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3577 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-parvaneh": {
+    "parvaneh": {
       "name": "قلهٔ پروانه",
-      "page_name": "قلهٔ پروانه در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ پروانه در البرز شرقی",
       "short_label": "پروانه",
       "place_type": "summit",
       "aliases": [
@@ -261,7 +261,7 @@
         "پروانه دوبرار",
         "Parvaneh Peak"
       ],
-      "identity_summary": "قلهٔ پروانه؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ پروانه؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -276,9 +276,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3727 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-angemar": {
+    "angemar": {
       "name": "قلهٔ انگمار",
-      "page_name": "قلهٔ انگمار در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ انگمار در البرز شرقی",
       "short_label": "انگمار",
       "place_type": "summit",
       "aliases": [
@@ -286,7 +286,7 @@
         "انگمار دوبرار",
         "Angemar Peak"
       ],
-      "identity_summary": "قلهٔ انگمار؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ انگمار؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -301,9 +301,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3998 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-soozchal": {
+    "soozchal": {
       "name": "قلهٔ سوزچال",
-      "page_name": "قلهٔ سوزچال در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ سوزچال در البرز شرقی",
       "short_label": "سوزچال",
       "place_type": "summit",
       "aliases": [
@@ -311,7 +311,7 @@
         "قله سوزچال",
         "Soozchal Peak"
       ],
-      "identity_summary": "قلهٔ سوزچال؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ سوزچال؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -326,9 +326,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3899 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-rakhsh": {
+    "rakhsh": {
       "name": "قلهٔ رخش",
-      "page_name": "قلهٔ رخش در امتداد شرقی خط‌الرأس دوبرار",
+      "page_name": "قلهٔ رخش در البرز شرقی",
       "short_label": "رخش",
       "place_type": "summit",
       "aliases": [
@@ -336,7 +336,7 @@
         "رخش دوبرار",
         "Rakhsh Peak"
       ],
-      "identity_summary": "قلهٔ رخش؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ رخش؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -351,9 +351,9 @@
       "elevation_source": "مختصات از ترک‌های خط‌الرأس دوبرار؛ Open-Meteo GLO-90 DEM برابر 4003 متر است. ارتفاع خام GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-shahvars": {
+    "shahvars": {
       "name": "قلهٔ شاه‌ورس",
-      "page_name": "قلهٔ شاه‌ورس در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ شاه‌ورس در البرز شرقی",
       "short_label": "شاه‌ورس",
       "place_type": "summit",
       "aliases": [
@@ -361,7 +361,7 @@
         "قله شاهورس",
         "Shah Vars"
       ],
-      "identity_summary": "قلهٔ شاه‌ورس؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ شاه‌ورس؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -376,9 +376,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3970 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-qarahdagh-east": {
+    "qarahdagh-east": {
       "name": "قلهٔ قره‌داغ شرقی",
-      "page_name": "قلهٔ قره‌داغ شرقی در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ قره‌داغ شرقی در البرز شرقی",
       "short_label": "قره‌داغ شرقی",
       "place_type": "summit",
       "aliases": [
@@ -386,7 +386,7 @@
         "قله قره داغ شرقی",
         "Qarah Dagh East"
       ],
-      "identity_summary": "قلهٔ قره‌داغ شرقی؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ قره‌داغ شرقی؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -401,9 +401,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3823 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-shah-tappeh": {
+    "shah-tappeh": {
       "name": "قلهٔ شاه‌تپه",
-      "page_name": "قلهٔ شاه‌تپه در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ شاه‌تپه در البرز شرقی",
       "short_label": "شاه‌تپه",
       "place_type": "summit",
       "aliases": [
@@ -411,7 +411,7 @@
         "قله شاه تپه",
         "Shah Tappeh"
       ],
-      "identity_summary": "قلهٔ شاه‌تپه؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ شاه‌تپه؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -426,9 +426,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3764 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-shahkoh": {
-      "name": "قلهٔ شاه‌کوه دوبرار",
-      "page_name": "قلهٔ شاه‌کوه در خط‌الرأس دوبرار",
+    "shahkoh-dobrar": {
+      "name": "قلهٔ شاه‌کوه",
+      "page_name": "قلهٔ شاه‌کوه در البرز شرقی",
       "short_label": "شاه‌کوه",
       "place_type": "summit",
       "aliases": [
@@ -436,7 +436,7 @@
         "قله شاه کوه دوبرار",
         "Shah Kuh"
       ],
-      "identity_summary": "قلهٔ شاه‌کوه دوبرار؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ شاه‌کوه؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -451,9 +451,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3681 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-asbgirun": {
+    "asbgirun": {
       "name": "قلهٔ اسب‌گیرون",
-      "page_name": "قلهٔ اسب‌گیرون در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ اسب‌گیرون در البرز شرقی",
       "short_label": "اسب‌گیرون",
       "place_type": "summit",
       "aliases": [
@@ -461,7 +461,7 @@
         "قله اسب گیرون",
         "Asb Girun"
       ],
-      "identity_summary": "قلهٔ اسب‌گیرون؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ اسب‌گیرون؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -476,9 +476,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3669 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-kalahun": {
+    "kalahun": {
       "name": "قلهٔ کلاهون",
-      "page_name": "قلهٔ کلاهون در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ کلاهون در البرز شرقی",
       "short_label": "کلاهون",
       "place_type": "summit",
       "aliases": [
@@ -486,7 +486,7 @@
         "قله کلاهون",
         "Kalahun Peak"
       ],
-      "identity_summary": "قلهٔ کلاهون؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ کلاهون؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -501,9 +501,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3569 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-chehelcheshmeh": {
-      "name": "قلهٔ چهل‌چشمهٔ دوبرار",
-      "page_name": "قلهٔ چهل‌چشمه در انتهای شرقی خط‌الرأس دوبرار",
+    "chehelcheshmeh-dobrar": {
+      "name": "قلهٔ چهل‌چشمه",
+      "page_name": "قلهٔ چهل‌چشمه در البرز شرقی",
       "short_label": "چهل‌چشمه",
       "place_type": "summit",
       "aliases": [
@@ -511,7 +511,7 @@
         "قله چهل چشمه",
         "Chehel Cheshmeh Dobarar"
       ],
-      "identity_summary": "قلهٔ چهل‌چشمهٔ دوبرار؛ عارضهٔ واقعی در خط‌الرأس دوبرار",
+      "identity_summary": "قلهٔ چهل‌چشمه؛ عارضه‌ای مستقل و نام‌گذاری‌شده در البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -526,16 +526,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3068 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-western-trailhead": {
-      "name": "پل مرغی؛ مبدأ مسیر غربی دوبرار",
-      "page_name": "پل مرغی، مبدأ مسیر چهار قلهٔ غربی دوبرار",
-      "short_label": "پل مرغی",
+    "pole-morghy-trailhead": {
+      "name": "پل مرغی؛ مبدأ مسیر چهار قله",
+      "page_name": "پل مرغی، مبدأ مسیر چهار قلهٔ غربی",
+      "short_label": "مبدأ پل مرغی",
       "place_type": "trailhead",
       "aliases": [
         "پل مرغی",
         "پل مرغی؛ مبدأ مسیر غربی دوبرار"
       ],
-      "identity_summary": "پل مرغی؛ مبدأ واقعی پیمایش چهار قلهٔ غربی خط‌الرأس دوبرار",
+      "identity_summary": "پل مرغی؛ مبدأ واقعی پیمایش چهار قلهٔ غربی",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -550,7 +550,7 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2549 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-changizchal-trailhead": {
+    "changizchal-trailhead": {
       "name": "مبدأ مسیر چنگیزچال و پروانه",
       "page_name": "مبدأ مسیر پیاده‌روی قله‌های پروانه و چنگیزچال",
       "short_label": "مبدأ چنگیزچال",
@@ -559,7 +559,7 @@
         "مبدأ چنگیزچال",
         "مبدأ مسیر چنگیزچال و پروانه"
       ],
-      "identity_summary": "مبدأ واقعی مسیر پروانه و قله‌های چنگیزچال",
+      "identity_summary": "مبدأ واقعی پیمایش قله‌های پروانه و چنگیزچال",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -574,16 +574,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2615 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-angemar-trailhead": {
+    "angemar-trailhead": {
       "name": "مبدأ مسیر انگمار",
-      "page_name": "مبدأ مسیر انگمار و پیمایش دوبرار از جبههٔ شمالی",
+      "page_name": "مبدأ مسیر انگمار از جبههٔ شمالی",
       "short_label": "مبدأ انگمار",
       "place_type": "trailhead",
       "aliases": [
         "مبدأ انگمار",
         "مبدأ مسیر انگمار"
       ],
-      "identity_summary": "مبدأ واقعی ترک پیاده‌روی انگمار–دوبرار–سوزچال",
+      "identity_summary": "مبدأ واقعی ترک پیاده‌روی انگمار تا سوزچال",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -598,16 +598,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2615 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-blades-trailhead": {
-      "name": "مبدأ تیغه‌های دوبرار",
-      "page_name": "مبدأ پیمایش تیغه‌های دوبرار و مسیر رخش",
-      "short_label": "مبدأ تیغه‌های دوبرار",
+    "blades-trailhead": {
+      "name": "مبدأ تیغه‌ها",
+      "page_name": "مبدأ پیمایش تیغه‌ها و مسیر رخش",
+      "short_label": "مبدأ تیغه‌ها",
       "place_type": "trailhead",
       "aliases": [
         "مبدأ تیغه‌های دوبرار",
         "مبدأ تیغه‌های دوبرار"
       ],
-      "identity_summary": "مبدأ واقعی ترک تیغه‌های دوبرار",
+      "identity_summary": "مبدأ واقعی ترک پیاده‌روی تیغه‌ها و رخش",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -622,16 +622,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2684 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-dehnar-village": {
+    "dehnar-village": {
       "name": "روستای دهنار",
-      "page_name": "آب‌وهوای روستای دهنار؛ مبدأ مسیر قره‌داغ دوبرار",
+      "page_name": "آب‌وهوای روستای دهنار",
       "short_label": "روستای دهنار",
       "place_type": "village",
       "aliases": [
         "روستای دهنار",
         "روستای دهنار"
       ],
-      "identity_summary": "روستای دهنار؛ مبدأ معتبر مسیر شرقی قلهٔ قره‌داغ",
+      "identity_summary": "روستای دهنار؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "support",
       "kind": "shared",
       "seo_indexable": true,
@@ -646,16 +646,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2413 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-yahar-village": {
+    "yahar-village": {
       "name": "روستای یَهَر",
-      "page_name": "آب‌وهوای روستای یَهَر؛ مبدأ مسیر کلاهون",
+      "page_name": "آب‌وهوای روستای یَهَر",
       "short_label": "روستای یَهَر",
       "place_type": "village",
       "aliases": [
         "روستای یَهَر",
         "روستای یَهَر"
       ],
-      "identity_summary": "روستای یهر؛ مبدأ معتبر مسیر پیاده‌روی قلهٔ کلاهون",
+      "identity_summary": "روستای یَهَر؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "support",
       "kind": "shared",
       "seo_indexable": true,
@@ -670,16 +670,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2436 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-kahnak-village": {
+    "kahnak-village": {
       "name": "روستای کهنک",
-      "page_name": "آب‌وهوای روستای کهنک؛ مبدأ مسیر چهل‌چشمهٔ دوبرار",
+      "page_name": "آب‌وهوای روستای کهنک",
       "short_label": "روستای کهنک",
       "place_type": "village",
       "aliases": [
         "روستای کهنک",
         "روستای کهنک"
       ],
-      "identity_summary": "روستای کهنک؛ مبدأ معتبر مسیر چهل‌چشمهٔ دوبرار",
+      "identity_summary": "روستای کهنک؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "support",
       "kind": "shared",
       "seo_indexable": true,
@@ -694,16 +694,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2149 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-momaj-village": {
+    "momaj-village": {
       "name": "روستای مومج",
-      "page_name": "آب‌وهوای روستای مومج؛ مبدأ مسیر شرقی دوبرار",
+      "page_name": "آب‌وهوای روستای مومج",
       "short_label": "روستای مومج",
       "place_type": "village",
       "aliases": [
         "روستای مومج",
         "روستای مومج"
       ],
-      "identity_summary": "روستای مومج؛ مبدأ ثبت‌شدهٔ پیمایش شرقی خط‌الرأس دوبرار",
+      "identity_summary": "روستای مومج؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "support",
       "kind": "shared",
       "seo_indexable": true,
@@ -718,18 +718,24 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 2344 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "meadow"
     },
-    "dobrar-ziyar-village": {
+    "ziyar-village": {
       "name": "روستای زیار",
-      "page_name": "آب‌وهوای روستای زیار؛ پای شمال‌غربی دوبرار",
+      "page_name": "آب‌وهوای روستای زیار",
       "short_label": "روستای زیار",
       "place_type": "village",
-      "aliases": ["زیار", "روستا زیار", "Ziar village"],
-      "identity_summary": "روستای زیار در جبههٔ شمالی خط‌الرأس دوبرار و مسیر دسترسی غربی آن",
+      "aliases": [
+        "زیار",
+        "روستا زیار",
+        "Ziar village"
+      ],
+      "identity_summary": "روستای زیار؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.837736&mlon=52.103318#map=15/35.837736/52.103318"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.837736&mlon=52.103318#map=15/35.837736/52.103318"
+      ],
       "latitude": 35.837736,
       "longitude": 52.103318,
       "elevation_m": 2391,
@@ -737,37 +743,49 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2391 متر است.",
       "climate": "meadow"
     },
-    "dobrar-zarman-village": {
+    "zarman-village": {
       "name": "روستای زرمان",
-      "page_name": "آب‌وهوای روستای زرمان؛ پای شمالی خط‌الرأس دوبرار",
+      "page_name": "آب‌وهوای روستای زرمان",
       "short_label": "روستای زرمان",
       "place_type": "village",
-      "aliases": ["زرمان", "روستا زرمان", "Zarman village"],
-      "identity_summary": "روستای زرمان در جبههٔ شمالی خط‌الرأس دوبرار و نزدیک مبدأ مسیرهای شرقی",
+      "aliases": [
+        "زرمان",
+        "روستا زرمان",
+        "Zarman village"
+      ],
+      "identity_summary": "روستای زرمان؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.799048&mlon=52.307960#map=15/35.799048/52.307960"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.799048&mlon=52.307960#map=15/35.799048/52.307960"
+      ],
       "latitude": 35.799048,
-      "longitude": 52.307960,
+      "longitude": 52.30796,
       "elevation_m": 2743,
       "status": "provisional",
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2743 متر است.",
       "climate": "meadow"
     },
-    "dobrar-vezna-village": {
+    "vezna-village": {
       "name": "روستای وزنا",
-      "page_name": "آب‌وهوای روستای وزنا؛ پای شمالی دوبرار",
+      "page_name": "آب‌وهوای روستای وزنا",
       "short_label": "روستای وزنا",
       "place_type": "village",
-      "aliases": ["وزنا", "روستا وزنا", "Vezna village"],
-      "identity_summary": "روستای وزنا در جبههٔ شمالی خط‌الرأس دوبرار و محور دسترسی فیروزکوه",
+      "aliases": [
+        "وزنا",
+        "روستا وزنا",
+        "Vezna village"
+      ],
+      "identity_summary": "روستای وزنا؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.800145&mlon=52.315963#map=15/35.800145/52.315963"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.800145&mlon=52.315963#map=15/35.800145/52.315963"
+      ],
       "latitude": 35.800145,
       "longitude": 52.315963,
       "elevation_m": 2777,
@@ -775,18 +793,24 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2777 متر است.",
       "climate": "meadow"
     },
-    "dobrar-najafdar-village": {
+    "najafdar-village": {
       "name": "روستای نجفدر",
-      "page_name": "آب‌وهوای روستای نجفدر در مسیر دوبرار",
+      "page_name": "آب‌وهوای روستای نجفدر",
       "short_label": "روستای نجفدر",
       "place_type": "village",
-      "aliases": ["نجفدر", "روستا نجفدر", "Najafdar village"],
-      "identity_summary": "روستای نجفدر در جبههٔ شمالی و بخش شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "نجفدر",
+        "روستا نجفدر",
+        "Najafdar village"
+      ],
+      "identity_summary": "روستای نجفدر؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.788779&mlon=52.377783#map=15/35.788779/52.377783"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.788779&mlon=52.377783#map=15/35.788779/52.377783"
+      ],
       "latitude": 35.788779,
       "longitude": 52.377783,
       "elevation_m": 2370,
@@ -794,18 +818,24 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2370 متر است.",
       "climate": "meadow"
     },
-    "dobrar-bahan-village": {
+    "bahan-village": {
       "name": "روستای بهان",
-      "page_name": "آب‌وهوای روستای بهان در جبههٔ شمالی دوبرار",
+      "page_name": "آب‌وهوای روستای بهان",
       "short_label": "روستای بهان",
       "place_type": "village",
-      "aliases": ["بهان", "روستا بهان", "Bahan village"],
-      "identity_summary": "روستای بهان در محور روستاهای شمالی و شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "بهان",
+        "روستا بهان",
+        "Bahan village"
+      ],
+      "identity_summary": "روستای بهان؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.787178&mlon=52.405549#map=15/35.787178/52.405549"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.787178&mlon=52.405549#map=15/35.787178/52.405549"
+      ],
       "latitude": 35.787178,
       "longitude": 52.405549,
       "elevation_m": 2286,
@@ -813,37 +843,51 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2286 متر است.",
       "climate": "meadow"
     },
-    "dobrar-asur-village": {
+    "asur-village": {
       "name": "روستای آسور",
-      "page_name": "آب‌وهوای روستای آسور؛ جبههٔ شمالی دوبرار",
+      "page_name": "آب‌وهوای روستای آسور",
       "short_label": "روستای آسور",
       "place_type": "village",
-      "aliases": ["آسور", "اسور", "روستا آسور", "Asur village"],
-      "identity_summary": "روستای آسور در محور شمالی و شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "آسور",
+        "اسور",
+        "روستا آسور",
+        "Asur village"
+      ],
+      "identity_summary": "روستای آسور؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.785420&mlon=52.429968#map=15/35.785420/52.429968"],
-      "latitude": 35.785420,
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.785420&mlon=52.429968#map=15/35.785420/52.429968"
+      ],
+      "latitude": 35.78542,
       "longitude": 52.429968,
       "elevation_m": 2236,
       "status": "provisional",
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2236 متر است.",
       "climate": "meadow"
     },
-    "dobrar-andarieh-village": {
+    "andarieh-village": {
       "name": "روستای اندریه",
-      "page_name": "آب‌وهوای روستای اندریه در محور دوبرار",
+      "page_name": "آب‌وهوای روستای اندریه",
       "short_label": "روستای اندریه",
       "place_type": "village",
-      "aliases": ["اندریه", "اندرایه", "روستا اندریه", "Andarieh village"],
-      "identity_summary": "روستای اندریه در جبههٔ شمالی بخش شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "اندریه",
+        "اندرایه",
+        "روستا اندریه",
+        "Andarieh village"
+      ],
+      "identity_summary": "روستای اندریه؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.784898&mlon=52.452198#map=15/35.784898/52.452198"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.784898&mlon=52.452198#map=15/35.784898/52.452198"
+      ],
       "latitude": 35.784898,
       "longitude": 52.452198,
       "elevation_m": 2155,
@@ -851,18 +895,25 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2155 متر است.",
       "climate": "meadow"
     },
-    "dobrar-vashtan-village": {
+    "vashtan-village": {
       "name": "روستای وشتان",
-      "page_name": "آب‌وهوای روستای وشتان؛ جادهٔ شمالی دوبرار",
+      "page_name": "آب‌وهوای روستای وشتان",
       "short_label": "روستای وشتان",
       "place_type": "village",
-      "aliases": ["وشتان", "وشتون", "روستا وشتان", "Vashtan village"],
-      "identity_summary": "روستای وشتان در ادامهٔ محور شمالی و شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "وشتان",
+        "وشتون",
+        "روستا وشتان",
+        "Vashtan village"
+      ],
+      "identity_summary": "روستای وشتان؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.773783&mlon=52.501632#map=15/35.773783/52.501632"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.773783&mlon=52.501632#map=15/35.773783/52.501632"
+      ],
       "latitude": 35.773783,
       "longitude": 52.501632,
       "elevation_m": 2098,
@@ -870,37 +921,50 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2098 متر است.",
       "climate": "meadow"
     },
-    "dobrar-li-posht-village": {
+    "li-posht-village": {
       "name": "روستای لی‌پشت",
-      "page_name": "آب‌وهوای روستای لی‌پشت در جبههٔ جنوبی دوبرار",
+      "page_name": "آب‌وهوای روستای لی‌پشت",
       "short_label": "روستای لی‌پشت",
       "place_type": "village",
-      "aliases": ["لی پشت", "لی‌پشت", "روستا لی پشت", "Li Posht village"],
-      "identity_summary": "روستای لی‌پشت در جبههٔ جنوبی و مسیر دسترسی شرقی خط‌الرأس دوبرار",
+      "aliases": [
+        "لی پشت",
+        "لی‌پشت",
+        "روستا لی پشت",
+        "Li Posht village"
+      ],
+      "identity_summary": "روستای لی‌پشت؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.701750&mlon=52.393995#map=15/35.701750/52.393995"],
-      "latitude": 35.701750,
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.701750&mlon=52.393995#map=15/35.701750/52.393995"
+      ],
+      "latitude": 35.70175,
       "longitude": 52.393995,
       "elevation_m": 2331,
       "status": "provisional",
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2331 متر است.",
       "climate": "meadow"
     },
-    "dobrar-hoir-village": {
+    "hoir-village": {
       "name": "روستای هویر",
-      "page_name": "آب‌وهوای روستای هویر در مسیر جنوبی دوبرار",
+      "page_name": "آب‌وهوای روستای هویر",
       "short_label": "روستای هویر",
       "place_type": "village",
-      "aliases": ["هویر", "روستا هویر", "Havir village"],
-      "identity_summary": "روستای هویر در جبههٔ جنوبی خط‌الرأس دوبرار و نزدیک دریاچهٔ هویر",
+      "aliases": [
+        "هویر",
+        "روستا هویر",
+        "Havir village"
+      ],
+      "identity_summary": "روستای هویر؛ سکونتگاهی شناخته‌شده در جبهه‌های البرز شرقی",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
-      "source_urls": ["https://www.openstreetmap.org/?mlat=35.714765&mlon=52.320459#map=15/35.714765/52.320459"],
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=35.714765&mlon=52.320459#map=15/35.714765/52.320459"
+      ],
       "latitude": 35.714765,
       "longitude": 52.320459,
       "elevation_m": 2494,
@@ -908,16 +972,16 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2494 متر است.",
       "climate": "meadow"
     },
-    "dobrar-hoir-lake": {
+    "hoir-lake": {
       "name": "دریاچهٔ هویر",
-      "page_name": "دریاچهٔ هویر در مسیر شرقی دوبرار",
+      "page_name": "دریاچهٔ هویر",
       "short_label": "دریاچهٔ هویر",
       "place_type": "lake",
       "aliases": [
         "دریاچهٔ هویر",
         "دریاچهٔ هویر"
       ],
-      "identity_summary": "دریاچهٔ هویر؛ عارضهٔ میانی مسیر دریاچهٔ تار تا دوبرار شرقی",
+      "identity_summary": "دریاچهٔ هویر؛ عارضهٔ میانی مسیر دریاچهٔ تار تا قلهٔ دوبرار شرقی",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -932,9 +996,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3532 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "lake_valley"
     },
-    "dobrar-rakhsh-1": {
+    "rakhsh-1": {
       "name": "قلهٔ رخش یک",
-      "page_name": "قلهٔ رخش یک در بخش تیغه‌های دوبرار",
+      "page_name": "قلهٔ رخش یک در بخش تیغه‌ها",
       "short_label": "رخش یک",
       "place_type": "summit",
       "aliases": [
@@ -956,9 +1020,9 @@
       "elevation_source": "مختصات از ترک تیغه‌های دوبرار؛ Open-Meteo GLO-90 DEM برابر 3877 متر است. ارتفاع خام GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-rakhsh-2": {
+    "rakhsh-2": {
       "name": "قلهٔ رخش دو",
-      "page_name": "قلهٔ رخش دو در بخش تیغه‌های دوبرار",
+      "page_name": "قلهٔ رخش دو در بخش تیغه‌ها",
       "short_label": "رخش دو",
       "place_type": "summit",
       "aliases": [
@@ -980,9 +1044,9 @@
       "elevation_source": "مختصات از ترک تیغه‌های دوبرار؛ Open-Meteo GLO-90 DEM برابر 3840 متر است. ارتفاع خام GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-kamarposht": {
+    "kamarposht": {
       "name": "قلهٔ کمرپشت",
-      "page_name": "قلهٔ کمرپشت در تیغه‌های دوبرار",
+      "page_name": "قلهٔ کمرپشت در بخش تیغه‌ها",
       "short_label": "کمرپشت",
       "place_type": "summit",
       "aliases": [
@@ -1004,9 +1068,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3980 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-qarahdagh-west": {
+    "qarahdagh-west": {
       "name": "قلهٔ قره‌داغ غربی",
-      "page_name": "قلهٔ قره‌داغ غربی در خط‌الرأس دوبرار",
+      "page_name": "قلهٔ قره‌داغ غربی در امتداد خط‌الرأس",
       "short_label": "قره‌داغ غربی",
       "place_type": "summit",
       "aliases": [
@@ -1028,9 +1092,9 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3916 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-shahvars-east": {
+    "shahvars-east": {
       "name": "قلهٔ شاه‌ورس شرقی",
-      "page_name": "قلهٔ شاه‌ورس شرقی در تیغه‌های دوبرار",
+      "page_name": "قلهٔ شاه‌ورس شرقی در بخش تیغه‌ها",
       "short_label": "شاه‌ورس شرقی",
       "place_type": "summit",
       "aliases": [
@@ -1052,7 +1116,7 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3890 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-chehelcheshmeh-foothill": {
+    "chehelcheshmeh-foothill": {
       "name": "پیش‌قلهٔ چهل‌چشمهٔ دوبرار",
       "page_name": "پیش‌قلهٔ چهل‌چشمه در مسیر کهنک",
       "short_label": "پیش‌قلهٔ چهل‌چشمه",
@@ -1076,16 +1140,16 @@
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3344 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
       "climate": "alpine"
     },
-    "dobrar-ridge-spring": {
-      "name": "چشمهٔ خط‌الرأس دوبرار",
-      "page_name": "چشمهٔ مسیر خط‌الرأس دوبرار نزدیک کهنک",
-      "short_label": "چشمهٔ دوبرار",
+    "ridge-spring": {
+      "name": "چشمهٔ مسیر شرقی",
+      "page_name": "چشمهٔ مسیر شرقی نزدیک کهنک",
+      "short_label": "چشمهٔ مسیر",
       "place_type": "spring",
       "aliases": [
         "چشمهٔ دوبرار",
         "چشمهٔ خط‌الرأس دوبرار"
       ],
-      "identity_summary": "چشمهٔ نام‌گذاری‌شده در بخش شرقی خط‌الرأس دوبرار",
+      "identity_summary": "چشمهٔ نام‌گذاری‌شده در مسیر شرقی خط‌الرأس",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -1107,21 +1171,21 @@
   ],
   "routes": {
     "western": {
-      "slug": "dobrar-western-four-summits",
+      "slug": "western-four-summits",
       "title": "پل مرغی تا قلهٔ لاسم",
-      "subtitle": "مسیر چهار قلهٔ غربی دوبرار از پل مرغی، بزم‌چال، میانرود و نور تا قلهٔ لاسم",
-      "trail_label": "مسیر چهار قلهٔ غربی دوبرار",
+      "subtitle": "مسیر چهار قلهٔ غربی از پل مرغی، بزم‌چال، میانرود و نور تا قلهٔ لاسم",
+      "trail_label": "مسیر چهار قلهٔ غربی",
       "origin": "پل مرغی",
       "target_label": "قلهٔ لاسم",
       "region": "البرز شرقی · دماوند",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "dobrar-western-trailhead",
-        "dobrar-bazmchal",
-        "dobrar-mianrud",
-        "dobrar-nur",
-        "dobrar-lasem-peak"
+        "pole-morghy-trailhead",
+        "bazmchal",
+        "mianrud",
+        "nur",
+        "lasem-peak"
       ],
       "distance_km": 9.2,
       "ascent_m": 1062,
@@ -1141,11 +1205,11 @@
           "tracks/dobarar/dobarar-western-four-summits.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-western-trailhead": 0,
-          "dobrar-bazmchal": 90,
-          "dobrar-mianrud": 180,
-          "dobrar-nur": 270,
-          "dobrar-lasem-peak": 360
+          "pole-morghy-trailhead": 0,
+          "bazmchal": 90,
+          "mianrud": 180,
+          "nur": 270,
+          "lasem-peak": 360
         },
         "notes": [
           "فاصله و زمان از برش یک‌طرفهٔ ترک تا قلهٔ لاسم محاسبه شده‌اند."
@@ -1154,9 +1218,9 @@
       "public_point_notes": {}
     },
     "changiz": {
-      "slug": "dobrar-changizchal-parvaneh",
+      "slug": "changizchal-parvaneh",
       "title": "مبدأ چنگیزچال تا قلهٔ چنگیزچال ۳",
-      "subtitle": "مسیر قلهٔ پروانه و قله‌های چنگیزچال ۱، ۲ و ۳ در خط‌الرأس دوبرار",
+      "subtitle": "مسیر قلهٔ پروانه و قله‌های چنگیزچال ۱، ۲ و ۳ در امتداد خط‌الرأس",
       "trail_label": "مسیر پروانه و چنگیزچال",
       "origin": "مبدأ چنگیزچال",
       "target_label": "قلهٔ چنگیزچال ۳",
@@ -1164,11 +1228,11 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "dobrar-changizchal-trailhead",
-        "dobrar-parvaneh",
-        "dobrar-changizchal-1",
-        "dobrar-changizchal-2",
-        "dobrar-changizchal-3"
+        "changizchal-trailhead",
+        "parvaneh",
+        "changizchal-1",
+        "changizchal-2",
+        "changizchal-3"
       ],
       "distance_km": 9.5,
       "ascent_m": 1396,
@@ -1188,11 +1252,11 @@
           "tracks/dobarar/dobarar-changizchal-parvaneh.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-changizchal-trailhead": 0,
-          "dobrar-parvaneh": 120,
-          "dobrar-changizchal-1": 240,
-          "dobrar-changizchal-2": 360,
-          "dobrar-changizchal-3": 480
+          "changizchal-trailhead": 0,
+          "parvaneh": 120,
+          "changizchal-1": 240,
+          "changizchal-2": 360,
+          "changizchal-3": 480
         },
         "notes": [
           "route چندقله‌ای است و زمان آن برآوردی است."
@@ -1201,7 +1265,7 @@
       "public_point_notes": {}
     },
     "angemar": {
-      "slug": "lasem-angemar-dobrar-soozchal",
+      "slug": "lasem-angemar-soozchal",
       "title": "انگمار تا سوزچال از خط‌الرأس دوبرار",
       "subtitle": "مسیر انگمار، دوبرار غربی و شرقی و سوزچال در خط‌الرأس دوبرار",
       "trail_label": "مسیر انگمار–دوبرار–سوزچال",
@@ -1211,11 +1275,11 @@
       "featured": false,
       "sort_order": 3,
       "points": [
-        "dobrar-angemar-trailhead",
-        "dobrar-angemar",
+        "angemar-trailhead",
+        "angemar",
         "dobrar-west",
         "dobrar-east",
-        "dobrar-soozchal"
+        "soozchal"
       ],
       "distance_km": 9.1,
       "ascent_m": 1626,
@@ -1235,11 +1299,11 @@
           "tracks/dobarar/dobarar-angemar-west-east-soozchal.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-angemar-trailhead": 0,
-          "dobrar-angemar": 120,
+          "angemar-trailhead": 0,
+          "angemar": 120,
           "dobrar-west": 240,
           "dobrar-east": 360,
-          "dobrar-soozchal": 480
+          "soozchal": 480
         },
         "notes": [
           "ترک مستقل پیوستگی زنجیرهٔ انگمار تا سوزچال را نشان می‌دهد."
@@ -1259,7 +1323,7 @@
       "sort_order": 4,
       "points": [
         "tar-lake",
-        "dobrar-hoir-lake",
+        "hoir-lake",
         "dobrar-east"
       ],
       "distance_km": 6.2,
@@ -1281,7 +1345,7 @@
         ],
         "cumulative_minutes": {
           "tar-lake": 0,
-          "dobrar-hoir-lake": 150,
+          "hoir-lake": 150,
           "dobrar-east": 300
         },
         "notes": [
@@ -1291,22 +1355,22 @@
       "public_point_notes": {}
     },
     "blades": {
-      "slug": "dobrar-blades-rakhsh-to-shahvars",
-      "title": "مبدأ تیغه‌های دوبرار تا شاه‌ورس شرقی",
-      "subtitle": "پیمایش تیغه‌های دوبرار از رخش یک و دو و کمرپشت تا شاه‌ورس شرقی",
-      "trail_label": "مسیر تیغه‌های دوبرار",
-      "origin": "مبدأ تیغه‌های دوبرار",
+      "slug": "blades-rakhsh-to-shahvars",
+      "title": "مبدأ تیغه‌ها تا شاه‌ورس شرقی",
+      "subtitle": "پیمایش تیغه‌ها از رخش یک و دو و کمرپشت تا شاه‌ورس شرقی",
+      "trail_label": "مسیر تیغه‌ها",
+      "origin": "مبدأ تیغه‌ها",
       "target_label": "قلهٔ شاه‌ورس شرقی",
       "region": "البرز شرقی · دماوند",
       "featured": false,
       "sort_order": 5,
       "points": [
-        "dobrar-blades-trailhead",
-        "dobrar-rakhsh-1",
-        "dobrar-rakhsh-2",
-        "dobrar-kamarposht",
-        "dobrar-qarahdagh-west",
-        "dobrar-shahvars-east"
+        "blades-trailhead",
+        "rakhsh-1",
+        "rakhsh-2",
+        "kamarposht",
+        "qarahdagh-west",
+        "shahvars-east"
       ],
       "distance_km": 9.5,
       "ascent_m": 1452,
@@ -1326,12 +1390,12 @@
           "tracks/dobarar/dobarar-rakhsh-kamarposht-shahvars.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-blades-trailhead": 0,
-          "dobrar-rakhsh-1": 90,
-          "dobrar-rakhsh-2": 180,
-          "dobrar-kamarposht": 270,
-          "dobrar-qarahdagh-west": 360,
-          "dobrar-shahvars-east": 450
+          "blades-trailhead": 0,
+          "rakhsh-1": 90,
+          "rakhsh-2": 180,
+          "kamarposht": 270,
+          "qarahdagh-west": 360,
+          "shahvars-east": 450
         },
         "notes": [
           "این route به‌دلیل بخش تیغه‌ای با زمان محافظه‌کارانه نمایش داده می‌شود."
@@ -1350,9 +1414,9 @@
       "featured": false,
       "sort_order": 6,
       "points": [
-        "dobrar-dehnar-village",
-        "dobrar-qarahdagh-west",
-        "dobrar-qarahdagh-east"
+        "dehnar-village",
+        "qarahdagh-west",
+        "qarahdagh-east"
       ],
       "distance_km": 14.7,
       "ascent_m": 1898,
@@ -1372,9 +1436,9 @@
           "tracks/dobarar/dobarar-qarahdagh-dehnar.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-dehnar-village": 0,
-          "dobrar-qarahdagh-west": 240,
-          "dobrar-qarahdagh-east": 480
+          "dehnar-village": 0,
+          "qarahdagh-west": 240,
+          "qarahdagh-east": 480
         },
         "notes": [
           "مبدأ روستایی با نقطهٔ canonical روستای دهنار ادغام شده است."
@@ -1385,7 +1449,7 @@
     "kalahun": {
       "slug": "yahar-to-kalahun",
       "title": "روستای یهر تا قلهٔ کلاهون",
-      "subtitle": "مسیر پیاده‌روی روستای یهر و خط‌الرأس اسب‌گیرون تا قلهٔ کلاهون",
+      "subtitle": "مسیر پیاده‌روی روستای یهر و اسب‌گیرون تا قلهٔ کلاهون",
       "trail_label": "مسیر یهر–کلاهون",
       "origin": "روستای یهر",
       "target_label": "قلهٔ کلاهون",
@@ -1393,9 +1457,9 @@
       "featured": false,
       "sort_order": 7,
       "points": [
-        "dobrar-yahar-village",
-        "dobrar-asbgirun",
-        "dobrar-kalahun"
+        "yahar-village",
+        "asbgirun",
+        "kalahun"
       ],
       "distance_km": 4.3,
       "ascent_m": 1226,
@@ -1415,9 +1479,9 @@
           "tracks/dobarar/dobarar-kalahun-yahar.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-yahar-village": 0,
-          "dobrar-asbgirun": 120,
-          "dobrar-kalahun": 240
+          "yahar-village": 0,
+          "asbgirun": 120,
+          "kalahun": 240
         },
         "notes": [
           "اسب‌گیرون به‌عنوان عارضهٔ خط‌الرأس در زنجیرهٔ مسیر آمده است."
@@ -1427,18 +1491,18 @@
     },
     "chehel": {
       "slug": "kahnak-to-chehelcheshmeh",
-      "title": "روستای کهنک تا قلهٔ چهل‌چشمهٔ دوبرار",
-      "subtitle": "مسیر روستای کهنک، پیش‌قله و چشمه تا قلهٔ چهل‌چشمهٔ دوبرار",
+      "title": "روستای کهنک تا قلهٔ چهل‌چشمه",
+      "subtitle": "مسیر روستای کهنک، پیش‌قله و چشمه تا قلهٔ چهل‌چشمه",
       "trail_label": "مسیر کهنک–چهل‌چشمه",
       "origin": "روستای کهنک",
-      "target_label": "قلهٔ چهل‌چشمهٔ دوبرار",
+      "target_label": "قلهٔ چهل‌چشمه",
       "region": "البرز شرقی · دماوند",
       "featured": false,
       "sort_order": 8,
       "points": [
-        "dobrar-kahnak-village",
-        "dobrar-chehelcheshmeh-foothill",
-        "dobrar-chehelcheshmeh"
+        "kahnak-village",
+        "chehelcheshmeh-foothill",
+        "chehelcheshmeh-dobrar"
       ],
       "distance_km": 7.2,
       "ascent_m": 1170,
@@ -1458,9 +1522,9 @@
           "tracks/dobarar/dobarar-chehelcheshmeh-kahnak.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-kahnak-village": 0,
-          "dobrar-chehelcheshmeh-foothill": 180,
-          "dobrar-chehelcheshmeh": 360
+          "kahnak-village": 0,
+          "chehelcheshmeh-foothill": 180,
+          "chehelcheshmeh-dobrar": 360
         },
         "notes": [
           "پیش‌قله به‌عنوان عارضهٔ میانی واقعی ثبت شده است."
@@ -1469,7 +1533,7 @@
       "public_point_notes": {}
     },
     "full": {
-      "slug": "dobarar-full-ridge",
+      "slug": "full-dobarar-ridge",
       "title": "پیمایش کامل خط‌الرأس دوبرار",
       "subtitle": "پیمایش خط‌الرأس دوبرار از پل مرغی و قله‌های غربی تا چهل‌چشمه",
       "trail_label": "خط‌الرأس کامل دوبرار",
@@ -1479,24 +1543,24 @@
       "featured": false,
       "sort_order": 9,
       "points": [
-        "dobrar-western-trailhead",
-        "dobrar-bazmchal",
-        "dobrar-mianrud",
-        "dobrar-nur",
-        "dobrar-lasem-peak",
-        "dobrar-parvaneh",
-        "dobrar-angemar",
+        "pole-morghy-trailhead",
+        "bazmchal",
+        "mianrud",
+        "nur",
+        "lasem-peak",
+        "parvaneh",
+        "angemar",
         "dobrar-west",
         "dobrar-east",
-        "dobrar-soozchal",
-        "dobrar-rakhsh",
-        "dobrar-shahvars",
-        "dobrar-qarahdagh-east",
-        "dobrar-shah-tappeh",
-        "dobrar-shahkoh",
-        "dobrar-asbgirun",
-        "dobrar-kalahun",
-        "dobrar-chehelcheshmeh"
+        "soozchal",
+        "rakhsh",
+        "shahvars",
+        "qarahdagh-east",
+        "shah-tappeh",
+        "shahkoh-dobrar",
+        "asbgirun",
+        "kalahun",
+        "chehelcheshmeh-dobrar"
       ],
       "distance_km": 51.8,
       "ascent_m": 3154,
@@ -1516,24 +1580,24 @@
           "tracks/dobarar/dobarar-full-ridge.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-western-trailhead": 0,
-          "dobrar-bazmchal": 113,
-          "dobrar-mianrud": 226,
-          "dobrar-nur": 339,
-          "dobrar-lasem-peak": 452,
-          "dobrar-parvaneh": 565,
-          "dobrar-angemar": 678,
+          "pole-morghy-trailhead": 0,
+          "bazmchal": 113,
+          "mianrud": 226,
+          "nur": 339,
+          "lasem-peak": 452,
+          "parvaneh": 565,
+          "angemar": 678,
           "dobrar-west": 791,
           "dobrar-east": 904,
-          "dobrar-soozchal": 1016,
-          "dobrar-rakhsh": 1129,
-          "dobrar-shahvars": 1242,
-          "dobrar-qarahdagh-east": 1355,
-          "dobrar-shah-tappeh": 1468,
-          "dobrar-shahkoh": 1581,
-          "dobrar-asbgirun": 1694,
-          "dobrar-kalahun": 1807,
-          "dobrar-chehelcheshmeh": 1920
+          "soozchal": 1016,
+          "rakhsh": 1129,
+          "shahvars": 1242,
+          "qarahdagh-east": 1355,
+          "shah-tappeh": 1468,
+          "shahkoh-dobrar": 1581,
+          "asbgirun": 1694,
+          "kalahun": 1807,
+          "chehelcheshmeh-dobrar": 1920
         },
         "notes": [
           "ترک برای کراس‌چک کل زنجیره و route چندروزه است؛ زمان تقریبی است."
@@ -1542,9 +1606,9 @@
       "public_point_notes": {}
     },
     "momaj": {
-      "slug": "dobarar-momaj-to-kalahun",
+      "slug": "momaj-to-kalahun",
       "title": "روستای مومج تا قلهٔ کلاهون",
-      "subtitle": "بخش شرقی خط‌الرأس دوبرار از مومج، شاه‌تپه و شاه‌کوه تا کلاهون",
+      "subtitle": "بخش شرقی خط‌الرأس از مومج، شاه‌تپه و شاه‌کوه تا کلاهون",
       "trail_label": "مسیر مومج–کلاهون",
       "origin": "روستای مومج",
       "target_label": "قلهٔ کلاهون",
@@ -1552,10 +1616,10 @@
       "featured": false,
       "sort_order": 10,
       "points": [
-        "dobrar-momaj-village",
-        "dobrar-shah-tappeh",
-        "dobrar-shahkoh",
-        "dobrar-kalahun"
+        "momaj-village",
+        "shah-tappeh",
+        "shahkoh-dobrar",
+        "kalahun"
       ],
       "distance_km": 12.3,
       "ascent_m": 1570,
@@ -1575,10 +1639,10 @@
           "tracks/dobarar/dobarar-momaj-arjmand-crosscheck.gpx"
         ],
         "cumulative_minutes": {
-          "dobrar-momaj-village": 0,
-          "dobrar-shah-tappeh": 140,
-          "dobrar-shahkoh": 280,
-          "dobrar-kalahun": 420
+          "momaj-village": 0,
+          "shah-tappeh": 140,
+          "shahkoh-dobrar": 280,
+          "kalahun": 420
         },
         "notes": [
           "ترک مستقل شرقی با ترک خط‌الرأس کامل تطبیق داده شده است."
