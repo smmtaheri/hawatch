@@ -1,0 +1,150 @@
+{
+  "catalog_version": "hawatch-aseman-kuh-catalog-v1",
+  "weather_points": {
+    "aseman-kuh-hio-trailhead": {
+      "name": "مبدأ روستای هیو؛ مسیر آسمان‌کوه",
+      "page_name": "مبدأ روستای هیو در مسیر آسمان‌کوه",
+      "short_label": "مبدأ هیو",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["هیو شروع آسمان کوه", "روستای هیو مسیر قله", "Hio Aseman Kuh trailhead"],
+      "identity_summary": "مبدأ پیاده‌روی مسیر جنوبی قلهٔ آسمان‌کوه از روستای هیو در ساوجبلاغ",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430",
+        "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968"
+      ],
+      "latitude": 36.051793,
+      "longitude": 50.655291,
+      "elevation_m": 1650,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک هیو تا آسمان‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "forest_fog"
+    },
+    "aseman-kuh-musa-shrine": {
+      "name": "امامزاده موسی؛ مسیر آسمان‌کوه",
+      "page_name": "امامزاده موسی در مسیر آسمان‌کوه",
+      "short_label": "امامزاده موسی",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["امامزاده موسی هیو", "امامزاده موسی آسمان کوه", "Musa Shrine Aseman Kuh"],
+      "identity_summary": "امامزادهٔ نام‌دار و عارضهٔ میانی مسیر جنوبی هیو تا آسمان‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430"
+      ],
+      "latitude": 36.07802,
+      "longitude": 50.657423,
+      "elevation_m": 1853,
+      "status": "provisional",
+      "elevation_source": "Waypoint امامزاده موسی در ترک هیو تا آسمان‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "forest_fog"
+    },
+    "aseman-kuh-zendegani-spring": {
+      "name": "چشمهٔ آب زندگانی؛ مسیر آسمان‌کوه",
+      "page_name": "چشمهٔ آب زندگانی در مسیر آسمان‌کوه",
+      "short_label": "چشمهٔ آب زندگانی",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه آب زندگانی", "چشمه زندگانی آسمان کوه", "Zendegani Spring"],
+      "identity_summary": "چشمهٔ نام‌دار روی مسیر جنوبی و یال آسمان‌کوه، پیش از خط‌الرأس قله",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430"
+      ],
+      "latitude": 36.098673,
+      "longitude": 50.663795,
+      "elevation_m": 2310,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمهٔ آب زندگانی در ترک هیو تا آسمان‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "aseman-kuh": {
+      "name": "قلهٔ آسمان‌کوه",
+      "page_name": "قلهٔ آسمان‌کوه ساوجبلاغ",
+      "short_label": "آسمان‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["آسمان کوه", "قله آسمان کوه", "Aseman Kuh", "AsemanKooh Peak"],
+      "identity_summary": "قلهٔ آسمان‌کوه در البرز غربی، شمال هیو و شلمزار و جنوب طالقان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430",
+        "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968"
+      ],
+      "latitude": 36.099384,
+      "longitude": 50.684758,
+      "elevation_m": 2724,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از ترک مستقل هیو؛ ارتفاع رایج منبع حدود ۲۷۷۰ متر و ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "hio-aseman-kuh": {
+      "slug": "hio-aseman-kuh",
+      "title": "هیو تا قلهٔ آسمان‌کوه",
+      "subtitle": "از امامزاده موسی و چشمهٔ آب زندگانی تا یال جنوبی و قلهٔ آسمان‌کوه",
+      "trail_label": "مسیر هیو–آسمان‌کوه",
+      "origin": "مبدأ روستای هیو",
+      "target_label": "قلهٔ آسمان‌کوه",
+      "region": "البرز غربی · ساوجبلاغ",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "aseman-kuh-hio-trailhead",
+        "aseman-kuh-musa-shrine",
+        "aseman-kuh-zendegani-spring",
+        "aseman-kuh"
+      ],
+      "distance_km": 8.58,
+      "ascent_m": 1108,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430",
+        "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968"
+      ],
+      "evidence_tracks": [
+        "tracks/aseman-kuh/aseman-kuh-hio-primary.gpx"
+      ],
+      "public_point_notes": {
+        "aseman-kuh-hio-trailhead": "ترک منبع حلقه‌ای است؛ بخش برگشت از هیو تا قله معکوس و به‌عنوان مسیر صعود پیاده استفاده شده است.",
+        "aseman-kuh-musa-shrine": "امامزاده موسی عارضهٔ میانی واقعی و نام‌دار مسیر است."
+      }
+    }
+  },
+  "point": {
+    "slug": "aseman-kuh",
+    "tile_name": "آسمان‌کوه",
+    "name": "قلهٔ آسمان‌کوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز غربی · ساوجبلاغ",
+    "elevation_m": 2724,
+    "latitude": 36.099384,
+    "longitude": 50.684758,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ آسمان‌کوه",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آسمان کوه", "قله آسمان کوه", "Aseman Kuh"]
+  },
+  "primary_point": "aseman-kuh"
+}
