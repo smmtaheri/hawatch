@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-rizan-catalog-v2",
+  "catalog_version": "hawatch-rizan-catalog-v3",
   "weather_points": {
     "rizan-afjeh-trailhead": {
       "name": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
@@ -96,6 +96,35 @@
       "region": "البرز مرکزی · دشت هویج و خط‌الرأس لواسانات",
       "image": "/images/home-scene.png",
       "image_alt": "نمای کوهستانی قلهٔ پرسون"
+    },
+    "barg-jahan": {
+      "name": "روستای برگ‌جهان",
+      "page_name": "روستای برگ‌جهان لواسانات",
+      "short_label": "برگ‌جهان",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": ["برگ جهان", "برگ‌جهان", "Barg-e Jahan", "Barge Jahan village"],
+      "identity_summary": "روستای برگ‌جهان در لواسانات و مبدأ مسیر خط‌الرأس اندار و قلهٔ پرسون",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586",
+        "https://decovel.com/page/parsoon-peak"
+      ],
+      "latitude": 35.844177,
+      "longitude": 51.732626,
+      "elevation_m": 2004,
+      "status": "provisional",
+      "elevation_source": "Waypoint مبدأ برگ‌جهان در ترک برگ‌جهان–پرسون؛ ارتفاع با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "forest_fog",
+      "tile_name": "برگ‌جهان",
+      "short_category": "روستا",
+      "category": "روستا و پای‌کار کوهستان",
+      "region": "لواسانات · تهران",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای روستایی برگ‌جهان در دامنهٔ البرز"
     },
     "rizan": {
       "name": "قلهٔ ریزان",
@@ -219,6 +248,36 @@
         "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
         "rizan-hoyej-meadow": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است."
+      }
+    },
+    "barg-jahan-person": {
+      "slug": "barg-jahan-person",
+      "title": "برگ‌جهان تا قلهٔ پرسون",
+      "subtitle": "از روستای برگ‌جهان، خط‌الرأس اندار و قلهٔ پرسون",
+      "trail_label": "مسیر برگ‌جهان–اندر–پرسون",
+      "origin": "روستای برگ‌جهان",
+      "target_label": "قلهٔ پرسون",
+      "region": "البرز مرکزی · لواسانات و برگ‌جهان",
+      "featured": false,
+      "sort_order": 4,
+      "points": [
+        "barg-jahan",
+        "rizan-andar",
+        "rizan-person"
+      ],
+      "distance_km": 6.95,
+      "ascent_m": 1343,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586"
+      ],
+      "evidence_tracks": [
+        "tracks/rizan/person-barg-jahan-primary.gpx"
+      ],
+      "public_point_notes": {
+        "barg-jahan": "بخش روستایی و دسترسی اولیه در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ میانی مسیر برگ‌جهان به پرسون است."
       }
     }
   },
