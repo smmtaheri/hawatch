@@ -1,0 +1,206 @@
+{
+  "catalog_version": "hawatch-siah-palas-catalog-v1",
+  "weather_points": {
+    "siah-palas-javard-trailhead": {
+      "name": "مبدأ یال شرقی سیاه‌پلاس؛ جادهٔ وستان",
+      "page_name": "مبدأ مسیر شرقی قلهٔ سیاه‌پلاس از جورد",
+      "short_label": "مبدأ جورد",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ سیاه پلاس جورد", "مبدأ یال شرقی سیاه پلاس", "Javard Siah Palas trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ یال شرقی سیاه‌پلاس در انتهای جادهٔ خاکی وستان، بالادست روستای جورد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058",
+        "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359"
+      ],
+      "latitude": 35.825328,
+      "longitude": 51.887034,
+      "elevation_m": 2246,
+      "status": "provisional",
+      "elevation_source": "Waypoint محل آغاز برنامه در ترک جورد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "siah-palas-javard-ridge": {
+      "name": "خط‌الرأس شرقی سیاه‌پلاس",
+      "page_name": "خط‌الرأس شرقی قلهٔ سیاه‌پلاس",
+      "short_label": "یال شرقی سیاه‌پلاس",
+      "place_type": "ridge",
+      "category_key": "mountain",
+      "aliases": ["خط الراس سیاه پلاس", "گردنه شرقی سیاه پلاس", "Siah Palas east ridge"],
+      "identity_summary": "خط‌الرأس و گردنهٔ شرقی پیش از صعود نهایی قلهٔ سیاه‌پلاس از جورد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058",
+        "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359"
+      ],
+      "latitude": 35.849922,
+      "longitude": 51.900141,
+      "elevation_m": 3055,
+      "status": "provisional",
+      "elevation_source": "Waypoint خط‌الرأس در ترک جورد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "siah-palas-ira-trailhead": {
+      "name": "مبدأ محیط‌بانی ایرا؛ مسیر سیاه‌پلاس",
+      "page_name": "مبدأ مسیر غربی قلهٔ سیاه‌پلاس از ایرا",
+      "short_label": "مبدأ ایرا",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ سیاه پلاس ایرا", "محیط بانی ایرا سیاه پلاس", "Ira Siah Palas trailhead"],
+      "identity_summary": "آغاز پیمایش مسیر غربی سیاه‌پلاس از محدودهٔ محیط‌بانی ایرا در حاشیهٔ دشت لار",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+        "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"
+      ],
+      "latitude": 35.809655,
+      "longitude": 51.840930,
+      "elevation_m": 2311,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک صعود ایرا؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "siah-palas-ira-qoushkhanah": {
+      "name": "گردنهٔ قوشخانه؛ یال غربی سیاه‌پلاس",
+      "page_name": "گردنهٔ قوشخانه در مسیر غربی سیاه‌پلاس",
+      "short_label": "گردنهٔ قوشخانه",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["گردنه قوشخانه سیاه پلاس", "قوشخانه ایرا", "Qoushkhanah Pass"],
+      "identity_summary": "گردنهٔ نام‌دار در مسیر غربی ایرا و نقطهٔ پیوند جادهٔ خاکی دشت لار با یال صعود سیاه‌پلاس",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+        "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"
+      ],
+      "latitude": 35.856094,
+      "longitude": 51.865070,
+      "elevation_m": 2958,
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنهٔ قوشخانه در ترک ایرا؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "siah-palas": {
+      "name": "قلهٔ سیاه‌پلاس",
+      "page_name": "قلهٔ سیاه‌پلاس البرز مرکزی",
+      "short_label": "سیاه‌پلاس",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["سیاه پلاس", "قله سیاه پلاس", "Siah Palas", "Siahpelas Peak"],
+      "identity_summary": "قلهٔ سیاه‌پلاس در بخش شرقی خط‌الرأس گل‌زرد تا همهن، جنوب دشت لار و میان جورد و ایرا",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058",
+        "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+        "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359"
+      ],
+      "latitude": 35.857131,
+      "longitude": 51.883494,
+      "elevation_m": 3345,
+      "status": "provisional",
+      "elevation_source": "Waypoints قله در دو ترک مستقل جورد و ایرا؛ ارتفاع رایج منابع حدود ۳۳۷۵ تا ۳۳۸۰ متر و ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "javard-siah-palas": {
+      "slug": "javard-siah-palas",
+      "title": "جورد تا قلهٔ سیاه‌پلاس",
+      "subtitle": "از مبدأ جادهٔ وستان و یال شرقی تا خط‌الرأس و قلهٔ سیاه‌پلاس",
+      "trail_label": "مسیر شرقی جورد–سیاه‌پلاس",
+      "origin": "مبدأ یال شرقی سیاه‌پلاس",
+      "target_label": "قلهٔ سیاه‌پلاس",
+      "region": "البرز مرکزی · جورد و دشت لار",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "siah-palas-javard-trailhead",
+        "siah-palas-javard-ridge",
+        "siah-palas"
+      ],
+      "distance_km": 6.16,
+      "ascent_m": 1132,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058",
+        "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359"
+      ],
+      "evidence_tracks": [
+        "tracks/siah-palas/siah-palas-javard-primary.gpx"
+      ],
+      "public_point_notes": {
+        "siah-palas-javard-trailhead": "بخش جادهٔ خاکی دسترسی تا محل پارک در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "siah-palas-javard-ridge": "ترک منبع حلقه‌ای است؛ فقط بخش صعود از مبدأ تا قله برای مسیر پیاده استفاده شده است."
+      }
+    },
+    "ira-siah-palas": {
+      "slug": "ira-siah-palas",
+      "title": "ایرا تا قلهٔ سیاه‌پلاس",
+      "subtitle": "از محیط‌بانی ایرا، گردنهٔ قوشخانه و یال غربی تا قلهٔ سیاه‌پلاس",
+      "trail_label": "مسیر غربی ایرا–سیاه‌پلاس",
+      "origin": "مبدأ محیط‌بانی ایرا",
+      "target_label": "قلهٔ سیاه‌پلاس",
+      "region": "البرز مرکزی · ایرا و دشت لار",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "siah-palas-ira-trailhead",
+        "siah-palas-ira-qoushkhanah",
+        "siah-palas"
+      ],
+      "distance_km": 10.91,
+      "ascent_m": 1311,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+        "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"
+      ],
+      "evidence_tracks": [
+        "tracks/siah-palas/siah-palas-ira-primary.gpx"
+      ],
+      "public_point_notes": {
+        "siah-palas-ira-trailhead": "مسیر از محدودهٔ محیط‌بانی ایرا آغاز می‌شود؛ بخش دسترسی جاده‌ای در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "siah-palas-ira-qoushkhanah": "در یال پایانی یک بخش کوتاه دست‌به‌سنگ وجود دارد و برای شرایط زمستانی نیازمند احتیاط است."
+      }
+    }
+  },
+  "point": {
+    "slug": "siah-palas",
+    "tile_name": "سیاه‌پلاس",
+    "name": "قلهٔ سیاه‌پلاس",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · جورد، ایرا و دشت لار",
+    "elevation_m": 3345,
+    "latitude": 35.857131,
+    "longitude": 51.883494,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سیاه‌پلاس",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سیاه پلاس", "قله سیاه پلاس", "Siah Palas"]
+  },
+  "primary_point": "siah-palas"
+}
