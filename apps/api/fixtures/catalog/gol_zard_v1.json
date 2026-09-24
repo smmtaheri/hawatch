@@ -1,0 +1,202 @@
+{
+  "catalog_version": "hawatch-gol-zard-catalog-v1",
+  "weather_points": {
+    "gol-zard-north-trailhead": {
+      "name": "مبدأ مسیر شمالی گل‌زرد؛ پلور",
+      "page_name": "مبدأ مسیر شمالی قلهٔ گل‌زرد در پلور",
+      "short_label": "مبدأ شمالی گل‌زرد",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ گل زرد پلور", "دشت گل زرد", "Gol Zard north trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ مسیر شمالی قلهٔ گل‌زرد در جادهٔ دسترسی پلور و دشت گل‌زرد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019",
+        "https://mojekooh.com/gole-zard-peak-complete-guide/"
+      ],
+      "latitude": 35.841549,
+      "longitude": 52.010958,
+      "elevation_m": 2431,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک شمالی گل‌زرد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "gol-zard-east": {
+      "name": "قلهٔ گل‌زرد شرقی",
+      "page_name": "قلهٔ گل‌زرد شرقی در خط‌الرأس پلور",
+      "short_label": "گل‌زرد شرقی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["گل زرد شرقی", "قله گل زرد شرقی", "Gol Zard East"],
+      "identity_summary": "قلهٔ شرقی خط‌الرأس گل‌زرد در مسیر پلور تا قلهٔ اصلی گل‌زرد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019"
+      ],
+      "latitude": 35.829176,
+      "longitude": 51.974769,
+      "elevation_m": 3646,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ گل‌زرد شرقی در ترک پلور؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "gol-zard-south-trailhead": {
+      "name": "مبدأ مبارک‌آباد؛ مسیر گل‌زرد",
+      "page_name": "مبدأ مبارک‌آباد در مسیر جنوبی گل‌زرد",
+      "short_label": "مبدأ مبارک‌آباد",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبارک آباد گل زرد", "مبدأ جنوبی گل زرد", "Mobarakabad Gol Zard trailhead"],
+      "identity_summary": "مبدأ پیاده‌روی مسیر جنوبی قلهٔ گل‌زرد از روستای مبارک‌آباد در جادهٔ هراز",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%AF%D9%84-%D8%B2%D8%B1%D8%AF-%D8%A7%D8%B2-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-%D8%A2%D8%A8%D8%A7%D8%AF/"
+      ],
+      "latitude": 35.785162,
+      "longitude": 51.953978,
+      "elevation_m": 2254,
+      "status": "provisional",
+      "elevation_source": "Waypoint مبدأ مبارک‌آباد در ترک جنوبی گل‌زرد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "gol-zard-south-spring": {
+      "name": "چشمهٔ جاری مسیر جنوبی گل‌زرد",
+      "page_name": "چشمهٔ جاری در مسیر جنوبی قلهٔ گل‌زرد",
+      "short_label": "چشمهٔ جاری گل‌زرد",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه جاری گل زرد", "چشمه مسیر مبارک آباد گل زرد", "Gol Zard south spring"],
+      "identity_summary": "چشمهٔ نام‌برده در میانهٔ مسیر جنوبی مبارک‌آباد تا قلهٔ گل‌زرد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730"
+      ],
+      "latitude": 35.818021,
+      "longitude": 51.963543,
+      "elevation_m": 2787,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمهٔ جاری در ترک جنوبی گل‌زرد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "gol-zard": {
+      "name": "قلهٔ گل‌زرد",
+      "page_name": "قلهٔ گل‌زرد البرز مرکزی",
+      "short_label": "گل‌زرد",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله گل زرد", "قلهٔ گل‌زرد غربی", "گل زرد غربی", "Gol Zard Peak"],
+      "identity_summary": "قلهٔ اصلی و غربی گل‌زرد در جنوب شرقی دشت لار، با مسیرهای صعود از پلور و مبارک‌آباد",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019",
+        "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730",
+        "https://mojekooh.com/gole-zard-peak-complete-guide/"
+      ],
+      "latitude": 35.830909,
+      "longitude": 51.963575,
+      "elevation_m": 3672,
+      "status": "provisional",
+      "elevation_source": "مختصات قلهٔ اصلی از دو ترک مستقل پلور و مبارک‌آباد؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": ["gol-zard-cave"],
+  "routes": {
+    "gol-zard-north-polour": {
+      "slug": "gol-zard-north-polour",
+      "title": "پلور و غار گل‌زرد تا قلهٔ گل‌زرد",
+      "subtitle": "از مبدأ شمالی، غار گل‌زرد و قلهٔ شرقی تا قلهٔ اصلی گل‌زرد",
+      "trail_label": "مسیر شمالی پلور–گل‌زرد",
+      "origin": "مبدأ مسیر شمالی گل‌زرد",
+      "target_label": "قلهٔ گل‌زرد",
+      "region": "البرز مرکزی · پلور",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gol-zard-north-trailhead",
+        "gol-zard-cave",
+        "gol-zard-east",
+        "gol-zard"
+      ],
+      "distance_km": 6.15,
+      "ascent_m": 1310,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019",
+        "https://mojekooh.com/gole-zard-peak-complete-guide/"
+      ],
+      "evidence_tracks": [
+        "tracks/gol-zard/gol-zard-polour-north-primary.gpx"
+      ],
+      "public_point_notes": {
+        "gol-zard-north-trailhead": "بخش جادهٔ خاکی دسترسی در distance و ETA مسیر پیاده محاسبه نشده است.",
+        "gol-zard-east": "قلهٔ شرقی فقط به‌عنوان عارضهٔ میانی مسیر ثبت شده و صفحهٔ مستقل indexable ندارد."
+      }
+    },
+    "gol-zard-south-mobarakabad": {
+      "slug": "gol-zard-south-mobarakabad",
+      "title": "مبارک‌آباد تا قلهٔ گل‌زرد",
+      "subtitle": "مسیر جنوبی مبارک‌آباد، چشمهٔ جاری و یال جنوبی تا قلهٔ گل‌زرد",
+      "trail_label": "مسیر جنوبی مبارک‌آباد–گل‌زرد",
+      "origin": "مبدأ مبارک‌آباد",
+      "target_label": "قلهٔ گل‌زرد",
+      "region": "البرز مرکزی · جادهٔ هراز",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "gol-zard-south-trailhead",
+        "gol-zard-south-spring",
+        "gol-zard"
+      ],
+      "distance_km": 6.95,
+      "ascent_m": 1395,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%AF%D9%84-%D8%B2%D8%B1%D8%AF-%D8%A7%D8%B2-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-%D8%A2%D8%A8%D8%A7%D8%AF/"
+      ],
+      "evidence_tracks": [
+        "tracks/gol-zard/gol-zard-mobarakabad-primary.gpx"
+      ],
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "gol-zard",
+    "tile_name": "گل‌زرد",
+    "name": "قلهٔ گل‌زرد",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · پلور و دشت لار",
+    "elevation_m": 3672,
+    "latitude": 35.830909,
+    "longitude": 51.963575,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ گل‌زرد",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["گل زرد", "قله گل زرد", "قلهٔ گل‌زرد غربی", "Gol Zard Peak"]
+  },
+  "primary_point": "gol-zard"
+}
