@@ -1,0 +1,206 @@
+{
+  "catalog_version": "hawatch-mehrchal-catalog-v1",
+  "weather_points": {
+    "mehrchal-imameh-trailhead": {
+      "name": "مبدأ مسیر مهرچال؛ امامه بالا",
+      "page_name": "مبدأ مسیر مهرچال از امامه",
+      "short_label": "مبدأ امامه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ مهرچال امامه", "مهرچال از امامه", "Imameh Mehrchal trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ مسیر تابستانی مهرچال از جاده و بافت بالادست روستای امامه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-mhrchl-qlh-pyrzn-khlwm-qlh-sy-z-mmh-115603689"
+      ],
+      "latitude": 35.910412,
+      "longitude": 51.594105,
+      "elevation_m": 2253,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک مهرچال از امامه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "mehrchal-tang-spring": {
+      "name": "چشمهٔ تنگ مهرچال",
+      "page_name": "چشمهٔ تنگ مهرچال در مسیر امامه",
+      "short_label": "چشمهٔ تنگ مهرچال",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه تنگ مهرچال", "چشمه مهرچال", "Tang Mehrchal spring"],
+      "identity_summary": "چشمهٔ نام‌دار تنگ مهرچال و عارضهٔ میانی مسیر امامه به قلهٔ مهرچال",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+        "https://nccg.blogfa.com/post/590"
+      ],
+      "latitude": 35.932472,
+      "longitude": 51.615789,
+      "elevation_m": 3100,
+      "status": "provisional",
+      "elevation_source": "مختصات چشمهٔ تنگ مهرچال از منبع مسیر و جدول عوارض منطقه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "mehrchal-garmabdar-trailhead": {
+      "name": "مبدأ مسیر شمالی مهرچال؛ گرمابدر",
+      "page_name": "مبدأ مسیر مهرچال از گرمابدر",
+      "short_label": "مبدأ گرمابدر",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ مهرچال گرمابدر", "مهرچال از گرمابدر", "Garmabdar Mehrchal trailhead"],
+      "identity_summary": "آغاز مسیر شمالی مهرچال از محیط‌بانی و انتهای جادهٔ روستای گرمابدر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484",
+        "https://mojekooh.com/mehrchal-peak-guide/"
+      ],
+      "latitude": 35.984846,
+      "longitude": 51.646028,
+      "elevation_m": 2501,
+      "status": "provisional",
+      "elevation_source": "Waypoint محیط‌بانی گرمابدر در ترک شمالی؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "pirzan-kolon": {
+      "name": "قلهٔ پیرزن‌کلون",
+      "page_name": "قلهٔ پیرزن‌کلون در مسیر مهرچال",
+      "short_label": "پیرزن‌کلون",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["پیرزن کلوم", "پیرزن کلون", "قله پیرزن کلون", "Pirzan Kolon"],
+      "identity_summary": "قلهٔ پیرزن‌کلون، عارضهٔ شاخص یال شمالی پیش از مهرچال از گرمابدر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484",
+        "https://nccg.blogfa.com/post/590"
+      ],
+      "latitude": 35.942795,
+      "longitude": 51.639809,
+      "elevation_m": 3837,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ پیرزن‌کلون در ترک گرمابدر–مهرچال و جدول ارتفاعات منطقه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "mehrchal": {
+      "name": "قلهٔ مهرچال",
+      "page_name": "قلهٔ مهرچال لواسانات",
+      "short_label": "مهرچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["مهر چال", "قله مهرچال", "Mehrchal", "Mehrchal Peak"],
+      "identity_summary": "قلهٔ مهرچال در خط‌الرأس مرتفع لواسانات، میان امامه، گرمابدر و قلهٔ پیرزن‌کلون",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+        "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484",
+        "https://mojekooh.com/mehrchal-peak-guide/"
+      ],
+      "latitude": 35.928040,
+      "longitude": 51.643098,
+      "elevation_m": 3877,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ مهرچال در دو ترک مستقل امامه و گرمابدر؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "imameh-mehrchal": {
+      "slug": "imameh-mehrchal",
+      "title": "امامه تا قلهٔ مهرچال",
+      "subtitle": "از مبدأ امامه و چشمهٔ تنگ مهرچال تا قله",
+      "trail_label": "مسیر امامه–مهرچال",
+      "origin": "مبدأ مسیر مهرچال؛ امامه بالا",
+      "target_label": "قلهٔ مهرچال",
+      "region": "البرز مرکزی · امامه و دشت مهرچال",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "mehrchal-imameh-trailhead",
+        "mehrchal-tang-spring",
+        "mehrchal"
+      ],
+      "distance_km": 9.06,
+      "ascent_m": 1625,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-mhrchl-qlh-pyrzn-khlwm-qlh-sy-z-mmh-115603689"
+      ],
+      "evidence_tracks": [
+        "tracks/mehrchal/mehrchal-imameh-primary.gpx"
+      ],
+      "public_point_notes": {
+        "mehrchal-imameh-trailhead": "بخش جاده‌ای دسترسی به ابتدای مسیر امامه در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "mehrchal-tang-spring": "چشمهٔ تنگ مهرچال عارضهٔ میانی نام‌دار در منبع مسیر و جدول عوارض منطقه است."
+      }
+    },
+    "garmabdar-pirzan-mehrchal": {
+      "slug": "garmabdar-pirzan-mehrchal",
+      "title": "گرمابدر تا مهرچال از مسیر پیرزن‌کلون",
+      "subtitle": "از مبدأ گرمابدر، پیرزن‌کلون و گردنهٔ شمالی تا مهرچال",
+      "trail_label": "مسیر گرمابدر–پیرزن‌کلون–مهرچال",
+      "origin": "مبدأ مسیر شمالی مهرچال؛ گرمابدر",
+      "target_label": "قلهٔ مهرچال",
+      "region": "البرز مرکزی · گرمابدر و یال شمالی مهرچال",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "mehrchal-garmabdar-trailhead",
+        "pirzan-kolon",
+        "mehrchal"
+      ],
+      "distance_km": 8.15,
+      "ascent_m": 1427,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484",
+        "https://mojekooh.com/mehrchal-peak-guide/"
+      ],
+      "evidence_tracks": [
+        "tracks/mehrchal/mehrchal-garmabdar-pirzan-crossroute.gpx"
+      ],
+      "public_point_notes": {
+        "mehrchal-garmabdar-trailhead": "بخش جاده‌ای دسترسی تا محیط‌بانی گرمابدر در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "pirzan-kolon": "پیرزن‌کلون عارضهٔ شاخص و قلهٔ میانی مسیر شمالی پیش از مهرچال است."
+      }
+    }
+  },
+  "point": {
+    "slug": "mehrchal",
+    "tile_name": "مهرچال",
+    "name": "قلهٔ مهرچال",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · امامه، گرمابدر و دشت مهرچال",
+    "elevation_m": 3877,
+    "latitude": 35.928040,
+    "longitude": 51.643098,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ مهرچال",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["مهرچال", "مهر چال", "قله مهرچال", "Mehrchal"]
+  },
+  "primary_point": "mehrchal"
+}
