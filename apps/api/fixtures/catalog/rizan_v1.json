@@ -1,0 +1,207 @@
+{
+  "catalog_version": "hawatch-rizan-catalog-v1",
+  "weather_points": {
+    "rizan-afjeh-trailhead": {
+      "name": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "page_name": "مبدأ مسیر قلهٔ ریزان از افجه",
+      "short_label": "مبدأ افجه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ ریزان افجه", "نگهبانی آخر روستا افجه", "Rizan Afjeh trailhead"],
+      "identity_summary": "آغاز بخش پیادهٔ مسیر افجه و دشت هویج به قلهٔ ریزان در انتهای بافت روستا",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "latitude": 35.860912,
+      "longitude": 51.693294,
+      "elevation_m": 2072,
+      "status": "provisional",
+      "elevation_source": "Waypoint نگهبانی آخر روستا در ترک قلهٔ ریزان؛ ارتفاع کاتالوگ با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "rizan-hoyej-meadow": {
+      "name": "دشت هویج؛ عارضهٔ میانی مسیر ریزان",
+      "page_name": "دشت هویج در مسیر قلهٔ ریزان",
+      "short_label": "دشت هویج",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "aliases": ["دشت هویج", "گرچال", "Dasht Hoyej", "Garchal meadow"],
+      "identity_summary": "دشت هویج، عارضهٔ طبیعی شناخته‌شده و محل عبور مسیر استاندارد افجه به قلهٔ ریزان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "latitude": 35.882463,
+      "longitude": 51.705332,
+      "elevation_m": 2566,
+      "status": "provisional",
+      "elevation_source": "Waypoint دشت هویج در ترک افجه–ریزان؛ ارتفاع کاتالوگ با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "rizan-andar": {
+      "name": "قلهٔ اندار در خط‌الرأس ریزان",
+      "page_name": "قلهٔ اندار در مسیر خط‌الرأس ریزان",
+      "short_label": "اندار",
+      "place_type": "summit",
+      "category_key": "ridge",
+      "aliases": ["قله اندار", "اندار لواسان", "Andar peak"],
+      "identity_summary": "قلهٔ اندار، عارضهٔ مرتفع و واقعی در بخش میانی خط‌الرأس اندار و پرسون به ریزان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "latitude": 35.880547,
+      "longitude": 51.719478,
+      "elevation_m": 3000,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ اندار در ترک خط‌الرأس اندار و پرسون به ریزان؛ ارتفاع با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "rizan-person": {
+      "name": "قلهٔ پرسون در مسیر ریزان",
+      "page_name": "قلهٔ پرسون در مسیر خط‌الرأس ریزان",
+      "short_label": "پرسون",
+      "place_type": "summit",
+      "category_key": "ridge",
+      "aliases": ["قله پرسون", "پرسون لواسان", "Person peak"],
+      "identity_summary": "قلهٔ پرسون، عارضهٔ شناخته‌شدهٔ خط‌الرأس و نقطهٔ میانی مسیر اندار به ریزان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "latitude": 35.887624,
+      "longitude": 51.728883,
+      "elevation_m": 3167,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ پرسون در ترک خط‌الرأس اندار و پرسون به ریزان؛ ارتفاع با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "rizan": {
+      "name": "قلهٔ ریزان",
+      "page_name": "قلهٔ ریزان لواسانات",
+      "short_label": "ریزان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["ریزان", "قله ریزان", "Rizan Peak"],
+      "identity_summary": "قلهٔ ریزان در خط‌الرأس لواسانات، با مسیر استاندارد افجه و دسترسی از دشت هویج",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86/"
+      ],
+      "latitude": 35.902091,
+      "longitude": 51.704087,
+      "elevation_m": 3577,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ ریزان در دو ترک مستقل افجه و خط‌الرأس اندار–پرسون؛ ارتفاع با DEM نوداد Open-Meteo کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "afjeh-hoyej-rizan": {
+      "slug": "afjeh-hoyej-rizan",
+      "title": "افجه و دشت هویج تا قلهٔ ریزان",
+      "subtitle": "از مبدأ افجه و دشت هویج تا یال جنوبی و قلهٔ ریزان",
+      "trail_label": "مسیر افجه–دشت هویج–ریزان",
+      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "target_label": "قلهٔ ریزان",
+      "region": "البرز مرکزی · لواسانات و دشت هویج",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "rizan-afjeh-trailhead",
+        "rizan-hoyej-meadow",
+        "rizan"
+      ],
+      "distance_km": 6.44,
+      "ascent_m": 1590,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86-%D8%A7%D8%B2-%D8%A7%D9%81%D8%AC%D9%87/"
+      ],
+      "evidence_tracks": [
+        "tracks/rizan/rizan-afjeh-hoyej-primary.gpx"
+      ],
+      "public_point_notes": {
+        "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "rizan-hoyej-meadow": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر استاندارد است."
+      }
+    },
+    "andar-person-rizan": {
+      "slug": "andar-person-rizan",
+      "title": "خط‌الرأس اندار و پرسون تا قلهٔ ریزان",
+      "subtitle": "از پای‌کار افجه و دشت هویج، اندار و پرسون تا قلهٔ ریزان",
+      "trail_label": "مسیر اندار–پرسون–ریزان",
+      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "target_label": "قلهٔ ریزان",
+      "region": "البرز مرکزی · خط‌الرأس لواسانات",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "rizan-afjeh-trailhead",
+        "rizan-hoyej-meadow",
+        "rizan-andar",
+        "rizan-person",
+        "rizan"
+      ],
+      "distance_km": 10.48,
+      "ascent_m": 1738,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+      ],
+      "evidence_tracks": [
+        "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
+      ],
+      "public_point_notes": {
+        "rizan-afjeh-trailhead": "ترک خط‌الرأس حلقه‌ای ثبت شده و پای‌کار آن به‌عنوان مبدأ بخش پیادهٔ مسیر در نظر گرفته شده است.",
+        "rizan-hoyej-meadow": "دشت هویج عارضهٔ میانی مشترک با مسیر استاندارد افجه–ریزان است.",
+        "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است.",
+        "rizan-person": "قلهٔ پرسون عارضهٔ واقعیِ خط‌الرأس پیش از ریزان است."
+      }
+    }
+  },
+  "point": {
+    "slug": "rizan",
+    "tile_name": "ریزان",
+    "name": "قلهٔ ریزان",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · لواسانات و دشت هویج",
+    "elevation_m": 3577,
+    "latitude": 35.902091,
+    "longitude": 51.704087,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ ریزان",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["ریزان", "قله ریزان", "Rizan Peak"]
+  },
+  "primary_point": "rizan"
+}
