@@ -1,0 +1,222 @@
+{
+  "catalog_version": "hawatch-fil-zamin-catalog-v1",
+  "weather_points": {
+    "fil-zamin-lavasan-trailhead": {
+      "name": "امامزاده و مبدأ مسیر فیل‌زمین؛ لواسان بزرگ",
+      "page_name": "مبدأ مسیر فیل‌زمین از لواسان بزرگ",
+      "short_label": "مبدأ لواسان بزرگ",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ فیل زمین لواسان", "امامزاده مسیر فیل زمین", "Lavasan Bozorg Fil Zamin trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ فیل‌زمین در بالادست لواسان بزرگ و کنار امامزادهٔ ابتدای مسیر",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+      ],
+      "latitude": 35.828734,
+      "longitude": 51.782220,
+      "elevation_m": 2218,
+      "status": "provisional",
+      "elevation_source": "Waypoint امامزاده و شروع پیمایش در ترک لواسان بزرگ؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "fil-zamin-lavasan-spring": {
+      "name": "چشمه و استخر آب مسیر فیل‌زمین",
+      "page_name": "چشمهٔ مسیر فیل‌زمین از لواسان بزرگ",
+      "short_label": "چشمهٔ فیل‌زمین",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": ["چشمه فیل زمین", "استخر آب فیل زمین", "Fil Zamin spring"],
+      "identity_summary": "چشمه و استخر آب نام‌برده در میانهٔ مسیر پیادهٔ لواسان بزرگ به فیل‌زمین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+      ],
+      "latitude": 35.839461,
+      "longitude": 51.808396,
+      "elevation_m": 2489,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه و استخر آب در ترک لواسان بزرگ؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "fil-zamin-lavasan-pass": {
+      "name": "گردنهٔ مسیر فیل‌زمین؛ ابتدای یال صعود",
+      "page_name": "گردنهٔ فیل‌زمین در مسیر لواسان بزرگ",
+      "short_label": "گردنهٔ فیل‌زمین",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["گردنه فیل زمین", "ابتدای یال فیل زمین", "Fil Zamin pass"],
+      "identity_summary": "گردنهٔ مشخص و ابتدای یال صعود پیش از بخش سنگی مسیر لواسان بزرگ به قلهٔ فیل‌زمین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+      ],
+      "latitude": 35.844071,
+      "longitude": 51.806861,
+      "elevation_m": 2630,
+      "status": "provisional",
+      "elevation_source": "Waypoint گردنه و ابتدای یال صعود در ترک لواسان بزرگ؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "fil-zamin-ira-trailhead": {
+      "name": "مبدأ مسیر فیل‌زمین؛ ایرا",
+      "page_name": "مبدأ مسیر فیل‌زمین از ایرا",
+      "short_label": "مبدأ ایرا",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ فیل زمین ایرا", "فیل زمین از ایرا", "Ira Fil Zamin trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ مسیر ایرا به قلهٔ فیل‌زمین در دامنهٔ جنوبی البرز مرکزی",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+      ],
+      "latitude": 35.810482,
+      "longitude": 51.833869,
+      "elevation_m": 2227,
+      "status": "provisional",
+      "elevation_source": "Waypoint Start Ira در ترک ایرا؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "fil-zamin-ira-pass": {
+      "name": "گردنهٔ ۳۰۰۰ متری فیل‌زمین",
+      "page_name": "گردنهٔ ۳۰۰۰ متری در مسیر فیل‌زمین از ایرا",
+      "short_label": "گردنهٔ ۳۰۰۰ متری",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": ["گردنه ۳۰۰۰ فیل زمین", "گردنه ایرا فیل زمین", "Fil Zamin 3000m pass"],
+      "identity_summary": "گردنهٔ نام‌دار حدود ۳۰۰۰ متری در مسیر صعود ایرا به فیل‌زمین",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+      ],
+      "latitude": 35.852160,
+      "longitude": 51.834798,
+      "elevation_m": 2981,
+      "status": "provisional",
+      "elevation_source": "Waypoint Gardaneh 3000 در ترک ایرا؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "fil-zamin": {
+      "name": "قلهٔ فیل‌زمین",
+      "page_name": "قلهٔ فیل‌زمین البرز مرکزی",
+      "short_label": "فیل‌زمین",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["فیل زمین", "قله فیل زمین", "Fil Zamin", "Filzamin Peak"],
+      "identity_summary": "قلهٔ فیل‌زمین در خط‌الرأس البرز مرکزی میان ایرا، لواسان بزرگ و دشت لار",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743",
+        "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+      ],
+      "latitude": 35.853404,
+      "longitude": 51.823632,
+      "elevation_m": 3311,
+      "status": "provisional",
+      "elevation_source": "Waypoint summit در دو ترک مستقل لواسان بزرگ و ایرا؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "lavasan-bozorg-fil-zamin": {
+      "slug": "lavasan-bozorg-fil-zamin",
+      "title": "لواسان بزرگ تا قلهٔ فیل‌زمین",
+      "subtitle": "از امامزاده، چشمه و گردنهٔ مسیر تا قلهٔ فیل‌زمین",
+      "trail_label": "مسیر لواسان بزرگ–فیل‌زمین",
+      "origin": "مبدأ مسیر فیل‌زمین؛ لواسان بزرگ",
+      "target_label": "قلهٔ فیل‌زمین",
+      "region": "البرز مرکزی · لواسان بزرگ",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "fil-zamin-lavasan-trailhead",
+        "fil-zamin-lavasan-spring",
+        "fil-zamin-lavasan-pass",
+        "fil-zamin"
+      ],
+      "distance_km": 6.66,
+      "ascent_m": 1138,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+      ],
+      "evidence_tracks": [
+        "tracks/fil-zamin/fil-zamin-lavasan-bozorg-primary.gpx"
+      ],
+      "public_point_notes": {
+        "fil-zamin-lavasan-trailhead": "بخش جادهٔ دسترسی تا امامزاده در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "fil-zamin-lavasan-pass": "گردنه و ابتدای یال، عارضهٔ میانی نام‌برده در منبع مسیر است."
+      }
+    },
+    "ira-fil-zamin": {
+      "slug": "ira-fil-zamin",
+      "title": "ایرا تا قلهٔ فیل‌زمین",
+      "subtitle": "از مبدأ ایرا و گردنهٔ ۳۰۰۰ متری تا قلهٔ فیل‌زمین",
+      "trail_label": "مسیر ایرا–فیل‌زمین",
+      "origin": "مبدأ مسیر فیل‌زمین؛ ایرا",
+      "target_label": "قلهٔ فیل‌زمین",
+      "region": "البرز مرکزی · ایرا",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "fil-zamin-ira-trailhead",
+        "fil-zamin-ira-pass",
+        "fil-zamin"
+      ],
+      "distance_km": 8.17,
+      "ascent_m": 1233,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+      ],
+      "evidence_tracks": [
+        "tracks/fil-zamin/fil-zamin-ira-primary-2025.gpx"
+      ],
+      "public_point_notes": {
+        "fil-zamin-ira-trailhead": "بخش جاده‌ای دسترسی به ایرا در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "fil-zamin-ira-pass": "گردنهٔ ۳۰۰۰ متری، عارضهٔ میانی نام‌برده در ترک ایراست."
+      }
+    }
+  },
+  "point": {
+    "slug": "fil-zamin",
+    "tile_name": "فیل‌زمین",
+    "name": "قلهٔ فیل‌زمین",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · ایرا، لواسان بزرگ و دشت لار",
+    "elevation_m": 3311,
+    "latitude": 35.853404,
+    "longitude": 51.823632,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ فیل‌زمین",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["فیل زمین", "قله فیل زمین", "Fil Zamin"]
+  },
+  "primary_point": "fil-zamin"
+}
