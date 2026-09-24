@@ -1,0 +1,154 @@
+{
+  "catalog_version": "hawatch-atash-kuh-catalog-v1",
+  "weather_points": {
+    "atash-kuh-afjeh-trailhead": {
+      "name": "مبدأ مسیر آتش‌کوه؛ افجه",
+      "page_name": "مبدأ مسیر آتش‌کوه از افجه",
+      "short_label": "مبدأ افجه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ آتش کوه افجه", "پارکینگ افجه آتشکوه", "Afjeh Atash Kuh trailhead"],
+      "identity_summary": "آغاز پیمایش پیادهٔ مسیر ساکا و آتش‌کوه از انتهای روستای افجه در لواسانات",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
+        "https://mojekooh.com/atash-kooh-complete-guide/"
+      ],
+      "latitude": 35.865367,
+      "longitude": 51.697608,
+      "elevation_m": 2147,
+      "status": "provisional",
+      "elevation_source": "Waypoint استارت در ترک افجه–ساکا–آتش‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "atash-kuh-soston-waterfall": {
+      "name": "آبشار سوستون؛ ابتدای یال آتش‌کوه",
+      "page_name": "آبشار سوستون در مسیر آتش‌کوه",
+      "short_label": "آبشار سوستون",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار سوتسون", "آبشار سوستون افجه", "Soston Waterfall"],
+      "identity_summary": "آبشار سوستون و ابتدای یال صعود در مسیر پیادهٔ افجه به آتش‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
+        "https://mojekooh.com/atash-kooh-complete-guide/"
+      ],
+      "latitude": 35.891047,
+      "longitude": 51.696334,
+      "elevation_m": 2802,
+      "status": "provisional",
+      "elevation_source": "Waypoint نمای آبشار سوستون و ابتدای یال در ترک افجه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "saka": {
+      "name": "قلهٔ ساکا",
+      "page_name": "قلهٔ ساکا در مسیر آتش‌کوه",
+      "short_label": "ساکا",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله ساکا", "ساکا لواسان", "Saka Peak"],
+      "identity_summary": "قلهٔ ساکا و عارضهٔ شاخص میانی روی یال جنوبی مسیر افجه به آتش‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
+        "https://www.wikiloc.com/mountaineering-trails/trkhmsyr-qlh-skh-w-atshkhwh-98-2-6-mntqh-fjh-lwsnt-50370408"
+      ],
+      "latitude": 35.884825,
+      "longitude": 51.679483,
+      "elevation_m": 3314,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ ساکا در ترک مشترک ساکا و آتش‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "atash-kuh": {
+      "name": "قلهٔ آتش‌کوه",
+      "page_name": "قلهٔ آتش‌کوه لواسانات",
+      "short_label": "آتش‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["آتشکوه", "آتش کوه", "آتشکده", "قله آتشکوه", "Atash Kuh", "Atashkooh Peak"],
+      "identity_summary": "قلهٔ آتش‌کوه در شمال دشت هویج و خط‌الرأس مرکزی لواسانات، با مسیر استاندارد افجه و ساکا",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
+        "https://mojekooh.com/atash-kooh-complete-guide/",
+        "https://mountaindream.ir/%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%DB%8C-%D8%A2%D8%AA%D8%B4%DA%A9%D9%88%D9%87"
+      ],
+      "latitude": 35.906747,
+      "longitude": 51.684457,
+      "elevation_m": 3726,
+      "status": "provisional",
+      "elevation_source": "Waypoint قلهٔ آتش‌کوه در ترک مستقل افجه–ساکا–آتش‌کوه؛ ارتفاع کاتالوگ از Open-Meteo GLO-90 DEM کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "afjeh-saka-atash-kuh": {
+      "slug": "afjeh-saka-atash-kuh",
+      "title": "افجه تا قلهٔ آتش‌کوه از مسیر ساکا",
+      "subtitle": "از مبدأ افجه، آبشار سوستون و قلهٔ ساکا تا آتش‌کوه",
+      "trail_label": "مسیر افجه–ساکا–آتش‌کوه",
+      "origin": "مبدأ مسیر آتش‌کوه؛ افجه",
+      "target_label": "قلهٔ آتش‌کوه",
+      "region": "البرز مرکزی · لواسانات و دشت هویج",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "atash-kuh-afjeh-trailhead",
+        "atash-kuh-soston-waterfall",
+        "saka",
+        "atash-kuh"
+      ],
+      "distance_km": 9.4,
+      "ascent_m": 1650,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
+        "https://mojekooh.com/atash-kooh-complete-guide/"
+      ],
+      "evidence_tracks": [
+        "tracks/atash-kuh/atash-kuh-afjeh-saka-primary.gpx"
+      ],
+      "public_point_notes": {
+        "atash-kuh-afjeh-trailhead": "بخش جاده‌ای دسترسی تا انتهای افجه در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "atash-kuh-soston-waterfall": "آبشار سوستون عارضهٔ واقعیِ میانی و ابتدای یال صعود در منبع مسیر است.",
+        "saka": "قلهٔ ساکا به‌عنوان عارضهٔ میانی واقعی روی مسیر ثبت شده و فعلاً صفحهٔ مستقل indexable ندارد."
+      }
+    }
+  },
+  "point": {
+    "slug": "atash-kuh",
+    "tile_name": "آتش‌کوه",
+    "name": "قلهٔ آتش‌کوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · لواسانات و دشت هویج",
+    "elevation_m": 3726,
+    "latitude": 35.906747,
+    "longitude": 51.684457,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ آتش‌کوه",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آتشکوه", "آتش کوه", "آتشکده", "Atash Kuh"]
+  },
+  "primary_point": "atash-kuh"
+}
