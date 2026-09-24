@@ -17,7 +17,10 @@ readonly COMPOSE_RELATIVE_PATH="infra/compose/compose.yaml"
 REPO_URL="${HAWATCH_REPO_URL:-$DEFAULT_REPO_URL}"
 BRANCH="${HAWATCH_BRANCH:-$DEFAULT_BRANCH}"
 REPO_DIR="${HAWATCH_DIR:-$DEFAULT_DIR}"
-RUN_INITIAL_INGEST="${RUN_INITIAL_INGEST:-1}"
+# A release restart must not trigger a full forecast refresh. Forecast data is
+# refreshed by ingest-scheduler (or by an explicit one-shot command). Set this
+# to 1 only when an operator intentionally wants an ingest after deploy.
+RUN_INITIAL_INGEST="${RUN_INITIAL_INGEST:-0}"
 ENABLE_OBSERVABILITY="${ENABLE_OBSERVABILITY:-0}"
 DOCKER_BUILD_RETRIES="${DOCKER_BUILD_RETRIES:-2}"
 
@@ -50,7 +53,7 @@ Optional environment variables:
   API_PUBLISH_PORT       API host port (default: 8000)
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
   NGINX_PUBLISH_PORT     Gateway host port (default: 80)
-  RUN_INITIAL_INGEST     Set 0 to skip the first live ingest
+  RUN_INITIAL_INGEST     Set 1 to run one live ingest after deploy (default 0)
   DOCKER_BUILD_RETRIES   Number of build retries for transient registry errors (default 2)
   FORECAST_STALE_AFTER_HOURS  Freshness threshold (default 7 for six-hour ingest)
   ENABLE_OBSERVABILITY   Set 1 only on a host sized for the heavy stack
@@ -68,6 +71,8 @@ fi
 [[ "$(uname -s)" == "Linux" ]] || fail "This deployment script supports Linux servers only."
 [[ "${EUID}" -eq 0 ]] || fail "Run as root, or set HAWATCH_DIR and adapt the package installation for a non-root user."
 [[ "$DOCKER_BUILD_RETRIES" =~ ^[1-9][0-9]*$ ]] || fail "DOCKER_BUILD_RETRIES must be a positive integer."
+[[ "$RUN_INITIAL_INGEST" == "0" || "$RUN_INITIAL_INGEST" == "1" ]] || \
+  fail "RUN_INITIAL_INGEST must be 0 or 1."
 
 install_base_packages() {
   local package_manager=""
@@ -399,13 +404,13 @@ run_stack() {
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/routes/tochal-darband/forecast/" >/dev/null
 
   if [[ "$RUN_INITIAL_INGEST" == "1" ]]; then
-    log "Running one initial live ingest. Set RUN_INITIAL_INGEST=0 to skip it."
+    log "Running one explicit live ingest because RUN_INITIAL_INGEST=1."
     # `ingest` is intentionally not part of the detached `up` set because it
     # is a one-shot job. Its image was built with the release images above, so
     # this run cannot silently use an older dependency set.
     "${compose[@]}" run --rm ingest
   else
-    log "Initial ingest skipped (RUN_INITIAL_INGEST=${RUN_INITIAL_INGEST})."
+    log "Initial ingest skipped (RUN_INITIAL_INGEST=${RUN_INITIAL_INGEST}); scheduled/manual ingest remains available."
   fi
 
   local metrics_token

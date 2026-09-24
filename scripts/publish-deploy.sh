@@ -17,6 +17,7 @@ BRANCH="${HAWATCH_BRANCH:-$DEFAULT_BRANCH}"
 REMOTE="${HAWATCH_REMOTE:-$DEFAULT_REMOTE}"
 SSH_HOST="${HAWATCH_SSH_HOST:-$DEFAULT_SSH_HOST}"
 SERVER_DIR="${HAWATCH_SERVER_DIR:-$DEFAULT_SERVER_DIR}"
+RUN_INITIAL_INGEST="${RUN_INITIAL_INGEST:-0}"
 
 env_value() {
   local key="$1"
@@ -43,6 +44,7 @@ fail() {
 [[ "$SERVER_IP" =~ ^[A-Za-z0-9.-]+$ ]] || fail "Invalid server host: $SERVER_IP"
 [[ "$SERVER_API_URL" =~ ^(/api/v1|https?://[A-Za-z0-9.-]+:[0-9]+/api/v1)$ ]] || fail "Invalid server API URL: $SERVER_API_URL"
 [[ "$SERVER_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail "Invalid server directory: $SERVER_DIR"
+[[ "$RUN_INITIAL_INGEST" == "0" || "$RUN_INITIAL_INGEST" == "1" ]] || fail "RUN_INITIAL_INGEST must be 0 or 1"
 
 if [[ -n "$(git -C "$REPO_DIR" status --porcelain)" ]]; then
   printf '[hawatch-publish] WARNING: uncommitted local changes will not be staged, committed, or pushed.\n' >&2
@@ -59,4 +61,4 @@ ssh "$SSH_HOST" \
    VITE_API_BASE_URL='$SERVER_API_URL' \
    DJANGO_ALLOWED_HOSTS='$PUBLIC_HOST,www.$PUBLIC_HOST,$SERVER_IP,localhost,127.0.0.1,api,nginx' \
    DJANGO_CORS_ALLOWED_ORIGINS='http://$PUBLIC_HOST,https://$PUBLIC_HOST,http://www.$PUBLIC_HOST,https://www.$PUBLIC_HOST,http://$SERVER_IP,http://$SERVER_IP:5173' \
-   RUN_INITIAL_INGEST=1 ./scripts/deploy.sh"
+   RUN_INITIAL_INGEST='$RUN_INITIAL_INGEST' ./scripts/deploy.sh"

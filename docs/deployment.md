@@ -13,7 +13,7 @@
 - clone یا fast-forward کردن فقط checkout مورد انتظار Hawatch؛
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
-- اجرای `docker compose config`، build/up، health check، scheduler داخلی ingest و یک ingest اولیهٔ live؛ همهٔ imageهای لازم، از جمله سرویس one-shot `ingest`، قبل از جایگزینی کانتینرهای در حال اجرا build می‌شوند؛ اگر registry یا شبکه timeout بدهد، release فعلی دست‌نخورده می‌ماند؛
+- اجرای `docker compose config`، build/up، health check و scheduler داخلی ingest؛ ingest یک‌بارهٔ `ingest` به‌صورت پیش‌فرض در deploy اجرا نمی‌شود و فقط با تصمیم صریح اپراتور فعال است. همهٔ imageهای لازم، از جمله image سرویس one-shot `ingest`، قبل از جایگزینی کانتینرهای در حال اجرا build می‌شوند؛ اگر registry یا شبکه timeout بدهد، release فعلی دست‌نخورده می‌ماند؛
 - همگام‌سازی atomic همهٔ catalogهای versioned با دیتابیس موجود پیش از smoke check؛
 - بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate` پس از موفقیت build؛ orphanهای همان Compose project پاک می‌شوند و volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛ اسکریپت قبل از build دیگر `down` نمی‌زند؛
 - نمایش status و URLهای قابل تست.
@@ -82,11 +82,14 @@ HAWATCH_DIR=/srv/hawatch PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 
 ## کنترل ingest اولیه و پورت‌ها
 
-برای بالا آوردن سرویس‌ها بدون تماس اولیه با Open-Meteo:
+برای deploy عادی، تماس اولیه با Open-Meteo انجام نمی‌شود و `RUN_INITIAL_INGEST=0` مقدار پیش‌فرض است. برای اجرای عمدی یک ingest کامل پس از deploy:
 
 ```bash
-RUN_INITIAL_INGEST=0 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
+RUN_INITIAL_INGEST=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
+
+در حالت پیش‌فرض، به‌روزرسانی forecast طبق زمان‌بندی `ingest-scheduler` انجام می‌شود؛
+برای اجرای دستی one-shot نیز از دستور `docker compose ... run --rm ingest` استفاده کنید.
 
 پورت‌های پیش‌فرض host عبارت‌اند از gateway=`80`، frontend مستقیم=`5173` و API=`8000`. frontend به‌صورت پیش‌فرض API هم‌مبدأ `/api/v1` را صدا می‌زند؛ gateway فعلی HTTP است و HTTPS را terminate نمی‌کند. برای HTTPS باید یک TLS proxy یا CDN بیرونی جلوی gateway قرار گیرد؛ در آن حالت همچنان API هم‌مبدأ `/api/v1` را استفاده کنید. اگر API جداگانه‌ای دارید، می‌توانید آن را صریح تنظیم کنید:
 
