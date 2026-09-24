@@ -1,19 +1,20 @@
 {
-  "catalog_version": "hawatch-gavkoshan-catalog-v1",
+  "catalog_version": "hawatch-gavkoshan-catalog-v2",
   "weather_points": {
     "gavkoshan": {
       "name": "قلهٔ گاوکشان",
-      "page_name": "قلهٔ گاوکشان در البرز شرقی",
+      "page_name": "قلهٔ گاوکشان؛ بام استان گلستان",
       "short_label": "قلهٔ گاوکشان",
       "place_type": "summit",
       "aliases": [
         "گاوکشان",
         "قله گاوکشان",
-        "قلهٔ گاوکشان سمنان",
+        "گاوکشان گلستان",
+        "بام گلستان",
         "Gavkoshan",
         "Gavkoshan Peak"
       ],
-      "identity_summary": "قلهٔ گاوکشان؛ قله‌ای مرتفع در البرز شرقی و نزدیک شاهکوه سفلی در استان سمنان",
+      "identity_summary": "قلهٔ گاوکشان؛ بلندترین قلهٔ استان گلستان در البرز شرقی و نزدیک شاهکوه سفلی، در مرز طبیعی گلستان و سمنان",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -175,7 +176,7 @@
       "trail_label": "مسیر شاهکوه–گاوکشان",
       "origin": "پای‌کار شاهکوه سفلی",
       "target_label": "قلهٔ گاوکشان",
-      "region": "البرز شرقی · استان سمنان",
+      "region": "البرز شرقی · گلستان و سمنان",
       "featured": true,
       "sort_order": 1,
       "points": [
@@ -222,7 +223,7 @@
       "trail_label": "مسیر تنگهٔ زندان–گاوکشان",
       "origin": "پای‌کار تنگهٔ زندان گاوکشان",
       "target_label": "قلهٔ گاوکشان",
-      "region": "البرز شرقی · استان سمنان",
+      "region": "البرز شرقی · گلستان و سمنان",
       "featured": true,
       "sort_order": 2,
       "points": [
@@ -271,7 +272,7 @@
     "short_category": "قله",
     "category": "قله و مسیرهای البرز شرقی",
     "category_key": "mountain",
-    "region": "البرز شرقی · استان سمنان",
+    "region": "البرز شرقی · گلستان و سمنان",
     "elevation_m": 3813,
     "latitude": 36.52352544,
     "longitude": 54.45620011,
@@ -284,6 +285,8 @@
     "aliases": [
       "گاوکشان",
       "قله گاوکشان",
+      "گاوکشان گلستان",
+      "بام گلستان",
       "Gavkoshan Peak"
     ]
   },

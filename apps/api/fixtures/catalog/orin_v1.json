@@ -1,15 +1,16 @@
 {
-  "catalog_version": "hawatch-orin-catalog-v1",
+  "catalog_version": "hawatch-orin-catalog-v2",
   "weather_points": {
     "orin": {
       "name": "قلهٔ اورین",
-      "page_name": "قلهٔ اورین خوی",
+      "page_name": "قلهٔ اورین؛ بام استان آذربایجان غربی",
       "short_label": "اورین",
       "place_type": "summit",
       "aliases": [
         "اورین",
         "قله اورین",
         "کوه اورین",
+        "بام آذربایجان غربی",
         "Avrin",
         "Mount Avrin",
         "Avrin Peak"
@@ -176,6 +177,7 @@
       "اورین",
       "قله اورین",
       "کوه اورین",
+      "بام آذربایجان غربی",
       "Avrin",
       "Mount Avrin",
       "Avrin Peak"

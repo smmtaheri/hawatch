@@ -1,9 +1,9 @@
 {
-  "catalog_version": "hawatch-domir-catalog-v1",
+  "catalog_version": "hawatch-domir-catalog-v2",
   "weather_points": {
     "domir": {
       "name": "قلهٔ دومیر",
-      "page_name": "قلهٔ دومیر اردهال",
+      "page_name": "قلهٔ دومیر؛ بام استان مرکزی",
       "short_label": "قلهٔ دومیر",
       "place_type": "summit",
       "aliases": ["دومیر", "قله دومیر", "دومیر اردهال", "Domir Peak", "Mount Domir"],
@@ -223,7 +223,7 @@
     "is_popular": false,
     "is_active": true,
     "seo_indexable": true,
-    "aliases": ["دومیر", "قله دومیر", "دومیر اردهال", "Domir Peak"]
+    "aliases": ["دومیر", "قله دومیر", "دومیر اردهال", "بام استان مرکزی", "Domir Peak"]
   },
   "primary_point": "domir"
 }
