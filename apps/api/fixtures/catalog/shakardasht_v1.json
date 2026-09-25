@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-shakardasht-catalog-v1",
+  "weather_points": {
+    "shakardasht": {
+      "name": "ییلاق شکردشت",
+      "page_name": "ییلاق شکردشت تالش",
+      "short_label": "شکردشت",
+      "place_type": "meadow",
+      "aliases": [
+        "شکردشت",
+        "شکر دشت",
+        "ییلاق شکردشت تالش",
+        "Shekardasht",
+        "Shakardasht",
+        "Shekar Dasht"
+      ],
+      "identity_summary": "ییلاق شناخته‌شدهٔ شکردشت در ارتفاعات تالش، گیلان؛ مقصد طبیعت‌گردی مستقل در نزدیکی سوباتان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.tasnimnews.ir/fa/media/1397/03/27/1747998/%D8%B3%D9%81%D8%B1-%D8%A8%D9%87-%DB%8C%DB%8C%D9%84%D8%A7%D9%82-%D8%B4%DA%A9%D8%B1%D8%AF%D8%B4%D8%AA",
+        "https://www.koolegard.com/iran/shekardasht",
+        "https://www.wikiloc.com/offroading-trails/jdh-yylq-zyby-shkhrdsht-shekardasht-road-5359429",
+        "https://www.google.com/maps/search/?api=1&query=37.9165581%2C48.7010945"
+      ],
+      "latitude": 37.9165581,
+      "longitude": 48.7010945,
+      "elevation_m": 1820,
+      "status": "provisional",
+      "elevation_source": "گزارش تسنیم ارتفاع منطقه را بالاتر از ۱۷۰۰ متر ذکر می‌کند؛ مختصات نماینده از پیوند نقشهٔ مسیر تالش به شکردشت است. Open-Meteo GLO-90 DEM در همین مختصات ۱۸۲۰ متر برگرداند؛ مقدار به‌صورت provisional ثبت شده است.",
+      "climate": "forest_fog",
+      "category_key": "meadow",
+      "category": "ییلاق تالش",
+      "region": "شکردشت · تالش · گیلان",
+      "seo": {
+        "title": "آب‌وهوای ییلاق شکردشت تالش؛ دما، باد و بارش | هواچ"
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shakardasht",
+    "tile_name": "شکردشت",
+    "name": "ییلاق شکردشت",
+    "short_category": "ییلاق",
+    "category": "ییلاق تالش",
+    "category_key": "meadow",
+    "region": "شکردشت · تالش · گیلان",
+    "elevation_m": 1820,
+    "latitude": 37.9165581,
+    "longitude": 48.7010945,
+    "image": "/images/home-scene.png",
+    "image_alt": "ییلاق شکردشت در ارتفاعات تالش",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "شکردشت",
+      "شکر دشت",
+      "ییلاق شکردشت تالش",
+      "Shekardasht",
+      "Shakardasht"
+    ]
+  },
+  "primary_point": "shakardasht"
+}
