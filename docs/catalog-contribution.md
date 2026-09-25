@@ -102,6 +102,8 @@ python manage.py validate_catalog --all --database --check-links --strict
 
 - `point.slug` یکتا، نام فارسی، `category_key`، منطقه، مختصات WGS84،
   ارتفاع و منبع ارتفاع، `climate`، تصویر و alt؛
+- ارتفاع نسبت به مبنای سطح دریای جهانی می‌تواند منفی باشد (مانند ساحل خزر)؛
+  مقدار معتبر DEM را صفر یا مثبت‌سازی نکنید.
 - همان WeatherPoint با همان مختصات/ارتفاع؛ نقطهٔ شاخص `kind: "primary"` و سایر
   نقاط `kind: "shared"` یا `kind: "route_point"` می‌گیرند. همین رکورد تنها
   هویت عمومی نقطه و منبع forecast است و به `/points/{slug}` می‌رود؛

@@ -26,6 +26,7 @@ PLACE_TYPES = {
     "trailhead",
     "camp",
     "forest",
+    "beach",
     "desert",
     "technical_point",
 }
@@ -110,6 +111,7 @@ PLACE_TYPE_LABELS = {
     "trailhead": "مبدأ مسیر",
     "camp": "اردوگاه",
     "forest": "جنگل",
+    "beach": "ساحل",
     "desert": "کویر",
     "technical_point": "نقطهٔ فنی",
 }

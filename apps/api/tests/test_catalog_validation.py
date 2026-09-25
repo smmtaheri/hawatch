@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from django.contrib.gis.geos import Point
@@ -9,10 +10,12 @@ from django.core.exceptions import ValidationError
 
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
 from hawatch.modules.catalog.catalog import seed_catalog
+from hawatch.modules.catalog.seed import _demo_elevation_m
 from hawatch.modules.catalog.validation import validate_catalog_document
 from hawatch.modules.catalog.validation import validate_database_catalog
 from hawatch.modules.catalog.validation import validate_indexable_link_graph
-from hawatch.modules.forecasts.models import WeatherPoint
+from hawatch.modules.forecasts.models import ForecastPointResolution, WeatherPoint
+from hawatch.modules.routes.models import RoutePoint
 
 
 def _catalog_paths() -> list[Path]:
@@ -158,6 +161,18 @@ def test_weather_point_model_validation_rejects_an_unsupported_demo_climate():
 
     with pytest.raises(ValidationError, match="Unsupported demo climate profile"):
         point.full_clean(validate_unique=False)
+
+
+def test_demo_forecast_keeps_zero_and_below_sea_level_elevations():
+    assert _demo_elevation_m(SimpleNamespace(elevation_m=0)) == 0
+    assert _demo_elevation_m(SimpleNamespace(elevation_m=-23)) == -23
+    assert _demo_elevation_m(SimpleNamespace(elevation_m=None)) == 2000
+
+
+def test_point_and_forecast_elevation_fields_accept_signed_values():
+    assert WeatherPoint._meta.get_field("elevation_m").get_internal_type() == "IntegerField"
+    assert ForecastPointResolution._meta.get_field("requested_elevation_m").get_internal_type() == "IntegerField"
+    assert RoutePoint._meta.get_field("elevation_m").get_internal_type() == "IntegerField"
 
 
 @pytest.mark.django_db

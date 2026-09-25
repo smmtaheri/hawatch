@@ -17,6 +17,12 @@ from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, Weat
 DATA_MODE = "demo"
 
 
+def _demo_elevation_m(point: WeatherPoint) -> int:
+    """Keep valid zero and below-sea-level elevations in demo forecasts."""
+
+    return point.elevation_m if point.elevation_m is not None else 2000
+
+
 def ensure_catalog(seed_version: str) -> dict[str, WeatherPoint]:
     """Import packaged catalogs after the owners of their shared points.
 
@@ -99,7 +105,7 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
 
     records = []
     for point in points:
-        elevation = point.elevation_m or 2000
+        elevation = _demo_elevation_m(point)
         for day in day_window(local.date()):
             for hour in ALL_HOURS:
                 reading = generate_reading(point_slug=point.slug, climate_key=point.climate, elevation_m=elevation, local_date=day, hour=hour)

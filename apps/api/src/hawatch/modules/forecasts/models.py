@@ -60,7 +60,9 @@ class WeatherPoint(models.Model):
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     location = models.PointField(srid=4326, spatial_index=False)
     # Catalog elevation; null means genuinely unresolved — never invent or copy provider elevation here.
-    elevation_m = models.PositiveIntegerField(null=True, blank=True)
+    # Terrain elevations use the global sea-level datum and may be below zero
+    # (for example, Caspian coast points).
+    elevation_m = models.IntegerField(null=True, blank=True)
     # Legacy provenance retained for compatibility with the pre-snapshot schema.
     elevation_source = models.CharField(max_length=255, blank=True, default="")
     climate = models.CharField(max_length=32, default="alpine")
@@ -230,7 +232,7 @@ class ForecastPointResolution(models.Model):
     )
     requested_latitude = models.FloatField()
     requested_longitude = models.FloatField()
-    requested_elevation_m = models.PositiveIntegerField(null=True, blank=True)
+    requested_elevation_m = models.IntegerField(null=True, blank=True)
     elevation_requested = models.BooleanField(default=False)
     resolved_latitude = models.FloatField(null=True, blank=True)
     resolved_longitude = models.FloatField(null=True, blank=True)

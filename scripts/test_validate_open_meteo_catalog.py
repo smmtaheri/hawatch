@@ -125,3 +125,28 @@ def test_point_only_catalog_is_valid(tmp_path, monkeypatch):
     assert report["summary"]["pass"] is True
     assert report["summary"]["point_count"] == 1
     assert report["errors"] == []
+
+
+def test_below_sea_level_point_only_catalog_is_valid(tmp_path, monkeypatch):
+    path = _catalog(tmp_path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data["routes"] = {}
+    data["weather_points"]["test_summit"]["elevation_m"] = -23
+    data["point"]["elevation_m"] = -23
+    path.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(
+        validator,
+        "_query_elevation",
+        lambda points, *, endpoint, timeout: [{**point, "dem_elevation_m": -23} for point in points],
+    )
+    monkeypatch.setattr(
+        validator,
+        "_query_forecast",
+        lambda points, *, endpoint, forecast_days, timeout: _forecast_rows(points, elevation=-23),
+    )
+
+    report = validator.validate_catalog(path)
+
+    assert report["summary"]["pass"] is True
+    assert report["points"][0]["catalog_elevation_m"] == -23
+    assert report["points"][0]["dem_delta_m"] == 0

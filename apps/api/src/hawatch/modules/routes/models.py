@@ -102,7 +102,7 @@ class RoutePoint(models.Model):
     slug = models.SlugField(max_length=80)
     name = models.CharField(max_length=80)
     # Denormalized display copies; catalog truth lives on WeatherPoint when linked.
-    elevation_m = models.PositiveIntegerField(null=True, blank=True)
+    elevation_m = models.IntegerField(null=True, blank=True)
     # Explicit GiST only — disable PointField's automatic spatial index to avoid duplicates.
     location = models.PointField(srid=4326, spatial_index=False, null=True, blank=True)
     # Legacy demo offset; prefer cumulative_minutes when curated.

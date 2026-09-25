@@ -112,11 +112,11 @@ def _catalog_checks(catalog: dict) -> tuple[list[str], list[str], list[dict]]:
         elevation = row.get("elevation_m")
         if elevation is not None:
             try:
-                if int(elevation) != elevation or int(elevation) < 0:
+                if int(elevation) != elevation:
                     raise ValueError
                 elevation = int(elevation)
             except (TypeError, ValueError):
-                errors.append(f"{slug}: elevation_m must be a non-negative integer or null")
+                errors.append(f"{slug}: elevation_m must be an integer or null")
                 elevation = None
         elif not row.get("elevation_source"):
             warnings.append(f"{slug}: catalog elevation is unresolved")

@@ -1,0 +1,113 @@
+{
+  "catalog_version": "hawatch-gisoom-catalog-v1",
+  "weather_points": {
+    "gisoom-forest": {
+      "name": "جنگل گیسوم",
+      "page_name": "جنگل گیسوم تالش",
+      "short_label": "جنگل گیسوم",
+      "place_type": "forest",
+      "aliases": [
+        "پارک جنگلی گیسوم",
+        "جنگل گیسوم تالش",
+        "Gisoom Forest",
+        "Gisum Forest"
+      ],
+      "identity_summary": "جنگل ساحلی گیسوم در شهرستان تالش گیلان؛ مقصدی مستقل از نوار ساحلی گیسوم",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/gisoom-forests",
+        "https://mapcarta.com/N6777839485",
+        "https://www.openstreetmap.org/node/6777839485",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.67277,
+      "longitude": 49.03253,
+      "elevation_m": 0,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ جنگل گیسوم از OpenStreetMap/Mapcarta؛ ارتفاع نماینده از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات، به‌صورت موقت.",
+      "climate": "forest_fog",
+      "tile_name": "جنگل گیسوم",
+      "short_category": "جنگل",
+      "category_key": "forest",
+      "category": "جنگل‌های تالش",
+      "region": "گیسوم · تالش · گیلان",
+      "image": "/images/home-scene.png",
+      "image_alt": "جنگل گیسوم در کنار ساحل دریای خزر",
+      "seo": {
+        "title": "آب‌وهوای جنگل گیسوم تالش؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل گیسوم تالش در گیلان؛ وضعیت دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    },
+    "gisoom-beach": {
+      "name": "ساحل گیسوم",
+      "page_name": "ساحل گیسوم تالش",
+      "short_label": "ساحل گیسوم",
+      "place_type": "beach",
+      "aliases": [
+        "ساحل گیسوم تالش",
+        "ساحل جنگل گیسوم",
+        "Gisoom Beach",
+        "Gisum Beach",
+        "Gisoum Beach"
+      ],
+      "identity_summary": "نوار ساحلی گیسوم در دریای خزر، جدا از پهنهٔ جنگلی گیسوم و در شهرستان تالش گیلان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/gisoom-forests",
+        "https://hikersbay.com/beach/iran/%D8%B3%D8%A7%D8%AD%D9%84%20%DA%AF%DB%8C%D8%B3%D9%88%D9%85?lang=en&lat=37.6774588&lon=49.0512254",
+        "https://www.openstreetmap.org/?mlat=37.6774588&mlon=49.0512254#map=16/37.6774588/49.0512254",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.6774588,
+      "longitude": 49.0512254,
+      "elevation_m": -23,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ ساحل از نقشهٔ ساحل گیسوم؛ DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات ارتفاع ۲۳- متر نسبت به سطح دریای جهانی برگرداند. هر دو مقدار تا تطبیق با برداشت ارتفاعی محلی provisional هستند.",
+      "climate": "forest_fog",
+      "tile_name": "ساحل گیسوم",
+      "short_category": "ساحل",
+      "category_key": "beach",
+      "category": "سواحل تالش",
+      "region": "گیسوم · تالش · گیلان",
+      "image": "/images/home-scene.png",
+      "image_alt": "ساحل گیسوم در دریای خزر",
+      "seo": {
+        "title": "آب‌وهوای ساحل گیسوم تالش؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ساحل گیسوم تالش در گیلان؛ دما، باد و بارش را پیش از رفتن به ساحل بررسی کنید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "gisoom-forest",
+    "tile_name": "جنگل گیسوم",
+    "name": "جنگل گیسوم",
+    "short_category": "جنگل",
+    "category": "جنگل‌های تالش",
+    "category_key": "forest",
+    "region": "گیسوم · تالش · گیلان",
+    "elevation_m": 0,
+    "latitude": 37.67277,
+    "longitude": 49.03253,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل گیسوم در کنار ساحل دریای خزر",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک جنگلی گیسوم",
+      "جنگل گیسوم تالش",
+      "Gisoom Forest",
+      "Gisum Forest"
+    ]
+  },
+  "primary_point": "gisoom-forest"
+}
