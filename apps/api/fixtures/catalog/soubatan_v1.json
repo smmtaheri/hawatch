@@ -1,0 +1,169 @@
+{
+  "catalog_version": "hawatch-soubatan-catalog-v1",
+  "weather_points": {
+    "neor-lake": {
+      "name": "دریاچهٔ نئور",
+      "page_name": "دریاچهٔ نئور اردبیل",
+      "short_label": "دریاچهٔ نئور",
+      "place_type": "lake",
+      "aliases": [
+        "نئور",
+        "دریاچه نور",
+        "Lake Neor",
+        "Neor Lake"
+      ],
+      "identity_summary": "دریاچهٔ کوهستانی نئور در استان اردبیل و مبدأ پیمایش پیادهٔ نئور تا سوباتان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N3278036979",
+        "https://mapcarta.com/12420848",
+        "https://en.wikipedia.org/wiki/Neor_Lake",
+        "https://www.wikiloc.com/hiking-trails/nywr-bh-swbtn-138599412"
+      ],
+      "latitude": 38.00865,
+      "longitude": 48.56669,
+      "elevation_m": 2480,
+      "status": "provisional",
+      "elevation_source": "ارتفاع دریاچهٔ نئور از GeoNames/Mapcarta؛ مختصات نماینده از گره گردشگری OpenStreetMap در لبهٔ شمالی دریاچه. DEM و دادهٔ forecast در preflight Open-Meteo کنترل می‌شوند.",
+      "climate": "lake_valley"
+    },
+    "varzan-waterfall": {
+      "name": "آبشار ورزان",
+      "page_name": "آبشار ورزان سوباتان",
+      "short_label": "آبشار ورزان",
+      "place_type": "waterfall",
+      "aliases": [
+        "ورزان",
+        "آبشار وزیران",
+        "Warzan Waterfall",
+        "Varzan Waterfall"
+      ],
+      "identity_summary": "آبشار ورزان در ارتفاعات غربی سوباتان و landmark نام‌دار مسیر پیادهٔ نئور تا سوباتان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/nywr-bh-swbtn-138599412",
+        "https://mapcarta.com/N5733755456",
+        "https://lastsecond.ir/attractions/7150-subatan-county-talesh"
+      ],
+      "latitude": 37.968028,
+      "longitude": 48.678215,
+      "elevation_m": 2050,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌گذاری‌شدهٔ آبشار ورزان در ترک اصلی؛ Open-Meteo GLO-90 DEM در همین مختصات ۲۰۵۰ متر است. نقطهٔ OSM با ارتفاع ۲۱۵۰ متر حدود ۲۰۶ متر فاصله دارد؛ ارتفاع GPX فقط cross-check است و مقدار کاتالوگ provisional می‌ماند.",
+      "climate": "forest_fog"
+    },
+    "soubatan": {
+      "name": "ییلاق سوباتان",
+      "page_name": "ییلاق سوباتان تالش",
+      "short_label": "ییلاق سوباتان",
+      "place_type": "village",
+      "aliases": [
+        "سوباتان",
+        "روستای سوباتان",
+        "ییلاق سوباتان تالش",
+        "سوبوتون",
+        "Soubatan",
+        "Subatan"
+      ],
+      "identity_summary": "ییلاق و آبادی مرتفع سوباتان در شهرستان تالش، گیلان؛ مقصد پیمایش پیادهٔ دریاچهٔ نئور به سوباتان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://lastsecond.ir/attractions/7150-subatan-county-talesh",
+        "https://www.karnaval.ir/things-to-do/subatan-village-tallesh",
+        "https://www.wikiloc.com/hiking-trails/nywr-bh-swbtn-138599412"
+      ],
+      "latitude": 37.947968,
+      "longitude": 48.711425,
+      "elevation_m": 1900,
+      "status": "provisional",
+      "elevation_source": "مختصات انتهای مسیر و waypoint نام‌گذاری‌شدهٔ سوباتان در ترک اصلی؛ منابع گردشگری ارتفاع آبادی را حدود ۱۹۰۰ تا ۲۵۰۰ متر گزارش می‌کنند. DEM و دادهٔ forecast Open-Meteo در preflight کنترل می‌شوند.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "neor-to-soubatan": {
+      "slug": "neor-to-soubatan",
+      "title": "دریاچهٔ نئور تا ییلاق سوباتان",
+      "subtitle": "پیمایش یک‌روزه از دریاچهٔ نئور، کنار آبشار ورزان تا سوباتان",
+      "trail_label": "مسیر نئور–سوباتان",
+      "origin": "دریاچهٔ نئور",
+      "target_label": "ییلاق سوباتان",
+      "region": "نئور · سوباتان · تالش · گیلان و اردبیل",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "neor-lake",
+        "varzan-waterfall",
+        "soubatan"
+      ],
+      "distance_km": 23.4,
+      "ascent_m": 677,
+      "one_way_minutes": 600,
+      "default_start_minutes": 510,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "recorded-gpx-elapsed+independent-hiking-report-v1",
+        "version": "neor-soubatan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/nywr-bh-swbtn-138599412",
+          "https://www.wikiloc.com/hiking-trails/drychh-y-nywr-bh-rwsty-swbtn-114704260",
+          "https://ecosafar.com/product/sobatan/"
+        ],
+        "evidence_tracks": [
+          "tracks/soubatan/soubatan-neor-lake-to-soubatan-2023.gpx"
+        ],
+        "cumulative_minutes": {
+          "neor-lake": 0,
+          "varzan-waterfall": 480,
+          "soubatan": 600
+        },
+        "notes": [
+          "ترک اصلی یک پیمایش یک‌طرفهٔ پیاده از محدودهٔ دریاچهٔ نئور تا سوباتان است؛ waypoint آبشار ورزان در حدود ۱۸٫۲ کیلومتر از ۲۳٫۴ کیلومتر مسیر قرار دارد و مسیر از کنار آن می‌گذرد.",
+          "مسافت ۲۳٫۴ کیلومتر و صعود ۶۷۷ متر با آمار منتشرشدهٔ ترک و هندسهٔ ثبت‌شده تطبیق دارد؛ ارتفاع خام GPX برای DEM یا ascent استفاده نشده است.",
+          "مدت ۱۰ ساعت از زمان ثبت‌شدهٔ ترک (حدود ۹ ساعت و ۵۵ دقیقه با توقف‌ها) گرد شده و با یک گزارش مستقل پیمایش cross-check شده است؛ زمان و فاصله تقریبی‌اند و عدم‌قطعیت ۹۰ دقیقه دارند.",
+          "شروع ترک حدود ۵۰۰ متر با گره نقشه‌ای دریاچهٔ نئور فاصله دارد؛ مختصات دریاچه برای نقطهٔ آب‌وهوا استفاده شده و access point ساختگی جداگانه‌ای ایجاد نشده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "soubatan",
+    "tile_name": "سوباتان",
+    "name": "ییلاق سوباتان",
+    "short_category": "ییلاق",
+    "category": "ییلاق مرتفع · تالش · گیلان",
+    "category_key": "village",
+    "region": "تالش · گیلان",
+    "elevation_m": 1900,
+    "latitude": 37.947968,
+    "longitude": 48.711425,
+    "image": "/images/home-scene.png",
+    "image_alt": "ییلاق مرتفع سوباتان در تالش",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سوباتان",
+      "روستای سوباتان",
+      "ییلاق سوباتان تالش",
+      "Soubatan",
+      "Subatan"
+    ]
+  },
+  "primary_point": "soubatan",
+  "shared_weather_points": []
+}
