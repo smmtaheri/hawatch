@@ -1,0 +1,79 @@
+{
+  "catalog_version": "hawatch-saragah-lake-catalog-v1",
+  "weather_points": {
+    "saragah-lake": {
+      "name": "دریاچهٔ سراگاه",
+      "page_name": "دریاچهٔ سراگاه تالش",
+      "short_label": "دریاچهٔ سراگاه",
+      "place_type": "lake",
+      "aliases": [
+        "دریاچه سراگاه",
+        "دریاچهٔ سراگاه تالش",
+        "سد سراگاه",
+        "سد خاکی سراگاه",
+        "آبگیر سراگاه",
+        "سه‌راه‌گاه",
+        "سه راه گاه",
+        "دریاچه سرآگاه",
+        "Saragah Lake",
+        "Sarāgāh Lake"
+      ],
+      "identity_summary": "آبگیر سد خاکی سراگاه در شمال روستای سراگاه، میان جنگل و شالیزارهای تالش در استان گیلان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://lastsecond.ir/attractions/6866-saragah-lake-talesh",
+        "https://www.karnaval.ir/things-to-do/seragah-lake-talesh",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.82890405593555&longitude=48.879804611206055"
+      ],
+      "latitude": 37.82890405593555,
+      "longitude": 48.879804611206055,
+      "elevation_m": 110,
+      "status": "provisional",
+      "elevation_source": "مختصات جاذبه از دادهٔ نقشهٔ صفحهٔ دریاچه در لست‌سکند؛ ارتفاع ۱۱۰ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات. نقطه حدود یک کیلومتر از مرکز روستای سراگاه فاصله دارد.",
+      "climate": "lake_valley",
+      "category_key": "lake",
+      "category": "دریاچه‌های تالش",
+      "region": "سراگاه · تالش · گیلان",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ سراگاه تالش؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ سراگاه در تالش گیلان؛ دما، باد و بارش را پیش از بازدید بررسی کنید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "saragah-lake",
+    "tile_name": "دریاچهٔ سراگاه",
+    "name": "دریاچهٔ سراگاه",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های تالش",
+    "category_key": "lake",
+    "region": "سراگاه · تالش · گیلان",
+    "elevation_m": 110,
+    "latitude": 37.82890405593555,
+    "longitude": 48.879804611206055,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبگیر سد خاکی سراگاه در میان جنگل و شالیزارهای تالش",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه سراگاه",
+      "دریاچهٔ سراگاه تالش",
+      "سد سراگاه",
+      "سد خاکی سراگاه",
+      "آبگیر سراگاه",
+      "سه‌راه‌گاه",
+      "سه راه گاه",
+      "دریاچه سرآگاه",
+      "Saragah Lake",
+      "Sarāgāh Lake"
+    ]
+  },
+  "primary_point": "saragah-lake"
+}
