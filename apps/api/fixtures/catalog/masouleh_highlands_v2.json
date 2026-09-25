@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-masouleh-highlands-catalog-v1",
+  "catalog_version": "hawatch-masouleh-highlands-catalog-v2",
   "weather_points": {
     "lalandiz-meadow": {
       "name": "ییلاق للندیز ماسوله",
@@ -38,14 +38,14 @@
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
-        "https://geographic.org/geographic_names/name.php?uni=6003271&fid=2871&c=iran",
-        "https://mojekooh.com/shah-moallem-peak-climbing-guide-and-tips/"
+        "https://mojekooh.com/shah-moallem-peak-climbing-guide-and-tips/",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-shh-mlm-shah-moalem-summit-15204125"
       ],
-      "latitude": 37.2089,
-      "longitude": 48.8991,
-      "elevation_m": 3081,
+      "latitude": 37.1947778,
+      "longitude": 48.9175667,
+      "elevation_m": 2995,
       "status": "provisional",
-      "elevation_source": "مختصات و ارتفاع اسمی قله از Gazetteer جغرافیایی؛ ارتفاع ثبت‌شده در کاتالوگ ۳۰۸۱ متر مطابق Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "elevation_source": "مختصات دقیق قله از راهنمای موج‌کوه (37°11′41.20″N, 48°55′3.24″E)؛ ارتفاع ۲۹۹۵ متر از Open-Meteo GLO-90 DEM در همین مختصات و ۶۳ متر اختلاف با ارتفاع اسمی ۳۰۵۸ متر. waypoint ترک پیمایش حدود ۱۲۹ متر با این مختصات فاصله دارد.",
       "climate": "alpine",
       "category_key": "mountain",
       "category": "قله‌های ماسوله و گیلان",
@@ -137,9 +137,9 @@
     "category": "قله‌های ماسوله و گیلان",
     "category_key": "mountain",
     "region": "ماسوله · گیلان",
-    "latitude": 37.2089,
-    "longitude": 48.8991,
-    "elevation_m": 3081,
+    "latitude": 37.1947778,
+    "longitude": 48.9175667,
+    "elevation_m": 2995,
     "image": "/images/home-scene.png",
     "image_alt": "قله شاه معلم در ارتفاعات ماسوله",
     "climate": "alpine",
