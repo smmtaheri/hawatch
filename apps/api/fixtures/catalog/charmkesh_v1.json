@@ -1,0 +1,181 @@
+{
+  "catalog_version": "hawatch-charmkesh-catalog-v1",
+  "weather_points": {
+    "bivarzin-village": {
+      "name": "روستای بیورزن",
+      "page_name": "آب‌وهوای روستای بیورزن لوشان",
+      "short_label": "بیورزن",
+      "place_type": "village",
+      "aliases": [
+        "بیورزن",
+        "بیورزین",
+        "روستای بیورزین",
+        "بیورزان",
+        "Bivarzen village",
+        "Bivarzin village"
+      ],
+      "identity_summary": "روستای بیورزن در لوشان، پای‌کار شناخته‌شدهٔ صعود جنوبی قلهٔ چرمکش",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376",
+        "https://gl.wikiloc.com/rutas-sendeirismo/qlh-chrmkhsh-1402-08-04-151506291",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-bywrzn-t-qlh-chrmkhsh-pnjshnbh-1404-08-15-239120470",
+        "https://mapcarta.com/12626522"
+      ],
+      "latitude": 36.683177,
+      "longitude": 49.581963,
+      "elevation_m": 1065,
+      "status": "provisional",
+      "elevation_source": "مختصات مبدأ پارک کنار روستا در ترک صعود؛ نمایندهٔ پای‌کار بیورزن و هم‌مبدأ مسیر. Open-Meteo GLO-90 DEM در این نقطه 1065 متر است.",
+      "climate": "forest_fog",
+      "category_key": "village",
+      "category": "روستاهای لوشان و رودبار",
+      "region": "بیورزن · لوشان · رودبار · گیلان"
+    },
+    "charmkesh-bozbareh-spring": {
+      "name": "کلبه‌ها و چشمهٔ بزبره",
+      "page_name": "کلبه‌ها و چشمهٔ بزبره در مسیر چرمکش",
+      "short_label": "کلبه و چشمهٔ بزبره",
+      "place_type": "shelter",
+      "aliases": [
+        "کلبهٔ بزبره",
+        "چشمهٔ بزبره",
+        "کلبه و چشمهٔ چرمکش",
+        "Bozbareh cabins and spring"
+      ],
+      "identity_summary": "کلبه‌ها و چشمهٔ بزبره، عارضهٔ میانی نام‌دار در مسیر جنوبی چرمکش از بیورزن",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376",
+        "https://gl.wikiloc.com/rutas-sendeirismo/qlh-chrmkhsh-1402-08-04-151506291",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-bywrzn-t-qlh-chrmkhsh-pnjshnbh-1404-08-15-239120470"
+      ],
+      "latitude": 36.723391,
+      "longitude": 49.595188,
+      "elevation_m": 1859,
+      "status": "provisional",
+      "elevation_source": "Waypoint کلبه و چشمه در ترک اصلی و گزارش‌های مستقل صعود؛ Open-Meteo GLO-90 DEM در این نقطه 1859 متر است.",
+      "climate": "forest_fog",
+      "category_key": "landmark",
+      "category": "نقاط مسیر چرمکش",
+      "region": "چرمکش · لوشان · گیلان"
+    },
+    "charmkesh": {
+      "name": "قلهٔ چرمکش",
+      "page_name": "آب‌وهوای قلهٔ چرمکش لوشان",
+      "short_label": "چرمکش",
+      "place_type": "summit",
+      "aliases": [
+        "چرمکش",
+        "قله چرمکش",
+        "قلهٔ چرم‌کش",
+        "Charmkesh Peak",
+        "Charmkesh mountain"
+      ],
+      "identity_summary": "قلهٔ چرمکش در ارتفاعات لوشان و مقصد پیمایش جنوبی از روستای بیورزن",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376",
+        "https://gl.wikiloc.com/rutas-sendeirismo/qlh-chrmkhsh-1402-08-04-151506291",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-bywrzn-t-qlh-chrmkhsh-pnjshnbh-1404-08-15-239120470",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%86%D8%B1%D9%85%DA%A9%D8%B4-%D9%84%D9%88%D8%B4%D8%A7%D9%86/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.721635,
+      "longitude": 49.604993,
+      "elevation_m": 2259,
+      "status": "provisional",
+      "elevation_source": "مختصات همگرای ترک‌ها؛ گزارش‌های GPS، نقشه و تابلو حدود 2230 تا 2298 مترند. ارتفاع مدل Open-Meteo GLO-90 در این نقطه 2259 متر است.",
+      "climate": "alpine",
+      "category_key": "mountain",
+      "category": "قله‌های گیلان",
+      "region": "چرمکش · لوشان · گیلان"
+    }
+  },
+  "routes": {
+    "bivarzin-to-charmkesh": {
+      "slug": "bivarzin-charmkesh-south-face",
+      "title": "روستای بیورزن تا قلهٔ چرمکش",
+      "subtitle": "پیمایش جبههٔ جنوبی از پای‌کار بیورزن، کلبه‌ها و چشمهٔ بزبره تا قله",
+      "trail_label": "مسیر جنوبی بیورزن–چرمکش",
+      "origin": "روستای بیورزن",
+      "target_label": "قلهٔ چرمکش",
+      "region": "بیورزن · چرمکش · لوشان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "bivarzin-village",
+        "charmkesh-bozbareh-spring",
+        "charmkesh"
+      ],
+      "distance_km": 7.9,
+      "ascent_m": 1184,
+      "one_way_minutes": 300,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "bivarzin-charmkesh-south-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376",
+          "https://gl.wikiloc.com/rutas-sendeirismo/qlh-chrmkhsh-1402-08-04-151506291",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-bywrzn-t-qlh-chrmkhsh-pnjshnbh-1404-08-15-239120470"
+        ],
+        "evidence_tracks": [
+          "tracks/charmkesh/charmkesh-south-bivarzin-to-summit-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "bivarzin-village": 0,
+          "charmkesh-bozbareh-spring": 220,
+          "charmkesh": 300
+        },
+        "notes": [
+          "ترک پیوستهٔ صعود جنوبی از پارکینگ کنار بیورزن تا قله، پس از برش در نزدیک‌ترین نقطهٔ قله، 7.79 کیلومتر و با کل هندسه 7.87 کیلومتر است؛ فاصلهٔ نمایشی 7.9 کیلومتر است.",
+          "صعود نرم‌شدهٔ هندسهٔ ترک حدود 1184 متر است؛ گزارش‌های مستقل 1228 تا 1236 متر ثبت کرده‌اند، بنابراین ارتفاع‌گیری تقریبی است و به یک رقم دقیق‌تر ادعا نمی‌شود.",
+          "کلبه‌ها و چشمهٔ بزبره waypoint نام‌دار و تأییدشده در چند گزارش است و عارضهٔ میانی عمومی مسیر را تشکیل می‌دهد.",
+          "بیورزن هم مقصد مستقل آب‌وهواست و هم مبدأ canonical مسیر؛ پارکینگ/پای‌کار جداگانه ساخته نشده است. نقطهٔ forecast روستا روی دسترسی پای‌کار قرار گرفته تا با مبدأ واقعی ترک یکی باشد؛ مرکز نقشه‌ای روستا حدود 700 متر فاصله دارد.",
+          "زمان یک‌طرفه 5 ساعت تخمینی با عدم‌قطعیت 60 دقیقه است؛ زمان‌های گزارش‌شده با توقف‌ها حدود 4 ساعت و 45 دقیقه تا 5 ساعت و 42 دقیقه‌اند و ترک timestamp قابل اتکا ندارد."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "charmkesh",
+    "tile_name": "چرمکش",
+    "name": "قلهٔ چرمکش",
+    "short_category": "قله",
+    "category": "قله‌های گیلان",
+    "category_key": "mountain",
+    "region": "چرمکش · لوشان · گیلان",
+    "elevation_m": 2259,
+    "latitude": 36.721635,
+    "longitude": 49.604993,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ چرمکش در لوشان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "چرمکش",
+      "قله چرمکش",
+      "قلهٔ چرم‌کش",
+      "Charmkesh Peak"
+    ]
+  },
+  "primary_point": "charmkesh"
+}
