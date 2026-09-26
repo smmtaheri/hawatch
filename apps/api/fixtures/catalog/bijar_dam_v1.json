@@ -1,0 +1,256 @@
+{
+  "catalog_version": "hawatch-bijar-dam-catalog-v1",
+  "weather_points": {
+    "espehbodan-village": {
+      "name": "روستای اسپهبدان",
+      "page_name": "روستای اسپهبدان رودبار",
+      "short_label": "اسپهبدان",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "اسپهبدان",
+        "اسپه‌بَدان",
+        "اسبابزل",
+        "اسپابزل",
+        "اسپابدان",
+        "Esbabzel",
+        "Espahabdan"
+      ],
+      "identity_summary": "روستای اسپهبدان در شهرستان رودبار گیلان؛ ترک پیمایش پیادهٔ شاه‌شهیدان به سد بیجار از حاشیهٔ این روستا آغاز می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12366496",
+        "https://eu.wikiloc.com/ibilbide-senderismo/pymysh-shh-shhydn-byjr-228426461",
+        "https://www.wikiloc.com/hiking-trails/pymysh-shh-shhydn-sphbdn-mrt-khlh-chwlh-sy-sr-sd-byjr-230524969"
+      ],
+      "latitude": 36.87473,
+      "longitude": 49.77852,
+      "elevation_m": 1769,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع روستا از Mapcarta/GeoNames؛ Open-Meteo GLO-90 DEM در همین مختصات ۱۷۶۹ متر است. ابتدای ترک اصلی حدود ۳۴۰ متر از مرکز روستا فاصله دارد.",
+      "climate": "forest_fog",
+      "category": "روستاهای رودبار و دیلمان",
+      "region": "اسپهبدان · رودبار · گیلان"
+    },
+    "kaftar-khani": {
+      "name": "ییلاق کفترخوانی",
+      "page_name": "ییلاق کفترخوانی (دهکدهٔ هایدی) گیلان",
+      "short_label": "کفترخوانی",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "aliases": [
+        "کفترخوانی",
+        "کفتر خانی",
+        "کبوتر خانی",
+        "ییلاق کفترخانی",
+        "دهکده هایدی",
+        "دهکدهٔ هایدی ایران",
+        "مرتع کفترخانی",
+        "Kaftar Khani",
+        "Kabutar Khan"
+      ],
+      "identity_summary": "ییلاق کفترخوانی در منطقهٔ درفک؛ این مرتع که با نام دهکدهٔ هایدی هم شناخته می‌شود، عارضهٔ نام‌دار و میانی پیمایش‌های شاه‌شهیدان و اسپهبدان به سمت بیجار است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/27209692",
+        "https://eu.wikiloc.com/ibilbide-senderismo/pymysh-shh-shhydn-byjr-228426461",
+        "https://is.wikiloc.com/fjallaferd-slodir/1405-03-28-shh-shhydn-bh-yylq-khftrkhwny-dhkhdh-hydy-270187677",
+        "https://www.wikiloc.com/hiking-trails/pymysh-shh-shhydn-sphbdn-mrt-khlh-chwlh-sy-sr-sd-byjr-230524969"
+      ],
+      "latitude": 36.90798,
+      "longitude": 49.72164,
+      "elevation_m": 1423,
+      "status": "provisional",
+      "elevation_source": "مختصات locality کفترخانی از Mapcarta/GeoNames؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۱۴۲۳ متر است. نزدیک‌ترین بخش ترک ارسالی ۷۹ متر با این مختصات فاصله دارد.",
+      "climate": "meadow",
+      "category": "ییلاق‌های درفک و رودبار",
+      "region": "درفک · رودبار · گیلان"
+    },
+    "bijar-reservoir-end": {
+      "name": "پایان پیمایش در محدودهٔ آبگیر سد بیجار",
+      "page_name": "پایان مسیر پیاده در محدودهٔ سد بیجار",
+      "short_label": "پایان مسیر بیجار",
+      "place_type": "landmark",
+      "category_key": "lake",
+      "aliases": [],
+      "identity_summary": "نقطهٔ پایان GPS ترک پیادهٔ اسپهبدان تا محدودهٔ آبگیر سد بیجار؛ این نقطه انتهای مسیر ثبت‌شده است و با خود سازهٔ تاج سد یکی نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://eu.wikiloc.com/ibilbide-senderismo/pymysh-shh-shhydn-byjr-228426461",
+        "https://mapcarta.com/N5314437423"
+      ],
+      "latitude": 36.969971,
+      "longitude": 49.707895,
+      "elevation_m": 222,
+      "status": "provisional",
+      "elevation_source": "مختصات دقیق انتهای ترک ارسالی؛ ارتفاع Open-Meteo GLO-90 DEM در این مختصات ۲۲۲ متر است. ارتفاع خام ترک ۲۰۹ متر صرفاً مرجع هندسه است.",
+      "climate": "lake_valley",
+      "category": "نقاط مسیر اسپهبدان تا سد بیجار",
+      "region": "محدودهٔ سد بیجار · رودبار · گیلان",
+      "evidence_note": "انتهای ترک ۳٫۵ کیلومتر خط مستقیم تا نقطهٔ ثبت‌شدهٔ سازهٔ سد فاصله دارد؛ در صفحهٔ Route به‌عنوان پایان محدودهٔ آبگیر نمایش داده شود، نه تاج سد."
+    },
+    "bijar-dam": {
+      "name": "سد آیت‌الله بهجت (سد بیجار)",
+      "page_name": "آب‌وهوای سد بیجار گیلان",
+      "short_label": "سد بیجار",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "سد بیجار",
+        "سد مخزنی بیجار",
+        "سد شهر بیجار",
+        "سد آیت الله بهجت",
+        "سد آیت‌الله بهجت",
+        "سد آیت الله بهجت شهر بیجار",
+        "Bahjat Dam",
+        "Bijar Dam"
+      ],
+      "identity_summary": "سد مخزنی آیت‌الله بهجت، شناخته‌شده با نام سد بیجار، بر رودخانهٔ زیلکی در گیلان؛ مقصد مستقل نزدیک روستاهای شهربیجار و میش‌بیجار.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5314437423",
+        "https://rahavardha.ir/%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%B3%D8%AF-%D8%A2%DB%8C%D8%AA-%D8%A7%D9%84%D9%84%D9%87-%D8%A8%D9%87%D8%AC%D8%AA-%D8%B4%D9%87%D8%B1-%D8%A8%DB%8C%D8%AC%D8%A7%D8%B1/"
+      ],
+      "latitude": 36.99852,
+      "longitude": 49.69057,
+      "elevation_m": 198,
+      "status": "provisional",
+      "elevation_source": "مختصات سازهٔ سد از OpenStreetMap/Mapcarta؛ Open-Meteo GLO-90 DEM در همین نقطه ۱۹۸ متر است.",
+      "climate": "lake_valley",
+      "category": "سدها و دریاچه‌های گیلان",
+      "region": "رودخانهٔ زیلکی · رودبار · گیلان",
+      "seo": {
+        "title": "آب‌وهوای سد بیجار گیلان؛ پیش‌بینی هوا در سد آیت‌الله بهجت | هواچ",
+        "description": "پیش‌بینی آب‌وهوای سد بیجار گیلان، یا سد مخزنی آیت‌الله بهجت، را برای برنامه‌ریزی سفر و بازدید ببینید."
+      }
+    },
+    "shahr-e-bijar": {
+      "name": "روستای شهربیجار گیلان",
+      "page_name": "آب‌وهوای روستای شهربیجار گیلان",
+      "short_label": "شهربیجار",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "شهربیجار",
+        "شهر بیجار گیلان",
+        "روستای شهربیجار",
+        "شهربیجار رودبار",
+        "Shahr-e Bijar",
+        "Shahrbijar"
+      ],
+      "identity_summary": "روستای شهربیجار، مرکز دهستان بلوکات در شهرستان رودبار؛ سکونتگاهی مستقل در غرب سد بیجار و نزدیک محور دسترسی منطقه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12403564",
+        "https://mapcarta.com/N5314437423"
+      ],
+      "latitude": 37.0135,
+      "longitude": 49.64145,
+      "elevation_m": 90,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع روستای شهربیجار از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در همین مختصات ۹۰ متر است.",
+      "climate": "forest_fog",
+      "category": "روستاهای رودبار گیلان",
+      "region": "شهربیجار · رودبار · گیلان"
+    }
+  },
+  "routes": {
+    "shah_shahidan_to_bijar_reservoir": {
+      "slug": "shah-shahidan-bijar-dam",
+      "title": "اسپهبدان تا محدودهٔ سد بیجار",
+      "subtitle": "پیمایش یک‌طرفه از پای‌کار شاه‌شهیدان، از مسیر ییلاق کفترخوانی تا انتهای آبگیر سد بیجار",
+      "trail_label": "مسیر شاه‌شهیدان–بیجار",
+      "origin": "روستای اسپهبدان",
+      "target_label": "پایان پیمایش در محدودهٔ آبگیر سد بیجار",
+      "region": "درفک · رودبار · گیلان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "espehbodan-village",
+        "kaftar-khani",
+        "bijar-reservoir-end"
+      ],
+      "distance_km": 26.98,
+      "ascent_m": 274,
+      "one_way_minutes": 471,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+source-moving-time-v1",
+        "version": "shah-shahidan-bijar-dam-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://eu.wikiloc.com/ibilbide-senderismo/pymysh-shh-shhydn-byjr-228426461",
+          "https://is.wikiloc.com/fjallaferd-slodir/1405-03-28-shh-shhydn-bh-yylq-khftrkhwny-dhkhdh-hydy-270187677",
+          "https://mapcarta.com/27209692"
+        ],
+        "evidence_tracks": [
+          "tracks/bijar-dam/bijar-dam-shah-shahidan-to-bijar-dam-primary-2025.gpx"
+        ],
+        "cumulative_minutes": {
+          "espehbodan-village": 0,
+          "kaftar-khani": 265,
+          "bijar-reservoir-end": 471
+        },
+        "notes": [
+          "هندسهٔ ترک ارسالی یک‌طرفه و پیوسته است: ۲۶٫۹۸ کیلومتر؛ تحلیل ارتفاع هموارشدهٔ GPX حدود ۲۷۴ متر صعود و ۱۴۶۲ متر افت خالص نشان می‌دهد. منبع ترک صعود مثبت ۳۷۲ متر گزارش می‌کند؛ به‌دلیل نویز ارتفاع دستگاه، مقدار هموارشدهٔ هندسه در catalog ثبت شد.",
+          "صفحهٔ ترک آن را شاه‌شهیدان به بیجار می‌نامد، اما نقطهٔ شروع GPS حدود ۳۴۰ متر از مرکز روستای اسپهبدان و حدود ۱٫۶ کیلومتر از مرکز شاه‌شهیدان فاصله دارد؛ بنابراین origin مسیر در هواچ اسپهبدان است و شاه‌شهیدان فقط نام رایج/پای‌کار منطقه محسوب می‌شود.",
+          "زمان حرکت ۷ ساعت و ۵۱ دقیقه از گزارش همان ترک گرفته شده است. timestampهای GPX طی چند روز پخش‌اند و برای محاسبهٔ زمان حرکت استفاده نشده‌اند.",
+          "ترک در انتهای آبگیر/محدودهٔ سد تمام می‌شود و به نقطهٔ ثبت‌شدهٔ سازهٔ سد نمی‌رسد؛ مقصد route با پایان GPS منطبق است و با صفحهٔ مستقل خود سد یکی نیست.",
+          "ترک در نام خود از اشتنیف یاد می‌کند، اما هندسهٔ بارگذاری‌شده به ارتفاع ثبت‌شدهٔ ییلاق اشتنیف نمی‌رسد؛ تا دریافت/تطبیق مختصات مسیر آن، اشتنیف به‌عنوان RoutePoint این ترک ثبت نشد.",
+          "مختصات و ارتفاع WeatherPointها از DEM/مکان‌نام‌های معتبر گرفته شده‌اند؛ ارتفاع خام GPX فقط مرجع شکل مسیر است."
+        ]
+      },
+      "public_point_notes": {
+        "espehbodan-village": "شروع GPS ترک از حاشیهٔ اسپهبدان است؛ صفحهٔ روستای شاه‌شهیدان هم به‌عنوان روستای مستقل و پای‌کار دیگر منطقه در مقصدها موجود است.",
+        "kaftar-khani": "ییلاق کفترخوانی با نام دهکدهٔ هایدی هم شناخته می‌شود؛ این دو نام به یک صفحهٔ canonical می‌رسند.",
+        "bijar-reservoir-end": "این نقطه انتهای GPS در محدودهٔ آبگیر است؛ سازهٔ سد آیت‌الله بهجت حدود ۳٫۵ کیلومتر دورتر قرار دارد."
+      }
+    }
+  },
+  "point": {
+    "slug": "bijar-dam",
+    "tile_name": "سد بیجار",
+    "name": "سد آیت‌الله بهجت (سد بیجار)",
+    "short_category": "سد و دریاچه",
+    "category": "سدها و دریاچه‌های گیلان",
+    "category_key": "lake",
+    "region": "رودخانهٔ زیلکی · رودبار · گیلان",
+    "elevation_m": 198,
+    "latitude": 36.99852,
+    "longitude": 49.69057,
+    "image": "/images/home-scene.png",
+    "image_alt": "سد آیت‌الله بهجت در محدودهٔ شهربیجار گیلان",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سد بیجار",
+      "سد مخزنی بیجار",
+      "سد شهر بیجار",
+      "سد آیت الله بهجت",
+      "سد آیت‌الله بهجت",
+      "سد آیت الله بهجت شهر بیجار",
+      "Bahjat Dam",
+      "Bijar Dam"
+    ]
+  },
+  "primary_point": "bijar-dam"
+}
