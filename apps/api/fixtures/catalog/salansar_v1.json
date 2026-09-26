@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-salansar-catalog-v1",
+  "weather_points": {
+    "salansar": {
+      "name": "ییلاق سلانسر",
+      "page_name": "ییلاق سلانسر رودبار",
+      "short_label": "ییلاق سلانسر",
+      "place_type": "meadow",
+      "aliases": [
+        "سلانسر رودبار",
+        "دشت سلانسر",
+        "ییلاق سلانسر رودبار گیلان",
+        "Selansar",
+        "Salan Sar",
+        "Salaneh Sar",
+        "Salanser"
+      ],
+      "identity_summary": "ییلاق سلانسر در ارتفاعات رستم‌آبادِ شهرستان رودبار گیلان؛ مرتعی شناخته‌شده با دسترسی جاده‌ای از رستم‌آباد و چشم‌انداز درفک و جلگهٔ سپیدرود",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3329841733",
+        "https://mapcarta.com/12428150",
+        "https://letsgotrip.ir/salansar-village/",
+        "https://www.wikiloc.com/hiking-trails/slnsr-rwz-wl-141077355"
+      ],
+      "latitude": 36.9206673,
+      "longitude": 49.3955344,
+      "elevation_m": 1495,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۱۴۹۵ متر در مختصات canonical؛ Mapcarta/OSM مقدار ۱۷۱۳ متر و یک منبع گردشگری بازهٔ کلی ۱۲۰۰–۱۴۵۰ متر گزارش می‌کنند. ارتفاع DEM provisional است و نیازمند تطبیق میدانی.",
+      "climate": "meadow",
+      "category_key": "meadow",
+      "category": "ییلاق‌های رودبار گیلان",
+      "region": "رستم‌آباد · رودبار · گیلان"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "salansar",
+    "tile_name": "ییلاق سلانسر",
+    "name": "ییلاق سلانسر",
+    "short_category": "ییلاق",
+    "category": "ییلاق‌های رودبار گیلان",
+    "category_key": "meadow",
+    "region": "رستم‌آباد · رودبار · گیلان",
+    "elevation_m": 1495,
+    "latitude": 36.9206673,
+    "longitude": 49.3955344,
+    "image": "/images/home-scene.png",
+    "image_alt": "ییلاق سلانسر در ارتفاعات رودبار گیلان",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "سلانسر رودبار",
+      "دشت سلانسر",
+      "ییلاق سلانسر رودبار گیلان",
+      "Selansar",
+      "Salan Sar",
+      "Salaneh Sar",
+      "Salanser"
+    ]
+  },
+  "primary_point": "salansar"
+}
