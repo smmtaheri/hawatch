@@ -1,0 +1,77 @@
+{
+  "catalog_version": "hawatch-sefidrud-reservoir-catalog-v1",
+  "weather_points": {
+    "sefidrud-reservoir": {
+      "name": "دریاچهٔ سد سفیدرود",
+      "page_name": "دریاچهٔ سد سفیدرود منجیل",
+      "short_label": "دریاچهٔ سفیدرود",
+      "place_type": "lake",
+      "aliases": [
+        "سد سفیدرود",
+        "سد سفید رود",
+        "سد منجیل",
+        "دریاچهٔ منجیل",
+        "دریاچه منجیل",
+        "دریاچهٔ سد سفیدرود",
+        "دریاچه سد سفید رود",
+        "Sefidrud Dam Lake",
+        "Sefid-Rud Reservoir",
+        "Manjil Dam Lake"
+      ],
+      "identity_summary": "مخزن دریاچه‌ای سد سفیدرود، شناخته‌شده با نام سد منجیل، در جنوب‌غرب شهر منجیل و محل پیوند قزل‌اوزن و شاهرود",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W25273884",
+        "https://mapcarta.com/12479190",
+        "https://en.wikipedia.org/wiki/Sefidrud_Dam",
+        "https://www.iranicaonline.org/articles/safidrud/",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.7187&longitude=49.3417"
+      ],
+      "latitude": 36.7187,
+      "longitude": 49.3417,
+      "elevation_m": 324,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ مخزن دریاچه‌ای سد از نقشهٔ OpenStreetMap/Mapcarta؛ ارتفاع ۳۲۴ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "lake_valley",
+      "category_key": "lake",
+      "category": "دریاچه‌های گیلان",
+      "region": "منجیل · رودبار · گیلان"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "sefidrud-reservoir",
+    "tile_name": "دریاچهٔ سفیدرود",
+    "name": "دریاچهٔ سد سفیدرود",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های گیلان",
+    "category_key": "lake",
+    "region": "منجیل · رودبار · گیلان",
+    "elevation_m": 324,
+    "latitude": 36.7187,
+    "longitude": 49.3417,
+    "image": "/images/home-scene.png",
+    "image_alt": "مخزن دریاچه‌ای سد سفیدرود در نزدیکی منجیل",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سد سفیدرود",
+      "سد سفید رود",
+      "سد منجیل",
+      "دریاچهٔ منجیل",
+      "دریاچه منجیل",
+      "دریاچهٔ سد سفیدرود",
+      "دریاچه سد سفید رود",
+      "Sefidrud Dam Lake",
+      "Sefid-Rud Reservoir",
+      "Manjil Dam Lake"
+    ]
+  },
+  "primary_point": "sefidrud-reservoir"
+}

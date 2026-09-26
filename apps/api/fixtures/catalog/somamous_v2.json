@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-somamous-catalog-v1",
+  "catalog_version": "hawatch-somamous-catalog-v2",
   "weather_points": {
     "somamous": {
       "name": "قلهٔ سماموس",
@@ -74,14 +74,16 @@
       "status": "provisional",
       "elevation_source": "Waypoint و نقطهٔ آغاز ترک صعود از جواهردشت؛ ارتفاع GPX حدود ۲۱۳۶ متر و برای تطبیق provider موقت است.",
       "climate": "forest_fog",
-      "page_name": "روستای جواهردشت، مبدأ مسیر سماموس",
+      "page_name": "روستای جواهردشت رودسر",
       "short_label": "جواهردشت",
       "place_type": "village",
-      "identity_summary": "ییلاق و روستای جواهردشت در مسیر شمالی صعود به سماموس",
-      "importance": "support",
+      "identity_summary": "روستای ییلاقی جواهردشت در شهرستان رودسر گیلان و مبدأ مسیر شمالی صعود به سماموس",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
+        "https://mapcarta.com/12606192",
         "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170",
         "https://www.wikiloc.com/hiking-trails/gt-184920415"
       ],

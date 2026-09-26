@@ -1,5 +1,11 @@
 {
-  "catalog_version": "hawatch-gavkol-v1",
+  "catalog_version": "hawatch-gavkol-v2",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["gavkol-harzevil-cypress", "harzevil-village"],
+      "reason": "نقطهٔ نمایندهٔ روستای هرزویل حدود ۳۵ متر با سرو کهن فاصله دارد؛ سرو یک اثر طبیعی ملیِ نام‌دار درون روستاست و نقطهٔ دیگر خود سکونتگاه است، بنابراین دو هویت مستقل دارند."
+    }
+  ],
   "weather_points": {
     "gavkol-harzevil-cypress": {
       "name": "سرو کهن هرزویل",
@@ -26,6 +32,40 @@
       "status": "provisional",
       "elevation_source": "Waypoint سرو کهن هرزویل در ترک صعود؛ ارتفاع GPX نزدیک ۵۴۷ متر است و با DEM/Open-Meteo اعتبارسنجی می‌شود.",
       "climate": "meadow"
+    },
+    "harzevil-village": {
+      "name": "روستای هرزویل",
+      "page_name": "روستای هرزویل منجیل",
+      "short_label": "روستای هرزویل",
+      "place_type": "village",
+      "aliases": [
+        "هرزویل",
+        "هرزه‌بیل",
+        "روستای هرزویل گیلان",
+        "روستای هرزویل رودبار",
+        "Harzevil",
+        "Harzvil"
+      ],
+      "identity_summary": "روستای تاریخی هرزویل در نزدیکی منجیلِ شهرستان رودبار؛ محل سرو کهن هرزویل و مبدأ دسترسی مسیر جنگلی گاوکول",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://commons.wikimedia.org/wiki/Category:Harzevil",
+        "https://www.irandeserts.com/article/%D8%B3%D8%B1%D9%88-%D9%87%D8%B1%D8%B2%D9%88%DB%8C%D9%84-%DA%AF%DB%8C%D9%84%D8%A7%D9%86/",
+        "https://www.hamooniran.ir/item/4419",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.7455556&longitude=49.4427778"
+      ],
+      "latitude": 36.7455556,
+      "longitude": 49.4427778,
+      "elevation_m": 532,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا در دادهٔ مکانی Wikimedia Commons (۳۶°۴۴′۴۴″ شمالی، ۴۹°۲۶′۳۴″ شرقی)؛ ارتفاع ۵۳۲ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "category_key": "village",
+      "category": "روستاهای رودبار گیلان",
+      "region": "هرزویل · منجیل · رودبار · گیلان"
     },
     "gavkol-ogri-belaqi-spring": {
       "name": "چشمهٔ اوغری‌بلاغی گاوکول",
