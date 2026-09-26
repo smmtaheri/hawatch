@@ -1,4 +1,4 @@
-from hawatch.modules.catalog.identity import category_key_for_point, place_type_label
+from hawatch.modules.catalog.identity import category_key_for_point, metadata_for_point, place_type_label
 
 
 def test_village_place_type_uses_the_shared_village_icon_category():
@@ -20,3 +20,14 @@ def test_city_place_type_uses_a_distinct_category_key():
 def test_beach_place_type_uses_its_own_icon_and_persian_label():
     assert category_key_for_point("", "beach") == "beach"
     assert place_type_label("beach") == "ساحل"
+
+
+def test_shah_shahidan_page_uses_a_short_gilan_disambiguated_title():
+    identity = metadata_for_point(
+        "shah-shahidan-gilan",
+        {"name": "روستای شاه‌شهیدان", "place_type": "village", "importance": "primary"},
+        is_primary=True,
+    )
+
+    assert identity["page_name"] == "روستای شاه‌شهیدان گیلان"
+    assert identity["short_label"] == "شاه‌شهیدان"

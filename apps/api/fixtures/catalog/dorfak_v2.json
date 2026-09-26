@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-dorfak-catalog-v1",
+  "catalog_version": "hawatch-dorfak-catalog-v2",
   "weather_points": {
     "dorfak": {
       "name": "قلهٔ درفک",
@@ -26,7 +26,7 @@
         "https://da.wikiloc.com/vandring-spor/drfkh-stkhrgh-dfrz-18411848"
       ]
     },
-    "dorfak-east-shah-shahidan": {
+    "shah-shahidan-gilan": {
       "name": "روستای شاه‌شهیدان",
       "latitude": 36.863635,
       "longitude": 49.774007,
@@ -248,7 +248,7 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "dorfak-east-shah-shahidan",
+        "shah-shahidan-gilan",
         "dorfak-east-tir-bargh",
         "dorfak-east-cheshmeh",
         "dorfak-east-ghar-yakhi",
@@ -270,8 +270,8 @@
           "https://kanoonkooh.blogfa.com/post/181/%D9%82%D9%84%D9%87-%D8%AF%D8%B1%D9%81%DA%A9"
         ],
         "evidence_tracks": [
-          "tracks/dorfak/dorfak-east-shah-shahidan-to-summit-2014.gpx",
-          "tracks/dorfak/dorfak-east-shah-shahidan-roundtrip-2024.gpx"
+          "tracks/dorfak/dorfak-shah-shahidan-to-summit-2014.gpx",
+          "tracks/dorfak/dorfak-shah-shahidan-roundtrip-2024.gpx"
         ],
         "notes": [
           "The 2014 GPX reaches the summit waypoint at approximately 14.43 km; its timestamp ordering is not usable for moving-time.",
@@ -279,7 +279,7 @@
           "GPX elevation is reference evidence; catalog weather elevations use Open-Meteo GLO-90 DEM with waypoint cross-check."
         ],
         "cumulative_minutes": {
-          "dorfak-east-shah-shahidan": 0,
+          "shah-shahidan-gilan": 0,
           "dorfak-east-tir-bargh": 70,
           "dorfak-east-cheshmeh": 165,
           "dorfak-east-ghar-yakhi": 270,

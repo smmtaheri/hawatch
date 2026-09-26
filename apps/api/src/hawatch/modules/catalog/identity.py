@@ -349,7 +349,7 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "azadkouh-nahiyeh-start": {"name": "روستای ناحیه", "page_name": "روستای ناحیه، ابتدای مسیر آزادکوه", "short_label": "ناحیه", "place_type": "village", "name_status": "official"},
     "azadkouh-nesen-start": {"name": "حسینیهٔ روستای نسن", "page_name": "حسینیهٔ روستای نسن، ابتدای مسیر آزادکوه", "short_label": "نسن", "place_type": "trailhead", "name_status": "established"},
     "azadkouh-varangerud-start": {"name": "روستای وارنگه‌رود", "page_name": "روستای وارنگه‌رود، ابتدای مسیر آزادکوه", "short_label": "وارنگه‌رود", "place_type": "village", "name_status": "official"},
-    "dorfak-east-shah-shahidan": {"name": "روستای شاه‌شهیدان", "page_name": "روستای شاه‌شهیدان، ابتدای مسیر درفک", "short_label": "شاه‌شهیدان", "place_type": "village", "name_status": "official"},
+    "shah-shahidan-gilan": {"name": "روستای شاه‌شهیدان", "page_name": "روستای شاه‌شهیدان گیلان", "short_label": "شاه‌شهیدان", "place_type": "village", "name_status": "official"},
     "dorfak-west-shirkuh": {"name": "روستای شیرکوه", "page_name": "روستای شیرکوه، ابتدای مسیر درفک", "short_label": "شیرکوه", "place_type": "village", "name_status": "official"},
     "dorfak-west-larneh": {"name": "دشت لارنه", "page_name": "دشت لارنه در مسیر شیرکوه–درفک", "short_label": "دشت لارنه", "place_type": "meadow", "name_status": "established"},
     "hazar-rayen-shelter": {"name": "پناهگاه قلهٔ هزار در مسیر راین", "page_name": "پناهگاه قلهٔ هزار در مسیر راین", "short_label": "پناهگاه هزار", "place_type": "shelter", "name_status": "established"},
