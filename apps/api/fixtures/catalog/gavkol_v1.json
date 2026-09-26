@@ -1,0 +1,159 @@
+{
+  "catalog_version": "hawatch-gavkol-v1",
+  "weather_points": {
+    "gavkol-harzevil-cypress": {
+      "name": "سرو کهن هرزویل",
+      "page_name": "سرو کهن هرزویل؛ مبدأ مسیر گاوکول",
+      "short_label": "سرو هرزویل",
+      "place_type": "landmark",
+      "aliases": [
+        "سرو سه‌هزارساله هرزویل",
+        "سرو هرزویل",
+        "Harzevil Cypress"
+      ],
+      "identity_summary": "درخت سرو کهن هرزویل، مبدأ ثبت‌شدهٔ پیمایش جنگلی قلهٔ گاوکول",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhwl-hrzwyl-mnjyl-28-rdybhsht-1403-171070004",
+        "https://sepehrmountainclub72.com/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D9%84-%D9%85%D9%86%D8%AC%DB%8C%D9%84/"
+      ],
+      "latitude": 36.745493,
+      "longitude": 49.443168,
+      "elevation_m": 547,
+      "status": "provisional",
+      "elevation_source": "Waypoint سرو کهن هرزویل در ترک صعود؛ ارتفاع GPX نزدیک ۵۴۷ متر است و با DEM/Open-Meteo اعتبارسنجی می‌شود.",
+      "climate": "meadow"
+    },
+    "gavkol-ogri-belaqi-spring": {
+      "name": "چشمهٔ اوغری‌بلاغی گاوکول",
+      "page_name": "چشمهٔ اوغری‌بلاغی در مسیر گاوکول",
+      "short_label": "چشمهٔ اوغری‌بلاغی",
+      "place_type": "spring",
+      "aliases": [
+        "چشمه اوغری بلاغی",
+        "چشمهٔ مسیر جنگلی گاوکول",
+        "Ogri Belaqi Spring"
+      ],
+      "identity_summary": "چشمهٔ نام‌برده‌شده در مسیر جنگلی جبههٔ شمالی قلهٔ گاوکول از هرزویل",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhwl-hrzwyl-mnjyl-28-rdybhsht-1403-171070004",
+        "https://sepehrmountainclub72.com/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D9%84-%D9%85%D9%86%D8%AC%DB%8C%D9%84/"
+      ],
+      "latitude": 36.759143,
+      "longitude": 49.480329,
+      "elevation_m": 1451,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه در ترک و گزارش مستقل صعود جبههٔ شمالی؛ ارتفاع GPX نزدیک ۱۴۵۱ متر است و با DEM/Open-Meteo اعتبارسنجی می‌شود.",
+      "climate": "forest_fog"
+    },
+    "gavkol-harzevil": {
+      "name": "قلهٔ گاوکول",
+      "page_name": "قلهٔ گاوکول هرزویل منجیل",
+      "short_label": "قلهٔ گاوکول",
+      "place_type": "summit",
+      "aliases": [
+        "قله گاوکول",
+        "قله گاوکل",
+        "گاوکل هرزویل",
+        "قله گاوکول منجیل",
+        "Gavkol Peak",
+        "Gavkol Harzevil"
+      ],
+      "identity_summary": "قلهٔ گاوکول در هرزویلِ منجیل، مقصد صعود جنگلی جبههٔ شمالی در استان گیلان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://sepehrmountainclub72.com/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D9%84-%D9%85%D9%86%D8%AC%DB%8C%D9%84/",
+        "https://www.wikiloc.com/hiking-trails/qlh-gwkhwl-hrzwyl-mnjyl-28-rdybhsht-1403-171070004",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-gwkhwl-hrzwyl-mnjyl-91280552"
+      ],
+      "latitude": 36.753048,
+      "longitude": 49.471535,
+      "elevation_m": 1643,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۶۴۳ متر در گزارش باشگاه سپهر؛ مختصات از بلندترین بخش ترک صعود هرزویل به قله استخراج شده است. اختلاف ارتفاع با DEM سرویس Open-Meteo باید زیر ۱۰۰ متر بماند.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "harzevil_to_gavkol": {
+      "slug": "harzevil-to-gavkol",
+      "title": "هرزویل تا قلهٔ گاوکول",
+      "subtitle": "مسیر جنگلی جبههٔ شمالی از سرو هرزویل و چشمهٔ اوغری‌بلاغی تا قله",
+      "trail_label": "مسیر جنگلی هرزویل–گاوکول",
+      "origin": "سرو کهن هرزویل",
+      "target_label": "قلهٔ گاوکول",
+      "region": "منجیل · گیلان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gavkol-harzevil-cypress",
+        "gavkol-ogri-belaqi-spring",
+        "gavkol-harzevil"
+      ],
+      "distance_km": 7.71,
+      "ascent_m": 1052,
+      "one_way_minutes": 300,
+      "default_start_minutes": 410,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "gavkol-harzevil-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-gwkhwl-hrzwyl-mnjyl-28-rdybhsht-1403-171070004",
+          "https://sepehrmountainclub72.com/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%DA%AF%D8%A7%D9%88%DA%A9%D9%84-%D9%85%D9%86%D8%AC%DB%8C%D9%84/"
+        ],
+        "evidence_tracks": [
+          "tracks/gavkol/gavkol-harzevil-loop-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "gavkol-harzevil-cypress": 0,
+          "gavkol-ogri-belaqi-spring": 250,
+          "gavkol-harzevil": 300
+        },
+        "notes": [
+          "ترک حلقه‌ای از هرزویل در نقطهٔ رسیدن به قله بریده می‌شود؛ Route عمومی فقط صعود جنگلی جبههٔ شمالی را نمایش می‌دهد و فرود جنوبی را با صعود ادغام نمی‌کند.",
+          "فاصله و صعود از ۱۱۰۴ trackpoint تا نخستین رسیدن به قله محاسبه شده‌اند؛ صعود کامل حدود ۳۰۰ دقیقه است. چشمهٔ اوغری‌بلاغی در گزارش مستقل در ساعت ۱۱ و قله در ساعت ۱۱:۵۰ ثبت شده‌اند؛ زمان‌بندی تقریبی و با عدم‌قطعیت ۹۰ دقیقه است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "gavkol-harzevil",
+    "tile_name": "گاوکول",
+    "name": "قلهٔ گاوکول",
+    "short_category": "قله",
+    "category": "قله‌های گیلان",
+    "category_key": "mountain",
+    "region": "منجیل · گیلان",
+    "elevation_m": 1643,
+    "latitude": 36.753048,
+    "longitude": 49.471535,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ جنگلی گاوکول در هرزویل منجیل",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قله گاوکول",
+      "قله گاوکل",
+      "گاوکل هرزویل",
+      "قله گاوکول منجیل",
+      "Gavkol Peak"
+    ]
+  },
+  "primary_point": "gavkol-harzevil"
+}
