@@ -1,0 +1,62 @@
+{
+  "catalog_version": "hawatch-takht-soleyman-peak-v1",
+  "weather_points": {
+    "takht-soleyman-peak": {
+      "name": "قلهٔ تخت سلیمان",
+      "page_name": "قلهٔ تخت سلیمان کلاردشت",
+      "short_label": "تخت سلیمان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "تخت‌سلیمان",
+        "تخت سلیمان کلاردشت",
+        "قله تخت سلیمان مازندران",
+        "Takht-e Soleyman Peak",
+        "Takhte Soleyman Peak"
+      ],
+      "identity_summary": "قلهٔ تخت سلیمان از ارتفاعات شاخص منطقهٔ علم‌کوه در کلاردشت مازندران؛ این مقصد با محوطهٔ باستانی تخت سلیمان تکاب متفاوت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.irandeserts.com/article/%D9%82%D9%84%D9%87-%D8%AA%D8%AE%D8%AA-%D8%B3%D9%84%DB%8C%D9%85%D8%A7%D9%86%D8%8C-%D8%B7%D8%A7%D9%84%D9%82%D8%A7%D9%86/?amp_markup=1",
+        "https://www.summitpost.org/takhte-soleyman/150637",
+        "https://www.wikiloc.com/hiking-trails/qlh-tkht-slymn-z-msyr-pnhgh-wndrbn-jnpnh-srchl-w-lm-chl-frwd-z-ykhchl-shmly-218485386",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.390489,
+      "longitude": 50.959332,
+      "elevation_m": 4659,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از ترک؛ SummitPost ارتفاع ۴۶۵۹ متر و Open-Meteo GLO-90 DEM در مختصات canonical برابر ۴۶۴۷ متر است (اختلاف ۱۲ متر).",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "takht-soleyman-peak",
+    "tile_name": "تخت سلیمان",
+    "name": "قلهٔ تخت سلیمان",
+    "short_category": "قله",
+    "category": "قله‌های منطقهٔ علم‌کوه",
+    "category_key": "mountain",
+    "region": "کلاردشت · مازندران",
+    "elevation_m": 4659,
+    "latitude": 36.390489,
+    "longitude": 50.959332,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ تخت سلیمان در منطقهٔ علم‌کوه و کلاردشت",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تخت سلیمان کلاردشت",
+      "قله تخت سلیمان مازندران",
+      "Takht-e Soleyman Peak"
+    ]
+  },
+  "primary_point": "takht-soleyman-peak"
+}
