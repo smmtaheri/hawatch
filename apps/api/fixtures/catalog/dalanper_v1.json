@@ -1,0 +1,60 @@
+{
+  "catalog_version": "hawatch-dalanper-catalog-v1",
+  "shared_weather_points": [],
+  "weather_points": {
+    "dalanper": {
+      "name": "قلهٔ دالانپر",
+      "page_name": "قلهٔ دالانپر آذربایجان غربی",
+      "short_label": "دالانپر",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "دالانپر",
+        "دالامپر",
+        "دالان‌پر",
+        "دالامپر بزرگ",
+        "Dalanper",
+        "Dalamper"
+      ],
+      "identity_summary": "قلهٔ دالانپر در نقطهٔ مرزی ایران، ترکیه و عراق در آذربایجان غربی؛ متمایز از دریاچهٔ دالانپر و آبشار سوله‌دوکل.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwh-dlnpr-z-msyr-drychh-222521883",
+        "https://www.wikiloc.com/hiking-trails/dalanper-peak-to-dalanper-lake-75061094",
+        "https://www.gholleh.com/peak-information.aspx?lat=37.1606272&lon=44.788406&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%AF%D8%A7%D9%84%D8%A7%D9%85%D9%BE%D8%B1&pkidentifier=143",
+        "https://www.wikidata.org/wiki/Q5784459",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.1615,
+      "longitude": 44.7899,
+      "elevation_m": 3459,
+      "status": "provisional",
+      "elevation_source": "مختصات قلهٔ دالانپر بزرگ از نقشهٔ جغرافیایی؛ ارتفاع رایج منابع ۳۴۱۵ تا ۳۴۵۹ متر است و مقدار کاتالوگ با Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {},
+  "primary_point": "dalanper",
+  "point": {
+    "slug": "dalanper",
+    "tile_name": "دالانپر",
+    "name": "قلهٔ دالانپر",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان غربی",
+    "category_key": "mountain",
+    "region": "ارومیه · اشنویه · آذربایجان غربی",
+    "elevation_m": 3459,
+    "latitude": 37.1615,
+    "longitude": 44.7899,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ دالانپر",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دالانپر", "دالامپر", "Dalanper", "Dalamper"]
+  }
+}
