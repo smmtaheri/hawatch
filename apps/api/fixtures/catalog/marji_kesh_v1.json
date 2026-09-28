@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-marji-kesh-v1",
+  "weather_points": {
+    "marji-kesh": {
+      "name": "قلهٔ مرجیکش",
+      "page_name": "قلهٔ مرجیکش تخت سلیمان",
+      "short_label": "مرجیکش",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "مرجی کش",
+        "مرجیکش علم‌کوه",
+        "قله مرجیکش",
+        "قلهٔ مرجی‌کش",
+        "Marji-Kesh",
+        "Marjikesh"
+      ],
+      "identity_summary": "قلهٔ مستقل مرجیکش در مجموعهٔ تخت سلیمان، در جنوب‌شرقی علم‌کوه و مشرف به حصارچال؛ عارضه‌ای جدا از علم‌کوه و قلهٔ سیاه‌سنگ.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/marji-kesh/152946",
+        "https://www.wikiloc.com/hiking-trails/qlh-lm-khwh-mrjykhsh-11-12-mrdd-1403-179557156",
+        "https://neshate-koohestan.blogfa.com/post/56",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.368,
+      "longitude": 50.9661,
+      "elevation_m": 4580,
+      "status": "provisional",
+      "elevation_source": "مختصات 36.36800, 50.96610 و ارتفاع ۴۵۸۰ متر از SummitPost؛ همان منبع با GPS/altimeter مقدار ۴۵۹۸ متر و نقشهٔ ۱:۵۰۰۰۰ بازهٔ ۴۵۸۰ تا ۴۶۰۰ متر را گزارش می‌کند. Open-Meteo GLO-90 برای کنترل ارتفاع forecast اعتبارسنجی می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "marji-kesh",
+    "tile_name": "مرجیکش",
+    "name": "قلهٔ مرجیکش",
+    "short_category": "قله",
+    "category": "قله‌های منطقهٔ علم‌کوه",
+    "category_key": "mountain",
+    "region": "حصارچال · کلاردشت · مازندران",
+    "elevation_m": 4580,
+    "latitude": 36.368,
+    "longitude": 50.9661,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ مرجیکش در مجموعهٔ تخت سلیمان، جنوب‌شرقی علم‌کوه",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مرجی کش",
+      "مرجیکش علم‌کوه",
+      "قله مرجیکش",
+      "Marji-Kesh",
+      "Marjikesh"
+    ]
+  },
+  "primary_point": "marji-kesh"
+}
