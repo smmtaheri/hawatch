@@ -339,7 +339,7 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "damavand-shelter-4000": {"name": "جان‌پناه ۴۰۰۰ دماوند", "page_name": "جان‌پناه ۴۰۰۰ دماوند", "short_label": "جان‌پناه ۴۰۰۰", "place_type": "shelter", "name_status": "established"},
     "damavand-shelter-5000": {"name": "جان‌پناه ۵۰۰۰ دماوند", "page_name": "جان‌پناه ۵۰۰۰ دماوند", "short_label": "جان‌پناه ۵۰۰۰", "place_type": "shelter", "name_status": "established"},
     "daryasar-spring": {"name": "چشمهٔ مسیر اِسِل‌محله تا دشت دریاسر", "page_name": "چشمهٔ مسیر اِسِل‌محله تا دشت دریاسر", "short_label": "چشمهٔ دریاسر", "place_type": "spring", "name_status": "descriptive"},
-    "alamkuh-siahsang": {"name": "سیاه‌سنگ علم‌کوه", "page_name": "سیاه‌سنگ علم‌کوه", "short_label": "سیاه‌سنگ", "place_type": "technical_point", "name_status": "established"},
+    "alamkuh-siahsang": {"name": "قلهٔ سیاه‌سنگ علم‌کوه", "page_name": "قلهٔ سیاه‌سنگ علم‌کوه", "short_label": "سیاه‌سنگ", "place_type": "summit", "name_status": "established"},
     "gahar-tapleh-trailhead": {"name": "تپهٔ تاپله", "page_name": "تپهٔ تاپله، ابتدای مسیر الیگودرز به دریاچهٔ گهر", "short_label": "تپهٔ تاپله", "place_type": "trailhead", "name_status": "established"},
     "hazar-ardikan-babzangi-junction": {"name": "گدار دوراهی مسیرهای اردیکان و باب‌زنگی", "page_name": "دوراهی اردیکان–باب‌زنگی در مسیر هزار", "short_label": "گدار دوراهی", "place_type": "landmark", "name_status": "established"},
     "dorfak-jeyruni-spring": {"name": "چشمهٔ جیرونی درفک", "page_name": "چشمهٔ جیرونی در مسیر درفک", "short_label": "چشمهٔ جیرونی", "place_type": "spring", "name_status": "established"},

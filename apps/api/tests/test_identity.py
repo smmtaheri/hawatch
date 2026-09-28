@@ -31,3 +31,16 @@ def test_shah_shahidan_page_uses_a_short_gilan_disambiguated_title():
 
     assert identity["page_name"] == "روستای شاه‌شهیدان گیلان"
     assert identity["short_label"] == "شاه‌شهیدان"
+
+
+def test_siahsang_alamkuh_is_classified_as_an_independent_summit():
+    identity = metadata_for_point(
+        "alamkuh-siahsang",
+        {"name": "سیاه‌سنگ", "place_type": "summit", "importance": "primary"},
+        is_primary=True,
+    )
+
+    assert identity["name"] == "قلهٔ سیاه‌سنگ علم‌کوه"
+    assert identity["page_name"] == "قلهٔ سیاه‌سنگ علم‌کوه"
+    assert identity["place_type"] == "summit"
+    assert category_key_for_point("", identity["place_type"]) == "mountain"
