@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-marji-kesh-v1",
+  "catalog_version": "hawatch-marji-kesh-v2",
   "weather_points": {
     "marji-kesh": {
       "name": "قلهٔ مرجیکش",
@@ -34,7 +34,43 @@
       "climate": "high_alpine"
     }
   },
-  "routes": {},
+  "shared_weather_points": [
+    "alamkuh-tang-galu",
+    "alamkuh-hesarchal"
+  ],
+  "routes": {
+    "southern_hezarchal": {
+      "slug": "marji-kesh-tange-galu",
+      "title": "تنگ‌گلو تا قلهٔ مرجیکش",
+      "subtitle": "مسیر جنوبی از تنگ‌گلو و دشت حصارچال تا مرجیکش",
+      "trail_label": "مسیر جنوبی مرجیکش",
+      "origin": "تنگ‌گلو",
+      "target_label": "قلهٔ مرجیکش",
+      "region": "مازندران · کلاردشت",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "alamkuh-tang-galu",
+        "alamkuh-hesarchal",
+        "marji-kesh"
+      ],
+      "distance_km": 10.33,
+      "ascent_m": 1480,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-lm-khwh-mrjykhsh-11-12-mrdd-1403-179557156",
+        "https://www.summitpost.org/southern-slopes/161832"
+      ],
+      "evidence_tracks": [
+        "tracks/marji-kesh/marji-kesh-hezarchal-to-marji-kesh-and-alamkuh-2024.gpx"
+      ],
+      "public_point_notes": {
+        "alamkuh-tang-galu": "دسترسی جاده‌ای تا تنگ‌گلو جزو پیمایش پیادهٔ این مسیر نیست.",
+        "alamkuh-hesarchal": "دشت حصارچال محل شناخته‌شدهٔ کمپ پیش از صعود به مرجیکش است."
+      }
+    }
+  },
   "point": {
     "slug": "marji-kesh",
     "tile_name": "مرجیکش",
