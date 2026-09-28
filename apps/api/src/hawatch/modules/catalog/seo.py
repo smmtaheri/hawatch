@@ -55,6 +55,11 @@ def point_subject(point: WeatherPoint) -> str:
 
     name = point.page_name or point.name
     place_type = place_type_label(point.place_type)
+    # An indexable trailhead is an independently named destination/access
+    # point. Its curated page name is already the public subject; prepending
+    # the generic "مبدأ مسیر" label makes its title/subtitle disagree with H1.
+    if point.place_type == "trailhead" and point.seo_indexable:
+        return name
     return name if place_type in name else f"{place_type} {name}"
 
 

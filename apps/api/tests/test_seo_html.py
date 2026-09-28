@@ -166,6 +166,34 @@ def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_
     assert f"/points/{point.slug}" not in sitemap
 
 
+def test_indexable_trailhead_uses_one_curated_name_across_seo_heading_and_subtitle(api_client, seo_catalog):
+    point = WeatherPoint.objects.create(
+        slug="seo-test-shabil",
+        name="شابیل",
+        page_name="شابیل سبلان",
+        short_label="شابیل",
+        identity_summary="شابیل سبلان؛ آبگرم دامنهٔ شمال‌شرقی سبلان.",
+        place_type="trailhead",
+        category="مبدأ مسیر",
+        region="آذربایجان · اردبیل",
+        elevation_m=2696,
+        location=Point(47.844205, 38.327692, srid=4326),
+        seo_indexable=True,
+        is_active=True,
+    )
+
+    response = api_client.get(f"/points/{point.slug}")
+    body = response.content.decode()
+
+    assert response.status_code == 200
+    assert "<title>آب‌وهوای شابیل سبلان؛ دما، باد و بارش | هواچ</title>" in body
+    assert "<h1>آب‌وهوای شابیل سبلان</h1>" in body
+    assert "پیش‌بینی آب‌وهوای شابیل سبلان در ارتفاع ۲۶۹۶ متر" in body
+    assert "مبدأ مسیر شابیل سبلان" not in body
+    # The short canonical name remains available for route timeline labels.
+    assert point.name == "شابیل"
+
+
 def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, seo_catalog):
     gahar = api_client.get("/points/gahar")
     assert gahar.status_code == 200

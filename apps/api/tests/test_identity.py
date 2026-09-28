@@ -1,4 +1,7 @@
+from types import SimpleNamespace
+
 from hawatch.modules.catalog.identity import category_key_for_point, metadata_for_point, place_type_label
+from hawatch.modules.catalog.seo import point_subject
 
 
 def test_village_place_type_uses_the_shared_village_icon_category():
@@ -44,3 +47,35 @@ def test_siahsang_alamkuh_is_classified_as_an_independent_summit():
     assert identity["page_name"] == "قلهٔ سیاه‌سنگ علم‌کوه"
     assert identity["place_type"] == "summit"
     assert category_key_for_point("", identity["place_type"]) == "mountain"
+
+
+def test_sabalan_shabil_has_contextual_page_name_and_keeps_route_name_short():
+    identity = metadata_for_point(
+        "sabalan-shabil",
+        {
+            "name": "شابیل",
+            "page_name": "شابیل سبلان",
+            "short_label": "شابیل",
+            "place_type": "trailhead",
+            "importance": "primary",
+        },
+        is_primary=True,
+    )
+
+    assert identity["name"] == "شابیل"
+    assert identity["page_name"] == "شابیل سبلان"
+    assert identity["short_label"] == "شابیل"
+
+
+def test_indexable_trailhead_uses_its_curated_name_without_generic_type_prefix():
+    point = SimpleNamespace(
+        name="شابیل",
+        page_name="شابیل سبلان",
+        place_type="trailhead",
+        seo_indexable=True,
+    )
+
+    assert point_subject(point) == "شابیل سبلان"
+
+    point.seo_indexable = False
+    assert point_subject(point) == "مبدأ مسیر شابیل سبلان"
