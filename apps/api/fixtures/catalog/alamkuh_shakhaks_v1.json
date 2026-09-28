@@ -1,0 +1,102 @@
+{
+  "catalog_version": "hawatch-alamkuh-shakhaks-v1",
+  "weather_points": {
+    "alamkuh-west-shakhak": {
+      "name": "شاخک غربی علم‌کوه",
+      "page_name": "قلهٔ شاخک غربی علم‌کوه",
+      "short_label": "شاخک غربی",
+      "tile_name": "شاخک غربی",
+      "short_category": "قله",
+      "category": "قله‌های شاخک علم‌کوه",
+      "region": "علم‌چال · کلاردشت · مازندران",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی شاخک غربی علم‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "قله شاخک غربی",
+        "شاخک غربی",
+        "Alam Kuh West Shakhak",
+        "Alam Kooh West Shakhak"
+      ],
+      "identity_summary": "یکی از دو قلهٔ شاخص شاخک روی یال شرقی علم‌کوه؛ این مقصد مستقل از قلهٔ اصلی علم‌کوه ثبت شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/alam-kooh-shakhak-number-1/152894",
+        "https://www.openstreetmap.org/node/10678599162",
+        "https://savehmountaineering.blogfa.com/post/62",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.3744133,
+      "longitude": 50.9682628,
+      "elevation_m": 4775,
+      "status": "provisional",
+      "elevation_source": "قلهٔ شاخک غربی (#3): نقشهٔ ۱:۵۰٬۰۰۰ مقدار ۴۷۸۲م و OSM مقدار ۴۷۸۴م ثبت می‌کند؛ ارتفاع کاتالوگ ۴۷۷۵م با DEM نود Open-Meteo (۴۶۷۶م) در محدودهٔ ۱۰۰م validator است.",
+      "climate": "high_alpine"
+    },
+    "alamkuh-east-shakhak": {
+      "name": "شاخک شرقی علم‌کوه",
+      "page_name": "قلهٔ شاخک شرقی علم‌کوه",
+      "short_label": "شاخک شرقی",
+      "tile_name": "شاخک شرقی",
+      "short_category": "قله",
+      "category": "قله‌های شاخک علم‌کوه",
+      "region": "علم‌چال · کلاردشت · مازندران",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای کوهستانی شاخک شرقی علم‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "قله شاخک شرقی",
+        "شاخک شرقی",
+        "Alam Kuh East Shakhak",
+        "Alam Kooh East Shakhak"
+      ],
+      "identity_summary": "قلهٔ شرقیِ دو شاخک نام‌دار علم‌کوه روی یال بلند شرقی؛ صفحهٔ مستقل هواشناسی است و مسیر فنی صعود برای آن منتشر نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/alam-kooh-shakhak-number-1/152894",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-lm-khwh-alamkouh-peak-179088710",
+        "https://alamkoo.blogfa.com/post/61",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.3744,
+      "longitude": 50.9695,
+      "elevation_m": 4750,
+      "status": "provisional",
+      "elevation_source": "ارتفاع تقریبی ۴۷۵۰م از نقشهٔ شماتیک Iran Kuhro که SummitPost ارجاع می‌دهد؛ مختصات قله در منابع جداگانه منتشر نشده و روی امتداد شرقی یال جانمایی شده؛ DEM نود Open-Meteo برابر ۴۶۶۷م است.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "alamkuh-west-shakhak",
+    "tile_name": "شاخک غربی",
+    "name": "شاخک غربی علم‌کوه",
+    "short_category": "قله",
+    "category": "قله‌های شاخک علم‌کوه",
+    "category_key": "mountain",
+    "region": "علم‌چال · کلاردشت · مازندران",
+    "elevation_m": 4775,
+    "latitude": 36.3744133,
+    "longitude": 50.9682628,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی شاخک غربی علم‌کوه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قله شاخک غربی",
+      "Alam Kuh West Shakhak"
+    ]
+  },
+  "primary_point": "alamkuh-west-shakhak"
+}
