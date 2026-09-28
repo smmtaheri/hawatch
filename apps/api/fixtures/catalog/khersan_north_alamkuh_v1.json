@@ -1,0 +1,58 @@
+{
+  "catalog_version": "hawatch-khersan-north-alamkuh-v1",
+  "weather_points": {
+    "khersan-north-alamkuh": {
+      "name": "قلهٔ خرسان شمالی",
+      "page_name": "قلهٔ خرسان شمالی علم‌کوه",
+      "short_label": "خرسان شمالی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "خرسان شمالی",
+        "قله خرسان شمالی",
+        "قلهٔ خرسان شمالی علم‌کوه",
+        "North Khersan",
+        "North Khersān"
+      ],
+      "identity_summary": "قلهٔ خرسان شمالی، قلهٔ سوزنی شمالی خط‌الرأس خرسان در مجموعهٔ تخت سلیمان و جنوب علم‌کوه؛ متمایز از قله‌ها و یال‌های هم‌نام در زردکوه و کلونچین.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/khersan-peaks-viran-kooh/150601",
+        "https://gl.wikiloc.com/rutas-sendeirismo/khtlrs-lshgrkh-bzrg-bh-lm-khwh-z-hasrchl-hzrchl-281197658",
+        "https://en.wikipedia.org/wiki/List_of_Iranian_four-thousanders",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.369597,
+      "longitude": 50.953955,
+      "elevation_m": 4661,
+      "status": "provisional",
+      "elevation_source": "منابع قله حدود ۴۶۸۰ تا ۴۶۸۹ متر گزارش می‌کنند؛ GLO-90 در waypoint نام‌دار ترک ۴۵۶۱ متر است. مقدار ۴۶۶۱ متر provisional است (اختلاف ۱۰۰ متر با DEM) و باید با نقشهٔ توپوگرافی دقیق‌تر بازبینی شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "khersan-north-alamkuh",
+    "tile_name": "خرسان شمالی",
+    "name": "قلهٔ خرسان شمالی",
+    "short_category": "قله",
+    "category": "قله‌های خط‌الرأس خرسان · تخت سلیمان",
+    "category_key": "mountain",
+    "region": "کلاردشت · مازندران",
+    "elevation_m": 4661,
+    "latitude": 36.369597,
+    "longitude": 50.953955,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ خرسان شمالی در خط‌الرأس خرسان، جنوب علم‌کوه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["خرسان شمالی", "قله خرسان شمالی", "North Khersan"]
+  },
+  "primary_point": "khersan-north-alamkuh"
+}

@@ -1,0 +1,58 @@
+{
+  "catalog_version": "hawatch-khersan-south-alamkuh-v1",
+  "weather_points": {
+    "khersan-south-alamkuh": {
+      "name": "قلهٔ خرسان جنوبی",
+      "page_name": "قلهٔ خرسان جنوبی علم‌کوه",
+      "short_label": "خرسان جنوبی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "خرسان جنوبی",
+        "قله خرسان جنوبی",
+        "قلهٔ خرسان جنوبی علم‌کوه",
+        "South Khersan",
+        "South Khersān"
+      ],
+      "identity_summary": "قلهٔ خرسان جنوبی، قلهٔ جنوبی خط‌الرأس خرسان در مجموعهٔ تخت سلیمان و جنوب علم‌کوه، نزدیک خط‌الرأس مناره و ستاره؛ متمایز از قله‌ها و یال‌های هم‌نام در زردکوه و کلونچین.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/khersan-peaks-viran-kooh/150601",
+        "https://gl.wikiloc.com/rutas-sendeirismo/khtlrs-lshgrkh-bzrg-bh-lm-khwh-z-hasrchl-hzrchl-281197658",
+        "https://en.wikipedia.org/wiki/List_of_Iranian_four-thousanders",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.364827,
+      "longitude": 50.951953,
+      "elevation_m": 4659,
+      "status": "provisional",
+      "elevation_source": "ارتفاع مرجع SummitPost برابر ۴۶۵۹ متر است؛ مختصات از waypoint نام‌دار قله در ترک ثبت‌شدهٔ خط‌الرأس گرفته شده است. ارتفاع GPX فقط مرجع کمکی است و مقدار catalog provisional می‌ماند تا با Open-Meteo GLO-90 DEM کنترل شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "khersan-south-alamkuh",
+    "tile_name": "خرسان جنوبی",
+    "name": "قلهٔ خرسان جنوبی",
+    "short_category": "قله",
+    "category": "قله‌های خط‌الرأس خرسان · تخت سلیمان",
+    "category_key": "mountain",
+    "region": "کلاردشت · مازندران",
+    "elevation_m": 4659,
+    "latitude": 36.364827,
+    "longitude": 50.951953,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ خرسان جنوبی در خط‌الرأس خرسان، جنوب علم‌کوه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["خرسان جنوبی", "قله خرسان جنوبی", "South Khersan"]
+  },
+  "primary_point": "khersan-south-alamkuh"
+}

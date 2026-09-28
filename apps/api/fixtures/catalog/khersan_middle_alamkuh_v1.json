@@ -1,0 +1,58 @@
+{
+  "catalog_version": "hawatch-khersan-middle-alamkuh-v1",
+  "weather_points": {
+    "khersan-middle-alamkuh": {
+      "name": "قلهٔ خرسان میانی",
+      "page_name": "قلهٔ خرسان میانی علم‌کوه",
+      "short_label": "خرسان میانی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "خرسان میانی",
+        "قله خرسان میانی",
+        "قلهٔ خرسان میانی علم‌کوه",
+        "Middle Khersan",
+        "Middle Khersān"
+      ],
+      "identity_summary": "قلهٔ خرسان میانی، عارضهٔ مستقل خط‌الرأس میان خرسان جنوبی و ویرانه‌کوه در مجموعهٔ تخت سلیمان، جنوب علم‌کوه؛ با ویرانه‌کوه یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.summitpost.org/khersan-peaks-viran-kooh/150601",
+        "https://gl.wikiloc.com/rutas-sendeirismo/khtlrs-lshgrkh-bzrg-bh-lm-khwh-z-hasrchl-hzrchl-281197658",
+        "https://kouhestaneman.blogfa.com/tag/%D8%B2%D8%B1%DB%8C%D9%86-%DA%A9%D9%88%D9%87",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.366845,
+      "longitude": 50.953035,
+      "elevation_m": 4620,
+      "status": "provisional",
+      "elevation_source": "ارتفاع مرجع SummitPost و فهرست محلی قلل منطقه ۴۶۲۰ متر است؛ مختصات از waypoint نام‌دار قله در ترک ثبت‌شدهٔ خط‌الرأس گرفته شده است. ارتفاع GPX فقط مرجع کمکی است و مقدار catalog provisional می‌ماند تا با Open-Meteo GLO-90 DEM کنترل شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "khersan-middle-alamkuh",
+    "tile_name": "خرسان میانی",
+    "name": "قلهٔ خرسان میانی",
+    "short_category": "قله",
+    "category": "قله‌های خط‌الرأس خرسان · تخت سلیمان",
+    "category_key": "mountain",
+    "region": "کلاردشت · مازندران",
+    "elevation_m": 4620,
+    "latitude": 36.366845,
+    "longitude": 50.953035,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ خرسان میانی در خط‌الرأس خرسان، جنوب علم‌کوه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["خرسان میانی", "قله خرسان میانی", "Middle Khersan"]
+  },
+  "primary_point": "khersan-middle-alamkuh"
+}
