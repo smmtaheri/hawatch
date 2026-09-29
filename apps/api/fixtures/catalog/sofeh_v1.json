@@ -1,6 +1,62 @@
 {
   "catalog_version": "hawatch-sofeh-catalog-v1",
   "weather_points": {
+    "sofeh-park-trailhead": {
+      "name": "پارک کوهستانی صفه؛ مبدأ مسیر",
+      "page_name": "پارک کوهستانی صفه؛ مبدأ مسیر قلهٔ صفه",
+      "short_label": "پارک صفه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": [
+        "پارک صفه",
+        "پارک کوهستانی صفه",
+        "مبدأ صعود صفه",
+        "Sofeh Mountain Park trailhead"
+      ],
+      "identity_summary": "مبدأ ثبت‌شدهٔ مسیر پیاده‌روی از پارک کوهستانی صفه به قلهٔ صفه در جنوب اصفهان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937",
+        "https://www.isfahanvisit.ir/fa/articles/71-mount-soffeh-isfahan"
+      ],
+      "latitude": 32.59575,
+      "longitude": 51.657106,
+      "elevation_m": 1765,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع ترک پیادهٔ صفه؛ ارتفاع GPX مرجع است و مقدار با Open-Meteo GLO-90 DEM در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "sofeh-golzard-spring": {
+      "name": "چشمهٔ گل‌زرد صفه",
+      "page_name": "چشمهٔ گل‌زرد در مسیر قلهٔ صفه",
+      "short_label": "چشمهٔ گل‌زرد",
+      "place_type": "spring",
+      "category_key": "mountain",
+      "aliases": [
+        "گل زرد صفه",
+        "چشمه گل زرد کوه صفه",
+        "Golzard Spring Sofeh"
+      ],
+      "identity_summary": "چشمهٔ گل‌زرد، عارضهٔ طبیعی نام‌دار در مسیرهای صعود قلهٔ صفه اصفهان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937",
+        "https://www.gholleh.com/peak-information.aspx?lat=32.59268&lon=51.64318&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B5%D9%81%D9%87",
+        "https://www.karnaval.ir/things-to-do/mount-soffeh-isfahan"
+      ],
+      "latitude": 32.590448,
+      "longitude": 51.643229,
+      "elevation_m": 1984,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ میانی نزدیک چشمهٔ گل‌زرد روی ترک پیاده؛ ارتفاع GPX مرجع است و مقدار با Open-Meteo GLO-90 DEM در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
     "sofeh-isfahan": {
       "name": "کوه صفه اصفهان",
       "page_name": "کوه صفه اصفهان",
@@ -35,7 +91,39 @@
       "region": "اصفهان · اصفهان"
     }
   },
-  "routes": {},
+  "routes": {
+    "sofeh-park-to-summit": {
+      "slug": "sofeh-park-to-summit",
+      "title": "پارک صفه تا قلهٔ صفه",
+      "subtitle": "مسیر پیاده‌روی از پارک کوهستانی صفه و چشمهٔ گل‌زرد تا قله",
+      "trail_label": "مسیر صعود قلهٔ صفه",
+      "origin": "پارک کوهستانی صفه",
+      "target_label": "قلهٔ صفه",
+      "region": "اصفهان · اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sofeh-park-trailhead",
+        "sofeh-golzard-spring",
+        "sofeh-isfahan"
+      ],
+      "distance_km": 3.2,
+      "ascent_m": 462,
+      "timing_status": "pending",
+      "timing": null,
+      "public_point_notes": {
+        "sofeh-golzard-spring": "چشمهٔ گل‌زرد عارضهٔ طبیعی نام‌دار در مسیر صعود صفه است."
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937",
+        "https://www.gholleh.com/peak-information.aspx?lat=32.59268&lon=51.64318&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B5%D9%81%D9%87",
+        "https://www.karnaval.ir/things-to-do/mount-soffeh-isfahan"
+      ],
+      "evidence_tracks": [
+        "tracks/sofeh-isfahan/sofeh-park-to-summit.gpx"
+      ]
+    }
+  },
   "point": {
     "slug": "sofeh-isfahan",
     "tile_name": "کوه صفه",
