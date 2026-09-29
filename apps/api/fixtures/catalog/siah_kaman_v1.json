@@ -1,0 +1,254 @@
+{
+  "catalog_version": "hawatch-siah-kaman-catalog-v1",
+  "weather_points": {
+    "siah-kaman-naft-chak": {
+      "name": "درهٔ نفت‌چاک",
+      "page_name": "درهٔ نفت‌چاک؛ مسیر قلهٔ سیاه‌کمان",
+      "short_label": "نفت‌چاک",
+      "place_type": "technical_point",
+      "category_key": "mountain",
+      "aliases": [
+        "دره نفت چاک",
+        "نفت چاک علم‌کوه",
+        "Neft Chak Valley"
+      ],
+      "identity_summary": "درهٔ نفت‌چاک، عارضهٔ واقعی و بخش میانی مسیر شمال‌شرقی صعود قلهٔ سیاه‌کمان از ونداربن.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syh-khmn-z-drh-nft-chkh-231266255",
+        "https://alborz1374.blogfa.com/post/22"
+      ],
+      "latitude": 36.42397,
+      "longitude": 51.011383,
+      "elevation_m": 2643,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه در بخش پایینی درهٔ نفت‌چاک در ترک؛ ارتفاع نهایی با Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "siah-kaman-chalon-pass": {
+      "name": "گردنهٔ چالون",
+      "page_name": "گردنهٔ چالون در مسیر سیاه‌کمان",
+      "short_label": "گردنهٔ چالون",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "aliases": [
+        "گردنه چالون",
+        "شن‌اسکی گردنه چالون",
+        "Chalon Pass"
+      ],
+      "identity_summary": "گردنهٔ نام‌دار چالون در مسیر فنی تنگ‌گلو تا قلهٔ سیاه‌کمان، میان یخچال‌های منطقهٔ علم‌چال.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/chkhd-syh-khmn-siyah-kaman-141887696",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.3923236&lon=50.98994&peak-name=%D9%82%D9%84%D9%87+%D8%B3%DB%8C%D8%A7%D9%87+%DA%A9%D9%85%D8%A7%D9%86&pkidentifier=576"
+      ],
+      "latitude": 36.38275,
+      "longitude": 50.989826,
+      "elevation_m": 4473,
+      "status": "provisional",
+      "elevation_source": "نزدیک‌ترین نقطهٔ track به waypoint شن‌اسکی گردنهٔ چالون؛ ارتفاع GPX مرجع است و با Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "chalon-peak": {
+      "name": "قلهٔ چالون",
+      "page_name": "قلهٔ چالون علم‌چال",
+      "short_label": "چالون",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های تخت سلیمان",
+      "region": "علم‌چال · کلاردشت · مازندران",
+      "aliases": [
+        "قله چالون",
+        "چالون علم‌چال",
+        "Chalon Peak",
+        "Chaloon"
+      ],
+      "identity_summary": "قلهٔ مستقل چالون در خط‌الرأس تخت سلیمان، میان گردنهٔ چالون، سیاه‌کمان و سیاه‌سنگ.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chlwn-bh-syh-khmn-227034165",
+        "https://www.gholleh.com/peak-information.aspx?lat=36.3827801&lon=50.98965&peak-name=%D9%82%D9%84%D9%87+%DA%86%D8%A7%D9%84%D9%88%D9%86&pkidentifier=579",
+        "https://www.radepagroup.com/wp-content/uploads/2017/07/Guidelines_of_Iran_High_Summits.pdf"
+      ],
+      "latitude": 36.382577,
+      "longitude": 50.990005,
+      "elevation_m": 4488,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ قلهٔ چالون در ترک محلی؛ Open-Meteo GLO-90 در این مختصات ۴۴۵۱ متر است و اختلاف مقدار کاتالوگ ۳۷ متر است.",
+      "climate": "high_alpine"
+    },
+    "siah-kaman": {
+      "name": "قلهٔ سیاه‌کمان علم‌کوه",
+      "page_name": "قلهٔ سیاه‌کمان علم‌کوه",
+      "short_label": "سیاه‌کمان",
+      "tile_name": "سیاه‌کمان",
+      "short_category": "قله",
+      "category": "قله‌های تخت سلیمان",
+      "region": "علم‌چال · کلاردشت · مازندران",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ سیاه‌کمان در مجموعهٔ تخت سلیمان و منطقهٔ علم‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "سیاه کمان",
+        "قله سیاه کمان",
+        "سیاه‌کمان علم‌کوه",
+        "Siah Kaman",
+        "Siyah Kaman"
+      ],
+      "identity_summary": "قلهٔ مستقل سیاه‌کمان در مجموعهٔ تخت سلیمان، شرق علم‌کوه و نزدیک گردنهٔ چالون؛ متمایز از قلهٔ سیاه‌سنگ و تخت سلیمان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syh-khmn-z-drh-nft-chkh-231266255",
+        "https://www.wikiloc.com/hiking-trails/chkhd-syh-khmn-siyah-kaman-141887696",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.3923236&lon=50.98994&peak-name=%D9%82%D9%84%D9%87+%D8%B3%DB%8C%D8%A7%D9%87+%DA%A9%D9%85%D8%A7%D9%86&pkidentifier=576",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.392057,
+      "longitude": 50.99071,
+      "elevation_m": 4460,
+      "status": "provisional",
+      "elevation_source": "دو waypoint مستقل قله در ترک‌ها مقدار ۴۴۵۹ متر می‌دهند؛ منابع کوهنوردی ارتفاع رایج ۴۴۷۲ متر را گزارش می‌کنند و مقدار کاتالوگ با DEM سرویس Open-Meteo کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [
+    "alamkuh-vandarbon",
+    "alamkuh-tang-galu"
+  ],
+  "routes": {
+    "vandarbon-siah-kaman": {
+      "slug": "vandarbon-siah-kaman",
+      "title": "ونداربن تا قلهٔ سیاه‌کمان",
+      "subtitle": "مسیر شمال‌شرقی از ونداربن و درهٔ نفت‌چاک تا قلهٔ سیاه‌کمان",
+      "trail_label": "مسیر نفت‌چاک–سیاه‌کمان",
+      "origin": "ونداربن",
+      "target_label": "قلهٔ سیاه‌کمان",
+      "region": "مازندران · کلاردشت",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "alamkuh-vandarbon",
+        "siah-kaman-naft-chak",
+        "siah-kaman"
+      ],
+      "distance_km": 9.04,
+      "ascent_m": 2199,
+      "one_way_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+mountaineering-report-v1",
+        "version": "siah-kaman-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-syh-khmn-z-drh-nft-chkh-231266255",
+          "https://alborz1374.blogfa.com/post/22",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.3923236&lon=50.98994&peak-name=%D9%82%D9%84%D9%87+%D8%B3%DB%8C%D8%A7%D9%87+%DA%A9%D9%85%D8%A7%D9%86&pkidentifier=576"
+        ],
+        "cumulative_minutes": {
+          "alamkuh-vandarbon": 0,
+          "siah-kaman-naft-chak": 180,
+          "siah-kaman": 420
+        }
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-syh-khmn-z-drh-nft-chkh-231266255",
+        "https://alborz1374.blogfa.com/post/22"
+      ],
+      "evidence_tracks": [
+        "tracks/siah-kaman/siah-kaman-naft-chak-vandarbon-2025.gpx"
+      ],
+      "public_point_notes": {
+        "alamkuh-vandarbon": "بخش دسترسی جاده‌ای تا ونداربن جزو پیمایش پیادهٔ مسیر نیست.",
+        "siah-kaman-naft-chak": "درهٔ نفت‌چاک عارضهٔ میانی واقعی مسیر است؛ مسیر در ارتفاع بالا سنگی و مستعد بهمن است.",
+        "siah-kaman": "این مسیر صعود فنی و سنگین در ارتفاع بالا است؛ زمان فعال تخمینی است و شب‌مانی/توقف‌های طولانی را حساب نمی‌کند."
+      }
+    },
+    "tang-galu-siah-kaman-chalon": {
+      "slug": "tang-galu-siah-kaman-chalon",
+      "title": "تنگ‌گلو تا قلهٔ سیاه‌کمان از چالون",
+      "subtitle": "مسیر فنی جنوبی از تنگ‌گلو و گردنهٔ چالون تا قلهٔ سیاه‌کمان",
+      "trail_label": "مسیر چالون–سیاه‌کمان",
+      "origin": "تنگ‌گلو",
+      "target_label": "قلهٔ سیاه‌کمان",
+      "region": "مازندران · کلاردشت",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "alamkuh-tang-galu",
+        "siah-kaman-chalon-pass",
+        "siah-kaman"
+      ],
+      "distance_km": 6.55,
+      "ascent_m": 1382,
+      "one_way_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+technical-mountaineering-report-v1",
+        "version": "siah-kaman-chalon-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/chkhd-syh-khmn-siyah-kaman-141887696",
+          "https://www.radepagroup.com/wp-content/uploads/2017/07/Guidelines_of_Iran_High_Summits.pdf",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.3923236&lon=50.98994&peak-name=%D9%82%D9%84%D9%87+%D8%B3%DB%8C%D8%A7%D9%87+%DA%A9%D9%85%D8%A7%D9%86&pkidentifier=576"
+        ],
+        "cumulative_minutes": {
+          "alamkuh-tang-galu": 0,
+          "siah-kaman-chalon-pass": 300,
+          "siah-kaman": 360
+        }
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/chkhd-syh-khmn-siyah-kaman-141887696",
+        "https://www.radepagroup.com/wp-content/uploads/2017/07/Guidelines_of_Iran_High_Summits.pdf"
+      ],
+      "evidence_tracks": [
+        "tracks/siah-kaman/siah-kaman-chalon-approach.gpx"
+      ],
+      "public_point_notes": {
+        "alamkuh-tang-galu": "بخش جاده‌ای دسترسی تا تنگ‌گلو در زمان پیمایش پیاده حساب نشده است.",
+        "siah-kaman-chalon-pass": "مسیر گردنهٔ چالون فنی، سنگی و پرریسک است و برای کوهنورد باتجربه و شرایط مناسب در نظر گرفته شده است.",
+        "siah-kaman": "این مسیر عمومیِ طبیعت‌گردی سبک نیست؛ زمان تخمینی با عدم‌قطعیت بالا و بدون محاسبهٔ توقف و شب‌مانی ثبت شده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "siah-kaman",
+    "tile_name": "سیاه‌کمان",
+    "name": "قلهٔ سیاه‌کمان علم‌کوه",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "علم‌چال · کلاردشت · مازندران",
+    "elevation_m": 4460,
+    "latitude": 36.392057,
+    "longitude": 50.99071,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سیاه‌کمان علم‌کوه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سیاه کمان",
+      "قله سیاه کمان",
+      "سیاه‌کمان علم‌کوه",
+      "Siah Kaman"
+    ]
+  },
+  "primary_point": "siah-kaman"
+}
