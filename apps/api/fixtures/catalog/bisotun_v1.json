@@ -1,0 +1,142 @@
+{
+  "catalog_version": "hawatch-bisotun-catalog-v1",
+  "weather_points": {
+    "bisotun": {
+      "name": "قلهٔ بیستون",
+      "page_name": "قلهٔ بیستون کرمانشاه",
+      "short_label": "قلهٔ بیستون",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["بیستون", "کوه بیستون", "قله بیستون", "Behistun", "Mount Bisotun"],
+      "identity_summary": "قلهٔ بیستون در جنوب‌شرقی کوهستان پرآو و استان کرمانشاه، مشهور به دیوارهٔ بزرگ بیستون",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/9495631173",
+        "https://www.wikiloc.com/hiking-trails/kermanshah-biseton-peak-21385689",
+        "https://mojekooh.com/mount-behistun/"
+      ],
+      "latitude": 34.3888819,
+      "longitude": 47.4085658,
+      "elevation_m": 2760,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۷۶۰ متر در منابع کوهنوردی و گره قلهٔ بیستون در OpenStreetMap؛ اختلاف DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    },
+    "bisotun-police-road-trailhead": {
+      "name": "پای‌کار پلیس‌راه بیستون",
+      "page_name": "پای‌کار پلیس‌راه بیستون؛ مبدأ صعود",
+      "short_label": "پای‌کار بیستون",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["پلیس راه بیستون", "مبدأ بیستون", "Bisotun police road trailhead"],
+      "identity_summary": "مبدأ پیادهٔ مسیر صعود قلهٔ بیستون از جادهٔ کرمانشاه–همدان",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kermanshah-biseton-peak-21385689",
+        "https://www.wikiloc.com/hiking-trails/qlh-bystwn-40379636"
+      ],
+      "latitude": 34.37705,
+      "longitude": 47.375406,
+      "elevation_m": 1485,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ پای‌کار ترک one-way پلیس‌راه تا قله؛ DEM سرویس Open-Meteo برابر ۱۴۹۰ متر است.",
+      "climate": "alpine"
+    },
+    "bisotun-maidan": {
+      "name": "میدان بیستون",
+      "page_name": "میدان بیستون در مسیر قله",
+      "short_label": "میدان بیستون",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["میدان قله بیستون", "Bisotun field"],
+      "identity_summary": "دشت و عارضهٔ میانی شناخته‌شدهٔ بین قله‌های بیستون و بیستون‌زا که مسیرهای صعود در آن به هم می‌رسند",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/mount-behistun/",
+        "https://www.wikiloc.com/hiking-trails/qlh-bystwn-40379636"
+      ],
+      "latitude": 34.3858,
+      "longitude": 47.3814,
+      "elevation_m": 2140,
+      "status": "provisional",
+      "elevation_source": "موقعیت landmark میانی در کریدور میشه‌ری/میدان بیستون؛ DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "bisotun_police_road": {
+      "slug": "bisotun-police-road-summit",
+      "title": "پای‌کار پلیس‌راه تا قلهٔ بیستون",
+      "subtitle": "مسیر پیاده از پای‌کار پلیس‌راه، میدان بیستون و یال قله تا قلهٔ بیستون",
+      "trail_label": "مسیر پلیس‌راه–بیستون",
+      "origin": "پای‌کار پلیس‌راه بیستون",
+      "target_label": "قلهٔ بیستون",
+      "region": "بیستون · کرمانشاه · زاگرس",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "bisotun-police-road-trailhead",
+        "bisotun-maidan",
+        "bisotun"
+      ],
+      "distance_km": 5.87,
+      "ascent_m": 1320,
+      "one_way_minutes": 180,
+      "default_start_minutes": 120,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry-reversed+source-report-v1",
+        "version": "bisotun-police-road-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kermanshah-biseton-peak-21385689",
+          "https://www.wikiloc.com/hiking-trails/qlh-bystwn-40379636",
+          "https://mojekooh.com/mount-behistun/"
+        ],
+        "evidence_tracks": ["tracks/bisotun/bisotun-peak-primary.gpx"],
+        "cumulative_minutes": {
+          "bisotun-police-road-trailhead": 0,
+          "bisotun-maidan": 100,
+          "bisotun": 180
+        },
+        "notes": [
+          "ترک دانلودشده one-way و با جهت فرود ثبت شده بود؛ هندسه برای Route صعود از پای‌کار تا قله معکوس تفسیر شد.",
+          "میدان بیستون landmark میانی مستند کریدور صعود است؛ مسیرهای میشه‌ری و پیازه‌ری در این ناحیه به مسیر قله می‌رسند.",
+          "فاصله، صعود و زمان با آمار ترک و گزارش‌های مستقل به‌صورت محافظه‌کارانه ثبت شده‌اند؛ دیواره‌نوردی و مسیرهای فنی جنوبی وارد Route عمومی نشده‌اند."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "bisotun",
+    "tile_name": "بیستون",
+    "name": "قلهٔ بیستون",
+    "short_category": "قله",
+    "category": "قله‌های کرمانشاه",
+    "category_key": "mountain",
+    "region": "بیستون · کرمانشاه · زاگرس",
+    "elevation_m": 2760,
+    "latitude": 34.3888819,
+    "longitude": 47.4085658,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ بیستون کرمانشاه",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["بیستون", "کوه بیستون", "قله بیستون"]
+  },
+  "primary_point": "bisotun"
+}
