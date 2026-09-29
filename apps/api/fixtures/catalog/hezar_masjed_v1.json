@@ -1,0 +1,171 @@
+{
+  "catalog_version": "hawatch-hezar-masjed-catalog-v1",
+  "weather_points": {
+    "hezar-masjed": {
+      "name": "قلهٔ هزارمسجد خراسان رضوی",
+      "page_name": "قلهٔ هزارمسجد خراسان رضوی",
+      "short_label": "هزارمسجد",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "هزارمسجد",
+        "هزار مسجد",
+        "قله هزارمسجد",
+        "کوه هزارمسجد",
+        "Hezar Masjed",
+        "Hezar Masjed Peak"
+      ],
+      "identity_summary": "قلهٔ هزارمسجد در رشته‌کوه کپه‌داغ و شهرستان کلات خراسان رضوی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4770405598",
+        "https://www.wikiloc.com/hiking-trails/hzr-msjd-khrsn-rdwy-226164654",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.9729979&lon=59.3565495&peak-name=%D9%82%D9%84%D9%87+%D9%87%D8%B2%D8%A7%D8%B1+%D9%85%D8%B3%D8%AC%D8%AF&pkidentifier=2479",
+        "https://fr.wikipedia.org/wiki/Kuhha-ye_Hezar_Masjed"
+      ],
+      "latitude": 36.9734,
+      "longitude": 59.3566,
+      "elevation_m": 3127,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع با قلهٔ OSM/Mapcarta و گزارش‌های مستقل هزارمسجد تطبیق داده شده و در validator با Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "hezar-masjed-chaharrah": {
+      "name": "روستای چهارراه لاین",
+      "page_name": "روستای چهارراه لاین؛ مبدأ مسیر هزارمسجد",
+      "short_label": "چهارراه لاین",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "روستای چهارراه",
+        "چهارراه کلات",
+        "Chahar Rah",
+        "Chaharrah Lain"
+      ],
+      "identity_summary": "روستای چهارراه در بخش لاین کلات؛ مبدأ مستند پیمایش پیادهٔ قلهٔ هزارمسجد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/hzr-msjd-khrsn-rdwy-226164654",
+        "https://www.wikiloc.com/hiking-trails/hezar-masjed-arab-chah-hzr-msjd-rb-chh-135243497",
+        "https://hbnature.blogfa.com/post/25"
+      ],
+      "latitude": 37.046553,
+      "longitude": 59.427478,
+      "elevation_m": 1500,
+      "status": "provisional",
+      "elevation_source": "مختصات انتهای ترک ثبت‌شده در روستای چهارراه؛ ارتفاع و forecast با Open-Meteo GLO-90 در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    },
+    "hezar-masjed-arab-chah": {
+      "name": "دشت عرب‌چاه هزارمسجد",
+      "page_name": "دشت عرب‌چاه هزارمسجد",
+      "short_label": "عرب‌چاه هزارمسجد",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "aliases": [
+        "عرب‌چاه",
+        "عرب چاه",
+        "کمپ عرب چاه",
+        "Arab Chah"
+      ],
+      "identity_summary": "ییلاق و عارضهٔ میانی نام‌دار در انتهای درهٔ چهارراه و مسیر صعود هزارمسجد",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/hezar-masjed-arab-chah-hzr-msjd-rb-chh-135243497",
+        "https://hbnature.blogfa.com/post/25",
+        "https://binalood.blogfa.com/post/31"
+      ],
+      "latitude": 37.007514,
+      "longitude": 59.406297,
+      "elevation_m": 1905,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عرب‌چاه در ترک اصلی و گزارش‌های مسیر؛ ارتفاع با Open-Meteo GLO-90 در preflight کنترل می‌شود.",
+      "climate": "meadow"
+    }
+  },
+  "routes": {
+    "hezar_masjed_chaharrah": {
+      "slug": "hezar-masjed-chaharrah",
+      "title": "روستای چهارراه تا قلهٔ هزارمسجد",
+      "subtitle": "پیمایش از چهارراه لاین و دشت عرب‌چاه تا قلهٔ هزارمسجد",
+      "trail_label": "مسیر چهارراه–هزارمسجد",
+      "origin": "روستای چهارراه لاین",
+      "target_label": "قلهٔ هزارمسجد خراسان رضوی",
+      "region": "هزارمسجد · کلات · خراسان رضوی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "hezar-masjed-chaharrah",
+        "hezar-masjed-arab-chah",
+        "hezar-masjed"
+      ],
+      "distance_km": 20.38,
+      "ascent_m": 1620,
+      "one_way_minutes": 360,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry-reversed+source-report-v1",
+        "version": "hezar-masjed-chaharrah-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/hzr-msjd-khrsn-rdwy-226164654",
+          "https://www.wikiloc.com/hiking-trails/hezar-masjed-arab-chah-hzr-msjd-rb-chh-135243497",
+          "https://hbnature.blogfa.com/post/25",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.9729979&lon=59.3565495&peak-name=%D9%82%D9%84%D9%87+%D9%87%D8%B2%D8%A7%D8%B1+%D9%85%D8%B3%D8%AC%D8%AF&pkidentifier=2479"
+        ],
+        "evidence_tracks": [
+          "tracks/hezar-masjed/hezar-masjed-chaharrah-summit.gpx"
+        ],
+        "cumulative_minutes": {
+          "hezar-masjed-chaharrah": 0,
+          "hezar-masjed-arab-chah": 90,
+          "hezar-masjed": 360
+        },
+        "notes": [
+          "ترک اصلی با جهت قله به چهارراه ثبت شده است؛ برای timing و زنجیرهٔ محصول، هندسه از چهارراه به سمت قله خوانده شده است.",
+          "عرب‌چاه یک ییلاق و عارضهٔ واقعیِ مستند در انتهای درهٔ چهارراه است؛ waypointهای generic و نقطهٔ پراکندهٔ خارج از مسیر وارد catalog نشده‌اند.",
+          "مسافت، صعود و زمان تقریبی‌اند؛ منبع Wikiloc زمان کل ۶ ساعت و مسیر را پیمایش دشوار گزارش می‌کند و شرایط فصل/ارتفاع می‌تواند زمان را تغییر دهد."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "hezar-masjed",
+    "tile_name": "هزارمسجد",
+    "name": "قلهٔ هزارمسجد خراسان رضوی",
+    "short_category": "قله",
+    "category": "قله و مسیرهای کوهستانی",
+    "category_key": "mountain",
+    "region": "هزارمسجد · کلات · خراسان رضوی",
+    "elevation_m": 3127,
+    "latitude": 36.9734,
+    "longitude": 59.3566,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ هزارمسجد خراسان رضوی",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "هزارمسجد",
+      "هزار مسجد",
+      "قله هزارمسجد",
+      "Hezar Masjed"
+    ]
+  },
+  "primary_point": "hezar-masjed"
+}
