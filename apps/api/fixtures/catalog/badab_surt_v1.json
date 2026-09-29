@@ -1,0 +1,66 @@
+{
+  "catalog_version": "hawatch-badab-surt-catalog-v1",
+  "weather_points": {
+    "badab-surt": {
+      "name": "باداب سورت",
+      "page_name": "باداب سورت مازندران",
+      "short_label": "باداب سورت",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "چشمه‌ها و جاذبه‌های طبیعی مازندران",
+      "region": "اروست · چهاردانگه · مازندران",
+      "aliases": [
+        "چشمه‌های باداب سورت",
+        "چشمه باداب سورت",
+        "باداب‌سورت",
+        "Badab-e Surt",
+        "Badab Soort",
+        "Orost Badab Surt"
+      ],
+      "identity_summary": "چشمه‌های پلکانی تراورتنی باداب سورت در نزدیکی روستای اروست، از آثار طبیعی ملی ایران.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/badab-e-soort",
+        "https://mapcarta.com/N6833870679",
+        "https://untamediran.com/fa/badab-e-surt",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.35513&longitude=53.85619"
+      ],
+      "latitude": 36.35513,
+      "longitude": 53.85619,
+      "elevation_m": 1843,
+      "status": "provisional",
+      "elevation_source": "مختصات چشمه‌های باداب سورت از OpenStreetMap/Mapcarta؛ ارتفاع ۱۸۴۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "badab-surt",
+    "tile_name": "باداب سورت",
+    "name": "باداب سورت",
+    "short_category": "چشمهٔ پلکانی",
+    "category": "چشمه‌ها و جاذبه‌های طبیعی مازندران",
+    "category_key": "spring",
+    "region": "اروست · چهاردانگه · مازندران",
+    "elevation_m": 1843,
+    "latitude": 36.35513,
+    "longitude": 53.85619,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشمه‌های پلکانی باداب سورت در مازندران",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "چشمه‌های باداب سورت",
+      "چشمه باداب سورت",
+      "باداب سورت مازندران",
+      "Badab-e Surt"
+    ]
+  },
+  "primary_point": "badab-surt"
+}
