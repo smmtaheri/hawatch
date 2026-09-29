@@ -2,13 +2,13 @@
   "catalog_version": "hawatch-bisotun-catalog-v1",
   "weather_points": {
     "bisotun": {
-      "name": "قلهٔ بیستون",
+      "name": "قلهٔ بیستون کرمانشاه",
       "page_name": "قلهٔ بیستون کرمانشاه",
-      "short_label": "قلهٔ بیستون",
+      "short_label": "قلهٔ بیستون کرمانشاه",
       "place_type": "summit",
       "category_key": "mountain",
       "aliases": ["بیستون", "کوه بیستون", "قله بیستون", "Behistun", "Mount Bisotun"],
-      "identity_summary": "قلهٔ بیستون در جنوب‌شرقی کوهستان پرآو و استان کرمانشاه، مشهور به دیوارهٔ بزرگ بیستون",
+      "identity_summary": "قلهٔ بیستون کرمانشاه در جنوب‌شرقی کوهستان پرآو و استان کرمانشاه، مشهور به دیوارهٔ بزرگ بیستون",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -25,37 +25,38 @@
       "elevation_source": "ارتفاع ۲۷۶۰ متر در منابع کوهنوردی و گره قلهٔ بیستون در OpenStreetMap؛ اختلاف DEM سرویس Open-Meteo در preflight کنترل می‌شود.",
       "climate": "alpine"
     },
-    "bisotun-police-road-trailhead": {
-      "name": "پای‌کار پلیس‌راه بیستون",
-      "page_name": "پای‌کار پلیس‌راه بیستون؛ مبدأ صعود",
-      "short_label": "پای‌کار بیستون",
+    "bisotun-mishri-trailhead": {
+      "name": "مبدأ مسیر میشه‌ری بیستون",
+      "page_name": "مبدأ مسیر میشه‌ری بیستون",
+      "short_label": "مبدأ مسیر میشه‌ری بیستون",
       "place_type": "trailhead",
       "category_key": "mountain",
-      "aliases": ["پلیس راه بیستون", "مبدأ بیستون", "Bisotun police road trailhead"],
-      "identity_summary": "مبدأ پیادهٔ مسیر صعود قلهٔ بیستون از جادهٔ کرمانشاه–همدان",
+      "aliases": ["میشه‌ری بیستون", "میشه ری بیستون", "پلیس راه بیستون", "مبدأ بیستون", "Bisotun Mishri trailhead"],
+      "identity_summary": "مبدأ واقعی پیاده‌روی مسیر میشه‌ری قلهٔ بیستون؛ دسترسی اولیه از جادهٔ کرمانشاه–همدان انجام می‌شود",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/kermanshah-biseton-peak-21385689",
-        "https://www.wikiloc.com/hiking-trails/qlh-bystwn-40379636"
+        "https://www.wikiloc.com/hiking-trails/qlh-bystwn-40379636",
+        "https://www.wikiloc.com/mountaineering-trails/biston-peak-and-biston-za-peak-qlh-bystwn-w-qlh-bystwn-z-133881599"
       ],
       "latitude": 34.37705,
       "longitude": 47.375406,
       "elevation_m": 1485,
       "status": "provisional",
-      "elevation_source": "نقطهٔ پای‌کار ترک one-way پلیس‌راه تا قله؛ DEM سرویس Open-Meteo برابر ۱۴۹۰ متر است.",
+      "elevation_source": "نقطهٔ آغاز پاکوب میشه‌ری در ترک one-way تا قله؛ دسترسی جاده‌ای از پلیس‌راه انجام می‌شود و DEM سرویس Open-Meteo برابر ۱۴۹۰ متر است.",
       "climate": "alpine"
     },
     "bisotun-maidan": {
-      "name": "میدان بیستون",
-      "page_name": "میدان بیستون در مسیر قله",
-      "short_label": "میدان بیستون",
-      "place_type": "landmark",
+      "name": "دشت میدان بیستون",
+      "page_name": "دشت میدان بیستون",
+      "short_label": "دشت میدان بیستون",
+      "place_type": "meadow",
       "category_key": "mountain",
-      "aliases": ["میدان قله بیستون", "Bisotun field"],
-      "identity_summary": "دشت و عارضهٔ میانی شناخته‌شدهٔ بین قله‌های بیستون و بیستون‌زا که مسیرهای صعود در آن به هم می‌رسند",
+      "aliases": ["میدان بیستون", "میدان قله بیستون", "گوسفندسرا و چاه آب بیستون", "Bisotun field"],
+      "identity_summary": "دشت میدان بیستون؛ گوسفندسرا و چاه آبِ عارضهٔ میانی بین قله‌های بیستون و بیستون‌زا که مسیرهای صعود در آن به هم می‌رسند",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
@@ -73,18 +74,18 @@
     }
   },
   "routes": {
-    "bisotun_police_road": {
-      "slug": "bisotun-police-road-summit",
-      "title": "پای‌کار پلیس‌راه تا قلهٔ بیستون",
-      "subtitle": "مسیر پیاده از پای‌کار پلیس‌راه، میدان بیستون و یال قله تا قلهٔ بیستون",
-      "trail_label": "مسیر پلیس‌راه–بیستون",
-      "origin": "پای‌کار پلیس‌راه بیستون",
-      "target_label": "قلهٔ بیستون",
+    "bisotun_mishri": {
+      "slug": "bisotun-mishri-summit",
+      "title": "مسیر میشه‌ری تا قلهٔ بیستون کرمانشاه",
+      "subtitle": "پیمایش میشه‌ری، دشت میدان بیستون و یال قله تا قلهٔ بیستون کرمانشاه",
+      "trail_label": "میشه‌ری تا بیستون",
+      "origin": "مبدأ مسیر میشه‌ری بیستون",
+      "target_label": "قلهٔ بیستون کرمانشاه",
       "region": "بیستون · کرمانشاه · زاگرس",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "bisotun-police-road-trailhead",
+        "bisotun-mishri-trailhead",
         "bisotun-maidan",
         "bisotun"
       ],
@@ -95,7 +96,7 @@
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-geometry-reversed+source-report-v1",
-        "version": "bisotun-police-road-timing-v1",
+        "version": "bisotun-mishri-timing-v2",
         "confidence": "medium",
         "uncertainty_minutes": 60,
         "source_urls": [
@@ -105,13 +106,13 @@
         ],
         "evidence_tracks": ["tracks/bisotun/bisotun-peak-primary.gpx"],
         "cumulative_minutes": {
-          "bisotun-police-road-trailhead": 0,
+          "bisotun-mishri-trailhead": 0,
           "bisotun-maidan": 100,
           "bisotun": 180
         },
         "notes": [
-          "ترک دانلودشده one-way و با جهت فرود ثبت شده بود؛ هندسه برای Route صعود از پای‌کار تا قله معکوس تفسیر شد.",
-          "میدان بیستون landmark میانی مستند کریدور صعود است؛ مسیرهای میشه‌ری و پیازه‌ری در این ناحیه به مسیر قله می‌رسند.",
+          "ترک دانلودشده one-way و با جهت فرود ثبت شده بود؛ هندسه برای Route صعود از مبدأ مسیر میشه‌ری تا قله معکوس تفسیر شد.",
+          "دشت میدان بیستون، گوسفندسرا و چاه آبِ landmark میانی مستند کریدور صعود است؛ مسیرهای میشه‌ری و پیازه‌ری در این ناحیه به مسیر قله می‌رسند.",
           "فاصله، صعود و زمان با آمار ترک و گزارش‌های مستقل به‌صورت محافظه‌کارانه ثبت شده‌اند؛ دیواره‌نوردی و مسیرهای فنی جنوبی وارد Route عمومی نشده‌اند."
         ]
       },
@@ -120,8 +121,8 @@
   },
   "point": {
     "slug": "bisotun",
-    "tile_name": "بیستون",
-    "name": "قلهٔ بیستون",
+    "tile_name": "قلهٔ بیستون کرمانشاه",
+    "name": "قلهٔ بیستون کرمانشاه",
     "short_category": "قله",
     "category": "قله‌های کرمانشاه",
     "category_key": "mountain",
