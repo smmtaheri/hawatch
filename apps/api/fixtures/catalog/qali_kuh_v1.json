@@ -24,9 +24,96 @@
       "status": "provisional",
       "elevation_source": "ارتفاع تقریبی ۴۰۸۰ متر در منابع معرفی قله و مسیر؛ مختصات canonical از قلهٔ ثبت‌شده در OpenStreetMap و اختلاف ۵۴ متر با DEM در محدودهٔ اعتبارسنجی است.",
       "climate": "high_alpine"
+    },
+    "qali-kuh-pamzareh-trailhead": {
+      "name": "پای‌کار پام‌زرعهٔ قالی‌کوه",
+      "page_name": "پام‌زرعه؛ پای‌کار قالی‌کوه",
+      "short_label": "پام‌زرعه",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["پامزرعه", "پام‌زراع", "پای کار قالی کوه", "Pamzareh"],
+      "identity_summary": "پام‌زرعه، دسترسی و پای‌کار رایج مسیر پیادهٔ قالی‌کوه در گردنهٔ گله‌وادوش",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/ghalikooh-peak-introduction-and-guide-to-climbing/",
+        "https://gl.wikiloc.com/rutas-alpinismo/ghalikooh-summit-qly-khwh-w-abshr-ab-sfyd-5291571"
+      ],
+      "latitude": 33.11479,
+      "longitude": 49.420193,
+      "elevation_m": 2500,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ آغاز ترک ثبت‌شدهٔ پام‌زرعه تا قله؛ ارتفاع با DEM برابر ۲۴۳۱ متر و اختلاف ۶۹ متر است.",
+      "climate": "high_alpine"
+    },
+    "qali-kuh-sar-juibar": {
+      "name": "سرجویبار قالی‌کوه",
+      "page_name": "سرجویبار در مسیر قالی‌کوه",
+      "short_label": "سرجویبار",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": ["سر جویبار قالی کوه", "Sar Juybar Qali Kuh"],
+      "identity_summary": "عارضهٔ میانی نام‌گذاری‌شدهٔ سرجویبار در مسیر پیادهٔ پام‌زرعه تا قلهٔ قالی‌کوه",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": ["https://www.wikiloc.com/hiking-trails/qly-khwh-4080-mtr-273418998"],
+      "latitude": 33.096051,
+      "longitude": 49.444061,
+      "elevation_m": 3103,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ سرجویبار در ترک primary؛ ارتفاع با DEM برابر ۳۰۶۵ متر و اختلاف ۳۸ متر است.",
+      "climate": "high_alpine"
     }
   },
-  "routes": {},
+  "routes": {
+    "qali_kuh_pamzareh": {
+      "slug": "qali-kuh-pamzareh-summit",
+      "title": "پام‌زرعه تا قلهٔ قالی‌کوه",
+      "subtitle": "مسیر رایج پیاده از پای‌کار پام‌زرعه و سرجویبار تا قلهٔ قالی‌کوه",
+      "trail_label": "مسیر پام‌زرعه–قالی‌کوه",
+      "origin": "پای‌کار پام‌زرعهٔ قالی‌کوه",
+      "target_label": "قلهٔ قالی‌کوه",
+      "region": "الیگودرز · لرستان · زاگرس مرکزی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "qali-kuh-pamzareh-trailhead",
+        "qali-kuh-sar-juibar",
+        "qali-kuh"
+      ],
+      "distance_km": 13.08,
+      "ascent_m": 1637,
+      "one_way_minutes": 440,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "qali-kuh-pamzareh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qly-khwh-4080-mtr-273418998",
+          "https://mojekooh.com/ghalikooh-peak-introduction-and-guide-to-climbing/"
+        ],
+        "evidence_tracks": ["tracks/qali-kuh/qali-kuh-kiguran-to-summit.gpx"],
+        "cumulative_minutes": {
+          "qali-kuh-pamzareh-trailhead": 0,
+          "qali-kuh-sar-juibar": 187,
+          "qali-kuh": 440
+        },
+        "notes": [
+          "ترک primary از پای‌کار پام‌زرعه تا اولین رسیدن به قله تحلیل شد؛ بخش برگشت و توقف شبانه در ETA یک‌طرفه وارد نشده است.",
+          "سرجویبار تنها waypoint نام‌گذاری‌شدهٔ میانی و قابل‌شناسایی ترک است؛ waypointهای generic کمپ و چرخش مسیر به catalog عمومی اضافه نشده‌اند.",
+          "فاصله و صعود از تحلیل هندسهٔ GPX به‌ترتیب حدود ۱۳٫۰۸ کیلومتر و ۱۶۳۷ متر است؛ زمان یک‌طرفه estimated و محافظه‌کارانه ثبت شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
   "point": {
     "slug": "qali-kuh",
     "tile_name": "قالی‌کوه",
