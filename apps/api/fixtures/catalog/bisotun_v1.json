@@ -31,7 +31,7 @@
       "short_label": "مبدأ مسیر میشه‌ری بیستون",
       "place_type": "trailhead",
       "category_key": "mountain",
-      "aliases": ["میشه‌ری بیستون", "میشه ری بیستون", "پلیس راه بیستون", "مبدأ بیستون", "Bisotun Mishri trailhead"],
+      "aliases": ["میشه‌ری بیستون", "میشه ری بیستون", "Bisotun Mishri trailhead"],
       "identity_summary": "مبدأ واقعی پیاده‌روی مسیر میشه‌ری قلهٔ بیستون؛ دسترسی اولیه از جادهٔ کرمانشاه–همدان انجام می‌شود",
       "importance": "support",
       "kind": "route_point",
@@ -46,7 +46,7 @@
       "longitude": 47.375406,
       "elevation_m": 1485,
       "status": "provisional",
-      "elevation_source": "نقطهٔ آغاز پاکوب میشه‌ری در ترک one-way تا قله؛ دسترسی جاده‌ای از پلیس‌راه انجام می‌شود و DEM سرویس Open-Meteo برابر ۱۴۹۰ متر است.",
+      "elevation_source": "نقطهٔ آغاز پاکوب میشه‌ری در ترک one-way تا قله؛ دسترسی اولیه از محور کرمانشاه–همدان انجام می‌شود و DEM سرویس Open-Meteo برابر ۱۴۹۰ متر است.",
       "climate": "alpine"
     },
     "bisotun-maidan": {

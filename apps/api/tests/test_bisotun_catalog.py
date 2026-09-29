@@ -15,6 +15,8 @@ def test_bisotun_has_an_indexable_peak_and_hiking_route():
     trailhead = catalog["weather_points"]["bisotun-mishri-trailhead"]
     assert trailhead["name"] == trailhead["page_name"] == trailhead["short_label"] == "مبدأ مسیر میشه‌ری بیستون"
     assert trailhead["seo_indexable"] is False
+    assert "پلیس" not in trailhead["name"]
+    assert all("پلیس" not in alias and "مبدأ بیستون" not in alias for alias in trailhead["aliases"])
     field = catalog["weather_points"]["bisotun-maidan"]
     assert field["name"] == field["page_name"] == field["short_label"] == "دشت میدان بیستون"
     assert field["place_type"] == "meadow"
