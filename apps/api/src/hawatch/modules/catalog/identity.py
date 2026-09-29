@@ -158,7 +158,6 @@ POINT_SLUG_MAP = {
     "barfchal": "tochal-barfchal-peak",
     "goleband": "tochal-goleband-ridge",
     "sarband": "tochal-sarband-square",
-    "shahrestanak": "tochal-shahrestanak-village",
     "shirpala": "tochal-shirpala-shelter",
     "station_1": "tochal-telecabin-station-1",
     "station_2": "tochal-telecabin-station-2",
@@ -308,9 +307,9 @@ POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
         "place_type": "landmark",
         "name_status": "official",
     },
-    "tochal-shahrestanak-village": {
+    "shahrestanak": {
         "name": "روستای شهرستانک",
-        "page_name": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال",
+        "page_name": "روستای شهرستانک",
         "short_label": "شهرستانک",
         "place_type": "village",
         "name_status": "official",

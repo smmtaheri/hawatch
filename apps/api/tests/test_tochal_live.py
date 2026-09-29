@@ -121,11 +121,15 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
         assert point.location.x == pytest.approx(lon)
         assert point.elevation_m == elev
 
-    for slug in ("tochal-velenjak-village", "tochal-hotel", "tochal-kolakchal-camp", "tochal-ahar-village", "tochal-shakarab-ahaar", "tochal-shahrestanak-village", "shahrestanak-naseri-palace", "tochal-naseri-junction"):
+    for slug in ("tochal-velenjak-village", "tochal-hotel", "tochal-kolakchal-camp", "tochal-ahar-village", "tochal-shakarab-ahaar", "shahrestanak", "shahrestanak-naseri-palace", "tochal-naseri-junction"):
         assert WeatherPoint.objects.get(slug=slug).status == WeatherPoint.Status.PROVISIONAL
 
     goleband = WeatherPoint.objects.get(slug="tochal-goleband-ridge")
     assert goleband.name == "یال گوله‌بند توچال"
+    shahrestanak = WeatherPoint.objects.get(slug="shahrestanak")
+    assert shahrestanak.name == shahrestanak.page_name == "روستای شهرستانک"
+    assert shahrestanak.seo_indexable is True
+    assert not WeatherPoint.objects.filter(slug="tochal-shahrestanak-village").exists()
     assert WeatherPoint.objects.get(slug="tochal-amiri-shelter").name == "جان‌پناه امیری"
     assert WeatherPoint.objects.get(slug="tochal-shahrestanak-sheepfold-spring").name == "چشمه و گوسفندسرا شهرستانک"
     assert WeatherPoint.objects.get(slug="tochal-telecabin-station-1").name == "ایستگاه ۱ تله‌کابین توچال"

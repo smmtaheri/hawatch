@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v8",
+  "catalog_version": "hawatch-tochal-catalog-v9",
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -516,21 +516,23 @@
         "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
       ]
     },
-    "tochal-shahrestanak-village": {
+    "shahrestanak": {
       "name": "روستای شهرستانک",
       "latitude": 35.9700314,
       "longitude": 51.3539433,
       "elevation_m": 2200,
       "status": "provisional",
       "elevation_source": "kuhnavardi reference: 2200 m; PBF village has no ele; GLO-90 DEM 2196 m",
-      "page_name": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال",
+      "page_name": "روستای شهرستانک",
       "short_label": "شهرستانک",
       "place_type": "village",
-      "aliases": [],
-      "identity_summary": "روستای شهرستانک، ابتدای مسیر شهرستانک–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
+      "category_key": "village",
+      "aliases": ["شهرستانک", "روستای شهرستانک", "Shahrestanak village"],
+      "identity_summary": "روستای شهرستانک در البرز؛ مقصد مستقل و مبدأ مسیر پیادهٔ شهرستانک–توچال",
       "importance": "support",
       "seo_indexable": true,
       "name_status": "official",
+      "region": "شهرستانک · البرز",
       "source_urls": [
         "https://mojekooh.com/قله-توچال/",
         "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
@@ -922,7 +924,7 @@
       "featured": false,
       "sort_order": 4,
       "points": [
-        "tochal-shahrestanak-village",
+        "shahrestanak",
         "shahrestanak-naseri-palace",
         "tochal-shahrestanak-spring",
         "tochal-shahrestanak-sheepfold-spring",
@@ -956,7 +958,7 @@
           "Mandatory chain uses shahrestanak_pass (گردنه شهرستانک), distinct from bazarek_pass. naseri_junction/bazarek_pass/shahneshin_pass remain global WeatherPoints for future variants."
         ],
         "cumulative_minutes": {
-          "tochal-shahrestanak-village": 0,
+          "shahrestanak": 0,
           "shahrestanak-naseri-palace": 65,
           "tochal-shahrestanak-spring": 115,
           "tochal-shahrestanak-sheepfold-spring": 160,

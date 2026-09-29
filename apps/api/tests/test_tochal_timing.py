@@ -58,7 +58,7 @@ EXPECTED_CUMULATIVE = {
         "tochal": 380,
     },
     "tochal-shahrestanak": {
-        "tochal-shahrestanak-village": 0,
+        "shahrestanak": 0,
         "shahrestanak-naseri-palace": 65,
         "tochal-shahrestanak-spring": 115,
         "tochal-shahrestanak-sheepfold-spring": 160,
@@ -190,7 +190,7 @@ def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
     shah = Route.objects.get(slug="tochal-shahrestanak")
     assert shah.timing_status == Route.TimingStatus.ESTIMATED
     assert list(shah.points.order_by("sort_order").values_list("slug", flat=True)) == [
-        "tochal-shahrestanak-village",
+        "shahrestanak",
         "shahrestanak-naseri-palace",
         "tochal-shahrestanak-spring",
         "tochal-shahrestanak-sheepfold-spring",
@@ -346,7 +346,7 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
     assert body["points"][0]["time"] != "—"
     assert "timing pending" not in str(body).lower()
     assert [point["slug"] for point in body["points"]] == [
-        "tochal-shahrestanak-village",
+        "shahrestanak",
         "shahrestanak-naseri-palace",
         "tochal-shahrestanak-spring",
         "tochal-shahrestanak-sheepfold-spring",
