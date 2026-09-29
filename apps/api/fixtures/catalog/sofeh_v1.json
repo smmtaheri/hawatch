@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-sofeh-catalog-v1",
+  "weather_points": {
+    "sofeh-isfahan": {
+      "name": "کوه صفه اصفهان",
+      "page_name": "کوه صفه اصفهان",
+      "short_label": "کوه صفه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "صفه اصفهان",
+        "قله صفه",
+        "قلهٔ صفه",
+        "بام اصفهان",
+        "Mount Soffeh",
+        "Sofeh Mountain"
+      ],
+      "identity_summary": "کوه صفه در جنوب شهر اصفهان؛ مقصد شهری شناخته‌شده برای کوهنوردی و طبیعت‌گردی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://fa.wikipedia.org/wiki/کوه_صفه",
+        "https://www.isfahanvisit.ir/fa/articles/71-mount-soffeh-isfahan",
+        "https://mapcarta.com/13182416",
+        "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937"
+      ],
+      "latitude": 32.59268,
+      "longitude": 51.64318,
+      "elevation_m": 2088,
+      "status": "provisional",
+      "elevation_source": "ارتفاع و مختصات قله از منابع معرفی کوه صفه و نقشه؛ با Open-Meteo GLO-90 DEM اعتبارسنجی می‌شود.",
+      "climate": "alpine",
+      "region": "اصفهان · اصفهان"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "sofeh-isfahan",
+    "tile_name": "کوه صفه",
+    "name": "کوه صفه اصفهان",
+    "short_category": "کوه",
+    "category": "کوه‌های اصفهان",
+    "category_key": "mountain",
+    "region": "اصفهان · اصفهان",
+    "elevation_m": 2088,
+    "latitude": 32.59268,
+    "longitude": 51.64318,
+    "image": "/images/home-scene.png",
+    "image_alt": "کوه صفه در جنوب شهر اصفهان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "صفه اصفهان",
+      "قله صفه",
+      "قلهٔ صفه",
+      "بام اصفهان"
+    ]
+  },
+  "primary_point": "sofeh-isfahan"
+}
