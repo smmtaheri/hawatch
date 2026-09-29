@@ -114,14 +114,14 @@
     },
     "mishineh-now": {
       "name": "قلهٔ میشینه‌نو",
-      "page_name": "قلهٔ میشینه‌نو در خط‌الرأس ناز",
+      "page_name": "قلهٔ میشینه‌نو البرز",
       "short_label": "میشینه‌نو",
       "place_type": "summit",
       "aliases": ["میشینه نو", "میشینه‌نو", "Mishineh Now"],
-      "identity_summary": "قلهٔ نام‌دار خط‌الرأس بین کهار کوچک و قلهٔ ناز",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "identity_summary": "قلهٔ میشینه‌نو، قلهٔ نام‌دار خط‌الرأس بین کهار کوچک و قلهٔ ناز در البرز غربی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544"
