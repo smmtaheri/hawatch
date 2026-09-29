@@ -1,0 +1,51 @@
+{
+  "catalog_version": "hawatch-qali-kuh-catalog-v1",
+  "weather_points": {
+    "qali-kuh": {
+      "name": "قلهٔ قالی‌کوه",
+      "page_name": "قلهٔ قالی‌کوه الیگودرز",
+      "short_label": "قلهٔ قالی‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قالی کوه", "غالیه کوه", "قادی کوه", "قله قالی کوه", "Qali Kuh", "Ghalieh Kuh"],
+      "identity_summary": "قلهٔ قالی‌کوه در زاگرس مرکزی، شهرستان الیگودرز و استان لرستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mojekooh.com/ghalikooh-peak-introduction-and-guide-to-climbing/",
+        "https://www.wikiloc.com/hiking-trails/qly-khwh-4080-mtr-273418998",
+        "https://www.openstreetmap.org/node/8047442414"
+      ],
+      "latitude": 33.0586142,
+      "longitude": 49.48661,
+      "elevation_m": 4080,
+      "status": "provisional",
+      "elevation_source": "ارتفاع تقریبی ۴۰۸۰ متر در منابع معرفی قله و مسیر؛ مختصات canonical از قلهٔ ثبت‌شده در OpenStreetMap و اختلاف ۵۴ متر با DEM در محدودهٔ اعتبارسنجی است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "qali-kuh",
+    "tile_name": "قالی‌کوه",
+    "name": "قلهٔ قالی‌کوه",
+    "short_category": "قله",
+    "category": "قله‌های لرستان",
+    "category_key": "mountain",
+    "region": "الیگودرز · لرستان · زاگرس مرکزی",
+    "elevation_m": 4080,
+    "latitude": 33.0586142,
+    "longitude": 49.48661,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ قالی‌کوه الیگودرز",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قالی کوه", "غالیه کوه", "قادی کوه"]
+  },
+  "primary_point": "qali-kuh"
+}
