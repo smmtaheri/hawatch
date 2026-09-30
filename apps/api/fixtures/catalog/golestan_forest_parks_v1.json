@@ -1,0 +1,105 @@
+{
+  "catalog_version": "hawatch-golestan-forest-parks-v1",
+  "weather_points": {
+    "daland-forest-park": {
+      "name": "پارک جنگلی دلند",
+      "page_name": "آب‌وهوای پارک جنگلی دلند رامیان",
+      "short_label": "پارک جنگلی دلند",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "پارک‌ها و جنگل‌های گلستان",
+      "region": "دلند · رامیان · گلستان",
+      "aliases": [
+        "جنگل دلند",
+        "پارک دلند",
+        "پارک جنگلی دلند گلستان",
+        "Daland Forest Park"
+      ],
+      "identity_summary": "پارک جنگلی دلند در شهرستان رامیان؛ مقصد شناخته‌شدهٔ جنگل‌گردی و تماشای برگ‌ریزان پاییزی در گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W305780852",
+        "https://www.openstreetmap.org/way/305780852",
+        "https://vilayar.com/index.php/places/getting-to-know-deland-forest-park",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.05368&longitude=55.07931"
+      ],
+      "latitude": 37.05368,
+      "longitude": 55.07931,
+      "elevation_m": 93,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ پارک از عارضهٔ پارک در OpenStreetMap/Mapcarta؛ ارتفاع ۹۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical. مطالعات محدودهٔ پارک را در بازهٔ تقریبی ۶۰ تا ۱۲۰ متر گزارش می‌کنند.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای پارک جنگلی دلند رامیان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارک جنگلی دلند در رامیان گلستان؛ دما، باد و بارش را برای جنگل‌گردی و سفر پاییزی ببینید."
+      }
+    },
+    "qarq-forest-park": {
+      "name": "پارک جنگلی قرق گرگان",
+      "page_name": "آب‌وهوای پارک جنگلی قرق گرگان",
+      "short_label": "پارک جنگلی قرق",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "پارک‌ها و جنگل‌های گلستان",
+      "region": "قرق · گرگان · گلستان",
+      "aliases": [
+        "جنگل قرق",
+        "پارک قرق گرگان",
+        "پارک جنگلی قَرَق",
+        "Qarq Forest Park",
+        "Qoroq Forest Park"
+      ],
+      "identity_summary": "پارک جنگلی قرق در شرق گرگان؛ پارک جنگلی جلگه‌ای و مقصد شناخته‌شدهٔ طبیعت‌گردی در گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/27015922",
+        "https://fa.tripyar.com/iran/%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86/%DA%AF%D8%B1%DA%AF%D8%A7%D9%86/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%AC%D9%86%DA%AF%D9%84-%D9%86%D9%88%D8%B1%D8%AF%DB%8C/%D9%BE%D8%A7%D8%B1%DA%A9-%D8%AC%D9%86%DA%AF%D9%84%DB%8C-%D9%82%D8%B1%D9%82.html",
+        "https://www.geonames.org/7335122/park-e-jangali-ye-qoroq.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.88147&longitude=54.69241"
+      ],
+      "latitude": 36.88147,
+      "longitude": 54.69241,
+      "elevation_m": 120,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع نمایندهٔ پارک از OpenStreetMap/Mapcarta و GeoNames؛ ارتفاع ۱۲۰ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای پارک جنگلی قرق گرگان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارک جنگلی قرق گرگان در گلستان؛ دما، باد و بارش را برای طبیعت‌گردی و سفر پاییزی ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "daland-forest-park",
+    "tile_name": "پارک جنگلی دلند",
+    "name": "پارک جنگلی دلند",
+    "short_category": "جنگل",
+    "category": "پارک‌ها و جنگل‌های گلستان",
+    "category_key": "forest",
+    "region": "دلند · رامیان · گلستان",
+    "elevation_m": 93,
+    "latitude": 37.05368,
+    "longitude": 55.07931,
+    "image": "/images/home-scene.png",
+    "image_alt": "پارک جنگلی دلند در شهرستان رامیان گلستان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جنگل دلند",
+      "پارک دلند",
+      "پارک جنگلی دلند گلستان",
+      "Daland Forest Park"
+    ]
+  },
+  "primary_point": "daland-forest-park"
+}
