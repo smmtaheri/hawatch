@@ -1,0 +1,177 @@
+{
+  "catalog_version": "hawatch-varvasht-catalog-v1",
+  "weather_points": {
+    "varvasht-harijan-dry-valley": {
+      "name": "درهٔ خشک‌رود هریجان",
+      "page_name": "درهٔ خشک‌رود هریجان در مسیر وروشت",
+      "short_label": "درهٔ خشک‌رود",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "مسیرهای قلهٔ وروشت",
+      "region": "هریجان · چالوس · مازندران",
+      "aliases": ["خشکه‌درهٔ وروشت", "درهٔ خشک‌رود وروشت", "Varvasht dry valley"],
+      "identity_summary": "درهٔ خشک‌رود در بخش میانی مسیر صعود هریجان به قلهٔ وروشت.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836"
+      ],
+      "latitude": 36.257594,
+      "longitude": 51.339965,
+      "elevation_m": 2809,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2809 m; waypoint «محل رسیدن به دره» در ترک هریجان–وروشت.",
+      "climate": "alpine"
+    },
+    "varvasht-meadow": {
+      "name": "دشت وروشت",
+      "page_name": "دشت وروشت در مسیر هریجان",
+      "short_label": "دشت وروشت",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "مسیرهای قلهٔ وروشت",
+      "region": "هریجان · چالوس · مازندران",
+      "aliases": ["دشت مسیر وروشت", "Varvasht meadow"],
+      "identity_summary": "دشت مرتفع و محل استقرار گوسفندسراها در مسیر هریجان به وروشت.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836"
+      ],
+      "latitude": 36.260620,
+      "longitude": 51.349564,
+      "elevation_m": 2953,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2953 m; waypoint «دشت» در ترک هریجان–وروشت.",
+      "climate": "alpine"
+    },
+    "varvasht-main-ridge": {
+      "name": "خط‌الرأس اصلی وروشت",
+      "page_name": "خط‌الرأس اصلی قلهٔ وروشت",
+      "short_label": "خط‌الرأس وروشت",
+      "place_type": "ridge",
+      "category_key": "ridge",
+      "category": "مسیرهای قلهٔ وروشت",
+      "region": "هریجان · چالوس · مازندران",
+      "aliases": ["یال اصلی وروشت", "خط الراس وروشت", "Varvasht main ridge"],
+      "identity_summary": "خط‌الرأس اصلی پیش از گردنه و قلهٔ وروشت در مسیر صعود از هریجان.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836"
+      ],
+      "latitude": 36.279054,
+      "longitude": 51.359933,
+      "elevation_m": 3856,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3856 m; waypoint «محل رسیدن به خط‌الرأس اصلی» در ترک هریجان–وروشت.",
+      "climate": "high_alpine"
+    },
+    "varvasht": {
+      "name": "قلهٔ وروشت",
+      "page_name": "قلهٔ وروشت مازندران",
+      "short_label": "قلهٔ وروشت",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله و مسیرهای کوهستانی مازندران",
+      "region": "البرز مرکزی · چالوس · مازندران",
+      "aliases": ["وره‌وشت", "قله وره‌وشت", "وروشت چالوس", "Varvasht", "Varevasht"],
+      "identity_summary": "قلهٔ وروشت، قلهٔ شاخص بالای چهار هزار متر در البرز مرکزی و مقصد مسیر صعود از هریجان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836",
+        "https://www.wikiloc.com/hiking-trails/qlh-wrh-wsht-y-wrwsht-z-rwsty-hryjn-104030425",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.2871245&lon=51.3542672&peak-name=%D9%88%D8%B1%D9%88%D8%B4%D8%AA&pkidentifier=427"
+      ],
+      "latitude": 36.287374,
+      "longitude": 51.354545,
+      "elevation_m": 4025,
+      "status": "provisional",
+      "elevation_source": "ارتفاع رایج قله ۴۰۲۵ متر؛ Open-Meteo GLO-90 DEM در مختصات قله: ۳۹۹۶ متر.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": ["harijan-village"],
+  "routes": {
+    "harijan_to_varvasht": {
+      "slug": "varvasht-harijan",
+      "title": "هریجان تا قلهٔ وروشت",
+      "subtitle": "مسیر صعود از روستای هریجان، دشت و خط‌الرأس اصلی تا قلهٔ وروشت",
+      "trail_label": "مسیر هریجان به وروشت",
+      "origin": "هریجان",
+      "target_label": "قلهٔ وروشت",
+      "region": "البرز مرکزی · چالوس · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "harijan-village",
+        "varvasht-harijan-dry-valley",
+        "varvasht-meadow",
+        "varvasht-main-ridge",
+        "varvasht"
+      ],
+      "distance_km": 8.7,
+      "ascent_m": 1761,
+      "one_way_minutes": 380,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track+web-reports-v1",
+        "version": "varvasht-harijan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836",
+          "https://www.wikiloc.com/hiking-trails/qlh-wrh-wsht-y-wrwsht-z-rwsty-hryjn-104030425"
+        ],
+        "evidence_tracks": [
+          "tracks/varvasht/varvasht-harijan-to-summit-2022.gpx"
+        ],
+        "cumulative_minutes": {
+          "harijan-village": 0,
+          "varvasht-harijan-dry-valley": 110,
+          "varvasht-meadow": 145,
+          "varvasht-main-ridge": 340,
+          "varvasht": 380
+        }
+      },
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-wrwsht-wrh-wsht-z-hryjn-114238836",
+        "https://www.wikiloc.com/hiking-trails/qlh-wrh-wsht-y-wrwsht-z-rwsty-hryjn-104030425"
+      ],
+      "evidence_tracks": [
+        "tracks/varvasht/varvasht-harijan-to-summit-2022.gpx"
+      ]
+    }
+  },
+  "point": {
+    "slug": "varvasht",
+    "tile_name": "وروشت",
+    "name": "قلهٔ وروشت",
+    "short_category": "کوه",
+    "category": "قله و مسیرهای کوهستانی مازندران",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · چالوس · مازندران",
+    "elevation_m": 4025,
+    "latitude": 36.287374,
+    "longitude": 51.354545,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ وروشت مازندران",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true
+  },
+  "primary_point": "varvasht"
+}
