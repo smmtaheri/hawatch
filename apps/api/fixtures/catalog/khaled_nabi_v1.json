@@ -3,10 +3,10 @@
   "reviewed_nearby_point_pairs": [
     {
       "slugs": [
-        "khaled-nabi-site",
+        "khaled-nabi-shrine",
         "khaled-nabi-historical-cemetery"
       ],
-      "reason": "زیارتگاه/مجموعهٔ خالدنبی و گورستان تاریخی دو عارضهٔ مستقل و نام‌دارند؛ فاصلهٔ مستقیم آن‌ها حدود ۷۴۰ متر است و GPX پیمایش به مجموعهٔ اصلی ختم می‌شود، نه گورستان شرقی."
+      "reason": "زیارتگاه خالدنبی و گورستان تاریخی دو عارضهٔ مستقل و نام‌دارند؛ فاصلهٔ مستقیم آن‌ها حدود ۷۴۰ متر است و GPX پیمایش به زیارتگاه اصلی ختم می‌شود، نه گورستان شرقی."
     },
     {
       "slugs": [
@@ -17,10 +17,10 @@
     }
   ],
   "weather_points": {
-    "khaled-nabi-site": {
-      "name": "مجموعهٔ خالدنبی گلستان",
-      "page_name": "آب‌وهوای مجموعهٔ خالدنبی گلستان",
-      "short_label": "خالدنبی",
+    "khaled-nabi-shrine": {
+      "name": "زیارتگاه خالدنبی کلاله",
+      "page_name": "آب‌وهوای زیارتگاه خالدنبی کلاله",
+      "short_label": "زیارتگاه خالدنبی",
       "place_type": "landmark",
       "category_key": "landmark",
       "category": "خالدنبی و هزاردرهٔ گلستان",
@@ -32,7 +32,7 @@
         "Khaled Nabi",
         "Khaled Nabi shrine"
       ],
-      "identity_summary": "مجموعهٔ زیارتی و تاریخی خالدنبی در ارتفاعات کلالهٔ گلستان؛ مقصد اصلی بازدید از زیارتگاه و چشم‌انداز هزاردره.",
+      "identity_summary": "زیارتگاه خالدنبی در ارتفاعات کلالهٔ گلستان؛ مقصد اصلی بازدید از آرامگاه و چشم‌انداز هزاردره.",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -50,8 +50,8 @@
       "elevation_source": "مختصات مجموعه از Mapcarta/OSM؛ ارتفاع ۶۷۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
       "climate": "meadow",
       "seo": {
-        "title": "آب‌وهوای خالدنبی گلستان؛ پیش‌بینی دما و بارش | هواچ",
-        "description": "پیش‌بینی آب‌وهوای مجموعهٔ خالدنبی در ارتفاعات کلالهٔ گلستان؛ دما، باد و بارش را برای سفر ببینید."
+        "title": "آب‌وهوای زیارتگاه خالدنبی کلاله؛ پیش‌بینی دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای زیارتگاه خالدنبی در ارتفاعات کلالهٔ گلستان؛ دما، باد و بارش را برای سفر ببینید."
       }
     },
     "khaled-nabi-historical-cemetery": {
@@ -175,7 +175,7 @@
         "Gechi Soo-ye Pain",
         "Gechi Soo village"
       ],
-      "identity_summary": "روستای گچی‌سو پایین در کلالهٔ گلستان و مبدأ شناخته‌شدهٔ ترک پیادهٔ گچی‌سو تا مجموعهٔ خالدنبی.",
+      "identity_summary": "روستای گچی‌سو پایین در کلالهٔ گلستان و مبدأ شناخته‌شدهٔ ترک پیادهٔ گچی‌سو تا زیارتگاه خالدنبی.",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -235,17 +235,17 @@
     "gechi-soo-khaled-nabi": {
       "slug": "gechi-soo-khaled-nabi",
       "title": "گچی‌سو تا خالدنبی",
-      "subtitle": "پیمایش پیاده از روستای گچی‌سو پایین در تپه‌ماهورهای هزاردره تا مجموعهٔ خالدنبی",
+      "subtitle": "پیمایش پیاده از روستای گچی‌سو پایین در تپه‌ماهورهای هزاردره تا زیارتگاه خالدنبی",
       "trail_label": "مسیر گچی‌سو–خالدنبی",
       "origin": "روستای گچی‌سو پایین گلستان",
-      "target_label": "مجموعهٔ خالدنبی گلستان",
+      "target_label": "زیارتگاه خالدنبی کلاله",
       "region": "خالدنبی · کلاله · گلستان",
       "featured": true,
       "sort_order": 1,
       "points": [
         "gechi-soo-pain-village",
         "hezar-darreh-turkmen-sahra",
-        "khaled-nabi-site"
+        "khaled-nabi-shrine"
       ],
       "distance_km": 5.7,
       "ascent_m": 365,
@@ -276,7 +276,7 @@
         "cumulative_minutes": {
           "gechi-soo-pain-village": 0,
           "hezar-darreh-turkmen-sahra": 63,
-          "khaled-nabi-site": 125
+          "khaled-nabi-shrine": 125
         },
         "notes": [
           "ترک منبع برای فعالیت hiking، یک‌طرفه، حدود ۵٫۸ کیلومتر، صعود مثبت گزارش‌شدهٔ حدود ۴۸۲ متر و زمان ثبت‌شدهٔ ۲ ساعت و ۸ دقیقه دارد؛ برای Route مقدار فاصلهٔ ۵٫۷ کیلومتر، صعود هموارشدهٔ ۳۶۵ متر و زمان ثبت‌شدهٔ ۱۲۵ دقیقه از تحلیل محلیِ بخش منتهی به مقصد استفاده شده است.",
@@ -289,10 +289,10 @@
   },
   "shared_weather_points": [],
   "point": {
-    "slug": "khaled-nabi-site",
-    "tile_name": "خالدنبی",
-    "name": "مجموعهٔ خالدنبی گلستان",
-    "short_category": "خالدنبی",
+    "slug": "khaled-nabi-shrine",
+    "tile_name": "زیارتگاه خالدنبی",
+    "name": "زیارتگاه خالدنبی کلاله",
+    "short_category": "زیارتگاه",
     "category": "خالدنبی و هزاردرهٔ گلستان",
     "category_key": "landmark",
     "region": "خالدنبی · کلاله · گلستان",
@@ -300,7 +300,7 @@
     "latitude": 37.74211,
     "longitude": 55.4117,
     "image": "/images/home-scene.png",
-    "image_alt": "چشم‌انداز مجموعهٔ خالدنبی در ارتفاعات گلستان",
+    "image_alt": "چشم‌انداز زیارتگاه خالدنبی در ارتفاعات کلالهٔ گلستان",
     "popular_order": 0,
     "climate": "meadow",
     "is_popular": false,
@@ -312,5 +312,5 @@
       "Khaled Nabi"
     ]
   },
-  "primary_point": "khaled-nabi-site"
+  "primary_point": "khaled-nabi-shrine"
 }
