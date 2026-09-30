@@ -1,0 +1,208 @@
+{
+  "catalog_version": "hawatch-golestan-national-park-catalog-v1",
+  "shared_weather_points": [],
+  "weather_points": {
+    "golestan-national-park": {
+      "name": "پارک ملی گلستان",
+      "page_name": "آب‌وهوای پارک ملی گلستان",
+      "short_label": "پارک ملی گلستان",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "پارک‌ها و جنگل‌های گلستان",
+      "region": "گالیکش · استان گلستان",
+      "aliases": [
+        "پارک گلستان",
+        "پارک ملی گلستان گالیکش",
+        "جنگل گلستان",
+        "Golestan National Park"
+      ],
+      "identity_summary": "پارک ملی گلستان؛ پهنه‌ای جنگلی، مرتعی و کوهستانی در شرق استان گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.openstreetmap.org/relation/16173943",
+        "https://tourism-golestan.com/location/%DA%AF%D8%A7%D9%84%DB%8C%DA%A9%D8%B4/",
+        "https://api.pelewg.net/storage/pdf-files/1726928408730-Fadakar%20et%20al_2013.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.3989174&longitude=55.9915807"
+      ],
+      "latitude": 37.3989174,
+      "longitude": 55.9915807,
+      "elevation_m": 1829,
+      "status": "provisional",
+      "elevation_source": "مرکز نمایندهٔ رابطهٔ پارک ملی گلستان از OpenStreetMap؛ ارتفاع ۱۸۲۹ متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای پارک ملی گلستان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارک ملی گلستان در محدودهٔ گالیکش؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    },
+    "tangrah-village": {
+      "name": "روستای تنگراه گلستان",
+      "page_name": "آب‌وهوای روستای تنگراه گلستان",
+      "short_label": "تنگراه",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گلستان",
+      "region": "تنگراه · گالیکش · گلستان",
+      "aliases": [
+        "تنگراه",
+        "تنگ‌راه",
+        "روستای تنگراه",
+        "Tangrah",
+        "Tang-e-Rah"
+      ],
+      "identity_summary": "روستای تنگراه در شهرستان گالیکش؛ سکونتگاه و پایگاه دسترسی شناخته‌شدهٔ بخش غربی پارک ملی گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12567294",
+        "https://www.openstreetmap.org/node/3713926968",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.39722&longitude=55.78194"
+      ],
+      "latitude": 37.39722,
+      "longitude": 55.78194,
+      "elevation_m": 464,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از OpenStreetMap/Mapcarta؛ ارتفاع ۴۶۴ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای تنگراه گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای تنگراه در گالیکش و ورودی غربی پارک ملی گلستان؛ دما، باد و بارش را ببینید."
+      }
+    },
+    "aghsu-waterfall": {
+      "name": "آبشار آق‌سو پارک ملی گلستان",
+      "page_name": "آب‌وهوای آبشار آق‌سو پارک ملی گلستان",
+      "short_label": "آبشار آق‌سو",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "شرق پارک ملی گلستان · گلستان",
+      "aliases": [
+        "آبشار آق سو",
+        "آق‌سو گلستان",
+        "آبشار آق‌سو گالیکش",
+        "Aghsu Waterfall"
+      ],
+      "identity_summary": "آبشار آق‌سو در بخش شرقی پارک ملی گلستان؛ عارضه‌ای شناخته‌شده در محور طبیعی آلمه و تنگراه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4623875438",
+        "https://tourism-golestan.com/location/%DA%AF%D8%A7%D9%84%DB%8C%DA%A9%D8%B4/",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.37613&longitude=55.99633"
+      ],
+      "latitude": 37.37613,
+      "longitude": 55.99633,
+      "elevation_m": 1009,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از OpenStreetMap/Mapcarta؛ ارتفاع ۱۰۰۹ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار آق‌سو گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار آق‌سو در پارک ملی گلستان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    },
+    "almeh-valley": {
+      "name": "درهٔ آلمه پارک ملی گلستان",
+      "page_name": "آب‌وهوای درهٔ آلمه پارک ملی گلستان",
+      "short_label": "آلمه",
+      "place_type": "landmark",
+      "category_key": "forest",
+      "category": "نقاط طبیعت‌گردی گلستان",
+      "region": "آلمه · پارک ملی گلستان",
+      "aliases": [
+        "آلمه گلستان",
+        "دره آلمه",
+        "منطقه آلمه",
+        "Almeh Valley",
+        "Almeh Golestan"
+      ],
+      "identity_summary": "درهٔ آلمه در پهنهٔ شرقی پارک ملی گلستان؛ منطقه‌ای نام‌دار برای طبیعت‌گردی و مشاهدهٔ حیات‌وحش.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://api.pelewg.net/storage/pdf-files/1726928408730-Fadakar%20et%20al_2013.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.352075&longitude=56.1818806"
+      ],
+      "latitude": 37.352075,
+      "longitude": 56.1818806,
+      "elevation_m": 1420,
+      "status": "provisional",
+      "elevation_source": "مختصات درهٔ آلمه از مطالعهٔ میدانی منتشرشده؛ ارتفاع ۱۴۲۰ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آلمه گلستان؛ پیش‌بینی هوا در پارک ملی | هواچ",
+        "description": "پیش‌بینی آب‌وهوای درهٔ آلمه در پارک ملی گلستان؛ دما، باد و بارش را برای سفر و طبیعت‌گردی ببینید."
+      }
+    },
+    "mirza-baylu-plain": {
+      "name": "دشت میرزابایلو پارک ملی گلستان",
+      "page_name": "آب‌وهوای دشت میرزابایلو پارک ملی گلستان",
+      "short_label": "دشت میرزابایلو",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "دشت‌های گلستان",
+      "region": "شرق پارک ملی گلستان · گلستان",
+      "aliases": [
+        "میرزابایلو",
+        "دشت میرزابایلو",
+        "میرزا بایلو",
+        "Mirza Baylu Plain"
+      ],
+      "identity_summary": "دشت میرزابایلو در بخش شرقی پارک ملی گلستان؛ پهنه‌ای شناخته‌شده برای زیست‌بوم باز و مشاهدهٔ حیات‌وحش.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12477342/",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.36&longitude=56.2555556"
+      ],
+      "latitude": 37.36,
+      "longitude": 56.2555556,
+      "elevation_m": 1321,
+      "status": "provisional",
+      "elevation_source": "مختصات دشت میرزابایلو از مطالعهٔ علمی منتشرشده؛ ارتفاع ۱۳۲۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای دشت میرزابایلو گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دشت میرزابایلو در پارک ملی گلستان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "primary_point": "golestan-national-park",
+  "point": {
+    "slug": "golestan-national-park",
+    "tile_name": "پارک ملی گلستان",
+    "name": "پارک ملی گلستان",
+    "short_category": "پارک ملی",
+    "category": "پارک‌ها و جنگل‌های گلستان",
+    "category_key": "forest",
+    "region": "گالیکش · استان گلستان",
+    "elevation_m": 1829,
+    "latitude": 37.3989174,
+    "longitude": 55.9915807,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشم‌انداز جنگلی پارک ملی گلستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک گلستان",
+      "پارک ملی گلستان گالیکش",
+      "جنگل گلستان",
+      "Golestan National Park"
+    ]
+  }
+}
