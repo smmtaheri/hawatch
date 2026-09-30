@@ -1,0 +1,197 @@
+{
+  "catalog_version": "hawatch-loveh-waterfall-v1",
+  "weather_points": {
+    "loveh-village": {
+      "name": "روستای لوه گلستان",
+      "page_name": "آب‌وهوای روستای لوه گلستان",
+      "short_label": "روستای لوه",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گلستان",
+      "region": "گالیکش · گلستان",
+      "aliases": [
+        "لوه گالیکش",
+        "روستای لوه گالیکش",
+        "Loveh Village",
+        "Looh Village"
+      ],
+      "identity_summary": "روستای لوه در شهرستان گالیکش و پایگاه دسترسی جاده‌ای به آبشار لوه در جنگل‌های گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3450984236",
+        "https://irangaah.ir/villages/minudasht/gharavolan/looeh",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.3613889&longitude=55.6563889"
+      ],
+      "latitude": 37.3613889,
+      "longitude": 55.6563889,
+      "elevation_m": 302,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع ۳۰۲ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای لوه گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای لوه گالیکش در گلستان؛ دما، باد و بارش را برای سفر به آبشار لوه ببینید."
+      }
+    },
+    "loveh-waterfall": {
+      "name": "آبشار لوه",
+      "page_name": "آب‌وهوای آبشار لوه گلستان",
+      "short_label": "آبشار لوه",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "گالیکش · گلستان",
+      "aliases": [
+        "آبشار لوه گالیکش",
+        "آبشار لووه",
+        "Loveh Waterfall",
+        "Looh Waterfall"
+      ],
+      "identity_summary": "آبشار لوه در جنگل‌های گالیکش و نزدیکی روستای لوه؛ آبشاری پلکانی با مسیر دسترسی کوتاه و مسیر بالادست تا سرچشمه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3450992531",
+        "https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642",
+        "https://www.wikiloc.com/hiking-trails/abshr-sly-lwh-97802972",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.3526429&longitude=55.665469"
+      ],
+      "latitude": 37.3526429,
+      "longitude": 55.665469,
+      "elevation_m": 537,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از OpenStreetMap؛ ارتفاع ۵۳۷ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار لوه گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار لوه گالیکش در جنگل‌های گلستان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    },
+    "loveh-waterfall-trailhead": {
+      "name": "پای کار آبشار لوه",
+      "page_name": "پای کار آبشار لوه",
+      "short_label": "پای کار آبشار لوه",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "نقاط مسیر آبشارهای گلستان",
+      "region": "گالیکش · گلستان",
+      "aliases": ["مبدأ مسیر سرچشمهٔ آبشار لوه", "Loveh waterfall trailhead"],
+      "identity_summary": "نقطهٔ شروع ترک پیادهٔ ثبت‌شده از محدودهٔ آبشار لوه به سمت سرچشمه؛ مسیر جاده‌ای روستا تا آبشار جزو پیمایش پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.348932&longitude=55.662949"
+      ],
+      "latitude": 37.348932,
+      "longitude": 55.662949,
+      "elevation_m": 530,
+      "status": "provisional",
+      "elevation_source": "مختصات ابتدای ترک Wikiloc؛ ارتفاع ۵۳۰ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    },
+    "loveh-waterfall-source": {
+      "name": "سرچشمهٔ آبشار لوه",
+      "page_name": "سرچشمهٔ آبشار لوه",
+      "short_label": "سرچشمهٔ آبشار لوه",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "نقاط مسیر آبشارهای گلستان",
+      "region": "گالیکش · گلستان",
+      "aliases": ["منبع آبشار لوه", "Loveh waterfall source"],
+      "identity_summary": "نقطهٔ بالادست ترک پیادهٔ آبشار لوه که در گزارش مسیر به‌عنوان سرچشمهٔ آبشار معرفی شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.343119&longitude=55.664864"
+      ],
+      "latitude": 37.343119,
+      "longitude": 55.664864,
+      "elevation_m": 614,
+      "status": "provisional",
+      "elevation_source": "مختصات انتهای ترک Wikiloc؛ ارتفاع ۶۱۴ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "loveh-waterfall-source": {
+      "slug": "loveh-waterfall-source",
+      "title": "آبشار لوه تا سرچشمه",
+      "subtitle": "پیمایش کوتاه جنگلی از محدودهٔ آبشار تا سرچشمهٔ بالادست",
+      "trail_label": "مسیر سرچشمهٔ آبشار لوه",
+      "origin": "پای کار آبشار لوه",
+      "target_label": "سرچشمهٔ آبشار لوه",
+      "region": "گالیکش · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "loveh-waterfall-trailhead",
+        "loveh-waterfall",
+        "loveh-waterfall-source"
+      ],
+      "distance_km": 1.37,
+      "ascent_m": 98,
+      "one_way_minutes": 30,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "wikiloc-reported-moving-time-v1",
+        "version": "loveh-waterfall-source-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 20,
+        "source_urls": ["https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642"],
+        "cumulative_minutes": {
+          "loveh-waterfall-trailhead": 0,
+          "loveh-waterfall": 5,
+          "loveh-waterfall-source": 30
+        },
+        "notes": [
+          "مسافت و زمان بر اساس ترک ثبت‌شدهٔ مسیر سرچشمه است؛ دسترسی جاده‌ای روستا تا آبشار در این ETA محاسبه نشده است.",
+          "بخش نزدیک آبشار می‌تواند لغزنده باشد و زمان حرکت به شرایط مسیر وابسته است."
+        ]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642",
+        "https://www.wikiloc.com/hiking-trails/abshr-sly-lwh-97802972"
+      ],
+      "evidence_tracks": [
+        "tracks/loveh-waterfall/loveh-waterfall-to-source-wikiloc-186861642.gpx"
+      ],
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "loveh-waterfall",
+    "tile_name": "آبشار لوه",
+    "name": "آبشار لوه",
+    "short_category": "آبشار",
+    "category": "آبشارهای گلستان",
+    "category_key": "waterfall",
+    "region": "گالیکش · گلستان",
+    "elevation_m": 537,
+    "latitude": 37.3526429,
+    "longitude": 55.665469,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار لوه در جنگل‌های گلستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار لوه گالیکش",
+      "آبشار لووه",
+      "Loveh Waterfall",
+      "Looh Waterfall"
+    ]
+  },
+  "primary_point": "loveh-waterfall"
+}
