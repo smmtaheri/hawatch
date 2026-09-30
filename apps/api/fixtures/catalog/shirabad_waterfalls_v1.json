@@ -1,0 +1,337 @@
+{
+  "catalog_version": "hawatch-shirabad-waterfalls-v1",
+  "weather_points": {
+    "shirabad-village": {
+      "name": "روستای شیرآباد گلستان",
+      "page_name": "آب‌وهوای روستای شیرآباد گلستان",
+      "short_label": "روستای شیرآباد",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گلستان",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": [
+        "شیرآباد خان‌ببین",
+        "روستای شیرآباد خان‌ببین",
+        "روستای شیرآباد رامیان",
+        "Shirabad Village Golestan"
+      ],
+      "identity_summary": "روستای شیرآباد در نزدیکی خان‌ببین و پایگاه دسترسی جاده‌ای به آبشارهای شیرآباد در استان گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12425004",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.9737&longitude=55.0216"
+      ],
+      "latitude": 36.9737,
+      "longitude": 55.0216,
+      "elevation_m": 99,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از Mapcarta؛ ارتفاع ۹۹ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای شیرآباد گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای شیرآباد خان‌ببین در گلستان؛ دما، باد و بارش را برای سفر به آبشارهای شیرآباد ببینید."
+      }
+    },
+    "shirabad-waterfall": {
+      "name": "آبشار شیرآباد",
+      "page_name": "آب‌وهوای آبشار شیرآباد گلستان",
+      "short_label": "آبشار شیرآباد",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": [
+        "آبشار اول شیرآباد",
+        "آبشار شیرآباد خان‌ببین",
+        "Shirabad Waterfall",
+        "Shirabad First Waterfall"
+      ],
+      "identity_summary": "آبشار شیرآباد در جنگل‌های جنوب خان‌ببین؛ نخستین آبشار شناخته‌شده در مجموعهٔ آبشارهای شیرآباد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N6446358797",
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.949036&longitude=55.041091"
+      ],
+      "latitude": 36.949036,
+      "longitude": 55.041091,
+      "elevation_m": 284,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از OpenStreetMap/Mapcarta و waypoint دو ترک مستقل؛ ارتفاع ۲۸۴ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار شیرآباد گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار شیرآباد خان‌ببین در جنگل‌های گلستان؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    },
+    "shirabad-seven-waterfalls": {
+      "name": "هفت آبشار شیرآباد",
+      "page_name": "آب‌وهوای هفت آبشار شیرآباد گلستان",
+      "short_label": "هفت آبشار شیرآباد",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": [
+        "مجموعه آبشارهای شیرآباد",
+        "آبشارهای هفت‌گانه شیرآباد",
+        "هفت آبشار خان‌ببین",
+        "Shirabad Seven Waterfalls"
+      ],
+      "identity_summary": "مجموعهٔ هفت آبشار شیرآباد در جنگل‌های خان‌ببین؛ نمایندهٔ بخش بالادست مسیر آبشارهای شیرآباد تا آبشار هفتم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4277722891",
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.946319&longitude=55.044025"
+      ],
+      "latitude": 36.946319,
+      "longitude": 55.044025,
+      "elevation_m": 375,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ آبشار هفتم از waypoint ترک هفت‌آبشار؛ ارتفاع ۳۷۵ متر از Open-Meteo GLO-90 DEM. نقطهٔ Mapcarta مجموعه برای تطبیق نام استفاده شده است.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای هفت آبشار شیرآباد؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای هفت آبشار شیرآباد خان‌ببین؛ دما، باد و بارش مسیر جنگلی آبشارهای گلستان را ببینید."
+      }
+    },
+    "shirabad-div-sepid-cave": {
+      "name": "غار دیو سفید شیرآباد",
+      "page_name": "آب‌وهوای غار دیو سفید شیرآباد",
+      "short_label": "غار دیو سفید",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "نقاط طبیعت‌گردی گلستان",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": [
+        "غار دیو سپید شیرآباد",
+        "غار دیو سفید خان‌ببین",
+        "غار شیرآباد",
+        "Div-e Sepid Cave Shirabad"
+      ],
+      "identity_summary": "دهانهٔ غار دیو سفید در شاخهٔ بالادست مسیر آبشارهای شیرآباد؛ نقطه‌ای نام‌دار پیش از آبشار سوم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.946966&longitude=55.042025"
+      ],
+      "latitude": 36.946966,
+      "longitude": 55.042025,
+      "elevation_m": 363,
+      "status": "provisional",
+      "elevation_source": "مختصات دهانهٔ غار از waypointهای دو ترک مستقل؛ ارتفاع ۳۶۳ متر از Open-Meteo GLO-90 DEM. مسیر داخل غار به‌عنوان پیمایش عمومی ثبت نشده است.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای غار دیو سفید شیرآباد؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دهانهٔ غار دیو سفید در مسیر هفت آبشار شیرآباد گلستان؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "shirabad-waterfalls-parking": {
+      "name": "پارکینگ آبشارهای شیرآباد",
+      "page_name": "پارکینگ مسیر آبشارهای شیرآباد",
+      "short_label": "پارکینگ شیرآباد",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "نقاط مسیر آبشارهای شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": ["پارکینگ آبشار شیرآباد", "مبدأ مسیر شیرآباد", "Shirabad waterfalls parking"],
+      "identity_summary": "پارکینگ و مبدأ بخش پیادهٔ مسیر آبشارهای شیرآباد؛ جادهٔ دسترسی روستا تا این نقطه جزو پیمایش پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.953433&longitude=55.035267"
+      ],
+      "latitude": 36.953433,
+      "longitude": 55.035267,
+      "elevation_m": 160,
+      "status": "provisional",
+      "elevation_source": "مختصات پارکینگ از waypoint هر دو ترک؛ ارتفاع ۱۶۰ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    },
+    "shirabad-second-waterfall": {
+      "name": "آبشار دوم شیرآباد",
+      "page_name": "آبشار دوم در مسیر شیرآباد",
+      "short_label": "آبشار دوم",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "نقاط مسیر آبشارهای شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": ["آبشار دوم شیرآباد", "Shirabad Second Waterfall"],
+      "identity_summary": "آبشار دوم، عارضهٔ واقعی و نام‌برده در بخش ابتدایی مسیر هفت آبشار شیرآباد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.948245&longitude=55.042167"
+      ],
+      "latitude": 36.948245,
+      "longitude": 55.042167,
+      "elevation_m": 326,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار دوم در دو ترک مستقل؛ ارتفاع ۳۲۶ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    },
+    "shirabad-third-waterfall": {
+      "name": "آبشار سوم شیرآباد",
+      "page_name": "آبشار سوم در مسیر شیرآباد",
+      "short_label": "آبشار سوم",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "نقاط مسیر آبشارهای شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": ["آبشار سوم شیرآباد", "Shirabad Third Waterfall"],
+      "identity_summary": "آبشار سوم، عارضهٔ نام‌برده در شاخهٔ بالادست مسیر غار دیو سفید و هفت آبشار شیرآباد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.94708&longitude=55.043329"
+      ],
+      "latitude": 36.94708,
+      "longitude": 55.043329,
+      "elevation_m": 362,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار سوم در دو ترک مستقل؛ ارتفاع ۳۶۲ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    },
+    "shirabad-fourth-waterfall": {
+      "name": "آبشار چهارم شیرآباد",
+      "page_name": "آبشار چهارم در مسیر شیرآباد",
+      "short_label": "آبشار چهارم",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "نقاط مسیر آبشارهای شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": ["آبشار چهارم شیرآباد", "Shirabad Fourth Waterfall"],
+      "identity_summary": "آبشار چهارم، عارضهٔ نام‌برده در بخش بالادست مسیر هفت آبشار شیرآباد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.94654&longitude=55.043885"
+      ],
+      "latitude": 36.94654,
+      "longitude": 55.043885,
+      "elevation_m": 375,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار چهارم از ترک هفت‌آبشار؛ ارتفاع ۳۷۵ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    },
+    "shirabad-sixth-waterfall": {
+      "name": "آبشار ششم شیرآباد",
+      "page_name": "آبشار ششم در مسیر شیرآباد",
+      "short_label": "آبشار ششم",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "نقاط مسیر آبشارهای شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "aliases": ["آبشار ششم شیرآباد", "Shirabad Sixth Waterfall"],
+      "identity_summary": "آبشار ششم، عارضهٔ نام‌برده در انتهای مسیر هفت آبشار شیرآباد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.946617&longitude=55.044196"
+      ],
+      "latitude": 36.946617,
+      "longitude": 55.044196,
+      "elevation_m": 375,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار ششم از ترک هفت‌آبشار؛ ارتفاع ۳۷۵ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "shirabad-seven-waterfalls-trail": {
+      "slug": "shirabad-seven-waterfalls",
+      "title": "پارکینگ تا هفت آبشار شیرآباد",
+      "subtitle": "مسیر پیادهٔ جنگلی از پارکینگ، آبشار اول و غار دیو سفید تا آبشارهای بالادست",
+      "trail_label": "مسیر هفت آبشار شیرآباد",
+      "origin": "پارکینگ آبشارهای شیرآباد",
+      "target_label": "هفت آبشار شیرآباد",
+      "region": "خان‌ببین · رامیان · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shirabad-waterfalls-parking",
+        "shirabad-waterfall",
+        "shirabad-second-waterfall",
+        "shirabad-div-sepid-cave",
+        "shirabad-third-waterfall",
+        "shirabad-fourth-waterfall",
+        "shirabad-sixth-waterfall",
+        "shirabad-seven-waterfalls"
+      ],
+      "distance_km": 3.22,
+      "ascent_m": 256,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+        "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044"
+      ],
+      "evidence_tracks": [
+        "tracks/shirabad-waterfalls/shirabad-seven-waterfalls-wikiloc-268802470.gpx",
+        "tracks/shirabad-waterfalls/shirabad-waterfalls-div-sepid-wikiloc-243294044.gpx"
+      ],
+      "public_point_notes": {
+        "shirabad-div-sepid-cave": "نقطهٔ مسیر در دهانهٔ غار است؛ پیمایش داخل غار به‌عنوان مسیر عمومی ثبت نشده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "shirabad-seven-waterfalls",
+    "tile_name": "هفت آبشار شیرآباد",
+    "name": "هفت آبشار شیرآباد",
+    "short_category": "آبشار",
+    "category": "آبشارهای گلستان",
+    "category_key": "waterfall",
+    "region": "خان‌ببین · رامیان · گلستان",
+    "elevation_m": 375,
+    "latitude": 36.946319,
+    "longitude": 55.044025,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشارهای جنگلی شیرآباد در گلستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مجموعه آبشارهای شیرآباد",
+      "آبشارهای هفت‌گانه شیرآباد",
+      "هفت آبشار خان‌ببین",
+      "Shirabad Seven Waterfalls"
+    ]
+  },
+  "primary_point": "shirabad-seven-waterfalls"
+}
