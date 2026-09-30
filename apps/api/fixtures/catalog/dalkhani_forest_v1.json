@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-dalkhani-forest-v1",
+  "weather_points": {
+    "dalkhani-forest": {
+      "name": "جنگل دالخانی",
+      "page_name": "جنگل دالخانی رامسر",
+      "short_label": "جنگل دالخانی",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌های مازندران",
+      "region": "جنوب‌شرقی رامسر · مازندران",
+      "aliases": [
+        "جنگل دالیخانی",
+        "دالخانی رامسر",
+        "دالان بهشت رامسر",
+        "جادهٔ جنگلی دالخانی",
+        "Dalkhani Forest",
+        "Dalikhani Forest"
+      ],
+      "identity_summary": "جنگل دالخانی، مشهور به دالان بهشت، در مسیر جادهٔ ییلاق جنت‌رودبار در جنوب‌شرقی رامسر.",
+      "seo": {
+        "title": "آب‌وهوای جنگل دالخانی رامسر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل دالخانی رامسر، معروف به دالان بهشت؛ دما، باد، بارش و وضعیت ساعتی جنگل‌های جنوب‌شرقی رامسر."
+      },
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4631781341",
+        "https://visitiran.ir/en/attraction/Dalikhani--Forest",
+        "https://letsgotrip.ir/dalkhani-forest-park/",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.82236&longitude=50.66065"
+      ],
+      "latitude": 36.82236,
+      "longitude": 50.66065,
+      "elevation_m": 803,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از OpenStreetMap/Mapcarta؛ ارتفاع ۸۰۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "dalkhani-forest",
+    "tile_name": "دالخانی",
+    "name": "جنگل دالخانی",
+    "short_category": "جنگل",
+    "category": "جنگل‌های مازندران",
+    "category_key": "forest",
+    "region": "جنوب‌شرقی رامسر · مازندران",
+    "elevation_m": 803,
+    "latitude": 36.82236,
+    "longitude": 50.66065,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای جنگل مه‌آلود دالخانی رامسر",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جنگل دالخانی رامسر",
+      "جنگل دالیخانی",
+      "دالان بهشت رامسر",
+      "Dalkhani Forest",
+      "Dalikhani Forest"
+    ]
+  },
+  "primary_point": "dalkhani-forest"
+}
