@@ -1,0 +1,73 @@
+{
+  "catalog_version": "hawatch-hasal-marsh-catalog-v1",
+  "weather_points": {
+    "hasal-marsh": {
+      "name": "مرداب هسل",
+      "page_name": "مرداب هسل چالوس",
+      "short_label": "مرداب هسل",
+      "place_type": "landmark",
+      "category_key": "lake",
+      "category": "تالاب‌ها و جاذبه‌های طبیعی مازندران",
+      "region": "سینوا و طلاجو · چالوس · مازندران",
+      "aliases": [
+        "تالاب کنیچال",
+        "کنیچال",
+        "کنّوچال",
+        "مرداب هسل چالوس",
+        "مشل",
+        "مشعل",
+        "Hasal Marsh",
+        "Hasel Marsh",
+        "Hesel Lagoon"
+      ],
+      "identity_summary": "مرداب فصلی هسل یا تالاب کنیچال در جنگل مشل، میان روستاهای سینوا و طلاجو در نزدیکی چالوس.",
+      "seo": {
+        "title": "آب‌وهوای مرداب هسل؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای مرداب هسل و تالاب کنیچال در نزدیکی چالوس؛ دما، باد، بارش و وضعیت ساعتی در جنگل مشل."
+      },
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://commons.wikimedia.org/wiki/Category:Hasal_Marsh",
+        "https://decovel.com/page/hesel-swamp",
+        "https://www.wikiloc.com/hiking-trails/mrdb-hsl-163264886",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.6121&longitude=51.3714"
+      ],
+      "latitude": 36.6121,
+      "longitude": 51.3714,
+      "elevation_m": 265,
+      "status": "provisional",
+      "elevation_source": "مختصات مرداب از Wikimedia Commons/نقطهٔ نقشه؛ ارتفاع ۲۶۵ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "hasal-marsh",
+    "tile_name": "مرداب هسل",
+    "name": "مرداب هسل",
+    "short_category": "مرداب",
+    "category": "تالاب‌ها و جاذبه‌های طبیعی مازندران",
+    "category_key": "lake",
+    "region": "سینوا و طلاجو · چالوس · مازندران",
+    "elevation_m": 265,
+    "latitude": 36.6121,
+    "longitude": 51.3714,
+    "image": "/images/home-scene.png",
+    "image_alt": "مرداب هسل در جنگل‌های چالوس",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مرداب هسل چالوس",
+      "تالاب کنیچال",
+      "Hasal Marsh",
+      "Hasel Marsh"
+    ]
+  },
+  "primary_point": "hasal-marsh"
+}
