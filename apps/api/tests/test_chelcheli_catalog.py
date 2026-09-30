@@ -18,7 +18,9 @@ def test_chelcheli_catalog_exposes_primary_peak_and_named_route_chain():
         "chelcheli-spring",
         "chelcheli",
     ]
-    assert route["timing_status"] == "pending"
+    assert route["timing_status"] == "estimated"
+    assert route["one_way_minutes"] == 360
+    assert route["timing"]["cumulative_minutes"]["chelcheli"] == 360
     assert route["evidence_tracks"] == [
         "tracks/chelcheli/chelcheli-cheh-ja-loop-primary.gpx"
     ]

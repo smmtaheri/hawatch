@@ -117,8 +117,31 @@
       ],
       "distance_km": 8.37,
       "ascent_m": 1539,
-      "timing_status": "pending",
-      "timing": null,
+      "one_way_minutes": 360,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "chelcheli-cheh-ja-loop-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151"
+        ],
+        "evidence_tracks": [
+          "tracks/chelcheli/chelcheli-cheh-ja-loop-primary.gpx"
+        ],
+        "cumulative_minutes": {
+          "chelcheli-cheh-ja-village": 0,
+          "chelcheli-spring": 75,
+          "chelcheli": 360
+        },
+        "notes": [
+          "ترک کامل از چه‌جا تا چلچلی timestamp ثبت‌شده دارد؛ زمان مسیر رفت تا قله از زمان سپری‌شدهٔ ترک و با گردکردن محافظه‌کارانه تعیین شده است.",
+          "مسیر رفت از کج‌کله و برگشت از عوض‌گودار است؛ فاصله و صعود فقط برای بخش یک‌طرفه تا قله محاسبه شده‌اند.",
+          "مسیر شیب‌دار و چالشی است و مقدار زمان estimated با عدم‌قطعیت ۹۰ دقیقه نمایش داده می‌شود."
+        ]
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
         "https://www.wikiloc.com/trails/hiking/iran/golestan/chaja"
