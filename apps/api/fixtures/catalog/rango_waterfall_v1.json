@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-rango-waterfall-v1",
+  "weather_points": {
+    "rango-waterfall": {
+      "name": "آبشار رنگو گرگان",
+      "page_name": "آب‌وهوای آبشار رنگو گرگان",
+      "short_label": "آبشار رنگو",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "توشن · گرگان · گلستان",
+      "aliases": [
+        "آبشار رنگو",
+        "آبشار رنگو گلستان",
+        "جنگل رنگو",
+        "Rango Waterfall",
+        "Rango Falls"
+      ],
+      "identity_summary": "آبشار رنگو در جنگل‌های جنوب گرگان و نزدیک روستای توشن؛ مقصدی شناخته‌شده برای پیمایش جنگلی در استان گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://irantripadviser.ir/attraction.php?id=146",
+        "https://fa.tripyar.com/iran/%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86/%DA%AF%D8%B1%DA%AF%D8%A7%D9%86/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%86%D8%B4%D9%85%D9%87-%D9%87%D8%A7-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%87%D8%A7/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B1%D9%86%DA%AF%D9%88-%DA%AF%D8%B1%DA%AF%D8%A7%D9%86.html",
+        "https://www.sarpoosh.com/tourism/touristattractions/rango-waterfall-10.html",
+        "https://www.wikiloc.com/hiking-trails/twshn-bh-chshmh-rngw-w-bshr-w-mmzdh-rngw-w-lngdrh-265451636",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.768563&longitude=54.421063"
+      ],
+      "latitude": 36.768563,
+      "longitude": 54.421063,
+      "elevation_m": 462,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ آبشار از نقشهٔ ایران تریپ ادوایزر و شرح دسترسی از روستای توشن؛ ارتفاع ۴۶۲ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار رنگو گرگان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار رنگو گرگان در جنگل‌های گلستان؛ دما، باد و بارش را برای برنامه‌ریزی پیمایش پاییزی ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "rango-waterfall",
+    "tile_name": "آبشار رنگو",
+    "name": "آبشار رنگو گرگان",
+    "short_category": "آبشار",
+    "category": "آبشارهای گلستان",
+    "category_key": "waterfall",
+    "region": "توشن · گرگان · گلستان",
+    "elevation_m": 462,
+    "latitude": 36.768563,
+    "longitude": 54.421063,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار رنگو در جنگل‌های جنوب گرگان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار رنگو",
+      "آبشار رنگو گلستان",
+      "جنگل رنگو",
+      "Rango Waterfall",
+      "Rango Falls"
+    ]
+  },
+  "primary_point": "rango-waterfall"
+}
