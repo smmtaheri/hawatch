@@ -1,0 +1,316 @@
+{
+  "catalog_version": "hawatch-khaled-nabi-kalaleh-v1",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": [
+        "khaled-nabi-site",
+        "khaled-nabi-historical-cemetery"
+      ],
+      "reason": "زیارتگاه/مجموعهٔ خالدنبی و گورستان تاریخی دو عارضهٔ مستقل و نام‌دارند؛ فاصلهٔ مستقیم آن‌ها حدود ۷۴۰ متر است و GPX پیمایش به مجموعهٔ اصلی ختم می‌شود، نه گورستان شرقی."
+    },
+    {
+      "slugs": [
+        "gechi-soo-pain-village",
+        "hezar-darreh-turkmen-sahra"
+      ],
+      "reason": "روستای گچی‌سو پایین سکونتگاه مبدأ است و هزاردره پهنهٔ طبیعیِ مسیر در ارتفاعات؛ فاصله و هویت آن‌ها مستقل است."
+    }
+  ],
+  "weather_points": {
+    "khaled-nabi-site": {
+      "name": "مجموعهٔ خالدنبی گلستان",
+      "page_name": "آب‌وهوای مجموعهٔ خالدنبی گلستان",
+      "short_label": "خالدنبی",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "خالدنبی و هزاردرهٔ گلستان",
+      "region": "خالدنبی · کلاله · گلستان",
+      "aliases": [
+        "خالد نبی",
+        "زیارتگاه خالدنبی",
+        "خالدنبی گلستان",
+        "Khaled Nabi",
+        "Khaled Nabi shrine"
+      ],
+      "identity_summary": "مجموعهٔ زیارتی و تاریخی خالدنبی در ارتفاعات کلالهٔ گلستان؛ مقصد اصلی بازدید از زیارتگاه و چشم‌انداز هزاردره.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W391715941",
+        "https://mapcarta.com/27040168",
+        "https://www.wikiloc.com/hiking-trails/iran-golestan-from-gechi-soo-to-khaled-nebi-yrn-glstn-gchy-sw-t-khldnby-12296588",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.74211&longitude=55.4117"
+      ],
+      "latitude": 37.74211,
+      "longitude": 55.4117,
+      "elevation_m": 671,
+      "status": "provisional",
+      "elevation_source": "مختصات مجموعه از Mapcarta/OSM؛ ارتفاع ۶۷۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای خالدنبی گلستان؛ پیش‌بینی دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای مجموعهٔ خالدنبی در ارتفاعات کلالهٔ گلستان؛ دما، باد و بارش را برای سفر ببینید."
+      }
+    },
+    "khaled-nabi-historical-cemetery": {
+      "name": "گورستان تاریخی خالدنبی",
+      "page_name": "آب‌وهوای گورستان تاریخی خالدنبی",
+      "short_label": "گورستان خالدنبی",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "خالدنبی و هزاردرهٔ گلستان",
+      "region": "خالدنبی · کلاله · گلستان",
+      "aliases": [
+        "قبرستان خالد نبی",
+        "گورستان خالد نبی",
+        "گورستان تاریخی خالدنبی",
+        "Khaled Nabi historical cemetery"
+      ],
+      "identity_summary": "گورستان تاریخی و سنگ‌افراشته‌های خالدنبی در شرق مجموعهٔ زیارتی؛ عارضه‌ای مستقل برای بازدید و پیش‌بینی هوا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4937295521",
+        "https://www.openstreetmap.org/node/4937295521",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.74305&longitude=55.42009"
+      ],
+      "latitude": 37.74305,
+      "longitude": 55.42009,
+      "elevation_m": 597,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از OSM/Mapcarta؛ ارتفاع ۵۹۷ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای گورستان تاریخی خالدنبی؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای گورستان تاریخی خالدنبی در کلالهٔ گلستان؛ دما، باد و بارش را برای بازدید ببینید."
+      }
+    },
+    "hezar-darreh-turkmen-sahra": {
+      "name": "هزاردرهٔ ترکمن‌صحرا",
+      "page_name": "آب‌وهوای هزاردرهٔ ترکمن‌صحرا",
+      "short_label": "هزاردره",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "خالدنبی و هزاردرهٔ گلستان",
+      "region": "خالدنبی · کلاله · گلستان",
+      "aliases": [
+        "هزار دره",
+        "هزاردره خالدنبی",
+        "هزاردره ترکمن صحرا",
+        "Hezar Darreh",
+        "Hezar Darreh Turkmen Sahra"
+      ],
+      "identity_summary": "پهنهٔ تپه‌ماهور و هزاردرهٔ پیرامون خالدنبی؛ مختصات این صفحه نقطهٔ نمایندهٔ میانیِ ترک پیادهٔ گچی‌سو تا خالدنبی است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://irantripadviser.ir/attraction.php?id=999",
+        "https://www.irangeotourism.blogfa.com/post/3",
+        "https://www.wikiloc.com/hiking-trails/iran-golestan-from-gechi-soo-to-khaled-nebi-yrn-glstn-gchy-sw-t-khldnby-12296588",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.728596&longitude=55.404186"
+      ],
+      "latitude": 37.728596,
+      "longitude": 55.404186,
+      "elevation_m": 493,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نماینده از میانهٔ هندسی ترک پیادهٔ گچی‌سو تا خالدنبی؛ ارتفاع ۴۹۳ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای هزاردرهٔ ترکمن‌صحرا؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای هزاردرهٔ ترکمن‌صحرا و ارتفاعات خالدنبی کلاله؛ دما، باد و بارش را برای طبیعت‌گردی ببینید."
+      }
+    },
+    "kalaleh-city": {
+      "name": "شهر کلاله گلستان",
+      "page_name": "آب‌وهوای شهر کلاله گلستان",
+      "short_label": "کلاله",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهرهای گلستان",
+      "region": "کلاله · گلستان",
+      "aliases": [
+        "کلاله",
+        "شهرستان کلاله",
+        "Kalaleh",
+        "Kalaleh city"
+      ],
+      "identity_summary": "شهر کلاله در شرق گلستان و پایگاه دسترسی زمینی به خالدنبی، هزاردره و روستاهای پیرامون.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12604702",
+        "https://en.wikipedia.org/wiki/Kalaleh",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.37567&longitude=55.4933"
+      ],
+      "latitude": 37.37567,
+      "longitude": 55.4933,
+      "elevation_m": 153,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز شهر از Mapcarta؛ ارتفاع ۱۵۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای شهر کلاله گلستان؛ پیش‌بینی دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای شهر کلاله و مسیر دسترسی به خالدنبی و هزاردرهٔ گلستان؛ دما، باد و بارش را ببینید."
+      }
+    },
+    "gechi-soo-pain-village": {
+      "name": "روستای گچی‌سو پایین گلستان",
+      "page_name": "آب‌وهوای روستای گچی‌سو پایین گلستان",
+      "short_label": "گچی‌سو پایین",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای خالدنبی و کلاله",
+      "region": "گچی‌سو · کلاله · گلستان",
+      "aliases": [
+        "گچی سو پایین",
+        "روستای گچی سو پایین",
+        "Gechi Soo-ye Pain",
+        "Gechi Soo village"
+      ],
+      "identity_summary": "روستای گچی‌سو پایین در کلالهٔ گلستان و مبدأ شناخته‌شدهٔ ترک پیادهٔ گچی‌سو تا مجموعهٔ خالدنبی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12426054",
+        "https://www.wikiloc.com/hiking-trails/iran-golestan-from-gechi-soo-to-khaled-nebi-yrn-glstn-gchy-sw-t-khldnby-12296588",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.70647&longitude=55.40758"
+      ],
+      "latitude": 37.70647,
+      "longitude": 55.40758,
+      "elevation_m": 342,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از Mapcarta؛ ارتفاع ۳۴۲ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای روستای گچی‌سو پایین؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای گچی‌سو پایین کلاله و مبدأ پیمایش خالدنبی؛ دما، باد و بارش را ببینید."
+      }
+    },
+    "gechi-soo-bala-village": {
+      "name": "روستای گچی‌سو بالا گلستان",
+      "page_name": "آب‌وهوای روستای گچی‌سو بالا گلستان",
+      "short_label": "گچی‌سو بالا",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای خالدنبی و کلاله",
+      "region": "گچی‌سو · کلاله · گلستان",
+      "aliases": [
+        "گچی سو بالا",
+        "روستای گچی سو بالا",
+        "Gechi Soo-ye Bala",
+        "Gechi Soo Bala"
+      ],
+      "identity_summary": "روستای گچی‌سو بالا در بخش تمران کلاله و سکونتگاه نزدیک به ارتفاعات خالدنبی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12425566",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.72304&longitude=55.438"
+      ],
+      "latitude": 37.72304,
+      "longitude": 55.438,
+      "elevation_m": 394,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از Mapcarta؛ ارتفاع ۳۹۴ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای روستای گچی‌سو بالا؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای گچی‌سو بالا در کلالهٔ گلستان و ارتفاعات خالدنبی؛ دما، باد و بارش را ببینید."
+      }
+    }
+  },
+  "routes": {
+    "gechi-soo-khaled-nabi": {
+      "slug": "gechi-soo-khaled-nabi",
+      "title": "گچی‌سو تا خالدنبی",
+      "subtitle": "پیمایش پیاده از روستای گچی‌سو پایین در تپه‌ماهورهای هزاردره تا مجموعهٔ خالدنبی",
+      "trail_label": "مسیر گچی‌سو–خالدنبی",
+      "origin": "روستای گچی‌سو پایین گلستان",
+      "target_label": "مجموعهٔ خالدنبی گلستان",
+      "region": "خالدنبی · کلاله · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gechi-soo-pain-village",
+        "hezar-darreh-turkmen-sahra",
+        "khaled-nabi-site"
+      ],
+      "distance_km": 5.7,
+      "ascent_m": 365,
+      "one_way_minutes": 125,
+      "default_start_minutes": 60,
+      "timing_status": "estimated",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/iran-golestan-from-gechi-soo-to-khaled-nebi-yrn-glstn-gchy-sw-t-khldnby-12296588",
+        "https://mapcarta.com/12426054",
+        "https://mapcarta.com/W391715941"
+      ],
+      "evidence_tracks": [
+        "tracks/khaled-nabi/gechi-soo-to-khaled-nabi-2015.gpx"
+      ],
+      "timing": {
+        "method": "wikiloc-recorded-track-v1",
+        "version": "gechi-soo-khaled-nabi-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/iran-golestan-from-gechi-soo-to-khaled-nebi-yrn-glstn-gchy-sw-t-khldnby-12296588",
+          "https://mapcarta.com/12426054",
+          "https://mapcarta.com/W391715941"
+        ],
+        "evidence_tracks": [
+          "tracks/khaled-nabi/gechi-soo-to-khaled-nabi-2015.gpx"
+        ],
+        "cumulative_minutes": {
+          "gechi-soo-pain-village": 0,
+          "hezar-darreh-turkmen-sahra": 64,
+          "khaled-nabi-site": 128
+        },
+        "notes": [
+          "ترک منبع برای فعالیت hiking، یک‌طرفه، حدود ۵٫۸ کیلومتر، صعود مثبت گزارش‌شدهٔ حدود ۴۸۲ متر و زمان ثبت‌شدهٔ ۲ ساعت و ۸ دقیقه دارد؛ برای Route مقدار فاصلهٔ ۵٫۷ کیلومتر، صعود هموارشدهٔ ۳۶۵ متر و زمان ثبت‌شدهٔ ۱۲۵ دقیقه از تحلیل محلیِ بخش منتهی به مقصد استفاده شده است.",
+          "مسیر خودرو از کلاله تا گچی‌سو یا خالدنبی در Route پیاده و ETA محاسبه نشده است.",
+          "هزاردره یک پهنهٔ طبیعیِ واقعی در مسیر است؛ مختصات آن به‌عنوان نقطهٔ نمایندهٔ میانی از هندسهٔ همین ترک ثبت شده و عارضهٔ ساختگی نیست."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "khaled-nabi-site",
+    "tile_name": "خالدنبی",
+    "name": "مجموعهٔ خالدنبی گلستان",
+    "short_category": "خالدنبی",
+    "category": "خالدنبی و هزاردرهٔ گلستان",
+    "category_key": "landmark",
+    "region": "خالدنبی · کلاله · گلستان",
+    "elevation_m": 671,
+    "latitude": 37.74211,
+    "longitude": 55.4117,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشم‌انداز مجموعهٔ خالدنبی در ارتفاعات گلستان",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "خالدنبی گلستان",
+      "زیارتگاه خالدنبی",
+      "Khaled Nabi"
+    ]
+  },
+  "primary_point": "khaled-nabi-site"
+}
