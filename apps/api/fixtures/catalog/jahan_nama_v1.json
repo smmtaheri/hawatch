@@ -1,0 +1,288 @@
+{
+  "catalog_version": "hawatch-jahan-nama-derazno-v1",
+  "weather_points": {
+    "jahan-nama-protected-area": {
+      "name": "منطقهٔ حفاظت‌شدهٔ جهان‌نما",
+      "page_name": "آب‌وهوای منطقهٔ حفاظت‌شدهٔ جهان‌نما",
+      "short_label": "منطقهٔ جهان‌نما",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌ها و ییلاق‌های گلستان",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "aliases": [
+        "جهان‌نما گلستان",
+        "منطقه حفاظت شده جهان نما",
+        "Jahan Nama Protected Area",
+        "Jahan Nama Golestan"
+      ],
+      "identity_summary": "منطقهٔ حفاظت‌شدهٔ جهان‌نما در ارتفاعات جنوب کردکوی؛ پهنه‌ای جنگلی و ییلاقی در غرب گلستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://whc.unesco.org/document/166337",
+        "https://www.researchgate.net/publication/26541998_Plants_of_jahan_nama_protected_area_golestan_province_n_iran",
+        "https://www.irandeserts.com/article/%D9%85%D9%86%D8%B7%D9%82%D9%87-%D8%AD%D9%81%D8%A7%D8%B8%D8%AA-%D8%B4%D8%AF%D9%87-%D8%AC%D9%87%D8%A7%D9%86-%D9%86%D9%85%D8%A7-%D8%8C-%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86/",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.66528&longitude=54.40153"
+      ],
+      "latitude": 36.66528,
+      "longitude": 54.40153,
+      "elevation_m": 2117,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نمایندهٔ پهنهٔ جهان‌نما از مختصات بخش جهان‌نما در پروندهٔ یونسکو؛ ارتفاع ۲۱۱۷ متر از Open-Meteo GLO-90 در مختصات canonical.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای منطقهٔ حفاظت‌شدهٔ جهان‌نما؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای منطقهٔ حفاظت‌شدهٔ جهان‌نما در ارتفاعات گلستان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    },
+    "jahan-nama-village": {
+      "name": "روستای جهان‌نما گلستان",
+      "page_name": "آب‌وهوای روستای جهان‌نما گلستان",
+      "short_label": "روستای جهان‌نما",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گلستان",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "aliases": [
+        "جهان نما",
+        "روستای جهان نما",
+        "Jahan Nama Village",
+        "Jahan Nama Golestan Village"
+      ],
+      "identity_summary": "روستای جهان‌نما در ارتفاعات کردکوی و یکی از سکونتگاه‌های شناخته‌شدهٔ منطقهٔ حفاظت‌شدهٔ جهان‌نما.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12424624",
+        "https://en.wikipedia.org/wiki/Jahan_Nama,_Golestan",
+        "https://www.openstreetmap.org/node/5830546415",
+        "https://www.wikiloc.com/hiking-trails/drznw-bh-jhn-nm-w-tkht-myrz-6528740",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.67906&longitude=54.28887"
+      ],
+      "latitude": 36.67906,
+      "longitude": 54.28887,
+      "elevation_m": 1757,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از OSM/Mapcarta و تطبیق با ترک درازنو–جهان‌نما؛ ارتفاع ۱۷۵۷ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای جهان‌نما گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای جهان‌نما در ارتفاعات کردکوی گلستان؛ دما، باد و بارش را برای سفر پاییزی ببینید."
+      }
+    },
+    "derazno-village": {
+      "name": "روستای درازنو گلستان",
+      "page_name": "آب‌وهوای روستای درازنو گلستان",
+      "short_label": "روستای درازنو",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گلستان",
+      "region": "درازنو · کردکوی · گلستان",
+      "aliases": [
+        "درازنو",
+        "روستای درازنو",
+        "Derazno Village",
+        "Deraz-e Now"
+      ],
+      "identity_summary": "روستای درازنو در ارتفاعات کردکوی؛ مبدأ شناخته‌شدهٔ پیمایش پیاده به جهان‌نما.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12424604",
+        "https://www.wikiloc.com/hiking-trails/drznw-bh-jhn-nm-w-tkht-myrz-6528740",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.66861&longitude=54.14809"
+      ],
+      "latitude": 36.66861,
+      "longitude": 54.14809,
+      "elevation_m": 2290,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از Mapcarta و نقطهٔ آغاز ترک Wikiloc؛ ارتفاع ۲۲۹۰ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای درازنو گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای درازنو کردکوی در ارتفاعات گلستان؛ دما، باد و بارش را برای پیمایش جهان‌نما ببینید."
+      }
+    },
+    "barankoh-waterfall": {
+      "name": "آبشار باران‌کوه گلستان",
+      "page_name": "آب‌وهوای آبشار باران‌کوه گلستان",
+      "short_label": "آبشار باران‌کوه",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "aliases": [
+        "باران کوه",
+        "آبشار باران کوه",
+        "Barankoh Waterfall",
+        "Baran Kuh Waterfall"
+      ],
+      "identity_summary": "آبشار باران‌کوه در جنگل‌های پیرامون جهان‌نما و جنوب گرگان؛ عارضه‌ای مستقل برای طبیعت‌گردی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4957477838",
+        "https://www.openstreetmap.org/node/4957477838",
+        "https://mapcarta.com/N5830750809",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.71663&longitude=54.3625"
+      ],
+      "latitude": 36.71663,
+      "longitude": 54.3625,
+      "elevation_m": 747,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از OSM/Mapcarta؛ ارتفاع ۷۴۷ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار باران‌کوه گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار باران‌کوه در جنگل‌های گلستان؛ دما، باد و بارش را برای برنامه‌ریزی طبیعت‌گردی ببینید."
+      }
+    },
+    "behesht-baran-waterfall": {
+      "name": "آبشار بهشت باران گلستان",
+      "page_name": "آب‌وهوای آبشار بهشت باران گلستان",
+      "short_label": "آبشار بهشت باران",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای گلستان",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "aliases": [
+        "بهشت باران",
+        "آبشار بهشت‌باران",
+        "Behesht Baran Waterfall"
+      ],
+      "identity_summary": "آبشار بهشت باران در جنگل‌های نزدیک روستای جهان‌نما و مسیرهای طبیعت‌گردی این منطقه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N6813475186",
+        "https://www.openstreetmap.org/node/6813475186",
+        "https://www.wikiloc.com/hiking-trails/behest-baran-waterfall-179498237",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.71431&longitude=54.33963"
+      ],
+      "latitude": 36.71431,
+      "longitude": 54.33963,
+      "elevation_m": 917,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از OSM/Mapcarta؛ ارتفاع ۹۱۷ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای آبشار بهشت باران گلستان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار بهشت باران نزدیک جهان‌نما؛ دما، باد و بارش را برای طبیعت‌گردی ببینید."
+      }
+    },
+    "takht-mirza-shelter": {
+      "name": "پناهگاه تخت‌میرزا",
+      "page_name": "پناهگاه تخت‌میرزا در مسیر جهان‌نما",
+      "short_label": "تخت‌میرزا",
+      "place_type": "shelter",
+      "category_key": "landmark",
+      "category": "نقاط مسیر جهان‌نما",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "aliases": [
+        "تخت میرزا",
+        "پناهگاه تخت میرزا",
+        "Takht Mirza Shelter"
+      ],
+      "identity_summary": "پناهگاه تخت‌میرزا، نقطهٔ پایانی بخش پیادهٔ ترک درازنو تا جهان‌نما؛ ادامهٔ ثبت‌شدهٔ مسیر از اینجا خودرویی است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/drznw-bh-jhn-nm-w-tkht-myrz-6528740",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.721154&longitude=54.314083"
+      ],
+      "latitude": 36.721154,
+      "longitude": 54.314083,
+      "elevation_m": 957,
+      "status": "provisional",
+      "elevation_source": "مختصات نقطهٔ پایان بخش پیمایش از ترک Wikiloc؛ ارتفاع ۹۵۷ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "derazno-jahan-nama-takht-mirza": {
+      "slug": "derazno-jahan-nama-takht-mirza",
+      "title": "درازنو تا جهان‌نما و تخت‌میرزا",
+      "subtitle": "پیمایش ارتفاعات درازنو، روستای جهان‌نما و پناهگاه تخت‌میرزا",
+      "trail_label": "مسیر درازنو–جهان‌نما–تخت‌میرزا",
+      "origin": "روستای درازنو گلستان",
+      "target_label": "پناهگاه تخت‌میرزا",
+      "region": "جهان‌نما · کردکوی · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "derazno-village",
+        "jahan-nama-village",
+        "takht-mirza-shelter"
+      ],
+      "distance_km": 27.4,
+      "ascent_m": 627,
+      "one_way_minutes": 600,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+wikiloc-source-report-v1",
+        "version": "derazno-jahan-nama-takht-mirza-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drznw-bh-jhn-nm-w-tkht-myrz-6528740",
+          "https://www.wikiloc.com/trails/hiking/iran/golestan/deraz-e-now",
+          "https://mapcarta.com/12424624",
+          "https://mapcarta.com/12424604"
+        ],
+        "evidence_tracks": [
+          "tracks/jahan-nama/jahan-nama-derazno-to-takht-mirza-2014.gpx"
+        ],
+        "cumulative_minutes": {
+          "derazno-village": 0,
+          "jahan-nama-village": 330,
+          "takht-mirza-shelter": 600
+        },
+        "notes": [
+          "ترک Wikiloc از ارتفاعات درازنو تا جهان‌نما و تخت‌میرزا ۱۷٫۰۳ مایل (حدود ۲۷٫۴ کیلومتر) گزارش شده است؛ زمان اینجا برآورد پیمایش فعال یک‌طرفه است.",
+          "ادامهٔ ثبت‌شدهٔ ترک از تخت‌میرزا با خودرو به محیط‌بانی و شموشک انجام می‌شود و در Route پیاده و ETA وارد نشده است.",
+          "روستای جهان‌نما عارضهٔ واقعی میانی و نقطهٔ قابل‌شناسایی مسیر است؛ زمان کل با توجه به گزارش برنامهٔ دو روزه و اختلاف شرایط ارتفاعی با عدم‌قطعیت زیاد ارائه شده است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": [],
+  "point": {
+    "slug": "jahan-nama-village",
+    "tile_name": "روستای جهان‌نما",
+    "name": "روستای جهان‌نما گلستان",
+    "short_category": "روستا",
+    "category": "روستاهای گلستان",
+    "category_key": "village",
+    "region": "جهان‌نما · کردکوی · گلستان",
+    "elevation_m": 1757,
+    "latitude": 36.67906,
+    "longitude": 54.28887,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشم‌انداز روستای جهان‌نما در ارتفاعات گلستان",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "روستای جهان‌نما",
+      "جهان نما گلستان",
+      "Jahan Nama Village"
+    ]
+  },
+  "primary_point": "jahan-nama-village"
+}
