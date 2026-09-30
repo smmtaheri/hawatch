@@ -1,0 +1,161 @@
+{
+  "catalog_version": "hawatch-chelcheli-catalog-v1",
+  "weather_points": {
+    "chelcheli-cheh-ja-village": {
+      "name": "روستای چه‌جا؛ مبدأ مسیر چلچلی",
+      "page_name": "روستای چه‌جا؛ مبدأ مسیر قلهٔ چلچلی",
+      "short_label": "روستای چه‌جا",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "قله‌ها و مسیرهای کوهستانی گلستان",
+      "region": "دهنهٔ محمدآباد · فاضل‌آباد · گلستان",
+      "aliases": [
+        "چه‌جا",
+        "چه جا",
+        "روستای چه جا فاضل آباد",
+        "روستای ییلاقی چه‌جا",
+        "Cheh Ja",
+        "Cheh Jā"
+      ],
+      "identity_summary": "روستای ییلاقی چه‌جا در دهنهٔ محمدآباد فاضل‌آباد؛ مبدأ ثبت‌شدهٔ مسیر صعود قلهٔ چلچلی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.694199&longitude=54.782241"
+      ],
+      "latitude": 36.694199,
+      "longitude": 54.782241,
+      "elevation_m": 1560,
+      "status": "provisional",
+      "elevation_source": "Waypoint «شروع برنامه» در ترک کامل صعود چلچلی؛ ارتفاع GPX حدود ۱۵۶۰ متر و مقدار canonical تا کنترل DEM/Open-Meteo provisional است.",
+      "climate": "forest_fog"
+    },
+    "chelcheli-spring": {
+      "name": "چشمهٔ مسیر چلچلی",
+      "page_name": "چشمهٔ مسیر روستای چه‌جا تا چلچلی",
+      "short_label": "چشمهٔ چلچلی",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "قله‌ها و مسیرهای کوهستانی گلستان",
+      "region": "دهنهٔ محمدآباد · فاضل‌آباد · گلستان",
+      "aliases": [
+        "چشمه چلچلی",
+        "چشمهٔ چه‌جا",
+        "چشمه مسیر قله چلچلی",
+        "Chelcheli trail spring"
+      ],
+      "identity_summary": "تنها منبع آب نام‌گذاری‌شده در بخش رفت مسیر چه‌جا تا قلهٔ چلچلی، پیش از دشت و یال قله.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.700098&longitude=54.761779"
+      ],
+      "latitude": 36.700098,
+      "longitude": 54.761779,
+      "elevation_m": 2067,
+      "status": "provisional",
+      "elevation_source": "Waypoint «چشمه» در ترک کامل چلچلی حدود ۱۹۶۶ متر ثبت شده است؛ مقدار canonical برابر ۲۰۶۷ متر بر اساس GLO-90 DEM/Open-Meteo در مختصات عارضه انتخاب شده و اختلاف با ترک مرجع به دلیل دقت waypoint است.",
+      "climate": "forest_fog"
+    },
+    "chelcheli": {
+      "name": "قلهٔ چلچلی",
+      "page_name": "قلهٔ چلچلی فاضل‌آباد گلستان",
+      "short_label": "قلهٔ چلچلی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌ها و مسیرهای کوهستانی گلستان",
+      "region": "دهنهٔ محمدآباد · فاضل‌آباد · گلستان",
+      "aliases": [
+        "چلچلی",
+        "قله چلچلی",
+        "چلچلی فاضل‌آباد",
+        "قله چلچلی گلستان",
+        "Chelcheli Peak",
+        "Chel Cheli"
+      ],
+      "identity_summary": "قلهٔ چلچلی با ارتفاع تقریبی ۳۱۰۵ متر در دهنهٔ محمدآباد فاضل‌آباد؛ قله‌ای جنگلی و پرشیب با مسیر شناخته‌شده از روستای چه‌جا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
+        "https://www.wikiloc.com/hiking-trails/qlh-chlchly-glstn-176321589",
+        "https://www.wikiloc.com/trails/hiking/iran/golestan/chaja",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.69971&longitude=54.72543"
+      ],
+      "latitude": 36.69971,
+      "longitude": 54.72543,
+      "elevation_m": 3105,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار «قله چلچلی» در ترک کامل صعود؛ ارتفاع GPX حدود ۳۱۰۵ متر و منابع مسیر حدود ۳۱۲۰ متر ذکر می‌کنند؛ مقدار canonical تا کنترل DEM/Open-Meteo provisional است.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "chelcheli-cheh-ja-loop": {
+      "slug": "chelcheli-cheh-ja-loop",
+      "title": "روستای چه‌جا تا قلهٔ چلچلی",
+      "subtitle": "مسیر رفت از کج‌کله و برگشت از عوض‌گودار",
+      "trail_label": "مسیر چلچلی از چه‌جا",
+      "origin": "روستای چه‌جا",
+      "target_label": "قلهٔ چلچلی",
+      "region": "دهنهٔ محمدآباد · فاضل‌آباد · گلستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "chelcheli-cheh-ja-village",
+        "chelcheli-spring",
+        "chelcheli"
+      ],
+      "distance_km": 8.37,
+      "ascent_m": 1539,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
+        "https://www.wikiloc.com/trails/hiking/iran/golestan/chaja"
+      ],
+      "evidence_tracks": [
+        "tracks/chelcheli/chelcheli-cheh-ja-loop-primary.gpx"
+      ],
+      "public_point_notes": {
+        "chelcheli-cheh-ja-village": "مبدأ مسیر داخل بافت روستای چه‌جا نگه داشته شده و صفحهٔ مستقل آن noindex است.",
+        "chelcheli-spring": "چشمهٔ واقعی و نام‌گذاری‌شدهٔ ترک به‌عنوان عارضهٔ میانی مسیر ثبت شده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "chelcheli",
+    "tile_name": "چلچلی",
+    "name": "قلهٔ چلچلی",
+    "short_category": "قله",
+    "category": "قله‌ها و مسیرهای کوهستانی گلستان",
+    "category_key": "mountain",
+    "region": "دهنهٔ محمدآباد · فاضل‌آباد · گلستان",
+    "elevation_m": 3105,
+    "latitude": 36.69971,
+    "longitude": 54.72543,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ چلچلی فاضل‌آباد گلستان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "چلچلی",
+      "قله چلچلی",
+      "چلچلی فاضل‌آباد",
+      "Chelcheli Peak"
+    ]
+  },
+  "primary_point": "chelcheli"
+}
