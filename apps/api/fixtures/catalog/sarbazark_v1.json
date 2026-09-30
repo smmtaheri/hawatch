@@ -29,7 +29,7 @@
     "chin-kalagh-fatehan-trailhead",
     "chin-kalagh",
     "palangchal",
-    "tochal-ashtargardan-pass"
+    "ashtargardan-pass"
   ],
   "routes": {
     "chin_kalagh_to_sarbazark": {
@@ -46,7 +46,7 @@
         "chin-kalagh-fatehan-trailhead",
         "chin-kalagh",
         "palangchal",
-        "tochal-ashtargardan-pass",
+        "ashtargardan-pass",
         "sarbazark"
       ],
       "distance_km": 13.14,
