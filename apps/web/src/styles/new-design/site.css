@@ -742,11 +742,11 @@ dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(
 
 /* Keep the point summary compact and aligned with the mobile day strip. */
 @media(max-width:767px){
- .point-page .hero{min-height:116px;margin-bottom:8px}
+ .point-page .hero{min-height:132px;margin-bottom:8px}
 
- .point-page .summary-weather{left:26px;top:8px;gap:10px}
+ .point-page .summary-weather{left:26px;top:46px;gap:10px}
 
- .point-page .summary p{left:0;right:auto;bottom:0;text-align:left;max-width:48%}
+ .point-page .summary p{left:0;right:auto;top:96px;bottom:auto;text-align:left;max-width:48%}
 
  .point-page .content-grid{gap:16px}
 }
