@@ -21,4 +21,12 @@ until "${compose[@]}" build qa-api qa-web; do
   sleep 5
 done
 "${compose[@]}" up -d --no-build --force-recreate qa-api qa-web qa-gateway
+for service in qa-api qa-web qa-gateway; do
+  "${compose[@]}" ps --status running --services | grep -Fxq "$service" || \
+    fail "QA service $service did not reach running state; inspect compose logs."
+done
+qa_port="$(awk -F= '$1 == "HAWATCH_QA_PORT" {sub(/^[^=]*=/, ""); print; exit}' "$QA_ENV" | tr -d '[:space:]')"
+qa_port="${qa_port:-5050}"
+curl --fail --silent --show-error --max-time 10 "http://127.0.0.1:${qa_port}/healthz" >/dev/null || \
+  fail "QA gateway on port ${qa_port} is not responding to /healthz."
 "${compose[@]}" ps
