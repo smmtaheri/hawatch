@@ -36,11 +36,14 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     selectPeriod,
     reload,
   } = usePlaceForecast({ kind, slug });
-  usePageTitle(data?.subject.name, {
-    title: data?.subject.seo_title,
-    description: data?.subject.seo_description,
+  // Keep the previous frame visible while a sibling point loads, but never
+  // publish that frame's SEO metadata for the new URL.
+  const seoSubject = data?.subject.slug === slug ? data.subject : undefined;
+  usePageTitle(seoSubject?.name, {
+    title: seoSubject?.seo_title,
+    description: seoSubject?.seo_description,
     robots:
-      status === "missing" || data?.subject.seo_indexable === false
+      status === "missing" || seoSubject?.seo_indexable === false
         ? "noindex,follow"
         : undefined,
     canonical: status === "missing" ? false : undefined,

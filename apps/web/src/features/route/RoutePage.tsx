@@ -107,9 +107,12 @@ export function RoutePage() {
       },
     };
   }, [bundle, displaySpeed, minutes, period, selected]);
-  usePageTitle(frame?.route.title, {
-    title: frame?.route.seo_title,
-    description: frame?.route.seo_description,
+  // Keep the previous frame visible while a sibling route loads, but never
+  // publish that frame's SEO metadata for the new URL.
+  const seoRoute = frame?.route.slug === slug ? frame.route : undefined;
+  usePageTitle(seoRoute?.title, {
+    title: seoRoute?.seo_title,
+    description: seoRoute?.seo_description,
     robots: status === "missing" ? "noindex,follow" : undefined,
     canonical: status === "missing" ? false : undefined,
   });
