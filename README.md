@@ -88,6 +88,10 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 سناریوی کامل backup، به‌روزرسانی backup و restore اضطراری روی سرور جدید در
 [`docs/backup-restore.md`](docs/backup-restore.md) مستند شده است.
 
+## QA طراحی جدید
+
+راهنمای نسخهٔ مستقل برنچ `new-design` روی پورت ۵۰۵۰، فرمان نصب‌پذیر `deploy-hawatch` و HTTPS اختیاری در [docs/new-design-deployment.md](docs/new-design-deployment.md) است. گزارش پیاده‌سازی و بررسی محلی در [docs/new-design-qa.md](docs/new-design-qa.md) نگهداری می‌شود.
+
 ## استقرار سریع روی سرور
 
 برای نصب پیش‌نیازها، clone، ساخت امن `.env`، اجرای Compose سبک و health check از اسکریپت زیر استفاده کنید:

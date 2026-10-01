@@ -1,0 +1,67 @@
+name: hawatch-new-design
+
+# Three QA services only. The external network reaches the existing PostGIS.
+# No database container, scheduler, maintenance, seed or migration entrypoint.
+services:
+  qa-api:
+    image: hawatch-new-design-api:${HAWATCH_QA_IMAGE_TAG:-latest}
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    env_file:
+      - ${HAWATCH_PRODUCTION_ENV_FILE:?Set absolute production .env path}
+    environment:
+      DJANGO_SETTINGS_MODULE: hawatch.config.settings.qa
+      DJANGO_ALLOWED_HOSTS: ${HAWATCH_QA_ALLOWED_HOSTS:?Set QA IP/domain},qa-api,localhost,127.0.0.1
+      HAWATCH_QA_ORIGIN: ${HAWATCH_QA_ORIGIN:?Set public QA origin}
+      HAWATCH_PUBLIC_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
+      POSTGRES_HOST: ${HAWATCH_PRODUCTION_DB_HOST:-postgres}
+      POSTGRES_PORT: "5432"
+      DEMO_DATA_ENABLED: "false"
+      HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: "false"
+      HAWATCH_SERVICE_NAME: hawatch-qa-api
+      HAWATCH_ENVIRONMENT: qa
+      HAWATCH_LOG_FILE: /var/log/hawatch/qa-api.jsonl
+      METRICS_REQUIRE_AUTH: "true"
+    entrypoint: ["gunicorn"]
+    command: ["hawatch.config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1", "--threads", "2", "--timeout", "60", "--access-logfile", "-"]
+    networks: [qa, production-db]
+    volumes: ["qa-logs:/var/log/hawatch"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/ready/', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+    logging: &qa-logging
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+    restart: unless-stopped
+  qa-web:
+    image: hawatch-new-design-web:${HAWATCH_QA_IMAGE_TAG:-latest}
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile
+      args:
+        VITE_API_BASE_URL: /api/v1
+        VITE_QA_PREVIEW: "true"
+        VITE_PUBLIC_SITE_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
+    networks: [qa]
+    logging: *qa-logging
+    restart: unless-stopped
+  qa-gateway:
+    image: nginx:1.27-alpine
+    ports: ["${HAWATCH_QA_BIND_IP:-0.0.0.0}:${HAWATCH_QA_PORT:-5050}:80"]
+    volumes: ["../nginx/new-design.conf:/etc/nginx/nginx.conf:ro"]
+    depends_on:
+      qa-api: {condition: service_healthy}
+      qa-web: {condition: service_started}
+    networks: [qa]
+    logging: *qa-logging
+    restart: unless-stopped
+networks:
+  qa: {}
+  production-db:
+    external: true
+    name: ${HAWATCH_PRODUCTION_NETWORK:-hawatch_default}
+volumes:
+  qa-logs: {}

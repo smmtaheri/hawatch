@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+# Install this wrapper manually. Its invocation is the deploy authorization.
+# Production always runs the main checkout's own deploy.sh. QA has its own
+# checkout, images, project and gateway. Push alone has no deployment hook.
+LOCAL_DIR="${HAWATCH_LOCAL_DIR:-/home/nobitex/Desktop/Tasks/Nobitex/hawatch}"
+SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
+PRODUCTION_DIR="${HAWATCH_SERVER_DIR:-/root/hawatch}"
+QA_DIR="${HAWATCH_QA_DIR:-/root/hawatch-new-design}"
+QA_ENV="${HAWATCH_QA_ENV_FILE:-/root/hawatch-new-design.qa.env}"
+SERVER_IP="${HAWATCH_SERVER_IP:-202.133.89.120}"
+PUBLIC_HOST="${HAWATCH_PUBLIC_HOST:-hawatch.ir}"
+fail() { printf '[deploy-hawatch] %s\n' "$*" >&2; exit 1; }
+for path in "$LOCAL_DIR" "$PRODUCTION_DIR" "$QA_DIR" "$QA_ENV"; do
+  [[ "$path" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail "Invalid path."
+done
+[[ "$PRODUCTION_DIR" != "$QA_DIR" ]] || fail "Production and QA checkouts must differ."
+for host in "$SSH_HOST" "$SERVER_IP" "$PUBLIC_HOST"; do
+  [[ "$host" =~ ^[A-Za-z0-9._-]+$ && "$host" != -* ]] || fail "Invalid host."
+done
+[[ "$(git -C "$LOCAL_DIR" remote get-url origin)" == git@github.com:smmtaheri/hawatch.git ]] || fail "Unexpected local remote."
+branch="$(git -C "$LOCAL_DIR" branch --show-current)"
+case "$branch" in
+ main) git -C "$LOCAL_DIR" push origin main ;;
+ new-design) : ;; # Deploy production's published origin/main; never push it from QA.
+ *) fail "Run from main or new-design." ;;
+esac
+git -C "$LOCAL_DIR" show-ref --verify --quiet refs/heads/new-design || fail "Local new-design branch is missing."
+git -C "$LOCAL_DIR" push origin new-design
+# Pass validated arguments to a fixed remote script rather than interpolate code.
+ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$QA_DIR" "$QA_ENV" "$PUBLIC_HOST" "$SERVER_IP" <<'REMOTE'
+set -Eeuo pipefail
+production_dir="$1"; qa_dir="$2"; qa_env="$3"; public_host="$4"; server_ip="$5"
+[[ "$(git -C "$production_dir" branch --show-current)" == main ]] || { echo 'Production must remain on main.' >&2; exit 1; }
+[[ "$(git -C "$production_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected production remote.' >&2; exit 1; }
+[[ -z "$(git -C "$production_dir" status --porcelain)" ]] || { echo 'Production checkout is dirty; inspect it manually.' >&2; exit 1; }
+[[ "$production_dir" != "$qa_dir" && -f "$qa_env" ]] || { echo 'Prepare the separate QA environment file first.' >&2; exit 1; }
+if [[ ! -e "$qa_dir" ]]; then
+ git clone --branch new-design --single-branch "$(git -C "$production_dir" remote get-url origin)" "$qa_dir"
+fi
+[[ "$(git -C "$qa_dir" branch --show-current)" == new-design && -z "$(git -C "$qa_dir" status --porcelain)" ]] || { echo 'QA checkout must be clean and on new-design.' >&2; exit 1; }
+[[ "$(git -C "$qa_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected QA remote.' >&2; exit 1; }
+git -C "$production_dir" pull --ff-only origin main
+cd "$production_dir"
+HAWATCH_BRANCH=main HAWATCH_DIR="$production_dir" PUBLIC_HOST="$public_host" \
+ DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
+ RUN_INITIAL_INGEST=0 ./scripts/deploy.sh
+HAWATCH_QA_DIR="$qa_dir" HAWATCH_QA_ENV_FILE="$qa_env" bash "$qa_dir/scripts/deploy-new-design.sh"
+REMOTE
