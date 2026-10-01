@@ -90,7 +90,12 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 
 ## محیط Stage
 
-راهنمای محیط مستقل برنچ `stage` روی پورت ۵۰۵۰، استفاده از دیتابیس واقعی، روشن/خاموش‌کردن اختیاری و فرمان `deploy-hawatch` در [docs/stage-deployment.md](docs/stage-deployment.md) است. گزارش طراحی و بررسی محلی در [docs/new-design-qa.md](docs/new-design-qa.md) نگهداری می‌شود.
+طراحی جدید برنچ `stage` در `main` ادغام شده و از این پس سایت اصلی روی همان طراحی
+اجرا می‌شود. فرمان `deploy-hawatch` فقط checkout production روی پورت ۸۰ را
+به‌روزرسانی می‌کند؛ دیگر stage را build، push یا اجرا نمی‌کند. راهنمای خاموش‌کردن
+منابع باقی‌ماندهٔ stage در [docs/stage-deployment.md](docs/stage-deployment.md)
+آمده است. گزارش طراحی و بررسی محلی در [docs/new-design-qa.md](docs/new-design-qa.md)
+نگهداری می‌شود.
 
 ## استقرار سریع روی سرور
 
