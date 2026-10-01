@@ -112,7 +112,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       </strong>
                     </div>
                   </div>
-                  <p className="day-summary-line">
+                  <p
+                    className={`day-summary-line ${summary.severity === "critical" ? "risk-red" : summary.severity === "change" ? "risk-yellow" : ""}`}
+                  >
                     {dayLabel} ·{" "}
                     <span>{summary.condition}</span>
                     {summary.wind_alert ? (

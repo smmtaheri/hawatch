@@ -46,6 +46,7 @@ export function HourlyForecast({
         {hours.map((hour) => {
           const key = hour.forecast_at ?? hour.time;
           const open = expanded === key;
+          const specialistHazard = hour.wind_alert?.severity === "critical";
           return (
             <article
               key={key}
@@ -77,7 +78,7 @@ export function HourlyForecast({
                 <DesignIcon name="wind" />
               </div>
               <button
-                className="details-trigger"
+                className={`details-trigger ${specialistHazard ? "risk-red" : ""}`}
                 type="button"
                 aria-expanded={open}
                 aria-controls={id}
