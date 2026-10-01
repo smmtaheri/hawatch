@@ -92,7 +92,16 @@
                 {% endif %}
               {% endif %}
             {% elif page.kind == "routes" %}
-              <section aria-label="مسیرهای هواچ"><ul>{% for route in page.routes %}<li><a href="{{ route.href }}">{{ route.title }}</a> — {{ route.description }}</li>{% endfor %}</ul></section>
+              <section aria-labelledby="seo-routes-list">
+                <h2 id="seo-routes-list">مسیرهای هواچ</h2>
+                <ul>{% for route in page.routes %}<li><a href="{{ route.href }}">{{ route.title }}</a> — {{ route.description }}</li>{% endfor %}</ul>
+              </section>
+              {% if page.previous_routes_href or page.next_routes_href %}
+                <nav aria-label="ادامهٔ فهرست مسیرها">
+                  {% if page.previous_routes_href %}<a href="{{ page.previous_routes_href }}">مسیرهای قبلی</a>{% endif %}
+                  {% if page.next_routes_href %}<a href="{{ page.next_routes_href }}">مسیرهای بیشتر</a>{% endif %}
+                </nav>
+              {% endif %}
             {% elif page.kind == "point" %}
               <dl>
                 <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>

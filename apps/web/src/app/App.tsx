@@ -42,6 +42,9 @@ export function AppRoutes() {
         <Route path="/destinations/page/:page" element={<DestinationsPage />} />
         <Route path="/destinations/page/:page/" element={<DestinationsPage />} />
         <Route path="/routes" element={<RoutesPage />} />
+        <Route path="/routes/" element={<RoutesPage />} />
+        <Route path="/routes/page/:page" element={<RoutesPage />} />
+        <Route path="/routes/page/:page/" element={<RoutesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account/plans" element={<SubscriptionPlansPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />

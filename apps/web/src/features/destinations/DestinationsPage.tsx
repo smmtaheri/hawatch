@@ -48,13 +48,15 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
     setLoadingMore(false);
     moreBusy.current = false;
     const promise = routeList
-      ? api.routes(search)
+      ? api.routes(initialPage, search)
       : api.destinations(initialPage, search);
     void promise
       .then((payload) => {
         if (id !== generation.current) return;
-        if ("routes" in payload) setRoutes(payload.routes);
-        else {
+        if ("routes" in payload) {
+          setRoutes(payload.routes);
+          setNext(payload.pagination?.next_page ?? null);
+        } else {
           setPoints(payload.destinations);
           setNext(payload.pagination.next_page);
         }
@@ -74,15 +76,27 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
     setMoreError(false);
     const id = generation.current;
     try {
-      const payload = await api.destinations(next, search);
-      if (id !== generation.current) return;
-      setPoints((current) => [
-        ...current,
-        ...payload.destinations.filter(
-          (p) => !current.some((old) => old.slug === p.slug),
-        ),
-      ]);
-      setNext(payload.pagination.next_page);
+      if (routeList) {
+        const payload = await api.routes(next, search);
+        if (id !== generation.current) return;
+        setRoutes((current) => [
+          ...current,
+          ...payload.routes.filter(
+            (route) => !current.some((old) => old.slug === route.slug),
+          ),
+        ]);
+        setNext(payload.pagination?.next_page ?? null);
+      } else {
+        const payload = await api.destinations(next, search);
+        if (id !== generation.current) return;
+        setPoints((current) => [
+          ...current,
+          ...payload.destinations.filter(
+            (p) => !current.some((old) => old.slug === p.slug),
+          ),
+        ]);
+        setNext(payload.pagination.next_page);
+      }
     } catch {
       if (id === generation.current) setMoreError(true);
     } finally {
@@ -215,11 +229,13 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
             <p role="alert">دریافت ادامهٔ فهرست ناموفق بود.</p>
           ) : null}
           {loadingMore ? (
-            <p role="status">در حال بارگذاری مقصدهای بیشتر…</p>
+            <p role="status">
+              در حال بارگذاری {routeList ? "مسیرهای" : "مقصدهای"} بیشتر…
+            </p>
           ) : (
             <a
               className="outline-button"
-              href={`/destinations/page/${next}`}
+              href={`/${routeList ? "routes" : "destinations"}/page/${next}`}
               onClick={(e) => {
                 e.preventDefault();
                 void more();

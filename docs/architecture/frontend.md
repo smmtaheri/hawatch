@@ -34,6 +34,9 @@ render می‌کند؛ جزئیات در [`../seo.md`](../seo.md) است. entry�
   صفحه‌بندی‌شده؛ شبکهٔ React برش بعدی را هنگام نزدیک‌شدن اسکرول به انتها اضافه
   می‌کند و در نبود قابلیت observer لینک قابل‌خزشِ ادامهٔ فهرست را نشان می‌دهد.
 - `/points/:slug` — `PlaceForecastPage` (قالب مشترک Point Forecast)
+- `/routes` و `/routes/page/:page` — فهرست مسیرهای فعال با SSR صفحه‌بندی‌شده؛ شبکهٔ React
+  برش بعدی را هنگام نزدیک‌شدن اسکرول به انتها اضافه می‌کند و در نبود قابلیت observer
+  لینک قابل‌خزشِ ادامهٔ فهرست را نشان می‌دهد.
 - `/routes/:slug`
 
 Home از search index داخلی، پیشنهادهای همهٔ نقاط را با debounce و keyboard navigation مصرف می‌کند. کلیک روی point به URL تمیز `/points/{pointSlug}` می‌رود و context بازگشت Route فقط در React Router state نگه داشته می‌شود.

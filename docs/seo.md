@@ -31,10 +31,13 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
   را دارند. React در صفحهٔ اول با نزدیک‌شدن اسکرول به انتهای شبکه، برش بعدی را
   به‌صورت خودکار اضافه می‌کند؛ اگر JavaScript یا `IntersectionObserver` در دسترس
   نباشد، همان لینک «مقصدهای بیشتر» مسیر crawlable را حفظ می‌کند.
-- برای `/routes`: همهٔ Routeهای فعال با عنوان، مبدأ و مقصد به‌صورت لینک واقعی
-  در HTML اولیه می‌آیند تا فهرست مسیرها بدون JavaScript هم crawlable باشد. این
-  Hub در sitemap جداگانه وارد نمی‌شود؛ خود Routeهای فعال لینک‌شده canonical
-  مستقل دارند.
+- برای `/routes`: Routeهای فعال در برش‌های ۱۶تایی با عنوان، مبدأ و مقصد به‌صورت
+  لینک واقعی در HTML اولیه می‌آیند. صفحهٔ اول `/routes` و بخش‌های بعدی در
+  `/routes/page/<n>` هرکدام canonical، structured data و لینک‌های قبلی/بعدی
+  خودشان را دارند. React برش بعدی را هنگام نزدیک‌شدن اسکرول به انتهای شبکه
+  خودکار اضافه می‌کند؛ اگر JavaScript یا `IntersectionObserver` در دسترس نباشد،
+  همان لینک «مسیرهای بیشتر» مسیر crawlable را حفظ می‌کند. این Hub در sitemap
+  جداگانه وارد نمی‌شود؛ خود Routeهای فعال لینک‌شده canonical مستقل دارند.
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
@@ -110,14 +113,14 @@ Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo
 
 ## Hub مقصدها و گراف لینک‌های ورودی
 
-`/destinations` یک صفحهٔ SSR کم‌حجم برای مقصدهای مستقل است؛ waypointهای فنی و
-Routeها در آن فهرست نمی‌شوند. هر برش حداکثر ۱۶ کارت دارد تا پاسخ اولیه و مصرف
+`/destinations` و `/routes` صفحه‌های SSR کم‌حجم برای مقصدهای مستقل و مسیرهای فعال
+هستند؛ waypointهای فنی در مقصدها فهرست نمی‌شوند. هر برش حداکثر ۱۶ کارت دارد تا پاسخ اولیه و مصرف
 حافظهٔ مرورگر محدود بماند. Home چهار کارت محبوب فعلی را حفظ می‌کند و فقط لینک
 کوچک «مشاهدهٔ همهٔ مقصدها» را به Hub اضافه می‌کند. Point و Routeهای مرتبط
 همچنان از صفحات detail با `<a href>` واقعی به یکدیگر متصل‌اند.
 
-URLهای `/destinations/page/<n>` برای crawl و refresh مستقیم معتبرند و به همان
-برش canonical می‌شوند؛ فقط `/destinations` (صفحهٔ ریشهٔ Hub) در sitemap می‌آید.
+URLهای `/destinations/page/<n>` و `/routes/page/<n>` برای crawl و refresh مستقیم
+معتبرند و به همان برش canonical می‌شوند؛ فقط Hubهای ریشه در sitemap می‌آیند.
 برش‌های بعدی با لینک‌های قبلی/بعدی به هم زنجیر شده‌اند، اما برای جلوگیری از
 شلوغی UI شماره‌گذاری صفحه نمایش داده نمی‌شود. ترتیب و اندازهٔ برش در API و SSR
 از ثابت مشترک `DESTINATIONS_PAGE_SIZE` می‌آید تا فهرست کلاینت و HTML اولیه از هم
@@ -147,7 +150,7 @@ detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت
 | --- | --- | --- | --- |
 | URL تمیز Home/Hub/Point/Route | 200 | `index,follow` | همان URL تمیز |
 | `/points`، `/points/` | 301 | — | `/` |
-| `/routes`، `/routes/` | 200 | `index,follow` | `/routes` |
+| `/routes`، `/routes/` و `/routes/page/<n>` | 200 | `index,follow` | همان URL تمیز |
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 

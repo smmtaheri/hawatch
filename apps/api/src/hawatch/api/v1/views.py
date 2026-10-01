@@ -224,15 +224,50 @@ def routes_index(request):
     from hawatch.modules.catalog.search import normalize_search_text
     from .serializers import serialize_route_summary
 
+    raw_page = request.query_params.get("page", "1")
+    try:
+        page_number = int(raw_page)
+    except (TypeError, ValueError) as exc:
+        raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."}) from exc
+    if page_number < 1:
+        raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
     query = normalize_search_text(request.query_params.get("query", ""))
     rows = Route.objects.filter(is_active=True).annotate(point_count=Count("points")).prefetch_related("points__weather_point").order_by("region", "sort_order", "slug")
-    results = [
-        {**serialize_route_summary(route, points=list(route.points.all())), "region": route.region, "point_count": route.point_count}
-        for route in rows if not query or query in normalize_search_text(
+    rows = [
+        route for route in rows if not query or query in normalize_search_text(
             " ".join([route.title, route.origin, route.target_label, route.region])
         )
     ]
-    return Response({"routes": results, "empty": not results, "query": request.query_params.get("query", "")})
+    paginator = Paginator(rows, DESTINATIONS_PAGE_SIZE)
+    try:
+        page = paginator.page(page_number)
+    except EmptyPage as exc:
+        raise ValidationError({"page": "این بخش از مسیرها وجود ندارد."}) from exc
+    has_next = page.has_next()
+    results = [
+        {**serialize_route_summary(route, points=list(route.points.all())), "region": route.region, "point_count": route.point_count}
+        for route in page.object_list
+    ]
+    return Response({
+        "routes": results,
+        "empty": not results,
+        "query": request.query_params.get("query", ""),
+        "pagination": {
+            "page": page.number,
+            "page_size": DESTINATIONS_PAGE_SIZE,
+            "total": paginator.count,
+            "has_next": has_next,
+            "next_page": page.next_page_number() if has_next else None,
+            "next_href": f"/routes/page/{page.next_page_number()}" if has_next else None,
+            "previous_href": (
+                "/routes"
+                if page.number == 2
+                else f"/routes/page/{page.previous_page_number()}"
+                if page.has_previous()
+                else None
+            ),
+        },
+    })
 
 
 @api_view(["GET"])

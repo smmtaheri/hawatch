@@ -42,6 +42,8 @@ HOME_TITLE = "هواچ | پیش‌بینی هوای کوهستان و مسیره
 HOME_DESCRIPTION = "هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر."
 DESTINATIONS_TITLE = "مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها"
 DESTINATIONS_DESCRIPTION = "مقصدهای اصلی هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و عارضه‌های مهم برای برنامه‌ریزی مسیر."
+ROUTES_TITLE = "همهٔ مسیرها | هواچ"
+ROUTES_DESCRIPTION = "مسیرهای کوه‌پیمایی هواچ؛ نقاط مسیر و پیش‌بینی هوا در زمان رسیدن."
 _PLACE_TYPE_TOKEN_RE = re.compile(r"(نقطهٔ\s+)([a-z][a-z0-9_]*)", re.IGNORECASE)
 
 
@@ -150,8 +152,38 @@ def _structured_destination_list(
     return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
 
+def _structured_route_list(
+    routes: list[Route],
+    *,
+    canonical_path: str = "/routes",
+    position_offset: int = 0,
+    total: int | None = None,
+) -> str:
+    value = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": ROUTES_TITLE,
+        "url": _canonical(canonical_path),
+        "description": ROUTES_DESCRIPTION,
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": total if total is not None else len(routes),
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": position_offset + index,
+                    "name": route.title,
+                    "url": _canonical(f"/routes/{route.slug}"),
+                }
+                for index, route in enumerate(routes, start=1)
+            ],
+        },
+    }
+    return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
 def _not_found(request: HttpRequest, *, content_type: str) -> HttpResponse:
-    label = {"point": "نقطه", "route": "مسیر", "destinations": "مقصدها"}.get(content_type, "صفحه")
+    label = {"point": "نقطه", "route": "مسیر", "routes": "مسیرها", "destinations": "مقصدها"}.get(content_type, "صفحه")
     return _render(
         request,
         status=404,
@@ -363,13 +395,45 @@ def seo_route(request: HttpRequest, slug: str) -> HttpResponse:
 
 
 @require_GET
-def seo_routes(request: HttpRequest) -> HttpResponse:
-    rows = Route.objects.filter(is_active=True).order_by("title", "slug")
+def seo_routes(request: HttpRequest, page: int = 1) -> HttpResponse:
+    if page < 1:
+        return _not_found(request, content_type="routes")
+    rows = Route.objects.filter(is_active=True).order_by("region", "sort_order", "slug")
+    paginator = Paginator(rows, DESTINATIONS_PAGE_SIZE)
+    try:
+        route_page = paginator.page(page)
+    except EmptyPage:
+        return _not_found(request, content_type="routes")
+    canonical_path = "/routes" if route_page.number == 1 else f"/routes/page/{route_page.number}"
+    title = ROUTES_TITLE if route_page.number == 1 else f"{ROUTES_TITLE} | بخش {route_page.number}"
     return _render(request, page={
-        "kind": "routes", "title": "همهٔ مسیرها | هواچ",
-        "description": "مسیرهای کوه‌پیمایی هواچ؛ نقاط مسیر و پیش‌بینی هوا در زمان رسیدن.",
-        "canonical": _canonical("/routes"), "headline": "همهٔ مسیرها",
+        "kind": "routes",
+        "title": title,
+        "description": ROUTES_DESCRIPTION,
+        "canonical": _canonical(canonical_path),
+        "indexable": True,
+        "headline": "همهٔ مسیرها",
         "summary": "مسیر مناسب برنامهٔ خود را انتخاب کنید.",
-        "routes": [{"title": row.title, "href": f"/routes/{row.slug}",
-                    "description": f"از {row.origin} تا {row.target_label}"} for row in rows],
+        "structured_data": _structured_route_list(
+            list(route_page.object_list),
+            canonical_path=canonical_path,
+            position_offset=(route_page.number - 1) * DESTINATIONS_PAGE_SIZE,
+            total=paginator.count,
+        ),
+        "previous_routes_href": (
+            "/routes"
+            if route_page.number == 2
+            else f"/routes/page/{route_page.previous_page_number()}"
+            if route_page.has_previous()
+            else None
+        ),
+        "next_routes_href": f"/routes/page/{route_page.next_page_number()}" if route_page.has_next() else None,
+        "routes": [
+            {
+                "title": row.title,
+                "href": f"/routes/{row.slug}",
+                "description": f"از {row.origin} تا {row.target_label}",
+            }
+            for row in route_page.object_list
+        ],
     })

@@ -66,6 +66,20 @@ export interface DestinationPage {
   };
 }
 
+export interface RoutePage {
+  routes: RouteSummary[];
+  empty: boolean;
+  pagination?: {
+    page: number;
+    page_size: number;
+    total: number;
+    has_next: boolean;
+    next_page: number | null;
+    next_href: string | null;
+    previous_href: string | null;
+  };
+}
+
 export interface RouteSummary {
   slug: string;
   title: string;

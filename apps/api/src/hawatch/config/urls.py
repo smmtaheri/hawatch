@@ -21,6 +21,8 @@ urlpatterns = [
     path("destinations/page/<int:page>/", seo_pages.seo_destinations),
     path("routes", seo_pages.seo_routes, name="seo-routes"),
     path("routes/", seo_pages.seo_routes),
+    path("routes/page/<int:page>", seo_pages.seo_routes, name="seo-routes-page"),
+    path("routes/page/<int:page>/", seo_pages.seo_routes),
     path("routes/<slug:slug>", seo_pages.seo_route, name="seo-route"),
     path("routes/<slug:slug>/", seo_pages.seo_route),
     path("admin/", admin.site.urls),

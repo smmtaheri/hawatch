@@ -8,6 +8,7 @@ import type {
   SearchSuggestion,
   ForecastPlanSummary,
   DestinationPage,
+  RoutePage,
   PointDayBundle,
   RouteDayBundle,
 } from "../types";
@@ -92,7 +93,8 @@ export const api = {
     }>("catalog-index/"),
   destinations: (page = 1, query?: string) =>
     getJson<DestinationPage>("destinations/", { page: String(page), query }),
-  routes: (query?: string) => getJson<{ routes: RouteSummary[]; empty: boolean }>("routes/", { query }),
+  routes: (page = 1, query?: string) =>
+    getJson<RoutePage>("routes/", { page: String(page), query }),
   pointDay: (slug: string, params: { date?: string; period?: string }) =>
     getJson<PointDayBundle>(`points/${slug}/forecast/day/`, params),
   routeDay: (slug: string, params: { date?: string; period?: string; start_time?: string; speed?: string }) =>
