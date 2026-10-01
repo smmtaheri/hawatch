@@ -748,7 +748,7 @@ dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(
 
  .point-page .summary-weather{left:26px;top:46px;gap:10px}
 
- .point-page .summary p{left:0;right:auto;top:96px;bottom:auto;text-align:left;max-width:48%}
+ .point-page .summary p{left:12px;right:auto;top:96px;bottom:auto;text-align:left;max-width:48%}
 
  .point-page .content-grid{gap:16px}
 }
