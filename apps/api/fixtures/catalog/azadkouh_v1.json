@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v6",
+  "catalog_version": "hawatch-azadkouh-catalog-v7",
   "weather_points": {
     "azadkouh-kelakbala-start": {
       "name": "روستای کلاک بالا",
@@ -271,6 +271,31 @@
       "category": "قله‌های البرز مرکزی",
       "region": "البرز مرکزی · وارنگه‌رود · مازندران"
     },
+    "sotak-ascent-ridge": {
+      "name": "یال صعود سوتک",
+      "latitude": 36.137862,
+      "longitude": 51.444063,
+      "elevation_m": 3304,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3304 m; Wikiloc named waypoint reference",
+      "page_name": "یال صعود سوتک بزرگ",
+      "short_label": "یال سوتک",
+      "place_type": "ridge",
+      "category_key": "ridge",
+      "aliases": [
+        "یال صعود سوتک",
+        "یال سوتک بزرگ",
+        "Sotak ascent ridge"
+      ],
+      "identity_summary": "یال صعود سوتک بزرگ پس از جداشدن از دره؛ landmark واقعی مسیر اصلی صعود تا قله",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-swtkh-bzrg-w-qlh-khrsrkh-z-wrngh-rwd-138535111",
+        "https://el.wikiloc.com/oreibasia-diadromes/qlh-swtkh-bzrg-z-drh-swtkh-wrngh-rwd-142601295"
+      ]
+    },
     "azadkouh-kamankouh-lake": {
       "name": "دریاچهٔ کمان‌کوه",
       "latitude": 36.136197,
@@ -495,6 +520,52 @@
       },
       "public_point_notes": {},
       "target_label": "قلهٔ آزادکوه"
+    },
+    "sotak_bozorg_from_varangeh_rud": {
+      "slug": "sotak-bozorg-varangeh-rud",
+      "title": "وارنگه‌رود تا قلهٔ سوتک بزرگ",
+      "subtitle": "از وارنگه‌رود، درهٔ سوتک و یال شمال‌غربی تا قلهٔ سوتک بزرگ",
+      "trail_label": "مسیر وارنگه‌رود–سوتک بزرگ",
+      "origin": "وارنگه‌رود",
+      "region": "البرز مرکزی",
+      "featured": true,
+      "sort_order": 5,
+      "points": [
+        "azadkouh-varangerud-start",
+        "sotak-ascent-ridge",
+        "sotak-bozorg"
+      ],
+      "distance_km": 11.3,
+      "ascent_m": 1455,
+      "one_way_minutes": 300,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "sotak-bozorg-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-swtkh-bzrg-w-qlh-khrsrkh-z-wrngh-rwd-138535111",
+          "https://el.wikiloc.com/oreibasia-diadromes/qlh-swtkh-bzrg-z-drh-swtkh-wrngh-rwd-142601295",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.1283349&lon=51.4541309&peak-name=%D8%B3%D9%88%D8%AA%DA%A9&pkidentifier=395"
+        ],
+        "evidence_tracks": [
+          "tracks/sotak-bozorg/sotak-bozorg-varangeh-rud-to-summit-2023-roundtrip.gpx"
+        ],
+        "notes": [
+          "The downloaded Wikiloc loop is cut at the first Sootak Bozorg summit arrival; its Khersak continuation is not part of this route.",
+          "The source describes the main ascent through the Varangeh Rud valley and Sootak valley, including two river crossings, a small waterfall and the Sootak ascent ridge.",
+          "Recorded GPX timestamps include pauses and are not used as moving time; the 300-minute one-way estimate follows the source itinerary and GPX geometry with ±60 minutes uncertainty."
+        ],
+        "cumulative_minutes": {
+          "azadkouh-varangerud-start": 0,
+          "sotak-ascent-ridge": 220,
+          "sotak-bozorg": 300
+        }
+      },
+      "public_point_notes": {},
+      "target_label": "قلهٔ سوتک بزرگ"
     }
   },
   "point": {
