@@ -1,0 +1,15 @@
+# Optional operator-managed TLS listener. Does not publish 80/443.
+services:
+  stage-tls:
+    image: nginx:1.27-alpine
+    ports: ["${HAWATCH_STAGE_BIND_IP:-0.0.0.0}:${HAWATCH_STAGE_TLS_PORT:-5051}:443"]
+    volumes:
+      - ../nginx/stage-tls.conf:/etc/nginx/nginx.conf:ro
+      - ${HAWATCH_STAGE_CERT_DIR:?Set certificate directory}:/etc/nginx/stage-certs:ro
+    depends_on:
+      stage-gateway: {condition: service_started}
+    networks: [stage]
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+    restart: unless-stopped

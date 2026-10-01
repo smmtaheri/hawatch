@@ -1,60 +1,105 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-# Install this wrapper manually. Its invocation is the deploy authorization.
-# Every invocation deploys both releases: production main stays on its normal
-# gateway (port 80 in the standard env), while QA new-design has its own
-# checkout, images, Compose project and gateway on port 5050. Push alone has
-# no deployment hook.
+# Deploy main, then deploy optional stage only when the remote stage env enables it.
 LOCAL_DIR="${HAWATCH_LOCAL_DIR:-/home/nobitex/Desktop/Tasks/Nobitex/hawatch}"
 SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
 PRODUCTION_DIR="${HAWATCH_SERVER_DIR:-/root/hawatch}"
-QA_DIR="${HAWATCH_QA_DIR:-/root/hawatch-new-design}"
-QA_ENV="${HAWATCH_QA_ENV_FILE:-/root/hawatch-new-design.qa.env}"
+STAGE_DIR="${HAWATCH_STAGE_DIR:-/root/hawatch-stage}"
+STAGE_ENV="${HAWATCH_STAGE_ENV_FILE:-/root/hawatch-stage.env}"
+LEGACY_STAGE_DIR="${HAWATCH_LEGACY_STAGE_DIR:-/root/hawatch-new-design}"
 SERVER_IP="${HAWATCH_SERVER_IP:-202.133.89.120}"
 PUBLIC_HOST="${HAWATCH_PUBLIC_HOST:-hawatch.ir}"
-fail() { printf '[deploy-hawatch] %s\n' "$*" >&2; exit 1; }
-for path in "$LOCAL_DIR" "$PRODUCTION_DIR" "$QA_DIR" "$QA_ENV"; do
+fail() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
+for path in "$LOCAL_DIR" "$PRODUCTION_DIR" "$STAGE_DIR" "$STAGE_ENV" "$LEGACY_STAGE_DIR"; do
   [[ "$path" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail "Invalid path."
 done
-[[ "$PRODUCTION_DIR" != "$QA_DIR" ]] || fail "Production and QA checkouts must differ."
+[[ "$PRODUCTION_DIR" != "$STAGE_DIR" ]] || fail "Production and stage checkouts must differ."
 for host in "$SSH_HOST" "$SERVER_IP" "$PUBLIC_HOST"; do
   [[ "$host" =~ ^[A-Za-z0-9._-]+$ && "$host" != -* ]] || fail "Invalid host."
 done
 [[ "$(git -C "$LOCAL_DIR" remote get-url origin)" == git@github.com:smmtaheri/hawatch.git ]] || fail "Unexpected local remote."
 branch="$(git -C "$LOCAL_DIR" branch --show-current)"
 case "$branch" in
- main) git -C "$LOCAL_DIR" push origin main ;;
- new-design) : ;; # Deploy production's published origin/main; never push it from QA.
- *) fail "Run from main or new-design." ;;
+  main) git -C "$LOCAL_DIR" push origin main ;;
+  stage) : ;; # Production still deploys only published origin/main.
+  *) fail "Run from main or stage." ;;
 esac
-git -C "$LOCAL_DIR" show-ref --verify --quiet refs/heads/new-design || fail "Local new-design branch is missing."
-git -C "$LOCAL_DIR" push origin new-design
+git -C "$LOCAL_DIR" show-ref --verify --quiet refs/heads/stage || fail "Local stage branch is missing."
+git -C "$LOCAL_DIR" push origin stage
+
 # Pass validated arguments to a fixed remote script rather than interpolate code.
-ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$QA_DIR" "$QA_ENV" "$PUBLIC_HOST" "$SERVER_IP" <<'REMOTE'
+ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$STAGE_DIR" "$STAGE_ENV" "$LEGACY_STAGE_DIR" "$PUBLIC_HOST" "$SERVER_IP" <<'REMOTE'
 set -Eeuo pipefail
-production_dir="$1"; qa_dir="$2"; qa_env="$3"; public_host="$4"; server_ip="$5"
+production_dir="$1"; stage_dir="$2"; stage_env="$3"; legacy_stage_dir="$4"; public_host="$5"; server_ip="$6"
 log() { printf '[deploy-hawatch] %s\n' "$*"; }
 fail_remote() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
-[[ "$(git -C "$production_dir" branch --show-current)" == main ]] || { echo 'Production must remain on main.' >&2; exit 1; }
-[[ "$(git -C "$production_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected production remote.' >&2; exit 1; }
-[[ -z "$(git -C "$production_dir" status --porcelain)" ]] || { echo 'Production checkout is dirty; inspect it manually.' >&2; exit 1; }
-[[ "$production_dir" != "$qa_dir" && -f "$qa_env" ]] || { echo 'Prepare the separate QA environment file first.' >&2; exit 1; }
-if [[ ! -e "$qa_dir" ]]; then
- git clone --branch new-design --single-branch "$(git -C "$production_dir" remote get-url origin)" "$qa_dir"
+expected_remote='git@github.com:smmtaheri/hawatch.git'
+
+remove_project() {
+  local project="$1" ids reference
+  ids="$(docker ps -aq --filter "label=com.docker.compose.project=${project}")"
+  [[ -z "$ids" ]] || docker rm -f $ids >/dev/null
+  ids="$(docker network ls -q --filter "label=com.docker.compose.project=${project}")"
+  [[ -z "$ids" ]] || docker network rm $ids >/dev/null 2>&1 || true
+  ids="$(docker volume ls -q --filter "label=com.docker.compose.project=${project}")"
+  [[ -z "$ids" ]] || docker volume rm $ids >/dev/null 2>&1 || true
+  while IFS= read -r reference; do
+    [[ -z "$reference" ]] || docker image rm "$reference" >/dev/null 2>&1 || true
+  done < <(docker image ls --format '{{.Repository}}:{{.Tag}}' | awk -F: -v prefix="$project" '$1 == prefix "-api" || $1 == prefix "-web" {print $0}')
+}
+
+[[ "$(git -C "$production_dir" branch --show-current)" == main ]] || fail_remote 'Production checkout must remain on main.'
+[[ "$(git -C "$production_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected production remote.'
+[[ -z "$(git -C "$production_dir" status --porcelain)" ]] || fail_remote 'Production checkout is dirty; inspect it manually.'
+[[ "$production_dir" != "$stage_dir" ]] || fail_remote 'Production and stage checkouts must differ.'
+
+stage_enabled=0
+if [[ -f "$stage_env" ]]; then
+  stage_enabled="$(awk -F= '$1 == "HAWATCH_STAGE_ENABLED" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
+  stage_enabled="${stage_enabled:-0}"
 fi
-[[ "$(git -C "$qa_dir" branch --show-current)" == new-design && -z "$(git -C "$qa_dir" status --porcelain)" ]] || { echo 'QA checkout must be clean and on new-design.' >&2; exit 1; }
-[[ "$(git -C "$qa_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected QA remote.' >&2; exit 1; }
-qa_port="$(awk -F= '$1 == "HAWATCH_QA_PORT" {sub(/^[^=]*=/, ""); print; exit}' "$qa_env" | tr -d '[:space:]')"
-[[ "${qa_port:-5050}" == "5050" ]] || fail_remote "QA must use port 5050; set HAWATCH_QA_PORT=5050 in $qa_env."
-log "Deploying main production checkout on its existing gateway (port 80)."
+[[ "$stage_enabled" == 0 || "$stage_enabled" == 1 ]] || fail_remote "$stage_env must set HAWATCH_STAGE_ENABLED=0 or 1."
+
+log 'Deploying main production checkout on its existing gateway.'
 git -C "$production_dir" pull --ff-only origin main
 cd "$production_dir"
 HAWATCH_BRANCH=main HAWATCH_DIR="$production_dir" PUBLIC_HOST="$public_host" \
- DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
- RUN_INITIAL_INGEST=0 ./scripts/deploy.sh </dev/null
-log "Production is updated; building and starting new-design QA on port 5050."
-# Keep child deploy commands from consuming the parent bash -s heredoc. A
-# Compose command may inspect stdin even when it does not need interactive input.
-HAWATCH_QA_DIR="$qa_dir" HAWATCH_QA_ENV_FILE="$qa_env" bash "$qa_dir/scripts/deploy-new-design.sh" </dev/null
-log "Both releases are active: main on production and new-design on :5050."
+  DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
+  RUN_INITIAL_INGEST=0 ./scripts/deploy.sh </dev/null
+
+if [[ "$stage_enabled" == 1 ]]; then
+  [[ -f "$stage_env" ]] || fail_remote "Stage is enabled but $stage_env does not exist."
+  stage_port="$(awk -F= '$1 == "HAWATCH_STAGE_PORT" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
+  [[ "${stage_port:-5050}" == 5050 ]] || fail_remote "Stage must use port 5050; set HAWATCH_STAGE_PORT=5050."
+
+  if [[ ! -e "$stage_dir" && -d "$legacy_stage_dir" ]]; then
+    [[ -z "$(git -C "$legacy_stage_dir" status --porcelain)" ]] || fail_remote 'Legacy stage checkout is dirty; inspect it before branch migration.'
+    [[ "$(git -C "$legacy_stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected legacy stage remote.'
+    [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design || "$(git -C "$legacy_stage_dir" branch --show-current)" == stage ]] || fail_remote 'Legacy stage checkout must be on new-design or stage.'
+    mkdir -p "$(dirname "$stage_dir")"
+    if [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design ]]; then
+      git -C "$legacy_stage_dir" fetch origin stage
+      git -C "$legacy_stage_dir" branch -m new-design stage
+      git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage
+    fi
+    mv "$legacy_stage_dir" "$stage_dir"
+  fi
+  if [[ ! -e "$stage_dir" ]]; then
+    git clone --branch stage --single-branch "$(git -C "$production_dir" remote get-url origin)" "$stage_dir"
+  fi
+  [[ "$(git -C "$stage_dir" branch --show-current)" == stage ]] || fail_remote 'Stage checkout must be on branch stage.'
+  [[ -z "$(git -C "$stage_dir" status --porcelain)" ]] || fail_remote 'Stage checkout is dirty; inspect it manually.'
+  [[ "$(git -C "$stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected stage remote.'
+
+  # Remove the previous project name before binding the new gateway to :5050.
+  remove_project hawatch-new-design
+  log 'Stage is enabled; building and starting its three services on port 5050.'
+  HAWATCH_STAGE_DIR="$stage_dir" HAWATCH_STAGE_ENV_FILE="$stage_env" bash "$stage_dir/scripts/deploy-stage.sh" </dev/null
+  log 'Production main and stage are both active.'
+else
+  log 'Stage is disabled; removing stage services and local images.'
+  remove_project hawatch-stage
+  remove_project hawatch-new-design
+  log 'Only production main is active.'
+fi
 REMOTE
