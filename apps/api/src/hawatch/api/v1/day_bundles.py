@@ -20,6 +20,7 @@ from hawatch.modules.forecasts.models import ForecastRecord
 from .serializers import (
     _hourly_for_period, _reading_for_period_summary, _records_for_day,
     meta_base, point_forecast, reading_payload, route_forecast, serialize_route,
+    wind_alert_payload,
 )
 
 
@@ -47,11 +48,17 @@ def point_day_bundle(point, *, selected_date, period, access):
     temperatures = [row.apparent_temperature_c for row in records if row.apparent_temperature_c is not None]
     rank = {"normal": 0, "change": 1, "critical": 2}
     worst = max(records, key=lambda row: rank[row.severity], default=None)
+    wind_alert_record = max(
+        (row for row in records if wind_alert_payload(row)),
+        key=lambda row: rank[wind_alert_payload(row)["severity"]],
+        default=None,
+    )
     summary = {
         "apparent_min_c": min(temperatures) if temperatures else None,
         "apparent_max_c": max(temperatures) if temperatures else None,
         "condition": worst.condition_label if worst else "پیش‌بینی این روز در دسترس نیست",
         "severity": worst.severity if worst else "normal",
+        "wind_alert": wind_alert_payload(wind_alert_record) if wind_alert_record else None,
         "weather_code": worst.weather_code if worst else None,
         "forecast_at": worst.forecast_at.isoformat() if worst else None,
         "complete": len({row.forecast_at for row in records}) >= 24,

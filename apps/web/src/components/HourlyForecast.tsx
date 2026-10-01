@@ -7,6 +7,25 @@ export function numberLabel(value: number | null | undefined, suffix = "") {
     ? `${value.toLocaleString("fa-IR")}${suffix}`
     : "نامشخص";
 }
+
+const WEATHER_HAZARD_CODES = new Set([
+  "drizzle",
+  "freezing-drizzle",
+  "rain",
+  "freezing-rain",
+  "snow",
+  "shower",
+  "thunder",
+]);
+
+function isWeatherHazard(hour: HourlyReading) {
+  return WEATHER_HAZARD_CODES.has(String(hour.weather_code ?? ""));
+}
+
+function isCriticalWind(hour: HourlyReading) {
+  return hour.wind_alert?.severity === "critical";
+}
+
 export function HourlyForecast({
   hours,
   dayLabel = "",
@@ -20,19 +39,19 @@ export function HourlyForecast({
     (hour) => (hour.forecast_at ?? hour.time) === expanded,
   );
   const selectedIndex = selected ? hours.indexOf(selected) : -1;
-  const metrics: [string, number | null | undefined, string][] = selected
+  const metrics: [string, number | null | undefined, string, boolean][] = selected
     ? [
-        ["دمای حسی", selected.apparent_temperature_c, "°"],
-        ["باد", selected.wind_speed_kmh, " km/h"],
-        ["تندباد", selected.wind_gust_kmh, " km/h"],
-        ["باران", selected.rain_mm, " mm"],
-        ["برف", selected.snowfall_cm, " cm"],
-        ["احتمال بارش", selected.precipitation_probability, "٪"],
-        ["دید افقی", selected.visibility_km, " km"],
-        ["تراز صفر درجه", selected.freezing_level_m, " m"],
-        ["پایهٔ ابر", selected.cloud_base_m, " m"],
-        ["تابش فرابنفش", selected.uv_index, ""],
-        ["پوشش ابر", selected.cloud_cover_pct, "٪"],
+        ["دمای حسی", selected.apparent_temperature_c, "°", false],
+        ["باد", selected.wind_speed_kmh, " km/h", isCriticalWind(selected) && selected.wind_speed_kmh >= 30],
+        ["تندباد", selected.wind_gust_kmh, " km/h", isCriticalWind(selected) && (selected.wind_gust_kmh ?? 0) >= 40],
+        ["باران", selected.rain_mm, " mm", false],
+        ["برف", selected.snowfall_cm, " cm", false],
+        ["احتمال بارش", selected.precipitation_probability, "٪", false],
+        ["دید افقی", selected.visibility_km, " km", false],
+        ["تراز صفر درجه", selected.freezing_level_m, " m", false],
+        ["پایهٔ ابر", selected.cloud_base_m, " m", false],
+        ["تابش فرابنفش", selected.uv_index, "", false],
+        ["پوشش ابر", selected.cloud_cover_pct, "٪", false],
       ]
     : [];
   return (
@@ -41,6 +60,8 @@ export function HourlyForecast({
         {hours.map((hour) => {
           const key = hour.forecast_at ?? hour.time;
           const open = expanded === key;
+          const windHazard = isCriticalWind(hour);
+          const conditionHazard = hour.state === "critical" && isWeatherHazard(hour);
           return (
             <article
               key={key}
@@ -62,9 +83,7 @@ export function HourlyForecast({
                 at={hour.forecast_at}
                 isDay={hour.is_day}
               />
-              <div
-                className={`weather-label ${hour.state === "critical" ? "risk-red" : ""}`}
-              >
+              <div className={`weather-label ${conditionHazard ? "risk-red" : ""}`}>
                 {hour.condition}
               </div>
               <div className="degree">
@@ -108,10 +127,10 @@ export function HourlyForecast({
             <small>{dayLabel}</small>
           </h2>
           <div className="metrics">
-            {metrics.map(([label, value, unit]) => (
+            {metrics.map(([label, value, unit, alert]) => (
               <div className="metric" key={label}>
-                <span>{label}</span>
-                <strong>
+                <span className={alert ? "risk-red" : ""}>{label}</span>
+                <strong className={alert ? "risk-red" : ""}>
                   <bdi>{numberLabel(value, unit)}</bdi>
                 </strong>
               </div>

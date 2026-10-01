@@ -19,10 +19,14 @@
     <meta name="twitter:image:alt" content="نشان هواچ" />
     {% if page.structured_data %}<script type="application/ld+json">{{ page.structured_data|safe }}</script>{% endif %}
     {% if new_design %}<link rel="preload" href="/new-design/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin />{% else %}<link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />{% endif %}
-    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png" />
-    <link rel="icon" href="/brand/favicon-16.png" sizes="16x16" type="image/png" />
-    <link rel="icon" href="/brand/favicon.ico" sizes="any" />
+    {% if new_design %}
+      <link rel="icon" href="/new-design/brand-mark.svg?v=stage-1" type="image/svg+xml" />
+    {% else %}
+      <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+      <link rel="icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png" />
+      <link rel="icon" href="/brand/favicon-16.png" sizes="16x16" type="image/png" />
+      <link rel="icon" href="/brand/favicon.ico" sizes="any" />
+    {% endif %}
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
     <link rel="manifest" href="/brand/site.webmanifest" />
     <link rel="stylesheet" href="/assets/hawatch.css" />

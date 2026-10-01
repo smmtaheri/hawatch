@@ -24,6 +24,7 @@ git fetch origin
 git switch stage
 git pull --ff-only origin stage
 install -Dm755 scripts/deploy-hawatch "$HOME/.local/bin/deploy-hawatch"
+install -Dm755 scripts/deploy-stage-hawatch "$HOME/.local/bin/deploy-stage-hawatch"
 ```
 
 برای هر سرور، نمونه را به‌عنوان فایل تنظیمات stage کپی کنید و IP، دامنه، مسیر فایل env و نام network دیتابیس را با همان سرور هماهنگ کنید. این فایل فقط تنظیمات اتصال stage دارد و credential دیتابیس را از env اصلی می‌خواند:
@@ -52,6 +53,17 @@ deploy-hawatch
 ```bash
 deploy-hawatch
 ```
+
+برای deploy فقط stage، بدون pull، build یا restart کردن production، از فرمان
+مستقل زیر استفاده کنید:
+
+```bash
+deploy-stage-hawatch
+```
+
+این فرمان فقط commitهای branch `stage` را push می‌کند و checkout stage را روی
+همان سرور build و healthcheck می‌کند. اگر stage خاموش باشد، عمداً متوقف می‌شود
+تا خاموش‌بودن stage با یک فرمان ناخواسته دور زده نشود.
 
 Wrapper از branch فعلی `main`، commitهای main را push می‌کند. branch `stage` فقط وقتی push می‌شود که در فایل سرور فعال باشد یا فرمان `stage-on` اجرا شود؛ بنابراین وقتی stage خاموش است حتی branch آن هم deploy/push نمی‌شود. تغییرات uncommitted هیچ‌وقت stage یا commit نمی‌شوند. سرور همیشه `origin/main` را deploy می‌کند و فقط وقتی stage فعال باشد `origin/stage` را build/deploy می‌کند. push به‌تنهایی deploy ایجاد نمی‌کند. قبل از حذف preview قدیمی، imageهای جدید stage ساخته می‌شوند؛ شکست build، preview قبلی را نگه می‌دارد. پس از بالا آمدن سرویس‌ها، healthcheck هر سه container و درخواست‌های gateway به API readiness، Home، catalog زنده و forecast واقعی Open-Meteo بررسی می‌شوند. `deploy-hawatch` فقط وقتی موفق اعلام می‌شود که این بررسی‌ها بگذرند.
 

@@ -48,3 +48,15 @@ def test_combined_deploy_pushes_stage_only_when_enabled_and_migrates_legacy_bran
     assert 'Stage is disabled; its branch will not be pushed or deployed.' in wrapper
     assert 'git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage' in wrapper
     assert 'git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage' in wrapper
+
+
+def test_stage_only_wrapper_never_runs_the_production_deploy_script():
+    root = _repository_root()
+    wrapper = (root / "scripts/deploy-stage-hawatch").read_text(encoding="utf-8")
+    template = (root / "apps/api/src/hawatch/modules/catalog/templates/catalog/seo_page.html").read_text(encoding="utf-8")
+    index = (root / "apps/web/index.html").read_text(encoding="utf-8")
+
+    assert "scripts/deploy.sh" not in wrapper
+    assert 'git -C "$LOCAL_DIR" push origin stage' in wrapper
+    assert '"/new-design/brand-mark.svg?v=stage-1"' in template
+    assert '/new-design/brand-mark.svg?v=stage-1' in index

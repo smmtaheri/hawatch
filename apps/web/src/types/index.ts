@@ -400,7 +400,16 @@ export interface RouteForecast {
 
 export interface PointDayBundle extends PlaceForecastResponse {
   periods: Record<PeriodId, Pick<PlaceForecastResponse["forecast"], "period" | "hourly" | "current"> & { empty: boolean; partial: boolean }>;
-  daily_summary: { apparent_min_c: number | null; apparent_max_c: number | null; condition: string; severity: Severity; weather_code: string | null; forecast_at: string | null; complete: boolean };
+  daily_summary: {
+    apparent_min_c: number | null;
+    apparent_max_c: number | null;
+    condition: string;
+    severity: Severity;
+    weather_code: string | null;
+    forecast_at: string | null;
+    complete: boolean;
+    wind_alert?: WindAlert | null;
+  };
   data_revision: string;
   cache_max_age_seconds: number;
   cache_expires_at?: string | null;
