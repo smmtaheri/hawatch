@@ -53,7 +53,6 @@ input{color:var(--ink)}
 .route-page .route-day .lock{right:9px;top:7px}
 .route-day .day-title{display:flex;gap:6px}
 .route-page .route-day .red-dot{position:static}
-.hour-card.severe .weather-label{color:var(--red)}
 .hour-card .degree{color:var(--ink)}
 .hour-card.past .degree{color:var(--past)}
 .details-trigger{white-space:nowrap}

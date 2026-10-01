@@ -39,6 +39,16 @@ import type {
   RouteForecast,
 } from "../../types";
 
+const WEATHER_HAZARD_CODES = new Set([
+  "drizzle",
+  "freezing-drizzle",
+  "rain",
+  "freezing-rain",
+  "snow",
+  "shower",
+  "thunder",
+]);
+
 export function RoutePage() {
   const { slug = "" } = useParams();
   const location = useLocation();
@@ -292,7 +302,7 @@ export function RoutePage() {
                           isDay={point.is_day}
                         />
                         <div
-                          className={`weather-label ${point.state === "critical" ? "risk-red" : ""}`}
+                          className={`weather-label ${point.state === "critical" && WEATHER_HAZARD_CODES.has(point.weather_code ?? "") ? "risk-red" : ""}`}
                         >
                           {point.condition}
                         </div>

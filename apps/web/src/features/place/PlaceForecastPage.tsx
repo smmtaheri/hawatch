@@ -21,16 +21,6 @@ import type { DayInfo } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
 
-const WEATHER_HAZARD_CODES = new Set([
-  "drizzle",
-  "freezing-drizzle",
-  "rain",
-  "freezing-rain",
-  "snow",
-  "shower",
-  "thunder",
-]);
-
 function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const { slug = "" } = useParams();
   const location = useLocation();
@@ -124,30 +114,11 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   </div>
                   <p className="day-summary-line">
                     {dayLabel} ·{" "}
-                    <span
-                      className={
-                        summary.severity === "critical" &&
-                        WEATHER_HAZARD_CODES.has(summary.weather_code ?? "")
-                          ? "risk-red"
-                          : summary.severity === "change"
-                            ? "risk-yellow"
-                            : ""
-                      }
-                    >
-                      {summary.condition}
-                    </span>
+                    <span>{summary.condition}</span>
                     {summary.wind_alert ? (
                       <>
                         {" · "}
-                        <span
-                          className={
-                            summary.wind_alert.severity === "critical"
-                              ? "risk-red"
-                              : "risk-yellow"
-                          }
-                        >
-                          {summary.wind_alert.label}
-                        </span>
+                        <span>{summary.wind_alert.label}</span>
                       </>
                     ) : null}
                     {!summary.complete ? " · دادهٔ روز ناقص است" : null}

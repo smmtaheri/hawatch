@@ -8,20 +8,6 @@ export function numberLabel(value: number | null | undefined, suffix = "") {
     : "نامشخص";
 }
 
-const WEATHER_HAZARD_CODES = new Set([
-  "drizzle",
-  "freezing-drizzle",
-  "rain",
-  "freezing-rain",
-  "snow",
-  "shower",
-  "thunder",
-]);
-
-function isWeatherHazard(hour: HourlyReading) {
-  return WEATHER_HAZARD_CODES.has(String(hour.weather_code ?? ""));
-}
-
 function isCriticalWind(hour: HourlyReading) {
   return hour.wind_alert?.severity === "critical";
 }
@@ -60,8 +46,6 @@ export function HourlyForecast({
         {hours.map((hour) => {
           const key = hour.forecast_at ?? hour.time;
           const open = expanded === key;
-          const windHazard = isCriticalWind(hour);
-          const conditionHazard = hour.state === "critical" && isWeatherHazard(hour);
           return (
             <article
               key={key}
@@ -83,21 +67,13 @@ export function HourlyForecast({
                 at={hour.forecast_at}
                 isDay={hour.is_day}
               />
-              <div className={`weather-label ${conditionHazard ? "risk-red" : ""}`}>
-                {hour.condition}
-              </div>
+              <div className="weather-label">{hour.condition}</div>
               <div className="degree">
                 <bdi>{numberLabel(hour.apparent_temperature_c, "°")}</bdi>
               </div>
               <div className="wind-line">
                 <span>باد</span>
-                <bdi
-                  className={
-                    hour.wind_alert?.severity === "critical" ? "risk-red" : ""
-                  }
-                >
-                  {numberLabel(hour.wind_speed_kmh, " km/h")}
-                </bdi>
+                <bdi>{numberLabel(hour.wind_speed_kmh, " km/h")}</bdi>
                 <DesignIcon name="wind" />
               </div>
               <button
