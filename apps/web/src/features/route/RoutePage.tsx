@@ -1,4 +1,4 @@
-import { useMemo, type CSSProperties } from "react";
+import { useEffect, useMemo, type CSSProperties } from "react";
 import {
   useLocation,
   useNavigate,
@@ -30,6 +30,7 @@ import {
 } from "../../lib/periodState";
 import { usePageTitle } from "../../lib/pageTitle";
 import { buildRouteBackState } from "../../lib/routeNavigation";
+import { scrollToDetailHero } from "../../lib/detailEntryScroll";
 import { useDayBundle } from "../../lib/useDayBundle";
 import type {
   DayInfo,
@@ -102,6 +103,14 @@ export function RoutePage() {
     robots: status === "missing" ? "noindex,follow" : undefined,
     canonical: status === "missing" ? false : undefined,
   });
+  useEffect(() => {
+    if (!bundle?.route.slug) return;
+    const frame = window.requestAnimationFrame(() => {
+      scrollToDetailHero(".route-page .route-hero");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [bundle?.route.slug]);
+
   function update(next: Record<string, string>) {
     const copy = new URLSearchParams(params);
     for (const [key, value] of Object.entries(next)) copy.set(key, value);

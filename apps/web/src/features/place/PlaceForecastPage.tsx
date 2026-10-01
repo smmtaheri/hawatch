@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
 import { EmptyState } from "../../components/EmptyState";
@@ -15,6 +16,7 @@ import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { openAccountLogin } from "../../components/Header";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
+import { scrollToDetailHero } from "../../lib/detailEntryScroll";
 import type { DayInfo } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
@@ -53,6 +55,14 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
         : undefined,
     canonical: status === "missing" ? false : undefined,
   });
+  useEffect(() => {
+    if (!data?.subject.slug) return;
+    const frame = window.requestAnimationFrame(() => {
+      scrollToDetailHero(".point-page .point-hero");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [data?.subject.slug]);
+
   function access(day: DayInfo) {
     if (day.access === "plan_required") {
       navigate("/account/plans");
