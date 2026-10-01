@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kandolus-v2",
+  "catalog_version": "hawatch-kandolus-v3",
   "weather_points": {
     "kandolus-village": {
       "name": "روستای کندلوس",
@@ -68,9 +68,193 @@
       "climate": "forest_fog",
       "category": "جنگل‌های مازندران",
       "region": "کجور · نوشهر · مازندران"
+    },
+    "kojur-coal-mine": {
+      "name": "معدن زغال‌سنگ کجور",
+      "page_name": "معدن زغال‌سنگ کجور؛ مبدأ پیمایش سیسنگان",
+      "short_label": "معدن زغال‌سنگ کجور",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": [
+        "معدن ذغال کجور",
+        "معدن زغال‌سنگ کجور به سیسنگان",
+        "Kojur coal mine"
+      ],
+      "identity_summary": "معدن زغال‌سنگ کجور، مبدأ پیادهٔ ترک جنگلی کجور تا آبشار سیسنگان؛ دسترسی جاده‌ای از کجور تا این نقطه جزو route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+        "https://www.openstreetmap.org/?mlat=36.479666&mlon=51.743923#map=15/36.479666/51.743923",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.479666&longitude=51.743923"
+      ],
+      "latitude": 36.479666,
+      "longitude": 51.743923,
+      "elevation_m": 1012,
+      "status": "provisional",
+      "elevation_source": "Waypoint معدن در ترک Wikiloc؛ ارتفاع ۱۰۱۲ متر از DEM سرویس Open-Meteo GLO-90 در مختصات canonical.",
+      "climate": "forest_fog",
+      "category": "نقاط مسیر کجور تا سیسنگان",
+      "region": "کجور · نوشهر · مازندران"
+    },
+    "kojur-moss-waterfall": {
+      "name": "آبشار خزه‌ای کجور",
+      "page_name": "آبشار خزه‌ای کجور در مسیر سیسنگان",
+      "short_label": "آبشار خزه‌ای",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": [
+        "آبشار مسیر کجور به سیسنگان",
+        "آبشار خزه ای کجور",
+        "Kojur moss waterfall"
+      ],
+      "identity_summary": "آبشار خزه‌ای در بخش میانی پیمایش جنگلی کجور تا سیسنگان؛ عارضهٔ طبیعی میانی ثبت‌شده در گزارش مسیر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+        "https://www.wikiloc.com/hiking-trails/khjwr-bh-sysngndrychh-bydr-50820171",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.507214&longitude=51.759922"
+      ],
+      "latitude": 36.507214,
+      "longitude": 51.759922,
+      "elevation_m": 804,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار در ترک Wikiloc؛ ارتفاع ۸۰۴ متر از DEM سرویس Open-Meteo GLO-90 در مختصات canonical.",
+      "climate": "forest_fog",
+      "category": "نقاط مسیر کجور تا سیسنگان",
+      "region": "کجور · نوشهر · مازندران"
+    },
+    "sisangan-waterfall": {
+      "name": "آبشار سیسنگان",
+      "page_name": "آبشار سیسنگان در مسیر کجور",
+      "short_label": "آبشار سیسنگان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": [
+        "آبشار آهکی سیسنگان",
+        "آبشار مسیر کجور به سیسنگان",
+        "Sisangan Waterfall"
+      ],
+      "identity_summary": "آبشار سیسنگان، عارضهٔ شاخص بخش پایانی پیمایش جنگلی کجور تا سیسنگان؛ با پارک جنگلی سیسنگان در ساحل خزر یکی نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+        "https://www.wikiloc.com/waypoints/qcOpGA/abshr-sysngn",
+        "https://mestermelk.com/attraction/item/8",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.526320&longitude=51.766951"
+      ],
+      "latitude": 36.52632,
+      "longitude": 51.766951,
+      "elevation_m": 511,
+      "status": "provisional",
+      "elevation_source": "Waypoint آبشار سیسنگان در ترک Wikiloc؛ ارتفاع ۵۱۱ متر از DEM سرویس Open-Meteo GLO-90 در مختصات canonical.",
+      "climate": "forest_fog",
+      "category": "نقاط مسیر کجور تا سیسنگان",
+      "region": "کجور · نوشهر · مازندران"
+    },
+    "sisangan-forest-park": {
+      "name": "پارک جنگلی سیسنگان",
+      "page_name": "آب‌وهوای پارک جنگلی سیسنگان نوشهر",
+      "short_label": "پارک جنگلی سیسنگان",
+      "place_type": "forest",
+      "category_key": "forest",
+      "aliases": [
+        "جنگل سیسنگان",
+        "پارک جنگلی سی سنگان",
+        "ساحل سیسنگان",
+        "Sisangan Forest Park",
+        "Si Sangan Forest"
+      ],
+      "identity_summary": "پارک جنگلی و ساحل سیسنگان در جادهٔ نوشهر–نور؛ مقصد مستقل ساحلی و جنگلی که با آبشار سیسنگانِ مسیر کجور اشتباه نشود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://irangaah.ir/villages/nowshahr/boldeh-kojur/parek-jenegeli-si-sang-an",
+        "https://www.toiran.com/fa/city-nowshahr/natural_attractions/Sisangan-Forest-Park/2740",
+        "https://commons.wikimedia.org/wiki/File%3A%D9%BE%D8%A7%D8%B1%DA%A9_%D8%AC%D9%86%DA%AF%D9%84%DB%8C_%D8%B3%DB%8C_%D8%B3%D9%86%DA%AF%D8%A7%D9%86_-_panoramio.jpg",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.58307430&longitude=51.81289068"
+      ],
+      "latitude": 36.5830743,
+      "longitude": 51.81289068,
+      "elevation_m": -19,
+      "status": "provisional",
+      "elevation_source": "مختصات روستای پارک جنگلی سیسنگان از ایران‌گاه؛ ارتفاع منفی ۱۹ متر از DEM سرویس Open-Meteo GLO-90 در مختصات canonical.",
+      "climate": "forest_fog",
+      "category": "جنگل و ساحل مازندران",
+      "region": "سیسنگان · نوشهر · مازندران"
     }
   },
-  "routes": {},
+  "routes": {
+    "kojur-to-sisangan-waterfall": {
+      "slug": "kojur-to-sisangan-waterfall",
+      "title": "کجور تا آبشار سیسنگان",
+      "subtitle": "پیمایش جنگلی از معدن زغال‌سنگ کجور، از آبشار خزه‌ای تا آبشار سیسنگان",
+      "trail_label": "مسیر کجور–آبشار سیسنگان",
+      "origin": "معدن زغال‌سنگ کجور",
+      "target_label": "آبشار سیسنگان",
+      "region": "کجور · نوشهر · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kojur-coal-mine",
+        "kojur-moss-waterfall",
+        "sisangan-waterfall"
+      ],
+      "distance_km": 14.48,
+      "ascent_m": 240,
+      "one_way_minutes": 480,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+web-reports-v1",
+        "version": "kojur-to-sisangan-waterfall-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+          "https://www.wikiloc.com/hiking-trails/khjwr-bh-sysngndrychh-bydr-50820171",
+          "https://travel.mhkarami97.ir/posts/kojur_sisangan/"
+        ],
+        "evidence_tracks": [
+          "tracks/sisangan/kojur-to-sisangan-2017.gpx"
+        ],
+        "cumulative_minutes": {
+          "kojur-coal-mine": 0,
+          "kojur-moss-waterfall": 320,
+          "sisangan-waterfall": 480
+        },
+        "notes": [
+          "بخش جاده‌ای کجور تا معدن زغال‌سنگ از route پیاده حذف شده و معدن، مبدأ پیمایش پیادهٔ عمومی است.",
+          "مسافت ۱۴٫۴۸ کیلومتر از هندسهٔ ترک، از معدن تا آبشار سیسنگان، محاسبه شده است؛ ارتفاع خام GPX برای ascent حقیقت مرجع نیست.",
+          "ترک ثبت‌شده چندروزه و دارای شب‌مانی است؛ زمان‌بندی فقط زمان حرکت تخمینی است و توقف و شب‌مانی در ETA وارد نشده است.",
+          "پارک جنگلی سیسنگان مقصد ساحلی مستقل است و این ترک به پارک اصلی ساحل خزر نمی‌رسد؛ هدف route آبشار سیسنگان است.",
+          "عبور از رودخانه، لغزندگی و تغییرپذیری آبشارها می‌تواند زمان و ایمنی مسیر را تغییر دهد."
+        ]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+        "https://www.wikiloc.com/hiking-trails/khjwr-bh-sysngndrychh-bydr-50820171",
+        "https://travel.mhkarami97.ir/posts/kojur_sisangan/"
+      ],
+      "evidence_tracks": [
+        "tracks/sisangan/kojur-to-sisangan-2017.gpx"
+      ],
+      "public_point_notes": {
+        "kojur-coal-mine": "دسترسی جاده‌ای از کجور تا معدن، بخش پیادهٔ route نیست.",
+        "sisangan-waterfall": "آبشار سیسنگانِ این route با پارک جنگلی و ساحل سیسنگان یک نقطه نیست."
+      }
+    }
+  },
   "point": {
     "slug": "kandolus-village",
     "tile_name": "کندلوس",
