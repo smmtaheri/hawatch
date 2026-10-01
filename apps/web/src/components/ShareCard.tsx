@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { RouteForecast } from "../types";
-import { GearIcon } from "./GearIcon";
-import { buildRouteShareUrl, buildRouteTelegramShareUrl } from "../lib/routeShare";
-
+import { buildRouteShareUrl } from "../lib/routeShare";
+import { copyShareLink, renderSummaryPng } from "../lib/shareImage";
+import { Dialog } from "./Dialog";
 const GEAR_LABELS: Record<string, string> = {
   "waterproof-shell": "کاپشن ضدآب",
   "insulated-jacket": "کاپشن گرم",
@@ -26,83 +26,197 @@ const GEAR_LABELS: Record<string, string> = {
   whistle: "سوت نجات",
 };
 
-const DEFAULT_GEAR = ["hiking-boots", "backpack", "water-bottle"];
-
 export function ShareCard({ forecast }: { forecast: RouteForecast }) {
+  const ref = useRef<HTMLElement>(null);
+  const generation = useRef(0);
+  const [share, setShare] = useState<{
+    url: string;
+    file: File | null;
+    preview: string;
+    error: string;
+  } | null>(null);
+  const [message, setMessage] = useState("");
   const decision = forecast.decision;
-  const timingPending = Boolean(forecast.timing_pending ?? decision.timing_pending);
-  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
-  const shareUrl = buildRouteShareUrl(forecast);
-
-  async function copyLink() {
+  const pending = Boolean(forecast.timing_pending ?? decision.timing_pending);
+  const incomplete = forecast.points.some((point) => !point.weather_available);
+  useEffect(
+    () => () => {
+      generation.current++;
+    },
+    [],
+  );
+  useEffect(() => {
+    const preview = share?.preview;
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [share?.preview]);
+  async function prepare() {
+    if (!ref.current) return;
+    const revision = ++generation.current;
+    const url = buildRouteShareUrl(forecast);
+    setMessage("");
+    setShare({ url, file: null, preview: "", error: "" });
     try {
-      await navigator.clipboard.writeText(shareUrl);
-      setCopyState("copied");
-    } catch {
-      setCopyState("failed");
+      const file = await renderSummaryPng(
+        ref.current,
+        forecast.route.title,
+        forecast.meta.selected_date,
+        `hawatch-${forecast.route.slug}-${forecast.meta.selected_date}-${forecast.start_minutes}-${forecast.speed}.png`,
+      );
+      if (revision !== generation.current) return;
+      setShare({ url, file, preview: URL.createObjectURL(file), error: "" });
+    } catch (error) {
+      if (revision === generation.current)
+        setShare({
+          url,
+          file: null,
+          preview: "",
+          error:
+            error instanceof Error ? error.message : "ساخت تصویر ناموفق بود.",
+        });
     }
-    window.setTimeout(() => setCopyState("idle"), 2400);
   }
-
-  const telegram = buildRouteTelegramShareUrl(forecast);
-  const gear = decision.gear?.length ? decision.gear : DEFAULT_GEAR;
-
+  function close() {
+    generation.current++;
+    setShare(null);
+  }
+  async function nativeShare() {
+    if (!share?.file) return;
+    try {
+      await navigator.share({
+        files: [share.file],
+        url: share.url,
+        title: forecast.route.title,
+      });
+    } catch (error) {
+      if (!(error instanceof DOMException && error.name === "AbortError"))
+        setMessage("ارسال انجام نشد؛ عکس را ذخیره و لینک را کپی کنید.");
+    }
+  }
   return (
-    <section className={`route-decision route-forecast route-share-card share-state-${decision.state}`}>
-      <div className="share-card-heading">
-        <div>
-          <span className="decision-chip">{decision.chip}</span>
+    <>
+      <aside
+        ref={ref}
+        className={`trip-summary share-state-${decision.state}`}
+        aria-labelledby="trip-summary-title"
+      >
+        <h2 id="trip-summary-title">خلاصهٔ مسیر</h2>
+        <div className="trip-facts">
+          <div className="trip-fact">
+            <small>شروع حرکت</small>
+            <strong>{decision.start}</strong>
+          </div>
+          <div className="trip-fact">
+            <small>رسیدن به نقطه</small>
+            <strong>{pending ? "نامشخص" : decision.finish}</strong>
+          </div>
+          <div className="trip-fact">
+            <small>سرعت حرکت</small>
+            <strong>{decision.speed}</strong>
+          </div>
+          <div className="trip-fact">
+            <small>طول مسیر</small>
+            <strong>
+              {forecast.route.distance_label.replace(/km/g, "کیلومتر")}
+            </strong>
+          </div>
         </div>
-        <span className="share-status-badge">
-          <i aria-hidden="true" />
-          {decision.status}
-        </span>
-      </div>
-      {timingPending ? (
-        <div className="timing-pending-notice" role="status">
-          زمان‌بندی دقیق مسیر هنوز نهایی نشده است؛ زمان رسیدن به نقاط فعلاً در دسترس نیست.
-        </div>
-      ) : null}
-      <div className="share-summary">
-        <div>
-          <span>شروع حرکت</span>
-          <strong>{decision.start}</strong>
-        </div>
-        <div>
-          <span>رسیدن به نقطه</span>
-          <strong>{timingPending ? "نامشخص" : decision.finish}</strong>
-        </div>
-        <div>
-          <span>سرعت</span>
-          <strong>{decision.speed}</strong>
-        </div>
-        <div>
-          <span>نقطهٔ حساس</span>
-          <strong>{decision.critical_name || "—"}</strong>
-        </div>
-      </div>
-      <div className="share-summary-copy">
-        <strong>{decision.summary}</strong>
-      </div>
-      <div className="share-gear" aria-label="تجهیزات پیشنهادی">
-        <span className="share-section-label">تجهیزات پیشنهادی</span>
-        <ul>
-          {gear.map((item) => (
-            <li key={item}>
-              <GearIcon name={item} size={30} title={GEAR_LABELS[item] ?? item} />
-              <span>{GEAR_LABELS[item] ?? item}</span>
-            </li>
+        {pending ? (
+          <p className="timing-pending-notice" role="status">
+            زمان‌بندی دقیق مسیر هنوز نهایی نشده است؛ زمان رسیدن به نقاط فعلاً در
+            دسترس نیست.
+          </p>
+        ) : null}
+        {incomplete ? (
+          <p className="forecast-data-notice" role="status">
+            پیش‌بینی بعضی نقاط در زمان رسیدن در دسترس نیست؛ ارزیابی هوا کامل
+            نیست.
+          </p>
+        ) : null}
+        <p
+          className={`trip-sentence ${decision.state === "critical" ? "risk-red" : decision.state === "change" ? "risk-yellow" : ""}`}
+        >
+          {decision.summary}
+        </p>
+        <h3 className="equipment-heading">تجهیزات پیشنهادی</h3>
+        <div className="equipment">
+          {decision.gear?.map((item) => (
+            <span key={item}>{GEAR_LABELS[item] ?? item}</span>
           ))}
-        </ul>
-      </div>
-      <div className="share-actions">
-        <button className="share-copy-button" type="button" onClick={copyLink}>
-          {copyState === "copied" ? "لینک کپی شد ✓" : copyState === "failed" ? "کپی ناموفق بود" : "کپی لینک برنامه"}
-        </button>
-        <a className="share-telegram-button" href={telegram} target="_blank" rel="noopener noreferrer">
-          ارسال در تلگرام <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
+        </div>
+        <div className="share-actions">
+          <button type="button" onClick={() => void prepare()}>
+            اشتراک‌گذاری خلاصه
+          </button>
+        </div>
+      </aside>
+      {share ? (
+        <Dialog
+          title="اشتراک‌گذاری خلاصهٔ مسیر"
+          className="share-dialog"
+          onClose={close}
+        >
+          {share.preview ? (
+            <img
+              className="share-preview"
+              src={share.preview}
+              alt="تصویر خلاصهٔ برنامهٔ انتخاب‌شده"
+            />
+          ) : (
+            <p role="status">{share.error || "در حال ساخت تصویر…"}</p>
+          )}
+          <div className="share-page-link">
+            <span>لینک همین برنامه</span>
+            <a href={share.url} target="_blank" rel="noopener noreferrer">
+              {share.url}
+            </a>
+            <button
+              type="button"
+              className="outline-button"
+              onClick={async () =>
+                setMessage(
+                  (await copyShareLink(share.url))
+                    ? "لینک کپی شد"
+                    : "کپی خودکار ممکن نیست؛ لینک بالا را انتخاب و کپی کنید.",
+                )
+              }
+            >
+              کپی لینک
+            </button>
+          </div>
+          {share.file ? (
+            <div className="share-dialog-actions">
+              {navigator.canShare?.({ files: [share.file] }) ? (
+                <button
+                  type="button"
+                  className="primary-button"
+                  onClick={() => void nativeShare()}
+                >
+                  ارسال تصویر و لینک
+                </button>
+              ) : null}
+              <a
+                className="outline-button"
+                href={share.preview}
+                download={share.file.name}
+              >
+                ذخیرهٔ عکس
+              </a>
+            </div>
+          ) : null}
+          {share.file && !navigator.canShare?.({ files: [share.file] }) ? (
+            <p className="share-status">
+              تصویر را ذخیره کن و در برنامهٔ دلخواهت بفرست.
+            </p>
+          ) : null}
+          {message ? (
+            <p className="share-status" role="status">
+              {message}
+            </p>
+          ) : null}
+        </Dialog>
+      ) : null}
+    </>
   );
 }

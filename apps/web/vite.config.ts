@@ -7,8 +7,16 @@ const apiProxy = {
 };
 
 export default defineConfig({
+  cacheDir: "../../.tmp/vite-cache",
   envDir: "../../",
-  plugins: [react()],
+  plugins: [react(), {
+    name: "qa-noindex",
+    transformIndexHtml(html) {
+      return process.env.VITE_QA_PREVIEW === "true"
+        ? html.replace(/<head>/, '<head><meta name="robots" content="noindex,nofollow,noarchive" />')
+        : html;
+    },
+  }],
   build: {
     // Django serves the first HTML response for public SEO pages. Keep the
     // entry CSS/JS paths stable so that server-rendered HTML never needs to

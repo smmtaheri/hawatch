@@ -132,7 +132,7 @@ export interface HourlyReading {
   hour: number;
   temperature_c: number;
   temperature_label: string;
-  apparent_temperature_c?: number;
+  apparent_temperature_c?: number | null;
   apparent_temperature_label?: string;
   condition: string;
   icon: string;
@@ -150,6 +150,11 @@ export interface HourlyReading {
   cloud_cover_pct?: number | null;
   uv_index?: number | null;
   fields_unavailable?: string[];
+  weather_code?: string | number | null;
+  is_day?: boolean | null;
+  wind_gust_kmh?: number | null;
+  wind_direction_label?: string;
+  cloud_base_m?: number | null;
   is_yesterday: boolean;
   is_today: boolean;
   is_past: boolean;
@@ -281,6 +286,8 @@ export interface RoutePointView {
   longitude?: number | null;
   elevation_m?: number | null;
   weather_point_slug?: string | null;
+  weather_code?: string | number | null;
+  is_day?: boolean | null;
 }
 
 export interface WeatherPointSummary {
@@ -317,12 +324,14 @@ export interface PointForecast extends PlaceForecastResponse {
 }
 
 export interface SearchSuggestion {
-  type: "point";
+  type: "point" | "route";
   slug: string;
   label: string;
   hint: string;
   href: string;
   match_kind: "name" | "alias";
+  category_key?: string;
+  place_type?: string;
 }
 
 export interface RouteFromState {
@@ -387,4 +396,21 @@ export interface RouteForecast {
   empty: boolean;
   meta: ApiMeta;
   forecast_access?: ForecastAccess;
+}
+
+export interface PointDayBundle extends PlaceForecastResponse {
+  periods: Record<PeriodId, Pick<PlaceForecastResponse["forecast"], "period" | "hourly" | "current"> & { empty: boolean; partial: boolean }>;
+  daily_summary: { apparent_min_c: number | null; apparent_max_c: number | null; condition: string; severity: Severity; weather_code: string | null; forecast_at: string | null; complete: boolean };
+  data_revision: string;
+  cache_max_age_seconds: number;
+  cache_expires_at?: string | null;
+}
+
+export interface RouteDayBundle extends RouteForecast {
+  periods: Record<PeriodId, PlannerPeriodInfo>;
+  plans: Record<string, { points: Partial<RoutePointView>[]; decision: RouteForecast["decision"]; stats: RouteForecast["stats"]; hero: RouteForecast["hero"] }>;
+  data_revision: string;
+  cache_max_age_seconds: number;
+  cache_expires_at?: string | null;
+  coverage: { from: string; to: string; access_through: string };
 }

@@ -101,7 +101,7 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
         document.head.appendChild(link);
       }
       const cleanPath = location.pathname === "/" ? "/" : location.pathname.replace(/\/+$/, "");
-      link.href = canonicalPageUrl(window.location.origin, cleanPath);
+      link.href = canonicalPageUrl(import.meta.env.VITE_PUBLIC_SITE_ORIGIN || window.location.origin, cleanPath);
     }
     const description = options.description || (name ? `پیش‌بینی هوا و وضعیت مسیر برای ${name} در هواچ.` : DEFAULT_DESCRIPTION);
     setNamedMeta("description", description);
@@ -110,7 +110,7 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
     if (options.canonical === false) {
       document.head.querySelector('meta[property="og:url"]')?.remove();
     } else {
-      setPropertyMeta("og:url", canonicalPageUrl(window.location.origin, location.pathname.replace(/\/+$/, "") || "/"));
+      setPropertyMeta("og:url", canonicalPageUrl(import.meta.env.VITE_PUBLIC_SITE_ORIGIN || window.location.origin, location.pathname.replace(/\/+$/, "") || "/"));
     }
     const robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]') ?? document.createElement("meta");
     if (!robots.parentElement) {
@@ -120,6 +120,6 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
     // The loading branch above preserves an SSR noindex decision. Once data is
     // ready, explicit point policy wins; query variants remain noindex while
     // retaining their clean canonical links.
-    robots.content = options.robots ?? robotsForSearch(location.search);
+    robots.content = import.meta.env.VITE_QA_PREVIEW === "true" ? "noindex,nofollow,noarchive" : options.robots ?? robotsForSearch(location.search);
   }, [location.pathname, location.search, name, options.canonical, options.description, options.enabled, options.robots, options.title]);
 }

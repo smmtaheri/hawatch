@@ -1,0 +1,1266 @@
+[
+  {
+    "page": "route",
+    "route": "/routes/tochal-darband",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/route.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1329
+    },
+    "capture": "full-page",
+    "sha256": "4de955734de99580f72f4ee853c27934065a9ab9cdc83c9d5c3118304758442c"
+  },
+  {
+    "page": "route",
+    "route": "/routes/tochal-darband",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/route.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1329
+    },
+    "capture": "full-page",
+    "sha256": "aca3ed25de6c95928c6ba1458df1a3dbae631ea32af1ef7810cdb782967dea02"
+  },
+  {
+    "page": "route",
+    "route": "/routes/tochal-darband",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/route.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1106
+    },
+    "capture": "full-page",
+    "sha256": "753fa17cda2f72b39ae67b5a5ed4ce55d902b1ccb62f36f804a27d00bd29ed70"
+  },
+  {
+    "page": "route",
+    "route": "/routes/tochal-darband",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/route.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1106
+    },
+    "capture": "full-page",
+    "sha256": "29027fdaa9f4c54f2dbc195665178b258a33f190e55d53d05ea50ac40ec1edb8"
+  },
+  {
+    "page": "route-long",
+    "route": "/routes/tochal-kolakchal",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/route-long.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1330
+    },
+    "capture": "full-page",
+    "sha256": "4ecf89efcbdf91fb63545b66b01ef9846fbc210f8cc0d65a39455776176d5965"
+  },
+  {
+    "page": "route-long",
+    "route": "/routes/tochal-kolakchal",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/route-long.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1330
+    },
+    "capture": "full-page",
+    "sha256": "aa6a3125e50f778f418320f06540064dac3211cbabd6ca906eabf3812a3d23a4"
+  },
+  {
+    "page": "route-long",
+    "route": "/routes/tochal-kolakchal",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/route-long.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1106
+    },
+    "capture": "full-page",
+    "sha256": "d29b687e6daba8c0163725a8c0276e30ca36687b7eabc7d04795d7854a38a59e"
+  },
+  {
+    "page": "route-long",
+    "route": "/routes/tochal-kolakchal",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/route-long.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1106
+    },
+    "capture": "full-page",
+    "sha256": "fdad4119b2f29bff122ec919a6d870bfb839449da24493ee94e2c32d1e949b50"
+  },
+  {
+    "page": "home",
+    "route": "/",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/home.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 912
+    },
+    "capture": "full-page",
+    "sha256": "02423a2c0994db4ec37d4e5d31e7b6d70b596b32dee18f3dab3775ec29001902"
+  },
+  {
+    "page": "home",
+    "route": "/",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/home.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 912
+    },
+    "capture": "full-page",
+    "sha256": "8e1f8fa564272e0b33d97d570e0ba2fa04838f1fdb75ed3273c1d957c4a30fd0"
+  },
+  {
+    "page": "home",
+    "route": "/",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/home.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "full-page",
+    "sha256": "95eddc6ad3cd6647b3b943a3f402e1c12d35e503d0d05aa64d2dcabc43070056"
+  },
+  {
+    "page": "home",
+    "route": "/",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/home.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "full-page",
+    "sha256": "d6d7523afee33dc4ef660150abdec6a24bec3338c494f118b3f1eb363b144e40"
+  },
+  {
+    "page": "home-search",
+    "route": "/",
+    "state": "search",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/home-search.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "0768bd3a230d81e75f9fce745bbfcee0e72853f5e129de5630b40b173f56debc"
+  },
+  {
+    "page": "home-search",
+    "route": "/",
+    "state": "search",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/home-search.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "6277475150c015da042c1eb7ed98bed3ee9ce1d07551dbd2086bc3df3c15136c"
+  },
+  {
+    "page": "home-search",
+    "route": "/",
+    "state": "search",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/home-search.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "93c66de20d0ba91e8a685318f2c3613c2f43223f8226ddc0c4986abddaa7b446"
+  },
+  {
+    "page": "home-search",
+    "route": "/",
+    "state": "search",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/home-search.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "d8cd8d1aeda27f4d0e99477ba1459f9b83b2a36d22537d2e658ebd4fc86961ee"
+  },
+  {
+    "page": "destinations",
+    "route": "/destinations",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/destinations.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 2146
+    },
+    "capture": "full-page",
+    "sha256": "10179af63ad77ca9b19c071ab36d145fd4163ebeb1afbb0408b6fa65e3d1c9d8"
+  },
+  {
+    "page": "destinations",
+    "route": "/destinations",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/destinations.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 2146
+    },
+    "capture": "full-page",
+    "sha256": "430a25f9be69b1af67a330aa2fdd5503254914f6dbf823f35cb3b6eb7d0acde2"
+  },
+  {
+    "page": "destinations",
+    "route": "/destinations",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/destinations.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1251
+    },
+    "capture": "full-page",
+    "sha256": "9c1f01e441678ccb999ab8da0582c02eeec143687e2e32b081909cf6572f0872"
+  },
+  {
+    "page": "destinations",
+    "route": "/destinations",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/destinations.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1251
+    },
+    "capture": "full-page",
+    "sha256": "a19bd64d39edd2f1d816dc7304a64671e74fce989dea56f0b347bfa64a1ad887"
+  },
+  {
+    "page": "routes",
+    "route": "/routes",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/routes.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 923
+    },
+    "capture": "full-page",
+    "sha256": "34f52820a6909a2e263f68946a6697aab5b3336079c8050f904bc66496335dce"
+  },
+  {
+    "page": "routes",
+    "route": "/routes",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/routes.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 923
+    },
+    "capture": "full-page",
+    "sha256": "f5087080c8fc67b3ffc750a3ba292266ec1e7bb2caac83a5a1ecc84047953c34"
+  },
+  {
+    "page": "routes",
+    "route": "/routes",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/routes.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "full-page",
+    "sha256": "4af8a62aed88e4d894da9529cc96290b754a855954e6e7752e22b22371501f40"
+  },
+  {
+    "page": "routes",
+    "route": "/routes",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/routes.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "full-page",
+    "sha256": "cd2be434da5a934bc10b3e2205834c2847991af9555ee0b4d052442799828005"
+  },
+  {
+    "page": "destination",
+    "route": "/points/tochal",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/destination.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1152
+    },
+    "capture": "full-page",
+    "sha256": "668d37cc1d4aed2d04578f7fa98f95d811613c1641fd943a26bfa27e1053d20e"
+  },
+  {
+    "page": "destination",
+    "route": "/points/tochal",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/destination.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1152
+    },
+    "capture": "full-page",
+    "sha256": "6b8bf47ce99e856b33dc63a4b14a0cbc294fa70460960899c98568edae4153be"
+  },
+  {
+    "page": "destination",
+    "route": "/points/tochal",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/destination.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1028
+    },
+    "capture": "full-page",
+    "sha256": "d7cf28c95820d6ea17cc2a1d9043160e10389d7f21e380d31a0deca6e05a893b"
+  },
+  {
+    "page": "destination",
+    "route": "/points/tochal",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/destination.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1028
+    },
+    "capture": "full-page",
+    "sha256": "9404c19ea33cfba70430b196053a4c60f8fe46ea970765ff64dcb4238a1ec39c"
+  },
+  {
+    "page": "destination-details",
+    "route": "/points/tochal",
+    "state": "details",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/destination-details.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1673
+    },
+    "capture": "full-page",
+    "sha256": "b28471a908c758c34aa5c50fc25665948f98a67e59aeff928f9dcb6d9c4dca5d"
+  },
+  {
+    "page": "destination-details",
+    "route": "/points/tochal",
+    "state": "details",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/destination-details.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 1673
+    },
+    "capture": "full-page",
+    "sha256": "362cccdd5456109ef8264f58f09c0e2798f4e4a9f2ca2fc9b7d08727791bedd0"
+  },
+  {
+    "page": "destination-details",
+    "route": "/points/tochal",
+    "state": "details",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/destination-details.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1452
+    },
+    "capture": "full-page",
+    "sha256": "5f1d403b2e6b3cf8ca1c617776a8c994f915dd5f45b776dd84d905e6c5c28033"
+  },
+  {
+    "page": "destination-details",
+    "route": "/points/tochal",
+    "state": "details",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/destination-details.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1452
+    },
+    "capture": "full-page",
+    "sha256": "1fd7efaf7f42ec26f8c37cead5ac33443d392931fb59f69c7fc5f3da4c609ea6"
+  },
+  {
+    "page": "login-phone",
+    "route": "/",
+    "state": "phone",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/login-phone.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "2c213c5cf3fec6f49ae01eac489d29d52e480658f0eaf12125c501ffe8439c47"
+  },
+  {
+    "page": "login-phone",
+    "route": "/",
+    "state": "phone",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/login-phone.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "ba310b13c180e61e7179b4df685a21ebb5f8c3fdb7f6303a1e8f8e13f3a9a976"
+  },
+  {
+    "page": "login-phone",
+    "route": "/",
+    "state": "phone",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/login-phone.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "cab5899b979570f0155e70933ed7e84ed6e3a4d789cbf0d3cff9b4c9f4c28bb2"
+  },
+  {
+    "page": "login-phone",
+    "route": "/",
+    "state": "phone",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/login-phone.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "bd8e473b0b60c47656fa96c941baff2e63716a85243e6e0fc868ee8b5ee9afe0"
+  },
+  {
+    "page": "login-code",
+    "route": "/",
+    "state": "code",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/login-code.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "b979f49270b6146f3bf1e3cee5f48966382424daa3de484b80682fddc4e18a82"
+  },
+  {
+    "page": "login-code",
+    "route": "/",
+    "state": "code",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/login-code.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "e6704e9acb7b5d3f3f5fbf0a6a6089c1109c5231514a5849c12d5ab503949b8a"
+  },
+  {
+    "page": "login-code",
+    "route": "/",
+    "state": "code",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/login-code.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "314e0afa5612a02eaa2cc5e7f543955a4bff16e7e3a209b9f41885c1622ccadb"
+  },
+  {
+    "page": "login-code",
+    "route": "/",
+    "state": "code",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/login-code.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "fc86aa05fa5975768f0f3c8181ccbad91d6067f4d980c69ba0c34a0dc9c0dc07"
+  },
+  {
+    "page": "account",
+    "route": "/",
+    "state": "account",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/account.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "13d923a62c990def1b2fcc0d5611a1bd102f79f7e1b8c37e72550902d7a2b3e8"
+  },
+  {
+    "page": "account",
+    "route": "/",
+    "state": "account",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/account.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "873136131b403fc250a34080aa42ca31ad7adc2ebbb5372b3f7aed5c6158a2e6"
+  },
+  {
+    "page": "account",
+    "route": "/",
+    "state": "account",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/account.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "c8803753a22cf09098361745311152a7000af3d4d93f0a4b16bdc958795da320"
+  },
+  {
+    "page": "account",
+    "route": "/",
+    "state": "account",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/account.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "404433d9c80c22620b73b69ef5eb0205cde3c2d2aed20266d4289a7011418752"
+  },
+  {
+    "page": "account-paid",
+    "route": "/",
+    "state": "paid",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/account-paid.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "note": "Simulated paid account state only; no new plan or payment feature.",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "c44c7a9cc58d29dfafc48944bfe3b2820f3da5b0c5d7b0fa6409ff79e2f043b9"
+  },
+  {
+    "page": "account-paid",
+    "route": "/",
+    "state": "paid",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/account-paid.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "note": "Simulated paid account state only; no new plan or payment feature.",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "fc1e1e2b18704a6ea61ff393207a11fb9efea089a5a1632095e521adb6adbc12"
+  },
+  {
+    "page": "account-paid",
+    "route": "/",
+    "state": "paid",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/account-paid.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "note": "Simulated paid account state only; no new plan or payment feature.",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "94169a870fa9d988903da81659f0d84f7ab7b30e3af93072eaab740c236bbd28"
+  },
+  {
+    "page": "account-paid",
+    "route": "/",
+    "state": "paid",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/account-paid.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "note": "Simulated paid account state only; no new plan or payment feature.",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "4f359eb66e7301e0a756cdfb437207e5c2f68882e19c61c8c8e7d7cb9bc7fbe4"
+  },
+  {
+    "page": "subscription",
+    "route": "/subscription",
+    "state": "subscription",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/subscription.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "d7e04bfe557e69627890775b37cc8f2a92a10dc2fea271b8a802edb2a4cf4abe"
+  },
+  {
+    "page": "subscription",
+    "route": "/subscription",
+    "state": "subscription",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/subscription.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "a357588c87241699d605296a641d7e3006d4aa588ae46bda0d1b6c1f89eaa4e6"
+  },
+  {
+    "page": "subscription",
+    "route": "/subscription",
+    "state": "subscription",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/subscription.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "3e0766a43372e51c7acc68bfb771ff2f0da6e55f8b8eaa7ec13d32cbb59d63a9"
+  },
+  {
+    "page": "subscription",
+    "route": "/subscription",
+    "state": "subscription",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/subscription.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "761b954f0f63d737d40781017ca9868ecbcf4e14e8e0b157f3db740b3349bf69"
+  },
+  {
+    "page": "route-chooser",
+    "route": "/routes/tochal-darband",
+    "state": "chooser",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/route-chooser.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "cc7b18e8c7d7b31b59d146c8ad08167791bc799270bfa99c07db819d40734445"
+  },
+  {
+    "page": "route-chooser",
+    "route": "/routes/tochal-darband",
+    "state": "chooser",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/route-chooser.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "8df361f77cf2fef55983a219d0ffea847a2af8e55f70a04d646f7f3a5ee85662"
+  },
+  {
+    "page": "route-chooser",
+    "route": "/routes/tochal-darband",
+    "state": "chooser",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/route-chooser.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "4f0b050e467cc4abec1719d674dfa5c75ea418352815a770ba501244025b1bdf"
+  },
+  {
+    "page": "route-chooser",
+    "route": "/routes/tochal-darband",
+    "state": "chooser",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/route-chooser.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "0046a88d73dfb7dd7c210fcd19c2e5309bb3c7795e63628868b7ea5822cae988"
+  },
+  {
+    "page": "route-share",
+    "route": "/routes/tochal-darband",
+    "state": "share",
+    "device": "mobile",
+    "theme": "light",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/light/route-share.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "044b4cd7dc264048a6be064ae43e6c2a56662b46701557ce2e1938904560c688"
+  },
+  {
+    "page": "route-share",
+    "route": "/routes/tochal-darband",
+    "state": "share",
+    "device": "mobile",
+    "theme": "dark",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "file": "design/screens/new-design/mobile/dark/route-share.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "capture": "viewport",
+    "sha256": "ca0c52eb8b7478677ff976afcf85abfb2b135498f4fbc616dc3f910257dd3ad6"
+  },
+  {
+    "page": "route-share",
+    "route": "/routes/tochal-darband",
+    "state": "share",
+    "device": "desktop",
+    "theme": "light",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/light/route-share.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "9ba5ddc3be241e5b897dfff1a6f0d505c60e8d2d3d26addc694e3fc9c639fa60"
+  },
+  {
+    "page": "route-share",
+    "route": "/routes/tochal-darband",
+    "state": "share",
+    "device": "desktop",
+    "theme": "dark",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "file": "design/screens/new-design/desktop/dark/route-share.jpg",
+    "source": "rendered-from-reference-app",
+    "baseCommit": "6d74eadbb34067a1930104ef344faae21b423e2f",
+    "handoffRevision": "2026-10-01.1",
+    "imageDimensions": {
+      "width": 1440,
+      "height": 1000
+    },
+    "capture": "viewport",
+    "sha256": "c6a1b682191c720ac6d52687863da15ffe791c2b75fdd17aca55e4aefcede5f0"
+  }
+]

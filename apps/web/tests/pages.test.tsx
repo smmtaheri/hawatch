@@ -1,867 +1,609 @@
-import { render, screen, cleanup, waitFor, within } from "@testing-library/react";
+import { StrictMode } from "react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { MemoryRouter, useLocation } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
 import { AppRoutes } from "../src/app/App";
-import { HomePage } from "../src/pages/HomePage";
-import { LoginPage } from "../src/pages/LoginPage";
-import { PointDetailPage as PointPage } from "../src/pages/PointDetailPage";
-import { RoutePage } from "../src/pages/RoutePage";
-import { DestinationsPage } from "../src/pages/DestinationsPage";
-import { PointDetailPage } from "../src/pages/PointDetailPage";
+import { buildRouteShareUrl } from "../src/lib/routeShare";
+import { HourlyForecast } from "../src/components/HourlyForecast";
+import { copyShareLink } from "../src/lib/shareImage";
+import { CategoryIcon, WeatherIcon } from "../src/components/DesignIcon";
+import pointFixture from "./fixtures/point-day.json";
+import routeFixture from "./fixtures/route-day.json";
+import type { HourlyReading, RouteForecast } from "../src/types";
 
-const pointForecast = {
-  subject: {
-    kind: "point" as const,
-    slug: "tochal",
-    weather_point_slug: "tochal",
-    canonical_href: "/points/tochal",
-    name: "قلهٔ توچال",
-    elevation_m: 3964,
-    elevation_label: "۳۹۶۴ متر",
-    latitude: 35.88,
-    longitude: 51.42,
-    context_label: "کوه · البرز مرکزی",
-    hero_image: "/images/touchal-banner-clean.png",
-    hero_image_alt: "نمای کوهستان توچال",
-    region: "تهران",
-    category: "کوه · البرز مرکزی",
-  },
-  point: {
-    slug: "tochal",
-    tile_name: "توچال",
-    name: "قلهٔ توچال",
-    short_category: "کوه",
-    category: "کوه · البرز مرکزی",
-    category_key: "mountain",
-    region: "تهران",
-    elevation_m: 3964,
-    elevation_label: "۳۹۶۴ متر",
-    image: "/images/touchal-banner-clean.png",
-    image_alt: "نمای کوهستان توچال",
-    href: "/points/tochal",
-    is_popular: true,
-    routes: [
-      {
-        slug: "tochal-darband",
-        title: "دربند تا توچال",
-        trail_label: "ترک کوه‌پیمایی",
-        origin: "دربند",
-        target_label: "قلهٔ توچال",
-        distance_km: 16.2,
-        distance_label: "۱۶٫۲ km",
-        ascent_m: 2260,
-        ascent_label: "۲۲۶۰ m",
-        featured: true,
-        href: "/routes/tochal-darband",
-      },
-    ],
-  },
-  days: [
-    { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
-    { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
-  ],
-  period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", headline: "تغییرات صبح · هر دو ساعت", hours: [6, 8, 10] },
-  current: null,
-  hourly: [
-    { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
-  ],
-  metrics: [{ icon: "wind-average", label: "باد میانگین", value: "۱۰ km/h", note: "جنوب‌غربی", color: "teal" }],
-  hero: { status: "☼　۹°", alert: "≋　از ساعت ۱۱" },
-  decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح برای شروع برنامه مناسب‌تر است.", text: "تا ساعت ۱۱ آرام‌تر است." },
-  related_routes: [
-    {
-      slug: "tochal-darband",
-      title: "دربند تا توچال",
-      trail_label: "ترک کوه‌پیمایی",
-      origin: "دربند",
-      target_label: "قلهٔ توچال",
-      distance_km: 16.2,
-      distance_label: "۱۶٫۲ km",
-      ascent_m: 2260,
-      ascent_label: "۲۲۶۰ m",
-      featured: true,
-      href: "/routes/tochal-darband",
-    },
-  ],
-  related_routes_title: "مسیرهای منتهی به توچال",
-  updated_label: "آخرین به‌روزرسانی: امروز، ۰۵:۴۵",
-  empty: false,
-  meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", current_local_time: "2026-08-26T06:00:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
-  forecast: {
-    days: [
-      { date: "2026-08-25", label: "دیروز", jalali: "۳ شهریور", offset: -1, is_yesterday: true, is_today: false, is_past: true, is_future: false, is_current: false },
-      { date: "2026-08-26", label: "امروز", jalali: "۴ شهریور", offset: 0, is_yesterday: false, is_today: true, is_past: false, is_future: false, is_current: true },
-    ],
-    period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", headline: "تغییرات صبح · هر دو ساعت", hours: [6, 8, 10] },
-    current: null,
-    hourly: [
-      { time: "۰۳:۰۰", hour: 3, temperature_c: 7, temperature_label: "۷°", condition: "صاف", icon: "☼", wind_speed_kmh: 7, wind_label: "باد ۷ km/h", severity: "normal", state: "normal", is_yesterday: false, is_today: true, is_past: true, is_current: false, is_future: false },
-    ],
-    meta: { freshness: "ready", generated_at: "2026-08-26T05:45:00+03:30", current_local_time: "2026-08-26T06:00:00+03:30", selected_date: "2026-08-26", selected_period: "morning" },
-  },
-};
-
-function pointForecastForAccess(authenticated: boolean) {
-  const selectedDate = authenticated ? "2026-08-26" : "2026-08-25";
-  const days = pointForecast.days.map((day) => (
-    day.date === "2026-08-26"
-      ? { ...day, access: authenticated ? "available" : "login_required" }
-      : { ...day, access: "available" }
-  ));
-  const meta = { ...pointForecast.meta, selected_date: selectedDate };
-  return {
-    ...pointForecast,
-    days,
-    meta,
-    forecast: { ...pointForecast.forecast, days, meta },
-  };
-}
-
-const routeForecast = {
-  route: {
-    slug: "tochal-darband",
-    title: "دربند تا توچال",
-    subtitle: "",
-    origin: "دربند",
-    target_label: "قلهٔ توچال",
-    distance_label: "۱۶٫۲ km",
-    ascent_label: "۲۲۶۰ m",
-    default_start_minutes: 360,
-    href: "/routes/tochal-darband",
-    target_point: pointForecast.point,
-    points: [],
-    siblings: [
-      { slug: "tochal-velenjak", title: "ولنجک تا توچال", trail_label: "ترک", origin: "ولنجک", target_label: "قلهٔ توچال", distance_km: 14.8, distance_label: "۱۴٫۸ km", ascent_m: 2160, ascent_label: "۲۱۶۰ m", featured: false, href: "/routes/tochal-velenjak" },
-    ],
-  },
-  days: pointForecast.days,
-  period: { id: "morning", label: "صبح", range_label: "۰۶ تا ۱۲", hours: [6, 8, 10] },
-  start_minutes: 360,
-  start_time: "۰۶:۰۰",
-  speed: "متوسط",
-  speed_options: ["آرام", "متوسط", "سریع"],
-  points: [
-    { slug: "tochal-sarband-square", name: "سربند", elevation_label: "۱۸۰۰ m", href: "/points/tochal-sarband-square", axis_x: 10, axis_y: 83, time: "۰۶:۰۰", temp: 8, wind: 6, icon: "☼", condition: "شروع آرام", state: "normal", note: "شروع آرام", arrival_minutes: 360 },
-  ],
-  hourly: pointForecast.hourly,
-  hero: { status: "گردنهٔ لوپ" },
-  stats: [{ label: "مسافت", value: "۱۶٫۲ km" }],
-  decision: {
-    chip: "پیش‌بینی مسیر · امروز",
-    title: "با حرکت ساعت ۰۶:۰۰، حدود ۱۳:۰۰ به نقطه می‌رسی.",
-    status: "هشدار",
-    state: "critical",
-    summary: "شرایط پرریسک",
-    hero_status: "گردنهٔ لوپ",
-    critical_name: "گردنهٔ لوپ",
-    critical_time: "۱۰:۴۵",
-    critical_note: "زمان ذخیره",
-    recommendations: ["برگرد اگر دید محدود است."],
-    start: "۰۶:۰۰",
-    finish: "۱۳:۰۰",
-    speed: "متوسط",
-  },
-  empty: false,
-  meta: pointForecast.meta,
-};
-
-function routeForecastForAccess(authenticated: boolean) {
-  const selectedDate = authenticated ? "2026-08-26" : "2026-08-25";
-  const days = routeForecast.days.map((day) => (
-    day.date === "2026-08-26"
-      ? { ...day, access: authenticated ? "available" : "login_required" }
-      : { ...day, access: "available" }
-  ));
-  return {
-    ...routeForecast,
-    days,
-    meta: { ...routeForecast.meta, selected_date: selectedDate },
-  };
-}
-
-function jsonResponse(data: unknown, ok = true, status = 200) {
-  return Promise.resolve({
-    ok,
-    status,
-    json: async () => data,
-  });
-}
-
-function renderAt(path: string) {
-  return render(
-    <ThemeProvider>
-      <MemoryRouter initialEntries={[path]}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/destinations" element={<DestinationsPage />} />
-          <Route path="/destinations/" element={<DestinationsPage />} />
-          <Route path="/destinations/page/:page" element={<DestinationsPage />} />
-          <Route path="/destinations/page/:page/" element={<DestinationsPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/points/:slug" element={<PointPage />} />
-          <Route path="/routes/:slug" element={<RoutePage />} />
-        </Routes>
-      </MemoryRouter>
-    </ThemeProvider>,
+const day = pointFixture.meta.selected_date;
+const previous = pointFixture.days[0].date;
+const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
+const response = (data: unknown, status = 200) =>
+  Promise.resolve({ ok: status < 400, status, json: async () => data });
+let authenticated = false;
+let paid = false;
+let error = 0;
+let pending = false;
+let stale = false;
+const fetchMock = vi.fn();
+function Probe() {
+  const location = useLocation();
+  return (
+    <output data-testid="location">
+      {location.pathname}
+      {location.search}
+    </output>
   );
 }
-
-function renderApplication(path: string) {
-  return render(
+function mount(path = "/", strict = false) {
+  const content = (
     <ThemeProvider>
       <MemoryRouter initialEntries={[path]}>
         <AppRoutes />
+        <Probe />
       </MemoryRouter>
-    </ThemeProvider>,
+    </ThemeProvider>
+  );
+  return render(strict ? <StrictMode>{content}</StrictMode> : content);
+}
+function weatherCalls() {
+  return fetchMock.mock.calls.filter(([url]) =>
+    String(url).includes("/forecast/"),
   );
 }
-
-describe("Hawatch pages", () => {
-  const allowedTestPhone = "989111111111";
-  let mockedAuthenticated = false;
-  beforeEach(() => {
-    window.localStorage.clear();
-    mockedAuthenticated = false;
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo, init?: RequestInit) => {
-        const url = String(input);
-        if (url.includes("/auth/me")) return mockedAuthenticated
-          ? jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } })
-          : jsonResponse({}, false, 403);
-        if (url.includes("/auth/csrf")) return jsonResponse({ csrf_token: "test-csrf" });
-        if (url.includes("/auth/logout")) {
-          mockedAuthenticated = false;
-          return jsonResponse({ authenticated: false });
-        }
-        if (url.includes("/auth/login")) {
-          const body = JSON.parse(String(init?.body || "{}")) as { phone?: string };
-          if (body.phone !== allowedTestPhone) return jsonResponse({ detail: "این شماره اجازهٔ ورود ندارد." }, false, 400);
-          mockedAuthenticated = true;
-          return jsonResponse({ authenticated: true, plan: { code: "free", title: "عضویت رایگان", tier: "free" }, forecast_access: { viewer: "member", plan_title: "عضویت رایگان", display_day_count: 7, visible_days_from_yesterday: 2, available_through: "2026-08-27" } });
-        }
-        if (url.includes("/points/tochal/forecast")) return jsonResponse(pointForecastForAccess(mockedAuthenticated));
-        if (url.includes("/routes/tochal-darband/forecast")) {
-          const requestedDate = new URL(url).searchParams.get("date");
-          if (!mockedAuthenticated && requestedDate === "2026-08-26") {
-            return jsonResponse({ code: "login_required" }, false, 403);
-          }
-          return jsonResponse(routeForecastForAccess(mockedAuthenticated));
-        }
-        if (url.includes("/destinations/")) {
-          const page = Number(new URL(url).searchParams.get("page") || "1");
-          const nextPoint = {
-            ...pointForecast.point,
-            slug: "damavand",
-            name: "قلهٔ دماوند",
-            href: "/points/damavand",
-          };
-          return jsonResponse({
-            destinations: [page === 1 ? pointForecast.point : nextPoint],
-            pagination: {
-              page,
-              page_size: 1,
-              total: 2,
-              has_next: page === 1,
-              next_page: page === 1 ? 2 : null,
-              next_href: page === 1 ? "/destinations/page/2" : null,
-              previous_href: page === 2 ? "/destinations" : null,
-            },
-          });
-        }
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        if (url.includes("/search/suggestions")) {
-          return jsonResponse({
-            query: "پس",
-            results: [
-              {
-                type: "point",
-                slug: "tochal-pas-ghaleh-village",
-                label: "پس‌قلعه",
-                hint: "نقطهٔ مسیر · توچال",
-                href: "/points/tochal-pas-ghaleh-village",
-                match_kind: "name",
-              },
-            ],
-            empty: false,
-            meta: { freshness: "ready" },
-          });
-        }
-        return jsonResponse({}, false, 500);
-      }),
-    );
+function account() {
+  return {
+    authenticated: true,
+    plan: {
+      code: paid ? "professional" : "free",
+      title: paid ? "طرح حرفه‌ای" : "عضویت رایگان",
+      tier: paid ? "paid" : "free",
+    },
+    days_remaining: paid ? 4 : null,
+    forecast_access: { ...pointFixture.forecast_access, viewer: "member" },
+  };
+}
+function pointBundle(url: URL) {
+  const data = clone(pointFixture);
+  const date = url.searchParams.get("date") || day;
+  const period = url.searchParams.get("period") || data.meta.selected_period;
+  data.meta.selected_date = date;
+  data.meta.selected_period = period;
+  data.forecast.meta = data.meta;
+  data.meta.freshness = stale ? "stale" : "ready";
+  if (authenticated) {
+    data.forecast_access.viewer = "member";
+    data.days.forEach((item) => {
+      if (item.offset <= 1) item.access = "available";
+    });
+  }
+  data.periods[period as keyof typeof data.periods].hourly.forEach((hour) => {
+    hour.apparent_temperature_c = -7;
+    hour.temperature_c = 91;
   });
-
-  afterEach(() => {
-    vi.unstubAllGlobals();
-    document.documentElement.removeAttribute("style");
-  });
-
-  it("renders home, point and route", async () => {
-    renderAt("/");
-    expect(await screen.findByText("توچال")).toBeInTheDocument();
-    expect(document.querySelectorAll("h1")).toHaveLength(1);
-    expect(screen.getByRole("heading", { level: 1, name: "پیش‌بینی هوای نقاط و مسیرها" })).toBeInTheDocument();
-    expect(screen.getByText("مقصدهای محبوب")).toBeInTheDocument();
-    expect(screen.getAllByLabelText("تغییر تم").length).toBeGreaterThan(0);
-  });
-
-  it("renders the destination hub from its crawlable route", async () => {
-    renderAt("/destinations");
-
-    expect(await screen.findByRole("heading", { level: 1, name: "مقصدهای اصلی هواچ" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /قلهٔ توچال/ })).toHaveAttribute("href", "/points/tochal");
-    expect(screen.getByRole("link", { name: "نمایش مقصدهای بیشتر" })).toHaveAttribute("href", "/destinations/page/2");
-    expect(screen.queryByText("دسترسی سریع هواچ")).not.toBeInTheDocument();
-    expect(document.title).toBe("مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها");
-  });
-
-  it("loads the next destination slice automatically before the end of the grid", async () => {
-    class FakeIntersectionObserver {
-      callback: IntersectionObserverCallback;
-
-      constructor(callback: IntersectionObserverCallback) {
-        this.callback = callback;
-      }
-
-      observe() {
-        this.callback(
-          [{ isIntersecting: true } as IntersectionObserverEntry],
-          this as unknown as IntersectionObserver,
-        );
-      }
-
-      disconnect() {}
-      unobserve() {}
-      takeRecords() { return []; }
-      root = null;
-      rootMargin = "600px 0px";
-      thresholds = [0];
+  return data;
+}
+function routeBundle(url: URL) {
+  const data = clone(routeFixture);
+  data.meta.selected_date = url.searchParams.get("date") || day;
+  data.meta.selected_period = url.searchParams.get("period") || "morning";
+  data.speed = "متوسط";
+  data.start_minutes = 480;
+  data.start_time = "۰۸:۰۰";
+  data.timing_pending = pending;
+  if (pending)
+    for (const plan of Object.values(data.plans)) {
+      plan.decision.timing_pending = true;
+      plan.points.forEach(
+        (point) => ((point as { arrival_at: string | null }).arrival_at = null),
+      );
     }
-    vi.stubGlobal("IntersectionObserver", FakeIntersectionObserver);
-
-    renderApplication("/destinations");
-
-    expect(await screen.findByRole("link", { name: /قلهٔ توچال/ })).toBeInTheDocument();
-    expect(await screen.findByRole("link", { name: /قلهٔ دماوند/ })).toHaveAttribute("href", "/points/damavand");
-    expect(screen.queryByRole("link", { name: "نمایش مقصدهای بیشتر" })).not.toBeInTheDocument();
-    const destinationRequests = vi.mocked(fetch).mock.calls
-      .map(([input]) => String(input))
-      .filter((input) => input.includes("/destinations/"));
-    expect(destinationRequests.some((input) => input.includes("page=1"))).toBe(true);
-    expect(destinationRequests.some((input) => input.includes("page=2"))).toBe(true);
-  });
-
-  it("opens a route-backed login overlay from the shared header", async () => {
-    const user = userEvent.setup();
-    renderApplication("/");
-    await screen.findByText("توچال");
-    await user.click(screen.getByRole("link", { name: "ورود" }));
-    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
-    const phone = within(dialog).getByLabelText("شمارهٔ موبایل");
-    expect(phone).toBeInTheDocument();
-    expect(phone).toHaveValue("");
-    await user.type(phone, allowedTestPhone);
-    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
-    const otp = await within(dialog).findByLabelText("کد ورود");
-    expect(otp).toHaveValue("");
-    await user.type(otp, "1234");
-    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
-    await waitFor(() => expect(screen.queryByRole("dialog", { name: "ورود به هواچ" })).not.toBeInTheDocument());
-    expect(screen.getByRole("button", { name: "حساب" })).toBeInTheDocument();
-    expect(document.title).toBe("هواچ | پیش‌بینی هوای کوهستان و مسیرها");
-    await user.click(screen.getByRole("button", { name: "حساب" }));
-    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
-    expect(within(accountDialog).getByText("طرح فعلی:")).toBeInTheDocument();
-    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
-    expect(screen.getByRole("link", { name: "ورود" })).toBeInTheDocument();
-  });
-
-  it("refreshes forecast access after login and logout without a page reload", async () => {
-    const user = userEvent.setup();
-    renderApplication("/points/tochal");
-    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
-    expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(1);
-
-    await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
-    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
-    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), allowedTestPhone);
-    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
-    await user.type(await within(dialog).findByLabelText("کد ورود"), "1234");
-    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
-
-    await waitFor(() => expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(0));
-    await user.click(screen.getByRole("button", { name: "حساب" }));
-    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
-    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
-    await waitFor(() => expect(document.querySelectorAll(".day-tabs button.is-locked")).toHaveLength(1));
-  });
-
-  it("returns a route to its readable day after logout and restores its locks", async () => {
-    const user = userEvent.setup();
-    renderApplication("/routes/tochal-darband");
-    await screen.findByRole("heading", { name: "دربند تا توچال" });
-    expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(1);
-
-    await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
-    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
-    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), allowedTestPhone);
-    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
-    await user.type(await within(dialog).findByLabelText("کد ورود"), "1234");
-    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
-
-    await waitFor(() => expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(0));
-    await user.click(screen.getByRole("button", { name: "حساب" }));
-    const accountDialog = await screen.findByRole("dialog", { name: "حساب کاربری" });
-    await user.click(within(accountDialog).getByRole("button", { name: "خروج از حساب" }));
-    await waitFor(() => expect(document.querySelectorAll(".route-page .day-tabs button.is-locked")).toHaveLength(1));
-  });
-
-  it("renders a full login surface for a direct login URL", async () => {
-    renderAt("/login?returnTo=%2Fpoint%2Ftochal");
-    expect(await screen.findByRole("heading", { name: "ورود به هواچ" })).toBeInTheDocument();
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-    expect(screen.getByLabelText("شمارهٔ موبایل")).toBeInTheDocument();
-  });
-
-  it("keeps the server as the authority for the temporary allowlist", async () => {
-    const user = userEvent.setup();
-    renderApplication("/");
-    await screen.findByText("توچال");
-    await user.click(screen.getByRole("link", { name: "ورود" }));
-    const dialog = await screen.findByRole("dialog", { name: "ورود به هواچ" });
-    await user.type(within(dialog).getByLabelText("شمارهٔ موبایل"), "989121234567");
-    await user.click(within(dialog).getByRole("button", { name: "ادامه" }));
-    const otp = await within(dialog).findByLabelText("کد ورود");
-    await user.type(otp, "0000");
-    await user.click(within(dialog).getByRole("button", { name: "ورود به هواچ" }));
-    expect(await within(dialog).findByRole("alert")).toHaveTextContent("اجازهٔ ورود");
-  });
-
-  it("renders point and can open a route", async () => {
-    const user = userEvent.setup();
-    renderAt("/points/tochal");
-    expect(await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" })).toBeInTheDocument();
-    expect(screen.getByText("پیش‌بینی آب‌وهوای این نقطه در ارتفاع ۳۹۶۴ متر")).toBeInTheDocument();
-    expect(document.querySelector(".point-page .page-back-navigation")).toContainElement(
-      screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
+  return data;
+}
+function pointSummary() {
+  return pointFixture.point;
+}
+function routeSuggestion() {
+  return {
+    type: "route",
+    id: "route:tochal-darband",
+    label: "دربند تا توچال",
+    slug: "tochal-darband",
+    href: "/routes/tochal-darband",
+    hint: "۶ نقطه · ۱۰ کیلومتر",
+    category_key: "route",
+    place_type: "route",
+    normalized_query: "توچال",
+  };
+}
+function pointSuggestion() {
+  return {
+    type: "point",
+    id: "point:tochal",
+    label: "قلهٔ توچال",
+    slug: "tochal",
+    href: "/points/tochal",
+    hint: "تهران · ۳۹۵۵ متر",
+    category_key: "mountain",
+    place_type: "peak",
+    normalized_query: "توچال",
+  };
+}
+function defaultFetch(input: RequestInfo) {
+  const url = new URL(String(input), "http://localhost");
+  if (url.pathname.includes("/auth/me"))
+    return response(authenticated ? account() : {}, authenticated ? 200 : 403);
+  if (url.pathname.includes("/auth/csrf"))
+    return response({ csrf_token: "test-csrf" });
+  if (url.pathname.includes("/auth/login")) {
+    authenticated = true;
+    return response(account());
+  }
+  if (url.pathname.includes("/auth/logout")) {
+    authenticated = false;
+    return response({ authenticated: false });
+  }
+  if (url.pathname.includes("/forecast/")) {
+    if (error) return response({ detail: "forecast error" }, error);
+    if (
+      url.searchParams.get("date") &&
+      url.searchParams.get("date")! > day &&
+      !authenticated
+    )
+      return response({ code: "login_required" }, 403);
+    return response(
+      url.pathname.includes("/routes/") ? routeBundle(url) : pointBundle(url),
     );
-    expect(document.querySelector('.specialist-metric-icon use')).toHaveAttribute(
+  }
+  if (url.pathname.includes("/search/suggestions"))
+    return response({ results: [pointSuggestion(), routeSuggestion()] });
+  if (url.pathname.endsWith("/destinations/"))
+    return response({
+      destinations:
+        url.searchParams.get("query") === "هیچ" ? [] : [pointSummary()],
+      pagination: {
+        page: 1,
+        page_size: 16,
+        total: 1,
+        has_next: false,
+        next_page: null,
+        next_href: null,
+        previous_href: null,
+      },
+    });
+  if (url.pathname.endsWith("/routes/"))
+    return response({
+      routes:
+        url.searchParams.get("query") === "هیچ" ? [] : [routeFixture.route],
+      empty: false,
+    });
+  if (url.pathname.endsWith("/points/"))
+    return response({
+      results: [pointSummary()],
+      meta: {
+        ...pointFixture.meta,
+        catalog_counts: { points: 746, routes: 166 },
+      },
+    });
+  return response({}, 404);
+}
+
+beforeEach(() => {
+  authenticated = false;
+  paid = false;
+  error = 0;
+  pending = false;
+  stale = false;
+  fetchMock.mockReset();
+  fetchMock.mockImplementation(defaultFetch);
+  vi.stubGlobal("fetch", fetchMock);
+  localStorage.clear();
+});
+afterEach(() => vi.unstubAllGlobals());
+
+describe("new-design pages and real day contracts", () => {
+  it("keeps day controls focused during a request and ignores a late previous-day response", async () => {
+    let finish!: (value: unknown) => void;
+    fetchMock.mockImplementation((input: RequestInfo) => {
+      const url = new URL(String(input), "http://localhost");
+      if (
+        url.pathname.includes("/forecast/") &&
+        url.searchParams.get("date") === previous
+      ) {
+        return new Promise((resolve) => {
+          finish = resolve;
+        });
+      }
+      return defaultFetch(input);
+    });
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    const yesterday = screen.getByRole("tab", { name: /دیروز/ });
+    await userEvent.click(yesterday);
+    await waitFor(() => expect(weatherCalls()).toHaveLength(2));
+    expect(yesterday).toHaveFocus();
+    expect(screen.getByRole("tab", { name: /امروز/ })).toBeVisible();
+    expect(document.querySelector(".hour-card")).toBeNull();
+    await userEvent.click(screen.getByRole("tab", { name: /امروز/ }));
+    await act(async () => {
+      finish(
+        await response(
+          pointBundle(new URL(`http://localhost/forecast/?date=${previous}`)),
+        ),
+      );
+    });
+    expect(screen.getByRole("tab", { name: /امروز/ })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+    expect(screen.getByTestId("location")).toHaveTextContent(`date=${day}`);
+    expect(weatherCalls()).toHaveLength(2);
+  });
+
+  it("renders home counts and navigation to both independent catalogs", async () => {
+    mount();
+    expect(await screen.findByText("۷۴۶")).toBeVisible();
+    expect(screen.getByRole("link", { name: "همهٔ مقصدها" })).toHaveAttribute(
       "href",
-      "/icons/specialist/hawatch-specialist-icons.svg#icon-wind-average",
+      "/destinations",
     );
-    expect(screen.queryByText("صبح برای شروع برنامه مناسب‌تر است.")).not.toBeInTheDocument();
-    expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
-    await user.click(screen.getAllByText("دربند تا توچال")[0]);
-    expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
-  });
-
-  it("replaces the empty route state with similar destination links", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/points/tochal/forecast")) {
-          return jsonResponse({
-            ...pointForecast,
-            related_routes: [],
-            related_destinations_title: "مقصدهای مشابه",
-            related_destinations: [
-              {
-                slug: "darbandsar-ski-resort",
-                name: "پیست اسکی دربندسر",
-                short_label: "دربندسر",
-                short_category: "پیست اسکی",
-                category: "پیست اسکی · البرز",
-                place_type: "landmark",
-                category_key: "ski",
-                region: "البرز",
-                elevation_m: 2500,
-                elevation_label: "۲۵۰۰ متر",
-                href: "/points/darbandsar-ski-resort",
-              },
-            ],
-          });
-        }
-        return jsonResponse({}, false, 500);
-      }),
+    expect(screen.getByRole("link", { name: "همهٔ مسیرها" })).toHaveAttribute(
+      "href",
+      "/routes",
     );
-    renderAt("/points/tochal");
-
-    expect((await screen.findAllByRole("heading", { name: "مقصدهای مشابه" }))).toHaveLength(2);
-    expect(screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })).toHaveLength(2);
-    for (const link of screen.getAllByRole("link", { name: /پیست اسکی دربندسر/ })) {
-      expect(link).toHaveAttribute("href", "/points/darbandsar-ski-resort");
-    }
-    expect(screen.queryByText("هنوز مسیری برای این نقطه ثبت نشده")).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "تلگرام هواچ" })).toBeVisible();
   });
-
-  it("opens point and route detail views at their identity hero", async () => {
-    const scrollIntoView = vi.fn();
-    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
-      configurable: true,
-      value: scrollIntoView,
-    });
-
-    const { unmount } = renderAt("/points/tochal");
+  it.each(["/destinations", "/routes"])(
+    "queries its own %s catalog",
+    async (path) => {
+      mount(path);
+      await screen.findByRole("heading", { level: 1 });
+      await userEvent.type(screen.getByRole("searchbox"), "هیچ");
+      await waitFor(() =>
+        expect(
+          fetchMock.mock.calls.some(
+            ([url]) =>
+              String(url).includes(path + "/?") &&
+              String(url).includes("query="),
+          ),
+        ).toBe(true),
+      );
+      expect(weatherCalls()).toHaveLength(0);
+    },
+  );
+  it("deduplicates the first complete day request in StrictMode", async () => {
+    mount("/points/tochal", true);
     await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
-    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
-    unmount();
-
-    scrollIntoView.mockClear();
-    renderAt("/routes/tochal-darband");
+    expect(weatherCalls()).toHaveLength(1);
+    expect(String(weatherCalls()[0][0])).toContain("/forecast/day/");
+    expect(screen.getByTestId("location")).toHaveTextContent(
+      /^\/points\/tochal$/,
+    );
+  });
+  it("keeps the backend default period on a clean point URL", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    expect(
+      document.querySelector('.period[aria-pressed="true"]'),
+    ).toHaveTextContent("ظهر");
+    expect(String(weatherCalls()[0][0])).not.toContain("period=");
+  });
+  it("honors an explicit period without a second weather request", async () => {
+    mount(`/points/tochal?date=${day}&period=night`);
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    expect(
+      document.querySelector('.period[aria-pressed="true"]'),
+    ).toHaveTextContent("شب");
+    expect(weatherCalls()).toHaveLength(1);
+  });
+  it("switches all four periods locally and preserves focus and scroll", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    const scroll = vi.mocked(window.scrollTo);
+    scroll.mockClear();
+    for (const label of ["بامداد", "صبح", "ظهر", "شب"])
+      await userEvent.click(
+        screen.getByRole("button", { name: new RegExp("^" + label + "،") }),
+      );
+    expect(weatherCalls()).toHaveLength(1);
+    expect(scroll).not.toHaveBeenCalled();
+    expect(document.activeElement).toHaveTextContent("شب");
+    expect(screen.getByTestId("location")).toHaveTextContent("period=night");
+  });
+  it("reads a new day once and reuses the initial resolved-day cache", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(screen.getByRole("tab", { name: /دیروز/ }));
+    await waitFor(() => expect(weatherCalls()).toHaveLength(2));
+    await userEvent.click(screen.getByRole("tab", { name: /امروز/ }));
+    expect(weatherCalls()).toHaveLength(2);
+    expect(screen.getByTestId("location")).toHaveTextContent(`date=${day}`);
+  });
+  it("renders apparent temperatures while never using ordinary temperature", async () => {
+    mount(`/points/tochal?period=morning`);
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    expect(document.querySelector(".hour-card .degree")).toHaveTextContent(
+      "−۷°",
+    );
+    expect(document.querySelector(".hour-card .degree")).not.toHaveTextContent(
+      "۹۱",
+    );
+  });
+  it("opens one hour-specific panel, switches it, and closes it without fetching", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    const buttons = screen.getAllByRole("button", { name: "جزئیات تخصصی" });
+    expect(document.querySelector(".detail-panel")).toBeNull();
+    await userEvent.click(buttons[0]);
+    expect(document.querySelector(".detail-panel h2")).toHaveTextContent(
+      "۱۲:۰۰",
+    );
+    await userEvent.click(buttons[1]);
+    expect(document.querySelectorAll(".detail-panel")).toHaveLength(1);
+    expect(buttons[0]).toHaveAttribute("aria-expanded", "false");
+    await userEvent.click(buttons[1]);
+    expect(document.querySelector(".detail-panel")).toBeNull();
+    expect(weatherCalls()).toHaveLength(1);
+  });
+  it("resets hour details when changing the period", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(
+      screen.getAllByRole("button", { name: "جزئیات تخصصی" })[0],
+    );
+    await userEvent.click(screen.getByRole("button", { name: /^شب،/ }));
+    expect(document.querySelector(".detail-panel")).toBeNull();
+  });
+  it("does not invent missing readings and preserves valid zero readings", async () => {
+    const hour = clone(pointFixture.periods.morning.hourly[0]);
+    (hour as HourlyReading).apparent_temperature_c = null;
+    hour.rain_mm = 0;
+    render(<HourlyForecast hours={[hour as HourlyReading]} />);
+    expect(document.querySelector(".degree")).toHaveTextContent("نامشخص");
+    await userEvent.click(screen.getByRole("button", { name: "جزئیات تخصصی" }));
+    expect(document.querySelector(".detail-panel")).toHaveTextContent("۰ mm");
+  });
+  it("renders all route points, four periods and one summary share action", async () => {
+    mount("/routes/tochal-darband");
     await screen.findByRole("heading", { name: "دربند تا توچال" });
-    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" }));
-  });
-
-  it("renders route sibling navigation and a single period control", async () => {
-    renderAt("/routes/tochal-darband");
-    expect(await screen.findByRole("heading", { name: "دربند تا توچال" })).toBeInTheDocument();
-    expect(screen.getByText("ولنجک تا توچال")).toBeInTheDocument();
-    expect(document.querySelectorAll(".daypart-toggle").length).toBe(1);
-    expect(screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" })).toBeInTheDocument();
-    expect(document.querySelector(".route-page .page-back-navigation")).toContainElement(
-      screen.getByRole("button", { name: "بازگشت به صفحهٔ قبل" }),
+    expect(document.querySelectorAll(".point-card")).toHaveLength(
+      routeFixture.points.length,
     );
-    expect(document.title).toBe("هوای دربند تا توچال | هواچ");
-
-    const pointWeather = screen.getByLabelText("آب‌وهوای متناظر با نقاط مهم مسیر");
-    expect(within(pointWeather).getByText("8°")).toBeInTheDocument();
-    expect(pointWeather.querySelector(".route-point-weather-condition")).toBeInTheDocument();
-    expect(screen.getByText("تجهیزات پیشنهادی")).toBeInTheDocument();
-    expect(screen.queryByText("برگرد اگر دید محدود است.")).not.toBeInTheDocument();
-    expect(document.querySelector(".share-gear .hawatch-gear-icon")).toBeInTheDocument();
-    const sharedAxis = document.querySelector(".route-points-axis-scroll");
-    expect(sharedAxis).toContainElement(document.querySelector(".route-linear-panel"));
-    expect(sharedAxis).toContainElement(pointWeather);
+    expect(document.querySelectorAll(".period")).toHaveLength(4);
+    expect(
+      document.querySelectorAll(".trip-summary .share-actions button"),
+    ).toHaveLength(1);
+    expect(screen.queryByText("جزئیات تخصصی")).toBeNull();
   });
-
-  it("shows error and empty states", async () => {
-    vi.stubGlobal("fetch", vi.fn(() => jsonResponse({}, false, 500)));
-    renderAt("/");
-    expect(await screen.findByText("بارگذاری ناموفق بود")).toBeInTheDocument();
-    cleanup();
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/search/suggestions")) {
-          return jsonResponse({ query: "xyz", results: [], empty: true, meta: { freshness: "ready" } });
-        }
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        return jsonResponse({}, false, 500);
-      }),
+  it("changes route hour, pace and period from 72 authoritative plans without fetching", async () => {
+    mount(`/routes/tochal-darband?date=${day}&period=morning&start_time=08:00`);
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    const slider = screen.getByRole("slider");
+    fireEvent.change(slider, { target: { value: "600" } });
+    await userEvent.click(screen.getByRole("button", { name: "سریع" }));
+    await userEvent.click(screen.getByRole("button", { name: /^شب،/ }));
+    expect(slider).toHaveAttribute("min", "1080");
+    expect(weatherCalls()).toHaveLength(1);
+    expect(screen.getByTestId("location")).toHaveTextContent("speed=");
+  });
+  it("updates pending timing locally and explicitly reports unavailable arrivals", async () => {
+    pending = true;
+    mount("/routes/tochal-darband");
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    await userEvent.click(screen.getByRole("button", { name: "آرام" }));
+    expect(weatherCalls()).toHaveLength(1);
+    expect(screen.getByText(/زمان‌بندی دقیق مسیر هنوز/)).toBeVisible();
+  });
+  it("maps speed aliases on an incoming shared URL", async () => {
+    mount(
+      `/routes/tochal-darband?date=${day}&period=morning&start_time=08:00&speed=fast`,
     );
-    const user = userEvent.setup();
-    renderAt("/");
-    await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "xyz");
-    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
-    expect(await screen.findByText(/نتیجه‌ای پیدا نشد/)).toBeInTheDocument();
-  });
-
-  it("renders a noindex Not Found page without a canonical URL", async () => {
-    vi.stubGlobal("fetch", vi.fn(() => jsonResponse({}, false, 404)));
-    renderApplication("/points/not-a-real-point");
-
-    expect(await screen.findByRole("heading", { name: "نقطه پیدا نشد" })).toBeInTheDocument();
-    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex,follow");
-    expect(document.querySelector('link[rel="canonical"]')).not.toBeInTheDocument();
-  });
-
-  it("shows stale notice", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() =>
-        jsonResponse({
-          ...pointForecast,
-          meta: { ...pointForecast.meta, freshness: "stale" },
-          forecast: {
-            ...pointForecast.forecast,
-            meta: { ...pointForecast.forecast.meta, freshness: "stale" },
-          },
-        }),
-      ),
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    expect(screen.getByRole("button", { name: "سریع" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
     );
-    renderAt("/points/tochal");
-    expect(await screen.findByText(/ممکن است قدیمی باشد/)).toBeInTheDocument();
+    expect(screen.getByRole("slider")).toHaveValue("480");
   });
-
-  it("switches theme without losing the page", async () => {
-    const user = userEvent.setup();
-    renderAt("/");
-    await screen.findByText("توچال");
-    await user.click(screen.getAllByLabelText("تغییر تم")[0]);
+  it("keeps shared links on the real route with explicit date, ASCII clock and pace", () => {
+    const forecast = clone(routeFixture) as unknown as RouteForecast;
+    forecast.period.id = "morning";
+    forecast.start_minutes = 480;
+    const url = new URL(
+      buildRouteShareUrl(forecast, "http://202.133.89.120:5050"),
+    );
+    expect(url.pathname).toBe("/routes/tochal-darband");
+    expect(url.searchParams.get("date")).toBe(day);
+    expect(url.searchParams.get("start_time")).toBe("08:00");
+    expect(url.searchParams.get("speed")).toBe("متوسط");
+  });
+  it("opens a canonical point from a route and retains the return planner context", async () => {
+    mount(`/routes/tochal-darband?date=${day}&period=morning&start_time=08:00`);
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    vi.mocked(window.scrollTo).mockClear();
+    await userEvent.click(document.querySelector(".point-card")!);
+    await waitFor(() =>
+      expect(screen.getByTestId("location")).toHaveTextContent("/points/"),
+    );
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+    expect(screen.getByRole("button", { name: /بازگشت/ })).toBeInTheDocument();
+  });
+  it("changes route through a dialog and closes it on navigation", async () => {
+    mount("/routes/tochal-darband");
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+    await userEvent.click(screen.getByRole("button", { name: "تغییر مسیر" }));
+    const dialog = screen.getByRole("dialog");
+    const link = within(dialog).getAllByRole("link")[0];
+    await userEvent.click(link);
+    expect(document.querySelector("dialog")).toBeNull();
+  });
+  it("shows a noindex 404 and removes its canonical", async () => {
+    error = 404;
+    mount("/points/missing");
+    await screen.findByRole("heading", { name: "نقطه پیدا نشد" });
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex,follow",
+    );
+    expect(document.querySelector('link[rel="canonical"]')).toBeNull();
+  });
+  it("shows a retryable API error and recovers with a fresh request", async () => {
+    error = 500;
+    mount("/points/tochal");
+    await screen.findByRole("button", { name: /تلاش دوباره/ });
+    error = 0;
+    await userEvent.click(screen.getByRole("button", { name: /تلاش دوباره/ }));
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    expect(weatherCalls()).toHaveLength(2);
+  });
+  it("retains the stale-data notice", async () => {
+    stale = true;
+    mount("/points/tochal");
+    expect(await screen.findByText(/داده.*قدیمی/)).toBeInTheDocument();
+  });
+  it("switches theme without refetching weather", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(screen.getByRole("button", { name: "تغییر تم" }));
     expect(document.documentElement.dataset.theme).toBe("light");
+    expect(weatherCalls()).toHaveLength(1);
   });
-
-  it("shows autocomplete suggestions while typing", async () => {
-    const user = userEvent.setup();
-    renderAt("/");
-    await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "پس");
-    expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
-    expect(screen.getByText(/نقطهٔ مسیر · توچال/)).toBeInTheDocument();
+  it("opens login underneath the avatar without changing URL or locking body", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(screen.getByRole("button", { name: "ورود" }));
+    expect(screen.getByLabelText("شمارهٔ موبایل")).toBeVisible();
+    expect(document.querySelector("dialog")).toBeNull();
+    expect(document.body.style.overflow).not.toBe("hidden");
+    expect(screen.getByTestId("location")).toHaveTextContent(
+      /^\/points\/tochal$/,
+    );
   });
-
-  it("ignores stale autocomplete responses", async () => {
-    let resolveSlow: ((value: unknown) => void) | undefined;
-    const slow = new Promise((resolve) => {
-      resolveSlow = resolve;
+  it("uses the actual session endpoint, refreshes access and logs out in place", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(screen.getByRole("button", { name: "ورود" }));
+    await userEvent.type(screen.getByLabelText("شمارهٔ موبایل"), "۰۹۱۱۱۱۱۱۱۱۱");
+    await userEvent.click(screen.getByRole("button", { name: /ادامه/ }));
+    await userEvent.type(screen.getByLabelText("کد ورود"), "۱۲۳۴");
+    await userEvent.click(screen.getByRole("button", { name: "تأیید و ورود" }));
+    await screen.findByText("عضویت رایگان");
+    expect(screen.queryByText(/روز باقی/)).toBeNull();
+    await waitFor(() => expect(weatherCalls()).toHaveLength(2));
+    await userEvent.click(screen.getByRole("button", { name: "خروج از حساب" }));
+    await waitFor(() => expect(weatherCalls()).toHaveLength(3));
+    const post = fetchMock.mock.calls.find(([url]) =>
+      String(url).includes("/auth/login/"),
+    );
+    expect(JSON.parse(post![1].body)).toEqual({
+      phone: "989111111111",
+      code: "1234",
     });
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/search/suggestions?q=%D9%BE%D8%B3%D8%B3")) {
-          return slow;
-        }
-        if (url.includes("/search/suggestions")) {
-          return jsonResponse({
-            query: "پس",
-            results: [
-              {
-                type: "point",
-                slug: "tochal-pas-ghaleh-village",
-                label: "پس‌قلعه",
-                hint: "نقطهٔ مسیر · توچال",
-                href: "/points/tochal-pas-ghaleh-village",
-                match_kind: "name",
-              },
-            ],
-            empty: false,
-            meta: { freshness: "ready" },
-          });
-        }
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        return jsonResponse({}, false, 500);
-      }),
+  });
+  it("shows actual days beside a paid plan without a progress bar", async () => {
+    authenticated = true;
+    paid = true;
+    mount();
+    await screen.findByText("۷۴۶");
+    await userEvent.click(screen.getByRole("button", { name: "حساب" }));
+    expect(screen.getByText(/۴ روز/)).toBeVisible();
+    expect(document.querySelector(".account-menu progress")).toBeNull();
+  });
+  it("preserves the server rejection of a login code", async () => {
+    fetchMock.mockImplementation((input: RequestInfo) =>
+      String(input).includes("/auth/login/")
+        ? response({ detail: "کد معتبر نیست" }, 403)
+        : defaultFetch(input),
     );
-    const user = userEvent.setup();
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/"]}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/points/:slug" element={<PointDetailPage />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>,
+    mount();
+    await screen.findByText("۷۴۶");
+    await userEvent.click(screen.getByRole("button", { name: "ورود" }));
+    await userEvent.type(screen.getByLabelText("شمارهٔ موبایل"), "09111111111");
+    await userEvent.click(screen.getByRole("button", { name: /ادامه/ }));
+    await userEvent.type(screen.getByLabelText("کد ورود"), "4321");
+    await userEvent.click(screen.getByRole("button", { name: "تأیید و ورود" }));
+    expect(await screen.findByText("کد معتبر نیست")).toBeVisible();
+  });
+  it("keeps old direct login URLs functional with the compact menu", async () => {
+    mount("/login?returnTo=%2Fpoints%2Ftochal");
+    await screen.findByLabelText("شمارهٔ موبایل");
+    expect(screen.getByTestId("location")).toHaveTextContent(
+      /^\/points\/tochal$/,
     );
-    await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "پ");
-    await user.type(input, "s");
-    await user.type(input, "s");
-    resolveSlow?.({
-      ok: true,
-      status: 200,
-      json: async () => ({
-        query: "pss",
-        results: [{ type: "point", slug: "stale", label: "قدیمی", hint: "", href: "/points/stale", match_kind: "name" }],
-        empty: false,
-        meta: { freshness: "ready" },
-      }),
+    expect(document.querySelector("dialog")).toBeNull();
+  });
+  it("opens the login CTA for a locked day without fetching its weather", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    await userEvent.click(screen.getByRole("tab", { name: /فردا، ورود/ }));
+    expect(screen.getByLabelText("شمارهٔ موبایل")).toBeVisible();
+    expect(weatherCalls()).toHaveLength(1);
+  });
+  it("groups home search points and routes with working internal links", async () => {
+    mount();
+    await screen.findByText("۷۴۶");
+    await userEvent.type(screen.getByRole("combobox"), "توچال");
+    await screen.findByRole("option", { name: /دربند تا توچال/ });
+    expect(document.querySelectorAll(".search-result")).toHaveLength(2);
+    await userEvent.click(
+      screen.getByRole("option", { name: /دربند تا توچال/ }),
+    );
+    await screen.findByRole("heading", { name: "دربند تا توچال" });
+  });
+  it("navigates to the active search suggestion on Enter", async () => {
+    mount();
+    await screen.findByText("۷۴۶");
+    const input = screen.getByRole("combobox");
+    await userEvent.type(input, "توچال");
+    await screen.findByRole("option", { name: /قلهٔ توچال/ });
+    await userEvent.keyboard("{ArrowDown}{Enter}");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+  });
+  it("never chooses a night weather icon based on the light/dark theme", () => {
+    document.documentElement.dataset.theme = "dark";
+    const { container } = render(
+      <WeatherIcon code="clear" at="2026-10-01T08:00:00+03:30" />,
+    );
+    const morning = container.innerHTML;
+    document.documentElement.dataset.theme = "light";
+    const { container: night } = render(
+      <WeatherIcon code="clear" at="2026-10-01T22:00:00+03:30" />,
+    );
+    expect(night.innerHTML).not.toBe(morning);
+  });
+  it("renders the category source at the approved viewBox and stroke", () => {
+    const { container } = render(<CategoryIcon placeType="peak" />);
+    expect(container.querySelector("svg")).toHaveAttribute(
+      "viewBox",
+      "0 0 32 32",
+    );
+    expect(container.querySelector("svg")).toHaveAttribute(
+      "stroke-width",
+      "1.8",
+    );
+  });
+  it("falls back to HTTP-safe link copy and reports failure honestly", async () => {
+    Object.defineProperty(document, "execCommand", {
+      configurable: true,
+      value: vi.fn(() => true),
     });
-    expect(await screen.findByText("پس‌قلعه")).toBeInTheDocument();
-    expect(screen.queryByText("قدیمی")).not.toBeInTheDocument();
-  });
-
-  it("submits unified search for a point query via search button", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/search/suggestions")) {
-          return jsonResponse({
-            query: "پس",
-            results: [
-              {
-                type: "point",
-                slug: "tochal-pas-ghaleh-village",
-                label: "پس‌قلعه",
-                hint: "نقطهٔ مسیر · توچال",
-                href: "/points/tochal-pas-ghaleh-village",
-                match_kind: "name",
-              },
-              {
-                type: "point",
-                slug: "other_point",
-                label: "نقطهٔ دیگر",
-                hint: "نقطهٔ مسیر · توچال",
-                href: "/points/other_point",
-                match_kind: "name",
-              },
-            ],
-            empty: false,
-            meta: { freshness: "ready" },
-          });
-        }
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        return jsonResponse({}, false, 500);
-      }),
-    );
-    const user = userEvent.setup();
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/"]}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>,
-    );
-    await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "پس");
-    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
-    expect(await screen.findByRole("link", { name: /پس‌قلعه/ })).toHaveAttribute("href", "/points/tochal-pas-ghaleh-village");
-    expect(screen.getAllByText(/نقطهٔ مسیر · توچال/).length).toBeGreaterThan(0);
-    expect(screen.getByText("نتایج مرتبط")).toBeInTheDocument();
-  });
-
-  it("shows an error and retry action when unified search fails", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/search/suggestions")) return jsonResponse({}, false, 503);
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        return jsonResponse({}, false, 500);
-      }),
-    );
-    const user = userEvent.setup();
-    renderAt("/");
-    await screen.findByText("توچال");
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "پس");
-    await user.click(screen.getByRole("button", { name: "جست‌وجو" }));
-    expect(await screen.findByText("جست‌وجوی نقطه ناموفق بود. دوباره تلاش کن.")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "تلاش دوباره" })).toBeInTheDocument();
-  });
-
-  it("navigates to point on Enter with active suggestion", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn((input: RequestInfo) => {
-        const url = String(input);
-        if (url.includes("/search/suggestions")) {
-          return jsonResponse({
-            query: "پس",
-            results: [
-              {
-                type: "point",
-                slug: "tochal-pas-ghaleh-village",
-                label: "پس‌قلعه",
-                hint: "نقطهٔ مسیر · توچال",
-                href: "/points/tochal-pas-ghaleh-village",
-                match_kind: "name",
-              },
-            ],
-            empty: false,
-            meta: { freshness: "ready" },
-          });
-        }
-        if (url.includes("/points/tochal-pas-ghaleh-village/forecast")) {
-          return jsonResponse({
-            subject: {
-              kind: "point" as const,
-              slug: "tochal-pas-ghaleh-village",
-              weather_point_slug: "tochal-pas-ghaleh-village",
-              canonical_href: "/points/tochal-pas-ghaleh-village",
-              name: "پس‌قلعه",
-              elevation_m: 1936,
-              elevation_label: "۱۹۳۶ متر",
-              latitude: 35.836,
-              longitude: 51.423,
-              context_label: "تهران",
-              hero_image: "/images/touchal-banner-clean.png",
-              hero_image_alt: "توچال",
-              region: "تهران",
-              category: "کوه",
-            },
-            point: {
-              slug: "tochal-pas-ghaleh-village",
-              name: "پس‌قلعه",
-              aliases: [],
-              kind: "shared",
-              elevation_m: 1936,
-              elevation_label: "۱۹۳۶ m",
-              latitude: 35.836,
-              longitude: 51.423,
-              status: "approved",
-              provenance: "curated",
-              href: "/points/tochal-pas-ghaleh-village",
-              canonical_href: "/points/tochal-pas-ghaleh-village",
-              point: pointForecast.point,
-            },
-            related_routes: [],
-            related_routes_title: "مسیرهای عبوری از این نقطه",
-            days: pointForecast.days,
-            period: pointForecast.period,
-            current: pointForecast.hourly[0],
-            weather: pointForecast.hourly[0],
-            hourly: pointForecast.hourly,
-            metrics: [],
-            hero: { status: "☼　۷°", alert: null },
-            decision: { chip: "امروز · جمع‌بندی هواچ", title: "صبح", text: "آرام" },
-            updated_label: "امروز",
-            empty: false,
-            partial: false,
-            meta: pointForecast.meta,
-            forecast: {
-              days: pointForecast.forecast.days,
-              period: pointForecast.forecast.period,
-              current: pointForecast.hourly[0],
-              hourly: pointForecast.hourly,
-              meta: pointForecast.forecast.meta,
-            },
-          });
-        }
-        if (url.includes("/points/")) {
-          return jsonResponse({ results: [pointForecast.point], empty: false, query: "", meta: { freshness: "ready" } });
-        }
-        return jsonResponse({}, false, 500);
-      }),
-    );
-    render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={["/"]}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/points/:slug" element={<PointDetailPage />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>,
-    );
-    await screen.findByText("توچال");
-    const user = userEvent.setup();
-    const input = screen.getByRole("combobox", { name: "جست‌وجوی نقطه یا نقطهٔ مسیر" });
-    await user.type(input, "پس");
-    await user.keyboard("{Enter}");
-    expect(await screen.findByRole("heading", { name: "آب‌وهوای پس‌قلعه" })).toBeInTheDocument();
-    expect(document.querySelector(".point-decision-card")).not.toBeInTheDocument();
-  });
-
-  it("does not create full-page horizontal overflow at the mobile reference width", async () => {
-    Object.defineProperty(HTMLElement.prototype, "scrollWidth", { configurable: true, get: () => 576 });
-    Object.defineProperty(HTMLElement.prototype, "clientWidth", { configurable: true, get: () => 576 });
-    renderAt("/");
-    await screen.findByText("توچال");
-    expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
+    expect(
+      await copyShareLink("http://202.133.89.120:5050/routes/tochal-darband"),
+    ).toBe(true);
+    Object.defineProperty(document, "execCommand", {
+      configurable: true,
+      value: vi.fn(() => false),
+    });
+    expect(await copyShareLink("http://202.133.89.120:5050/")).toBe(false);
+    expect(document.querySelector("textarea")).toBeNull();
   });
 });

@@ -1,0 +1,190 @@
+.route-page .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-light.webp');background-size:cover;background-position:center top}
+
+:root[data-theme=dark] .route-page .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+
+.route-page .hero{min-height:170px;align-items:center;margin-bottom:24px}
+
+.route-page .hero-title p{margin-top:2px}
+
+.route-page .change-route{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:7px 16px;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:var(--accent);font-weight:700}
+
+.route-page .change-route .icon{width:20px;height:20px}
+
+.route-page .route-grid{display:grid;grid-template-columns:minmax(0,880px) minmax(260px,320px);gap:64px;align-items:start}
+
+.route-page .route-main{min-width:0}
+
+.route-page .route-date-shell{position:relative}
+
+.route-page .route-days{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+
+.route-page .route-days::-webkit-scrollbar,.route-page .point-cards::-webkit-scrollbar{display:none}
+
+.route-page .route-day{flex:0 0 calc((100% - 60px)/7);height:82px;min-width:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:12px;scroll-snap-align:start;position:relative;white-space:nowrap}
+
+.route-page .route-day strong{font-size:19px}
+
+.route-page .route-day span{font-size:16px}
+
+.route-page .route-day.selected{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+
+.route-page .route-day.past{color:var(--past)}
+
+.route-page .route-day .icon{width:16px;height:16px;position:absolute;right:6px;top:5px}
+
+.route-page .scroll-cue{height:4px;width:min(80px,32%);background:var(--border);border-radius:10px;margin:8px auto 19px;position:relative;overflow:hidden}
+
+.route-page .scroll-cue[hidden]{display:none}
+
+.route-page .scroll-cue>span{display:block;height:100%;width:38%;background:var(--accent);border-radius:10px;transform:translateX(var(--progress,0%));transition:transform .18s ease}
+
+.route-page .departure{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:106px;margin:1px 0 27px}
+
+.route-page .departure h2,.route-page .points h2,.route-page .trip-summary h2{font-size:25px;line-height:1.5}
+
+.route-page .departure-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+.route-page .time-control{display:flex;align-items:center;gap:10px;white-space:nowrap}
+
+.route-page .time-control label{font-size:16px;color:var(--secondary)}
+
+.route-page .time-control input{width:104px;min-height:46px;color:var(--ink);background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:7px;direction:ltr;text-align:center;accent-color:var(--accent)}
+
+.route-page .speed{display:flex;gap:5px}
+
+.route-page .speed button{min-height:44px;padding:6px 16px;border-radius:10px;background:var(--panel);border:1px solid var(--border)}
+
+.route-page .speed button[aria-pressed=true]{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+
+.route-page .points-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:20px}
+
+.route-page .points-head small{color:var(--secondary);font-size:15px}
+
+.route-page .point-cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+
+.route-page .point-card{flex:0 0 calc((100% - 24px)/3);min-width:0;min-height:274px;background:var(--panel);border:1px solid var(--border);border-radius:14px;text-align:center;scroll-snap-align:start;padding:18px 12px;display:flex;flex-direction:column;align-items:center}
+
+.route-page .point-card a{font-size:19px;font-weight:700;line-height:1.5;min-height:52px;color:var(--ink);text-decoration:none}
+
+.route-page .point-card a:hover{text-decoration:underline;text-underline-offset:4px}
+
+.route-page .point-card time{font-size:17px;color:var(--secondary)}
+
+.route-page .point-card .weather-icon{width:58px;height:58px;margin:5px 0}
+
+.route-page .point-card .weather-label{font-size:16px;min-height:30px}
+
+.route-page .point-card .degree{font-size:37px}
+
+.route-page .point-card .wind-line{font-size:15px;margin-top:auto;white-space:nowrap}
+
+.route-page .point-card .wind-line .icon{width:21px;height:21px}
+
+.route-page .point-card.severe .warning{color:var(--red);width:17px;height:17px;position:absolute;margin-right:120px}
+
+.route-page .point-card.past .weather-icon{opacity:.55}
+
+.route-page .trip-summary{padding:4px 0 0}
+
+.route-page .trip-summary h2{margin:0 0 18px}
+
+.route-page .trip-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+
+.route-page .trip-fact{min-height:76px;border-radius:11px;background:var(--panel);border:1px solid var(--border);padding:10px}
+
+.route-page .trip-fact small{display:block;color:var(--secondary);font-size:13px}
+
+.route-page .trip-fact strong{font-size:18px}
+
+.route-page .trip-sentence{font-size:15px;line-height:1.8;margin:0 0 23px}
+
+.route-page .equipment-heading{font-size:18px;margin:0 0 12px}
+
+.route-page .equipment{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
+
+.route-page .equipment span{padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--panel);font-size:13px}
+
+.route-page .share-actions{display:grid;gap:9px}
+
+.route-page .share-actions button{min-height:47px;border:1px solid var(--accent);border-radius:10px;background:var(--panel);color:var(--accent);font-weight:700}
+
+.route-page .share-actions button:first-child{background:var(--accent-soft)}
+
+.route-page .footer{margin-top:35px}
+
+@media(min-width:1024px) and (max-width:1279px){.route-page .route-grid{grid-template-columns:minmax(0,1fr) 260px;gap:40px}
+.route-page .route-day{flex-basis:calc((100% - 50px)/6)}
+.route-page .departure{flex-wrap:wrap}
+}
+
+@media(min-width:768px) and (max-width:1023px){.route-page .route-grid{grid-template-columns:1fr;gap:34px}
+.route-page .route-day{flex-basis:calc((100% - 40px)/5)}
+.route-page .trip-summary{max-width:100%}
+}
+
+@media(max-width:767px){.route-page .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-light.webp');background-size:auto 1760px}
+.route-page .hero{min-height:137px;margin:8px 0 14px;align-items:stretch;gap:10px}
+.route-page .hero-title h1{font-size:29px}
+.route-page .hero-title p{font-size:14px}
+.route-page .change-route{align-self:flex-start;min-height:36px;font-size:13px;padding:5px 10px}
+.route-page .route-grid{display:flex;flex-direction:column;gap:28px}
+.route-page .route-main,.route-page .trip-summary{width:100%}
+.route-page .route-date-shell{margin:0 26px}
+.route-page .route-days{gap:6px}
+.route-page .route-day{flex-basis:calc((100% - 18px)/4);height:59px;border-radius:10px}
+.route-page .route-day strong{font-size:14px}
+.route-page .route-day span{font-size:13px}
+.route-page .route-day .icon{width:12px;height:12px;right:2px;top:3px}
+.route-page .scroll-cue{margin:7px auto 18px}
+.route-page .departure{display:block;min-height:0;margin:0 0 28px}
+.route-page .departure h2,.route-page .points h2,.route-page .trip-summary h2{font-size:21px;margin-bottom:13px}
+.route-page .departure-controls{display:flex;align-items:center;justify-content:space-between;gap:7px}
+.route-page .time-control{gap:5px}
+.route-page .time-control label{font-size:13px}
+.route-page .time-control input{width:77px;min-height:40px;font-size:13px}
+.route-page .speed{gap:4px}
+.route-page .speed button{font-size:12px;min-height:40px;padding:5px 9px}
+.route-page .points-head{margin-bottom:18px}
+.route-page .points-head small{font-size:11px}
+.route-page .timeline{display:none}
+.route-page .point-cards{gap:7px}
+.route-page .point-card{flex:0 0 calc((100% - 7px)/2.25);min-height:248px;padding:12px 5px}
+.route-page .point-card a{font-size:15px;min-height:50px}
+.route-page .point-card time{font-size:13px}
+.route-page .point-card .weather-icon{width:48px;height:48px;margin:8px 0}
+.route-page .point-card .weather-label{font-size:13px}
+.route-page .point-card .degree{font-size:32px}
+.route-page .point-card .wind-line{font-size:11px}
+.route-page .point-card .wind-line .icon{width:15px;height:15px}
+.route-page .trip-summary{background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:17px 16px}
+.route-page .trip-fact{background:transparent}
+.route-page .trip-sentence{font-size:14px}
+.route-page .equipment{margin-bottom:18px}
+.route-page .footer{margin-top:28px}
+}
+
+@media(max-width:359px){.route-page .departure-controls{flex-direction:column;align-items:stretch}
+.route-page .speed{justify-content:space-between}
+.route-page .speed button{flex:1}
+}
+
+:root[data-theme=dark] .route-page .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+
+@media(max-width:767px){:root[data-theme=dark] .route-page .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-dark.webp')}
+}
+
+.route-page .route-day .red-dot{position:absolute;top:8px;left:8px}
+
+.route-page .point-card .point-name{font-size:19px;font-weight:700;line-height:1.5;min-height:52px;color:var(--ink)}
+
+.route-page .point-card:hover{border-color:var(--accent)}
+
+.route-page .point-card.past .point-name,.route-page .point-card.past time,.route-page .point-card.past .weather-label,.route-page .point-card.past .degree,.route-page .point-card.past .wind-line{color:var(--past)}
+
+@media(min-width:1280px){.route-page .point-card{flex-basis:calc((100% - 60px)/6)}
+.route-page .hero{display:block}
+.route-page .change-route{margin-top:10px}
+}
+
+@media(max-width:767px){.route-page .point-card .point-name{font-size:15px;min-height:50px}
+}

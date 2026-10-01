@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { api } from "../../api/client";
-import { BackNavigation } from "../../components/BackNavigation";
-import { Header } from "../../components/Header";
+import { PageShell } from "../../components/PageShell";
+import { openAccountLogin } from "../../components/Header";
+import { DesignIcon } from "../../components/DesignIcon";
 import { LoadingState } from "../../components/LoadingState";
 import { usePageTitle } from "../../lib/pageTitle";
 import type { ForecastPlanSummary } from "../../types";
@@ -19,36 +20,21 @@ function accessLabel(plan: ForecastPlanSummary | undefined) {
   return `دسترسی تا ${faDigits(futureDays)} روز آینده`;
 }
 
-function PlanMark({ kind }: { kind: "free" | "professional" }) {
-  return (
-    <span className={`subscription-plan-mark ${kind}`} aria-hidden="true">
-      {kind === "free" ? (
-        <svg viewBox="0 0 32 32" focusable="false">
-          <circle cx="16" cy="10" r="5" />
-          <path d="M6.5 27c1.8-5.1 5.1-7.7 9.5-7.7s7.7 2.6 9.5 7.7" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 32 32" focusable="false">
-          <path d="m4 25 8.1-13L17 20l3.4-5.2L28 25H4Z" />
-          <path d="m12.1 12 2.5 4.1 2.4-3.2" />
-        </svg>
-      )}
-    </span>
-  );
-}
-
 export function SubscriptionPlansPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated, session } = useAuth();
   const [plans, setPlans] = useState<ForecastPlanSummary[]>([]);
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
   const [message, setMessage] = useState("");
-  usePageTitle("طرح‌های دسترسی");
+  usePageTitle(undefined, { title: "اشتراک هواچ | هواچ" });
 
   useEffect(() => {
     let mounted = true;
-    api.plans()
+    api
+      .plans()
       .then((payload) => {
         if (!mounted) return;
         setPlans(payload.plans);
@@ -74,68 +60,86 @@ export function SubscriptionPlansPage() {
     [plans],
   );
   const professionalPlan = useMemo(
-    () => plans.find((plan) => plan.code === "professional" && plan.tier === "paid")
-      ?? plans.find((plan) => plan.tier === "paid"),
+    () =>
+      plans.find(
+        (plan) => plan.code === "professional" && plan.tier === "paid",
+      ) ?? plans.find((plan) => plan.tier === "paid"),
     [plans],
   );
   function beginPurchase() {
     if (!isAuthenticated) {
-      const search = `?${new URLSearchParams({ returnTo: location.pathname + location.search }).toString()}`;
-      navigate({ pathname: "/login", search }, { state: { backgroundLocation: location } });
+      openAccountLogin(location.pathname);
       return;
     }
     setMessage("درگاه پرداخت به‌زودی فعال می‌شود.");
   }
 
   return (
-    <main className="subscription-page">
-      <div className="subscription-shell">
-        <Header />
-        <div className="page-back-navigation">
-          <BackNavigation />
-        </div>
-        <section className="subscription-heading" aria-labelledby="subscription-title">
-          <h1 id="subscription-title">طرح مناسب خودت را انتخاب کن</h1>
+    <PageShell className="subscription-page" back>
+      <section className="catalog-hero" aria-labelledby="subscription-title">
+        <h1 id="subscription-title">اشتراک هواچ</h1>
+        <p>وضعیت دسترسی و طرح‌های هواچ</p>
+      </section>
+      {status === "loading" ? <LoadingState /> : null}
+      {status === "error" ? (
+        <section className="subscription-message card-surface" role="alert">
+          بارگذاری طرح‌ها ناموفق بود. دوباره تلاش کن.
         </section>
-        {status === "loading" ? <LoadingState /> : null}
-        {status === "error" ? (
-          <section className="subscription-message card-surface" role="alert">
-            بارگذاری طرح‌ها ناموفق بود. دوباره تلاش کن.
-          </section>
-        ) : null}
-        {status === "ready" ? (
-          <section className="subscription-plan-grid" aria-label="طرح‌های اشتراک">
-            <article className="subscription-plan-card free">
-              <span className="subscription-plan-badge">فعلی</span>
-              <PlanMark kind="free" />
+      ) : null}
+      {status === "ready" ? (
+        <section className="subscription-grid" aria-label="طرح‌های اشتراک">
+          <article className="plan-card free">
+            <div className="plan-top">
+              <DesignIcon name="subscription" />
+              <span>
+                {session?.plan?.tier === "free" ? "طرح فعلی" : "طرح رایگان"}
+              </span>
+            </div>
+            <div className="plan-title">
               <h2>{freePlan?.title ?? "عضویت رایگان"}</h2>
-              <p className="subscription-plan-access">{accessLabel(freePlan)}</p>
-              <ul className="subscription-plan-features">
-                <li>برای شروع، بدون پرداخت استفاده کن.</li>
-                <li>پیش‌بینی روزهای مجاز همهٔ نقاط.</li>
-              </ul>
-              {session?.plan?.tier === "free" ? <span className="subscription-current">طرح فعال حساب تو</span> : null}
-            </article>
-            <article className="subscription-plan-card paid">
-              <span className="subscription-plan-badge paid-badge">پیشنهاد حرفه‌ای</span>
-              <PlanMark kind="professional" />
+              {session?.plan?.tier === "free" ? (
+                <span className="plan-badge">فعال</span>
+              ) : null}
+            </div>
+            <p className="subscription-plan-access">{accessLabel(freePlan)}</p>
+          </article>
+          <article className="plan-card paid future-plan">
+            <div className="plan-top">
+              <DesignIcon name="lock" />
+            </div>
+            <div className="plan-title">
               <h2>{professionalPlan?.title ?? "طرح حرفه‌ای"}</h2>
-              <p className="subscription-plan-access">
-                {professionalPlan?.duration_months === 3 ? "عضویت سه‌ماهه" : "عضویت حرفه‌ای"}
+              <span
+                className={`plan-badge ${session?.plan?.tier === "paid" ? "" : "soon"}`}
+              >
+                {session?.plan?.tier === "paid" ? "فعال" : "به‌زودی"}
+              </span>
+            </div>
+            <p className="subscription-plan-access">
+              {accessLabel(professionalPlan)}
+            </p>
+            <small>
+              {professionalPlan?.duration_months
+                ? `عضویت ${faDigits(professionalPlan.duration_months)}ماهه · `
+                : ""}
+              خرید اشتراک هنوز فعال نیست.
+            </small>
+
+            <button
+              type="button"
+              className="disabled-purchase"
+              onClick={beginPurchase}
+            >
+              {isAuthenticated ? "خرید اشتراک" : "ورود برای خرید"}
+            </button>
+            {message ? (
+              <p className="subscription-plan-message" role="status">
+                {message}
               </p>
-              <ul className="subscription-plan-features">
-                <li>{accessLabel(professionalPlan)}</li>
-                <li>دسترسی گسترده‌تر به پیش‌بینی روزهای آینده.</li>
-                <li>عضویت سه‌ماهه.</li>
-              </ul>
-              <button type="button" className="subscription-plan-cta" onClick={beginPurchase}>
-                {isAuthenticated ? "خرید اشتراک" : "ورود برای خرید"}
-              </button>
-              {message ? <p className="subscription-plan-message" role="status">{message}</p> : null}
-            </article>
-          </section>
-        ) : null}
-      </div>
-    </main>
+            ) : null}
+          </article>
+        </section>
+      ) : null}
+    </PageShell>
   );
 }

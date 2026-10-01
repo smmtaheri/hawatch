@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes, useLocation, type Location } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
-import { DestinationsPage } from "../pages/DestinationsPage";
-import { LoginOverlay, LoginPage } from "../pages/LoginPage";
+import { DestinationsPage, RoutesPage } from "../features/destinations/DestinationsPage";
+import { LoginPage } from "../pages/LoginPage";
 import { PointDetailPage } from "../pages/PointDetailPage";
 import { RoutePage } from "../pages/RoutePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
@@ -17,48 +17,38 @@ export function App() {
   );
 }
 
-type LoginLocationState = {
-  backgroundLocation?: Location;
-};
-
-/**
- * A normal login click keeps its originating route rendered below the overlay.
- * A direct /login URL has no background location and therefore remains a
- * refresh-safe full page route.
- */
 export function AppRoutes() {
   const location = useLocation();
   const trackedNavigationRef = useRef<string | null>(null);
-  const state = location.state as LoginLocationState | null;
-  const backgroundLocation = location.pathname === "/login" ? state?.backgroundLocation : undefined;
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location.pathname]);
 
   useEffect(() => {
     const match = location.pathname.match(/^\/(points|routes)\/([^/]+)\/?$/);
     if (!match) return;
-    const fingerprint = `${location.key}:${location.pathname}`;
+    const fingerprint = location.pathname;
     if (trackedNavigationRef.current === fingerprint) return;
     trackedNavigationRef.current = fingerprint;
     trackPageView(match[1] === "points" ? "point" : "route", match[2]);
-  }, [location.key, location.pathname]);
+  }, [location.pathname]);
 
   return (
     <>
-      <Routes location={backgroundLocation ?? location}>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/destinations" element={<DestinationsPage />} />
         <Route path="/destinations/" element={<DestinationsPage />} />
         <Route path="/destinations/page/:page" element={<DestinationsPage />} />
         <Route path="/destinations/page/:page/" element={<DestinationsPage />} />
+        <Route path="/routes" element={<RoutesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account/plans" element={<SubscriptionPlansPage />} />
         <Route path="/routes/:slug" element={<RoutePage />} />
         <Route path="/points/:slug" element={<PointDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {backgroundLocation ? <LoginOverlay /> : null}
-      <footer className="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">
-        دادهٔ هواشناسی: Open-Meteo
-      </footer>
+
     </>
   );
 }

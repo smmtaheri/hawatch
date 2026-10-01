@@ -1,0 +1,118 @@
+{
+  "0": {
+    "icon": "clear",
+    "label_fa": "صاف"
+  },
+  "1": {
+    "icon": "mostly-clear",
+    "label_fa": "عمدتاً صاف"
+  },
+  "2": {
+    "icon": "partly-cloudy",
+    "label_fa": "نیمه‌ابری"
+  },
+  "3": {
+    "icon": "cloudy",
+    "label_fa": "ابری"
+  },
+  "45": {
+    "icon": "fog",
+    "label_fa": "مه"
+  },
+  "48": {
+    "icon": "rime-fog",
+    "label_fa": "مه یخ‌زن"
+  },
+  "51": {
+    "icon": "drizzle",
+    "label_fa": "نم‌نم باران سبک"
+  },
+  "53": {
+    "icon": "drizzle",
+    "label_fa": "نم‌نم باران"
+  },
+  "55": {
+    "icon": "drizzle",
+    "label_fa": "نم‌نم باران متراکم"
+  },
+  "56": {
+    "icon": "freezing-rain",
+    "label_fa": "نم‌نم باران یخ‌زن"
+  },
+  "57": {
+    "icon": "freezing-rain",
+    "label_fa": "نم‌نم باران یخ‌زن متراکم"
+  },
+  "61": {
+    "icon": "rain",
+    "label_fa": "باران سبک"
+  },
+  "63": {
+    "icon": "rain",
+    "label_fa": "باران"
+  },
+  "65": {
+    "icon": "heavy-rain",
+    "label_fa": "باران شدید"
+  },
+  "66": {
+    "icon": "freezing-rain",
+    "label_fa": "باران یخ‌زن سبک"
+  },
+  "67": {
+    "icon": "freezing-rain",
+    "label_fa": "باران یخ‌زن شدید"
+  },
+  "71": {
+    "icon": "snow",
+    "label_fa": "برف سبک"
+  },
+  "73": {
+    "icon": "snow",
+    "label_fa": "برف"
+  },
+  "75": {
+    "icon": "heavy-snow",
+    "label_fa": "برف شدید"
+  },
+  "77": {
+    "icon": "snow-grains",
+    "label_fa": "دانه‌های برف"
+  },
+  "80": {
+    "icon": "showers",
+    "label_fa": "رگبار سبک"
+  },
+  "81": {
+    "icon": "showers",
+    "label_fa": "رگبار"
+  },
+  "82": {
+    "icon": "heavy-rain",
+    "label_fa": "رگبار شدید"
+  },
+  "85": {
+    "icon": "snow",
+    "label_fa": "رگبار برف سبک"
+  },
+  "86": {
+    "icon": "heavy-snow",
+    "label_fa": "رگبار برف شدید"
+  },
+  "95": {
+    "icon": "thunderstorm",
+    "label_fa": "رعد و برق"
+  },
+  "96": {
+    "icon": "thunderstorm-hail",
+    "label_fa": "رعد و برق و تگرگ"
+  },
+  "97": {
+    "icon": "thunderstorm",
+    "label_fa": "رعد و برق شدید"
+  },
+  "99": {
+    "icon": "thunderstorm-hail",
+    "label_fa": "رعد و برق و تگرگ شدید"
+  }
+}

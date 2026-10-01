@@ -6,6 +6,8 @@ export type AuthSession = {
   authenticated: true;
   plan: { code: string; title: string; tier: "free" | "paid"; duration_months?: number | null } | null;
   forecast_access: ForecastAccess;
+  days_remaining?: number | null;
+  expires_at?: string | null;
 };
 
 const AUTH_CHANGED_EVENT = "hawatch-auth-changed";
@@ -125,16 +127,10 @@ export function useAuth() {
     },
     async logout() {
       ++requestVersionRef.current;
-      try {
-        await postAuth("auth/logout/");
-      } finally {
-        // Clear the local view even if the network request fails. The next
-        // auth refresh is explicitly no-store and will reconcile with server
-        // state instead of leaving a stale account button on screen.
-        setSession(null);
-        setLoading(false);
-        notifyAuthChanged();
-      }
+      await postAuth("auth/logout/");
+      setSession(null);
+      setLoading(false);
+      notifyAuthChanged();
     },
   };
 }

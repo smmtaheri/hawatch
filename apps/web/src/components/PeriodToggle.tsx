@@ -12,7 +12,11 @@ export function PeriodToggle({
   periodStates?: Partial<Record<PeriodId, PeriodPhase>>;
 }) {
   return (
-    <div className="daypart-toggle" role="group" aria-label="انتخاب بازهٔ زمانی">
+    <div
+      className="periods daypart-toggle"
+      role="group"
+      aria-label="انتخاب بازهٔ زمانی"
+    >
       {PERIOD_OPTIONS.map((option) => {
         const phase = periodStates?.[option.id];
         const isSelected = value === option.id;
@@ -20,8 +24,9 @@ export function PeriodToggle({
           <button
             key={option.id}
             className={[
+              "period",
               isSelected ? "selected" : "",
-              phase === "past" && !isSelected ? "past-period" : "",
+              phase === "past" && !isSelected ? "past past-period" : "",
               phase === "current" ? "current-period" : "",
               phase === "future" ? "future-period" : "",
             ]

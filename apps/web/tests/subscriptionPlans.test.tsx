@@ -36,7 +36,7 @@ describe("subscription plans", () => {
 
   afterEach(() => vi.unstubAllGlobals());
 
-  it("keeps the free plan on the right and sends a guest to the login overlay", async () => {
+  it("keeps the free plan on the right and sends a guest to the header login menu", async () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
@@ -46,14 +46,14 @@ describe("subscription plans", () => {
       </ThemeProvider>,
     );
 
-    expect(await screen.findByRole("heading", { name: "طرح مناسب خودت را انتخاب کن" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "اشتراک هواچ" })).toBeInTheDocument();
     expect(screen.queryByText("دسترسی هواچ")).not.toBeInTheDocument();
     expect(screen.queryByText("روزهای قابل‌نمایش از تنظیمات پنل مدیریت خوانده می‌شوند و هر زمان قابل تغییرند.")).not.toBeInTheDocument();
     const cards = screen.getByRole("region", { name: "طرح‌های اشتراک" });
-    expect(cards.querySelector(".subscription-plan-card.free")).toBeTruthy();
-    expect(cards.querySelector(".subscription-plan-card.paid")).toBeTruthy();
+    expect(cards.querySelector(".plan-card.free")).toBeTruthy();
+    expect(cards.querySelector(".plan-card.paid")).toBeTruthy();
     await user.click(screen.getByRole("button", { name: "ورود برای خرید" }));
-    await waitFor(() => expect(screen.getByRole("dialog", { name: "ورود به هواچ" })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText("شمارهٔ موبایل")).toBeInTheDocument());
   });
 
   it("uses the clean plans URL even when an older continuation query is opened", async () => {
@@ -87,10 +87,8 @@ describe("subscription plans", () => {
     expect(onLocked).toHaveBeenCalledWith(expect.objectContaining({ access: "plan_required" }));
     await user.click(screen.getByRole("tab", { name: "امروز، ورود" }));
     expect(onLocked).toHaveBeenCalledWith(expect.objectContaining({ access: "login_required" }));
-    expect(document.querySelectorAll(".day-lock-badge")).toHaveLength(2);
-    expect(document.querySelectorAll(".day-lock-badge .day-lock-symbol")).toHaveLength(2);
-    expect(document.querySelectorAll(".day-tabs button > .day-lock-badge")).toHaveLength(2);
-    expect(document.querySelectorAll(".day-tab-copy > .day-lock-badge")).toHaveLength(0);
+    expect(document.querySelectorAll(".day .lock")).toHaveLength(2);
+    expect(document.querySelectorAll(".day svg")).toHaveLength(2);
     expect(screen.queryByText("ورود")).not.toBeInTheDocument();
     expect(screen.queryByText("خرید اشتراک")).not.toBeInTheDocument();
   });

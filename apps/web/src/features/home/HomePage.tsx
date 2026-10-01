@@ -1,185 +1,114 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../api/client";
-import { Header } from "../../components/Header";
-import { EmptyState } from "../../components/EmptyState";
+import { PageShell } from "../../components/PageShell";
 import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
-import { SearchCombobox, type SearchComboboxHandle } from "../../components/SearchCombobox";
+import {
+  SearchCombobox,
+  type SearchComboboxHandle,
+} from "../../components/SearchCombobox";
+import { CategoryIcon, DesignIcon } from "../../components/DesignIcon";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
-import { DestinationIcon } from "../../components/PointIcon";
 import { usePageTitle } from "../../lib/pageTitle";
-import type { CatalogCounts, PointSummary, SearchSuggestion } from "../../types";
-
-function tileWords(name: string) {
-  return name.split(" ").filter(Boolean);
-}
+import type { CatalogCounts, PointSummary } from "../../types";
 
 export function HomePage() {
   usePageTitle();
   const [query, setQuery] = useState("");
-  const [submittedQuery, setSubmittedQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchSuggestion[]>([]);
-  const [searchError, setSearchError] = useState(false);
   const [popularPoints, setPopularPoints] = useState<PointSummary[]>([]);
-  const [catalogCounts, setCatalogCounts] = useState<CatalogCounts | null>(null);
+  const [counts, setCounts] = useState<CatalogCounts | null>(null);
   const [freshness, setFreshness] = useState("ready");
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
   const searchRef = useRef<SearchComboboxHandle>(null);
-
-  function loadPopular() {
+  const request = useRef(0);
+  function load() {
+    const id = ++request.current;
     setStatus("loading");
     api
       .points()
       .then((payload) => {
+        if (id !== request.current) return;
         setPopularPoints(payload.results);
-        setCatalogCounts(payload.meta.catalog_counts ?? null);
+        setCounts(payload.meta.catalog_counts ?? null);
         setFreshness(payload.meta.freshness);
         setStatus("ready");
       })
-      .catch(() => setStatus("error"));
+      .catch(() => {
+        if (id === request.current) setStatus("error");
+      });
   }
-
   useEffect(() => {
-    loadPopular();
+    load();
+    return () => {
+      ++request.current;
+    };
   }, []);
-
-  function handleUnifiedSearch(nextQuery: string, results: SearchSuggestion[]) {
-    setSubmittedQuery(nextQuery);
-    setSearchResults(results);
-    setSearchError(false);
-    setStatus("ready");
-  }
-
-  function handleUnifiedSearchStart(nextQuery: string) {
-    setSubmittedQuery(nextQuery);
-    setSearchResults([]);
-    setSearchError(false);
-    setStatus("loading");
-  }
-
-  function handleUnifiedSearchError(nextQuery: string) {
-    setSubmittedQuery(nextQuery);
-    setSearchResults([]);
-    setSearchError(true);
-    setStatus("ready");
-  }
-
-  const showingSearch = Boolean(submittedQuery);
-  const heading = showingSearch ? "نتایج مرتبط" : "مقصدهای محبوب";
-
   return (
-    <main className="home-page">
-      <div className="home-shell">
-        <section className="home-hero">
-          <Header />
-          <div className="hero-copy">
-            <h1 className="home-title">پیش‌بینی هوای نقاط و مسیرها</h1>
-            <form
-              className="search-box"
-              onSubmit={(event) => {
-                event.preventDefault();
-                searchRef.current?.submit();
-              }}
-            >
-              <SearchCombobox
-                ref={searchRef}
-                value={query}
-                onChange={setQuery}
-                onClearSubmitted={() => {
-                  setSubmittedQuery("");
-                  setSearchResults([]);
-                  setSearchError(false);
-                }}
-                onUnifiedSearchStart={handleUnifiedSearchStart}
-                onUnifiedSearch={handleUnifiedSearch}
-                onUnifiedSearchError={handleUnifiedSearchError}
-              />
-              <button type="submit">جست‌وجو</button>
-            </form>
-            <div className="hero-points" id="search-results">
-              <h2 className="hero-points-heading">
-                <span>{heading}</span>
-                <i />
-              </h2>
-              {freshness === "stale" ? <StaleDataNotice /> : null}
-              {status === "loading" && !showingSearch ? <LoadingState label="در حال بارگذاری نقاط…" /> : null}
-              {status === "error" && !showingSearch ? <ErrorState onRetry={loadPopular} /> : null}
-              {showingSearch && searchError ? (
-                <ErrorState
-                  onRetry={() => searchRef.current?.submit()}
-                  message="جست‌وجوی نقطه ناموفق بود. دوباره تلاش کن."
-                />
-              ) : null}
-              {showingSearch && !searchError && status === "loading" ? (
-                <LoadingState label="در حال جست‌وجو…" />
-              ) : null}
-              {showingSearch && !searchError && status === "ready" && !searchResults.length ? (
-                <EmptyState
-                  title="نتیجه‌ای پیدا نشد؛ نام دیگری را امتحان کن."
-                  detail="نام نقطه را با حداقل دو حرف جست‌وجو کن."
-                />
-              ) : null}
-              {showingSearch && !searchError && status === "ready" && searchResults.length ? (
-                <ul className="search-results-list" aria-label="نتایج جست‌وجو">
-                  {searchResults.map((item) => (
-                    <li key={`${item.type}-${item.slug}`}>
-                      <Link to={item.href} className="search-result-row">
-                        <span className="search-result-label">{item.label}</span>
-                        <span className="search-result-hint">— {item.hint}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-              {!showingSearch && status === "ready" ? (
-                <div className="point-grid">
-                  {popularPoints.map((item) => (
-                    <Link key={item.slug} to={item.href} className="point-tile">
-                      <span className="point-tile-copy">
-                        <strong>
-                          {tileWords(item.tile_name).map((word) => (
-                            <span className="point-name-word" key={word}>
-                              {word}
-                            </span>
-                          ))}
-                        </strong>
-                        <small>{item.short_category}</small>
-                      </span>
-                      <DestinationIcon
-                        className="tile-icon"
-                        categoryKey={item.category_key}
-                        placeType={item.place_type}
-                      />
-                      <span className="tile-arrow">←</span>
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-              {!showingSearch && status === "ready" ? (
-                <Link to="/destinations" className="home-destinations-link">
-                  مشاهدهٔ همهٔ مقصدها <span aria-hidden="true">←</span>
+    <PageShell className="home-page">
+      <section className="home-hero">
+        <h1>پیش‌بینی هوای نقاط و مسیرها</h1>
+        <p>برای برنامه‌ریزی طبیعت‌گردی</p>
+      </section>
+      <div className="home-workspace">
+        <div className="home-main">
+          <form
+            className="search-field home-search-box"
+            role="search"
+            onSubmit={(e) => {
+              e.preventDefault();
+              searchRef.current?.submit();
+            }}
+          >
+            <SearchCombobox ref={searchRef} value={query} onChange={setQuery} />
+            {query ? (
+              <button
+                className="search-clear"
+                type="button"
+                aria-label="پاک کردن جست‌وجو"
+                onClick={() => setQuery("")}
+              >
+                <DesignIcon name="close" />
+              </button>
+            ) : null}
+            <button type="submit">جست‌وجو</button>
+          </form>
+          <section className="popular" id="search-results">
+            <h2>مقصدهای محبوب</h2>
+            {freshness === "stale" ? <StaleDataNotice /> : null}
+            {status === "loading" ? (
+              <LoadingState label="در حال بارگذاری نقاط…" />
+            ) : null}
+            {status === "error" ? <ErrorState onRetry={load} /> : null}
+            <div className="popular-grid">
+              {popularPoints.map((item) => (
+                <Link className="popular-card" key={item.slug} to={item.href}>
+                  <CategoryIcon
+                    category={item.category_key}
+                    placeType={item.place_type}
+                  />
+                  <strong>{item.tile_name || item.name}</strong>
+                  <DesignIcon name="chevron-left" />
                 </Link>
-              ) : null}
-              {!showingSearch && catalogCounts ? (
-                <section className="home-catalog-stats" aria-label="آمار کاتالوگ هواچ">
-                  <div className="home-catalog-stat">
-                    <strong>{catalogCounts.points.toLocaleString("fa-IR")}</strong>
-                    <span>نقطهٔ فعال</span>
-                  </div>
-                  <div className="home-catalog-stat">
-                    <strong>{catalogCounts.routes.toLocaleString("fa-IR")}</strong>
-                    <span>مسیر ثبت‌شده</span>
-                  </div>
-                </section>
-              ) : null}
-              {showingSearch && !searchError && status === "ready" && searchResults.length ? (
-                <p className="muted">برای دیدن پیش‌بینی، روی نتیجهٔ موردنظرت بزن.</p>
-              ) : null}
+              ))}
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        {counts ? (
+          <aside className="home-stats" aria-label="آمار کاتالوگ هواچ">
+            <div>
+              <strong>{counts.points.toLocaleString("fa-IR")}</strong>
+              <span>نقطهٔ فعال</span>
+            </div>
+            <div>
+              <strong>{counts.routes.toLocaleString("fa-IR")}</strong>
+              <span>مسیر ثبت‌شده</span>
+            </div>
+          </aside>
+        ) : null}
       </div>
-    </main>
+    </PageShell>
   );
 }

@@ -1,23 +1,21 @@
-import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { BackNavigation } from "../../components/BackNavigation";
-import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ForecastDayPeriodControls } from "../../components/DaySelector";
-import { DesktopRouteSelector } from "../../components/DesktopRouteSelector";
 import { EmptyState } from "../../components/EmptyState";
 import { ErrorState } from "../../components/ErrorState";
-import { Header } from "../../components/Header";
-import { HourlyForecast } from "../../components/HourlyForecast";
+import { HourlyForecast, numberLabel } from "../../components/HourlyForecast";
 import { LoadingState } from "../../components/LoadingState";
 import { NotFoundPage } from "../../pages/NotFoundPage";
-import { MobileRouteSelector } from "../../components/MobileRouteSelector";
-import { SpecialistMetrics } from "../../components/SpecialistMetrics";
-import { SimilarDestinations } from "../../components/SimilarDestinations";
+import { PageShell } from "../../components/PageShell";
+import {
+  RelatedRoutes,
+  RelatedDestinations,
+} from "../../components/RelatedRoutes";
+import { WeatherIcon } from "../../components/DesignIcon";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
+import { openAccountLogin } from "../../components/Header";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
-import { scrollToDetailHero } from "../../lib/detailEntryScroll";
-import type { DayInfo, PeriodId } from "../../types";
+import type { DayInfo } from "../../types";
 import type { PlaceKind } from "./placeForecastAdapter";
 import { usePlaceForecast } from "./usePlaceForecast";
 
@@ -26,7 +24,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const location = useLocation();
   const navigate = useNavigate();
   const {
-    data,
+    data: weather,
+    frame: data,
+    bundle,
     status,
     displayPeriod,
     selected,
@@ -34,160 +34,153 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
     selectPeriod,
     reload,
   } = usePlaceForecast({ kind, slug });
-  // The forecast hook keeps the previous payload while a new slug is
-  // loading. Never let that payload rewrite the new page's head metadata.
-  const seoSubject = data?.subject.slug === slug ? data.subject : undefined;
-  usePageTitle(seoSubject?.name, {
-    title: seoSubject?.seo_title,
-    description: seoSubject?.seo_description,
-    robots: status === "missing" || seoSubject?.seo_indexable === false ? "noindex,follow" : undefined,
+  usePageTitle(data?.subject.name, {
+    title: data?.subject.seo_title,
+    description: data?.subject.seo_description,
+    robots:
+      status === "missing" || data?.subject.seo_indexable === false
+        ? "noindex,follow"
+        : undefined,
     canonical: status === "missing" ? false : undefined,
   });
-
-  // Detail pages open at their identity hero. The public site header is
-  // already at document top, so targeting it makes deep-link navigation look
-  // like no scroll happened at all.
-  useEffect(() => {
-    if (!data?.subject.slug) return;
-    const frame = window.requestAnimationFrame(() => {
-      scrollToDetailHero(".point-page .point-hero");
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [data?.subject.slug]);
-
-
-  if (status === "missing") {
-    return <NotFoundPage title="نقطه پیدا نشد" detail="از جست‌وجوی خانه نام دیگری را امتحان کن." />;
-  }
-
-  const routes = data?.related_routes ?? [];
-  const similarDestinations = data?.related_destinations ?? [];
-  const periodStates =
-    data?.meta.current_local_time && selected
-      ? classifyAllPeriods(selected, data.meta.current_local_time)
-      : undefined;
-  const heroImage = data?.subject.hero_image;
-  const pageClass =
-    "point-page";
-  const dayLabel = data?.days.find((day) => day.date === selected)?.label ?? "امروز";
-
-  function openAccess(day: DayInfo) {
+  function access(day: DayInfo) {
     if (day.access === "plan_required") {
       navigate("/account/plans");
       return;
     }
-    const returnParams = new URLSearchParams(location.search);
-    returnParams.set("date", day.date);
-    returnParams.set("period", displayPeriod);
-    const returnTo = `${location.pathname}?${returnParams.toString()}`;
-    if (day.access !== "login_required") return;
-    navigate(
-      { pathname: "/login", search: `?${new URLSearchParams({ returnTo }).toString()}` },
-      { state: { backgroundLocation: location } },
-    );
+    const params = new URLSearchParams(location.search);
+    params.set("date", day.date);
+    params.set("period", displayPeriod);
+    openAccountLogin(`${location.pathname}?${params}`);
   }
-
+  if (status === "missing")
+    return (
+      <NotFoundPage
+        title="نقطه پیدا نشد"
+        detail="از جست‌وجوی خانه نام دیگری را امتحان کن."
+      />
+    );
+  const dayLabel = data?.days.find((d) => d.date === selected)?.label ?? "";
+  const summary = bundle?.daily_summary;
   return (
-    <main className={pageClass} data-place-kind="point">
-      <div className="point-shell">
-        <Header />
-        <div className="page-back-navigation">
-          <BackNavigation />
-        </div>
-        {status === "error" ? <ErrorState onRetry={() => reload()} /> : null}
-        {status === "loading" && !data ? <LoadingState /> : null}
-        {data ? (
-          <>
-            {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
-            <section className={`point-hero${heroImage ? "" : " point-hero--fallback"}`}>
-              <div className="point-hero-fallback" aria-hidden="true" />
-              {heroImage ? <img src={heroImage} alt={data.subject.hero_image_alt} /> : null}
-              <div className="point-hero-overlay" />
-              <div className="point-heading">
-                <Breadcrumbs
-                  items={[{ label: "نقاط", to: "/#search-results" }, { label: data.subject.name }]}
-                />
-                <div className="point-heading-identity">
-                  <h1>{data.subject.seo_h1 || `آب‌وهوای ${data.subject.name}`}</h1>
-                  <p className="point-hero-subtitle">
-                    {data.subject.seo_subtitle || (data.subject.elevation_label ? `پیش‌بینی آب‌وهوای این نقطه در ارتفاع ${data.subject.elevation_label}` : "پیش‌بینی آب‌وهوای این نقطه")}
-                  </p>
-                </div>
-              </div>
-              <div className="hero-status-stack">
-                <div className="status-pill now">{data.hero.status}</div>
-                {data.hero.alert ? <div className="status-pill change">{data.hero.alert}</div> : null}
-              </div>
-            </section>
-            <div className="point-layout">
-              <div className="point-main">
-                <section className="weather-card card-surface">
-                  <div className="point-planner-controls">
-                    <ForecastDayPeriodControls
-                      days={data.days}
-                      selectedDate={selected}
-                      onSelectDate={selectDate}
-                      period={displayPeriod}
-                      onSelectPeriod={selectPeriod as (next: PeriodId) => void}
-                      periodStates={periodStates}
-                      onLockedDate={openAccess}
-                    />
-                  </div>
-                  <div className="point-forecast-output">
-                    {data.empty || data.partial ? (
-                      <EmptyState
-                        title={data.partial ? "پیش‌بینی ناقص" : "پیش‌بینی این روز در دسترس نیست"}
-                        detail="روز دیگری را انتخاب کن یا بعداً دوباره سر بزن."
-                      />
-                    ) : (
-                      <HourlyForecast hours={data.hourly} />
-                    )}
-                  </div>
-                </section>
-                {routes.length ? (
-                  <MobileRouteSelector routes={routes} title={data.related_routes_title} />
-                ) : (
-                  <SimilarDestinations
-                    destinations={similarDestinations}
-                    title={data.related_destinations_title}
-                    variant="mobile"
-                  />
-                )}
-                <section className="technical-card card-surface">
-                  <div className="section-title-row">
-                    <h2>جزئیات تخصصی {dayLabel}</h2>
-                  </div>
-                  {data.metrics.length ? (
-                    <SpecialistMetrics metrics={data.metrics} dayLabel={dayLabel} />
-                  ) : (
-                    <EmptyState
-                      title="جزئیات تخصصی در دسترس نیست"
-                      detail="برای این روز و بازه، متریک تخصصی ثبت نشده است."
-                    />
-                  )}
-                </section>
-              </div>
-              <aside className="point-side">
-                {routes.length ? (
-                  <DesktopRouteSelector routes={routes} title={data.related_routes_title} />
-                ) : (
-                  <SimilarDestinations
-                    destinations={similarDestinations}
-                    title={data.related_destinations_title}
-                    variant="desktop"
-                  />
-                )}
-              </aside>
+    <PageShell className="point-page" back>
+      {status === "error" ? <ErrorState onRetry={reload} /> : null}
+      {status === "loading" && !data ? <LoadingState /> : null}
+      {data ? (
+        <>
+          {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
+          <section
+            className={`hero point-hero ${data.subject.name.length > 14 ? "long-title" : ""}`}
+          >
+            <div className="hero-title">
+              <h1>{data.subject.seo_h1 || `آب‌وهوای ${data.subject.name}`}</h1>
+              <p>
+                {data.subject.elevation_label
+                  ? `ارتفاع ${data.subject.elevation_label}`
+                  : data.subject.region}
+              </p>
             </div>
-          </>
-        ) : null}
-      </div>
-    </main>
+            <div className="summary">
+              {summary ? (
+                <>
+                  <div className="summary-weather">
+                    <WeatherIcon
+                      code={summary.weather_code}
+                      at={summary.forecast_at}
+                      className=""
+                    />
+                    <div className="temperature-stat">
+                      <span>بیشینه</span>
+                      <strong>
+                        <bdi>{numberLabel(summary.apparent_max_c, "°")}</bdi>
+                      </strong>
+                    </div>
+                    <div className="temperature-stat">
+                      <span>کمینه</span>
+                      <strong>
+                        <bdi>{numberLabel(summary.apparent_min_c, "°")}</bdi>
+                      </strong>
+                    </div>
+                  </div>
+                  <p className="day-summary-line">
+                    {dayLabel} ·{" "}
+                    <span
+                      className={
+                        summary.severity === "critical"
+                          ? "risk-red"
+                          : summary.severity === "change"
+                            ? "risk-yellow"
+                            : ""
+                      }
+                    >
+                      {summary.condition}
+                    </span>
+                    {!summary.complete ? " · دادهٔ روز ناقص است" : null}
+                  </p>
+                </>
+              ) : (
+                <p className="day-summary-line" role="status">
+                  در حال دریافت پیش‌بینی روز…
+                </p>
+              )}
+            </div>
+          </section>
+          <div className="content-grid">
+            <section className="forecast" aria-label="پیش‌بینی مقصد">
+              <ForecastDayPeriodControls
+                days={data.days}
+                selectedDate={selected}
+                onSelectDate={selectDate}
+                period={displayPeriod}
+                onSelectPeriod={selectPeriod}
+                periodStates={classifyAllPeriods(
+                  selected,
+                  data.meta.current_local_time,
+                )}
+                onLockedDate={access}
+              />
+              {!weather ? (
+                status === "loading" ? (
+                  <LoadingState />
+                ) : null
+              ) : weather.empty || !weather.hourly.length ? (
+                <EmptyState
+                  title="پیش‌بینی این روز در دسترس نیست"
+                  detail="روز دیگری را انتخاب کن یا بعداً دوباره سر بزن."
+                />
+              ) : (
+                <>
+                  {data.partial ? (
+                    <p className="partial-notice" role="status">
+                      بعضی ساعت‌های این بازه در دسترس نیستند.
+                    </p>
+                  ) : null}
+                  <HourlyForecast
+                    key={`${slug}:${selected}:${displayPeriod}`}
+                    hours={data.hourly}
+                    dayLabel={dayLabel}
+                  />
+                </>
+              )}
+            </section>
+            {data.related_routes.length ? (
+              <RelatedRoutes
+                routes={data.related_routes}
+                title={data.related_routes_title}
+              />
+            ) : data.related_destinations.length ? (
+              <RelatedDestinations
+                destinations={data.related_destinations}
+                title={data.related_destinations_title}
+              />
+            ) : null}
+          </div>
+        </>
+      ) : null}
+    </PageShell>
   );
 }
-
 export function PointPlacePage() {
   return <PlaceForecastPage kind="point" />;
 }
-
 export { PlaceForecastPage };

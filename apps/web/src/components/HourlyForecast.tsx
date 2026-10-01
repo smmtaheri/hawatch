@@ -1,72 +1,124 @@
-import { useEffect, useRef } from "react";
+import { useId, useState } from "react";
 import type { CSSProperties } from "react";
-
 import type { HourlyReading } from "../types";
-
-/** Hourly cards + severity legend. Period `headline` is API-only and not shown. */
-export function HourlyForecast({ hours }: { hours: HourlyReading[] }) {
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid || !hours.length || typeof window === "undefined") return;
-
-    const isMobile =
-      typeof window.matchMedia === "function"
-        ? window.matchMedia("(max-width: 720px)").matches
-        : window.innerWidth <= 720;
-    if (!isMobile) return;
-
-    const target =
-      grid.querySelector<HTMLElement>(".hour-item.is-current") ?? grid.querySelector<HTMLElement>(".hour-item");
-    if (!target || typeof target.scrollIntoView !== "function") return;
-
-    const reduceMotion =
-      typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const frame = window.requestAnimationFrame(() => {
-      target.scrollIntoView({
-        behavior: reduceMotion ? "auto" : "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, [hours]);
-
+import { DesignIcon, WeatherIcon } from "./DesignIcon";
+export function numberLabel(value: number | null | undefined, suffix = "") {
+  return typeof value === "number" && Number.isFinite(value)
+    ? `${value.toLocaleString("fa-IR")}${suffix}`
+    : "نامشخص";
+}
+export function HourlyForecast({
+  hours,
+  dayLabel = "",
+}: {
+  hours: HourlyReading[];
+  dayLabel?: string;
+}) {
+  const id = useId();
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const selected = hours.find(
+    (hour) => (hour.forecast_at ?? hour.time) === expanded,
+  );
+  const selectedIndex = selected ? hours.indexOf(selected) : -1;
+  const metrics: [string, number | null | undefined, string][] = selected
+    ? [
+        ["دمای حسی", selected.apparent_temperature_c, "°"],
+        ["باد", selected.wind_speed_kmh, " km/h"],
+        ["تندباد", selected.wind_gust_kmh, " km/h"],
+        ["باران", selected.rain_mm, " mm"],
+        ["برف", selected.snowfall_cm, " cm"],
+        ["احتمال بارش", selected.precipitation_probability, "٪"],
+        ["دید افقی", selected.visibility_km, " km"],
+        ["تراز صفر درجه", selected.freezing_level_m, " m"],
+        ["پایهٔ ابر", selected.cloud_base_m, " m"],
+        ["تابش فرابنفش", selected.uv_index, ""],
+        ["پوشش ابر", selected.cloud_cover_pct, "٪"],
+      ]
+    : [];
   return (
-    <div className="hourly-box">
-      <div className="hourly-head">
-        <div className="legend">
-          <span>
-            <i className="legend-dot teal-dot" />
-            عادی
-          </span>
-          <span>
-            <i className="legend-dot amber-dot" />
-            تغییر مهم
-          </span>
-          <span>
-            <i className="legend-dot coral-dot" />
-            نقطه حساس
-          </span>
-        </div>
+    <>
+      <div className="hours hours-grid" aria-label="پیش‌بینی ساعتی">
+        {hours.map((hour) => {
+          const key = hour.forecast_at ?? hour.time;
+          const open = expanded === key;
+          return (
+            <article
+              key={key}
+              className={`hour-card hour-item ${hour.state} ${hour.is_past ? "past is-past" : ""} ${hour.is_current ? "is-current" : ""} ${hour.state === "critical" ? "severe" : ""} ${open ? "expanded" : ""}`}
+            >
+              {hour.state === "critical" ? (
+                <DesignIcon name="warning" className="hazard" />
+              ) : null}
+              <div className="stamp">
+                <time dateTime={hour.forecast_at} dir="ltr">
+                  {hour.time}
+                </time>
+                {hour.is_current ? (
+                  <span className="current-dot" aria-label="بازهٔ جاری" />
+                ) : null}
+              </div>
+              <WeatherIcon
+                code={hour.weather_code}
+                at={hour.forecast_at}
+                isDay={hour.is_day}
+              />
+              <div
+                className={`weather-label ${hour.state === "critical" ? "risk-red" : ""}`}
+              >
+                {hour.condition}
+              </div>
+              <div className="degree">
+                <bdi>{numberLabel(hour.apparent_temperature_c, "°")}</bdi>
+              </div>
+              <div className="wind-line">
+                <span>باد</span>
+                <bdi
+                  className={
+                    hour.wind_alert?.severity === "critical" ? "risk-red" : ""
+                  }
+                >
+                  {numberLabel(hour.wind_speed_kmh, " km/h")}
+                </bdi>
+                <DesignIcon name="wind" />
+              </div>
+              <button
+                className="details-trigger"
+                type="button"
+                aria-expanded={open}
+                aria-controls={id}
+                onClick={() => setExpanded(open ? null : key)}
+              >
+                جزئیات تخصصی{" "}
+                <DesignIcon name={open ? "chevron-up" : "chevron-down"} />
+              </button>
+            </article>
+          );
+        })}
       </div>
-      <div ref={gridRef} className="hours-grid" style={{ "--hour-count": Math.max(hours.length, 1) } as CSSProperties}>
-        {hours.map((hour) => (
-          <div
-            key={hour.forecast_at ?? hour.time}
-            className={`hour-item ${hour.state} ${hour.is_past ? "is-past" : ""} ${hour.is_current ? "is-current" : ""} ${hour.is_future ? "is-future" : ""}`}
-          >
-            <strong><bdi>{hour.time}</bdi></strong>
-            <span className="weather-symbol">{hour.icon}</span>
-            <span className="condition">{hour.condition}</span>
-            <b><bdi>{hour.apparent_temperature_label ?? hour.temperature_label}</bdi></b>
-            <small><bdi>{hour.wind_label}</bdi></small>
-            {hour.state !== "normal" ? <em>{hour.state === "critical" ? "احتیاط" : "تغییر مهم"}</em> : null}
+      {selected ? (
+        <section
+          className="detail-panel"
+          id={id}
+          style={
+            { "--anchor": `${[83, 50, 17][selectedIndex]}%` } as CSSProperties
+          }
+        >
+          <h2>
+            جزئیات تخصصی <bdi dir="ltr">{selected.time}</bdi>
+            <small>{dayLabel}</small>
+          </h2>
+          <div className="metrics">
+            {metrics.map(([label, value, unit]) => (
+              <div className="metric" key={label}>
+                <span>{label}</span>
+                <strong>
+                  <bdi>{numberLabel(value, unit)}</bdi>
+                </strong>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </section>
+      ) : null}
+    </>
   );
 }

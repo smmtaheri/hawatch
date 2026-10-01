@@ -8,6 +8,8 @@ import type {
   SearchSuggestion,
   ForecastPlanSummary,
   DestinationPage,
+  PointDayBundle,
+  RouteDayBundle,
 } from "../types";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
@@ -88,8 +90,13 @@ export const api = {
       points: PointSummary[];
       routes: Array<{ title: string; origin: string; target_label: string; href: string; region: string }>;
     }>("catalog-index/"),
-  destinations: (page = 1) =>
-    getJson<DestinationPage>("destinations/", { page: String(page) }),
+  destinations: (page = 1, query?: string) =>
+    getJson<DestinationPage>("destinations/", { page: String(page), query }),
+  routes: (query?: string) => getJson<{ routes: RouteSummary[]; empty: boolean }>("routes/", { query }),
+  pointDay: (slug: string, params: { date?: string; period?: string }) =>
+    getJson<PointDayBundle>(`points/${slug}/forecast/day/`, params),
+  routeDay: (slug: string, params: { date?: string; period?: string; start_time?: string; speed?: string }) =>
+    getJson<RouteDayBundle>(`routes/${slug}/forecast/day/`, params),
   routeForecast: (
     slug: string,
     params: { date?: string; period?: string; start_time?: string; speed?: string },
@@ -99,6 +106,7 @@ export const api = {
   searchSuggestions: (query: string, signal?: AbortSignal) => {
     const url = apiUrl("search/suggestions/");
     url.searchParams.set("q", query);
+    url.searchParams.set("include_routes", "1");
     return fetch(url.toString(), { signal }).then(async (response) => {
       if (!response.ok) {
         throw new ApiError("جست‌وجو ناموفق بود.", response.status);

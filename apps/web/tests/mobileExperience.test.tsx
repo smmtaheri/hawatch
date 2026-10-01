@@ -331,7 +331,7 @@ describe("mobile route and forecast controls", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  it("scrolls the current hourly card into view on mobile", async () => {
+  it("preserves user scroll when the current hourly card renders on mobile", async () => {
     Object.defineProperty(window, "innerWidth", { configurable: true, value: 390 });
     vi.spyOn(window, "matchMedia").mockImplementation((query) =>
       ({ matches: query === "(max-width: 720px)", media: query, onchange: null, addListener: vi.fn(), removeListener: vi.fn(), addEventListener: vi.fn(), removeEventListener: vi.fn(), dispatchEvent: vi.fn() }) as unknown as MediaQueryList,
@@ -349,7 +349,7 @@ describe("mobile route and forecast controls", () => {
 
     render(<HourlyForecast hours={[reading("03:00", false), reading("05:00", true), reading("07:00", false)]} />);
 
-    await waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "nearest", inline: "center" }));
+    expect(scrollIntoView).not.toHaveBeenCalled();
     expect(document.querySelectorAll(".hour-item.is-current")).toHaveLength(1);
   });
 });

@@ -1,5 +1,5 @@
 import { BackNavigation } from "../components/BackNavigation";
-import { Header } from "../components/Header";
+import { PageShell } from "../components/PageShell";
 import { usePageTitle } from "../lib/pageTitle";
 
 export function NotFoundPage({
@@ -12,15 +12,12 @@ export function NotFoundPage({
   usePageTitle(undefined, { robots: "noindex,follow", canonical: false });
 
   return (
-    <main className="not-found-page">
-      <div className="home-shell">
-        <Header />
+    <PageShell className="not-found-page">
         <section className="not-found-state hawatch-state empty" aria-labelledby="not-found-title">
           <h1 id="not-found-title">{title}</h1>
           <p>{detail}</p>
           <BackNavigation />
         </section>
-      </div>
-    </main>
+    </PageShell>
   );
 }
