@@ -38,3 +38,13 @@ def test_stage_deploy_waits_for_real_forecast_through_the_public_gateway():
     assert 'MODE" == prepare' in script
     assert 'HAWATCH_NEW_DESIGN = True' in settings
     assert 'DEMO_DATA_ENABLED = False' in settings
+
+
+def test_combined_deploy_pushes_stage_only_when_enabled_and_migrates_legacy_branch():
+    root = _repository_root()
+    wrapper = (root / "scripts/deploy-hawatch").read_text(encoding="utf-8")
+
+    assert 'remote_stage_enabled="$(ssh "$SSH_HOST"' in wrapper
+    assert 'Stage is disabled; its branch will not be pushed or deployed.' in wrapper
+    assert 'git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage' in wrapper
+    assert 'git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage' in wrapper

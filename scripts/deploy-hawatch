@@ -152,7 +152,7 @@ if [[ "$stage_enabled" == 1 ]]; then
     [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design || "$(git -C "$legacy_stage_dir" branch --show-current)" == stage ]] || fail_remote 'Legacy stage checkout must be on new-design or stage.'
     mkdir -p "$(dirname "$stage_dir")"
     if [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design ]]; then
-      git -C "$legacy_stage_dir" fetch origin stage
+      git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage
       git -C "$legacy_stage_dir" branch -m new-design stage
       git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage
     fi
