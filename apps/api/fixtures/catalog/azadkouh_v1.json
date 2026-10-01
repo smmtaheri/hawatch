@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v5",
+  "catalog_version": "hawatch-azadkouh-catalog-v6",
   "weather_points": {
     "azadkouh-kelakbala-start": {
       "name": "روستای کلاک بالا",
@@ -235,6 +235,41 @@
         "https://decovel.com/page/azad-kuh-peak",
         "https://mojekooh.com/%D8%A2%D8%B2%D8%A7%D8%AF-%DA%A9%D9%88%D9%87/"
       ]
+    },
+    "sotak-bozorg": {
+      "name": "قلهٔ سوتک بزرگ",
+      "page_name": "قلهٔ سوتک بزرگ البرز مرکزی",
+      "short_label": "سوتک بزرگ",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "سوتک بزرگ",
+        "سووتک بزرگ",
+        "قله سوتک",
+        "قله سووتک بزرگ",
+        "Sotak Bozorg",
+        "Sootak Bozorg"
+      ],
+      "identity_summary": "قلهٔ سوتک بزرگ در البرز مرکزی، شمال‌غرب کمان‌کوه و شرق وارنگه‌رود؛ مقصد مستقل کوهستانی در منطقهٔ حفاظت‌شدهٔ البرز مرکزی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.1283349&lon=51.4541309&peak-name=%D8%B3%D9%88%D8%AA%DA%A9&pkidentifier=395",
+        "https://el.wikiloc.com/oreibasia-diadromes/qlh-swtkh-bzrg-z-drh-swtkh-wrngh-rwd-142601295",
+        "https://www.wikiloc.com/hiking-trails/qlh-swtkh-bzrg-w-qlh-khrsrkh-z-wrngh-rwd-138535111",
+        "https://radepagroup.com/wp-content/uploads/2017/07/Guidelines_of_Iran_High_Summits.pdf",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.1283349,
+      "longitude": 51.4541309,
+      "elevation_m": 3950,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۹۵۰ متر از معرفی قله در Gholleh و راهنمای قلل بلند ایران؛ Open-Meteo GLO-90 DEM برابر ۳۸۶۵ متر و برای forecast در preflight کنترل می‌شود.",
+      "climate": "high_alpine",
+      "category": "قله‌های البرز مرکزی",
+      "region": "البرز مرکزی · وارنگه‌رود · مازندران"
     },
     "azadkouh-kamankouh-lake": {
       "name": "دریاچهٔ کمان‌کوه",
