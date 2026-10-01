@@ -1,0 +1,69 @@
+{
+  "catalog_version": "hawatch-alendan-lake-catalog-v1",
+  "weather_points": {
+    "alendan-lake": {
+      "name": "دریاچهٔ الندان",
+      "page_name": "آب‌وهوای دریاچهٔ الندان ساری",
+      "short_label": "دریاچهٔ الندان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "دریاچه الندان",
+        "آب‌بندان الندان",
+        "آب‌بندان پله ازنی",
+        "دریاچه پله ازنی",
+        "دریاچه الندان ساری",
+        "Alandan Lake",
+        "Pelleh Azni Lake"
+      ],
+      "identity_summary": "دریاچهٔ طبیعی الندان، معروف به آب‌بندان پله ازنی، در جنگل‌های چهاردانگهٔ ساری و نزدیک روستای ازنی",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W302857476",
+        "https://visitiran.ir/fa/attraction/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%D8%A7%D9%84%D9%86%D8%AF%D8%A7%D9%86",
+        "https://eu.wikiloc.com/ibilbide-autoa/drychh-lndn-mzndrn-jy-khysr-267344835",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.2198,
+      "longitude": 53.4267,
+      "elevation_m": 1001,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز عارضه از feature طبیعی lake در OpenStreetMap/Mapcarta؛ ارتفاع ۱۰۰۱ متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود. عدد ۱۳۰۰ مترِ برخی راهنماها به ارتفاع مسیر/منطقه نسبت داده شده و مبنای این نقطه نیست.",
+      "climate": "lake_valley",
+      "category": "دریاچه‌های چهاردانگهٔ ساری",
+      "region": "چهاردانگه · ساری · مازندران"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "alendan-lake",
+    "tile_name": "دریاچهٔ الندان",
+    "name": "دریاچهٔ الندان",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های چهاردانگهٔ ساری",
+    "category_key": "lake",
+    "region": "چهاردانگه · ساری · مازندران",
+    "elevation_m": 1001,
+    "latitude": 36.2198,
+    "longitude": 53.4267,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ الندان در جنگل‌های چهاردانگهٔ ساری",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه الندان",
+      "آب‌بندان الندان",
+      "آب‌بندان پله ازنی",
+      "دریاچه پله ازنی",
+      "دریاچه الندان ساری",
+      "Alandan Lake",
+      "Pelleh Azni Lake"
+    ]
+  },
+  "primary_point": "alendan-lake"
+}
