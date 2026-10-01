@@ -366,6 +366,8 @@ dialog.auth-dialog{width:min(636px,calc(100% - 32px));max-width:636px;max-height
 .share-brand span{font-size:16px}
 .share-route-title{font-size:26px;line-height:1.6}
 .share-date{font-size:16px;color:var(--secondary);margin:6px 0 24px}
+.share-route-url{direction:ltr;text-align:center;color:var(--accent);font-size:13px;line-height:1.6;margin:24px 0 0;overflow-wrap:anywhere;word-break:break-word}
+.share-route-url a{color:inherit;text-decoration:none}
 .route-page .share-card .trip-summary{padding:0;background:transparent;border:0;border-radius:0;width:100%}
 .route-page .share-card .trip-facts{gap:12px}
 .route-page .share-card .trip-fact{background:var(--panel);padding:14px;min-height:80px}

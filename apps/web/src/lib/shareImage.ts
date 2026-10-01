@@ -6,6 +6,7 @@ export async function renderSummaryPng(
   title: string,
   date: string,
   filename: string,
+  shareUrl: string,
 ): Promise<File> {
   const clone = summary.cloneNode(true) as HTMLElement;
   clone.querySelector(".share-actions")?.remove();
@@ -31,7 +32,14 @@ export async function renderSummaryPng(
     dateStyle: "full",
     timeZone: "Asia/Tehran",
   }).format(new Date(`${date}T12:00:00+03:30`));
-  card.append(brand, heading, day, clone);
+  const link = document.createElement("p");
+  link.className = "share-route-url";
+  link.dir = "ltr";
+  const linkAnchor = document.createElement("a");
+  linkAnchor.href = shareUrl;
+  linkAnchor.textContent = shareUrl;
+  link.append(linkAnchor);
+  card.append(brand, heading, day, clone, link);
   host.append(card);
   document.body.append(host);
   try {

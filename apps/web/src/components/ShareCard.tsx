@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { RouteForecast } from "../types";
 import { renderSummaryPng } from "../lib/shareImage";
+import { buildRouteShareUrl } from "../lib/routeShare";
 import { Dialog } from "./Dialog";
 const GEAR_LABELS: Record<string, string> = {
   "waterproof-shell": "کاپشن ضدآب",
@@ -37,6 +38,11 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   const decision = forecast.decision;
   const pending = Boolean(forecast.timing_pending ?? decision.timing_pending);
   const incomplete = forecast.points.some((point) => !point.weather_available);
+  const shareUrl = buildRouteShareUrl(
+    forecast,
+    import.meta.env.VITE_PUBLIC_SITE_ORIGIN || window.location.origin,
+  );
+  const shareMessage = `خلاصهٔ مسیر ${forecast.route.title} در هواچ`;
   useEffect(
     () => () => {
       generation.current++;
@@ -60,6 +66,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         forecast.route.title,
         forecast.meta.selected_date,
         `hawatch-${forecast.route.slug}-${forecast.meta.selected_date}-${forecast.start_minutes}-${forecast.speed}.png`,
+        shareUrl,
       );
       if (revision !== generation.current) return;
       setShare({ file, preview: URL.createObjectURL(file), error: "" });
@@ -85,11 +92,13 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         await navigator.share({
           files: [share.file],
           title: forecast.route.title,
+          text: shareMessage,
+          url: shareUrl,
         });
       } else {
         await navigator.share({
           title: forecast.route.title,
-          text: `خلاصهٔ مسیر ${forecast.route.title} در هواچ`,
+          text: `${shareMessage}\n${shareUrl}`,
         });
       }
     } catch (error) {
