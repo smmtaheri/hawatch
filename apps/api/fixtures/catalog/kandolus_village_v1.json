@@ -1,0 +1,104 @@
+{
+  "catalog_version": "hawatch-kandolus-v1",
+  "weather_points": {
+    "kandolus-village": {
+      "name": "روستای کندلوس",
+      "page_name": "آب‌وهوای روستای کندلوس نوشهر",
+      "short_label": "روستای کندلوس",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "کندلوس",
+        "روستا کندلوس",
+        "کندلوس نوشهر",
+        "روستای تاریخی کندلوس",
+        "Kandolus village",
+        "Kandelous village",
+        "Kandloos"
+      ],
+      "identity_summary": "روستای تاریخی کندلوس در درهٔ زانوسِ کجور نوشهر؛ مقصد فرهنگی و طبیعت‌گردی شناخته‌شدهٔ مازندران",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/W326960140",
+        "https://wiki.sizzltek.com/content/wikipedia_en_all_maxi_2025-08/Kandolus",
+        "https://fa.tripyar.com/iran/%D9%85%D8%A7%D8%B2%D9%86%D8%AF%D8%B1%D8%A7%D9%86/%D9%86%D9%88%D8%B4%D9%87%D8%B1/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C%DB%8C%D8%8C-%D9%82%D9%88%D9%85%DB%8C-%D9%88-%D8%B9%D8%B4%D8%A7%DB%8C%D8%B1%DB%8C/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE%DB%8C-%D9%88-%D9%81%D8%B1%D9%87%D9%86%DA%AF%DB%8C/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%DA%A9%D9%86%D8%AF%D9%84%D9%88%D8%B3.html",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.32417,
+      "longitude": 51.56722,
+      "elevation_m": 1628,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از منبع جغرافیایی و feature مسکونی OpenStreetMap/Mapcarta؛ ارتفاع ۱۶۲۸ متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود. گزارش‌های گردشگری ارتفاع منطقه را حدود ۱۶۵۰ متر ذکر می‌کنند.",
+      "climate": "forest_fog",
+      "category": "روستاهای تاریخی مازندران",
+      "region": "کجور · نوشهر · مازندران"
+    },
+    "kandolus-anthropology-museum": {
+      "name": "موزهٔ مردم‌شناسی کندلوس",
+      "page_name": "آب‌وهوای موزهٔ مردم‌شناسی کندلوس",
+      "short_label": "موزهٔ مردم‌شناسی کندلوس",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": [
+        "موزه مردم‌شناسی کندلوس",
+        "موزه کندلوس",
+        "موزهٔ روستای کندلوس",
+        "Kandolus Anthropology Museum",
+        "Kandolus Museum"
+      ],
+      "identity_summary": "موزهٔ مردم‌شناسی و مجموعهٔ فرهنگی روستای کندلوس در کجور نوشهر؛ مقصد مستقل فرهنگی در کنار بافت تاریخی روستا",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4748545522",
+        "https://lastsecond.ir/attractions/8760-museum-of-anthropology-kandolus",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.32407,
+      "longitude": 51.56437,
+      "elevation_m": 1669,
+      "status": "provisional",
+      "elevation_source": "مختصات موزه از feature موزه در OpenStreetMap/Mapcarta؛ ارتفاع ۱۶۶۹ متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود.",
+      "climate": "forest_fog",
+      "category": "مقصدهای فرهنگی کندلوس",
+      "region": "کجور · نوشهر · مازندران",
+      "seo": {
+        "title": "آب‌وهوای موزهٔ مردم‌شناسی کندلوس؛ دما، باد و بارش | هواچ"
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "kandolus-village",
+    "tile_name": "کندلوس",
+    "name": "روستای کندلوس",
+    "short_category": "روستا",
+    "category": "روستاهای تاریخی مازندران",
+    "category_key": "village",
+    "region": "کجور · نوشهر · مازندران",
+    "elevation_m": 1628,
+    "latitude": 36.32417,
+    "longitude": 51.56722,
+    "image": "/images/home-scene.png",
+    "image_alt": "بافت تاریخی روستای کندلوس در کجور نوشهر",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کندلوس",
+      "روستا کندلوس",
+      "کندلوس نوشهر",
+      "روستای تاریخی کندلوس",
+      "Kandolus village",
+      "Kandelous village",
+      "Kandloos"
+    ]
+  },
+  "primary_point": "kandolus-village"
+}
