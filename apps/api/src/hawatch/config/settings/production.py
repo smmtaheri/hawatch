@@ -3,6 +3,8 @@ from .base import *  # noqa: F403
 DEBUG = False
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS", "api").split(",")  # noqa: F405
 SECRET_KEY = env("DJANGO_SECRET_KEY")  # noqa: F405
+# The new-design React shell and its SSR route hub are now production pages.
+HAWATCH_NEW_DESIGN = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # Bump the static URL prefix when gateway/CDN caches contain stale assets.

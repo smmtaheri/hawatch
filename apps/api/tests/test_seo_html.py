@@ -300,7 +300,7 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
     assert 'rel="canonical" href="https://hawatch.ir/routes/seo-test-route"' in query_response.content.decode()
 
 
-def test_removed_catalog_indexes_redirect_and_curated_seo_override_is_rendered(api_client, seo_catalog):
+def test_point_index_redirect_and_route_hub_are_crawlable(api_client, seo_catalog):
     point = WeatherPoint.objects.create(
         slug="seo-override-lake",
         name="دریاچهٔ آزمایشی",
@@ -322,10 +322,24 @@ def test_removed_catalog_indexes_redirect_and_curated_seo_override_is_rendered(a
     assert "<title>راهنمای مستند دریاچهٔ آزمایشی | هواچ</title>" in point_body
     assert "اطلاعات تکمیلی" in point_body
 
-    for path in ("/points", "/points/", "/routes", "/routes/"):
+    for path in ("/points", "/points/"):
         response = api_client.get(path)
         assert response.status_code == 301
         assert response["Location"] == "https://hawatch.ir/"
+
+    route_response = api_client.get("/routes")
+    assert route_response.status_code == 200
+    route_body = route_response.content.decode()
+    assert "<title>همهٔ مسیرها | هواچ</title>" in route_body
+    assert 'rel="canonical" href="https://hawatch.ir/routes"' in route_body
+    assert 'name="robots" content="index,follow"' in route_body
+    assert "<h1>همهٔ مسیرها</h1>" in route_body
+    assert 'href="/routes/tochal-darband"' in route_body
+
+    query_response = api_client.get("/routes?query=توچال")
+    assert query_response.status_code == 200
+    assert 'name="robots" content="noindex,follow"' in query_response.content.decode()
+    assert 'rel="canonical" href="https://hawatch.ir/routes"' in query_response.content.decode()
 
 
 def test_public_sitemap_contains_only_detail_urls(api_client, seo_catalog):

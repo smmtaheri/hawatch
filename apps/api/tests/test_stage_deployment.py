@@ -40,14 +40,15 @@ def test_stage_deploy_waits_for_real_forecast_through_the_public_gateway():
     assert 'DEMO_DATA_ENABLED = False' in settings
 
 
-def test_combined_deploy_pushes_stage_only_when_enabled_and_migrates_legacy_branch():
+def test_production_deploy_wrapper_only_publishes_main():
     root = _repository_root()
     wrapper = (root / "scripts/deploy-hawatch").read_text(encoding="utf-8")
 
-    assert 'remote_stage_enabled="$(ssh "$SSH_HOST"' in wrapper
-    assert 'Stage is disabled; its branch will not be pushed or deployed.' in wrapper
-    assert 'git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage' in wrapper
-    assert 'git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage' in wrapper
+    assert 'git -C "$LOCAL_DIR" push origin main' in wrapper
+    assert 'git -C "$LOCAL_DIR" push origin stage' not in wrapper
+    assert "HAWATCH_STAGE_" not in wrapper
+    assert "stage-on" not in wrapper
+    assert "stage-off" not in wrapper
 
 
 def test_stage_only_wrapper_never_runs_the_production_deploy_script():

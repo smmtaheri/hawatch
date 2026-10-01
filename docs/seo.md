@@ -2,10 +2,11 @@
 
 ## هدف
 
-Home، Hub مقصدهای اصلی در `/destinations`، تمام Pointهای عمومی در
-`/points/<slug>` و تمام Routeهای فعال در `/routes/<slug>` باید پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته
-باشند. مسیرهای فهرست قدیمی `/points` و `/routes` محصول نیستند و پیش از SPA با
-redirect دائمی یک‌مرحله‌ای به `/` می‌روند. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
+Home، Hub مقصدهای اصلی در `/destinations`، فهرست مسیرهای فعال در `/routes`، تمام
+Pointهای عمومی در `/points/<slug>` و تمام Routeهای فعال در `/routes/<slug>` باید
+پیش از اجرای JavaScript یک HTML معنادار و قابل‌خزش داشته باشند. مسیر فهرست قدیمی
+`/points` پیش از SPA با redirect دائمی یک‌مرحله‌ای به `/` می‌رود؛ `/routes` در
+طراحی جدید یک Hub SSR برای لینک‌های مسیرهاست. canonical هر صفحه همیشه URL تمیز و بدون query است. URLهای queryدارِ
 planner، مانند `?date=…&period=…`، با `noindex,follow` منتشر می‌شوند تا لینک‌ها
 دنبال شوند اما نسخه‌های پارامتردار وارد نتایج گوگل نشوند.
 
@@ -30,6 +31,10 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
   را دارند. React در صفحهٔ اول با نزدیک‌شدن اسکرول به انتهای شبکه، برش بعدی را
   به‌صورت خودکار اضافه می‌کند؛ اگر JavaScript یا `IntersectionObserver` در دسترس
   نباشد، همان لینک «مقصدهای بیشتر» مسیر crawlable را حفظ می‌کند.
+- برای `/routes`: همهٔ Routeهای فعال با عنوان، مبدأ و مقصد به‌صورت لینک واقعی
+  در HTML اولیه می‌آیند تا فهرست مسیرها بدون JavaScript هم crawlable باشد. این
+  Hub در sitemap جداگانه وارد نمی‌شود؛ خود Routeهای فعال لینک‌شده canonical
+  مستقل دارند.
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
@@ -141,7 +146,8 @@ detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت
 | وضعیت | status | robots | canonical |
 | --- | --- | --- | --- |
 | URL تمیز Home/Hub/Point/Route | 200 | `index,follow` | همان URL تمیز |
-| `/points`، `/points/`، `/routes`، `/routes/` | 301 | — | `/` |
+| `/points`، `/points/` | 301 | — | `/` |
+| `/routes`، `/routes/` | 200 | `index,follow` | `/routes` |
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 
@@ -164,11 +170,11 @@ detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت
 
 اگر CDN یا reverse proxy بیرونی جلوی gateway قرار دارد، این قواعد را اعمال کنید:
 
-- `/`، `/destinations`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
+- `/`، `/destinations`، `/routes`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
   عبور دهید) و query string را در cache key نگه ندارید؛ canonical خود HTML بدون
   query است اما queryها باید `noindex,follow` بمانند.
-- redirectهای دقیق `/points`، `/points/`، `/routes` و `/routes/` را در CDN به‌صورت
-  یک 301 مستقیم به `https://hawatch.ir/` عبور دهید و به SPA fallback نسپارید.
+- redirectهای دقیق `/points` و `/points/` را در CDN به‌صورت یک 301 مستقیم به
+  `https://hawatch.ir/` عبور دهید و `/routes` را به gateway/Django SSR بسپارید.
 - `/admin/*` و `/api/*` خصوصی/پویا هستند و نباید در cache عمومی ذخیره شوند؛ هدر
   `Cache-Control: private, no-store` را برای Admin حفظ کنید.
 - chunkهای hashدارِ `/assets/chunks/*` و فونت/برند versioned را می‌توان با
@@ -192,8 +198,8 @@ server صرفاً برای توسعهٔ SPA است:
 curl -fsS http://localhost/points/tochal | sed -n '1,80p'
 curl -i http://localhost/points
 curl -i http://localhost/points/
-curl -i http://localhost/routes
-curl -i http://localhost/routes/
+curl -fsS http://localhost/routes | sed -n '1,80p'
+curl -fsS http://localhost/routes/ | sed -n '1,80p'
 curl -fsS http://localhost/api/v1/seo/sitemap.xml | sed -n '1,100p'
 curl -fsS 'http://localhost/routes/tochal-darband?date=2026-09-04&period=morning' | sed -n '1,80p'
 curl -i http://localhost/points/not-a-real-point
