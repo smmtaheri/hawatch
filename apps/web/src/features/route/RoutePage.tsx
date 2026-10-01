@@ -302,7 +302,7 @@ export function RoutePage() {
                           isDay={point.is_day}
                         />
                         <div
-                          className={`weather-label ${point.state === "critical" && WEATHER_HAZARD_CODES.has(point.weather_code ?? "") ? "risk-red" : ""}`}
+                          className={`weather-label ${point.state === "critical" && WEATHER_HAZARD_CODES.has(String(point.weather_code ?? "")) ? "risk-red" : ""}`}
                         >
                           {point.condition}
                         </div>
