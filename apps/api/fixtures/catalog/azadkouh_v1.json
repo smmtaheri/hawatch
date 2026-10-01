@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v4",
+  "catalog_version": "hawatch-azadkouh-catalog-v5",
   "weather_points": {
     "azadkouh-kelakbala-start": {
       "name": "روستای کلاک بالا",
@@ -211,17 +211,22 @@
       ]
     },
     "azadkouh-shirkamar-intersection": {
-      "name": "محل اتصال شیرکمر به مسیر آزادکوه",
+      "name": "گردنهٔ سوتک",
       "latitude": 36.147164,
       "longitude": 51.437037,
       "elevation_m": 3512,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3512 m; GPX waypoint reference",
-      "page_name": "محل اتصال شیرکمر به مسیر آزادکوه",
-      "short_label": "محل اتصال شیرکمر به مسیر آزادکوه",
+      "page_name": "گردنهٔ سوتک در مسیر وارنگه‌رود",
+      "short_label": "گردنهٔ سوتک",
       "place_type": "landmark",
-      "aliases": [],
-      "identity_summary": "محل اتصال شیرکمر به مسیر آزادکوه؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
+      "aliases": [
+        "شیرکمر",
+        "گردنه سوتک",
+        "گردنهٔ سوتک وارنگه‌رود",
+        "Sotak Pass"
+      ],
+      "identity_summary": "گردنهٔ سوتک در بالادست درهٔ شیرکمر و نقطهٔ مشترک مسیرهای وارنگه‌رود به کمان‌کوه و آزادکوه",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",

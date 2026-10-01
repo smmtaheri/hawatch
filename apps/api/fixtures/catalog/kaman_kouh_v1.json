@@ -1,0 +1,147 @@
+{
+  "catalog_version": "hawatch-kaman-kouh-catalog-v1",
+  "weather_points": {
+    "kaman-kouh": {
+      "name": "قلهٔ کمان‌کوه",
+      "page_name": "آب‌وهوای قلهٔ کمان‌کوه البرز مرکزی",
+      "short_label": "کمان‌کوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "وارنگه‌رود · البرز مرکزی · البرز",
+      "aliases": [
+        "کمان کوه",
+        "کمانکوه",
+        "قله کمان‌کوه",
+        "Kaman Kuh",
+        "Kamankuh"
+      ],
+      "identity_summary": "قلهٔ کمان‌کوه در البرز مرکزی، در امتداد ارتفاعات سوتک، کمان‌کوه، یخچال و سرماهو و نزدیک دشت کمان‌کوه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.1299006&lon=51.4704594&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%86-%DA%A9%D9%88%D9%87&pkidentifier=534",
+        "https://www.wikiloc.com/hiking-trails/khwh-nwrdy-sngyn-z-wrngh-rwd-t-khmn-khwh-100868637",
+        "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091",
+        "https://decovel.com/page/%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%86%DA%A9%D9%88%D9%87"
+      ],
+      "latitude": 36.129816,
+      "longitude": 51.470288,
+      "elevation_m": 4207,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: ۴۲۰۷ متر؛ دو ترک قله waypoint حدود ۴۲۳۷ متر ثبت کرده‌اند.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [
+    "azadkouh-varangerud-start",
+    "azadkouh-shirkamar-intersection",
+    "azadkouh-kamankouh-lake"
+  ],
+  "routes": {
+    "varangerud_to_kaman_kouh": {
+      "slug": "kaman-kouh-varangerud",
+      "title": "وارنگه‌رود تا قلهٔ کمان‌کوه",
+      "subtitle": "از وارنگه‌رود و گردنهٔ سوتک تا قلهٔ کمان‌کوه",
+      "trail_label": "مسیر وارنگه‌رود–کمان‌کوه",
+      "origin": "وارنگه‌رود",
+      "target_label": "قلهٔ کمان‌کوه",
+      "region": "البرز مرکزی · وارنگه‌رود",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "azadkouh-varangerud-start",
+        "azadkouh-shirkamar-intersection",
+        "kaman-kouh"
+      ],
+      "distance_km": 13.44,
+      "ascent_m": 1692,
+      "one_way_minutes": 510,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "kaman-kouh-varangerud-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/khwh-nwrdy-sngyn-z-wrngh-rwd-t-khmn-khwh-100868637",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.1299006&lon=51.4704594&peak-name=%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%86-%DA%A9%D9%88%D9%87&pkidentifier=534"
+        ],
+        "evidence_tracks": [
+          "tracks/kaman-kouh/kaman-kouh-varangeh-rud-to-summit-2022.gpx"
+        ],
+        "cumulative_minutes": {
+          "azadkouh-varangerud-start": 0,
+          "azadkouh-shirkamar-intersection": 240,
+          "kaman-kouh": 510
+        },
+        "notes": [
+          "ترک از نزدیکی پای‌کار وارنگه‌رود تا نزدیک‌ترین نقطهٔ ثبت‌شده به قلهٔ کمان‌کوه بریده شده است؛ طول هندسی بخش صعود ۱۳٫۴۴ کیلومتر و صعود نرم‌شدهٔ GPX حدود ۱۶۹۲ متر است.",
+          "نقطهٔ شروع ترک حدود ۹۰۰ متر بالاتر از مختصات روستای وارنگه‌رود ثبت شده و این اختلاف به‌عنوان دسترسی جاده‌ای پای‌کار در نظر گرفته شده است.",
+          "زمان یک‌طرفه ۸ ساعت و ۳۰ دقیقه تخمینی است؛ اختلاف زیاد با moving time ترک به‌دلیل توقف‌ها و ارتفاع بالای مسیر است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "varangerud_to_kaman_kouh_via_lake": {
+      "slug": "kaman-kouh-varangerud-yakhchal",
+      "title": "وارنگه‌رود تا کمان‌کوه از مسیر دشت کمان‌کوه",
+      "subtitle": "از وارنگه‌رود، گردنهٔ سوتک و دریاچهٔ کمان‌کوه تا قله",
+      "trail_label": "مسیر دشت کمان‌کوه–یخچال",
+      "origin": "وارنگه‌رود",
+      "target_label": "قلهٔ کمان‌کوه",
+      "region": "البرز مرکزی · دشت کمان‌کوه",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "azadkouh-varangerud-start",
+        "azadkouh-shirkamar-intersection",
+        "azadkouh-kamankouh-lake",
+        "kaman-kouh"
+      ],
+      "distance_km": 16.14,
+      "ascent_m": 1780,
+      "timing_status": "pending",
+      "timing": null,
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091"
+      ],
+      "evidence_tracks": [
+        "tracks/kaman-kouh/kaman-kouh-varangeh-rud-yakhchal-sarmaho-2020.gpx"
+      ],
+      "public_point_notes": {
+        "azadkouh-kamankouh-lake": "دریاچهٔ کمان‌کوه عارضهٔ واقعی و میانی این شاخه است؛ ادامهٔ ترک منبع به یخچال و سرماهو می‌رسد و در این Route فقط تا قلهٔ کمان‌کوه نمایش داده می‌شود."
+      }
+    }
+  },
+  "point": {
+    "slug": "kaman-kouh",
+    "tile_name": "کمان‌کوه",
+    "name": "قلهٔ کمان‌کوه",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "وارنگه‌رود · البرز مرکزی · البرز",
+    "elevation_m": 4207,
+    "latitude": 36.129816,
+    "longitude": 51.470288,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کمان‌کوه در البرز مرکزی",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کمان کوه",
+      "کمانکوه",
+      "قله کمان‌کوه",
+      "Kaman Kuh",
+      "Kamankuh"
+    ]
+  },
+  "primary_point": "kaman-kouh"
+}
