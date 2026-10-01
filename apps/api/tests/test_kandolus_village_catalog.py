@@ -12,8 +12,9 @@ def load_catalog():
 def test_kandolus_is_an_indexable_point_only_village_destination():
     catalog = load_catalog()
     point = catalog["weather_points"]["kandolus-village"]
-    museum = catalog["weather_points"]["kandolus-anthropology-museum"]
+    forest = catalog["weather_points"]["kojur-forest"]
 
+    assert catalog["catalog_version"] == "hawatch-kandolus-v2"
     assert catalog["primary_point"] == "kandolus-village"
     assert catalog["routes"] == {}
     assert point["place_type"] == "village"
@@ -22,9 +23,9 @@ def test_kandolus_is_an_indexable_point_only_village_destination():
     assert point["importance"] == "primary"
     assert point["seo_indexable"] is True
     assert "کندلوس نوشهر" in point["aliases"]
-    assert museum["place_type"] == "landmark"
-    assert museum["kind"] == "primary"
-    assert museum["importance"] == "primary"
-    assert museum["seo_indexable"] is True
-    assert museum["latitude"] != point["latitude"]
-    assert museum["longitude"] != point["longitude"]
+    assert forest["name"] == "جنگل کجور"
+    assert forest["place_type"] == "forest"
+    assert forest["category_key"] == "forest"
+    assert forest["kind"] == "primary"
+    assert forest["importance"] == "primary"
+    assert forest["seo_indexable"] is True

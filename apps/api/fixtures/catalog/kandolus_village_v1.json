@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kandolus-v1",
+  "catalog_version": "hawatch-kandolus-v2",
   "weather_points": {
     "kandolus-village": {
       "name": "روستای کندلوس",
@@ -36,40 +36,38 @@
       "category": "روستاهای تاریخی مازندران",
       "region": "کجور · نوشهر · مازندران"
     },
-    "kandolus-anthropology-museum": {
-      "name": "موزهٔ مردم‌شناسی کندلوس",
-      "page_name": "آب‌وهوای موزهٔ مردم‌شناسی کندلوس",
-      "short_label": "موزهٔ مردم‌شناسی کندلوس",
-      "place_type": "landmark",
-      "category_key": "landmark",
+    "kojur-forest": {
+      "name": "جنگل کجور",
+      "page_name": "آب‌وهوای جنگل کجور نوشهر",
+      "short_label": "جنگل کجور",
+      "place_type": "forest",
+      "category_key": "forest",
       "aliases": [
-        "موزه مردم‌شناسی کندلوس",
-        "موزه کندلوس",
-        "موزهٔ روستای کندلوس",
-        "Kandolus Anthropology Museum",
-        "Kandolus Museum"
+        "جنگل های کجور",
+        "جنگل کجور نوشهر",
+        "جنگل کجور به سیسنگان",
+        "Kojur forest",
+        "Kojour forest"
       ],
-      "identity_summary": "موزهٔ مردم‌شناسی و مجموعهٔ فرهنگی روستای کندلوس در کجور نوشهر؛ مقصد مستقل فرهنگی در کنار بافت تاریخی روستا",
+      "identity_summary": "جنگل کجور در بخش کجور نوشهر؛ پهنهٔ جنگلی هیرکانی و مقصد طبیعت‌گردی گستردهٔ مازندران",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
-        "https://mapcarta.com/N4748545522",
-        "https://lastsecond.ir/attractions/8760-museum-of-anthropology-kandolus",
+        "https://www.climbers.ir/tourist-attractions/362-%D8%AC%D9%86%DA%AF%D9%84-%DA%A9%D8%AC%D9%88%D8%B1",
+        "https://irantripadviser.ir/attraction.php?id=2412",
+        "https://www.iranicaonline.org/articles/kojur-i/",
         "https://open-meteo.com/en/docs"
       ],
-      "latitude": 36.32407,
-      "longitude": 51.56437,
-      "elevation_m": 1669,
+      "latitude": 36.41465186,
+      "longitude": 51.7974472,
+      "elevation_m": 2225,
       "status": "provisional",
-      "elevation_source": "مختصات موزه از feature موزه در OpenStreetMap/Mapcarta؛ ارتفاع ۱۶۶۹ متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود.",
+      "elevation_source": "مختصات نمایندهٔ جنگل از منبع گردشگری کجور؛ ارتفاع ۲۲۲۵ متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود.",
       "climate": "forest_fog",
-      "category": "مقصدهای فرهنگی کندلوس",
-      "region": "کجور · نوشهر · مازندران",
-      "seo": {
-        "title": "آب‌وهوای موزهٔ مردم‌شناسی کندلوس؛ دما، باد و بارش | هواچ"
-      }
+      "category": "جنگل‌های مازندران",
+      "region": "کجور · نوشهر · مازندران"
     }
   },
   "routes": {},
