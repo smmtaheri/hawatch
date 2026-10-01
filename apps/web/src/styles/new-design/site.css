@@ -119,6 +119,8 @@ input{color:var(--ink)}
 .route-page .trip-summary{padding-top:4px}
 .route-page .trip-facts strong{font-size:18px}
 .share-actions a{text-align:center}
+.share-action-label-mobile{display:none}
+.share-action-label-desktop{display:inline}
 .route-page .trip-summary h2{margin-bottom:20px}
 
 .subscription-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px}
@@ -383,6 +385,8 @@ dialog.share-dialog{width:min(560px,calc(100% - 32px));max-width:560px}
 .share-status{font-size:14px;line-height:1.8;color:var(--secondary);margin:14px 0}
 
 @media(max-width:767px){.home-hero{padding-top:36px;margin-bottom:30px}
+.share-action-label-mobile{display:inline}
+.share-action-label-desktop{display:none}
 dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(100dvh - 32px)}
 .share-dialog .sheet-handle{display:none}
 .share-dialog .dialog-header h2{font-size:18px}

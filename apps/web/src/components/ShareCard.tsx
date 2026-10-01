@@ -142,7 +142,12 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         </div>
         <div className="share-actions">
           <button type="button" onClick={() => void prepare()}>
-            اشتراک‌گذاری خلاصه
+            <span className="share-action-label share-action-label-mobile">
+              اشتراک‌گذاری
+            </span>
+            <span className="share-action-label share-action-label-desktop">
+              ذخیرهٔ عکس
+            </span>
           </button>
         </div>
       </aside>
@@ -171,14 +176,15 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
                 >
                   ارسال تصویر
                 </button>
-              ) : null}
-              <a
-                className="outline-button"
-                href={share.preview}
-                download={share.file.name}
-              >
-                ذخیرهٔ عکس
-              </a>
+              ) : (
+                <a
+                  className="outline-button"
+                  href={share.preview}
+                  download={share.file.name}
+                >
+                  ذخیرهٔ عکس
+                </a>
+              )}
             </div>
           ) : null}
           {message ? (
