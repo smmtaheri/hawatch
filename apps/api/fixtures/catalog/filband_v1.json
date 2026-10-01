@@ -1,0 +1,292 @@
+{
+  "catalog_version": "hawatch-filband-catalog-v1",
+  "weather_points": {
+    "filband-village": {
+      "name": "روستای فیلبند",
+      "page_name": "آب‌وهوای روستای فیلبند مازندران",
+      "short_label": "روستای فیلبند",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "فیلبند",
+        "روستا فیلبند",
+        "Filband village",
+        "Filband"
+      ],
+      "identity_summary": "روستای فیلبند در بخش چلاو آمل؛ مقصد ییلاقی و پای‌کار شناخته‌شدهٔ مسیر قله‌های اطراف فیلبند",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://mapcarta.com/12614754",
+        "https://www.wikiloc.com/mountaineering-trails/filband-to-elimastan-fylbnd-bh-lymstn-z-tryq-kht-lrs-4540347",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.15388,
+      "longitude": 52.5295,
+      "elevation_m": 2258,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز روستا از Mapcarta؛ ارتفاع 2258 متر از DEM سرویس Open-Meteo GLO-90 و برای forecast در preflight کنترل می‌شود.",
+      "climate": "forest_fog",
+      "region": "چلاو · آمل · مازندران"
+    },
+    "sangchal-village": {
+      "name": "روستای سنگچال",
+      "page_name": "آب‌وهوای روستای سنگچال آمل",
+      "short_label": "روستای سنگچال",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "سنگچال",
+        "روستا سنگ چال",
+        "Sangchal village",
+        "Sang Chal"
+      ],
+      "identity_summary": "روستای سنگچال در مسیر دسترسی چلاو و فیلبند؛ سکونتگاه ییلاقی شناخته‌شدهٔ آمل",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://irangaah.ir/villages/amol/chalav/sang-chal",
+        "https://mapcarta.com/12614754",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.1850474,
+      "longitude": 52.4956025,
+      "elevation_m": 1261,
+      "status": "provisional",
+      "elevation_source": "مختصات روستا از ایران‌گاه؛ ارتفاع 1261 متر از DEM سرویس Open-Meteo GLO-90 برای نقطهٔ مرکز روستا.",
+      "climate": "forest_fog",
+      "region": "چلاو · آمل · مازندران"
+    },
+    "sheikh-musa-village": {
+      "name": "روستای شیخ موسی",
+      "page_name": "آب‌وهوای روستای شیخ موسی مازندران",
+      "short_label": "روستای شیخ موسی",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "شیخ موسی",
+        "روستا شیخ موسی",
+        "Sheykh Musa village",
+        "Sheikh Musa"
+      ],
+      "identity_summary": "روستای شیخ موسی در ارتفاعات بابلرود و شرق فیلبند؛ سکونتگاه ییلاقی مستقل در خوشهٔ مقصدهای چلاو",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://a.osmarks.net/content/wikipedia_en_all_maxi_2020-08/A/Sheykh_Musa%2C_Mazandaran",
+        "https://www.wikiloc.com/hiking-trails/shykh-mwsy-bh-fylbnd-41134206",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.1075,
+      "longitude": 52.575278,
+      "elevation_m": 1891,
+      "status": "provisional",
+      "elevation_source": "مختصات روستای شیخ موسی از منبع جغرافیایی و ترک شیخ موسی–فیلبند؛ ارتفاع 1891 متر از DEM سرویس Open-Meteo GLO-90.",
+      "climate": "forest_fog",
+      "region": "بابلرود · مازندران"
+    },
+    "hesin-bon": {
+      "name": "قلهٔ حصین‌بن",
+      "page_name": "آب‌وهوای قلهٔ حصین‌بن فیلبند",
+      "short_label": "حصین‌بن",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "حصین بن",
+        "حسین بن",
+        "قله حصین بن فیلبند",
+        "Hesin Bon Peak",
+        "Hasin Bon"
+      ],
+      "identity_summary": "قلهٔ حصین‌بن در ارتفاعات فیلبند و نخستین قلهٔ نام‌دار مسیر پیادهٔ فیلبند به اسپه‌رز",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hsyn-bn-qlh-sph-rz-130769027",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.120164,
+      "longitude": 52.51672,
+      "elevation_m": 3059,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار حصین‌بن در ترک پیادهٔ فیلبند–اسپه‌رز؛ ارتفاع 3059 متر از DEM سرویس Open-Meteo GLO-90 و ارتفاع خام GPX فقط مرجع است.",
+      "climate": "alpine",
+      "region": "فیلبند · آمل · مازندران"
+    },
+    "espeh-rez": {
+      "name": "قلهٔ اسپه‌رز",
+      "page_name": "آب‌وهوای قلهٔ اسپه‌رز فیلبند",
+      "short_label": "اسپه‌رز",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "اسپه رز",
+        "قله اسپه رز",
+        "اسپه‌رز فیلبند",
+        "Espeh Rez Peak",
+        "Espeh Rez"
+      ],
+      "identity_summary": "قلهٔ اسپه‌رز در ارتفاعات فیلبند و ابتدای خط‌الرأس فیلبند به الیمستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hsyn-bn-qlh-sph-rz-130769027",
+        "https://www.wikiloc.com/mountaineering-trails/filband-to-elimastan-fylbnd-bh-lymstn-z-tryq-kht-lrs-4540347",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.106333,
+      "longitude": 52.515234,
+      "elevation_m": 3221,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار اسپه‌رز و ابتدای خط‌الرأس در ترک پیادهٔ فیلبند؛ ارتفاع 3221 متر از DEM سرویس Open-Meteo GLO-90 و ارتفاع خام GPX فقط مرجع است.",
+      "climate": "alpine",
+      "region": "فیلبند · آمل · مازندران"
+    }
+  },
+  "shared_weather_points": [
+    "imamzadeh-qasem",
+    "alimestan-village"
+  ],
+  "routes": {
+    "filband-hesin-bon-espeh-rez": {
+      "slug": "filband-hesin-bon-espeh-rez",
+      "title": "روستای فیلبند تا قلهٔ اسپه‌رز",
+      "subtitle": "مسیر پیاده از فیلبند، قلهٔ حصین‌بن و یال اسپه‌رز",
+      "trail_label": "مسیر فیلبند–حصین‌بن–اسپه‌رز",
+      "origin": "روستای فیلبند",
+      "target_label": "قلهٔ اسپه‌رز",
+      "region": "فیلبند · آمل · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "filband-village",
+        "hesin-bon",
+        "espeh-rez"
+      ],
+      "distance_km": 5.2,
+      "ascent_m": 896,
+      "one_way_minutes": 243,
+      "default_start_minutes": 180,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "filband-hesin-bon-espeh-rez-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-hsyn-bn-qlh-sph-rz-130769027"
+        ],
+        "evidence_tracks": [
+          "tracks/filband/filband-hesin-bon-espeh-rez-2023.gpx"
+        ],
+        "cumulative_minutes": {
+          "filband-village": 0,
+          "hesin-bon": 196,
+          "espeh-rez": 243
+        },
+        "notes": [
+          "ترک از انتهای بافت فیلبند آغاز می‌شود و به‌عنوان پیمایش پیاده تا حصین‌بن و اسپه‌رز تحلیل شده است؛ جادهٔ دسترسی جداگانه جزو route نیست.",
+          "ارتفاع‌های GPX برای distance/ascent حقیقت مرجع نیستند؛ ارتفاع نقاط از DEM Open-Meteo اعتبارسنجی می‌شود.",
+          "حصین‌بن و اسپه‌رز waypointهای نام‌دار همان ترک و زنجیرهٔ واقعی مبدأ تا مقصد هستند."
+        ]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-hsyn-bn-qlh-sph-rz-130769027"
+      ],
+      "evidence_tracks": [
+        "tracks/filband/filband-hesin-bon-espeh-rez-2023.gpx"
+      ],
+      "public_point_notes": {
+        "filband-village": "مبدأ route به مرکز روستا ادغام شده و پای‌کار جاده‌ای جداگانه ساخته نشده است."
+      }
+    },
+    "filband-alimestan-ridge": {
+      "slug": "filband-alimestan-ridge",
+      "title": "فیلبند تا الیمستان از خط‌الرأس",
+      "subtitle": "پیمایش خط‌الرأس فیلبند به الیمستان از قلهٔ امام‌زاده قاسم",
+      "trail_label": "مسیر خط‌الرأس فیلبند–الیمستان",
+      "origin": "روستای فیلبند",
+      "target_label": "روستای الیمستان",
+      "region": "فیلبند · الیمستان · مازندران",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "filband-village",
+        "imamzadeh-qasem",
+        "alimestan-village"
+      ],
+      "distance_km": 26.1,
+      "ascent_m": 1378,
+      "one_way_minutes": 950,
+      "default_start_minutes": 720,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+recorded-track-v1",
+        "version": "filband-alimestan-ridge-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 180,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/filband-to-elimastan-fylbnd-bh-lymstn-z-tryq-kht-lrs-4540347"
+        ],
+        "evidence_tracks": [
+          "tracks/filband/filband-to-elimastan-ridge-2013.gpx"
+        ],
+        "cumulative_minutes": {
+          "filband-village": 0,
+          "imamzadeh-qasem": 789,
+          "alimestan-village": 950
+        },
+        "notes": [
+          "ترک ثبت‌شدهٔ فیلبند تا الیمستان یک پیمایش طولانی خط‌الرأس است؛ زمان GPX شامل توقف‌های ثبت‌شده است و با عدم‌قطعیت زیاد منتشر می‌شود.",
+          "قلهٔ امام‌زاده قاسم landmark میانی واقعی و موجود در کاتالوگ الیمستان است؛ روستای الیمستان مقصد انتهایی ترک است.",
+          "مسیر دسترسی جاده‌ای یا آفرودی به روستاها به‌عنوان hiking route جداگانه ثبت نشده است."
+        ]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/filband-to-elimastan-fylbnd-bh-lymstn-z-tryq-kht-lrs-4540347"
+      ],
+      "evidence_tracks": [
+        "tracks/filband/filband-to-elimastan-ridge-2013.gpx"
+      ],
+      "public_point_notes": {
+        "filband-village": "مبدأ route روستای فیلبند است؛ waypoint تکیه و نگهبانی روستا صفحهٔ جداگانه نمی‌گیرند.",
+        "alimestan-village": "مقصد route با روستای الیمستان موجود در catalog ادغام شده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "filband-village",
+    "tile_name": "فیلبند",
+    "name": "روستای فیلبند",
+    "short_category": "روستا",
+    "category": "روستاهای ییلاقی مازندران",
+    "category_key": "village",
+    "region": "چلاو · آمل · مازندران",
+    "elevation_m": 2258,
+    "latitude": 36.15388,
+    "longitude": 52.5295,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای ییلاقی روستای فیلبند در مازندران",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "فیلبند",
+      "روستای فیلبند",
+      "Filband village",
+      "Filband"
+    ]
+  },
+  "primary_point": "filband-village"
+}
