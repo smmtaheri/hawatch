@@ -51,8 +51,10 @@ git -C "$production_dir" pull --ff-only origin main
 cd "$production_dir"
 HAWATCH_BRANCH=main HAWATCH_DIR="$production_dir" PUBLIC_HOST="$public_host" \
  DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
- RUN_INITIAL_INGEST=0 ./scripts/deploy.sh
+ RUN_INITIAL_INGEST=0 ./scripts/deploy.sh </dev/null
 log "Production is updated; building and starting new-design QA on port 5050."
-HAWATCH_QA_DIR="$qa_dir" HAWATCH_QA_ENV_FILE="$qa_env" bash "$qa_dir/scripts/deploy-new-design.sh"
+# Keep child deploy commands from consuming the parent bash -s heredoc. A
+# Compose command may inspect stdin even when it does not need interactive input.
+HAWATCH_QA_DIR="$qa_dir" HAWATCH_QA_ENV_FILE="$qa_env" bash "$qa_dir/scripts/deploy-new-design.sh" </dev/null
 log "Both releases are active: main on production and new-design on :5050."
 REMOTE
