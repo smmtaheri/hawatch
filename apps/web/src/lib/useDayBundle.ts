@@ -5,6 +5,7 @@ import { useAuthChangeVersion } from "../features/auth/authSession";
 import type { PointDayBundle, RouteDayBundle } from "../types";
 import {
   dayCacheKey,
+  dayCacheRemainingMs,
   expireDayCache,
   fetchDayCache,
   readDayCache,
@@ -33,13 +34,25 @@ export function useDayBundle<T extends PointDayBundle | RouteDayBundle>(
       ? result.status
       : "loading";
 
+  const reload = () => {
+    expireDayCache(key);
+    setResult((current) =>
+      current.key === key
+        ? {
+            ...current,
+            data: null,
+            context: current.data ?? current.context,
+            status: "loading",
+          }
+        : current,
+    );
+    setRetry((value) => value + 1);
+  };
+
   useEffect(() => {
     let active = true;
+    let expiryTimer: number | undefined;
     let succeeded = Boolean(readDayCache<T>(key));
-    const reload = () => {
-      expireDayCache(key);
-      setRetry((value) => value + 1);
-    };
     setResult((current) => {
       const stored = readDayCache<T>(key);
       const previous = current.key === key ? current.data : null;
@@ -63,8 +76,10 @@ export function useDayBundle<T extends PointDayBundle | RouteDayBundle>(
     void fetchDayCache<T>(key, load, kind, slug)
       .then((payload) => {
         succeeded = true;
-        if (active)
+        if (active) {
           setResult({ key, data: payload, context: payload, status: "ready" });
+          expiryTimer = window.setTimeout(reload, dayCacheRemainingMs(key) + 1);
+        }
       })
       .catch((error) => {
         if (!active) return;
@@ -106,6 +121,7 @@ export function useDayBundle<T extends PointDayBundle | RouteDayBundle>(
     window.addEventListener("focus", onFocus);
     return () => {
       active = false;
+      window.clearTimeout(expiryTimer);
       window.clearInterval(interval);
       window.removeEventListener("focus", onFocus);
     };
@@ -128,9 +144,6 @@ export function useDayBundle<T extends PointDayBundle | RouteDayBundle>(
     data,
     context,
     status,
-    reload: () => {
-      expireDayCache(key);
-      setRetry((value) => value + 1);
-    },
+    reload,
   };
 }

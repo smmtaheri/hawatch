@@ -23,6 +23,12 @@ export function readDayCache<T extends Bundle>(key: string): T | null {
     ? (entry.data as T)
     : null;
 }
+export function dayCacheRemainingMs(key: string): number {
+  const entry = entries.get(key);
+  return entry && entry.epoch === epoch
+    ? Math.max(0, entry.expires - Date.now())
+    : 0;
+}
 function metaOf(data: Bundle) {
   return "forecast" in data ? data.forecast.meta : data.meta;
 }

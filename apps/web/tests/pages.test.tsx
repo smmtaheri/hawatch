@@ -207,6 +207,44 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("new-design pages and real day contracts", () => {
+  it("removes expired membership weather before revalidation without losing day controls", async () => {
+    authenticated = true;
+    paid = true;
+    let requests = 0;
+    fetchMock.mockImplementation((input: RequestInfo) => {
+      const url = new URL(String(input), "http://localhost");
+      if (url.pathname.includes("/forecast/")) {
+        if (requests++) return new Promise(() => {});
+        const data = pointBundle(url);
+        return response({
+          ...data,
+          cache_expires_at: new Date(
+            Date.parse(data.meta.current_local_time) + 1000,
+          ).toISOString(),
+        });
+      }
+      return defaultFetch(input);
+    });
+    vi.useFakeTimers();
+    try {
+      await act(async () => {
+        mount("/points/tochal");
+      });
+      expect(document.querySelector(".hour-card")).not.toBeNull();
+      const today = screen.getByRole("tab", { name: /امروز/ });
+      today.focus();
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(1002);
+      });
+      expect(weatherCalls()).toHaveLength(2);
+      expect(document.querySelector(".hour-card")).toBeNull();
+      expect(today).toBeVisible();
+      expect(today).toHaveFocus();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("keeps day controls focused during a request and ignores a late previous-day response", async () => {
     let finish!: (value: unknown) => void;
     fetchMock.mockImplementation((input: RequestInfo) => {
