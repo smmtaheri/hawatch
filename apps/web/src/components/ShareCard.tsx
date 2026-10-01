@@ -79,11 +79,19 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   }
   async function nativeShare() {
     if (!share?.file) return;
+    const fileShare = navigator.canShare?.({ files: [share.file] });
     try {
-      await navigator.share({
-        files: [share.file],
-        title: forecast.route.title,
-      });
+      if (fileShare) {
+        await navigator.share({
+          files: [share.file],
+          title: forecast.route.title,
+        });
+      } else {
+        await navigator.share({
+          title: forecast.route.title,
+          text: `خلاصهٔ مسیر ${forecast.route.title} در هواچ`,
+        });
+      }
     } catch (error) {
       if (!(error instanceof DOMException && error.name === "AbortError"))
         setMessage("ارسال تصویر انجام نشد؛ می‌توانید تصویر را ذخیره کنید.");
@@ -168,7 +176,8 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
           )}
           {share.file ? (
             <div className="share-dialog-actions">
-              {navigator.canShare?.({ files: [share.file] }) ? (
+              {typeof navigator.share === "function" &&
+              window.matchMedia?.("(max-width: 767px)").matches ? (
                 <button
                   type="button"
                   className="primary-button"
