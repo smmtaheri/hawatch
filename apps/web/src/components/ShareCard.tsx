@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { RouteForecast } from "../types";
-import { buildRouteShareUrl } from "../lib/routeShare";
-import { copyShareLink, renderSummaryPng } from "../lib/shareImage";
+import { renderSummaryPng } from "../lib/shareImage";
 import { Dialog } from "./Dialog";
 const GEAR_LABELS: Record<string, string> = {
   "waterproof-shell": "کاپشن ضدآب",
@@ -30,7 +29,6 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   const ref = useRef<HTMLElement>(null);
   const generation = useRef(0);
   const [share, setShare] = useState<{
-    url: string;
     file: File | null;
     preview: string;
     error: string;
@@ -54,9 +52,8 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
   async function prepare() {
     if (!ref.current) return;
     const revision = ++generation.current;
-    const url = buildRouteShareUrl(forecast);
     setMessage("");
-    setShare({ url, file: null, preview: "", error: "" });
+    setShare({ file: null, preview: "", error: "" });
     try {
       const file = await renderSummaryPng(
         ref.current,
@@ -65,11 +62,10 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
         `hawatch-${forecast.route.slug}-${forecast.meta.selected_date}-${forecast.start_minutes}-${forecast.speed}.png`,
       );
       if (revision !== generation.current) return;
-      setShare({ url, file, preview: URL.createObjectURL(file), error: "" });
+      setShare({ file, preview: URL.createObjectURL(file), error: "" });
     } catch (error) {
       if (revision === generation.current)
         setShare({
-          url,
           file: null,
           preview: "",
           error:
@@ -86,12 +82,11 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
     try {
       await navigator.share({
         files: [share.file],
-        url: share.url,
         title: forecast.route.title,
       });
     } catch (error) {
       if (!(error instanceof DOMException && error.name === "AbortError"))
-        setMessage("ارسال انجام نشد؛ عکس را ذخیره و لینک را کپی کنید.");
+        setMessage("ارسال تصویر انجام نشد؛ می‌توانید تصویر را ذخیره کنید.");
     }
   }
   return (
@@ -166,25 +161,6 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
           ) : (
             <p role="status">{share.error || "در حال ساخت تصویر…"}</p>
           )}
-          <div className="share-page-link">
-            <span>لینک همین برنامه</span>
-            <a href={share.url} target="_blank" rel="noopener noreferrer">
-              {share.url}
-            </a>
-            <button
-              type="button"
-              className="outline-button"
-              onClick={async () =>
-                setMessage(
-                  (await copyShareLink(share.url))
-                    ? "لینک کپی شد"
-                    : "کپی خودکار ممکن نیست؛ لینک بالا را انتخاب و کپی کنید.",
-                )
-              }
-            >
-              کپی لینک
-            </button>
-          </div>
           {share.file ? (
             <div className="share-dialog-actions">
               {navigator.canShare?.({ files: [share.file] }) ? (
@@ -193,7 +169,7 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
                   className="primary-button"
                   onClick={() => void nativeShare()}
                 >
-                  ارسال تصویر و لینک
+                  ارسال تصویر
                 </button>
               ) : null}
               <a
@@ -204,11 +180,6 @@ export function ShareCard({ forecast }: { forecast: RouteForecast }) {
                 ذخیرهٔ عکس
               </a>
             </div>
-          ) : null}
-          {share.file && !navigator.canShare?.({ files: [share.file] }) ? (
-            <p className="share-status">
-              تصویر را ذخیره کن و در برنامهٔ دلخواهت بفرست.
-            </p>
           ) : null}
           {message ? (
             <p className="share-status" role="status">

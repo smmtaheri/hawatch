@@ -31,14 +31,7 @@ export async function renderSummaryPng(
     dateStyle: "full",
     timeZone: "Asia/Tehran",
   }).format(new Date(`${date}T12:00:00+03:30`));
-  const footer = document.createElement("div");
-  footer.className = "share-card-footer";
-  const footerText = document.createElement("span");
-  footerText.textContent = "خلاصهٔ برنامهٔ انتخاب‌شده";
-  const origin = document.createElement("bdi");
-  origin.textContent = window.location.host;
-  footer.append(footerText, origin);
-  card.append(brand, heading, day, clone, footer);
+  card.append(brand, heading, day, clone);
   host.append(card);
   document.body.append(host);
   try {

@@ -372,8 +372,8 @@ dialog.auth-dialog{width:min(636px,calc(100% - 32px));max-width:636px;max-height
 .route-page .share-card .trip-sentence{font-size:16px;line-height:1.9}
 .route-page .share-card .equipment-heading{font-size:18px}
 .route-page .share-card .equipment span{font-size:14px}
-.share-card-footer{display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--secondary);margin-top:28px}
-.share-card-footer bdi{font-size:14px;color:var(--accent)}
+.route-page .share-card .equipment{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:0}
+.route-page .share-card .equipment span{min-width:0;overflow-wrap:anywhere;text-align:center;line-height:1.5}
 
 dialog.share-dialog{width:min(560px,calc(100% - 32px));max-width:560px}
 .share-preview{display:block;width:100%;height:auto;border-radius:16px}
@@ -435,10 +435,6 @@ dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(
 .account-menu .account-logout:hover{background:var(--accent-soft)}
 .route-periods{margin-top:12px}
 .route-periods .periods{margin-bottom:12px}
-.share-page-link{margin-top:18px;display:flex;flex-direction:column;gap:8px;font-size:14px}
-.share-page-link>span{color:var(--secondary)}
-.share-page-link>a{direction:ltr;text-align:left;overflow-wrap:anywhere;font-size:13px;color:var(--accent)}
-.share-page-link>button{align-self:flex-start;font-size:14px;padding:6px 14px}
 
 @media(max-width:767px){.social-full{display:flex!important}
 .social-compact{display:none!important}
@@ -473,7 +469,6 @@ dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(
 .route-page .route-grid>.trip-summary .equipment{margin-bottom:14px;gap:5px}
 .route-page .route-grid>.trip-summary .equipment span{padding:4px 7px;font-size:12px}
 .route-page .points{order:4;width:100%}
-.share-dialog .share-page-link>button{min-height:44px}
 }
 
 @media(max-width:379px){.nav-button{width:36px}
