@@ -8,6 +8,7 @@ claim, date range, or editorial paragraph is invented for a sparse record.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from django.conf import settings
 from django.utils import timezone as django_timezone
 
 from hawatch.common.time import to_fa_digits
@@ -38,13 +39,14 @@ def point_forecast_context(point: WeatherPoint) -> ForecastSeoContext:
     first = records.order_by("forecast_at").only(
         "forecast_at",
         "temperature_c",
+        "apparent_temperature_c",
         "condition_label",
         "icon",
     ).first()
     if first is None:
         return ForecastSeoContext()
     return ForecastSeoContext(
-        temperature_c=first.temperature_c,
+        temperature_c=first.apparent_temperature_c if getattr(settings, "HAWATCH_NEW_DESIGN", False) else first.temperature_c,
         condition_label=first.condition_label or None,
         icon=first.icon or None,
     )

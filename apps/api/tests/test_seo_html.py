@@ -203,7 +203,7 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
     assert 'href="/points/gahar"' in api_client.get("/routes/gahar-dorud").content.decode()
 
     # These points are intentionally retained for search/future variants, but
-    # are not members or endpoints of an active route today.
+    # may gain genuine route membership as the versioned catalog evolves.
     for slug in (
         "kholeno-borj-summit",
         "kholeno-lalan-village",
@@ -214,8 +214,13 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
         "tochal-velenjak-village",
     ):
         body = api_client.get(f"/points/{slug}").content.decode()
-        assert "مسیرهای مرتبط" not in body
-        assert "/routes/" not in body
+        from hawatch.modules.catalog.internal_links import related_public_routes
+        point = WeatherPoint.objects.get(slug=slug)
+        active_routes = list(related_public_routes(point))
+        assert ("مسیرهای مرتبط" in body) == bool(active_routes)
+        for route in active_routes:
+            assert f'href="/routes/{route.slug}"' in body
+        assert set(re.findall(r'href="(/routes/[^"]+)"', body)) == {f"/routes/{route.slug}" for route in active_routes}
 
     village_body = api_client.get("/points/tochal-velenjak-village").content.decode()
     assert 'id="seo-related-destinations"' in village_body

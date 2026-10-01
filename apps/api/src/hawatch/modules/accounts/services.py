@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from django.db.models import Q
 
@@ -19,6 +19,7 @@ class ForecastAccess:
     available_through: date
     member_available_through: date
     today: date
+    expires_at: datetime | None = None
 
     @property
     def is_authenticated(self) -> bool:
@@ -55,29 +56,32 @@ def active_policy() -> ForecastAccessPolicy:
     return ForecastAccessPolicy.objects.create(default_authenticated_plan=plan)
 
 
+def effective_membership(request) -> Membership | None:
+    if not getattr(request.user, "is_authenticated", False):
+        return None
+    now = now_tehran()
+    return (
+        Membership.objects.select_related("plan")
+        .filter(profile__user=request.user, is_active=True, starts_at__lte=now)
+        .filter(Q(expires_at__isnull=True) | Q(expires_at__gt=now))
+        .filter(plan__is_active=True)
+        .order_by("-plan__visible_days_from_yesterday", "-starts_at", "-id")
+        .first()
+    )
+
+
 def effective_plan(request, policy: ForecastAccessPolicy) -> ForecastPlan | None:
     if not getattr(request.user, "is_authenticated", False):
         return None
-    profile = AccountProfile.objects.filter(user=request.user).first()
-    if profile:
-        now = now_tehran()
-        membership = (
-            Membership.objects.select_related("plan")
-            .filter(profile=profile, is_active=True, starts_at__lte=now)
-            .filter(Q(expires_at__isnull=True) | Q(expires_at__gt=now))
-            .filter(plan__is_active=True)
-            .order_by("-plan__visible_days_from_yesterday", "-starts_at", "-id")
-            .first()
-        )
-        if membership:
-            return membership.plan
-    return policy.default_authenticated_plan
+    membership = effective_membership(request)
+    return membership.plan if membership else policy.default_authenticated_plan
 
 
 def resolve_forecast_access(request, *, today: date | None = None) -> ForecastAccess:
     policy = active_policy()
     today = today or now_tehran().date()
-    plan = effective_plan(request, policy)
+    membership = effective_membership(request)
+    plan = membership.plan if membership else (policy.default_authenticated_plan if getattr(request.user, "is_authenticated", False) else None)
     visible = plan.visible_days_from_yesterday if plan else policy.anonymous_visible_days_from_yesterday
     visible = min(visible, policy.display_day_count - 1)
     member_visible = min(policy.default_authenticated_plan.visible_days_from_yesterday, policy.display_day_count - 1)
@@ -89,6 +93,7 @@ def resolve_forecast_access(request, *, today: date | None = None) -> ForecastAc
         available_through=today + timedelta(days=visible - 1),
         member_available_through=today + timedelta(days=member_visible - 1),
         today=today,
+        expires_at=membership.expires_at if membership else None,
     )
 
 

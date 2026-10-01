@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import math
+
+from hawatch.common.time import now_tehran
+
 from django.conf import settings
 from django.contrib.auth import get_user_model, login, logout
 from django.middleware.csrf import get_token
@@ -10,7 +14,7 @@ from rest_framework.exceptions import NotAuthenticated, ValidationError
 from rest_framework.response import Response
 
 from .models import AccountProfile, ForecastPlan
-from .services import active_policy, effective_plan, resolve_forecast_access
+from .services import active_policy, effective_plan, effective_membership, resolve_forecast_access
 
 
 def normalize_iran_phone(value: str) -> str:
@@ -33,9 +37,14 @@ def _account_payload(request) -> dict:
         raise NotAuthenticated("برای دیدن حساب وارد شوید.")
     policy = active_policy()
     plan = effective_plan(request, policy)
+    membership = effective_membership(request)
+    expiry = membership.expires_at if membership and membership.plan.tier == "paid" else None
+
     access = resolve_forecast_access(request)
     return {
         "authenticated": True,
+        "expires_at": expiry.isoformat() if expiry else None,
+        "days_remaining": max(0, math.ceil((expiry - now_tehran()).total_seconds() / 86400)) if expiry else None,
         "plan": {
             "code": plan.code,
             "title": plan.title,

@@ -88,7 +88,11 @@ def normalize_point_hourly(
     for index, stamp in enumerate(times):
         forecast_at = parse_local_time(stamp)
         temp = _num(hourly.get("temperature_2m"), index, default=0.0)
-        apparent = _num(hourly.get("apparent_temperature"), index, default=temp)
+        apparent = _optional_int(hourly.get("apparent_temperature"), index)
+        # ForecastRecord requires a real apparent reading. Mark this hour
+        # unavailable by omitting it instead of substituting ordinary temperature.
+        if apparent is None:
+            continue
         precip_prob = int(round(_num(hourly.get("precipitation_probability"), index, default=0.0)))
         precip_mm = _num(hourly.get("precipitation"), index, default=0.0)
         rain_mm = _num(hourly.get("rain"), index, default=0.0)

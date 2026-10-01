@@ -163,10 +163,10 @@ def serialize_point_profile(point: WeatherPoint, *, include_routes: bool = False
     return data
 
 
-def serialize_route_summary(route: Route) -> dict:
+def serialize_route_summary(route: Route, *, points=None) -> dict:
     distance_km = float(route.distance_km) if route.distance_km is not None else None
     ascent_m = route.ascent_m
-    timing_pending = not route_has_usable_timing(route)
+    timing_pending = not route_has_usable_timing(route, points)
     return {
         "slug": route.slug,
         "title": route.title,
@@ -702,9 +702,11 @@ def _records_for_day(point: WeatherPoint, selected_date: date) -> list[ForecastR
     return _records_for_window(point, start, end)
 
 
-def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *, now: datetime) -> list[dict]:
+def _hourly_for_period(point: WeatherPoint, selected_date: date, period: str, *, now: datetime, records=None) -> list[dict]:
     window_start, window_end = period_window(selected_date, period)
-    records = _records_for_window(point, window_start, window_end)
+    records = _records_for_window(point, window_start, window_end) if records is None else [
+        item for item in records if window_start <= item.forecast_at < window_end
+    ]
     by_at = {record.forecast_at.astimezone(timezone()).replace(minute=0, second=0, microsecond=0): record for record in records}
     slots = period_hour_slots(selected_date, period)
     hourly = []
@@ -744,10 +746,13 @@ def _reading_for_period_summary(
     selected_date: date,
     period: str,
     local: datetime,
+    records=None,
 ) -> dict | None:
     """Return a reading strictly inside the selected period window, without whole-day fallback."""
     window_start, window_end = period_window(selected_date, period)
-    period_records = _records_for_window(point, window_start, window_end)
+    period_records = _records_for_window(point, window_start, window_end) if records is None else [
+        item for item in records if window_start <= item.forecast_at < window_end
+    ]
     if not period_records:
         return None
     if window_start <= local < window_end:
@@ -784,7 +789,7 @@ def _reading_for_period_summary(
             key=lambda item: abs((item.forecast_at.astimezone(timezone()) - local).total_seconds()),
         )
         return reading_payload(closest, now=local)
-    hourly = _hourly_for_period(point, selected_date, period, now=local)
+    hourly = _hourly_for_period(point, selected_date, period, now=local, records=records)
     if hourly:
         return hourly[len(hourly) // 2]
     return None
@@ -862,11 +867,14 @@ def _closest_point_forecast(weather_point: WeatherPoint, target_at: datetime, *,
     return reading_payload(record, now=now)
 
 
-def route_forecast(route: Route, *, selected_date: date, period: str, start_minutes: int, speed: str) -> dict:
-    refresh_if_bucket_changed()
-    local = now_tehran()
+def route_forecast(route: Route, *, selected_date: date, period: str, start_minutes: int, speed: str, _context=None) -> dict:
+    # The day bundle supplies one request-scoped read context. Both contracts
+    # execute the same timing, forecast matching, severity and decision logic.
+    if _context is None:
+        refresh_if_bucket_changed()
+    local = _context["local"] if _context is not None else now_tehran()
     today = local.date()
-    points = list(route.points.select_related("weather_point", "route").all())
+    points = _context["points"] if _context is not None else list(route.points.select_related("weather_point", "route").all())
     timing_pending = not route_has_usable_timing(route, points)
     planned = []
     for point in points:
@@ -882,7 +890,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         # Arrival-based weather only when validated cumulative timing exists for THIS point's WeatherPoint.
         if wp and arrival is not None and not point_timing_pending:
             arrival_at = arrival_forecast_at(selected_date, arrival)
-            weather = _closest_point_forecast(wp, arrival_at, now=local)
+            weather = _context["closest"](wp, arrival_at) if _context is not None else _closest_point_forecast(wp, arrival_at, now=local)
         else:
             weather = None
         weather_available = weather is not None
@@ -916,6 +924,8 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 # available for specialist consumers and threshold logic.
                 "temp": weather["apparent_temperature_c"] if weather else None,
                 "temp_absolute": weather["temperature_c"] if weather else None,
+                "weather_code": weather["weather_code"] if weather else None,
+                "is_day": weather.get("is_day") if weather else None,
                 "wind": weather["wind_speed_kmh"] if weather else None,
                 "icon": weather["icon"] if weather else "—",
                 "condition": condition,
@@ -926,7 +936,9 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
 
     target_point = route.target_weather_point
     # Target-point hourly strip is independent of route-point severity.
-    hourly = _hourly_for_period(target_point, selected_date, period, now=local) if target_point else []
+    hourly = _context["hourly"][period] if _context is not None else (
+        _hourly_for_period(target_point, selected_date, period, now=local) if target_point else []
+    )
 
     finish = planned[-1] if planned else None
     critical_point = next((item for item in planned if item["state"] == "critical"), finish)
@@ -1037,7 +1049,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         {"label": "رسیدن به نقطه", "value": arrival_label},
     ]
     return {
-        "route": serialize_route(route),
+        "route": _context["route"] if _context is not None else serialize_route(route),
         "days": days,
         "period": planner_period_payload(period),
         "start_minutes": start_minutes,
@@ -1071,7 +1083,11 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             "timing_pending": timing_pending,
         },
         "empty": not planned,
-        "meta": meta_base(
+        "meta": ({**_context["meta"], "selected_period": period,
+                  "selected_start_time": start_label, "selected_speed": speed,
+                  "timing_pending": timing_pending, "timing_status": route.timing_status,
+                  "timing_version": route.timing_version or ""}
+                 if _context is not None else meta_base(
             selected_date=selected_date,
             period=period,
             extra={
@@ -1081,7 +1097,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 "timing_status": route.timing_status,
                 "timing_version": route.timing_version or "",
             },
-        ),
+        )),
     }
 
 

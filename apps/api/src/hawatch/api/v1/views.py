@@ -182,7 +182,14 @@ def destinations_index(request):
     if page_number < 1:
         raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
 
-    paginator = Paginator(ordered_publicly_visible_destinations(), DESTINATIONS_PAGE_SIZE)
+    from hawatch.modules.catalog.search import normalize_search_text
+    query = normalize_search_text(request.query_params.get("query", ""))
+    items = ordered_publicly_visible_destinations()
+    if query:
+        items = [point for point in items if query in normalize_search_text(
+            " ".join([point.name, point.page_name, point.region, *(point.aliases or [])])
+        )]
+    paginator = Paginator(items, DESTINATIONS_PAGE_SIZE)
     try:
         page = paginator.page(page_number)
     except EmptyPage as exc:
@@ -212,6 +219,23 @@ def destinations_index(request):
 
 
 @api_view(["GET"])
+def routes_index(request):
+    from django.db.models import Count
+    from hawatch.modules.catalog.search import normalize_search_text
+    from .serializers import serialize_route_summary
+
+    query = normalize_search_text(request.query_params.get("query", ""))
+    rows = Route.objects.filter(is_active=True).annotate(point_count=Count("points")).prefetch_related("points__weather_point").order_by("region", "sort_order", "slug")
+    results = [
+        {**serialize_route_summary(route, points=list(route.points.all())), "region": route.region, "point_count": route.point_count}
+        for route in rows if not query or query in normalize_search_text(
+            " ".join([route.title, route.origin, route.target_label, route.region])
+        )
+    ]
+    return Response({"routes": results, "empty": not results, "query": request.query_params.get("query", "")})
+
+
+@api_view(["GET"])
 def point_detail(request, slug: str):
     refresh_if_bucket_changed()
     point = get_point(slug)
@@ -229,7 +253,10 @@ def _resolve_date_period(request) -> tuple:
     explicit_date = "date" in request.query_params
     explicit_period = "period" in request.query_params
     default_date, default_period = default_forecast_selection(local)
-    selected = parse_date(request.query_params.get("date"), default_date) if explicit_date else default_date
+    try:
+        selected = parse_date(request.query_params.get("date"), default_date) if explicit_date else default_date
+    except ValueError as exc:
+        raise ValidationError("تاریخ برنامه معتبر نیست؛ از قالب YYYY-MM-DD استفاده کنید.") from exc
     period = parse_period(request.query_params.get("period")) if explicit_period else default_period
     access = resolve_forecast_access(request, today=local.date())
     # A clean public URL always resolves to the last date this viewer can read;
@@ -305,9 +332,59 @@ def point_forecast_view(request, slug: str):
 
 
 @api_view(["GET"])
+def point_day_forecast_view(request, slug: str):
+    from .day_bundles import point_day_bundle
+
+    point = get_weather_point(slug)
+    selected, period, access = _resolve_date_period(request)
+    if access.status_for(selected) != "available":
+        return _forecast_access_denied(access, selected)
+    return _private_forecast(point_day_bundle(point, selected_date=selected, period=period, access=access), access)
+
+
+@api_view(["GET"])
+def route_day_forecast_view(request, slug: str):
+    from .day_bundles import route_day_bundle
+
+    route = get_route(slug)
+    selected, period, access = _resolve_date_period(request)
+    if access.status_for(selected) != "available":
+        return _forecast_access_denied(access, selected)
+    start = _resolve_start_minutes(request, selected, period, now_tehran())
+    speed = parse_speed(request.query_params.get("speed"))
+    return _private_forecast(route_day_bundle(route, selected_date=selected, period=period,
+        start_minutes=start, speed=speed, access=access), access)
+
+
+@api_view(["GET"])
 def search_suggestions_view(request):
     query = request.query_params.get("q", "")
     results = search_suggestions(query=query)
+    # Opt-in keeps the point-only contract used by the current production app.
+    if request.query_params.get("include_routes") == "1":
+        points = {
+            point.slug: point
+            for point in WeatherPoint.objects.filter(slug__in=[item["slug"] for item in results])
+        }
+        for item in results:
+            point = points.get(item["slug"])
+            if point:
+                item.update(category_key=point.category_key, place_type=point.place_type)
+                item["hint"] = " · ".join(filter(None, [point.region,
+                    f"{point.elevation_m} متر" if point.elevation_m is not None else ""]))
+        from hawatch.modules.catalog.search import normalize_search_text
+        normalized = normalize_search_text(query)
+        if len(normalized) >= 2:
+            route_rows = Route.objects.filter(is_active=True).prefetch_related("points__weather_point").order_by("sort_order", "slug")
+            matches = []
+            for route in route_rows:
+                names = " ".join([route.title, route.origin, route.target_label, route.region,
+                    *(point.weather_point.name for point in route.points.all() if point.weather_point)])
+                if normalized in normalize_search_text(names):
+                    matches.append({"type": "route", "slug": route.slug, "label": route.title,
+                        "hint": f"{route.points.count()} نقطه · {route.distance_km} کیلومتر" if route.distance_km is not None else f"{route.points.count()} نقطه",
+                        "href": f"/routes/{route.slug}", "match_kind": "name"})
+            results = [*results, *matches[:8]]
     return Response(
         {
             "query": query,

@@ -52,7 +52,7 @@ def _canonical(path: str) -> str:
 def _robots(request: HttpRequest) -> str:
     """Planner/query variants remain crawlable for links but never indexed."""
 
-    return "noindex,follow" if request.GET else "index,follow"
+    return "noindex,nofollow" if getattr(settings, "HAWATCH_QA_NOINDEX", False) else "noindex,follow" if request.GET else "index,follow"
 
 
 def _format_decimal(value: Decimal | None, suffix: str) -> str | None:
@@ -80,6 +80,7 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
         {
             "page": page,
             "robots": robots,
+            "new_design": getattr(settings, "HAWATCH_NEW_DESIGN", False),
         },
         status=status,
     )
@@ -359,3 +360,16 @@ def seo_route(request: HttpRequest, slug: str) -> HttpResponse:
     if route is None:
         return _not_found(request, content_type="route")
     return _render(request, page=_route_page(route))
+
+
+@require_GET
+def seo_routes(request: HttpRequest) -> HttpResponse:
+    rows = Route.objects.filter(is_active=True).order_by("title", "slug")
+    return _render(request, page={
+        "kind": "routes", "title": "همهٔ مسیرها | هواچ",
+        "description": "مسیرهای کوه‌پیمایی هواچ؛ نقاط مسیر و پیش‌بینی هوا در زمان رسیدن.",
+        "canonical": _canonical("/routes"), "headline": "همهٔ مسیرها",
+        "summary": "مسیر مناسب برنامهٔ خود را انتخاب کنید.",
+        "routes": [{"title": row.title, "href": f"/routes/{row.slug}",
+                    "description": f"از {row.origin} تا {row.target_label}"} for row in rows],
+    })

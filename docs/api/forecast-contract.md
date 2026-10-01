@@ -229,3 +229,22 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 و پاسخ `Cache-Control: no-store` دارد تا تغییرات Django Admin بدون deploy یا restart اعمال شوند.
 طرح پولی فعلی `professional` سه‌ماهه (`duration_months=3`) است؛ پرداخت و درگاه در milestone
 بعدی اضافه می‌شود.
+
+## دریافت یکپارچهٔ روز در نسخهٔ `new-design`
+
+endpointهای قبلی `forecast/` باقی می‌مانند. دو endpoint خصوصی جدید عبارت‌اند از:
+
+- `GET /api/v1/points/<slug>/forecast/day/?date=YYYY-MM-DD&period=morning`
+- `GET /api/v1/routes/<slug>/forecast/day/?date=YYYY-MM-DD&period=morning&start_time=08:00&speed=medium`
+
+حل تاریخ/بازه/ساعت/سرعت و کنترل entitlement همان مسیر فعلی است. پاسخ و خطای دسترسی `Cache-Control: private, no-store` و `Vary: Cookie` دارند. روز قفل‌شده پیش از خواندن داده رد می‌شود.
+
+پاسخ نقطه envelope فعلی را نگه می‌دارد و `periods` شامل چهار انتخاب را اضافه می‌کند. هر انتخاب `period`، سه `hourly` قابل‌دریافت، `current`، `empty` و `partial` دارد؛ مقدار ناموجود ساخته نمی‌شود. `daily_summary.apparent_min_c` و `apparent_max_c` از **تمام رکوردهای روز تهران** محاسبه می‌شوند، نه از سه کارت بازه. `complete` فقط با ۲۴ ساعت یکتا true است. دمای معمولی و aliasهای API برای مصرف‌کنندگان قبلی حفظ می‌شوند؛ نمایش جدید فقط فیلد apparent را می‌خواند. normalizer جدید ساعت فاقد apparent واقعی را حذف می‌کند، چون مدل فعلی این فیلد را الزامی می‌داند؛ دمای معمولی جایگزین آن نمی‌شود و migration جدید لازم نیست.
+
+پاسخ مسیر `periods` و `plans` را اضافه می‌کند. کلید هر plan از pace فارسی و دقیقهٔ شروع تشکیل می‌شود، مثل `متوسط:480`. چهار بازه × شش ساعت مجاز × سه سرعت = ۷۲ انتخاب. `points` هر plan فقط فیلدهای متغیر زمان رسیدن/هوا را دارد و به ترتیب نقاط envelope اصلی متصل می‌شود؛ `decision`، `stats` و `hero` نیز برای همان انتخاب هستند. frontend الگوریتم ETA/انتخاب forecast/خطر جدیدی ندارد: تمام انتخاب‌ها با **همان `route_forecast`** و یک context خواندنی مشترک در بکند ارزیابی می‌شوند.
+
+رکوردهای تمام WeatherPointها در یک query از شروع روز منهای tolerance تا دیرترین شروع + طولانی‌ترین مدت در paceهای واقعی + tolerance خوانده می‌شوند. انتهای محدوده به entitlement قطع می‌شود. `coverage` محدوده و `access_through` را گزارش می‌کند. فاصلهٔ زمانی مجاز ۹۰ دقیقه و tie-break «رکورد زودتر، سپس PK کمتر» محفوظ است. رسیدن در روز غیرمجاز همیشه هوای ناموجود دارد، حتی اگر یک رکورد روز مجاز نزدیک نیمه‌شب باشد. در pending timing زمان رسیدن ساخته نمی‌شود. PNG و رابط نیز ناقص‌بودن ارزیابی را نمایش می‌دهند.
+
+هر پاسخ `data_revision` مشتق از رکوردهای واقعاً خوانده‌شده و سطح دسترسی و، برای مسیر، timing version دارد. `cache_max_age_seconds` حداکثر ۳۰۰ ثانیه است. cache فقط در حافظهٔ runtime مرورگر است، به identity و روز و epoch احراز هویت وابسته است، درخواست‌های هم‌زمان را ادغام می‌کند و پاسخ دیررس حساب قبلی را ذخیره نمی‌کند. اولین روز resolved با URL بدون query و تاریخ واقعی alias مشترک دارد. login/logout همهٔ cache را حذف می‌کند؛ به‌روزرسانی provider یا دسترسی مشاهده‌شده، روزهای قدیمی را باطل می‌کند. عمر cache در مرز ساعت تهران یا `cache_expires_at` (انقضای واقعی عضویت)، هرکدام زودتر باشد، پایان می‌یابد و focus/interval کوتاه refresh را بررسی می‌کند. تغییر بازه، details، ساعت و سرعت هیچ fetch هوا انجام نمی‌دهد. reload کامل مرورگر cache حافظه را پاک می‌کند؛ تغییر ingest/Admin در حساب بدون event تا refresh بعدی، حداکثر پنج دقیقه، دیده می‌شود.
+
+`GET /api/v1/routes/?query=...` فهرست واقعی مسیرهای فعال را برمی‌گرداند. `destinations/?page=...&query=...` جست‌وجوی مستقل مقصدها را انجام می‌دهد. `search/suggestions/?q=...&include_routes=1` مسیرها را با `type: route` کنار مقصدهای `type: point` اضافه می‌کند؛ حذف `include_routes` قرارداد قدیمی فقط نقطه را حفظ می‌کند. `auth/me/` فیلدهای اختیاری `expires_at` و `days_remaining` را از همان عضویت مؤثر فعال می‌گیرد؛ رایگان/بدون انقضا مقدار null دارند. مدل اشتراک، قیمت و پرداخت تغییر نکرده است.

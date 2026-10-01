@@ -294,7 +294,7 @@ def test_timing_pending_does_not_invent_arrivals(api_client, seeded):
     assert all(point["arrival_minutes"] is None for point in body["points"])
     assert all(point["time"] == "—" for point in body["points"])
     assert "timing pending" not in body["decision"]["title"].lower()
-    assert "حوالی —" not in body["hero"]["status"]
+    assert "حوالی —" not in (body["hero"]["status"] or "")
     assert "ETA" not in " ".join(body["decision"]["recommendations"])
     for point in body["points"]:
         assert "weather_available" in point

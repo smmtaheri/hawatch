@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://hawatch.ir/brand/social-share-1200x630.png" />
     <meta name="twitter:image:alt" content="نشان هواچ" />
     {% if page.structured_data %}<script type="application/ld+json">{{ page.structured_data|safe }}</script>{% endif %}
-    <link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />
+    {% if new_design %}<link rel="preload" href="/new-design/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin />{% else %}<link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />{% endif %}
     <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="icon" href="/brand/favicon-16.png" sizes="16x16" type="image/png" />
@@ -87,6 +87,8 @@
                   </nav>
                 {% endif %}
               {% endif %}
+            {% elif page.kind == "routes" %}
+              <section aria-label="مسیرهای هواچ"><ul>{% for route in page.routes %}<li><a href="{{ route.href }}">{{ route.title }}</a> — {{ route.description }}</li>{% endfor %}</ul></section>
             {% elif page.kind == "point" %}
               <dl>
                 <div><dt>منطقه</dt><dd>{{ page.region }}</dd></div>
