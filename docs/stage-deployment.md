@@ -1,6 +1,6 @@
 # محیط Stage هواچ
 
-برنچ `stage` نسخهٔ پیش‌نمایش هواچ را روی پورت `5050` اجرا می‌کند. `deploy-hawatch` ابتدا checkout برنچ `main` را روی سرویس production به‌روز می‌کند؛ سپس مقدار `HAWATCH_STAGE_ENABLED` را از فایل تنظیمات همان سرور می‌خواند. با مقدار `1`، stage هم deploy می‌شود؛ با مقدار `0` یا نبود فایل تنظیمات، فقط main فعال می‌ماند و منابع کانتینری stage پاک می‌شوند.
+برنچ `stage` نسخهٔ پیش‌نمایش هواچ را روی پورت `5050` اجرا می‌کند. اجرای بدون آرگومان `deploy-hawatch` همیشه checkout برنچ `main` را روی ورودی اصلی به‌روز می‌کند و سپس مقدار `HAWATCH_STAGE_ENABLED` را از فایل تنظیمات همان سرور می‌خواند. با مقدار `1`، برنچ `stage` هم build و deploy می‌شود؛ با مقدار `0` یا نبود فایل تنظیمات، فقط main اجرا می‌شود و منابع کانتینری stage پاک می‌شوند.
 
 ## سرویس‌ها و داده
 
@@ -9,7 +9,11 @@
 | Production | `/root/hawatch`، برنچ `main` | Compose اصلی | سرویس‌های production | پورت معمول سایت، پیش‌فرض `80` |
 | Stage | `/root/hawatch-stage`، برنچ `stage` | `hawatch-stage` | `stage-api`, `stage-web`, `stage-gateway` | `0.0.0.0:5050` |
 
-Stage از دیتابیس واقعی production استفاده می‌کند: API stage فایل `/root/hawatch/.env` را می‌خواند و به همان network دیتابیس وصل می‌شود. داده‌ها کپی یا ناشناس‌سازی نمی‌شوند؛ هر قابلیتی که در API stage داده‌ای را تغییر دهد، روی دیتابیس مشترک اثر می‌گذارد. سرویس stage migration، seed، bootstrap یا ingest اجرا نمی‌کند و database، scheduler و maintenance تازه نمی‌سازد. خاموش‌کردن stage، دیتابیس اصلی و شبکهٔ production را نگه می‌دارد.
+سه سرویس stage اجزای مستقل اپ هستند: API به داده وصل می‌شود، web فایل‌های
+frontend را سرو می‌کند، و gateway هر دو را پشت یک ورودی `:5050` به‌هم وصل
+می‌کند. Stage دیتابیس، scheduler یا maintenance جداگانه‌ای بالا نمی‌آورد.
+
+Stage از دیتابیس واقعی production استفاده می‌کند: API stage فایل `/root/hawatch/.env` را می‌خواند و به همان network دیتابیس وصل می‌شود. داده‌ها کپی یا ناشناس‌سازی نمی‌شوند؛ هر قابلیتی که در API stage داده‌ای را تغییر دهد، روی دیتابیس مشترک اثر می‌گذارد. تنظیم API صریحاً demo data و bootstrap را خاموش می‌کند و سرویس stage migration، seed یا ingest اجرا نمی‌کند؛ پیش‌بینی‌های زنده را از همان دیتابیس production می‌خواند. خاموش‌کردن stage، دیتابیس اصلی و network production را نگه می‌دارد.
 
 ## آماده‌سازی روی سرور
 
@@ -22,14 +26,26 @@ git pull --ff-only origin stage
 install -Dm755 scripts/deploy-hawatch "$HOME/.local/bin/deploy-hawatch"
 ```
 
-برای هر سرور، نمونه را به‌عنوان فایل تنظیمات stage کپی کنید و IP، دامنه، مسیر فایل env و نام network دیتابیس را با همان سرور هماهنگ کنید:
+برای هر سرور، نمونه را به‌عنوان فایل تنظیمات stage کپی کنید و IP، دامنه، مسیر فایل env و نام network دیتابیس را با همان سرور هماهنگ کنید. این فایل فقط تنظیمات اتصال stage دارد و credential دیتابیس را از env اصلی می‌خواند:
 
 ```bash
 scp infra/compose/stage.env.example hawatch:/root/hawatch-stage.env
 ssh hawatch 'chmod 600 /root/hawatch-stage.env'
 ```
 
-نمونه به‌صورت پیش‌فرض فعال است و پورت `5050` را روی همهٔ interfaceهای سرور منتشر می‌کند. روی سروری که نام SSH آن `hawatch` نیست، `HAWATCH_SSH_HOST` را هنگام اجرای wrapper مشخص کنید. مسیرهای غیرپیش‌فرض با `HAWATCH_SERVER_DIR`, `HAWATCH_STAGE_DIR`, `HAWATCH_STAGE_ENV_FILE`, `HAWATCH_SERVER_IP` و `HAWATCH_PUBLIC_HOST` قابل تنظیم‌اند.
+نمونه به‌صورت پیش‌فرض فعال است و پورت `5050` را روی همهٔ interfaceهای سرور منتشر می‌کند. روی سروری که نام SSH آن `hawatch` نیست، target و مشخصات همان سرور را هنگام deploy بدهید. فرمان را از checkout محلی اجرا کنید؛ برای مسیر غیرمعمول checkout از `HAWATCH_LOCAL_DIR` استفاده کنید. مسیرهای غیرپیش‌فرض سرور هم با `HAWATCH_SERVER_DIR`, `HAWATCH_STAGE_DIR`, `HAWATCH_STAGE_ENV_FILE`, `HAWATCH_SERVER_IP` و `HAWATCH_PUBLIC_HOST` قابل تنظیم‌اند:
+
+```bash
+HAWATCH_SSH_HOST=root@SERVER_IP \
+HAWATCH_SERVER_IP=SERVER_IP \
+HAWATCH_PUBLIC_HOST=SERVER_DOMAIN_OR_IP \
+deploy-hawatch
+```
+
+اگر پروژه روی آن سرور در مسیر دیگری است یا network نام دیگری دارد، همان مسیر را
+در `HAWATCH_SERVER_DIR` و نام دقیق network دیتابیس را در
+`HAWATCH_PRODUCTION_NETWORK` بگذارید. مقدار `HAWATCH_PRODUCTION_ENV_FILE` هم باید
+به `.env` واقعی همان checkout production اشاره کند.
 
 سپس از checkout برنچ `stage`:
 
@@ -37,28 +53,33 @@ ssh hawatch 'chmod 600 /root/hawatch-stage.env'
 deploy-hawatch
 ```
 
-Wrapper از `main`، main را push می‌کند و از هر دو branch محلی، ref برنچ `stage` را هم push می‌کند تا نسخهٔ stage روی سرور به‌روز باشد. سرور main و در صورت فعال‌بودن stage آن برنچ را deploy می‌کند. push به‌تنهایی deploy ایجاد نمی‌کند. خروجی موفق deploy پس از healthcheck پورت ۸۰ و در صورت فعال‌بودن stage، پورت ۵۰۵۰ چاپ می‌شود. شکست build stage سرویس‌های stage قبلی را نگه می‌دارد و به main دست نمی‌زند.
+Wrapper از branch فعلی `main`، commitهای main را push می‌کند. branch `stage` فقط وقتی push می‌شود که در فایل سرور فعال باشد یا فرمان `stage-on` اجرا شود؛ بنابراین وقتی stage خاموش است حتی branch آن هم deploy/push نمی‌شود. تغییرات uncommitted هیچ‌وقت stage یا commit نمی‌شوند. سرور همیشه `origin/main` را deploy می‌کند و فقط وقتی stage فعال باشد `origin/stage` را build/deploy می‌کند. push به‌تنهایی deploy ایجاد نمی‌کند. قبل از حذف preview قدیمی، imageهای جدید stage ساخته می‌شوند؛ شکست build، preview قبلی را نگه می‌دارد. پس از بالا آمدن سرویس‌ها، healthcheck هر سه container و درخواست‌های gateway به API readiness، Home، catalog زنده و forecast واقعی Open-Meteo بررسی می‌شوند. `deploy-hawatch` فقط وقتی موفق اعلام می‌شود که این بررسی‌ها بگذرند.
 
 اولین اجرا checkout مستقل `/root/hawatch-stage` را می‌سازد. اگر checkout قدیمی `/root/hawatch-new-design` وجود داشته باشد، در صورت clean بودن به مسیر جدید و برنچ `stage` منتقل می‌شود؛ پروژهٔ Docker قدیمی `hawatch-new-design` پیش از اشغال پورت ۵۰۵۰ جمع می‌شود.
 
 ## روشن و خاموش‌کردن Stage
 
-برای خاموش‌کردن فوری stage، اسکریپت `stage-down.sh` مقدار فعال‌بودن را در فایل تنظیمات روی صفر می‌گذارد و کانتینرها، network و volume لاگ stage و imageهای محلی stage را پاک می‌کند:
+برای خاموش‌کردن فوری و پایدار stage:
 
 ```bash
-ssh hawatch 'HAWATCH_STAGE_ENV_FILE=/root/hawatch-stage.env bash /root/hawatch-stage/scripts/stage-down.sh'
+deploy-hawatch stage-off
 ```
 
-فایل تنظیمات و checkout کد باقی می‌مانند تا راه‌اندازی دوباره ساده باشد. پس از آن هر اجرای `deploy-hawatch` فقط main را deploy می‌کند و پاک‌سازی stage را هم تکرار می‌کند.
+این فرمان روی سرور `HAWATCH_STAGE_ENABLED=0` می‌گذارد و containerها، network،
+volume لاگ و imageهای محلی هر دو نام پروژهٔ stage را حذف می‌کند. فایل تنظیمات و
+checkout کد باقی می‌مانند تا روشن‌کردن دوباره ساده باشد. Production دست‌نخورده
+می‌ماند. پس از آن هر اجرای بدون آرگومان `deploy-hawatch` فقط main را deploy
+می‌کند و پاک‌سازی stage را هم تکرار می‌کند.
 
-برای فعال‌کردن دوباره:
+برای فعال‌کردن دوباره و deploy هم‌زمان main و stage:
 
 ```bash
-ssh hawatch 'sed -i "s/^HAWATCH_STAGE_ENABLED=.*/HAWATCH_STAGE_ENABLED=1/" /root/hawatch-stage.env'
-deploy-hawatch
+deploy-hawatch stage-on
 ```
 
-اگر کلید در فایل وجود ندارد، خط `HAWATCH_STAGE_ENABLED=1` را به فایل اضافه کنید. تغییر مقدار فعال‌بودن در هر سرور مستقل است.
+این فرمان مقدار را روی `1` می‌گذارد، main را deploy می‌کند و stage را هم روی
+`5050` بالا می‌آورد. برای تغییر دستی نیز مقدار `HAWATCH_STAGE_ENABLED` در فایل
+تنظیمات همان سرور کافی است؛ هر سرور مستقل از بقیه فعال/غیرفعال می‌شود.
 
 ## متغیرهای فایل Stage
 
@@ -76,7 +97,9 @@ deploy-hawatch
 | `HAWATCH_STAGE_PORT` | باید `5050` باشد |
 | `HAWATCH_PUBLIC_ORIGIN` | canonical دامنهٔ اصلی، پیش‌فرض `https://hawatch.ir` |
 
-برای نمونه، اگر IP یا سرویس دیتابیس سرور دیگری دارید، همین مقادیر را در فایل همان سرور تنظیم کنید؛ لازم نیست در Compose یا کد برنامه IP ثابتی باشد. نام SSH میزبان و host/IP محلی را نیز با `HAWATCH_SSH_HOST` و `HAWATCH_SERVER_IP` به wrapper بدهید.
+برای سرور دیگری، این مقادیر را در فایل تنظیمات همان سرور بنویسید؛ IP سرور در
+Compose یا کد برنامه hardcode نشده است. نام SSH میزبان و host/IP را هم به wrapper
+می‌دهید، پس همان فرمان روی سرور انتخاب‌شده عمل می‌کند.
 
 ## HTTPS اختیاری
 

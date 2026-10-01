@@ -1,4 +1,4 @@
-"""Isolated new-design runtime against the existing production database.
+"""Isolated stage runtime against the existing production database.
 
 Compose bypasses entrypoint.sh: no migrations, seed, collectstatic or ingest.
 """
@@ -12,8 +12,8 @@ SESSION_COOKIE_NAME = "hawatch_qa_session"
 CSRF_COOKIE_NAME = "hawatch_qa_csrf"
 SESSION_COOKIE_DOMAIN = None
 CSRF_COOKIE_DOMAIN = None
-QA_ORIGIN = env("HAWATCH_QA_ORIGIN").rstrip("/")  # noqa: F405
-SESSION_COOKIE_SECURE = QA_ORIGIN.startswith("https://")
+STAGE_ORIGIN = env("HAWATCH_STAGE_ORIGIN").rstrip("/")  # noqa: F405
+SESSION_COOKIE_SECURE = STAGE_ORIGIN.startswith("https://")
 CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
-CSRF_TRUSTED_ORIGINS = [QA_ORIGIN]
+CSRF_TRUSTED_ORIGINS = [STAGE_ORIGIN]
 MIDDLEWARE = ["hawatch.common.qa_preview.NoIndexMiddleware", *MIDDLEWARE]  # noqa: F405

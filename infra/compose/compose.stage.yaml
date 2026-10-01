@@ -13,7 +13,7 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: hawatch.config.settings.qa
       DJANGO_ALLOWED_HOSTS: ${HAWATCH_STAGE_ALLOWED_HOSTS:?Set stage IP/domain},stage-api,localhost,127.0.0.1
-      HAWATCH_QA_ORIGIN: ${HAWATCH_STAGE_ORIGIN:?Set public stage origin}
+      HAWATCH_STAGE_ORIGIN: ${HAWATCH_STAGE_ORIGIN:?Set public stage origin}
       HAWATCH_PUBLIC_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
       POSTGRES_HOST: ${HAWATCH_PRODUCTION_DB_HOST:-postgres}
       POSTGRES_PORT: "5432"
