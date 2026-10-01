@@ -1,13 +1,13 @@
 # QA مستقل طراحی جدید هواچ
 
-این تغییر فقط برای برنچ `new-design` است. دامنهٔ اصلی تا تأیید QA از checkout برنچ `main` ساخته می‌شود. هیچ deploy، restart، migration، seed یا تغییر دیتابیس اصلی در جریان پیاده‌سازی انجام نشده است.
+این تغییر فقط برای برنچ `new-design` است. با اجرای دستی `deploy-hawatch`، checkout برنچ `main` روی gateway عادی production (پورت ۸۰ در تنظیم استاندارد) و checkout برنچ `new-design` هم‌زمان روی gateway مستقل پورت ۵۰۵۰ به‌روز می‌شوند. هیچ deploy، restart، migration، seed یا تغییر دیتابیس اصلی در جریان پیاده‌سازی این کار انجام نشده است؛ این کارها فقط پس از اجرای آگاهانهٔ فرمان توسط اپراتور رخ می‌دهند.
 
 ## ساختار دو نسخه
 
 | نسخه | checkout سرور | Compose | پورت عمومی | منبع داده |
 |---|---|---|---|---|
-| production | `/root/hawatch`، برنچ `main` | `hawatch` و `infra/compose/compose.yaml` همان برنچ | پورت فعلی دامنه | دیتابیس فعلی |
-| QA | `/root/hawatch-new-design`، برنچ `new-design` | `hawatch-new-design` و `infra/compose/compose.new-design.yaml` | `5050` | همان دیتابیس از طریق API مستقل QA |
+| production | `/root/hawatch`، برنچ `main` | `hawatch` و `infra/compose/compose.yaml` همان برنچ | پورت فعلی دامنه، معمولاً `80` | دیتابیس فعلی |
+| staging/QA | `/root/hawatch-new-design`، برنچ `new-design` | `hawatch-new-design` و `infra/compose/compose.new-design.yaml` | `5050` | همان دیتابیس از طریق API مستقل QA |
 
 QA فقط `qa-api`، `qa-web` و `qa-gateway` دارد؛ database، ingest، scheduler و maintenance جدید ندارد. API با Gunicorn مستقیم اجرا می‌شود و `entrypoint.sh` که migration/seed انجام می‌دهد اجرا نمی‌شود. دیتابیس و کلیدها از فایل موجود production به `env_file` داده می‌شوند؛ secrets در checkout QA کپی نمی‌شوند. تغییر schema و migration جدیدی لازم نیست. تصاویر، volume لاگ و network داخلی QA مستقل هستند؛ تنها اتصال مشترک، network دیتابیس فعلی `hawatch_default` است. Compose جدید پورت‌های ۸۰، ۴۴۳، ۸۰۰۰ یا پورت‌های Athlore را publish نمی‌کند.
 
@@ -29,7 +29,7 @@ deploy-hawatch
 
 فایل فرمان قبلی خارج از ریپو در PATH یا فایل‌های shell قابل پیدا کردن نبود؛ نسخهٔ نصب‌پذیر داخل `scripts/deploy-hawatch` آماده شده است. فرمان قدیمی ریپو `scripts/publish-deploy.sh` حفظ شده است.
 
-اجرای wrapper از `new-design` فقط این برنچ را push می‌کند؛ production را از `origin/main` منتشرشده و با `scripts/deploy.sh` موجود در checkout اصلی به‌روز می‌کند. frontend جدید وارد checkout production نمی‌شود. اجرای wrapper از `main` رفتار push همان برنچ را مطابق فرمان قدیمی حفظ می‌کند و سپس QA را نیز به‌روز می‌کند. wrapper خودش stage، commit، reset، merge یا پاک‌کردن فایل‌های dirty انجام نمی‌دهد؛ checkout سرور dirty یا branch اشتباه باعث توقف می‌شود. ساخت QA پیش از جایگزینی کانتینرهای QA است و شکست build آن‌ها را نگه می‌دارد. push هیچ workflow استقرار خودکاری فعال نمی‌کند.
+اجرای wrapper از `new-design` این برنچ را push می‌کند، production را از `origin/main` منتشرشده و با `scripts/deploy.sh` موجود در checkout اصلی به‌روز می‌کند، سپس QA را از checkout مستقل به پورت ۵۰۵۰ می‌رساند. اجرای wrapper از `main` نیز main را push می‌کند و سپس هر دو release را به‌روز می‌کند. frontend جدید وارد checkout production نمی‌شود. wrapper خودش stage، commit، reset، merge یا پاک‌کردن فایل‌های dirty انجام نمی‌دهد؛ checkout سرور dirty یا branch اشتباه باعث توقف می‌شود. قبل از شروع QA، مقدار `HAWATCH_QA_PORT` باید دقیقاً `5050` باشد. ساخت QA پیش از جایگزینی کانتینرهای QA است و شکست build آن‌ها را نگه می‌دارد. push هیچ workflow استقرار خودکاری فعال نمی‌کند.
 
 **رفتار قدیمی production:** فرمان `scripts/deploy.sh` برنچ اصلی، bootstrap/migration/sync قبلی خود را در اجرای دستی اپراتور حفظ می‌کند. این رفتار مربوط به production است؛ QA هیچ‌کدام را اجرا نمی‌کند.
 

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 # Install this wrapper manually. Its invocation is the deploy authorization.
-# Production always runs the main checkout's own deploy.sh. QA has its own
-# checkout, images, project and gateway. Push alone has no deployment hook.
+# Every invocation deploys both releases: production main stays on its normal
+# gateway (port 80 in the standard env), while QA new-design has its own
+# checkout, images, Compose project and gateway on port 5050. Push alone has
+# no deployment hook.
 LOCAL_DIR="${HAWATCH_LOCAL_DIR:-/home/nobitex/Desktop/Tasks/Nobitex/hawatch}"
 SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
 PRODUCTION_DIR="${HAWATCH_SERVER_DIR:-/root/hawatch}"
@@ -31,6 +33,8 @@ git -C "$LOCAL_DIR" push origin new-design
 ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$QA_DIR" "$QA_ENV" "$PUBLIC_HOST" "$SERVER_IP" <<'REMOTE'
 set -Eeuo pipefail
 production_dir="$1"; qa_dir="$2"; qa_env="$3"; public_host="$4"; server_ip="$5"
+log() { printf '[deploy-hawatch] %s\n' "$*"; }
+fail_remote() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
 [[ "$(git -C "$production_dir" branch --show-current)" == main ]] || { echo 'Production must remain on main.' >&2; exit 1; }
 [[ "$(git -C "$production_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected production remote.' >&2; exit 1; }
 [[ -z "$(git -C "$production_dir" status --porcelain)" ]] || { echo 'Production checkout is dirty; inspect it manually.' >&2; exit 1; }
@@ -40,10 +44,15 @@ if [[ ! -e "$qa_dir" ]]; then
 fi
 [[ "$(git -C "$qa_dir" branch --show-current)" == new-design && -z "$(git -C "$qa_dir" status --porcelain)" ]] || { echo 'QA checkout must be clean and on new-design.' >&2; exit 1; }
 [[ "$(git -C "$qa_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || { echo 'Unexpected QA remote.' >&2; exit 1; }
+qa_port="$(awk -F= '$1 == "HAWATCH_QA_PORT" {sub(/^[^=]*=/, ""); print; exit}' "$qa_env" | tr -d '[:space:]')"
+[[ "${qa_port:-5050}" == "5050" ]] || fail_remote "QA must use port 5050; set HAWATCH_QA_PORT=5050 in $qa_env."
+log "Deploying main production checkout on its existing gateway (port 80)."
 git -C "$production_dir" pull --ff-only origin main
 cd "$production_dir"
 HAWATCH_BRANCH=main HAWATCH_DIR="$production_dir" PUBLIC_HOST="$public_host" \
  DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
  RUN_INITIAL_INGEST=0 ./scripts/deploy.sh
+log "Production is updated; building and starting new-design QA on port 5050."
 HAWATCH_QA_DIR="$qa_dir" HAWATCH_QA_ENV_FILE="$qa_env" bash "$qa_dir/scripts/deploy-new-design.sh"
+log "Both releases are active: main on production and new-design on :5050."
 REMOTE
