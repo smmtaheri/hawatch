@@ -45,7 +45,7 @@
       "status": "provisional",
       "elevation_source": "مختصات ورودی غار از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "forest_fog",
-      "category_key": "landmark",
+      "category_key": "cave",
       "category": "غار و جاذبه‌های فیروزکوه",
       "region": "رودافشان · فیروزکوه · تهران",
       "seo": {
@@ -141,7 +141,7 @@
       "status": "provisional",
       "elevation_source": "مختصات ورودی غار از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "forest_fog",
-      "category_key": "landmark",
+      "category_key": "cave",
       "category": "غار و جاذبه‌های فیروزکوه",
       "region": "هرانده · فیروزکوه · تهران"
     },
@@ -185,7 +185,7 @@
       "status": "provisional",
       "elevation_source": "مرکز پهنهٔ آبی سد از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "lake_valley",
-      "category_key": "lake",
+      "category_key": "dam",
       "category": "سدها و دریاچه‌های فیروزکوه",
       "region": "نمرود · فیروزکوه · تهران",
       "seo": {
@@ -457,7 +457,7 @@
       "status": "provisional",
       "elevation_source": "مختصات پل از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "forest_fog",
-      "category_key": "landmark",
+      "category_key": "bridge",
       "category": "جاذبه‌های سوادکوه",
       "region": "ورسک · سوادکوه · مازندران"
     },

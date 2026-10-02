@@ -6,7 +6,7 @@
       "page_name": "باداب سورت مازندران",
       "short_label": "باداب سورت",
       "place_type": "spring",
-      "category_key": "spring",
+      "category_key": "terrace",
       "category": "چشمه‌ها و جاذبه‌های طبیعی مازندران",
       "region": "اروست · چهاردانگه · مازندران",
       "aliases": [
@@ -43,7 +43,7 @@
     "name": "باداب سورت",
     "short_category": "چشمهٔ پلکانی",
     "category": "چشمه‌ها و جاذبه‌های طبیعی مازندران",
-    "category_key": "spring",
+    "category_key": "terrace",
     "region": "اروست · چهاردانگه · مازندران",
     "elevation_m": 1843,
     "latitude": 36.35513,

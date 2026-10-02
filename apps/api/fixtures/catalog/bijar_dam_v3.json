@@ -106,7 +106,7 @@
       "page_name": "آب‌وهوای سد بیجار گیلان",
       "short_label": "سد بیجار",
       "place_type": "lake",
-      "category_key": "lake",
+      "category_key": "dam",
       "aliases": [
         "سد بیجار",
         "سد مخزنی بیجار",
@@ -233,7 +233,7 @@
     "name": "سد آیت‌الله بهجت (سد بیجار)",
     "short_category": "سد و دریاچه",
     "category": "سدها و دریاچه‌های گیلان",
-    "category_key": "lake",
+    "category_key": "dam",
     "region": "رودخانهٔ زیلکی · رودبار · گیلان",
     "elevation_m": 198,
     "latitude": 36.99852,

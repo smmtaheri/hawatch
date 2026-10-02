@@ -6,7 +6,7 @@
       "page_name": "مرداب هسل چالوس",
       "short_label": "مرداب هسل",
       "place_type": "landmark",
-      "category_key": "lake",
+      "category_key": "marsh",
       "category": "تالاب‌ها و جاذبه‌های طبیعی مازندران",
       "region": "سینوا و طلاجو · چالوس · مازندران",
       "aliases": [
@@ -50,7 +50,7 @@
     "name": "مرداب هسل",
     "short_category": "مرداب",
     "category": "تالاب‌ها و جاذبه‌های طبیعی مازندران",
-    "category_key": "lake",
+    "category_key": "marsh",
     "region": "سینوا و طلاجو · چالوس · مازندران",
     "elevation_m": 265,
     "latitude": 36.6121,

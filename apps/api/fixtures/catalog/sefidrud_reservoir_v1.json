@@ -36,7 +36,7 @@
       "status": "provisional",
       "elevation_source": "مختصات عارضهٔ مخزن دریاچه‌ای سد از نقشهٔ OpenStreetMap/Mapcarta؛ ارتفاع ۳۲۴ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
       "climate": "lake_valley",
-      "category_key": "lake",
+      "category_key": "dam",
       "category": "دریاچه‌های گیلان",
       "region": "منجیل · رودبار · گیلان"
     }
@@ -48,7 +48,7 @@
     "name": "دریاچهٔ سد سفیدرود",
     "short_category": "دریاچه",
     "category": "دریاچه‌های گیلان",
-    "category_key": "lake",
+    "category_key": "dam",
     "region": "منجیل · رودبار · گیلان",
     "elevation_m": 324,
     "latitude": 36.7187,

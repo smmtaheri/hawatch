@@ -91,7 +91,7 @@
       "status": "provisional",
       "elevation_source": "مختصات آبگرم از Getty TGN؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "lake_valley",
-      "category_key": "spring",
+      "category_key": "hot_spring",
       "category": "چشمه‌ها و آبگرم‌های لاریجان",
       "region": "لاریجان · آمل · مازندران"
     },
@@ -179,7 +179,7 @@
       "status": "provisional",
       "elevation_source": "مرکز پهنهٔ آبی از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "lake_valley",
-      "category_key": "lake",
+      "category_key": "dam",
       "category": "سدها و دریاچه‌های البرز",
       "region": "لار · دماوند/لاریجان · تهران/مازندران"
     },
@@ -223,7 +223,7 @@
       "status": "provisional",
       "elevation_source": "مختصات دهانهٔ غار از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "alpine",
-      "category_key": "landmark",
+      "category_key": "cave",
       "category": "غارها و جاذبه‌های هراز",
       "region": "پلور · لاریجان · مازندران"
     },
@@ -311,7 +311,7 @@
       "status": "provisional",
       "elevation_source": "مختصات قلعه از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "forest_fog",
-      "category_key": "landmark",
+      "category_key": "fort",
       "category": "جاذبه‌های تاریخی لاریجان",
       "region": "شاهاندشت · لاریجان · مازندران"
     },
@@ -333,7 +333,7 @@
       "status": "provisional",
       "elevation_source": "مختصات دهانهٔ عارضه از OSM؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات.",
       "climate": "forest_fog",
-      "category_key": "landmark",
+      "category_key": "cave",
       "category": "غارها و جاذبه‌های هراز",
       "region": "لاریجان · آمل · مازندران"
     },
@@ -499,7 +499,7 @@
     "name": "سد لار",
     "short_category": "دریاچه",
     "category": "سدها و دریاچه‌های البرز",
-    "category_key": "lake",
+    "category_key": "dam",
     "region": "لار · دماوند/لاریجان · تهران/مازندران",
     "elevation_m": 2524,
     "latitude": 35.9026049,

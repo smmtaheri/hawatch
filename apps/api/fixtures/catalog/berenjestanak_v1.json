@@ -23,7 +23,7 @@
       "status": "provisional",
       "elevation_source": "مختصات سد از OSM/Mapcarta؛ Open-Meteo GLO-90 DEM در همین مختصات ۱۶۲ متر است.",
       "climate": "lake_valley",
-      "category_key": "lake",
+      "category_key": "dam",
       "category": "سد و دریاچهٔ برنجستانک",
       "region": "برنجستانک · سوادکوه شمالی · مازندران",
       "seo": {
@@ -203,7 +203,7 @@
     "name": "سد برنجستانک",
     "short_category": "سد و دریاچه",
     "category": "سد و دریاچهٔ برنجستانک",
-    "category_key": "lake",
+    "category_key": "dam",
     "region": "برنجستانک · سوادکوه شمالی · مازندران",
     "elevation_m": 162,
     "latitude": 36.3672344,

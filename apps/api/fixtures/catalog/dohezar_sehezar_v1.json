@@ -19,7 +19,7 @@
       "status": "provisional",
       "elevation_source": "مختصات چشمه از OpenStreetMap و ترک فلکده؛ ارتفاع از Open-Meteo GLO-90 DEM.",
       "climate": "forest_fog",
-      "category_key": "spring",
+      "category_key": "hot_spring",
       "category": "آبگرم‌ها و چشمه‌های تنکابن",
       "region": "فلکده · لیره‌سر · تنکابن"
     },
@@ -261,7 +261,7 @@
       "status": "provisional",
       "elevation_source": "مختصات آبگرم از OpenStreetMap و ترک درجان؛ ارتفاع از Open-Meteo GLO-90 DEM.",
       "climate": "forest_fog",
-      "category_key": "spring",
+      "category_key": "hot_spring",
       "category": "آبگرم‌ها و چشمه‌های تنکابن",
       "region": "سه‌هزار · تنکابن"
     },
@@ -462,7 +462,7 @@
     "name": "آبگرم فلکده",
     "short_category": "آبگرم و جنگل",
     "category": "آبگرم‌ها و چشمه‌های تنکابن",
-    "category_key": "spring",
+    "category_key": "hot_spring",
     "region": "فلکده · لیره‌سر · تنکابن",
     "latitude": 36.620082,
     "longitude": 50.924519,

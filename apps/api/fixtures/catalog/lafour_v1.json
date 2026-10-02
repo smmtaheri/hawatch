@@ -23,7 +23,7 @@
       "status": "provisional",
       "elevation_source": "مختصات سد از Mapcarta/OSM؛ Open-Meteo GLO-90 DEM در همین مختصات ۳۱۲ متر است و اختلاف با ارتفاع نقشهٔ ۲۹۸ متر کمتر از ۱۰۰ متر است.",
       "climate": "lake_valley",
-      "category_key": "lake",
+      "category_key": "dam",
       "category": "سد و دریاچهٔ لفور",
       "region": "لفور · سوادکوه شمالی · مازندران",
       "seo": {

@@ -6,6 +6,7 @@
       "page_name": "کلوت‌های شهداد در دشت لوت",
       "short_label": "کلوت‌های شهداد",
       "place_type": "desert",
+      "category_key": "kalut",
       "aliases": [
         "کلوت شهداد",
         "کلوت‌های کویر شهداد",
@@ -39,7 +40,7 @@
     "name": "کلوت‌های شهداد",
     "short_category": "کلوت",
     "category": "کلوت‌های شهداد · دشت لوت",
-    "category_key": "desert",
+    "category_key": "kalut",
     "region": "شهداد · استان کرمان",
     "elevation_m": 327,
     "latitude": 30.793263,

@@ -6,6 +6,7 @@
       "page_name": "کال جنی طبس",
       "short_label": "کال جنی",
       "place_type": "landmark",
+      "category_key": "gorge",
       "aliases": [
         "درهٔ کال جنی",
         "کال جنی طبس",
@@ -203,7 +204,7 @@
     "name": "کال جنی",
     "short_category": "دره",
     "category": "دره · طبس",
-    "category_key": "desert",
+    "category_key": "gorge",
     "region": "استان خراسان جنوبی · طبس",
     "elevation_m": 822,
     "latitude": 33.817485,

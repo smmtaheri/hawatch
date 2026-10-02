@@ -66,15 +66,11 @@ export function WeatherIcon({
   return <DesignIcon name={name} className={className} />;
 }
 
-export function CategoryIcon({
-  category,
-  placeType,
-}: {
-  category?: string;
-  placeType?: string;
-}) {
+export function resolveCategoryIcon(category?: string, placeType?: string): string {
   const mapping: Record<string, string> = {
     peak: "mountain",
+    summit: "mountain",
+    ridge: "mountain",
     mountain: "mountain",
     alpine: "mountain",
     forest: "forest",
@@ -90,12 +86,29 @@ export function CategoryIcon({
     park: "park",
     volcano: "volcano",
   };
-  const name =
-    mapping[placeType || ""] ||
-    (icons[`category-${placeType}` as keyof typeof icons]
-      ? placeType
-      : undefined) ||
-    mapping[category || ""] ||
-    "landmark";
-  return <DesignIcon name={`category-${name}`} className="category-icon" />;
+  const lookup = (value?: string) => {
+    const key = String(value ?? "").trim().toLowerCase();
+    const name = mapping[key] || key;
+    return icons[`category-${name}` as keyof typeof icons] ? name : undefined;
+  };
+  const categoryName = lookup(category);
+  const placeName = lookup(placeType);
+  // A specific visual category (ski, cave, marsh, fort, volcano, ...) must
+  // override a broad semantic type. Mountain-family categories, however,
+  // must not turn a shelter/pass/trailhead into a mountain.
+  if (categoryName && !["landmark", "mountain"].includes(categoryName)) {
+    return categoryName;
+  }
+  if (placeName && placeName !== "landmark") return placeName;
+  return categoryName || placeName || "landmark";
+}
+
+export function CategoryIcon({
+  category,
+  placeType,
+}: {
+  category?: string;
+  placeType?: string;
+}) {
+  return <DesignIcon name={`category-${resolveCategoryIcon(category, placeType)}`} className="category-icon" />;
 }
