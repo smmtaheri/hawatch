@@ -42,7 +42,8 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
 ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
-را بدون تغییر ادامه می‌دهد. Home در هر دو لایه دقیقاً یک `h1` دارد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
+را بدون تغییر ادامه می‌دهد. در detail نقطه/مسیر، مقالهٔ اولیه تا دریافت موفق
+دادهٔ هوا حفظ می‌شود (شرح رفتار شکست در انتهای همین سند). Home در هر دو لایه دقیقاً یک `h1` دارد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
 و `hawatch.js`) می‌سازد تا Django به hashهای build وابسته نباشد؛ chunkهای داخلی
 همچنان hashدار هستند. چون نام این دو entry پایدار است، web Nginx آن‌ها را با
 `Cache-Control: no-store, no-cache, must-revalidate, max-age=0` پاسخ می‌دهد: browser و CDN
@@ -212,3 +213,45 @@ curl -i http://localhost/points/not-a-real-point
 catalog به‌تنهایی به build یا restart نیاز ندارد. پس از `sync_catalog --apply`
 یک Point یا Route جدید بلافاصله HTML اولیهٔ اختصاصی خود را از همین renderer
 می‌گیرد.
+
+## منابع لازم برای رندر و شکست درخواست‌ها
+
+`Disallow: /api/` و `Disallow: /admin/` حفظ شده‌اند. فقط endpointهای عمومی
+مصرف‌شده برای رندر/تعامل صفحه، استثنا دارند: فهرست points/destinations/routes،
+catalog-index، search/suggestions و forecast/forecast/day نقاط و مسیرها.
+پایان هر الگو با `$` بسته است؛ برای query یک قاعدهٔ مستقل `?*$` وجود دارد.
+slugها wildcard هستند تا همهٔ نقاط و مسیرهای فعلی و آینده پوشش داشته باشند؛
+allow عمومی `/api/v1/points/` یا `/api/v1/routes/` بدون end anchor وجود ندارد.
+حساب، login/logout/CSRF، analytics، health/status، metrics و سایر APIها همچنان
+مسدودند. Allow حق دسترسی forecast را عوض نمی‌کند؛ سیاست anonymous/session/plan
+همچنان در خود API اجرا می‌شود.
+
+مطابق [مشخصات robots گوگل](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)،
+قاعدهٔ خاص‌تر بر مسدودی کلی اولویت دارد و `$` انتهای URL را مشخص می‌کند.
+منابع لازم برای رندر نباید مسدود باشند؛ توضیح در
+[راهنمای JavaScript SEO گوگل](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+آمده است.
+
+قبل از `createRoot`، مقالهٔ معنایی SSR در حافظهٔ همان document ثبت می‌شود.
+Point و Route هنگام انتظار یا خطای نخستین درخواست هوا، آن مقاله را در
+PageShell نمایش می‌دهند؛ عنوان، توضیح، ارتفاع/اطلاعات مسیر، پیش‌بینی واقعیِ
+موجود و لینک‌های SSR از بین نمی‌روند. بعد از دریافت موفق داده، fallback حذف
+می‌شود تا محتوا و H1 تکراری نباشد. snapshot فقط به همان pathname و query تعلق
+دارد و هنگام navigation به نقطه/مسیر یا انتخاب دیگری نمایش داده نمی‌شود.
+هیچ HTML دریافتی از API به این snapshot وارد نمی‌شود؛ محتوای escaped قالب
+Django استفاده می‌شود. Vite بدون مقالهٔ SSR همان loading/error قبلی را دارد.
+
+درخواست حساب مستقلاً مدیریت می‌شود و خطای آن به وضعیت هوا منتقل نمی‌شود.
+آنالیتیکس fire-and-forget است و خطای شبکه یا حتی exception هم‌زمانِ ساخت URL،
+شناسه و fetch نیز نباید React را از کار بیندازد. مسدودی این دو منبع ممکن است
+همچنان در فهرست منابع Search Console دیده شود، ولی رندر هوا به آن‌ها وابسته نیست.
+canonical، noindex صفحات پارامتردار، sitemap، SSR بدون JavaScript و مرز اشتراک
+در این اصلاح تغییر نکرده‌اند. استثناهای production، سیاست مسدودی Stage را باز نمی‌کنند.
+
+بررسی محلی این اصلاح: ۳۴ آزمون robots/template، ۴۲ آزمون صفحات و build موفق.
+Chromium در عرض‌های ۳۹۰/۱۴۴۰ و روشن/تاریک، HTML تولیدشده توسط قالب واقعی Django
+را برای Point و Route اجرا کرد: با مسدودی همهٔ APIها، مقاله، H1 یکتا، canonical،
+robots و لینک‌های SSR حفظ شدند؛ با آزادشدن فقط forecast و retry، هوا نمایش داده
+شد و fallback حذف شد، در حالی که account و analytics همچنان مسدود بودند.
+۸ حالت مرورگر بدون overflow افقی صفحه یا خطای runtime بررسی شدند. دادهٔ API و
+محتوای نمونه کنترل‌شده بود؛ این بررسی سایت زنده یا خود Live Test گوگل نیست.

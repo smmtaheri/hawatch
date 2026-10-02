@@ -161,7 +161,7 @@ export function RoutePage() {
     ? buildRouteBackState(forecast.route, params)
     : undefined;
   return (
-    <PageShell className="route-page" back>
+    <PageShell className="route-page" back showInitialContent={!frame}>
       {status === "error" ? <ErrorState onRetry={reload} /> : null}
       {status === "loading" && !frame ? <LoadingState /> : null}
       {frame ? (

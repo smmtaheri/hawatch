@@ -13,6 +13,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../src/app/theme";
 import { AppRoutes } from "../src/app/App";
 import { buildRouteShareUrl } from "../src/lib/routeShare";
+import { captureInitialSeoContent, initialSeoContentFor } from "../src/lib/initialSeoContent";
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { copyShareLink } from "../src/lib/shareImage";
 import { CategoryIcon, WeatherIcon } from "../src/components/DesignIcon";
@@ -194,6 +195,8 @@ function defaultFetch(input: RequestInfo) {
 }
 
 beforeEach(() => {
+  window.history.replaceState({}, "", "/");
+  captureInitialSeoContent();
   authenticated = false;
   paid = false;
   error = 0;
@@ -207,6 +210,45 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("new-design pages and real day contracts", () => {
+  for (const path of ["/points/tochal", "/routes/tochal-darband"]) {
+    it(`preserves SSR through weather failure and removes it after retry: ${path}`, async () => {
+      window.history.replaceState({}, "", path);
+      const shell = document.createElement("main");
+      shell.dataset.seoInitial = "true";
+      shell.innerHTML = '<article><h1>عنوان اولیهٔ سرور</h1><p>ارتفاع و هوای ثبت‌شدهٔ مقصد</p><a href="/points/naz">نقطهٔ مرتبط</a></article>';
+      document.body.append(shell);
+      captureInitialSeoContent();
+      shell.remove();
+      expect(initialSeoContentFor(path, "?date=other")).toBeNull();
+      expect(initialSeoContentFor("/points/other", "")).toBeNull();
+      let fail = true;
+      fetchMock.mockImplementation((url) => {
+        if (String(url).includes("/auth/") || String(url).includes("/analytics/")) return Promise.reject(new Error("blocked optional endpoint"));
+        if (fail && String(url).includes("/forecast/")) return Promise.reject(new Error("blocked weather"));
+        return defaultFetch(url);
+      });
+      mount(path);
+      expect(screen.getByRole("heading", {name: "عنوان اولیهٔ سرور"})).toBeInTheDocument();
+      await screen.findByText("بارگذاری ناموفق بود");
+      expect(screen.getByRole("link", {name: "نقطهٔ مرتبط"})).toHaveAttribute("href", "/points/naz");
+      fail = false;
+      await userEvent.click(screen.getByRole("button", {name: "تلاش دوباره"}));
+      await waitFor(() => expect(document.querySelector(path.includes("/points/") ? ".hour-card" : ".point-card")).not.toBeNull());
+      expect(document.querySelector('[data-seo-fallback]')).toBeNull();
+    });
+
+    it(`renders weather while account never resolves and analytics throws: ${path}`, async () => {
+      fetchMock.mockImplementation((url) => {
+        if (String(url).includes("/auth/me/")) return new Promise(() => {});
+        if (String(url).includes("/analytics/")) throw new Error("synchronous tracking failure");
+        return defaultFetch(url);
+      });
+      mount(path);
+      await waitFor(() => expect(document.querySelector(path.includes("/points/") ? ".hour-card" : ".point-card")).not.toBeNull());
+      expect(screen.queryByText("بارگذاری ناموفق بود")).not.toBeInTheDocument();
+    });
+  }
+
   it("shows a gust-only warning in yellow details without a red hazard icon", async () => {
     const hour = clone(pointFixture.periods.noon.hourly[0]) as HourlyReading;
     Object.assign(hour, {

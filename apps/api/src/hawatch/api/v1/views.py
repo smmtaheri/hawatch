@@ -434,9 +434,19 @@ def search_suggestions_view(request):
 def robots_txt(_request):
     from django.conf import settings
 
+    # End anchors prevent these rendering exceptions from opening subresources.
+    # Query strings need a separate rule: Google's $ includes the query suffix.
+    render_paths = (
+        "/api/v1/points/", "/api/v1/destinations/", "/api/v1/routes/",
+        "/api/v1/catalog-index/", "/api/v1/search/suggestions/",
+        "/api/v1/points/*/forecast/", "/api/v1/points/*/forecast/day/",
+        "/api/v1/routes/*/forecast/", "/api/v1/routes/*/forecast/day/",
+    )
+    exceptions = "".join(f"Allow: {path}$\nAllow: {path}?*$\n" for path in render_paths)
     body = (
         "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\n"
-        f"Sitemap: {settings.PUBLIC_SITE_ORIGIN}/sitemap.xml\n"
+        + exceptions
+        + f"Sitemap: {settings.PUBLIC_SITE_ORIGIN}/sitemap.xml\n"
     )
     return HttpResponse(body, content_type="text/plain; charset=utf-8")
 

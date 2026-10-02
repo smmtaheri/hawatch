@@ -45,13 +45,17 @@ function visitorToken(): string {
 }
 
 /** Fire-and-forget first-party page-view tracking; failures never affect UI. */
-export function trackPageView(pageType: "point" | "route", slug: string, navigationId = randomToken()): void {
-  void fetch(apiUrl("analytics/pageview/").toString(), {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ page_type: pageType, slug, visitor_id: visitorToken(), navigation_id: navigationId }),
-    keepalive: true,
-  }).catch(() => undefined);
+export function trackPageView(pageType: "point" | "route", slug: string, navigationId?: string): void {
+  try {
+    void fetch(apiUrl("analytics/pageview/").toString(), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ page_type: pageType, slug, visitor_id: visitorToken(), navigation_id: navigationId ?? randomToken() }),
+      keepalive: true,
+    }).catch(() => undefined);
+  } catch {
+    // Tracking remains optional even if URL/storage/fetch throws synchronously.
+  }
 }
 
 export class ApiError extends Error {

@@ -76,7 +76,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   const dayLabel = data?.days.find((d) => d.date === selected)?.label ?? "";
   const summary = bundle?.daily_summary;
   return (
-    <PageShell className="point-page" back>
+    <PageShell className="point-page" back showInitialContent={!data}>
       {status === "error" ? <ErrorState onRetry={reload} /> : null}
       {status === "loading" && !data ? <LoadingState /> : null}
       {data ? (
