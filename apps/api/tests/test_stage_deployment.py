@@ -59,5 +59,8 @@ def test_stage_only_wrapper_never_runs_the_production_deploy_script():
 
     assert "scripts/deploy.sh" not in wrapper
     assert 'git -C "$LOCAL_DIR" push origin stage' in wrapper
-    assert '"/brand/v2/favicon.svg"' in template
-    assert '/brand/v2/favicon.svg' in index
+    for html in (template, index):
+        assert 'href="/favicon.png" sizes="96x96" type="image/png"' in html
+        assert 'href="/favicon.ico"' in html
+        assert 'href="/apple-touch-icon.png" sizes="180x180"' in html
+        assert '/brand/v2/favicon' not in html
