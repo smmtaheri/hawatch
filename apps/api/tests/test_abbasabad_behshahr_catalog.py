@@ -7,6 +7,7 @@ def test_abbasabad_has_one_lake_forest_identity_and_a_complete_hiking_route():
         (Path(__file__).parents[1] / "fixtures/catalog/abbasabad_behshahr_v1.json").read_text()
     )
     lake = catalog["weather_points"]["abbasabad-behshahr"]
+    assert len(catalog["catalog_version"]) <= 32
     assert lake["name"] == lake["page_name"] == catalog["point"]["name"]
     assert lake["seo_indexable"] and lake["kind"] == "primary"
     assert "جنگل عباس آباد" in lake["aliases"]
