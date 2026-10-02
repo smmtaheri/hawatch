@@ -1,5 +1,5 @@
 {
-  "catalog_version": "qaleh-roudkhan-v1",
+  "catalog_version": "qaleh-roudkhan-v2",
   "weather_points": {
     "qaleh-roudkhan": {
       "name": "قلعهٔ رودخان",
@@ -198,13 +198,34 @@
         "qaleh-roudkhan-mte-khani",
         "qaleh-roudkhan"
       ],
-      "distance_km": 26.02,
+      "distance_km": 25.98,
       "ascent_m": 325,
-      "timing_status": "pending",
-      "timing": null,
+      "one_way_minutes": 575,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler-terrain",
+        "version": "qaleh-roudkhan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/ab-br-bh-qlh-rwdkhn-14020312-136556523",
+          "https://www.wikiloc.com/hiking-trails/pymysh-ab-br-grdnh-dyzb-bh-qlh-rwdkhn-19508903"
+        ],
+        "cumulative_minutes": {
+          "qaleh-roudkhan-abbar-trailhead": 0,
+          "qaleh-roudkhan-gili-belanga-pass": 75,
+          "qaleh-roudkhan-takab": 130,
+          "qaleh-roudkhan-dailesar": 250,
+          "qaleh-roudkhan-mte-khani": 400,
+          "qaleh-roudkhan": 575
+        }
+      },
       "source_urls": ["https://www.wikiloc.com/hiking-trails/ab-br-bh-qlh-rwdkhn-14020312-136556523"],
       "evidence_tracks": ["tracks/qaleh-roudkhan/abbar-dizab-to-castle.gpx"],
-      "public_point_notes": {}
+      "public_point_notes": {
+        "qaleh-roudkhan-abbar-trailhead": "شروع بخش پیاده؛ دسترسی خودرویی از آب‌بر در زمان و مسافت حساب نشده است.",
+        "qaleh-roudkhan-mte-khani": "از این ییلاق تا قلعه، فرود جنگلی پرشیب است؛ زمان کمپ و توقف طولانی در تخمین نیست."
+      }
     },
     "mazgadeh_to_qaleh_roudkhan": {
       "slug": "qaleh-roudkhan-mazgadeh",
@@ -222,13 +243,32 @@
         "qaleh-roudkhan-mte-khani",
         "qaleh-roudkhan"
       ],
-      "distance_km": 16.13,
+      "distance_km": 16.16,
       "ascent_m": 1251,
-      "timing_status": "pending",
-      "timing": null,
+      "one_way_minutes": 465,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler-terrain",
+        "version": "qaleh-roudkhan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mzgdhshft-bh-qlh-rwdkhnfwmn-53609319",
+          "https://www.wikiloc.com/hiking-trails/mzgdh-syhmzgy-shft-bh-qlh-rwdkhn-10-tyr1401-106831778"
+        ],
+        "cumulative_minutes": {
+          "mazgadeh-siah-mazgi": 0,
+          "qaleh-roudkhan-suteh": 215,
+          "qaleh-roudkhan-mte-khani": 300,
+          "qaleh-roudkhan": 465
+        }
+      },
       "source_urls": ["https://www.wikiloc.com/hiking-trails/mzgdhshft-bh-qlh-rwdkhnfwmn-53609319"],
       "evidence_tracks": ["tracks/qaleh-roudkhan/mazgadeh-siahmazgi-to-castle.gpx"],
-      "public_point_notes": {}
+      "public_point_notes": {
+        "mazgadeh-siah-mazgi": "شروع پیمایش جنگلی از روستا؛ زمان‌ها برای حرکت پیاده و بدون شب‌مانی هستند.",
+        "qaleh-roudkhan-mte-khani": "فرود جنگلی پرشیب به قلعه؛ توقف و کمپ در زمان تخمینی حرکت حساب نشده است."
+      }
     }
   },
   "shared_weather_points": [],
