@@ -187,8 +187,11 @@ detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت
   cache شوند؛ header origin آن‌ها باید عبور کند. پس از deploy این تغییر، یک‌بار
   cache قدیمی همین دو URL را در CDN purge کنید تا clientهای cache‌شده فوراً
   نسخهٔ جدید را بگیرند.
-- `/robots.txt` و `/sitemap.xml` عمومی‌اند ولی پویا هستند؛ cache کوتاه (حداکثر
-  چند دقیقه) یا revalidation فعال بگذارید و آدرس کامل sitemap را نگه دارید.
+- `/robots.txt` و `/api/v1/seo/robots.txt` را اصلاً cache نکنید. هدر
+  `Cache-Control: no-store, no-cache, must-revalidate, max-age=0` مبدأ باید
+  عبور کند؛ قانون cache خودکار برای پسوند `.txt` نباید آن را override کند.
+- `/sitemap.xml` عمومی و پویاست؛ cache کوتاه (حداکثر چند دقیقه) یا revalidation
+  فعال بگذارید و آدرس کامل sitemap را نگه دارید.
 
 gateway فعلی cache داخلی ندارد و هدر no-cache Django را عبور می‌دهد؛ این قواعد
 برای CDN بیرونیِ production است و به deploy یا تغییر catalog وابسته نیست.
@@ -255,3 +258,95 @@ robots و لینک‌های SSR حفظ شدند؛ با آزادشدن فقط for
 شد و fallback حذف شد، در حالی که account و analytics همچنان مسدود بودند.
 ۸ حالت مرورگر بدون overflow افقی صفحه یا خطای runtime بررسی شدند. دادهٔ API و
 محتوای نمونه کنترل‌شده بود؛ این بررسی سایت زنده یا خود Live Test گوگل نیست.
+
+
+## یکسان‌بودن robots.txt و پاک‌سازی کش CDN
+
+منبع واحد production تابع `api.v1.views.robots_txt` است. Nginx مسیر دقیق
+`/robots.txt` را به `/api/v1/seo/robots.txt` همان سرویس `api:8000` می‌فرستد؛
+فایل جداگانه‌ای در frontend ندارد. استیج در gateway مستقل خودش `Disallow: /`
+دارد و نباید به‌عنوان origin دامنهٔ اصلی تنظیم شود. API خصوصی همچنان با
+`Disallow: /api/` مسدود است و فقط Allowهای محدودِ منابع نمایش عمومی باقی می‌مانند.
+
+Django روی هر دو آدرس robots هدر `no-store, no-cache, must-revalidate, max-age=0`
+و `Expires: 0` می‌دهد. `X-Hawatch-Robots-Version` شانزده رقم اول SHA-256 متن
+است؛ پاسخ یکسان باید نسخهٔ یکسان داشته باشد. Nginx نیز روی مسیر ریشه cache را
+خاموش و همین Cache-Control را حتی در پاسخ خطا اعمال می‌کند. متن robots تغییر
+نکرده است؛ فقط سیاست cache و مشاهده‌پذیری اصلاح شده‌اند. هدر جدید نمی‌تواند
+ورودی‌ای را که قبلاً در edge ذخیره شده، از راه دور حذف کند.
+
+### اقدام اپراتور پس از deploy
+
+در پنل CDN، دامنهٔ `hawatch.ir` را انتخاب کنید:
+
+1. در تنظیمات cache / قوانین صفحه، برای مسیر دقیق `/robots.txt` و
+   `/api/v1/seo/robots.txt` یک استثنای **عدم کش / Bypass cache** با اولویت بالاتر
+   از SMART، کش پسوند txt و هر قانون «کش همه‌چیز» بسازید. برای همهٔ user-agentها،
+   نسخهٔ موبایل/دسکتاپ، HTTP/HTTPS و تمام queryها اعمال شود. پاسخ خطا و
+   stale-on-error همین دو مسیر هم cache نشود. اگر پنل دو مسیر را جدا می‌خواهد،
+   دو قانون تعریف کنید.
+2. در originها / load balancing بررسی کنید تمام originهای دامنه به gateway
+   production روی پورت ۸۰ همان سرور فعلی برسند؛ origin قدیمی، پورت وب ۵۱۷۳ یا
+   استیج ۵۰۵۰ نباید برای این دامنه فعال باشد. اگر چند origin واقعی دارید، همین
+   نسخهٔ API و gateway باید روی همه منتشر شده باشد.
+3. در پاک‌سازی کش (Purge)، **پاک‌سازی URL مشخص در همهٔ edgeها و همهٔ variantها**
+   را انتخاب کنید و این دو URL را پاک کنید:
+
+   ```text
+   https://hawatch.ir/robots.txt
+   https://hawatch.ir/api/v1/seo/robots.txt
+   ```
+
+   اگر HTTP یا `www.hawatch.ir` ورودی کش مستقل دارد، همین دو مسیر را برای
+   `http://hawatch.ir`، `https://www.hawatch.ir` و `http://www.hawatch.ir` هم پاک کنید.
+   اگر query در cache key است، گزینهٔ تمام queryها/variantهای همان مسیر لازم است؛
+   پاک‌کردن فقط URL بدون query کافی نیست. نیازی به purge تمام سایت یا assets نیست.
+4. با GET واقعی، نه فقط HEAD، پاسخ را بررسی کنید. فایل باید ۲۰۰ و text/plain،
+   شامل Allowهای forecast و Disallow API خصوصی، دارای no-store و نسخهٔ یکسان باشد.
+   `wcdn-status: Hit` بعد از قانون Bypass و purge نباید ادامه یابد؛ نام وضعیت
+   bypass در پنل‌های مختلف متفاوت است.
+
+   ```bash
+   curl -sS -D /tmp/hawatch-robots.headers https://hawatch.ir/robots.txt -o /tmp/hawatch-robots.txt
+   cat /tmp/hawatch-robots.headers
+   wc -c /tmp/hawatch-robots.txt
+   sha256sum /tmp/hawatch-robots.txt
+   curl -sS -A Google-InspectionTool -D /tmp/hawatch-robots-google.headers https://hawatch.ir/robots.txt -o /tmp/hawatch-robots-google.txt
+   cat /tmp/hawatch-robots-google.headers
+   sha256sum /tmp/hawatch-robots-google.txt
+   ```
+
+اگر اختلاف ادامه داشت، نام CDN، تنظیم rule و اولویتش، فهرست IP/port originها،
+و خروجی دو GET بالا را بدهید؛ token، cookie و credential ارسال نکنید. برای رویداد
+مشخص، گزارش درخواست‌های `/robots.txt` حوالی همان زمان با timezone، HTTP status،
+حجم پاسخ، edge ID، cache hit/miss و origin انتخاب‌شده لازم است. نام دقیق منوها
+بدون دسترسی به پنل یا دانستن سرویس قابل تأیید نیست.
+
+### شواهد بررسی ۲ اکتبر ۲۰۲۶، پیش از این انتشار
+
+- سرور `202.133.89.120` یک API با یک Gunicorn worker داشت؛ checkout production
+  روی `dea1176` بود و Nginx فعال همان proxy فوق را داشت، بدون cache داخلی.
+- GET مستقیم gateway و API، با تکرار، ۷۰۱ بایت با SHA-256
+  `013e92fff35f964d1f7ecd992afb160bc0069cb6505a40343e3df7c0a766c507` دادند.
+- لاگ origin در ۱۸:۰۱:۰۵ تهران (۱۴:۳۱:۰۵ UTC) پاسخ ۲۰۰/۷۰۱ برای robots ثبت کرد؛
+  در بازهٔ ۱۷:۵۵ تا ۱۸:۱۰ تهران، robots دیگری روی این API/gateway ثبت نشد.
+  بنابراین دانلود گزارش‌شدهٔ ۱۸:۰۴ به این origin نرسیده است؛ منشأ دقیقِ نسخهٔ
+  ۹۷بایتی بدون لاگ CDN و تاریخچهٔ originهای پنل قطعی نیست.
+- لبه‌های WCDN شمارهٔ `9112545` (NL) و `10382347` (AU) هنگام بررسی همین نسخهٔ
+  ۷۰۱بایتی را می‌دادند. تبدیل Miss به Hit با همان request ID ثابت کرد پاسخ
+  robots واقعاً در CDN با سیاست SMART cache می‌شد و Cache-Control نداشت.
+- محتمل‌ترین منشأ تفاوت تاریخی، ورودی قدیمی در یک edge/cache variant است؛
+  originهای اضافیِ تنظیم‌شده در پنل را بدون دسترسی به پنل نمی‌توان رد کرد.
+- کش داخلی گوگل جدا از CDN است و معمولاً تا ۲۴ ساعت نگهداری می‌شود؛ پاک‌سازی
+  CDN الزاماً فوراً robots ذخیره‌شدهٔ گوگل را تغییر نمی‌دهد.
+  [مرجع رسمی کش robots گوگل](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec#caching).
+- فقط خواندن وضعیت و درخواست GET روی production انجام شد؛ deploy، restart،
+  تغییر تنظیمات سرور و purge توسط این بررسی انجام نشده است.
+
+
+تست اصلاح: ۴۱ آزمون Django شامل Allowهای عمومی، مسدودماندن API خصوصی،
+یکسان‌بودن پاسخ user-agentها و تغییر هدر نسخه با تغییر متن موفق شدند.
+`nginx -t` روی پیکربندی production موفق بود. تست عملی محلی با مبدأ کنترل‌شده
+که عمداً `public, max-age=3600` می‌داد، در ۸ حالت (URL معمولی/query، سه
+user-agent و خطای 503 مبدأ) فقط یک Cache-Control منع کش و Expires صفر داد؛
+متن پاسخ بدون تغییر عبور کرد. مبدأ تست و کانتینر موقت پس از بررسی متوقف شدند.

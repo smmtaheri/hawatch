@@ -59,6 +59,25 @@ def test_origin_and_sitemap_policy_are_unchanged():
     assert "Disallow: /admin/" in body()
 
 
+@pytest.mark.parametrize("path", ["/robots.txt", "/api/v1/seo/robots.txt"])
+@pytest.mark.parametrize("agent", ["Mozilla/5.0", "Googlebot", "Google-InspectionTool"])
+def test_robots_policy_is_identical_and_not_cacheable(path, agent):
+    from hashlib import sha256
+
+    response = robots_txt(RequestFactory().get(path, HTTP_USER_AGENT=agent))
+    assert response.content.decode() == body()
+    assert response["Cache-Control"] == "no-store, no-cache, must-revalidate, max-age=0"
+    assert response["Expires"] == "0"
+    assert response["X-Hawatch-Robots-Version"] == sha256(response.content).hexdigest()[:16]
+
+
+def test_robots_version_changes_with_policy_content():
+    first = robots_txt(RequestFactory().get("/robots.txt"))
+    with override_settings(PUBLIC_SITE_ORIGIN="https://example.test"):
+        second = robots_txt(RequestFactory().get("/robots.txt"))
+    assert first["X-Hawatch-Robots-Version"] != second["X-Hawatch-Robots-Version"]
+
+
 @pytest.mark.parametrize("kind,path", [("point","/points/naz"),("route","/routes/tochal-darband")])
 def test_server_article_and_metadata_exist_before_javascript(kind,path):
     from hawatch.modules.catalog.seo_pages import _render

@@ -448,7 +448,15 @@ def robots_txt(_request):
         + exceptions
         + f"Sitemap: {settings.PUBLIC_SITE_ORIGIN}/sitemap.xml\n"
     )
-    return HttpResponse(body, content_type="text/plain; charset=utf-8")
+    from hashlib import sha256
+
+    response = HttpResponse(body, content_type="text/plain; charset=utf-8")
+    # robots is a policy document, not a static .txt asset. Edge caches must not
+    # retain an earlier policy after a deployment, including the direct API URL.
+    response["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response["Expires"] = "0"
+    response["X-Hawatch-Robots-Version"] = sha256(response.content).hexdigest()[:16]
+    return response
 
 
 @api_view(["GET"])
