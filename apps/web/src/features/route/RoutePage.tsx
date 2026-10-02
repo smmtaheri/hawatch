@@ -289,7 +289,7 @@ export function RoutePage() {
                         pointHref={point.href}
                         ariaLabel={`${point.name} · ${point.time}`}
                         fromRoute={fromRoute}
-                        className={`point-card route-point-weather-card ${point.state === "critical" ? "severe" : ""} ${point.arrival_at && Date.parse(point.arrival_at) < Date.parse(frame.meta.current_local_time) ? "past" : ""}`}
+                        className={`point-card route-point-weather-card ${point.state === "critical" ? "severe" : ""}`}
                       >
                         <strong className="point-name">{point.name}</strong>
                         <time dateTime={point.arrival_at ?? undefined}>

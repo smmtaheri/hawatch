@@ -82,8 +82,6 @@
 
 .route-page .point-card.severe .warning{color:var(--red);width:17px;height:17px;position:absolute;margin-right:120px}
 
-.route-page .point-card.past .weather-icon{opacity:.55}
-
 .route-page .trip-summary{padding:4px 0 0}
 
 .route-page .trip-summary h2{margin:0 0 18px}
@@ -178,8 +176,6 @@
 .route-page .point-card .point-name{font-size:19px;font-weight:700;line-height:1.5;min-height:52px;color:var(--ink)}
 
 .route-page .point-card:hover{border-color:var(--accent)}
-
-.route-page .point-card.past .point-name,.route-page .point-card.past time,.route-page .point-card.past .weather-label,.route-page .point-card.past .degree,.route-page .point-card.past .wind-line{color:var(--past)}
 
 @media(min-width:1280px){.route-page .point-card{flex-basis:calc((100% - 60px)/6)}
 .route-page .hero{display:block}
