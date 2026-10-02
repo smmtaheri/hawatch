@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-khornoro-catalog-v2",
+  "catalog_version": "hawatch-khornoro-catalog-v3",
   "weather_points": {
     "khornoro": {
       "name": "قلهٔ خرونرو",
@@ -126,14 +126,19 @@
       "status": "provisional",
       "elevation_source": "waypoint محیط‌بانی در ترک primary سنگده؛ Open-Meteo GLO-90 DEM برای کنترل"
     },
-    "khornoro-sangdeh-beech-forest": {
-      "name": "جنگل راش مرسی‌سی سنگده",
-      "page_name": "جنگل راش مرسی‌سی در مسیر سنگده به خرونرو",
-      "short_label": "جنگل راش مرسی‌سی",
+    "sangdeh-beech-forest": {
+      "name": "جنگل راش سنگده",
+      "page_name": "جنگل راش سنگده",
+      "short_label": "جنگل راش سنگده",
       "place_type": "forest",
-      "aliases": ["شروع جنگل راش سنگده", "جنگل راش سنگده", "Sangdeh beech forest"],
-      "identity_summary": "جنگل راش مرسی‌سی؛ عارضهٔ واقعی و شاخص در بخش میانی مسیر سنگده",
-      "importance": "support",
+      "category_key": "forest",
+      "category": "جنگل‌های مازندران",
+      "short_category": "جنگل",
+      "region": "سنگده · مازندران",
+      "aliases": ["جنگل راش", "جنگل راش سنگده", "جنگل مرسی سی", "جنگل مرسی‌سی", "جنگل راش مرسی‌سی سنگده", "Sangdeh beech forest"],
+      "identity_summary": "جنگل راش سنگده، معروف به مرسی‌سی، مقصد مستقل طبیعت‌گردی در جنگل‌های بالادست سنگده و عارضهٔ مشترک مسیر صعود خرونرو.",
+      "importance": "primary",
+      "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
@@ -268,7 +273,7 @@
       "region": "مازندران · سوادکوه",
       "featured": false,
       "sort_order": 2,
-      "points": ["khornoro-sangdeh-village", "khornoro-sangdeh-ranger-station", "khornoro-sangdeh-beech-forest", "khornoro-sangdeh-sheepfold", "khornoro"],
+      "points": ["khornoro-sangdeh-village", "khornoro-sangdeh-ranger-station", "sangdeh-beech-forest", "khornoro-sangdeh-sheepfold", "khornoro"],
       "distance_km": 18.0,
       "ascent_m": 2320,
       "one_way_minutes": 690,
@@ -282,7 +287,7 @@
         "source_urls": ["https://www.wikiloc.com/hiking-trails/rwsty-sng-dh-t-qlh-khrwnrw-186361967", "https://www.wikiloc.com/hiking-trails/swd-qlh-khrwnrw-z-rwsty-sngdh-135869182"],
         "evidence_tracks": ["tracks/khornoro/khornoro-sangdeh-village-to-summit-primary-2024.gpx", "tracks/khornoro/khornoro-sangdeh-village-to-summit-crosscheck-2023.gpx"],
         "notes": ["ترک primary بخش دسترسی جنگلی را گزارش می‌کند؛ برای محاسبهٔ مسیر از هندسهٔ پیوسته تا قله استفاده شده است.", "مسیر طولانی و دارای شیب/زمین فنی در ارتفاع بالا است؛ route راهنمای ایمنی یا تضمین شرایط نیست."],
-        "cumulative_minutes": {"khornoro-sangdeh-village": 0, "khornoro-sangdeh-ranger-station": 90, "khornoro-sangdeh-beech-forest": 300, "khornoro-sangdeh-sheepfold": 510, "khornoro": 690}
+        "cumulative_minutes": {"khornoro-sangdeh-village": 0, "khornoro-sangdeh-ranger-station": 90, "sangdeh-beech-forest": 300, "khornoro-sangdeh-sheepfold": 510, "khornoro": 690}
       },
       "public_point_notes": {}
     },
