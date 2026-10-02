@@ -945,7 +945,6 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             parts.append(detail)
         return " · ".join(parts)
 
-    incomplete_assessment = any(not p["weather_available"] or p["data_quality"] != "complete" for p in planned)
     if summary_state != "normal" and critical_point:
         warning = max(critical_point["warnings"], key=lambda w: RANK[w["severity"]])
         state_summary = f"{critical_point['name']}، {_point_time_phrase(critical_point) or 'زمان نامشخص'}: {warning['label']}؛ {warning['reason']}."
@@ -954,8 +953,6 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         state_summary = "هشدار مشخصی در پیش‌بینی زمان رسیدن پیدا نشد؛ شرایط محلی مسیر را بررسی کنید."
         hero_status = None
         critical_point = finish
-    if incomplete_assessment:
-        state_summary += " اطلاعات ارزیابی بخشی از برنامه ناقص است."
 
     gear = []
 

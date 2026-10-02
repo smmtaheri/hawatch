@@ -7,19 +7,19 @@ from collections import Counter
 from datetime import timedelta
 from math import isfinite, sqrt
 
-POLICY_VERSION = "walking-v1"
+POLICY_VERSION = "walking-v2"
 RANK = {"normal": 0, "change": 1, "critical": 2}
 CORE_FIELDS = ("temperature_c", "wind_speed_kmh", "wind_gust_kmh",
                "precipitation_mm", "snowfall_cm", "visibility_km")
-WIND_LIMITS = {"wind_speed_kmh": (30, 50), "wind_gust_kmh": (50, 80)}
+WIND_LIMITS = (30, 45)
 
 
 def wind_severity(wind, gust):
-    levels = ["critical" if number >= red else "change" if number >= yellow else "normal"
-              for number, (yellow, red) in ((wind, WIND_LIMITS["wind_speed_kmh"]),
-                                          (gust, WIND_LIMITS["wind_gust_kmh"]))
-              if number is not None]
-    return max(levels, key=RANK.get, default="normal")
+    # Hourly mean wind controls this product warning; gust alone is not a trigger.
+    if wind is None:
+        return "normal"
+    yellow, red = WIND_LIMITS
+    return "critical" if wind >= red else "change" if wind >= yellow else "normal"
 
 
 def value(row, field):
@@ -73,20 +73,12 @@ def assess(row, records=(), *, _by_at=None):
     wind_level = wind_severity(wind, gust)
     if wind_level != "normal":
         red = wind_level == "critical"
-        metrics = [field for field, number, threshold in
-                   (("wind_speed_kmh", wind, WIND_LIMITS["wind_speed_kmh"][0]),
-                    ("wind_gust_kmh", gust, WIND_LIMITS["wind_gust_kmh"][0]))
-                   if number is not None and number >= threshold]
-        add("wind", "باد شدید" if red else "باد و تندباد قابل‌توجه",
-            "critical" if red else "change", metrics,
+        metrics = ["wind_speed_kmh"]
+        if gust is not None and gust >= wind:
+            metrics.append("wind_gust_kmh")
+        add("wind", "باد شدید" if red else "تندباد", wind_level, metrics,
             "خطر ازدست‌دادن تعادل و دشواری حرکت" if red else "برای باد، پوشش و زمان ذخیره در نظر بگیرید")
-        warnings[-1]["metric_severities"] = {
-            field: "critical" if number >= red_threshold else "change"
-            for field, number, red_threshold in
-            (("wind_speed_kmh", wind, WIND_LIMITS["wind_speed_kmh"][1]),
-             ("wind_gust_kmh", gust, WIND_LIMITS["wind_gust_kmh"][1]))
-            if field in metrics
-        }
+        warnings[-1]["metric_severities"] = {field: wind_level for field in metrics}
     chill = wind_chill(temp, wind)
     if chill is not None and chill <= -10:
         add("cold", "سرمای شدید" if chill <= -28 else "سرمای ناشی از باد",

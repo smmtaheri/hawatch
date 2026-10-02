@@ -306,7 +306,6 @@ export function RoutePage() {
                             ))}
                           </div>
                         ) : null}
-                        {point.weather_available && point.data_quality === "partial" ? <small className="weather-data-note">اطلاعات ارزیابی ناقص است</small> : null}
                         <div className="degree">
                           <bdi>{numberLabel(point.temp, "°")}</bdi>
                         </div>

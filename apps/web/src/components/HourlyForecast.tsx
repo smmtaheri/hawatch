@@ -113,12 +113,6 @@ export function HourlyForecast({
             جزئیات تخصصی <bdi dir="ltr">{selected.time}</bdi>
             <small>{dayLabel}</small>
           </h2>
-          {selected.data_quality === "partial" ? <p className="weather-data-note">اطلاعات ارزیابی این ساعت ناقص است.</p> : null}
-          <div className="weather-warning-reasons">
-            {selected.warnings?.map(warning => (
-              <p key={warning.code} className={warningClass(warning.severity)}>{warning.label}: {warning.reason}</p>
-            ))}
-          </div>
           <div className="metrics">
             {metrics.map(([label, value, unit, field]) => (
               <div className="metric" key={label}>

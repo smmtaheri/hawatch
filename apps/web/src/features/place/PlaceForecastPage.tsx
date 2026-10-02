@@ -14,6 +14,7 @@ import {
 import { WeatherIcon } from "../../components/DesignIcon";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { openAccountLogin } from "../../components/Header";
+import { shortDaySummary } from "../../lib/shortDaySummary";
 import { usePageTitle } from "../../lib/pageTitle";
 import { classifyAllPeriods } from "../../lib/periodState";
 import { scrollToDetailHero } from "../../lib/detailEntryScroll";
@@ -117,16 +118,9 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                   </div>
                   <p className="day-summary-line">
                     <span className="day-summary-label">{dayLabel} · </span>
-                    <span>{summary.condition}</span>
-                    {summary.warnings?.map((warning, index) => (
-                      <span key={`${warning.code}:${warning.start_at}:${index}`} className={warning.severity === "critical" ? "risk-red" : "risk-yellow"}>
-                        {" · "}{warning.label}{" "}
-                        <bdi>{new Date(warning.start_at).toLocaleTimeString("fa-IR", {timeZone: "Asia/Tehran", hour: "2-digit", minute: "2-digit", hour12: false})}</bdi>
-                        {" تا "}
-                        <bdi>{new Date(warning.end_at).toLocaleTimeString("fa-IR", {timeZone: "Asia/Tehran", hour: "2-digit", minute: "2-digit", hour12: false})}</bdi>
-                      </span>
-                    ))}
-                    {!summary.complete ? <span> · دادهٔ روز ناقص است</span> : null}
+                    <span className={summary.severity === "critical" ? "risk-red" : summary.severity === "change" ? "risk-yellow" : undefined}>
+                      {shortDaySummary(summary.condition, summary.warnings)}
+                    </span>
                   </p>
                 </>
               ) : (

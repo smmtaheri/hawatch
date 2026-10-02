@@ -23,7 +23,8 @@ def row(at=AT, **kwargs):
 
 
 @pytest.mark.parametrize("wind,gust,severity", [(29,49,"normal"),(30,49,"change"),
-    (29,50,"change"),(49,79,"change"),(50,79,"critical"),(20,80,"critical")])
+    (29,80,"normal"),(30,80,"change"),(44.9,100,"change"),(45,79,"critical"),
+    (20,100,"normal"),(None,100,"normal"),(45,None,"critical")])
 def test_exact_wind_boundaries(wind,gust,severity):
     assert assess(row(wind_speed_kmh=wind,wind_gust_kmh=gust))["severity"] == severity
 
@@ -40,12 +41,15 @@ def test_lightning_is_red_even_without_wind_or_rain():
     assert risk["warnings"][0]["metrics"] == []
 
 
-def test_only_contributing_wind_measurement_is_highlighted():
-    risk = assess(row(wind_gust_kmh=80))
-    assert risk["warnings"][0]["metrics"] == ["wind_gust_kmh"]
-    risk = assess(row(wind_speed_kmh=30, wind_gust_kmh=80))
+def test_gust_severity_follows_mean_wind_and_never_overrides_it():
+    assert not assess(row(wind_gust_kmh=100))["warnings"]
+    risk = assess(row(wind_speed_kmh=30, wind_gust_kmh=100))
     assert risk["warnings"][0]["metric_severities"] == {
-        "wind_speed_kmh": "change", "wind_gust_kmh": "critical",
+        "wind_speed_kmh": "change", "wind_gust_kmh": "change",
+    }
+    risk = assess(row(wind_speed_kmh=45, wind_gust_kmh=80))
+    assert risk["warnings"][0]["metric_severities"] == {
+        "wind_speed_kmh": "critical", "wind_gust_kmh": "critical",
     }
 
 
@@ -95,7 +99,7 @@ def test_missing_inputs_do_not_become_safe_values():
 
 
 def test_daily_intervals_merge_only_adjacent_hours_and_omit_elapsed_today():
-    rows=assess_records([row(AT+timedelta(hours=i),wind_gust_kmh=60) for i in (0,1,3)])
+    rows=assess_records([row(AT+timedelta(hours=i),wind_speed_kmh=35,wind_gust_kmh=60) for i in (0,1,3)])
     intervals=warning_intervals(rows)
     assert len(intervals)==2
     assert intervals[0]["end_at"]==(AT+timedelta(hours=2)).isoformat()

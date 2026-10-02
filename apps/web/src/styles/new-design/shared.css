@@ -152,8 +152,6 @@
 .route-page .point-card{position:relative}
 .route-page .point-card .hazard{margin:0;left:6px;top:7px;width:16px;height:16px}
 .route-weather-warning{font-size:13px;line-height:1.8;max-width:100%;overflow-wrap:anywhere}
-.weather-data-note{font-size:12px;line-height:1.8;color:var(--secondary);max-width:100%;overflow-wrap:anywhere}
-.weather-warning-reasons p{font-size:14px;line-height:1.9;overflow-wrap:anywhere}
 .point-page .day-summary-line{white-space:normal;overflow-wrap:anywhere;line-height:1.9}
 @media(max-width:767px){
  .point-page .summary{padding-top:20px}

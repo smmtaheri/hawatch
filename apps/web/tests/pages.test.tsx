@@ -249,13 +249,13 @@ describe("new-design pages and real day contracts", () => {
     });
   }
 
-  it("shows a gust-only warning in yellow details without a red hazard icon", async () => {
+  it("shows a mean-wind warning in yellow details without narrative or a red hazard icon", async () => {
     const hour = clone(pointFixture.periods.noon.hourly[0]) as HourlyReading;
     Object.assign(hour, {
-      condition: "ابری", weather_code: "overcast", wind_speed_kmh: 15,
+      condition: "ابری", weather_code: "overcast", wind_speed_kmh: 30,
       wind_gust_kmh: 50, state: "change", severity: "change", is_past: true,
       wind_alert: { code: "gale", label: "تندباد", severity: "change" },
-      warnings: [{code: "wind", label: "باد و تندباد قابل‌توجه", severity: "change", metrics: ["wind_gust_kmh"], reason: "پوشش مناسب لازم است", start_at: "2026-10-02T12:00:00+03:30", end_at: "2026-10-02T13:00:00+03:30", scope: "weather", rule_version: "walking-v1"}],
+      warnings: [{code: "wind", label: "باد و تندباد قابل‌توجه", severity: "change", metrics: ["wind_speed_kmh", "wind_gust_kmh"], reason: "پوشش مناسب لازم است", start_at: "2026-10-02T12:00:00+03:30", end_at: "2026-10-02T13:00:00+03:30", scope: "weather", rule_version: "walking-v1"}],
     });
     render(<HourlyForecast hours={[hour]} />);
     const trigger = screen.getByRole("button", { name: "جزئیات تخصصی" });
@@ -264,7 +264,9 @@ describe("new-design pages and real day contracts", () => {
     expect(screen.getByText("ابری")).not.toHaveClass("risk-yellow", "risk-red");
     await userEvent.click(trigger);
     expect(screen.getByText("تندباد")).toHaveClass("risk-yellow");
-    expect(screen.getByText("باد", { selector: ".metric span" })).not.toHaveClass("risk-yellow");
+    expect(screen.getByText("باد", { selector: ".metric span" })).toHaveClass("risk-yellow");
+    expect(screen.queryByText(/پوشش مناسب لازم است/)).not.toBeInTheDocument();
+    expect(document.querySelector(".weather-data-note")).toBeNull();
   });
 
   it("keeps the day label neutral while coloring the weather summary", async () => {
@@ -275,6 +277,9 @@ describe("new-design pages and real day contracts", () => {
     expect(label).not.toHaveClass("risk-yellow", "risk-red");
     expect(document.querySelector(".day-summary-line")).not.toHaveClass("risk-yellow", "risk-red");
     expect(document.querySelector(".day-summary-line > .risk-red")).not.toBeNull();
+    const summary = document.querySelector(".day-summary-line")?.textContent ?? "";
+    expect(summary.replace("·", "").trim().split(/\s+/).length).toBeLessThanOrEqual(4);
+    expect(summary).not.toMatch(/ناقص|تا|\d/);
   });
 
   it("removes expired membership weather before revalidation without losing day controls", async () => {

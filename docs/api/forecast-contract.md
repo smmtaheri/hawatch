@@ -249,7 +249,7 @@ endpointهای قبلی `forecast/` باقی می‌مانند. دو endpoint خ
 
 `GET /api/v1/routes/?query=...` فهرست واقعی مسیرهای فعال را برمی‌گرداند. `destinations/?page=...&query=...` جست‌وجوی مستقل مقصدها را انجام می‌دهد. `search/suggestions/?q=...&include_routes=1` مسیرها را با `type: route` کنار مقصدهای `type: point` اضافه می‌کند؛ حذف `include_routes` قرارداد قدیمی فقط نقطه را حفظ می‌کند. `auth/me/` فیلدهای اختیاری `expires_at` و `days_remaining` را از همان عضویت مؤثر فعال می‌گیرد؛ رایگان/بدون انقضا مقدار null دارند. مدل اشتراک، قیمت و پرداخت تغییر نکرده است.
 
-## ارزیابی مشترک خطر walking-v1
+## ارزیابی مشترک خطر walking-v2
 
 خوانش‌های نقطه و مسیر `warnings`، `data_quality`، `missing_inputs` و
 `policy_version` دارند. شاخص‌های `wind_chill_c` و `heat_index_c` از دما/باد
