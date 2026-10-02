@@ -1,0 +1,145 @@
+/* Shared visual roles across the handoff pages. Theme colors live in base.css. */
+:root {
+  --card-radius: 14px;
+  --control-radius: 10px;
+  --page-title-size: 40px;
+  --page-description-size: 20px;
+  --section-title-size: 25px;
+  --card-title-size: 18px;
+  --weather-time-size: 24px;
+  --weather-condition-size: 20px;
+  --weather-degree-size: 46px;
+  --weather-wind-size: 16px;
+  --weather-icon-size: 70px;
+}
+
+:is(.hour-card, .point-card, .popular-card, .catalog-row, .plan-card, .search-field) {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+}
+
+.route-page .point-card,
+.route-page .trip-summary {
+  border-radius: var(--card-radius);
+}
+
+.search-field { backdrop-filter: none; }
+
+.hero-title h1,
+.route-page .hero-title h1,
+.home-hero h1,
+.catalog-hero h1 {
+  font-size: var(--page-title-size);
+  line-height: 1.6;
+  letter-spacing: normal;
+}
+
+.hero-title p,
+.home-hero p,
+.catalog-hero p {
+  color: var(--secondary);
+  font-size: var(--page-description-size);
+  line-height: 1.7;
+}
+
+.popular h2,
+.home-results h2,
+.routes h2,
+.plan-title h2,
+.route-page .departure h2,
+.route-page .points h2,
+.route-page .route-grid > .trip-summary h2 {
+  font-size: var(--section-title-size);
+  line-height: 1.5;
+}
+
+.popular-card strong,
+.catalog-row strong,
+.route-page .route-grid .point-card .point-name {
+  font-size: var(--card-title-size);
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.route-page .point-card time,
+.hour-card .stamp {
+  font-size: var(--weather-time-size);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.route-page .point-card time { color: var(--ink); }
+
+.route-page .route-grid .point-card .weather-label,
+.hour-card .weather-label {
+  font-size: var(--weather-condition-size);
+  min-height: 42px;
+  line-height: 1.55;
+}
+
+.route-page .point-card .degree,
+.hour-card .degree {
+  font-size: var(--weather-degree-size);
+  line-height: 1.45;
+}
+
+.route-page .point-card .wind-line,
+.hour-card .wind-line { font-size: var(--weather-wind-size); }
+
+.route-page .point-card .weather-icon,
+.hour-card > .weather-icon {
+  width: var(--weather-icon-size);
+  height: var(--weather-icon-size);
+}
+
+.route-page .point-card .wind-line .icon,
+.hour-card .wind-line .icon { width: 27px; height: 27px; }
+
+.day.selected,
+.route-page .route-day.selected,
+.period.selected { color: var(--ink); opacity: 1; }
+
+.day,
+.route-page .route-day,
+.period,
+.route-page .speed button,
+.search-field button,
+.route-page .share-actions button,
+.route-page .change-route,
+.all-routes,
+.outline-button,
+.primary-button,
+.nav-button,
+.disabled-purchase { border-radius: var(--control-radius); }
+
+.plan-card .subscription-plan-access { color: var(--secondary); }
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root { --page-title-size: 36px; }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-title-size: 27px;
+    --page-description-size: 14px;
+    --section-title-size: 21px;
+    --card-title-size: 15px;
+    --weather-time-size: 17px;
+    --weather-condition-size: 13px;
+    --weather-degree-size: 34px;
+    --weather-wind-size: 12px;
+    --weather-icon-size: 49px;
+  }
+
+  .route-page .route-grid .point-card .weather-label,
+  .hour-card .weather-label { min-height: 35px; }
+
+  .route-page .point-card .wind-line .icon,
+  .hour-card .wind-line .icon { width: 14px; height: 14px; }
+}
+
+@media (max-width: 359px) {
+  :root { --page-title-size: 24px; }
+}

@@ -6,6 +6,7 @@ import "./styles/new-design/base.css";
 import "./styles/new-design/route.css";
 import "./styles/new-design/site.css";
 import "./styles/new-design/integration.css";
+import "./styles/new-design/shared.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

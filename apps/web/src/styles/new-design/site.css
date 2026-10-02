@@ -637,10 +637,6 @@ dialog.share-dialog{margin:auto;border-radius:20px;padding:20px;max-height:calc(
 
  .route-page .route-grid .time-slider input:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 
- :root:not([data-theme=dark]) .route-page .route-grid .route-selectors,
- :root:not([data-theme=dark]) .route-page .route-grid .departure,
- :root:not([data-theme=dark]) .route-page .route-grid .points{--panel:rgba(237,247,253,.42);--accent-soft:rgba(164,234,240,.44);--border:rgba(73,122,155,.30)}
-
 }
 
 @media(max-width:359px){
