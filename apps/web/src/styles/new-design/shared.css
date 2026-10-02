@@ -153,6 +153,15 @@
 .route-page .point-card .hazard{margin:0;left:6px;top:7px;width:16px;height:16px}
 .route-weather-warning{font-size:13px;line-height:1.8;max-width:100%;overflow-wrap:anywhere}
 .point-page .day-summary-line{white-space:normal;overflow-wrap:anywhere;line-height:1.9}
+@media(min-width:1024px){
+ .point-page .point-hero{display:grid;grid-template-columns:minmax(0,880px) minmax(260px,320px);gap:64px;justify-content:normal}
+ .point-page .summary{max-width:none;min-width:0}
+ .point-page .summary-weather{justify-content:flex-end}
+ .point-page .temperature-stat:last-child{align-items:flex-end;text-align:right}
+}
+@media(min-width:1024px) and (max-width:1279px){
+ .point-page .point-hero{grid-template-columns:minmax(0,1fr) 260px;gap:40px}
+}
 @media(max-width:767px){
  .point-page .summary{padding-top:20px}
  .point-page .summary .day-summary-line{position:static;max-width:48%;margin:0 12px 0 auto;text-align:left}
