@@ -11,6 +11,10 @@ import json
 
 from django.conf import settings
 
+from hawatch.integrations.weather.hazards import (
+    assess_records, warning_intervals, representative_record, POLICY_VERSION, RANK, assessment,
+)
+
 from hawatch.common.time import (
     ARRIVAL_FORECAST_TOLERANCE_MINUTES, PERIOD_IDS, SPEED_TIME_FACTORS,
     localize_dt, now_tehran, paced_duration_minutes, planner_period_payload,
@@ -20,7 +24,6 @@ from hawatch.modules.forecasts.models import ForecastRecord
 from .serializers import (
     _hourly_for_period, _reading_for_period_summary, _records_for_day,
     meta_base, point_forecast, reading_payload, route_forecast, serialize_route,
-    wind_alert_payload, record_severity,
 )
 
 
@@ -28,7 +31,7 @@ def _revision(records, access, *, identity):
     # Every read returns the revisions actually used, including partial ingest
     # and Admin entitlement changes. No public or persistent weather cache.
     stamp = [(row.pk, row.generated_at.isoformat(), row.forecast_at.isoformat()) for row in records]
-    return sha256(json.dumps([identity, stamp, access.payload(), access.expires_at.isoformat() if access.expires_at else None], sort_keys=True).encode()).hexdigest()
+    return sha256(json.dumps([POLICY_VERSION, identity, stamp, access.payload(), access.expires_at.isoformat() if access.expires_at else None], sort_keys=True).encode()).hexdigest()
 
 
 def point_day_bundle(point, *, selected_date, period, access):
@@ -46,22 +49,19 @@ def point_day_bundle(point, *, selected_date, period, access):
             "partial": len(hourly) < 3,
         }
     temperatures = [row.apparent_temperature_c for row in records if row.apparent_temperature_c is not None]
-    rank = {"normal": 0, "change": 1, "critical": 2}
-    worst = max(records, key=lambda row: rank[record_severity(row)], default=None)
-    wind_alert_record = max(
-        (row for row in records if wind_alert_payload(row)),
-        key=lambda row: rank[wind_alert_payload(row)["severity"]],
-        default=None,
-    )
+    representative = representative_record(records)
+    intervals = warning_intervals(records, now=local if selected_date == local.date() else None)
     summary = {
         "apparent_min_c": min(temperatures) if temperatures else None,
         "apparent_max_c": max(temperatures) if temperatures else None,
-        "condition": worst.condition_label if worst else "پیش‌بینی این روز در دسترس نیست",
-        "severity": record_severity(worst) if worst else "normal",
-        "wind_alert": wind_alert_payload(wind_alert_record) if wind_alert_record else None,
-        "weather_code": worst.weather_code if worst else None,
-        "forecast_at": worst.forecast_at.isoformat() if worst else None,
-        "complete": len({row.forecast_at for row in records}) >= 24,
+        "condition": representative.condition_label if representative else "پیش‌بینی این روز در دسترس نیست",
+        "severity": max((w["severity"] for w in intervals), key=RANK.get, default="normal"),
+        "warnings": intervals,
+        "wind_alert": None,
+        "policy_version": POLICY_VERSION,
+        "weather_code": representative.weather_code if representative else None,
+        "forecast_at": representative.forecast_at.isoformat() if representative else None,
+        "complete": len({row.forecast_at for row in records}) >= 24 and all(assessment(row)["data_quality"] == "complete" for row in records),
     }
     base.update({"periods": periods, "daily_summary": summary,
                  "data_revision": _revision(records, access, identity=point.slug),
@@ -84,13 +84,13 @@ def route_day_bundle(route, *, selected_date, period, start_minutes, speed, acce
     tolerance = timedelta(minutes=ARRIVAL_FORECAST_TOLERANCE_MINUTES)
     start_at = localize_dt(selected_date, 0)
     entitlement_end = localize_dt(access.available_through + timedelta(days=1), 0)
-    end_at = min(start_at + timedelta(minutes=max(slots) + max_duration) + tolerance, entitlement_end)
+    end_at = min(start_at + timedelta(minutes=max(slots) + max_duration) + tolerance + timedelta(hours=2), entitlement_end)
     point_ids = {point.weather_point_id for point in points if point.weather_point_id}
     if route.target_weather_point_id:
         point_ids.add(route.target_weather_point_id)
     qs = ForecastRecord.objects.filter(
         weather_point_id__in=point_ids,
-        forecast_at__gte=start_at - tolerance, forecast_at__lte=end_at,
+        forecast_at__gte=start_at - tolerance - timedelta(hours=23), forecast_at__lte=end_at,
         forecast_at__lt=entitlement_end,
     ).order_by("forecast_at", "pk")
     if not settings.DEMO_DATA_ENABLED:
@@ -102,6 +102,8 @@ def route_day_bundle(route, *, selected_date, period, start_minutes, speed, acce
         # never widened by forecast matching or midnight tolerance.
         if access.status_for(record.forecast_at.astimezone(local.tzinfo).date()) == "available":
             by_point[record.weather_point_id].append(record)
+    for rows in by_point.values():
+        assess_records(rows)
     readings = {}
 
     def closest(wp, target):
@@ -127,7 +129,7 @@ def route_day_bundle(route, *, selected_date, period, start_minutes, speed, acce
     plans = {}
     point_fields = (
         "arrival_minutes", "arrival_at", "time", "weather_available", "forecast_at",
-        "temp", "wind", "icon", "condition", "state", "weather_code", "is_day",
+        "temp", "wind", "icon", "condition", "state", "weather_code", "is_day", "warnings", "data_quality",
     )
     for key, spec in periods.items():
         for pace in SPEED_TIME_FACTORS:

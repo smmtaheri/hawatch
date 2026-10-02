@@ -248,3 +248,18 @@ endpointهای قبلی `forecast/` باقی می‌مانند. دو endpoint خ
 هر پاسخ `data_revision` مشتق از رکوردهای واقعاً خوانده‌شده و سطح دسترسی و، برای مسیر، timing version دارد. `cache_max_age_seconds` حداکثر ۳۰۰ ثانیه است. cache فقط در حافظهٔ runtime مرورگر است، به identity و روز و epoch احراز هویت وابسته است، درخواست‌های هم‌زمان را ادغام می‌کند و پاسخ دیررس حساب قبلی را ذخیره نمی‌کند. اولین روز resolved با URL بدون query و تاریخ واقعی alias مشترک دارد. login/logout همهٔ cache را حذف می‌کند؛ به‌روزرسانی provider یا دسترسی مشاهده‌شده، روزهای قدیمی را باطل می‌کند. عمر cache در مرز ساعت تهران یا `cache_expires_at` (انقضای واقعی عضویت)، هرکدام زودتر باشد، پایان می‌یابد و focus/interval کوتاه refresh را بررسی می‌کند. تغییر بازه، details، ساعت و سرعت هیچ fetch هوا انجام نمی‌دهد. reload کامل مرورگر cache حافظه را پاک می‌کند؛ تغییر ingest/Admin در حساب بدون event تا refresh بعدی، حداکثر پنج دقیقه، دیده می‌شود.
 
 `GET /api/v1/routes/?query=...` فهرست واقعی مسیرهای فعال را برمی‌گرداند. `destinations/?page=...&query=...` جست‌وجوی مستقل مقصدها را انجام می‌دهد. `search/suggestions/?q=...&include_routes=1` مسیرها را با `type: route` کنار مقصدهای `type: point` اضافه می‌کند؛ حذف `include_routes` قرارداد قدیمی فقط نقطه را حفظ می‌کند. `auth/me/` فیلدهای اختیاری `expires_at` و `days_remaining` را از همان عضویت مؤثر فعال می‌گیرد؛ رایگان/بدون انقضا مقدار null دارند. مدل اشتراک، قیمت و پرداخت تغییر نکرده است.
+
+## ارزیابی مشترک خطر walking-v1
+
+خوانش‌های نقطه و مسیر `warnings`، `data_quality`، `missing_inputs` و
+`policy_version` دارند. شاخص‌های `wind_chill_c` و `heat_index_c` از دما/باد
+و دما/رطوبت محاسبه می‌شوند؛ apparent_temperature جایگزین آن‌ها نیست.
+`state`/`severity` از موتور خطر مستقل از نام آسمان و severity قدیمی ذخیره‌شده
+می‌آیند. `warnings[].metrics` و `metric_severities` تعیین می‌کنند کدام عدد
+در جزئیات رنگ بگیرد. ناموجودها null هستند و data_quality=partial دارند.
+
+`daily_summary.condition` هوای غالب است؛ `warnings` بازه‌های پیوستهٔ خطر
+با start_at/end_at است. خلاصهٔ امروز خطرهای کاملاً گذشته را کنار می‌گذارد.
+`complete` علاوه بر ۲۴ ساعت یکتا، ورودی‌های اصلی کامل را لازم دارد.
+برنامه‌های مختلف مسیر warnings و data_quality همان خوانش زمان رسیدن را
+حفظ می‌کنند. حدود و محدودیت‌ها در [weather-warnings.md](../weather-warnings.md) آمده‌اند.

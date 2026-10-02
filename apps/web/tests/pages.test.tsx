@@ -211,8 +211,9 @@ describe("new-design pages and real day contracts", () => {
     const hour = clone(pointFixture.periods.noon.hourly[0]) as HourlyReading;
     Object.assign(hour, {
       condition: "ابری", weather_code: "overcast", wind_speed_kmh: 15,
-      wind_gust_kmh: 45, state: "change", severity: "change", is_past: true,
+      wind_gust_kmh: 50, state: "change", severity: "change", is_past: true,
       wind_alert: { code: "gale", label: "تندباد", severity: "change" },
+      warnings: [{code: "wind", label: "باد و تندباد قابل‌توجه", severity: "change", metrics: ["wind_gust_kmh"], reason: "پوشش مناسب لازم است", start_at: "2026-10-02T12:00:00+03:30", end_at: "2026-10-02T13:00:00+03:30", scope: "weather", rule_version: "walking-v1"}],
     });
     render(<HourlyForecast hours={[hour]} />);
     const trigger = screen.getByRole("button", { name: "جزئیات تخصصی" });

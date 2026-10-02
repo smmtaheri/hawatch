@@ -88,6 +88,9 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 سناریوی کامل backup، به‌روزرسانی backup و restore اضطراری روی سرور جدید در
 [`docs/backup-restore.md`](docs/backup-restore.md) مستند شده است.
 
+قرارداد رنگ، مرزهای عددی، دادهٔ ناقص و محدودیت هشدارهای مقصد و مسیر در
+[docs/weather-warnings.md](docs/weather-warnings.md) مستند شده است.
+
 ## محیط Stage
 
 طراحی جدید برنچ `stage` در `main` ادغام شده و از این پس سایت اصلی روی همان طراحی

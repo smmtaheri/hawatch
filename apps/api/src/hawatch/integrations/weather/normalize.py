@@ -5,6 +5,8 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 from math import asin, cos, isfinite, radians, sin, sqrt
 from typing import Any
+from types import SimpleNamespace
+from hawatch.integrations.weather.hazards import assess_records, wind_severity
 from zoneinfo import ZoneInfo
 
 from hawatch.integrations.weather.schemas import NormalizedReading
@@ -20,31 +22,31 @@ WMO_MAP: dict[int, tuple[str, str, str, str]] = {
     0: ("clear", "صاف", "☼", "normal"),
     1: ("mainly-clear", "عمدتاً صاف", "☼", "normal"),
     2: ("partly-cloudy", "نیمه‌ابری", "◒", "normal"),
-    3: ("overcast", "ابری", "☁", "change"),
-    45: ("fog", "مه", "☁", "change"),
-    48: ("fog", "مه یخ‌زده", "☁", "change"),
-    51: ("drizzle", "نم‌نم باران", "☂", "change"),
-    53: ("drizzle", "نم‌نم باران", "☂", "change"),
-    55: ("drizzle", "نم‌نم باران", "☂", "critical"),
-    56: ("freezing-drizzle", "نم‌نم یخ‌زده", "☂", "critical"),
-    57: ("freezing-drizzle", "نم‌نم یخ‌زده", "☂", "critical"),
-    61: ("rain", "باران", "☂", "change"),
-    63: ("rain", "باران", "☂", "critical"),
-    65: ("rain", "باران شدید", "☂", "critical"),
-    66: ("freezing-rain", "باران یخ‌زده", "☂", "critical"),
-    67: ("freezing-rain", "باران یخ‌زده", "☂", "critical"),
-    71: ("snow", "برف", "❄", "critical"),
-    73: ("snow", "برف", "❄", "critical"),
-    75: ("snow", "برف شدید", "❄", "critical"),
-    77: ("snow", "دانه‌برف", "❄", "critical"),
-    80: ("shower", "رگبار", "☂", "critical"),
-    81: ("shower", "رگبار", "☂", "critical"),
-    82: ("shower", "رگبار شدید", "☂", "critical"),
-    85: ("snow", "رگبار برف", "❄", "critical"),
-    86: ("snow", "رگبار برف", "❄", "critical"),
-    95: ("thunder", "رعدوبرق", "⚡", "critical"),
-    96: ("thunder", "رعدوبرق با تگرگ", "⚡", "critical"),
-    99: ("thunder", "رعدوبرق با تگرگ", "⚡", "critical"),
+    3: ("overcast", "ابری", "☁", "normal"),
+    45: ("fog", "مه", "☁", "normal"),
+    48: ("fog", "مه یخ‌زده", "☁", "normal"),
+    51: ("drizzle", "نم‌نم باران", "☂", "normal"),
+    53: ("drizzle", "نم‌نم باران", "☂", "normal"),
+    55: ("drizzle", "نم‌نم باران", "☂", "normal"),
+    56: ("freezing-drizzle", "نم‌نم یخ‌زده", "☂", "normal"),
+    57: ("freezing-drizzle", "نم‌نم یخ‌زده", "☂", "normal"),
+    61: ("rain", "باران", "☂", "normal"),
+    63: ("rain", "باران", "☂", "normal"),
+    65: ("rain", "باران شدید", "☂", "normal"),
+    66: ("freezing-rain", "باران یخ‌زده", "☂", "normal"),
+    67: ("freezing-rain", "باران یخ‌زده", "☂", "normal"),
+    71: ("snow", "برف", "❄", "normal"),
+    73: ("snow", "برف", "❄", "normal"),
+    75: ("snow", "برف شدید", "❄", "normal"),
+    77: ("snow", "دانه‌برف", "❄", "normal"),
+    80: ("shower", "رگبار", "☂", "normal"),
+    81: ("shower", "رگبار", "☂", "normal"),
+    82: ("shower", "رگبار شدید", "☂", "normal"),
+    85: ("snow", "رگبار برف", "❄", "normal"),
+    86: ("snow", "رگبار برف", "❄", "normal"),
+    95: ("thunder", "رعدوبرق", "⚡", "normal"),
+    96: ("thunder", "رعدوبرق با تگرگ", "⚡", "normal"),
+    99: ("thunder", "رعدوبرق با تگرگ", "⚡", "normal"),
 }
 
 
@@ -55,13 +57,12 @@ def map_weather_code(code: int | float | None, *, hour: int, wind_kmh: int, gust
     latter as the condition shown to users, while still escalating severity so
     route and decision cards can warn about strong wind.
     """
-    raw = int(code or 0)
-    weather_code, label, icon, severity = WMO_MAP.get(raw, ("unknown", "نامشخص", "◒", "change"))
+    raw = int(code) if code is not None else None
+    weather_code, label, icon, severity = WMO_MAP.get(raw, ("unknown", "نامشخص", "◒", "normal"))
     if raw == 0 and hour >= 19:
         weather_code, label, icon = "clear-night", "صاف", "☾"
 
-    if (wind_kmh >= 22 or gust_kmh >= 40) and severity == "normal":
-        severity = "change"
+    severity = "critical" if raw in (95, 96, 99) else wind_severity(wind_kmh, gust_kmh)
     return weather_code, label, icon, severity
 
 
@@ -85,17 +86,20 @@ def normalize_point_hourly(
     rows: list[dict[str, Any]] = []
     for index, stamp in enumerate(times):
         forecast_at = parse_local_time(stamp)
-        temp = _num(hourly.get("temperature_2m"), index, default=0.0)
+        temp = _optional_int(hourly.get("temperature_2m"), index)
         apparent = _optional_int(hourly.get("apparent_temperature"), index)
         # ForecastRecord requires a real apparent reading. Mark this hour
         # unavailable by omitting it instead of substituting ordinary temperature.
-        if apparent is None:
+        if apparent is None or temp is None:
             continue
         precip_prob = int(round(_num(hourly.get("precipitation_probability"), index, default=0.0)))
         precip_mm = _num(hourly.get("precipitation"), index, default=0.0)
         rain_mm = _num(hourly.get("rain"), index, default=0.0)
         snowfall = _num(hourly.get("snowfall"), index, default=0.0)
-        code = _num(hourly.get("weather_code"), index, default=0.0)
+        code = _optional_int(hourly.get("weather_code"), index)
+        humidity = _optional_int(hourly.get("relative_humidity_2m"), index)
+        if humidity is not None and not 0 <= humidity <= 100:
+            humidity = None
         visibility_m = _num(hourly.get("visibility"), index, default=10000.0)
         wind = int(round(_num(hourly.get("wind_speed_10m"), index, default=0.0)))
         gust = int(round(_num(hourly.get("wind_gusts_10m"), index, default=float(wind))))
@@ -118,7 +122,7 @@ def normalize_point_hourly(
             "precipitation_mm": round(max(0.0, precip_mm), 1),
             "rain_mm": round(max(0.0, rain_mm), 1),
             "snowfall_cm": round(max(0.0, snowfall), 1),
-            "visibility_km": round(max(0.0, visibility_m / 1000.0), 1),
+            "visibility_km": round(max(0.0, visibility_m / 1000.0), 2),
             "cloud_cover_pct": cloud_cover,
             "uv_index": uv_index,
             "freezing_level_m": freezing_level,
@@ -133,10 +137,21 @@ def normalize_point_hourly(
                 "valid_to": interval_end,
                 "generated_at": generated_at,
                 "snowfall_cm": reading["snowfall_cm"],
-                "wmo_code": int(code),
-                "fields_unavailable": [
+                "wmo_code": code,
+                "relative_humidity_pct": humidity,
+                "fields_unavailable": [field for field, provider_field in (
+                    ("wind_speed_kmh", "wind_speed_10m"),
+                    ("wind_gust_kmh", "wind_gusts_10m"),
+                    ("precipitation_mm", "precipitation"),
+                    ("rain_mm", "rain"),
+                    ("snowfall_cm", "snowfall"),
+                    ("visibility_km", "visibility"),
+                    ("precipitation_probability", "precipitation_probability"),
+                ) if _optional_int(hourly.get(provider_field), index) is None] + [
                     field
                     for field, value in (
+                        ("wmo_code", code),
+                        ("relative_humidity_pct", humidity),
                         ("cloud_cover_pct", cloud_cover),
                         ("uv_index", uv_index),
                         ("freezing_level_m", freezing_level),
@@ -147,6 +162,9 @@ def normalize_point_hourly(
                 **reading,
             }
         )
+    assessed = assess_records([SimpleNamespace(**row) for row in rows])
+    for row, item in zip(rows, assessed, strict=True):
+        row["severity"] = item._weather_assessment["severity"]
     return rows
 
 
@@ -232,8 +250,9 @@ def _num(series: Any, index: int, *, default: float) -> float:
     if not isinstance(series, list) or index >= len(series) or series[index] is None:
         return default
     try:
-        return float(series[index])
-    except (TypeError, ValueError):
+        number = float(series[index])
+        return number if isfinite(number) else default
+    except (TypeError, ValueError, OverflowError):
         return default
 
 
@@ -242,5 +261,5 @@ def _optional_int(series: Any, index: int) -> int | None:
         return None
     try:
         return int(round(float(series[index])))
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return None

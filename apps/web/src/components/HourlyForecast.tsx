@@ -1,11 +1,20 @@
 import { useId, useState } from "react";
 import type { CSSProperties } from "react";
-import type { HourlyReading } from "../types";
+import type { HourlyReading, Severity, WeatherWarning } from "../types";
 import { DesignIcon, WeatherIcon } from "./DesignIcon";
 export function numberLabel(value: number | null | undefined, suffix = "") {
   return typeof value === "number" && Number.isFinite(value)
     ? `${value.toLocaleString("fa-IR")}${suffix}`
     : "نامشخص";
+}
+
+export function warningClass(severity: Severity | undefined) {
+  return severity === "critical" ? "risk-red" : severity === "change" ? "risk-yellow" : "";
+}
+
+export function metricSeverity(warnings: WeatherWarning[] = [], field?: string): Severity {
+  const relevant = warnings.filter(w => field ? w.metrics.includes(field) : w.metrics.length > 0);
+  return relevant.some(w => (field ? w.metric_severities?.[field] ?? w.severity : w.severity) === "critical") ? "critical" : relevant.length ? "change" : "normal";
 }
 
 export function HourlyForecast({
@@ -21,19 +30,24 @@ export function HourlyForecast({
     (hour) => (hour.forecast_at ?? hour.time) === expanded,
   );
   const selectedIndex = selected ? hours.indexOf(selected) : -1;
-  const metrics: [string, number | null | undefined, string, boolean][] = selected
+  const metrics: [string, number | null | undefined, string, string][] = selected
     ? [
-        ["دمای حسی", selected.apparent_temperature_c, "°", false],
-        ["باد", selected.wind_speed_kmh, " km/h", Boolean(selected.wind_alert) && selected.wind_speed_kmh >= (selected.wind_alert?.code === "windy" ? 22 : 30)],
-        ["تندباد", selected.wind_gust_kmh, " km/h", Boolean(selected.wind_alert) && (selected.wind_gust_kmh ?? 0) >= 40],
-        ["باران", selected.rain_mm, " mm", false],
-        ["برف", selected.snowfall_cm, " cm", false],
-        ["احتمال بارش", selected.precipitation_probability, "٪", false],
-        ["دید افقی", selected.visibility_km, " km", false],
-        ["تراز صفر درجه", selected.freezing_level_m, " m", false],
-        ["پایهٔ ابر", selected.cloud_base_m, " m", false],
-        ["تابش فرابنفش", selected.uv_index, "", false],
-        ["پوشش ابر", selected.cloud_cover_pct, "٪", false],
+        ["دمای هوا", selected.temperature_c, "°", "temperature_c"],
+        ["دمای حسی", selected.apparent_temperature_c, "°", "apparent_temperature_c"],
+        ["سرمای باد", selected.wind_chill_c, "°", "wind_chill_c"],
+        ["شاخص گرما", selected.heat_index_c, "°", "heat_index_c"],
+        ["رطوبت نسبی", selected.relative_humidity_pct, "٪", "relative_humidity_pct"],
+        ["باد", selected.wind_speed_kmh, " km/h", "wind_speed_kmh"],
+        ["تندباد", selected.wind_gust_kmh, " km/h", "wind_gust_kmh"],
+        ["بارش", selected.precipitation_mm, " mm", "precipitation_mm"],
+        ["باران", selected.rain_mm, " mm", "rain_mm"],
+        ["برف", selected.snowfall_cm, " cm", "snowfall_cm"],
+        ["احتمال بارش", selected.precipitation_probability, "٪", "precipitation_probability"],
+        ["دید افقی", selected.visibility_km, " km", "visibility_km"],
+        ["تراز صفر درجه", selected.freezing_level_m, " m", "freezing_level_m"],
+        ["پایهٔ ابر", selected.cloud_base_m, " m", "cloud_base_m"],
+        ["تابش فرابنفش", selected.uv_index, "", "uv_index"],
+        ["پوشش ابر", selected.cloud_cover_pct, "٪", "cloud_cover_pct"],
       ]
     : [];
   return (
@@ -42,7 +56,7 @@ export function HourlyForecast({
         {hours.map((hour) => {
           const key = hour.forecast_at ?? hour.time;
           const open = expanded === key;
-          const specialistHazard = Boolean(hour.wind_alert);
+          const specialistHazard = metricSeverity(hour.warnings);
           return (
             <article
               key={key}
@@ -74,7 +88,7 @@ export function HourlyForecast({
                 <DesignIcon name="wind" />
               </div>
               <button
-                className={`details-trigger ${specialistHazard ? "risk-yellow" : ""}`}
+                className={`details-trigger ${warningClass(specialistHazard)}`}
                 type="button"
                 aria-expanded={open}
                 aria-controls={id}
@@ -95,15 +109,21 @@ export function HourlyForecast({
             { "--anchor": `${[83, 50, 17][selectedIndex]}%` } as CSSProperties
           }
         >
-          <h2>
+          <h2 className={warningClass(metricSeverity(selected.warnings))}>
             جزئیات تخصصی <bdi dir="ltr">{selected.time}</bdi>
             <small>{dayLabel}</small>
           </h2>
+          {selected.data_quality === "partial" ? <p className="weather-data-note">اطلاعات ارزیابی این ساعت ناقص است.</p> : null}
+          <div className="weather-warning-reasons">
+            {selected.warnings?.map(warning => (
+              <p key={warning.code} className={warningClass(warning.severity)}>{warning.label}: {warning.reason}</p>
+            ))}
+          </div>
           <div className="metrics">
-            {metrics.map(([label, value, unit, alert]) => (
+            {metrics.map(([label, value, unit, field]) => (
               <div className="metric" key={label}>
-                <span className={alert ? "risk-yellow" : ""}>{label}</span>
-                <strong className={alert ? "risk-yellow" : ""}>
+                <span className={warningClass(metricSeverity(selected.warnings, field))}>{label}</span>
+                <strong className={warningClass(metricSeverity(selected.warnings, field))}>
                   <bdi>{numberLabel(value, unit)}</bdi>
                 </strong>
               </div>

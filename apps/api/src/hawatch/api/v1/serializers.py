@@ -28,6 +28,7 @@ from hawatch.common.time import (
     timezone,
 )
 from hawatch.integrations.weather.demo import wind_compass
+from hawatch.integrations.weather.hazards import assessment, assess_records, value, RANK
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search import normalize_search_text
@@ -335,22 +336,12 @@ def build_place_forecast(
         subject.update(subject_overrides)
 
     records = _records_for_day(weather_point, selected_date)
-    hourly = _hourly_for_period(weather_point, selected_date, period, now=local)
-    current_payload = _reading_for_period_summary(weather_point, selected_date, period, local)
+    hourly = _hourly_for_period(weather_point, selected_date, period, now=local, records=records)
+    current_payload = _reading_for_period_summary(weather_point, selected_date, period, local, records=records)
 
     place_name = subject["name"]
     short_name = weather_point.tile_name or weather_point.short_label or place_name
     period_payload = planner_period_payload(period)
-
-    change = next(
-        (
-            item
-            for item in records
-            if record_severity(item) in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11
-        ),
-        None,
-    )
-    critical = next((item for item in records if record_severity(item) == "critical"), None)
 
     if current_payload:
         # Keep the hero pill compact and scannable: the icon carries the
@@ -359,28 +350,18 @@ def build_place_forecast(
         hero_status = f"{current_payload['icon']}　{current_payload['temperature_label']}"
     else:
         hero_status = "دادهٔ فعلی در دسترس نیست"
-    if change:
-        hour = change.forecast_at.astimezone(timezone()).hour
-        hero_alert = f"{change.icon}　از ساعت {to_fa_digits(hour)}"
+    upcoming = [row for row in records if selected_date != today or row.valid_to > local]
+    alert_record = max(upcoming, key=lambda row: RANK[record_severity(row)], default=None)
+    if alert_record and record_severity(alert_record) != "normal":
+        risk = assessment(alert_record)
+        warning = max(risk["warnings"], key=lambda w: RANK[w["severity"]])
+        hero_alert = f"{warning['label']} · {format_clock(alert_record.forecast_at.astimezone(timezone()).hour)}"
+        decision_title = warning["label"]
+        decision_text = f"حدود {format_clock(alert_record.forecast_at.astimezone(timezone()).hour)}: {warning['reason']}"
     else:
         hero_alert = None
-
-    morning_ok = (
-        all(record_severity(item) == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11)
-        if records
-        else True
-    )
-    if climate_key == "desert":
-        decision_title = "حرکت پیش از تابش مستقیم، انتخاب بهتری است."
-        decision_text = "در کویر، زمان برگشت و آب مهم‌تر از رسیدن سریع است؛ از ظهر گرما و باد شن‌زا بیشتر می‌شود."
-    elif morning_ok:
-        decision_title = "صبح برای شروع برنامه مناسب‌تر است."
-        decision_text = "تا حدود ساعت ۱۱ شرایط آرام‌تر می‌ماند؛ بعد از آن باد در ارتفاعات بیشتر می‌شود."
-        if critical:
-            decision_text += f" از ساعت {to_fa_digits(critical.forecast_at.astimezone(timezone()).hour)} شرایط حساس‌تر می‌شود."
-    else:
-        decision_title = "برنامه را با احتیاط و زمان ذخیره بچین."
-        decision_text = "تغییر شرایط زودتر از معمول شروع می‌شود؛ مسیر کوتاه‌تر یا شروع زودتر را در نظر بگیر."
+        decision_title = "هشدار مشخصی در پیش‌بینی موجود پیدا نشد."
+        decision_text = "این وضعیت تضمین ایمنی مسیر نیست؛ شرایط محلی و اطلاعات مسیر را بررسی کنید."
 
     metrics: list[dict] = []
     if records:
@@ -547,7 +528,7 @@ def build_place_forecast(
         "related_destinations": related_destinations or [],
         "related_destinations_title": related_destinations_title or "مقصدهای مشابه",
         "alerts": (
-            [{"severity": "change", "title": hero_alert, "description": hero_alert}]
+            [{"severity": record_severity(alert_record) if alert_record else "normal", "title": hero_alert, "description": hero_alert}]
             if hero_alert
             else []
         ),
@@ -596,7 +577,8 @@ def serialize_point(point: RoutePoint) -> dict:
 def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> dict:
     local_at = record.forecast_at.astimezone(timezone())
     flags = datetime_flags(record.forecast_at, now)
-    unavailable = []
+    risk = assessment(record)
+    unavailable = list(getattr(record, "fields_unavailable", []) or [])
     if record.cloud_cover_pct is None:
         unavailable.append("cloud_cover_pct")
     if record.uv_index is None:
@@ -618,22 +600,25 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
         "condition": record.condition_label,
         "icon": record.icon,
         "weather_code": record.weather_code,
-        "wind_speed_kmh": record.wind_speed_kmh,
-        "wind_label": f"باد {to_fa_digits(record.wind_speed_kmh)} km/h",
-        "wind_gust_kmh": record.wind_gust_kmh,
+        "wind_speed_kmh": value(record, "wind_speed_kmh"),
+        "wind_label": f"باد {to_fa_digits(record.wind_speed_kmh)} km/h" if value(record, "wind_speed_kmh") is not None else "باد نامشخص",
+        "wind_gust_kmh": value(record, "wind_gust_kmh"),
         "wind_alert": wind_alert_payload(record),
         "wind_direction_deg": record.wind_direction_deg,
         "wind_direction_label": wind_compass(record.wind_direction_deg),
-        "precipitation_probability": record.precipitation_probability,
-        "precipitation_mm": float(record.precipitation_mm),
-        "rain_mm": float(record.rain_mm),
-        "snowfall_cm": float(record.snowfall_cm) if record.snowfall_cm is not None else None,
-        "visibility_km": float(record.visibility_km),
+        "precipitation_probability": value(record, "precipitation_probability"),
+        "precipitation_mm": value(record, "precipitation_mm"),
+        "rain_mm": value(record, "rain_mm"),
+        "snowfall_cm": value(record, "snowfall_cm"),
+        "visibility_km": value(record, "visibility_km"),
         "cloud_cover_pct": record.cloud_cover_pct,
         "uv_index": record.uv_index,
         "freezing_level_m": record.freezing_level_m,
         "cloud_base_m": record.cloud_base_m,
-        "fields_unavailable": unavailable,
+        "fields_unavailable": sorted(set(unavailable)),
+        **risk,
+        "wmo_code": getattr(record, "wmo_code", None),
+        "relative_humidity_pct": value(record, "relative_humidity_pct"),
         "severity": record_severity(record),
         "state": record_severity(record),
         "freshness": record.freshness,
@@ -644,38 +629,19 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
 
 
 def wind_alert_payload(record: ForecastRecord) -> dict | None:
-    """Expose strong wind separately from the sky/precipitation condition."""
-    if record.wind_speed_kmh >= 30 or record.wind_gust_kmh >= 40:
-        return {"code": "gale", "label": "تندباد", "severity": "change"}
-    if record.wind_speed_kmh >= 22:
-        return {"code": "windy", "label": "بادخیز", "severity": "change"}
-    return None
+    warning = next((w for w in assessment(record)["warnings"] if w["code"] == "wind"), None)
+    if warning is None:
+        return None
+    return {"code": "gale", "label": warning["label"], "severity": warning["severity"]}
 
 
 def record_severity(record: ForecastRecord) -> str:
-    """Read older wind-only critical records as yellow without a re-ingest.
-
-    Keep precipitation/storm critical records intact: their stored weather
-    codes can cover several WMO intensities, so wind alone cannot downgrade them.
-    """
-    wind = wind_alert_payload(record)
-    if wind and record.severity == "normal":
-        return "change"
-    if wind and record.severity == "critical" and record.weather_code in {
-        "clear", "clear-night", "mainly-clear", "partly-cloudy", "overcast",
-        "fog", "gale", "windy",
-    }:
-        return "change"
-    return record.severity
+    return assessment(record)["severity"]
 
 
 def record_alert_label(record: ForecastRecord) -> str:
-    wind_alert = wind_alert_payload(record)
-    if wind_alert:
-        if record.condition_label == wind_alert["label"]:
-            return wind_alert["label"]
-        return f"{record.condition_label} · {wind_alert['label']}"
-    return record.condition_label
+    risk = assessment(record)
+    return " · ".join(dict.fromkeys(w["label"] for w in risk["warnings"])) or record.condition_label
 
 
 def _uv_label(uv: int | None) -> str:
@@ -706,11 +672,11 @@ def _forecast_qs_for_point(point: WeatherPoint):
 
 
 def _records_for_window(point: WeatherPoint, start: datetime, end: datetime) -> list[ForecastRecord]:
-    return list(
-        _forecast_qs_for_point(point)
-        .filter(forecast_at__gte=start, forecast_at__lt=end)
-        .order_by("forecast_at")
-    )
+    context = list(_forecast_qs_for_point(point)
+                   .filter(forecast_at__gte=start-timedelta(hours=23), forecast_at__lt=end+timedelta(hours=2))
+                   .order_by("forecast_at"))
+    assess_records(context)
+    return [row for row in context if start <= row.forecast_at < end]
 
 
 def _records_for_day(point: WeatherPoint, selected_date: date) -> list[ForecastRecord]:
@@ -865,12 +831,11 @@ def _closest_point_forecast(weather_point: WeatherPoint, target_at: datetime, *,
     Does not rely on queryset default ordering.
     """
     tolerance = timedelta(minutes=ARRIVAL_FORECAST_TOLERANCE_MINUTES)
-    candidates = list(
-        _forecast_qs_for_point(weather_point).filter(
-            forecast_at__gte=target_at - tolerance,
-            forecast_at__lte=target_at + tolerance,
-        )
-    )
+    context = list(_forecast_qs_for_point(weather_point).filter(
+        forecast_at__gte=target_at-tolerance-timedelta(hours=23),
+        forecast_at__lte=target_at+tolerance+timedelta(hours=2)))
+    assess_records(context)
+    candidates = [row for row in context if abs(row.forecast_at-target_at) <= tolerance]
     if not candidates:
         return None
     record = min(
@@ -935,6 +900,8 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
                 "timing_uncertainty_minutes": route.timing_uncertainty_minutes,
                 "weather": weather,
                 "weather_available": weather_available,
+                "warnings": weather.get("warnings", []) if weather else [],
+                "data_quality": weather.get("data_quality", "partial") if weather else "unavailable",
                 "forecast_at": weather.get("forecast_at") if weather else None,
                 # Route cards are user-facing weather summaries, so expose the
                 # apparent temperature there too. Keep absolute temperature
@@ -958,9 +925,9 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     )
 
     finish = planned[-1] if planned else None
-    critical_point = next((item for item in planned if item["state"] == "critical"), finish)
+    critical_point = max(planned, key=lambda item: RANK[item["state"]], default=None)
     summary_state = "critical" if any(item["state"] == "critical" for item in planned) else "change" if any(item["state"] == "change" for item in planned) else "normal"
-    state_label = {"critical": "هشدار", "change": "احتیاط", "normal": "حرکت مناسب"}[summary_state]
+    state_label = {"critical": "هشدار", "change": "احتیاط", "normal": "بدون هشدار مشخص"}[summary_state]
 
     def _point_time_phrase(point: dict | None) -> str | None:
         if not point or timing_pending:
@@ -978,29 +945,17 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             parts.append(detail)
         return " · ".join(parts)
 
-    if summary_state == "critical" and critical_point:
-        time_phrase = _point_time_phrase(critical_point)
-        if timing_pending:
-            state_summary = f"در {critical_point['name']} شرایط پرریسک گزارش شده؛ زمان‌بندی مسیر هنوز نهایی نیست."
-            hero_status = _status_phrase("", critical_point, "پیش‌بینی بازه‌ای")
-        else:
-            state_summary = f"در {time_phrase or 'مسیر'} شرایط پرریسک می‌شود؛ امکان برگشت را از قبل در برنامه نگه دار."
-            hero_status = _status_phrase("", critical_point, time_phrase)
-    elif summary_state == "change" and critical_point:
-        time_phrase = _point_time_phrase(critical_point)
-        if timing_pending:
-            state_summary = f"از {critical_point['name']} تغییر شرایط محتمل است؛ زمان‌بندی مسیر هنوز نهایی نیست."
-            hero_status = f"تغییر مهم: {critical_point['name']}"
-        else:
-            state_summary = f"از {time_phrase or critical_point['name']} تغییر شرایط شروع می‌شود؛ زمان برگشت و تجهیزات را جدی‌تر چک کن."
-            hero_status = _status_phrase("تغییر مهم", critical_point, time_phrase)
+    incomplete_assessment = any(not p["weather_available"] or p["data_quality"] != "complete" for p in planned)
+    if summary_state != "normal" and critical_point:
+        warning = max(critical_point["warnings"], key=lambda w: RANK[w["severity"]])
+        state_summary = f"{critical_point['name']}، {_point_time_phrase(critical_point) or 'زمان نامشخص'}: {warning['label']}؛ {warning['reason']}."
+        hero_status = _status_phrase(warning["label"], critical_point, _point_time_phrase(critical_point))
     else:
-        state_summary = "شرایط مسیر برای شروع آرام‌تر است؛ همچنان پیش‌بینی نقطه‌های بالاتر را دنبال کن."
-        # The route hero is reserved for actionable weather changes.  A calm
-        # route has no alert to surface, so keep the field empty instead of
-        # rendering a misleading status pill in both desktop and mobile UI.
+        state_summary = "هشدار مشخصی در پیش‌بینی زمان رسیدن پیدا نشد؛ شرایط محلی مسیر را بررسی کنید."
         hero_status = None
         critical_point = finish
+    if incomplete_assessment:
+        state_summary += " اطلاعات ارزیابی بخشی از برنامه ناقص است."
 
     gear = []
 
@@ -1019,7 +974,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         add_gear("energy-snack", "headlamp")
     if summary_state == "critical":
         add_gear("compass", "whistle")
-    if critical_point and (critical_point.get("wind") or 0) >= 25:
+    if critical_point and any(w["code"] == "wind" for w in critical_point["warnings"]):
         add_gear("waterproof-shell", "trekking-poles")
     if critical_point and (critical_point.get("temp") is not None and critical_point["temp"] <= 2):
         add_gear("gloves", "insulated-jacket", "beanie")
@@ -1032,13 +987,13 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
             "زمان‌ها تخمینی‌اند (بدون استراحت طولانی) و بسته به آمادگی، زمین و شرایط هوا تغییر می‌کنند."
         )
     if summary_state == "critical":
-        recommendations.append("اگر رعدوبرق، باد شدید یا دید محدود فعال است، صعود را ادامه نده و زودتر برگرد.")
-    if critical_point and (critical_point.get("wind") or 0) >= 25:
-        recommendations.append("باد در بخش حساس بالاست؛ بندهای کوله و باتوم را محکم کن و روی یال توقف طولانی نداشته باش.")
+        recommendations.append("برای این خطر جدی، برنامه را تغییر دهید و محل امن متناسب با خطر را انتخاب کنید.")
+    if critical_point and any(w["code"] == "wind" for w in critical_point["warnings"]):
+        recommendations.append("در بخش‌های باز و کنار پرتگاه‌ها، باد می‌تواند تعادل را مختل کند؛ مسیر محافظت‌شده را انتخاب کنید.")
     if critical_point and (critical_point.get("temp") is not None and critical_point["temp"] <= 2):
         recommendations.append("دستکش گرم، لایهٔ عایق و عینک محافظ همراه داشته باش؛ در ارتفاع توقف طولانی نکن.")
     if not recommendations:
-        recommendations.append("یک لایهٔ اضافه، آب کافی و چراغ پیشانی همراه داشته باش؛ شرایط فعلاً آرام‌تر است.")
+        recommendations.append("یک لایهٔ اضافه، آب کافی و چراغ پیشانی همراه داشته باش؛ پیش‌بینی موجود را همراه شرایط محلی بررسی کن.")
 
     start_label = format_hhmm(start_minutes)
     finish_label = finish["time"] if finish and finish["time"] != "—" else "—"

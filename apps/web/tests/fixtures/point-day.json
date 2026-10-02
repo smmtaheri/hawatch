@@ -1779,7 +1779,20 @@
     "severity": "critical",
     "weather_code": "gale",
     "forecast_at": "2026-10-01T08:30:00+00:00",
-    "complete": false
+    "complete": false,
+    "warnings": [
+      {
+        "code": "lightning",
+        "label": "رعدوبرق",
+        "severity": "critical",
+        "metrics": [],
+        "reason": "خطر صاعقه در فضای باز",
+        "start_at": "2026-10-01T08:30:00+00:00",
+        "end_at": "2026-10-01T08:30:00+00:00",
+        "scope": "weather",
+        "rule_version": "walking-v1"
+      }
+    ]
   },
   "data_revision": "e45618979c5ab740c2b3d93a855d9ad92ff547b71bac711262a84c3fc1ffb168",
   "cache_max_age_seconds": 300,

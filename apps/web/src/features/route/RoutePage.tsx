@@ -39,15 +39,6 @@ import type {
   RouteForecast,
 } from "../../types";
 
-const WEATHER_HAZARD_CODES = new Set([
-  "drizzle",
-  "freezing-drizzle",
-  "rain",
-  "freezing-rain",
-  "snow",
-  "shower",
-  "thunder",
-]);
 
 export function RoutePage() {
   const { slug = "" } = useParams();
@@ -291,6 +282,7 @@ export function RoutePage() {
                         fromRoute={fromRoute}
                         className={`point-card route-point-weather-card ${point.state === "critical" ? "severe" : ""}`}
                       >
+                        {point.state === "critical" ? <DesignIcon name="warning" className="hazard" /> : null}
                         <strong className="point-name">{point.name}</strong>
                         <time dateTime={point.arrival_at ?? undefined}>
                           <bdi dir="ltr">{point.time}</bdi>
@@ -304,11 +296,17 @@ export function RoutePage() {
                           at={point.forecast_at}
                           isDay={point.is_day}
                         />
-                        <div
-                          className={`weather-label ${point.state === "critical" && WEATHER_HAZARD_CODES.has(String(point.weather_code ?? "")) ? "risk-red" : ""}`}
-                        >
-                          {point.condition}
-                        </div>
+                        <div className="weather-label">{point.condition}</div>
+                        {point.warnings?.length ? (
+                          <div className="route-weather-warning">
+                            {point.warnings.map((warning, index) => (
+                              <span key={warning.code} className={warning.severity === "critical" ? "risk-red" : "risk-yellow"}>
+                                {index > 0 ? " · " : ""}{warning.label}
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
+                        {point.weather_available && point.data_quality === "partial" ? <small className="weather-data-note">اطلاعات ارزیابی ناقص است</small> : null}
                         <div className="degree">
                           <bdi>{numberLabel(point.temp, "°")}</bdi>
                         </div>

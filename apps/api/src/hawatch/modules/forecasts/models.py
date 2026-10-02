@@ -287,6 +287,9 @@ class ForecastRecord(models.Model):
     hour_bucket = models.CharField(max_length=16)
     temperature_c = models.SmallIntegerField()
     apparent_temperature_c = models.SmallIntegerField()
+    wmo_code = models.PositiveSmallIntegerField(null=True, blank=True)
+    relative_humidity_pct = models.PositiveSmallIntegerField(null=True, blank=True)
+    fields_unavailable = models.JSONField(default=list, blank=True)
     weather_code = models.CharField(max_length=16)
     condition_label = models.CharField(max_length=48)
     icon = models.CharField(max_length=8)
@@ -298,7 +301,7 @@ class ForecastRecord(models.Model):
     # Open-Meteo rain is the liquid precipitation component in mm for the hour.
     rain_mm = models.DecimalField(max_digits=5, decimal_places=1, default=0)
     snowfall_cm = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
-    visibility_km = models.DecimalField(max_digits=5, decimal_places=1)
+    visibility_km = models.DecimalField(max_digits=6, decimal_places=2)
     cloud_cover_pct = models.PositiveSmallIntegerField(null=True, blank=True)
     uv_index = models.PositiveSmallIntegerField(null=True, blank=True)
     freezing_level_m = models.PositiveIntegerField(null=True, blank=True)

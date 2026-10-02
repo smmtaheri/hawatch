@@ -17,6 +17,7 @@ from hawatch.integrations.weather.transport import WeatherHttpTransport
 
 HOURLY_VARIABLES = [
     "temperature_2m",
+    "relative_humidity_2m",
     "apparent_temperature",
     "precipitation_probability",
     "precipitation",

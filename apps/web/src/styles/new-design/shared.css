@@ -143,3 +143,19 @@
 @media (max-width: 359px) {
   :root { --page-title-size: 24px; }
 }
+
+/* Warning emphasis is driven by the API policy, in both themes and sizes. */
+.metric .risk-red,.details-trigger.risk-red,.detail-panel h2.risk-red{color:var(--red)}
+.metric .risk-yellow,.details-trigger.risk-yellow,.detail-panel h2.risk-yellow{color:var(--amber)}
+.hour-card.past .risk-red{color:var(--red)}
+.hour-card.past .risk-yellow{color:var(--amber)}
+.route-page .point-card{position:relative}
+.route-page .point-card .hazard{margin:0;left:6px;top:7px;width:16px;height:16px}
+.route-weather-warning{font-size:13px;line-height:1.8;max-width:100%;overflow-wrap:anywhere}
+.weather-data-note{font-size:12px;line-height:1.8;color:var(--secondary);max-width:100%;overflow-wrap:anywhere}
+.weather-warning-reasons p{font-size:14px;line-height:1.9;overflow-wrap:anywhere}
+.point-page .day-summary-line{white-space:normal;overflow-wrap:anywhere;line-height:1.9}
+@media(max-width:767px){
+ .point-page .summary{padding-top:20px}
+ .point-page .summary .day-summary-line{position:static;max-width:48%;margin:0 12px 0 auto;text-align:left}
+}

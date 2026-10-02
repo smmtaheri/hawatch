@@ -7,6 +7,19 @@ export interface CatalogCounts {
   routes: number;
 }
 
+export interface WeatherWarning {
+  code: string;
+  label: string;
+  severity: Severity;
+  metrics: string[];
+  metric_severities?: Record<string, Severity>;
+  reason: string;
+  start_at: string;
+  end_at: string;
+  scope: "weather";
+  rule_version: string;
+}
+
 export interface WindAlert {
   code: "windy" | "gale";
   label: string;
@@ -150,16 +163,23 @@ export interface HourlyReading {
   apparent_temperature_label?: string;
   condition: string;
   icon: string;
-  wind_speed_kmh: number;
+  wind_speed_kmh: number | null;
   wind_label: string;
   wind_alert?: WindAlert | null;
+  warnings?: WeatherWarning[];
+  data_quality?: "complete" | "partial" | "unavailable";
+  missing_inputs?: string[];
+  wind_chill_c?: number | null;
+  heat_index_c?: number | null;
+  relative_humidity_pct?: number | null;
+  policy_version?: string;
   severity: Severity;
   state: Severity;
-  precipitation_probability?: number;
-  precipitation_mm?: number;
-  rain_mm?: number;
+  precipitation_probability?: number | null;
+  precipitation_mm?: number | null;
+  rain_mm?: number | null;
   snowfall_cm?: number | null;
-  visibility_km?: number;
+  visibility_km?: number | null;
   freezing_level_m?: number | null;
   cloud_cover_pct?: number | null;
   uv_index?: number | null;
@@ -296,6 +316,8 @@ export interface RoutePointView {
   timing_confidence?: string;
   timing_uncertainty_minutes?: number | null;
   weather_available?: boolean;
+  warnings?: WeatherWarning[];
+  data_quality?: "complete" | "partial" | "unavailable";
   latitude?: number | null;
   longitude?: number | null;
   elevation_m?: number | null;
@@ -423,6 +445,8 @@ export interface PointDayBundle extends PlaceForecastResponse {
     forecast_at: string | null;
     complete: boolean;
     wind_alert?: WindAlert | null;
+    warnings?: WeatherWarning[];
+    policy_version?: string;
   };
   data_revision: string;
   cache_max_age_seconds: number;
