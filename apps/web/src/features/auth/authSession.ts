@@ -11,9 +11,47 @@ export type AuthSession = {
 };
 
 const AUTH_CHANGED_EVENT = "hawatch-auth-changed";
+const AUTH_SYNC_KEY = "hawatch.auth-change";
+type AuthAction = "login" | "logout";
+let syncStarted = false;
+let syncChannel: BroadcastChannel | null = null;
+const seenSignals = new Set<string>();
 
-function notifyAuthChanged() {
-  window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
+function notifyLocalAuthChanged(action: AuthAction) {
+  window.dispatchEvent(new CustomEvent(AUTH_CHANGED_EVENT, { detail: { action } }));
+}
+
+function receiveAuthChange(message: unknown) {
+  const action = (message as { action?: unknown } | null)?.action;
+  const nonce = (message as { nonce?: unknown } | null)?.nonce;
+  if ((action !== "login" && action !== "logout") || typeof nonce !== "string") return;
+  if (seenSignals.has(nonce)) return;
+  seenSignals.add(nonce);
+  if (seenSignals.size > 100) seenSignals.delete(seenSignals.values().next().value!);
+  notifyLocalAuthChanged(action);
+}
+
+function ensureAuthSync() {
+  if (syncStarted) return;
+  syncStarted = true;
+  try {
+    syncChannel = new BroadcastChannel(AUTH_SYNC_KEY);
+    syncChannel.onmessage = (event) => receiveAuthChange(event.data);
+  } catch { /* Storage events remain available when BroadcastChannel is blocked. */ }
+  window.addEventListener("storage", (event) => {
+    if (event.key !== AUTH_SYNC_KEY || !event.newValue) return;
+    try { receiveAuthChange(JSON.parse(event.newValue)); } catch { /* Ignore unrelated malformed data. */ }
+  });
+}
+
+function notifyAuthChanged(action: AuthAction) {
+  ensureAuthSync();
+  notifyLocalAuthChanged(action);
+  // No account, cookie or credential is persisted: just an invalidation signal.
+  const message = { action, nonce: `${Date.now()}:${Math.random()}` };
+  seenSignals.add(message.nonce);
+  try { localStorage.setItem(AUTH_SYNC_KEY, JSON.stringify(message)); } catch { /* Private/blocked storage. */ }
+  try { syncChannel?.postMessage(message); } catch { /* Focus revalidation remains available. */ }
 }
 
 export function normalizeIranPhone(value: string): string {
@@ -45,6 +83,7 @@ export function useAuthChangeVersion() {
   const [version, setVersion] = useState(0);
 
   useEffect(() => {
+    ensureAuthSync();
     const bumpVersion = () => setVersion((current) => current + 1);
     window.addEventListener(AUTH_CHANGED_EVENT, bumpVersion);
     return () => window.removeEventListener(AUTH_CHANGED_EVENT, bumpVersion);
@@ -63,16 +102,16 @@ async function csrfHeaders(): Promise<Record<string, string>> {
   }
 }
 
-async function readMe(): Promise<AuthSession | null> {
+async function readMe(): Promise<AuthSession | null | undefined> {
   try {
     const response = await fetch(apiUrl("auth/me/").toString(), { credentials: "same-origin", cache: "no-store" });
-    if (!response.ok) return null;
+    if (!response.ok) return response.status === 401 || response.status === 403 ? null : undefined;
     const payload = await response.json() as Partial<AuthSession>;
     // Some proxies normalize an unauthenticated response to HTTP 200. The
     // explicit server flag must remain authoritative for the client session.
     return payload.authenticated === true ? payload as AuthSession : null;
   } catch {
-    return null;
+    return undefined;
   }
 }
 
@@ -94,22 +133,50 @@ export function useAuth() {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [loading, setLoading] = useState(true);
   const requestVersionRef = useRef(0);
+  const sessionRef = useRef<AuthSession | null>(null);
+  sessionRef.current = session;
 
   useEffect(() => {
+    ensureAuthSync();
     let mounted = true;
-    const refresh = () => {
+    const refresh = (revalidate = false) => {
       const requestVersion = ++requestVersionRef.current;
       void readMe().then((next) => {
         if (!mounted || requestVersion !== requestVersionRef.current) return;
+        if (next === undefined) {
+          setLoading(false);
+          return;
+        }
+        const changed = !!sessionRef.current !== !!next;
+        sessionRef.current = next;
         setSession(next);
         setLoading(false);
+        if (revalidate && changed) notifyLocalAuthChanged(next ? "login" : "logout");
       });
     };
+    const onAuthChanged = (event: Event) => {
+      if ((event as CustomEvent<{ action?: AuthAction }>).detail?.action === "logout") {
+        // Clear immediately, and invalidate any pre-logout /me response.
+        ++requestVersionRef.current;
+        sessionRef.current = null;
+        setSession(null);
+        setLoading(false);
+      } else refresh();
+    };
+    const onFocus = () => refresh(true);
+    const onVisible = () => { if (document.visibilityState === "visible") refresh(true); };
+    const onPageShow = (event: PageTransitionEvent) => { if (event.persisted) refresh(true); };
     refresh();
-    window.addEventListener(AUTH_CHANGED_EVENT, refresh);
+    window.addEventListener(AUTH_CHANGED_EVENT, onAuthChanged);
+    window.addEventListener("focus", onFocus);
+    window.addEventListener("pageshow", onPageShow);
+    document.addEventListener("visibilitychange", onVisible);
     return () => {
       mounted = false;
-      window.removeEventListener(AUTH_CHANGED_EVENT, refresh);
+      window.removeEventListener(AUTH_CHANGED_EVENT, onAuthChanged);
+      window.removeEventListener("focus", onFocus);
+      window.removeEventListener("pageshow", onPageShow);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, []);
 
@@ -122,7 +189,7 @@ export function useAuth() {
       const next = await postAuth("auth/login/", { phone: normalizeIranPhone(phone), code });
       setSession(next);
       setLoading(false);
-      notifyAuthChanged();
+      notifyAuthChanged("login");
       return next;
     },
     async logout() {
@@ -130,7 +197,7 @@ export function useAuth() {
       await postAuth("auth/logout/");
       setSession(null);
       setLoading(false);
-      notifyAuthChanged();
+      notifyAuthChanged("logout");
     },
   };
 }

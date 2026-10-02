@@ -13,6 +13,9 @@
 
 مسیر `/login?returnTo=…` و لایهٔ responsive ورود در دسترس است: ورود عادی روی همان صفحه به‌صورت overlay باز می‌شود (mobile تمام‌صفحه و desktop dialog). login موقت allowlist و کد ثابت را فقط از env سرور می‌خواند و session امن Django می‌سازد؛ OTP واقعی هنوز جایگزین نشده است. سیاست روزهای forecast و طرح‌های دسترسی از Django Admin مدیریت می‌شوند؛ جزئیات در [`docs/page-specs/login-behavior.md`](docs/page-specs/login-behavior.md) است.
 
+رفتار خروج و همگام‌سازی حساب بین تب‌های همان مرورگر در
+[docs/session-lifecycle.md](docs/session-lifecycle.md) مستند شده است.
+
 ## صفحات این نسخه
 
 - **Home** `/`
