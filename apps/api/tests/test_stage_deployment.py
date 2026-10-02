@@ -59,5 +59,5 @@ def test_stage_only_wrapper_never_runs_the_production_deploy_script():
 
     assert "scripts/deploy.sh" not in wrapper
     assert 'git -C "$LOCAL_DIR" push origin stage' in wrapper
-    assert '"/new-design/brand-mark.svg?v=stage-1"' in template
-    assert '/new-design/brand-mark.svg?v=stage-1' in index
+    assert '"/brand/v2/favicon.svg"' in template
+    assert '/brand/v2/favicon.svg' in index
