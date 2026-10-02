@@ -286,10 +286,13 @@ export function RoutePage() {
                         <strong className="point-name">{point.name}</strong>
                         <time dateTime={point.arrival_at ?? undefined}>
                           <bdi dir="ltr">{point.time}</bdi>
-                          {point.arrival_minutes != null &&
-                          point.arrival_minutes >= 1440
-                            ? ` · ${Math.floor(point.arrival_minutes / 1440).toLocaleString("fa-IR")} روز بعد`
-                            : null}
+                          {point.arrival_minutes != null && point.arrival_minutes >= 1440 ? (
+                            <span className="arrival-day">
+                              {point.arrival_minutes < 2880
+                                ? "روز بعد"
+                                : `${Math.floor(point.arrival_minutes / 1440).toLocaleString("fa-IR")} روز بعد`}
+                            </span>
+                          ) : null}
                         </time>
                         <WeatherIcon
                           code={point.weather_code}
