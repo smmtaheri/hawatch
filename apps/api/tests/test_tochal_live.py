@@ -257,20 +257,21 @@ def test_wind_warning_does_not_replace_sky_condition():
         "mainly-clear",
         "عمدتاً صاف",
         "☼",
-        "critical",
+        "change",
     )
     assert map_weather_code(61, hour=14, wind_kmh=26, gust_kmh=51) == (
         "rain",
         "باران",
         "☂",
-        "critical",
+        "change",
     )
     assert map_weather_code(0, hour=20, wind_kmh=31, gust_kmh=50) == (
         "clear-night",
         "صاف",
         "☾",
-        "critical",
+        "change",
     )
+    assert map_weather_code(95, hour=14, wind_kmh=31, gust_kmh=50)[3] == "critical"
 
 
 def test_bounded_retry_on_429_and_transport():

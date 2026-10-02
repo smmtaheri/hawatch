@@ -10,6 +10,10 @@ main { position: relative; isolation: isolate; min-height: 100svh; }
 .brand span { display: block; }
 .routes h2 { white-space: normal; }
 .summary .day-summary-line { overflow-wrap: anywhere; }
+.summary .day-summary-label { color: var(--ink); }
+.metric .risk-yellow,
+.details-trigger.risk-yellow,
+.hour-card.past .risk-yellow { color: var(--amber); }
 .partial-notice { color: var(--secondary); font-size: 13px; margin-block: 8px; }
 .hour-card .wind-line { font-size: 16px; }
 .search-combobox { flex: 1; min-width: 0; }

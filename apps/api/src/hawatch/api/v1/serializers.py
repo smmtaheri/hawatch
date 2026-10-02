@@ -346,11 +346,11 @@ def build_place_forecast(
         (
             item
             for item in records
-            if item.severity in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11
+            if record_severity(item) in {"change", "critical"} and item.forecast_at.astimezone(timezone()).hour >= 11
         ),
         None,
     )
-    critical = next((item for item in records if item.severity == "critical"), None)
+    critical = next((item for item in records if record_severity(item) == "critical"), None)
 
     if current_payload:
         # Keep the hero pill compact and scannable: the icon carries the
@@ -366,7 +366,7 @@ def build_place_forecast(
         hero_alert = None
 
     morning_ok = (
-        all(item.severity == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11)
+        all(record_severity(item) == "normal" for item in records if item.forecast_at.astimezone(timezone()).hour < 11)
         if records
         else True
     )
@@ -634,8 +634,8 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
         "freezing_level_m": record.freezing_level_m,
         "cloud_base_m": record.cloud_base_m,
         "fields_unavailable": unavailable,
-        "severity": record.severity,
-        "state": record.severity,
+        "severity": record_severity(record),
+        "state": record_severity(record),
         "freshness": record.freshness,
         "provider": record.provider,
         "data_mode": record.data_mode,
@@ -646,10 +646,27 @@ def reading_payload(record: ForecastRecord, *, now: datetime | None = None) -> d
 def wind_alert_payload(record: ForecastRecord) -> dict | None:
     """Expose strong wind separately from the sky/precipitation condition."""
     if record.wind_speed_kmh >= 30 or record.wind_gust_kmh >= 40:
-        return {"code": "gale", "label": "تندباد", "severity": "critical"}
+        return {"code": "gale", "label": "تندباد", "severity": "change"}
     if record.wind_speed_kmh >= 22:
         return {"code": "windy", "label": "بادخیز", "severity": "change"}
     return None
+
+
+def record_severity(record: ForecastRecord) -> str:
+    """Read older wind-only critical records as yellow without a re-ingest.
+
+    Keep precipitation/storm critical records intact: their stored weather
+    codes can cover several WMO intensities, so wind alone cannot downgrade them.
+    """
+    wind = wind_alert_payload(record)
+    if wind and record.severity == "normal":
+        return "change"
+    if wind and record.severity == "critical" and record.weather_code in {
+        "clear", "clear-night", "mainly-clear", "partly-cloudy", "overcast",
+        "fog", "gale", "windy",
+    }:
+        return "change"
+    return record.severity
 
 
 def record_alert_label(record: ForecastRecord) -> str:

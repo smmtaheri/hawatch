@@ -8,10 +8,6 @@ export function numberLabel(value: number | null | undefined, suffix = "") {
     : "نامشخص";
 }
 
-function isCriticalWind(hour: HourlyReading) {
-  return hour.wind_alert?.severity === "critical";
-}
-
 export function HourlyForecast({
   hours,
   dayLabel = "",
@@ -28,8 +24,8 @@ export function HourlyForecast({
   const metrics: [string, number | null | undefined, string, boolean][] = selected
     ? [
         ["دمای حسی", selected.apparent_temperature_c, "°", false],
-        ["باد", selected.wind_speed_kmh, " km/h", isCriticalWind(selected) && selected.wind_speed_kmh >= 30],
-        ["تندباد", selected.wind_gust_kmh, " km/h", isCriticalWind(selected) && (selected.wind_gust_kmh ?? 0) >= 40],
+        ["باد", selected.wind_speed_kmh, " km/h", Boolean(selected.wind_alert) && selected.wind_speed_kmh >= (selected.wind_alert?.code === "windy" ? 22 : 30)],
+        ["تندباد", selected.wind_gust_kmh, " km/h", Boolean(selected.wind_alert) && (selected.wind_gust_kmh ?? 0) >= 40],
         ["باران", selected.rain_mm, " mm", false],
         ["برف", selected.snowfall_cm, " cm", false],
         ["احتمال بارش", selected.precipitation_probability, "٪", false],
@@ -46,7 +42,7 @@ export function HourlyForecast({
         {hours.map((hour) => {
           const key = hour.forecast_at ?? hour.time;
           const open = expanded === key;
-          const specialistHazard = hour.wind_alert?.severity === "critical";
+          const specialistHazard = Boolean(hour.wind_alert);
           return (
             <article
               key={key}
@@ -78,7 +74,7 @@ export function HourlyForecast({
                 <DesignIcon name="wind" />
               </div>
               <button
-                className={`details-trigger ${specialistHazard ? "risk-red" : ""}`}
+                className={`details-trigger ${specialistHazard ? "risk-yellow" : ""}`}
                 type="button"
                 aria-expanded={open}
                 aria-controls={id}
@@ -106,8 +102,8 @@ export function HourlyForecast({
           <div className="metrics">
             {metrics.map(([label, value, unit, alert]) => (
               <div className="metric" key={label}>
-                <span className={alert ? "risk-red" : ""}>{label}</span>
-                <strong className={alert ? "risk-red" : ""}>
+                <span className={alert ? "risk-yellow" : ""}>{label}</span>
+                <strong className={alert ? "risk-yellow" : ""}>
                   <bdi>{numberLabel(value, unit)}</bdi>
                 </strong>
               </div>

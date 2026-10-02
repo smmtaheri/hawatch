@@ -60,9 +60,7 @@ def map_weather_code(code: int | float | None, *, hour: int, wind_kmh: int, gust
     if raw == 0 and hour >= 19:
         weather_code, label, icon = "clear-night", "صاف", "☾"
 
-    if wind_kmh >= 30 or gust_kmh >= 40:
-        severity = "critical"
-    elif wind_kmh >= 22 and severity == "normal":
+    if (wind_kmh >= 22 or gust_kmh >= 40) and severity == "normal":
         severity = "change"
     return weather_code, label, icon, severity
 

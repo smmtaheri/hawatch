@@ -115,18 +115,20 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
                       </strong>
                     </div>
                   </div>
-                  <p
-                    className={`day-summary-line ${summary.severity === "critical" ? "risk-red" : summary.severity === "change" ? "risk-yellow" : ""}`}
-                  >
-                    {dayLabel} ·{" "}
-                    <span>{summary.condition}</span>
-                    {summary.wind_alert ? (
-                      <>
-                        {" · "}
-                        <span>{summary.wind_alert.label}</span>
-                      </>
-                    ) : null}
-                    {!summary.complete ? " · دادهٔ روز ناقص است" : null}
+                  <p className="day-summary-line">
+                    <span className="day-summary-label">{dayLabel} · </span>
+                    <span
+                      className={summary.severity === "critical" ? "risk-red" : summary.severity === "change" ? "risk-yellow" : ""}
+                    >
+                      <span>{summary.condition}</span>
+                      {summary.wind_alert ? (
+                        <>
+                          {" · "}
+                          <span>{summary.wind_alert.label}</span>
+                        </>
+                      ) : null}
+                      {!summary.complete ? " · دادهٔ روز ناقص است" : null}
+                    </span>
                   </p>
                 </>
               ) : (

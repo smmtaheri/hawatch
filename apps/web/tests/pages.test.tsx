@@ -207,6 +207,33 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("new-design pages and real day contracts", () => {
+  it("shows a gust-only warning in yellow details without a red hazard icon", async () => {
+    const hour = clone(pointFixture.periods.noon.hourly[0]) as HourlyReading;
+    Object.assign(hour, {
+      condition: "ابری", weather_code: "overcast", wind_speed_kmh: 15,
+      wind_gust_kmh: 45, state: "change", severity: "change", is_past: true,
+      wind_alert: { code: "gale", label: "تندباد", severity: "change" },
+    });
+    render(<HourlyForecast hours={[hour]} />);
+    const trigger = screen.getByRole("button", { name: "جزئیات تخصصی" });
+    expect(trigger).toHaveClass("risk-yellow");
+    expect(document.querySelector(".hazard")).toBeNull();
+    expect(screen.getByText("ابری")).not.toHaveClass("risk-yellow", "risk-red");
+    await userEvent.click(trigger);
+    expect(screen.getByText("تندباد")).toHaveClass("risk-yellow");
+    expect(screen.getByText("باد", { selector: ".metric span" })).not.toHaveClass("risk-yellow");
+  });
+
+  it("keeps the day label neutral while coloring the weather summary", async () => {
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    const label = document.querySelector(".day-summary-label");
+    expect(label).not.toBeNull();
+    expect(label).not.toHaveClass("risk-yellow", "risk-red");
+    expect(document.querySelector(".day-summary-line")).not.toHaveClass("risk-yellow", "risk-red");
+    expect(document.querySelector(".day-summary-line > .risk-red")).not.toBeNull();
+  });
+
   it("removes expired membership weather before revalidation without losing day controls", async () => {
     authenticated = true;
     paid = true;
