@@ -198,8 +198,10 @@
  .route-page .speed button{font-size:13px;min-width:60px;padding-inline:8px}
 }
 @media(max-width:767px){
- .point-page .summary{padding-top:20px}
- .point-page .summary .day-summary-line{position:static;max-width:48%;margin:0 12px 0 auto;text-align:left}
+ .point-page .summary{position:absolute;left:26px;top:46px;width:max-content;max-width:calc(50% - 12px);padding-top:0}
+ .point-page .summary .summary-weather{position:static;margin-top:0;gap:10px}
+ .point-page .summary .temperature-stat:last-child{align-items:flex-end;text-align:right}
+ .point-page .summary .day-summary-line{position:static;max-width:100%;margin:8px 0 0;text-align:right;font-weight:500}
 }
 
 /* The server article remains visible until the matching weather request succeeds. */
