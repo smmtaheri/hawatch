@@ -197,3 +197,48 @@
 .seo-fallback a{color:var(--accent);text-decoration:underline}
 .seo-fallback ul,.seo-fallback ol{padding-inline-start:22px}
 @media(max-width:767px){.seo-fallback{padding:18px}}
+
+/* Catalog pagination extends the mist, without stretching the header photograph. */
+.destinations-page,
+.routes-page {
+  --catalog-photo: url('/new-design/backgrounds/desktop-light.webp');
+  --catalog-ground: #d4e3e9;
+  --catalog-mist: rgba(246, 250, 251, .42);
+  --catalog-shade: rgba(111, 150, 166, .12);
+  background-color: var(--catalog-ground);
+  background-image:
+    radial-gradient(ellipse at center, var(--catalog-mist), transparent 70%),
+    radial-gradient(ellipse at center, var(--catalog-shade), transparent 70%);
+  background-size: 1200px 800px, 900px 1100px;
+  background-position: center 400px, center 700px;
+  background-repeat: repeat;
+}
+.routes-page { --catalog-photo: url('/new-design/backgrounds/route-desktop-light.webp'); }
+:root[data-theme="dark"] .destinations-page,
+:root[data-theme="dark"] .routes-page {
+  --catalog-ground: #082938;
+  --catalog-mist: rgba(100, 153, 173, .14);
+  --catalog-shade: rgba(0, 14, 28, .22);
+}
+:root[data-theme="dark"] .destinations-page { --catalog-photo: url('/new-design/backgrounds/desktop-dark.webp'); }
+:root[data-theme="dark"] .routes-page { --catalog-photo: url('/new-design/backgrounds/route-desktop-dark.webp'); }
+.destinations-page .landscape,
+.routes-page .landscape {
+  inset: 0 0 auto;
+  height: 760px;
+  min-height: 0;
+  background-image: linear-gradient(var(--overlay), var(--overlay)), var(--catalog-photo);
+  background-color: transparent;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+}
+@media(max-width:767px) {
+  .destinations-page { --catalog-photo: url('/new-design/backgrounds/mobile-light.webp'); }
+  .routes-page { --catalog-photo: url('/new-design/backgrounds/route-mobile-light.webp'); }
+  :root[data-theme="dark"] .destinations-page { --catalog-photo: url('/new-design/backgrounds/mobile-dark.webp'); }
+  :root[data-theme="dark"] .routes-page { --catalog-photo: url('/new-design/backgrounds/route-mobile-dark.webp'); }
+  .destinations-page .landscape,
+  .routes-page .landscape { height: 620px; }
+}
