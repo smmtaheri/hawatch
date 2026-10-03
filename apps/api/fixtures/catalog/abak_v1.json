@@ -1,0 +1,339 @@
+{
+  "catalog_version": "hawatch-abak-v1",
+  "primary_point": "abak",
+  "weather_points": {
+    "abak": {
+      "name": "قلهٔ آبک",
+      "page_name": "قلهٔ آبک",
+      "short_label": "قلهٔ آبک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "آبک",
+        "Abak"
+      ],
+      "identity_summary": "قلهٔ مستقل آبک در شمال میگون و فشم؛ مقصد مشترک مسیرهای شمشک، میگون و روته.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+      ],
+      "latitude": 35.980192,
+      "longitude": 51.515135,
+      "elevation_m": 3471,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 3471 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    },
+    "pinasum": {
+      "name": "قلهٔ پیناسوم",
+      "page_name": "قلهٔ پیناسوم",
+      "short_label": "قلهٔ پیناسوم",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "پیناسوم",
+        "پیناسوم شمشک"
+      ],
+      "identity_summary": "قلهٔ پیناسوم در یال شمالی آبک، بالادست پیست شمشک؛ روی مسیر شمشک تا آبک قرار دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529"
+      ],
+      "latitude": 35.992549,
+      "longitude": 51.515062,
+      "elevation_m": 3225,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 3225 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    },
+    "pinasum-pass": {
+      "name": "گردنهٔ پیناسوم",
+      "page_name": "گردنهٔ پیناسوم",
+      "short_label": "گردنهٔ پیناسوم",
+      "place_type": "pass",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "گردنهٔ مستند میان قله‌های پیناسوم و آبک در مسیر یال شمالی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529"
+      ],
+      "latitude": 35.988468,
+      "longitude": 51.515961,
+      "elevation_m": 3187,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 3187 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    },
+    "abak-shemshak-trailhead": {
+      "name": "پای‌کار آبک در شمشک",
+      "page_name": "پای‌کار آبک در شمشک",
+      "short_label": "پای‌کار آبک در شمشک",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز پیمایش کنار ورودی پیست شمشک؛ مختصات روستای شمشک یا کل پیست نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529"
+      ],
+      "latitude": 36.009235,
+      "longitude": 51.493482,
+      "elevation_m": 2564,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2564 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    },
+    "abak-meygun-trailhead": {
+      "name": "پای‌کار آبک در میگون",
+      "page_name": "پای‌کار آبک در میگون",
+      "short_label": "پای‌کار آبک در میگون",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز مسیر پلکانی بالای میگون در جادهٔ میگون به شمشک، حوالی کوچهٔ سیاهلیز؛ از مرکز شهر میگون مستقل است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+      ],
+      "latitude": 35.957207,
+      "longitude": 51.493653,
+      "elevation_m": 2152,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2152 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    },
+    "abak-meygun-pass": {
+      "name": "گردنهٔ یال میگون",
+      "page_name": "گردنهٔ یال میگون",
+      "short_label": "گردنهٔ یال میگون",
+      "place_type": "pass",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "گردنهٔ واقعی ثبت‌شده در GPX یال جنوب‌غربی، پس از باغ‌ها و استخر آبیاری؛ نام توصیفی است، نه نام یک مقصد مستقل.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+      ],
+      "latitude": 35.965694,
+      "longitude": 51.502266,
+      "elevation_m": 2470,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2470 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    },
+    "abak-ruteh-trailhead": {
+      "name": "پای‌کار آبک در روته",
+      "page_name": "پای‌کار آبک در روته",
+      "short_label": "پای‌کار آبک در روته",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "محل شروع پیمایش پس از پل روته؛ صفحهٔ هواشناسی کل روستا را نمایندگی نمی‌کند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
+      ],
+      "latitude": 35.962639,
+      "longitude": 51.543286,
+      "elevation_m": 2198,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2198 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    },
+    "abak-gully": {
+      "name": "دهلیز آبک",
+      "page_name": "دهلیز آبک",
+      "short_label": "دهلیز آبک",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "ارتفاعات رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "دهلیز پرشیب و ریزشی زیر قلهٔ فرعی آبک در مسیر روته؛ پاکوب تابستانی میگون با این بخش یکسان نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
+      ],
+      "latitude": 35.97763,
+      "longitude": 51.514622,
+      "elevation_m": 3358,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 3358 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "north": {
+      "slug": "abak-shemshak",
+      "title": "شمشک تا آبک از پیناسوم",
+      "subtitle": "شمشک تا آبک از پیناسوم",
+      "trail_label": "شمشک تا آبک از پیناسوم",
+      "origin": "پای‌کار آبک در شمشک",
+      "target_label": "قلهٔ آبک",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "abak-shemshak-trailhead",
+        "pinasum",
+        "pinasum-pass",
+        "abak"
+      ],
+      "distance_km": 6.16,
+      "ascent_m": 1098,
+      "one_way_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "abak-shemshak-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529"
+        ],
+        "cumulative_minutes": {
+          "abak-shemshak-trailhead": 0,
+          "pinasum": 190,
+          "pinasum-pass": 215,
+          "abak": 300
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای شرایط خشک و بدون توقف طولانی است. ترک مرجع زمستانی است و در برف زمان بیشتر می‌شود؛ یال شمالی در زمستان دست‌به‌سنگ دارد و پیمایش آن نیازمند مهارت و تجهیزات مناسب است. پاکوب فصل خشک از کنار گردهٔ سنگی عبور می‌کند.",
+      "internal_note": "2023 north GPX cut969, summit1.34m, maxstep27.46m, distance6.1645km. Resample50m/window5 ascent1098.4m. Tobler terrain1.4=211min; conservative dry-condition ETA300min adds ridge/route-finding allowance. Source winter 6h45 ascent including20min breakfast and pauses is NOT summer ETA. Pinasum/pass nearest exact ordered waypoints at4.38/5.02km; source winter split4h05/4h45; dry estimates190/215min. No invented summer GPX geometry or elapsed11h roundtrip used."
+    },
+    "southwest": {
+      "slug": "abak-meygun",
+      "title": "میگون تا آبک از یال جنوب‌غربی",
+      "subtitle": "میگون تا آبک از یال جنوب‌غربی",
+      "trail_label": "میگون تا آبک از یال جنوب‌غربی",
+      "origin": "پای‌کار آبک در میگون",
+      "target_label": "قلهٔ آبک",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "abak-meygun-trailhead",
+        "abak-meygun-pass",
+        "abak"
+      ],
+      "distance_km": 4.69,
+      "ascent_m": 1274,
+      "one_way_minutes": 285,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "abak-meygun-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+        ],
+        "cumulative_minutes": {
+          "abak-meygun-trailhead": 0,
+          "abak-meygun-pass": 60,
+          "abak": 285
+        }
+      },
+      "public_note": "زمان یک‌طرفه بدون توقف طولانی تخمین زده شده است. مسیر شامل شیب تند و کمی دست‌به‌سنگ است؛ ترک از پاکوب تابستانی زیر گرده عبور می‌کند، نه دهلیز ریزشی مسیر روته. آب آشامیدنی کافی همراه داشته باشید؛ استخر باغ‌ها منبع آب آشامیدنی نیست.",
+      "internal_note": "2024 GPX cut839 summit1.01m/maxstep18.07m/distance4.6948km/ascent1273.7m smoothed50m/window5. Report5h15 ascent minus30min breakfast=285min, intermediate pass1.61km at1h. Tobler terrain1.4=214min lower bound; rough rock/steep traverse/report supports285min. Raw moving319.6 includes short rest/GPS recording before official start; not blindly applied. Gully waypoint is32m from summer track but on DIFFERENT branch; explicitly not assigned to this route."
+    },
+    "southeast": {
+      "slug": "abak-ruteh",
+      "title": "روته تا آبک از یال جنوب‌شرقی",
+      "subtitle": "روته تا آبک از یال جنوب‌شرقی",
+      "trail_label": "روته تا آبک از یال جنوب‌شرقی",
+      "origin": "پای‌کار آبک در روته",
+      "target_label": "قلهٔ آبک",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "abak-ruteh-trailhead",
+        "abak-gully",
+        "abak"
+      ],
+      "distance_km": 5.05,
+      "ascent_m": 1300,
+      "one_way_minutes": 330,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "abak-ruteh-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
+        ],
+        "cumulative_minutes": {
+          "abak-ruteh-trailhead": 0,
+          "abak-gully": 285,
+          "abak": 330
+        }
+      },
+      "public_note": "مسیر دشوار با دهلیز پرشیب، ریزشی و دست‌به‌سنگ؛ برای افراد کم‌تجربه مناسب نیست. زمان یک‌طرفه بدون توقف طولانی تخمین زده شده است. آب و چشمهٔ آشامیدنی در مسیر گزارش نشده است؛ برف و یخ می‌توانند خطر و زمان پیمایش را افزایش دهند.",
+      "internal_note": "2021 GPX cut998 summit1.17m/maxstep33.36m/distance5.0521km/ascent1299.9m smoothed50m/window5. Recorded moving330.1min supports330 ETA; report6h ascent with~30min rests. Gully waypoint4.57km at5h elapsed, conservative285min excluding short rests; final45min includes slow scrambling. Tobler terrain1.4=230min underestimates gully, NOT used alone. Report walking with scrambling, no rope/glacier climb; west knife-edge technical route excluded."
+    }
+  },
+  "point": {
+    "slug": "abak",
+    "tile_name": "قلهٔ آبک",
+    "name": "قلهٔ آبک",
+    "short_category": "قله",
+    "category": "ارتفاعات رودبار قصران",
+    "category_key": "mountain",
+    "region": "رودبار قصران · شمیرانات · تهران",
+    "elevation_m": 3471,
+    "latitude": 35.980192,
+    "longitude": 51.515135,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ آبک",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبک",
+      "Abak"
+    ]
+  }
+}
