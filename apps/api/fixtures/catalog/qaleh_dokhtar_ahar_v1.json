@@ -1,0 +1,195 @@
+{
+  "catalog_version": "hawatch-qaleh-dokhtar-ahar-v1",
+  "primary_point": "qaleh-dokhtar-ahar",
+  "weather_points": {
+    "qaleh-dokhtar-ahar": {
+      "name": "قلهٔ قلعه‌دختر آهار",
+      "page_name": "قلهٔ قلعه‌دختر آهار",
+      "short_label": "قلهٔ قلعه‌دختر آهار",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "طبیعت‌گردی آهار و شهرستانک",
+      "region": "آهار · رودبار قصران · البرز مرکزی",
+      "aliases": [
+        "قلعه دختر آهار",
+        "قله قزل ماما",
+        "قله تاربیشه"
+      ],
+      "identity_summary": "قلهٔ قلعه‌دختر یا قزل‌ماما در خط‌الرأس تاربیشه میان آهار و شهرستانک؛ از آبشار قلعه‌دختر هراز و قلعه‌های هم‌نام مستقل است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
+        "https://www.wikiloc.com/hiking-trails/ghale-dokhtar-1403-02-21-nima-qlh-qlh-dkhtr-z-shhrstnkh-grdnh-zrgh-170298924"
+      ],
+      "latitude": 35.961628,
+      "longitude": 51.405322,
+      "elevation_m": 3203,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint در GPX منبع و تطبیق هندسهٔ مسیر؛ ارتفاع 3203 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "high_alpine"
+    },
+    "zargah-pass": {
+      "name": "گردنهٔ زرگاه",
+      "page_name": "گردنهٔ زرگاه",
+      "short_label": "گردنهٔ زرگاه",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "category": "طبیعت‌گردی آهار و شهرستانک",
+      "region": "آهار · رودبار قصران · البرز مرکزی",
+      "aliases": [
+        "گردنه زارگاه"
+      ],
+      "identity_summary": "گردنهٔ زرگاه در شمال قلعه‌دختر؛ محل پیوند مسیرهای ده‌تنگه و شهرستانک. waypoint دو ترک مستقل در فاصلهٔ حدود ۳۳ متر همان گردنه را تأیید می‌کند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
+        "https://www.wikiloc.com/hiking-trails/ghale-dokhtar-1403-02-21-nima-qlh-qlh-dkhtr-z-shhrstnkh-grdnh-zrgh-170298924"
+      ],
+      "latitude": 35.973027,
+      "longitude": 51.405423,
+      "elevation_m": 2797,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint در GPX منبع و تطبیق هندسهٔ مسیر؛ ارتفاع 2797 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "dehtangeh-waterfall": {
+      "name": "آبشار ده‌تنگه آهار",
+      "page_name": "آبشار ده‌تنگه آهار",
+      "short_label": "آبشار ده‌تنگه آهار",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "طبیعت‌گردی آهار و شهرستانک",
+      "region": "آهار · رودبار قصران · البرز مرکزی",
+      "aliases": [
+        "آبشار ده تنگه",
+        "آبشار چهل پله آهار"
+      ],
+      "identity_summary": "آبشار ده‌تنگه یا چهل‌پله در بالادست باغ‌های آهار، روی مسیر آهار به گردنهٔ زرگاه و قلعه‌دختر؛ از آبشار مصنوعی پایین‌تر مسیر مستقل است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
+        "https://kuhnavardi.com/?p=1388"
+      ],
+      "latitude": 35.969983,
+      "longitude": 51.430578,
+      "elevation_m": 2386,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint در GPX منبع و تطبیق هندسهٔ مسیر؛ ارتفاع 2386 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "tochal-ahar-village",
+    "shahrestanak"
+  ],
+  "routes": {
+    "ahar": {
+      "slug": "qaleh-dokhtar-ahar-dehtangeh",
+      "title": "آهار تا قلعه‌دختر از ده‌تنگه",
+      "subtitle": "آهار تا قلعه‌دختر از ده‌تنگه",
+      "trail_label": "آهار تا قلعه‌دختر از ده‌تنگه",
+      "origin": "روستای آهار",
+      "target_label": "قلهٔ قلعه‌دختر آهار",
+      "region": "آهار و شهرستانک · البرز مرکزی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "tochal-ahar-village",
+        "dehtangeh-waterfall",
+        "zargah-pass",
+        "qaleh-dokhtar-ahar"
+      ],
+      "distance_km": 10.51,
+      "ascent_m": 1096,
+      "one_way_minutes": 285,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+web-reports-v1",
+        "version": "qaleh-dokhtar-ahar-dehtangeh-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
+          "https://kuhnavardi.com/?p=1388"
+        ],
+        "cumulative_minutes": {
+          "tochal-ahar-village": 0,
+          "dehtangeh-waterfall": 125,
+          "zargah-pass": 220,
+          "qaleh-dokhtar-ahar": 285
+        }
+      },
+      "public_note": "مسیر طولانی کوهستانی از ده‌تنگه و گردنهٔ زرگاه؛ زمان یک‌طرفه، بدون توقف‌های طولانی و برای شرایط خشک تخمین زده شده است. پاکوب‌های باریک و شیب‌های شنی نیازمند احتیاط‌اند؛ مسیر دره در زمستان بهمن‌گیر است و جایگزین مسیر زمستانی نیست.",
+      "internal_note": "2025 GPX first summit1874 within0.58m. Trim first70points to canonical Ahar village (8.8m offtrack), outbound10.5098km, smoothed50m/window5 ascent1095.5m, maxgap71.44m. Raw moving215.4min fast group; elapsed259.3min includesrests. Conservative Tobler terrain1.4~271min and independent 2013 moderate ascent6h includingbreaks supports285min ±60. Waterfalloriginal1072/aftertrim1002 at~5.77km and pass1549/1479 at~8.53km; cumulative125/220min. Roundtrip/camp/return excluded. Existing Ahar village reused, no duplicate origin."
+    },
+    "shahrestanak": {
+      "slug": "qaleh-dokhtar-shahrestanak",
+      "title": "شهرستانک تا قلعه‌دختر از زرگاه",
+      "subtitle": "شهرستانک تا قلعه‌دختر از زرگاه",
+      "trail_label": "شهرستانک تا قلعه‌دختر از زرگاه",
+      "origin": "روستای شهرستانک",
+      "target_label": "قلهٔ قلعه‌دختر آهار",
+      "region": "آهار و شهرستانک · البرز مرکزی",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "shahrestanak",
+        "zargah-pass",
+        "qaleh-dokhtar-ahar"
+      ],
+      "distance_km": 6.64,
+      "ascent_m": 957,
+      "one_way_minutes": 210,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+web-reports-v1",
+        "version": "qaleh-dokhtar-shahrestanak-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/ghale-dokhtar-1403-02-21-nima-qlh-qlh-dkhtr-z-shhrstnkh-grdnh-zrgh-170298924",
+          "https://kuhnavardi.com/?p=1388"
+        ],
+        "cumulative_minutes": {
+          "shahrestanak": 0,
+          "zargah-pass": 150,
+          "qaleh-dokhtar-ahar": 210
+        }
+      },
+      "public_note": "زمان یک‌طرفه و بدون توقف طولانی برای شرایط خشک تخمین زده شده است. مسافت و زمان از محل شروع ترک در بالای روستای شهرستانک محاسبه شده، نه از مرکز روستا. مسیر از گردنهٔ زرگاه صعود می‌کند؛ کاخ ناصری و گردنهٔ آهاربشم در برگشت ترک‌اند و جزو این صعود نیستند.",
+      "internal_note": "2024 GPX cut243 summit6.21m/maxgap102.99m/distance6.6401km/ascent956.7m smoothed50m/window5. All timestamps synthetic ~40seconds, moving162min is INVALID and ignored. Tobler terrain1.4=202.45min conservative round210 ±45; pass~4.96km/model146 ->150. Starts upperShahrestanak35.973755,51.360045 ~688m from existing village representative weathercoordinate, within same settlement; reused canonicalvillage and explicitly disclose measured-start difference rather than invent second village/parking destination or unsupported GPX prefix. AharBashm/Naseri/descent/deliberate lunch not assigned to ascent."
+    }
+  },
+  "point": {
+    "slug": "qaleh-dokhtar-ahar",
+    "tile_name": "قلهٔ قلعه‌دختر آهار",
+    "name": "قلهٔ قلعه‌دختر آهار",
+    "short_category": "قله",
+    "category": "طبیعت‌گردی آهار و شهرستانک",
+    "category_key": "mountain",
+    "region": "آهار · رودبار قصران · البرز مرکزی",
+    "elevation_m": 3203,
+    "latitude": 35.961628,
+    "longitude": 51.405322,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ قلعه‌دختر آهار",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قلعه دختر آهار",
+      "قله قزل ماما",
+      "قله تاربیشه"
+    ]
+  }
+}

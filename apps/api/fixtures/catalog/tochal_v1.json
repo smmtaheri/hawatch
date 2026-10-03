@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v9",
+  "catalog_version": "hawatch-tochal-catalog-v10",
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -440,15 +440,20 @@
       "elevation_m": 2140,
       "status": "provisional",
       "elevation_source": "Karnaval/Gardeshgari724 references: 2140 m; PBF village has no ele; GLO-90 DEM 2087 m",
-      "page_name": "روستای آهار، مبدأ مسیر آهار–توچال",
-      "short_label": "آهار",
+      "page_name": "روستای آهار",
+      "short_label": "روستای آهار",
       "place_type": "village",
-      "aliases": [],
-      "identity_summary": "روستای آهار، مبدأ مسیر آهار–توچال؛ نقطهٔ village در محدودهٔ قلهٔ توچال",
-      "importance": "support",
+      "category_key": "village",
+      "category": "روستاهای رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": ["آهار", "روستای اهار", "Ahar village"],
+      "identity_summary": "روستای آهار در رودبار قصران؛ مقصد مستقل کوچه‌باغ‌گردی و دسترسی به شکرآب، ده‌تنگه، توچال و قلعه‌دختر.",
+      "kind": "primary",
+      "importance": "primary",
       "seo_indexable": true,
       "name_status": "official",
       "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
         "https://mojekooh.com/قله-توچال/",
         "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0295848",
         "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439"
