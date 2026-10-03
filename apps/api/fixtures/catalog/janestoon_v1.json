@@ -1,0 +1,257 @@
+{
+  "catalog_version": "hawatch-janestoon-v1",
+  "primary_point": "janestoon-east",
+  "weather_points": {
+    "janestoon-east": {
+      "name": "قلهٔ جانستون شرقی",
+      "page_name": "قلهٔ جانستون شرقی",
+      "short_label": "قلهٔ جانستون شرقی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "جانستون شرقی",
+        "جانستان شرقی",
+        "Janestoon East"
+      ],
+      "identity_summary": "قلهٔ جانستون شرقی در خط‌الرأس جانستون و ورزا، مشرف به دشت جانستون؛ از قلهٔ دیگر جانستون مستقل است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+      ],
+      "latitude": 36.041775,
+      "longitude": 51.61087,
+      "elevation_m": 3891,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint و هندسهٔ GPX منبع؛ ارتفاع 3891 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام دستگاه GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    },
+    "janestoon-west": {
+      "name": "قلهٔ جانستون غربی",
+      "page_name": "قلهٔ جانستون غربی",
+      "short_label": "قلهٔ جانستون غربی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "جانستون غربی",
+        "ورزاب ۴",
+        "ورزا ۴",
+        "Janestoon West"
+      ],
+      "identity_summary": "قلهٔ جانستون غربی در خط‌الرأس جانستون و ورزا، مشرف به دشت جانستون؛ از قلهٔ دیگر جانستون مستقل است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/janeston-gharbi-1401-07-01-nima-jnstwn-grby-wrzb-4-114405479"
+      ],
+      "latitude": 36.039337,
+      "longitude": 51.600898,
+      "elevation_m": 3902,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint و هندسهٔ GPX منبع؛ ارتفاع 3902 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام دستگاه GPS مبنای کاتالوگ نیست.",
+      "climate": "high_alpine"
+    },
+    "janestoon-abnik-trailhead": {
+      "name": "پای‌کار جانستون در آبنیک",
+      "page_name": "پای‌کار جانستون در آبنیک",
+      "short_label": "پای‌کار جانستون در آبنیک",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "طبیعت‌گردی رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز پیمایش ثبت‌شده در خیابان جانستون بالادست آبنیک؛ حدود ۶۴۰ متر از مختصات روستای آبنیک فاصله دارد و نقطهٔ دسترسی مسیر است، نه روستای دیگری.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+      ],
+      "latitude": 35.994922,
+      "longitude": 51.618248,
+      "elevation_m": 2482,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint و هندسهٔ GPX منبع؛ ارتفاع 2482 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام دستگاه GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    },
+    "biuk-agha-cave": {
+      "name": "غار بیوک‌آقا آبنیک",
+      "page_name": "غار بیوک‌آقا آبنیک",
+      "short_label": "غار بیوک‌آقا آبنیک",
+      "place_type": "landmark",
+      "category_key": "cave",
+      "category": "طبیعت‌گردی رودبار قصران",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "غار بیوک آقا",
+        "غار بیوک‌آقا جانستون"
+      ],
+      "identity_summary": "غار دست‌کند بیوک‌آقا در بالادست دشت جانستون و مسیر جنوبی صعود به جانستون؛ waypoint غار در دو ترک مستقل تأیید شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+      ],
+      "latitude": 36.027841,
+      "longitude": 51.615726,
+      "elevation_m": 3047,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint و هندسهٔ GPX منبع؛ ارتفاع 3047 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام دستگاه GPS مبنای کاتالوگ نیست.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "khersang-abnik-village",
+    "khersang-dasht-johnston",
+    "kholeno-lalan-trailhead",
+    "kholeno-lalon-gorge"
+  ],
+  "routes": {
+    "east": {
+      "slug": "janestoon-east-abnik",
+      "title": "آبنیک تا جانستون شرقی",
+      "subtitle": "آبنیک تا جانستون شرقی",
+      "trail_label": "آبنیک تا جانستون شرقی",
+      "origin": "پای‌کار جانستون در آبنیک",
+      "target_label": "قلهٔ جانستون شرقی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "janestoon-abnik-trailhead",
+        "khersang-dasht-johnston",
+        "biuk-agha-cave",
+        "janestoon-east"
+      ],
+      "distance_km": 8.54,
+      "ascent_m": 1455,
+      "one_way_minutes": 290,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "janestoon-east-abnik-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+        ],
+        "cumulative_minutes": {
+          "janestoon-abnik-trailhead": 0,
+          "khersang-dasht-johnston": 70,
+          "biuk-agha-cave": 125,
+          "janestoon-east": 290
+        }
+      },
+      "public_note": "زمان یک‌طرفه و بدون توقف طولانی تخمین زده شده است. مسیر کوهستانی دشوار است؛ شیب‌های سنگی، برف و یخ و شرایط هوا می‌توانند زمان و دشواری را افزایش دهند.",
+      "internal_note": "GPX cut first summit index1526: endpoint1.55m, maxstep17.2m, 8.5406km. Resample50m and 5-sample moving average ascent1455.3m; Tobler terrain factor1.4=289min, rounded290; recorded moving270.8min (rests excluded). Source ascent6h30 includes breakfast/pauses. Western summit not on ascent; no artificial ridge/rest points. Southern scrambling documented, not a rope/glacier climbing route. Shared meadow reused; cave waypoint crosschecked west GPX ~15m difference."
+    },
+    "west": {
+      "slug": "janestoon-west-abnik",
+      "title": "آبنیک تا جانستون غربی از یال",
+      "subtitle": "آبنیک تا جانستون غربی از یال",
+      "trail_label": "آبنیک تا جانستون غربی از یال",
+      "origin": "پای‌کار جانستون در آبنیک",
+      "target_label": "قلهٔ جانستون غربی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 2,
+      "points": [
+        "janestoon-abnik-trailhead",
+        "khersang-dasht-johnston",
+        "janestoon-west"
+      ],
+      "distance_km": 7.21,
+      "ascent_m": 1458,
+      "one_way_minutes": 335,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "janestoon-west-abnik-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/janeston-gharbi-1401-07-01-nima-jnstwn-grby-wrzb-4-114405479",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+        ],
+        "cumulative_minutes": {
+          "janestoon-abnik-trailhead": 0,
+          "khersang-dasht-johnston": 70,
+          "janestoon-west": 335
+        }
+      },
+      "public_note": "زمان یک‌طرفه و بدون توقف طولانی تخمین زده شده است. مسیر کوهستانی دشوار است؛ شیب‌های سنگی، برف و یخ و شرایط هوا می‌توانند زمان و دشواری را افزایش دهند.",
+      "internal_note": "2022 source starts upper Abnik gorge, not village (1.95km away). Prefix2024 east GPX points0..262 joins2022start within7.3m, continuous maxstep20.1m; cut first summit composite851. Distance7.2069km, smoothed ascent1458.2m. 2022 recorded moving312.6min plus prefix~22min supports335min; composite timestamps across years NEVER used as elapsed/moving time. Alternate cave descent omitted; independent Nima report recommends return on ascent ridge. Shared meadow reused. Rocky ridge is demanding but independent report no rope/glacier technical climb."
+    },
+    "lalun": {
+      "slug": "janestoon-west-lalun",
+      "title": "لالون تا جانستون غربی",
+      "subtitle": "لالون تا جانستون غربی",
+      "trail_label": "لالون تا جانستون غربی",
+      "origin": "پارکینگ بالای روستای لالان",
+      "target_label": "قلهٔ جانستون غربی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 3,
+      "points": [
+        "kholeno-lalan-trailhead",
+        "kholeno-lalon-gorge",
+        "janestoon-west"
+      ],
+      "distance_km": 7.12,
+      "ascent_m": 1368,
+      "one_way_minutes": 250,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler+recorded-moving-v1",
+        "version": "janestoon-west-lalun-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jnstwn-z-llwn-230129544",
+          "https://www.wikiloc.com/hiking-trails/qlh-khlnw-z-msyr-rosty-lln-w-khsh-khlnw-thbt-w-nshr-dr-rsnhy-hmkhwlh-211568978"
+        ],
+        "cumulative_minutes": {
+          "kholeno-lalan-trailhead": 0,
+          "kholeno-lalon-gorge": 40,
+          "janestoon-west": 250
+        }
+      },
+      "public_note": "زمان یک‌طرفه و بدون توقف طولانی تخمین زده شده است. مسیر کوهستانی دشوار است؛ شیب‌های سنگی، برف و یخ و شرایط هوا می‌توانند زمان و دشواری را افزایش دهند.",
+      "internal_note": "2025 Lalun GPX reaches exact west summit0.8m; NOT east summit (~933m away). Starts~320m above existing canonical parking; prefix existing Kholeno2025 GPX indices0..4, join22.1m, maxstep121.6m. Total7.116km ascent1367.8m; Tobler terrain1.4=248.6min round250, existing gorge23.5m fromtrack at~1.47km/38min. 2025 track GPS elevation~3886 unreliable; summit location matches2022 waypoint, DEM3902. Composite timestamps NEVER used as moving time. Author documents footpath and no rope/glacier activity. Talkhab/waterfall/Varzab pass are on other branch and excluded."
+    }
+  },
+  "point": {
+    "slug": "janestoon-east",
+    "tile_name": "قلهٔ جانستون شرقی",
+    "name": "قلهٔ جانستون شرقی",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "رودبار قصران · شمیرانات · تهران",
+    "elevation_m": 3891,
+    "latitude": 36.041775,
+    "longitude": 51.61087,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ جانستون شرقی",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جانستون شرقی",
+      "جانستان شرقی",
+      "Janestoon East"
+    ]
+  }
+}
