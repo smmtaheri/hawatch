@@ -1,0 +1,62 @@
+{
+  "catalog_version": "hawatch-sarmaho-v1",
+  "primary_point": "sarmaho",
+  "weather_points": {
+    "sarmaho": {
+      "name": "قلهٔ سرماهو",
+      "page_name": "قلهٔ سرماهو",
+      "short_label": "قلهٔ سرماهو",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "سرماهو",
+        "سرماهو البرز مرکزی",
+        "Sarmaho",
+        "Sar Maho"
+      ],
+      "identity_summary": "قلهٔ سرماهو در شرق کمان‌کوه و غرب یخچال، در البرز مرکزی؛ فعلاً مقصد مستقل آب‌وهوا است و پیمایش فنی خط‌الرأس به‌عنوان hiking Route منتشر نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091",
+        "https://www.gholleh.com/peak-information.aspx?lat=36.1251578&lon=51.4756637&peak-name=&pkidentifier=494"
+      ],
+      "latitude": 36.125163,
+      "longitude": 51.476979,
+      "elevation_m": 4111,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 4111 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "sarmaho",
+    "tile_name": "قلهٔ سرماهو",
+    "name": "قلهٔ سرماهو",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · مازندران",
+    "elevation_m": 4111,
+    "latitude": 36.125163,
+    "longitude": 51.476979,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ سرماهو",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سرماهو",
+      "سرماهو البرز مرکزی",
+      "Sarmaho",
+      "Sar Maho"
+    ]
+  }
+}

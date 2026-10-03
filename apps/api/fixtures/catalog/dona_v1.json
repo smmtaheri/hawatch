@@ -1,0 +1,214 @@
+{
+  "catalog_version": "hawatch-dona-v1",
+  "primary_point": "dona",
+  "weather_points": {
+    "dona": {
+      "name": "قلهٔ دونا",
+      "page_name": "قلهٔ دونا",
+      "short_label": "قلهٔ دونا",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "دونا",
+        "پیازک چال",
+        "پیازک‌چال",
+        "Dona",
+        "Doona"
+      ],
+      "identity_summary": "قلهٔ دونا یا پیازک‌چال در البرز مرکزی، میان روستای دونای علیا و درهٔ وارنگه‌رود؛ قلهٔ مشترک هر دو مسیر شمالی و جنوبی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-dwn-y-ly-t-qlh-hy-dwn-w-wyr-jmh-1404-04-13-220535103"
+      ],
+      "latitude": 36.165552,
+      "longitude": 51.379909,
+      "elevation_m": 3556,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 3556 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "high_alpine"
+    },
+    "dona-olya": {
+      "name": "روستای دونای علیا",
+      "page_name": "روستای دونای علیا",
+      "short_label": "روستای دونای علیا",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای مازندران",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "دونای بالا",
+        "دونا علیا",
+        "روستای دونا"
+      ],
+      "identity_summary": "روستای دونای علیا یا دونای بالا، مبدأ مسیر شمالی قلهٔ دونا؛ waypoint آغاز پیمایش داخل بافت روستا با همین هویت ادغام شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-dwn-y-ly-t-qlh-hy-dwn-w-wyr-jmh-1404-04-13-220535103"
+      ],
+      "latitude": 36.196573,
+      "longitude": 51.372975,
+      "elevation_m": 2479,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 2479 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    },
+    "dona-north-pass": {
+      "name": "گردنهٔ مسیر شمالی دونا",
+      "page_name": "گردنهٔ مسیر شمالی دونا",
+      "short_label": "گردنهٔ مسیر شمالی دونا",
+      "place_type": "pass",
+      "category_key": "landmark",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [],
+      "identity_summary": "گردنهٔ واقعی روی یال شمالی در waypoint گردنه‌ای روی یالِ ترک دونای علیا به قله؛ نام زمینه‌دار توصیفی است و مقصد مستقل جست‌وجویی نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-dwn-y-ly-t-qlh-hy-dwn-w-wyr-jmh-1404-04-13-220535103"
+      ],
+      "latitude": 36.177163,
+      "longitude": 51.383182,
+      "elevation_m": 3177,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 3177 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    },
+    "dona-south-spring": {
+      "name": "چشمهٔ مسیر جنوبی دونا",
+      "page_name": "چشمهٔ مسیر جنوبی دونا",
+      "short_label": "چشمهٔ مسیر جنوبی دونا",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [],
+      "identity_summary": "چشمهٔ بهاری مستند در مسیر صعود وارنگه‌رود به دونا، نه چشمهٔ مسیر فرود.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/990302-dwn-49745552"
+      ],
+      "latitude": 36.157815,
+      "longitude": 51.375825,
+      "elevation_m": 3210,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 3210 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "azadkouh-varangerud-start"
+  ],
+  "routes": {
+    "north": {
+      "slug": "dona-dona-olya",
+      "title": "دونای علیا تا قلهٔ دونا",
+      "subtitle": "دونای علیا تا قلهٔ دونا",
+      "trail_label": "دونای علیا تا قلهٔ دونا",
+      "origin": "روستای دونای علیا",
+      "target_label": "قلهٔ دونا",
+      "region": "البرز مرکزی · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "dona-olya",
+        "dona-north-pass",
+        "dona"
+      ],
+      "distance_km": 5.13,
+      "ascent_m": 1076,
+      "one_way_minutes": 180,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler-terrain-v1",
+        "version": "dona-dona-olya-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-dwn-y-ly-t-qlh-hy-dwn-w-wyr-jmh-1404-04-13-220535103"
+        ],
+        "cumulative_minutes": {
+          "dona-olya": 0,
+          "dona-north-pass": 120,
+          "dona": 180
+        }
+      },
+      "public_note": "زمان یک‌طرفه تخمینی و بدون توقف طولانی است؛ برف، مه و شرایط مسیر می‌توانند مدت پیمایش را افزایش دهند.",
+      "internal_note": "2025 hiking GPX cut at first shared summit coordinate approach ~index879 (summit coordinates between sources differ <5m); ~5.12km, robust ascent~1076m. Named real mountain-pass waypoint included, generic ridge/rest/stone cairns excluded. Origin inside village reused as village, no extra parking point. Smoothed Tobler x1.3 ~176min rounded180. Raw elapsed ~289min includes breakfast/photo rests. Avir and western descent are not part of this route. Source explicitly says no difficult technical obstacle on this ascent; seasonal snow conditions require separate planning."
+    },
+    "south": {
+      "slug": "dona-varangerud",
+      "title": "وارنگه‌رود تا قلهٔ دونا",
+      "subtitle": "وارنگه‌رود تا قلهٔ دونا",
+      "trail_label": "وارنگه‌رود تا قلهٔ دونا",
+      "origin": "روستای وارنگه‌رود",
+      "target_label": "قلهٔ دونا",
+      "region": "البرز مرکزی · مازندران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "azadkouh-varangerud-start",
+        "dona-south-spring",
+        "dona"
+      ],
+      "distance_km": 9.71,
+      "ascent_m": 1163,
+      "one_way_minutes": 250,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler-terrain-v1",
+        "version": "dona-varangerud-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/990302-dwn-49745552"
+        ],
+        "cumulative_minutes": {
+          "azadkouh-varangerud-start": 0,
+          "dona-south-spring": 175,
+          "dona": 250
+        }
+      },
+      "public_note": "زمان یک‌طرفه تخمینی و بدون توقف طولانی است؛ برف، مه و شرایط مسیر می‌توانند مدت پیمایش را افزایش دهند.",
+      "internal_note": "2020 mountaineering report describes southern ascent via pasture and spring, not a technical rock/glacier climb. GPX cut index750, nearest summit1.75m; outbound9.639km robust ascent1163m. Existing canonical village at36.128863,51.370756 is ~74m from GPX origin; same village/access area reused, no duplicate origin. ~0.07km/2min village connector included in rounded9.71km/250min. Spring waypoint3.7m from track. Smoothed Tobler x1.3 ~247min, rounded250. Recorded elapsed322min includes rests. Return loop and secondary ridge summits are excluded."
+    }
+  },
+  "point": {
+    "slug": "dona",
+    "tile_name": "قلهٔ دونا",
+    "name": "قلهٔ دونا",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · مازندران",
+    "elevation_m": 3556,
+    "latitude": 36.165552,
+    "longitude": 51.379909,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ دونا",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دونا",
+      "پیازک چال",
+      "پیازک‌چال",
+      "Dona",
+      "Doona"
+    ]
+  }
+}

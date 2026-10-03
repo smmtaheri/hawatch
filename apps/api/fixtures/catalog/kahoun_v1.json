@@ -1,0 +1,212 @@
+{
+  "catalog_version": "hawatch-kahoun-v1",
+  "primary_point": "kahoun",
+  "weather_points": {
+    "kahoun": {
+      "name": "قلهٔ کهون",
+      "page_name": "قلهٔ کهون",
+      "short_label": "قلهٔ کهون",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز مرکزی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "کهون",
+        "کاهون",
+        "قله کهون نمارستاق",
+        "Kahoun",
+        "Kahun"
+      ],
+      "identity_summary": "قلهٔ کهون در نمارستاق آمل، بالادست دشت لرا و گردنهٔ سه‌سنگ؛ با قلهٔ کُهنو در خوشهٔ کمان‌کوه متفاوت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+      ],
+      "latitude": 36.061099,
+      "longitude": 51.982361,
+      "elevation_m": 4017,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 4017 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "high_alpine"
+    },
+    "kahoun-namar-trailhead": {
+      "name": "پای‌کار کهون در نمارستاق",
+      "page_name": "پای‌کار کهون در نمارستاق",
+      "short_label": "پای‌کار کهون در نمارستاق",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [],
+      "identity_summary": "پارکینگ کوهنوردان در انتهای دسترسی خاکی نمار به دریوک؛ بیش از دو کیلومتر از مرکز روستای نمار فاصله دارد و با روستا ادغام نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+      ],
+      "latitude": 36.08719,
+      "longitude": 52.063063,
+      "elevation_m": 2264,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 2264 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    },
+    "chehel-cheshmeh-namar": {
+      "name": "چهل‌چشمهٔ نمارستاق",
+      "page_name": "چهل‌چشمهٔ نمارستاق",
+      "short_label": "چهل‌چشمهٔ نمارستاق",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "آسونه کر",
+        "چهل چشمه نمارستاق"
+      ],
+      "identity_summary": "چشمهٔ پرآب چهل‌چشمه یا آسونه‌کر در مسیر دریوک به دشت لرا و کهون؛ چشمه‌های نزدیک و نقاط کمپ مجزا ثبت نشده‌اند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+      ],
+      "latitude": 36.060526,
+      "longitude": 52.036876,
+      "elevation_m": 2776,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 2776 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    },
+    "lara-plain": {
+      "name": "دشت لرا",
+      "page_name": "دشت لرا",
+      "short_label": "دشت لرا",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "دشت لهرا",
+        "دشت لرا نمارستاق"
+      ],
+      "identity_summary": "دشت لرا یا لهرا در نمارستاق، عارضهٔ میانی شناخته‌شدهٔ مسیر قلهٔ کهون.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+      ],
+      "latitude": 36.060797,
+      "longitude": 52.023025,
+      "elevation_m": 2931,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 2931 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    },
+    "kahoun-se-sang-pass": {
+      "name": "گردنهٔ سه‌سنگ کهون",
+      "page_name": "گردنهٔ سه‌سنگ کهون",
+      "short_label": "گردنهٔ سه‌سنگ کهون",
+      "place_type": "pass",
+      "category_key": "landmark",
+      "category": "نقاط مسیر کوهستانی",
+      "region": "البرز مرکزی · مازندران",
+      "aliases": [
+        "سه سنگ کهون"
+      ],
+      "identity_summary": "گردنهٔ واقعی سه‌سنگ در بالادست دشت لرا، پیش از خط‌الرأس قلهٔ کهون.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+      ],
+      "latitude": 36.049726,
+      "longitude": 51.991566,
+      "elevation_m": 3633,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ واقعی از waypoint ترک منبع؛ ارتفاع 3633 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPX.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [
+    "deryouk-plain"
+  ],
+  "routes": {
+    "namar": {
+      "slug": "kahoun-namar",
+      "title": "نمارستاق تا قلهٔ کهون",
+      "subtitle": "نمارستاق تا قلهٔ کهون",
+      "trail_label": "نمارستاق تا قلهٔ کهون",
+      "origin": "پای‌کار کهون در نمارستاق",
+      "target_label": "قلهٔ کهون",
+      "region": "البرز مرکزی · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kahoun-namar-trailhead",
+        "deryouk-plain",
+        "chehel-cheshmeh-namar",
+        "lara-plain",
+        "kahoun-se-sang-pass",
+        "kahoun"
+      ],
+      "distance_km": 12.38,
+      "ascent_m": 1804,
+      "one_way_minutes": 340,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed-tobler-terrain-v1",
+        "version": "kahoun-namar-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733"
+        ],
+        "cumulative_minutes": {
+          "kahoun-namar-trailhead": 0,
+          "deryouk-plain": 30,
+          "chehel-cheshmeh-namar": 120,
+          "lara-plain": 160,
+          "kahoun-se-sang-pass": 275,
+          "kahoun": 340
+        }
+      },
+      "public_note": "زمان یک‌طرفه تخمینی و بدون توقف طولانی است؛ برف، مه و شرایط مسیر می‌توانند مدت پیمایش را افزایش دهند.",
+      "internal_note": "GPX hiking 139040733 cut at first summit approach index 2221, offset 2.03m. 12.375km; 1804m robust ascent. Continuous outbound max segment 65.91m. Deryouk canonical point is a representative of a large plain, 162m from track; reused, not duplicated. Start is 2.07km from village centre (36.0985534,52.0812755); village is road access, not hiking origin. 50m resampling/250m elevation smoothing and Tobler x1.3 ~337min rounded340. Cumulative estimates rounded5min. Outbound elapsed426min includes pauses; no overnight/camp times used. Description confirms a marked hiking trail without technical section; return river crossing is not used as an extra route."
+    }
+  },
+  "point": {
+    "slug": "kahoun",
+    "tile_name": "قلهٔ کهون",
+    "name": "قلهٔ کهون",
+    "short_category": "قله",
+    "category": "قله‌های البرز مرکزی",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · مازندران",
+    "elevation_m": 4017,
+    "latitude": 36.061099,
+    "longitude": 51.982361,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ کهون",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کهون",
+      "کاهون",
+      "قله کهون نمارستاق",
+      "Kahoun",
+      "Kahun"
+    ]
+  }
+}
