@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1] / "fixtures/catalog"
 def test_ahar_promoted_without_duplicate_or_losing_tochal_route():
     t = json.loads((ROOT / "tochal_v1.json").read_text())
     c = json.loads((ROOT / "qaleh_dokhtar_ahar_v1.json").read_text())
-    s = "tochal-ahar-village"
+    s = "ahar-village"
     p = t["weather_points"][s]
     assert p["name"] == p["page_name"] == p["short_label"] == "روستای آهار"
     assert p["kind"] == p["importance"] == "primary"

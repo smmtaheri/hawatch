@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v10",
+  "catalog_version": "hawatch-tochal-catalog-v11",
   "weather_points": {
     "tochal-sarband-square": {
       "name": "میدان سربند",
@@ -433,7 +433,7 @@
         "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040"
       ]
     },
-    "tochal-ahar-village": {
+    "ahar-village": {
       "name": "روستای آهار",
       "latitude": 35.9353996,
       "longitude": 51.4635292,
@@ -447,7 +447,7 @@
       "category": "روستاهای رودبار قصران",
       "region": "رودبار قصران · شمیرانات · تهران",
       "aliases": ["آهار", "روستای اهار", "Ahar village"],
-      "identity_summary": "روستای آهار در رودبار قصران؛ مقصد مستقل کوچه‌باغ‌گردی و دسترسی به شکرآب، ده‌تنگه، توچال و قلعه‌دختر.",
+      "identity_summary": "روستای آهار در رودبار قصران؛ مقصد مستقل کوچه‌باغ‌گردی و دسترسی به شکرآب، ده‌تنگه و قلعه‌دختر.",
       "kind": "primary",
       "importance": "primary",
       "seo_indexable": true,
@@ -882,7 +882,7 @@
       "featured": false,
       "sort_order": 5,
       "points": [
-        "tochal-ahar-village",
+        "ahar-village",
         "tochal-shakarab-ahaar",
         "tochal-qezqunchal-peak",
         "tochal-homand-tochal",
@@ -910,7 +910,7 @@
           "tochal-qezqunchal-peak remains estimated/uncertain (~212 m from this track); coordinates not auto-updated from GPX."
         ],
         "cumulative_minutes": {
-          "tochal-ahar-village": 0,
+          "ahar-village": 0,
           "tochal-shakarab-ahaar": 95,
           "tochal-qezqunchal-peak": 315,
           "tochal-homand-tochal": 360,

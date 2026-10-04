@@ -153,7 +153,7 @@ POINT_SLUG_MAP = {
     "daryasar_plain": "daryasar",
     "eskelim_waterfall": "eskelim",
     "tar_lake": "tar-lake",
-    "ahar": "tochal-ahar-village",
+    "ahar": "ahar-village",
     "amiri": "tochal-amiri-shelter",
     "barfchal": "tochal-barfchal-peak",
     "goleband": "tochal-goleband-ridge",
@@ -211,7 +211,7 @@ POINT_SLUG_MAP = {
 
 
 POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
-    "tochal-ahar-village": {
+    "ahar-village": {
         "name": "روستای آهار",
         "page_name": "روستای آهار",
         "short_label": "روستای آهار",

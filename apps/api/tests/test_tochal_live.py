@@ -32,7 +32,7 @@ EXACT_POINTS = {
     "tochal-barfchal-peak": (35.8744485, 51.4373690, 3680),
     "tochal-goleband-ridge": (35.8809109, 51.4221380, 3860),
     "tochal": (35.8843493, 51.4198766, 3955),
-    "tochal-ahar-village": (35.9353996, 51.4635292, 2140),
+    "ahar-village": (35.9353996, 51.4635292, 2140),
     "tochal-shakarab-ahaar": (35.9282559, 51.4269378, 2400),
 }
 
@@ -121,7 +121,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
         assert point.location.x == pytest.approx(lon)
         assert point.elevation_m == elev
 
-    for slug in ("tochal-velenjak-village", "tochal-hotel", "tochal-kolakchal-camp", "tochal-ahar-village", "tochal-shakarab-ahaar", "shahrestanak", "shahrestanak-naseri-palace", "tochal-naseri-junction"):
+    for slug in ("tochal-velenjak-village", "tochal-hotel", "tochal-kolakchal-camp", "ahar-village", "tochal-shakarab-ahaar", "shahrestanak", "shahrestanak-naseri-palace", "tochal-naseri-junction"):
         assert WeatherPoint.objects.get(slug=slug).status == WeatherPoint.Status.PROVISIONAL
 
     goleband = WeatherPoint.objects.get(slug="tochal-goleband-ridge")

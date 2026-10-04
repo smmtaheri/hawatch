@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-qaleh-dokhtar-ahar-v1",
+  "catalog_version": "hawatch-qaleh-dokhtar-ahar-v2",
   "primary_point": "qaleh-dokhtar-ahar",
   "weather_points": {
     "qaleh-dokhtar-ahar": {
@@ -88,7 +88,7 @@
     }
   },
   "shared_weather_points": [
-    "tochal-ahar-village",
+    "ahar-village",
     "shahrestanak"
   ],
   "routes": {
@@ -103,7 +103,7 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "tochal-ahar-village",
+        "ahar-village",
         "dehtangeh-waterfall",
         "zargah-pass",
         "qaleh-dokhtar-ahar"
@@ -122,7 +122,7 @@
           "https://kuhnavardi.com/?p=1388"
         ],
         "cumulative_minutes": {
-          "tochal-ahar-village": 0,
+          "ahar-village": 0,
           "dehtangeh-waterfall": 125,
           "zargah-pass": 220,
           "qaleh-dokhtar-ahar": 285

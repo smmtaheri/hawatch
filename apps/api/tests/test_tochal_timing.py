@@ -51,7 +51,7 @@ EXPECTED_CUMULATIVE = {
         "tochal": 390,
     },
     "tochal-ahar": {
-        "tochal-ahar-village": 0,
+        "ahar-village": 0,
         "tochal-shakarab-ahaar": 95,
         "tochal-qezqunchal-peak": 315,
         "tochal-homand-tochal": 360,
