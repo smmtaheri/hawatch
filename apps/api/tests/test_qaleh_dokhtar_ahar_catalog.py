@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from hawatch.modules.catalog.identity import metadata_for_point
+
 
 ROOT = Path(__file__).resolve().parents[1] / "fixtures/catalog"
 
@@ -13,6 +15,8 @@ def test_ahar_promoted_without_duplicate_or_losing_tochal_route():
     assert p["name"] == p["page_name"] == p["short_label"] == "روستای آهار"
     assert p["kind"] == p["importance"] == "primary"
     assert p["seo_indexable"] and p["category_key"] == "village"
+    identity = metadata_for_point(s, p, is_primary=True)
+    assert identity["name"] == identity["page_name"] == identity["short_label"] == "روستای آهار"
     assert s in c["shared_weather_points"] and s not in c["weather_points"]
     r = t["routes"]["ahar_to_tochal"]
     assert r["points"][0] == s and r["timing"]["cumulative_minutes"][s] == 0

@@ -213,8 +213,8 @@ POINT_SLUG_MAP = {
 POINT_IDENTITY_OVERRIDES: dict[str, dict[str, object]] = {
     "tochal-ahar-village": {
         "name": "روستای آهار",
-        "page_name": "روستای آهار، مبدأ مسیر آهار–توچال",
-        "short_label": "آهار",
+        "page_name": "روستای آهار",
+        "short_label": "روستای آهار",
         "place_type": "village",
         "name_status": "official",
     },
