@@ -1,0 +1,49 @@
+{
+  "catalog_version": "hawatch-olang-forest-v1",
+  "primary_point": "olang-forest",
+  "weather_points": {
+    "olang-forest": {
+      "name": "جنگل اولنگ",
+      "page_name": "جنگل اولنگ",
+      "short_label": "جنگل اولنگ",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌های البرز شرقی",
+      "region": "شاهرود · رامیان · البرز شرقی",
+      "aliases": ["جنگل اولنگ شاهرود", "جنگل اولنگ رامیان", "جنگل اولنگ گلستان", "Olang forest"],
+      "identity_summary": "جنگل اولنگ در ارتفاعات محور شاهرود–رامیان؛ مقصد جنگلی مستقل از روستای هم‌نام اولنگ در شهرستان مینودشت. مختصات نماینده از نشان نقشهٔ جاذبهٔ جنگل انتخاب شده است. دسترسی جاده‌ای و ترک خودرو، مسیر پیادهٔ ثبت‌شده محسوب نمی‌شوند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": ["https://soltansafar.com/ShahroudAttractions/Attraction4182.html", "https://lastsecond.ir/attractions/6218-olang-forest-shahroud", "https://irangaah.ir/villages/minudasht/kuhsarat/avleneg"],
+      "latitude": 36.8442847,
+      "longitude": 55.2310644,
+      "elevation_m": 1704,
+      "status": "provisional",
+      "elevation_source": "مختصات نشان جاذبهٔ جنگل اولنگ در نقشه و JSON-LD سلطان سفر؛ ارتفاع ۱۷۰۴ متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع کلی و متغیر جنگل یا گردنهٔ اولنگ.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "olang-forest",
+    "tile_name": "جنگل اولنگ",
+    "name": "جنگل اولنگ",
+    "short_category": "جنگل",
+    "category": "جنگل‌های البرز شرقی",
+    "category_key": "forest",
+    "region": "شاهرود · رامیان · البرز شرقی",
+    "elevation_m": 1704,
+    "latitude": 36.8442847,
+    "longitude": 55.2310644,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل اولنگ",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["جنگل اولنگ شاهرود", "جنگل اولنگ رامیان", "جنگل اولنگ گلستان", "Olang forest"]
+  }
+}
