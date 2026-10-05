@@ -1,0 +1,60 @@
+{
+  "catalog_version": "hawatch-ruteh-peak-v1",
+  "primary_point": "ruteh-peak",
+  "weather_points": {
+    "ruteh-peak": {
+      "name": "قلهٔ روته",
+      "page_name": "قلهٔ روته",
+      "short_label": "قلهٔ روته",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "البرز مرکزی",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "قله روته",
+        "Ruteh Peak",
+        "Routeh Peak"
+      ],
+      "identity_summary": "قلهٔ روته در شمال روستای روته و غرب لالان؛ مختصات قله با دو ترک مستقل تطبیق دارد. پسوند peak آن را از روستای هم‌نام جدا می‌کند. مسیرهای بررسی‌شده بخش سنگی و ریزشی دارند و فعلاً Route عمومی ثبت نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-rwth-150816060",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-rwth-t-qlh-rwth-jmh-1402-09-03-154017485"
+      ],
+      "latitude": 35.9842709,
+      "longitude": 51.5474788,
+      "elevation_m": 3118,
+      "status": "provisional",
+      "elevation_source": "ارتفاع 3118 متر از Open-Meteo GLO-90 DEM در مختصات تطبیق‌یافتهٔ قله؛ عدد رایج 3210–3225 متر و ارتفاع GPS برای مدل آب‌وهوا استفاده نشده‌اند.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {},
+  "point": {
+    "slug": "ruteh-peak",
+    "tile_name": "قلهٔ روته",
+    "name": "قلهٔ روته",
+    "short_category": "قله",
+    "category": "البرز مرکزی",
+    "category_key": "mountain",
+    "region": "رودبار قصران · شمیرانات · تهران",
+    "latitude": 35.9842709,
+    "longitude": 51.5474788,
+    "elevation_m": 3118,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ روته",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قله روته",
+      "Ruteh Peak",
+      "Routeh Peak"
+    ]
+  }
+}
