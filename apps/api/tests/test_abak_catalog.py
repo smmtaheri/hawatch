@@ -10,7 +10,9 @@ def test_abak_identity_and_real_intermediates():
     p = c["weather_points"]
     assert c["primary_point"] == c["point"]["slug"] == "abak"
     assert len(c["catalog_version"]) <= 32
-    assert {s for s, r in p.items() if r["seo_indexable"]} == {"abak", "pinasum"}
+    assert {s for s, r in p.items() if r["seo_indexable"]} == {
+        "abak", "pinasum", "fasham", "meygun", "ruteh-village"
+    }
     assert all(r["name"] == r["page_name"] == r["short_label"] for r in p.values())
     assert all(r["source_urls"] and r["elevation_source"] for r in p.values())
     assert c["routes"]["north"]["points"] == [
@@ -31,7 +33,9 @@ def test_abak_outbound_timing_and_safety_notes():
         assert all(a < b for a, b in zip(times, times[1:]))
         assert r["timing_status"] == "estimated"
         assert 4 < r["distance_km"] < 7 and 1000 < r["ascent_m"] < 1400
-        assert not c["weather_points"][r["points"][0]]["seo_indexable"]
+        assert c["weather_points"][r["points"][0]]["seo_indexable"] == (
+            r["slug"] != "abak-shemshak"
+        )
     assert "شرایط خشک" in c["routes"]["north"]["public_note"]
     assert "دست‌به‌سنگ" in c["routes"]["southeast"]["public_note"]
     assert {r["slug"] for r in c["routes"].values()} == {

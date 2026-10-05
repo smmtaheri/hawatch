@@ -1,7 +1,39 @@
 {
-  "catalog_version": "hawatch-abak-v1",
+  "catalog_version": "hawatch-abak-v2",
   "primary_point": "abak",
   "weather_points": {
+    "fasham": {
+      "name": "فشم",
+      "page_name": "فشم",
+      "short_label": "فشم",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهر",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "شهر فشم",
+        "Fasham"
+      ],
+      "identity_summary": "فشم، بخش شهری رودبار قصران در شمیرانات و مرکز دسترسی به میگون، روته و گرمابدر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12615108",
+        "https://en.wikipedia.org/wiki/Fasham"
+      ],
+      "latitude": 35.93006,
+      "longitude": 51.52637,
+      "elevation_m": 1959,
+      "status": "provisional",
+      "elevation_source": "مختصات بافت شهری فشم از OpenStreetMap؛ ارتفاع 1959 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "alpine",
+      "tile_name": "فشم",
+      "short_category": "شهر",
+      "image": "/images/home-scene.png",
+      "image_alt": "فشم"
+    },
     "abak": {
       "name": "قلهٔ آبک",
       "page_name": "قلهٔ آبک",
@@ -104,29 +136,38 @@
       "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2564 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
       "climate": "alpine"
     },
-    "abak-meygun-trailhead": {
-      "name": "پای‌کار آبک در میگون",
-      "page_name": "پای‌کار آبک در میگون",
-      "short_label": "پای‌کار آبک در میگون",
-      "place_type": "trailhead",
-      "category_key": "landmark",
-      "category": "ارتفاعات رودبار قصران",
+    "meygun": {
+      "name": "میگون",
+      "page_name": "میگون",
+      "short_label": "میگون",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهر",
       "region": "رودبار قصران · شمیرانات · تهران",
-      "aliases": [],
-      "identity_summary": "آغاز مسیر پلکانی بالای میگون در جادهٔ میگون به شمشک، حوالی کوچهٔ سیاهلیز؛ از مرکز شهر میگون مستقل است.",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
-      "name_status": "descriptive",
+      "aliases": [
+        "شهر میگون",
+        "Meygun",
+        "Meygoon"
+      ],
+      "identity_summary": "میگون در رودبار قصران؛ نقطهٔ داخل بافت شهری نزدیک کوچهٔ سیما (سیاهلیز سابق)، مشترک با آغاز مسیر آبک.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
       "source_urls": [
-        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609",
+        "https://mapcarta.com/12594004"
       ],
       "latitude": 35.957207,
       "longitude": 51.493653,
       "elevation_m": 2152,
       "status": "provisional",
       "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2152 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "tile_name": "میگون",
+      "short_category": "شهر",
+      "image": "/images/home-scene.png",
+      "image_alt": "میگون"
     },
     "abak-meygun-pass": {
       "name": "گردنهٔ یال میگون",
@@ -152,29 +193,38 @@
       "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2470 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
       "climate": "alpine"
     },
-    "abak-ruteh-trailhead": {
-      "name": "پای‌کار آبک در روته",
-      "page_name": "پای‌کار آبک در روته",
-      "short_label": "پای‌کار آبک در روته",
-      "place_type": "trailhead",
-      "category_key": "landmark",
-      "category": "ارتفاعات رودبار قصران",
+    "ruteh-village": {
+      "name": "روستای روته",
+      "page_name": "روستای روته",
+      "short_label": "روستای روته",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
       "region": "رودبار قصران · شمیرانات · تهران",
-      "aliases": [],
-      "identity_summary": "محل شروع پیمایش پس از پل روته؛ صفحهٔ هواشناسی کل روستا را نمایندگی نمی‌کند.",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
-      "name_status": "descriptive",
+      "aliases": [
+        "روته",
+        "روستای روته فشم",
+        "Ruteh"
+      ],
+      "identity_summary": "روستای روته در رودبار قصران؛ نقطهٔ داخل بافت روستا کنار پل و آغاز مسیر آبک، مستقل از قلهٔ روته.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
       "source_urls": [
-        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245",
+        "https://en.wikipedia.org/wiki/Ruteh"
       ],
       "latitude": 35.962639,
       "longitude": 51.543286,
       "elevation_m": 2198,
       "status": "provisional",
       "elevation_source": "مختصات waypoint فایل GPX منبع؛ ارتفاع 2198 متر از Open-Meteo GLO-90 DEM در همین مختصات. ارتفاع خام GPS مبنای کاتالوگ نیست.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "tile_name": "روستای روته",
+      "short_category": "روستا",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای روته"
     },
     "abak-gully": {
       "name": "دهلیز آبک",
@@ -246,13 +296,13 @@
       "title": "میگون تا آبک از یال جنوب‌غربی",
       "subtitle": "میگون تا آبک از یال جنوب‌غربی",
       "trail_label": "میگون تا آبک از یال جنوب‌غربی",
-      "origin": "پای‌کار آبک در میگون",
+      "origin": "میگون",
       "target_label": "قلهٔ آبک",
       "region": "رودبار قصران · شمیرانات · تهران",
       "featured": true,
       "sort_order": 2,
       "points": [
-        "abak-meygun-trailhead",
+        "meygun",
         "abak-meygun-pass",
         "abak"
       ],
@@ -269,7 +319,7 @@
           "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
         ],
         "cumulative_minutes": {
-          "abak-meygun-trailhead": 0,
+          "meygun": 0,
           "abak-meygun-pass": 60,
           "abak": 285
         }
@@ -282,13 +332,13 @@
       "title": "روته تا آبک از یال جنوب‌شرقی",
       "subtitle": "روته تا آبک از یال جنوب‌شرقی",
       "trail_label": "روته تا آبک از یال جنوب‌شرقی",
-      "origin": "پای‌کار آبک در روته",
+      "origin": "روستای روته",
       "target_label": "قلهٔ آبک",
       "region": "رودبار قصران · شمیرانات · تهران",
       "featured": true,
       "sort_order": 3,
       "points": [
-        "abak-ruteh-trailhead",
+        "ruteh-village",
         "abak-gully",
         "abak"
       ],
@@ -305,7 +355,7 @@
           "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
         ],
         "cumulative_minutes": {
-          "abak-ruteh-trailhead": 0,
+          "ruteh-village": 0,
           "abak-gully": 285,
           "abak": 330
         }

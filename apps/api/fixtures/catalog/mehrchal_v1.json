@@ -1,6 +1,40 @@
 {
-  "catalog_version": "hawatch-mehrchal-catalog-v1",
+  "catalog_version": "hawatch-mehrchal-catalog-v2",
   "weather_points": {
+    "garmabdar": {
+      "name": "روستای گرمابدر",
+      "page_name": "روستای گرمابدر",
+      "short_label": "روستای گرمابدر",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "گرمابدر",
+        "گرمابدر فشم",
+        "Garmabdar"
+      ],
+      "identity_summary": "روستای گرمابدر در رودبار قصران؛ بافت روستا مستقل از محیط‌بانی و مبدأ مسیر شمالی مهرچال در شرق روستاست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Garmabdar",
+        "https://www.wikidata.org/wiki/Q610868",
+        "https://geonames.nga.mil/geon-ags/rest/services/RESEARCH/GIS_OUTPUT/MapServer/0/907567/htmlPopup?f=html"
+      ],
+      "latitude": 35.98833,
+      "longitude": 51.63167,
+      "elevation_m": 2455,
+      "status": "provisional",
+      "elevation_source": "مختصات بافت روستای گرمابدر از NGA و Wikidata؛ ارتفاع 2455 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "alpine",
+      "tile_name": "روستای گرمابدر",
+      "short_category": "روستا",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای گرمابدر"
+    },
     "mehrchal-imameh-trailhead": {
       "name": "مبدأ مسیر مهرچال؛ امامه بالا",
       "page_name": "مبدأ مسیر مهرچال از امامه",
