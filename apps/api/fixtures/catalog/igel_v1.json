@@ -1,0 +1,185 @@
+{
+  "catalog_version": "hawatch-igel-v1",
+  "primary_point": "igel-waterfall",
+  "weather_points": {
+    "igel": {
+      "name": "روستای ایگل",
+      "page_name": "روستای ایگل",
+      "short_label": "روستای ایگل",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "ایگل",
+        "ایگِل",
+        "ایگُل",
+        "Igel",
+        "Igol",
+        "Egel"
+      ],
+      "identity_summary": "روستای ایگل در رودبار قصران؛ نقطهٔ دسترسی داخل محدودهٔ روستا مشترک با آغاز پیاده‌روی آبشار، بدون ساخت پارکینگ تکراری.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+        "https://www.wikiloc.com/hiking-trails/eagle-waterfall-00-06-26-abshr-ygl-84085272"
+      ],
+      "latitude": 35.909357,
+      "longitude": 51.490059,
+      "elevation_m": 1975,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint ترک پیادهٔ ایگل؛ ارتفاع 1975 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "روستای ایگل",
+      "short_category": "روستا",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای ایگل"
+    },
+    "igel-waterfall-junction": {
+      "name": "دوراهی مسیر آبشار ایگل",
+      "page_name": "دوراهی مسیر آبشار ایگل",
+      "short_label": "دوراهی مسیر آبشار ایگل",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "دوراهی آبشار ایگل"
+      ],
+      "identity_summary": "دوراهی واقعی پاکوب آبشار ایگل، ثبت‌شده با waypoint «دوراهی سمت چپ» در GPX؛ نام توصیفی وابسته به مسیر، نه مقصد مستقل.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+        "https://www.wikiloc.com/hiking-trails/eagle-waterfall-00-06-26-abshr-ygl-84085272"
+      ],
+      "latitude": 35.905428,
+      "longitude": 51.470757,
+      "elevation_m": 2142,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint ترک پیادهٔ ایگل؛ ارتفاع 2142 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "igel-waterfall": {
+      "name": "آبشار ایگل",
+      "page_name": "آبشار ایگل",
+      "short_label": "آبشار ایگل",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشار",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "aliases": [
+        "آبشار ایگِل",
+        "آبشار ایگُل",
+        "Igel Waterfall",
+        "Igol Waterfall"
+      ],
+      "identity_summary": "آبشار ایگل در درهٔ جنوب‌غرب روستای ایگل؛ مقصد پیاده‌روی رودبار قصران، مستقل از مسیر بالادست و آبشارهای دیگر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+        "https://www.wikiloc.com/hiking-trails/eagle-waterfall-00-06-26-abshr-ygl-84085272"
+      ],
+      "latitude": 35.898319,
+      "longitude": 51.46923,
+      "elevation_m": 2351,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint ترک پیادهٔ ایگل؛ ارتفاع 2351 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "آبشار ایگل",
+      "short_category": "آبشار",
+      "image": "/images/home-scene.png",
+      "image_alt": "آبشار ایگل"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "village": {
+      "slug": "igel-waterfall",
+      "title": "روستای ایگل تا آبشار ایگل",
+      "subtitle": "پیاده‌روی از کوچه‌باغ‌های ایگل و دوراهی پاکوب تا آبشار",
+      "trail_label": "ایگل تا آبشار ایگل",
+      "origin": "روستای ایگل",
+      "target_label": "آبشار ایگل",
+      "region": "رودبار قصران · شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "igel",
+        "igel-waterfall-junction",
+        "igel-waterfall"
+      ],
+      "distance_km": 3.26,
+      "ascent_m": 390,
+      "one_way_minutes": 150,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+dem-profile+web-reports-v1",
+        "version": "igel-waterfall-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+          "https://www.wikiloc.com/hiking-trails/eagle-waterfall-00-06-26-abshr-ygl-84085272",
+          "https://kuhnavardi.com/آبشار-ایگل/"
+        ],
+        "cumulative_minutes": {
+          "igel": 0,
+          "igel-waterfall-junction": 75,
+          "igel-waterfall": 150
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه در شرایط خشک و بدون توقف طولانی است. بخش پایانی سنگی و در بارندگی لغزنده است؛ از پاکوب مشخص بروید، وارد باغ‌های خصوصی نشوید و آب رودخانه را آشامیدنی فرض نکنید.",
+      "public_point_notes": {
+        "igel-waterfall-junction": "در این محدوده چند پاکوب و راه باغ خصوصی وجود دارد؛ جهت را با نقشهٔ مسیر و راه‌بلد کنترل کنید."
+      },
+      "internal_note": "2021 GPX outbound cut303; waterfall closest3.84m, junction closest0.35m at2234.8m; distance3255.1m/maxstep55.15m. First1997m and target2351m DEM profile every200m; net354m plus origin waypoint1975m and minor descents; ascent rounded conservatively390m. GPX smoothed gain304m is reference only. Recorded outbound253min/moving180min include slow progress; web walking reference~120min. Medium150min ±45 with final rocky/route-finding allowance; junction75min. Return leg, meal/camp dwell and 2025 upper loop are not used for ETA. No unnamed meadow, rest-area, bakery or shop points published."
+    }
+  },
+  "point": {
+    "slug": "igel-waterfall",
+    "name": "آبشار ایگل",
+    "page_name": "آبشار ایگل",
+    "short_label": "آبشار ایگل",
+    "place_type": "waterfall",
+    "category_key": "waterfall",
+    "category": "آبشار",
+    "region": "رودبار قصران · شمیرانات · تهران",
+    "aliases": [
+      "آبشار ایگِل",
+      "آبشار ایگُل",
+      "Igel Waterfall",
+      "Igol Waterfall"
+    ],
+    "identity_summary": "آبشار ایگل در درهٔ جنوب‌غرب روستای ایگل؛ مقصد پیاده‌روی رودبار قصران، مستقل از مسیر بالادست و آبشارهای دیگر.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+      "https://www.wikiloc.com/hiking-trails/eagle-waterfall-00-06-26-abshr-ygl-84085272"
+    ],
+    "latitude": 35.898319,
+    "longitude": 51.46923,
+    "elevation_m": 2351,
+    "status": "provisional",
+    "elevation_source": "مختصات waypoint ترک پیادهٔ ایگل؛ ارتفاع 2351 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "climate": "alpine",
+    "tile_name": "آبشار ایگل",
+    "short_category": "آبشار",
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار ایگل",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}
