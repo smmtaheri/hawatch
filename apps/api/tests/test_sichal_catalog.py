@@ -15,6 +15,9 @@ def test_sichal_identity_shared_origin_and_real_intermediates():
     assert {s for s, p in points.items() if p["seo_indexable"]} == {"sichal", "darbandsar"}
     assert all(p["name"] == p["page_name"] == p["short_label"] for p in points.values())
     assert all(p["source_urls"] and p["elevation_source"] for p in points.values())
+    for point in points.values():
+        for field, limit in {"name": 80, "page_name": 160, "short_label": 80, "region": 64, "identity_summary": 255, "elevation_source": 255}.items():
+            assert len(point[field]) <= limit
     assert points["darbandsar"]["place_type"] == points["darbandsar"]["category_key"] == "neighborhood"
     assert catalog["routes"]["ahar"]["points"] == ["ahar-village", "dehtangeh-upper-waterfall", "sichal"]
     assert catalog["routes"]["dizin"]["points"] == ["sichal-dizin-trailhead", "dizin-upper-cable-car-station", "sichal"]
