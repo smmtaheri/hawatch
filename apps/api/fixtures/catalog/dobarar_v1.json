@@ -1,6 +1,41 @@
 {
-  "catalog_version": "hawatch-dobarar-catalog-v3",
+  "catalog_version": "hawatch-dobarar-catalog-v4",
   "weather_points": {
+    "hoir-lake": {
+      "name": "دریاچهٔ هویر",
+      "page_name": "دریاچهٔ هویر",
+      "short_label": "دریاچهٔ هویر",
+      "tile_name": "هویر",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه",
+      "short_category": "دریاچه",
+      "region": "دماوند · دریاچه‌های تار و هویر · تهران",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "دریاچه هویر",
+        "هویر",
+        "Hoir Lake",
+        "Havir Lake",
+        "Hoveyr Lake"
+      ],
+      "identity_summary": "دریاچهٔ هویر در شرق دریاچهٔ تار و شمال زرین‌کوه در شهرستان دماوند؛ مقصد مستقل از روستای هویر و مسیر صعود دوبرار.",
+      "source_urls": [
+        "https://www.openstreetmap.org/way/614004574",
+        "https://mapcarta.com/W614004574"
+      ],
+      "latitude": 35.7315,
+      "longitude": 52.2446,
+      "elevation_m": 2875,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ پهنهٔ واقعی دریاچه از OSM way 614004574؛ Open-Meteo GLO-90 DEM برابر ۲۸۷۵ متر.",
+      "climate": "lake_valley",
+      "image": "/images/home-scene.png",
+      "image_alt": "دریاچهٔ هویر در نزدیکی دریاچهٔ تار"
+    },
     "dobrar-west": {
       "name": "قلهٔ دوبرار غربی",
       "page_name": "قلهٔ دوبرار غربی در خط‌الرأس دوبرار",
@@ -972,21 +1007,21 @@
       "elevation_source": "مختصات روستا از OpenStreetMap؛ ارتفاع DEM سرویس Open-Meteo GLO-90 برابر 2494 متر است.",
       "climate": "meadow"
     },
-    "hoir-lake": {
-      "name": "دریاچهٔ هویر",
-      "page_name": "دریاچهٔ هویر",
-      "short_label": "دریاچهٔ هویر",
-      "place_type": "lake",
+    "dobrar-east-hoir-viewpoint": {
+      "name": "چشم‌انداز هویر در مسیر دوبرار شرقی",
+      "page_name": "چشم‌انداز هویر در مسیر دوبرار شرقی",
+      "short_label": "چشم‌انداز هویر",
+      "place_type": "landmark",
       "aliases": [
-        "دریاچهٔ هویر",
-        "دریاچهٔ هویر"
+        "چشم‌انداز هویر در مسیر دوبرار شرقی"
       ],
-      "identity_summary": "دریاچهٔ هویر؛ عارضهٔ میانی مسیر دریاچهٔ تار تا قلهٔ دوبرار شرقی",
+      "identity_summary": "نقطهٔ دیدِ دریاچهٔ هویر روی مسیر صعود دوبرار شرقی از تار؛ مختصات روی یال است و با محل واقعی دریاچه تفاوت دارد.",
       "importance": "support",
       "kind": "route_point",
       "seo_indexable": false,
-      "name_status": "established",
+      "name_status": "descriptive",
       "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-dwbrr-z-drychh-tr-152050094",
         "https://www.openstreetmap.org/?mlat=35.756097&mlon=52.236203#map=15/35.756097/52.236203"
       ],
       "latitude": 35.756097,
@@ -994,7 +1029,8 @@
       "elevation_m": 3532,
       "status": "provisional",
       "elevation_source": "مختصات از ترک‌های پیمایش دوبرار؛ Open-Meteo GLO-90 DEM برابر 3532 متر است. ارتفاع GPX صرفاً مرجع هندسه است.",
-      "climate": "lake_valley"
+      "climate": "alpine",
+      "category_key": "mountain"
     },
     "rakhsh-1": {
       "name": "قلهٔ رخش یک",
@@ -1314,7 +1350,7 @@
     "tar": {
       "slug": "tar-to-dobrar-east",
       "title": "دریاچهٔ تار تا قلهٔ دوبرار شرقی",
-      "subtitle": "مسیر دریاچهٔ تار و دریاچهٔ هویر تا قلهٔ دوبرار شرقی",
+      "subtitle": "از دریاچهٔ تار و چشم‌انداز هویر تا قلهٔ دوبرار شرقی",
       "trail_label": "مسیر شرقی از تار تا دوبرار",
       "origin": "دریاچهٔ تار",
       "target_label": "قلهٔ دوبرار شرقی",
@@ -1323,7 +1359,7 @@
       "sort_order": 4,
       "points": [
         "tar-lake",
-        "hoir-lake",
+        "dobrar-east-hoir-viewpoint",
         "dobrar-east"
       ],
       "distance_km": 6.2,
@@ -1345,7 +1381,7 @@
         ],
         "cumulative_minutes": {
           "tar-lake": 0,
-          "hoir-lake": 150,
+          "dobrar-east-hoir-viewpoint": 150,
           "dobrar-east": 300
         },
         "notes": [

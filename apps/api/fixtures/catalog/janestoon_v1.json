@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-janestoon-v1",
+  "catalog_version": "hawatch-janestoon-v2",
   "primary_point": "janestoon-east",
   "weather_points": {
     "janestoon-east": {
@@ -113,7 +113,7 @@
   },
   "shared_weather_points": [
     "khersang-abnik-village",
-    "khersang-dasht-johnston",
+    "dasht-janestoon",
     "kholeno-lalan-trailhead",
     "kholeno-lalon-gorge"
   ],
@@ -130,7 +130,7 @@
       "sort_order": 1,
       "points": [
         "janestoon-abnik-trailhead",
-        "khersang-dasht-johnston",
+        "dasht-janestoon",
         "biuk-agha-cave",
         "janestoon-east"
       ],
@@ -148,7 +148,7 @@
         ],
         "cumulative_minutes": {
           "janestoon-abnik-trailhead": 0,
-          "khersang-dasht-johnston": 70,
+          "dasht-janestoon": 70,
           "biuk-agha-cave": 125,
           "janestoon-east": 290
         }
@@ -168,7 +168,7 @@
       "sort_order": 2,
       "points": [
         "janestoon-abnik-trailhead",
-        "khersang-dasht-johnston",
+        "dasht-janestoon",
         "janestoon-west"
       ],
       "distance_km": 7.21,
@@ -186,7 +186,7 @@
         ],
         "cumulative_minutes": {
           "janestoon-abnik-trailhead": 0,
-          "khersang-dasht-johnston": 70,
+          "dasht-janestoon": 70,
           "janestoon-west": 335
         }
       },

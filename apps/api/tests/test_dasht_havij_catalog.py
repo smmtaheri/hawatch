@@ -21,9 +21,9 @@ def test_dasht_havij_is_an_independent_indexable_destination():
 def test_promotion_preserves_existing_route_chains_and_metrics():
     catalog = json.loads(CATALOG.read_text())
     expected = {
-        "afjeh-hoyej-rizan": (["rizan-afjeh-trailhead", "dasht-havij", "rizan"], 6.44, 1590),
-        "andar-person-rizan": (["rizan-afjeh-trailhead", "dasht-havij", "rizan-andar", "rizan-person", "rizan"], 10.48, 1738),
-        "afjeh-hoyej-person": (["rizan-afjeh-trailhead", "dasht-havij", "rizan-andar", "rizan-person"], 6.26, 1103),
+        "afjeh-hoyej-rizan": (["afjeh", "dasht-havij", "rizan"], 6.44, 1590),
+        "andar-person-rizan": (["afjeh", "dasht-havij", "rizan-andar", "rizan-person", "rizan"], 10.48, 1738),
+        "afjeh-hoyej-person": (["afjeh", "dasht-havij", "rizan-andar", "rizan-person"], 6.26, 1103),
     }
     for slug, (points, distance, ascent) in expected.items():
         route = catalog["routes"][slug]

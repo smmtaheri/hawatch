@@ -1,19 +1,25 @@
 {
-  "catalog_version": "hawatch-rizan-catalog-v4",
+  "catalog_version": "hawatch-rizan-catalog-v5",
   "weather_points": {
-    "rizan-afjeh-trailhead": {
-      "name": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
-      "page_name": "مبدأ مسیر قلهٔ ریزان از افجه",
-      "short_label": "مبدأ افجه",
-      "place_type": "trailhead",
-      "category_key": "mountain",
-      "aliases": ["مبدأ ریزان افجه", "نگهبانی آخر روستا افجه", "Rizan Afjeh trailhead"],
-      "identity_summary": "آغاز بخش پیادهٔ مسیر افجه و دشت هویج به قلهٔ ریزان در انتهای بافت روستا",
+    "afjeh": {
+      "name": "روستای افجه",
+      "page_name": "روستای افجه",
+      "short_label": "افجه",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "افجه",
+        "روستای افجه",
+        "Afjeh",
+        "Afcheh"
+      ],
+      "identity_summary": "روستای افجه در لواسانات؛ نقطهٔ دسترسی به دشت هویج و مسیرهای ریزان و پرسون، با مختصات موجود در انتهای بافت روستا.",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
+        "https://www.irangaah.ir/villages/shemiranat/lavasan-kuchak/afejeeh",
         "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
         "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
       ],
@@ -22,7 +28,13 @@
       "elevation_m": 2072,
       "status": "provisional",
       "elevation_source": "Waypoint نگهبانی آخر روستا در ترک قلهٔ ریزان؛ ارتفاع کاتالوگ با DEM نوداد Open-Meteo کنترل می‌شود.",
-      "climate": "alpine"
+      "climate": "alpine",
+      "tile_name": "افجه",
+      "short_category": "روستا",
+      "category": "روستا",
+      "region": "لواسانات · شمیرانات · تهران",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای افجه در لواسانات"
     },
     "dasht-havij": {
       "name": "دشت هویج",
@@ -164,13 +176,13 @@
       "title": "افجه و دشت هویج تا قلهٔ ریزان",
       "subtitle": "از مبدأ افجه و دشت هویج تا یال جنوبی و قلهٔ ریزان",
       "trail_label": "مسیر افجه–دشت هویج–ریزان",
-      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "origin": "روستای افجه",
       "target_label": "قلهٔ ریزان",
       "region": "البرز مرکزی · لواسانات و دشت هویج",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "rizan-afjeh-trailhead",
+        "afjeh",
         "dasht-havij",
         "rizan"
       ],
@@ -186,7 +198,7 @@
         "tracks/rizan/rizan-afjeh-hoyej-primary.gpx"
       ],
       "public_point_notes": {
-        "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "afjeh": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
         "dasht-havij": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر استاندارد است."
       }
     },
@@ -195,13 +207,13 @@
       "title": "خط‌الرأس اندار و پرسون تا قلهٔ ریزان",
       "subtitle": "از پای‌کار افجه و دشت هویج، اندار و پرسون تا قلهٔ ریزان",
       "trail_label": "مسیر اندار–پرسون–ریزان",
-      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "origin": "روستای افجه",
       "target_label": "قلهٔ ریزان",
       "region": "البرز مرکزی · خط‌الرأس لواسانات",
       "featured": false,
       "sort_order": 2,
       "points": [
-        "rizan-afjeh-trailhead",
+        "afjeh",
         "dasht-havij",
         "rizan-andar",
         "rizan-person",
@@ -218,7 +230,7 @@
         "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
       ],
       "public_point_notes": {
-        "rizan-afjeh-trailhead": "ترک خط‌الرأس حلقه‌ای ثبت شده و پای‌کار آن به‌عنوان مبدأ بخش پیادهٔ مسیر در نظر گرفته شده است.",
+        "afjeh": "ترک خط‌الرأس حلقه‌ای ثبت شده و پای‌کار آن به‌عنوان مبدأ بخش پیادهٔ مسیر در نظر گرفته شده است.",
         "dasht-havij": "دشت هویج عارضهٔ میانی مشترک با مسیر استاندارد افجه–ریزان است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است.",
         "rizan-person": "قلهٔ پرسون عارضهٔ واقعیِ خط‌الرأس پیش از ریزان است."
@@ -229,13 +241,13 @@
       "title": "افجه و دشت هویج تا قلهٔ پرسون",
       "subtitle": "از مبدأ افجه و دشت هویج، با عبور از اندار تا قلهٔ پرسون",
       "trail_label": "مسیر افجه–دشت هویج–اندر–پرسون",
-      "origin": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
+      "origin": "روستای افجه",
       "target_label": "قلهٔ پرسون",
       "region": "البرز مرکزی · لواسانات و دشت هویج",
       "featured": false,
       "sort_order": 3,
       "points": [
-        "rizan-afjeh-trailhead",
+        "afjeh",
         "dasht-havij",
         "rizan-andar",
         "rizan-person"
@@ -251,7 +263,7 @@
         "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
       ],
       "public_point_notes": {
-        "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
+        "afjeh": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
         "dasht-havij": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است."
       }

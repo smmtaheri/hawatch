@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-khersang-catalog-v1",
+  "catalog_version": "hawatch-khersang-catalog-v2",
   "weather_points": {
     "khersang": {
       "name": "قلهٔ خرسنگ",
@@ -60,32 +60,41 @@
       "elevation_source": "مختصات و ارتفاع ۲۴۰۰ متر روستای آبنیک از GeoNames/Wikidata و گزارش‌های مسیر؛ مقدار برای کنترل DEM موقت است.",
       "climate": "forest_fog"
     },
-    "khersang-dasht-johnston": {
-      "name": "دشت جانستون در مسیر خرسنگ",
-      "page_name": "دشت جانستون؛ landmark مسیر خرسنگ",
+    "dasht-janestoon": {
+      "name": "دشت جانستون",
+      "page_name": "دشت جانستون",
       "short_label": "دشت جانستون",
       "place_type": "meadow",
       "aliases": [
         "دشت جانستون",
         "دشت جانستان",
+        "دشت جان استون",
+        "Dasht Janestoon",
         "Johnston plain",
         "Dasht-e Johnston"
       ],
-      "identity_summary": "دشت جانستون، عارضهٔ طبیعیِ میانی در مسیر آبنیک به خط‌الرأس خرسنگ",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "identity_summary": "دشت جانستون در بالادست روستای آبنیک در رودبار قصران؛ مقصد طبیعت‌گردی و نقطهٔ مشترک مسیرهای جانستون و خرسنگ.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-khrsng-z-rwsty-abnykh-1404-04-20-221495853",
         "https://www.wikiloc.com/mountaineering-trails/qll-khrsng-myny-w-khrsng-jnwby-52276065"
       ],
-      "latitude": 36.0136380,
-      "longitude": 51.6225610,
+      "latitude": 36.013638,
+      "longitude": 51.622561,
       "elevation_m": 2773,
       "status": "provisional",
       "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ابتدای دشت جانستون در ترک‌های مستقل؛ DEM برای این مختصات در اعتبارسنجی کنترل می‌شود.",
-      "climate": "meadow"
+      "climate": "meadow",
+      "tile_name": "دشت جانستون",
+      "category_key": "meadow",
+      "category": "دشت",
+      "short_category": "دشت",
+      "region": "آبنیک · رودبار قصران · تهران",
+      "image": "/images/home-scene.png",
+      "image_alt": "دشت جانستون در ارتفاعات آبنیک"
     },
     "khersang-lari-gardan": {
       "name": "گردنهٔ ولاره در مسیر خرسنگ",
@@ -130,7 +139,7 @@
       "sort_order": 1,
       "points": [
         "khersang-abnik-village",
-        "khersang-dasht-johnston",
+        "dasht-janestoon",
         "khersang-lari-gardan",
         "khersang"
       ],
@@ -156,7 +165,7 @@
         ],
         "cumulative_minutes": {
           "khersang-abnik-village": 0,
-          "khersang-dasht-johnston": 90,
+          "dasht-janestoon": 90,
           "khersang-lari-gardan": 300,
           "khersang": 360
         },
