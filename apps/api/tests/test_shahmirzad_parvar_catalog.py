@@ -25,6 +25,8 @@ def test_shahmirzad_cluster_has_distinct_searchable_point_only_destinations():
         assert owners == ["shahmirzad_parvar_v1.json"]
     assert points["shahmirzad"]["place_type"] == points["shahmirzad"]["category_key"] == "city"
     assert points["parvar"]["category_key"] == points["rudbarak-shahmirzad"]["category_key"] == "village"
+    assert points["parvar-protected-area"]["seo"]["title"].startswith(
+        "آب‌وهوای منطقهٔ حفاظت‌شدهٔ پرور؛")
     for prefix, village in [("rudbarak-shahmirzad-forest", "rudbarak-shahmirzad"),
                             ("parvar-protected-area", "parvar")]:
         assert points[prefix]["category_key"] == "forest"

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-shahmirzad-parvar-v1",
+  "catalog_version": "hawatch-shahmirzad-parvar-v2",
   "primary_point": "rudbarak-shahmirzad-forest",
   "weather_points": {
     "rudbarak-shahmirzad-forest": {
@@ -88,7 +88,11 @@
       "elevation_m": 2191,
       "status": "provisional",
       "elevation_source": "نقطهٔ نمایندهٔ منطقه از International Parks، درون محدودهٔ جغرافیایی پرور؛ مستقل از روستا و نه مرکز یک مسیر پیاده. ارتفاع ۲۱۹۱ متر از Open-Meteo GLO-90 DEM.",
-      "climate": "forest_fog"
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای منطقهٔ حفاظت‌شدهٔ پرور؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای منطقهٔ حفاظت‌شدهٔ پرور در محدودهٔ شهمیرزاد سمنان؛ دما، باد و بارش را برای برنامه‌ریزی سفر بررسی کنید."
+      }
     },
     "shahmirzad": {
       "name": "شهمیرزاد",
