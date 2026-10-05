@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-rizan-catalog-v3",
+  "catalog_version": "hawatch-rizan-catalog-v4",
   "weather_points": {
     "rizan-afjeh-trailhead": {
       "name": "مبدأ مسیر ریزان؛ نگهبانی آخر افجه",
@@ -24,17 +24,23 @@
       "elevation_source": "Waypoint نگهبانی آخر روستا در ترک قلهٔ ریزان؛ ارتفاع کاتالوگ با DEM نوداد Open-Meteo کنترل می‌شود.",
       "climate": "alpine"
     },
-    "rizan-hoyej-meadow": {
-      "name": "دشت هویج؛ عارضهٔ میانی مسیر ریزان",
-      "page_name": "دشت هویج در مسیر قلهٔ ریزان",
+    "dasht-havij": {
+      "name": "دشت هویج",
+      "page_name": "دشت هویج",
       "short_label": "دشت هویج",
+      "tile_name": "دشت هویج",
+      "short_category": "دشت",
+      "category": "دشت",
+      "region": "افجه · لواسانات · تهران",
+      "image": "/images/home-scene.png",
+      "image_alt": "دشت هویج در ارتفاعات افجه",
       "place_type": "meadow",
       "category_key": "meadow",
-      "aliases": ["دشت هویج", "گرچال", "Dasht Hoyej", "Garchal meadow"],
-      "identity_summary": "دشت هویج، عارضهٔ طبیعی شناخته‌شده و محل عبور مسیر استاندارد افجه به قلهٔ ریزان",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "aliases": ["دشت هویج", "گرچال", "دشت گرچال", "Dasht Havij", "Dasht Hoyej", "Garchal meadow"],
+      "identity_summary": "دشت هویج یا گرچال، مقصد طبیعت‌گردی در ارتفاعات روستای افجه در لواسانات و محل عبور مسیرهای ریزان و پرسون",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
@@ -165,7 +171,7 @@
       "sort_order": 1,
       "points": [
         "rizan-afjeh-trailhead",
-        "rizan-hoyej-meadow",
+        "dasht-havij",
         "rizan"
       ],
       "distance_km": 6.44,
@@ -181,7 +187,7 @@
       ],
       "public_point_notes": {
         "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
-        "rizan-hoyej-meadow": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر استاندارد است."
+        "dasht-havij": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر استاندارد است."
       }
     },
     "andar-person-rizan": {
@@ -196,7 +202,7 @@
       "sort_order": 2,
       "points": [
         "rizan-afjeh-trailhead",
-        "rizan-hoyej-meadow",
+        "dasht-havij",
         "rizan-andar",
         "rizan-person",
         "rizan"
@@ -213,7 +219,7 @@
       ],
       "public_point_notes": {
         "rizan-afjeh-trailhead": "ترک خط‌الرأس حلقه‌ای ثبت شده و پای‌کار آن به‌عنوان مبدأ بخش پیادهٔ مسیر در نظر گرفته شده است.",
-        "rizan-hoyej-meadow": "دشت هویج عارضهٔ میانی مشترک با مسیر استاندارد افجه–ریزان است.",
+        "dasht-havij": "دشت هویج عارضهٔ میانی مشترک با مسیر استاندارد افجه–ریزان است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است.",
         "rizan-person": "قلهٔ پرسون عارضهٔ واقعیِ خط‌الرأس پیش از ریزان است."
       }
@@ -230,7 +236,7 @@
       "sort_order": 3,
       "points": [
         "rizan-afjeh-trailhead",
-        "rizan-hoyej-meadow",
+        "dasht-havij",
         "rizan-andar",
         "rizan-person"
       ],
@@ -246,7 +252,7 @@
       ],
       "public_point_notes": {
         "rizan-afjeh-trailhead": "بخش جاده‌ای دسترسی تا نگهبانی آخر روستا در distance و ETA پیمایش پیاده محاسبه نشده است.",
-        "rizan-hoyej-meadow": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر است.",
+        "dasht-havij": "دشت هویج عارضهٔ طبیعیِ نام‌دار و نقطهٔ میانی مسیر است.",
         "rizan-andar": "قلهٔ اندار عارضهٔ واقعیِ خط‌الرأس پیش از پرسون است."
       }
     },
