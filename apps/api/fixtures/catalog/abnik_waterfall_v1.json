@@ -1,0 +1,150 @@
+{
+  "catalog_version": "hawatch-abnik-waterfall-v1",
+  "primary_point": "abnik-waterfall",
+  "weather_points": {
+    "abnik-waterfall-junction": {
+      "region": "آبنیک · رودبار قصران · تهران",
+      "status": "provisional",
+      "climate": "alpine",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-abnykh-99896117",
+        "https://www.wikiloc.com/hiking-trails/qlh-khwh-zrd-sh-myn-z-abnykh-136184441",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+      ],
+      "name": "دوراهی آبشار آبنیک و جانستون",
+      "page_name": "دوراهی آبشار آبنیک و جانستون",
+      "short_label": "دوراهی آبشار آبنیک و جانستون",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "دوراهی مسیر",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "محل جداشدن مسیر تنگهٔ آبشار از پاکوب جانستون و خرسنگ؛ هویت در waypoint گزارش مستقل و موقعیت نماینده با تطبیق دو ترک موجود تأیید شده است.",
+      "latitude": 36.010866,
+      "longitude": 51.623547,
+      "elevation_m": 2678,
+      "elevation_source": "مختصات محدودهٔ انشعاب ترک آبشار و ترک موجود جانستون؛ ارتفاع 2678 متر از Open-Meteo GLO-90 DEM؛ مختصات نماینده است، نه برداشت نقشه‌برداری."
+    },
+    "abnik-waterfall": {
+      "region": "آبنیک · رودبار قصران · تهران",
+      "status": "provisional",
+      "climate": "alpine",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-abnykh-99896117",
+        "https://www.wikiloc.com/hiking-trails/qlh-khwh-zrd-sh-myn-z-abnykh-136184441",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+      ],
+      "name": "آبشار آبنیک",
+      "page_name": "آبشار آبنیک",
+      "short_label": "آبشار آبنیک",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشار",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "آبشار ابنیک",
+        "آبشار یخی آبنیک",
+        "Abnik Waterfall"
+      ],
+      "identity_summary": "آبشار آبنیک در تنگهٔ بالادست روستای آبنیک، پیش از دشت جانستون؛ مستقل از روستا و آبشارهای کوچک بالادست غار بیوک‌آقا.",
+      "latitude": 36.013218,
+      "longitude": 51.62116,
+      "elevation_m": 2740,
+      "elevation_source": "مختصات انتهای ترک پیادهٔ Wikiloc 99896117؛ ارتفاع 2740 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "tile_name": "آبشار آبنیک",
+      "short_category": "آبشار",
+      "image": "/images/home-scene.png",
+      "image_alt": "آبشار آبنیک"
+    }
+  },
+  "shared_weather_points": [
+    "khersang-abnik-village"
+  ],
+  "routes": {
+    "village": {
+      "slug": "abnik-waterfall",
+      "title": "روستای آبنیک تا آبشار آبنیک",
+      "subtitle": "پیاده‌روی از آبنیک تا دوراهی جانستون و تنگهٔ آبشار",
+      "trail_label": "آبنیک تا آبشار",
+      "origin": "روستای آبنیک",
+      "target_label": "آبشار آبنیک",
+      "region": "آبنیک · رودبار قصران · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "khersang-abnik-village",
+        "abnik-waterfall-junction",
+        "abnik-waterfall"
+      ],
+      "distance_km": 3.73,
+      "ascent_m": 360,
+      "one_way_minutes": 120,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+dem-profile+web-reports-v1",
+        "version": "abnik-waterfall-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-abnykh-99896117",
+          "https://www.wikiloc.com/hiking-trails/qlh-khwh-zrd-sh-myn-z-abnykh-136184441",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+        ],
+        "cumulative_minutes": {
+          "khersang-abnik-village": 0,
+          "abnik-waterfall-junction": 90,
+          "abnik-waterfall": 120
+        }
+      },
+      "public_note": "زمان یک‌طرفه برای شرایط خشک و بدون توقف طولانی تخمین زده شده است. عبور از رودخانه و بخش‌های سنگیِ تنگه لازم است؛ هنگام بارندگی، آب زیاد یا یخ‌زدگی وارد تنگه نشوید. این مسیر برای یخ‌نوردی یا ادامهٔ فنی بالای آبشار معرفی نشده است.",
+      "public_point_notes": {
+        "abnik-waterfall-junction": "برای آبشار وارد شاخهٔ تنگه می‌شوید؛ پاکوب بالادست به جانستون و خرسنگ می‌رود. جهت را با نقشه و راه‌بلد کنترل کنید."
+      },
+      "internal_note": "GPX 99896117: 664 points/one continuous segment, one-way3.732726km,maxstep8.18m,elapsed81.32min/moving75.57min; no camp/return leg. Start35.989113,51.618121 lies20m from existing canonical village35.989167,51.618333, so reuse without coordinate/name change. No GPX waypoints: junction identity independently named in136184441; representative coordinate at index551/3.106665km selected in common-track split area, not invented from a rest stop. Existing janestoon-east-abnik-2024.gpx stays within2.1m there then diverges progressively to79m at3348m; junction coordinate approximate, not surveyed. Target endpoint36.013218,51.621160; GPS2659m reference only, DEM2740m. DEM sampled every200m givesgain357m; rounded360m, rather than raw smoothedGPS255m. ETA120±30min/junction90 includes moderate walking, uphill and river/rocky section; source's fast81min is not copied as standard ETA. No additional download/crosscheck requested."
+    }
+  },
+  "point": {
+    "slug": "abnik-waterfall",
+    "region": "آبنیک · رودبار قصران · تهران",
+    "status": "provisional",
+    "climate": "alpine",
+    "source_urls": [
+      "https://www.wikiloc.com/hiking-trails/abshr-abnykh-99896117",
+      "https://www.wikiloc.com/hiking-trails/qlh-khwh-zrd-sh-myn-z-abnykh-136184441",
+      "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-abnykh-t-qlh-jnstwn-shrqy-jmh-1403-06-09-183122276"
+    ],
+    "name": "آبشار آبنیک",
+    "page_name": "آبشار آبنیک",
+    "short_label": "آبشار آبنیک",
+    "place_type": "waterfall",
+    "category_key": "waterfall",
+    "category": "آبشار",
+    "kind": "primary",
+    "importance": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "aliases": [
+      "آبشار ابنیک",
+      "آبشار یخی آبنیک",
+      "Abnik Waterfall"
+    ],
+    "identity_summary": "آبشار آبنیک در تنگهٔ بالادست روستای آبنیک، پیش از دشت جانستون؛ مستقل از روستا و آبشارهای کوچک بالادست غار بیوک‌آقا.",
+    "latitude": 36.013218,
+    "longitude": 51.62116,
+    "elevation_m": 2740,
+    "elevation_source": "مختصات انتهای ترک پیادهٔ Wikiloc 99896117؛ ارتفاع 2740 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "tile_name": "آبشار آبنیک",
+    "short_category": "آبشار",
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار آبنیک",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}
