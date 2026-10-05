@@ -1,0 +1,153 @@
+{
+  "catalog_version": "hawatch-doshakh-tehran-v1",
+  "primary_point": "doshakh-tehran",
+  "weather_points": {
+    "doshakh-shelter": {
+      "name": "جان‌پناه دوشاخ تهران",
+      "page_name": "جان‌پناه دوشاخ تهران",
+      "short_label": "جان‌پناه دوشاخ تهران",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "جان‌پناه",
+      "region": "درکه · شمال تهران",
+      "aliases": [
+        "جان پناه دوشاخ",
+        "جانپناه دوشاخ"
+      ],
+      "identity_summary": "جان‌پناه نام‌دار زیر قلهٔ دوشاخ تهران؛ همان waypoint منبع، مستقل از جان‌پناه مخروبهٔ پایین یال. وضعیت مناسب اقامت از وجود بنا نتیجه‌گیری نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-dw-shkh-w-syh-sng-z-drkhh-48158952",
+        "https://mojekooh.com/doshakh-peak-guide/"
+      ],
+      "latitude": 35.846544,
+      "longitude": 51.361666,
+      "elevation_m": 2937,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2937 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "doshakh-tehran": {
+      "name": "قلهٔ دوشاخ تهران",
+      "page_name": "قلهٔ دوشاخ تهران",
+      "short_label": "قلهٔ دوشاخ تهران",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "درکه · شمال تهران",
+      "aliases": [
+        "دوشاخ",
+        "دو شاخ",
+        "دوشاخ تهران",
+        "دوشاخ جنوبی",
+        "Doshakh Tehran"
+      ],
+      "identity_summary": "قلهٔ دوشاخ تهران بالای درکه و جان‌پناه دوشاخ؛ این نقطه قلهٔ نخست با نام دوشاخ در ترک درکه است، نه ادامهٔ مسیر سیاه‌سنگ و نه قلهٔ هم‌نام مشهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-dw-shkh-w-syh-sng-z-drkhh-48158952",
+        "https://mojekooh.com/doshakh-peak-guide/"
+      ],
+      "latitude": 35.847333,
+      "longitude": 51.361661,
+      "elevation_m": 2978,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2978 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ دوشاخ تهران",
+      "short_category": "قله",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ دوشاخ تهران"
+    }
+  },
+  "shared_weather_points": [
+    "chin-kalagh-darakeh-trailhead",
+    "palangchal-kara-junction"
+  ],
+  "routes": {
+    "main": {
+      "slug": "doshakh-darakeh",
+      "title": "درکه تا قلهٔ دوشاخ",
+      "subtitle": "درکه ← دوراهی جنگل کارا ← جان‌پناه دوشاخ تهران ← قلهٔ دوشاخ تهران",
+      "trail_label": "درکه تا قلهٔ دوشاخ",
+      "origin": "درکه",
+      "target_label": "قلهٔ دوشاخ تهران",
+      "region": "درکه · شمال تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "doshakh-shelter",
+        "doshakh-tehran"
+      ],
+      "distance_km": 6.9,
+      "ascent_m": 1305,
+      "one_way_minutes": 255,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+dem-profile+web-naismith-v1",
+        "version": "doshakh-tehran-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-dw-shkh-w-syh-sng-z-drkhh-48158952",
+          "https://mojekooh.com/doshakh-peak-guide/"
+        ],
+        "cumulative_minutes": {
+          "chin-kalagh-darakeh-trailhead": 0,
+          "palangchal-kara-junction": 60,
+          "doshakh-shelter": 230,
+          "doshakh-tehran": 255
+        }
+      },
+      "public_note": "مسیر شیب‌دار و سنگلاخی و مناسب کوهنورد باتجربه است. مسیر منتخب پس از جان‌پناه از پاکوب دورزنندهٔ قله می‌رود، نه گردهٔ صخره‌ای جنوبی. پس از خروج از دره به آب مطمئن تکیه نکنید؛ در برف و یخ شرایط می‌تواند فنی شود.",
+      "internal_note": "2020 GPX timestamps descend (negative elapsed) and summit/shelter waypoint ele=0: reject times/elevations. Use first documented Doshakh waypoint35.847333,51.361661 (southern summit),cut1273/3.9m; do not extend route to northward WP labeled Siah-sang35.850348,51.358883. Darakeh canonical origin nearestidx2/1.3m; Kara463/5.0m at~2.566km; shelter1224/7.6m at~6.642km; target6.8999km. DEM200m gain1305m, GPSsmoothed1286m. ETA255±45min from walking geometry and source4-5h to next peak excluding stops. Rock scramble option explicitly rejected; source documents east/north bypass. Tehran suffix disambiguates Doshakh near Mashhad."
+    }
+  },
+  "point": {
+    "slug": "doshakh-tehran",
+    "name": "قلهٔ دوشاخ تهران",
+    "page_name": "قلهٔ دوشاخ تهران",
+    "short_label": "قلهٔ دوشاخ تهران",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "category": "قله",
+    "region": "درکه · شمال تهران",
+    "aliases": [
+      "دوشاخ",
+      "دو شاخ",
+      "دوشاخ تهران",
+      "دوشاخ جنوبی",
+      "Doshakh Tehran"
+    ],
+    "identity_summary": "قلهٔ دوشاخ تهران بالای درکه و جان‌پناه دوشاخ؛ این نقطه قلهٔ نخست با نام دوشاخ در ترک درکه است، نه ادامهٔ مسیر سیاه‌سنگ و نه قلهٔ هم‌نام مشهد.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/mountaineering-trails/qlh-dw-shkh-w-syh-sng-z-drkhh-48158952",
+      "https://mojekooh.com/doshakh-peak-guide/"
+    ],
+    "latitude": 35.847333,
+    "longitude": 51.361661,
+    "elevation_m": 2978,
+    "status": "provisional",
+    "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2978 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ دوشاخ تهران",
+    "short_category": "قله",
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ دوشاخ تهران",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}

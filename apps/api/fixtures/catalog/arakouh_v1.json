@@ -1,0 +1,189 @@
+{
+  "catalog_version": "hawatch-arakouh-v1",
+  "primary_point": "arakouh",
+  "weather_points": {
+    "kamard": {
+      "name": "روستای کمرد جاجرود",
+      "page_name": "روستای کمرد جاجرود",
+      "short_label": "روستای کمرد جاجرود",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "کمرد · جاجرود · تهران",
+      "aliases": [
+        "کمرد",
+        "روستای کمرد",
+        "Kamard"
+      ],
+      "identity_summary": "نقطهٔ دسترسی شمال بافت روستای کمرد، مشترک با مبدأ پیاده‌روی؛ پارکینگ داخل روستا نقطهٔ جدا ندارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+        "https://www.wikiloc.com/hiking-trails/qlh-arkhwh-z-rwsty-khmrd-jmh-1399-11-10-64753860",
+        "https://mapcarta.com/N8629291064"
+      ],
+      "latitude": 35.769076,
+      "longitude": 51.750591,
+      "elevation_m": 1832,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 1832 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "روستای کمرد جاجرود",
+      "short_category": "روستا",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای کمرد جاجرود"
+    },
+    "kamard-waterfall": {
+      "name": "آبشار کمرد",
+      "page_name": "آبشار کمرد",
+      "short_label": "آبشار کمرد",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشار",
+      "region": "کمرد · جاجرود · تهران",
+      "aliases": [
+        "آبشار کمرد جاجرود"
+      ],
+      "identity_summary": "آبشار کمرد در شمال روستای کمرد جاجرود؛ آبدهی فصلی است و وجود آب دائمی تضمین نمی‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+        "https://www.wikiloc.com/hiking-trails/qlh-arkhwh-z-rwsty-khmrd-jmh-1399-11-10-64753860",
+        "https://mapcarta.com/N8629291064"
+      ],
+      "latitude": 35.77265,
+      "longitude": 51.75443,
+      "elevation_m": 1909,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 1909 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "آبشار کمرد",
+      "short_category": "آبشار",
+      "image": "/images/home-scene.png",
+      "image_alt": "آبشار کمرد"
+    },
+    "arakouh": {
+      "name": "قلهٔ آراکوه",
+      "page_name": "قلهٔ آراکوه",
+      "short_label": "قلهٔ آراکوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "کمرد · جاجرود · تهران",
+      "aliases": [
+        "آراکوه",
+        "آرا کوه",
+        "اراکوه",
+        "Arakouh",
+        "Arakoh"
+      ],
+      "identity_summary": "قلهٔ آراکوه در محدودهٔ کمرد و جاجرود، با مسیر پیاده از کمرد و کنار آبشار؛ مستقل از نام مشابه ازاکوه در تیلم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+        "https://www.wikiloc.com/hiking-trails/qlh-arkhwh-z-rwsty-khmrd-jmh-1399-11-10-64753860",
+        "https://mapcarta.com/N8629291064"
+      ],
+      "latitude": 35.781656,
+      "longitude": 51.721085,
+      "elevation_m": 2543,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2543 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ آراکوه",
+      "short_category": "قله",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ آراکوه"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "main": {
+      "slug": "arakouh-kamard",
+      "title": "کمرد تا قلهٔ آراکوه",
+      "subtitle": "روستای کمرد جاجرود ← آبشار کمرد ← قلهٔ آراکوه",
+      "trail_label": "کمرد تا قلهٔ آراکوه",
+      "origin": "روستای کمرد جاجرود",
+      "target_label": "قلهٔ آراکوه",
+      "region": "کمرد · جاجرود · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kamard",
+        "kamard-waterfall",
+        "arakouh"
+      ],
+      "distance_km": 5.82,
+      "ascent_m": 860,
+      "one_way_minutes": 210,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+dem-profile+web-naismith-v1",
+        "version": "arakouh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+          "https://www.wikiloc.com/hiking-trails/qlh-arkhwh-z-rwsty-khmrd-jmh-1399-11-10-64753860",
+          "https://mapcarta.com/N8629291064"
+        ],
+        "cumulative_minutes": {
+          "kamard": 0,
+          "kamard-waterfall": 20,
+          "arakouh": 210
+        }
+      },
+      "public_note": "زمان یک‌طرفه، بدون توقف طولانی و در شرایط خشک تخمین زده شده است. آبشار ممکن است کم‌آب یا خشک باشد؛ آب آشامیدنی همراه ببرید. شیب‌های سنگی و یخ‌زده نیازمند تجربه و تجهیزات متناسب‌اند.",
+      "internal_note": "2024 hiking GPX continuous 1794 points; outbound cut1045 at documented summit approach5.8165km; maxstep9.23m. Waterfall OSM node8629291064 is26.4m from ascent at553m. DEM every200m:1832→2543m,positive gain860m; raw GPS smoothedgain782m. Recorded348min/moving189min not ETA (stops excluded); medium210±45min from geometry+Naismith+published walking reports. Return and post-summit continuation excluded."
+    }
+  },
+  "point": {
+    "slug": "arakouh",
+    "name": "قلهٔ آراکوه",
+    "page_name": "قلهٔ آراکوه",
+    "short_label": "قلهٔ آراکوه",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "category": "قله",
+    "region": "کمرد · جاجرود · تهران",
+    "aliases": [
+      "آراکوه",
+      "آرا کوه",
+      "اراکوه",
+      "Arakouh",
+      "Arakoh"
+    ],
+    "identity_summary": "قلهٔ آراکوه در محدودهٔ کمرد و جاجرود، با مسیر پیاده از کمرد و کنار آبشار؛ مستقل از نام مشابه ازاکوه در تیلم.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+      "https://www.wikiloc.com/hiking-trails/qlh-arkhwh-z-rwsty-khmrd-jmh-1399-11-10-64753860",
+      "https://mapcarta.com/N8629291064"
+    ],
+    "latitude": 35.781656,
+    "longitude": 51.721085,
+    "elevation_m": 2543,
+    "status": "provisional",
+    "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2543 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ آراکوه",
+    "short_category": "قله",
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ آراکوه",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}

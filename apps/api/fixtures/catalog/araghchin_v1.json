@@ -1,0 +1,180 @@
+{
+  "catalog_version": "hawatch-araghchin-v1",
+  "primary_point": "araghchin",
+  "weather_points": {
+    "niloufar-park-kashanak": {
+      "name": "پارک نیلوفر کاشانک",
+      "page_name": "پارک نیلوفر کاشانک",
+      "short_label": "پارک نیلوفر کاشانک",
+      "place_type": "landmark",
+      "category_key": "park",
+      "category": "پارک",
+      "region": "کاشانک · شمال تهران",
+      "aliases": [
+        "پارک نیلوفر رحمان آباد"
+      ],
+      "identity_summary": "مبدأ پیاده‌روی عرقچین در پارک نیلوفر رحمان‌آباد کاشانک؛ متفاوت از پارک‌های هم‌نام تهران.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-w-tngchl-araghchin-peak-49005647",
+        "https://mapcarta.com/N7858760392"
+      ],
+      "latitude": 35.820701,
+      "longitude": 51.480904,
+      "elevation_m": 1779,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 1779 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "khoshkchal": {
+      "name": "تختی خشکچال",
+      "page_name": "تختی خشکچال",
+      "short_label": "تختی خشکچال",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "کاشانک · شمال تهران",
+      "aliases": [
+        "تختی خشک‌چال",
+        "تختی خشک چال"
+      ],
+      "identity_summary": "محدودهٔ نام‌دار تختی خشکچال و استخر مسیر کاشانک به عرقچین؛ waypoint منبع با OSM تطبیق داده شده، نه توقفگاه ساختگی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-w-tngchl-araghchin-peak-49005647",
+        "https://mapcarta.com/N7858760392"
+      ],
+      "latitude": 35.836724,
+      "longitude": 51.478747,
+      "elevation_m": 2387,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2387 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "araghchin": {
+      "name": "قلهٔ عرقچین",
+      "page_name": "قلهٔ عرقچین",
+      "short_label": "قلهٔ عرقچین",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "کاشانک · شمال تهران",
+      "aliases": [
+        "عرقچین",
+        "عرق چین",
+        "عرق‌چین",
+        "Araghchin",
+        "Araqchin"
+      ],
+      "identity_summary": "قلهٔ عرقچین در ارتفاعات کاشانک؛ مقصد صعود از پارک نیلوفر و تختی خشکچال. نقطهٔ قلهٔ تنگچال با آن ادغام نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-w-tngchl-araghchin-peak-49005647",
+        "https://mapcarta.com/N7858760392"
+      ],
+      "latitude": 35.844987,
+      "longitude": 51.4729,
+      "elevation_m": 2741,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2741 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ عرقچین",
+      "short_category": "قله",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ عرقچین"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "main": {
+      "slug": "araghchin-niloufar",
+      "title": "پارک نیلوفر تا قلهٔ عرقچین",
+      "subtitle": "پارک نیلوفر کاشانک ← تختی خشکچال ← قلهٔ عرقچین",
+      "trail_label": "پارک نیلوفر تا قلهٔ عرقچین",
+      "origin": "پارک نیلوفر کاشانک",
+      "target_label": "قلهٔ عرقچین",
+      "region": "کاشانک · شمال تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "niloufar-park-kashanak",
+        "khoshkchal",
+        "araghchin"
+      ],
+      "distance_km": 4.01,
+      "ascent_m": 970,
+      "one_way_minutes": 180,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+dem-profile+web-naismith-v1",
+        "version": "araghchin-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+          "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-w-tngchl-araghchin-peak-49005647",
+          "https://mapcarta.com/N7858760392"
+        ],
+        "cumulative_minutes": {
+          "niloufar-park-kashanak": 0,
+          "khoshkchal": 115,
+          "araghchin": 180
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه در شرایط خشک است. مسیر شیب‌دار و سنگلاخی است؛ در برف و یخ دشوارتر می‌شود. آب استخرها و چشمه‌های مسیر را آشامیدنی فرض نکنید.",
+      "internal_note": "2025 GPX208 points/no timestamps; cut99 at8.73m from summit waypoint; outbound4.0108km,largeststep161.49m (simplified geometry, not a GPS jump); Khoshkchal WP22.9m off at2654m corroborated OSM node7858760392. DEM200m1779→2750,gain971; summit canonicalDEM2741, not GPX2695 or guide2800. Other sources disagree on Araghchin/Tangchal labels: preserve distinct waypoints and do not merge summits. Return/Tangchal continuation excluded; ETA180±45min estimated, not recorded."
+    }
+  },
+  "point": {
+    "slug": "araghchin",
+    "name": "قلهٔ عرقچین",
+    "page_name": "قلهٔ عرقچین",
+    "short_label": "قلهٔ عرقچین",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "category": "قله",
+    "region": "کاشانک · شمال تهران",
+    "aliases": [
+      "عرقچین",
+      "عرق چین",
+      "عرق‌چین",
+      "Araghchin",
+      "Araqchin"
+    ],
+    "identity_summary": "قلهٔ عرقچین در ارتفاعات کاشانک؛ مقصد صعود از پارک نیلوفر و تختی خشکچال. نقطهٔ قلهٔ تنگچال با آن ادغام نشده است.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+      "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-w-tngchl-araghchin-peak-49005647",
+      "https://mapcarta.com/N7858760392"
+    ],
+    "latitude": 35.844987,
+    "longitude": 51.4729,
+    "elevation_m": 2741,
+    "status": "provisional",
+    "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 2741 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ عرقچین",
+    "short_category": "قله",
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ عرقچین",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}

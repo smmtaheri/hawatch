@@ -1,0 +1,151 @@
+{
+  "catalog_version": "hawatch-kasonak-v1",
+  "primary_point": "kasonak",
+  "weather_points": {
+    "yunza-pass": {
+      "name": "گردنهٔ یونزا",
+      "page_name": "گردنهٔ یونزا",
+      "short_label": "گردنهٔ یونزا",
+      "place_type": "pass",
+      "category_key": "mountain",
+      "category": "گردنه",
+      "region": "گرمابدر · رودبار قصران · تهران",
+      "aliases": [
+        "گردنه یونزا",
+        "گردنه خاتون بارگاه",
+        "گردنه خاتون‌بارگاه",
+        "Yunza",
+        "Younza"
+      ],
+      "identity_summary": "گردنهٔ یونزا یا گردنهٔ خاتون‌بارگاه در جادهٔ گرمابدر به لار؛ متفاوت از قلهٔ خاتون‌بارگاه و پای‌کار آن.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kasonk-peak-hyco-00-01-27-qlh-khswnkh-70656514",
+        "https://www.farab.com/fa/wp-content/uploads/2019/06/33.pdf"
+      ],
+      "latitude": 35.984652,
+      "longitude": 51.696926,
+      "elevation_m": 3111,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 3111 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine"
+    },
+    "kasonak": {
+      "name": "قلهٔ کاسونک",
+      "page_name": "قلهٔ کاسونک",
+      "short_label": "قلهٔ کاسونک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "گرمابدر · رودبار قصران · تهران",
+      "aliases": [
+        "کاسونک",
+        "کاسونک گرمابدر",
+        "Kasoonak",
+        "Kasonak"
+      ],
+      "identity_summary": "قلهٔ کاسونک در جنوب گردنهٔ یونزا، بالادست گرمابدر؛ مستقل از قلهٔ خاتون‌بارگاه. دسترسی جادهٔ لار با شروع مسیر پیاده تفکیک شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kasonk-peak-hyco-00-01-27-qlh-khswnkh-70656514",
+        "https://www.farab.com/fa/wp-content/uploads/2019/06/33.pdf"
+      ],
+      "latitude": 35.96179,
+      "longitude": 51.700312,
+      "elevation_m": 3620,
+      "status": "provisional",
+      "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 3620 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ کاسونک",
+      "short_category": "قله",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ کاسونک"
+    }
+  },
+  "shared_weather_points": [
+    "khatun-bargah-trailhead"
+  ],
+  "routes": {
+    "main": {
+      "slug": "kasonak-yunza",
+      "title": "پای‌کار جادهٔ لار تا کاسونک از یونزا",
+      "subtitle": "پای‌کار خاتون‌بارگاه در جادهٔ لار ← گردنهٔ یونزا ← قلهٔ کاسونک",
+      "trail_label": "پای‌کار جادهٔ لار تا کاسونک از یونزا",
+      "origin": "پای‌کار خاتون‌بارگاه در جادهٔ لار",
+      "target_label": "قلهٔ کاسونک",
+      "region": "گرمابدر · رودبار قصران · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "khatun-bargah-trailhead",
+        "yunza-pass",
+        "kasonak"
+      ],
+      "distance_km": 6.39,
+      "ascent_m": 880,
+      "one_way_minutes": 210,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+dem-profile+web-naismith-v1",
+        "version": "kasonak-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/kasonk-peak-hyco-00-01-27-qlh-khswnkh-70656514",
+          "https://www.farab.com/fa/wp-content/uploads/2019/06/33.pdf"
+        ],
+        "cumulative_minutes": {
+          "khatun-bargah-trailhead": 0,
+          "yunza-pass": 90,
+          "kasonak": 210
+        }
+      },
+      "public_note": "این مسیر از پای‌کار جادهٔ لار شروع می‌شود، نه از روستای گرمابدر. دسترسی خودرویی به وضعیت مجوز و بازبودن محیط‌بانی وابسته است. زمان یک‌طرفه بدون توقف طولانی و برای شرایط خشک برآورد شده؛ برف، یخ و باد روی گردنه و یال شرایط را دشوارتر می‌کند.",
+      "internal_note": "2021 GPX1211points continuous; shared Khatun trailhead at nearestidx57/12.2m already exists. Trim first320m to use same canonical origin (no duplicate new parking). Targetidx1209/2.1m,cut57:1209 distance6.386km; Yunzaidx574/0.5m at2.908km from origin. DEM200m2788→3620 gain881m; GPSsmoothed857m; ETA210±45, Yunza90. Auto technical-terrain badge is not used to justify a climbing route; documented ordinary Yunza ridge selected; glacier/rock-climbing variants not included. Road from Garmabdar excluded."
+    }
+  },
+  "point": {
+    "slug": "kasonak",
+    "name": "قلهٔ کاسونک",
+    "page_name": "قلهٔ کاسونک",
+    "short_label": "قلهٔ کاسونک",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "category": "قله",
+    "region": "گرمابدر · رودبار قصران · تهران",
+    "aliases": [
+      "کاسونک",
+      "کاسونک گرمابدر",
+      "Kasoonak",
+      "Kasonak"
+    ],
+    "identity_summary": "قلهٔ کاسونک در جنوب گردنهٔ یونزا، بالادست گرمابدر؛ مستقل از قلهٔ خاتون‌بارگاه. دسترسی جادهٔ لار با شروع مسیر پیاده تفکیک شده است.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/mountaineering-trails/kasonk-peak-hyco-00-01-27-qlh-khswnkh-70656514",
+      "https://www.farab.com/fa/wp-content/uploads/2019/06/33.pdf"
+    ],
+    "latitude": 35.96179,
+    "longitude": 51.700312,
+    "elevation_m": 3620,
+    "status": "provisional",
+    "elevation_source": "مختصات GPX و منابع هویت؛ ارتفاع 3620 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع خام GPS.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ کاسونک",
+    "short_category": "قله",
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ کاسونک",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  }
+}
