@@ -1,0 +1,297 @@
+{
+  "catalog_version": "hawatch-varjin-v1",
+  "primary_point": "varjin-peak",
+  "weather_points": {
+    "varjin-peak": {
+      "name": "قلهٔ ورجین",
+      "page_name": "قلهٔ ورجین",
+      "short_label": "قلهٔ ورجین",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "البرز مرکزی",
+      "region": "شمیرانات · تهران",
+      "aliases": [
+        "ورجین",
+        "Varjin",
+        "Varjin Peak"
+      ],
+      "identity_summary": "قلهٔ ورجین در شمال لواسان؛ با منطقهٔ حفاظت‌شدهٔ ورجین و قلهٔ اورجین یا کلوگان یکی نیست. پسوند peak برای تفکیک قله از منطقهٔ هم‌نام است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-lwsn-t-qlh-wrjyn-jmh-1401-09-11-120404583",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680",
+        "https://www.wikiloc.com/hiking-trails/qlh-wrjyn-196781283"
+      ],
+      "latitude": 35.860213,
+      "longitude": 51.593088,
+      "elevation_m": 2945,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2945 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "kalugan-village": {
+      "name": "روستای کلوگان",
+      "page_name": "روستای کلوگان",
+      "short_label": "روستای کلوگان",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "شمیرانات · تهران",
+      "aliases": [
+        "کلوگان",
+        "گلوگان",
+        "Kalugan",
+        "Kalougan"
+      ],
+      "identity_summary": "روستای کلوگان در رودبار قصران؛ مبدأ ثبت‌شدهٔ ورجین در بافت روستا با مقصد روستا ادغام شده، نه با قلهٔ کلوگان یا اورجین.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680"
+      ],
+      "latitude": 35.868071,
+      "longitude": 51.544323,
+      "elevation_m": 1830,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 1830 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "varjin-lavasan-trailhead": {
+      "name": "پای‌کار ورجین در لواسان",
+      "page_name": "پای‌کار ورجین در لواسان",
+      "short_label": "پای‌کار ورجین در لواسان",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز شاخهٔ یال جنوبی در شمال لواسان؛ نقطهٔ فنی مسیر است و نمایندهٔ آب‌وهوای کل شهر لواسان نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-lwsn-t-qlh-wrjyn-jmh-1401-09-11-120404583"
+      ],
+      "latitude": 35.825765,
+      "longitude": 51.622848,
+      "elevation_m": 1785,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 1785 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "varjin-south-cairn": {
+      "name": "سنگ‌چین یال جنوبی ورجین",
+      "page_name": "سنگ‌چین یال جنوبی ورجین",
+      "short_label": "سنگ‌چین یال جنوبی ورجین",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "سنگ‌چین با waypoint و عکس مستقل در شاخهٔ فرودِ گزارش لواسان؛ مسیر این کاتالوگ همان شاخه را در جهت صعود دنبال می‌کند، نه شاخهٔ رفت متفاوت.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-lwsn-t-qlh-wrjyn-jmh-1401-09-11-120404583"
+      ],
+      "latitude": 35.85417,
+      "longitude": 51.594967,
+      "elevation_m": 2879,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2879 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "varjin-rahatabad-trailhead": {
+      "name": "پای‌کار ورجین در جادهٔ امامه–راحت‌آباد",
+      "page_name": "پای‌کار ورجین در جادهٔ امامه–راحت‌آباد",
+      "short_label": "پای‌کار ورجین در جادهٔ امامه–راحت‌آباد",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز ترک شمالی در جادهٔ امامه–راحت‌آباد، خارج از بافت روستا؛ با روستای راحت‌آباد یا مبدأ مهرچال در امامه ادغام نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-wrjyn-196781283"
+      ],
+      "latitude": 35.901052,
+      "longitude": 51.603277,
+      "elevation_m": 2369,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2369 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "varjin-north-pass": {
+      "name": "گردنهٔ شمالی ورجین",
+      "page_name": "گردنهٔ شمالی ورجین",
+      "short_label": "گردنهٔ شمالی ورجین",
+      "place_type": "pass",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "گردنهٔ میان‌راهِ گزارش کلوگان، پیش از صعود نهایی؛ نام توصیفی است. هندسهٔ ترک کلوگان و راحت‌آباد در این گردنه مشترک است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680",
+        "https://www.wikiloc.com/hiking-trails/qlh-wrjyn-196781283"
+      ],
+      "latitude": 35.865246,
+      "longitude": 51.589557,
+      "elevation_m": 2808,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2808 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "lavasan": {
+      "slug": "varjin-lavasan",
+      "title": "لواسان تا ورجین از یال جنوبی",
+      "subtitle": "لواسان تا ورجین از یال جنوبی",
+      "trail_label": "لواسان تا ورجین از یال جنوبی",
+      "origin": "پای‌کار ورجین در لواسان",
+      "target_label": "قلهٔ ورجین",
+      "region": "شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "varjin-lavasan-trailhead",
+        "varjin-south-cairn",
+        "varjin-peak"
+      ],
+      "distance_km": 5.8,
+      "ascent_m": 1150,
+      "one_way_minutes": 225,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed+naismith+web-report-v1",
+        "version": "varjin-lavasan-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-lwsn-t-qlh-wrjyn-jmh-1401-09-11-120404583"
+        ],
+        "cumulative_minutes": {
+          "varjin-lavasan-trailhead": 0,
+          "varjin-south-cairn": 195,
+          "varjin-peak": 225
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای شرایط خشک و بدون توقف طولانی است. شاخهٔ یال جنوبی از سنگ‌چین می‌گذرد؛ با شاخهٔ رفتِ گزارش مرجع که کمی متفاوت است یکی نیست. زمان صعود از هندسهٔ همین شاخه برآورد شده، نه ساعت فرود. مسیر شیب تند دارد؛ مجوز ورود به منطقهٔ حفاظت‌شده و محدودیت‌های فصلی را بررسی کنید.",
+      "internal_note": "Reverse recorded pedestrian return indices1017..2065:5.796775km/smoothed1149.8m. Photographed cairn original1150/reversed915 at5.061141km, residual1.72m; it is NOT on original outbound. Recorded descent describes ridge hiking, no technical climbing; do not use descent timestamps as ascent ETA. Geometry Naismith~202min plus steep margin225±45min."
+    },
+    "kalugan": {
+      "slug": "varjin-kalugan",
+      "title": "کلوگان تا ورجین",
+      "subtitle": "کلوگان تا ورجین",
+      "trail_label": "کلوگان تا ورجین",
+      "origin": "روستای کلوگان",
+      "target_label": "قلهٔ ورجین",
+      "region": "شمیرانات · تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "kalugan-village",
+        "varjin-north-pass",
+        "varjin-peak"
+      ],
+      "distance_km": 6.6,
+      "ascent_m": 1209,
+      "one_way_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed+naismith+web-report-v1",
+        "version": "varjin-kalugan-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680"
+        ],
+        "cumulative_minutes": {
+          "kalugan-village": 0,
+          "varjin-north-pass": 215,
+          "varjin-peak": 240
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای شرایط خشک و بدون توقف طولانی است. مسیر از روستا و یال‌های غربی به گردنه و سپس قله می‌رسد. فراز و فرود، شیب تند و پاکوب ضعیف دارد؛ برای افراد باتجربه مناسب است. آب موردنیاز را از مبدأ ببرید و محدودیت ورود به منطقهٔ حفاظت‌شده را بررسی کنید.",
+      "internal_note": "Original outbound0..1180:6.601335km/smoothed1208.9m/maxstep9.50m. Report4h30 minus35min breakfast and short stops; moving200.6min is faster pace. Medium ETA240±45; shared saddle1055 at5.904898km/residual1.02m, lies between descending western ridge and final summit rise. Not Orjin peak."
+    },
+    "rahatabad": {
+      "slug": "varjin-rahatabad",
+      "title": "ورجین از جادهٔ امامه–راحت‌آباد",
+      "subtitle": "ورجین از جادهٔ امامه–راحت‌آباد",
+      "trail_label": "ورجین از جادهٔ امامه–راحت‌آباد",
+      "origin": "پای‌کار ورجین در جادهٔ امامه–راحت‌آباد",
+      "target_label": "قلهٔ ورجین",
+      "region": "شمیرانات · تهران",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "varjin-rahatabad-trailhead",
+        "varjin-north-pass",
+        "varjin-peak"
+      ],
+      "distance_km": 6.31,
+      "ascent_m": 658,
+      "one_way_minutes": 195,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed+naismith+web-report-v1",
+        "version": "varjin-rahatabad-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-wrjyn-196781283",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680"
+        ],
+        "cumulative_minutes": {
+          "varjin-rahatabad-trailhead": 0,
+          "varjin-north-pass": 170,
+          "varjin-peak": 195
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای شرایط خشک و بدون توقف طولانی است. مبدأ در جاده است، نه در مرکز روستای راحت‌آباد. مسیر شمالی پس از گردنه به قله می‌رسد؛ زمستانی‌بودن ترک به معنی ایمن‌بودن مسیر در برف نیست. شیب‌های برفی و یخی و مجوز ورود به منطقه را پیش از حرکت بررسی کنید.",
+      "internal_note": "Original outbound0..1177:6.309403km/smoothed658.3m/maxstep8.52m. Winter moving232.4/elapsed334.8 not dry-condition ETA; geometry Naismith~161min plus terrain margin195±45. Shared saddle1048 at5.622886km/residual3.88m. No mosque/village-start identity inferred from nearby road."
+    }
+  },
+  "point": {
+    "slug": "varjin-peak",
+    "tile_name": "قلهٔ ورجین",
+    "name": "قلهٔ ورجین",
+    "short_category": "قله",
+    "category": "البرز مرکزی",
+    "category_key": "mountain",
+    "region": "شمیرانات · تهران",
+    "latitude": 35.860213,
+    "longitude": 51.593088,
+    "elevation_m": 2945,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ ورجین",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ورجین",
+      "Varjin",
+      "Varjin Peak"
+    ]
+  }
+}

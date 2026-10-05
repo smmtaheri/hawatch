@@ -1,0 +1,171 @@
+{
+  "catalog_version": "hawatch-khatun-bargah-v1",
+  "primary_point": "khatun-bargah",
+  "weather_points": {
+    "khatun-bargah": {
+      "name": "قلهٔ خاتون‌بارگاه",
+      "page_name": "قلهٔ خاتون‌بارگاه",
+      "short_label": "قلهٔ خاتون‌بارگاه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "البرز مرکزی",
+      "region": "شمیرانات · تهران",
+      "aliases": [
+        "خاتون بارگاه",
+        "خاتونبارگاه",
+        "Khatun Bargah"
+      ],
+      "identity_summary": "قلهٔ خاتون‌بارگاه در شمال‌شرق گرمابدر؛ با گردنهٔ یونس و قلهٔ اشتر یکی نیست. مختصات قله از گزارش صعود و ترک تطبیق داده شده، نه صرفاً نوشتهٔ تابلوهای جابه‌جاشده.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015",
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-khtwn-brgh-w-pymysh-kht-lrs-bh-smt-qlh-shtr-132703264"
+      ],
+      "latitude": 36.014589,
+      "longitude": 51.659461,
+      "elevation_m": 3820,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 3820 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "high_alpine"
+    },
+    "khatun-bargah-trailhead": {
+      "name": "پای‌کار خاتون‌بارگاه در جادهٔ لار",
+      "page_name": "پای‌کار خاتون‌بارگاه در جادهٔ لار",
+      "short_label": "پای‌کار خاتون‌بارگاه در جادهٔ لار",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "آغاز بخش کوهپیمایی ترک در جادهٔ لار؛ دسترسی جاده‌ای از گرمابدر در مسافت پیادهٔ مسیر حساب نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015"
+      ],
+      "latitude": 35.995357,
+      "longitude": 51.67762,
+      "elevation_m": 2788,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2788 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "khatun-bargah-south-spring": {
+      "name": "چشمهٔ مسیر جنوبی خاتون‌بارگاه",
+      "page_name": "چشمهٔ مسیر جنوبی خاتون‌بارگاه",
+      "short_label": "چشمهٔ مسیر جنوبی خاتون‌بارگاه",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "چشمهٔ اولِ ثبت‌شده با waypoint در صعود جنوبی؛ وجود آب و آشامیدنی‌بودن آن تضمین نمی‌شود.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015"
+      ],
+      "latitude": 35.996554,
+      "longitude": 51.675864,
+      "elevation_m": 2852,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 2852 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine"
+    },
+    "khatun-bargah-stone-shelter": {
+      "name": "جان‌پناه سنگی خاتون‌بارگاه",
+      "page_name": "جان‌پناه سنگی خاتون‌بارگاه",
+      "short_label": "جان‌پناه سنگی خاتون‌بارگاه",
+      "place_type": "shelter",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "شمیرانات · تهران",
+      "aliases": [],
+      "identity_summary": "جان‌پناه سنگی کوچکِ ثبت‌شده در گزارش و waypoint صعود جنوبی؛ پناهگاه مجهز یا محل اقامت رسمی نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015"
+      ],
+      "latitude": 36.007336,
+      "longitude": 51.671898,
+      "elevation_m": 3318,
+      "status": "provisional",
+      "elevation_source": "مختصات تطبیق‌یافته با GPX و گزارش مسیر؛ ارتفاع 3318 متر از Open-Meteo GLO-90 DEM در همین مختصات، نه ارتفاع GPS.",
+      "climate": "high_alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "garmabdar": {
+      "slug": "khatun-bargah-garmabdar",
+      "title": "خاتون‌بارگاه از مسیر گرمابدر",
+      "subtitle": "خاتون‌بارگاه از مسیر گرمابدر",
+      "trail_label": "خاتون‌بارگاه از مسیر گرمابدر",
+      "origin": "پای‌کار خاتون‌بارگاه در جادهٔ لار",
+      "target_label": "قلهٔ خاتون‌بارگاه",
+      "region": "شمیرانات · تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "khatun-bargah-trailhead",
+        "khatun-bargah-south-spring",
+        "khatun-bargah-stone-shelter",
+        "khatun-bargah"
+      ],
+      "distance_km": 4.7,
+      "ascent_m": 1021,
+      "one_way_minutes": 210,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-smoothed+naismith+web-report-v1",
+        "version": "khatun-bargah-garmabdar-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015"
+        ],
+        "cumulative_minutes": {
+          "khatun-bargah-trailhead": 0,
+          "khatun-bargah-south-spring": 15,
+          "khatun-bargah-stone-shelter": 120,
+          "khatun-bargah": 210
+        }
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای شرایط خشک و بدون توقف طولانی است. صعود از مسیر جنوبی و دو شیب تند تا قله است؛ ادامهٔ سنگی به وزغ، پلک و اشتر و مسیر برگشتِ ترک در این مسیر نیستند. بازبودن جادهٔ لار و مجوز عبور را بررسی کنید. در برف و یخ، خطر بهمن و لغزش وجود دارد.",
+      "internal_note": "Use original GPX indices488..1356 only;4.69646km/smoothed1020.7m. Exclude initial3.77km road access and entire eastern rocky continuation. Spring562:0.4082km;stone shelter929:2.3937km. Naismith~172min plus steep-terrain margin gives210±45min; GPS rests and return clock excluded."
+    }
+  },
+  "point": {
+    "slug": "khatun-bargah",
+    "tile_name": "قلهٔ خاتون‌بارگاه",
+    "name": "قلهٔ خاتون‌بارگاه",
+    "short_category": "قله",
+    "category": "البرز مرکزی",
+    "category_key": "mountain",
+    "region": "شمیرانات · تهران",
+    "latitude": 36.014589,
+    "longitude": 51.659461,
+    "elevation_m": 3820,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ خاتون‌بارگاه",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "خاتون بارگاه",
+      "خاتونبارگاه",
+      "Khatun Bargah"
+    ]
+  }
+}
