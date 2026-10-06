@@ -1,0 +1,53 @@
+{
+  "catalog_version": "hawatch-khour-ski-v1",
+  "primary_point": "khour-ski",
+  "point": {
+    "slug": "khour-ski",
+    "name": "پیست اسکی خور",
+    "tile_name": "پیست اسکی خور",
+    "category": "پیست اسکی",
+    "short_category": "پیست اسکی",
+    "category_key": "ski",
+    "region": "خور · آسارا · کرج · البرز",
+    "latitude": 35.911350,
+    "longitude": 51.169800,
+    "elevation_m": 2632,
+    "climate": "alpine",
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0,
+    "seo_indexable": true,
+    "aliases": ["پیست خور", "پیست اسکی خور کرج", "پیست خور جاده چالوس", "Khor Ski Resort", "Khur Ski Resort"]
+  },
+  "weather_points": {
+    "khour-ski": {
+      "name": "پیست اسکی خور",
+      "page_name": "پیست اسکی خور",
+      "short_label": "پیست اسکی خور",
+      "place_type": "landmark",
+      "category_key": "ski",
+      "category": "پیست اسکی",
+      "region": "خور · آسارا · کرج · البرز",
+      "latitude": 35.911350,
+      "longitude": 51.169800,
+      "elevation_m": 2632,
+      "status": "provisional",
+      "elevation_source": "مرکز عارضهٔ پیست در OSM way 268262352 / Mapcarta؛ Open-Meteo GLO-90 DEM در همین مختصات در ۲۰۲۶-۱۰-۰۶: ۲۶۳۲ متر؛ نه ارتفاع روستا یا آبشار خور.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": ["پیست خور", "پیست اسکی خور کرج", "پیست خور جاده چالوس", "Khor Ski Resort", "Khur Ski Resort"],
+      "identity_summary": "پیست اسکی خور در نزدیکی روستای خورِ آسارا در جادهٔ چالوس؛ موقعیت نمایندهٔ خود پیست، مستقل از روستای خور کرج، آبشار خور و شهر خور و بیابانک. پسوند ski در slug همین تفاوت عارضه را روشن می‌کند. دسترسی جاده‌ای است و مسیر اسکی یا خودرو به‌عنوان Route پیاده ثبت نشده؛ صفحهٔ هواشناسی وضعیت بازبودن پیست را تضمین نمی‌کند.",
+      "source_urls": [
+        "https://mapcarta.com/W268262352",
+        "https://www.openstreetmap.org/way/268262352",
+        "https://soltansafar.com/KhurAttractions/Attraction4863.html"
+      ]
+    }
+  },
+  "routes": {}
+}
