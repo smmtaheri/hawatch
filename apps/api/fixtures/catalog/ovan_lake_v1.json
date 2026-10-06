@@ -1,0 +1,52 @@
+{
+  "catalog_version": "hawatch-ovan-lake-catalog-v1",
+  "primary_point": "ovan-lake",
+  "weather_points": {
+    "ovan-lake": {
+      "name": "دریاچهٔ اوان",
+      "page_name": "دریاچهٔ اوان",
+      "short_label": "دریاچهٔ اوان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": ["دریاچه اوان", "دریاچه اُوان", "دریاچه آوان", "دریاچه اوان الموت", "Ovan Lake", "Evan Lake", "Avan Lake"],
+      "identity_summary": "دریاچهٔ طبیعی اوان در الموت شرقی قزوین؛ پسوند lake آن را از روستای هم‌نام اوان تفکیک می‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/25663706",
+        "https://evandehyari.blogfa.com/post/4",
+        "https://www.karnaval.ir/things-to-do/ovan-lake-alamut-qazvin"
+      ],
+      "latitude": 36.48313,
+      "longitude": 50.44379,
+      "elevation_m": 1793,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1793 m در مرکز پهنهٔ دریاچه از OSM؛ با ارتفاع 1815 متر در منبع دهیاری اوان 22 متر اختلاف دارد.",
+      "climate": "lake_valley",
+      "region": "الموت شرقی · قزوین"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "ovan-lake",
+    "tile_name": "دریاچهٔ اوان",
+    "name": "دریاچهٔ اوان",
+    "short_category": "دریاچه",
+    "category": "دریاچهٔ طبیعی",
+    "category_key": "lake",
+    "region": "الموت شرقی · قزوین",
+    "elevation_m": 1793,
+    "latitude": 36.48313,
+    "longitude": 50.44379,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت کوهستانی",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": ["دریاچه اوان", "دریاچه اُوان", "دریاچه آوان", "دریاچه اوان الموت", "Ovan Lake", "Evan Lake", "Avan Lake"]
+  }
+}
