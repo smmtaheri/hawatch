@@ -1,0 +1,66 @@
+{
+  "catalog_version": "hawatch-khashchal-catalog-v1",
+  "primary_point": "khashchal",
+  "weather_points": {
+    "khashchal": {
+      "name": "قلهٔ خشچال",
+      "page_name": "قلهٔ خشچال",
+      "short_label": "قلهٔ خشچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "خشچال",
+        "خشه‌چال",
+        "خشته‌چال",
+        "خشکه چال",
+        "Khashchal",
+        "Khashechal"
+      ],
+      "identity_summary": "قلهٔ خشچال بر خط‌الرأس البرز، بالادست دریاچهٔ اوان و وربن الموت.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N3208151125",
+        "http://kuhnavardi.com/قله-خشچال/",
+        "https://is.wikiloc.com/fjallaklifur-slodir/khashchal-varbon-95-02-31-nima-qlh-khshchl-13438125"
+      ],
+      "latitude": 36.5497,
+      "longitude": 50.5103,
+      "elevation_m": 3896,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3896 m در مختصات قلهٔ OSM؛ ارتفاع مرجع نقشه 3917 و گزارش صعود 3930 متر است؛ عدد 4180 مبنا نیست.",
+      "climate": "high_alpine",
+      "region": "البرز · مرز قزوین و مازندران"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "khashchal",
+    "tile_name": "خشچال",
+    "name": "قلهٔ خشچال",
+    "short_category": "کوه",
+    "category": "قله و مسیر کوهستانی",
+    "category_key": "mountain",
+    "region": "البرز · مرز قزوین و مازندران",
+    "elevation_m": 3896,
+    "latitude": 36.5497,
+    "longitude": 50.5103,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت کوهستانی",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "خشچال",
+      "خشه‌چال",
+      "خشته‌چال",
+      "خشکه چال",
+      "Khashchal",
+      "Khashechal"
+    ]
+  }
+}
