@@ -20,3 +20,28 @@ def test_ovan_lake_is_an_indexable_destination_distinct_from_ovan_village():
     assert (lake["latitude"], lake["longitude"], lake["elevation_m"]) == (36.48313, 50.44379, 1793)
     assert catalog["routes"] == {}
     assert catalog["point"]["is_popular"] is False
+
+
+def test_ovan_villages_have_independent_searchable_identities_and_forecast_locations():
+    path = Path(__file__).parents[1] / "fixtures/catalog/ovan_lake_v1.json"
+    catalog = json.loads(path.read_text())
+    assert not validate_catalog_document(catalog)
+    names = {
+        "ovan-alamut": "روستای اوان الموت",
+        "varbon-alamut": "روستای وربن الموت",
+        "zavardasht": "روستای زواردشت",
+        "zarabad-alamut": "روستای زرآباد الموت",
+    }
+    locations = set()
+    for slug, name in names.items():
+        village = catalog["weather_points"][slug]
+        assert village["name"] == village["page_name"] == village["short_label"] == name
+        assert village["kind"] == village["importance"] == "primary"
+        assert village["seo_indexable"] is True
+        assert village["place_type"] == village["category_key"] == "village"
+        assert village["source_urls"] and village["elevation_source"]
+        locations.add((village["latitude"], village["longitude"]))
+    assert len(locations) == 4
+    lake = catalog["weather_points"]["ovan-lake"]
+    assert (lake["latitude"], lake["longitude"]) not in locations
+    assert catalog["routes"] == {}

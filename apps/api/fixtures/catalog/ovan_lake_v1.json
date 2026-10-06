@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-ovan-lake-catalog-v1",
+  "catalog_version": "hawatch-ovan-lake-catalog-v2",
   "primary_point": "ovan-lake",
   "weather_points": {
     "ovan-lake": {
@@ -24,6 +24,121 @@
       "elevation_m": 1793,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 1793 m در مرکز پهنهٔ دریاچه از OSM؛ با ارتفاع 1815 متر در منبع دهیاری اوان 22 متر اختلاف دارد.",
+      "climate": "lake_valley",
+      "region": "الموت شرقی · قزوین"
+    },
+    "ovan-alamut": {
+      "name": "روستای اوان الموت",
+      "page_name": "روستای اوان الموت",
+      "short_label": "روستای اوان الموت",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "روستای اوان",
+        "روستای آوان",
+        "اوان قزوین",
+        "Ovan village"
+      ],
+      "identity_summary": "هم‌نام روستای آوان آذربایجان شرقی است؛ qualifier الموت هویت محل را روشن می‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Avan,_Qazvin",
+        "https://en.wikipedia.org/wiki/Ovan_Lake"
+      ],
+      "latitude": 36.49222,
+      "longitude": 50.45028,
+      "elevation_m": 1875,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1875 m در مختصات روستا؛ موقعیت با نقشهٔ ارجاع‌شده در منبع هویت تطبیق دارد.",
+      "climate": "lake_valley",
+      "region": "الموت شرقی · قزوین"
+    },
+    "varbon-alamut": {
+      "name": "روستای وربن الموت",
+      "page_name": "روستای وربن الموت",
+      "short_label": "روستای وربن الموت",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "وربن",
+        "روستای وربن",
+        "وربن قزوین",
+        "Varbon"
+      ],
+      "identity_summary": "هم‌نام وربن گیلان است؛ وربن الموت روستای پای‌کار صعود خشچال است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Varbon,_Qazvin",
+        "https://en.wikipedia.org/wiki/Ovan_Lake"
+      ],
+      "latitude": 36.48694,
+      "longitude": 50.45333,
+      "elevation_m": 1869,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1869 m در مختصات روستا؛ موقعیت با نقشهٔ ارجاع‌شده در منبع هویت تطبیق دارد.",
+      "climate": "lake_valley",
+      "region": "الموت شرقی · قزوین"
+    },
+    "zavardasht": {
+      "name": "روستای زواردشت",
+      "page_name": "روستای زواردشت",
+      "short_label": "روستای زواردشت",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "زواردشت",
+        "زوار دشت",
+        "Zavardasht"
+      ],
+      "identity_summary": "روستای زواردشت در شمال‌غرب دریاچهٔ اوان، الموت شرقی قزوین.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zavardasht",
+        "https://en.wikipedia.org/wiki/Ovan_Lake"
+      ],
+      "latitude": 36.49472,
+      "longitude": 50.43333,
+      "elevation_m": 1808,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1808 m در مختصات روستا؛ موقعیت با نقشهٔ ارجاع‌شده در منبع هویت تطبیق دارد.",
+      "climate": "lake_valley",
+      "region": "الموت شرقی · قزوین"
+    },
+    "zarabad-alamut": {
+      "name": "روستای زرآباد الموت",
+      "page_name": "روستای زرآباد الموت",
+      "short_label": "روستای زرآباد الموت",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "زرآباد",
+        "روستای زرآباد",
+        "زرآباد قزوین",
+        "Zarabad Alamut"
+      ],
+      "identity_summary": "روستای زرآباد نزدیک دریاچهٔ اوان؛ qualifier الموت آن را از زرآبادهای استان‌های دیگر جدا می‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Zarabad,_Qazvin",
+        "https://en.wikipedia.org/wiki/Ovan_Lake"
+      ],
+      "latitude": 36.4875,
+      "longitude": 50.43056,
+      "elevation_m": 1795,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 1795 m در مختصات روستا؛ موقعیت با نقشهٔ ارجاع‌شده در منبع هویت تطبیق دارد.",
       "climate": "lake_valley",
       "region": "الموت شرقی · قزوین"
     }
