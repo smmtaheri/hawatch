@@ -16,6 +16,10 @@
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
+      "seo": {
+        "title": "آب‌وهوای غار کتله‌خور؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای محدودهٔ ورودی غار کتله‌خور نزدیک گرماب زنجان؛ دما، باد و بارش ساعتی برای برنامه‌ریزی بازدید."
+      },
       "source_urls": [
         "https://www.openstreetmap.org/node/3096058666",
         "https://www.wikidata.org/wiki/Q6375049",

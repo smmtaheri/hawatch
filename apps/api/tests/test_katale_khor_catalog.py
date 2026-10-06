@@ -45,6 +45,8 @@ def test_katale_khor_has_an_indexable_canonical_page_and_sitemap_entry(api_clien
     assert response.status_code == 200
     assert response["X-Robots-Tag"] == "index,follow"
     assert NAME in response.content.decode()
+    assert "آب‌وهوای غار کتله‌خور؛ دما، باد و بارش | هواچ" in response.content.decode()
+    assert "آب‌وهوای عارضهٔ شاخص" not in response.content.decode()
     assert f"https://hawatch.ir/points/{SLUG}" in response.content.decode()
     sitemap = api_client.get("/api/v1/seo/sitemap.xml")
     assert sitemap.status_code == 200
