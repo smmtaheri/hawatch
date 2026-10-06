@@ -27,6 +27,8 @@ def test_khour_ski_is_an_independent_indexable_point_with_ski_icon():
     assert (point["latitude"], point["longitude"], point["elevation_m"]) == (35.91135, 51.1698, 2632)
     assert point["source_urls"] and point["elevation_source"]
     assert len(point["identity_summary"]) <= 255
+    assert point["seo"]["title"] == "آب‌وهوای پیست اسکی خور؛ دما، باد و بارش | هواچ"
+    assert "عارضه" not in point["seo"]["description"]
     assert "Khur Ski Resort" in point["aliases"]
     existing = json.loads((CATALOG_DIR / "pahneh_hesar_v1.json").read_text())["weather_points"]
     for slug in ("khour-village", "khour-waterfall"):
