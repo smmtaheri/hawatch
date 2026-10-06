@@ -1,0 +1,73 @@
+{
+  "catalog_version": "hawatch-haj-ali-gholi-catalog-v1",
+  "weather_points": {
+    "haj-ali-gholi": {
+      "name": "کویر حاج‌علی‌قلی دامغان",
+      "page_name": "کویر حاج‌علی‌قلی دامغان",
+      "short_label": "حاج‌علی‌قلی",
+      "place_type": "desert",
+      "aliases": [
+        "کویر حاج علی قلی",
+        "کویر حاج علیقلی",
+        "کویر حاجعلیقلی",
+        "کویر حاج‌علی‌قلی",
+        "دریاچه نمک حاج علی قلی",
+        "نمکزار حاج علی قلی",
+        "Haj Ali Gholi Desert",
+        "Haj Aligholi Salt Lake",
+        "Haj Ali Qoli"
+      ],
+      "identity_summary": "کویر و نمکزار حاج‌علی‌قلی در جنوب‌شرق دامغان، استان سمنان؛ کویر و دریاچهٔ نمک آن یک مقصد مستقل هستند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://oiccpress.com/ijes/article/download/16971/18649/44425",
+        "https://mapcarta.com/12425280",
+        "https://commons.wikimedia.org/wiki/Category:Haj_Aligholi_Lake",
+        "https://www.wikiloc.com/hiking-trails/haj-ali-gholi-desert-8668925",
+        "https://www.wikiloc.com/hiking-trails/pymysh-khwyr-hj-ly-qly-193578627",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.915194,
+      "longitude": 54.740583,
+      "elevation_m": 1053,
+      "status": "provisional",
+      "elevation_source": "مختصات ژئوسایت حاج‌علی‌قلی در جدول پژوهش IJES: ۳۵°۵۴′۵۴٫۷″ شمالی، ۵۴°۴۴′۲۶٫۱″ شرقی؛ ارتفاع DEM/Open-Meteo برابر ۱۰۵۳ متر، کنترل‌شده در ۲۰۲۶-۱۰-۰۶.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "haj-ali-gholi",
+    "tile_name": "حاج‌علی‌قلی",
+    "name": "کویر حاج‌علی‌قلی دامغان",
+    "short_category": "کویر",
+    "category": "کویر · دامغان",
+    "category_key": "desert",
+    "region": "دامغان · استان سمنان",
+    "elevation_m": 1053,
+    "latitude": 35.915194,
+    "longitude": 54.740583,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کویر حاج علی قلی",
+      "کویر حاج علیقلی",
+      "کویر حاجعلیقلی",
+      "کویر حاج‌علی‌قلی",
+      "دریاچه نمک حاج علی قلی",
+      "نمکزار حاج علی قلی",
+      "Haj Ali Gholi Desert",
+      "Haj Aligholi Salt Lake",
+      "Haj Ali Qoli"
+    ]
+  },
+  "primary_point": "haj-ali-gholi"
+}
