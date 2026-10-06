@@ -1,0 +1,54 @@
+{
+  "catalog_version": "hawatch-taleghan-dam-v1",
+  "primary_point": "taleghan-dam",
+  "point": {
+    "slug": "taleghan-dam",
+    "name": "سد طالقان",
+    "tile_name": "سد طالقان",
+    "short_category": "سد",
+    "category": "سد و دریاچه",
+    "category_key": "dam",
+    "region": "طالقان · استان البرز",
+    "latitude": 36.175556,
+    "longitude": 50.673333,
+    "elevation_m": 1764,
+    "climate": "lake_valley",
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0,
+    "seo_indexable": true,
+    "aliases": ["دریاچه طالقان", "دریاچهٔ طالقان", "دریاچه سد طالقان", "دریاچهٔ سد طالقان", "سد مخزنی طالقان", "Taleghan Dam", "Taleqan Dam", "Taleghan Lake"]
+  },
+  "weather_points": {
+    "taleghan-dam": {
+      "name": "سد طالقان",
+      "page_name": "سد طالقان",
+      "short_label": "سد طالقان",
+      "place_type": "lake",
+      "category_key": "dam",
+      "category": "سد و دریاچه",
+      "region": "طالقان · استان البرز",
+      "latitude": 36.175556,
+      "longitude": 50.673333,
+      "elevation_m": 1764,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ مخزن دریاچهٔ طالقان از Wikidata Q96755177: ۳۶°۱۰′۳۲″ شمالی، ۵۰°۴۰′۲۴″ شرقی؛ ارتفاع ۱۷۶۴ متر از Open-Meteo GLO-90 DEM در همین مختصات، بررسی‌شده در ۲۰۲۶-۱۰-۰۶. این ارتفاع DEM است، نه اندازه‌گیری تراز لحظه‌ای آب مخزن.",
+      "climate": "lake_valley",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": ["دریاچه طالقان", "دریاچهٔ طالقان", "دریاچه سد طالقان", "دریاچهٔ سد طالقان", "سد مخزنی طالقان", "Taleghan Dam", "Taleqan Dam", "Taleghan Lake"],
+      "identity_summary": "سد طالقان و دریاچهٔ مخزنی آن در شهرستان طالقانِ البرز، روی رود شاهرود؛ یک مقصد مستقل با نام‌های رایج سد طالقان و دریاچهٔ طالقان، جدا از شهر طالقان.",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q96755177",
+        "https://mapcarta.com/12365588",
+        "https://en.wikipedia.org/wiki/Taleqan_Dam",
+        "https://www.orniverse.com/site/14328/taleqan-dam"
+      ]
+    }
+  },
+  "routes": {}
+}
