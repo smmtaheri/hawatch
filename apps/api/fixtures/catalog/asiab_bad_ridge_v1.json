@@ -1,0 +1,529 @@
+{
+  "catalog_version": "hawatch-asiab-bad-ridge-v1",
+  "primary_point": "asiab-bad",
+  "point": {
+    "slug": "asiab-bad",
+    "name": "قلهٔ آسیاب‌باد",
+    "tile_name": "آسیاب‌باد",
+    "category": "کوه",
+    "short_category": "کوه",
+    "category_key": "mountain",
+    "region": "کن · شمال‌غرب تهران · تهران",
+    "latitude": 35.788328,
+    "longitude": 51.224427,
+    "elevation_m": 2270,
+    "climate": "alpine",
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0,
+    "seo_indexable": true,
+    "aliases": [
+      "آسیاب باد",
+      "آسیاب بادی",
+      "Asiab Bad"
+    ]
+  },
+  "weather_points": {
+    "asiab-bad": {
+      "name": "قلهٔ آسیاب‌باد",
+      "page_name": "قلهٔ آسیاب‌باد",
+      "short_label": "قلهٔ آسیاب‌باد",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.788328,
+      "longitude": 51.224427,
+      "elevation_m": 2270,
+      "status": "provisional",
+      "elevation_source": "Waypoint مستقل قله در ترک کامل و گزارش صعود: حدود ۲۲۷۰ متر؛ DEM همین مختصات ۲۱۹۰ متر (اختلاف ۸۰ متر، در آستانهٔ مجاز). ارتفاع سازهٔ جان‌پناه به‌جای قله استفاده نشده است.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "آسیاب باد",
+        "آسیاب بادی",
+        "Asiab Bad"
+      ],
+      "identity_summary": "قلهٔ شرقی خط‌الرأس شمال‌غرب تهران، نزدیک جان‌پناه امید؛ قلهٔ صخره‌ای از سازهٔ جان‌پناه جداست. ارتفاع منابع صعود حدود ۲۲۷۰ متر است؛ DEM سلول ۹۰متریِ دامنهٔ سنگی حدود ۲۱۹۰ متر است.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+      ]
+    },
+    "latmal-peak": {
+      "name": "قلهٔ لتمال",
+      "page_name": "قلهٔ لتمال",
+      "short_label": "قلهٔ لتمال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.787104,
+      "longitude": 51.217685,
+      "elevation_m": 2247,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "قله لتمال",
+        "قله لتمان",
+        "لتمال کوچک",
+        "Latmal Peak"
+      ],
+      "identity_summary": "قلهٔ میانی بین آسیاب‌باد و هریاس، مستقل از بوستان جنگلی و آبشار لتمال. پسوند peak برای تمایز همین عارضه‌های هم‌نام است؛ در برخی گزارش‌ها لتمان یا لتمال کوچک نامیده می‌شود.",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-btdy-jdh-wrdyj-t-qll-ysh-hrys-ltml-asyb-bd-w-frwd-z-bwstn-abshr-jmh-1403-10-07-195920753"
+      ]
+    },
+    "heryas-peak": {
+      "name": "قلهٔ هریاس",
+      "page_name": "قلهٔ هریاس",
+      "short_label": "قلهٔ هریاس",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.792945,
+      "longitude": 51.205089,
+      "elevation_m": 2296,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "قله هریاس",
+        "قله هرباس",
+        "لتمال بزرگ",
+        "Heryas Peak"
+      ],
+      "identity_summary": "قلهٔ هریاس در غرب لتمال و شمال یاش در ارتفاعات شمال‌غرب تهران؛ مستقل از آبادی و درهٔ هریاس. پسوند peak به‌دلیل آبادی هم‌نام سولقان انتخاب شده است.",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-btdy-jdh-wrdyj-t-qll-ysh-hrys-ltml-asyb-bd-w-frwd-z-bwstn-abshr-jmh-1403-10-07-195920753",
+        "https://irangaah.ir/villages/tehran/sulghan/hrias"
+      ]
+    },
+    "vardij-peak": {
+      "name": "قلهٔ وردیج",
+      "page_name": "قلهٔ وردیج",
+      "short_label": "قلهٔ وردیج",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.803702,
+      "longitude": 51.199002,
+      "elevation_m": 2329,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "قله وردیج",
+        "Vardij Peak"
+      ],
+      "identity_summary": "بلندترین قلهٔ این خط‌الرأس در شمال‌غرب تهران؛ مستقل از روستای وردیج موجود در هواچ. پسوند peak برای تفکیک قله از روستا است؛ مسیر مستند از تپهٔ شهدای شهرک شهید باقری می‌گذرد.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878"
+      ]
+    },
+    "yash": {
+      "name": "قلهٔ یاش",
+      "page_name": "قلهٔ یاش",
+      "short_label": "قلهٔ یاش",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.784803,
+      "longitude": 51.201753,
+      "elevation_m": 2215,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "aliases": [
+        "قله یاش",
+        "Yash Peak"
+      ],
+      "identity_summary": "قلهٔ یاش روی یال جنوب‌غربی هریاس، مستقل از چهار قلهٔ اصلی خط‌الرأس. فعلاً مقصد بدون Route عمومی؛ ترک موجود از محوطهٔ مسکونی با اجازهٔ نگهبان می‌گذرد و دسترسی آزاد آن تأیید نشده است.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-btdy-jdh-wrdyj-t-qll-ysh-hrys-ltml-asyb-bd-w-frwd-z-bwstn-abshr-jmh-1403-10-07-195920753"
+      ]
+    },
+    "asiab-bad-omid-shelter": {
+      "name": "جان‌پناه امید آسیاب‌باد",
+      "page_name": "جان‌پناه امید آسیاب‌باد",
+      "short_label": "جان‌پناه امید آسیاب‌باد",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "جان‌پناه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.78831,
+      "longitude": 51.224992,
+      "elevation_m": 2233,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "established",
+      "aliases": [
+        "جان پناه آسیاب باد",
+        "جانپناه امید آسیاب باد"
+      ],
+      "identity_summary": "جان‌پناه ابرخشت امید در شرق قلهٔ صخره‌ای آسیاب‌باد؛ عارضهٔ میانی واقعی مسیرها. با قله حدود ۵۱ متر فاصله دارد، اما خود قله نیست و waypointهای اشتباه قله به این جان‌پناه تطبیق داده شده‌اند.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+      ]
+    },
+    "latmal-park-entrance": {
+      "name": "ورودی بوستان جنگلی لتمال کن",
+      "page_name": "ورودی بوستان جنگلی لتمال کن",
+      "short_label": "ورودی بوستان جنگلی لتمال کن",
+      "place_type": "trailhead",
+      "category_key": "park",
+      "category": "مبدأ مسیر",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.763582,
+      "longitude": 51.237602,
+      "elevation_m": 1383,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "ورودی و محل شروع پیمایش ثبت‌شدهٔ بوستان جنگلی لتمال کن؛ نقطهٔ فنی مبدأ، نه مختصات نمایندهٔ تمام بوستان.",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+      ]
+    },
+    "shahid-baqeri-hill-parking": {
+      "name": "پارکینگ تپهٔ شهدای گمنام شهرک شهید باقری",
+      "page_name": "پارکینگ تپهٔ شهدای گمنام شهرک شهید باقری",
+      "short_label": "پارکینگ تپهٔ شهدای گمنام شهرک شهید باقری",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "مبدأ مسیر",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.765868,
+      "longitude": 51.197148,
+      "elevation_m": 1438,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "پارکینگ پای تپهٔ شهدای گمنام شهرک شهید باقری، مبدأ مستند صعود وردیج؛ با روستای وردیج چند کیلومتر فاصله دارد و با آن ادغام نشده است.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878"
+      ]
+    },
+    "vardij-rock-spring": {
+      "name": "چشمهٔ سنگی مسیر وردیج",
+      "page_name": "چشمهٔ سنگی مسیر وردیج",
+      "short_label": "چشمهٔ سنگی مسیر وردیج",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "category": "چشمه",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.797127,
+      "longitude": 51.200582,
+      "elevation_m": 2158,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "جریان آب از صخره با waypoint و عکس در مسیر تپهٔ شهدای شهرک شهید باقری به قلهٔ وردیج؛ نام توصیفی زمینه‌دار، نه نام رسمی یا تضمین آب دائمی و آشامیدنی.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878"
+      ]
+    },
+    "heryas-valley-trailhead": {
+      "name": "مبدأ درهٔ هریاس در جادهٔ امامزاده‌داوود",
+      "page_name": "مبدأ درهٔ هریاس در جادهٔ امامزاده‌داوود",
+      "short_label": "مبدأ درهٔ هریاس در جادهٔ امامزاده‌داوود",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "مبدأ مسیر",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.797664,
+      "longitude": 51.25174,
+      "elevation_m": 1530,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "مبدأ پیادهٔ درهٔ هریاس کنار جادهٔ امامزاده‌داوود در محدودهٔ سولقان؛ نزدیک بالای تونل شمارهٔ ۵ تهران–شمال. مبدأ داخل آزادراه نیست.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810"
+      ]
+    },
+    "heryas-valley-garden": {
+      "name": "باغ و گوسفندسرای درهٔ هریاس",
+      "page_name": "باغ و گوسفندسرای درهٔ هریاس",
+      "short_label": "باغ و گوسفندسرای درهٔ هریاس",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "عارضهٔ مسیر",
+      "region": "کن · شمال‌غرب تهران · تهران",
+      "latitude": 35.79653,
+      "longitude": 51.24284,
+      "elevation_m": 1747,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint عارضه در GPX و گزارش منبع؛ ارتفاع Open-Meteo GLO-90 DEM در همین مختصات، بررسی ۲۰۲۶-۱۰-۰۶؛ ارتفاع GPS به‌تنهایی منبع canonical نیست.",
+      "climate": "alpine",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "aliases": [],
+      "identity_summary": "باغ و گوسفندسرای مستند در درهٔ هریاس، waypoint GARDEN و شرح منبع؛ در بخش رفت و برگشت دیده می‌شود. نقطهٔ میانی مسیر است، نه روستای جدید یا توقفگاه ساختگی.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810"
+      ]
+    }
+  },
+  "routes": {
+    "park_summit": {
+      "slug": "asiab-bad-latmal-park",
+      "title": "بوستان لتمال کن تا آسیاب‌باد",
+      "subtitle": "صعود از جان‌پناه امید تا قلهٔ آسیاب‌باد",
+      "trail_label": "صعود از جان‌پناه امید تا قلهٔ آسیاب‌باد",
+      "origin": "ورودی بوستان جنگلی لتمال کن",
+      "target_label": "قلهٔ آسیاب‌باد",
+      "region": "کن · شمال‌غرب تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "latmal-park-entrance",
+        "asiab-bad-omid-shelter",
+        "asiab-bad"
+      ],
+      "distance_km": 4,
+      "ascent_m": 900,
+      "one_way_minutes": 160,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+reported-stops-excluded+terrain-allowance-v1",
+        "version": "asiab-bad-latmal-park-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 35,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878"
+        ],
+        "cumulative_minutes": {
+          "latmal-park-entrance": 0,
+          "asiab-bad-omid-shelter": 150,
+          "asiab-bad": 160
+        }
+      },
+      "public_note": "نسخهٔ GPX ساده‌شده است؛ مسافت و زمان تقریبی‌اند. اعداد برای حرکت یک‌طرفه در هوای خشک و بدون توقف طولانی‌اند، نه کل رفت‌وبرگشت. آب کافی همراه داشته باشید؛ در برف و یخ این تخمین معتبر نیست. جان‌پناه مقصد نهایی نیست؛ قلهٔ سنگی در غرب آن است و بخش پایانی احتیاط می‌خواهد. بازبودن ورودی بوستان را بررسی کنید.",
+      "internal_note": "Park174582633:165 simplified recorded points versus1388 source samples; shelter at3.888km. Original report04:45->07:00 shelter135min; its5km shelter statement disagrees with downloaded geometry3.89km and source full12.28km versus simplified11.51km. Distance deliberately approximate4.0km, not claimed survey precision. True rocky summit is51m west; reversed dense ridge203903878 indices1537..1523 adds0.113km; no straight-line invented geometry. Conservative medium150min shelter+10min summit, no breakfast1h. Ascent900m DEM/net and terrain estimate, not noisy raw cumulative gain. Shelter and summit independently reviewed. No road access appended; chosen documented SE foot ascent."
+    },
+    "park_ridge": {
+      "slug": "heryas-latmal-park",
+      "title": "بوستان لتمال کن تا لتمال و هریاس",
+      "subtitle": "از آسیاب‌باد و لتمال تا قلهٔ هریاس",
+      "trail_label": "از آسیاب‌باد و لتمال تا قلهٔ هریاس",
+      "origin": "ورودی بوستان جنگلی لتمال کن",
+      "target_label": "قلهٔ هریاس",
+      "region": "کن · شمال‌غرب تهران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "latmal-park-entrance",
+        "asiab-bad-omid-shelter",
+        "asiab-bad",
+        "latmal-peak",
+        "heryas-peak"
+      ],
+      "distance_km": 6,
+      "ascent_m": 970,
+      "one_way_minutes": 225,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+reported-stops-excluded+terrain-allowance-v1",
+        "version": "heryas-latmal-park-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-btdy-jdh-wrdyj-t-qll-ysh-hrys-ltml-asyb-bd-w-frwd-z-bwstn-abshr-jmh-1403-10-07-195920753"
+        ],
+        "cumulative_minutes": {
+          "latmal-park-entrance": 0,
+          "asiab-bad-omid-shelter": 150,
+          "asiab-bad": 160,
+          "latmal-peak": 185,
+          "heryas-peak": 225
+        }
+      },
+      "public_note": "نسخهٔ GPX ساده‌شده است؛ مسافت و زمان تقریبی‌اند. اعداد برای حرکت یک‌طرفه در هوای خشک و بدون توقف طولانی‌اند، نه کل رفت‌وبرگشت. آب کافی همراه داشته باشید؛ در برف و یخ این تخمین معتبر نیست. روی خط‌الرأس بخش‌های سنگی وجود دارد؛ از پاکوب دامنه استفاده کنید و وارد تیغه و شاخهٔ ریزشی نشوید. فرود تند آبشار تهران در این اعداد نیست.",
+      "internal_note": "174582633 simplified outbound indices0..90:6.024km, robust gain924.6m. Latmal first ascent index78 offset42m at4.604km; nearest overall waypoint on return index108 must not be used for ascent timing. Report shelter135min, Latmal155min, Heryas195min after excluding breakfast60min; conservative medium225min. The point labeled Asiab in many files is shelter; true peak coordinate from dense203903878. Safe slope bypass corroborated by195920753; steep south descent omitted. Geometry-derived approximate distance6.0km with970m rounded terrain estimate, no whole12.28km loop or summit30min rest."
+    },
+    "west_summit": {
+      "slug": "vardij-shahid-baqeri",
+      "title": "تپهٔ شهدای شهرک شهید باقری تا وردیج",
+      "subtitle": "صعود وردیج از چشمهٔ سنگی",
+      "trail_label": "صعود وردیج از چشمهٔ سنگی",
+      "origin": "پارکینگ تپهٔ شهدای گمنام شهرک شهید باقری",
+      "target_label": "قلهٔ وردیج",
+      "region": "کن · شمال‌غرب تهران",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "shahid-baqeri-hill-parking",
+        "vardij-rock-spring",
+        "vardij-peak"
+      ],
+      "distance_km": 7.84,
+      "ascent_m": 970,
+      "one_way_minutes": 220,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+reported-stops-excluded+terrain-allowance-v1",
+        "version": "vardij-shahid-baqeri-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878"
+        ],
+        "cumulative_minutes": {
+          "shahid-baqeri-hill-parking": 0,
+          "vardij-rock-spring": 175,
+          "vardij-peak": 220
+        }
+      },
+      "public_note": "زمان و مسافت برای صعود یک‌طرفه تا قلهٔ وردیج در شرایط خشک و بدون توقف طولانی است. چشمه ممکن است فصلی باشد؛ به آن به‌عنوان منبع تضمین‌شدهٔ آب تکیه نکنید. برگشت یا ادامهٔ خط‌الرأس را جدا برنامه‌ریزی کنید.",
+      "internal_note": "203903878 full2371points continuous maxjump13m; cut first Vardij index1019:7.840km smoothed967.3m. Spring at6.343km. All exported time gaps exactly40s starting at download2026-10-06 into future; synthetic timestamps rejected for moving/elapsed/ETA. Source execution claims3/4Farvardin1403 whereas uploadMarch2025; calendar not used for ETA. Naismith(4km/h+600m/h) baseline214? distance117.6+gain96.7=214.3min; rounded220, spring175. Real pictured spring; generic camps/turns omitted."
+    },
+    "west_ridge": {
+      "slug": "heryas-vardij-shahid-baqeri",
+      "title": "تپهٔ شهدای شهرک شهید باقری تا وردیج و هریاس",
+      "subtitle": "پیمایش وردیج تا هریاس",
+      "trail_label": "پیمایش وردیج تا هریاس",
+      "origin": "پارکینگ تپهٔ شهدای گمنام شهرک شهید باقری",
+      "target_label": "قلهٔ هریاس",
+      "region": "کن · شمال‌غرب تهران",
+      "featured": false,
+      "sort_order": 4,
+      "points": [
+        "shahid-baqeri-hill-parking",
+        "vardij-rock-spring",
+        "vardij-peak",
+        "heryas-peak"
+      ],
+      "distance_km": 9.28,
+      "ascent_m": 1010,
+      "one_way_minutes": 260,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+reported-stops-excluded+terrain-allowance-v1",
+        "version": "heryas-vardij-shahid-baqeri-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 55,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+        ],
+        "cumulative_minutes": {
+          "shahid-baqeri-hill-parking": 0,
+          "vardij-rock-spring": 175,
+          "vardij-peak": 220,
+          "heryas-peak": 260
+        }
+      },
+      "public_note": "این مسیر در قلهٔ هریاس پایان می‌یابد؛ ادامهٔ ترک مرجع به لتمال و آسیاب‌باد در اعداد آن نیست. بخش ریزشی علامت‌خوردهٔ بعد از هریاس وارد این مسیر نشده است. زمان برای حرکت یک‌طرفه، بدون شب‌مانی و توقف طولانی و در شرایط خشک است؛ مسیر برگشت جدا برنامه‌ریزی شود.",
+      "internal_note": "203903878 cut at Heryas first approach index1204:9.284km smoothed1010.6m. Synthetic40s timestamps rejected. Outbound Vardij7.840km then Heryas1.444km with saddle; medium260min geometry/terrain. Known risky deviation lies AFTER Heryas: not part of published route. Full18.377km traverse withheld rather than publish loose branch. No invented safe replacement GPX. Generic unnamed camps/slope points omitted."
+    },
+    "north": {
+      "slug": "asiab-bad-heryas-valley",
+      "title": "درهٔ هریاس تا آسیاب‌باد",
+      "subtitle": "صعود از جادهٔ امامزاده‌داوود",
+      "trail_label": "صعود از جادهٔ امامزاده‌داوود",
+      "origin": "مبدأ درهٔ هریاس در جادهٔ امامزاده‌داوود",
+      "target_label": "قلهٔ آسیاب‌باد",
+      "region": "کن · شمال‌غرب تهران",
+      "featured": false,
+      "sort_order": 5,
+      "points": [
+        "heryas-valley-trailhead",
+        "heryas-valley-garden",
+        "asiab-bad-omid-shelter",
+        "asiab-bad"
+      ],
+      "distance_km": 3.9,
+      "ascent_m": 790,
+      "one_way_minutes": 165,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+reported-stops-excluded+terrain-allowance-v1",
+        "version": "asiab-bad-heryas-valley-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 40,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810",
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+        ],
+        "cumulative_minutes": {
+          "heryas-valley-trailhead": 0,
+          "heryas-valley-garden": 45,
+          "asiab-bad-omid-shelter": 155,
+          "asiab-bad": 165
+        }
+      },
+      "public_note": "نسخهٔ GPX ساده‌شده است؛ مسافت و زمان تقریبی‌اند. اعداد برای حرکت یک‌طرفه در هوای خشک و بدون توقف طولانی‌اند، نه کل رفت‌وبرگشت. آب کافی همراه داشته باشید؛ در برف و یخ این تخمین معتبر نیست. مبدأ کنار جادهٔ امامزاده‌داوود است، نه داخل آزادراه؛ پاکوب بالای تونل ۵ و عبور از رودخانه را با احتیاط طی کنید. آب باغ و گوسفندسرا تضمین دائمی یا آشامیدنی ندارد.",
+      "internal_note": "69686810 has169 simplified recorded points. Trim bad initial1390m sample; start START near index2 at1483m, first shelter index77:3.740km smoothed737.3m. Garden matched on ASCENT index42 offset17.9m, not nearest entire loop index124 on descent. LATMAL PEAK waypoint35.788358,51.224930 is shelter, not Latmal summit1km west and not actual Asiab rocky peak. Composite extension uses reversed dense203903878 indices1537..1523:0.113km with6.4m shelter join; final3.9km rounded, gain790 estimate incl rocky extension. Source2021 speed-training126.9min not direct average ETA; normal medium155 to shelter+10peak with40min uncertainty. Tunnel5 roof corroborates road origin but not extra weatherpoint. No motorway carriageway or village identity fabricated."
+    }
+  },
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": [
+        "asiab-bad",
+        "asiab-bad-omid-shelter"
+      ],
+      "reason": "فاصلهٔ ۵۱ متر، دو عارضهٔ واقعی و مستقل: قلهٔ صخره‌ای غربی و سازهٔ جان‌پناه شرقی با نام و مختصات مجزا در گزارش و ترک کامل. جان‌پناه مرحلهٔ استراحت/پناه است و جای قله نیست؛ waypointهای غلط قله به سازه resolve شده‌اند. فاصله کمتر از ۲۵ متر نیست و زمان رسیدن جدا دارد."
+    }
+  ]
+}
