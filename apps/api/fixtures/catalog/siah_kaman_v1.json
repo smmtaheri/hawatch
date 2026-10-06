@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-siah-kaman-catalog-v1",
+  "catalog_version": "hawatch-siah-kaman-catalog-v2",
   "weather_points": {
     "siah-kaman-naft-chak": {
       "name": "درهٔ نفت‌چاک",
@@ -48,11 +48,11 @@
         "https://www.wikiloc.com/hiking-trails/chkhd-syh-khmn-siyah-kaman-141887696",
         "https://www.gholleh.com/peakszoom.aspx?lat=36.3923236&lon=50.98994&peak-name=%D9%82%D9%84%D9%87+%D8%B3%DB%8C%D8%A7%D9%87+%DA%A9%D9%85%D8%A7%D9%86&pkidentifier=576"
       ],
-      "latitude": 36.38275,
-      "longitude": 50.989826,
-      "elevation_m": 4473,
+      "latitude": 36.382386,
+      "longitude": 50.988796,
+      "elevation_m": 4423,
       "status": "provisional",
-      "elevation_source": "نزدیک‌ترین نقطهٔ track به waypoint شن‌اسکی گردنهٔ چالون؛ ارتفاع GPX مرجع است و با Open-Meteo GLO-90 کنترل می‌شود.",
+      "elevation_source": "مختصات خود waypoint نام‌دار شن‌اسکی گردنهٔ چالون در ترک Wikiloc 141887696، نه نقطهٔ نزدیک‌شده به قله؛ ارتفاع ۴۴۲۳ متر از Open-Meteo GLO-90 DEM در همین مختصات (بررسی ۲۰۲۶-۱۰-۰۶).",
       "climate": "high_alpine"
     },
     "chalon-peak": {

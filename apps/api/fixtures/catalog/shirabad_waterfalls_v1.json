@@ -1,5 +1,27 @@
 {
-  "catalog_version": "hawatch-shirabad-waterfalls-v1",
+  "catalog_version": "hawatch-shirabad-waterfalls-v2",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["shirabad-seven-waterfalls", "shirabad-fourth-waterfall"],
+      "reason": "نقطهٔ نمایندهٔ هفت آبشار روی waypoint آبشار هفتم است؛ آبشار چهارم در همان ترک Wikiloc 268802470 waypoint مستقل دارد (۲۸ متر فاصله). دو آبشار با شمارهٔ متفاوت در یک خوشه‌اند، نه دو نام برای یک آبشار؛ چهارم noindex می‌ماند."
+    },
+    {
+      "slugs": ["shirabad-seven-waterfalls", "shirabad-sixth-waterfall"],
+      "reason": "نمایندهٔ مجموعه روی آبشار هفتم است؛ waypoint آبشار ششم در ترک Wikiloc 268802470 مستقل و ۳۷ متر دورتر است. شماره‌ها از منبع آمده‌اند، نه فاصلهٔ زمانی ترک؛ ششم نقطهٔ پشتیبان noindex است."
+    },
+    {
+      "slugs": ["shirabad-third-waterfall", "shirabad-fourth-waterfall"],
+      "reason": "آبشار سوم و چهارم دو waypoint شماره‌دار مستقل در ترک Wikiloc 268802470 با فاصلهٔ ۷۸ متر هستند؛ سوم در ترک مستقل 243294044 نیز تأیید می‌شود. هر دو نقطهٔ بین‌راهی noindex هستند."
+    },
+    {
+      "slugs": ["shirabad-third-waterfall", "shirabad-sixth-waterfall"],
+      "reason": "آبشار سوم و ششم در ترک Wikiloc 268802470 دو عارضهٔ شماره‌دار مستقل با فاصلهٔ ۹۳ متر و در مراحل متفاوت پیمایش‌اند؛ هر دو noindex هستند و صفحهٔ مستقل قابل‌ایندکس تازه‌ای ساخته نمی‌شود."
+    },
+    {
+      "slugs": ["shirabad-fourth-waterfall", "shirabad-sixth-waterfall"],
+      "reason": "دو waypoint نام‌دار آبشار چهارم و ششم در ترک Wikiloc 268802470 با فاصلهٔ افقی ۲۹ متر و ارتفاع خام متفاوت ثبت شده‌اند؛ فشردگی آبشارهای بالادست به معنای یک عارضه بودنشان نیست. هر دو noindex می‌مانند و DEM مشترک دلیل ادغام نیست."
+    }
+  ],
   "weather_points": {
     "shirabad-village": {
       "name": "روستای شیرآباد گلستان",

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-dobarar-catalog-v4",
+  "catalog_version": "hawatch-dobarar-catalog-v5",
   "weather_points": {
     "hoir-lake": {
       "name": "دریاچهٔ هویر",
@@ -17,7 +17,6 @@
       "name_status": "established",
       "aliases": [
         "دریاچه هویر",
-        "هویر",
         "Hoir Lake",
         "Havir Lake",
         "Hoveyr Lake"
@@ -1137,10 +1136,10 @@
         "شاه‌ورس شرقی",
         "شاه‌ورس شرقی"
       ],
-      "identity_summary": "قلهٔ شاه‌ورس شرقی؛ عارضهٔ میانی مسیر تیغه‌های دوبرار",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "identity_summary": "قلهٔ شاه‌ورس شرقی در خط‌الرأس دوبرار؛ مقصد نهایی مسیر تیغه‌ها از رخش و کمرپشت.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.openstreetmap.org/?mlat=35.759766&mlon=52.310165#map=15/35.759766/52.310165"

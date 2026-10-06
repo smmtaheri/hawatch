@@ -1,5 +1,11 @@
 {
-  "catalog_version": "hawatch-doshakh-tehran-v1",
+  "catalog_version": "hawatch-doshakh-tehran-v2",
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["doshakh-shelter", "doshakh-tehran"],
+      "reason": "جان‌پناه و قله دو عارضهٔ مستقل‌اند: waypointهای نام‌دار ترک Wikiloc 48158952 با فاصلهٔ افقی ۸۸ متر و اختلاف DEM برابر ۴۱ متر ثبت شده‌اند؛ بنا زیر قله قرار دارد و مرحلهٔ پناهگاه با مقصد صعود یکی نیست. جان‌پناه همچنان noindex است."
+    }
+  ],
   "primary_point": "doshakh-tehran",
   "weather_points": {
     "doshakh-shelter": {

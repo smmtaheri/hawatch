@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kandolus-v3",
+  "catalog_version": "hawatch-kandolus-v4",
   "weather_points": {
     "kandolus-village": {
       "name": "روستای کندلوس",
@@ -106,7 +106,6 @@
       "place_type": "waterfall",
       "category_key": "waterfall",
       "aliases": [
-        "آبشار مسیر کجور به سیسنگان",
         "آبشار خزه ای کجور",
         "Kojur moss waterfall"
       ],
@@ -141,9 +140,9 @@
         "Sisangan Waterfall"
       ],
       "identity_summary": "آبشار سیسنگان، عارضهٔ شاخص بخش پایانی پیمایش جنگلی کجور تا سیسنگان؛ با پارک جنگلی سیسنگان در ساحل خزر یکی نیست.",
-      "importance": "support",
-      "kind": "route_point",
-      "seo_indexable": false,
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
       "name_status": "established",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
