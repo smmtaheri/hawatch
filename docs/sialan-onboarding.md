@@ -28,10 +28,10 @@ catalog، جلوگیری از duplicate و فاصلهٔ نقاط در
 ## نقاط و مالکیت کاتالوگ
 
 دشت دریاسر و نقاط مسیر اِسِل‌محله در
-`apps/api/fixtures/catalog/daryasar_v1.json` مالکیت دارند و در کاتالوگ سیالان
+`apps/api/fixtures/catalog/daryasar_v2.json` مالکیت دارند و در کاتالوگ سیالان
 دوباره تعریف نمی‌شوند. مسیر جدید با همان slugهای زیر به آن‌ها ارجاع خواهد داد:
 
-- `daryasar-esel-mahalleh` — مبدأ مشترک
+- `esel-mahalleh` — روستای مستقل و مبدأ مشترک؛ canonical آن `/points/esel-mahalleh` است.
 - `daryasar-spring` — چشمهٔ مسیر (فقط اگر ترک سیالان همین بخش را واقعاً طی کند)
 - `daryasar` — نقطهٔ مشترک؛ در مسیر دریاسر مقصد و در مسیر سیالان نقطهٔ میانی
 

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sialan-catalog-v2",
+  "catalog_version": "hawatch-sialan-catalog-v3",
   "weather_points": {
     "sialan-hertung-shelter": {
       "name": "جان‌پناه هرتنگ سیالان",
@@ -185,7 +185,7 @@
     }
   },
   "shared_weather_points": [
-    "daryasar-esel-mahalleh",
+    "esel-mahalleh",
     "daryasar-spring",
     "daryasar"
   ],
@@ -201,7 +201,7 @@
       "featured": false,
       "sort_order": 1,
       "points": [
-        "daryasar-esel-mahalleh",
+        "esel-mahalleh",
         "daryasar-spring",
         "daryasar",
         "sialan-hertung-shelter",
@@ -236,7 +236,7 @@
           "distance و ascent پس از تحلیل ترک primary نهایی می‌شوند؛ ارتفاع GPX فقط مرجع هندسه است."
         ],
         "cumulative_minutes": {
-          "daryasar-esel-mahalleh": 0,
+          "esel-mahalleh": 0,
           "daryasar-spring": 65,
           "daryasar": 90,
           "sialan-hertung-shelter": 240,
