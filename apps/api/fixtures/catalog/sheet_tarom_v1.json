@@ -1,0 +1,54 @@
+{
+  "catalog_version": "hawatch-sheet-tarom-catalog-v1",
+  "primary_point": "sheet-tarom",
+  "weather_points": {
+    "sheet-tarom": {
+      "name": "روستای شیت طارم",
+      "page_name": "روستای شیت طارم",
+      "short_label": "شیت",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "چورزق · طارم · زنجان",
+      "aliases": ["شیت", "روستای شیت", "شیت زنجان", "شیت طارم", "Sheet Tarom", "Shit Zanjan"],
+      "identity_summary": "روستای شیت در بخش چورزق شهرستان طارم استان زنجان؛ مختصات مرکز آبادی است. پسوند طارم برای تفکیک از روستای هم‌نام شیت در مازندران استفاده شده است. این صفحه مستقل از مسیرهای پیمایش اطراف روستا است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4468203607",
+        "https://mapcarta.com/12575506",
+        "https://en.wikipedia.org/wiki/Shit,_Zanjan"
+      ],
+      "latitude": 36.9780234,
+      "longitude": 48.6996499,
+      "elevation_m": 907,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز روستا از OpenStreetMap node 4468203607؛ ارتفاع زمین در همان مختصات از Open-Meteo GLO-90 DEM برابر ۹۰۷ متر، بررسی‌شده در ۲۰۲۶-۱۰-۰۶.",
+      "climate": "meadow",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "sheet-tarom",
+    "tile_name": "شیت طارم",
+    "name": "روستای شیت طارم",
+    "short_category": "روستا",
+    "category": "روستا",
+    "category_key": "village",
+    "region": "چورزق · طارم · زنجان",
+    "latitude": 36.9780234,
+    "longitude": 48.6996499,
+    "elevation_m": 907,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["شیت", "روستای شیت", "شیت زنجان", "شیت طارم", "Sheet Tarom", "Shit Zanjan"]
+  }
+}

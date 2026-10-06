@@ -111,10 +111,10 @@ def test_route_requires_origin_landmark_and_target():
     assert any(issue.code == "route-chain" for issue in validate_catalog_document(catalog))
 
 
-def test_point_only_indexable_village_requires_a_related_primary_destination():
+def test_point_only_indexable_ancillary_village_requires_a_related_primary_destination():
     catalog = {
         "catalog_version": "village-only-v1",
-        "point": {"slug": "test-village", "seo_indexable": True},
+        "point": {"slug": "test-region", "seo_indexable": True},
         "primary_point": "test-village",
         "weather_points": {
             "test-village": {

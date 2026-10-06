@@ -1,0 +1,53 @@
+{
+  "catalog_version": "hawatch-validar-catalog-v1",
+  "primary_point": "validar",
+  "weather_points": {
+    "validar": {
+      "name": "روستای ولیدر",
+      "page_name": "روستای ولیدر",
+      "short_label": "ولیدر",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "چورزق · طارم · زنجان",
+      "aliases": ["ولیدر", "ولیدر طارم", "ولیدر زنجان", "روستای ولیدر طارم", "Validar", "Val idar"],
+      "identity_summary": "روستای ولیدر در بخش چورزق شهرستان طارم استان زنجان؛ مختصات مرکز آبادی است، نه ییلاق یا نقطه‌ای در مسیر پیمایش دگاه به ولیدر. صفحهٔ مستقل روستا بدون وابستگی به مسیر منتشر می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Validar",
+        "https://www.wikiloc.com/hiking-trails/dgh-bh-wlydr-36548281"
+      ],
+      "latitude": 36.96972,
+      "longitude": 48.63139,
+      "elevation_m": 1567,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز روستا از مدخل Validar؛ ارتفاع زمین در همان مختصات از Open-Meteo GLO-90 DEM برابر ۱۵۶۷ متر، بررسی‌شده در ۲۰۲۶-۱۰-۰۶.",
+      "climate": "meadow",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "validar",
+    "tile_name": "ولیدر",
+    "name": "روستای ولیدر",
+    "short_category": "روستا",
+    "category": "روستا",
+    "category_key": "village",
+    "region": "چورزق · طارم · زنجان",
+    "latitude": 36.96972,
+    "longitude": 48.63139,
+    "elevation_m": 1567,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["ولیدر", "ولیدر طارم", "ولیدر زنجان", "روستای ولیدر طارم", "Validar", "Val idar"]
+  }
+}

@@ -211,6 +211,10 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
     for slug, row in primary_destinations.items():
         if row.get("place_type") not in ACCESS_PLACE_TYPES or slug in route_point_slugs:
             continue
+        # A village can itself be the independently searchable destination.
+        # Ancillary access points still need a related destination or route.
+        if row.get("place_type") == "village" and slug == primary_slug == profile.get("slug"):
+            continue
         has_related_destination = any(
             other_slug != slug and other.get("place_type") not in ACCESS_PLACE_TYPES
             for other_slug, other in primary_destinations.items()
