@@ -532,6 +532,7 @@ def sitemap_xml(_request):
     urls = [
         entry(f"{base}/"),
         entry(f"{base}/destinations", destination_lastmod),
+        entry(f"{base}/routes"),
         *(
             entry(
                 f"{base}/points/{row['slug']}",

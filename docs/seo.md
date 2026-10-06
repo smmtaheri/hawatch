@@ -36,8 +36,8 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
   `/routes/page/<n>` هرکدام canonical، structured data و لینک‌های قبلی/بعدی
   خودشان را دارند. React برش بعدی را هنگام نزدیک‌شدن اسکرول به انتهای شبکه
   خودکار اضافه می‌کند؛ اگر JavaScript یا `IntersectionObserver` در دسترس نباشد،
-  همان لینک «مسیرهای بیشتر» مسیر crawlable را حفظ می‌کند. این Hub در sitemap
-  جداگانه وارد نمی‌شود؛ خود Routeهای فعال لینک‌شده canonical مستقل دارند.
+  همان لینک «مسیرهای بیشتر» مسیر crawlable را حفظ می‌کند. URL اصلی این Hub
+  در sitemap می‌آید؛ خود Routeهای فعال لینک‌شده canonical مستقل دارند.
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
@@ -117,7 +117,9 @@ Attribution فقط یک متن کوچک `دادهٔ هواشناسی: Open-Meteo
 `/destinations` و `/routes` صفحه‌های SSR کم‌حجم برای مقصدهای مستقل و مسیرهای فعال
 هستند؛ waypointهای فنی در مقصدها فهرست نمی‌شوند. هر برش حداکثر ۱۶ کارت دارد تا پاسخ اولیه و مصرف
 حافظهٔ مرورگر محدود بماند. Home چهار کارت محبوب فعلی را حفظ می‌کند و فقط لینک
-کوچک «مشاهدهٔ همهٔ مقصدها» را به Hub اضافه می‌کند. Point و Routeهای مرتبط
+کوچک «مشاهدهٔ همهٔ مقصدها» را به Hub اضافه می‌کند. HTML اولیهٔ Home و تمام
+برش‌های مقصدها نیز لینک واقعی «همهٔ مسیرها» به `/routes` دارد؛ این لینک به
+JavaScript وابسته نیست و با ناوبری موجود React هم‌راستاست. Point و Routeهای مرتبط
 همچنان از صفحات detail با `<a href>` واقعی به یکدیگر متصل‌اند.
 
 URLهای `/destinations/page/<n>` و `/routes/page/<n>` برای crawl و refresh مستقیم
@@ -140,10 +142,11 @@ indexable و بدون Route باید در همان catalog یک مقصد اصل�
 راهنمای اصلاح Catalog هستند؛ Point فنی/noindex عمداً از این گیت کنار گذاشته
 می‌شود و از Route، جست‌وجو یا API حذف نمی‌گردد.
 
-Sitemap فقط Home، `/destinations`، Pointهای فعال و indexable و Routeهای فعال را
-دارد. `lastmod` برای Hub از بیشترین `WeatherPoint.updated_at` مقصدها و برای
-detailها از `updated_at` همان Catalog/Route می‌آید؛ دریافت یا refresh forecast
-این مقدار را تغییر نمی‌دهد. Home چون رکورد محتوایی مستقل ندارد `lastmod` ندارد.
+Sitemap فقط Home، `/destinations`، `/routes`، Pointهای فعال و indexable و Routeهای
+فعال را دارد. `lastmod` مقصدها فقط از timestamp Catalog (با لحاظ مقصدهای بازنشسته)
+می‌آید؛ برای Point/Route جدیدترین timestamp تغییر Catalog یا forecast موفق
+ذخیره‌شده استفاده می‌شود. Home و Hub مسیرها فعلاً `lastmod` ندارند؛ برای فهرست
+مسیرها timestamp جامعِ تغییر عضویت/حذف نداریم و تاریخ ساختگی ثبت نمی‌کنیم.
 
 ## رفتار URL
 

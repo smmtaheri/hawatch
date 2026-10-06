@@ -41,6 +41,9 @@
             <img class="seo-brand-logo seo-brand-logo--light-surface" src="/brand/v2/logo-light.svg" alt="" />
           </a>
         </header>
+        {% if page.kind == "home" or page.kind == "destinations" %}
+          <nav aria-label="فهرست مسیرها"><a href="/routes">همهٔ مسیرها</a></nav>
+        {% endif %}
         <article>
           {% if page.kind == "not-found" %}
             <h1>{{ page.headline }}</h1>

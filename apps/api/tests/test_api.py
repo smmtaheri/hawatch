@@ -122,15 +122,16 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
         .values_list("slug", flat=True)
     }
     expected_routes = {f"https://hawatch.ir/routes/{slug}" for slug in desired.route_slugs}
-    expected_locations = {"https://hawatch.ir/", "https://hawatch.ir/destinations"} | expected_points | expected_routes
+    expected_locations = {"https://hawatch.ir/", "https://hawatch.ir/destinations", "https://hawatch.ir/routes"} | expected_points | expected_routes
     assert set(locations) == expected_locations
-    assert len(locations) == 2 + len(expected_points) + len(expected_routes)
+    assert len(locations) == 3 + len(expected_points) + len(expected_routes)
     assert len(locations) == len(set(locations))
     assert locations[0] == "https://hawatch.ir/"
     assert locations[1] == "https://hawatch.ir/destinations"
+    assert locations[2] == "https://hawatch.ir/routes"
     assert all(url.startswith("https://hawatch.ir/") and "?" not in url for url in locations)
     assert "https://hawatch.ir/points" not in locations
-    assert "https://hawatch.ir/routes" not in locations
+    assert "https://hawatch.ir/routes" in locations
     assert "https://hawatch.ir/points/" not in locations
     assert "https://hawatch.ir/routes/" not in locations
     assert sum("/points/" in url for url in locations) == len(expected_points)
@@ -143,6 +144,7 @@ def test_sitemap_contains_home_all_public_points_and_active_routes(api_client, s
         for node in url_nodes
     }
     assert lastmods["https://hawatch.ir/"] is None
+    assert lastmods["https://hawatch.ir/routes"] is None
     assert all(lastmods[url] is not None for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"})
     for url in expected_points | expected_routes | {"https://hawatch.ir/destinations"}:
         assert lastmods[url].text.endswith("Z")

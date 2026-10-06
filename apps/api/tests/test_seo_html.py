@@ -27,6 +27,7 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_cata
     assert "<h1>پیش‌بینی هوای نقاط و مسیرها</h1>" in body
     assert 'id="seo-popular-points">مقصدهای محبوب هواچ</h2>' in body
     assert 'href="/destinations">مشاهدهٔ همهٔ مقصدها</a>' in body
+    assert 'href="/routes">همهٔ مسیرها</a>' in body
     assert '"@type": "WebSite"' in body
     assert "۶ روز آینده" not in body
     assert "۶ روزه" not in body
@@ -43,6 +44,7 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert 'rel="canonical" href="https://hawatch.ir/destinations"' in body
     assert 'name="robots" content="index,follow"' in body
     assert "<h1>مقصدهای اصلی هواچ</h1>" in body
+    assert 'href="/routes">همهٔ مسیرها</a>' in body
     assert 'id="seo-destinations-list">مقصدهای اصلی</h2>' in body
     assert 'href="/points/tochal"' in body
     assert 'href="/points/tochal-sarband-square"' not in body
@@ -57,6 +59,7 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert "<title>مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها | بخش 2</title>" in page_two_body
     assert 'rel="canonical" href="https://hawatch.ir/destinations/page/2"' in page_two_body
     assert 'href="/destinations">مقصدهای قبلی</a>' in page_two_body
+    assert 'href="/routes">همهٔ مسیرها</a>' in page_two_body
     assert '"position": 17' in page_two_body
     assert '"numberOfItems"' in page_two_body
 
@@ -342,10 +345,14 @@ def test_point_index_redirect_and_route_hub_are_crawlable(api_client, seo_catalo
     assert 'rel="canonical" href="https://hawatch.ir/routes"' in query_response.content.decode()
 
 
-def test_public_sitemap_contains_only_detail_urls(api_client, seo_catalog):
+def test_public_sitemap_includes_canonical_hubs_not_legacy_or_pagination_urls(api_client, db):
     body = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
     assert "<loc>https://hawatch.ir/points</loc>" not in body
-    assert "<loc>https://hawatch.ir/routes</loc>" not in body
+    assert body.count("<loc>https://hawatch.ir/routes</loc>") == 1
+    assert "<loc>https://hawatch.ir/destinations</loc>" in body
+    assert "/routes/page/" not in body
+    assert "/destinations/page/" not in body
+    assert all("?" not in url for url in re.findall(r"<loc>(.*?)</loc>", body))
     assert "<loc>https://hawatch.ir/points/</loc>" not in body
     assert "<loc>https://hawatch.ir/routes/</loc>" not in body
 
