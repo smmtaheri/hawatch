@@ -14,6 +14,10 @@
       "kind": "primary",
       "seo_indexable": true,
       "name_status": "established",
+      "seo": {
+        "title": "آب‌وهوای قلعهٔ الموت؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلعهٔ الموت، قلعهٔ حسن صباح در گازرخان قزوین؛ دما، باد و بارش ساعتی برای برنامه‌ریزی بازدید."
+      },
       "source_urls": [
         "https://visitiran.ir/fa/attraction/قلعه-الموت",
         "https://mapcarta.com/12586476",

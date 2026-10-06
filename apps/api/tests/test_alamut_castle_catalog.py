@@ -18,6 +18,7 @@ def test_alamut_castle_is_an_independent_indexable_fort_without_invented_route()
     assert point["place_type"] == "landmark"
     assert "قلعه حسن صباح" in point["aliases"]
     assert point["source_urls"] and point["elevation_source"]
+    assert point["seo"]["title"] == "آب‌وهوای قلعهٔ الموت؛ دما، باد و بارش | هواچ"
     assert (point["latitude"], point["longitude"], point["elevation_m"]) == (36.44478, 50.58621, 2080)
     assert catalog["routes"] == {}
     assert catalog["point"]["is_popular"] is False
