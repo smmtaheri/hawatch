@@ -1,0 +1,54 @@
+{
+  "catalog_version": "hawatch-katale-khor-catalog-v1",
+  "primary_point": "katale-khor",
+  "weather_points": {
+    "katale-khor": {
+      "name": "غار کتله‌خور",
+      "page_name": "غار کتله‌خور",
+      "short_label": "کتله‌خور",
+      "place_type": "landmark",
+      "category_key": "cave",
+      "category": "غار",
+      "region": "گرماب · خدابنده · زنجان",
+      "aliases": ["غار کتله خور", "کتله خور", "غار کتله‌خور زنجان", "غار کتله خور گرماب", "Katale Khor", "Kataleh Khor Cave"],
+      "identity_summary": "غار کتله‌خور در نزدیکی گرماب، شهرستان خدابنده استان زنجان؛ مختصات مربوط به دهانهٔ غار و پیش‌بینی مربوط به فضای بیرونی آن است، نه هوای داخل غار. نام و slug مستقل از مسیر دسترسی و بدون پسوند جغرافیایی غیرضروری انتخاب شده‌اند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3096058666",
+        "https://www.wikidata.org/wiki/Q6375049",
+        "https://www.karnaval.ir/things-to-do/kataleeh-khor-cave-zanjan"
+      ],
+      "latitude": 35.8360367,
+      "longitude": 48.1621486,
+      "elevation_m": 1729,
+      "status": "provisional",
+      "elevation_source": "مختصات دهانه از OpenStreetMap node 3096058666؛ ارتفاع زمین در همان مختصات از Open-Meteo GLO-90 DEM برابر ۱۷۲۹ متر، بررسی‌شده در ۲۰۲۶-۱۰-۰۶.",
+      "climate": "alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "katale-khor",
+    "tile_name": "کتله‌خور",
+    "name": "غار کتله‌خور",
+    "short_category": "غار",
+    "category": "غار",
+    "category_key": "cave",
+    "region": "گرماب · خدابنده · زنجان",
+    "latitude": 35.8360367,
+    "longitude": 48.1621486,
+    "elevation_m": 1729,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["غار کتله خور", "کتله خور", "غار کتله‌خور زنجان", "غار کتله خور گرماب", "Katale Khor", "Kataleh Khor Cave"]
+  }
+}
