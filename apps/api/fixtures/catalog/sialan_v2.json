@@ -1,12 +1,16 @@
 {
-  "catalog_version": "hawatch-sialan-catalog-v1",
+  "catalog_version": "hawatch-sialan-catalog-v2",
   "weather_points": {
     "sialan-hertung-shelter": {
       "name": "جان‌پناه هرتنگ سیالان",
       "page_name": "جان‌پناه هرتنگ در مسیر سیالان",
       "short_label": "جان‌پناه هرتنگ",
       "place_type": "shelter",
-      "aliases": ["پناهگاه هرتنگ", "جانپناه هرتنگ سیالان", "Hertung shelter"],
+      "aliases": [
+        "پناهگاه هرتنگ",
+        "جانپناه هرتنگ سیالان",
+        "Hertung shelter"
+      ],
       "identity_summary": "جان‌پناه هرتنگ؛ عارضهٔ شناخته‌شدهٔ مسیر شمالی صعود به سیالان",
       "importance": "support",
       "seo_indexable": true,
@@ -26,7 +30,10 @@
       "page_name": "چشمهٔ گورخانی در مسیر سیالان",
       "short_label": "چشمهٔ گورخانی",
       "place_type": "spring",
-      "aliases": ["چشمه گورخانی سیالان", "Gourkhani spring"],
+      "aliases": [
+        "چشمه گورخانی سیالان",
+        "Gourkhani spring"
+      ],
       "identity_summary": "چشمهٔ گورخانی؛ منبع آب نام‌دار در بخش بالادست مسیر شمالی سیالان",
       "importance": "support",
       "seo_indexable": false,
@@ -46,7 +53,11 @@
       "page_name": "گوسفندسرا وِنی در مسیر سیالان",
       "short_label": "گوسفندسرا وِنی",
       "place_type": "shelter",
-      "aliases": ["گوسفندسرای وینی", "گوسفندسرا ونی سیالان", "Vini sheepfold"],
+      "aliases": [
+        "گوسفندسرای وینی",
+        "گوسفندسرا ونی سیالان",
+        "Vini sheepfold"
+      ],
       "identity_summary": "گوسفندسرا وِنی؛ محل شناخته‌شدهٔ شب‌مانی در مسیر شمالی سیالان",
       "importance": "support",
       "seo_indexable": false,
@@ -66,7 +77,10 @@
       "page_name": "گردنهٔ سیالان پیش از قله",
       "short_label": "گردنهٔ سیالان",
       "place_type": "pass",
-      "aliases": ["گردنه سیالان", "Sialan pass"],
+      "aliases": [
+        "گردنه سیالان",
+        "Sialan pass"
+      ],
       "identity_summary": "گردنهٔ سیالان؛ گردنهٔ مرتفع و نام‌دار پیش از یال قله",
       "importance": "support",
       "seo_indexable": false,
@@ -83,11 +97,15 @@
     },
     "sialan": {
       "name": "قلهٔ سیالان",
-      "page_name": "قلهٔ سیالان در مسیر شمالی",
+      "page_name": "قلهٔ سیالان",
       "short_label": "قلهٔ سیالان",
       "place_type": "summit",
-      "aliases": ["سیالان", "قله سیلان", "Sialan Peak"],
-      "identity_summary": "قلهٔ سیالان در مرز مازندران و قزوین؛ مقصد مسیر شمالی از اِسِل‌محله و دشت دریاسر",
+      "aliases": [
+        "سیالان",
+        "قله سیلان",
+        "Sialan Peak"
+      ],
+      "identity_summary": "قلهٔ سیالان در مرز مازندران و قزوین؛ مقصد مسیر شمالی از اِسِل‌محله و مسیر جنوبی از روستای هنیز الموت",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -96,13 +114,74 @@
         "https://commons.wikimedia.org/wiki/File:Sialan_peak_and_hut.jpg",
         "https://en.wikipedia.org/wiki/Sialan",
         "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
-        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639"
+        "https://www.wikiloc.com/hiking-trails/qlh-syln-z-dsht-drysr-sl-mhlh-y-sl-mhlh-104672639",
+        "https://www.wikiloc.com/hiking-trails/msyr-ykh-rwzh-qlh-syln-z-rwsty-hnyz-110056405"
       ],
       "latitude": 36.511696,
       "longitude": 50.698432,
       "elevation_m": 4185,
       "status": "provisional",
       "elevation_source": "Wikimedia Commons/فهرست قلل ایران: 4185 m؛ Open-Meteo GLO-90 DEM: 4124 m (اختلاف 61 m)"
+    },
+    "heniz": {
+      "name_status": "established",
+      "status": "provisional",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-ykh-rwzh-qlh-syln-z-rwsty-hnyz-110056405",
+        "https://en.wikipedia.org/wiki/Heniz",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-syln-tbstnh-rtf-4175-1400-4-1-2-76602472"
+      ],
+      "name": "روستای هنیز",
+      "page_name": "روستای هنیز",
+      "short_label": "روستای هنیز",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "الموت شرقی · قزوین",
+      "aliases": [
+        "هنیز",
+        "هنیز الموت",
+        "Haniz",
+        "Heniz"
+      ],
+      "identity_summary": "روستای هنیز در الموت شرقی قزوین؛ مبدأ شناخته‌شدهٔ مسیر جنوبی قلهٔ سیالان. نقطهٔ شروع داخل بافت روستا با هویت خود روستا ادغام شده است.",
+      "latitude": 36.464339,
+      "longitude": 50.648556,
+      "elevation_m": 2186,
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2186 m؛ مختصات آغاز GPX داخل روستای هنیز، حدود ۷۷ متر از مختصات مرجع Mapcarta روستا.",
+      "kind": "primary",
+      "importance": "primary",
+      "seo_indexable": true,
+      "climate": "alpine"
+    },
+    "sialan-south-shelter": {
+      "name_status": "established",
+      "status": "provisional",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-ykh-rwzh-qlh-syln-z-rwsty-hnyz-110056405",
+        "https://en.wikipedia.org/wiki/Heniz",
+        "https://is.wikiloc.com/fjallaferd-slodir/qlh-syln-tbstnh-rtf-4175-1400-4-1-2-76602472"
+      ],
+      "name": "جان‌پناه جنوبی سیالان",
+      "page_name": "جان‌پناه جنوبی سیالان",
+      "short_label": "جان‌پناه جنوبی سیالان",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "پناهگاه",
+      "region": "مسیر هنیز · سیالان · قزوین",
+      "aliases": [
+        "جانپناه سیالان هنیز",
+        "پناهگاه جنوبی سیالان"
+      ],
+      "identity_summary": "جان‌پناه ثابت مسیر جنوبی سیالان از هنیز؛ مستقل از جان‌پناه هرتنگ در مسیر شمالی. محل توقف یا کمپ موقت نیست.",
+      "latitude": 36.505342,
+      "longitude": 50.669444,
+      "elevation_m": 3264,
+      "elevation_source": "Open-Meteo GLO-90 DEM: 3264 m؛ waypoint جان‌پناه ۸:۰۰ در GPX صعود هنیز و گزارش مستقل مسیر جنوبی.",
+      "kind": "route_point",
+      "importance": "support",
+      "seo_indexable": true,
+      "climate": "high_alpine"
     }
   },
   "shared_weather_points": [
@@ -168,6 +247,50 @@
         }
       },
       "public_point_notes": {}
+    },
+    "heniz_to_sialan": {
+      "slug": "sialan-heniz",
+      "title": "هنیز تا قلهٔ سیالان",
+      "subtitle": "مسیر جنوبی از روستای هنیز الموت و جان‌پناه جنوبی تا قلهٔ سیالان",
+      "trail_label": "مسیر جنوبی سیالان",
+      "origin": "روستای هنیز",
+      "target_label": "قلهٔ سیالان",
+      "region": "الموت شرقی · قزوین",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "heniz",
+        "sialan-south-shelter",
+        "sialan-pass",
+        "sialan"
+      ],
+      "distance_km": 14,
+      "ascent_m": 2080,
+      "one_way_minutes": 450,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound-cleaned-geometry+naismith+independent-reports-v1",
+        "version": "sialan-southern-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-ykh-rwzh-qlh-syln-z-rwsty-hnyz-110056405",
+          "https://is.wikiloc.com/fjallaferd-slodir/qlh-syln-tbstnh-rtf-4175-1400-4-1-2-76602472"
+        ],
+        "evidence_tracks": [
+          "tracks/sialan/sialan-south-heniz-to-summit-2022-roundtrip.gpx"
+        ],
+        "cumulative_minutes": {
+          "heniz": 0,
+          "sialan-south-shelter": 255,
+          "sialan-pass": 390,
+          "sialan": 450
+        }
+      },
+      "internal_note": "Original GPX preserved. 5042 samples; outbound cut index2458 reaches canonical summit within2.74m. GPS outliers indices1026-1027 rejected for geometry only (549m jump in13s); cleaned outbound13.962km, smoothed ascent2080m, remaining recording gap354m. Distance approximate14km, not28.7km roundtrip. Raw498.8min and analyzer315.6min are not ETA: pauses and GPS quality preclude direct timing. Estimate450min±90 uses 4km/h+600m/h ascent and independent reports (4–5h to hut,3h upper). Existing pass is66m from outbound track; reused without coordinate mutation. Village origin77m from settlement reference; merged rather than duplicate trailhead.",
+      "public_note": "مسیر طولانی و سخت کوهستانی با پاکوب‌های باریک و شیب‌دار است؛ عبورهای برفی و شرایط زمستانی نیازمند بررسی جداگانه‌اند. زمان، تخمین صعود یک‌طرفه بدون استراحت و شب‌مانی است.",
+      "public_point_notes": {}
     }
   },
   "point": {
@@ -177,7 +300,7 @@
     "short_category": "کوه",
     "category": "قله و مسیرهای کوهستانی",
     "category_key": "mountain",
-    "region": "البرز غربی · تنکابن",
+    "region": "البرز غربی · مرز قزوین و مازندران",
     "elevation_m": 4185,
     "latitude": 36.511696,
     "longitude": 50.698432,
