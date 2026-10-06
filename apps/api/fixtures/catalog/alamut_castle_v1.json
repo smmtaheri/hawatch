@@ -1,0 +1,52 @@
+{
+  "catalog_version": "hawatch-alamut-castle-catalog-v1",
+  "primary_point": "alamut-castle",
+  "weather_points": {
+    "alamut-castle": {
+      "name": "قلعهٔ الموت",
+      "page_name": "قلعهٔ الموت",
+      "short_label": "قلعهٔ الموت",
+      "place_type": "landmark",
+      "category_key": "fort",
+      "aliases": ["قلعه الموت", "قلعه حسن صباح", "دژ الموت", "Alamut Castle"],
+      "identity_summary": "قلعهٔ تاریخی حسن صباح بالای گازرخان؛ پسوند castle برای تفکیک از منطقهٔ الموت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/fa/attraction/قلعه-الموت",
+        "https://mapcarta.com/12586476",
+        "https://en.wikipedia.org/wiki/Alamut_Castle"
+      ],
+      "latitude": 36.44478,
+      "longitude": 50.58621,
+      "elevation_m": 2080,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM: 2080 m در مختصات قلعهٔ OSM؛ ارتفاع موضع انتخاب‌شده است، نه بیشینهٔ صخره.",
+      "climate": "alpine",
+      "region": "گازرخان · الموت · قزوین"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "alamut-castle",
+    "tile_name": "قلعهٔ الموت",
+    "name": "قلعهٔ الموت",
+    "short_category": "قلعه",
+    "category": "قلعهٔ تاریخی",
+    "category_key": "fort",
+    "region": "گازرخان · الموت · قزوین",
+    "elevation_m": 2080,
+    "latitude": 36.44478,
+    "longitude": 50.58621,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت کوهستانی",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": ["قلعه الموت", "قلعه حسن صباح", "دژ الموت", "Alamut Castle"]
+  }
+}
