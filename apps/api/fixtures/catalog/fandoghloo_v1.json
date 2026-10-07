@@ -1,0 +1,606 @@
+{
+  "catalog_version": "hawatch-fandoghloo-v1",
+  "primary_point": "fandoghloo-namin",
+  "weather_points": {
+    "fandoghloo-namin": {
+      "name": "جنگل فندقلو نمین",
+      "page_name": "جنگل فندقلو نمین",
+      "short_label": "جنگل فندقلو نمین",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل",
+      "region": "نمین · اردبیل",
+      "aliases": [
+        "فندقلو",
+        "فندق‌لو",
+        "جنگل فندقلوی اردبیل"
+      ],
+      "identity_summary": "جنگل فندقلوی نمین در اردبیل؛ مختصات نمایندهٔ محدودهٔ تفریحی جنگل، مستقل از جنگل هم‌نام اهر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N3278060322",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.3929&longitude=48.55219"
+      ],
+      "latitude": 38.3929,
+      "longitude": 48.55219,
+      "elevation_m": 1386,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ مستند سکونتگاه یا جنگل؛ ارتفاع 1386 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای جنگل فندقلو نمین؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل فندقلو نمین در نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "meshe-suyi": {
+      "name": "آبگرم مشه‌سویی",
+      "page_name": "آبگرم مشه‌سویی",
+      "short_label": "آبگرم مشه‌سویی",
+      "place_type": "spring",
+      "category_key": "hot_spring",
+      "category": "آبگرم",
+      "region": "گیلده · آستارا · گیلان",
+      "aliases": [
+        "مشه سویی",
+        "میشه سویی",
+        "آبگرم علی‌داشی"
+      ],
+      "identity_summary": "آبگرم مشه‌سویی، معروف به علی‌داشی، در مسیر جنگلی مهدی‌پستی به گیلده؛ یک چشمه با چند نام، نه چند مقصد جدا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.337755&longitude=48.629264"
+      ],
+      "latitude": 38.337755,
+      "longitude": 48.629264,
+      "elevation_m": 660,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 660 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبگرم مشه‌سویی؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبگرم مشه‌سویی در گیلده · آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "namin": {
+      "name": "نمین",
+      "page_name": "نمین",
+      "short_label": "نمین",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهر",
+      "region": "نمین · اردبیل",
+      "aliases": [
+        "شهر نمین"
+      ],
+      "identity_summary": "نمین در نمین · اردبیل؛ نقطهٔ مستقل با هویت و مختصات مستند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12591120",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.42402&longitude=48.48405"
+      ],
+      "latitude": 38.42402,
+      "longitude": 48.48405,
+      "elevation_m": 1431,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ مستند سکونتگاه یا جنگل؛ ارتفاع 1431 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "meadow",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای نمین؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای نمین در نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "abi-beyglu": {
+      "name": "آبی‌بیگلو",
+      "page_name": "آبی‌بیگلو",
+      "short_label": "آبی‌بیگلو",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهر",
+      "region": "ویلکیج · نمین · اردبیل",
+      "aliases": [
+        "آبی بیگلو",
+        "آبیگلو"
+      ],
+      "identity_summary": "شهر آبی‌بیگلو در ویلکیج نمین؛ مختصات شهر مستقل از پایان ترک جنگلی شمال‌شرق شهر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Abi_Beyglu",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.28417&longitude=48.55222"
+      ],
+      "latitude": 38.28417,
+      "longitude": 48.55222,
+      "elevation_m": 1329,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ مستند سکونتگاه یا جنگل؛ ارتفاع 1329 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "meadow",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبی‌بیگلو؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبی‌بیگلو در ویلکیج · نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "mehdi-posti": {
+      "name": "روستای مهدی‌پستی",
+      "page_name": "روستای مهدی‌پستی",
+      "short_label": "روستای مهدی‌پستی",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "نمین · اردبیل",
+      "aliases": [
+        "مهدی پستی"
+      ],
+      "identity_summary": "روستای مهدی‌پستی؛ نقطهٔ نماینده روی لبهٔ روستا در آغاز بخش پیادهٔ ترک مشه‌سویی، نزدیک مختصات آبادی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.319685&longitude=48.565764",
+        "https://en.wikipedia.org/wiki/Mehdi_Posti"
+      ],
+      "latitude": 38.319685,
+      "longitude": 48.565764,
+      "elevation_m": 1324,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1324 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "meadow",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای مهدی‌پستی؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای مهدی‌پستی در نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "chamlar": {
+      "name": "روستای چملر",
+      "page_name": "روستای چملر",
+      "short_label": "روستای چملر",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "آستارا · گیلان",
+      "aliases": [
+        "چملر"
+      ],
+      "identity_summary": "روستای چملر در آستارا · گیلان؛ نقطهٔ مستقل با هویت و مختصات مستند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.363832&longitude=48.630302",
+        "https://en.wikipedia.org/wiki/Chamlar"
+      ],
+      "latitude": 38.363832,
+      "longitude": 48.630302,
+      "elevation_m": 766,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 766 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای چملر؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای چملر در آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "giladeh": {
+      "name": "روستای گیلده",
+      "page_name": "روستای گیلده",
+      "short_label": "روستای گیلده",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "آستارا · گیلان",
+      "aliases": [
+        "گیلده"
+      ],
+      "identity_summary": "روستای گیلده در دهستان حیران آستارا؛ مستقل از پارکینگ و آغاز پاکوب جنوب روستا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Giladeh",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.38667&longitude=48.64944"
+      ],
+      "latitude": 38.38667,
+      "longitude": 48.64944,
+      "elevation_m": 512,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ مستند سکونتگاه یا جنگل؛ ارتفاع 512 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای گیلده؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای گیلده در آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "naneh-karan": {
+      "name": "روستای ننه‌کران",
+      "page_name": "روستای ننه‌کران",
+      "short_label": "روستای ننه‌کران",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "نمین · اردبیل",
+      "aliases": [
+        "ننه کران",
+        "نه نه کران"
+      ],
+      "identity_summary": "روستای ننه‌کران در نمین · اردبیل؛ نقطهٔ مستقل با هویت و مختصات مستند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12589940",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.37106&longitude=48.52211"
+      ],
+      "latitude": 38.37106,
+      "longitude": 48.52211,
+      "elevation_m": 1340,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ مستند سکونتگاه یا جنگل؛ ارتفاع 1340 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "meadow",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای ننه‌کران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای ننه‌کران در نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "telli-bolagh": {
+      "name": "چشمهٔ تللی‌بولاغ",
+      "page_name": "چشمهٔ تللی‌بولاغ",
+      "short_label": "چشمهٔ تللی‌بولاغ",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "چشمه",
+      "region": "چملر · آستارا · گیلان",
+      "aliases": [
+        "تللی بولاغ",
+        "تاوابولاغی"
+      ],
+      "identity_summary": "چشمهٔ تللی‌بولاغ با نام دیگر تاوابولاغی، waypoint نام‌دار مسیر چملر به آبی‌بیگلو.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.350715&longitude=48.608045"
+      ],
+      "latitude": 38.350715,
+      "longitude": 48.608045,
+      "elevation_m": 1121,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1121 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای چشمهٔ تللی‌بولاغ؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای چشمهٔ تللی‌بولاغ در چملر · آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "giladeh-trailhead": {
+      "name": "پارکینگ گیلده",
+      "page_name": "پارکینگ گیلده",
+      "short_label": "پارکینگ گیلده",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "پای‌کار",
+      "region": "گیلده · آستارا · گیلان",
+      "aliases": [],
+      "identity_summary": "پارکینگ مستند گیلده در ابتدای مسیر مشه‌سویی و چملر؛ حدود یک کیلومتر جنوب‌غرب مرکز روستا.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.37789&longitude=48.63848"
+      ],
+      "latitude": 38.37789,
+      "longitude": 48.63848,
+      "elevation_m": 550,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 550 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای پارکینگ گیلده؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارکینگ گیلده در گیلده · آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "chamlar-junction": {
+      "name": "دوراهی چملر و قوشادرمان",
+      "page_name": "دوراهی چملر و قوشادرمان",
+      "short_label": "دوراهی چملر و قوشادرمان",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "دوراهی",
+      "region": "گیلده · آستارا · گیلان",
+      "aliases": [],
+      "identity_summary": "دوراهی مستند پاکوب چملر و قوشادرمان در بالادست گیلده؛ روی دو ترک و مشترک میان مسیرها.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.369938&longitude=48.63239"
+      ],
+      "latitude": 38.369938,
+      "longitude": 48.63239,
+      "elevation_m": 673,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 673 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای دوراهی چملر و قوشادرمان؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دوراهی چملر و قوشادرمان در گیلده · آستارا · گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "jen-yoli-junction": {
+      "name": "سه‌راهی جن‌یولی",
+      "page_name": "سه‌راهی جن‌یولی",
+      "short_label": "سه‌راهی جن‌یولی",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "دوراهی",
+      "region": "فندقلو · نمین · اردبیل",
+      "aliases": [
+        "جن یولی"
+      ],
+      "identity_summary": "سه‌راهی مستند پاکوب جن‌یولی در بخش پیادهٔ ترک مهدی‌پستی به مشه‌سویی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.334268&longitude=48.603689"
+      ],
+      "latitude": 38.334268,
+      "longitude": 48.603689,
+      "elevation_m": 1380,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1380 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای سه‌راهی جن‌یولی؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای سه‌راهی جن‌یولی در فندقلو · نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    },
+    "abi-beyglu-forest-trailhead": {
+      "name": "پای‌کار جنگلی آبی‌بیگلو",
+      "page_name": "پای‌کار جنگلی آبی‌بیگلو",
+      "short_label": "پای‌کار جنگلی آبی‌بیگلو",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "پای‌کار",
+      "region": "آبی‌بیگلو · نمین · اردبیل",
+      "aliases": [],
+      "identity_summary": "پایان ثبت‌شدهٔ ترک تللی‌بولاغ در دسترسی جنگلی شمال‌شرق آبی‌بیگلو؛ نه مختصات مرکز شهر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.294487&longitude=48.563223"
+      ],
+      "latitude": 38.294487,
+      "longitude": 48.563223,
+      "elevation_m": 1322,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1322 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای پای‌کار جنگلی آبی‌بیگلو؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پای‌کار جنگلی آبی‌بیگلو در آبی‌بیگلو · نمین · اردبیل؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر و پیمایش."
+      }
+    }
+  },
+  "routes": {
+    "mehdi-posti-meshe-suyi-giladeh": {
+      "slug": "mehdi-posti-meshe-suyi-giladeh",
+      "title": "مهدی‌پستی به گیلده از مشه‌سویی",
+      "subtitle": "پیمایش جنگلی مرز اردبیل و گیلان؛ مسیر پیاده با نقاط مستند",
+      "trail_label": "مهدی‌پستی به گیلده از مشه‌سویی",
+      "origin": "روستای مهدی‌پستی",
+      "target_label": "پارکینگ گیلده",
+      "region": "فندقلو · نمین و آستارا",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "mehdi-posti",
+        "jen-yoli-junction",
+        "meshe-suyi",
+        "chamlar-junction",
+        "giladeh-trailhead"
+      ],
+      "distance_km": 14.56,
+      "ascent_m": 175,
+      "one_way_minutes": 320,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "mehdi-posti-meshe-suyi-giladeh-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637"
+        ],
+        "evidence_tracks": [
+          "tracks/fandoghloo/fandoghloo-mehdi-posti-meshe-suyi-giladeh-2016.gpx"
+        ],
+        "cumulative_minutes": {
+          "mehdi-posti": 0,
+          "jen-yoli-junction": 100,
+          "meshe-suyi": 190,
+          "chamlar-junction": 295,
+          "giladeh-trailhead": 320
+        },
+        "notes": [
+          "بخش خودرو از ابتدای فایل تا روستای مهدی‌پستی، حدود ۴٫۰۷ کیلومتر، حذف شده است. پایان بخش پیاده پارکینگ گیلده است، نه مرکز روستا.",
+          "مسافت از هندسهٔ GPX؛ صعود با نمونه‌برداری ۵۰ متری و میانگین متحرک ۵ نمونه محاسبه شده است. زمان حرکت با سرعت جنگلی حدود ۳ تا ۳٫۵ کیلومتر در ساعت، هزینهٔ صعود و شیب نزولی برآورد شده؛ توقف، غذا و استراحت در ETA نیست.",
+          "گزارش ثبت‌کننده برای پیمایش‌های بلند حدود ۵ تا ۵٫۵ ساعت حرکت ذکر کرده است؛ زمان کل ضبط و توقف‌ها مبنای ETA نیست. در مه، گل‌ولای و برف زمان بیشتری لازم است."
+        ]
+      },
+      "public_point_notes": {
+        "mehdi-posti": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "jen-yoli-junction": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "meshe-suyi": "در بارش شدید از عبور رودخانه خودداری کنید؛ لغزندگی پاکوب و سنگ‌ها را در نظر بگیرید.",
+        "chamlar-junction": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "giladeh-trailhead": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود."
+      }
+    },
+    "giladeh-meshe-suyi": {
+      "slug": "giladeh-meshe-suyi",
+      "title": "گیلده تا آبگرم مشه‌سویی",
+      "subtitle": "پیمایش جنگلی مرز اردبیل و گیلان؛ مسیر پیاده با نقاط مستند",
+      "trail_label": "گیلده تا آبگرم مشه‌سویی",
+      "origin": "پارکینگ گیلده",
+      "target_label": "آبگرم مشه‌سویی",
+      "region": "فندقلو · نمین و آستارا",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "giladeh-trailhead",
+        "chamlar-junction",
+        "meshe-suyi"
+      ],
+      "distance_km": 5.7,
+      "ascent_m": 230,
+      "one_way_minutes": 135,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "giladeh-meshe-suyi-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637"
+        ],
+        "evidence_tracks": [
+          "tracks/fandoghloo/fandoghloo-mehdi-posti-meshe-suyi-giladeh-2016.gpx"
+        ],
+        "cumulative_minutes": {
+          "giladeh-trailhead": 0,
+          "chamlar-junction": 30,
+          "meshe-suyi": 135
+        },
+        "notes": [
+          "هندسهٔ بخش مشه‌سویی تا پارکینگ گیلده در جهت معکوس استفاده شده است؛ مسافت و صعود مخصوص جهت رفت به آبگرم است. برای بازگشت زمان جدا در نظر بگیرید.",
+          "مسافت از هندسهٔ GPX؛ صعود با نمونه‌برداری ۵۰ متری و میانگین متحرک ۵ نمونه محاسبه شده است. زمان حرکت با سرعت جنگلی حدود ۳ تا ۳٫۵ کیلومتر در ساعت، هزینهٔ صعود و شیب نزولی برآورد شده؛ توقف، غذا و استراحت در ETA نیست.",
+          "گزارش ثبت‌کننده برای پیمایش‌های بلند حدود ۵ تا ۵٫۵ ساعت حرکت ذکر کرده است؛ زمان کل ضبط و توقف‌ها مبنای ETA نیست. در مه، گل‌ولای و برف زمان بیشتری لازم است."
+        ]
+      },
+      "public_point_notes": {
+        "giladeh-trailhead": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "chamlar-junction": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "meshe-suyi": "در بارش شدید از عبور رودخانه خودداری کنید؛ لغزندگی پاکوب و سنگ‌ها را در نظر بگیرید."
+      }
+    },
+    "giladeh-telli-bolagh-abi-beyglu": {
+      "slug": "giladeh-telli-bolagh-abi-beyglu",
+      "title": "گیلده به آبی‌بیگلو از تللی‌بولاغ",
+      "subtitle": "پیمایش جنگلی مرز اردبیل و گیلان؛ مسیر پیاده با نقاط مستند",
+      "trail_label": "گیلده به آبی‌بیگلو از تللی‌بولاغ",
+      "origin": "پارکینگ گیلده",
+      "target_label": "پای‌کار جنگلی آبی‌بیگلو",
+      "region": "فندقلو · نمین و آستارا",
+      "featured": false,
+      "sort_order": 3,
+      "points": [
+        "giladeh-trailhead",
+        "chamlar-junction",
+        "chamlar",
+        "telli-bolagh",
+        "abi-beyglu-forest-trailhead"
+      ],
+      "distance_km": 13.99,
+      "ascent_m": 859,
+      "one_way_minutes": 330,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "giladeh-telli-bolagh-abi-beyglu-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570"
+        ],
+        "evidence_tracks": [
+          "tracks/fandoghloo/fandoghloo-giladeh-chamlar-telli-bolagh-abi-beyglu-2021.gpx"
+        ],
+        "cumulative_minutes": {
+          "giladeh-trailhead": 0,
+          "chamlar-junction": 30,
+          "chamlar": 60,
+          "telli-bolagh": 140,
+          "abi-beyglu-forest-trailhead": 330
+        },
+        "notes": [
+          "پایان ترک در دسترسی جنگلی شمال‌شرق آبی‌بیگلو است؛ ادامهٔ جاده تا مرکز شهر به مسافت پیاده اضافه نشده است.",
+          "مسافت از هندسهٔ GPX؛ صعود با نمونه‌برداری ۵۰ متری و میانگین متحرک ۵ نمونه محاسبه شده است. زمان حرکت با سرعت جنگلی حدود ۳ تا ۳٫۵ کیلومتر در ساعت، هزینهٔ صعود و شیب نزولی برآورد شده؛ توقف، غذا و استراحت در ETA نیست.",
+          "گزارش ثبت‌کننده برای پیمایش‌های بلند حدود ۵ تا ۵٫۵ ساعت حرکت ذکر کرده است؛ زمان کل ضبط و توقف‌ها مبنای ETA نیست. در مه، گل‌ولای و برف زمان بیشتری لازم است."
+        ]
+      },
+      "public_point_notes": {
+        "giladeh-trailhead": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "chamlar-junction": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "chamlar": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "telli-bolagh": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود.",
+        "abi-beyglu-forest-trailhead": "در مه و بارندگی، مسیریابی جنگلی و زمان حرکت دشوارتر می‌شود."
+      }
+    }
+  },
+  "point": {
+    "slug": "fandoghloo-namin",
+    "tile_name": "جنگل فندقلو نمین",
+    "name": "جنگل فندقلو نمین",
+    "short_category": "جنگل",
+    "category": "جنگل",
+    "category_key": "forest",
+    "region": "نمین · اردبیل",
+    "latitude": 38.3929,
+    "longitude": 48.55219,
+    "elevation_m": 1386,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل فندقلو نمین",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "فندقلو",
+      "فندق‌لو",
+      "جنگل فندقلوی اردبیل"
+    ]
+  }
+}
