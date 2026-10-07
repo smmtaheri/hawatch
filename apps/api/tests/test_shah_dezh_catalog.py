@@ -14,6 +14,7 @@ NAME = "قلهٔ شاه‌دژ البرز"
 def test_shah_dezh_is_documented_without_publishing_a_technical_hiking_route():
     catalog = json.loads((Path(__file__).parents[1] / "fixtures" / CATALOG).read_text())
     assert not validate_catalog_document(catalog)
+    assert len(catalog["catalog_version"]) <= 32
     assert catalog["primary_point"] == SLUG
     assert list(catalog["weather_points"]) == [SLUG]
     point = catalog["weather_points"][SLUG]
