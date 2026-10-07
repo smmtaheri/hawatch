@@ -1,0 +1,286 @@
+{
+  "catalog_version": "hawatch-beliran-v1",
+  "primary_point": "beliran-forest",
+  "weather_points": {
+    "beliran": {
+      "name": "روستای بلیران",
+      "page_name": "روستای بلیران",
+      "short_label": "روستای بلیران",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "دشت‌سر · آمل · مازندران",
+      "aliases": [
+        "بلیران آمل",
+        "بالیران"
+      ],
+      "identity_summary": "روستای بلیران آمل؛ نقطهٔ نماینده در ورودی جنوبی روستا در محل پایان ترک جنگلی و آغاز دسترسی پیاده به آبگرم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "https://mapcarta.com/12361862",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.353465&longitude=52.42285"
+      ],
+      "latitude": 36.353465,
+      "longitude": 52.42285,
+      "elevation_m": 173,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 173 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای بلیران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای بلیران در دشت‌سر، آمل، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "beliran-forest": {
+      "name": "جنگل بلیران",
+      "page_name": "جنگل بلیران",
+      "short_label": "جنگل بلیران",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل",
+      "region": "بلیران · آمل · مازندران",
+      "aliases": [
+        "جنگل بلیران آمل"
+      ],
+      "identity_summary": "جنگل بلیران در امتداد رودخانهٔ گرمارود؛ نقطهٔ نماینده روی مسیر جنگلی میان روستای بلیران و آبگرم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.337427&longitude=52.420502"
+      ],
+      "latitude": 36.337427,
+      "longitude": 52.420502,
+      "elevation_m": 225,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 225 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای جنگل بلیران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل بلیران در بلیران، آمل، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "beliran-hot-spring": {
+      "name": "آبگرم بلیران",
+      "page_name": "آبگرم بلیران",
+      "short_label": "آبگرم بلیران",
+      "place_type": "spring",
+      "category_key": "hot_spring",
+      "category": "آبگرم",
+      "region": "بلیران · آمل · مازندران",
+      "aliases": [
+        "چشمه لاله‌زار بلیران",
+        "آبگرم لاله زار بلیران"
+      ],
+      "identity_summary": "چشمهٔ آبگرم ثبت‌شده با نام لاله‌زار در ترک بلیران؛ نام گرو در منابع برای آبگرم‌های این محدوده نیز به کار می‌رود، اما مختصات مستقل آن هنوز تأیید نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "https://www.wikiloc.com/hiking-trails/chshmh-abgrm-blyrn-75417136",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.316738&longitude=52.415132"
+      ],
+      "latitude": 36.316738,
+      "longitude": 52.415132,
+      "elevation_m": 246,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 246 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبگرم بلیران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبگرم بلیران در بلیران، آمل، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر.",
+        "content": "این صفحه مربوط به چشمهٔ لاله‌زار ثبت‌شده در مسیر جنگلی بلیران است. در بعضی منابع نام گرو برای آبگرم‌های منطقه به کار می‌رود؛ بدون مختصات مستقل، چشمهٔ دوم ساخته نشده است. در بارندگی، بالا آمدن آب رودخانه و لغزندگی مسیر را در برنامه‌ریزی لحاظ کنید."
+      }
+    },
+    "beliran-do-sang-spring": {
+      "name": "آبگرم دو سنگ بلیران",
+      "page_name": "آبگرم دو سنگ بلیران",
+      "short_label": "آبگرم دو سنگ بلیران",
+      "place_type": "spring",
+      "category_key": "hot_spring",
+      "category": "آبگرم",
+      "region": "بلیران · آمل · مازندران",
+      "aliases": [
+        "آبگرم کوچک دو سنگ"
+      ],
+      "identity_summary": "چشمهٔ آبگرم کوچک دو سنگ با waypoint نام‌دار در مسیر نارنجستان به آبگرم لاله‌زار بلیران.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.316162&longitude=52.410705"
+      ],
+      "latitude": 36.316162,
+      "longitude": 52.410705,
+      "elevation_m": 280,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 280 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبگرم دو سنگ بلیران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبگرم دو سنگ بلیران در بلیران، آمل، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "narenjestan-haraz-bridge": {
+      "name": "پل نارنجستان هراز",
+      "page_name": "پل نارنجستان هراز",
+      "short_label": "پل نارنجستان هراز",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "مبدأ مسیر",
+      "region": "نارنجستان · آمل · مازندران",
+      "aliases": [],
+      "identity_summary": "پل عبور از رودخانهٔ هراز در شروع مسیر جنگلی نارنجستان به بلیران؛ محل آغاز بخش پیاده، نه هتل یا پارکینگ.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.297318&longitude=52.368392"
+      ],
+      "latitude": 36.297318,
+      "longitude": 52.368392,
+      "elevation_m": 328,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 328 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای پل نارنجستان هراز؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پل نارنجستان هراز در نارنجستان، آمل، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    }
+  },
+  "routes": {
+    "beliran-narenjestan": {
+      "slug": "beliran-narenjestan",
+      "title": "نارنجستان تا بلیران",
+      "subtitle": "پیمایش جنگلی از پل هراز، آبگرم دو سنگ و آبگرم بلیران",
+      "trail_label": "نارنجستان تا بلیران",
+      "origin": "پل نارنجستان هراز",
+      "target_label": "روستای بلیران",
+      "region": "نارنجستان · آمل · مازندران",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "narenjestan-haraz-bridge",
+        "beliran-do-sang-spring",
+        "beliran-hot-spring",
+        "beliran-forest",
+        "beliran"
+      ],
+      "distance_km": 13.33,
+      "ascent_m": 248,
+      "one_way_minutes": 335,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "beliran-narenjestan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039"
+        ],
+        "evidence_tracks": [
+          "tracks/beliran/beliran-narenjestan-hot-spring-traverse-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "narenjestan-haraz-bridge": 0,
+          "beliran-do-sang-spring": 215,
+          "beliran-hot-spring": 230,
+          "beliran-forest": 290,
+          "beliran": 335
+        },
+        "notes": [
+          "مبدأ بخش پیاده روی پل هراز است؛ پارکینگ اولیه و waypoint خارج از مسیر حذف شده‌اند. عبور رودخانه و مسیر گل‌آلود در بارندگی خطرناک است.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود.",
+          "فایل GPX کم‌نقطه صادر شده؛ timestampها مبنای زمان حرکت نیستند و مسافت تقریبی است."
+        ]
+      },
+      "public_point_notes": {
+        "beliran-hot-spring": "در بارش شدید و بالا آمدن آب رودخانه از عبور خودداری کنید."
+      }
+    },
+    "beliran-hot-spring-walk": {
+      "slug": "beliran-hot-spring-walk",
+      "title": "بلیران تا آبگرم بلیران",
+      "subtitle": "پیاده‌روی از روستا در جنگل بلیران تا چشمهٔ لاله‌زار",
+      "trail_label": "بلیران تا آبگرم بلیران",
+      "origin": "روستای بلیران",
+      "target_label": "آبگرم بلیران",
+      "region": "دشت‌سر · آمل · مازندران",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "beliran",
+        "beliran-forest",
+        "beliran-hot-spring"
+      ],
+      "distance_km": 4.61,
+      "ascent_m": 78,
+      "one_way_minutes": 115,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "beliran-hot-spring-walk-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039"
+        ],
+        "evidence_tracks": [
+          "tracks/beliran/beliran-narenjestan-hot-spring-traverse-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "beliran": 0,
+          "beliran-forest": 45,
+          "beliran-hot-spring": 115
+        },
+        "notes": [
+          "قطعهٔ روستا تا چشمه از بخش پایانی همان ترک، با جهت معکوس استخراج شده است؛ زمان خام فایل معکوس مبنای ETA نیست.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود.",
+          "فایل GPX کم‌نقطه صادر شده؛ timestampها مبنای زمان حرکت نیستند و مسافت تقریبی است."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "beliran-forest",
+    "tile_name": "جنگل بلیران",
+    "name": "جنگل بلیران",
+    "short_category": "جنگل",
+    "category": "جنگل",
+    "category_key": "forest",
+    "region": "بلیران · آمل · مازندران",
+    "latitude": 36.337427,
+    "longitude": 52.420502,
+    "elevation_m": 225,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل بلیران",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جنگل بلیران آمل"
+    ]
+  }
+}

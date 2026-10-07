@@ -1,0 +1,164 @@
+{
+  "catalog_version": "hawatch-farakhin-darno-v1",
+  "primary_point": "farakhin",
+  "weather_points": {
+    "farakhin": {
+      "name": "دریاچهٔ فراخین",
+      "page_name": "دریاچهٔ فراخین",
+      "short_label": "دریاچهٔ فراخین",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه",
+      "region": "ویسر · نوشهر · مازندران",
+      "aliases": [
+        "فراخین نوشهر",
+        "فراخین"
+      ],
+      "identity_summary": "دریاچهٔ جنگلی فراخین در ارتفاعات نوشهر و شمال ویسر؛ مسیر دسترسی جاده‌ای به‌عنوان Route پیاده ثبت نمی‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q94604387",
+        "https://www.karnaval.ir/things-to-do/farakhin-lake-nowshahr",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.5319444444&longitude=51.5088055556"
+      ],
+      "latitude": 36.5319444444,
+      "longitude": 51.5088055556,
+      "elevation_m": 819,
+      "status": "provisional",
+      "elevation_source": "مختصات از منبع مکانی مستقل؛ ارتفاع 819 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ فراخین؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ فراخین در ویسر، نوشهر، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "darno": {
+      "name": "آبشار دارنو",
+      "page_name": "آبشار دارنو",
+      "short_label": "آبشار دارنو",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشار",
+      "region": "ویسر · نوشهر · مازندران",
+      "aliases": [
+        "دارنو نوشهر",
+        "آبشار دارنو ویسر"
+      ],
+      "identity_summary": "آبشار دارنو در جنگل‌های نوشهر؛ نقطهٔ آبشار از waypoint تصویری ترک مشخص شده و بخش بالایی دسترسی در گزارش دارای طناب و عبور روی چوب است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-drnw-34101232",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.538825&longitude=51.524012"
+      ],
+      "latitude": 36.538825,
+      "longitude": 51.524012,
+      "elevation_m": 700,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 700 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبشار دارنو؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار دارنو در جنگل‌های نوشهر؛ دما، باد و بارش. دسترسی بخش بالایی نیازمند عبور روی چوب و طناب است و مسیر پیادهٔ عمومی محسوب نمی‌شود."
+      }
+    },
+    "veysar-mazandaran": {
+      "name": "روستای ویسر مازندران",
+      "page_name": "روستای ویسر مازندران",
+      "short_label": "روستای ویسر مازندران",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "کجور · نوشهر · مازندران",
+      "aliases": [
+        "ویسر نوشهر",
+        "ویسر کجور"
+      ],
+      "identity_summary": "روستای ویسر در بخش کجور نوشهر و در مسیر دسترسی جاده‌ای فراخین و دارنو؛ متفاوت از ویسر کردستان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Veysar,_Mazandaran",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.46139&longitude=51.54278"
+      ],
+      "latitude": 36.46139,
+      "longitude": 51.54278,
+      "elevation_m": 1452,
+      "status": "provisional",
+      "elevation_source": "مختصات از منبع مکانی مستقل؛ ارتفاع 1452 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای ویسر مازندران؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای ویسر مازندران در کجور، نوشهر، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "dalasm": {
+      "name": "روستای دلسم",
+      "page_name": "روستای دلسم",
+      "short_label": "روستای دلسم",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "کجور · نوشهر · مازندران",
+      "aliases": [
+        "دلاسم",
+        "دلسم نوشهر",
+        "دلسم کجور"
+      ],
+      "identity_summary": "روستای دلسم در بخش کجور نوشهر، نزدیک ویسر و مسیر دسترسی جنگل‌های فراخین؛ سکونتگاهی مستقل از ویسر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://irangaah.ir/villages/nowshahr/delesem",
+        "https://wikijoo.ir/index.php/Dalasm",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.44755161&longitude=51.53596547"
+      ],
+      "latitude": 36.44755161,
+      "longitude": 51.53596547,
+      "elevation_m": 1451,
+      "status": "provisional",
+      "elevation_source": "مختصات از منبع مکانی مستقل؛ ارتفاع 1451 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای دلسم؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای دلسم در کجور، نوشهر، مازندران؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "farakhin",
+    "tile_name": "دریاچهٔ فراخین",
+    "name": "دریاچهٔ فراخین",
+    "short_category": "دریاچه",
+    "category": "دریاچه",
+    "category_key": "lake",
+    "region": "ویسر · نوشهر · مازندران",
+    "latitude": 36.5319444444,
+    "longitude": 51.5088055556,
+    "elevation_m": 819,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ فراخین",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "فراخین نوشهر",
+      "فراخین"
+    ]
+  }
+}

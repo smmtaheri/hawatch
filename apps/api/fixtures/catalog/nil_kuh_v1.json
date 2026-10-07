@@ -1,0 +1,256 @@
+{
+  "catalog_version": "hawatch-nil-kuh-v1",
+  "primary_point": "nil-kuh",
+  "weather_points": {
+    "nil-kuh": {
+      "name": "قلهٔ نیلکوه",
+      "page_name": "قلهٔ نیلکوه",
+      "short_label": "قلهٔ نیلکوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "گالیکش · گلستان",
+      "aliases": [
+        "نیل کوه",
+        "نیلکوه گالیکش"
+      ],
+      "identity_summary": "قلهٔ جنگلی نیلکوه گالیکش؛ صعود از تراجیق و پیمایش از پاسنگ بالا با فرود از مرداب به تراجیق.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-nylkhwh-glykhsh-jmh-1403-1-22-166873666",
+        "https://www.wikiloc.com/hiking-trails/psng-nylkhwh-trjyg-1403-02-07-168666426",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.274085&longitude=55.499729"
+      ],
+      "latitude": 37.274085,
+      "longitude": 55.499729,
+      "elevation_m": 1286,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1286 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای قلهٔ نیلکوه؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ نیلکوه در گالیکش، گلستان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "nil-kuh-marsh": {
+      "name": "مرداب نیلکوه",
+      "page_name": "مرداب نیلکوه",
+      "short_label": "مرداب نیلکوه",
+      "place_type": "landmark",
+      "category_key": "marsh",
+      "category": "مرداب",
+      "region": "نیلکوه · گالیکش · گلستان",
+      "aliases": [
+        "مرداب نیل کوه"
+      ],
+      "identity_summary": "مرداب نام‌دار در دامنهٔ شمالی نیلکوه، در مسیر صعود تراجیق و بخش فرود پیمایش پاسنگ.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-nylkhwh-glykhsh-jmh-1403-1-22-166873666",
+        "https://www.wikiloc.com/hiking-trails/psng-nylkhwh-trjyg-1403-02-07-168666426",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.287342&longitude=55.496382"
+      ],
+      "latitude": 37.287342,
+      "longitude": 55.496382,
+      "elevation_m": 1007,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1007 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای مرداب نیلکوه؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای مرداب نیلکوه در نیلکوه، گالیکش، گلستان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "tarajiq": {
+      "name": "روستای تراجیق",
+      "page_name": "روستای تراجیق",
+      "short_label": "روستای تراجیق",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "گالیکش · گلستان",
+      "aliases": [
+        "تراجیگ",
+        "تراجیق گالیکش"
+      ],
+      "identity_summary": "روستای تراجیق گالیکش؛ نقطهٔ نماینده در لبهٔ جنوب‌شرقی بافت روستا و آغاز مسیر مرداب نیلکوه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/swd-qlh-nylkhwh-glykhsh-jmh-1403-1-22-166873666",
+        "https://en.wikipedia.org/wiki/Tarajiq",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.307628&longitude=55.485457"
+      ],
+      "latitude": 37.307628,
+      "longitude": 55.485457,
+      "elevation_m": 186,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 186 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای تراجیق؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای تراجیق در گالیکش، گلستان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "pasang-bala": {
+      "name": "روستای پاسنگ بالا",
+      "page_name": "روستای پاسنگ بالا",
+      "short_label": "روستای پاسنگ بالا",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "گالیکش · گلستان",
+      "aliases": [
+        "پاسنگ علیا"
+      ],
+      "identity_summary": "روستای پاسنگ بالا در گالیکش، مبدأ ثبت‌شدهٔ پیمایش نیلکوه به تراجیق؛ متفاوت از پاسنگ پایین.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/psng-nylkhwh-trjyg-1403-02-07-168666426",
+        "https://en.wikipedia.org/wiki/Pasang-e_Bala",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.291152&longitude=55.533787"
+      ],
+      "latitude": 37.291152,
+      "longitude": 55.533787,
+      "elevation_m": 355,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 355 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای پاسنگ بالا؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای پاسنگ بالا در گالیکش، گلستان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    }
+  },
+  "routes": {
+    "nil-kuh-tarajiq": {
+      "slug": "nil-kuh-tarajiq",
+      "title": "تراجیق تا قلهٔ نیلکوه",
+      "subtitle": "صعود جنگلی از روستا و مرداب نیلکوه",
+      "trail_label": "تراجیق تا قلهٔ نیلکوه",
+      "origin": "روستای تراجیق",
+      "target_label": "قلهٔ نیلکوه",
+      "region": "گالیکش · گلستان",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "tarajiq",
+        "nil-kuh-marsh",
+        "nil-kuh"
+      ],
+      "distance_km": 5.57,
+      "ascent_m": 1106,
+      "one_way_minutes": 240,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "nil-kuh-tarajiq-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/swd-qlh-nylkhwh-glykhsh-jmh-1403-1-22-166873666"
+        ],
+        "evidence_tracks": [
+          "tracks/nil-kuh/nil-kuh-tarajiq-marsh-ascent-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "tarajiq": 0,
+          "nil-kuh-marsh": 155,
+          "nil-kuh": 240
+        },
+        "notes": [
+          "بخش صعود از ترک حلقه‌ای جدا شده است؛ بازگشت و توقف‌ها در زمان یک‌طرفه نیستند.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود.",
+          "فایل GPX کم‌نقطه صادر شده؛ timestampها مبنای زمان حرکت نیستند و مسافت تقریبی است."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "nil-kuh-pasang-tarajiq": {
+      "slug": "nil-kuh-pasang-tarajiq",
+      "title": "پاسنگ بالا تا تراجیق از نیلکوه",
+      "subtitle": "پیمایش جنگلی از پاسنگ بالا به قله، سپس مرداب و تراجیق",
+      "trail_label": "پاسنگ بالا تا تراجیق از نیلکوه",
+      "origin": "روستای پاسنگ بالا",
+      "target_label": "روستای تراجیق",
+      "region": "گالیکش · گلستان",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "pasang-bala",
+        "nil-kuh",
+        "nil-kuh-marsh",
+        "tarajiq"
+      ],
+      "distance_km": 14.05,
+      "ascent_m": 1054,
+      "one_way_minutes": 420,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "nil-kuh-pasang-tarajiq-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/psng-nylkhwh-trjyg-1403-02-07-168666426"
+        ],
+        "evidence_tracks": [
+          "tracks/nil-kuh/nil-kuh-pasang-tarajiq-traverse-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "pasang-bala": 0,
+          "nil-kuh": 280,
+          "nil-kuh-marsh": 335,
+          "tarajiq": 420
+        },
+        "notes": [
+          "پیمایش یک‌طرفه با مبدأ و پایان متفاوت؛ مرداب پس از قله در بخش فرود قرار دارد. هماهنگی وسیلهٔ برگشت لازم است.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود.",
+          "فایل GPX کم‌نقطه صادر شده؛ timestampها مبنای زمان حرکت نیستند و مسافت تقریبی است."
+        ]
+      },
+      "public_point_notes": {
+        "nil-kuh-marsh": "مرداب در بخش فرود به تراجیق است، نه مسیر صعود پاسنگ."
+      }
+    }
+  },
+  "point": {
+    "slug": "nil-kuh",
+    "tile_name": "قلهٔ نیلکوه",
+    "name": "قلهٔ نیلکوه",
+    "short_category": "قله",
+    "category": "قله",
+    "category_key": "mountain",
+    "region": "گالیکش · گلستان",
+    "latitude": 37.274085,
+    "longitude": 55.499729,
+    "elevation_m": 1286,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ نیلکوه",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "نیل کوه",
+      "نیلکوه گالیکش"
+    ]
+  }
+}

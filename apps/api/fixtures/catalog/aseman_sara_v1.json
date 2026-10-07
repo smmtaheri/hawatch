@@ -1,0 +1,309 @@
+{
+  "catalog_version": "hawatch-aseman-sara-v1",
+  "primary_point": "aseman-sara",
+  "weather_points": {
+    "aseman-sara": {
+      "name": "قلهٔ آسمان‌سرا",
+      "page_name": "قلهٔ آسمان‌سرا",
+      "short_label": "قلهٔ آسمان‌سرا",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "رودبار · گیلان",
+      "aliases": [
+        "آسمانسرا",
+        "آسمان سرا رودبار"
+      ],
+      "identity_summary": "قلهٔ آسمان‌سرا در ارتفاعات رودبار گیلان با مسیرهای صعود گلدیان و آغوزبن؛ مستقل از آسمان‌کوه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792",
+        "https://www.wikiloc.com/hiking-trails/qlh-asmnsr-mbd-z-rwsty-agwzbn-brgsht-z-hrzwyl-24236348",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.779909&longitude=49.488111"
+      ],
+      "latitude": 36.779909,
+      "longitude": 49.488111,
+      "elevation_m": 1932,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1932 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "alpine",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای قلهٔ آسمان‌سرا؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ آسمان‌سرا در رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "galdian": {
+      "name": "روستای گلدیان",
+      "page_name": "روستای گلدیان",
+      "short_label": "روستای گلدیان",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "رودبار · گیلان",
+      "aliases": [
+        "گلدیان رودبار"
+      ],
+      "identity_summary": "روستای گلدیان در ارتفاعات رودبار؛ سکونتگاه از ایستگاه فشارشکن و شروع ترک حدود ۱٫۲ کیلومتر فاصله دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12614272",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.80386&longitude=49.43177"
+      ],
+      "latitude": 36.80386,
+      "longitude": 49.43177,
+      "elevation_m": 540,
+      "status": "provisional",
+      "elevation_source": "مختصات از منبع مکانی مستقل؛ ارتفاع 540 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای گلدیان؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای گلدیان در رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "aseman-sara-galdian-trailhead": {
+      "name": "ایستگاه فشارشکن گلدیان",
+      "page_name": "ایستگاه فشارشکن گلدیان",
+      "short_label": "ایستگاه فشارشکن گلدیان",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "category": "مبدأ مسیر",
+      "region": "گلدیان · رودبار · گیلان",
+      "aliases": [],
+      "identity_summary": "ایستگاه خطوط لوله در مبدأ ثبت‌شدهٔ صعود گلدیان به آسمان‌سرا؛ خارج از بافت روستا.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.807069&longitude=49.4448"
+      ],
+      "latitude": 36.807069,
+      "longitude": 49.4448,
+      "elevation_m": 812,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 812 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای ایستگاه فشارشکن گلدیان؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ایستگاه فشارشکن گلدیان در گلدیان، رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "galdian-pond": {
+      "name": "آبگیر گلدیان",
+      "page_name": "آبگیر گلدیان",
+      "short_label": "آبگیر گلدیان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "آبگیر",
+      "region": "گلدیان · رودبار · گیلان",
+      "aliases": [],
+      "identity_summary": "آبگیر پایین‌دست ثبت‌شده در ترک صعود گلدیان، پیش از ورود به بخش مرتفع مسیر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.796909&longitude=49.454131"
+      ],
+      "latitude": 36.796909,
+      "longitude": 49.454131,
+      "elevation_m": 1129,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1129 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبگیر گلدیان؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبگیر گلدیان در گلدیان، رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "aseman-sara-upper-pond": {
+      "name": "آبگیر بالادست آسمان‌سرا",
+      "page_name": "آبگیر بالادست آسمان‌سرا",
+      "short_label": "آبگیر بالادست آسمان‌سرا",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "آبگیر",
+      "region": "آسمان‌سرا · رودبار · گیلان",
+      "aliases": [],
+      "identity_summary": "آبگیر مستند نزدیک یال قله که هر دو مسیر گلدیان و آغوزبن از کنار آن می‌گذرند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792",
+        "https://www.wikiloc.com/hiking-trails/qlh-asmnsr-mbd-z-rwsty-agwzbn-brgsht-z-hrzwyl-24236348",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.780284&longitude=49.4792"
+      ],
+      "latitude": 36.780284,
+      "longitude": 49.4792,
+      "elevation_m": 1846,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 1846 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "meadow",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای آبگیر بالادست آسمان‌سرا؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبگیر بالادست آسمان‌سرا در آسمان‌سرا، رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    },
+    "aghuzbon-rudbar": {
+      "name": "روستای آغوزبن رودبار",
+      "page_name": "روستای آغوزبن رودبار",
+      "short_label": "روستای آغوزبن رودبار",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "رودبار · گیلان",
+      "aliases": [
+        "آغوزبن رودبار",
+        "اغوزبن رودبار"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ روستای آغوزبن رودبار در لبهٔ شرقی بافت، منطبق با مبدأ ترک صعود آسمان‌سرا؛ متفاوت از روستاهای هم‌نام در سیاهکل و مازندران.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-asmnsr-mbd-z-rwsty-agwzbn-brgsht-z-hrzwyl-24236348",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.813542&longitude=49.475849"
+      ],
+      "latitude": 36.813542,
+      "longitude": 49.475849,
+      "elevation_m": 781,
+      "status": "provisional",
+      "elevation_source": "مختصات از GPX و waypoint مستند؛ ارتفاع 781 متر از Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "forest_fog",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای روستای آغوزبن رودبار؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای آغوزبن رودبار در رودبار، گیلان؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      }
+    }
+  },
+  "routes": {
+    "aseman-sara-galdian": {
+      "slug": "aseman-sara-galdian",
+      "title": "گلدیان تا قلهٔ آسمان‌سرا",
+      "subtitle": "صعود از ایستگاه فشارشکن، آبگیر گلدیان و آبگیر بالادست",
+      "trail_label": "گلدیان تا قلهٔ آسمان‌سرا",
+      "origin": "ایستگاه فشارشکن گلدیان",
+      "target_label": "قلهٔ آسمان‌سرا",
+      "region": "گلدیان · رودبار · گیلان",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "aseman-sara-galdian-trailhead",
+        "galdian-pond",
+        "aseman-sara-upper-pond",
+        "aseman-sara"
+      ],
+      "distance_km": 7.61,
+      "ascent_m": 1120,
+      "one_way_minutes": 260,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "aseman-sara-galdian-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-gldyn-t-qlh-asmn-sr-jmh-1402-02-22-134519792"
+        ],
+        "evidence_tracks": [
+          "tracks/aseman-sara/aseman-sara-galdian-ascent-2023.gpx"
+        ],
+        "cumulative_minutes": {
+          "aseman-sara-galdian-trailhead": 0,
+          "galdian-pond": 70,
+          "aseman-sara-upper-pond": 225,
+          "aseman-sara": 260
+        },
+        "notes": [
+          "فقط بخش صعود تا نخستین رسیدن به قله محاسبه شده است؛ روستای گلدیان با مبدأ ایستگاه فشارشکن یکی نیست.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود."
+        ]
+      },
+      "public_point_notes": {}
+    },
+    "aseman-sara-aghuzbon": {
+      "slug": "aseman-sara-aghuzbon",
+      "title": "آغوزبن تا قلهٔ آسمان‌سرا",
+      "subtitle": "مسیر جنگلی از آغوزبن رودبار و آبگیر بالادست",
+      "trail_label": "آغوزبن تا قلهٔ آسمان‌سرا",
+      "origin": "روستای آغوزبن رودبار",
+      "target_label": "قلهٔ آسمان‌سرا",
+      "region": "رودبار · گیلان",
+      "featured": false,
+      "sort_order": 2,
+      "points": [
+        "aghuzbon-rudbar",
+        "aseman-sara-upper-pond",
+        "aseman-sara"
+      ],
+      "distance_km": 6.95,
+      "ascent_m": 1161,
+      "one_way_minutes": 250,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+terrain-hiking-estimate-v1",
+        "version": "aseman-sara-aghuzbon-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-asmnsr-mbd-z-rwsty-agwzbn-brgsht-z-hrzwyl-24236348"
+        ],
+        "evidence_tracks": [
+          "tracks/aseman-sara/aseman-sara-aghuzbon-harzevil-traverse-2018.gpx"
+        ],
+        "cumulative_minutes": {
+          "aghuzbon-rudbar": 0,
+          "aseman-sara-upper-pond": 215,
+          "aseman-sara": 250
+        },
+        "notes": [
+          "فقط صعود منتشر می‌شود؛ ترک فرود زیر نیروگاه بادی تمام می‌شود و به بافت روستای هرزویل نمی‌رسد.",
+          "مسافت از هندسهٔ GPX و صعود از نمونه‌برداری ۵۰ متری با هموارسازی ارتفاع محاسبه شده است. زمان حرکت با سرعت پایهٔ ۳ تا ۴ کیلومتر در ساعت، هزینهٔ صعود حدود ۶۰۰ متر در ساعت و دشواری زمین برآورد شده؛ توقف و کمپ در آن حساب نمی‌شود."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "point": {
+    "slug": "aseman-sara",
+    "tile_name": "قلهٔ آسمان‌سرا",
+    "name": "قلهٔ آسمان‌سرا",
+    "short_category": "قله",
+    "category": "قله",
+    "category_key": "mountain",
+    "region": "رودبار · گیلان",
+    "latitude": 36.779909,
+    "longitude": 49.488111,
+    "elevation_m": 1932,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ آسمان‌سرا",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آسمانسرا",
+      "آسمان سرا رودبار"
+    ]
+  }
+}
