@@ -18,6 +18,13 @@ def test_shah_dezh_is_documented_without_publishing_a_technical_hiking_route():
     assert catalog["primary_point"] == SLUG
     assert list(catalog["weather_points"]) == [SLUG]
     point = catalog["weather_points"][SLUG]
+    limits = {
+        "name": 80, "page_name": 160, "short_label": 80, "place_type": 32,
+        "identity_summary": 255, "importance": 16, "name_status": 16,
+        "category_key": 32, "region": 64, "elevation_source": 255,
+    }
+    for field, limit in limits.items():
+        assert len(point[field]) <= limit, field
     assert catalog["routes"] == point["routes"] == {}
     assert point["name"] == point["page_name"] == catalog["point"]["name"] == NAME
     assert point["place_type"] == "summit"
