@@ -1,0 +1,57 @@
+{
+  "catalog_version": "hawatch-shah-dezh-alborz-catalog-v1",
+  "primary_point": "shah-dezh-alborz",
+  "weather_points": {
+    "shah-dezh-alborz": {
+      "name": "قلهٔ شاه‌دژ البرز",
+      "page_name": "قلهٔ شاه‌دژ البرز",
+      "short_label": "شاه‌دژ",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "ارنگه · کرج · البرز",
+      "aliases": ["شاه دژ", "شاهدژ", "قله شاه دژ", "شاه دژ کرج", "شاه دژ ارنگه", "نسام دار", "نسام‌دار", "نسام در", "نسام‌در", "شاه دژ غربی", "Shah Dezh Alborz", "Nasam Dar"],
+      "identity_summary": "قلهٔ شاه‌دژ در شمال سرزیارت و سیجان، محدودهٔ ارنگه در استان البرز؛ در گزارش ترک با نام نسام‌دار نیز آمده است. پسوند البرز برای تفکیک از قلهٔ هم‌نام شاهدژ بالادهٔ مازندران است. مختصات از waypoint نام‌دار قله در ترک صعود ثبت‌شده گرفته شده است. مسیر سنگی برای Route پیادهٔ عمومی تأیید نشده و مقصد مستقل منتشر می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-shh-dj-nsm-dr-151465306",
+        "https://chekadiran.blogfa.com/post/148",
+        "https://payamclub.blogfa.com/post/35"
+      ],
+      "seo": {
+        "description": "پیش‌بینی آب‌وهوای قلهٔ شاه‌دژ البرز، معروف به نسام‌دار، در محدودهٔ ارنگه کرج؛ دما، باد و بارش ساعتی. صعود سنگی است و برای پیاده‌روی عمومی مناسب نیست."
+      },
+      "latitude": 35.944998,
+      "longitude": 51.134172,
+      "elevation_m": 2798,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint قله در Wikiloc 151465306؛ ارتفاع Open-Meteo GLO-90 DEM برابر ۲۷۹۸ متر در ۲۰۲۶-۱۰-۰۷. متن ۳۰۷۰ و GPX حدود ۲۹۱۴ متر را قطعی نمی‌دانیم؛ DEM ارتفاع نقشه‌برداری نیست.",
+      "climate": "alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shah-dezh-alborz",
+    "tile_name": "شاه‌دژ البرز",
+    "name": "قلهٔ شاه‌دژ البرز",
+    "short_category": "قله",
+    "category": "قله",
+    "category_key": "mountain",
+    "region": "ارنگه · کرج · البرز",
+    "latitude": 35.944998,
+    "longitude": 51.134172,
+    "elevation_m": 2798,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["شاه دژ", "شاهدژ", "قله شاه دژ", "شاه دژ کرج", "شاه دژ ارنگه", "نسام دار", "نسام‌دار", "نسام در", "نسام‌در", "شاه دژ غربی", "Shah Dezh Alborz", "Nasam Dar"]
+  }
+}
