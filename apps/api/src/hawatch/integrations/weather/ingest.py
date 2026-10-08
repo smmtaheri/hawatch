@@ -6,6 +6,7 @@ import hashlib
 import json
 import time
 from contextlib import contextmanager
+from dataclasses import replace
 from datetime import timedelta
 from threading import Lock
 from typing import Iterator, Sequence
@@ -160,7 +161,7 @@ def persist_ingest(
 ) -> ForecastSnapshot:
     """Store raw batches, provider resolutions, and normalized hourly rows.
 
-    - Replaces live rows only for weather points whose batch succeeded.
+    - Replaces live rows only for weather points with validated, nonempty data.
     - Keeps previous live rows for failed batches (usable as stale data).
     - On total failure, preserves previous usable snapshot/records and returns that snapshot.
     """
@@ -201,24 +202,23 @@ def persist_ingest(
         if status_code != 200 or len(items) != len(point_ids):
             failed_batches += 1
             continue
-        paired_points = [point_by_slug.get(point_id) for point_id in point_ids]
-        if any(
-            point is None
-            or not provider_resolution_is_acceptable(
-                raw_point,
-                requested_latitude=point.location.y,
-                requested_longitude=point.location.x,
-            )
-            for point, raw_point in zip(paired_points, items, strict=True)
-        ):
-            # A response with no usable/nearby resolved coordinate must never be
-            # persisted under a catalog point. Keep the previous usable rows.
-            failed_batches += 1
-            rejected_resolution_batches += 1
-            continue
+        resolution_rejected = False
+        batch_failed = False
         for point_id, raw_point in zip(point_ids, items, strict=True):
             weather_point = point_by_slug.get(point_id)
-            assert weather_point is not None
+            if weather_point is None or not provider_resolution_is_acceptable(
+                raw_point,
+                requested_latitude=weather_point.location.y,
+                requested_longitude=weather_point.location.x,
+            ):
+                # Reject only this point, never its healthy batch neighbours.
+                resolution_rejected = True
+                batch_failed = True
+                continue
+            point_rows = normalize_point_hourly(raw_point, generated_at=generated_at)
+            if not point_rows or point_id in successful_point_ids:
+                batch_failed = batch_failed or not point_rows
+                continue
             successful_point_ids.append(point_id)
             resolved = extract_resolution(raw_point)
             resolutions.append(
@@ -236,11 +236,11 @@ def persist_ingest(
                     timezone_abbreviation=resolved["timezone_abbreviation"],
                 )
             )
-            point_rows = normalize_point_hourly(raw_point, generated_at=generated_at)
             if point_rows:
                 forecast_times_by_point.setdefault(point_id, set()).update(
                     row["forecast_at"] for row in point_rows
                 )
+
             for row in point_rows:
                 valid_from = row["valid_from"] if valid_from is None else min(valid_from, row["valid_from"])
                 valid_to = row["valid_to"] if valid_to is None else max(valid_to, row["valid_to"])
@@ -281,6 +281,9 @@ def persist_ingest(
                     )
                 )
 
+        failed_batches += int(batch_failed)
+        rejected_resolution_batches += int(resolution_rejected)
+
     if not successful_point_ids:
         # Total failure: keep previous usable data; record a failed audit snapshot only.
         ForecastSnapshot.objects.create(
@@ -320,7 +323,7 @@ def persist_ingest(
         )
         cleanup_old_snapshots()
         return failed
-    if failed_batches:
+    if len(successful_point_ids) < len(weather_points):
         status = ForecastSnapshot.Status.PARTIAL
         freshness = ForecastSnapshot.Freshness.PARTIAL
     else:
@@ -443,6 +446,21 @@ def ingest_weather_points(
     def _run() -> ForecastSnapshot:
         provider_points = weather_points_to_provider_points(points)
         results = provider.fetch_all(provider_points)
+        # Land/elevation matching can select a remote grid cell. Retry only
+        # rejected points using the nearest cell, keeping the catalog elevation
+        # and the same 5 km acceptance gate. No unvalidated response is stored.
+        retry_points = {}
+        for result in results:
+            items = response_items(result.payload)
+            if result.status_code != 200 or len(items) != len(result.points) or result.cell_selection != "land":
+                continue
+            for point, item in zip(result.points, items, strict=True):
+                if not provider_resolution_is_acceptable(
+                    item, requested_latitude=point.latitude, requested_longitude=point.longitude,
+                ):
+                    retry_points[point.id] = replace(point, cell_selection="nearest")
+        if retry_points:
+            results.extend(provider.fetch_all(list(retry_points.values())))
         serialized = []
         for result in results:
             serialized.append(
