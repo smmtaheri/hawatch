@@ -1,0 +1,173 @@
+{
+  "catalog_version": "hawatch-bozghush-v1",
+  "primary_point": "bozghush",
+  "weather_points": {
+    "bozghush-allah-haqq-trailhead": {
+      "name": "مبدأ پیاده‌روی آبگرم الله‌حقی بزقوش",
+      "page_name": "مبدأ مسیر بزقوش از آبگرم الله‌حقی",
+      "short_label": "آبگرم الله‌حقی",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ بزقوش",
+      "region": "سراب · آذربایجان شرقی",
+      "aliases": ["پارکینگ آبگرم الله‌حقی", "آبگرم الله حقی", "Allah Haqq hot spring parking"],
+      "identity_summary": "پارکینگ آبگرم الله‌حقی، مبدأ پیاده‌روی ثبت‌شدهٔ جبههٔ شمالی بزقوش؛ جادهٔ دسترسی خودرویی در Route وارد نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+        "https://www.wikiloc.com/mountaineering-trails/bozgush-summit-qlh-bzqwsh-z-abgrm-sbfrwshn-srb-swd-bhrh-jbhh-shmly-6901352"
+      ],
+      "latitude": 37.78904,
+      "longitude": 47.460584,
+      "elevation_m": 2008,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint پارکینگ آبگرم الله‌حقی در ترک ثبت‌شده؛ ارتفاع ۲۰۰۸ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "bozghush-shelter": {
+      "name": "جان‌پناه بزقوش",
+      "page_name": "جان‌پناه بزقوش در مسیر قله",
+      "short_label": "جان‌پناه بزقوش",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "مسیر قلهٔ بزقوش",
+      "region": "سراب · آذربایجان شرقی",
+      "aliases": ["پناهگاه بزقوش", "Bozghush shelter"],
+      "identity_summary": "جان‌پناه مشخص و نام‌برده‌شده در مسیر شمالی قلهٔ بزقوش؛ landmark میانی Route، نه مقصد مستقل.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+        "https://mojekooh.com/bozghoosh-peak-climbing-guide/"
+      ],
+      "latitude": 37.762532,
+      "longitude": 47.464752,
+      "elevation_m": 2904,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار جان‌پناه در ترک ثبت‌شده و ارتفاع مرجع ۲۹۰۴ متر از راهنمای صعود؛ Open-Meteo GLO-90 DEM برابر ۲۸۵۶ متر (اختلاف ۴۸ متر).",
+      "climate": "alpine"
+    },
+    "bozghush": {
+      "name": "قلهٔ بزقوش",
+      "page_name": "قلهٔ بزقوش (آغ‌داغ)",
+      "short_label": "بزقوش",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های آذربایجان شرقی",
+      "region": "سراب · آذربایجان شرقی",
+      "aliases": [
+        "قلهٔ آغ‌داغ بزقوش",
+        "قلهٔ آغ‌داغ",
+        "قلهٔ آغ‌داغی",
+        "قلهٔ آق‌داغ بزقوش",
+        "قلهٔ بزکش",
+        "Bozghush",
+        "Bozgush",
+        "Ağ Dağ"
+      ],
+      "identity_summary": "بلندترین قلهٔ رشته‌کوه بزقوش در جنوب سراب و شمال میانه؛ آغ‌داغ نام همین قله است و با قلهٔ آق‌داغ خلخال تفاوت دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5780693785",
+        "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+        "https://mojekooh.com/bozghoosh-peak-climbing-guide/"
+      ],
+      "latitude": 37.756202,
+      "longitude": 47.445807,
+      "elevation_m": 3306,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار «قله آغ داغ» در ترک ثبت‌شده؛ ارتفاع مرجع ۳۳۰۶ متر از Mapcarta، Open-Meteo GLO-90 DEM برابر ۳۲۵۸ متر (اختلاف ۴۸ متر).",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ بزقوش (آغ‌داغ)؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ بزقوش، بلندترین قلهٔ رشته‌کوه بزقوش در جنوب سراب؛ دما، باد و بارش ساعتی برای برنامه‌ریزی صعود."
+      }
+    }
+  },
+  "routes": {
+    "bozghush-north": {
+      "slug": "bozghush-north",
+      "title": "آبگرم الله‌حقی تا قلهٔ بزقوش",
+      "subtitle": "صعود دشوار جبههٔ شمالی از جان‌پناه بزقوش تا قلهٔ آغ‌داغ",
+      "trail_label": "مسیر شمالی بزقوش",
+      "origin": "پارکینگ آبگرم الله‌حقی",
+      "target_label": "قلهٔ بزقوش (آغ‌داغ)",
+      "region": "سراب · آذربایجان شرقی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "bozghush-allah-haqq-trailhead",
+        "bozghush-shelter",
+        "bozghush"
+      ],
+      "distance_km": 6.75,
+      "ascent_m": 1270,
+      "one_way_minutes": 280,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "recorded-gpx+web-reports-v1",
+        "version": "bozghush-north-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+          "https://mojekooh.com/bozghoosh-peak-climbing-guide/"
+        ],
+        "evidence_tracks": [
+          "tracks/bozghush/bozghush-north-allah-haqq-to-summit-2019-roundtrip.gpx"
+        ],
+        "cumulative_minutes": {
+          "bozghush-allah-haqq-trailhead": 0,
+          "bozghush-shelter": 160,
+          "bozghush": 280
+        }
+      },
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+        "https://mojekooh.com/bozghoosh-peak-climbing-guide/"
+      ],
+      "evidence_tracks": [
+        "tracks/bozghush/bozghush-north-allah-haqq-to-summit-2019-roundtrip.gpx"
+      ]
+    }
+  },
+  "point": {
+    "slug": "bozghush",
+    "tile_name": "قلهٔ بزقوش",
+    "name": "قلهٔ بزقوش",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان شرقی",
+    "category_key": "mountain",
+    "region": "سراب · آذربایجان شرقی",
+    "latitude": 37.756202,
+    "longitude": 47.445807,
+    "elevation_m": 3306,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای قلهٔ بزقوش در آذربایجان شرقی",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قلهٔ آغ‌داغ بزقوش",
+      "قلهٔ آغ‌داغ",
+      "قلهٔ آغ‌داغی",
+      "قلهٔ آق‌داغ بزقوش",
+      "قلهٔ بزکش",
+      "Bozghush",
+      "Bozgush",
+      "Ağ Dağ"
+    ]
+  }
+}
