@@ -1,0 +1,64 @@
+{
+  "catalog_version": "hawatch-bolaghlar-nir-v1",
+  "primary_point": "bolaghlar-nir",
+  "weather_points": {
+    "bolaghlar-nir": {
+      "name": "تفرجگاه بولاغلار نیر",
+      "page_name": "تفرجگاه بولاغلار نیر",
+      "short_label": "بولاغلار نیر",
+      "place_type": "landmark",
+      "category_key": "park",
+      "category": "تفرجگاه طبیعی",
+      "region": "نیر · اردبیل",
+      "aliases": [
+        "بولاغلار نیر",
+        "تفرجگاه بولاغلار",
+        "چشمه‌های بولاغلار نیر",
+        "Bolaghlar Nir"
+      ],
+      "identity_summary": "تفرجگاه طبیعی بولاغلار در حاشیهٔ شمالی شهر نیر، شناخته‌شده به‌خاطر چشمه‌های متعدد و آبراهه‌های کوتاه؛ مستقل از نام‌های همسان در استان‌های دیگر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/way/1072383910",
+        "https://fa.tripyar.com/iran/ardabil/nir/attractions/natural/بولاغلار.html",
+        "https://safarfitir.blogfa.com/post/614"
+      ],
+      "latitude": 38.0352643,
+      "longitude": 47.9826475,
+      "elevation_m": 1622,
+      "status": "provisional",
+      "elevation_source": "مختصات تفرجگاه از OpenStreetMap Nominatim (پارک بولاغلار)؛ ارتفاع ۱۶۲۲ متر از Open-Meteo GLO-90 DEM در همین مختصات، ۲۰۲۶-۱۰-۰۸.",
+      "climate": "meadow",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "bolaghlar-nir",
+    "tile_name": "تفرجگاه بولاغلار نیر",
+    "name": "تفرجگاه بولاغلار نیر",
+    "short_category": "تفرجگاه طبیعی",
+    "category": "تفرجگاه طبیعی",
+    "category_key": "park",
+    "region": "نیر · اردبیل",
+    "latitude": 38.0352643,
+    "longitude": 47.9826475,
+    "elevation_m": 1622,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "بولاغلار نیر",
+      "تفرجگاه بولاغلار",
+      "چشمه‌های بولاغلار نیر",
+      "Bolaghlar Nir"
+    ]
+  }
+}
