@@ -1,0 +1,128 @@
+{
+  "catalog_version": "hawatch-aq-dagh-khalkhal-v1",
+  "primary_point": "aq-dagh-khalkhal",
+  "weather_points": {
+    "aq-dagh-khalkhal": {
+      "name": "قلهٔ آق‌داغ خلخال",
+      "page_name": "قلهٔ آق‌داغ خلخال",
+      "short_label": "قلهٔ آق‌داغ خلخال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله",
+      "region": "خلخال · اردبیل",
+      "aliases": [
+        "آق داغ خلخال",
+        "آغ‌داغ خلخال",
+        "آقداغ خلخال",
+        "سفیدکوه خلخال"
+      ],
+      "identity_summary": "قلهٔ آق‌داغ در خلخال؛ پسوند خلخال برای تفکیک از کوه‌های هم‌نام به‌کار رفته است. موقعیت قله با waypoint و انتهای دو ترک مستقل تطبیق داده شده؛ موقعیت چشمه‌های میانی هنوز برای انتشار مسیر تأیید نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/trkh-qlh-aq-dg-khlkhl-44141444",
+        "https://www.wikiloc.com/hiking-trails/bfrjrd-bh-aq-dg-129456602",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-mrh-jyn-t-khwh-aq-dg-khlkhl-172632930"
+      ],
+      "latitude": 37.385785,
+      "longitude": 48.549939,
+      "elevation_m": 3298,
+      "status": "provisional",
+      "elevation_source": "مختصات از waypoint قله و تطبیق دو ترک؛ ارتفاع 3298 متر از Open-Meteo GLO-90 DEM در همین مختصات؛ ۲۰۲۶-۱۰-۰۸.",
+      "climate": "alpine",
+      "routes": {}
+    },
+    "merajin": {
+      "name": "روستای مره‌جین",
+      "page_name": "روستای مره‌جین",
+      "short_label": "روستای مره‌جین",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "خلخال · اردبیل",
+      "aliases": [
+        "مره جین",
+        "میره‌جین",
+        "میره جین",
+        "میرجین",
+        "Mirahjin"
+      ],
+      "identity_summary": "روستای مره‌جین، یکی از دسترسی‌های صعود آق‌داغ خلخال؛ مختصات waypoint خود روستا، مستقل از ابتدای ترک حدود ۸۰۰ متر دورتر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/trkh-qlh-aq-dg-khlkhl-44141444",
+        "https://en.wikipedia.org/wiki/Mirahjin"
+      ],
+      "latitude": 37.39072,
+      "longitude": 48.508408,
+      "elevation_m": 2014,
+      "status": "provisional",
+      "elevation_source": "مختصات از waypoint روستا و منبع سکونتگاه؛ ارتفاع 2014 متر از Open-Meteo GLO-90 DEM در همین مختصات؛ ۲۰۲۶-۱۰-۰۸.",
+      "climate": "meadow",
+      "routes": {}
+    },
+    "bafrajerd": {
+      "name": "روستای بفراجرد",
+      "page_name": "روستای بفراجرد",
+      "short_label": "روستای بفراجرد",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "region": "خلخال · اردبیل",
+      "aliases": [
+        "بفراجرد",
+        "وراوارد",
+        "واهراوارد",
+        "Varavard"
+      ],
+      "identity_summary": "روستای بفراجرد یا وراوارد در خلخال؛ مستقل از روستای خانقاه بفراجرد و مستقل از ابتدای ترک صعود در جنوب‌غرب روستا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Bafrajerd",
+        "https://www.wikiloc.com/hiking-trails/bfrjrd-bh-aq-dg-129456602",
+        "https://www.wikiloc.com/hiking-trails/pymysh-rwsty-mrh-jyn-t-khwh-aq-dg-khlkhl-172632930"
+      ],
+      "latitude": 37.49444,
+      "longitude": 48.55528,
+      "elevation_m": 2191,
+      "status": "provisional",
+      "elevation_source": "مختصات از نقشهٔ سکونتگاه؛ ارتفاع 2191 متر از Open-Meteo GLO-90 DEM در همین مختصات؛ ۲۰۲۶-۱۰-۰۸.",
+      "climate": "meadow",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "aq-dagh-khalkhal",
+    "tile_name": "قلهٔ آق‌داغ خلخال",
+    "name": "قلهٔ آق‌داغ خلخال",
+    "short_category": "قله",
+    "category": "قله",
+    "category_key": "mountain",
+    "region": "خلخال · اردبیل",
+    "latitude": 37.385785,
+    "longitude": 48.549939,
+    "elevation_m": 3298,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آق داغ خلخال",
+      "آغ‌داغ خلخال",
+      "آقداغ خلخال",
+      "سفیدکوه خلخال"
+    ]
+  }
+}
