@@ -1,0 +1,76 @@
+{
+  "catalog_version": "hawatch-zayandehrud-lake-v1",
+  "primary_point": "zayandehrud-lake",
+  "point": {
+    "slug": "zayandehrud-lake",
+    "name": "دریاچهٔ سد زاینده‌رود",
+    "tile_name": "دریاچهٔ زاینده‌رود",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌ها و سدهای اصفهان",
+    "category_key": "dam",
+    "region": "چادگان · غرب اصفهان",
+    "latitude": 32.734862,
+    "longitude": 50.667353,
+    "elevation_m": 2013,
+    "climate": "lake_valley",
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ مخزنی سد زاینده‌رود در محدودهٔ چادگان",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه سد زاینده رود",
+      "دریاچهٔ زاینده‌رود",
+      "دریاچهٔ چادگان",
+      "دریاچه سد چادگان",
+      "سد چادگان",
+      "Zayandehrud Lake",
+      "Zayandeh Rud Reservoir",
+      "Chadegan Reservoir"
+    ]
+  },
+  "weather_points": {
+    "zayandehrud-lake": {
+      "name": "دریاچهٔ سد زاینده‌رود",
+      "page_name": "دریاچهٔ سد زاینده‌رود",
+      "short_label": "دریاچهٔ زاینده‌رود",
+      "place_type": "lake",
+      "category_key": "dam",
+      "category": "دریاچه‌ها و سدهای اصفهان",
+      "region": "چادگان · غرب اصفهان",
+      "aliases": [
+        "دریاچه سد زاینده رود",
+        "دریاچهٔ زاینده‌رود",
+        "دریاچهٔ چادگان",
+        "دریاچه سد چادگان",
+        "سد چادگان",
+        "Zayandehrud Lake",
+        "Zayandeh Rud Reservoir",
+        "Chadegan Reservoir"
+      ],
+      "identity_summary": "مخزن سد زاینده‌رود در شهرستان چادگان؛ صفحهٔ هواشناسی برای یک مختصات نماینده از پهنهٔ دریاچه است، نه میانگین سراسر مخزن.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/27388080",
+        "https://www.geonames.org/7521201/zayandehrud-lake.html",
+        "https://dahiti.dgfi.tum.de/en/38592/",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.734862&longitude=50.667353"
+      ],
+      "latitude": 32.734862,
+      "longitude": 50.667353,
+      "elevation_m": 2013,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ دریاچه از GeoNames/Mapcarta؛ ارتفاع ۲۰۱۳ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ سد زاینده‌رود؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ سد زاینده‌رود در محدودهٔ چادگان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    }
+  },
+  "routes": {}
+}

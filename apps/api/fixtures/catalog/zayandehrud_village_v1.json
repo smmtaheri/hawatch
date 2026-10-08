@@ -1,0 +1,77 @@
+{
+  "catalog_version": "hawatch-zayandehrud-village-v1",
+  "primary_point": "zayandehrud-village",
+  "point": {
+    "slug": "zayandehrud-village",
+    "name": "دهکدهٔ گردشگری زاینده‌رود",
+    "tile_name": "دهکدهٔ زاینده‌رود",
+    "short_category": "دهکدهٔ گردشگری",
+    "category": "روستاها و دهکده‌های گردشگری اصفهان",
+    "category_key": "village",
+    "region": "چادگان · غرب اصفهان",
+    "latitude": 32.7519363,
+    "longitude": 50.6613906,
+    "elevation_m": 2165,
+    "climate": "lake_valley",
+    "image": "/images/home-scene.png",
+    "image_alt": "دهکدهٔ گردشگری زاینده‌رود در کنار دریاچهٔ سد",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0,
+    "seo_indexable": true,
+    "aliases": [
+      "دهکده زاینده رود",
+      "دهکدهٔ تفریحی زاینده‌رود",
+      "دهکده گردشگری چادگان",
+      "دهکده تفریحی چادگان",
+      "دهکدهٔ فرهنگی تفریحی زاینده‌رود",
+      "Zayandehrood",
+      "Zayandehrud Tourist Village",
+      "Chadegan Recreational Village"
+    ]
+  },
+  "weather_points": {
+    "zayandehrud-village": {
+      "name": "دهکدهٔ گردشگری زاینده‌رود",
+      "page_name": "دهکدهٔ گردشگری زاینده‌رود چادگان",
+      "short_label": "دهکدهٔ زاینده‌رود",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاها و دهکده‌های گردشگری اصفهان",
+      "region": "چادگان · غرب اصفهان",
+      "aliases": [
+        "دهکده زاینده رود",
+        "دهکدهٔ تفریحی زاینده‌رود",
+        "دهکده گردشگری چادگان",
+        "دهکده تفریحی چادگان",
+        "دهکدهٔ فرهنگی تفریحی زاینده‌رود",
+        "Zayandehrood",
+        "Zayandehrud Tourist Village",
+        "Chadegan Recreational Village"
+      ],
+      "identity_summary": "دهکدهٔ زاینده‌رود، سکونتگاه روستایی و مقصد تفریحی کنار دریاچهٔ سد در شهرستان چادگان؛ از شهر چادگان جداست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4695524644",
+        "https://www.openstreetmap.org/node/4695524644",
+        "https://irangaah.ir/chadegan",
+        "https://www.isfahanvisit.ir/fa/articles/157-entertainment-village-around-isfahan",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.7519363&longitude=50.6613906"
+      ],
+      "latitude": 32.7519363,
+      "longitude": 50.6613906,
+      "elevation_m": 2165,
+      "status": "provisional",
+      "elevation_source": "مختصات روستای دهکده زاینده‌رود از OSM node 4695524644؛ ارتفاع ۲۱۶۵ متر از Open-Meteo GLO-90 DEM.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای دهکدهٔ گردشگری زاینده‌رود چادگان | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دهکدهٔ گردشگری زاینده‌رود، مقصد تفریحی کنار دریاچهٔ سد در شهرستان چادگان؛ دما، باد و بارش را ببینید."
+      }
+    }
+  },
+  "routes": {}
+}
