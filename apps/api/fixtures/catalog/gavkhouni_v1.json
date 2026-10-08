@@ -1,0 +1,76 @@
+{
+  "catalog_version": "hawatch-gavkhouni-wetland-v1",
+  "weather_points": {
+    "gavkhouni": {
+      "name": "تالاب گاوخونی",
+      "page_name": "تالاب گاوخونی",
+      "short_label": "تالاب گاوخونی",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌ها و جاذبه‌های طبیعی اصفهان",
+      "region": "حوضهٔ زاینده‌رود · شرق اصفهان",
+      "aliases": [
+        "گاوخونی",
+        "گاو خونی",
+        "تالاب بین‌المللی گاوخونی",
+        "دریاچهٔ گاوخونی",
+        "مرداب گاوخونی",
+        "باتلاق گاوخونی",
+        "Gavkhouni Wetland",
+        "Gavkhouni Lake",
+        "Gavkhuni"
+      ],
+      "identity_summary": "تالاب و دریاچهٔ فصلی گاوخونی در انتهای حوضهٔ زاینده‌رود و شرق اصفهان؛ این تالاب رامسر با نوسان گستردهٔ آب روبه‌روست و در دوره‌های کم‌آبی بخش زیادی از آن خشک می‌شود. مختصات این صفحه نمایندهٔ پهنهٔ آبی نام‌گذاری‌شده در نقشه است، نه میانگین کل تالاب‌ها و آب‌گرفتگی‌های پایین‌دست زاینده‌رود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12613304",
+        "https://www.openstreetmap.org/way/67797984",
+        "https://rsis.ramsar.org/sites/default/files/rsiswp_search/exports/Ramsar-Sites-annotated-summary-Iran-Islamic-Republic-of.pdf",
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8130/site",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.12666&longitude=52.85024"
+      ],
+      "latitude": 32.12666,
+      "longitude": 52.85024,
+      "elevation_m": 1450,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ خود پهنهٔ دریاچه از عارضهٔ natural=water در OpenStreetMap/Mapcarta؛ ارتفاع ۱۴۵۰ متر از Open-Meteo GLO-90 DEM در همین مختصات. عدد حدود ۱۴۷۰ متر در منابع رامسر میانگین/ارتفاع سایت گسترده‌تر را توصیف می‌کند.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای تالاب گاوخونی؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب گاوخونی در حوضهٔ زاینده‌رود؛ دما، باد و بارش را برای بررسی شرایط این تالاب فصلی ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "gavkhouni",
+    "tile_name": "تالاب گاوخونی",
+    "name": "تالاب گاوخونی",
+    "short_category": "تالاب",
+    "category": "تالاب‌ها و جاذبه‌های طبیعی اصفهان",
+    "category_key": "marsh",
+    "region": "حوضهٔ زاینده‌رود · شرق اصفهان",
+    "elevation_m": 1450,
+    "latitude": 32.12666,
+    "longitude": 52.85024,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ تالاب گاوخونی در انتهای حوضهٔ زاینده‌رود",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "گاوخونی",
+      "گاو خونی",
+      "دریاچهٔ گاوخونی",
+      "مرداب گاوخونی",
+      "Gavkhouni Wetland",
+      "Gavkhouni Lake"
+    ]
+  },
+  "primary_point": "gavkhouni"
+}
