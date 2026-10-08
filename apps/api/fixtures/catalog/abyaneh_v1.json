@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-abyaneh-v1",
+  "weather_points": {
+    "abyaneh": {
+      "name": "روستای ابیانه",
+      "page_name": "روستای ابیانه",
+      "short_label": "ابیانه",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای تاریخی اصفهان",
+      "region": "نطنز · اصفهان",
+      "aliases": [
+        "ابیانه",
+        "ابیانه نطنز",
+        "ابیانه کاشان",
+        "روستای تاریخی ابیانه",
+        "Abyaneh",
+        "Abyāneh",
+        "Abyana"
+      ],
+      "identity_summary": "روستای تاریخی ابیانه در دهستان برزرود شهرستان نطنز، استان اصفهان؛ نقطهٔ هواشناسی نمایندهٔ بافت روستا است و به جاذبه‌های کوچک داخل آن صفحهٔ جدا نمی‌سازد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://whc.unesco.org/en/tentativelists/5197/",
+        "https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=8881568",
+        "https://mapcarta.com/12635274",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.5853&longitude=51.5923"
+      ],
+      "latitude": 33.5853,
+      "longitude": 51.5923,
+      "elevation_m": 2208,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز آبادی از رکورد جغرافیایی Getty TGN و OpenStreetMap/Mapcarta؛ ارتفاع گزارش‌شدهٔ نقشه ۲۲۰۸ متر است. Open-Meteo GLO-90 در همین مختصات ۲۲۲۹ متر برگرداند (اختلاف ۲۱ متر، بررسی ۲۰۲۶-۱۰-۰۹)؛ ارتفاع به‌دلیل اختلاف منابع محلی provisional نگه داشته شده است.",
+      "climate": "alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "abyaneh",
+    "tile_name": "روستای ابیانه",
+    "name": "روستای ابیانه",
+    "short_category": "روستا",
+    "category": "روستاهای تاریخی اصفهان",
+    "category_key": "village",
+    "region": "نطنز · اصفهان",
+    "latitude": 33.5853,
+    "longitude": 51.5923,
+    "elevation_m": 2208,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای روستای تاریخی ابیانه در دامنهٔ کوه کرکس",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ابیانه",
+      "ابیانه نطنز",
+      "ابیانه کاشان",
+      "روستای تاریخی ابیانه",
+      "Abyaneh",
+      "Abyāneh",
+      "Abyana"
+    ]
+  },
+  "primary_point": "abyaneh"
+}
