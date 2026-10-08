@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sahand-kamal-catalog-v1",
+  "catalog_version": "hawatch-sahand-kamal-catalog-v2",
   "reviewed_nearby_point_pairs": [
     {
       "slugs": ["sahand-qouch-goli-lake", "sahand-qouch-goli-shelter"],
@@ -31,6 +31,42 @@
       "status": "provisional",
       "elevation_source": "ارتفاع ۳۷۰۷ متر در منبع مستقل قلهٔ کمال و waypointهای سه ترک مستقل؛ Open-Meteo GLO-90 DEM در مختصات canonical برای cross-check استفاده می‌شود.",
       "climate": "high_alpine"
+    },
+    "kandovan-osku": {
+      "name": "روستای کندوان اسکو",
+      "page_name": "روستای کندوان اسکو",
+      "short_label": "کندوان اسکو",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای آذربایجان شرقی",
+      "region": "اسکو · آذربایجان شرقی",
+      "aliases": [
+        "کندوان",
+        "روستای کندوان",
+        "روستای صخره‌ای کندوان",
+        "کندوان اسکو",
+        "Kandovan",
+        "Kandovan Osku",
+        "Kandovan village"
+      ],
+      "identity_summary": "روستای صخره‌ای و مسکونی کندوان در شهرستان اسکو، آذربایجان شرقی؛ از روستاهای هم‌نام کندوان در شهرستان‌های دیگر متمایز است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://tourism-villages.unwto.org/en/villages/kandovan/",
+        "https://mapcarta.com/Kandovan",
+        "https://irangaah.ir/villages/osku/sahand/kenedvan",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.795,
+      "longitude": 46.2493,
+      "elevation_m": 2282,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز روستا از Mapcarta؛ ارتفاع ۲۲۸۲ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "alpine",
+      "routes": {}
     },
     "sahand-kamal-ski-trailhead": {
       "name": "پای‌کار پیست اسکی سهند",
