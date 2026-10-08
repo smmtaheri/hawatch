@@ -1,0 +1,295 @@
+{
+  "catalog_version": "hawatch-arasbaran-cluster-v1",
+  "primary_point": "arasbaran-forest",
+  "shared_weather_points": [],
+  "weather_points": {
+    "arasbaran-forest": {
+      "name": "جنگل ارسباران",
+      "page_name": "جنگل ارسباران",
+      "short_label": "جنگل ارسباران",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌ها و مناطق حفاظت‌شدهٔ آذربایجان شرقی",
+      "region": "کلیبر · آذربایجان شرقی",
+      "aliases": [
+        "منطقهٔ حفاظت‌شدهٔ ارسباران",
+        "منطقه حفاظت شده ارسباران",
+        "ذخیره‌گاه زیست‌کرهٔ ارسباران",
+        "قره‌داغ",
+        "جنگل‌های ارسباران",
+        "Arasbaran Forest",
+        "Arasbaran Protected Area"
+      ],
+      "identity_summary": "جنگل ارسباران در آذربایجان شرقی؛ بخشی از زیست‌بوم جنگلی و کوهستانی حفاظت‌شدهٔ ارسباران.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://whc.unesco.org/en/tentativelists/5217/",
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8065"
+      ],
+      "latitude": 38.908333,
+      "longitude": 46.875,
+      "elevation_m": 1783,
+      "status": "provisional",
+      "elevation_source": "مختصات نماینده از مرکز بازهٔ جغرافیایی درج‌شده در پروندهٔ یونسکو؛ Open-Meteo GLO-90 DEM در این مختصات: ۱۷۸۳ متر.",
+      "climate": "forest_fog"
+    },
+    "ainalu-arasbaran": {
+      "name": "آینالو ارسباران",
+      "page_name": "آینالو ارسباران",
+      "short_label": "آینالو",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌ها و مناطق حفاظت‌شدهٔ آذربایجان شرقی",
+      "region": "خداآفرین · آذربایجان شرقی",
+      "aliases": [
+        "منطقهٔ حفاظت‌شدهٔ آینالو",
+        "منطقه گردشگری آینالو",
+        "جنگل آینالو",
+        "Aynalu",
+        "Aynaloo",
+        "Ainalu"
+      ],
+      "identity_summary": "آینالو، منطقهٔ جنگلی و گردشگری شناخته‌شده در بخش خداآفرینِ ارسباران.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://fa.tripyar.com/iran/%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%B4%D8%B1%D9%82%DB%8C/%D8%AE%D8%AF%D8%A7%D8%A2%D9%81%D8%B1%DB%8C%D9%86/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%A9%D9%88%D9%87%D9%86%D9%88%D8%B1%D8%AF%DB%8C/%D9%85%D9%86%D8%B7%D9%82%D9%87-%D8%AD%D9%81%D8%A7%D8%B8%D8%AA-%D8%B4%D8%AF%D9%87-%D8%A2%DB%8C%D9%86%D8%A7%D9%84%D9%88.html",
+        "https://www.iranview.ir/f/%D8%A2%DB%8C%D9%86%D8%A7%D9%84%D9%88"
+      ],
+      "latitude": 38.883333,
+      "longitude": 46.783333,
+      "elevation_m": 1413,
+      "status": "provisional",
+      "elevation_source": "مختصات ۳۸°۵۳′ شمالی و ۴۶°۴۷′ شرقی و ارتفاع مرجع حدود ۱۵۰۰ متر از منابع گردشگری آینالو؛ Open-Meteo GLO-90 DEM برابر ۱۴۱۳ متر (اختلاف ۸۷ متر).",
+      "climate": "forest_fog"
+    },
+    "makidi-forest": {
+      "name": "پارک جنگلی مکیدی",
+      "page_name": "پارک جنگلی مکیدی ارسباران",
+      "short_label": "پارک جنگلی مکیدی",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌ها و مناطق حفاظت‌شدهٔ آذربایجان شرقی",
+      "region": "کلیبر · آذربایجان شرقی",
+      "aliases": [
+        "مکیدی",
+        "جنگل مکیدی",
+        "مکیدی دره‌سی",
+        "میکندی",
+        "Mikandi",
+        "Makidi Forest Park"
+      ],
+      "identity_summary": "پارک جنگلی مکیدی در محدودهٔ کلیبر و جنگل‌های ارسباران؛ نام مکیدی برای سکونتگاه میکندی نیز به‌کار می‌رود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/fa/attraction/%D9%BE%D8%A7%D8%B1%DA%A9-%D8%AC%D9%86%DA%AF%D9%84%DB%8C-%D9%85%DA%A9%DB%8C%D8%AF%DB%8C-%DA%A9%D9%84%DB%8C%D8%A8%D8%B1",
+        "https://en.wikipedia.org/wiki/Mikandi",
+        "https://satellites.pro/plan/Makidi_map"
+      ],
+      "latitude": 38.84222,
+      "longitude": 46.90556,
+      "elevation_m": 1650,
+      "status": "provisional",
+      "elevation_source": "مختصات محل مکیدی/میکندی از نقشه و صفحهٔ جغرافیایی؛ Open-Meteo GLO-90 DEM در مختصات canonical: ۱۶۵۰ متر.",
+      "climate": "forest_fog"
+    },
+    "babak-castle": {
+      "name": "قلعهٔ بابک",
+      "page_name": "قلعهٔ بابک کلیبر",
+      "short_label": "قلعهٔ بابک",
+      "place_type": "landmark",
+      "category_key": "fort",
+      "category": "قلعه‌ها و آثار تاریخی آذربایجان شرقی",
+      "region": "کلیبر · آذربایجان شرقی",
+      "aliases": [
+        "قلعه بابک",
+        "دژ بابک",
+        "قلعهٔ جمهور",
+        "قلعه جمهور",
+        "قلعه بذ",
+        "Babak Castle",
+        "Babak Fort"
+      ],
+      "identity_summary": "دژ تاریخی بابک بر فراز ارتفاعات جنگلی ارسباران، در نزدیکی شهر کلیبر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W367397338",
+        "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424",
+        "https://www.karnaval.ir/things-to-do/babak-fort-kaleybar"
+      ],
+      "latitude": 38.83658,
+      "longitude": 46.98112,
+      "elevation_m": 2251,
+      "status": "provisional",
+      "elevation_source": "مختصات اثر از OpenStreetMap/Mapcarta؛ Open-Meteo GLO-90 DEM در مختصات اثر: ۲۲۵۱ متر. ارتفاع‌های گزارش‌شدهٔ گردشگری حدود ۲۳۰۰ مترند.",
+      "climate": "alpine"
+    },
+    "kaleybar": {
+      "name": "کلیبر",
+      "page_name": "شهر کلیبر آذربایجان شرقی",
+      "short_label": "کلیبر",
+      "place_type": "city",
+      "category_key": "city",
+      "category": "شهرهای آذربایجان شرقی",
+      "region": "کلیبر · آذربایجان شرقی",
+      "aliases": [
+        "کلیبر",
+        "کلیبار",
+        "Kaleybar",
+        "Kalibar",
+        "Keleibar"
+      ],
+      "identity_summary": "شهر کلیبر در آذربایجان شرقی؛ پایگاه دسترسی شناخته‌شدهٔ قلعهٔ بابک و جنگل‌های ارسباران.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Kaleybar",
+        "https://mapcarta.com/Kaleybar"
+      ],
+      "latitude": 38.86639,
+      "longitude": 47.04056,
+      "elevation_m": 1138,
+      "status": "provisional",
+      "elevation_source": "مختصات شهر از منبع جغرافیایی و نقشه؛ Open-Meteo GLO-90 DEM در مختصات canonical: ۱۱۳۸ متر.",
+      "climate": "forest_fog"
+    },
+    "babak-hotel-trailhead": {
+      "name": "مبدأ پیاده‌روی هتل ایل‌یوردی",
+      "page_name": "مبدأ مسیر قلعهٔ بابک از هتل ایل‌یوردی",
+      "short_label": "هتل ایل‌یوردی",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر پیاده‌روی قلعهٔ بابک",
+      "region": "شجاع‌آباد · کلیبر · آذربایجان شرقی",
+      "aliases": ["هتل ایل یوردی", "هتل بابک", "Il Yordi Hotel"],
+      "identity_summary": "مبدأ ترک ضبط‌شدهٔ مسیر پیاده‌روی هتل ایل‌یوردی به قلعهٔ بابک؛ نقطهٔ فنی و غیرمقصدی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424"
+      ],
+      "latitude": 38.857412,
+      "longitude": 46.991127,
+      "elevation_m": 1840,
+      "status": "provisional",
+      "elevation_source": "مختصات شروع ترک ثبت‌شدهٔ هتل ایل‌یوردی؛ Open-Meteo GLO-90 DEM: ۱۸۴۰ متر.",
+      "climate": "forest_fog"
+    },
+    "babak-trail-teahouse": {
+      "name": "چایخانهٔ مسیر قلعهٔ بابک",
+      "page_name": "چایخانهٔ مسیر پیاده‌روی قلعهٔ بابک",
+      "short_label": "چایخانهٔ مسیر",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "مسیر پیاده‌روی قلعهٔ بابک",
+      "region": "مسیر هتل ایل‌یوردی به قلعهٔ بابک · کلیبر",
+      "aliases": ["چایخانه قلعه بابک", "چایخانهٔ قلعه بابک"],
+      "identity_summary": "چایخانهٔ نام‌دار ثبت‌شده در میانهٔ مسیر پیاده‌روی هتل ایل‌یوردی به قلعهٔ بابک؛ نقطهٔ پشتیبان مسیر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424"
+      ],
+      "latitude": 38.84279,
+      "longitude": 46.981597,
+      "elevation_m": 2185,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار «چایخانه» از ترک ثبت‌شده؛ Open-Meteo GLO-90 DEM: ۲۱۸۵ متر.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "babak-castle-ascent": {
+      "slug": "babak-castle-ascent",
+      "title": "هتل ایل‌یوردی تا قلعهٔ بابک",
+      "subtitle": "مسیر پیاده‌روی از هتل و چایخانهٔ میانی تا دژ تاریخی بابک",
+      "trail_label": "مسیر صعود قلعهٔ بابک",
+      "origin": "هتل ایل‌یوردی",
+      "target_label": "قلعهٔ بابک",
+      "region": "کلیبر · آذربایجان شرقی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "babak-hotel-trailhead",
+        "babak-trail-teahouse",
+        "babak-castle"
+      ],
+      "distance_km": 3.43,
+      "ascent_m": 501,
+      "one_way_minutes": 135,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "recorded-gpx+web-reports-v1",
+        "version": "babak-hotel-ascent-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424",
+          "https://www.karnaval.ir/things-to-do/babak-fort-kaleybar"
+        ],
+        "evidence_tracks": [
+          "tracks/arasbaran/arasbaran-babak-hotel-il-yordi-to-castle-2024.gpx"
+        ],
+        "cumulative_minutes": {
+          "babak-hotel-trailhead": 0,
+          "babak-trail-teahouse": 80,
+          "babak-castle": 135
+        }
+      },
+      "public_point_notes": {},
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424",
+        "https://www.karnaval.ir/things-to-do/babak-fort-kaleybar"
+      ],
+      "evidence_tracks": [
+        "tracks/arasbaran/arasbaran-babak-hotel-il-yordi-to-castle-2024.gpx"
+      ]
+    }
+  },
+  "point": {
+    "slug": "arasbaran-forest",
+    "tile_name": "جنگل ارسباران",
+    "name": "جنگل ارسباران",
+    "short_category": "جنگل",
+    "category": "جنگل‌ها و مناطق حفاظت‌شدهٔ آذربایجان شرقی",
+    "category_key": "forest",
+    "region": "کلیبر · آذربایجان شرقی",
+    "elevation_m": 1783,
+    "latitude": 38.908333,
+    "longitude": 46.875,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل‌های کوهستانی ارسباران در آذربایجان شرقی",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "منطقهٔ حفاظت‌شدهٔ ارسباران",
+      "منطقه حفاظت شده ارسباران",
+      "ذخیره‌گاه زیست‌کرهٔ ارسباران",
+      "قره‌داغ",
+      "جنگل‌های ارسباران",
+      "Arasbaran Forest",
+      "Arasbaran Protected Area"
+    ]
+  }
+}
