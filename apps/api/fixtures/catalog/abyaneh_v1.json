@@ -33,7 +33,7 @@
       "longitude": 51.5923,
       "elevation_m": 2208,
       "status": "provisional",
-      "elevation_source": "مختصات مرکز آبادی از رکورد جغرافیایی Getty TGN و OpenStreetMap/Mapcarta؛ ارتفاع گزارش‌شدهٔ نقشه ۲۲۰۸ متر است. Open-Meteo GLO-90 در همین مختصات ۲۲۲۹ متر برگرداند (اختلاف ۲۱ متر، بررسی ۲۰۲۶-۱۰-۰۹)؛ ارتفاع به‌دلیل اختلاف منابع محلی provisional نگه داشته شده است.",
+      "elevation_source": "Getty TGN/OSM؛ ارتفاع نقشه ۲۲۰۸ متر و Open-Meteo GLO-90 برابر ۲۲۲۹ متر (اختلاف ۲۱ متر، بررسی ۲۰۲۶-۱۰-۰۹). ارتفاع provisional است.",
       "climate": "alpine",
       "routes": {}
     }
