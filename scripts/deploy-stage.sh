@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-# Deploy the optional stage stack only. It shares production's real database,
-# while avoiding production's migration, bootstrap and ingest entrypoints.
+# Deploy only independent staging services; never run production migrations.
 STAGE_DIR="${HAWATCH_STAGE_DIR:-/root/hawatch-stage}"
 STAGE_ENV="${HAWATCH_STAGE_ENV_FILE:-/root/hawatch-stage.env}"
 MODE="${1:-deploy}"
@@ -15,6 +14,7 @@ enabled="$(awk -F= '$1 == "HAWATCH_STAGE_ENABLED" {gsub(/[[:space:]\r]/, "", $2)
 [[ "$(git -C "$STAGE_DIR" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail "Unexpected stage remote."
 git -C "$STAGE_DIR" pull --ff-only origin stage
 cd "$STAGE_DIR"
+export HAWATCH_STAGE_ENV_FILE="$STAGE_ENV"
 export HAWATCH_STAGE_IMAGE_TAG="$(git rev-parse --short=12 HEAD)"
 compose=(docker compose --project-name hawatch-stage --env-file "$STAGE_ENV" -f infra/compose/compose.stage.yaml)
 # Validate without printing resolved production database credentials.
@@ -43,7 +43,18 @@ if [[ "$MODE" == activate ]]; then
   done
 fi
 
-"${compose[@]}" up -d --no-build --force-recreate stage-api stage-web stage-gateway
+"${compose[@]}" up -d --wait stage-postgres stage-redis
+"${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py migrate --noinput
+if [[ "$("${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py shell -c 'from hawatch.modules.forecasts.models import WeatherPoint; print(WeatherPoint.objects.count())' | tail -n1)" == 0 ]]; then
+  snapshot="$(mktemp)"
+  trap 'rm -f "$snapshot"' EXIT
+  # Production is read-only here: export only weather/catalog models, never users or proxy secrets.
+  docker compose --project-directory "${HAWATCH_PRODUCTION_DIR:-/root/hawatch}" --env-file "${HAWATCH_PRODUCTION_DIR:-/root/hawatch}/.env" -f "${HAWATCH_PRODUCTION_DIR:-/root/hawatch}/infra/compose/compose.yaml" exec -T -i api python -c 'import django,sys; django.setup(); exec(sys.stdin.read())' < scripts/export-stage-data.py > "$snapshot"
+  "${compose[@]}" run --rm --no-deps -i -T --entrypoint python stage-api manage.py import_stage_data < "$snapshot"
+fi
+"${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py apply_route_descent
+"${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py ingest_open_meteo
+"${compose[@]}" up -d --no-build --force-recreate stage-api stage-web stage-gateway stage-scheduler
 
 wait_for_healthy() {
   local service="$1" container_id="" state="" health=""
@@ -87,7 +98,7 @@ import json, sys
 payload = json.load(sys.stdin)
 points = payload.get("results", payload if isinstance(payload, list) else [])
 if not points or not any(point.get("data_mode") == "live" for point in points):
-    raise SystemExit("Stage API returned no live catalog points from the production database.")
+    raise SystemExit("Stage API returned no live catalog points from the isolated stage database.")
 '
 curl --fail --silent --show-error --max-time 15 "${stage_base}/api/v1/points/tochal/forecast/" | python3 -c '
 import json, sys
@@ -96,4 +107,20 @@ meta = payload.get("meta", {})
 if payload.get("empty") or meta.get("data_mode") != "live" or meta.get("provider") != "open-meteo" or not payload.get("hourly"):
     raise SystemExit("Stage forecast is not populated with live Open-Meteo data.")
 '
+curl --fail --silent --show-error --max-time 30 "${stage_base}/api/v1/points/tochal/forecast/week/" | python3 -c '
+import json,sys
+payload=json.load(sys.stdin)
+if len(payload.get("days", [])) != 8 or payload.get("data_mode") != "live" or not payload.get("last_generated_at"):
+    raise SystemExit("Stage weekly point forecast is not ready.")
+'
+curl --fail --silent --show-error --max-time 30 "${stage_base}/api/v1/routes/tochal-darband/forecast/week/" | python3 -c '
+import json,sys
+payload=json.load(sys.stdin)
+if len(payload.get("days", [])) != 8 or len(payload.get("plans", {})) != 576 or not payload.get("records"):
+    raise SystemExit("Stage weekly route forecast is not ready.")
+'
+
 "${compose[@]}" ps
+
+stage_origin="$(awk -F= '$1 == "HAWATCH_STAGE_ORIGIN" {print $2; exit}' "$STAGE_ENV")"
+printf '[hawatch-stage] Ready: %s\n' "$stage_origin"

@@ -1,0 +1,530 @@
+body.forecast-page .forecast-v4 *{box-sizing:border-box}
+body.forecast-page .forecast-v4 html{min-width:320px;background:var(--bg)}
+body.forecast-page .forecast-v4 body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.7 Vazirmatn,Tahoma,sans-serif;position:relative;isolation:isolate}
+body.forecast-page .forecast-v4 h1,body.forecast-page .forecast-v4 h2,body.forecast-page .forecast-v4 h3,body.forecast-page .forecast-v4 p{margin:0}
+body.forecast-page .forecast-v4 button,body.forecast-page .forecast-v4 a{font:inherit;color:inherit}
+body.forecast-page .forecast-v4 button{background:none;border:0;padding:0;cursor:pointer}
+body.forecast-page .forecast-v4 a{text-decoration:none}
+body.forecast-page .forecast-v4 [hidden]{display:none!important}
+body.forecast-page .forecast-v4 strong,body.forecast-page .forecast-v4 b,body.forecast-page .forecast-v4 h1,body.forecast-page .forecast-v4 h2,body.forecast-page .forecast-v4 h3{font-weight:700}
+body.forecast-page .forecast-v4 button:focus-visible,body.forecast-page .forecast-v4 a:focus-visible,body.forecast-page .forecast-v4 [tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body.forecast-page .forecast-v4 .icon{width:24px;height:24px;display:inline-block;vertical-align:middle;flex:none;overflow:visible}
+body.forecast-page .forecast-v4 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+body.forecast-page .forecast-v4 .landscape{position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-light.webp') center top/auto 1200px no-repeat;background-color:var(--bg)}
+:root[data-theme=dark] body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-dark.webp')}
+body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-light.webp')}
+:root[data-theme=dark] body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+body.forecast-page .forecast-v4 .shell{width:min(1280px,calc(100% - 112px));margin:auto;padding:30px 0 48px}
+body.forecast-page .forecast-v4 .header{display:flex;justify-content:space-between;align-items:flex-start;min-height:76px}
+body.forecast-page .forecast-v4 .brand{display:flex;align-items:center;gap:6px;color:var(--accent);font-size:28px;font-weight:700}
+body.forecast-page .forecast-v4 .brand-symbol{width:48px;height:42px}
+body.forecast-page .forecast-v4 .brand-name{line-height:1}
+body.forecast-page .forecast-v4 .back{display:flex;gap:4px;align-items:center;min-height:40px;font-size:14px}
+body.forecast-page .forecast-v4 .back .icon{width:18px}
+body.forecast-page .forecast-v4 .nav{display:flex;direction:ltr;gap:12px}
+body.forecast-page .forecast-v4 .nav-button{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--border);border-radius:10px;background:var(--panel);backdrop-filter:blur(8px)}
+body.forecast-page .forecast-v4 .nav-button .icon{width:25px;height:25px}
+body.forecast-page .forecast-v4 .hero{padding:18px 0 22px;min-height:106px;position:relative}
+body.forecast-page .forecast-v4 .hero h1{font-size:42px;line-height:1.6;letter-spacing:-.7px}
+body.forecast-page .forecast-v4 .hero p{font-size:18px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .change-route{position:absolute;left:0;bottom:20px;display:flex;align-items:center;gap:8px;min-height:40px;font-size:16px;color:var(--accent)}
+body.forecast-page .forecast-v4 .change-route .icon{width:25px;height:25px}
+body.forecast-page .forecast-v4 .change-route>.icon:last-child{width:17px}
+body.forecast-page .forecast-v4 .forecast-title{text-align:left;font-size:24px;line-height:1.7;margin:0 2px 12px}
+body.forecast-page .forecast-v4 .destination-grid{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:24px;align-items:start}
+body.forecast-page .forecast-v4 .forecast{min-width:0}
+body.forecast-page .forecast-v4 .destination-grid .forecast{grid-column:1;grid-row:1}
+body.forecast-page .forecast-v4 .routes{grid-column:2;grid-row:1;padding-top:53px}
+body.forecast-page .forecast-v4 .routes h2{font-size:20px;margin-bottom:12px}
+body.forecast-page .forecast-v4 .route-link{display:flex;align-items:center;gap:10px;min-height:74px;padding:10px 0}
+/* Shared route badge and chevron on destination and route pages. */
+body.forecast-page .forecast-v4 .route-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex:none;color:var(--route-accent);background:var(--panel);border:1px solid var(--border);border-radius:50%}
+body.forecast-page .forecast-v4 .route-icon .icon{width:28px;height:28px}
+body.forecast-page .forecast-v4 .route-icon .icon>*,body.forecast-page .forecast-v4 .route-chevron>*{vector-effect:non-scaling-stroke;stroke-width:1.7px}
+body.forecast-page #forecast-v4 .route-chevron{width:16px;height:16px;color:var(--ink)}
+body.forecast-page .forecast-v4 .route-link .copy{flex:1;min-width:0;font-size:16px}
+body.forecast-page .forecast-v4 .route-link small{display:block;font-size:11px;color:var(--secondary);margin-top:2px}
+body.forecast-page .forecast-v4 .route-link>.icon{width:16px;height:16px}
+body.forecast-page .forecast-v4 .all-routes{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--accent);min-height:40px;margin-top:12px}
+body.forecast-page .forecast-v4 .footer{font-size:11px;color:var(--secondary);margin-top:24px}
+body.forecast-page .forecast-v4 .forecast-panel{position:relative;min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--panel);backdrop-filter:blur(10px);padding:0 10px 10px}
+body.forecast-page .forecast-v4 .timeline-scroll{direction:ltr;overflow:auto hidden;scrollbar-width:none}
+body.forecast-page .forecast-v4 .timeline-scroll::-webkit-scrollbar{display:none}
+body.forecast-page .forecast-v4 .timeline-content{position:relative;direction:ltr}
+body.forecast-page .forecast-v4 .day-headers{position:relative;height:84px;direction:ltr}
+body.forecast-page .forecast-v4 .day-headers.has-expanded{height:94px}
+body.forecast-page .forecast-v4 .day-group{position:absolute;top:0;height:100%;border-left:1px solid color-mix(in srgb,var(--border) 55%,transparent);text-align:center;direction:rtl}
+body.forecast-page .forecast-v4 .day-name{position:absolute;top:28px;white-space:nowrap;transform:translateX(-50%);font-size:16px;line-height:1.5}
+body.forecast-page .forecast-v4 .day-date{position:absolute;top:52px;white-space:nowrap;transform:translateX(-50%);font-size:12px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .day-button{position:absolute;top:1px;width:44px;height:44px;display:flex;justify-content:center;align-items:center;z-index:3}
+body.forecast-page .forecast-v4 .day-button .icon{width:14px;height:14px}
+body.forecast-page .forecast-v4 .day-button.expand{left:0}
+body.forecast-page .forecast-v4 .day-button.collapse{right:0}
+body.forecast-page .forecast-v4 .day-warning{width:15px;height:15px;color:var(--red);margin-left:5px}
+/* Destination columns use the full panel width; alerts do not shift the day name. */
+body.forecast-page:not(.route-page) #forecast-v4 .forecast-panel{padding-inline:0}
+body.forecast-page:not(.route-page) #forecast-v4 .day-group:last-child{border-left:0}
+body.forecast-page:not(.route-page) #forecast-v4 .day-warning{position:absolute;right:calc(100% + 5px);top:50%;transform:translateY(-50%);margin:0}
+/* Keep title and unit inside the first visible data column, above its values. */
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:0 4px;direction:rtl;text-align:right;font-size:12px;font-weight:400;line-height:16px;color:var(--secondary)}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label-unit{font-size:10px;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label-sub{flex-basis:100%;font-size:9px;line-height:12px}
+body.forecast-page .forecast-v4 .stamp{position:absolute;top:76px;transform:translateX(-50%);font-size:12px;line-height:1;direction:ltr;white-space:nowrap;color:var(--secondary)}
+body.forecast-page .forecast-v4 .weather-strip{height:50px;position:relative}
+body.forecast-page .forecast-v4 .weather-slot{position:absolute;top:4px;transform:translateX(-50%);text-align:center;direction:rtl}
+body.forecast-page .forecast-v4 .weather-slot>.icon:not(.point-warning){width:40px;height:40px}
+body.forecast-page .forecast-v4 .weather-slot .point-warning{position:absolute;top:-6px;right:-9px;width:15px;height:15px;color:var(--red)}
+body.forecast-page .forecast-v4 .chart-row{display:block;width:100%;overflow:visible;direction:ltr;font-family:Vazirmatn,Tahoma,sans-serif}
+body.forecast-page .forecast-v4 .chart-row text{font-family:Vazirmatn,Tahoma,sans-serif;unicode-bidi:isolate}
+body.forecast-page .forecast-v4 .chart-value{font-weight:700;font-size:18px}
+body.forecast-page .forecast-v4 .chart-value.temperature{font-size:22px}
+body.forecast-page .forecast-v4 .chart-value.small{font-size:14px;font-weight:400}
+body.forecast-page .forecast-v4 .chart-value.range{font-size:11px;font-weight:400}
+body.forecast-page .forecast-v4 .chart-caption{font-size:12px;fill:var(--secondary);font-weight:400;direction:rtl}
+body.forecast-page .forecast-v4 .chart-caption.unit{font-size:10px;direction:ltr}
+body.forecast-page .forecast-v4 .chart-caption.sub{font-size:9px}
+body.forecast-page .forecast-v4 .no-data{fill:var(--muted);font-size:16px;font-weight:400}
+body.forecast-page .forecast-v4 .specialist-trigger{position:absolute;right:12px;display:flex;align-items:center;gap:5px;min-height:40px;width:max-content;max-width:calc(100% - 24px);font-size:13px;color:var(--secondary);padding-right:2px;direction:rtl}
+body.forecast-page .forecast-v4 .specialist-trigger .icon{width:15px;height:15px}
+body.forecast-page .forecast-v4 .scroll-track{position:relative;height:6px;border-radius:99px;background:var(--border);direction:ltr;margin:9px 2px 2px;touch-action:none}
+body.forecast-page .forecast-v4 .scroll-thumb{position:absolute;top:0;height:6px;border-radius:99px;background:var(--accent);opacity:.65}
+body.forecast-page .forecast-v4 .route-day-row{display:flex;gap:8px;direction:rtl;overflow:auto;scrollbar-width:none;margin-bottom:14px}
+body.forecast-page .forecast-v4 .route-date{flex:0 0 90px;min-height:58px;padding:4px;border:1px solid var(--border);border-radius:10px;background:var(--panel);text-align:center}
+body.forecast-page .forecast-v4 .route-date strong{font-size:14px;display:block}
+body.forecast-page .forecast-v4 .route-date small{font-size:11px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .route-date.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--panel))}
+body.forecast-page .forecast-v4 .route-tools{display:flex;gap:24px;align-items:start;margin-bottom:18px}
+body.forecast-page .forecast-v4 .tool{position:relative;min-width:150px}
+body.forecast-page .forecast-v4 .tool label{display:block;font-size:12px;color:var(--secondary);margin-bottom:4px}
+body.forecast-page .forecast-v4 .input-button{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:152px;min-height:44px;padding:7px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel)}
+body.forecast-page .forecast-v4 .input-button .icon{width:15px;height:15px}
+body.forecast-page .forecast-v4 .tool-popover{position:absolute;top:74px;right:0;z-index:7;min-width:180px;border:1px solid var(--border);border-radius:10px;background:var(--solid);padding:6px;box-shadow:0 8px 28px #0001}
+body.forecast-page .forecast-v4 .tool-popover button{display:block;width:100%;min-height:40px;text-align:right;padding:5px 12px;border-radius:7px}
+body.forecast-page .forecast-v4 .tool-popover button[aria-selected=true],body.forecast-page .forecast-v4 .tool-popover button:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+body.forecast-page .forecast-v4 .speed-segmented{display:flex;width:230px;min-height:44px;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+body.forecast-page .forecast-v4 .speed-segmented button{flex:1;min-height:42px;font-size:14px;border:1px solid transparent;border-radius:9px}
+body.forecast-page .forecast-v4 .speed-segmented button[aria-pressed=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+body.forecast-page .forecast-v4 .point-headers{height:112px;position:relative;direction:ltr}
+body.forecast-page .forecast-v4 .point-header{position:absolute;top:7px;transform:translateX(-50%);width:108px;direction:rtl;text-align:center;line-height:1.4}
+body.forecast-page .forecast-v4 .point-header strong{font-size:15px}
+body.forecast-page .forecast-v4 .point-header small{display:block;font-size:11px;color:var(--secondary);margin-top:4px}
+body.forecast-page .forecast-v4 .point-header .weather{display:block;width:32px;height:32px;margin:7px auto 0}
+body.forecast-page .forecast-v4 .point-header .point-warning{width:14px;height:14px;color:var(--red);margin-left:3px}
+body.forecast-page .forecast-v4 .route-summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px 12px;margin:24px 0 16px}
+body.forecast-page .forecast-v4 .summary-item{display:flex;align-items:start;gap:9px;min-width:0}
+body.forecast-page .forecast-v4 .summary-item>.icon{width:23px;height:23px;margin-top:3px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .summary-item small{display:block;font-size:12px;color:var(--secondary);margin-bottom:3px}
+body.forecast-page .forecast-v4 .summary-item strong{font-size:18px;white-space:nowrap}
+body.forecast-page .forecast-v4 .elevations{display:flex;direction:rtl;unicode-bidi:isolate;gap:10px;font-size:16px;white-space:nowrap}
+body.forecast-page .forecast-v4 .elevations small{display:inline;font-size:11px;margin:0}
+body.forecast-page .forecast-v4 .gear-section{margin-top:18px}
+body.forecast-page .forecast-v4 .gear-trigger{display:flex;gap:7px;align-items:center;min-height:44px;font-size:15px;font-weight:700}
+body.forecast-page .forecast-v4 .gear-trigger .icon{width:16px;height:16px}
+body.forecast-page .forecast-v4 .gear-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 22px;margin:10px 0 14px}
+body.forecast-page .forecast-v4 .gear-item{display:flex;gap:10px;align-items:start}
+body.forecast-page .forecast-v4 .gear-item>.icon{width:28px;height:28px;color:var(--accent);margin-top:3px}
+body.forecast-page .forecast-v4 .gear-item strong{font-size:14px;display:block}
+body.forecast-page .forecast-v4 .gear-item small{font-size:11px;color:var(--secondary);display:block;margin-top:2px}
+body.forecast-page .forecast-v4 .share-row{margin-top:18px}
+body.forecast-page .forecast-v4 .primary-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:9px 20px;border-radius:10px;background:var(--accent);color:var(--solid);font-size:15px;font-weight:700}
+body.forecast-page .forecast-v4 .primary-button .icon{width:20px;height:20px}
+body.forecast-page .forecast-v4 .secondary-button{display:inline-flex;gap:6px;justify-content:center;align-items:center;min-height:44px;font-size:14px}
+body.forecast-page .forecast-v4 .secondary-button .icon{width:18px;height:18px}
+body.forecast-page .forecast-v4 button:disabled{cursor:default;opacity:.5}
+body.forecast-page .forecast-v4 .surface-status{padding:46px 28px;min-height:240px;text-align:center;color:var(--secondary)}
+body.forecast-page .forecast-v4 .surface-status>.icon{width:34px;height:34px;color:var(--accent);margin-bottom:12px}
+body.forecast-page .forecast-v4 .surface-status p{margin-bottom:14px}
+body.forecast-page .forecast-v4 .skeleton-lines{display:grid;gap:24px;margin:28px 0}
+body.forecast-page .forecast-v4 .skeleton-lines i{height:14px;width:100%;border-radius:99px;background:var(--border)}
+body.forecast-page .forecast-v4 .skeleton-lines i:nth-child(2){width:75%}
+body.forecast-page .forecast-v4 .modal-overlay{position:fixed;inset:0;background:rgba(2,15,28,.48);backdrop-filter:blur(5px);z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;direction:rtl}
+body.forecast-page .forecast-v4 .share-modal{width:min(700px,100%);border-radius:20px;border:1px solid var(--border);background:var(--solid);padding:22px;position:relative;max-height:94vh;overflow:auto}
+body.forecast-page .forecast-v4 .modal-heading{display:flex;align-items:center;justify-content:space-between;font-size:20px;margin-bottom:16px}
+body.forecast-page .forecast-v4 .close-button{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px}
+body.forecast-page .forecast-v4 .close-button .icon{width:20px;height:20px}
+body.forecast-page .forecast-v4 .preview-image{width:100%;height:auto;max-height:470px;object-fit:contain;display:block;border-radius:10px}
+body.forecast-page .forecast-v4 .preview-button{display:block;width:100%}
+body.forecast-page .forecast-v4 .preview-hint{font-size:12px;color:var(--secondary);text-align:center;margin:8px 0 18px}
+body.forecast-page .forecast-v4 .modal-actions{display:flex;gap:18px;align-items:center;justify-content:center}
+body.forecast-page .forecast-v4 .share-message{font-size:14px;color:var(--secondary);text-align:center;padding:9px}
+body.forecast-page .forecast-v4 .share-error{color:var(--red);font-size:14px;text-align:center;padding:12px}
+body.forecast-page .forecast-v4 .share-error button{display:block;margin:12px auto 0;color:var(--accent);min-height:40px}
+body.forecast-page .forecast-v4 .sheet-handle{display:none}
+body.forecast-page .forecast-v4 .dialog-open{overflow:hidden}
+body.forecast-page .forecast-v4 .full-image-overlay{position:fixed;inset:0;background:rgba(2,15,28,.9);z-index:30;padding:48px 16px;overflow:auto;direction:ltr}
+body.forecast-page .forecast-v4 .full-image-overlay img{display:block;max-width:none;min-width:100%;width:var(--natural-width,1536px)}
+body.forecast-page .forecast-v4 .full-image-overlay .close-button{position:fixed;top:8px;right:10px;color:white;z-index:31}
+body.forecast-page .forecast-v4 .export-shell{position:relative;padding:34px 38px;isolation:isolate;width:100%;background:var(--bg)}
+body.forecast-page .forecast-v4 .export-shell:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/share-backgrounds/light.webp') center/cover no-repeat}
+:root[data-theme=dark] body.forecast-page .forecast-v4 .export-shell:before{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/share-backgrounds/dark.webp')}
+body.forecast-page .forecast-v4 .export-heading{display:flex;align-items:start;justify-content:space-between;margin-bottom:20px}
+body.forecast-page .forecast-v4 .export-heading h1{font-size:34px;line-height:1.6}
+body.forecast-page .forecast-v4 .export-heading p{font-size:16px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .export-heading .brand{font-size:25px}
+body.forecast-page .forecast-v4 .export-heading .brand-symbol{width:38px;height:34px}
+body.forecast-page .forecast-v4 .export-shell .forecast-panel{padding:7px 20px 20px}
+body.forecast-page .forecast-v4 .export-shell .route-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 40px;margin:24px 0 0;padding:0 6px}
+body.forecast-page .forecast-v4 .export-shell .summary-item strong{font-size:21px}
+body.forecast-page .forecast-v4 .export-shell .summary-item small{font-size:13px}
+body.forecast-page .forecast-v4 .export-shell .point-headers{height:126px}
+body.forecast-page .forecast-v4 .export-shell .point-header strong{font-size:18px}
+body.forecast-page .forecast-v4 .export-shell .point-header small{font-size:13px}
+body.forecast-page .forecast-v4 .export-shell .chart-value{font-size:21px}
+body.forecast-page .forecast-v4 .export-shell .chart-value.temperature{font-size:26px}
+body.forecast-page .forecast-v4 .export-shell .chart-caption{font-size:14px}
+body.forecast-page .forecast-v4 .export-shell .chart-caption.unit{font-size:12px}
+body.forecast-page .forecast-v4 .export-shell .elevations{font-size:20px}
+body.forecast-page .forecast-v4 .telegram-shell{width:390px;min-height:844px;margin:auto;background:#e6edf0;color:#192736;font:14px/1.7 Vazirmatn,sans-serif;direction:ltr;position:relative}
+body.forecast-page .forecast-v4 .telegram-shell.dark{background:#17212b;color:#eef5fa}
+body.forecast-page .forecast-v4 .telegram-status{height:30px;padding:5px 18px;display:flex;justify-content:space-between;font-size:12px;background:#f8fcff}
+body.forecast-page .forecast-v4 .dark .telegram-status,body.forecast-page .forecast-v4 .dark .telegram-header,body.forecast-page .forecast-v4 .dark .telegram-composer{background:#242f3d}
+body.forecast-page .forecast-v4 .telegram-header{height:64px;display:flex;gap:12px;align-items:center;padding:10px 16px;background:#f8fcff;border-bottom:1px solid #99aab522}
+body.forecast-page .forecast-v4 .telegram-avatar{width:40px;height:40px;border-radius:50%;background:#007c8b;color:white;text-align:center;line-height:40px;font-weight:700}
+body.forecast-page .forecast-v4 .telegram-name{font-size:16px;font-weight:700}
+body.forecast-page .forecast-v4 .telegram-online{font-size:11px;color:#698295}
+body.forecast-page .forecast-v4 .telegram-date{width:max-content;text-align:center;margin:22px auto;border-radius:12px;background:#97aab955;color:white;padding:3px 10px;font-size:11px}
+body.forecast-page .forecast-v4 .telegram-bubble{width:354px;margin:0 10px 16px auto;padding:5px;border-radius:14px 14px 4px 14px;background:#fafffb;box-shadow:0 1px 3px #0001}
+body.forecast-page .forecast-v4 .dark .telegram-bubble{background:#2b5278}
+body.forecast-page .forecast-v4 .telegram-bubble img{display:block;width:100%;height:auto;border-radius:10px;object-fit:contain}
+body.forecast-page .forecast-v4 .telegram-caption{padding:9px 7px 4px;direction:rtl;line-height:1.9;font-size:13px}
+body.forecast-page .forecast-v4 .short-link{direction:ltr;display:block;color:#1683b3;unicode-bidi:isolate;font-size:13px;margin-top:2px}
+body.forecast-page .forecast-v4 .dark .short-link{color:#73d5f4}
+body.forecast-page .forecast-v4 .telegram-time{font-size:10px;text-align:right;color:#73927f;padding:0 7px 2px}
+body.forecast-page .forecast-v4 .dark .telegram-time{color:#a7c6e7}
+body.forecast-page .forecast-v4 .telegram-composer{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:11px 18px;background:#f8fcff;color:#7c92a6;font-size:13px}
+body.forecast-page .forecast-v4 .catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 20px}
+body.forecast-page .forecast-v4 .catalog-item{min-width:0}
+body.forecast-page .forecast-v4 .catalog-item .photo{display:block;width:100%;height:144px;object-fit:contain;background:var(--panel);border-radius:10px;margin-bottom:10px}
+body.forecast-page .forecast-v4 .catalog-item h3{display:flex;gap:8px;align-items:center;font-size:15px}
+body.forecast-page .forecast-v4 .catalog-item h3 .icon{width:22px;height:22px;color:var(--accent)}
+body.forecast-page .forecast-v4 .catalog-item p{font-size:11px;color:var(--secondary);margin-top:4px}
+body.forecast-page .forecast-v4 .catalog-item a{font-size:10px;color:var(--accent)}
+body.forecast-page .forecast-v4 .component-section{margin-bottom:32px}
+body.forecast-page .forecast-v4 .component-section h2{font-size:19px;margin-bottom:14px}
+body.forecast-page .forecast-v4 .component-panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;min-width:0}
+body.forecast-page .forecast-v4 .component-row{display:flex;gap:26px;flex-wrap:wrap;align-items:center}
+body.forecast-page .forecast-v4 .control-example{position:relative;width:180px;height:80px;text-align:center;padding-top:38px;font-size:13px;border-radius:10px;background:var(--panel)}
+body.forecast-page .forecast-v4 .control-example .day-button{top:4px}
+body.forecast-page .forecast-v4 .control-example small{display:block;font-size:11px;color:var(--secondary)}
+body.forecast-page .forecast-v4 .edge-chart{margin-bottom:30px}
+body.forecast-page .forecast-v4 .edge-chart h3{font-size:14px;margin-bottom:10px}
+body.forecast-page .forecast-v4 .state-grid,body.forecast-page .forecast-v4 .gear-scenarios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+body.forecast-page .forecast-v4 .state-grid .component-panel h3{font-size:15px}
+body.forecast-page .forecast-v4 .component-panel .surface-status{min-height:160px;padding:24px 10px}
+body.forecast-page .forecast-v4 .gear-scenarios .gear-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+body.forecast-page .forecast-v4 .gear-scenarios h3{font-size:17px;margin-bottom:10px}
+@media(min-width:768px) and (max-width:1279px){body.forecast-page .forecast-v4 .route-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 18px}}
+@media(max-width:767px){body.forecast-page .forecast-v4 body{font-size:14px}
+body.forecast-page .forecast-v4 .shell{width:calc(100% - 28px);padding:20px 0 30px}
+body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-light.webp');background-size:auto 1450px}
+:root[data-theme=dark] body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-dark.webp')}
+body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-light.webp')}
+:root[data-theme=dark] body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-dark.webp')}
+body.forecast-page .forecast-v4 .header{min-height:66px}
+body.forecast-page .forecast-v4 .brand{font-size:23px;gap:4px}
+body.forecast-page .forecast-v4 .brand-symbol{width:32px;height:33px}
+body.forecast-page .forecast-v4 .back{font-size:12px;min-height:32px;margin-top:2px}
+body.forecast-page .forecast-v4 .nav{gap:6px}
+body.forecast-page .forecast-v4 .nav-button{width:40px;height:40px;border-radius:9px}
+body.forecast-page .forecast-v4 .nav-button .icon{width:22px;height:22px}
+body.forecast-page .forecast-v4 .hero{padding:8px 0 18px;min-height:92px}
+body.forecast-page .forecast-v4 .hero h1{font-size:27px;line-height:1.65;letter-spacing:-.6px}
+body.forecast-page .forecast-v4 .hero p{font-size:13px}
+body.forecast-page .forecast-v4 body.route .hero p{font-size:11px;padding-left:114px}
+body.forecast-page .forecast-v4 .change-route{bottom:12px;font-size:12px;gap:4px}
+body.forecast-page .forecast-v4 .change-route .icon{width:20px;height:20px}
+body.forecast-page .forecast-v4 .change-route>.icon:last-child{width:13px}
+body.forecast-page .forecast-v4 .forecast-title{font-size:19px;margin-bottom:10px}
+body.forecast-page .forecast-v4 .destination-grid{display:flex;flex-direction:column;gap:26px}
+body.forecast-page .forecast-v4 .forecast,body.forecast-page .forecast-v4 .routes{width:100%}
+body.forecast-page .forecast-v4 .routes{padding-top:0}
+body.forecast-page .forecast-v4 .forecast-panel{padding:0 5px 9px}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label{font-size:10px;line-height:13px;column-gap:3px}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label-unit{font-size:9px}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label-sub{font-size:8px;line-height:11px}
+body.forecast-page:not(.route-page) #forecast-v4 .day-warning{right:calc(100% + 3px)}
+body.forecast-page .forecast-v4 .day-name{font-size:13px;top:28px}
+body.forecast-page .forecast-v4 .day-date{font-size:10px;top:49px}
+body.forecast-page .forecast-v4 .day-headers{height:75px}
+body.forecast-page .forecast-v4 .day-headers.has-expanded{height:91px}
+body.forecast-page .forecast-v4 .stamp{font-size:11px;top:75px}
+body.forecast-page .forecast-v4 .day-warning{width:12px;height:12px;margin-left:3px}
+body.forecast-page .forecast-v4 .weather-strip{height:45px}
+body.forecast-page .forecast-v4 .weather-slot>.icon:not(.point-warning){width:33px;height:33px}
+body.forecast-page .forecast-v4 .chart-value{font-size:14px}
+body.forecast-page .forecast-v4 .chart-value.temperature{font-size:18px}
+body.forecast-page .forecast-v4 .chart-value.small{font-size:12px}
+body.forecast-page .forecast-v4 .chart-value.range{font-size:10px}
+body.forecast-page .forecast-v4 .chart-caption{font-size:10px}
+body.forecast-page .forecast-v4 .chart-caption.unit{font-size:9px}
+body.forecast-page .forecast-v4 .chart-caption.sub{font-size:8px}
+body.forecast-page .forecast-v4 .specialist-trigger{right:8px;font-size:11px;min-height:37px}
+body.forecast-page .forecast-v4 .routes h2{font-size:20px;margin-bottom:8px}
+body.forecast-page .forecast-v4 .route-link{min-height:64px;padding:8px 0}
+body.forecast-page .forecast-v4 .route-icon{width:37px;height:37px}
+body.forecast-page .forecast-v4 .route-icon .icon{width:25px;height:25px}
+body.forecast-page .forecast-v4 .all-routes{font-size:14px;margin-top:5px}
+body.forecast-page .forecast-v4 .footer{font-size:10px;margin-top:22px}
+body.forecast-page .forecast-v4 .route-tools{gap:12px;margin-bottom:14px;flex-wrap:wrap}
+body.forecast-page .forecast-v4 .tool{flex:1;min-width:0}
+body.forecast-page .forecast-v4 .speed-tool{flex:1.2}
+body.forecast-page .forecast-v4 .tool label{font-size:11px}
+body.forecast-page .forecast-v4 .input-button{min-width:0;width:100%;padding:7px 10px;font-size:13px}
+body.forecast-page .forecast-v4 .tool-popover{top:71px;min-width:160px}
+body.forecast-page .forecast-v4 .speed-segmented{width:100%}
+body.forecast-page .forecast-v4 .speed-segmented button{font-size:12px}
+body.forecast-page .forecast-v4 .route-date{flex-basis:69px;min-height:54px}
+body.forecast-page .forecast-v4 .route-date strong{font-size:12px}
+body.forecast-page .forecast-v4 .route-date small{font-size:10px}
+body.forecast-page .forecast-v4 .route-day-row{gap:6px;margin-bottom:12px}
+body.forecast-page .forecast-v4 .point-headers{height:106px}
+body.forecast-page .forecast-v4 .point-header{width:72px;line-height:1.3}
+body.forecast-page .forecast-v4 .point-header strong{font-size:11px}
+body.forecast-page .forecast-v4 .point-header small{font-size:9px;margin-top:3px}
+body.forecast-page .forecast-v4 .point-header .weather{width:28px;height:28px;margin-top:6px}
+body.forecast-page .forecast-v4 .point-header .point-warning{width:11px;height:11px;margin-left:2px}
+body.forecast-page .forecast-v4 .route-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 18px;margin:22px 0 16px}
+body.forecast-page .forecast-v4 .summary-item{gap:8px}
+body.forecast-page .forecast-v4 .summary-item>.icon{width:21px;height:21px}
+body.forecast-page .forecast-v4 .summary-item small{font-size:11px;margin-bottom:1px}
+body.forecast-page .forecast-v4 .summary-item strong{font-size:15px}
+body.forecast-page .forecast-v4 .elevations{font-size:13px;gap:8px}
+body.forecast-page .forecast-v4 .elevations small{font-size:9px}
+body.forecast-page .forecast-v4 .gear-trigger{font-size:14px}
+body.forecast-page .forecast-v4 .gear-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;margin-top:8px}
+body.forecast-page .forecast-v4 .gear-item{gap:8px}
+body.forecast-page .forecast-v4 .gear-item>.icon{width:25px;height:25px}
+body.forecast-page .forecast-v4 .gear-item strong{font-size:12px}
+body.forecast-page .forecast-v4 .gear-item small{font-size:10px}
+body.forecast-page .forecast-v4 .share-row{margin-top:16px}
+body.forecast-page .forecast-v4 .primary-button{font-size:14px;padding:9px 18px}
+body.forecast-page .forecast-v4 .modal-overlay{align-items:flex-end;padding:0}
+body.forecast-page .forecast-v4 .share-modal{border-radius:20px 20px 0 0;width:100%;padding:12px 18px 26px;max-height:86dvh}
+body.forecast-page .forecast-v4 .sheet-handle{display:block;width:40px;height:4px;border-radius:4px;margin:0 auto 13px;background:var(--secondary);opacity:.35}
+body.forecast-page .forecast-v4 .modal-heading{font-size:17px;margin-bottom:12px}
+body.forecast-page .forecast-v4 .preview-image{max-height:360px}
+body.forecast-page .forecast-v4 .preview-hint{font-size:11px;margin-bottom:16px}
+body.forecast-page .forecast-v4 .modal-actions{gap:20px}
+body.forecast-page .forecast-v4 .secondary-button{font-size:12px}
+body.forecast-page .forecast-v4 .share-message,body.forecast-page .forecast-v4 .share-error{font-size:13px}
+body.forecast-page .forecast-v4 .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+body.forecast-page .forecast-v4 .catalog-item .photo{height:120px}
+body.forecast-page .forecast-v4 .catalog-item h3{font-size:12px}
+body.forecast-page .forecast-v4 .catalog-item p{font-size:10px}
+body.forecast-page .forecast-v4 .catalog-item a{font-size:9px}
+body.forecast-page .forecast-v4 .component-row{gap:16px}
+body.forecast-page .forecast-v4 .control-example{width:calc(50% - 8px);font-size:12px}
+body.forecast-page .forecast-v4 .component-panel{padding:14px}
+body.forecast-page .forecast-v4 .component-section h2{font-size:17px}
+body.forecast-page .forecast-v4 .state-grid,body.forecast-page .forecast-v4 .gear-scenarios{grid-template-columns:1fr}
+body.forecast-page .forecast-v4 .gear-scenarios h3{font-size:16px}}
+@media(prefers-reduced-motion:reduce){body.forecast-page .forecast-v4 *{scroll-behavior:auto!important}}
+
+.forecast-v4{--panel:rgba(247,253,254,.66);--solid:#f0f7f8;--cool:#168bd8;--warm:#dc741d;--wind:#079bb6;--muted:#63718d;--route-accent:var(--accent);--ascent:#1a7b59;--descent:var(--red);font-family:Vazirmatn,Tahoma,sans-serif}
+:root:not([data-theme=dark]) .forecast-v4{--route-accent:color-mix(in srgb,var(--accent) 90%,black)}
+:root[data-theme=dark] .forecast-v4{--panel:rgba(2,33,49,.64);--solid:#123444;--cool:#7dccff;--warm:#ffb469;--wind:#32e0e0;--muted:#a2acc0;--ascent:#65dca5}
+body.forecast-page .forecast-v4 .elevation-values{display:inline-flex;direction:rtl;unicode-bidi:isolate;gap:8px;white-space:nowrap}
+body.forecast-page .forecast-v4 .elevation-values>span,body.forecast-page .forecast-v4 .elevations>span{direction:ltr;unicode-bidi:isolate}
+body.forecast-page .forecast-v4 .elevation-ascent{color:var(--ascent)}
+body.forecast-page .forecast-v4 .elevation-descent{color:var(--descent)}
+body.forecast-page .forecast-v4 .hero{display:block;margin:0;gap:0;align-items:unset}
+body.forecast-page .forecast-v4 .change-route{background:none;border:0;padding:0;margin:0;font-weight:400;border-radius:0}
+body.forecast-page .forecast-v4 .all-routes{border:0;background:none;width:max-content;padding:0;border-radius:0;font-weight:400}
+body.forecast-page .forecast-v4 .routes h2{white-space:normal}
+body.forecast-page .forecast-v4 .brand{width:104px;display:block}
+body.forecast-page .forecast-v4 .brand svg{width:100%;height:56px}
+body.forecast-page .forecast-v4 .point-header a{display:block;min-height:23px}
+body.forecast-page .forecast-v4 .point-header strong{white-space:nowrap;font-weight:700}
+body.forecast-page .forecast-v4 .point-header a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body.forecast-page .forecast-v4 .day-date{font-size:12px}
+body.forecast-page .forecast-v4 .summary-item small{white-space:nowrap}
+body.forecast-page .shell{padding-top:30px;padding-bottom:48px}
+body.forecast-page .global-header{margin-bottom:0}
+body.forecast-page .back-row{margin:0}
+body.forecast-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/desktop-light.webp');background-size:auto 1200px;background-position:center top}
+:root[data-theme=dark] body.forecast-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/desktop-dark.webp')}
+body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/route-desktop-light.webp')}
+:root[data-theme=dark] body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+body.forecast-page .forecast-v4 .preview-image{width:100%;max-height:470px;object-fit:contain}
+.v4-render-host{position:fixed;left:-10000px;top:0;pointer-events:none;direction:rtl}
+.forecast-v4 .icon{width:24px;height:24px;display:inline-block;vertical-align:middle;flex:none;overflow:visible}
+.forecast-v4 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+body.forecast-page .forecast-v4 .forecast-title{font-weight:700}
+body.forecast-page .forecast-v4 .v4-no-routes{grid-template-columns:minmax(0,1fr)}
+body.forecast-page .forecast-v4 .v4-date-scroll{direction:ltr;overflow:auto hidden;scrollbar-width:none}
+body.forecast-page .forecast-v4 .v4-date-scroll::-webkit-scrollbar{display:none}
+body.forecast-page .forecast-v4 .route-day-row{width:max-content;min-width:100%;margin-bottom:0;overflow:visible}
+body.forecast-page .forecast-v4 .v4-date-track{margin-bottom:14px}
+body.forecast-page .forecast-v4 .v4-date-track .scroll-track{margin-top:5px}
+body.forecast-page .forecast-v4 .tool-popover{max-height:270px;overflow-y:auto}
+body.forecast-page.route-page .forecast-v4 .hero>p{padding-left:130px}
+body.forecast-page .forecast-v4 .destination-grid~p{padding-left:0}
+body.forecast-page .forecast-v4 .point-header a{color:var(--ink);font-size:inherit}
+body.forecast-page .forecast-v4 .summary-item strong{font-size:17px}
+body.forecast-page .forecast-v4 .summary-item strong>small{display:block;font-size:11px}
+body.forecast-page .forecast-v4 .export-shell .summary-item strong{font-size:21px}
+body.forecast-page .forecast-v4 .modal-heading h2{font-size:inherit}
+body.forecast-page .forecast-v4 .v4-short-link{display:block;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;color:var(--accent);font-size:12px;margin-top:4px}
+body.forecast-page .forecast-v4 .specialist-trigger{white-space:nowrap}
+body.forecast-page .forecast-v4 .export-shell{min-height:0}
+body.forecast-page .forecast-v4 .export-shell .point-header strong{font-size:16px}
+body.forecast-page .forecast-v4 .export-shell .route-summary{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.forecast-page .forecast-v4 .modal-overlay .primary-button{display:inline-flex;min-height:44px}
+body.forecast-page .forecast-v4 .share-message{min-height:64px}
+body.forecast-page .forecast-v4 .full-image-overlay{overscroll-behavior:contain}
+body.forecast-page .forecast-v4 .timeline-scroll{touch-action:pan-x pan-y;overscroll-behavior-x:contain;cursor:grab}
+body.forecast-page .forecast-v4 .timeline-scroll.dragging{cursor:grabbing;user-select:none}
+@media(max-width:767px){body.forecast-page .shell{padding-top:20px;padding-bottom:30px}body.forecast-page .forecast-v4 .day-date{font-size:10px}body.forecast-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/mobile-light.webp');background-size:auto 1450px}:root[data-theme=dark] body.forecast-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/mobile-dark.webp')}body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/route-mobile-light.webp')}:root[data-theme=dark] body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/route-mobile-dark.webp')}body.forecast-page .forecast-v4 .preview-image{max-height:360px}body.forecast-page .forecast-v4 .summary-item small{font-size:11px}}
+
+/* The eight date cards define the route's main column. Only its timeline overflows. */
+body.forecast-page.route-page #forecast-v4{
+ --route-day-width:90px;
+ --route-day-gap:8px;
+ --route-main-width:calc(8 * var(--route-day-width) + 7 * var(--route-day-gap));
+ width:min(100%,var(--route-main-width));
+ max-width:100%;
+ margin-inline-start:0;
+ margin-inline-end:auto;
+}
+body.forecast-page.route-page #forecast-v4 .route-day-row{gap:var(--route-day-gap)}
+body.forecast-page.route-page #forecast-v4 .route-date{flex-basis:var(--route-day-width)}
+body.forecast-page.route-page #forecast-v4 .forecast{width:100%;min-width:0}
+body.forecast-page.route-page #forecast-v4 .hero>p{padding-left:0}
+body.forecast-page.route-page #forecast-v4 .v4-route-side{min-width:0;margin-top:18px}
+body.forecast-page.route-page #forecast-v4 .change-route{
+ position:static;
+ width:max-content;
+ color:var(--ink);
+ font-size:16px;
+ font-weight:700;
+ min-height:44px;
+ padding:0;
+ margin:0 0 8px;
+ border:0;
+ border-radius:0;
+ background:none;
+ text-decoration:none;
+ backdrop-filter:none;
+}
+body.forecast-page.route-page #forecast-v4 .v4-mobile-change-route,
+body.forecast-page.route-page #forecast-v4 .v4-mobile-forecast-title{display:none}
+/* Keep the plain action consistent across themes; strengthen the light-theme control labels. */
+:root:not([data-theme=dark]) body.forecast-page.route-page #forecast-v4 .tool label{
+ color:var(--ink);
+ font-weight:700;
+}
+body.forecast-page.route-page #forecast-v4 .v4-route-support{
+ position:relative;
+ isolation:isolate;
+ padding:14px;
+ margin-top:0;
+}
+body.forecast-page.route-page #forecast-v4 .v4-route-support:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ background:var(--panel);
+ border-radius:14px;
+ backdrop-filter:blur(10px);
+ -webkit-backdrop-filter:blur(10px);
+}
+body.forecast-page.route-page #forecast-v4 .route-summary{
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:22px 18px;
+ margin:12px 0 16px;
+}
+body.forecast-page.route-page #forecast-v4 .summary-item>div{min-width:0}
+body.forecast-page.route-page #forecast-v4 .summary-item small{font-size:14px;color:var(--ink);white-space:normal}
+body.forecast-page.route-page #forecast-v4 .summary-item strong{display:block;font-size:18px;line-height:1.65;white-space:normal}
+body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:14px;white-space:nowrap}
+body.forecast-page.route-page #forecast-v4 .summary-item>.icon{color:var(--ink)}
+body.forecast-page.route-page #forecast-v4 .gear-item small{font-size:12px;color:var(--ink)}
+body.forecast-page.route-page #forecast-v4 .gear-trigger{color:var(--ink)}
+body.forecast-page.route-page #forecast-v4 .share-row .primary-button{
+ background:var(--accent-soft);
+ border:1px solid var(--accent);
+ color:var(--accent);
+ font-size:16px;
+ font-weight:700;
+ backdrop-filter:blur(6px);
+}
+body.forecast-page.route-page #forecast-v4 .share-row .primary-button:hover{background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
+/* The sidebar starts alongside the forecast controls to use the space above the chart.
+   These rules are page-only: exported images keep their summary below the chart. */
+body.forecast-page.route-page #forecast-v4 .v4-route-main{min-width:0}
+body.forecast-page.route-page #forecast-v4 .v4-route-support-title{display:none}
+@media(min-width:768px){
+ body.forecast-page.route-page .shell{padding-top:24px}
+ body.forecast-page.route-page #forecast-v4 .hero{padding-top:10px;padding-bottom:16px;min-height:0}
+ body.forecast-page.route-page #forecast-v4 .route-date strong{font-size:16px}
+ body.forecast-page.route-page #forecast-v4 .route-date small{font-size:13px}
+ body.forecast-page.route-page #forecast-v4 .tool label{font-size:14px}
+ body.forecast-page.route-page #forecast-v4 .point-headers{height:124px}
+ body.forecast-page.route-page #forecast-v4 .point-header strong{font-size:17px}
+ body.forecast-page.route-page #forecast-v4 .point-header small{font-size:13px}
+ body.forecast-page.route-page #forecast-v4 .chart-caption{font-size:14px}
+ body.forecast-page.route-page #forecast-v4 .chart-caption.unit{font-size:11px}
+}
+@media(min-width:1280px){
+ /* Align the theme button with the summary's left edge; keep the brand on the right. */
+ body.forecast-page.route-page .global-header{width:min(100%,1160px);margin-inline-start:0;margin-inline-end:auto}
+ body.forecast-page.route-page #forecast-v4{width:min(100%,calc(var(--route-main-width) + 24px + 360px))}
+ body.forecast-page.route-page #forecast-v4 .hero,
+ body.forecast-page.route-page #forecast-v4 .v4-route-controls{width:var(--route-main-width);max-width:100%}
+ body.forecast-page.route-page #forecast-v4 .v4-route-layout{
+  display:grid;
+  direction:rtl;
+  grid-template-columns:var(--route-main-width) minmax(0,1fr);
+  column-gap:24px;
+  align-items:start;
+ }
+ body.forecast-page.route-page #forecast-v4 .v4-route-side{margin-top:0}
+ body.forecast-page.route-page #forecast-v4 .v4-route-support-title{display:block;font-size:20px;font-weight:700;line-height:1.7;margin:0 0 16px}
+ body.forecast-page.route-page #forecast-v4 .route-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px;margin:0 0 22px}
+ body.forecast-page.route-page #forecast-v4 .summary-item{gap:8px}
+ body.forecast-page.route-page #forecast-v4 .summary-item>.icon{width:20px;height:20px}
+ body.forecast-page.route-page #forecast-v4 .summary-item>div{min-width:0}
+ body.forecast-page.route-page #forecast-v4 .summary-item strong{white-space:normal}
+ body.forecast-page.route-page #forecast-v4 .elevations{font-size:16px;gap:8px}
+ body.forecast-page.route-page #forecast-v4 .elevations small{font-size:10px}
+ body.forecast-page.route-page #forecast-v4 .gear-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px}
+ body.forecast-page.route-page #forecast-v4 .gear-item>div{min-width:0}
+}
+@media(max-width:767px){
+ body.forecast-page.route-page #forecast-v4{--route-day-width:69px;--route-day-gap:6px;width:100%}
+ body.forecast-page.route-page #forecast-v4 .change-route{font-size:12px;gap:4px}
+ body.forecast-page.route-page #forecast-v4 .hero{display:grid;grid-template-columns:minmax(0,1fr) max-content;column-gap:8px;align-items:center;min-height:0;padding-bottom:10px}
+ body.forecast-page.route-page #forecast-v4 .hero h1{grid-column:1;grid-row:1;min-width:0}
+ body.forecast-page.route-page #forecast-v4 .hero>p{grid-column:1;grid-row:2;align-self:baseline;min-width:0;white-space:nowrap}
+ body.forecast-page.route-page #forecast-v4 .v4-mobile-change-route{display:flex;grid-column:2;grid-row:1;margin:0}
+ body.forecast-page.route-page #forecast-v4 .v4-mobile-forecast-title{display:block;grid-column:2;grid-row:2;align-self:baseline;margin:0;white-space:nowrap}
+ body.forecast-page.route-page #forecast-v4 .v4-route-heading{display:none}
+ body.forecast-page.route-page #forecast-v4 .v4-desktop-change-route{display:none}
+ body.forecast-page.route-page #forecast-v4 .v4-route-support-title{display:block;font-size:17px;font-weight:700;line-height:1.7;margin:0 0 14px}
+ body.forecast-page.route-page #forecast-v4 .route-date strong{font-size:13px}
+ body.forecast-page.route-page #forecast-v4 .route-date small{font-size:11px}
+ body.forecast-page.route-page #forecast-v4 .point-headers{height:116px}
+ body.forecast-page.route-page #forecast-v4 .point-header strong{font-size:12px}
+ body.forecast-page.route-page #forecast-v4 .point-header small{font-size:11px}
+ body.forecast-page.route-page #forecast-v4 .chart-caption{font-size:12px}
+ body.forecast-page.route-page #forecast-v4 .chart-caption.unit{font-size:10px}
+ body.forecast-page.route-page #forecast-v4 .route-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+ body.forecast-page.route-page #forecast-v4 .summary-item small{font-size:13px}
+ body.forecast-page.route-page #forecast-v4 .summary-item strong{font-size:16px}
+ body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:clamp(11px,calc(5vw - 5px),14px)}
+ body.forecast-page.route-page #forecast-v4 .gear-item small{font-size:11px}
+}
+@media(max-width:359px){
+ body.forecast-page.route-page #forecast-v4 .hero>p{font-size:12px}
+}
+/* Destination mobile: forecast title shares the elevation row. */
+body.forecast-page:not(.route-page) #forecast-v4 .v4-mobile-forecast-title{display:none}
+@media(max-width:767px){
+ body.forecast-page:not(.route-page) #forecast-v4 .hero{display:grid;grid-template-columns:minmax(0,1fr) max-content;column-gap:8px;align-items:baseline;min-height:0;padding-bottom:10px}
+ body.forecast-page:not(.route-page) #forecast-v4 .hero h1{grid-column:1 / -1;grid-row:1;min-width:0}
+ body.forecast-page:not(.route-page) #forecast-v4 .hero>p{grid-column:1;grid-row:2;min-width:0}
+ body.forecast-page:not(.route-page) #forecast-v4 .v4-mobile-forecast-title{display:block;grid-column:2;grid-row:2;margin:0;white-space:nowrap}
+ body.forecast-page:not(.route-page) #forecast-v4 .v4-desktop-forecast-title{display:none}
+}

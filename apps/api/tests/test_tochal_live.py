@@ -213,7 +213,7 @@ def test_open_meteo_batching_and_elevation_partition():
     assert len(provider.split_batches(with_e)) == 2
     url_with = provider.build_url(with_e[:2], include_elevation=True)
     assert "elevation=" in url_with
-    assert "forecast_days=7" in url_with
+    assert "forecast_days=10" in url_with
     assert "past_days=0" in url_with
     assert "rain" in url_with
     assert "freezing_level_height" in url_with
@@ -257,13 +257,13 @@ def test_wind_warning_does_not_replace_sky_condition():
         "mainly-clear",
         "عمدتاً صاف",
         "☼",
-        "change",
+        "normal",
     )
     assert map_weather_code(61, hour=14, wind_kmh=26, gust_kmh=51) == (
         "rain",
         "باران",
         "☂",
-        "change",
+        "normal",
     )
     assert map_weather_code(0, hour=20, wind_kmh=31, gust_kmh=50) == (
         "clear-night",

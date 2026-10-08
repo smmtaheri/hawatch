@@ -26,16 +26,16 @@ HOURLY_VARIABLES = [
     "freezing_level_height",
     "weather_code",
     "visibility",
+    "uv_index",
     "wind_speed_10m",
     "wind_direction_10m",
     "wind_gusts_10m",
 ]
 
 DEFAULT_BATCH_SIZE = 100
-DEFAULT_FORECAST_DAYS = 7
-# Keep the previous local day in the database from the preceding ingest, but
-# do not ask Open-Meteo to fetch it again.  ``forecast_days=7`` then covers
-# today through six days ahead.
+DEFAULT_FORECAST_DAYS = 10
+# Ten days cover the eight selectable starts plus normal route arrival tails.
+# Retained prior ingestion records supply historical hazard context.
 DEFAULT_PAST_DAYS = 0
 DEFAULT_TIMEZONE = "Asia/Tehran"
 DEFAULT_MODELS = "best_match"

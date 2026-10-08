@@ -1,3 +1,5 @@
+import {cpSync,mkdirSync} from "node:fs";
+import {resolve} from "node:path";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
@@ -6,10 +8,17 @@ const apiProxy = {
   changeOrigin: true,
 };
 
-export default defineConfig({
+const assetVersion=process.env.VITE_ASSET_VERSION||"local";
+export default defineConfig(({command})=>{
+const assetPrefix=command==="build"?`/static-assets/${assetVersion}`:"";
+return {
+  base: `${assetPrefix}/`,
   cacheDir: "../../.tmp/vite-cache",
   envDir: "../../",
-  plugins: [react(), {
+  plugins: [{name:"version-public-assets",
+    transform(code,id){if(id.includes("/src/")&&/\.[jt]sx?$/.test(id))return code.replace(/(["'`])\/new-design\//g,(_m,quote)=>`${quote}${assetPrefix}/new-design/`);},
+    closeBundle(){const target=resolve("dist",`static-assets/${assetVersion}`);mkdirSync(target,{recursive:true});cpSync(resolve("public"),target,{recursive:true});cpSync(resolve("dist/assets"),resolve(target,"assets"),{recursive:true});}
+  },react(), {
     name: "qa-noindex",
     transformIndexHtml(html) {
       return process.env.VITE_QA_PREVIEW === "true"
@@ -47,4 +56,5 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     css: true,
   },
+};
 });

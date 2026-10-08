@@ -1,7 +1,4 @@
-"""Isolated stage runtime against the existing production database.
-
-Compose bypasses entrypoint.sh: no migrations, seed, collectstatic or ingest.
-"""
+"""Independent staging runtime. Never connect this settings module to production."""
 from .production import *  # noqa: F403
 
 HAWATCH_NEW_DESIGN = True
@@ -17,3 +14,6 @@ SESSION_COOKIE_SECURE = STAGE_ORIGIN.startswith("https://")
 CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
 CSRF_TRUSTED_ORIGINS = [STAGE_ORIGIN]
 MIDDLEWARE = ["hawatch.common.qa_preview.NoIndexMiddleware", *MIDDLEWARE]  # noqa: F405
+
+if DATABASES["default"]["NAME"] != "hawatch_stage" or DATABASES["default"]["HOST"] != "stage-postgres":
+    raise RuntimeError("Stage requires its isolated stage-postgres/hawatch_stage database")

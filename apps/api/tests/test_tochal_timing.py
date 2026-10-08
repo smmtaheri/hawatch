@@ -424,6 +424,9 @@ def test_critical_route_point_does_not_rewrite_target_hourly(api_client, tochal_
         shirpala, day=day, hours=[12, 14], temperature_base=8, severity="critical", data_mode="live", provider="open-meteo"
     )
 
+    # Warning policy derives severity from measurements, not the stored legacy flag.
+    ForecastRecord.objects.filter(weather_point=shirpala).update(wind_speed_kmh=85, wind_gust_kmh=110)
+
     body = api_client.get(
         "/api/v1/routes/tochal-darband/forecast/",
         {"date": "2026-08-28", "period": "afternoon", "start_time": "12:00", "speed": "متوسط"},

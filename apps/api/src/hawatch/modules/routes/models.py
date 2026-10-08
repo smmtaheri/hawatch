@@ -17,6 +17,8 @@ class Route(models.Model):
     region = models.CharField(max_length=64)
     distance_km = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
     ascent_m = models.PositiveIntegerField(null=True, blank=True)
+    descent_m = models.PositiveIntegerField(null=True, blank=True)
+    descent_evidence = models.JSONField(default=dict, blank=True)
     round_trip_minutes = models.PositiveIntegerField(null=True, blank=True)
     # One-way ascent duration at medium pace; do not store ascent time in round_trip_minutes.
     one_way_minutes = models.PositiveIntegerField(
@@ -162,3 +164,13 @@ class RoutePoint(models.Model):
         if self.weather_point_id:
             return self.weather_point.elevation_m
         return self.elevation_m
+
+
+class SharedRoutePlan(models.Model):
+    code = models.CharField(max_length=16, unique=True)
+    route = models.ForeignKey(Route, on_delete=models.CASCADE)
+    date = models.DateField()
+    start_hour = models.PositiveSmallIntegerField()
+    speed = models.CharField(max_length=8)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField(db_index=True)

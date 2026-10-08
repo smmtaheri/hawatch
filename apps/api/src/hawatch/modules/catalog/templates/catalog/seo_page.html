@@ -18,12 +18,12 @@
     <meta name="twitter:image" content="https://hawatch.ir/brand/v2/social-share-1200x630.png" />
     <meta name="twitter:image:alt" content="نشان هواچ" />
     {% if page.structured_data %}<script type="application/ld+json">{{ page.structured_data|safe }}</script>{% endif %}
-    {% if new_design %}<link rel="preload" href="/new-design/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin />{% else %}<link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />{% endif %}
-    <link rel="icon" href="/favicon.png" sizes="96x96" type="image/png" />
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 96x96 256x256" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-    <link rel="manifest" href="/brand/v2/site.webmanifest" />
-    <link rel="stylesheet" href="/assets/hawatch.css" />
+    {% if new_design %}<link rel="preload" href="{{ asset_prefix }}/new-design/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin />{% else %}<link rel="preload" href="/fonts/estedad-variable.woff2" as="font" type="font/woff2" crossorigin />{% endif %}
+    <link rel="icon" href="{{ asset_prefix }}/favicon.png" sizes="96x96" type="image/png" />
+    <link rel="icon" href="{{ asset_prefix }}/favicon.ico" sizes="16x16 32x32 48x48 96x96 256x256" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{ asset_prefix }}/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="{{ asset_prefix }}/brand/v2/site.webmanifest" />
+    <link rel="stylesheet" href="{{ asset_prefix }}/assets/hawatch.css" />
     <script>
       try {
         document.documentElement.dataset.theme = localStorage.getItem("hawatch-theme") || "dark";
@@ -37,8 +37,8 @@
       <main class="seo-shell" data-seo-initial="true">
         <header>
           <a class="seo-brand" href="/" aria-label="صفحهٔ اصلی هواچ">
-            <img class="seo-brand-logo seo-brand-logo--dark-surface" src="/brand/v2/logo-dark.svg" alt="لوگوی هواچ" />
-            <img class="seo-brand-logo seo-brand-logo--light-surface" src="/brand/v2/logo-light.svg" alt="" />
+            <img class="seo-brand-logo seo-brand-logo--dark-surface" src="{{ asset_prefix }}/brand/v2/logo-dark.svg" alt="لوگوی هواچ" />
+            <img class="seo-brand-logo seo-brand-logo--light-surface" src="{{ asset_prefix }}/brand/v2/logo-light.svg" alt="" />
           </a>
         </header>
         {% if page.kind == "home" or page.kind == "destinations" %}
@@ -176,6 +176,6 @@
       </main>
       <footer class="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">دادهٔ هواشناسی: Open-Meteo</footer>
     </div>
-    <script type="module" src="/assets/hawatch.js"></script>
+    <script type="module" src="{{ asset_prefix }}/assets/hawatch.js"></script>
   </body>
 </html>

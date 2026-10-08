@@ -12,15 +12,14 @@ def test_stage_stack_isolated_from_production_services_and_uses_live_database():
     services_section = compose.split("services:\n", 1)[1].split("\nnetworks:\n", 1)[0]
     services = re.findall(r"^  ([a-z][a-z0-9-]*):\s*$", services_section, re.MULTILINE)
 
-    assert services == ["stage-api", "stage-web", "stage-gateway"]
-    assert "env_file:\n      - ${HAWATCH_PRODUCTION_ENV_FILE:?Set absolute production .env path}" in compose
-    assert "POSTGRES_HOST: ${HAWATCH_PRODUCTION_DB_HOST:-postgres}" in compose
+    assert set(services) == {"stage-api","stage-web","stage-gateway","stage-postgres","stage-redis","stage-scheduler"}
+    assert "HAWATCH_PRODUCTION_ENV_FILE" not in compose
+    assert "POSTGRES_HOST: stage-postgres" in compose
+    assert "POSTGRES_DB: hawatch_stage" in compose
     assert 'DEMO_DATA_ENABLED: "false"' in compose
     assert 'HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: "false"' in compose
-    assert "external: true" in compose
-    assert "postgres:" not in services_section
-    assert "ingest-scheduler:" not in services_section
-    assert "maintenance:" not in services_section
+    assert "external: true" not in compose
+    assert "128mb" in compose
 
 
 def test_stage_deploy_waits_for_real_forecast_through_the_public_gateway():
@@ -59,8 +58,26 @@ def test_stage_only_wrapper_never_runs_the_production_deploy_script():
 
     assert "scripts/deploy.sh" not in wrapper
     assert 'git -C "$LOCAL_DIR" push origin stage' in wrapper
-    for html in (template, index):
+    for html in (template.replace("{{ asset_prefix }}", ""), index):
         assert 'href="/favicon.png" sizes="96x96" type="image/png"' in html
         assert 'href="/favicon.ico"' in html
         assert 'href="/apple-touch-icon.png" sizes="180x180"' in html
         assert '/brand/v2/favicon' not in html
+
+
+def test_stage_env_upgrade_creates_independent_secrets_and_is_idempotent(tmp_path):
+    import os
+    import subprocess
+    root=_repository_root()
+    env_path=tmp_path/'stage.env'
+    # A prior staging file may have contained production credentials. Never retain them.
+    env_path.write_text('POSTGRES_HOST=postgres\nPOSTGRES_DB=hawatch\nPOSTGRES_PASSWORD=old-production-password\nDJANGO_SECRET_KEY=old-production-secret\nHAWATCH_PRODUCTION_ENV_FILE=/root/hawatch/.env\nHAWATCH_STAGE_ENABLED=0\n')
+    process_env={**os.environ,'SSH_CONNECTION':'127.0.0.1 12345 203.0.113.1 22'}
+    command=['python3',str(root/'scripts/prepare-stage-env.py'),str(env_path)]
+    subprocess.run(command,check=True,env=process_env)
+    first=env_path.read_text()
+    assert 'old-production' not in first and 'HAWATCH_PRODUCTION_ENV_FILE' not in first
+    assert 'POSTGRES_HOST=stage-postgres' in first and 'POSTGRES_DB=hawatch_stage' in first
+    assert 'http://203.0.113.1:5050' in first and env_path.stat().st_mode&0o777==0o600
+    subprocess.run(command,check=True,env=process_env)
+    assert first==env_path.read_text()

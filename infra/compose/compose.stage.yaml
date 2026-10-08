@@ -1,7 +1,6 @@
 name: hawatch-stage
 
-# Three staging services only. The external network reaches the existing PostGIS.
-# No database container, scheduler, maintenance, seed or migration entrypoint.
+# Independent staging database and cache. No production credentials or network.
 services:
   stage-api:
     image: hawatch-stage-api:${HAWATCH_STAGE_IMAGE_TAG:-latest}
@@ -9,23 +8,31 @@ services:
       context: ../../apps/api
       dockerfile: Dockerfile
     env_file:
-      - ${HAWATCH_PRODUCTION_ENV_FILE:?Set absolute production .env path}
+      - ${HAWATCH_STAGE_ENV_FILE:?Set absolute stage env path}
     environment:
       DJANGO_SETTINGS_MODULE: hawatch.config.settings.qa
       DJANGO_ALLOWED_HOSTS: ${HAWATCH_STAGE_ALLOWED_HOSTS:?Set stage IP/domain},stage-api,localhost,127.0.0.1
+      HAWATCH_ASSET_VERSION: ${HAWATCH_STAGE_IMAGE_TAG:-local}
       HAWATCH_STAGE_ORIGIN: ${HAWATCH_STAGE_ORIGIN:?Set public stage origin}
       HAWATCH_PUBLIC_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
-      POSTGRES_HOST: ${HAWATCH_PRODUCTION_DB_HOST:-postgres}
+      POSTGRES_HOST: stage-postgres
       POSTGRES_PORT: "5432"
+      POSTGRES_DB: hawatch_stage
+      POSTGRES_USER: hawatch_stage
+      REDIS_URL: redis://stage-redis:6379/0
+      OPEN_METEO_FORECAST_DAYS: "10"
       DEMO_DATA_ENABLED: "false"
       HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: "false"
       HAWATCH_SERVICE_NAME: hawatch-stage-api
       HAWATCH_ENVIRONMENT: stage
       HAWATCH_LOG_FILE: /var/log/hawatch/stage-api.jsonl
       METRICS_REQUIRE_AUTH: "true"
+    depends_on:
+      stage-postgres: {condition: service_healthy}
+      stage-redis: {condition: service_healthy}
     entrypoint: ["gunicorn"]
     command: ["hawatch.config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1", "--threads", "2", "--timeout", "60", "--access-logfile", "-"]
-    networks: [stage, production-db]
+    networks: [stage]
     volumes: ["stage-logs:/var/log/hawatch"]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/ready/', timeout=3)"]
@@ -42,6 +49,7 @@ services:
       context: ../..
       dockerfile: apps/web/Dockerfile
       args:
+        VITE_ASSET_VERSION: ${HAWATCH_STAGE_IMAGE_TAG:-local}
         VITE_API_BASE_URL: /api/v1
         VITE_QA_PREVIEW: "true"
         VITE_PUBLIC_SITE_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
@@ -68,10 +76,48 @@ services:
       retries: 12
     logging: *stage-logging
     restart: unless-stopped
+  stage-postgres:
+    image: postgis/postgis:16-3.5
+    environment:
+      POSTGRES_DB: hawatch_stage
+      POSTGRES_USER: hawatch_stage
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set independent stage database password}
+    volumes: ["stage-db:/var/lib/postgresql/data"]
+    networks: [stage]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hawatch_stage -d hawatch_stage"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  stage-redis:
+    image: redis:7.4.2
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru", "--save", "", "--appendonly", "no"]
+    networks: [stage]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  stage-scheduler:
+    image: hawatch-stage-api:${HAWATCH_STAGE_IMAGE_TAG:-latest}
+    env_file: ["${HAWATCH_STAGE_ENV_FILE:?Set absolute stage env path}"]
+    environment:
+      DJANGO_SETTINGS_MODULE: hawatch.config.settings.qa
+      POSTGRES_HOST: stage-postgres
+      POSTGRES_DB: hawatch_stage
+      POSTGRES_USER: hawatch_stage
+      REDIS_URL: redis://stage-redis:6379/0
+      OPEN_METEO_FORECAST_DAYS: "10"
+    entrypoint: ["python"]
+    command: ["-m", "hawatch.jobs.ingest_scheduler"]
+    networks: [stage]
+    depends_on:
+      stage-api: {condition: service_healthy}
+    restart: unless-stopped
 networks:
   stage: {}
-  production-db:
-    external: true
-    name: ${HAWATCH_PRODUCTION_NETWORK:-hawatch_default}
 volumes:
   stage-logs: {}
+  stage-db: {}

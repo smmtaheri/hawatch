@@ -96,12 +96,12 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 
 ## محیط Stage
 
-طراحی جدید برنچ `stage` در `main` ادغام شده و از این پس سایت اصلی روی همان طراحی
-اجرا می‌شود. فرمان `deploy-hawatch` فقط checkout production روی پورت ۸۰ را
-به‌روزرسانی می‌کند؛ دیگر stage را build، push یا اجرا نمی‌کند. راهنمای خاموش‌کردن
-منابع باقی‌ماندهٔ stage در [docs/stage-deployment.md](docs/stage-deployment.md)
-آمده است. گزارش طراحی و بررسی محلی در [docs/new-design-qa.md](docs/new-design-qa.md)
-نگهداری می‌شود.
+استیج پیش‌بینی هفته روی برنچ `stage` مستقل از production است و از فرمان محلی
+`bash scripts/deploy-stage-hawatch` استفاده می‌کند. دیتابیس و Redis استیج مستقل‌اند؛
+دادهٔ واقعی عمومی در اولین راه‌اندازی با export فقط‌خواندنی کپی می‌شود.
+راهنمای اجرا از سیستم محلی در [docs/stage-deployment.md](docs/stage-deployment.md)
+و قرارداد هفته/کش/تجهیزات در [docs/week-forecast.md](docs/week-forecast.md) است.
+`deploy-hawatch` همچنان فقط production/main را منتشر می‌کند.
 
 ## استقرار سریع روی سرور
 

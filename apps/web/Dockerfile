@@ -15,6 +15,8 @@ RUN pnpm install --frozen-lockfile
 COPY apps/web apps/web
 
 WORKDIR /repo/apps/web
+ARG VITE_ASSET_VERSION=local
+ENV VITE_ASSET_VERSION=${VITE_ASSET_VERSION}
 ARG VITE_API_BASE_URL=/api/v1
 ARG VITE_QA_PREVIEW=false
 ARG VITE_PUBLIC_SITE_ORIGIN=

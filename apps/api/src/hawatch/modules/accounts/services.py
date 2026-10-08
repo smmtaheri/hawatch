@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 
 from django.db.models import Q
+from django.conf import settings
 
 from hawatch.common.time import day_window, now_tehran
 
@@ -78,23 +79,16 @@ def effective_plan(request, policy: ForecastAccessPolicy) -> ForecastPlan | None
 
 
 def resolve_forecast_access(request, *, today: date | None = None) -> ForecastAccess:
-    policy = active_policy()
     today = today or now_tehran().date()
-    membership = effective_membership(request)
-    plan = membership.plan if membership else (policy.default_authenticated_plan if getattr(request.user, "is_authenticated", False) else None)
-    visible = plan.visible_days_from_yesterday if plan else policy.anonymous_visible_days_from_yesterday
-    visible = min(visible, policy.display_day_count - 1)
-    member_visible = min(policy.default_authenticated_plan.visible_days_from_yesterday, policy.display_day_count - 1)
-    return ForecastAccess(
-        viewer="member" if plan else "anonymous",
-        plan=plan,
-        display_days=policy.display_day_count,
-        visible_days_from_yesterday=visible,
-        available_through=today + timedelta(days=visible - 1),
-        member_available_through=today + timedelta(days=member_visible - 1),
-        today=today,
-        expires_at=membership.expires_at if membership else None,
-    )
+    # Forecast is public for today and seven following days; account products remain separate.
+    member = getattr(request.user, "is_authenticated", False)
+    policy = active_policy() if member else None
+    membership = effective_membership(request) if member else None
+    plan = membership.plan if membership else (policy.default_authenticated_plan if policy else None)
+    return ForecastAccess(viewer="member" if member else "anonymous", plan=plan, display_days=8,
+                          visible_days_from_yesterday=8, available_through=today+timedelta(days=7),
+                          member_available_through=today+timedelta(days=7), today=today,
+                          expires_at=membership.expires_at if membership else None)
 
 
 def decorate_forecast_payload(payload: dict, access: ForecastAccess) -> dict:

@@ -450,6 +450,8 @@ def persist_ingest(
 
     mark_stale_snapshots()
     cleanup_old_snapshots()
+    from hawatch.api.v1.week_cache import invalidate_week_cache
+    invalidate_week_cache()
     return snapshot
 
 

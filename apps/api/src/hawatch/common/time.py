@@ -23,7 +23,7 @@ JALALI_MONTHS = [
 ]
 WEEKDAYS = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه", "یکشنبه"]
 
-FORECAST_DAY_COUNT = 7  # yesterday + today + 5 following days
+FORECAST_DAY_COUNT = 8  # today + seven following days
 HOURLY_STEP = 2
 # Planner gauge / start_time granularity (minutes). Change here for 30- or 5-minute steps later.
 PLANNER_TIME_STEP_MINUTES = 60
@@ -178,7 +178,7 @@ def hour_bucket(at: datetime | None = None) -> str:
 
 def day_window(today: date | None = None) -> list[date]:
     current = today or now_tehran().date()
-    start = current - timedelta(days=1)
+    start = current
     return [start + timedelta(days=offset) for offset in range(FORECAST_DAY_COUNT)]
 
 

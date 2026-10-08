@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
 from django.http import HttpResponsePermanentRedirect
+from hawatch.api.v1.share_views import open_share
 from django.urls import include, path
 
 from hawatch.modules.catalog import seo_pages
@@ -10,6 +11,7 @@ def redirect_removed_catalog_index(_request):
     return HttpResponsePermanentRedirect(f"{settings.PUBLIC_SITE_ORIGIN}/")
 
 urlpatterns = [
+    path("p/<str:code>", open_share),
     path("", seo_pages.seo_home, name="seo-home"),
     path("points", redirect_removed_catalog_index, name="removed-points-index"),
     path("points/", redirect_removed_catalog_index),
