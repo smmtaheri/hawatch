@@ -1,0 +1,220 @@
+{
+  "catalog_version": "hawatch-semirom-nature-v1",
+  "primary_point": "ab-malakh-waterfall",
+  "weather_points": {
+    "ab-malakh-waterfall": {
+      "name": "آبشار آب‌ملخ",
+      "page_name": "آب‌وهوای آبشار آب‌ملخ سمیرم",
+      "short_label": "آبشار آب‌ملخ",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارها و چشمه‌های سمیرم",
+      "region": "پادنا · سمیرم · اصفهان",
+      "aliases": [
+        "آبشار آب ملخ",
+        "آبشار تخت سلیمان سمیرم",
+        "تخت سلیمان سمیرم",
+        "آب ملخ سمیرم",
+        "Ab Malakh Waterfall",
+        "Takht-e Soleyman Semirom"
+      ],
+      "identity_summary": "آبشار آب‌ملخ در درهٔ ماربرِ پادنای سمیرم؛ در بعضی منابع محلی «تخت سلیمان» هم نامیده می‌شود و با قلهٔ تخت سلیمان کلاردشت یکی نیست. دسترسی آخر مسیر از روستای آب‌ملخ پیاده است؛ پرتگاه و حاشیهٔ رودخانه خطرناک‌اند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4675577795",
+        "https://www.openstreetmap.org/node/4675577795",
+        "https://semiromsafar.com/abmalakh/",
+        "https://blogfi.blogfa.com/category/272",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.15174&longitude=51.35752"
+      ],
+      "latitude": 31.15174,
+      "longitude": 51.35752,
+      "elevation_m": 1763,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از گرهٔ طبیعی OpenStreetMap و Mapcarta؛ ارتفاع ۱۷۶۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical. گزارش محلی برای موقعیت آبشار ارتفاع حدود ۱۷۰۲ متر ثبت کرده است.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار آب‌ملخ سمیرم؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار آب‌ملخ در پادنای سمیرم؛ دما، باد و بارش را برای برنامه‌ریزی بازدید بررسی کنید."
+      }
+    },
+    "semirom-waterfall": {
+      "name": "آبشار سمیرم",
+      "page_name": "آب‌وهوای آبشار سمیرم",
+      "short_label": "آبشار سمیرم",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارها و چشمه‌های سمیرم",
+      "region": "سمیرم · اصفهان",
+      "aliases": [
+        "آبشار سمیرم اصفهان",
+        "آبشار شهر سمیرم",
+        "Semirom Waterfall",
+        "Abshar-e Semirom"
+      ],
+      "identity_summary": "آبشار شناخته‌شدهٔ سمیرم در تنگهٔ آبشار، در چند کیلومتری شهر؛ صفحهٔ این عارضهٔ طبیعی مستقل است و صفحه‌ای برای خود شهر ایجاد نمی‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/27330426",
+        "https://www.openstreetmap.org/?mlat=31.41728&mlon=51.6067#map=17/31.41728/51.6067",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B3%D9%85%D9%8A%D8%B1%D9%85%D8%8C-%D8%B3%D9%85%DB%8C%D8%B1%D9%85/",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.41728&longitude=51.6067"
+      ],
+      "latitude": 31.41728,
+      "longitude": 51.6067,
+      "elevation_m": 2497,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از GeoNames/Mapcarta؛ ارتفاع ۲۴۹۷ متر از Open-Meteo GLO-90 DEM در مختصات canonical؛ مقدار مرجع Mapcarta حدود ۲۴۶۲ متر است.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار سمیرم؛ پیش‌بینی دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار سمیرم در استان اصفهان؛ وضعیت دما، باد و بارش را برای بازدید از این مقصد طبیعی ببینید."
+      }
+    },
+    "bibi-seyedan-waterfall": {
+      "name": "آبشار بی‌بی‌سیدان",
+      "page_name": "آب‌وهوای آبشار بی‌بی‌سیدان",
+      "short_label": "آبشار بی‌بی‌سیدان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارها و چشمه‌های سمیرم",
+      "region": "پادنا · سمیرم · اصفهان",
+      "aliases": [
+        "آبشار بی بی سیدان",
+        "آبشار بی‌بی سیدان سمیرم",
+        "بی‌بی‌سیدان سمیرم",
+        "Bi Bi Seidan Waterfall",
+        "Bibi Seydan Waterfall"
+      ],
+      "identity_summary": "آبشار بی‌بی‌سیدان در ورودی تنگهٔ نازی و کنار رودخانهٔ کاسگان در پادنای سمیرم؛ جدا از آبشار آب‌ملخ و حدود ۱۰ کیلومتر شمال‌شرق آن. دسترسی آب‌تنی در ادامهٔ تنگه به عمق آب و شرایط روز وابسته است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5516420954",
+        "https://www.openstreetmap.org/node/5516420954",
+        "https://www.beytoote.com/iran/tafrihi/bibi1-seyedan-waterfalls.html",
+        "https://www.wikiloc.com/hiking-trails/abshr-w-tng-by-by-sydn-pymysh-khnwdgy-shhrstn-smyrm-sfhn-tbstn-1404-bibi-seidan-semirom-isfahan-sum-230051185",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.19004&longitude=51.45536"
+      ],
+      "latitude": 31.19004,
+      "longitude": 51.45536,
+      "elevation_m": 1860,
+      "status": "provisional",
+      "elevation_source": "مختصات گرهٔ آبشار در OpenStreetMap/Mapcarta؛ ارتفاع ۱۸۶۰ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار بی‌بی‌سیدان سمیرم؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار بی‌بی‌سیدان و تنگهٔ نازی در پادنای سمیرم؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "cheshmeh-naz-vanak": {
+      "name": "چشمهٔ ناز ونک",
+      "page_name": "آب‌وهوای چشمهٔ ناز ونک",
+      "short_label": "چشمهٔ ناز ونک",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "آبشارها و چشمه‌های سمیرم",
+      "region": "ونک · سمیرم · اصفهان",
+      "aliases": [
+        "چشمه ناز ونک سمیرم",
+        "چشمه ناز سمیرم",
+        "چشمه ناز",
+        "Cheshmeh Naz Vanak",
+        "Naz Spring Vanak"
+      ],
+      "identity_summary": "چشمهٔ ناز در دامنه‌های شمالی کوه دالان، در جنوب‌غربی ونک و شهرستان سمیرم؛ عارضه‌ای طبیعی و مستقل از شهر ونک. دسترسی گزارش‌شده شامل پیمایش کوهستانی و گذر از رودخانه است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5540691474",
+        "https://www.openstreetmap.org/node/5540691474",
+        "https://www.beytoote.com/iran/tafrihi/fountain1-naz-semirom.html",
+        "https://semiromsafar.com/cheshme-naz/",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.48682&longitude=51.28902"
+      ],
+      "latitude": 31.48682,
+      "longitude": 51.28902,
+      "elevation_m": 1950,
+      "status": "provisional",
+      "elevation_source": "مختصات چشمه از گرهٔ natural=spring در OpenStreetMap/Mapcarta؛ ارتفاع ۱۹۵۰ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای چشمهٔ ناز ونک؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای چشمهٔ ناز ونک در شهرستان سمیرم؛ وضعیت دما، باد و بارش را برای برنامه‌ریزی بازدید بررسی کنید."
+      }
+    },
+    "dangezlu-cave": {
+      "name": "غار دنگزلو",
+      "page_name": "آب‌وهوای غار دنگزلو",
+      "short_label": "غار دنگزلو",
+      "place_type": "technical_point",
+      "category_key": "cave",
+      "category": "غارهای اصفهان",
+      "region": "پادنا · سمیرم · اصفهان",
+      "aliases": [
+        "غار دنگزلو سمیرم",
+        "غار دنگزلو پادنا",
+        "غار آبی دنگزلو",
+        "Dengezlu Cave",
+        "Dangezlu Cave"
+      ],
+      "identity_summary": "غار آهکی دنگزلو در پادنای سمیرم؛ غاری آبی با رودخانه و حوضچه‌های سرد و لغزنده که پیمایش درون آن غارنوردی فنی است و نباید مسیر طبیعت‌گردی معمولی تلقی شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N11176586600",
+        "https://www.openstreetmap.org/node/11176586600",
+        "https://pish-taz.blogfa.com/",
+        "https://fa.tripyar.com/iran/%D8%A7%D8%B5%D9%81%D9%87%D8%A7%D9%86/%D8%B3%D9%85%DB%8C%D8%B1%D9%85/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%BA%D8%A7%D8%B1%D9%86%D9%88%D8%B1%D8%AF%DB%8C/%D8%BA%D8%A7%D8%B1-%D8%AF%D9%86%DA%AF%D8%B2%D9%84%D9%88.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.86415&longitude=51.64382"
+      ],
+      "latitude": 30.86415,
+      "longitude": 51.64382,
+      "elevation_m": 2271,
+      "status": "provisional",
+      "elevation_source": "مختصات دهانهٔ natural=cave_entrance در OpenStreetMap/Mapcarta؛ ارتفاع ۲۲۷۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای غار دنگزلو سمیرم؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای محدودهٔ دهانهٔ غار دنگزلو در پادنای سمیرم؛ دما، باد و بارش را برای بررسی شرایط پیرامون غار ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "ab-malakh-waterfall",
+    "tile_name": "آبشار آب‌ملخ",
+    "name": "آبشار آب‌ملخ",
+    "short_category": "آبشار",
+    "category": "آبشارها و چشمه‌های سمیرم",
+    "category_key": "waterfall",
+    "region": "پادنا · سمیرم · اصفهان",
+    "elevation_m": 1763,
+    "latitude": 31.15174,
+    "longitude": 51.35752,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار آب‌ملخ در پادنای سمیرم",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار آب ملخ",
+      "آبشار تخت سلیمان سمیرم",
+      "تخت سلیمان سمیرم"
+    ]
+  }
+}
