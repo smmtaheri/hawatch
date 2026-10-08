@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-marmisho-lake-catalog-v1",
+  "primary_point": "marmisho-lake",
+  "weather_points": {
+    "marmisho-lake": {
+      "name": "دریاچهٔ مارمیشو",
+      "page_name": "دریاچهٔ مارمیشو",
+      "short_label": "دریاچهٔ مارمیشو",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "دریاچه مارمیشو",
+        "دریاچه مارمیشو ارومیه",
+        "دریاچهٔ مارمیشو ارومیه",
+        "دریاچه مارمیشو آذربایجان غربی",
+        "دریاچه مارميشو",
+        "دریاچه مار میشو",
+        "Marmisho Lake",
+        "Daryacheh-ye Marmishu"
+      ],
+      "identity_summary": "دریاچهٔ مارمیشو در منطقهٔ سیلوانه، شهرستان ارومیه؛ نقطهٔ نماینده روی پهنهٔ دریاچه ثبت شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/25698406",
+        "https://iranpedia.net/wiki/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87_%D9%85%D8%A7%D8%B1%D9%85%DB%8C%D8%B4%D9%88",
+        "https://geographic.org/geographic_names/name.php?c=iran&fid=2911&uni=10236806"
+      ],
+      "latitude": 37.58427,
+      "longitude": 44.6377,
+      "elevation_m": 1744,
+      "status": "provisional",
+      "elevation_source": "مختصات دریاچه از نقشهٔ OpenStreetMap/Mapcarta؛ DEM سرویس Open-Meteo GLO-90 در ۲۰۲۶-۱۰-۰۸ برابر ۱۷۴۲ متر بود و با ارتفاع نقشه (۱۷۴۴ متر) ۲ متر اختلاف دارد.",
+      "climate": "lake_valley",
+      "region": "مارمیشو · ارومیه · آذربایجان غربی"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "marmisho-lake",
+    "tile_name": "دریاچهٔ مارمیشو",
+    "name": "دریاچهٔ مارمیشو",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های ارومیه",
+    "category_key": "lake",
+    "region": "مارمیشو · ارومیه · آذربایجان غربی",
+    "elevation_m": 1744,
+    "latitude": 37.58427,
+    "longitude": 44.6377,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ مارمیشو در منطقهٔ کوهستانی ارومیه",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه مارمیشو",
+      "دریاچه مارمیشو ارومیه",
+      "دریاچهٔ مارمیشو ارومیه",
+      "دریاچه مارمیشو آذربایجان غربی",
+      "دریاچه مارميشو",
+      "دریاچه مار میشو",
+      "Marmisho Lake",
+      "Daryacheh-ye Marmishu"
+    ]
+  }
+}
