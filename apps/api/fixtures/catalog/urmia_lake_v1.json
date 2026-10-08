@@ -1,0 +1,62 @@
+{
+  "catalog_version": "hawatch-urmia-lake-catalog-v1",
+  "primary_point": "urmia-lake",
+  "weather_points": {
+    "urmia-lake": {
+      "name": "دریاچهٔ ارومیه",
+      "page_name": "دریاچهٔ ارومیه",
+      "short_label": "دریاچهٔ ارومیه",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه‌های آذربایجان غربی",
+      "region": "دریاچهٔ ارومیه · آذربایجان غربی",
+      "aliases": [
+        "دریاچه ارومیه",
+        "دریاچهٔ ارومیه",
+        "دریاچه ارومیه آذربایجان غربی",
+        "دریاچه رضائیه",
+        "دریاچه اورمیه",
+        "Lake Urmia",
+        "Lake Orumiyeh"
+      ],
+      "identity_summary": "دریاچهٔ ارومیه، پهنهٔ آبی بزرگ و فصلی شمال‌غرب ایران؛ مختصات نماینده در مرکز ثبت رامسر قرار دارد و پیش‌بینی برای همین نقطهٔ نماینده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://rsis.ramsar.org/sites/default/files/rsiswp_search/exports/Ramsar-Sites-annotated-summary-Iran-Islamic-Republic-of.pdf",
+        "https://www.ramsar.org/document/wetland-management-plan-ir-iran-integrated-management-plan-lake-urmia-basin",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.5,
+      "longitude": 45.5,
+      "elevation_m": 1268,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکزی ثبت رامسر برای پهنهٔ دریاچه؛ ارتفاع ۱۲۶۸ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات، بررسی‌شده در ۲۰۲۶-۱۰-۰۸.",
+      "climate": "lake_valley",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "urmia-lake",
+    "tile_name": "دریاچهٔ ارومیه",
+    "name": "دریاچهٔ ارومیه",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های آذربایجان غربی",
+    "category_key": "lake",
+    "region": "دریاچهٔ ارومیه · آذربایجان غربی",
+    "elevation_m": 1268,
+    "latitude": 37.5,
+    "longitude": 45.5,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای دریاچهٔ ارومیه",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دریاچه ارومیه", "دریاچهٔ ارومیه", "دریاچه رضائیه", "دریاچه اورمیه", "Lake Urmia", "Lake Orumiyeh"]
+  }
+}
