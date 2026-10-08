@@ -75,7 +75,7 @@ def test_nearest_retry_is_targeted_and_still_enforces_grid_gate(points, retry_va
             super().__init__()
             self.calls = []
 
-        def fetch_all(self, requested):
+        def fetch_all(self, requested, *, models="best_match"):
             self.calls.append(requested)
             distant = payload()
             distant["latitude"] = 40
@@ -84,17 +84,93 @@ def test_nearest_retry_is_targeted_and_still_enforces_grid_gate(points, retry_va
                 points=list(requested), status_code=200, payload=items,
                 elevation_requested=True, url="https://example.invalid",
                 cell_selection="land" if len(self.calls) == 1 else "nearest",
+                models=models,
             )]
 
     provider = Provider()
     current = ingest_weather_points(points, provider=provider)
-    assert len(provider.calls) == 2
+    assert len(provider.calls) == (2 if retry_valid else 3)
     assert [p.id for p in provider.calls[1]] == [points[1].slug]
     assert provider.calls[1][0].cell_selection == "nearest"
     assert provider.calls[1][0].elevation_m == 4000
     assert current.point_count == (2 if retry_valid else 1)
     assert current.status == ("success" if retry_valid else "partial")
     assert ForecastPointResolution.objects.filter(snapshot=current).count() == current.point_count
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize("failure", ["http", "empty", "grid", "malformed", "null_readings", "mismatch"])
+@pytest.mark.parametrize("fallback_valid", [True, False])
+def test_generic_ecmwf_fallback_preserves_old_data_on_failure(points, failure, fallback_valid):
+    previous = persist(points, [payload(), payload()])
+
+    class Provider(OpenMeteoProvider):
+        def __init__(self):
+            super().__init__()
+            self.calls = []
+
+        def fetch_all(self, requested, *, models="best_match"):
+            self.calls.append((list(requested), models))
+            if models == "ecmwf_ifs":
+                item = payload(9)
+                if not fallback_valid:
+                    item["latitude"] = 40
+                return [BatchResult(list(requested), 200, [item], True, "https://example.invalid", models=models, cell_selection="nearest")]
+            bad = payload()
+            status = 200
+            if failure == "http":
+                status = 503
+            elif failure == "empty":
+                bad["hourly"] = {"time": []}
+            elif failure == "grid":
+                bad["latitude"] = 40
+            elif failure == "malformed":
+                bad["hourly"]["time"] = ["not-a-date"]
+            elif failure == "null_readings":
+                bad["hourly"]["temperature_2m"] = [None] * 6
+            items = [] if failure == "mismatch" else [bad]
+            # One healthy point and one failing point, including provisional
+            # nearest requests: model fallback must not depend on land selection.
+            return [
+                BatchResult([requested[0]], 200, [payload(7)], True, "https://example.invalid"),
+                BatchResult([requested[1]], status, items, True, "https://example.invalid", cell_selection="nearest"),
+            ]
+
+    provider = Provider()
+    current = ingest_weather_points(points, provider=provider)
+    assert len(provider.calls) == 2
+    requested, model = provider.calls[1]
+    assert model == "ecmwf_ifs"
+    assert [point.id for point in requested] == [points[1].slug]
+    assert requested[0].elevation_m == 4000 and requested[0].cell_selection == "nearest"
+    assert current.models_param == "best_match+ecmwf_ifs"
+    assert current.point_count == (2 if fallback_valid else 1)
+    row = ForecastRecord.objects.filter(weather_point=points[1]).first()
+    assert row.snapshot_id == (current.pk if fallback_valid else previous.pk)
+    assert row.temperature_c == (9 if fallback_valid else 5)
+
+
+@pytest.mark.django_db
+def test_healthy_best_match_never_requests_ecmwf(points):
+    class Provider(OpenMeteoProvider):
+        def fetch_all(self, requested):
+            return [BatchResult(list(requested), 200, [payload(), payload()], True, "https://example.invalid")]
+
+    current = ingest_weather_points(points, provider=Provider())
+    assert current.status == "success" and current.models_param == "best_match"
+
+
+def test_fallback_url_keeps_elevation_and_forecast_contract():
+    from urllib.parse import parse_qs, urlsplit
+    from hawatch.integrations.weather.providers.open_meteo import ProviderPoint
+
+    provider = OpenMeteoProvider()
+    point = ProviderPoint("any-point", 35.85, 51.43, 4000)
+    query = parse_qs(urlsplit(provider.build_url([point], include_elevation=True, models="ecmwf_ifs", cell_selection="nearest")).query)
+    assert query["models"] == ["ecmwf_ifs"]
+    assert query["elevation"] == ["4000"]
+    assert query["cell_selection"] == ["nearest"]
+    assert query["forecast_days"] == [str(provider.forecast_days)]
 
 
 @pytest.mark.django_db

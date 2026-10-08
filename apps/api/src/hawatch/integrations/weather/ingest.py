@@ -28,6 +28,7 @@ from hawatch.integrations.weather.normalize import (
     response_items,
 )
 from hawatch.integrations.weather.providers.open_meteo import (
+    FALLBACK_MODELS,
     OpenMeteoProvider,
     ProviderPoint,
 )
@@ -123,6 +124,22 @@ def _cell_selection_for_batches(batch_results: Sequence[dict]) -> str:
     return "+".join(sorted(selections)) or "land"
 
 
+def _models_for_batches(batch_results: Sequence[dict]) -> str:
+    return "+".join(sorted({batch.get("models") or "best_match" for batch in batch_results})) or "best_match"
+
+
+def _usable_rows(raw_point: dict, *, latitude: float, longitude: float, generated_at):
+    if not provider_resolution_is_acceptable(
+        raw_point, requested_latitude=latitude, requested_longitude=longitude,
+    ):
+        return []
+    try:
+        return normalize_point_hourly(raw_point, generated_at=generated_at)
+    except (ValueError, TypeError, KeyError, OverflowError):
+        # A malformed point must neither starve its neighbours nor prevent fallback.
+        return []
+
+
 @contextmanager
 def ingest_lock(*, lock_key: int = INGEST_LOCK_KEY) -> Iterator[None]:
     """Postgres advisory lock to prevent concurrent ingest runs.
@@ -215,7 +232,10 @@ def persist_ingest(
                 resolution_rejected = True
                 batch_failed = True
                 continue
-            point_rows = normalize_point_hourly(raw_point, generated_at=generated_at)
+            point_rows = _usable_rows(
+                raw_point, latitude=weather_point.location.y,
+                longitude=weather_point.location.x, generated_at=generated_at,
+            )
             if not point_rows or point_id in successful_point_ids:
                 batch_failed = batch_failed or not point_rows
                 continue
@@ -291,7 +311,7 @@ def persist_ingest(
             source="open-meteo-forecast",
             catalog_version=catalog_version,
             timezone_name="Asia/Tehran",
-            models_param="best_match",
+            models_param=_models_for_batches(batch_results),
             cell_selection=_cell_selection_for_batches(batch_results),
             forecast_days=provider.forecast_days,
             past_days=provider.past_days,
@@ -335,7 +355,7 @@ def persist_ingest(
         source="open-meteo-forecast",
         catalog_version=catalog_version,
         timezone_name="Asia/Tehran",
-        models_param="best_match",
+        models_param=_models_for_batches(batch_results),
         cell_selection=_cell_selection_for_batches(batch_results),
         forecast_days=provider.forecast_days,
         past_days=provider.past_days,
@@ -461,6 +481,23 @@ def ingest_weather_points(
                     retry_points[point.id] = replace(point, cell_selection="nearest")
         if retry_points:
             results.extend(provider.fetch_all(list(retry_points.values())))
+        # Model fallback is generic: transport/HTTP failures, malformed or empty
+        # hours, and rejected grids all qualify. Never re-fetch healthy points.
+        successful_ids = set()
+        checked_at = dj_timezone.now()
+        for result in results:
+            items = response_items(result.payload)
+            if result.status_code != 200 or len(items) != len(result.points):
+                continue
+            for point, item in zip(result.points, items, strict=True):
+                if _usable_rows(item, latitude=point.latitude, longitude=point.longitude, generated_at=checked_at):
+                    successful_ids.add(point.id)
+        fallback_points = [
+            replace(point, cell_selection="nearest")
+            for point in provider_points if point.id not in successful_ids
+        ]
+        if fallback_points:
+            results.extend(provider.fetch_all(fallback_points, models=FALLBACK_MODELS))
         serialized = []
         for result in results:
             serialized.append(
@@ -470,6 +507,7 @@ def ingest_weather_points(
                     "payload": result.payload,
                     "elevation_requested": result.elevation_requested,
                     "cell_selection": result.cell_selection,
+                    "models": result.models,
                     "url": result.url,
                     "attempts": result.attempts,
                 }

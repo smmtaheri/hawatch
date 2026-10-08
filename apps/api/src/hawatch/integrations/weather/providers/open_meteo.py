@@ -39,6 +39,7 @@ DEFAULT_FORECAST_DAYS = 7
 DEFAULT_PAST_DAYS = 0
 DEFAULT_TIMEZONE = "Asia/Tehran"
 DEFAULT_MODELS = "best_match"
+FALLBACK_MODELS = "ecmwf_ifs"
 DEFAULT_CELL_SELECTION = "land"
 NULL_ELEVATION_CELL_SELECTION = "nearest"
 USER_AGENT = "hawatch-openmeteo/1.0"
@@ -74,6 +75,7 @@ class BatchResult:
     url: str
     attempts: int = 1
     cell_selection: str = DEFAULT_CELL_SELECTION
+    models: str = DEFAULT_MODELS
 
 
 class OpenMeteoProvider:
@@ -118,12 +120,13 @@ class OpenMeteoProvider:
         *,
         include_elevation: bool,
         cell_selection: str = DEFAULT_CELL_SELECTION,
+        models: str = DEFAULT_MODELS,
     ) -> str:
         params: dict[str, str] = {
             "latitude": ",".join(f"{point.latitude:.7f}" for point in points),
             "longitude": ",".join(f"{point.longitude:.7f}" for point in points),
             "timezone": DEFAULT_TIMEZONE,
-            "models": DEFAULT_MODELS,
+            "models": models,
             "cell_selection": cell_selection,
             "forecast_days": str(self.forecast_days),
             "past_days": str(self.past_days),
@@ -153,6 +156,7 @@ class OpenMeteoProvider:
         *,
         include_elevation: bool,
         cell_selection: str = DEFAULT_CELL_SELECTION,
+        models: str = DEFAULT_MODELS,
     ) -> BatchResult:
         if not points:
             return BatchResult(
@@ -163,8 +167,9 @@ class OpenMeteoProvider:
                 url="",
                 attempts=1,
                 cell_selection=cell_selection,
+                models=models,
             )
-        url = self.build_url(points, include_elevation=include_elevation, cell_selection=cell_selection)
+        url = self.build_url(points, include_elevation=include_elevation, cell_selection=cell_selection, models=models)
         attempts = 0
         status = 0
         payload: Any = {"transport_error": "not attempted"}
@@ -193,21 +198,23 @@ class OpenMeteoProvider:
             url=url,
             attempts=attempts,
             cell_selection=cell_selection,
+            models=models,
         )
 
-    def fetch_all(self, points: Sequence[ProviderPoint]) -> list[BatchResult]:
+    def fetch_all(self, points: Sequence[ProviderPoint], *, models: str = DEFAULT_MODELS) -> list[BatchResult]:
         with_elevation, without_elevation = self.partition_by_elevation(points)
         results: list[BatchResult] = []
         explicit_land = [point for point in with_elevation if point.cell_selection != NULL_ELEVATION_CELL_SELECTION]
         explicit_nearest = [point for point in with_elevation if point.cell_selection == NULL_ELEVATION_CELL_SELECTION]
         for batch in self.split_batches(explicit_land):
-            results.append(self.fetch_batch(batch, include_elevation=True, cell_selection=DEFAULT_CELL_SELECTION))
+            results.append(self.fetch_batch(batch, include_elevation=True, cell_selection=DEFAULT_CELL_SELECTION, models=models))
         for batch in self.split_batches(explicit_nearest):
             results.append(
                 self.fetch_batch(
                     batch,
                     include_elevation=True,
                     cell_selection=NULL_ELEVATION_CELL_SELECTION,
+                    models=models,
                 )
             )
         for batch in self.split_batches(without_elevation):
@@ -217,6 +224,7 @@ class OpenMeteoProvider:
                     batch,
                     include_elevation=False,
                     cell_selection=NULL_ELEVATION_CELL_SELECTION,
+                    models=models,
                 )
             )
         return results
