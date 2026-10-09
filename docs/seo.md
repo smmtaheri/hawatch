@@ -224,7 +224,8 @@ catalog به‌تنهایی به build یا restart نیاز ندارد. پس ا
 
 `Disallow: /api/` و `Disallow: /admin/` حفظ شده‌اند. فقط endpointهای عمومی
 مصرف‌شده برای رندر/تعامل صفحه، استثنا دارند: فهرست points/destinations/routes،
-catalog-index، search/suggestions و forecast/forecast/day نقاط و مسیرها.
+catalog-index، search/suggestions و endpointهای forecast، forecast/day و
+forecast/week نقاط و مسیرها.
 پایان هر الگو با `$` بسته است؛ برای query یک قاعدهٔ مستقل `?*$` وجود دارد.
 slugها wildcard هستند تا همهٔ نقاط و مسیرهای فعلی و آینده پوشش داشته باشند؛
 allow عمومی `/api/v1/points/` یا `/api/v1/routes/` بدون end anchor وجود ندارد.

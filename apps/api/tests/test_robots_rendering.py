@@ -30,6 +30,7 @@ def body():
 
 @pytest.mark.parametrize("path", [
     "/api/v1/points/naz/forecast/day/", "/api/v1/points/tochal/forecast/day/?period=morning",
+    "/api/v1/points/naz/forecast/week/", "/api/v1/routes/tochal-darband/forecast/week/",
     "/api/v1/routes/tochal-darband/forecast/day/?date=2026-10-02&speed=medium",
     "/api/v1/points/point-new-999/forecast/", "/api/v1/routes/route-new-999/forecast/?period=night",
     "/api/v1/points/", "/api/v1/catalog-index/", "/api/v1/search/suggestions/?q=naz",
@@ -45,6 +46,7 @@ def test_public_rendering_resources_are_allowed(path):
     "/api/v1/analytics/pageview/", "/api/v1/metrics/", "/api/v1/health/status/",
     "/api/v1/points/naz/", "/api/v1/routes/tochal-darband/", "/api/v1/unknown/",
     "/api/v1/points/naz/forecast/day/private/", "/api/v1/routes/private/forecast/day/admin/",
+    "/api/v1/points/naz/forecast/week/private/", "/api/v1/routes/private/forecast/week/admin/",
     "/api/v1/routes/private/forecast/day/extra?x=1", "/api/v1/routes/private/forecast/edit/",
     "/api/v1/catalog-index/admin/", "/api/v1/routes/admin/", "/admin/",
 ])

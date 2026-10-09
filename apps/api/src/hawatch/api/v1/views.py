@@ -487,7 +487,9 @@ def robots_txt(_request):
         "/api/v1/points/", "/api/v1/destinations/", "/api/v1/routes/",
         "/api/v1/catalog-index/", "/api/v1/catalog/search-index/", "/api/v1/search/suggestions/",
         "/api/v1/points/*/forecast/", "/api/v1/points/*/forecast/day/",
+        "/api/v1/points/*/forecast/week/",
         "/api/v1/routes/*/forecast/", "/api/v1/routes/*/forecast/day/",
+        "/api/v1/routes/*/forecast/week/",
     )
     exceptions = "".join(f"Allow: {path}$\nAllow: {path}?*$\n" for path in render_paths)
     body = (
