@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sanboran-catalog-v1",
+  "catalog_version": "hawatch-sanboran-catalog-v2",
   "weather_points": {
     "sanboran": {
       "name": "قلهٔ سنبران",
@@ -275,12 +275,59 @@
         "sanboran-gheif-waterfall",
         "gahar"
       ],
-      "distance_km": 30.3,
-      "ascent_m": 2500,
+      "distance_km": 18.2,
+      "ascent_m": 2327,
+      "one_way_minutes": 1160,
       "default_start_minutes": 240,
-      "timing_status": "pending",
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-profile+existing-summit-timing+technical-descent-model-v1",
+        "version": "sanboran-gahar-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 300,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/swd-snbrn-w-frwd-bh-drychh-ghr-73980003",
+          "https://www.tourismonline.co/news/131815/%D8%A8%D8%B1%D9%81%D8%B1%D8%A7%D8%B2-%DA%86%D8%A7%D9%84-%DA%A9%D8%A8%D9%88%D8%AF"
+        ],
+        "evidence_tracks": [
+          "tracks/san-boran/sanboran-gahar-primary-73980003.gpx",
+          "tracks/san-boran/sanboran-tian-primary-74934263.gpx"
+        ],
+        "cumulative_minutes": {
+          "sanboran-tian-village": 0,
+          "sanboran-gol-gol-shelter": 240,
+          "sanboran-chal-kabud-shelter": 570,
+          "sanboran": 900,
+          "sanboran-gheif-waterfall": 1080,
+          "gahar": 1160
+        },
+        "evidence": {
+          "timestamp_used": false,
+          "target_rule": "First named Gahar lake waypoint; track continues beyond the lake to an exit/parking waypoint.",
+          "target_waypoint_to_canonical_point_m": 545,
+          "gpx_distance_to_target_km": 18.224,
+          "gpx_smoothed_ascent_m": 2327,
+          "gpx_smoothed_descent_m": 1786,
+          "summit_cumulative_minutes_source": "Existing estimated sanboran-tian route timing; same Tiyan–Gol Gol–Chal Kabud–summit corridor.",
+          "descent_model": "50m resampling, centered 5-sample moving average, slope-speed model capped at 4 km/h, technical terrain factor 1.4.",
+          "technical_descent_raw_minutes": {
+            "summit_to_gheif_waterfall": 177,
+            "summit_to_gahar": 257
+          },
+          "notes": [
+            "GPX recorded timestamps and its multi-day elapsed/moving-time summaries were not used as the ETA.",
+            "The descent is technical and conditions, stops, snow, scree, and route-finding can materially increase the estimate.",
+            "The published waypoint says arrival at Gahar at 18:30 including stops and rain; its start-day/time is not clear enough to calibrate an absolute duration."
+          ]
+        },
+        "notes": [
+          "زمان صعود تا قله از زمان‌بندی تخمینی تثبیت‌شدهٔ مسیر تیان–سنبران گرفته شده است؛ زمان‌های GPX استفاده نشده‌اند.",
+          "فرود از قیف سنبران فنی و وابسته به فصل و شرایط برف، شن‌اسکی و مسیر‌یابی است؛ زمان کل برآوردی و با عدم‌قطعیت بالا است.",
+          "مسافت تا waypoint نام‌گذاری‌شدهٔ دریاچه محاسبه شده؛ ترک بعد از آن تا خروجی ادامه دارد و در مسافت مسیر وارد نشده است."
+        ]
+      },
       "public_point_notes": {
-        "sanboran-gheif-waterfall": "فرود از قیف سنبران فنی و وابسته به شرایط مسیر است؛ ETA عمومی برای این اتصال ثبت نشده است."
+        "sanboran-gheif-waterfall": "فرود از قیف سنبران فنی و وابسته به فصل و شرایط برف، شن‌اسکی و مسیر‌یابی است؛ زمان رسیدن فقط برآوردی است."
       }
     }
   },
