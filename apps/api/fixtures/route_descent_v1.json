@@ -2,6 +2,98 @@
   "schema_version": "route-descent-1",
   "routes": [
     {
+      "slug": "abak-meygun",
+      "descent_m": 0,
+      "chain": [
+        "meygun",
+        "abak-meygun-pass",
+        "abak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "60a8cafe0684c924d5ea1f4f371eb6f69859a25e2ca5925691d491af2b7d96d7",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-mygwn-183121609"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 4.689,
+        "analysis_ascent_m": 1283,
+        "origin_gap_m": 0.3,
+        "target_gap_m": 1.014,
+        "landmark_gaps_m": [
+          0.3,
+          0.0,
+          1.014
+        ],
+        "max_step_m": 18.1
+      }
+    },
+    {
+      "slug": "abak-ruteh",
+      "descent_m": 0,
+      "chain": [
+        "ruteh-village",
+        "abak-gully",
+        "abak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "f6d034543bf99a67b391dcd4d17ec16a19df9702d6892a5d51e6ab268a52793d",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-rwth-73599245"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 5.041,
+        "analysis_ascent_m": 1281,
+        "origin_gap_m": 0.7,
+        "target_gap_m": 1.169,
+        "landmark_gaps_m": [
+          0.7,
+          1.0,
+          1.169
+        ],
+        "max_step_m": 33.4
+      }
+    },
+    {
+      "slug": "abak-shemshak",
+      "descent_m": 86,
+      "chain": [
+        "abak-shemshak-trailhead",
+        "pinasum",
+        "pinasum-pass",
+        "abak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "9e006c46e83ba1d1e746b8f68221ca9dd7ab340c65916a5d889dcced1b473f9f",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/swd-qlh-abkh-z-mbd-rwsty-shmshkh-w-yl-shmly-124369529"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 6.164,
+        "analysis_ascent_m": 1098,
+        "origin_gap_m": 2.7,
+        "target_gap_m": 1.337,
+        "landmark_gaps_m": [
+          2.7,
+          0.0,
+          0.0,
+          1.337
+        ],
+        "max_step_m": 27.5
+      }
+    },
+    {
       "slug": "abbas-ali-kamar-posht",
       "descent_m": 0,
       "chain": [
@@ -68,6 +160,37 @@
       ]
     },
     {
+      "slug": "afjeh-hoyej-rizan",
+      "descent_m": 2,
+      "chain": [
+        "afjeh",
+        "dasht-havij",
+        "rizan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86-%D8%A7%D8%B2-%D8%A7%D9%81%D8%AC%D9%87/",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 6.549,
+        "analysis_ascent_m": 1474,
+        "origin_gap_m": 0.8,
+        "target_gap_m": 0.635,
+        "landmark_gaps_m": [
+          0.8,
+          0.9,
+          0.635
+        ],
+        "max_step_m": 7.5
+      }
+    },
+    {
       "slug": "afjeh-saka-atash-kuh",
       "descent_m": 69,
       "chain": [
@@ -90,6 +213,38 @@
         6153,
         9211
       ]
+    },
+    {
+      "slug": "ahangarak-ahar",
+      "descent_m": 149,
+      "chain": [
+        "ahar-village",
+        "esterchal",
+        "esterchal-pass",
+        "ahangarak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "80ac2917253339c7d7b08a47672557f4fc6ab876d0d681328af57be54fb965ad",
+        "source_url": "https://www.wikiloc.com/hiking-trails/jmh-8-rdybhsht-1402-swd-bh-qll-strchl-w-ahngrk-z-rwst-ahr-dh-tngh-133081998",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jmh-8-rdybhsht-1402-swd-bh-qll-strchl-w-ahngrk-z-rwst-ahr-dh-tngh-133081998"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 11.002,
+        "analysis_ascent_m": 1363,
+        "origin_gap_m": 8.3,
+        "target_gap_m": 1.39,
+        "landmark_gaps_m": [
+          8.3,
+          0.2,
+          11.7,
+          1.39
+        ],
+        "max_step_m": 9.7
+      }
     },
     {
       "slug": "alamkuh-southern-hesarchal",
@@ -315,6 +470,76 @@
       }
     },
     {
+      "slug": "asiab-bad-latmal-park",
+      "descent_m": 0,
+      "chain": [
+        "latmal-park-entrance",
+        "asiab-bad-omid-shelter",
+        "asiab-bad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "5fce3ab2531bb144d05896d91160c468f5277d3d8bc03692e807442979e84986",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 3.961,
+        "analysis_ascent_m": 836,
+        "origin_gap_m": 0.6,
+        "target_gap_m": 34.131,
+        "landmark_gaps_m": [
+          0.6,
+          4.0,
+          34.131
+        ],
+        "max_step_m": 297.3
+      }
+    },
+    {
+      "slug": "azadkouh-kelak-bala",
+      "descent_m": 0,
+      "chain": [
+        "azadkouh-kelakbala-start",
+        "azadkouh-kelakbala-camp1",
+        "azadkouh-kelakbala-camp2",
+        "azadkouh-kelakbala-camp3",
+        "azadkouh-choren-pass",
+        "azadkouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6dc9bd0dfe5c016cb11ff6ca701e0cedb61a9e3b88fe1a2664f0c55d7c27aa15",
+        "source_url": "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-azdkhwh-z-msyr-rwsty-khlkh-bl-1404-05-10-224622876",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://decovel.com/page/azad-kuh-peak",
+          "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-azdkhwh-z-msyr-rwsty-khlkh-bl-1404-05-10-224622876",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 8.291,
+        "analysis_ascent_m": 1594,
+        "origin_gap_m": 6.3,
+        "target_gap_m": 2.895,
+        "landmark_gaps_m": [
+          6.3,
+          3.2,
+          1.2,
+          0.8,
+          1.6,
+          2.895
+        ],
+        "max_step_m": 90.8
+      }
+    },
+    {
       "slug": "azadkouh-nahiyeh",
       "descent_m": 213,
       "chain": [
@@ -335,6 +560,74 @@
         12880,
         14486
       ]
+    },
+    {
+      "slug": "azadkouh-nesen",
+      "descent_m": 2,
+      "chain": [
+        "azadkouh-nesen-start",
+        "azadkouh-choren-pass",
+        "azadkouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "0526ae64a694fceeecf1a59047c3ab56d59086784d7dcc1941718797e213309c",
+        "source_url": "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841",
+          "https://www.wikiloc.com/hiking-trails/azd-khwh-swd-z-nsn-frwd-khlkh-bl-tyr-1401-106644204",
+          "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 14.289,
+        "analysis_ascent_m": 1648,
+        "origin_gap_m": 45.1,
+        "target_gap_m": 0.774,
+        "landmark_gaps_m": [
+          45.1,
+          18.5,
+          0.774
+        ],
+        "max_step_m": 34.7
+      }
+    },
+    {
+      "slug": "azadkouh-varangerud",
+      "descent_m": 365,
+      "chain": [
+        "azadkouh-varangerud-start",
+        "azadkouh-shirkamar-intersection",
+        "azadkouh-kamankouh-lake",
+        "azadkouh-choren-pass",
+        "azadkouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "cab1e80454c8c89ece95638388b98e705c6a75d2552605f2fba10c62df8e56c3",
+        "source_url": "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://decovel.com/page/azad-kuh-peak",
+          "https://mojekooh.com/%D8%A2%D8%B2%D8%A7%D8%AF-%DA%A9%D9%88%D9%87/",
+          "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 20.214,
+        "analysis_ascent_m": 2152,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 6.3,
+        "landmark_gaps_m": [
+          0.0,
+          5.4,
+          4.9,
+          4.1,
+          6.3
+        ],
+        "max_step_m": 22.8
+      }
     },
     {
       "slug": "babak-castle-ascent",
@@ -447,6 +740,36 @@
       ]
     },
     {
+      "slug": "barg-jahan-person",
+      "descent_m": 63,
+      "chain": [
+        "barg-jahan",
+        "rizan-andar",
+        "rizan-person"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "62b959afa5be520fa6b144677c6d621c9a75accca4bcca4663b926d05b039c49",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 6.937,
+        "analysis_ascent_m": 1138,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 2.532,
+        "landmark_gaps_m": [
+          0.0,
+          14.3,
+          2.532
+        ],
+        "max_step_m": 250.3
+      }
+    },
+    {
       "slug": "bel-layeshkaft-summit",
       "descent_m": 0,
       "chain": [
@@ -469,6 +792,36 @@
         3166,
         4907
       ]
+    },
+    {
+      "slug": "beliran-hot-spring-walk",
+      "descent_m": 28,
+      "chain": [
+        "beliran",
+        "beliran-forest",
+        "beliran-hot-spring"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ab9b662c75c1dc75f0ddda34685d1e7ccb2d0442c856f72d5092618631d12e26",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-msyr-jngly-nrnjstn-jdh-hrz-bh-abgrm-balyrn-llh-zr-w-rwsty-balyrn-19-mhr-403-187825039"
+        ],
+        "direction": "reverse",
+        "analysis_distance_km": 4.615,
+        "analysis_ascent_m": 78,
+        "origin_gap_m": 2.1,
+        "target_gap_m": 2.541,
+        "landmark_gaps_m": [
+          2.1,
+          0.0,
+          2.541
+        ],
+        "max_step_m": 161.3
+      }
     },
     {
       "slug": "beliran-narenjestan",
@@ -541,6 +894,38 @@
       ]
     },
     {
+      "slug": "bivarzin-charmkesh-south-face",
+      "descent_m": 2,
+      "chain": [
+        "bivarzin-village",
+        "charmkesh-bozbareh-spring",
+        "charmkesh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "cbd975776c2c9153209328312e3ef96e738aaed26b1d0ec882fa9c8cae72ecc1",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://gl.wikiloc.com/rutas-sendeirismo/qlh-chrmkhsh-1402-08-04-151506291",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-bywrzn-t-qlh-chrmkhsh-pnjshnbh-1404-08-15-239120470",
+          "https://www.wikiloc.com/hiking-trails/qlh-chrmkhsh-z-rwsty-bywrzn-lwshn-charmkesh-peak-170510376"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 7.791,
+        "analysis_ascent_m": 1184,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 1.913,
+        "landmark_gaps_m": [
+          0.0,
+          4.7,
+          1.913
+        ],
+        "max_step_m": 49.9
+      }
+    },
+    {
       "slug": "bozghush-north",
       "descent_m": 20,
       "chain": [
@@ -561,6 +946,41 @@
         4543,
         6752
       ]
+    },
+    {
+      "slug": "changizchal-parvaneh",
+      "descent_m": 435,
+      "chain": [
+        "changizchal-trailhead",
+        "parvaneh",
+        "changizchal-1",
+        "changizchal-2",
+        "changizchal-3"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a88b2f7e8aacb405f09f2c2d55642d775e851858e744848ba563b74dee701fd8",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.openstreetmap.org/",
+          "https://www.wikiloc.com/"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.463,
+        "analysis_ascent_m": 1396,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 1.822,
+        "landmark_gaps_m": [
+          0.0,
+          0.3,
+          1.2,
+          1.5,
+          1.822
+        ],
+        "max_step_m": 11.8
+      }
     },
     {
       "slug": "chelcheli-cheh-ja-loop",
@@ -1065,6 +1485,78 @@
       ]
     },
     {
+      "slug": "giladeh-meshe-suyi",
+      "descent_m": 118,
+      "chain": [
+        "giladeh-trailhead",
+        "chamlar-junction",
+        "meshe-suyi"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6da54daf87f1231bb3196890b5e32d91a5d409ed6255d28cf4195feb4e6c307f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637"
+        ],
+        "direction": "reverse",
+        "analysis_distance_km": 5.609,
+        "analysis_ascent_m": 236,
+        "origin_gap_m": 11.2,
+        "target_gap_m": 5.283,
+        "landmark_gaps_m": [
+          11.2,
+          25.8,
+          5.283
+        ],
+        "max_step_m": 19.6,
+        "reviewed_source_section": [
+          1108,
+          1632
+        ]
+      }
+    },
+    {
+      "slug": "giladeh-telli-bolagh-abi-beyglu",
+      "descent_m": 136,
+      "chain": [
+        "giladeh-trailhead",
+        "chamlar-junction",
+        "chamlar",
+        "telli-bolagh",
+        "abi-beyglu-forest-trailhead"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d764b5dea8e77a933cceca4b502e4d40f424a914b032ae5928540570941ff69c",
+        "source_url": "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gyldh-bh-abyglw-z-msyr-tlly-bwlg-1400-10-10-giladeh-to-abaygloo-from-telli-spring-route-91752570"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 13.978,
+        "analysis_ascent_m": 917,
+        "origin_gap_m": 0.8,
+        "target_gap_m": 0.0,
+        "landmark_gaps_m": [
+          0.8,
+          3.2,
+          0.6,
+          2.3,
+          0.0
+        ],
+        "max_step_m": 18.1,
+        "reviewed_source_section": [
+          8,
+          1314
+        ]
+      }
+    },
+    {
       "slug": "gol-zard-north-polour",
       "descent_m": 32,
       "chain": [
@@ -1109,6 +1601,38 @@
         4533,
         6928
       ]
+    },
+    {
+      "slug": "golabdarreh-espilat",
+      "descent_m": 6,
+      "chain": [
+        "golabdarreh-park",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "espilat-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3c837a51bbdc4e1c56af311131d4b0cd728197e2348456ece333678e57b7650f",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-glbdrh-t-qlh-spylt-jmh-1402-06-17-146457094"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 5.672,
+        "analysis_ascent_m": 1211,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 0.464,
+        "landmark_gaps_m": [
+          0.0,
+          78.0,
+          8.1,
+          0.464
+        ],
+        "max_step_m": 190.9
+      }
     },
     {
       "slug": "googeli-miana-ridge",
@@ -1239,6 +1763,39 @@
       ]
     },
     {
+      "slug": "heryas-vardij-shahid-baqeri",
+      "descent_m": 135,
+      "chain": [
+        "shahid-baqeri-hill-parking",
+        "vardij-rock-spring",
+        "vardij-peak",
+        "heryas-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "20602f2d6059a34a8ab7ba6012d588ae3594ff82cf924fb28a5d7cb75e67ed22",
+        "source_url": "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+          "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.276,
+        "analysis_ascent_m": 1011,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 3.389,
+        "landmark_gaps_m": [
+          0.0,
+          0.0,
+          0.0,
+          3.389
+        ],
+        "max_step_m": 13.1
+      }
+    },
+    {
       "slug": "igel-waterfall",
       "descent_m": 5,
       "chain": [
@@ -1281,6 +1838,36 @@
         5364,
         9060
       ]
+    },
+    {
+      "slug": "imamzadeh-davoud-shahneshin",
+      "descent_m": 0,
+      "chain": [
+        "imamzadeh-davoud-village",
+        "ashtargardan-pass",
+        "shahneshin-tehran"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "97b71a776fd6da9a2deaa0ee5d9a64f540bccde3f56b4824313e7ed7cb635c10",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-shhnshyn-shh-nshyn-z-mmzdh-dwwd-146105866"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 6.553,
+        "analysis_ascent_m": 1301,
+        "origin_gap_m": 0.3,
+        "target_gap_m": 1.112,
+        "landmark_gaps_m": [
+          0.3,
+          0.3,
+          1.112
+        ],
+        "max_step_m": 19.1
+      }
     },
     {
       "slug": "ira-fil-zamin",
@@ -1577,6 +2164,36 @@
       ]
     },
     {
+      "slug": "kasra-neotdi",
+      "descent_m": 0,
+      "chain": [
+        "neotdi-trailhead",
+        "kasra-heram-two-pass",
+        "kasra"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d60b6c2ca41db0b5d16d206a7ec82e4ce3685f33f85f569e5fc25429fe3216af",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khsry-179533187"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 5.719,
+        "analysis_ascent_m": 1056,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 0.956,
+        "landmark_gaps_m": [
+          0.0,
+          5.2,
+          0.956
+        ],
+        "max_step_m": 170.5
+      }
+    },
+    {
       "slug": "khatun-bargah-garmabdar",
       "descent_m": 19,
       "chain": [
@@ -1721,6 +2338,72 @@
       ]
     },
     {
+      "slug": "lasak-gorge-mishineh-marg",
+      "descent_m": 26,
+      "chain": [
+        "mishineh-marg-lasak-gorge",
+        "mishineh-marg-siah-rud-lake",
+        "mishineh-marg"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "cde7067adc54514b644fd8862e4c710f625edb43dbd24b174c7db71e48a28176",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/",
+          "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 10.654,
+        "analysis_ascent_m": 1437,
+        "origin_gap_m": 1.2,
+        "target_gap_m": 0.805,
+        "landmark_gaps_m": [
+          1.2,
+          1.0,
+          0.805
+        ],
+        "max_step_m": 8.9
+      }
+    },
+    {
+      "slug": "lasem-angemar-soozchal",
+      "descent_m": 348,
+      "chain": [
+        "angemar-trailhead",
+        "angemar",
+        "dobrar-west",
+        "dobrar-east",
+        "soozchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "36aa7d9317889207089ae3e17586cd7f5a1b4dc56a582d58a1d8f90cf1aeb1b1",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.openstreetmap.org/",
+          "https://www.wikiloc.com/"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.111,
+        "analysis_ascent_m": 1626,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 42.355,
+        "landmark_gaps_m": [
+          0.0,
+          1.3,
+          3.8,
+          3.1,
+          42.355
+        ],
+        "max_step_m": 21.6
+      }
+    },
+    {
       "slug": "lavasan-bozorg-fil-zamin",
       "descent_m": 28,
       "chain": [
@@ -1743,6 +2426,107 @@
         4165,
         6653
       ]
+    },
+    {
+      "slug": "loveh-waterfall-source",
+      "descent_m": 5,
+      "chain": [
+        "loveh-waterfall-trailhead",
+        "loveh-waterfall",
+        "loveh-waterfall-source"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d3e1c5a53505b59ee6d6d56e948f793f82caf0b787d8644c7b0b0aaee6576de4",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-lwh-186861642",
+          "https://www.wikiloc.com/hiking-trails/abshr-sly-lwh-97802972"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 1.37,
+        "analysis_ascent_m": 64,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 0.0,
+        "landmark_gaps_m": [
+          0.0,
+          444.0,
+          0.0
+        ],
+        "max_step_m": 9.2
+      }
+    },
+    {
+      "slug": "maran-village-arous-waterfall",
+      "descent_m": 20,
+      "chain": [
+        "maran-village",
+        "maran-waterfall-bridge",
+        "maran-waterfall-river-crossing",
+        "maran-arous-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b3231ff0ecb18ef8f859bd642c0da60eac9b1af11d13d64b381adb5e2b566394",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-mrn-y-abshr-rws-z-tnkhbn-173002675"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 2.068,
+        "analysis_ascent_m": 176,
+        "origin_gap_m": 12.2,
+        "target_gap_m": 0.617,
+        "landmark_gaps_m": [
+          12.2,
+          0.7,
+          0.7,
+          0.617
+        ],
+        "max_step_m": 7.0
+      }
+    },
+    {
+      "slug": "mehdi-posti-meshe-suyi-giladeh",
+      "descent_m": 954,
+      "chain": [
+        "mehdi-posti",
+        "jen-yoli-junction",
+        "meshe-suyi",
+        "chamlar-junction",
+        "giladeh-trailhead"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6da54daf87f1231bb3196890b5e32d91a5d409ed6255d28cf4195feb4e6c307f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mishe-suei-water-from-mehdi-posti-to-giledeh-villag-jngl-nwrdy-rwsty-mhdy-psty-bgrm-myshh-swyy-rwst-15387637"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 14.556,
+        "analysis_ascent_m": 172,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 11.18,
+        "landmark_gaps_m": [
+          0.0,
+          1.9,
+          4.9,
+          25.8,
+          11.18
+        ],
+        "max_step_m": 19.6,
+        "reviewed_source_section": [
+          273,
+          1632
+        ]
+      }
     },
     {
       "slug": "nayband-aliabad",
@@ -1837,6 +2621,80 @@
       ]
     },
     {
+      "slug": "palangchal-darakeh-station-5",
+      "descent_m": 196,
+      "chain": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "palangchal-shelter",
+        "palangchal-station5-junction",
+        "tochal-telecabin-station-5"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a754eea23369b4e6bb1d634a71ac959a300564d14407c34010d557ffab0bdbe2",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drkhh-bh-ystgh-pnj-tlkhbyn-twchl-95512880",
+          "https://www.wikiloc.com/hiking-trails/drkhh-t-ystgh-5-twchl-233214188"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.339,
+        "analysis_ascent_m": 1439,
+        "origin_gap_m": 84.1,
+        "target_gap_m": 49.711,
+        "landmark_gaps_m": [
+          84.1,
+          5.4,
+          9.8,
+          28.0,
+          49.711
+        ],
+        "max_step_m": 95.2
+      }
+    },
+    {
+      "slug": "palangchal-darakeh-summit",
+      "descent_m": 376,
+      "chain": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "palangchal-black-bend",
+        "palangchal-shelter",
+        "palangchal-ridge-junction",
+        "palangchal-shahneshin-junction",
+        "palangchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "45101b5505280e09f1e6421a793ea1b1046840c7f6f554156b2b5ebdc259f1ee",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-plngchl-z-msyr-pnhgh-plng-chl-80262399",
+          "https://www.wikiloc.com/mountaineering-trails/mydn-drkhh-pnhgh-plngchl-qlhy-plngchl-19285570"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 18.69,
+        "analysis_ascent_m": 2173,
+        "origin_gap_m": 81.6,
+        "target_gap_m": 5.578,
+        "landmark_gaps_m": [
+          81.6,
+          7.3,
+          12.9,
+          1.6,
+          6.8,
+          2.5,
+          5.578
+        ],
+        "max_step_m": 216.6
+      }
+    },
+    {
       "slug": "parachan-lashgarak-ridge",
       "descent_m": 217,
       "chain": [
@@ -1859,6 +2717,76 @@
         14598,
         15976
       ]
+    },
+    {
+      "slug": "paraw-chalabeh-summit",
+      "descent_m": 46,
+      "chain": [
+        "paraw-environmental-parking",
+        "paraw-cherober-gorge",
+        "paraw-dozari-spring",
+        "paraw-shelter",
+        "paraw"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "aa0276dd348ace7c71b35a05a504bcecf5dc28ebd26b7f8714c5c2f1a755d86c",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/prw-86465344",
+          "https://www.wikiloc.com/hiking-trails/qlh-praw-zmstnh-paraw-summit-1401-11-7-124394887",
+          "https://www.wikiloc.com/mountaineering-trails/paraw-mount-sheikhalikhan-summit-prwkhrmnshh-qlh-shykh-lykhn-3357-mtr-37052866",
+          "https://www.wikiloc.com/mountaineering-trails/paraw-summit-qlh-prw-6596716"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 7.435,
+        "analysis_ascent_m": 1883,
+        "origin_gap_m": 28.9,
+        "target_gap_m": 9.773,
+        "landmark_gaps_m": [
+          28.9,
+          1.5,
+          22.3,
+          1.6,
+          9.773
+        ],
+        "max_step_m": 242.5
+      }
+    },
+    {
+      "slug": "qaleh-dokhtar-ahar-dehtangeh",
+      "descent_m": 26,
+      "chain": [
+        "ahar-village",
+        "dehtangeh-waterfall",
+        "zargah-pass",
+        "qaleh-dokhtar-ahar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "884d1f0205b5da8140a87958ea05c0ccf43b2303cda169a322939a913de8113f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://kuhnavardi.com/?p=1388",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-ahr-t-qlh-qlh-dkhtrqzl-mm-trbyshh-jmh-1404-03-16-216831438"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 10.51,
+        "analysis_ascent_m": 1096,
+        "origin_gap_m": 8.8,
+        "target_gap_m": 0.584,
+        "landmark_gaps_m": [
+          8.8,
+          0.5,
+          0.9,
+          0.584
+        ],
+        "max_step_m": 71.4
+      }
     },
     {
       "slug": "qaleh-roudkhan-abbar",
@@ -1887,6 +2815,39 @@
         21043,
         25985
       ]
+    },
+    {
+      "slug": "qaleh-roudkhan-mazgadeh",
+      "descent_m": 1104,
+      "chain": [
+        "mazgadeh-siah-mazgi",
+        "qaleh-roudkhan-suteh",
+        "qaleh-roudkhan-mte-khani",
+        "qaleh-roudkhan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a5f5e8ed7639fd834d039fd6f7f82afe93b69b021716a57e79c1be9d829f40dc",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/mzgdh-syhmzgy-shft-bh-qlh-rwdkhn-10-tyr1401-106831778",
+          "https://www.wikiloc.com/hiking-trails/mzgdhshft-bh-qlh-rwdkhnfwmn-53609319"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 16.155,
+        "analysis_ascent_m": 1250,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 16.051,
+        "landmark_gaps_m": [
+          0.0,
+          0.5,
+          25.2,
+          16.051
+        ],
+        "max_step_m": 32.0
+      }
     },
     {
       "slug": "qali-kuh-pamzareh-summit",
@@ -2083,6 +3044,37 @@
       ]
     },
     {
+      "slug": "sarband-shervin",
+      "descent_m": 2,
+      "chain": [
+        "tochal-sarband-square",
+        "band-yakhchal",
+        "shervin-shelter"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8e9f419f163feb14d2e08c81fd968a8a3a277791070d736423b327b4fcbfbd64",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jnpnh-shrwyn-22129706",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-mydn-srbndmjsmh-t-bnd-ykhchl-jnpnh-shrwyn-pnhgh-shyrpl-drh-wswn-jmh-1403-02-14-169432932"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 5.205,
+        "analysis_ascent_m": 887,
+        "origin_gap_m": 6.3,
+        "target_gap_m": 1.471,
+        "landmark_gaps_m": [
+          6.3,
+          1.1,
+          1.471
+        ],
+        "max_step_m": 13.1
+      }
+    },
+    {
       "slug": "sekeh-no-sehchal-velayat-rud",
       "descent_m": 102,
       "chain": [
@@ -2263,6 +3255,47 @@
       ]
     },
     {
+      "slug": "shirabad-seven-waterfalls",
+      "descent_m": 42,
+      "chain": [
+        "shirabad-waterfalls-parking",
+        "shirabad-waterfall",
+        "shirabad-second-waterfall",
+        "shirabad-div-sepid-cave",
+        "shirabad-third-waterfall",
+        "shirabad-fourth-waterfall",
+        "shirabad-sixth-waterfall",
+        "shirabad-seven-waterfalls"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "7ba3b1d972dfe616d37338c3df0d1a9e6205053967fdce6b26f2022725e824f5",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+          "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 3.091,
+        "analysis_ascent_m": 226,
+        "origin_gap_m": 0.1,
+        "target_gap_m": 1.036,
+        "landmark_gaps_m": [
+          0.1,
+          0.3,
+          0.5,
+          1.9,
+          0.7,
+          1.0,
+          3.4,
+          1.036
+        ],
+        "max_step_m": 28.9
+      }
+    },
+    {
       "slug": "shirbad-bagh-hamzeh-nahal",
       "descent_m": 26,
       "chain": [
@@ -2429,6 +3462,41 @@
       ]
     },
     {
+      "slug": "soozna-miana-ridge",
+      "descent_m": 129,
+      "chain": [
+        "googeli-miana-trailhead",
+        "googeli-kharman-jinga",
+        "googeli-mian-visheh",
+        "googeli",
+        "soozna"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "17c10c1bb2d94f6a1fb92ed0ee46e7d16e22aeb5def19bed7a991353298b05a0",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/grdnh-wprt-w-qlh-swzn-171156119",
+          "https://www.wikiloc.com/hiking-trails/qlh-swzn-z-jnglbny-myn-230233951"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.895,
+        "analysis_ascent_m": 1322,
+        "origin_gap_m": 11.1,
+        "target_gap_m": 7.131,
+        "landmark_gaps_m": [
+          11.1,
+          9.0,
+          28.3,
+          6.1,
+          7.131
+        ],
+        "max_step_m": 188.5
+      }
+    },
+    {
       "slug": "sotak-bozorg-varangeh-rud",
       "descent_m": 13,
       "chain": [
@@ -2449,6 +3517,44 @@
         9434,
         11239
       ]
+    },
+    {
+      "slug": "suha-spinas-laton",
+      "descent_m": 1423,
+      "chain": [
+        "suha-lake",
+        "laton-suha-spring",
+        "spinas",
+        "laton-spinas-paradise-corridor",
+        "laton-small-waterfall",
+        "laton-spinas-waterfall-junction",
+        "laton-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "75c9852d275b2df0b01d7e348409f6a7c6e74f195749e868262df1b043d9c081",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/drychh-swh-qlh-spyns-abshr-ltwn-kwth-kwmh-9699479"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 17.091,
+        "analysis_ascent_m": 483,
+        "origin_gap_m": 8.5,
+        "target_gap_m": 6.249,
+        "landmark_gaps_m": [
+          8.5,
+          36.0,
+          31.8,
+          16.7,
+          176.5,
+          4.3,
+          6.249
+        ],
+        "max_step_m": 217.2
+      }
     },
     {
       "slug": "tashger-tutang",
@@ -2725,6 +3831,41 @@
       ]
     },
     {
+      "slug": "western-four-summits",
+      "descent_m": 229,
+      "chain": [
+        "pole-morghy-trailhead",
+        "bazmchal",
+        "mianrud",
+        "nur",
+        "lasem-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2e199a23c9f3f92fd4efc517ddac5899d578850ef633526efba24903a9d9ddc4",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.openstreetmap.org/",
+          "https://www.wikiloc.com/"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 9.129,
+        "analysis_ascent_m": 1060,
+        "origin_gap_m": 1.1,
+        "target_gap_m": 0.824,
+        "landmark_gaps_m": [
+          1.1,
+          0.0,
+          0.4,
+          0.5,
+          0.824
+        ],
+        "max_step_m": 94.5
+      }
+    },
+    {
       "slug": "zarrinkuh-khosravan-south",
       "descent_m": 10,
       "chain": [
@@ -2748,29 +3889,16 @@
     }
   ],
   "unresolved": [
-    "abak-meygun",
-    "abak-ruteh",
-    "abak-shemshak",
     "afjeh-hoyej-person",
-    "afjeh-hoyej-rizan",
-    "ahangarak-ahar",
     "ahangarak-hamlun",
     "alamkuh-northern-siahsang",
     "andar-person-rizan",
     "arfa-kuh-cheshmeh-paro",
-    "asiab-bad-latmal-park",
-    "azadkouh-kelak-bala",
-    "azadkouh-nesen",
-    "azadkouh-varangerud",
     "balqis-qaravolkhaneh",
     "band-eish-hesarak",
-    "barg-jahan-person",
-    "beliran-hot-spring-walk",
     "binalud-frizi",
     "bisotun-mishri-summit",
-    "bivarzin-charmkesh-south-face",
     "blades-rakhsh-to-shahvars",
-    "changizchal-parvaneh",
     "darabad-farakhsineh",
     "daryasar-esel-mahalleh",
     "dehnar-to-qarahdagh-east",
@@ -2784,15 +3912,10 @@
     "full-dobarar-ridge",
     "gahar-aligudarz",
     "gechi-soo-khaled-nabi",
-    "giladeh-meshe-suyi",
-    "giladeh-telli-bolagh-abi-beyglu",
-    "golabdarreh-espilat",
     "harzevil-to-gavkol",
-    "heryas-vardij-shahid-baqeri",
     "hesarchal-lashgarak-bozorg",
     "hezar-masjed-chaharrah",
     "hio-aseman-kuh",
-    "imamzadeh-davoud-shahneshin",
     "janestoon-east-abnik",
     "janestoon-west-abnik",
     "janestoon-west-lalun",
@@ -2801,7 +3924,6 @@
     "kal-jeni-trailhead",
     "kamal-sahand-ski-summit",
     "kaman-kouh-varangerud",
-    "kasra-neotdi",
     "khalkhal-asalem-daryaben",
     "khersang-abnik-middle",
     "kholeno-lalan",
@@ -2813,46 +3935,32 @@
     "kolonchin-khersan",
     "kolonchin-kol-khadang",
     "lalehzar-summit",
-    "lasak-gorge-mishineh-marg",
-    "lasem-angemar-soozchal",
     "laton-kuteh-kumeh",
-    "loveh-waterfall-source",
-    "maran-village-arous-waterfall",
     "marji-kesh-tange-galu",
     "masal-shanderman-dashteh-haji-bijar",
     "masouleh-chesli",
-    "mehdi-posti-meshe-suyi-giladeh",
     "mesr-farahzad",
     "momaj-to-kalahun",
     "neor-to-soubatan",
     "nil-kuh-pasang-tarajiq",
     "nizva-chashm",
     "palangchal-darakeh-shelter",
-    "palangchal-darakeh-station-5",
-    "palangchal-darakeh-summit",
-    "paraw-chalabeh-summit",
     "pashure-nava",
-    "qaleh-dokhtar-ahar-dehtangeh",
     "qaleh-dokhtar-shahrestanak",
-    "qaleh-roudkhan-mazgadeh",
     "qash-mastan-benroud",
     "sabalan-northeast-shabil",
     "sabalan-southeast-alvares",
     "sabalan-west-qartal-dashi",
     "sanboran-gahar",
     "sangan-pahneh-hesar",
-    "sarband-shervin",
     "shah-alborz-hasanjoun",
     "shah-shahidan-bijar-dam",
     "shir-kuh-deh-bala",
-    "shirabad-seven-waterfalls",
     "sialan-heniz",
     "sichal-ahar",
     "somamous-javaherdeh",
     "somamous-javaherdeh-waterfall",
-    "soozna-miana-ridge",
     "station-7-shahneshin",
-    "suha-spinas-laton",
     "taftan-darreh-gol",
     "tang-galu-siah-kaman-chalon",
     "tar-to-dobrar-east",
@@ -2862,7 +3970,6 @@
     "varish-pahneh-hesar",
     "varvasht-harijan",
     "velenjak-kamachal",
-    "western-four-summits",
     "yahar-to-kalahun",
     "zarrinkuh-aynehvarzan-southwest",
     "zarrinkuh-jaban-southeast",
@@ -2872,644 +3979,628 @@
   ],
   "diagnostics": [
     {
-      "slug": "abbas-ali-kamar-posht",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "slug": "afjeh-hoyej-person",
+      "reason": "origin gap 157m >100m"
     },
     {
-      "slug": "abbas-ali-kamar-posht",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "slug": "ahangarak-hamlun",
+      "reason": "geometry gap 374m >300m"
     },
     {
-      "slug": "alamkuh-southern-hesarchal",
-      "reason": "discontinuous geometry"
+      "slug": "alamkuh-northern-siahsang",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
-      "slug": "alimestan-imamzadeh-qasem",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "alimestan-imamzadeh-qasem",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "alimestan-imamzadeh-qasem",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "alvand-ganjnameh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "arfa-kuh-arfa-deh",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "arfa-kuh-arfa-deh",
-      "reason": "origin farther than 100m from track"
+      "slug": "andar-person-rizan",
+      "reason": "origin gap 157m >100m"
     },
     {
       "slug": "arfa-kuh-cheshmeh-paro",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 422m >100m"
     },
     {
       "slug": "arfa-kuh-cheshmeh-paro",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "hio-aseman-kuh",
-      "reason": "ordered landmark farther than 500m"
+      "reason": "geometry gap 562m >300m"
     },
     {
       "slug": "balqis-qaravolkhaneh",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 254m >100m"
     },
     {
       "slug": "balqis-qaravolkhaneh",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "balqis-qaravolkhaneh",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "balqis-qaravolkhaneh",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "band-eish-hesarak",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 115m >100m"
     },
     {
       "slug": "band-eish-hesarak",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "band-eish-hesarak",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "barf-anbar-fordo-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "bel-layeshkaft-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "bel-layeshkaft-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "bel-layeshkaft-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "beyrami-gashi",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shah-shahidan-bijar-dam",
-      "reason": "origin farther than 100m from track"
+      "reason": "geometry gap 452m >300m"
     },
     {
       "slug": "binalud-frizi",
-      "reason": "discontinuous geometry"
+      "reason": "geometry gap 316m >300m"
     },
     {
       "slug": "binalud-frizi",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "binalud-frizi",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "binalud-frizi",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
-      "slug": "qoli-zolikhah-best",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "slug": "bisotun-mishri-summit",
+      "reason": "origin gap 3312m >100m"
     },
     {
-      "slug": "varish-cheshmeh-shahi",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "chin-kalagh-fatehan",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "chort-lake-chort-village",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "chort-lake-chort-village",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "slug": "blades-rakhsh-to-shahvars",
+      "reason": "profile distance 5.75km differs from registered 9.50km"
     },
     {
       "slug": "darabad-farakhsineh",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 104m >100m"
     },
     {
-      "slug": "darabad-shensiyah",
-      "reason": "origin farther than 100m from track"
+      "slug": "darabad-farakhsineh",
+      "reason": "origin gap 187m >100m"
     },
     {
-      "slug": "darabad-hajiabad",
-      "reason": "origin farther than 100m from track"
+      "slug": "daryasar-esel-mahalleh",
+      "reason": "target gap 267m >100m"
     },
     {
-      "slug": "tar-to-dobrar-east",
-      "reason": "target farther than 100m from track"
+      "slug": "daryasar-esel-mahalleh",
+      "reason": "target gap 268m >100m"
     },
     {
       "slug": "dehnar-to-qarahdagh-east",
-      "reason": "ordered landmark farther than 500m"
+      "reason": "landmark gap 3126m >500m"
     },
     {
-      "slug": "yahar-to-kalahun",
-      "reason": "ordered landmark farther than 500m"
-    },
-    {
-      "slug": "domir-mozvash-summit",
-      "reason": "target farther than 100m from track"
+      "slug": "derjan-sehezar-hot-spring",
+      "reason": "profile distance 7.57km differs from registered 15.60km"
     },
     {
       "slug": "domir-mozvash-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "target gap 134m >100m"
     },
     {
       "slug": "domir-mozvash-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
-      "slug": "dorfak-shah-shahidan",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "dorfak-shah-shahidan",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "dorfak-shirkuh",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "dorfak-shirkuh",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "slug": "domir-mozvash-summit",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "dorfak-estakhrgah",
-      "reason": "target farther than 100m from track"
+      "reason": "target gap 989m >100m"
     },
     {
-      "slug": "filband-hesin-bon-espeh-rez",
-      "reason": "origin farther than 100m from track"
+      "slug": "dorfak-shah-shahidan",
+      "reason": "origin gap 170m >100m"
+    },
+    {
+      "slug": "dorfak-shah-shahidan",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "dorfak-shirkuh",
+      "reason": "geometry gap 443m >300m"
+    },
+    {
+      "slug": "dorfak-shirkuh",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "filband-alimestan-ridge",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 185m >100m"
     },
     {
-      "slug": "gahar-dorud",
-      "reason": "discontinuous geometry"
+      "slug": "filband-hesin-bon-espeh-rez",
+      "reason": "origin gap 1051m >100m"
+    },
+    {
+      "slug": "full-dobarar-ridge",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "gahar-aligudarz",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "harzevil-to-gavkol",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "gavkoshan-shahkouh-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "googeli-miana-ridge",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "googeli-miana-ridge",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "googeli-miana-ridge",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "hezar-masjed-chaharrah",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "janestoon-east-abnik",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "janestoon-west-abnik",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "janestoon-west-lalun",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "jangal-abr-abr-to-forest",
-      "reason": "target farther than 100m from track"
-    },
-    {
-      "slug": "jangal-abr-shirinabad-to-forest",
-      "reason": "target farther than 100m from track"
-    },
-    {
-      "slug": "kaboudval-parking-to-waterfall",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "klavan-kahar-naz-ridge",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kal-jeni-trailhead",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "kal-jeni-trailhead",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "kal-jeni-trailhead",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "kal-jeni-trailhead",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "kaman-kouh-varangerud",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "karkas-kesheh-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "geometry gap 593m >300m"
     },
     {
       "slug": "gechi-soo-khaled-nabi",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 672m >100m"
     },
     {
-      "slug": "khersang-abnik-middle",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khersang-abnik-middle",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "khersang-abnik-middle",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kholeno-lalan",
-      "reason": "ordered landmark farther than 500m"
-    },
-    {
-      "slug": "kholeno-lalan",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kholeno-varangerud",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "khornoro-arim",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khornoro-arim",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khornoro-sangdeh",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khornoro-sangdeh",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khornoro-varpi",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "kino-telecom-tower",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kolakchal-jamshidieh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kolakchal-jamshidieh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kolakchal-jamshidieh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kolonchin-kol-khadang",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "kolonchin-khersan",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "lalehzar-summit",
-      "reason": "discontinuous geometry"
+      "slug": "harzevil-to-gavkol",
+      "reason": "geometry gap 573m >300m"
     },
     {
       "slug": "hesarchal-lashgarak-bozorg",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 551m >100m"
+    },
+    {
+      "slug": "hezar-masjed-chaharrah",
+      "reason": "origin gap 10300m >100m"
+    },
+    {
+      "slug": "hio-aseman-kuh",
+      "reason": "landmark gap 990m >500m"
+    },
+    {
+      "slug": "janestoon-east-abnik",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "janestoon-west-abnik",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "janestoon-west-abnik",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "janestoon-west-lalun",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "jangal-abr-abr-to-forest",
+      "reason": "target gap 1013m >100m"
+    },
+    {
+      "slug": "jangal-abr-shirinabad-to-forest",
+      "reason": "target gap 1147m >100m"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "geometry gap 309m >300m"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin gap 835m >100m"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin gap 793m >100m"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin gap 844m >100m"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "landmark gap 530m >500m"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kaman-kouh-varangerud",
+      "reason": "origin gap 886m >100m"
+    },
+    {
+      "slug": "khalkhal-asalem-daryaben",
+      "reason": "geometry gap 317m >300m"
+    },
+    {
+      "slug": "khalkhal-asalem-daryaben",
+      "reason": "geometry gap 520m >300m"
+    },
+    {
+      "slug": "khalkhal-asalem-daryaben",
+      "reason": "target gap 119m >100m"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "origin gap 1214m >100m"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kholeno-lalan",
+      "reason": "landmark gap 564m >500m"
+    },
+    {
+      "slug": "kholeno-lalan",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kholeno-varangerud",
+      "reason": "geometry gap 542m >300m"
+    },
+    {
+      "slug": "khornoro-arim",
+      "reason": "origin gap 678m >100m"
+    },
+    {
+      "slug": "khornoro-arim",
+      "reason": "origin gap 677m >100m"
+    },
+    {
+      "slug": "khornoro-sangdeh",
+      "reason": "origin gap 1826m >100m"
+    },
+    {
+      "slug": "khornoro-sangdeh",
+      "reason": "origin gap 2056m >100m"
+    },
+    {
+      "slug": "khornoro-varpi",
+      "reason": "origin gap 636m >100m"
+    },
+    {
+      "slug": "khour-pahneh-hesar",
+      "reason": "origin gap 259m >100m"
+    },
+    {
+      "slug": "khour-pahneh-hesar",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kolonchin-khersan",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kolonchin-khersan",
+      "reason": "geometry gap 382m >300m"
+    },
+    {
+      "slug": "kolonchin-khersan",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kolonchin-kol-khadang",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kolonchin-kol-khadang",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "kolonchin-kol-khadang",
+      "reason": "geometry gap 367m >300m"
+    },
+    {
+      "slug": "kolonchin-kol-khadang",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "lalehzar-summit",
+      "reason": "geometry gap 440m >300m"
+    },
+    {
+      "slug": "laton-kuteh-kumeh",
+      "reason": "origin gap 1870m >100m"
+    },
+    {
+      "slug": "laton-kuteh-kumeh",
+      "reason": "origin gap 776m >100m"
+    },
+    {
+      "slug": "laton-kuteh-kumeh",
+      "reason": "landmark gap 595m >500m"
+    },
+    {
+      "slug": "laton-kuteh-kumeh",
+      "reason": "origin gap 5076m >100m"
     },
     {
       "slug": "marji-kesh-tange-galu",
-      "reason": "target farther than 100m from track"
+      "reason": "target gap 128m >100m"
+    },
+    {
+      "slug": "masal-shanderman-dashteh-haji-bijar",
+      "reason": "target gap 3435m >100m"
+    },
+    {
+      "slug": "masal-shanderman-dashteh-haji-bijar",
+      "reason": "target gap 933m >100m"
+    },
+    {
+      "slug": "masouleh-chesli",
+      "reason": "geometry gap 306m >300m"
+    },
+    {
+      "slug": "masouleh-chesli",
+      "reason": "origin gap 2525m >100m"
     },
     {
       "slug": "mesr-farahzad",
-      "reason": "discontinuous geometry"
+      "reason": "geometry gap 615m >300m"
     },
     {
       "slug": "mesr-farahzad",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
-      "slug": "nayband-aliabad",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "nil-kuh-pasang-tarajiq",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "noghre-sar-bagh-safa",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "noghre-sar-bagh-safa",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "noghre-sar-bagh-safa",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "noghre-sar-bagh-safa",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "orin-hesar",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "orin-hesar",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "orin-hesar",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "khour-pahneh-hesar",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "khour-pahneh-hesar",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "varish-baro-kondor-pahneh",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "varish-pahneh-hesar",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "varish-cheshmeh-shahi",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sangan-pahneh-hesar",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "pashure-nava",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "pashure-nava",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "pashure-nava",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "pashure-nava",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "qash-mastan-khafr-shelter",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "qash-mastan-benroud",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sabalan-southeast-alvares",
-      "reason": "target farther than 100m from track"
-    },
-    {
-      "slug": "sabalan-northeast-shabil",
-      "reason": "target farther than 100m from track"
-    },
-    {
-      "slug": "kamal-sahand-ski-summit",
-      "reason": "ordered landmark farther than 500m"
-    },
-    {
-      "slug": "kamal-sahand-ski-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "kamal-sahand-ski-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sanboran-tian",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sanboran-tian",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sanboran-bidastaneh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sanboran-gahar",
-      "reason": "target farther than 100m from track"
-    },
-    {
-      "slug": "shah-alborz-hasanjoun",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "shah-alborz-hasanjoun",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shah-alborz-hasanjoun",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahan-kuh-sardab",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahan-kuh-sardab",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahan-kuh-sardab",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahvar-pirmishi-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahvar-pirmishi-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shahvar-pirmishi-summit",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shir-kuh-deh-bala",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "shir-kuh-deh-bala",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shir-kuh-deh-bala",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shirbad-bojan",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "shirbad-bagh-hamzeh-nahal",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "tang-galu-siah-kaman-chalon",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "sialan-heniz",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "sialan-esel-mahalleh",
-      "reason": "discontinuous geometry"
-    },
-    {
-      "slug": "sialan-esel-mahalleh",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "sichal-ahar",
-      "reason": "partial, composite, technical or reference-only evidence"
-    },
-    {
-      "slug": "somamous-javaherdeh-waterfall",
-      "reason": "origin farther than 100m from track"
-    },
-    {
-      "slug": "somamous-javaherdeh",
-      "reason": "discontinuous geometry"
+      "slug": "momaj-to-kalahun",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "neor-to-soubatan",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 499m >100m"
+    },
+    {
+      "slug": "nil-kuh-pasang-tarajiq",
+      "reason": "geometry gap 376m >300m"
+    },
+    {
+      "slug": "nizva-chashm",
+      "reason": "geometry gap 302m >300m"
+    },
+    {
+      "slug": "palangchal-darakeh-shelter",
+      "reason": "origin gap 716m >100m"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "geometry gap 440m >300m"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "qaleh-dokhtar-shahrestanak",
+      "reason": "origin gap 678m >100m"
+    },
+    {
+      "slug": "qash-mastan-benroud",
+      "reason": "origin gap 2661m >100m"
+    },
+    {
+      "slug": "qash-mastan-benroud",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "sabalan-northeast-shabil",
+      "reason": "target gap 112m >100m"
+    },
+    {
+      "slug": "sabalan-northeast-shabil",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "sabalan-southeast-alvares",
+      "reason": "target gap 122m >100m"
+    },
+    {
+      "slug": "sabalan-southeast-alvares",
+      "reason": "target gap 113m >100m"
+    },
+    {
+      "slug": "sabalan-west-qartal-dashi",
+      "reason": "target gap 107m >100m"
+    },
+    {
+      "slug": "sabalan-west-qartal-dashi",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "sanboran-gahar",
+      "reason": "target gap 545m >100m"
+    },
+    {
+      "slug": "sangan-pahneh-hesar",
+      "reason": "origin gap 1647m >100m"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "geometry gap 320m >300m"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "shah-shahidan-bijar-dam",
+      "reason": "origin gap 340m >100m"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "geometry gap 1492m >300m"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "sialan-heniz",
+      "reason": "geometry gap 549m >300m"
+    },
+    {
+      "slug": "sichal-ahar",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "somamous-javaherdeh",
+      "reason": "origin gap 153m >100m"
+    },
+    {
+      "slug": "somamous-javaherdeh",
+      "reason": "geometry gap 379m >300m"
+    },
+    {
+      "slug": "somamous-javaherdeh-waterfall",
+      "reason": "origin gap 153m >100m"
+    },
+    {
+      "slug": "somamous-javaherdeh-waterfall",
+      "reason": "origin gap 548m >100m"
+    },
+    {
+      "slug": "station-7-shahneshin",
+      "reason": "origin gap 400m >100m"
     },
     {
       "slug": "taftan-darreh-gol",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 240m >100m"
     },
     {
       "slug": "taftan-darreh-gol",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "taftan-darreh-gol",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "taftan-darreh-gol",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "taftan-darreh-gol",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "tang-galu-siah-kaman-chalon",
+      "reason": "origin gap 929m >100m"
+    },
+    {
+      "slug": "tar-to-dobrar-east",
+      "reason": "target gap 413m >100m"
     },
     {
       "slug": "tochal-shahrestanak",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "tochal-shahrestanak",
+      "reason": "[Errno 2] No such file or directory: '/home/nobitex/Desktop/Tasks/Nobitex/hawatch/tracks/tochal/tochal-shahrestanak-rafto-bargasth.gpx'"
+    },
+    {
+      "slug": "varish-baro-kondor-pahneh",
+      "reason": "geometry gap 329m >300m"
+    },
+    {
+      "slug": "varish-baro-kondor-pahneh",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "geometry gap 329m >300m"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "target gap 524m >100m"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
+    },
+    {
+      "slug": "varish-pahneh-hesar",
+      "reason": "geometry gap 329m >300m"
+    },
+    {
+      "slug": "varish-pahneh-hesar",
+      "reason": "geometry gap 357m >300m"
+    },
+    {
+      "slug": "varish-pahneh-hesar",
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "varvasht-harijan",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 179m >100m"
     },
     {
-      "slug": "zarrinkuh-tar-north",
-      "reason": "origin farther than 100m from track"
+      "slug": "velenjak-kamachal",
+      "reason": "origin gap 367m >100m"
     },
     {
-      "slug": "zarrinkuh-jaban-southeast",
-      "reason": "discontinuous geometry"
+      "slug": "velenjak-kamachal",
+      "reason": "origin gap 187m >100m"
+    },
+    {
+      "slug": "yahar-to-kalahun",
+      "reason": "landmark gap 1494m >500m"
     },
     {
       "slug": "zarrinkuh-aynehvarzan-southwest",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 134m >100m"
+    },
+    {
+      "slug": "zarrinkuh-jaban-southeast",
+      "reason": "geometry gap 1749m >300m"
+    },
+    {
+      "slug": "zarrinkuh-tar-north",
+      "reason": "origin gap 563m >100m"
+    },
+    {
+      "slug": "ziarat-forest-naharkhoran",
+      "reason": "target gap 486m >100m"
     },
     {
       "slug": "zingalo-madan",
-      "reason": "origin farther than 100m from track"
+      "reason": "origin gap 390m >100m"
     },
     {
       "slug": "zingalo-madan",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "zingalo-madan",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     },
     {
       "slug": "zingalo-madan",
-      "reason": "partial, composite, technical or reference-only evidence"
+      "reason": "reference/partial/technical evidence; not a reviewed route profile"
     }
   ]
 }
