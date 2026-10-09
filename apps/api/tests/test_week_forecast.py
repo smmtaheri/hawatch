@@ -129,3 +129,23 @@ def test_route_descent_applies_only_matching_canonical_chain(week_seed):
     call_command('apply_route_descent')
     assert list(route.points.order_by('sort_order').values_list('segment_distance_m',flat=True))[1:]==[1234]*5
     assert Route.objects.get(slug='tochal-shahrestanak').descent_m is None
+
+
+def test_deploy_cache_does_not_reuse_old_worker_payloads(settings):
+    from hawatch.api.v1.week_views import cached_week
+    from django.test import override_settings
+    import json
+    cache.clear()
+    legacy={"last_generated_at":None,"subject":{"slug":"tochal-darband"}}
+    current={"last_generated_at":None,"subject":{"slug":"tochal-darband","descent_m":0}}
+    today=now_tehran().date()
+    with override_settings(HAWATCH_ASSET_VERSION='old-worker'),patch('hawatch.api.v1.week_views.build_week',return_value=legacy):
+        cached_week('route','tochal-darband',today)
+    with override_settings(HAWATCH_ASSET_VERSION='new-worker'),patch('hawatch.api.v1.week_views.build_week',return_value=current) as build:
+        (body,_),status=cached_week('route','tochal-darband',today)
+        assert status=='MISS' and json.loads(body)['subject']['descent_m']==0
+        assert cached_week('route','tochal-darband',today)[1]=='HIT'
+        assert build.call_count==1
+    with override_settings(HAWATCH_ASSET_VERSION='old-worker'),patch('hawatch.api.v1.week_views.build_week') as build:
+        assert cached_week('route','tochal-darband',today)[1]=='HIT'
+        build.assert_not_called()

@@ -14,7 +14,7 @@ body.forecast-page #forecast-v4 .specialist-trigger{font-size:16px;font-weight:4
 body.forecast-page #forecast-v4 .metric-label,body.forecast-page #forecast-v4 .chart-caption{font-size:14px;font-weight:400}
 body.forecast-page #forecast-v4 .metric-label-unit,body.forecast-page #forecast-v4 .chart-caption.unit{font-size:11px}
 body.forecast-page.route-page #forecast-v4 .tool label{font-size:15px;font-weight:700;color:var(--ink)}
-body.forecast-page.route-page #forecast-v4 .summary-item strong,body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:18px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .summary-item strong{font-size:18px;font-weight:700}
 body.forecast-page.route-page #forecast-v4 .v4-route-support-title{font-size:25px;font-weight:700}
 body.forecast-page.route-page #forecast-v4 .gear-trigger{font-size:18px;font-weight:700}
 body.forecast-page.route-page #forecast-v4 .change-route{font-size:16px;font-weight:700}
@@ -69,9 +69,13 @@ body.forecast-page .forecast-v4 .export-shell .point-header{width:124px;max-widt
 body.forecast-page .forecast-v4 .export-shell .point-header strong{white-space:normal;display:block;line-height:1.5}
 body.forecast-page .forecast-v4 .export-shell .point-headers{height:176px}
 
-/* Give long durations the full summary width without changing typography. */
-body.forecast-page.route-page #forecast-v4 .route-summary [data-summary="stopwatch"]{grid-column:1/-1;order:1}
-body.forecast-page.route-page #forecast-v4 .route-summary .duration-value{white-space:normal;overflow-wrap:break-word}
+/* Keep duration beside arrival; use a slightly smaller bold value. */
+body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:15px;font-weight:700;white-space:nowrap}
+@media(max-width:359px){
+ body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:14px}
+ body.forecast-page.route-page #forecast-v4 .route-summary{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+ body.forecast-page.route-page #forecast-v4 .route-summary [data-summary="distance"] strong{white-space:normal}
+}
 /* Keep both mobile actions equally sized; narrow phones use two full-width rows. */
 @media(max-width:767px){
  body.forecast-page .forecast-v4 .modal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}

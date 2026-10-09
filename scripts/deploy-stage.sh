@@ -116,7 +116,7 @@ if len(payload.get("days", [])) != 8 or payload.get("data_mode") != "live" or no
 curl --fail --silent --show-error --max-time 30 "${stage_base}/api/v1/routes/tochal-darband/forecast/week/" | python3 -c '
 import json,sys
 payload=json.load(sys.stdin)
-if len(payload.get("days", [])) != 8 or len(payload.get("plans", {})) != 576 or not payload.get("records"):
+if len(payload.get("days", [])) != 8 or len(payload.get("plans", {})) != 576 or not payload.get("records") or "descent_m" not in payload.get("subject", {}):
     raise SystemExit("Stage weekly route forecast is not ready.")
 '
 

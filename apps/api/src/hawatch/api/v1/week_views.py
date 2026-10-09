@@ -3,6 +3,7 @@ from hashlib import sha256
 import json
 import time
 from django.core.cache import cache
+from django.conf import settings
 from django.http import HttpResponse
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
@@ -12,7 +13,10 @@ from .week_bundles import build_week
 from .week_cache import revision
 
 def cached_week(kind, slug, today):
-    key = f"week-1:{revision()}:{kind}:{slug}:{today}"
+    # Old API workers can still answer while new images warm their cache.
+    # Keep their serialized payloads out of the new release's cache namespace.
+    release = settings.HAWATCH_ASSET_VERSION or "local"
+    key = f"week-2:{release}:{revision()}:{kind}:{slug}:{today}"
     try:
         stored = cache.get(key)
         if stored: return stored, "HIT"
