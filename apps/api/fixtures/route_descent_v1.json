@@ -1,0 +1,3515 @@
+{
+  "schema_version": "route-descent-1",
+  "routes": [
+    {
+      "slug": "abbas-ali-kamar-posht",
+      "descent_m": 0,
+      "chain": [
+        "abbas-ali-kamar-posht-village",
+        "abbas-ali-kamar-posht-spring",
+        "abbas-ali"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b56aaef89ef42549b4129c76f0db3e0737158d9c771eab26edd764277c4e9dfe",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-bsly-z-khmrpsht-234505918",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1795,
+        3958
+      ]
+    },
+    {
+      "slug": "abbasabad-narges-tappeh",
+      "descent_m": 59,
+      "chain": [
+        "narges-tappeh-trailhead",
+        "narges-tappeh",
+        "abbasabad-behshahr"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2e291f0267ce794b08d266d9c62f2cdf8d9a12b4db9d0bef3167a15980bab537",
+        "source_url": "https://www.wikiloc.com/hiking-trails/msyr-nrgs-tph-bhshhr-z-ltph-bh-smt-bs-abd-60924140",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1962,
+        4540
+      ]
+    },
+    {
+      "slug": "abnik-waterfall",
+      "descent_m": 3,
+      "chain": [
+        "khersang-abnik-village",
+        "abnik-waterfall-junction",
+        "abnik-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ff6f659536e7e6f13d14359b5c05774fc898bbefe2a053aefa111c3ac2a26331",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-abnykh-99896117",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3107,
+        3733
+      ]
+    },
+    {
+      "slug": "afjeh-saka-atash-kuh",
+      "descent_m": 69,
+      "chain": [
+        "atash-kuh-afjeh-trailhead",
+        "atash-kuh-soston-waterfall",
+        "saka",
+        "atash-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "edc042fb1d06d6d37db4939dcfc4b0c73984c102deb6a2063159b5e7e4291d9c",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3744,
+        6153,
+        9211
+      ]
+    },
+    {
+      "slug": "alamkuh-southern-hesarchal",
+      "descent_m": 0,
+      "chain": [
+        "alamkuh-tang-galu",
+        "alamkuh-hesarchal",
+        "alamkuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "5f8c52903476bf12ab7a05696bbd7d0c4d2b298459e2994c6935d049603525ea",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-lm-khwh-z-hsrchl-alam-kouh-peak-26988793",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4704,
+        9590
+      ]
+    },
+    {
+      "slug": "alimestan-imamzadeh-qasem",
+      "descent_m": 1,
+      "chain": [
+        "alimestan-forest-trailhead",
+        "alimestan",
+        "alimestan-wooden-fence",
+        "alimestan-rostam-chal",
+        "imamzadeh-qasem"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "226169f52b0cfac61b2946879ec4287a7f053344ad04988f273557b5eac47de1",
+        "source_url": "https://www.wikiloc.com/hiking-trails/jngl-lymstn-qlh-mm-zdh-qsm-96-08-12-20740039",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1964,
+        4529,
+        6562,
+        7226
+      ]
+    },
+    {
+      "slug": "aluchal-sartakht-to-waterfall",
+      "descent_m": 326,
+      "chain": [
+        "aluchal-sartakht",
+        "aluchal-junction",
+        "aluchal-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "43ba5ee67c97cb015284311b3700d4f3e74e16cdec3ebef9128cfb216295d491",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-alwchl-z-srtkht-jngl-br-176588567",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        256,
+        2561
+      ]
+    },
+    {
+      "slug": "alvand-ganjnameh",
+      "descent_m": 0,
+      "chain": [
+        "alvand-ganjnameh-trailhead",
+        "alvand-mishan-shelter",
+        "alvand-takht-nader",
+        "alvand"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "30d1105baecc6359545814c3b6b5236eb2c808e0157d1008d5ba7765c4833236",
+        "source_url": "https://www.wikiloc.com/hiking-trails/gnjnmh-bh-lwnd-hmdn-alvand-peak-hamedan-141879486",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2220,
+        3654,
+        5144
+      ]
+    },
+    {
+      "slug": "araghchin-niloufar",
+      "descent_m": 0,
+      "chain": [
+        "niloufar-park-kashanak",
+        "khoshkchal",
+        "araghchin"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "47599b73456275f209881e9fd6dc2c937c9a2df97d948080bc964fc30c56635d",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2654,
+        4011
+      ]
+    },
+    {
+      "slug": "arakouh-kamard",
+      "descent_m": 61,
+      "chain": [
+        "kamard",
+        "kamard-waterfall",
+        "arakouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "24f30060ab00b7761119cd878328bfe5e7f7cb9307406e00de18c837de139901",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-khmrd-and-qlh-arkhwh-from-kamard-189478489",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        547,
+        5811
+      ]
+    },
+    {
+      "slug": "arfa-kuh-arfa-deh",
+      "descent_m": 8,
+      "chain": [
+        "arfa-deh",
+        "arfa-kuh-under-summit-camp",
+        "arfa-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "50b51a09542bec376e7d11a87a0cb3086f193b8e29cc1b42aaf61dd818bccd73",
+        "source_url": "https://www.wikiloc.com/hiking-trails/arfa-kooh-rf-khwh-8254280",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4176,
+        5316
+      ]
+    },
+    {
+      "slug": "aseman-sara-aghuzbon",
+      "descent_m": 10,
+      "chain": [
+        "aghuzbon-rudbar",
+        "aseman-sara-upper-pond",
+        "aseman-sara"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "070641ff01ff0c59e4355af5051235101d37cebf0eaa9c0be47d1f43b257fe42",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6036,
+        6951
+      ]
+    },
+    {
+      "slug": "aseman-sara-galdian",
+      "descent_m": 0,
+      "chain": [
+        "aseman-sara-galdian-trailhead",
+        "galdian-pond",
+        "aseman-sara-upper-pond",
+        "aseman-sara"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "1e40469d55d9f7927714904622773331ace5299691f3c1bc260b9af9debde3fb",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1789,
+        6584,
+        7613
+      ]
+    },
+    {
+      "slug": "asiab-bad-heryas-valley",
+      "descent_m": 4,
+      "chain": [
+        "heryas-valley-trailhead",
+        "heryas-valley-garden",
+        "asiab-bad-omid-shelter",
+        "asiab-bad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "79f154888b0e60a068a39c1c6c8016e2ec8985e5bd33d2516c35216f7f0f486d",
+        "source_url": "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true
+      }
+    },
+    {
+      "slug": "azadkouh-nahiyeh",
+      "descent_m": 213,
+      "chain": [
+        "azadkouh-nahiyeh-start",
+        "azadkouh-choren-pass",
+        "azadkouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "24f5ec9485f4ac304196a9d9539e2a120cbc7cd69085376bbca08f911f53295b",
+        "source_url": "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        12880,
+        14486
+      ]
+    },
+    {
+      "slug": "babak-castle-ascent",
+      "descent_m": 10,
+      "chain": [
+        "babak-hotel-trailhead",
+        "babak-trail-teahouse",
+        "babak-castle"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a23921dc3cdc2a35e18a89bf1c368bab50a64102f657fbd841475373e0762734",
+        "source_url": "https://www.wikiloc.com/hiking-trails/rft-qlh-bbkh-z-htl-yl-ywrdy-174468424",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2302,
+        3433
+      ]
+    },
+    {
+      "slug": "band-eish-koohsar",
+      "descent_m": 28,
+      "chain": [
+        "band-eish-koohsar-trailhead",
+        "band-eish-under-wall",
+        "band-eish"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "9743e17fdfef175f7ca0f307c155473b948feae005951d90b1f1954644a84ff7",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-z-prkh-kwhsr-t-qlh-bnd-ysh-jmh-1403-10-21-197495034",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6777,
+        7393
+      ]
+    },
+    {
+      "slug": "barf-anbar-ahmadabad-summit",
+      "descent_m": 17,
+      "chain": [
+        "barf-anbar-ahmadabad-trailhead",
+        "barf-anbar-siah-kuh-pass",
+        "barf-anbar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "786581be6458bf3f0692889bea7be9a7c8708d8bd229a6631e775da0b36384b3",
+        "source_url": "https://www.wikiloc.com/hiking-trails/brf-nbr-3220-mtr-dw-msyr-z-hmdabd-frdw-186099416",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5378,
+        6161
+      ]
+    },
+    {
+      "slug": "barf-anbar-fordo-summit",
+      "descent_m": 0,
+      "chain": [
+        "barf-anbar-fordo-trailhead",
+        "barf-anbar-northern-ridge",
+        "barf-anbar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "21ae3ba195f1b0c67fdcf72ff3643c569d6b903527da2b09107688db13316c8a",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-brf-nbr-qm-197474250",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3181,
+        5131
+      ]
+    },
+    {
+      "slug": "barf-anbar-four-imamzadeh-summit",
+      "descent_m": 0,
+      "chain": [
+        "barf-anbar-four-imamzadeh",
+        "barf-anbar-northern-ridge",
+        "barf-anbar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8d4b628092893f8463b04bd0e2a6e583e1d94d961f10abe850ed866aac8b74dd",
+        "source_url": "https://www.wikiloc.com/hiking-trails/brf-nbr-1401-03-20-105245115",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1521,
+        3659
+      ]
+    },
+    {
+      "slug": "bel-layeshkaft-summit",
+      "descent_m": 0,
+      "chain": [
+        "bel-layeshkaft-trailhead",
+        "bel-albalou-spring",
+        "bel-shelter",
+        "bel"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "86e2652d75e4da974c6f2098b928f1347107ef005839f4e992d59cc0d5a42c53",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-bl-qlyd-38854926",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1614,
+        3166,
+        4907
+      ]
+    },
+    {
+      "slug": "beliran-narenjestan",
+      "descent_m": 374,
+      "chain": [
+        "narenjestan-haraz-bridge",
+        "beliran-do-sang-spring",
+        "beliran-hot-spring",
+        "beliran-forest",
+        "beliran"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ab9b662c75c1dc75f0ddda34685d1e7ccb2d0442c856f72d5092618631d12e26",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        8149,
+        8716,
+        11314,
+        13331
+      ]
+    },
+    {
+      "slug": "beyrami-gashi",
+      "descent_m": 104,
+      "chain": [
+        "beyrami-gashi-trailhead",
+        "beyrami-tang-ravan",
+        "beyrami"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "7928962c71863f4e8ec9475d8fea9083542d7a92c72b77ad34d7bf6bf712814a",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-byrmy-bm-stn-bwshhr-245655247",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1223,
+        9416
+      ]
+    },
+    {
+      "slug": "biji-kuh-west",
+      "descent_m": 0,
+      "chain": [
+        "karaj-mountaineers-square",
+        "biji-kuh-spring",
+        "biji-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "bd980cada2207e885d55767070b9c69f1dfd6f56f8a025ea65c1888aea8f3bef",
+        "source_url": "https://www.wikiloc.com/hiking-trails/beiji-peak-mount-noor-bam-azimieh-from-the-mountaineers-field-qlh-byjy-khwh-nwr-bm-zymyh-z-mydn-khw-213830073",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1023,
+        2762
+      ]
+    },
+    {
+      "slug": "bozghush-north",
+      "descent_m": 20,
+      "chain": [
+        "bozghush-allah-haqq-trailhead",
+        "bozghush-shelter",
+        "bozghush"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "54ea3b6a01362dddffbe6573050b017b9d1e26d74eab2613a22bb44a4e95faa3",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/98-03-31-qlh-bzqwsh-boz-qoosh-peak-37864795",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4543,
+        6752
+      ]
+    },
+    {
+      "slug": "chelcheli-cheh-ja-loop",
+      "descent_m": 16,
+      "chain": [
+        "chelcheli-cheh-ja-village",
+        "chelcheli-spring",
+        "chelcheli"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "fa122a71d29bb3a3a81999d2d6db2b15bc93cd3818ade0b00d05a6a53f770c42",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-chlchly-chh-j-rft-z-khj-khlh-w-brgsht-z-wd-gwdr-141101151",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3247,
+        8373
+      ]
+    },
+    {
+      "slug": "chin-kalagh-darakeh",
+      "descent_m": 59,
+      "chain": [
+        "chin-kalagh-darakeh-trailhead",
+        "chin-kalagh-kara-forest",
+        "chin-kalagh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8876b398f2b0be0f7774f69173232363704dcabd192d5af00e60a05447bf8548",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-chyn-khlg-z-drkhh-w-jngl-khr-47521291",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3424,
+        6186
+      ]
+    },
+    {
+      "slug": "chin-kalagh-fatehan",
+      "descent_m": 0,
+      "chain": [
+        "chin-kalagh-fatehan-trailhead",
+        "chin-kalagh-bidestan-spring",
+        "chin-kalagh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2216dfa4ee0307b00d828863939052d9ef5c46ce508c362e357142fa718b2a5e",
+        "source_url": "https://gl.wikiloc.com/rutas-sendeirismo/summit-chin-kalagh-qlh-chyn-khlg-z-bm-sdt-abd-shhrkh-lwm-pzshkhy-dnshgh-thrn-180572314",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2233,
+        3668
+      ]
+    },
+    {
+      "slug": "chin-kalagh-sarbazark",
+      "descent_m": 306,
+      "chain": [
+        "chin-kalagh-fatehan-trailhead",
+        "chin-kalagh",
+        "palangchal",
+        "ashtargardan-pass",
+        "sarbazark"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6c7751b0800020a9cedb74477afd5722c668760ab36bea1ad17293b5bdcefe6d",
+        "source_url": "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4383,
+        11488,
+        12051,
+        13144
+      ]
+    },
+    {
+      "slug": "chort-lake-chort-village",
+      "descent_m": 244,
+      "chain": [
+        "chort-village",
+        "chort-spring",
+        "chort-lake"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "65d82f02c8e817f68a420d1d95bd39834cff547f63c4346fa5ff3d7de01ce827",
+        "source_url": "https://www.wikiloc.com/hiking-trails/choret-lake-msyr-pkhwb-drychh-chwrt-11446686",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3364,
+        4222
+      ]
+    },
+    {
+      "slug": "dalankooh-shelter-summit",
+      "descent_m": 0,
+      "chain": [
+        "dalankooh-shelter",
+        "dalankooh-piazi-spring",
+        "dalankooh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3b4f39d68eca0da2065d460e4989984e5ff07ac808a8daac927c3959ebc7984e",
+        "source_url": "https://www.wikiloc.com/hiking-trails/dalankooh-track-25496957",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3196,
+        5453
+      ]
+    },
+    {
+      "slug": "damavand-northeast",
+      "descent_m": 53,
+      "chain": [
+        "damavand-gardanesar",
+        "damavand-takht-fereydoun",
+        "damavand"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "45fccac6828acd274cde3dafc2644a49cfd3f5de54024ce327e0cddd5f592bfe",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5877,
+        10332
+      ]
+    },
+    {
+      "slug": "damavand-northern",
+      "descent_m": 8,
+      "chain": [
+        "damavand-sang-bozorg",
+        "damavand-shelter-4000",
+        "damavand-shelter-5000",
+        "damavand"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "f8d2dc9d58aa1084dfb984f5d72b411a8a731d92e96df78b2b15d085681fb864",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5256,
+        7324,
+        9929
+      ]
+    },
+    {
+      "slug": "damavand-southern",
+      "descent_m": 26,
+      "chain": [
+        "damavand-southern-parking",
+        "damavand-bargah-sevom",
+        "damavand"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "aca66559e8ae2eeba089a96b6d3c7f81d557a997e50c32238811a3d26bb89b90",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4882,
+        9479
+      ]
+    },
+    {
+      "slug": "damavand-western",
+      "descent_m": 0,
+      "chain": [
+        "damavand-western-parking",
+        "damavand-west-5008",
+        "damavand"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "0144a7f49005decfe4c6b2cc607eda74fa2206bddafb2e8e20621e79f4bd100a",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6139,
+        7490
+      ]
+    },
+    {
+      "slug": "darabad-hajiabad",
+      "descent_m": 0,
+      "chain": [
+        "darabad-hajiabad-start",
+        "darabad-hajiabad-ridge",
+        "darabad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "9a8a01e4e27de7ace78bef230d008b1ea3449327a5a466a8ba69fa4eff22ac3e",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-drabd-z-msyr-rwsty-hjy-abd-156267671",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3001,
+        6189
+      ]
+    },
+    {
+      "slug": "darabad-shensiyah",
+      "descent_m": 0,
+      "chain": [
+        "darabad-parking",
+        "darabad-shensiyah-spring",
+        "darabad-abandoned-guardhouse",
+        "darabad-shensiyah-tower",
+        "darabad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "9a372adf0ceee616e5b62f18f1734c4de89b95fb507db0f7e08f8b124dbca4ca",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-drabd-1403-03-07-172222832",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2174,
+        3183,
+        4403,
+        6576
+      ]
+    },
+    {
+      "slug": "derazno-jahan-nama-takht-mirza",
+      "descent_m": 1937,
+      "chain": [
+        "derazno-village",
+        "jahan-nama-village",
+        "takht-mirza-shelter"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2471857edf582f52ff74ce73ce37d955770f287c912ed3a243ae05d6f5e302a9",
+        "source_url": "https://www.wikiloc.com/hiking-trails/drznw-bh-jhn-nm-w-tkht-myrz-6528740",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        14720,
+        27062
+      ]
+    },
+    {
+      "slug": "domir-neshlaj-summit",
+      "descent_m": 0,
+      "chain": [
+        "domir-neshlaj-village",
+        "domir-neshlaj-ridge",
+        "domir"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "36c8c549aec97449e9f8074c8dca8cec8af83890e62bf157aeaf65f5c7d84f71",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-dwmyr-msyr-shmly-rwsty-nshlj-symrg-mrkhzy-213868265",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        7230,
+        9234
+      ]
+    },
+    {
+      "slug": "dona-dona-olya",
+      "descent_m": 14,
+      "chain": [
+        "dona-olya",
+        "dona-north-pass",
+        "dona"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "e613f5b2bdc895619146130b8145b70be6c7b91fc7fa79f5e7a3d6f5d498bed2",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-dwn-y-ly-t-qlh-hy-dwn-w-wyr-jmh-1404-04-13-220535103",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3412,
+        5104
+      ]
+    },
+    {
+      "slug": "dona-varangerud",
+      "descent_m": 55,
+      "chain": [
+        "azadkouh-varangerud-start",
+        "dona-south-spring",
+        "dona"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "c8db92ec08245ebcbb66db64ae5b5f49111d71a0443c5700b9acaaafbdfd051f",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/990302-dwn-49745552",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6948,
+        9324
+      ]
+    },
+    {
+      "slug": "doshakh-darakeh",
+      "descent_m": 29,
+      "chain": [
+        "chin-kalagh-darakeh-trailhead",
+        "palangchal-kara-junction",
+        "doshakh-shelter",
+        "doshakh-tehran"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ecda10a694e9a0e779cb935035fcb405c1f84cd58c760e59e8251733ad08656f",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-dw-shkh-w-syh-sng-z-drkhh-48158952",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2567,
+        6642,
+        6899
+      ]
+    },
+    {
+      "slug": "eskelim-parking-to-waterfall",
+      "descent_m": 57,
+      "chain": [
+        "eskelim-parking",
+        "eskelim-river-crossing",
+        "eskelim"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d4385f2f4e2e609c0b35876ffab6799b5514ae39a3c94d9c7ebd8e9afd9b4797",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-skhlym-z-prkhyng-266504868",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3612,
+        8802
+      ]
+    },
+    {
+      "slug": "gahar-dorud",
+      "descent_m": 612,
+      "chain": [
+        "gahar-dorud-cheshmeh-khieh",
+        "gahar-dorud-pambekar-pass",
+        "gahar-dorud-pambekar-spring",
+        "gahar-dorud-khodaghovat-pass",
+        "gahar-dorud-lake-shore"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2415ab25588e3df48871fb465a1c27bf03077a5f7ffd7b81af29b192ebd69d33",
+        "source_url": "https://www.wikiloc.com/hiking-trails/gahar-lake-pymysh-msyr-drychh-ghr-z-dwrwd-7656700",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4112,
+        6714,
+        10829,
+        12090
+      ]
+    },
+    {
+      "slug": "garmabdar-pirzan-mehrchal",
+      "descent_m": 124,
+      "chain": [
+        "mehrchal-garmabdar-trailhead",
+        "pirzan-kolon",
+        "mehrchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "eb15d54719b079bd20a7088b186a46b5632bb8ce9d13ee6db899f736748eef01",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6349,
+        8149
+      ]
+    },
+    {
+      "slug": "gavkoshan-shahkouh-summit",
+      "descent_m": 4,
+      "chain": [
+        "gavkoshan-shahkouh-trailhead",
+        "gavkoshan-sang-ben",
+        "gavkoshan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "9badf15581067a904eeef803840c31dfbb71733d4513091ef1e0559b75770124",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-3813-mtry-gwkhshn-z-shhkhwh-grwh-hwzwy-afq-78495936",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        886,
+        4898
+      ]
+    },
+    {
+      "slug": "gavkoshan-tang-zendan-summit",
+      "descent_m": 149,
+      "chain": [
+        "gavkoshan-tang-zendan-trailhead",
+        "gavkoshan-tang-zendan-waterfall",
+        "gavkoshan-siah-cheshmeh",
+        "gavkoshan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "79a63f56ab6e168acf1c62888d514b5015e532f925f711573628a4039b2f96b5",
+        "source_url": "https://www.wikiloc.com/hiking-trails/gwkhshnkhhkhshn-z-tngh-zndn-77233964",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        382,
+        3715,
+        10211
+      ]
+    },
+    {
+      "slug": "gol-zard-north-polour",
+      "descent_m": 32,
+      "chain": [
+        "gol-zard-north-trailhead",
+        "gol-zard-cave",
+        "gol-zard-east",
+        "gol-zard"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a0d608e94b62d9ebb4cf440bf5dc85f07f80c8a0b6cfe37a57e4ac0c0232f0f6",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        832,
+        5033,
+        6151
+      ]
+    },
+    {
+      "slug": "gol-zard-south-mobarakabad",
+      "descent_m": 1,
+      "chain": [
+        "gol-zard-south-trailhead",
+        "gol-zard-south-spring",
+        "gol-zard"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "35256b88a3e2a2064e24ba05435bebebc261449cd5e9cc44509fd69fa67df15a",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4533,
+        6928
+      ]
+    },
+    {
+      "slug": "googeli-miana-ridge",
+      "descent_m": 122,
+      "chain": [
+        "googeli-miana-trailhead",
+        "googeli-kharman-jinga",
+        "googeli-mian-visheh",
+        "googeli"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "07373f6dcd3e6f2ecba7541e764278ae1d1b2a0bf86efe38ee536156dba3287d",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-gwgly-z-myn-143408188",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5618,
+        7223,
+        9491
+      ]
+    },
+    {
+      "slug": "hazar-ardikan",
+      "descent_m": 0,
+      "chain": [
+        "hazar-ardikan-start",
+        "hazar-ardikan-camp-spring",
+        "hazar-ardikan-babzangi-junction",
+        "hazar-ardikan-cairn",
+        "hazar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "c493059603bca910b0be952226735e8d84065ca72783ac57a93e1feda9e7b5a5",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-ykh-rwzh-qlh-hzr-z-msyr-rwsty-rdykhn-39121268",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1910,
+        3454,
+        4079,
+        4405
+      ]
+    },
+    {
+      "slug": "hazar-babzangi",
+      "descent_m": 0,
+      "chain": [
+        "hazar-babzangi-start",
+        "hazar-babzangi-camp-spring",
+        "hazar-babzangi-breakfast-spring",
+        "hazar-ardikan-babzangi-junction",
+        "hazar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ded1b131b446f54399c83e20e782e91c4f1e2f30e398d4aae2099344c14c7f1a",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-hzr-2-rdybhsht1401-msyr-bb-zngy-100856022",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2466,
+        3747,
+        4510,
+        5298
+      ]
+    },
+    {
+      "slug": "hazar-rayen",
+      "descent_m": 2,
+      "chain": [
+        "hazar-rayen-parking",
+        "hazar-rayen-shelter",
+        "hazar-rayen-taj-khorus",
+        "hazar-rayen-shotor-khab",
+        "hazar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d7b1419a7a93f05fec320e55da678e2666d8fd036d2b432254b146207f9baf60",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-hzr-khrmn-24-shhrywr-402-z-msyr-abshr-ryn-147313683",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3884,
+        6332,
+        7760,
+        8449
+      ]
+    },
+    {
+      "slug": "heryas-latmal-park",
+      "descent_m": 24,
+      "chain": [
+        "latmal-park-entrance",
+        "asiab-bad-omid-shelter",
+        "asiab-bad",
+        "latmal-peak",
+        "heryas-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "5fce3ab2531bb144d05896d91160c468f5277d3d8bc03692e807442979e84986",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/swd-qll-asyb-bd-ltml-w-hrys-z-prkh-ltml-khn-174582633",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3888,
+        3961,
+        4604,
+        6024
+      ]
+    },
+    {
+      "slug": "igel-waterfall",
+      "descent_m": 5,
+      "chain": [
+        "igel",
+        "igel-waterfall-junction",
+        "igel-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6fd7d0426e171e33a78ea13415207f25d17806139b44b5513cf4f07b8a771b13",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-ygl-igol-waterfall-84392621",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2235,
+        3255
+      ]
+    },
+    {
+      "slug": "imameh-mehrchal",
+      "descent_m": 3,
+      "chain": [
+        "mehrchal-imameh-trailhead",
+        "mehrchal-tang-spring",
+        "mehrchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3a3598824d73f4c16f1c4c7f51327fd818430cb31a14d5d977628d7f55dce1da",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5364,
+        9060
+      ]
+    },
+    {
+      "slug": "ira-fil-zamin",
+      "descent_m": 184,
+      "chain": [
+        "fil-zamin-ira-trailhead",
+        "fil-zamin-ira-pass",
+        "fil-zamin"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "5b97b4c39f7dad3ff1847bb1ea81d0ae68cc2779eb599a32eedefa0afd4b57e0",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6861,
+        8165
+      ]
+    },
+    {
+      "slug": "ira-siah-palas",
+      "descent_m": 110,
+      "chain": [
+        "siah-palas-ira-trailhead",
+        "siah-palas-ira-qoushkhanah",
+        "siah-palas"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "414a306c2506c4fae36ca4d5ebcecf06c648d449034788455d78177205b7093d",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        8639,
+        10914
+      ]
+    },
+    {
+      "slug": "javard-siah-palas",
+      "descent_m": 3,
+      "chain": [
+        "siah-palas-javard-trailhead",
+        "siah-palas-javard-ridge",
+        "siah-palas"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "e90ed7d365384ca7d99632a312aff2f1061e58f3a29d539e4b136f9a766583fd",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4041,
+        6129
+      ]
+    },
+    {
+      "slug": "kaboudval-parking-to-waterfall",
+      "descent_m": 2,
+      "chain": [
+        "kaboudval-waterfall-parking",
+        "kaboudval-lower-waterfall",
+        "kaboudval-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6cded3a53d79d4800a3e53b05812c99e14ffc3d1bbdd422020e6dbb989138fe9",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-khbwdwl-25148372",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true
+      }
+    },
+    {
+      "slug": "kahnak-to-chehelcheshmeh",
+      "descent_m": 334,
+      "chain": [
+        "kahnak-village",
+        "chehelcheshmeh-foothill",
+        "chehelcheshmeh-dobrar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "dd116d99a0377a7a960505f9c1f475c73d14101f884af2c869b3e21743531bca",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5122,
+        7201
+      ]
+    },
+    {
+      "slug": "kahoun-namar",
+      "descent_m": 28,
+      "chain": [
+        "kahoun-namar-trailhead",
+        "deryouk-plain",
+        "chehel-cheshmeh-namar",
+        "lara-plain",
+        "kahoun-se-sang-pass",
+        "kahoun"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "43adfbc8ba98995dfd6e03520099272b9975d79f40ca020b27e36d140dad8db6",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-khhwn-z-nmrstq-139040733",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1369,
+        5259,
+        6790,
+        10597,
+        12369
+      ]
+    },
+    {
+      "slug": "kaman-kouh-varangerud-yakhchal",
+      "descent_m": 55,
+      "chain": [
+        "azadkouh-varangerud-start",
+        "azadkouh-shirkamar-intersection",
+        "azadkouh-kamankouh-lake",
+        "kaman-kouh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "4c3c1a6eceb3e8917fafdb7e51c7d44f5384a8392fa9d0bec90d26bb62addc45",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        8403,
+        13690,
+        16018
+      ]
+    },
+    {
+      "slug": "kan-seifi-north",
+      "descent_m": 14,
+      "chain": [
+        "kan-seifi-ganjeh",
+        "kan-seifi-north-spring",
+        "kan-seifi"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "cea6f80aa62fc957e034161d631ba5c0ff368db17c003534c29d3f8e7bf35f68",
+        "source_url": "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6008,
+        8650
+      ]
+    },
+    {
+      "slug": "kan-seifi-south",
+      "descent_m": 4,
+      "chain": [
+        "kan-seifi-south-trailhead",
+        "kan-seifi-agha-mir-cave",
+        "kan-seifi"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "60282d50ee908a2df2ecfbe2da8630b90c311ceef3ee3f1815038db2438ecc7a",
+        "source_url": "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5972,
+        7335
+      ]
+    },
+    {
+      "slug": "karkas-bidhand-summit",
+      "descent_m": 10,
+      "chain": [
+        "karkas-bidhand-village",
+        "karkas-bidhand-spring",
+        "karkas"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "acd8f8b66c3d536bba4caa99d2823357ae78e7e8220579cdcd14f6274cb8e8df",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-z-bydhnd-174493343",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4643,
+        7920
+      ]
+    },
+    {
+      "slug": "karkas-kesheh-summit",
+      "descent_m": 0,
+      "chain": [
+        "karkas-kesheh-village",
+        "karkas-kesheh-lyasen-spring",
+        "karkas-shelter",
+        "karkas"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "bd2e778c0b07b916e09fa007b751b1ae934df2ad916d4d950b26a77c7985032d",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-khrkhs-15-khrdd-1402-136891368",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3045,
+        4487,
+        6072
+      ]
+    },
+    {
+      "slug": "karkas-tameh-summit",
+      "descent_m": 4,
+      "chain": [
+        "karkas-tameh-village",
+        "karkas-tameh-gardaneh",
+        "karkas-tameh-spring",
+        "karkas-tameh-sangchin",
+        "karkas"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "000fe179a0243f10ceaa34f4e70dfcf83e6757ed2f6affaa0f313dbbb1858a1e",
+        "source_url": "https://www.wikiloc.com/hiking-trails/karkas-summit-tammeh-rout-115887279",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1678,
+        6618,
+        8880,
+        10121
+      ]
+    },
+    {
+      "slug": "kasonak-yunza",
+      "descent_m": 4,
+      "chain": [
+        "khatun-bargah-trailhead",
+        "yunza-pass",
+        "kasonak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "eaae95ea8afe5701cc8fe21929c4532d6310e55bdfe0a6e50763847aea2503ea",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/kasonk-peak-hyco-00-01-27-qlh-khswnkh-70656514",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2907,
+        6386
+      ]
+    },
+    {
+      "slug": "khatun-bargah-garmabdar",
+      "descent_m": 19,
+      "chain": [
+        "khatun-bargah-trailhead",
+        "khatun-bargah-south-spring",
+        "khatun-bargah-stone-shelter",
+        "khatun-bargah"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "7751d0e1c6ee1466257c07cbfcd7335fa05375abb21220206f265927bbf26c7b",
+        "source_url": "https://www.wikiloc.com/hiking-trails/garmabdar-khatun-bargah-135138015",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        408,
+        2394,
+        4696
+      ]
+    },
+    {
+      "slug": "kino-telecom-tower",
+      "descent_m": 24,
+      "chain": [
+        "kino-telecom-tower-trailhead",
+        "kino-third-sheepfold",
+        "kino"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "17d02f3cc7d0caecc643e79db4adeb57644f4476cb3fc2677e8e0c5d6c67676f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/khynw-215740366",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5637,
+        7790
+      ]
+    },
+    {
+      "slug": "klavan-kahar-naz-ridge",
+      "descent_m": 446,
+      "chain": [
+        "klavan-village",
+        "kahar-shelter",
+        "kahar",
+        "kahar-small",
+        "mishineh-now",
+        "naz"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2ea4138e35d4affc6c6f40133987e6454d8c8edb8c81bfc3b0faab2b7dbb6eee",
+        "source_url": "https://nb.wikiloc.com/fottur-loeyper/4-qlh-nz-khhr-myshynh-nw-khhr-khwchkh-myn-khhr-z-khlwn-224676544",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4250,
+        7499,
+        10570,
+        12046,
+        12992
+      ]
+    },
+    {
+      "slug": "kojur-to-sisangan-waterfall",
+      "descent_m": 718,
+      "chain": [
+        "kojur-coal-mine",
+        "kojur-moss-waterfall",
+        "sisangan-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6a3e0c801907b17f369d150990e45241b67f56e1ef8dc0f7f209dea34e1a9437",
+        "source_url": "https://www.wikiloc.com/hiking-trails/khjwr-sysngn-18430072",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        9751,
+        14478
+      ]
+    },
+    {
+      "slug": "kolakchal-jamshidieh",
+      "descent_m": 1,
+      "chain": [
+        "tochal-jamshidieh-park",
+        "kolakchal-jamshidieh-station-3",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "kolakchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "84bd0fcb16b0af9be362ec218be9fb01d755ed907b64e79b2bcd274252ec8763",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2384,
+        4003,
+        5691,
+        7654
+      ]
+    },
+    {
+      "slug": "kolon-bastak-telecom-tower",
+      "descent_m": 0,
+      "chain": [
+        "kolon-bastak-telecom-tower-trailhead",
+        "kolon-bastak-south-ridge-camp",
+        "kolon-bastak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d640d6c00947debd00a3026143e8d61aaecd193f2636854631d23b277e301527",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-khlwn-bstkh-z-dkhl-mkhbrt-shmshkh-79440858",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1464,
+        3005
+      ]
+    },
+    {
+      "slug": "lavasan-bozorg-fil-zamin",
+      "descent_m": 28,
+      "chain": [
+        "fil-zamin-lavasan-trailhead",
+        "fil-zamin-lavasan-spring",
+        "fil-zamin-lavasan-pass",
+        "fil-zamin"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "84fad0665e6fcb2f55e2706e4a66a1929654064f258be0beadd253d5660d0715",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3357,
+        4165,
+        6653
+      ]
+    },
+    {
+      "slug": "nayband-aliabad",
+      "descent_m": 55,
+      "chain": [
+        "nayband-aliabad-trailhead",
+        "nayband-zin-asbi",
+        "nayband"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "e879d55669180d7ce6a69b49b155956419b62cb978cbebb73b4fe83f46690860",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-nybnd-bm-khrsn-jnwby-154379641",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5978,
+        6584
+      ]
+    },
+    {
+      "slug": "nil-kuh-tarajiq",
+      "descent_m": 8,
+      "chain": [
+        "tarajiq",
+        "nil-kuh-marsh",
+        "nil-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3150e5c817c270621b1286250f8798750e8c290298ddc2e28baa63edf6142361",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3580,
+        5567
+      ]
+    },
+    {
+      "slug": "noghre-sar-bagh-safa",
+      "descent_m": 0,
+      "chain": [
+        "noghre-sar-bagh-safa-trailhead",
+        "noghre-sar-first-talar",
+        "noghre-sar-second-talar",
+        "noghre-sar-chang-maryam",
+        "noghre-sar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ebf5f364e21a887c37d7bf8834b1cee1a863fcd42a71c616b84f776335e0e3dd",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-jngly-nqrh-sr-nql-sr-235884545",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4097,
+        6409,
+        6672,
+        7071
+      ]
+    },
+    {
+      "slug": "orin-hesar",
+      "descent_m": 6,
+      "chain": [
+        "orin-shelter",
+        "orin-golar-lake",
+        "orin"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ed3a14df3a19d49edaf22d8a8b28827de478f7b71d6ce2a0a5caa434ba7cb21d",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-wryn-symrg-adhrbyjn-grby-215806696",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3967,
+        6007
+      ]
+    },
+    {
+      "slug": "parachan-lashgarak-ridge",
+      "descent_m": 217,
+      "chain": [
+        "lashgarak-parachan",
+        "lashgarak-damcheh",
+        "lashgarak-bozorg",
+        "lashgarak-koochak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "1dbd309ed383c2aea01abbf90fcfe789da05dbea3ff988502154cde5e6b3e7df",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        10985,
+        14598,
+        15976
+      ]
+    },
+    {
+      "slug": "qaleh-roudkhan-abbar",
+      "descent_m": 1997,
+      "chain": [
+        "qaleh-roudkhan-abbar-trailhead",
+        "qaleh-roudkhan-gili-belanga-pass",
+        "qaleh-roudkhan-takab",
+        "qaleh-roudkhan-dailesar",
+        "qaleh-roudkhan-mte-khani",
+        "qaleh-roudkhan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "bca37d03236edfc2e64e07c877a789a940df026fda85f618b40b6fa8f7262b36",
+        "source_url": "https://www.wikiloc.com/hiking-trails/ab-br-bh-qlh-rwdkhn-14020312-136556523",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3912,
+        6935,
+        13223,
+        21043,
+        25985
+      ]
+    },
+    {
+      "slug": "qali-kuh-pamzareh-summit",
+      "descent_m": 84,
+      "chain": [
+        "qali-kuh-pamzareh-trailhead",
+        "qali-kuh-sar-juibar",
+        "qali-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "98ecd2dbb9988e2730e466a60c2e70855f47acbe3f9cbddf27bf92123c1e296f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qly-khwh-4080-mtr-273418998",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4517,
+        13077
+      ]
+    },
+    {
+      "slug": "qash-mastan-keykhosrow",
+      "descent_m": 41,
+      "chain": [
+        "qash-mastan-keykhosrow-trailhead",
+        "qash-mastan-keykhosrow-pass",
+        "qash-mastan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "f10d1c18788a9d954fcb8ae36cd70f63f4626f195eb3d8a19bd5985ba79474d9",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1833,
+        8987
+      ]
+    },
+    {
+      "slug": "qash-mastan-khafr-shelter",
+      "descent_m": 40,
+      "chain": [
+        "qash-mastan-khafr-shelter-trailhead",
+        "qash-mastan-omid-waterfall",
+        "qash-mastan-omid-shelter",
+        "qash-mastan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "f15545d2851c14b533230a82e9c39419888bcb4e35fa527e343c9613c347fa97",
+        "source_url": "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2877,
+        3110,
+        7878
+      ]
+    },
+    {
+      "slug": "qoli-zolikhah-best",
+      "descent_m": 237,
+      "chain": [
+        "qoli-zolikhah-best-trailhead",
+        "qoli-zolikhah-kani-chawresh",
+        "qoli-zolikhah-shahneshin",
+        "qoli-zolikhah-gavalan",
+        "qoli-zolikhah"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "d6e52e09c5241debe79016cbef4651e305294d5145f5f1abb5ec4ec05759b9d4",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qwly-zlykh-khwh-chhl-chshmh-bm-stn-khrdstn-215830220",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        8128,
+        14979,
+        16797,
+        17769
+      ]
+    },
+    {
+      "slug": "rendan-village-waterfall",
+      "descent_m": 73,
+      "chain": [
+        "rendan-village",
+        "rendan-valley",
+        "rendan-waterfall"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "fe179ff573fb579b1eeee499e1a2ff68376935815d03de5adc7628fdd022950e",
+        "source_url": "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1351,
+        2701
+      ]
+    },
+    {
+      "slug": "sanboran-bidastaneh",
+      "descent_m": 21,
+      "chain": [
+        "sanboran-bidastaneh-village",
+        "sanboran-sang-mesqal-ridge",
+        "sanboran-chal-kabud-shelter",
+        "sanboran"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "572b672a5e8dcd190bd85b1541d8ab60f72b0b2b2fb9e50ed717bd47d56d4fd1",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-snbrn-z-msyr-rwsty-bydstnh-77711653",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6121,
+        7046,
+        9096
+      ]
+    },
+    {
+      "slug": "sanboran-tian",
+      "descent_m": 18,
+      "chain": [
+        "sanboran-tian-village",
+        "sanboran-gol-gol-shelter",
+        "sanboran-sang-mesqal-ridge",
+        "sanboran-chal-kabud-shelter",
+        "sanboran"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "469dd0c1bc20266faa5836f09146913095c38a4ec9fb7dbaa86986c39cc9a882",
+        "source_url": "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        7685,
+        9800,
+        10909,
+        13125
+      ]
+    },
+    {
+      "slug": "sarakchal-sepidestan",
+      "descent_m": 62,
+      "chain": [
+        "sarakchal-sepidestan-trailhead",
+        "sarakchal-spring",
+        "sarakchal-lajani-shelter",
+        "sarakchal-one",
+        "sarakchal-two",
+        "sarakchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "654514beca4027b7e11e23d5a685555eef01a721f76d703a1a92c7bfee07920c",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-srkhchl-1w2w3-z-shmshkh-279699815",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2474,
+        3743,
+        5548,
+        6313,
+        7197
+      ]
+    },
+    {
+      "slug": "sekeh-no-sehchal-velayat-rud",
+      "descent_m": 102,
+      "chain": [
+        "velayat-rud",
+        "sekeh-no",
+        "sehchal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6f54a76b899ffbd5b1823efefa55ba3deeaf0027ab81bb0d6cef22c898abee15",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-sykhnw-skhh-nw-w-dmh-kht-lrs-t-qlh-sh-chl-57537181",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5473,
+        7794
+      ]
+    },
+    {
+      "slug": "sekeh-no-varangeh-rud",
+      "descent_m": 1,
+      "chain": [
+        "varangeh-rud-tower",
+        "sekeh-no-west-sheepfold",
+        "sekeh-no"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b083ab40a2d7265052e5c8dc063dfe9418e21d46af564f5bfc2edb85f091ac7f",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-skhh-nw-w-qlh-hzrl-z-wrngh-rwd-136686018",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3462,
+        6451
+      ]
+    },
+    {
+      "slug": "shah-alborz-dineh-rud",
+      "descent_m": 23,
+      "chain": [
+        "shah-alborz-dineh-rud-village",
+        "shah-alborz-dineh-permanent-spring",
+        "shah-alborz"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "5b6e558ee291bca34ef164b8af7f8cedf5b4817fa794e686327b624f37085d9c",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/shh-lbrz-jbhh-shmly-5740897",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3630,
+        11377
+      ]
+    },
+    {
+      "slug": "shah-jahan-upper-ruyin",
+      "descent_m": 70,
+      "chain": [
+        "shah-jahan-trailhead",
+        "shah-jahan-garden-spring",
+        "shah-jahan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3ab01f786d9749f48ef2fcf392926aeb4561c90b0d1b142e60a597ef6fc80884",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1296,
+        8043
+      ]
+    },
+    {
+      "slug": "shahan-kuh-sardab",
+      "descent_m": 0,
+      "chain": [
+        "shahan-kuh-sardab-camp",
+        "shahan-kuh-natural-well",
+        "shahan-kuh-summit-ridge",
+        "shahan-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "892fb54aceba9d3283301715c64552e2fb18cc8c5a4d66a588bf82ee13bc3e38",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/shhn-khwh-frydwnshhr-sfhn-29803610",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2907,
+        5152,
+        5623
+      ]
+    },
+    {
+      "slug": "shahvar-nakaraman-summit",
+      "descent_m": 14,
+      "chain": [
+        "shahvar-nakaraman-village",
+        "shahvar-southern-ridge",
+        "shahvar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8cbb7287e1dfb955043617e75befb6a107b17ccd524b13ccc5ea7e30cc28912c",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-shhwr-z-nkhrmn-bh-tsh-15274258",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5902,
+        10179
+      ]
+    },
+    {
+      "slug": "shahvar-pirmishi-summit",
+      "descent_m": 0,
+      "chain": [
+        "shahvar-pirmishi-trailhead",
+        "shahvar-pirmishi-ridge",
+        "shahvar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a11527db073e624f4b1134f4e721cb43b30bc01051ddac5ca7cea138b7b5a83b",
+        "source_url": "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-shhwr-bm-stn-smnn-rft-z-msyr-chshmh-pyrmyshy-brgs-283800680",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3764,
+        5039
+      ]
+    },
+    {
+      "slug": "shahvar-tash-summit",
+      "descent_m": 4,
+      "chain": [
+        "shahvar-tash-village",
+        "shahvar-pirmishi-trailhead",
+        "shahvar-khersi-spring",
+        "shahvar"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "58b3140c165676db78a0abef9d34843b8728f84bad5f099574554b5cebee1dcd",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/msyr-swd-bh-qlh-shhwr-z-rwsty-tsh-41093249",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4439,
+        9423,
+        11973
+      ]
+    },
+    {
+      "slug": "shirbad-bagh-hamzeh-nahal",
+      "descent_m": 26,
+      "chain": [
+        "shirbad-bagh-hamzeh-trailhead",
+        "shirbad-nahal-junction",
+        "shirbad-nahal-spring",
+        "shirbad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "fc5275a6d12400e8b0d61a489fcfd8f321e8e7f6d2714e5e3993b3d3f9141ddb",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/shirbad-peak-qlh-shyrbd-87704155",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1211,
+        6064,
+        9825
+      ]
+    },
+    {
+      "slug": "shirbad-bojan",
+      "descent_m": 0,
+      "chain": [
+        "shirbad-bojan-village",
+        "shirbad-shakarab-junction",
+        "shirbad"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "46e14c5974bbcea0e513c79f704fb10712f1df7f189502b18d84f969f783834e",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-shyrbd-z-bwjn-210439992",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2972,
+        10795
+      ]
+    },
+    {
+      "slug": "sialan-esel-mahalleh",
+      "descent_m": 45,
+      "chain": [
+        "esel-mahalleh",
+        "daryasar-spring",
+        "daryasar",
+        "sialan-hertung-shelter",
+        "sialan-gourkhani-spring",
+        "sialan-vini-sheepfold",
+        "sialan-pass",
+        "sialan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8192dab3fd2787493155b6d7b22cd05e4f0d946e40fe62e9c90ed8623ea7232a",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-syln-z-msyr-shmly-282386489",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1064,
+        3150,
+        5171,
+        10253,
+        11906,
+        13957,
+        15929
+      ]
+    },
+    {
+      "slug": "sichal-darbandsar",
+      "descent_m": 1,
+      "chain": [
+        "darbandsar",
+        "sichal-east-seasonal-pond",
+        "sichal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b7caa9e3b9a6819ad09c4b0d2e1e8af7c1619b0de6cbf63375543d31d66f3e08",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-sy-chl-dyzyn-75352003",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4116,
+        6531
+      ]
+    },
+    {
+      "slug": "sichal-dizin",
+      "descent_m": 1,
+      "chain": [
+        "sichal-dizin-trailhead",
+        "dizin-upper-cable-car-station",
+        "sichal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b66f31919a1ad4f82778ef493b956ecd5b859bb6399481976edeafe6f3551475",
+        "source_url": "https://www.wikiloc.com/hiking-trails/sichal-summit-qlh-sychl-z-dyzyn-76586451",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2733,
+        3081
+      ]
+    },
+    {
+      "slug": "sofeh-park-to-summit",
+      "descent_m": 0,
+      "chain": [
+        "sofeh-park-trailhead",
+        "sofeh-golzard-spring",
+        "sofeh-isfahan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8f2f79f8f02df042c4f3bfa22cf89e8aa22fcb90e6b9ffc97dbe9f5f501f2b68",
+        "source_url": "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1961,
+        3201
+      ]
+    },
+    {
+      "slug": "somamous-javaherdasht",
+      "descent_m": 6,
+      "chain": [
+        "somamous-javaherdasht",
+        "somamous-javaherdasht-hali-spring",
+        "somamous"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8319a70a7329cbfe997ab5fae176b4db40fd04f1fb423702dc7a9d6dfecc10bf",
+        "source_url": "https://eu.wikiloc.com/ibilbide-senderismo/swd-nfrdy-qlh-smmws-z-jwhrdsht-7khrdd1401msyr-zmstnh-w-bhrh-104711170",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1014,
+        7196
+      ]
+    },
+    {
+      "slug": "sotak-bozorg-varangeh-rud",
+      "descent_m": 13,
+      "chain": [
+        "azadkouh-varangerud-start",
+        "sotak-ascent-ridge",
+        "sotak-bozorg"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8d31da0fc6959b657d09c795a299d1311e03667e40aead400068bcc0530bd2d6",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-swtkh-bzrg-w-qlh-khrsrkh-z-wrngh-rwd-138535111",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        9434,
+        11239
+      ]
+    },
+    {
+      "slug": "tashger-tutang",
+      "descent_m": 0,
+      "chain": [
+        "tashger-tutang-trailhead",
+        "tashger-tutang-spring",
+        "tashger-tutang-ridge",
+        "tashger"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "b6aea585792b28b0b1b13445dd252ec7891fe74f5c5cbfe64ef18cff2ef022ad",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-tshgr-msyr-shmly-rwsty-twtng-64879153",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3660,
+        6511,
+        9299
+      ]
+    },
+    {
+      "slug": "tashger-zakin",
+      "descent_m": 67,
+      "chain": [
+        "tashger-zakin-trailhead",
+        "tashger-arzoo-tree",
+        "tashger"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a5b45276729944283715b8ed711a919745b5b2b7599e273752cb55ff25c93be9",
+        "source_url": "https://ca.wikiloc.com/rutes-alpinisme/qlh-tshgr-khwh-hmg-z-msyr-rwsty-zkhyn-bm-stn-hrmzgn-z-qll-trh-symrg-mwrkhh-chhrm-w-pnjm-sfnd-402-162159836",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4247,
+        11876
+      ]
+    },
+    {
+      "slug": "tochal-ahar",
+      "descent_m": 3,
+      "chain": [
+        "ahar-village",
+        "tochal-shakarab-ahaar",
+        "tochal-qezqunchal-peak",
+        "tochal-homand-tochal",
+        "tochal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "f2cfe66c9c603df802a4ca310c22e8e0379d0ee246099781ad45497b4a942b0f",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-ahr-w-shkhrb-40908439",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4337,
+        9965,
+        11598,
+        12234
+      ]
+    },
+    {
+      "slug": "tochal-darband",
+      "descent_m": 0,
+      "chain": [
+        "tochal-sarband-square",
+        "tochal-pas-ghaleh-village",
+        "tochal-shirpala-shelter",
+        "tochal-amiri-shelter",
+        "tochal-goleband-ridge",
+        "tochal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "569a3350f9d338f5acaed16fd213b9a4d12f8309f786351902ef9270775c7075",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-twchl-z-msyr-drbnd-110322184",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1265,
+        5107,
+        7928,
+        9735,
+        10255
+      ]
+    },
+    {
+      "slug": "tochal-kolakchal",
+      "descent_m": 66,
+      "chain": [
+        "tochal-jamshidieh-park",
+        "tochal-kolakchal-camp",
+        "tochal-espilat-sarlo-pass",
+        "tochal-piyazchal-pass",
+        "tochal-lezoon-east",
+        "tochal-lezoon-west",
+        "tochal-barfchal-peak",
+        "tochal-chahar-paloon",
+        "tochal-goleband-ridge",
+        "tochal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "2ca9ce18ba6f80f078b9f7bbe2e74c91444e1079e02c492dbc15f94980ddd5e5",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-jmshydyh-khlkhchl-pyzchl-w-khtlrs-shrqy-240249040",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4148,
+        5623,
+        7600,
+        8318,
+        9093,
+        10132,
+        10892,
+        11746,
+        12221
+      ]
+    },
+    {
+      "slug": "tochal-velenjak",
+      "descent_m": 50,
+      "chain": [
+        "tochal-velenjak-parking",
+        "tochal-telecabin-station-1",
+        "tochal-telecabin-station-2",
+        "tochal-telecabin-station-5",
+        "tochal-telecabin-station-7",
+        "tochal"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "1d3aace580f444441350fae82c9cd37b5cd96bdc80438ef9c435262ce4a76002",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-twchl-z-wlnjkh-174731165",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        2033,
+        5886,
+        10032,
+        15428,
+        16613
+      ]
+    },
+    {
+      "slug": "vandarbon-siah-kaman",
+      "descent_m": 26,
+      "chain": [
+        "alamkuh-vandarbon",
+        "siah-kaman-naft-chak",
+        "siah-kaman"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "fffc29cc7ea423deb3c1e892c61d309a7cc058bda245e4e4bb6a3087e2b48165",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        3703,
+        8973
+      ]
+    },
+    {
+      "slug": "vardij-shahid-baqeri",
+      "descent_m": 48,
+      "chain": [
+        "shahid-baqeri-hill-parking",
+        "vardij-rock-spring",
+        "vardij-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "20602f2d6059a34a8ab7ba6012d588ae3594ff82cf924fb28a5d7cb75e67ed22",
+        "source_url": "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        6343,
+        7840
+      ]
+    },
+    {
+      "slug": "varjin-kalugan",
+      "descent_m": 66,
+      "chain": [
+        "kalugan-village",
+        "varjin-north-pass",
+        "varjin-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "3612c5e403b0e23976a9df2bad95285f6b3f4bb6d82c581bc7281bbdaab67807",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlwgn-t-qlh-wrjyn-jmh-1403-01-17-166181680",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5905,
+        6601
+      ]
+    },
+    {
+      "slug": "varjin-lavasan",
+      "descent_m": 5,
+      "chain": [
+        "varjin-lavasan-trailhead",
+        "varjin-south-cairn",
+        "varjin-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "ad1f64bdda36ebdf806f3f6bf30eee45c5764b91fac56d03a76e132c0e742b4e",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-z-lwsn-t-qlh-wrjyn-jmh-1401-09-11-120404583",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        4846,
+        5565
+      ]
+    },
+    {
+      "slug": "varjin-rahatabad",
+      "descent_m": 70,
+      "chain": [
+        "varjin-rahatabad-trailhead",
+        "varjin-north-pass",
+        "varjin-peak"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a3276794e8c783cb3b5898a0b6d5d26449cc89da7849d1f2fb723a77ddcafe3c",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-wrjyn-196781283",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        5623,
+        6309
+      ]
+    },
+    {
+      "slug": "zarrinkuh-khosravan-south",
+      "descent_m": 10,
+      "chain": [
+        "zarrinkuh-khosravan-village",
+        "zarrinkuh-khosravan-gosfandsara",
+        "zarrinkuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "6e372279ddba3b760ccadca02e6d16544c30df4767d1ced77e05a70f26d284b0",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-zryn-khwh-z-rwsty-khsrwn-103295040",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "distance_method": "ordered-landmarks-along-gpx-v1"
+      },
+      "cumulative_distance_m": [
+        0,
+        1227,
+        7675
+      ]
+    }
+  ],
+  "unresolved": [
+    "abak-meygun",
+    "abak-ruteh",
+    "abak-shemshak",
+    "afjeh-hoyej-person",
+    "afjeh-hoyej-rizan",
+    "ahangarak-ahar",
+    "ahangarak-hamlun",
+    "alamkuh-northern-siahsang",
+    "andar-person-rizan",
+    "arfa-kuh-cheshmeh-paro",
+    "asiab-bad-latmal-park",
+    "azadkouh-kelak-bala",
+    "azadkouh-nesen",
+    "azadkouh-varangerud",
+    "balqis-qaravolkhaneh",
+    "band-eish-hesarak",
+    "barg-jahan-person",
+    "beliran-hot-spring-walk",
+    "binalud-frizi",
+    "bisotun-mishri-summit",
+    "bivarzin-charmkesh-south-face",
+    "blades-rakhsh-to-shahvars",
+    "changizchal-parvaneh",
+    "darabad-farakhsineh",
+    "daryasar-esel-mahalleh",
+    "dehnar-to-qarahdagh-east",
+    "derjan-sehezar-hot-spring",
+    "domir-mozvash-summit",
+    "dorfak-estakhrgah",
+    "dorfak-shah-shahidan",
+    "dorfak-shirkuh",
+    "filband-alimestan-ridge",
+    "filband-hesin-bon-espeh-rez",
+    "full-dobarar-ridge",
+    "gahar-aligudarz",
+    "gechi-soo-khaled-nabi",
+    "giladeh-meshe-suyi",
+    "giladeh-telli-bolagh-abi-beyglu",
+    "golabdarreh-espilat",
+    "harzevil-to-gavkol",
+    "heryas-vardij-shahid-baqeri",
+    "hesarchal-lashgarak-bozorg",
+    "hezar-masjed-chaharrah",
+    "hio-aseman-kuh",
+    "imamzadeh-davoud-shahneshin",
+    "janestoon-east-abnik",
+    "janestoon-west-abnik",
+    "janestoon-west-lalun",
+    "jangal-abr-abr-to-forest",
+    "jangal-abr-shirinabad-to-forest",
+    "kal-jeni-trailhead",
+    "kamal-sahand-ski-summit",
+    "kaman-kouh-varangerud",
+    "kasra-neotdi",
+    "khalkhal-asalem-daryaben",
+    "khersang-abnik-middle",
+    "kholeno-lalan",
+    "kholeno-varangerud",
+    "khornoro-arim",
+    "khornoro-sangdeh",
+    "khornoro-varpi",
+    "khour-pahneh-hesar",
+    "kolonchin-khersan",
+    "kolonchin-kol-khadang",
+    "lalehzar-summit",
+    "lasak-gorge-mishineh-marg",
+    "lasem-angemar-soozchal",
+    "laton-kuteh-kumeh",
+    "loveh-waterfall-source",
+    "maran-village-arous-waterfall",
+    "marji-kesh-tange-galu",
+    "masal-shanderman-dashteh-haji-bijar",
+    "masouleh-chesli",
+    "mehdi-posti-meshe-suyi-giladeh",
+    "mesr-farahzad",
+    "momaj-to-kalahun",
+    "neor-to-soubatan",
+    "nil-kuh-pasang-tarajiq",
+    "nizva-chashm",
+    "palangchal-darakeh-shelter",
+    "palangchal-darakeh-station-5",
+    "palangchal-darakeh-summit",
+    "paraw-chalabeh-summit",
+    "pashure-nava",
+    "qaleh-dokhtar-ahar-dehtangeh",
+    "qaleh-dokhtar-shahrestanak",
+    "qaleh-roudkhan-mazgadeh",
+    "qash-mastan-benroud",
+    "sabalan-northeast-shabil",
+    "sabalan-southeast-alvares",
+    "sabalan-west-qartal-dashi",
+    "sanboran-gahar",
+    "sangan-pahneh-hesar",
+    "sarband-shervin",
+    "shah-alborz-hasanjoun",
+    "shah-shahidan-bijar-dam",
+    "shir-kuh-deh-bala",
+    "shirabad-seven-waterfalls",
+    "sialan-heniz",
+    "sichal-ahar",
+    "somamous-javaherdeh",
+    "somamous-javaherdeh-waterfall",
+    "soozna-miana-ridge",
+    "station-7-shahneshin",
+    "suha-spinas-laton",
+    "taftan-darreh-gol",
+    "tang-galu-siah-kaman-chalon",
+    "tar-to-dobrar-east",
+    "tochal-shahrestanak",
+    "varish-baro-kondor-pahneh",
+    "varish-cheshmeh-shahi",
+    "varish-pahneh-hesar",
+    "varvasht-harijan",
+    "velenjak-kamachal",
+    "western-four-summits",
+    "yahar-to-kalahun",
+    "zarrinkuh-aynehvarzan-southwest",
+    "zarrinkuh-jaban-southeast",
+    "zarrinkuh-tar-north",
+    "ziarat-forest-naharkhoran",
+    "zingalo-madan"
+  ],
+  "diagnostics": [
+    {
+      "slug": "abbas-ali-kamar-posht",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "abbas-ali-kamar-posht",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "alamkuh-southern-hesarchal",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "alimestan-imamzadeh-qasem",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "alimestan-imamzadeh-qasem",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "alimestan-imamzadeh-qasem",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "alvand-ganjnameh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "arfa-kuh-arfa-deh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "arfa-kuh-arfa-deh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "arfa-kuh-cheshmeh-paro",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "arfa-kuh-cheshmeh-paro",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "hio-aseman-kuh",
+      "reason": "ordered landmark farther than 500m"
+    },
+    {
+      "slug": "balqis-qaravolkhaneh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "balqis-qaravolkhaneh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "balqis-qaravolkhaneh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "balqis-qaravolkhaneh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "band-eish-hesarak",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "band-eish-hesarak",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "band-eish-hesarak",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "barf-anbar-fordo-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "bel-layeshkaft-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "bel-layeshkaft-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "bel-layeshkaft-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "beyrami-gashi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shah-shahidan-bijar-dam",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "binalud-frizi",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "binalud-frizi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "binalud-frizi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "binalud-frizi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "qoli-zolikhah-best",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "chin-kalagh-fatehan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "chort-lake-chort-village",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "chort-lake-chort-village",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "darabad-farakhsineh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "darabad-shensiyah",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "darabad-hajiabad",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "tar-to-dobrar-east",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "dehnar-to-qarahdagh-east",
+      "reason": "ordered landmark farther than 500m"
+    },
+    {
+      "slug": "yahar-to-kalahun",
+      "reason": "ordered landmark farther than 500m"
+    },
+    {
+      "slug": "domir-mozvash-summit",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "domir-mozvash-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "domir-mozvash-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "dorfak-shah-shahidan",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "dorfak-shah-shahidan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "dorfak-shirkuh",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "dorfak-shirkuh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "dorfak-estakhrgah",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "filband-hesin-bon-espeh-rez",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "filband-alimestan-ridge",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "gahar-dorud",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "gahar-aligudarz",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "harzevil-to-gavkol",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "gavkoshan-shahkouh-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "googeli-miana-ridge",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "googeli-miana-ridge",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "googeli-miana-ridge",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "hezar-masjed-chaharrah",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "janestoon-east-abnik",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "janestoon-west-abnik",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "janestoon-west-lalun",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "jangal-abr-abr-to-forest",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "jangal-abr-shirinabad-to-forest",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "kaboudval-parking-to-waterfall",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "klavan-kahar-naz-ridge",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "kal-jeni-trailhead",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "kaman-kouh-varangerud",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "karkas-kesheh-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "gechi-soo-khaled-nabi",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "khersang-abnik-middle",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kholeno-lalan",
+      "reason": "ordered landmark farther than 500m"
+    },
+    {
+      "slug": "kholeno-lalan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kholeno-varangerud",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "khornoro-arim",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khornoro-arim",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khornoro-sangdeh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khornoro-sangdeh",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khornoro-varpi",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "kino-telecom-tower",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kolakchal-jamshidieh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kolakchal-jamshidieh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kolakchal-jamshidieh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kolonchin-kol-khadang",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "kolonchin-khersan",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "lalehzar-summit",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "hesarchal-lashgarak-bozorg",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "marji-kesh-tange-galu",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "mesr-farahzad",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "mesr-farahzad",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "nayband-aliabad",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "nil-kuh-pasang-tarajiq",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "noghre-sar-bagh-safa",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "noghre-sar-bagh-safa",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "noghre-sar-bagh-safa",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "noghre-sar-bagh-safa",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "orin-hesar",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "orin-hesar",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "orin-hesar",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "khour-pahneh-hesar",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "khour-pahneh-hesar",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "varish-baro-kondor-pahneh",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "varish-pahneh-hesar",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "varish-cheshmeh-shahi",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sangan-pahneh-hesar",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "pashure-nava",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "qash-mastan-khafr-shelter",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "qash-mastan-benroud",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sabalan-southeast-alvares",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "sabalan-northeast-shabil",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "ordered landmark farther than 500m"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "kamal-sahand-ski-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sanboran-tian",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sanboran-tian",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sanboran-bidastaneh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sanboran-gahar",
+      "reason": "target farther than 100m from track"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shah-alborz-hasanjoun",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahan-kuh-sardab",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahan-kuh-sardab",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahan-kuh-sardab",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahvar-pirmishi-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahvar-pirmishi-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shahvar-pirmishi-summit",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shir-kuh-deh-bala",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shirbad-bojan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "shirbad-bagh-hamzeh-nahal",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "tang-galu-siah-kaman-chalon",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "sialan-heniz",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "sialan-esel-mahalleh",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "sialan-esel-mahalleh",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "sichal-ahar",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "somamous-javaherdeh-waterfall",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "somamous-javaherdeh",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "neor-to-soubatan",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "taftan-darreh-gol",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "taftan-darreh-gol",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "taftan-darreh-gol",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "taftan-darreh-gol",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "taftan-darreh-gol",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "tochal-shahrestanak",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "varvasht-harijan",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "zarrinkuh-tar-north",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "zarrinkuh-jaban-southeast",
+      "reason": "discontinuous geometry"
+    },
+    {
+      "slug": "zarrinkuh-aynehvarzan-southwest",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "zingalo-madan",
+      "reason": "origin farther than 100m from track"
+    },
+    {
+      "slug": "zingalo-madan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "zingalo-madan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    },
+    {
+      "slug": "zingalo-madan",
+      "reason": "partial, composite, technical or reference-only evidence"
+    }
+  ]
+}

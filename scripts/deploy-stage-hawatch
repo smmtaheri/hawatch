@@ -18,6 +18,9 @@ for path in "$LOCAL_DIR" "$STAGE_DIR" "$STAGE_ENV" "$LEGACY_STAGE_DIR"; do
   [[ "$path" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail "Invalid path."
 done
 
+[[ -z "$(git -C "$LOCAL_DIR" status --porcelain)" ]] || fail "Local stage checkout is dirty; commit your work first."
+[[ "$STAGE_DIR" != /root/hawatch && "$LEGACY_STAGE_DIR" != /root/hawatch && "$STAGE_ENV" != /root/hawatch/.env ]] || fail "Stage paths must be separate from production."
+
 git -C "$LOCAL_DIR" push origin stage
 
 ssh "$SSH_HOST" bash -s -- "$STAGE_DIR" "$STAGE_ENV" "$LEGACY_STAGE_DIR" <<'REMOTE'
@@ -39,20 +42,15 @@ remove_project() {
   done < <(docker image ls --format '{{.Repository}}:{{.Tag}}' | awk -F: -v prefix="$project" '$1 == prefix "-api" || $1 == prefix "-web" {print $0}')
 }
 
-[[ -f "$stage_env" ]] || fail_remote "Missing $stage_env; copy infra/compose/stage.env.example first."
-enabled="$(awk -F= '$1 == "HAWATCH_STAGE_ENABLED" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
-[[ "$enabled" == 1 ]] || fail_remote "Stage is disabled. Run deploy-hawatch stage-on first."
-production_env="$(awk -F= '$1 == "HAWATCH_PRODUCTION_ENV_FILE" {sub(/^[^=]*=/, ""); print; exit}' "$stage_env")"
-[[ -n "$production_env" && -f "$production_env" ]] || fail_remote "Stage production env is missing: $production_env"
-stage_port="$(awk -F= '$1 == "HAWATCH_STAGE_PORT" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
-[[ "${stage_port:-5050}" == 5050 ]] || fail_remote "Stage must use port 5050."
+# Generate independent stage secrets once; retain operator settings on later deploys.
 
 if [[ ! -e "$stage_dir" && -d "$legacy_stage_dir" ]]; then
   [[ -z "$(git -C "$legacy_stage_dir" status --porcelain)" ]] || fail_remote 'Legacy stage checkout is dirty; inspect it manually.'
   [[ "$(git -C "$legacy_stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected legacy stage remote.'
   [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design || "$(git -C "$legacy_stage_dir" branch --show-current)" == stage ]] || fail_remote 'Legacy stage checkout must be on new-design or stage.'
   if [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design ]]; then
-    git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage
+    git -C "$legacy_stage_dir" config --replace-all remote.origin.fetch '+refs/heads/stage:refs/remotes/origin/stage'
+    git -C "$legacy_stage_dir" fetch --refmap= origin refs/heads/stage:refs/remotes/origin/stage
     git -C "$legacy_stage_dir" branch -m new-design stage
     git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage
   fi
@@ -66,7 +64,16 @@ fi
 [[ "$(git -C "$stage_dir" branch --show-current)" == stage ]] || fail_remote 'Stage checkout must be on branch stage.'
 [[ -z "$(git -C "$stage_dir" status --porcelain)" ]] || fail_remote 'Stage checkout is dirty; inspect it manually.'
 [[ "$(git -C "$stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected stage remote.'
-git -C "$stage_dir" pull --ff-only origin stage
+# Migrated new-design checkouts may retain old upstreams or duplicate FETCH_HEAD entries.
+git -C "$stage_dir" config --replace-all remote.origin.fetch '+refs/heads/stage:refs/remotes/origin/stage'
+git -C "$stage_dir" fetch --refmap= origin refs/heads/stage:refs/remotes/origin/stage
+git -C "$stage_dir" config branch.stage.remote origin
+git -C "$stage_dir" config --replace-all branch.stage.merge refs/heads/stage
+git -C "$stage_dir" merge --ff-only refs/remotes/origin/stage
+python3 "$stage_dir/scripts/prepare-stage-env.py" "$stage_env"
+stage_port="$(awk -F= '$1 == "HAWATCH_STAGE_PORT" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
+[[ "${stage_port:-5050}" == 5050 ]] || fail_remote "Stage must use port 5050."
+
 
 # Build while the existing stage remains available. Replace it only after both
 # application images are ready, then verify all three services and live data.

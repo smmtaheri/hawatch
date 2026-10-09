@@ -1,1 +1,2 @@
-export { RoutePage } from "../features/route/RoutePage";
+import {WeekForecastPage} from "../features/week/WeekForecastPage";
+export function RoutePage(){return <WeekForecastPage kind="route"/>;}

@@ -136,7 +136,7 @@ REDIS_URL = os.environ.get("REDIS_URL", "")
 WEATHER_PROXY_ENCRYPTION_KEY = os.environ.get("WEATHER_PROXY_ENCRYPTION_KEY", "")
 OPEN_METEO_BASE_URL = env("OPEN_METEO_BASE_URL", "https://api.open-meteo.com/v1/forecast")
 OPEN_METEO_BATCH_SIZE = int(env("OPEN_METEO_BATCH_SIZE", "100"))
-OPEN_METEO_FORECAST_DAYS = int(env("OPEN_METEO_FORECAST_DAYS", "7"))
+OPEN_METEO_FORECAST_DAYS = int(env("OPEN_METEO_FORECAST_DAYS", "10"))
 OPEN_METEO_PAST_DAYS = int(env("OPEN_METEO_PAST_DAYS", "0"))
 FORECAST_STALE_AFTER_HOURS = int(env("FORECAST_STALE_AFTER_HOURS", "7"))
 ANALYTICS_RATE_LIMIT_PER_MINUTE = int(env("ANALYTICS_RATE_LIMIT_PER_MINUTE", "60"))
@@ -204,3 +204,8 @@ LOGGING = {
 SECURE_PROXY_SSL_HEADER = None
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
+
+# Public, revisioned week payloads only. Auth/session responses never use this cache.
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.redis.RedisCache", "LOCATION": REDIS_URL}} if REDIS_URL else {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-week"}}
+
+HAWATCH_ASSET_VERSION = env("HAWATCH_ASSET_VERSION", "")

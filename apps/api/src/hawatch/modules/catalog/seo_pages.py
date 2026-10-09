@@ -83,6 +83,7 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
             "page": page,
             "robots": robots,
             "new_design": getattr(settings, "HAWATCH_NEW_DESIGN", False),
+            "asset_prefix": ("/static-assets/"+getattr(settings,"HAWATCH_ASSET_VERSION","")) if getattr(settings,"HAWATCH_ASSET_VERSION","") else "",
         },
         status=status,
     )

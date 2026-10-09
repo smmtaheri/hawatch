@@ -61,7 +61,7 @@ def test_bulk_query_count_does_not_scale_with_choices(seeded):
 
 def test_midnight_arrivals_never_receive_locked_day_weather(seeded):
     client = APIClient()
-    day = now_tehran().date()
+    day = now_tehran().date()+timedelta(days=7)
     body = client.get("/api/v1/routes/tochal-darband/forecast/day/", {"date": day.isoformat(), "period": "night", "start_time": "23:00"}).json()
     access_end = body["forecast_access"]["available_through"]
     found = False

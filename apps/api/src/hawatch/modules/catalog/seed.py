@@ -106,11 +106,11 @@ def ensure_forecasts(seed_version: str, *, force: bool = False) -> DemoSeedState
     records = []
     for point in points:
         elevation = _demo_elevation_m(point)
-        for day in day_window(local.date()):
-            for hour in ALL_HOURS:
+        for day in [local.date()+timedelta(days=i) for i in range(10)]:
+            for hour in range(24):
                 reading = generate_reading(point_slug=point.slug, climate_key=point.climate, elevation_m=elevation, local_date=day, hour=hour)
                 forecast_at = localize_dt(day, hour)
-                records.append(ForecastRecord(weather_point=point, snapshot=None, forecast_at=forecast_at, valid_from=forecast_at, valid_to=forecast_at + timedelta(hours=2), generated_at=generated_at, hour_bucket=bucket, **{key: reading[key] for key in ("temperature_c", "apparent_temperature_c", "weather_code", "condition_label", "icon", "wind_speed_kmh", "wind_gust_kmh", "wind_direction_deg", "precipitation_probability", "precipitation_mm", "rain_mm", "snowfall_cm", "visibility_km", "cloud_cover_pct", "uv_index", "freezing_level_m", "cloud_base_m", "severity")}, freshness=ForecastRecord.Freshness.READY, data_mode=DATA_MODE, source="hawatch-demo", seed_version=seed_version, provider="demo"))
+                records.append(ForecastRecord(weather_point=point, snapshot=None, forecast_at=forecast_at, valid_from=forecast_at, valid_to=forecast_at + timedelta(hours=1), generated_at=generated_at, hour_bucket=bucket, **{key: reading[key] for key in ("temperature_c", "apparent_temperature_c", "weather_code", "condition_label", "icon", "wind_speed_kmh", "wind_gust_kmh", "wind_direction_deg", "precipitation_probability", "precipitation_mm", "rain_mm", "snowfall_cm", "visibility_km", "cloud_cover_pct", "uv_index", "freezing_level_m", "cloud_base_m", "severity")}, freshness=ForecastRecord.Freshness.READY, data_mode=DATA_MODE, source="hawatch-demo", seed_version=seed_version, provider="demo"))
     with transaction.atomic():
         ForecastRecord.objects.filter(seed_version=seed_version, data_mode=DATA_MODE).delete()
         ForecastRecord.objects.bulk_create(records, batch_size=500)

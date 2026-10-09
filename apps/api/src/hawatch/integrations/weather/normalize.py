@@ -15,7 +15,7 @@ TEHRAN = ZoneInfo("Asia/Tehran")
 MAX_PROVIDER_RESOLUTION_DISTANCE_KM = 5.0
 
 # Fields intentionally not requested from Open-Meteo in this vertical slice.
-UNAVAILABLE_HOURLY_FIELDS = ("cloud_cover_pct", "uv_index", "cloud_base_m")
+UNAVAILABLE_HOURLY_FIELDS = ("cloud_cover_pct", "cloud_base_m")
 
 # WMO weather interpretation codes → UI condition/icon/severity.
 WMO_MAP: dict[int, tuple[str, str, str, str]] = {

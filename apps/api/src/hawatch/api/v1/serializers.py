@@ -177,6 +177,7 @@ def serialize_route_summary(route: Route, *, points=None) -> dict:
         "distance_km": distance_km,
         "distance_label": f"{to_fa_digits(distance_km)} km" if distance_km is not None else "—",
         "ascent_m": ascent_m,
+        "descent_m": route.descent_m,
         "ascent_label": f"{to_fa_digits(ascent_m)} m" if ascent_m is not None else "—",
         "featured": route.featured,
         "href": f"/routes/{route.slug}",
@@ -230,6 +231,7 @@ def serialize_route(route: Route) -> dict:
         "distance_km": distance_km,
         "distance_label": f"{to_fa_digits(distance_km)} km" if distance_km is not None else "—",
         "ascent_m": route.ascent_m,
+        "descent_m": route.descent_m,
         "ascent_label": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "—",
         "round_trip_minutes": route.round_trip_minutes,
         "one_way_minutes": route.one_way_minutes,
@@ -954,27 +956,17 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         hero_status = None
         critical_point = finish
 
-    gear = []
-
-    def add_gear(*items: str) -> None:
-        for item in items:
-            if item not in gear:
-                gear.append(item)
-
-    # Keep equipment structured and language-independent. The prose below is
-    # retained for API compatibility, while the UI renders only these stable
-    # icon keys in the share card.
-    add_gear("hiking-boots", "backpack", "water-bottle")
-    if timing_pending:
-        add_gear("first-aid", "power-bank")
-    if route.one_way_minutes and route.one_way_minutes >= 360:
-        add_gear("energy-snack", "headlamp")
-    if summary_state == "critical":
-        add_gear("compass", "whistle")
-    if critical_point and any(w["code"] == "wind" for w in critical_point["warnings"]):
-        add_gear("waterproof-shell", "trekking-poles")
-    if critical_point and (critical_point.get("temp") is not None and critical_point["temp"] <= 2):
-        add_gear("gloves", "insulated-jacket", "beanie")
+    from types import SimpleNamespace
+    from hawatch.integrations.weather.equipment import suggest_equipment
+    equipment_records = []
+    for item in planned:
+        if not item["weather"] or not item["forecast_at"]:
+            continue
+        weather = dict(item["weather"])
+        weather["forecast_at"] = datetime.fromisoformat(item["forecast_at"])
+        weather["weather_point_id"] = next((p.weather_point_id for p in points if p.slug == item["slug"]), None)
+        equipment_records.append(SimpleNamespace(**weather))
+    gear = [item["id"] for item in suggest_equipment(equipment_records)]
 
     recommendations = []
     if timing_pending:
@@ -990,7 +982,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     if critical_point and (critical_point.get("temp") is not None and critical_point["temp"] <= 2):
         recommendations.append("دستکش گرم، لایهٔ عایق و عینک محافظ همراه داشته باش؛ در ارتفاع توقف طولانی نکن.")
     if not recommendations:
-        recommendations.append("یک لایهٔ اضافه، آب کافی و چراغ پیشانی همراه داشته باش؛ پیش‌بینی موجود را همراه شرایط محلی بررسی کن.")
+        recommendations.append("پیش‌بینی موجود را همراه شرایط محلی مسیر بررسی کن.")
 
     start_label = format_hhmm(start_minutes)
     finish_label = finish["time"] if finish and finish["time"] != "—" else "—"

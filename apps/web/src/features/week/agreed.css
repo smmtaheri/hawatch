@@ -1,0 +1,100 @@
+/* Decisions approved in chat; scoped to point/route forecast, preserving current font. */
+body.forecast-page #forecast-v4 .hero h1{font-size:40px;line-height:1.6;letter-spacing:normal}
+body.forecast-page #forecast-v4 .hero>p{font-size:20px;line-height:1.7}
+body.forecast-page.route-page #forecast-v4 .hero>p{font-size:14px}
+body.forecast-page #forecast-v4 .day-name,body.forecast-page.route-page #forecast-v4 .route-date strong{font-size:19px;font-weight:700}
+body.forecast-page #forecast-v4 .day-date{font-size:17px}
+body.forecast-page.route-page #forecast-v4 .route-date small{font-size:16px}
+body.forecast-page #forecast-v4 .stamp{font-size:20px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .point-header strong{font-size:18px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .point-header .arrival-clock{font-size:24px;font-weight:700;line-height:1.5}
+body.forecast-page #forecast-v4 .chart-value{font-size:18px;font-weight:700}
+body.forecast-page #forecast-v4 .chart-value.temperature{font-size:22px}
+body.forecast-page #forecast-v4 .specialist-trigger{font-size:16px;font-weight:400}
+body.forecast-page #forecast-v4 .metric-label,body.forecast-page #forecast-v4 .chart-caption{font-size:14px;font-weight:400}
+body.forecast-page #forecast-v4 .metric-label-unit,body.forecast-page #forecast-v4 .chart-caption.unit{font-size:11px}
+body.forecast-page.route-page #forecast-v4 .tool label{font-size:15px;font-weight:700;color:var(--ink)}
+body.forecast-page.route-page #forecast-v4 .summary-item strong{font-size:18px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .v4-route-support-title{font-size:25px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .gear-trigger{font-size:18px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .change-route{font-size:16px;font-weight:700}
+body.forecast-page #forecast-v4 .route-link .copy{font-size:20px}
+body.forecast-page #forecast-v4 .route-link small{font-size:13px}
+body.forecast-page #forecast-v4 .all-routes{font-size:20px;font-weight:700}
+body.forecast-page.route-page #forecast-v4 .share-row .primary-button{font-size:16px;font-weight:700}
+body.forecast-page .forecast-v4 .modal-actions button{font-size:16px}
+body.forecast-page .forecast-v4 .route-weather-warnings{font-size:14px;line-height:1.8;margin-block:12px}
+body.forecast-page .forecast-v4 .route-weather-warnings p{margin-bottom:8px}
+body.forecast-page .forecast-v4 .gear-list{max-height:450px;overflow:auto}
+body.forecast-page .forecast-v4 .export-shell .point-header .arrival-clock{font-size:13px;font-weight:400}
+body.forecast-page .forecast-v4 .export-shell .summary-item strong{font-size:21px}
+@media(min-width:768px) and (max-width:1279px){body.forecast-page #forecast-v4 .hero h1{font-size:36px}}
+@media(max-width:767px){
+ body.forecast-page #forecast-v4 .hero h1{font-size:27px}
+ body.forecast-page #forecast-v4 .hero>p{font-size:14px}
+ body.forecast-page.route-page #forecast-v4 .hero>p{font-size:13px;white-space:normal}
+ body.forecast-page #forecast-v4 .day-name,body.forecast-page.route-page #forecast-v4 .route-date strong{font-size:14px}
+ body.forecast-page #forecast-v4 .day-date,body.forecast-page.route-page #forecast-v4 .route-date small{font-size:13px}
+ body.forecast-page #forecast-v4 .stamp{font-size:15px;font-weight:700}
+ body.forecast-page.route-page #forecast-v4 .point-header strong{font-size:15px}
+ body.forecast-page.route-page #forecast-v4 .point-header .arrival-clock{font-size:17px;font-weight:700}
+ body.forecast-page #forecast-v4 .chart-value{font-size:14px}
+ body.forecast-page #forecast-v4 .chart-value.temperature{font-size:18px}
+ body.forecast-page #forecast-v4 .specialist-trigger{font-size:14px}
+ body.forecast-page #forecast-v4 .metric-label,body.forecast-page #forecast-v4 .chart-caption{font-size:12px}
+ body.forecast-page #forecast-v4 .metric-label-unit,body.forecast-page #forecast-v4 .chart-caption.unit{font-size:10px}
+ body.forecast-page.route-page #forecast-v4 .tool label{font-size:14px;font-weight:700}
+ body.forecast-page.route-page #forecast-v4 .v4-route-support-title{font-size:21px}
+ body.forecast-page.route-page #forecast-v4 .gear-trigger{font-size:16px}
+ body.forecast-page.route-page #forecast-v4 .change-route{font-size:13px;font-weight:600}
+ body.forecast-page #forecast-v4 .route-link .copy{font-size:18px}
+ body.forecast-page #forecast-v4 .all-routes{font-size:17px}
+ body.forecast-page.route-page #forecast-v4 .share-row .primary-button{font-size:14px}
+ body.forecast-page #forecast-v4 .hero{grid-template-columns:minmax(0,1fr) max-content}
+ body.forecast-page #forecast-v4 .v4-mobile-forecast-title{font-size:19px}
+}
+@media(max-width:359px){body.forecast-page #forecast-v4 .hero h1{font-size:24px}}
+
+body.forecast-page #forecast-v4 .point-header{width:148px;max-width:148px}
+body.forecast-page #forecast-v4 .point-header strong{white-space:normal;display:block;line-height:1.5}
+body.forecast-page #forecast-v4 .point-headers{height:180px}
+body.forecast-page #forecast-v4 .day-headers{height:94px}
+.week-route-dialog{position:fixed;inset:15% 10%;z-index:30;padding:24px;background:var(--panel-strong);border-radius:14px;overflow:auto}
+.week-route-dialog a{display:block;padding:16px}
+@media(max-width:767px){body.forecast-page #forecast-v4 .point-header{width:120px;max-width:120px}body.forecast-page #forecast-v4 .point-headers{height:160px}}
+
+.week-route-picker>a{display:block;padding:12px 8px;border-bottom:1px solid var(--border);font-weight:700}
+
+body.forecast-page .forecast-v4 .export-shell .point-header{width:124px;max-width:124px}
+body.forecast-page .forecast-v4 .export-shell .point-header strong{white-space:normal;display:block;line-height:1.5}
+body.forecast-page .forecast-v4 .export-shell .point-headers{height:176px}
+
+/* Keep duration beside arrival; use a slightly smaller bold value. */
+body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:15px;font-weight:700;white-space:nowrap}
+@media(max-width:359px){
+ body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{font-size:14px}
+ body.forecast-page.route-page #forecast-v4 .route-summary{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+ body.forecast-page.route-page #forecast-v4 .route-summary [data-summary="distance"] strong{white-space:normal}
+}
+/* Keep both mobile actions equally sized; narrow phones use two full-width rows. */
+@media(max-width:767px){
+ body.forecast-page .forecast-v4 .modal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.forecast-page .forecast-v4 .modal-actions button{width:100%;min-width:0;height:48px;min-height:48px;box-sizing:border-box;padding:8px;white-space:nowrap;gap:8px;border-radius:10px}
+ body.forecast-page .forecast-v4 .modal-actions .secondary-button{border:1px solid var(--accent);color:var(--accent)}
+ body.forecast-page .forecast-v4 .modal-actions .icon{width:20px;height:20px;flex-shrink:0}
+}
+@media(max-width:359px){body.forecast-page .forecast-v4 .modal-actions{grid-template-columns:minmax(0,1fr)}}
+
+/* Restore the condition text below its icon without crowding weather values. */
+body.forecast-page .forecast-v4 .weather-label{display:block;margin-top:2px;font-size:12px;font-weight:400;line-height:18px;text-align:center;color:var(--secondary);white-space:normal}
+body.forecast-page #forecast-v4 .weather-strip{height:68px}
+body.forecast-page #forecast-v4 .weather-slot{width:88px}
+body.forecast-page #forecast-v4 .weather-slot>.icon:not(.point-warning){display:block;margin:0 auto}
+@media(max-width:767px){
+ body.forecast-page .forecast-v4 .weather-label{font-size:11px;line-height:16px}
+ body.forecast-page #forecast-v4 .weather-strip{height:63px}
+}
+/* Reserve the caption row below route icons, including longer Persian names. */
+body.forecast-page.route-page #forecast-v4 .point-headers{height:198px}
+body.forecast-page .forecast-v4 .export-shell .point-headers{height:194px}
+@media(max-width:767px){body.forecast-page.route-page #forecast-v4 .point-headers{height:178px}}

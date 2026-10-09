@@ -292,9 +292,9 @@ def test_point_forecast_shape_and_flags(api_client, seeded):
     assert body["meta"]["timezone"] == "Asia/Tehran"
     assert body["meta"]["data_mode"] == "demo"
     assert body["meta"]["freshness"] in {"ready", "stale"}
-    assert len(body["days"]) == 7
-    assert body["days"][0]["is_yesterday"] is True
-    assert body["days"][1]["is_today"] is True
+    assert len(body["days"]) == 8
+    assert body["days"][0]["is_today"] is True
+    assert body["days"][1]["is_future"] is True
     assert [item["hour"] for item in body["hourly"]] == [6, 8, 10]
     assert "is_past" in body["hourly"][0]
     assert "is_current" in body["hourly"][0]
@@ -335,7 +335,7 @@ def test_deterministic_seed_same_hour(seeded):
         point_slug="tochal",
         climate_key="alpine",
         elevation_m=3964,
-        local_date=day_window(today)[0],
+        local_date=day_window(today)[1],
         hour=10,
     )
     assert first != other_hour or first["wind_speed_kmh"] != other_hour["wind_speed_kmh"] or first["temperature_c"] != other_hour["temperature_c"] or first["condition_label"] != other_hour["condition_label"]
@@ -370,8 +370,7 @@ def test_route_forecast_start_and_speed(api_client, seeded):
     assert medium["points"][0]["time"] == medium["start_time"]
     assert "حدود" in medium["decision"]["title"]
     assert "timing pending" not in str(medium).lower()
-    assert medium["decision"]["gear"]
-    assert {"hiking-boots", "backpack", "water-bottle"}.issubset(medium["decision"]["gear"])
+    assert not {"hiking-boots", "backpack", "water-bottle", "energy-snack"}.intersection(medium["decision"]["gear"])
 
     kolakchal = api_client.get(
         "/api/v1/routes/tochal-kolakchal/forecast/",
