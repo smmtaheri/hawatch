@@ -151,9 +151,10 @@ body.forecast-page .forecast-v4 .dialog-open{overflow:hidden}
 body.forecast-page .forecast-v4 .full-image-overlay{position:fixed;inset:0;background:rgba(2,15,28,.9);z-index:30;padding:48px 16px;overflow:auto;direction:ltr}
 body.forecast-page .forecast-v4 .full-image-overlay img{display:block;max-width:none;min-width:100%;width:var(--natural-width,1536px)}
 body.forecast-page .forecast-v4 .full-image-overlay .close-button{position:fixed;top:8px;right:10px;color:white;z-index:31}
-body.forecast-page .forecast-v4 .export-shell{position:relative;padding:34px 38px;isolation:isolate;width:100%;background:var(--bg)}
-body.forecast-page .forecast-v4 .export-shell:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/share-backgrounds/light.webp') center/cover no-repeat}
-:root[data-theme=dark] body.forecast-page .forecast-v4 .export-shell:before{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/share-backgrounds/dark.webp')}
+body.forecast-page .forecast-v4 .export-shell{position:relative;padding:34px 38px;isolation:isolate;width:100%;background:transparent}
+body.forecast-page .forecast-v4 .export-shell:before{content:"";position:absolute;inset:0;z-index:-1;background:url('/new-design/backgrounds/route-desktop-light.webp') center top/cover no-repeat;filter:saturate(.85)}
+body.forecast-page .forecast-v4 .export-shell:after{content:"";position:absolute;inset:0;z-index:-1;background:var(--overlay);pointer-events:none}
+:root[data-theme=dark] body.forecast-page .forecast-v4 .export-shell:before{filter:url('#route-night-desktop')}
 body.forecast-page .forecast-v4 .export-heading{display:flex;align-items:start;justify-content:space-between;margin-bottom:20px}
 body.forecast-page .forecast-v4 .export-heading h1{font-size:34px;line-height:1.6}
 body.forecast-page .forecast-v4 .export-heading p{font-size:16px;color:var(--secondary)}

@@ -3,6 +3,9 @@ import { initialSeoContentFor } from "../lib/initialSeoContent";
 import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { BackNavigation } from "./BackNavigation";
+import { ROUTE_NIGHT_TONE } from "../styles/new-design/routeBackgroundTone";
+const [routeNightDesktopR, routeNightDesktopG, routeNightDesktopB] = ROUTE_NIGHT_TONE.desktop;
+const [routeNightMobileR, routeNightMobileG, routeNightMobileB] = ROUTE_NIGHT_TONE.mobile;
 export function PageShell({
   children,
   className,
@@ -25,16 +28,16 @@ export function PageShell({
         <defs>
           <filter id="route-night-desktop" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
             <feComponentTransfer>
-              <feFuncR type="gamma" amplitude="0.5152" exponent="2.01" offset="0.0014" />
-              <feFuncG type="gamma" amplitude="0.4622" exponent="2.58" offset="0.1378" />
-              <feFuncB type="gamma" amplitude="0.4754" exponent="4" offset="0.2391" />
+              <feFuncR type="gamma" {...routeNightDesktopR} />
+              <feFuncG type="gamma" {...routeNightDesktopG} />
+              <feFuncB type="gamma" {...routeNightDesktopB} />
             </feComponentTransfer>
           </filter>
           <filter id="route-night-mobile" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
             <feComponentTransfer>
-              <feFuncR type="gamma" amplitude="0.5109" exponent="2.28" offset="0.0095" />
-              <feFuncG type="gamma" amplitude="0.5205" exponent="2.4" offset="0.1123" />
-              <feFuncB type="gamma" amplitude="0.4980" exponent="2.61" offset="0.1995" />
+              <feFuncR type="gamma" {...routeNightMobileR} />
+              <feFuncG type="gamma" {...routeNightMobileG} />
+              <feFuncB type="gamma" {...routeNightMobileB} />
             </feComponentTransfer>
           </filter>
         </defs>

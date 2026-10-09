@@ -4,6 +4,8 @@ import {charts} from "./charts";
 import {weatherIcons} from "./weatherIcons";
 import {uiIcons,equipmentIcons} from "./icons";
 /* Hawatch v4. All controls read the same preloaded eight-day response. */
+import { ROUTE_NIGHT_TONE } from '../../../styles/new-design/routeBackgroundTone';
+
 export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  'use strict';
  const C=charts,resolutions=['daily','6h','3h','1h'];
@@ -157,7 +159,25 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  async function makeImage(data,theme){
   if(document.fonts)await document.fonts.ready;const width=Math.max(1200,256+data.points.length*128),host=document.createElement('div');host.className='forecast-v4 v4-render-host';host.style.width=width+'px';host.innerHTML=exportHTML(data,width);document.body.append(host);
   try{const card=host.firstElementChild,bounds=card.getBoundingClientRect(),height=Math.ceil(bounds.height),canvas=document.createElement('canvas');canvas.width=width*2;canvas.height=height*2;const c=canvas.getContext('2d');c.scale(2,2);
-   const bg=await imageLoad(`/new-design/share-backgrounds/${theme}.webp`),scale=Math.max(width/bg.width,height/bg.height);c.save();if(theme==='dark')c.filter='brightness(1.22) saturate(.88)';c.drawImage(bg,(width-bg.width*scale)/2,(height-bg.height*scale)/2,bg.width*scale,bg.height*scale);c.restore();c.fillStyle=theme==='dark'?'rgba(1,21,37,.12)':'rgba(232,242,245,.12)';c.fillRect(0,0,width,height);
+   // Share exports use the exact route scenery. Keep the dark treatment in
+   // sync with the route page's SVG channel curves (PageShell) instead of a
+   // separate, darker share-background asset or an unrelated brightness tweak.
+   const bg=await imageLoad('/new-design/backgrounds/route-desktop-light.webp'),scale=Math.max(width/bg.width,height/bg.height),bgWidth=bg.width*scale,bgHeight=bg.height*scale,bgX=(width-bgWidth)/2;
+   c.save();
+   if(theme==='dark'){
+    const graded=document.createElement('canvas');graded.width=bg.naturalWidth;graded.height=bg.naturalHeight;
+    const grade=graded.getContext('2d',{willReadFrequently:true});
+    if(grade){
+     grade.drawImage(bg,0,0);const pixels=grade.getImageData(0,0,graded.width,graded.height),channels=ROUTE_NIGHT_TONE.desktop;
+     for(let i=0;i<pixels.data.length;i+=4)for(let channel=0;channel<3;channel++){
+      const {amplitude,exponent,offset}=channels[channel];pixels.data[i+channel]=Math.round(255*(amplitude*(pixels.data[i+channel]/255)**exponent+offset));
+     }
+     grade.putImageData(pixels,0,0);c.drawImage(graded,bgX,0,bgWidth,bgHeight);
+    }else c.drawImage(bg,bgX,0,bgWidth,bgHeight);
+   }else{
+    c.filter='saturate(.85)';c.drawImage(bg,bgX,0,bgWidth,bgHeight);
+   }
+   c.restore();c.fillStyle=theme==='dark'?'rgba(1,21,37,.10)':'rgba(232,242,245,.05)';c.fillRect(0,0,width,height);
    const panel=card.querySelector('.forecast-panel'),pb=panel.getBoundingClientRect(),ps=getComputedStyle(panel);roundRect(c,pb.left-bounds.left,pb.top-bounds.top,pb.width,pb.height,14);c.fillStyle=ps.backgroundColor;c.fill();c.strokeStyle=ps.borderTopColor;c.lineWidth=1;c.stroke();
    for(const svg of card.querySelectorAll('svg'))await drawSvg(c,svg,bounds);
    // Preserve the actual line layout for long canonical names in PNG exports.
