@@ -744,7 +744,7 @@
     }
   ],
   "sourceHashes": {
-    "apps/web/src/styles/new-design/landscape.css": "12db093b40e5e89905397621f2c3d7249d1ed472d6490621cd843b73ec29d4bb",
+    "apps/web/src/styles/new-design/landscape.css": "40b3656ecd5f9582182ce2cd4ab0b0f8d3656144210e437a2613d995c539d899",
     "apps/web/src/styles/new-design/base.css": "ec8eff6005917dcc0a0a5c4a8997fd9b036e1d8dbf7e24abe6a8d6526b5d29a8",
     "apps/web/src/features/week/forecast-v5.css": "7c5e30acb0c44c2aa58ac3bb9af3d713ce66ac3bca0493a7a67a240726ee8275",
     "apps/web/src/features/week/vendor/charts.ts": "09c79208e8016230d8cbe5f0c113f826ed24dc8420a62f769742c7cc0e421642",
@@ -811,5 +811,34 @@
       "headerHeight": 171.1875,
       "errors": []
     }
-  ]
+  ],
+  "darkRouteBackground": {
+    "scope": "Local production build; replayed read-only public API responses; no deployment",
+    "widths": [
+      320,
+      390,
+      1440
+    ],
+    "routes": [
+      "tochal-darband",
+      "alamkuh-northern-siahsang"
+    ],
+    "reference": "points/tochal",
+    "filter": "saturate(.5) hue-rotate(-5deg) brightness(1.6)",
+    "caseCount": 18,
+    "checks": {
+      "lightAndDestinationPixelsUnchanged": true,
+      "foregroundAndLayoutUnchanged": true,
+      "noHorizontalOverflow": true,
+      "noJavaScriptErrors": true,
+      "expandedBackgroundContinuous": true,
+      "sameTabNavigationAndThemeToggle": true
+    },
+    "screens": [
+      "mobile/dark/route.jpg",
+      "mobile/dark/route-expanded.jpg",
+      "desktop/dark/route.jpg",
+      "desktop/dark/route-expanded.jpg"
+    ]
+  }
 }

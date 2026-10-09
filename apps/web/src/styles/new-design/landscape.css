@@ -13,7 +13,9 @@ main.route-page {
 }
 :root[data-theme="dark"] main.route-page {
   --landscape-photo: url('/new-design/backgrounds/route-desktop-dark.webp');
-  --landscape-tone: saturate(.72) brightness(1.12);
+  /* The route source is darker and bluer than the destination source.
+     Balance the photo alone; shared cards and foreground colors stay intact. */
+  --landscape-tone: saturate(.5) hue-rotate(-5deg) brightness(1.6);
 }
 .landscape {
   position: fixed;

@@ -181,7 +181,7 @@
     },
     "routeTone": {
       "light": "saturate(.85)",
-      "dark": "saturate(.72) brightness(1.12)"
+      "dark": "saturate(.5) hue-rotate(-5deg) brightness(1.6)"
     },
     "assetsModified": false
   }
