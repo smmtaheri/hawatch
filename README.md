@@ -115,7 +115,7 @@ chmod 700 /root/hawatch-deploy.sh
 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 
-راهنمای کامل، گزینه‌های اسکریپت و دستور توقف در `docs/deployment.md` است. این اسکریپت به‌صورت پیش‌فرض Redis و observability سنگین را اجرا نمی‌کند.
+راهنمای کامل، گزینه‌های اسکریپت و دستور توقف در `docs/deployment.md` است. این اسکریپت به‌صورت پیش‌فرض observability سنگین را اجرا نمی‌کند.
 
 ## محل فایل `.env`
 
@@ -243,7 +243,7 @@ Startup زنده catalog را در هر restart بازنویسی نمی‌کند
 - frontend: React + TypeScript + Vite + pnpm workspace
 - backend: Django 5.2 LTS + DRF + Python 3.14 + uv
 - database: PostgreSQL 16 + PostGIS 3.5
-- Redis: optional، profile `cache`؛ در این milestone لازم نیست
+- Redis: کش مشترک هفته، فعال به‌صورت پیش‌فرض با سقف ۱۲۸MB و LRU
 - Kafka و data lake: خارج از این milestone
 - Observability اختیاری: OpenSearch + Dashboards، Vector، Prometheus و Grafana با profile `observability`؛ جزئیات در `docs/observability.md`
 

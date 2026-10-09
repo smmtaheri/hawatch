@@ -44,13 +44,16 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: "5432"
       HAWATCH_TIMEZONE: Asia/Tehran
+      HAWATCH_INGEST_SCHEDULE: ${HAWATCH_INGEST_SCHEDULE:-00:00,06:00,12:00,18:00}
+      REDIS_URL: redis://redis:6379/0
+      HAWATCH_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}
       DEMO_DATA_ENABLED: ${DEMO_DATA_ENABLED:-true}
       DEMO_SEED_VERSION: ${DEMO_SEED_VERSION:-hawatch-demo-v1}
       HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: ${HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY:-true}
       WEATHER_PROXY_ENCRYPTION_KEY: ${WEATHER_PROXY_ENCRYPTION_KEY:-hawatch-local-weather-proxy-key}
       OPEN_METEO_BASE_URL: ${OPEN_METEO_BASE_URL:-https://api.open-meteo.com}
       OPEN_METEO_BATCH_SIZE: ${OPEN_METEO_BATCH_SIZE:-100}
-      OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
+      OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-10}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-0}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
       GUNICORN_WORKERS: ${GUNICORN_WORKERS:-1}
@@ -69,6 +72,8 @@ services:
       - hawatch_logs:/var/log/hawatch
     depends_on:
       postgres:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     healthcheck:
       test:
@@ -104,6 +109,9 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: "5432"
       HAWATCH_TIMEZONE: Asia/Tehran
+      HAWATCH_INGEST_SCHEDULE: ${HAWATCH_INGEST_SCHEDULE:-00:00,06:00,12:00,18:00}
+      REDIS_URL: redis://redis:6379/0
+      HAWATCH_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}
       WEATHER_PROXY_ENCRYPTION_KEY: ${WEATHER_PROXY_ENCRYPTION_KEY:-hawatch-local-weather-proxy-key}
       HAWATCH_SERVICE_NAME: hawatch-ingest
       HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
@@ -112,7 +120,7 @@ services:
       HAWATCH_RETENTION_DAYS: ${HAWATCH_RETENTION_DAYS:-7}
       OPEN_METEO_BASE_URL: ${OPEN_METEO_BASE_URL:-https://api.open-meteo.com}
       OPEN_METEO_BATCH_SIZE: ${OPEN_METEO_BATCH_SIZE:-100}
-      OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-7}
+      OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-10}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-0}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
       HAWATCH_METRICS_TOKEN_FILE: /run/secrets/hawatch_metrics_token
@@ -142,6 +150,7 @@ services:
       context: ../..
       dockerfile: apps/web/Dockerfile
       args:
+        VITE_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api/v1}
         VITE_PUBLIC_SITE_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
     ports:
@@ -180,8 +189,7 @@ services:
 
   redis:
     image: redis:7.4.2
-    profiles: ["cache"]
-    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru", "--save", "", "--appendonly", "no"]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s

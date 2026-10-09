@@ -5,7 +5,7 @@ set -Eeuo pipefail
 #
 # The script is intentionally scoped to one checkout and one Compose project:
 # it never runs `docker compose down -v`, removes files, changes firewall rules,
-# or enables the optional observability/cache profiles by default. Images are
+# or enables optional observability by default. Images are
 # built before any running containers are replaced, so a registry/build outage
 # never takes down a healthy release.
 
@@ -231,7 +231,9 @@ configure_env() {
   fi
   # Keep the live provider window aligned with the product contract on existing
   # servers too; older .env files may still contain the former past_days=1.
-  set_env_value OPEN_METEO_FORECAST_DAYS 7
+  set_env_value OPEN_METEO_FORECAST_DAYS 10
+  set_env_value REDIS_URL redis://redis:6379/0
+  set_env_value HAWATCH_ASSET_VERSION "$(git -C "$REPO_DIR" rev-parse --short=12 HEAD)"
   set_env_value OPEN_METEO_PAST_DAYS 0
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-$(get_env_value FORECAST_STALE_AFTER_HOURS)}"
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-7}"
@@ -337,7 +339,7 @@ run_stack() {
     compose+=(--profile observability)
     log "Observability profile enabled by request. This needs materially more RAM and disk."
   else
-    log "Starting the lightweight profile; Redis and observability remain stopped."
+    log "Starting the lightweight profile; shared Redis is enabled; observability remains stopped."
   fi
 
   "${compose[@]}" config --quiet
@@ -368,14 +370,15 @@ run_stack() {
 
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler \
+    "${compose[@]}" up -d --force-recreate --remove-orphans postgres redis api web maintenance ingest-scheduler \
       opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
       vector prometheus grafana
   else
-    "${compose[@]}" up -d --force-recreate --remove-orphans postgres api web maintenance ingest-scheduler
+    "${compose[@]}" up -d --force-recreate --remove-orphans postgres redis api web maintenance ingest-scheduler
   fi
 
   wait_for_healthy postgres
+  wait_for_healthy redis
   wait_for_healthy api
   wait_for_healthy web
   wait_for_running maintenance
@@ -393,6 +396,9 @@ run_stack() {
   # catalogs, so this is an idempotent no-op.
   log "Synchronizing packaged catalogs on the live database."
   "${compose[@]}" exec -T api python manage.py sync_catalog --apply
+  log "Applying verified route descent/distances and warming the public week cache."
+  "${compose[@]}" exec -T api python manage.py apply_route_descent
+  "${compose[@]}" exec -T api python manage.py warm_week_cache
 
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
@@ -408,7 +414,7 @@ run_stack() {
     # `ingest` is intentionally not part of the detached `up` set because it
     # is a one-shot job. Its image was built with the release images above, so
     # this run cannot silently use an older dependency set.
-    "${compose[@]}" run --rm ingest
+    "${compose[@]}" run --rm --entrypoint python ingest manage.py ingest_open_meteo --wait-lock-seconds 900
   else
     log "Initial ingest skipped (RUN_INITIAL_INGEST=${RUN_INITIAL_INGEST}); scheduled/manual ingest remains available."
   fi

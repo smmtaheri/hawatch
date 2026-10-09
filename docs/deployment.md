@@ -4,7 +4,7 @@
 [`backup-restore.md`](backup-restore.md) را بخوانید. آن runbook ترتیب دقیق dump
 دیتابیس، env، imageهای نهایی و restore با `--no-build` را مشخص می‌کند.
 
-این مسیر برای pilot سبک است: PostgreSQL/PostGIS، API، frontend production، Nginx gateway و maintenance بالا می‌آیند. Redis و observability سنگین (`OpenSearch`، Dashboards، Vector، Prometheus و Grafana) به‌صورت پیش‌فرض اجرا نمی‌شوند.
+این مسیر برای pilot سبک است: PostgreSQL/PostGIS، Redis مشترک، API، frontend production، Nginx gateway و maintenance بالا می‌آیند. observability سنگین (`OpenSearch`، Dashboards، Vector، Prometheus و Grafana) به‌صورت پیش‌فرض اجرا نمی‌شوند.
 
 اسکریپت `scripts/deploy.sh` روی Linux این کارها را انجام می‌دهد:
 
@@ -196,3 +196,34 @@ ENABLE_OBSERVABILITY=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 
 این profile برای pilot سبک لازم نیست.
+
+## انتشار پیش‌بینی هفته و داده‌های مسیر
+
+`deploy-hawatch` برنچ `main` را دیپلوی می‌کند. deploy تنظیم دریافت provider را
+۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ asset فرانت، SSR و cache بر اساس
+همان commit است. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
+`sync_catalog --apply`، `apply_route_descent` و `warm_week_cache` اجرا می‌شوند.
+دادهٔ کاربر و دیتابیس پروداکشن حفظ می‌شوند؛ دیتابیس استیج جایگزین آن نمی‌شود.
+کاتالوگ جدید فقط با gate مستند onboarding وارد repository شود؛ این deploy
+فقط کاتالوگ‌های قبلاً تأییدشدهٔ بسته را همگام می‌کند.
+
+دریافت فوری هوای تازه (از لوکال، پس از deploy):
+
+```bash
+ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py ingest_open_meteo --wait-lock-seconds 900'
+```
+
+دریافت موفق/partial خودکار cache مقصدهای ثابت و بازدیدهای ۴۸ساعته را گرم
+می‌کند. دریافت دوره‌ای پیش‌فرض هر ۶ ساعت ادامه دارد. تغییر هوا در CDN cache
+نمی‌شود؛ قوانین پنل CDN باید هدرهای no-store/private را رعایت کنند.
+
+حذف کامل سرویس‌ها و دادهٔ مستقل استیج (از لوکال؛ این دستور دیتابیس استیج را
+حذف می‌کند و پروداکشن را دست نمی‌زند):
+
+```bash
+ssh hawatch 'export HAWATCH_STAGE_ENV_FILE=/root/hawatch-stage.env; docker compose --project-name hawatch-stage --env-file "$HAWATCH_STAGE_ENV_FILE" -f /root/hawatch-stage/infra/compose/compose.stage.yaml down --volumes --remove-orphans && sed -i "s/^HAWATCH_STAGE_ENABLED=.*/HAWATCH_STAGE_ENABLED=0/" "$HAWATCH_STAGE_ENV_FILE"'
+```
+
+این دستور API، وب، gateway، scheduler، Redis، Postgres، شبکه و volumeهای
+استیج را حذف می‌کند. فایل‌های checkout و imageهای build برای استفادهٔ بعدی
+باقی می‌مانند و سرویسی اجرا نمی‌کنند.
