@@ -84,3 +84,17 @@ body.forecast-page.route-page #forecast-v4 .summary-item strong.duration-value{f
  body.forecast-page .forecast-v4 .modal-actions .icon{width:20px;height:20px;flex-shrink:0}
 }
 @media(max-width:359px){body.forecast-page .forecast-v4 .modal-actions{grid-template-columns:minmax(0,1fr)}}
+
+/* Restore the condition text below its icon without crowding weather values. */
+body.forecast-page .forecast-v4 .weather-label{display:block;margin-top:2px;font-size:12px;font-weight:400;line-height:18px;text-align:center;color:var(--secondary);white-space:normal}
+body.forecast-page #forecast-v4 .weather-strip{height:68px}
+body.forecast-page #forecast-v4 .weather-slot{width:88px}
+body.forecast-page #forecast-v4 .weather-slot>.icon:not(.point-warning){display:block;margin:0 auto}
+@media(max-width:767px){
+ body.forecast-page .forecast-v4 .weather-label{font-size:11px;line-height:16px}
+ body.forecast-page #forecast-v4 .weather-strip{height:63px}
+}
+/* Reserve the caption row below route icons, including longer Persian names. */
+body.forecast-page.route-page #forecast-v4 .point-headers{height:198px}
+body.forecast-page .forecast-v4 .export-shell .point-headers{height:194px}
+@media(max-width:767px){body.forecast-page.route-page #forecast-v4 .point-headers{height:178px}}

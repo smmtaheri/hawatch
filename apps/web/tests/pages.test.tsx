@@ -218,6 +218,14 @@ afterEach(() => vi.unstubAllGlobals());
 
 describe("approved week forecast and unchanged public pages", () => {
   for(const path of ['/points/tochal','/routes/tochal-darband']){
+    it(`shows the condition below weather icons: ${path}`,async()=>{
+      mount(path);
+      await waitFor(()=>expect(document.querySelector('.weather-label')).toHaveTextContent('صاف'));
+      expect(document.querySelectorAll('.weather-label').length).toBeGreaterThan(1);
+      expect(weatherCalls()).toHaveLength(1);
+    });
+  }
+  for(const path of ['/points/tochal','/routes/tochal-darband']){
     it(`preserves server HTML during an API error and replaces it after retry: ${path}`,async()=>{
       const title='پیش‌بینی اولیهٔ سرور';window.history.replaceState({},"",path);document.body.innerHTML=`<div data-seo-initial="true"><article><h1>${title}</h1></article></div>`;captureInitialSeoContent();document.body.innerHTML="";error=500;mount(path);
       await screen.findByRole('button',{name:/تلاش دوباره/});expect(screen.getByRole('heading',{name:title})).toBeVisible();error=0;await userEvent.click(screen.getByRole('button',{name:/تلاش دوباره/}));

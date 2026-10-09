@@ -12,6 +12,8 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  const ui=(key,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${uiIcons[key]||equipmentIcons[gearIcon(key)]||''}</svg>`;
  const sky=(code,at)=>{const hour=at?Number(at.slice(11,13)):12,night=hour<6||hour>=19,suffix=night?'night':'day';return ({clear:'clear-'+suffix,'mainly-clear':'mostly-clear-'+suffix,'partly-cloudy':'partly-cloudy-'+suffix,overcast:'cloudy',fog:'fog-'+suffix,shower:night?'showers-night':'showers',thunder:'thunderstorm','freezing-drizzle':'freezing-rain',wind:'wind'})[code]||code||'unknown';};
  const weather=(key,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${weatherIcons[key]||weatherIcons.unknown}</svg>`;
+ const weatherName=code=>({clear:'صاف','mainly-clear':'عمدتاً صاف','partly-cloudy':'نیمه‌ابری',overcast:'ابری',fog:'مه',drizzle:'نم‌نم باران','freezing-drizzle':'نم‌نم یخ‌زده',rain:'باران','freezing-rain':'باران یخ‌زده',snow:'برف',shower:'رگبار',thunder:'رعدوبرق'})[code]||'نامشخص';
+ const weatherLabel=label=>`<span class="weather-label">${esc(label)}</span>`;
  const warning=()=>weather('warning','point-warning');
  const routeBadge=()=>`<span class="route-icon">${weather('hike')}</span>`;
  const routeChevron=()=>weather('chevron-left','route-chevron');
@@ -22,7 +24,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  function viewState(kind,id){const key=kind+':'+id;if(!cache.has(key))cache.set(key,{levels:Array(8).fill(0),expert:false,gear:false,menu:false,scroll:null,dateScroll:null});return cache.get(key);}
  const clock=n=>String(Math.floor(n/60)%24).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
  const track=()=>'<div class="scroll-track" role="scrollbar" aria-label="پیمایش افقی پیش‌بینی" aria-orientation="horizontal" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="scroll-thumb"></span></div>';
- function slots(){return W.points[ctx.record.slug].days.flatMap((d,day)=>{const level=ctx.v.levels[day];return d.intervals[resolutions[level]].map((p,i)=>({...d,...p,weather:sky(p.weather,p.weather_at),hazards:criticalMetrics(p.warnings||[]),day,level,id:d.id+'-'+resolutions[level]+'-'+i}));});}
+ function slots(){return W.points[ctx.record.slug].days.flatMap((d,day)=>{const level=ctx.v.levels[day];return d.intervals[resolutions[level]].map((p,i)=>({...d,...p,weatherLabel:p.condition||weatherName(p.weather),weather:sky(p.weather,p.weather_at),hazards:criticalMetrics(p.warnings||[]),day,level,id:d.id+'-'+resolutions[level]+'-'+i}));});}
  function positions(points,width,distance=false,exporting=false){
   if(!distance)return points.map((_,i)=>width-(i+.5)*width/points.length);
   // A readable column for each stop; distance remains in the point label.
@@ -38,7 +40,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  }
  function chartReading(row){
   const keys={apparent_temperature_c:'felt',temperature_c:'actual',wind_speed_kmh:'wind',wind_gust_kmh:'gust',precipitation_mm:'rain',wind_direction_deg:'direction',relative_humidity_pct:'humidity',visibility_km:'visibility',freezing_level_m:'freezing'};
-  const result={weather:sky(row?.weather_code,row?.forecast_at),hazards:[]};
+  const result={weather:sky(row?.weather_code,row?.forecast_at),weatherLabel:row?.condition||weatherName(row?.weather_code),hazards:[]};
   for(const [field,key] of Object.entries(keys)) result[key]=row?.[field]??null;
   result.min=result.max=result.actual;
   result.hazards=criticalMetrics(row?.warnings||[]);
@@ -68,8 +70,8 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
    out+=`<div class="day-group" style="left:${left}px;width:${w}px" data-left="${left}" data-width="${w}">${expand?`<button class="day-button expand" data-v4-expand="${day}" aria-label="نمایش بازهٔ ${[24,6,3,1][lev+1]} ساعتهٔ ${d.name}">${ui('day-expand')}</button>`:''}${lev>0?`<button class="day-button collapse" data-v4-collapse="${day}" aria-label="جمع کردن یک مرحلهٔ ${d.name}">${ui('day-collapse')}</button>`:''}<strong class="day-name" style="left:${w/2}px">${points.some(p=>p.day===day&&p.hazards?.length)?weather('warning','day-warning'):''}${d.name}</strong><span class="day-date" style="left:${w/2}px">${fa(d.date_fa)}</span>${ids.map(i=>points[i].hour==null?'':`<span class="stamp" style="left:${xs[i]-left}px">${fa(clock(points[i].hour*60))}</span>`).join('')}</div>`;
   });return `<div class="day-headers ${ctx.v.levels.some(Boolean)?'has-expanded':''}">${out}</div>`;
  }
- const weatherStrip=(p,x)=>`<div class="weather-strip">${p.map((a,i)=>`<div class="weather-slot" style="left:${x[i]}px" aria-label="${esc(a.name)} ${a.hour==null?'':fa(clock(a.hour*60))}">${a.hour!=null&&a.hazards?.length?warning():''}${weather(a.weather)}</div>`).join('')}</div>`;
- function pointHeaders(p,x,exporting=false){return `<div class="point-headers">${p.map((a,i)=>`<div class="point-header" style="left:${x[i]}px" data-point-id="${a.id}">${exporting?'<strong>':`<a href="/points/${a.id}" data-nav aria-label="${esc(a.name)}"><strong title="${esc(a.name)}">`}${a.hazards?.length?warning():''}${esc(a.label)}${exporting?'</strong>':'</strong></a>'}<small><span class="arrival-clock ltr">${fa(a.arrival)}</span>${a.nextDay?' · روز بعد':''}</small><small>${a.distance==null?'—':num(a.distance)+' km'}</small>${weather(a.weather,'weather')}</div>`).join('')}</div>`;}
+ const weatherStrip=(p,x)=>`<div class="weather-strip">${p.map((a,i)=>`<div class="weather-slot" style="left:${x[i]}px" aria-label="${esc(a.name)} ${a.hour==null?'':fa(clock(a.hour*60))}">${a.hour!=null&&a.hazards?.length?warning():''}${weather(a.weather)}${weatherLabel(a.weatherLabel)}</div>`).join('')}</div>`;
+ function pointHeaders(p,x,exporting=false){return `<div class="point-headers">${p.map((a,i)=>`<div class="point-header" style="left:${x[i]}px" data-point-id="${a.id}">${exporting?'<strong>':`<a href="/points/${a.id}" data-nav aria-label="${esc(a.name)}"><strong title="${esc(a.name)}">`}${a.hazards?.length?warning():''}${esc(a.label)}${exporting?'</strong>':'</strong></a>'}<small><span class="arrival-clock ltr">${fa(a.arrival)}</span>${a.nextDay?' · روز بعد':''}</small><small>${a.distance==null?'—':num(a.distance)+' km'}</small>${weather(a.weather,'weather')}${weatherLabel(a.weatherLabel)}</div>`).join('')}</div>`;}
  function drawPanel(anchor){
   const panel=document.getElementById('v4-forecast-panel');if(!panel)return;
   const destination=ctx.kind==='point',vw=Math.max(260,panel.clientWidth-(destination?0:mobile()?10:20)),points=destination?slots():routeValues().points;

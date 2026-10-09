@@ -37,7 +37,7 @@ def public_reading(row):
             "precipitation_mm": value(row, "precipitation_mm"), "rain_mm": value(row, "rain_mm"),
             "precipitation_from": (row.forecast_at-timedelta(hours=1)).isoformat(),
             "precipitation_to": row.forecast_at.isoformat(),
-            "weather_code": p["weather_code"], "is_day": p.get("is_day"),
+            "weather_code": p["weather_code"], "condition": p["condition"], "is_day": p.get("is_day"),
             "warnings": p["warnings"], "state": p["state"], "data_quality": p["data_quality"]}
 
 def aggregate(rows, start, hours):
@@ -60,6 +60,7 @@ def aggregate(rows, start, hours):
             "visibility": metric("visibility_km", min), "freezing": metric("freezing_level_m", min),
             "direction": value(rep, "wind_direction_deg") if rep else None,
             "weather": rep.weather_code if rep else "unknown",
+            "condition": rep.condition_label if rep else "نامشخص",
             "weather_at": now_tehran(rep.forecast_at).isoformat() if rep else None,
             "warnings": [dict(w, at=r.forecast_at.isoformat()) for r in instant for w in assessment(r)["warnings"]],
             "complete": len(instant) == hours and len(accumulated) == hours}

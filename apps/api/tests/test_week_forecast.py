@@ -33,6 +33,7 @@ def test_public_week_is_shared_without_account_queries_or_cookies(week_seed):
     body=first.json()
     assert len(body['days'])==8 and body['range_end']==(week_seed+timedelta(days=7)).isoformat()
     assert body['intervals']['24'][0][0]['complete']
+    assert body['intervals']['24'][0][0]['condition']
     assert 'public' in first['Cache-Control'] and 's-maxage=' in first['Cache-Control']
     assert 'Cookie' not in first['Vary'] and not first.cookies
     assert not any('accounts_' in q['sql'] or 'auth_' in q['sql'] for q in queries)
@@ -55,6 +56,7 @@ def test_cache_invalidation_follows_committed_data(week_seed,django_capture_on_c
 
 def test_route_week_uses_existing_pace_rounding_and_midnight_matching(week_seed):
     body=build_week('route','tochal-darband',week_seed)
+    assert all(row['condition'] for row in body['records'])
     route=Route.objects.get(slug='tochal-darband')
     points=list(route.points.all())
     assert len(body['plans'])==8*24*3
