@@ -361,6 +361,11 @@ run_stack() {
   done
   [[ "$build_succeeded" -eq 1 ]] || fail "Release image build failed; existing containers were not stopped. Check Docker Hub connectivity and retry."
 
+  # Check every packaged identity/route contract before replacing a healthy release.
+  # This reads JSON only; it neither imports catalog rows nor calls the provider.
+  log "Validating all packaged catalogs before replacing running services."
+  "${compose[@]}" run --rm --no-deps --entrypoint python api manage.py shell -c 'from hawatch.modules.catalog.sync import load_packaged_catalogs; catalog = load_packaged_catalogs(); print("Packaged catalogs valid:", len(catalog.files))'
+
   # Replace only this named Compose project after every required image exists.
   # Volumes (especially PostgreSQL data) remain intact and other projects are
   # never touched. If build fails, the currently running containers are still

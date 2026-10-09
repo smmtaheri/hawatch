@@ -16,3 +16,4 @@ def test_production_week_deploy_enables_shared_cache_and_matching_asset_versions
     assert 'exec -T api python manage.py apply_route_descent' in script
     assert script.index('sync_catalog --apply')<script.index('manage.py apply_route_descent')<script.index('manage.py warm_week_cache')
     assert 'ingest manage.py ingest_open_meteo --wait-lock-seconds 900' in script
+    assert script.index("load_packaged_catalogs") < script.index("Starting the new release")

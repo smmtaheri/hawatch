@@ -201,7 +201,8 @@ ENABLE_OBSERVABILITY=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 
 `deploy-hawatch` برنچ `main` را دیپلوی می‌کند. deploy تنظیم دریافت provider را
 ۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ asset فرانت، SSR و cache بر اساس
-همان commit است. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
+همان commit است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
+می‌شوند. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
 `sync_catalog --apply`، `apply_route_descent` و `warm_week_cache` اجرا می‌شوند.
 دادهٔ کاربر و دیتابیس پروداکشن حفظ می‌شوند؛ دیتابیس استیج جایگزین آن نمی‌شود.
 کاتالوگ جدید فقط با gate مستند onboarding وارد repository شود؛ این deploy

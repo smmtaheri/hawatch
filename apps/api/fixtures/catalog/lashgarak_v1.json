@@ -22,7 +22,7 @@
       "elevation_m": 2367,
       "status": "provisional",
       "elevation_source": "Waypoint آغاز ترک پراچان؛ ارتفاع نهایی با Open-Meteo GLO-90 کنترل می‌شود.",
-      "climate": "mountain"
+      "climate": "alpine"
     },
     "lashgarak-damcheh": {
       "name": "کمپ دمچه",
@@ -49,7 +49,7 @@
       "name": "برفچال شمالی لشگرک",
       "page_name": "برفچال شمالی قلهٔ لشگرک بزرگ",
       "short_label": "برفچال شمالی",
-      "place_type": "snowfield",
+      "place_type": "technical_point",
       "aliases": ["برفچال شمالی لشگرک", "برفچال لشگرک", "Lashgarak north snowfield"],
       "identity_summary": "برفچال شمالی لشگرک، عارضهٔ فنی و میانی مسیر کوتاه حصارچال تا قلهٔ لشگرک بزرگ.",
       "importance": "support",
