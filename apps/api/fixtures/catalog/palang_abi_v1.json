@@ -1,0 +1,73 @@
+{
+  "catalog_version": "hawatch-palang-abi-catalog-v1",
+  "primary_point": "palang-abi",
+  "weather_points": {
+    "palang-abi": {
+      "name": "قلهٔ پلنگ‌آبی",
+      "page_name": "قلهٔ پلنگ‌آبی",
+      "short_label": "پلنگ‌آبی",
+      "place_type": "summit",
+      "category_key": "ridge",
+      "category": "قله‌های قم",
+      "region": "کرمجگان · کهک · استان قم",
+      "aliases": [
+        "پلنگ‌آبی",
+        "پلنگ آبی",
+        "قله پلنگ آبی",
+        "قله پلنگ آبی قم",
+        "کوه پلنگی",
+        "Palang Abi",
+        "Palang-e Abi",
+        "Plang Abi"
+      ],
+      "identity_summary": "قلهٔ اصلی پلنگ‌آبی در رشته‌کوه جنوب قم، نزدیک کرمجگان؛ مستقل از قله‌های فرعی خط‌الرأس و از قلهٔ برف‌انبار.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peak-information.aspx?lat=34.2196698&lon=50.8110948&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D9%BE%D9%84%D9%86%DA%AF-%D8%A2%D8%A8%DB%8C&pkidentifier=2486",
+        "https://www.wikiloc.com/mountaineering-trails/swd-qlh-plng-aby-qm-rwsty-khrmjgn-74364254",
+        "https://www.wikiloc.com/hiking-trails/qlh-fry-plng-aby-3125-mtr-grwh-hwzwy-afq-25217782",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-plng-aby-qm-mntqh-khhkh-rwsty-khrmchgn-drbg-28-frwrdyn-404-209341342"
+      ],
+      "latitude": 34.219255,
+      "longitude": 50.810666,
+      "elevation_m": 3150,
+      "status": "provisional",
+      "elevation_source": "ترک GPS دریافتی waypoint قله را ۳۱۴۶ متر و ترک مستقل ۱۴۰۴ قلهٔ اصلی را ۳۱۵۲ متر (قلهٔ فرعی: ۳۱۲۴ متر) ثبت می‌کند؛ ۳۱۵۰ متر provisional است. Open-Meteo GLO-90: ۳۰۸۱ متر، اختلاف ۶۹ متر (۲۰۲۶-۱۰-۰۹).",
+      "climate": "high_alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "palang-abi",
+    "tile_name": "پلنگ‌آبی",
+    "name": "قلهٔ پلنگ‌آبی",
+    "short_category": "قله",
+    "category": "قله‌های قم",
+    "category_key": "ridge",
+    "region": "کرمجگان · کهک · استان قم",
+    "latitude": 34.219255,
+    "longitude": 50.810666,
+    "elevation_m": 3150,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ پلنگ‌آبی در ارتفاعات جنوب استان قم",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پلنگ‌آبی",
+      "پلنگ آبی",
+      "قله پلنگ آبی",
+      "قله پلنگ آبی قم",
+      "کوه پلنگی",
+      "Palang Abi",
+      "Palang-e Abi",
+      "Plang Abi"
+    ]
+  }
+}
