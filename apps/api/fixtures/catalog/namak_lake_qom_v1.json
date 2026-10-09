@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-namak-lake-qom-catalog-v1",
+  "catalog_version": "hawatch-namak-qom-v1",
   "primary_point": "namak-lake-qom",
   "weather_points": {
     "namak-lake-qom": {
