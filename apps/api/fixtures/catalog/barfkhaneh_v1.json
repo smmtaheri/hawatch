@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-barfkhaneh-v1",
+  "primary_point": "barfkhaneh",
+  "weather_points": {
+    "barfkhaneh": {
+      "name": "قلهٔ برفخانهٔ طزرجان",
+      "page_name": "قلهٔ برفخانهٔ طزرجان",
+      "short_label": "قلهٔ برفخانه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "برفخانه طزرجان",
+        "قله برفخانه طزرجان",
+        "قلهٔ طزرجان",
+        "برفخانه تفت",
+        "Barfkhaneh",
+        "Barf Khaneh",
+        "Tarzjan Peak"
+      ],
+      "identity_summary": "قلهٔ مستقل برفخانه در جنوب طزرجان، از ارتفاعات شیرکوه؛ با قلهٔ شیرکوه یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/7319610184",
+        "https://mapcarta.com/N7319610184",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-brfkhnh-tzrjn-z-dh-bl-222481550",
+        "https://dorfakyakhchal01.blogfa.com/category/9",
+        "https://decovel.com/page/barf-khaneh-peak"
+      ],
+      "latitude": 31.5485,
+      "longitude": 54.1474,
+      "elevation_m": 4005,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۴۰۰۵ متر و مختصات گره قلهٔ natural=peak در OpenStreetMap، بازنشرشده در Mapcarta؛ Open-Meteo GLO-90 برابر ۳۹۲۱ متر است (اختلاف ۸۴ متر) و نزدیک‌ترین grid در فاصلهٔ ۲٫۶۵۸ کیلومتر قرار دارد (بررسی ۲۰۲۶-۱۰-۰۹). مقدار کاتالوگ provisional است.",
+      "climate": "high_alpine",
+      "region": "طزرجان · شیرکوه · استان یزد",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "barfkhaneh",
+    "tile_name": "برفخانهٔ طزرجان",
+    "name": "قلهٔ برفخانهٔ طزرجان",
+    "short_category": "قله",
+    "category": "قله‌های استان یزد",
+    "category_key": "mountain",
+    "region": "طزرجان · شیرکوه · استان یزد",
+    "elevation_m": 4005,
+    "latitude": 31.5485,
+    "longitude": 54.1474,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ برفخانه در ارتفاعات طزرجان یزد",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "برفخانه طزرجان",
+      "قله برفخانه طزرجان",
+      "قلهٔ طزرجان",
+      "برفخانه تفت",
+      "Barfkhaneh",
+      "Barf Khaneh"
+    ]
+  }
+}
