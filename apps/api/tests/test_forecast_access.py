@@ -34,7 +34,7 @@ def test_allowlisted_login_is_a_server_session_and_exposes_free_plan(settings):
     response = client.post("/api/v1/auth/login/", {"phone": "09111111111", "code": "2468"}, format="json")
     assert response.status_code == 200
     assert response.json()["plan"]["title"] == "عضویت رایگان"
-    assert "sessionid" in response.cookies
+    assert settings.SESSION_COOKIE_NAME in response.cookies
     assert client.get("/api/v1/auth/me/").status_code == 200
     assert client.post("/api/v1/auth/logout/", {}, format="json").status_code == 200
     assert client.get("/api/v1/auth/me/").json() == {"authenticated": False}

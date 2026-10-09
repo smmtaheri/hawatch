@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "hawatch.common.sessions.AdminCookieIsolationMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "hawatch.common.observability.RequestMetricsMiddleware",
@@ -123,6 +124,12 @@ CORS_ALLOW_CREDENTIALS = False
 DEMO_AUTH_ALLOWED_PHONE = os.environ.get("DEMO_AUTH_ALLOWED_PHONE", "")
 DEMO_AUTH_FIXED_OTP = os.environ.get("DEMO_AUTH_FIXED_OTP", "")
 AUTH_SESSION_AGE_SECONDS = int(os.environ.get("AUTH_SESSION_AGE_SECONDS", str(30 * 24 * 60 * 60)))
+# Retire the old shared sessionid/csrftoken cookies; no implicit migration
+# can distinguish a legacy admin login from an explicit site login.
+SESSION_COOKIE_NAME = "hawatch_site_session"
+CSRF_COOKIE_NAME = "hawatch_site_csrf"
+ADMIN_SESSION_COOKIE_NAME = "hawatch_admin_session"
+ADMIN_CSRF_COOKIE_NAME = "hawatch_admin_csrf"
 SESSION_COOKIE_AGE = AUTH_SESSION_AGE_SECONDS
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 

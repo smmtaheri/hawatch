@@ -1,4 +1,5 @@
 import pytest
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APIClient
@@ -96,10 +97,17 @@ def test_staff_and_bots_are_ignored(api_client, seeded):
     assert not PageViewEvent.objects.exists()
 
 
+def force_admin_login(client, user):
+    """Django test Client defaults to the public cookie; select admin explicitly."""
+    client.force_login(user)
+    cookie = client.cookies.pop(settings.SESSION_COOKIE_NAME)
+    client.cookies[settings.ADMIN_SESSION_COOKIE_NAME] = cookie.value
+
+
 @pytest.mark.django_db
 def test_admin_overview_contains_zero_view_pages_and_filters(seeded, client):
     user = get_user_model().objects.create_superuser(username="admin", password="safe-password")
-    assert client.login(username="admin", password="safe-password")
+    force_admin_login(client, user)
 
     response = client.get(reverse("admin:analytics_pageviewevent_overview"), {"type": "point", "range": "today", "metric": "unique_visitors", "order": "asc"})
 
@@ -117,16 +125,16 @@ def test_analytics_admin_is_private_to_superusers(client):
     assert client.get(overview_url).status_code == 302
 
     regular = get_user_model().objects.create_user(username="regular", password="safe-password")
-    client.force_login(regular)
+    force_admin_login(client, regular)
     assert client.get(overview_url).status_code == 302
 
     staff = get_user_model().objects.create_user(username="staff-reader", password="safe-password", is_staff=True)
-    client.force_login(staff)
+    force_admin_login(client, staff)
     assert client.get(overview_url).status_code == 403
     assert client.get(changelist_url).status_code == 403
 
     superuser = get_user_model().objects.create_superuser(username="super-reader", password="safe-password")
-    client.force_login(superuser)
+    force_admin_login(client, superuser)
     response = client.get(overview_url)
     assert response.status_code == 200
     assert_private_no_store(response)
