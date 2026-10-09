@@ -1,0 +1,63 @@
+{
+  "catalog_version": "hawatch-karakal-desert-catalog-v1",
+  "weather_points": {
+    "karakal-desert": {
+      "name": "کویر کاراکال بافق",
+      "page_name": "کویر کاراکال بافق",
+      "short_label": "کویر کاراکال",
+      "place_type": "desert",
+      "aliases": [
+        "کویر صادق‌آباد",
+        "کویر صادق آباد بافق",
+        "کویر کاراکال صادق‌آباد",
+        "Karakal Desert",
+        "Sadeghabad Desert Bafq"
+      ],
+      "identity_summary": "کویر کاراکال در نزدیکی روستای صادق‌آباد و شهر بافق در استان یزد",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://blog.rahbal.com/karakal-desert/",
+        "https://visitiran.ir/fa/destination/بافق",
+        "https://www.wikidata.org/wiki/Q799795",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.734488,
+      "longitude": 55.323488,
+      "elevation_m": 962,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ محوطهٔ گردشگری کویر کاراکال در مسیر روستای صادق‌آباد از راهنمای گردشگری؛ ارتفاع ۹۶۲ متر بر پایهٔ Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "karakal-desert",
+    "tile_name": "کویر کاراکال",
+    "name": "کویر کاراکال بافق",
+    "short_category": "کویر",
+    "category": "کویر · بافق",
+    "category_key": "desert",
+    "region": "بافق · استان یزد",
+    "elevation_m": 962,
+    "latitude": 31.734488,
+    "longitude": 55.323488,
+    "image": "/images/home-scene.png",
+    "image_alt": "تپه‌های شنی کویر کاراکال در بافق",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کویر صادق‌آباد",
+      "کویر صادق آباد بافق",
+      "کویر کاراکال صادق‌آباد",
+      "Karakal Desert",
+      "Sadeghabad Desert Bafq"
+    ]
+  },
+  "primary_point": "karakal-desert"
+}

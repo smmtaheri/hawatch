@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-dareh-gahan-catalog-v1",
+  "weather_points": {
+    "dareh-gahan": {
+      "name": "درهٔ گاهان تفت",
+      "page_name": "درهٔ گاهان تفت",
+      "short_label": "درهٔ گاهان",
+      "place_type": "landmark",
+      "category_key": "valley",
+      "aliases": [
+        "درگاهان تفت",
+        "آبشار دره گاهان",
+        "آبشار درگاهان",
+        "Dareh Gahan Taft",
+        "Dareshgahan Waterfall"
+      ],
+      "identity_summary": "درهٔ گاهان در جنوب‌غرب تفت؛ نقطهٔ نماینده روی آبشار فصلی در ورودی دره قرار دارد",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%AF%D8%B1%DA%AF%D8%A7%D9%87%D8%A7%D9%86-%D8%AF%D8%B1%D9%87-%DA%AF%D8%A7%D9%87%D8%A7%D9%86%D8%8C-%D8%AA%D9%81%D8%AA/",
+        "https://mapcarta.com/N3244196208",
+        "https://www.wikiloc.com/hiking-trails/chshmh-zyrt-drhghn-22-shhrywr-1403-184581074",
+        "https://www.wikiloc.com/hiking-trails/drh-ghn-tft-yzd-z-msyr-khwchh-bghy-tft-53916252",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.68859,
+      "longitude": 54.16938,
+      "elevation_m": 1832,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار فصلی در ورودی دره از Mapcarta و گزارش ایران‌دزرتس؛ ارتفاع ۱۸۳۲ متر بر پایهٔ Open-Meteo GLO-90 DEM در همین مختصات.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "dareh-gahan",
+    "tile_name": "درهٔ گاهان",
+    "name": "درهٔ گاهان تفت",
+    "short_category": "دره",
+    "category": "درهٔ طبیعی · تفت",
+    "category_key": "valley",
+    "region": "تفت · استان یزد",
+    "elevation_m": 1832,
+    "latitude": 31.68859,
+    "longitude": 54.16938,
+    "image": "/images/home-scene.png",
+    "image_alt": "درهٔ گاهان در شهرستان تفت",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "درگاهان تفت",
+      "آبشار دره گاهان",
+      "آبشار درگاهان",
+      "Dareh Gahan Taft",
+      "Dareshgahan Waterfall"
+    ]
+  },
+  "primary_point": "dareh-gahan"
+}
