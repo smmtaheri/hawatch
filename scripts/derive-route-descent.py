@@ -51,14 +51,24 @@ def derive(root, catalog_root=None):
                     if len(cut)<10 or any(p['ele'] is None for p in cut): raise ValueError('elevation geometry incomplete')
                     if any(haversine_m((a['lat'],a['lon']),(b['lat'],b['lon']))>300 for a,b in zip(cut,cut[1:])): raise ValueError('discontinuous geometry')
                     last = 0
+                    indices = [0]
                     for coordinate in coords[1:-1]:
                         nearest = min(range(last,len(cut)),key=lambda i:haversine_m((cut[i]['lat'],cut[i]['lon']),coordinate))
                         if haversine_m((cut[nearest]['lat'],cut[nearest]['lon']),coordinate)>500: raise ValueError('ordered landmark farther than 500m')
                         last = nearest
+                        indices.append(nearest)
+                    indices.append(len(cut)-1)
+                    along = [0.0]
+                    for a,b in zip(cut,cut[1:]):
+                        along.append(along[-1]+haversine_m((a["lat"],a["lon"]),(b["lat"],b["lon"])))
+                    cumulative = [round(along[index]) for index in indices]
                     measures = robust_smoothed_ascent_m(cut)
                     descent = round(measures['robust_smoothed_ascent_m']-measures['net_elevation_change_m'])
                     if descent<0: raise ValueError('invalid elevation result')
                     item = {'slug':slug,'descent_m':descent,'chain':ids,'evidence':{'method':'gpx-50m-5sample-v1','source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'source_url':track.get('wikiloc_url'),'coverage':'canonical-origin-to-first-target','reference_only_elevation':True}}
+                    if all(b>a for a,b in zip(cumulative,cumulative[1:])):
+                        item["cumulative_distance_m"] = cumulative
+                        item["evidence"]["distance_method"] = "ordered-landmarks-along-gpx-v1"
                     priority = 0 if role=='primary' or track.get('catalog_applied') else 1
                     candidates.setdefault(slug,[]).append((priority,item))
                 except (ValueError,TypeError,KeyError,OSError) as error: reason=str(error)

@@ -118,4 +118,14 @@ def test_route_descent_applies_only_matching_canonical_chain(week_seed):
     route=Route.objects.get(slug='tochal-darband')
     assert route.descent_m is not None and route.descent_m>=0
     assert route.descent_evidence['source_sha256']
+    payload=APIClient().get('/api/v1/routes/tochal-darband/forecast/week/').json()
+    assert payload['subject']['descent_m']==route.descent_m
+    distances=[p['distance_km'] for p in payload['points']]
+    assert distances==[0,1.26,5.11,7.93,9.73,10.26]
+    assert all(b>a for a,b in zip(distances,distances[1:]))
+    # Existing complete profiles are curated data and must survive reapplication.
+    points=list(route.points.order_by('sort_order'))
+    for point in points[1:]:point.segment_distance_m=1234;point.save(update_fields=['segment_distance_m'])
+    call_command('apply_route_descent')
+    assert list(route.points.order_by('sort_order').values_list('segment_distance_m',flat=True))[1:]==[1234]*5
     assert Route.objects.get(slug='tochal-shahrestanak').descent_m is None

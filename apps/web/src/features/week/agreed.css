@@ -68,3 +68,15 @@ body.forecast-page #forecast-v4 .day-headers{height:94px}
 body.forecast-page .forecast-v4 .export-shell .point-header{width:124px;max-width:124px}
 body.forecast-page .forecast-v4 .export-shell .point-header strong{white-space:normal;display:block;line-height:1.5}
 body.forecast-page .forecast-v4 .export-shell .point-headers{height:176px}
+
+/* Give long durations the full summary width without changing typography. */
+body.forecast-page.route-page #forecast-v4 .route-summary [data-summary="stopwatch"]{grid-column:1/-1;order:1}
+body.forecast-page.route-page #forecast-v4 .route-summary .duration-value{white-space:normal;overflow-wrap:break-word}
+/* Keep both mobile actions equally sized; narrow phones use two full-width rows. */
+@media(max-width:767px){
+ body.forecast-page .forecast-v4 .modal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ body.forecast-page .forecast-v4 .modal-actions button{width:100%;min-width:0;height:48px;min-height:48px;box-sizing:border-box;padding:8px;white-space:nowrap;gap:8px;border-radius:10px}
+ body.forecast-page .forecast-v4 .modal-actions .secondary-button{border:1px solid var(--accent);color:var(--accent)}
+ body.forecast-page .forecast-v4 .modal-actions .icon{width:20px;height:20px;flex-shrink:0}
+}
+@media(max-width:359px){body.forecast-page .forecast-v4 .modal-actions{grid-template-columns:minmax(0,1fr)}}

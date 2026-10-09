@@ -231,6 +231,7 @@ def serialize_route(route: Route) -> dict:
         "distance_km": distance_km,
         "distance_label": f"{to_fa_digits(distance_km)} km" if distance_km is not None else "—",
         "ascent_m": route.ascent_m,
+        "descent_m": route.descent_m,
         "ascent_label": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "—",
         "round_trip_minutes": route.round_trip_minutes,
         "one_way_minutes": route.one_way_minutes,
