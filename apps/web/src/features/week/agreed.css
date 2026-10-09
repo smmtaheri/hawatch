@@ -94,7 +94,13 @@ body.forecast-page #forecast-v4 .weather-slot>.icon:not(.point-warning){display:
  body.forecast-page .forecast-v4 .weather-label{font-size:11px;line-height:16px}
  body.forecast-page #forecast-v4 .weather-strip{height:63px}
 }
-/* Reserve the caption row below route icons, including longer Persian names. */
-body.forecast-page.route-page #forecast-v4 .point-headers{height:198px}
+/* The exported image keeps its independent header geometry. */
 body.forecast-page .forecast-v4 .export-shell .point-headers{height:194px}
-@media(max-width:767px){body.forecast-page.route-page #forecast-v4 .point-headers{height:178px}}
+
+/* Fit the route header to its tallest name/condition instead of a fixed spacer.
+   Overlay grid cells retain the shared horizontal coordinates of the charts. */
+body.forecast-page.route-page #forecast-v4 .timeline-scroll .point-headers{display:grid;grid-template-columns:minmax(0,1fr);height:auto;padding-block:7px 16px}
+body.forecast-page.route-page #forecast-v4 .timeline-scroll .point-header{position:relative;grid-area:1/1;align-self:stretch;justify-self:start;top:0;display:flex;flex-direction:column}
+body.forecast-page.route-page #forecast-v4 .timeline-scroll .point-header small:last-of-type{margin-bottom:auto}
+body.forecast-page.route-page #forecast-v4 .timeline-scroll .point-header .weather-label{min-height:0}
+@media(max-width:767px){body.forecast-page.route-page #forecast-v4 .timeline-scroll .point-headers{padding-bottom:12px}}

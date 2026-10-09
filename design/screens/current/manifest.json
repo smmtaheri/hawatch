@@ -747,6 +747,69 @@
     "apps/web/src/styles/new-design/landscape.css": "12db093b40e5e89905397621f2c3d7249d1ed472d6490621cd843b73ec29d4bb",
     "apps/web/src/styles/new-design/base.css": "ec8eff6005917dcc0a0a5c4a8997fd9b036e1d8dbf7e24abe6a8d6526b5d29a8",
     "apps/web/src/features/week/forecast-v5.css": "7c5e30acb0c44c2aa58ac3bb9af3d713ce66ac3bca0493a7a67a240726ee8275",
-    "apps/web/src/features/week/vendor/charts.ts": "09c79208e8016230d8cbe5f0c113f826ed24dc8420a62f769742c7cc0e421642"
-  }
+    "apps/web/src/features/week/vendor/charts.ts": "09c79208e8016230d8cbe5f0c113f826ed24dc8420a62f769742c7cc0e421642",
+    "apps/web/src/features/week/agreed.css": "db160a676c0da47dc9062ae08ccd950477c0256dabc557a23eedeba006121983"
+  },
+  "routeHeaderSpacing": [
+    {
+      "width": 320,
+      "theme": "light",
+      "kind": "route",
+      "gap": 12,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 139.796875,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "kind": "route",
+      "gap": 12,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 139.796875,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "kind": "route",
+      "gap": 12,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 139.796875,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "kind": "route",
+      "gap": 12,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 139.796875,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "kind": "route",
+      "gap": 16,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 171.1875,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "kind": "route",
+      "gap": 16,
+      "aligned": true,
+      "overflow": false,
+      "headerHeight": 171.1875,
+      "errors": []
+    }
+  ]
 }
