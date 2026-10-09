@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-shirabad-waterfalls-v2",
+  "catalog_version": "hawatch-shirabad-waterfalls-v3",
   "reviewed_nearby_point_pairs": [
     {
       "slugs": ["shirabad-seven-waterfalls", "shirabad-fourth-waterfall"],
@@ -316,8 +316,78 @@
       ],
       "distance_km": 3.22,
       "ascent_m": 256,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 95,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 25,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+          "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044"
+        ],
+        "cumulative_minutes": {
+          "shirabad-waterfalls-parking": 0,
+          "shirabad-waterfall": 25,
+          "shirabad-second-waterfall": 40,
+          "shirabad-div-sepid-cave": 60,
+          "shirabad-third-waterfall": 70,
+          "shirabad-fourth-waterfall": 90,
+          "shirabad-sixth-waterfall": 94,
+          "shirabad-seven-waterfalls": 95
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "7ba3b1d972dfe616d37338c3df0d1a9e6205053967fdce6b26f2022725e824f5",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
+            "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 3.091,
+          "analysis_ascent_m": 226,
+          "origin_gap_m": 0.1,
+          "target_gap_m": 1.036,
+          "landmark_gaps_m": [
+            0.1,
+            0.3,
+            0.5,
+            1.9,
+            0.7,
+            1.0,
+            3.4,
+            1.036
+          ],
+          "max_step_m": 28.9,
+          "timestamp_used": false,
+          "terrain_factor": 1.4,
+          "registered_distance_km": 3.2,
+          "registered_ascent_m": 256,
+          "reviewed_reduction_m": 42,
+          "raw_slope_minutes": 73.33,
+          "independent_check_minutes": 105.98,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.295565,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            885,
+            1338,
+            1881,
+            2274,
+            2977,
+            3034,
+            3091
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/abshr-7-gnh-shyrabd-268802470",
         "https://www.wikiloc.com/hiking-trails/mjmwh-abshrhy-shyrabd-gr-dyw-spyd-shhrstn-khn-bbyn-shirabad-waterfall-243294044"

@@ -23,7 +23,8 @@ def test_shirabad_catalog_has_searchable_destinations_and_one_hiking_route():
     assert "shirabad-div-sepid-cave" in route["points"]
     assert route["distance_km"] == 3.22
     assert route["ascent_m"] == 256
-    assert route["timing_status"] == "pending"
+    assert route["timing_status"] == "estimated"
+    assert route["one_way_minutes"] == 95
     assert len(route["evidence_tracks"]) == 2
     assert all(path.startswith("tracks/shirabad-waterfalls/") for path in route["evidence_tracks"])
 

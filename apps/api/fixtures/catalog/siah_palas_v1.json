@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-siah-palas-catalog-v1",
+  "catalog_version": "hawatch-siah-palas-catalog-v2",
   "weather_points": {
     "siah-palas-javard-trailhead": {
       "name": "مبدأ یال شرقی سیاه‌پلاس؛ جادهٔ وستان",
@@ -137,8 +137,63 @@
       ],
       "distance_km": 6.16,
       "ascent_m": 1132,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 215,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 55,
+        "source_urls": [
+          "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058"
+        ],
+        "cumulative_minutes": {
+          "siah-palas-javard-trailhead": 0,
+          "siah-palas-javard-ridge": 150,
+          "siah-palas": 215
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "e90ed7d365384ca7d99632a312aff2f1061e58f3a29d539e4b136f9a766583fd",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359",
+            "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.129,
+          "analysis_ascent_m": 1112,
+          "origin_gap_m": 1.8,
+          "target_gap_m": 0.928,
+          "landmark_gaps_m": [
+            1.8,
+            0.5,
+            0.928
+          ],
+          "max_step_m": 21.6,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 6.2,
+          "registered_ascent_m": 1132,
+          "reviewed_reduction_m": 3,
+          "raw_slope_minutes": 178.6,
+          "independent_check_minutes": 247.62,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.203783,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            4041,
+            6129
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-syh-pls-43447058",
         "https://pl.wikiloc.com/szlaki-wspinaczka-gorska/swd-qlh-syh-pls-z-rwsty-jwrd-169696359"
@@ -168,8 +223,63 @@
       ],
       "distance_km": 10.91,
       "ascent_m": 1311,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 310,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 80,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+          "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"
+        ],
+        "cumulative_minutes": {
+          "siah-palas-ira-trailhead": 0,
+          "siah-palas-ira-qoushkhanah": 230,
+          "siah-palas": 310
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "414a306c2506c4fae36ca4d5ebcecf06c648d449034788455d78177205b7093d",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
+            "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 10.914,
+          "analysis_ascent_m": 1168,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 5.233,
+          "landmark_gaps_m": [
+            0.0,
+            0.0,
+            5.233
+          ],
+          "max_step_m": 9.4,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 10.9,
+          "registered_ascent_m": 1311,
+          "reviewed_reduction_m": 110,
+          "raw_slope_minutes": 247.3,
+          "independent_check_minutes": 360.12,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.253525,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            8639,
+            10914
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/syh-pls-z-yr-msyr-rft-177116209",
         "https://www.wikiloc.com/hiking-trails/syhpls-z-yr-85153159"

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sofeh-catalog-v1",
+  "catalog_version": "hawatch-sofeh-catalog-v2",
   "weather_points": {
     "sofeh-park-trailhead": {
       "name": "پارک کوهستانی صفه؛ مبدأ مسیر",
@@ -109,8 +109,65 @@
       ],
       "distance_km": 3.2,
       "ascent_m": 462,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 100,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 25,
+        "source_urls": [
+          "https://www.gholleh.com/peak-information.aspx?lat=32.59268&lon=51.64318&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B5%D9%81%D9%87",
+          "https://www.karnaval.ir/things-to-do/mount-soffeh-isfahan",
+          "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937"
+        ],
+        "cumulative_minutes": {
+          "sofeh-park-trailhead": 0,
+          "sofeh-golzard-spring": 55,
+          "sofeh-isfahan": 100
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "8f2f79f8f02df042c4f3bfa22cf89e8aa22fcb90e6b9ffc97dbe9f5f501f2b68",
+          "source_url": "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.gholleh.com/peak-information.aspx?lat=32.59268&lon=51.64318&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D8%B5%D9%81%D9%87",
+            "https://www.karnaval.ir/things-to-do/mount-soffeh-isfahan",
+            "https://www.wikiloc.com/hiking-trails/khwh-sfh-sfhn-187626937"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 3.201,
+          "analysis_ascent_m": 462,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 2.161,
+          "landmark_gaps_m": [
+            0.0,
+            0.1,
+            2.161
+          ],
+          "max_step_m": 275.2,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 3.2,
+          "registered_ascent_m": 462,
+          "reviewed_reduction_m": 0,
+          "raw_slope_minutes": 79.89,
+          "independent_check_minutes": 113.04,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.251774,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            1961,
+            3201
+          ]
+        }
+      },
       "public_point_notes": {
         "sofeh-golzard-spring": "چشمهٔ گل‌زرد عارضهٔ طبیعی نام‌دار در مسیر صعود صفه است."
       },

@@ -1,5 +1,6 @@
 """Offline regression checks; synthetic GPX, no server or private tracks needed."""
 
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -90,6 +91,46 @@ class ReductionReviewTests(unittest.TestCase):
         result = self.run_review()
         self.assertEqual(result["routes"][0]["evidence"]["direction"], "reverse")
         self.assertGreater(result["routes"][0]["descent_m"], 300)
+
+    def test_catalog_reviewed_reverse_direction_is_respected(self):
+        self.registered[0]["points"] = list(reversed(self.registered[0]["points"]))
+        self.route["evidence_track_directions"] = {"tracks/hill/walk.gpx": "reverse"}
+        (self.root / "apps/api/fixtures/catalog/hill.json").write_text(
+            json.dumps({"point": {"slug": "hill"}, "routes": {"walk": self.route}})
+        )
+        result = self.run_review()
+        self.assertEqual(result["routes"][0]["evidence"]["direction"], "reverse")
+        self.assertGreater(result["routes"][0]["descent_m"], 300)
+
+    def add_reviewed_prefix(self):
+        content = '<gpx xmlns="http://www.topografix.com/GPX/1/1"><trk><trkseg><trkpt lat="34.999" lon="51"><ele>980</ele></trkpt><trkpt lat="35" lon="51"><ele>1000</ele></trkpt></trkseg></trk></gpx>'
+        (self.folder / "prefix.gpx").write_text(content)
+        self.registered[0]["points"][0]["latitude"] = 34.999
+        self.route["evidence_prefixes"] = {
+            "tracks/hill/walk.gpx": {
+                "file": "tracks/hill/prefix.gpx",
+                "end_index": 1,
+                "source_sha256": hashlib.sha256(content.encode()).hexdigest(),
+                "source_url": "https://example.test/prefix",
+                "reason": "reviewed same hiking junction",
+            }
+        }
+        (self.root / "apps/api/fixtures/catalog/hill.json").write_text(
+            json.dumps({"point": {"slug": "hill"}, "routes": {"walk": self.route}})
+        )
+
+    def test_verified_prefix_supplies_existing_canonical_origin(self):
+        self.add_reviewed_prefix()
+        result = self.run_review()
+        self.assertEqual(len(result["routes"]), 1)
+        self.assertEqual(
+            result["routes"][0]["evidence"]["reviewed_prefix"]["join_gap_m"], 0
+        )
+
+    def test_changed_prefix_evidence_is_rejected(self):
+        self.add_reviewed_prefix()
+        (self.folder / "prefix.gpx").write_text("changed")
+        self.assertEqual(self.run_review()["routes"], [])
 
     def test_catalog_file_reference_works_without_route_slug(self):
         self.track.pop("route")

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-atash-kuh-catalog-v1",
+  "catalog_version": "hawatch-atash-kuh-catalog-v2",
   "weather_points": {
     "atash-kuh-afjeh-trailhead": {
       "name": "مبدأ مسیر آتش‌کوه؛ افجه",
@@ -115,8 +115,66 @@
       ],
       "distance_km": 9.4,
       "ascent_m": 1650,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 320,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 80,
+        "source_urls": [
+          "https://mojekooh.com/atash-kooh-complete-guide/",
+          "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737"
+        ],
+        "cumulative_minutes": {
+          "atash-kuh-afjeh-trailhead": 0,
+          "atash-kuh-soston-waterfall": 125,
+          "saka": 215,
+          "atash-kuh": 320
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "edc042fb1d06d6d37db4939dcfc4b0c73984c102deb6a2063159b5e7e4291d9c",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://mojekooh.com/atash-kooh-complete-guide/",
+            "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 9.211,
+          "analysis_ascent_m": 1633,
+          "origin_gap_m": 0.1,
+          "target_gap_m": 2.295,
+          "landmark_gaps_m": [
+            0.1,
+            1.7,
+            0.4,
+            2.295
+          ],
+          "max_step_m": 7.8,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 9.4,
+          "registered_ascent_m": 1650,
+          "reviewed_reduction_m": 69,
+          "raw_slope_minutes": 261.99,
+          "independent_check_minutes": 371.34,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.221401,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3744,
+            6153,
+            9211
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-skh-w-qlh-atshkhwh-106028737",
         "https://mojekooh.com/atash-kooh-complete-guide/"

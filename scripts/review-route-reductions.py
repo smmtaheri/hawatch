@@ -18,7 +18,9 @@ from analyze_route_tracks import (
 )
 
 
-def review(source_root, registered_routes, catalog_root=None):
+def review(
+    source_root, registered_routes, catalog_root=None, *, include_profiles=False
+):
     root = source_root.resolve()
     rows = registered_routes
     owners = {}
@@ -176,12 +178,66 @@ def review(source_root, registered_routes, catalog_root=None):
                     if section.get("direction") == "reverse":
                         raw = list(reversed(raw))
                         direction = "reverse"
+                elif (
+                    owner.get("evidence_track_directions", {}).get(
+                        str(path.relative_to(root))
+                    )
+                    == "reverse"
+                ):
+                    raw = list(reversed(raw))
+                    direction = "reverse"
                 elif route_spec and route_spec.get("reverse"):
                     raw = list(reversed(raw))
                     direction = "reverse"
                 elif t.get("direction") == "reverse":
                     raw = list(reversed(raw))
                     direction = "reverse"
+                prefix_spec = owner.get("evidence_prefixes", {}).get(
+                    str(path.relative_to(root))
+                )
+                prefix_evidence = None
+                if prefix_spec:
+                    if direction != "forward" or bounds:
+                        raise ValueError(
+                            "prefix requires a reviewed forward whole-track source"
+                        )
+                    prefix_path = (root / prefix_spec["file"]).resolve()
+                    if not prefix_path.is_relative_to(root / "tracks"):
+                        raise ValueError("prefix outside local tracks")
+                    prefix_sha = hashlib.sha256(prefix_path.read_bytes()).hexdigest()
+                    if prefix_sha != prefix_spec["source_sha256"]:
+                        raise ValueError("reviewed prefix source hash changed")
+                    prefix_raw = parse_gpx_track(prefix_path)
+                    end_index = prefix_spec["end_index"]
+                    if type(end_index) is not int or not 1 <= end_index < len(
+                        prefix_raw
+                    ):
+                        raise ValueError("invalid reviewed prefix index")
+                    prefix = [dict(p) for p in prefix_raw[: end_index + 1]]
+                    join_gap = haversine_m(
+                        (prefix[-1]["lat"], prefix[-1]["lon"]),
+                        (raw[0]["lat"], raw[0]["lon"]),
+                    )
+                    if (
+                        join_gap > 20
+                        or any(p["ele"] is None for p in prefix)
+                        or raw[0]["ele"] is None
+                    ):
+                        raise ValueError("reviewed prefix junction/elevation mismatch")
+                    alignment = raw[0]["ele"] - prefix[-1]["ele"]
+                    if abs(alignment) > 25:
+                        raise ValueError("prefix elevation calibration differs by >25m")
+                    for point in prefix:
+                        point["ele"] += alignment
+                    raw = prefix + raw
+                    prefix_evidence = {
+                        "source_sha256": prefix_sha,
+                        "source_url": prefix_spec["source_url"],
+                        "end_index": end_index,
+                        "join_gap_m": round(join_gap, 2),
+                        "elevation_alignment_m": round(alignment, 3),
+                        "reason": prefix_spec["reason"],
+                    }
                 coords = [(p["latitude"], p["longitude"]) for p in r["points"]]
                 if len(coords) < 3:
                     raise ValueError("registered chain incomplete")
@@ -276,6 +332,11 @@ def review(source_root, registered_routes, catalog_root=None):
                     },
                     "cumulative_distance_m": [round(along[i]) for i in indices],
                 }
+                if prefix_evidence:
+                    item["evidence"]["reviewed_prefix"] = prefix_evidence
+                if include_profiles:
+                    item["_profile"] = cut
+                    item["_point_indices"] = indices
                 if bounds:
                     item["evidence"]["reviewed_source_section"] = bounds
                 item["_file"] = str(path.relative_to(root))

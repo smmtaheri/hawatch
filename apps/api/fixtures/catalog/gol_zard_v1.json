@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-gol-zard-catalog-v1",
+  "catalog_version": "hawatch-gol-zard-catalog-v2",
   "weather_points": {
     "gol-zard-north-trailhead": {
       "name": "مبدأ مسیر شمالی گل‌زرد؛ پلور",
@@ -136,8 +136,66 @@
       ],
       "distance_km": 6.15,
       "ascent_m": 1310,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 235,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://mojekooh.com/gole-zard-peak-complete-guide/",
+          "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019"
+        ],
+        "cumulative_minutes": {
+          "gol-zard-north-trailhead": 0,
+          "gol-zard-cave": 25,
+          "gol-zard-east": 210,
+          "gol-zard": 235
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "a0d608e94b62d9ebb4cf440bf5dc85f07f80c8a0b6cfe37a57e4ac0c0232f0f6",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://mojekooh.com/gole-zard-peak-complete-guide/",
+            "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.151,
+          "analysis_ascent_m": 1306,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 1.671,
+          "landmark_gaps_m": [
+            0.0,
+            155.3,
+            1.0,
+            1.671
+          ],
+          "max_step_m": 12.5,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 6.2,
+          "registered_ascent_m": 1310,
+          "reviewed_reduction_m": 32,
+          "raw_slope_minutes": 206.35,
+          "independent_check_minutes": 270.72,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.138847,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            832,
+            5033,
+            6151
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-gl-zrd-shrqy-w-grby-z-plwr-107396019",
         "https://mojekooh.com/gole-zard-peak-complete-guide/"
@@ -167,8 +225,63 @@
       ],
       "distance_km": 6.95,
       "ascent_m": 1395,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 250,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 65,
+        "source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%AF%D9%84-%D8%B2%D8%B1%D8%AF-%D8%A7%D8%B2-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-%D8%A2%D8%A8%D8%A7%D8%AF/",
+          "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730"
+        ],
+        "cumulative_minutes": {
+          "gol-zard-south-trailhead": 0,
+          "gol-zard-south-spring": 110,
+          "gol-zard": 250
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "35256b88a3e2a2064e24ba05435bebebc261449cd5e9cc44509fd69fa67df15a",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%AF%D9%84-%D8%B2%D8%B1%D8%AF-%D8%A7%D8%B2-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-%D8%A2%D8%A8%D8%A7%D8%AF/",
+            "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.928,
+          "analysis_ascent_m": 1398,
+          "origin_gap_m": 0.8,
+          "target_gap_m": 0.982,
+          "landmark_gaps_m": [
+            0.8,
+            2.3,
+            0.982
+          ],
+          "max_step_m": 131.8,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 7.0,
+          "registered_ascent_m": 1395,
+          "reviewed_reduction_m": 1,
+          "raw_slope_minutes": 235.55,
+          "independent_check_minutes": 293.46,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.061354,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            4533,
+            6928
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/gole-zard-az-mobarakabad-1402-07-28-nima-qlh-gl-zrd-z-mbrkh-abd-150854730",
         "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%DA%AF%D9%84-%D8%B2%D8%B1%D8%AF-%D8%A7%D8%B2-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9-%D8%A2%D8%A8%D8%A7%D8%AF/"

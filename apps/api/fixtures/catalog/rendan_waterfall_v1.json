@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-rendan-catalog-v1",
+  "catalog_version": "hawatch-rendan-catalog-v2",
   "weather_points": {
     "rendan-village": {
       "name": "روستای رندان",
@@ -87,8 +87,63 @@
       "points": ["rendan-village", "rendan-valley", "rendan-waterfall"],
       "distance_km": 2.7,
       "ascent_m": 169,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 65,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 20,
+        "source_urls": [
+          "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+          "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+        ],
+        "cumulative_minutes": {
+          "rendan-village": 0,
+          "rendan-valley": 30,
+          "rendan-waterfall": 65
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "fe179ff573fb579b1eeee499e1a2ff68376935815d03de5adc7628fdd022950e",
+          "source_url": "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
+            "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 2.701,
+          "analysis_ascent_m": 169,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 0.0,
+          "landmark_gaps_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_step_m": 29.4,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 2.7,
+          "registered_ascent_m": 169,
+          "reviewed_reduction_m": 73,
+          "raw_slope_minutes": 54.99,
+          "independent_check_minutes": 73.26,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.182081,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            1351,
+            2701
+          ]
+        }
+      },
       "source_urls": [
         "https://gl.wikiloc.com/rutas-sendeirismo/abshr-rndn-z-rwsty-rndn-143693056",
         "https://www.wikiloc.com/hiking-trails/rendan-waterfall-abshr-rndn-66030761"

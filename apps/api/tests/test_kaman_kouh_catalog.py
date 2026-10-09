@@ -32,4 +32,5 @@ def test_kaman_kouh_has_independent_peak_and_shared_varangerud_routes():
         "azadkouh-kamankouh-lake",
         "kaman-kouh",
     ]
-    assert via_lake["timing_status"] == "pending"
+    assert via_lake["timing_status"] == "estimated"
+    assert via_lake["one_way_minutes"] == 435

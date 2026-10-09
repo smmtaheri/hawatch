@@ -71,6 +71,23 @@ def load_packaged_catalogs() -> DesiredCatalog:
             route_point_slugs[slug] = frozenset(route["points"])
     if not files:
         raise ValueError("No catalog fixtures found")
+    # Match the fresh-database bootstrap order for shared-point owners.
+    owners = {slug: relative for relative, data in files for slug in data["weather_points"]}
+    dependencies = {
+        relative: {owners[slug] for slug in data.get("shared_weather_points", []) if slug in owners}
+        for relative, data in files
+    }
+    ordered_files = []
+    remaining = dict(files)
+    imported = set()
+    while remaining:
+        ready = sorted(relative for relative in remaining if dependencies[relative] <= imported)
+        if not ready:
+            raise ValueError("Catalog shared-point dependency cycle: " + ", ".join(sorted(remaining)))
+        for relative in ready:
+            ordered_files.append((relative, remaining.pop(relative)))
+        imported.update(ready)
+    files = ordered_files
     return DesiredCatalog(
         tuple(files), frozenset(point_slugs), point_versions, point_rows, point_profiles,
         frozenset(route_slugs), route_versions, route_rows, route_catalog_keys, route_point_slugs,

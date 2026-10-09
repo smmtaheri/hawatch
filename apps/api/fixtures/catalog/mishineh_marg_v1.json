@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-mishineh-marg-catalog-v1",
+  "catalog_version": "hawatch-mishineh-marg-catalog-v2",
   "weather_points": {
     "mishineh-marg-lasak-gorge": {
       "name": "ابتدای تنگهٔ لاسک؛ مسیر میشینه‌مرگ",
@@ -90,8 +90,63 @@
       ],
       "distance_km": 10.66,
       "ascent_m": 1445,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 315,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 80,
+        "source_urls": [
+          "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/",
+          "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434"
+        ],
+        "cumulative_minutes": {
+          "mishineh-marg-lasak-gorge": 0,
+          "mishineh-marg-siah-rud-lake": 125,
+          "mishineh-marg": 315
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "cde7067adc54514b644fd8862e4c710f625edb43dbd24b174c7db71e48a28176",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/",
+            "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 10.654,
+          "analysis_ascent_m": 1437,
+          "origin_gap_m": 1.2,
+          "target_gap_m": 0.805,
+          "landmark_gaps_m": [
+            1.2,
+            1.0,
+            0.805
+          ],
+          "max_step_m": 8.9,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 10.7,
+          "registered_ascent_m": 1445,
+          "reviewed_reduction_m": 26,
+          "raw_slope_minutes": 261.53,
+          "independent_check_minutes": 367.56,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.204435,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            4702,
+            10654
+          ]
+        }
+      },
       "source_urls": [
         "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-myshynh-mrg-141812434",
         "https://kuhnavardi.com/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D9%84%D8%B2%D9%88%D8%B1/"

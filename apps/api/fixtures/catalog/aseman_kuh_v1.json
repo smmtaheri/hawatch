@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-aseman-kuh-catalog-v1",
+  "catalog_version": "hawatch-aseman-kuh-catalog-v2",
   "weather_points": {
     "aseman-kuh-hio-trailhead": {
       "name": "مبدأ روستای هیو؛ مسیر آسمان‌کوه",
@@ -112,12 +112,73 @@
       ],
       "distance_km": 8.58,
       "ascent_m": 1108,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 250,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 65,
+        "source_urls": [
+          "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968",
+          "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430"
+        ],
+        "cumulative_minutes": {
+          "aseman-kuh-hio-trailhead": 0,
+          "aseman-kuh-musa-shrine": 80,
+          "aseman-kuh-zendegani-spring": 165,
+          "aseman-kuh": 250
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "7b84c1f8e92cf931465906fd65586b4d4d972c487e03f623b82ba0ee8a5726b8",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968",
+            "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430"
+          ],
+          "direction": "reverse",
+          "analysis_distance_km": 8.583,
+          "analysis_ascent_m": 1098,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 0.0,
+          "landmark_gaps_m": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_step_m": 8.2,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 8.6,
+          "registered_ascent_m": 1108,
+          "reviewed_reduction_m": 9,
+          "raw_slope_minutes": 204.48,
+          "independent_check_minutes": 288.3,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.222625,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3297,
+            6019,
+            8583
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430",
         "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968"
       ],
+      "evidence_track_directions": {
+        "tracks/aseman-kuh/aseman-kuh-hio-primary.gpx": "reverse"
+      },
       "evidence_tracks": [
         "tracks/aseman-kuh/aseman-kuh-hio-primary.gpx"
       ],

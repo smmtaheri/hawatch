@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sarbazark-catalog-v1",
+  "catalog_version": "hawatch-sarbazark-catalog-v2",
   "weather_points": {
     "sarbazark": {
       "name": "قلهٔ سربازارک",
@@ -51,8 +51,67 @@
       ],
       "distance_km": 13.14,
       "ascent_m": 2264,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 450,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 115,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774"
+        ],
+        "cumulative_minutes": {
+          "chin-kalagh-fatehan-trailhead": 0,
+          "chin-kalagh": 160,
+          "palangchal": 375,
+          "ashtargardan-pass": 390,
+          "sarbazark": 450
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "6c7751b0800020a9cedb74477afd5722c668760ab36bea1ad17293b5bdcefe6d",
+          "source_url": "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 13.144,
+          "analysis_ascent_m": 2264,
+          "origin_gap_m": 38.6,
+          "target_gap_m": 1.346,
+          "landmark_gaps_m": [
+            38.6,
+            8.6,
+            0.9,
+            6.8,
+            1.346
+          ],
+          "max_step_m": 11.1,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 13.1,
+          "registered_ascent_m": 2264,
+          "reviewed_reduction_m": 306,
+          "raw_slope_minutes": 401.37,
+          "independent_check_minutes": 525.84,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.121158,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            4383,
+            11488,
+            12051,
+            13144
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/kht-lrs-qlh-chyn-khlg-bh-qlh-twchl-185982774"
       ],

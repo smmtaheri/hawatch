@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-mehrchal-catalog-v2",
+  "catalog_version": "hawatch-mehrchal-catalog-v3",
   "weather_points": {
     "garmabdar": {
       "name": "روستای گرمابدر",
@@ -171,8 +171,63 @@
       ],
       "distance_km": 9.06,
       "ascent_m": 1625,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 310,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 80,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-mhrchl-qlh-pyrzn-khlwm-qlh-sy-z-mmh-115603689"
+        ],
+        "cumulative_minutes": {
+          "mehrchal-imameh-trailhead": 0,
+          "mehrchal-tang-spring": 170,
+          "mehrchal": 310
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "3a3598824d73f4c16f1c4c7f51327fd818430cb31a14d5d977628d7f55dce1da",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
+            "https://www.wikiloc.com/mountaineering-trails/qlh-mhrchl-qlh-pyrzn-khlwm-qlh-sy-z-mmh-115603689"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 9.06,
+          "analysis_ascent_m": 1625,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 2.828,
+          "landmark_gaps_m": [
+            0.0,
+            3.2,
+            2.828
+          ],
+          "max_step_m": 68.4,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 9.1,
+          "registered_ascent_m": 1625,
+          "reviewed_reduction_m": 3,
+          "raw_slope_minutes": 264.67,
+          "independent_check_minutes": 358.98,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.171252,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            5364,
+            9060
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/mehrchal-peak-qlh-mhrchl-54352114",
         "https://www.wikiloc.com/mountaineering-trails/qlh-mhrchl-qlh-pyrzn-khlwm-qlh-sy-z-mmh-115603689"
@@ -202,8 +257,63 @@
       ],
       "distance_km": 8.15,
       "ascent_m": 1427,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 280,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 70,
+        "source_urls": [
+          "https://mojekooh.com/mehrchal-peak-guide/",
+          "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484"
+        ],
+        "cumulative_minutes": {
+          "mehrchal-garmabdar-trailhead": 0,
+          "pirzan-kolon": 235,
+          "mehrchal": 280
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "eb15d54719b079bd20a7088b186a46b5632bb8ce9d13ee6db899f736748eef01",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://mojekooh.com/mehrchal-peak-guide/",
+            "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 8.149,
+          "analysis_ascent_m": 1416,
+          "origin_gap_m": 2.9,
+          "target_gap_m": 4.299,
+          "landmark_gaps_m": [
+            2.9,
+            2.5,
+            4.299
+          ],
+          "max_step_m": 8.8,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 8.2,
+          "registered_ascent_m": 1427,
+          "reviewed_reduction_m": 124,
+          "raw_slope_minutes": 252.53,
+          "independent_check_minutes": 326.28,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.108779,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            6349,
+            8149
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qll-pyrznkhlwm-w-mhrchl-z-grmbdr-84626484",
         "https://mojekooh.com/mehrchal-peak-guide/"

@@ -160,6 +160,46 @@
       ]
     },
     {
+      "slug": "afjeh-hoyej-person",
+      "descent_m": 14,
+      "chain": [
+        "afjeh",
+        "dasht-havij",
+        "rizan-andar",
+        "rizan-person"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 6.295,
+        "analysis_ascent_m": 1001,
+        "origin_gap_m": 0.8,
+        "target_gap_m": 2.057,
+        "landmark_gaps_m": [
+          0.8,
+          112.2,
+          28.6,
+          2.057
+        ],
+        "max_step_m": 14.8,
+        "reviewed_prefix": {
+          "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+          "end_index": 38,
+          "join_gap_m": 5.97,
+          "elevation_alignment_m": 13.598,
+          "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+        }
+      }
+    },
+    {
       "slug": "afjeh-hoyej-rizan",
       "descent_m": 2,
       "chain": [
@@ -339,6 +379,48 @@
         3654,
         5144
       ]
+    },
+    {
+      "slug": "andar-person-rizan",
+      "descent_m": 137,
+      "chain": [
+        "afjeh",
+        "dasht-havij",
+        "rizan-andar",
+        "rizan-person",
+        "rizan"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 10.225,
+        "analysis_ascent_m": 1526,
+        "origin_gap_m": 0.8,
+        "target_gap_m": 1.632,
+        "landmark_gaps_m": [
+          0.8,
+          112.2,
+          28.6,
+          1.4,
+          1.632
+        ],
+        "max_step_m": 31.9,
+        "reviewed_prefix": {
+          "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+          "end_index": 38,
+          "join_gap_m": 5.97,
+          "elevation_alignment_m": 13.598,
+          "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+        }
+      }
     },
     {
       "slug": "araghchin-niloufar",
@@ -1793,6 +1875,39 @@
           3.389
         ],
         "max_step_m": 13.1
+      }
+    },
+    {
+      "slug": "hio-aseman-kuh",
+      "descent_m": 9,
+      "chain": [
+        "aseman-kuh-hio-trailhead",
+        "aseman-kuh-musa-shrine",
+        "aseman-kuh-zendegani-spring",
+        "aseman-kuh"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "7b84c1f8e92cf931465906fd65586b4d4d972c487e03f623b82ba0ee8a5726b8",
+        "source_url": null,
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://gl.wikiloc.com/rutas-sendeirismo/pymysh-z-rwsty-hyw-t-qlh-asmn-khwh-jmh-1402-02-08-133023968",
+          "https://www.wikiloc.com/hiking-trails/qlh-asmn-khwh-z-hyw-129236430"
+        ],
+        "direction": "reverse",
+        "analysis_distance_km": 8.583,
+        "analysis_ascent_m": 1098,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 0.0,
+        "landmark_gaps_m": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_step_m": 8.2
       }
     },
     {
@@ -3889,10 +4004,8 @@
     }
   ],
   "unresolved": [
-    "afjeh-hoyej-person",
     "ahangarak-hamlun",
     "alamkuh-northern-siahsang",
-    "andar-person-rizan",
     "arfa-kuh-cheshmeh-paro",
     "balqis-qaravolkhaneh",
     "band-eish-hesarak",
@@ -3915,7 +4028,6 @@
     "harzevil-to-gavkol",
     "hesarchal-lashgarak-bozorg",
     "hezar-masjed-chaharrah",
-    "hio-aseman-kuh",
     "janestoon-east-abnik",
     "janestoon-west-abnik",
     "janestoon-west-lalun",
@@ -3979,20 +4091,12 @@
   ],
   "diagnostics": [
     {
-      "slug": "afjeh-hoyej-person",
-      "reason": "origin gap 157m >100m"
-    },
-    {
       "slug": "ahangarak-hamlun",
       "reason": "geometry gap 374m >300m"
     },
     {
       "slug": "alamkuh-northern-siahsang",
       "reason": "reference/partial/technical evidence; not a reviewed route profile"
-    },
-    {
-      "slug": "andar-person-rizan",
-      "reason": "origin gap 157m >100m"
     },
     {
       "slug": "arfa-kuh-cheshmeh-paro",
@@ -4141,10 +4245,6 @@
     {
       "slug": "hezar-masjed-chaharrah",
       "reason": "origin gap 10300m >100m"
-    },
-    {
-      "slug": "hio-aseman-kuh",
-      "reason": "landmark gap 990m >500m"
     },
     {
       "slug": "janestoon-east-abnik",

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-rizan-catalog-v5",
+  "catalog_version": "hawatch-rizan-catalog-v6",
   "weather_points": {
     "afjeh": {
       "name": "روستای افجه",
@@ -188,8 +188,63 @@
       ],
       "distance_km": 6.44,
       "ascent_m": 1590,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 265,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 70,
+        "source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86-%D8%A7%D8%B2-%D8%A7%D9%81%D8%AC%D9%87/",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368"
+        ],
+        "cumulative_minutes": {
+          "afjeh": 0,
+          "dasht-havij": 95,
+          "rizan": 265
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86-%D8%A7%D8%B2-%D8%A7%D9%81%D8%AC%D9%87/",
+            "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.549,
+          "analysis_ascent_m": 1474,
+          "origin_gap_m": 0.8,
+          "target_gap_m": 0.635,
+          "landmark_gaps_m": [
+            0.8,
+            0.9,
+            0.635
+          ],
+          "max_step_m": 7.5,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 6.4,
+          "registered_ascent_m": 1590,
+          "reviewed_reduction_m": 2,
+          "raw_slope_minutes": 232.91,
+          "independent_check_minutes": 306.12,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.137796,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3260,
+            6549
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
         "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B1%DB%8C%D8%B2%D8%A7%D9%86-%D8%A7%D8%B2-%D8%A7%D9%81%D8%AC%D9%87/"
@@ -221,11 +276,87 @@
       ],
       "distance_km": 10.48,
       "ascent_m": 1738,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 345,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+        ],
+        "cumulative_minutes": {
+          "afjeh": 0,
+          "dasht-havij": 95,
+          "rizan-andar": 175,
+          "rizan-person": 215,
+          "rizan": 345
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 10.225,
+          "analysis_ascent_m": 1526,
+          "origin_gap_m": 0.8,
+          "target_gap_m": 1.632,
+          "landmark_gaps_m": [
+            0.8,
+            112.2,
+            28.6,
+            1.4,
+            1.632
+          ],
+          "max_step_m": 31.9,
+          "reviewed_prefix": {
+            "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+            "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+            "end_index": 38,
+            "join_gap_m": 5.97,
+            "elevation_alignment_m": 13.598,
+            "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+          },
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 10.5,
+          "registered_ascent_m": 1738,
+          "reviewed_reduction_m": 137,
+          "raw_slope_minutes": 276.04,
+          "independent_check_minutes": 405.78,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.249834,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3374,
+            5015,
+            6306,
+            10225
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
       ],
+      "evidence_prefixes": {
+        "tracks/rizan/rizan-andar-person-ridge-primary.gpx": {
+          "file": "tracks/rizan/rizan-afjeh-hoyej-primary.gpx",
+          "end_index": 38,
+          "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+          "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+        }
+      },
       "evidence_tracks": [
         "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
       ],
@@ -254,11 +385,84 @@
       ],
       "distance_km": 6.26,
       "ascent_m": 1103,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 210,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 55,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+        ],
+        "cumulative_minutes": {
+          "afjeh": 0,
+          "dasht-havij": 95,
+          "rizan-andar": 175,
+          "rizan-person": 210
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.295,
+          "analysis_ascent_m": 1001,
+          "origin_gap_m": 0.8,
+          "target_gap_m": 2.057,
+          "landmark_gaps_m": [
+            0.8,
+            112.2,
+            28.6,
+            2.057
+          ],
+          "max_step_m": 14.8,
+          "reviewed_prefix": {
+            "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+            "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+            "end_index": 38,
+            "join_gap_m": 5.97,
+            "elevation_alignment_m": 13.598,
+            "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+          },
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 6.3,
+          "registered_ascent_m": 1103,
+          "reviewed_reduction_m": 14,
+          "raw_slope_minutes": 170.17,
+          "independent_check_minutes": 246.6,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.234063,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3374,
+            5015,
+            6295
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/kht-lrs-ndr-w-prswn-bh-ryzn-78900170"
       ],
+      "evidence_prefixes": {
+        "tracks/rizan/rizan-andar-person-ridge-primary.gpx": {
+          "file": "tracks/rizan/rizan-afjeh-hoyej-primary.gpx",
+          "end_index": 38,
+          "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/qlh-ryzn-102666368",
+          "reason": "Canonical Afjeh origin to matching outbound junction; 6m join and 6-8m overlap across the next 20 samples."
+        }
+      },
       "evidence_tracks": [
         "tracks/rizan/rizan-andar-person-ridge-primary.gpx"
       ],
@@ -285,8 +489,61 @@
       ],
       "distance_km": 6.95,
       "ascent_m": 1343,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 250,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 65,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586"
+        ],
+        "cumulative_minutes": {
+          "barg-jahan": 0,
+          "rizan-andar": 215,
+          "rizan-person": 250
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "62b959afa5be520fa6b144677c6d621c9a75accca4bcca4663b926d05b039c49",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.937,
+          "analysis_ascent_m": 1138,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 2.532,
+          "landmark_gaps_m": [
+            0.0,
+            14.3,
+            2.532
+          ],
+          "max_step_m": 250.3,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 7.0,
+          "registered_ascent_m": 1343,
+          "reviewed_reduction_m": 63,
+          "raw_slope_minutes": 205.23,
+          "independent_check_minutes": 290.94,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.218152,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            5706,
+            6937
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/parsoon-from-bargejahan-93-10-12-nima-qlh-prswn-z-brg-jhn-8565586"
       ],

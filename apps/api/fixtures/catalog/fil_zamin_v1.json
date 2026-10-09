@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-fil-zamin-catalog-v1",
+  "catalog_version": "hawatch-fil-zamin-catalog-v2",
   "weather_points": {
     "fil-zamin-lavasan-trailhead": {
       "name": "امامزاده و مبدأ مسیر فیل‌زمین؛ لواسان بزرگ",
@@ -155,8 +155,64 @@
       ],
       "distance_km": 6.66,
       "ascent_m": 1138,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 225,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+        ],
+        "cumulative_minutes": {
+          "fil-zamin-lavasan-trailhead": 0,
+          "fil-zamin-lavasan-spring": 75,
+          "fil-zamin-lavasan-pass": 105,
+          "fil-zamin": 225
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "84fad0665e6fcb2f55e2706e4a66a1929654064f258be0beadd253d5660d0715",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 6.653,
+          "analysis_ascent_m": 1139,
+          "origin_gap_m": 0.2,
+          "target_gap_m": 1.448,
+          "landmark_gaps_m": [
+            0.2,
+            2.1,
+            2.5,
+            1.448
+          ],
+          "max_step_m": 8.0,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 6.7,
+          "registered_ascent_m": 1138,
+          "reviewed_reduction_m": 28,
+          "raw_slope_minutes": 201.29,
+          "independent_check_minutes": 258.84,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.117799,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            3357,
+            4165,
+            6653
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/qlh-fyl-zmyn-z-lwsn-bzrg-120190743"
       ],
@@ -185,8 +241,61 @@
       ],
       "distance_km": 8.17,
       "ascent_m": 1233,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 265,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 70,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+        ],
+        "cumulative_minutes": {
+          "fil-zamin-ira-trailhead": 0,
+          "fil-zamin-ira-pass": 210,
+          "fil-zamin": 265
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "5b97b4c39f7dad3ff1847bb1ea81d0ae68cc2779eb599a32eedefa0afd4b57e0",
+          "source_url": null,
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 8.165,
+          "analysis_ascent_m": 1232,
+          "origin_gap_m": 0.0,
+          "target_gap_m": 5.591,
+          "landmark_gaps_m": [
+            0.0,
+            0.6,
+            5.591
+          ],
+          "max_step_m": 16.1,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 8.2,
+          "registered_ascent_m": 1233,
+          "reviewed_reduction_m": 184,
+          "raw_slope_minutes": 224.42,
+          "independent_check_minutes": 306.6,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.180807,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            6861,
+            8165
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/filzamin-az-ira-1403-10-21-nima-qlh-fyl-zmyn-z-yr-197774361"
       ],

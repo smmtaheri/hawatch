@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kaman-kouh-catalog-v1",
+  "catalog_version": "hawatch-kaman-kouh-catalog-v2",
   "weather_points": {
     "kaman-kouh": {
       "name": "قلهٔ کمان‌کوه",
@@ -104,8 +104,64 @@
       ],
       "distance_km": 16.14,
       "ascent_m": 1780,
-      "timing_status": "pending",
-      "timing": null,
+      "timing_status": "estimated",
+      "one_way_minutes": 435,
+      "timing": {
+        "method": "gpx-slope+distance-ascent-loss-check",
+        "version": "pending-eta-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 110,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091"
+        ],
+        "cumulative_minutes": {
+          "azadkouh-varangerud-start": 0,
+          "azadkouh-shirkamar-intersection": 230,
+          "azadkouh-kamankouh-lake": 345,
+          "kaman-kouh": 435
+        },
+        "evidence": {
+          "method": "gpx-50m-5sample-v1",
+          "source_sha256": "4c3c1a6eceb3e8917fafdb7e51c7d44f5384a8392fa9d0bec90d26bb62addc45",
+          "source_url": "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091",
+          "coverage": "canonical-origin-to-first-target",
+          "reference_only_elevation": true,
+          "catalog_source_urls": [
+            "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091"
+          ],
+          "direction": "forward",
+          "analysis_distance_km": 16.018,
+          "analysis_ascent_m": 1767,
+          "origin_gap_m": 11.3,
+          "target_gap_m": 0.908,
+          "landmark_gaps_m": [
+            11.3,
+            4.6,
+            14.1,
+            0.908
+          ],
+          "max_step_m": 66.2,
+          "timestamp_used": false,
+          "terrain_factor": 1.2,
+          "registered_distance_km": 16.1,
+          "registered_ascent_m": 1780,
+          "reviewed_reduction_m": 55,
+          "raw_slope_minutes": 379.6,
+          "independent_check_minutes": 506.7,
+          "accepted_check_range": [
+            0.85,
+            1.35
+          ],
+          "scale_to_published_total": 1.145934,
+          "model_profile_method": "50m-5sample+slope-speed-cap4",
+          "landmark_distance_m": [
+            0,
+            8403,
+            13690,
+            16018
+          ]
+        }
+      },
       "source_urls": [
         "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091"
       ],
