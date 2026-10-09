@@ -8,6 +8,7 @@ import "./styles/new-design/route.css";
 import "./styles/new-design/site.css";
 import "./styles/new-design/integration.css";
 import "./styles/new-design/shared.css";
+import "./styles/new-design/landscape.css";
 
 captureInitialSeoContent();
 

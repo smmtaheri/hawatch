@@ -1,116 +1,188 @@
 {
-  "product": "هواچ",
+  "fontFamily": "Vazirmatn, Tahoma, sans-serif",
   "direction": "rtl",
-  "fontFamily": "Estedad",
+  "breakpointsCssPx": {
+    "mobileMax": 767,
+    "tabletMax": 1023,
+    "compactDesktopMax": 1279
+  },
+  "content": {
+    "desktopMaxWidthPx": 1280,
+    "desktopSideGutterAt1440Px": 80,
+    "mobileSideGutterPx": 14,
+    "mobileDayInsetPx": 5,
+    "routeWideMaxWidthPx": 1160,
+    "routeMainWidthPx": 776,
+    "routeSidebarWidthPx": 360,
+    "routeColumnGapPx": 24
+  },
+  "radiusPx": {
+    "card": 14,
+    "control": 10,
+    "dialog": 20
+  },
+  "dayVisibleCount": {
+    "mobile": 5,
+    "desktopDaily": 8,
+    "desktopExpandedSlots": 11,
+    "forecastGroupsTotal": 8
+  },
   "colors": {
-    "brand": {
-      "ink": "#102b3d",
-      "teal": "#1d7f86",
-      "tealBright": "#61c5c0",
-      "mist": "#e5efec",
-      "line": "#cbdedb",
-      "muted": "#62777a",
-      "amber": "#d09a35",
-      "coral": "#d9584c"
-    },
     "light": {
-      "background": "#f0f6f4",
-      "surface": "#ffffff",
-      "surfaceRaised": "#ffffff",
-      "surfaceSoft": "#f4f9f7",
-      "border": "#d6e5e2",
-      "text": "#102b3d",
-      "muted": "#687a80",
-      "teal": "#1d7f86",
-      "amber": "#c18316",
-      "coral": "#d9584c"
+      "ink": "#112349",
+      "secondary": "#435775",
+      "accent": "#007c8b",
+      "red": "#b92724",
+      "sun": "#e7a600",
+      "panel": "rgba(247,253,254,.72)",
+      "border": "rgba(47,104,130,.16)",
+      "muted": "#63718d",
+      "cool": "#168bd8",
+      "warm": "#dc741d",
+      "wind": "#079bb6",
+      "rain": "#007f9e",
+      "solid": "#f0f7f8",
+      "background": "#e7eff1",
+      "ascent": "#1a7b59",
+      "descent": "#b92724",
+      "routeAccent": "var(--accent)",
+      "overlay": "rgba(232,242,245,.05)"
     },
     "dark": {
-      "background": "#0b2732",
-      "surface": "#173844",
-      "surfaceRaised": "#1d4650",
-      "surfaceSoft": "#14333e",
-      "border": "#bee1dd2e",
-      "text": "#edf7f4",
-      "muted": "#a8c1c0",
-      "teal": "#61c5c0",
-      "amber": "#f0bd61",
-      "coral": "#ed897b"
-    },
-    "semantic": {
-      "normal": "teal",
-      "change": "amber",
-      "critical": "coral"
+      "ink": "#f0f7fc",
+      "secondary": "#c4d4e2",
+      "accent": "#32e0e0",
+      "red": "#ff7d72",
+      "sun": "#ffd043",
+      "panel": "rgba(2,33,49,.70)",
+      "border": "rgba(126,210,231,.16)",
+      "muted": "#a2acc0",
+      "cool": "#7dccff",
+      "warm": "#ffb469",
+      "wind": "#32e0e0",
+      "rain": "#2ed8e9",
+      "solid": "#123444",
+      "background": "#082938",
+      "ascent": "#65dca5",
+      "descent": "#ff7d72",
+      "routeAccent": "var(--accent)",
+      "overlay": "rgba(1,21,37,.10)"
     }
   },
-  "typography": {
-    "family": "Estedad",
-    "stack": "Estedad, Noto Sans Arabic, Tahoma, Arial, sans-serif",
-    "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
-    "body": { "size": "16px", "lineHeight": 1.7, "weight": 400 },
-    "metadata": { "size": "14px", "lineHeight": 1.5, "weight": 400 },
-    "label": { "size": "13px", "lineHeight": 1.45, "weight": 500 },
-    "control": { "size": "14px", "lineHeight": 1.4, "weight": 500 },
-    "cardTitle": { "size": "18px", "lineHeight": 1.4, "weight": 600 },
-    "sectionTitle": { "size": "30px desktop / 24px mobile", "lineHeight": 1.35, "weight": 700 },
-    "pageTitle": { "size": "52px desktop / 36px mobile", "lineHeight": 1.2, "weight": 700 },
-    "keyValue": { "size": "24px", "lineHeight": 1.2, "weight": 600 },
-    "letterSpacing": "normal",
-    "numeric": { "fontVariantNumeric": "tabular-nums", "unicodeBidi": "isolate" }
-  },
-  "spacing": {
-    "base": "4px",
-    "scale": { "1": "4px", "2": "8px", "3": "12px", "4": "16px", "5": "20px", "6": "24px", "8": "32px", "10": "40px", "12": "48px" }
-  },
-  "shape": {
-    "cardRadius": "18px",
-    "heroRadius": "24px",
-    "controlRadius": "10px",
-    "pillRadius": "999px",
-    "shadow": "0 14px 32px #102b3d12",
-    "cardShadow": "0 10px 28px #102b3d0f"
-  },
-  "layout": {
-    "direction": "rtl",
-    "mobileReferenceWidth": 576,
-    "webReferenceWidth": 1905,
-    "mobileReferenceBreakpoint": "720px",
-    "horizontalOverflow": false,
-    "contentMaxWidth": "1500px"
-  },
-  "observedRuntime": {
-    "source": "local typography contract; layout values are historical live DOM/computed styles captured 2026-08-25",
-    "fontComputed": "Estedad, Noto Sans Arabic, Tahoma, Arial, sans-serif",
-    "fontSize": "16px",
-    "lineHeight": "27.2px",
-    "home": {
-      "lightBackground": "#c9dcda",
-      "darkBackground": "#071d28",
-      "desktopHeader": "1500x89px",
-      "mobileHeader": "544x76px",
-      "desktopSearch": "610x74px",
-      "mobileSearch": "544x62px",
-      "desktopTile": "95x58px",
-      "mobileTile": "268.5x54px"
-    },
-    "point": {
-      "lightBackground": "#c9dcda",
-      "darkBackground": "#0b2732",
-      "desktopHero": "1416x250px",
-      "mobileHero": "548x116px",
-      "desktopHeroRadius": "25px",
-      "mobileHeroRadius": "16px",
-      "desktopCardRadius": "18px",
-      "mobileCardRadius": "14px"
+  "source": "Current shared design: base.css, shared.css, landscape.css; approved weekly geometry: agreed.css and forecast-v5.css. Previous site surfaces are authoritative.",
+  "chartRowHeightCssPx": {
+    "destination": {
+      "felt": 118,
+      "wind": 94,
+      "rain": 78,
+      "actualRange": 142,
+      "gust": 94,
+      "direction": 57,
+      "humidity": 60,
+      "visibility": 60,
+      "freezing": 90
     },
     "route": {
-      "lightBackground": "#c9dcda",
-      "darkBackground": "#0b2732",
-      "desktopHero": "1416x230px",
-      "mobileHero": "552x116px",
-      "desktopDecisionWidth": "300px",
-      "mobileDecisionWidth": "552px"
+      "felt": 112,
+      "wind": 86,
+      "rain": 70
     },
-    "rootHorizontalOverflow": false
+    "export": {
+      "felt": 125,
+      "wind": 86,
+      "rain": 70
+    }
+  },
+  "arrow": {
+    "expandPhysicalSide": "left",
+    "collapsePhysicalSide": "right",
+    "targetCssPx": 44,
+    "glyphCssPx": 14
+  },
+  "fontSizeCssPx": {
+    "desktop": {
+      "hero": 40,
+      "forecastTitle": 24,
+      "day": 16,
+      "date": 12,
+      "temperature": 22,
+      "metric": 18,
+      "range": 11,
+      "caption": 12,
+      "expertTrigger": 13
+    },
+    "mobile": {
+      "hero": 27,
+      "forecastTitle": 19,
+      "day": 13,
+      "date": 10,
+      "temperature": 18,
+      "metric": 14,
+      "range": 10,
+      "caption": 10,
+      "expertTrigger": 11
+    },
+    "routeDesktop": {
+      "pointName": 17,
+      "pointMeta": 13,
+      "day": 16,
+      "date": 13,
+      "controlLabel": 14,
+      "metricCaption": 14,
+      "summaryLabel": 14,
+      "summaryValue": 18,
+      "duration": 14,
+      "changeRoute": 16
+    },
+    "routeMobile": {
+      "pointName": 12,
+      "pointMeta": 11,
+      "day": 13,
+      "date": 11,
+      "metricCaption": 12,
+      "summaryLabel": 13,
+      "summaryValue": 16,
+      "changeRoute": 12
+    }
+  },
+  "forecastSurfaceBlurPx": 10,
+  "routeSummary": {
+    "mobileCols": 2,
+    "compactDesktopCols": 3,
+    "wideDesktopCols": 2,
+    "paddingPx": 14,
+    "durationFont": "14px desktop; clamp(11px,calc(5vw - 5px),14px) mobile",
+    "durationWhiteSpace": "nowrap",
+    "titleMobilePx": 17,
+    "titleWideDesktopPx": 20
+  },
+  "routeDateCard": {
+    "desktopWidthPx": 90,
+    "desktopGapPx": 8,
+    "mobileWidthPx": 69,
+    "mobileGapPx": 6
+  },
+  "product": "هواچ",
+  "surfaceBackdropBlurPx": 0,
+  "background": {
+    "geometry": "fixed viewport layer; cover; center top; 100lvh with 100vh fallback",
+    "contentHeightDependent": false,
+    "families": {
+      "default": [
+        "home",
+        "point",
+        "destinations",
+        "subscription"
+      ],
+      "route": [
+        "route",
+        "routes"
+      ]
+    },
+    "routeTone": {
+      "light": "saturate(.85)",
+      "dark": "saturate(.72) brightness(1.12)"
+    },
+    "assetsModified": false
   }
 }

@@ -1,0 +1,751 @@
+{
+  "scope": "Local production frontend, replayed read-only public API responses; Chromium; no deployment",
+  "contract": "design/system/design-system.md",
+  "cases": [
+    {
+      "page": "home",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": []
+    },
+    {
+      "page": "point",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 752
+      },
+      "screens": []
+    },
+    {
+      "page": "route",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "destinations",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "routes",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "subscription",
+      "width": 320,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 226
+      },
+      "screens": []
+    },
+    {
+      "page": "home",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": []
+    },
+    {
+      "page": "point",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 752
+      },
+      "screens": []
+    },
+    {
+      "page": "route",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "destinations",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "routes",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": []
+    },
+    {
+      "page": "subscription",
+      "width": 320,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "24px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 226
+      },
+      "screens": []
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": [
+        "mobile/light/home.jpg"
+      ]
+    },
+    {
+      "page": "point",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 767
+      },
+      "screens": [
+        "mobile/light/point.jpg",
+        "mobile/light/point-expanded.jpg"
+      ]
+    },
+    {
+      "page": "route",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 854
+      },
+      "screens": [
+        "mobile/light/route.jpg",
+        "mobile/light/route-expanded.jpg"
+      ]
+    },
+    {
+      "page": "destinations",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": [
+        "mobile/light/destinations.jpg"
+      ]
+    },
+    {
+      "page": "routes",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": [
+        "mobile/light/routes.jpg"
+      ]
+    },
+    {
+      "page": "subscription",
+      "width": 390,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 240
+      },
+      "screens": [
+        "mobile/light/subscription.jpg"
+      ]
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": [
+        "mobile/dark/home.jpg"
+      ]
+    },
+    {
+      "page": "point",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 767
+      },
+      "screens": [
+        "mobile/dark/point.jpg",
+        "mobile/dark/point-expanded.jpg"
+      ]
+    },
+    {
+      "page": "route",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 854
+      },
+      "screens": [
+        "mobile/dark/route.jpg",
+        "mobile/dark/route-expanded.jpg"
+      ]
+    },
+    {
+      "page": "destinations",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": [
+        "mobile/dark/destinations.jpg"
+      ]
+    },
+    {
+      "page": "routes",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 950
+      },
+      "screens": [
+        "mobile/dark/routes.jpg"
+      ]
+    },
+    {
+      "page": "subscription",
+      "width": 390,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "27px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 844,
+        "position": "fixed",
+        "scrollY": 240
+      },
+      "screens": [
+        "mobile/dark/subscription.jpg"
+      ]
+    },
+    {
+      "page": "home",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": [
+        "desktop/light/home.jpg"
+      ]
+    },
+    {
+      "page": "point",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 540
+      },
+      "screens": [
+        "desktop/light/point.jpg",
+        "desktop/light/point-expanded.jpg"
+      ]
+    },
+    {
+      "page": "route",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 346
+      },
+      "screens": [
+        "desktop/light/route.jpg",
+        "desktop/light/route-expanded.jpg"
+      ]
+    },
+    {
+      "page": "destinations",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 481
+      },
+      "screens": [
+        "desktop/light/destinations.jpg"
+      ]
+    },
+    {
+      "page": "routes",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 732
+      },
+      "screens": [
+        "desktop/light/routes.jpg"
+      ]
+    },
+    {
+      "page": "subscription",
+      "width": 1440,
+      "theme": "light",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(247, 253, 254, 0.72)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 53
+      },
+      "screens": [
+        "desktop/light/subscription.jpg"
+      ]
+    },
+    {
+      "page": "home",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 0
+      },
+      "screens": [
+        "desktop/dark/home.jpg"
+      ]
+    },
+    {
+      "page": "point",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 540
+      },
+      "screens": [
+        "desktop/dark/point.jpg",
+        "desktop/dark/point-expanded.jpg"
+      ]
+    },
+    {
+      "page": "route",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 346
+      },
+      "screens": [
+        "desktop/dark/route.jpg",
+        "desktop/dark/route-expanded.jpg"
+      ]
+    },
+    {
+      "page": "destinations",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 481
+      },
+      "screens": [
+        "desktop/dark/destinations.jpg"
+      ]
+    },
+    {
+      "page": "routes",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 732
+      },
+      "screens": [
+        "desktop/dark/routes.jpg"
+      ]
+    },
+    {
+      "page": "subscription",
+      "width": 1440,
+      "theme": "dark",
+      "errors": [],
+      "overflow": false,
+      "font": "Vazirmatn, Tahoma, sans-serif",
+      "titleSize": "40px",
+      "titleWeight": "700",
+      "panel": "rgba(2, 33, 49, 0.7)",
+      "blur": "none",
+      "landscape": {
+        "top": 0,
+        "bottom": 900,
+        "position": "fixed",
+        "scrollY": 53
+      },
+      "screens": [
+        "desktop/dark/subscription.jpg"
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "apps/web/src/styles/new-design/landscape.css": "12db093b40e5e89905397621f2c3d7249d1ed472d6490621cd843b73ec29d4bb",
+    "apps/web/src/styles/new-design/base.css": "ec8eff6005917dcc0a0a5c4a8997fd9b036e1d8dbf7e24abe6a8d6526b5d29a8",
+    "apps/web/src/features/week/forecast-v5.css": "7c5e30acb0c44c2aa58ac3bb9af3d713ce66ac3bca0493a7a67a240726ee8275"
+  }
+}

@@ -1,0 +1,39 @@
+/* One photo surface for every page. Its size depends on the viewport, never
+   on forecast expansion, equipment, or an endlessly growing catalog. */
+main {
+  --landscape-photo: url('/new-design/backgrounds/desktop-light.webp');
+  --landscape-tone: none;
+}
+main.route-page {
+  --landscape-photo: url('/new-design/backgrounds/route-desktop-light.webp');
+  --landscape-tone: saturate(.85);
+}
+:root[data-theme="dark"] main {
+  --landscape-photo: url('/new-design/backgrounds/desktop-dark.webp');
+}
+:root[data-theme="dark"] main.route-page {
+  --landscape-photo: url('/new-design/backgrounds/route-desktop-dark.webp');
+  --landscape-tone: saturate(.72) brightness(1.12);
+}
+.landscape {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  height: 100lvh;
+  min-height: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--overlay), var(--overlay)), var(--landscape-photo);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  mask-image: none;
+  filter: var(--landscape-tone);
+}
+@media (max-width: 767px) {
+  main { --landscape-photo: url('/new-design/backgrounds/mobile-light.webp'); }
+  main.route-page { --landscape-photo: url('/new-design/backgrounds/route-mobile-light.webp'); }
+  :root[data-theme="dark"] main { --landscape-photo: url('/new-design/backgrounds/mobile-dark.webp'); }
+  :root[data-theme="dark"] main.route-page { --landscape-photo: url('/new-design/backgrounds/route-mobile-dark.webp'); }
+}

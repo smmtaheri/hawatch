@@ -1,6 +1,6 @@
 # رفتار صفحهٔ Point (محتوای Point Forecast)
 
-مرجع بصری: [design/pages/place-forecast.md](../../design/pages/place-forecast.md) — **همان قالب Point**؛ screenshot جدا وجود ندارد.
+مرجع بصری: [design/pages/point-forecast.md](../../design/pages/point-forecast.md) — **همان قالب Point**؛ screenshot جدا وجود ندارد.
 
 ## ورود
 

@@ -10,10 +10,7 @@ body.forecast-page .forecast-v4 strong,body.forecast-page .forecast-v4 b,body.fo
 body.forecast-page .forecast-v4 button:focus-visible,body.forecast-page .forecast-v4 a:focus-visible,body.forecast-page .forecast-v4 [tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 body.forecast-page .forecast-v4 .icon{width:24px;height:24px;display:inline-block;vertical-align:middle;flex:none;overflow:visible}
 body.forecast-page .forecast-v4 .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
-body.forecast-page .forecast-v4 .landscape{position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-light.webp') center top/auto 1200px no-repeat;background-color:var(--bg)}
-:root[data-theme=dark] body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-dark.webp')}
-body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-light.webp')}
-:root[data-theme=dark] body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+
 body.forecast-page .forecast-v4 .shell{width:min(1280px,calc(100% - 112px));margin:auto;padding:30px 0 48px}
 body.forecast-page .forecast-v4 .header{display:flex;justify-content:space-between;align-items:flex-start;min-height:76px}
 body.forecast-page .forecast-v4 .brand{display:flex;align-items:center;gap:6px;color:var(--accent);font-size:28px;font-weight:700}
@@ -47,7 +44,7 @@ body.forecast-page .forecast-v4 .route-link small{display:block;font-size:11px;c
 body.forecast-page .forecast-v4 .route-link>.icon{width:16px;height:16px}
 body.forecast-page .forecast-v4 .all-routes{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--accent);min-height:40px;margin-top:12px}
 body.forecast-page .forecast-v4 .footer{font-size:11px;color:var(--secondary);margin-top:24px}
-body.forecast-page .forecast-v4 .forecast-panel{position:relative;min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--panel);backdrop-filter:blur(10px);padding:0 10px 10px}
+body.forecast-page .forecast-v4 .forecast-panel{position:relative;min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--panel);backdrop-filter:none;padding:0 10px 10px}
 body.forecast-page .forecast-v4 .timeline-scroll{direction:ltr;overflow:auto hidden;scrollbar-width:none}
 body.forecast-page .forecast-v4 .timeline-scroll::-webkit-scrollbar{display:none}
 body.forecast-page .forecast-v4 .timeline-content{position:relative;direction:ltr}
@@ -216,10 +213,7 @@ body.forecast-page .forecast-v4 .gear-scenarios h3{font-size:17px;margin-bottom:
 @media(min-width:768px) and (max-width:1279px){body.forecast-page .forecast-v4 .route-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 18px}}
 @media(max-width:767px){body.forecast-page .forecast-v4 body{font-size:14px}
 body.forecast-page .forecast-v4 .shell{width:calc(100% - 28px);padding:20px 0 30px}
-body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-light.webp');background-size:auto 1450px}
-:root[data-theme=dark] body.forecast-page .forecast-v4 .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-dark.webp')}
-body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-light.webp')}
-:root[data-theme=dark] body.forecast-page .forecast-v4 body.route .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/route-mobile-dark.webp')}
+
 body.forecast-page .forecast-v4 .header{min-height:66px}
 body.forecast-page .forecast-v4 .brand{font-size:23px;gap:4px}
 body.forecast-page .forecast-v4 .brand-symbol{width:32px;height:33px}
@@ -320,9 +314,9 @@ body.forecast-page .forecast-v4 .state-grid,body.forecast-page .forecast-v4 .gea
 body.forecast-page .forecast-v4 .gear-scenarios h3{font-size:16px}}
 @media(prefers-reduced-motion:reduce){body.forecast-page .forecast-v4 *{scroll-behavior:auto!important}}
 
-.forecast-v4{--panel:rgba(247,253,254,.66);--solid:#f0f7f8;--cool:#168bd8;--warm:#dc741d;--wind:#079bb6;--muted:#63718d;--route-accent:var(--accent);--ascent:#1a7b59;--descent:var(--red);font-family:Vazirmatn,Tahoma,sans-serif}
-:root:not([data-theme=dark]) .forecast-v4{--route-accent:color-mix(in srgb,var(--accent) 90%,black)}
-:root[data-theme=dark] .forecast-v4{--panel:rgba(2,33,49,.64);--solid:#123444;--cool:#7dccff;--warm:#ffb469;--wind:#32e0e0;--muted:#a2acc0;--ascent:#65dca5}
+.forecast-v4{--solid:var(--panel-strong);--cool:#168bd8;--warm:#dc741d;--wind:#079bb6;--muted:#63718d;--route-accent:var(--accent);--ascent:#1a7b59;--descent:var(--red);font-family:Vazirmatn,Tahoma,sans-serif}
+
+:root[data-theme=dark] .forecast-v4{--cool:#7dccff;--warm:#ffb469;--wind:#32e0e0;--muted:#a2acc0;--ascent:#65dca5}
 body.forecast-page .forecast-v4 .elevation-values{display:inline-flex;direction:rtl;unicode-bidi:isolate;gap:8px;white-space:nowrap}
 body.forecast-page .forecast-v4 .elevation-values>span,body.forecast-page .forecast-v4 .elevations>span{direction:ltr;unicode-bidi:isolate}
 body.forecast-page .forecast-v4 .elevation-ascent{color:var(--ascent)}
@@ -341,10 +335,7 @@ body.forecast-page .forecast-v4 .summary-item small{white-space:nowrap}
 body.forecast-page .shell{padding-top:30px;padding-bottom:48px}
 body.forecast-page .global-header{margin-bottom:0}
 body.forecast-page .back-row{margin:0}
-body.forecast-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/desktop-light.webp');background-size:auto 1200px;background-position:center top}
-:root[data-theme=dark] body.forecast-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/desktop-dark.webp')}
-body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/route-desktop-light.webp')}
-:root[data-theme=dark] body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/route-desktop-dark.webp')}
+
 body.forecast-page .forecast-v4 .preview-image{width:100%;max-height:470px;object-fit:contain}
 .v4-render-host{position:fixed;left:-10000px;top:0;pointer-events:none;direction:rtl}
 .forecast-v4 .icon{width:24px;height:24px;display:inline-block;vertical-align:middle;flex:none;overflow:visible}
@@ -374,7 +365,7 @@ body.forecast-page .forecast-v4 .share-message{min-height:64px}
 body.forecast-page .forecast-v4 .full-image-overlay{overscroll-behavior:contain}
 body.forecast-page .forecast-v4 .timeline-scroll{touch-action:pan-x pan-y;overscroll-behavior-x:contain;cursor:grab}
 body.forecast-page .forecast-v4 .timeline-scroll.dragging{cursor:grabbing;user-select:none}
-@media(max-width:767px){body.forecast-page .shell{padding-top:20px;padding-bottom:30px}body.forecast-page .forecast-v4 .day-date{font-size:10px}body.forecast-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/mobile-light.webp');background-size:auto 1450px}:root[data-theme=dark] body.forecast-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/mobile-dark.webp')}body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(232,242,245,.12),rgba(232,242,245,.12)),url('/new-design/backgrounds/route-mobile-light.webp')}:root[data-theme=dark] body.forecast-page.route-page .landscape{background-image:linear-gradient(rgba(1,21,37,.26),rgba(1,21,37,.26)),url('/new-design/backgrounds/route-mobile-dark.webp')}body.forecast-page .forecast-v4 .preview-image{max-height:360px}body.forecast-page .forecast-v4 .summary-item small{font-size:11px}}
+@media(max-width:767px){body.forecast-page .shell{padding-top:20px;padding-bottom:30px}body.forecast-page .forecast-v4 .day-date{font-size:10px}body.forecast-page .forecast-v4 .preview-image{max-height:360px}body.forecast-page .forecast-v4 .summary-item small{font-size:11px}}
 
 /* The eight date cards define the route's main column. Only its timeline overflows. */
 body.forecast-page.route-page #forecast-v4{
@@ -427,8 +418,8 @@ body.forecast-page.route-page #forecast-v4 .v4-route-support:before{
  pointer-events:none;
  background:var(--panel);
  border-radius:14px;
- backdrop-filter:blur(10px);
- -webkit-backdrop-filter:blur(10px);
+ backdrop-filter:none;
+ -webkit-backdrop-filter:none;
 }
 body.forecast-page.route-page #forecast-v4 .route-summary{
  grid-template-columns:repeat(3,minmax(0,1fr));
@@ -448,7 +439,7 @@ body.forecast-page.route-page #forecast-v4 .share-row .primary-button{
  color:var(--accent);
  font-size:16px;
  font-weight:700;
- backdrop-filter:blur(6px);
+ backdrop-filter:none;
 }
 body.forecast-page.route-page #forecast-v4 .share-row .primary-button:hover{background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
 /* The sidebar starts alongside the forecast controls to use the space above the chart.

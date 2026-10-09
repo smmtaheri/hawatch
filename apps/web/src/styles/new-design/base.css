@@ -2,9 +2,9 @@
 
 @font-face{font-family:Vazirmatn;src:url('/new-design/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600 900;font-display:swap}
 
-:root{--ink:#112349;--secondary:#435775;--past:#63718d;--accent:#007c8b;--accent-soft:rgba(211,250,250,.65);--red:#b92724;--amber:#885500;--sun:#e7a600;--rain:#007f9e;--snow:#4f7794;--panel:rgba(247,253,254,.72);--panel-strong:#f0f7f8;--border:rgba(47,104,130,.16);--focus:#007789;--warning-ink:#fff;--bg:#e7eff1;--overlay:rgba(232,242,245,.16);--font:Vazirmatn,Tahoma,sans-serif;color-scheme:light}
+:root{--ink:#112349;--secondary:#435775;--past:#63718d;--accent:#007c8b;--accent-soft:rgba(211,250,250,.65);--red:#b92724;--amber:#885500;--sun:#e7a600;--rain:#007f9e;--snow:#4f7794;--panel:rgba(247,253,254,.72);--panel-strong:#f0f7f8;--border:rgba(47,104,130,.16);--focus:#007789;--warning-ink:#fff;--bg:#e7eff1;--overlay:rgba(232,242,245,.05);--font:Vazirmatn,Tahoma,sans-serif;color-scheme:light}
 
-:root[data-theme=dark]{--ink:#f0f7fc;--secondary:#c4d4e2;--past:#a2acc0;--accent:#32e0e0;--accent-soft:rgba(0,87,108,.27);--red:#ff7d72;--amber:#f2c466;--sun:#ffd043;--rain:#2ed8e9;--snow:#cfe8f6;--panel:rgba(2,33,49,.70);--panel-strong:#123444;--border:rgba(126,210,231,.16);--focus:#3bebed;--warning-ink:#172c38;--bg:#082938;--overlay:rgba(1,21,37,.40);color-scheme:dark}
+:root[data-theme=dark]{--ink:#f0f7fc;--secondary:#c4d4e2;--past:#a2acc0;--accent:#32e0e0;--accent-soft:rgba(0,87,108,.27);--red:#ff7d72;--amber:#f2c466;--sun:#ffd043;--rain:#2ed8e9;--snow:#cfe8f6;--panel:rgba(2,33,49,.70);--panel-strong:#123444;--border:rgba(126,210,231,.16);--focus:#3bebed;--warning-ink:#172c38;--bg:#082938;--overlay:rgba(1,21,37,.10);color-scheme:dark}
 
 *{box-sizing:border-box}
 html{min-width:320px;min-height:100%;background:var(--bg)}
@@ -19,8 +19,7 @@ button[hidden],[hidden]{display:none!important}
 b,strong,h1,h2,h3{font-weight:700}
 h1,h2,h3,p{margin:0}
 .icon{width:24px;height:24px;display:inline-block;vertical-align:middle;flex:none;overflow:visible}
-.landscape{position:absolute;inset:0;min-height:100%;z-index:-1;background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-light.webp');background-size:100% auto;background-repeat:no-repeat;background-color:var(--bg);background-position:center top;mask-image:linear-gradient(#000 0%,#000 87%,transparent 100%)}
-:root[data-theme=dark] .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/desktop-dark.webp')}
+
 body{position:relative;isolation:isolate}
 .shell{width:min(1280px,calc(100% - 112px));margin:auto;padding:44px 0 76px}
 .header{display:flex;justify-content:space-between;align-items:flex-start;min-height:96px}
@@ -171,8 +170,7 @@ dialog::backdrop{background:rgba(2,18,30,.62);backdrop-filter:blur(3px)}
 }
 
 @media(max-width:767px){body{font-size:14px}
-.landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-light.webp');background-size:100% auto;mask-image:linear-gradient(#000 0%,#000 87%,transparent 100%)}
-:root[data-theme=dark] .landscape{background-image:linear-gradient(var(--overlay),var(--overlay)),url('/new-design/backgrounds/mobile-dark.webp')}
+
 .shell{width:calc(100% - 28px);padding:22px 0 36px}
 .header{min-height:83px}
 .brand{width:66px}
@@ -274,9 +272,7 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:22px 22px 0 0;pad
 .nav-button{--sun:currentColor}
 .hour-card .wind-line .icon{display:inline-block}
 
-.landscape{background-size:auto 1400px;background-position:center top;mask-image:none}
-
-@media(max-width:767px){.landscape{background-size:auto 1550px}
+@media(max-width:767px){
 .header{min-height:70px}
 .hero{position:relative;min-height:132px;margin:8px 0 12px;gap:0}
 .summary-weather{position:absolute;left:0;top:48px}
@@ -304,10 +300,6 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:22px 22px 0 0;pad
 
 .component-example:has(.account-menu){min-height:210px}
 .component-example .account-menu{position:absolute;top:54px;left:0}
-
-.landscape:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,transparent 0,transparent 260px,rgba(236,247,250,.18) 360px,rgba(236,247,250,.24) 800px,rgba(236,247,250,.12) 1300px)}
-
-:root[data-theme=dark] .landscape:after{background:linear-gradient(to bottom,transparent 0,transparent 260px,rgba(2,29,45,.06) 380px,rgba(2,29,45,.15) 850px,rgba(2,29,45,.08) 1400px)}
 
 @media(max-width:359px){.hour-card .details-trigger{font-size:11px}
 .wind-line{font-size:11px}
