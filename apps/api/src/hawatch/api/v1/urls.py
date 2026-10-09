@@ -1,5 +1,5 @@
 from django.urls import path
-from .week_views import week_forecast
+from .week_views import week_forecast, week_visit
 from .share_views import create_share
 
 from hawatch.api.v1 import views
@@ -8,6 +8,8 @@ from hawatch.modules.accounts import api as account_api
 
 urlpatterns = [
     path("shares/", create_share),
+    path("points/<slug:slug>/forecast/visit/", week_visit, {"kind": "point"}),
+    path("routes/<slug:slug>/forecast/visit/", week_visit, {"kind": "route"}),
     path("points/<slug:slug>/forecast/week/", week_forecast, {"kind": "point"}),
     path("routes/<slug:slug>/forecast/week/", week_forecast, {"kind": "route"}),
     path("metrics/", views.metrics_view),

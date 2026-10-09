@@ -56,7 +56,7 @@ function mount(path = "/", strict = false) {
 }
 function weatherCalls() {
   return fetchMock.mock.calls.filter(([url]) =>
-    String(url).includes("/forecast/"),
+    String(url).includes("/forecast/") && !String(url).endsWith("/forecast/visit/"),
   );
 }
 function account() {
@@ -151,6 +151,7 @@ function defaultFetch(input: RequestInfo) {
     authenticated = false;
     return response({ authenticated: false });
   }
+  if (url.pathname.endsWith("/forecast/visit/")) return response({});
   if (url.pathname.endsWith("/forecast/week/")) {
     if (error) return response({},error);
     return response(weekFixture(url.pathname.includes("/routes/")?"route":"point",day,{pending,stale}));
@@ -232,6 +233,16 @@ describe("approved week forecast and unchanged public pages", () => {
       await waitFor(()=>expect(document.getElementById('forecast-v4')).not.toBeNull());expect(weatherCalls()).toHaveLength(2);
     });
   }
+  it('records page entry once and never renews it on day selection or weather refresh',async()=>{
+    mount('/points/tochal');
+    await screen.findByRole('heading',{name:'آب‌وهوای قلهٔ توچال'});
+    const visits=()=>fetchMock.mock.calls.filter(([url])=>String(url).endsWith('/forecast/visit/'));
+    expect(visits()).toHaveLength(1);
+    expect(visits()[0][1]).toMatchObject({method:'POST',credentials:'omit'});
+    fireEvent(window,new Event('focus'));
+    await new Promise(resolve=>setTimeout(resolve,20));
+    expect(visits()).toHaveLength(1);
+  });
   it('deduplicates the week request in StrictMode',async()=>{mount('/points/tochal',true);await screen.findByRole('heading',{name:'آب‌وهوای قلهٔ توچال'});expect(weatherCalls()).toHaveLength(1);expect(String(weatherCalls()[0][0])).toMatch(/forecast\/week\/$/);});
   it('expands one day through six, three and one hour and opens details without fetching',async()=>{
     mount('/points/tochal');await screen.findByRole('heading',{name:'آب‌وهوای قلهٔ توچال'});

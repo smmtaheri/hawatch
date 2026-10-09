@@ -43,6 +43,10 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  usePageTitle(dataSubject?.name||dataSubject?.title,{robots:dataSubject?.seo_indexable===false?'noindex,follow':undefined,title:(dataSubject as any)?.seo_title,description:(dataSubject as any)?.seo_description});
  useLayoutEffect(()=>{document.body.classList.add('forecast-page');if(kind==='route')document.body.classList.add('route-page');return()=>{document.body.classList.remove('forecast-page','route-page');};},[kind]);
  useEffect(()=>{
+  // Page entry only: weather polling/focus/selection never renews the 48h lease.
+  void fetch(`/api/v1/${kind==='point'?'points':'routes'}/${encodeURIComponent(slug)}/forecast/visit/`,{method:'POST',credentials:'omit'}).catch(()=>{});
+ },[kind,slug]);
+ useEffect(()=>{
   let active=true,timer:number;setData(null);setError('');setMissing(false);
   async function load(){if(document.hidden){window.clearTimeout(timer);timer=window.setTimeout(load,120000);return;}try{const d=await loadWeek(kind,slug);if(active){setData(d);setError('');window.clearTimeout(timer);const midnight=Date.parse(`${d.range_start}T00:00:00+03:30`)+86400000;timer=window.setTimeout(load,Math.max(1000,Math.min(d.cache_max_age_seconds*1000,midnight-Date.now())));}}catch(e){if(active){setError(e instanceof Error?e.message:'دریافت پیش‌بینی ممکن نشد');setMissing((e as {status?:number}).status===404);}}}
   void load();const focus=()=>{void load();};window.addEventListener('focus',focus);const visible=()=>{if(!document.hidden)void load();};document.addEventListener('visibilitychange',visible);

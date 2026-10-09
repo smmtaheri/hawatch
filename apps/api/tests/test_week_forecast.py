@@ -34,7 +34,8 @@ def test_public_week_is_shared_without_account_queries_or_cookies(week_seed):
     assert len(body['days'])==8 and body['range_end']==(week_seed+timedelta(days=7)).isoformat()
     assert body['intervals']['24'][0][0]['complete']
     assert body['intervals']['24'][0][0]['condition']
-    assert 'public' in first['Cache-Control'] and 's-maxage=' in first['Cache-Control']
+    assert 'private' in first['Cache-Control'] and 's-maxage=' not in first['Cache-Control']
+    assert first['CDN-Cache-Control']=='no-store'
     assert 'Cookie' not in first['Vary'] and not first.cookies
     assert not any('accounts_' in q['sql'] or 'auth_' in q['sql'] for q in queries)
     with CaptureQueriesContext(connection) as warm_queries:

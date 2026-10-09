@@ -174,3 +174,13 @@ class SharedRoutePlan(models.Model):
     speed = models.CharField(max_length=8)
     created_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(db_index=True)
+
+
+class WeekCacheInterest(models.Model):
+    """Public page identity only; no user/IP information or forecast records."""
+    kind = models.CharField(max_length=5, choices=[("point", "point"), ("route", "route")])
+    slug = models.SlugField(max_length=80)
+    expires_at = models.DateTimeField(db_index=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["kind", "slug"], name="unique_week_cache_interest")]

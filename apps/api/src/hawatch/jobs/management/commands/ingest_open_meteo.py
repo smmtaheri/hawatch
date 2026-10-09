@@ -77,4 +77,4 @@ class Command(BaseCommand):
 
         if snapshot.status in ("success", "partial"):
             from django.core.management import call_command
-            call_command("warm_week_cache", limit=20)
+            call_command("warm_week_cache")
