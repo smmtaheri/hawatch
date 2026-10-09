@@ -1,0 +1,68 @@
+{
+  "catalog_version": "hawatch-hoz-soltan-catalog-v1",
+  "primary_point": "hoz-soltan",
+  "weather_points": {
+    "hoz-soltan": {
+      "name": "دریاچهٔ حوض سلطان",
+      "page_name": "دریاچهٔ حوض سلطان",
+      "short_label": "حوض سلطان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "حوض سلطان",
+        "حوض سلطان قم",
+        "دریاچه حوض سلطان",
+        "دریاچهٔ حوض سلطان قم",
+        "دریاچه شاهی",
+        "Hoz-e Soltan Lake",
+        "Howz-e Soltan"
+      ],
+      "identity_summary": "دریاچهٔ نمکی فصلی حوض سلطان در شمال استان قم، کنار بزرگراه تهران–قم؛ جدا از دریاچهٔ نمک قم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/hoz-e-soltan-salt-lake",
+        "https://mapcarta.com/13148150",
+        "https://fa.tripyar.com/iran/%D9%82%D9%85/%D9%82%D9%85/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%B3%D8%AF-%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%D8%AF%D8%B1%DB%8C%D8%A7/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%D8%AD%D9%88%D8%B6-%D8%B3%D9%84%D8%B7%D8%A7%D9%86.html"
+      ],
+      "latitude": 35.00328,
+      "longitude": 50.93649,
+      "elevation_m": 798,
+      "status": "provisional",
+      "elevation_source": "مختصات نقطهٔ نماینده از Mapcarta؛ Open-Meteo GLO-90 در همین مختصات ۷۹۸ متر، اختلاف صفر متر با مقدار ثبت‌شده، نزدیک‌ترین grid در فاصلهٔ ۱٫۲۸۹ کیلومتر و ۲۴ ساعت دادهٔ معتبر (بررسی ۲۰۲۶-۱۰-۰۹).",
+      "climate": "lake_valley",
+      "region": "شمال قم · استان قم"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "hoz-soltan",
+    "tile_name": "دریاچهٔ حوض سلطان",
+    "name": "دریاچهٔ حوض سلطان",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های قم",
+    "category_key": "lake",
+    "region": "شمال قم · استان قم",
+    "elevation_m": 798,
+    "latitude": 35.00328,
+    "longitude": 50.93649,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ نمکی فصلی دریاچهٔ حوض سلطان در شمال استان قم",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "حوض سلطان",
+      "حوض سلطان قم",
+      "دریاچه حوض سلطان",
+      "دریاچهٔ حوض سلطان قم",
+      "دریاچه شاهی",
+      "Hoz-e Soltan Lake",
+      "Howz-e Soltan"
+    ]
+  }
+}
