@@ -18,3 +18,7 @@ node_modules/
 htmlcov/
 .idea/
 .vscode/
+
+# Design references and handoff docs are not runtime or build inputs.
+design/
+docs/

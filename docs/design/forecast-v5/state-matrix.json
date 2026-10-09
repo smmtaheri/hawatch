@@ -1,0 +1,3854 @@
+[
+  {
+    "id": "export-short-default-desktop-light",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "export/short-light.png",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=export&route=short",
+    "viewport": {
+      "width": 1200,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 1200,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "export-short-default-desktop-dark",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "export/short-dark.png",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=export&route=short",
+    "viewport": {
+      "width": 1200,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 1200,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "export-long-default-desktop-light",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "export/long-light.png",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=default&sample=export&route=long",
+    "viewport": {
+      "width": 1536,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 1536,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "export-long-default-desktop-dark",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "export/long-dark.png",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=default&sample=export&route=long",
+    "viewport": {
+      "width": 1536,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 1536,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "export-extreme-default-desktop-light",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": "extreme",
+    "file": "export/extreme-light.png",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=export&route=extreme",
+    "viewport": {
+      "width": 2944,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 3072,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "export-extreme-default-desktop-dark",
+    "page": "export",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "extreme",
+    "file": "export/extreme-dark.png",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=export&route=extreme",
+    "viewport": {
+      "width": 2944,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "png",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2,
+    "logical_export_width": 3072,
+    "capture_note": "viewport/dpr describe the browser session; PNG is generated independently by makeImage at raster_dpr=2"
+  },
+  {
+    "id": "destination-short-default-desktop-light",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/default-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-default-desktop-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/default-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-default-mobile-light",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/default-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-default-mobile-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/default-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-daily-experts-desktop-light",
+    "page": "destination",
+    "state": "daily-experts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/daily-experts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=daily-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-daily-experts-desktop-dark",
+    "page": "destination",
+    "state": "daily-experts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/daily-experts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=daily-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-daily-experts-mobile-light",
+    "page": "destination",
+    "state": "daily-experts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/daily-experts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=daily-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-daily-experts-mobile-dark",
+    "page": "destination",
+    "state": "daily-experts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/daily-experts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=daily-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-6h-desktop-light",
+    "page": "destination",
+    "state": "6h",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/6h-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=6h&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-6h-desktop-dark",
+    "page": "destination",
+    "state": "6h",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/6h-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=6h&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-6h-mobile-light",
+    "page": "destination",
+    "state": "6h",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/6h-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=6h&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-6h-mobile-dark",
+    "page": "destination",
+    "state": "6h",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/6h-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=6h&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-6h-experts-desktop-light",
+    "page": "destination",
+    "state": "6h-experts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/6h-experts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=6h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-6h-experts-desktop-dark",
+    "page": "destination",
+    "state": "6h-experts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/6h-experts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=6h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-6h-experts-mobile-light",
+    "page": "destination",
+    "state": "6h-experts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/6h-experts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=6h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-6h-experts-mobile-dark",
+    "page": "destination",
+    "state": "6h-experts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/6h-experts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=6h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-3h-experts-desktop-light",
+    "page": "destination",
+    "state": "3h-experts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/3h-experts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=3h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-3h-experts-desktop-dark",
+    "page": "destination",
+    "state": "3h-experts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/3h-experts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=3h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-3h-experts-mobile-light",
+    "page": "destination",
+    "state": "3h-experts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/3h-experts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=3h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-3h-experts-mobile-dark",
+    "page": "destination",
+    "state": "3h-experts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/3h-experts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=3h-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-hourly-experts-desktop-light",
+    "page": "destination",
+    "state": "hourly-experts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/hourly-experts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=hourly-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-hourly-experts-desktop-dark",
+    "page": "destination",
+    "state": "hourly-experts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/hourly-experts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=hourly-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-hourly-experts-mobile-light",
+    "page": "destination",
+    "state": "hourly-experts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/hourly-experts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=hourly-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-hourly-experts-mobile-dark",
+    "page": "destination",
+    "state": "hourly-experts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/hourly-experts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=hourly-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-mixed-experts-desktop-light",
+    "page": "destination",
+    "state": "mixed-experts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/mixed-experts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=mixed-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-mixed-experts-desktop-dark",
+    "page": "destination",
+    "state": "mixed-experts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/mixed-experts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=mixed-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-mixed-experts-mobile-light",
+    "page": "destination",
+    "state": "mixed-experts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/mixed-experts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=mixed-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-mixed-experts-mobile-dark",
+    "page": "destination",
+    "state": "mixed-experts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/mixed-experts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=mixed-experts&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-gaps-desktop-light",
+    "page": "destination",
+    "state": "gaps",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/gaps-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=gaps&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-gaps-desktop-dark",
+    "page": "destination",
+    "state": "gaps",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/gaps-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=gaps&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-gaps-mobile-light",
+    "page": "destination",
+    "state": "gaps",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/gaps-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=gaps&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-gaps-mobile-dark",
+    "page": "destination",
+    "state": "gaps",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/gaps-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=gaps&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-unsupported-desktop-light",
+    "page": "destination",
+    "state": "unsupported",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/unsupported-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=unsupported&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-unsupported-desktop-dark",
+    "page": "destination",
+    "state": "unsupported",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/unsupported-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=unsupported&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-unsupported-mobile-light",
+    "page": "destination",
+    "state": "unsupported",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/unsupported-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=unsupported&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-unsupported-mobile-dark",
+    "page": "destination",
+    "state": "unsupported",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/unsupported-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=unsupported&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-loading-desktop-light",
+    "page": "destination",
+    "state": "loading",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/loading-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=loading&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-loading-desktop-dark",
+    "page": "destination",
+    "state": "loading",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/loading-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=loading&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-loading-mobile-light",
+    "page": "destination",
+    "state": "loading",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/loading-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=loading&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-loading-mobile-dark",
+    "page": "destination",
+    "state": "loading",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/loading-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=loading&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-error-desktop-light",
+    "page": "destination",
+    "state": "error",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/error-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=error&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-error-desktop-dark",
+    "page": "destination",
+    "state": "error",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/error-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=error&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-error-mobile-light",
+    "page": "destination",
+    "state": "error",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/error-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=error&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-error-mobile-dark",
+    "page": "destination",
+    "state": "error",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/error-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=error&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-no-data-desktop-light",
+    "page": "destination",
+    "state": "no-data",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/no-data-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=no-data&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-no-data-desktop-dark",
+    "page": "destination",
+    "state": "no-data",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/no-data-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=no-data&sample=destination&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-short-no-data-mobile-light",
+    "page": "destination",
+    "state": "no-data",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/no-data-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=no-data&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-short-no-data-mobile-dark",
+    "page": "destination",
+    "state": "no-data",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/no-data-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=no-data&sample=destination&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-default-desktop-light",
+    "page": "route",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-default-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-default-desktop-dark",
+    "page": "route",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-default-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-default-mobile-light",
+    "page": "route",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-default-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-default-mobile-dark",
+    "page": "route",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-default-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-gear-open-desktop-light",
+    "page": "route",
+    "state": "gear-open",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-gear-open-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=gear-open&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-gear-open-desktop-dark",
+    "page": "route",
+    "state": "gear-open",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-gear-open-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=gear-open&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-gear-open-mobile-light",
+    "page": "route",
+    "state": "gear-open",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-gear-open-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=gear-open&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-gear-open-mobile-dark",
+    "page": "route",
+    "state": "gear-open",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-gear-open-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=gear-open&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-default-desktop-light",
+    "page": "route",
+    "state": "long-default",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-default-desktop-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-default&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-default-desktop-dark",
+    "page": "route",
+    "state": "long-default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-default-desktop-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-default&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-default-mobile-light",
+    "page": "route",
+    "state": "long-default",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-default-mobile-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-default&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-default-mobile-dark",
+    "page": "route",
+    "state": "long-default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-default-mobile-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-default&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-open-desktop-light",
+    "page": "route",
+    "state": "long-open",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-open-desktop-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-open&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-open-desktop-dark",
+    "page": "route",
+    "state": "long-open",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-open-desktop-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-open&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-open-mobile-light",
+    "page": "route",
+    "state": "long-open",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-open-mobile-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-open&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-open-mobile-dark",
+    "page": "route",
+    "state": "long-open",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-open-mobile-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-open&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-end-desktop-light",
+    "page": "route",
+    "state": "long-end",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-end-desktop-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-end&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-end-desktop-dark",
+    "page": "route",
+    "state": "long-end",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-end-desktop-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-end&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-long-end-mobile-light",
+    "page": "route",
+    "state": "long-end",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/route/long-long-end-mobile-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=long-end&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-long-end-mobile-dark",
+    "page": "route",
+    "state": "long-end",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/route/long-long-end-mobile-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=long-end&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-start-open-desktop-light",
+    "page": "route",
+    "state": "start-open",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-start-open-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=start-open&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-start-open-desktop-dark",
+    "page": "route",
+    "state": "start-open",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-start-open-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=start-open&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-start-open-mobile-light",
+    "page": "route",
+    "state": "start-open",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-start-open-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=start-open&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-start-open-mobile-dark",
+    "page": "route",
+    "state": "start-open",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-start-open-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=start-open&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-speed-slow-desktop-light",
+    "page": "route",
+    "state": "speed-slow",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-speed-slow-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=speed-slow&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-speed-slow-desktop-dark",
+    "page": "route",
+    "state": "speed-slow",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-speed-slow-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=speed-slow&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-speed-slow-mobile-light",
+    "page": "route",
+    "state": "speed-slow",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-speed-slow-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=speed-slow&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-speed-slow-mobile-dark",
+    "page": "route",
+    "state": "speed-slow",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-speed-slow-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=speed-slow&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-speed-fast-desktop-light",
+    "page": "route",
+    "state": "speed-fast",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-speed-fast-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=speed-fast&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-speed-fast-desktop-dark",
+    "page": "route",
+    "state": "speed-fast",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-speed-fast-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=speed-fast&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-speed-fast-mobile-light",
+    "page": "route",
+    "state": "speed-fast",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-speed-fast-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=speed-fast&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-speed-fast-mobile-dark",
+    "page": "route",
+    "state": "speed-fast",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-speed-fast-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=speed-fast&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-gaps-desktop-light",
+    "page": "route",
+    "state": "gaps",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-gaps-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=gaps&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-gaps-desktop-dark",
+    "page": "route",
+    "state": "gaps",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-gaps-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=gaps&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-gaps-mobile-light",
+    "page": "route",
+    "state": "gaps",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-gaps-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=gaps&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-gaps-mobile-dark",
+    "page": "route",
+    "state": "gaps",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-gaps-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=gaps&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-loading-desktop-light",
+    "page": "route",
+    "state": "loading",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-loading-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=loading&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-loading-desktop-dark",
+    "page": "route",
+    "state": "loading",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-loading-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=loading&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-loading-mobile-light",
+    "page": "route",
+    "state": "loading",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-loading-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=loading&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-loading-mobile-dark",
+    "page": "route",
+    "state": "loading",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-loading-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=loading&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-error-desktop-light",
+    "page": "route",
+    "state": "error",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-error-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=error&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-error-desktop-dark",
+    "page": "route",
+    "state": "error",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-error-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=error&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-error-mobile-light",
+    "page": "route",
+    "state": "error",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-error-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=error&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-error-mobile-dark",
+    "page": "route",
+    "state": "error",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-error-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=error&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-no-data-desktop-light",
+    "page": "route",
+    "state": "no-data",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-no-data-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=no-data&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-no-data-desktop-dark",
+    "page": "route",
+    "state": "no-data",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-no-data-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=no-data&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-no-data-mobile-light",
+    "page": "route",
+    "state": "no-data",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/short-no-data-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=no-data&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-no-data-mobile-dark",
+    "page": "route",
+    "state": "no-data",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/short-no-data-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=no-data&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-charts-desktop-light",
+    "page": "components",
+    "state": "charts",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/charts-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=charts&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-charts-desktop-dark",
+    "page": "components",
+    "state": "charts",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/charts-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=charts&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-charts-mobile-light",
+    "page": "components",
+    "state": "charts",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/charts-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=charts&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-charts-mobile-dark",
+    "page": "components",
+    "state": "charts",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/charts-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=charts&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-status-desktop-light",
+    "page": "components",
+    "state": "status",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/status-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=status&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-status-desktop-dark",
+    "page": "components",
+    "state": "status",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/status-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=status&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-status-mobile-light",
+    "page": "components",
+    "state": "status",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/status-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=status&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-status-mobile-dark",
+    "page": "components",
+    "state": "status",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/status-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=status&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-gear-desktop-light",
+    "page": "components",
+    "state": "gear",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/gear-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=gear&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-gear-desktop-dark",
+    "page": "components",
+    "state": "gear",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/gear-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=gear&sample=components&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "components-short-gear-mobile-light",
+    "page": "components",
+    "state": "gear",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/components/gear-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=gear&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "components-short-gear-mobile-dark",
+    "page": "components",
+    "state": "gear",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/components/gear-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=gear&sample=components&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "catalog-short-default-desktop-light",
+    "page": "catalog",
+    "state": "default",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/catalog/default-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=catalog&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "catalog-short-default-desktop-dark",
+    "page": "catalog",
+    "state": "default",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/catalog/default-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=catalog&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "catalog-short-default-mobile-light",
+    "page": "catalog",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/catalog/default-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=catalog&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "catalog-short-default-mobile-dark",
+    "page": "catalog",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/catalog/default-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=catalog&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-ready-desktop-light",
+    "page": "route",
+    "state": "share-ready",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-ready-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-ready&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-ready-desktop-dark",
+    "page": "route",
+    "state": "share-ready",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-ready-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-ready&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-ready-mobile-light",
+    "page": "route",
+    "state": "share-ready",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-ready-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-ready&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-ready-mobile-dark",
+    "page": "route",
+    "state": "share-ready",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-ready-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-ready&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-share-ready-desktop-light",
+    "page": "route",
+    "state": "share-ready",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/share/long-share-ready-desktop-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=share-ready&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-share-ready-desktop-dark",
+    "page": "route",
+    "state": "share-ready",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/share/long-share-ready-desktop-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=share-ready&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-share-ready-mobile-light",
+    "page": "route",
+    "state": "share-ready",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/share/long-share-ready-mobile-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=share-ready&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-share-ready-mobile-dark",
+    "page": "route",
+    "state": "share-ready",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/share/long-share-ready-mobile-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=share-ready&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-generating-desktop-light",
+    "page": "route",
+    "state": "share-generating",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-generating-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-generating&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-generating-desktop-dark",
+    "page": "route",
+    "state": "share-generating",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-generating-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-generating&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-generating-mobile-light",
+    "page": "route",
+    "state": "share-generating",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-generating-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-generating&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-generating-mobile-dark",
+    "page": "route",
+    "state": "share-generating",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-generating-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-generating&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-error-desktop-light",
+    "page": "route",
+    "state": "share-error",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-error-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-error&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-error-desktop-dark",
+    "page": "route",
+    "state": "share-error",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-error-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-error&sample=route&route=short",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-short-share-error-mobile-light",
+    "page": "route",
+    "state": "share-error",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-error-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-error&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-error-mobile-dark",
+    "page": "route",
+    "state": "share-error",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-error-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-error&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-unavailable-mobile-light",
+    "page": "route",
+    "state": "share-unavailable",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/share/short-share-unavailable-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=share-unavailable&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-short-share-unavailable-mobile-dark",
+    "page": "route",
+    "state": "share-unavailable",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/share/short-share-unavailable-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=share-unavailable&sample=route&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-share-ready-zoom-desktop-light",
+    "page": "route",
+    "state": "share-ready-zoom",
+    "device": "desktop",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/share/long-share-ready-zoom-desktop-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=share-ready-zoom&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": true,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-share-ready-zoom-desktop-dark",
+    "page": "route",
+    "state": "share-ready-zoom",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/share/long-share-ready-zoom-desktop-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=share-ready-zoom&sample=route&route=long",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": true,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-long-share-ready-zoom-mobile-light",
+    "page": "route",
+    "state": "share-ready-zoom",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "screens/share/long-share-ready-zoom-mobile-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=share-ready-zoom&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": true,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-long-share-ready-zoom-mobile-dark",
+    "page": "route",
+    "state": "share-ready-zoom",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "screens/share/long-share-ready-zoom-mobile-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=share-ready-zoom&sample=route&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": true,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "telegram-short-default-mobile-light",
+    "page": "telegram",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "telegram/short-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=telegram&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "telegram-short-default-mobile-dark",
+    "page": "telegram",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "telegram/short-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=telegram&route=short",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "telegram-long-default-mobile-light",
+    "page": "telegram",
+    "state": "default",
+    "device": "mobile",
+    "theme": "light",
+    "route": "long",
+    "file": "telegram/long-light.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=light&handoff=default&sample=telegram&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "telegram-long-default-mobile-dark",
+    "page": "telegram",
+    "state": "default",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "long",
+    "file": "telegram/long-dark.jpg",
+    "url": "/routes/tochal-kolakchal/?theme=dark&handoff=default&sample=telegram&route=long",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "integration specimen using deployed components",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-mobile-320-light",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile-320",
+    "theme": "light",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-mobile-320-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination",
+    "viewport": {
+      "width": 320,
+      "height": 780
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-mobile-320-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile-320",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-mobile-320-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination",
+    "viewport": {
+      "width": 320,
+      "height": 780
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-mobile-430-light",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile-430",
+    "theme": "light",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-mobile-430-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-mobile-430-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "mobile-430",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-mobile-430-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-tablet-768-light",
+    "page": "destination",
+    "state": "default",
+    "device": "tablet-768",
+    "theme": "light",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-tablet-768-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-tablet-768-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "tablet-768",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-tablet-768-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-desktop-1024-light",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop-1024",
+    "theme": "light",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-desktop-1024-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-desktop-1024-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop-1024",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-desktop-1024-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-desktop-1920-light",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop-1920",
+    "theme": "light",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-desktop-1920-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=default&sample=destination",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-responsive-desktop-1920-dark",
+    "page": "destination",
+    "state": "default",
+    "device": "desktop-1920",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/responsive/destination-responsive-desktop-1920-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=default&sample=destination",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-mobile-320-light",
+    "page": "route",
+    "state": "default",
+    "device": "mobile-320",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-mobile-320-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route",
+    "viewport": {
+      "width": 320,
+      "height": 780
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-mobile-320-dark",
+    "page": "route",
+    "state": "default",
+    "device": "mobile-320",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-mobile-320-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route",
+    "viewport": {
+      "width": 320,
+      "height": 780
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-mobile-430-light",
+    "page": "route",
+    "state": "default",
+    "device": "mobile-430",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-mobile-430-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-mobile-430-dark",
+    "page": "route",
+    "state": "default",
+    "device": "mobile-430",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-mobile-430-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-tablet-768-light",
+    "page": "route",
+    "state": "default",
+    "device": "tablet-768",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-tablet-768-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-tablet-768-dark",
+    "page": "route",
+    "state": "default",
+    "device": "tablet-768",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-tablet-768-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-desktop-1024-light",
+    "page": "route",
+    "state": "default",
+    "device": "desktop-1024",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-desktop-1024-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-desktop-1024-dark",
+    "page": "route",
+    "state": "default",
+    "device": "desktop-1024",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-desktop-1024-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-desktop-1920-light",
+    "page": "route",
+    "state": "default",
+    "device": "desktop-1920",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-desktop-1920-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=default&sample=route",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-responsive-desktop-1920-dark",
+    "page": "route",
+    "state": "default",
+    "device": "desktop-1920",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/responsive/route-responsive-desktop-1920-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=default&sample=route",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-scrolled-end-desktop-light",
+    "page": "destination",
+    "state": "scrolled-end",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/scrolled-end-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=scrolled-end&sample=destination",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-scrolled-end-desktop-dark",
+    "page": "destination",
+    "state": "scrolled-end",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/scrolled-end-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=scrolled-end&sample=destination",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-scrolled-end-mobile-light",
+    "page": "destination",
+    "state": "scrolled-end",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/scrolled-end-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=scrolled-end&sample=destination",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-scrolled-end-mobile-dark",
+    "page": "destination",
+    "state": "scrolled-end",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/scrolled-end-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=scrolled-end&sample=destination",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-scrolled-end-desktop-light",
+    "page": "route",
+    "state": "scrolled-end",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/scrolled-end-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=scrolled-end&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-scrolled-end-desktop-dark",
+    "page": "route",
+    "state": "scrolled-end",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/scrolled-end-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=scrolled-end&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-scrolled-end-mobile-light",
+    "page": "route",
+    "state": "scrolled-end",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/scrolled-end-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=scrolled-end&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-scrolled-end-mobile-dark",
+    "page": "route",
+    "state": "scrolled-end",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/scrolled-end-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=scrolled-end&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-red-warning-desktop-light",
+    "page": "destination",
+    "state": "red-warning",
+    "device": "desktop",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/red-warning-desktop-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=red-warning&sample=destination",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-red-warning-desktop-dark",
+    "page": "destination",
+    "state": "red-warning",
+    "device": "desktop",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/red-warning-desktop-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=red-warning&sample=destination",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "destination-red-warning-mobile-light",
+    "page": "destination",
+    "state": "red-warning",
+    "device": "mobile",
+    "theme": "light",
+    "route": null,
+    "file": "screens/destination/red-warning-mobile-light.jpg",
+    "url": "/points/tochal/?theme=light&handoff=red-warning&sample=destination",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "destination-red-warning-mobile-dark",
+    "page": "destination",
+    "state": "red-warning",
+    "device": "mobile",
+    "theme": "dark",
+    "route": null,
+    "file": "screens/destination/red-warning-mobile-dark.jpg",
+    "url": "/points/tochal/?theme=dark&handoff=red-warning&sample=destination",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-red-warning-desktop-light",
+    "page": "route",
+    "state": "red-warning",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/red-warning-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=red-warning&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-red-warning-desktop-dark",
+    "page": "route",
+    "state": "red-warning",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/red-warning-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=red-warning&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-red-warning-mobile-light",
+    "page": "route",
+    "state": "red-warning",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/red-warning-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=red-warning&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-red-warning-mobile-dark",
+    "page": "route",
+    "state": "red-warning",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/red-warning-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=red-warning&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-midnight-desktop-light",
+    "page": "route",
+    "state": "midnight",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/midnight-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=midnight&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-midnight-desktop-dark",
+    "page": "route",
+    "state": "midnight",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/midnight-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=midnight&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-midnight-mobile-light",
+    "page": "route",
+    "state": "midnight",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/midnight-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=midnight&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-midnight-mobile-dark",
+    "page": "route",
+    "state": "midnight",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/midnight-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=midnight&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-last-day-desktop-light",
+    "page": "route",
+    "state": "last-day",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/last-day-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=last-day&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-last-day-desktop-dark",
+    "page": "route",
+    "state": "last-day",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/last-day-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=last-day&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-last-day-mobile-light",
+    "page": "route",
+    "state": "last-day",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/last-day-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=last-day&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-last-day-mobile-dark",
+    "page": "route",
+    "state": "last-day",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/last-day-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=last-day&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": true,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-change-route-desktop-light",
+    "page": "route",
+    "state": "change-route",
+    "device": "desktop",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/change-route-desktop-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=change-route&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-change-route-desktop-dark",
+    "page": "route",
+    "state": "change-route",
+    "device": "desktop",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/change-route-desktop-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=change-route&sample=route",
+    "viewport": {
+      "width": 1440,
+      "height": 1040
+    },
+    "dpr": 1,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 1
+  },
+  {
+    "id": "route-change-route-mobile-light",
+    "page": "route",
+    "state": "change-route",
+    "device": "mobile",
+    "theme": "light",
+    "route": "short",
+    "file": "screens/route/change-route-mobile-light.jpg",
+    "url": "/routes/tochal-darband/?theme=light&handoff=change-route&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  },
+  {
+    "id": "route-change-route-mobile-dark",
+    "page": "route",
+    "state": "change-route",
+    "device": "mobile",
+    "theme": "dark",
+    "route": "short",
+    "file": "screens/route/change-route-mobile-dark.jpg",
+    "url": "/routes/tochal-darband/?theme=dark&handoff=change-route&sample=route",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dpr": 2,
+    "format": "jpg",
+    "fullPage": false,
+    "zoom": false,
+    "provenance": "exact deployed source",
+    "raster_dpr": 2
+  }
+]

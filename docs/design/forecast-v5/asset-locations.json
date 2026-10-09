@@ -1,0 +1,2904 @@
+{
+  "source_package": "Hawatch-Final-Frontend-v5/Hawatch-frontend-final-v5",
+  "policy": "Original visual files preserved byte-for-byte; identical files reuse existing repo assets. Reference-only assets are outside the web build.",
+  "assets": [
+    {
+      "source": "assets/backgrounds/desktop-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/desktop-dark.webp",
+      "sha256": "e67deb37838b291dbe21b91c6e53330da74bdeeec2332f0d5ab40aa596138a56",
+      "bytes": 67594
+    },
+    {
+      "source": "assets/backgrounds/desktop-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/desktop-light.webp",
+      "sha256": "03d569146a48c0adf01d03206ad4f90d612412b70c95ba8e3773109c52ad6a21",
+      "bytes": 85362
+    },
+    {
+      "source": "assets/backgrounds/mobile-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/mobile-dark.webp",
+      "sha256": "83d6b775316c974e8b2a47ed7ce039b310038d8d560801a3202877896bdb0d73",
+      "bytes": 80790
+    },
+    {
+      "source": "assets/backgrounds/mobile-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/mobile-light.webp",
+      "sha256": "5aa579e6c5750a35effd6c28fdcd6448a5fb444302e044ff8111fb7904618185",
+      "bytes": 105760
+    },
+    {
+      "source": "assets/backgrounds/route-desktop-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "bytes": 106428
+    },
+    {
+      "source": "assets/backgrounds/route-desktop-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "bytes": 155454
+    },
+    {
+      "source": "assets/backgrounds/route-mobile-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-mobile-dark.webp",
+      "sha256": "f91fc31611f3c1a1d3f31c08f21463a21709e775a18649b0b5a11c1c778e6836",
+      "bytes": 138850
+    },
+    {
+      "source": "assets/backgrounds/route-mobile-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-mobile-light.webp",
+      "sha256": "be6412bc8b0c98639b2ce155962199eb8f31addbfc33093dd4af0915c904eaea",
+      "bytes": 192416
+    },
+    {
+      "source": "assets/brand-mark.svg",
+      "target": "apps/web/public/new-design/brand-mark.svg",
+      "sha256": "0329f64530069a9e8d72b6da78062c594f8c82879d116dfd9f66bc4fa8066401",
+      "bytes": 272
+    },
+    {
+      "source": "assets/fonts/Vazirmatn-Bold.ttf",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Bold.ttf",
+      "sha256": "af106c1c336d4ea3ea6e995c02a64c5f87f6e4fb361e1c2b2b592ccf253a3062",
+      "bytes": 123036
+    },
+    {
+      "source": "assets/fonts/Vazirmatn-Bold.woff2",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Bold.woff2",
+      "sha256": "836fae7d42d83faa249bc00e0099592be98a1fa260d22d82f269b6091e585627",
+      "bytes": 51020
+    },
+    {
+      "source": "assets/fonts/Vazirmatn-Regular.ttf",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Regular.ttf",
+      "sha256": "087dcd4ccc542927c8f41bdfb052245fc291b59ef0571d006637dc74faeec800",
+      "bytes": 122752
+    },
+    {
+      "source": "assets/fonts/Vazirmatn-Regular.woff2",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Regular.woff2",
+      "sha256": "e382101336c6eb32cfb31381c027d02d2e0354bad08f6a395d4088beb3db3d91",
+      "bytes": 50684
+    },
+    {
+      "source": "assets/icons/brand/hawatch.svg",
+      "target": "design/assets/forecast-v5/assets/icons/brand/hawatch.svg",
+      "sha256": "1d4093411aba26b3b35acc8f43d624ff5b5976f0b6f14c0962a026c2d0e18290",
+      "bytes": 273
+    },
+    {
+      "source": "assets/icons/equipment/backpack.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/backpack.svg",
+      "sha256": "210ae6585c7791f088d1af5591aa6daebb191fe029cbf71fcbcd8295c1623597",
+      "bytes": 245
+    },
+    {
+      "source": "assets/icons/equipment/base-layer.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/base-layer.svg",
+      "sha256": "b576891926a9647f3a33de40abdeb4fa0f50c6fcad768a4d5465ac31ea83a626",
+      "bytes": 234
+    },
+    {
+      "source": "assets/icons/equipment/beanie.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/beanie.svg",
+      "sha256": "f7dd1776414a01d4b430865b5d6f15a382badfeb7ad0f6de424254e2c87c3f62",
+      "bytes": 236
+    },
+    {
+      "source": "assets/icons/equipment/crampons.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/crampons.svg",
+      "sha256": "bb9373bb592ea345f33fbf62e8d0f243ab0848dcfe5eebba2820e89da2cf14a5",
+      "bytes": 241
+    },
+    {
+      "source": "assets/icons/equipment/down-jacket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/down-jacket.svg",
+      "sha256": "212a53e42950d0a85d17d37272db695efb7bf4f562be4ff91dc748683dab69d1",
+      "bytes": 247
+    },
+    {
+      "source": "assets/icons/equipment/down-mittens.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/down-mittens.svg",
+      "sha256": "f08849feba79df5a679ce229867a822b06fbf06d9076e00d329b5e48589a3924",
+      "bytes": 249
+    },
+    {
+      "source": "assets/icons/equipment/dry-bag.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/dry-bag.svg",
+      "sha256": "b7897a92b6644156405784db534526db0f612ddd9f1dcca85ef208ec5f25817c",
+      "bytes": 218
+    },
+    {
+      "source": "assets/icons/equipment/emergency-blanket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/emergency-blanket.svg",
+      "sha256": "0e8c12f1e3ca175ab377f7c857ddd6ef911823b87d472a6c5b62d98d4f30aef4",
+      "bytes": 221
+    },
+    {
+      "source": "assets/icons/equipment/first-aid.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/first-aid.svg",
+      "sha256": "5f814312100cf1b7ea4e4351f2afc444c928c0afe192813da221b01fa3ee4fa3",
+      "bytes": 234
+    },
+    {
+      "source": "assets/icons/equipment/fleece.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/fleece.svg",
+      "sha256": "e5ffcc3009dc77cefbe82d8f4cf71692c2bc704d6c7f42e0068e3e1c19a691a3",
+      "bytes": 239
+    },
+    {
+      "source": "assets/icons/equipment/gaiters.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/gaiters.svg",
+      "sha256": "5b1b7626d9f5e4208f825fe321fdbb4fd848ceb3cc1b6116232c9b1bda216cc3",
+      "bytes": 220
+    },
+    {
+      "source": "assets/icons/equipment/goggles.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/goggles.svg",
+      "sha256": "d9f110e57b3e748b11cb1e9beed5f80174bcd70d3076bfa9dc5f449eb7078656",
+      "bytes": 228
+    },
+    {
+      "source": "assets/icons/equipment/headlamp.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/headlamp.svg",
+      "sha256": "a2360d59e8b0a8297029b635a6ecba75c93a94a8f0e93e91ea76530bab822e58",
+      "bytes": 217
+    },
+    {
+      "source": "assets/icons/equipment/hiking-boots.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/hiking-boots.svg",
+      "sha256": "f32e26d3267bf43b1d9a115f94f49ab0d01a47933addcb797f6e7f87f21ae11d",
+      "bytes": 250
+    },
+    {
+      "source": "assets/icons/equipment/ice-axe.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/ice-axe.svg",
+      "sha256": "cf1c18f2a0b14044d47e9dba16f5f81727307f2308719ad9d65e7e75469c67ab",
+      "bytes": 223
+    },
+    {
+      "source": "assets/icons/equipment/insulated-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/insulated-gloves.svg",
+      "sha256": "279063b5b5513e512b85f0867e548503f774c8947bade9054b405f2941bd0767",
+      "bytes": 291
+    },
+    {
+      "source": "assets/icons/equipment/liner-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/liner-gloves.svg",
+      "sha256": "31cc7fb04639cf7356eb76571cfe1a03ba98dcb3d816addad508cfd9385d2f0f",
+      "bytes": 284
+    },
+    {
+      "source": "assets/icons/equipment/microspikes.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/microspikes.svg",
+      "sha256": "f68543394e5c6c79f7c486355c2cadbf669c8b1547e8988cd1d0209e763b8cc1",
+      "bytes": 228
+    },
+    {
+      "source": "assets/icons/equipment/navigation.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/navigation.svg",
+      "sha256": "b0c0b296765fe891f55596491667943fc0fba628dcbcfe1c253fa68dc9d9f363",
+      "bytes": 226
+    },
+    {
+      "source": "assets/icons/equipment/neck-gaiter.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/neck-gaiter.svg",
+      "sha256": "20b4ad04d82aa75b8beeb5c4595ad4bccba8030bfad6bd8be43dcaa3ddf5e2a6",
+      "bytes": 228
+    },
+    {
+      "source": "assets/icons/equipment/pack-cover.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/pack-cover.svg",
+      "sha256": "f7e80ed160b06077ff007558a84d4ee56e2a5823f75ae6df67b385aceab0a1ef",
+      "bytes": 217
+    },
+    {
+      "source": "assets/icons/equipment/power-bank.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/power-bank.svg",
+      "sha256": "bdf869f75630ec95f63ed1dceac45a2c81c9d6608594d366d34a4592339e2ecc",
+      "bytes": 206
+    },
+    {
+      "source": "assets/icons/equipment/rain-jacket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/rain-jacket.svg",
+      "sha256": "9142a404590e719ad8283fafffea35f1925363ed3e7b56c56eedb4f9717b0c1e",
+      "bytes": 250
+    },
+    {
+      "source": "assets/icons/equipment/rain-pants.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/rain-pants.svg",
+      "sha256": "a8edb49689c09775d9cb28ca4becee9eb5bdbbd345464fb76be050ec9c1d2fd9",
+      "bytes": 221
+    },
+    {
+      "source": "assets/icons/equipment/snacks.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/snacks.svg",
+      "sha256": "53e4969235c9c88aa33d8ae6321631e9debe663dac927a40489e89b44027154a",
+      "bytes": 220
+    },
+    {
+      "source": "assets/icons/equipment/sun-hat.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sun-hat.svg",
+      "sha256": "b8973cb78fb77d1e2804c06967623b0c897d59b1b9a3f8f4364cf9dc5c4cbaa6",
+      "bytes": 223
+    },
+    {
+      "source": "assets/icons/equipment/sunglasses.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sunglasses.svg",
+      "sha256": "5776842de1826a5926f9b1dad0873a8ea3c7b6f8b50ec55d7374cb688494066b",
+      "bytes": 237
+    },
+    {
+      "source": "assets/icons/equipment/sunscreen.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sunscreen.svg",
+      "sha256": "d50af7d0340a92b0e955f2123966152057dd2427dc1cc101ba7ebd4c754a95b3",
+      "bytes": 214
+    },
+    {
+      "source": "assets/icons/equipment/thermos.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/thermos.svg",
+      "sha256": "36a6e8e3b45124b6f8aceb05a306f921609c04c976aac65f22d961e1e677d261",
+      "bytes": 213
+    },
+    {
+      "source": "assets/icons/equipment/trekking-poles.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/trekking-poles.svg",
+      "sha256": "3a52ed7eded4add87e5c96d458257ca64b9e4a065932e911cd66da9041803af7",
+      "bytes": 240
+    },
+    {
+      "source": "assets/icons/equipment/warm-socks.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/warm-socks.svg",
+      "sha256": "bad9265c93d25090a4ffd5b6b15db2e2863c172614384121649bdd0582de6d6c",
+      "bytes": 222
+    },
+    {
+      "source": "assets/icons/equipment/water-bottle.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/water-bottle.svg",
+      "sha256": "094d525cdd6c7eaffda3bab00e514fb1eaa74224fe285bf1ba836d985a17347c",
+      "bytes": 214
+    },
+    {
+      "source": "assets/icons/equipment/water-filter.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/water-filter.svg",
+      "sha256": "89d7427137f632ebe81bcae119a410b4a9258bc589f3c17463991591d07f480d",
+      "bytes": 219
+    },
+    {
+      "source": "assets/icons/equipment/waterproof-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/waterproof-gloves.svg",
+      "sha256": "ed4bc0b94a7da4a986cd523c6b06fa210c3fdaa9077051c0f99a1133e34c739e",
+      "bytes": 292
+    },
+    {
+      "source": "assets/icons/equipment/windbreaker.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/windbreaker.svg",
+      "sha256": "2d92f2895b8d1defcac1a338c82b2453030a49d7ff2a0e662c889e4aabadab0a",
+      "bytes": 233
+    },
+    {
+      "source": "assets/icons/ui/arrow-left.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/arrow-left.svg",
+      "sha256": "6080ee803bc917bc97b26d9b842c69aa3c2c4bd5526fbe987820a626aec65bd7",
+      "bytes": 198
+    },
+    {
+      "source": "assets/icons/ui/arrow-right.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/arrow-right.svg",
+      "sha256": "cdfada482aaa0ace6429922d87fb042dad77d75f46db5247930d2ad6619aafcd",
+      "bytes": 199
+    },
+    {
+      "source": "assets/icons/ui/ascent-descent.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/ascent-descent.svg",
+      "sha256": "03de61ce8d16ec8c3987c9b918b6ed7209dcba598b1b7eb0aa2e5499f442920d",
+      "bytes": 241
+    },
+    {
+      "source": "assets/icons/ui/chevron-down.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/chevron-down.svg",
+      "sha256": "d0bc08118243e6de09497c87bcb6e1fb286410fc8bdfc00b27c521fc8d085836",
+      "bytes": 190
+    },
+    {
+      "source": "assets/icons/ui/chevron-up.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/chevron-up.svg",
+      "sha256": "76455f05483e99684221101d27c3c0cb6e5e60be9280133848354aefffe1072c",
+      "bytes": 191
+    },
+    {
+      "source": "assets/icons/ui/clock.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/clock.svg",
+      "sha256": "fa7f65872ee0e51e4d35114be92863b7c365a47e27bbc2366098860fb53b3d99",
+      "bytes": 220
+    },
+    {
+      "source": "assets/icons/ui/close.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/close.svg",
+      "sha256": "ac5b27ea9930d8ec9293ab381d7960b23f1d37d13586ae6a0e83adcb616011fd",
+      "bytes": 198
+    },
+    {
+      "source": "assets/icons/ui/day-collapse.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/day-collapse.svg",
+      "sha256": "d1f9f6952dfab31e496b7ca4bc09050d38a615ba9bf1d1e15137e255feafaa39",
+      "bytes": 222
+    },
+    {
+      "source": "assets/icons/ui/day-expand.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/day-expand.svg",
+      "sha256": "4dd84af8db576b6d22bf5a8462032e9a7dbc32bf137d1cd303663f7e2087f849",
+      "bytes": 220
+    },
+    {
+      "source": "assets/icons/ui/distance.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/distance.svg",
+      "sha256": "f582766534cb6fc766a3038f43c51b4a14f412469b8da76fe25f8bedc2133efc",
+      "bytes": 278
+    },
+    {
+      "source": "assets/icons/ui/download.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/download.svg",
+      "sha256": "22bfb2426a17e3b314c93d0cf69aeb7919d4e033623bcccd7d345ed98308591f",
+      "bytes": 212
+    },
+    {
+      "source": "assets/icons/ui/flag.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/flag.svg",
+      "sha256": "b44f5909a3a33e64d1310038a76af50428b9abe3800ba4b494d62420ff449c86",
+      "bytes": 219
+    },
+    {
+      "source": "assets/icons/ui/gauge.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/gauge.svg",
+      "sha256": "8dbb10c05e01e47b2ea3e68098ec4e848a24b9b1af87c96138aaf92ebe8f5755",
+      "bytes": 230
+    },
+    {
+      "source": "assets/icons/ui/refresh.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/refresh.svg",
+      "sha256": "f985f1d7730d61322417a4ce03eef38c3e205984c7b2f8dfce13953324224285",
+      "bytes": 208
+    },
+    {
+      "source": "assets/icons/ui/share.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/share.svg",
+      "sha256": "f9e0536ae104d5fe4696de721c4be6e1afdf6d51e79ad50e7ecd52f707e59abf",
+      "bytes": 287
+    },
+    {
+      "source": "assets/icons/ui/stopwatch.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/stopwatch.svg",
+      "sha256": "4e68406776e50d7da9bac260d9128935259fc32f216e046590d58d7fcfcdbd6e",
+      "bytes": 243
+    },
+    {
+      "source": "assets/icons/ui/zoom.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/zoom.svg",
+      "sha256": "af16cdd44ca921e7e7f13115d1f58012515b2fce7aed3c3225f346a69058b865",
+      "bytes": 231
+    },
+    {
+      "source": "assets/icons/weather/back.svg",
+      "target": "apps/web/public/new-design/icons/back.svg",
+      "sha256": "ab9cb33e7628f007f215b0cd10027d390f5e5211c7a4291039f09098fe9e8e2c",
+      "bytes": 204
+    },
+    {
+      "source": "assets/icons/weather/chevron-down.svg",
+      "target": "apps/web/public/new-design/icons/chevron-down.svg",
+      "sha256": "1b381767f4798d3bf87175c420140c0fcc7cbf517799ac77d1c4c95d2ade4e67",
+      "bytes": 196
+    },
+    {
+      "source": "assets/icons/weather/chevron-left.svg",
+      "target": "apps/web/public/new-design/icons/chevron-left.svg",
+      "sha256": "76e36c57a5956a249c02dc3286a65d20e68d6c22396191add289c263d7070b7f",
+      "bytes": 196
+    },
+    {
+      "source": "assets/icons/weather/chevron-right.svg",
+      "target": "apps/web/public/new-design/icons/chevron-right.svg",
+      "sha256": "582c0b73ff5d1dcb5793e7e90c0133360a58b8676ba9fa86843df4906a77118d",
+      "bytes": 196
+    },
+    {
+      "source": "assets/icons/weather/chevron-up.svg",
+      "target": "apps/web/public/new-design/icons/chevron-up.svg",
+      "sha256": "a86d0f7fd2eeb328e11735cb337c80b4a3c30947ba9d39413d9adc3ddb0f484a",
+      "bytes": 196
+    },
+    {
+      "source": "assets/icons/weather/clear-day.svg",
+      "target": "apps/web/public/new-design/icons/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "bytes": 318
+    },
+    {
+      "source": "assets/icons/weather/clear-night.svg",
+      "target": "apps/web/public/new-design/icons/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "bytes": 236
+    },
+    {
+      "source": "assets/icons/weather/close.svg",
+      "target": "apps/web/public/new-design/icons/close.svg",
+      "sha256": "2b77db06944a2875274ec61a9f406febd0490b55003590f5976d2d3cf4239d4f",
+      "bytes": 201
+    },
+    {
+      "source": "assets/icons/weather/cloudy.svg",
+      "target": "apps/web/public/new-design/icons/cloudy.svg",
+      "sha256": "d96604095df3c3bfffd2a8685f9f13498722a630905674749fc384c6a60a1631",
+      "bytes": 244
+    },
+    {
+      "source": "assets/icons/weather/drizzle.svg",
+      "target": "apps/web/public/new-design/icons/drizzle.svg",
+      "sha256": "ebd0709a7e02bbec26656e2066356e8f2273610bbbc95740bd4bc21215cc0b71",
+      "bytes": 336
+    },
+    {
+      "source": "assets/icons/weather/droplet.svg",
+      "target": "apps/web/public/new-design/icons/droplet.svg",
+      "sha256": "a22e5e8b507205bf47eeb4da564d201605a51804bdb4915f88c76067942b9264",
+      "bytes": 236
+    },
+    {
+      "source": "assets/icons/weather/fog-day.svg",
+      "target": "apps/web/public/new-design/icons/fog-day.svg",
+      "sha256": "5c8107e2c932ffa12df74166d21e77802d67116ccb59486f5d06712ada6f31c4",
+      "bytes": 664
+    },
+    {
+      "source": "assets/icons/weather/fog-night.svg",
+      "target": "apps/web/public/new-design/icons/fog-night.svg",
+      "sha256": "a3b49f5d7ded04499c917c68f9e740b97e3526b0db2f53f09fc06bdb286ab3af",
+      "bytes": 648
+    },
+    {
+      "source": "assets/icons/weather/freezing-rain.svg",
+      "target": "apps/web/public/new-design/icons/freezing-rain.svg",
+      "sha256": "2f5f6ff67a8febafc30447acc57ce052e8a300bc270bcf082f37448ef178f1a6",
+      "bytes": 392
+    },
+    {
+      "source": "assets/icons/weather/gust.svg",
+      "target": "apps/web/public/new-design/icons/gust.svg",
+      "sha256": "6ff1be39c75fa57f491aa5a92d93fff8eb7e583bcfd1388d5ccdd1ff42491d92",
+      "bytes": 269
+    },
+    {
+      "source": "assets/icons/weather/heavy-rain.svg",
+      "target": "apps/web/public/new-design/icons/heavy-rain.svg",
+      "sha256": "17663896ac9ebe5dbdc64542d4aa812bba74da8f1a6013de60596794a85f6f00",
+      "bytes": 336
+    },
+    {
+      "source": "assets/icons/weather/heavy-snow.svg",
+      "target": "apps/web/public/new-design/icons/heavy-snow.svg",
+      "sha256": "1270bd807649afd299e090a77a156b147eea8722b0eaf62c8427d2ed891ff4a9",
+      "bytes": 501
+    },
+    {
+      "source": "assets/icons/weather/hike.svg",
+      "target": "apps/web/public/new-design/icons/hike.svg",
+      "sha256": "539b9697c7e8ce05a0415d81a62fb823601692c8c584cc11856d28d016b29ddb",
+      "bytes": 286
+    },
+    {
+      "source": "assets/icons/weather/instagram.svg",
+      "target": "apps/web/public/new-design/icons/instagram.svg",
+      "sha256": "32275f2750da25c5906882b1217248d955fb71b62ebde7466c2d7d1e0e5c77d9",
+      "bytes": 299
+    },
+    {
+      "source": "assets/icons/weather/lock.svg",
+      "target": "apps/web/public/new-design/icons/lock.svg",
+      "sha256": "8dfc4bfcb0f9c96e1803e8c14862a0b1a7b88d50107be412afcd69e8c313cd48",
+      "bytes": 263
+    },
+    {
+      "source": "assets/icons/weather/logout.svg",
+      "target": "apps/web/public/new-design/icons/logout.svg",
+      "sha256": "85365e1cffefcdcc9d75bfb4f68b645142e6373acc0f7094e0e8bff300fb6f63",
+      "bytes": 219
+    },
+    {
+      "source": "assets/icons/weather/moon.svg",
+      "target": "apps/web/public/new-design/icons/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "bytes": 236
+    },
+    {
+      "source": "assets/icons/weather/mostly-clear-day.svg",
+      "target": "apps/web/public/new-design/icons/mostly-clear-day.svg",
+      "sha256": "99a5eb9394b786bded6deba3ac07fb0d64c0816447751db83cbbd0ca88842c6a",
+      "bytes": 481
+    },
+    {
+      "source": "assets/icons/weather/mostly-clear-night.svg",
+      "target": "apps/web/public/new-design/icons/mostly-clear-night.svg",
+      "sha256": "f40e3f84a2d24654fa744fd3ab287af6e3e5f801987cec769d7a344dbe985c49",
+      "bytes": 463
+    },
+    {
+      "source": "assets/icons/weather/partly-cloudy-day.svg",
+      "target": "apps/web/public/new-design/icons/partly-cloudy-day.svg",
+      "sha256": "0eb8cffde2b13b4429e67a58e2b6bb28a11977fa4da62a6aa74ae061eca3064c",
+      "bytes": 519
+    },
+    {
+      "source": "assets/icons/weather/partly-cloudy-night.svg",
+      "target": "apps/web/public/new-design/icons/partly-cloudy-night.svg",
+      "sha256": "4751adef35db48d24fd770b7b1ac3054b01cc2a0f28bdfd4f9c25490feaf339f",
+      "bytes": 503
+    },
+    {
+      "source": "assets/icons/weather/rain.svg",
+      "target": "apps/web/public/new-design/icons/rain.svg",
+      "sha256": "59e35f8631c119cab4c56527739aa25b06bbf5baaf20c523eb3e5db8fd8f7096",
+      "bytes": 320
+    },
+    {
+      "source": "assets/icons/weather/refresh.svg",
+      "target": "apps/web/public/new-design/icons/refresh.svg",
+      "sha256": "200fa635c9b02241448d0f191963a95dcf8bf672c3be7c521936bba37596f669",
+      "bytes": 213
+    },
+    {
+      "source": "assets/icons/weather/rime-fog.svg",
+      "target": "apps/web/public/new-design/icons/rime-fog.svg",
+      "sha256": "a207c34a6ddbc57f10da481ee94d8f16218036848c467d340e92be87ee3a3e06",
+      "bytes": 275
+    },
+    {
+      "source": "assets/icons/weather/showers-night.svg",
+      "target": "apps/web/public/new-design/icons/showers-night.svg",
+      "sha256": "791d8d87f82803414fc728560e06a361868cfa6b801ba873b7cd40250966f124",
+      "bytes": 582
+    },
+    {
+      "source": "assets/icons/weather/showers.svg",
+      "target": "apps/web/public/new-design/icons/showers.svg",
+      "sha256": "eb08a9278fb1626a3193ab34f1244e8a0f4daec7776dccc0533bf64e83f8ecc6",
+      "bytes": 598
+    },
+    {
+      "source": "assets/icons/weather/snow-grains.svg",
+      "target": "apps/web/public/new-design/icons/snow-grains.svg",
+      "sha256": "7b83e9610a7f24e59282271c9eec6e38ec8a91935c0df763814a1ddae08c79b6",
+      "bytes": 337
+    },
+    {
+      "source": "assets/icons/weather/snow.svg",
+      "target": "apps/web/public/new-design/icons/snow.svg",
+      "sha256": "856d54513d9370420564aa1b5ddbdd48aa0897f35e86e3334973b7483e482724",
+      "bytes": 429
+    },
+    {
+      "source": "assets/icons/weather/subscription.svg",
+      "target": "apps/web/public/new-design/icons/subscription.svg",
+      "sha256": "38055e9ab535f1f24db8f3129766946947bbb7424d71ab387fb298cd99b13384",
+      "bytes": 245
+    },
+    {
+      "source": "assets/icons/weather/sun.svg",
+      "target": "apps/web/public/new-design/icons/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "bytes": 318
+    },
+    {
+      "source": "assets/icons/weather/telegram.svg",
+      "target": "apps/web/public/new-design/icons/telegram.svg",
+      "sha256": "01b23791e9c9ed430e070213c92061cad7bb50350a54e3ddd1a673b468b63875",
+      "bytes": 224
+    },
+    {
+      "source": "assets/icons/weather/temperature.svg",
+      "target": "apps/web/public/new-design/icons/temperature.svg",
+      "sha256": "e382b6e4cd80c4f975a5384ddf1e0eac9fff40f85875862313ffb167bdc9c3f1",
+      "bytes": 232
+    },
+    {
+      "source": "assets/icons/weather/thunderstorm-hail.svg",
+      "target": "apps/web/public/new-design/icons/thunderstorm-hail.svg",
+      "sha256": "461ea906ba4d5c3e31b89c8b288511a2468cd2abb48eb28e8c7565c39ee1550e",
+      "bytes": 423
+    },
+    {
+      "source": "assets/icons/weather/thunderstorm.svg",
+      "target": "apps/web/public/new-design/icons/thunderstorm.svg",
+      "sha256": "c10cd0b0710d796ebb3cfcd2fecd22fcbd924d0554d263e472ceeaacf3cd5902",
+      "bytes": 428
+    },
+    {
+      "source": "assets/icons/weather/unknown.svg",
+      "target": "apps/web/public/new-design/icons/unknown.svg",
+      "sha256": "b9e6eff9c0263e70e335f87c223a4f82fd184c2d70fcdd5c292f5a11b14613c5",
+      "bytes": 251
+    },
+    {
+      "source": "assets/icons/weather/user-active.svg",
+      "target": "apps/web/public/new-design/icons/user-active.svg",
+      "sha256": "fbc7d24d4a269b46ba37339485a05f9335d9cb5048e38c4f1efa6710cd4c36b3",
+      "bytes": 258
+    },
+    {
+      "source": "assets/icons/weather/user.svg",
+      "target": "apps/web/public/new-design/icons/user.svg",
+      "sha256": "544343939f397de4de2a955d41a40aa831bda7e5b57ab8fb81e4a939b4e49417",
+      "bytes": 238
+    },
+    {
+      "source": "assets/icons/weather/visibility.svg",
+      "target": "apps/web/public/new-design/icons/visibility.svg",
+      "sha256": "83662021b3400005a20078f9dc7423acb3af84de0f61f91c535ca42e52266c1e",
+      "bytes": 261
+    },
+    {
+      "source": "assets/icons/weather/warning.svg",
+      "target": "apps/web/public/new-design/icons/warning.svg",
+      "sha256": "dcf54becae154c46b0bce3fda0d18dcdf0b9c59d25660d3aa7ab1fa993d1d50c",
+      "bytes": 349
+    },
+    {
+      "source": "assets/icons/weather/wind.svg",
+      "target": "apps/web/public/new-design/icons/wind.svg",
+      "sha256": "d47ab43ef8278e37ece231fbef042e46833b5471a56d01bfbf9d095018858d16",
+      "bytes": 244
+    },
+    {
+      "source": "assets/share-backgrounds/dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "bytes": 106428
+    },
+    {
+      "source": "assets/share-backgrounds/light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "bytes": 155454
+    },
+    {
+      "source": "equipment/photos/backpack.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/backpack.webp",
+      "sha256": "b790176581066d27ce8635a15494f8ea6cc6c89508519b7c7c27aabb7cdd910c",
+      "bytes": 92588
+    },
+    {
+      "source": "equipment/photos/base-layer.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/base-layer.webp",
+      "sha256": "727950fd4c641a2e3477b6c2073ea6d1c23ae6a7614ee523f233b0826808a4e6",
+      "bytes": 12954
+    },
+    {
+      "source": "equipment/photos/beanie.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/beanie.webp",
+      "sha256": "d35a46f9cc8f06a2b5fef94aa7c56526d6377f1b091d30062138f8e12d272a27",
+      "bytes": 90444
+    },
+    {
+      "source": "equipment/photos/crampons.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/crampons.jpg",
+      "sha256": "e13f92dfce7a4c5f522a5ce1177c99ec5112c7226fd7dc4e53e895e814dc5d31",
+      "bytes": 170157
+    },
+    {
+      "source": "equipment/photos/down-jacket.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/down-jacket.webp",
+      "sha256": "741ff29286134e9e04d4786d59d8a1142037b2764a6372702695c98c849970c6",
+      "bytes": 81472
+    },
+    {
+      "source": "equipment/photos/down-mittens.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/down-mittens.webp",
+      "sha256": "51f099682bd0929c2e5b035f139aa20b1a5979801740f0905131a3e5fd9da83b",
+      "bytes": 97726
+    },
+    {
+      "source": "equipment/photos/dry-bag.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/dry-bag.jpg",
+      "sha256": "2a3658583b2671ccfb0160c76eb737d43258e84bf7d041ec0e301d667750cf58",
+      "bytes": 16541
+    },
+    {
+      "source": "equipment/photos/emergency-blanket.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/emergency-blanket.webp",
+      "sha256": "5f1097f3d67fe5feac8cefd3aaced6f2e92d16b86cd15baab12b077b61ad4aca",
+      "bytes": 31088
+    },
+    {
+      "source": "equipment/photos/first-aid.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/first-aid.webp",
+      "sha256": "d1c31702e145af201fd531f983c4b663d4ea4f54ba9b90b05793c99a5389e03b",
+      "bytes": 75262
+    },
+    {
+      "source": "equipment/photos/fleece.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/fleece.webp",
+      "sha256": "9843a345d5813959fa90e826a2a33cc27df675b26dfd867bb928f2a9fdfe2882",
+      "bytes": 176276
+    },
+    {
+      "source": "equipment/photos/gaiters.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/gaiters.webp",
+      "sha256": "e79f38be881217a74b32582179c853200a2620f5e1957a1ab9052e1b6b0efdab",
+      "bytes": 93994
+    },
+    {
+      "source": "equipment/photos/goggles.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/goggles.jpg",
+      "sha256": "4569727f3e3a56f436bbfd68d0cf1c32868a5bc485b70b70fc6db9e140cc6125",
+      "bytes": 37238
+    },
+    {
+      "source": "equipment/photos/headlamp.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/headlamp.webp",
+      "sha256": "c0866f12122b74339fe73f9afaea27077ca242e0a163ab2bf4dcfbf1c7cb0564",
+      "bytes": 39214
+    },
+    {
+      "source": "equipment/photos/hiking-boots.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/hiking-boots.webp",
+      "sha256": "a1939c37c74bedd813c9dca48b474003f0a174bc632e9549d6f335d5675b2b14",
+      "bytes": 124682
+    },
+    {
+      "source": "equipment/photos/ice-axe.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/ice-axe.webp",
+      "sha256": "c1bb0324413f3872a44c9727b7219c612eb4da2ea13bb90cab1378c8ba50db26",
+      "bytes": 40404
+    },
+    {
+      "source": "equipment/photos/insulated-gloves.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/insulated-gloves.jpg",
+      "sha256": "b87966c98644fa0676858718ae25e687cd6a1ccba3ac4290e27605147751ecc1",
+      "bytes": 63782
+    },
+    {
+      "source": "equipment/photos/liner-gloves.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/liner-gloves.jpg",
+      "sha256": "e02716734d7e2f07cc131f9d6b7103f4f7a00326f765b32b11afb4d330b5f25c",
+      "bytes": 121147
+    },
+    {
+      "source": "equipment/photos/microspikes.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/microspikes.jpg",
+      "sha256": "452ce8f4d9d8413a8318c2abd858180a78d50b17ee6ee9982bff56c6d9c3fa35",
+      "bytes": 77527
+    },
+    {
+      "source": "equipment/photos/navigation.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/navigation.jpg",
+      "sha256": "ac774e7ee3db07a357ec3c96581ef68198e076d245b812eb7a0891ca70aab051",
+      "bytes": 245525
+    },
+    {
+      "source": "equipment/photos/neck-gaiter.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/neck-gaiter.jpg",
+      "sha256": "5696675da51a20aa30833ad7f8b49e28fa900c6ee1d5047f4334b80733f1a34e",
+      "bytes": 41207
+    },
+    {
+      "source": "equipment/photos/pack-cover.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/pack-cover.webp",
+      "sha256": "899d6cf0b468694f771564426e8df7587bb776038f564a6f1c922398989058b7",
+      "bytes": 28188
+    },
+    {
+      "source": "equipment/photos/power-bank.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/power-bank.jpg",
+      "sha256": "211f7432059c63d79cc59372c90b25c0cf054367961ea950acac95530354fc3b",
+      "bytes": 179301
+    },
+    {
+      "source": "equipment/photos/rain-jacket.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/rain-jacket.webp",
+      "sha256": "fdf3ea7ce6eaf3095d846f97b03296647341fcebbecef881d5757f5548cb3fe5",
+      "bytes": 17258
+    },
+    {
+      "source": "equipment/photos/rain-pants.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/rain-pants.jpg",
+      "sha256": "e5b1691d4772b9ca2596b55a1e0ab8585491f2198129e9b9cf1adbc9a2b236a1",
+      "bytes": 61954
+    },
+    {
+      "source": "equipment/photos/snacks.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/snacks.webp",
+      "sha256": "1ebe0d2fb837693e114c044a029d686a00b32fbf20137f6fc8900e4a597005e9",
+      "bytes": 73220
+    },
+    {
+      "source": "equipment/photos/sun-hat.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/sun-hat.webp",
+      "sha256": "e87bd4e37613df78c1b690c7810a15674e834394bba11b45b26e5ec141477c12",
+      "bytes": 57256
+    },
+    {
+      "source": "equipment/photos/sunglasses.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/sunglasses.webp",
+      "sha256": "69d546c42880556243a388d834037e2a656045be495185957caaa7e7ee35454a",
+      "bytes": 19804
+    },
+    {
+      "source": "equipment/photos/sunscreen.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/sunscreen.jpg",
+      "sha256": "e481e543bff5e24e38ebdc515a8b053215366cb40d51f800233effe2c71e7437",
+      "bytes": 113227
+    },
+    {
+      "source": "equipment/photos/thermos.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/thermos.jpg",
+      "sha256": "abeede677171406b630ae6d0b5c5cc4c3430cc852ea48a3d9c21d65ae2675993",
+      "bytes": 25453
+    },
+    {
+      "source": "equipment/photos/trekking-poles.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/trekking-poles.webp",
+      "sha256": "ff9c7e72cd552aa49d0ea974eb8497d6db7fc2a66dd881be3a375880eb2ff3c8",
+      "bytes": 41934
+    },
+    {
+      "source": "equipment/photos/warm-socks.jpg",
+      "target": "design/assets/forecast-v5/equipment/photos/warm-socks.jpg",
+      "sha256": "ce0f530ea09975c518f88745ab7f9f4dc32c1375331c4cc0029b7041e6b899a6",
+      "bytes": 715959
+    },
+    {
+      "source": "equipment/photos/water-bottle.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/water-bottle.webp",
+      "sha256": "b4b54354d731f9dd7266231ae5625aea0721a53fd34a31c694f24a9d5890bdad",
+      "bytes": 34642
+    },
+    {
+      "source": "equipment/photos/water-filter.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/water-filter.webp",
+      "sha256": "4bc0d71934bc6ad6a93c23939cc4830a3a80892ce3d1beb17f7d76edbf42fa70",
+      "bytes": 24534
+    },
+    {
+      "source": "equipment/photos/waterproof-gloves.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/waterproof-gloves.webp",
+      "sha256": "05f97da05a5433c9d92d07c53f00c26952015a8891a2acdaf9c0391ed77506cc",
+      "bytes": 188854
+    },
+    {
+      "source": "equipment/photos/windbreaker.webp",
+      "target": "design/assets/forecast-v5/equipment/photos/windbreaker.webp",
+      "sha256": "dc12822eefdce995c1684e8b16e3ba05678f0b99572bac7281ddacd4b8a1b0cd",
+      "bytes": 116282
+    },
+    {
+      "source": "export/extreme-dark.png",
+      "target": "design/assets/forecast-v5/export/extreme-dark.png",
+      "sha256": "ff2ae6a4815ef53ac4166c4ef5fe6fd5bcf5ebc7d56a494df7e4e133e9bab524",
+      "bytes": 3617288
+    },
+    {
+      "source": "export/extreme-light.png",
+      "target": "design/assets/forecast-v5/export/extreme-light.png",
+      "sha256": "fc4186977f0d9b418486b630c20a8334c94305395af4ac64eae24421cdfacfd7",
+      "bytes": 4744066
+    },
+    {
+      "source": "export/long-dark.png",
+      "target": "design/assets/forecast-v5/export/long-dark.png",
+      "sha256": "e028194e3cde1f96ea370784ccbd833c09871c257b556da92c2ef2877c51e6de",
+      "bytes": 2795829
+    },
+    {
+      "source": "export/long-light.png",
+      "target": "design/assets/forecast-v5/export/long-light.png",
+      "sha256": "a0d7903b8cf6cdae5698547178290070ea91f4772b8d697b480d58ecf264c083",
+      "bytes": 3578772
+    },
+    {
+      "source": "export/short-dark.png",
+      "target": "design/assets/forecast-v5/export/short-dark.png",
+      "sha256": "f9ff0b9281f9f3e1065bf5bbe9eb10ab47ac3ee2c5ff4f203a30df819dad8340",
+      "bytes": 2394985
+    },
+    {
+      "source": "export/short-light.png",
+      "target": "design/assets/forecast-v5/export/short-light.png",
+      "sha256": "53d529561f5b9998eb3b316380a6098473d8b63a7a958d1a76d7fa046f84b617",
+      "bytes": 3082737
+    },
+    {
+      "source": "reference/site/assets/backgrounds/desktop-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/desktop-dark.webp",
+      "sha256": "e67deb37838b291dbe21b91c6e53330da74bdeeec2332f0d5ab40aa596138a56",
+      "bytes": 67594
+    },
+    {
+      "source": "reference/site/assets/backgrounds/desktop-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/desktop-light.webp",
+      "sha256": "03d569146a48c0adf01d03206ad4f90d612412b70c95ba8e3773109c52ad6a21",
+      "bytes": 85362
+    },
+    {
+      "source": "reference/site/assets/backgrounds/mobile-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/mobile-dark.webp",
+      "sha256": "83d6b775316c974e8b2a47ed7ce039b310038d8d560801a3202877896bdb0d73",
+      "bytes": 80790
+    },
+    {
+      "source": "reference/site/assets/backgrounds/mobile-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/mobile-light.webp",
+      "sha256": "5aa579e6c5750a35effd6c28fdcd6448a5fb444302e044ff8111fb7904618185",
+      "bytes": 105760
+    },
+    {
+      "source": "reference/site/assets/backgrounds/route-desktop-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "bytes": 106428
+    },
+    {
+      "source": "reference/site/assets/backgrounds/route-desktop-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "bytes": 155454
+    },
+    {
+      "source": "reference/site/assets/backgrounds/route-mobile-dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-mobile-dark.webp",
+      "sha256": "f91fc31611f3c1a1d3f31c08f21463a21709e775a18649b0b5a11c1c778e6836",
+      "bytes": 138850
+    },
+    {
+      "source": "reference/site/assets/backgrounds/route-mobile-light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-mobile-light.webp",
+      "sha256": "be6412bc8b0c98639b2ce155962199eb8f31addbfc33093dd4af0915c904eaea",
+      "bytes": 192416
+    },
+    {
+      "source": "reference/site/assets/brand-mark.svg",
+      "target": "apps/web/public/new-design/brand-mark.svg",
+      "sha256": "0329f64530069a9e8d72b6da78062c594f8c82879d116dfd9f66bc4fa8066401",
+      "bytes": 272
+    },
+    {
+      "source": "reference/site/assets/fonts/Vazirmatn-Bold.woff2",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Bold.woff2",
+      "sha256": "836fae7d42d83faa249bc00e0099592be98a1fa260d22d82f269b6091e585627",
+      "bytes": 51020
+    },
+    {
+      "source": "reference/site/assets/fonts/Vazirmatn-Regular.woff2",
+      "target": "apps/web/public/new-design/fonts/Vazirmatn-Regular.woff2",
+      "sha256": "e382101336c6eb32cfb31381c027d02d2e0354bad08f6a395d4088beb3db3d91",
+      "bytes": 50684
+    },
+    {
+      "source": "reference/site/assets/icons/back.svg",
+      "target": "apps/web/public/new-design/icons/back.svg",
+      "sha256": "ab9cb33e7628f007f215b0cd10027d390f5e5211c7a4291039f09098fe9e8e2c",
+      "bytes": 204
+    },
+    {
+      "source": "reference/site/assets/icons/categories/bridge.svg",
+      "target": "apps/web/public/new-design/icons/categories/bridge.svg",
+      "sha256": "3dd9b8353ef2faad6f4ad7dab3de7603a067363fb9e1ba2343766683c056e411",
+      "bytes": 269
+    },
+    {
+      "source": "reference/site/assets/icons/categories/cave.svg",
+      "target": "apps/web/public/new-design/icons/categories/cave.svg",
+      "sha256": "278de6c4df8bf0193b25738bdd7bdefefbf22481f0c0b1796d80a317dc4e8854",
+      "bytes": 284
+    },
+    {
+      "source": "reference/site/assets/icons/categories/city.svg",
+      "target": "apps/web/public/new-design/icons/categories/city.svg",
+      "sha256": "f4688621cf0d2981b674364c88e4a63f7a2f410697ab646c47c4cb0ec33601bd",
+      "bytes": 285
+    },
+    {
+      "source": "reference/site/assets/icons/categories/coast.svg",
+      "target": "apps/web/public/new-design/icons/categories/coast.svg",
+      "sha256": "b1c839b4dee4284ac24e5e033c673a09d577e9e895d02f7834f629b09008db76",
+      "bytes": 292
+    },
+    {
+      "source": "reference/site/assets/icons/categories/dam.svg",
+      "target": "apps/web/public/new-design/icons/categories/dam.svg",
+      "sha256": "9ee2328a1ba337d484482836819ad69d68fec6d2962195f7959747b19d751326",
+      "bytes": 253
+    },
+    {
+      "source": "reference/site/assets/icons/categories/desert.svg",
+      "target": "apps/web/public/new-design/icons/categories/desert.svg",
+      "sha256": "1c056a410f974ef04cbe722e0efad3077ebbdb0bd45c46e6fd8a8f2c9358cf02",
+      "bytes": 287
+    },
+    {
+      "source": "reference/site/assets/icons/categories/forest.svg",
+      "target": "apps/web/public/new-design/icons/categories/forest.svg",
+      "sha256": "b0b74bf058b18688885be87881c257a2a83292a4f24405bbc2b2c83bc5cf2dee",
+      "bytes": 278
+    },
+    {
+      "source": "reference/site/assets/icons/categories/fort.svg",
+      "target": "apps/web/public/new-design/icons/categories/fort.svg",
+      "sha256": "48992fec56944b10ce04a18d7f3919b0865e38926d87b28978b87e8cbcd0d40e",
+      "bytes": 270
+    },
+    {
+      "source": "reference/site/assets/icons/categories/gorge.svg",
+      "target": "apps/web/public/new-design/icons/categories/gorge.svg",
+      "sha256": "06d109f258d7c45c029688954b1850c834b14969aabe21cde477f2f41169bd3f",
+      "bytes": 266
+    },
+    {
+      "source": "reference/site/assets/icons/categories/highland.svg",
+      "target": "apps/web/public/new-design/icons/categories/highland.svg",
+      "sha256": "a809e42cb2df7c83d23e2dbbf80e442e1cebc7cf5bd167350cd9452ac8a0d2f9",
+      "bytes": 279
+    },
+    {
+      "source": "reference/site/assets/icons/categories/hills.svg",
+      "target": "apps/web/public/new-design/icons/categories/hills.svg",
+      "sha256": "fd5a3808ff70ba3bcc2743521610024fbef131bb28a0fa10538b1e7c9e7d5230",
+      "bytes": 254
+    },
+    {
+      "source": "reference/site/assets/icons/categories/hot_spring.svg",
+      "target": "apps/web/public/new-design/icons/categories/hot_spring.svg",
+      "sha256": "d71677cd70cbb0ec1759453308abf9ae2a4d9aef07073564fa4b74566f9c1d1e",
+      "bytes": 297
+    },
+    {
+      "source": "reference/site/assets/icons/categories/kalut.svg",
+      "target": "apps/web/public/new-design/icons/categories/kalut.svg",
+      "sha256": "0a7560212824364708f021540f1711b352673cbd4fb7ffc8dced4880c86815d9",
+      "bytes": 271
+    },
+    {
+      "source": "reference/site/assets/icons/categories/lake.svg",
+      "target": "apps/web/public/new-design/icons/categories/lake.svg",
+      "sha256": "81ad985fda169d13e3de30dbf104dcbc86c97672cf62d1edfd29d897c2c63db5",
+      "bytes": 266
+    },
+    {
+      "source": "reference/site/assets/icons/categories/landmark.svg",
+      "target": "apps/web/public/new-design/icons/categories/landmark.svg",
+      "sha256": "dc31c05e89f98ccd95f4507056c9df12da8a9593c8b3fa776298fba0d596687a",
+      "bytes": 269
+    },
+    {
+      "source": "reference/site/assets/icons/categories/marsh.svg",
+      "target": "apps/web/public/new-design/icons/categories/marsh.svg",
+      "sha256": "f613e4cfa47e7dcfae1a344e9a8b1f63c580916cac00df52a9d9da5a3c4000c2",
+      "bytes": 307
+    },
+    {
+      "source": "reference/site/assets/icons/categories/mountain.svg",
+      "target": "apps/web/public/new-design/icons/categories/mountain.svg",
+      "sha256": "a8a7e4c38ccf262b7ec0a4c71175b002ec82f348f7069dc30af8eac08818165c",
+      "bytes": 230
+    },
+    {
+      "source": "reference/site/assets/icons/categories/neighborhood.svg",
+      "target": "apps/web/public/new-design/icons/categories/neighborhood.svg",
+      "sha256": "d1a60704149ba6305c7c4de170a2501d97921f273dd4046005ffbad658fdb600",
+      "bytes": 290
+    },
+    {
+      "source": "reference/site/assets/icons/categories/park.svg",
+      "target": "apps/web/public/new-design/icons/categories/park.svg",
+      "sha256": "449c505087a110272cc6c1c446fadafa5f8d3645ba5e1058b56861faa4e1c38a",
+      "bytes": 280
+    },
+    {
+      "source": "reference/site/assets/icons/categories/pass.svg",
+      "target": "apps/web/public/new-design/icons/categories/pass.svg",
+      "sha256": "035fc5570c7271d04970b2b19400df74f9f580897f0ee9dd5fc408d1f3f3b240",
+      "bytes": 244
+    },
+    {
+      "source": "reference/site/assets/icons/categories/plain.svg",
+      "target": "apps/web/public/new-design/icons/categories/plain.svg",
+      "sha256": "713710d3c81d60ac604ca3f8d07136a633d7de0b7682f2b8e566a0c0d8c73c41",
+      "bytes": 260
+    },
+    {
+      "source": "reference/site/assets/icons/categories/rocks.svg",
+      "target": "apps/web/public/new-design/icons/categories/rocks.svg",
+      "sha256": "e0b29945d409b46f8bade8c34dd760014bd944d041f1f3f9996158227c7e25e0",
+      "bytes": 266
+    },
+    {
+      "source": "reference/site/assets/icons/categories/route.svg",
+      "target": "apps/web/public/new-design/icons/categories/route.svg",
+      "sha256": "ab1a64e14091475f5717dfa302e98212c1cfba1e5758c48e377eb498a1e8aa90",
+      "bytes": 305
+    },
+    {
+      "source": "reference/site/assets/icons/categories/shelter.svg",
+      "target": "apps/web/public/new-design/icons/categories/shelter.svg",
+      "sha256": "d2d8bb66cda5e2061cf9013bb44e2c32ac10bcbff192a256b2633af2e899ee86",
+      "bytes": 244
+    },
+    {
+      "source": "reference/site/assets/icons/categories/ski.svg",
+      "target": "apps/web/public/new-design/icons/categories/ski.svg",
+      "sha256": "3b50199d4fc77f8b7c13528440fea1cf462766a868b890779680c6d58fbe97d6",
+      "bytes": 276
+    },
+    {
+      "source": "reference/site/assets/icons/categories/spring.svg",
+      "target": "apps/web/public/new-design/icons/categories/spring.svg",
+      "sha256": "4b5f6516e09733cea854a5aefa05c368fe5841f248f57e01795bc0ec892cb4de",
+      "bytes": 266
+    },
+    {
+      "source": "reference/site/assets/icons/categories/terrace.svg",
+      "target": "apps/web/public/new-design/icons/categories/terrace.svg",
+      "sha256": "6531a8a21bcbac84415af324390577478dfbcd1ae51bb9f5c819f9eadf89549d",
+      "bytes": 281
+    },
+    {
+      "source": "reference/site/assets/icons/categories/trailhead.svg",
+      "target": "apps/web/public/new-design/icons/categories/trailhead.svg",
+      "sha256": "a9983d524748290448e282c892eb708e58096dc449a88c005ef9f2c761435cce",
+      "bytes": 288
+    },
+    {
+      "source": "reference/site/assets/icons/categories/valley.svg",
+      "target": "apps/web/public/new-design/icons/categories/valley.svg",
+      "sha256": "9af5f69f43c54adb591d2d3a189ca54f8cad1b9f6128db7d8231e1923934c30b",
+      "bytes": 265
+    },
+    {
+      "source": "reference/site/assets/icons/categories/village.svg",
+      "target": "apps/web/public/new-design/icons/categories/village.svg",
+      "sha256": "bf50926ac438b8955aba8b3ffbc132744d2cc44953365129c5fc74e6094298e0",
+      "bytes": 258
+    },
+    {
+      "source": "reference/site/assets/icons/categories/volcano.svg",
+      "target": "apps/web/public/new-design/icons/categories/volcano.svg",
+      "sha256": "6c3405036fc8aef09144bf84e0e582895f0529e969d81a33160c9bcc29025260",
+      "bytes": 277
+    },
+    {
+      "source": "reference/site/assets/icons/categories/waterfall.svg",
+      "target": "apps/web/public/new-design/icons/categories/waterfall.svg",
+      "sha256": "1a3bd2a328a7d7ed6bb553d305dc897ef3fb1b157c94501a9a9fb03d4aefa397",
+      "bytes": 280
+    },
+    {
+      "source": "reference/site/assets/icons/chevron-down.svg",
+      "target": "apps/web/public/new-design/icons/chevron-down.svg",
+      "sha256": "1b381767f4798d3bf87175c420140c0fcc7cbf517799ac77d1c4c95d2ade4e67",
+      "bytes": 196
+    },
+    {
+      "source": "reference/site/assets/icons/chevron-left.svg",
+      "target": "apps/web/public/new-design/icons/chevron-left.svg",
+      "sha256": "76e36c57a5956a249c02dc3286a65d20e68d6c22396191add289c263d7070b7f",
+      "bytes": 196
+    },
+    {
+      "source": "reference/site/assets/icons/chevron-right.svg",
+      "target": "apps/web/public/new-design/icons/chevron-right.svg",
+      "sha256": "582c0b73ff5d1dcb5793e7e90c0133360a58b8676ba9fa86843df4906a77118d",
+      "bytes": 196
+    },
+    {
+      "source": "reference/site/assets/icons/chevron-up.svg",
+      "target": "apps/web/public/new-design/icons/chevron-up.svg",
+      "sha256": "a86d0f7fd2eeb328e11735cb337c80b4a3c30947ba9d39413d9adc3ddb0f484a",
+      "bytes": 196
+    },
+    {
+      "source": "reference/site/assets/icons/clear-day.svg",
+      "target": "apps/web/public/new-design/icons/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "bytes": 318
+    },
+    {
+      "source": "reference/site/assets/icons/clear-night.svg",
+      "target": "apps/web/public/new-design/icons/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "bytes": 236
+    },
+    {
+      "source": "reference/site/assets/icons/close.svg",
+      "target": "apps/web/public/new-design/icons/close.svg",
+      "sha256": "2b77db06944a2875274ec61a9f406febd0490b55003590f5976d2d3cf4239d4f",
+      "bytes": 201
+    },
+    {
+      "source": "reference/site/assets/icons/cloudy.svg",
+      "target": "apps/web/public/new-design/icons/cloudy.svg",
+      "sha256": "d96604095df3c3bfffd2a8685f9f13498722a630905674749fc384c6a60a1631",
+      "bytes": 244
+    },
+    {
+      "source": "reference/site/assets/icons/drizzle.svg",
+      "target": "apps/web/public/new-design/icons/drizzle.svg",
+      "sha256": "ebd0709a7e02bbec26656e2066356e8f2273610bbbc95740bd4bc21215cc0b71",
+      "bytes": 336
+    },
+    {
+      "source": "reference/site/assets/icons/droplet.svg",
+      "target": "apps/web/public/new-design/icons/droplet.svg",
+      "sha256": "a22e5e8b507205bf47eeb4da564d201605a51804bdb4915f88c76067942b9264",
+      "bytes": 236
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/backpack.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/backpack.svg",
+      "sha256": "210ae6585c7791f088d1af5591aa6daebb191fe029cbf71fcbcd8295c1623597",
+      "bytes": 245
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/base-layer.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/base-layer.svg",
+      "sha256": "b576891926a9647f3a33de40abdeb4fa0f50c6fcad768a4d5465ac31ea83a626",
+      "bytes": 234
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/beanie.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/beanie.svg",
+      "sha256": "f7dd1776414a01d4b430865b5d6f15a382badfeb7ad0f6de424254e2c87c3f62",
+      "bytes": 236
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/crampons.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/crampons.svg",
+      "sha256": "bb9373bb592ea345f33fbf62e8d0f243ab0848dcfe5eebba2820e89da2cf14a5",
+      "bytes": 241
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/down-jacket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/down-jacket.svg",
+      "sha256": "212a53e42950d0a85d17d37272db695efb7bf4f562be4ff91dc748683dab69d1",
+      "bytes": 247
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/down-mittens.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/down-mittens.svg",
+      "sha256": "f08849feba79df5a679ce229867a822b06fbf06d9076e00d329b5e48589a3924",
+      "bytes": 249
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/dry-bag.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/dry-bag.svg",
+      "sha256": "b7897a92b6644156405784db534526db0f612ddd9f1dcca85ef208ec5f25817c",
+      "bytes": 218
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/emergency-blanket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/emergency-blanket.svg",
+      "sha256": "0e8c12f1e3ca175ab377f7c857ddd6ef911823b87d472a6c5b62d98d4f30aef4",
+      "bytes": 221
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/first-aid.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/first-aid.svg",
+      "sha256": "5f814312100cf1b7ea4e4351f2afc444c928c0afe192813da221b01fa3ee4fa3",
+      "bytes": 234
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/fleece.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/fleece.svg",
+      "sha256": "e5ffcc3009dc77cefbe82d8f4cf71692c2bc704d6c7f42e0068e3e1c19a691a3",
+      "bytes": 239
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/gaiters.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/gaiters.svg",
+      "sha256": "5b1b7626d9f5e4208f825fe321fdbb4fd848ceb3cc1b6116232c9b1bda216cc3",
+      "bytes": 220
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/goggles.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/goggles.svg",
+      "sha256": "d9f110e57b3e748b11cb1e9beed5f80174bcd70d3076bfa9dc5f449eb7078656",
+      "bytes": 228
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/headlamp.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/headlamp.svg",
+      "sha256": "a2360d59e8b0a8297029b635a6ecba75c93a94a8f0e93e91ea76530bab822e58",
+      "bytes": 217
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/hiking-boots.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/hiking-boots.svg",
+      "sha256": "f32e26d3267bf43b1d9a115f94f49ab0d01a47933addcb797f6e7f87f21ae11d",
+      "bytes": 250
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/ice-axe.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/ice-axe.svg",
+      "sha256": "cf1c18f2a0b14044d47e9dba16f5f81727307f2308719ad9d65e7e75469c67ab",
+      "bytes": 223
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/insulated-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/insulated-gloves.svg",
+      "sha256": "279063b5b5513e512b85f0867e548503f774c8947bade9054b405f2941bd0767",
+      "bytes": 291
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/liner-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/liner-gloves.svg",
+      "sha256": "31cc7fb04639cf7356eb76571cfe1a03ba98dcb3d816addad508cfd9385d2f0f",
+      "bytes": 284
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/microspikes.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/microspikes.svg",
+      "sha256": "f68543394e5c6c79f7c486355c2cadbf669c8b1547e8988cd1d0209e763b8cc1",
+      "bytes": 228
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/navigation.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/navigation.svg",
+      "sha256": "b0c0b296765fe891f55596491667943fc0fba628dcbcfe1c253fa68dc9d9f363",
+      "bytes": 226
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/neck-gaiter.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/neck-gaiter.svg",
+      "sha256": "20b4ad04d82aa75b8beeb5c4595ad4bccba8030bfad6bd8be43dcaa3ddf5e2a6",
+      "bytes": 228
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/pack-cover.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/pack-cover.svg",
+      "sha256": "f7e80ed160b06077ff007558a84d4ee56e2a5823f75ae6df67b385aceab0a1ef",
+      "bytes": 217
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/power-bank.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/power-bank.svg",
+      "sha256": "bdf869f75630ec95f63ed1dceac45a2c81c9d6608594d366d34a4592339e2ecc",
+      "bytes": 206
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/rain-jacket.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/rain-jacket.svg",
+      "sha256": "9142a404590e719ad8283fafffea35f1925363ed3e7b56c56eedb4f9717b0c1e",
+      "bytes": 250
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/rain-pants.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/rain-pants.svg",
+      "sha256": "a8edb49689c09775d9cb28ca4becee9eb5bdbbd345464fb76be050ec9c1d2fd9",
+      "bytes": 221
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/snacks.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/snacks.svg",
+      "sha256": "53e4969235c9c88aa33d8ae6321631e9debe663dac927a40489e89b44027154a",
+      "bytes": 220
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/sun-hat.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sun-hat.svg",
+      "sha256": "b8973cb78fb77d1e2804c06967623b0c897d59b1b9a3f8f4364cf9dc5c4cbaa6",
+      "bytes": 223
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/sunglasses.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sunglasses.svg",
+      "sha256": "5776842de1826a5926f9b1dad0873a8ea3c7b6f8b50ec55d7374cb688494066b",
+      "bytes": 237
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/sunscreen.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/sunscreen.svg",
+      "sha256": "d50af7d0340a92b0e955f2123966152057dd2427dc1cc101ba7ebd4c754a95b3",
+      "bytes": 214
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/thermos.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/thermos.svg",
+      "sha256": "36a6e8e3b45124b6f8aceb05a306f921609c04c976aac65f22d961e1e677d261",
+      "bytes": 213
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/trekking-poles.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/trekking-poles.svg",
+      "sha256": "3a52ed7eded4add87e5c96d458257ca64b9e4a065932e911cd66da9041803af7",
+      "bytes": 240
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/warm-socks.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/warm-socks.svg",
+      "sha256": "bad9265c93d25090a4ffd5b6b15db2e2863c172614384121649bdd0582de6d6c",
+      "bytes": 222
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/water-bottle.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/water-bottle.svg",
+      "sha256": "094d525cdd6c7eaffda3bab00e514fb1eaa74224fe285bf1ba836d985a17347c",
+      "bytes": 214
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/water-filter.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/water-filter.svg",
+      "sha256": "89d7427137f632ebe81bcae119a410b4a9258bc589f3c17463991591d07f480d",
+      "bytes": 219
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/waterproof-gloves.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/waterproof-gloves.svg",
+      "sha256": "ed4bc0b94a7da4a986cd523c6b06fa210c3fdaa9077051c0f99a1133e34c739e",
+      "bytes": 292
+    },
+    {
+      "source": "reference/site/assets/icons/equipment/windbreaker.svg",
+      "target": "design/assets/forecast-v5/assets/icons/equipment/windbreaker.svg",
+      "sha256": "2d92f2895b8d1defcac1a338c82b2453030a49d7ff2a0e662c889e4aabadab0a",
+      "bytes": 233
+    },
+    {
+      "source": "reference/site/assets/icons/fog-day.svg",
+      "target": "apps/web/public/new-design/icons/fog-day.svg",
+      "sha256": "5c8107e2c932ffa12df74166d21e77802d67116ccb59486f5d06712ada6f31c4",
+      "bytes": 664
+    },
+    {
+      "source": "reference/site/assets/icons/fog-night.svg",
+      "target": "apps/web/public/new-design/icons/fog-night.svg",
+      "sha256": "a3b49f5d7ded04499c917c68f9e740b97e3526b0db2f53f09fc06bdb286ab3af",
+      "bytes": 648
+    },
+    {
+      "source": "reference/site/assets/icons/freezing-rain.svg",
+      "target": "apps/web/public/new-design/icons/freezing-rain.svg",
+      "sha256": "2f5f6ff67a8febafc30447acc57ce052e8a300bc270bcf082f37448ef178f1a6",
+      "bytes": 392
+    },
+    {
+      "source": "reference/site/assets/icons/gust.svg",
+      "target": "apps/web/public/new-design/icons/gust.svg",
+      "sha256": "6ff1be39c75fa57f491aa5a92d93fff8eb7e583bcfd1388d5ccdd1ff42491d92",
+      "bytes": 269
+    },
+    {
+      "source": "reference/site/assets/icons/heavy-rain.svg",
+      "target": "apps/web/public/new-design/icons/heavy-rain.svg",
+      "sha256": "17663896ac9ebe5dbdc64542d4aa812bba74da8f1a6013de60596794a85f6f00",
+      "bytes": 336
+    },
+    {
+      "source": "reference/site/assets/icons/heavy-snow.svg",
+      "target": "apps/web/public/new-design/icons/heavy-snow.svg",
+      "sha256": "1270bd807649afd299e090a77a156b147eea8722b0eaf62c8427d2ed891ff4a9",
+      "bytes": 501
+    },
+    {
+      "source": "reference/site/assets/icons/hike.svg",
+      "target": "apps/web/public/new-design/icons/hike.svg",
+      "sha256": "539b9697c7e8ce05a0415d81a62fb823601692c8c584cc11856d28d016b29ddb",
+      "bytes": 286
+    },
+    {
+      "source": "reference/site/assets/icons/instagram.svg",
+      "target": "apps/web/public/new-design/icons/instagram.svg",
+      "sha256": "32275f2750da25c5906882b1217248d955fb71b62ebde7466c2d7d1e0e5c77d9",
+      "bytes": 299
+    },
+    {
+      "source": "reference/site/assets/icons/lock.svg",
+      "target": "apps/web/public/new-design/icons/lock.svg",
+      "sha256": "8dfc4bfcb0f9c96e1803e8c14862a0b1a7b88d50107be412afcd69e8c313cd48",
+      "bytes": 263
+    },
+    {
+      "source": "reference/site/assets/icons/logout.svg",
+      "target": "apps/web/public/new-design/icons/logout.svg",
+      "sha256": "85365e1cffefcdcc9d75bfb4f68b645142e6373acc0f7094e0e8bff300fb6f63",
+      "bytes": 219
+    },
+    {
+      "source": "reference/site/assets/icons/moon.svg",
+      "target": "apps/web/public/new-design/icons/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "bytes": 236
+    },
+    {
+      "source": "reference/site/assets/icons/mostly-clear-day.svg",
+      "target": "apps/web/public/new-design/icons/mostly-clear-day.svg",
+      "sha256": "99a5eb9394b786bded6deba3ac07fb0d64c0816447751db83cbbd0ca88842c6a",
+      "bytes": 481
+    },
+    {
+      "source": "reference/site/assets/icons/mostly-clear-night.svg",
+      "target": "apps/web/public/new-design/icons/mostly-clear-night.svg",
+      "sha256": "f40e3f84a2d24654fa744fd3ab287af6e3e5f801987cec769d7a344dbe985c49",
+      "bytes": 463
+    },
+    {
+      "source": "reference/site/assets/icons/partly-cloudy-day.svg",
+      "target": "apps/web/public/new-design/icons/partly-cloudy-day.svg",
+      "sha256": "0eb8cffde2b13b4429e67a58e2b6bb28a11977fa4da62a6aa74ae061eca3064c",
+      "bytes": 519
+    },
+    {
+      "source": "reference/site/assets/icons/partly-cloudy-night.svg",
+      "target": "apps/web/public/new-design/icons/partly-cloudy-night.svg",
+      "sha256": "4751adef35db48d24fd770b7b1ac3054b01cc2a0f28bdfd4f9c25490feaf339f",
+      "bytes": 503
+    },
+    {
+      "source": "reference/site/assets/icons/rain.svg",
+      "target": "apps/web/public/new-design/icons/rain.svg",
+      "sha256": "59e35f8631c119cab4c56527739aa25b06bbf5baaf20c523eb3e5db8fd8f7096",
+      "bytes": 320
+    },
+    {
+      "source": "reference/site/assets/icons/refresh.svg",
+      "target": "apps/web/public/new-design/icons/refresh.svg",
+      "sha256": "200fa635c9b02241448d0f191963a95dcf8bf672c3be7c521936bba37596f669",
+      "bytes": 213
+    },
+    {
+      "source": "reference/site/assets/icons/rime-fog.svg",
+      "target": "apps/web/public/new-design/icons/rime-fog.svg",
+      "sha256": "a207c34a6ddbc57f10da481ee94d8f16218036848c467d340e92be87ee3a3e06",
+      "bytes": 275
+    },
+    {
+      "source": "reference/site/assets/icons/showers-night.svg",
+      "target": "apps/web/public/new-design/icons/showers-night.svg",
+      "sha256": "791d8d87f82803414fc728560e06a361868cfa6b801ba873b7cd40250966f124",
+      "bytes": 582
+    },
+    {
+      "source": "reference/site/assets/icons/showers.svg",
+      "target": "apps/web/public/new-design/icons/showers.svg",
+      "sha256": "eb08a9278fb1626a3193ab34f1244e8a0f4daec7776dccc0533bf64e83f8ecc6",
+      "bytes": 598
+    },
+    {
+      "source": "reference/site/assets/icons/snow-grains.svg",
+      "target": "apps/web/public/new-design/icons/snow-grains.svg",
+      "sha256": "7b83e9610a7f24e59282271c9eec6e38ec8a91935c0df763814a1ddae08c79b6",
+      "bytes": 337
+    },
+    {
+      "source": "reference/site/assets/icons/snow.svg",
+      "target": "apps/web/public/new-design/icons/snow.svg",
+      "sha256": "856d54513d9370420564aa1b5ddbdd48aa0897f35e86e3334973b7483e482724",
+      "bytes": 429
+    },
+    {
+      "source": "reference/site/assets/icons/subscription.svg",
+      "target": "apps/web/public/new-design/icons/subscription.svg",
+      "sha256": "38055e9ab535f1f24db8f3129766946947bbb7424d71ab387fb298cd99b13384",
+      "bytes": 245
+    },
+    {
+      "source": "reference/site/assets/icons/sun.svg",
+      "target": "apps/web/public/new-design/icons/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "bytes": 318
+    },
+    {
+      "source": "reference/site/assets/icons/telegram.svg",
+      "target": "apps/web/public/new-design/icons/telegram.svg",
+      "sha256": "01b23791e9c9ed430e070213c92061cad7bb50350a54e3ddd1a673b468b63875",
+      "bytes": 224
+    },
+    {
+      "source": "reference/site/assets/icons/temperature.svg",
+      "target": "apps/web/public/new-design/icons/temperature.svg",
+      "sha256": "e382b6e4cd80c4f975a5384ddf1e0eac9fff40f85875862313ffb167bdc9c3f1",
+      "bytes": 232
+    },
+    {
+      "source": "reference/site/assets/icons/thunderstorm-hail.svg",
+      "target": "apps/web/public/new-design/icons/thunderstorm-hail.svg",
+      "sha256": "461ea906ba4d5c3e31b89c8b288511a2468cd2abb48eb28e8c7565c39ee1550e",
+      "bytes": 423
+    },
+    {
+      "source": "reference/site/assets/icons/thunderstorm.svg",
+      "target": "apps/web/public/new-design/icons/thunderstorm.svg",
+      "sha256": "c10cd0b0710d796ebb3cfcd2fecd22fcbd924d0554d263e472ceeaacf3cd5902",
+      "bytes": 428
+    },
+    {
+      "source": "reference/site/assets/icons/ui/arrow-left.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/arrow-left.svg",
+      "sha256": "6080ee803bc917bc97b26d9b842c69aa3c2c4bd5526fbe987820a626aec65bd7",
+      "bytes": 198
+    },
+    {
+      "source": "reference/site/assets/icons/ui/arrow-right.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/arrow-right.svg",
+      "sha256": "cdfada482aaa0ace6429922d87fb042dad77d75f46db5247930d2ad6619aafcd",
+      "bytes": 199
+    },
+    {
+      "source": "reference/site/assets/icons/ui/ascent-descent.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/ascent-descent.svg",
+      "sha256": "03de61ce8d16ec8c3987c9b918b6ed7209dcba598b1b7eb0aa2e5499f442920d",
+      "bytes": 241
+    },
+    {
+      "source": "reference/site/assets/icons/ui/chevron-down.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/chevron-down.svg",
+      "sha256": "d0bc08118243e6de09497c87bcb6e1fb286410fc8bdfc00b27c521fc8d085836",
+      "bytes": 190
+    },
+    {
+      "source": "reference/site/assets/icons/ui/chevron-up.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/chevron-up.svg",
+      "sha256": "76455f05483e99684221101d27c3c0cb6e5e60be9280133848354aefffe1072c",
+      "bytes": 191
+    },
+    {
+      "source": "reference/site/assets/icons/ui/clock.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/clock.svg",
+      "sha256": "fa7f65872ee0e51e4d35114be92863b7c365a47e27bbc2366098860fb53b3d99",
+      "bytes": 220
+    },
+    {
+      "source": "reference/site/assets/icons/ui/close.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/close.svg",
+      "sha256": "ac5b27ea9930d8ec9293ab381d7960b23f1d37d13586ae6a0e83adcb616011fd",
+      "bytes": 198
+    },
+    {
+      "source": "reference/site/assets/icons/ui/day-collapse.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/day-collapse.svg",
+      "sha256": "d1f9f6952dfab31e496b7ca4bc09050d38a615ba9bf1d1e15137e255feafaa39",
+      "bytes": 222
+    },
+    {
+      "source": "reference/site/assets/icons/ui/day-expand.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/day-expand.svg",
+      "sha256": "4dd84af8db576b6d22bf5a8462032e9a7dbc32bf137d1cd303663f7e2087f849",
+      "bytes": 220
+    },
+    {
+      "source": "reference/site/assets/icons/ui/distance.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/distance.svg",
+      "sha256": "f582766534cb6fc766a3038f43c51b4a14f412469b8da76fe25f8bedc2133efc",
+      "bytes": 278
+    },
+    {
+      "source": "reference/site/assets/icons/ui/download.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/download.svg",
+      "sha256": "22bfb2426a17e3b314c93d0cf69aeb7919d4e033623bcccd7d345ed98308591f",
+      "bytes": 212
+    },
+    {
+      "source": "reference/site/assets/icons/ui/flag.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/flag.svg",
+      "sha256": "b44f5909a3a33e64d1310038a76af50428b9abe3800ba4b494d62420ff449c86",
+      "bytes": 219
+    },
+    {
+      "source": "reference/site/assets/icons/ui/gauge.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/gauge.svg",
+      "sha256": "8dbb10c05e01e47b2ea3e68098ec4e848a24b9b1af87c96138aaf92ebe8f5755",
+      "bytes": 230
+    },
+    {
+      "source": "reference/site/assets/icons/ui/refresh.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/refresh.svg",
+      "sha256": "f985f1d7730d61322417a4ce03eef38c3e205984c7b2f8dfce13953324224285",
+      "bytes": 208
+    },
+    {
+      "source": "reference/site/assets/icons/ui/share.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/share.svg",
+      "sha256": "f9e0536ae104d5fe4696de721c4be6e1afdf6d51e79ad50e7ecd52f707e59abf",
+      "bytes": 287
+    },
+    {
+      "source": "reference/site/assets/icons/ui/stopwatch.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/stopwatch.svg",
+      "sha256": "4e68406776e50d7da9bac260d9128935259fc32f216e046590d58d7fcfcdbd6e",
+      "bytes": 243
+    },
+    {
+      "source": "reference/site/assets/icons/ui/zoom.svg",
+      "target": "design/assets/forecast-v5/assets/icons/ui/zoom.svg",
+      "sha256": "af16cdd44ca921e7e7f13115d1f58012515b2fce7aed3c3225f346a69058b865",
+      "bytes": 231
+    },
+    {
+      "source": "reference/site/assets/icons/unknown.svg",
+      "target": "apps/web/public/new-design/icons/unknown.svg",
+      "sha256": "b9e6eff9c0263e70e335f87c223a4f82fd184c2d70fcdd5c292f5a11b14613c5",
+      "bytes": 251
+    },
+    {
+      "source": "reference/site/assets/icons/user-active.svg",
+      "target": "apps/web/public/new-design/icons/user-active.svg",
+      "sha256": "fbc7d24d4a269b46ba37339485a05f9335d9cb5048e38c4f1efa6710cd4c36b3",
+      "bytes": 258
+    },
+    {
+      "source": "reference/site/assets/icons/user.svg",
+      "target": "apps/web/public/new-design/icons/user.svg",
+      "sha256": "544343939f397de4de2a955d41a40aa831bda7e5b57ab8fb81e4a939b4e49417",
+      "bytes": 238
+    },
+    {
+      "source": "reference/site/assets/icons/visibility.svg",
+      "target": "apps/web/public/new-design/icons/visibility.svg",
+      "sha256": "83662021b3400005a20078f9dc7423acb3af84de0f61f91c535ca42e52266c1e",
+      "bytes": 261
+    },
+    {
+      "source": "reference/site/assets/icons/warning.svg",
+      "target": "apps/web/public/new-design/icons/warning.svg",
+      "sha256": "dcf54becae154c46b0bce3fda0d18dcdf0b9c59d25660d3aa7ab1fa993d1d50c",
+      "bytes": 349
+    },
+    {
+      "source": "reference/site/assets/icons/wind.svg",
+      "target": "apps/web/public/new-design/icons/wind.svg",
+      "sha256": "d47ab43ef8278e37ece231fbef042e46833b5471a56d01bfbf9d095018858d16",
+      "bytes": 244
+    },
+    {
+      "source": "reference/site/assets/share-backgrounds/dark.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "bytes": 106428
+    },
+    {
+      "source": "reference/site/assets/share-backgrounds/light.webp",
+      "target": "apps/web/public/new-design/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "bytes": 155454
+    },
+    {
+      "source": "reference/site/favicon.svg",
+      "target": "apps/web/public/new-design/brand-mark.svg",
+      "sha256": "0329f64530069a9e8d72b6da78062c594f8c82879d116dfd9f66bc4fa8066401",
+      "bytes": 272
+    },
+    {
+      "source": "screens/catalog/default-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/catalog/default-desktop-dark.jpg",
+      "sha256": "9e947a2dbffdae9afe5ff87d7005ddedfb378430a150db61d578cfe03378ef8e",
+      "bytes": 675014
+    },
+    {
+      "source": "screens/catalog/default-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/catalog/default-desktop-light.jpg",
+      "sha256": "c798355b0c96ec5100a9ead454b06b01dbe4fd41b99de1b487cea0c4b772b6cd",
+      "bytes": 668076
+    },
+    {
+      "source": "screens/catalog/default-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/catalog/default-mobile-dark.jpg",
+      "sha256": "600e88b3352eb3bea78d7ffbcb72ee58d0d52977d4821d73cc1286726df174f1",
+      "bytes": 1534828
+    },
+    {
+      "source": "screens/catalog/default-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/catalog/default-mobile-light.jpg",
+      "sha256": "68577c689d18d3b44e143df997cce879627d0bd029e489454a7bd9544cceb5b3",
+      "bytes": 1515073
+    },
+    {
+      "source": "screens/components/charts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/charts-desktop-dark.jpg",
+      "sha256": "efc3c490e0bc4df0d58d0b4ef1b2450799c9d21474da2048a172a787f8c83d10",
+      "bytes": 239239
+    },
+    {
+      "source": "screens/components/charts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/charts-desktop-light.jpg",
+      "sha256": "36e24a69b589352aea07c595699119e56362fa31f9a949af8235555c980ebe7d",
+      "bytes": 271896
+    },
+    {
+      "source": "screens/components/charts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/charts-mobile-dark.jpg",
+      "sha256": "3c4b6e3168172c191fce126e6cabcb4e3780ac1d65f7b7f3be0027f8a32df3d4",
+      "bytes": 299757
+    },
+    {
+      "source": "screens/components/charts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/charts-mobile-light.jpg",
+      "sha256": "bd6b8c597b9753ef3b81c6d4f1011adb0a37874ddc44f0310488c49fddc60171",
+      "bytes": 329198
+    },
+    {
+      "source": "screens/components/gear-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/gear-desktop-dark.jpg",
+      "sha256": "8d78d7505a0b1fdbaef7376d303fa004e7372a1429ba2767155ed00c57252bcd",
+      "bytes": 310140
+    },
+    {
+      "source": "screens/components/gear-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/gear-desktop-light.jpg",
+      "sha256": "fc3ec5638b6e3f6bb235f3a9f1491bc9f3ba3f03b26f7f8fe3ca30f37133c51d",
+      "bytes": 354979
+    },
+    {
+      "source": "screens/components/gear-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/gear-mobile-dark.jpg",
+      "sha256": "c8d3f900613516357663638446280d935f54159355f2a4cbafbda93e03802e7b",
+      "bytes": 502049
+    },
+    {
+      "source": "screens/components/gear-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/gear-mobile-light.jpg",
+      "sha256": "c53e4fb49fcc910c35905a1994a4437033222f85ef452fbaf9f4232986feea78",
+      "bytes": 548333
+    },
+    {
+      "source": "screens/components/status-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/status-desktop-dark.jpg",
+      "sha256": "5468e996b759d2ca05c28897466430fd512aff09a8db6f47d673d3b4daa44c21",
+      "bytes": 213479
+    },
+    {
+      "source": "screens/components/status-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/status-desktop-light.jpg",
+      "sha256": "1700091fca60d1b8d89d4dd245e452c2a4ccaaa28c0929b068238df3853b4c2e",
+      "bytes": 245752
+    },
+    {
+      "source": "screens/components/status-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/components/status-mobile-dark.jpg",
+      "sha256": "ddb0725827913d667a385748fdf486c91ca2912d5e4bb52515a202784309d9af",
+      "bytes": 262551
+    },
+    {
+      "source": "screens/components/status-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/components/status-mobile-light.jpg",
+      "sha256": "992b1198740ca0b49659c13e165cb1e0c2d6ee1cfa83489579ffcb467d02dd46",
+      "bytes": 292741
+    },
+    {
+      "source": "screens/destination/3h-experts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/3h-experts-desktop-dark.jpg",
+      "sha256": "e06f37de9b3a21ad1bc894c9687ebc96de2989563ee39b75032910bef1754134",
+      "bytes": 256493
+    },
+    {
+      "source": "screens/destination/3h-experts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/3h-experts-desktop-light.jpg",
+      "sha256": "5c1351c29e5ff875de7527c7079577d7af65a5f3b1c6f6fef87099d39fb62040",
+      "bytes": 284910
+    },
+    {
+      "source": "screens/destination/3h-experts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/3h-experts-mobile-dark.jpg",
+      "sha256": "8274dc8351ff1dbf7e65f6efaf3fc41d5c98bcc77483c811204f883c1530cfba",
+      "bytes": 272870
+    },
+    {
+      "source": "screens/destination/3h-experts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/3h-experts-mobile-light.jpg",
+      "sha256": "f581c836037202c779b8c4003ba5b1b14ac1cc1b0a44b67013890137740ef7f3",
+      "bytes": 298029
+    },
+    {
+      "source": "screens/destination/6h-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-desktop-dark.jpg",
+      "sha256": "04e5d51ff4f6b395ec449b94d9c9ba4bec80748ad80c64cd9c84c1985f32299e",
+      "bytes": 203786
+    },
+    {
+      "source": "screens/destination/6h-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-desktop-light.jpg",
+      "sha256": "0020c212b07f5de95087912705e2f0229a81d1da5c0db7a2d1f2e69415e735db",
+      "bytes": 233629
+    },
+    {
+      "source": "screens/destination/6h-experts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-experts-desktop-dark.jpg",
+      "sha256": "02e2a550bbedd1c10f72a1780b54d9a56d06fc3770e984e2e05b8b1fb5217ea0",
+      "bytes": 258155
+    },
+    {
+      "source": "screens/destination/6h-experts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-experts-desktop-light.jpg",
+      "sha256": "e9a5f8c538db52cd67560e34d0f6c81cebe14910e2da0bc531b4ad5e497d327e",
+      "bytes": 288030
+    },
+    {
+      "source": "screens/destination/6h-experts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-experts-mobile-dark.jpg",
+      "sha256": "1d2dac03b9afd877f2c65f994403410470fc9247c0e37dd45cea461445ca6ecd",
+      "bytes": 279535
+    },
+    {
+      "source": "screens/destination/6h-experts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-experts-mobile-light.jpg",
+      "sha256": "4693b51b2d4903ef24a6630532005e8a417ee63360fbecfe8299d8a5b1ef348f",
+      "bytes": 303230
+    },
+    {
+      "source": "screens/destination/6h-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-mobile-dark.jpg",
+      "sha256": "534a529f339fff8d02037ff19ea4fd487257a9a5de206b1fc244dbcd1a61e245",
+      "bytes": 218895
+    },
+    {
+      "source": "screens/destination/6h-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/6h-mobile-light.jpg",
+      "sha256": "fd4cf8875acdbd02b0ccbfb09888513f7dbdf585f2188b891fa0cf4e34a2b8e5",
+      "bytes": 241302
+    },
+    {
+      "source": "screens/destination/daily-experts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/daily-experts-desktop-dark.jpg",
+      "sha256": "db03d0dceed3b9720bae45286cc69ac231f5416433d3223ceae2b099ad903352",
+      "bytes": 241267
+    },
+    {
+      "source": "screens/destination/daily-experts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/daily-experts-desktop-light.jpg",
+      "sha256": "f24ca249244e0dbd6beb8290e4534033671651f53ce9019c5daac656d5089288",
+      "bytes": 271438
+    },
+    {
+      "source": "screens/destination/daily-experts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/daily-experts-mobile-dark.jpg",
+      "sha256": "1a5d2f6aadab6220b7bfa252d2b28c3a9169085aa3adf0ff0165a835370e9f54",
+      "bytes": 291117
+    },
+    {
+      "source": "screens/destination/daily-experts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/daily-experts-mobile-light.jpg",
+      "sha256": "30d4706021a5793dad71e82d19983b9d6534c756b2ef28876d51230a3743fc9e",
+      "bytes": 315575
+    },
+    {
+      "source": "screens/destination/default-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/destination-desktop-dark.jpg",
+      "sha256": "e06e98b35a2ca1d42b1a36cf1e37a6e687981ce0820163a5c34dd69ce62c4e86",
+      "bytes": 197074
+    },
+    {
+      "source": "screens/destination/default-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/destination-desktop-light.jpg",
+      "sha256": "fe2ecbc18579c3ccce733dac7ca8fb39acd3f35f554e7f0013a55fe5310c7adb",
+      "bytes": 227020
+    },
+    {
+      "source": "screens/destination/default-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/destination-mobile-dark.jpg",
+      "sha256": "b7acb6a80772fe696a0c4a35fb80f0c5c6beaf61abfa9b54789856a1834ec801",
+      "bytes": 226409
+    },
+    {
+      "source": "screens/destination/default-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/destination-mobile-light.jpg",
+      "sha256": "0a76b3b33d26461bf850fb73bfcc660b54c7138de6f38c0005ef0eeb792cecc9",
+      "bytes": 247772
+    },
+    {
+      "source": "screens/destination/error-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/error-desktop-dark.jpg",
+      "sha256": "aa9cef900ec280185c7707e53e8270a6a31d9e4c9657ea195c8d7b98a62d846f",
+      "bytes": 167876
+    },
+    {
+      "source": "screens/destination/error-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/error-desktop-light.jpg",
+      "sha256": "a03061018e374f2fc08996ea093cec4cf8732283f77896aed17eb4c760193aa6",
+      "bytes": 201593
+    },
+    {
+      "source": "screens/destination/error-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/error-mobile-dark.jpg",
+      "sha256": "b07091e352b7280048f6230c2772007439675b9988f3a4b06bceb09590b5ce79",
+      "bytes": 166024
+    },
+    {
+      "source": "screens/destination/error-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/error-mobile-light.jpg",
+      "sha256": "8ec807c5f9ee97e997ac2467a56bc73735129faa60ec458c5deadce09c6675ed",
+      "bytes": 184471
+    },
+    {
+      "source": "screens/destination/gaps-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/gaps-desktop-dark.jpg",
+      "sha256": "76ba1b8af92b47de231faf9899ee961886a6f6b7449f9e2dbba42ce47c99aef5",
+      "bytes": 232674
+    },
+    {
+      "source": "screens/destination/gaps-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/gaps-desktop-light.jpg",
+      "sha256": "a3589d2767dea02bc99e691183dde0b8400e90e5336b2fe368af1d765f5bd7d3",
+      "bytes": 263336
+    },
+    {
+      "source": "screens/destination/gaps-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/gaps-mobile-dark.jpg",
+      "sha256": "edf107b2eff9ca36d37a3c95d9276fc994b9c918321e766a9dbc3354dd62fc18",
+      "bytes": 275605
+    },
+    {
+      "source": "screens/destination/gaps-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/gaps-mobile-light.jpg",
+      "sha256": "91e1a8f96f25c3be6e6d0da94ef10cc26f3414c8a02a0440280f71d57e013981",
+      "bytes": 301463
+    },
+    {
+      "source": "screens/destination/hourly-experts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/hourly-experts-desktop-dark.jpg",
+      "sha256": "55dab26340e42076acb2e925d44cbbbc548867ebc6727f318d0f6d8d25bce2c1",
+      "bytes": 240982
+    },
+    {
+      "source": "screens/destination/hourly-experts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/hourly-experts-desktop-light.jpg",
+      "sha256": "d6acd99c5ebceb37503c48295625b42cbaf96fbe6825f4bdc36dc34285c2c4ef",
+      "bytes": 271819
+    },
+    {
+      "source": "screens/destination/hourly-experts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/hourly-experts-mobile-dark.jpg",
+      "sha256": "7938275691191adbaa98c61dd4697d2d57542c453fdabe25524d7f634aad4ab7",
+      "bytes": 266213
+    },
+    {
+      "source": "screens/destination/hourly-experts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/hourly-experts-mobile-light.jpg",
+      "sha256": "068d814c51ef86e8288cfca1bc69339f8c24029f3452716ba8cc2bdf89fae744",
+      "bytes": 293907
+    },
+    {
+      "source": "screens/destination/loading-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/loading-desktop-dark.jpg",
+      "sha256": "d1bd06562cea737bc43c11442181d1c519a6b899f9a547ec889094a77f055301",
+      "bytes": 173450
+    },
+    {
+      "source": "screens/destination/loading-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/loading-desktop-light.jpg",
+      "sha256": "b3c27af02ad0acdf4beb71207e4fab96f0d9819b29cda54b3608253ed897a283",
+      "bytes": 206461
+    },
+    {
+      "source": "screens/destination/loading-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/loading-mobile-dark.jpg",
+      "sha256": "63c4af5d07c4ab5efd37ccfe0f803aa59cf163922c12a90aa6975408c981b649",
+      "bytes": 166163
+    },
+    {
+      "source": "screens/destination/loading-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/loading-mobile-light.jpg",
+      "sha256": "06770cd1b69654eb8910e202a1ea9620c3f268aa5c4a88f0e6dff3f568d64b18",
+      "bytes": 186226
+    },
+    {
+      "source": "screens/destination/mixed-experts-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/mixed-experts-desktop-dark.jpg",
+      "sha256": "4d34417c60fe4c07fe7afc8ebd9286c6a5f432d4a06381c601e26cdc1bc14b51",
+      "bytes": 240896
+    },
+    {
+      "source": "screens/destination/mixed-experts-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/mixed-experts-desktop-light.jpg",
+      "sha256": "2ed36ed47a3d4c7bc9309d69540dfb8556897f5a39901d86192aa95e0fd16c77",
+      "bytes": 271855
+    },
+    {
+      "source": "screens/destination/mixed-experts-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/mixed-experts-mobile-dark.jpg",
+      "sha256": "91b2bc337a00552b742582f88c4c6fcdbb1a50f0a93de4f4bbcd9645c3af5573",
+      "bytes": 265440
+    },
+    {
+      "source": "screens/destination/mixed-experts-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/mixed-experts-mobile-light.jpg",
+      "sha256": "c4752a61cc3e2fe9dee9de4aea981273ee48ba613608cfd6521725faee39add6",
+      "bytes": 293295
+    },
+    {
+      "source": "screens/destination/no-data-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/no-data-desktop-dark.jpg",
+      "sha256": "e34ff73b5fe8f33ed9ef70c1672d98a291facfa5eb40b3e333d6a213f5c91a3b",
+      "bytes": 168410
+    },
+    {
+      "source": "screens/destination/no-data-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/no-data-desktop-light.jpg",
+      "sha256": "bfcd670f6a24611be547310b687eaaa6fad76972560b293bb43f899854b31bcc",
+      "bytes": 202082
+    },
+    {
+      "source": "screens/destination/no-data-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/no-data-mobile-dark.jpg",
+      "sha256": "f4ae2a6c0147e91e69514fd56eaaf69b1a00f6933878c75a62ffbc30b5e9ca76",
+      "bytes": 167137
+    },
+    {
+      "source": "screens/destination/no-data-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/no-data-mobile-light.jpg",
+      "sha256": "15f0c478ba2f89397540885bf5a0ce30405ef67a0b8f7adf8bd3443935fad04f",
+      "bytes": 185621
+    },
+    {
+      "source": "screens/destination/red-warning-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/red-warning-desktop-dark.jpg",
+      "sha256": "0e0d0effa5a70329ba95721a54055dbd649ba47bffb7ad250e5443c488228912",
+      "bytes": 258982
+    },
+    {
+      "source": "screens/destination/red-warning-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/red-warning-desktop-light.jpg",
+      "sha256": "3627195b74cd44bdc0cbb737b0971c7c55183f09c6181b7b6d6c9bcadab7b135",
+      "bytes": 289436
+    },
+    {
+      "source": "screens/destination/red-warning-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/red-warning-mobile-dark.jpg",
+      "sha256": "4330e6c3ff4d0abb3b807187e5bcb919a87fcd007996bf39c236a85fc9ff633c",
+      "bytes": 290879
+    },
+    {
+      "source": "screens/destination/red-warning-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/red-warning-mobile-light.jpg",
+      "sha256": "d0a542b2014ddf2bd604d35ff9cd8ba67cb68f6caf35d9eca3f65b591f71e9c2",
+      "bytes": 314229
+    },
+    {
+      "source": "screens/destination/scrolled-end-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/destination-desktop-dark.jpg",
+      "sha256": "e06e98b35a2ca1d42b1a36cf1e37a6e687981ce0820163a5c34dd69ce62c4e86",
+      "bytes": 197074
+    },
+    {
+      "source": "screens/destination/scrolled-end-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/destination-desktop-light.jpg",
+      "sha256": "fe2ecbc18579c3ccce733dac7ca8fb39acd3f35f554e7f0013a55fe5310c7adb",
+      "bytes": 227020
+    },
+    {
+      "source": "screens/destination/scrolled-end-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/scrolled-end-mobile-dark.jpg",
+      "sha256": "6e676456402dd91732ae5bf95a5f4aa0cf28939113015cb866cba64e5a37f42a",
+      "bytes": 225895
+    },
+    {
+      "source": "screens/destination/scrolled-end-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/scrolled-end-mobile-light.jpg",
+      "sha256": "2575aa87ad51ff7419a1d7b4df7aace604d9c01071dfd835b1914702091606bd",
+      "bytes": 248395
+    },
+    {
+      "source": "screens/destination/unsupported-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/unsupported-desktop-dark.jpg",
+      "sha256": "d179796c7b867d88cfc49bf51cfcd6f69d585aa596c7b5e09eca82e3da2b6267",
+      "bytes": 196927
+    },
+    {
+      "source": "screens/destination/unsupported-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/unsupported-desktop-light.jpg",
+      "sha256": "358f0d925d3f6e37e91539b443e3b06ae0e7db3e138924a2e2d980a3c571cdce",
+      "bytes": 226848
+    },
+    {
+      "source": "screens/destination/unsupported-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/unsupported-mobile-dark.jpg",
+      "sha256": "a1405250e860c7d3d0c19b0cf33d008c37cef2f89a0a4fe5b0af09635b8cdb5b",
+      "bytes": 226074
+    },
+    {
+      "source": "screens/destination/unsupported-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/destination/unsupported-mobile-light.jpg",
+      "sha256": "4cffcb2b2d4c9def834b43e1e395fc8b1d26a97b65c8112972b2d52f5cfa3a35",
+      "bytes": 247416
+    },
+    {
+      "source": "screens/responsive/destination-responsive-desktop-1024-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-desktop-1024-dark.jpg",
+      "sha256": "4cfc46ad3832e31355a6e9344fc7c124badf1869e9c76afccebf1d4c182530cd",
+      "bytes": 152516
+    },
+    {
+      "source": "screens/responsive/destination-responsive-desktop-1024-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-desktop-1024-light.jpg",
+      "sha256": "8c4e6d2560b74c710511a8306346931f1caa910a5daf30f55325b3d40f454dc3",
+      "bytes": 170552
+    },
+    {
+      "source": "screens/responsive/destination-responsive-desktop-1920-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-desktop-1920-dark.jpg",
+      "sha256": "42d1756c51dec535febe0b1a3018b997adcd0bb0fe37ce36df50f716b0697478",
+      "bytes": 250364
+    },
+    {
+      "source": "screens/responsive/destination-responsive-desktop-1920-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-desktop-1920-light.jpg",
+      "sha256": "d2b184da975ba842b6dcd41fa2b23dc9a686bdddd302cf092646d75ad100e0ab",
+      "bytes": 297068
+    },
+    {
+      "source": "screens/responsive/destination-responsive-mobile-320-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-mobile-320-dark.jpg",
+      "sha256": "30445e1256ddcfce21ae0cffe40651145b2ab52f3005e84c42e3c8ad9df1ad52",
+      "bytes": 81678
+    },
+    {
+      "source": "screens/responsive/destination-responsive-mobile-320-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-mobile-320-light.jpg",
+      "sha256": "f30c97ac0e4a366bcd80af542e79c166ad2e42f73be9ff153aa86e2ba943e9e3",
+      "bytes": 88585
+    },
+    {
+      "source": "screens/responsive/destination-responsive-mobile-430-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-mobile-430-dark.jpg",
+      "sha256": "21610ed28f3e2b8922b3bef3f712d5f52eb41509e86ab25960304ea8ec3b6a28",
+      "bytes": 89920
+    },
+    {
+      "source": "screens/responsive/destination-responsive-mobile-430-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-mobile-430-light.jpg",
+      "sha256": "4fdd971a8e92ccb8329bffcf9974b142b9dc66096fb7b56272cb727a7b407cfa",
+      "bytes": 98076
+    },
+    {
+      "source": "screens/responsive/destination-responsive-tablet-768-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-tablet-768-dark.jpg",
+      "sha256": "25a4d430d5dfe90a5367105397d41852c756367292e0831f2b540ebdbada6a69",
+      "bytes": 131707
+    },
+    {
+      "source": "screens/responsive/destination-responsive-tablet-768-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/destination-responsive-tablet-768-light.jpg",
+      "sha256": "a9c7fa86e9a971578aba3f5498f8a8e605ffd5f1e118a8e0c1db0b6cbf5c043e",
+      "bytes": 148902
+    },
+    {
+      "source": "screens/responsive/route-responsive-desktop-1024-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-desktop-1024-dark.jpg",
+      "sha256": "2eed50759a8eab7b5413edb2aace15ad2f2925f8702316dabf7da5ef28ebf1d4",
+      "bytes": 207511
+    },
+    {
+      "source": "screens/responsive/route-responsive-desktop-1024-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-desktop-1024-light.jpg",
+      "sha256": "a111e356bb345dfc4f8c420fda9435fab286481d6de915cbec9a34f669add0b3",
+      "bytes": 240679
+    },
+    {
+      "source": "screens/responsive/route-responsive-desktop-1920-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-desktop-1920-dark.jpg",
+      "sha256": "f5a87ee5b6da83189984eb684bf09f68e2f4b279f7510cfefcf1d3671573e5cf",
+      "bytes": 313798
+    },
+    {
+      "source": "screens/responsive/route-responsive-desktop-1920-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-desktop-1920-light.jpg",
+      "sha256": "a6b3cffb22e7bfe046a3a4ec708cd138749f413337ba5ad48a5be054ca81d921",
+      "bytes": 379648
+    },
+    {
+      "source": "screens/responsive/route-responsive-mobile-320-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-mobile-320-dark.jpg",
+      "sha256": "3ef759506136efa83b22727947311be8d7bc65251a173344b968b74a24d57c85",
+      "bytes": 103504
+    },
+    {
+      "source": "screens/responsive/route-responsive-mobile-320-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-mobile-320-light.jpg",
+      "sha256": "50b9539313111f03f1de9a3127fcc0d6692497c2038dbf5093fc822677c651cd",
+      "bytes": 110396
+    },
+    {
+      "source": "screens/responsive/route-responsive-mobile-430-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-mobile-430-dark.jpg",
+      "sha256": "5183b102edc0bd52c7107dda052a3e4e66ebc29181d96d58e11dd6122dec571b",
+      "bytes": 121000
+    },
+    {
+      "source": "screens/responsive/route-responsive-mobile-430-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-mobile-430-light.jpg",
+      "sha256": "ec62e56190b88e51fa6907d217127ad2ea5dac631db8864ce4fe4c1052a2a3ae",
+      "bytes": 129218
+    },
+    {
+      "source": "screens/responsive/route-responsive-tablet-768-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-tablet-768-dark.jpg",
+      "sha256": "f8ba3e17043df7c53b5477ac4a8ff6b3e2238d4303789e9ac0e0029888219e2c",
+      "bytes": 163185
+    },
+    {
+      "source": "screens/responsive/route-responsive-tablet-768-light.jpg",
+      "target": "design/screens/forecast-v5/reference/responsive/route-responsive-tablet-768-light.jpg",
+      "sha256": "73ae0e5d7a8512a2f982126dfb9e47171688b3cc4189fbdbc3f85fcfd491322d",
+      "bytes": 182107
+    },
+    {
+      "source": "screens/route/change-route-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/change-route-desktop-dark.jpg",
+      "sha256": "79807376c80c7ca8b745b3d29b7c32b48d629ee9913fb6a6a569f24e46cb6dd0",
+      "bytes": 112676
+    },
+    {
+      "source": "screens/route/change-route-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/change-route-desktop-light.jpg",
+      "sha256": "54d31ebb86fce6266d8cff710c035c667fe3da007f36072cb22176f5f44899bc",
+      "bytes": 130784
+    },
+    {
+      "source": "screens/route/change-route-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/change-route-mobile-dark.jpg",
+      "sha256": "42e9f9b1983cefbeb27a93e83da0249222b0435cae1a8246af792bb0ba6c0fad",
+      "bytes": 114582
+    },
+    {
+      "source": "screens/route/change-route-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/change-route-mobile-light.jpg",
+      "sha256": "a381a42db35d2013865f7019fe986c60999e4c8c77b1a497981cbcee7caf5e45",
+      "bytes": 119890
+    },
+    {
+      "source": "screens/route/last-day-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/last-day-desktop-dark.jpg",
+      "sha256": "8e2128d25db222205d860d2389c6f21aa14118e0a33b87e7ede9e3e81597971b",
+      "bytes": 234801
+    },
+    {
+      "source": "screens/route/last-day-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/last-day-desktop-light.jpg",
+      "sha256": "5cd02a22c54279452e0c0fe3e9e3885b4820b14a50217a61b3264b0e6067c486",
+      "bytes": 279072
+    },
+    {
+      "source": "screens/route/last-day-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/last-day-mobile-dark.jpg",
+      "sha256": "9df5cb40818f0f4cf7c3c33c8d7f7cfa9ab29fcc2029651ebb16f856cdc778bc",
+      "bytes": 297351
+    },
+    {
+      "source": "screens/route/last-day-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/last-day-mobile-light.jpg",
+      "sha256": "b3b28f591906f8e34faee7a289b50b92bb09462a20e7212d6c916c9cc0787f45",
+      "bytes": 321272
+    },
+    {
+      "source": "screens/route/long-long-default-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-default-desktop-dark.jpg",
+      "sha256": "646c6553b4cfbc777a2803dfa6b78c7d4a173ac644731be737fcff2efc7376c3",
+      "bytes": 254608
+    },
+    {
+      "source": "screens/route/long-long-default-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-default-desktop-light.jpg",
+      "sha256": "b9ba9f0f26a19b3a33f6f79d4ab92f08d501f3237cc83c60cdb8b69f04ce224e",
+      "bytes": 299080
+    },
+    {
+      "source": "screens/route/long-long-default-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-default-mobile-dark.jpg",
+      "sha256": "26b95da0692f6f8d9fbb95f9f5748b9f6dedbd50037d088185ef598ce362e553",
+      "bytes": 305230
+    },
+    {
+      "source": "screens/route/long-long-default-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-default-mobile-light.jpg",
+      "sha256": "945a0e5cd0579ec4aed8ed2d94fb3ef1bfbfd679194389fd22de20448635f470",
+      "bytes": 329949
+    },
+    {
+      "source": "screens/route/long-long-end-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-end-desktop-dark.jpg",
+      "sha256": "0454cd1001761574164f82891e41825f1a1ff765e5d26112caef2778486c8777",
+      "bytes": 256473
+    },
+    {
+      "source": "screens/route/long-long-end-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-end-desktop-light.jpg",
+      "sha256": "2097dcadad36b49cfef2142b3fa8982858f8cffb82e6efd1047f11f2c8ee46f9",
+      "bytes": 301043
+    },
+    {
+      "source": "screens/route/long-long-end-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-end-mobile-dark.jpg",
+      "sha256": "c426a41caad5d111075495c1a22ec8114aea81a8f05fc7d0fa6ccc5a9dbe66ac",
+      "bytes": 312529
+    },
+    {
+      "source": "screens/route/long-long-end-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-end-mobile-light.jpg",
+      "sha256": "8d152ca683eab9a285e6b2762efb5ecaff03cc97415f7de694b32bd4c6bda80a",
+      "bytes": 337283
+    },
+    {
+      "source": "screens/route/long-long-open-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-open-desktop-dark.jpg",
+      "sha256": "f0062ecfe65db8f1756d623892747acd522a0f9b2042b322b6fce127c0d6a6dd",
+      "bytes": 301488
+    },
+    {
+      "source": "screens/route/long-long-open-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-open-desktop-light.jpg",
+      "sha256": "59a876f5beaf310b488e6867ad92424e3843b86d79e75b7f0cee29f6c080f19a",
+      "bytes": 348996
+    },
+    {
+      "source": "screens/route/long-long-open-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-open-mobile-dark.jpg",
+      "sha256": "230b93f1b60d5983a144621ca8f2bc7bd7899f46f2e3f2c20fbfb547b8f9ed9a",
+      "bytes": 384555
+    },
+    {
+      "source": "screens/route/long-long-open-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/long-long-open-mobile-light.jpg",
+      "sha256": "2233597abe87205d6aa76850491b4a4bd2526209024095d1e203968c4cf1288c",
+      "bytes": 411781
+    },
+    {
+      "source": "screens/route/midnight-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/midnight-desktop-dark.jpg",
+      "sha256": "80eb30ececc689d66ee8a8386eba1f561581dcd31f6d6f371783ffc46b82c5cf",
+      "bytes": 241456
+    },
+    {
+      "source": "screens/route/midnight-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/midnight-desktop-light.jpg",
+      "sha256": "65f0468543a5f48dcb2cd3176dec959e054cbdf8c91053fe96b31bf58a1517ba",
+      "bytes": 286196
+    },
+    {
+      "source": "screens/route/midnight-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/midnight-mobile-dark.jpg",
+      "sha256": "cf102568db195da54b9abe3635408fa2b97172ec4fc77b4f08ea2d558543243d",
+      "bytes": 307365
+    },
+    {
+      "source": "screens/route/midnight-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/midnight-mobile-light.jpg",
+      "sha256": "97848a22a8f16a9d8693632cdaa0ff29405f86b2816c8ec0ce04420d835fa9c7",
+      "bytes": 332305
+    },
+    {
+      "source": "screens/route/red-warning-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/red-warning-desktop-dark.jpg",
+      "sha256": "061561f2f9738cff92a5d4abf33a7088ea30aa17990e9b16738dc44c1dee71f3",
+      "bytes": 242605
+    },
+    {
+      "source": "screens/route/red-warning-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/red-warning-desktop-light.jpg",
+      "sha256": "7dc56191d4c2877131ef13d937e0fce5aa9a01b1bdb20062584865cdcf13b6a0",
+      "bytes": 287134
+    },
+    {
+      "source": "screens/route/red-warning-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/red-warning-mobile-dark.jpg",
+      "sha256": "b9e3c5403b87a61743a91e777bcb2639557d6e92541108b19011667efe067e9b",
+      "bytes": 304400
+    },
+    {
+      "source": "screens/route/red-warning-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/red-warning-mobile-light.jpg",
+      "sha256": "e10dfa5ec99429ac2fcf6c7800a977bb41c62c3691bf7c7ee3e204c6b398da8f",
+      "bytes": 328258
+    },
+    {
+      "source": "screens/route/scrolled-end-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/route-desktop-dark.jpg",
+      "sha256": "4eacf2f293b2c226fc529a88f8137eb096aa46c14167e14c61cc3c7673709f7b",
+      "bytes": 243708
+    },
+    {
+      "source": "screens/route/scrolled-end-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/route-desktop-light.jpg",
+      "sha256": "c224b775f5dc7feea6985f4cbdd454e25130ae6d2bb1c739f08dfd00b396efcc",
+      "bytes": 288188
+    },
+    {
+      "source": "screens/route/scrolled-end-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/scrolled-end-mobile-dark.jpg",
+      "sha256": "072250aaa981fc83c5ce8e64d80bb5d34b0e7cdcfd78d87ec4e1cfcb8e1b82fc",
+      "bytes": 306936
+    },
+    {
+      "source": "screens/route/scrolled-end-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/scrolled-end-mobile-light.jpg",
+      "sha256": "aeea57d4fcc6a937cc6eea39d4f6c36b956e2a973b826db5524212d7ac2b371e",
+      "bytes": 330573
+    },
+    {
+      "source": "screens/route/short-default-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/route-desktop-dark.jpg",
+      "sha256": "4eacf2f293b2c226fc529a88f8137eb096aa46c14167e14c61cc3c7673709f7b",
+      "bytes": 243708
+    },
+    {
+      "source": "screens/route/short-default-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/route-desktop-light.jpg",
+      "sha256": "c224b775f5dc7feea6985f4cbdd454e25130ae6d2bb1c739f08dfd00b396efcc",
+      "bytes": 288188
+    },
+    {
+      "source": "screens/route/short-default-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/route-mobile-dark.jpg",
+      "sha256": "afb7a94e2a596869fd9ea2a32c1fa6b95f1d253cefe9a228795168059b88a308",
+      "bytes": 305705
+    },
+    {
+      "source": "screens/route/short-default-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/route-mobile-light.jpg",
+      "sha256": "c4337bb50f8f665a239c7aa010a852ecc3cbdc662f841cd8d399f34638d67f15",
+      "bytes": 329230
+    },
+    {
+      "source": "screens/route/short-error-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-error-desktop-dark.jpg",
+      "sha256": "abe14b5d5fa5d537897746b62b865e6c5273f83331e4b3bfd9059a60fe8abff0",
+      "bytes": 220008
+    },
+    {
+      "source": "screens/route/short-error-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-error-desktop-light.jpg",
+      "sha256": "7227945fc942cbc5d83af33f56454b207154bf0002fc57685fb5e85b22db7c78",
+      "bytes": 267041
+    },
+    {
+      "source": "screens/route/short-error-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-error-mobile-dark.jpg",
+      "sha256": "193ac54e0f58d95ae1a9628d15997b51a1554387a9bca8505997a89d971e082c",
+      "bytes": 242731
+    },
+    {
+      "source": "screens/route/short-error-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-error-mobile-light.jpg",
+      "sha256": "d141157010fac0327eed3076a305571aa18e708776d52a3ea4fcf06603e56f86",
+      "bytes": 263226
+    },
+    {
+      "source": "screens/route/short-gaps-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gaps-desktop-dark.jpg",
+      "sha256": "4998a107050af6c124f1134b290b5e1110a85e5bdea8de07d7f8973d6f2c9b07",
+      "bytes": 240647
+    },
+    {
+      "source": "screens/route/short-gaps-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gaps-desktop-light.jpg",
+      "sha256": "06001894537dd84a96af01623af41800bb99b6622b3e06cf0bdcf7e0121cb5b5",
+      "bytes": 284969
+    },
+    {
+      "source": "screens/route/short-gaps-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gaps-mobile-dark.jpg",
+      "sha256": "c832842c915ffa722c20a4ac2671f69ebc3cdc7f242f56c6c6d8775ebfc824ec",
+      "bytes": 301469
+    },
+    {
+      "source": "screens/route/short-gaps-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gaps-mobile-light.jpg",
+      "sha256": "67577f913dcecb008661fcbf7645bd5e2407e3fb0a76f5157413da8b04d98315",
+      "bytes": 324821
+    },
+    {
+      "source": "screens/route/short-gear-open-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gear-open-desktop-dark.jpg",
+      "sha256": "537fe97be447cb599940cd390c40cac475d0a595dbfc68cd94a851a2f9f481ab",
+      "bytes": 290781
+    },
+    {
+      "source": "screens/route/short-gear-open-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gear-open-desktop-light.jpg",
+      "sha256": "ed8cf92e983edb73492abdbd377f3a76815f8a783cef914b24c547e67b89ba32",
+      "bytes": 338061
+    },
+    {
+      "source": "screens/route/short-gear-open-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gear-open-mobile-dark.jpg",
+      "sha256": "386a4e9ba662944876cd98733a1afba19d441a81da4a5fad9860ef9d9f21ec52",
+      "bytes": 384922
+    },
+    {
+      "source": "screens/route/short-gear-open-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-gear-open-mobile-light.jpg",
+      "sha256": "1f78226638e4b261ae0aac9240d96df26dcb755cb8c9734716927d54d5195311",
+      "bytes": 411240
+    },
+    {
+      "source": "screens/route/short-loading-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-loading-desktop-dark.jpg",
+      "sha256": "5c5106c7dae2ac931a0ba7c7f88a1e0db11bc2826c2b171857063a9b96bc0893",
+      "bytes": 223873
+    },
+    {
+      "source": "screens/route/short-loading-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-loading-desktop-light.jpg",
+      "sha256": "d82a92a888f2031948b6b06bc6456f4383d932a86b2e88e7a475d252a820e3cf",
+      "bytes": 270379
+    },
+    {
+      "source": "screens/route/short-loading-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-loading-mobile-dark.jpg",
+      "sha256": "3179c44a9457e175a7a9d72ba59997f75baaae7d3fb71ca6d669b15a4985e861",
+      "bytes": 244503
+    },
+    {
+      "source": "screens/route/short-loading-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-loading-mobile-light.jpg",
+      "sha256": "0e494b5e51d083363d0ef46fbbdf7f2bdd117a5d4e9cb38f495759713fb73bf0",
+      "bytes": 264546
+    },
+    {
+      "source": "screens/route/short-no-data-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-no-data-desktop-dark.jpg",
+      "sha256": "c50cfd10a2340d9127ca8a5fe216491c0db3e8a19fa5609855c573c46a4f4db5",
+      "bytes": 220421
+    },
+    {
+      "source": "screens/route/short-no-data-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-no-data-desktop-light.jpg",
+      "sha256": "421636a6dbbac4e728da163f95d1142791301b9577b66a75b604be305818590d",
+      "bytes": 267505
+    },
+    {
+      "source": "screens/route/short-no-data-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-no-data-mobile-dark.jpg",
+      "sha256": "41584ab189a1b4d2016406c2a4b2c036939b478698a0a56d536c0bc9badb0db4",
+      "bytes": 243842
+    },
+    {
+      "source": "screens/route/short-no-data-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-no-data-mobile-light.jpg",
+      "sha256": "450e6dc755aa73950139fd074e8d63aa0bfc6b3cd128c87163682c93ff3f68f4",
+      "bytes": 264303
+    },
+    {
+      "source": "screens/route/short-speed-fast-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-fast-desktop-dark.jpg",
+      "sha256": "05ac58d74facc5ec2d7fb546dfc7d97a5c7bc58eb39376f3da61d10877cab7cf",
+      "bytes": 243337
+    },
+    {
+      "source": "screens/route/short-speed-fast-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-fast-desktop-light.jpg",
+      "sha256": "d7bdbfab003f168258d4ad4fda36a8f2983b43570e05b0bb0f59e4804da4fa59",
+      "bytes": 287601
+    },
+    {
+      "source": "screens/route/short-speed-fast-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-fast-mobile-dark.jpg",
+      "sha256": "8c830e98439eb6a38764f8cdbd2fc8757279778bee93a0ad15839003c1355499",
+      "bytes": 304939
+    },
+    {
+      "source": "screens/route/short-speed-fast-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-fast-mobile-light.jpg",
+      "sha256": "74e4f3624a2efc5b6013c06affa1e7e7955bf29fd20881a5f0c7a406eab8631d",
+      "bytes": 328420
+    },
+    {
+      "source": "screens/route/short-speed-slow-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-slow-desktop-dark.jpg",
+      "sha256": "ca33c560ddb5869d929c76711aa44d4705a853b17413d5b53b8c96ecfb5f59a5",
+      "bytes": 243631
+    },
+    {
+      "source": "screens/route/short-speed-slow-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-slow-desktop-light.jpg",
+      "sha256": "5c23baa7eb9ab81c1177b0fdbe73196f7a63cd16a6d7d2d4525fd73124eead05",
+      "bytes": 287909
+    },
+    {
+      "source": "screens/route/short-speed-slow-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-slow-mobile-dark.jpg",
+      "sha256": "3261811584ed938839e7e6877f3c236092f810fef18dfc8f0e8c8ffcb935457f",
+      "bytes": 305534
+    },
+    {
+      "source": "screens/route/short-speed-slow-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-speed-slow-mobile-light.jpg",
+      "sha256": "9e570be396f482d45aad534dda2ed812e531e9e4461aef422f41115c8d8548b2",
+      "bytes": 329231
+    },
+    {
+      "source": "screens/route/short-start-open-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-start-open-desktop-dark.jpg",
+      "sha256": "dce8b8c4f3d699500821ca4b2303a299d61f50d2fe731311a2023499311c869f",
+      "bytes": 241716
+    },
+    {
+      "source": "screens/route/short-start-open-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-start-open-desktop-light.jpg",
+      "sha256": "8b5faf18545bf9283acaa2f7dab3aa161724fb06dab562856d098ea64acd0e42",
+      "bytes": 286364
+    },
+    {
+      "source": "screens/route/short-start-open-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-start-open-mobile-dark.jpg",
+      "sha256": "0c5e362ccdb63ea6cf586c595946966a1c621715ced57527f6d820ceb095440c",
+      "bytes": 290009
+    },
+    {
+      "source": "screens/route/short-start-open-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/route/short-start-open-mobile-light.jpg",
+      "sha256": "d91c50cf2ec81bc5dfabc30b0d671ed91cb8b6f342481ec2ea227773ac20599f",
+      "bytes": 315240
+    },
+    {
+      "source": "screens/share/long-share-ready-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-desktop-dark.jpg",
+      "sha256": "7a5f3fd7b5bf3cea7c9d42837db649d609ca503197f9a4d38069c4cfed02efe3",
+      "bytes": 146106
+    },
+    {
+      "source": "screens/share/long-share-ready-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-desktop-light.jpg",
+      "sha256": "5ccebbdc37709b6a0017b8f9f986563fd979117b0778edbb8dfbae1630147ced",
+      "bytes": 173142
+    },
+    {
+      "source": "screens/share/long-share-ready-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-mobile-dark.jpg",
+      "sha256": "46e153c7f685683ee8f7a4f9c5269ea3cd92cb8525e697ca71816d95fc9f4bde",
+      "bytes": 142426
+    },
+    {
+      "source": "screens/share/long-share-ready-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-mobile-light.jpg",
+      "sha256": "8b3a73f1670ac721e0322701a66e1e38a79fdeaf11c6489d55f5ee63e27cffa3",
+      "bytes": 158917
+    },
+    {
+      "source": "screens/share/long-share-ready-zoom-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-zoom-desktop-dark.jpg",
+      "sha256": "652165a42a0d453c402376bacc86db653f9fb8672f322257be8ed0d06a4ed1ab",
+      "bytes": 201784
+    },
+    {
+      "source": "screens/share/long-share-ready-zoom-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-zoom-desktop-light.jpg",
+      "sha256": "ee5e12febbb6053d213a5fac8208f9f9bb2c145fea5409423e343dbb0f8c6c9e",
+      "bytes": 239797
+    },
+    {
+      "source": "screens/share/long-share-ready-zoom-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-zoom-mobile-dark.jpg",
+      "sha256": "a60ad568a70b104457e191fa3d0b5e1e006fdd0faf707652e0b242b8178b7d84",
+      "bytes": 149254
+    },
+    {
+      "source": "screens/share/long-share-ready-zoom-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/long-share-ready-zoom-mobile-light.jpg",
+      "sha256": "ba97fe27c7b70837673bf6b107ad08d8d138511938fd1db9550e4cb486cda19c",
+      "bytes": 187126
+    },
+    {
+      "source": "screens/share/short-share-error-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-error-desktop-dark.jpg",
+      "sha256": "bf1a19d58ea7b4bb2d510e0259321ee92e66ea63db48034965650022b269e2be",
+      "bytes": 93410
+    },
+    {
+      "source": "screens/share/short-share-error-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-error-desktop-light.jpg",
+      "sha256": "a9ad879e59371a891903c6a05cb0cbfebb1ae9a9acb5a849a749152df4cfcc89",
+      "bytes": 113167
+    },
+    {
+      "source": "screens/share/short-share-error-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-error-mobile-dark.jpg",
+      "sha256": "054b57cde88aa97c5bc50dd25a3205966267c410d189985e2047a96c81218437",
+      "bytes": 76661
+    },
+    {
+      "source": "screens/share/short-share-error-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-error-mobile-light.jpg",
+      "sha256": "6592615ae941d19776266504aa3cf0a9792f8a7f901f22af243f71d0215af968",
+      "bytes": 81713
+    },
+    {
+      "source": "screens/share/short-share-generating-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-generating-desktop-dark.jpg",
+      "sha256": "003d32200e6b2589fe4049585e5a30f363e3b9e317b006a305b615f5b0b9b2a3",
+      "bytes": 93710
+    },
+    {
+      "source": "screens/share/short-share-generating-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-generating-desktop-light.jpg",
+      "sha256": "d7c23238fd7e2f64ba7b1075cf0779ac451c6e5774f2f545846905de1f944428",
+      "bytes": 113576
+    },
+    {
+      "source": "screens/share/short-share-generating-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-generating-mobile-dark.jpg",
+      "sha256": "b22ce6e5a326d1ca54e4aad486d158e69fdf0406cab3cc61df21961ee837d6a4",
+      "bytes": 76674
+    },
+    {
+      "source": "screens/share/short-share-generating-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-generating-mobile-light.jpg",
+      "sha256": "b67ee4bcf5db021c7c60ab22c52a685ba80c3667e53f5e9b56b4a473a80dcae5",
+      "bytes": 81562
+    },
+    {
+      "source": "screens/share/short-share-ready-desktop-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-ready-desktop-dark.jpg",
+      "sha256": "031f2398d0b1d4a82cc1176af92f17d306c47fcfc825b6cad4050b82a31bcf17",
+      "bytes": 152785
+    },
+    {
+      "source": "screens/share/short-share-ready-desktop-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-ready-desktop-light.jpg",
+      "sha256": "9f35dbedfaa2d1c96666de41fe7c61c17a6a694f07290976f7731c9fad8646fe",
+      "bytes": 182779
+    },
+    {
+      "source": "screens/share/short-share-ready-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-ready-mobile-dark.jpg",
+      "sha256": "18258ff301e8910fabdb6c1895b1945a0be91825933d92be14e4503acbab24b4",
+      "bytes": 151875
+    },
+    {
+      "source": "screens/share/short-share-ready-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-ready-mobile-light.jpg",
+      "sha256": "a42a4521da9e173f2ab2e68b04d41003550327b45c64a6bdf2fbbda209be5372",
+      "bytes": 172608
+    },
+    {
+      "source": "screens/share/short-share-unavailable-mobile-dark.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-unavailable-mobile-dark.jpg",
+      "sha256": "9437f890212f2127c410902c0076141a0581995ebb09ed5c3ccff54fdd820478",
+      "bytes": 151044
+    },
+    {
+      "source": "screens/share/short-share-unavailable-mobile-light.jpg",
+      "target": "design/screens/forecast-v5/reference/share/short-share-unavailable-mobile-light.jpg",
+      "sha256": "af06b90154468a7b622dbcbd1fa638a832cd5a98c88d7333c5d22b8a9188685d",
+      "bytes": 172073
+    },
+    {
+      "source": "telegram/long-dark.jpg",
+      "target": "design/assets/forecast-v5/telegram/long-dark.jpg",
+      "sha256": "99b628540612782faa12e2db1be3f7bdb2f97c28ded6efd1b184974c8deb1d43",
+      "bytes": 38382
+    },
+    {
+      "source": "telegram/long-light.jpg",
+      "target": "design/assets/forecast-v5/telegram/long-light.jpg",
+      "sha256": "46fbd2018448fc89e5b19bc48ccf8dc7a622a26493e24cebdb6327cccffa65cf",
+      "bytes": 42565
+    },
+    {
+      "source": "telegram/short-dark.jpg",
+      "target": "design/assets/forecast-v5/telegram/short-dark.jpg",
+      "sha256": "7f1df1f2811a79f787119911eb7969e538ff6286e2f6c43b5941ba7ab1c0841f",
+      "bytes": 41127
+    },
+    {
+      "source": "telegram/short-light.jpg",
+      "target": "design/assets/forecast-v5/telegram/short-light.jpg",
+      "sha256": "06702c93bcb485d028664dc38e6afa0be42ac8792badb59e13829c168752bae5",
+      "bytes": 46847
+    }
+  ]
+}

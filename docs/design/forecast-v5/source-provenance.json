@@ -1,0 +1,1648 @@
+{
+  "package_version": 5,
+  "reference": "approved deployed site",
+  "site_version": 33,
+  "url": "https://hawatch-design-preview.admirer135.chatgpt.site",
+  "git_commit": "f6de12b76962503950b3d8047151c900d07bf63c",
+  "captured_at": "2026-10-08",
+  "previous_package": "Hawatch-Final-Frontend-v4.zip",
+  "scope": "artifact handoff only; no changes to deployed site",
+  "source_files": [
+    {
+      "path": "assets/backgrounds/desktop-dark.webp",
+      "sha256": "e67deb37838b291dbe21b91c6e53330da74bdeeec2332f0d5ab40aa596138a56",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/desktop-light.webp",
+      "sha256": "03d569146a48c0adf01d03206ad4f90d612412b70c95ba8e3773109c52ad6a21",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/mobile-dark.webp",
+      "sha256": "83d6b775316c974e8b2a47ed7ce039b310038d8d560801a3202877896bdb0d73",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/mobile-light.webp",
+      "sha256": "5aa579e6c5750a35effd6c28fdcd6448a5fb444302e044ff8111fb7904618185",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/route-mobile-dark.webp",
+      "sha256": "f91fc31611f3c1a1d3f31c08f21463a21709e775a18649b0b5a11c1c778e6836",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/backgrounds/route-mobile-light.webp",
+      "sha256": "be6412bc8b0c98639b2ce155962199eb8f31addbfc33093dd4af0915c904eaea",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/brand-mark.svg",
+      "sha256": "0329f64530069a9e8d72b6da78062c594f8c82879d116dfd9f66bc4fa8066401",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/catalog-data.js",
+      "sha256": "9b76cf7a6a3e36413e666c2cf1d723eac34d1c8cced3c71b02aca14a1cf20b61",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha256": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Bold.woff2",
+      "sha256": "836fae7d42d83faa249bc00e0099592be98a1fa260d22d82f269b6091e585627",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Regular.woff2",
+      "sha256": "e382101336c6eb32cfb31381c027d02d2e0354bad08f6a395d4088beb3db3d91",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-charts.js",
+      "sha256": "ada7f9d737c31baa1733c149dabc6fa8675ebc27f91ea00d03c6c6f44bfc90f8",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-equipment.js",
+      "sha256": "209a05308cd22eae8383ab8bad67c6f034a840e88d7c2bfa228ce54873ea3b16",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-icons.js",
+      "sha256": "856cc7a7e4e57b5db29d8aa486f8b765ba1106723d18f4d84eff4bb4b3230a60",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-v4.css",
+      "sha256": "49491d5e345d2ac27ac735a2ce6eb1be0186d54149ff43a33db220b85f178d2c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-v4.js",
+      "sha256": "f3091f0f4d22b6298de67dee6a5ac2186d67f2637f34c5c756da127f84211b9f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/forecast-week.js",
+      "sha256": "1a2bd7ea72daa85fb8efd763c453b6869161f43448b2de72f6438f9d8f64cee2",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/back.svg",
+      "sha256": "ab9cb33e7628f007f215b0cd10027d390f5e5211c7a4291039f09098fe9e8e2c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/bridge.svg",
+      "sha256": "3dd9b8353ef2faad6f4ad7dab3de7603a067363fb9e1ba2343766683c056e411",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/cave.svg",
+      "sha256": "278de6c4df8bf0193b25738bdd7bdefefbf22481f0c0b1796d80a317dc4e8854",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/city.svg",
+      "sha256": "f4688621cf0d2981b674364c88e4a63f7a2f410697ab646c47c4cb0ec33601bd",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/coast.svg",
+      "sha256": "b1c839b4dee4284ac24e5e033c673a09d577e9e895d02f7834f629b09008db76",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/dam.svg",
+      "sha256": "9ee2328a1ba337d484482836819ad69d68fec6d2962195f7959747b19d751326",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/desert.svg",
+      "sha256": "1c056a410f974ef04cbe722e0efad3077ebbdb0bd45c46e6fd8a8f2c9358cf02",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/forest.svg",
+      "sha256": "b0b74bf058b18688885be87881c257a2a83292a4f24405bbc2b2c83bc5cf2dee",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/fort.svg",
+      "sha256": "48992fec56944b10ce04a18d7f3919b0865e38926d87b28978b87e8cbcd0d40e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/gorge.svg",
+      "sha256": "06d109f258d7c45c029688954b1850c834b14969aabe21cde477f2f41169bd3f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/highland.svg",
+      "sha256": "a809e42cb2df7c83d23e2dbbf80e442e1cebc7cf5bd167350cd9452ac8a0d2f9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/hills.svg",
+      "sha256": "fd5a3808ff70ba3bcc2743521610024fbef131bb28a0fa10538b1e7c9e7d5230",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/hot_spring.svg",
+      "sha256": "d71677cd70cbb0ec1759453308abf9ae2a4d9aef07073564fa4b74566f9c1d1e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/kalut.svg",
+      "sha256": "0a7560212824364708f021540f1711b352673cbd4fb7ffc8dced4880c86815d9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/lake.svg",
+      "sha256": "81ad985fda169d13e3de30dbf104dcbc86c97672cf62d1edfd29d897c2c63db5",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/landmark.svg",
+      "sha256": "dc31c05e89f98ccd95f4507056c9df12da8a9593c8b3fa776298fba0d596687a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/marsh.svg",
+      "sha256": "f613e4cfa47e7dcfae1a344e9a8b1f63c580916cac00df52a9d9da5a3c4000c2",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/mountain.svg",
+      "sha256": "a8a7e4c38ccf262b7ec0a4c71175b002ec82f348f7069dc30af8eac08818165c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/neighborhood.svg",
+      "sha256": "d1a60704149ba6305c7c4de170a2501d97921f273dd4046005ffbad658fdb600",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/park.svg",
+      "sha256": "449c505087a110272cc6c1c446fadafa5f8d3645ba5e1058b56861faa4e1c38a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/pass.svg",
+      "sha256": "035fc5570c7271d04970b2b19400df74f9f580897f0ee9dd5fc408d1f3f3b240",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/plain.svg",
+      "sha256": "713710d3c81d60ac604ca3f8d07136a633d7de0b7682f2b8e566a0c0d8c73c41",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/rocks.svg",
+      "sha256": "e0b29945d409b46f8bade8c34dd760014bd944d041f1f3f9996158227c7e25e0",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/route.svg",
+      "sha256": "ab1a64e14091475f5717dfa302e98212c1cfba1e5758c48e377eb498a1e8aa90",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/shelter.svg",
+      "sha256": "d2d8bb66cda5e2061cf9013bb44e2c32ac10bcbff192a256b2633af2e899ee86",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/ski.svg",
+      "sha256": "3b50199d4fc77f8b7c13528440fea1cf462766a868b890779680c6d58fbe97d6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/spring.svg",
+      "sha256": "4b5f6516e09733cea854a5aefa05c368fe5841f248f57e01795bc0ec892cb4de",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/terrace.svg",
+      "sha256": "6531a8a21bcbac84415af324390577478dfbcd1ae51bb9f5c819f9eadf89549d",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/trailhead.svg",
+      "sha256": "a9983d524748290448e282c892eb708e58096dc449a88c005ef9f2c761435cce",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/valley.svg",
+      "sha256": "9af5f69f43c54adb591d2d3a189ca54f8cad1b9f6128db7d8231e1923934c30b",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/village.svg",
+      "sha256": "bf50926ac438b8955aba8b3ffbc132744d2cc44953365129c5fc74e6094298e0",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/volcano.svg",
+      "sha256": "6c3405036fc8aef09144bf84e0e582895f0529e969d81a33160c9bcc29025260",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/categories/waterfall.svg",
+      "sha256": "1a3bd2a328a7d7ed6bb553d305dc897ef3fb1b157c94501a9a9fb03d4aefa397",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/chevron-down.svg",
+      "sha256": "1b381767f4798d3bf87175c420140c0fcc7cbf517799ac77d1c4c95d2ade4e67",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/chevron-left.svg",
+      "sha256": "76e36c57a5956a249c02dc3286a65d20e68d6c22396191add289c263d7070b7f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/chevron-right.svg",
+      "sha256": "582c0b73ff5d1dcb5793e7e90c0133360a58b8676ba9fa86843df4906a77118d",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/chevron-up.svg",
+      "sha256": "a86d0f7fd2eeb328e11735cb337c80b4a3c30947ba9d39413d9adc3ddb0f484a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/close.svg",
+      "sha256": "2b77db06944a2875274ec61a9f406febd0490b55003590f5976d2d3cf4239d4f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/cloudy.svg",
+      "sha256": "d96604095df3c3bfffd2a8685f9f13498722a630905674749fc384c6a60a1631",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/drizzle.svg",
+      "sha256": "ebd0709a7e02bbec26656e2066356e8f2273610bbbc95740bd4bc21215cc0b71",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/droplet.svg",
+      "sha256": "a22e5e8b507205bf47eeb4da564d201605a51804bdb4915f88c76067942b9264",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/backpack.svg",
+      "sha256": "210ae6585c7791f088d1af5591aa6daebb191fe029cbf71fcbcd8295c1623597",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/base-layer.svg",
+      "sha256": "b576891926a9647f3a33de40abdeb4fa0f50c6fcad768a4d5465ac31ea83a626",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/beanie.svg",
+      "sha256": "f7dd1776414a01d4b430865b5d6f15a382badfeb7ad0f6de424254e2c87c3f62",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/crampons.svg",
+      "sha256": "bb9373bb592ea345f33fbf62e8d0f243ab0848dcfe5eebba2820e89da2cf14a5",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/down-jacket.svg",
+      "sha256": "212a53e42950d0a85d17d37272db695efb7bf4f562be4ff91dc748683dab69d1",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/down-mittens.svg",
+      "sha256": "f08849feba79df5a679ce229867a822b06fbf06d9076e00d329b5e48589a3924",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/dry-bag.svg",
+      "sha256": "b7897a92b6644156405784db534526db0f612ddd9f1dcca85ef208ec5f25817c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/emergency-blanket.svg",
+      "sha256": "0e8c12f1e3ca175ab377f7c857ddd6ef911823b87d472a6c5b62d98d4f30aef4",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/first-aid.svg",
+      "sha256": "5f814312100cf1b7ea4e4351f2afc444c928c0afe192813da221b01fa3ee4fa3",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/fleece.svg",
+      "sha256": "e5ffcc3009dc77cefbe82d8f4cf71692c2bc704d6c7f42e0068e3e1c19a691a3",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/gaiters.svg",
+      "sha256": "5b1b7626d9f5e4208f825fe321fdbb4fd848ceb3cc1b6116232c9b1bda216cc3",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/goggles.svg",
+      "sha256": "d9f110e57b3e748b11cb1e9beed5f80174bcd70d3076bfa9dc5f449eb7078656",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/headlamp.svg",
+      "sha256": "a2360d59e8b0a8297029b635a6ecba75c93a94a8f0e93e91ea76530bab822e58",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/hiking-boots.svg",
+      "sha256": "f32e26d3267bf43b1d9a115f94f49ab0d01a47933addcb797f6e7f87f21ae11d",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/ice-axe.svg",
+      "sha256": "cf1c18f2a0b14044d47e9dba16f5f81727307f2308719ad9d65e7e75469c67ab",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/insulated-gloves.svg",
+      "sha256": "279063b5b5513e512b85f0867e548503f774c8947bade9054b405f2941bd0767",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/liner-gloves.svg",
+      "sha256": "31cc7fb04639cf7356eb76571cfe1a03ba98dcb3d816addad508cfd9385d2f0f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/microspikes.svg",
+      "sha256": "f68543394e5c6c79f7c486355c2cadbf669c8b1547e8988cd1d0209e763b8cc1",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/navigation.svg",
+      "sha256": "b0c0b296765fe891f55596491667943fc0fba628dcbcfe1c253fa68dc9d9f363",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/neck-gaiter.svg",
+      "sha256": "20b4ad04d82aa75b8beeb5c4595ad4bccba8030bfad6bd8be43dcaa3ddf5e2a6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/pack-cover.svg",
+      "sha256": "f7e80ed160b06077ff007558a84d4ee56e2a5823f75ae6df67b385aceab0a1ef",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/power-bank.svg",
+      "sha256": "bdf869f75630ec95f63ed1dceac45a2c81c9d6608594d366d34a4592339e2ecc",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/rain-jacket.svg",
+      "sha256": "9142a404590e719ad8283fafffea35f1925363ed3e7b56c56eedb4f9717b0c1e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/rain-pants.svg",
+      "sha256": "a8edb49689c09775d9cb28ca4becee9eb5bdbbd345464fb76be050ec9c1d2fd9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/snacks.svg",
+      "sha256": "53e4969235c9c88aa33d8ae6321631e9debe663dac927a40489e89b44027154a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/sun-hat.svg",
+      "sha256": "b8973cb78fb77d1e2804c06967623b0c897d59b1b9a3f8f4364cf9dc5c4cbaa6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/sunglasses.svg",
+      "sha256": "5776842de1826a5926f9b1dad0873a8ea3c7b6f8b50ec55d7374cb688494066b",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/sunscreen.svg",
+      "sha256": "d50af7d0340a92b0e955f2123966152057dd2427dc1cc101ba7ebd4c754a95b3",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/thermos.svg",
+      "sha256": "36a6e8e3b45124b6f8aceb05a306f921609c04c976aac65f22d961e1e677d261",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/trekking-poles.svg",
+      "sha256": "3a52ed7eded4add87e5c96d458257ca64b9e4a065932e911cd66da9041803af7",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/warm-socks.svg",
+      "sha256": "bad9265c93d25090a4ffd5b6b15db2e2863c172614384121649bdd0582de6d6c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/water-bottle.svg",
+      "sha256": "094d525cdd6c7eaffda3bab00e514fb1eaa74224fe285bf1ba836d985a17347c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/water-filter.svg",
+      "sha256": "89d7427137f632ebe81bcae119a410b4a9258bc589f3c17463991591d07f480d",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/waterproof-gloves.svg",
+      "sha256": "ed4bc0b94a7da4a986cd523c6b06fa210c3fdaa9077051c0f99a1133e34c739e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/equipment/windbreaker.svg",
+      "sha256": "2d92f2895b8d1defcac1a338c82b2453030a49d7ff2a0e662c889e4aabadab0a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/fog-day.svg",
+      "sha256": "5c8107e2c932ffa12df74166d21e77802d67116ccb59486f5d06712ada6f31c4",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/fog-night.svg",
+      "sha256": "a3b49f5d7ded04499c917c68f9e740b97e3526b0db2f53f09fc06bdb286ab3af",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/freezing-rain.svg",
+      "sha256": "2f5f6ff67a8febafc30447acc57ce052e8a300bc270bcf082f37448ef178f1a6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/gust.svg",
+      "sha256": "6ff1be39c75fa57f491aa5a92d93fff8eb7e583bcfd1388d5ccdd1ff42491d92",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/heavy-rain.svg",
+      "sha256": "17663896ac9ebe5dbdc64542d4aa812bba74da8f1a6013de60596794a85f6f00",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/heavy-snow.svg",
+      "sha256": "1270bd807649afd299e090a77a156b147eea8722b0eaf62c8427d2ed891ff4a9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/hike.svg",
+      "sha256": "539b9697c7e8ce05a0415d81a62fb823601692c8c584cc11856d28d016b29ddb",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/instagram.svg",
+      "sha256": "32275f2750da25c5906882b1217248d955fb71b62ebde7466c2d7d1e0e5c77d9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/lock.svg",
+      "sha256": "8dfc4bfcb0f9c96e1803e8c14862a0b1a7b88d50107be412afcd69e8c313cd48",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/logout.svg",
+      "sha256": "85365e1cffefcdcc9d75bfb4f68b645142e6373acc0f7094e0e8bff300fb6f63",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/moon.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/mostly-clear-day.svg",
+      "sha256": "99a5eb9394b786bded6deba3ac07fb0d64c0816447751db83cbbd0ca88842c6a",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/mostly-clear-night.svg",
+      "sha256": "f40e3f84a2d24654fa744fd3ab287af6e3e5f801987cec769d7a344dbe985c49",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/partly-cloudy-day.svg",
+      "sha256": "0eb8cffde2b13b4429e67a58e2b6bb28a11977fa4da62a6aa74ae061eca3064c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/partly-cloudy-night.svg",
+      "sha256": "4751adef35db48d24fd770b7b1ac3054b01cc2a0f28bdfd4f9c25490feaf339f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/rain.svg",
+      "sha256": "59e35f8631c119cab4c56527739aa25b06bbf5baaf20c523eb3e5db8fd8f7096",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/refresh.svg",
+      "sha256": "200fa635c9b02241448d0f191963a95dcf8bf672c3be7c521936bba37596f669",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/rime-fog.svg",
+      "sha256": "a207c34a6ddbc57f10da481ee94d8f16218036848c467d340e92be87ee3a3e06",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/showers-night.svg",
+      "sha256": "791d8d87f82803414fc728560e06a361868cfa6b801ba873b7cd40250966f124",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/showers.svg",
+      "sha256": "eb08a9278fb1626a3193ab34f1244e8a0f4daec7776dccc0533bf64e83f8ecc6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/snow-grains.svg",
+      "sha256": "7b83e9610a7f24e59282271c9eec6e38ec8a91935c0df763814a1ddae08c79b6",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/snow.svg",
+      "sha256": "856d54513d9370420564aa1b5ddbdd48aa0897f35e86e3334973b7483e482724",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/subscription.svg",
+      "sha256": "38055e9ab535f1f24db8f3129766946947bbb7424d71ab387fb298cd99b13384",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/sun.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/telegram.svg",
+      "sha256": "01b23791e9c9ed430e070213c92061cad7bb50350a54e3ddd1a673b468b63875",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/temperature.svg",
+      "sha256": "e382b6e4cd80c4f975a5384ddf1e0eac9fff40f85875862313ffb167bdc9c3f1",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/thunderstorm-hail.svg",
+      "sha256": "461ea906ba4d5c3e31b89c8b288511a2468cd2abb48eb28e8c7565c39ee1550e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/thunderstorm.svg",
+      "sha256": "c10cd0b0710d796ebb3cfcd2fecd22fcbd924d0554d263e472ceeaacf3cd5902",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/arrow-left.svg",
+      "sha256": "6080ee803bc917bc97b26d9b842c69aa3c2c4bd5526fbe987820a626aec65bd7",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/arrow-right.svg",
+      "sha256": "cdfada482aaa0ace6429922d87fb042dad77d75f46db5247930d2ad6619aafcd",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/ascent-descent.svg",
+      "sha256": "03de61ce8d16ec8c3987c9b918b6ed7209dcba598b1b7eb0aa2e5499f442920d",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/chevron-down.svg",
+      "sha256": "d0bc08118243e6de09497c87bcb6e1fb286410fc8bdfc00b27c521fc8d085836",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/chevron-up.svg",
+      "sha256": "76455f05483e99684221101d27c3c0cb6e5e60be9280133848354aefffe1072c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/clock.svg",
+      "sha256": "fa7f65872ee0e51e4d35114be92863b7c365a47e27bbc2366098860fb53b3d99",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/close.svg",
+      "sha256": "ac5b27ea9930d8ec9293ab381d7960b23f1d37d13586ae6a0e83adcb616011fd",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/day-collapse.svg",
+      "sha256": "d1f9f6952dfab31e496b7ca4bc09050d38a615ba9bf1d1e15137e255feafaa39",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/day-expand.svg",
+      "sha256": "4dd84af8db576b6d22bf5a8462032e9a7dbc32bf137d1cd303663f7e2087f849",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/distance.svg",
+      "sha256": "f582766534cb6fc766a3038f43c51b4a14f412469b8da76fe25f8bedc2133efc",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/download.svg",
+      "sha256": "22bfb2426a17e3b314c93d0cf69aeb7919d4e033623bcccd7d345ed98308591f",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/flag.svg",
+      "sha256": "b44f5909a3a33e64d1310038a76af50428b9abe3800ba4b494d62420ff449c86",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/gauge.svg",
+      "sha256": "8dbb10c05e01e47b2ea3e68098ec4e848a24b9b1af87c96138aaf92ebe8f5755",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/refresh.svg",
+      "sha256": "f985f1d7730d61322417a4ce03eef38c3e205984c7b2f8dfce13953324224285",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/share.svg",
+      "sha256": "f9e0536ae104d5fe4696de721c4be6e1afdf6d51e79ad50e7ecd52f707e59abf",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/stopwatch.svg",
+      "sha256": "4e68406776e50d7da9bac260d9128935259fc32f216e046590d58d7fcfcdbd6e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/ui/zoom.svg",
+      "sha256": "af16cdd44ca921e7e7f13115d1f58012515b2fce7aed3c3225f346a69058b865",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/unknown.svg",
+      "sha256": "b9e6eff9c0263e70e335f87c223a4f82fd184c2d70fcdd5c292f5a11b14613c5",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/user-active.svg",
+      "sha256": "fbc7d24d4a269b46ba37339485a05f9335d9cb5048e38c4f1efa6710cd4c36b3",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/user.svg",
+      "sha256": "544343939f397de4de2a955d41a40aa831bda7e5b57ab8fb81e4a939b4e49417",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/visibility.svg",
+      "sha256": "83662021b3400005a20078f9dc7423acb3af84de0f61f91c535ca42e52266c1e",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/warning.svg",
+      "sha256": "dcf54becae154c46b0bce3fda0d18dcdf0b9c59d25660d3aa7ab1fa993d1d50c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons/wind.svg",
+      "sha256": "d47ab43ef8278e37ece231fbef042e46833b5471a56d01bfbf9d095018858d16",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/icons.js",
+      "sha256": "971af6fc6f00e93573c8fd1fae6db95387abd672d80ad46a384b19a882eb5e6c",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/route.css",
+      "sha256": "3906c40324dd424b3b180765d9c065acb8af3bc2f7d0d81fc4e0af02d92371e9",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/share-backgrounds/dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/share-backgrounds/light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/share-backgrounds/manifest.json",
+      "sha256": "e844941bbcbe1d4a4cd0621d40659c1e18a68d36d77b341f8145bc634b061048",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/site.css",
+      "sha256": "7d404b8903e3fd49dccdede87ddadfff92a0a93f1337644f75952f574d22fa43",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/site.js",
+      "sha256": "e169ce6100055bb2fc408fadacb10b333a555430e7c175df67d6d914082e6495",
+      "same_bytes": true
+    },
+    {
+      "path": "assets/ui.css",
+      "sha256": "6759e63f8e40db4d41f98953b48a03e9e4d1784b429b5b437697ff7c934bb55c",
+      "same_bytes": true
+    },
+    {
+      "path": "destinations/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "0329f64530069a9e8d72b6da78062c594f8c82879d116dfd9f66bc4fa8066401",
+      "same_bytes": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "login/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "p/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/abgarm-larijan/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/alamkuh/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/aluchal-waterfall/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/badab-surt/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/damavand/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/dizin-ski-resort/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/eskelim/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/jangal-abr/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/naharkhoran-forest/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/palangchal-shelter/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/shahrestanak/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/shahrestanak-naseri-palace/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tange-vashi/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tar-lake/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-amiri-shelter/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-barfchal-peak/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-chahar-paloon/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-espilat-sarlo-pass/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-goleband-ridge/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-hotel/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-jamshidieh-park/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-kolakchal-camp/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-lezoon-east/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-lezoon-west/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-pas-ghaleh-village/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-piyazchal-pass/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-sarband-square/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-shahrestanak-pass/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-shahrestanak-sheepfold-spring/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-shahrestanak-spring/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-shirpala-shelter/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-telecabin-station-1/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-telecabin-station-2/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-telecabin-station-5/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-telecabin-station-7/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/tochal-velenjak-parking/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "points/vardij-ghost-stones/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "routes/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "routes/tochal-darband/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "routes/tochal-kolakchal/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "routes/tochal-shahrestanak/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "routes/tochal-velenjak/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    },
+    {
+      "path": "subscription/index.html",
+      "sha256": "cbdbf5d0fdbc9fb3cda8bf864169f73c0f3bd8813482ead520f8c1c3f874a1b5",
+      "same_bytes": true
+    }
+  ],
+  "reused_files": [
+    {
+      "path": "equipment/ATTRIBUTION-fa.md",
+      "sha256": "e78ed25a62c01b9500b68154202be14e986b1e07b37b6b49b3a4e19633fa90d5"
+    },
+    {
+      "path": "equipment/catalog.json",
+      "sha256": "c0ba08a9bb2d51bcbe6fa2da1956433c21c2577c71f6524095aaad0540aa01fb"
+    },
+    {
+      "path": "equipment/photos/backpack.webp",
+      "sha256": "b790176581066d27ce8635a15494f8ea6cc6c89508519b7c7c27aabb7cdd910c"
+    },
+    {
+      "path": "equipment/photos/base-layer.webp",
+      "sha256": "727950fd4c641a2e3477b6c2073ea6d1c23ae6a7614ee523f233b0826808a4e6"
+    },
+    {
+      "path": "equipment/photos/beanie.webp",
+      "sha256": "d35a46f9cc8f06a2b5fef94aa7c56526d6377f1b091d30062138f8e12d272a27"
+    },
+    {
+      "path": "equipment/photos/crampons.jpg",
+      "sha256": "e13f92dfce7a4c5f522a5ce1177c99ec5112c7226fd7dc4e53e895e814dc5d31"
+    },
+    {
+      "path": "equipment/photos/down-jacket.webp",
+      "sha256": "741ff29286134e9e04d4786d59d8a1142037b2764a6372702695c98c849970c6"
+    },
+    {
+      "path": "equipment/photos/down-mittens.webp",
+      "sha256": "51f099682bd0929c2e5b035f139aa20b1a5979801740f0905131a3e5fd9da83b"
+    },
+    {
+      "path": "equipment/photos/dry-bag.jpg",
+      "sha256": "2a3658583b2671ccfb0160c76eb737d43258e84bf7d041ec0e301d667750cf58"
+    },
+    {
+      "path": "equipment/photos/emergency-blanket.webp",
+      "sha256": "5f1097f3d67fe5feac8cefd3aaced6f2e92d16b86cd15baab12b077b61ad4aca"
+    },
+    {
+      "path": "equipment/photos/first-aid.webp",
+      "sha256": "d1c31702e145af201fd531f983c4b663d4ea4f54ba9b90b05793c99a5389e03b"
+    },
+    {
+      "path": "equipment/photos/fleece.webp",
+      "sha256": "9843a345d5813959fa90e826a2a33cc27df675b26dfd867bb928f2a9fdfe2882"
+    },
+    {
+      "path": "equipment/photos/gaiters.webp",
+      "sha256": "e79f38be881217a74b32582179c853200a2620f5e1957a1ab9052e1b6b0efdab"
+    },
+    {
+      "path": "equipment/photos/goggles.jpg",
+      "sha256": "4569727f3e3a56f436bbfd68d0cf1c32868a5bc485b70b70fc6db9e140cc6125"
+    },
+    {
+      "path": "equipment/photos/headlamp.webp",
+      "sha256": "c0866f12122b74339fe73f9afaea27077ca242e0a163ab2bf4dcfbf1c7cb0564"
+    },
+    {
+      "path": "equipment/photos/hiking-boots.webp",
+      "sha256": "a1939c37c74bedd813c9dca48b474003f0a174bc632e9549d6f335d5675b2b14"
+    },
+    {
+      "path": "equipment/photos/ice-axe.webp",
+      "sha256": "c1bb0324413f3872a44c9727b7219c612eb4da2ea13bb90cab1378c8ba50db26"
+    },
+    {
+      "path": "equipment/photos/insulated-gloves.jpg",
+      "sha256": "b87966c98644fa0676858718ae25e687cd6a1ccba3ac4290e27605147751ecc1"
+    },
+    {
+      "path": "equipment/photos/liner-gloves.jpg",
+      "sha256": "e02716734d7e2f07cc131f9d6b7103f4f7a00326f765b32b11afb4d330b5f25c"
+    },
+    {
+      "path": "equipment/photos/microspikes.jpg",
+      "sha256": "452ce8f4d9d8413a8318c2abd858180a78d50b17ee6ee9982bff56c6d9c3fa35"
+    },
+    {
+      "path": "equipment/photos/navigation.jpg",
+      "sha256": "ac774e7ee3db07a357ec3c96581ef68198e076d245b812eb7a0891ca70aab051"
+    },
+    {
+      "path": "equipment/photos/neck-gaiter.jpg",
+      "sha256": "5696675da51a20aa30833ad7f8b49e28fa900c6ee1d5047f4334b80733f1a34e"
+    },
+    {
+      "path": "equipment/photos/pack-cover.webp",
+      "sha256": "899d6cf0b468694f771564426e8df7587bb776038f564a6f1c922398989058b7"
+    },
+    {
+      "path": "equipment/photos/power-bank.jpg",
+      "sha256": "211f7432059c63d79cc59372c90b25c0cf054367961ea950acac95530354fc3b"
+    },
+    {
+      "path": "equipment/photos/rain-jacket.webp",
+      "sha256": "fdf3ea7ce6eaf3095d846f97b03296647341fcebbecef881d5757f5548cb3fe5"
+    },
+    {
+      "path": "equipment/photos/rain-pants.jpg",
+      "sha256": "e5b1691d4772b9ca2596b55a1e0ab8585491f2198129e9b9cf1adbc9a2b236a1"
+    },
+    {
+      "path": "equipment/photos/snacks.webp",
+      "sha256": "1ebe0d2fb837693e114c044a029d686a00b32fbf20137f6fc8900e4a597005e9"
+    },
+    {
+      "path": "equipment/photos/sun-hat.webp",
+      "sha256": "e87bd4e37613df78c1b690c7810a15674e834394bba11b45b26e5ec141477c12"
+    },
+    {
+      "path": "equipment/photos/sunglasses.webp",
+      "sha256": "69d546c42880556243a388d834037e2a656045be495185957caaa7e7ee35454a"
+    },
+    {
+      "path": "equipment/photos/sunscreen.jpg",
+      "sha256": "e481e543bff5e24e38ebdc515a8b053215366cb40d51f800233effe2c71e7437"
+    },
+    {
+      "path": "equipment/photos/thermos.jpg",
+      "sha256": "abeede677171406b630ae6d0b5c5cc4c3430cc852ea48a3d9c21d65ae2675993"
+    },
+    {
+      "path": "equipment/photos/trekking-poles.webp",
+      "sha256": "ff9c7e72cd552aa49d0ea974eb8497d6db7fc2a66dd881be3a375880eb2ff3c8"
+    },
+    {
+      "path": "equipment/photos/warm-socks.jpg",
+      "sha256": "ce0f530ea09975c518f88745ab7f9f4dc32c1375331c4cc0029b7041e6b899a6"
+    },
+    {
+      "path": "equipment/photos/water-bottle.webp",
+      "sha256": "b4b54354d731f9dd7266231ae5625aea0721a53fd34a31c694f24a9d5890bdad"
+    },
+    {
+      "path": "equipment/photos/water-filter.webp",
+      "sha256": "4bc0d71934bc6ad6a93c23939cc4830a3a80892ce3d1beb17f7d76edbf42fa70"
+    },
+    {
+      "path": "equipment/photos/waterproof-gloves.webp",
+      "sha256": "05f97da05a5433c9d92d07c53f00c26952015a8891a2acdaf9c0391ed77506cc"
+    },
+    {
+      "path": "equipment/photos/windbreaker.webp",
+      "sha256": "dc12822eefdce995c1684e8b16e3ba05678f0b99572bac7281ddacd4b8a1b0cd"
+    },
+    {
+      "path": "equipment/references/search-results.json",
+      "sha256": "1a901bae6f1928fc03e4934479fcafee37ee344b01b727bae88842ee0594d6f9"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha256": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31"
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Bold.ttf",
+      "sha256": "af106c1c336d4ea3ea6e995c02a64c5f87f6e4fb361e1c2b2b592ccf253a3062"
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Bold.woff2",
+      "sha256": "836fae7d42d83faa249bc00e0099592be98a1fa260d22d82f269b6091e585627"
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Regular.ttf",
+      "sha256": "087dcd4ccc542927c8f41bdfb052245fc291b59ef0571d006637dc74faeec800"
+    },
+    {
+      "path": "assets/fonts/Vazirmatn-Regular.woff2",
+      "sha256": "e382101336c6eb32cfb31381c027d02d2e0354bad08f6a395d4088beb3db3d91"
+    },
+    {
+      "path": "assets/backgrounds/desktop-dark.webp",
+      "sha256": "e67deb37838b291dbe21b91c6e53330da74bdeeec2332f0d5ab40aa596138a56"
+    },
+    {
+      "path": "assets/backgrounds/desktop-light.webp",
+      "sha256": "03d569146a48c0adf01d03206ad4f90d612412b70c95ba8e3773109c52ad6a21"
+    },
+    {
+      "path": "assets/backgrounds/manifest.json",
+      "sha256": "1a64731546b268ac9243f762024f9c45e95c08b7374584ad4f5bce0936691900"
+    },
+    {
+      "path": "assets/backgrounds/mobile-dark.webp",
+      "sha256": "83d6b775316c974e8b2a47ed7ce039b310038d8d560801a3202877896bdb0d73"
+    },
+    {
+      "path": "assets/backgrounds/mobile-light.webp",
+      "sha256": "5aa579e6c5750a35effd6c28fdcd6448a5fb444302e044ff8111fb7904618185"
+    },
+    {
+      "path": "assets/backgrounds/route-desktop-dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993"
+    },
+    {
+      "path": "assets/backgrounds/route-desktop-light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90"
+    },
+    {
+      "path": "assets/backgrounds/route-mobile-dark.webp",
+      "sha256": "f91fc31611f3c1a1d3f31c08f21463a21709e775a18649b0b5a11c1c778e6836"
+    },
+    {
+      "path": "assets/backgrounds/route-mobile-light.webp",
+      "sha256": "be6412bc8b0c98639b2ce155962199eb8f31addbfc33093dd4af0915c904eaea"
+    },
+    {
+      "path": "assets/share-backgrounds/dark.webp",
+      "sha256": "a6d324e346a9a586270227deb638d981c90d920278e98c9d89a25fb345aff993"
+    },
+    {
+      "path": "assets/share-backgrounds/light.webp",
+      "sha256": "0ebf4656599444eae8805fff3fda262e9da3507f7e958a3e9e38647e37948b90"
+    },
+    {
+      "path": "assets/share-backgrounds/manifest.json",
+      "sha256": "e844941bbcbe1d4a4cd0621d40659c1e18a68d36d77b341f8145bc634b061048"
+    },
+    {
+      "path": "assets/icons/equipment/backpack.svg",
+      "sha256": "210ae6585c7791f088d1af5591aa6daebb191fe029cbf71fcbcd8295c1623597"
+    },
+    {
+      "path": "assets/icons/equipment/base-layer.svg",
+      "sha256": "b576891926a9647f3a33de40abdeb4fa0f50c6fcad768a4d5465ac31ea83a626"
+    },
+    {
+      "path": "assets/icons/equipment/beanie.svg",
+      "sha256": "f7dd1776414a01d4b430865b5d6f15a382badfeb7ad0f6de424254e2c87c3f62"
+    },
+    {
+      "path": "assets/icons/equipment/crampons.svg",
+      "sha256": "bb9373bb592ea345f33fbf62e8d0f243ab0848dcfe5eebba2820e89da2cf14a5"
+    },
+    {
+      "path": "assets/icons/equipment/down-jacket.svg",
+      "sha256": "212a53e42950d0a85d17d37272db695efb7bf4f562be4ff91dc748683dab69d1"
+    },
+    {
+      "path": "assets/icons/equipment/down-mittens.svg",
+      "sha256": "f08849feba79df5a679ce229867a822b06fbf06d9076e00d329b5e48589a3924"
+    },
+    {
+      "path": "assets/icons/equipment/dry-bag.svg",
+      "sha256": "b7897a92b6644156405784db534526db0f612ddd9f1dcca85ef208ec5f25817c"
+    },
+    {
+      "path": "assets/icons/equipment/emergency-blanket.svg",
+      "sha256": "0e8c12f1e3ca175ab377f7c857ddd6ef911823b87d472a6c5b62d98d4f30aef4"
+    },
+    {
+      "path": "assets/icons/equipment/first-aid.svg",
+      "sha256": "5f814312100cf1b7ea4e4351f2afc444c928c0afe192813da221b01fa3ee4fa3"
+    },
+    {
+      "path": "assets/icons/equipment/fleece.svg",
+      "sha256": "e5ffcc3009dc77cefbe82d8f4cf71692c2bc704d6c7f42e0068e3e1c19a691a3"
+    },
+    {
+      "path": "assets/icons/equipment/gaiters.svg",
+      "sha256": "5b1b7626d9f5e4208f825fe321fdbb4fd848ceb3cc1b6116232c9b1bda216cc3"
+    },
+    {
+      "path": "assets/icons/equipment/goggles.svg",
+      "sha256": "d9f110e57b3e748b11cb1e9beed5f80174bcd70d3076bfa9dc5f449eb7078656"
+    },
+    {
+      "path": "assets/icons/equipment/headlamp.svg",
+      "sha256": "a2360d59e8b0a8297029b635a6ecba75c93a94a8f0e93e91ea76530bab822e58"
+    },
+    {
+      "path": "assets/icons/equipment/hiking-boots.svg",
+      "sha256": "f32e26d3267bf43b1d9a115f94f49ab0d01a47933addcb797f6e7f87f21ae11d"
+    },
+    {
+      "path": "assets/icons/equipment/ice-axe.svg",
+      "sha256": "cf1c18f2a0b14044d47e9dba16f5f81727307f2308719ad9d65e7e75469c67ab"
+    },
+    {
+      "path": "assets/icons/equipment/insulated-gloves.svg",
+      "sha256": "279063b5b5513e512b85f0867e548503f774c8947bade9054b405f2941bd0767"
+    },
+    {
+      "path": "assets/icons/equipment/liner-gloves.svg",
+      "sha256": "31cc7fb04639cf7356eb76571cfe1a03ba98dcb3d816addad508cfd9385d2f0f"
+    },
+    {
+      "path": "assets/icons/equipment/microspikes.svg",
+      "sha256": "f68543394e5c6c79f7c486355c2cadbf669c8b1547e8988cd1d0209e763b8cc1"
+    },
+    {
+      "path": "assets/icons/equipment/navigation.svg",
+      "sha256": "b0c0b296765fe891f55596491667943fc0fba628dcbcfe1c253fa68dc9d9f363"
+    },
+    {
+      "path": "assets/icons/equipment/neck-gaiter.svg",
+      "sha256": "20b4ad04d82aa75b8beeb5c4595ad4bccba8030bfad6bd8be43dcaa3ddf5e2a6"
+    },
+    {
+      "path": "assets/icons/equipment/pack-cover.svg",
+      "sha256": "f7e80ed160b06077ff007558a84d4ee56e2a5823f75ae6df67b385aceab0a1ef"
+    },
+    {
+      "path": "assets/icons/equipment/power-bank.svg",
+      "sha256": "bdf869f75630ec95f63ed1dceac45a2c81c9d6608594d366d34a4592339e2ecc"
+    },
+    {
+      "path": "assets/icons/equipment/rain-jacket.svg",
+      "sha256": "9142a404590e719ad8283fafffea35f1925363ed3e7b56c56eedb4f9717b0c1e"
+    },
+    {
+      "path": "assets/icons/equipment/rain-pants.svg",
+      "sha256": "a8edb49689c09775d9cb28ca4becee9eb5bdbbd345464fb76be050ec9c1d2fd9"
+    },
+    {
+      "path": "assets/icons/equipment/snacks.svg",
+      "sha256": "53e4969235c9c88aa33d8ae6321631e9debe663dac927a40489e89b44027154a"
+    },
+    {
+      "path": "assets/icons/equipment/sun-hat.svg",
+      "sha256": "b8973cb78fb77d1e2804c06967623b0c897d59b1b9a3f8f4364cf9dc5c4cbaa6"
+    },
+    {
+      "path": "assets/icons/equipment/sunglasses.svg",
+      "sha256": "5776842de1826a5926f9b1dad0873a8ea3c7b6f8b50ec55d7374cb688494066b"
+    },
+    {
+      "path": "assets/icons/equipment/sunscreen.svg",
+      "sha256": "d50af7d0340a92b0e955f2123966152057dd2427dc1cc101ba7ebd4c754a95b3"
+    },
+    {
+      "path": "assets/icons/equipment/thermos.svg",
+      "sha256": "36a6e8e3b45124b6f8aceb05a306f921609c04c976aac65f22d961e1e677d261"
+    },
+    {
+      "path": "assets/icons/equipment/trekking-poles.svg",
+      "sha256": "3a52ed7eded4add87e5c96d458257ca64b9e4a065932e911cd66da9041803af7"
+    },
+    {
+      "path": "assets/icons/equipment/warm-socks.svg",
+      "sha256": "bad9265c93d25090a4ffd5b6b15db2e2863c172614384121649bdd0582de6d6c"
+    },
+    {
+      "path": "assets/icons/equipment/water-bottle.svg",
+      "sha256": "094d525cdd6c7eaffda3bab00e514fb1eaa74224fe285bf1ba836d985a17347c"
+    },
+    {
+      "path": "assets/icons/equipment/water-filter.svg",
+      "sha256": "89d7427137f632ebe81bcae119a410b4a9258bc589f3c17463991591d07f480d"
+    },
+    {
+      "path": "assets/icons/equipment/waterproof-gloves.svg",
+      "sha256": "ed4bc0b94a7da4a986cd523c6b06fa210c3fdaa9077051c0f99a1133e34c739e"
+    },
+    {
+      "path": "assets/icons/equipment/windbreaker.svg",
+      "sha256": "2d92f2895b8d1defcac1a338c82b2453030a49d7ff2a0e662c889e4aabadab0a"
+    },
+    {
+      "path": "assets/icons/ui/arrow-left.svg",
+      "sha256": "6080ee803bc917bc97b26d9b842c69aa3c2c4bd5526fbe987820a626aec65bd7"
+    },
+    {
+      "path": "assets/icons/ui/arrow-right.svg",
+      "sha256": "cdfada482aaa0ace6429922d87fb042dad77d75f46db5247930d2ad6619aafcd"
+    },
+    {
+      "path": "assets/icons/ui/ascent-descent.svg",
+      "sha256": "03de61ce8d16ec8c3987c9b918b6ed7209dcba598b1b7eb0aa2e5499f442920d"
+    },
+    {
+      "path": "assets/icons/ui/chevron-down.svg",
+      "sha256": "d0bc08118243e6de09497c87bcb6e1fb286410fc8bdfc00b27c521fc8d085836"
+    },
+    {
+      "path": "assets/icons/ui/chevron-up.svg",
+      "sha256": "76455f05483e99684221101d27c3c0cb6e5e60be9280133848354aefffe1072c"
+    },
+    {
+      "path": "assets/icons/ui/clock.svg",
+      "sha256": "fa7f65872ee0e51e4d35114be92863b7c365a47e27bbc2366098860fb53b3d99"
+    },
+    {
+      "path": "assets/icons/ui/close.svg",
+      "sha256": "ac5b27ea9930d8ec9293ab381d7960b23f1d37d13586ae6a0e83adcb616011fd"
+    },
+    {
+      "path": "assets/icons/ui/day-collapse.svg",
+      "sha256": "d1f9f6952dfab31e496b7ca4bc09050d38a615ba9bf1d1e15137e255feafaa39"
+    },
+    {
+      "path": "assets/icons/ui/day-expand.svg",
+      "sha256": "4dd84af8db576b6d22bf5a8462032e9a7dbc32bf137d1cd303663f7e2087f849"
+    },
+    {
+      "path": "assets/icons/ui/distance.svg",
+      "sha256": "f582766534cb6fc766a3038f43c51b4a14f412469b8da76fe25f8bedc2133efc"
+    },
+    {
+      "path": "assets/icons/ui/download.svg",
+      "sha256": "22bfb2426a17e3b314c93d0cf69aeb7919d4e033623bcccd7d345ed98308591f"
+    },
+    {
+      "path": "assets/icons/ui/flag.svg",
+      "sha256": "b44f5909a3a33e64d1310038a76af50428b9abe3800ba4b494d62420ff449c86"
+    },
+    {
+      "path": "assets/icons/ui/gauge.svg",
+      "sha256": "8dbb10c05e01e47b2ea3e68098ec4e848a24b9b1af87c96138aaf92ebe8f5755"
+    },
+    {
+      "path": "assets/icons/ui/refresh.svg",
+      "sha256": "f985f1d7730d61322417a4ce03eef38c3e205984c7b2f8dfce13953324224285"
+    },
+    {
+      "path": "assets/icons/ui/share.svg",
+      "sha256": "f9e0536ae104d5fe4696de721c4be6e1afdf6d51e79ad50e7ecd52f707e59abf"
+    },
+    {
+      "path": "assets/icons/ui/stopwatch.svg",
+      "sha256": "4e68406776e50d7da9bac260d9128935259fc32f216e046590d58d7fcfcdbd6e"
+    },
+    {
+      "path": "assets/icons/ui/zoom.svg",
+      "sha256": "af16cdd44ca921e7e7f13115d1f58012515b2fce7aed3c3225f346a69058b865"
+    },
+    {
+      "path": "assets/icons/weather/back.svg",
+      "sha256": "ab9cb33e7628f007f215b0cd10027d390f5e5211c7a4291039f09098fe9e8e2c"
+    },
+    {
+      "path": "assets/icons/weather/chevron-down.svg",
+      "sha256": "1b381767f4798d3bf87175c420140c0fcc7cbf517799ac77d1c4c95d2ade4e67"
+    },
+    {
+      "path": "assets/icons/weather/chevron-left.svg",
+      "sha256": "76e36c57a5956a249c02dc3286a65d20e68d6c22396191add289c263d7070b7f"
+    },
+    {
+      "path": "assets/icons/weather/chevron-right.svg",
+      "sha256": "582c0b73ff5d1dcb5793e7e90c0133360a58b8676ba9fa86843df4906a77118d"
+    },
+    {
+      "path": "assets/icons/weather/chevron-up.svg",
+      "sha256": "a86d0f7fd2eeb328e11735cb337c80b4a3c30947ba9d39413d9adc3ddb0f484a"
+    },
+    {
+      "path": "assets/icons/weather/clear-day.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa"
+    },
+    {
+      "path": "assets/icons/weather/clear-night.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf"
+    },
+    {
+      "path": "assets/icons/weather/close.svg",
+      "sha256": "2b77db06944a2875274ec61a9f406febd0490b55003590f5976d2d3cf4239d4f"
+    },
+    {
+      "path": "assets/icons/weather/cloudy.svg",
+      "sha256": "d96604095df3c3bfffd2a8685f9f13498722a630905674749fc384c6a60a1631"
+    },
+    {
+      "path": "assets/icons/weather/drizzle.svg",
+      "sha256": "ebd0709a7e02bbec26656e2066356e8f2273610bbbc95740bd4bc21215cc0b71"
+    },
+    {
+      "path": "assets/icons/weather/droplet.svg",
+      "sha256": "a22e5e8b507205bf47eeb4da564d201605a51804bdb4915f88c76067942b9264"
+    },
+    {
+      "path": "assets/icons/weather/fog-day.svg",
+      "sha256": "5c8107e2c932ffa12df74166d21e77802d67116ccb59486f5d06712ada6f31c4"
+    },
+    {
+      "path": "assets/icons/weather/fog-night.svg",
+      "sha256": "a3b49f5d7ded04499c917c68f9e740b97e3526b0db2f53f09fc06bdb286ab3af"
+    },
+    {
+      "path": "assets/icons/weather/freezing-rain.svg",
+      "sha256": "2f5f6ff67a8febafc30447acc57ce052e8a300bc270bcf082f37448ef178f1a6"
+    },
+    {
+      "path": "assets/icons/weather/gust.svg",
+      "sha256": "6ff1be39c75fa57f491aa5a92d93fff8eb7e583bcfd1388d5ccdd1ff42491d92"
+    },
+    {
+      "path": "assets/icons/weather/heavy-rain.svg",
+      "sha256": "17663896ac9ebe5dbdc64542d4aa812bba74da8f1a6013de60596794a85f6f00"
+    },
+    {
+      "path": "assets/icons/weather/heavy-snow.svg",
+      "sha256": "1270bd807649afd299e090a77a156b147eea8722b0eaf62c8427d2ed891ff4a9"
+    },
+    {
+      "path": "assets/icons/weather/hike.svg",
+      "sha256": "539b9697c7e8ce05a0415d81a62fb823601692c8c584cc11856d28d016b29ddb"
+    },
+    {
+      "path": "assets/icons/weather/instagram.svg",
+      "sha256": "32275f2750da25c5906882b1217248d955fb71b62ebde7466c2d7d1e0e5c77d9"
+    },
+    {
+      "path": "assets/icons/weather/lock.svg",
+      "sha256": "8dfc4bfcb0f9c96e1803e8c14862a0b1a7b88d50107be412afcd69e8c313cd48"
+    },
+    {
+      "path": "assets/icons/weather/logout.svg",
+      "sha256": "85365e1cffefcdcc9d75bfb4f68b645142e6373acc0f7094e0e8bff300fb6f63"
+    },
+    {
+      "path": "assets/icons/weather/moon.svg",
+      "sha256": "a977810aa0c06f5a3a8291bcba592a46b8b5c2814577dcfb33cb175f7ca8f9cf"
+    },
+    {
+      "path": "assets/icons/weather/mostly-clear-day.svg",
+      "sha256": "99a5eb9394b786bded6deba3ac07fb0d64c0816447751db83cbbd0ca88842c6a"
+    },
+    {
+      "path": "assets/icons/weather/mostly-clear-night.svg",
+      "sha256": "f40e3f84a2d24654fa744fd3ab287af6e3e5f801987cec769d7a344dbe985c49"
+    },
+    {
+      "path": "assets/icons/weather/partly-cloudy-day.svg",
+      "sha256": "0eb8cffde2b13b4429e67a58e2b6bb28a11977fa4da62a6aa74ae061eca3064c"
+    },
+    {
+      "path": "assets/icons/weather/partly-cloudy-night.svg",
+      "sha256": "4751adef35db48d24fd770b7b1ac3054b01cc2a0f28bdfd4f9c25490feaf339f"
+    },
+    {
+      "path": "assets/icons/weather/rain.svg",
+      "sha256": "59e35f8631c119cab4c56527739aa25b06bbf5baaf20c523eb3e5db8fd8f7096"
+    },
+    {
+      "path": "assets/icons/weather/refresh.svg",
+      "sha256": "200fa635c9b02241448d0f191963a95dcf8bf672c3be7c521936bba37596f669"
+    },
+    {
+      "path": "assets/icons/weather/rime-fog.svg",
+      "sha256": "a207c34a6ddbc57f10da481ee94d8f16218036848c467d340e92be87ee3a3e06"
+    },
+    {
+      "path": "assets/icons/weather/showers-night.svg",
+      "sha256": "791d8d87f82803414fc728560e06a361868cfa6b801ba873b7cd40250966f124"
+    },
+    {
+      "path": "assets/icons/weather/showers.svg",
+      "sha256": "eb08a9278fb1626a3193ab34f1244e8a0f4daec7776dccc0533bf64e83f8ecc6"
+    },
+    {
+      "path": "assets/icons/weather/snow-grains.svg",
+      "sha256": "7b83e9610a7f24e59282271c9eec6e38ec8a91935c0df763814a1ddae08c79b6"
+    },
+    {
+      "path": "assets/icons/weather/snow.svg",
+      "sha256": "856d54513d9370420564aa1b5ddbdd48aa0897f35e86e3334973b7483e482724"
+    },
+    {
+      "path": "assets/icons/weather/subscription.svg",
+      "sha256": "38055e9ab535f1f24db8f3129766946947bbb7424d71ab387fb298cd99b13384"
+    },
+    {
+      "path": "assets/icons/weather/sun.svg",
+      "sha256": "81c7003ba7fe9799ff5e7b4b454e3519afd94b5f531583d518a7f25db98985fa"
+    },
+    {
+      "path": "assets/icons/weather/telegram.svg",
+      "sha256": "01b23791e9c9ed430e070213c92061cad7bb50350a54e3ddd1a673b468b63875"
+    },
+    {
+      "path": "assets/icons/weather/temperature.svg",
+      "sha256": "e382b6e4cd80c4f975a5384ddf1e0eac9fff40f85875862313ffb167bdc9c3f1"
+    },
+    {
+      "path": "assets/icons/weather/thunderstorm-hail.svg",
+      "sha256": "461ea906ba4d5c3e31b89c8b288511a2468cd2abb48eb28e8c7565c39ee1550e"
+    },
+    {
+      "path": "assets/icons/weather/thunderstorm.svg",
+      "sha256": "c10cd0b0710d796ebb3cfcd2fecd22fcbd924d0554d263e472ceeaacf3cd5902"
+    },
+    {
+      "path": "assets/icons/weather/unknown.svg",
+      "sha256": "b9e6eff9c0263e70e335f87c223a4f82fd184c2d70fcdd5c292f5a11b14613c5"
+    },
+    {
+      "path": "assets/icons/weather/user-active.svg",
+      "sha256": "fbc7d24d4a269b46ba37339485a05f9335d9cb5048e38c4f1efa6710cd4c36b3"
+    },
+    {
+      "path": "assets/icons/weather/user.svg",
+      "sha256": "544343939f397de4de2a955d41a40aa831bda7e5b57ab8fb81e4a939b4e49417"
+    },
+    {
+      "path": "assets/icons/weather/visibility.svg",
+      "sha256": "83662021b3400005a20078f9dc7423acb3af84de0f61f91c535ca42e52266c1e"
+    },
+    {
+      "path": "assets/icons/weather/warning.svg",
+      "sha256": "dcf54becae154c46b0bce3fda0d18dcdf0b9c59d25660d3aa7ab1fa993d1d50c"
+    },
+    {
+      "path": "assets/icons/weather/wind.svg",
+      "sha256": "d47ab43ef8278e37ece231fbef042e46833b5471a56d01bfbf9d095018858d16"
+    }
+  ],
+  "updated_icons_source": "Extracted from icons.js and forecast-icons.js of approved site; complete current SVG variants supplied"
+}

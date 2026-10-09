@@ -101,6 +101,7 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 دادهٔ واقعی عمومی در اولین راه‌اندازی با export فقط‌خواندنی کپی می‌شود.
 راهنمای اجرا از سیستم محلی در [docs/stage-deployment.md](docs/stage-deployment.md)
 و قرارداد هفته/کش/تجهیزات در [docs/week-forecast.md](docs/week-forecast.md) است.
+منابع طراحی و گالری v5 در [راهنمای منابع](docs/design/forecast-v5/README.md) مرتب شده‌اند.
 `deploy-hawatch` همچنان فقط production/main را منتشر می‌کند.
 
 ## استقرار سریع روی سرور

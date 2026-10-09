@@ -1,0 +1,38 @@
+{
+  "status": "proposed production contract, not deployed in this reference",
+  "preview": {
+    "format": "/p/#w{base36}",
+    "working_origin": "https://hawatch-design-preview.admirer135.chatgpt.site",
+    "scope": "route/day/start/speed in fixed demo week; not persistent snapshot shortener"
+  },
+  "production": {
+    "create": {
+      "method": "POST",
+      "path": "/api/route-shares",
+      "body": {
+        "route_id": "existing route slug",
+        "departure_date": "local ISO date",
+        "departure_time": "HH:mm",
+        "time_zone": "Asia/Tehran",
+        "speed": "slow|medium|fast",
+        "snapshot_id": "immutable route forecast snapshot",
+        "forecast_revision": "provider revision",
+        "geometry_revision": "itinerary revision"
+      },
+      "response": {
+        "share_id": "opaque server-issued identifier",
+        "short_url": "https://hawatch.ir/p/{id}",
+        "snapshot_id": "same saved immutable snapshot",
+        "expires_at": "explicit expiry if applicable"
+      }
+    },
+    "resolve": {
+      "path": "/p/{id}",
+      "result": "same route/date/start/speed and saved forecast revision",
+      "expired": "clear expired state with explicit refresh choice; do not silently substitute a different plan"
+    },
+    "opaque_id": "server-generated and collision checked; never derive persistent id from a local index"
+  },
+  "url_placement": "share preview below image + caption; no URL in PNG",
+  "fallback": "save image stays available; no extra link-copy or URL-type choices"
+}
