@@ -14,8 +14,8 @@
 - ساخت `.env` با permission `600` و secret تصادفی فقط وقتی `.env` وجود ندارد؛
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
 - اجرای `docker compose config`، build/up، health check و scheduler داخلی ingest؛ ingest یک‌بارهٔ `ingest` به‌صورت پیش‌فرض در deploy اجرا نمی‌شود و فقط با تصمیم صریح اپراتور فعال است. همهٔ imageهای لازم، از جمله image سرویس one-shot `ingest`، قبل از جایگزینی کانتینرهای در حال اجرا build می‌شوند؛ اگر registry یا شبکه timeout بدهد، release فعلی دست‌نخورده می‌ماند؛
-- همگام‌سازی atomic همهٔ catalogهای versioned با دیتابیس موجود پیش از smoke check؛
-- بالا آوردن همهٔ سرویس‌های انتخاب‌شده با `--force-recreate` پس از موفقیت build؛ orphanهای همان Compose project پاک می‌شوند و volumeهای نام‌دار، به‌ویژه دیتابیس، حفظ می‌شوند؛ اسکریپت قبل از build دیگر `down` نمی‌زند؛
+- همگام‌سازی atomic catalog و فرود فقط در اولین اجرای نسخهٔ اصلاح‌شده یا هنگام تغییر ورودی‌های مرتبط، پیش از smoke check؛
+- حفظ کانتینر موجود PostgreSQL و Redis با `--no-recreate`؛ جایگزینی سرویس‌های تغییرکردهٔ برنامه با `--no-deps` پس از build؛ gateway با `--no-deps --force-recreate` آدرس جدید upstream را می‌گیرد. هیچ `down` یا پاک‌سازی orphan خودکار اجرا نمی‌شود؛
 - نمایش status و URLهای قابل تست.
 
 در deployهای شامل تغییر renderer SEO، هر دو image `api` و `web` باید build شوند:
@@ -200,10 +200,19 @@ ENABLE_OBSERVABILITY=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ## انتشار پیش‌بینی هفته و داده‌های مسیر
 
 `deploy-hawatch` برنچ `main` را دیپلوی می‌کند. deploy تنظیم دریافت provider را
-۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ asset فرانت، SSR و cache بر اساس
-همان commit است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
+۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ asset فرانت و SSR بر اساس
+همان commit است، ولی نسخهٔ کش هوا مستقل و `week-4` است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
 می‌شوند. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
-`sync_catalog --apply`، `apply_route_descent` و `warm_week_cache` اجرا می‌شوند.
+`sync_catalog --apply` و `apply_route_descent` فقط در صورت تغییر fingerprint اجرا می‌شوند.
+fingerprint موفق در `.git/hawatch-catalog-deploy.sha256` نگهداری می‌شود؛ شکست import
+آن را جلو نمی‌برد و اجرای بعدی دوباره تلاش می‌کند. اولین اجرای این نسخه یک بار
+همگام‌سازی می‌کند. اجرای دوبارهٔ فرود بدون تغییر، revision هوا را باطل نمی‌کند.
+`warm_week_cache` در دیپلوی اجرا نمی‌شود؛ فقط ingest موفق/partial آن را اجرا می‌کند.
+در گذار از کش قبلی به `week-4` پاسخ‌ها یک بار هنگام درخواست از DB ساخته می‌شوند؛
+انتشارهای ظاهری بعدی همان کش را مصرف می‌کنند. تغییر قرارداد سریال‌شده باید
+`WEEK_CACHE_SCHEMA` را افزایش دهد؛ تغییر هوا/catalog همچنان revision را عوض می‌کند.
+Redis در انتشار عادی حفظ می‌شود، اما با تنظیم فعلیِ بدون persistence، ری‌استارت
+خود Redis یا سرور کش را از بین می‌برد. دادهٔ اصلی در PostgreSQL محفوظ است.
 دادهٔ کاربر و دیتابیس پروداکشن حفظ می‌شوند؛ دیتابیس استیج جایگزین آن نمی‌شود.
 کاتالوگ جدید فقط با gate مستند onboarding وارد repository شود؛ این deploy
 فقط کاتالوگ‌های قبلاً تأییدشدهٔ بسته را همگام می‌کند.

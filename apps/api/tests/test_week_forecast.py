@@ -134,7 +134,7 @@ def test_route_descent_applies_only_matching_canonical_chain(week_seed):
     assert Route.objects.get(slug='tochal-shahrestanak').descent_m is None
 
 
-def test_deploy_cache_does_not_reuse_old_worker_payloads(settings):
+def test_cache_schema_isolates_payload_changes_but_ui_releases_share_cache(settings):
     from hawatch.api.v1.week_views import cached_week
     from django.test import override_settings
     import json
@@ -142,13 +142,24 @@ def test_deploy_cache_does_not_reuse_old_worker_payloads(settings):
     legacy={"last_generated_at":None,"subject":{"slug":"tochal-darband"}}
     current={"last_generated_at":None,"subject":{"slug":"tochal-darband","descent_m":0}}
     today=now_tehran().date()
-    with override_settings(HAWATCH_ASSET_VERSION='old-worker'),patch('hawatch.api.v1.week_views.build_week',return_value=legacy):
+    with patch('hawatch.api.v1.week_views.WEEK_CACHE_SCHEMA','previous-schema'),patch('hawatch.api.v1.week_views.build_week',return_value=legacy):
         cached_week('route','tochal-darband',today)
     with override_settings(HAWATCH_ASSET_VERSION='new-worker'),patch('hawatch.api.v1.week_views.build_week',return_value=current) as build:
         (body,_),status=cached_week('route','tochal-darband',today)
         assert status=='MISS' and json.loads(body)['subject']['descent_m']==0
         assert cached_week('route','tochal-darband',today)[1]=='HIT'
         assert build.call_count==1
-    with override_settings(HAWATCH_ASSET_VERSION='old-worker'),patch('hawatch.api.v1.week_views.build_week') as build:
+    with override_settings(HAWATCH_ASSET_VERSION='next-ui-release'),patch('hawatch.api.v1.week_views.build_week') as build:
         assert cached_week('route','tochal-darband',today)[1]=='HIT'
         build.assert_not_called()
+
+
+def test_reapplying_unchanged_descent_preserves_weather_revision(week_seed,django_capture_on_commit_callbacks):
+    from django.core.management import call_command
+    from hawatch.api.v1.week_cache import revision
+    with django_capture_on_commit_callbacks(execute=True):
+        call_command('apply_route_descent')
+    before=revision()
+    with django_capture_on_commit_callbacks(execute=True):
+        call_command('apply_route_descent')
+    assert revision()==before

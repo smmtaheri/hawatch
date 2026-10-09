@@ -82,7 +82,7 @@ def test_compressed_redis_payload_and_new_data_revision(catalog,settings,django_
     with patch('hawatch.api.v1.week_views.build_week',return_value=payload) as build:
         cold,status=cached_week('point','tochal',today)
         assert status=='MISS'
-        key=f'week-3:cache-flow-test:{revision()}:point:tochal:{today}'
+        key=f'week-4:{revision()}:point:tochal:{today}'
         packed=cache.get(key)
         assert len(packed[0])<len(cold[0])/10 and zlib.decompress(packed[0])==cold[0]
         assert cached_week('point','tochal',today)==(cold,'HIT')

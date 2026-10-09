@@ -17,11 +17,10 @@
 - `opensearch`، `opensearch-dashboards`، `opensearch-auth-init`، `opensearch-provisioner`
 - `vector`، `prometheus` و `grafana`
 
-Redis با profile `cache` تعریف شده و در `up` عادی بالا نمی‌آید:
-
-```bash
-docker compose --env-file .env -f infra/compose/compose.yaml --profile cache up -d redis
-```
+Redis مشترک با سقف ۱۲۸MB و سیاست LRU جزو سرویس‌های پیش‌فرض است.
+دیپلوی معمولی PostgreSQL و Redis موجود را بازسازی نمی‌کند؛ کش Redis با
+تغییر کامیت ظاهر نامعتبر نمی‌شود. Redis فعلاً بدون ذخیره‌سازی دیسکی است؛
+restart خود Redis یا سرور باعث از دست رفتن کش موقت می‌شود.
 
 Kafka در این milestone اضافه نشده است.
 

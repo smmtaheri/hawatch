@@ -371,19 +371,20 @@ run_stack() {
   # never touched. If build fails, the currently running containers are still
   # serving the previous release and can be left alone while the registry issue
   # is fixed. Startup failures are reported by the health checks below.
-  log "Starting the new release and removing Hawatch Compose orphans (volumes are preserved)."
+  log "Starting the new release; existing PostgreSQL and Redis containers are preserved."
 
-  if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
-    # Keep the one-shot ingest explicit so it runs exactly once below.
-    "${compose[@]}" up -d --force-recreate --remove-orphans postgres redis api web maintenance ingest-scheduler \
-      opensearch opensearch-dashboards opensearch-auth-init opensearch-provisioner \
-      vector prometheus grafana
-  else
-    "${compose[@]}" up -d --force-recreate --remove-orphans postgres redis api web maintenance ingest-scheduler
-  fi
-
+  # Existing data services retain their container identity and in-memory cache.
+  # --no-recreate also permits bootstrapping missing services on a fresh host.
+  "${compose[@]}" up -d --no-recreate postgres redis
   wait_for_healthy postgres
   wait_for_healthy redis
+  # Do not let application dependency traversal recreate data services.
+  "${compose[@]}" up -d --no-deps api web maintenance ingest-scheduler
+  if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
+    "${compose[@]}" up -d --no-recreate opensearch opensearch-dashboards opensearch-auth-init \
+      opensearch-provisioner vector prometheus grafana
+  fi
+
   wait_for_healthy api
   wait_for_healthy web
   wait_for_running maintenance
@@ -391,19 +392,31 @@ run_stack() {
 
   # Nginx resolves Docker service names when it starts. Recreate the gateway
   # after API/Web replacement so it cannot retain a stale container IP.
-  "${compose[@]}" up -d --force-recreate --remove-orphans nginx
+  "${compose[@]}" up -d --no-deps --force-recreate nginx
   wait_for_healthy nginx
 
-  # A release may target an existing database whose catalog predates the
-  # current canonical point/route graph. Synchronize fixture-managed rows
-  # before smoke checks; the command is atomic and preserves operator-managed
-  # rows. On an empty database the startup bootstrap has already populated the
-  # catalogs, so this is an idempotent no-op.
-  log "Synchronizing packaged catalogs on the live database."
-  "${compose[@]}" exec -T api python manage.py sync_catalog --apply
-  log "Applying verified route descent/distances and warming the public week cache."
-  "${compose[@]}" exec -T api python manage.py apply_route_descent
-  "${compose[@]}" exec -T api python manage.py warm_week_cache
+  # Store only the successfully applied catalog fingerprint, outside tracked files.
+  # First rollout imports once; failed imports leave the marker unchanged for retry.
+  local catalog_fingerprint catalog_state_file previous_catalog_fingerprint
+  catalog_state_file="$REPO_DIR/.git/hawatch-catalog-deploy.sha256"
+  catalog_fingerprint="$(git -C "$REPO_DIR" ls-tree -r HEAD -- \
+    apps/api/fixtures/catalog apps/api/fixtures/route_descent_v1.json \
+    apps/api/src/hawatch/modules/catalog \
+    apps/api/src/hawatch/modules/routes/models.py \
+    apps/api/src/hawatch/modules/forecasts/models.py \
+    apps/api/src/hawatch/jobs/management/commands/apply_route_descent.py \
+    | sha256sum | awk '{print $1}')"
+  previous_catalog_fingerprint="$(cat "$catalog_state_file" 2>/dev/null || true)"
+  if [[ "$catalog_fingerprint" != "$previous_catalog_fingerprint" ]]; then
+    log "Catalog inputs changed; synchronizing packaged data and verified descent."
+    "${compose[@]}" exec -T api python manage.py sync_catalog --apply
+    "${compose[@]}" exec -T api python manage.py apply_route_descent
+    printf '%s\n' "$catalog_fingerprint" > "$catalog_state_file.tmp"
+    mv "$catalog_state_file.tmp" "$catalog_state_file"
+  else
+    log "Catalog inputs unchanged; synchronization and descent application skipped."
+  fi
+  log "Week cache warming skipped; scheduled/manual ingest warms it after fresh data."
 
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
