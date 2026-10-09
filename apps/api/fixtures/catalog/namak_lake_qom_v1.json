@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-namak-lake-qom-catalog-v1",
+  "primary_point": "namak-lake-qom",
+  "weather_points": {
+    "namak-lake-qom": {
+      "name": "دریاچهٔ نمک قم",
+      "page_name": "دریاچهٔ نمک قم",
+      "short_label": "دریاچهٔ نمک قم",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "دریاچه نمک قم",
+        "دریاچه نمک مسیله",
+        "دریاچه مسیله",
+        "دریاچه نمک مرنجاب",
+        "Namak Lake",
+        "Lake Namak",
+        "Massileh Salt Lake"
+      ],
+      "identity_summary": "دریاچهٔ نمک بزرگِ حوضهٔ قم و مرنجاب؛ پهنه‌ای جدا از حوض سلطان و دریاچهٔ نمک حاج‌علی‌قلی. نقطهٔ پیش‌بینی در دسترسی جنوبیِ نزدیک مرنجاب، به‌عنوان نمایندهٔ همین دریاچه انتخاب شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12591212",
+        "https://www.iaglr.org/lakes/profile/namak/",
+        "https://www.wikiloc.com/hiking-trails/mrnjb-bh-jzyrh-srgrdn-maranjab-desert-8864896",
+        "https://destination-overland.com/2018/04/11/iran-2018-pt-7-of-kashan-and-its-beautiful-surroundings/",
+        "https://lastsecond.ir/blog/1681-daryache-namak-ghom",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.32705,
+      "longitude": 51.88337,
+      "elevation_m": 809,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ بازدید خودروییِ جنوبی نزدیک مرنجاب از گزارش سفر جاده‌ای؛ Open-Meteo GLO-90 در همین مختصات ۸۰۹ متر، اختلاف با ارتفاع کاتالوگ ۱۹ متر و grid در فاصلهٔ ۱٫۳۲۲ کیلومتر (بررسی ۲۰۲۶-۱۰-۰۹).",
+      "climate": "lake_valley",
+      "region": "مرنجاب · حوضهٔ دریاچهٔ نمک",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "namak-lake-qom",
+    "tile_name": "دریاچهٔ نمک قم",
+    "name": "دریاچهٔ نمک قم",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های کویر مرکزی",
+    "category_key": "lake",
+    "region": "مرنجاب · حوضهٔ دریاچهٔ نمک",
+    "elevation_m": 809,
+    "latitude": 34.32705,
+    "longitude": 51.88337,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ نمکی دریاچهٔ نمک در محدودهٔ مرنجاب",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه نمک قم",
+      "دریاچه نمک مسیله",
+      "دریاچه مسیله",
+      "Namak Lake",
+      "Lake Namak"
+    ]
+  }
+}
