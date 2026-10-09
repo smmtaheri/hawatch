@@ -81,8 +81,17 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  }
  const weatherStrip=(p,x)=>`<div class="weather-strip">${p.map((a,i)=>`<div class="weather-slot" style="left:${x[i]}px" aria-label="${esc(a.name)} ${a.hour==null?'':fa(clock(a.hour*60))}">${a.hour!=null&&a.hazards?.length?warning():''}${weather(a.weather)}${weatherLabel(a.weatherLabel)}</div>`).join('')}</div>`;
  function pointHeaders(p,x,exporting=false){return `<div class="point-headers">${p.map((a,i)=>`<div class="point-header" style="left:${x[i]}px" data-point-id="${a.id}">${exporting?'<strong>':`<a href="/points/${a.id}" data-nav aria-label="${esc(a.name)}"><strong title="${esc(a.name)}">`}${a.hazards?.length?warning():''}${esc(a.label)}${exporting?'</strong>':'</strong></a>'}<small><span class="arrival-clock ltr">${fa(a.arrival)}</span>${a.nextDay?' · روز بعد':''}</small><small>${a.distance==null?'—':num(a.distance)+' km'}</small>${weather(a.weather,'weather')}${weatherLabel(a.weatherLabel)}</div>`).join('')}</div>`;}
+ // Measurements during chart rebuilding force layout. Keep the old height
+ // until the new chart is complete so the document cannot shrink and clamp
+ // its scroll position halfway through a day/resolution change.
+ function withStableHeight(element,render){
+  const previous=element.style.minHeight;
+  element.style.minHeight=element.getBoundingClientRect().height+'px';
+  try{return render();}finally{element.style.minHeight=previous;}
+ }
  function drawPanel(anchor){
   const panel=document.getElementById('v4-forecast-panel');if(!panel)return;
+  return withStableHeight(panel,()=>{
   const destination=ctx.kind==='point',vw=Math.max(260,panel.clientWidth-(destination?0:mobile()?10:20)),points=destination?slots():routeValues().points;
   const cw=mobile()?Math.max(96,vw/4):Math.max(vw/(ctx.v.levels.some(Boolean)?8:8),110);
   const width=destination?Math.max(vw,points.length*cw):Math.max(vw,(mobile()?64:110)+(points.length-1)*(mobile()?126:155));
@@ -93,6 +102,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
   if(anchor){let i=points.findIndex(a=>a.day===anchor.day&&a.hour===anchor.hour);if(i<0)i=points.findIndex(a=>a.day===anchor.day);scroller.scrollLeft=xs[i]-anchor.screenX;}
   else scroller.scrollLeft=ctx.v.scroll==null?width-vw:Math.min(width-vw,ctx.v.scroll);
   syncScroll();
+  });
  }
  function syncScroll(){if(!layout)return;const {scroller,width,vw,xs}=layout,l=scroller.scrollLeft,r=l+vw,first=xs.filter(x=>x>=l&&x<=r).sort((a,b)=>b-a)[0],captionX=first==null?r-5:Math.min(r-5,first+(ctx.kind==='point'?width/xs.length/2-6:Math.min(width/xs.length/2-5,37)));ctx.v.scroll=l;
   scroller.querySelectorAll('.metric-caption').forEach(g=>g.setAttribute('transform',`translate(${captionX} 0)`));
@@ -113,7 +123,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
   s.addEventListener('click',e=>{if(drag){e.preventDefault();e.stopPropagation();drag=false;}},true);s.addEventListener('dragstart',e=>e.preventDefault());
  }
  function bindDates(){const s=document.querySelector('.v4-date-scroll'),t=document.querySelector('.v4-date-track .scroll-track');if(!s)return;const max=s.scrollWidth-s.clientWidth;s.scrollLeft=ctx.v.dateScroll==null?max:ctx.v.dateScroll;const sync=()=>{ctx.v.dateScroll=s.scrollLeft;syncTrack(s,t);};bindScroll(s,t,sync);sync();}
- function rerender(focus){const root=document.getElementById('forecast-v4');if(!root)return;root.innerHTML=inner();mount(callbacks);if(focus)root.querySelector(focus)?.focus({preventScroll:true});}
+ function rerender(focus){const root=document.getElementById('forecast-v4');if(!root)return;withStableHeight(root,()=>{root.innerHTML=inner();mount(callbacks);});if(focus)root.querySelector(focus)?.focus({preventScroll:true});}
  function changeLevel(day,dir){const old=layout,d=W.points[ctx.record.slug].days[day],next=ctx.v.levels[day]+dir;if(next<0||next>3||!d.available.includes(resolutions[next]))return;const candidates=old.points.map((p,i)=>({p,i,x:old.xs[i]-old.scroller.scrollLeft})).filter(a=>a.p.day===day).sort((a,b)=>Math.abs(a.x-old.vw/2)-Math.abs(b.x-old.vw/2)),chosen=candidates[0],step=[24,6,3,1][next],hour=next===0?null:Math.floor((chosen.p.hour||0)/step)*step;ctx.v.levels[day]=next;drawPanel({day,hour,screenX:chosen.x});document.querySelector(`[data-v4-${dir>0?'expand':'collapse'}="${day}"]`)?.focus({preventScroll:true});}
  function mount(cb){callbacks=cb||callbacks;const root=document.getElementById('forecast-v4');if(!root){layout=null;return;}drawPanel();bindDates();
   root.onclick=e=>{const b=e.target.closest('button[data-v4-expand],button[data-v4-collapse],button[data-v4-expert],button[data-v4-gear],button[data-v4-menu],button[data-v4-start],button[data-v4-speed],button[data-v4-date],button[data-v4-routes],button[data-v4-share]');if(!b)return;e.stopPropagation();const d=b.dataset;

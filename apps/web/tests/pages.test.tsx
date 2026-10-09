@@ -233,13 +233,21 @@ describe("approved week forecast and unchanged public pages", () => {
         await waitFor(() => expect(targets).toHaveLength(1));
         expect(targets[0]).toBe(document.querySelector(`.${kind}-page .hero`));
         expect(targets[0].querySelector('h1')).toBeTruthy();
-        if (kind === 'point') fireEvent.click(document.querySelector('[data-v4-expand="0"]')!);
-        else fireEvent.click(document.querySelector('[data-v4-speed="fast"]')!);
+        const entryScrollCalls = vi.mocked(window.scrollTo).mock.calls.length;
+        if (kind === 'point') {
+          fireEvent.click(document.querySelector('[data-v4-expand="0"]')!);
+          fireEvent.click(document.querySelector('[data-v4-collapse="0"]')!);
+        } else {
+          fireEvent.click(document.querySelector('[data-v4-date="1"]')!);
+          expect(document.querySelector('[data-v4-date="1"]')).toHaveAttribute('aria-pressed', 'true');
+          fireEvent.click(document.querySelector('[data-v4-speed="fast"]')!);
+        }
         clearWeekCache();
         fireEvent(window, new Event('focus'));
         await waitFor(() => expect(weatherCalls()).toHaveLength(2));
         await act(async () => { await new Promise(resolve => setTimeout(resolve, 50)); });
         expect(targets).toHaveLength(1);
+        expect(vi.mocked(window.scrollTo).mock.calls).toHaveLength(entryScrollCalls);
       } finally {
         if (original) Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', original);
         else delete (HTMLElement.prototype as Partial<HTMLElement>).scrollIntoView;
