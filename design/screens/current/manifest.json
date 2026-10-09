@@ -744,11 +744,12 @@
     }
   ],
   "sourceHashes": {
-    "apps/web/src/styles/new-design/landscape.css": "40b3656ecd5f9582182ce2cd4ab0b0f8d3656144210e437a2613d995c539d899",
+    "apps/web/src/styles/new-design/landscape.css": "d4ce24e44b3a51322b5342bbdead3ff2574abc7df3da0de870fe4d3d30c30978",
     "apps/web/src/styles/new-design/base.css": "ec8eff6005917dcc0a0a5c4a8997fd9b036e1d8dbf7e24abe6a8d6526b5d29a8",
     "apps/web/src/features/week/forecast-v5.css": "7c5e30acb0c44c2aa58ac3bb9af3d713ce66ac3bca0493a7a67a240726ee8275",
     "apps/web/src/features/week/vendor/charts.ts": "09c79208e8016230d8cbe5f0c113f826ed24dc8420a62f769742c7cc0e421642",
-    "apps/web/src/features/week/agreed.css": "db160a676c0da47dc9062ae08ccd950477c0256dabc557a23eedeba006121983"
+    "apps/web/src/features/week/agreed.css": "db160a676c0da47dc9062ae08ccd950477c0256dabc557a23eedeba006121983",
+    "apps/web/src/components/PageShell.tsx": "95e5ba0cfadf3ba359597531ec2e7dd447615cb4fb52272ef02830d22442e115"
   },
   "routeHeaderSpacing": [
     {
@@ -824,7 +825,10 @@
       "alamkuh-northern-siahsang"
     ],
     "reference": "points/tochal",
-    "filter": "saturate(.5) hue-rotate(-5deg) brightness(1.6)",
+    "filter": {
+      "desktop": "url(#route-night-desktop)",
+      "mobile": "url(#route-night-mobile)"
+    },
     "caseCount": 18,
     "checks": {
       "lightAndDestinationPixelsUnchanged": true,
@@ -832,13 +836,18 @@
       "noHorizontalOverflow": true,
       "noJavaScriptErrors": true,
       "expandedBackgroundContinuous": true,
-      "sameTabNavigationAndThemeToggle": true
+      "sameTabNavigationAndThemeToggle": true,
+      "sameSceneryAndCropAcrossThemes": true,
+      "noAdditionalPhotoDownloadOnThemeToggle": true,
+      "overlayAppliedAfterPhotoGrading": true
     },
     "screens": [
       "mobile/dark/route.jpg",
       "mobile/dark/route-expanded.jpg",
       "desktop/dark/route.jpg",
       "desktop/dark/route-expanded.jpg"
-    ]
+    ],
+    "sourcePhoto": "route-desktop-light.webp / route-mobile-light.webp in both themes",
+    "grading": "Independent sRGB gamma curves per channel; light route photo to destination dark reference (5th–95th percentiles), desktop and mobile calibrated separately"
   }
 }

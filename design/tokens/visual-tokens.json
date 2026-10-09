@@ -181,8 +181,13 @@
     },
     "routeTone": {
       "light": "saturate(.85)",
-      "dark": "saturate(.5) hue-rotate(-5deg) brightness(1.6)"
+      "dark": {
+        "desktop": "url(#route-night-desktop)",
+        "mobile": "url(#route-night-mobile)",
+        "source": "PageShell.tsx; per-channel gamma curves in sRGB; destination dark photo reference"
+      }
     },
-    "assetsModified": false
+    "assetsModified": false,
+    "routePhoto": "Same route light asset in both themes; exact scenery and crop preserved"
   }
 }

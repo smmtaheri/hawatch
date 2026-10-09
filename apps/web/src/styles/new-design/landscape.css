@@ -12,10 +12,11 @@ main.route-page {
   --landscape-photo: url('/new-design/backgrounds/desktop-dark.webp');
 }
 :root[data-theme="dark"] main.route-page {
-  --landscape-photo: url('/new-design/backgrounds/route-desktop-dark.webp');
-  /* The route source is darker and bluer than the destination source.
-     Balance the photo alone; shared cards and foreground colors stay intact. */
-  --landscape-tone: saturate(.5) hue-rotate(-5deg) brightness(1.6);
+  /* Keep the exact light-theme scenery and framing. Channel curves grade its
+     highlights and shadows to the destination dark palette, not the old blue
+     route image. No extra raster download is needed when toggling themes. */
+  --landscape-photo: url('/new-design/backgrounds/route-desktop-light.webp');
+  --landscape-tone: url('#route-night-desktop');
 }
 .landscape {
   position: fixed;
@@ -33,9 +34,31 @@ main.route-page {
   mask-image: none;
   filter: var(--landscape-tone);
 }
+/* Apply the shared dark overlay after grading. Filtering the overlay together
+   with the photo would darken the result again through the gamma curves. */
+:root[data-theme="dark"] main.route-page .landscape {
+  background-image: none;
+  filter: none;
+}
+:root[data-theme="dark"] main.route-page .landscape::before,
+:root[data-theme="dark"] main.route-page .landscape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+:root[data-theme="dark"] main.route-page .landscape::before {
+  background: var(--landscape-photo) center top / cover no-repeat;
+  filter: var(--landscape-tone);
+}
+:root[data-theme="dark"] main.route-page .landscape::after {
+  background: var(--overlay);
+}
 @media (max-width: 767px) {
   main { --landscape-photo: url('/new-design/backgrounds/mobile-light.webp'); }
   main.route-page { --landscape-photo: url('/new-design/backgrounds/route-mobile-light.webp'); }
   :root[data-theme="dark"] main { --landscape-photo: url('/new-design/backgrounds/mobile-dark.webp'); }
-  :root[data-theme="dark"] main.route-page { --landscape-photo: url('/new-design/backgrounds/route-mobile-dark.webp'); }
+  :root[data-theme="dark"] main.route-page {
+    --landscape-photo: url('/new-design/backgrounds/route-mobile-light.webp');
+    --landscape-tone: url('#route-night-mobile');
+  }
 }
