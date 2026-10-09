@@ -366,3 +366,16 @@ def test_invalid_public_slug_is_a_real_noindex_404(api_client, seo_catalog):
     assert 'name="robots" content="noindex,follow"' in body
     assert 'rel="canonical"' not in body
     assert response["X-Robots-Tag"] == "noindex,follow"
+
+
+
+def test_ssr_uses_independent_public_and_bundle_cache_namespaces(api_client,seo_catalog,settings):
+    settings.HAWATCH_NEW_DESIGN=True
+    settings.HAWATCH_ASSET_VERSION='frontend-content'
+    settings.HAWATCH_PUBLIC_ASSET_VERSION='public-content'
+    html=api_client.get('/points/tochal').content.decode()
+    assert '/static-public/public-content/new-design/fonts/Vazirmatn-Regular.woff2' in html
+    assert '/static-public/public-content/favicon.png' in html
+    assert '/static-assets/frontend-content/assets/hawatch.js' in html
+    assert '/static-assets/frontend-content/assets/hawatch.css' in html
+    assert '/static-assets/frontend-content/new-design/' not in html

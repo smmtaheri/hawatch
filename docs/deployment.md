@@ -200,8 +200,9 @@ ENABLE_OBSERVABILITY=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ## انتشار پیش‌بینی هفته و داده‌های مسیر
 
 `deploy-hawatch` برنچ `main` را دیپلوی می‌کند. deploy تنظیم دریافت provider را
-۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ asset فرانت و SSR بر اساس
-همان commit است، ولی نسخهٔ کش هوا مستقل و `week-4` است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
+۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ bundle فرانت و SSR از hash ورودی‌های
+فرانت و نسخهٔ فونت/تصویر از hash فایل‌های public ساخته می‌شود؛ انتشار صرفاً بکند
+آدرس فایل‌های فرانت را عوض نمی‌کند. کش هوا مستقل و `week-4` است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
 می‌شوند. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
 `sync_catalog --apply` و `apply_route_descent` فقط در صورت تغییر fingerprint اجرا می‌شوند.
 fingerprint موفق در `.git/hawatch-catalog-deploy.sha256` نگهداری می‌شود؛ شکست import

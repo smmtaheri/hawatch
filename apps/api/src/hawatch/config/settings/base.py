@@ -209,3 +209,5 @@ CSRF_COOKIE_SECURE = False
 CACHES = {"default": {"BACKEND": "django.core.cache.backends.redis.RedisCache", "LOCATION": REDIS_URL}} if REDIS_URL else {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-week"}}
 
 HAWATCH_ASSET_VERSION = env("HAWATCH_ASSET_VERSION", "")
+
+HAWATCH_PUBLIC_ASSET_VERSION = env("HAWATCH_PUBLIC_ASSET_VERSION", "") or HAWATCH_ASSET_VERSION

@@ -120,4 +120,7 @@ def session_logout(request):
 @never_cache
 @api_view(["GET"])
 def me(request):
+    # A guest is a normal session state, not a proxy/CDN error page.
+    if not request.user.is_authenticated:
+        return Response({"authenticated": False})
     return Response(_account_payload(request))

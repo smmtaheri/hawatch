@@ -59,7 +59,7 @@ def test_stage_only_wrapper_never_runs_the_production_deploy_script():
 
     assert "scripts/deploy.sh" not in wrapper
     assert 'git -C "$LOCAL_DIR" push origin stage' in wrapper
-    for html in (template.replace("{{ asset_prefix }}", ""), index):
+    for html in (template.replace("{{ asset_prefix }}", "").replace("{{ public_asset_prefix }}", ""), index):
         assert 'href="/favicon.png" sizes="96x96" type="image/png"' in html
         assert 'href="/favicon.ico"' in html
         assert 'href="/apple-touch-icon.png" sizes="180x180"' in html

@@ -37,7 +37,7 @@ def test_allowlisted_login_is_a_server_session_and_exposes_free_plan(settings):
     assert "sessionid" in response.cookies
     assert client.get("/api/v1/auth/me/").status_code == 200
     assert client.post("/api/v1/auth/logout/", {}, format="json").status_code == 200
-    assert client.get("/api/v1/auth/me/").status_code == 403
+    assert client.get("/api/v1/auth/me/").json() == {"authenticated": False}
 
 
 @pytest.mark.django_db
@@ -52,3 +52,14 @@ def test_plans_endpoint_exposes_runtime_config_without_account_data(seeded):
     professional = next(plan for plan in body["plans"] if plan["code"] == "professional")
     assert professional["duration_months"] == 3
     assert "accounts" not in body
+
+
+@pytest.mark.django_db
+def test_guest_session_is_small_private_json_without_cookies(api_client):
+    response=api_client.get('/api/v1/auth/me/')
+    assert response.status_code==200
+    assert response.json()=={'authenticated':False}
+    assert response['Content-Type'].startswith('application/json')
+    assert len(response.content)<64
+    assert 'no-store' in response['Cache-Control'] and 'private' in response['Cache-Control']
+    assert not response.cookies

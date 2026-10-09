@@ -181,6 +181,10 @@ validate_secret() {
   [[ "$value" != replace-with-* ]] || fail "$ENV_FILE still contains the placeholder for ${key}."
 }
 
+asset_tree_version() {
+  git -C "$REPO_DIR" ls-tree -r HEAD -- "$@" | sha256sum | cut -c1-16
+}
+
 configure_env() {
   ENV_FILE="$REPO_DIR/.env"
   if [[ ! -f "$ENV_FILE" ]]; then
@@ -233,7 +237,13 @@ configure_env() {
   # servers too; older .env files may still contain the former past_days=1.
   set_env_value OPEN_METEO_FORECAST_DAYS 10
   set_env_value REDIS_URL redis://redis:6379/0
-  set_env_value HAWATCH_ASSET_VERSION "$(git -C "$REPO_DIR" rev-parse --short=12 HEAD)"
+  # Frontend changes version bundles; public files have an independent namespace.
+  # Backend-only releases keep every frontend URL stable.
+  set_env_value HAWATCH_ASSET_VERSION "$(asset_tree_version \
+    apps/web/src apps/web/public apps/web/index.html apps/web/vite.config.ts \
+    apps/web/package.json apps/web/tsconfig.json package.json pnpm-lock.yaml \
+    pnpm-workspace.yaml)"
+  set_env_value HAWATCH_PUBLIC_ASSET_VERSION "$(asset_tree_version apps/web/public)"
   set_env_value OPEN_METEO_PAST_DAYS 0
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-$(get_env_value FORECAST_STALE_AFTER_HOURS)}"
   FORECAST_STALE_AFTER_HOURS="${FORECAST_STALE_AFTER_HOURS:-7}"
@@ -401,7 +411,13 @@ run_stack() {
   catalog_state_file="$REPO_DIR/.git/hawatch-catalog-deploy.sha256"
   catalog_fingerprint="$(git -C "$REPO_DIR" ls-tree -r HEAD -- \
     apps/api/fixtures/catalog apps/api/fixtures/route_descent_v1.json \
-    apps/api/src/hawatch/modules/catalog \
+    apps/api/src/hawatch/modules/catalog/catalog.py \
+    apps/api/src/hawatch/modules/catalog/sync.py \
+    apps/api/src/hawatch/modules/catalog/identity.py \
+    apps/api/src/hawatch/modules/catalog/validation.py \
+    apps/api/src/hawatch/modules/catalog/search.py \
+    apps/api/src/hawatch/modules/routes/publish.py \
+    apps/api/src/hawatch/jobs/management/commands/sync_catalog.py \
     apps/api/src/hawatch/modules/routes/models.py \
     apps/api/src/hawatch/modules/forecasts/models.py \
     apps/api/src/hawatch/jobs/management/commands/apply_route_descent.py \

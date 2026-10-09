@@ -92,6 +92,12 @@ def test_only_catalog_changes_trigger_data_sync(tmp_path):
     commit()
     result,commands=run()
     assert result.returncode==0 and 'sync_catalog --apply' not in commands
+    seo=repo/'apps/api/src/hawatch/modules/catalog/seo_pages.py'
+    seo.parent.mkdir(parents=True)
+    seo.write_text('HTML rendering update')
+    commit()
+    result,commands=run()
+    assert result.returncode==0 and 'sync_catalog --apply' not in commands
     fixture.write_text('{"updated":true}')
     commit()
     result,commands=run()
@@ -105,3 +111,32 @@ def test_failed_catalog_sync_does_not_mark_inputs_applied(tmp_path):
     assert not (repo/'.git/hawatch-catalog-deploy.sha256').exists()
     result,commands=run()
     assert result.returncode==0 and 'sync_catalog --apply' in commands
+
+
+
+def test_asset_versions_ignore_backend_releases_and_separate_public_files(tmp_path):
+    repo,fixture,commit,run=_deployment_harness(tmp_path)
+    public=repo/'apps/web/public/font.woff2'
+    public.parent.mkdir(parents=True)
+    public.write_bytes(b'unchanged font')
+    code=repo/'apps/web/src/main.ts'
+    code.parent.mkdir(parents=True)
+    code.write_text('first UI')
+    commit()
+    script=(Path(__file__).resolve().parents[3]/'scripts/deploy.sh').read_text()
+    function='asset_tree_version() {'+script.split('asset_tree_version() {',1)[1].split('\n}\n',1)[0]+'\n}\n'
+    def version(*paths):
+        return subprocess.check_output(['bash','-c',function+'asset_tree_version "$@"','test',*paths],env={**os.environ,'REPO_DIR':str(repo)},text=True).strip()
+    bundle=version('apps/web/src','apps/web/public')
+    files=version('apps/web/public')
+    fixture.write_text('{"backend":true}')
+    commit()
+    assert version('apps/web/src','apps/web/public')==bundle
+    assert version('apps/web/public')==files
+    code.write_text('next UI')
+    commit()
+    assert version('apps/web/src','apps/web/public')!=bundle
+    assert version('apps/web/public')==files
+    public.write_bytes(b'changed font')
+    commit()
+    assert version('apps/web/public')!=files

@@ -20,6 +20,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  const changeRoute=cls=>`<button class="change-route ${cls}" data-v4-routes>${routeBadge()}تغییر مسیر ${routeChevron()}</button>`;
  const speeds={slow:'آرام',medium:'متوسط',fast:'سریع'};
  const cache=new Map();let ctx=null,layout=null,callbacks={},modal=null,shareFile=null,shareURL=null,shareToken=0,returnFocus=null,resizeTimer;
+ let routeSnapshot=null;
  const dates=()=>W.days;
  function viewState(kind,id){const key=kind+':'+id;if(!cache.has(key))cache.set(key,{levels:Array(8).fill(0),expert:false,gear:false,menu:false,scroll:null,dateScroll:null});return cache.get(key);}
  const clock=n=>String(Math.floor(n/60)%24).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
@@ -33,10 +34,18 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
   return points.map((_,i)=>width-pad-i*span/(points.length-1));
  }
  function routeValues(record=ctx.record,state=ctx.state){
+  const key=`${record.slug}:${state.day}:${state.time}:${state.speed}`;
+  if(routeSnapshot?.key===key)return routeSnapshot.value;
   const data=W.api, di=state.day, hour=Math.floor(state.time/60), offsets=data.offsets[state.speed]||[], plan=data.plans[`${di}:${state.speed}:${hour}`]||{records:[],equipment:[]};
   const points=data.points.map((p,i)=>{const row=data.records[plan.records[i]], total=state.time+(offsets[i]??0);return {...chartReading(row), id:p.slug, name:p.name, label:p.name, arrival:data.timing_pending?'—':clock(total), nextDay:data.timing_pending?0:Math.floor(total/1440), distance:p.distance_km, warnings:row?.warnings||[], forecastAt:row?.forecast_at};});
-  const gear=new Map();for(const index of plan.equipment){const item=data.equipment[index],existing=gear.get(item.id);if(existing){for(const e of item.evidence)if(!existing.evidence.some(a=>a.point===e.point&&a.at===e.at))existing.evidence.push(e);}else gear.set(item.id,{...item,evidence:[...item.evidence]});}if(gear.has('hardshell')){gear.delete('poncho');gear.delete('windstopper');}
-  return {name:record.name,date:dates()[di],points,equipment:[...gear.values()],summary:{start:clock(state.time),speed_label:speeds[state.speed],arrival:points.at(-1)?.arrival||'—',nextDay:points.at(-1)?.nextDay||0,duration_minutes:offsets.at(-1)??null,distance_km:data.subject.distance_km,ascent_m:data.subject.ascent_m,descent_m:data.subject.descent_m}};
+  let equipment;
+  const snapshot={name:record.name,date:dates()[di],points,summary:{start:clock(state.time),speed_label:speeds[state.speed],arrival:points.at(-1)?.arrival||'—',nextDay:points.at(-1)?.nextDay||0,duration_minutes:offsets.at(-1)??null,distance_km:data.subject.distance_km,ascent_m:data.subject.ascent_m,descent_m:data.subject.descent_m}};
+  Object.defineProperty(snapshot,'equipment',{get(){
+   if(!equipment){const gear=new Map();for(const index of plan.equipment){const item=data.equipment[index],existing=gear.get(item.id);if(existing){for(const e of item.evidence)if(!existing.evidence.some(a=>a.point===e.point&&a.at===e.at))existing.evidence.push(e);}else gear.set(item.id,{...item,evidence:[...item.evidence]});}if(gear.has('hardshell')){gear.delete('poncho');gear.delete('windstopper');} equipment=[...gear.values()];}
+   return equipment;
+  }});
+  routeSnapshot={key,value:snapshot};
+  return snapshot;
  }
  function chartReading(row){
   const keys={apparent_temperature_c:'felt',temperature_c:'actual',wind_speed_kmh:'wind',wind_gust_kmh:'gust',precipitation_mm:'rain',wind_direction_deg:'direction',relative_humidity_pct:'humidity',visibility_km:'visibility',freezing_level_m:'freezing'};
