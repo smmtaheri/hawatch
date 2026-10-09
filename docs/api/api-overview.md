@@ -11,7 +11,15 @@ Frontend فقط API داخلی هواچ را مصرف می‌کند.
 - `GET /api/v1/points/{slug}/forecast/?date=&period=`
 - `GET /api/v1/routes/{slug}/`
 - `GET /api/v1/routes/{slug}/forecast/?date=&period=&start_time=&speed=`
+- `GET /api/v1/catalog/search-index/`
 - `GET /api/v1/search/suggestions/?q=`
+
+فهرست جست‌وجو شامل termهای عمومی مقصدها و مسیرهای فعال است؛ دادهٔ هوا در آن
+نیست و جست‌وجوی Home بعد از دریافت فهرست در مرورگر انجام می‌شود. پاسخ در Redis
+به مدت ۵ دقیقه نگه داشته می‌شود، با تغییرات منتشرشدهٔ کاتالوگ invalid می‌شود و
+هدر `Cache-Control` آن برای مرورگر ۶۰ ثانیه و CDN پنج دقیقه است. برای CDN فقط
+مسیر همین endpoint را cache کنید؛ endpoint پیشنهادهای queryدار همچنان برای
+سازگاری و مسیر جایگزین باقی است.
 
 `period`: `midnight` | `morning` | `noon` | `night` (`afternoon` فقط alias ورودی قدیمی است)
 `speed`: `آرام` | `متوسط` | `سریع` یا معادل `slow` | `medium` | `fast`

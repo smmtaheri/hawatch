@@ -54,6 +54,9 @@ def rebuild_search_index() -> dict[str, int]:
         rows.extend(_point_entries(point))
     if rows:
         SearchIndexEntry.objects.bulk_create(rows, batch_size=500)
+    from hawatch.modules.catalog.search_payload import invalidate_search_index_payload
+
+    transaction.on_commit(invalidate_search_index_payload)
     return {"entries": len(rows)}
 
 

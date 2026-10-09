@@ -370,6 +370,27 @@ export interface SearchSuggestion {
   place_type?: string;
 }
 
+export interface CatalogSearchIndex {
+  revision: string;
+  points: Array<{
+    slug: string;
+    label: string;
+    terms: string[];
+    hint: string;
+    href: string;
+    category_key: string;
+    place_type: string;
+    primary: boolean;
+  }>;
+  routes: Array<{
+    slug: string;
+    label: string;
+    terms: string[];
+    hint: string;
+    href: string;
+  }>;
+}
+
 export interface RouteFromState {
   slug: string;
   title: string;

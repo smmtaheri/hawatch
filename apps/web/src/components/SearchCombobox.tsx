@@ -8,6 +8,7 @@ import {
 } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api/client";
+import { searchCatalogIndex } from "../lib/catalogSearch";
 import { normalizeSearchText, searchMatchRange } from "../lib/searchText";
 import type { SearchSuggestion } from "../types";
 import { CategoryIcon, DesignIcon } from "./DesignIcon";
@@ -63,20 +64,29 @@ export const SearchCombobox = forwardRef<
     setOpen(true);
     const timer = window.setTimeout(() => {
       void api
-        .searchSuggestions(query, controller.signal)
+        .searchIndex()
         .then((payload) => {
           if (version !== sequence.current) return;
-          setResults([
-            ...payload.results.filter((r) => r.type === "point"),
-            ...payload.results.filter((r) => r.type === "route"),
-          ]);
+          setResults(searchCatalogIndex(payload, query));
           setStatus("ready");
           setActive(-1);
         })
-        .catch((error) => {
-          if (version !== sequence.current || error.name === "AbortError")
-            return;
-          setStatus("error");
+        .catch(async (error) => {
+          if (version !== sequence.current) return;
+          if (error.name === "AbortError") return;
+          // Keep search available during an index or CDN outage.
+          try {
+            const payload = await api.searchSuggestions(query, controller.signal);
+            if (version !== sequence.current) return;
+            setResults([
+              ...payload.results.filter((item) => item.type === "point"),
+              ...payload.results.filter((item) => item.type === "route"),
+            ]);
+            setStatus("ready");
+          } catch (fallbackError) {
+            if (version !== sequence.current || (fallbackError as { name?: string }).name === "AbortError") return;
+            setStatus("error");
+          }
         });
     }, 120);
     return () => {

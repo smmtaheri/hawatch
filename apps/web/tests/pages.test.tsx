@@ -170,6 +170,12 @@ function defaultFetch(input: RequestInfo) {
   }
   if (url.pathname.includes("/search/suggestions"))
     return response({ results: [pointSuggestion(), routeSuggestion()] });
+  if (url.pathname.includes("/catalog/search-index/"))
+    return response({
+      revision: "test-index-v1",
+      points: [{ slug: "tochal", label: "قلهٔ توچال", terms: ["توچال", "قلهٔ توچال"], hint: "تهران · ۳۹۵۵ متر", href: "/points/tochal", category_key: "mountain", place_type: "peak", primary: true }],
+      routes: [{ slug: "tochal-darband", label: "دربند تا توچال", terms: ["دربند تا توچال", "توچال"], hint: "۶ نقطه · ۱۰ کیلومتر", href: "/routes/tochal-darband" }],
+    });
   if (url.pathname.endsWith("/destinations/"))
     return response({
       destinations:

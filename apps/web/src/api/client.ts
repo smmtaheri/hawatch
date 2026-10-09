@@ -11,6 +11,7 @@ import type {
   RoutePage,
   PointDayBundle,
   RouteDayBundle,
+  CatalogSearchIndex,
 } from "../types";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
@@ -30,6 +31,9 @@ function randomToken(): string {
 }
 
 const ANALYTICS_VISITOR_KEY = "hawatch.analytics.visitor";
+let catalogSearchIndexCache: { payload: CatalogSearchIndex; cachedAt: number } | null = null;
+let catalogSearchIndexRequest: Promise<CatalogSearchIndex> | null = null;
+const CATALOG_SEARCH_INDEX_BROWSER_TTL_MS = 55_000;
 
 function visitorToken(): string {
   try {
@@ -95,6 +99,31 @@ export const api = {
       points: PointSummary[];
       routes: Array<{ title: string; origin: string; target_label: string; href: string; region: string }>;
     }>("catalog-index/"),
+  searchIndex: (): Promise<CatalogSearchIndex> => {
+    if (catalogSearchIndexCache && Date.now() - catalogSearchIndexCache.cachedAt < CATALOG_SEARCH_INDEX_BROWSER_TTL_MS) {
+      return Promise.resolve(catalogSearchIndexCache.payload);
+    }
+    if (catalogSearchIndexRequest) return catalogSearchIndexRequest;
+    const url = apiUrl("catalog/search-index/");
+    catalogSearchIndexRequest = fetch(url.toString(), { credentials: "omit" })
+      .then(async (response) => {
+        if (!response.ok) throw new ApiError("بارگذاری فهرست جست‌وجو ناموفق بود.", response.status);
+        const payload = (await response.json()) as CatalogSearchIndex;
+        catalogSearchIndexCache = { payload, cachedAt: Date.now() };
+        return payload;
+      })
+      .catch((error) => {
+        if (catalogSearchIndexCache) {
+          catalogSearchIndexCache.cachedAt = Date.now();
+          return catalogSearchIndexCache.payload;
+        }
+        throw error;
+      })
+      .finally(() => {
+        catalogSearchIndexRequest = null;
+      });
+    return catalogSearchIndexRequest;
+  },
   destinations: (page = 1, query?: string) =>
     getJson<DestinationPage>("destinations/", { page: String(page), query }),
   routes: (page = 1, query?: string) =>

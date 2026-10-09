@@ -20,6 +20,7 @@ urlpatterns = [
     path("destinations/", views.destinations_index),
     path("routes/", views.routes_index),
     path("catalog-index/", views.catalog_index),
+    path("catalog/search-index/", views.search_index_view),
     path("points/<slug:slug>/", views.point_detail),
     path("routes/<slug:slug>/", views.route_detail),
     path("routes/<slug:slug>/forecast/", views.route_forecast_view),

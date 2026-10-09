@@ -449,6 +449,24 @@ def search_suggestions_view(request):
 
 
 @api_view(["GET"])
+def search_index_view(request):
+    """Return the public catalog terms used for local client-side search."""
+
+    from hawatch.modules.catalog.search_payload import search_index_payload
+
+    payload = search_index_payload()
+    etag = f'"{payload["revision"]}"'
+    cache_control = "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+    if etag in {value.strip() for value in request.headers.get("If-None-Match", "").split(",")}:
+        response = HttpResponse(status=304)
+    else:
+        response = Response(payload)
+    response["ETag"] = etag
+    response["Cache-Control"] = cache_control
+    return response
+
+
+@api_view(["GET"])
 def robots_txt(_request):
     from django.conf import settings
 
@@ -456,7 +474,7 @@ def robots_txt(_request):
     # Query strings need a separate rule: Google's $ includes the query suffix.
     render_paths = (
         "/api/v1/points/", "/api/v1/destinations/", "/api/v1/routes/",
-        "/api/v1/catalog-index/", "/api/v1/search/suggestions/",
+        "/api/v1/catalog-index/", "/api/v1/catalog/search-index/", "/api/v1/search/suggestions/",
         "/api/v1/points/*/forecast/", "/api/v1/points/*/forecast/day/",
         "/api/v1/routes/*/forecast/", "/api/v1/routes/*/forecast/day/",
     )
