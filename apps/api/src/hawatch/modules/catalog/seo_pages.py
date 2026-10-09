@@ -33,6 +33,7 @@ from hawatch.modules.catalog.runtime import (
     ordered_publicly_visible_destinations,
     publicly_visible_weather_points,
 )
+from hawatch.modules.catalog.home import home_catalog_data
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -345,7 +346,7 @@ def _destinations_page(page_number: int = 1) -> dict:
 
 @require_GET
 def seo_home(request: HttpRequest) -> HttpResponse:
-    popular_points = publicly_visible_weather_points().filter(is_popular=True).order_by("popular_order", "slug")[:4]
+    home_data = home_catalog_data()
     return _render(
         request,
         page={
@@ -357,10 +358,8 @@ def seo_home(request: HttpRequest) -> HttpResponse:
             "summary": "هواچ پیش‌بینی هوای نقاط و اطلاعات مسیرهای کوه‌پیمایی را برای برنامه‌ریزی آگاهانه کنار هم می‌آورد.",
             "structured_data": _structured_website(),
             "destinations_href": "/destinations",
-            "popular_points": [
-                {"name": point.page_name or point.name, "href": f"/points/{point.slug}"}
-                for point in popular_points
-            ],
+            "popular_points": home_data["popular_points"],
+            "initial_data": home_data,
         },
     )
 

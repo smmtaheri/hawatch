@@ -11,16 +11,18 @@ import {
 import { CategoryIcon, DesignIcon } from "../../components/DesignIcon";
 import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
+import { initialHomeDataFor } from "../../lib/initialSeoContent";
 import type { CatalogCounts, PointSummary } from "../../types";
 
 export function HomePage() {
   usePageTitle();
+  const initialHomeData = initialHomeDataFor();
   const [query, setQuery] = useState("");
-  const [popularPoints, setPopularPoints] = useState<PointSummary[]>([]);
-  const [counts, setCounts] = useState<CatalogCounts | null>(null);
-  const [freshness, setFreshness] = useState("ready");
+  const [popularPoints, setPopularPoints] = useState<PointSummary[]>(initialHomeData?.popular_points ?? []);
+  const [counts, setCounts] = useState<CatalogCounts | null>(initialHomeData?.catalog_counts ?? null);
+  const [freshness, setFreshness] = useState(initialHomeData?.freshness ?? "ready");
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
-    "loading",
+    initialHomeData ? "ready" : "loading",
   );
   const searchRef = useRef<SearchComboboxHandle>(null);
   const request = useRef(0);
@@ -41,6 +43,7 @@ export function HomePage() {
       });
   }
   useEffect(() => {
+    if (initialHomeData) return;
     load();
     return () => {
       ++request.current;

@@ -174,6 +174,7 @@
           {% endif %}
         </article>
       </main>
+      {% if page.kind == "home" %}{{ page.initial_data|json_script:"home-initial-data" }}{% endif %}
       <footer class="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">دادهٔ هواشناسی: Open-Meteo</footer>
     </div>
     <script type="module" src="{{ asset_prefix }}/assets/hawatch.js"></script>

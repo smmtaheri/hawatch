@@ -40,6 +40,7 @@ from hawatch.modules.catalog.runtime import (
     publicly_visible_destinations,
     publicly_visible_weather_points,
 )
+from hawatch.modules.catalog.home import home_catalog_data
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -130,8 +131,25 @@ def health_status(request):
 def points_list(request):
     refresh_if_bucket_changed()
     query = request.query_params.get("query", "")
-    items = list_points(query=query)
     today = now_tehran().date()
+    if not query:
+        home_data = home_catalog_data()
+        response = Response(
+            {
+                "results": home_data["popular_points"],
+                "empty": not home_data["popular_points"],
+                "query": query,
+                "meta": meta_base(
+                    selected_date=today,
+                    period="morning",
+                    extra={"catalog_counts": home_data["catalog_counts"]},
+                ),
+            }
+        )
+        response["Cache-Control"] = "public, max-age=60, s-maxage=300"
+        return response
+
+    items = list_points(query=query)
     catalog_counts = {
         "points": WeatherPoint.objects.filter(is_active=True).count(),
         "routes": Route.objects.filter(is_active=True).count(),
