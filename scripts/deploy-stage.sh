@@ -12,7 +12,12 @@ enabled="$(awk -F= '$1 == "HAWATCH_STAGE_ENABLED" {gsub(/[[:space:]\r]/, "", $2)
 [[ "$(git -C "$STAGE_DIR" branch --show-current)" == stage ]] || fail "Stage checkout must be on branch stage."
 [[ -z "$(git -C "$STAGE_DIR" status --porcelain)" ]] || fail "Stage checkout contains uncommitted changes; nothing was reset."
 [[ "$(git -C "$STAGE_DIR" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail "Unexpected stage remote."
-git -C "$STAGE_DIR" pull --ff-only origin stage
+# Migrated new-design checkouts may retain old upstreams or duplicate FETCH_HEAD entries.
+git -C "$STAGE_DIR" config --replace-all remote.origin.fetch '+refs/heads/stage:refs/remotes/origin/stage'
+git -C "$STAGE_DIR" fetch --refmap= origin refs/heads/stage:refs/remotes/origin/stage
+git -C "$STAGE_DIR" config branch.stage.remote origin
+git -C "$STAGE_DIR" config --replace-all branch.stage.merge refs/heads/stage
+git -C "$STAGE_DIR" merge --ff-only refs/remotes/origin/stage
 cd "$STAGE_DIR"
 export HAWATCH_STAGE_ENV_FILE="$STAGE_ENV"
 export HAWATCH_STAGE_IMAGE_TAG="$(git rev-parse --short=12 HEAD)"

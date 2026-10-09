@@ -49,7 +49,8 @@ if [[ ! -e "$stage_dir" && -d "$legacy_stage_dir" ]]; then
   [[ "$(git -C "$legacy_stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected legacy stage remote.'
   [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design || "$(git -C "$legacy_stage_dir" branch --show-current)" == stage ]] || fail_remote 'Legacy stage checkout must be on new-design or stage.'
   if [[ "$(git -C "$legacy_stage_dir" branch --show-current)" == new-design ]]; then
-    git -C "$legacy_stage_dir" fetch origin refs/heads/stage:refs/remotes/origin/stage
+    git -C "$legacy_stage_dir" config --replace-all remote.origin.fetch '+refs/heads/stage:refs/remotes/origin/stage'
+    git -C "$legacy_stage_dir" fetch --refmap= origin refs/heads/stage:refs/remotes/origin/stage
     git -C "$legacy_stage_dir" branch -m new-design stage
     git -C "$legacy_stage_dir" branch --set-upstream-to=origin/stage stage
   fi
@@ -63,7 +64,12 @@ fi
 [[ "$(git -C "$stage_dir" branch --show-current)" == stage ]] || fail_remote 'Stage checkout must be on branch stage.'
 [[ -z "$(git -C "$stage_dir" status --porcelain)" ]] || fail_remote 'Stage checkout is dirty; inspect it manually.'
 [[ "$(git -C "$stage_dir" remote get-url origin)" =~ ^(git@github.com:smmtaheri/hawatch.git|https://github.com/smmtaheri/hawatch.git)$ ]] || fail_remote 'Unexpected stage remote.'
-git -C "$stage_dir" pull --ff-only origin stage
+# Migrated new-design checkouts may retain old upstreams or duplicate FETCH_HEAD entries.
+git -C "$stage_dir" config --replace-all remote.origin.fetch '+refs/heads/stage:refs/remotes/origin/stage'
+git -C "$stage_dir" fetch --refmap= origin refs/heads/stage:refs/remotes/origin/stage
+git -C "$stage_dir" config branch.stage.remote origin
+git -C "$stage_dir" config --replace-all branch.stage.merge refs/heads/stage
+git -C "$stage_dir" merge --ff-only refs/remotes/origin/stage
 python3 "$stage_dir/scripts/prepare-stage-env.py" "$stage_env"
 stage_port="$(awk -F= '$1 == "HAWATCH_STAGE_PORT" {gsub(/[[:space:]\r]/, "", $2); print $2; exit}' "$stage_env")"
 [[ "${stage_port:-5050}" == 5050 ]] || fail_remote "Stage must use port 5050."
