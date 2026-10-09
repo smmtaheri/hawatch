@@ -33,6 +33,7 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_cata
     assert "۶ روزه" not in body
     assert 'src="/assets/hawatch.js"' in body
     assert response["X-Robots-Tag"] == "index,follow"
+    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
 
 
 def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_catalog):
@@ -50,6 +51,7 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert 'href="/points/tochal-sarband-square"' not in body
     assert '"@type": "CollectionPage"' in body
     assert '"@type": "ItemList"' in body
+    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
     assert 'href="/destinations/page/2"' in body
     assert response["X-Robots-Tag"] == "index,follow"
 
@@ -113,6 +115,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert "۶ روز" not in body
     assert "یک عارضهٔ مستقل برای کنترل رندر اولیهٔ هواچ." in body
     assert 'application/ld+json' in body
+    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
 
     bot_response = api_client.get(f"/points/{point.slug}", HTTP_USER_AGENT="Googlebot")
     assert bot_response.status_code == 200
@@ -125,6 +128,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in query_body
     assert "?date=" not in query_body
     assert query_response["X-Robots-Tag"] == "noindex,follow"
+    assert query_response["Cache-Control"] == "no-cache"
 
     trailing_response = api_client.get(f"/points/{point.slug}/")
     assert trailing_response.status_code == 200

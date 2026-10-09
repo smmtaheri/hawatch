@@ -94,6 +94,27 @@ def test_known_points_and_routes_exist(seeded):
 
 
 @pytest.mark.django_db
+def test_public_catalog_endpoints_advertise_short_edge_cache(api_client, seeded):
+    expected = "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+    for path in (
+        "/api/v1/points/",
+        "/api/v1/catalog-index/",
+        "/api/v1/destinations/?page=1",
+        "/api/v1/routes/?page=1",
+        "/api/v1/points/tochal/",
+        "/api/v1/routes/tochal-darband/",
+    ):
+        response = api_client.get(path)
+        assert response.status_code == 200, path
+        assert response["Cache-Control"] == expected, path
+
+    # Arbitrary search strings are not placed in the shared edge cache.
+    searched = api_client.get("/api/v1/routes/?query=tochal")
+    assert searched.status_code == 200
+    assert "public" not in searched.get("Cache-Control", "")
+
+
+@pytest.mark.django_db
 def test_all_active_catalog_points_honor_catalog_indexability(seeded):
     public_points = WeatherPoint.objects.filter(is_active=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
     desired = load_packaged_catalogs()

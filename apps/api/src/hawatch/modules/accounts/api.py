@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 
 from hawatch.common.time import now_tehran
+from hawatch.common.cache_headers import mark_public_catalog_response
 
 from django.conf import settings
 from django.contrib.auth import get_user_model, login, logout
@@ -55,13 +56,12 @@ def _account_payload(request) -> dict:
     }
 
 
-@never_cache
 @api_view(["GET"])
 def plans(request):
     """Return operator-configured cards; never expose account or payment data."""
     policy = active_policy()
     rows = ForecastPlan.objects.filter(is_active=True).order_by("sort_order", "id")
-    return Response(
+    return mark_public_catalog_response(Response(
         {
             "plans": [
                 {
@@ -76,9 +76,8 @@ def plans(request):
             ],
             "display_day_count": policy.display_day_count,
             "anonymous_visible_days_from_yesterday": policy.anonymous_visible_days_from_yesterday,
-        },
-        headers={"Cache-Control": "no-store"},
-    )
+        }
+    ))
 
 
 @never_cache

@@ -20,6 +20,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
+from hawatch.common.cache_headers import mark_public_catalog_response
 from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, place_type_label
 from hawatch.modules.catalog.internal_links import (
     related_public_destinations,
@@ -89,10 +90,13 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
         },
         status=status,
     )
-    # Match the HTML directive for non-HTML-aware crawlers and ensure catalog
-    # edits are revalidated instead of being held by an intermediary cache.
     response["X-Robots-Tag"] = robots
-    response["Cache-Control"] = "no-cache"
+    # Canonical documents contain only public catalog/SEO content. Query
+    # variants may carry planner state and must always be revalidated.
+    if status == 200 and not request.GET:
+        mark_public_catalog_response(response)
+    else:
+        response["Cache-Control"] = "no-cache"
     response["Content-Language"] = "fa"
     return response
 

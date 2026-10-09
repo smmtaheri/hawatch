@@ -21,6 +21,12 @@ def test_forecast_is_public_for_today_and_seven_following_days_despite_old_polic
     assert body["forecast_access"]["available_through"] == (today+timedelta(days=7)).isoformat()
     assert len(body["days"]) == 8
     assert all(day["access"] == "available" for day in body["days"])
+    assert client.get("/api/v1/points/tochal/forecast/")["Cache-Control"] == "private, max-age=60, must-revalidate"
+    for path in ("/api/v1/points/tochal/forecast/", "/api/v1/routes/tochal-darband/forecast/day/"):
+        response = client.get(path)
+        assert "cookie" in {value.strip().lower() for value in response["Vary"].split(",")}
+        assert response["CDN-Cache-Control"] == "no-store"
+        assert response["Surrogate-Control"] == "no-store"
     for date in (today, today+timedelta(days=7)):
         assert client.get("/api/v1/points/tochal/forecast/", {"date":date.isoformat()}).status_code == 200
         assert client.get("/api/v1/routes/tochal-darband/forecast/", {"date":date.isoformat()}).status_code == 200
@@ -46,7 +52,7 @@ def test_plans_endpoint_exposes_runtime_config_without_account_data(seeded):
     response = client.get("/api/v1/auth/plans/")
 
     assert response.status_code == 200
-    assert response["Cache-Control"].startswith("no-store")
+    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
     body = response.json()
     assert {plan["tier"] for plan in body["plans"]} >= {"free", "paid"}
     professional = next(plan for plan in body["plans"] if plan["code"] == "professional")

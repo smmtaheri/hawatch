@@ -22,6 +22,7 @@ from hawatch.api.v1.serializers import (
     serialize_point_profile,
     serialize_route,
 )
+from hawatch.common.cache_headers import mark_public_catalog_response
 from hawatch.modules.catalog.search import search_suggestions
 from hawatch.common.time import (
     StartTimeValidationError,
@@ -146,15 +147,14 @@ def points_list(request):
                 ),
             }
         )
-        response["Cache-Control"] = "public, max-age=60, s-maxage=300"
-        return response
+        return mark_public_catalog_response(response)
 
     items = list_points(query=query)
     catalog_counts = {
         "points": WeatherPoint.objects.filter(is_active=True).count(),
         "routes": Route.objects.filter(is_active=True).count(),
     }
-    return Response(
+    response = Response(
         {
             "results": [serialize_point_profile(item) for item in items],
             "empty": not items,
@@ -166,6 +166,7 @@ def points_list(request):
             ),
         }
     )
+    return response
 
 
 @api_view(["GET"])
@@ -173,7 +174,7 @@ def catalog_index(request):
     """Small application catalog payload used by internal search/consumers."""
 
     refresh_if_bucket_changed()
-    return Response(
+    response = Response(
         {
             "points": [
                 serialize_point_profile(point)
@@ -185,6 +186,7 @@ def catalog_index(request):
             ],
         }
     )
+    return mark_public_catalog_response(response)
 
 
 @api_view(["GET"])
@@ -214,7 +216,7 @@ def destinations_index(request):
         raise ValidationError({"page": "این بخش از مقصدها وجود ندارد."}) from exc
 
     has_next = page.has_next()
-    return Response(
+    response = Response(
         {
             "destinations": [serialize_point_profile(point) for point in page.object_list],
             "pagination": {
@@ -234,6 +236,7 @@ def destinations_index(request):
             },
         }
     )
+    return mark_public_catalog_response(response) if not query else response
 
 
 @api_view(["GET"])
@@ -266,7 +269,7 @@ def routes_index(request):
         {**serialize_route_summary(route, points=list(route.points.all())), "region": route.region, "point_count": route.point_count}
         for route in page.object_list
     ]
-    return Response({
+    response = Response({
         "routes": results,
         "empty": not results,
         "query": request.query_params.get("query", ""),
@@ -286,6 +289,7 @@ def routes_index(request):
             ),
         },
     })
+    return mark_public_catalog_response(response) if not query else response
 
 
 @api_view(["GET"])
@@ -293,12 +297,12 @@ def point_detail(request, slug: str):
     refresh_if_bucket_changed()
     point = get_point(slug)
     today = now_tehran().date()
-    return Response(
+    return mark_public_catalog_response(Response(
         {
             "point": serialize_point_profile(point, include_routes=True),
             "meta": meta_base(selected_date=today, period="morning"),
         }
-    )
+    ))
 
 
 def _resolve_date_period(request) -> tuple:
@@ -334,7 +338,14 @@ def _forecast_access_denied(access, selected):
 def _private_forecast(payload, access):
     return Response(
         decorate_forecast_payload(payload, access),
-        headers={"Cache-Control": "private, no-store", "Vary": "Cookie"},
+        # A short private browser cache makes a reload responsive without ever
+        # allowing a shared CDN/proxy to reuse account-specific access data.
+        headers={
+            "Cache-Control": "private, max-age=60, must-revalidate",
+            "CDN-Cache-Control": "no-store",
+            "Surrogate-Control": "no-store",
+            "Vary": "Cookie",
+        },
     )
 
 
@@ -343,7 +354,7 @@ def route_detail(request, slug: str):
     refresh_if_bucket_changed()
     route = get_route(slug)
     today = now_tehran().date()
-    return Response({"route": serialize_route(route), "meta": meta_base(selected_date=today, period="morning")})
+    return mark_public_catalog_response(Response({"route": serialize_route(route), "meta": meta_base(selected_date=today, period="morning")}))
 
 
 def _resolve_start_minutes(request, selected_date, period, local):
