@@ -122,3 +122,13 @@ stage با main ادغام شد و مقصدهای جدید main حفظ شدند.
 image API skip شد و روی host پاس شد)، build فرانت و bash -n موفق بودند.
 config واقعی Compose با env نمونه resolve شد و تطابق افق ۱۰ روز، Redis،
 زمان‌بندی مشترک و نسخهٔ asset برای API/ingest/scheduler/web بررسی شد.
+
+## اصلاح Host لینک کوتاه در پروداکشن
+
+برای لینک گزارش‌شده، API مستقیم با Host دامنه پاسخ ۳۰۲ صحیح می‌داد، ولی
+gateway پاسخ ۴۰۰ داشت. لاگ Django، `Invalid HTTP_HOST: hawatch_api` را
+نشان داد؛ location لینک کوتاه Host و scheme اصلی را forward نمی‌کرد.
+اکنون gateway Host عمومی و scheme ورودی را حفظ می‌کند. مسیر `/p/` در
+وب مستقیم نیز به API متصل است. دو تست با Nginx واقعی و upstream سخت‌گیر
+برای gateway و وب مستقیم پاس شدند: ۳۰۲ و Location صحیح برای لینک معتبر،
+۴۰۴ برای لینک ناموجود، و حفظ no-store. سرور فقط خوانده شد؛ deploy نشد.
