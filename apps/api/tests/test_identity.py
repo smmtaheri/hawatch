@@ -25,6 +25,22 @@ def test_beach_place_type_uses_its_own_icon_and_persian_label():
     assert place_type_label("beach") == "ساحل"
 
 
+def test_valley_place_type_has_a_distinct_semantic_category_and_label():
+    assert category_key_for_point("", "valley") == "valley"
+    assert place_type_label("valley") == "دره"
+
+
+def test_valley_subject_does_not_get_a_generic_landmark_prefix():
+    point = SimpleNamespace(
+        name="درهٔ گاهان تفت",
+        page_name="درهٔ گاهان تفت",
+        place_type="valley",
+        seo_indexable=True,
+    )
+
+    assert point_subject(point) == "درهٔ گاهان تفت"
+
+
 def test_shah_shahidan_page_uses_a_short_gilan_disambiguated_title():
     identity = metadata_for_point(
         "shah-shahidan-gilan",
