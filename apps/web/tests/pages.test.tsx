@@ -218,6 +218,35 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("approved week forecast and unchanged public pages", () => {
+  it.each([['point', 390], ['point', 1440], ['route', 390], ['route', 1440]] as const)(
+    "scrolls to the %s identity header once at entry (%ipx), preserving selection and refresh scroll",
+    async (kind, width) => {
+      Object.defineProperty(window, 'innerWidth', {configurable: true, value: width});
+      const original = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'scrollIntoView');
+      const targets: Element[] = [];
+      Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+        configurable: true,
+        value: function(this: Element) { targets.push(this); },
+      });
+      try {
+        mount(kind === 'point' ? '/points/tochal' : '/routes/tochal-darband', true);
+        await waitFor(() => expect(targets).toHaveLength(1));
+        expect(targets[0]).toBe(document.querySelector(`.${kind}-page .hero`));
+        expect(targets[0].querySelector('h1')).toBeTruthy();
+        if (kind === 'point') fireEvent.click(document.querySelector('[data-v4-expand="0"]')!);
+        else fireEvent.click(document.querySelector('[data-v4-speed="fast"]')!);
+        clearWeekCache();
+        fireEvent(window, new Event('focus'));
+        await waitFor(() => expect(weatherCalls()).toHaveLength(2));
+        await act(async () => { await new Promise(resolve => setTimeout(resolve, 50)); });
+        expect(targets).toHaveLength(1);
+      } finally {
+        if (original) Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', original);
+        else delete (HTMLElement.prototype as Partial<HTMLElement>).scrollIntoView;
+      }
+    },
+  );
+
   for(const path of ['/points/tochal','/routes/tochal-darband']){
     it(`shows the condition below weather icons: ${path}`,async()=>{
       mount(path);

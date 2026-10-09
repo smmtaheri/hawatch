@@ -4,6 +4,7 @@ import {NotFoundPage} from '../../pages/NotFoundPage';
 import {Dialog} from '../../components/Dialog';
 import {PageShell} from '../../components/PageShell';
 import {usePageTitle} from '../../lib/pageTitle';
+import {scrollToDetailHero} from '../../lib/detailEntryScroll';
 import brand from '../../components/brandMark.svg?raw';
 import {createForecastRuntime} from './vendor/runtime';
 import './forecast-v5.css';
@@ -41,6 +42,13 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  const root=useRef<HTMLDivElement>(null),runtime=useRef<ReturnType<typeof createForecastRuntime>|null>(null);
  const dataSubject=data?.subject.slug===slug?data.subject:undefined;
  usePageTitle(dataSubject?.name||dataSubject?.title,{robots:dataSubject?.seo_indexable===false?'noindex,follow':undefined,title:(dataSubject as any)?.seo_title,description:(dataSubject as any)?.seo_description});
+ // Restore detail entry scrolling after the weekly renderer has mounted its hero.
+ // Subject identity stays stable during polling and selection changes.
+ useEffect(()=>{
+  if(!dataSubject?.slug)return;
+  const frame=window.requestAnimationFrame(()=>scrollToDetailHero(`.${kind}-page .hero`));
+  return()=>window.cancelAnimationFrame(frame);
+ },[kind,dataSubject?.slug]);
  useLayoutEffect(()=>{document.body.classList.add('forecast-page');if(kind==='route')document.body.classList.add('route-page');return()=>{document.body.classList.remove('forecast-page','route-page');};},[kind]);
  useEffect(()=>{
   // Page entry only: weather polling/focus/selection never renews the 48h lease.
