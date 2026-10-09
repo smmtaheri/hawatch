@@ -1,0 +1,226 @@
+{
+  "catalog_version": "hawatch-lashgarak-catalog-v1",
+  "shared_weather_points": ["alamkuh-hesarchal"],
+  "weather_points": {
+    "lashgarak-parachan": {
+      "name": "روستای پراچان",
+      "page_name": "روستای پراچان؛ مبدأ مسیر لشگرک",
+      "short_label": "پراچان",
+      "place_type": "village",
+      "aliases": ["پراچان طالقان", "روستای پراچان", "Parachan"],
+      "identity_summary": "روستای پراچان طالقان، مبدأ جنوبی و شناخته‌شدهٔ پیمایش خط‌الرأس لشگرک.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%84%D8%B4%DA%AF%D8%B1%DA%A9-%D8%A8%D8%B2%D8%B1%DA%AF-%D8%A7%D8%B2-%D9%BE%D8%B1%D8%A7%DA%86%D8%A7%D9%86-%D8%B7%D8%A7%D9%84%D9%82%D8%A7%D9%86/"
+      ],
+      "latitude": 36.24998,
+      "longitude": 50.944675,
+      "elevation_m": 2367,
+      "status": "provisional",
+      "elevation_source": "Waypoint آغاز ترک پراچان؛ ارتفاع نهایی با Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "mountain"
+    },
+    "lashgarak-damcheh": {
+      "name": "کمپ دمچه",
+      "page_name": "کمپ دمچه در مسیر لشگرک",
+      "short_label": "دمچه",
+      "place_type": "camp",
+      "aliases": ["دمچه", "کمپ دمچه", "Domcheh"],
+      "identity_summary": "محل کمپ و عارضهٔ میانی نام‌دار در مسیر جنوبی پراچان به خط‌الرأس لشگرک.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809"
+      ],
+      "latitude": 36.319368,
+      "longitude": 50.966196,
+      "elevation_m": 3390,
+      "status": "provisional",
+      "elevation_source": "Waypoint کمپ دمچه در ترک؛ Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "lashgarak-north-snowfield": {
+      "name": "برفچال شمالی لشگرک",
+      "page_name": "برفچال شمالی قلهٔ لشگرک بزرگ",
+      "short_label": "برفچال شمالی",
+      "place_type": "snowfield",
+      "aliases": ["برفچال شمالی لشگرک", "برفچال لشگرک", "Lashgarak north snowfield"],
+      "identity_summary": "برفچال شمالی لشگرک، عارضهٔ فنی و میانی مسیر کوتاه حصارچال تا قلهٔ لشگرک بزرگ.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-qlh-lshkhrkh-bzrg-z-msyr-brfchl-shmly-204586073"
+      ],
+      "latitude": 36.342386,
+      "longitude": 50.978498,
+      "elevation_m": 3848,
+      "status": "provisional",
+      "elevation_source": "Waypoint ابتدای ترک برفچال شمالی؛ Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "lashgarak-bozorg": {
+      "name": "قلهٔ لشگرک بزرگ",
+      "page_name": "قلهٔ لشگرک بزرگ",
+      "short_label": "لشگرک بزرگ",
+      "place_type": "summit",
+      "aliases": ["لشگرک بزرگ", "قله لشگرک بزرگ", "Lashgarak Bozorg", "Great Lashgarak"],
+      "identity_summary": "قلهٔ لشگرک بزرگ، قلهٔ مستقل و شناخته‌شدهٔ مجموعهٔ تخت سلیمان در مرز طالقان و کلاردشت.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809",
+        "https://www.wikiloc.com/hiking-trails/hsr-chl-bh-qlh-lshgrkh-bzrg-w-dmchh-76457271",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.335437&lon=50.978866&peak-name=%D9%82%D9%84%D9%87+%D9%84%D8%B4%DA%AF%D8%B1%DA%A9+%D8%A8%D8%B2%D8%B1%DA%AF&pkidentifier=513",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.335437,
+      "longitude": 50.978866,
+      "elevation_m": 4256,
+      "status": "provisional",
+      "elevation_source": "Waypointهای مستقل ترک‌های پراچان و حصارچال؛ Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    },
+    "lashgarak-koochak": {
+      "name": "قلهٔ لشگرک کوچک",
+      "page_name": "قلهٔ لشگرک کوچک",
+      "short_label": "لشگرک کوچک",
+      "place_type": "summit",
+      "aliases": ["لشگرک کوچک", "قله لشگرک کوچک", "Lashgarak Koochak", "Small Lashgarak"],
+      "identity_summary": "قلهٔ مستقل لشگرک کوچک در ادامهٔ خط‌الرأس لشگرک و مسیر جنوبی پراچان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809",
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.327851&lon=50.981622&peak-name=%D9%82%D9%84%D9%87+%D9%84%D8%B4%DA%AF%D8%B1%DA%A9+%DA%A9%D9%88%DA%86%DA%A9&pkidentifier=512",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.327851,
+      "longitude": 50.981622,
+      "elevation_m": 4184,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک حلقه‌ای پراچان؛ Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "parachan-lashgarak-ridge": {
+      "slug": "parachan-lashgarak-ridge",
+      "title": "پراچان تا لشگرک بزرگ و کوچک",
+      "subtitle": "مسیر جنوبی از روستای پراچان، دمچه و خط‌الرأس تا دو قلهٔ لشگرک",
+      "trail_label": "خط‌الرأس لشگرک",
+      "origin": "روستای پراچان",
+      "target_label": "قله‌های لشگرک بزرگ و کوچک",
+      "region": "طالقان · تخت سلیمان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["lashgarak-parachan", "lashgarak-damcheh", "lashgarak-bozorg", "lashgarak-koochak"],
+      "distance_km": 15.3,
+      "ascent_m": 2100,
+      "one_way_minutes": 540,
+      "default_start_minutes": 405,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-report-v1",
+        "version": "lashgarak-parachan-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809",
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%84%D8%B4%DA%AF%D8%B1%DA%A9-%D8%A8%D8%B2%D8%B1%DA%AF-%D8%A7%D8%B2-%D9%BE%D8%B1%D8%A7%DA%86%D8%A7%D9%86-%D8%B7%D8%A7%D9%84%D9%82%D8%A7%D9%86/"
+        ],
+        "cumulative_minutes": {
+          "lashgarak-parachan": 0,
+          "lashgarak-damcheh": 285,
+          "lashgarak-bozorg": 475,
+          "lashgarak-koochak": 540
+        },
+        "notes": ["ترک اصلی حلقه‌ای است؛ زمان مسیر فعال تا لشگرک کوچک ثبت شده و توقف/شب‌مانی را حساب نمی‌کند.", "بخش جادهٔ خاکی و خودرو از زمان پیمایش پیاده جدا می‌شود."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/http-kuhnavardi-com-1y58lashgarak-bozorg-az-parachan-1404-05-16-nima-qlh-hy-lshgrkh-khwchkh-w-bzrg-225888809",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D9%84%D8%B4%DA%AF%D8%B1%DA%A9-%D8%A8%D8%B2%D8%B1%DA%AF-%D8%A7%D8%B2-%D9%BE%D8%B1%D8%A7%DA%86%D8%A7%D9%86-%D8%B7%D8%A7%D9%84%D9%82%D8%A7%D9%86/"
+      ],
+      "evidence_tracks": ["tracks/lashgarak/lashgarak-parachan-loop.gpx"],
+      "public_point_notes": {
+        "lashgarak-parachan": "بخش دسترسی جادهٔ خاکی تا محل مناسب خودرو در زمان پیمایش پیاده حساب نمی‌شود.",
+        "lashgarak-damcheh": "کمپ دمچه عارضهٔ میانی واقعی و محل استراحت شناخته‌شدهٔ مسیر است.",
+        "lashgarak-bozorg": "مسیر ارتفاع‌بالا و سنگین است و در شرایط برفی می‌تواند فنی و بهمن‌خیز باشد.",
+        "lashgarak-koochak": "قلهٔ لشگرک کوچک در ادامهٔ همان خط‌الرأس قرار دارد و نقطهٔ مستقل قابل مشاهده است."
+      }
+    },
+    "hesarchal-lashgarak-bozorg": {
+      "slug": "hesarchal-lashgarak-bozorg",
+      "title": "حصارچال تا قلهٔ لشگرک بزرگ",
+      "subtitle": "مسیر شمالی از دشت حصارچال و برفچال شمالی تا لشگرک بزرگ",
+      "trail_label": "مسیر شمالی لشگرک بزرگ",
+      "origin": "دشت حصارچال",
+      "target_label": "قلهٔ لشگرک بزرگ",
+      "region": "کلاردشت · تخت سلیمان",
+      "featured": false,
+      "sort_order": 2,
+      "points": ["alamkuh-hesarchal", "lashgarak-north-snowfield", "lashgarak-bozorg"],
+      "distance_km": 5.73,
+      "ascent_m": 508,
+      "one_way_minutes": 180,
+      "default_start_minutes": 0,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+technical-mountaineering-report-v1",
+        "version": "lashgarak-hesarchal-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/hsr-chl-bh-qlh-lshgrkh-bzrg-w-dmchh-76457271",
+          "https://fr.wikiloc.com/itineraires-alpinisme/swd-qlh-lshkhrkh-bzrg-z-msyr-brfchl-shmly-204586073"
+        ],
+        "cumulative_minutes": {
+          "alamkuh-hesarchal": 0,
+          "lashgarak-north-snowfield": 60,
+          "lashgarak-bozorg": 180
+        },
+        "notes": ["مسیر شمالی کوتاه اما بسیار فنی و پرشیب است؛ زمان فعال تخمینی است و توقف‌ها را حساب نمی‌کند."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/hsr-chl-bh-qlh-lshgrkh-bzrg-w-dmchh-76457271",
+        "https://fr.wikiloc.com/itineraires-alpinisme/swd-qlh-lshkhrkh-bzrg-z-msyr-brfchl-shmly-204586073"
+      ],
+      "evidence_tracks": ["tracks/lashgarak/lashgarak-hesarchal-damcheh.gpx"],
+      "public_point_notes": {
+        "lashgarak-north-snowfield": "برفچال شمالی بخش فنی مسیر است و برای کوهنورد باتجربه و شرایط مناسب در نظر گرفته شده است.",
+        "lashgarak-bozorg": "این ترک برای طبیعت‌گردی سبک مناسب نیست و شرایط یخچال/شن‌اسکی باید پیش از حرکت بررسی شود."
+      }
+    }
+  },
+  "primary_point": "lashgarak-bozorg",
+  "point": {
+    "slug": "lashgarak-bozorg",
+    "tile_name": "لشگرک بزرگ",
+    "name": "قلهٔ لشگرک بزرگ",
+    "short_category": "قله",
+    "category": "قله‌های تخت سلیمان",
+    "category_key": "mountain",
+    "region": "طالقان · کلاردشت · مازندران",
+    "elevation_m": 4256,
+    "latitude": 36.335437,
+    "longitude": 50.978866,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ لشگرک بزرگ",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["لشگرک بزرگ", "قله لشگرک بزرگ", "Lashgarak Bozorg"]
+  }
+}
