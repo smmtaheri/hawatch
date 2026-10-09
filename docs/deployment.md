@@ -91,14 +91,14 @@ RUN_INITIAL_INGEST=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 در حالت پیش‌فرض، به‌روزرسانی forecast طبق زمان‌بندی `ingest-scheduler` انجام می‌شود؛
 برای اجرای دستی one-shot نیز از دستور `docker compose ... run --rm ingest` استفاده کنید.
 
-پورت‌های پیش‌فرض host عبارت‌اند از gateway=`80`، frontend مستقیم=`5173` و API=`8000`. frontend به‌صورت پیش‌فرض API هم‌مبدأ `/api/v1` را صدا می‌زند؛ gateway فعلی HTTP است و HTTPS را terminate نمی‌کند. برای HTTPS باید یک TLS proxy یا CDN بیرونی جلوی gateway قرار گیرد؛ در آن حالت همچنان API هم‌مبدأ `/api/v1` را استفاده کنید. اگر API جداگانه‌ای دارید، می‌توانید آن را صریح تنظیم کنید:
+پورت عمومی gateway=`80` است. frontend مستقیم=`5173` و API=`8000` با `WEB_BIND_ADDRESS=127.0.0.1` و `API_BIND_ADDRESS=127.0.0.1` فقط روی خود سرور bind می‌شوند؛ دسترسی gateway به سرویس‌ها از شبکهٔ داخلی Docker برقرار است. این پیش‌فرض با دیپلوی عادی اعمال می‌شود و به restart دیتابیس یا Redis نیاز ندارد. frontend به‌صورت پیش‌فرض API هم‌مبدأ `/api/v1` را صدا می‌زند؛ gateway فعلی HTTP است و HTTPS را terminate نمی‌کند. برای HTTPS باید یک TLS proxy یا CDN بیرونی جلوی gateway قرار گیرد؛ در آن حالت همچنان API هم‌مبدأ `/api/v1` را استفاده کنید. اگر API جداگانه‌ای دارید، می‌توانید آن را صریح تنظیم کنید:
 
 ```bash
 VITE_API_BASE_URL='https://api.example.com/api/v1' \
 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 ```
 
-اسکریپت firewall یا cloud security group را باز نمی‌کند؛ در صورت نیاز فقط پورت‌های انتخابی را در firewall سرور/provider مجاز کنید. برای مصرف کمتر معمولاً فقط gateway را عمومی کنید و API/frontend مستقیم را در شبکهٔ خصوصی یا با rule محدود نگه دارید.
+اسکریپت firewall یا cloud security group را باز نمی‌کند؛ در صورت نیاز فقط پورت‌های انتخابی را در firewall سرور/provider مجاز کنید. فقط gateway عمومی است؛ برای پورت‌های مستقیم API/frontend rule عمومی باز نکنید.
 
 ## بررسی و توقف
 
@@ -238,3 +238,13 @@ ssh hawatch 'export HAWATCH_STAGE_ENV_FILE=/root/hawatch-stage.env; docker compo
 این دستور API، وب، gateway، scheduler، Redis، Postgres، شبکه و volumeهای
 استیج را حذف می‌کند. فایل‌های checkout و imageهای build برای استفادهٔ بعدی
 باقی می‌مانند و سرویسی اجرا نمی‌کنند.
+
+## گرم‌سازی یک‌باره از لوکال
+
+پس از دیپلوی، برای ساخت کش هفته از داده‌های موجود دیتابیس (بدون دریافت از provider و بدون پاک‌کردن Redis):
+
+```bash
+ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py warm_week_cache'
+```
+
+این دستور جزو دیپلوی عادی نیست. پاسخ هفته در مرورگر ۱۲۰ ثانیه اعتبار دارد؛ بعد از آن `If-None-Match` با ETag قوی یا weak بررسی می‌شود و برای دادهٔ ثابت پاسخ `304` بدون بدنه برمی‌گردد. پاسخ هوا روی CDN همچنان `no-store` است.

@@ -5,6 +5,7 @@ import time
 import zlib
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.utils.http import parse_etags
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import NotFound
@@ -54,7 +55,10 @@ def week_forecast(request, slug, kind):
         raise ValidationError("API هفته پارامتر انتخاب برنامه ندارد")
     (body, etag), status = cached_week(kind, slug, local.date())
     max_age = max(0,min(120,int((localize_dt(local.date()+timedelta(days=1),0)-local).total_seconds())))
-    response = HttpResponse(status=304) if etag in request.headers.get("If-None-Match", "").split(", ") else HttpResponse(body,content_type="application/json; charset=utf-8")
+    # GET uses weak comparison: gzip/CDNs may prefix our strong ETag with W/.
+    candidates = parse_etags(request.headers.get("If-None-Match", ""))
+    unchanged = "*" in candidates or any(tag.removeprefix("W/") == etag for tag in candidates)
+    response = HttpResponse(status=304) if unchanged else HttpResponse(body,content_type="application/json; charset=utf-8")
     response["ETag"] = etag
     response["Cache-Control"] = f"private, max-age={max_age}, must-revalidate"
     response["CDN-Cache-Control"] = "no-store"

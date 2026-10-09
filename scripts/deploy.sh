@@ -50,6 +50,8 @@ Optional environment variables:
   HAWATCH_BRANCH         Git branch (default: main)
   HAWATCH_DIR            Checkout directory (default: /root/hawatch)
   VITE_API_BASE_URL      Browser API URL (default: same-origin /api/v1)
+  API_BIND_ADDRESS       API host bind address (default: 127.0.0.1)
+  WEB_BIND_ADDRESS       Direct web bind address (default: 127.0.0.1)
   API_PUBLISH_PORT       API host port (default: 8000)
   WEB_PUBLISH_PORT       Direct web host port (default: 5173)
   NGINX_PUBLISH_PORT     Gateway host port (default: 80)
@@ -207,6 +209,10 @@ configure_env() {
   [[ "$PUBLIC_HOST" != *"://"* && "$PUBLIC_HOST" != */* && "$PUBLIC_HOST" != *' '* ]] || \
     fail "PUBLIC_HOST must be a bare IP address or hostname, without scheme, path or spaces."
 
+  API_BIND_ADDRESS="${API_BIND_ADDRESS:-$(get_env_value API_BIND_ADDRESS)}"
+  WEB_BIND_ADDRESS="${WEB_BIND_ADDRESS:-$(get_env_value WEB_BIND_ADDRESS)}"
+  API_BIND_ADDRESS="${API_BIND_ADDRESS:-127.0.0.1}"
+  WEB_BIND_ADDRESS="${WEB_BIND_ADDRESS:-127.0.0.1}"
   API_PUBLISH_PORT="${API_PUBLISH_PORT:-$(get_env_value API_PUBLISH_PORT)}"
   WEB_PUBLISH_PORT="${WEB_PUBLISH_PORT:-$(get_env_value WEB_PUBLISH_PORT)}"
   NGINX_PUBLISH_PORT="${NGINX_PUBLISH_PORT:-$(get_env_value NGINX_PUBLISH_PORT)}"
@@ -225,6 +231,8 @@ configure_env() {
   set_env_value HAWATCH_ENVIRONMENT production
   set_env_value POSTGRES_HOST postgres
   set_env_value POSTGRES_PORT 5432
+  set_env_value API_BIND_ADDRESS "$API_BIND_ADDRESS"
+  set_env_value WEB_BIND_ADDRESS "$WEB_BIND_ADDRESS"
   set_env_value API_PUBLISH_PORT "$API_PUBLISH_PORT"
   set_env_value WEB_PUBLISH_PORT "$WEB_PUBLISH_PORT"
   set_env_value NGINX_PUBLISH_PORT "$NGINX_PUBLISH_PORT"
@@ -465,10 +473,10 @@ run_stack() {
 
 Hawatch is running.
 Frontend: http://${PUBLIC_HOST}:${NGINX_PUBLISH_PORT}
-Frontend (direct): http://${PUBLIC_HOST}:${WEB_PUBLISH_PORT}
-API: http://${PUBLIC_HOST}:${API_PUBLISH_PORT}/api/v1/
-Ready: http://${PUBLIC_HOST}:${API_PUBLISH_PORT}/api/v1/health/ready/
-Status: http://${PUBLIC_HOST}:${API_PUBLISH_PORT}/api/v1/health/status/ (Bearer token from .env)
+Frontend (direct, server-local): http://127.0.0.1:${WEB_PUBLISH_PORT}
+API: http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/
+Ready: http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/
+Status: http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/status/ (Bearer token from .env)
 
 Stop this Hawatch Compose project:
   cd ${REPO_DIR} && docker compose --env-file .env -f ${COMPOSE_RELATIVE_PATH} down

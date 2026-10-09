@@ -41,7 +41,7 @@ JS/CSS در `/static-assets/<frontend-hash>/` و فایل‌های public مان
 یکسان ساخته می‌شود. مرورگر و CDN می‌توانند این فایل‌ها را مشترک cache کنند.
 
 پاسخ هفته ETag و کش HTTP خصوصی مرورگر تا دو دقیقه دارد (در نیمه‌شب کوتاه
-می‌شود). `CDN-Cache-Control: no-store` و `Surrogate-Control: no-store` و
+می‌شود). مقایسهٔ `If-None-Match` برای ETag قوی و weak (پس از gzip) یکسان است؛ دادهٔ ثابت با `304` بدون بدنه و دادهٔ تغییرکرده با `200` برمی‌گردد. `CDN-Cache-Control: no-store` و `Surrogate-Control: no-store` و
 `Cache-Control: private` کش مشترک هوا را منع می‌کنند؛ gateway نیز این سیاست را
 حفظ می‌کند. CDN فقط برای فایل‌های ثابت است؛ پنل CDN نباید این هدرها را override
 کند. کش قدیمی عمومی دامنه پس از انتشار روی production باید یک بار purge شود.
