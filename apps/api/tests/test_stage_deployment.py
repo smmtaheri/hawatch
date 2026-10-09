@@ -28,6 +28,7 @@ def test_stage_deploy_waits_for_real_forecast_through_the_public_gateway():
     settings = (root / "apps/api/src/hawatch/config/settings/qa.py").read_text(encoding="utf-8")
 
     assert 'MODE="${1:-deploy}"' in script
+    assert 'manage.py ingest_open_meteo --wait-lock-seconds 900' in script
     assert 'wait_for_healthy "$service"' in script
     assert '"${stage_base}/api/v1/health/ready/"' in script
     assert '"${stage_base}/api/v1/points/"' in script

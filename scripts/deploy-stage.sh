@@ -58,7 +58,7 @@ if [[ "$("${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage
   "${compose[@]}" run --rm --no-deps -i -T --entrypoint python stage-api manage.py import_stage_data < "$snapshot"
 fi
 "${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py apply_route_descent
-"${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py ingest_open_meteo
+"${compose[@]}" run --rm --no-deps --entrypoint python stage-api manage.py ingest_open_meteo --wait-lock-seconds 900
 "${compose[@]}" up -d --no-build --force-recreate stage-api stage-web stage-gateway stage-scheduler
 
 wait_for_healthy() {

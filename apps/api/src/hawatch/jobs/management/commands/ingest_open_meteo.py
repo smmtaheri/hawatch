@@ -1,6 +1,8 @@
-from django.core.management.base import BaseCommand
+import time
 
-from hawatch.integrations.weather.ingest import ingest_active_catalog, ingest_catalog
+from django.core.management.base import BaseCommand, CommandError
+
+from hawatch.integrations.weather.ingest import IngestLockError, ingest_active_catalog, ingest_catalog
 from hawatch.integrations.weather.providers.open_meteo import OpenMeteoProvider
 from hawatch.modules.catalog.catalog import DEFAULT_CATALOG_FILE, load_catalog_file, seed_catalog
 
@@ -39,8 +41,13 @@ class Command(BaseCommand):
         )
         parser.add_argument("--batch-size", type=int, default=None)
         parser.add_argument("--forecast-days", type=int, default=None)
+        parser.add_argument("--wait-lock-seconds", type=int, default=0,
+                            help="Wait up to this many seconds for an existing ingest; retry lock contention only.")
 
     def handle(self, *args, **options):
+        wait_seconds = options["wait_lock_seconds"]
+        if wait_seconds < 0:
+            raise CommandError("--wait-lock-seconds must be nonnegative")
         if options["seed_catalog"]:
             result = seed_catalog(catalog_file=options["catalog"], prune=options["prune"])
             self.stdout.write(
@@ -55,11 +62,24 @@ class Command(BaseCommand):
         slug_text = (options["slugs"] or "").strip()
         slugs = [item.strip() for item in slug_text.split(",") if item.strip()] or None
 
-        if options["fixture_version"]:
-            catalog_version = load_catalog_file(options["catalog"])["catalog_version"]
-            snapshot = ingest_catalog(catalog_version, provider=provider)
-        else:
-            snapshot = ingest_active_catalog(provider=provider, slugs=slugs)
+        deadline = time.monotonic() + wait_seconds
+        announced = False
+        while True:
+            try:
+                if options["fixture_version"]:
+                    catalog_version = load_catalog_file(options["catalog"])["catalog_version"]
+                    snapshot = ingest_catalog(catalog_version, provider=provider)
+                else:
+                    snapshot = ingest_active_catalog(provider=provider, slugs=slugs)
+                break
+            except IngestLockError as error:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise CommandError("Another Open-Meteo ingest is still running; retry after it finishes.") from error
+                if not announced:
+                    self.stdout.write("Another ingest is running; waiting for its lock before proceeding...")
+                    announced = True
+                time.sleep(min(5, remaining))
 
         self.stdout.write(
             self.style.SUCCESS(
