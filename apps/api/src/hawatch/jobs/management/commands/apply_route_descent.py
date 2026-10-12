@@ -1,45 +1,142 @@
-"""Apply only offline derived totals; no GPX, provider access or catalog import."""
+"""Apply offline route metrics; never reads GPX or calls a provider."""
 import json
+
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from hawatch.modules.routes.models import Route
 from hawatch.api.v1.week_cache import invalidate_week_cache
 
+
 class Command(BaseCommand):
-    help = 'Apply GPX descent and missing segment distances for matching canonical chains.'
+    help = "Apply reviewed route metrics for matching canonical point chains."
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--dry-run",
+            action="store_true",
+            help="Validate and report changes without writing to the database.",
+        )
+
     def handle(self, *args, **options):
-        document=json.loads((settings.FIXTURES_DIR/'route_descent_v1.json').read_text())
-        if document['schema_version']!='route-descent-1': raise CommandError('Unknown descent schema')
-        updated, skipped, unchanged=0,0,0
+        document = json.loads(
+            (settings.FIXTURES_DIR / "route_descent_v1.json").read_text()
+        )
+        if document["schema_version"] not in ("route-descent-1", "route-metrics-2"):
+            raise CommandError("Unknown route metrics schema")
+
+        dry_run = options["dry_run"]
+        updated_routes = 0
+        updated_points = 0
+        skipped = 0
+        unchanged = 0
         with transaction.atomic():
-            for item in document['routes']:
-                route=Route.objects.filter(slug=item['slug']).first()
-                points=list(route.points.select_related('weather_point').order_by('sort_order','pk')) if route else []
-                if route is None or [p.weather_point.slug if p.weather_point else None for p in points]!=item['chain']:
-                    skipped+=1
+            for item in document["routes"]:
+                route = Route.objects.filter(slug=item["slug"]).first()
+                points = (
+                    list(
+                        route.points.select_related("weather_point").order_by(
+                            "sort_order", "pk"
+                        )
+                    )
+                    if route
+                    else []
+                )
+                chain = [
+                    point.weather_point.slug if point.weather_point else None
+                    for point in points
+                ]
+                if route is None or chain != item["chain"]:
+                    skipped += 1
                     continue
-                if item['descent_m']<0: raise CommandError('Negative descent')
-                changed=False
-                cumulative=item.get('cumulative_distance_m')
+
+                if "descent_m" not in item and not item.get(
+                    "cumulative_distance_m"
+                ) and not item.get("segment_distance_m"):
+                    raise CommandError(
+                        f"{route.slug}: no descent or segment-distance data"
+                    )
+
+                changed = False
+                descent = item.get("descent_m")
+                if descent is not None:
+                    if type(descent) is not int or descent < 0:
+                        raise CommandError(f"{route.slug}: invalid descent")
+                    evidence = item.get("evidence")
+                    if not isinstance(evidence, dict) or not evidence:
+                        raise CommandError(f"{route.slug}: descent evidence required")
+                    if route.descent_m != descent or route.descent_evidence != evidence:
+                        route.descent_m = descent
+                        route.descent_evidence = evidence
+                        changed = True
+
+                cumulative = item.get("cumulative_distance_m")
+                segment_distances = item.get("segment_distance_m")
+                if cumulative is not None and segment_distances is not None:
+                    raise CommandError(
+                        f"{route.slug}: specify cumulative or segment distances, not both"
+                    )
                 if cumulative is not None:
-                    if len(cumulative)!=len(points) or cumulative[0]!=0 or any(not isinstance(v,int) or isinstance(v,bool) for v in cumulative) or any(b<=a for a,b in zip(cumulative,cumulative[1:])):
-                        raise CommandError('Invalid GPX cumulative distances')
-                    # Complete a missing profile from one consistent source; retain fully curated profiles.
-                    if any(p.segment_distance_m is None for p in points[1:]):
-                        for index,point in enumerate(points):
-                            point.segment_distance_m=0 if index==0 else cumulative[index]-cumulative[index-1]
-                        type(points[0]).objects.bulk_update(points,['segment_distance_m'])
-                        changed=True
-                if route.descent_m!=item['descent_m'] or route.descent_evidence!=item['evidence']:
-                    route.descent_m=item['descent_m']
-                    route.descent_evidence=item['evidence']
-                    route.save(update_fields=['descent_m','descent_evidence'])
-                    changed=True
+                    if (
+                        len(cumulative) != len(points)
+                        or cumulative[0] != 0
+                        or any(type(value) is not int for value in cumulative)
+                        or any(b <= a for a, b in zip(cumulative, cumulative[1:]))
+                    ):
+                        raise CommandError(f"{route.slug}: invalid cumulative distances")
+                    segment_distances = [
+                        0,
+                        *[
+                            end - start
+                            for start, end in zip(cumulative, cumulative[1:])
+                        ],
+                    ]
+
+                point_updates = []
+                if segment_distances is not None:
+                    if (
+                        len(segment_distances) != len(points)
+                        or segment_distances[0] != 0
+                        or any(type(value) is not int or value < 0 for value in segment_distances)
+                    ):
+                        raise CommandError(f"{route.slug}: invalid segment distances")
+                    for point, distance in zip(points, segment_distances):
+                        # Never replace a previously curated or GPX-derived value.
+                        if point.segment_distance_m is None:
+                            point.segment_distance_m = distance
+                            point_updates.append(point)
+
+                distance_evidence = item.get("segment_distance_evidence")
+                if distance_evidence is not None:
+                    if not isinstance(distance_evidence, dict) or not distance_evidence:
+                        raise CommandError(
+                            f"{route.slug}: invalid segment-distance evidence"
+                        )
+                    route_evidence = dict(route.descent_evidence or {})
+                    if route_evidence.get("segment_distance_estimate") != distance_evidence:
+                        route_evidence["segment_distance_estimate"] = distance_evidence
+                        route.descent_evidence = route_evidence
+                        changed = True
+
+                if point_updates and not dry_run:
+                    type(points[0]).objects.bulk_update(
+                        point_updates, ["segment_distance_m"]
+                    )
+                updated_points += len(point_updates)
+
                 if changed:
-                    updated+=1
+                    updated_routes += 1
+                    if not dry_run:
+                        route.save(update_fields=["descent_m", "descent_evidence"])
                 else:
-                    unchanged+=1
-            if updated:
+                    unchanged += 1
+
+            if (updated_routes or updated_points) and not dry_run:
                 invalidate_week_cache()
-        self.stdout.write(f'Descent updated: {updated}; unchanged: {unchanged}; unmatched routes: {skipped}; unresolved evidence: {len(document["unresolved"])}')
+
+        mode = "Would update" if dry_run else "Updated"
+        self.stdout.write(
+            f"{mode} routes: {updated_routes}; segment distances: {updated_points}; "
+            f"unchanged routes: {unchanged}; unmatched routes: {skipped}; "
+            f"unresolved routes: {len(document.get('unresolved', []))}"
+        )
