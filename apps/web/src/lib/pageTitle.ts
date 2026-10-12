@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { notifyGa4TitleReady } from "./ga4";
 
 export const DEFAULT_TITLE = "هواچ | پیش‌بینی هوای کوهستان و مسیرها";
 export const DEFAULT_DESCRIPTION = "هواچ؛ پیش‌بینی آب‌وهوای قله‌ها، دریاچه‌ها و مسیرهای کوه‌پیمایی برای برنامه‌ریزی بهتر.";
@@ -24,6 +25,8 @@ type PageTitleOptions = {
   canonical?: boolean;
   title?: string;
   description?: string;
+  /** Keep analytics from using a generic loading title for detail pages. */
+  analyticsReady?: boolean;
   /** Disable metadata writes for transient UI such as an in-app overlay. */
   enabled?: boolean;
 };
@@ -85,6 +88,8 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
     // metadata below runs; SPA navigations do not qualify and clear the old
     // page metadata immediately while the new page loads.
     if (!hasExplicitMetadata && isInitialDocument) {
+      // Django already supplied the correct page-specific title in the HTML.
+      notifyGa4TitleReady(location.pathname, document.title);
       return;
     }
     initialSsrMetadataHandled = true;
@@ -121,5 +126,8 @@ export function usePageTitle(name?: string, options: PageTitleOptions = {}) {
     // ready, explicit point policy wins; query variants remain noindex while
     // retaining their clean canonical links.
     robots.content = import.meta.env.VITE_QA_PREVIEW === "true" ? "noindex,nofollow,noarchive" : options.robots ?? robotsForSearch(location.search);
-  }, [location.pathname, location.search, name, options.canonical, options.description, options.enabled, options.robots, options.title]);
+    if (options.analyticsReady !== false) {
+      notifyGa4TitleReady(location.pathname, document.title);
+    }
+  }, [location.pathname, location.search, name, options.analyticsReady, options.canonical, options.description, options.enabled, options.robots, options.title]);
 }

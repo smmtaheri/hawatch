@@ -43,6 +43,7 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
   usePageTitle(seoSubject?.name, {
     title: seoSubject?.seo_title,
     description: seoSubject?.seo_description,
+    analyticsReady: Boolean(seoSubject),
     robots:
       status === "missing" || seoSubject?.seo_indexable === false
         ? "noindex,follow"

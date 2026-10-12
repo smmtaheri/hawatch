@@ -104,6 +104,7 @@ export function RoutePage() {
   usePageTitle(seoRoute?.title, {
     title: seoRoute?.seo_title,
     description: seoRoute?.seo_description,
+    analyticsReady: Boolean(seoRoute),
     robots: status === "missing" ? "noindex,follow" : undefined,
     canonical: status === "missing" ? false : undefined,
   });

@@ -1,5 +1,84 @@
 # آمار بازدید داخلی هواچ
 
+## اتصال پایه به GA4
+
+آمار داخلی بالا مرجع مستقل هواچ باقی می‌ماند. GA4 فقط برای page viewهای عمومی
+استفاده می‌شود و رویداد اختصاصی هواچ به آن ارسال نمی‌کند. تنظیم runtime با
+متغیر عمومی `GA4_MEASUREMENT_ID` انجام می‌شود؛ مقدار فعلی stream برابر
+`G-B9F7GYQ0X8` است. آن را در `.env` کنار فایل Compose بگذارید:
+
+```dotenv
+GA4_MEASUREMENT_ID=G-B9F7GYQ0X8
+```
+
+در production این فایل روی سرور، معمولاً `/root/hawatch/.env`، تنظیم می‌شود.
+همان متغیر به‌صورت runtime از طریق `env_file` به API/Django می‌رسد و Compose آن
+را هنگام build وب به `VITE_GA4_MEASUREMENT_ID` می‌دهد. Django شناسه را در HTML
+صفحات SSR می‌گذارد؛ bundle هم آن را برای مسیرهای عمومی‌ای که از پوستهٔ استاتیک
+React می‌آیند می‌خواند. اسکریپت deploy فایل `.env` موجود را جایگزین نمی‌کند؛ در
+سرورهای فعلی این خط باید پیش از deploy کد اضافه شود تا هم image وب با شناسه ساخته
+شود و هم API آن را هنگام شروع بعدی بخواند. در توسعهٔ محلی می‌توان متغیر را خالی
+گذاشت. مقدار غایب/نامعتبر بی‌صدا GA4 را غیرفعال می‌کند.
+
+GA4 فقط در build production، روی `https://hawatch.ir` یا
+`https://www.hawatch.ir` و بیرون از preview فعال می‌شود. Vite dev server،
+localhost، HTTP، preview/QA و صفحات خارج از مسیرهای عمومی مجاز هیچ اسکریپت یا
+درخواستی به Google نمی‌فرستند.
+
+React Router مسیرهای عمومی خانه، فهرست مقصدها/مسیرها، صفحهٔ اشتراک، نقطه و مسیر
+را دنبال می‌کند؛ صفحهٔ login که به خانه redirect می‌شود و صفحات ناموجود در این
+allowlist نیستند. تغییر query یا hash به‌تنهایی
+page view نیست. مسیر فقط بعد از آماده‌شدن عنوان React ثبت می‌شود. HTML SSR صفحهٔ
+مستقیم عنوان آماده را از قبل دارد؛ صفحهٔ نقطه/مسیر در ناوبری SPA تا دریافت نام
+واقعی همان مقصد صبر می‌کند. بازکردن مستقیم، refresh و هر انتقال واقعی مسیر از
+جمله Back/Forward یک page view می‌سازند. تکرار effect در React StrictMode و
+تغییر query/filter با coordinator هر مسیر حذف می‌شود. عنوان از `document.title`
+همان لحظهٔ آماده‌شدن و URL فقط از origin و pathname عمومی ساخته می‌شود؛ query،
+hash و referrer بیرونی مرورگر هرگز فرستاده نمی‌شوند. ایمیل، شماره و عبارت‌های
+credential-like نیز از title ارسالی حذف می‌شوند. برای پیمایش داخلی در GA، فقط
+pathname عمومی صفحهٔ قبلی به‌عنوان referrer مجازی استفاده می‌شود؛ referrer بیرونی
+در بازدید اول خالی است.
+
+در Google tag روی GA Signals و ad personalization سیگنال خاموش‌اند. کد
+`send_page_view: false` را به `config` می‌دهد و `page_view` را دستی ثبت می‌کند.
+در کد فعلی پروژه cookie-consent/CMP یا تنظیم Consent Mode پیدا نشد؛ این اتصال
+موجودیت آن را تغییر نمی‌دهد. اگر سیاست محصول/حوزهٔ فعالیت به رضایت پیشینی نیاز
+دارد، باید CMP/Consent Mode جداگانه طراحی شود، نه اینکه این پیاده‌سازی را به‌جای
+رضایت تلقی کنیم.
+
+### تنظیمات پنل GA4
+
+برای جلوگیری از تکرار و جمع‌آوری URLهای queryدار، در **Admin → Data streams →
+web stream هواچ → Enhanced measurement** کل Enhanced Measurement را فعلاً خاموش
+کنید. کد هواچ page view را دستی می‌فرستد؛ GA4 همچنان رویدادهای پایهٔ خودش مثل
+`session_start`، `first_visit` و `user_engagement` را طبق رفتار معمول ثبت می‌کند.
+بعداً اگر scroll/click/download هم خواستید، می‌توانیم گزینه‌های لازم را جدا
+فعال کنیم، اما ثبت خودکار Page views و به‌ویژه **Page changes based on browser
+history events** نباید همزمان با ثبت دستی فعال باشد. این قاعده با راهنمای رسمی
+Google برای page view دستی در SPA هم‌راستاست.
+
+### تأیید پس از deploy
+
+1. در سرور، خط `GA4_MEASUREMENT_ID=G-B9F7GYQ0X8` را به `.env` اضافه و deploy
+   عادی کد را اجرا کنید؛ این متغیر را در فایل‌های frontend یا HTML ثابت نگذارید.
+2. در Chrome DevTools → Network، فیلتر `gtag/js` را بزنید و صفحهٔ عمومی را
+   باز کنید. باید حداکثر یک بار `gtag/js?id=G-B9F7GYQ0X8` بارگیری شود؛ درخواست‌های
+   `collect` باید `en=page_view` و `dl` تمیز بدون `?`/`#` داشته باشند. اولین
+   `dr` خالی و referrerهای بعدی فقط URL داخلیِ بدون query باشند.
+3. برای DebugView، از **Tag Assistant → Troubleshoot tag** حالت debug را فقط
+   برای مرورگر خودت فعال کن و در GA4 **Admin → DebugView** برو. DebugView باید
+   برای خانه → مقصدها → نقطه → مسیر، و نیز Back/Forward یک `page_view` با
+   `page_title` و `page_location` همان صفحه نشان دهد؛ تغییر تاریخ/ساعت/سرعت
+   نباید event جدید بسازد. Refresh باید یک event جدید برای بارگذاری جدید بسازد.
+4. در **Reports → Realtime** بعد از چند ثانیه همان session و page viewها را
+   ببینید. تأیید دریافت واقعی در DebugView/Realtime نیازمند دسترسی شما به
+   property GA4 است؛ تست کد به‌تنهایی تحویل داده‌شدن event به Google را اثبات
+   نمی‌کند.
+
+اگر Google، افزونهٔ مسدودکننده یا شبکه درخواست را رد کند، خطای script به‌صورت
+بی‌صدا مدیریت می‌شود، صف موقت پاک می‌شود و تلاش مجدد خودکار انجام نمی‌شود؛ UI و
+درخواست‌های Open-Meteo وابستگی‌ای به بارگیری GA ندارند.
+
 هواچ برای ثبت بازدید از ابزار خارجی استفاده نمی‌کند. frontend بعد از هر
 navigation در SPA که به یک URL متعارف `/points/<slug>` یا `/routes/<slug>` برسد،
 یک درخواست غیرهمزمان و کوتاه به `POST /api/v1/analytics/pageview/` می‌فرستد.

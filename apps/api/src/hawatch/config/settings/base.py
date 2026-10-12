@@ -124,6 +124,7 @@ CORS_ALLOW_CREDENTIALS = False
 DEMO_AUTH_ALLOWED_PHONE = os.environ.get("DEMO_AUTH_ALLOWED_PHONE", "")
 DEMO_AUTH_FIXED_OTP = os.environ.get("DEMO_AUTH_FIXED_OTP", "")
 AUTH_SESSION_AGE_SECONDS = int(os.environ.get("AUTH_SESSION_AGE_SECONDS", str(30 * 24 * 60 * 60)))
+GA4_MEASUREMENT_ID = os.environ.get("GA4_MEASUREMENT_ID", "").strip()
 # Retire the old shared sessionid/csrftoken cookies; no implicit migration
 # can distinguish a legacy admin login from an explicit site login.
 SESSION_COOKIE_NAME = "hawatch_site_session"

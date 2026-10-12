@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
 import { LoadingState } from "../components/LoadingState";
+import { RoutePageViewTracker } from "./RoutePageViewTracker";
 
 const DestinationsPage = lazy(() =>
   import("../features/destinations/DestinationsPage").then((module) => ({
@@ -62,6 +63,7 @@ export function AppRoutes() {
 
   return (
     <>
+      <RoutePageViewTracker />
       <Suspense fallback={<LoadingState label="در حال آماده‌سازی صفحه…" />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

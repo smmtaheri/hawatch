@@ -2,8 +2,10 @@ import re
 
 import pytest
 from django.contrib.gis.geos import Point
+from django.test import RequestFactory, override_settings
 
 from hawatch.modules.catalog.seed import ensure_catalog
+from hawatch.modules.catalog.seo_pages import _render
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
@@ -34,6 +36,39 @@ def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_cata
     assert 'src="/assets/hawatch.js"' in body
     assert response["X-Robots-Tag"] == "index,follow"
     assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+
+
+def _minimal_ssr_response(path: str):
+    return _render(
+        RequestFactory().get(path),
+        page={
+            "kind": "point",
+            "title": "آب‌وهوای قلهٔ آزمایشی | هواچ",
+            "description": "شرح آزمایشی صفحه",
+            "canonical": "https://hawatch.ir/points/sample",
+            "headline": "قلهٔ آزمایشی",
+            "summary": "خلاصهٔ آزمایشی",
+            "indexable": True,
+        },
+    )
+
+
+@override_settings(GA4_MEASUREMENT_ID="G-B9F7GYQ0X8")
+def test_public_ssr_exposes_only_the_configured_ga4_measurement_id():
+    response = _minimal_ssr_response("/points/sample?date=2026-10-12&period=night")
+
+    assert response.status_code == 200
+    body = response.content.decode()
+    assert '<meta name="hawatch-ga4-measurement-id" content="G-B9F7GYQ0X8" />' in body
+    assert "date=2026-10-12" not in body
+
+
+@override_settings(GA4_MEASUREMENT_ID="")
+def test_public_ssr_remains_valid_when_ga4_is_not_configured():
+    response = _minimal_ssr_response("/points/sample")
+
+    assert response.status_code == 200
+    assert 'name="hawatch-ga4-measurement-id"' not in response.content.decode()
 
 
 def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_catalog):
