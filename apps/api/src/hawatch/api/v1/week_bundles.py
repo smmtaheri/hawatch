@@ -7,9 +7,10 @@ from collections import defaultdict
 from datetime import timedelta
 from bisect import bisect_left
 from django.conf import settings
-from hawatch.common.time import now_tehran, localize_dt, day_payload, paced_duration_minutes, SPEED_TIME_FACTORS
+from hawatch.common.time import now_tehran, localize_dt, day_payload, paced_route_cumulative_minutes, SPEED_TIME_FACTORS
 from hawatch.modules.forecasts.models import ForecastRecord
 from hawatch.modules.routes.models import Route
+from hawatch.modules.routes.timing import route_mean_elevation_m
 from hawatch.integrations.weather.hazards import assessment, assess_records, value, representative_record
 from hawatch.integrations.weather.equipment import suggest_equipment
 from .serializers import get_point, get_route, serialize_point_profile, serialize_route, serialize_route_summary, reading_payload, route_has_usable_timing
@@ -81,8 +82,25 @@ def build_week(kind, slug, today):
     else:
         route = get_route(slug)
         points = list(route.points.select_related("weather_point", "route").all())
+        mean_elevation_m = route_mean_elevation_m(points)
         timed = route_has_usable_timing(route, points)
-        offsets = {speed: [paced_duration_minutes(p.cumulative_minutes, label) for p in points] if timed else [] for speed,label in (("slow","آرام"),("medium","متوسط"),("fast","سریع"))}
+        offsets = {
+            speed: [
+                paced_route_cumulative_minutes(
+                    point.cumulative_minutes,
+                    route.one_way_minutes,
+                    label,
+                    distance_km=float(route.distance_km) if route.distance_km is not None else None,
+                    ascent_m=route.ascent_m,
+                    descent_m=route.descent_m,
+                    mean_elevation_m=mean_elevation_m,
+                )
+                for point in points
+            ]
+            if timed
+            else []
+            for speed, label in (("slow", "آرام"), ("medium", "متوسط"), ("fast", "سریع"))
+        }
         tail = max((max(v, default=0) for v in offsets.values()), default=0)
         rows = records_for([p.weather_point_id for p in points if p.weather_point_id], start, start+timedelta(days=8, minutes=tail+90))
         by_point = defaultdict(list)

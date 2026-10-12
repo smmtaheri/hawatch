@@ -262,8 +262,8 @@ def _point_page(point: WeatherPoint) -> dict:
 
 
 def _route_page(route: Route) -> dict:
-    seo = route_seo_copy(route)
     route_points = list(route.points.select_related("weather_point").all())
+    seo = route_seo_copy(route, points=route_points)
     target_href = f"/points/{route.target_weather_point.slug}" if route.target_weather_point_id else ""
     # Some routes finish at a physical endpoint such as a lake shore while
     # their public target is the canonical primary destination. Resolve that

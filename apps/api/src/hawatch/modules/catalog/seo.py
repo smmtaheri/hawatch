@@ -11,7 +11,8 @@ from dataclasses import dataclass
 from django.conf import settings
 from django.utils import timezone as django_timezone
 
-from hawatch.common.time import to_fa_digits
+from hawatch.common.time import estimate_route_duration_minutes, to_fa_digits
+from hawatch.modules.routes.timing import route_mean_elevation_m
 from hawatch.modules.catalog.identity import place_type_label
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -98,10 +99,19 @@ def point_seo_copy(point: WeatherPoint) -> dict[str, str | None]:
     }
 
 
-def route_seo_copy(route: Route) -> dict[str, str | None]:
+def route_seo_copy(route: Route, *, points=None) -> dict[str, str | None]:
     subject = route.title
     route_subject = subject if subject.startswith("مسیر") else f"مسیر {subject}"
-    duration = f"زمان یک‌طرفه حدود {to_fa_digits(route.one_way_minutes)} دقیقه" if route.one_way_minutes else None
+    route_points = points if points is not None else list(route.points.select_related("weather_point").all())
+    duration_minutes = estimate_route_duration_minutes(
+        float(route.distance_km) if route.distance_km is not None else None,
+        route.ascent_m,
+        route.descent_m,
+        "متوسط",
+        mean_elevation_m=route_mean_elevation_m(route_points),
+        fallback_medium_minutes=route.one_way_minutes,
+    )
+    duration = f"زمان یک‌طرفه حدود {to_fa_digits(duration_minutes)} دقیقه" if duration_minutes else None
     subtitle = f"پیش‌بینی آب‌وهوای {route_subject} از {route.origin} تا {route.target_label}"
     pieces = [subtitle]
     if route.region:

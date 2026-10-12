@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import re
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
@@ -46,6 +47,33 @@ SPEED_ALIASES = {
     "سریع": "سریع",
 }
 ARRIVAL_FORECAST_TOLERANCE_MINUTES = 90
+
+# Route pace model v3 uses separate horizontal and vertical effort costs.
+# Coefficients are a fixed initial calibration against the user's estimates for
+# Tochal, Damavand, Eskelim, Azadkouh, and Alamkuh. They are intentionally
+# frozen for the 30-route evaluation; do not tune them route-by-route from that
+# evaluation. Mean elevation is checkpoint-derived, not a full DEM profile.
+ROUTE_PACE_MODEL_VERSION = "distance-ascent-altitude-fatigue-v3"
+ROUTE_DESCENT_EFFORT_WEIGHT = 0.5
+ROUTE_ALTITUDE_REFERENCE_M = 2500
+ROUTE_ALTITUDE_SENSITIVITY_PER_KM = 0.15
+ROUTE_PACE_PROFILES = {
+    "آرام": {
+        "minutes_per_km": 14.11,
+        "minutes_per_100m_gain": 20.23,
+        "distance_fatigue_per_10km": 0.02,
+    },
+    "متوسط": {
+        "minutes_per_km": 7.65,
+        "minutes_per_100m_gain": 13.18,
+        "distance_fatigue_per_10km": 0.04,
+    },
+    "سریع": {
+        "minutes_per_km": 6.5,
+        "minutes_per_100m_gain": 6.5,
+        "distance_fatigue_per_10km": 0.12,
+    },
+}
 
 
 PERIOD_IDS = ("midnight", "morning", "noon", "night")
@@ -452,3 +480,94 @@ def paced_duration_minutes(medium_minutes: int, speed_label: str) -> int:
     """Apply relative pace time factor then round to nearest 5 minutes."""
     factor = SPEED_TIME_FACTORS[speed_label]
     return round_to_nearest_5(medium_minutes * factor)
+
+
+def estimate_route_duration_minutes(
+    distance_km: float | int | None,
+    ascent_m: float | int | None,
+    descent_m: float | int | None,
+    speed_label: str,
+    *,
+    mean_elevation_m: float | int | None = None,
+    fallback_medium_minutes: int | None = None,
+) -> int | None:
+    """Estimate one-way route time from distance, ascent/descent, and altitude.
+
+    Time is the sum of horizontal travel cost and vertical-gain cost. Recorded
+    descent is included at half the ascent effort because the route is being
+    estimated as one-way travel, not as a round trip. Mean altitude above 2,500
+    m and distance beyond 10 km add broad acclimatization/endurance penalties.
+    This intentionally excludes surface type and stop/rest time. Incomplete
+    geometry falls back to the legacy relative pace factors when a stored
+    medium duration is available.
+    """
+    profile = ROUTE_PACE_PROFILES[speed_label]
+    try:
+        distance = float(distance_km)
+        ascent = float(ascent_m)
+        descent = 0.0 if descent_m is None else float(descent_m)
+    except (TypeError, ValueError):
+        distance = ascent = descent = 0.0
+
+    if (
+        not math.isfinite(distance)
+        or not math.isfinite(ascent)
+        or not math.isfinite(descent)
+        or distance <= 0
+        or ascent < 0
+        or descent < 0
+    ):
+        if fallback_medium_minutes is None or fallback_medium_minutes <= 0:
+            return None
+        return paced_duration_minutes(fallback_medium_minutes, speed_label)
+
+    effective_gain_100m = (
+        ascent + ROUTE_DESCENT_EFFORT_WEIGHT * descent
+    ) / 100
+    try:
+        mean_elevation = float(mean_elevation_m) if mean_elevation_m is not None else ROUTE_ALTITUDE_REFERENCE_M
+    except (TypeError, ValueError):
+        mean_elevation = ROUTE_ALTITUDE_REFERENCE_M
+    if not math.isfinite(mean_elevation):
+        mean_elevation = ROUTE_ALTITUDE_REFERENCE_M
+    altitude_load_km = max(0.0, (mean_elevation - ROUTE_ALTITUDE_REFERENCE_M) / 1000)
+    altitude_factor = math.exp(ROUTE_ALTITUDE_SENSITIVITY_PER_KM * altitude_load_km)
+    distance_fatigue = max(0.0, distance - 10.0) / 10.0
+    endurance_factor = 1 + profile["distance_fatigue_per_10km"] * distance_fatigue
+    effort_minutes = (
+        distance * profile["minutes_per_km"]
+        + effective_gain_100m * profile["minutes_per_100m_gain"]
+    )
+    return round_to_nearest_5(effort_minutes * altitude_factor * endurance_factor)
+
+
+def paced_route_cumulative_minutes(
+    cumulative_medium_minutes: int | None,
+    medium_route_minutes: int | None,
+    speed_label: str,
+    *,
+    distance_km: float | int | None,
+    ascent_m: float | int | None,
+    descent_m: float | int | None,
+    mean_elevation_m: float | int | None = None,
+) -> int | None:
+    """Apply route-level pace estimation while preserving landmark order."""
+    if cumulative_medium_minutes is None:
+        return None
+    if cumulative_medium_minutes <= 0:
+        return 0
+    if medium_route_minutes is None or medium_route_minutes <= 0:
+        return paced_duration_minutes(cumulative_medium_minutes, speed_label)
+
+    route_minutes = estimate_route_duration_minutes(
+        distance_km,
+        ascent_m,
+        descent_m,
+        speed_label,
+        mean_elevation_m=mean_elevation_m,
+        fallback_medium_minutes=medium_route_minutes,
+    )
+    if route_minutes is None:
+        return None
+    progress = min(1.0, max(0.0, cumulative_medium_minutes / medium_route_minutes))
+    return round_to_nearest_5(route_minutes * progress)

@@ -16,14 +16,14 @@ from hawatch.integrations.weather.hazards import (
 )
 
 from hawatch.common.time import (
-    ARRIVAL_FORECAST_TOLERANCE_MINUTES, PERIOD_IDS, SPEED_TIME_FACTORS,
-    localize_dt, now_tehran, paced_duration_minutes, planner_period_payload,
+    ARRIVAL_FORECAST_TOLERANCE_MINUTES, PERIOD_IDS, ROUTE_PACE_MODEL_VERSION, SPEED_TIME_FACTORS,
+    localize_dt, now_tehran, planner_period_payload,
 )
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastRecord
 from .serializers import (
     _hourly_for_period, _reading_for_period_summary, _records_for_day,
-    meta_base, point_forecast, reading_payload, route_forecast, serialize_route,
+    meta_base, point_forecast, reading_payload, route_duration_minutes, route_forecast, serialize_route,
 )
 
 
@@ -77,9 +77,8 @@ def route_day_bundle(route, *, selected_date, period, start_minutes, speed, acce
     periods = {key: planner_period_payload(key) for key in PERIOD_IDS}
     slots = [slot for spec in periods.values() for slot in spec["planner_slots"]]
     max_duration = max(
-        (paced_duration_minutes(point.cumulative_minutes, pace)
-         for point in points if point.cumulative_minutes is not None
-         for pace in SPEED_TIME_FACTORS), default=0,
+        (route_duration_minutes(route, pace, points=points) or 0 for pace in SPEED_TIME_FACTORS),
+        default=0,
     )
     tolerance = timedelta(minutes=ARRIVAL_FORECAST_TOLERANCE_MINUTES)
     start_at = localize_dt(selected_date, 0)
@@ -144,6 +143,7 @@ def route_day_bundle(route, *, selected_date, period, start_minutes, speed, acce
                           start_minutes=start_minutes, speed=speed, _context=context)
     base.update({"plans": plans, "periods": periods,
                  "data_revision": _revision(records, access, identity=[route.slug, route.timing_version,
+                     ROUTE_PACE_MODEL_VERSION,
                      [(point.pk, point.cumulative_minutes) for point in points]]),
                  "coverage": {"from": (start_at - tolerance).isoformat(), "to": end_at.isoformat(),
                               "access_through": access.available_through.isoformat()},

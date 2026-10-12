@@ -7,11 +7,12 @@ from django.test.utils import CaptureQueriesContext
 from django.db import connection
 from django.utils import timezone
 from rest_framework.test import APIClient
-from hawatch.common.time import now_tehran, localize_dt, paced_duration_minutes
+from hawatch.common.time import now_tehran, localize_dt, paced_route_cumulative_minutes
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.seed import ensure_forecasts
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, SharedRoutePlan
+from hawatch.modules.routes.timing import route_mean_elevation_m
 from hawatch.api.v1.week_bundles import aggregate, build_week
 from hawatch.api.v1.week_cache import invalidate_week_cache
 from hawatch.integrations.weather.equipment import suggest_equipment
@@ -60,10 +61,22 @@ def test_route_week_uses_existing_pace_rounding_and_midnight_matching(week_seed)
     assert all(row['condition'] for row in body['records'])
     route=Route.objects.get(slug='tochal-darband')
     points=list(route.points.all())
+    mean_elevation_m=route_mean_elevation_m(points)
     assert len(body['plans'])==8*24*3
     assert len(body['records'])<len(body['plans'])*len(points)
     for speed,label in [('slow','آرام'),('medium','متوسط'),('fast','سریع')]:
-        assert body['offsets'][speed]==[paced_duration_minutes(p.cumulative_minutes,label) for p in points]
+        assert body['offsets'][speed]==[
+            paced_route_cumulative_minutes(
+                point.cumulative_minutes,
+                route.one_way_minutes,
+                label,
+                distance_km=float(route.distance_km) if route.distance_km is not None else None,
+                ascent_m=route.ascent_m,
+                descent_m=route.descent_m,
+                mean_elevation_m=mean_elevation_m,
+            )
+            for point in points
+        ]
         for day,hour in [(0,0),(0,23),(7,23)]:
             for i,index in enumerate(body['plans'][f'{day}:{speed}:{hour}']['records']):
                 assert index is not None

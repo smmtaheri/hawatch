@@ -4,10 +4,10 @@ import pytest
 from rest_framework.test import APIClient
 from django.core.management import call_command
 
-from hawatch.common.time import paced_duration_minutes
+from hawatch.common.time import estimate_route_duration_minutes
 from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.routes.models import Route
-from hawatch.modules.routes.timing import route_timing_complete
+from hawatch.modules.routes.timing import route_mean_elevation_m, route_timing_complete
 
 EXPECTED = {
     "afjeh-hoyej-person": 210,
@@ -76,14 +76,21 @@ def test_deploy_catalog_sync_completes_existing_pending_routes_and_preserves_pac
     for slug in BLOCKED:
         assert Route.objects.get(slug=slug).timing_status == "pending"
     client = APIClient()
+    route = Route.objects.get(slug="rendan-village-waterfall")
+    mean_elevation_m = route_mean_elevation_m(list(route.points.select_related("weather_point")))
     for pace in ("متوسط", "آرام", "سریع"):
         result = client.get(
             "/api/v1/routes/rendan-village-waterfall/forecast/",
             {"start_time": "06:00", "speed": pace},
         ).json()
         assert result["timing_pending"] is False
-        assert result["points"][-1]["arrival_minutes"] == 360 + paced_duration_minutes(
-            65, pace
+        assert result["points"][-1]["arrival_minutes"] == 360 + estimate_route_duration_minutes(
+            float(route.distance_km),
+            route.ascent_m,
+            route.descent_m,
+            pace,
+            mean_elevation_m=mean_elevation_m,
+            fallback_medium_minutes=65,
         )
     repeated = StringIO()
     call_command("sync_catalog", "--apply", stdout=repeated)

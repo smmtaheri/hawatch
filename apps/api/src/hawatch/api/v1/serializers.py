@@ -20,10 +20,11 @@ from hawatch.common.time import (
     format_hhmm,
     localize_dt,
     now_tehran,
-    paced_duration_minutes,
     period_hour_slots,
     period_window,
     planner_period_payload,
+    estimate_route_duration_minutes,
+    paced_route_cumulative_minutes,
     to_fa_digits,
     timezone,
 )
@@ -40,6 +41,7 @@ from hawatch.modules.catalog.internal_links import (
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import DemoSeedState, ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
+from hawatch.modules.routes.timing import route_mean_elevation_m
 
 
 def _live_meta_parts() -> dict:
@@ -217,7 +219,7 @@ def serialize_route(route: Route) -> dict:
     ]
     distance_km = float(route.distance_km) if route.distance_km is not None else None
     timing_pending = not route_has_usable_timing(route, points)
-    seo = route_seo_copy(route)
+    seo = route_seo_copy(route, points=points)
     return {
         "slug": route.slug,
         "title": route.title,
@@ -234,7 +236,9 @@ def serialize_route(route: Route) -> dict:
         "descent_m": route.descent_m,
         "ascent_label": f"{to_fa_digits(route.ascent_m)} m" if route.ascent_m is not None else "—",
         "round_trip_minutes": route.round_trip_minutes,
-        "one_way_minutes": route.one_way_minutes,
+        "one_way_minutes": (
+            route_duration_minutes(route, "متوسط", points=points) if not timing_pending else route.one_way_minutes
+        ),
         "default_start_minutes": route.default_start_minutes if route.default_start_minutes is not None else 360,
         "timing_status": route.timing_status,
         "timing_pending": timing_pending,
@@ -815,14 +819,44 @@ def route_has_usable_timing(route: Route, points: list[RoutePoint] | None = None
     )
 
 
-def _point_arrival_minutes(point: RoutePoint, *, start_minutes: int, speed: str, timing_pending: bool) -> int | None:
+def route_duration_minutes(route: Route, speed: str, *, points=None) -> int | None:
+    """Central route ETA calculation used by forecast and planner payloads."""
+    route_points = points if points is not None else list(route.points.select_related("weather_point").all())
+    return estimate_route_duration_minutes(
+        float(route.distance_km) if route.distance_km is not None else None,
+        route.ascent_m,
+        route.descent_m,
+        speed,
+        mean_elevation_m=route_mean_elevation_m(route_points),
+        fallback_medium_minutes=route.one_way_minutes,
+    )
+
+
+def _point_arrival_minutes(
+    route: Route,
+    point: RoutePoint,
+    *,
+    start_minutes: int,
+    speed: str,
+    timing_pending: bool,
+    mean_elevation_m: float | None = None,
+) -> int | None:
     if timing_pending or point.timing_status == RoutePoint.TimingStatus.PENDING:
         return None
     # Estimated/curated arrivals require cumulative_minutes only — never invent from base_minutes.
     medium = point.cumulative_minutes
     if medium is None:
         return None
-    return start_minutes + paced_duration_minutes(medium, speed)
+    elapsed = paced_route_cumulative_minutes(
+        medium,
+        route.one_way_minutes,
+        speed,
+        distance_km=float(route.distance_km) if route.distance_km is not None else None,
+        ascent_m=route.ascent_m,
+        descent_m=route.descent_m,
+        mean_elevation_m=mean_elevation_m,
+    )
+    return start_minutes + elapsed if elapsed is not None else None
 
 
 def _closest_point_forecast(weather_point: WeatherPoint, target_at: datetime, *, now: datetime):
@@ -859,10 +893,18 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
     local = _context["local"] if _context is not None else now_tehran()
     today = local.date()
     points = _context["points"] if _context is not None else list(route.points.select_related("weather_point", "route").all())
+    mean_elevation_m = route_mean_elevation_m(points)
     timing_pending = not route_has_usable_timing(route, points)
     planned = []
     for point in points:
-        arrival = _point_arrival_minutes(point, start_minutes=start_minutes, speed=speed, timing_pending=timing_pending)
+        arrival = _point_arrival_minutes(
+            route,
+            point,
+            start_minutes=start_minutes,
+            speed=speed,
+            timing_pending=timing_pending,
+            mean_elevation_m=mean_elevation_m,
+        )
         wp = point.weather_point
         weather = None
         arrival_at = None
@@ -991,7 +1033,7 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
         duration_label = "نامشخص"
         arrival_label = "—"
     else:
-        duration = paced_duration_minutes(route.one_way_minutes, speed) if route.one_way_minutes else None
+        duration = route_duration_minutes(route, speed, points=points) if route.one_way_minutes else None
         duration_label = format_duration(duration) if duration is not None else "—"
         arrival_label = finish_label
         decision_title = f"با حرکت ساعت {start_label}، حدود {finish_label} به نقطه می‌رسی."

@@ -13,13 +13,16 @@ from hawatch.common.time import (
     SPEED_TIME_FACTORS,
     arrival_forecast_at,
     paced_duration_minutes,
+    paced_route_cumulative_minutes,
     round_to_nearest_5,
     timezone,
 )
+from hawatch.api.v1.serializers import route_duration_minutes
 from hawatch.modules.catalog.catalog import _validate_document_shape, load_catalog_file, seed_catalog
 from hawatch.modules.catalog.tochal import load_tochal_catalog, seed_tochal_catalog
 from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
+from hawatch.modules.routes.timing import route_mean_elevation_m
 
 EXPECTED_CUMULATIVE = {
     "tochal-darband": {
@@ -299,8 +302,18 @@ def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_se
     shirpala_m = next(item for item in medium["points"] if item["slug"] == "tochal-shirpala-shelter")
     shirpala_f = next(item for item in fast["points"] if item["slug"] == "tochal-shirpala-shelter")
     shirpala_l = next(item for item in later["points"] if item["slug"] == "tochal-shirpala-shelter")
-    assert shirpala_m["arrival_minutes"] == 360 + 125
-    assert shirpala_f["arrival_minutes"] == 360 + paced_duration_minutes(125, "سریع")
+    route = Route.objects.get(slug="tochal-darband")
+    mean_elevation_m = route_mean_elevation_m(list(route.points.select_related("weather_point")))
+    expected_medium = paced_route_cumulative_minutes(
+        125, route.one_way_minutes, "متوسط", distance_km=float(route.distance_km),
+        ascent_m=route.ascent_m, descent_m=route.descent_m, mean_elevation_m=mean_elevation_m,
+    )
+    expected_fast = paced_route_cumulative_minutes(
+        125, route.one_way_minutes, "سریع", distance_km=float(route.distance_km),
+        ascent_m=route.ascent_m, descent_m=route.descent_m, mean_elevation_m=mean_elevation_m,
+    )
+    assert shirpala_m["arrival_minutes"] == 360 + expected_medium
+    assert shirpala_f["arrival_minutes"] == 360 + expected_fast
     assert shirpala_f["arrival_minutes"] < shirpala_m["arrival_minutes"]
     assert shirpala_l["arrival_minutes"] == shirpala_m["arrival_minutes"] + 120
     assert shirpala_m["weather_available"] is True
@@ -322,7 +335,8 @@ def test_arrival_crosses_midnight(api_client, tochal_seeded):
     ).json()
     finish = body["points"][-1]
     assert finish["slug"] == "tochal"
-    assert finish["arrival_minutes"] == 1200 + 380  # 20:00 + 380 → next calendar day
+    route = Route.objects.get(slug="tochal-ahar")
+    assert finish["arrival_minutes"] == 1200 + route_duration_minutes(route, "متوسط")
     arrival_at = arrival_forecast_at(day, finish["arrival_minutes"])
     assert arrival_at.date() == next_day
     assert finish["arrival_at"].startswith("2026-08-29")
@@ -342,7 +356,8 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
     assert body["timing_pending"] is False
     assert body["timing_status"] == "estimated"
     assert body["points"][0]["arrival_minutes"] == 360
-    assert body["points"][-1]["arrival_minutes"] == 360 + 370
+    route = Route.objects.get(slug="tochal-shahrestanak")
+    assert body["points"][-1]["arrival_minutes"] == 360 + route_duration_minutes(route, "متوسط")
     assert body["points"][0]["time"] != "—"
     assert "timing pending" not in str(body).lower()
     assert [point["slug"] for point in body["points"]] == [
@@ -565,7 +580,8 @@ def test_complete_estimated_route_remains_usable(api_client, tochal_seeded):
     ).json()
     assert body["timing_pending"] is False
     assert body["points"][0]["arrival_minutes"] == body["start_minutes"]
-    assert body["points"][-1]["arrival_minutes"] == body["start_minutes"] + 315
+    route = Route.objects.get(slug="tochal-darband")
+    assert body["points"][-1]["arrival_minutes"] == body["start_minutes"] + route_duration_minutes(route, "متوسط")
 
 
 def test_catalog_timing_validation_rejects_non_monotonic():
