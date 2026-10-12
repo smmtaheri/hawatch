@@ -410,7 +410,7 @@
       "featured": false,
       "sort_order": 1,
       "points": ["maran-village", "maran-waterfall-bridge", "maran-waterfall-river-crossing", "maran-arous-waterfall"],
-      "distance_km": 2.27,
+      "distance_km": 2.1,
       "ascent_m": 246,
       "one_way_minutes": 52,
       "default_start_minutes": 180,
@@ -438,20 +438,20 @@
       "featured": false,
       "sort_order": 2,
       "points": ["derjan-village", "derjan-karn", "derjan-wooden-bridge", "sehezar-hot-spring"],
-      "distance_km": 15.6,
-      "ascent_m": 1272,
-      "one_way_minutes": 390,
+      "distance_km": 7.6,
+      "ascent_m": 542,
+      "one_way_minutes": 200,
       "default_start_minutes": 240,
       "timing_status": "estimated",
       "timing": {
-        "method": "gpx-geometry+independent-hiking-crosscheck-v1",
-        "version": "derjan-sehezar-hot-spring-v1",
+        "method": "gpx-one-way-cut+reported-hiking-duration-v1",
+        "version": "derjan-sehezar-hot-spring-v2",
         "confidence": "medium",
-        "uncertainty_minutes": 90,
+        "uncertainty_minutes": 45,
         "source_urls": ["https://www.wikiloc.com/hiking-trails/pymysh-drh-sh-hzr-bh-abgrm-drjn-25-khrdd-1403-174169801"],
         "evidence_tracks": ["tracks/derjan-hot-spring/derjan-to-sehezar-hot-spring.gpx"],
-        "cumulative_minutes": {"derjan-village": 0, "derjan-karn": 95, "derjan-wooden-bridge": 260, "sehezar-hot-spring": 390},
-        "notes": ["زمان خام ثبت ترک به‌دلیل توقف‌ها و بخش‌های غیرحرکتی مستقیماً ETA نیست؛ زمان پیمایش با هندسه و توضیح منبع برآورد شده است."]
+        "cumulative_minutes": {"derjan-village": 0, "derjan-karn": 20, "derjan-wooden-bridge": 106, "sehezar-hot-spring": 200},
+        "notes": ["فقط برش یک‌طرفهٔ درجان تا نخستین رسیدن به آبگرم ثبت شده است؛ برگشت در مسافت و افزایش ارتفاع وارد نشده است.", "منبع، حدود ۲۰ دقیقه تا کرن و حدود ۳ ساعت از کرن تا آبگرم گزارش می‌کند؛ زمان پل میانی متناسب با طول دو بخش مسیر توزیع شده است. زمان خام GPX مبنای ETA نیست."]
       },
       "public_point_notes": {}
     }

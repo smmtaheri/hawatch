@@ -186,7 +186,7 @@
         "dasht-havij",
         "rizan"
       ],
-      "distance_km": 6.44,
+      "distance_km": 6.5,
       "ascent_m": 1590,
       "timing_status": "estimated",
       "one_way_minutes": 265,
@@ -274,7 +274,7 @@
         "rizan-person",
         "rizan"
       ],
-      "distance_km": 10.48,
+      "distance_km": 10.2,
       "ascent_m": 1738,
       "timing_status": "estimated",
       "one_way_minutes": 345,
@@ -487,7 +487,7 @@
         "rizan-andar",
         "rizan-person"
       ],
-      "distance_km": 6.95,
+      "distance_km": 6.9,
       "ascent_m": 1343,
       "timing_status": "estimated",
       "one_way_minutes": 250,

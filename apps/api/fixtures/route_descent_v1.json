@@ -9,6 +9,7 @@
         "abak-meygun-pass",
         "abak"
       ],
+      "cumulative_distance_m": [0, 1600, 4689],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "60a8cafe0684c924d5ea1f4f371eb6f69859a25e2ca5925691d491af2b7d96d7",
@@ -39,6 +40,7 @@
         "abak-gully",
         "abak"
       ],
+      "cumulative_distance_m": [0, 4561, 5041],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "f6d034543bf99a67b391dcd4d17ec16a19df9702d6892a5d51e6ab268a52793d",
@@ -70,6 +72,7 @@
         "pinasum-pass",
         "abak"
       ],
+      "cumulative_distance_m": [0, 4379, 5024, 6164],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "9e006c46e83ba1d1e746b8f68221ca9dd7ab340c65916a5d889dcced1b473f9f",
@@ -168,6 +171,7 @@
         "rizan-andar",
         "rizan-person"
       ],
+      "cumulative_distance_m": [0, 3374, 5015, 6295],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
@@ -207,6 +211,7 @@
         "dasht-havij",
         "rizan"
       ],
+      "cumulative_distance_m": [0, 3260, 6549],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "c5d4dda54f70cfb347b7e5bcbaeeaf88dd634d290b8741974920bf4b72ddcaa5",
@@ -263,6 +268,7 @@
         "esterchal-pass",
         "ahangarak"
       ],
+      "cumulative_distance_m": [0, 8946, 9731, 11002],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "80ac2917253339c7d7b08a47672557f4fc6ab876d0d681328af57be54fb965ad",
@@ -390,6 +396,7 @@
         "rizan-person",
         "rizan"
       ],
+      "cumulative_distance_m": [0, 3374, 5015, 6306, 10225],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "c9a18077bf60578aa8a82a5454bb6f6be4d4b5cf2a535d1c01902113ef0f6fb6",
@@ -548,8 +555,25 @@
         "source_sha256": "79f154888b0e60a068a39c1c6c8016e2ec8985e5bd33d2516c35216f7f0f486d",
         "source_url": "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810",
         "coverage": "canonical-origin-to-first-target",
-        "reference_only_elevation": true
-      }
+        "reference_only_elevation": true,
+        "distance_method": "joined-reviewed-gpx-sections-v1",
+        "distance_source_sections": [
+          {
+            "source_sha256": "79f154888b0e60a068a39c1c6c8016e2ec8985e5bd33d2516c35216f7f0f486d",
+            "source_url": "https://www.wikiloc.com/hiking-trails/asyb-bd-y-ltml-z-jdh-mm-zdh-dwd-69686810",
+            "indices": [2, 42, 77],
+            "coverage": "trailhead-to-Latmal-shelter"
+          },
+          {
+            "source_sha256": "20602f2d6059a34a8ab7ba6012d588ae3594ff82cf924fb28a5d7cb75e67ed22",
+            "source_url": "https://www.wikiloc.com/hiking-trails/kht-lrs-wrdyj-hrys-ltml-w-asyb-bd-ztph-shhdy-gmnm-shhrkh-shhyd-bqry-203903878",
+            "indices": [1537, 1523],
+            "coverage": "Latmal-shelter-to-Asiab-Bad-summit-extension"
+          }
+        ],
+        "distance_join_gap_m": 6.4
+      },
+      "cumulative_distance_m": [0, 1495, 3740, 3853]
     },
     {
       "slug": "asiab-bad-latmal-park",
@@ -559,6 +583,7 @@
         "asiab-bad-omid-shelter",
         "asiab-bad"
       ],
+      "cumulative_distance_m": [0, 3888, 3961],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "5fce3ab2531bb144d05896d91160c468f5277d3d8bc03692e807442979e84986",
@@ -593,6 +618,7 @@
         "azadkouh-choren-pass",
         "azadkouh"
       ],
+      "cumulative_distance_m": [0, 2621, 4829, 5230, 6740, 8291],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "6dc9bd0dfe5c016cb11ff6ca701e0cedb61a9e3b88fe1a2664f0c55d7c27aa15",
@@ -651,6 +677,7 @@
         "azadkouh-choren-pass",
         "azadkouh"
       ],
+      "cumulative_distance_m": [0, 12851, 14289],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "0526ae64a694fceeecf1a59047c3ab56d59086784d7dcc1941718797e213309c",
@@ -685,6 +712,7 @@
         "azadkouh-choren-pass",
         "azadkouh"
       ],
+      "cumulative_distance_m": [0, 8660, 13920, 18856, 20214],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "cab1e80454c8c89ece95638388b98e705c6a75d2552605f2fba10c62df8e56c3",
@@ -829,6 +857,7 @@
         "rizan-andar",
         "rizan-person"
       ],
+      "cumulative_distance_m": [0, 5706, 6937],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "62b959afa5be520fa6b144677c6d621c9a75accca4bcca4663b926d05b039c49",
@@ -883,6 +912,7 @@
         "beliran-forest",
         "beliran-hot-spring"
       ],
+      "cumulative_distance_m": [0, 2017, 4615],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "ab9b662c75c1dc75f0ddda34685d1e7ccb2d0442c856f72d5092618631d12e26",
@@ -983,6 +1013,7 @@
         "charmkesh-bozbareh-spring",
         "charmkesh"
       ],
+      "cumulative_distance_m": [0, 5975, 7791],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "cbd975776c2c9153209328312e3ef96e738aaed26b1d0ec882fa9c8cae72ecc1",
@@ -1006,6 +1037,36 @@
         ],
         "max_step_m": 49.9
       }
+    },
+    {
+      "slug": "blades-rakhsh-to-shahvars",
+      "descent_m": 66,
+      "chain": [
+        "blades-trailhead",
+        "rakhsh-1",
+        "rakhsh-2",
+        "kamarposht",
+        "qarahdagh-west",
+        "shahvars-east"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "a3fc213b5f91ae9b9c7b0b22e609a9672fe2967bab4d56190763bc1d4ceea030",
+        "source_url": "https://www.wikiloc.com/hiking-trails/bkhshy-z-kht-lrs-dwbrr-tygh-hy-dwbrr-111138323",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/bkhshy-z-kht-lrs-dwbrr-tygh-hy-dwbrr-111138323"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 5.754,
+        "analysis_ascent_m": 1209,
+        "origin_gap_m": 0.0,
+        "target_gap_m": 0.773,
+        "landmark_gaps_m": [0.0, 1.0, 0.7, 0.8, 0.4, 0.773],
+        "max_step_m": 15.5
+      },
+      "cumulative_distance_m": [0, 3916, 4484, 4861, 5340, 5754]
     },
     {
       "slug": "bozghush-north",
@@ -1039,6 +1100,7 @@
         "changizchal-2",
         "changizchal-3"
       ],
+      "cumulative_distance_m": [0, 4690, 7072, 8174, 9463],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "a88b2f7e8aacb405f09f2c2d55642d775e851858e744848ba563b74dee701fd8",
@@ -1361,6 +1423,34 @@
       ]
     },
     {
+      "slug": "derjan-sehezar-hot-spring",
+      "descent_m": 80,
+      "chain": [
+        "derjan-village",
+        "derjan-karn",
+        "derjan-wooden-bridge",
+        "sehezar-hot-spring"
+      ],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "866885386d0b119adf4979cc3f8fddc272a23126f934bb08f39c593ab9de648b",
+        "source_url": "https://www.wikiloc.com/hiking-trails/pymysh-drh-sh-hzr-bh-abgrm-drjn-25-khrdd-1403-174169801",
+        "coverage": "canonical-origin-to-first-target",
+        "reference_only_elevation": true,
+        "catalog_source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-drh-sh-hzr-bh-abgrm-drjn-25-khrdd-1403-174169801"
+        ],
+        "direction": "forward",
+        "analysis_distance_km": 7.569,
+        "analysis_ascent_m": 542,
+        "origin_gap_m": 33.7,
+        "target_gap_m": 12.355,
+        "landmark_gaps_m": [33.7, 0.7, 1.5, 12.355],
+        "max_step_m": 11.7
+      },
+      "cumulative_distance_m": [0, 2159, 4752, 7569]
+    },
+    {
       "slug": "domir-neshlaj-summit",
       "descent_m": 0,
       "chain": [
@@ -1574,6 +1664,7 @@
         "chamlar-junction",
         "meshe-suyi"
       ],
+      "cumulative_distance_m": [0, 1203, 5609],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "6da54daf87f1231bb3196890b5e32d91a5d409ed6255d28cf4195feb4e6c307f",
@@ -1610,6 +1701,7 @@
         "telli-bolagh",
         "abi-beyglu-forest-trailhead"
       ],
+      "cumulative_distance_m": [0, 1177, 2247, 5243, 13978],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "d764b5dea8e77a933cceca4b502e4d40f424a914b032ae5928540570941ff69c",
@@ -1693,6 +1785,7 @@
         "tochal-espilat-sarlo-pass",
         "espilat-peak"
       ],
+      "cumulative_distance_m": [0, 3748, 5316, 5672],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "3c837a51bbdc4e1c56af311131d4b0cd728197e2348456ece333678e57b7650f",
@@ -1853,6 +1946,7 @@
         "vardij-peak",
         "heryas-peak"
       ],
+      "cumulative_distance_m": [0, 6343, 7840, 9276],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "20602f2d6059a34a8ab7ba6012d588ae3594ff82cf924fb28a5d7cb75e67ed22",
@@ -1886,6 +1980,7 @@
         "aseman-kuh-zendegani-spring",
         "aseman-kuh"
       ],
+      "cumulative_distance_m": [0, 3297, 6019, 8583],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "7b84c1f8e92cf931465906fd65586b4d4d972c487e03f623b82ba0ee8a5726b8",
@@ -1962,6 +2057,7 @@
         "ashtargardan-pass",
         "shahneshin-tehran"
       ],
+      "cumulative_distance_m": [0, 4817, 6553],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "97b71a776fd6da9a2deaa0ee5d9a64f540bccde3f56b4824313e7ed7cb635c10",
@@ -2286,6 +2382,7 @@
         "kasra-heram-two-pass",
         "kasra"
       ],
+      "cumulative_distance_m": [0, 5235, 5719],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "d60b6c2ca41db0b5d16d206a7ec82e4ce3685f33f85f569e5fc25429fe3216af",
@@ -2460,6 +2557,7 @@
         "mishineh-marg-siah-rud-lake",
         "mishineh-marg"
       ],
+      "cumulative_distance_m": [0, 4702, 10654],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "cde7067adc54514b644fd8862e4c710f625edb43dbd24b174c7db71e48a28176",
@@ -2493,6 +2591,7 @@
         "dobrar-east",
         "soozchal"
       ],
+      "cumulative_distance_m": [0, 4031, 5947, 7110, 9111],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "36aa7d9317889207089ae3e17586cd7f5a1b4dc56a582d58a1d8f90cf1aeb1b1",
@@ -2550,6 +2649,7 @@
         "loveh-waterfall",
         "loveh-waterfall-source"
       ],
+      "cumulative_distance_m": [0, 33, 1370],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "d3e1c5a53505b59ee6d6d56e948f793f82caf0b787d8644c7b0b0aaee6576de4",
@@ -2582,6 +2682,7 @@
         "maran-waterfall-river-crossing",
         "maran-arous-waterfall"
       ],
+      "cumulative_distance_m": [0, 616, 822, 2068],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "b3231ff0ecb18ef8f859bd642c0da60eac9b1af11d13d64b381adb5e2b566394",
@@ -2615,6 +2716,7 @@
         "chamlar-junction",
         "giladeh-trailhead"
       ],
+      "cumulative_distance_m": [0, 5103, 8853, 13353, 14556],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "6da54daf87f1231bb3196890b5e32d91a5d409ed6255d28cf4195feb4e6c307f",
@@ -2745,6 +2847,7 @@
         "palangchal-station5-junction",
         "tochal-telecabin-station-5"
       ],
+      "cumulative_distance_m": [0, 2706, 7017, 8930, 9339],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "a754eea23369b4e6bb1d634a71ac959a300564d14407c34010d557ffab0bdbe2",
@@ -2782,6 +2885,7 @@
         "palangchal-shahneshin-junction",
         "palangchal"
       ],
+      "cumulative_distance_m": [0, 3885, 7495, 10832, 13312, 16801, 18690],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "45101b5505280e09f1e6421a793ea1b1046840c7f6f554156b2b5ebdc259f1ee",
@@ -2843,6 +2947,7 @@
         "paraw-shelter",
         "paraw"
       ],
+      "cumulative_distance_m": [0, 1791, 3714, 6643, 7435],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "aa0276dd348ace7c71b35a05a504bcecf5dc28ebd26b7f8714c5c2f1a755d86c",
@@ -2879,6 +2984,7 @@
         "zargah-pass",
         "qaleh-dokhtar-ahar"
       ],
+      "cumulative_distance_m": [0, 5767, 8533, 10510],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "884d1f0205b5da8140a87958ea05c0ccf43b2303cda169a322939a913de8113f",
@@ -2940,6 +3046,7 @@
         "qaleh-roudkhan-mte-khani",
         "qaleh-roudkhan"
       ],
+      "cumulative_distance_m": [0, 7333, 10571, 16155],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "a5f5e8ed7639fd834d039fd6f7f82afe93b69b021716a57e79c1be9d829f40dc",
@@ -3166,6 +3273,7 @@
         "band-yakhchal",
         "shervin-shelter"
       ],
+      "cumulative_distance_m": [0, 3427, 5205],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "8e9f419f163feb14d2e08c81fd968a8a3a277791070d736423b327b4fcbfbd64",
@@ -3382,6 +3490,7 @@
         "shirabad-sixth-waterfall",
         "shirabad-seven-waterfalls"
       ],
+      "cumulative_distance_m": [0, 885, 1338, 1881, 2274, 2977, 3034, 3091],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "7ba3b1d972dfe616d37338c3df0d1a9e6205053967fdce6b26f2022725e824f5",
@@ -3586,6 +3695,7 @@
         "googeli",
         "soozna"
       ],
+      "cumulative_distance_m": [0, 5982, 7567, 9747, 9895],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "17c10c1bb2d94f6a1fb92ed0ee46e7d16e22aeb5def19bed7a991353298b05a0",
@@ -3645,6 +3755,7 @@
         "laton-spinas-waterfall-junction",
         "laton-waterfall"
       ],
+      "cumulative_distance_m": [0, 1535, 6389, 7718, 15265, 15536, 17091],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "75c9852d275b2df0b01d7e348409f6a7c6e74f195749e868262df1b043d9c081",
@@ -3955,6 +4066,7 @@
         "nur",
         "lasem-peak"
       ],
+      "cumulative_distance_m": [0, 3364, 5657, 8036, 9129],
       "evidence": {
         "method": "gpx-50m-5sample-v1",
         "source_sha256": "2e199a23c9f3f92fd4efc517ddac5899d578850ef633526efba24903a9d9ddc4",
@@ -4011,11 +4123,9 @@
     "band-eish-hesarak",
     "binalud-frizi",
     "bisotun-mishri-summit",
-    "blades-rakhsh-to-shahvars",
     "darabad-farakhsineh",
     "daryasar-esel-mahalleh",
     "dehnar-to-qarahdagh-east",
-    "derjan-sehezar-hot-spring",
     "domir-mozvash-summit",
     "dorfak-estakhrgah",
     "dorfak-shah-shahidan",
@@ -4155,10 +4265,6 @@
       "reason": "origin gap 3312m >100m"
     },
     {
-      "slug": "blades-rakhsh-to-shahvars",
-      "reason": "profile distance 5.75km differs from registered 9.50km"
-    },
-    {
       "slug": "darabad-farakhsineh",
       "reason": "origin gap 104m >100m"
     },
@@ -4177,10 +4283,6 @@
     {
       "slug": "dehnar-to-qarahdagh-east",
       "reason": "landmark gap 3126m >500m"
-    },
-    {
-      "slug": "derjan-sehezar-hot-spring",
-      "reason": "profile distance 7.57km differs from registered 15.60km"
     },
     {
       "slug": "domir-mozvash-summit",

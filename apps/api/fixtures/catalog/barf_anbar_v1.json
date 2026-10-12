@@ -180,7 +180,7 @@
         "barf-anbar-northern-ridge",
         "barf-anbar"
       ],
-      "distance_km": 5.2,
+      "distance_km": 5.1,
       "ascent_m": 825,
       "one_way_minutes": 240,
       "default_start_minutes": 300,
@@ -227,7 +227,7 @@
         "barf-anbar-northern-ridge",
         "barf-anbar"
       ],
-      "distance_km": 3.8,
+      "distance_km": 3.7,
       "ascent_m": 645,
       "one_way_minutes": 210,
       "default_start_minutes": 300,

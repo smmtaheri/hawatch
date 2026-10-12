@@ -1222,7 +1222,7 @@
         "nur",
         "lasem-peak"
       ],
-      "distance_km": 9.2,
+      "distance_km": 9.1,
       "ascent_m": 1062,
       "one_way_minutes": 360,
       "default_start_minutes": 300,
@@ -1407,8 +1407,8 @@
         "qarahdagh-west",
         "shahvars-east"
       ],
-      "distance_km": 9.5,
-      "ascent_m": 1452,
+      "distance_km": 5.8,
+      "ascent_m": 1209,
       "one_way_minutes": 450,
       "default_start_minutes": 360,
       "timing_status": "estimated",
@@ -1418,8 +1418,7 @@
         "confidence": "medium",
         "uncertainty_minutes": 60,
         "source_urls": [
-          "https://www.openstreetmap.org/",
-          "https://www.wikiloc.com/"
+          "https://www.wikiloc.com/hiking-trails/bkhshy-z-kht-lrs-dwbrr-tygh-hy-dwbrr-111138323"
         ],
         "evidence_tracks": [
           "tracks/dobarar/dobarar-rakhsh-kamarposht-shahvars.gpx"
@@ -1433,7 +1432,7 @@
           "shahvars-east": 450
         },
         "notes": [
-          "این route به‌دلیل بخش تیغه‌ای با زمان محافظه‌کارانه نمایش داده می‌شود."
+          "مسافت و افزایش ارتفاع از برش یک‌طرفه تا نخستین رسیدن به شاه‌ورس شرقی استخراج شده‌اند؛ ادامهٔ GPX بخش برگشت است. زمان ثبت‌شده در کاتالوگ به‌دلیل نبود شاهد معتبر برای مدت یک‌طرفه بازبرآورد نشده است."
         ]
       },
       "public_point_notes": {}

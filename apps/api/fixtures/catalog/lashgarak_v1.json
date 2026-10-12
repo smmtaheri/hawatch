@@ -126,7 +126,7 @@
       "featured": true,
       "sort_order": 1,
       "points": ["lashgarak-parachan", "lashgarak-damcheh", "lashgarak-bozorg", "lashgarak-koochak"],
-      "distance_km": 15.3,
+      "distance_km": 16.0,
       "ascent_m": 2100,
       "one_way_minutes": 540,
       "default_start_minutes": 405,
