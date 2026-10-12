@@ -49,28 +49,8 @@ def _point_distance_km(first: WeatherPoint, second: WeatherPoint) -> float:
 
 
 def similar_destinations_title(point: WeatherPoint) -> str:
-    """Return concise, user-facing copy for the point's discovery group."""
+    """Use one reusable heading for destination discovery on every point page."""
 
-    category = str(point.category_key or "").strip().casefold()
-    place_type = str(point.place_type or "").strip().casefold()
-    if category == "ski":
-        return "مقصدهای مشابه"
-    if place_type == "neighborhood":
-        return "محله‌های مشابه"
-    if place_type == "city":
-        return "شهرهای نزدیک و مشابه"
-    if place_type == "village":
-        return "روستاهای نزدیک"
-    if category in {"mountain", "ridge", "volcano"} or place_type in {"summit", "ridge"}:
-        return "قله‌ها و ارتفاعات مشابه"
-    if category == "waterfall" or place_type == "waterfall":
-        return "آبشارهای مشابه"
-    if category == "lake" or place_type == "lake":
-        return "دریاچه‌های مشابه"
-    if category == "desert" or place_type == "desert":
-        return "کویرهای مشابه"
-    if category == "forest" or place_type == "forest":
-        return "جنگل‌های مشابه"
     return "مقصدهای مشابه"
 
 
@@ -81,10 +61,10 @@ def related_public_similar_destinations(
 ) -> list[WeatherPoint]:
     """Return up to four stable, crawlable alternatives for a point-only page.
 
-    Curated relationships are returned first.  The fallback only considers
-    indexable public points with the same semantic category/place type, or an
-    exact catalog grouping for access settlements, and then ranks by region,
-    distance and the existing destination order.  Forecast timestamps never
+    Curated relationships are returned first. The fallback considers
+    indexable public points with the same semantic category or place type, as
+    well as primary destinations in the same catalog cluster. This fills gaps
+    for unique landmarks without inventing routes. Forecast timestamps never
     participate, so links remain stable between weather runs.
     """
 
@@ -132,21 +112,23 @@ def related_public_similar_destinations(
     region = str(point.region or "").strip().casefold()
     catalog_version = str(point.catalog_version or "").strip()
 
-    def rank(candidate: WeatherPoint) -> tuple[int, int, int, float, int, str]:
+    def rank(candidate: WeatherPoint) -> tuple[int, int, float, int, str]:
         candidate_category = str(candidate.category_key or "").strip().casefold()
         candidate_type = str(candidate.place_type or "").strip().casefold()
         same_catalog = bool(catalog_version and candidate.catalog_version == catalog_version)
         same_region = bool(region and candidate.region and candidate.region.strip().casefold() == region)
         same_category = bool(category and candidate_category == category)
         same_type = bool(place_type and candidate_type == place_type)
-        # Exact catalog grouping is the strongest inferred relationship for an
-        # access settlement; otherwise semantic category is the primary key.
-        group_rank = 0 if same_catalog and place_type in ACCESS_PLACE_TYPES and candidate.kind == WeatherPoint.Kind.PRIMARY else 1
-        semantic_rank = 0 if same_category else 1 if same_type else 2
+        # Access settlements first point to their destination cluster. For
+        # destinations, exact category wins; a same-catalog cluster is the
+        # next-best local relation, followed by the broader place type.
+        if place_type in ACCESS_PLACE_TYPES:
+            relation_rank = 0 if same_catalog else 1 if same_category else 2 if same_type else 3
+        else:
+            relation_rank = 0 if same_category else 1 if same_catalog else 2 if same_type else 3
         region_rank = 0 if same_region else 1
         return (
-            group_rank,
-            semantic_rank,
+            relation_rank,
             region_rank,
             _point_distance_km(point, candidate),
             0 if candidate.is_popular else 1,
@@ -159,11 +141,10 @@ def related_public_similar_destinations(
             for candidate in candidates
             if candidate.pk not in selected_ids
             and (
-                (catalog_version and candidate.catalog_version == catalog_version and place_type in ACCESS_PLACE_TYPES and candidate.kind == WeatherPoint.Kind.PRIMARY)
+                (catalog_version and candidate.catalog_version == catalog_version and candidate.kind == WeatherPoint.Kind.PRIMARY)
                 or (category and candidate.category_key and str(candidate.category_key).strip().casefold() == category)
                 or (
-                    not category
-                    and place_type
+                    place_type
                     and candidate.place_type
                     and str(candidate.place_type).strip().casefold() == place_type
                 )
