@@ -137,67 +137,36 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 
 ## افزودن نقطه و اعتبارسنجی weather
 
-راهنمای کامل و مرجع workflow افزودن نقطه و مسیر در
-[`docs/catalog-onboarding.md`](docs/catalog-onboarding.md) است. برای نقطه جدید
-ابتدا همان سند را بخوانید؛ خلاصهٔ سریع زیر برای دسترسی سریع به commandهای اصلی
+راهنمای workflow در [`docs/catalog-onboarding.md`](docs/catalog-onboarding.md)
+است. برای افزودن معمولی و افزایشی نقطه، بک‌آپ دیتابیس، migration، restart یا
+sync کل catalogها لازم نیست. نقطهٔ بدون مسیر را با `routes: {}` ثبت کنید؛ GPX و
+ساخت فولدر `tracks/` فقط وقتی لازم‌اند که واقعاً Route پیاده تعریف می‌شود.
+
+یک catalog نسخه‌دار در `apps/api/fixtures/catalog/` بسازید/به‌روزرسانی کنید،
+هویت و تکراری‌نبودن نقطه را بررسی کنید، سپس wrapper را یک‌بار در حالت apply اجرا
+کنید. این wrapper اعتبارسنجی Open-Meteo/ارتفاع، check شکل catalog، import اتمیک،
+ingest هدفمند و preflight همان نقطه را انجام می‌دهد:
+
+```bash
+python3 scripts/publish_catalog.py \
+  --catalog apps/api/fixtures/catalog/my_point_v1.json \
+  --host hawatch \
+  --point my-point \
+  --apply
+```
+
+`--apply` فایل را به سرور کپی نمی‌کند؛ JSON را از stdin به API می‌فرستد. آن را
+بدون `--apply` و سپس دوباره با `--apply` اجرا نکنید، چون مرحلهٔ provider در هر
+اجرا تکرار می‌شود. پس از موفقیت، fixture را commit/push کنید تا سابقهٔ نسخه‌دار
+در Git بماند. import عادی غیرتخریبی است؛ `--prune` استفاده نکنید.
+
+`sync_catalog --dry-run/--apply` برای همگام‌سازی عمدیِ مجموعهٔ کامل fixtureها یا
+پاک‌سازی/تغییرات گسترده است، نه افزودن یک نقطه. بک‌آپ برای افزودن افزایشی لازم
+نیست؛ بک‌آپ فقط برای عملیات تخریبی/گسترده، migration پرریسک یا بنا به درخواست
+صریح اپراتور گرفته می‌شود. جزئیات قرارداد و استثناها در
+[`docs/catalog-onboarding.md`](docs/catalog-onboarding.md) و
+[`docs/catalog-and-weather-validation.md`](docs/catalog-and-weather-validation.md)
 است.
-
-برای افزودن نقطه بعدی، یک catalog JSON هم‌شکل `apps/api/fixtures/catalog/tochal_v1.json` در `apps/api/fixtures/catalog/` قرار دهید و ابتدا validator read-only را اجرا کنید. نقاطی که route پیادهٔ معتبر ندارند هم مجازند؛ در این حالت از [`docs/templates/point-only-catalog-template.json`](docs/templates/point-only-catalog-template.json) استفاده کنید و `routes` را `{}` نگه دارید:
-
-```bash
-python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/my_point_v1.json
-```
-
-سپس همان فایل را import کنید (غیرتخریبی؛ prune فقط با `--prune`):
-
-```bash
-docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py seed_catalog --file catalog/my_point_v1.json
-docker compose -f infra/compose/compose.yaml exec api \
-  python manage.py ingest_open_meteo
-```
-
-برای جلوگیری از اجرای دستی و اشتباه مراحل local/server، می‌توانید catalog را
-مستقیماً از local با wrapper بررسی و publish کنید:
-
-```bash
-python3 scripts/publish_catalog.py \
-  --catalog /tmp/my_point_v1.json \
-  --host root@SERVER_IP                 # check-only؛ بدون write
-
-python3 scripts/publish_catalog.py \
-  --catalog /tmp/my_point_v1.json \
-  --host root@SERVER_IP \
-  --apply                                # import + ingest + preflight
-```
-
-این wrapper فایل JSON یا GPX را به سرور کپی نمی‌کند؛ catalog را فقط از stdin
-به کانتینر API می‌فرستد. `--apply` برای routeهای بدون timing متوقف می‌شود تا
-اطلاعات arrival به‌صورت ناخواسته ناقص منتشر نشود.
-
-برای اعمال نسخهٔ جدید همهٔ کاتالوگ‌ها روی دیتابیس موجود، bootstrap ضمنی کافی
-نیست. ابتدا backup بگیرید، سپس برنامهٔ تغییر را بدون write ببینید و بعد از
-بازبینی صریحاً اعمال کنید:
-
-```bash
-docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py sync_catalog --dry-run
-
-docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py sync_catalog --apply
-```
-
-این command فقط ردیف‌های `fixture_managed=true` را برای stale cleanup هدف می‌گیرد؛
-رکوردهای دستی حفظ می‌شوند و conflict مبهم باعث توقف atomic sync می‌شود.
-
-ترتیب release روی سرور: ابتدا backup دیتابیس، سپس `migrate`، اجرای
-`sync_catalog --dry-run` و بازبینی گزارش، اجرای `sync_catalog --apply`، بعد
-`validate_catalog --all --database --strict` و در پایان smoke test با curl و
-مرورگر برای Home، Point، Route، search، canonical، query/noindex، robots، sitemap
-و 404. این مراحل باید توسط اپراتور اجرا شوند و در این تغییر روی production اجرا
-نشده‌اند.
-
-جزئیات قرارداد، تفاوت elevation catalog و DEM، و smoke test در `docs/catalog-and-weather-validation.md` است.
 
 ## افزودن نقطه/مسیر بدون deploy
 

@@ -23,9 +23,10 @@
 دو canonical و conflict می‌شود. هنگام افزودن نقطه به catalog موجود، فایل فعال را
 به نسخهٔ بعدی ارتقا دهید و فایل version قبلی را از پوشهٔ package حذف کنید؛ نگه‌داشتن
 دو فایل versioned برای یک owner/slug عمداً توسط loader رد می‌شود. تغییرات JSON
-به migration نیاز ندارند، اما برای release دیتابیس موجود باید `sync_catalog` اجرا
-شود؛ bootstrap startup فقط وقتی کل catalog زنده خالی باشد، همهٔ fixtureها را
-برمی‌گرداند.
+به migration نیاز ندارند. برای افزودن افزایشی از `publish_catalog.py --apply`
+استفاده کنید؛ `sync_catalog` فقط برای همگام‌سازی عمدی کل fixtureها یا cleanup
+گسترده است و backup برای افزودن عادی لازم نیست. bootstrap startup فقط وقتی کل
+catalog زنده خالی باشد، همهٔ fixtureها را برمی‌گرداند.
 
 ورودی‌های لازم برای هر نقطه جدید: یک canonical point WeatherPoint با مختصات WGS84، نام زمینه‌دار و قابل جست‌وجوی مستقل، و منبع ارتفاع. ارتفاع زمین نسبت به سطح دریای جهانی یک عدد صحیح علامت‌دار است و در سواحل خزر می‌تواند منفی باشد؛ مقدار معتبر DEM را به صفر تبدیل نکنید. نام عمومی یا پرت مثل «تپهٔ گوگردی» و «استراحتگاه» بدون ذکر مکان/مسیر قابل انتشار نیست؛ اگر نام یکتا و واقعی نداریم، نقطه را اضافه نکنید. نقطه می‌تواند بدون route منتشر شود؛ در این حالت `routes: {}` کافی است و GPX لازم نیست. اگر route تعریف می‌شود، slug، عنوان، `sort_order` مثبت (عدد کمتر = نمایش زودتر)، زنجیرهٔ مرتب نقاط، مسافت/صعود در صورت اطمینان، و timing تجمعی در صورت فعال‌کردن پیش‌بینی زمان رسیدن لازم است. `featured` فقط نشانهٔ پیشنهاد UI است و ترتیب routeها را تعیین نمی‌کند. GPX برای آب‌وهوا لازم نیست؛ برای فاصله، پروفایل صعود، نقاط میانی و زمان‌بندی دقیق route، evidence توصیه‌شده است.
 
@@ -116,9 +117,9 @@ Device GPX `<ele>` is reference-only; PBF/DEM remain elevation truth. Route-leve
 The database is the runtime source of truth. JSON fixtures are bootstrap/import artifacts only.
 
 - Normal import (`seed_catalog` / `seed_tochal_catalog`) is **non-destructive**. Operator-managed rows (`fixture_managed=false`) survive and are never silently overwritten on slug collision (skip + conflict report; optional `--force-adopt`).
-- برای release روی دیتابیس موجود از `sync_catalog --dry-run` و سپس
-  `sync_catalog --apply` استفاده کنید؛ این command فقط fixture-managedهای stale را
-  پاک/غیرفعال می‌کند و conflict مبهم را متوقف می‌کند.
+- برای افزودن افزایشی یک catalog از `publish_catalog.py --apply` استفاده کنید؛
+  `sync_catalog --dry-run/--apply` فقط برای همگام‌سازی عمدی همهٔ fixtureها یا
+  cleanup گسترده است و می‌تواند fixture-managedهای stale را پاک/غیرفعال کند.
 - Without `--prune`, manual RoutePoints on fixture routes are preserved even when absent from JSON.
 - Pruning requires explicit `--prune` and only removes `fixture_managed` rows absent from the JSON. Referenced fixture rows that would cause `ProtectedError` are skipped and reported. Never runs at API startup.
 - Production startup (`DEMO_DATA_ENABLED=false`) runs `bootstrap_live_catalog_if_empty --all` when `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (default): atomically restores every packaged catalog only if no live WeatherPoints exist. A normal restart never re-syncs or prunes an existing catalog.
@@ -135,7 +136,14 @@ The database is the runtime source of truth. JSON fixtures are bootstrap/import 
 
 ### فلوی استاندارد افزودن نقطه جدید
 
-این فلوی عمومی برای دماوند و نقاطی بعدی است:
+جزئیات اجرایی و مسیر پیش‌فرض سبک در
+[`catalog-onboarding.md`](catalog-onboarding.md#روال-سریع-پیش‌فرض-برای-افزودن-نقطه)
+است. برای افزودن معمولی، wrapper را یک‌بار مستقیم با `--apply` اجرا کنید؛ ابتدا
+check-only و سپس apply نکنید، چون provider validation تکرار می‌شود. این wrapper
+همهٔ gateهای لازم، import، ingest هدفمند و preflight نقطه را انجام می‌دهد.
+دستورهای دستی زیر فقط برای عیب‌یابی یا زمانی هستند که wrapper در دسترس نیست.
+
+این فلوی دستی برای دماوند و نقاطی بعدی است:
 
 1. در لوکال یک catalog بسازید؛ اگر route دارید manifest هم بسازید. مختصات و ارتفاع catalog را از منابع قابل‌اعتماد وارد کنید. GPX فقط برای تحلیل آفلاین مسیر و ساخت distance/ascent/timing استفاده شود و هرگز در API، seed یا ingest parse نشود. برای نقطه بدون route، manifest و GPX لازم نیست و `routes` را `{}` بگذارید.
 2. قبل از هر write، اعتبارسنجی provider را اجرا کنید:

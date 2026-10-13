@@ -86,13 +86,20 @@ Hub داده‌محور `/destinations` همین رکوردها را خودکا�
 وارد Hub و sitemap نمی‌شوند. قبل از import duplicate مختصات/نام را در کل
 catalog و دیتابیس بررسی کنید و نوع واقعی عارضه را ثبت کنید.
 
-بعد از تغییر، validator provider و catalog را اجرا کنید، سپس برای انتشار روی
-دیتابیس موجود ابتدا `sync_catalog --dry-run` و بعد `sync_catalog --apply` را
-استفاده کنید. این sync همهٔ catalogهای package‌شده را با هم و به‌صورت atomic
-همگام می‌کند؛ رکوردهای دستی را overwrite نمی‌کند. انتخاب محبوب Home با
-`set_popular_points` نیز در syncهای بعدی حفظ می‌شود. `publish_catalog.py` برای
-ارسال یک catalog موقت از stdin مناسب است، اما جایگزین ثبت fixture versioned در
-repository نیست.
+برای افزودن عادی و افزایشی، catalog نسخه‌دار را با
+`validate_catalog --file <catalog> --strict` بررسی و یک‌بار با
+`scripts/publish_catalog.py --apply` منتشر کنید. wrapper خودش gate اجباری
+Open-Meteo/DEM، check شکل remote، import اتمیک، ingest هدفمند و preflight نقطه را
+اجرا می‌کند؛ اجرای check-only جداگانه و بعد apply، provider را بی‌دلیل دوباره
+صدا می‌زند. `publish_catalog.py` فایل را از stdin می‌فرستد و fixture را در
+repository جایگزین نمی‌کند؛ fixture نسخه‌دار باید در Git باقی بماند.
+
+برای این import افزایشی backup، migration، restart یا `sync_catalog` لازم نیست.
+بدون `--prune`، seed اتمیک است و ردیف‌های operator-managed را حذف یا overwrite
+نمی‌کند. `sync_catalog --dry-run/--apply` را فقط برای همگام‌سازی عمدی مجموعهٔ
+کامل fixtureها یا cleanup گسترده اجرا کنید؛ backup هم برای عملیات تخریبی/گسترده
+یا migration پرریسک است، نه برای هر نقطهٔ جدید. انتخاب محبوب Home با syncهای
+بعدی حفظ می‌شود.
 
 ### دروازهٔ سراسری duplicate قبل از هر افزودن
 
@@ -103,9 +110,14 @@ WeatherPointهای فعال در کل `apps/api/fixtures/catalog/` و دیتاب
 تعریف جدید نسازید. فاصلهٔ کمتر از ۲۵ متر duplicate قطعی است؛ فاصلهٔ ۲۵ تا ۱۰۰
 متر فقط برای دو عارضهٔ واقعی و نام‌دار، با ثبت slugها و دلیل در
 `reviewed_nearby_point_pairs`، پذیرفته می‌شود. نام متفاوت یا قرارگرفتن نقطه در
-Route دیگر به‌تنهایی مجوز ساخت duplicate نیست. اجرای
-`validate_catalog --all --database --strict` باید بعد از این مقایسه انجام شود؛
-در صورت ابهام، نقطه تا بررسی منابع و مختصات دقیق در وضعیت pending می‌ماند.
+Route دیگر به‌تنهایی مجوز ساخت duplicate نیست. برای هر افزودن، نام/alias را در
+fixtureها جست‌وجو و یک lookup مکانی فقط‌خواندنی روی دیتابیس برای نزدیک‌ترین
+WeatherPointهای فعال انجام دهید؛ query نمونه در
+[`catalog-onboarding.md`](catalog-onboarding.md#روال-سریع-پیش‌فرض-برای-افزودن-نقطه)
+است. `validate_catalog --all --database --strict` مقایسهٔ زوج‌به‌زوج کل دیتابیس
+را انجام می‌دهد و برای افزودن معمولی لازم نیست؛ آن را برای audit کامل یا تغییرات
+گسترده نگه دارید. در صورت ابهام، فقط همان نقطه را تا بررسی منابع و مختصات دقیق
+متوقف کنید.
 
 HTML اولیهٔ SEO از دیتابیس runtime ساخته می‌شود. مقصدهای مستقل برای Hub
 `/destinations` باید در Catalog با `kind: "primary"`، `importance: "primary"`
@@ -116,7 +128,8 @@ hardcode ندارد. بنابراین Point یا Route جدید
 اختصاصی می‌گیرد. تنها تغییر کد renderer به deploy معمول imageهای API و web نیاز
 دارد؛ جزئیات در [`seo.md`](seo.md) است.
 
-پس از افزودن یا تغییر Catalog، گراف لینک‌های قابل‌خزش را هم بررسی کنید:
+برای تغییرات گستردهٔ Catalog یا audit دوره‌ای، گراف کامل لینک‌های قابل‌خزش را
+بررسی کنید:
 
 ```bash
 python manage.py validate_catalog --all --database --check-links --strict
@@ -240,6 +253,11 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog /tmp/<point-slug>_v1.json
 ```
 
+برای point-only مرحلهٔ تحلیل GPX را حذف کنید. اگر از `publish_catalog.py --apply`
+استفاده می‌کنید، Open-Meteo/DEM gate در همان اجرا انجام می‌شود؛ validator مستقل
+را جداگانه فقط برای عیب‌یابی یا پیش‌بررسی اجرا کنید تا درخواست provider تکرار
+نشود.
+
 دستور دوم برای تک‌تک pointها Open-Meteo را read-only صدا می‌زند و وجود elevation،
 grid معتبر، hourly data و فاصلهٔ grid تا مختصات را بررسی می‌کند. اختلاف catalog و
 DEM بیشتر از ۱۰۰ متر، grid دورتر از ۵ کیلومتر، پاسخ ناقص یا خطای هر point یعنی
@@ -257,22 +275,25 @@ manifest قرار ندهید.
 ```bash
 cd apps/api
 uv run python manage.py validate_catalog --file catalog/<file>.json
-uv run python manage.py validate_catalog --all --strict
 ```
 
-این validator duplicate slug، underscore، page name/alias collision، metadata
-ناقص، coordinate/elevation نامعتبر، route کمتر از سه نقطه، reference شکسته و
-sort order تکراری را گزارش می‌کند. دو نقطهٔ فعال با فاصلهٔ کمتر از ۲۵ متر خطای
-قطعی‌اند و باید merge شوند. فاصلهٔ ۲۵ تا ۱۰۰ متر هشدار curator می‌دهد، مگر این‌که
-در همان catalog با `reviewed_nearby_point_pairs`، دو slug و علتِ روشن ثبت شده باشد؛
-این استثنا فقط برای دو عارضهٔ واقعی و نام‌دار است و فاصلهٔ کمتر از ۲۵ متر را هرگز
-مجاز نمی‌کند. با `--database`، دیتابیس فعلی نیز read-only بررسی می‌شود:
+فرمان file-level، slug/metadata، page name و aliasهای همان catalog، route
+references و sort order را بررسی می‌کند. فاصلهٔ candidate با نقاط زنده را با
+lookup مکانی هدفمندِ بخش duplicate بالا بسنجید؛ لازم نیست برای هر نقطه، تمام
+جفت‌های دیتابیس را دوباره محاسبه کنید. بررسی کامل fixtureها و دیتابیس هزینهٔ
+بیشتری دارد و برای هر نقطه لازم نیست؛ آن را فقط پس از تغییرات گسترده یا در audit
+دوره‌ای اجرا کنید:
 
 ```bash
 uv run python manage.py validate_catalog --all --database --strict
 ```
 
 ## ۴. واردکردن روی local
+
+برای تغییر fixture-only، `migrate` لازم نیست. به‌جای اجرای دستی چند فرمان و
+ingest تمام نقاط، روال عادی همان `publish_catalog.py --apply` در بخش بعد است؛ این
+wrapper فقط WeatherPointهای همان catalog را ingest می‌کند. فرمان‌های زیر برای
+محیط local/تشخیص موردی‌اند:
 
 ```bash
 cd apps/api
@@ -318,7 +339,8 @@ uv run python manage.py set_popular_points --slugs a,b,c,d
 
 ## ۶. کنترل‌های اجباری بعد از تغییر
 
-قبل از commit، این موارد باید pass شوند:
+اگر کد Python تغییر کرده باشد، قبل از commit این بررسی‌های repository را اجرا
+کنید:
 
 ```bash
 cd /path/to/hawatch
@@ -328,15 +350,20 @@ cd apps/api && uv run python manage.py makemigrations --check
 uv run pytest
 ```
 
-همچنین با `git grep` مطمئن شوید slug قدیمی در catalog، API، frontend و docs
-فعلی نمانده است. migrationهای تاریخی تنها سابقهٔ بازپخش schema هستند و نباید
+برای تغییر fixture-only، حداقل `validate_catalog --file ... --strict` و gate
+Open-Meteo را اجرا کنید (gate دوم در `publish_catalog.py --apply` انجام می‌شود)؛
+full test suite، compileall و makemigrations check لازم نیستند. برای تغییر
+نام/slug موجود با `git grep` مطمئن شوید slug قدیمی در catalog، API، frontend و
+docs فعلی نمانده است. migrationهای تاریخی تنها سابقهٔ بازپخش schema هستند و نباید
 برای compatibility URL جدید استفاده شوند. SEO عمومی P0 همین حالا روی `page_name`
 و slug canonical اعمال می‌شود: نقاط فعالِ indexable و routeهای فعال وارد sitemap
 می‌شوند؛ waypointهای فعالِ فنی نیز قابل بازشدن‌اند اما `noindex,follow` هستند و
 از sitemap بیرون می‌مانند. queryهای برنامه‌ریزی نیز `noindex,follow` هستند.
 
-برای همگام‌سازی release روی دیتابیس موجود، bootstrap ضمنی کافی نیست. ابتدا backup
-بگیرید و command را در حالت امن اجرا کنید:
+فقط وقتی عمداً کل fixtureهای package‌شده را با دیتابیس موجود همگام می‌کنید، از
+`sync_catalog` استفاده کنید. این عملیات ممکن است stale fixture-managed rows را
+پاک/غیرفعال کند؛ پیش از cleanup یا sync گسترده، در صورت نیاز عملیاتی backup
+بگیرید. این مرحله بخشی از افزودن افزایشی هر نقطه نیست:
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \

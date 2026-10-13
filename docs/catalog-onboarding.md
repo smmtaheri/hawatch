@@ -24,6 +24,64 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 - `ingest_open_meteo`: ذخیرهٔ forecast نقاط فعال؛
 - `catalog_preflight`: بررسی read-only دادهٔ واقعی داخل دیتابیس.
 
+## روال سریع پیش‌فرض برای افزودن نقطه
+
+برای یک افزودن معمولی و افزایشی، این روال کافی است؛ کارهای release یا audit
+کامل را به این مسیر اضافه نکنید:
+
+1. هویت، نام/slug، منبع مختصات و ارتفاع را بررسی کنید. نام و شکل‌های رایج آن را
+   در fixtureها و دیتابیس جست‌وجو کنید و یک lookup مکانی فقط‌خواندنی برای
+   نزدیک‌ترین WeatherPointهای فعال انجام دهید. لازم نیست برای هر نقطه، validator
+   سراسریِ زوج‌به‌زوج کل دیتابیس را اجرا کنید.
+2. اگر مقصد مسیر پیادهٔ مستند ندارد، یک WeatherPoint مستقل با `routes: {}` بسازید.
+   برای point-only، GPX، دانلود ترک، فولدر `tracks/`، تحلیل Route یا بررسی timing
+   لازم نیست. اگر چند نقطهٔ یک خوشه را با هم اضافه می‌کنید، آن‌ها را در یک catalog
+   بیاورید تا validation و import یک‌بار برای کل batch انجام شود.
+3. catalog را با `validate_catalog --file <catalog> --strict` بررسی کنید. هنگام
+   اجرای `scripts/publish_catalog.py --apply`، gate اجباری Open-Meteo/DEM، بررسی
+   شکل ورودی روی سرور، import اتمیک، ingest هدفمند و `catalog_preflight` همان نقطه
+   در همان اجرا انجام می‌شوند.
+4. wrapper را مستقیم یک‌بار با `--apply` اجرا کنید؛ ابتدا اجرای check-only و سپس
+   اجرای مجدد با `--apply` نکنید، چون بررسی شبکه‌ای Open-Meteo دوباره اجرا می‌شود.
+   برای تشخیص خطا می‌توان validator مستقل را جداگانه اجرا کرد، اما آن را بی‌دلیل
+   پیش از wrapper تکرار نکنید.
+
+```bash
+python3 scripts/publish_catalog.py \
+  --catalog apps/api/fixtures/catalog/<catalog>_v1.json \
+  --host hawatch \
+  --point <primary-point-slug> \
+  --apply
+```
+
+این مسیر **بک‌آپ دیتابیس نمی‌گیرد، migration/restart نمی‌کند و کل catalogها را
+sync نمی‌کند**. Import افزایشی اتمیک و بدون `--prune` است. بک‌آپ را فقط برای
+عملیات تخریبی/گسترده، migration یا تغییر دادهٔ پرریسک، یا با درخواست صریح
+اپراتور بگیرید. `sync_catalog --dry-run/--apply` و validatorهای `--all` برای
+sync عمدی کل fixtureها، اصلاح گسترده یا audit دوره‌ای‌اند؛ اجرای آن‌ها برای هر
+نقطهٔ جدید لازم نیست.
+
+بررسی نام و مختصات در کل داده همچنان لازم است، اما باید هدفمند باشد: fixtureها
+را برای slug/name/alias جست‌وجو کنید و در دیتابیس فقط نزدیک‌ترین نقاط به مختصات
+candidate را بخوانید. نمونهٔ PostGIS زیر فاصلهٔ دقیق را برحسب متر می‌دهد؛ نام
+کاربر و دیتابیس از env همان container خوانده می‌شود:
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml exec -T postgres sh -lc \
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "
+    SELECT slug, name,
+           round(ST_DistanceSphere(location, ST_SetSRID(ST_MakePoint(<longitude>, <latitude>), 4326)))::int AS distance_m
+    FROM forecasts_weatherpoint
+    WHERE is_active
+    ORDER BY ST_DistanceSphere(location, ST_SetSRID(ST_MakePoint(<longitude>, <latitude>), 4326))
+    LIMIT 10;"'
+```
+
+فاصلهٔ کمتر از ۲۵ متر را duplicate فرض کنید؛ فاصلهٔ ۲۵ تا ۱۰۰ متر نیازمند
+بازبینیِ استقلال دو عارضه و ثبت دلیل است. اگر نقطهٔ نزدیک همان مکان canonical
+است، رکورد موجود را reuse کنید. جزئیات قرارداد نام، مسیر و دادهٔ جغرافیایی در
+بخش‌های بعد و سند [`catalog-contribution.md`](catalog-contribution.md) آمده است.
+
 ## داده‌های لازم
 
 ### نقطه
@@ -486,7 +544,7 @@ python3 scripts/analyze_route_tracks.py \
 catalog را تغییر نمی‌دهد. timing نهایی تصمیم editorial است و باید با گزارش مسیر
 و منابع وب/میدانی ثبت شود، نه اینکه یک timestamp خام بدون بررسی وارد ETA شود.
 
-## فلو پیشنهادی کامل
+## جزئیات اجرای روال؛ فقط بخش‌های لازم را اجرا کنید
 
 ### ۱. ساخت و ویرایش catalog روی local
 
@@ -556,29 +614,20 @@ validator برای هر خطای بالا exit code غیرصفر می‌دهد. 
 فقط می‌سنجد نقطه به grid درست وصل است و forecast قابل دریافت است. سنجش دقت
 تجربی نیازمند observation واقعی/ایستگاه مرجع و workflow جداگانه است.
 
-### ۳. یک فرمان برای check و publish
+### ۳. یک اجرای wrapper برای check و publish
 
-حالت بدون `--apply` فقط بررسی می‌کند:
-
-```bash
-cd /path/to/hawatch
-python3 scripts/publish_catalog.py \
-  --catalog /tmp/damavand_v1.json \
-  --host root@SERVER_IP
-```
-
-این wrapper به‌ترتیب این کارها را انجام می‌دهد:
-
-1. local Open-Meteo/DEM validation؛
-2. ارسال JSON از stdin به سرور و `seed_catalog --check-only`؛
-3. توقف بدون هیچ database write.
-
-پس از موفقیت check، publish واقعی:
+برای افزودن معمولی، `publish_catalog.py --apply` را یک‌بار اجرا کنید؛ خود wrapper
+به‌ترتیب gate محلی Open-Meteo/DEM، check شکل JSON روی سرور، import اتمیک، ingest
+هدفمند و preflight نقطه را اجرا می‌کند. اجرای جداگانهٔ check-only و سپس apply،
+اعتبارسنجی شبکه‌ای را تکرار می‌کند و لازم نیست. حالت بدون `--apply` فقط وقتی
+مناسب است که عمداً می‌خواهید قبل از انتشار check-only بگیرید و اجرای بعدیِ apply
+و تکرار gate برایتان قابل قبول است.
 
 ```bash
 python3 scripts/publish_catalog.py \
-  --catalog /tmp/damavand_v1.json \
-  --host root@SERVER_IP \
+  --catalog apps/api/fixtures/catalog/<catalog>_v1.json \
+  --host hawatch \
+  --point <primary-point-slug> \
   --apply
 ```
 
@@ -597,33 +646,24 @@ python3 scripts/publish_catalog.py \
 CDN ممکن است همان پاسخ `404` موقت را cache کند و بعد از اصلاح origin نیز آن را
 تحویل دهد. این اتفاق به معنی خرابی catalog یا نیاز به تغییر کد CDN نیست.
 
-ترتیب اجباری برای هر انتشار نقطه/مسیر جدید:
-
-1. commit و push شدن catalog روی `origin/main`؛
-2. pull سریع و fast-forward روی checkout سرور؛
-3. اجرای `sync_catalog --dry-run` و بازبینی شمارش و slugهای جدید؛
-4. اجرای `sync_catalog --apply` و سپس ingest/preflight نقاط؛
-5. بررسی read-only از origin/API یا nginx داخلی سرور و اطمینان از پاسخ `200`؛
-6. فقط پس از مراحل بالا، بازکردن URL canonical عمومی و بررسی HTML/SEO.
-
-برای تغییرات صرفاً catalog، مراحل pull، sync و ingest به restart یا recreate سرویس
-نیاز ندارند. نمونهٔ اجرای دستی روی سرور:
+برای افزودن افزایشی، fixture نسخه‌دار را در Git نگه دارید و یک‌بار از local با
+`publish_catalog.py --apply` import کنید؛ فایل از stdin ارسال می‌شود و لازم نیست
+برای این کار کل checkout سرور pull یا `sync_catalog` شود. این تغییر به restart یا
+recreate سرویس نیاز ندارد. `sync_catalog` را فقط برای همگام‌سازی عمدی کل مجموعهٔ
+fixtureها یا cleanup گسترده به‌کار ببرید. پس از publish، پاسخ origin/API را
+read-only کنترل کنید و سپس URL canonical عمومی را باز کنید:
 
 ```bash
-ssh hawatch 'cd /root/hawatch && git pull --ff-only origin main'
-
 ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py sync_catalog --dry-run'
-
-ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py sync_catalog --apply'
-
-ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
-  python manage.py ingest_open_meteo --slugs <point-slug>,<route-point-slug>'
+  python manage.py catalog_preflight --point <primary-point-slug> --require-forecast'
 
 ssh hawatch 'curl -fsS -o /dev/null -w "%{http_code}\\n" \
   -H "Host: hawatch.ir" http://127.0.0.1/points/<point-slug>'
 ```
+
+`publish_catalog.py --apply` خودش ingest و preflight را انجام می‌دهد؛ فرمان
+`catalog_preflight` بالا فقط برای بررسی دستیِ بعدی است و لازم نیست دوباره اجرا
+شود.
 
 اگر origin `200` است اما دامنهٔ عمومی هنوز `404` می‌دهد، ابتدا همان URL canonical
 و در صورت نیاز URL مسیر را در CDN purge کنید؛ از purge گسترده استفاده نکنید.
@@ -646,10 +686,11 @@ weather آن در UI نمایش داده نمی‌شود. برای launch عمو
 
 ### ۴. معادل دستی روی سرور
 
-این مسیر فقط وقتی مجاز است که فرمان local validator بلافاصله قبل از آن با
-`pass=True` تمام شده باشد. `seed_catalog --check-only` به‌تنهایی اعتبار weather
-یا ارتفاع را بررسی نمی‌کند. اگر validator خطا داد، import را اجرا نکنید و همان
-خطای دارای slug نقطه را گزارش کنید.
+این مسیر فقط وقتی wrapper در دسترس نیست. پیش از هر import باید
+`validate_open_meteo_catalog.py` با `pass=True` تمام شده باشد؛
+`seed_catalog --check-only` به‌تنهایی اعتبار weather یا ارتفاع را بررسی نمی‌کند.
+خطای provider را با slug نقطه گزارش کنید و import را انجام ندهید. این fallback
+از اجرای wrapper طولانی‌تر است و برای روال عادی پیشنهاد نمی‌شود.
 
 اگر wrapper در دسترس نبود، از root checkout سرور:
 
@@ -663,7 +704,7 @@ ssh root@SERVER_IP \
   < /tmp/damavand_v1.json
 
 ssh root@SERVER_IP \
-  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py ingest_open_meteo'
+  'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py ingest_open_meteo --slugs <comma-separated-weather-point-slugs-from-this-catalog>'
 
 ssh root@SERVER_IP \
   'cd /root/hawatch && docker compose --env-file .env -f infra/compose/compose.yaml exec -T api python manage.py catalog_preflight --point damavand --require-forecast --strict'
@@ -800,12 +841,13 @@ forecast ذخیره‌شدهٔ دیتابیس را می‌خواند.
 - [ ] هر Route عمومی حداقل یک نقطهٔ میانی واقعی و مستند، غیر از مبدأ و مقصد،
       دارد؛ توقف کمپ، waypoint بی‌نام یا برچسب ارتفاعی جای آن را نگرفته است.
 - [ ] اگر route دارد، distance/ascent عمومی قابل‌دفاع و timingهای arrival دارای provenance هستند.
-- [ ] `validate_open_meteo_catalog.py` بدون error pass شده است.
+- [ ] `validate_open_meteo_catalog.py` بدون error pass شده است؛ در روال عادی این
+      gate را wrapper اجرا می‌کند و جداگانه تکرار نمی‌شود.
 - [ ] هیچ pointی اختلاف catalog/DEM بیشتر از `۱۰۰ m`، grid دورتر از `۵ km` یا
       hourly ناقص ندارد؛ در غیر این صورت import انجام نشده و خطا گزارش شده است.
-- [ ] remote `seed_catalog --stdin --check-only` pass شده است.
-- [ ] import strict انجام شده است.
-- [ ] ingest موفق بوده است.
-- [ ] preflight با `--require-forecast --strict` pass شده است.
+- [ ] remote check-only، import strict، ingest هدفمند و preflight با
+      `--require-forecast` در اجرای موفق wrapper انجام شده‌اند؛ برای point-only
+      strict نیز باید pass شود، اما routeهای عمداً pending می‌توانند warning داشته
+      باشند.
 - [ ] صفحهٔ نقطه و هر route با date/period/start_time واقعی refresh و بررسی شده‌اند.
 - [ ] GPX و manifest داخل `tracks/` باقی مانده و commit نشده‌اند.
