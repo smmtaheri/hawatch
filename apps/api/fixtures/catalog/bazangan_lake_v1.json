@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-bazangan-lake-catalog-v1",
+  "primary_point": "bazangan-lake",
+  "weather_points": {
+    "bazangan-lake": {
+      "name": "دریاچهٔ بزنگان",
+      "page_name": "دریاچهٔ بزنگان",
+      "short_label": "دریاچهٔ بزنگان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "دریاچه بزنگان",
+        "دریاچهٔ کَل‌بی‌بی",
+        "دریاچه کلبیبی",
+        "گل‌بی‌بی",
+        "دریاچه گل بی بی",
+        "Bazangan Lake",
+        "Lake Bazangan",
+        "Gol Bibi Lake"
+      ],
+      "identity_summary": "دریاچهٔ طبیعی بزنگان در شهرستان سرخس؛ با روستای هم‌نام بزنگان که حدود ۵ کیلومتر در جنوب‌غرب دریاچه قرار دارد یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/Bazangan-lake",
+        "https://mapcarta.com/W39904579",
+        "https://www.openstreetmap.org/way/39904579",
+        "https://www.wikidata.org/wiki/Q1612643"
+      ],
+      "latitude": 36.3143,
+      "longitude": 60.47979,
+      "elevation_m": 850,
+      "status": "provisional",
+      "elevation_source": "Visit Iran: حدود ۸۵۰ متر؛ مختصات نماینده از OSM/Mapcarta. Open-Meteo GLO-90 در ۲۰۲۶-۱۰-۱۳: DEM برابر ۸۳۷ متر (اختلاف ۱۳ متر)، grid در ۱٫۴۴۵ کیلومتری و ۲۴ ساعت دادهٔ معتبر. ارتفاع provisional است.",
+      "climate": "lake_valley",
+      "region": "سرخس · خراسان رضوی"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "bazangan-lake",
+    "tile_name": "دریاچهٔ بزنگان",
+    "name": "دریاچهٔ بزنگان",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های خراسان رضوی",
+    "category_key": "lake",
+    "region": "سرخس · خراسان رضوی",
+    "elevation_m": 850,
+    "latitude": 36.3143,
+    "longitude": 60.47979,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ بزنگان در شهرستان سرخس، خراسان رضوی",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه بزنگان",
+      "دریاچهٔ کَل‌بی‌بی",
+      "دریاچه کلبیبی",
+      "گل‌بی‌بی",
+      "دریاچه گل بی بی",
+      "Bazangan Lake",
+      "Lake Bazangan",
+      "Gol Bibi Lake"
+    ]
+  }
+}
