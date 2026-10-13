@@ -12,9 +12,16 @@ const assetVersion=process.env.VITE_ASSET_VERSION||"local";
 export default defineConfig(({command})=>{
 const publicVersion=process.env.VITE_PUBLIC_ASSET_VERSION||assetVersion;
 const publicPrefix=command==="build"?`/static-public/${publicVersion}`:"";
-const publicRoots=["new-design/","fonts/","images/","brand/","favicon.png","favicon.ico","apple-touch-icon.png"];
-const rewritePublic=(code:string)=>publicRoots.reduce((text,root)=>text.replaceAll(`${assetPrefix}/${root}`,`${publicPrefix}/${root}`),code);
 const assetPrefix=command==="build"?`/static-assets/${assetVersion}`:"";
+// Keep browser/Google favicon URLs stable at the domain root. Versioned public
+// URLs are useful for larger assets, but changing a favicon URL can delay
+// Google's favicon refresh.
+const publicRoots=["new-design/","fonts/","images/","brand/"];
+const stableIconRoots=["favicon.png","favicon.ico","apple-touch-icon.png"];
+const rewritePublic=(code:string)=>{
+const versioned=publicRoots.reduce((text,root)=>text.replaceAll(`${assetPrefix}/${root}`,`${publicPrefix}/${root}`),code);
+return stableIconRoots.reduce((text,root)=>text.replaceAll(`${assetPrefix}/${root}`,`/${root}`),versioned);
+};
 return {
   base: `${assetPrefix}/`,
   cacheDir: "../../.tmp/vite-cache",

@@ -414,7 +414,10 @@ def test_ssr_uses_independent_public_and_bundle_cache_namespaces(api_client,seo_
     settings.HAWATCH_PUBLIC_ASSET_VERSION='public-content'
     html=api_client.get('/points/tochal').content.decode()
     assert '/static-public/public-content/new-design/fonts/Vazirmatn-Regular.woff2' in html
-    assert '/static-public/public-content/favicon.png' in html
+    assert 'href="/favicon.png" sizes="96x96" type="image/png"' in html
+    assert 'href="/favicon.ico"' in html
+    assert 'href="/apple-touch-icon.png" sizes="180x180"' in html
+    assert '/static-public/public-content/favicon' not in html
     assert '/static-assets/frontend-content/assets/hawatch.js' in html
     assert '/static-assets/frontend-content/assets/hawatch.css' in html
     assert '/static-assets/frontend-content/new-design/' not in html
