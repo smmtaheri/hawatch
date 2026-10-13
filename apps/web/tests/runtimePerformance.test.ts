@@ -45,3 +45,41 @@ it('keeps first and last route labels inside the mobile timeline viewport',()=>{
   window.innerWidth=originalInnerWidth;
  }
 });
+
+it.each([
+ ['mobile',390,300],
+ ['desktop',1440,900],
+])('keeps destination day labels anchored to their columns while the chart scrolls (%s)',(_device,width,panelWidth)=>{
+ const originalInnerWidth=window.innerWidth;
+ window.innerWidth=width;
+ const data=weekFixture('point','2026-10-09') as any;
+ const days=data.days.map((day:any,index:number)=>({
+  ...day,
+  available:['daily','6h','3h','1h'],
+  intervals:{daily:[{id:day.date,day:index,hour:null,felt:2.4,actual:2.4,min:2.4,max:2.4,wind:1.6,gust:0,rain:.4,weather:'clear',weatherLabel:'صاف',hazards:[]}]},
+ }));
+ const runtime=createForecastRuntime({api:data,days:data.days.map((day:any)=>({...day,name:day.label,date_fa:day.jalali})),points:{[data.subject.slug]:{days}},},[],[],'');
+ try{
+  document.body.innerHTML=runtime.html('point',{...data.subject,name:data.subject.name}, {day:0,time:480,speed:'medium',theme:'dark'});
+  const panel=document.querySelector<HTMLElement>('.forecast-panel')!;
+  Object.defineProperty(panel,'clientWidth',{configurable:true,value:panelWidth});
+  runtime.mount({});
+  const scroller=document.querySelector<HTMLElement>('.timeline-scroll')!;
+  Object.defineProperty(scroller,'clientWidth',{configurable:true,value:panelWidth});
+  Object.defineProperty(scroller,'scrollWidth',{configurable:true,value:panelWidth*2});
+  const group=[...document.querySelectorAll<HTMLElement>('.day-group')].sort((a,b)=>Number(a.dataset.left)-Number(b.dataset.left))[0];
+  const label=group.querySelector<HTMLElement>('.day-name')!;
+  const date=group.querySelector<HTMLElement>('.day-date')!;
+  const initialLabelLeft=label.style.left;
+  const initialDateLeft=date.style.left;
+  const groupWidth=Number(group.dataset.width);
+  scroller.scrollLeft=groupWidth/3;
+  scroller.dispatchEvent(new Event('scroll'));
+  expect(label.style.left).toBe(initialLabelLeft);
+  expect(date.style.left).toBe(initialDateLeft);
+  expect(group.style.visibility).toBe('visible');
+ }finally{
+  runtime.destroy();
+  window.innerWidth=originalInnerWidth;
+ }
+});

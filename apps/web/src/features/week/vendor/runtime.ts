@@ -110,8 +110,8 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  }
  function syncScroll(){if(!layout)return;const {scroller,width,vw,xs}=layout,l=scroller.scrollLeft,r=l+vw,first=xs.filter(x=>x>=l&&x<=r).sort((a,b)=>b-a)[0],captionX=first==null?r-5:Math.min(r-5,first+(ctx.kind==='point'?width/xs.length/2-6:Math.min(width/xs.length/2-5,37)));ctx.v.scroll=l;
   scroller.querySelectorAll('.metric-caption').forEach(g=>g.setAttribute('transform',`translate(${captionX} 0)`));
-  scroller.querySelectorAll('.day-group').forEach(g=>{const gl=+g.dataset.left,gw=+g.dataset.width,a=Math.max(l,gl),b=Math.min(r,gl+gw),span=b-a,title=(a+b)/2-gl,inset=Math.min(32,gw/2);
-   g.querySelectorAll('.day-name,.day-date').forEach(t=>t.style.left=`${Math.max(inset,Math.min(gw-inset,title))}px`);
+  scroller.querySelectorAll('.day-group').forEach(g=>{const gl=+g.dataset.left,gw=+g.dataset.width,a=Math.max(l,gl),b=Math.min(r,gl+gw),span=b-a;
+   // Day name/date stay centered in their own column; only the column itself scrolls.
    const ex=g.querySelector('.expand'),co=g.querySelector('.collapse');if(ex){ex.style.left=`${Math.max(0,a-gl)}px`;ex.style.visibility=span>=44&&(!co||span>=88)?'visible':'hidden';}if(co){co.style.right=`${Math.max(0,gl+gw-b)}px`;co.style.visibility=span>=44?'visible':'hidden';}g.style.visibility=span<35?'hidden':'visible';
   });syncTrack(scroller,scroller.closest('.forecast-panel').querySelector('.scroll-track'));
  }
