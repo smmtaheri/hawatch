@@ -1,0 +1,66 @@
+{
+  "catalog_version": "hawatch-sarigol-national-park-v1",
+  "primary_point": "sarigol-national-park",
+  "weather_points": {
+    "sarigol-national-park": {
+      "name": "پارک ملی ساریگل",
+      "page_name": "پارک ملی ساریگل، اسفراین",
+      "short_label": "پارک ملی ساریگل",
+      "place_type": "landmark",
+      "category_key": "park",
+      "category": "پارک‌های ملی خراسان شمالی",
+      "region": "شرق اسفراین · خراسان شمالی",
+      "aliases": [
+        "پارک ساریگل",
+        "پارک ملی ساری‌گل",
+        "Sarigol National Park",
+        "Sari Gol National Park",
+        "National Park Sarigol"
+      ],
+      "identity_summary": "پارک ملی ساریگل در شمال‌غرب اسفراین، خراسان شمالی؛ مختصات این صفحه نقطه‌ای نماینده در محدودهٔ ثبت‌شدهٔ پارک است و ورودی یا مرز کامل آن را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/relation/13072070",
+        "https://www.researchgate.net/publication/268035564_The_flora_of_Sarigol_National_Park_Northern_Khorassan_Province_Iran",
+        "https://fa.tripyar.com/iran/خراسان-شمالی/اسفراین/گردشگری/اکوتوریسم/جنگل-نوردی/پارک-ملی-ساریگل.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.9775125&longitude=57.7556352"
+      ],
+      "latitude": 36.9775125,
+      "longitude": 57.7556352,
+      "elevation_m": 1999,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۹۹۹ متر از Open-Meteo GLO-90 DEM در مختصات نمایندهٔ ثبت‌شده برای محدودهٔ پارک؛ ارتفاع برای نقطهٔ forecast است و ادعای ارتفاع میانگین کل پارک نیست.",
+      "climate": "meadow"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "sarigol-national-park",
+    "tile_name": "پارک ملی ساریگل",
+    "name": "پارک ملی ساریگل",
+    "short_category": "پارک ملی",
+    "category": "پارک‌های ملی خراسان شمالی",
+    "category_key": "park",
+    "region": "شرق اسفراین · خراسان شمالی",
+    "elevation_m": 1999,
+    "latitude": 36.9775125,
+    "longitude": 57.7556352,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشم‌انداز کوهستانی پارک ملی ساریگل در خراسان شمالی",
+    "popular_order": 0,
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک ساریگل",
+      "پارک ملی ساری‌گل",
+      "Sarigol National Park",
+      "Sari Gol National Park",
+      "National Park Sarigol"
+    ]
+  }
+}
