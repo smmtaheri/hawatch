@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kol-jeno-catalog-v2",
+  "catalog_version": "hawatch-kol-jeno-catalog-v3",
   "primary_point": "kol-jeno",
   "point": {
     "slug": "kol-jeno",
@@ -226,14 +226,14 @@
         "kol-jeno-shast-khoda",
         "kol-jeno"
       ],
-      "distance_km": 9.1,
-      "ascent_m": 1662,
+      "distance_km": 8.9,
+      "ascent_m": 1673,
       "one_way_minutes": 295,
       "default_start_minutes": 360,
       "timing_status": "estimated",
       "timing": {
         "method": "distance-ascent-altitude-fatigue-v3",
-        "version": "kol-jeno-shast-khoda-timing-v1",
+        "version": "kol-jeno-shast-khoda-timing-v2",
         "confidence": "low",
         "uncertainty_minutes": 75,
         "source_urls": [
@@ -247,16 +247,16 @@
         "cumulative_minutes": {
           "kol-jeno-trailhead": 0,
           "kol-jeno-sarab-kamandan": 70,
-          "kol-jeno-naser-spring": 140,
+          "kol-jeno-naser-spring": 145,
           "kol-jeno-shelter": 170,
           "kol-jeno-under-blades-waterfall": 190,
           "kol-jeno-shast-khoda": 245,
           "kol-jeno": 295
         },
         "notes": [
-          "مسافت ۹٫۰۹ کیلومتر و صعود نرم‌شدهٔ ۱۶۶۲ متر از هندسهٔ ترک تا اولین نزدیک‌شدن به قله محاسبه شد؛ ارتفاع GPX فقط مرجع است.",
-          "نویسندهٔ ترک یک انحراف اشتباه بالاتر از پناهگاه و بازگشت به ابتدای آن را گزارش کرده؛ ترک مستقل دوم برای همین جهت در دسترس نبود، بنابراین confidence پایین و عدم‌قطعیت ۷۵ دقیقه ثبت شد.",
-          "زمان خام ترک به‌علت توقف شبانه استفاده نشد؛ زمان متوسط با مدل عمومی distance-ascent-altitude-fatigue-v3 و ارتفاع وزنی checkpointهای کاتالوگ محاسبه شد."
+          "مسافت افقی ۸٫۹۳ کیلومتر پس از حذف انحراف رفت‌وبرگشتیِ اشتباه بالای پناهگاه (حدود ۱۵۹ متر) از هندسهٔ ترک محاسبه شد؛ صعود ۱۶۷۳ متر از نمونه‌های DEM اپن‌متئو با گام ۵۰ متر و میانگین متحرک ۵‌نمونه‌ای به‌دست آمد؛ ارتفاع خام GPX فقط مرجع است.",
+          "نویسندهٔ ترک اشتباه‌رفتن و بازگشت در بخش بالاتر از پناهگاه را صریحاً گزارش کرده است؛ همین قطعه از مسافت و پروفایل ارتفاع کنار گذاشته شد. چون فقط یک ترک مستقل برای این جهت داریم، confidence پایین و عدم‌قطعیت ۷۵ دقیقه حفظ شده است.",
+          "زمان ترک مبنای ETA نیست. زمان متوسط دقیقاً از مدل عمومی distance-ascent-altitude-fatigue-v3 با ۸٫۹ کیلومتر، ۱۶۷۳ متر صعود و میانگین ارتفاع وزنی checkpointهای کاتالوگ (حدود ۲۶۹۴ متر) محاسبه شد؛ زمان‌های آرام/متوسط/سریع از همان مدل به‌ترتیب ۸ ساعت، ۴ ساعت و ۵۵ دقیقه، و ۲ ساعت و ۵۰ دقیقه‌اند. زمان تجمعی checkpointها نیز با سهم مسافت و صعود هر بخش تنظیم شده است."
         ]
       },
       "public_point_notes": {}
