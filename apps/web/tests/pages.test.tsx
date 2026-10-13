@@ -468,6 +468,27 @@ describe("approved week forecast and unchanged public pages", () => {
     );
     expect(night.innerHTML).not.toBe(morning);
   });
+  it("uses the fixed 19:00 night boundary for shared weather icons", () => {
+    const at18 = render(<WeatherIcon code="clear-night" at="2026-10-01T18:00:00+03:30" />);
+    expect(at18.container.querySelector("svg circle")).not.toBeNull();
+    at18.unmount();
+    const at19 = render(<WeatherIcon code="clear" at="2026-10-01T19:00:00+03:30" />);
+    expect(at19.container.querySelector("svg circle")).toBeNull();
+  });
+  it.each([390, 1440])("keeps daily forecast icons in daytime at %ipx even when the representative reading is at midnight", async (width) => {
+    Object.defineProperty(window, "innerWidth", { configurable: true, value: width });
+    fetchMock.mockImplementation((input: RequestInfo) => {
+      const url = new URL(String(input), "http://localhost");
+      if (!url.pathname.endsWith("/forecast/week/")) return defaultFetch(input);
+      const data = weekFixture("point", day);
+      data.intervals!["24"]![0][0].weather = "clear-night";
+      data.intervals!["24"]![0][0].weather_at = `${day}T00:00:00+03:30`;
+      return response(data);
+    });
+    mount("/points/tochal");
+    await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
+    expect(document.querySelector(".weather-slot svg circle")).not.toBeNull();
+  });
   it("renders the category source at the approved viewBox and stroke", () => {
     const { container } = render(<CategoryIcon placeType="peak" />);
     expect(container.querySelector("svg")).toHaveAttribute(

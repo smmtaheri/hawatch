@@ -50,7 +50,15 @@ def aggregate(rows, start, hours):
         if len(source) != hours or any(v is None for v in values):
             return None
         return method(values)
-    rep = representative_record(instant)
+    if hours == 24:
+        # A daily card summarizes the daytime sky, not whichever hour happens
+        # to win a whole-day frequency tie (often midnight). Keep its metrics
+        # over the full day, but choose the condition from the fixed Tehran
+        # daytime window until per-point sunrise/sunset is available.
+        daylight = [r for r in instant if 6 <= now_tehran(r.forecast_at).hour < 19]
+        rep = representative_record(daylight or instant)
+    else:
+        rep = representative_record(instant)
     return {"from": start.isoformat(), "to": end.isoformat(), "hour": start.hour,
             "felt": metric("apparent_temperature_c", lambda a: round(sum(a)/len(a), 1)),
             "actual": metric("temperature_c", lambda a: round(sum(a)/len(a), 1)),

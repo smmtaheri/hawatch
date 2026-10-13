@@ -56,10 +56,10 @@ export function WeatherIcon({
     windy: "wind",
   };
   let name = entry?.icon ?? normalized[String(code)] ?? "unknown";
-  // ForecastRecord currently has no provider is_day column. Use its forecast
-  // time in Tehran as the existing normalizer does; theme never selects night.
+  // Use the fixed Tehran icon boundary until per-point sunrise/sunset is added;
+  // visual theme never selects night.
   const hour = at ? tehranWallClock(at).hour : null;
-  const day = isDay ?? (hour !== null ? hour >= 6 && hour < 18 : null);
+  const day = isDay ?? (hour !== null ? hour >= 6 && hour < 19 : null);
   if (["clear", "mostly-clear", "partly-cloudy", "fog"].includes(name)) {
     name = day === null ? "unknown" : `${name}-${day ? "day" : "night"}`;
   } else if (name === "showers" && day === false) name = "showers-night";

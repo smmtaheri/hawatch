@@ -1,5 +1,5 @@
 """Public/cacheable week, planner parity, precipitation boundaries and sharing."""
-from datetime import timedelta
+from datetime import datetime, timedelta
 from unittest.mock import patch
 import pytest
 from django.core.cache import cache
@@ -97,6 +97,24 @@ def test_precipitation_uses_preceding_hour_and_incomplete_is_not_zero(week_seed)
     assert aggregate(rows,start,1)['rain']==1
     assert aggregate(rows[:-1],start,6)['rain'] is None
     assert aggregate(rows[:-1],start,6)['complete'] is False
+
+def test_daily_weather_uses_daytime_representative_with_fixed_19_boundary(week_seed):
+    point=WeatherPoint.objects.get(slug='tochal');start=localize_dt(week_seed,0)
+    rows=list(ForecastRecord.objects.filter(weather_point=point,forecast_at__gte=start,forecast_at__lt=start+timedelta(hours=24)).order_by('forecast_at'))
+    assert len(rows)==24
+    for row in rows:
+        hour=now_tehran(row.forecast_at).hour
+        if hour < 6 or hour >= 19:
+            row.weather_code='clear-night';row.condition_label='صاف'
+        elif hour <= 8:
+            row.weather_code='overcast';row.condition_label='ابری'
+        else:
+            row.weather_code='clear';row.condition_label='صاف'
+    daily=aggregate(rows,start,24)
+    assert daily['weather']=='clear'
+    assert daily['condition']=='صاف'
+    representative_at=now_tehran(datetime.fromisoformat(daily['weather_at']))
+    assert 9 <= representative_at.hour < 19
 
 def test_equipment_explains_weather_and_never_infers_technical_terrain(week_seed):
     row=ForecastRecord.objects.filter(weather_point__slug='tochal').first()

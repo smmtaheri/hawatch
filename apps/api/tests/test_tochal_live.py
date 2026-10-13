@@ -271,6 +271,7 @@ def test_wind_warning_does_not_replace_sky_condition():
         "☾",
         "change",
     )
+    assert map_weather_code(0, hour=18, wind_kmh=0, gust_kmh=0)[0] == "clear"
     assert map_weather_code(95, hour=14, wind_kmh=31, gust_kmh=50)[3] == "critical"
 
 
