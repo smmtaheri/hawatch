@@ -1199,23 +1199,35 @@ def related_routes_for_weather_point(point: WeatherPoint) -> list[dict]:
     return [serialize_route_summary(route) for route in routes]
 
 
-def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: str) -> dict:
-    routes = related_routes_for_weather_point(weather_point)
-    similar_destinations = []
-    similar_title = similar_destinations_title(weather_point)
+def point_discovery_payload(point: WeatherPoint) -> dict:
+    """Build the single canonical set of routes or similar destinations for a point."""
+
+    routes = related_routes_for_weather_point(point)
+    destinations = []
     if not routes:
-        similar_destinations = [
-            serialize_similar_destination(point)
-            for point in related_public_similar_destinations(weather_point)
+        destinations = [
+            serialize_similar_destination(candidate)
+            for candidate in related_public_similar_destinations(point)
         ]
+    short_name = point.tile_name or point.short_label or point.page_name or point.name
+    return {
+        "related_routes": routes,
+        "related_routes_title": f"مسیرهای متصل به {short_name}",
+        "related_destinations": destinations,
+        "related_destinations_title": similar_destinations_title(point),
+    }
+
+
+def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: str) -> dict:
+    discovery = point_discovery_payload(weather_point)
     place = build_place_forecast(
         weather_point,
         selected_date=selected_date,
         period=period,
         kind="point",
-        related_routes=routes,
-        related_destinations=similar_destinations,
-        related_destinations_title=similar_title,
+        related_routes=discovery["related_routes"],
+        related_destinations=discovery["related_destinations"],
+        related_destinations_title=discovery["related_destinations_title"],
     )
     return {
         **place,
@@ -1223,9 +1235,7 @@ def point_forecast(weather_point: WeatherPoint, *, selected_date: date, period: 
             **serialize_weather_point(weather_point),
             "canonical_href": place["subject"]["canonical_href"],
         },
-        "related_routes": routes,
-        "related_destinations": similar_destinations,
-        "related_destinations_title": similar_title,
+        **discovery,
         "updated_label": "",
     }
 

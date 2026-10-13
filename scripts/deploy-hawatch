@@ -3,7 +3,10 @@ set -Eeuo pipefail
 
 # Publish and deploy the production checkout only.
 # The former stage stack is intentionally not part of this command anymore.
-LOCAL_DIR="${HAWATCH_LOCAL_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || true)}"
+SCRIPT_PATH="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd -- "$(dirname -- "$SCRIPT_PATH")" && pwd -P)"
+REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd -P)"
+LOCAL_DIR="${HAWATCH_LOCAL_DIR:-$REPO_ROOT}"
 SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
 PRODUCTION_DIR="${HAWATCH_SERVER_DIR:-/root/hawatch}"
 SERVER_IP="${HAWATCH_SERVER_IP:-202.133.89.120}"
@@ -13,14 +16,14 @@ SERVER_API_URL="${HAWATCH_SERVER_API_URL:-/api/v1}"
 fail() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
 
 [[ "$#" -eq 0 ]] || fail 'Usage: deploy-hawatch'
-[[ -n "$LOCAL_DIR" ]] || fail 'Run this command from a Hawatch checkout or set HAWATCH_LOCAL_DIR.'
+[[ -n "$LOCAL_DIR" ]] || fail 'Could not locate the Hawatch checkout; set HAWATCH_LOCAL_DIR.'
 [[ "$LOCAL_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail 'Invalid local checkout path.'
 [[ "$PRODUCTION_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail 'Invalid production checkout path.'
 [[ "$SSH_HOST" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ && "$SSH_HOST" != -* ]] || fail 'Invalid SSH target.'
 [[ "$SERVER_IP" =~ ^[A-Za-z0-9._-]+$ && "$SERVER_IP" != -* ]] || fail 'Invalid server host.'
 [[ "$PUBLIC_HOST" =~ ^[A-Za-z0-9.-]+$ ]] || fail 'Invalid public host.'
 [[ "$SERVER_API_URL" =~ ^(/api/v1|https?://[A-Za-z0-9.-]+:[0-9]+/api/v1)$ ]] || fail 'Invalid server API URL.'
-[[ "$(git -C "$LOCAL_DIR" branch --show-current)" == main ]] || fail 'Run deploy-hawatch from main.'
+[[ "$(git -C "$LOCAL_DIR" branch --show-current)" == main ]] || fail 'The Hawatch checkout must be on main.'
 [[ "$(git -C "$LOCAL_DIR" remote get-url origin 2>/dev/null || true)" == git@github.com:smmtaheri/hawatch.git ]] || fail 'Unexpected local remote.'
 
 if [[ -n "$(git -C "$LOCAL_DIR" status --porcelain)" ]]; then

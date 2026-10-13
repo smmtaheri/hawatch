@@ -13,7 +13,7 @@ from hawatch.modules.routes.models import Route
 from hawatch.modules.routes.timing import route_mean_elevation_m
 from hawatch.integrations.weather.hazards import assessment, assess_records, value, representative_record
 from hawatch.integrations.weather.equipment import suggest_equipment
-from .serializers import get_point, get_route, serialize_point_profile, serialize_route, serialize_route_summary, reading_payload, route_has_usable_timing
+from .serializers import get_point, get_route, serialize_point_profile, serialize_route, serialize_route_summary, reading_payload, route_has_usable_timing, point_discovery_payload
 
 FIELDS = ("temperature_c", "apparent_temperature_c", "wind_speed_kmh", "wind_gust_kmh", "wind_direction_deg", "relative_humidity_pct", "visibility_km", "freezing_level_m", "uv_index", "snowfall_cm")
 
@@ -77,7 +77,7 @@ def build_week(kind, slug, today):
         from hawatch.modules.catalog.seo import point_seo_copy
         seo = point_seo_copy(point)
         rows = records_for([point.pk], start, start+timedelta(days=8))
-        base.update(subject={**serialize_point_profile(point),"seo_title":seo["title"],"seo_description":seo["description"]}, related_routes=[serialize_route_summary(r) for r in Route.objects.filter(points__weather_point=point, is_active=True).distinct().order_by("sort_order", "slug")],
+        base.update(subject={**serialize_point_profile(point),"seo_title":seo["title"],"seo_description":seo["description"]}, **point_discovery_payload(point),
                     intervals={str(step): [[aggregate(rows, start+timedelta(days=di, hours=h), step) for h in range(0,24,step)] for di in range(8)] for step in (24,6,3,1)})
     else:
         route = get_route(slug)

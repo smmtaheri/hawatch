@@ -6,13 +6,14 @@ import {PageShell} from '../../components/PageShell';
 import {usePageTitle} from '../../lib/pageTitle';
 import {scrollToDetailHero} from '../../lib/detailEntryScroll';
 import brand from '../../components/brandMark.svg?raw';
+import type { SimilarDestinationSummary } from '../../types';
 import {createForecastRuntime} from './vendor/runtime';
 import './forecast-v5.css';
 import './agreed.css';
 
 type Day={date:string;label:string;jalali:string};
 type Subject={slug:string;name?:string;title?:string;elevation_m?:number;region?:string;distance_km?:number;ascent_m?:number;descent_m?:number;seo_indexable?:boolean};
-export type Week={kind:'point'|'route';subject:Subject;days:Day[];range_start:string;range_end:string;last_generated_at:string|null;stale_after_hours:number;cache_max_age_seconds:number;related_routes?:Subject[];intervals?:Record<string,Array<Array<Record<string,unknown>>>>;points?:Array<{slug:string;name:string}>;timing_pending?:boolean};
+export type Week={kind:'point'|'route';subject:Subject;days:Day[];range_start:string;range_end:string;last_generated_at:string|null;stale_after_hours:number;cache_max_age_seconds:number;related_routes?:Subject[];related_routes_title?:string;related_destinations?:SimilarDestinationSummary[];related_destinations_title?:string;intervals?:Record<string,Array<Array<Record<string,unknown>>>>;points?:Array<{slug:string;name:string}>;timing_pending?:boolean};
 const cache=new Map<string,{data:Week;expires:number}>();
 export function clearWeekCache(){cache.clear();pending.clear();}
 const pending=new Map<string,Promise<Week>>();
@@ -62,7 +63,7 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  },[kind,slug,retry]);
  useLayoutEffect(()=>{
   if(!data||data.subject.slug!==slug||!root.current)return;
-  const W=adapted(data), record={...data.subject,name:data.subject.name||data.subject.title,elevation:data.subject.elevation_m,points:data.points?.map(p=>p.slug)||[]};
+  const W=adapted(data), record={...data.subject,name:data.subject.name||data.subject.title,elevation:data.subject.elevation_m,points:data.points?.map(p=>p.slug)||[],related_destinations:data.related_destinations,related_destinations_title:data.related_destinations_title,related_routes_title:data.related_routes_title};
   const selected=params.get('date'),day=Math.max(0,data.days.findIndex(d=>d.date===selected));
   const raw=params.get('start_time')?.replace(/[۰-۹٠-٩]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.includes(c)?'۰۱۲۳۴۵۶۷۸۹'.indexOf(c):'٠١٢٣٤٥٦٧٨٩'.indexOf(c))),hour=raw&&/^\d{2}:\d{2}$/.test(raw)?Math.max(0,Math.min(23,Number(raw.slice(0,2)))):Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tehran',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
   const requestedSpeed=params.get('speed'),speed=({slow:'slow',medium:'medium',fast:'fast','آرام':'slow','متوسط':'medium','سریع':'fast'} as Record<string,string>)[requestedSpeed||'']||'medium';

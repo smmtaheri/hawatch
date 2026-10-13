@@ -14,7 +14,7 @@ from .week_bundles import build_week
 from .week_cache import revision
 from .week_interest import payload_ttl, touch_page
 
-WEEK_CACHE_SCHEMA = "week-6"
+WEEK_CACHE_SCHEMA = "week-7"
 
 def cached_week(kind, slug, today):
     # Bump the payload schema when serialization changes, independently of UI releases.
