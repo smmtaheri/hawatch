@@ -31,7 +31,9 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
  function positions(points,width,distance=false,exporting=false){
   if(!distance)return points.map((_,i)=>width-(i+.5)*width/points.length);
   // A readable column for each stop; distance remains in the point label.
-  const pad=exporting?64:mobile()?32:55,span=width-pad*2;
+  // Route headers are 120px wide on mobile, so keep their centers at least
+  // half that width from the scroll edges to prevent endpoint names clipping.
+  const pad=exporting?64:mobile()?60:55,span=width-pad*2;
   if(points.length===1)return [width/2];
   return points.map((_,i)=>width-pad-i*span/(points.length-1));
  }
@@ -96,7 +98,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
   return withStableHeight(panel,()=>{
   const destination=ctx.kind==='point',vw=Math.max(260,panel.clientWidth-(destination?0:mobile()?10:20)),points=destination?slots():routeValues().points;
   const cw=mobile()?Math.max(96,vw/4):Math.max(vw/(ctx.v.levels.some(Boolean)?8:8),110);
-  const width=destination?Math.max(vw,points.length*cw):Math.max(vw,(mobile()?64:110)+(points.length-1)*(mobile()?126:155));
+  const width=destination?Math.max(vw,points.length*cw):Math.max(vw,(mobile()?120:110)+(points.length-1)*(mobile()?126:155));
   const xs=positions(points,width,!destination),chartLayout=destination?{compact:true,mobileCompact:mobile(),captionWidth:width/points.length-12}:undefined;
   panel.innerHTML=`<div class="timeline-scroll" tabindex="0" aria-label="${destination?'پیش‌بینی پیوستهٔ روزها':'پیش‌بینی پیوستهٔ نقاط مسیر'}"><div class="timeline-content" style="width:${width}px">${destination?dayHeaders(points,xs,width)+weatherStrip(points,xs):pointHeaders(points,xs)}<div class="main-graphs">${C.rows(points,xs,width,false,false,chartLayout)}</div>${destination?`<div style="height:40px"></div><div class="specialist-body" id="v4-experts">${ctx.v.expert?C.expertRows(points,xs,width,chartLayout):''}</div>`:''}</div></div>${destination?`<button class="specialist-trigger" data-v4-expert aria-expanded="${ctx.v.expert}" aria-controls="v4-experts">${ui(ctx.v.expert?'chevron-up':'chevron-down')}جزئیات تخصصی</button>`:''}${track()}`;
   if(destination){const graphs=panel.querySelector('.main-graphs');panel.querySelector('.specialist-trigger').style.top=`${graphs.offsetTop+graphs.offsetHeight}px`;}

@@ -24,3 +24,24 @@ it('prepares route equipment only when opened and reuses it until the plan chang
   expect(reads).toHaveBeenCalledTimes(2);
  }finally{runtime.destroy();}
 });
+
+it('keeps first and last route labels inside the mobile timeline viewport',()=>{
+ const originalInnerWidth=window.innerWidth;
+ window.innerWidth=390;
+ const data=weekFixture('route','2026-10-09') as any;
+ const runtime=createForecastRuntime({api:data,days:data.days.map((d:any)=>({...d,name:d.label,date_fa:d.jalali})),points:{}},data.points,[],'');
+ try{
+  document.body.innerHTML=runtime.html('route',{...data.subject,name:data.subject.title},{day:0,time:480,speed:'medium',theme:'dark'});
+  runtime.mount({});
+  const content=document.querySelector<HTMLElement>('.timeline-content')!;
+  const width=Number.parseFloat(content.style.width);
+  const centers=[...document.querySelectorAll<HTMLElement>('.point-header')].map(header=>Number.parseFloat(header.style.left));
+  expect(centers[0]).toBe(width-60);
+  expect(centers.at(-1)).toBe(60);
+  expect(centers[0]+60).toBeLessThanOrEqual(width);
+  expect(centers.at(-1)!-60).toBeGreaterThanOrEqual(0);
+ }finally{
+  runtime.destroy();
+  window.innerWidth=originalInnerWidth;
+ }
+});
