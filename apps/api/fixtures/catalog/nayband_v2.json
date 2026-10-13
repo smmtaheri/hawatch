@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-nayband-catalog-v1",
+  "catalog_version": "hawatch-nayband-catalog-v2",
   "weather_points": {
     "nayband-aliabad-trailhead": {
       "name": "پای‌کار علی‌آباد؛ مبدأ نایبند",
@@ -85,6 +85,45 @@
       "status": "provisional",
       "elevation_source": "مختصات قله در waypointهای نام‌دار دو ترک مستقل همگراست؛ ارتفاع رایج قله ۳۰۰۵ متر است و با DEM و Open-Meteo در preflight کنترل می‌شود.",
       "climate": "desert"
+    },
+    "nayband-village": {
+      "name": "روستای نایبند",
+      "page_name": "روستای نایبند طبس",
+      "short_label": "نایبند",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای طبس",
+      "tile_name": "روستای نایبند",
+      "short_category": "روستا",
+      "region": "نایبند · طبس · خراسان جنوبی",
+      "aliases": [
+        "روستای نای‌بند",
+        "نای‌بند طبس",
+        "نای بند طبس",
+        "Nayband village",
+        "Nay Band village",
+        "Nāy Bandān"
+      ],
+      "identity_summary": "روستای پلکانی نایبند در دهستان کویرِ طبس؛ مقصد کویری شناخته‌شده و جدا از قلهٔ نایبند و پای‌کار علی‌آباد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4420808494",
+        "https://visitiran.ir/attraction/nayband-village",
+        "https://mapcarta.com/12590598",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.382381&longitude=57.496052"
+      ],
+      "latitude": 32.382381,
+      "longitude": 57.496052,
+      "elevation_m": 1096,
+      "status": "provisional",
+      "elevation_source": "ارتفاع مرجع سکونتگاه ۱۰۹۶ متر؛ Open-Meteo GLO-90 در مختصات نماینده ۱۰۷۲ متر است (اختلاف ۲۴ متر).",
+      "climate": "desert",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای پلکانی نایبند در شهرستان طبس",
+      "routes": {}
     }
   },
   "routes": {

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-shirbad-catalog-v1",
+  "catalog_version": "hawatch-shirbad-catalog-v2",
   "weather_points": {
     "shirbad": {
       "name": "قلهٔ شیرباد",
@@ -166,6 +166,43 @@
       "status": "provisional",
       "elevation_source": "waypoint چشمهٔ نهل در ترک‌های مستقل؛ Open-Meteo GLO-90 DEM در نزدیک‌ترین grid برابر ۲۶۶۳ متر است و اختلاف با مقدار canonical کمتر از ۱۰۰ متر است.",
       "climate": "high_alpine"
+    },
+    "zoshk-village": {
+      "name": "روستای زشک",
+      "page_name": "روستای زشک طرقبه‌شاندیز",
+      "short_label": "روستای زشک",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستا",
+      "tile_name": "روستای زشک",
+      "short_category": "روستا",
+      "region": "زشک · طرقبه‌شاندیز · خراسان رضوی",
+      "aliases": [
+        "روستای زُشک",
+        "زشک خراسان رضوی",
+        "Zoshk village",
+        "Zoshg village"
+      ],
+      "identity_summary": "روستای زشک در دهستان ابردهٔ طرقبه‌شاندیز؛ سکونتگاه شناخته‌شدهٔ دامنهٔ بینالود و مستقل از قلهٔ هم‌نام زشک.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/1126047415",
+        "https://mapcarta.com/12567504",
+        "https://en.wikipedia.org/wiki/Zoshk",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.335812&longitude=59.196394"
+      ],
+      "latitude": 36.335812,
+      "longitude": 59.196394,
+      "elevation_m": 1730,
+      "status": "provisional",
+      "elevation_source": "ارتفاع مرجع روستا ۱۷۳۰ متر؛ Open-Meteo GLO-90 در مختصات نماینده ۱۷۴۵ متر است (اختلاف ۱۵ متر).",
+      "climate": "meadow",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای زشک در دامنهٔ بینالود",
+      "routes": {}
     }
   },
   "routes": {
