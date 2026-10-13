@@ -1,0 +1,97 @@
+{
+  "catalog_version": "hawatch-bisheh-waterfall-v1",
+  "primary_point": "bisheh-waterfall",
+  "weather_points": {
+    "bisheh-waterfall": {
+      "name": "آبشار بیشه",
+      "page_name": "آب‌وهوای آبشار بیشه لرستان",
+      "short_label": "آبشار بیشه",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای لرستان",
+      "region": "بیشه · زاگرس مرکزی · لرستان",
+      "aliases": [
+        "آبشار بیشه لرستان",
+        "آبشار بیشه دورود",
+        "Bisheh Waterfall"
+      ],
+      "identity_summary": "آبشار بیشه در محدودهٔ سپیددشت لرستان؛ این صفحه آب‌وهوای خود آبشار را نشان می‌دهد و از صفحهٔ روستای بیشه که در مجاورت آن قرار دارد جداست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/5252176494",
+        "https://visitiran.ir/index.php/attraction/Bisheh-waterfall",
+        "https://www.roshdmag.ir/fa/article/20862/روستای-بیشه",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.3305187&longitude=48.878908"
+      ],
+      "latitude": 33.3305187,
+      "longitude": 48.878908,
+      "elevation_m": 1214,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از OpenStreetMap؛ ارتفاع ۱۲۱۴ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "routes": {}
+    },
+    "bisheh-village": {
+      "name": "روستای بیشه",
+      "page_name": "آب‌وهوای روستای بیشهٔ لرستان",
+      "short_label": "روستای بیشه",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای لرستان",
+      "region": "دهستان سپیددشت · بخش پاپی · خرم‌آباد · لرستان",
+      "aliases": [
+        "روستای ایستگاه بیشه",
+        "ایستگاه بیشه لرستان",
+        "Bisheh Village",
+        "Bisheh railway station village"
+      ],
+      "identity_summary": "آبادی بیشه در دهستان سپیددشت لرستان، در مجاورت آبشار بیشه؛ این مقصد صفحهٔ مستقل آب‌وهوای روستا است و با خود آبشار یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4491452679",
+        "https://www.irangaah.ir/villages/khorramabad/sepidasht",
+        "https://www.roshdmag.ir/fa/article/20862/روستای-بیشه",
+        "https://www.tasnimnews.ir/fa/news/1404/07/08/3412112/روستای-بدون-بیکار-لرستان-بیشه-در-مسیر-ثبت-جهانی",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.3318869&longitude=48.8777215"
+      ],
+      "latitude": 33.3318869,
+      "longitude": 48.8777215,
+      "elevation_m": 1235,
+      "status": "provisional",
+      "elevation_source": "مختصات آبادی از OpenStreetMap؛ ارتفاع ۱۲۳۵ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "bisheh-waterfall",
+    "tile_name": "آبشار بیشه",
+    "name": "آبشار بیشه",
+    "short_category": "آبشار",
+    "category": "آبشارهای لرستان",
+    "category_key": "waterfall",
+    "region": "بیشه · زاگرس مرکزی · لرستان",
+    "latitude": 33.3305187,
+    "longitude": 48.878908,
+    "elevation_m": 1214,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار بیشه در زاگرس مرکزی لرستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار بیشه لرستان",
+      "آبشار بیشه دورود",
+      "Bisheh Waterfall"
+    ]
+  }
+}
