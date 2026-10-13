@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-nozhian-waterfall-v1",
+  "primary_point": "nozhian-waterfall",
+  "weather_points": {
+    "nozhian-waterfall": {
+      "name": "آبشار نوژیان",
+      "page_name": "آبشار نوژیان لرستان",
+      "short_label": "آبشار نوژیان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای لرستان",
+      "region": "دهستان کشور · بخش پاپی · خرم‌آباد · لرستان",
+      "aliases": [
+        "آبشار نوژیان لرستان",
+        "آبشار نوژان",
+        "Nozhian Waterfall",
+        "Nozhiyan Waterfall"
+      ],
+      "identity_summary": "آبشار نوژیان در بخش پاپی خرم‌آباد، بر دامنهٔ کوه تاف؛ این صفحه پیش‌بینی نقطهٔ آبشار را نشان می‌دهد و مسیر جاده‌ای یا پیاده‌روی دسترسی را به‌عنوان Route ثبت نمی‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4408533127",
+        "https://www.roshdmag.ir/fa/article/22117/%DA%98%D8%A6%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%A7%D8%B3%D8%AA%D8%A7%D9%86-%D9%84%D8%B1%D8%B3%D8%AA%D8%A7%D9%86",
+        "https://fa.tripyar.com/iran/%D9%84%D8%B1%D8%B3%D8%AA%D8%A7%D9%86/%D8%AE%D8%B1%D9%85-%D8%A2%D8%A8%D8%A7%D8%AF/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%86%D8%B4%D9%85%D9%87-%D9%87%D8%A7-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%87%D8%A7/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D9%86%D9%88%DA%98%DB%8C%D8%A7%D9%86-%D9%84%D8%B1%D8%B3%D8%AA%D8%A7%D9%86.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.2312644&longitude=48.5750323"
+      ],
+      "latitude": 33.2312644,
+      "longitude": 48.5750323,
+      "elevation_m": 1463,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از OpenStreetMap؛ ارتفاع ۱۴۶۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "nozhian-waterfall",
+    "tile_name": "آبشار نوژیان",
+    "name": "آبشار نوژیان",
+    "short_category": "آبشار",
+    "category": "آبشارهای لرستان",
+    "category_key": "waterfall",
+    "region": "دهستان کشور · بخش پاپی · خرم‌آباد · لرستان",
+    "latitude": 33.2312644,
+    "longitude": 48.5750323,
+    "elevation_m": 1463,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار نوژیان بر دامنهٔ کوه تاف در لرستان",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار نوژیان لرستان",
+      "آبشار نوژان",
+      "Nozhian Waterfall",
+      "Nozhiyan Waterfall"
+    ]
+  }
+}

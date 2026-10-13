@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-ab-sefid-waterfall-v1",
+  "primary_point": "ab-sefid-waterfall",
+  "weather_points": {
+    "ab-sefid-waterfall": {
+      "name": "آبشار آب‌سفید",
+      "page_name": "آبشار آب‌سفید الیگودرز",
+      "short_label": "آبشار آب‌سفید",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای لرستان",
+      "region": "بخش بشارت ذلقی · الیگودرز · لرستان",
+      "aliases": [
+        "آبشار آب سفید الیگودرز",
+        "آب‌سفید الیگودرز",
+        "Ab Sefid Waterfall",
+        "Absefid Waterfall"
+      ],
+      "identity_summary": "آبشار آب‌سفید در بخش بشارت ذلقی شهرستان الیگودرز، در دامنه‌های زاگرس نزدیک قالی‌کوه؛ نام و منطقه در عنوان صفحه برای تمایز مقصد روشن است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3249253767",
+        "https://visitiran.ir/attraction/Ab-Sefid-Waterfall",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%A2%D8%A8-%D8%B3%D9%81%DB%8C%D8%AF%D8%8C-%D8%A7%D9%84%DB%8C%DA%AF%D9%88%D8%AF%D8%B1%D8%B2/",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.9987353&longitude=49.5802258"
+      ],
+      "latitude": 32.9987353,
+      "longitude": 49.5802258,
+      "elevation_m": 2331,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از OpenStreetMap؛ ارتفاع ۲۳۳۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "forest_fog",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "ab-sefid-waterfall",
+    "tile_name": "آبشار آب‌سفید",
+    "name": "آبشار آب‌سفید الیگودرز",
+    "short_category": "آبشار",
+    "category": "آبشارهای لرستان",
+    "category_key": "waterfall",
+    "region": "بخش بشارت ذلقی · الیگودرز · لرستان",
+    "latitude": 32.9987353,
+    "longitude": 49.5802258,
+    "elevation_m": 2331,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار آب‌سفید در دامنه‌های زاگرس، شهرستان الیگودرز",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار آب سفید الیگودرز",
+      "آب‌سفید الیگودرز",
+      "Ab Sefid Waterfall",
+      "Absefid Waterfall"
+    ]
+  }
+}

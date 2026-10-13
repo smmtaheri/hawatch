@@ -1,0 +1,66 @@
+{
+  "catalog_version": "hawatch-shirez-canyon-v1",
+  "primary_point": "shirez-canyon",
+  "weather_points": {
+    "shirez-canyon": {
+      "name": "تنگه شیرز",
+      "page_name": "تنگهٔ شیرز کوهدشت",
+      "short_label": "تنگه شیرز",
+      "place_type": "valley",
+      "category_key": "gorge",
+      "category": "تنگه‌ها و دره‌های لرستان",
+      "region": "شمال‌شرق کوهدشت · لرستان",
+      "aliases": [
+        "درهٔ شیرز",
+        "تنگ شیرز",
+        "تنگه شیرز کوهدشت",
+        "Shirez Canyon"
+      ],
+      "identity_summary": "درهٔ طبیعی شیرز در شمال‌شرق کوهدشت و نزدیک رود سیمره؛ مختصات صفحه از نشانگر نقشهٔ منبع در دهانهٔ تنگه گرفته شده و مرز دقیق محدوده را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/5591401522",
+        "https://untamediran.com/fa/tang-e-shirez",
+        "https://www.google.com/maps/search/?api=1&query=33.8267%2C47.4972",
+        "https://fa.tripyar.com/iran/%D9%84%D8%B1%D8%B3%D8%AA%D8%A7%D9%86/%DA%A9%D9%88%D9%87%D8%AF%D8%B4%D8%AA/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%AF%D8%B4%D8%AA-%D9%88-%D8%A8%DB%8C%D8%A7%D8%A8%D8%A7%D9%86-%DA%AF%D8%B1%D8%AF%DB%8C/%D8%AA%D9%86%DA%AF%D9%87-%D8%B4%DB%8C%D8%B1%D8%B2.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.8267&longitude=47.4972"
+      ],
+      "latitude": 33.8267,
+      "longitude": 47.4972,
+      "elevation_m": 1057,
+      "status": "provisional",
+      "elevation_source": "مختصات نشانگر نقشهٔ منبع که دهانهٔ تنگه را مشخص می‌کند؛ ارتفاع ۱۰۵۷ متر از Open-Meteo GLO-90 DEM در همین مختصات canonical.",
+      "climate": "lake_valley",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "shirez-canyon",
+    "tile_name": "تنگه شیرز",
+    "name": "تنگه شیرز",
+    "short_category": "تنگه",
+    "category": "تنگه‌ها و دره‌های لرستان",
+    "category_key": "gorge",
+    "region": "شمال‌شرق کوهدشت · لرستان",
+    "latitude": 33.8267,
+    "longitude": 47.4972,
+    "elevation_m": 1057,
+    "image": "/images/home-scene.png",
+    "image_alt": "تنگهٔ شیرز در شمال‌شرق کوهدشت",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "درهٔ شیرز",
+      "تنگ شیرز",
+      "تنگه شیرز کوهدشت",
+      "Shirez Canyon"
+    ]
+  }
+}
