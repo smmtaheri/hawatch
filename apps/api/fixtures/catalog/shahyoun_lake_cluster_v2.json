@@ -1,6 +1,6 @@
 {
-  "catalog_version": "hawatch-shahyoun-lake-cluster-v1",
-  "primary_point": "shahyoun-lake",
+  "catalog_version": "hawatch-shahyoun-lake-cluster-v2",
+  "primary_point": "shahyoun-island",
   "weather_points": {
     "shahyoun-lake": {
       "name": "دریاچهٔ شهیون (سد دز)",
@@ -42,9 +42,9 @@
       "image": "/images/home-scene.png",
       "image_alt": "دریاچهٔ شهیون پشت سد دز در خوزستان"
     },
-    "dez-dam-island": {
-      "name": "جزیرهٔ سد دز",
-      "page_name": "جزیرهٔ سد دز در دریاچهٔ شهیون",
+    "shahyoun-island": {
+      "name": "جزیرهٔ شهیون (جزیرهٔ سد دز)",
+      "page_name": "جزیرهٔ شهیون (جزیرهٔ سد دز)",
       "short_label": "جزیرهٔ شهیون",
       "tile_name": "جزیرهٔ شهیون",
       "short_category": "جزیره",
@@ -61,7 +61,7 @@
         "Dez Dam Island",
         "Shahyoun Island"
       ],
-      "identity_summary": "جزیرهٔ ثبت‌شده با نام جزیرهٔ سد دز در دریاچهٔ شهیون، نزدیک روستای پامنار؛ صفحه‌ای مستقل از خود دریاچه و روستای پامنار.",
+      "identity_summary": "جزیرهٔ شهیون، شناخته‌شده با نام جزیرهٔ سد دز، در دریاچهٔ شهیون نزدیک روستای پامنار؛ صفحه‌ای مستقل از پهنهٔ دریاچه و روستای پامنار.",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -80,39 +80,39 @@
       "elevation_source": "ارتفاع از Open-Meteo GLO-90 DEM در گرهٔ جزیرهٔ ثبت‌شده در OSM؛ پاسخ ۳۸۴ متر. در بررسی provider، grid با فاصلهٔ ۲٫۲۳ کیلومتر و دادهٔ ساعتی معتبر بود (۲۰۲۶-۱۰-۱۳).",
       "climate": "lake_valley",
       "image": "/images/home-scene.png",
-      "image_alt": "جزیرهٔ سد دز در دریاچهٔ شهیون، نزدیک پامنار",
+      "image_alt": "جزیرهٔ شهیون در دریاچهٔ سد دز، نزدیک پامنار",
       "seo": {
-        "title": "آب‌وهوای جزیرهٔ سد دز در دریاچهٔ شهیون؛ دما، باد و بارش | هواچ",
-        "description": "پیش‌بینی آب‌وهوای جزیرهٔ سد دز در دریاچهٔ شهیون، نزدیک روستای پامنار دزفول؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+        "title": "آب‌وهوای جزیرهٔ شهیون (جزیرهٔ سد دز)؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ شهیون، معروف به جزیرهٔ سد دز، در نزدیکی روستای پامنار دزفول؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
       }
     }
   },
   "routes": {},
   "point": {
-    "slug": "shahyoun-lake",
-    "tile_name": "دریاچهٔ شهیون",
-    "name": "دریاچهٔ شهیون (سد دز)",
-    "short_category": "دریاچه",
-    "category": "دریاچه‌های خوزستان",
+    "slug": "shahyoun-island",
+    "tile_name": "جزیرهٔ شهیون",
+    "name": "جزیرهٔ شهیون (جزیرهٔ سد دز)",
+    "short_category": "جزیره",
+    "category": "جزیره‌های خوزستان",
     "category_key": "lake",
-    "region": "شهیون · دزفول · خوزستان",
-    "elevation_m": 408,
-    "latitude": 32.6876,
-    "longitude": 48.534,
+    "region": "پامنار · شهیون · دزفول · خوزستان",
+    "elevation_m": 384,
+    "latitude": 32.6531,
+    "longitude": 48.4471,
     "image": "/images/home-scene.png",
-    "image_alt": "دریاچهٔ شهیون پشت سد دز در خوزستان",
+    "image_alt": "جزیرهٔ شهیون در دریاچهٔ سد دز، نزدیک پامنار",
     "climate": "lake_valley",
     "is_popular": false,
     "is_active": true,
     "seo_indexable": true,
     "aliases": [
-      "دریاچه شهیون",
-      "دریاچه سد دز",
-      "دریاچهٔ سد دز",
-      "دریاچه دز",
-      "Shahyoun Lake",
-      "Shahyun Lake",
-      "Dez Dam Lake"
+      "جزیره شهیون",
+      "جزیره شیهون",
+      "جزیرهٔ شهیون",
+      "جزیره دریاچه شهیون",
+      "جزیره دریاچه سد دز",
+      "Dez Dam Island",
+      "Shahyoun Island"
     ]
   }
 }
