@@ -1,0 +1,111 @@
+{
+  "catalog_version": "hawatch-darkesh-v1",
+  "primary_point": "darkesh-forest",
+  "weather_points": {
+    "darkesh-forest": {
+      "name": "جنگل بلوط درکش",
+      "page_name": "جنگل بلوط درکش",
+      "short_label": "جنگل درکش",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌های بلوط خراسان شمالی",
+      "region": "دامنهٔ شمالی آلاداغ · درکش و جوزک · مانه و سملقان · خراسان شمالی",
+      "aliases": [
+        "جنگل درکش",
+        "جنگل‌های بلوط درکش",
+        "جنگل جوزک-درکش",
+        "جنگل بلوط مانه و سملقان",
+        "Darkesh Oak Forest",
+        "Jozak-Darkesh Forest"
+      ],
+      "identity_summary": "رویشگاه گستردهٔ بلوط در دامنهٔ شمالی آلاداغ، پیرامون درکش و جوزک؛ مختصات این صفحه یک نقطهٔ نماینده در محدودهٔ مستند جنگل است و مرز دقیق رویشگاه را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.tourismonline.co/news/95573/%D8%AC%D9%86%DA%AF%D9%84%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%A8%D9%84%D9%88%D8%B7-%D8%AE%D8%B1%D8%A7%D8%B3%D8%A7%D9%86-%D8%B4%D9%85%D8%A7%D9%84%DB%8C%D8%8C-%D8%AC%D8%A7%D8%B0%D8%A8%D9%87%E2%80%8C%D8%A7",
+        "https://agris.fao.org/search/ar/records/675ac3e40ce2cede71d0a327",
+        "https://gl.wikiloc.com/rutas-sendeirismo/qlh-ymn-dgy-drkhsh-8-adhr-1401-120274989",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.415&longitude=56.74"
+      ],
+      "latitude": 37.415,
+      "longitude": 56.74,
+      "elevation_m": 1540,
+      "status": "provisional",
+      "elevation_source": "پین نماینده در دامنهٔ جنگلی درکش؛ پژوهش، ارتفاع رویشگاه جوزک–درکش را ۱۴۰۰ تا ۲۰۰۰ متر و یک گزارش پیمایش waypoint جنگل بلوط را ۱۶۸۲ متر ثبت کرده است. ارتفاع این پین از Open-Meteo GLO-90 DEM است؛ مرز دقیق جنگل ادعا نمی‌شود.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای جنگل بلوط درکش؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل بلوط درکش در مانه و سملقان، خراسان شمالی؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی طبیعت‌گردی.",
+        "content": "جنگل بلوط درکش رویشگاهی گسترده در دامنه‌های آلاداغ و پیرامون درکش و جوزک است. این صفحه پیش‌بینی یک نقطهٔ نماینده از جنگل را نشان می‌دهد؛ آب‌وهوا در بخش‌های مختلف این پهنه می‌تواند متفاوت باشد."
+      },
+      "routes": {}
+    },
+    "darkesh": {
+      "name": "روستای درکش",
+      "page_name": "روستای درکش، مانه و سملقان",
+      "short_label": "درکش",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای خراسان شمالی",
+      "region": "دهستان آلمه · مانه و سملقان · خراسان شمالی",
+      "aliases": [
+        "درکش خراسان شمالی",
+        "روستای درکش مانه و سملقان",
+        "دره‌کش",
+        "Darreh-ye Darkesh",
+        "Darkesh village"
+      ],
+      "identity_summary": "روستای درکش در دهستان آلمه، شهرستان مانه و سملقان؛ مستقل از صفحهٔ جنگل بلوط درکش که رویشگاهی گسترده در پیرامون روستا است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://fa.tripyar.com/iran/%D8%AE%D8%B1%D8%A7%D8%B3%D8%A7%D9%86-%D8%B4%D9%85%D8%A7%D9%84%DB%8C/%D9%85%D8%A7%D9%86%D9%87-%D9%88-%D8%B3%D9%85%D9%84%D9%82%D8%A7%D9%86/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C%DB%8C%D8%8C-%D9%82%D9%88%D9%85%DB%8C-%D9%88-%D8%B9%D8%B4%D8%A7%DB%8C%D8%B1%DB%8C/%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE%DB%8C-%D9%88-%D9%81%D8%B1%D9%87%D9%86%DA%AF%DB%8C/%D8%AF%D8%B1%DA%A9%D8%B4-%D9%85%D8%A7%D9%86%D9%87-%D9%88-%D8%B3%D9%85%D9%84%D9%82%D8%A7%D9%86.html",
+        "https://mapcarta.com/12621138",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.44028&longitude=56.74714"
+      ],
+      "latitude": 37.44028,
+      "longitude": 56.74714,
+      "elevation_m": 1037,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز آبادی از OpenStreetMap/Mapcarta؛ ارتفاع ۱۰۳۷ متر از Open-Meteo GLO-90 DEM در همین مختصات. منبع گردشگری ارتفاع روستا را حدود ۱۰۴۰ متر ذکر می‌کند.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای روستای درکش؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای درکش در دهستان آلمه، مانه و سملقان، خراسان شمالی؛ وضعیت ساعتی دما، باد و بارش برای برنامه‌ریزی سفر."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "darkesh-forest",
+    "tile_name": "جنگل بلوط درکش",
+    "name": "جنگل بلوط درکش",
+    "short_category": "جنگل",
+    "category": "جنگل‌های بلوط خراسان شمالی",
+    "category_key": "forest",
+    "region": "دامنهٔ شمالی آلاداغ · درکش و جوزک · مانه و سملقان · خراسان شمالی",
+    "latitude": 37.415,
+    "longitude": 56.74,
+    "elevation_m": 1540,
+    "image": "/images/home-scene.png",
+    "image_alt": "جنگل بلوط درکش در دامنه‌های آلاداغ",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جنگل درکش",
+      "جنگل‌های بلوط درکش",
+      "جنگل جوزک-درکش",
+      "جنگل بلوط مانه و سملقان",
+      "Darkesh Oak Forest",
+      "Jozak-Darkesh Forest"
+    ]
+  }
+}
