@@ -1,0 +1,266 @@
+{
+  "catalog_version": "hawatch-kol-jeno-catalog-v2",
+  "primary_point": "kol-jeno",
+  "point": {
+    "slug": "kol-jeno",
+    "tile_name": "کول‌جنو",
+    "name": "قلهٔ کول‌جنو",
+    "short_category": "قله",
+    "category": "قله‌های لرستان",
+    "category_key": "mountain",
+    "region": "اشترانکوه · کمندان · ازنا · لرستان",
+    "elevation_m": 3779,
+    "latitude": 33.2517222,
+    "longitude": 49.4289722,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ کول‌جنو در اشترانکوه",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کول جنو",
+      "کول‌جنون",
+      "کوله جنون",
+      "کول جنی",
+      "قله کول جنو",
+      "Kol Jeno",
+      "Kool Jeno",
+      "Kool-e-Jonoon",
+      "Kolejenon"
+    ]
+  },
+  "weather_points": {
+    "kol-jeno": {
+      "name": "قلهٔ کول‌جنو",
+      "page_name": "قلهٔ کول‌جنو اشترانکوه",
+      "short_label": "کول‌جنو",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "کول جنو",
+        "کول‌جنون",
+        "کوله جنون",
+        "کول جنی",
+        "Kol Jeno",
+        "Kool Jeno",
+        "Kool-e-Jonoon",
+        "Kolejenon"
+      ],
+      "identity_summary": "قلهٔ کول‌جنو در خط‌الرأس اشترانکوه، نزدیک روستای کمندان در شهرستان ازنا، لرستان",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://kohpars.blogfa.com/post/54",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-56002907",
+        "https://decovel.com/page/kol-jeno-peak",
+        "https://api.opentopodata.org/v1/mapzen?locations=33.2517222,49.4289722"
+      ],
+      "latitude": 33.2517222,
+      "longitude": 49.4289722,
+      "elevation_m": 3779,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 3779 m. ثبت‌های صعود ارتفاع 3813 تا 3823 m و Open-Meteo GLO-90 برابر 3696 m گزارش می‌کنند؛ اختلاف با DEM ارائه‌دهنده 83 m است، بنابراین ارتفاع provisional باقی می‌ماند.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-trailhead": {
+      "name": "پارکینگ کارخانهٔ سراب کمند زاگرس",
+      "page_name": "پارکینگ مسیر کول‌جنو در کمندان",
+      "short_label": "پارکینگ کول‌جنو",
+      "place_type": "parking",
+      "category_key": "landmark",
+      "aliases": ["پای‌کار کول‌جنو", "پارکینگ کمندان"],
+      "identity_summary": "پارکینگ کارخانهٔ آب معدنی سراب کمند زاگرس، مبدأ مستند مسیر پیادهٔ کول‌جنو در بالادست کمندان؛ نقطهٔ پشتیبان مسیر است، نه مقصد مستقل.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kol-jeno-kool-e-jonoon-peak-3813m-oshtorankouh-kamandan-azna-lorestan-khwl-jnw-tygh-shmly-rwsty-khm-180344744",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611"
+      ],
+      "latitude": 33.303448,
+      "longitude": 49.426882,
+      "elevation_m": 2080,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 2080 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-sarab-kamandan": {
+      "name": "سراب کمندان",
+      "page_name": "سراب کمندان در مسیر کول‌جنو",
+      "short_label": "سراب کمندان",
+      "place_type": "spring",
+      "category_key": "spring",
+      "aliases": ["سراب بهادر", "Sarab Kamandan", "Sarab Bahador"],
+      "identity_summary": "سراب شناخته‌شدهٔ کمندان در مسیر دسترسی پیاده به پناهگاه کول‌جنو؛ نام در گزارش‌های مسیر آمده و مختصات با waypoint چشمه در ترک تطبیق دارد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://oshtorankooh.blogfa.com/post/2167/%D9%82%D9%84%D9%87-%DA%A9%D9%88%D9%84-%D8%AC%D9%86%D9%88",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611"
+      ],
+      "latitude": 33.281582,
+      "longitude": 49.428496,
+      "elevation_m": 2411,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 2411 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-naser-spring": {
+      "name": "چشمهٔ ناصر",
+      "page_name": "چشمهٔ ناصر در مسیر کول‌جنو",
+      "short_label": "چشمهٔ ناصر",
+      "place_type": "spring",
+      "category_key": "spring",
+      "aliases": ["چشمه ناصر خوشه‌چین", "Naser Spring"],
+      "identity_summary": "چشمهٔ ناصر در مسیر کمندان به پناهگاه کول‌جنو؛ منبع مسیر نام چشمه را به یاد ناصر خوشه‌چین ثبت می‌کند و waypoint ترک با موقعیت آن هم‌خوان است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://oshtorankooh.blogfa.com/post/2167/%D9%82%D9%84%D9%87-%DA%A9%D9%88%D9%84-%D8%AC%D9%86%D9%88",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611",
+        "https://www.wikiloc.com/mountaineering-trails/kol-jeno-kool-e-jonoon-peak-3813m-oshtorankouh-kamandan-azna-lorestan-khwl-jnw-tygh-shmly-rwsty-khm-180344744"
+      ],
+      "latitude": 33.267609,
+      "longitude": 49.437589,
+      "elevation_m": 2831,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 2831 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-shelter": {
+      "name": "پناهگاه کامران سلیمانی",
+      "page_name": "پناهگاه کامران سلیمانی کول‌جنو",
+      "short_label": "پناهگاه کول‌جنو",
+      "place_type": "shelter",
+      "category_key": "landmark",
+      "aliases": ["جان‌پناه کول‌جنو", "پناهگاه سلیمانی", "Kol Jeno shelter"],
+      "identity_summary": "جان‌پناه شناخته‌شدهٔ کامران سلیمانی در دامنهٔ شمالی کول‌جنو و ایستگاه مسیر کمندان به قله.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://oshtorankooh.blogfa.com/post/2167/%D9%82%D9%84%D9%87-%DA%A9%D9%88%D9%84-%D8%AC%D9%86%D9%88",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611"
+      ],
+      "latitude": 33.264287,
+      "longitude": 49.433435,
+      "elevation_m": 3007,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 3007 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-under-blades-waterfall": {
+      "name": "آبشار زیر تیغه‌های کول‌جنو",
+      "page_name": "آبشار زیر تیغه‌های کول‌جنو",
+      "short_label": "آبشار زیر تیغه‌ها",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["چشمه و آبشار زیر تیغه‌های کول‌جنو"],
+      "identity_summary": "آبشار نام‌برده‌شده در مسیر بالای پناهگاه و پایین تیغه‌های کول‌جنو؛ waypoint چشمه و آبشار در ترک در همین محدوده ثبت شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/kol-jeno-peak-qlh-khwl-jnw-141339587",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611"
+      ],
+      "latitude": 33.261892,
+      "longitude": 49.430632,
+      "elevation_m": 3131,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 3131 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    },
+    "kol-jeno-shast-khoda": {
+      "name": "سنگ شصت‌خدا",
+      "page_name": "سنگ شصت‌خدا در مسیر کول‌جنو",
+      "short_label": "شصت‌خدا",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": ["سنگ شست‌خدا", "Shast-e Khoda", "Shast Khoda"],
+      "identity_summary": "سنگ شاخص شصت‌خدا در مسیر شرقی کول‌جنو؛ گزارش مسیر آن را landmark واقعی مسیر کوه‌پیمایی و راهنمای اتصال به قله معرفی می‌کند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://oshtorankooh.blogfa.com/post/2167/%D9%82%D9%84%D9%87-%DA%A9%D9%88%D9%84-%D8%AC%D9%86%D9%88",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611"
+      ],
+      "latitude": 33.255438,
+      "longitude": 49.432932,
+      "elevation_m": 3459,
+      "status": "provisional",
+      "elevation_source": "OpenTopoData Mapzen DEM: 3459 m؛ ارتفاع خام GPX فقط cross-check است.",
+      "climate": "high_alpine"
+    }
+  },
+  "routes": {
+    "shast_khoda": {
+      "slug": "kol-jeno-shast-khoda",
+      "title": "پارکینگ کمندان تا قلهٔ کول‌جنو از مسیر شصت‌خدا",
+      "subtitle": "از سراب کمندان و چشمهٔ ناصر، پناهگاه سلیمانی و سنگ شصت‌خدا تا قله",
+      "trail_label": "مسیر شصت‌خدا",
+      "origin": "پارکینگ سراب کمند زاگرس",
+      "target_label": "قلهٔ کول‌جنو",
+      "region": "کمندان · اشترانکوه · لرستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "kol-jeno-trailhead",
+        "kol-jeno-sarab-kamandan",
+        "kol-jeno-naser-spring",
+        "kol-jeno-shelter",
+        "kol-jeno-under-blades-waterfall",
+        "kol-jeno-shast-khoda",
+        "kol-jeno"
+      ],
+      "distance_km": 9.1,
+      "ascent_m": 1662,
+      "one_way_minutes": 295,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "distance-ascent-altitude-fatigue-v3",
+        "version": "kol-jeno-shast-khoda-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/qlh-khwl-jnw-z-msyr-shst-khd-81900611",
+          "https://www.wikiloc.com/mountaineering-trails/kol-jeno-peak-qlh-khwl-jnw-141339587",
+          "https://oshtorankooh.blogfa.com/post/2167/%D9%82%D9%84%D9%87-%DA%A9%D9%88%D9%84-%D8%AC%D9%86%D9%88"
+        ],
+        "evidence_tracks": [
+          "tracks/kol-jeno/kol-jeno-shast-khoda-kamandan-trailhead-to-summit-2021.gpx"
+        ],
+        "cumulative_minutes": {
+          "kol-jeno-trailhead": 0,
+          "kol-jeno-sarab-kamandan": 70,
+          "kol-jeno-naser-spring": 140,
+          "kol-jeno-shelter": 170,
+          "kol-jeno-under-blades-waterfall": 190,
+          "kol-jeno-shast-khoda": 245,
+          "kol-jeno": 295
+        },
+        "notes": [
+          "مسافت ۹٫۰۹ کیلومتر و صعود نرم‌شدهٔ ۱۶۶۲ متر از هندسهٔ ترک تا اولین نزدیک‌شدن به قله محاسبه شد؛ ارتفاع GPX فقط مرجع است.",
+          "نویسندهٔ ترک یک انحراف اشتباه بالاتر از پناهگاه و بازگشت به ابتدای آن را گزارش کرده؛ ترک مستقل دوم برای همین جهت در دسترس نبود، بنابراین confidence پایین و عدم‌قطعیت ۷۵ دقیقه ثبت شد.",
+          "زمان خام ترک به‌علت توقف شبانه استفاده نشد؛ زمان متوسط با مدل عمومی distance-ascent-altitude-fatigue-v3 و ارتفاع وزنی checkpointهای کاتالوگ محاسبه شد."
+        ]
+      },
+      "public_point_notes": {}
+    }
+  },
+  "shared_weather_points": []
+}
