@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-kalleh-sar-shahzeyd-v1",
+  "primary_point": "kalleh-sar-shah-zeyd",
+  "weather_points": {
+    "kalleh-sar-shah-zeyd": {
+      "name": "قلهٔ کله‌سر شاه‌زید",
+      "page_name": "قلهٔ کله‌سر شاه‌زید در آمل",
+      "short_label": "کله‌سر شاه‌زید",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های جنگلی مازندران",
+      "region": "چلاو · آمل · مازندران",
+      "aliases": [
+        "قلهٔ شاه‌زید",
+        "قله شاه زید کله سر",
+        "قله کله سر جنگل شاه زید",
+        "کله‌سر شاه‌زید",
+        "Kalleh Sar Shah Zeyd",
+        "Shah Zeyd Peak"
+      ],
+      "identity_summary": "قلهٔ جنگلی کله‌سر، شناخته‌شده با نام قلهٔ شاه‌زید، در منطقهٔ چلاو شهرستان آملِ مازندران؛ مختصات نقطه روی قله است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87-%D8%B2%DB%8C%D8%AF/",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-shh-zyd-t-qlh-khlh-sr-pnjshnbh-1402-08-04-151381653",
+        "https://www.wikiloc.com/hiking-trails/jngl-shh-zyd-w-qlh-khlh-sr-grwh-hwzwy-afq-87601197",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.18962&longitude=52.32555",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.18962,
+      "longitude": 52.32555,
+      "elevation_m": 2015,
+      "status": "provisional",
+      "elevation_source": "مختصات قله در دو گزارش مستقل پیمایش نزدیک به 36.18962,52.32555 همگراست. ارتفاع ۲۰۱۵ متر از گزارش‌های قله (حدود ۲۰۱۵ تا ۲۰۲۵ متر) انتخاب شده؛ Open-Meteo GLO-90 DEM در همین مختصات ۲۰۰۱ متر برمی‌گرداند. ارتفاع تا تأیید میدانی provisional است.",
+      "climate": "forest_fog",
+      "image": "/images/home-scene.png",
+      "image_alt": "قلهٔ کله‌سر شاه‌زید در جنگل‌های چلاو آمل"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "kalleh-sar-shah-zeyd",
+    "tile_name": "کله‌سر شاه‌زید",
+    "name": "قلهٔ کله‌سر شاه‌زید",
+    "short_category": "قله",
+    "category": "قله‌های جنگلی مازندران",
+    "category_key": "mountain",
+    "region": "چلاو · آمل · مازندران",
+    "latitude": 36.18962,
+    "longitude": 52.32555,
+    "elevation_m": 2015,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ کله‌سر شاه‌زید در جنگل‌های چلاو آمل",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "قلهٔ شاه‌زید",
+      "قله شاه زید کله سر",
+      "قله کله سر جنگل شاه زید",
+      "کله‌سر شاه‌زید",
+      "Kalleh Sar Shah Zeyd",
+      "Shah Zeyd Peak"
+    ]
+  }
+}
