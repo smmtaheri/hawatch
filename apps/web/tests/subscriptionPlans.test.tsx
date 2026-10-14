@@ -49,7 +49,9 @@ describe("subscription plans", () => {
     expect(await screen.findByRole("heading", { name: "اشتراک هواچ" })).toBeInTheDocument();
     expect(screen.queryByText("دسترسی هواچ")).not.toBeInTheDocument();
     expect(screen.queryByText("روزهای قابل‌نمایش از تنظیمات پنل مدیریت خوانده می‌شوند و هر زمان قابل تغییرند.")).not.toBeInTheDocument();
-    const cards = screen.getByRole("region", { name: "طرح‌های اشتراک" });
+    // The page heading is rendered before the plans request resolves. Wait for
+    // the async cards instead of racing the API mock with a synchronous query.
+    const cards = await screen.findByRole("region", { name: "طرح‌های اشتراک" });
     expect(cards.querySelector(".plan-card.free")).toBeTruthy();
     expect(cards.querySelector(".plan-card.paid")).toBeTruthy();
     await user.click(screen.getByRole("button", { name: "ورود برای خرید" }));
