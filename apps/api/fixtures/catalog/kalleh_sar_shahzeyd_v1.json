@@ -1,7 +1,69 @@
 {
-  "catalog_version": "hawatch-kalleh-sar-shahzeyd-v1",
+  "catalog_version": "hawatch-kalleh-sar-shahzeyd-v3",
   "primary_point": "kalleh-sar-shah-zeyd",
   "weather_points": {
+    "shahzeyd-village": {
+      "name": "روستای شاه‌زید، مبدأ قلهٔ کله‌سر",
+      "page_name": "روستای شاه‌زید آمل، مبدأ مسیر کله‌سر",
+      "short_label": "شاه‌زید",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای آمل",
+      "region": "چلاو · آمل · مازندران",
+      "aliases": [
+        "روستای شاه زید آمل",
+        "شاهزید آمل",
+        "امامزاده شاه زید",
+        "Shah Zeyd village"
+      ],
+      "identity_summary": "روستای شاه‌زید در چلاو آمل؛ نقطهٔ نمایندهٔ مبدأ پیاده‌روی کنار امامزادهٔ روستا برای صعود کله‌سر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87-%D8%B2%DB%8C%D8%AF/",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-shh-zyd-t-qlh-khlh-sr-pnjshnbh-1402-08-04-151381653",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlh-sr-shah-zeyd-285116653"
+      ],
+      "latitude": 36.210319,
+      "longitude": 52.345128,
+      "elevation_m": 966,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ شروع نام‌گذاری‌شدهٔ امامزاده در دو ترک؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۹۶۶ متر است و ارتفاع waypoint خام GPX حدود ۹۷۵ متر فقط مرجع مکانی است.",
+      "climate": "forest_fog"
+    },
+    "kalleh-sar-telar": {
+      "name": "تلار گوسفندسرا در مسیر کله‌سر شاه‌زید",
+      "page_name": "تلار گوسفندسرا در مسیر کله‌سر شاه‌زید",
+      "short_label": "تلار گوسفندسرا",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "مسیر کله‌سر شاه‌زید",
+      "region": "چلاو · آمل · مازندران",
+      "aliases": [
+        "گوسفندسرا کله‌سر",
+        "گوسفندسرا شاه‌زید",
+        "تلار بالای شاه‌زید",
+        "تلار آخر کله‌سر"
+      ],
+      "identity_summary": "تلار و کلبهٔ گوسفندسرا در دشت بالایی مسیر جنگلی شاه‌زید؛ landmark واقعی پیش از شیب خط‌الرأس و قله.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87-%D8%B2%DB%8C%D8%AF/",
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-shh-zyd-t-qlh-khlh-sr-pnjshnbh-1402-08-04-151381653",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlh-sr-shah-zeyd-285116653"
+      ],
+      "latitude": 36.190288,
+      "longitude": 52.317069,
+      "elevation_m": 1804,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌گذاری‌شدهٔ گوسفندسرا در ترک cross-check؛ Open-Meteo GLO-90 DEM در مختصات canonical برابر ۱۸۰۴ متر است و ارتفاع خام GPX حدود ۱۸۰۸ متر فقط مرجع مکانی است.",
+      "climate": "forest_fog"
+    },
     "kalleh-sar-shah-zeyd": {
       "name": "قلهٔ کله‌سر شاه‌زید",
       "page_name": "قلهٔ کله‌سر شاه‌زید در آمل",
@@ -40,7 +102,51 @@
       "image_alt": "قلهٔ کله‌سر شاه‌زید در جنگل‌های چلاو آمل"
     }
   },
-  "routes": {},
+  "routes": {
+    "shahzeyd": {
+      "slug": "kalleh-sar-shah-zeyd-shahzeyd-village",
+      "title": "شاه‌زید تا قلهٔ کله‌سر",
+      "subtitle": "از امامزادهٔ شاه‌زید، مسیر جنگلی تا تلار گوسفندسرا و قله",
+      "trail_label": "مسیر شاه‌زید",
+      "origin": "امامزادهٔ روستای شاه‌زید",
+      "target_label": "قلهٔ کله‌سر شاه‌زید",
+      "region": "چلاو · آمل · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "shahzeyd-village",
+        "kalleh-sar-telar",
+        "kalleh-sar-shah-zeyd"
+      ],
+      "distance_km": 6.7,
+      "ascent_m": 1050,
+      "one_way_minutes": 190,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-crosscheck-dem-model-v3",
+        "version": "kalleh-sar-distance-ascent-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%B4%D8%A7%D9%87-%D8%B2%DB%8C%D8%AF/",
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-shh-zyd-t-qlh-khlh-sr-pnjshnbh-1402-08-04-151381653",
+          "https://www.wikiloc.com/hiking-trails/qlh-khlh-sr-shah-zeyd-285116653"
+        ],
+        "cumulative_minutes": {
+          "shahzeyd-village": 0,
+          "kalleh-sar-telar": 155,
+          "kalleh-sar-shah-zeyd": 190
+        },
+        "notes": [
+          "مسافت یک‌طرفه ۶٫۷ کیلومتر، میانگین دو ترک هم‌مسیر (۶٫۳۹ و ۷٫۰۳ کیلومتر) است؛ افزایش ارتفاع ۱۰۵۰ متر با اختلاف DEM مبدأ ۹۶۶ تا قلهٔ ثبت‌شدهٔ ۲۰۱۵ متر و صعود هموارشدهٔ GPX (حدود ۱۰۵۲ متر) سازگار است.",
+          "زمان متوسط با distance-ascent-altitude-fatigue-v3 محاسبه شده: ۶٫۷×۷٫۶۵ + ۱۰٫۵×۱۳٫۱۸ = حدود ۱۹۰ دقیقه؛ میانگین ارتفاع نقاط مسیر زیر آستانهٔ ۲۵۰۰ متر است و جریمهٔ ارتفاع اعمال نمی‌شود.",
+          "تلار در حدود ۵٫۵ تا ۵٫۷ کیلومتر از مبدأ قرار دارد؛ محاسبهٔ همان بخش با فاصله و افزایش ارتفاع DEM تا تلار زمان تجمعی متوسط ۱۵۵ دقیقه می‌دهد. توقف‌های طولانی و زمان استراحتِ گزارش‌ها وارد زمان مدل نشده‌اند.",
+          "دو GPX از نظر هندسه هم‌پوشانی دارند؛ ترک ۲۰۲۳ زمان صعود ۳ ساعت و ۱۰ دقیقه ثبت کرده و منبع مستقل کوهنوردی مسیر لغزنده و زمان ۵٫۵ ساعته برای صعود آرام گزارش می‌کند. مسیر جنگلی چالشی است و پاکوب در برگ‌ریزان ممکن است پوشیده شود."
+        ]
+      }
+    }
+  },
   "point": {
     "slug": "kalleh-sar-shah-zeyd",
     "tile_name": "کله‌سر شاه‌زید",

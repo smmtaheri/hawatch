@@ -9,7 +9,7 @@ def test_bootstrap_orders_catalogs_before_shared_point_consumers(db):
     ensure_catalog("hawatch-test-demo-v1")
 
     assert WeatherPoint.objects.filter(
-        slug__in={"tochal-jamshidieh-park", "tochal-kolakchal-camp", "kolakchal"},
+        slug__in={"jamshidieh-park", "kolakchal-camp", "kolakchal"},
         is_active=True,
     ).count() == 3
     assert Route.objects.filter(slug="kolakchal-jamshidieh", is_active=True).exists()

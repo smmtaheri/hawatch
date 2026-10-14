@@ -21,7 +21,7 @@
 - **Home** `/`
 - **Point Forecast**
   - Point role: `/points/tochal`
-  - Point role: `/points/tochal-sarband-square` (همان قالب بصری Point؛ بدون planner)
+  - Point role: `/points/sarband-tehran` (همان قالب بصری Point؛ بدون planner)
 - **Route** `/routes/tochal-darband` (و سایر مسیرهای مستند)
 
 Home جست‌وجوی unified همهٔ نقاط را با پیشنهادهای prefix و debounce کوتاه انجام می‌دهد. کلیک روی نقطه از Route به URL canonical آن می‌رود و context برنامه‌ریزی مسیر را برای بازگشت حفظ می‌کند.

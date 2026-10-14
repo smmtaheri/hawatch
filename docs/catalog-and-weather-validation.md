@@ -43,6 +43,10 @@ catalog زنده خالی باشد، همهٔ fixtureها را برمی‌گرد
 اعتبار مسیر قبل از timing بررسی می‌شود: هر Route عمومی باید مبدأ، مقصد و
 حداقل یک عارضهٔ میانی واقعی و مستند داشته باشد. waypoint بی‌نام، محل توقف کمپ
 یا برچسبی مثل «دشت تا ارتفاع ۲۵۰۰ متر» به‌تنهایی چنین هویتی را ثابت نمی‌کند.
+بررسی مسیر برای هر مقصد جدید لازم است، حتی اگر مقصد در نهایت point-only باشد.
+انتشار Route علاوه بر ترک به دست‌کم یک منبع مستقل وب خارج از Wikiloc برای همان
+مسیر، شواهد قابل‌عبوربودن و آسان‌بودن برای فرد عادی/مبتدی نیاز دارد؛ ترک فنی، سخت
+یا بدون این شواهد public نمی‌شود.
 این کنترل هم پیش از معرفی ترک برای دانلود و هم هنگام ثبت نهایی لازم است؛
 جزئیات در بخش «بررسی نقاط معنی‌دار پیش از درخواست دانلود» راهنمای onboarding
 آمده است. اگر زنجیره تأیید نشد، Route عمومی منتشر نشود؛ معتبر بودن GPX،
@@ -103,7 +107,7 @@ Catalog version `hawatch-tochal-catalog-v6` / timing version `tochal-timing-v3`:
 | route | status | method | notes |
 | --- | --- | --- | --- |
 | tochal-darband | estimated | `web-naismith-total+gpx-profile-v2` | GPX-profiled cumulatives; medium total 315 |
-| tochal-velenjak | estimated | `web-naismith-total+gpx-profile-v2` | origin `tochal-velenjak-parking`; medium total 360 |
+| tochal-velenjak | estimated | `web-naismith-total+gpx-profile-v2` | origin `velenjak-parking`; medium total 360 |
 | tochal-ahar | estimated | `web-naismith-total+gpx-profile-v2` | medium total 380; qezqunchal ~212 m off-track |
 | tochal-kolakchal | estimated | `gpx-geometry+web-naismith-v3` | full geometry GPX; synthetic 40s timestamps unusable for moving time; medium 390 / ± 45 |
 | tochal-shahrestanak | estimated | `composite-gpx+dem+web-reports-v1` | composite village→Naseri + Naseri→summit; medium 370 / ± 50; not curated |
@@ -155,7 +159,7 @@ python3 scripts/validate_open_meteo_catalog.py \
 
 این بررسی WGS84، مختصات تکراری، route references، DEM/provider elevation، وجود
 دادهٔ ساعتی دما/بارش/کد وضعیت و فاصلهٔ مرکز grid تا مختصات را چک می‌کند؛ فاصلهٔ
-بیشتر از ۵ کیلومتر یا اختلاف catalog/DEM بیشتر از ۱۰۰ متر failure است. اگر
+بیشتر از ۵٫۲۵ کیلومتر یا اختلاف catalog/DEM بیشتر از ۱۰۰ متر failure است. اگر
 provider برای حتی یک point پاسخ معتبر ندهد، کل catalog رد می‌شود و نباید seed
 یا import انجام شود؛ slug و علت خطا باید به درخواست‌کننده گزارش شود. اگر ارتفاع
 هنوز قطعی نیست، `--allow-unresolved-elevation` فقط برای smoke test است و هرگز
@@ -202,7 +206,7 @@ docker compose --env-file .env -f infra/compose/compose.yaml exec -T api \
 نکات ساختاری:
 
 - مبدأ کلکچال/پیازچال: `jamshidieh_park` در پارکینگ شرقی GPX (`35.824629`, `51.465985`، DEM `1826` m، provisional). `piyazchal_pass` ≈135 m و `lezoon_east` ≈217 m از track؛ مختصاتشان auto-update نشده‌اند.
-- مبدأ ولنجک: `tochal-velenjak-parking` (provisional؛ کاتالوگ ۱۸۵۲ متر، با waypoint مستقل حدود ۱۸۴۵–۱۸۵۲ متر و DEM برابر ۱۸۶۹ متر در مختصات کاتالوگ)؛ رکورد مبهم `tochal-velenjak-village` مبدأ این route نیست.
+- مبدأ ولنجک: `velenjak-parking` (provisional؛ کاتالوگ ۱۸۵۲ متر، با waypoint مستقل حدود ۱۸۴۵–۱۸۵۲ متر و DEM برابر ۱۸۶۹ متر در مختصات کاتالوگ)؛ رکورد مبهم `tochal-velenjak-village` مبدأ این route نیست.
 - `tochal_hotel` روی زنجیرهٔ اجباری ولنجک نیست؛ روی شهرستانک هست
 - گردنهٔ شهرستانک (`shahrestanak_pass`) از بازارک (`bazarek_pass`) متمایز است؛ `naseri_junction` / `bazarek_pass` / `shahneshin_pass` فقط برای variantهای آینده در catalog می‌مانند
 
@@ -226,7 +230,7 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog apps/api/fixtures/catalog/my_point_v1.json
 ```
 
-validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
+validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵٫۲۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
 
 این validator مستقل برای قابلیت اجرای قبل از نصب محیط API، همچنان stdlib-only و
 بدون DB باقی مانده است. مسیر runtime (`ingest_open_meteo` و providerهای آینده)
@@ -259,4 +263,4 @@ Import پیش‌فرض غیرتخریبی است (`--prune` فقط صریح). `s
 
 اگر `elevation_m` موجود و status آن قطعی باشد، provider همان ارتفاع catalog را همراه `cell_selection=land` به Open-Meteo می‌فرستد تا برای statistical downscaling استفاده شود. برای ارتفاع‌های `provisional`، همان ارتفاع صریح ارسال می‌شود اما `cell_selection=nearest` انتخاب می‌شود تا یک اختلاف ارتفاع غیرقطعی، weather cell را به نقطه‌ای دور منتقل نکند. اگر null باشد، ارتفاعی جعل یا در catalog ذخیره نمی‌شود؛ درخواست با `cell_selection=nearest` انجام می‌شود و elevation برگشتی فقط در `ForecastPointResolution` به‌عنوان metadata provider ثبت می‌شود. پس از افزودن elevation معتبر به فایل، اجرای بعدی ingest خودکار آن را در درخواست استفاده می‌کند.
 
-مختصات برگشتی provider، فاصلهٔ آن از مختصات catalog و elevation برگشتی ذخیره می‌شوند؛ batch ناسازگار یا دورتر از ۵ کیلومتر اصلاً persist نمی‌شود.
+مختصات برگشتی provider، فاصلهٔ آن از مختصات catalog و elevation برگشتی ذخیره می‌شوند؛ batch ناسازگار یا دورتر از ۵٫۲۵ کیلومتر اصلاً persist نمی‌شود.

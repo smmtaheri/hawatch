@@ -49,7 +49,7 @@ const expectedCategories: Record<string, string> = {
   "shirabad-div-sepid-cave": "cave", "dorfak-east-ghar-yakhi": "cave",
   "hasal-marsh": "marsh", "qaleh-roudkhan": "fort", "malek-bahman-castle": "fort",
   "veresk-bridge": "bridge", "vardij-ghost-stones": "rocks",
-  "golabdarreh-park": "park", "tochal-jamshidieh-park": "park",
+  "golabdarreh-park": "park", "jamshidieh-park": "park",
   "berenjestanak-dam": "dam", "lafour-dam": "dam", "amir-kabir-dam": "dam",
   "bijar-dam": "dam", "lar-dam": "dam", "namrud-dam": "dam", "sefidrud-reservoir": "dam",
   "abgarm-larijan": "hot_spring", "flakdeh-hot-spring": "hot_spring",

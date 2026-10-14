@@ -1,0 +1,78 @@
+{
+  "catalog_version": "hawatch-abidar-v1",
+  "weather_points": {
+    "abidar": {
+      "name": "کوه آبیدر بزرگ",
+      "page_name": "کوه آبیدر سنندج",
+      "short_label": "آبیدر",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "کوه‌های کردستان",
+      "region": "غرب سنندج · استان کردستان",
+      "aliases": [
+        "آبیدر",
+        "کوه آبیدر",
+        "کوه آبیدر بزرگ",
+        "قله آبیدر",
+        "آبیدر سنندج",
+        "Abidar",
+        "Mount Abidar",
+        "Kuh-e Abidar"
+      ],
+      "identity_summary": "آبیدر در غرب سنندج از دو بلندی آبیدر بزرگ و آبیدر کوچک تشکیل می‌شود. این نقطه نمایندهٔ قلهٔ آبیدر بزرگ است، نه پارک جنگلی دامنهٔ کوه یا شهر سنندج.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/6856814209",
+        "https://mapcarta.com/12353516",
+        "https://www.tasnimnews.ir/fa/news/1395/09/30/1270282/%D8%A8%D9%87%D8%B4%D8%AA-%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%B2%D9%85%DB%8C%D9%86-%D8%A7%D8%B2-%D8%A2%D8%A8%DB%8C%D8%AF%D8%B1-%D8%AA%D8%A7-%D8%B9%D9%85%D8%A7%D8%B1%D8%AA-%D9%88%DA%A9%DB%8C%D9%84-%D8%A7%D9%84%D9%85%D9%84%DA%A9-%D8%B3%D9%86%D9%86%D8%AF%D8%AC-%D8%AA%D8%B5%D8%A7%D9%88%DB%8C%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.31575&longitude=46.925187",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.31575,
+      "longitude": 46.925187,
+      "elevation_m": 2546,
+      "status": "provisional",
+      "elevation_source": "مختصات قلهٔ طبیعی آبیدر در OpenStreetMap (node 6856814209) با ارتفاع ثبت‌شدهٔ ۲۵۴۶ متر؛ گزارش تسنیم ارتفاع آبیدر بزرگ را حدود ۲۵۵۰ متر می‌داند. ارتفاع DEM در validator سرویس Open-Meteo GLO-90 کنترل می‌شود.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای کوه آبیدر سنندج؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ آبیدر بزرگ در غرب سنندج؛ وضعیت دما، باد و بارش برای برنامه‌ریزی صعود و طبیعت‌گردی.",
+        "content": "آبیدر بزرگ، قلهٔ شاخص کوهستان آبیدر در غرب سنندج است. این صفحه پیش‌بینی را برای نقطهٔ قله نشان می‌دهد؛ آب‌وهوای پارک جنگلی دامنه می‌تواند متفاوت باشد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "abidar",
+    "tile_name": "کوه آبیدر",
+    "name": "کوه آبیدر بزرگ",
+    "short_category": "قله",
+    "category": "کوه‌های کردستان",
+    "category_key": "mountain",
+    "region": "غرب سنندج · استان کردستان",
+    "elevation_m": 2546,
+    "latitude": 35.31575,
+    "longitude": 46.925187,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ آبیدر بزرگ در غرب سنندج",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبیدر",
+      "کوه آبیدر",
+      "کوه آبیدر بزرگ",
+      "قله آبیدر",
+      "آبیدر سنندج",
+      "Abidar",
+      "Mount Abidar",
+      "Kuh-e Abidar"
+    ]
+  },
+  "primary_point": "abidar"
+}

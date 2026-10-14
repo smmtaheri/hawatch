@@ -405,11 +405,11 @@ def test_route_forecast_start_and_speed(api_client, seeded):
     assert fast["points"][-1]["arrival_minutes"] < medium["points"][-1]["arrival_minutes"]
     assert len(medium["points"]) == 6
     assert [item["slug"] for item in medium["points"]] == [
-        "tochal-sarband-square",
-        "tochal-pas-ghaleh-village",
-        "tochal-shirpala-shelter",
-        "tochal-amiri-shelter",
-        "tochal-goleband-ridge",
+        "sarband-tehran",
+        "pas-ghaleh-shemiran",
+        "shirpala-tochal",
+        "amiri-tochal",
+        "goleband-tochal",
         "tochal",
     ]
     assert {item["slug"] for item in medium["route"]["siblings"]} == {
@@ -473,12 +473,12 @@ def test_search_and_stale_flag(api_client, seeded):
 def test_point_forecast_pas_ghaleh(api_client, seeded):
     today = now_tehran().date()
     response = api_client.get(
-        "/api/v1/points/tochal-pas-ghaleh-village/forecast/",
+        "/api/v1/points/pas-ghaleh-shemiran/forecast/",
         {"date": today.isoformat(), "period": "morning"},
     )
     assert response.status_code == 200
     body = response.json()
-    assert body["point"]["slug"] == "tochal-pas-ghaleh-village"
+    assert body["point"]["slug"] == "pas-ghaleh-shemiran"
     assert body["point"]["name"] == "روستای پس‌قلعه"
     assert body["point"]["latitude"] == pytest.approx(35.8361950, rel=1e-4)
     assert body["point"]["longitude"] == pytest.approx(51.4233411, rel=1e-4)
@@ -494,9 +494,9 @@ def test_search_suggestions_points(api_client, seeded):
     points = api_client.get("/api/v1/search/suggestions/", {"q": "تو"}).json()
     assert any(item["type"] == "point" and item["slug"] == "tochal" for item in points["results"])
     point = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
-    assert any(item["type"] == "point" and item["slug"] == "tochal-pas-ghaleh-village" for item in point["results"])
+    assert any(item["type"] == "point" and item["slug"] == "pas-ghaleh-shemiran" for item in point["results"])
     shir = api_client.get("/api/v1/search/suggestions/", {"q": "شیر"}).json()
-    assert any(item["type"] == "point" and item["slug"] == "tochal-shirpala-shelter" for item in shir["results"])
+    assert any(item["type"] == "point" and item["slug"] == "shirpala-tochal" for item in shir["results"])
 
 
 @pytest.mark.django_db
@@ -543,7 +543,7 @@ def test_search_no_duplicate_tochal_point(api_client, seeded):
     assert len(summit_points) == 1
 
     pas_results = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()["results"]
-    assert any(item["type"] == "point" and item["slug"] == "tochal-pas-ghaleh-village" for item in pas_results)
+    assert any(item["type"] == "point" and item["slug"] == "pas-ghaleh-shemiran" for item in pas_results)
 
 
 @pytest.mark.django_db
@@ -552,27 +552,27 @@ def test_search_alias_and_deduplication(api_client, seeded):
     from hawatch.modules.catalog.search import rebuild_search_index
     from hawatch.modules.forecasts.models import WeatherPoint
 
-    WeatherPoint.objects.filter(slug="tochal-pas-ghaleh-village").update(aliases=["پسغلعه"])
+    WeatherPoint.objects.filter(slug="pas-ghaleh-shemiran").update(aliases=["پسغلعه"])
     rebuild_search_index()
     assert SearchIndexEntry.objects.filter(
-        weather_point_slug="tochal-pas-ghaleh-village",
+        weather_point_slug="pas-ghaleh-shemiran",
         match_kind=SearchIndexEntry.MatchKind.ALIAS,
     ).exists()
 
     alias = api_client.get("/api/v1/search/suggestions/", {"q": "پسغل"}).json()
-    pas_matches = [item for item in alias["results"] if item.get("slug") == "tochal-pas-ghaleh-village"]
+    pas_matches = [item for item in alias["results"] if item.get("slug") == "pas-ghaleh-shemiran"]
     assert len(pas_matches) == 1
     assert pas_matches[0]["match_kind"] == "alias"
 
     shared = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
-    pas_slugs = [item["slug"] for item in shared["results"] if item["type"] == "point" and item["slug"] == "tochal-pas-ghaleh-village"]
+    pas_slugs = [item["slug"] for item in shared["results"] if item["type"] == "point" and item["slug"] == "pas-ghaleh-shemiran"]
     assert len(pas_slugs) == 1
 
 
 @pytest.mark.django_db
 def test_route_point_forecast_endpoint_is_removed(api_client, seeded):
     response = api_client.get(
-        "/api/v1/routes/tochal-darband/points/tochal-pas-ghaleh-village/forecast/",
+        "/api/v1/routes/tochal-darband/points/pas-ghaleh-shemiran/forecast/",
         {"date": now_tehran().date().isoformat(), "period": "morning"},
     )
     assert response.status_code == 404

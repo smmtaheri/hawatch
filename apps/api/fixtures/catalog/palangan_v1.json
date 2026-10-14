@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-palangan-v1",
+  "weather_points": {
+    "palangan": {
+      "name": "روستای پالنگان",
+      "page_name": "روستای پالنگان کامیاران",
+      "short_label": "پالنگان",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای گردشگری کردستان",
+      "region": "درهٔ تنگی‌ور · کامیاران · استان کردستان",
+      "aliases": [
+        "پالنگان",
+        "پلنگان",
+        "روستای پالنگان کامیاران",
+        "Pallengan",
+        "Palangan village"
+      ],
+      "identity_summary": "روستای پلکانی پالنگان در شهرستان کامیاران، کنار رودخانهٔ تنگی‌ور و در دامنه‌های زاگرس؛ مقصد شناخته‌شدهٔ طبیعت‌گردی و بافت تاریخی کردستان. این مختصات نقطهٔ نمایندهٔ بافت روستاست و مرز دره یا مسیرهای اطراف را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://palangantourismvillage.com/about-palangan/",
+        "https://www.openstreetmap.org/node/2246558079",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.06759&longitude=46.6041925",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.06759,
+      "longitude": 46.6041925,
+      "elevation_m": 1035,
+      "status": "provisional",
+      "elevation_source": "مختصات نقطهٔ نمایندهٔ بافت روستا از گرهٔ پالنگان در OpenStreetMap؛ ارتفاع ۱۰۳۵ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات و با validator پیش از import کنترل می‌شود.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای روستای پالنگان؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای پلکانی پالنگان در کامیاران کردستان؛ وضعیت دما، باد و بارش برای برنامه‌ریزی طبیعت‌گردی.",
+        "content": "پالنگان روستایی پلکانی در شهرستان کامیاران و کنار رودخانهٔ تنگی‌ور است. این صفحه پیش‌بینی نقطه‌ای نماینده از بافت روستا را نشان می‌دهد، نه کل دره و مسیرهای پیرامونی را."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "palangan",
+    "tile_name": "روستای پالنگان",
+    "name": "روستای پالنگان",
+    "short_category": "روستا",
+    "category": "روستاهای گردشگری کردستان",
+    "category_key": "village",
+    "region": "درهٔ تنگی‌ور · کامیاران · استان کردستان",
+    "elevation_m": 1035,
+    "latitude": 35.06759,
+    "longitude": 46.6041925,
+    "image": "/images/home-scene.png",
+    "image_alt": "بافت پلکانی روستای پالنگان در درهٔ تنگی‌ور کردستان",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پالنگان",
+      "پلنگان",
+      "روستای پالنگان کامیاران",
+      "Pallengan",
+      "Palangan village"
+    ]
+  },
+  "primary_point": "palangan"
+}

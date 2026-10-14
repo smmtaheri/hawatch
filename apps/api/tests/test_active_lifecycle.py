@@ -38,16 +38,16 @@ def test_inactive_route_hidden_from_point_routes_siblings_and_endpoint(api_clien
 
 @pytest.mark.django_db
 def test_inactive_point_returns_404(api_client, tochal):
-    WeatherPoint.objects.filter(slug="tochal-sarband-square").update(is_active=False)
+    WeatherPoint.objects.filter(slug="sarband-tehran").update(is_active=False)
 
-    assert api_client.get("/api/v1/points/tochal-sarband-square/").status_code == 404
-    assert api_client.get("/api/v1/points/tochal-sarband-square/forecast/").status_code == 404
+    assert api_client.get("/api/v1/points/sarband-tehran/").status_code == 404
+    assert api_client.get("/api/v1/points/sarband-tehran/forecast/").status_code == 404
 
 
 @pytest.mark.django_db
 def test_related_routes_require_active_route(api_client, tochal):
     Route.objects.filter(slug="tochal-darband").update(is_active=False)
-    body = api_client.get("/api/v1/points/tochal-goleband-ridge/forecast/").json()
+    body = api_client.get("/api/v1/points/goleband-tochal/forecast/").json()
 
     assert "tochal-darband" not in {item["slug"] for item in body["related_routes"]}
     assert "tochal-kolakchal" in {item["slug"] for item in body["related_routes"]}
@@ -79,7 +79,7 @@ def test_ingest_ignores_unlinked_non_indexable_point(tochal):
 
 @pytest.mark.django_db
 def test_ingest_keeps_active_indexable_point_when_its_routes_are_inactive(tochal):
-    point = WeatherPoint.objects.get(slug="tochal-sarband-square")
+    point = WeatherPoint.objects.get(slug="sarband-tehran")
     Route.objects.filter(points__weather_point=point).update(is_active=False)
     # All public Points are now indexable by policy, so ingest does not depend
     # on at least one active Route for this point.
@@ -94,9 +94,9 @@ def test_ingest_keeps_active_indexable_point_when_its_routes_are_inactive(tochal
 @pytest.mark.django_db
 def test_search_hides_inactive_point_but_keeps_primary_point(tochal):
     rebuild_search_index()
-    assert any(item["slug"] == "tochal-sarband-square" for item in search_suggestions(query="سربند"))
+    assert any(item["slug"] == "sarband-tehran" for item in search_suggestions(query="سربند"))
 
-    WeatherPoint.objects.filter(slug="tochal-sarband-square").update(is_active=False)
+    WeatherPoint.objects.filter(slug="sarband-tehran").update(is_active=False)
     rebuild_search_index()
     assert search_suggestions(query="سربند") == []
     assert any(item["slug"] == "tochal" for item in search_suggestions(query="توچال"))

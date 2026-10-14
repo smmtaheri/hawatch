@@ -136,10 +136,10 @@ const routeForecast = {
   timing_pending: false,
   points: [
     {
-      slug: "tochal-shirpala-shelter",
+      slug: "shirpala-tochal",
       name: "شیرپلا",
       elevation_label: "۲۴۵۰ m",
-      href: "/points/tochal-shirpala-shelter",
+      href: "/points/shirpala-tochal",
       axis_x: 10,
       axis_y: 50,
       time: "۰۸:۰۰",
@@ -180,9 +180,9 @@ const routeForecast = {
 const pointForecast = {
   subject: {
     kind: "point" as const,
-    slug: "tochal-shirpala-shelter",
-    weather_point_slug: "tochal-shirpala-shelter",
-    canonical_href: "/points/tochal-shirpala-shelter",
+    slug: "shirpala-tochal",
+    weather_point_slug: "shirpala-tochal",
+    canonical_href: "/points/shirpala-tochal",
     name: "شیرپلا",
     elevation_m: 2750,
     elevation_label: "۲۴۵۰ متر",
@@ -195,7 +195,7 @@ const pointForecast = {
     category: "کوه",
   },
   point: {
-    slug: "tochal-shirpala-shelter",
+    slug: "shirpala-tochal",
     name: "شیرپلا",
     aliases: [],
     kind: "shared",
@@ -205,8 +205,8 @@ const pointForecast = {
     longitude: 51.429,
     status: "approved",
     provenance: "curated",
-    href: "/points/tochal-shirpala-shelter",
-    canonical_href: "/points/tochal-shirpala-shelter",
+    href: "/points/shirpala-tochal",
+    canonical_href: "/points/shirpala-tochal",
   },
   related_routes: [
     {
@@ -249,17 +249,17 @@ const sarbandForecast = {
   ...pointForecast,
   subject: {
     ...pointForecast.subject,
-    slug: "tochal-sarband-square",
-    weather_point_slug: "tochal-sarband-square",
-    canonical_href: "/points/tochal-sarband-square",
+    slug: "sarband-tehran",
+    weather_point_slug: "sarband-tehran",
+    canonical_href: "/points/sarband-tehran",
     name: "سربند",
   },
   point: {
     ...pointForecast.point,
-    slug: "tochal-sarband-square",
+    slug: "sarband-tehran",
     name: "سربند",
-    href: "/points/tochal-sarband-square",
-    canonical_href: "/points/tochal-sarband-square",
+    href: "/points/sarband-tehran",
+    canonical_href: "/points/sarband-tehran",
   },
 };
 
@@ -294,8 +294,8 @@ describe("clock and route navigation contracts", () => {
       { slug: "tochal-darband", title: "دربند تا توچال", href: "/routes/tochal-darband" },
       params,
     );
-    const link = buildRoutePointLink("/points/tochal-shirpala-shelter", fromRoute);
-    expect(link.pathname).toBe("/points/tochal-shirpala-shelter");
+    const link = buildRoutePointLink("/points/shirpala-tochal", fromRoute);
+    expect(link.pathname).toBe("/points/shirpala-tochal");
     expect(link.state?.fromRoute.pathname).toBe("/routes/tochal-darband");
     expect(link.state?.fromRoute.search).toContain("start_time=06");
     expect(link.state?.fromRoute.search).toContain("speed=");

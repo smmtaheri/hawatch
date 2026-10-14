@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kolakchal-catalog-v1",
+  "catalog_version": "hawatch-kolakchal-catalog-v2",
   "weather_points": {
     "kolakchal-jamshidieh-station-3": {
       "name": "ایستگاه سوم مسیر کلک‌چال",
@@ -56,9 +56,9 @@
     }
   },
   "shared_weather_points": [
-    "tochal-jamshidieh-park",
-    "tochal-kolakchal-camp",
-    "tochal-espilat-sarlo-pass"
+    "jamshidieh-park",
+    "kolakchal-camp",
+    "espilat-sarlo-pass"
   ],
   "routes": {
     "jamshidieh_to_kolakchal": {
@@ -72,10 +72,10 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "tochal-jamshidieh-park",
+        "jamshidieh-park",
         "kolakchal-jamshidieh-station-3",
-        "tochal-kolakchal-camp",
-        "tochal-espilat-sarlo-pass",
+        "kolakchal-camp",
+        "espilat-sarlo-pass",
         "kolakchal"
       ],
       "distance_km": 7.7,
@@ -106,10 +106,10 @@
           "قلهٔ کلک‌چال از مسیر جمشیدیه یک مقصد مستقل است؛ نقاط مشترک مسیر توچال دوباره تعریف نشده‌اند."
         ],
         "cumulative_minutes": {
-          "tochal-jamshidieh-park": 0,
+          "jamshidieh-park": 0,
           "kolakchal-jamshidieh-station-3": 60,
-          "tochal-kolakchal-camp": 120,
-          "tochal-espilat-sarlo-pass": 210,
+          "kolakchal-camp": 120,
+          "espilat-sarlo-pass": 210,
           "kolakchal": 300
         }
       },

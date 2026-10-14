@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-miqan-wetland-v1",
+  "primary_point": "miqan-wetland",
+  "weather_points": {
+    "miqan-wetland": {
+      "name": "تالاب میقان",
+      "page_name": "تالاب میقان اراک",
+      "short_label": "میقان",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های استان مرکزی",
+      "region": "شمال‌شرق اراک · استان مرکزی",
+      "aliases": [
+        "تالاب میقان",
+        "تالاب کویری میقان",
+        "دریاچه میقان",
+        "دریاچهٔ کویر میقان",
+        "کویر میقان",
+        "Miqan Wetland",
+        "Meyqan Wetland",
+        "Meyghan Wetland"
+      ],
+      "identity_summary": "تالاب فصلی و دریاچهٔ نمکی میقان در شمال‌شرق اراک؛ این نقطه نمایندهٔ پهنهٔ تالاب است و با شهر اراک یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/fa/attraction/%D8%AF%D8%B1%DB%8C%D8%A7%DA%86%D9%87-%D9%85%DB%8C%D9%82%D8%A7%D9%86",
+        "https://www.openstreetmap.org/way/41572317",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.2018405&longitude=49.8518539",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.2018405,
+      "longitude": 49.8518539,
+      "elevation_m": 1657,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ عارضهٔ تالاب در OSM way 41572317؛ ارتفاع ۱۶۵۷ متر از Open-Meteo GLO-90 DEM در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۳).",
+      "climate": "lake_valley",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "miqan-wetland",
+    "tile_name": "تالاب میقان",
+    "name": "تالاب میقان",
+    "short_category": "تالاب",
+    "category": "تالاب‌های استان مرکزی",
+    "category_key": "marsh",
+    "region": "شمال‌شرق اراک · استان مرکزی",
+    "elevation_m": 1657,
+    "latitude": 34.2018405,
+    "longitude": 49.8518539,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ تالاب میقان در شمال‌شرق اراک",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تالاب کویری میقان",
+      "دریاچه میقان",
+      "دریاچهٔ کویر میقان",
+      "کویر میقان",
+      "Miqan Wetland",
+      "Meyqan Wetland",
+      "Meyghan Wetland"
+    ]
+  }
+}

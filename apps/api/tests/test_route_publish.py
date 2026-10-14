@@ -141,7 +141,7 @@ def test_admin_style_route_publish_without_fixture_import():
 @pytest.mark.django_db
 def test_incomplete_admin_route_demoted_to_pending():
     seed_tochal_catalog()
-    start = WeatherPoint.objects.get(slug="tochal-sarband-square")
+    start = WeatherPoint.objects.get(slug="sarband-tehran")
     summit = WeatherPoint.objects.get(slug="tochal")
     route = Route.objects.create(
         slug="tochal-admin-incomplete",
@@ -165,7 +165,7 @@ def test_incomplete_admin_route_demoted_to_pending():
     )
     RoutePoint.objects.create(
         route=route,
-        slug="tochal-sarband-square",
+        slug="sarband-tehran",
         weather_point=start,
         name=start.name,
         elevation_m=start.elevation_m,

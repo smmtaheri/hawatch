@@ -83,7 +83,7 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
     assert 'href="/routes">همهٔ مسیرها</a>' in body
     assert 'id="seo-destinations-list">مقصدهای اصلی</h2>' in body
     assert 'href="/points/tochal"' in body
-    assert 'href="/points/tochal-sarband-square"' not in body
+    assert 'href="/points/sarband-tehran"' not in body
     assert '"@type": "CollectionPage"' in body
     assert '"@type": "ItemList"' in body
     assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"

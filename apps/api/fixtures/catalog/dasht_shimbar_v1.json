@@ -1,0 +1,82 @@
+{
+  "catalog_version": "hawatch-dasht-shimbar-v1",
+  "primary_point": "dasht-shimbar",
+  "weather_points": {
+    "dasht-shimbar": {
+      "name": "دشت شیمبار",
+      "page_name": "دشت شیمبار اندیکا",
+      "short_label": "شیمبار",
+      "tile_name": "دشت شیمبار",
+      "short_category": "دشت",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "دشت‌ها و تالاب‌های خوزستان",
+      "region": "اندیکا · خوزستان",
+      "aliases": [
+        "شیمبار",
+        "شیرین‌بهار",
+        "شیرین بهار",
+        "دشت شیرین‌بهار",
+        "تالاب شیمبار",
+        "Shimbar Plain",
+        "Shirin Bahar"
+      ],
+      "identity_summary": "دشت و منطقهٔ حفاظت‌شدهٔ شیمبار در شهرستان اندیکا؛ پیش‌بینی این صفحه بر پایهٔ مختصات نمایندهٔ آبادی شیمبار در محدوده است و تمام پهنهٔ گسترده را به‌عنوان یک اندازه‌گیری میدانی نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://untamediran.com/fa/shimbar-plain",
+        "https://untamediran.com/shimbar-plain",
+        "https://lastsecond.ir/blog/6608-shirin-bahar",
+        "https://en.masjedsoleyman.ir/tourist-attractions-of-masjedsoleyman",
+        "https://mapcarta.com/12412444",
+        "https://www.openstreetmap.org/node/4511217760",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.33969&longitude=49.62502",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 32.33969,
+      "longitude": 49.62502,
+      "elevation_m": 867,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نماینده، گرهٔ آبادی شیمبار در OSM با ارتفاع نقشه‌ای ۸۴۶ متر؛ DEM سرویس Open-Meteo GLO-90 در همان مختصات ۸۶۷ متر (بررسی ۲۰۲۶-۱۰-۱۴).",
+      "climate": "lake_valley",
+      "routes": {},
+      "image": "/images/home-scene.png",
+      "image_alt": "دشت شیمبار و جنگل‌های بلوط زاگرس در اندیکا",
+      "seo": {
+        "title": "آب‌وهوای دشت شیمبار؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دشت شیمبار و شیرین‌بهار در اندیکای خوزستان؛ دما، باد و بارش را ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "dasht-shimbar",
+    "tile_name": "دشت شیمبار",
+    "name": "دشت شیمبار",
+    "short_category": "دشت",
+    "category": "دشت‌ها و تالاب‌های خوزستان",
+    "category_key": "meadow",
+    "region": "اندیکا · خوزستان",
+    "latitude": 32.33969,
+    "longitude": 49.62502,
+    "elevation_m": 867,
+    "image": "/images/home-scene.png",
+    "image_alt": "دشت شیمبار و جنگل‌های بلوط زاگرس در اندیکا",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "شیمبار",
+      "شیرین‌بهار",
+      "شیرین بهار",
+      "دشت شیرین‌بهار",
+      "تالاب شیمبار",
+      "Shimbar Plain",
+      "Shirin Bahar"
+    ]
+  }
+}

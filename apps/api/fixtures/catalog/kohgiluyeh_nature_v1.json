@@ -1,0 +1,268 @@
+{
+  "catalog_version": "hawatch-kohgiluyeh-nature-v1",
+  "primary_point": "kooh-gol-lake",
+  "weather_points": {
+    "kooh-gol-lake": {
+      "name": "دریاچهٔ کوه‌گل",
+      "page_name": "آب‌وهوای دریاچهٔ کوه‌گل سی‌سخت",
+      "short_label": "دریاچهٔ کوه‌گل",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه‌ها و طبیعت سی‌سخت",
+      "region": "سی‌سخت · دنا · کهگیلویه و بویراحمد",
+      "aliases": [
+        "دریاچه کوه گل",
+        "دریاچهٔ کوه گل سی سخت",
+        "دریاچه کوه‌گل سی‌سخت",
+        "کوه گل سی سخت",
+        "Kuh Gol Lake",
+        "Kooh Gol Lake",
+        "Kouh Gol Lake Sisakht"
+      ],
+      "identity_summary": "دریاچهٔ فصلی کوه‌گل در ارتفاعات شمال‌شرقی سی‌سخت و دامنهٔ دنا؛ مستقل از چشمهٔ میشی و قله‌های پیرامون.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/?mlat=30.834433&mlon=51.542025#map=16/30.834433/51.542025",
+        "https://www.wikiloc.com/hiking-trails/drychh-khwh-gl-23861137",
+        "https://lastsecond.ir/attractions/6350-kuh-gol-lake-sisakht",
+        "https://www.wikiloc.com/orienteering-trails/drychh-khwh-gl-134560708",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.834433&longitude=51.542025"
+      ],
+      "latitude": 30.834433,
+      "longitude": 51.542025,
+      "elevation_m": 2707,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint دریاچه از ترک محلی Wikiloc و تطبیق با منابع معرفی مسیر؛ ارتفاع ۲۷۰۷ متر از Open-Meteo GLO-90 DEM در مختصات canonical. ارتفاع خام GPX فقط مرجع کمکی است.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ کوه‌گل سی‌سخت؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی دما، باد و بارش در دریاچهٔ کوه‌گل سی‌سخت، در دامنهٔ دنا؛ شرایط هوا را پیش از بازدید بررسی کنید."
+      }
+    },
+    "yasuj-waterfall": {
+      "name": "آبشار یاسوج",
+      "page_name": "آب‌وهوای آبشار یاسوج",
+      "short_label": "آبشار یاسوج",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارها و چشمه‌های یاسوج",
+      "region": "یاسوج · کهگیلویه و بویراحمد",
+      "aliases": [
+        "آبشار یاسوج",
+        "آبشار شهر یاسوج",
+        "تنگ یاسوج",
+        "Yasuj Waterfall",
+        "Yasouj Abshar"
+      ],
+      "identity_summary": "آبشار شناخته‌شدهٔ یاسوج در انتهای تنگ یاسوج، در شمال شهر؛ عارضه‌ای طبیعی و مستقل از پارک آبشار و شهر یاسوج.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4722658998",
+        "https://www.openstreetmap.org/node/4722658998",
+        "https://yaldamedtour.com/fa/place/2355/آبشار-یاسوج/نگینی-درخشان-در-یاسوج",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.67673&longitude=51.62747"
+      ],
+      "latitude": 30.67673,
+      "longitude": 51.62747,
+      "elevation_m": 2163,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضه از گرهٔ گردشگری OpenStreetMap/Mapcarta؛ ارتفاع ۲۱۶۳ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار یاسوج؛ پیش‌بینی دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار یاسوج در شمال شهر؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    },
+    "tang-tameradi-waterfalls": {
+      "name": "آبشارهای تنگ تامرادی",
+      "page_name": "آب‌وهوای آبشارهای تنگ تامرادی یاسوج",
+      "short_label": "آبشارهای تامرادی",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای کهگیلویه و بویراحمد",
+      "region": "تنگ تامرادی · یاسوج · کهگیلویه و بویراحمد",
+      "aliases": [
+        "تنگ تامرادی",
+        "آبشار تنگ تامرادی",
+        "آبشارهای تنگ تامرادی",
+        "آبشار تامرادی یاسوج",
+        "Tang-e Tamoradi Waterfall",
+        "Tang-e Tameradi"
+      ],
+      "identity_summary": "مجموعهٔ آبشارها و حوضچه‌های تنگ تامرادی در غرب یاسوج؛ صفحهٔ هواشناسی برای محدودهٔ آبشار اصلی است، نه مسیرهای فنی و بالادست تنگه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4908661474",
+        "https://ir.geoview.info/abshar_tng_tamrady,4908661474n",
+        "https://commons.wikimedia.org/wiki/Category:Tang-e_Tamoradi_Waterfall",
+        "https://seamoon.tours/location/tange-tameradi",
+        "https://blog.rahbal.com/tang-e-tamoradi/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.51419&longitude=51.41881"
+      ],
+      "latitude": 30.51419,
+      "longitude": 51.41881,
+      "elevation_m": 1722,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار اصلی از عارضهٔ ثبت‌شده در OpenStreetMap/Mapcarta؛ ارتفاع ۱۷۲۲ متر از Open-Meteo GLO-90 DEM در همان مختصات. منابع عمومی ارتفاع کل تنگه را تقریبی گزارش می‌کنند.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای آبشارهای تنگ تامرادی؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشارهای تنگ تامرادی در غرب یاسوج؛ دما، باد و بارش را پیش از بازدید بررسی کنید."
+      }
+    },
+    "cheshmeh-belqays-garden": {
+      "name": "باغ چشمه‌بلقیس چرام",
+      "page_name": "آب‌وهوای باغ چشمه‌بلقیس چرام",
+      "short_label": "چشمه‌بلقیس",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "باغ‌ها و چشمه‌های کهگیلویه و بویراحمد",
+      "region": "چرام · کهگیلویه و بویراحمد",
+      "aliases": [
+        "چشمه بلقیس چرام",
+        "چشمهٔ بلقیس چرام",
+        "باغ چشمه بلقیس",
+        "باغ چشمه‌بلقیس چرام",
+        "باغ بلقیس چرام",
+        "Cheshmeh Belqays Garden",
+        "Cheshme Belghais Choram"
+      ],
+      "identity_summary": "باغ تاریخی و گردشگری چشمه‌بلقیس در محدودهٔ چرام؛ نقطهٔ نمایندهٔ هواشناسی برای خود باغ است و Route پیاده‌روی کوهستانی ندارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://commons.wikimedia.org/wiki/Category:Belqeys_Spring_Garden",
+        "https://decovel.com/page/cheshme-belghais-garden",
+        "https://www.irandeserts.com/article/باغ-چشمه-بلقیس،-چرام/",
+        "https://www.openstreetmap.org/?mlat=30.721671&mlon=50.744167#map=17/30.721671/50.744167",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.721671&longitude=50.744167"
+      ],
+      "latitude": 30.721671,
+      "longitude": 50.744167,
+      "elevation_m": 721,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز باغ از محدودهٔ ثبت‌شده در Wikimedia Commons و نقشهٔ OpenStreetMap؛ ارتفاع ۷۲۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای باغ چشمه‌بلقیس چرام؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای باغ تاریخی چشمه‌بلقیس در چرام؛ وضعیت دما، باد و بارش را برای بازدید بررسی کنید."
+      }
+    },
+    "hoz-dal-central": {
+      "name": "قلهٔ حوض‌دال مرکزی",
+      "page_name": "آب‌وهوای قلهٔ حوض‌دال مرکزی دنا",
+      "short_label": "حوض‌دال مرکزی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های دنا",
+      "region": "دنا · سی‌سخت · کهگیلویه و بویراحمد",
+      "aliases": [
+        "قله حوض دال",
+        "قلهٔ حوض‌دال",
+        "حوض دال مرکزی",
+        "قله هوزدال",
+        "هوزدال دنا",
+        "Howz-Dal Markazi",
+        "Hozdal"
+      ],
+      "identity_summary": "قلهٔ حوض‌دال مرکزی در خط‌الرأس مرکزی دنا، نزدیک سی‌سخت؛ با قله‌های همسایهٔ سی‌چانی و کرسمی شرقی یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://koohnavard.blogfa.com/post/30",
+        "https://www.wikiloc.com/mountaineering-trails/qll-hwd-dl-w-syjny-z-mjmwh-qll-dn-mrkhzy-405-6-20-dena-peak-at-sisakht-yasuj-285212145",
+        "https://www.irangpstracks.com/tracks/6129",
+        "https://fr.wikipedia.org/wiki/Sommets_d%27Iran_de_plus_de_4_000_m%C3%A8tres_d%27altitude",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.907806&longitude=51.480139"
+      ],
+      "latitude": 30.907806,
+      "longitude": 51.480139,
+      "elevation_m": 4297,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از گزارش صعود حوض‌دال مرکزی و فهرست قلل دنا؛ ارتفاع ۴۲۹۷ متر از Open-Meteo GLO-90 DEM در مختصات canonical، نزدیک به ارتفاع مرجع گزارش‌شدهٔ ۴۲۹۱ تا ۴۳۰۰ متر.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ حوض‌دال مرکزی دنا؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ حوض‌دال مرکزی دنا در ارتفاع بیش از ۴۲۰۰ متر؛ دما، باد و بارش را بررسی کنید."
+      }
+    },
+    "pazan-pir": {
+      "name": "قلهٔ پازن‌پیر دنا",
+      "page_name": "آب‌وهوای قلهٔ پازن‌پیر دنا",
+      "short_label": "پازن‌پیر",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های دنا",
+      "region": "دنا · یاسوج · کهگیلویه و بویراحمد",
+      "aliases": [
+        "پازن پیر",
+        "قله پازن پیر",
+        "قلهٔ پازن‌پیر دنا",
+        "قله پازن‌پیر",
+        "Pazan Pir",
+        "Pāzan-Pir"
+      ],
+      "identity_summary": "قلهٔ پازن‌پیر در بخش شرقی خط‌الرأس دنا؛ قله‌ای بلند و مستقل از حوض‌دال مرکزی با مسیرهای طولانی و کوهنوردی دشوار.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peak-information.aspx?lat=30.7886563&lon=51.6492356&peak-name=%D9%87%D9%88%D8%A7%D8%B4%D9%86%D8%A7%D8%B3%DB%8C%D8%8C%D9%86%D9%82%D8%B4%D9%87%D8%8C%D8%AA%D9%88%D8%B5%DB%8C%D9%81-%DA%A9%D9%88%D9%87%D8%B3%D8%AA%D8%A7%D9%86-%D9%82%D9%84%D9%87-%D9%BE%D8%A7%D8%B2%D9%86-%D9%BE%DB%8C%D8%B1&pkidentifier=545",
+        "https://www.irangpstracks.com/tracks/6129",
+        "https://www.wikiloc.com/hiking-trails/msyr-qlh-pzn-pyr-z-rwsty-shhyd-pdn-209835471",
+        "https://fr.wikipedia.org/wiki/Sommets_d%27Iran_de_plus_de_4_000_m%C3%A8tres_d%27altitude",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.7886563&longitude=51.6492356"
+      ],
+      "latitude": 30.7886563,
+      "longitude": 51.6492356,
+      "elevation_m": 4241,
+      "status": "provisional",
+      "elevation_source": "مختصات قله از صفحهٔ اختصاصی قله و تطبیق با فهرست قلل دنا؛ ارتفاع ۴۲۴۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical، در محدودهٔ اختلاف کمتر از ۱۰۰ متر با ارتفاع‌های مرجع ۴۲۵۰ تا ۴۲۸۰ متر.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ پازن‌پیر دنا؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ پازن‌پیر دنا در ارتفاع بیش از ۴۲۰۰ متر؛ دما، باد و بارش را پیش از برنامهٔ کوهنوردی ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "kooh-gol-lake",
+    "tile_name": "دریاچهٔ کوه‌گل",
+    "name": "دریاچهٔ کوه‌گل",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌ها و طبیعت سی‌سخت",
+    "category_key": "lake",
+    "region": "سی‌سخت · دنا · کهگیلویه و بویراحمد",
+    "elevation_m": 2707,
+    "latitude": 30.834433,
+    "longitude": 51.542025,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ کوه‌گل در دامنهٔ دنا، نزدیک سی‌سخت",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه کوه گل",
+      "دریاچهٔ کوه گل سی سخت",
+      "Kuh Gol Lake",
+      "Kooh Gol Lake"
+    ]
+  }
+}

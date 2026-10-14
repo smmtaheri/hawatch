@@ -422,11 +422,11 @@ def test_reimport_handles_stale_fixture_point_without_temporary_order_collision(
 
     points = list(route.points.order_by("sort_order"))
     assert [point.slug for point in points][:6] == [
-        "tochal-sarband-square",
-        "tochal-pas-ghaleh-village",
-        "tochal-shirpala-shelter",
-        "tochal-amiri-shelter",
-        "tochal-goleband-ridge",
+        "sarband-tehran",
+        "pas-ghaleh-shemiran",
+        "shirpala-tochal",
+        "amiri-tochal",
+        "goleband-tochal",
         "tochal",
     ]
     assert points[-1].slug == "retired_fixture_point"
@@ -440,7 +440,7 @@ def test_same_slug_collision_skips_operator_managed_rows():
     summit.fixture_managed = False
     summit.save(update_fields=["name", "fixture_managed"])
     route = Route.objects.get(slug="tochal-darband")
-    replacement = WeatherPoint.objects.get(slug="tochal-pas-ghaleh-village")
+    replacement = WeatherPoint.objects.get(slug="pas-ghaleh-shemiran")
     route.target_weather_point = replacement
     route.save(update_fields=["target_weather_point"])
 

@@ -1,0 +1,78 @@
+{
+  "catalog_version": "hawatch-dasht-susan-v1",
+  "primary_point": "dasht-susan",
+  "weather_points": {
+    "dasht-susan": {
+      "name": "دشت سوسن",
+      "page_name": "دشت سوسن ایذه",
+      "short_label": "دشت سوسن",
+      "tile_name": "دشت سوسن",
+      "short_category": "دشت",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "دشت‌های خوزستان",
+      "region": "سوسن · ایذه · خوزستان",
+      "aliases": [
+        "سوسن ایذه",
+        "منطقه سوسن",
+        "دشت سوسن ایذه",
+        "Dasht-e Susan",
+        "Dasht-e Soosan",
+        "Susan Plain"
+      ],
+      "identity_summary": "دشت سوسن در شمال‌غرب ایذه و پیرامون رود کارون؛ مختصات صفحه نشانگر نقشه‌ای خود جاذبه است و نمایندهٔ تمام گسترهٔ دشت به‌عنوان اندازه‌گیری میدانی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N7113999486",
+        "https://www.openstreetmap.org/node/7113999486",
+        "https://www.beytoote.com/iran/tafrihi/susan5-plain-khuzestan.html",
+        "https://fa.tripyar.com/iran/%D8%AE%D9%88%D8%B2%D8%B3%D8%AA%D8%A7%D9%86/%D8%A7%DB%8C%D8%B0%D9%87/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%AF%D8%B4%D8%AA-%D9%88-%D8%A8%DB%8C%D8%A7%D8%A8%D8%A7%D9%86-%DA%AF%D8%B1%D8%AF%DB%8C/%D8%AF%D8%B4%D8%AA-%D8%B3%D9%88%D8%B3%D9%86-%D8%A7%DB%8C%D8%B0%D9%87.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.01961&longitude=49.86371",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 32.01961,
+      "longitude": 49.86371,
+      "elevation_m": 552,
+      "status": "provisional",
+      "elevation_source": "مختصات نشانگر جاذبهٔ دشت سوسن در OSM؛ ارتفاع ۵۵۲ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۴).",
+      "climate": "meadow",
+      "routes": {},
+      "image": "/images/home-scene.png",
+      "image_alt": "دشت سوسن در نزدیکی ایذه و رود کارون",
+      "seo": {
+        "title": "آب‌وهوای دشت سوسن؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دشت سوسن ایذه در خوزستان؛ دما، باد و بارش را برای برنامه‌ریزی سفر ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "dasht-susan",
+    "tile_name": "دشت سوسن",
+    "name": "دشت سوسن",
+    "short_category": "دشت",
+    "category": "دشت‌های خوزستان",
+    "category_key": "meadow",
+    "region": "سوسن · ایذه · خوزستان",
+    "latitude": 32.01961,
+    "longitude": 49.86371,
+    "elevation_m": 552,
+    "image": "/images/home-scene.png",
+    "image_alt": "دشت سوسن در نزدیکی ایذه و رود کارون",
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "سوسن ایذه",
+      "منطقه سوسن",
+      "دشت سوسن ایذه",
+      "Dasht-e Susan",
+      "Dasht-e Soosan",
+      "Susan Plain"
+    ]
+  }
+}

@@ -40,14 +40,14 @@ def test_last_visit_renews_to_48_hours_without_adding_days(catalog):
 
 
 def test_fixed_points_use_the_first_related_route_and_recent_pages_expire(catalog):
-    touch_page('point', 'tochal-sarband-square')
+    touch_page('point', 'sarband-tehran')
     with patch('hawatch.api.v1.week_interest.fixed_points', return_value=['tochal']):
         targets = warm_targets()
     first = Route.objects.filter(is_active=True, points__weather_point__slug='tochal').order_by('sort_order','slug').first()
-    assert targets == [('point','tochal'), ('route',first.slug), ('point','tochal-sarband-square')]
+    assert targets == [('point','tochal'), ('route',first.slug), ('point','sarband-tehran')]
     WeekCacheInterest.objects.update(expires_at=timezone.now()-timedelta(seconds=1))
     with patch('hawatch.api.v1.week_interest.fixed_points', return_value=['tochal']):
-        assert ('point','tochal-sarband-square') not in warm_targets()
+        assert ('point','sarband-tehran') not in warm_targets()
     assert not WeekCacheInterest.objects.exists()
 
 

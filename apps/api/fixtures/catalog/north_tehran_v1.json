@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-north-tehran-catalog-v2",
+  "catalog_version": "hawatch-north-tehran-catalog-v3",
   "primary_point": "golabdarreh-park",
   "point": {
     "slug": "golabdarreh-park",
@@ -214,14 +214,14 @@
     }
   },
   "shared_weather_points": [
-    "tochal-sarband-square",
-    "tochal-velenjak-parking",
-    "tochal-telecabin-station-1",
-    "tochal-telecabin-station-2",
-    "tochal-telecabin-station-7",
+    "sarband-tehran",
+    "velenjak-parking",
+    "tochal-station-1",
+    "tochal-station-2",
+    "tochal-station-7",
     "tochal-shahneshin-pass",
-    "tochal-kolakchal-camp",
-    "tochal-espilat-sarlo-pass"
+    "kolakchal-camp",
+    "espilat-sarlo-pass"
   ],
   "routes": {
     "golabdarreh_to_espilat": {
@@ -236,8 +236,8 @@
       "sort_order": 1,
       "points": [
         "golabdarreh-park",
-        "tochal-kolakchal-camp",
-        "tochal-espilat-sarlo-pass",
+        "kolakchal-camp",
+        "espilat-sarlo-pass",
         "espilat-peak"
       ],
       "distance_km": 5.67,
@@ -247,8 +247,8 @@
       "timing": {
         "cumulative_minutes": {
           "golabdarreh-park": 0,
-          "tochal-kolakchal-camp": 150,
-          "tochal-espilat-sarlo-pass": 270,
+          "kolakchal-camp": 150,
+          "espilat-sarlo-pass": 270,
           "espilat-peak": 300
         },
         "confidence": "medium",
@@ -276,7 +276,7 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "tochal-sarband-square",
+        "sarband-tehran",
         "band-yakhchal",
         "shervin-shelter"
       ],
@@ -286,7 +286,7 @@
       "timing_status": "estimated",
       "timing": {
         "cumulative_minutes": {
-          "tochal-sarband-square": 0,
+          "sarband-tehran": 0,
           "band-yakhchal": 75,
           "shervin-shelter": 180
         },
@@ -320,8 +320,8 @@
       "featured": false,
       "sort_order": 3,
       "points": [
-        "tochal-velenjak-parking",
-        "tochal-telecabin-station-1",
+        "velenjak-parking",
+        "tochal-station-1",
         "kamachal-tehran"
       ],
       "distance_km": 8.05,
@@ -330,8 +330,8 @@
       "timing_status": "estimated",
       "timing": {
         "cumulative_minutes": {
-          "tochal-velenjak-parking": 0,
-          "tochal-telecabin-station-1": 100,
+          "velenjak-parking": 0,
+          "tochal-station-1": 100,
           "kamachal-tehran": 180
         },
         "confidence": "medium",
@@ -403,7 +403,7 @@
       "featured": false,
       "sort_order": 5,
       "points": [
-        "tochal-telecabin-station-7",
+        "tochal-station-7",
         "tochal-shahneshin-pass",
         "shahneshin-tehran"
       ],
@@ -413,7 +413,7 @@
       "timing_status": "estimated",
       "timing": {
         "cumulative_minutes": {
-          "tochal-telecabin-station-7": 0,
+          "tochal-station-7": 0,
           "tochal-shahneshin-pass": 15,
           "shahneshin-tehran": 55
         },

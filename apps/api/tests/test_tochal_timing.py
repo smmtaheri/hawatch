@@ -26,48 +26,48 @@ from hawatch.modules.routes.timing import route_mean_elevation_m
 
 EXPECTED_CUMULATIVE = {
     "tochal-darband": {
-        "tochal-sarband-square": 0,
-        "tochal-pas-ghaleh-village": 20,
-        "tochal-shirpala-shelter": 125,
-        "tochal-amiri-shelter": 220,
-        "tochal-goleband-ridge": 295,
+        "sarband-tehran": 0,
+        "pas-ghaleh-shemiran": 20,
+        "shirpala-tochal": 125,
+        "amiri-tochal": 220,
+        "goleband-tochal": 295,
         "tochal": 315,
     },
     "tochal-velenjak": {
-        "tochal-velenjak-parking": 0,
-        "tochal-telecabin-station-1": 10,
-        "tochal-telecabin-station-2": 85,
-        "tochal-telecabin-station-5": 195,
-        "tochal-telecabin-station-7": 330,
+        "velenjak-parking": 0,
+        "tochal-station-1": 10,
+        "tochal-station-2": 85,
+        "tochal-station-5": 195,
+        "tochal-station-7": 330,
         "tochal": 360,
     },
     "tochal-kolakchal": {
-        "tochal-jamshidieh-park": 0,
-        "tochal-kolakchal-camp": 135,
-        "tochal-espilat-sarlo-pass": 195,
-        "tochal-piyazchal-pass": 250,
-        "tochal-lezoon-east": 280,
-        "tochal-lezoon-west": 305,
-        "tochal-barfchal-peak": 330,
-        "tochal-chahar-paloon": 355,
-        "tochal-goleband-ridge": 375,
+        "jamshidieh-park": 0,
+        "kolakchal-camp": 135,
+        "espilat-sarlo-pass": 195,
+        "piyazchal-pass": 250,
+        "lezoon-east": 280,
+        "lezoon-west": 305,
+        "barfchal-tochal": 330,
+        "chahar-paloon": 355,
+        "goleband-tochal": 375,
         "tochal": 390,
     },
     "tochal-ahar": {
         "ahar-village": 0,
-        "tochal-shakarab-ahaar": 95,
-        "tochal-qezqunchal-peak": 315,
-        "tochal-homand-tochal": 360,
+        "shakarab-ahar": 95,
+        "qezqunchal-tochal": 315,
+        "homand-tochal": 360,
         "tochal": 380,
     },
     "tochal-shahrestanak": {
         "shahrestanak": 0,
-        "shahrestanak-naseri-palace": 65,
-        "tochal-shahrestanak-spring": 115,
-        "tochal-shahrestanak-sheepfold-spring": 160,
-        "tochal-shahrestanak-pass": 285,
+        "shahrestanak-palace": 65,
+        "shahrestanak-spring": 115,
+        "shahrestanak-sheepfold": 160,
+        "shahrestanak-pass": 285,
         "tochal-hotel": 310,
-        "tochal-telecabin-station-7": 335,
+        "tochal-station-7": 335,
         "tochal": 370,
     },
 }
@@ -194,12 +194,12 @@ def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
     assert shah.timing_status == Route.TimingStatus.ESTIMATED
     assert list(shah.points.order_by("sort_order").values_list("slug", flat=True)) == [
         "shahrestanak",
-        "shahrestanak-naseri-palace",
-        "tochal-shahrestanak-spring",
-        "tochal-shahrestanak-sheepfold-spring",
-        "tochal-shahrestanak-pass",
+        "shahrestanak-palace",
+        "shahrestanak-spring",
+        "shahrestanak-sheepfold",
+        "shahrestanak-pass",
         "tochal-hotel",
-        "tochal-telecabin-station-7",
+        "tochal-station-7",
         "tochal",
     ]
     # Valley variant points remain available globally but are not on this mandatory chain.
@@ -214,15 +214,15 @@ def test_tochal_timing_seed_idempotent(tochal_seeded):
     seed_tochal_catalog()
     assert Route.objects.filter(target_weather_point__slug="tochal", timing_status="estimated").count() == 5
     assert WeatherPoint.objects.filter(slug="tochal").count() == 1
-    assert WeatherPoint.objects.filter(slug="tochal-jamshidieh-park").count() == 1
-    assert WeatherPoint.objects.filter(slug="tochal-velenjak-parking").count() == 1
+    assert WeatherPoint.objects.filter(slug="jamshidieh-park").count() == 1
+    assert WeatherPoint.objects.filter(slug="velenjak-parking").count() == 1
     assert WeatherPoint.objects.filter(slug="tochal-velenjak-village").count() == 1
-    assert WeatherPoint.objects.filter(slug="tochal-shahrestanak-pass").count() == 1
+    assert WeatherPoint.objects.filter(slug="shahrestanak-pass").count() == 1
 
 
 @pytest.mark.django_db
 def test_catalog_evidence_notes_are_internal_not_route_copy(tochal_seeded):
-    parking = RoutePoint.objects.get(route__slug="tochal-velenjak", slug="tochal-velenjak-parking")
+    parking = RoutePoint.objects.get(route__slug="tochal-velenjak", slug="velenjak-parking")
     assert parking.public_note == ""
     assert parking.internal_note.startswith("Mandatory Velenjak trailhead parking")
 
@@ -230,10 +230,10 @@ def test_catalog_evidence_notes_are_internal_not_route_copy(tochal_seeded):
 @pytest.mark.django_db
 def test_jamshidieh_is_kalkchal_origin_and_hotel_not_on_welanjak(tochal_seeded):
     kalkchal = Route.objects.get(slug="tochal-kolakchal")
-    assert list(kalkchal.points.order_by("sort_order").values_list("slug", flat=True))[0] == "tochal-jamshidieh-park"
+    assert list(kalkchal.points.order_by("sort_order").values_list("slug", flat=True))[0] == "jamshidieh-park"
     assert kalkchal.origin == "جمشیدیه"
     assert kalkchal.timing_confidence == "medium"
-    park = WeatherPoint.objects.get(slug="tochal-jamshidieh-park")
+    park = WeatherPoint.objects.get(slug="jamshidieh-park")
     assert park.status == WeatherPoint.Status.PROVISIONAL
     assert park.elevation_m == 1826
     assert park.location.y == pytest.approx(35.824629)
@@ -241,9 +241,9 @@ def test_jamshidieh_is_kalkchal_origin_and_hotel_not_on_welanjak(tochal_seeded):
     assert "Open-Meteo GLO-90" in park.elevation_source
 
     welanjak = Route.objects.get(slug="tochal-velenjak")
-    assert list(welanjak.points.order_by("sort_order").values_list("slug", flat=True))[0] == "tochal-velenjak-parking"
+    assert list(welanjak.points.order_by("sort_order").values_list("slug", flat=True))[0] == "velenjak-parking"
     assert welanjak.origin == "پارکینگ ولنجک"
-    parking = WeatherPoint.objects.get(slug="tochal-velenjak-parking")
+    parking = WeatherPoint.objects.get(slug="velenjak-parking")
     assert parking.status == WeatherPoint.Status.PROVISIONAL
     assert parking.elevation_m == 1852
     assert "tochal-hotel" not in list(welanjak.points.values_list("slug", flat=True))
@@ -278,12 +278,12 @@ def test_routes_are_not_timing_pending_after_seed(api_client, tochal_seeded):
 @pytest.mark.django_db
 def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
-    for slug in ("tochal-shirpala-shelter", "tochal", "tochal-pas-ghaleh-village"):
+    for slug in ("shirpala-tochal", "tochal", "pas-ghaleh-shemiran"):
         _seed_point_hourly(
             WeatherPoint.objects.get(slug=slug),
             day=day,
             hours=[3, 5, 7, 9, 11, 13, 15, 17],
-            temperature_base=10 if slug == "tochal-shirpala-shelter" else 0,
+            temperature_base=10 if slug == "shirpala-tochal" else 0,
         )
 
     medium = api_client.get(
@@ -299,9 +299,9 @@ def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_se
         {"date": "2026-08-28", "period": "morning", "start_time": "08:00", "speed": "متوسط"},
     ).json()
 
-    shirpala_m = next(item for item in medium["points"] if item["slug"] == "tochal-shirpala-shelter")
-    shirpala_f = next(item for item in fast["points"] if item["slug"] == "tochal-shirpala-shelter")
-    shirpala_l = next(item for item in later["points"] if item["slug"] == "tochal-shirpala-shelter")
+    shirpala_m = next(item for item in medium["points"] if item["slug"] == "shirpala-tochal")
+    shirpala_f = next(item for item in fast["points"] if item["slug"] == "shirpala-tochal")
+    shirpala_l = next(item for item in later["points"] if item["slug"] == "shirpala-tochal")
     route = Route.objects.get(slug="tochal-darband")
     mean_elevation_m = route_mean_elevation_m(list(route.points.select_related("weather_point")))
     expected_medium = paced_route_cumulative_minutes(
@@ -317,7 +317,7 @@ def test_start_and_speed_change_shift_arrival_and_forecast(api_client, tochal_se
     assert shirpala_f["arrival_minutes"] < shirpala_m["arrival_minutes"]
     assert shirpala_l["arrival_minutes"] == shirpala_m["arrival_minutes"] + 120
     assert shirpala_m["weather_available"] is True
-    assert "tochal-shirpala-shelter" in shirpala_m["condition"]
+    assert "shirpala-tochal" in shirpala_m["condition"]
     assert shirpala_l["forecast_at"] != shirpala_m["forecast_at"]
 
 
@@ -362,12 +362,12 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
     assert "timing pending" not in str(body).lower()
     assert [point["slug"] for point in body["points"]] == [
         "shahrestanak",
-        "shahrestanak-naseri-palace",
-        "tochal-shahrestanak-spring",
-        "tochal-shahrestanak-sheepfold-spring",
-        "tochal-shahrestanak-pass",
+        "shahrestanak-palace",
+        "shahrestanak-spring",
+        "shahrestanak-sheepfold",
+        "shahrestanak-pass",
         "tochal-hotel",
-        "tochal-telecabin-station-7",
+        "tochal-station-7",
         "tochal",
     ]
 
@@ -377,7 +377,7 @@ def test_shahrestanak_timing_estimated_after_seed(api_client, tochal_seeded):
 def test_each_point_uses_own_weather_no_summit_fallback(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
     summit = WeatherPoint.objects.get(slug="tochal")
-    shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
+    shirpala = WeatherPoint.objects.get(slug="shirpala-tochal")
     _seed_point_hourly(
         summit, day=day, hours=list(range(0, 24, 2)), temperature_base=-10, data_mode="live", provider="open-meteo"
     )
@@ -390,7 +390,7 @@ def test_each_point_uses_own_weather_no_summit_fallback(api_client, tochal_seede
         "/api/v1/routes/tochal-darband/forecast/",
         {"date": "2026-08-28", "period": "afternoon", "start_time": "12:00", "speed": "متوسط"},
     ).json()
-    shirpala_card = next(item for item in body["points"] if item["slug"] == "tochal-shirpala-shelter")
+    shirpala_card = next(item for item in body["points"] if item["slug"] == "shirpala-tochal")
     # Arrival ~12:00+125min ≈ 14:05 → closest within ±90 may miss hour 03 → unavailable
     assert shirpala_card["weather_available"] is False
     assert shirpala_card["temp"] is None
@@ -431,7 +431,7 @@ def test_late_arrival_keeps_matched_forecast_severity(api_client, tochal_seeded)
 def test_critical_route_point_does_not_rewrite_target_hourly(api_client, tochal_seeded):
     day = datetime(2026, 8, 28).date()
     summit = WeatherPoint.objects.get(slug="tochal")
-    shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
+    shirpala = WeatherPoint.objects.get(slug="shirpala-tochal")
     _seed_point_hourly(
         summit, day=day, hours=[12, 14, 16], temperature_base=-2, severity="normal", data_mode="live", provider="open-meteo"
     )
@@ -446,7 +446,7 @@ def test_critical_route_point_does_not_rewrite_target_hourly(api_client, tochal_
         "/api/v1/routes/tochal-darband/forecast/",
         {"date": "2026-08-28", "period": "afternoon", "start_time": "12:00", "speed": "متوسط"},
     ).json()
-    shirpala_card = next(item for item in body["points"] if item["slug"] == "tochal-shirpala-shelter")
+    shirpala_card = next(item for item in body["points"] if item["slug"] == "shirpala-tochal")
     assert shirpala_card["state"] == "critical"
     assert body["decision"]["state"] == "critical"
     assert body["hourly"]
@@ -459,7 +459,7 @@ def test_closest_forecast_tie_prefers_earlier_forecast_at(tochal_seeded):
     """Equal absolute distance → earlier forecast_at (then lower pk)."""
     from hawatch.api.v1.serializers import _closest_point_forecast
 
-    shirpala = WeatherPoint.objects.get(slug="tochal-shirpala-shelter")
+    shirpala = WeatherPoint.objects.get(slug="shirpala-tochal")
     tz = timezone()
     target = datetime(2026, 8, 28, 8, 0, tzinfo=tz)
     earlier = datetime(2026, 8, 28, 7, 0, tzinfo=tz)
@@ -530,7 +530,7 @@ def test_pending_routepoint_makes_route_timing_unusable(api_client, tochal_seede
     from hawatch.api.v1.serializers import route_has_usable_timing
 
     route = Route.objects.get(slug="tochal-darband")
-    point = route.points.get(slug="tochal-shirpala-shelter")
+    point = route.points.get(slug="shirpala-tochal")
     point.timing_status = RoutePoint.TimingStatus.PENDING
     point.save(update_fields=["timing_status"])
     assert point.cumulative_minutes is not None
@@ -549,7 +549,7 @@ def test_non_monotonic_or_mismatched_cumulative_is_unusable(api_client, tochal_s
     route = Route.objects.get(slug="tochal-darband")
     assert route_has_usable_timing(route) is True
 
-    shirpala = route.points.get(slug="tochal-shirpala-shelter")
+    shirpala = route.points.get(slug="shirpala-tochal")
     shirpala.cumulative_minutes = 10  # less than pas_ghaleh=20
     shirpala.save(update_fields=["cumulative_minutes"])
     assert route_has_usable_timing(route) is False
@@ -587,7 +587,7 @@ def test_complete_estimated_route_remains_usable(api_client, tochal_seeded):
 def test_catalog_timing_validation_rejects_non_monotonic():
     data = load_catalog_file()
     route = data["routes"]["darband_to_tochal"]
-    route["timing"]["cumulative_minutes"]["tochal-shirpala-shelter"] = 10
+    route["timing"]["cumulative_minutes"]["shirpala-tochal"] = 10
     with pytest.raises(ValueError, match="strictly monotonic"):
         _validate_document_shape(data)
 

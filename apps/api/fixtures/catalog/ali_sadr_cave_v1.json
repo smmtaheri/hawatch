@@ -1,0 +1,71 @@
+{
+  "catalog_version": "hawatch-ali-sadr-cave-v1",
+  "primary_point": "ali-sadr-cave",
+  "weather_points": {
+    "ali-sadr-cave": {
+      "name": "غار علیصدر",
+      "page_name": "غار علیصدر همدان",
+      "short_label": "علیصدر",
+      "place_type": "landmark",
+      "category_key": "cave",
+      "category": "غارهای همدان",
+      "region": "کبودراهنگ · همدان",
+      "aliases": [
+        "غار علیصدر",
+        "غار علی‌صدر",
+        "غار علی صدر",
+        "غار علی‌سرد",
+        "علیصدر",
+        "Ali Sadr Cave",
+        "Alisadr Cave"
+      ],
+      "identity_summary": "غار آبی گردشگری علیصدر در جنوب روستای علیصدر، شهرستان کبودرآهنگ؛ مختصات روی دهانهٔ غار است و پیش‌بینی فقط هوای بیرونِ ورودی را نشان می‌دهد، نه فضای داخل غار.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/5150690221",
+        "https://www.i-s-c-a.org/show-cave/185-alisadr-cave",
+        "https://fa.tripyar.com/iran/%D9%87%D9%85%D8%AF%D8%A7%D9%86/%DA%A9%D8%A8%D9%88%D8%AF%D8%B1%D8%A7%D9%87%D9%86%DA%AF/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%D8%BA%D8%A7%D8%B1%D9%86%D9%88%D8%B1%D8%AF%DB%8C/%D8%BA%D8%A7%D8%B1-%D8%B9%D9%84%DB%8C%D8%B5%D8%AF%D8%B1.html",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.3050517&longitude=48.3009862",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.3050517,
+      "longitude": 48.3009862,
+      "elevation_m": 1980,
+      "status": "provisional",
+      "elevation_source": "مختصات دهانه از OSM node 5150690221؛ ارتفاع اعلام‌شدهٔ محل ورودی ۱۹۸۰ متر، با DEM سرویس Open-Meteo برابر ۱۹۸۷ متر (بررسی ۲۰۲۶-۱۰-۱۳).",
+      "climate": "alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "ali-sadr-cave",
+    "tile_name": "غار علیصدر",
+    "name": "غار علیصدر",
+    "short_category": "غار",
+    "category": "غارهای همدان",
+    "category_key": "cave",
+    "region": "کبودراهنگ · همدان",
+    "elevation_m": 1980,
+    "latitude": 35.3050517,
+    "longitude": 48.3009862,
+    "image": "/images/home-scene.png",
+    "image_alt": "دهانهٔ غار علیصدر در شهرستان کبودرآهنگ",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "غار علیصدر",
+      "غار علی‌صدر",
+      "غار علی صدر",
+      "غار علی‌سرد",
+      "علیصدر",
+      "Ali Sadr Cave",
+      "Alisadr Cave"
+    ]
+  }
+}

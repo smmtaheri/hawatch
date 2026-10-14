@@ -53,7 +53,7 @@
     },
     "points": [
       {
-        "slug": "tochal-sarband-square",
+        "slug": "sarband-tehran",
         "name": "میدان سربند",
         "elevation_m": 1820,
         "elevation_label": "۱۸۲۰ m",
@@ -68,13 +68,13 @@
         "note": "",
         "axis_x": 12,
         "axis_y": 72,
-        "href": "/points/tochal-sarband-square",
+        "href": "/points/sarband-tehran",
         "latitude": 35.8280442,
         "longitude": 51.4266129,
-        "weather_point_slug": "tochal-sarband-square"
+        "weather_point_slug": "sarband-tehran"
       },
       {
-        "slug": "tochal-pas-ghaleh-village",
+        "slug": "pas-ghaleh-shemiran",
         "name": "روستای پس‌قلعه",
         "elevation_m": 1936,
         "elevation_label": "۱۹۳۶ m",
@@ -89,13 +89,13 @@
         "note": "",
         "axis_x": 27,
         "axis_y": 63,
-        "href": "/points/tochal-pas-ghaleh-village",
+        "href": "/points/pas-ghaleh-shemiran",
         "latitude": 35.836195,
         "longitude": 51.4233411,
-        "weather_point_slug": "tochal-pas-ghaleh-village"
+        "weather_point_slug": "pas-ghaleh-shemiran"
       },
       {
-        "slug": "tochal-shirpala-shelter",
+        "slug": "shirpala-tochal",
         "name": "پناهگاه شیرپلا",
         "elevation_m": 2750,
         "elevation_label": "۲۷۵۰ m",
@@ -110,13 +110,13 @@
         "note": "",
         "axis_x": 42,
         "axis_y": 54,
-        "href": "/points/tochal-shirpala-shelter",
+        "href": "/points/shirpala-tochal",
         "latitude": 35.8550662,
         "longitude": 51.4295976,
-        "weather_point_slug": "tochal-shirpala-shelter"
+        "weather_point_slug": "shirpala-tochal"
       },
       {
-        "slug": "tochal-amiri-shelter",
+        "slug": "amiri-tochal",
         "name": "جان‌پناه امیری",
         "elevation_m": 3390,
         "elevation_label": "۳۳۹۰ m",
@@ -131,13 +131,13 @@
         "note": "",
         "axis_x": 58,
         "axis_y": 46,
-        "href": "/points/tochal-amiri-shelter",
+        "href": "/points/amiri-tochal",
         "latitude": 35.8690223,
         "longitude": 51.4194867,
-        "weather_point_slug": "tochal-amiri-shelter"
+        "weather_point_slug": "amiri-tochal"
       },
       {
-        "slug": "tochal-goleband-ridge",
+        "slug": "goleband-tochal",
         "name": "یال گوله‌بند توچال",
         "elevation_m": 3860,
         "elevation_label": "۳۸۶۰ m",
@@ -152,10 +152,10 @@
         "note": "",
         "axis_x": 73,
         "axis_y": 37,
-        "href": "/points/tochal-goleband-ridge",
+        "href": "/points/goleband-tochal",
         "latitude": 35.8809109,
         "longitude": 51.422138,
-        "weather_point_slug": "tochal-goleband-ridge"
+        "weather_point_slug": "goleband-tochal"
       },
       {
         "slug": "tochal",
@@ -378,7 +378,7 @@
   "timing_version": "tochal-timing-v3",
   "points": [
     {
-      "slug": "tochal-sarband-square",
+      "slug": "sarband-tehran",
       "name": "میدان سربند",
       "elevation_m": 1820,
       "elevation_label": "۱۸۲۰ m",
@@ -393,10 +393,10 @@
       "note": "",
       "axis_x": 12,
       "axis_y": 72,
-      "href": "/points/tochal-sarband-square",
+      "href": "/points/sarband-tehran",
       "latitude": 35.8280442,
       "longitude": 51.4266129,
-      "weather_point_slug": "tochal-sarband-square",
+      "weather_point_slug": "sarband-tehran",
       "arrival_minutes": 1020,
       "arrival_at": "2026-10-01T17:00:00+03:30",
       "time": "۱۷:۰۰",
@@ -459,7 +459,7 @@
       "state": "critical"
     },
     {
-      "slug": "tochal-pas-ghaleh-village",
+      "slug": "pas-ghaleh-shemiran",
       "name": "روستای پس‌قلعه",
       "elevation_m": 1936,
       "elevation_label": "۱۹۳۶ m",
@@ -474,10 +474,10 @@
       "note": "",
       "axis_x": 27,
       "axis_y": 63,
-      "href": "/points/tochal-pas-ghaleh-village",
+      "href": "/points/pas-ghaleh-shemiran",
       "latitude": 35.836195,
       "longitude": 51.4233411,
-      "weather_point_slug": "tochal-pas-ghaleh-village",
+      "weather_point_slug": "pas-ghaleh-shemiran",
       "arrival_minutes": 1040,
       "arrival_at": "2026-10-01T17:20:00+03:30",
       "time": "۱۷:۲۰",
@@ -540,7 +540,7 @@
       "state": "critical"
     },
     {
-      "slug": "tochal-shirpala-shelter",
+      "slug": "shirpala-tochal",
       "name": "پناهگاه شیرپلا",
       "elevation_m": 2750,
       "elevation_label": "۲۷۵۰ m",
@@ -555,10 +555,10 @@
       "note": "",
       "axis_x": 42,
       "axis_y": 54,
-      "href": "/points/tochal-shirpala-shelter",
+      "href": "/points/shirpala-tochal",
       "latitude": 35.8550662,
       "longitude": 51.4295976,
-      "weather_point_slug": "tochal-shirpala-shelter",
+      "weather_point_slug": "shirpala-tochal",
       "arrival_minutes": 1145,
       "arrival_at": "2026-10-01T19:05:00+03:30",
       "time": "۱۹:۰۵",
@@ -621,7 +621,7 @@
       "state": "critical"
     },
     {
-      "slug": "tochal-amiri-shelter",
+      "slug": "amiri-tochal",
       "name": "جان‌پناه امیری",
       "elevation_m": 3390,
       "elevation_label": "۳۳۹۰ m",
@@ -636,10 +636,10 @@
       "note": "",
       "axis_x": 58,
       "axis_y": 46,
-      "href": "/points/tochal-amiri-shelter",
+      "href": "/points/amiri-tochal",
       "latitude": 35.8690223,
       "longitude": 51.4194867,
-      "weather_point_slug": "tochal-amiri-shelter",
+      "weather_point_slug": "amiri-tochal",
       "arrival_minutes": 1240,
       "arrival_at": "2026-10-01T20:40:00+03:30",
       "time": "۲۰:۴۰",
@@ -702,7 +702,7 @@
       "state": "critical"
     },
     {
-      "slug": "tochal-goleband-ridge",
+      "slug": "goleband-tochal",
       "name": "یال گوله‌بند توچال",
       "elevation_m": 3860,
       "elevation_label": "۳۸۶۰ m",
@@ -717,10 +717,10 @@
       "note": "",
       "axis_x": 73,
       "axis_y": 37,
-      "href": "/points/tochal-goleband-ridge",
+      "href": "/points/goleband-tochal",
       "latitude": 35.8809109,
       "longitude": 51.422138,
-      "weather_point_slug": "tochal-goleband-ridge",
+      "weather_point_slug": "goleband-tochal",
       "arrival_minutes": 1315,
       "arrival_at": "2026-10-01T21:55:00+03:30",
       "time": "۲۱:۵۵",

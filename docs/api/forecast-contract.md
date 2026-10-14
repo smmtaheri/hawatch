@@ -194,7 +194,7 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 ## نقطهٔ canonical (Point Forecast)
 
 - `GET /api/v1/points/{weather_point_slug}/forecast/?date=&period=`
-- URL frontend: `/points/{weather_point_slug}` — مثال `/points/tochal-sarband-square`
+- URL frontend: `/points/{weather_point_slug}` — مثال `/points/sarband-tehran`
 - همین قرارداد مشترک برای هر WeatherPoint؛ frontend فقط `forecast.*` را مصرف می‌کند (alias ریشه سازگاری است)
 - هر WeatherPoint فعال `canonical_href` عمومی در namespaceٔ `/points/` دارد؛ frontend
   باید از ابتدا `/points/{slug}` را لینک کند.

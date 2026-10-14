@@ -1,0 +1,73 @@
+{
+  "catalog_version": "hawatch-agh-gol-wetland-v1",
+  "primary_point": "agh-gol-wetland",
+  "weather_points": {
+    "agh-gol-wetland": {
+      "name": "تالاب آق‌گل",
+      "page_name": "تالاب آق‌گل ملایر",
+      "short_label": "آق‌گل",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های همدان و مرکزی",
+      "region": "ملایر · مرز همدان و مرکزی",
+      "aliases": [
+        "تالاب آق‌گل",
+        "تالاب آق گل",
+        "تالاب آقگل ملایر",
+        "تالاب کردخورد",
+        "تالاب کورد خورد",
+        "تالاب کرتخورد",
+        "Agh Gol Wetland",
+        "Ag-Gol Wetland",
+        "Aq Gol Wetland"
+      ],
+      "identity_summary": "تالاب فصلی آق‌گل (کردخورد) در مرز استان‌های همدان و مرکزی، شمال‌شرق ملایر؛ این صفحه یک نقطهٔ نماینده برای خود تالاب است و نه روستای اسلام‌شهر آق‌گل.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.researchgate.net/publication/265948957_Study_of_biodiversity_and_limiting_factors_of_Ag-gol_Wetland_in_Hamadan_Province_Iran",
+        "https://yaldamedtour.com/fa/place/880/%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D8%A2%D9%82-%DA%AF%D9%84/%D8%A8%D8%B2%D8%B1%DA%AF-%D8%AA%D8%B1%DB%8C%D9%86-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%81%D8%B5%D9%84%DB%8C-%D9%87%D9%85%D8%AF%D8%A7%D9%86",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.5433333&longitude=49.0236111",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.5433333,
+      "longitude": 49.0236111,
+      "elevation_m": 1654,
+      "status": "provisional",
+      "elevation_source": "مختصات میانهٔ دامنهٔ جغرافیایی ثبت‌شده در پژوهش میدانی تالاب؛ کمینهٔ ارتفاع بستر ۱۶۵۳٫۶ متر و DEM سرویس Open-Meteo در نقطه ۱۶۴۵ متر (بررسی ۲۰۲۶-۱۰-۱۳).",
+      "climate": "meadow",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "agh-gol-wetland",
+    "tile_name": "تالاب آق‌گل",
+    "name": "تالاب آق‌گل",
+    "short_category": "تالاب",
+    "category": "تالاب‌های همدان و مرکزی",
+    "category_key": "marsh",
+    "region": "ملایر · مرز همدان و مرکزی",
+    "elevation_m": 1654,
+    "latitude": 34.5433333,
+    "longitude": 49.0236111,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ تالاب فصلی آق‌گل در مرز همدان و مرکزی",
+    "climate": "meadow",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تالاب آق گل",
+      "تالاب آقگل ملایر",
+      "تالاب کردخورد",
+      "تالاب کورد خورد",
+      "تالاب کرتخورد",
+      "Agh Gol Wetland",
+      "Ag-Gol Wetland",
+      "Aq Gol Wetland"
+    ]
+  }
+}

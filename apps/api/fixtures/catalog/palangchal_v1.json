@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-palangchal-catalog-v1",
+  "catalog_version": "hawatch-palangchal-catalog-v2",
   "weather_points": {
     "palangchal-shelter": {
       "name": "پناهگاه پلنگچال",
@@ -184,7 +184,7 @@
   },
   "shared_weather_points": [
     "chin-kalagh-darakeh-trailhead",
-    "tochal-telecabin-station-5"
+    "tochal-station-5"
   ],
   "routes": {
     "darakeh_to_palangchal_shelter": {
@@ -298,7 +298,7 @@
         "palangchal-kara-junction",
         "palangchal-shelter",
         "palangchal-station5-junction",
-        "tochal-telecabin-station-5"
+        "tochal-station-5"
       ],
       "distance_km": 9.34,
       "ascent_m": 1254,
@@ -323,7 +323,7 @@
           "palangchal-kara-junction": 45,
           "palangchal-shelter": 150,
           "palangchal-station5-junction": 205,
-          "tochal-telecabin-station-5": 240
+          "tochal-station-5": 240
         },
         "notes": [
           "این route عمداً مستقل از Routeهای صعود توچال ثبت شده و ایستگاه ۵ را از کاتالوگ توچال به‌صورت shared استفاده می‌کند.",

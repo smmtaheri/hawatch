@@ -15,7 +15,7 @@ from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-MAX_PROVIDER_DISTANCE_KM = 5.0
+MAX_PROVIDER_DISTANCE_KM = 5.25
 MAX_CATALOG_DEM_DELTA_M = 100.0
 MAX_WEATHER_POINT_NAME_LENGTH = 80
 MAX_WEATHER_POINT_ELEVATION_SOURCE_LENGTH = 255

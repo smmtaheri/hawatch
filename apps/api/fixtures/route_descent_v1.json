@@ -1781,8 +1781,8 @@
       "descent_m": 6,
       "chain": [
         "golabdarreh-park",
-        "tochal-kolakchal-camp",
-        "tochal-espilat-sarlo-pass",
+        "kolakchal-camp",
+        "espilat-sarlo-pass",
         "espilat-peak"
       ],
       "cumulative_distance_m": [0, 3748, 5316, 5672],
@@ -2533,10 +2533,10 @@
       "slug": "kolakchal-jamshidieh",
       "descent_m": 1,
       "chain": [
-        "tochal-jamshidieh-park",
+        "jamshidieh-park",
         "kolakchal-jamshidieh-station-3",
-        "tochal-kolakchal-camp",
-        "tochal-espilat-sarlo-pass",
+        "kolakchal-camp",
+        "espilat-sarlo-pass",
         "kolakchal"
       ],
       "evidence": {
@@ -2873,7 +2873,7 @@
         "palangchal-kara-junction",
         "palangchal-shelter",
         "palangchal-station5-junction",
-        "tochal-telecabin-station-5"
+        "tochal-station-5"
       ],
       "cumulative_distance_m": [0, 2706, 7017, 8930, 9339],
       "evidence": {
@@ -3297,7 +3297,7 @@
       "slug": "sarband-shervin",
       "descent_m": 2,
       "chain": [
-        "tochal-sarband-square",
+        "sarband-tehran",
         "band-yakhchal",
         "shervin-shelter"
       ],
@@ -3861,9 +3861,9 @@
       "descent_m": 3,
       "chain": [
         "ahar-village",
-        "tochal-shakarab-ahaar",
-        "tochal-qezqunchal-peak",
-        "tochal-homand-tochal",
+        "shakarab-ahar",
+        "qezqunchal-tochal",
+        "homand-tochal",
         "tochal"
       ],
       "evidence": {
@@ -3886,11 +3886,11 @@
       "slug": "tochal-darband",
       "descent_m": 0,
       "chain": [
-        "tochal-sarband-square",
-        "tochal-pas-ghaleh-village",
-        "tochal-shirpala-shelter",
-        "tochal-amiri-shelter",
-        "tochal-goleband-ridge",
+        "sarband-tehran",
+        "pas-ghaleh-shemiran",
+        "shirpala-tochal",
+        "amiri-tochal",
+        "goleband-tochal",
         "tochal"
       ],
       "evidence": {
@@ -3914,15 +3914,15 @@
       "slug": "tochal-kolakchal",
       "descent_m": 66,
       "chain": [
-        "tochal-jamshidieh-park",
-        "tochal-kolakchal-camp",
-        "tochal-espilat-sarlo-pass",
-        "tochal-piyazchal-pass",
-        "tochal-lezoon-east",
-        "tochal-lezoon-west",
-        "tochal-barfchal-peak",
-        "tochal-chahar-paloon",
-        "tochal-goleband-ridge",
+        "jamshidieh-park",
+        "kolakchal-camp",
+        "espilat-sarlo-pass",
+        "piyazchal-pass",
+        "lezoon-east",
+        "lezoon-west",
+        "barfchal-tochal",
+        "chahar-paloon",
+        "goleband-tochal",
         "tochal"
       ],
       "evidence": {
@@ -3950,11 +3950,11 @@
       "slug": "tochal-velenjak",
       "descent_m": 50,
       "chain": [
-        "tochal-velenjak-parking",
-        "tochal-telecabin-station-1",
-        "tochal-telecabin-station-2",
-        "tochal-telecabin-station-5",
-        "tochal-telecabin-station-7",
+        "velenjak-parking",
+        "tochal-station-1",
+        "tochal-station-2",
+        "tochal-station-5",
+        "tochal-station-7",
         "tochal"
       ],
       "evidence": {
@@ -8620,7 +8620,7 @@
     {
       "slug": "station-7-shahneshin",
       "chain": [
-        "tochal-telecabin-station-7",
+        "tochal-station-7",
         "tochal-shahneshin-pass",
         "shahneshin-tehran"
       ],
@@ -8876,12 +8876,12 @@
       "slug": "tochal-shahrestanak",
       "chain": [
         "shahrestanak",
-        "shahrestanak-naseri-palace",
-        "tochal-shahrestanak-spring",
-        "tochal-shahrestanak-sheepfold-spring",
-        "tochal-shahrestanak-pass",
+        "shahrestanak-palace",
+        "shahrestanak-spring",
+        "shahrestanak-sheepfold",
+        "shahrestanak-pass",
         "tochal-hotel",
-        "tochal-telecabin-station-7",
+        "tochal-station-7",
         "tochal"
       ],
       "descent_m": 32,
@@ -8929,12 +8929,12 @@
         "confidence": "low",
         "route_distance_m": 16200,
         "estimated_point_slugs": [
-          "shahrestanak-naseri-palace",
-          "tochal-shahrestanak-spring",
-          "tochal-shahrestanak-sheepfold-spring",
-          "tochal-shahrestanak-pass",
+          "shahrestanak-palace",
+          "shahrestanak-spring",
+          "shahrestanak-sheepfold",
+          "shahrestanak-pass",
           "tochal-hotel",
-          "tochal-telecabin-station-7",
+          "tochal-station-7",
           "tochal"
         ],
         "chord_distances_m": [
@@ -9237,8 +9237,8 @@
     {
       "slug": "velenjak-kamachal",
       "chain": [
-        "tochal-velenjak-parking",
-        "tochal-telecabin-station-1",
+        "velenjak-parking",
+        "tochal-station-1",
         "kamachal-tehran"
       ],
       "descent_m": 0,
@@ -9278,7 +9278,7 @@
         "confidence": "low",
         "route_distance_m": 8100,
         "estimated_point_slugs": [
-          "tochal-telecabin-station-1",
+          "tochal-station-1",
           "kamachal-tehran"
         ],
         "chord_distances_m": [

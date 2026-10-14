@@ -1,0 +1,80 @@
+{
+  "catalog_version": "hawatch-hoor-al-azim-v1",
+  "primary_point": "hoor-al-azim",
+  "weather_points": {
+    "hoor-al-azim": {
+      "name": "تالاب هورالعظیم",
+      "page_name": "تالاب هورالعظیم خوزستان",
+      "short_label": "هورالعظیم",
+      "tile_name": "تالاب هورالعظیم",
+      "short_category": "تالاب",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های خوزستان",
+      "region": "هویزه و دشت آزادگان · خوزستان",
+      "aliases": [
+        "هورالعظیم",
+        "هور العظیم",
+        "هورالهویزه",
+        "تالاب هویزه",
+        "Hoor Al-Azim",
+        "Hawr al-Huwayzah",
+        "Huwaizah Marsh"
+      ],
+      "identity_summary": "هورالعظیم، بخش ایرانی تالاب مرزی هویزه در جنوب‌غرب خوزستان؛ مختصات این صفحه نقطهٔ نقشه‌ایِ نماینده در پهنهٔ تالاب است، نه جایگاه بازدید یا مسیر پیاده‌روی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/Huwaizah-Marsh",
+        "https://www.sciencedirect.com/science/article/pii/S0264837721002180",
+        "https://mapcarta.com/13122054",
+        "https://www.openstreetmap.org/?mlat=31.3408&mlon=47.7143&zoom=12",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.3408&longitude=47.7143",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.3408,
+      "longitude": 47.7143,
+      "elevation_m": 1,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ تالاب در OSM؛ ارتفاع نقشه‌ای ۵ متر و DEM سرویس Open-Meteo GLO-90 در همین مختصات ۱ متر است (بررسی ۲۰۲۶-۱۰-۱۴).",
+      "climate": "desert",
+      "routes": {},
+      "image": "/images/home-scene.png",
+      "image_alt": "تالاب هورالعظیم در پهنهٔ مرزی خوزستان",
+      "seo": {
+        "title": "آب‌وهوای تالاب هورالعظیم؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب هورالعظیم در خوزستان؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "hoor-al-azim",
+    "tile_name": "تالاب هورالعظیم",
+    "name": "تالاب هورالعظیم",
+    "short_category": "تالاب",
+    "category": "تالاب‌های خوزستان",
+    "category_key": "marsh",
+    "region": "هویزه و دشت آزادگان · خوزستان",
+    "latitude": 31.3408,
+    "longitude": 47.7143,
+    "elevation_m": 1,
+    "image": "/images/home-scene.png",
+    "image_alt": "تالاب هورالعظیم در پهنهٔ مرزی خوزستان",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "هورالعظیم",
+      "هور العظیم",
+      "هورالهویزه",
+      "تالاب هویزه",
+      "Hoor Al-Azim",
+      "Hawr al-Huwayzah",
+      "Huwaizah Marsh"
+    ]
+  }
+}

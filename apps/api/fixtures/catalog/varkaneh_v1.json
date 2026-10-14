@@ -1,0 +1,69 @@
+{
+  "catalog_version": "hawatch-varkaneh-v1",
+  "primary_point": "varkaneh",
+  "weather_points": {
+    "varkaneh": {
+      "name": "روستای ورکانه",
+      "page_name": "روستای ورکانه همدان",
+      "short_label": "ورکانه",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای همدان",
+      "region": "الوندکوه شرقی · همدان",
+      "aliases": [
+        "ورکانه",
+        "روستای ورکانه",
+        "ورکانه همدان",
+        "Varkaneh",
+        "Varkāneh",
+        "Varqaneh"
+      ],
+      "identity_summary": "روستای تاریخی و طبیعت‌گردی ورکانه در دهستان الوندکوه شرقیِ شهرستان همدان؛ نقطهٔ هواشناسی نمایندهٔ بافت روستاست، نه قله یا مسیر صعود الوند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4541036992",
+        "https://mapcarta.com/12569988",
+        "https://www.irangaah.ir/villages/hamedan/alvandkuh-sharghi/vrekaneeh",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.67685&longitude=48.61899",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.67685,
+      "longitude": 48.61899,
+      "elevation_m": 2234,
+      "status": "provisional",
+      "elevation_source": "مختصات نقطهٔ روستا از OSM node 4541036992؛ ارتفاع نقشه ۲۲۳۴ متر و DEM سرویس Open-Meteo برابر ۲۲۳۷ متر (بررسی ۲۰۲۶-۱۰-۱۳).",
+      "climate": "alpine",
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "varkaneh",
+    "tile_name": "روستای ورکانه",
+    "name": "روستای ورکانه",
+    "short_category": "روستا",
+    "category": "روستاهای همدان",
+    "category_key": "village",
+    "region": "الوندکوه شرقی · همدان",
+    "elevation_m": 2234,
+    "latitude": 34.67685,
+    "longitude": 48.61899,
+    "image": "/images/home-scene.png",
+    "image_alt": "بافت روستای ورکانه در دامنه‌های الوند",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ورکانه",
+      "روستای ورکانه",
+      "ورکانه همدان",
+      "Varkaneh",
+      "Varkāneh",
+      "Varqaneh"
+    ]
+  }
+}

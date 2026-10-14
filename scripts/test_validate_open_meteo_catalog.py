@@ -89,7 +89,7 @@ def test_provider_distance_and_hourly_shape_are_blocking(tmp_path, monkeypatch):
         "_query_forecast",
         lambda points, *, endpoint, forecast_days, timeout: _forecast_rows(
             points,
-            distance=5.1,
+            distance=5.3,
             elevation=None,
             missing=("temperature_2m", "precipitation"),
             hour_count=0,
@@ -102,6 +102,25 @@ def test_provider_distance_and_hourly_shape_are_blocking(tmp_path, monkeypatch):
     assert any("grid resolution distance" in item for item in report["errors"])
     assert any("missing temperature_2m, precipitation" in item for item in report["errors"])
     assert any("no elevation metadata" in item for item in report["errors"])
+
+
+def test_slightly_over_five_km_provider_cell_is_accepted(tmp_path, monkeypatch):
+    path = _catalog(tmp_path)
+    monkeypatch.setattr(
+        validator,
+        "_query_elevation",
+        lambda points, *, endpoint, timeout: [{**point, "dem_elevation_m": 1000} for point in points],
+    )
+    monkeypatch.setattr(
+        validator,
+        "_query_forecast",
+        lambda points, *, endpoint, forecast_days, timeout: _forecast_rows(points, distance=5.2),
+    )
+
+    report = validator.validate_catalog(path)
+
+    assert report["summary"]["pass"] is True
+    assert not any("grid resolution distance" in item for item in report["errors"])
 
 
 def test_point_only_catalog_is_valid(tmp_path, monkeypatch):

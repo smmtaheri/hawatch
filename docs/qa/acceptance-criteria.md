@@ -27,7 +27,7 @@
 - [ ] Route (`/routes/{slug}`) planner، نقاط و weather pointهای مسیر را نمایش می‌دهد.
 - [ ] Point (`/points/{weatherPointSlug}`) صفحهٔ canonical مستقل برای WeatherPoint است و timing planner ندارد.
 - [ ] نقطهٔ شاخص مثل `tochal` فقط از `/points/tochal` لینک می‌شود و صفحهٔ موازی ندارد.
-- [ ] `/points/tochal-sarband-square` همان shell بصری Point را دارد (`.point-page`).
+- [ ] `/points/sarband-tehran` همان shell بصری Point را دارد (`.point-page`).
 - [ ] همهٔ صفحات Point از یک `PlaceForecastPage` رندر می‌شوند.
 - [ ] لینک Route به Point تمیز است؛ context کامل Route در `location.state.fromRoute` نگه داشته می‌شود.
 - [ ] بازگشت Point که از Route باز شده، `date`، `period`، `start_time` و `speed` را restore می‌کند؛ ورود مستقیم/refresh دکمهٔ back گمراه‌کننده ندارد.
@@ -43,7 +43,7 @@
 - [ ] periodهای کاملاً گذشته با ساعت رسمی تهران dim هستند و period جاری واضح است.
 - [ ] Route در timing pending متن خام `timing pending`، ETA ساختگی یا fallback ثابت ظهر برای period انتخاب‌شده ندارد.
 - [ ] پنج مسیر توچال پس از seed با timing تخمینی v3 کار می‌کنند (شامل شهرستانک ترکیبی). نشان `تخمینی · ±N دقیقه`، بدون fallback قله و بدون ادعای زمان قطعی یا کالیبراسیون میدانی کامل.
-- [ ] مبدأ ولنجک `tochal-velenjak-parking` است؛ نقطهٔ قدیمیِ مبهم `velenjak` در
+- [ ] مبدأ ولنجک `velenjak-parking` است؛ نقطهٔ قدیمیِ مبهم `velenjak` در
   کاتالوگ canonical باقی نمی‌ماند.
 - [ ] تغییر start time یا speed arrival و انتخاب forecast نقطه را دوباره محاسبه می‌کند و می‌تواند از مرز period/بامداد عبور کند.
 - [ ] `state` کارت نقطه و تصمیم مسیر فقط از severity پیش‌بینی نقطه‌ای matched ساخته می‌شود؛ آستانهٔ دیررسیدن یا بازنویسی hourly نقطه از critical نقطه ممنوع است.

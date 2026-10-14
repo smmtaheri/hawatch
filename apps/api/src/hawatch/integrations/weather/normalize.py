@@ -12,7 +12,9 @@ from zoneinfo import ZoneInfo
 from hawatch.integrations.weather.schemas import NormalizedReading
 
 TEHRAN = ZoneInfo("Asia/Tehran")
-MAX_PROVIDER_RESOLUTION_DISTANCE_KM = 5.0
+# Open-Meteo grid centers can sit just beyond 5 km for isolated high peaks.
+# Keep the allowance narrow while accepting those valid neighboring cells.
+MAX_PROVIDER_RESOLUTION_DISTANCE_KM = 5.25
 
 # Fields intentionally not requested from Open-Meteo in this vertical slice.
 UNAVAILABLE_HOURLY_FIELDS = ("cloud_cover_pct", "cloud_base_m")

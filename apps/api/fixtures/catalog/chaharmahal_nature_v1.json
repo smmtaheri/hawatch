@@ -1,0 +1,276 @@
+{
+  "catalog_version": "hawatch-chaharmahal-nature-v1",
+  "primary_point": "choghakhor-wetland",
+  "weather_points": {
+    "choghakhor-wetland": {
+      "name": "تالاب چغاخور",
+      "page_name": "تالاب چغاخور چهارمحال و بختیاری",
+      "short_label": "تالاب چغاخور",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های چهارمحال و بختیاری",
+      "region": "بروجن · چهارمحال و بختیاری",
+      "aliases": ["چغاخور", "تالاب چغاخور", "دریاچه چغاخور", "Choghakhor Wetland", "Choghakhor Lake"],
+      "identity_summary": "تالاب چغاخور در شهرستان بروجن؛ مختصات نماینده در پهنهٔ تالاب است. بازدید از پهنه با مسیر پیادهٔ ثبت‌شده در هواچ یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/attraction/choghakhor-lagoon",
+        "https://www.ramsar.org/sites/default/files/documents/library/sitelist.pdf",
+        "https://www.openstreetmap.org/?mlat=31.924&mlon=50.905#map=13/31.924/50.905",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.924&longitude=50.905"
+      ],
+      "latitude": 31.924,
+      "longitude": 50.905,
+      "elevation_m": 2274,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۲۷۴ متر از Open-Meteo GLO-90 DEM در مختصات نماینده؛ ارتفاع میدانی تأیید نشده است.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای تالاب چغاخور؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی دما، باد و بارش تالاب چغاخور در چهارمحال و بختیاری؛ وضعیت هوا را پیش از بازدید بررسی کنید."
+      }
+    },
+    "gandoman-wetland": {
+      "name": "تالاب گندمان",
+      "page_name": "تالاب گندمان چهارمحال و بختیاری",
+      "short_label": "تالاب گندمان",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های چهارمحال و بختیاری",
+      "region": "بروجن · چهارمحال و بختیاری",
+      "aliases": ["گندمان", "تالاب گندمان", "Gandoman Wetland", "Gandoman Marsh"],
+      "identity_summary": "تالاب بین‌المللی گندمان در شهرستان بروجن؛ نقطهٔ پیش‌بینی، مختصات رسمی نمایندهٔ سایت رامسر است و مسیر پیادهٔ مشخصی برایش ثبت نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.ramsar.org/news/islamic-republic-iran-names-its-27th-wetland-international-importance",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR2558RIS_2502_en.pdf",
+        "https://mapcarta.com/W189261950",
+        "https://www.openstreetmap.org/?mlat=31.836944&mlon=51.099444#map=14/31.836944/51.099444",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.836944&longitude=51.099444"
+      ],
+      "latitude": 31.836944,
+      "longitude": 51.099444,
+      "elevation_m": 2212,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۲۱۲ متر از Open-Meteo GLO-90 DEM در مختصات رسمی سایت رامسر؛ ارتفاع میدانی تأیید نشده است.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای تالاب گندمان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب گندمان، زیستگاه تالابی مهم چهارمحال و بختیاری؛ دما، باد و بارش را ببینید."
+      }
+    },
+    "dimeh-spring": {
+      "name": "چشمه دیمه",
+      "page_name": "چشمه دیمه کوهرنگ",
+      "short_label": "چشمه دیمه",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "چشمه‌های چهارمحال و بختیاری",
+      "region": "دیمه · کوهرنگ · چهارمحال و بختیاری",
+      "aliases": ["چشمهٔ دیمه", "چشمه دیمه کوهرنگ", "Dimeh Spring", "Dimeh Water Spring"],
+      "identity_summary": "چشمهٔ دیمه در نزدیکی روستای دیمه و چلگرد؛ مقصد مستقل و ثبت‌شدهٔ گردشگری است. در این catalog مسیر پیادهٔ جداگانه‌ای برای آن تعریف نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/index.php/en/attraction/dimeh-water-spring",
+        "https://www.openstreetmap.org/node/4558041489",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.500149&longitude=50.215501"
+      ],
+      "latitude": 32.500149,
+      "longitude": 50.215501,
+      "elevation_m": 2218,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۲۱۸ متر از Open-Meteo GLO-90 DEM در مختصات چشمهٔ ثبت‌شده در OSM.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای چشمه دیمه؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی دما، باد و بارش چشمه دیمه در کوهرنگ؛ پیش از بازدید از این چشمهٔ طبیعی وضعیت هوا را بررسی کنید."
+      }
+    },
+    "atashgah-waterfall": {
+      "name": "آبشار آتشگاه",
+      "page_name": "آبشار آتشگاه لردگان",
+      "short_label": "آبشار آتشگاه",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای چهارمحال و بختیاری",
+      "region": "لردگان · چهارمحال و بختیاری",
+      "aliases": ["آبشارهای آتشگاه", "آبشار آتشگاه لردگان", "Atashgah Waterfall", "Atashgah Waterfalls"],
+      "identity_summary": "مجموعه آبشارهای آتشگاه در نزدیکی روستای آتشگاه لردگان. معرفی گردشگری از چند آبشار در امتداد حدود سه کیلومتر می‌گوید، اما به‌تنهایی آسان‌بودن و ایمنی یک Route پیاده را ثابت نمی‌کند؛ فعلاً point-only است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/attraction/atashgah-waterfall",
+        "https://mapcarta.com/N3279866553",
+        "https://www.openstreetmap.org/node/3279866553",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.2400057&longitude=51.0004642"
+      ],
+      "latitude": 31.2400057,
+      "longitude": 51.0004642,
+      "elevation_m": 1394,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۳۹۴ متر از Open-Meteo GLO-90 DEM در مختصات آبشار ثبت‌شده در OSM.",
+      "climate": "meadow",
+      "seo": {
+        "title": "آب‌وهوای آبشار آتشگاه؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار آتشگاه لردگان؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    },
+    "sheikh-ali-khan-waterfall": {
+      "name": "آبشار شیخ علی‌خان",
+      "page_name": "آبشار شیخ علی‌خان کوهرنگ",
+      "short_label": "آبشار شیخ علی‌خان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای کوهرنگ",
+      "region": "شیخ علی‌خان · کوهرنگ · چهارمحال و بختیاری",
+      "aliases": ["آبشار شیخ علی خان", "آبشار شیخ‌علی‌خان", "Sheykh Alikhan Waterfall", "Sheikh Ali Khan Waterfall"],
+      "identity_summary": "آبشار کنار روستای شیخ علی‌خان در شهرستان کوهرنگ. مقصد قابل دسترسی برای بازدید است؛ مسیر دشوار دره یا یخ‌نوردی به‌عنوان Route عمومی ثبت نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/attraction/koohrang-1-dam",
+        "https://mapcarta.com/N2364063116",
+        "https://www.openstreetmap.org/node/2364063116",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.50423&longitude=50.06827"
+      ],
+      "latitude": 32.50423,
+      "longitude": 50.06827,
+      "elevation_m": 2495,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۴۹۵ متر از Open-Meteo GLO-90 DEM در مختصات آبشار ثبت‌شده در OSM.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار شیخ علی‌خان؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی دما، باد و بارش آبشار شیخ علی‌خان در کوهرنگ؛ وضعیت هوا را پیش از رفتن بررسی کنید."
+      }
+    },
+    "kouhrang-spring": {
+      "name": "چشمه کوهرنگ",
+      "page_name": "چشمه کوهرنگ چهارمحال و بختیاری",
+      "short_label": "چشمه کوهرنگ",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "چشمه‌های کوهرنگ",
+      "region": "کوهرنگ · چهارمحال و بختیاری",
+      "aliases": ["چشمهٔ کوهرنگ", "سرچشمه کوهرنگ", "Kouhrang Spring", "Koohrang Spring"],
+      "identity_summary": "چشمهٔ کوهرنگ، عارضهٔ طبیعی ثبت‌شده در نزدیکی چلگرد و مستقل از سازه‌های تونل و سد کوهرنگ؛ مقصد point-only و بدون Route پیادهٔ تأییدشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N7766325944",
+        "https://www.openstreetmap.org/node/7766325944",
+        "https://visitiran.ir/attraction/koohrang-1-dam",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.4520685&longitude=50.0529236"
+      ],
+      "latitude": 32.4520685,
+      "longitude": 50.0529236,
+      "elevation_m": 2527,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۵۲۷ متر از Open-Meteo GLO-90 DEM در مختصات چشمهٔ ثبت‌شده در OSM.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای چشمه کوهرنگ؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای چشمه کوهرنگ در زاگرس؛ دما، باد و بارش را برای برنامه‌ریزی بازدید بررسی کنید."
+      }
+    },
+    "sar-agha-seyed": {
+      "name": "روستای سرآقاسید",
+      "page_name": "روستای سرآقاسید کوهرنگ",
+      "short_label": "سرآقاسید",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاهای چهارمحال و بختیاری",
+      "region": "میان‌کوه موگویی · کوهرنگ · چهارمحال و بختیاری",
+      "aliases": ["سر آقاسید", "سرآقا سید", "سر آقا سید", "Sar Aqa Seyyed", "Sar Agha Seyed"],
+      "identity_summary": "روستای پلکانی سرآقاسید در دهستان میان‌کوه موگویی شهرستان کوهرنگ. آب‌وهوا برای خود روستا است؛ راه‌های کوهستانی پیرامون به‌عنوان مسیر عمومی ثبت نشده‌اند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Sar_Aqa_Seyyed",
+        "https://irangaah.ir/villages/kuhrang/mian-kuh-muguyi/sara-gha-seyed",
+        "https://www.openstreetmap.org/node/4414536398",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.6590491&longitude=49.8644068"
+      ],
+      "latitude": 32.6590491,
+      "longitude": 49.8644068,
+      "elevation_m": 2090,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۰۹۰ متر از Open-Meteo GLO-90 DEM در مختصات مرکز روستای ثبت‌شده در OSM.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای روستای سرآقاسید؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی دما، باد و بارش روستای سرآقاسید در کوهرنگ؛ شرایط هوا را پیش از سفر بررسی کنید."
+      }
+    },
+    "chama-ice-cave": {
+      "name": "غار یخی چما",
+      "page_name": "غار یخی چما کوهرنگ",
+      "short_label": "غار یخی چما",
+      "place_type": "landmark",
+      "category_key": "cave",
+      "category": "غارها و عوارض طبیعی کوهرنگ",
+      "region": "زردکوه · کوهرنگ · چهارمحال و بختیاری",
+      "aliases": ["یخچال چما", "تنگه یخی چما", "Chama Ice Cave", "Chma Ice Cave"],
+      "identity_summary": "درهٔ برفی و یخی چما در دامنهٔ زردکوه، نزدیک شیخ علی‌خان؛ منابع هشدارِ ریزش یخ و مرگ بازدیدکنندگان دارند. فقط نقطهٔ پیش‌بینی است و مسیر پیادهٔ عمومی یا ورود به یخ ثبت نمی‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q96480183",
+        "https://commons.wikimedia.org/wiki/Category:Chama_Ice_Cave",
+        "https://untamediran.com/fa/chma-ice-cave",
+        "https://mapcarta.com/N4407855273",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.5615&longitude=49.95788"
+      ],
+      "latitude": 32.5615,
+      "longitude": 49.95788,
+      "elevation_m": 2722,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۷۲۲ متر از Open-Meteo GLO-90 DEM در مختصات عارضهٔ نقشه‌ای؛ ارتفاع نهایی محل یخ نیازمند برداشت محلی است.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای غار یخی چما؛ پیش‌بینی هوا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای محدودهٔ غار یخی چما در کوهرنگ؛ دما، باد و بارش را پیش از سفر بررسی کنید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "choghakhor-wetland",
+    "tile_name": "تالاب چغاخور",
+    "name": "تالاب چغاخور",
+    "short_category": "تالاب",
+    "category": "تالاب‌های چهارمحال و بختیاری",
+    "category_key": "marsh",
+    "region": "بروجن · چهارمحال و بختیاری",
+    "elevation_m": 2274,
+    "latitude": 31.924,
+    "longitude": 50.905,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ تالاب چغاخور در زاگرس مرکزی",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["چغاخور", "تالاب چغاخور", "Choghakhor Wetland"]
+  }
+}

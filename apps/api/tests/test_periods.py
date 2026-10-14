@@ -270,7 +270,7 @@ def test_parse_start_minutes_respects_exclusive_period_end():
 @pytest.mark.django_db
 def test_route_point_forecast_endpoint_is_removed(api_client, seeded):
     response = api_client.get(
-        "/api/v1/routes/tochal-darband/points/tochal-shirpala-shelter/forecast/",
+        "/api/v1/routes/tochal-darband/points/shirpala-tochal/forecast/",
         {"date": REFERENCE_DATE.isoformat(), "period": "morning"},
     )
     assert response.status_code == 404
@@ -377,7 +377,7 @@ def test_point_night_period_uses_in_window_reading_at_1030(api_client, seeded):
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
         body = api_client.get(
-            "/api/v1/points/tochal-shirpala-shelter/forecast/",
+            "/api/v1/points/shirpala-tochal/forecast/",
             {"date": REFERENCE_DATE.isoformat(), "period": "night"},
         ).json()
     allowed_hours = {18, 20, 22}
@@ -394,7 +394,7 @@ def test_point_midnight_current_at_0130(api_client, seeded):
     with patch("hawatch.api.v1.views.now_tehran", return_value=at), patch(
         "hawatch.api.v1.serializers.now_tehran", return_value=at
     ):
-        body = api_client.get("/api/v1/points/tochal-shirpala-shelter/forecast/").json()
+        body = api_client.get("/api/v1/points/shirpala-tochal/forecast/").json()
     assert body["meta"]["selected_date"] == REFERENCE_DATE.isoformat()
     assert body["meta"]["selected_period"] == "midnight"
     assert body["current"]["is_current"] is True
@@ -498,9 +498,9 @@ def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
     summit = api_client.get("/api/v1/points/tochal/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     assert summit["subject"]["canonical_href"] == "/points/tochal"
     assert summit["point"]["href"] == "/points/tochal"
-    sarband = api_client.get("/api/v1/points/tochal-sarband-square/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    sarband = api_client.get("/api/v1/points/sarband-tehran/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     assert sarband["subject"]["kind"] == "point"
-    assert sarband["subject"]["canonical_href"] == "/points/tochal-sarband-square"
+    assert sarband["subject"]["canonical_href"] == "/points/sarband-tehran"
     assert "metrics" in sarband
     assert "decision" in sarband
     routes = {item["slug"] for item in sarband["related_routes"]}
@@ -510,7 +510,7 @@ def test_shared_weather_point_has_one_canonical_page(api_client, seeded):
 @pytest.mark.django_db
 def test_place_forecast_contract_shared_keys(api_client, seeded):
     primary = api_client.get("/api/v1/points/tochal/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
-    point = api_client.get("/api/v1/points/tochal-sarband-square/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
+    point = api_client.get("/api/v1/points/sarband-tehran/forecast/", {"date": REFERENCE_DATE.isoformat(), "period": "morning"}).json()
     for body in (primary, point):
         assert "subject" in body
         assert body["subject"]["kind"] == "point"

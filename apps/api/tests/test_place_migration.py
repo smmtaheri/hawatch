@@ -63,15 +63,15 @@ def test_operator_managed_point_is_not_overwritten_by_catalog_import():
 def test_active_route_point_uses_its_own_canonical_href(api_client):
     seed_demo_data(force=True)
     response = api_client.get(
-        "/api/v1/points/tochal-sarband-square/forecast/",
+        "/api/v1/points/sarband-tehran/forecast/",
         {"date": "2026-08-28", "period": "morning"},
     )
 
     assert response.status_code == 200
     body = response.json()
-    assert body["subject"]["slug"] == "tochal-sarband-square"
-    assert body["subject"]["canonical_href"] == "/points/tochal-sarband-square"
-    assert body["point"]["href"] == "/points/tochal-sarband-square"
+    assert body["subject"]["slug"] == "sarband-tehran"
+    assert body["subject"]["canonical_href"] == "/points/sarband-tehran"
+    assert body["point"]["href"] == "/points/sarband-tehran"
     assert body["forecast"]["meta"]["selected_period"] == "morning"
 
 

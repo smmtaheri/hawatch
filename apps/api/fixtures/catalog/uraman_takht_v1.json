@@ -1,0 +1,77 @@
+{
+  "catalog_version": "hawatch-uraman-takht-v1",
+  "weather_points": {
+    "uraman-takht": {
+      "name": "اورامان تخت",
+      "page_name": "اورامان تخت؛ بافت پلکانی هورامان",
+      "short_label": "اورامان تخت",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "میراث فرهنگی و طبیعت کردستان",
+      "region": "بخش اورامان · سروآباد · استان کردستان",
+      "aliases": [
+        "هورامان تخت",
+        "روستای اورامان تخت",
+        "اورامان تخت کردستان",
+        "هورامان",
+        "Uraman Takht",
+        "Hawraman Takht",
+        "Avroman Takht"
+      ],
+      "identity_summary": "بافت پلکانی تاریخی اورامان تخت در بخش اورامانِ سروآباد؛ یکی از اجزای بخش مرکزی‌ـ‌شرقی منظر فرهنگی هورامان/اورامانات در فهرست میراث جهانی یونسکو. این نقطه نمایندهٔ بافت اورامان تخت است و محدودهٔ گستردهٔ منظر فرهنگی را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://whc.unesco.org/en/list/1647",
+        "https://www.openstreetmap.org/way/215306702",
+        "https://irangaah.ir/villages/sarvabad/avraman-takht/avraman-takht",
+        "https://visitiran.ir/fa/destination/%D8%A7%D9%88%D8%B1%D8%A7%D9%85%D8%A7%D9%86-%D8%AA%D8%AE%D8%AA",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.2539665&longitude=46.2591728",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 35.2539665,
+      "longitude": 46.2591728,
+      "elevation_m": 1438,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ بافت تاریخی از عارضهٔ گردشگری اورامان تخت در OpenStreetMap؛ ارتفاع ۱۴۳۸ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات و با validator پیش از import کنترل می‌شود. منبع گردشگری Visit Iran ارتفاع تقریبی منطقه را ۱۵۰۰ متر ذکر می‌کند.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای اورامان تخت؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای بافت پلکانی اورامان تخت در منظر فرهنگی هورامان کردستان؛ وضعیت دما، باد و بارش برای برنامه‌ریزی سفر.",
+        "content": "اورامان تخت بافتی پلکانی در کوهستان زاگرس و یکی از اجزای منظر فرهنگی هورامان/اورامانات است. این صفحه پیش‌بینی نقطه‌ای نماینده از بافت را نشان می‌دهد، نه کل پهنهٔ میراث جهانی را."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "uraman-takht",
+    "tile_name": "اورامان تخت",
+    "name": "اورامان تخت",
+    "short_category": "میراث فرهنگی",
+    "category": "میراث فرهنگی و طبیعت کردستان",
+    "category_key": "landmark",
+    "region": "بخش اورامان · سروآباد · استان کردستان",
+    "elevation_m": 1438,
+    "latitude": 35.2539665,
+    "longitude": 46.2591728,
+    "image": "/images/home-scene.png",
+    "image_alt": "بافت پلکانی اورامان تخت در کوهستان زاگرس",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "هورامان تخت",
+      "روستای اورامان تخت",
+      "اورامان تخت کردستان",
+      "هورامان",
+      "Uraman Takht",
+      "Hawraman Takht",
+      "Avroman Takht"
+    ]
+  },
+  "primary_point": "uraman-takht"
+}
