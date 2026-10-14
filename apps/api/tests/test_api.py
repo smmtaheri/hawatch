@@ -525,7 +525,7 @@ def test_point_only_forecast_exposes_curated_similar_destinations(api_client, se
         "darbandsar-ski-resort",
         "tochal-ski-resort",
         "abali-ski-resort",
-        "sabalan-alvares-ski-resort",
+        "alvares-ski-resort",
     ]
 
 

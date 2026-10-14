@@ -1,10 +1,10 @@
 {
-  "catalog_version": "hawatch-sabalan-catalog-v8",
+  "catalog_version": "hawatch-sabalan-catalog-v9",
   "weather_points": {
-    "sabalan-alvares-village": {
+    "alvares-village": {
       "name": "روستای آلوارس",
-      "page_name": "روستای آلوارس؛ مبدأ دسترسی به مسیر جنوب‌شرقی سبلان",
-      "short_label": "روستای آلوارس",
+      "page_name": "روستای آلوارس",
+      "short_label": "آلوارس",
       "place_type": "village",
       "aliases": ["آلوارس", "الو ارس", "روستا آلوارس", "Alvares village", "Alvars"],
       "identity_summary": "روستای ییلاقی آلوارس در سرعین؛ سکونتگاه نزدیک پیست و مسیر جنوب‌شرقی سبلان",
@@ -20,14 +20,17 @@
       "elevation_source": "ارتفاع و مختصات روستای آلوارس از OpenStreetMap/GeoNames در Mapcarta؛ DEM سرویس Open-Meteo برای کنترل نهایی استفاده می‌شود.",
       "climate": "alpine"
     },
-    "sabalan-alvares-ski-resort": {
+    "alvares-ski-resort": {
       "name": "پیست اسکی آلوارس",
-      "page_name": "پیست اسکی آلوارس؛ دامنهٔ جنوبی سبلان",
+      "page_name": "پیست اسکی آلوارس",
       "short_label": "پیست آلوارس",
       "place_type": "landmark",
       "category_key": "ski",
       "aliases": ["پیست اسکی آلوارس", "پیست آلوارس", "Alvares Ski Resort"],
       "identity_summary": "پیست اسکی آلوارس در دامنهٔ جنوبی سبلان؛ مقصد مستقل ورزش‌های زمستانی و طبیعت‌گردی",
+      "seo": {
+        "title": "آب‌وهوای پیست اسکی آلوارس؛ دما، باد و بارش | هواچ"
+      },
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -41,9 +44,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-gorgor-waterfall": {
+    "gorgor-waterfall": {
       "name": "آبشار گورگور آلوارس",
-      "page_name": "آبشار گورگور آلوارس؛ دامنهٔ جنوبی سبلان",
+      "page_name": "آبشار گورگور آلوارس",
       "short_label": "آبشار گورگور",
       "place_type": "waterfall",
       "aliases": ["آبشار گورگور سبلان", "گورگور آلوارس", "Gorgor Waterfall"],
@@ -61,9 +64,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-qotur-sui": {
+    "qotur-sui": {
       "name": "آبگرم قوتورسویی",
-      "page_name": "آبگرم قوتورسویی؛ شمال‌شرقی سبلان",
+      "page_name": "آبگرم قوتورسویی",
       "short_label": "قوتورسویی",
       "place_type": "spring",
       "category_key": "hot_spring",
@@ -82,9 +85,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-moeil-village": {
+    "moeil-village": {
       "name": "روستای موئیل",
-      "page_name": "روستای موئیل؛ دامنهٔ غربی سبلان",
+      "page_name": "روستای موئیل",
       "short_label": "موئیل",
       "place_type": "village",
       "aliases": ["موییل", "موئيل", "روستای موییل", "Moeil village"],
@@ -102,9 +105,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-sareyn-city": {
+    "sareyn": {
       "name": "شهر سرعین",
-      "page_name": "شهر سرعین؛ دروازهٔ جنوبی سبلان",
+      "page_name": "شهر سرعین",
       "short_label": "سرعین",
       "place_type": "city",
       "aliases": ["سرعین", "سرئین", "Sareyn", "Sarein"],
@@ -122,9 +125,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-meshgin-shahr": {
+    "meshgin-shahr": {
       "name": "شهر مشگین‌شهر",
-      "page_name": "شهر مشگین‌شهر؛ دروازهٔ شمالی سبلان",
+      "page_name": "شهر مشگین‌شهر",
       "short_label": "مشگین‌شهر",
       "place_type": "city",
       "aliases": ["مشگین شهر", "خیاو", "Meshgin Shahr", "Meshkinshahr"],
@@ -142,9 +145,9 @@
       "region": "آذربایجان · اردبیل",
       "climate": "alpine"
     },
-    "sabalan-lahrud-city": {
+    "lahrud": {
       "name": "شهر لاهرود",
-      "page_name": "شهر لاهرود؛ دروازهٔ شمال‌شرقی سبلان",
+      "page_name": "شهر لاهرود",
       "short_label": "لاهرود",
       "place_type": "city",
       "aliases": ["لاهرود", "لاری", "Lahrud"],
@@ -171,7 +174,7 @@
       "status": "provisional",
       "elevation_source": "ارتفاع رایج قلهٔ سلطان سبلان حدود ۴۸۱۱ متر؛ مختصات با نزدیک‌ترین رسیدن ترک غربی و نقاط قلهٔ ترک شمال‌شرقی تطبیق شده؛ ارتفاع GPX مرجع است و DEM برای اعتبارسنجی provider استفاده می‌شود.",
       "page_name": "قلهٔ سبلان",
-      "short_label": "قلهٔ سبلان",
+      "short_label": "سبلان",
       "place_type": "summit",
       "aliases": [],
       "identity_summary": "قلهٔ سبلان؛ نقطهٔ summit در محدودهٔ قلهٔ سبلان",
@@ -189,7 +192,7 @@
         "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sbln-z-msyr-alwrs-jnwb-shrqy-178039361"
       ]
     },
-    "sabalan-shabil": {
+    "shabil": {
       "name": "شابیل",
       "latitude": 38.327692,
       "longitude": 47.844205,
@@ -211,7 +214,7 @@
         "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
       ]
     },
-    "sabalan-ne-east-hut": {
+    "sabalan-east-hut": {
       "name": "پناهگاه شمال‌شرقی سبلان",
       "latitude": 38.282997,
       "longitude": 47.860844,
@@ -219,7 +222,7 @@
       "status": "provisional",
       "elevation_source": "Waypoint ترک مستقل پناهگاه تا قله: ۳۶۸۸.۹ متر؛ با پناهگاه ترک شابیل و DEM تطبیق می‌شود.",
       "page_name": "پناهگاه شمال‌شرقی سبلان",
-      "short_label": "پناهگاه شمال‌شرقی سبلان",
+      "short_label": "پناهگاه شمال‌شرقی",
       "place_type": "shelter",
       "aliases": [],
       "identity_summary": "پناهگاه شمال‌شرقی سبلان؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
@@ -232,18 +235,18 @@
         "https://climbers.ir/tourist-attractions/83-%DA%A9%D9%88%D9%87-%D8%B3%D8%A8%D9%84%D8%A7%D9%86"
       ]
     },
-    "sabalan-ne-crater-lake": {
-      "name": "دریاچهٔ دهانهٔ سبلان",
+    "sabalan-crater-lake": {
+      "name": "دریاچهٔ سبلان",
       "latitude": 38.267809,
       "longitude": 47.837558,
       "elevation_m": 4789,
       "status": "provisional",
       "elevation_source": "Waypoint دریاچهٔ سبلان در ترک شابیل: ۴۷۸۸.۹ متر؛ GPX مرجع و DEM برای cross-check.",
-      "page_name": "دریاچهٔ دهانهٔ سبلان",
-      "short_label": "دریاچهٔ دهانهٔ سبلان",
+      "page_name": "دریاچهٔ سبلان",
+      "short_label": "دریاچه",
       "place_type": "lake",
-      "aliases": [],
-      "identity_summary": "دریاچهٔ دهانهٔ سبلان؛ نقطهٔ lake در محدودهٔ قلهٔ سبلان",
+      "aliases": ["دریاچهٔ دهانهٔ سبلان", "دریاچهٔ قلهٔ سبلان"],
+      "identity_summary": "دریاچهٔ دهانهٔ آتشفشانی سبلان در نزدیکی قله",
       "importance": "support",
       "seo_indexable": true,
       "name_status": "descriptive",
@@ -254,17 +257,17 @@
       ]
     },
     "sabalan-west-trailhead": {
-      "name": "پای کار جبههٔ غربی سبلان",
+      "name": "پای‌کار غربی سبلان",
       "latitude": 38.282732,
       "longitude": 47.801526,
       "elevation_m": 3394,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: ۳۳۹۴ متر در مختصات پای کار غربی؛ مقدار GPX حدود ۳۲۰۵ متر به‌عنوان مرجع خام ثبت شده و به‌دلیل اختلاف، حقیقت catalog محسوب نشده است.",
-      "page_name": "پای کار جبههٔ غربی سبلان",
-      "short_label": "پای کار جبههٔ غربی سبلان",
+      "page_name": "پای‌کار غربی سبلان",
+      "short_label": "پای‌کار غربی",
       "place_type": "landmark",
       "aliases": [],
-      "identity_summary": "پای کار جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "identity_summary": "مبدأ مسیر صعود جبههٔ غربی سبلان",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -275,17 +278,17 @@
       ]
     },
     "sabalan-west-gateway": {
-      "name": "دروازهٔ جبههٔ غربی سبلان",
+      "name": "دروازهٔ غربی سبلان",
       "latitude": 38.277288,
       "longitude": 47.820931,
       "elevation_m": 4112,
       "status": "provisional",
       "elevation_source": "Waypoint نام‌گذاری‌شدهٔ ترک صعود غربی: حدود ۴۱۱۲ متر؛ GPX مرجع و DEM برای cross-check.",
-      "page_name": "دروازهٔ جبههٔ غربی سبلان",
-      "short_label": "دروازهٔ جبههٔ غربی سبلان",
+      "page_name": "دروازهٔ غربی سبلان",
+      "short_label": "دروازهٔ غربی",
       "place_type": "landmark",
       "aliases": [],
-      "identity_summary": "دروازهٔ جبههٔ غربی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "identity_summary": "عارضهٔ سنگی در مسیر صعود جبههٔ غربی سبلان",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -296,16 +299,16 @@
       ]
     },
     "sabalan-west-qartal-dashi": {
-      "name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)",
+      "name": "قارتال‌داشی سبلان",
       "latitude": 38.273331,
       "longitude": 47.822509,
       "elevation_m": 4233,
       "status": "provisional",
       "elevation_source": "Waypoint قارتال‌داشی/پناهگاه غربی در ترک غربی: حدود ۴۲۳۳ متر؛ GPX مرجع و DEM برای cross-check.",
-      "page_name": "سنگ قارتال‌داشی سبلان (عقاب سنگی)",
-      "short_label": "سنگ قارتال‌داشی",
+      "page_name": "قارتال‌داشی سبلان",
+      "short_label": "قارتال‌داشی",
       "place_type": "landmark",
-      "aliases": [],
+      "aliases": ["سنگ قارتال‌داشی", "عقاب سنگی سبلان"],
       "identity_summary": "قارتال‌داشی · پناهگاه غربی؛ نقطهٔ shelter در محدودهٔ قلهٔ سبلان",
       "importance": "support",
       "seo_indexable": false,
@@ -323,7 +326,7 @@
       "elevation_m": 3441,
       "status": "provisional",
       "elevation_source": "ابتدای ترک آلوارس/چای‌گوزی تا قله: حدود ۳۴۴۱ متر؛ GPX مرجع و DEM برای cross-check.",
-      "page_name": "چای‌گوزی، ابتدای مسیر جنوب‌شرقی سبلان",
+      "page_name": "چای‌گوزی سبلان",
       "short_label": "چای‌گوزی",
       "place_type": "trailhead",
       "aliases": [],
@@ -338,17 +341,17 @@
       ]
     },
     "sabalan-se-mehrab-dashi": {
-      "name": "محراب‌داشی جنوب‌شرقی سبلان",
+      "name": "محراب‌داشی سبلان",
       "latitude": 38.26661,
       "longitude": 47.842089,
       "elevation_m": 4741,
       "status": "provisional",
       "elevation_source": "Waypoint محراب در ترک جنوب‌شرقی: حدود ۴۷۴۱ متر؛ عارضهٔ نام‌گذاری‌شده و نزدیک قله، با DEM cross-check.",
-      "page_name": "محراب‌داشی جنوب‌شرقی سبلان",
-      "short_label": "محراب‌داشی جنوب‌شرقی سبلان",
+      "page_name": "محراب‌داشی سبلان",
+      "short_label": "محراب‌داشی",
       "place_type": "landmark",
       "aliases": [],
-      "identity_summary": "محراب‌داشی جنوب‌شرقی سبلان؛ نقطهٔ landmark در محدودهٔ قلهٔ سبلان",
+      "identity_summary": "محراب‌داشی در مسیر جنوب‌شرقی صعود سبلان",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -370,9 +373,9 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "sabalan-shabil",
-        "sabalan-ne-east-hut",
-        "sabalan-ne-crater-lake",
+        "shabil",
+        "sabalan-east-hut",
+        "sabalan-crater-lake",
         "sabalan"
       ],
       "distance_km": 10.3,
@@ -392,7 +395,7 @@
         ],
         "evidence_tracks": [
           "tracks/sabalan/sabalan-ne-shabil-to-east-hut-and-summit-2018.gpx",
-          "tracks/sabalan/sabalan-ne-east-hut-to-summit-2022.gpx"
+          "tracks/sabalan/sabalan-east-hut-to-summit-2022.gpx"
         ],
         "notes": [
           "ترک کامل شابیل تا قله حدود ۱۰.۳ کیلومتر هندسه و پروفایل صعود را تأیید می‌کند؛ timestamp آن به‌دلیل توقف/شب‌مانی برای moving time استفاده نشده است.",
@@ -400,9 +403,9 @@
           "این مسیر در ارتفاع بالا قرار دارد؛ نبود آب در بخش صعود طبق گزارش‌ها باید در متن ایمنی/تجهیزات لحاظ شود."
         ],
         "cumulative_minutes": {
-          "sabalan-shabil": 0,
-          "sabalan-ne-east-hut": 300,
-          "sabalan-ne-crater-lake": 540,
+          "shabil": 0,
+          "sabalan-east-hut": 300,
+          "sabalan-crater-lake": 540,
           "sabalan": 570
         }
       },

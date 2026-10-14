@@ -46,17 +46,17 @@ const expectedCategories: Record<string, string> = {
   "avisho-cave": "cave", "bornik-cave": "cave", "gol-zard-cave": "cave",
   "rudafshan-cave": "cave", "yakh-morad-cave": "cave",
   "kafar-keli-cave": "cave",
-  "shirabad-div-sepid-cave": "cave", "dorfak-east-ghar-yakhi": "cave",
+  "shirabad-div-sepid-cave": "cave", "dorfak-ice-cave": "cave",
   "hasal-marsh": "marsh", "qaleh-roudkhan": "fort", "malek-bahman-castle": "fort",
   "veresk-bridge": "bridge", "vardij-ghost-stones": "rocks",
   "golabdarreh-park": "park", "jamshidieh-park": "park",
   "berenjestanak-dam": "dam", "lafour-dam": "dam", "amir-kabir-dam": "dam",
   "bijar-dam": "dam", "lar-dam": "dam", "namrud-dam": "dam", "sefidrud-reservoir": "dam",
   "abgarm-larijan": "hot_spring", "flakdeh-hot-spring": "hot_spring",
-  "sehezar-hot-spring": "hot_spring", "sabalan-qotur-sui": "hot_spring",
+  "sehezar-hot-spring": "hot_spring", "qotur-sui": "hot_spring",
   "badab-surt": "terrace", "shahdad-kaluts": "kalut", "kal-jeni": "gorge", "almeh-valley": "valley",
   "abali-ski-resort": "ski", "darbandsar-ski-resort": "ski", "dizin-ski-resort": "ski",
-  "sabalan-alvares-ski-resort": "ski", "tochal-ski-resort": "ski",
+  "alvares-ski-resort": "ski", "tochal-ski-resort": "ski",
 };
 
 describe("catalog categories reach the shared renderer without a generic fallback", () => {

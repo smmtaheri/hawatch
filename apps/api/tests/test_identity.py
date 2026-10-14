@@ -67,7 +67,7 @@ def test_siahsang_alamkuh_is_classified_as_an_independent_summit():
 
 def test_sabalan_shabil_has_contextual_page_name_and_keeps_route_name_short():
     identity = metadata_for_point(
-        "sabalan-shabil",
+        "shabil",
         {
             "name": "شابیل",
             "page_name": "شابیل سبلان",

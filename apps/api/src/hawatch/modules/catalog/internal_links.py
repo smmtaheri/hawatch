@@ -27,11 +27,10 @@ MAX_SIMILAR_DESTINATIONS = 4
 # relation or changing forecast data.  New entries are optional: category,
 # place type, catalog grouping and distance still provide safe discovery.
 CURATED_SIMILAR_DESTINATION_SLUGS: dict[str, tuple[str, ...]] = {
-    "dizin-ski-resort": ("darbandsar-ski-resort", "tochal-ski-resort", "abali-ski-resort", "sabalan-alvares-ski-resort"),
-    "darbandsar-ski-resort": ("dizin-ski-resort", "tochal-ski-resort", "abali-ski-resort", "sabalan-alvares-ski-resort"),
-    "tochal-ski-resort": ("darbandsar-ski-resort", "dizin-ski-resort", "abali-ski-resort", "sabalan-alvares-ski-resort"),
-    "abali-ski-resort": ("tochal-ski-resort", "darbandsar-ski-resort", "dizin-ski-resort", "sabalan-alvares-ski-resort"),
-    "sabalan-alvares-ski-resort": ("dizin-ski-resort", "darbandsar-ski-resort", "tochal-ski-resort", "abali-ski-resort"),
+    "dizin-ski-resort": ("darbandsar-ski-resort", "tochal-ski-resort", "abali-ski-resort", "alvares-ski-resort"),
+    "darbandsar-ski-resort": ("dizin-ski-resort", "tochal-ski-resort", "abali-ski-resort", "alvares-ski-resort"),
+    "tochal-ski-resort": ("darbandsar-ski-resort", "dizin-ski-resort", "abali-ski-resort", "alvares-ski-resort"),
+    "abali-ski-resort": ("tochal-ski-resort", "darbandsar-ski-resort", "dizin-ski-resort", "alvares-ski-resort"),
 }
 
 

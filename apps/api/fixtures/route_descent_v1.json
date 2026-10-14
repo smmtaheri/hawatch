@@ -4602,8 +4602,8 @@
       "slug": "darabad-farakhsineh",
       "chain": [
         "darabad-parking",
-        "darabad-chalmags-waterfall",
-        "darabad-haft-hoz",
+        "chal-mags-darabad",
+        "haft-hoz",
         "darabad-darazlash-spring",
         "darabad-khalil-branch",
         "darabad-ridge-entry",
@@ -4652,8 +4652,8 @@
         "confidence": "low",
         "route_distance_m": 11200,
         "estimated_point_slugs": [
-          "darabad-chalmags-waterfall",
-          "darabad-haft-hoz",
+          "chal-mags-darabad",
+          "haft-hoz",
           "darabad-darazlash-spring",
           "darabad-khalil-branch",
           "darabad-ridge-entry",
@@ -4872,7 +4872,7 @@
     {
       "slug": "dorfak-estakhrgah",
       "chain": [
-        "dorfak-south-estakhrgah",
+        "estakhrgah-gilan",
         "dorfak-jeyruni-spring",
         "dorfak-south-forest-edge",
         "dorfak"
@@ -4942,7 +4942,7 @@
         "shah-shahidan-gilan",
         "dorfak-east-tir-bargh",
         "dorfak-east-cheshmeh",
-        "dorfak-east-ghar-yakhi",
+        "dorfak-ice-cave",
         "dorfak"
       ],
       "descent_m": 171,
@@ -4987,7 +4987,7 @@
         "estimated_point_slugs": [
           "dorfak-east-tir-bargh",
           "dorfak-east-cheshmeh",
-          "dorfak-east-ghar-yakhi",
+          "dorfak-ice-cave",
           "dorfak"
         ],
         "chord_distances_m": [
@@ -5011,7 +5011,7 @@
     {
       "slug": "dorfak-shirkuh",
       "chain": [
-        "dorfak-west-shirkuh",
+        "shirkuh-gilan",
         "dorfak-west-larneh",
         "dorfak-jeyruni-spring",
         "dorfak-west-defraz-ridge",
@@ -7823,9 +7823,9 @@
     {
       "slug": "sabalan-northeast-shabil",
       "chain": [
-        "sabalan-shabil",
-        "sabalan-ne-east-hut",
-        "sabalan-ne-crater-lake",
+        "shabil",
+        "sabalan-east-hut",
+        "sabalan-crater-lake",
         "sabalan"
       ],
       "descent_m": 0,
@@ -7867,8 +7867,8 @@
         "confidence": "low",
         "route_distance_m": 10300,
         "estimated_point_slugs": [
-          "sabalan-ne-east-hut",
-          "sabalan-ne-crater-lake",
+          "sabalan-east-hut",
+          "sabalan-crater-lake",
           "sabalan"
         ],
         "chord_distances_m": [
