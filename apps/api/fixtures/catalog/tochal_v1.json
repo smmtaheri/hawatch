@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-tochal-catalog-v12",
+  "catalog_version": "hawatch-tochal-catalog-v13",
   "weather_points": {
     "sarband-tehran": {
       "name": "میدان سربند تهران",
@@ -97,7 +97,7 @@
       ],
       "identity_summary": "یال گوله‌بند توچال؛ نقطهٔ ridge در محدودهٔ قلهٔ توچال",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "established",
       "source_urls": [
         "https://mojekooh.com/guide-to-climbing-tochal-peak-darband-yal-goleband/",
@@ -115,7 +115,7 @@
       "elevation_source": "گزارش‌های صعود کوهنوردی نشاط زندگی و پیشکاد: ۳۹۶۲ متر؛ Open-Meteo GLO-90 در مختصات کاتالوگ ۳۹۰۶ متر (اختلاف ۵۶ متر، صرفاً تطبیق DEM)",
       "kind": "primary",
       "page_name": "قلهٔ توچال",
-      "short_label": "قلهٔ توچال",
+      "short_label": "توچال",
       "place_type": "summit",
       "aliases": [],
       "identity_summary": "قلهٔ توچال؛ نقطهٔ summit در محدودهٔ قلهٔ توچال",
@@ -148,9 +148,9 @@
       "place_type": "neighborhood",
       "aliases": [],
       "identity_summary": "ولنجک؛ محلهٔ شهری و مبدأ دسترسی به مجموعهٔ توچال",
-      "importance": "primary",
-      "kind": "primary",
-      "seo_indexable": true,
+      "importance": "support",
+      "kind": "shared",
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://open-meteo.com/en/docs"
@@ -353,7 +353,7 @@
       "aliases": [],
       "identity_summary": "گردنهٔ پیازچال؛ نقطهٔ pass در محدودهٔ قلهٔ توچال",
       "importance": "support",
-      "seo_indexable": true,
+      "seo_indexable": false,
       "name_status": "descriptive",
       "source_urls": [
         "https://mojekooh.com/lezoon-peak-climbing-guide/",

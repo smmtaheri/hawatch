@@ -555,11 +555,15 @@ def serialize_point(point: RoutePoint) -> dict:
     location = point.effective_location
     if point.weather_point_id:
         href = weather_point_canonical_href(point.weather_point)
+        display_name = point.weather_point.short_label or point.name
     else:
         href = ""
+        display_name = point.name
     return {
         "slug": point.slug,
-        "name": point.name,
+        # Route timelines need the curated compact label; keep the full
+        # WeatherPoint identity for search and its canonical detail page.
+        "name": display_name,
         "elevation_m": elevation,
         "elevation_label": f"{to_fa_digits(elevation)} m" if elevation is not None else "ارتفاع نامشخص",
         "base_minutes": point.base_minutes,

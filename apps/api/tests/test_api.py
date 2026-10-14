@@ -1,4 +1,5 @@
 from datetime import datetime, timezone as dt_timezone
+from types import SimpleNamespace
 from xml.etree import ElementTree
 
 import pytest
@@ -6,6 +7,7 @@ from django.db import connection
 from django.db.models import Q
 from rest_framework.test import APIClient
 
+from hawatch.api.v1.serializers import serialize_point
 from hawatch.common.time import day_window, now_tehran
 from hawatch.integrations.weather.demo import generate_reading
 from hawatch.modules.catalog.seed import seed_demo_data
@@ -64,6 +66,38 @@ def test_live_health(api_client):
     assert response.json()["status"] == "live"
 
 
+def test_route_point_uses_compact_label_without_changing_canonical_identity():
+    weather_point = SimpleNamespace(
+        slug="damavand-bargah-sevom",
+        name="بارگاه سوم دماوند",
+        short_label="بارگاه سوم",
+    )
+    route_point = SimpleNamespace(
+        slug="damavand-bargah-sevom",
+        name="بارگاه سوم دماوند",
+        weather_point_id=1,
+        weather_point=weather_point,
+        effective_elevation_m=4200,
+        effective_location=None,
+        base_minutes=270,
+        cumulative_minutes=270,
+        segment_minutes=270,
+        segment_distance_m=None,
+        progress_pct=43.9,
+        timing_status="estimated",
+        sort_order=2,
+        public_note="",
+        axis_x=50,
+        axis_y=50,
+    )
+
+    serialized = serialize_point(route_point)
+
+    assert serialized["name"] == "بارگاه سوم"
+    assert serialized["href"] == "/points/damavand-bargah-sevom"
+    assert weather_point.name == "بارگاه سوم دماوند"
+
+
 @pytest.mark.django_db
 def test_ready_health_postgis(api_client, seeded):
     response = api_client.get("/api/v1/health/ready/")
@@ -91,6 +125,25 @@ def test_known_points_and_routes_exist(seeded):
     assert {"gahar-dorud", "gahar-aligudarz"} <= route_slugs
     assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
     assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
+
+
+@pytest.mark.django_db
+def test_first_destination_route_timelines_use_compact_labels(api_client, seeded):
+    cases = {
+        "tochal-darband": ["سربند", "پس‌قلعه", "شیرپلا", "امیری", "یال گوله‌بند", "توچال"],
+        "damavand-southern": ["پارکینگ جنوبی", "بارگاه سوم", "دماوند"],
+        "alamkuh-southern-hesarchal": ["تنگ گلو", "دشت حصارچال", "علم‌کوه"],
+        "tar-to-dobrar-east": ["دریاچهٔ تار", "چشم‌انداز هویر", "دوبرار شرقی"],
+    }
+    for route_slug, expected_names in cases.items():
+        response = api_client.get(f"/api/v1/routes/{route_slug}/")
+        assert response.status_code == 200, route_slug
+        points = response.json()["route"]["points"]
+        assert [point["name"] for point in points] == expected_names, route_slug
+
+    point = api_client.get("/api/v1/points/damavand/").json()["point"]
+    assert point["name"] == "قلهٔ دماوند"
+    assert point["short_label"] == "دماوند"
 
 
 @pytest.mark.django_db
