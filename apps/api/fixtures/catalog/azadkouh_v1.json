@@ -1,21 +1,25 @@
 {
-  "catalog_version": "hawatch-azadkouh-catalog-v7",
+  "catalog_version": "hawatch-azadkouh-catalog-v8",
   "weather_points": {
-    "azadkouh-kelakbala-start": {
+    "kelak-bala-baladeh": {
       "name": "روستای کلاک بالا",
       "latitude": 36.192713,
       "longitude": 51.550886,
       "elevation_m": 2645,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2645 m; GPX waypoint cross-check",
-      "page_name": "روستای کلاک بالا، ابتدای مسیر کلاک بالا–آزادکوه",
+      "page_name": "روستای کلاک بالا بلده",
       "short_label": "کلاک بالا",
       "place_type": "village",
-      "aliases": [],
-      "identity_summary": "کلاک علیا؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
-      "importance": "support",
+      "aliases": ["کلاک علیا"],
+      "identity_summary": "روستای کلاک بالا در بلدهٔ نور و مبدأ مسیر رایج صعود آزادکوه",
+      "importance": "primary",
       "seo_indexable": true,
       "name_status": "official",
+      "kind": "primary",
+      "category": "روستاهای بلده",
+      "category_key": "village",
+      "region": "کلاک بالا · بلده · نور · مازندران",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
         "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-azdkhwh-z-msyr-rwsty-khlkh-bl-1404-05-10-224622876",
@@ -23,18 +27,18 @@
         "https://decovel.com/page/azad-kuh-peak"
       ]
     },
-    "azadkouh-kelakbala-camp1": {
-      "name": "کمپ اول مسیر کلاک",
+    "kelak-camp-1": {
+      "name": "کمپ اول کلاک",
       "latitude": 36.175954,
       "longitude": 51.539639,
       "elevation_m": 2946,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2946 m; GPX waypoint cross-check",
-      "page_name": "کمپ اول مسیر کلاک",
-      "short_label": "کمپ اول مسیر کلاک",
+      "page_name": "کمپ اول کلاک",
+      "short_label": "کمپ اول",
       "place_type": "camp",
       "aliases": [],
-      "identity_summary": "کمپ اول مسیر کلاک؛ نقطهٔ camp در محدودهٔ قلهٔ آزادکوه",
+      "identity_summary": "محل کمپ اول در مسیر صعود کلاک به آزادکوه",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -45,18 +49,18 @@
         "https://decovel.com/page/azad-kuh-peak"
       ]
     },
-    "azadkouh-kelakbala-camp2": {
-      "name": "چشمهٔ کمپ دوم کلاک",
+    "kelak-spring": {
+      "name": "چشمهٔ کلاک",
       "latitude": 36.166324,
       "longitude": 51.527183,
       "elevation_m": 3356,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3356 m; GPX waypoint cross-check",
-      "page_name": "چشمهٔ کمپ دوم کلاک",
-      "short_label": "چشمهٔ کمپ دوم کلاک",
+      "page_name": "چشمهٔ کلاک در مسیر آزادکوه",
+      "short_label": "چشمهٔ کلاک",
       "place_type": "spring",
       "aliases": [],
-      "identity_summary": "چشمهٔ کمپ دوم کلاک؛ نقطهٔ spring در محدودهٔ قلهٔ آزادکوه",
+      "identity_summary": "چشمهٔ فصلی مسیر کلاک، نزدیک محل کمپ دوم و پیش از گردنهٔ چورن",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -67,7 +71,7 @@
         "https://decovel.com/page/azad-kuh-peak"
       ]
     },
-    "azadkouh-kelakbala-camp3": {
+    "kelak-camp-3": {
       "name": "کمپ سوم کلاک",
       "latitude": 36.164445,
       "longitude": 51.524223,
@@ -75,10 +79,10 @@
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3414 m; GPX waypoint cross-check",
       "page_name": "کمپ سوم کلاک",
-      "short_label": "کمپ سوم کلاک",
+      "short_label": "کمپ سوم",
       "place_type": "camp",
       "aliases": [],
-      "identity_summary": "کمپ سوم کلاک؛ نقطهٔ camp در محدودهٔ قلهٔ آزادکوه",
+      "identity_summary": "محل کمپ سوم در مسیر صعود کلاک به آزادکوه؛ در گزارش ترک دسترسی تابستانی به آب ندارد",
       "importance": "support",
       "seo_indexable": false,
       "name_status": "descriptive",
@@ -89,21 +93,22 @@
         "https://decovel.com/page/azad-kuh-peak"
       ]
     },
-    "azadkouh-choren-pass": {
+    "choren-pass": {
       "name": "گردنهٔ چورن",
       "latitude": 36.161636,
       "longitude": 51.509243,
       "elevation_m": 3811,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3811 m; four-route GPX cross-check",
-      "page_name": "گردنهٔ چورن",
-      "short_label": "گردنهٔ چورن",
+      "page_name": "گردنهٔ چورن آزادکوه",
+      "short_label": "چورن",
       "place_type": "pass",
       "aliases": [],
-      "identity_summary": "گردنهٔ چورن؛ نقطهٔ pass در محدودهٔ قلهٔ آزادکوه",
+      "identity_summary": "گردنهٔ چورن، گذرگاه اصلی مسیرهای کلاک، نسن و ناحیه به قلهٔ آزادکوه",
       "importance": "support",
-      "seo_indexable": false,
-      "name_status": "descriptive",
+      "seo_indexable": true,
+      "name_status": "established",
+      "region": "البرز مرکزی · آزادکوه",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-khlkh-lykhlkh-bl-t-qlh-azdkhwh-jmh-1402-04-23-140505714",
         "https://tr.wikiloc.com/gezi-yuruyus-rotalari/qlh-azdkhwh-z-msyr-rwsty-khlkh-bl-1404-05-10-224622876",
@@ -125,7 +130,7 @@
       "status": "provisional",
       "elevation_source": "Canonical published elevation: 4355 m (Wikidata and summit-sign report); Peakbagger/SummitPost also cite 4390 m from a 1:50,000 map; Open-Meteo GLO-90 DEM: 4261 m is provider-resolution evidence only",
       "page_name": "قلهٔ آزادکوه",
-      "short_label": "قلهٔ آزادکوه",
+      "short_label": "آزادکوه",
       "place_type": "summit",
       "aliases": [],
       "identity_summary": "قلهٔ آزادکوه؛ نقطهٔ summit در محدودهٔ قلهٔ آزادکوه",
@@ -147,89 +152,97 @@
         "https://www.summitpost.org/kholeno-paloon-gardan-massif/353079"
       ]
     },
-    "azadkouh-nahiyeh-start": {
+    "nahiyeh-baladeh": {
       "name": "روستای ناحیه",
       "latitude": 36.151621,
       "longitude": 51.608454,
       "elevation_m": 2528,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2528 m; GPX track start; Nahiyeh locality cross-check",
-      "page_name": "روستای ناحیه، ابتدای مسیر آزادکوه",
+      "page_name": "روستای ناحیه بلده",
       "short_label": "ناحیه",
       "place_type": "village",
       "aliases": [],
-      "identity_summary": "ناحیه؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
-      "importance": "support",
+      "identity_summary": "روستای ناحیه در بلدهٔ نور و مبدأ شرقی صعود آزادکوه",
+      "importance": "primary",
       "seo_indexable": true,
       "name_status": "official",
+      "kind": "primary",
+      "category": "روستاهای بلده",
+      "category_key": "village",
+      "region": "ناحیه · بلده · نور · مازندران",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/1403-5-19-180375490",
         "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841",
         "https://decovel.com/page/azad-kuh-peak"
       ]
     },
-    "azadkouh-nesen-start": {
-      "name": "حسینیهٔ روستای نسن",
+    "nesen": {
+      "name": "روستای نسن",
       "latitude": 36.234937,
       "longitude": 51.499276,
       "elevation_m": 2612,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2612 m; 2022 GPX waypoint cross-check (2615 m)",
-      "page_name": "حسینیهٔ روستای نسن، ابتدای مسیر آزادکوه",
+      "page_name": "روستای نسن",
       "short_label": "نسن",
-      "place_type": "trailhead",
+      "place_type": "village",
       "aliases": [],
-      "identity_summary": "حسینیهٔ نسن؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
-      "importance": "support",
-      "seo_indexable": false,
-      "name_status": "established",
+      "identity_summary": "روستای نسن در بلدهٔ نور و مبدأ مسیر شمالی صعود آزادکوه",
+      "importance": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "kind": "primary",
+      "category": "روستاهای بلده",
+      "category_key": "village",
+      "region": "نسن · بلده · نور · مازندران",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azdkhwh-z-nsn-213795810",
         "https://www.wikiloc.com/hiking-trails/azd-khwh-swd-z-nsn-frwd-khlkh-bl-tyr-1401-106644204",
         "https://www.wikiloc.com/hiking-trails/azd-khwh-shhzdh-grdn-khj-1403-04-14-15-176324841"
       ]
     },
-    "azadkouh-varangerud-start": {
+    "varangeh-rud": {
       "name": "روستای وارنگه‌رود",
       "latitude": 36.128863,
       "longitude": 51.370756,
       "elevation_m": 2482,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 2482 m; GPX track start",
-      "page_name": "روستای وارنگه‌رود، ابتدای مسیر آزادکوه",
+      "page_name": "روستای وارنگه‌رود",
       "short_label": "وارنگه‌رود",
       "place_type": "village",
       "aliases": [],
-      "identity_summary": "وارنگه‌رود؛ نقطهٔ landmark در محدودهٔ قلهٔ آزادکوه",
-      "importance": "support",
+      "identity_summary": "روستای وارنگه‌رود در بخش آسارا و مبدأ مسیرهای کمان‌کوه، سوتک و آزادکوه",
+      "importance": "primary",
       "seo_indexable": true,
       "name_status": "official",
+      "kind": "primary",
+      "category": "روستاهای البرز",
+      "category_key": "village",
+      "region": "وارنگه‌رود · آسارا · کرج · البرز",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",
         "https://decovel.com/page/azad-kuh-peak",
         "https://mojekooh.com/%D8%A2%D8%B2%D8%A7%D8%AF-%DA%A9%D9%88%D9%87/"
       ]
     },
-    "azadkouh-shirkamar-intersection": {
+    "sotak-pass": {
       "name": "گردنهٔ سوتک",
       "latitude": 36.147164,
       "longitude": 51.437037,
       "elevation_m": 3512,
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3512 m; GPX waypoint reference",
-      "page_name": "گردنهٔ سوتک در مسیر وارنگه‌رود",
-      "short_label": "گردنهٔ سوتک",
-      "place_type": "landmark",
-      "aliases": [
-        "شیرکمر",
-        "گردنه سوتک",
-        "گردنهٔ سوتک وارنگه‌رود",
-        "Sotak Pass"
-      ],
+      "page_name": "گردنهٔ سوتک",
+      "short_label": "سوتک",
+      "place_type": "pass",
+      "aliases": [],
       "identity_summary": "گردنهٔ سوتک در بالادست درهٔ شیرکمر و نقطهٔ مشترک مسیرهای وارنگه‌رود به کمان‌کوه و آزادکوه",
       "importance": "support",
-      "seo_indexable": false,
-      "name_status": "descriptive",
+      "seo_indexable": true,
+      "name_status": "established",
+      "region": "البرز مرکزی · وارنگه‌رود",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",
         "https://decovel.com/page/azad-kuh-peak",
@@ -296,7 +309,7 @@
         "https://el.wikiloc.com/oreibasia-diadromes/qlh-swtkh-bzrg-z-drh-swtkh-wrngh-rwd-142601295"
       ]
     },
-    "azadkouh-kamankouh-lake": {
+    "kamankouh-lake": {
       "name": "دریاچهٔ کمان‌کوه",
       "latitude": 36.136197,
       "longitude": 51.48282,
@@ -304,13 +317,17 @@
       "status": "provisional",
       "elevation_source": "Open-Meteo GLO-90 DEM: 3716 m; GPX waypoint reference",
       "page_name": "دریاچهٔ کمان‌کوه",
-      "short_label": "دریاچهٔ کمان‌کوه",
+      "short_label": "کمان‌کوه",
       "place_type": "lake",
-      "aliases": [],
-      "identity_summary": "دریاچهٔ کمان‌کوه؛ نقطهٔ lake در محدودهٔ قلهٔ آزادکوه",
-      "importance": "support",
+      "aliases": ["برکهٔ کمان‌کوه", "برکهٔ کمانکوه"],
+      "identity_summary": "دریاچهٔ فصلی مرتفع کمان‌کوه در مسیرهای کوهستانی وارنگه‌رود و آزادکوه",
+      "importance": "primary",
       "seo_indexable": true,
-      "name_status": "descriptive",
+      "name_status": "established",
+      "kind": "primary",
+      "category": "دریاچه‌های البرز مرکزی",
+      "category_key": "lake",
+      "region": "کمان‌کوه · البرز مرکزی",
       "source_urls": [
         "https://www.wikiloc.com/hiking-trails/azad-kooh-from-varang-rud-13860843",
         "https://decovel.com/page/azad-kuh-peak",
@@ -322,18 +339,18 @@
     "kelakbala_to_azadkouh": {
       "slug": "azadkouh-kelak-bala",
       "title": "کلاک‌بالا تا آزادکوه",
-      "subtitle": "از کلاک علیا و گردنهٔ چورن تا قلهٔ آزادکوه",
-      "trail_label": "مسیر کلاک‌بالا",
-      "origin": "کلاک علیا",
+      "subtitle": "از روستای کلاک بالا و گردنهٔ چورن تا قلهٔ آزادکوه",
+      "trail_label": "مسیر کلاک بالا",
+      "origin": "کلاک بالا",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 1,
       "points": [
-        "azadkouh-kelakbala-start",
-        "azadkouh-kelakbala-camp1",
-        "azadkouh-kelakbala-camp2",
-        "azadkouh-kelakbala-camp3",
-        "azadkouh-choren-pass",
+        "kelak-bala-baladeh",
+        "kelak-camp-1",
+        "kelak-spring",
+        "kelak-camp-3",
+        "choren-pass",
         "azadkouh"
       ],
       "distance_km": 8.3,
@@ -363,11 +380,11 @@
           "The source page for the 2024 download is mislabeled in its title; its GPX content is Kelak Bala and was not used as Nahiyeh evidence."
         ],
         "cumulative_minutes": {
-          "azadkouh-kelakbala-start": 0,
-          "azadkouh-kelakbala-camp1": 95,
-          "azadkouh-kelakbala-camp2": 190,
-          "azadkouh-kelakbala-camp3": 215,
-          "azadkouh-choren-pass": 305,
+          "kelak-bala-baladeh": 0,
+          "kelak-camp-1": 95,
+          "kelak-spring": 190,
+          "kelak-camp-3": 215,
+          "choren-pass": 305,
           "azadkouh": 390
         }
       },
@@ -384,10 +401,10 @@
       "featured": true,
       "sort_order": 2,
       "points": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
-        "azadkouh-kamankouh-lake",
-        "azadkouh-choren-pass",
+        "varangeh-rud",
+        "sotak-pass",
+        "kamankouh-lake",
+        "choren-pass",
         "azadkouh"
       ],
       "distance_km": 20.2,
@@ -414,10 +431,10 @@
           "This public route is the non-technical Varangeh Rud approach; technical ridges are out of scope."
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
-          "azadkouh-shirkamar-intersection": 270,
-          "azadkouh-kamankouh-lake": 450,
-          "azadkouh-choren-pass": 630,
+          "varangeh-rud": 0,
+          "sotak-pass": 270,
+          "kamankouh-lake": 450,
+          "choren-pass": 630,
           "azadkouh": 720
         }
       },
@@ -434,8 +451,8 @@
       "featured": true,
       "sort_order": 3,
       "points": [
-        "azadkouh-nesen-start",
-        "azadkouh-choren-pass",
+        "nesen",
+        "choren-pass",
         "azadkouh"
       ],
       "distance_km": 14.3,
@@ -464,8 +481,8 @@
           "The old Nesen candidate GPX is incomplete and is not used as route evidence."
         ],
         "cumulative_minutes": {
-          "azadkouh-nesen-start": 0,
-          "azadkouh-choren-pass": 330,
+          "nesen": 0,
+          "choren-pass": 330,
           "azadkouh": 440
         }
       },
@@ -474,16 +491,16 @@
     },
     "nahiyeh_to_azadkouh": {
       "slug": "azadkouh-nahiyeh",
-      "title": "ناحیه تا آزادکوه",
-      "subtitle": "از ناحیه و گردنهٔ چورن تا قلهٔ آزادکوه",
-      "trail_label": "مسیر ناحیه",
-      "origin": "ناحیه",
+      "title": "ناحیهٔ بلده تا آزادکوه",
+      "subtitle": "از روستای ناحیهٔ بلده و گردنهٔ چورن تا قلهٔ آزادکوه",
+      "trail_label": "مسیر ناحیهٔ بلده",
+      "origin": "ناحیهٔ بلده",
       "region": "البرز مرکزی",
       "featured": true,
       "sort_order": 4,
       "points": [
-        "azadkouh-nahiyeh-start",
-        "azadkouh-choren-pass",
+        "nahiyeh-baladeh",
+        "choren-pass",
         "azadkouh"
       ],
       "distance_km": 14.5,
@@ -513,8 +530,8 @@
           "GPX device elevation is reference evidence; catalog elevations remain DEM/source values."
         ],
         "cumulative_minutes": {
-          "azadkouh-nahiyeh-start": 0,
-          "azadkouh-choren-pass": 300,
+          "nahiyeh-baladeh": 0,
+          "choren-pass": 300,
           "azadkouh": 385
         }
       },
@@ -531,7 +548,7 @@
       "featured": true,
       "sort_order": 5,
       "points": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "sotak-ascent-ridge",
         "sotak-bozorg"
       ],
@@ -559,7 +576,7 @@
           "Recorded GPX timestamps include pauses and are not used as moving time; the 300-minute one-way estimate follows the source itinerary and GPX geometry with ±60 minutes uncertainty."
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
+          "varangeh-rud": 0,
           "sotak-ascent-ridge": 220,
           "sotak-bozorg": 300
         }

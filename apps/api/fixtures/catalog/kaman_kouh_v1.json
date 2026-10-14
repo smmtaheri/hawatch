@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kaman-kouh-catalog-v2",
+  "catalog_version": "hawatch-kaman-kouh-catalog-v3",
   "weather_points": {
     "kaman-kouh": {
       "name": "قلهٔ کمان‌کوه",
@@ -36,9 +36,9 @@
     }
   },
   "shared_weather_points": [
-    "azadkouh-varangerud-start",
-    "azadkouh-shirkamar-intersection",
-    "azadkouh-kamankouh-lake"
+    "varangeh-rud",
+    "sotak-pass",
+    "kamankouh-lake"
   ],
   "routes": {
     "varangerud_to_kaman_kouh": {
@@ -52,8 +52,8 @@
       "featured": true,
       "sort_order": 1,
       "points": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
+        "varangeh-rud",
+        "sotak-pass",
         "kaman-kouh"
       ],
       "distance_km": 13.44,
@@ -74,8 +74,8 @@
           "tracks/kaman-kouh/kaman-kouh-varangeh-rud-to-summit-2022.gpx"
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
-          "azadkouh-shirkamar-intersection": 240,
+          "varangeh-rud": 0,
+          "sotak-pass": 240,
           "kaman-kouh": 510
         },
         "notes": [
@@ -97,9 +97,9 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
-        "azadkouh-kamankouh-lake",
+        "varangeh-rud",
+        "sotak-pass",
+        "kamankouh-lake",
         "kaman-kouh"
       ],
       "distance_km": 16.0,
@@ -115,9 +115,9 @@
           "https://www.wikiloc.com/mountaineering-trails/varangeh-roud-kamankuh-yakhchal-khmnkhwh-ykhchl-srmhw-56583091"
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
-          "azadkouh-shirkamar-intersection": 230,
-          "azadkouh-kamankouh-lake": 345,
+          "varangeh-rud": 0,
+          "sotak-pass": 230,
+          "kamankouh-lake": 345,
           "kaman-kouh": 435
         },
         "evidence": {
@@ -169,7 +169,7 @@
         "tracks/kaman-kouh/kaman-kouh-varangeh-rud-yakhchal-sarmaho-2020.gpx"
       ],
       "public_point_notes": {
-        "azadkouh-kamankouh-lake": "دریاچهٔ کمان‌کوه عارضهٔ واقعی و میانی این شاخه است؛ ادامهٔ ترک منبع به یخچال و سرماهو می‌رسد و در این Route فقط تا قلهٔ کمان‌کوه نمایش داده می‌شود."
+        "kamankouh-lake": "دریاچهٔ کمان‌کوه عارضهٔ واقعی و میانی این شاخه است؛ ادامهٔ ترک منبع به یخچال و سرماهو می‌رسد و در این Route فقط تا قلهٔ کمان‌کوه نمایش داده می‌شود."
       }
     }
   },

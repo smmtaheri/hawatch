@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-sekeh-no-v1",
+  "catalog_version": "hawatch-sekeh-no-v2",
   "primary_point": "sekeh-no",
   "point": {
     "slug": "sekeh-no",
@@ -158,7 +158,7 @@
         "cumulative_minutes": {"varangeh-rud-tower": 0, "sekeh-no-west-sheepfold": 150, "sekeh-no": 270}
       },
       "public_note": "زمان و مسافت برای صعود یک‌طرفه از دکل بالای روستا تا قله، در شرایط خشک و بدون توقف طولانی است؛ دسترسی خاکی روستا تا دکل و ادامهٔ حلقه به هزارلا در آن حساب نشده‌اند. مسیر پرشیب و دارای دست‌به‌سنگ کوتاه است؛ عبور از بخش‌های سنگی احتیاط و تجربه می‌خواهد. در صعود چشمه وجود ندارد و آب کافی لازم است. در برف و یخ این تخمین معتبر نیست.",
-      "internal_note": "Wikiloc 136686018, A.P.G.N, June 2023: continuous hiking ridge, 2659 recorded samples. Outbound first summit approach original index1241, trimmed from tower index52: 6.4513km, smoothed ascent50m/window5=1345.4m, max segment7.30m. Tower offset0.35m, fold at3.4618km offset0.77m, summit offset0.76m. Existing azadkouh-varangerud-start is about1.1km north of tower: not silently substituted as hiking origin and no duplicate village created. Documented photo waypoint old sheepfold retained; generic slope/rock/rest markers omitted. Report ascent about5h; elapsed317.65min includes stops, filtered202.13min is not adopted as ETA. Geometry baseline212min plus steep/rock allowance yields270min ±60. All Hazarla continuation/descent springs omitted. GPX local-only, license unverified."
+      "internal_note": "Wikiloc 136686018, A.P.G.N, June 2023: continuous hiking ridge, 2659 recorded samples. Outbound first summit approach original index1241, trimmed from tower index52: 6.4513km, smoothed ascent50m/window5=1345.4m, max segment7.30m. Tower offset0.35m, fold at3.4618km offset0.77m, summit offset0.76m. Existing varangeh-rud is about1.1km north of tower: not silently substituted as hiking origin and no duplicate village created. Documented photo waypoint old sheepfold retained; generic slope/rock/rest markers omitted. Report ascent about5h; elapsed317.65min includes stops, filtered202.13min is not adopted as ETA. Geometry baseline212min plus steep/rock allowance yields270min ±60. All Hazarla continuation/descent springs omitted. GPX local-only, license unverified."
     },
     "velayat_rud_ridge": {
       "slug": "sekeh-no-sehchal-velayat-rud",

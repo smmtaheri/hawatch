@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-dona-v1",
+  "catalog_version": "hawatch-dona-v2",
   "primary_point": "dona",
   "weather_points": {
     "dona": {
@@ -110,7 +110,7 @@
     }
   },
   "shared_weather_points": [
-    "azadkouh-varangerud-start"
+    "varangeh-rud"
   ],
   "routes": {
     "north": {
@@ -160,7 +160,7 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "dona-south-spring",
         "dona"
       ],
@@ -177,7 +177,7 @@
           "https://www.wikiloc.com/mountaineering-trails/990302-dwn-49745552"
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
+          "varangeh-rud": 0,
           "dona-south-spring": 175,
           "dona": 250
         }

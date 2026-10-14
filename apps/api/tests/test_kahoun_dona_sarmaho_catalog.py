@@ -26,9 +26,9 @@ def test_dona_has_two_distinct_origins_and_one_summit():
     assert len(catalog["routes"]) == 2
     north, south = catalog["routes"].values()
     assert north["points"][0] == "dona-olya"
-    assert south["points"][0] == "azadkouh-varangerud-start"
+    assert south["points"][0] == "varangeh-rud"
     assert north["points"][-1] == south["points"][-1] == "dona"
-    assert "azadkouh-varangerud-start" not in catalog["weather_points"]
+    assert "varangeh-rud" not in catalog["weather_points"]
     assert catalog["weather_points"]["dona-olya"]["place_type"] == "village"
     for route in (north, south):
         times = [route["timing"]["cumulative_minutes"][s] for s in route["points"]]

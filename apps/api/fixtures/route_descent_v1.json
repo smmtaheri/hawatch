@@ -611,11 +611,11 @@
       "slug": "azadkouh-kelak-bala",
       "descent_m": 0,
       "chain": [
-        "azadkouh-kelakbala-start",
-        "azadkouh-kelakbala-camp1",
-        "azadkouh-kelakbala-camp2",
-        "azadkouh-kelakbala-camp3",
-        "azadkouh-choren-pass",
+        "kelak-bala-baladeh",
+        "kelak-camp-1",
+        "kelak-spring",
+        "kelak-camp-3",
+        "choren-pass",
         "azadkouh"
       ],
       "cumulative_distance_m": [0, 2621, 4829, 5230, 6740, 8291],
@@ -651,8 +651,8 @@
       "slug": "azadkouh-nahiyeh",
       "descent_m": 213,
       "chain": [
-        "azadkouh-nahiyeh-start",
-        "azadkouh-choren-pass",
+        "nahiyeh-baladeh",
+        "choren-pass",
         "azadkouh"
       ],
       "evidence": {
@@ -673,8 +673,8 @@
       "slug": "azadkouh-nesen",
       "descent_m": 2,
       "chain": [
-        "azadkouh-nesen-start",
-        "azadkouh-choren-pass",
+        "nesen",
+        "choren-pass",
         "azadkouh"
       ],
       "cumulative_distance_m": [0, 12851, 14289],
@@ -706,10 +706,10 @@
       "slug": "azadkouh-varangerud",
       "descent_m": 365,
       "chain": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
-        "azadkouh-kamankouh-lake",
-        "azadkouh-choren-pass",
+        "varangeh-rud",
+        "sotak-pass",
+        "kamankouh-lake",
+        "choren-pass",
         "azadkouh"
       ],
       "cumulative_distance_m": [0, 8660, 13920, 18856, 20214],
@@ -1498,7 +1498,7 @@
       "slug": "dona-varangerud",
       "descent_m": 55,
       "chain": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "dona-south-spring",
         "dona"
       ],
@@ -2244,9 +2244,9 @@
       "slug": "kaman-kouh-varangerud-yakhchal",
       "descent_m": 55,
       "chain": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
-        "azadkouh-kamankouh-lake",
+        "varangeh-rud",
+        "sotak-pass",
+        "kamankouh-lake",
         "kaman-kouh"
       ],
       "evidence": {
@@ -3753,7 +3753,7 @@
       "slug": "sotak-bozorg-varangeh-rud",
       "descent_m": 13,
       "chain": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "sotak-ascent-ridge",
         "sotak-bozorg"
       ],
@@ -6111,8 +6111,8 @@
     {
       "slug": "kaman-kouh-varangerud",
       "chain": [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
+        "varangeh-rud",
+        "sotak-pass",
         "kaman-kouh"
       ],
       "descent_m": 0,
@@ -6152,7 +6152,7 @@
         "confidence": "low",
         "route_distance_m": 13400,
         "estimated_point_slugs": [
-          "azadkouh-shirkamar-intersection",
+          "sotak-pass",
           "kaman-kouh"
         ],
         "chord_distances_m": [
@@ -6414,7 +6414,7 @@
     {
       "slug": "kholeno-varangerud",
       "chain": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "kholeno-shirkamar",
         "kholeno-duab",
         "kholeno-lake",

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-kholeno-catalog-v3",
+  "catalog_version": "hawatch-kholeno-catalog-v4",
   "weather_points": {
     "kholeno-lalan-trailhead": {
       "name": "پارکینگ بالای روستای لالان",
@@ -293,7 +293,7 @@
       ]
     }
   },
-  "shared_weather_points": ["azadkouh-varangerud-start"],
+  "shared_weather_points": ["varangeh-rud"],
   "routes": {
     "lalan_to_kholeno": {
       "slug": "kholeno-lalan",
@@ -363,7 +363,7 @@
       "featured": false,
       "sort_order": 2,
       "points": [
-        "azadkouh-varangerud-start",
+        "varangeh-rud",
         "kholeno-shirkamar",
         "kholeno-duab",
         "kholeno-lake",
@@ -388,11 +388,11 @@
         ],
         "notes": [
           "این ترک یک مسیر بسیار طولانی و مناسب برنامهٔ چندروزه است؛ زمان و ascent تخمینی و با عدم‌قطعیت بالا ثبت شده‌اند.",
-          "نقطهٔ آغاز با azadkouh-varangerud-start در catalog آزادکوه مشترک است و دوباره تعریف نشده است.",
+          "نقطهٔ آغاز با varangeh-rud در catalog آزادکوه مشترک است و دوباره تعریف نشده است.",
           "ارتفاع‌های پرت GPX در بخش‌هایی از ترک برای مقدار catalog استفاده نشده‌اند."
         ],
         "cumulative_minutes": {
-          "azadkouh-varangerud-start": 0,
+          "varangeh-rud": 0,
           "kholeno-shirkamar": 90,
           "kholeno-duab": 300,
           "kholeno-lake": 690,

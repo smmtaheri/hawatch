@@ -24,7 +24,7 @@ def test_sekeh_no_identity_and_meaningful_hiking_routes():
     assert west["points"] == ["varangeh-rud-tower", "sekeh-no-west-sheepfold", "sekeh-no"]
     assert west["distance_km"] == 6.45
     assert west["ascent_m"] == 1345
-    assert "azadkouh-varangerud-start" not in west["points"]
+    assert "varangeh-rud" not in west["points"]
     ridge = catalog["routes"]["velayat_rud_ridge"]
     assert ridge["points"] == ["velayat-rud", "sekeh-no", "sehchal"]
     assert ridge["target_label"] == points["sehchal"]["name"]

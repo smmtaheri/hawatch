@@ -12,16 +12,16 @@ def test_kaman_kouh_has_independent_peak_and_shared_varangerud_routes():
     assert summit["place_type"] == "summit"
     assert summit["seo_indexable"] is True
     assert catalog["shared_weather_points"] == [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
-        "azadkouh-kamankouh-lake",
+        "varangeh-rud",
+        "sotak-pass",
+        "kamankouh-lake",
     ]
 
     direct = catalog["routes"]["varangerud_to_kaman_kouh"]
     assert direct["slug"] == "kaman-kouh-varangerud"
     assert direct["points"] == [
-        "azadkouh-varangerud-start",
-        "azadkouh-shirkamar-intersection",
+        "varangeh-rud",
+        "sotak-pass",
         "kaman-kouh",
     ]
     assert direct["timing_status"] == "estimated"
@@ -29,7 +29,7 @@ def test_kaman_kouh_has_independent_peak_and_shared_varangerud_routes():
     via_lake = catalog["routes"]["varangerud_to_kaman_kouh_via_lake"]
     assert via_lake["slug"] == "kaman-kouh-varangerud-yakhchal"
     assert via_lake["points"][-2:] == [
-        "azadkouh-kamankouh-lake",
+        "kamankouh-lake",
         "kaman-kouh",
     ]
     assert via_lake["timing_status"] == "estimated"
