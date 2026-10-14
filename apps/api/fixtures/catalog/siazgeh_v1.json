@@ -1,0 +1,65 @@
+{
+  "catalog_version": "hawatch-siazgeh-catalog-v1",
+  "primary_point": "siazgeh",
+  "weather_points": {
+    "siazgeh": {
+      "name": "کویر سیازگه",
+      "page_name": "کویر سیازگه در ابوزیدآباد",
+      "short_label": "سیازگه",
+      "place_type": "desert",
+      "category_key": "desert",
+      "category": "کویرهای اصفهان",
+      "region": "آران و بیدگل · اصفهان",
+      "aliases": [
+        "بیابان سیازگه",
+        "ریگ سیازگه",
+        "کویر سیازگه ابوزیدآباد",
+        "Siazgeh Desert"
+      ],
+      "identity_summary": "ریگزار و کمپ گردشگری شناخته‌شدهٔ سیازگه در شمال ابوزیدآباد و بخش جنوبی ریگزار بندریگ؛ نقطهٔ مستقل از محدودهٔ عمومی کویر ابوزیدآباد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/6200523289",
+        "https://mapcarta.com/N6200523289",
+        "https://www.irandeserts.com/article/%D8%A8%DB%8C%D8%A7%D8%A8%D8%A7%D9%86-%D8%B3%DB%8C%D8%A7%D8%B2%DA%AF%D9%87%D8%8C-%D8%A7%D8%A8%D9%88%D8%B2%DB%8C%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF/",
+        "https://lastsecond.ir/attractions/9347-abouzeidabad-desert-kashan",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 33.9477321,
+      "longitude": 51.8023802,
+      "elevation_m": 962,
+      "status": "provisional",
+      "elevation_source": "مختصات کمپ گردشگری سیازگه در OpenStreetMap node 6200523289: 33.9477321, 51.8023802؛ Open-Meteo GLO-90 DEM در همین مختصات 962 متر برگرداند.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "siazgeh",
+    "tile_name": "کویر سیازگه",
+    "name": "کویر سیازگه",
+    "short_category": "کویر",
+    "category": "کویرهای اصفهان",
+    "category_key": "desert",
+    "region": "آران و بیدگل · اصفهان",
+    "latitude": 33.9477321,
+    "longitude": 51.8023802,
+    "elevation_m": 962,
+    "image": "/images/home-scene.png",
+    "image_alt": "ریگزار و تپه‌های ماسه‌ای کویر سیازگه در ابوزیدآباد",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "بیابان سیازگه",
+      "ریگ سیازگه",
+      "کویر سیازگه ابوزیدآباد",
+      "Siazgeh Desert"
+    ]
+  }
+}
