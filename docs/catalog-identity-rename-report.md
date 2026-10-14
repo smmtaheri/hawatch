@@ -37,27 +37,27 @@
 
 | قدیمی | نهایی | نام صفحه |
 | --- | --- | --- |
-| `sarband` | `tochal-sarband-square` | میدان سربند |
-| `pas_ghaleh` | `tochal-pas-ghaleh-village` | روستای پس‌قلعه |
-| `shirpala` | `tochal-shirpala-shelter` | پناهگاه شیرپلا |
-| `amiri` | `tochal-amiri-shelter` | جان‌پناه امیری |
-| `goleband` | `tochal-goleband-ridge` | یال گوله‌بند توچال |
+| `sarband` | `sarband-tehran` | میدان سربند تهران |
+| `pas_ghaleh` | `pas-ghaleh-shemiran` | روستای پس‌قلعه شمیران |
+| `shirpala` | `shirpala-tochal` | پناهگاه شیرپلا توچال |
+| `amiri` | `amiri-tochal` | جان‌پناه امیری توچال |
+| `goleband` | `goleband-tochal` | یال گوله‌بند توچال |
 | `velenjak` | `tochal-velenjak-village` | ولنجک |
-| `velenjak_parking` | `tochal-velenjak-parking` | پارکینگ مجموعهٔ توچال در ولنجک |
-| `station_1`, `station_2`, `station_5`, `station_7` | `tochal-telecabin-station-1`, `-2`, `-5`, `-7` | ایستگاه تله‌کابین توچال |
-| `qezqunchal_dopestan` | `tochal-qezqunchal-peak` | قلهٔ قزقون‌چال |
-| `barfchal` | `tochal-barfchal-peak` | قلهٔ برف‌چال توچال |
-| `homand_tochal` | `tochal-homand-tochal` | قلهٔ هومند توچال |
-| `lezoon_east`, `lezoon_west` | `tochal-lezoon-east`, `tochal-lezoon-west` | قلهٔ لزون شرقی/غربی |
-| `chahar_paloon` | `tochal-chahar-paloon` | قلهٔ چهارپالون |
-| `jamshidieh_park` | `tochal-jamshidieh-park` | پارک جمشیدیه |
-| `piyazchal_pass` | `tochal-piyazchal-pass` | گردنهٔ پیازچال |
-| `espilat_sarlo_pass` | `tochal-espilat-sarlo-pass` | گردنهٔ اسپیلت و سرلو |
-| `shakarab` | `tochal-shakarab-ahaar` | شکرآب آهار |
-| `naseri_palace` | `shahrestanak-naseri-palace` | کاخ ناصری شهرستانک |
+| `velenjak_parking` | `velenjak-parking` | پارکینگ توچال ولنجک |
+| `station_1`, `station_2`, `station_5`, `station_7` | `tochal-station-1`, `-2`, `-5`, `-7` | ایستگاه تله‌کابین توچال |
+| `qezqunchal_dopestan` | `qezqunchal-tochal` | قلهٔ قزقون‌چال توچال |
+| `barfchal` | `barfchal-tochal` | قلهٔ برف‌چال توچال |
+| `homand_tochal` | `homand-tochal` | قلهٔ هومند توچال |
+| `lezoon_east`, `lezoon_west` | `lezoon-east`, `lezoon-west` | قلهٔ لزون شرقی/غربی |
+| `chahar_paloon` | `chahar-paloon` | قلهٔ چهارپالون |
+| `jamshidieh_park` | `jamshidieh-park` | پارک جمشیدیه |
+| `piyazchal_pass` | `piyazchal-pass` | گردنهٔ پیازچال |
+| `espilat_sarlo_pass` | `espilat-sarlo-pass` | گردنهٔ اسپیلت و سرلو |
+| `shakarab` | `shakarab-ahar` | آبشار شکرآب آهار |
+| `naseri_palace` | `shahrestanak-palace` | کاخ ناصری شهرستانک |
 
 `tochal` نقطهٔ canonical است و slug سادهٔ نقطه را نگه می‌دارد. نقطهٔ `tochal_hotel`
-نیز به `tochal-hotel` و `kolakchal_camp` به `tochal-kolakchal-camp` تبدیل شده‌اند.
+نیز به `tochal-hotel` و `kolakchal_camp` به `kolakchal-camp` تبدیل شده‌اند.
 
 ### دماوند
 
