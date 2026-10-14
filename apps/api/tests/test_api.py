@@ -549,7 +549,11 @@ def test_search_suggestions_points(api_client, seeded):
     point = api_client.get("/api/v1/search/suggestions/", {"q": "پس"}).json()
     assert any(item["type"] == "point" and item["slug"] == "pas-ghaleh-shemiran" for item in point["results"])
     shir = api_client.get("/api/v1/search/suggestions/", {"q": "شیر"}).json()
-    assert any(item["type"] == "point" and item["slug"] == "shirpala-tochal" for item in shir["results"])
+    assert 0 < len(shir["results"]) <= 8
+    # The full catalog has more than eight places containing شیر; use the
+    # actual shelter name when asserting that this specific place is found.
+    shirpala = api_client.get("/api/v1/search/suggestions/", {"q": "شیرپلا"}).json()
+    assert any(item["type"] == "point" and item["slug"] == "shirpala-tochal" for item in shirpala["results"])
 
 
 @pytest.mark.django_db

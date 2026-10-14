@@ -1,32 +1,19 @@
 from __future__ import annotations
 
-import re
-
 from django.db import transaction
-from django.db.models import Case, IntegerField, Value, When
 
 from hawatch.modules.catalog.models import SearchIndexEntry
 from hawatch.modules.forecasts.models import WeatherPoint
-
-_ZWNJ = "\u200c"
-
-
-def normalize_search_text(value: str) -> str:
-    text = str(value or "").strip().replace("ي", "ی").replace("ك", "ک")
-    text = text.replace(_ZWNJ, "")
-    return re.sub(r"\s+", "", text).casefold()
+from hawatch.modules.catalog.search_text import SearchQuery, normalize_search_text, point_search_terms
 
 
 def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
     if not point.is_active or point.slug.startswith(("dest:", "route:")):
         return []
-    terms = [(point.name, SearchIndexEntry.MatchKind.NAME, 0)]
-    if point.page_name and point.page_name != point.name:
-        terms.append((point.page_name, SearchIndexEntry.MatchKind.ALIAS, 1))
-    terms.extend((alias, SearchIndexEntry.MatchKind.ALIAS, 1) for alias in point.aliases or [])
+    terms = point_search_terms(point)
     rows: list[SearchIndexEntry] = []
     seen: set[str] = set()
-    for label, match_kind, rank in terms:
+    for index, label in enumerate(terms):
         normalized = normalize_search_text(label)
         if len(normalized) < 2 or normalized in seen:
             continue
@@ -34,12 +21,12 @@ def _point_entries(point: WeatherPoint) -> list[SearchIndexEntry]:
         rows.append(
             SearchIndexEntry(
                 kind=SearchIndexEntry.Kind.POINT,
-                match_kind=match_kind,
+                match_kind=SearchIndexEntry.MatchKind.NAME if index == 0 else SearchIndexEntry.MatchKind.ALIAS,
                 normalized_term=normalized,
                 display_label=point.page_name or point.name,
                 display_hint="نقطهٔ شاخص" if point.importance == "primary" else "نقطهٔ مسیر",
                 weather_point_slug=point.slug,
-                rank=rank if point.importance != "primary" else max(0, rank - 1),
+                rank=0 if point.importance == "primary" else 1,
                 is_active=True,
             )
         )
@@ -61,28 +48,29 @@ def rebuild_search_index() -> dict[str, int]:
 
 
 def search_suggestions(*, query: str, limit: int = 8) -> list[dict]:
-    normalized = normalize_search_text(query)
-    if len(normalized) < 2:
+    parsed = SearchQuery.parse(query)
+    if len(parsed.compact) < 2 or len(parsed.compact) > 160:
         return []
-    matches = list(
-        SearchIndexEntry.objects.filter(is_active=True, normalized_term__contains=normalized)
-        .annotate(
-            match_position=Case(
-                When(normalized_term=normalized, then=Value(0)),
-                When(normalized_term__startswith=normalized, then=Value(1)),
-                default=Value(2),
-                output_field=IntegerField(),
-            )
-        )
-        .order_by("match_position", "rank", "display_label", "id")[: limit * 3]
-    )
+    # Every match contains the longest query token in at least one term.
+    # Fetch that small set of points, then score all their aliases together.
+    candidates = SearchIndexEntry.objects.filter(
+        is_active=True,
+        normalized_term__contains=max(parsed.tokens, key=len),
+    ).values("weather_point_slug")
+    grouped: dict[str, list[SearchIndexEntry]] = {}
+    for row in SearchIndexEntry.objects.filter(weather_point_slug__in=candidates, is_active=True).order_by("id"):
+        grouped.setdefault(row.weather_point_slug, []).append(row)
+    matches = []
+    for rows in grouped.values():
+        score = parsed.score([row.normalized_term for row in rows])
+        if score is not None:
+            matches.append((score[0], rows[score[1]]))
+    matches.sort(key=lambda match: (match[0], match[1].rank, match[1].display_label, match[1].weather_point_slug))
     results: list[dict] = []
-    seen: set[str] = set()
-    for row in matches:
+    for _, row in matches:
         slug = row.weather_point_slug
-        if not slug or slug in seen:
+        if not slug:
             continue
-        seen.add(slug)
         results.append(
             {
                 "type": "point",

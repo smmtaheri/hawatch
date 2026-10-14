@@ -24,6 +24,7 @@ from hawatch.api.v1.serializers import (
 )
 from hawatch.common.cache_headers import mark_public_catalog_response
 from hawatch.modules.catalog.search import search_suggestions
+from hawatch.modules.catalog.search_text import SearchQuery, point_search_terms, prepare_search_terms, route_search_terms
 from hawatch.common.time import (
     StartTimeValidationError,
     default_forecast_selection,
@@ -202,13 +203,10 @@ def destinations_index(request):
     if page_number < 1:
         raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
 
-    from hawatch.modules.catalog.search import normalize_search_text
-    query = normalize_search_text(request.query_params.get("query", ""))
+    query = SearchQuery.parse(request.query_params.get("query", ""))
     items = ordered_publicly_visible_destinations()
-    if query:
-        items = [point for point in items if query in normalize_search_text(
-            " ".join([point.name, point.page_name, point.region, *(point.aliases or [])])
-        )]
+    if query.compact:
+        items = [point for point in items if query.matches(point_search_terms(point))]
     paginator = Paginator(items, DESTINATIONS_PAGE_SIZE)
     try:
         page = paginator.page(page_number)
@@ -236,13 +234,12 @@ def destinations_index(request):
             },
         }
     )
-    return mark_public_catalog_response(response) if not query else response
+    return mark_public_catalog_response(response) if not query.compact else response
 
 
 @api_view(["GET"])
 def routes_index(request):
     from django.db.models import Count
-    from hawatch.modules.catalog.search import normalize_search_text
     from .serializers import serialize_route_summary
 
     raw_page = request.query_params.get("page", "1")
@@ -252,12 +249,10 @@ def routes_index(request):
         raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."}) from exc
     if page_number < 1:
         raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
-    query = normalize_search_text(request.query_params.get("query", ""))
+    query = SearchQuery.parse(request.query_params.get("query", ""))
     rows = Route.objects.filter(is_active=True).annotate(point_count=Count("points")).prefetch_related("points__weather_point").order_by("region", "sort_order", "slug")
     rows = [
-        route for route in rows if not query or query in normalize_search_text(
-            " ".join([route.title, route.origin, route.target_label, route.region])
-        )
+        route for route in rows if not query.compact or query.matches(route_search_terms(route, route.points.all()))
     ]
     paginator = Paginator(rows, DESTINATIONS_PAGE_SIZE)
     try:
@@ -289,7 +284,7 @@ def routes_index(request):
             ),
         },
     })
-    return mark_public_catalog_response(response) if not query else response
+    return mark_public_catalog_response(response) if not query.compact else response
 
 
 @api_view(["GET"])
@@ -436,19 +431,18 @@ def search_suggestions_view(request):
                 item.update(category_key=point.category_key, place_type=point.place_type)
                 item["hint"] = " · ".join(filter(None, [point.region,
                     f"{point.elevation_m} متر" if point.elevation_m is not None else ""]))
-        from hawatch.modules.catalog.search import normalize_search_text
-        normalized = normalize_search_text(query)
-        if len(normalized) >= 2:
+        parsed = SearchQuery.parse(query)
+        if 2 <= len(parsed.compact) <= 160:
             route_rows = Route.objects.filter(is_active=True).prefetch_related("points__weather_point").order_by("sort_order", "slug")
             matches = []
             for route in route_rows:
-                names = " ".join([route.title, route.origin, route.target_label, route.region,
-                    *(point.weather_point.name for point in route.points.all() if point.weather_point)])
-                if normalized in normalize_search_text(names):
-                    matches.append({"type": "route", "slug": route.slug, "label": route.title,
+                score = parsed.score(prepare_search_terms(route_search_terms(route, route.points.all())))
+                if score is not None:
+                    matches.append((score[0], {"type": "route", "slug": route.slug, "label": route.title,
                         "hint": f"{route.points.count()} نقطه · {route.distance_km} کیلومتر" if route.distance_km is not None else f"{route.points.count()} نقطه",
-                        "href": f"/routes/{route.slug}", "match_kind": "name"})
-            results = [*results, *matches[:8]]
+                        "href": f"/routes/{route.slug}", "match_kind": "name" if score[1] == 0 else "alias"}))
+            matches.sort(key=lambda match: (match[0], match[1]["label"], match[1]["slug"]))
+            results.extend(item for _, item in matches[:8])
     return Response(
         {
             "query": query,

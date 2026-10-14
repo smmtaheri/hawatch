@@ -13,6 +13,7 @@ COPY apps/web/package.json apps/web/package.json
 RUN pnpm install --frozen-lockfile
 
 COPY apps/web apps/web
+COPY apps/api/fixtures/search-normalization.json apps/api/fixtures/search-normalization.json
 
 WORKDIR /repo/apps/web
 ARG VITE_ASSET_VERSION=local

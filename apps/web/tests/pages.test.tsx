@@ -174,7 +174,7 @@ function defaultFetch(input: RequestInfo) {
     return response({
       revision: "test-index-v1",
       points: [{ slug: "tochal", label: "قلهٔ توچال", terms: ["توچال", "قلهٔ توچال"], hint: "تهران · ۳۹۵۵ متر", href: "/points/tochal", category_key: "mountain", place_type: "peak", primary: true }],
-      routes: [{ slug: "tochal-darband", label: "دربند تا توچال", terms: ["دربند تا توچال", "توچال"], hint: "۶ نقطه · ۱۰ کیلومتر", href: "/routes/tochal-darband" }],
+      routes: [{ slug: "tochal-darband", label: "دربند تا توچال", terms: ["دربند تا توچال", "توچال", "قلهٔ توچال"], hint: "۶ نقطه · ۱۰ کیلومتر", href: "/routes/tochal-darband" }],
     });
   if (url.pathname.endsWith("/destinations/"))
     return response({
@@ -436,10 +436,11 @@ describe("approved week forecast and unchanged public pages", () => {
     );
     expect(document.querySelector("dialog")).toBeNull();
   });
-  it("groups home search points and routes with working internal links", async () => {
+  it.each([390, 1440])("groups normalized home search results with working links at %ipx", async (width) => {
+    Object.defineProperty(window, "innerWidth", { configurable: true, value: width });
     mount();
     await screen.findByText("۷۴۶");
-    await userEvent.type(screen.getByRole("combobox"), "توچال");
+    await userEvent.type(screen.getByRole("combobox"), "قله ی توچال");
     await screen.findByRole("option", { name: /دربند تا توچال/ });
     expect(document.querySelectorAll(".search-result")).toHaveLength(2);
     await userEvent.click(

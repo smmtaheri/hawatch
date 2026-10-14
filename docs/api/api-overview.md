@@ -21,6 +21,14 @@ Frontend فقط API داخلی هواچ را مصرف می‌کند.
 مسیر همین endpoint را cache کنید؛ endpoint پیشنهادهای queryدار همچنان برای
 سازگاری و مسیر جایگزین باقی است.
 
+قواعد جست‌وجوی فارسی در [forecast-contract.md](./forecast-contract.md) مرجع
+است و در مرورگر، API پیشنهادها و فهرست مقصدها/مسیرها یکسان اجرا می‌شود. کلیدهای
+مرورگر برای هر payload یک‌بار آماده می‌شوند؛ تایپ فقط query را normalize می‌کند.
+فایل `apps/api/fixtures/search-normalization.json` قرارداد مشترک تست Python و
+TypeScript است. migration کاتالوگ `0004` فقط جدول مشتق‌شدهٔ جست‌وجو را برای
+داده‌های موجود بازسازی می‌کند؛ import دوبارهٔ مقصدها لازم نیست. کلید کش payload
+به `catalog:search-index:v2` ارتقا یافته است. نام، slug و تنظیمات SEO تغییر نمی‌کنند.
+
 `period`: `midnight` | `morning` | `noon` | `night` (`afternoon` فقط alias ورودی قدیمی است)
 `speed`: `آرام` | `متوسط` | `سریع` یا معادل `slow` | `medium` | `fast`
 

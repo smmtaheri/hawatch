@@ -9,10 +9,11 @@ from django.core.cache import cache
 from django.db.models import Prefetch
 
 from hawatch.modules.catalog.identity import category_key_for_point
+from hawatch.modules.catalog.search_text import point_search_terms, route_search_terms
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 
-SEARCH_INDEX_CACHE_KEY = "catalog:search-index:v1"
+SEARCH_INDEX_CACHE_KEY = "catalog:search-index:v2"
 SEARCH_INDEX_CACHE_SECONDS = 300
 
 
@@ -27,13 +28,9 @@ def _build_search_index() -> dict:
     ).order_by("importance", "popular_order", "page_name", "slug")
     for point in queryset.only(
         "slug", "name", "page_name", "aliases", "importance", "region", "elevation_m",
-        "category_key", "place_type",
+        "category_key", "place_type", "short_label",
     ):
-        terms = list(dict.fromkeys(
-            value.strip()
-            for value in [point.name, point.page_name, *(point.aliases or [])]
-            if value and value.strip()
-        ))
+        terms = point_search_terms(point)
         if not terms:
             continue
         hint = " · ".join(filter(None, [
@@ -57,13 +54,7 @@ def _build_search_index() -> dict:
         Prefetch("points", queryset=route_points)
     ):
         linked_points = list(route.points.all())
-        terms = list(dict.fromkeys(value.strip() for value in [
-            route.title,
-            route.origin,
-            route.target_label,
-            route.region,
-            *(point.weather_point.name for point in linked_points if point.weather_point_id),
-        ] if value and value.strip()))
+        terms = route_search_terms(route, linked_points)
         if not terms:
             continue
         count = len(linked_points)

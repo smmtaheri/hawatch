@@ -32,7 +32,7 @@ from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.hazards import assessment, assess_records, value, RANK
 from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
-from hawatch.modules.catalog.search import normalize_search_text
+from hawatch.modules.catalog.search_text import SearchQuery, point_search_terms
 from hawatch.modules.catalog.identity import category_key_for_point
 from hawatch.modules.catalog.internal_links import (
     related_public_similar_destinations,
@@ -1111,19 +1111,17 @@ def route_forecast(route: Route, *, selected_date: date, period: str, start_minu
 def list_points(*, query: str = "") -> list[WeatherPoint]:
     qs = WeatherPoint.objects.filter(is_active=True).order_by("-is_popular", "popular_order", "slug")
     if query:
-        normalized = normalize_search_text(query)
+        parsed = SearchQuery.parse(query)
         qs = [
             item
             for item in qs
-            if any(
-                normalized in normalize_search_text(str(value))
-                for value in (
-                    item.page_name or item.name,
+            if parsed.matches(
+                [
+                    *point_search_terms(item),
                     item.tile_name,
                     item.short_category,
                     item.category,
-                    *(item.aliases or []),
-                )
+                ]
             )
         ]
         return qs[:6]
