@@ -1,0 +1,76 @@
+{
+  "catalog_version": "hawatch-shadegan-wetland-v1",
+  "primary_point": "shadegan-wetland",
+  "weather_points": {
+    "shadegan-wetland": {
+      "name": "تالاب شادگان",
+      "page_name": "تالاب شادگان",
+      "short_label": "شادگان",
+      "tile_name": "تالاب شادگان",
+      "short_category": "تالاب",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های خوزستان",
+      "region": "شادگان · خوزستان",
+      "aliases": [
+        "تالاب بین‌المللی شادگان",
+        "هور شادگان",
+        "مرداب شادگان",
+        "Shadegan Wetland",
+        "Shadegan International Wetland",
+        "Shadegan Marshes"
+      ],
+      "identity_summary": "تالاب گستردهٔ شادگان در جلگهٔ خوزستان و نزدیک خلیج فارس؛ این نقطه، مختصات مرجع سایت رامسر برای نمایش پیش‌بینی هواست و نمایندهٔ تمام گسترهٔ تالاب به‌عنوان یک اندازه‌گیری میدانی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR41RIS.pdf",
+        "https://www.ramsar.org/sites/default/files/documents/library/shadeganmanagementplan-i.r._iran2011.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6515831/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.5&longitude=48.75",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.5,
+      "longitude": 48.75,
+      "elevation_m": 3,
+      "status": "provisional",
+      "elevation_source": "مختصات مرجع سایت رامسر ۳۰°۳۰′ شمالی و ۴۸°۴۵′ شرقی؛ ارتفاع ۳ متر از Open-Meteo GLO-90 DEM در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۴). برگهٔ رامسر بازهٔ ارتفاع سایت گسترده را ۰ تا ۱۵ متر ثبت می‌کند؛ این مقدار برداشت میدانی نیست.",
+      "climate": "desert",
+      "image": "/images/home-scene.png",
+      "image_alt": "تالاب شادگان در جلگهٔ خوزستان",
+      "seo": {
+        "title": "آب‌وهوای تالاب شادگان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب شادگان در خوزستان؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shadegan-wetland",
+    "tile_name": "تالاب شادگان",
+    "name": "تالاب شادگان",
+    "short_category": "تالاب",
+    "category": "تالاب‌های خوزستان",
+    "category_key": "marsh",
+    "region": "شادگان · خوزستان",
+    "elevation_m": 3,
+    "latitude": 30.5,
+    "longitude": 48.75,
+    "image": "/images/home-scene.png",
+    "image_alt": "تالاب شادگان در جلگهٔ خوزستان",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تالاب بین‌المللی شادگان",
+      "هور شادگان",
+      "مرداب شادگان",
+      "Shadegan Wetland",
+      "Shadegan International Wetland",
+      "Shadegan Marshes"
+    ]
+  }
+}
