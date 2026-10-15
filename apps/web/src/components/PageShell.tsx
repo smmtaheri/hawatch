@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { initialSeoContentFor } from "../lib/initialSeoContent";
 import type { ReactNode } from "react";
+import { useEffect } from "react";
+import { completePageLoad, failPageLoad } from "../lib/pageLoad";
 import { Header } from "./Header";
 import { BackNavigation } from "./BackNavigation";
 import { ROUTE_NIGHT_TONE } from "../styles/new-design/routeBackgroundTone";
@@ -11,14 +13,20 @@ export function PageShell({
   className,
   back = false,
   showInitialContent = false,
+  loadingState = "ready",
 }: {
   children: ReactNode;
   className: string;
   back?: boolean;
   showInitialContent?: boolean;
+  loadingState?: "loading" | "ready" | "error";
 }) {
   const location = useLocation();
   const initialContent = showInitialContent ? initialSeoContentFor(location.pathname, location.search) : null;
+  useEffect(() => {
+    if (loadingState === "ready") completePageLoad(location.pathname);
+    if (loadingState === "error") failPageLoad(location.pathname);
+  }, [loadingState, location.pathname]);
   return (
     <main className={className}>
       {/* Grade the original light route photo without moving or regenerating
@@ -50,8 +58,7 @@ export function PageShell({
             <BackNavigation />
           </div>
         ) : null}
-        {initialContent ? <section className="seo-fallback" data-seo-fallback="true" dangerouslySetInnerHTML={{ __html: initialContent }} /> : null}
-        {children}
+        {initialContent ? <section className="seo-fallback" data-seo-fallback="true" dangerouslySetInnerHTML={{ __html: initialContent }} /> : children}
         <footer
           className="footer forecast-attribution"
           aria-label="منبع دادهٔ هواشناسی"

@@ -1,5 +1,5 @@
 // Small synthetic API fixtures, never imported by the application.
-import {Week} from '../../src/features/week/WeekForecastPage';
+import type {Week} from '../../src/api/weekForecast';
 export function weekFixture(kind:'point'|'route',day:string,options:{pending?:boolean;stale?:boolean}={}):Week{
  const days=Array.from({length:8},(_,i)=>({date:new Date(Date.parse(day+'T00:00:00Z')+i*86400000).toISOString().slice(0,10),label:i===0?'امروز':i===1?'فردا':['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه'][i-2],jalali:'۱۷ مهر'}));
  const reading={felt:-7,actual:91,min:90,max:92,wind:20,gust:30,rain:0,humidity:50,visibility:10,freezing:3000,direction:0,weather:'clear',condition:'صاف',weather_at:day+'T12:00:00+03:30',warnings:[],complete:true};

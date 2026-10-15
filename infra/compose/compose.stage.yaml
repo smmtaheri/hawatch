@@ -13,6 +13,7 @@ services:
       DJANGO_SETTINGS_MODULE: hawatch.config.settings.qa
       DJANGO_ALLOWED_HOSTS: ${HAWATCH_STAGE_ALLOWED_HOSTS:?Set stage IP/domain},stage-api,localhost,127.0.0.1
       HAWATCH_ASSET_VERSION: ${HAWATCH_STAGE_IMAGE_TAG:-local}
+      HAWATCH_FRONTEND_ASSETS_ROOT: /var/lib/hawatch-frontend
       HAWATCH_STAGE_ORIGIN: ${HAWATCH_STAGE_ORIGIN:?Set public stage origin}
       HAWATCH_PUBLIC_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
       POSTGRES_HOST: stage-postgres
@@ -33,7 +34,7 @@ services:
     entrypoint: ["gunicorn"]
     command: ["hawatch.config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1", "--threads", "2", "--timeout", "60", "--access-logfile", "-"]
     networks: [stage]
-    volumes: ["stage-logs:/var/log/hawatch"]
+    volumes: ["stage-logs:/var/log/hawatch", "stage-frontend-assets:/var/lib/hawatch-frontend:ro"]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/ready/', timeout=3)"]
       interval: 15s
@@ -53,6 +54,7 @@ services:
         VITE_API_BASE_URL: /api/v1
         VITE_QA_PREVIEW: "true"
         VITE_PUBLIC_SITE_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
+    volumes: ["stage-frontend-assets:/var/lib/hawatch-frontend"]
     networks: [stage]
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:5173/"]
@@ -121,3 +123,4 @@ networks:
 volumes:
   stage-logs: {}
   stage-db: {}
+  stage-frontend-assets: {}

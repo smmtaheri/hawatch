@@ -25,6 +25,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="{{ public_asset_prefix }}/brand/v2/site.webmanifest" />
     <link rel="stylesheet" href="{{ asset_prefix }}/assets/hawatch.css" />
+    {% for file in page_assets.scripts %}<link rel="modulepreload" crossorigin href="{{ asset_prefix }}/{{ file }}" />{% endfor %}
+    {% for file in page_assets.styles %}{% if file != 'assets/hawatch.css' %}<link rel="preload" as="style" crossorigin href="{{ asset_prefix }}/{{ file }}" />{% endif %}{% endfor %}
     <script>
       try {
         document.documentElement.dataset.theme = localStorage.getItem("hawatch-theme") || "dark";
@@ -178,6 +180,7 @@
       {% if page.kind == "home" %}{{ page.initial_data|json_script:"home-initial-data" }}{% endif %}
       <footer class="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">دادهٔ هواشناسی: Open-Meteo</footer>
     </div>
+    {% include "catalog/page_load_bootstrap.html" %}
     <script type="module" src="{{ asset_prefix }}/assets/hawatch.js"></script>
   </body>
 </html>

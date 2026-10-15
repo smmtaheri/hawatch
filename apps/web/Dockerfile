@@ -14,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY apps/web apps/web
 COPY apps/api/fixtures/search-normalization.json apps/api/fixtures/search-normalization.json
+COPY apps/api/src/hawatch/modules/catalog/templates/catalog/page_load_bootstrap.html apps/api/src/hawatch/modules/catalog/templates/catalog/page_load_bootstrap.html
 
 WORKDIR /repo/apps/web
 ARG VITE_ASSET_VERSION=local
@@ -35,6 +36,8 @@ FROM nginx:1.27-alpine
 COPY --from=build /repo/apps/web/dist /usr/share/nginx/html
 COPY apps/web/nginx.conf /etc/nginx/conf.d/default.conf
 COPY apps/web/nginx.qa.conf /tmp/hawatch-qa.conf
+COPY apps/web/publish-assets.sh /docker-entrypoint.d/40-publish-assets.sh
+RUN chmod +x /docker-entrypoint.d/40-publish-assets.sh
 ARG VITE_QA_PREVIEW=false
 RUN if [ "$VITE_QA_PREVIEW" = "true" ]; then cp /tmp/hawatch-qa.conf /etc/nginx/conf.d/default.conf; fi \
     && rm /tmp/hawatch-qa.conf

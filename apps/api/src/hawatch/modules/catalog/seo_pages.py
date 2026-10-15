@@ -35,6 +35,7 @@ from hawatch.modules.catalog.runtime import (
     publicly_visible_weather_points,
 )
 from hawatch.modules.catalog.home import home_catalog_data
+from hawatch.modules.catalog.page_assets import page_assets
 from hawatch.modules.catalog.seo import point_seo_copy, route_seo_copy
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -88,6 +89,7 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
             "new_design": getattr(settings, "HAWATCH_NEW_DESIGN", False),
             "public_asset_prefix": ("/static-public/"+settings.HAWATCH_PUBLIC_ASSET_VERSION) if settings.HAWATCH_PUBLIC_ASSET_VERSION else "",
             "asset_prefix": ("/static-assets/"+getattr(settings,"HAWATCH_ASSET_VERSION","")) if getattr(settings,"HAWATCH_ASSET_VERSION","") else "",
+            "page_assets": page_assets(page["kind"]),
         },
         status=status,
     )

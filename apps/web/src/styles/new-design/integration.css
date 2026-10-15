@@ -6,6 +6,18 @@ main { position: relative; isolation: isolate; min-height: 100svh; }
 .hawatch-state { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; text-align: center; margin-block: 12px; }
 .hawatch-state button { border: 1px solid var(--accent); border-radius: 8px; min-height: 44px; color: var(--accent); padding: 6px 18px; }
 .hawatch-state p { color: var(--secondary); }
+.page-load-notice {
+  position: fixed;
+  z-index: 10000;
+  inset-inline: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: fit-content;
+  max-width: min(560px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 18px;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .18);
+}
 .stale-data-notice { color: var(--amber); background: var(--panel); padding: 10px 16px; margin-block: 10px; border-radius: 10px; }
 .brand span { display: block; }
 .routes h2 { white-space: normal; }

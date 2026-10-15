@@ -17,7 +17,7 @@ import { captureInitialSeoContent, initialSeoContentFor } from "../src/lib/initi
 import { HourlyForecast } from "../src/components/HourlyForecast";
 import { copyShareLink } from "../src/lib/shareImage";
 import { CategoryIcon, WeatherIcon } from "../src/components/DesignIcon";
-import {clearWeekCache} from '../src/features/week/WeekForecastPage';
+import {clearWeekCache} from '../src/api/weekForecast';
 import {weekFixture} from './fixtures/week';
 import pointFixture from "./fixtures/point-day.json";
 import routeFixture from "./fixtures/route-day.json";
@@ -236,7 +236,7 @@ describe("approved week forecast and unchanged public pages", () => {
       });
       try {
         mount(kind === 'point' ? '/points/tochal' : '/routes/tochal-darband', true);
-        await waitFor(() => expect(targets).toHaveLength(1));
+        await waitFor(() => expect(targets).toHaveLength(1), {timeout:5000});
         expect(targets[0]).toBe(document.querySelector(`.${kind}-page .hero`));
         expect(targets[0].querySelector('h1')).toBeTruthy();
         const entryScrollCalls = vi.mocked(window.scrollTo).mock.calls.length;
@@ -270,10 +270,19 @@ describe("approved week forecast and unchanged public pages", () => {
     });
   }
   for(const path of ['/points/tochal','/routes/tochal-darband']){
-    it(`preserves server HTML during an API error and replaces it after retry: ${path}`,async()=>{
-      const title='پیش‌بینی اولیهٔ سرور';window.history.replaceState({},"",path);document.body.innerHTML=`<div data-seo-initial="true"><article><h1>${title}</h1></article></div>`;captureInitialSeoContent();document.body.innerHTML="";error=500;mount(path);
-      await screen.findByRole('button',{name:/تلاش دوباره/});expect(screen.getByRole('heading',{name:title})).toBeVisible();error=0;await userEvent.click(screen.getByRole('button',{name:/تلاش دوباره/}));
+    it(`preserves server HTML during an API error until a manual reload: ${path}`,async()=>{
+      const title='پیش‌بینی اولیهٔ سرور';window.history.replaceState({},"",path);document.body.innerHTML=`<div data-seo-initial="true"><article><h1>${title}</h1></article></div>`;captureInitialSeoContent();document.body.innerHTML="";error=500;
+      const fail=vi.fn();window.__hawatchPageLoad={start:vi.fn(),complete:vi.fn(),fail};
+      const view=mount(path);
+      await waitFor(()=>expect(fail).toHaveBeenCalledWith(path));
+      expect(screen.getByRole('heading',{name:title})).toBeVisible();
+      expect(screen.queryByRole('button',{name:/تلاش دوباره/})).toBeNull();
+      fireEvent(window,new Event('focus'));
+      expect(weatherCalls()).toHaveLength(1);
+      view.unmount();clearWeekCache();error=0;mount(path);
       await waitFor(()=>expect(document.getElementById('forecast-v4')).not.toBeNull());expect(weatherCalls()).toHaveLength(2);
+      expect(document.querySelector('[data-seo-fallback]')).toBeNull();
+      delete window.__hawatchPageLoad;
     });
   }
   it('records page entry once and never renews it on day selection or weather refresh',async()=>{
@@ -351,12 +360,15 @@ describe("approved week forecast and unchanged public pages", () => {
     );
     expect(document.querySelector('link[rel="canonical"]')).toBeNull();
   });
-  it("shows a retryable API error and recovers with a fresh request", async () => {
+  it("requests a manual refresh after an API error without automatically retrying", async () => {
     error = 500;
-    mount("/points/tochal");
-    await screen.findByRole("button", { name: /تلاش دوباره/ });
+    const view=mount("/points/tochal");
+    expect(await screen.findByRole("alert")).toHaveTextContent('رفرش');
+    expect(screen.queryByRole("button", { name: /تلاش دوباره/ })).toBeNull();
+    fireEvent(window,new Event('focus'));
+    expect(weatherCalls()).toHaveLength(1);
     error = 0;
-    await userEvent.click(screen.getByRole("button", { name: /تلاش دوباره/ }));
+    view.unmount();clearWeekCache();mount("/points/tochal");
     await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
     expect(weatherCalls()).toHaveLength(2);
   });

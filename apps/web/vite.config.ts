@@ -2,6 +2,7 @@ import {cpSync,mkdirSync} from "node:fs";
 import {resolve} from "node:path";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import { pageAssetsPlugin } from "./pageAssets";
 
 const apiProxy = {
   target: "http://localhost:8000",
@@ -31,7 +32,7 @@ return {
     transformIndexHtml:{order:"post",handler:html=>rewritePublic(html)},
     generateBundle(_options,bundle){for(const output of Object.values(bundle))if(output.type==="asset"&&output.fileName.endsWith(".css"))output.source=rewritePublic(String(output.source));},
     closeBundle(){const target=resolve("dist",`static-assets/${assetVersion}`);mkdirSync(target,{recursive:true});cpSync(resolve("public"),resolve("dist",`static-public/${publicVersion}`),{recursive:true});cpSync(resolve("dist/assets"),resolve(target,"assets"),{recursive:true});}
-  },react(), {
+  },react(), pageAssetsPlugin(assetVersion), {
     name: "qa-noindex",
     transformIndexHtml(html) {
       return process.env.VITE_QA_PREVIEW === "true"
@@ -40,6 +41,7 @@ return {
     },
   }],
   build: {
+    manifest: true,
     // Django serves the first HTML response for public SEO pages. Keep the
     // entry CSS/JS paths stable so that server-rendered HTML never needs to
     // know Vite's content hash. Lazy chunks remain content-addressed.

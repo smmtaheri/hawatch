@@ -75,7 +75,7 @@ export function SubscriptionPlansPage() {
   }
 
   return (
-    <PageShell className="subscription-page" back>
+    <PageShell className="subscription-page" back loadingState={status}>
       <section className="catalog-hero" aria-labelledby="subscription-title">
         <h1 id="subscription-title">اشتراک هواچ</h1>
         <p>وضعیت دسترسی و طرح‌های هواچ</p>
@@ -83,7 +83,7 @@ export function SubscriptionPlansPage() {
       {status === "loading" ? <LoadingState /> : null}
       {status === "error" ? (
         <section className="subscription-message card-surface" role="alert">
-          بارگذاری طرح‌ها ناموفق بود. دوباره تلاش کن.
+          بارگذاری طرح‌ها ناموفق بود؛ لطفاً صفحه را رفرش کنید.
         </section>
       ) : null}
       {status === "ready" ? (

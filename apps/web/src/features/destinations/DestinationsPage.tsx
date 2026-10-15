@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/client";
 import { PageShell } from "../../components/PageShell";
 import { CategoryIcon, DesignIcon } from "../../components/DesignIcon";
-import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
 import { usePageTitle } from "../../lib/pageTitle";
 import type { PointSummary, RouteSummary } from "../../types";
@@ -22,7 +21,6 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
   const [next, setNext] = useState<number | null>(null);
   const [loadingMore, setLoadingMore] = useState(false);
   const [moreError, setMoreError] = useState(false);
-  const [retry, setRetry] = useState(0);
   const generation = useRef(0);
   const moreBusy = useRef(false);
   const sentinel = useRef<HTMLDivElement>(null);
@@ -68,7 +66,7 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
     return () => {
       ++generation.current;
     };
-  }, [routeList, search, initialPage, retry]);
+  }, [routeList, search, initialPage]);
   async function more() {
     if (next === null || moreBusy.current) return;
     moreBusy.current = true;
@@ -124,6 +122,8 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
     <PageShell
       className={routeList ? "route-page routes-page" : "destinations-page"}
       back
+      showInitialContent={status !== "ready"}
+      loadingState={status}
     >
       <section className="catalog-hero">
         <h1>{routeList ? "مسیرهای هواچ" : "مقصدهای اصلی هواچ"}</h1>
@@ -165,7 +165,7 @@ export function CatalogPage({ kind }: { kind: "destinations" | "routes" }) {
         />
       ) : null}
       {status === "error" ? (
-        <ErrorState onRetry={() => setRetry((v) => v + 1)} />
+        <p role="alert">بارگذاری صفحه کامل نشده؛ لطفاً صفحه را رفرش کنید.</p>
       ) : null}
       {status === "ready" ? (
         <section

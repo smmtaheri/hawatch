@@ -24,9 +24,17 @@ Django HTML اولیهٔ catalog-driven را render می‌کند و web bundle 
 نیاز ندارد؛ HTML اولیهٔ آن از دیتابیس runtime خوانده می‌شود. راهنمای بررسی raw
 HTML در [`seo.md`](seo.md) است.
 
-اگر دامنه پشت CDN است، cache عمومی را فقط برای assetهای versioned فعال کنید.
-HTML مسیرهای `/`، `/points/*` و `/routes/*` باید با `Cache-Control: no-cache`
-revalidate شوند و `/admin/*` و `/api/*` نباید در cache عمومی قرار بگیرند؛ جزئیات
+فایل‌های نسخه‌دار فرانت و manifest preload پیش از جایگزینی API در volume
+مشترک منتشر و اعتبارسنجی می‌شوند. پنج نسخهٔ JS/CSS و دو نسخهٔ مستقل public
+برای HTML کش‌شده و تب‌های باز نگه داشته می‌شوند؛ دیتابیس backup نمی‌شود.
+در اولین اجرا، فایل‌های web فعلی نیز حفظ می‌شوند. جزئیات و سقف نگه‌داری در
+[`page-loading.md`](page-loading.md) است. این مسیر با deploy عادی فعال می‌شود
+و به migration یا متغیر محیطی دستی جدید نیاز ندارد.
+
+اگر دامنه پشت CDN است، فایل‌های نسخه‌دار immutable و HTML کانونیکال فقط طبق
+TTL کوتاه مبدأ cache می‌شوند. HTML queryدار باید مستقل و با revalidation یا
+bypass باشد؛ نسخهٔ queryدار و تمیز نباید یک cache key داشته باشند.
+`/admin/*` و APIهای خصوصی یا هواشناسی نباید در cache عمومی قرار بگیرند؛ جزئیات
 قواعد purge، header و redirect یک‌مرحله‌ای فهرست‌های حذف‌شده در
 [`seo.md`](seo.md#تنظیم-cdn-و-cache) آمده است.
 

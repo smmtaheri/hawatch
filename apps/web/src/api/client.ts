@@ -13,6 +13,7 @@ import type {
   RouteDayBundle,
   CatalogSearchIndex,
 } from "../types";
+import { takeInitialPageRequest } from "../lib/pageLoad";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "/api/v1").replace(/\/+$/, "");
 
@@ -74,19 +75,27 @@ export class ApiError extends Error {
   }
 }
 
-async function getJson<T>(path: string, params?: Record<string, string | undefined>): Promise<T> {
+const publicPageRequests = new Map<string, Promise<unknown>>();
+function getJson<T>(path: string, params?: Record<string, string | undefined>): Promise<T> {
   const url = apiUrl(path);
   if (params) {
     for (const [key, value] of Object.entries(params)) {
       if (value) url.searchParams.set(key, value);
     }
   }
-  const response = await fetch(url.toString(), { credentials: "same-origin" });
-  if (!response.ok) {
-    const payload = await response.json().catch(() => null) as { detail?: string; code?: string } | null;
-    throw new ApiError(payload?.detail || "بارگذاری داده ناموفق بود.", response.status, payload?.code, payload);
-  }
-  return (await response.json()) as T;
+  const key = url.toString();
+  const deduplicate = ["points/", "routes/", "destinations/", "auth/plans/"].includes(path);
+  if (deduplicate && publicPageRequests.has(key)) return publicPageRequests.get(key) as Promise<T>;
+  const response = takeInitialPageRequest(key, "same-origin") ?? fetch(key, { credentials: "same-origin" });
+  const request = response.then(async response => {
+    if (!response.ok) {
+      const payload = await response.json().catch(() => null) as { detail?: string; code?: string } | null;
+      throw new ApiError(payload?.detail || "بارگذاری داده ناموفق بود.", response.status, payload?.code, payload);
+    }
+    return (await response.json()) as T;
+  }).finally(() => { if (publicPageRequests.get(key) === request) publicPageRequests.delete(key); });
+  if (deduplicate) publicPageRequests.set(key, request);
+  return request;
 }
 
 export const api = {

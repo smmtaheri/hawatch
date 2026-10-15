@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../api/client";
 import { PageShell } from "../../components/PageShell";
-import { ErrorState } from "../../components/ErrorState";
 import { LoadingState } from "../../components/LoadingState";
 import {
   SearchCombobox,
@@ -50,7 +49,7 @@ export function HomePage() {
     };
   }, []);
   return (
-    <PageShell className="home-page">
+    <PageShell className="home-page" showInitialContent={status !== "ready"} loadingState={status}>
       <section className="home-hero">
         <h1>پیش‌بینی هوای نقاط و مسیرها</h1>
         <p>برای برنامه‌ریزی طبیعت‌گردی</p>
@@ -84,7 +83,7 @@ export function HomePage() {
             {status === "loading" ? (
               <LoadingState label="در حال بارگذاری نقاط…" />
             ) : null}
-            {status === "error" ? <ErrorState onRetry={load} /> : null}
+            {status === "error" ? <p role="alert">بارگذاری صفحه کامل نشده؛ لطفاً صفحه را رفرش کنید.</p> : null}
             <div className="popular-grid">
               {popularPoints.map((item) => (
                 <Link className="popular-card" key={item.slug} to={item.href}>

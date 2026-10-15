@@ -248,7 +248,8 @@ configure_env() {
   # Frontend changes version bundles; public files have an independent namespace.
   # Backend-only releases keep every frontend URL stable.
   set_env_value HAWATCH_ASSET_VERSION "$(asset_tree_version \
-    apps/web/src apps/web/public apps/web/index.html apps/web/vite.config.ts \
+    apps/web/src apps/web/public apps/web/pageAssets.ts apps/web/index.html apps/web/vite.config.ts \
+    apps/api/src/hawatch/modules/catalog/templates/catalog/page_load_bootstrap.html \
     apps/web/package.json apps/web/tsconfig.json package.json pnpm-lock.yaml \
     pnpm-workspace.yaml)"
   set_env_value HAWATCH_PUBLIC_ASSET_VERSION "$(asset_tree_version apps/web/public)"
@@ -383,6 +384,19 @@ run_stack() {
   # This reads JSON only; it neither imports catalog rows nor calls the provider.
   log "Validating all packaged catalogs before replacing running services."
   "${compose[@]}" run --rm --no-deps --entrypoint python api manage.py shell -c 'from hawatch.modules.catalog.sync import load_packaged_catalogs; catalog = load_packaged_catalogs(); print("Packaged catalogs valid:", len(catalog.files))'
+
+  # First rollout only: retain the running image's versioned files before the
+  # new shared asset volume takes over. Later releases are already retained there.
+  local previous_web
+  previous_web="$("${compose[@]}" ps -q web 2>/dev/null || true)"
+  if [[ -n "$previous_web" ]] && ! "${compose[@]}" run --rm -T --no-deps --entrypoint test web -d /var/lib/hawatch-frontend/static-assets; then
+    log "Preserving the running frontend assets for cached HTML and open tabs."
+    "${compose[@]}" exec -T web tar -C /usr/share/nginx/html -c static-assets static-public \
+      | "${compose[@]}" run --rm -T --no-deps --entrypoint sh web -ec 'mkdir -p /var/lib/hawatch-frontend; tar -x -C /var/lib/hawatch-frontend'
+  fi
+  log "Publishing versioned frontend files and their preload graph before replacing the API."
+  "${compose[@]}" run --rm -T --no-deps --entrypoint /docker-entrypoint.d/40-publish-assets.sh web
+  "${compose[@]}" run --rm -T --no-deps --entrypoint python api manage.py shell -c 'from hawatch.modules.catalog.page_assets import validate_page_assets; print("Frontend preload graphs valid:", validate_page_assets())'
 
   # Replace only this named Compose project after every required image exists.
   # Volumes (especially PostgreSQL data) remain intact and other projects are

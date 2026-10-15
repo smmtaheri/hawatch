@@ -6,31 +6,11 @@ import {PageShell} from '../../components/PageShell';
 import {usePageTitle} from '../../lib/pageTitle';
 import {scrollToDetailHero} from '../../lib/detailEntryScroll';
 import brand from '../../components/brandMark.svg?raw';
-import type { SimilarDestinationSummary } from '../../types';
+import {loadWeek, type Week} from '../../api/weekForecast';
 import {createForecastRuntime} from './vendor/runtime';
 import './forecast-v5.css';
 import './agreed.css';
 
-type Day={date:string;label:string;jalali:string};
-type Subject={slug:string;name?:string;title?:string;elevation_m?:number;region?:string;distance_km?:number;ascent_m?:number;descent_m?:number;seo_indexable?:boolean};
-export type Week={kind:'point'|'route';subject:Subject;days:Day[];range_start:string;range_end:string;last_generated_at:string|null;stale_after_hours:number;cache_max_age_seconds:number;related_routes?:Subject[];related_routes_title?:string;related_destinations?:SimilarDestinationSummary[];related_destinations_title?:string;intervals?:Record<string,Array<Array<Record<string,unknown>>>>;points?:Array<{slug:string;name:string}>;timing_pending?:boolean};
-const cache=new Map<string,{data:Week;expires:number}>();
-export function clearWeekCache(){cache.clear();pending.clear();}
-const pending=new Map<string,Promise<Week>>();
-function tehranDate(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tehran',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
-export async function loadWeek(kind:string,slug:string):Promise<Week>{
- const key=`${kind}:${slug}:${tehranDate()}`, existing=cache.get(key);
- if(existing&&existing.expires>Date.now()) return existing.data;
- const loading=pending.get(key);if(loading)return loading;
- const request=fetch(`/api/v1/${kind==='point'?'points':'routes'}/${encodeURIComponent(slug)}/forecast/week/`,{credentials:'omit'}).then(async r=>{
-  if(!r.ok)throw Object.assign(new Error(r.status===404?'نقطه یا مسیر پیدا نشد':'دریافت پیش‌بینی ممکن نشد'),{status:r.status});
-  const data=await r.json() as Week;
-  // Honor the response's age; a CDN hit must not restart a fresh two-minute window.
-  const age=Number(r.headers.get('Age')||0),midnight=Date.parse(`${data.range_start}T00:00:00+03:30`)+86400000,ttl=Math.max(0,Math.min(data.cache_max_age_seconds-age,(midnight-Date.now())/1000));
-  cache.set(key,{data,expires:Date.now()+ttl*1000});while(cache.size>3)cache.delete(cache.keys().next().value!);
-  return data;
- }).finally(()=>pending.delete(key));pending.set(key,request);return request;
-}
 function adapted(data:Week){
  const days=data.days.map(d=>({name:d.label,date_fa:d.jalali,iso:d.date,id:d.date,available:['daily','6h','3h','1h']}));
  const points:any={};
@@ -39,7 +19,7 @@ function adapted(data:Week){
 }
 export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  const {slug=''}=useParams(),navigate=useNavigate(),[params,setParams]=useSearchParams();
- const [data,setData]=useState<Week|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0),[routesOpen,setRoutesOpen]=useState(false),[missing,setMissing]=useState(false);
+ const [data,setData]=useState<Week|null>(null),[error,setError]=useState(''),[routesOpen,setRoutesOpen]=useState(false),[missing,setMissing]=useState(false);
  const root=useRef<HTMLDivElement>(null),runtime=useRef<ReturnType<typeof createForecastRuntime>|null>(null);
  const dataSubject=data?.subject.slug===slug?data.subject:undefined;
  usePageTitle(dataSubject?.name||dataSubject?.title,{robots:dataSubject?.seo_indexable===false?'noindex,follow':undefined,title:(dataSubject as any)?.seo_title,description:(dataSubject as any)?.seo_description});
@@ -56,11 +36,11 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
   void fetch(`/api/v1/${kind==='point'?'points':'routes'}/${encodeURIComponent(slug)}/forecast/visit/`,{method:'POST',credentials:'omit'}).catch(()=>{});
  },[kind,slug]);
  useEffect(()=>{
-  let active=true,timer:number;setData(null);setError('');setMissing(false);
-  async function load(){if(document.hidden){window.clearTimeout(timer);timer=window.setTimeout(load,120000);return;}try{const d=await loadWeek(kind,slug);if(active){setData(d);setError('');window.clearTimeout(timer);const midnight=Date.parse(`${d.range_start}T00:00:00+03:30`)+86400000;timer=window.setTimeout(load,Math.max(1000,Math.min(d.cache_max_age_seconds*1000,midnight-Date.now())));}}catch(e){if(active){setError(e instanceof Error?e.message:'دریافت پیش‌بینی ممکن نشد');setMissing((e as {status?:number}).status===404);}}}
-  void load();const focus=()=>{void load();};window.addEventListener('focus',focus);const visible=()=>{if(!document.hidden)void load();};document.addEventListener('visibilitychange',visible);
+  let active=true,failed=false,timer:number;setData(null);setError('');setMissing(false);
+  async function load(){if(document.hidden){window.clearTimeout(timer);timer=window.setTimeout(load,120000);return;}try{const d=await loadWeek(kind,slug);if(active){setData(d);setError('');window.clearTimeout(timer);const midnight=Date.parse(`${d.range_start}T00:00:00+03:30`)+86400000;timer=window.setTimeout(load,Math.max(1000,Math.min(d.cache_max_age_seconds*1000,midnight-Date.now())));}}catch(e){if(active){failed=true;window.clearTimeout(timer);setError(e instanceof Error?e.message:'دریافت پیش‌بینی ممکن نشد');setMissing((e as {status?:number}).status===404);}}}
+  void load();const focus=()=>{if(!failed)void load();};window.addEventListener('focus',focus);const visible=()=>{if(!document.hidden&&!failed)void load();};document.addEventListener('visibilitychange',visible);
   return()=>{active=false;window.clearTimeout(timer);window.removeEventListener('focus',focus);document.removeEventListener('visibilitychange',visible);};
- },[kind,slug,retry]);
+ },[kind,slug]);
  useLayoutEffect(()=>{
   if(!data||data.subject.slug!==slug||!root.current)return;
   const W=adapted(data), record={...data.subject,name:data.subject.name||data.subject.title,elevation:data.subject.elevation_m,points:data.points?.map(p=>p.slug)||[],related_destinations:data.related_destinations,related_destinations_title:data.related_destinations_title,related_routes_title:data.related_routes_title};
@@ -85,11 +65,11 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  if(missing)return <NotFoundPage title={kind==='point'?'نقطه پیدا نشد':'مسیر پیدا نشد'}/>;
  const routeQuery=new URLSearchParams(params);routeQuery.delete('past_program');
  const stale=data?.last_generated_at&&Date.now()-Date.parse(data.last_generated_at)>data.stale_after_hours*3600000;
- return <PageShell className={kind==='route'?'route-page':'point-page'} back showInitialContent={!data}>
+ return <PageShell className={kind==='route'?'route-page':'point-page'} back showInitialContent={!data} loadingState={error?'error':data?'ready':'loading'}>
   {params.get('past_program')==='1'||(data&&params.get('date')&&params.get('date')!<data.range_start)?<p role="status">تاریخ این برنامه گذشته است؛ پیش‌بینی امروز نمایش داده می‌شود.</p>:null}
   {stale?<p role="status">دادهٔ پیش‌بینی قدیمی است؛ زمان انتشار داده را در نظر بگیرید.</p>:null}
   {data?.timing_pending?<p role="status">زمان‌بندی مسیر هنوز تأیید نشده است؛ زمان رسیدن و هوای آن نمایش داده نمی‌شود.</p>:null}
-  {error?<p role="alert">{error} <button onClick={()=>setRetry(n=>n+1)}>تلاش دوباره</button></p>:null}
+  {error?<p role="alert">{error}؛ لطفاً صفحه را رفرش کنید.</p>:null}
   {!data&&!error?<p role="status">در حال دریافت پیش‌بینی…</p>:null}
   <div ref={root}/>
   {routesOpen?<Dialog className="week-route-picker" title="انتخاب مسیر" onClose={()=>setRoutesOpen(false)}>{(data?.related_routes||[]).map(r=><Link key={r.slug} to={`/routes/${r.slug}${routeQuery.size?'?'+routeQuery.toString():''}`} onClick={()=>setRoutesOpen(false)}>{r.title}</Link>)}<Link to="/routes" onClick={()=>setRoutesOpen(false)}>همهٔ مسیرها</Link></Dialog>:null}

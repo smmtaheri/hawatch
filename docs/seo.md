@@ -12,6 +12,12 @@ planner، مانند `?date=…&period=…`، با `noindex,follow` منتشر �
 
 ## معماری
 
+مسیر فعلی دریافت فایل‌ها نسخه‌دار است: `/static-assets/<frontend-hash>/`.
+وابستگی‌های هر صفحه از manifest همان build در HTML preload می‌شوند و مقالهٔ
+اولیه هم هنگام انتظار کد و هم انتظار داده حفظ می‌شود. قرارداد بارگذاری، پیام
+رفرش دستی و نگه‌داری محدود نسخه‌های فایل در [بارگذاری صفحه](page-loading.md)
+مرجع اجرای جاری‌اند.
+
 Nginx gateway Home و صفحات detail را به Django می‌فرستد و indexهای حذف‌شده را
 پیش از fallback به SPA redirect می‌کند. viewهای
 `hawatch.modules.catalog.seo_pages` از دیتابیس runtime می‌خوانند و در HTML اولیه
@@ -41,13 +47,14 @@ Nginx gateway Home و صفحات detail را به Django می‌فرستد و in
 - اگر ForecastRecord واقعی در runtime وجود داشته باشد، نزدیک‌ترین دما و وضعیت نیز در fallback اولیهٔ همان صفحه می‌آید؛ در نبود داده هیچ مقدار حدسی نوشته نمی‌شود.
 
 همان HTML برای crawler و کاربر عادی ارسال می‌شود؛ تشخیص bot یا user-agent وجود
-ندارد. سپس bundle فعلی React از `/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
-را بدون تغییر ادامه می‌دهد. در detail نقطه/مسیر، مقالهٔ اولیه تا دریافت موفق
-دادهٔ هوا حفظ می‌شود (شرح رفتار شکست در انتهای همین سند). Home در هر دو لایه دقیقاً یک `h1` دارد. Vite مسیرهای entry CSS/JS را پایدار (`hawatch.css`
-و `hawatch.js`) می‌سازد تا Django به hashهای build وابسته نباشد؛ chunkهای داخلی
-همچنان hashدار هستند. چون نام این دو entry پایدار است، web Nginx آن‌ها را با
-`Cache-Control: no-store, no-cache, must-revalidate, max-age=0` پاسخ می‌دهد: browser و CDN
-نباید نسخهٔ قبلی را نگه دارند و navigation بعدی فایل تازه را می‌گیرد.
+ندارد. سپس bundle فعلی React از
+`/static-assets/<frontend-hash>/assets/hawatch.js` اجرا می‌شود و تجربهٔ SPA
+را ادامه می‌دهد. مقالهٔ اولیه هنگام انتظار کد و داده حفظ می‌شود؛ پس از دریافت
+موفق داده فقط محتوای React باقی می‌ماند. Home در هر دو لایه دقیقاً یک `h1`
+دارد. Vite نام entryهای `hawatch.css` و `hawatch.js` را داخل namespace نسخه‌دار
+پایدار نگه می‌دارد؛ chunkهای داخلی نیز hash دارند. همهٔ این URLهای نسخه‌دار
+یک سال immutable هستند. manifest همان نسخه مسیر فایل‌های preload هر صفحه را
+به Django می‌دهد؛ فایل‌های چند انتشار اخیر نیز با سقف مشخص باقی می‌مانند.
 
 این یک SSR کامل React نیست: Django فقط shell معنایی اولیه و head را render
 می‌کند. مزیت آن این است که دادهٔ اولیه مستقیم از منبع حقیقت runtime می‌آید و
@@ -158,8 +165,10 @@ Sitemap فقط Home، `/destinations`، `/routes`، Pointهای فعال و inde
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 
-`X-Robots-Tag` نیز با meta robots هم‌راستاست. پاسخ‌های HTML با
-`Cache-Control: no-cache` برمی‌گردند تا تغییرات کاتالوگ با revalidation دیده شوند.
+`X-Robots-Tag` نیز با meta robots هم‌راستاست. HTML کانونیکالِ بدون query با
+`public, max-age=60, s-maxage=300, stale-while-revalidate=60` و نسخه‌های queryدار
+یا پاسخ خطا با `no-cache` برمی‌گردند. تغییرات کاتالوگ پس از پایان این پنجره یا
+revalidation دیده می‌شوند؛ کش queryدار نباید HTML کانونیکال را آلوده کند.
 در Route تمیز، تاریخ/بازه/سرعت/ساعت پیش‌فرض فقط در state React قرار می‌گیرند و
 به URL نوشته نمی‌شوند؛ با اولین تغییر واقعی کاربر query به URL اضافه و صفحه
 `noindex,follow` می‌شود. canonical در هر دو حالت بدون query می‌ماند و React با
@@ -177,26 +186,26 @@ Sitemap فقط Home، `/destinations`، `/routes`، Pointهای فعال و inde
 
 اگر CDN یا reverse proxy بیرونی جلوی gateway قرار دارد، این قواعد را اعمال کنید:
 
-- `/`، `/destinations`، `/routes`، `/points/*` و `/routes/*` را cache نکنید (`Cache-Control: no-cache` را
-  عبور دهید) و query string را در cache key نگه ندارید؛ canonical خود HTML بدون
-  query است اما queryها باید `noindex,follow` بمانند.
+- برای `/`، `/destinations`، `/routes`، `/points/*` و `/routes/*` هدر origin را
+  رعایت کنید؛ HTML کانونیکال فقط کش کوتاه بالا دارد. نسخه‌های queryدار را
+  bypass کنید یا با cache key مستقل و revalidation پاسخ دهید؛ query و URL تمیز
+  نباید یک ورودی cache داشته باشند چون robots آن‌ها متفاوت است.
 - redirectهای دقیق `/points` و `/points/` را در CDN به‌صورت یک 301 مستقیم به
   `https://hawatch.ir/` عبور دهید و `/routes` را به gateway/Django SSR بسپارید.
 - `/admin/*` و `/api/*` خصوصی/پویا هستند و نباید در cache عمومی ذخیره شوند؛ هدر
   `Cache-Control: private, no-store` را برای Admin حفظ کنید.
-- chunkهای hashدارِ `/assets/chunks/*` و فونت/برند versioned را می‌توان با
-  `public, max-age=31536000, immutable` cache کرد. دو entry پایدار
-  `/assets/hawatch.css` و `/assets/hawatch.js` نباید immutable یا با TTL بلند
-  cache شوند؛ header origin آن‌ها باید عبور کند. پس از deploy این تغییر، یک‌بار
-  cache قدیمی همین دو URL را در CDN purge کنید تا clientهای cache‌شده فوراً
-  نسخهٔ جدید را بگیرند.
+- فایل‌های `/static-assets/<frontend-hash>/*` و
+  `/static-public/<public-hash>/*` با `public, max-age=31536000, immutable`
+  کش می‌شوند. برای URLهای بدون نسخهٔ `/assets/hawatch.css` و
+  `/assets/hawatch.js` همان no-store مبدأ را نگه دارید؛ HTML عمومی فعلی از
+  مسیرهای نسخه‌دار استفاده می‌کند و به purge عمومی assets نیاز ندارد.
 - `/robots.txt` و `/api/v1/seo/robots.txt` را اصلاً cache نکنید. هدر
   `Cache-Control: no-store, no-cache, must-revalidate, max-age=0` مبدأ باید
   عبور کند؛ قانون cache خودکار برای پسوند `.txt` نباید آن را override کند.
 - `/sitemap.xml` عمومی و پویاست؛ cache کوتاه (حداکثر چند دقیقه) یا revalidation
   فعال بگذارید و آدرس کامل sitemap را نگه دارید.
 
-gateway فعلی cache داخلی ندارد و هدر no-cache Django را عبور می‌دهد؛ این قواعد
+gateway فعلی cache داخلی ندارد و هدرهای cache Django را عبور می‌دهد؛ این قواعد
 برای CDN بیرونیِ production است و به deploy یا تغییر catalog وابسته نیست.
 
 ## بررسی محلی پس از build

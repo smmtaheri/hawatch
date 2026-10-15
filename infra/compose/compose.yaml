@@ -47,6 +47,7 @@ services:
       HAWATCH_INGEST_SCHEDULE: ${HAWATCH_INGEST_SCHEDULE:-00:00,06:00,12:00,18:00}
       REDIS_URL: redis://redis:6379/0
       HAWATCH_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}
+      HAWATCH_FRONTEND_ASSETS_ROOT: /var/lib/hawatch-frontend
       DEMO_DATA_ENABLED: ${DEMO_DATA_ENABLED:-true}
       DEMO_SEED_VERSION: ${DEMO_SEED_VERSION:-hawatch-demo-v1}
       HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: ${HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY:-true}
@@ -70,6 +71,7 @@ services:
       - ../../apps/api:/app
       - hawatch_staticfiles:/app/staticfiles
       - hawatch_logs:/var/log/hawatch
+      - hawatch_frontend_assets:/var/lib/hawatch-frontend:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -155,6 +157,8 @@ services:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api/v1}
         VITE_GA4_MEASUREMENT_ID: ${GA4_MEASUREMENT_ID:-}
         VITE_PUBLIC_SITE_ORIGIN: ${HAWATCH_PUBLIC_ORIGIN:-https://hawatch.ir}
+    volumes:
+      - hawatch_frontend_assets:/var/lib/hawatch-frontend
     ports:
       - "${WEB_BIND_ADDRESS:-127.0.0.1}:${WEB_PUBLISH_PORT:-5173}:5173"
     depends_on:
@@ -421,6 +425,7 @@ services:
 volumes:
   hawatch_pgdata:
   hawatch_staticfiles:
+  hawatch_frontend_assets:
   hawatch_logs:
   hawatch_opensearch:
   hawatch_vector_data:

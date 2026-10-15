@@ -1,9 +1,12 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from "react";
+import { lazy, useEffect, useLayoutEffect, useRef } from "react";
 import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
-import { LoadingState } from "../components/LoadingState";
+import { NotFoundPage } from "../pages/NotFoundPage";
 import { RoutePageViewTracker } from "./RoutePageViewTracker";
+import { PageLoadingBoundary } from "./PageLoadingBoundary";
+import { prepareForecastPage } from "../api/weekForecast";
+import { startPageLoad } from "../lib/pageLoad";
 
 const DestinationsPage = lazy(() =>
   import("../features/destinations/DestinationsPage").then((module) => ({
@@ -18,17 +21,9 @@ const RoutesPage = lazy(() =>
 const LoginPage = lazy(() =>
   import("../pages/LoginPage").then((module) => ({ default: module.LoginPage })),
 );
-const PointDetailPage = lazy(() =>
-  import("../pages/PointDetailPage").then((module) => ({
-    default: module.PointDetailPage,
-  })),
-);
-const RoutePage = lazy(() =>
-  import("../pages/RoutePage").then((module) => ({ default: module.RoutePage })),
-);
-const NotFoundPage = lazy(() =>
-  import("../pages/NotFoundPage").then((module) => ({
-    default: module.NotFoundPage,
+const WeekForecastPage = lazy(() =>
+  import("../features/week/WeekForecastPage").then((module) => ({
+    default: module.WeekForecastPage,
   })),
 );
 const SubscriptionPlansPage = lazy(() =>
@@ -49,6 +44,8 @@ export function AppRoutes() {
   const location = useLocation();
   const trackedNavigationRef = useRef<string | null>(null);
   useLayoutEffect(() => {
+    startPageLoad(location.pathname);
+    prepareForecastPage(location.pathname);
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);
 
@@ -64,7 +61,7 @@ export function AppRoutes() {
   return (
     <>
       <RoutePageViewTracker />
-      <Suspense fallback={<LoadingState label="در حال آماده‌سازی صفحه…" />}>
+      <PageLoadingBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
@@ -77,11 +74,11 @@ export function AppRoutes() {
           <Route path="/routes/page/:page/" element={<RoutesPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/account/plans" element={<SubscriptionPlansPage />} />
-          <Route path="/routes/:slug" element={<RoutePage />} />
-          <Route path="/points/:slug" element={<PointDetailPage />} />
+          <Route path="/routes/:slug" element={<WeekForecastPage key={location.pathname} kind="route" />} />
+          <Route path="/points/:slug" element={<WeekForecastPage key={location.pathname} kind="point" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </Suspense>
+      </PageLoadingBoundary>
 
     </>
   );
