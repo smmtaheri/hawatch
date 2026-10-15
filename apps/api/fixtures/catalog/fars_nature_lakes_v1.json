@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-fars-nature-lakes-v1",
+  "catalog_version": "hawatch-fars-nature-lakes-v2",
   "primary_point": "bostanak-canyon",
   "weather_points": {
     "bostanak-canyon": {
@@ -19,7 +19,7 @@
         "Behesht-e Gomshodeh",
         "Lost Paradise"
       ],
-      "identity_summary": "تنگ بستانک یا بهشت گمشده در کامفیروزِ مرودشت، دره‌ای جنگلی و گردشگری است. مختصات از نشانگر OSM گرفته شده؛ چون ارتفاع Mapcarta با DEM هواشناسی اختلاف دارد، ارتفاع forecast از GLO-90 ثبت شده و با GPX آبشار اصلی بازبینی می‌شود.",
+      "identity_summary": "تنگ بستانک یا بهشت گمشده در کامفیروزِ مرودشت، دره‌ای جنگلی و گردشگری است. برای نمایش هوای بازدید از تنگ، مختصات نماینده روی آبشار اصلی قرار گرفته تا با مقصد مسیر پیادهٔ پارکینگ تا آبشار هم‌خوان باشد.",
       "importance": "primary",
       "kind": "primary",
       "seo_indexable": true,
@@ -30,14 +30,15 @@
         "https://visitiran.ir/attraction/behesht-e-gomshodeh-bostanak-canyon",
         "https://www.karnaval.ir/things-to-do/tang-e-bostanak-marvdasht",
         "https://www.wikiloc.com/hiking-trails/bhsht-gmshdh-tng-bstnkh-403-9-29-behesht-gomshodeh-waterfall-at-shiraz-195255459",
-        "https://api.open-meteo.com/v1/elevation?latitude=30.33784&longitude=52.16077",
+        "https://afracamp.ir/%D8%AA%D9%86%DA%AF-%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%DA%A9/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.331077&longitude=52.147526",
         "https://open-meteo.com/en/docs"
       ],
-      "latitude": 30.33784,
-      "longitude": 52.16077,
-      "elevation_m": 1788,
+      "latitude": 30.331077,
+      "longitude": 52.147526,
+      "elevation_m": 1859,
       "status": "provisional",
-      "elevation_source": "ارتفاع ۱۷۸۸ متر، مقدار DEM سرویس Open-Meteo GLO-90 در مختصات نمایندهٔ جاذبهٔ OSM؛ مقدار ۲۱۳۳ متری Mapcarta با DEM در همین مختصات سازگار نیست، بنابراین برای forecast از DEM مختصات استفاده شده است.",
+      "elevation_source": "ارتفاع ۱۸۵۹ متر از Open-Meteo GLO-90 در مختصات آبشار اصلی؛ مقدار خام GPX حدود ۱۸۱۸ متر فقط مرجع مکانی است و جای DEM را نمی‌گیرد.",
       "climate": "forest_fog",
       "seo": {
         "title": "آب‌وهوای تنگ بستانک؛ دما، باد و بارش | هواچ",
@@ -45,6 +46,60 @@
         "content": "تنگ بستانک یا بهشت گمشده در کامفیروزِ مرودشت، دره‌ای جنگلی با رودخانه و آبشارهای طبیعی است. برای برنامه‌ریزی بازدید، پیش‌بینی آب‌وهوای همین نقطه را ببینید."
       },
       "routes": {}
+    },
+    "bostanak-trailhead": {
+      "name": "پارکینگ تنگ بستانک",
+      "page_name": "پارکینگ تنگ بستانک",
+      "short_label": "پارکینگ",
+      "place_type": "parking",
+      "category_key": "landmark",
+      "category": "مسیر تنگ بستانک",
+      "region": "کامفیروز · مرودشت · استان فارس",
+      "aliases": ["پارکینگ بهشت گمشده", "ورودی پیادهٔ تنگ بستانک"],
+      "identity_summary": "پارکینگ و مبدأ بخش پیادهٔ مسیر گردشگری تا آبشار اصلی تنگ بستانک.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/bhsht-gmshdh-tng-bstnkh-403-9-29-behesht-gomshodeh-waterfall-at-shiraz-195255459",
+        "https://www.karnaval.ir/things-to-do/tang-e-bostanak-marvdasht",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.334515&longitude=52.156474",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.334515,
+      "longitude": 52.156474,
+      "elevation_m": 1811,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint پارکینگ در ترک پیاده؛ ارتفاع ۱۸۱۱ متر از Open-Meteo GLO-90، ارتفاع خام GPX فقط مرجع است.",
+      "climate": "forest_fog"
+    },
+    "bostanak-bridge": {
+      "name": "پل تنگ بستانک",
+      "page_name": "پل تنگ بستانک در مسیر آبشار",
+      "short_label": "پل تنگ",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "مسیر تنگ بستانک",
+      "region": "کامفیروز · مرودشت · استان فارس",
+      "aliases": ["پل ورودی تنگ بستانک", "پل فلزی بهشت گمشده"],
+      "identity_summary": "پل عبور گردشگران در ابتدای مسیر پیادهٔ تنگ بستانک؛ جایگاه آن با waypoint تصویردار و ترک پیوسته تطبیق داده شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/bhsht-gmshdh-tng-bstnkh-403-9-29-behesht-gomshodeh-waterfall-at-shiraz-195255459",
+        "https://afracamp.ir/%D8%AA%D9%86%DA%AF-%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%DA%A9/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.332329&longitude=52.153578",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.332329,
+      "longitude": 52.153578,
+      "elevation_m": 1812,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint تصویردار روی پل ابتدای پیمایش؛ ارتفاع ۱۸۱۲ متر از Open-Meteo GLO-90، ارتفاع خام GPX فقط مرجع است.",
+      "climate": "forest_fog"
     },
     "maharloo-lake": {
       "name": "دریاچهٔ مهارلو",
@@ -171,7 +226,37 @@
       "routes": {}
     }
   },
-  "routes": {},
+  "routes": {
+    "main_waterfall_walk": {
+      "slug": "bostanak-waterfall-walk",
+      "title": "پارکینگ تا آبشار تنگ بستانک",
+      "subtitle": "پیاده‌روی آسان کنار رودخانه تا آبشار اصلی",
+      "trail_label": "مسیر آبشار اصلی",
+      "origin": "پارکینگ تنگ بستانک",
+      "target_label": "آبشار اصلی تنگ بستانک",
+      "region": "کامفیروز · مرودشت · فارس",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["bostanak-trailhead", "bostanak-bridge", "bostanak-canyon"],
+      "distance_km": 1.8,
+      "one_way_minutes": 40,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-easy-walk-report-v1",
+        "version": "bostanak-waterfall-walk-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 15,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/bhsht-gmshdh-tng-bstnkh-403-9-29-behesht-gomshodeh-waterfall-at-shiraz-195255459",
+          "https://www.karnaval.ir/things-to-do/tang-e-bostanak-marvdasht",
+          "https://afracamp.ir/%D8%AA%D9%86%DA%AF-%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%DA%A9/"
+        ],
+        "evidence_tracks": ["tracks/bostanak-canyon/bostanak-canyon-kamfiruz-to-waterfall-2024.gpx"],
+        "cumulative_minutes": {"bostanak-trailhead": 0, "bostanak-bridge": 10, "bostanak-canyon": 40}
+      },
+      "public_point_notes": {}
+    }
+  },
   "shared_weather_points": [],
   "point": {
     "slug": "bostanak-canyon",
@@ -181,9 +266,9 @@
     "category": "طبیعت فارس",
     "category_key": "gorge",
     "region": "کامفیروز · مرودشت · استان فارس",
-    "latitude": 30.33784,
-    "longitude": 52.16077,
-    "elevation_m": 1788,
+    "latitude": 30.331077,
+    "longitude": 52.147526,
+    "elevation_m": 1859,
     "image": "/images/home-scene.png",
     "image_alt": "نمای طبیعت تنگ بستانک در استان فارس",
     "climate": "forest_fog",
