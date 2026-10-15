@@ -1,0 +1,83 @@
+{
+  "catalog_version": "hawatch-tang-boraq-v1",
+  "primary_point": "tang-boraq",
+  "weather_points": {
+    "tang-boraq": {
+      "name": "تنگهٔ براق",
+      "page_name": "تنگهٔ براق",
+      "short_label": "تنگ براق",
+      "place_type": "valley",
+      "category_key": "gorge",
+      "category": "تنگه‌ها و دره‌های فارس",
+      "region": "سده · اقلید · استان فارس",
+      "aliases": [
+        "تنگ براق",
+        "درهٔ براق",
+        "تنگه براق اقلید",
+        "آبشار تنگ براق",
+        "آبشار تنگه براق",
+        "Tang-e Boraq",
+        "Tange Boraq",
+        "Tang-e Borāq",
+        "Boraq Gorge"
+      ],
+      "identity_summary": "تنگهٔ براق در نزدیکی روستای تنگ براق، بخش سدهٔ شهرستان اقلید در فارس؛ مختصات این صفحه نشانگر آبشار درون تنگه است و مرکز روستا یا کل پهنهٔ دره را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3094304511",
+        "https://visitiran.ir/en/attraction/Tang-e-Boraq-%28Boraq-Gorge%29",
+        "https://irantripadviser.ir/attraction.php?id=62",
+        "https://saten.ir/396556/",
+        "https://www.wikiloc.com/walking-trails/tngh-brq-khtybh-w-gr-w-abshr-11-frwrdyn-1403-165626378",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.6289018&longitude=52.0545612",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.6289018,
+      "longitude": 52.0545612,
+      "elevation_m": 2046,
+      "status": "provisional",
+      "elevation_source": "مختصات از گرهٔ طبیعی آبشار تنگ براق در OpenStreetMap (node 3094304511)؛ ارتفاع ۲۰۴۶ متر خروجی DEM سرویس Open-Meteo GLO-90 در همین مختصات است، نه برداشت میدانی یا ارتفاع خام ترک.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای تنگهٔ براق اقلید؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تنگهٔ براق در شهرستان اقلید فارس؛ دما، باد و بارش را برای برنامه‌ریزی بازدید بررسی کنید.",
+        "content": "تنگهٔ براق در نزدیکی روستای تنگ براق و در مسیر رود کر قرار دارد. نقطهٔ پیش‌بینی این صفحه نشانگر آبشار داخل تنگه است؛ شرایط بخش‌های سنگی و خیس دره می‌تواند با این نقطه تفاوت داشته باشد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "tang-boraq",
+    "tile_name": "تنگهٔ براق",
+    "name": "تنگهٔ براق",
+    "short_category": "تنگه",
+    "category": "تنگه‌ها و دره‌های فارس",
+    "category_key": "gorge",
+    "region": "سده · اقلید · استان فارس",
+    "latitude": 30.6289018,
+    "longitude": 52.0545612,
+    "elevation_m": 2046,
+    "image": "/images/home-scene.png",
+    "image_alt": "تنگهٔ براق و آبشار آن در شهرستان اقلید فارس",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تنگ براق",
+      "درهٔ براق",
+      "تنگه براق اقلید",
+      "آبشار تنگ براق",
+      "آبشار تنگه براق",
+      "Tang-e Boraq",
+      "Tange Boraq",
+      "Tang-e Borāq",
+      "Boraq Gorge"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "catalog_version": "hawatch-margoon-waterfall-v1",
+  "primary_point": "margoon-waterfall",
+  "weather_points": {
+    "margoon-waterfall": {
+      "name": "آبشار مارگون",
+      "page_name": "آبشار مارگون",
+      "short_label": "مارگون",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای فارس",
+      "region": "کمهر · سپیدان · استان فارس",
+      "aliases": [
+        "مارگون",
+        "آبشار مارگون فارس",
+        "آبشار مارگون سپیدان",
+        "آبشار مارگون شیراز",
+        "Margoon Waterfall",
+        "Margun Waterfall",
+        "Margoon Falls"
+      ],
+      "identity_summary": "آبشار مارگون در بخش کمهر شهرستان سپیدانِ فارس، نزدیک روستای مارگون؛ این نقطه خود آبشار را نمایندگی می‌کند، نه شهر مارگون در استان کهگیلویه و بویراحمد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/2491972685",
+        "https://visitiran.ir/attraction/margoun-waterfall",
+        "https://www.saadatrent.com/mag/iran/shiraz-margoon-waterfall/",
+        "https://untamediran.com/fa/margoon-waterfall",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.4915347&longitude=51.8941921",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.4915347,
+      "longitude": 51.8941921,
+      "elevation_m": 2179,
+      "status": "provisional",
+      "elevation_source": "مختصات از گرهٔ آبشار مارگون در OpenStreetMap (node 2491972685)؛ ارتفاع ۲۱۷۹ متر خروجی DEM سرویس Open-Meteo GLO-90 در همین مختصات است و با ارتفاع حدود ۲۲۰۰ متر در منبع گردشگری Visit Iran هم‌خوانی دارد.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار مارگون؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار مارگون در سپیدان فارس؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید.",
+        "content": "آبشار چشمه‌ای مارگون در ارتفاعات زاگرس و شهرستان سپیدان قرار دارد. از پارکینگ تا آبشار پیاده‌روی کوتاه سنگ‌فرش‌شده و پله‌دار است؛ سنگ‌های خیس اطراف آبشار لغزنده‌اند."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "margoon-waterfall",
+    "tile_name": "آبشار مارگون",
+    "name": "آبشار مارگون",
+    "short_category": "آبشار",
+    "category": "آبشارهای فارس",
+    "category_key": "waterfall",
+    "region": "کمهر · سپیدان · استان فارس",
+    "latitude": 30.4915347,
+    "longitude": 51.8941921,
+    "elevation_m": 2179,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار مارگون در شهرستان سپیدان فارس",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مارگون",
+      "آبشار مارگون فارس",
+      "آبشار مارگون سپیدان",
+      "آبشار مارگون شیراز",
+      "Margoon Waterfall",
+      "Margun Waterfall",
+      "Margoon Falls"
+    ]
+  }
+}
