@@ -1,0 +1,203 @@
+{
+  "catalog_version": "hawatch-fars-nature-lakes-v1",
+  "primary_point": "bostanak-canyon",
+  "weather_points": {
+    "bostanak-canyon": {
+      "name": "تنگ بستانک",
+      "page_name": "تنگ بستانک",
+      "short_label": "تنگ بستانک",
+      "place_type": "valley",
+      "category_key": "gorge",
+      "category": "طبیعت فارس",
+      "region": "کامفیروز · مرودشت · استان فارس",
+      "aliases": [
+        "تنگه بستانک",
+        "تنگ بستانک کامفیروز",
+        "بهشت گمشده",
+        "بهشت گمشده فارس",
+        "Bostanak Canyon",
+        "Behesht-e Gomshodeh",
+        "Lost Paradise"
+      ],
+      "identity_summary": "تنگ بستانک یا بهشت گمشده در کامفیروزِ مرودشت، دره‌ای جنگلی و گردشگری است. مختصات از نشانگر OSM گرفته شده؛ چون ارتفاع Mapcarta با DEM هواشناسی اختلاف دارد، ارتفاع forecast از GLO-90 ثبت شده و با GPX آبشار اصلی بازبینی می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4344297372",
+        "https://mapcarta.com/26152926",
+        "https://visitiran.ir/attraction/behesht-e-gomshodeh-bostanak-canyon",
+        "https://www.karnaval.ir/things-to-do/tang-e-bostanak-marvdasht",
+        "https://www.wikiloc.com/hiking-trails/bhsht-gmshdh-tng-bstnkh-403-9-29-behesht-gomshodeh-waterfall-at-shiraz-195255459",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.33784&longitude=52.16077",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.33784,
+      "longitude": 52.16077,
+      "elevation_m": 1788,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۷۸۸ متر، مقدار DEM سرویس Open-Meteo GLO-90 در مختصات نمایندهٔ جاذبهٔ OSM؛ مقدار ۲۱۳۳ متری Mapcarta با DEM در همین مختصات سازگار نیست، بنابراین برای forecast از DEM مختصات استفاده شده است.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای تنگ بستانک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تنگ بستانک، معروف به بهشت گمشده، در کامفیروز فارس؛ دما، باد و بارش را پیش از بازدید بررسی کنید.",
+        "content": "تنگ بستانک یا بهشت گمشده در کامفیروزِ مرودشت، دره‌ای جنگلی با رودخانه و آبشارهای طبیعی است. برای برنامه‌ریزی بازدید، پیش‌بینی آب‌وهوای همین نقطه را ببینید."
+      },
+      "routes": {}
+    },
+    "maharloo-lake": {
+      "name": "دریاچهٔ مهارلو",
+      "page_name": "دریاچهٔ مهارلو",
+      "short_label": "مهارلو",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه‌های فارس",
+      "region": "جنوب‌شرق شیراز · استان فارس",
+      "aliases": [
+        "دریاچه مهارلو",
+        "دریاچه مهلو",
+        "دریاچهٔ صورتی مهارلو",
+        "دریاچه مهارلو شیراز",
+        "Maharloo Lake",
+        "Maharlu Lake"
+      ],
+      "identity_summary": "دریاچهٔ شور و فصلی مهارلو در جنوب‌شرق شیراز قرار دارد. مختصات نماینده از مدخل جغرافیایی iDAI گرفته شده است؛ به‌دلیل نوسان فصلی پهنهٔ آب، این صفحه نقطهٔ نمایندهٔ خود دریاچه است، نه یک ساحل ثابت.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://gazetteer.dainst.org/doc/2750000.html",
+        "https://visitiran.ir/attraction/maharloo-lake",
+        "https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Earth_from_Space_Maharloo_Lake",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.499392&longitude=52.696361",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.499392,
+      "longitude": 52.696361,
+      "elevation_m": 1463,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۴۶۳ متر از DEM سرویس Open-Meteo GLO-90 در مختصات ثبت‌شدهٔ iDAI؛ با برآورد حدود ۱۴۰۰ متر در منبع ماهواره‌ای ESA هم‌خوان است.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ مهارلو؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ فصلی و شور مهارلو در جنوب‌شرق شیراز؛ دما، باد و بارش را برای بازدید بررسی کنید.",
+        "content": "دریاچهٔ مهارلو پهنه‌ای شور و فصلی در جنوب‌شرق شیراز است؛ میزان آب و رنگ آن با فصل تغییر می‌کند. این صفحه پیش‌بینی هوا را برای نقطهٔ نمایندهٔ دریاچه نشان می‌دهد."
+      },
+      "routes": {}
+    },
+    "barm-firuz-lake": {
+      "name": "دریاچهٔ برم فیروز",
+      "page_name": "دریاچهٔ برم فیروز",
+      "short_label": "برم فیروز",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه‌های فارس",
+      "region": "شکرک · سپیدان · استان فارس",
+      "aliases": [
+        "برم فیروز",
+        "دریاچه برم فیروز",
+        "دریاچه برم فیروزه",
+        "دریاچهٔ برم فیروز سپیدان",
+        "Barm Firuz Lake",
+        "Barm Firooz Lake"
+      ],
+      "identity_summary": "دریاچهٔ فصلی برم فیروز در ارتفاعات سپیدان و جنوب‌غرب قلهٔ ریزبلند قرار دارد. این صفحه خود دریاچه را نمایندگی می‌کند و با صفحهٔ مستقل قلهٔ برم فیروز یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/27253096",
+        "https://visitiran.ir/en/destination/Sepidan",
+        "https://www.wikiloc.com/hiking-trails/drychh-brm-fyrwz-spydn-z-msyr-rhdrkhnh-shkhrkh-17-frwrdyn-404-lake-barm-firuz-207878681",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.378907&longitude=51.941997",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.378907,
+      "longitude": 51.941997,
+      "elevation_m": 3329,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۳۲۹ متر از DEM سرویس Open-Meteo GLO-90 در مختصات دریاچه؛ منبع جغرافیایی Mapcarta حدود ۳۳۳۱ متر و گزارش‌های منطقه حدود ۳۳۵۰ متر ذکر می‌کنند.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ برم فیروز؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ فصلی برم فیروز در ارتفاعات سپیدان فارس؛ دما، باد و بارش را پیش از پیمایش بررسی کنید.",
+        "content": "دریاچهٔ فصلی برم فیروز در ارتفاعات سپیدان، نزدیک پیست پولادکف و جنوب‌غرب قلهٔ ریزبلند قرار دارد. آب دریاچه با ذوب برف تغییر می‌کند؛ پیش از حرکت، وضعیت هوا و فصل را بررسی کنید."
+      },
+      "routes": {}
+    },
+    "barm-firuz-peak": {
+      "name": "قلهٔ برم فیروز",
+      "page_name": "قلهٔ برم فیروز",
+      "short_label": "قلهٔ برم فیروز",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های فارس",
+      "region": "شکرک · سپیدان · استان فارس",
+      "aliases": [
+        "قله برم فیروز",
+        "کوه برم فیروز",
+        "قلهٔ ریزبلند",
+        "قله ریزبلند",
+        "ریزبلند سپیدان",
+        "Rizboland Peak",
+        "Barm Firuz Peak"
+      ],
+      "identity_summary": "قلهٔ برم فیروز با نام محلی ریزبلند، در شمال دریاچهٔ برم فیروز در سپیدان است. نقطهٔ هواشناسی روی یال نزدیک قله و حدود ۴۰۰ متر جنوب‌شرق مختصات گزارش باشگاه ردپا قرار دارد؛ ارتفاع بر پایهٔ DEM همان نقطه ثبت شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12483750",
+        "https://radepagroup.com/26386/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%B5%D8%B9%D9%88%D8%AF-%D8%B2%D9%85%D8%B3%D8%AA%D8%A7%D9%86%D9%87-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%85-%D9%81%DB%8C/",
+        "https://biapin.com/blog/barm-firooz/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.3942&longitude=51.9490",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.3942,
+      "longitude": 51.949,
+      "elevation_m": 3632,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۶۳۲ متر از DEM سرویس Open-Meteo GLO-90 در مختصات نمایندهٔ یال نزدیک قله؛ گزارش‌های میدانی و گردشگری برای خود قله حدود ۳۷۲۰ متر ثبت کرده‌اند. این نقطه برای forecast است و مختصات دقیق قله در منبع باشگاه ثبت شده است.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ برم فیروز؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ برم فیروز، معروف به ریزبلند، در سپیدان فارس؛ دما، باد و بارش ارتفاعات را بررسی کنید.",
+        "content": "قلهٔ ریزبلند در سپیدان میان کوهنوردان با نام قلهٔ برم فیروز شناخته می‌شود و در شمال دریاچهٔ برم فیروز قرار دارد. مسیر قله مرتفع و دشوارتر از بازدید دریاچه است؛ شرایط فصل و تجهیزات را پیش از صعود بررسی کنید."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "bostanak-canyon",
+    "tile_name": "تنگ بستانک",
+    "name": "تنگ بستانک",
+    "short_category": "تنگه",
+    "category": "طبیعت فارس",
+    "category_key": "gorge",
+    "region": "کامفیروز · مرودشت · استان فارس",
+    "latitude": 30.33784,
+    "longitude": 52.16077,
+    "elevation_m": 1788,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت تنگ بستانک در استان فارس",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تنگه بستانک",
+      "تنگ بستانک کامفیروز",
+      "بهشت گمشده",
+      "بهشت گمشده فارس",
+      "Bostanak Canyon",
+      "Behesht-e Gomshodeh",
+      "Lost Paradise"
+    ]
+  }
+}
