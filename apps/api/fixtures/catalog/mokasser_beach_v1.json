@@ -1,0 +1,75 @@
+{
+  "catalog_version": "hawatch-mokasser-beach-v1",
+  "primary_point": "mokasser-beach",
+  "weather_points": {
+    "mokasser-beach": {
+      "name": "ساحل مکسر",
+      "page_name": "ساحل مکسر",
+      "short_label": "مکسر",
+      "place_type": "beach",
+      "category_key": "beach",
+      "category": "سواحل هرمزگان",
+      "region": "جادهٔ ساحلی مقام–بستانو · بخش شیبکوه · بندر لنگه · هرمزگان",
+      "aliases": [
+        "مکسر",
+        "ساحل مکسر هرمزگان",
+        "ساحل مکسر بندر مقام",
+        "ساحل صخره‌ای مقام",
+        "Mokasser Beach",
+        "Mokasar Beach"
+      ],
+      "identity_summary": "ساحل صخره‌ای مکسر در محور ساحلی مقام–بستانو؛ نقطهٔ پیش‌بینی در مرکز ثبت‌شدهٔ ساحل قرار دارد و نمایندهٔ همهٔ خط ساحلی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://qeshmoff.com/blog/%D8%B3%D8%A7%D8%AD%D9%84-%D9%85%DA%A9%D8%B3%D8%B1-%D9%82%D8%B4%D9%85",
+        "https://irantripadviser.ir/attraction.php?id=251",
+        "https://www.openstreetmap.org/way/1343526800",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.9948706&longitude=53.3942566",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.9948706,
+      "longitude": 53.3942566,
+      "elevation_m": 3,
+      "status": "provisional",
+      "elevation_source": "مرکز عارضهٔ ساحل مکسر از OSM way 1343526800؛ ارتفاع ۳ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای ساحل مکسر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ساحل صخره‌ای مکسر در غرب هرمزگان؛ دما، باد و بارش را پیش از رفتن به ساحل ببینید.",
+        "content": "ساحل مکسر در جادهٔ ساحلی مقام–بستانو و نزدیک بندر مقام قرار دارد. این صفحه پیش‌بینی نقطه‌ای برای مرکز ثبت‌شدهٔ ساحل می‌دهد؛ شرایط موج و دریا را جداگانه بررسی کنید."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "mokasser-beach",
+    "tile_name": "ساحل مکسر",
+    "name": "ساحل مکسر",
+    "short_category": "ساحل صخره‌ای",
+    "category": "سواحل هرمزگان",
+    "category_key": "beach",
+    "region": "مقام–بستانو · بندر لنگه · هرمزگان",
+    "latitude": 26.9948706,
+    "longitude": 53.3942566,
+    "elevation_m": 3,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل صخره‌ای مکسر در هرمزگان",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "مکسر",
+      "ساحل مکسر هرمزگان",
+      "ساحل مکسر بندر مقام",
+      "ساحل صخره‌ای مقام",
+      "Mokasser Beach",
+      "Mokasar Beach"
+    ]
+  }
+}
