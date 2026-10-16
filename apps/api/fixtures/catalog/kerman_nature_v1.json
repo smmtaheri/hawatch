@@ -1,0 +1,158 @@
+{
+  "catalog_version": "hawatch-kerman-nature-v1",
+  "primary_point": "meymand-shahrbabak",
+  "weather_points": {
+    "meymand-shahrbabak": {
+      "name": "میمند شهربابک",
+      "page_name": "روستای صخره‌ای میمند شهربابک",
+      "short_label": "میمند",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاها و میراث فرهنگی کرمان",
+      "region": "شهربابک · استان کرمان",
+      "aliases": [
+        "میمند",
+        "میمند کرمان",
+        "روستای میمند کرمان",
+        "روستای صخره‌ای میمند",
+        "میمند شهربابک",
+        "Maymand Cultural Landscape",
+        "Meymand Village"
+      ],
+      "identity_summary": "روستای صخره‌ای میمند در شهرستان شهربابک، کرمان؛ این نقطه نمایندهٔ بافت روستا است و مرز گسترده‌تر منظر فرهنگی میمند را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://whc.unesco.org/en/list/1423/",
+        "https://www.openstreetmap.org/node/3804901374",
+        "https://untamediran.com/fa/meymand",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.230678&longitude=55.3761969",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.230678,
+      "longitude": 55.3761969,
+      "elevation_m": 2224,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ روستای صخره‌ای از گرهٔ OpenStreetMap؛ ارتفاع ۲۲۲۴ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای میمند شهربابک؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای صخره‌ای میمند در شهربابک کرمان؛ وضعیت دما، باد و بارش برای برنامه‌ریزی بازدید از این منظر فرهنگی ثبت‌شده در یونسکو.",
+        "content": "میمند شهربابک روستایی در جنوب استان کرمان است که خانه‌های زمستانی آن در دل سنگ نرم کنده شده‌اند. منظر فرهنگی میمند شیوهٔ زندگی و جابه‌جایی فصلی جامعهٔ محلی را دربر می‌گیرد؛ این صفحه پیش‌بینی نقطه‌ایِ بافت روستا را نشان می‌دهد، نه تمام پهنهٔ میراث جهانی را."
+      },
+      "routes": {}
+    },
+    "rageh-canyon": {
+      "name": "دره راگه رفسنجان",
+      "page_name": "درهٔ راگه رفسنجان",
+      "short_label": "دره راگه",
+      "place_type": "valley",
+      "category_key": "valley",
+      "category": "دره‌های طبیعی کرمان",
+      "region": "جنوب‌شرقی رفسنجان · استان کرمان",
+      "aliases": [
+        "دره راگه",
+        "درهٔ راگه",
+        "تنگه راگه",
+        "دره راگه رفسنجان",
+        "Rageh Canyon",
+        "Rageh Valley"
+      ],
+      "identity_summary": "نشانگر نقشهٔ درهٔ راگه در جنوب‌شرقی رفسنجان؛ این نقطه نمایندهٔ جاذبه است و مرز طولانی دره را مشخص نمی‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/7177426988",
+        "https://www.bia-kerman.ir/%D8%AF%D8%B1%D9%87-%D8%B1%D8%A7%DA%AF%D9%87-%D8%B1%D9%81%D8%B3%D9%86%D8%AC%D8%A7%D9%86/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.2013643&longitude=56.1527573",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.2013643,
+      "longitude": 56.1527573,
+      "elevation_m": 1811,
+      "status": "provisional",
+      "elevation_source": "نشانگر گردشگری درهٔ راگه از OpenStreetMap؛ ارتفاع ۱۸۱۱ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای درهٔ راگه رفسنجان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای درهٔ راگه در جنوب‌شرقی رفسنجان، کرمان؛ وضعیت دما، باد و بارش برای برنامه‌ریزی بازدید از این درهٔ فرسایشی.",
+        "content": "درهٔ راگه از جاذبه‌های طبیعی نزدیک رفسنجان است. پیمایش بستر دره در منابع محلی نیازمند آمادگی و عبور از آب توصیف شده و در روزهای بارانی یا توفانی ایمن نیست؛ این صفحه فقط پیش‌بینی نقطه‌ایِ نشانگر دره را ارائه می‌کند و جایگزین راهنمای محلی یا بررسی شرایط مسیر نیست."
+      },
+      "routes": {}
+    },
+    "keshit-waterfall": {
+      "name": "آبشار کشیت",
+      "page_name": "آبشار کشیت و درهٔ کشیت",
+      "short_label": "آبشار کشیت",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارها و دره‌های کرمان",
+      "region": "دهستان کشیت · گلباف · استان کرمان",
+      "aliases": [
+        "دره کشیت",
+        "درهٔ کشیت",
+        "دره و آبشار کشیت",
+        "آبشار کشیت گلباف",
+        "Keshit Waterfall",
+        "Keshit Canyon"
+      ],
+      "identity_summary": "آبشار کشیت در درهٔ نخلستانی کشیت، در بخش گلباف استان کرمان؛ مختصات نشانگر خود آبشار است و کل درهٔ سه‌کیلومتری را پوشش نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/4031635814",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%DA%A9%D8%B4%DB%8C%D8%AA-%DA%AF%D9%84%D8%A8%D8%A7%D9%81/",
+        "https://www.asianewsiran.com/fa/newsagency/34971/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%DA%A9%D8%B4%DB%8C%D8%AA-%DA%A9%D8%B1%D9%85%D8%A7%D9%86-%D9%84%D9%88%D8%AA",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.8476434&longitude=58.1158017",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.8476434,
+      "longitude": 58.1158017,
+      "elevation_m": 500,
+      "status": "provisional",
+      "elevation_source": "گرهٔ آبشار کشیت از OpenStreetMap؛ ارتفاع ۵۰۰ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای آبشار کشیت؛ پیش‌بینی دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار کشیت و درهٔ نخلستانی آن در گلباف کرمان؛ وضعیت دما، باد و بارش برای برنامه‌ریزی بازدید.",
+        "content": "آبشار کشیت در دره‌ای سرسبز در حاشیهٔ کویر لوت قرار دارد؛ نخلستان‌ها و آبشارهای کوچک و بزرگ در این درهٔ حدوداً سه‌کیلومتری به آبشار اصلی و حوضچهٔ عمیق آن می‌رسند. دربارهٔ شنا و پیمایش بستر دره احتیاط کنید؛ عمق حوضچه مشخص نیست و منابع محلی از خطر آن گفته‌اند. این صفحه پیش‌بینی آب‌وهوای نقطهٔ آبشار را نشان می‌دهد، نه تمام مسیر دره."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "shared_weather_points": [],
+  "point": {
+    "slug": "meymand-shahrbabak",
+    "tile_name": "میمند",
+    "name": "میمند شهربابک",
+    "short_category": "روستا",
+    "category": "روستاها و میراث فرهنگی کرمان",
+    "category_key": "village",
+    "region": "شهربابک · استان کرمان",
+    "elevation_m": 2224,
+    "latitude": 30.230678,
+    "longitude": 55.3761969,
+    "image": "/images/home-scene.png",
+    "image_alt": "خانه‌های صخره‌ای روستای میمند شهربابک در استان کرمان",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "میمند",
+      "میمند کرمان",
+      "روستای میمند کرمان",
+      "روستای صخره‌ای میمند",
+      "میمند شهربابک",
+      "Maymand Cultural Landscape",
+      "Meymand Village"
+    ]
+  }
+}

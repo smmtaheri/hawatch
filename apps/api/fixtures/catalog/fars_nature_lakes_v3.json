@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-fars-nature-lakes-v2",
+  "catalog_version": "hawatch-fars-nature-lakes-v3",
   "primary_point": "bostanak-canyon",
   "weather_points": {
     "bostanak-canyon": {
@@ -222,6 +222,131 @@
         "title": "آب‌وهوای قلهٔ برم فیروز؛ دما، باد و بارش | هواچ",
         "description": "پیش‌بینی آب‌وهوای قلهٔ برم فیروز، معروف به ریزبلند، در سپیدان فارس؛ دما، باد و بارش ارتفاعات را بررسی کنید.",
         "content": "قلهٔ ریزبلند در سپیدان میان کوهنوردان با نام قلهٔ برم فیروز شناخته می‌شود و در شمال دریاچهٔ برم فیروز قرار دارد. مسیر قله مرتفع و دشوارتر از بازدید دریاچه است؛ شرایط فصل و تجهیزات را پیش از صعود بررسی کنید."
+      },
+      "routes": {}
+    },
+    "bakhtegan-lake": {
+      "name": "دریاچهٔ بختگان",
+      "page_name": "دریاچهٔ بختگان",
+      "short_label": "بختگان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "category": "دریاچه‌های فارس",
+      "region": "نی‌ریز · استان فارس",
+      "aliases": [
+        "دریاچه بختگان",
+        "دریاچهٔ بختگان فارس",
+        "بختگان فارس",
+        "تالاب بختگان",
+        "Bakhtegan Lake",
+        "Daryacheh-ye Bakhtegan"
+      ],
+      "identity_summary": "دریاچهٔ شور بختگان در شرق فارس، نزدیک نی‌ریز است. مختصات این صفحه نقطه‌ای نماینده از پهنهٔ دریاچه است؛ گستره و میزان آب آن با بارش و ورودی رود کر تغییر می‌کند و با تالاب‌های کمجان و دریاچهٔ تَشک یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q383841",
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8139",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR39RIS.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.3654&longitude=53.8385",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.3654,
+      "longitude": 53.8385,
+      "elevation_m": 1558,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 در مختصات ثبت‌شده ارتفاع ۱۵۵۸ متر می‌دهد (بررسی ۲۰۲۶-۱۰-۱۵)؛ اختلاف آن با میانگین ارتفاع دریاچه‌ها در برگهٔ KBA کمتر از ۱۰۰ متر است.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ بختگان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ شور و فصلی بختگان در نزدیکی نی‌ریز فارس؛ دما، باد و بارش را پیش از بازدید بررسی کنید.",
+        "content": "دریاچهٔ بختگان از پهنه‌های مهم آبی شرق فارس است و وسعت آب آن با میزان بارش و ورودی رود کر تغییر می‌کند. این صفحه پیش‌بینی نقطه‌ای نماینده از دریاچه را نشان می‌دهد، نه شرایط ثابت همهٔ ساحل‌ها."
+      },
+      "routes": {}
+    },
+    "dasht-arjan": {
+      "name": "دشت ارژن",
+      "page_name": "دشت ارژن",
+      "short_label": "دشت ارژن",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌ها و دریاچه‌های فارس",
+      "region": "غرب شیراز · استان فارس",
+      "aliases": [
+        "دشت ارژان",
+        "دریاچهٔ دشت ارژن",
+        "دریاچه دشت ارژن",
+        "تالاب دشت ارژن",
+        "Dasht-e Arjan",
+        "Dasht-e Arzhan",
+        "Arjan Lake"
+      ],
+      "identity_summary": "دشت ارژن در غرب شیراز، پهنه‌ای طبیعی با دریاچه و تالاب آب‌شیرین کم‌عمق و فصلی است. مختصات هواشناسی روی عارضهٔ دریاچه‌ای این دشت قرار دارد و با روستای دشت ارژن یا دریاچهٔ پریشان یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8136",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR37RIS.pdf",
+        "https://www.mindat.org/feature-68641.html",
+        "https://www.wiwo.org/iranreport2009.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.61215&longitude=51.97702",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.61215,
+      "longitude": 51.97702,
+      "elevation_m": 1991,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 در مختصات عارضهٔ دریاچه‌ای ارتفاع ۱۹۹۱ متر می‌دهد (بررسی ۲۰۲۶-۱۰-۱۵)؛ با ارتفاع حدود ۲۰۰۰ متر ثبت‌شده برای تالاب دشت ارژن در KBA هم‌خوان است.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای دشت ارژن؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دشت ارژن در غرب شیراز؛ وضعیت دما، باد و بارش پهنهٔ طبیعی و دریاچهٔ فصلی آن را ببینید.",
+        "content": "دشت ارژن از پهنه‌های طبیعی مهم غرب شیراز است و دریاچهٔ کم‌عمق و تالاب آن با بارش و فصل تغییر می‌کند. نقطهٔ این صفحه نمایندهٔ تالاب دشت است و وضعیت همهٔ نقاط پیرامونی را یکسان نشان نمی‌دهد."
+      },
+      "routes": {}
+    },
+    "kamjan-wetland": {
+      "name": "تالاب کمجان",
+      "page_name": "تالاب کمجان",
+      "short_label": "تالاب کمجان",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های فارس",
+      "region": "پایین‌دست رود کر · استان فارس",
+      "aliases": [
+        "کمجان",
+        "تالاب‌های کمجان",
+        "تالاب کمجان فارس",
+        "کامجان",
+        "Kamjan Marshes",
+        "Kamjan Wetland"
+      ],
+      "identity_summary": "تالاب‌های کمجان در دشت سیلابی پایین‌دست رود کر در فارس و در غرب مجموعهٔ بختگان و تشک قرار دارند. این صفحه نقطه‌ای نماینده از پهنهٔ تالاب است؛ بخش‌هایی از آن با زهکشی کشاورزی تغییر کرده و گستره و آب‌گرفتگی فصلی متغیر است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8139",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR39RIS.pdf",
+        "https://www.ramsar.org/sites/default/files/2023-08/sitelist.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.6667&longitude=53.0833",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.6667,
+      "longitude": 53.0833,
+      "elevation_m": 1569,
+      "status": "provisional",
+      "elevation_source": "مختصات ۲۹°۴۰′ شمالی و ۵۳°۰۵′ شرقی از برگهٔ KBA برای تالاب‌های کمجان؛ Open-Meteo GLO-90 در این نقطه ارتفاع ۱۵۶۹ متر می‌دهد (بررسی ۲۰۲۶-۱۰-۱۵).",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای تالاب کمجان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب‌های کمجان در دشت سیلابی رود کر، استان فارس؛ دما، باد و بارش را پیش از بازدید ببینید.",
+        "content": "تالاب‌های کمجان از پهنه‌های ارزشمند تالابی فارس و بخشی از مجموعهٔ بختگان و تشک هستند. آب‌گرفتگی و گسترهٔ تالاب با فصل و شرایط آب تغییر می‌کند؛ این صفحه پیش‌بینی یک نقطهٔ نماینده را نمایش می‌دهد."
       },
       "routes": {}
     }

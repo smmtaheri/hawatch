@@ -1,0 +1,74 @@
+{
+  "catalog_version": "hawatch-rayen-waterfall-v1",
+  "primary_point": "rayen-waterfall",
+  "weather_points": {
+    "rayen-waterfall": {
+      "name": "آبشار راین",
+      "page_name": "آب‌وهوای آبشار راین",
+      "short_label": "آبشار راین",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای کرمان",
+      "region": "دامنهٔ کوه هزار · راین · کرمان",
+      "aliases": [
+        "آبشار راین کرمان",
+        "آبشار زررود",
+        "آبشار زر رود",
+        "آبشار زررود راین",
+        "Rayen Waterfall",
+        "Zar Rood Waterfall"
+      ],
+      "identity_summary": "آبشار راین یا زررود در دامنهٔ کوه هزار، حدود ۱۴ کیلومتری جنوب‌غرب شهر راین در استان کرمان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4394080207",
+        "https://www.openstreetmap.org/node/4394080207",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B1%D8%A7%DB%8C%D9%86%D8%8C-%D8%B1%D8%A7%DB%8C%D9%86/",
+        "https://blog.rahbal.com/rayen-waterfall/",
+        "https://www.bia-kerman.ir/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B1%D8%A7%DB%8C%D9%86/",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.55015&longitude=57.29811"
+      ],
+      "latitude": 29.55015,
+      "longitude": 57.29811,
+      "elevation_m": 2872,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ آبشار از گرهٔ طبیعی OpenStreetMap و Mapcarta؛ ارتفاع ۲۸۷۲ متر از Open-Meteo GLO-90 DEM در مختصات canonical.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار راین کرمان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار راین (زررود) در دامنهٔ کوه هزار، کرمان؛ وضعیت دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "rayen-waterfall",
+    "tile_name": "آبشار راین",
+    "name": "آبشار راین",
+    "short_category": "آبشار",
+    "category": "آبشارهای کرمان",
+    "category_key": "waterfall",
+    "region": "دامنهٔ کوه هزار · راین · کرمان",
+    "elevation_m": 2872,
+    "latitude": 29.55015,
+    "longitude": 57.29811,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار راین در دامنهٔ کوه هزار، استان کرمان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار راین کرمان",
+      "آبشار زررود",
+      "آبشار زر رود",
+      "آبشار زررود راین",
+      "Rayen Waterfall",
+      "Zar Rood Waterfall"
+    ]
+  }
+}
