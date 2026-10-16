@@ -97,7 +97,10 @@ SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 ## محیط Stage
 
 استیج پیش‌بینی هفته روی برنچ `stage` مستقل از production است و از فرمان محلی
-`bash scripts/deploy-stage-hawatch` استفاده می‌کند. دیتابیس و Redis استیج مستقل‌اند؛
+`deploy-stage-hawatch` استفاده می‌کند. پس از نصب با
+`bash scripts/install-stage-commands.sh`، فرمان دیپلوی و
+`stage-hawatch up|down|status` از هر فولدر و برنچ کار می‌کنند؛ down فقط سرویس‌های
+استیج را متوقف می‌کند و دیتابیس را نگه می‌دارد. دیتابیس و Redis استیج مستقل‌اند؛
 دادهٔ واقعی عمومی در اولین راه‌اندازی با export فقط‌خواندنی کپی می‌شود.
 راهنمای اجرا از سیستم محلی در [docs/stage-deployment.md](docs/stage-deployment.md)
 و قرارداد هفته/کش/تجهیزات در [docs/week-forecast.md](docs/week-forecast.md) است.

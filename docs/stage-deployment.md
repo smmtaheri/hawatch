@@ -5,30 +5,47 @@
 
 ## فرمان‌ها از سیستم محلی
 
-از worktree استیج که تغییرات در آن commit و push شده‌اند:
+فرمان‌های سراسری، مستقل از فولدر و برنچ فعلی:
 
 ```bash
-cd /home/nobitex/Desktop/Tasks/Nobitex/hawatch-stage
-bash scripts/deploy-stage-hawatch
+deploy-stage-hawatch        # انتشار آخرین کامیت‌های ورک‌تری اختصاصی stage
+stage-hawatch status        # وضعیت و سلامت؛ فقط‌خواندنی
+stage-hawatch down          # خاموش‌کردن بدون حذف دیتابیس/کانتینرها
+stage-hawatch up            # روشن‌کردن همان نسخهٔ قبلی، بدون build یا ingest
 ```
 
-برای نصب نام فرمان دلخواه، یک‌بار روی سیستم محلی:
+برای نصب/به‌روزرسانی فرمان‌ها، یک‌بار روی سیستم محلی:
 
 ```bash
-cd /home/nobitex/Desktop/Tasks/Nobitex/hawatch-stage
-install -Dm755 scripts/deploy-stage-hawatch "$HOME/.local/bin/deploy-stage-hawatch"
-"$HOME/.local/bin/deploy-stage-hawatch"
+bash /home/nobitex/Desktop/Tasks/Nobitex/hawatch-stage/scripts/install-stage-commands.sh
 ```
 
-پیش‌فرض اتصال SSH همان alias موجود `hawatch` است. اگر لازم باشد از محلی تغییرش دهید:
+نصاب symlinkهای `~/.local/bin` را به اسکریپت‌های ورک‌تری `hawatch-stage` وصل
+می‌کند؛ مسیر بر اساس خود فایل resolve می‌شود، نه cwd. فولدر جاری می‌تواند خانه،
+پروژهٔ دیگری یا ورک‌تری مین روی هر برنچی باشد. هیچ checkout/switch/reset روی
+برنچ جاری انجام نمی‌شود؛ دیپلوی همیشه فقط از ورک‌تری تمیزِ برنچ `stage` است.
+فایل غیر-symlink یا فرمان متعلق به مخزن دیگری overwrite نمی‌شود.
+
+فرمان `stage-hawatch deploy` هم همان دیپلوی است؛ `stage-hawatch` بدون آرگومان
+وضعیت را نشان می‌دهد. پیش‌فرض اتصال SSH همان alias موجود `hawatch` است:
 
 ```bash
-HAWATCH_SSH_HOST=root@SERVER_IP bash scripts/deploy-stage-hawatch
+HAWATCH_SSH_HOST=root@SERVER_IP stage-hawatch status
 ```
 
 wrapper فقط شاخهٔ تمیز `stage` را push می‌کند؛ روی سرور checkout استیج را
 fast-forward می‌کند، تنظیمات مستقل را می‌سازد و تصاویر را پیش از جایگزینی سرویس
 می‌سازد. مراحل بعدی در SSH انجام می‌شوند؛ نیازی به اجرای دستی فرمان روی سرور نیست.
+
+بعد از پایان موفق، [صفحهٔ توچال استیج](http://202.133.89.120:5050/points/tochal)
+را باز کنید. برای تغییر کد حتماً deploy لازم است؛ `up` فقط کانتینرهای موجود را
+با همان image و volume قبلی روشن می‌کند. اگر هنوز دیپلوی اولیه انجام نشده، `up`
+با پیام «ابتدا deploy-stage-hawatch» متوقف می‌شود و چیزی خودکار ساخته نمی‌شود.
+
+`status` یکی از `UP`، `DOWN`، `PARTIAL`، `UNHEALTHY` یا `NOT DEPLOYED` و جدول شش
+سرویس/health/image را چاپ می‌کند. `UP` تنها با سلامت سرویس‌ها و پاسخ وب/API اعلام
+می‌شود؛ خطای SSH/Docker به‌جای DOWN، خطا برمی‌گرداند. مشاهدهٔ وضعیت حتی هنگام
+دیپلوی فقط‌خواندنی است. deploy/up/down یک قفل مشترک دارند تا هم‌زمان اجرا نشوند.
 
 ## داده و سرویس‌ها
 
@@ -65,8 +82,12 @@ python3 scripts/check-week-cache.py --base-url http://SERVER_IP:5050
 نیز بررسی شود. فقط header Cache-Control اثبات HIT نیست. تغییر تنظیمات CDN در این
 milestone اجرا نشده است.
 
-فرمان `scripts/stage-down.sh` قدیمی cleanupِ volume انجام می‌دهد؛ برای استیج دارای
-دیتابیس مستقل از آن استفاده نکنید مگر عمداً حذف دادهٔ استیج را خواسته باشید.
+فرمان `stage-hawatch down` فقط کانتینرهای پروژهٔ `hawatch-stage` را متوقف می‌کند؛
+هیچ volume، image، شبکه، داده یا فایل تنظیماتی حذف نمی‌شود. helper مستقیم سرور
+`scripts/stage-down.sh` نیز به همین کنترل‌کنندهٔ واحد وصل است و دیگر cleanup
+تخریبی ندارد. jobهای one-off هدف روشن/خاموش‌کردن نیستند. در این کار، خود فرمان
+up/down/deploy روی سرور اجرا نشده؛ فقط status واقعی و سناریوهای شبیه‌سازی‌شده
+بررسی شده‌اند.
 
 ## بررسی کمینه/بیشینه و شاخص‌های جدید
 

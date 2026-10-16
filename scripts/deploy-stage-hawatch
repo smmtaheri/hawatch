@@ -3,15 +3,20 @@ set -Eeuo pipefail
 
 # Push and deploy only the optional stage checkout. Production is never pulled,
 # rebuilt, restarted, or otherwise touched by this command.
-LOCAL_DIR="${HAWATCH_LOCAL_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || true)}"
+SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+LOCAL_DIR="${HAWATCH_STAGE_CHECKOUT:-$(dirname "$SCRIPT_DIR")}"
 SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
 STAGE_DIR="${HAWATCH_STAGE_DIR:-/root/hawatch-stage}"
 STAGE_ENV="${HAWATCH_STAGE_ENV_FILE:-/root/hawatch-stage.env}"
 LEGACY_STAGE_DIR="${HAWATCH_LEGACY_STAGE_DIR:-/root/hawatch-new-design}"
 
 fail() { printf '[deploy-stage-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
-[[ -n "$LOCAL_DIR" ]] || fail "Run from a Hawatch checkout or set HAWATCH_LOCAL_DIR."
-[[ "$(git -C "$LOCAL_DIR" branch --show-current)" == stage ]] || fail "Run deploy-stage-hawatch from the local stage branch."
+if [[ "${1:-}" == --help || "${1:-}" == -h ]]; then
+  printf 'Usage: deploy-stage-hawatch\nDeploys only the dedicated stage checkout, from any current directory/branch.\n'
+  exit 0
+fi
+[[ $# == 0 ]] || fail 'Usage: deploy-stage-hawatch'
+[[ "$(git -C "$LOCAL_DIR" branch --show-current)" == stage ]] || fail "The dedicated stage checkout must be on stage; set HAWATCH_STAGE_CHECKOUT. Your current directory/branch is never switched."
 [[ "$(git -C "$LOCAL_DIR" remote get-url origin 2>/dev/null || true)" == git@github.com:smmtaheri/hawatch.git ]] || fail "Unexpected Git remote; refusing to deploy."
 [[ "$SSH_HOST" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ && "$SSH_HOST" != -* ]] || fail "Invalid SSH target."
 for path in "$LOCAL_DIR" "$STAGE_DIR" "$STAGE_ENV" "$LEGACY_STAGE_DIR"; do
@@ -28,6 +33,9 @@ set -Eeuo pipefail
 stage_dir="$1"; stage_env="$2"; legacy_stage_dir="$3"
 fail_remote() { printf '[deploy-stage-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
 expected_remote='git@github.com:smmtaheri/hawatch.git'
+# Share the lifecycle lock with up/down, but never lock a read-only status.
+exec 9>"${stage_env}.lock"
+flock -n 9 || fail_remote 'Another stage deploy/up/down is running.'
 
 remove_project() {
   local project="$1" ids reference

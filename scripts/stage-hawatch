@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+# Global entry point: resolve our installed symlink, never the caller's cwd.
+SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+ACTION="${1:-status}"
+fail() { printf '[stage-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
+[[ $# -le 1 ]] || fail 'Usage: stage-hawatch [deploy|up|down|status]'
+case "$ACTION" in
+  -h|--help|help)
+    printf 'Usage: stage-hawatch [deploy|up|down|status]\nup/down preserve the deployed version, containers and database.\n'
+    exit 0 ;;
+  deploy) exec bash "$SCRIPT_DIR/deploy-stage-hawatch" ;;
+  up|down|status) ;;
+  *) fail 'Usage: stage-hawatch [deploy|up|down|status]' ;;
+esac
+SSH_HOST="${HAWATCH_SSH_HOST:-hawatch}"
+STAGE_ENV="${HAWATCH_STAGE_ENV_FILE:-/root/hawatch-stage.env}"
+[[ "$SSH_HOST" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ && "$SSH_HOST" != -* ]] || fail 'Invalid SSH target.'
+[[ "$STAGE_ENV" =~ ^/[A-Za-z0-9._/-]+$ && "$STAGE_ENV" != /root/hawatch/.env ]] || fail 'Invalid stage environment path.'
+ssh "$SSH_HOST" bash -s -- "$ACTION" "$STAGE_ENV" < "$SCRIPT_DIR/control-stage.sh"

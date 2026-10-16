@@ -239,6 +239,10 @@ ssh hawatch 'cd /root/hawatch && docker compose --env-file .env -f infra/compose
 می‌کند. دریافت دوره‌ای پیش‌فرض هر ۶ ساعت ادامه دارد. تغییر هوا در CDN cache
 نمی‌شود؛ قوانین پنل CDN باید هدرهای no-store/private را رعایت کنند.
 
+برای خاموش/روشن‌کردن عادی استیج، از `stage-hawatch down` و `stage-hawatch up`
+استفاده کنید؛ `stage-hawatch status` وضعیت را نشان می‌دهد. این فرمان‌های سراسری
+داده را حذف نمی‌کنند؛ نصب و توضیح در [stage-deployment.md](stage-deployment.md).
+
 حذف کامل سرویس‌ها و دادهٔ مستقل استیج (از لوکال؛ این دستور دیتابیس استیج را
 حذف می‌کند و پروداکشن را دست نمی‌زند):
 
