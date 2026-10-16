@@ -1,0 +1,78 @@
+{
+  "catalog_version": "hawatch-benood-beach-v1",
+  "primary_point": "benood-beach",
+  "weather_points": {
+    "benood-beach": {
+      "name": "ساحل بنود",
+      "page_name": "ساحل بنود عسلویه",
+      "short_label": "ساحل بنود",
+      "place_type": "beach",
+      "category_key": "beach",
+      "category": "سواحل بوشهر",
+      "region": "بنود · چاه مبارک · عسلویه · بوشهر",
+      "aliases": [
+        "ساحل بنود",
+        "ساحل و غار بنود",
+        "ساحل بنود عسلویه",
+        "چشم دریا بنود",
+        "Sahel-e Bonood",
+        "Bonood Beach",
+        "Benood Beach"
+      ],
+      "identity_summary": "ساحل بنود در شهرستان عسلویه، استان بوشهر؛ مختصات صفحه نمایندهٔ پهنهٔ ساحل ثبت‌شده در نقشه است و با نقطهٔ غار ساحلی بنود یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/way/1342738485",
+        "https://mapcarta.com/N6354840185",
+        "https://lastsecond.ir/blog/7184-bonud-village",
+        "https://www.wikiloc.com/hiking-trails/shl-bnwd-bonood-coast-98602641",
+        "https://api.open-meteo.com/v1/elevation?latitude=27.2976312&longitude=52.6922772",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 27.2976312,
+      "longitude": 52.6922772,
+      "elevation_m": 0,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز عارضهٔ natural=beach ساحل بنود از OpenStreetMap (way 1342738485)؛ ارتفاع DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات ۰ متر است (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای ساحل بنود؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ساحل بنود در عسلویهٔ بوشهر؛ وضعیت دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "ساحل بنود در نزدیکی روستای بنود و چاه مبارک از مقصدهای ساحلی استان بوشهر است. مختصات هواچ برای خود پهنهٔ ساحل انتخاب شده است؛ مسیر جاده‌ای ناهموار و دسترسی جداگانه به غار ساحلی را پیش از بازدید بررسی کنید."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "benood-beach",
+    "tile_name": "ساحل بنود",
+    "name": "ساحل بنود",
+    "short_category": "ساحل",
+    "category": "سواحل بوشهر",
+    "category_key": "beach",
+    "region": "بنود · چاه مبارک · عسلویه · بوشهر",
+    "elevation_m": 0,
+    "latitude": 27.2976312,
+    "longitude": 52.6922772,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل خلیج فارس در بنود، استان بوشهر",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ساحل بنود",
+      "ساحل و غار بنود",
+      "ساحل بنود عسلویه",
+      "چشم دریا بنود",
+      "Sahel-e Bonood",
+      "Bonood Beach",
+      "Benood Beach"
+    ]
+  }
+}

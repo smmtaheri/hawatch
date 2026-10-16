@@ -1,0 +1,74 @@
+{
+  "catalog_version": "hawatch-nayband-marine-park-v1",
+  "primary_point": "nayband-park",
+  "weather_points": {
+    "nayband-park": {
+      "name": "پارک ملی دریایی نای‌بند",
+      "page_name": "پارک ملی دریایی نای‌بند عسلویه",
+      "short_label": "پارک نای‌بند",
+      "place_type": "landmark",
+      "category_key": "park",
+      "category": "پارک‌های طبیعی و دریایی بوشهر",
+      "region": "هاله · عسلویه · بوشهر",
+      "aliases": [
+        "پارک ملی دریایی نای بند",
+        "پارک ملی نایبند",
+        "پارک نایبند",
+        "Nayband Marine National Park",
+        "Nayband National Park"
+      ],
+      "identity_summary": "پارک ملی دریایی نای‌بند در ساحل عسلویه؛ مختصات این صفحه نقطهٔ نمایندهٔ قابل‌دسترسی از راه روستای هاله در محدودهٔ پارک است و آب‌وهوای تمام پهنهٔ بزرگ پارک را یکسان فرض نمی‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "official",
+      "source_urls": [
+        "https://visitiran.ir/fa/attraction/%D9%BE%D8%A7%D8%B1%DA%A9-%D9%85%D9%84%DB%8C-%D8%AF%D8%B1%DB%8C%D8%A7%DB%8C%DB%8C-%D9%86%D8%A7%DB%8C-%D8%A8%D9%86%D8%AF",
+        "https://nedayeasaluyeh.ir/?p=3165",
+        "https://www.openstreetmap.org/node/4611929677",
+        "https://nominatim.openstreetmap.org/ui/search.html?q=%D9%87%D8%A7%D9%84%D9%87%2C%20%D8%A8%D9%88%D8%B4%D9%87%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=27.3962455&longitude=52.6390349",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 27.3962455,
+      "longitude": 52.6390349,
+      "elevation_m": 6,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز روستای هاله از OpenStreetMap/Nominatim؛ روستا در محدودهٔ پارک ملی قرار دارد و به شبکهٔ راه متصل است. ارتفاع نماینده ۶ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶) است.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای پارک ملی دریایی نای‌بند؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارک ملی دریایی نای‌بند در عسلویه؛ وضعیت دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید.",
+        "content": "پارک ملی دریایی نای‌بند پهنه‌ای ساحلی و دریایی در جنوب بوشهر است. پیش‌بینی این صفحه برای نقطهٔ نمایندهٔ قابل‌دسترسی در محدودهٔ روستای هاله ارائه می‌شود و ممکن است با شرایط بخش‌های دیگر پارک تفاوت داشته باشد."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "nayband-park",
+    "tile_name": "پارک نای‌بند",
+    "name": "پارک ملی دریایی نای‌بند",
+    "short_category": "پارک ملی",
+    "category": "پارک‌های طبیعی و دریایی بوشهر",
+    "category_key": "park",
+    "region": "هاله · عسلویه · بوشهر",
+    "latitude": 27.3962455,
+    "longitude": 52.6390349,
+    "elevation_m": 6,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل و زیست‌بوم دریایی پارک ملی نای‌بند در عسلویه",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک ملی دریایی نای بند",
+      "پارک ملی نایبند",
+      "پارک نایبند",
+      "Nayband Marine National Park",
+      "Nayband National Park"
+    ]
+  }
+}

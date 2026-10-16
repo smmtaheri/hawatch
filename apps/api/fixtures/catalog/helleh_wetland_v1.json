@@ -1,0 +1,76 @@
+{
+  "catalog_version": "hawatch-helleh-wetland-v1",
+  "primary_point": "helleh-wetland",
+  "weather_points": {
+    "helleh-wetland": {
+      "name": "تالاب حله",
+      "page_name": "تالاب حله بوشهر",
+      "short_label": "تالاب حله",
+      "place_type": "landmark",
+      "category_key": "marsh",
+      "category": "تالاب‌های بوشهر",
+      "region": "شمال‌شرق بوشهر · استان بوشهر",
+      "aliases": [
+        "تالاب حله",
+        "منطقهٔ حفاظت‌شدهٔ حله",
+        "منطقه حفاظت شده حله",
+        "Helleh Wetland",
+        "Helleh Protected Area",
+        "Helleh va Delleh"
+      ],
+      "identity_summary": "تالاب حله در دلتای رود حله و منطقهٔ حفاظت‌شدهٔ حله در شمال‌شرق شهر بوشهر؛ مختصات این صفحه نقطهٔ نمایندهٔ محدودهٔ تالابی است، نه اسکله یا محل قطعی سوارشدن به قایق.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W438530042",
+        "https://www.openstreetmap.org/way/438530042",
+        "https://fa.tripyar.com/iran/%D8%A8%D9%88%D8%B4%D9%87%D8%B1/%D8%A8%D9%86%D8%AF%D8%B1-%DA%AF%D9%86%D8%A7%D9%88%D9%87/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%86%D8%B4%D9%85%D9%87-%D9%87%D8%A7-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%87%D8%A7/%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D8%AD%D9%84%D9%87.html",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11952117/",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.1779&longitude=50.7869",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 29.1779,
+      "longitude": 50.7869,
+      "elevation_m": 2,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز محدودهٔ حفاظت‌شدهٔ حله از OpenStreetMap/Mapcarta؛ این نقطه برای پیش‌بینی نمایندهٔ تالاب انتخاب شده و دسترسی قایقی یا محل اسکله را ادعا نمی‌کند. ارتفاع DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات ۲ متر است (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای تالاب حله؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب حله در شمال‌شرق بوشهر؛ وضعیت دما، باد و بارش برای برنامه‌ریزی بازدید و پرنده‌نگری.",
+        "content": "تالاب حله از زیست‌بوم‌های مهم ساحلی استان بوشهر و بخشی از منطقهٔ حفاظت‌شدهٔ حله است. این صفحه پیش‌بینی نقطه‌ای از محدودهٔ تالاب را نمایش می‌دهد و وضعیت همهٔ پهنهٔ حفاظت‌شده یا شرایط قایق‌سواری را یکسان فرض نمی‌کند."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "helleh-wetland",
+    "tile_name": "تالاب حله",
+    "name": "تالاب حله",
+    "short_category": "تالاب",
+    "category": "تالاب‌های بوشهر",
+    "category_key": "marsh",
+    "region": "شمال‌شرق بوشهر · استان بوشهر",
+    "elevation_m": 2,
+    "latitude": 29.1779,
+    "longitude": 50.7869,
+    "image": "/images/home-scene.png",
+    "image_alt": "زیست‌بوم تالاب حله در استان بوشهر",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "تالاب حله",
+      "منطقهٔ حفاظت‌شدهٔ حله",
+      "منطقه حفاظت شده حله",
+      "Helleh Wetland",
+      "Helleh Protected Area",
+      "Helleh va Delleh"
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "catalog_version": "hawatch-jashak-salt-dome-v1",
+  "primary_point": "jashak-salt-dome",
+  "weather_points": {
+    "jashak-salt-dome": {
+      "name": "گنبد نمکی جاشک",
+      "page_name": "گنبد نمکی جاشک",
+      "short_label": "گنبد نمکی جاشک",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "category": "کوه‌های نمکی بوشهر",
+      "region": "جاشک · کاکی · دشتی · بوشهر",
+      "aliases": [
+        "گنبد نمکی جاشک",
+        "کوه نمک جاشک",
+        "کوه نمکی جاشک",
+        "گنبد نمک جاشک",
+        "Jashak Salt Dome",
+        "Dashti Salt Dome",
+        "Kuh-e Namak Jashak"
+      ],
+      "identity_summary": "گنبد نمکی جاشک، عارضهٔ زمین‌شناختی شاخص میان شهرستان‌های دشتی و دیر در استان بوشهر؛ نقطهٔ پیش‌بینی روی قلهٔ نام‌گذاری‌شدهٔ کوه نمک قرار دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/fa/attraction/%DA%AF%D9%86%D8%A8%D8%AF-%D9%86%D9%85%DA%A9%DB%8C-%D8%AC%D8%A7%D8%B4%DA%A9",
+        "https://www.openstreetmap.org/node/2260386287",
+        "https://mapcarta.com/N4745718622",
+        "https://untamediran.com/fa/jashak-salt-dome",
+        "https://www.wikiloc.com/hiking-trails/jashak-salt-dome-gnbd-nmkhy-jshkh-95635692",
+        "https://www.wikiloc.com/hiking-trails/jashak-salt-dome-gnbd-nmkhy-jshkh-12168566",
+        "https://api.open-meteo.com/v1/elevation?latitude=28.25695&longitude=51.6975978",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 28.25695,
+      "longitude": 51.6975978,
+      "elevation_m": 1475,
+      "status": "provisional",
+      "elevation_source": "مختصات قلهٔ نام‌گذاری‌شدهٔ کوه نمک جاشک از OpenStreetMap (node 2260386287)؛ ارتفاع نمایندهٔ DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات ۱۴۷۵ متر است (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای گنبد نمکی جاشک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای گنبد نمکی جاشک در شهرستان دشتی، بوشهر؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید.",
+        "content": "گنبد نمکی جاشک از عارضه‌های زمین‌شناختی شاخص استان بوشهر است. پیش‌بینی این صفحه برای نقطهٔ قلهٔ کوه نمک ارائه می‌شود؛ مسیرهای خاکی دسترسی و شرایط پیمایش داخل گنبد را پیش از حرکت جداگانه بررسی کنید."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "jashak-salt-dome",
+    "tile_name": "گنبد نمکی جاشک",
+    "name": "گنبد نمکی جاشک",
+    "short_category": "کوه نمکی",
+    "category": "کوه‌های نمکی بوشهر",
+    "category_key": "mountain",
+    "region": "جاشک · کاکی · دشتی · بوشهر",
+    "elevation_m": 1475,
+    "latitude": 28.25695,
+    "longitude": 51.6975978,
+    "image": "/images/home-scene.png",
+    "image_alt": "گنبد نمکی جاشک در استان بوشهر",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "گنبد نمکی جاشک",
+      "کوه نمک جاشک",
+      "کوه نمکی جاشک",
+      "گنبد نمک جاشک",
+      "Jashak Salt Dome",
+      "Dashti Salt Dome",
+      "Kuh-e Namak Jashak"
+    ]
+  }
+}
