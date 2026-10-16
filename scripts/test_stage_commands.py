@@ -91,6 +91,17 @@ def test_http_failure_is_not_reported_as_up(remote):
     assert result.returncode==0 and '] UNHEALTHY —' in result.stdout
 
 
+def test_optional_docker_health_uses_missing_key_safe_template(remote):
+    populate,run,commands,*_=remote
+    populate('running')  # The scheduler intentionally has no Docker Health key.
+    result=run('status')
+    assert result.returncode==0,result.stderr
+    templates=[command[2] for command in commands() if command[0]=='inspect']
+    assert templates
+    assert all('{{with index .State "Health"}}' in template for template in templates)
+    assert all('.State.Health' not in template for template in templates)
+
+
 def test_partial_missing_or_unhealthy_services_are_not_up(remote):
     populate,run,_,state,_=remote
     data=populate('running'); del data[next(iter(data))]; state.write_text(json.dumps(data))

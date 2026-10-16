@@ -25,7 +25,7 @@ load_state() {
     [[ "$id" =~ ^[a-f0-9]{12,64}$ ]] || fail 'Unexpected container ID.'
     ids+=("$id")
   done <<< "$listing"
-  details="$(docker inspect --format '{{.Id}}|{{index .Config.Labels "com.docker.compose.project"}}|{{index .Config.Labels "com.docker.compose.service"}}|{{index .Config.Labels "com.docker.compose.oneoff"}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}|{{.Config.Image}}' "${ids[@]}")"
+  details="$(docker inspect --format '{{.Id}}|{{index .Config.Labels "com.docker.compose.project"}}|{{index .Config.Labels "com.docker.compose.service"}}|{{index .Config.Labels "com.docker.compose.oneoff"}}|{{.State.Status}}|{{with index .State "Health"}}{{.Status}}{{else}}none{{end}}|{{.Config.Image}}' "${ids[@]}")"
   while IFS='|' read -r id project service oneoff state health image; do
     [[ "$id" =~ ^[a-f0-9]{12,64}$ ]] || fail 'Unexpected inspected container ID.'
     [[ "$project" == hawatch-stage ]] || fail 'Refusing a container outside hawatch-stage.'
