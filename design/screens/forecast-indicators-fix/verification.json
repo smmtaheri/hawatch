@@ -1,0 +1,245 @@
+{
+  "data": "Synthetic API fixture on local built frontend only; no provider or production writes",
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "name": "desktop-dark-24h.png",
+      "overflow": false,
+      "actual": [
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heat": [
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heatLabels": [
+        "۴۷°",
+        "۴۶°",
+        "۴۳°",
+        "۴۳°",
+        "۴۰°",
+        "۳۸°",
+        "۳۸°",
+        "۳۶°"
+      ],
+      "uvLabels": [
+        "۶",
+        "۷",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶"
+      ]
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "name": "desktop-light-24h.png",
+      "overflow": false,
+      "actual": [
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heat": [
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heatLabels": [
+        "۴۷°",
+        "۴۶°",
+        "۴۳°",
+        "۴۳°",
+        "۴۰°",
+        "۳۸°",
+        "۳۸°",
+        "۳۶°"
+      ],
+      "uvLabels": [
+        "۶",
+        "۷",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶"
+      ]
+    },
+    {
+      "device": "desktop",
+      "step": 6,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "step": 3,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "step": 1,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "weatherGets": 1,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "name": "mobile-dark-24h.png",
+      "overflow": false,
+      "actual": [
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heat": [
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heatLabels": [
+        "۴۷°",
+        "۴۶°",
+        "۴۳°",
+        "۴۳°",
+        "۴۰°",
+        "۳۸°",
+        "۳۸°",
+        "۳۶°"
+      ],
+      "uvLabels": [
+        "۶",
+        "۷",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶"
+      ]
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "name": "mobile-light-24h.png",
+      "overflow": false,
+      "actual": [
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heat": [
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--red)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)",
+        "var(--warm)"
+      ],
+      "heatLabels": [
+        "۴۷°",
+        "۴۶°",
+        "۴۳°",
+        "۴۳°",
+        "۴۰°",
+        "۳۸°",
+        "۳۸°",
+        "۳۶°"
+      ],
+      "uvLabels": [
+        "۶",
+        "۷",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶",
+        "۶"
+      ]
+    },
+    {
+      "device": "mobile",
+      "step": 6,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "step": 3,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "step": 1,
+      "actualTemperatureRed": false,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "width": 360,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "weatherGets": 1,
+      "errors": []
+    }
+  ]
+}

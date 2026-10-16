@@ -31,7 +31,22 @@ it('appends only UV and heat rows, keeping fixed visual scales and zero distinct
  const alone=render([slot]).querySelector('[data-heat-value]')!;
  const mixed=render([slot,{...slot,heat_index_c:60}]).querySelector('[data-heat-value]')!;
  expect(alone.getAttribute('height')).toBe(mixed.getAttribute('height'));
- expect(root.querySelector('[data-metric="heat_index_c"]')?.textContent).toContain('۳۹٫۹°');
+ expect(root.querySelector('[data-metric="heat_index_c"]')?.textContent).toContain('۴۰°');
+});
+
+it('rounds UV and heat labels like temperature without rounding scales or danger thresholds',()=>{
+ const points=[{...slot,uv_index:6.4,heat_index_c:38.1},{...slot,uv_index:6.5,heat_index_c:38.5},{...slot,uv_index:2.5,heat_index_c:39.9}];
+ for(const mobileCompact of [false,true]){
+  const root=document.createElement('div');root.innerHTML=charts.rows(points,[100,220,340],440,true,false,{...layout,mobileCompact});
+  const uv=[...root.querySelectorAll('[data-metric="uv_index"] .chart-value')].map(e=>e.textContent);
+  const heat=[...root.querySelectorAll('[data-metric="heat_index_c"] .chart-value')].map(e=>e.textContent);
+  expect(uv).toEqual(['۶','۷','۳']);
+  expect(heat).toEqual(['۳۸°','۳۹°','۴۰°']);
+  expect(root.querySelector('[data-heat-value="38.1"]')).not.toBeNull();
+  expect(root.querySelector('[data-heat-value="39.9"]')?.getAttribute('fill')).toBe('var(--warm)');
+  expect(root.querySelector('[data-metric="uv_index"]')?.textContent).not.toContain('٫');
+  expect(root.querySelector('[data-metric="heat_index_c"]')?.textContent).not.toContain('٫');
+ }
 });
 
 it('explains unavailable heat, never substitutes temperature, and uses the shared critical metric',()=>{

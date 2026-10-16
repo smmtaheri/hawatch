@@ -53,7 +53,7 @@ export const charts=(()=>{
    const x=xs[i],v=p.uv_index;
    if(!Number.isFinite(v)||v<0){body+=text('—',x,41,'no-data');return;}
    const tier=v<3?0:v<6?1:v<8?2:v<11?3:4,active=v===0?0:tier+1;
-   body+=`<g><title>شاخص UV ${num(v)}؛ ${categories[tier]}</title>${text(num(v),x,41,'chart-value small')}`;
+   body+=`<g><title>شاخص UV ${whole(v)}؛ ${categories[tier]}</title>${text(whole(v),x,41,'chart-value small')}`;
    for(let n=0;n<5;n++)body+=`<circle cx="${x+(n-2)*7}" cy="57" r="2.3" fill="var(--accent)" opacity="${n<active?.9:.18}" data-uv-step="${n+1}"/>`;
    body+='</g>';
   });return wrap(body+caption('شاخص UV','','',layout),w,80,'uv_index','بیشینهٔ شاخص UV در هر روز یا بازه');
@@ -68,7 +68,7 @@ export const charts=(()=>{
    const col=p.hazards?.includes('heat_index_c')?'var(--red)':'var(--warm)';
    // Fixed scale shared by days, expanded intervals and both viewports.
    const height=Math.max(3,Math.min(43,7+(v-32)*1.5));
-   body+=`<g><title>شاخص گرما ${num(v)} درجه؛ برآورد در سایه، نه زیر آفتاب مستقیم</title>${text(num(v)+'°',x,37,'chart-value small',col)}<rect x="${x-2}" y="${68-height}" width="4" height="${height}" rx="2" fill="${col}" opacity=".85" data-heat-value="${v}"/></g>`;
+   body+=`<g><title>شاخص گرما ${whole(v)} درجه؛ برآورد در سایه، نه زیر آفتاب مستقیم</title>${text(whole(v)+'°',x,37,'chart-value small',col)}<rect x="${x-2}" y="${68-height}" width="4" height="${height}" rx="2" fill="${col}" opacity=".85" data-heat-value="${v}"/></g>`;
   });return wrap(body+caption('شاخص گرما','°C','',layout),w,80,'heat_index_c','بیشینهٔ شاخص گرما در هر روز یا بازه');
  }
  function rows(p,x,w,experts=false,exporting=false,layout={}){const max=Math.max(10,...p.flatMap(a=>[a.wind,a.gust]).filter(Number.isFinite));let h=(layout.compact?feltRange(p,x,w):'')+temperature(p,x,w,{height:layout.compact?(layout.mobileCompact?100:118):exporting?125:112,...layout})+stems(p,x,w,'wind',max,layout.compact?94:86,layout)+rain(p,x,w,layout.compact?78:70,layout);if(experts)h+=expertRows(p,x,w,layout);return h;}

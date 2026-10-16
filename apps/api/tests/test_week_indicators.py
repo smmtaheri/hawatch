@@ -1,11 +1,16 @@
 """Hourly-source interval indicators; no database/provider is needed to aggregate."""
 from datetime import date, timedelta
+import json
 from types import SimpleNamespace
 from unittest.mock import patch
+import zlib
 
 import pytest
+from django.core.cache import cache
+from django.test import override_settings
 
 from hawatch.api.v1.week_bundles import aggregate
+from hawatch.api.v1.week_views import cached_week
 from hawatch.common.time import localize_dt
 from hawatch.integrations.weather.hazards import assess, assess_records, heat_index
 
@@ -65,7 +70,9 @@ def test_heat_is_peak_of_simultaneous_hourly_inputs_not_mean_inputs():
     assert result["heat_index_status"] == "available"
     assert result["heat_index_c"] == round(heat_index(35, 60), 1)
     assert heat_index(result["actual"], result["humidity"]) is None
-    assert any(w["code"] == "heat" and w["severity"] == "critical" for w in result["warnings"])
+    warning=next(w for w in result["warnings"] if w["code"]=="heat")
+    assert warning["severity"]=="critical"
+    assert warning["metrics"]==["heat_index_c"]
 
 
 @pytest.mark.parametrize("field,bad", [("temperature_c", None), ("relative_humidity_pct", None), ("relative_humidity_pct", 101)])
@@ -99,3 +106,21 @@ def test_cached_hourly_assessments_are_reused_for_every_resolution():
     with patch("hawatch.integrations.weather.hazards.assess", side_effect=AssertionError("recomputed")):
         for hours in (24, 6, 3, 1):
             assert aggregate(rows, START, hours)["heat_index_status"] == "not_applicable"
+
+
+@pytest.mark.parametrize("kind", ["point", "route"])
+@override_settings(CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}})
+def test_old_heat_metric_binding_is_not_reused_from_week_cache(kind):
+    today=START.date()
+    previous={"warnings": [{"metrics": ["temperature_c","heat_index_c"]}]}
+    current={"last_generated_at": START.isoformat(),"warnings": [{"metrics": ["heat_index_c"]}]}
+    cache.clear()
+    try:
+        cache.set(f"week-9:fixed:{kind}:tochal:{today}", (zlib.compress(json.dumps(previous).encode()), '"old"'))
+        with patch("hawatch.api.v1.week_views.revision",return_value="fixed"), patch("hawatch.api.v1.week_views.build_week",return_value=current) as build:
+            (body,_),status=cached_week(kind,"tochal",today)
+            assert status=="MISS" and json.loads(body)==current
+            assert cached_week(kind,"tochal",today)[1]=="HIT"
+            build.assert_called_once()
+    finally:
+        cache.clear()

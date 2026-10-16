@@ -308,6 +308,27 @@ describe("approved week forecast and unchanged public pages", () => {
     expect(document.querySelector('[data-metric="actual"] [data-temperature-range]')).toHaveTextContent('۹۰°/۹۲°');
     expect(document.querySelector('[data-metric="felt-range"] [data-temperature-range]')).toHaveTextContent('−۹°/−۵°');
   });
+  it.each([390,1440])('colors only the heat index for heat danger, preserving cold warnings and rounding at every interval (%ipx)',async(width)=>{
+    Object.defineProperty(window,'innerWidth',{configurable:true,value:width});
+    const data=weekFixture('point',day);
+    for(const days of Object.values(data.intervals!))days.forEach((slots,dayIndex)=>slots.forEach(slot=>{
+      slot.actual=dayIndex===1?-30:33;slot.min=slot.actual-1;slot.max=slot.actual+1;
+      slot.heat_index_c=42.6;slot.heat_index_status='available';slot.uv_index=6.5;
+      slot.warnings=[{severity:'critical',metrics:dayIndex===1?['temperature_c','wind_chill_c']:['heat_index_c']}];
+    }));
+    fetchMock.mockImplementation((input:RequestInfo)=>String(input).endsWith('/forecast/week/')?response(data):defaultFetch(input));
+    mount('/points/tochal');await screen.findByRole('heading',{name:'آب‌وهوای قلهٔ توچال'});
+    fireEvent.click(document.querySelector('[data-v4-expert]')!);
+    for(const step of [24,6,3,1]){
+      if(step!==24)fireEvent.click(document.querySelector('[data-v4-expand="0"]')!);
+      expect(document.querySelector('[data-metric="actual"] circle[data-point]')).toHaveAttribute('fill','var(--warm)');
+      expect(document.querySelector('[data-metric="heat_index_c"] [data-heat-value]')).toHaveAttribute('fill','var(--red)');
+      expect(document.querySelector('[data-metric="heat_index_c"] .chart-value')).toHaveTextContent('۴۳°');
+      expect(document.querySelector('[data-metric="uv_index"] .chart-value')).toHaveTextContent('۷');
+    }
+    expect(document.querySelector(`[data-metric="actual"] circle[data-point="${data.days[1].date}-daily-0"]`)).toHaveAttribute('fill','var(--red)');
+    expect(weatherCalls()).toHaveLength(1);
+  });
   it('uses all hourly start options and authoritative pace plans without refetching',async()=>{
     mount('/routes/tochal-darband?date='+day+'&start_time=08:00&speed=medium');await screen.findByRole('heading',{name:'دربند تا توچال'});
     await userEvent.click(document.querySelector('[data-v4-menu]')!);expect(screen.getAllByRole('option')).toHaveLength(24);

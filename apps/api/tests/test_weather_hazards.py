@@ -66,6 +66,16 @@ def test_wind_chill_and_heat_are_independent_indices():
     assert any(w["code"] == "heat" and w["severity"] == "critical" for w in assess(row(temperature_c=35, relative_humidity_pct=60))["warnings"])
 
 
+@pytest.mark.parametrize("temperature,humidity,severity", [(30,60,"change"), (35,60,"critical")])
+def test_heat_warning_marks_only_heat_index_not_its_formula_inputs(temperature,humidity,severity):
+    risk=assess(row(temperature_c=temperature,relative_humidity_pct=humidity))
+    warning=next(w for w in risk["warnings"] if w["code"]=="heat")
+    assert warning["severity"]==severity
+    assert warning["metrics"]==["heat_index_c"]
+    cold=assess(row(temperature_c=-30,wind_speed_kmh=0))
+    assert "temperature_c" in next(w for w in cold["warnings"] if w["code"]=="cold")["metrics"]
+
+
 def test_wet_cold_requires_contiguous_two_hours():
     first=row(temperature_c=8,wind_speed_kmh=20,precipitation_mm=1)
     second=row(AT+timedelta(hours=1),temperature_c=8,wind_speed_kmh=20,precipitation_mm=1)

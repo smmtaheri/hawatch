@@ -90,8 +90,9 @@ def assess(row, records=(), *, _by_at=None):
     heat_status = ("missing" if temp is None or humidity is None or not 0 <= humidity <= 100
                    else "not_applicable" if heat is None else "available")
     if heat is not None and heat >= HEAT_LIMITS[0]:
+        # Temperature/humidity are formula inputs, not separate heat alarms.
         add("heat", "گرمای خطرناک" if heat >= HEAT_LIMITS[1] else "فشار گرما",
-            "critical" if heat >= HEAT_LIMITS[1] else "change", ["temperature_c", "relative_humidity_pct", "heat_index_c"],
+            "critical" if heat >= HEAT_LIMITS[1] else "change", ["heat_index_c"],
             "فعالیت بدنی و آفتاب خطر گرمازدگی را افزایش می‌دهند")
     code = getattr(row, "weather_code", None)
     wmo = getattr(row, "wmo_code", None)
