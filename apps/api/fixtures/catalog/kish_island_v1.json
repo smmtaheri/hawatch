@@ -1,0 +1,79 @@
+{
+  "catalog_version": "hawatch-kish-island-v1",
+  "primary_point": "kish-island",
+  "weather_points": {
+    "kish-island": {
+      "name": "جزیرهٔ کیش",
+      "page_name": "جزیرهٔ کیش",
+      "short_label": "کیش",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "شهر کیش · جزیرهٔ کیش · هرمزگان",
+      "aliases": [
+        "کیش",
+        "جزیره کیش",
+        "جزیرهٔ قیس",
+        "قِیس",
+        "Kish",
+        "Kish Island",
+        "Qeys",
+        "Qais"
+      ],
+      "identity_summary": "جزیرهٔ کیش در خلیج فارس؛ مختصات این صفحه نقطهٔ نمایندهٔ جاده‌پذیر در شهر کیش است و پیش‌بینی را نباید برای همهٔ ساحل‌های جزیره یکسان دانست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/province/hormozgan-province",
+        "https://kishrentcar.com/en/transport",
+        "https://www.openstreetmap.org/node/12461565269",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.5439032&longitude=54.0135966",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.5439032,
+      "longitude": 54.0135966,
+      "elevation_m": 19,
+      "status": "provisional",
+      "elevation_source": "مختصات نماینده از گرهٔ شهر کیش در OpenStreetMap (node 12461565269)؛ نقطه در بافت شهری جاده‌پذیر قرار دارد. ارتفاع ۱۹ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ کیش؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای کیش در نقطهٔ نمایندهٔ شهر کیش؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "کیش از مقصدهای پررفت‌وآمد گردشگری هرمزگان است و مسیرهای جاده‌ای آن دسترسی به بخش‌های مختلف جزیره را ممکن می‌کنند. این پیش‌بینی برای نقطهٔ نماینده در شهر کیش است؛ شرایط سواحل دورتر می‌تواند تفاوت داشته باشد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "kish-island",
+    "tile_name": "جزیرهٔ کیش",
+    "name": "جزیرهٔ کیش",
+    "short_category": "جزیره",
+    "category": "جزایر هرمزگان",
+    "category_key": "beach",
+    "region": "شهر کیش · هرمزگان",
+    "latitude": 26.5439032,
+    "longitude": 54.0135966,
+    "elevation_m": 19,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل جزیرهٔ کیش در خلیج فارس",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کیش",
+      "جزیره کیش",
+      "جزیرهٔ قیس",
+      "قِیس",
+      "Kish",
+      "Kish Island",
+      "Qeys",
+      "Qais"
+    ]
+  }
+}

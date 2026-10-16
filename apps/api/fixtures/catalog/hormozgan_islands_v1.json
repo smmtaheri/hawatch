@@ -1,0 +1,211 @@
+{
+  "catalog_version": "hawatch-hormozgan-islands-v1",
+  "primary_point": "hormuz-island",
+  "weather_points": {
+    "hormuz-island": {
+      "name": "جزیرهٔ هرمز",
+      "page_name": "جزیرهٔ هرمز",
+      "short_label": "هرمز",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "جزیرهٔ هرمز · شهرستان بندرعباس · هرمزگان",
+      "aliases": [
+        "هرمز",
+        "هرمزگان هرمز",
+        "جزیره هرمز",
+        "هرمز جنوبی",
+        "Hormoz",
+        "Hormuz Island",
+        "Ormus"
+      ],
+      "identity_summary": "جزیرهٔ هرمز در تنگهٔ هرمز؛ مختصات پیش‌بینی در آبادی هرمز است و وضعیت همهٔ ساحل‌های جزیره را یکسان نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/province/hormozgan-province",
+        "https://mapcarta.com/Hormuz",
+        "https://www.openstreetmap.org/node/289057413",
+        "https://api.open-meteo.com/v1/elevation?latitude=27.0955031&longitude=56.4527389",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 27.0955031,
+      "longitude": 56.4527389,
+      "elevation_m": 6,
+      "status": "provisional",
+      "elevation_source": "ارتفاع DEM مدل GLO-90 سرویس Open-Meteo برای نقطهٔ آبادی هرمز: ۶ متر (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ هرمز؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ هرمز در خلیج فارس؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "هرمز جزیره‌ای شناخته‌شده در تنگهٔ هرمز است. این پیش‌بینی برای آبادی هرمز محاسبه می‌شود و ممکن است با شرایط سواحل دیگر جزیره تفاوت داشته باشد."
+      },
+      "routes": {}
+    },
+    "hengam-island": {
+      "name": "جزیرهٔ هنگام",
+      "page_name": "جزیرهٔ هنگام",
+      "short_label": "هنگام",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "جزیرهٔ هنگام · شهرستان قشم · هرمزگان",
+      "aliases": [
+        "هنگام",
+        "جزیره هنگام",
+        "هنگام قشم",
+        "هنگام هرمزگان",
+        "هنگام نو",
+        "هنگام جدید",
+        "هنگام ماشی",
+        "Hengam",
+        "Hengam Island",
+        "Henjam",
+        "Henyam"
+      ],
+      "identity_summary": "جزیرهٔ هنگام در جنوب قشم؛ مختصات نماینده در آبادی بندر هنگام (هنگام نو/ماشی) قرار دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/attraction/Hengam-Island",
+        "https://www.getty.edu/vow/TGNFullDisplay?english=&find=&nation=&place=&subjectid=8891276",
+        "https://www.openstreetmap.org/",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.6831&longitude=55.8926",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.6831,
+      "longitude": 55.8926,
+      "elevation_m": 5,
+      "status": "provisional",
+      "elevation_source": "ارتفاع DEM مدل GLO-90 سرویس Open-Meteo برای آبادی بندر هنگام: ۵ متر (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ هنگام؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ هنگام در جنوب قشم؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "هنگام جزیره‌ای در جنوب قشم است و آبادی بندر هنگام از محل‌های اصلی رفت‌وآمد بازدیدکنندگان به جزیره به‌شمار می‌آید. پیش‌بینی این صفحه برای همین نقطهٔ نماینده است."
+      },
+      "routes": {}
+    },
+    "larak-island": {
+      "name": "جزیرهٔ لارک",
+      "page_name": "جزیرهٔ لارک",
+      "short_label": "لارک",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "جزیرهٔ لارک · شهرستان قشم · هرمزگان",
+      "aliases": [
+        "لارک",
+        "جزیره لارک",
+        "لارک هرمزگان",
+        "لارک شهری",
+        "لارک کوهی",
+        "Larak",
+        "Larak Island",
+        "Lark Island"
+      ],
+      "identity_summary": "جزیرهٔ لارک در تنگهٔ هرمز؛ مختصات نماینده در آبادی لارک‌شهری در ساحل شمال‌شرقی جزیره است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/province/hormozgan-province",
+        "https://iranicaonline.org/articles/larak-island/",
+        "https://mapcarta.com/N4458283855",
+        "https://www.openstreetmap.org/node/4458283855",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.88387&longitude=56.38733",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.88387,
+      "longitude": 56.38733,
+      "elevation_m": 8,
+      "status": "provisional",
+      "elevation_source": "ارتفاع DEM مدل GLO-90 سرویس Open-Meteo برای آبادی لارک‌شهری: ۸ متر (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ لارک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ لارک در تنگهٔ هرمز؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "لارک جزیره‌ای در تنگهٔ هرمز و در شرق قشم است. مختصات این صفحه در آبادی لارک‌شهری قرار دارد؛ شرایط نقاط دورتر جزیره می‌تواند متفاوت باشد."
+      },
+      "routes": {}
+    },
+    "lavan-island": {
+      "name": "جزیرهٔ لاوان",
+      "page_name": "جزیرهٔ لاوان",
+      "short_label": "لاوان",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "جزیرهٔ لاوان · شهرستان بندر لنگه · هرمزگان",
+      "aliases": [
+        "لاوان",
+        "جزیره لاوان",
+        "جزیرهٔ شیخ شعیب",
+        "شیخ شعیب",
+        "لاز",
+        "Lavan",
+        "Lavan Island",
+        "Sheikh Shoaib Island",
+        "Shaikh Shuaib Island"
+      ],
+      "identity_summary": "جزیرهٔ لاوان در خلیج فارس؛ مختصات نماینده در آبادی لاوان قرار دارد و پیش‌بینی، وضعیت همهٔ سواحل جزیره را یکسان نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/province/hormozgan-province",
+        "https://iranicaonline.org/articles/lavan-island/",
+        "https://mapcarta.com/12597266",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.80742&longitude=53.37411",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.80742,
+      "longitude": 53.37411,
+      "elevation_m": 5,
+      "status": "provisional",
+      "elevation_source": "ارتفاع DEM مدل GLO-90 سرویس Open-Meteo برای آبادی لاوان: ۵ متر (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ لاوان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ لاوان در خلیج فارس؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "لاوان جزیره‌ای در خلیج فارس و از جزایر هرمزگان است. این پیش‌بینی برای نقطهٔ نمایندهٔ آبادی لاوان محاسبه می‌شود و ممکن است با بخش‌های دیگر جزیره تفاوت داشته باشد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "hormuz-island",
+    "tile_name": "جزیرهٔ هرمز",
+    "name": "جزیرهٔ هرمز",
+    "short_category": "جزیره",
+    "category": "جزایر هرمزگان",
+    "category_key": "beach",
+    "region": "جزیرهٔ هرمز · هرمزگان",
+    "latitude": 27.0955031,
+    "longitude": 56.4527389,
+    "elevation_m": 6,
+    "image": "/images/home-scene.png",
+    "image_alt": "جزیرهٔ هرمز در خلیج فارس",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "هرمز",
+      "هرمزگان هرمز",
+      "جزیره هرمز",
+      "هرمز جنوبی",
+      "Hormoz",
+      "Hormuz Island",
+      "Ormus"
+    ]
+  }
+}

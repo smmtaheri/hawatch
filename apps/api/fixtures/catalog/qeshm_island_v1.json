@@ -1,0 +1,80 @@
+{
+  "catalog_version": "hawatch-qeshm-island-v1",
+  "primary_point": "qeshm-island",
+  "weather_points": {
+    "qeshm-island": {
+      "name": "جزیرهٔ قشم",
+      "page_name": "جزیرهٔ قشم",
+      "short_label": "قشم",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "شهر قشم · جزیرهٔ قشم · هرمزگان",
+      "aliases": [
+        "قشم",
+        "جزیره قشم",
+        "کیشم",
+        "قشم هرمزگان",
+        "Qeshm",
+        "Qeshm Island",
+        "Gheshm",
+        "Qishm"
+      ],
+      "identity_summary": "جزیرهٔ قشم در خلیج فارس؛ مختصات این صفحه نقطهٔ نمایندهٔ جاده‌پذیر در شهر قشم است و پیش‌بینی را نباید برای همهٔ پهنهٔ بزرگ جزیره یکسان دانست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/en/province/hormozgan-province",
+        "https://www.qeshmgeopark.ir/fa/pages/visitqeshm/getting-here",
+        "https://aminmana.com/tracks/qeshm1/",
+        "https://www.openstreetmap.org/node/5495853801",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.9501612&longitude=56.2691081",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.9501612,
+      "longitude": 56.2691081,
+      "elevation_m": 36,
+      "status": "provisional",
+      "elevation_source": "مختصات نماینده از گرهٔ شهر قشم در OpenStreetMap (node 5495853801)؛ نقطه در بافت جاده‌پذیر شهر قرار دارد. ارتفاع ۳۶ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ قشم؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قشم در نقطهٔ نمایندهٔ شهر قشم؛ دما، باد و بارش را پیش از سفر ببینید.",
+        "content": "قشم بزرگ‌ترین جزیرهٔ خلیج فارس و مقصدی شناخته‌شده با جاذبه‌های پراکنده در سراسر جزیره است. این پیش‌بینی برای نقطهٔ جاده‌پذیر شهر قشم محاسبه می‌شود؛ شرایط ساحل‌ها و نواحی دورتر جزیره ممکن است متفاوت باشد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "qeshm-island",
+    "tile_name": "جزیرهٔ قشم",
+    "name": "جزیرهٔ قشم",
+    "short_category": "جزیره",
+    "category": "جزایر هرمزگان",
+    "category_key": "beach",
+    "region": "شهر قشم · هرمزگان",
+    "latitude": 26.9501612,
+    "longitude": 56.2691081,
+    "elevation_m": 36,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل جزیرهٔ قشم در خلیج فارس",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قشم",
+      "جزیره قشم",
+      "کیشم",
+      "قشم هرمزگان",
+      "Qeshm",
+      "Qeshm Island",
+      "Gheshm",
+      "Qishm"
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "catalog_version": "hawatch-qeshm-geosites-v1",
+  "primary_point": "chahkooh-gorge",
+  "weather_points": {
+    "chahkooh-gorge": {
+      "name": "تنگهٔ چاهکوه",
+      "page_name": "تنگهٔ چاهکوه قشم",
+      "short_label": "چاهکوه",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "ژئوسایت‌های قشم",
+      "region": "چاهوی شرقی · بخش حرا · قشم · هرمزگان",
+      "aliases": [
+        "چاهکوه",
+        "درهٔ چاهکوه",
+        "دره چاهکوه قشم",
+        "تنگه چاهکوه",
+        "Chahkooh Canyon",
+        "Chah Kuh Gorge"
+      ],
+      "identity_summary": "ژئوسایت تنگهٔ چاهکوه در غرب قشم؛ نقطهٔ پیش‌بینی در ورودی و پارکینگ جاده‌پذیر بازدیدکنندگان است، نه در امتداد شکاف‌های داخلی تنگه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://qeshmgeopark.ir/fa/geosites/view/6",
+        "https://qeshmoff.com/places/chahkooh",
+        "https://www.openstreetmap.org/node/5351294024",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.6889254&longitude=55.5359199",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.6889254,
+      "longitude": 55.5359199,
+      "elevation_m": 12,
+      "status": "provisional",
+      "elevation_source": "مختصات ژئوسایت/ورودی از OSM node 5351294024؛ ارتفاع ۱۲ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای تنگهٔ چاهکوه قشم؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تنگهٔ چاهکوه در جزیرهٔ قشم؛ دما، باد و بارش را برای بازدید ببینید.",
+        "content": "تنگهٔ چاهکوه از ژئوسایت‌های شاخص قشم است. مختصات پیش‌بینی این صفحه در ورودی و پارکینگ بازدیدکنندگان قرار دارد؛ داخل تنگه و شکاف‌های آن ممکن است شرایط متفاوتی داشته باشد."
+      },
+      "routes": {}
+    },
+    "stars-valley": {
+      "name": "درهٔ ستارگان",
+      "page_name": "درهٔ ستارگان قشم",
+      "short_label": "ستارگان",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "ژئوسایت‌های قشم",
+      "region": "برکه خلف · بخش شهاب · قشم · هرمزگان",
+      "aliases": [
+        "دره ستارگان",
+        "دره ستاره ها",
+        "استاله کفته",
+        "درهٔ ستاره‌ها",
+        "Valley of Stars",
+        "Stars Valley Qeshm"
+      ],
+      "identity_summary": "ژئوسایت درهٔ ستارگان در جنوب‌شرقی قشم؛ نقطهٔ نمایندهٔ پیش‌بینی در ورودی بازدیدکنندگان و باجهٔ بلیت جاده‌پذیر است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://qeshmgeopark.ir/",
+        "https://qeshmoff.com/places/stars-valley",
+        "https://www.openstreetmap.org/node/6797004589",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.8694130&longitude=56.1294583",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.869413,
+      "longitude": 56.1294583,
+      "elevation_m": 15,
+      "status": "provisional",
+      "elevation_source": "مختصات باجهٔ ورودی درهٔ ستارگان از OSM node 6797004589؛ ارتفاع ۱۵ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای درهٔ ستارگان قشم؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای درهٔ ستارگان قشم؛ شرایط دما، باد و بارش را پیش از بازدید ببینید.",
+        "content": "درهٔ ستارگان از ژئوسایت‌های شناخته‌شدهٔ قشم است. پیش‌بینی این صفحه برای ورودی و باجهٔ بازدیدکنندگان ارائه می‌شود؛ درون دره، مسیرهای سنگ‌چین و لبه‌های مرتفع ممکن است شرایط متفاوتی داشته باشند."
+      },
+      "routes": {}
+    },
+    "hara-mangrove": {
+      "name": "جنگل حرا قشم",
+      "page_name": "جنگل حرا قشم",
+      "short_label": "جنگل حرا",
+      "place_type": "forest",
+      "category_key": "forest",
+      "category": "جنگل‌های هرمزگان",
+      "region": "اسکلهٔ سهیلی · دهستان سلخ · قشم · هرمزگان",
+      "aliases": [
+        "حرا قشم",
+        "جنگل‌های مانگرو قشم",
+        "ذخیره‌گاه زیست‌کرهٔ حرا",
+        "Hara Mangrove Forest",
+        "Qeshm Mangroves"
+      ],
+      "identity_summary": "جنگل‌های مانگروی حرا در شمال قشم؛ نقطهٔ پیش‌بینی نماینده در دسترسی جاده‌ای و محل سوارشدن قایق در سهیلی است، نه در پهنهٔ آبی جنگل.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.qeshmgeopark.ir/posts/view/332",
+        "https://qeshmoff.com/places/hara-forest",
+        "https://www.openstreetmap.org/node/5627511621",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.7803634&longitude=55.7682173",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.7803634,
+      "longitude": 55.7682173,
+      "elevation_m": 2,
+      "status": "provisional",
+      "elevation_source": "مختصات محل فروش بلیت/سوارشدن قایق حرا از OSM node 5627511621؛ ارتفاع ۲ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جنگل حرا قشم؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جنگل‌های حرا در قشم؛ باد و شرایط جوی را برای برنامه‌ریزی قایق‌سواری ببینید.",
+        "content": "جنگل‌های حرا یکی از زیستگاه‌های شاخص قشم‌اند و بازدید معمولاً با قایق از اسکله‌های محلی انجام می‌شود. مختصات پیش‌بینی این صفحه برای دسترسی و محل سوارشدن قایق در سهیلی است؛ پیش‌بینی، شرایط همهٔ آبراهه‌های جنگل را یکسان نشان نمی‌دهد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "chahkooh-gorge",
+    "tile_name": "تنگهٔ چاهکوه",
+    "name": "تنگهٔ چاهکوه",
+    "short_category": "ژئوسایت",
+    "category": "ژئوسایت‌های قشم",
+    "category_key": "landmark",
+    "region": "چاهوی شرقی · قشم · هرمزگان",
+    "latitude": 26.6889254,
+    "longitude": 55.5359199,
+    "elevation_m": 12,
+    "image": "/images/home-scene.png",
+    "image_alt": "تنگهٔ چاهکوه در جزیرهٔ قشم",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "چاهکوه",
+      "درهٔ چاهکوه",
+      "دره چاهکوه قشم",
+      "تنگه چاهکوه",
+      "Chahkooh Canyon",
+      "Chah Kuh Gorge"
+    ]
+  }
+}

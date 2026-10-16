@@ -1,0 +1,77 @@
+{
+  "catalog_version": "hawatch-bandar-maqam-v1",
+  "primary_point": "bandar-maqam",
+  "weather_points": {
+    "bandar-maqam": {
+      "name": "بندر مقام",
+      "page_name": "بندر مقام هرمزگان",
+      "short_label": "بندر مقام",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "روستاها و بنادر هرمزگان",
+      "region": "مقام · بخش شیبکوه · بندر لنگه · هرمزگان",
+      "aliases": [
+        "بندر مُقام",
+        "روستای بندر مقام",
+        "مقام هرمزگان",
+        "بندر مقام هرمزگان",
+        "Bandar-e Moqam",
+        "Bandar Maqam",
+        "Bandar-e Maqām"
+      ],
+      "identity_summary": "بندر و آبادی ساحلی مقام در بخش شیبکوه هرمزگان؛ این نقطه خودِ آبادی جاده‌پذیر است و با ساحل مکسر، حدود ۱۰ کیلومتر در امتداد جادهٔ ساحلی، یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://nournews.ir/en/news/255232/introduction-to-tourist-attractions-of-iranian-cities",
+        "https://www.openstreetmap.org/way/561233946",
+        "https://mag.parsnews.com/travel/12615/mokasser-beach/",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.9647981&longitude=53.4809418",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.9647981,
+      "longitude": 53.4809418,
+      "elevation_m": 6,
+      "status": "provisional",
+      "elevation_source": "مختصات مرکز آبادی بندر مقام از محدودهٔ مسکونی OpenStreetMap (way 561233946)؛ ارتفاع ۶ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای بندر مقام هرمزگان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای بندر مقام در ساحل غربی هرمزگان؛ دما، باد و بارش را برای سفر به منطقه ببینید.",
+        "content": "بندر مقام آبادی و بندری ساحلی در بخش شیبکوه هرمزگان است. جادهٔ ساحلی مقام–بستانو از این محدوده می‌گذرد و ساحل مکسر مقصدی مستقل در همان محور است."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "bandar-maqam",
+    "tile_name": "بندر مقام",
+    "name": "بندر مقام",
+    "short_category": "بندر و آبادی ساحلی",
+    "category": "روستاها و بنادر هرمزگان",
+    "category_key": "village",
+    "region": "مقام · شیبکوه · بندر لنگه · هرمزگان",
+    "latitude": 26.9647981,
+    "longitude": 53.4809418,
+    "elevation_m": 6,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبادی و بندر ساحلی مقام در هرمزگان",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "بندر مُقام",
+      "روستای بندر مقام",
+      "مقام هرمزگان",
+      "بندر مقام هرمزگان",
+      "Bandar-e Moqam",
+      "Bandar Maqam",
+      "Bandar-e Maqām"
+    ]
+  }
+}
