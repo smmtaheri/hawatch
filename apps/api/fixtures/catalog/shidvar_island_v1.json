@@ -1,0 +1,79 @@
+{
+  "catalog_version": "hawatch-shidvar-island-v1",
+  "primary_point": "shidvar-island",
+  "weather_points": {
+    "shidvar-island": {
+      "name": "جزیرهٔ شیدور",
+      "page_name": "جزیرهٔ شیدور",
+      "short_label": "شیدور",
+      "place_type": "landmark",
+      "category_key": "beach",
+      "category": "جزایر هرمزگان",
+      "region": "دهستان لاوان · بخش کیش · بندر لنگه · هرمزگان",
+      "aliases": [
+        "جزیره شیدور",
+        "جزیرهٔ شتور",
+        "جزیره مارو",
+        "جزیرهٔ مارو",
+        "مارو هرمزگان",
+        "Shidvar",
+        "Sheedvar Island",
+        "Shatvar Island"
+      ],
+      "identity_summary": "جزیرهٔ شیدور (مارو) در شرق لاوان؛ نقطهٔ پیش‌بینی در مرکز تقریبی جزیره است. این جزیرهٔ بی‌سکنه زیستگاه حفاظت‌شده و تالاب ثبت‌شدهٔ رامسر است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR1015RIS.pdf",
+        "https://www.keybiodiversityareas.org/en/site/factsheet/8156",
+        "https://www.openstreetmap.org/relation/9160200",
+        "https://api.open-meteo.com/v1/elevation?latitude=26.7922077&longitude=53.4115826",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 26.7922077,
+      "longitude": 53.4115826,
+      "elevation_m": 2,
+      "status": "provisional",
+      "elevation_source": "مرکز تقریبی پهنهٔ جزیره از رابطهٔ OSM 9160200؛ ارتفاع ۲ متر از DEM مدل GLO-90 سرویس Open-Meteo در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای جزیرهٔ شیدور (مارو)؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای جزیرهٔ شیدور، معروف به مارو، در شرق لاوان هرمزگان؛ دما، باد و بارش در نقطهٔ نمایندهٔ جزیره.",
+        "content": "شیدور یا مارو جزیره‌ای بی‌سکنه در شرق لاوان و زیستگاهی حفاظت‌شده و ثبت‌شده در کنوانسیون رامسر است. پیش‌بینی این صفحه برای مرکز تقریبی جزیره است و جایگزین بررسی وضعیت دریا نیست."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shidvar-island",
+    "tile_name": "جزیرهٔ شیدور",
+    "name": "جزیرهٔ شیدور",
+    "short_category": "جزیرهٔ حفاظت‌شده",
+    "category": "جزایر هرمزگان",
+    "category_key": "beach",
+    "region": "شیدور · لاوان · بندر لنگه · هرمزگان",
+    "latitude": 26.7922077,
+    "longitude": 53.4115826,
+    "elevation_m": 2,
+    "image": "/images/home-scene.png",
+    "image_alt": "جزیرهٔ شیدور یا مارو در خلیج فارس",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "جزیره شیدور",
+      "جزیرهٔ شتور",
+      "جزیره مارو",
+      "جزیرهٔ مارو",
+      "مارو هرمزگان",
+      "Shidvar",
+      "Sheedvar Island",
+      "Shatvar Island"
+    ]
+  }
+}
