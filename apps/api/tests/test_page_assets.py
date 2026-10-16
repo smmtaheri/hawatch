@@ -26,6 +26,7 @@ def test_current_page_preloads_are_rendered_before_the_application_entry(tmp_pat
     assert 'name="robots" content="index,follow"' in html
     assert 'rel="canonical" href="https://hawatch.ir/points/sample"' in html
     assert '__hawatchInitialPageRequest' in html
+    assert "cache: /\\/forecast\\/week\\/$/.test(endpoint) ? 'no-cache' : 'default'" in html
 
 
 def test_not_yet_published_manifest_is_not_cached(tmp_path):

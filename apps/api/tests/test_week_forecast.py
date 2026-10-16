@@ -35,6 +35,7 @@ def test_public_week_is_shared_without_account_queries_or_cookies(week_seed):
     assert len(body['days'])==8 and body['range_end']==(week_seed+timedelta(days=7)).isoformat()
     assert body['intervals']['24'][0][0]['complete']
     assert body['intervals']['24'][0][0]['condition']
+    assert {'felt_min','felt_max','uv_index','heat_index_c','heat_index_status'} <= body['intervals']['24'][0][0].keys()
     assert 'private' in first['Cache-Control'] and 's-maxage=' not in first['Cache-Control']
     assert first['CDN-Cache-Control']=='no-store'
     assert 'Cookie' not in first['Vary'] and not first.cookies
@@ -59,6 +60,7 @@ def test_cache_invalidation_follows_committed_data(week_seed,django_capture_on_c
 def test_route_week_uses_existing_pace_rounding_and_midnight_matching(week_seed):
     body=build_week('route','tochal-darband',week_seed)
     assert all(row['condition'] for row in body['records'])
+    assert all(row['heat_index_status'] in {'available','not_applicable','missing'} for row in body['records'])
     route=Route.objects.get(slug='tochal-darband')
     points=list(route.points.all())
     mean_elevation_m=route_mean_elevation_m(points)

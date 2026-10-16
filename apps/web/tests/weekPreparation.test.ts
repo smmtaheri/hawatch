@@ -34,6 +34,7 @@ it('does not prepare weather for hubs or turn planner changes into extra fetches
   prepareForecastPage('/routes/tochal-darband');prepareForecastPage('/routes/tochal-darband');
   await loadWeek('route','tochal-darband');
   expect(fetch).toHaveBeenCalledTimes(1);
+  expect(fetch).toHaveBeenCalledWith('/api/v1/routes/tochal-darband/forecast/week/',{credentials:'omit',cache:'no-cache'});
 });
 
 it('consumes the initial catalog read once even with simultaneous page effects', async()=>{

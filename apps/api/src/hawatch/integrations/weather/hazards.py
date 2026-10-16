@@ -12,6 +12,7 @@ RANK = {"normal": 0, "change": 1, "critical": 2}
 CORE_FIELDS = ("temperature_c", "wind_speed_kmh", "wind_gust_kmh",
                "precipitation_mm", "snowfall_cm", "visibility_km")
 WIND_LIMITS = (30, 45)
+HEAT_LIMITS = (32, 40)
 
 
 def wind_severity(wind, gust):
@@ -84,10 +85,13 @@ def assess(row, records=(), *, _by_at=None):
         add("cold", "سرمای شدید" if chill <= -28 else "سرمای ناشی از باد",
             "critical" if chill <= -28 else "change", ["temperature_c", "wind_chill_c"],
             "خطر آسیب به پوست بدون پوشش" if chill <= -28 else "پوشش گرم و محافظت در برابر باد لازم است")
-    heat = heat_index(temp, value(row, "relative_humidity_pct"))
-    if heat is not None and heat >= 32:
-        add("heat", "گرمای خطرناک" if heat >= 40 else "فشار گرما",
-            "critical" if heat >= 40 else "change", ["temperature_c", "relative_humidity_pct", "heat_index_c"],
+    humidity = value(row, "relative_humidity_pct")
+    heat = heat_index(temp, humidity)
+    heat_status = ("missing" if temp is None or humidity is None or not 0 <= humidity <= 100
+                   else "not_applicable" if heat is None else "available")
+    if heat is not None and heat >= HEAT_LIMITS[0]:
+        add("heat", "گرمای خطرناک" if heat >= HEAT_LIMITS[1] else "فشار گرما",
+            "critical" if heat >= HEAT_LIMITS[1] else "change", ["temperature_c", "relative_humidity_pct", "heat_index_c"],
             "فعالیت بدنی و آفتاب خطر گرمازدگی را افزایش می‌دهند")
     code = getattr(row, "weather_code", None)
     wmo = getattr(row, "wmo_code", None)
@@ -134,9 +138,15 @@ def assess(row, records=(), *, _by_at=None):
         missing.append("wmo_code")
     if value(row, "relative_humidity_pct") is None:
         missing.append("relative_humidity_pct")
+    # Keep the reported tenth on the same side of a warning boundary as the
+    # unrounded calculation. In particular, 39.96 must not say 40 without red.
+    reported_heat = round(heat, 1) if heat is not None else None
+    for threshold in HEAT_LIMITS:
+        if heat is not None and heat < threshold <= reported_heat:
+            reported_heat = threshold - .1
     return {"warnings": warnings, "severity": max((w["severity"] for w in warnings), key=RANK.get, default="normal"),
             "wind_chill_c": round(chill, 1) if chill is not None else None,
-            "heat_index_c": round(heat, 1) if heat is not None else None,
+            "heat_index_c": reported_heat, "heat_index_status": heat_status,
             "data_quality": "partial" if missing else "complete", "missing_inputs": sorted(set(missing)),
             "policy_version": POLICY_VERSION}
 

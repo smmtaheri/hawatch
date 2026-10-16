@@ -3,7 +3,19 @@ import { takeInitialPageRequest } from '../lib/pageLoad';
 
 type Day = { date: string; label: string; jalali: string };
 type Subject = { slug: string; name?: string; title?: string; elevation_m?: number; region?: string; distance_km?: number; ascent_m?: number; descent_m?: number; seo_indexable?: boolean };
-export type Week = { kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, Array<Array<Record<string, unknown>>>>; points?: Array<{ slug: string; name: string }>; timing_pending?: boolean };
+export type HeatIndexStatus = 'available' | 'not_applicable' | 'missing';
+export type WeekInterval = {
+  from: string; to: string; hour: number;
+  felt: number | null; felt_min: number | null; felt_max: number | null;
+  actual: number | null; min: number | null; max: number | null;
+  wind: number | null; gust: number | null; rain: number | null;
+  direction: number | null; humidity: number | null; visibility: number | null; freezing: number | null;
+  uv_index: number | null; heat_index_c: number | null; heat_index_status: HeatIndexStatus;
+  weather: string; condition: string; weather_at: string | null;
+  warnings: Array<{ severity: string; metrics: string[]; metric_severities?: Record<string, string> }>;
+  complete: boolean;
+};
+export type Week = { kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, WeekInterval[][]>; points?: Array<{ slug: string; name: string }>; timing_pending?: boolean };
 
 const cache = new Map<string, { data: Week; expires: number }>();
 const pending = new Map<string, Promise<Week>>();
@@ -31,7 +43,7 @@ function requestWeek(kind: string, slug: string): Promise<Week> {
   const loading = pending.get(key);
   if (loading) return loading;
   const url = `/api/v1/${kind === 'point' ? 'points' : 'routes'}/${encodeURIComponent(slug)}/forecast/week/`;
-  const response = takeInitialPageRequest(url, 'omit') ?? fetch(url, { credentials: 'omit' });
+  const response = takeInitialPageRequest(url, 'omit') ?? fetch(url, { credentials: 'omit', cache: 'no-cache' });
   const request = response.then(async r => {
     if (!r.ok) throw Object.assign(new Error(r.status === 404 ? 'نقطه یا مسیر پیدا نشد' : 'دریافت پیش‌بینی ممکن نشد'), { status: r.status });
     const data = await r.json() as Week;

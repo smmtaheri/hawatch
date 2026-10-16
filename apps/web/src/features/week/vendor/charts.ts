@@ -20,6 +20,10 @@ export const charts=(()=>{
  const domain=vals=>{vals=vals.filter(Number.isFinite);const lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):0,pad=Math.max(2,(hi-lo)*.12);return {low:lo-pad,high:hi+pad};};
  const y=(v,d,t,b)=>t+(d.high-v)/(d.high-d.low)*(b-t);
  const color=(p,k)=>p.hazards?.includes(k)?'var(--red)':p[k]>0?'var(--warm)':p[k]<0?'var(--cool)':'var(--secondary)';
+ const rangePair=(p,x,y,min,max,label)=>p.level===3?'':text(
+  Number.isFinite(p[min])&&Number.isFinite(p[max])?`${whole(p[min])}°/${whole(p[max])}°`:'—',x,y,'chart-value small','var(--ink)',
+  `aria-label="${label}؛ کمینه ${whole(p[min])}، بیشینه ${whole(p[max])} درجه" data-temperature-range="${label}"`);
+ function feltRange(points,xs,w){return wrap(points.map((p,i)=>rangePair(p,xs[i],20,'felt_min','felt_max','دمای حسی')).join(''),w,27,'felt-range','کمینه و بیشینهٔ دمای حسی در هر روز یا بازه');}
  let uid=0;
  function parts(points,xs,key,d,top,bottom){
   const ordered=points.map((p,i)=>({p,x:xs[i],v:p[key]})).sort((a,b)=>a.x-b.x),out=[],chunk=[];
@@ -34,16 +38,40 @@ export const charts=(()=>{
   let body=`<defs><linearGradient id="w${id}" x1="0" y1="0" x2="0" y2="1"><stop stop-color="var(--warm)" stop-opacity=".2"/><stop offset="1" stop-color="var(--warm)" stop-opacity=".025"/></linearGradient><linearGradient id="c${id}" x1="0" y1="0" x2="0" y2="1"><stop stop-color="var(--cool)" stop-opacity=".18"/><stop offset="1" stop-color="var(--cool)" stop-opacity=".02"/></linearGradient></defs>`;
   for(const a of parts(points,xs,key,d,top,bottom)){const c=a.c,path=`M${c[0]}C${c[1]} ${c[2]} ${c[3]}`,col=a.warm?'warm':'cool';body+=`<path d="${path}L${c[3][0]},${bottom+7}L${c[0][0]},${bottom+7}Z" fill="url(#${a.warm?'w':'c'}${id})"/><path d="${path}" fill="none" stroke="var(--${col})" stroke-width="${range?1.7:2.4}"/>`;}
   points.forEach((p,i)=>{const x=xs[i],v=p[key];if(!Number.isFinite(v)){body+=text('—',x,(top+bottom)/2,'no-data');return;}const py=y(v,d,top,bottom),col=color(p,key);
-   if(range&&Number.isFinite(p.min)&&Number.isFinite(p.max)&&p.min!==p.max){const ymin=y(p.min,d,top,bottom),ymax=y(p.max,d,top,bottom);body+=`<path d="M${x},${ymax}V${ymin}M${x-3},${ymax}H${x+3}M${x-3},${ymin}H${x+3}" fill="none" stroke="${col}" stroke-width="1.1" opacity=".7" data-range="${p.min},${p.max}"/>`;body+=text(whole(p.max,true),x,Math.min(ymax-7,py-32),'chart-value range',color({actual:p.max},'actual'))+text(whole(p.min,true),x,Math.max(ymin+13,py+18),'chart-value range',color({actual:p.min},'actual'))+text(whole(v,true),x+10,py-10,'chart-value',col,'text-anchor="start"');}
+   if(range&&Number.isFinite(p.min)&&Number.isFinite(p.max)&&p.min!==p.max){const ymin=y(p.min,d,top,bottom),ymax=y(p.max,d,top,bottom);if(!layout.compact)body+=`<path d="M${x},${ymax}V${ymin}M${x-3},${ymax}H${x+3}M${x-3},${ymin}H${x+3}" fill="none" stroke="${col}" stroke-width="1.1" opacity=".7" data-range="${p.min},${p.max}"/>`+text(whole(p.max,true),x,Math.min(ymax-7,py-32),'chart-value range',color({actual:p.max},'actual'))+text(whole(p.min,true),x,Math.max(ymin+13,py+18),'chart-value range',color({actual:p.min},'actual'));body+=text(whole(v,true),x+10,py-10,'chart-value',col,'text-anchor="start"');}
    else body+=text(whole(v,true),x,py-10,range?'chart-value':'chart-value temperature',col);
    body+=`<circle cx="${x}" cy="${py}" r="${range?3:4}" fill="${range?col:'var(--solid)'}" stroke="${col}" stroke-width="${range?1:2.2}" data-value="${v}" data-point="${p.id}"/>`;
-  });return wrap(body+caption(range?'دمای واقعی':'دمای حسی','°C',range?'کمینه / بیشینه':'',layout),w,height,key,range?'دمای واقعی و کمینه تا بیشینه':'دمای حسی');
+  });if(range&&layout.compact)body+=points.map((p,i)=>rangePair(p,xs[i],51,'min','max','دمای واقعی')).join('');return wrap(body+caption(range?'دمای واقعی':'دمای حسی','°C',range&&!layout.compact?'کمینه / بیشینه':'',layout),w,height,key,range?'دمای واقعی و کمینه تا بیشینه':'دمای حسی');
  }
  function stems(points,xs,w,key,max,height=86,layout={}){const base=height-7;let body='';points.forEach((p,i)=>{const x=xs[i],v=p[key],col=p.hazards?.includes(key)?'var(--red)':'var(--wind)';if(!Number.isFinite(v)){body+=text('—',x,57,'no-data');return;}const py=base-v/max*40;body+=`<path d="M${x} ${base}V${py}" stroke="${col}" stroke-width="1.5" data-stem-value="${v}"/><path d="M${x} ${py-4.5}l4.5 4.5-4.5 4.5-4.5-4.5Z" fill="var(--solid)" stroke="${col}" stroke-width="1.6"/>${text(whole(v),x,py-10,'chart-value',col)}`;});return wrap(body+caption(key==='gust'?'تندباد':'باد','km/h','',layout),w,height,key,key==='gust'?'تندباد':'باد');}
  function rain(points,xs,w,height=70,layout={}){const max=Math.max(1,...points.map(p=>Number.isFinite(p.rain)?p.rain:0)),base=height-8;let b='';points.forEach((p,i)=>{const x=xs[i],v=p.rain;if(!Number.isFinite(v)){b+=text('—',x,47,'no-data');return;}const bh=v/max*24,col=p.hazards?.includes('rain')?'var(--red)':'var(--rain)';if(v>0)b+=`<rect x="${x-13}" y="${base-bh}" width="26" height="${bh}" rx="1.4" fill="${col}" opacity=".8" data-rain-value="${v}"/>`;b+=text(rainNum(v),x,base-bh-9,'chart-value',p.hazards?.includes('rain')?'var(--red)':'var(--ink)');});return wrap(b+caption('بارش','mm','',layout),w,height,'rain','مقدار بارش');}
  function small(points,xs,w,key,height,layout={}){const max=Math.max(1,...points.map(p=>p.visibility).filter(Number.isFinite));let b='';points.forEach((p,i)=>{const x=xs[i],v=p[key],col=p.hazards?.includes(key)?'var(--red)':'var(--accent)';if(!Number.isFinite(v)){b+=text('—',x,40,'no-data');return;}if(key==='direction'){b+=`<g transform="translate(${x-9} 29) rotate(${(v+180)%360} 9 9)" stroke="var(--ink)" fill="none" stroke-width="1.5" stroke-linecap="round"><title>باد از ${fa(v)} درجه</title><path d="M9 16V2m-4 4 4-4 4 4"/></g>`;}else if(key==='humidity'){b+=`<rect x="${x-20}" y="45" width="40" height="4" rx="2" fill="var(--border)"/><rect x="${x-20}" y="45" width="${40*v/100}" height="4" rx="2" fill="${col}" opacity=".75"/>${text(num(v)+'٪',x,37,'chart-value small')}`;}else b+=`<path d="M${x-13} 47h26" stroke="var(--border)" stroke-width="3" stroke-linecap="round"/><path d="M${x-13} 47h${26*v/max}" stroke="${col}" stroke-width="3" stroke-linecap="round" opacity=".65"/>${text(num(v),x,36,'chart-value small')}`;});return wrap(b+caption({direction:'جهت باد',humidity:'رطوبت',visibility:'دید'}[key],{direction:'',humidity:'%',visibility:'km'}[key],'',layout),w,height,key,key);}
  function freezing(points,xs,w,height=78,layout={}){const d=domain(points.map(p=>p.freezing)),top=layout.compact?56:39,bottom=height-9;let b='',last='';points.forEach((p,i)=>{const x=xs[i],v=p.freezing;if(!Number.isFinite(v)){last='';b+=text('—',x,54,'no-data');return;}const py=y(v,d,top,bottom);if(last)b+=`<path d="M${last}L${x},${py}" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".85"/>`;last=`${x},${py}`;b+=`<circle cx="${x}" cy="${py}" r="2.8" fill="var(--solid)" stroke="var(--accent)" stroke-width="1.4"/>${text(num(v),x,py-9,'chart-value small')}`;});return wrap(b+caption('تراز صفر درجه','m','',layout),w,height,'freezing','تراز صفر درجه');}
- function rows(p,x,w,experts=false,exporting=false,layout={}){const max=Math.max(10,...p.flatMap(a=>[a.wind,a.gust]).filter(Number.isFinite));let h=temperature(p,x,w,{height:layout.compact?(layout.mobileCompact?100:118):exporting?125:112,...layout})+stems(p,x,w,'wind',max,layout.compact?94:86,layout)+rain(p,x,w,layout.compact?78:70,layout);if(experts)h+=expertRows(p,x,w,layout);return h;}
- function expertRows(p,x,w,layout={}){const max=Math.max(10,...p.flatMap(a=>[a.wind,a.gust]).filter(Number.isFinite));return temperature(p,x,w,{key:'actual',range:true,height:layout.compact?142:157,...layout})+stems(p,x,w,'gust',max,layout.compact?94:86,layout)+small(p,x,w,'direction',57,layout)+small(p,x,w,'humidity',60,layout)+small(p,x,w,'visibility',60,layout)+freezing(p,x,w,layout.compact?90:78,layout);}
+ function uvIndex(points,xs,w,layout={}){
+  const categories=['کم','متوسط','زیاد','بسیار زیاد','بسیار شدید'];
+  let body='';points.forEach((p,i)=>{
+   const x=xs[i],v=p.uv_index;
+   if(!Number.isFinite(v)||v<0){body+=text('—',x,41,'no-data');return;}
+   const tier=v<3?0:v<6?1:v<8?2:v<11?3:4,active=v===0?0:tier+1;
+   body+=`<g><title>شاخص UV ${num(v)}؛ ${categories[tier]}</title>${text(num(v),x,41,'chart-value small')}`;
+   for(let n=0;n<5;n++)body+=`<circle cx="${x+(n-2)*7}" cy="57" r="2.3" fill="var(--accent)" opacity="${n<active?.9:.18}" data-uv-step="${n+1}"/>`;
+   body+='</g>';
+  });return wrap(body+caption('شاخص UV','','',layout),w,80,'uv_index','بیشینهٔ شاخص UV در هر روز یا بازه');
+ }
+ function heatIndex(points,xs,w,layout={}){
+  let body='';points.forEach((p,i)=>{
+   const x=xs[i],v=p.heat_index_c,status=p.heat_index_status;
+   if(status!=='available'||!Number.isFinite(v)){
+    const reason=status==='not_applicable'?'شرایط خارج از دامنهٔ کاربرد شاخص گرماست':'دادهٔ کافی برای شاخص گرما موجود نیست';
+    body+=`<g aria-label="${reason}"><title>${reason}</title>${text('—',x,37,'no-data')}</g>`;return;
+   }
+   const col=p.hazards?.includes('heat_index_c')?'var(--red)':'var(--warm)';
+   // Fixed scale shared by days, expanded intervals and both viewports.
+   const height=Math.max(3,Math.min(43,7+(v-32)*1.5));
+   body+=`<g><title>شاخص گرما ${num(v)} درجه؛ برآورد در سایه، نه زیر آفتاب مستقیم</title>${text(num(v)+'°',x,37,'chart-value small',col)}<rect x="${x-2}" y="${68-height}" width="4" height="${height}" rx="2" fill="${col}" opacity=".85" data-heat-value="${v}"/></g>`;
+  });return wrap(body+caption('شاخص گرما','°C','',layout),w,80,'heat_index_c','بیشینهٔ شاخص گرما در هر روز یا بازه');
+ }
+ function rows(p,x,w,experts=false,exporting=false,layout={}){const max=Math.max(10,...p.flatMap(a=>[a.wind,a.gust]).filter(Number.isFinite));let h=(layout.compact?feltRange(p,x,w):'')+temperature(p,x,w,{height:layout.compact?(layout.mobileCompact?100:118):exporting?125:112,...layout})+stems(p,x,w,'wind',max,layout.compact?94:86,layout)+rain(p,x,w,layout.compact?78:70,layout);if(experts)h+=expertRows(p,x,w,layout);return h;}
+ function expertRows(p,x,w,layout={}){const max=Math.max(10,...p.flatMap(a=>[a.wind,a.gust]).filter(Number.isFinite));return temperature(p,x,w,{key:'actual',range:true,height:layout.compact?142:157,...layout})+stems(p,x,w,'gust',max,layout.compact?94:86,layout)+small(p,x,w,'direction',57,layout)+small(p,x,w,'humidity',60,layout)+small(p,x,w,'visibility',60,layout)+freezing(p,x,w,layout.compact?90:78,layout)+(layout.compact?uvIndex(p,x,w,layout)+heatIndex(p,x,w,layout):'');}
  return {fa,num,domain,y,temperature,stems,rain,small,freezing,rows,expertRows};
 })();

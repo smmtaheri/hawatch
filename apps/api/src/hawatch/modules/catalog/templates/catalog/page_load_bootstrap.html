@@ -62,7 +62,7 @@
   }
   if (endpoint) {
     try {
-      var request = fetch(endpoint, { credentials: credentials });
+      var request = fetch(endpoint, { credentials: credentials, cache: /\/forecast\/week\/$/.test(endpoint) ? 'no-cache' : 'default' });
       window.__hawatchInitialPageRequest = {
         url: new URL(endpoint, window.location.origin).href,
         credentials: credentials, response: request

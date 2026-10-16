@@ -39,17 +39,23 @@ def public_reading(row):
             "precipitation_from": (row.forecast_at-timedelta(hours=1)).isoformat(),
             "precipitation_to": row.forecast_at.isoformat(),
             "weather_code": p["weather_code"], "condition": p["condition"], "is_day": p.get("is_day"),
+            "heat_index_c": p["heat_index_c"], "heat_index_status": p["heat_index_status"],
             "warnings": p["warnings"], "state": p["state"], "data_quality": p["data_quality"]}
 
 def aggregate(rows, start, hours):
     end = start + timedelta(hours=hours)
     instant = [r for r in rows if start <= r.forecast_at < end]
     accumulated = [r for r in rows if start < r.forecast_at <= end]
-    def metric(field, method, source=instant):
+    def metric(field, method, source=instant, *, valid=lambda v: True):
         values = [value(row, field) for row in source]
-        if len(source) != hours or any(v is None for v in values):
+        if len(source) != hours or any(v is None or not valid(v) for v in values):
             return None
         return method(values)
+    heat_readings = [assessment(row) for row in instant]
+    heat_missing = len(instant) != hours or any(r["heat_index_status"] == "missing" for r in heat_readings)
+    heat_values = [r["heat_index_c"] for r in heat_readings if r["heat_index_c"] is not None]
+    heat_status = "missing" if heat_missing else "available" if heat_values else "not_applicable"
+    uv = metric("uv_index", max, valid=lambda v: v >= 0)
     if hours == 24:
         # A daily card summarizes the daytime sky, not whichever hour happens
         # to win a whole-day frequency tie (often midnight). Keep its metrics
@@ -61,17 +67,21 @@ def aggregate(rows, start, hours):
         rep = representative_record(instant)
     return {"from": start.isoformat(), "to": end.isoformat(), "hour": start.hour,
             "felt": metric("apparent_temperature_c", lambda a: round(sum(a)/len(a), 1)),
+            "felt_min": metric("apparent_temperature_c", min), "felt_max": metric("apparent_temperature_c", max),
             "actual": metric("temperature_c", lambda a: round(sum(a)/len(a), 1)),
             "min": metric("temperature_c", min), "max": metric("temperature_c", max),
             "wind": metric("wind_speed_kmh", max), "gust": metric("wind_gust_kmh", max),
             "rain": metric("precipitation_mm", lambda a: round(sum(a), 1), accumulated),
             "humidity": metric("relative_humidity_pct", lambda a: round(sum(a)/len(a))),
             "visibility": metric("visibility_km", min), "freezing": metric("freezing_level_m", min),
+            "uv_index": uv,
+            "heat_index_c": max(heat_values) if heat_status == "available" else None,
+            "heat_index_status": heat_status,
             "direction": value(rep, "wind_direction_deg") if rep else None,
             "weather": rep.weather_code if rep else "unknown",
             "condition": rep.condition_label if rep else "نامشخص",
             "weather_at": now_tehran(rep.forecast_at).isoformat() if rep else None,
-            "warnings": [dict(w, at=r.forecast_at.isoformat()) for r in instant for w in assessment(r)["warnings"]],
+            "warnings": [dict(w, at=r.forecast_at.isoformat()) for r, risk in zip(instant, heat_readings) for w in risk["warnings"]],
             "complete": len(instant) == hours and len(accumulated) == hours}
 
 def build_week(kind, slug, today):

@@ -61,7 +61,7 @@ export function createForecastRuntime(W, HW_POINTS, HW_ROUTES, HW_BRAND){
   result.hazards=criticalMetrics(row?.warnings||[]);
   return result;
  }
- function criticalMetrics(warnings){const map={apparent_temperature_c:'felt',temperature_c:'actual',wind_speed_kmh:'wind',wind_gust_kmh:'gust',precipitation_mm:'rain',visibility_km:'visibility'};return [...new Set(warnings.flatMap(w=>w.metrics?.filter(k=>(w.metric_severities?.[k]||w.severity)==='critical').map(k=>map[k]).filter(Boolean)||[]))];}
+ function criticalMetrics(warnings){const map={apparent_temperature_c:'felt',temperature_c:'actual',wind_speed_kmh:'wind',wind_gust_kmh:'gust',precipitation_mm:'rain',visibility_km:'visibility',heat_index_c:'heat_index_c'};return [...new Set(warnings.flatMap(w=>w.metrics?.filter(k=>(w.metric_severities?.[k]||w.severity)==='critical').map(k=>map[k]).filter(Boolean)||[]))];}
  function warningsHTML(data){const list=data.points.flatMap(p=>p.warnings.map(w=>`<p class="${w.severity==='critical'?'risk-red':''}">${esc(p.name)} · ${fa(p.arrival)}: ${esc(w.label)}؛ ${esc(w.reason)}</p>`));return [...new Set(list)].join('');}
  function gearIcon(key){return ({'insulated-jacket':'down-jacket','warm-gloves':'insulated-gloves','windstopper':'windbreaker','hardshell':'rain-jacket','poncho':'rain-jacket','balaclava':'neck-gaiter','uv-glasses':'sunglasses'})[key]||key;}
 

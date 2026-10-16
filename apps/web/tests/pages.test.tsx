@@ -304,7 +304,9 @@ describe("approved week forecast and unchanged public pages", () => {
   });
   it('shows felt values with true actual extrema and preserves zero precipitation',async()=>{
     mount('/points/tochal');await screen.findByRole('heading',{name:'آب‌وهوای قلهٔ توچال'});expect(document.querySelector('.chart-value.temperature')).toHaveTextContent('−۷');
-    await userEvent.click(screen.getByRole('button',{name:'جزئیات تخصصی'}));expect(document.querySelector('[data-range="90,92"]')).not.toBeNull();
+    await userEvent.click(screen.getByRole('button',{name:'جزئیات تخصصی'}));
+    expect(document.querySelector('[data-metric="actual"] [data-temperature-range]')).toHaveTextContent('۹۰°/۹۲°');
+    expect(document.querySelector('[data-metric="felt-range"] [data-temperature-range]')).toHaveTextContent('−۹°/−۵°');
   });
   it('uses all hourly start options and authoritative pace plans without refetching',async()=>{
     mount('/routes/tochal-darband?date='+day+'&start_time=08:00&speed=medium');await screen.findByRole('heading',{name:'دربند تا توچال'});
