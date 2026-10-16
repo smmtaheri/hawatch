@@ -1,0 +1,564 @@
+{
+  "catalog_version": "hawatch-sistan-chabahar-v4",
+  "weather_points": {
+    "darak-beach": {
+      "name": "ساحل درک",
+      "page_name": "ساحل درک",
+      "short_label": "ساحل درک",
+      "place_type": "beach",
+      "category_key": "beach",
+      "category": "سواحل مکران",
+      "region": "درک · زرآباد · سیستان و بلوچستان",
+      "aliases": [
+        "ساحل و روستای درک",
+        "روستای درک",
+        "درک زرآباد",
+        "ساحل درک زرآباد",
+        "ساحل مکران درک",
+        "Darak Beach",
+        "Darak Village",
+        "Derak Beach"
+      ],
+      "identity_summary": "ساحل درک در شهرستان زرآباد، کنار روستای درک و محل تلاقی چشم‌انداز تپه‌های شنی و دریای عمان؛ مختصات این صفحه نمایندهٔ نوار ساحلی گردشگری است، نه مرکز بافت روستا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/index.php/en/attraction/Derak-Beach",
+        "https://mapcarta.com/N11596433985",
+        "https://www.openstreetmap.org/node/11596433985",
+        "https://api.open-meteo.com/v1/elevation?latitude=25.46927&longitude=59.47222",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 25.46927,
+      "longitude": 59.47222,
+      "elevation_m": 4,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نماینده روی ساحل درک از node ساحلی OpenStreetMap؛ ارتفاع ۴ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۵). دروازهٔ انتشار اختلاف DEM و forecast را دوباره کنترل می‌کند.",
+      "climate": "desert"
+    },
+    "lipar-lagoon": {
+      "name": "تالاب لیپار",
+      "page_name": "تالاب لیپار",
+      "short_label": "تالاب لیپار",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های چابهار",
+      "region": "نزدیک رمین · چابهار · سیستان و بلوچستان",
+      "aliases": [
+        "تالاب صورتی لیپار",
+        "تالاب صورتی چابهار",
+        "دریاچه صورتی چابهار",
+        "دریاچهٔ لیپار",
+        "Lipar Lagoon",
+        "Lipar Wetland",
+        "Pink Lagoon Chabahar",
+        "Pink Wetland"
+      ],
+      "identity_summary": "تالاب لیپار، معروف به تالاب صورتی، در دره‌ای ساحلی در مسیر چابهار به گواتر و نزدیک روستای رمین؛ این مختصات نمایندهٔ پهنهٔ تالاب است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/index.php/attraction/Lipar-Lagoon",
+        "https://mapcarta.com/W465373960",
+        "https://www.openstreetmap.org/way/465373960",
+        "https://api.open-meteo.com/v1/elevation?latitude=25.25419&longitude=60.8296",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 25.25419,
+      "longitude": 60.8296,
+      "elevation_m": 0,
+      "status": "provisional",
+      "elevation_source": "مختصات نمایندهٔ پهنهٔ آب در OSM way 465373960؛ ارتفاع ۰ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۵). دروازهٔ انتشار اختلاف DEM و forecast را دوباره کنترل می‌کند.",
+      "climate": "lake_valley",
+      "seo": {
+        "title": "آب‌وهوای تالاب لیپار؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب لیپار، معروف به تالاب صورتی چابهار؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "chabahar-martian-mountains": {
+      "name": "کوه‌های مریخی چابهار",
+      "page_name": "کوه‌های مریخی چابهار",
+      "short_label": "کوه‌های مریخی",
+      "place_type": "landmark",
+      "category_key": "rocks",
+      "category": "کوه‌ها و سازندهای ساحلی چابهار",
+      "region": "جادهٔ چابهار–گواتر · سیستان و بلوچستان",
+      "aliases": [
+        "کوه‌های مینیاتوری چابهار",
+        "کوه های مریخی چابهار",
+        "کوه های مینیاتوری چابهار",
+        "کوه مریخی چابهار",
+        "Chabahar Martian Mountains",
+        "Chabahar Miniature Mountains",
+        "Miniature Mountains of Iran"
+      ],
+      "identity_summary": "سازندهای فرسایشی معروف به کوه‌های مریخی یا مینیاتوری در مسیر ساحلی چابهار به گواتر؛ مختصات این صفحه یک نقطهٔ نمایندهٔ چشم‌انداز و محل بازدید کنار جاده است و مرز کل گستره را نشان نمی‌دهد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/index.php/attraction/martian-mountains-chabahar",
+        "https://visitiran.ir/en/province/sistan-and-baluchestan-province",
+        "https://mapcarta.com/N4711767693",
+        "https://www.openstreetmap.org/node/4711767693",
+        "https://api.open-meteo.com/v1/elevation?latitude=25.23362&longitude=60.94365",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 25.23362,
+      "longitude": 60.94365,
+      "elevation_m": 5,
+      "status": "provisional",
+      "elevation_source": "مختصات پین نماینده از viewpoint در OSM node 4711767693؛ ارتفاع ۵ متر از DEM Open-Meteo GLO-90 در مختصات canonical (بررسی ۲۰۲۶-۱۰-۱۵). این ارتفاع پین کنار جاده است، نه قله‌ها؛ gate انتشار آن را دوباره بررسی می‌کند.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای کوه‌های مریخی چابهار؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای کوه‌های مریخی چابهار، سازندهای مینیاتوری در مسیر ساحلی گواتر؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "beris-beach": {
+      "name": "ساحل بریس",
+      "page_name": "ساحل بریس",
+      "short_label": "ساحل بریس",
+      "place_type": "beach",
+      "category_key": "beach",
+      "category": "سواحل مکران",
+      "region": "بریس · دشتیاری · سیستان و بلوچستان",
+      "aliases": [
+        "ساحل صخره‌ای بریس",
+        "ساحل صخره ای بریس",
+        "اسکله و ساحل بریس",
+        "ساحل بندر بریس",
+        "Beris Beach",
+        "Bris Beach"
+      ],
+      "identity_summary": "ساحل و چشم‌انداز صخره‌ای بریس در کنار اسکلهٔ صیادی و دریای عمان؛ مختصات نماینده محل شناخته‌شدهٔ تماشای ساحل است، نه کل نوار ساحلی روستا.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://blog.rahbal.com/chabahar-beaches/",
+        "https://mapcarta.com/N6200523285",
+        "https://www.openstreetmap.org/node/6200523285",
+        "https://api.open-meteo.com/v1/elevation?latitude=25.14503&longitude=61.17473",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 25.14503,
+      "longitude": 61.17473,
+      "elevation_m": 5,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نمایندهٔ چشم‌انداز ساحلی از OSM node 6200523285؛ ارتفاع ۵ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۵). دروازهٔ انتشار اختلاف DEM و forecast را دوباره کنترل می‌کند.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای ساحل بریس؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای ساحل صخره‌ای بریس در سواحل مکران؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "gwatar-bay": {
+      "name": "خلیج گواتر",
+      "page_name": "خلیج گواتر چابهار",
+      "short_label": "خلیج گواتر",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "خلیج‌ها و سواحل مکران",
+      "region": "گواتر · دشتیاری · سیستان و بلوچستان",
+      "aliases": [
+        "خلیج گوآتر",
+        "خلیج گواتر چابهار",
+        "خلیج گوآتر چابهار",
+        "دهنهٔ گواتر",
+        "دهنه گوآتر",
+        "Gwatar Bay",
+        "Gawater Bay",
+        "Gavater Bay",
+        "Dahaneh-ye Gowatar"
+      ],
+      "identity_summary": "خلیج گواتر در انتهای ساحل مکران و مرز ایران و پاکستان؛ این صفحه نمایندهٔ خود پهنهٔ خلیج است و با روستای گواتر یا تالاب لیپار یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/14668054",
+        "https://www.getty.edu/vow/TGNFullDisplay?english=N&find=1002023&nation=&place=&subjectid=1113086",
+        "https://visitiran.ir/index.php/attraction/Lipar-Lagoon",
+        "https://api.open-meteo.com/v1/elevation?latitude=25.07518&longitude=61.60245",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 25.07518,
+      "longitude": 61.60245,
+      "elevation_m": 0,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نقشه‌ای نمایندهٔ خلیج از gazetteer و نقشهٔ OSM؛ ارتفاع ۰ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۵). مختصات در پهنهٔ آب است و دروازهٔ انتشار grid نزدیک و دادهٔ ساعتی را بررسی می‌کند.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای خلیج گواتر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای خلیج گواتر در ساحل مکران و مرز ایران و پاکستان؛ دما، باد و بارش را ببینید."
+      }
+    },
+    "hamun-sistan": {
+      "name": "تالاب هامون",
+      "page_name": "تالاب هامون سیستان",
+      "short_label": "تالاب هامون",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "تالاب‌های سیستان",
+      "region": "دشت سیستان · سیستان و بلوچستان",
+      "aliases": [
+        "هامون",
+        "هامون صابری",
+        "هامون هیرمند",
+        "تالاب هامون هیرمند",
+        "هامون سیستان",
+        "Hamun-e-Saberi",
+        "Hamun-e-Helmand",
+        "Hamun Wetland"
+      ],
+      "identity_summary": "تالاب‌های هامونِ سیستان، مجموعه‌ای فرامرزی و فصلی شامل هامون صابری و هامون هیرمند؛ مختصات نماینده در بخش ایرانی مجموعه است و مرز آب با توجه به فصل و حق‌آبه تغییر می‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR42RIS.pdf",
+        "https://whc.unesco.org/en/tentativelists/5276/",
+        "https://edumedia-depot.gei.de/bitstreams/90f5c976-74cf-4af8-bb62-c6efa07fe03b/download",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.333333&longitude=61.333333",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.333333,
+      "longitude": 61.333333,
+      "elevation_m": 471,
+      "status": "provisional",
+      "elevation_source": "مختصات نماینده مطابق مرکز تقریبی ثبت Ramsar (۳۱°۲۰′ شمالی، ۶۱°۲۰′ شرقی)؛ ارتفاع ۴۷۱ متر از DEM سرویس Open-Meteo GLO-90 در همان مختصات (بررسی ۲۰۲۶-۱۰-۱۵). تالاب فصلی است و پین، حد جاری آب را نشان نمی‌دهد.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای تالاب هامون سیستان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب هامون در سیستان؛ مجموعه‌ای فصلی و فرامرزی از تالاب‌های صابری و هیرمند."
+      }
+    },
+    "hirmand-river-sistan": {
+      "name": "رود هیرمند در سیستان",
+      "page_name": "رود هیرمند در سیستان",
+      "short_label": "رود هیرمند",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "رودها و تالاب‌های سیستان",
+      "region": "دشت سیستان · سیستان و بلوچستان",
+      "aliases": [
+        "رودخانهٔ هیرمند",
+        "رود هیرمند",
+        "هیرمند رود",
+        "رود هلمند",
+        "رودخانه هلمند",
+        "Helmand River",
+        "Hirmand River"
+      ],
+      "identity_summary": "رود هیرمند، شناخته‌شده با نام هلمند در افغانستان، در دشت سیستان جریان دارد و به مجموعهٔ تالاب‌های هامون می‌ریزد؛ مختصات صفحه نمایندهٔ یک قطعهٔ نام‌گذاری‌شده از رود در ایران است، نه کل مسیر رودخانه.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.iranicaonline.org/articles/helmand-river/",
+        "https://repository.up.ac.za/server/api/core/bitstreams/227db886-1fb6-44c2-820a-88c8b0064b5f/content",
+        "https://www.openstreetmap.org/way/532691105",
+        "https://www.openstreetmap.org/way/935248766",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.09123&longitude=61.35850",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.09123,
+      "longitude": 61.3585,
+      "elevation_m": 477,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ نماینده روی قطعهٔ نام‌گذاری‌شدهٔ هلمند‌رود در OSM ways 532691105 و 935248766؛ ارتفاع ۴۷۷ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۵). این مختصات نمایندهٔ یک قطعه از رود است، نه کل رود.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای رود هیرمند در سیستان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای رود هیرمند در دشت سیستان؛ دما، باد و بارش را برای این پهنهٔ رودخانه‌ای ببینید."
+      }
+    },
+    "shahr-sokhteh": {
+      "name": "شهر سوخته",
+      "page_name": "شهر سوخته",
+      "short_label": "شهر سوخته",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "میراث تاریخی سیستان",
+      "region": "دشت سیستان · سیستان و بلوچستان",
+      "aliases": [
+        "شهر سوخته سیستان",
+        "شهر سوخته زابل",
+        "شهرِ سوخته",
+        "شهر سوخته زاهدان",
+        "Shahr-e Sokhteh",
+        "Shahr-i Sokhta",
+        "Burnt City"
+      ],
+      "identity_summary": "شهر سوخته، محوطهٔ باستانی عصر مفرغ در دشت سیستان و کنار مسیر زاهدان–زابل؛ مختصات نماینده بر اساس مختصات رسمی محوطهٔ ثبت جهانی یونسکو است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://whc.unesco.org/en/list/1456/",
+        "https://whc.unesco.org/en/list/1456/maps/",
+        "https://shahresokhta.ir/Explain/14/Shahr_i_Sokhta_World_Heritage_Complex",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.5938889&longitude=61.3277778",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.5938889,
+      "longitude": 61.3277778,
+      "elevation_m": 488,
+      "status": "provisional",
+      "elevation_source": "مختصات رسمی محوطهٔ ثبت‌شده در یونسکو؛ ارتفاع ۴۸۸ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات (بررسی ۲۰۲۶-۱۰-۱۶). ارتفاع نمایندهٔ محوطه است و دروازهٔ انتشار دوباره آن را کنترل می‌کند.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای شهر سوخته؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای شهر سوخته، محوطهٔ باستانی عصر مفرغ در سیستان؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "kuh-khwaja": {
+      "name": "کوه خواجه",
+      "page_name": "کوه خواجه",
+      "short_label": "کوه خواجه",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "category": "کوه‌ها و میراث سیستان",
+      "region": "جنوب‌غرب زابل · سیستان و بلوچستان",
+      "aliases": [
+        "کوه خواجه زابل",
+        "کوه اوشیدا",
+        "کوه اوشیدم",
+        "کوه رستم سیستان",
+        "کوه خواجو سیستان",
+        "Kuh-e Khwaja",
+        "Kuh-e Khajeh",
+        "Mount Khwaja",
+        "Mount Khajeh"
+      ],
+      "identity_summary": "کوه خواجه، برون‌زد بازالتی شاخص و محوطهٔ باستانی غاغاشهر در دشت سیستان، حدود ۳۰ کیلومتری جنوب‌غربی زابل؛ مختصات نماینده روی خود کوه است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://whc.unesco.org/en/tentativelists/5184/",
+        "https://www.iranicaonline.org/articles/kuh-e-khvaja",
+        "https://mapy.com/en/?id=1002186513&source=osm",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.9429397&longitude=61.2459667",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.9429397,
+      "longitude": 61.2459667,
+      "elevation_m": 610,
+      "status": "provisional",
+      "elevation_source": "ارتفاع حدود ۶۰۰ متر در دانشنامهٔ ایرانیکا و ۶۱۰ متر در دادهٔ نقشه‌ای قله؛ DEM سرویس Open-Meteo GLO-90 در مختصات canonical برابر ۵۸۶ متر است (بررسی ۲۰۲۶-۱۰-۱۶). مقدار provisional است و دروازهٔ انتشار اختلاف را دوباره کنترل می‌کند.",
+      "climate": "desert",
+      "routes": {},
+      "seo": {
+        "title": "آب‌وهوای کوه خواجه؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای کوه خواجه در دشت سیستان و نزدیک زابل؛ دما، باد و بارش را پیش از بازدید ببینید."
+      }
+    },
+    "bazman-parking": {
+      "name": "پارکینگ قلهٔ بزمان",
+      "page_name": "پارکینگ مسیر قلهٔ بزمان",
+      "short_label": "پارکینگ بزمان",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "category": "مسیر قلهٔ بزمان",
+      "region": "پای‌کار قلهٔ بزمان · سیستان و بلوچستان",
+      "aliases": [
+        "پارکینگ بزمان",
+        "پارکینگ قله بزمان",
+        "پای‌کار قله بزمان",
+        "محل پارک ماشین قله بزمان",
+        "Bazman peak parking"
+      ],
+      "identity_summary": "پارکینگ ثبت‌شده در ترک صعود قلهٔ بزمان و مبدأ بخش پیاده؛ دسترسی جاده‌ای پیش از این نقطه از مسیر پیاده حذف شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-khwhnwrdy-qlh-bzmn-126210377",
+        "https://shenski.blogfa.com/1390/12"
+      ],
+      "latitude": 28.078214,
+      "longitude": 60.111926,
+      "elevation_m": 1562,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ در ترک Wikiloc حدود ۱۵۶۱ متر است؛ ارتفاع canonical برابر ۱۵۶۲ متر از DEM سرویس Open-Meteo GLO-90 در مختصات همین waypoint است.",
+      "climate": "desert"
+    },
+    "bazman-last-sheepfold": {
+      "name": "گوسفندسرا بزمان",
+      "page_name": "آخرین گوسفندسرا در مسیر قلهٔ بزمان",
+      "short_label": "گوسفندسرا",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "category": "مسیر قلهٔ بزمان",
+      "region": "دامنهٔ شرقی بزمان · سیستان و بلوچستان",
+      "aliases": [
+        "آخرین گوسفندسرا بزمان",
+        "محل صبحانهٔ مسیر بزمان",
+        "گوسفندسرا مسیر شرقی بزمان",
+        "Bazman last sheepfold"
+      ],
+      "identity_summary": "آخرین گوسفندسرا و محل صبحانه در گزارش پیمایش مسیر شرقی از گواز به قلهٔ بزمان؛ نقطهٔ route بر اساس مختصات گزارش‌شده ثبت شده و ترک ۲۰۲۳ در نزدیک‌ترین نقطه حدود ۲۰۰ متر با آن فاصله دارد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://shenski.blogfa.com/1390/12",
+        "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-khwhnwrdy-qlh-bzmn-126210377",
+        "https://rezarahnavard.blogfa.com/post/50"
+      ],
+      "latitude": 28.085556,
+      "longitude": 60.070647,
+      "elevation_m": 1903,
+      "status": "provisional",
+      "elevation_source": "مختصات گوسفندسرا از گزارش شنسکی؛ ارتفاع گزارش‌شدهٔ میدانی ۲۰۷۲ متر با DEM سرویس Open-Meteo GLO-90 برابر ۱۹۰۳ متر هم‌خوان نیست، بنابراین ارتفاع forecast بر اساس DEM و با وضعیت provisional ثبت شده است.",
+      "climate": "desert"
+    },
+    "bazman-peak": {
+      "name": "قلهٔ بزمان",
+      "page_name": "قلهٔ بزمان",
+      "short_label": "قلهٔ بزمان",
+      "place_type": "summit",
+      "category_key": "volcano",
+      "category": "قله‌های سیستان و بلوچستان",
+      "region": "منطقهٔ حفاظت‌شدهٔ بزمان · سیستان و بلوچستان",
+      "aliases": [
+        "کوه بزمان",
+        "قله بزمان",
+        "آتشفشان بزمان",
+        "کوه زندان",
+        "کوه زنده خضر",
+        "Kuh-e Bazman",
+        "Bazman Volcano",
+        "Bazman Peak"
+      ],
+      "identity_summary": "قلهٔ آتشفشانی بزمان در منطقهٔ دورافتادهٔ جنوب‌شرق ایران و استان سیستان و بلوچستان؛ مختصات نماینده روی قله و ارتفاع گزارش‌شده حدود ۳۴۹۰ متر است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://volcano.si.edu/volcano.cfm?vn=232030",
+        "https://science.nasa.gov/earth/earth-observatory/bazman-volcano-iran-82882/",
+        "https://mapcarta.com/14664074",
+        "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-khwhnwrdy-qlh-bzmn-126210377",
+        "https://raftinghome.com/mount-bazman-climbing-guide/",
+        "https://api.open-meteo.com/v1/elevation?latitude=28.07613&longitude=60.01108",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 28.07613,
+      "longitude": 60.01108,
+      "elevation_m": 3490,
+      "status": "provisional",
+      "elevation_source": "ارتفاع قله در Global Volcanism Program و دادهٔ قلهٔ OpenStreetMap برابر حدود ۳۴۹۰ متر است؛ DEM سرویس Open-Meteo GLO-90 در مختصات canonical برابر ۳۴۴۷ متر است (بررسی ۲۰۲۶-۱۰-۱۶). اختلاف ۴۳ متر است و دروازهٔ انتشار دوباره کنترل می‌کند.",
+      "climate": "high_alpine",
+      "routes": {
+        "bazman-parking-summit": "bazman-parking-summit"
+      },
+      "seo": {
+        "title": "آب‌وهوای قلهٔ بزمان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ آتشفشانی بزمان در سیستان و بلوچستان؛ دما، باد و بارش را پیش از برنامه‌ریزی ببینید."
+      }
+    }
+  },
+  "routes": {
+    "bazman-parking-summit": {
+      "slug": "bazman-parking-summit",
+      "title": "پارکینگ تا قلهٔ بزمان",
+      "subtitle": "صعود بسیار سنگین؛ مسیر بی‌آب است و پیش از حرکت باید امنیت منطقه را محلی بررسی کرد",
+      "trail_label": "صعود قلهٔ بزمان",
+      "origin": "پارکینگ قلهٔ بزمان",
+      "target_label": "قلهٔ بزمان",
+      "region": "بزمان · سیستان و بلوچستان",
+      "featured": false,
+      "sort_order": 1,
+      "points": [
+        "bazman-parking",
+        "bazman-last-sheepfold",
+        "bazman-peak"
+      ],
+      "distance_km": 11.4,
+      "ascent_m": 1904,
+      "one_way_minutes": 540,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "cropped-gpx-profile+independent-climb-reports-v1",
+        "version": "bazman-parking-summit-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 150,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/jy-py-s-msyr-khwhnwrdy-qlh-bzmn-126210377",
+          "https://shenski.blogfa.com/1390/12",
+          "https://rezarahnavard.blogfa.com/post/50"
+        ],
+        "evidence_tracks": [
+          "tracks/bazman/bazman-parking-to-summit-2023.gpx"
+        ],
+        "cumulative_minutes": {
+          "bazman-parking": 0,
+          "bazman-last-sheepfold": 150,
+          "bazman-peak": 540
+        },
+        "notes": [
+          "هندسهٔ ترک از نزدیک‌ترین نقطه به waypoint پارکینگ (index 86) تا نزدیک‌ترین نقطه به قله (index 201) بریده شده است؛ تمام مسیر دسترسی جاده‌ای پیش از پارکینگ حذف شده است.",
+          "فاصلهٔ برش‌خورده ۱۱٫۳۹ کیلومتر و صعود نرم‌شدهٔ ثبت دستگاه حدود ۱۹۰۴ متر است؛ ارتفاع GPX مرجع تقریبی است و جای DEM نقاط را نمی‌گیرد.",
+          "گزارش Wikiloc این برنامه را یک‌روزه و بسیار سنگین می‌خواند و نبود آب در مسیر و نیاز به هماهنگی امنیتی محلی را گوشزد می‌کند؛ گزارش مستقل شنسکی نیز صعود طولانی و شیب‌دار از گواز را شرح می‌دهد. این مسیر مناسب مبتدی یا طبیعت‌گردی سبک نیست.",
+          "زمان ۹ ساعته برآورد محافظه‌کارانه برای بخش پارکینگ تا قله است، نه زمان دستگاه؛ گزارش‌های مستقل برای بخش‌های متفاوت زمان‌های حدود ۸ ساعت می‌دهند، بنابراین عدم‌قطعیت زیاد ثبت شده است.",
+          "مختصات گزارش‌شدهٔ گوسفندسرا از نزدیک‌ترین نقطهٔ ترک حدود ۲۰۰ متر فاصله دارد و ارتفاع میدانی گزارش با DEM اختلاف دارد؛ این دو مورد به‌عنوان محدودیت مکانی/ارتفاعی ثبت شده‌اند."
+        ]
+      },
+      "public_point_notes": {
+        "bazman-parking": "از پارکینگ تا قله آب وجود ندارد؛ صعود بسیار سنگین است. پیش از حرکت، امنیت منطقه را با راهنمای محلی بررسی کنید.",
+        "bazman-last-sheepfold": "گزارش مسیر برای این گوسفندسرا ارتفاع متفاوتی از DEM می‌دهد؛ موقعیت و ارتفاع تقریبی‌اند.",
+        "bazman-peak": "این مسیر صعودی بسیار سنگین و طولانی است و برای افراد مبتدی مناسب نیست."
+      }
+    }
+  },
+  "point": {
+    "slug": "darak-beach",
+    "tile_name": "ساحل درک",
+    "name": "ساحل درک",
+    "short_category": "ساحل",
+    "category": "سواحل مکران",
+    "category_key": "beach",
+    "region": "درک · زرآباد · سیستان و بلوچستان",
+    "elevation_m": 4,
+    "latitude": 25.46927,
+    "longitude": 59.47222,
+    "image": "/images/home-scene.png",
+    "image_alt": "ساحل درک در کنار روستای درک در سواحل مکران",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ساحل و روستای درک",
+      "روستای درک",
+      "درک زرآباد",
+      "ساحل درک زرآباد",
+      "Darak Beach",
+      "Darak Village"
+    ],
+    "climate": "desert"
+  },
+  "primary_point": "darak-beach"
+}
