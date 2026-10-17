@@ -1,0 +1,169 @@
+{
+  "catalog_version": "hawatch-sangar-owrim-v1",
+  "primary_point": "sangar-owrim",
+  "weather_points": {
+    "sangar-owrim": {
+      "name": "قلهٔ سنگر",
+      "page_name": "قلهٔ سنگر سوادکوه",
+      "short_label": "سنگر سوادکوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "قله سنگر اوریم",
+        "قلهٔ سنگر اوریم",
+        "قله سنگر سوادکوه",
+        "سنگر اوریم",
+        "Sangar Owrim",
+        "Sangar Savadkuh"
+      ],
+      "identity_summary": "قلهٔ سنگر در شرق قلهٔ اوریم و بالادست روستای اوریم، سوادکوهِ مازندران؛ قله‌ای مستقل از اوریم.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-wrym-t-qlh-sngr-pnjshnbh-1404-02-04-210451775",
+        "https://ertefaplus.blogfa.com/post/26",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%A7%D9%88%D8%B1%DB%8C%D9%85/"
+      ],
+      "latitude": 35.94571,
+      "longitude": 52.949818,
+      "elevation_m": 2662,
+      "status": "provisional",
+      "elevation_source": "مختصات قلهٔ نام‌دار در ترک ۲۰۲۵؛ Open-Meteo GLO-90 برابر ۲۶۶۲ متر و سازگار با بازهٔ گزارش‌شدهٔ حدود ۲۶۰۰ تا ۲۷۰۰ متر.",
+      "climate": "alpine"
+    },
+    "sangar-owrim-village": {
+      "name": "روستای اوریم",
+      "page_name": "روستای اوریم در مسیر سنگر",
+      "short_label": "اوریم",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": ["اوریم سوادکوه", "روستای وریم", "Owrim village"],
+      "identity_summary": "نقطهٔ آغاز پیمایش ترک صعود سنگر در روستای اوریم؛ در این کاتالوگ فقط مبدأ Route است و صفحهٔ مقصد مستقل نمی‌سازد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-wrym-t-qlh-sngr-pnjshnbh-1404-02-04-210451775",
+        "https://ertefaplus.blogfa.com/post/26"
+      ],
+      "latitude": 35.945195,
+      "longitude": 52.976988,
+      "elevation_m": 1764,
+      "status": "provisional",
+      "elevation_source": "مختصات شروع ترک در روستای اوریم؛ Open-Meteo GLO-90 برابر ۱۷۶۴ متر و با ارتفاع تقریبی ۱۷۵۰ متر در گزارش صعود سازگار است.",
+      "climate": "forest_fog"
+    },
+    "sangar-owrim-east-ridge": {
+      "name": "یال شرقی سنگر",
+      "page_name": "یال شرقی قلهٔ سنگر",
+      "short_label": "یال شرقی سنگر",
+      "place_type": "ridge",
+      "category_key": "ridge",
+      "aliases": ["یال سرسبز مسیر سنگر", "خط‌الرأس شرقی سنگر"],
+      "identity_summary": "یال شرقی‌ای که مسیر صعود از اوریم به آن می‌رسد و سپس روی خط‌الرأس تا قله ادامه می‌یابد؛ در ترک با waypoint یال سرسبز صعود نشانه‌گذاری شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-wrym-t-qlh-sngr-pnjshnbh-1404-02-04-210451775",
+        "https://ertefaplus.blogfa.com/post/26"
+      ],
+      "latitude": 35.951327,
+      "longitude": 52.965273,
+      "elevation_m": 2207,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint «یال سرسبز صعود» در ترک؛ Open-Meteo GLO-90 برابر ۲۲۰۷ متر.",
+      "climate": "forest_fog"
+    }
+  },
+  "routes": {
+    "sangar-owrim": {
+      "slug": "sangar-owrim",
+      "title": "روستای اوریم تا قلهٔ سنگر",
+      "subtitle": "یال شرقی پرشیب و بخش سنگی تا خط‌الرأس و قله",
+      "trail_label": "مسیر یال شرقی سنگر",
+      "origin": "روستای اوریم",
+      "target_label": "قلهٔ سنگر سوادکوه",
+      "region": "اوریم · سوادکوه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sangar-owrim-village",
+        "sangar-owrim-east-ridge",
+        "sangar-owrim"
+      ],
+      "distance_km": 3.81,
+      "ascent_m": 904,
+      "one_way_minutes": 180,
+      "default_start_minutes": 420,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+open-meteo-dem+web-reports-v1",
+        "version": "sangar-owrim-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-wrym-t-qlh-sngr-pnjshnbh-1404-02-04-210451775",
+          "https://ertefaplus.blogfa.com/post/26"
+        ],
+        "evidence_tracks": [
+          "tracks/sangar-savadkuh/sangar-owrim-village-to-summit-2025-roundtrip.gpx"
+        ],
+        "cumulative_minutes": {
+          "sangar-owrim-village": 0,
+          "sangar-owrim-east-ridge": 100,
+          "sangar-owrim": 180
+        },
+        "notes": [
+          "ترک ۲۰۲۵ از مبدأ اوریم تا نخستین رسیدن به قله بریده شده است: ۳٫۸۱ کیلومتر یک‌طرفه؛ صعود ۹۰۴ متر از پروفایل Open-Meteo GLO-90 با نمونه‌برداری ۵۰ متری و هموارسازی ۵ نمونه‌ای محاسبه شده، نه از ارتفاع خام GPX.",
+          "گزارش پیمایش زمان صعود اوریم تا سنگر را حدود ۳ ساعت ثبت می‌کند؛ زمان کل حلقه شامل فرود متفاوت و توقف‌هاست و مبنای ETA یک‌طرفه نیست. waypoint یال سرسبز ترک حدود ۹۶ دقیقه پس از شروع ثبت شده است.",
+          "گزارش‌ها شیب تند و بخش سنگی را ذکر می‌کنند و در بارندگی لغزندگی خاک را هشدار می‌دهند. شواهد بررسی‌شده الزام طناب یا صخره‌نوردی فنی برای مسیر اصلی را ذکر نمی‌کنند؛ صعود با ترک و در شرایط خشک و ایمن انجام شود."
+        ]
+      },
+      "public_point_notes": {
+        "sangar-owrim-village": "مبدأ مسیر در روستای اوریم است؛ این رکورد فقط نقطهٔ route است و مقصد مستقل جداگانه نیست.",
+        "sangar-owrim-east-ridge": "مسیر تا یال پرشیب است؛ پس از بارندگی خاک می‌تواند لغزنده شود.",
+        "sangar-owrim": "در بخش بالایی مسیر زمین سنگی می‌شود؛ ترک ثبت‌شده را دنبال کنید."
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/pymysh-z-rwsty-wrym-t-qlh-sngr-pnjshnbh-1404-02-04-210451775",
+        "https://ertefaplus.blogfa.com/post/26",
+        "https://kuhnavardi.com/%D9%82%D9%84%D9%87-%D8%A7%D9%88%D8%B1%DB%8C%D9%85/"
+      ],
+      "evidence_tracks": [
+        "tracks/sangar-savadkuh/sangar-owrim-village-to-summit-2025-roundtrip.gpx"
+      ]
+    }
+  },
+  "point": {
+    "slug": "sangar-owrim",
+    "tile_name": "سنگر سوادکوه",
+    "name": "قلهٔ سنگر",
+    "short_category": "قله",
+    "category": "قله‌های سوادکوه",
+    "category_key": "mountain",
+    "region": "اوریم · سوادکوه · مازندران",
+    "latitude": 35.94571,
+    "longitude": 52.949818,
+    "elevation_m": 2662,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای قلهٔ سنگر در منطقهٔ اوریم سوادکوه",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قله سنگر اوریم",
+      "قلهٔ سنگر اوریم",
+      "قله سنگر سوادکوه",
+      "سنگر اوریم",
+      "Sangar Owrim",
+      "Sangar Savadkuh"
+    ]
+  }
+}

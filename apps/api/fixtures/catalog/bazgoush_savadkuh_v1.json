@@ -1,0 +1,201 @@
+{
+  "catalog_version": "hawatch-bazgoush-savadkuh-v1",
+  "primary_point": "bazgoush-savadkuh",
+  "weather_points": {
+    "bazgoush-savadkuh": {
+      "name": "قلهٔ بزگوش",
+      "page_name": "قلهٔ بزگوش سوادکوه",
+      "short_label": "بزگوش سوادکوه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "قله بزگوش سوادکوه",
+        "قلهٔ بزکش سوادکوه",
+        "قله بزکش ورسک",
+        "بزگوش ورسک",
+        "Bazgoush Savadkuh",
+        "Bazkosh Veresk"
+      ],
+      "identity_summary": "قلهٔ بزگوش در منطقهٔ ورسک و اجتِ سوادکوه، مازندران؛ مستقل از قلهٔ بزقوش آذربایجان شرقی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061",
+        "https://t.me/s/dahatourss"
+      ],
+      "latitude": 35.898722,
+      "longitude": 52.942626,
+      "elevation_m": 2813,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار قله در ترک و گزارش صعود؛ Open-Meteo GLO-90 برابر ۲۸۱۳ متر، در بازهٔ گزارش‌های میدانی حدود ۲۸۴۰ تا ۲۸۵۰ متر.",
+      "climate": "alpine"
+    },
+    "bazgoush-savadkuh-trailhead": {
+      "name": "پارکینگ مسیر بزگوش پس از اجت",
+      "page_name": "پارکینگ مسیر قلهٔ بزگوش پس از اجت",
+      "short_label": "پارکینگ بزگوش",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "aliases": [
+        "محل پارک خودرو مسیر بزگوش",
+        "پارکینگ هلی‌چشمه",
+        "Bazgoush trailhead parking"
+      ],
+      "identity_summary": "نقطهٔ آغاز ترک پیاده روی جادهٔ دسترسی پس از اجت؛ در گزارش مستقل محل پارک خودرو با ارتفاع حدود ۱۹۸۹ متر ثبت شده است. این نقطه صفحهٔ مقصد جداگانه نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061"
+      ],
+      "latitude": 35.906469,
+      "longitude": 52.961262,
+      "elevation_m": 1968,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 برابر ۱۹۶۸ متر؛ با ارتفاع ۱۹۸۹ متری محل پارک در گزارش ۲۰۲۴ سازگار است. waypoint استارت داخل GPX در مختصات دیگری ثبت شده و با هندسهٔ ترک تطبیق ندارد؛ برای مبدأ استفاده نشده است.",
+      "climate": "alpine"
+    },
+    "bazgoush-savadkuh-spring": {
+      "name": "چشمهٔ زیر گردنهٔ بزگوش",
+      "page_name": "چشمهٔ زیر گردنهٔ قلهٔ بزگوش",
+      "short_label": "چشمهٔ زیر گردنه",
+      "place_type": "spring",
+      "category_key": "spring",
+      "aliases": ["چشمه آب قابل آشامیدن بزگوش", "چشمهٔ مسیر بزگوش"],
+      "identity_summary": "چشمهٔ نام‌برده‌شده در گزارش صعود و waypoint ترک، پیش از گردنه و یال قله؛ نقطهٔ میانی Route است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061"
+      ],
+      "latitude": 35.89656,
+      "longitude": 52.953196,
+      "elevation_m": 2377,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 برابر ۲۳۷۷ متر؛ ارتفاع خام GPX فقط برای تطبیق مکانی مرجع بوده است.",
+      "climate": "alpine"
+    },
+    "bazgoush-savadkuh-ridge": {
+      "name": "خط‌الرأس بزگوش",
+      "page_name": "خط‌الرأس قلهٔ بزگوش",
+      "short_label": "خط‌الرأس بزگوش",
+      "place_type": "ridge",
+      "category_key": "ridge",
+      "aliases": ["ابتدای خط‌الرأس بزگوش", "یال جنوبی قلهٔ بزگوش"],
+      "identity_summary": "نقطهٔ آغاز خط‌الرأس نهایی در waypoint ترک و گزارش صعود؛ عارضهٔ واقعی میانی در راه قله.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061"
+      ],
+      "latitude": 35.899568,
+      "longitude": 52.946049,
+      "elevation_m": 2765,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 برابر ۲۷۶۵ متر؛ مختصات با waypoint «پایان شیب شروع خط‌الرأس قله بزکش» تطبیق دارد.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {
+    "bazgoush-savadkuh-hellicheshmeh": {
+      "slug": "bazgoush-savadkuh-hellicheshmeh",
+      "title": "پارکینگ هلی‌چشمه تا قلهٔ بزگوش",
+      "subtitle": "صعود پرشیب از چشمهٔ زیر گردنه و خط‌الرأس تا قله",
+      "trail_label": "مسیر جنوب‌شرقی بزگوش",
+      "origin": "پارکینگ مسیر بزگوش پس از اجت",
+      "target_label": "قلهٔ بزگوش سوادکوه",
+      "region": "ورسک · سوادکوه · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "bazgoush-savadkuh-trailhead",
+        "bazgoush-savadkuh-spring",
+        "bazgoush-savadkuh-ridge",
+        "bazgoush-savadkuh"
+      ],
+      "distance_km": 3.26,
+      "ascent_m": 843,
+      "one_way_minutes": 210,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+open-meteo-dem+web-reports-v1",
+        "version": "bazgoush-savadkuh-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+          "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061",
+          "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-qlh-bzgwsh-swdkhwh-90960823",
+          "https://t.me/s/dahatourss"
+        ],
+        "evidence_tracks": [
+          "tracks/bazgush-savadkuh/bazgoush-savadkuh-hellicheshmeh-parking-to-summit-2025.gpx"
+        ],
+        "cumulative_minutes": {
+          "bazgoush-savadkuh-trailhead": 0,
+          "bazgoush-savadkuh-spring": 70,
+          "bazgoush-savadkuh-ridge": 170,
+          "bazgoush-savadkuh": 210
+        },
+        "notes": [
+          "ترک ۲۰۲۵ در مسیر صعود تا نخستین رسیدن به قله بریده شده است: ۳٫۲۶ کیلومتر یک‌طرفه؛ صعود ۸۴۳ متر از پروفایل نمونه‌برداری‌شدهٔ DEM اپن‌متئو GLO-90 در گام ۵۰ متر و هموارسازی ۵ نمونه‌ای محاسبه شده، نه از ارتفاع خام GPX.",
+          "گزارش ۲۰۲۴ زمان صعود را ۲ ساعت و ۳۰ دقیقه ثبت می‌کند؛ ترک گروهی ۲۰۲۵ از همین جبهه حدود ۴ ساعت و ۳ دقیقه تا نخستین رسیدن به قله ثبت کرده است. زمان متوسط ۳ ساعت و ۳۰ دقیقه با عدم‌قطعیت زیاد میان این دو شاهد برآورد شده؛ برنامهٔ ۹ ساعتهٔ گروه داها کل برنامه است و ETA یک‌طرفه نیست.",
+          "ترک دانلودشده یک waypoint استارت ناسازگار با خط حرکت دارد؛ مبدأ این کاتالوگ از اولین نقطهٔ واقعی track و محل پارک گزارش‌شده تعیین شده است. دسترسی جاده‌ای آفرودی تا پای‌کار جزو مسیر پیاده نیست.",
+          "منابع مسیر شیب تند را گزارش می‌کنند؛ برچسب دشواری به‌تنهایی موجب حذف نشده است. مسیر اصلیِ مستند پیاده‌روی است و در منابع بررسی‌شده الزام طناب یا صخره‌نوردی فنی گزارش نشده؛ ترک مناسب و آشنایی با منطقه لازم است."
+        ]
+      },
+      "public_point_notes": {
+        "bazgoush-savadkuh-trailhead": "ترک در parking واقعی پس از روستای اجت آغاز می‌شود؛ راه خاکی دسترسی با خودرو، جزو مسیر پیاده نیست.",
+        "bazgoush-savadkuh": "مسیر پرشیب است؛ صعود را با ترک معتبر و آمادگی مناسب انجام دهید."
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-bzkhshbzgwsh-bh-rtf-3000-236378573",
+        "https://www.wikiloc.com/mountaineering-trails/msyr-swd-qlh-bzgwsh-swdkhwh-173721061",
+        "https://www.wikiloc.com/hiking-trails/msyr-rft-w-brgsht-qlh-bzgwsh-swdkhwh-90960823",
+        "https://t.me/s/dahatourss"
+      ],
+      "evidence_tracks": [
+        "tracks/bazgush-savadkuh/bazgoush-savadkuh-hellicheshmeh-parking-to-summit-2025.gpx"
+      ]
+    }
+  },
+  "point": {
+    "slug": "bazgoush-savadkuh",
+    "tile_name": "بزگوش سوادکوه",
+    "name": "قلهٔ بزگوش",
+    "short_category": "قله",
+    "category": "قله‌های سوادکوه",
+    "category_key": "mountain",
+    "region": "ورسک · سوادکوه · مازندران",
+    "latitude": 35.898722,
+    "longitude": 52.942626,
+    "elevation_m": 2813,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای قلهٔ بزگوش در منطقهٔ سوادکوه مازندران",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قله بزگوش سوادکوه",
+      "قلهٔ بزکش سوادکوه",
+      "قله بزکش ورسک",
+      "بزگوش ورسک",
+      "Bazgoush Savadkuh",
+      "Bazkosh Veresk"
+    ]
+  }
+}
