@@ -168,6 +168,41 @@ def test_public_catalog_endpoints_advertise_short_edge_cache(api_client, seeded)
 
 
 @pytest.mark.django_db
+def test_routes_index_paginates_ids_before_loading_route_points(api_client, seeded):
+    from django.test.utils import CaptureQueriesContext
+
+    with CaptureQueriesContext(connection) as queries:
+        first = api_client.get("/api/v1/routes/?page=1")
+    assert first.status_code == 200
+    first_body = first.json()
+    total = Route.objects.filter(is_active=True).count()
+    assert total > DESTINATIONS_PAGE_SIZE
+    assert first_body["pagination"]["total"] == total
+    assert len(first_body["routes"]) == DESTINATIONS_PAGE_SIZE
+    assert first_body["pagination"]["has_next"] is True
+
+    route_point_queries = [query["sql"].lower() for query in queries if "routes_routepoint" in query["sql"].lower()]
+    assert len(route_point_queries) == 2
+    assert all(" in " in sql for sql in route_point_queries)
+
+    second = api_client.get("/api/v1/routes/?page=2")
+    assert second.status_code == 200
+    second_slugs = {route["slug"] for route in second.json()["routes"]}
+    first_slugs = {route["slug"] for route in first_body["routes"]}
+    assert len(second_slugs) == DESTINATIONS_PAGE_SIZE
+    assert first_slugs.isdisjoint(second_slugs)
+
+    search = api_client.get("/api/v1/routes/?query=توچال")
+    assert search.status_code == 200
+    assert "tochal-darband" in {route["slug"] for route in search.json()["routes"]}
+
+    no_matches = api_client.get("/api/v1/routes/?query=zzzxxyy-no-match")
+    assert no_matches.status_code == 200
+    assert no_matches.json()["routes"] == []
+    assert no_matches.json()["pagination"]["total"] == 0
+
+
+@pytest.mark.django_db
 def test_all_active_catalog_points_honor_catalog_indexability(seeded):
     public_points = WeatherPoint.objects.filter(is_active=True).exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
     desired = load_packaged_catalogs()

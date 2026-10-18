@@ -17,6 +17,11 @@
 - HTML عمومی Django و HTML مستقل صفحات وب، bootstrap کوچک یکسانی دارند.
   HTML مقصد و مسیر، payload ناشناسِ دقیقاً همان `cached_week` API داخلی را
   با `json_script` امن همراه دارد؛ renderer برای اولین نمایش GET جدا ندارد.
+  دادهٔ route-week از قرارداد `week-2` استفاده می‌کند: رکوردها tupleهای دارای
+  `record_fields` مشترک و تجهیزات با ارجاع per-record هستند. کلاینت فقط همین
+  نسخه را می‌پذیرد؛ cache قبلی با namespaceٔ `week-11` جداست. HTML JSON فارسی را
+  به UTF-8 مستقیم serialize می‌کند و escaping امنیتی `<`, `>` و `&` را حفظ
+  می‌کند.
   تولید payload فقط از Redis/DB است، نه provider، حساب کاربری یا HTTP داخلی.
   Home هم JSON اولیه دارد. در HTML مستقل بدون داده، فهرست و اشتراک، bootstrap
   اولین GET لازم را آغاز و promise آن را یک‌بار به برنامه تحویل می‌دهد.

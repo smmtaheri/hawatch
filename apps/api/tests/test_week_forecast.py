@@ -61,8 +61,11 @@ def test_cache_invalidation_follows_committed_data(week_seed,django_capture_on_c
 
 def test_route_week_uses_existing_pace_rounding_and_midnight_matching(week_seed):
     body=build_week('route','tochal-darband',week_seed)
-    assert all(row['condition'] for row in body['records'])
-    assert all(row['heat_index_status'] in {'available','not_applicable','missing'} for row in body['records'])
+    assert body['schema_version']=='week-2'
+    assert body['record_fields'][-1]=='equipment_ids'
+    rows=[dict(zip(body['record_fields'],row)) for row in body['records']]
+    assert all(row['condition'] for row in rows)
+    assert all(row['heat_index_status'] in {'available','not_applicable','missing'} for row in rows)
     route=Route.objects.get(slug='tochal-darband')
     points=list(route.points.all())
     mean_elevation_m=route_mean_elevation_m(points)
@@ -84,11 +87,21 @@ def test_route_week_uses_existing_pace_rounding_and_midnight_matching(week_seed)
         for day,hour in [(0,0),(0,23),(7,23)]:
             for i,index in enumerate(body['plans'][f'{day}:{speed}:{hour}']['records']):
                 assert index is not None
-                row=body['records'][index]
+                row=rows[index]
                 target=localize_dt(week_seed+timedelta(days=day),hour)+timedelta(minutes=body['offsets'][speed][i])
                 from datetime import datetime
                 assert abs(datetime.fromisoformat(row['forecast_at'])-target)<=timedelta(minutes=90)
                 assert ForecastRecord.objects.filter(weather_point=points[i].weather_point,forecast_at=datetime.fromisoformat(row['forecast_at'])).exists()
+    assert all('equipment' not in plan for plan in body['plans'].values())
+    assert body['equipment'] and all({'id','name','reason'} <= item.keys() for item in body['equipment'])
+    for plan in body['plans'].values():
+        for point_index, record_index in enumerate(plan['records']):
+            if record_index is None:
+                continue
+            row=rows[record_index]
+            for equipment_index in row['equipment_ids']:
+                assert 0 <= equipment_index < len(body['equipment'])
+                assert points[point_index].weather_point_id is not None
 
 def test_precipitation_uses_preceding_hour_and_incomplete_is_not_zero(week_seed):
     point=WeatherPoint.objects.get(slug='tochal');start=localize_dt(week_seed,0)

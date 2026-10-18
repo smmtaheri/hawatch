@@ -55,6 +55,26 @@ def _minimal_ssr_response(path: str):
     )
 
 
+def test_embedded_forecast_keeps_persian_readable_and_script_safe():
+    response = _render(
+        RequestFactory().get("/points/sample"),
+        page={
+            "kind": "point",
+            "title": "آب‌وهوای آزمایشی | هواچ",
+            "description": "شرح آزمایشی",
+            "canonical": "https://hawatch.ir/points/sample",
+            "headline": "آزمایشی",
+            "summary": "خلاصه",
+            "indexable": True,
+            "initial_forecast": {"label": "آزمایشی", "unsafe": "</script>&<"},
+        },
+    )
+    body = response.content.decode()
+    assert '"label":"آزمایشی"' in body
+    assert "\\u003C/script\\u003E\\u0026\\u003C" in body
+    assert '"label":"\\u0622\\u0632\\u0645\\u0627\\u06cc\\u0634\\u06cc"' not in body
+
+
 @override_settings(GA4_MEASUREMENT_ID="G-B9F7GYQ0X8")
 def test_public_ssr_exposes_only_the_configured_ga4_measurement_id():
     response = _minimal_ssr_response("/points/sample?date=2026-10-12&period=night")

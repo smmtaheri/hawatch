@@ -15,7 +15,7 @@ export type WeekInterval = {
   warnings: Array<{ severity: string; metrics: string[]; metric_severities?: Record<string, string> }>;
   complete: boolean;
 };
-export type Week = { kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, WeekInterval[][]>; points?: Array<{ slug: string; name: string }>; timing_pending?: boolean };
+export type Week = { schema_version: 'week-2'; kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, WeekInterval[][]>; points?: Array<{ slug: string; name: string; weather_point_id: number | null; distance_km: number | null }>; timing_pending?: boolean; record_fields?: string[]; records?: unknown[][]; plans?: Record<string, { records: Array<number | null> }>; equipment?: Array<{ id: string; name: string; reason: string }> };
 
 const cache = new Map<string, { data: Week; expires: number }>();
 const pending = new Map<string, Promise<Week>>();
@@ -46,7 +46,7 @@ function embeddedWeek(kind: string, slug: string): { data: Week; age: number } |
     const initial = JSON.parse(text || '') as { payload: Week; rendered_at: string };
     const data = initial.payload;
     const age = Math.max(0, (Date.now() - Date.parse(initial.rendered_at)) / 1000);
-    if (!Number.isFinite(age) || data.kind !== kind || data.subject.slug !== slug ||
+    if (!Number.isFinite(age) || data.schema_version !== 'week-2' || data.kind !== kind || data.subject.slug !== slug ||
         data.range_start !== tehranDate() || !Array.isArray(data.days) || data.days.length !== 8 ||
         !Number.isFinite(data.cache_max_age_seconds) || age >= data.cache_max_age_seconds) return null;
     return { data, age };
@@ -79,6 +79,7 @@ function requestWeek(kind: string, slug: string): Promise<Week> {
   const request = response.then(async r => {
     if (!r.ok) throw Object.assign(new Error(r.status === 404 ? 'نقطه یا مسیر پیدا نشد' : 'دریافت پیش‌بینی ممکن نشد'), { status: r.status });
     const data = await r.json() as Week;
+    if (data.schema_version !== 'week-2') throw new Error('نسخهٔ دادهٔ پیش‌بینی پشتیبانی نمی‌شود');
     const age = Number(r.headers.get('Age') || 0);
     rememberWeek(key, data, age);
     return data;

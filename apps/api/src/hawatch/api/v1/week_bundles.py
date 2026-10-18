@@ -16,6 +16,7 @@ from hawatch.integrations.weather.equipment import suggest_equipment
 from .serializers import get_point, get_route, serialize_point_profile, serialize_route, serialize_route_summary, reading_payload, route_has_usable_timing, point_discovery_payload
 
 FIELDS = ("temperature_c", "apparent_temperature_c", "wind_speed_kmh", "wind_gust_kmh", "wind_direction_deg", "relative_humidity_pct", "visibility_km", "freezing_level_m", "uv_index", "snowfall_cm")
+ROUTE_RECORD_FIELDS = (*FIELDS, "forecast_at", "generated_at", "precipitation_mm", "rain_mm", "precipitation_from", "precipitation_to", "weather_code", "condition", "is_day", "heat_index_c", "heat_index_status", "warnings", "state", "data_quality", "equipment_ids")
 
 def records_for(ids, start, end):
     qs = ForecastRecord.objects.filter(weather_point_id__in=ids, forecast_at__gte=start-timedelta(hours=24), forecast_at__lte=end).select_related("weather_point").order_by("forecast_at", "pk")
@@ -87,7 +88,7 @@ def aggregate(rows, start, hours):
 def build_week(kind, slug, today):
     start = localize_dt(today, 0)
     days = [day_payload(today+timedelta(days=i), today) for i in range(8)]
-    base = {"schema_version": "week-1", "kind": kind, "timezone": "Asia/Tehran", "days": days,
+    base = {"schema_version": "week-2", "kind": kind, "timezone": "Asia/Tehran", "days": days,
             "range_start": today.isoformat(), "range_end": (today+timedelta(days=7)).isoformat(),
             "cache_max_age_seconds": 120, "stale_after_hours": settings.FORECAST_STALE_AFTER_HOURS}
     if kind == "point":
@@ -125,18 +126,17 @@ def build_week(kind, slug, today):
         for i, r in enumerate(rows):
             by_point[r.weather_point_id].append((r.forecast_at, i, r))
         times = {key: [a[0] for a in values] for key,values in by_point.items()}
-        pool = []
-        gear_index = {}
+        equipment = []
+        equipment_index = {}
         row_gear = {}
-        import json
         for i, row in enumerate(rows):
             row_gear[i] = []
             for item in suggest_equipment([row]):
-                key = json.dumps(item, sort_keys=True)
-                if key not in gear_index:
-                    gear_index[key] = len(pool)
-                    pool.append(item)
-                row_gear[i].append(gear_index[key])
+                key = item["id"]
+                if key not in equipment_index:
+                    equipment_index[key] = len(equipment)
+                    equipment.append({"id": key, "name": item["name"], "reason": item["reason"]})
+                row_gear[i].append(equipment_index[key])
         plans = {}
         for di in range(8):
             for speed, durations in offsets.items():
@@ -151,18 +151,23 @@ def build_week(kind, slug, today):
                             indices.append(match[1]); selected.append(match[2])
                         else:
                             indices.append(None)
-                    equipment = list(dict.fromkeys(g for index in indices if index is not None for g in row_gear[index]))
-                    plans[f"{di}:{speed}:{hour}"] = {"records": indices, "equipment": equipment}
+                    plans[f"{di}:{speed}:{hour}"] = {"records": indices}
         # Ship only hours actually referenced by one of the selectable plans.
         used_rows = sorted({i for plan in plans.values() for i in plan["records"] if i is not None})
         row_remap = {old:new for new,old in enumerate(used_rows)}
-        used_gear = sorted({i for plan in plans.values() for i in plan["equipment"]})
+        used_gear = sorted({gear for i in used_rows for gear in row_gear[i]})
         gear_remap = {old:new for new,old in enumerate(used_gear)}
         for plan in plans.values():
             plan["records"] = [row_remap[i] if i is not None else None for i in plan["records"]]
-            plan["equipment"] = [gear_remap[i] for i in plan["equipment"]]
+        compact_records = []
+        for old_index in used_rows:
+            reading = public_reading(rows[old_index])
+            compact_records.append([
+                *(reading[field] for field in ROUTE_RECORD_FIELDS[:-1]),
+                [gear_remap[gear] for gear in row_gear[old_index]],
+            ])
         rows = [rows[i] for i in used_rows]
-        pool = [pool[i] for i in used_gear]
+        equipment = [equipment[i] for i in used_gear]
         distance = 0
         distances = []
         valid_distance = True
@@ -171,7 +176,7 @@ def build_week(kind, slug, today):
                 if p.segment_distance_m is None: valid_distance = False
                 else: distance += p.segment_distance_m
             distances.append(round(distance/1000,2) if valid_distance else None)
-        base.update(subject=serialize_route(route), related_routes=[serialize_route_summary(r) for r in Route.objects.filter(points__weather_point=points[-1].weather_point, is_active=True).distinct().order_by("sort_order", "slug")] if points else [], points=[{"slug": p.weather_point.slug if p.weather_point_id else None, "name": p.name, "weather_point_id": p.weather_point_id, "distance_km": distances[i]} for i,p in enumerate(points)], offsets=offsets, records=[public_reading(r) for r in rows], plans=plans, equipment=pool, timing_pending=not timed)
+        base.update(subject=serialize_route(route), related_routes=[serialize_route_summary(r) for r in Route.objects.filter(points__weather_point=points[-1].weather_point, is_active=True).distinct().order_by("sort_order", "slug")] if points else [], points=[{"slug": p.weather_point.slug if p.weather_point_id else None, "name": p.name, "weather_point_id": p.weather_point_id, "distance_km": distances[i]} for i,p in enumerate(points)], offsets=offsets, record_fields=ROUTE_RECORD_FIELDS, records=compact_records, plans=plans, equipment=equipment, timing_pending=not timed)
     freshness_rows = [r for r in rows if r.forecast_at >= start] if kind == "point" else rows
     base["last_generated_at"] = min((r.generated_at for r in freshness_rows), default=None)
     if base["last_generated_at"] is not None: base["last_generated_at"] = base["last_generated_at"].isoformat()

@@ -4,7 +4,7 @@ from datetime import timedelta, timezone as dt_timezone
 
 from django.core.paginator import EmptyPage, Paginator
 from django.db import connection
-from django.db.models import Max, OuterRef, Subquery
+from django.db.models import Case, Count, IntegerField, Max, OuterRef, Prefetch, Subquery, When
 from django.http import HttpResponse
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
@@ -45,7 +45,7 @@ from hawatch.modules.catalog.runtime import (
 from hawatch.modules.catalog.home import home_catalog_data
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, WeatherPoint
-from hawatch.modules.routes.models import Route
+from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.integrations.weather.ingest import snapshot_freshness
 from hawatch.modules.accounts.services import decorate_forecast_payload, resolve_forecast_access
 
@@ -239,7 +239,6 @@ def destinations_index(request):
 
 @api_view(["GET"])
 def routes_index(request):
-    from django.db.models import Count
     from .serializers import serialize_route_summary
 
     raw_page = request.query_params.get("page", "1")
@@ -250,19 +249,55 @@ def routes_index(request):
     if page_number < 1:
         raise ValidationError({"page": "page باید یک عدد صحیح مثبت باشد."})
     query = SearchQuery.parse(request.query_params.get("query", ""))
-    rows = Route.objects.filter(is_active=True).annotate(point_count=Count("points")).prefetch_related("points__weather_point").order_by("region", "sort_order", "slug")
-    rows = [
-        route for route in rows if not query.compact or query.matches(route_search_terms(route, route.points.all()))
-    ]
-    paginator = Paginator(rows, DESTINATIONS_PAGE_SIZE)
+    ordering = ("region", "sort_order", "slug")
+    rows = Route.objects.filter(is_active=True)
+    if query.compact:
+        search_points = RoutePoint.objects.select_related("weather_point").only(
+            "id",
+            "route_id",
+            "weather_point_id",
+            "weather_point__id",
+            "weather_point__is_active",
+            "weather_point__slug",
+            "weather_point__name",
+            "weather_point__page_name",
+            "weather_point__short_label",
+            "weather_point__importance",
+            "weather_point__aliases",
+            "weather_point__region",
+        )
+        search_rows = rows.only("id", "title", "origin", "target_label", "region").prefetch_related(
+            Prefetch("points", queryset=search_points)
+        ).order_by(*ordering)
+        route_ids = [
+            route.pk
+            for route in search_rows
+            if query.matches(route_search_terms(route, route.points.all()))
+        ]
+    else:
+        route_ids = rows.order_by(*ordering).values_list("pk", flat=True)
+
+    paginator = Paginator(route_ids, DESTINATIONS_PAGE_SIZE)
     try:
         page = paginator.page(page_number)
     except EmptyPage as exc:
         raise ValidationError({"page": "این بخش از مسیرها وجود ندارد."}) from exc
     has_next = page.has_next()
+    page_ids = list(page.object_list)
+    page_routes = Route.objects.filter(pk__in=page_ids).annotate(point_count=Count("points")).prefetch_related(
+        "points__weather_point"
+    )
+    if page_ids:
+        route_order = Case(
+            *(When(pk=route_id, then=position) for position, route_id in enumerate(page_ids)),
+            output_field=IntegerField(),
+        )
+        page_routes = page_routes.order_by(route_order)
+    else:
+        page_routes = page_routes.none()
     results = [
         {**serialize_route_summary(route, points=list(route.points.all())), "region": route.region, "point_count": route.point_count}
-        for route in page.object_list
+        for route in page_routes
     ]
     response = Response({
         "routes": results,

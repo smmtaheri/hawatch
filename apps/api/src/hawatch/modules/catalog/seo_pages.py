@@ -59,6 +59,7 @@ class CompactJSONEncoder(DjangoJSONEncoder):
 
     def __init__(self, *args, **kwargs):
         kwargs["separators"] = (",", ":")
+        kwargs["ensure_ascii"] = False
         super().__init__(*args, **kwargs)
 
 
