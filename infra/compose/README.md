@@ -58,3 +58,14 @@ docker compose --env-file .env -f infra/compose/compose.yaml --profile observabi
 ```
 
 جزئیات token، metricها و retention در `docs/observability.md` است.
+
+برای hotfix صرفاً کد، زمانی که همگام‌سازی کاتالوگ نباید اجرا شود:
+
+```bash
+HAWATCH_SKIP_CATALOG_SYNC=1 deploy-hawatch
+```
+
+این گزینه به سرور منتقل می‌شود، در `.env` ذخیره نمی‌شود و fingerprint
+کاتالوگ را تغییر نمی‌دهد. build، انتشار فایل‌ها و بررسی سلامت مثل قبل اجرا
+می‌شوند؛ مقصدها، RoutePointها و فرود مسیرها همگام‌سازی نمی‌شوند. دیپلوی عادی
+بدون این گزینه همچنان سینک کاتالوگ را طبق fingerprint انجام می‌دهد.

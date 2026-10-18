@@ -4,8 +4,45 @@ import { api } from '../src/api/client';
 import { weekFixture } from './fixtures/week';
 
 const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tehran', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
-beforeEach(() => { clearWeekCache(); delete window.__hawatchInitialPageRequest; });
-afterEach(() => { vi.unstubAllGlobals(); delete window.__hawatchInitialPageRequest; });
+beforeEach(() => { clearWeekCache(); delete window.__hawatchInitialPageRequest; document.getElementById('forecast-initial-data')?.remove(); });
+afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); delete window.__hawatchInitialPageRequest; document.getElementById('forecast-initial-data')?.remove(); });
+
+function embed(payload: ReturnType<typeof weekFixture>, age = 0) {
+  const script = document.createElement('script');
+  script.id = 'forecast-initial-data'; script.type = 'application/json';
+  script.textContent = JSON.stringify({payload,rendered_at:new Date(Date.now()-age*1000).toISOString()});
+  document.body.append(script);
+}
+
+it('renders the anonymous HTML forecast without an additional initial API read', async () => {
+  const fetch = vi.fn(); vi.stubGlobal('fetch',fetch);
+  const payload = weekFixture('point',day); embed(payload);
+  prepareForecastPage('/points/tochal');
+  const [first,second] = await Promise.all([loadWeek('point','tochal'),loadWeek('point','tochal')]);
+  expect(first).toEqual(payload); expect(second).toEqual(payload);
+  expect(fetch).not.toHaveBeenCalled();
+  expect(document.getElementById('forecast-initial-data')).toBeNull();
+});
+
+it('subtracts time spent in the HTML cache from the ordinary forecast TTL', async () => {
+  vi.useFakeTimers(); const payload=weekFixture('point',day); embed(payload,90);
+  const fetch=vi.fn().mockResolvedValue(new Response(JSON.stringify(payload))); vi.stubGlobal('fetch',fetch);
+  expect(await loadWeek('point','tochal')).toEqual(payload);
+  vi.advanceTimersByTime(31000);
+  await loadWeek('point','tochal');
+  expect(fetch).toHaveBeenCalledTimes(1);
+});
+
+it.each(['expired','wrong-subject','previous-day','malformed'])('does not adopt %s HTML data', async mode => {
+  const payload=weekFixture('point',day), initial=structuredClone(payload);
+  if(mode==='wrong-subject')initial.subject.slug='another-point';
+  if(mode==='previous-day')initial.range_start='2000-01-01';
+  embed(initial,mode==='expired'?121:0);
+  if(mode==='malformed')document.getElementById('forecast-initial-data')!.textContent='bad JSON';
+  const fetch=vi.fn().mockResolvedValue(new Response(JSON.stringify(payload))); vi.stubGlobal('fetch',fetch);
+  expect(await loadWeek('point','tochal')).toEqual(payload);
+  expect(fetch).toHaveBeenCalledTimes(1);
+});
 
 it('adopts the HTML request and shares it across preparation, lazy mount, and StrictMode', async () => {
   const fetch = vi.fn();vi.stubGlobal('fetch',fetch);

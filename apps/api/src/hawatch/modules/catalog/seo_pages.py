@@ -1,4 +1,4 @@
-"""Server-rendered public HTML for crawlers and JavaScript-disabled clients.
+"""Server-rendered public HTML and anonymous initial forecast data.
 
 The React application remains the interactive surface.  These views only own
 the document head and a small semantic fallback which is replaced by React
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import timedelta
 from decimal import Decimal
 
 from django.conf import settings
@@ -21,6 +22,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 
 from hawatch.common.cache_headers import mark_public_catalog_response
+from hawatch.common.time import localize_dt, now_tehran
 from hawatch.modules.catalog.identity import ACCESS_PLACE_TYPES, place_type_label
 from hawatch.modules.catalog.internal_links import (
     related_public_destinations,
@@ -96,12 +98,28 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
     response["X-Robots-Tag"] = robots
     # Canonical documents contain only public catalog/SEO content. Query
     # variants may carry planner state and must always be revalidated.
-    if status == 200 and not request.GET:
+    if status == 200 and not request.GET and page.get("initial_forecast"):
+        # The document now carries anonymous weather, not just catalog data.
+        # A shared HTML copy must never outlive the forecast or Tehran midnight.
+        local = now_tehran()
+        ttl = max(0, min(60, int((localize_dt(local.date() + timedelta(days=1), 0) - local).total_seconds())))
+        response["Cache-Control"] = f"public, max-age=0, s-maxage={ttl}, must-revalidate"
+    elif status == 200 and not request.GET:
         mark_public_catalog_response(response)
     else:
         response["Cache-Control"] = "no-cache"
     response["Content-Language"] = "fa"
     return response
+
+
+def _initial_forecast(kind: str, slug: str) -> dict:
+    # Exactly the anonymous API payload and Redis cache; never an HTTP/provider
+    # request, account lookup, visit lease or second weather implementation.
+    from hawatch.api.v1.week_views import cached_week
+
+    local = now_tehran()
+    (body, _), _ = cached_week(kind, slug, local.date())
+    return {"payload": json.loads(body), "rendered_at": local.isoformat()}
 
 
 def _structured_breadcrumb(*items: tuple[str, str]) -> str:
@@ -376,7 +394,9 @@ def seo_point(request: HttpRequest, slug: str) -> HttpResponse:
     point = WeatherPoint.objects.filter(slug=slug, is_active=True).first()
     if point is None:
         return _not_found(request, content_type="point")
-    return _render(request, page=_point_page(point))
+    page = _point_page(point)
+    page["initial_forecast"] = _initial_forecast("point", slug)
+    return _render(request, page=page)
 
 
 @require_GET
@@ -399,7 +419,9 @@ def seo_route(request: HttpRequest, slug: str) -> HttpResponse:
     )
     if route is None:
         return _not_found(request, content_type="route")
-    return _render(request, page=_route_page(route))
+    page = _route_page(route)
+    page["initial_forecast"] = _initial_forecast("route", slug)
+    return _render(request, page=page)
 
 
 @require_GET

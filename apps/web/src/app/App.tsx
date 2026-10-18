@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { lazy, useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { trackPageView } from "../api/client";
 import { HomePage } from "../pages/HomePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
@@ -7,30 +7,10 @@ import { RoutePageViewTracker } from "./RoutePageViewTracker";
 import { PageLoadingBoundary } from "./PageLoadingBoundary";
 import { prepareForecastPage } from "../api/weekForecast";
 import { startPageLoad } from "../lib/pageLoad";
-
-const DestinationsPage = lazy(() =>
-  import("../features/destinations/DestinationsPage").then((module) => ({
-    default: module.DestinationsPage,
-  })),
-);
-const RoutesPage = lazy(() =>
-  import("../features/destinations/DestinationsPage").then((module) => ({
-    default: module.RoutesPage,
-  })),
-);
-const LoginPage = lazy(() =>
-  import("../pages/LoginPage").then((module) => ({ default: module.LoginPage })),
-);
-const WeekForecastPage = lazy(() =>
-  import("../features/week/WeekForecastPage").then((module) => ({
-    default: module.WeekForecastPage,
-  })),
-);
-const SubscriptionPlansPage = lazy(() =>
-  import("../pages/SubscriptionPlansPage").then((module) => ({
-    default: module.SubscriptionPlansPage,
-  })),
-);
+import { DestinationsPage, RoutesPage } from "../features/destinations/DestinationsPage";
+import { LoginPage } from "../pages/LoginPage";
+import { WeekForecastPage } from "../features/week/WeekForecastPage";
+import { SubscriptionPlansPage } from "../pages/SubscriptionPlansPage";
 
 export function App() {
   return (

@@ -10,6 +10,8 @@ declare global {
       start(pathname: string): void;
       complete(pathname: string): void;
       fail(pathname: string): void;
+      appReady?(): void;
+      dataReady?(): void;
     };
     __hawatchInitialPageRequest?: InitialPageRequest;
   }

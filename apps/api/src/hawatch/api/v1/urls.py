@@ -1,12 +1,14 @@
 from django.urls import path
 from .week_views import week_forecast, week_visit
 from .share_views import create_share
+from .page_load_diagnostics import page_load_failure
 
 from hawatch.api.v1 import views
 from hawatch.modules.analytics.api import page_view_event
 from hawatch.modules.accounts import api as account_api
 
 urlpatterns = [
+    path("diagnostics/page-load/", page_load_failure),
     path("shares/", create_share),
     path("points/<slug:slug>/forecast/visit/", week_visit, {"kind": "point"}),
     path("routes/<slug:slug>/forecast/visit/", week_visit, {"kind": "route"}),

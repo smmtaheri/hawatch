@@ -37,28 +37,57 @@ export function loadWeek(kind: string, slug: string): Promise<Week> {
   return requestWeek(kind, slug);
 }
 
+function embeddedWeek(kind: string, slug: string): { data: Week; age: number } | null {
+  const element = document.getElementById('forecast-initial-data');
+  if (!element) return null;
+  const text = element.textContent;
+  element.remove();
+  try {
+    const initial = JSON.parse(text || '') as { payload: Week; rendered_at: string };
+    const data = initial.payload;
+    const age = Math.max(0, (Date.now() - Date.parse(initial.rendered_at)) / 1000);
+    if (!Number.isFinite(age) || data.kind !== kind || data.subject.slug !== slug ||
+        data.range_start !== tehranDate() || !Array.isArray(data.days) || data.days.length !== 8 ||
+        !Number.isFinite(data.cache_max_age_seconds) || age >= data.cache_max_age_seconds) return null;
+    return { data, age };
+  } catch { return null; }
+}
+
+function rememberWeek(key: string, data: Week, age: number) {
+  const midnight = Date.parse(`${data.range_start}T00:00:00+03:30`) + 86400000;
+  const ttl = Math.max(0, Math.min(data.cache_max_age_seconds - age, (midnight - Date.now()) / 1000));
+  cache.set(key, { data, expires: Date.now() + ttl * 1000 });
+  while (cache.size > 3) cache.delete(cache.keys().next().value!);
+  window.__hawatchPageLoad?.dataReady?.();
+}
+
 function requestWeek(kind: string, slug: string): Promise<Week> {
   const key = `${kind}:${slug}:${tehranDate()}`, existing = cache.get(key);
-  if (existing && existing.expires > Date.now()) return Promise.resolve(existing.data);
+  if (existing && existing.expires > Date.now()) {
+    window.__hawatchPageLoad?.dataReady?.();
+    return Promise.resolve(existing.data);
+  }
   const loading = pending.get(key);
   if (loading) return loading;
+  const initial = embeddedWeek(kind, slug);
+  if (initial) {
+    rememberWeek(key, initial.data, initial.age);
+    return Promise.resolve(initial.data);
+  }
   const url = `/api/v1/${kind === 'point' ? 'points' : 'routes'}/${encodeURIComponent(slug)}/forecast/week/`;
   const response = takeInitialPageRequest(url, 'omit') ?? fetch(url, { credentials: 'omit', cache: 'no-cache' });
   const request = response.then(async r => {
     if (!r.ok) throw Object.assign(new Error(r.status === 404 ? 'نقطه یا مسیر پیدا نشد' : 'دریافت پیش‌بینی ممکن نشد'), { status: r.status });
     const data = await r.json() as Week;
     const age = Number(r.headers.get('Age') || 0);
-    const midnight = Date.parse(`${data.range_start}T00:00:00+03:30`) + 86400000;
-    const ttl = Math.max(0, Math.min(data.cache_max_age_seconds - age, (midnight - Date.now()) / 1000));
-    cache.set(key, { data, expires: Date.now() + ttl * 1000 });
-    while (cache.size > 3) cache.delete(cache.keys().next().value!);
+    rememberWeek(key, data, age);
     return data;
   }).finally(() => { if (pending.get(key) === request) pending.delete(key); });
   pending.set(key, request);
   return request;
 }
 
-/** Runs outside lazy components so CSS/download delays never postpone weather. */
+/** Prepare navigation data independently of the page component lifecycle. */
 export function prepareForecastPage(pathname: string) {
   const match = pathname.match(/^\/(points|routes)\/([a-z0-9-]+)\/?$/);
   if (!match) { prepared = null; return; }

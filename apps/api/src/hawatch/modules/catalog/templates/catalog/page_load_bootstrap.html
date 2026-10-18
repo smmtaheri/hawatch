@@ -2,9 +2,37 @@
 /* Shared with Vite's HTML build. No dependency on application/CDN scripts. */
 (function () {
   var path = window.location.pathname, timer, done = false, assetFailed = false;
+  var started = performance.now(), reported = false, appReady = false, dataReady = false, failedAssets = [];
+  var initialData = !!document.getElementById('forecast-initial-data');
   var message = 'بارگذاری صفحه کامل نشده؛ لطفاً صفحه را رفرش کنید.';
+  function report(reason) {
+    if (reported) return;
+    reported = true;
+    try {
+      var links = document.querySelectorAll('script[src],link[rel="stylesheet"],link[rel="modulepreload"]');
+      var completed = performance.getEntriesByType('resource').map(function (entry) { return entry.name; });
+      var expected = [], version = '';
+      Array.prototype.forEach.call(links, function (node) {
+        var url = new URL(node.src || node.href, location.origin);
+        var match = url.pathname.match(/^\/static-assets\/([a-zA-Z0-9_-]+)\//);
+        if (url.origin === location.origin && match) {
+          version = match[1];
+          if (completed.indexOf(url.href) === -1 && expected.indexOf(url.pathname) === -1) expected.push(url.pathname);
+        }
+      });
+      if (!version) return;
+      var connection = navigator.connection, effective = connection && connection.effectiveType;
+      var payload = {path:path,version:version,reason:reason,elapsed_ms:Math.min(3600000,Math.round(performance.now()-started)),
+        app_ready:appReady,data_ready:dataReady,initial_data:initialData,
+        effective_type:['slow-2g','2g','3g','4g'].indexOf(effective) >= 0 ? effective : 'unknown',
+        failed_assets:failedAssets.slice(0,8),pending_assets:expected.slice(0,8)};
+      fetch('/api/v1/diagnostics/page-load/', {method:'POST',credentials:'omit',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload),keepalive:true}).catch(function () {});
+    } catch (error) {}
+  }
   function notice() {
     if (done || !document.body) return;
+    report(assetFailed ? 'asset' : 'timeout');
     var node = document.getElementById('hawatch-page-load-notice');
     if (!node) {
       node = document.createElement('div');
@@ -23,7 +51,8 @@
   window.__hawatchPageLoad = {
     start: function (next) {
       if (next === path && !done) return;
-      path = next; done = false; clearTimeout(timer); hide();
+      path = next; done = false; reported = false; dataReady = false; initialData = false;
+      started = performance.now(); clearTimeout(timer); hide();
       timer = setTimeout(notice, 15000);
     },
     complete: function (current) {
@@ -33,8 +62,11 @@
     },
     fail: function (current) {
       if (current !== path) return;
+      report(assetFailed ? 'asset' : 'application');
       done = false; clearTimeout(timer); notice();
-    }
+    },
+    appReady: function () { appReady = true; },
+    dataReady: function () { dataReady = true; }
   };
   timer = setTimeout(notice, 15000);
   window.addEventListener('error', function (event) {
@@ -44,6 +76,7 @@
     if ((target.tagName === 'SCRIPT' || (target.tagName === 'LINK' && target.rel === 'stylesheet')) &&
         url.indexOf(window.location.origin + '/static-assets/') === 0) {
       assetFailed = true;
+      failedAssets.push(new URL(url).pathname);
       window.__hawatchPageLoad.fail(path);
     }
   }, true);
@@ -51,7 +84,9 @@
   // Response promise, including failures; no retry, polling, or analytics here.
   var match = path.match(/^\/(points|routes)\/([a-z0-9-]+)\/?$/), endpoint, credentials = 'same-origin';
   if (match) {
-    endpoint = '/api/v1/' + match[1] + '/' + match[2] + '/forecast/week/';
+    if (!document.getElementById('forecast-initial-data')) {
+      endpoint = '/api/v1/' + match[1] + '/' + match[2] + '/forecast/week/';
+    }
     credentials = 'omit';
   } else if ((match = path.match(/^\/(destinations|routes)(?:\/page\/([1-9][0-9]*))?\/?$/))) {
     endpoint = '/api/v1/' + match[1] + '/?page=' + (match[2] || '1');

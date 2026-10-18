@@ -6,12 +6,12 @@ type Chunk = { file: string; imports?: string[]; css?: string[] };
 type Assets = { scripts: string[]; styles: string[] };
 const entries = {
   home: 'index.html',
-  point: 'src/features/week/WeekForecastPage.tsx',
-  route: 'src/features/week/WeekForecastPage.tsx',
-  destinations: 'src/features/destinations/DestinationsPage.tsx',
-  routes: 'src/features/destinations/DestinationsPage.tsx',
-  login: 'src/pages/LoginPage.tsx',
-  plans: 'src/pages/SubscriptionPlansPage.tsx',
+  point: 'index.html',
+  route: 'index.html',
+  destinations: 'index.html',
+  routes: 'index.html',
+  login: 'index.html',
+  plans: 'index.html',
   'not-found': 'index.html',
 };
 const bootstrapPath = resolve('../api/src/hawatch/modules/catalog/templates/catalog/page_load_bootstrap.html');
@@ -39,6 +39,11 @@ export function pageAssetsPlugin(assetVersion: string): Plugin {
         }
         visit('index.html');
         visit(entry);
+        // Vite lists the single extracted stylesheet separately when CSS
+        // splitting is disabled; it remains part of the deployment gate.
+        for (const chunk of Object.values(manifest)) {
+          if (chunk.file.endsWith('.css')) styles.add(chunk.file);
+        }
         return { scripts: [...scripts], styles: [...styles] };
       }
       const pages = Object.fromEntries(Object.entries(entries).map(([kind, entry]) => [kind, assetsFor(entry)]));

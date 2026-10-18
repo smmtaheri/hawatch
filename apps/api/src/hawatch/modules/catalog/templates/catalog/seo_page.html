@@ -178,6 +178,7 @@
         </article>
       </main>
       {% if page.kind == "home" %}{{ page.initial_data|json_script:"home-initial-data" }}{% endif %}
+      {% if page.initial_forecast %}{{ page.initial_forecast|json_script:"forecast-initial-data" }}{% endif %}
       <footer class="forecast-attribution" aria-label="منبع دادهٔ هواشناسی">دادهٔ هواشناسی: Open-Meteo</footer>
     </div>
     {% include "catalog/page_load_bootstrap.html" %}

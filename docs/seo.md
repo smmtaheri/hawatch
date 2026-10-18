@@ -165,8 +165,11 @@ Sitemap فقط Home، `/destinations`، `/routes`، Pointهای فعال و inde
 | همان URL با query | 200 | `noindex,follow` | همان URL بدون query |
 | slug نامعتبر Point/Route | 404 | `noindex,follow` | ندارد |
 
-`X-Robots-Tag` نیز با meta robots هم‌راستاست. HTML کانونیکالِ بدون query با
-`public, max-age=60, s-maxage=300, stale-while-revalidate=60` و نسخه‌های queryدار
+`X-Robots-Tag` نیز با meta robots هم‌راستاست. HTML کانونیکالِ بدون query در
+Home و فهرست‌ها با `public, max-age=60, s-maxage=300, stale-while-revalidate=60`
+برمی‌گردد. مقصد و مسیر به‌دلیل داشتن JSON اولیهٔ هوا،
+`public, max-age=0, s-maxage=60, must-revalidate` دارند؛ نزدیک نیمه‌شب تهران
+این ۶۰ ثانیه کوتاه می‌شود و stale-while-revalidate مجاز نیست. نسخه‌های queryدار
 یا پاسخ خطا با `no-cache` برمی‌گردند. تغییرات کاتالوگ پس از پایان این پنجره یا
 revalidation دیده می‌شوند؛ کش queryدار نباید HTML کانونیکال را آلوده کند.
 در Route تمیز، تاریخ/بازه/سرعت/ساعت پیش‌فرض فقط در state React قرار می‌گیرند و

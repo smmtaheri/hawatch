@@ -33,6 +33,8 @@ fail() {
   exit 1
 }
 
+[[ "${HAWATCH_SKIP_CATALOG_SYNC:-0}" =~ ^[01]$ ]] || fail "HAWATCH_SKIP_CATALOG_SYNC must be 0 or 1."
+
 on_error() {
   local line_number="$1"
   printf '[hawatch] ERROR: command failed at line %s\n' "$line_number" >&2
@@ -445,7 +447,11 @@ run_stack() {
     apps/api/src/hawatch/jobs/management/commands/apply_route_descent.py \
     | sha256sum | awk '{print $1}')"
   previous_catalog_fingerprint="$(cat "$catalog_state_file" 2>/dev/null || true)"
-  if [[ "$catalog_fingerprint" != "$previous_catalog_fingerprint" ]]; then
+  if [[ "${HAWATCH_SKIP_CATALOG_SYNC:-0}" == 1 ]]; then
+    # Explicit emergency code-only rollout: preserve the runtime catalog and
+    # leave its fingerprint untouched so a later normal deploy still syncs.
+    log "Code-only deploy requested; catalog and route descent left unchanged."
+  elif [[ "$catalog_fingerprint" != "$previous_catalog_fingerprint" ]]; then
     log "Catalog inputs changed; synchronizing packaged data and verified descent."
     "${compose[@]}" exec -T api python manage.py sync_catalog --apply
     "${compose[@]}" exec -T api python manage.py apply_route_descent

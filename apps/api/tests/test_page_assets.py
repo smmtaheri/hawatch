@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import shutil
+import re
 import pytest
 from pathlib import Path
 
@@ -22,7 +23,7 @@ def test_current_page_preloads_are_rendered_before_the_application_entry(tmp_pat
     assert 'rel="modulepreload" crossorigin href="/static-assets/release1/assets/chunks/point-123.js"' in html
     assert 'rel="preload" as="style" crossorigin href="/static-assets/release1/assets/detail-123.css"' in html
     assert html.index('rel="modulepreload"') < html.index('<script type="module"')
-    assert html.count('rel="stylesheet"') == 1
+    assert len(re.findall(r'<link\b[^>]*\brel="stylesheet"', html)) == 1
     assert 'name="robots" content="index,follow"' in html
     assert 'rel="canonical" href="https://hawatch.ir/points/sample"' in html
     assert '__hawatchInitialPageRequest' in html

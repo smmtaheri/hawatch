@@ -62,9 +62,9 @@ docker(){
  if [[ "$*" == *'sync_catalog --apply'* && "${FAIL_SYNC:-0}" == 1 ]]; then return 1; fi
 }
 """ + function + '\nrun_stack\n'
-    def run(fail=False):
+    def run(fail=False,skip_catalog=False):
         commands.write_text('')
-        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail))},capture_output=True,text=True)
+        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
         return result, commands.read_text()
     return repo,fixture,commit,run
 
@@ -111,6 +111,29 @@ def test_failed_catalog_sync_does_not_mark_inputs_applied(tmp_path):
     assert not (repo/'.git/hawatch-catalog-deploy.sha256').exists()
     result,commands=run()
     assert result.returncode==0 and 'sync_catalog --apply' in commands
+
+
+def test_explicit_code_only_deploy_never_syncs_or_marks_catalog_applied(tmp_path):
+    repo,fixture,commit,run=_deployment_harness(tmp_path)
+    result,commands=run(skip_catalog=True)
+    assert result.returncode==0,result.stderr
+    assert 'up -d --no-deps api web maintenance ingest-scheduler' in commands
+    assert 'sync_catalog --apply' not in commands and 'manage.py apply_route_descent' not in commands
+    assert not (repo/'.git/hawatch-catalog-deploy.sha256').exists()
+    assert run()[0].returncode==0
+    marker=(repo/'.git/hawatch-catalog-deploy.sha256').read_text()
+    fixture.write_text('{"new":true}');commit()
+    result,commands=run(skip_catalog=True)
+    assert result.returncode==0 and 'sync_catalog --apply' not in commands
+    assert (repo/'.git/hawatch-catalog-deploy.sha256').read_text()==marker
+    assert 'sync_catalog --apply' in run()[1]
+
+
+def test_production_wrapper_passes_code_only_option_to_remote_script():
+    wrapper=(Path(__file__).resolve().parents[3]/'scripts/deploy-hawatch').read_text()
+    assert 'SKIP_CATALOG_SYNC="${HAWATCH_SKIP_CATALOG_SYNC:-0}"' in wrapper
+    assert '"$SERVER_API_URL" "$SKIP_CATALOG_SYNC"' in wrapper
+    assert 'HAWATCH_SKIP_CATALOG_SYNC="$skip_catalog_sync"' in wrapper
 
 
 

@@ -1,3 +1,4 @@
+import json
 import re
 
 import pytest
@@ -5,6 +6,7 @@ from django.contrib.gis.geos import Point
 from django.test import RequestFactory, override_settings
 
 from hawatch.modules.catalog.seed import ensure_catalog
+from hawatch.modules.catalog.runtime import publicly_visible_destinations
 from hawatch.modules.catalog.seo_pages import _render
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
@@ -112,7 +114,10 @@ def test_destinations_html_is_ssr_catalog_driven_and_indexable(api_client, seo_c
         page_response = api_client.get(f"/destinations/page/{next_page}")
         assert page_response.status_code == 200
         pages.append(page_response.content.decode())
-    assert any('href="/points/tochal-velenjak-village"' in page_body for page_body in pages)
+    # Only independent/indexable destinations belong here. The urban Velenjak
+    # waypoint is intentionally noindex; pagination must cover the live policy.
+    for slug in publicly_visible_destinations().values_list("slug", flat=True):
+        assert any(f'href="/points/{slug}"' in page_body for page_body in pages)
 
     trailing = api_client.get("/destinations/")
     assert trailing.status_code == 200
@@ -150,11 +155,16 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert "۶ روز" not in body
     assert "یک عارضهٔ مستقل برای کنترل رندر اولیهٔ هواچ." in body
     assert 'application/ld+json' in body
-    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+    assert re.fullmatch(r"public, max-age=0, s-maxage=\d{1,2}, must-revalidate", response["Cache-Control"])
+    initial = json.loads(re.search(r'<script id="forecast-initial-data" type="application/json">(.*?)</script>', body).group(1))
+    assert initial["payload"] == api_client.get(f"/api/v1/points/{point.slug}/forecast/week/").json()
 
     bot_response = api_client.get(f"/points/{point.slug}", HTTP_USER_AGENT="Googlebot")
     assert bot_response.status_code == 200
-    assert bot_response.content == response.content
+    # The render timestamp advances per response; content and public data do not
+    # vary for crawlers or require a second weather endpoint.
+    without_timestamp = lambda text: re.sub(r'"rendered_at": "[^"]*"', '"rendered_at": ""', text)
+    assert without_timestamp(bot_response.content.decode()) == without_timestamp(body)
 
     query_response = api_client.get(f"/points/{point.slug}?date=2026-09-04&period=morning")
     query_body = query_response.content.decode()
@@ -335,6 +345,10 @@ def test_route_html_is_database_driven(api_client, seo_catalog):
     assert "مبدأ آزمایشی" in body
     assert "مقصد آزمایشی" in body
     assert "12.5 کیلومتر" in body
+    initial = json.loads(re.search(r'<script id="forecast-initial-data" type="application/json">(.*?)</script>', body).group(1))
+    assert initial["payload"] == api_client.get(f"/api/v1/routes/{route.slug}/forecast/week/").json()
+    assert "must-revalidate" in response["Cache-Control"]
+    assert "stale-while-revalidate" not in response["Cache-Control"]
 
     query_response = api_client.get(f"/routes/{route.slug}?date=2026-09-04&period=morning")
     assert query_response.status_code == 200

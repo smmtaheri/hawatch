@@ -12,10 +12,12 @@ PRODUCTION_DIR="${HAWATCH_SERVER_DIR:-/root/hawatch}"
 SERVER_IP="${HAWATCH_SERVER_IP:-202.133.89.120}"
 PUBLIC_HOST="${HAWATCH_PUBLIC_HOST:-hawatch.ir}"
 SERVER_API_URL="${HAWATCH_SERVER_API_URL:-/api/v1}"
+SKIP_CATALOG_SYNC="${HAWATCH_SKIP_CATALOG_SYNC:-0}"
 
 fail() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
 
 [[ "$#" -eq 0 ]] || fail 'Usage: deploy-hawatch'
+[[ "$SKIP_CATALOG_SYNC" =~ ^[01]$ ]] || fail 'HAWATCH_SKIP_CATALOG_SYNC must be 0 or 1.'
 [[ -n "$LOCAL_DIR" ]] || fail 'Could not locate the Hawatch checkout; set HAWATCH_LOCAL_DIR.'
 [[ "$LOCAL_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail 'Invalid local checkout path.'
 [[ "$PRODUCTION_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]] || fail 'Invalid production checkout path.'
@@ -32,12 +34,13 @@ fi
 
 git -C "$LOCAL_DIR" push origin main
 
-ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$PUBLIC_HOST" "$SERVER_IP" "$SERVER_API_URL" <<'REMOTE'
+ssh "$SSH_HOST" bash -s -- "$PRODUCTION_DIR" "$PUBLIC_HOST" "$SERVER_IP" "$SERVER_API_URL" "$SKIP_CATALOG_SYNC" <<'REMOTE'
 set -Eeuo pipefail
 production_dir="$1"
 public_host="$2"
 server_ip="$3"
 server_api_url="$4"
+skip_catalog_sync="$5"
 
 fail_remote() { printf '[deploy-hawatch] ERROR: %s\n' "$*" >&2; exit 1; }
 
@@ -49,6 +52,7 @@ git -C "$production_dir" pull --ff-only origin main
 cd "$production_dir"
 PUBLIC_HOST="$public_host" \
 VITE_API_BASE_URL="$server_api_url" \
+HAWATCH_SKIP_CATALOG_SYNC="$skip_catalog_sync" \
 DJANGO_ALLOWED_HOSTS="$public_host,www.$public_host,$server_ip,localhost,127.0.0.1,api,nginx" \
 DJANGO_CORS_ALLOWED_ORIGINS="http://$public_host,https://$public_host,http://www.$public_host,https://www.$public_host,http://$server_ip,http://$server_ip:5173" \
 RUN_INITIAL_INGEST=0 ./scripts/deploy.sh </dev/null
