@@ -1,4 +1,4 @@
-import {cpSync,mkdirSync} from "node:fs";
+import {cpSync,existsSync,mkdirSync,readFileSync,writeFileSync} from "node:fs";
 import {resolve} from "node:path";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
@@ -19,9 +19,23 @@ const assetPrefix=command==="build"?`/static-assets/${assetVersion}`:"";
 // Google's favicon refresh.
 const publicRoots=["new-design/","fonts/","images/","brand/"];
 const stableIconRoots=["favicon.png","favicon.ico","apple-touch-icon.png"];
+const escapeRegExp=(value:string)=>value.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 const rewritePublic=(code:string)=>{
 const versioned=publicRoots.reduce((text,root)=>text.replaceAll(`${assetPrefix}/${root}`,`${publicPrefix}/${root}`),code);
 return stableIconRoots.reduce((text,root)=>text.replaceAll(`${assetPrefix}/${root}`,`/${root}`),versioned);
+};
+const rewriteAndValidateCss=()=>{
+const cssPath=resolve("dist/assets/hawatch.css");
+const css=rewritePublic(readFileSync(cssPath,"utf8"));
+const staleAssetUrl=new RegExp(`${escapeRegExp(assetPrefix)}/(?:${publicRoots.map(escapeRegExp).join("|")})`);
+if(staleAssetUrl.test(css))throw new Error("CSS contains public asset URLs under /static-assets; refusing to publish a broken stylesheet.");
+const publicRoot=resolve("public");
+for(const match of css.matchAll(new RegExp(`${escapeRegExp(publicPrefix)}/([^\\s)\"']+)`,"g"))){
+const relativeUrl=decodeURIComponent(match[1].split(/[?#]/,1)[0]);
+const publicFile=resolve(publicRoot,relativeUrl);
+if(!publicFile.startsWith(`${publicRoot}/`)||!existsSync(publicFile))throw new Error(`CSS references a missing public asset: ${match[0]}`);
+}
+writeFileSync(cssPath,css);
 };
 return {
   base: `${assetPrefix}/`,
@@ -30,8 +44,7 @@ return {
   plugins: [{name:"version-public-assets",
     transform(code,id){if(id.includes("/src/")&&/\.[jt]sx?$/.test(id))return code.replace(/(["'`])\/(new-design|fonts|images|brand)\//g,(_m,quote,folder)=>`${quote}${publicPrefix}/${folder}/`);},
     transformIndexHtml:{order:"post",handler:html=>rewritePublic(html)},
-    generateBundle(_options,bundle){for(const output of Object.values(bundle))if(output.type==="asset"&&output.fileName.endsWith(".css"))output.source=rewritePublic(String(output.source));},
-    closeBundle(){const target=resolve("dist",`static-assets/${assetVersion}`);mkdirSync(target,{recursive:true});cpSync(resolve("public"),resolve("dist",`static-public/${publicVersion}`),{recursive:true});cpSync(resolve("dist/assets"),resolve(target,"assets"),{recursive:true});}
+    closeBundle(){if(command!=="build")return;rewriteAndValidateCss();const target=resolve("dist",`static-assets/${assetVersion}`);mkdirSync(target,{recursive:true});cpSync(resolve("public"),resolve("dist",`static-public/${publicVersion}`),{recursive:true});cpSync(resolve("dist/assets"),resolve(target,"assets"),{recursive:true});}
   },react(), pageAssetsPlugin(assetVersion), {
     name: "qa-noindex",
     transformIndexHtml(html) {
