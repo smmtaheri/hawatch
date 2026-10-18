@@ -30,7 +30,7 @@ from hawatch.common.time import (
 )
 from hawatch.integrations.weather.demo import wind_compass
 from hawatch.integrations.weather.hazards import assessment, assess_records, value, RANK
-from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
+from hawatch.integrations.weather.ingest import latest_snapshot_metadata, snapshot_freshness
 from hawatch.modules.catalog.seed import refresh_if_bucket_changed
 from hawatch.modules.catalog.search_text import SearchQuery, point_search_terms
 from hawatch.modules.catalog.identity import category_key_for_point
@@ -45,7 +45,7 @@ from hawatch.modules.routes.timing import route_mean_elevation_m
 
 
 def _live_meta_parts() -> dict:
-    snapshot = latest_snapshot()
+    snapshot = latest_snapshot_metadata()
     freshness = snapshot_freshness(snapshot)
     if snapshot is None:
         return {

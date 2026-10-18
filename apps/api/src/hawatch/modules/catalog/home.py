@@ -9,7 +9,7 @@ from django.db.models import Count
 from django.utils import timezone
 
 from hawatch.common.time import to_fa_digits
-from hawatch.integrations.weather.ingest import latest_snapshot, snapshot_freshness
+from hawatch.integrations.weather.ingest import latest_snapshot_metadata, snapshot_freshness
 from hawatch.modules.analytics.models import PageViewEvent
 from hawatch.modules.catalog.identity import category_key_for_point
 from hawatch.modules.catalog.runtime import ordered_publicly_visible_destinations
@@ -111,7 +111,7 @@ def home_catalog_data() -> dict:
             }
         )
 
-    snapshot = latest_snapshot()
+    snapshot = latest_snapshot_metadata()
     data = {
         "popular_points": popular_points,
         "catalog_counts": {

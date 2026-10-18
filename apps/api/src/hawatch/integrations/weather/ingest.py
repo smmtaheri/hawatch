@@ -84,12 +84,19 @@ def mark_stale_snapshots(*, older_than: timedelta | None = None) -> int:
     ).update(freshness=ForecastSnapshot.Freshness.STALE)
 
 
-def latest_usable_snapshot(*, provider: str = "open-meteo") -> ForecastSnapshot | None:
-    return (
-        ForecastSnapshot.objects.filter(provider=provider, status__in=["success", "partial"])
-        .order_by("-generated_at")
-        .first()
+def _latest_usable_snapshots(*, provider: str):
+    return ForecastSnapshot.objects.filter(provider=provider, status__in=["success", "partial"]).order_by(
+        "-generated_at"
     )
+
+
+def latest_usable_snapshot(*, provider: str = "open-meteo") -> ForecastSnapshot | None:
+    return _latest_usable_snapshots(provider=provider).first()
+
+
+def latest_snapshot_metadata(*, provider: str = "open-meteo") -> ForecastSnapshot | None:
+    """Return the latest usable snapshot without loading its provider payload."""
+    return _latest_usable_snapshots(provider=provider).defer("raw_response").first()
 
 
 def latest_snapshot(*, provider: str = "open-meteo") -> ForecastSnapshot | None:

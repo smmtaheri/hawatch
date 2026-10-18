@@ -5,12 +5,14 @@ from datetime import timedelta
 import pytest
 from django.core.cache import cache
 from django.contrib.gis.geos import Point
+from django.db import connection
 from django.test import override_settings
+from django.test.utils import CaptureQueriesContext
 from django.utils import timezone
 
 from hawatch.modules.analytics.models import PageViewEvent
 from hawatch.modules.catalog.home import HOME_CATALOG_CACHE_KEY, home_catalog_data
-from hawatch.modules.forecasts.models import WeatherPoint
+from hawatch.modules.forecasts.models import ForecastSnapshot, WeatherPoint
 
 
 @pytest.fixture(autouse=True)
@@ -90,7 +92,51 @@ def test_home_popularity_counts_unique_recent_destination_visitors_only(api_clie
     response = api_client.get("/api/v1/points/")
     assert response.status_code == 200
     assert [point["slug"] for point in response.json()["results"][:3]] == expected
-    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300"
+    assert response["Cache-Control"] == "public, max-age=60, s-maxage=300, stale-while-revalidate=60"
+
+
+@pytest.mark.django_db
+@override_settings(DEMO_DATA_ENABLED=False)
+def test_home_api_reads_snapshot_metadata_without_loading_raw_provider_payload(api_client, catalog):
+    generated_at = timezone.now()
+    ForecastSnapshot.objects.create(
+        provider="open-meteo",
+        source="open-meteo-forecast",
+        catalog_version="open-meteo-live",
+        requested_at=generated_at,
+        generated_at=generated_at,
+        valid_from=generated_at,
+        valid_to=generated_at + timedelta(days=7),
+        status=ForecastSnapshot.Status.SUCCESS,
+        freshness=ForecastSnapshot.Freshness.READY,
+        raw_response={"batch_results": [{"provider_payload": "large"}]},
+    )
+
+    with CaptureQueriesContext(connection) as captured:
+        response = api_client.get("/api/v1/points/")
+        cached_response = api_client.get("/api/v1/points/")
+
+    assert response.status_code == 200
+    assert cached_response.status_code == 200
+    meta = response.json()["meta"]
+    assert meta["data_mode"] == "live"
+    assert meta["provider"] == "open-meteo"
+    assert meta["source"] == "open-meteo-forecast"
+    assert meta["seed_version"] == "open-meteo-live"
+    assert meta["freshness"] == "ready"
+    assert meta["last_generated_time"] == meta["generated_at"]
+    assert meta["forecast_validity"]["valid_from"]
+    assert meta["forecast_validity"]["valid_to"]
+    assert len(response.json()["results"]) == 4
+
+    snapshot_table = ForecastSnapshot._meta.db_table.lower()
+    snapshot_queries = [
+        query["sql"]
+        for query in captured.captured_queries
+        if snapshot_table in query["sql"].lower()
+    ]
+    assert len(snapshot_queries) == 3  # Cold: home + API metadata; cache hit: API metadata.
+    assert all("raw_response" not in query.lower() for query in snapshot_queries)
 
 
 @pytest.mark.django_db
