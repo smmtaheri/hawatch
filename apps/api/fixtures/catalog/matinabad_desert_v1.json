@@ -1,0 +1,86 @@
+{
+  "catalog_version": "hawatch-matinabad-desert-v1",
+  "primary_point": "matinabad-desert",
+  "weather_points": {
+    "matinabad-desert": {
+      "name": "کویر متین‌آباد",
+      "page_name": "کویر متین‌آباد",
+      "short_label": "متین‌آباد",
+      "tile_name": "کویر متین‌آباد",
+      "place_type": "desert",
+      "category_key": "desert",
+      "short_category": "کویر",
+      "category": "کویرهای اصفهان",
+      "region": "متین‌آباد · بادرود · نطنز · اصفهان",
+      "aliases": [
+        "کویر متین آباد",
+        "کمپ کویری متین آباد",
+        "اکوکمپ متین آباد",
+        "Matinabad Desert",
+        "Matinabad Eco Camp"
+      ],
+      "identity_summary": "محدودهٔ گردشگری کویر متین‌آباد در نزدیکی بادرود؛ نقطهٔ نماینده در محوطهٔ اکوکمپ کویری انتخاب شده و با بافت روستای متین‌آباد متفاوت است.",
+      "source_urls": [
+        "https://matinabad.com/",
+        "https://lastsecond.ir/blog/10185-deserts-near-tehran",
+        "https://irandoostan.com/matinabad-desert-eco-camp/"
+      ],
+      "latitude": 33.754506,
+      "longitude": 51.9930802,
+      "elevation_m": 980,
+      "elevation_source": "مختصات اکوکمپ از نقشهٔ راهنمای کویرهای لست‌سکند؛ ارتفاع ۹۸۰ متر از Open-Meteo GLO-90 DEM در همان مختصات (۲۰۲۶-۱۰-۱۷).",
+      "climate": "desert",
+      "status": "provisional",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "image": "/images/home-scene.png",
+      "image_alt": "محدودهٔ گردشگری کویر متین‌آباد در نطنز",
+      "is_active": true,
+      "is_popular": false,
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "matinabad-desert",
+    "name": "کویر متین‌آباد",
+    "page_name": "کویر متین‌آباد",
+    "short_label": "متین‌آباد",
+    "tile_name": "کویر متین‌آباد",
+    "place_type": "desert",
+    "category_key": "desert",
+    "short_category": "کویر",
+    "category": "کویرهای اصفهان",
+    "region": "متین‌آباد · بادرود · نطنز · اصفهان",
+    "aliases": [
+      "کویر متین آباد",
+      "کمپ کویری متین آباد",
+      "اکوکمپ متین آباد",
+      "Matinabad Desert",
+      "Matinabad Eco Camp"
+    ],
+    "identity_summary": "محدودهٔ گردشگری کویر متین‌آباد در نزدیکی بادرود؛ نقطهٔ نماینده در محوطهٔ اکوکمپ کویری انتخاب شده و با بافت روستای متین‌آباد متفاوت است.",
+    "source_urls": [
+      "https://matinabad.com/",
+      "https://lastsecond.ir/blog/10185-deserts-near-tehran",
+      "https://irandoostan.com/matinabad-desert-eco-camp/"
+    ],
+    "latitude": 33.754506,
+    "longitude": 51.9930802,
+    "elevation_m": 980,
+    "elevation_source": "مختصات اکوکمپ از نقشهٔ راهنمای کویرهای لست‌سکند؛ ارتفاع ۹۸۰ متر از Open-Meteo GLO-90 DEM در همان مختصات (۲۰۲۶-۱۰-۱۷).",
+    "climate": "desert",
+    "status": "provisional",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "image": "/images/home-scene.png",
+    "image_alt": "محدودهٔ گردشگری کویر متین‌آباد در نطنز",
+    "is_active": true,
+    "is_popular": false,
+    "routes": {}
+  }
+}

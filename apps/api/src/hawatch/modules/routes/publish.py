@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from decimal import Decimal
+
 from django.db import transaction
 from django.db.models import F, Max
 
@@ -16,6 +18,11 @@ def axis_for_index(index: int, total: int) -> tuple[int, int]:
     x = 12 + round((76 * index) / (total - 1))
     y = 72 - round((44 * index) / (total - 1))
     return x, y
+
+
+def route_progress_pct(cumulative_minutes: int, one_way_minutes: int) -> Decimal:
+    """Keep the existing rounded percentage in its persisted decimal type."""
+    return Decimal(str(round((int(cumulative_minutes) / int(one_way_minutes)) * 100, 2)))
 
 
 def shift_route_point_sort_orders(route: Route) -> None:
@@ -106,7 +113,7 @@ def normalize_and_publish_route(
                 fields.append("base_minutes")
 
         if route.one_way_minutes and point.cumulative_minutes is not None:
-            progress = round((int(point.cumulative_minutes) / int(route.one_way_minutes)) * 100, 2)
+            progress = route_progress_pct(point.cumulative_minutes, route.one_way_minutes)
             if point.progress_pct != progress:
                 point.progress_pct = progress
                 fields.append("progress_pct")

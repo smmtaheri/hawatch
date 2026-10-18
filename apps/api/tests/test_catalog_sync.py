@@ -5,12 +5,17 @@ from io import StringIO
 import pytest
 from django.contrib.gis.geos import Point
 from django.core.management import call_command
+from django.db import connection
 from django.db.models import Q
+from django.test.utils import CaptureQueriesContext
 
+from hawatch.api.v1.week_cache import revision
+from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
+from hawatch.modules.routes.publish import normalize_and_publish_route
 
 
 def _point(slug: str, *, fixture_managed: bool) -> WeatherPoint:
@@ -78,3 +83,29 @@ def test_catalog_sync_upgrades_existing_database_and_is_idempotent():
     assert "created=0, updated=0" in second_output.getvalue()
     assert WeatherPoint.objects.get(slug="tochal").updated_at == point_updated_at
     assert Route.objects.get(slug="tochal-darband").updated_at == route_updated_at
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize("operation", ["import", "normalize"])
+def test_unchanged_fractional_progress_does_not_write_or_invalidate_weather(
+    operation, django_capture_on_commit_callbacks,
+):
+    with django_capture_on_commit_callbacks(execute=True):
+        seed_catalog(rebuild_search=False)
+    before_routes = list(Route.objects.order_by("pk").values_list("pk", "updated_at"))
+    route = Route.objects.get(slug="tochal-darband")
+    before_points = list(route.points.values_list("pk", "progress_pct"))
+    assert any(progress != int(progress) for _pk, progress in before_points)
+    before_revision = revision()
+
+    with django_capture_on_commit_callbacks(execute=True), CaptureQueriesContext(connection) as queries:
+        if operation == "import":
+            seed_catalog(rebuild_search=False)
+        else:
+            for current in Route.objects.all():
+                normalize_and_publish_route(current, rebuild_search=False)
+
+    assert not any(query["sql"].lstrip().upper().startswith("UPDATE ") for query in queries)
+    assert list(Route.objects.order_by("pk").values_list("pk", "updated_at")) == before_routes
+    assert list(route.points.values_list("pk", "progress_pct")) == before_points
+    assert revision() == before_revision

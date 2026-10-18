@@ -21,7 +21,7 @@ from hawatch.modules.catalog.search import rebuild_search_index
 from hawatch.modules.catalog.validation import format_issues, validate_catalog_document
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
-from hawatch.modules.routes.publish import axis_for_index, normalize_and_publish_route
+from hawatch.modules.routes.publish import axis_for_index, normalize_and_publish_route, route_progress_pct
 
 DEFAULT_CATALOG_FILE = "catalog/tochal_v1.json"
 
@@ -426,7 +426,7 @@ def seed_catalog(
                 "base_minutes": timing["cumulative"].get(slug),
                 "segment_minutes": timing["segments"].get(slug),
                 "cumulative_minutes": timing["cumulative"].get(slug),
-                "progress_pct": round(timing["cumulative"].get(slug, 0) / timing["one_way"] * 100, 2) if timing["one_way"] else None,
+                "progress_pct": route_progress_pct(timing["cumulative"].get(slug, 0), timing["one_way"]) if timing["one_way"] else None,
                 "timing_status": timing["status"] if timing["status"] != Route.TimingStatus.PENDING else RoutePoint.TimingStatus.PENDING,
                 "sort_order": index + 1,
                 "internal_note": str(point_row.get("evidence_note", "") or "")[:255],

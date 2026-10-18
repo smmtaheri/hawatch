@@ -1,0 +1,201 @@
+{
+  "catalog_version": "hawatch-shevi-waterfall-v2",
+  "primary_point": "shevi-waterfall",
+  "weather_points": {
+    "sartang-camp": {
+      "name": "کمپ سرتنگ",
+      "page_name": "کمپ سرتنگ آبشار شوی",
+      "short_label": "کمپ سرتنگ",
+      "place_type": "camp",
+      "category_key": "camp",
+      "category": "مبدأ مسیر",
+      "region": "سرتنگ · شهیون · دزفول · خوزستان",
+      "aliases": ["کمپ سرتنگ آبشار شوی", "محل کمپ شب‌مانی سرتنگ", "Sartang camp"],
+      "identity_summary": "محدودهٔ کمپ شب‌مانی سرتنگ در ابتدای مسیر پیادهٔ آبشار شوی؛ مبدأ route بر اساس waypoint نام‌دار ترک.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595",
+        "https://dezhpol-news.blogfa.com/post/4330"
+      ],
+      "latitude": 32.789122,
+      "longitude": 48.842431,
+      "elevation_m": 1041,
+      "status": "provisional",
+      "elevation_source": "مختصات از waypoint «محل کمپ شب‌مانی منطقه سرتنگ» در ترک پیادهٔ Wikiloc 132698595؛ ارتفاع از Open-Meteo GLO-90 DEM در همین مختصات، نه ele خام GPX.",
+      "climate": "forest_fog",
+      "evidence_note": "مبدأ واقعی مسیر پیاده است و با شروع ثبت‌شدهٔ GPX حدود ۹۰ متر فاصله دارد؛ برای جلوگیری از waypoint تکراری، همان کمپ canonical شد."
+    },
+    "stone-mar-waterfall": {
+      "name": "آبشار سنگ‌مار",
+      "page_name": "آبشار سنگ‌مار شوی",
+      "short_label": "سنگ‌مار",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای شوی",
+      "region": "سرتنگ · شهیون · دزفول · خوزستان",
+      "aliases": ["آبشار دوم شوی", "آبشار سنگ مار شوی", "آبشار سنگ‌مار دزفول"],
+      "identity_summary": "آبشار سنگ‌مار یا شوی دوم، عارضهٔ میانیِ نام‌دار در مسیر پیادهٔ سرتنگ تا آبشار اصلی شوی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595",
+        "https://fa.tripyar.com/iran/%D8%AE%D9%88%D8%B2%D8%B3%D8%AA%D8%A7%D9%86/%D8%AF%D8%B2%D9%81%D9%88%D9%84/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%86%D8%B4%D9%85%D9%87-%D9%87%D8%A7-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%87%D8%A7/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B3%D9%86%DA%AF-%D9%85%D8%A7%D8%B1-%D8%AF%D8%B2%D9%81%D9%88%D9%84.html",
+        "https://mapcarta.com/N4468703955"
+      ],
+      "latitude": 32.795317,
+      "longitude": 48.833883,
+      "elevation_m": 871,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint نام‌دار آبشار سنگ‌مار در ترک Wikiloc 132698595؛ ارتفاع از Open-Meteo GLO-90 DEM، GPX ele فقط مرجع بوده است.",
+      "climate": "forest_fog",
+      "evidence_note": "Tripyar سنگ‌مار را آبشار دوم شوی و نیازمند پیاده‌روی معرفی می‌کند؛ نقطهٔ OSM آبشار دوم حدود ۹۵ متر با waypoint ترک فاصله دارد."
+    },
+    "shevi-twin-waterfalls": {
+      "name": "آبشار دوقلو شوی",
+      "page_name": "آبشار دوقلو شوی",
+      "short_label": "آبشار دوقلو",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای شوی",
+      "region": "سرتنگ · شهیون · دزفول · خوزستان",
+      "aliases": ["آبشارهای دوقلو شوی", "آبشار دوقلوی شوی"],
+      "identity_summary": "آبشار دوقلوی ثبت‌شده در waypoint ترک پیادهٔ سرتنگ تا آبشار شوی، پیش از آبشار اصلی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595",
+        "https://lastsecond.ir/itineraries/s972954-shevi-waterfall-mahinpo-97"
+      ],
+      "latitude": 32.796785,
+      "longitude": 48.831141,
+      "elevation_m": 827,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint آبشار دوقلو در ترک Wikiloc 132698595؛ ارتفاع از Open-Meteo GLO-90 DEM، GPX ele فقط مرجع بوده است.",
+      "climate": "forest_fog"
+    },
+    "shevi-waterfall": {
+      "name": "آبشار شوی",
+      "page_name": "آبشار شوی",
+      "short_label": "آبشار شوی",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای خوزستان",
+      "region": "سرتنگ · شهیون · دزفول · خوزستان",
+      "aliases": [
+        "آبشار شوی دزفول",
+        "آبشار شوی خوزستان",
+        "آبشار شوی شهیون",
+        "آبشار تله‌زنگ",
+        "Shevi Waterfall",
+        "Shavi Waterfall"
+      ],
+      "identity_summary": "آبشار شوی در ارتفاعات سرتنگ شوی، بخش سردشت شهرستان دزفول در استان خوزستان؛ مستقل از آبشار سنگ‌مار و آبشارهای میانی مسیر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595",
+        "https://mapcarta.com/N4428644238",
+        "https://dezhpol-news.blogfa.com/post/4330",
+        "https://lastsecond.ir/itineraries/s972954-shevi-waterfall-mahinpo-97",
+        "https://www.karnaval.ir/things-to-do/shevi-waterfall-dezful",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.796543&longitude=48.828699"
+      ],
+      "latitude": 32.796543,
+      "longitude": 48.828699,
+      "elevation_m": 801,
+      "status": "provisional",
+      "elevation_source": "مختصات از waypoint «آبشار شوی» در ترک Wikiloc 132698595؛ با گرهٔ OSM آبشار اول شوی (4428644238) تطبیق مکانی شده؛ ارتفاع ۸۰۱ متر از Open-Meteo GLO-90 DEM در مختصات canonical است.",
+      "climate": "forest_fog",
+      "tile_name": "آبشار شوی",
+      "short_category": "آبشار",
+      "image": "/images/home-scene.png",
+      "image_alt": "آبشار شوی در ارتفاعات سرتنگ، دزفول",
+      "seo": {
+        "title": "آب‌وهوای آبشار شوی؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار شوی در سرتنگ، شهیون دزفول؛ دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید.",
+        "content": "آبشار شوی در ارتفاعات زاگرس و مسیر سرتنگ دزفول قرار دارد. دسترسی جاده‌ای تا مبدأ پیاده طولانی و ناهموار است و ادامهٔ راه با عبور از آب انجام می‌شود؛ پیش از حرکت، وضعیت محلی و سطح آب را بررسی کنید."
+      }
+    }
+  },
+  "routes": {
+    "sartang": {
+      "slug": "sartang-to-shevi-waterfall",
+      "title": "کمپ سرتنگ تا آبشار شوی",
+      "subtitle": "از آبشار سنگ‌مار و آبشار دوقلو تا آبشار اصلی شوی",
+      "trail_label": "مسیر سرتنگ",
+      "origin": "کمپ سرتنگ",
+      "target_label": "آبشار شوی",
+      "region": "سرتنگ · شهیون · دزفول · خوزستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sartang-camp",
+        "stone-mar-waterfall",
+        "shevi-twin-waterfalls",
+        "shevi-waterfall"
+      ],
+      "distance_km": 3.1,
+      "ascent_m": 10,
+      "one_way_minutes": 50,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-one-way+web-reports-v1",
+        "version": "shevi-sartang-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 20,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595",
+          "https://dezhpol-news.blogfa.com/post/4330",
+          "https://lastsecond.ir/itineraries/s972954-shevi-waterfall-mahinpo-97"
+        ],
+        "cumulative_minutes": {
+          "sartang-camp": 0,
+          "stone-mar-waterfall": 25,
+          "shevi-twin-waterfalls": 40,
+          "shevi-waterfall": 50
+        }
+      },
+      "public_note": "این مسیر فقط پیاده‌روی از کمپ سرتنگ است؛ جادهٔ دسترسی تا آن طولانی و ناهموار است. عبور از آب و بخش سنگی دارد؛ در بارندگی یا بالا بودن آب نروید و بار اول با راهنمای محلی بروید.",
+      "public_point_notes": {
+        "sartang-camp": "مبدأ پیاده‌روی؛ دسترسی جاده‌ای تا کمپ جزو مسافت این Route نیست.",
+        "stone-mar-waterfall": "آبشار سنگ‌مار یا شوی دوم؛ پیش از ادامهٔ مسیر، سطح آب و عبورگاه را ارزیابی کنید.",
+        "shevi-twin-waterfalls": "آبشار دوقلو در مسیر پیش از آبشار اصلی شوی."
+      }
+    }
+  },
+  "point": {
+    "slug": "shevi-waterfall",
+    "name": "آبشار شوی",
+    "tile_name": "آبشار شوی",
+    "short_category": "آبشار",
+    "category": "آبشارهای خوزستان",
+    "category_key": "waterfall",
+    "region": "سرتنگ · شهیون · دزفول · خوزستان",
+    "latitude": 32.796543,
+    "longitude": 48.828699,
+    "elevation_m": 801,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار شوی در ارتفاعات سرتنگ، دزفول",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "آبشار شوی دزفول",
+      "آبشار شوی خوزستان",
+      "آبشار شوی شهیون",
+      "آبشار تله‌زنگ",
+      "Shevi Waterfall",
+      "Shavi Waterfall"
+    ]
+  }
+}

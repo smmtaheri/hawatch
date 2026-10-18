@@ -57,18 +57,15 @@ class Command(BaseCommand):
                         f"{route.slug}: no descent or segment-distance data"
                     )
 
-                changed = False
                 descent = item.get("descent_m")
+                evidence = dict(route.descent_evidence or {})
                 if descent is not None:
                     if type(descent) is not int or descent < 0:
                         raise CommandError(f"{route.slug}: invalid descent")
-                    evidence = item.get("evidence")
-                    if not isinstance(evidence, dict) or not evidence:
+                    descent_evidence = item.get("evidence")
+                    if not isinstance(descent_evidence, dict) or not descent_evidence:
                         raise CommandError(f"{route.slug}: descent evidence required")
-                    if route.descent_m != descent or route.descent_evidence != evidence:
-                        route.descent_m = descent
-                        route.descent_evidence = evidence
-                        changed = True
+                    evidence = dict(descent_evidence)
 
                 cumulative = item.get("cumulative_distance_m")
                 segment_distances = item.get("segment_distance_m")
@@ -112,11 +109,17 @@ class Command(BaseCommand):
                         raise CommandError(
                             f"{route.slug}: invalid segment-distance evidence"
                         )
-                    route_evidence = dict(route.descent_evidence or {})
-                    if route_evidence.get("segment_distance_estimate") != distance_evidence:
-                        route_evidence["segment_distance_estimate"] = distance_evidence
-                        route.descent_evidence = route_evidence
-                        changed = True
+                    evidence["segment_distance_estimate"] = distance_evidence
+
+                # Compare the final combined evidence once. Comparing the base
+                # descent evidence before adding distance evidence marks every
+                # unchanged reapplication as a write and invalidates weather.
+                changed = route.descent_evidence != evidence
+                if descent is not None and route.descent_m != descent:
+                    route.descent_m = descent
+                    changed = True
+                if changed:
+                    route.descent_evidence = evidence
 
                 if point_updates and not dry_run:
                     type(points[0]).objects.bulk_update(

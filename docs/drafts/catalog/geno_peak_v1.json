@@ -1,0 +1,85 @@
+{
+  "catalog_version": "hawatch-geno-peak-v1",
+  "publication_review": {
+    "status": "blocked",
+    "checked_at": "2026-10-18",
+    "reason": "Open-Meteo validation failed: land grid distance 5.863 km exceeds the 5.25 km limit. Not part of production fixtures; no database import has been performed."
+  },
+  "primary_point": "geno-peak",
+  "weather_points": {
+    "geno-peak": {
+      "name": "قلهٔ گنو",
+      "page_name": "قلهٔ گنو",
+      "short_label": "گنو",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های هرمزگان",
+      "region": "کوه گنو · بندرعباس · هرمزگان",
+      "aliases": [
+        "گنو",
+        "کوه گنو",
+        "قله گنو",
+        "قلهٔ نصیری",
+        "نصیری",
+        "Geno",
+        "Mount Genow",
+        "Kuh-e Genow",
+        "Nasiri Peak"
+      ],
+      "identity_summary": "قلهٔ نصیری، بلندترین قلهٔ شناخته‌شدهٔ کوه گنو در شمال‌غرب بندرعباس؛ نقطهٔ پیش‌بینی روی قله قرار دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12612876",
+        "https://www.gholleh.com/peak-information.aspx?lat=27.4257885&lon=56.1726169&peak-name=%D9%82%D9%84%D9%87+%DA%AF%D9%86%D9%88&pkidentifier=1495",
+        "https://datazone.birdlife.org/site/factsheet/8159-geno",
+        "https://api.open-meteo.com/v1/elevation?latitude=27.4257885&longitude=56.1726169",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 27.4257885,
+      "longitude": 56.1726169,
+      "elevation_m": 2326,
+      "elevation_source": "DEM مدل GLO-90 سرویس Open-Meteo در مختصات قله: ۲۳۲۶ متر؛ منبع جغرافیایی ارتفاع قله را ۲۳۴۷ متر گزارش می‌کند (اختلاف ۲۱ متر، بررسی ۲۰۲۶-۱۰-۱۶).",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ گنو؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ گنو در ارتفاع حدود ۲۳۴۷ متر در هرمزگان؛ دما، باد و بارش را پیش از صعود ببینید.",
+        "content": "قلهٔ گنو با نام قلهٔ نصیری نیز شناخته می‌شود و در شمال‌غرب بندرعباس قرار دارد. این صفحه پیش‌بینی را برای مختصات قله نمایش می‌دهد."
+      },
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "geno-peak",
+    "tile_name": "قلهٔ گنو",
+    "name": "قلهٔ گنو",
+    "short_category": "قله",
+    "category": "قله‌های هرمزگان",
+    "category_key": "mountain",
+    "region": "کوه گنو · هرمزگان",
+    "latitude": 27.4257885,
+    "longitude": 56.1726169,
+    "elevation_m": 2326,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ گنو در هرمزگان",
+    "popular_order": 0,
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "گنو",
+      "کوه گنو",
+      "قله گنو",
+      "قلهٔ نصیری",
+      "نصیری",
+      "Geno",
+      "Mount Genow",
+      "Kuh-e Genow",
+      "Nasiri Peak"
+    ]
+  }
+}

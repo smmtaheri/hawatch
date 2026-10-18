@@ -136,14 +136,17 @@ scp .env root@NEW_SERVER:/root/hawatch/.env
 ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NEW_IP/g' /root/hawatch/.env"
 ```
 
-پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. هر deploy ابتدا فقط containerهای Compose پروژهٔ Hawatch را با `down --remove-orphans` متوقف می‌کند و سپس با `--force-recreate` بالا می‌آورد؛ volumeهای دیتابیس حفظ می‌شوند. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
+پس از انتقال، اسکریپت `scripts/deploy.sh` را اجرا کنید تا Compose و تنظیمات runtime را validate کند. دیپلوی ابتدا imageها و فایل‌های نسخه‌دار را آماده و بررسی می‌کند، سپس سرویس‌های برنامه را جایگزین می‌کند؛ PostgreSQL و Redis موجود را بازسازی نمی‌کند و `down` سراسری ندارد. برای توسعهٔ local تازه، از `.env.example` استفاده کنید و snapshot واقعی سرور را روی GitHub قرار ندهید.
 
 ## افزودن نقطه و اعتبارسنجی weather
 
 راهنمای workflow در [`docs/catalog-onboarding.md`](docs/catalog-onboarding.md)
 است. برای افزودن معمولی و افزایشی نقطه، بک‌آپ دیتابیس، migration، restart یا
-sync کل catalogها لازم نیست. نقطهٔ بدون مسیر را با `routes: {}` ثبت کنید؛ GPX و
-ساخت فولدر `tracks/` فقط وقتی لازم‌اند که واقعاً Route پیاده تعریف می‌شود.
+sync کل catalogها لازم نیست. `routes: {}` فقط برای مقصد غیرکوهی مجاز است که
+خودِ نقطهٔ نماینده‌اش با خودروی عادی قابل‌دسترسی باشد. هر کوه/قله و هر مقصدی که
+خودرو تا خودِ آن نمی‌رسد، پیش از انتشار باید Route پیادهٔ واجد شرایط و ترک GPX
+بررسی‌شده داشته باشد؛ اگر مسیر پذیرفته‌شده‌ای پیدا نشد، آن مقصد را منتشر نکنید.
+GPX صرفاً برای forecast لازم نیست، اما برای این Routeها evidence اجباری است.
 
 یک catalog نسخه‌دار در `apps/api/fixtures/catalog/` بسازید/به‌روزرسانی کنید،
 هویت و تکراری‌نبودن نقطه را بررسی کنید، سپس wrapper را یک‌بار در حالت apply اجرا
@@ -184,10 +187,10 @@ Database منبع حقیقت runtime است؛ JSON فقط bootstrap/import اس�
 ### افزودن WeatherPoint
 
 1. Django admin → WeatherPoint (`is_active`، `ingest_enabled=true`؛ elevation از DEM نه GPX `<ele>`؛ `fixture_managed` را دستی true نکنید).
-2. برای نمایش عمومی و SEO، خود نقطه را فعال و `seo_indexable=true` کنید؛ تمام
-   نقاط فعال و عمومی fixture باید این flag را داشته باشند. نقطهٔ متصل به Route
-   فعال بدون این flag فقط برای سازگاری ingest/search پشتیبانی می‌شود و خطای
-   validation است.
+2. خود نقطه را برای نمایش عمومی فعال کنید. برای مقصد مستقلِ قابل ایندکس
+   `seo_indexable=true` و برای waypoint فنی یا بین‌راهی `false` بگذارید؛ مقدار
+   false نقطه را از مسیر، API، جست‌وجو یا forecast حذف نمی‌کند، فقط صفحهٔ مستقل
+   را noindex و خارج از sitemap نگه می‌دارد.
 
 ### افزودن و publish مسیر
 

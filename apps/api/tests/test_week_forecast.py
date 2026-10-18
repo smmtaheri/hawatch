@@ -1,5 +1,7 @@
 """Public/cacheable week, planner parity, precipitation boundaries and sharing."""
 from datetime import datetime, timedelta
+from io import StringIO
+import json
 from unittest.mock import patch
 import pytest
 from django.core.cache import cache
@@ -164,7 +166,57 @@ def test_route_descent_applies_only_matching_canonical_chain(week_seed):
     for point in points[1:]:point.segment_distance_m=1234;point.save(update_fields=['segment_distance_m'])
     call_command('apply_route_descent')
     assert list(route.points.order_by('sort_order').values_list('segment_distance_m',flat=True))[1:]==[1234]*5
-    assert Route.objects.get(slug='tochal-shahrestanak').descent_m is None
+    shahrestanak=Route.objects.get(slug='tochal-shahrestanak')
+    assert shahrestanak.descent_m==32
+    assert shahrestanak.descent_evidence['lower_bound_estimate'] is True
+    assert shahrestanak.descent_evidence['segment_distance_estimate']['method']=='chord-proportional-estimate-v1'
+
+
+def test_route_descent_skips_a_mismatched_canonical_chain(week_seed,settings,tmp_path):
+    from django.core.management import call_command
+    document=json.loads((settings.FIXTURES_DIR/'route_descent_v1.json').read_text())
+    item=next(item for item in document['routes'] if item['slug']=='tochal-shahrestanak')
+    item['chain'][1]='different-landmark'
+    (tmp_path/'route_descent_v1.json').write_text(json.dumps({'schema_version':document['schema_version'],'routes':[item]}))
+    settings.FIXTURES_DIR=tmp_path
+    route=Route.objects.get(slug=item['slug'])
+    before=(route.descent_m,route.descent_evidence,list(route.points.order_by('sort_order').values_list('segment_distance_m',flat=True)))
+    output=StringIO()
+    call_command('apply_route_descent',stdout=output)
+    route.refresh_from_db()
+    assert (route.descent_m,route.descent_evidence,list(route.points.order_by('sort_order').values_list('segment_distance_m',flat=True)))==before
+    assert 'unmatched routes: 1' in output.getvalue()
+
+
+def test_route_descent_dry_run_does_not_write_or_invalidate_weather(week_seed,django_capture_on_commit_callbacks):
+    from django.core.management import call_command
+    from hawatch.api.v1.week_cache import revision
+    from hawatch.modules.routes.models import RoutePoint
+    before_routes=list(Route.objects.order_by('pk').values_list('pk','descent_m','descent_evidence'))
+    before_points=list(RoutePoint.objects.order_by('pk').values_list('pk','segment_distance_m'))
+    before_revision=revision()
+    with django_capture_on_commit_callbacks(execute=True),CaptureQueriesContext(connection) as queries:
+        call_command('apply_route_descent',dry_run=True)
+    assert list(Route.objects.order_by('pk').values_list('pk','descent_m','descent_evidence'))==before_routes
+    assert list(RoutePoint.objects.order_by('pk').values_list('pk','segment_distance_m'))==before_points
+    assert not any(query['sql'].lstrip().upper().startswith('UPDATE ') for query in queries)
+    assert revision()==before_revision
+
+
+def test_distance_only_evidence_preserves_existing_descent_metadata(week_seed,settings,tmp_path):
+    from django.core.management import call_command
+    document=json.loads((settings.FIXTURES_DIR/'route_descent_v1.json').read_text())
+    item=next(item for item in document['routes'] if item['slug']=='tochal-shahrestanak')
+    del item['descent_m'];del item['evidence']
+    (tmp_path/'route_descent_v1.json').write_text(json.dumps({'schema_version':document['schema_version'],'routes':[item]}))
+    settings.FIXTURES_DIR=tmp_path
+    route=Route.objects.get(slug=item['slug'])
+    route.descent_m=99;route.descent_evidence={'operator_note':'reviewed descent'}
+    route.save(update_fields=['descent_m','descent_evidence'])
+    call_command('apply_route_descent')
+    route.refresh_from_db()
+    assert route.descent_m==99
+    assert route.descent_evidence=={'operator_note':'reviewed descent','segment_distance_estimate':item['segment_distance_evidence']}
 
 
 def test_cache_schema_isolates_payload_changes_but_ui_releases_share_cache(settings):
@@ -193,6 +245,9 @@ def test_reapplying_unchanged_descent_preserves_weather_revision(week_seed,djang
     with django_capture_on_commit_callbacks(execute=True):
         call_command('apply_route_descent')
     before=revision()
-    with django_capture_on_commit_callbacks(execute=True):
-        call_command('apply_route_descent')
+    output=StringIO()
+    with django_capture_on_commit_callbacks(execute=True),CaptureQueriesContext(connection) as queries:
+        call_command('apply_route_descent',stdout=output)
     assert revision()==before
+    assert not any(query['sql'].lstrip().upper().startswith('UPDATE ') for query in queries)
+    assert 'Updated routes: 0; segment distances: 0;' in output.getvalue()

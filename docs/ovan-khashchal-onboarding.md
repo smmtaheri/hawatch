@@ -28,7 +28,10 @@ https://www.wikiloc.com/wikiloc/view.do?id=13438125
 `tracks/khashchal/khashchal-varbon-to-summit-2016-roundtrip.gpx` منتقل شد.
 GPX و manifest محلی و ignored هستند؛ داخل commit یا سرور نمی‌روند.
 
-کاتالوگ مالک قله: `apps/api/fixtures/catalog/khashchal_v1.json`؛ فعلاً point-only.
+کاتالوگ مالک قله: `apps/api/fixtures/catalog/khashchal_v1.json`؛ رکورد فعلی
+point-only است، اما طبق قاعدهٔ فعلی onboarding این وضعیت برای قله آمادهٔ انتشار
+نیست: قله باید Route پیاده با ترک GPX واجد همهٔ gateهای مسیر داشته باشد؛ تا
+تأیید چنین مسیری، قله را point-only منتشر نکنید.
 مسیر و پناهگاه وارد fixture قابل انتشار نشده‌اند: gate هواشناسی پناهگاه در
 مختصات واقعی 36.532894,50.499582 شکست خورد. انتخاب `nearest` سلول را ۵٫۴۰۲
 کیلومتر و `land` آن را ۵٫۶۲۴ کیلومتر دورتر برمی‌گرداند؛ هر دو بالاتر از سقف

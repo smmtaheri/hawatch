@@ -7,11 +7,12 @@ from django.contrib.gis.geos import Point
 import pytest
 from rest_framework.test import APIClient
 
+from hawatch.common.time import paced_route_cumulative_minutes
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.publish import normalize_and_publish_route
-from hawatch.modules.routes.timing import route_timing_complete
+from hawatch.modules.routes.timing import route_mean_elevation_m, route_timing_complete
 
 
 @pytest.mark.django_db
@@ -135,7 +136,14 @@ def test_admin_style_route_publish_without_fixture_import():
     assert body["timing_pending"] is False
     assert [point["slug"] for point in body["points"]] == ["admin_start", "admin_mid", "tochal"]
     assert body["points"][0]["arrival_minutes"] == 360
-    assert body["points"][-1]["arrival_minutes"] == 360 + 180
+    # Arrival uses the current route-level pace/altitude model, not the former
+    # fixed addition of the catalog's medium-profile minutes.
+    expected_duration = paced_route_cumulative_minutes(
+        route.one_way_minutes, route.one_way_minutes, "متوسط",
+        distance_km=float(route.distance_km), ascent_m=route.ascent_m,
+        descent_m=route.descent_m, mean_elevation_m=route_mean_elevation_m(points),
+    )
+    assert body["points"][-1]["arrival_minutes"] == 360 + expected_duration
 
 
 @pytest.mark.django_db
