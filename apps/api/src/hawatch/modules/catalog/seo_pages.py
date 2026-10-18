@@ -16,9 +16,11 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.core.paginator import EmptyPage, Paginator
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.utils.html import json_script
 from django.views.decorators.http import require_GET
 
 from hawatch.common.cache_headers import mark_public_catalog_response
@@ -52,6 +54,14 @@ ROUTES_DESCRIPTION = "مسیرهای کوه‌پیمایی هواچ؛ نقاط �
 _PLACE_TYPE_TOKEN_RE = re.compile(r"(نقطهٔ\s+)([a-z][a-z0-9_]*)", re.IGNORECASE)
 
 
+class CompactJSONEncoder(DjangoJSONEncoder):
+    """Keep embedded API JSON compact without changing its data contract."""
+
+    def __init__(self, *args, **kwargs):
+        kwargs["separators"] = (",", ":")
+        super().__init__(*args, **kwargs)
+
+
 def _canonical(path: str) -> str:
     return f"{settings.PUBLIC_SITE_ORIGIN}{path}"
 
@@ -81,11 +91,17 @@ def _localized_identity_summary(point: WeatherPoint) -> str:
 
 def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpResponse:
     robots = _robots(request) if status == 200 and page.get("indexable", True) else "noindex,follow"
+    initial_forecast_script = (
+        json_script(page["initial_forecast"], "forecast-initial-data", encoder=CompactJSONEncoder)
+        if page.get("initial_forecast")
+        else ""
+    )
     response = render(
         request,
         "catalog/seo_page.html",
         {
             "page": page,
+            "initial_forecast_script": initial_forecast_script,
             "robots": robots,
             "ga4_measurement_id": getattr(settings, "GA4_MEASUREMENT_ID", ""),
             "new_design": getattr(settings, "HAWATCH_NEW_DESIGN", False),

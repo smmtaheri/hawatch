@@ -27,6 +27,10 @@ def test_embedded_weather_is_script_safe_and_html_cache_cannot_keep_it_for_five_
     assert 'id="forecast-initial-data" type="application/json"' in html
     assert "<script>bad()" not in html
     assert "\\u003C/script\\u003E" in html
+    script = html.split('id="forecast-initial-data" type="application/json">', 1)[1].split("</script>", 1)[0]
+    assert json.loads(script) == page["initial_forecast"]
+    assert '": ' not in script
+    assert ', ' not in script
     assert response["Cache-Control"] == "public, max-age=0, s-maxage=15, must-revalidate"
     assert query["Cache-Control"] == "no-cache"
     assert query["X-Robots-Tag"] == "noindex,follow"
