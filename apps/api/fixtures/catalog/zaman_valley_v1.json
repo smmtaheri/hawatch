@@ -1,0 +1,69 @@
+{
+  "catalog_version": "hawatch-zaman-valley-v1",
+  "primary_point": "zaman-valley",
+  "weather_points": {
+    "zaman-valley": {
+      "name": "درهٔ زمان پلور",
+      "page_name": "درهٔ زمان پلور",
+      "short_label": "درهٔ زمان",
+      "place_type": "valley",
+      "category_key": "valley",
+      "aliases": [
+        "دره زمان",
+        "تنگه زمان پلور",
+        "درهٔ زمان تهران",
+        "پل سنگی پلور",
+        "پل قلط",
+        "Zaman Valley",
+        "Polur Stone Bridge"
+      ],
+      "identity_summary": "درهٔ زمان در پلورِ آمل؛ این نقطهٔ پیش‌بینی روی پل سنگی و ورودیِ جاده‌ای دره قرار دارد، نه در طول پیمایش رودخانه‌ای داخل دره.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikidata.org/wiki/Q94685086",
+        "https://shmi.ir/راهنمای-سفر-یک-روزه-به-دره-زمان/",
+        "https://www.karnaval.ir/things-to-do/zaman-valley",
+        "https://www.wikiloc.com/hiking-trails/drh-zmn-107370740",
+        "https://pl.wikiloc.com/szlaki-wycieczki-piesze/drh-zmn-tngh-zmn-drh-zmn-plwr-279453543"
+      ],
+      "latitude": 35.8551667,
+      "longitude": 52.0566111,
+      "elevation_m": 2211,
+      "status": "provisional",
+      "elevation_source": "مختصات پل سنگی شاهی/پل قلط پلور از Wikidata؛ ارتفاع اولیه ۲۲۱۱ متر از waypoint پل قلط در ترک ثبت‌شدهٔ منطقه است و باید با DEM نهایی Open-Meteo کنترل شود.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "zaman-valley",
+    "tile_name": "درهٔ زمان پلور",
+    "name": "درهٔ زمان پلور",
+    "short_category": "دره",
+    "category": "دره‌های مازندران",
+    "category_key": "valley",
+    "region": "پلور · آمل · مازندران",
+    "elevation_m": 2211,
+    "latitude": 35.8551667,
+    "longitude": 52.0566111,
+    "image": "/images/home-scene.png",
+    "image_alt": "ورودی درهٔ زمان در پل سنگی پلور، مازندران",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دره زمان",
+      "تنگه زمان پلور",
+      "درهٔ زمان تهران",
+      "پل سنگی پلور",
+      "پل قلط",
+      "Zaman Valley",
+      "Polur Stone Bridge"
+    ]
+  }
+}
