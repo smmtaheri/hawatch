@@ -1,0 +1,72 @@
+{
+  "catalog_version": "hawatch-quri-gol-lake-catalog-v1",
+  "primary_point": "quri-gol-lake",
+  "weather_points": {
+    "quri-gol-lake": {
+      "name": "دریاچهٔ قوری‌گل",
+      "page_name": "دریاچهٔ قوری‌گل",
+      "short_label": "قوری‌گل",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": [
+        "دریاچه قوری‌گل",
+        "دریاچه قوری گل",
+        "تالاب قوری‌گل",
+        "تالاب بین‌المللی قوری‌گل",
+        "قوری گل",
+        "قوریگل",
+        "Quri-gol Lake",
+        "Gori Gol Lake",
+        "Lake Gori"
+      ],
+      "identity_summary": "دریاچه و تالاب بین‌المللی قوری‌گل در شهرستان بستان‌آبادِ آذربایجان شرقی؛ با روستای هم‌نام قوری‌گل در شهرستان اهر یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://visitiran.ir/attraction/Lake-Quri-gol",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR48RIS.pdf",
+        "https://mapcarta.com/12610828"
+      ],
+      "latitude": 37.9166667,
+      "longitude": 46.7,
+      "elevation_m": 1950,
+      "status": "provisional",
+      "elevation_source": "برگهٔ رسمی رامسر برای Lake Gori (Gori Gol): مختصات ۳۷°۵۵′ شمالی، ۴۶°۴۲′ شرقی و ارتفاع ۱۹۵۰ متر؛ باید با DEM اپن‌متیو اعتبارسنجی شود.",
+      "climate": "lake_valley",
+      "region": "بستان‌آباد · آذربایجان شرقی"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "quri-gol-lake",
+    "tile_name": "دریاچهٔ قوری‌گل",
+    "name": "دریاچهٔ قوری‌گل",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌های آذربایجان شرقی",
+    "category_key": "lake",
+    "region": "بستان‌آباد · آذربایجان شرقی",
+    "elevation_m": 1950,
+    "latitude": 37.9166667,
+    "longitude": 46.7,
+    "image": "/images/home-scene.png",
+    "image_alt": "دریاچهٔ قوری‌گل در شهرستان بستان‌آباد، آذربایجان شرقی",
+    "popular_order": 0,
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "دریاچه قوری‌گل",
+      "دریاچه قوری گل",
+      "تالاب قوری‌گل",
+      "تالاب بین‌المللی قوری‌گل",
+      "قوری گل",
+      "قوریگل",
+      "Quri-gol Lake",
+      "Gori Gol Lake",
+      "Lake Gori"
+    ]
+  }
+}
