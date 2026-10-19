@@ -1,0 +1,57 @@
+{
+  "catalog_version": "hawatch-asiab-kharabeh-v1",
+  "primary_point": "asiab-kharabeh-waterfall",
+  "weather_points": {
+    "asiab-kharabeh-waterfall": {
+      "name": "آبشار آسیاب‌خرابه",
+      "page_name": "آبشار آسیاب‌خرابه",
+      "short_label": "آسیاب‌خرابه",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار آسیاب خرابه", "آسیاب خرابه جلفا", "Asiyab Kharabeh Waterfall"],
+      "identity_summary": "مجموعهٔ آبشار آسیاب‌خرابه در شهرستان جلفا، آذربایجان شرقی؛ نقطهٔ پیش‌بینی روی آبشار اصلی است. بازدیدکننده با خودرو به محوطهٔ گردشگری و پارکینگ می‌رسد و مسیر پیادهٔ داخل محوطه کوتاه است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/3451078466",
+        "https://fa.tripyar.com/iran/%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%B4%D8%B1%D9%82%DB%8C/%D8%AC%D9%84%D9%81%D8%A7/%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C/%D8%A7%DA%A9%D9%88%D8%AA%D9%88%D8%B1%DB%8C%D8%B3%D9%85/%DA%86%D8%B4%D9%85%D9%87-%D9%87%D8%A7-%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1%D9%87%D8%A7-%D8%AA%D8%A7%D9%84%D8%A7%D8%A8-%D9%87%D8%A7/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%A2%D8%B3%DB%8C%D8%A7%D8%A8-%D8%AE%D8%B1%D8%A7%D8%A8%D9%87.html",
+        "https://www.wikiloc.com/hiking-trails/1403-4-6-chshmh-w-abshr-asyb-khrb-175731671",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.8583&longitude=45.85677"
+      ],
+      "latitude": 38.8583,
+      "longitude": 45.85677,
+      "elevation_m": 980,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار اصلی از OpenStreetMap؛ ارتفاع ۹۸۰ متر از Open-Meteo GLO-90 DEM در همان مختصات.",
+      "climate": "forest_fog",
+      "region": "جلفا · آذربایجان شرقی",
+      "seo": {
+        "title": "آب‌وهوای آبشار آسیاب‌خرابه؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار آسیاب‌خرابه در جلفا، آذربایجان شرقی؛ دما، باد، بارش و وضعیت ساعتی پیش از بازدید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "asiab-kharabeh-waterfall",
+    "tile_name": "آبشار آسیاب‌خرابه",
+    "name": "آبشار آسیاب‌خرابه",
+    "short_category": "آبشار",
+    "category": "آبشارهای آذربایجان شرقی",
+    "category_key": "waterfall",
+    "region": "جلفا · آذربایجان شرقی",
+    "elevation_m": 980,
+    "latitude": 38.8583,
+    "longitude": 45.85677,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار آسیاب‌خرابه در جلفا، آذربایجان شرقی",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آبشار آسیاب خرابه", "آسیاب خرابه جلفا", "Asiyab Kharabeh Waterfall"]
+  },
+  "internal_note": "نقطه‌محور ثبت می‌شود: خودرو تا محوطهٔ گردشگری می‌رسد و مسیر رایج بازدید از پارکینگ تا آبشار بسیار کوتاه است؛ Route عمومی نمی‌سازیم چون زنجیرهٔ مستقلِ مبدأ→عارضهٔ میانی→مقصد برای این پیاده‌روی کوتاه وجود ندارد. GPX دریافت‌شده با hash در manifest محلی ثبت شده؛ بخش عمدهٔ ۳۶٫۵ کیلومتر آن جادهٔ خودرو است و ادامه‌اش بازدید طولانی‌تر از محوطه را همراه با waypoint ریزش زمین دنبال می‌کند، پس مبنای مسافت/ETA مسیر عمومی نیست."
+}
