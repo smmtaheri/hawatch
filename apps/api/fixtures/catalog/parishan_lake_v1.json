@@ -1,0 +1,55 @@
+{
+  "catalog_version": "hawatch-parishan-lake-v1",
+  "primary_point": "parishan-lake",
+  "weather_points": {
+    "parishan-lake": {
+      "name": "دریاچهٔ پریشان",
+      "page_name": "دریاچهٔ پریشان کازرون",
+      "short_label": "پریشان",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": ["دریاچه فامور", "پیرشون", "Parishan Lake", "Famur Lake"],
+      "identity_summary": "پهنهٔ دریاچهٔ پریشان در بخش جره و بالادهٔ کازرون، فارس؛ نقطهٔ نقشه‌ای نمایندهٔ دریاچه است و با دریاچهٔ ارژن یکی نیست. گستره و آب سطحی آن با فصل و خشکسالی تغییر می‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12615478",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR37RIS.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.50491&longitude=51.80629"
+      ],
+      "latitude": 29.50491,
+      "longitude": 51.80629,
+      "elevation_m": 821,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع نقشه‌ای دریاچه از Mapcarta/OSM؛ ارتفاع ۸۲۱ متر از Open-Meteo GLO-90 در همان نقطه.",
+      "climate": "lake_valley",
+      "region": "جره و بالاده · کازرون · فارس",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ پریشان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ پریشان در کازرون فارس؛ شرایط جوی پهنهٔ تالاب را پیش از بازدید بررسی کنید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "parishan-lake",
+    "tile_name": "دریاچهٔ پریشان",
+    "name": "دریاچهٔ پریشان",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌ها و تالاب‌های فارس",
+    "category_key": "lake",
+    "region": "جره و بالاده · کازرون",
+    "elevation_m": 821,
+    "latitude": 29.50491,
+    "longitude": 51.80629,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ دریاچهٔ پریشان در شهرستان کازرون",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دریاچه فامور", "پیرشون"]
+  }
+}

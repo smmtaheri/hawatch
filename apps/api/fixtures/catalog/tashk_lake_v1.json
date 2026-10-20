@@ -1,0 +1,55 @@
+{
+  "catalog_version": "hawatch-tashk-lake-v1",
+  "primary_point": "tashk-lake",
+  "weather_points": {
+    "tashk-lake": {
+      "name": "دریاچهٔ طَشک",
+      "page_name": "دریاچهٔ طشک فارس",
+      "short_label": "طشک",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": ["دریاچه طشک", "Tashk Lake", "Daryacheh-ye Tashk"],
+      "identity_summary": "دریاچهٔ طشک در شهرستان بختگانِ فارس؛ این صفحه برای خود پهنهٔ طشک است و آن را با دریاچهٔ بختگان یا جزیرهٔ نرگس یکی نمی‌گیرد. گسترهٔ آب فصلی است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12571854",
+        "https://rsis.ramsar.org/RISapp/files/RISrep/IR39RIS.pdf",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.73058&longitude=53.53759"
+      ],
+      "latitude": 29.73058,
+      "longitude": 53.53759,
+      "elevation_m": 1558,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع نقشه‌ای دریاچه از GeoNames/Mapcarta؛ ارتفاع ۱۵۵۸ متر از Open-Meteo GLO-90 در همان نقطه.",
+      "climate": "lake_valley",
+      "region": "بختگان · فارس",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ طشک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ طشک در استان فارس؛ شرایط جوی این پهنهٔ فصلی را پیش از بازدید ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "tashk-lake",
+    "tile_name": "دریاچهٔ طشک",
+    "name": "دریاچهٔ طشک",
+    "short_category": "دریاچه",
+    "category": "دریاچه‌ها و تالاب‌های فارس",
+    "category_key": "lake",
+    "region": "بختگان · فارس",
+    "elevation_m": 1558,
+    "latitude": 29.73058,
+    "longitude": 53.53759,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ دریاچهٔ طشک در استان فارس",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دریاچه طشک"]
+  }
+}

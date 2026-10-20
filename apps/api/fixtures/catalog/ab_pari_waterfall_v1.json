@@ -1,0 +1,55 @@
+{
+  "catalog_version": "hawatch-ab-pari-waterfall-v1",
+  "primary_point": "ab-pari-waterfall",
+  "weather_points": {
+    "ab-pari-waterfall": {
+      "name": "آبشار آب‌پری",
+      "page_name": "آبشار آب‌پری رویان",
+      "short_label": "آب‌پری",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار پری‌او", "پری‌او رویان", "Ab Pari Waterfall", "Pari Ou"],
+      "identity_summary": "آبشار آب‌پری (پری‌او) کنار جادهٔ رویان–بلده در مازندران؛ مختصات روی عارضهٔ آبشار است و دسترسی معمول تا خود محوطه با خودرو انجام می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N4254877441",
+        "https://blog.rahbal.com/ab-pari-waterfall/",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.47745&longitude=51.91535"
+      ],
+      "latitude": 36.47745,
+      "longitude": 51.91535,
+      "elevation_m": 393,
+      "status": "provisional",
+      "elevation_source": "مختصات عارضهٔ آبشار از OpenStreetMap/Mapcarta؛ ارتفاع ۳۹۳ متر از Open-Meteo GLO-90 در همان مختصات.",
+      "climate": "forest_fog",
+      "region": "رویان · نور · مازندران",
+      "seo": {
+        "title": "آب‌وهوای آبشار آب‌پری؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار آب‌پری (پری‌او) در جادهٔ رویان–بلدهٔ مازندران؛ دما، باد و بارش پیش از بازدید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "ab-pari-waterfall",
+    "tile_name": "آبشار آب‌پری",
+    "name": "آبشار آب‌پری",
+    "short_category": "آبشار",
+    "category": "آبشارهای مازندران",
+    "category_key": "waterfall",
+    "region": "رویان · نور · مازندران",
+    "elevation_m": 393,
+    "latitude": 36.47745,
+    "longitude": 51.91535,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار سنگی آب‌پری در جادهٔ رویان–بلده",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آبشار پری‌او", "پری‌او رویان"]
+  }
+}

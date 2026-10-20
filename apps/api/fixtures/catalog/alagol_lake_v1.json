@@ -1,0 +1,55 @@
+{
+  "catalog_version": "hawatch-alagol-lake-v1",
+  "primary_point": "alagol-lake",
+  "weather_points": {
+    "alagol-lake": {
+      "name": "تالاب آلاگل",
+      "page_name": "تالاب آلاگل گلستان",
+      "short_label": "آلاگل",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "aliases": ["دریاچهٔ آلاگل", "دریاچه آلا گل", "Alagol Lake", "Alagol Lagoon"],
+      "identity_summary": "تالاب آلاگل در بخش مرزی اینچه‌برونِ گلستان و جزئی از مجموعهٔ تالاب‌های بین‌المللی آلاگل، آلماگل و آجی‌گل؛ مختصات نماینده روی پهنهٔ خود تالاب است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12634324",
+        "https://rsis.ramsar.org/ris/49",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.36418&longitude=54.59727"
+      ],
+      "latitude": 37.36418,
+      "longitude": 54.59727,
+      "elevation_m": -5,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع نقشه‌ای تالاب از OpenStreetMap/Mapcarta؛ ارتفاع ۵- متر از Open-Meteo GLO-90 در همان مختصات.",
+      "climate": "desert",
+      "region": "اینچه‌برون · گنبدکاووس · گلستان",
+      "seo": {
+        "title": "آب‌وهوای تالاب آلاگل؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب آلاگل در گلستان؛ دما، باد و وضعیت جوی پهنهٔ تالاب را ببینید."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "alagol-lake",
+    "tile_name": "تالاب آلاگل",
+    "name": "تالاب آلاگل",
+    "short_category": "تالاب",
+    "category": "تالاب‌های گلستان",
+    "category_key": "marsh",
+    "region": "اینچه‌برون · گنبدکاووس",
+    "elevation_m": -5,
+    "latitude": 37.36418,
+    "longitude": 54.59727,
+    "image": "/images/home-scene.png",
+    "image_alt": "تالاب آلاگل در شمال استان گلستان",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["دریاچهٔ آلاگل", "دریاچه آلا گل"]
+  }
+}
