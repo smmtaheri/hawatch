@@ -1,0 +1,154 @@
+{
+  "catalog_version": "hawatch-peyghambar-kuh-v1",
+  "primary_point": "peyghambar-kuh",
+  "weather_points": {
+    "peyghambar-kuh-trailhead": {
+      "name": "پای‌کار قلهٔ پیغمبرکوه آبیک",
+      "page_name": "پای‌کار مسیر پیغمبرکوه آبیک",
+      "short_label": "پای‌کار پیغمبرکوه",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ پیغمبرکوه",
+      "region": "آبیک · قزوین",
+      "aliases": ["پارکینگ مسیر پیغمبرکوه", "پای‌کار شمال شهرک صنعتی آبیک"],
+      "identity_summary": "آخرین محل مناسب توقف خودرو در پای مسیر ثبت‌شدهٔ قله؛ بخش جاده‌ای از دانشگاه تا اینجا جزو Route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-pygmbr-khwh-123814828",
+        "https://irangpstracks.com/tracks/7185",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.072577&longitude=50.532115"
+      ],
+      "latitude": 36.072577,
+      "longitude": 50.532115,
+      "elevation_m": 1513,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint پارک خودرو در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "peyghambar-kuh-spring": {
+      "name": "چشمهٔ مسیر پیغمبرکوه آبیک",
+      "page_name": "چشمهٔ مسیر پیغمبرکوه آبیک",
+      "short_label": "چشمهٔ پیغمبرکوه",
+      "place_type": "spring",
+      "category_key": "spring",
+      "category": "مسیر قلهٔ پیغمبرکوه",
+      "region": "آبیک · قزوین",
+      "aliases": ["چشمهٔ پیغمبرکوه"],
+      "identity_summary": "چشمهٔ نام‌برده‌شده در بخش ابتدایی مسیر شمالی قله؛ waypoint ترک حدود یک کیلومتر پس از پای‌کار قرار دارد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-pygmbr-khwh-123814828",
+        "https://irangpstracks.com/tracks/7185",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.079623&longitude=50.536766"
+      ],
+      "latitude": 36.079623,
+      "longitude": 50.536766,
+      "elevation_m": 1713,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint چشمه در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "peyghambar-kuh": {
+      "name": "قلهٔ پیغمبرکوه آبیک",
+      "page_name": "قلهٔ پیغمبرکوه آبیک",
+      "short_label": "پیغمبرکوه آبیک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های قزوین",
+      "region": "آبیک · قزوین",
+      "aliases": ["پیغمبر کوه آبیک", "قلهٔ پیغمبرکوه قزوین", "Payghambar Kuh"],
+      "identity_summary": "قلهٔ پیغمبرکوه در شمال آبیک؛ این صفحه به قلهٔ مسیر صعودِ ثبت‌شده از پای‌کار شمال شهرک صنعتی اشاره دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-pygmbr-khwh-123814828",
+        "https://irangpstracks.com/tracks/7185",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.084996&longitude=50.539088"
+      ],
+      "latitude": 36.084996,
+      "longitude": 50.539088,
+      "elevation_m": 2039,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint قله در ترک؛ ارتفاع canonical برابر ۲۰۳۹ متر از Open-Meteo GLO-90 DEM است؛ گزارش صعود ارتفاع تقریبی ۲۱۰۰ متر را ذکر می‌کند.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ پیغمبرکوه آبیک؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ پیغمبرکوه آبیک در قزوین؛ دما، باد و بارش برای برنامه‌ریزی صعود از مسیر شمالی."
+      }
+    }
+  },
+  "routes": {
+    "north-ascent": {
+      "slug": "peyghambar-kuh-north-ascent",
+      "title": "پای‌کار آبیک تا قلهٔ پیغمبرکوه",
+      "subtitle": "صعود کوتاه و پرشیب از چشمه و یال شمالی تا قله",
+      "trail_label": "مسیر شمالی پیغمبرکوه",
+      "origin": "پای‌کار شمال شهرک صنعتی آبیک",
+      "target_label": "قلهٔ پیغمبرکوه آبیک",
+      "region": "آبیک · قزوین",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["peyghambar-kuh-trailhead", "peyghambar-kuh-spring", "peyghambar-kuh"],
+      "distance_km": 1.87,
+      "ascent_m": 530,
+      "one_way_minutes": 120,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-origin-cut+independent-hiking-report-v1",
+        "version": "peyghambar-kuh-north-ascent-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-pygmbr-khwh-123814828",
+          "https://irangpstracks.com/tracks/7185"
+        ],
+        "evidence_tracks": ["tracks/peyghambar-kuh/peyghambar-kuh-from-abyek.gpx"],
+        "cumulative_minutes": {
+          "peyghambar-kuh-trailhead": 0,
+          "peyghambar-kuh-spring": 30,
+          "peyghambar-kuh": 120
+        },
+        "notes": ["زمان ترک ضبط‌شده تا قله حدود ۱۲۱ دقیقه است؛ زمان مسیر مستقل حدود ۹۰ دقیقه گزارش شده، بنابراین ETA عمومی با حاشیهٔ احتیاط گرد شده است."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-pygmbr-khwh-123814828",
+        "https://irangpstracks.com/tracks/7185"
+      ],
+      "evidence_tracks": ["tracks/peyghambar-kuh/peyghambar-kuh-from-abyek.gpx"],
+      "public_note": "مسیر کوتاه اما بسیار پرشیب است و در بخش‌هایی دست‌به‌سنگ و در معرض ریزش سنگ گزارش شده؛ برای مبتدیان مناسب نیست. در برف و یخ یا بدون آشنایی با مسیر اقدام نکنید.",
+      "public_point_notes": {
+        "peyghambar-kuh-spring": "چشمه روی مسیر ثبت شده است؛ در دسترس‌بودن آب فصلی را پیش از اتکا بررسی کنید.",
+        "peyghambar-kuh": "یال نهایی پرشیب و سنگی است؛ گزارش مستقل برای فرود از دره هشدار ریزش سنگ می‌دهد."
+      }
+    }
+  },
+  "point": {
+    "slug": "peyghambar-kuh",
+    "tile_name": "پیغمبرکوه آبیک",
+    "name": "قلهٔ پیغمبرکوه آبیک",
+    "short_category": "قله",
+    "category": "قله‌های قزوین",
+    "category_key": "mountain",
+    "region": "آبیک · قزوین",
+    "elevation_m": 2039,
+    "latitude": 36.084996,
+    "longitude": 50.539088,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ پیغمبرکوه آبیک در قزوین",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["پیغمبر کوه آبیک", "قلهٔ پیغمبرکوه قزوین", "Payghambar Kuh"]
+  },
+  "internal_note": "GPX از دانشگاه شروع می‌شود؛ بخش دسترسی حذف و route از waypoint پارک خودرو (اندیس ۲۱) تا اولین رسیدن به قله (اندیس ۸۰) تحلیل شد. فاصله ۱٫۸۷ کیلومتر، افزایش ارتفاع هموارشدهٔ GPX حدود ۵۳۰ متر، waypoint چشمه ۱۸ متر از مسیر فاصله دارد. GPX elevations فقط reference هستند."
+}

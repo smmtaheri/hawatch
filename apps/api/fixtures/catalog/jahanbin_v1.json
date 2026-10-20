@@ -1,0 +1,157 @@
+{
+  "catalog_version": "hawatch-jahanbin-v1",
+  "primary_point": "jahanbin",
+  "weather_points": {
+    "jahanbin-hike-trailhead": {
+      "name": "پای‌کار پیاده‌روی نای هفشجان",
+      "page_name": "پای‌کار صعود نای هفشجان از چشمهٔ زنه",
+      "short_label": "پای‌کار نای هفشجان",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ جهان‌بین",
+      "region": "هفشجان · شهرکرد · چهارمحال‌وبختیاری",
+      "aliases": ["شروع کوهپیمایی چشمه زنه", "پای‌کار جهان‌بین"],
+      "identity_summary": "waypoint ثبت‌شدهٔ شروع کوهپیمایی پس از بخش دسترسی از چشمهٔ زنه؛ مسیر جاده‌ای ابتدایی در Route پیاده لحاظ نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/jhn-byn-hfshjn-shhrkhrd-17378671",
+        "https://azhkahann.blogfa.com/post/499",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.198026&longitude=50.765584"
+      ],
+      "latitude": 32.198026,
+      "longitude": 50.765584,
+      "elevation_m": 2178,
+      "status": "provisional",
+      "elevation_source": "Waypoint صریح «شروع کوهپیمایی» در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM. اختلاف ارتفاع‌های گزارش‌شده برای چشمهٔ زنه به این نقطهٔ جداگانه تعمیم داده نشده است.",
+      "climate": "alpine"
+    },
+    "jahanbin-laleh-meadow": {
+      "name": "دشت لاله‌های واژگون جهان‌بین",
+      "page_name": "دشت لاله‌های واژگون در مسیر نای هفشجان",
+      "short_label": "دشت لاله‌های واژگون",
+      "place_type": "meadow",
+      "category_key": "meadow",
+      "category": "مسیر قلهٔ جهان‌بین",
+      "region": "هفشجان · شهرکرد · چهارمحال‌وبختیاری",
+      "aliases": ["لاله‌های واژگون جهان‌بین", "مرغزار لاله‌های واژگون"],
+      "identity_summary": "دشت گل‌های لالهٔ واژگون که در ترک و گزارش مسیر صعود چشمهٔ زنه به قله به‌عنوان بخش میانی پیمایش ثبت شده است؛ عارضه فصلی است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/jhn-byn-hfshjn-shhrkhrd-17378671",
+        "https://commons.wikimedia.org/wiki/Category:Mount_Jahan_Bin",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.188447&longitude=50.760795"
+      ],
+      "latitude": 32.188447,
+      "longitude": 50.760795,
+      "elevation_m": 2427,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار لاله‌های واژگون در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "meadow"
+    },
+    "jahanbin": {
+      "name": "قلهٔ نای هفشجان (جهان‌بین)",
+      "page_name": "قلهٔ نای هفشجان در جهان‌بین",
+      "short_label": "نای هفشجان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های چهارمحال‌وبختیاری",
+      "region": "هفشجان · شهرکرد · چهارمحال‌وبختیاری",
+      "aliases": ["قلهٔ جهان‌بین", "کوه جهان‌بین", "نای جهان‌بین", "قلهٔ نای"],
+      "identity_summary": "نای هفشجان، قلهٔ مرکزی و شناخته‌شدهٔ رشته‌کوه جهان‌بین در غرب هفشجان؛ از قله‌های دیگر خط‌الرأس جهان‌بین متمایز است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/jhn-byn-hfshjn-shhrkhrd-17378671",
+        "https://azhkahann.blogfa.com/post/499",
+        "https://vndamoon1.blogfa.com/post/38",
+        "https://api.open-meteo.com/v1/elevation?latitude=32.173897&longitude=50.754684"
+      ],
+      "latitude": 32.173897,
+      "longitude": 50.754684,
+      "elevation_m": 3238,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint قله در ترک صعود؛ ارتفاع canonical برابر ۳۲۳۸ متر از Open-Meteo GLO-90 DEM؛ گزارش‌های محلی برای قلهٔ نای حدود ۳۲۷۵ متر ذکر می‌کنند.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ نای هفشجان جهان‌بین؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ نای هفشجان در رشته‌کوه جهان‌بین؛ دما، باد و بارش برای مسیر چشمهٔ زنه تا قله."
+      }
+    }
+  },
+  "routes": {
+    "cheshmeh-zaneh": {
+      "slug": "jahanbin-cheshmeh-zaneh-summit",
+      "title": "پای‌کار چشمهٔ زنه تا قلهٔ نای هفشجان",
+      "subtitle": "صعود از دشت لاله‌های واژگون و یال غربی به قلهٔ مرکزی جهان‌بین",
+      "trail_label": "مسیر چشمهٔ زنه–نای هفشجان",
+      "origin": "پای‌کار پیاده‌روی چشمهٔ زنه",
+      "target_label": "قلهٔ نای هفشجان (جهان‌بین)",
+      "region": "هفشجان · شهرکرد · چهارمحال‌وبختیاری",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["jahanbin-hike-trailhead", "jahanbin-laleh-meadow", "jahanbin"],
+      "distance_km": 4.9,
+      "ascent_m": 1038,
+      "one_way_minutes": 360,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-origin-cut+independent-ascent-report-v1",
+        "version": "jahanbin-cheshmeh-zaneh-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 75,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/jhn-byn-hfshjn-shhrkhrd-17378671",
+          "https://azhkahann.blogfa.com/post/499",
+          "https://zistkouh.blogfa.com/post/58"
+        ],
+        "evidence_tracks": ["tracks/jahanbin/jahanbin-cheshmeh-zaneh-to-summit.gpx"],
+        "cumulative_minutes": {
+          "jahanbin-hike-trailhead": 0,
+          "jahanbin-laleh-meadow": 50,
+          "jahanbin": 360
+        },
+        "notes": ["ترک از waypoint صریح شروع کوهپیمایی تا قله بریده شد؛ بخش ابتدایی دسترسی از چشمهٔ زنه حذف است. زمان ۳۵۸ دقیقهٔ ضبط‌شده به ۳۶۰ دقیقه گرد شده است."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/jhn-byn-hfshjn-shhrkhrd-17378671",
+        "https://azhkahann.blogfa.com/post/499",
+        "https://zistkouh.blogfa.com/post/58"
+      ],
+      "evidence_tracks": ["tracks/jahanbin/jahanbin-cheshmeh-zaneh-to-summit.gpx"],
+      "public_note": "مسیر کوهستانی با حدود هزار متر افزایش ارتفاع است؛ در ترک بخش دست‌به‌سنگ و برف/یخ فصلی ثبت شده. در فصل برف بدون تجهیزات و مهارت مناسب وارد نشوید؛ زمان صعود با توقف و وضعیت برف تغییر زیادی می‌کند.",
+      "public_point_notes": {
+        "jahanbin-laleh-meadow": "لاله‌های واژگون فصلی‌اند؛ روی گل‌ها و پوشش گیاهی مسیر نروید و آن‌ها را نچینید.",
+        "jahanbin": "نای هفشجان قلهٔ مرکزی جهان‌بین است؛ با قله‌های دیگر خط‌الرأس اشتباه نشود."
+      }
+    }
+  },
+  "point": {
+    "slug": "jahanbin",
+    "tile_name": "نای هفشجان · جهان‌بین",
+    "name": "قلهٔ نای هفشجان (جهان‌بین)",
+    "short_category": "قله",
+    "category": "قله‌های چهارمحال‌وبختیاری",
+    "category_key": "mountain",
+    "region": "هفشجان · شهرکرد · چهارمحال‌وبختیاری",
+    "elevation_m": 3238,
+    "latitude": 32.173897,
+    "longitude": 50.754684,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ نای هفشجان در رشته‌کوه جهان‌بین",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قلهٔ جهان‌بین", "کوه جهان‌بین", "نای جهان‌بین", "قلهٔ نای"]
+  },
+  "internal_note": "ترک در چشمهٔ زنه آغاز شده، اما waypoint «شروع کوهپیمایی» اندیس ۱۵ را به‌عنوان مبدأ واقعی مسیر پیاده گرفتیم و دسترسی اولیه را حذف کردیم؛ مقصد اندیس ۱۶۸. طول بخش پیاده ۴٫۹۰ کیلومتر، افزایش ارتفاع هموارشدهٔ GPX حدود ۱۰۳۸ متر، waypoint دشت لاله‌ها ۴ متر از مسیر فاصله دارد. نام canonical قله با توجه به منابع محلی به نای هفشجان محدود شده است."
+}

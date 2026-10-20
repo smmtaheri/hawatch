@@ -1,0 +1,157 @@
+{
+  "catalog_version": "hawatch-dalakhani-v1",
+  "primary_point": "dalakhani",
+  "weather_points": {
+    "dalakhani-tinemu-trailhead": {
+      "name": "پای‌کار دالاخانی از تینمو",
+      "page_name": "پای‌کار مسیر دالاخانی از تینمو",
+      "short_label": "تینمو",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ دالاخانی",
+      "region": "تینمو · سنقر · کرمانشاه",
+      "aliases": ["روستای تینمو", "تینه‌مو", "Tinemu"],
+      "identity_summary": "نقطهٔ آغاز پیاده‌روی جبههٔ جنوب‌غربی دالاخانی در محدودهٔ تینمو؛ بخش جاده‌ای از راهدارخانه تا این نقطه در Route نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dalakhani-summit-qlh-dlkhny-6792729",
+        "https://shoukakambaden.blogfa.com/post/127",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.655146&longitude=47.550193"
+      ],
+      "latitude": 34.655146,
+      "longitude": 47.550193,
+      "elevation_m": 1704,
+      "status": "provisional",
+      "elevation_source": "Waypoint روستای تینمو در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "dalakhani-shelter": {
+      "name": "پناهگاه سهیل دالاخانی",
+      "page_name": "پناهگاه سهیل در مسیر قلهٔ دالاخانی",
+      "short_label": "پناهگاه سهیل",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "مسیر قلهٔ دالاخانی",
+      "region": "سنقر · کرمانشاه",
+      "aliases": ["پناهگاه دالاخانی", "جان‌پناه سهیل", "پناهگاه سهیل"],
+      "identity_summary": "پناهگاه شناخته‌شدهٔ سهیل در مسیر معمول تینمو–دالاخانی؛ waypoint نام‌دار نزدیک ارتفاع سه‌هزارمتری.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dalakhani-summit-qlh-dlkhny-6792729",
+        "https://shoukakambaden.blogfa.com/post/127",
+        "https://henjeskooh.blogfa.com/?p=8",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.682332&longitude=47.618321"
+      ],
+      "latitude": 34.682332,
+      "longitude": 47.618321,
+      "elevation_m": 3087,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM؛ گزارش‌ها آن را حدود ۳۰۰۰ متر ثبت می‌کنند.",
+      "climate": "alpine"
+    },
+    "dalakhani": {
+      "name": "قلهٔ دالاخانی",
+      "page_name": "قلهٔ دالاخانی سنقر",
+      "short_label": "دالاخانی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های کرمانشاه",
+      "region": "سنقر · کرمانشاه",
+      "aliases": ["کوه دالاخانی", "قلهٔ سهیل", "Dalakhani", "Dalahani"],
+      "identity_summary": "قلهٔ دالاخانی در محدودهٔ سنقر؛ قلهٔ مسیر صعود جبههٔ تینمو که از پناهگاه سهیل می‌گذرد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dalakhani-summit-qlh-dlkhny-6792729",
+        "https://shoukakambaden.blogfa.com/post/127",
+        "https://aziz25.blogfa.com/post/20",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.687310&longitude=47.625025"
+      ],
+      "latitude": 34.68731,
+      "longitude": 47.625025,
+      "elevation_m": 3310,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM برابر ۳۳۱۰ متر است؛ گزارش صعود ارتفاع تقریبی ۳۳۵۰ متر را می‌دهد.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ دالاخانی سنقر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ دالاخانی در سنقر کرمانشاه؛ دما، باد، بارش و وضعیت ساعتی مسیر صعود از تینمو."
+      }
+    }
+  },
+  "routes": {
+    "tinemu-ascent": {
+      "slug": "dalakhani-tinemu-ascent",
+      "title": "تینمو تا قلهٔ دالاخانی",
+      "subtitle": "صعود جبههٔ جنوب‌غربی از درهٔ تینمو و پناهگاه سهیل",
+      "trail_label": "مسیر تینمو–دالاخانی",
+      "origin": "پای‌کار تینمو",
+      "target_label": "قلهٔ دالاخانی",
+      "region": "تینمو · سنقر · کرمانشاه",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["dalakhani-tinemu-trailhead", "dalakhani-shelter", "dalakhani"],
+      "distance_km": 9.8,
+      "ascent_m": 1595,
+      "one_way_minutes": 310,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-origin-cut+recorded-ascent-report-v1",
+        "version": "dalakhani-tinemu-ascent-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/dalakhani-summit-qlh-dlkhny-6792729",
+          "https://www.wikiloc.com/hiking-trails/qlh-dlkhny-w-shyl-z-rwsty-tynmw-194605925",
+          "https://shoukakambaden.blogfa.com/post/127"
+        ],
+        "evidence_tracks": ["tracks/dalakhani/dalakhani-tinemu-to-summit.gpx"],
+        "cumulative_minutes": {
+          "dalakhani-tinemu-trailhead": 0,
+          "dalakhani-shelter": 245,
+          "dalakhani": 310
+        },
+        "notes": ["ترک اصلی ۳۰۹ دقیقه از تینمو تا قله ثبت کرده است؛ زمان گرد‌شده ۳۱۰ دقیقه است. مسیر طولانی و با شیب تند زیر پناهگاه گزارش شده."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/dalakhani-summit-qlh-dlkhny-6792729",
+        "https://www.wikiloc.com/hiking-trails/qlh-dlkhny-w-shyl-z-rwsty-tynmw-194605925",
+        "https://shoukakambaden.blogfa.com/post/127"
+      ],
+      "evidence_tracks": ["tracks/dalakhani/dalakhani-tinemu-to-summit.gpx"],
+      "public_note": "صعود طولانی با افزایش ارتفاع حدود ۱۶۰۰ متر است؛ شیب زیر پناهگاه تند گزارش شده. برای مبتدیان مناسب نیست و در باد، برف یا یخ فقط با آمادگی و تجهیزات متناسب اقدام شود.",
+      "public_point_notes": {
+        "dalakhani-shelter": "پناهگاه در ارتفاع زیاد قرار دارد؛ رسیدن به آن به معنی پایان صعود نیست و قله در ادامهٔ مسیر است."
+      }
+    }
+  },
+  "point": {
+    "slug": "dalakhani",
+    "tile_name": "قلهٔ دالاخانی",
+    "name": "قلهٔ دالاخانی",
+    "short_category": "قله",
+    "category": "قله‌های کرمانشاه",
+    "category_key": "mountain",
+    "region": "سنقر · کرمانشاه",
+    "elevation_m": 3310,
+    "latitude": 34.68731,
+    "longitude": 47.625025,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ دالاخانی در کرمانشاه",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کوه دالاخانی", "قلهٔ سهیل", "Dalakhani", "Dalahani"]
+  },
+  "internal_note": "در GPX دسترسی جاده‌ای از راهدارخانه تا تینمو حذف شد؛ مسیر از waypoint تینمو (اندیس ۲۸) تا قله (اندیس ۱۶۰) تحلیل شد. طول ۹٫۸۰ کیلومتر و افزایش ارتفاع هموارشدهٔ GPX حدود ۱۵۹۵ متر؛ پناهگاه ۷ متر از مسیر فاصله دارد."
+}

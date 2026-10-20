@@ -1,0 +1,150 @@
+{
+  "catalog_version": "hawatch-chehel-nabaleghan-v1",
+  "primary_point": "chehel-nabaleghan",
+  "weather_points": {
+    "chehel-nabaleghan-trailhead": {
+      "name": "پای‌کار قلهٔ چهل‌نابالغان از انتهای جادهٔ خاکی",
+      "page_name": "پای‌کار مسیر قلهٔ چهل‌نابالغان",
+      "short_label": "پای‌کار چهل‌نابالغان",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ چهل‌نابالغان",
+      "region": "کهمان · الشتر · لرستان",
+      "aliases": ["انتهای جاده خاکی مسیر چهل‌نابالغان"],
+      "identity_summary": "انتهای دسترسی ثبت‌شده با خودرو و آغاز مسیر پیادهٔ قله؛ جادهٔ فراتر از این نقطه در Route لحاظ نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chehel-nabaleghan-summit-chhl-nblgn-z-srb-khhmn-lshtr-3390218",
+        "https://t.me/s/lorestanmont?q=%23%D8%A7%D9%84%D8%B4%D8%AA%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.965250&longitude=48.330578"
+      ],
+      "latitude": 33.965250,
+      "longitude": 48.330578,
+      "elevation_m": 1890,
+      "status": "provisional",
+      "elevation_source": "Waypoint انتهای جادهٔ خاکی در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "chehel-nabaleghan-walnut": {
+      "name": "درخت گردوی کهنسال مسیر چهل‌نابالغان",
+      "page_name": "درخت گردوی کهنسال در مسیر قلهٔ چهل‌نابالغان",
+      "short_label": "گردوی کهنسال",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "مسیر قلهٔ چهل‌نابالغان",
+      "region": "کهمان · الشتر · لرستان",
+      "aliases": ["درخت کهنسال کهمان"],
+      "identity_summary": "درخت کهنسال نام‌برده‌شده در ترک مسیر و گزارش‌های معرفی درهٔ کهمان؛ به‌عنوان عارضهٔ میانی Route استفاده می‌شود.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chehel-nabaleghan-summit-chhl-nblgn-z-srb-khhmn-lshtr-3390218",
+        "https://kahman85.blogfa.com/",
+        "https://api.open-meteo.com/v1/elevation?latitude=33.979054&longitude=48.339346"
+      ],
+      "latitude": 33.979054,
+      "longitude": 48.339346,
+      "elevation_m": 1953,
+      "status": "provisional",
+      "elevation_source": "Waypoint نام‌دار در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "chehel-nabaleghan": {
+      "name": "قلهٔ چهل‌نابالغان گرین",
+      "page_name": "قلهٔ چهل‌نابالغان الشتر",
+      "short_label": "چهل‌نابالغان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های لرستان",
+      "region": "الشتر · لرستان",
+      "aliases": ["قلهٔ چهل تن", "چهل نابالغان", "قلهٔ چهل‌نابالغان گرین"],
+      "identity_summary": "قلهٔ چهل‌نابالغان از قلل خط‌الرأس گرین در مرز نواحی الشتر و نهاوند؛ این صفحه به قلهٔ waypointدارِ ترکِ کهمان اشاره دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chehel-nabaleghan-summit-chhl-nblgn-z-srb-khhmn-lshtr-3390218",
+        "https://t.me/s/lorestanmont?q=%23%D8%A7%D9%84%D8%B4%D8%AA%D8%B1",
+        "https://sooud.blogfa.com/?p=8",
+        "https://api.open-meteo.com/v1/elevation?latitude=34.005431&longitude=48.343964"
+      ],
+      "latitude": 34.005431,
+      "longitude": 48.343964,
+      "elevation_m": 3426,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM؛ گزارش‌ها بسته به روش و محل علامت قله ارقام تقریبی متفاوتی می‌دهند.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ چهل‌نابالغان الشتر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ چهل‌نابالغان در خط‌الرأس گرین؛ دما، باد و بارش برای مسیر صعود از کهمان."
+      }
+    }
+  },
+  "routes": {
+    "kahman-ascent": {
+      "slug": "chehel-nabaleghan-kahman-ascent",
+      "title": "انتهای جادهٔ کهمان تا قلهٔ چهل‌نابالغان",
+      "subtitle": "صعود طولانی از پای‌کار کهمان، درخت گردوی کهنسال و یال گرین",
+      "trail_label": "مسیر کهمان–چهل‌نابالغان",
+      "origin": "انتهای جادهٔ خاکی کهمان",
+      "target_label": "قلهٔ چهل‌نابالغان",
+      "region": "کهمان · الشتر · لرستان",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["chehel-nabaleghan-trailhead", "chehel-nabaleghan-walnut", "chehel-nabaleghan"],
+      "distance_km": 14.27,
+      "ascent_m": 1604,
+      "one_way_minutes": 420,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "independent-ascent-report-with-reversed-gpx-geometry-v1",
+        "version": "chehel-nabaleghan-kahman-ascent-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 120,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/chehel-nabaleghan-summit-chhl-nblgn-z-srb-khhmn-lshtr-3390218",
+          "https://sooud.blogfa.com/?p=8",
+          "https://t.me/s/lorestanmont?q=%23%D8%A7%D9%84%D8%B4%D8%AA%D8%B1"
+        ],
+        "evidence_tracks": ["tracks/chehel-nabaleghan/chehel-nabaleghan-kahman-to-summit.gpx"],
+        "cumulative_minutes": {"chehel-nabaleghan-trailhead": 0, "chehel-nabaleghan-walnut": 60, "chehel-nabaleghan": 420},
+        "notes": ["یک گزارش صعود برای کل برنامه حدود ۷ ساعت ذکر می‌کند؛ زمان GPX معتبر نیست و زمان عبور از عارضهٔ میانی تقریبی است. مسیر طولانی، پرشیب و در فصل سرد برفی/یخی است."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chehel-nabaleghan-summit-chhl-nblgn-z-srb-khhmn-lshtr-3390218",
+        "https://sooud.blogfa.com/?p=8",
+        "https://t.me/s/lorestanmont?q=%23%D8%A7%D9%84%D8%B4%D8%AA%D8%B1"
+      ],
+      "evidence_tracks": ["tracks/chehel-nabaleghan/chehel-nabaleghan-kahman-to-summit.gpx"],
+      "public_note": "مسیر طولانی با حدود ۱۶۰۰ متر افزایش ارتفاع است و برای مبتدیان مناسب نیست. ترک دانلودشده در جهت فرود بوده و برای تحلیل برعکس شده؛ زمان ترک قابل‌استفاده نیست. گزارش‌ها از یال سنگی، برف و یخ فصلی می‌گویند؛ در شرایط زمستانی بدون مهارت و تجهیزات اقدام نکنید.",
+      "public_point_notes": {"chehel-nabaleghan-walnut": "درخت گردوی کهنسال عارضهٔ میانی مسیر است؛ به درخت و پوشش طبیعی آسیب نزنید."}
+    }
+  },
+  "point": {
+    "slug": "chehel-nabaleghan",
+    "tile_name": "قلهٔ چهل‌نابالغان",
+    "name": "قلهٔ چهل‌نابالغان گرین",
+    "short_category": "قله",
+    "category": "قله‌های لرستان",
+    "category_key": "mountain",
+    "region": "الشتر · لرستان",
+    "elevation_m": 3426,
+    "latitude": 34.005431,
+    "longitude": 48.343964,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ چهل‌نابالغان در خط‌الرأس گرین",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قلهٔ چهل تن", "چهل نابالغان", "قلهٔ چهل‌نابالغان گرین"]
+  },
+  "internal_note": "GPX دانلودی فرود را از قله (اندیس ۰) تا waypoint انتهای جادهٔ خاکی (اندیس ۳۰۴) ثبت کرده؛ برش برای ascent معکوس شد. فاصله ۱۴٫۲۷ کیلومتر، افزایش ارتفاع هموارشده حدود ۱۶۰۴ متر؛ waypoint درخت گردوی کهنسال حدود ۸ متر از مسیر فاصله دارد. Timestampهای GPX مصنوعی‌اند و در تخمین زمان استفاده نشده‌اند."
+}

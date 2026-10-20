@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Offline, read-only GPX analyzer for Hawatch Tochal route evidence.
+"""Offline, read-only GPX analyzer for Hawatch route evidence.
 
 Stdlib only. Never mutates catalog JSON or any database.
 
 Algorithm (deterministic):
 1. Parse GPX 1.1 track points (lat/lon/ele/time).
-2. Cut ascent at the first track point whose Haversine distance to the canonical
-   Tochal summit is within 1 m of the track-wide minimum distance (first closest
-   approach). Round-trip files are outbound-only until first summit arrival.
+2. Cut the route between its manifest-declared origin and the first closest
+   approach to the canonical target. Tracks may be stored in forward or reverse
+   order; analysis is always origin-to-target. Without an origin, retain the
+   legacy first-target cut.
 3. Distance: sum of Haversine segments (Earth radius 6_371_000 m).
 4. Timestamp quality comes from the manifest (`timestamp_quality`).
    When quality is not `recorded`, recorded_elapsed_minutes and
@@ -120,6 +121,60 @@ def cut_at_first_summit_approach(
         ),
     }
     return cut, meta
+
+
+def cut_route_segment(
+    points: list[dict[str, Any]],
+    target: tuple[float, float],
+    origin: tuple[float, float] | None,
+    direction: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Return the recorded route segment ordered from origin to target."""
+    if direction not in {"forward", "reverse"}:
+        raise ValueError("direction must be 'forward' or 'reverse'")
+    target_distances = [haversine_m((p["lat"], p["lon"]), target) for p in points]
+    min_target_distance = min(target_distances)
+    target_index = next(
+        (
+            index
+            for index, distance in enumerate(target_distances)
+            if distance <= min_target_distance + SUMMIT_CLOSEST_TOLERANCE_M
+        ),
+        target_distances.index(min_target_distance),
+    )
+
+    if origin is None:
+        if direction != "forward":
+            raise ValueError("reverse direction requires a manifest route_origin")
+        return points[: target_index + 1], {
+            "origin_index": 0,
+            "target_index": target_index,
+            "origin_gap_m": None,
+            "target_gap_m": round(target_distances[target_index], 3),
+            "direction": "forward",
+            "reversed_for_analysis": False,
+        }
+
+    origin_index, origin_gap = nearest_track_index(points, *origin)
+    if direction == "forward":
+        if origin_index > target_index:
+            raise ValueError("forward route origin occurs after target in GPX")
+        segment = points[origin_index : target_index + 1]
+        reversed_for_analysis = False
+    else:
+        if origin_index < target_index:
+            raise ValueError("reverse route origin occurs before target in GPX")
+        segment = list(reversed(points[target_index : origin_index + 1]))
+        reversed_for_analysis = True
+
+    return segment, {
+        "origin_index": origin_index,
+        "target_index": target_index,
+        "origin_gap_m": round(origin_gap, 3),
+        "target_gap_m": round(target_distances[target_index], 3),
+        "direction": direction,
+        "reversed_for_analysis": reversed_for_analysis,
+    }
 
 
 def along_track_distances_m(points: list[dict[str, Any]]) -> list[float]:
@@ -261,7 +316,12 @@ def analyze_track(
     track_meta: dict[str, Any],
 ) -> dict[str, Any]:
     raw = parse_gpx_track(gpx_path)
-    cut, cut_meta = cut_at_first_summit_approach(raw, summit)
+    origin_meta = track_meta.get("route_origin") or {}
+    origin = None
+    if origin_meta:
+        origin = (float(origin_meta["latitude"]), float(origin_meta["longitude"]))
+    direction = str(track_meta.get("direction") or "forward")
+    cut, cut_meta = cut_route_segment(raw, summit, origin, direction)
     along = along_track_distances_m(cut)
     timestamp_quality = str(track_meta.get("timestamp_quality") or TIMESTAMP_RECORDED)
     timestamps_usable = timestamp_quality == TIMESTAMP_RECORDED
@@ -387,7 +447,7 @@ def main() -> int:
         )
 
     payload = {
-        "analyzer": "hawatch-analyze-route-tracks-v2",
+        "analyzer": "hawatch-analyze-route-tracks-v3",
         "read_only": True,
         "manifest": str(manifest_path),
         "catalog": str(catalog_path) if catalog else None,

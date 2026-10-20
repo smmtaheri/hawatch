@@ -529,6 +529,11 @@ git check-ignore -v tracks/<point-slug>/*.gpx tracks/<point-slug>/manifest.json
 3. نقاط named واقعی را از waypoint و geometry استخراج کنید؛ `Waypoint`،
    `Park`، `Rest area` و «شیب نهایی» بدون landmark واقعی وارد catalog نشوند.
 4. manifest را بسازید، `timestamp_quality` و `license_status` را صریح ثبت کنید.
+   اگر ترک علاوه بر پیاده‌روی شامل دسترسی جاده‌ای است یا فایل از قله به مبدأ
+   ضبط شده، در همان entry فیلد `route_origin` با `latitude`/`longitude` مبدأ
+   واقعی پیاده و `direction` برابر `forward` یا `reverse` بگذارید. analyzer
+   بخش مبدأ تا قله را جدا می‌کند و خروجی را همیشه به ترتیب مبدأ → قله می‌دهد؛
+   فایل اصلی GPX را دست‌کاری یا کوتاه نکنید.
 5. analyzer را فقط local و read-only اجرا کنید و خروجی آن را با منبع مسیر مقایسه
    کنید؛ analyzer خودش catalog را تغییر نمی‌دهد:
 

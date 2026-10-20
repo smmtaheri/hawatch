@@ -1,0 +1,149 @@
+{
+  "catalog_version": "hawatch-saluk-v1",
+  "primary_point": "saluk",
+  "weather_points": {
+    "saluk-trailhead": {
+      "name": "پای‌کار قلهٔ سالوک از رختیان",
+      "page_name": "پای‌کار مسیر قلهٔ سالوک از رختیان",
+      "short_label": "پای‌کار رختیان",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "category": "مسیر قلهٔ سالوک",
+      "region": "رختیان · بجنورد · خراسان شمالی",
+      "aliases": ["پارکینگ مسیر سالوک", "رختیان"],
+      "identity_summary": "مبدأ پیاده‌روی مسیر شناخته‌شدهٔ جنوبی سالوک از رختیان؛ ورود به کوه از این نقطه آغاز می‌شود.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-slwkh-bjnwrd-1404-03-03-214932411",
+        "https://aladagh.blogfa.com/category/3",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.289649&longitude=57.165164"
+      ],
+      "latitude": 37.289649,
+      "longitude": 57.165164,
+      "elevation_m": 1732,
+      "status": "provisional",
+      "elevation_source": "مختصات پای‌کار از ترک مسیر؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "saluk-shelter": {
+      "name": "پناهگاه سالوک",
+      "page_name": "پناهگاه در مسیر قلهٔ سالوک",
+      "short_label": "پناهگاه سالوک",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "category": "مسیر قلهٔ سالوک",
+      "region": "بجنورد · خراسان شمالی",
+      "aliases": ["جان‌پناه سالوک", "پناهگاه کوه سالوک"],
+      "identity_summary": "پناهگاه مشخص و نام‌برده‌شده در مسیر اصلی رختیان به قلهٔ سالوک.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-slwkh-bjnwrd-1404-03-03-214932411",
+        "https://koh-sharghcement.blogfa.com/post/3",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.268484&longitude=57.162193"
+      ],
+      "latitude": 37.268484,
+      "longitude": 57.162193,
+      "elevation_m": 2499,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه در ترک؛ ارتفاع canonical از Open-Meteo GLO-90 DEM.",
+      "climate": "alpine"
+    },
+    "saluk": {
+      "name": "قلهٔ سالوک",
+      "page_name": "قلهٔ سالوک بجنورد",
+      "short_label": "سالوک",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های خراسان شمالی",
+      "region": "بجنورد · خراسان شمالی",
+      "aliases": ["کوه سالوک", "قلهٔ سالوک بجنورد", "Saluk"],
+      "identity_summary": "قلهٔ شاخص سالوک در جنوب‌غرب بجنورد؛ مسیر اصلی ثبت‌شده از رختیان و پناهگاه می‌گذرد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-slwkh-bjnwrd-1404-03-03-214932411",
+        "https://salariyan.blogfa.com/post/65",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.271216&longitude=57.166791"
+      ],
+      "latitude": 37.271216,
+      "longitude": 57.166791,
+      "elevation_m": 2583,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک مسیر؛ ارتفاع canonical از Open-Meteo GLO-90 DEM؛ گزارش‌های محلی حدود ۲۶۲۷ متر را ذکر می‌کنند.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ سالوک بجنورد؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ سالوک خراسان شمالی؛ دما، باد و بارش برای مسیر صعود از رختیان."
+      }
+    }
+  },
+  "routes": {
+    "rakhityan-ascent": {
+      "slug": "saluk-rakhityan-ascent",
+      "title": "رختیان تا قلهٔ سالوک",
+      "subtitle": "صعود از پای‌کار رختیان و پناهگاه به قلهٔ سالوک",
+      "trail_label": "مسیر رختیان–سالوک",
+      "origin": "پای‌کار رختیان",
+      "target_label": "قلهٔ سالوک",
+      "region": "رختیان · بجنورد · خراسان شمالی",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["saluk-trailhead", "saluk-shelter", "saluk"],
+      "distance_km": 4.23,
+      "ascent_m": 872,
+      "one_way_minutes": 175,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "recorded-gpx-plus-independent-route-reports-v1",
+        "version": "saluk-rakhityan-ascent-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 45,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-slwkh-bjnwrd-1404-03-03-214932411",
+          "https://aladagh.blogfa.com/category/3",
+          "https://koh-sharghcement.blogfa.com/post/3"
+        ],
+        "evidence_tracks": ["tracks/saluk/saluk-rakhtian-to-summit-2025.gpx"],
+        "cumulative_minutes": {"saluk-trailhead": 0, "saluk-shelter": 150, "saluk": 175},
+        "notes": ["زمان ترک ضبط‌شده از پای‌کار تا قله حدود ۱۷۴ دقیقه است؛ مسیر دارای شیب قابل‌توجه است و زمان با آمادگی و شرایط تغییر می‌کند."]
+      },
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-slwkh-bjnwrd-1404-03-03-214932411",
+        "https://aladagh.blogfa.com/category/3",
+        "https://koh-sharghcement.blogfa.com/post/3"
+      ],
+      "evidence_tracks": ["tracks/saluk/saluk-rakhtian-to-summit-2025.gpx"],
+      "public_note": "مسیر کوهستانی و پرشیب است؛ برای صعود در هوای نامساعد، برف یا یخ آمادگی و تجهیزات متناسب لازم است. زمان ثبت‌شده صرفاً برآورد است و توقف‌ها و شرایط فردی را پوشش نمی‌دهد.",
+      "public_point_notes": {"saluk-shelter": "پناهگاه در مسیر قرار دارد؛ وضعیت بازبودن و امکانات آن را پیش از برنامه بررسی کنید."}
+    }
+  },
+  "point": {
+    "slug": "saluk",
+    "tile_name": "قلهٔ سالوک",
+    "name": "قلهٔ سالوک",
+    "short_category": "قله",
+    "category": "قله‌های خراسان شمالی",
+    "category_key": "mountain",
+    "region": "بجنورد · خراسان شمالی",
+    "elevation_m": 2583,
+    "latitude": 37.271216,
+    "longitude": 57.166791,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ سالوک در خراسان شمالی",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["کوه سالوک", "Saluk"]
+  },
+  "internal_note": "برش مسیر رختیان (اندیس ۰) تا قله (اندیس ۱۳۲): ۴٫۲۳ کیلومتر، افزایش ارتفاع هموارشده حدود ۸۷۲ متر؛ پناهگاه حدود ۳ متر از مسیر فاصله دارد و در ترک حدود ۱۵۲ دقیقه از آغاز ثبت شده است. ارتفاع‌های canonical از GLO-90 DEM هستند."
+}
