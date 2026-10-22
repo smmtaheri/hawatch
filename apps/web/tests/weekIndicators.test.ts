@@ -65,9 +65,12 @@ it('keeps compact row captions inset from the preceding row and inside the short
  for(const caption of root.querySelectorAll('.metric-caption foreignObject')){
   const y=Number(caption.getAttribute('y'));
   const rowHeight=Number(caption.closest('.chart-row')?.getAttribute('style')?.match(/height:(\d+)px/)?.[1]);
-  expect(y).toBe(6);
+  expect(y).toBe(caption.closest('[data-metric="felt"]')?10:6);
   expect(y+Number(caption.getAttribute('height'))).toBeLessThanOrEqual(rowHeight);
  }
+ expect(root.querySelector('[data-metric="felt"]')?.getAttribute('style')).toBe('height:110px');
+ expect(root.querySelector('[data-metric="freezing"] .metric-label')?.classList.contains('metric-label--freezing')).toBe(true);
+ expect([...root.querySelectorAll('[data-metric="freezing"] .metric-label > span')].map(span=>span.textContent)).toEqual(['ارتفاع صفر درجه','m']);
 });
 
 it('does not add indicator rows or change actual-temperature whiskers in route/share charts',()=>{

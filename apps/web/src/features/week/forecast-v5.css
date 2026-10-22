@@ -65,6 +65,7 @@ body.forecast-page:not(.route-page) #forecast-v4 .day-warning{position:absolute;
 /* Keep title and unit inside the first visible data column, above its values. */
 body.forecast-page:not(.route-page) #forecast-v4 .metric-label{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:0 4px;direction:rtl;text-align:right;font-size:12px;font-weight:400;line-height:16px;color:var(--secondary)}
 body.forecast-page:not(.route-page) #forecast-v4 .metric-label-unit{font-size:10px;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+body.forecast-page:not(.route-page) #forecast-v4 .metric-label--freezing{flex-wrap:nowrap;white-space:nowrap;gap:0 3px;font-size:11px}
 body.forecast-page:not(.route-page) #forecast-v4 .metric-label-sub{flex-basis:100%;font-size:9px;line-height:12px}
 body.forecast-page .forecast-v4 .stamp{position:absolute;top:76px;transform:translateX(-50%);font-size:12px;line-height:1;direction:ltr;white-space:nowrap;color:var(--secondary)}
 body.forecast-page .forecast-v4 .weather-strip{height:50px;position:relative}
