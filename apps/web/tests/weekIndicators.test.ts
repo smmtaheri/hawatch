@@ -49,16 +49,14 @@ it('rounds UV and heat labels like temperature without rounding scales or danger
  }
 });
 
-it('explains unavailable heat, never substitutes temperature, and uses the shared critical metric',()=>{
+it('keeps unavailable heat concise, never substitutes temperature, and uses the shared critical metric',()=>{
  const root=render([{...slot,heat_index_c:null,heat_index_status:'not_applicable'},{...slot,heat_index_c:null,heat_index_status:'missing'},{...slot,heat_index_c:40,hazards:['heat_index_c']}]);
  const row=root.querySelector('[data-metric="heat_index_c"]')!;
  expect(row.querySelectorAll('.no-data')).toHaveLength(2);
- expect(row.textContent).toContain('خارج از دامنه');
- expect(row.textContent).toContain('دادهٔ کافی');
- expect(row.textContent).toContain('داده ناقص');
- expect(row.querySelector('.chart-status')?.getAttribute('y')).toBe('57');
- expect(row.querySelector('.chart-status')?.getAttribute('aria-hidden')).toBe('true');
- expect(row.querySelector('.no-data')?.parentElement?.getAttribute('aria-label')).toContain('شرایط خارج از دامنه');
+ expect(row.textContent).not.toContain('خارج از دامنه');
+ expect(row.textContent).not.toContain('داده ناقص');
+ expect(row.querySelector('.no-data')?.parentElement?.hasAttribute('title')).toBe(false);
+ expect(row.querySelector('.no-data')?.parentElement?.getAttribute('aria-label')).toContain('شاخص گرما');
  expect(row.querySelector('[data-heat-value="40"]')?.getAttribute('fill')).toBe('var(--red)');
 });
 
@@ -78,4 +76,31 @@ it('does not add indicator rows or change actual-temperature whiskers in route/s
  expect(root.querySelector('[data-metric="heat_index_c"]')).toBeNull();
  expect(root.querySelector('[data-metric="felt-range"]')).toBeNull();
  expect(root.querySelector('[data-range]')).not.toBeNull();
+});
+
+it('tightens specialist row heights and keeps every compact caption inside its row',()=>{
+ const root=render([slot]);
+ const expected={wind:74,rain:68,actual:126,gust:74,direction:50,humidity:52,visibility:52,freezing:68,uv_index:72,heat_index_c:72};
+ for(const [metric,height] of Object.entries(expected)){
+  expect(root.querySelector(`[data-metric="${metric}"]`)?.getAttribute('style')).toBe(`height:${height}px`);
+ }
+ for(const caption of root.querySelectorAll('.metric-caption foreignObject')){
+  const y=Number(caption.getAttribute('y'));
+  const rowHeight=Number(caption.closest('.chart-row')?.getAttribute('style')?.match(/height:(\d+)px/)?.[1]);
+  expect(y+Number(caption.getAttribute('height'))).toBeLessThanOrEqual(rowHeight);
+ }
+});
+
+it('gives low positive wind readable proportional stems and renders freezing levels as separate interval marks',()=>{
+ const points=[{...slot,wind:5,gust:70,freezing:1800},{...slot,wind:10,gust:60,freezing:2400},{...slot,wind:30,gust:50,freezing:3100}];
+ const root=render(points);
+ const wind=[...root.querySelectorAll('[data-metric="wind"] [data-stem-height]')].map(line=>Number(line.getAttribute('data-stem-height')));
+ expect(wind[0]).toBeGreaterThanOrEqual(6);
+ expect(wind[1]).toBeGreaterThan(wind[0]);
+ expect(wind[2]).toBeGreaterThan(wind[1]);
+ const freezing=root.querySelector('[data-metric="freezing"]')!;
+ expect(freezing.querySelectorAll('[data-freezing-stem]')).toHaveLength(3);
+ expect(freezing.querySelectorAll('[data-freezing-value]')).toHaveLength(3);
+ expect([...freezing.querySelectorAll('path')].every(path=>!path.getAttribute('d')?.includes('L'))).toBe(true);
+ expect(freezing.getAttribute('aria-label')).toContain('ارتفاع سطح صفر درجه');
 });

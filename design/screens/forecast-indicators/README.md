@@ -21,3 +21,9 @@ PNGها بدون resize، فشرده‌سازی یا بازکدگذاری نگه
 [موبایل تاریک، ۱ساعته](mobile-dark-1h.png)،
 [دسکتاپ تاریک، روزانه](desktop-dark-24h.png)،
 [دسکتاپ روشن، ۳ساعته](desktop-light-3h.png).
+
+در پیگیری فشرده‌سازی ردیف‌ها، خوانایی ساقه‌های باد سبک و نمایش گسستهٔ freezing
+level، تصویرهای browser fixture با دادهٔ synthetic در
+[موبایل](../forecast-indicators-fix/mobile-dark-density.png) و
+[دسکتاپ](../forecast-indicators-fix/desktop-dark-density.png) ثبت شده‌اند.
+این اعداد نمایشی‌اند و پیش‌بینی واقعی هوا را نشان نمی‌دهند.

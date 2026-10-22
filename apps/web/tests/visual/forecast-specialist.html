@@ -34,6 +34,7 @@
       import { weekFixture } from '/tests/fixtures/week.ts';
 
       const api = weekFixture('point', '2026-10-20');
+      document.documentElement.dataset.theme = new URLSearchParams(location.search).get('theme') || 'dark';
       api.intervals['24'].forEach((intervals, day) => {
         const reading = intervals[0];
         reading.actual = reading.min = 8 + day;
@@ -43,6 +44,7 @@
         reading.felt_max = reading.felt + 2;
         reading.wind = 5 + day;
         reading.gust = 12 + day;
+        reading.freezing = 1800 + day * 420;
         reading.rain = day % 2 ? 0.4 : 0;
         if (day < 4) {
           reading.heat_index_c = null;
@@ -88,6 +90,7 @@
       });
       runtime.mount({});
       document.querySelector('[data-v4-expert]').click();
+      document.querySelector('[data-v4-expert]').blur();
       const scroller = document.querySelector('.timeline-scroll');
       scroller.scrollLeft = 0;
       scroller.dispatchEvent(new Event('scroll'));
