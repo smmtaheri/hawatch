@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پیش‌نمایش جزئیات تخصصی هواچ</title>
+    <link rel="stylesheet" href="/src/styles/new-design/base.css" />
+    <link rel="stylesheet" href="/src/features/week/forecast-v5.css" />
+    <link rel="stylesheet" href="/src/features/week/agreed.css" />
+    <style>
+      body.forecast-page {
+        min-width: 320px;
+        min-height: 100vh;
+        background: linear-gradient(#061f2ab3, #061f2a99),
+          url('/new-design/backgrounds/route-desktop-light.webp') center / cover fixed;
+      }
+      #capture-root {
+        width: min(1280px, calc(100% - 112px));
+        margin: 0 auto;
+        padding: 30px 0 48px;
+      }
+      @media (max-width: 767px) {
+        #capture-root {
+          width: calc(100% - 28px);
+          padding: 20px 0 36px;
+        }
+      }
+    </style>
+  </head>
+  <body class="forecast-page">
+    <main id="capture-root"></main>
+    <script type="module">
+      import { createForecastRuntime } from '/src/features/week/vendor/runtime.ts';
+      import { weekFixture } from '/tests/fixtures/week.ts';
+
+      const api = weekFixture('point', '2026-10-20');
+      api.intervals['24'].forEach((intervals, day) => {
+        const reading = intervals[0];
+        reading.actual = reading.min = 8 + day;
+        reading.max = reading.actual + 3;
+        reading.felt = reading.actual - 2;
+        reading.felt_min = reading.felt - 2;
+        reading.felt_max = reading.felt + 2;
+        reading.wind = 5 + day;
+        reading.gust = 12 + day;
+        reading.rain = day % 2 ? 0.4 : 0;
+        if (day < 4) {
+          reading.heat_index_c = null;
+          reading.heat_index_status = 'not_applicable';
+        } else if (day < 6) {
+          reading.heat_index_c = null;
+          reading.heat_index_status = 'missing';
+        } else {
+          reading.heat_index_c = 38 + day;
+          reading.heat_index_status = 'available';
+        }
+      });
+
+      const days = api.days.map((day, index) => ({
+        ...day,
+        name: day.label,
+        date_fa: day.jalali,
+        id: day.date,
+        available: ['daily', '6h', '3h', '1h'],
+        intervals: {
+          daily: api.intervals['24'][index].map((row) => ({ ...row, hour: null })),
+          '6h': api.intervals['6'][index],
+          '3h': api.intervals['3'][index],
+          '1h': api.intervals['1'][index],
+        },
+      }));
+      const points = { [api.subject.slug]: { days } };
+      const record = {
+        ...api.subject,
+        name: api.subject.name,
+        elevation: api.subject.elevation_m,
+        points: [],
+        related_destinations: [],
+      };
+      const runtime = createForecastRuntime({ api, days, points }, [], [], '');
+      const root = document.querySelector('#capture-root');
+      root.innerHTML = runtime.html('point', record, {
+        day: 0,
+        time: 480,
+        speed: 'medium',
+        theme: 'dark',
+        scroll: 0,
+      });
+      runtime.mount({});
+      document.querySelector('[data-v4-expert]').click();
+      const scroller = document.querySelector('.timeline-scroll');
+      scroller.scrollLeft = 0;
+      scroller.dispatchEvent(new Event('scroll'));
+      document.fonts.ready.then(() => {
+        document.documentElement.dataset.ready = 'true';
+      });
+    </script>
+  </body>
+</html>

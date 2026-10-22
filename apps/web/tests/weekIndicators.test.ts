@@ -55,7 +55,21 @@ it('explains unavailable heat, never substitutes temperature, and uses the share
  expect(row.querySelectorAll('.no-data')).toHaveLength(2);
  expect(row.textContent).toContain('خارج از دامنه');
  expect(row.textContent).toContain('دادهٔ کافی');
+ expect(row.textContent).toContain('داده ناقص');
+ expect(row.querySelector('.chart-status')?.getAttribute('y')).toBe('57');
+ expect(row.querySelector('.chart-status')?.getAttribute('aria-hidden')).toBe('true');
+ expect(row.querySelector('.no-data')?.parentElement?.getAttribute('aria-label')).toContain('شرایط خارج از دامنه');
  expect(row.querySelector('[data-heat-value="40"]')?.getAttribute('fill')).toBe('var(--red)');
+});
+
+it('keeps compact row captions inset from the preceding row and inside the shortest metric row',()=>{
+ const root=render([slot]);
+ for(const caption of root.querySelectorAll('.metric-caption foreignObject')){
+  const y=Number(caption.getAttribute('y'));
+  const rowHeight=Number(caption.closest('.chart-row')?.getAttribute('style')?.match(/height:(\d+)px/)?.[1]);
+  expect(y).toBe(6);
+  expect(y+Number(caption.getAttribute('height'))).toBeLessThanOrEqual(rowHeight);
+ }
 });
 
 it('does not add indicator rows or change actual-temperature whiskers in route/share charts',()=>{

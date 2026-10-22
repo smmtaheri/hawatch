@@ -81,6 +81,7 @@ body.forecast-page .forecast-v4 .chart-caption{font-size:12px;fill:var(--seconda
 body.forecast-page .forecast-v4 .chart-caption.unit{font-size:10px;direction:ltr}
 body.forecast-page .forecast-v4 .chart-caption.sub{font-size:9px}
 body.forecast-page .forecast-v4 .no-data{fill:var(--muted);font-size:16px;font-weight:400}
+body.forecast-page .forecast-v4 .chart-status{font-size:9px;font-weight:400}
 body.forecast-page .forecast-v4 .specialist-trigger{position:absolute;right:12px;display:flex;align-items:center;gap:5px;min-height:40px;width:max-content;max-width:calc(100% - 24px);font-size:13px;color:var(--secondary);padding-right:2px;direction:rtl}
 body.forecast-page .forecast-v4 .specialist-trigger .icon{width:15px;height:15px}
 body.forecast-page .forecast-v4 .scroll-track{position:relative;height:6px;border-radius:99px;background:var(--border);direction:ltr;margin:9px 2px 2px;touch-action:none}

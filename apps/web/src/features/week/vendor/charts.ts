@@ -15,7 +15,7 @@ export const charts=(()=>{
   return whole(n);
  };
  const text=(v,x,y,cls='chart-value',fill='var(--ink)',extra='')=>`<text x="${x}" y="${y}" ${extra.includes('text-anchor')?'':'text-anchor="middle"'} direction="ltr" class="${cls}" fill="${fill}" ${extra}>${v}</text>`;
- const caption=(title,unit,sub='',layout={})=>layout.compact?`<g class="metric-caption"><foreignObject x="${-layout.captionWidth}" y="0" width="${layout.captionWidth}" height="44"><div xmlns="http://www.w3.org/1999/xhtml" class="metric-label" dir="rtl"><span>${title}</span>${unit?`<span class="metric-label-unit" dir="ltr">${unit}</span>`:''}${sub?`<span class="metric-label-sub">${sub}</span>`:''}</div></foreignObject></g>`:`<g class="metric-caption"><text y="14" text-anchor="start" class="chart-caption">${title}</text><text y="27" text-anchor="end" class="chart-caption unit">${unit}</text>${sub?`<text y="39" text-anchor="start" class="chart-caption sub">${sub}</text>`:''}</g>`;
+ const caption=(title,unit,sub='',layout={})=>layout.compact?`<g class="metric-caption"><foreignObject x="${-layout.captionWidth}" y="${layout.captionY??6}" width="${layout.captionWidth}" height="44"><div xmlns="http://www.w3.org/1999/xhtml" class="metric-label" dir="rtl"><span>${title}</span>${unit?`<span class="metric-label-unit" dir="ltr">${unit}</span>`:''}${sub?`<span class="metric-label-sub">${sub}</span>`:''}</div></foreignObject></g>`:`<g class="metric-caption"><text y="14" text-anchor="start" class="chart-caption">${title}</text><text y="27" text-anchor="end" class="chart-caption unit">${unit}</text>${sub?`<text y="39" text-anchor="start" class="chart-caption sub">${sub}</text>`:''}</g>`;
  const wrap=(body,w,h,key,title)=>`<svg class="chart-row" data-metric="${key}" viewBox="0 0 ${w} ${h}" style="height:${h}px" role="img" aria-label="${title}">${body}</svg>`;
  const domain=vals=>{vals=vals.filter(Number.isFinite);const lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):0,pad=Math.max(2,(hi-lo)*.12);return {low:lo-pad,high:hi+pad};};
  const y=(v,d,t,b)=>t+(d.high-v)/(d.high-d.low)*(b-t);
@@ -63,7 +63,8 @@ export const charts=(()=>{
    const x=xs[i],v=p.heat_index_c,status=p.heat_index_status;
    if(status!=='available'||!Number.isFinite(v)){
     const reason=status==='not_applicable'?'شرایط خارج از دامنهٔ کاربرد شاخص گرماست':'دادهٔ کافی برای شاخص گرما موجود نیست';
-    body+=`<g aria-label="${reason}"><title>${reason}</title>${text('—',x,37,'no-data')}</g>`;return;
+    const statusLabel=status==='not_applicable'?'خارج از دامنه':'داده ناقص';
+    body+=`<g aria-label="${reason}"><title>${reason}</title>${text('—',x,37,'no-data')}${text(statusLabel,x,57,'chart-status','var(--muted)','aria-hidden="true"')}</g>`;return;
    }
    const col=p.hazards?.includes('heat_index_c')?'var(--red)':'var(--warm)';
    // Fixed scale shared by days, expanded intervals and both viewports.

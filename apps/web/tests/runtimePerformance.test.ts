@@ -103,3 +103,38 @@ it.each([
   window.innerWidth=originalInnerWidth;
  }
 });
+
+it.each([
+ ['mobile',390,300],
+ ['desktop',1440,880],
+])('positions newly opened specialist captions immediately without requiring a horizontal scroll (%s)',(_device,width,panelWidth)=>{
+ const originalInnerWidth=window.innerWidth;
+ window.innerWidth=width;
+ const data=weekFixture('point','2026-10-09') as any;
+ const days=data.days.map((day:any,index:number)=>({
+  ...day,
+  available:['daily','6h','3h','1h'],
+  intervals:{daily:[{...data.intervals['24'][index][0],id:`${day.date}-daily-0`,day:index,hour:null}]},
+ }));
+ const runtime=createForecastRuntime({api:data,days:data.days.map((day:any)=>({...day,name:day.label,date_fa:day.jalali})),points:{[data.subject.slug]:{days}},},[],[],'');
+ try{
+  document.body.innerHTML=runtime.html('point',{...data.subject,name:data.subject.name},{day:0,time:480,speed:'medium',theme:'dark',scroll:0} as any);
+  const panel=document.querySelector<HTMLElement>('.forecast-panel')!;
+  Object.defineProperty(panel,'clientWidth',{configurable:true,value:panelWidth});
+  runtime.mount({});
+  const scroller=document.querySelector<HTMLElement>('.timeline-scroll')!;
+  Object.defineProperty(scroller,'clientWidth',{configurable:true,value:panelWidth});
+  Object.defineProperty(scroller,'scrollWidth',{configurable:true,value:Number.parseFloat(document.querySelector<HTMLElement>('.timeline-content')!.style.width)});
+  scroller.scrollLeft=0;
+  scroller.dispatchEvent(new Event('scroll'));
+  const before=scroller.scrollLeft;
+  document.querySelector<HTMLButtonElement>('[data-v4-expert]')!.click();
+  expect(scroller.scrollLeft).toBe(before);
+  const captions=[...document.querySelectorAll<SVGGElement>('#v4-experts .metric-caption')];
+  expect(captions.length).toBeGreaterThan(0);
+  expect(captions.every(caption=>caption.getAttribute('transform')?.startsWith('translate('))).toBe(true);
+ }finally{
+  runtime.destroy();
+  window.innerWidth=originalInnerWidth;
+ }
+});
