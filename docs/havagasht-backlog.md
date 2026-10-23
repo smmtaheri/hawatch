@@ -47,11 +47,24 @@
   [گنو](https://hawatch.ir/points/geno-peak) و
   [یخچال](https://hawatch.ir/points/yakhchal-peak).
 
+### تعیین تکلیف بستهٔ ۱۰ مقصدی، ۲۳ اکتبر ۲۰۲۶
+
+چهار مقصد تازه با commit `472ab78` اضافه و فعال شدند: گنو، تنگهٔ رغز، قلهٔ
+یخچال همدان و بیشهٔ دو باغ. سه مورد دیگر از فهرست آن بسته از قبل در کاتالوگ
+زنده بودند: [آسیاب‌خرابه](https://hawatch.ir/points/asiab-kharabeh-waterfall)
+(نقطهٔ مستقل)، [اخلمد](https://hawatch.ir/points/akhlamad-waterfall) با مسیر
+پارکینگ تا آبشار اول، و [گزو](https://hawatch.ir/points/gazo-waterfall) با مسیر
+پیادهٔ ۰٫۹۷ کیلومتری و هشدار شیب تند. سه نامزد باقی‌مانده —کوه‌شاه خراسان جنوبی،
+سه‌شاخ بزرگ و پلوار— هنوز gate انتشار را نگذرانده‌اند؛ جزئیات در
+[`havakouh-backlog.md`](havakouh-backlog.md) آمده است. بنابراین از ۱۰ مورد،
+۷ مورد اکنون در سایت هستند (۴ افزودهٔ تازه + ۳ مورد قبلی) و ۳ مورد واقعاً
+باقی مانده‌اند.
+
 | مقصد | بررسی مسیر و تصمیم |
 | --- | --- |
 | شوی | Route زنده: کمپ سرتنگ → آبشار سنگ‌مار → آبشار دوقلو → آبشار شوی؛ [ترک پیادهٔ ۱۳۲۶۹۸۵۹۵](https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595)، حدود ۳٫۱ کیلومتر یک‌طرفه، Easy، TrailRank 72. waypointهای میانی با عوارض نام‌دار تطبیق شدند؛ [توصیف مستقل مسیر کوتاه سرتنگ](https://dezhpol-news.blogfa.com/post/4330) نیز حدود ۴۵ دقیقه پیاده‌روی را گزارش می‌کند. صفحه هشدار عبور از آب/سنگ و دسترسی جاده‌ای ناهموار دارد. |
 | پیران | فایل [ترک کوتاه ۱۷۹۲۱۸۷۵۲](https://www.wikiloc.com/hiking-trails/waterfall-piran-179218752) حدود ۱٫۲۸ کیلومتر از پارکینگ تا آبشار است. [منبع دسترسی](https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D9%BE%DB%8C%D8%B1%D8%A7%D9%86%D8%8C-%D8%B3%D8%B1%D9%BE%D9%84-%D8%B0%D9%87%D8%A7%D8%A8/) مسیر را تا آبشار توصیف می‌کند، اما [گزارش دیگر](https://irantripadviser.ir/attraction.php?id=295) از تخریب پس از زلزله و مسدودشدن حدود ۵۰ متر پایانی با سنگ‌های بزرگ می‌گوید. دشواری به‌تنهایی مانع نیست؛ تا تأیید وضعیت فعلی همان بخش و عارضهٔ میانی مستند، Route منتشر نشود. |
-| گزو | [ترک شناخته‌شدهٔ ۸۱۶۸۶۴۶](https://www.wikiloc.com/hiking-trails/abshr-gzw-msyr-rhpymyy-8168646) از ورودی جنگل جمشیدآباد به امامزاده سه‌تن‌برار و آبشار، حدود ۹٫۳ کیلومتر رفت‌وبرگشت و Moderate است. توضیحات و گزارش پیمایش از شیب تند، طناب و ابهام دسترسی جاده‌ای می‌گویند؛ [منبع مستقل](https://irangpstracks.com/tracks/99) نیز شیب زیاد و پرتگاه را ثبت کرده است. طبق معیار مبتدی، برای دانلود/انتشار پیشنهاد نشد. |
+| گزو | Route زنده از امامزادهٔ سه‌تن‌برار تا آبشار، ۰٫۹۷ کیلومتر یک‌طرفه است؛ بخش جادهٔ خودرو از ترک مبنا حذف شده. مسیر سراشیبی تند است و هشدار پرتگاه/طناب ثابت و نامناسب‌بودن برای کم‌تجربه‌ها در صفحه آمده؛ سختی یا دست‌به‌سنگ معمول به‌تنهایی دلیل حذف نیست. |
 
 ### انتشارهای ۲۰ اکتبر ۲۰۲۶
 
@@ -183,7 +196,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 
 | مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
 | --- | --- | --- | --- | --- |
-| آبشار آسیاب خرابه | `asiab-kharabeh-waterfall` | نداریم | — | خیلی بالا (1) |
+| آبشار آسیاب خرابه | `asiab-kharabeh-waterfall` | موجود | [آبشار آسیاب‌خرابه](https://hawatch.ir/points/asiab-kharabeh-waterfall) | خیلی بالا (1) |
 | آبشار آغویه | `aghuyeh-waterfall` | نداریم | — | — |
 | آبشار اسب فروشان | `asbforushan-waterfall` | نداریم | — | — |
 | آبشار اسکندر | `eskandar-waterfall` | نداریم | — | — |
@@ -198,7 +211,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | آبشار هرگلان | `hargolan-waterfall` | نداریم | — | — |
 | پارک جنگلی مکیدی | `makidi-forestpark` | موجود | [پارک جنگلی مکیدی](https://hawatch.ir/points/makidi-forest) | — |
 | جنگل ارسباران | `arasbaran-jungle` | موجود | [جنگل ارسباران](https://hawatch.ir/points/arasbaran-forest) | — |
-| دریاچه قوری گل | `quri-gol-lake` | نداریم | — | خیلی بالا (2) |
+| دریاچه قوری گل | `quri-gol-lake` | موجود | [دریاچهٔ قوری‌گل](https://hawatch.ir/points/quri-gol-lake) | خیلی بالا (2) |
 
 ### آذربایجان غربی
 
@@ -365,8 +378,8 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | --- | --- | --- | --- | --- |
 | آبشار آبقد | `abqad-waterfall` | نداریم | — | — |
 | آبشار آبگرم | `abgarm-waterfall` | نداریم | — | — |
-| آبشار اخلمد | `akhlamad` | نداریم؛ عنوان تکراری در sitemap | — | خیلی بالا (5) |
-| آبشار اخلمد | `akhlamad_waterfall` | نداریم؛ عنوان تکراری در sitemap | — | خیلی بالا (5) |
+| آبشار اخلمد | `akhlamad` | موجود؛ canonical مشترک با ردیف بعد | [آبشار اول اخلمد](https://hawatch.ir/points/akhlamad-waterfall) | خیلی بالا (5) |
+| آبشار اخلمد | `akhlamad_waterfall` | موجود؛ تکراری و ادغام‌شده با canonical ردیف قبل | [آبشار اول اخلمد](https://hawatch.ir/points/akhlamad-waterfall) | خیلی بالا (5) |
 | آبشار ارتکند | `ortkand` | نداریم | — | — |
 | آبشار ارزنه | `arzaneh-waterfall` | نداریم | — | — |
 | دریاچه بزنگان | `bazangan-lake` | موجود | [دریاچهٔ بزنگان](https://hawatch.ir/points/bazangan-lake) | — |
@@ -563,7 +576,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | آبشار سنگ نو | `sang_no_waterfall` | نداریم | — | — |
 | آبشار سیاسرت | `siasart_waterfall` | نداریم | — | — |
 | آبشار شاهاندشت | `shahandasht_waterfall` | موجود | [آبشار شاهاندشت](https://hawatch.ir/points/shahandasht-waterfall) | — |
-| آبشار گزو | `gazo_waterfall` | نداریم | — | خیلی بالا (13) |
+| آبشار گزو | `gazo_waterfall` | موجود | [آبشار گزو](https://hawatch.ir/points/gazo-waterfall) | خیلی بالا (13) |
 | آبشار ماخر | `makher_waterfall` | نداریم | — | — |
 | آبشار میج | `mij_waterfall` | نداریم | — | — |
 | آبشار هریجان | `herijan_waterfall` | موجود | [آبشار هریجان](https://hawatch.ir/points/harijan-waterfall) | — |
@@ -605,7 +618,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | جنگل لفور | `lafour-jungle` | موجود | [جنگل لفور](https://hawatch.ir/points/lafour-forest) | — |
 | جنگل نسوم | `nasom-jungle` | نداریم | — | — |
 | جنگل ویسر | `veysar-jungle` | نداریم | — | — |
-| دره زمان | `zaman-valley` | نداریم | — | خیلی بالا (11) |
+| دره زمان | `zaman-valley` | موجود | [درهٔ زمان پلور](https://hawatch.ir/points/zaman-valley) | خیلی بالا (11) |
 | دریاچه ارواح | `arvah-lake` | موجود | [دریاچهٔ ارواح](https://hawatch.ir/points/ghost-lake) | — |
 | دریاچه الندان | `alendan-lake` | موجود | [دریاچهٔ الندان](https://hawatch.ir/points/alendan-lake) | — |
 | دریاچه لفور | `lafour-lake` | موجود | [سد لفور](https://hawatch.ir/points/lafour-dam) | — |
