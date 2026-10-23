@@ -1,0 +1,134 @@
+{
+  "catalog_version": "hawatch-three-shakh-bozorg-v1",
+  "primary_point": "se-shakh-bozorg",
+  "weather_points": {
+    "qanatghestan-three-shakh-trailhead": {
+      "name": "پای‌کار پیادهٔ سه‌شاخ بزرگ از قناتغستان",
+      "page_name": "پای‌کار مسیر سه‌شاخ بزرگ از قناتغستان",
+      "short_label": "پای‌کار سه‌شاخ",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "aliases": ["مبدأ صعود سه‌شاخ بزرگ از قناتغستان", "پای‌کار قناتغستان جوپار"],
+      "identity_summary": "نقطهٔ شروع قطعهٔ پیادهٔ ثبت‌شده در ترک صعود قناتغستان به سه‌شاخ بزرگ؛ دسترسی خودرویی تا این نقطه جزو Route نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sh-shkh-bzrg-4135-khrmn-jwpr-404-6-21-231338962",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sh-shkh-bzrg-jwpr-8w9shhrywr-99-59052307",
+        "https://denaesfahan.blogfa.com/post/4"
+      ],
+      "latitude": 29.980151,
+      "longitude": 57.197633,
+      "elevation_m": 2334,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 در مختصات آغاز ترک ۲۳۳۴ متر؛ waypoint «درخت» در GPX حدود ۲۳۶۲ متر ثبت شده است.",
+      "climate": "high_alpine",
+      "region": "قناتغستان · جوپار · ماهان · کرمان"
+    },
+    "joopar-three-shakh-shelter": {
+      "name": "جان‌پناه سه‌شاخ جوپار",
+      "page_name": "جان‌پناه سه‌شاخ در مسیر قلهٔ جوپار",
+      "short_label": "جان‌پناه سه‌شاخ",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["جان‌پناه جوپار", "جان‌پناه سه‌شاخ بزرگ"],
+      "identity_summary": "جان‌پناه شناخته‌شدهٔ جوپار در مسیر اصلی قناتغستان به سه‌شاخ بزرگ؛ محل معمول توقف و شب‌مانی پیش از صعود بخش بالایی.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sh-shkh-bzrg-4135-khrmn-jwpr-404-6-21-231338962",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sh-shkh-jwpr-147237602",
+        "https://denaesfahan.blogfa.com/post/4"
+      ],
+      "latitude": 29.936238,
+      "longitude": 57.182029,
+      "elevation_m": 2908,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 در مختصات جان‌پناه ۲۹۰۸ متر؛ waypoint ترک ۲۹۲۸ متر ثبت کرده و گزارش باشگاه دنا ارتفاع حدود ۳۰۰۰ متر را می‌دهد.",
+      "climate": "high_alpine",
+      "region": "جوپار · ماهان · کرمان"
+    },
+    "se-shakh-bozorg": {
+      "name": "قلهٔ سه‌شاخ بزرگ",
+      "page_name": "قلهٔ سه‌شاخ بزرگ جوپار",
+      "short_label": "سه‌شاخ بزرگ",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["سه شاخ بزرگ", "قلهٔ سه‌شاخ جوپار", "سه‌شاخ بزرگ کرمان", "Three Shakh Bozorg"],
+      "identity_summary": "قلهٔ بلند و شاخص رشته‌کوه جوپار در جنوب ماهانِ کرمان؛ مسیر معمول صعود از قناتغستان، راهروی رجب، خندق خرپران و جان‌پناه سه‌شاخ می‌گذرد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-sh-shkh-bzrg-4135-khrmn-jwpr-404-6-21-231338962",
+        "https://sv.wikiloc.com/spar-vandra/rft-w-brgsht-qlh-sh-shkh-chwpr-184701690",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-sh-shkh-jwpr-147237602",
+        "https://denaesfahan.blogfa.com/post/4",
+        "https://tabiatdost.com/10158/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%B5%D8%B9%D9%88%D8%AF-%D8%A8%D9%87-%D9%82%D9%84%D9%87-%D9%87%D8%B2%D8%A7%D8%B1/",
+        "https://api.open-meteo.com/v1/elevation?latitude=29.931761&longitude=57.159142",
+        "https://api.opentopodata.org/v1/srtm30m?locations=29.931761%2C57.159142"
+      ],
+      "latitude": 29.931761,
+      "longitude": 57.159142,
+      "elevation_m": 4103,
+      "status": "provisional",
+      "elevation_source": "موقت: waypoint قله در GPS مستقل ۴۱۰۳م؛ GPX دیگر ۴۰۳۳م و گزارش‌ها ۴۱۳۵–۴۱۳۷م می‌گویند. اختلاف DEM/منابع باقی است.",
+      "climate": "high_alpine",
+      "region": "جوپار · ماهان · کرمان",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ سه‌شاخ بزرگ جوپار؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ سه‌شاخ بزرگ جوپار در جنوب ماهانِ کرمان؛ دما، باد، بارش و شرایط ارتفاعات مسیر صعود."
+      }
+    }
+  },
+  "routes": {
+    "qanatghestan": {
+      "slug": "qanatghestan-to-se-shakh-bozorg",
+      "title": "قناتغستان تا قلهٔ سه‌شاخ بزرگ",
+      "subtitle": "از پای‌کار، راهروی رجب و خندق خرپران تا جان‌پناه و قله",
+      "trail_label": "مسیر اصلی قناتغستان · جوپار",
+      "origin": "پای‌کار پیادهٔ قناتغستان",
+      "target_label": "قلهٔ سه‌شاخ بزرگ جوپار",
+      "region": "قناتغستان · جوپار · ماهان · کرمان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "qanatghestan-three-shakh-trailhead",
+        "joopar-three-shakh-shelter",
+        "se-shakh-bozorg"
+      ],
+      "distance_km": 11.31,
+      "ascent_m": 1784,
+      "timing_status": "pending",
+      "public_note": "مسیر بسیار دشوار و بلند است و برای مبتدیان مناسب نیست: راهروی رجب دست‌به‌سنگ دارد، عبور خندق خرپران با سیم‌بکسل ثابت گزارش شده و بخش بالایی شیب تند، سنگ‌ریزه و دست‌به‌سنگ‌های متعدد دارد. سیم‌بکسل و پناهگاه را تضمین‌شده یا جایگزین مهارت و راهنمای آشنا با مسیر فرض نکنید؛ پیش از حرکت وضعیت تجهیزات ثابت، آب و شرایط محلی را بررسی کنید. برنامهٔ رایج با توقف/شب‌مانی در جان‌پناه انجام می‌شود؛ زمان رسیدن و پیش‌بینی زمان‌مند Route در هواچ هنوز ارائه نمی‌شود.",
+      "public_point_notes": {
+        "joopar-three-shakh-shelter": "جان‌پناه میانی مسیر است و در گزارش‌ها برای توقف یا شب‌مانی استفاده می‌شود؛ آب و بازبودن آن را پیش از صعود محلی بررسی کنید."
+      }
+    }
+  },
+  "point": {
+    "slug": "se-shakh-bozorg",
+    "tile_name": "قلهٔ سه‌شاخ بزرگ",
+    "name": "قلهٔ سه‌شاخ بزرگ",
+    "short_category": "قله",
+    "category": "قله‌های کرمان",
+    "category_key": "mountain",
+    "region": "جوپار · ماهان · کرمان",
+    "elevation_m": 4103,
+    "latitude": 29.931761,
+    "longitude": 57.159142,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ سه‌شاخ بزرگ در رشته‌کوه جوپار، کرمان",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سه شاخ بزرگ", "قلهٔ سه‌شاخ جوپار", "سه‌شاخ بزرگ کرمان", "Three Shakh Bozorg"]
+  },
+  "internal_note": "سه‌شاخ بزرگ به‌عنوان قلهٔ مستقل در رشته‌کوه جوپار ثبت می‌شود، نه مقصد عمومی با نام جوپار. نقطه و ترک از GPX محلی tracks/joopar/joopar-qanatghestan-to-three-shakh-bozorg-2025.gpx بررسی شده‌اند؛ فایل و manifest هرگز commit/deploy نشوند. قطعهٔ یک‌طرفه تا قله ۱۱٫۳۱ کیلومتر و صعود هموارشدهٔ GPX حدود ۱۷۸۴ متر است؛ ارتفاع GPX فقط مرجع است. گزارش باشگاه دنا مسیر قناتغستان، راهروی رجب، خرپران و جان‌پناه را تأیید می‌کند. ارتفاع گزارش‌های باشگاهی ۴۱۳۵–۴۱۳۷م است، اما GPS مستقل waypoint قله را ۴۱۰۳م و GPX مسیر مبنا ۴۰۳۳م ثبت می‌کند؛ DEMها در مختصات canonical برابر ۴۰۱۴ تا ۴۰۶۱م‌اند. برای catalog مقدار provisional برابر ۴۱۰۳م انتخاب شد که با GPS مستقل پشتیبانی می‌شود و با GLO-90 در محدودهٔ gate می‌ماند؛ اختلاف منبع حل‌نشده است و مقدار را اندازه‌گیری میدانی قطعی ندانید. مسیر timing=pending است چون itinerary رایج شامل شب‌مانی است و مدل فعلی برای توقف شبانه زمان رسیدن امن و قابل‌اتکایی ندارد. سختی مسیر بالا است؛ دست‌به‌سنگ مجاز است اما دسترسی سیم‌بکسل، خطرها و شرایط فعلی باید پیش از استفاده دوباره کنترل شوند."
+}
