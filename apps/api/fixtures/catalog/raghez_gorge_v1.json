@@ -1,0 +1,151 @@
+{
+  "catalog_version": "hawatch-raghez-gorge-v1",
+  "primary_point": "raghez-gorge",
+  "weather_points": {
+    "raghez-foot-trailhead": {
+      "name": "پای‌کار پیادهٔ سرچشمهٔ رغز",
+      "page_name": "آغاز پیاده‌روی سرچشمهٔ تنگ رغز",
+      "short_label": "پای‌کار رغز",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "aliases": ["شروع پیاده‌روی رغز", "پای‌کار سرچشمه رغز"],
+      "identity_summary": "نقطهٔ رهاشدن از خودرو پس از دسترسی خاکی و آغاز قطعهٔ پیادهٔ مسیر سرچشمهٔ رغز؛ مسیر خودرو در Route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/canyoneering-trails/tngh-rgz-drh-nwrdy-fny-10-mrdd-1404-224546062",
+        "https://www.irandeserts.com/article/%D8%AA%D9%86%DA%AF-%D8%B1%D8%BA%D8%B2%D8%8C-%D8%AF%D8%A7%D8%B1%D8%A7%D8%A8/"
+      ],
+      "latitude": 28.843169,
+      "longitude": 54.277756,
+      "elevation_m": 1989,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع پیمایش در GPX؛ ارتفاع canonical با DEM مدل GLO-90 در gate Open-Meteo تأیید شود.",
+      "climate": "forest_fog",
+      "region": "حسن‌آباد · داراب · فارس"
+    },
+    "raghez-bidek-spring": {
+      "name": "چشمهٔ بیدک تنگ رغز",
+      "page_name": "چشمهٔ بیدک در مسیر سرچشمهٔ رغز",
+      "short_label": "چشمهٔ بیدک",
+      "place_type": "spring",
+      "category_key": "spring",
+      "aliases": ["چشمه بیدک رغز", "چشمه یدک رغز"],
+      "identity_summary": "چشمهٔ میانی مسیر پیادهٔ سرچشمهٔ رغز؛ گزارش‌های مستقل آن را چشمهٔ بیدک/یدک در پاکوب پس از پای‌کار معرفی می‌کنند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/canyoneering-trails/tngh-rgz-drh-nwrdy-fny-10-mrdd-1404-224546062",
+        "https://www.irandeserts.com/article/%D8%AA%D9%86%DA%AF-%D8%B1%D8%BA%D8%B2%D8%8C-%D8%AF%D8%A7%D8%B1%D8%A7%D8%A8/",
+        "https://gardeshgari724.com/attractions/%D8%AA%D9%86%DA%AF%D9%87-%D8%B1%D8%BA%D8%B2/3036"
+      ],
+      "latitude": 28.843894,
+      "longitude": 54.279995,
+      "elevation_m": 1917,
+      "status": "provisional",
+      "elevation_source": "Waypoint چشمه اول در GPX؛ هم‌نامی آن با چشمهٔ بیدک باید با DEM و منابع مسیر در gate محلی تأیید شود.",
+      "climate": "forest_fog",
+      "region": "مسیر سرچشمهٔ رغز · داراب · فارس"
+    },
+    "raghez-gorge": {
+      "name": "تنگهٔ رغز",
+      "page_name": "تنگهٔ رغز؛ مسیر دسترسی به سرچشمه",
+      "short_label": "تنگهٔ رغز",
+      "place_type": "valley",
+      "category_key": "gorge",
+      "aliases": ["تنگ رغز", "سرچشمهٔ رغز", "سرچشمه تنگ رغز", "Raghez Canyon"],
+      "identity_summary": "تنگهٔ رغز در داراب فارس؛ مختصات این صفحه روی سرچشمه و ابتدای دره‌نوردی فنی است، نه مسیر پایین‌دست آبشارها و حوضچه‌ها.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/canyoneering-trails/tngh-rgz-drh-nwrdy-fny-10-mrdd-1404-224546062",
+        "https://gardeshgari724.com/attractions/%D8%AA%D9%86%DA%AF%D9%87-%D8%B1%D8%BA%D8%B2/3036",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 28.835751,
+      "longitude": 54.302118,
+      "elevation_m": 1620,
+      "elevation_source": "Waypoint سرچشمه/آغاز دره‌نوردی در GPX با ارتفاع تقریبی ۱۶۲۰ متر؛ DEM مدل GLO-90 باید در gate Open-Meteo تأیید شود.",
+      "climate": "forest_fog",
+      "region": "حسن‌آباد · داراب · فارس",
+      "status": "provisional"
+    }
+  },
+  "routes": {
+    "trailhead-to-raghez-source": {
+      "slug": "tang-e-raghez-approach-to-canyon-head",
+      "title": "پای‌کار پیاده تا سرچشمهٔ تنگ رغز",
+      "subtitle": "حدود ۳٫۷ کیلومتر پیاده؛ دره‌نوردی فنی و آبشارهای پایین‌دست در این مسیر نیست",
+      "trail_label": "مسیر سرچشمهٔ رغز",
+      "origin": "پای‌کار پیادهٔ رغز",
+      "target_label": "سرچشمهٔ تنگ رغز",
+      "region": "حسن‌آباد · داراب · فارس",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "raghez-foot-trailhead",
+        "raghez-bidek-spring",
+        "raghez-gorge"
+      ],
+      "distance_km": 3.69,
+      "ascent_m": 115,
+      "one_way_minutes": 150,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-hike-cut+independent-access-reports-v1",
+        "version": "raghez-trailhead-source-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/canyoneering-trails/tngh-rgz-drh-nwrdy-fny-10-mrdd-1404-224546062",
+          "https://www.irandeserts.com/article/%D8%AA%D9%86%DA%AF-%D8%B1%D8%BA%D8%B2%D8%8C-%D8%AF%D8%A7%D8%B1%D8%A7%D8%A8/",
+          "https://gardeshgari724.com/attractions/%D8%AA%D9%86%DA%AF%D9%87-%D8%B1%D8%BA%D8%B2/3036"
+        ],
+        "evidence_tracks": ["tracks/tang-e-raghez/tang-e-raghez-approach-and-canyoning-review-2025.gpx"],
+        "cumulative_minutes": {
+          "raghez-foot-trailhead": 0,
+          "raghez-bidek-spring": 30,
+          "raghez-gorge": 150
+        },
+        "notes": [
+          "فقط قطعهٔ پیاده از پای‌کار پس از جادهٔ خاکی تا چشمهٔ سرچشمه وارد Route شده است؛ بخش خودرو و کل بخش فنی دره‌نوردی حذف شده‌اند.",
+          "ترک حدود ۳٫۶۹ کیلومتر تا سرچشمه را در حدود ۲٫۵ ساعت گزارش می‌کند؛ شیب‌های رفت‌وبرگشتی و دست‌به‌سنگ محدود در مسیر دسترسی وجود دارد.",
+          "چشمهٔ نخست ترک با چشمهٔ بیدکِ گزارش‌های مستقل تطبیق داده شده؛ تا تأیید strict catalog و DEM این فایل draft است.",
+          "این Route شامل پرش، شنا، سرسره، فرود با طناب یا ادامهٔ دره به سمت آبشار وداع نیست."
+        ]
+      },
+      "public_note": "این Route فقط دسترسی پیاده تا سرچشمه را نشان می‌دهد و به معنی توصیه برای ورود به تنگه نیست. مسیر فنی پایین‌دست شامل آب سرد، شنا، پرش و فرود با طناب است و خارج از این Route قرار دارد؛ برای آن بخش بدون گروه و راهنمای فنی وارد نشوید. جادهٔ خاکی و نیسان‌سواری هم جزو مسیر پیاده نیست.",
+      "public_point_notes": {
+        "raghez-bidek-spring": "چشمهٔ بیدک/یدک در مسیر پیادهٔ سرچشمه؛ نام محلی در گزارش‌های مسیر.",
+        "raghez-gorge": "مقصد Route سرچشمهٔ رغز است؛ مسیر فنی داخل تنگه در این صفحهٔ مسیر پوشش داده نمی‌شود."
+      }
+    }
+  },
+  "point": {
+    "slug": "raghez-gorge",
+    "tile_name": "تنگهٔ رغز",
+    "name": "تنگهٔ رغز",
+    "short_category": "دره",
+    "category": "دره‌ها و تنگه‌های فارس",
+    "category_key": "gorge",
+    "region": "حسن‌آباد · داراب · فارس",
+    "elevation_m": 1620,
+    "latitude": 28.835751,
+    "longitude": 54.302118,
+    "image": "/images/home-scene.png",
+    "image_alt": "چشمهٔ سرچشمهٔ تنگهٔ رغز در داراب فارس",
+    "popular_order": 0,
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["تنگ رغز", "سرچشمهٔ رغز", "سرچشمه تنگ رغز", "Raghez Canyon"]
+  }
+}

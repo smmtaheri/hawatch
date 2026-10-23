@@ -1,0 +1,156 @@
+{
+  "catalog_version": "hawatch-pulvar-peak-v1",
+  "publication_review": {
+    "status": "draft",
+    "checked_at": "2026-10-23",
+    "reason": "GPX contains a continuous Bidestan-parking to summit ascent and a named winter-fatalities memorial. Independent reports disagree on the year, so the memorial is named without a year. Provider/DEM and strict catalog checks pass; final route safety review remains before release."
+  },
+  "primary_point": "pulvar-peak",
+  "weather_points": {
+    "pulvar-bidestan-trailhead": {
+      "name": "پارکینگ بیدستان پلوار",
+      "page_name": "پای‌کار پیادهٔ قلهٔ پلوار از بیدستان",
+      "short_label": "پارکینگ بیدستان",
+      "place_type": "trailhead",
+      "category_key": "trailhead",
+      "aliases": ["بیدستان پلوار", "پارکینگ بیدستان"],
+      "identity_summary": "پارکینگ بیدستان در ماهان، مبدأ قطعهٔ پیادهٔ مسیر صعود قلهٔ پلوار؛ دسترسی جاده‌ای تا این نقطه جزو Route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
+        "https://vaezizadeh-kerman.blogfa.com/post/78",
+        "https://omid-mountain.blogfa.com/post/11"
+      ],
+      "latitude": 30.091177,
+      "longitude": 57.441582,
+      "elevation_m": 2747,
+      "status": "provisional",
+      "elevation_source": "Waypoint پارکینگ بیدستان در GPX؛ مقدار DEM و grid در gate زندهٔ Open-Meteo باید تأیید شود.",
+      "climate": "high_alpine",
+      "region": "بیدستان · ماهان · کرمان"
+    },
+    "pulvar-winter-memorial": {
+      "name": "یادمان جان‌باختگان زمستان پلوار",
+      "page_name": "یادمان کوهنوردان در مسیر پلوار",
+      "short_label": "یادمان پلوار",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "aliases": ["تابلوی یادبود درگذشتگان زمستان پلوار", "یادمان شهدای پلوار"],
+      "identity_summary": "تابلوی یادبود کوهنوردان جان‌باخته در زمستان، عارضهٔ واقعی میانی مسیر بیدستان تا قلهٔ پلوار؛ سال رویداد در گزارش‌ها یکسان نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
+        "https://vaezizadeh-kerman.blogfa.com/post/78",
+        "https://omid-mountain.blogfa.com/post/11"
+      ],
+      "latitude": 30.081451,
+      "longitude": 57.451869,
+      "elevation_m": 3277,
+      "status": "provisional",
+      "elevation_source": "Waypoint تابلوی یادبود در GPX؛ مقدار DEM و grid در gate زندهٔ Open-Meteo باید تأیید شود.",
+      "climate": "high_alpine",
+      "region": "مسیر قلهٔ پلوار · ماهان · کرمان"
+    },
+    "pulvar-peak": {
+      "name": "قلهٔ پلوار",
+      "page_name": "قلهٔ پلوار ماهان کرمان",
+      "short_label": "قلهٔ پلوار",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["پلوار", "کوه پلوار", "قله پلوار ماهان", "Pulvar Peak"],
+      "identity_summary": "قلهٔ پلوار در ماهان کرمان؛ مسیر اصلی بررسی‌شده از پارکینگ بیدستان و یادمان جان‌باختگان زمستان می‌گذرد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
+        "https://vaezizadeh-kerman.blogfa.com/post/78",
+        "https://omid-mountain.blogfa.com/post/11",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.070043,
+      "longitude": 57.465675,
+      "elevation_m": 4220,
+      "elevation_source": "Waypoint قله پلوار در GPX با ارتفاع تقریبی ۴۲۲۰ متر؛ مقدار canonical باید با DEM مدل GLO-90 در gate Open-Meteo تأیید شود.",
+      "climate": "high_alpine",
+      "region": "ماهان · کرمان",
+      "status": "provisional"
+    }
+  },
+  "routes": {
+    "bidestan-to-pulvar": {
+      "slug": "pulvar-bidestan-summit",
+      "title": "پارکینگ بیدستان تا قلهٔ پلوار",
+      "subtitle": "صعود دشوار از بیدستان و یادمان جان‌باختگان تا قله؛ راهنمای محلی توصیه می‌شود",
+      "trail_label": "مسیر بیدستان–پلوار",
+      "origin": "پارکینگ بیدستان",
+      "target_label": "قلهٔ پلوار",
+      "region": "ماهان · کرمان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "pulvar-bidestan-trailhead",
+        "pulvar-winter-memorial",
+        "pulvar-peak"
+      ],
+      "distance_km": 6.62,
+      "ascent_m": 1445,
+      "one_way_minutes": 180,
+      "default_start_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-ascent-cut+independent-club-reports-v1",
+        "version": "pulvar-bidestan-summit-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
+          "https://vaezizadeh-kerman.blogfa.com/post/78",
+          "https://omid-mountain.blogfa.com/post/11"
+        ],
+        "evidence_tracks": ["tracks/pulvar-peak/pulvar-bidestan-to-summit-2025-roundtrip.gpx"],
+        "cumulative_minutes": {
+          "pulvar-bidestan-trailhead": 0,
+          "pulvar-winter-memorial": 55,
+          "pulvar-peak": 180
+        },
+        "notes": [
+          "برای تحلیل فقط قطعهٔ صعود از پارکینگ بیدستان تا نخستین رسیدن به قله استفاده شده؛ بخش برگشت در metrics وارد نیست.",
+          "ترک حدود ۶٫۶۲ کیلومتر یک‌طرفه و صعود هموارشده حدود ۱۴۴۵ متر دارد؛ زمان ۱۸۰ دقیقه با گزارش صاحب ترک و زمان حرکت GPS سازگار است.",
+          "مسیر بسیار پرشیب و دشوار است؛ گزارش‌ها راهنمای محلی باتجربه را توصیه می‌کنند. سختی به‌تنهایی دلیل حذف نیست؛ باید روشن شود عبور از پل صراط صرفاً دست‌به‌سنگ/حمایت هم‌تیمی است یا صعود طناب‌محور فنی. سال یادمان در گزارش‌ها متناقض است و عمداً در نام عمومی ذکر نشده."
+        ]
+      },
+      "public_note": "صعود طولانی و پرشیب در ارتفاع بالا است. گزارش مسیر برای بار اول راهنمای محلی باتجربه را توصیه می‌کند؛ آب مورد نیاز را از مبدأ همراه ببرید و زمان، فصل و توان گروه را جدی بگیرید.",
+      "public_point_notes": {
+        "pulvar-winter-memorial": "یادمان جان‌باختگان زمستان در مسیر پیادهٔ بیدستان تا قله قرار دارد."
+      }
+    }
+  },
+  "point": {
+    "slug": "pulvar-peak",
+    "tile_name": "قلهٔ پلوار",
+    "name": "قلهٔ پلوار",
+    "short_category": "قله",
+    "category": "قله‌های کرمان",
+    "category_key": "mountain",
+    "region": "ماهان · کرمان",
+    "elevation_m": 4220,
+    "latitude": 30.070043,
+    "longitude": 57.465675,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای کوهستانی قلهٔ پلوار در ماهان کرمان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["پلوار", "کوه پلوار", "قله پلوار ماهان", "Pulvar Peak"]
+  }
+}

@@ -163,7 +163,10 @@ python3 scripts/validate_open_meteo_catalog.py \
 
 این بررسی WGS84، مختصات تکراری، route references، DEM/provider elevation، وجود
 دادهٔ ساعتی دما/بارش/کد وضعیت و فاصلهٔ مرکز grid تا مختصات را چک می‌کند؛ فاصلهٔ
-بیشتر از ۵٫۲۵ کیلومتر یا اختلاف catalog/DEM بیشتر از ۱۰۰ متر failure است. اگر
+بیشتر از ۶ کیلومتر یا اختلاف catalog/DEM بیشتر از ۱۰۰ متر failure است. آستانهٔ
+۶ کیلومتر فعلاً سراسری و موقت است و هم در validator آفلاین و هم در ingest و
+preflight runtime اعمال می‌شود؛ فاصلهٔ بیشتر از ۵ کیلومتر را برای نقاط کوهستانی
+به‌عنوان کاهش دقت مکانی در نظر بگیرید، حتی اگر از gate عبور کند. اگر
 provider برای حتی یک point پاسخ معتبر ندهد، کل catalog رد می‌شود و نباید seed
 یا import انجام شود؛ slug و علت خطا باید به درخواست‌کننده گزارش شود. اگر ارتفاع
 هنوز قطعی نیست، `--allow-unresolved-elevation` فقط برای smoke test است و هرگز
@@ -234,7 +237,7 @@ python3 scripts/validate_open_meteo_catalog.py \
   --catalog apps/api/fixtures/catalog/my_point_v1.json
 ```
 
-validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۵٫۲۵ کیلومتر failure است. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
+validator هیچ فایلی، database یا snapshotی نمی‌نویسد. مختصات را از نظر WGS84، duplicate و route reference بررسی می‌کند؛ elevation API سرویس Open-Meteo را برای مقایسهٔ DEM می‌خواند؛ سپس forecast را با قرارداد واقعی provider صدا می‌زند و cardinality، elevation metadata، دادهٔ ساعتی و فاصلهٔ مرکز grid تا مختصات درخواست‌شده را چک می‌کند. فاصلهٔ بیش از ۶ کیلومتر failure است؛ سقف ۶ کیلومتر فعلاً سراسری و موقت است و فاصلهٔ بیش از ۵ کیلومتر برای نقاط کوهستانی هشدار کاهش دقت مکانی دارد. elevationهای catalog با DEM مقایسه می‌شوند ولی DEM به‌صورت خودکار جایگزین منبع catalog نمی‌شود.
 
 این validator مستقل برای قابلیت اجرای قبل از نصب محیط API، همچنان stdlib-only و
 بدون DB باقی مانده است. مسیر runtime (`ingest_open_meteo` و providerهای آینده)
@@ -267,4 +270,4 @@ Import پیش‌فرض غیرتخریبی است (`--prune` فقط صریح). `s
 
 اگر `elevation_m` موجود و status آن قطعی باشد، provider همان ارتفاع catalog را همراه `cell_selection=land` به Open-Meteo می‌فرستد تا برای statistical downscaling استفاده شود. برای ارتفاع‌های `provisional`، همان ارتفاع صریح ارسال می‌شود اما `cell_selection=nearest` انتخاب می‌شود تا یک اختلاف ارتفاع غیرقطعی، weather cell را به نقطه‌ای دور منتقل نکند. اگر null باشد، ارتفاعی جعل یا در catalog ذخیره نمی‌شود؛ درخواست با `cell_selection=nearest` انجام می‌شود و elevation برگشتی فقط در `ForecastPointResolution` به‌عنوان metadata provider ثبت می‌شود. پس از افزودن elevation معتبر به فایل، اجرای بعدی ingest خودکار آن را در درخواست استفاده می‌کند.
 
-مختصات برگشتی provider، فاصلهٔ آن از مختصات catalog و elevation برگشتی ذخیره می‌شوند؛ batch ناسازگار یا دورتر از ۵٫۲۵ کیلومتر اصلاً persist نمی‌شود.
+مختصات برگشتی provider، فاصلهٔ آن از مختصات catalog و elevation برگشتی ذخیره می‌شوند؛ batch ناسازگار یا دورتر از ۶ کیلومتر اصلاً persist نمی‌شود. این سقف فعلاً سراسری و موقت است؛ برای نقاط کوهستانی بیش از ۵ کیلومتر همچنان هشدار دقت مکانی در نظر بگیرید.

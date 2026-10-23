@@ -477,7 +477,7 @@ def ingest_weather_points(
         results = provider.fetch_all(provider_points)
         # Land/elevation matching can select a remote grid cell. Retry only
         # rejected points using the nearest cell, keeping the catalog elevation
-        # and the same 5.25 km acceptance gate. No unvalidated response is stored.
+        # and the same 6 km acceptance gate. No unvalidated response is stored.
         retry_points = {}
         for result in results:
             items = response_items(result.payload)

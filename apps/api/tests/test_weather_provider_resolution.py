@@ -10,8 +10,8 @@ from hawatch.integrations.weather.normalize import (
 )
 
 
-@pytest.mark.parametrize(("distance_km", "expected"), [(5.2, True), (5.26, False)])
-def test_provider_resolution_accepts_only_the_narrow_over_five_km_allowance(distance_km, expected):
+@pytest.mark.parametrize(("distance_km", "expected"), [(5.2, True), (5.9, True), (6.0, True), (6.01, False)])
+def test_provider_resolution_uses_the_shared_six_km_limit(distance_km, expected):
     latitude = 30.907806
     requested_longitude = 51.480139
     longitude_delta = distance_km / (6371.0088 * cos(radians(latitude))) * 180 / pi

@@ -1,0 +1,149 @@
+{
+  "catalog_version": "hawatch-yakhchal-peak-v1",
+  "primary_point": "yakhchal-peak",
+  "weather_points": {
+    "yakhchal-moradbeig-trailhead": {
+      "name": "پای‌کار پیادهٔ قلهٔ یخچال از درهٔ مرادبیگ",
+      "page_name": "مبدأ پیاده‌روی قلهٔ یخچال همدان",
+      "short_label": "پای‌کار یخچال",
+      "place_type": "trailhead",
+      "category_key": "mountain",
+      "aliases": ["مبدأ مسیر مرادبیگ به یخچال", "پای‌کار درهٔ مرادبیگ"],
+      "identity_summary": "نقطهٔ آغاز ترک پیادهٔ تابستانی درهٔ مرادبیگ به قلهٔ یخچال؛ مسیر خودرو تا این پای‌کار جزو Route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://ru.wikiloc.com/marshruty-pokhod/yakhchal-sumit-hamedan-38578130",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%DB%8C%D8%AE%DA%86%D8%A7%D9%84-%D9%87%D9%85%D8%AF%D8%A7%D9%86/"
+      ],
+      "latitude": 34.739417,
+      "longitude": 48.498407,
+      "elevation_m": 2158,
+      "status": "provisional",
+      "elevation_source": "نخستین نقطهٔ ترک تابستانی Wikiloc در کوچه‌باغ درهٔ مرادبیگ؛ مقدار نهایی باید با DEM GLO-90 در gate Open-Meteo بررسی شود.",
+      "climate": "high_alpine",
+      "region": "درهٔ مرادبیگ · همدان"
+    },
+    "yakhchal-sahib-zaman-shelter": {
+      "name": "پناهگاه یخچال صاحب‌الزمان",
+      "page_name": "پناهگاه صاحب‌الزمان در مسیر قلهٔ یخچال",
+      "short_label": "پناهگاه یخچال",
+      "place_type": "shelter",
+      "category_key": "mountain",
+      "aliases": ["پناهگاه یخچال", "پناهگاه صاحب الزمان یخچال", "جان‌پناه یخچال"],
+      "identity_summary": "پناهگاه شناخته‌شدهٔ صاحب‌الزمان در بخش بالایی مسیر رایج صعود از درهٔ مرادبیگ به قلهٔ یخچال.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://ru.wikiloc.com/marshruty-pokhod/yakhchal-sumit-hamedan-38578130",
+        "https://decovel.com/page/yakhchal-peak",
+        "https://iranpeak.blogfa.com/category/22"
+      ],
+      "latitude": 34.680936,
+      "longitude": 48.483167,
+      "elevation_m": 3200,
+      "status": "provisional",
+      "elevation_source": "Waypoint پناهگاه صاحب‌الزمان در ترک؛ گزارش‌های مستقل ارتفاع پناهگاه را حدود ۳۲۰۰ متر می‌دانند. DEM نهایی در gate بررسی می‌شود.",
+      "climate": "high_alpine",
+      "region": "مسیر قلهٔ یخچال · همدان"
+    },
+    "yakhchal-peak": {
+      "name": "قلهٔ یخچال همدان",
+      "page_name": "آب‌وهوای قلهٔ یخچال همدان",
+      "short_label": "قلهٔ یخچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله یخچال", "یخچال همدان", "قلهٔ صاحب‌الزمان", "Yakhchal Peak"],
+      "identity_summary": "قلهٔ یخچال در رشته‌کوه الوند، مقصد مستقل کوهنوردی و از بلندترین قله‌های همدان؛ مسیر رایج از درهٔ مرادبیگ و پناهگاه صاحب‌الزمان می‌گذرد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://ru.wikiloc.com/marshruty-pokhod/yakhchal-sumit-hamedan-38578130",
+        "https://mojekooh.com/%D9%82%D9%84%D9%87-%DB%8C%D8%AE%DA%86%D8%A7%D9%84-%D9%87%D9%85%D8%AF%D8%A7%D9%86/",
+        "https://iranpeak.blogfa.com/category/22",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 34.668177,
+      "longitude": 48.478018,
+      "elevation_m": 3580,
+      "elevation_source": "ارتفاع رایج ۳۵۸۰ متر در گزارش‌های صعود مستقل؛ مختصات با waypoint قلهٔ یخچال ترک تابستانی تطبیق دارد. gate، DEM مدل GLO-90 را کنترل می‌کند.",
+      "climate": "high_alpine",
+      "region": "الوند · همدان"
+    }
+  },
+  "routes": {
+    "moradbeig-to-yakhchal": {
+      "slug": "yakhchal-moradbeig-summer-summit",
+      "title": "درهٔ مرادبیگ تا قلهٔ یخچال",
+      "subtitle": "صعود تابستانی از کوچه‌باغ و پناهگاه صاحب‌الزمان تا قله",
+      "trail_label": "مسیر درهٔ مرادبیگ",
+      "origin": "پای‌کار پیادهٔ درهٔ مرادبیگ",
+      "target_label": "قلهٔ یخچال همدان",
+      "region": "درهٔ مرادبیگ · الوند · همدان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "yakhchal-moradbeig-trailhead",
+        "yakhchal-sahib-zaman-shelter",
+        "yakhchal-peak"
+      ],
+      "distance_km": 10.04,
+      "ascent_m": 1259,
+      "one_way_minutes": 232,
+      "default_start_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "wikiloc-reported-moving-time+gpx-geometry-v1",
+        "version": "yakhchal-moradbeig-summer-summit-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://ru.wikiloc.com/marshruty-pokhod/yakhchal-sumit-hamedan-38578130",
+          "https://mojekooh.com/%D9%82%D9%84%D9%87-%DB%8C%D8%AE%DA%86%D8%A7%D9%84-%D9%87%D9%85%D8%AF%D8%A7%D9%86/",
+          "https://iranpeak.blogfa.com/category/22"
+        ],
+        "evidence_tracks": ["tracks/yakhchal-peak/yakhchal-moradbeig-summer-ascent-2019.gpx"],
+        "cumulative_minutes": {
+          "yakhchal-moradbeig-trailhead": 0,
+          "yakhchal-sahib-zaman-shelter": 180,
+          "yakhchal-peak": 232
+        },
+        "notes": [
+          "فقط قطعهٔ پیادهٔ یک‌طرفه از نخستین نقطهٔ ترک در کوچه‌باغ تا قله در تحلیل آمده است؛ مسیر خودرو جزو Route نیست.",
+          "مسافت ۱۰٫۰۴ کیلومتر و ارتفاع‌گیری هموارشده حدود ۱۲۵۹ متر از قطعهٔ GPX گرفته شده؛ زمان ۲۳۲ دقیقه، زمان حرکت گزارش‌شده در Wikiloc است. timestamp خام ترک به علت توقف‌های طولانی برای زمان حرکت قابل اتکا نبود.",
+          "این مسیر در منبع به‌عنوان صعود تابستانی ثبت شده است؛ برف، یخ و شرایط زمستانی می‌تواند آن را به کوهنوردی زمستانهٔ دشوار تبدیل کند. پناهگاه میانی را مقصد یا تضمینِ بازبودن/آب در همهٔ فصل‌ها تلقی نکنید."
+        ]
+      },
+      "public_note": "مسیر کوهستانی طولانی با حدود ۱۲۶۰ متر ارتفاع‌گیری است. این ترک برای صعود تابستانی ثبت شده؛ وضعیت برف، یخ، آب و بازبودن پناهگاه را پیش از حرکت محلی بررسی کنید و شرایط زمستانی را مسیر ساده فرض نکنید.",
+      "public_point_notes": {
+        "yakhchal-sahib-zaman-shelter": "پناهگاه صاحب‌الزمان در میانهٔ مسیر رایج صعود از درهٔ مرادبیگ قرار دارد."
+      }
+    }
+  },
+  "point": {
+    "slug": "yakhchal-peak",
+    "tile_name": "قلهٔ یخچال همدان",
+    "name": "قلهٔ یخچال همدان",
+    "short_category": "قله",
+    "category": "قله‌های همدان",
+    "category_key": "mountain",
+    "region": "الوند · همدان",
+    "elevation_m": 3580,
+    "latitude": 34.668177,
+    "longitude": 48.478018,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ یخچال در رشته‌کوه الوند همدان",
+    "popular_order": 0,
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قله یخچال", "یخچال همدان", "قلهٔ صاحب‌الزمان", "Yakhchal Peak"]
+  }
+}

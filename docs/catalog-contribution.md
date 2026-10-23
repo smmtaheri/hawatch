@@ -299,8 +299,10 @@ python3 scripts/validate_open_meteo_catalog.py \
 
 دستور دوم برای تک‌تک pointها Open-Meteo را read-only صدا می‌زند و وجود elevation،
 grid معتبر، hourly data و فاصلهٔ grid تا مختصات را بررسی می‌کند. اختلاف catalog و
-DEM بیشتر از ۱۰۰ متر، grid دورتر از ۵٫۲۵ کیلومتر، پاسخ ناقص یا خطای هر point یعنی
+DEM بیشتر از ۱۰۰ متر، grid دورتر از ۶ کیلومتر، پاسخ ناقص یا خطای هر point یعنی
 کل import متوقف می‌شود؛ مختصات/ارتفاع آن point باید اصلاح یا از catalog حذف شود.
+این سقف فعلاً سراسری و موقت است؛ برای نقاط کوهستانی، فاصلهٔ بیش از ۵ کیلومتر
+هشدار کاهش دقت مکانی دارد.
 GPX برای forecast لازم نیست، ولی برای distance/ascent/ETA و یافتن landmark لازم
 است.
 

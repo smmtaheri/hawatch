@@ -1,0 +1,172 @@
+{
+  "catalog_version": "hawatch-bishe-do-bagh-v1",
+  "primary_point": "bishe-do-bagh",
+  "weather_points": {
+    "bishe-do-bagh-trailhead": {
+      "name": "پای‌کار پیادهٔ ریگ‌جن از مزرعهٔ پستهٔ الله‌آباد",
+      "page_name": "مبدأ پیاده‌روی بیشهٔ دو باغ در ریگ‌جن",
+      "short_label": "پای‌کار ریگ‌جن",
+      "place_type": "trailhead",
+      "category_key": "desert",
+      "aliases": ["مزرعهٔ پستهٔ الله‌آباد", "شروع پیاده‌روی ریگ‌جن"],
+      "identity_summary": "نقطهٔ شروع پیمایش پیاده پس از دسترسی آفرود به مزرعهٔ پستهٔ الله‌آباد؛ مسیر خودرو تا این نقطه جزو Route پیاده نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/wikiloc/view.do?id=9296940",
+        "https://www.irandeserts.com/article/%D9%85%D9%86%D8%B7%D9%82%D9%87-%DA%AF%D9%88%D8%AF-%D8%AF%D9%88-%D8%A8%D8%A7%D8%BA-%DA%86%D8%A7%D9%84%D9%87-%DA%86%D8%A7%D9%87-%D8%B1%DB%8C%DA%AF-%D8%AC%D9%86/"
+      ],
+      "latitude": 33.618055,
+      "longitude": 54.173777,
+      "elevation_m": 856,
+      "status": "provisional",
+      "elevation_source": "نخستین نقطهٔ ثبت‌شدهٔ ترک Wikiloc در پای‌کار پیاده؛ ارتفاع GPX حدود ۸۵۶ متر است و باید با DEM مدل GLO-90 در gate نهایی تطبیق داده شود.",
+      "climate": "desert",
+      "region": "الله‌آباد · چوپانان · نایین · اصفهان"
+    },
+    "bishe-do-bagh-saxaul-grove": {
+      "name": "درختزار گز ریگ‌جن",
+      "page_name": "درختزار گز در مسیر بیشهٔ دو باغ",
+      "short_label": "درختزار گز",
+      "place_type": "landmark",
+      "category_key": "desert",
+      "aliases": ["درخت‌های گز ریگ‌جن", "گزهای مسیر بیشه دو باغ"],
+      "identity_summary": "درختزار گز ثبت‌شده به‌عنوان عارضهٔ واقعی در مسیر پیادهٔ الله‌آباد تا بیشهٔ دو باغ.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/wikiloc/view.do?id=9296940",
+        "https://www.irandeserts.com/article/%D9%85%D9%86%D8%B7%D9%82%D9%87-%DA%AF%D9%88%D8%AF-%D8%AF%D9%88-%D8%A8%D8%A7%D8%BA-%DA%86%D8%A7%D9%84%D9%87-%DA%86%D8%A7%D9%87-%D8%B1%DB%8C%DA%AF-%D8%AC%D9%86/"
+      ],
+      "latitude": 33.628506,
+      "longitude": 54.155814,
+      "elevation_m": 847,
+      "status": "provisional",
+      "elevation_source": "Waypoint درخت‌های گز در GPX؛ DEM مدل GLO-90 در gate نهایی بررسی می‌شود.",
+      "climate": "desert",
+      "region": "ریگ‌جن · نایین · اصفهان"
+    },
+    "bishe-do-bagh-well": {
+      "name": "چاه غیرقابل‌شرب ریگ‌جن",
+      "page_name": "چاه غیرقابل‌شرب در مسیر بیشهٔ دو باغ",
+      "short_label": "چاه غیرشرب",
+      "place_type": "landmark",
+      "category_key": "desert",
+      "aliases": ["چاه آب غیرقابل شرب ریگ جن", "واحهٔ میانی ریگ‌جن"],
+      "identity_summary": "چاه و واحهٔ میانی ثبت‌شده در ترک پیاده؛ آب آن طبق توضیح ترک غیرقابل‌شرب است و جایگزین آب آشامیدنی همراه نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/wikiloc/view.do?id=9296940"
+      ],
+      "latitude": 33.66633,
+      "longitude": 54.11273,
+      "elevation_m": 832,
+      "status": "provisional",
+      "elevation_source": "Waypoint واحه و چاه در GPX؛ ارتفاع GPX حدود ۸۳۲ متر است و باید با DEM مدل GLO-90 در gate نهایی تطبیق داده شود.",
+      "climate": "desert",
+      "region": "ریگ‌جن · نایین · اصفهان"
+    },
+    "bishe-do-bagh": {
+      "name": "بیشهٔ دو باغ ریگ‌جن",
+      "page_name": "آب‌وهوای بیشهٔ دو باغ در ریگ‌جن",
+      "short_label": "بیشهٔ دو باغ",
+      "place_type": "desert",
+      "category_key": "desert",
+      "aliases": ["گود دو باغ", "گود دو باغ چاله‌چاه", "بیشه دو باغ", "Goud Do Bagh", "Bishe Do Bagh"],
+      "identity_summary": "گود دو باغ یا بیشهٔ دو باغ، واحهٔ تاغ‌پوش در نیمهٔ شمالی دم‌ریگ‌جن، در حدود ۳۰ کیلومتری شمال‌شرق چوپانان؛ دسترسی مسیر منتخب از الله‌آباد پس از جادهٔ آفرود نیازمند پیمایش پیاده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/wikiloc/view.do?id=9296940",
+        "https://www.irandeserts.com/article/%D9%85%D9%86%D8%B7%D9%82%D9%87-%DA%AF%D9%88%D8%AF-%D8%AF%D9%88-%D8%A8%D8%A7%D8%BA-%DA%86%D8%A7%D9%84%D9%87-%DA%86%D8%A7%D9%87-%D8%B1%DB%8C%DA%AF-%D8%AC%D9%86/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 33.693498,
+      "longitude": 54.073377,
+      "elevation_m": 848,
+      "elevation_source": "Waypoint بیشهٔ دو باغ در GPX حدود ۸۴۸ متر است؛ منبع مستقل IranDeserts موقعیت گود دو باغ را در همین واحه ثبت کرده است. DEM GLO-90 در gate نهایی بررسی می‌شود.",
+      "climate": "desert",
+      "region": "ریگ‌جن · چوپانان · نایین · اصفهان"
+    }
+  },
+  "routes": {
+    "allahabad-to-bishe-do-bagh": {
+      "slug": "rig-jen-allahabad-to-bishe-do-bagh",
+      "title": "مزرعهٔ الله‌آباد تا بیشهٔ دو باغ ریگ‌جن",
+      "subtitle": "پیمایش یک‌طرفهٔ حدود ۱۵ کیلومتری در رمل؛ فقط آب همراه، GPS و راهنمای آشنا با کویر",
+      "trail_label": "مسیر پیادهٔ بیشهٔ دو باغ",
+      "origin": "پای‌کار پیادهٔ مزرعهٔ الله‌آباد",
+      "target_label": "بیشهٔ دو باغ / گود دو باغ",
+      "region": "ریگ‌جن · چوپانان · نایین · اصفهان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "bishe-do-bagh-trailhead",
+        "bishe-do-bagh-saxaul-grove",
+        "bishe-do-bagh-well",
+        "bishe-do-bagh"
+      ],
+      "distance_km": 14.95,
+      "ascent_m": 161,
+      "one_way_minutes": 325,
+      "default_start_minutes": 180,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "recorded-gpx-moving-time-v1",
+        "version": "rig-jen-allahabad-bishe-do-bagh-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/wikiloc/view.do?id=9296940",
+          "https://www.irandeserts.com/article/%D9%85%D9%86%D8%B7%D9%82%D9%87-%DA%AF%D9%88%D8%AF-%D8%AF%D9%88-%D8%A8%D8%A7%D8%BA-%DA%86%D8%A7%D9%84%D9%87-%DA%86%D8%A7%D9%87-%D8%B1%DB%8C%DA%AF-%D8%AC%D9%86/"
+        ],
+        "evidence_tracks": ["tracks/bishe-do-bagh/rig-jen-allahabad-to-bishe-do-bagh-2015-roundtrip.gpx"],
+        "cumulative_minutes": {
+          "bishe-do-bagh-trailhead": 0,
+          "bishe-do-bagh-saxaul-grove": 35,
+          "bishe-do-bagh-well": 195,
+          "bishe-do-bagh": 325
+        },
+        "notes": [
+          "ترک ۲۰۱۵ یک حلقهٔ رفت‌وبرگشت است؛ فقط قطعهٔ رفت تا اولین رسیدن به waypoint بیشهٔ دو باغ مبنای Route عمومی قرار گرفته است.",
+          "مسافت یک‌طرفهٔ محاسبه‌شده ۱۴٫۹۵ کیلومتر، ارتفاع‌گیری هموارشده حدود ۱۶۱ متر و زمان حرکت ثبت‌شده حدود ۳۲۵ دقیقه است. GPX و manifest فقط محلی‌اند و در Git یا سرور منتشر نمی‌شوند.",
+          "این مسیر دورافتاده از رمل‌های ریگ‌جن می‌گذرد. ترک همراه داشتن آب فراوان، GPS و راهنمای آشنا با منطقه را ضروری می‌داند؛ آب چاه waypoint میانی غیرقابل‌شرب است. دسترسی آفرود تا پای‌کار، بخش پیادهٔ Route نیست."
+        ]
+      },
+      "public_note": "پیمایش دورافتاده و دشوار در رمل‌های ریگ‌جن است، نه مسیر گردش کوتاه یا مناسب مبتدی. بدون راهنمای آشنا با منطقه، GPS و آب آشامیدنی کافی وارد نشوید؛ چاه ثبت‌شده در راه آب غیرقابل‌شرب دارد. دسترسی جاده‌ای تا پای‌کار آفرود است و این Route را پوشش نمی‌دهد.",
+      "public_point_notes": {
+        "bishe-do-bagh-well": "چاه waypoint میانی طبق توضیح ترک غیرقابل‌شرب است؛ آب آشامیدنی باید از قبل همراه باشد.",
+        "bishe-do-bagh": "منبع مستقل IranDeserts این واحه را با نام گود دو باغ در ریگ‌جن ثبت کرده است."
+      }
+    }
+  },
+  "point": {
+    "slug": "bishe-do-bagh",
+    "tile_name": "بیشهٔ دو باغ ریگ‌جن",
+    "name": "بیشهٔ دو باغ ریگ‌جن",
+    "short_category": "کویر",
+    "category": "کویرها و عوارض طبیعی اصفهان",
+    "category_key": "desert",
+    "region": "ریگ‌جن · چوپانان · نایین · اصفهان",
+    "elevation_m": 848,
+    "latitude": 33.693498,
+    "longitude": 54.073377,
+    "image": "/images/home-scene.png",
+    "image_alt": "واحهٔ تاغ‌پوش بیشهٔ دو باغ در ریگ‌جن",
+    "popular_order": 0,
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["گود دو باغ", "گود دو باغ چاله‌چاه", "بیشه دو باغ", "Goud Do Bagh", "Bishe Do Bagh"]
+  }
+}
