@@ -33,8 +33,8 @@ redirect/status یا حذف عمدی، مورد جداگانه و حل‌نشد�
 ## صف جاری
 
 URLها canonical و قابل‌کپی‌اند. پنج URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
-صف حذف شدند؛ اکنون صف شامل ۸۷۰ URL است: ۲ Hub، ۵۱۷ مقصد اصلی، ۲۵۹ مسیر و ۹۲ نقطهٔ
-پشتیبان. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۵ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
+صف حذف شدند؛ اکنون صف شامل ۸۷۲ URL است: ۲ Hub، ۵۱۸ مقصد اصلی، ۲۶۰ مسیر و ۹۲ نقطهٔ
+پشتیبان. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۶ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
 الفبایی، مگر مقصدهای منتخب که اولویت محصولی دارند. پس از
 دریافت گزارش تازهٔ Search Console، موردی که از قبل ایندکس شده از صف حذف می‌شود؛
 URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنترل canonical/status به صف افزوده شدند.
@@ -62,21 +62,23 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 14. جزایر ناز قشم — <https://hawatch.ir/points/naz-islands>
 15. جزیرهٔ هندورابی — <https://hawatch.ir/points/hendurabi-island>
 
-### P1 — پنج مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+### P1 — شش مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
 
 - قلهٔ گنو — <https://hawatch.ir/points/geno-peak>
 - تنگهٔ رغز — <https://hawatch.ir/points/raghez-gorge>
 - قلهٔ یخچال همدان — <https://hawatch.ir/points/yakhchal-peak>
 - بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/points/bishe-do-bagh>
 - قلهٔ سه‌شاخ بزرگ جوپار — <https://hawatch.ir/points/se-shakh-bozorg>
+- قلهٔ پلوار — <https://hawatch.ir/points/pulvar-peak>
 
-### P2 — پنج مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+### P2 — شش مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
 
 - پای‌کار جادهٔ ایستگاه تا قلهٔ نصیری گنو — <https://hawatch.ir/routes/geno-south-nasiri-ascent>
 - پای‌کار پیاده تا سرچشمهٔ رغز — <https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head>
 - درهٔ مرادبیگ تا قلهٔ یخچال — <https://hawatch.ir/routes/yakhchal-moradbeig-summer-summit>
 - الله‌آباد تا بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh>
 - قناتغستان تا قلهٔ سه‌شاخ بزرگ — <https://hawatch.ir/routes/qanatghestan-to-se-shakh-bozorg>
+- پارکینگ بیدستان تا قلهٔ پلوار — <https://hawatch.ir/routes/pulvar-bidestan-summit>
 
 ### P1 — سایر مقصدهای اصلی (۴۹۷؛ الفبایی)
 

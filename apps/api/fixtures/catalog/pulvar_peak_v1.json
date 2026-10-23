@@ -1,10 +1,5 @@
 {
   "catalog_version": "hawatch-pulvar-peak-v1",
-  "publication_review": {
-    "status": "draft",
-    "checked_at": "2026-10-23",
-    "reason": "GPX contains a continuous Bidestan-parking to summit ascent and a named winter-fatalities memorial. Independent reports disagree on the year, so the memorial is named without a year. Provider/DEM and strict catalog checks pass; final route safety review remains before release."
-  },
   "primary_point": "pulvar-peak",
   "weather_points": {
     "pulvar-bidestan-trailhead": {
@@ -28,7 +23,7 @@
       "longitude": 57.441582,
       "elevation_m": 2747,
       "status": "provisional",
-      "elevation_source": "Waypoint پارکینگ بیدستان در GPX؛ مقدار DEM و grid در gate زندهٔ Open-Meteo باید تأیید شود.",
+      "elevation_source": "Waypoint ترک GPX؛ ارتفاع نقطه provisional است و فقط برای اتصال forecast به‌کار می‌رود.",
       "climate": "high_alpine",
       "region": "بیدستان · ماهان · کرمان"
     },
@@ -53,7 +48,7 @@
       "longitude": 57.451869,
       "elevation_m": 3277,
       "status": "provisional",
-      "elevation_source": "Waypoint تابلوی یادبود در GPX؛ مقدار DEM و grid در gate زندهٔ Open-Meteo باید تأیید شود.",
+      "elevation_source": "Waypoint ترک GPX؛ ارتفاع نقطه provisional است و فقط برای اتصال forecast به‌کار می‌رود.",
       "climate": "high_alpine",
       "region": "مسیر قلهٔ پلوار · ماهان · کرمان"
     },
@@ -73,12 +68,15 @@
         "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
         "https://vaezizadeh-kerman.blogfa.com/post/78",
         "https://omid-mountain.blogfa.com/post/11",
+        "https://www.openstreetmap.org/node/4100767770",
+        "https://www.wikidata.org/wiki/Q5610564",
+        "https://radepagroup.com/wp-content/uploads/2017/07/Guidelines_of_Iran_High_Summits.pdf",
         "https://open-meteo.com/en/docs"
       ],
       "latitude": 30.070043,
       "longitude": 57.465675,
-      "elevation_m": 4220,
-      "elevation_source": "Waypoint قله پلوار در GPX با ارتفاع تقریبی ۴۲۲۰ متر؛ مقدار canonical باید با DEM مدل GLO-90 در gate Open-Meteo تأیید شود.",
+      "elevation_m": 4233,
+      "elevation_source": "۴۲۳۳ متر در راهنمای قله‌های بلند ایران و گزارش‌های باشگاه‌های کرمان آمده؛ GPS ترک حدود ۴۲۲۰ و OSM/Wikidata حدود ۴۲۲۳ متر ثبت کرده‌اند، بنابراین مقدار provisional است.",
       "climate": "high_alpine",
       "region": "ماهان · کرمان",
       "status": "provisional"
@@ -88,7 +86,7 @@
     "bidestan-to-pulvar": {
       "slug": "pulvar-bidestan-summit",
       "title": "پارکینگ بیدستان تا قلهٔ پلوار",
-      "subtitle": "صعود دشوار از بیدستان و یادمان جان‌باختگان تا قله؛ راهنمای محلی توصیه می‌شود",
+      "subtitle": "از پارکینگ بیدستان، از کنار یادمان کوهنوردان تا قلهٔ پلوار",
       "trail_label": "مسیر بیدستان–پلوار",
       "origin": "پارکینگ بیدستان",
       "target_label": "قلهٔ پلوار",
@@ -102,14 +100,14 @@
       ],
       "distance_km": 6.62,
       "ascent_m": 1445,
-      "one_way_minutes": 180,
+      "one_way_minutes": 240,
       "default_start_minutes": 240,
       "timing_status": "estimated",
       "timing": {
         "method": "gpx-ascent-cut+independent-club-reports-v1",
         "version": "pulvar-bidestan-summit-v1",
-        "confidence": "medium",
-        "uncertainty_minutes": 60,
+        "confidence": "low",
+        "uncertainty_minutes": 90,
         "source_urls": [
           "https://www.wikiloc.com/hiking-trails/qlh-plwr-mhn-khrmn-242534018",
           "https://vaezizadeh-kerman.blogfa.com/post/78",
@@ -118,16 +116,16 @@
         "evidence_tracks": ["tracks/pulvar-peak/pulvar-bidestan-to-summit-2025-roundtrip.gpx"],
         "cumulative_minutes": {
           "pulvar-bidestan-trailhead": 0,
-          "pulvar-winter-memorial": 55,
-          "pulvar-peak": 180
+          "pulvar-winter-memorial": 60,
+          "pulvar-peak": 240
         },
         "notes": [
           "برای تحلیل فقط قطعهٔ صعود از پارکینگ بیدستان تا نخستین رسیدن به قله استفاده شده؛ بخش برگشت در metrics وارد نیست.",
-          "ترک حدود ۶٫۶۲ کیلومتر یک‌طرفه و صعود هموارشده حدود ۱۴۴۵ متر دارد؛ زمان ۱۸۰ دقیقه با گزارش صاحب ترک و زمان حرکت GPS سازگار است.",
-          "مسیر بسیار پرشیب و دشوار است؛ گزارش‌ها راهنمای محلی باتجربه را توصیه می‌کنند. سختی به‌تنهایی دلیل حذف نیست؛ باید روشن شود عبور از پل صراط صرفاً دست‌به‌سنگ/حمایت هم‌تیمی است یا صعود طناب‌محور فنی. سال یادمان در گزارش‌ها متناقض است و عمداً در نام عمومی ذکر نشده."
+          "قطعهٔ یک‌طرفهٔ ترک ۶٫۶۲ کیلومتر و صعود هموارشده حدود ۱۴۴۵ متر است؛ زمان ترک حدود ۱۹۸ دقیقه و گزارش مستقل راهنمای قله حدود ۳٫۵ ساعت است. زمان عمومی ۲۴۰ دقیقه با عدم‌قطعیت بالا برآورد شده؛ گزارش‌های گروهی زمان‌های طولانی‌تری دارند.",
+          "مسیر تابستانی از مسیر مشخص و سنگ‌چین‌شده می‌گذرد؛ گزارش‌ها دست‌به‌سنگ و باد شدید در محدودهٔ پل صراط را ذکر می‌کنند. توصیهٔ تجهیزات فنی در منابع برای فصل‌های غیرتابستان/زمستان آمده و مبنای این مسیر تابستانی نیست. سال یادمان در گزارش‌ها ناسازگار است و در نام عمومی ذکر نشده."
         ]
       },
-      "public_note": "صعود طولانی و پرشیب در ارتفاع بالا است. گزارش مسیر برای بار اول راهنمای محلی باتجربه را توصیه می‌کند؛ آب مورد نیاز را از مبدأ همراه ببرید و زمان، فصل و توان گروه را جدی بگیرید.",
+      "public_note": "این مسیر از بخش‌های سنگی و پل صراط می‌گذرد؛ گزارش‌های صعود به باد شدید روی یال اشاره می‌کنند.",
       "public_point_notes": {
         "pulvar-winter-memorial": "یادمان جان‌باختگان زمستان در مسیر پیادهٔ بیدستان تا قله قرار دارد."
       }
@@ -141,7 +139,7 @@
     "category": "قله‌های کرمان",
     "category_key": "mountain",
     "region": "ماهان · کرمان",
-    "elevation_m": 4220,
+    "elevation_m": 4233,
     "latitude": 30.070043,
     "longitude": 57.465675,
     "image": "/images/home-scene.png",
