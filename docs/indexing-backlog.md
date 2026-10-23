@@ -33,11 +33,11 @@ redirect/status یا حذف عمدی، مورد جداگانه و حل‌نشد�
 ## صف جاری
 
 URLها canonical و قابل‌کپی‌اند. پنج URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
-صف حذف شدند؛ اکنون صف شامل ۸۶۰ URL است: ۲ Hub، ۵۱۲ مقصد اصلی، ۲۵۴ مسیر و ۹۲ نقطهٔ
-پشتیبان. ترتیب صف P0، سپس ۱۵ مقصد منتخب P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
+صف حذف شدند؛ اکنون صف شامل ۸۶۸ URL است: ۲ Hub، ۵۱۶ مقصد اصلی، ۲۵۸ مسیر و ۹۲ نقطهٔ
+پشتیبان. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۴ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
 الفبایی، مگر مقصدهای منتخب که اولویت محصولی دارند. پس از
 دریافت گزارش تازهٔ Search Console، موردی که از قبل ایندکس شده از صف حذف می‌شود؛
-URL جدید فقط پس از انتشار عمومی موفق و تأیید indexable بودن اضافه می‌شود.
+URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنترل canonical/status به صف افزوده شدند.
 
 ### P0 — Hubها (۲)
 
@@ -61,6 +61,20 @@ URL جدید فقط پس از انتشار عمومی موفق و تأیید ind
 13. خلیج گواتر چابهار — <https://hawatch.ir/points/gwatar-bay>
 14. جزایر ناز قشم — <https://hawatch.ir/points/naz-islands>
 15. جزیرهٔ هندورابی — <https://hawatch.ir/points/hendurabi-island>
+
+### P1 — چهار مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+
+- قلهٔ گنو — <https://hawatch.ir/points/geno-peak>
+- تنگهٔ رغز — <https://hawatch.ir/points/raghez-gorge>
+- قلهٔ یخچال همدان — <https://hawatch.ir/points/yakhchal-peak>
+- بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/points/bishe-do-bagh>
+
+### P2 — چهار مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+
+- پای‌کار جادهٔ ایستگاه تا قلهٔ نصیری گنو — <https://hawatch.ir/routes/geno-south-nasiri-ascent>
+- پای‌کار پیاده تا سرچشمهٔ رغز — <https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head>
+- درهٔ مرادبیگ تا قلهٔ یخچال — <https://hawatch.ir/routes/yakhchal-moradbeig-summer-summit>
+- الله‌آباد تا بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh>
 
 ### P1 — سایر مقصدهای اصلی (۴۹۷؛ الفبایی)
 
