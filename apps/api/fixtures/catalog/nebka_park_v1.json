@@ -1,0 +1,69 @@
+{
+  "catalog_version": "hawatch-nebka-park-v1",
+  "primary_point": "nebka-park",
+  "weather_points": {
+    "nebka-park": {
+      "name": "پارک نبکاهای شهداد",
+      "page_name": "پارک نبکاهای شهداد در دشت لوت",
+      "short_label": "پارک نبکاها",
+      "place_type": "landmark",
+      "category_key": "park",
+      "aliases": [
+        "پارک نبکاها",
+        "جنگل نبکاهای شهداد",
+        "نبکاهای شهداد",
+        "Nebka Park",
+        "Shahdad Nebka Forest"
+      ],
+      "identity_summary": "پارک نبکاهای شهداد، پهنه‌ای از نبکاها و تل‌های گز در مسیر جادهٔ شهداد–نهبندان؛ این نقطه نمایندهٔ محدودهٔ بازدید کنار جاده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/offroading-trails/gandom-beryan-lut-desert-gndm-bryn-khwyr-lwt-11938412",
+        "https://www.wikiloc.com/hiking-trails/hiking-around-kalout-z-khlwt-hy-shhdd-t-rwd-khl-shwr-16050066",
+        "https://lastsecond.ir/attractions/12290-nebka-forest",
+        "https://yardang.ir/%D9%86%D8%A8%DA%A9%D8%A7%D9%87%D8%A7%DB%8C-%D8%A8%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%DB%8C%D8%8C-%D8%AB%D8%A8%D8%AA-%D8%A8%D9%84%D9%86%D8%AF%D8%AA%D8%B1%DB%8C%D9%86-%D9%86%D8%A8%DA%A9%D8%A7%D9%87%D8%A7/",
+        "https://banooyekermani.ir/nebkas-or-desert-pots-%D9%86%D8%A8%DA%A9%D8%A7%D9%87%D8%A7-%DB%8C%D8%A7-%DA%AF%D9%84%D8%AF%D8%A7%D9%86-%D9%87%D8%A7%DB%8C-%DA%A9%D9%88%DB%8C%D8%B1%DB%8C/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.501508&longitude=57.750897",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 30.501508,
+      "longitude": 57.750897,
+      "elevation_m": 358,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint مستقل «پارک نبکاها» در دو ترک ثبت‌شده؛ ارتفاع ۳۵۸ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای پارک نبکاهای شهداد؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای پارک نبکاهای شهداد در مسیر جادهٔ شهداد–نهبندان؛ وضعیت دما، باد و بارش را برای بازدید از نبکاهای دشت لوت ببینید.",
+        "content": "پارک نبکاهای شهداد در امتداد جادهٔ شهداد–نهبندان و در حاشیهٔ دشت لوت قرار دارد. نبکاها تپه‌های ماسه‌ای شکل‌گرفته پیرامون گیاهان کویری‌اند. این صفحه پیش‌بینی یک نقطهٔ نماینده از محدودهٔ بازدید کنار جاده را نشان می‌دهد، نه تمام پهنهٔ نبکاهای لوت."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "nebka-park",
+    "tile_name": "پارک نبکاها",
+    "name": "پارک نبکاهای شهداد",
+    "short_category": "پارک طبیعی",
+    "category": "جاذبه‌های طبیعی شهداد و دشت لوت",
+    "category_key": "park",
+    "region": "شهداد · استان کرمان",
+    "elevation_m": 358,
+    "latitude": 30.501508,
+    "longitude": 57.750897,
+    "image": "/images/home-scene.png",
+    "image_alt": "نبکاها و تل‌های گز در حاشیهٔ دشت لوت، نزدیک شهداد",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "پارک نبکاها",
+      "جنگل نبکاهای شهداد",
+      "نبکاهای شهداد"
+    ]
+  }
+}

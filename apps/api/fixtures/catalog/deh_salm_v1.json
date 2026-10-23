@@ -1,0 +1,59 @@
+{
+  "catalog_version": "hawatch-deh-salm-v1",
+  "primary_point": "deh-salm",
+  "weather_points": {
+    "deh-salm": {
+      "name": "روستای ده‌سلم",
+      "page_name": "روستای ده‌سلم در حاشیهٔ دشت لوت",
+      "short_label": "ده‌سلم",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "ده سلم",
+        "دهسلم",
+        "Deh-e Salm",
+        "Deh-e Salam"
+      ],
+      "identity_summary": "روستای ده‌سلم در شهرستان نهبندان، آبادی کویری در مسیر شهداد–نهبندان و یکی از پایگاه‌های دسترسی به پهنهٔ شرقی دشت لوت و ریگ‌یلان.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/12619360",
+        "https://www.lonelyplanet.com/points-of-interest/deh-salm/1562675",
+        "https://suporyt.com/%D8%AC%D8%A7%D8%B0%D8%A8%D9%87%D9%87%D8%A7%DB%8C-%DA%AF%D8%B1%D8%AF%D8%B4%DA%AF%D8%B1%DB%8C-%D8%B1%D9%88%D8%B3%D8%AA%D8%A7%DB%8C-%D8%AF%D9%87%D8%B3%D9%84%D9%85-%D8%AA%D8%B5%D8%A7%D9%88/",
+        "https://cdn.elebase.io/173fe953-8a63-4a8a-8ca3-1bacb56d78a5/22f56427-7570-4d4b-bfb6-d485dad8c139-khorasan-lut-desert-broshor.pdf"
+      ],
+      "latitude": 31.19775,
+      "longitude": 59.3211,
+      "elevation_m": 815,
+      "status": "provisional",
+      "elevation_source": "مختصات و ارتفاع نمایندهٔ بافت روستا از Mapcarta/GeoNames؛ مقدار ارتفاع باید در دروازهٔ DEM و Open-Meteo تأیید شود.",
+      "climate": "desert"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "deh-salm",
+    "tile_name": "روستای ده‌سلم",
+    "name": "روستای ده‌سلم",
+    "short_category": "روستای کویری",
+    "category": "نهبندان · خراسان جنوبی",
+    "category_key": "village",
+    "region": "ده‌سلم · نهبندان · خراسان جنوبی",
+    "elevation_m": 815,
+    "latitude": 31.19775,
+    "longitude": 59.3211,
+    "image": "/images/home-scene.png",
+    "image_alt": "روستای کویری ده‌سلم در مسیر دشت لوت",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "ده سلم",
+      "دهسلم"
+    ]
+  }
+}

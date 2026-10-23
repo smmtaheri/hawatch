@@ -1,0 +1,164 @@
+{
+  "catalog_version": "hawatch-gandom-beryan-v1",
+  "primary_point": "gandom-beryan",
+  "weather_points": {
+    "gandom-beryan": {
+      "name": "گندم‌بریان",
+      "page_name": "فلات گندم‌بریان در دشت لوت",
+      "short_label": "گندم‌بریان",
+      "place_type": "desert",
+      "category_key": "desert",
+      "aliases": [
+        "گندم بریان",
+        "گندم‌بریان شهداد",
+        "فلات گندم بریان",
+        "Gandom Beryan",
+        "Gandom Beryan Plateau"
+      ],
+      "identity_summary": "فلات بازالتی گندم‌بریان در شمال‌شرقی شهداد و حاشیهٔ غربی دشت لوت؛ مختصات صفحه روی نقطهٔ ثبت‌شدهٔ مقصد در فلات قرار دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gandom-beryan-gndm-bryn-16050097",
+        "https://www.wikiloc.com/offroading-trails/gandom-beryan-lut-desert-gndm-bryn-khwyr-lwt-11938412",
+        "https://iranonadventure.com/gandom-beryan/",
+        "https://lastsecond.ir/attractions/11499-gandom-beryan",
+        "https://api.open-meteo.com/v1/elevation?latitude=31.016718&longitude=57.670989",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 31.016718,
+      "longitude": 57.670989,
+      "elevation_m": 434,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint «گندم‌بریان» در ترک محلی؛ ارتفاع ۴۳۴ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات. اختلاف با ارتفاع ثبت‌شدهٔ GPX در دروازهٔ اعتبارسنجی کنترل می‌شود.",
+      "climate": "desert",
+      "seo": {
+        "title": "آب‌وهوای گندم‌بریان؛ پیش‌بینی دما، باد و بارش در دشت لوت | هواچ",
+        "description": "پیش‌بینی آب‌وهوای فلات گندم‌بریان در دشت لوت و شمال‌شرقی شهداد؛ وضعیت دما، باد و بارش را برای برنامه‌ریزی بازدید ببینید.",
+        "content": "گندم‌بریان فلاتی پوشیده از سنگ‌های بازالتی در حاشیهٔ غربی دشت لوت است. راه‌های خاکی طولانیِ دسترسی، مسیر پیادهٔ جداگانه‌ای تا فلات دارند؛ این صفحه پیش‌بینی نقطه‌ایِ مقصد را نشان می‌دهد و جایگزین بررسی محلی شرایط راه و رود کال‌شور نیست."
+      }
+    },
+    "gandom-beryan-trailhead": {
+      "name": "شروع پیاده‌روی گندم‌بریان",
+      "page_name": "پای‌کار پیادهٔ گندم‌بریان",
+      "short_label": "شروع پیاده‌روی",
+      "place_type": "trailhead",
+      "category_key": "desert",
+      "aliases": ["پای‌کار گندم‌بریان", "شروع پیاده‌روی گندم بریان"],
+      "identity_summary": "نقطهٔ شروع بخش پیادهٔ ترک محلی گندم‌بریان پس از دسترسی آفرودی؛ مبدأ واقعی همین قطعه است و مسیر آفرود در Route وارد نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/offroading-trails/gandom-beryan-lut-desert-gndm-bryn-khwyr-lwt-11938412",
+        "https://www.wikiloc.com/hiking-trails/gandom-beryan-gndm-bryn-16050097"
+      ],
+      "latitude": 31.001463,
+      "longitude": 57.67627,
+      "elevation_m": 301,
+      "status": "provisional",
+      "elevation_source": "waypoint «شروع پیاده‌روی» در ترک محلی؛ ارتفاع ۳۰۱ متر از DEM سرویس Open-Meteo GLO-90 در همین مختصات.",
+      "climate": "desert"
+    },
+    "gandom-beryan-kal-shur-crossing": {
+      "name": "گذر کال‌شور در مسیر گندم‌بریان",
+      "page_name": "گذر کال‌شور در مسیر پیادهٔ گندم‌بریان",
+      "short_label": "گذر کال‌شور",
+      "place_type": "landmark",
+      "category_key": "desert",
+      "aliases": ["عبور از رود کال‌شور", "گذر رود شور گندم‌بریان"],
+      "identity_summary": "نقطهٔ تقریبی عبور از درهٔ کال‌شور در قطعهٔ پیادهٔ گندم‌بریان؛ منبع مسیر عبور از رود و صعود از سوی دیگر دره را توصیف می‌کند و مختصات از نقطهٔ کم‌ارتفاع ثبت‌شده روی ترک محلی گرفته شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/gandom-beryan-gndm-bryn-16050097",
+        "https://iranonadventure.com/gandom-beryan/",
+        "https://lastsecond.ir/attractions/11499-gandom-beryan"
+      ],
+      "latitude": 31.002513,
+      "longitude": 57.677097,
+      "elevation_m": 306,
+      "status": "provisional",
+      "elevation_source": "نقطهٔ کم‌ارتفاع دره روی قطعهٔ پیادهٔ GPX، به‌عنوان مختصات تقریبی گذر کال‌شور؛ ارتفاع ۳۰۶ متر از DEM سرویس Open-Meteo GLO-90. این waypoint در ترک اولیه نام‌گذاری نشده و موقعیت عبور از توصیف منابع و هندسهٔ مسیر استنباط شده است.",
+      "climate": "desert"
+    }
+  },
+  "routes": {
+    "gandom_beryan_walk": {
+      "slug": "gandom-beryan-trailhead-to-plateau",
+      "title": "پای‌کار پیاده تا فلات گندم‌بریان",
+      "subtitle": "قطعهٔ پیاده از شروع پیمایش، گذر کال‌شور و صعود به فلات بازالتی",
+      "trail_label": "مسیر پیادهٔ گندم‌بریان",
+      "origin": "شروع پیاده‌روی گندم‌بریان",
+      "target_label": "فلات گندم‌بریان",
+      "region": "شمال‌شرقی شهداد · استان کرمان",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "gandom-beryan-trailhead",
+        "gandom-beryan-kal-shur-crossing",
+        "gandom-beryan"
+      ],
+      "distance_km": 2.15,
+      "ascent_m": 65,
+      "one_way_minutes": 60,
+      "default_start_minutes": 360,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-geometry+independent-hiking-reports-v1",
+        "version": "gandom-beryan-walk-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/gandom-beryan-gndm-bryn-16050097",
+          "https://iranonadventure.com/gandom-beryan/",
+          "https://lastsecond.ir/attractions/11499-gandom-beryan"
+        ],
+        "evidence_tracks": ["tracks/gandom-beryan/gandom-beryan-wikiloc-11938412.gpx"],
+        "cumulative_minutes": {
+          "gandom-beryan-trailhead": 0,
+          "gandom-beryan-kal-shur-crossing": 10,
+          "gandom-beryan": 60
+        },
+        "notes": [
+          "فقط قطعهٔ حدود ۲٫۱۵ کیلومتری پیاده از waypoint «شروع پیاده‌روی» تا فلات تحلیل شده؛ مسیر آفرودی چندده‌کیلومتری در Route وارد نشده است.",
+          "منابع مستقل عبور از کال‌شور و ادامهٔ پیاده تا فلات را توصیف می‌کنند؛ مختصات waypoint میانی روی نقطهٔ کم‌ارتفاع همین ترک قرار داده شده و تقریبی است.",
+          "زمان ۶۰ دقیقه از گزارش یک‌ساعتهٔ صعود و هندسهٔ کوتاه مسیر برآورد شده و به‌دلیل نبود زمان‌سنجی معتبر در فایل، اطمینان پایین و عدم‌قطعیت ۳۰ دقیقه دارد."
+        ]
+      },
+      "public_point_notes": {
+        "gandom-beryan-trailhead": "شروع قطعهٔ پیاده پس از پایان دسترسی آفرودی.",
+        "gandom-beryan-kal-shur-crossing": "گذر تقریبی از دره و رود کال‌شور پیش از صعود به فلات.",
+        "gandom-beryan": "فلات بازالتی گندم‌بریان."
+      }
+    }
+  },
+  "point": {
+    "slug": "gandom-beryan",
+    "tile_name": "گندم‌بریان",
+    "name": "گندم‌بریان",
+    "short_category": "فلات کویری",
+    "category": "جاذبه‌های طبیعی دشت لوت",
+    "category_key": "desert",
+    "region": "شمال‌شرقی شهداد · استان کرمان",
+    "elevation_m": 434,
+    "latitude": 31.016718,
+    "longitude": 57.670989,
+    "image": "/images/home-scene.png",
+    "image_alt": "فلات سنگ‌های بازالتی گندم‌بریان در دشت لوت",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "گندم بریان",
+      "گندم‌بریان شهداد",
+      "فلات گندم بریان"
+    ]
+  }
+}

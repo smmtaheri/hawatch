@@ -33,8 +33,8 @@ redirect/status یا حذف عمدی، مورد جداگانه و حل‌نشد�
 ## صف جاری
 
 URLها canonical و قابل‌کپی‌اند. پنج URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
-صف حذف شدند؛ اکنون صف شامل ۸۷۲ URL است: ۲ Hub، ۵۱۸ مقصد اصلی، ۲۶۰ مسیر و ۹۲ نقطهٔ
-پشتیبان. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۶ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
+صف حذف شدند؛ پس از انتشارهای جدید، صف شامل ۸۷۵ URL است: ۲ Hub، ۵۲۰ مقصد اصلی، ۲۶۱ مسیر و ۹۲ نقطهٔ
+پشتیبان. یک مقصد تازهٔ دیگر (پارک نبکاها) به‌دلیل 404 کش‌شده روی CDN فعلاً در صف درخواست ایندکس نیست؛ پس از رفع آن و تأیید پاسخ canonical باید اضافه شود. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۸ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
 الفبایی، مگر مقصدهای منتخب که اولویت محصولی دارند. پس از
 دریافت گزارش تازهٔ Search Console، موردی که از قبل ایندکس شده از صف حذف می‌شود؛
 URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنترل canonical/status به صف افزوده شدند.
@@ -62,7 +62,7 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 14. جزایر ناز قشم — <https://hawatch.ir/points/naz-islands>
 15. جزیرهٔ هندورابی — <https://hawatch.ir/points/hendurabi-island>
 
-### P1 — شش مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+### P1 — هشت مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
 
 - قلهٔ گنو — <https://hawatch.ir/points/geno-peak>
 - تنگهٔ رغز — <https://hawatch.ir/points/raghez-gorge>
@@ -70,8 +70,10 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/points/bishe-do-bagh>
 - قلهٔ سه‌شاخ بزرگ جوپار — <https://hawatch.ir/points/se-shakh-bozorg>
 - قلهٔ پلوار — <https://hawatch.ir/points/pulvar-peak>
+- فلات گندم‌بریان — <https://hawatch.ir/points/gandom-beryan>
+- روستای ده‌سلم — <https://hawatch.ir/points/deh-salm>
 
-### P2 — شش مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+### P2 — هفت مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
 
 - پای‌کار جادهٔ ایستگاه تا قلهٔ نصیری گنو — <https://hawatch.ir/routes/geno-south-nasiri-ascent>
 - پای‌کار پیاده تا سرچشمهٔ رغز — <https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head>
@@ -79,6 +81,11 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - الله‌آباد تا بیشهٔ دو باغ ریگ‌جن — <https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh>
 - قناتغستان تا قلهٔ سه‌شاخ بزرگ — <https://hawatch.ir/routes/qanatghestan-to-se-shakh-bozorg>
 - پارکینگ بیدستان تا قلهٔ پلوار — <https://hawatch.ir/routes/pulvar-bidestan-summit>
+- پای‌کار پیاده تا فلات گندم‌بریان — <https://hawatch.ir/routes/gandom-beryan-trailhead-to-plateau>
+
+### منتشرشده، در انتظار رفع CDN (فعلاً بیرون از صف ایندکس)
+
+- پارک نبکاهای شهداد — <https://hawatch.ir/points/nebka-park>: API و مبدأ با پاسخ 200 و مسیر دارای اسلش انتهایی با پاسخ 200 تأیید شدند؛ شکل canonical بدون اسلش از CDN فعلاً 404 کش‌شده برمی‌گرداند. تا رفع کش منفی، URL برای درخواست ایندکس به صف جاری اضافه نمی‌شود.
 
 ### P1 — سایر مقصدهای اصلی (۴۹۷؛ الفبایی)
 
