@@ -38,7 +38,8 @@ def _deployment_harness(tmp_path):
         subprocess.run(['git','-C',str(repo),'commit','-qm','test inputs'],check=True)
     commit()
     script = (Path(__file__).resolve().parents[3]/'scripts/deploy.sh').read_text()
-    function = 'run_stack() {' + script.split('run_stack() {',1)[1].split('\ninstall_base_packages\n',1)[0]
+    ssr_check = 'check_ssr_page() {' + script.split('check_ssr_page() {',1)[1].split('\n}\n',1)[0] + '\n}\n'
+    function = ssr_check + '\nrun_stack() {' + script.split('run_stack() {',1)[1].split('\ninstall_base_packages\n',1)[0]
     commands = tmp_path/'commands.log'
     harness = r"""
 set -Eeuo pipefail
@@ -56,7 +57,7 @@ fail(){ exit 1; }
 wait_for_healthy(){ :; }
 wait_for_running(){ :; }
 get_env_value(){ :; }
-curl(){ :; }
+curl(){ printf '%s\n' '<main data-seo-initial="true"></main>'; }
 docker(){
  printf '%s\n' "$*" >> "$COMMAND_LOG"
  if [[ "$*" == *'sync_catalog --apply'* && "${FAIL_SYNC:-0}" == 1 ]]; then return 1; fi
@@ -74,8 +75,11 @@ def test_normal_deploy_preserves_data_services_and_never_warms_or_fetches(tmp_pa
     result,commands=run()
     assert result.returncode==0,result.stderr
     assert 'up -d --no-recreate postgres redis' in commands
-    assert 'up -d --no-deps api web maintenance ingest-scheduler' in commands
+    assert 'up -d --no-deps api' in commands
     assert 'up -d --no-deps --force-recreate nginx' in commands
+    assert 'up -d --no-deps web maintenance ingest-scheduler' in commands
+    assert commands.index('up -d --no-deps api') < commands.index('up -d --no-deps --force-recreate nginx')
+    assert commands.index('up -d --no-deps --force-recreate nginx') < commands.index('up -d --no-deps web maintenance ingest-scheduler')
     assert 'warm_week_cache' not in commands and 'ingest_open_meteo' not in commands
     assert ' down' not in commands
     assert commands.count('sync_catalog --apply')==1
@@ -117,7 +121,8 @@ def test_explicit_code_only_deploy_never_syncs_or_marks_catalog_applied(tmp_path
     repo,fixture,commit,run=_deployment_harness(tmp_path)
     result,commands=run(skip_catalog=True)
     assert result.returncode==0,result.stderr
-    assert 'up -d --no-deps api web maintenance ingest-scheduler' in commands
+    assert 'up -d --no-deps api' in commands
+    assert 'up -d --no-deps web maintenance ingest-scheduler' in commands
     assert 'sync_catalog --apply' not in commands and 'manage.py apply_route_descent' not in commands
     assert not (repo/'.git/hawatch-catalog-deploy.sha256').exists()
     assert run()[0].returncode==0

@@ -93,10 +93,16 @@ http {
     new_config.write_text(_backend_config("new"), encoding="utf-8")
 
     try:
+        # Let Docker choose a free subnet, then recreate the network with that
+        # subnet explicitly configured. Static container IPs require an
+        # explicitly configured subnet, while this preserves Docker's own
+        # collision-free allocation.
         _docker("network", "create", "--driver", "bridge", network)
         subnet = ipaddress.ip_network(
             _docker("network", "inspect", "--format", "{{(index .IPAM.Config 0).Subnet}}", network).stdout.strip()
         )
+        _docker("network", "rm", network)
+        _docker("network", "create", "--driver", "bridge", "--subnet", str(subnet), network)
         old_ip = subnet.network_address + (subnet.num_addresses - 10)
         new_ip = subnet.network_address + (subnet.num_addresses - 11)
 

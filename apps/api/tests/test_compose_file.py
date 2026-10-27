@@ -24,7 +24,9 @@ def test_compose_default_services_and_pinned_postgis():
     assert "nginx:" in text
     assert "postgis/postgis:16-3.5" in text
     assert "image: postgis/postgis:latest" not in text
-    assert 'profiles: ["cache"]' in text
+    # Redis is a default runtime dependency and must not be hidden behind a profile.
+    assert "redis:\n    image: redis:7.4.2" in text
+    assert 'profiles: ["cache"]' not in text
     assert "kafka" not in text.lower()
     assert "../../.env.example" not in text
     assert "env_file:" in text
