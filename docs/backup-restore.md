@@ -119,7 +119,7 @@ base imageها؛ در نتیجه restore به Docker Hub و package registry ن�
 
 ```bash
 ssh hawatch \
-  'docker save hawatch-api:latest hawatch-web:latest hawatch-ingest:latest hawatch-ingest-scheduler:latest hawatch-maintenance:latest postgis/postgis:16-3.5 nginx:1.27-alpine | gzip -1' \
+  'docker save hawatch-api:latest hawatch-web:latest hawatch-ingest:latest hawatch-ingest-scheduler:latest hawatch-maintenance:latest postgis/postgis:16-3.5 nginx:1.27.5-alpine | gzip -1' \
   > "$target/hawatch-images.tar.gz.part"
 mv "$target/hawatch-images.tar.gz.part" "$target/hawatch-images.tar.gz"
 ```
@@ -252,7 +252,7 @@ gzip -dc hawatch-images.tar.gz | docker load
 
 سپس مطمئن شوید tagهای `hawatch-api:latest`، `hawatch-web:latest`,
 `hawatch-maintenance:latest`، `hawatch-ingest-scheduler:latest`،
-`hawatch-ingest:latest`، `postgis/postgis:16-3.5` و `nginx:1.27-alpine` وجود
+`hawatch-ingest:latest`، `postgis/postgis:16-3.5` و `nginx:1.27.5-alpine` وجود
 دارند. اگر یکی وجود ندارد، `--no-build` را اجرا نکنید تا archive کامل تهیه شود.
 
 ### C. ساخت PostgreSQL خالی و restore قبل از بالا آوردن API

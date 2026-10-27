@@ -42,9 +42,7 @@ def test_web_gateway_returns_real_404_for_unknown_spa_paths():
         pytest.skip("apps/web/nginx.conf is not mounted in this API-only test container")
     text = config.read_text(encoding="utf-8")
 
-    assert "auth_request /__point_exists;" in text
-    assert "auth_request /__route_exists;" in text
-    assert "error_page 401 =404 @spa_not_found;" in text
+    assert "include /etc/nginx/public-pages.inc;" in text
     assert "error_page 404 =404 @spa_not_found;" in text
     assert "try_files $uri =404;" in text
 
@@ -54,13 +52,16 @@ def test_web_gateway_serves_subscription_plans_for_direct_requests():
     if config is None:
         pytest.skip("apps/web/nginx.conf is not mounted in this API-only test container")
     text = config.read_text(encoding="utf-8")
+    root = config.parents[2]
+    generated = (root / "apps" / "web" / "nginx-public-pages.inc").read_text(encoding="utf-8")
 
-    # BrowserRouter needs the entry document for a refresh or a link opened
-    # directly. Keep both canonical browser forms covered without widening the
-    # catch-all fallback used for unknown paths.
-    assert "location = /account/plans {" in text
-    assert "location = /account/plans/ {" in text
-    assert text.count("try_files /index.html =404;") >= 4
+    # BrowserRouter needs the page shell for direct requests. Both slash forms
+    # and the existing shared-cache policy come from the route manifest.
+    assert "include /etc/nginx/public-pages.inc;" in text
+    assert "location = /account/plans {" in generated
+    assert "location = /account/plans/ {" in generated
+    assert "try_files /plans.html =404;" in generated
+    assert "s-maxage=300" in generated
 
 
 def test_web_gateway_proxies_destination_pagination_to_ssr():
@@ -68,12 +69,18 @@ def test_web_gateway_proxies_destination_pagination_to_ssr():
     if config is None:
         pytest.skip("apps/web/nginx.conf is not mounted in this API-only test container")
     text = config.read_text(encoding="utf-8")
+    root = config.parents[2]
+    generated = (root / "apps" / "web" / "nginx-public-pages.inc").read_text(encoding="utf-8")
+    routes = (root / "apps" / "web" / "src" / "app" / "publicPageRoutes.generated.ts").read_text(encoding="utf-8")
 
-    # SSR pagination is the crawlable fallback for the JavaScript infinite
-    # scroll. Keep positive page paths on the Django proxy instead of letting
-    # the static SPA fallback turn them into 404 responses.
-    assert "location ~ ^/destinations(?:/page/[1-9][0-9]*)?/?$ {" in text
-    assert text.count("proxy_pass http://api:8000;") >= 2
+    # One manifest generates Django, React and both proxy route tables. Check
+    # both listing pagination families so a newly added page cannot silently
+    # fall through to the static SPA handler.
+    assert "include /etc/nginx/public-pages.inc;" in text
+    assert "destinations/page/[0-9]+" in generated
+    assert "routes/page/[0-9]+" in generated
+    assert '"/destinations/page/:page"' in routes
+    assert '"/routes/page/:page"' in routes
 
 
 def _find_web_nginx_file() -> Path | None:

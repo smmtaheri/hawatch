@@ -32,16 +32,18 @@ def test_short_link_preserves_public_host_and_redirect(surface,tmp_path):
         sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
     root=Path(__file__).resolve().parents[3]
     if surface=='gateway':
-        config=(root/'infra/nginx/nginx.conf').read_text().replace('listen 80;',f'listen {port};').replace('server api:8000;',f'server 127.0.0.1:{backend_port};').replace('server web:5173;',f'server 127.0.0.1:{backend_port};')
+        config=(root/'infra/nginx/nginx.conf').read_text().replace('listen 80;',f'listen {port};').replace('server api:8000 resolve;',f'server 127.0.0.1:{backend_port};').replace('server web:5173 resolve;',f'server 127.0.0.1:{backend_port};')
+        public_pages=root/'infra/nginx/public-pages.inc'
     else:
-        config='events {}\nhttp { include /etc/nginx/mime.types;\n'+(root/'apps/web/nginx.conf').read_text().replace('listen 5173;',f'listen {port};').replace('api:8000',f'127.0.0.1:{backend_port}')+'\n}'
+        config='events {}\nhttp { include /etc/nginx/mime.types;\n'+(root/'apps/web/nginx.conf').read_text().replace('listen 5173;',f'listen {port};').replace('server api:8000 resolve;',f'server 127.0.0.1:{backend_port};')+'\n}'
+        public_pages=root/'apps/web/nginx-public-pages.inc'
     path=tmp_path/'nginx.conf';path.write_text(config)
     name='hawatch-share-check-'+uuid4().hex[:8]
     class NoRedirect(HTTPRedirectHandler):
         def redirect_request(self,*args):return None
     opener=build_opener(NoRedirect)
     try:
-        subprocess.run(['docker','run','--rm','-d','--name',name,'--network','host','-v',f'{path}:/etc/nginx/nginx.conf:ro','nginx:1.27-alpine'],check=True,stdout=subprocess.DEVNULL)
+        subprocess.run(['docker','run','--rm','-d','--name',name,'--network','host','-v',f'{path}:/etc/nginx/nginx.conf:ro','-v',f'{public_pages}:/etc/nginx/public-pages.inc:ro','nginx:1.27.5-alpine'],check=True,stdout=subprocess.DEVNULL)
         deadline=time.monotonic()+15
         while True:
             try:

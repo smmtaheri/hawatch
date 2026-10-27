@@ -15,8 +15,31 @@
 - تنظیم حالت production/live، آدرس browser API و پورت‌ها؛
 - اجرای `docker compose config`، build/up، health check و scheduler داخلی ingest؛ ingest یک‌بارهٔ `ingest` به‌صورت پیش‌فرض در deploy اجرا نمی‌شود و فقط با تصمیم صریح اپراتور فعال است. همهٔ imageهای لازم، از جمله image سرویس one-shot `ingest`، قبل از جایگزینی کانتینرهای در حال اجرا build می‌شوند؛ اگر registry یا شبکه timeout بدهد، release فعلی دست‌نخورده می‌ماند؛
 - همگام‌سازی atomic catalog و فرود فقط در اولین اجرای نسخهٔ اصلاح‌شده یا هنگام تغییر ورودی‌های مرتبط، پیش از smoke check؛
-- حفظ کانتینر موجود PostgreSQL و Redis با `--no-recreate`؛ جایگزینی سرویس‌های تغییرکردهٔ برنامه با `--no-deps` پس از build؛ gateway با `--no-deps --force-recreate` آدرس جدید upstream را می‌گیرد. هیچ `down` یا پاک‌سازی orphan خودکار اجرا نمی‌شود؛
+- حفظ کانتینر موجود PostgreSQL و Redis با `--no-recreate`؛ جایگزینی API و انتظار برای آمادگی آن، سپس بازسازی فوری gateway برای کنارگذاشتن IP کهنهٔ نسخهٔ قبلی، و بعد جایگزینی web؛ Nginx در gateway و web نام سرویس‌های Docker را هر ۵ ثانیه دوباره resolve می‌کند، بنابراین پس از تعویض IP کانتینر upstream به restart دائمی proxy وابسته نیست. هیچ `down` یا پاک‌سازی orphan خودکار اجرا نمی‌شود؛
 - نمایش status و URLهای قابل تست.
+
+### قرارداد مسیر صفحه‌های عمومی
+
+مسیرهای HTML عمومی فقط یک‌بار در
+[`apps/api/src/hawatch/config/public_pages.json`](../apps/api/src/hawatch/config/public_pages.json)
+تعریف می‌شوند. Django همان manifest را برای URLهای SSR می‌خواند؛ React و قواعد
+Nginx برای gateway، web و stage از آن تولید می‌شوند. بنابراین مسیر فهرست مقصدها،
+صفحه‌بندی، مقصد، مسیر، ورود و طرح‌ها نباید دوباره به‌صورت دستی در چند فایل
+مسیریابی کپی شوند.
+
+برای افزودن یا تغییر مسیر صفحه:
+
+```bash
+node scripts/generate-public-pages.mjs
+node scripts/generate-public-pages.mjs --check
+```
+
+سپس view و کامپوننت را در همان registryهای کد معرفی کنید و هر دو را با همان
+`id` مسیر manifest وصل کنید. Docker build فرانت به‌طور خودکار `--check` را اجرا
+می‌کند؛ اگر خروجی‌های React/Nginx با manifest یکی نباشند، build پیش از تعویض
+سرویس‌های فعال متوقف می‌شود. اسکریپت deploy بعد از بالا آمدن gateway، پاسخ SSR
+خانه، صفحهٔ ۲ مقصدها و مسیرها و دو صفحهٔ canonical توچال را هم بررسی می‌کند.
+این smoke check خطای مسیر را قبل از اعلام موفقیت انتشار آشکار می‌کند.
 
 در deployهای شامل تغییر renderer SEO، هر دو image `api` و `web` باید build شوند:
 Django HTML اولیهٔ catalog-driven را render می‌کند و web bundle با نام پایدار

@@ -353,6 +353,15 @@ wait_for_running() {
   fail "$service is not running."
 }
 
+check_ssr_page() {
+  local route="$1"
+  local html
+  html="$(curl --fail --silent --show-error --max-time 20 "http://127.0.0.1:${NGINX_PUBLISH_PORT}${route}")" || \
+    fail "SSR page ${route} did not return a successful response through the production gateway."
+  [[ "$html" == *'data-seo-initial="true"'* ]] || \
+    fail "SSR page ${route} did not contain the server-rendered page marker."
+}
+
 run_stack() {
   local compose_file="$REPO_DIR/$COMPOSE_RELATIVE_PATH"
   local -a compose=(docker compose --env-file "$ENV_FILE" -f "$compose_file")
@@ -413,21 +422,23 @@ run_stack() {
   wait_for_healthy postgres
   wait_for_healthy redis
   # Do not let application dependency traversal recreate data services.
-  "${compose[@]}" up -d --no-deps api web maintenance ingest-scheduler
+  # Activate the API, then replace the gateway promptly so this first rollout
+  # stops using its old statically-resolved API address. Later API/Web container
+  # IP changes are followed by DNS refresh without restarting either proxy.
+  "${compose[@]}" up -d --no-deps api
+  wait_for_healthy api
+  "${compose[@]}" up -d --no-deps --force-recreate nginx
+  wait_for_healthy nginx
+
+  "${compose[@]}" up -d --no-deps web maintenance ingest-scheduler
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     "${compose[@]}" up -d --no-recreate opensearch opensearch-dashboards opensearch-auth-init \
       opensearch-provisioner vector prometheus grafana
   fi
 
-  wait_for_healthy api
   wait_for_healthy web
   wait_for_running maintenance
   wait_for_running ingest-scheduler
-
-  # Nginx resolves Docker service names when it starts. Recreate the gateway
-  # after API/Web replacement so it cannot retain a stale container IP.
-  "${compose[@]}" up -d --no-deps --force-recreate nginx
-  wait_for_healthy nginx
 
   # Store only the successfully applied catalog fingerprint, outside tracked files.
   # First rollout imports once; failed imports leave the marker unchanged for retry.
@@ -465,6 +476,10 @@ run_stack() {
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/" >/dev/null
+  check_ssr_page "/destinations/page/2"
+  check_ssr_page "/routes/page/2"
+  check_ssr_page "/points/tochal"
+  check_ssr_page "/routes/tochal-darband"
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/tochal/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/api/v1/points/tochal/forecast/" >/dev/null

@@ -64,9 +64,9 @@ services:
     logging: *stage-logging
     restart: unless-stopped
   stage-gateway:
-    image: nginx:1.27-alpine
+    image: nginx:1.27.5-alpine
     ports: ["${HAWATCH_STAGE_BIND_IP:-0.0.0.0}:${HAWATCH_STAGE_PORT:-5050}:80"]
-    volumes: ["../nginx/stage.conf:/etc/nginx/nginx.conf:ro"]
+    volumes: ["../nginx/stage.conf:/etc/nginx/nginx.conf:ro", "../nginx/stage-public-pages.inc:/etc/nginx/stage-public-pages.inc:ro"]
     depends_on:
       stage-api: {condition: service_healthy}
       stage-web: {condition: service_healthy}

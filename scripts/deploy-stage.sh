@@ -98,6 +98,12 @@ done
 [[ "$ready" == "1" ]] || fail "Stage gateway on port ${stage_port} did not become healthy."
 curl --fail --silent --show-error --max-time 10 "${stage_base}/api/v1/health/ready/" >/dev/null || fail "Stage API readiness check failed through the gateway."
 curl --fail --silent --show-error --max-time 15 "${stage_base}/" >/dev/null || fail "Stage server-rendered home page failed through the gateway."
+for route in /destinations/page/2 /routes/page/2 /points/tochal /routes/tochal-darband; do
+  page_html="$(curl --fail --silent --show-error --max-time 20 "${stage_base}${route}")" || \
+    fail "Stage SSR page ${route} failed through the gateway."
+  [[ "$page_html" == *'data-seo-initial="true"'* ]] || \
+    fail "Stage route ${route} did not return server-rendered page content."
+done
 curl --fail --silent --show-error --max-time 10 "${stage_base}/api/v1/points/" | python3 -c '
 import json, sys
 payload = json.load(sys.stdin)

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "pages": [
+    {"id": "home", "path": "/", "owner": "api", "view": "seo_home", "name": "seo-home", "component": "home"},
+    {"id": "destinations", "path": "/destinations", "owner": "api", "view": "seo_destinations", "name": "seo-destinations", "component": "destinations", "trailing_slash": true},
+    {"id": "destinations-page", "path": "/destinations/page/{page:int}", "owner": "api", "view": "seo_destinations", "name": "seo-destinations-page", "component": "destinations", "trailing_slash": true},
+    {"id": "routes", "path": "/routes", "owner": "api", "view": "seo_routes", "name": "seo-routes", "component": "routes", "trailing_slash": true},
+    {"id": "routes-page", "path": "/routes/page/{page:int}", "owner": "api", "view": "seo_routes", "name": "seo-routes-page", "component": "routes", "trailing_slash": true},
+    {"id": "point", "path": "/points/{slug:slug}", "owner": "api", "view": "seo_point", "name": "seo-point", "component": "point-forecast", "trailing_slash": true},
+    {"id": "route", "path": "/routes/{slug:slug}", "owner": "api", "view": "seo_route", "name": "seo-route", "component": "route-forecast", "trailing_slash": true},
+    {"id": "login", "path": "/login", "owner": "web", "component": "login", "shell": "login.html"},
+    {"id": "plans", "path": "/account/plans", "owner": "web", "component": "plans", "shell": "plans.html", "cache_control": "public, max-age=0, s-maxage=300, stale-while-revalidate=60", "trailing_slash": true}
+  ],
+  "redirects": [
+    {"id": "removed-points-index", "path": "/points", "owner": "api", "view": "redirect_removed_catalog_index", "name": "removed-points-index", "target": "https://hawatch.ir/", "trailing_slash": true}
+  ]
+}

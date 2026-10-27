@@ -87,6 +87,8 @@ docker compose -f infra/compose/compose.yaml logs -f api web postgres
 
 SEO و HTML اولیهٔ قابل‌خزش Home، Point و Route در
 [`docs/seo.md`](docs/seo.md) توضیح داده شده است.
+قرارداد واحد مسیرهای عمومی و تولید قواعد Django، React و Nginx از یک manifest
+در بخش استقرار [`docs/deployment.md`](docs/deployment.md) آمده است.
 
 سناریوی کامل backup، به‌روزرسانی backup و restore اضطراری روی سرور جدید در
 [`docs/backup-restore.md`](docs/backup-restore.md) مستند شده است.
