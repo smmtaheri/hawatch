@@ -1,0 +1,157 @@
+{
+  "catalog_version": "hawatch-hazarband-v1",
+  "primary_point": "hazarband-peak",
+  "weather_points": {
+    "hazarband-peak": {
+      "name": "قلهٔ هزاربند",
+      "page_name": "قلهٔ هزاربند جادهٔ چالوس",
+      "short_label": "هزاربند",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های البرز غربی",
+      "region": "حسنکدر · جادهٔ چالوس · البرز",
+      "aliases": ["هزار بند", "قله هزاربند", "Hazarband", "Hezarband Peak"],
+      "identity_summary": "قلهٔ سنگی هزاربند در جنوب‌شرقی کرچان، در البرز غربی و بالای روستای حسنکدر؛ با قله‌های هم‌نام دیگر یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.gholleh.com/peakszoom.aspx?lat=36.0544909&lon=51.2831654&pkidentifier=82",
+        "https://kuhnavardi.com/قله-هزاربند-از-حسنکدر/",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzrbndthmyn-jng-106830019",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.054584&longitude=51.283343"
+      ],
+      "latitude": 36.054584,
+      "longitude": 51.283343,
+      "elevation_m": 3314,
+      "status": "provisional",
+      "elevation_source": "Waypoint قله در ترک اصلی با مختصات نزدیک به مختصات قله در Gholleh؛ ارتفاع نهایی باید با DEM نسخهٔ GLO-90 از Open-Meteo gate شود.",
+      "climate": "high_alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ هزاربند؛ پیش‌بینی جادهٔ چالوس | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ هزاربند در البرز غربی؛ دما، باد، بارش و وضعیت ساعتی مسیر حسنکدر را ببینید."
+      }
+    },
+    "hazarband-hasanakdar-trailhead": {
+      "name": "روستای حسنکدر؛ مبدأ مسیر هزاربند",
+      "page_name": "روستای حسنکدر؛ مبدأ صعود هزاربند",
+      "short_label": "حسنکدر",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "آبادی‌های جادهٔ چالوس",
+      "region": "حسنکدر · جادهٔ چالوس · البرز",
+      "aliases": ["حسنکدر", "Hasanakdar"],
+      "identity_summary": "بخش آغازین روستای حسنکدر پس از پل اصلی که گزارش مسیر آن را مبدأ پیاده‌روی قلهٔ هزاربند معرفی می‌کند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://kuhnavardi.com/قله-هزاربند-از-حسنکدر/",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzrbndthmyn-jng-106830019",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.068852&longitude=51.307243"
+      ],
+      "latitude": 36.068852,
+      "longitude": 51.307243,
+      "elevation_m": 2138,
+      "status": "provisional",
+      "elevation_source": "Waypoint شروع روستای حسنکدر در ترک؛ ارتفاع ثبت‌شدهٔ GPX فقط مرجع است و مقدار نهایی با DEM Open-Meteo gate می‌شود.",
+      "climate": "alpine"
+    },
+    "hazarband-freeway-worksite": {
+      "name": "کارگاه آزادراه تهران–شمال در مسیر هزاربند",
+      "page_name": "کارگاه آزادراه تهران–شمال؛ میانهٔ مسیر حسنکدر به هزاربند",
+      "short_label": "کارگاه آزادراه",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "category": "نقاط مسیر هزاربند",
+      "region": "حسنکدر · جادهٔ چالوس · البرز",
+      "aliases": [],
+      "identity_summary": "نقطهٔ عبور مسیر پیادهٔ حسنکدر به یال اصلی که در گزارش مستقل مسیر به‌عنوان کارگاه آزادراه تهران–شمال توصیف شده است؛ waypoint متناظر در GPX حدود ۱۲ متر از خط مسیر فاصله دارد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://kuhnavardi.com/قله-هزاربند-از-حسنکدر/",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-hzrbndthmyn-jng-106830019",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.068025&longitude=51.297565"
+      ],
+      "latitude": 36.068025,
+      "longitude": 51.297565,
+      "elevation_m": 2243,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint مسیر با فاصلهٔ ۱۲ متر از خط GPX؛ ارتفاع GPS مرجع است و ارتفاع کاتالوگ باید با DEM Open-Meteo gate شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "hasanakdar-to-hazarband": {
+      "slug": "hasanakdar-to-hazarband",
+      "title": "حسنکدر تا قلهٔ هزاربند",
+      "subtitle": "صعود از روستا، کارگاه آزادراه تهران–شمال و یال اصلی",
+      "trail_label": "مسیر صعود هزاربند از حسنکدر",
+      "origin": "روستای حسنکدر",
+      "target_label": "قلهٔ هزاربند",
+      "region": "حسنکدر · جادهٔ چالوس · البرز",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "hazarband-hasanakdar-trailhead",
+        "hazarband-freeway-worksite",
+        "hazarband-peak"
+      ],
+      "distance_km": 3.74,
+      "ascent_m": 1078,
+      "one_way_minutes": 330,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-ascent-cut+independent-hiking-report-v1",
+        "version": "hazarband-hasanakdar-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://kuhnavardi.com/قله-هزاربند-از-حسنکدر/",
+          "https://www.gholleh.com/peakszoom.aspx?lat=36.0544909&lon=51.2831654&pkidentifier=82",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-hzrbndthmyn-jng-106830019"
+        ],
+        "evidence_tracks": ["tracks/hazarband/qlh-hzrbndthmyn-jng.gpx"],
+        "cumulative_minutes": {
+          "hazarband-hasanakdar-trailhead": 0,
+          "hazarband-freeway-worksite": 20,
+          "hazarband-peak": 330
+        },
+        "notes": [
+          "ترک رفت تا نخستین رسیدن به قله بریده شده است؛ فرود از گردنهٔ کرچان در آمار این route نیست.",
+          "زمان یک‌طرفه ۳۳۰ دقیقه از گزارش مستقل صعود حسنکدر گرفته شده؛ برآورد حرکت خود ترک حدود ۲۷۲ دقیقه است و توقف‌ها/اختلاف گروه‌ها عدم‌قطعیت ایجاد می‌کند."
+        ]
+      },
+      "public_note": "مسیر سنگی و کوهستانی است و برای افراد باتجربه مناسب‌تر است. گزارش‌ها دربارهٔ میزان دست‌به‌سنگ و ریزش سنگ تفاوت دارند؛ در بارش یا خیس‌بودن سنگ‌ها صعود نکنید و شرایط روز مسیر را بررسی کنید. زمان، برآورد یک‌طرفه تا قله است؛ مسیر فرود از گردنهٔ کرچان در این محاسبه نیست.",
+      "public_point_notes": {
+        "hazarband-freeway-worksite": "گزارش مستقل مسیر، کارگاه آزادراه تهران–شمال را روی راه حسنکدر به یال اصلی مشخص می‌کند؛ GPX منتخب از این نقطه عبور می‌کند."
+      }
+    }
+  },
+  "point": {
+    "slug": "hazarband-peak",
+    "tile_name": "قلهٔ هزاربند",
+    "name": "قلهٔ هزاربند",
+    "short_category": "قله",
+    "category": "قله‌های البرز غربی",
+    "category_key": "mountain",
+    "region": "حسنکدر · جادهٔ چالوس · البرز",
+    "elevation_m": 3314,
+    "latitude": 36.054584,
+    "longitude": 51.283343,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ هزاربند در البرز غربی",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["هزار بند", "قله هزاربند"]
+  },
+  "internal_note": "Track SHA-256: 95b55454959d8fa0b2b5e96245127eb9fa18b8423ac17b7ae5564af7d54d45df. GPX/manifest are local-only. Independent report documents the Hasanakdar start, freeway worksite, main ridge, ascent time, and cautions against the Karshan-pass descent; route geometry is cut at first summit arrival. Reported summit heights differ (3314–3350 m); the final catalog elevation is subject to the mandatory Open-Meteo DEM threshold."
+}

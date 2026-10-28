@@ -1,0 +1,158 @@
+{
+  "catalog_version": "hawatch-sultan-sanjar-v1",
+  "primary_point": "sultan-sanjar-peak",
+  "weather_points": {
+    "sultan-sanjar-peak": {
+      "name": "قلهٔ سلطان سنجر",
+      "page_name": "قلهٔ سلطان سنجر مرند",
+      "short_label": "سلطان سنجر",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های آذربایجان شرقی",
+      "region": "زنوز · مرند · آذربایجان شرقی",
+      "aliases": ["سلطان زنجیر", "سلطان جهانگیر", "Soltan Sanjar", "Sultan Zanjir"],
+      "identity_summary": "قلهٔ سلطان سنجر یا سلطان زنجیر در شمال‌شرقی زنوز، شهرستان مرند؛ نه قله‌های هم‌نام دیگر.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://marandkoh.blogfa.com/post/695",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-sltn-snjr-190251432",
+        "https://www.wikiloc.com/mountaineering-trails/soltan-sanjar-summitqlh-sltn-snjr-9822808",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.587607&longitude=45.981383"
+      ],
+      "latitude": 38.587607,
+      "longitude": 45.981383,
+      "elevation_m": 3188,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۱۸۸ متر از گزارش مستقل محلی؛ مختصات از waypoint قله در ترک کاربر و تطبیق با ثبت‌های دیگر قله. ارتفاع کاتالوگ باید با DEM Open-Meteo gate شود.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ سلطان سنجر؛ پیش‌بینی مرند | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ سلطان سنجر یا زنجیر در مرند؛ دما، باد، بارش و وضعیت ساعتی مسیر مجیدآباد را ببینید."
+      }
+    },
+    "sultan-sanjar-majidabad-trailhead": {
+      "name": "مجیدآباد؛ مبدأ مسیر سلطان سنجر",
+      "page_name": "روستای مجیدآباد؛ مبدأ صعود سلطان سنجر",
+      "short_label": "مجیدآباد",
+      "place_type": "village",
+      "category_key": "village",
+      "category": "آبادی‌های مرند",
+      "region": "مجیدآباد · مرند · آذربایجان شرقی",
+      "aliases": ["Majidabad", "Majid Abad"],
+      "identity_summary": "مبدأ پیاده‌روی ثبت‌شده از روستای مجیدآباد برای صعود جبههٔ جنوبی سلطان سنجر.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://marandkoh.blogfa.com/post/695",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-sltn-snjr-190251432",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.534913&longitude=46.004152"
+      ],
+      "latitude": 38.534913,
+      "longitude": 46.004152,
+      "elevation_m": 2420,
+      "status": "provisional",
+      "elevation_source": "مختصات آغاز ترکِ ثبت‌شده از مجیدآباد؛ ارتفاع ۲۴۲۰ متر از Open-Meteo GLO-90 باید در gate تأیید شود.",
+      "climate": "alpine"
+    },
+    "sultan-sanjar-north-bozdagh-meadow": {
+      "name": "دشت شمالی بز داغ",
+      "page_name": "دشت شمالی بز داغ؛ میانهٔ مسیر سلطان سنجر",
+      "short_label": "دشت شمالی بز داغ",
+      "place_type": "valley",
+      "category_key": "landmark",
+      "category": "عارضه‌های مسیر سلطان سنجر",
+      "region": "مجیدآباد · مرند · آذربایجان شرقی",
+      "aliases": ["دشت بز داغ", "North Bozdagh Meadow"],
+      "identity_summary": "دشت شمالی بز داغ در جبههٔ جنوبی سلطان سنجر؛ گزارش مسیر مجیدآباد آن را در زنجیرهٔ صعود پیش از یال و قله نام می‌برد و ترک اصلی از این ناحیه می‌گذرد.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/qlh-sltn-snjr-190251432",
+        "https://ca.wikiloc.com/rutes-alpinisme/soltan-sanjar-summit-from-majidabad-dyugidzhan-south-path-qlh-sltn-snjr-z-mjyd-abd-dwywjn-jbhh-jnwb-38124962",
+        "https://fr.wikiloc.com/itineraires-alpinisme/boz-dagh-summit-qlh-bzdg-w-dsht-shmly-an-dr-dmnh-jnwby-khwh-sltn-snjr-z-dh-mjyd-abd-15015341",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.552565&longitude=45.986257"
+      ],
+      "latitude": 38.552565,
+      "longitude": 45.986257,
+      "elevation_m": 2427,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint رودخانه در ترک اصلی در محل متناظر با دشت میانی؛ ارتفاع ۲۴۲۷ متر ثبت‌شدهٔ GPX مرجع است و مقدار نهایی باید با DEM Open-Meteo gate شود.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "majidabad-to-sultan-sanjar": {
+      "slug": "majidabad-to-sultan-sanjar",
+      "title": "مجیدآباد تا قلهٔ سلطان سنجر",
+      "subtitle": "صعود جبههٔ جنوبی از دشت شمالی بز داغ",
+      "trail_label": "مسیر صعود سلطان سنجر از مجیدآباد",
+      "origin": "مجیدآباد",
+      "target_label": "قلهٔ سلطان سنجر",
+      "region": "مجیدآباد · مرند · آذربایجان شرقی",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "sultan-sanjar-majidabad-trailhead",
+        "sultan-sanjar-north-bozdagh-meadow",
+        "sultan-sanjar-peak"
+      ],
+      "distance_km": 8.63,
+      "ascent_m": 875,
+      "one_way_minutes": 300,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-first-summit-cut+independent-mountaineering-report-v1",
+        "version": "sultan-sanjar-majidabad-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://marandkoh.blogfa.com/post/695",
+          "https://www.wikiloc.com/mountaineering-trails/qlh-sltn-snjr-190251432",
+          "https://ca.wikiloc.com/rutes-alpinisme/soltan-sanjar-summit-from-majidabad-dyugidzhan-south-path-qlh-sltn-snjr-z-mjyd-abd-dwywjn-jbhh-jnwb-38124962"
+        ],
+        "evidence_tracks": ["tracks/sultan-sanjar/qlh-sltn-snjr.gpx"],
+        "cumulative_minutes": {
+          "sultan-sanjar-majidabad-trailhead": 0,
+          "sultan-sanjar-north-bozdagh-meadow": 120,
+          "sultan-sanjar-peak": 300
+        },
+        "notes": [
+          "فقط بخش صعود از مجیدآباد تا نخستین رسیدن به قله استفاده شده و حلقهٔ فرود در فاصله و زمان Route نیست.",
+          "گزارش مسیرِ جبههٔ جنوبی زمان پنج ساعت تا قله و حدود دو ساعت تا دشت شمالی بز داغ ثبت کرده؛ زمان ترک ثبت‌شدهٔ کاربر حدود ۲۶۰ دقیقه است، بنابراین ETA پنج‌ساعته با عدم‌قطعیت ۹۰ دقیقه درج شده است."
+        ]
+      },
+      "public_note": "مسیر کوهستانی و سنگلاخی است. زمان تقریبی یک‌طرفه تا قله بر پایهٔ گزارش صعود و ترک ثبت‌شده است؛ وضعیت برف، باد و شرایط روز می‌تواند زمان را تغییر دهد.",
+      "public_point_notes": {
+        "sultan-sanjar-north-bozdagh-meadow": "دشت شمالی بز داغ، عارضهٔ میانی مستند در جبههٔ جنوبی قله است."
+      }
+    }
+  },
+  "point": {
+    "slug": "sultan-sanjar-peak",
+    "tile_name": "قلهٔ سلطان سنجر",
+    "name": "قلهٔ سلطان سنجر",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان شرقی",
+    "category_key": "mountain",
+    "region": "زنوز · مرند",
+    "elevation_m": 3188,
+    "latitude": 38.587607,
+    "longitude": 45.981383,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ سلطان سنجر در آذربایجان شرقی",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سلطان زنجیر", "سلطان جهانگیر"]
+  },
+  "internal_note": "Primary track SHA-256: ba88c90a416524420fff696f8bf5db2eba45bf07f014b235c08230a70c5d3e08. GPX/manifest remain local-only. The user-provided GPX is cut at first summit arrival. The intermediate meadow mapping uses the documented North Bozdagh feature; source reports differ in ascent length/time, so timing has medium confidence."
+}
