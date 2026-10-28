@@ -6,6 +6,7 @@ import { completePageLoad, failPageLoad } from "../lib/pageLoad";
 import { Header } from "./Header";
 import { BackNavigation } from "./BackNavigation";
 import { ROUTE_NIGHT_TONE } from "../styles/new-design/routeBackgroundTone";
+import type { ForecastAttribution } from "../api/weekForecast";
 const [routeNightDesktopR, routeNightDesktopG, routeNightDesktopB] = ROUTE_NIGHT_TONE.desktop;
 const [routeNightMobileR, routeNightMobileG, routeNightMobileB] = ROUTE_NIGHT_TONE.mobile;
 export function PageShell({
@@ -14,12 +15,14 @@ export function PageShell({
   back = false,
   showInitialContent = false,
   loadingState = "ready",
+  attribution,
 }: {
   children: ReactNode;
   className: string;
   back?: boolean;
   showInitialContent?: boolean;
   loadingState?: "loading" | "ready" | "error";
+  attribution?: ForecastAttribution;
 }) {
   const location = useLocation();
   const initialContent = showInitialContent ? initialSeoContentFor(location.pathname, location.search) : null;
@@ -61,9 +64,21 @@ export function PageShell({
         {initialContent ? <section className="seo-fallback" data-seo-fallback="true" dangerouslySetInnerHTML={{ __html: initialContent }} /> : children}
         <footer
           className="footer forecast-attribution"
-          aria-label="منبع دادهٔ هواشناسی"
+          aria-label="منبع و زمان به‌روزرسانی دادهٔ هواشناسی"
         >
-          دادهٔ هواشناسی: Open-Meteo
+          {attribution ? (
+            <>
+              دادهٔ هواشناسی: {attribution.source}
+              {attribution.updated_label ? (
+                <>
+                  {" · آخرین به‌روزرسانی: "}
+                  <time dateTime={attribution.updated_at}>{attribution.updated_label}</time>
+                </>
+              ) : null}
+            </>
+          ) : (
+            "دادهٔ هواشناسی"
+          )}
         </footer>
       </div>
     </main>

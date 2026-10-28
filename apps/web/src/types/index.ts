@@ -46,6 +46,7 @@ export interface ApiMeta {
   timing_pending?: boolean;
   timing_status?: "curated" | "estimated" | "pending" | string;
   catalog_counts?: CatalogCounts;
+  attribution?: { source: string; updated_at: string; updated_label: string } | null;
 }
 
 export interface PointSummary {

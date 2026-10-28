@@ -6,9 +6,12 @@ those of the existing product. Precipitation has its own preceding-hour interval
 from collections import defaultdict
 from datetime import timedelta
 from bisect import bisect_left
+from hashlib import sha256
+import json
 from django.conf import settings
 from hawatch.common.time import now_tehran, localize_dt, day_payload, paced_route_cumulative_minutes, SPEED_TIME_FACTORS
 from hawatch.modules.forecasts.models import ForecastRecord
+from hawatch.modules.forecasts.attribution import attribution_for_rows
 from hawatch.modules.routes.models import Route
 from hawatch.modules.routes.timing import route_mean_elevation_m
 from hawatch.integrations.weather.hazards import assessment, assess_records, value, representative_record
@@ -178,7 +181,35 @@ def build_week(kind, slug, today):
             distances.append(round(distance/1000,2) if valid_distance else None)
         base.update(subject=serialize_route(route), related_routes=[serialize_route_summary(r) for r in Route.objects.filter(points__weather_point=points[-1].weather_point, is_active=True).distinct().order_by("sort_order", "slug")] if points else [], points=[{"slug": p.weather_point.slug if p.weather_point_id else None, "name": p.name, "weather_point_id": p.weather_point_id, "distance_km": distances[i]} for i,p in enumerate(points)], offsets=offsets, record_fields=ROUTE_RECORD_FIELDS, records=compact_records, plans=plans, equipment=equipment, timing_pending=not timed)
     freshness_rows = [r for r in rows if r.forecast_at >= start] if kind == "point" else rows
-    base["last_generated_at"] = min((r.generated_at for r in freshness_rows), default=None)
-    if base["last_generated_at"] is not None: base["last_generated_at"] = base["last_generated_at"].isoformat()
+    attribution = attribution_for_rows(freshness_rows)
+    base["attribution"] = attribution
+    base["last_generated_at"] = attribution["updated_at"] if attribution else None
     base["data_mode"] = "demo" if settings.DEMO_DATA_ENABLED else "live"
+    catalog_identity = {
+        key: base.get(key)
+        for key in ("subject", "related_routes", "related_destinations", "points", "offsets", "timing_pending")
+        if key in base
+    }
+    base["catalog_signature"] = sha256(
+        json.dumps(catalog_identity, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
     return base
+
+
+def has_usable_week_data(payload: dict) -> bool:
+    """Require usable coverage before replacing the durable last-good bundle."""
+
+    if payload.get("kind") == "point":
+        days = (payload.get("intervals") or {}).get("1", [])
+        return len(days) == 8 and all(
+            sum(bool(row.get("weather_at")) for row in day) >= 18
+            for day in days
+        )
+    if payload.get("kind") == "route":
+        point_count = len(payload.get("points") or [])
+        return point_count > 0 and bool(payload.get("records")) and any(
+            len(plan.get("records", [])) == point_count
+            and all(index is not None for index in plan.get("records", []))
+            for plan in (payload.get("plans") or {}).values()
+        )
+    return False

@@ -14,7 +14,6 @@ import { RouteChooser } from "../../components/RelatedRoutes";
 import { RoutePointLink } from "../../components/RoutePointLink";
 import { DesignIcon, WeatherIcon } from "../../components/DesignIcon";
 import { numberLabel } from "../../components/HourlyForecast";
-import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { openAccountLogin } from "../../components/Header";
 import { NotFoundPage } from "../../pages/NotFoundPage";
 import {
@@ -167,7 +166,6 @@ export function RoutePage() {
       {status === "loading" && !frame ? <LoadingState /> : null}
       {frame ? (
         <>
-          {frame.meta.freshness === "stale" ? <StaleDataNotice /> : null}
           <section className="hero route-hero">
             <div className="hero-title">
               <h1>{frame.route.title}</h1>

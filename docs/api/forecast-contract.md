@@ -129,6 +129,9 @@ Route envelope جداگانه است و `route` / `points[]` / `timing_pending` 
 - `data_mode`
 - `provider` / `source`
 - `generated_at`
+- `attribution` در قرارداد هفته شامل `source`، `updated_at` با timezone تهران،
+  و `updated_label` فارسی برای footer است. زمان از رکوردهای واقعاً مصرف‌شده در
+  همان بسته مشتق می‌شود؛ در Route چندنقطه‌ای، قدیمی‌ترین رکورد مؤثر مبناست.
 - `current_local_time`
 - `timezone`
 - `seed_version`
@@ -236,7 +239,9 @@ Catalog `hawatch-tochal-catalog-v6` / `tochal-timing-v3`. هر پنج مسیر �
 
 - `meta.current_local_time` تنها مرجع تعیین بازهٔ جاری/گذشته در timezone رسمی ایران است.
 - UI باید periodهای کاملاً گذشته را کم‌رنگ کند و period جاری/آینده را عادی نگه دارد.
-- فیلد `updated_label` برای نمایش عمومی deprecated است؛ timestamp خام ISO نباید در UI رندر شود.
+- `updated_label` فقط در footer مشترک کنار نام منبع، به‌عنوان زمان آخرین دادهٔ
+  واقعاً به‌کاررفته نمایش داده می‌شود؛ از آن وضعیت stale/قدیمی یا پیام «بدون
+  داده» ساخته نمی‌شود. timestamp خام ISO در متن رابط نمایش داده نمی‌شود.
 - Route نباید period weather را به‌عنوان پیش‌بینی رسیدن نشان دهد وقتی timing pending است.
 - همهٔ `/points/*`ها یک قالب Point Forecast دارند؛ baseline بصری screenshotهای Point است.
 

@@ -332,6 +332,33 @@ class ForecastRecord(models.Model):
         return f"{self.weather_point.slug}@{self.forecast_at.isoformat()}"
 
 
+class LastGoodWeekForecast(models.Model):
+    """Durable, compressed public week payload used when live rows disappear."""
+
+    class Kind(models.TextChoices):
+        POINT = "point", "point"
+        ROUTE = "route", "route"
+
+    kind = models.CharField(max_length=8, choices=Kind.choices)
+    slug = models.SlugField(max_length=96)
+    schema_version = models.CharField(max_length=16, default="week-2")
+    payload = models.BinaryField()
+    payload_sha256 = models.CharField(max_length=64)
+    catalog_signature = models.CharField(max_length=64)
+    updated_at = models.DateTimeField()
+    source_label = models.CharField(max_length=160, blank=True, default="")
+    stored_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["kind", "slug"], name="uniq_last_good_week_subject"),
+        ]
+        indexes = [models.Index(fields=["updated_at"], name="lastgood_week_updated_idx")]
+
+    def __str__(self) -> str:
+        return f"{self.kind}:{self.slug}@{self.updated_at.isoformat()}"
+
+
 class ForecastDaily(models.Model):
     """Legacy daily provider values retained while hourly snapshots are primary."""
 

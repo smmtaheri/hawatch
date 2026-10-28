@@ -12,7 +12,6 @@ import {
   RelatedDestinations,
 } from "../../components/RelatedRoutes";
 import { WeatherIcon } from "../../components/DesignIcon";
-import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { openAccountLogin } from "../../components/Header";
 import { shortDaySummary } from "../../lib/shortDaySummary";
 import { usePageTitle } from "../../lib/pageTitle";
@@ -83,7 +82,6 @@ function PlaceForecastPage({ kind }: { kind: PlaceKind }) {
       {status === "loading" && !data ? <LoadingState /> : null}
       {data ? (
         <>
-          {data.meta.freshness === "stale" ? <StaleDataNotice /> : null}
           <section
             className={`hero point-hero ${data.subject.name.length > 14 ? "long-title" : ""}`}
           >

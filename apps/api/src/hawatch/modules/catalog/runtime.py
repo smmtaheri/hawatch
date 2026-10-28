@@ -20,8 +20,6 @@ def ingestible_weather_points(*, slugs: list[str] | None = None) -> QuerySet[Wea
     qs = (
         WeatherPoint.objects.filter(is_active=True, ingest_enabled=True, data_mode="live")
         .exclude(Q(slug__startswith="dest:") | Q(slug__startswith="route:"))
-        .filter(Q(seo_indexable=True) | Q(route_links__route__is_active=True))
-        .distinct()
         .order_by("slug")
     )
     if slugs:

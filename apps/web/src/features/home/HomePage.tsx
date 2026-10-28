@@ -8,7 +8,6 @@ import {
   type SearchComboboxHandle,
 } from "../../components/SearchCombobox";
 import { CategoryIcon, DesignIcon } from "../../components/DesignIcon";
-import { StaleDataNotice } from "../../components/StaleDataNotice";
 import { usePageTitle } from "../../lib/pageTitle";
 import { initialHomeDataFor } from "../../lib/initialSeoContent";
 import type { CatalogCounts, PointSummary } from "../../types";
@@ -19,7 +18,7 @@ export function HomePage() {
   const [query, setQuery] = useState("");
   const [popularPoints, setPopularPoints] = useState<PointSummary[]>(initialHomeData?.popular_points ?? []);
   const [counts, setCounts] = useState<CatalogCounts | null>(initialHomeData?.catalog_counts ?? null);
-  const [freshness, setFreshness] = useState(initialHomeData?.freshness ?? "ready");
+  const [attribution, setAttribution] = useState(initialHomeData?.attribution ?? null);
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     initialHomeData ? "ready" : "loading",
   );
@@ -34,7 +33,7 @@ export function HomePage() {
         if (id !== request.current) return;
         setPopularPoints(payload.results);
         setCounts(payload.meta.catalog_counts ?? null);
-        setFreshness(payload.meta.freshness);
+        setAttribution(payload.meta.attribution ?? null);
         setStatus("ready");
       })
       .catch(() => {
@@ -49,7 +48,7 @@ export function HomePage() {
     };
   }, []);
   return (
-    <PageShell className="home-page" showInitialContent={status !== "ready"} loadingState={status}>
+    <PageShell className="home-page" showInitialContent={status !== "ready"} loadingState={status} attribution={attribution}>
       <section className="home-hero">
         <h1>پیش‌بینی هوای نقاط و مسیرها</h1>
         <p>برای برنامه‌ریزی طبیعت‌گردی</p>
@@ -79,7 +78,6 @@ export function HomePage() {
           </form>
           <section className="popular" id="search-results">
             <h2>مقصدهای محبوب</h2>
-            {freshness === "stale" ? <StaleDataNotice /> : null}
             {status === "loading" ? (
               <LoadingState label="در حال بارگذاری نقاط…" />
             ) : null}

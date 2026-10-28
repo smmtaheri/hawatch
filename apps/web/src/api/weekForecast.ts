@@ -3,6 +3,7 @@ import { takeInitialPageRequest } from '../lib/pageLoad';
 
 type Day = { date: string; label: string; jalali: string };
 type Subject = { slug: string; name?: string; title?: string; elevation_m?: number; region?: string; distance_km?: number; ascent_m?: number; descent_m?: number; seo_indexable?: boolean };
+export type ForecastAttribution = { source: string; updated_at: string; updated_label: string } | null;
 export type HeatIndexStatus = 'available' | 'not_applicable' | 'missing';
 export type WeekInterval = {
   from: string; to: string; hour: number;
@@ -15,7 +16,7 @@ export type WeekInterval = {
   warnings: Array<{ severity: string; metrics: string[]; metric_severities?: Record<string, string> }>;
   complete: boolean;
 };
-export type Week = { schema_version: 'week-2'; kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, WeekInterval[][]>; points?: Array<{ slug: string; name: string; weather_point_id: number | null; distance_km: number | null }>; timing_pending?: boolean; record_fields?: string[]; records?: unknown[][]; plans?: Record<string, { records: Array<number | null> }>; equipment?: Array<{ id: string; name: string; reason: string }> };
+export type Week = { schema_version: 'week-2'; kind: 'point' | 'route'; subject: Subject; days: Day[]; range_start: string; range_end: string; last_generated_at: string | null; stale_after_hours: number; cache_max_age_seconds: number; attribution?: ForecastAttribution; related_routes?: Subject[]; related_routes_title?: string; related_destinations?: SimilarDestinationSummary[]; related_destinations_title?: string; intervals?: Record<string, WeekInterval[][]>; points?: Array<{ slug: string; name: string; weather_point_id: number | null; distance_km: number | null }>; timing_pending?: boolean; record_fields?: string[]; records?: unknown[][]; plans?: Record<string, { records: Array<number | null> }>; equipment?: Array<{ id: string; name: string; reason: string }> };
 
 const cache = new Map<string, { data: Week; expires: number }>();
 const pending = new Map<string, Promise<Week>>();
@@ -54,7 +55,7 @@ function embeddedWeek(kind: string, slug: string): { data: Week; age: number } |
 }
 
 function rememberWeek(key: string, data: Week, age: number) {
-  const midnight = Date.parse(`${data.range_start}T00:00:00+03:30`) + 86400000;
+  const midnight = Date.parse(`${tehranDate()}T00:00:00+03:30`) + 86400000;
   const ttl = Math.max(0, Math.min(data.cache_max_age_seconds - age, (midnight - Date.now()) / 1000));
   cache.set(key, { data, expires: Date.now() + ttl * 1000 });
   while (cache.size > 3) cache.delete(cache.keys().next().value!);

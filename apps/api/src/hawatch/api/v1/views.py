@@ -144,7 +144,10 @@ def points_list(request):
                 "meta": meta_base(
                     selected_date=today,
                     period="morning",
-                    extra={"catalog_counts": home_data["catalog_counts"]},
+                    extra={
+                        "catalog_counts": home_data["catalog_counts"],
+                        "attribution": home_data["attribution"],
+                    },
                 ),
             }
         )

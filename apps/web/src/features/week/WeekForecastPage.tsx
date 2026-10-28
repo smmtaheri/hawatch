@@ -37,7 +37,7 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  },[kind,slug]);
  useEffect(()=>{
   let active=true,failed=false,timer:number;setData(null);setError('');setMissing(false);
-  async function load(){if(document.hidden){window.clearTimeout(timer);timer=window.setTimeout(load,120000);return;}try{const d=await loadWeek(kind,slug);if(active){setData(d);setError('');window.clearTimeout(timer);const midnight=Date.parse(`${d.range_start}T00:00:00+03:30`)+86400000;timer=window.setTimeout(load,Math.max(1000,Math.min(d.cache_max_age_seconds*1000,midnight-Date.now())));}}catch(e){if(active){failed=true;window.clearTimeout(timer);setError(e instanceof Error?e.message:'دریافت پیش‌بینی ممکن نشد');setMissing((e as {status?:number}).status===404);}}}
+  async function load(){if(document.hidden){window.clearTimeout(timer);timer=window.setTimeout(load,120000);return;}try{const d=await loadWeek(kind,slug);if(active){setData(d);setError('');window.clearTimeout(timer);const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tehran',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());const midnight=Date.parse(`${today}T00:00:00+03:30`)+86400000;timer=window.setTimeout(load,Math.max(1000,Math.min(d.cache_max_age_seconds*1000,midnight-Date.now())));}}catch(e){if(active){failed=true;window.clearTimeout(timer);setError(e instanceof Error?e.message:'دریافت پیش‌بینی ممکن نشد');setMissing((e as {status?:number}).status===404);}}}
   void load();const focus=()=>{if(!failed)void load();};window.addEventListener('focus',focus);const visible=()=>{if(!document.hidden&&!failed)void load();};document.addEventListener('visibilitychange',visible);
   return()=>{active=false;window.clearTimeout(timer);window.removeEventListener('focus',focus);document.removeEventListener('visibilitychange',visible);};
  },[kind,slug]);
@@ -64,12 +64,10 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  },[data,kind,slug,navigate]);
  if(missing)return <NotFoundPage title={kind==='point'?'نقطه پیدا نشد':'مسیر پیدا نشد'}/>;
  const routeQuery=new URLSearchParams(params);routeQuery.delete('past_program');
- const stale=data?.last_generated_at&&Date.now()-Date.parse(data.last_generated_at)>data.stale_after_hours*3600000;
- return <PageShell className={kind==='route'?'route-page':'point-page'} back showInitialContent={!data} loadingState={error?'error':data?'ready':'loading'}>
+ return <PageShell className={kind==='route'?'route-page':'point-page'} back showInitialContent={!data} loadingState={data?'ready':error?'error':'loading'} attribution={data?.attribution}>
   {params.get('past_program')==='1'||(data&&params.get('date')&&params.get('date')!<data.range_start)?<p role="status">تاریخ این برنامه گذشته است؛ پیش‌بینی امروز نمایش داده می‌شود.</p>:null}
-  {stale?<p role="status">دادهٔ پیش‌بینی قدیمی است؛ زمان انتشار داده را در نظر بگیرید.</p>:null}
   {data?.timing_pending?<p role="status">زمان‌بندی مسیر هنوز تأیید نشده است؛ زمان رسیدن و هوای آن نمایش داده نمی‌شود.</p>:null}
-  {error?<p role="alert">{error}؛ لطفاً صفحه را رفرش کنید.</p>:null}
+  {!data&&error?<p role="alert">{error}؛ لطفاً صفحه را رفرش کنید.</p>:null}
   {!data&&!error?<p role="status">در حال دریافت پیش‌بینی…</p>:null}
   <div ref={root}/>
   {routesOpen?<Dialog className="week-route-picker" title="انتخاب مسیر" onClose={()=>setRoutesOpen(false)}>{(data?.related_routes||[]).map(r=><Link key={r.slug} to={`/routes/${r.slug}${routeQuery.size?'?'+routeQuery.toString():''}`} onClick={()=>setRoutesOpen(false)}>{r.title}</Link>)}<Link to="/routes" onClick={()=>setRoutesOpen(false)}>همهٔ مسیرها</Link></Dialog>:null}

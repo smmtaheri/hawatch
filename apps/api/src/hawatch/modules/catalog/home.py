@@ -10,6 +10,7 @@ from django.utils import timezone
 
 from hawatch.common.time import to_fa_digits
 from hawatch.integrations.weather.ingest import latest_snapshot_metadata, snapshot_freshness
+from hawatch.modules.forecasts.attribution import attribution_payload, source_label
 from hawatch.modules.analytics.models import PageViewEvent
 from hawatch.modules.catalog.identity import category_key_for_point
 from hawatch.modules.catalog.runtime import ordered_publicly_visible_destinations
@@ -17,7 +18,7 @@ from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
 
-HOME_CATALOG_CACHE_KEY = "hawatch:home-catalog:v1"
+HOME_CATALOG_CACHE_KEY = "hawatch:home-catalog:v2"
 HOME_CATALOG_CACHE_SECONDS = 300
 HOME_POPULAR_DESTINATION_COUNT = 4
 
@@ -119,6 +120,10 @@ def home_catalog_data() -> dict:
             "routes": Route.objects.filter(is_active=True).count(),
         },
         "freshness": snapshot_freshness(snapshot),
+        "attribution": attribution_payload(
+            source_label(snapshot.source, snapshot.provider) if snapshot else "دادهٔ هواشناسی",
+            snapshot.generated_at if snapshot else None,
+        ),
     }
     try:
         cache.set(HOME_CATALOG_CACHE_KEY, data, timeout=HOME_CATALOG_CACHE_SECONDS)

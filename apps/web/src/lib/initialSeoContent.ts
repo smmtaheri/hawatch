@@ -20,7 +20,7 @@ export interface InitialHomeData {
     seo_indexable: boolean;
   }>;
   catalog_counts: { points: number; routes: number };
-  freshness: string;
+  attribution: { source: string; updated_at: string; updated_label: string } | null;
 }
 let homeData: InitialHomeData | null = null;
 

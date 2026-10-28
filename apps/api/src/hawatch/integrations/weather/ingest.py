@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import time
+from collections import Counter
 from contextlib import contextmanager
 from dataclasses import replace
 from datetime import timedelta
@@ -147,6 +148,16 @@ def _usable_rows(raw_point: dict, *, latitude: float, longitude: float, generate
         return []
 
 
+def _covers_visible_week(point_rows: Sequence[dict], *, generated_at) -> bool:
+    """A sparse provider response must not replace a point's good week."""
+
+    today = now_tehran(generated_at).date()
+    counts = Counter(now_tehran(row["forecast_at"]).date() for row in point_rows)
+    # The public week is today + seven dates. A small per-day margin tolerates
+    # isolated malformed hours while rejecting short/truncated provider bodies.
+    return all(counts[today + timedelta(days=offset)] >= 18 for offset in range(8))
+
+
 @contextmanager
 def ingest_lock(*, lock_key: int = INGEST_LOCK_KEY) -> Iterator[None]:
     """Postgres advisory lock to prevent concurrent ingest runs.
@@ -213,6 +224,7 @@ def persist_ingest(
     hourly_rows: list[ForecastRecord] = []
     resolutions: list[ForecastPointResolution] = []
     forecast_times_by_point: dict[str, set] = {}
+    full_week_coverage_by_point: dict[str, bool] = {}
     valid_from = None
     valid_to = None
     bucket = hour_bucket(now_tehran())
@@ -247,6 +259,9 @@ def persist_ingest(
                 batch_failed = batch_failed or not point_rows
                 continue
             successful_point_ids.append(point_id)
+            full_week_coverage_by_point[point_id] = _covers_visible_week(
+                point_rows, generated_at=generated_at
+            )
             resolved = extract_resolution(raw_point)
             resolutions.append(
                 ForecastPointResolution(
@@ -445,6 +460,10 @@ def persist_ingest(
         yesterday_start = localize_dt(local_today - timedelta(days=1), 0)
         today_start = localize_dt(local_today, 0)
         for point_id, forecast_times in forecast_times_by_point.items():
+            if not full_week_coverage_by_point.get(point_id, False):
+                # Sparse but usable hours can add coverage; they must never
+                # erase other days/hours that remain valid in storage.
+                continue
             ForecastRecord.objects.filter(
                 weather_point=point_by_slug[point_id],
                 data_mode="live",

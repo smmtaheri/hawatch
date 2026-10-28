@@ -1,20 +1,117 @@
 from datetime import timedelta
 from hashlib import sha256
 import json
+import logging
 import time
 import zlib
 from django.core.cache import cache
+from django.db import DatabaseError
 from django.http import HttpResponse
+from django.utils.dateparse import parse_datetime
 from django.utils.http import parse_etags
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import NotFound
 from hawatch.common.time import now_tehran, localize_dt
-from .week_bundles import build_week
+from hawatch.modules.forecasts.models import LastGoodWeekForecast
+from .week_bundles import build_week, has_usable_week_data
 from .week_cache import revision
 from .week_interest import payload_ttl, touch_page
 
-WEEK_CACHE_SCHEMA = "week-11"
+WEEK_CACHE_SCHEMA = "week-12"
+LAST_GOOD_CACHE_SECONDS = 30 * 24 * 60 * 60
+log = logging.getLogger(__name__)
+
+
+def _last_good_key(kind, slug):
+    return f"week-last-good:v1:{kind}:{slug}"
+
+
+def _decode_last_good(stored, *, expected_catalog_signature=None):
+    if not stored:
+        return None
+    try:
+        body = zlib.decompress(bytes(stored[0]))
+        digest = sha256(body).hexdigest()
+        if stored[1] != digest:
+            return None
+        payload = json.loads(body)
+        if payload.get("schema_version") != "week-2" or not has_usable_week_data(payload):
+            return None
+        if expected_catalog_signature and payload.get("catalog_signature") != expected_catalog_signature:
+            return None
+        return body, f'"{digest}"'
+    except (TypeError, ValueError, zlib.error, json.JSONDecodeError):
+        return None
+
+
+def _load_last_good(kind, slug, *, expected_catalog_signature=None):
+    key = _last_good_key(kind, slug)
+    try:
+        cached = _decode_last_good(cache.get(key), expected_catalog_signature=expected_catalog_signature)
+        if cached:
+            return cached
+    except Exception:
+        pass
+    try:
+        row = LastGoodWeekForecast.objects.filter(kind=kind, slug=slug).only(
+            "schema_version", "payload", "payload_sha256", "catalog_signature"
+        ).first()
+    except DatabaseError:
+        log.exception("Could not read durable last-good week forecast for %s:%s", kind, slug)
+        return None
+    if row is None or row.schema_version != "week-2":
+        return None
+    decoded = _decode_last_good((row.payload, row.payload_sha256), expected_catalog_signature=expected_catalog_signature)
+    if decoded:
+        try:
+            cache.set(key, (zlib.compress(decoded[0], level=3), row.payload_sha256), LAST_GOOD_CACHE_SECONDS)
+        except Exception:
+            pass
+    return decoded
+
+
+def _store_last_good(kind, slug, body, payload):
+    attribution = payload.get("attribution") or {}
+    updated_at = attribution.get("updated_at")
+    if not updated_at or not has_usable_week_data(payload):
+        return
+    updated_at = parse_datetime(updated_at)
+    if updated_at is None:
+        return
+    digest = sha256(body).hexdigest()
+    compressed = zlib.compress(body, level=6)
+    source_label = str(attribution.get("source") or "")[:160]
+    try:
+        row = LastGoodWeekForecast.objects.filter(kind=kind, slug=slug).only("id", "payload_sha256").first()
+        if row is None:
+            LastGoodWeekForecast.objects.create(
+                kind=kind,
+                slug=slug,
+                schema_version="week-2",
+                payload=compressed,
+                payload_sha256=digest,
+                catalog_signature=payload["catalog_signature"],
+                updated_at=updated_at,
+                source_label=source_label,
+            )
+        elif row.payload_sha256 != digest:
+            LastGoodWeekForecast.objects.filter(pk=row.pk).update(
+                schema_version="week-2",
+                payload=compressed,
+                payload_sha256=digest,
+                catalog_signature=payload["catalog_signature"],
+                updated_at=updated_at,
+                source_label=source_label,
+            )
+    except DatabaseError:
+        # Redis and the live response remain useful if the durable mirror is
+        # temporarily unavailable; do not fail a good forecast for its cache.
+        log.exception("Could not persist last-good week forecast for %s:%s", kind, slug)
+    try:
+        cache.set(_last_good_key(kind, slug), (zlib.compress(body, level=3), digest), LAST_GOOD_CACHE_SECONDS)
+    except Exception:
+        pass
 
 def cached_week(kind, slug, today):
     # Bump the payload schema when serialization changes, independently of UI releases.
@@ -31,9 +128,40 @@ def cached_week(kind, slug, today):
     except Exception:
         owner = False
     try:
-        payload = build_week(kind, slug, today)
+        try:
+            payload = build_week(kind, slug, today)
+        except NotFound:
+            # An unknown or inactive URL must stay a real 404, not inherit a
+            # previous bundle belonging to a deleted catalog entry.
+            raise
+        except Exception:
+            log.exception("Live week build failed for %s:%s; trying last-good forecast", kind, slug)
+            fallback = _load_last_good(kind, slug)
+            if fallback:
+                try:
+                    cache.set(key, (zlib.compress(fallback[0], level=3), fallback[1]), 60)
+                except Exception:
+                    pass
+                return fallback, "LAST-GOOD"
+            raise
+
+        if not has_usable_week_data(payload):
+            fallback = _load_last_good(
+                kind, slug, expected_catalog_signature=payload.get("catalog_signature")
+            )
+            if fallback:
+                # Retry the live builder soon, but keep the last complete
+                # response on screen instead of caching an empty week.
+                try:
+                    cache.set(key, (zlib.compress(fallback[0], level=3), fallback[1]), 60)
+                except Exception:
+                    pass
+                return fallback, "LAST-GOOD"
+
         body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode()
         stored = (body, '"'+sha256(body).hexdigest()+'"')
+        if has_usable_week_data(payload):
+            _store_last_good(kind, slug, body, payload)
         until_midnight = max(1, int((localize_dt(today+timedelta(days=1),0)-now_tehran()).total_seconds()))
         try:
             cache.set(key, (zlib.compress(body, level=3), stored[1]), min(until_midnight, payload_ttl()) if payload["last_generated_at"] else 120)
