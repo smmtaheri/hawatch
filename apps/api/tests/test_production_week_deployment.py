@@ -60,14 +60,25 @@ get_env_value(){ :; }
 curl(){ printf '%s\n' '<main data-seo-initial="true"></main>'; }
 docker(){
  printf '%s\n' "$*" >> "$COMMAND_LOG"
+ if [[ "$*" == *'tests/test_ssr_attribution.py'* && "${FAIL_SSR:-0}" == 1 ]]; then return 1; fi
  if [[ "$*" == *'sync_catalog --apply'* && "${FAIL_SYNC:-0}" == 1 ]]; then return 1; fi
 }
 """ + function + '\nrun_stack\n'
-    def run(fail=False,skip_catalog=False):
+    def run(fail=False,skip_catalog=False,fail_ssr=False):
         commands.write_text('')
-        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
+        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'FAIL_SSR':str(int(fail_ssr)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
         return result, commands.read_text()
     return repo,fixture,commit,run
+
+
+def test_ssr_failure_blocks_release_before_services_or_catalog_are_changed(tmp_path):
+    _, _, _, run = _deployment_harness(tmp_path)
+    result, commands = run(fail_ssr=True)
+    assert result.returncode != 0
+    assert '--ds=hawatch.config.settings.test tests/test_ssr_attribution.py' in commands
+    assert 'up -d' not in commands
+    assert 'sync_catalog --apply' not in commands
+    assert '40-publish-assets.sh' not in commands
 
 
 def test_normal_deploy_preserves_data_services_and_never_warms_or_fetches(tmp_path):

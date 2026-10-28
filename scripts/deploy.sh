@@ -391,6 +391,11 @@ run_stack() {
   done
   [[ "$build_succeeded" -eq 1 ]] || fail "Release image build failed; existing containers were not stopped. Check Docker Hub connectivity and retry."
 
+  # Render every public page shape in the candidate image before replacing
+  # services. These tests use isolated settings and require no DB or provider.
+  log "Validating SSR rendering before replacing running services."
+  "${compose[@]}" run --rm --no-deps --entrypoint python api -m pytest -p no:cacheprovider --ds=hawatch.config.settings.test tests/test_ssr_attribution.py tests/test_initial_forecast.py
+
   # Check every packaged identity/route contract before replacing a healthy release.
   # This reads JSON only; it neither imports catalog rows nor calls the provider.
   log "Validating all packaged catalogs before replacing running services."

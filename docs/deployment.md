@@ -40,6 +40,10 @@ node scripts/generate-public-pages.mjs --check
 سرویس‌های فعال متوقف می‌شود. اسکریپت deploy بعد از بالا آمدن gateway، پاسخ SSR
 خانه، صفحهٔ ۲ مقصدها و مسیرها و دو صفحهٔ canonical توچال را هم بررسی می‌کند.
 این smoke check خطای مسیر را قبل از اعلام موفقیت انتشار آشکار می‌کند.
+پیش از تعویض سرویس‌ها، تست‌های `test_ssr_attribution.py` و
+`test_initial_forecast.py` داخل image جدید با settings تست اجرا می‌شوند؛ این
+گیت قالب واقعی همهٔ نوع صفحه را بدون دیتابیس یا provider رندر می‌کند. شکست آن
+قبل از تغییر سرویس‌ها، انتشار فایل‌ها یا سینک کاتالوگ، deploy را متوقف می‌کند.
 
 در deployهای شامل تغییر renderer SEO، هر دو image `api` و `web` باید build شوند:
 Django HTML اولیهٔ catalog-driven را render می‌کند و web bundle با نام پایدار

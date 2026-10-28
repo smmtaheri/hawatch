@@ -90,6 +90,27 @@ def _localized_identity_summary(point: WeatherPoint) -> str:
     return _PLACE_TYPE_TOKEN_RE.sub(replace, summary)
 
 
+def _page_attribution(page: dict) -> dict | None:
+    """Normalize the footer from this page's existing public forecast only."""
+
+    if page["kind"] == "home":
+        payload = page.get("initial_data")
+    elif page["kind"] in {"point", "route"}:
+        initial = page.get("initial_forecast")
+        payload = initial.get("payload") if isinstance(initial, dict) else None
+    else:
+        return None
+    attribution = payload.get("attribution") if isinstance(payload, dict) else None
+    if not isinstance(attribution, dict) or not attribution:
+        return None
+    updated_at = attribution.get("updated_at") or ""
+    return {
+        "source": attribution.get("source") or "دادهٔ هواشناسی",
+        "updated_at": updated_at,
+        "updated_label": (attribution.get("updated_label") or "") if updated_at else "",
+    }
+
+
 def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpResponse:
     robots = _robots(request) if status == 200 and page.get("indexable", True) else "noindex,follow"
     initial_forecast_script = (
@@ -102,6 +123,7 @@ def _render(request: HttpRequest, *, page: dict, status: int = 200) -> HttpRespo
         "catalog/seo_page.html",
         {
             "page": page,
+            "attribution": _page_attribution(page),
             "initial_forecast_script": initial_forecast_script,
             "robots": robots,
             "ga4_measurement_id": getattr(settings, "GA4_MEASUREMENT_ID", ""),

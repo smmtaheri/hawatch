@@ -183,7 +183,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert bot_response.status_code == 200
     # The render timestamp advances per response; content and public data do not
     # vary for crawlers or require a second weather endpoint.
-    without_timestamp = lambda text: re.sub(r'"rendered_at": "[^"]*"', '"rendered_at": ""', text)
+    without_timestamp = lambda text: re.sub(r'"rendered_at"\s*:\s*"[^"]*"', '"rendered_at":""', text)
     assert without_timestamp(bot_response.content.decode()) == without_timestamp(body)
 
     query_response = api_client.get(f"/points/{point.slug}?date=2026-09-04&period=morning")

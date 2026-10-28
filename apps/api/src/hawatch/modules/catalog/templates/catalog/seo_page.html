@@ -179,7 +179,6 @@
       </main>
       {% if page.kind == "home" %}{{ page.initial_data|json_script:"home-initial-data" }}{% endif %}
       {% if initial_forecast_script %}{{ initial_forecast_script }}{% endif %}
-      {% with attribution=page.initial_forecast.payload.attribution|default:page.initial_data.attribution %}
       <footer class="forecast-attribution" aria-label="منبع و زمان به‌روزرسانی دادهٔ هواشناسی">
         {% if attribution %}
           دادهٔ هواشناسی: {{ attribution.source }}{% if attribution.updated_label %} · آخرین به‌روزرسانی: <time datetime="{{ attribution.updated_at }}">{{ attribution.updated_label }}</time>{% endif %}
@@ -187,7 +186,6 @@
           دادهٔ هواشناسی
         {% endif %}
       </footer>
-      {% endwith %}
     </div>
     {% include "catalog/page_load_bootstrap.html" %}
     <script type="module" src="{{ asset_prefix }}/assets/hawatch.js"></script>

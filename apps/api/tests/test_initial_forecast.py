@@ -16,7 +16,8 @@ def test_html_uses_the_same_anonymous_cached_payload_as_the_week_api():
     assert cached.call_args.args == ("point","sample",datetime.fromisoformat(initial["rendered_at"]).date())
 
 
-def test_embedded_weather_is_script_safe_and_html_cache_cannot_keep_it_for_five_minutes():
+def test_embedded_weather_is_script_safe_and_html_cache_cannot_keep_it_for_five_minutes(settings):
+    settings.HAWATCH_QA_NOINDEX = False
     page = {"kind":"point","title":"آزمایش","headline":"آزمایش","canonical":"https://hawatch.ir/points/sample",
             "initial_forecast":{"payload":{"subject":{"name":"</script><script>bad()</script>"}},"rendered_at":"2026-10-18T12:00:00+03:30"}}
     local = datetime(2026,10,18,23,59,45,tzinfo=ZoneInfo("Asia/Tehran"))

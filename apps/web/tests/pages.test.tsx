@@ -395,10 +395,19 @@ describe("approved week forecast and unchanged public pages", () => {
     await screen.findByRole("heading", { name: "آب‌وهوای قلهٔ توچال" });
     expect(weatherCalls()).toHaveLength(2);
   });
-  it("retains the stale-data notice", async () => {
-    stale = true;
-    mount("/points/tochal");
-    expect(await screen.findByText(/داده.*قدیمی/)).toBeInTheDocument();
+  it.each(["point", "route"] as const)("keeps the last %s forecast visible with its actual update time and no stale notice", async (kind) => {
+    const data = weekFixture(kind, day, { stale: true });
+    data.attribution = { source: "منبع آزمایشی", updated_at: "2020-01-01T00:00:00Z", updated_label: "۱۱ دی ۱۳۹۸، ۰۳:۳۰" };
+    fetchMock.mockImplementation((input: RequestInfo) =>
+      String(input).includes("/forecast/week/") ? response(data) : defaultFetch(input),
+    );
+    mount(kind === "point" ? "/points/tochal" : "/routes/tochal-darband");
+    await screen.findByRole("heading", { name: kind === "point" ? "آب‌وهوای قلهٔ توچال" : "دربند تا توچال" });
+    expect(await screen.findByText(data.attribution.updated_label)).toHaveAttribute("datetime", data.attribution.updated_at);
+    expect(screen.getByText(/دادهٔ هواشناسی: منبع آزمایشی/)).toBeVisible();
+    expect(screen.queryByText(/داده.*قدیمی/)).toBeNull();
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(weatherCalls()).toHaveLength(1);
   });
   it("switches theme without refetching weather", async () => {
     mount("/points/tochal");
