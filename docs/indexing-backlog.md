@@ -32,9 +32,9 @@ redirect/status یا حذف عمدی، مورد جداگانه و حل‌نشد�
 
 ## صف جاری
 
-URLها canonical و قابل‌کپی‌اند. پنج URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
-صف حذف شدند؛ پس از انتشارهای جدید، صف شامل ۸۸۳ URL است: ۲ Hub، ۵۲۸ مقصد اصلی، ۲۶۱ مسیر و ۹۲ نقطهٔ
-پشتیبان. یک مقصد تازهٔ دیگر (پارک نبکاها) به‌دلیل 404 کش‌شده روی CDN فعلاً در صف درخواست ایندکس نیست؛ پس از رفع آن و تأیید پاسخ canonical باید اضافه شود. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۱۶ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
+URLها canonical و قابل‌کپی‌اند. نه URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
+صف حذف شدند؛ پس از انتشارهای جدید، صف شامل ۸۹۸ URL است: ۲ Hub، ۵۳۷ مقصد اصلی، ۲۶۷ مسیر و ۹۲ نقطهٔ
+پشتیبان. پارک نبکاها پس از رفع خطای قبلی، در بررسی زندهٔ ۲۸ اکتبر از CDN پاسخ 200 گرفت و در sitemap بود؛ بنابراین به صف درخواست ایندکس برگشت. این بررسی انتشار را تأیید می‌کند، نه ایندکس‌شدن در گوگل را. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۱۵ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
 الفبایی، مگر مقصدهای منتخب که اولویت محصولی دارند. پس از
 دریافت گزارش تازهٔ Search Console، موردی که از قبل ایندکس شده از صف حذف می‌شود؛
 URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنترل canonical/status به صف افزوده شدند.
@@ -73,18 +73,34 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - فلات گندم‌بریان — <https://hawatch.ir/points/gandom-beryan>
 - روستای ده‌سلم — <https://hawatch.ir/points/deh-salm>
 
-### P1 — هشت مقصد دشت لوت افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+### P1 — مقصدهای افزوده‌شده در ۲۸ اکتبر ۲۰۲۶ (۱۱ موردِ باقی‌مانده)
 
-- دشت لوت — <https://hawatch.ir/points/lut-desert>
-- ریگ یلان — <https://hawatch.ir/points/rig-e-yalan>
+- آبشار کلوگان — <https://hawatch.ir/points/kolougan-waterfall>
+- قلهٔ برف‌کرمو — <https://hawatch.ir/points/barf-kermo-peak>
+- قلهٔ چهل‌مر شهیدان — <https://hawatch.ir/points/chehel-mor-shahidan>
+- قلهٔ بوزسینه — <https://hawatch.ir/points/boz-sina-peak>
+- آبشار زمرد حویق — <https://hawatch.ir/points/zomorod-waterfall>
+- تنگهٔ آزارک رامسر — <https://hawatch.ir/points/azarek-gorge>
+- آبشار شاه‌لولاک چرمهین — <https://hawatch.ir/points/shah-lulak-waterfall>
+- آبشار و جنگل پلنگ‌درهٔ شیرگاه — <https://hawatch.ir/points/palang-dareh-waterfall>
+- تالاب آلماگل — <https://hawatch.ir/points/almagol-wetland>
+- قلهٔ هزاربند — <https://hawatch.ir/points/hazarband-peak>
+- قلهٔ سلطان سنجر — <https://hawatch.ir/points/sultan-sanjar-peak>
+
+### P1 — شش مقصد دشت لوتِ باقی‌مانده در صف (۲۳ و ۲۸ اکتبر ۲۰۲۶)
+
 - درهٔ زبان‌مار — <https://hawatch.ir/points/snake-tongue-canyon>
 - ستاره‌ریگ لوت — <https://hawatch.ir/points/star-rig>
 - کلوت‌های تخم‌مرغی — <https://hawatch.ir/points/egg-shaped-kaluts>
 - تنگ برج — <https://hawatch.ir/points/tang-e-borj>
-- چالهٔ ملک‌محمد (چشم لوت) — <https://hawatch.ir/points/malek-mohammad-hole>
 - تنگ رتیل — <https://hawatch.ir/points/tang-ratil>
+- پارک نبکاهای شهداد — <https://hawatch.ir/points/nebka-park>
 
-### P2 — هفت مسیر افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
+دشت لوت و چالهٔ ملک‌محمد (چشم لوت) را کاربر در ۲۳ اکتبر ۲۰۲۶ به‌عنوان ایندکس‌شده
+تأیید کرد. کاربر همچنین در ۲۸ اکتبر ایندکس‌شدن [ریگ یلان](https://hawatch.ir/points/rig-e-yalan)
+و [مرداب دیوک](https://hawatch.ir/points/dewouk-marsh) را تأیید کرد؛ این چهار URL از صف جاری حذف شدند.
+
+### P2 — مسیرهای افزوده‌شده در ۲۳ و ۲۸ اکتبر ۲۰۲۶
 
 - پای‌کار جادهٔ ایستگاه تا قلهٔ نصیری گنو — <https://hawatch.ir/routes/geno-south-nasiri-ascent>
 - پای‌کار پیاده تا سرچشمهٔ رغز — <https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head>
@@ -93,10 +109,12 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - قناتغستان تا قلهٔ سه‌شاخ بزرگ — <https://hawatch.ir/routes/qanatghestan-to-se-shakh-bozorg>
 - پارکینگ بیدستان تا قلهٔ پلوار — <https://hawatch.ir/routes/pulvar-bidestan-summit>
 - پای‌کار پیاده تا فلات گندم‌بریان — <https://hawatch.ir/routes/gandom-beryan-trailhead-to-plateau>
-
-### منتشرشده، در انتظار رفع CDN (فعلاً بیرون از صف ایندکس)
-
-- پارک نبکاهای شهداد — <https://hawatch.ir/points/nebka-park>: API و مبدأ با پاسخ 200 و مسیر دارای اسلش انتهایی با پاسخ 200 تأیید شدند؛ شکل canonical بدون اسلش از CDN فعلاً 404 کش‌شده برمی‌گرداند. تا رفع کش منفی، URL برای درخواست ایندکس به صف جاری اضافه نمی‌شود.
+- روستای کلوگان تا آبشار کلوگان — <https://hawatch.ir/routes/kalugan-village-to-waterfall>
+- گردنهٔ بیژن تا قلهٔ برف‌کرمو — <https://hawatch.ir/routes/bijan-pass-to-barf-kermo>
+- جِرمی تا قلهٔ چهل‌مر شهیدان — <https://hawatch.ir/routes/jermi-to-chehel-mor-shahidan>
+- پارکینگ پیمبور تا مرداب دیوک — <https://hawatch.ir/routes/pimbour-parking-to-dewouk-marsh>
+- حسنکدر تا قلهٔ هزاربند — <https://hawatch.ir/routes/hasanakdar-to-hazarband>
+- مجیدآباد تا قلهٔ سلطان سنجر — <https://hawatch.ir/routes/majidabad-to-sultan-sanjar>
 
 ### P1 — سایر مقصدهای اصلی (۴۹۷؛ الفبایی)
 
