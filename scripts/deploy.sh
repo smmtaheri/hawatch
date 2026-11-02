@@ -374,7 +374,7 @@ run_stack() {
 
   "${compose[@]}" config --quiet
 
-  local -a build_targets=(api web maintenance ingest-scheduler ingest)
+  local -a build_targets=(api web maintenance ingest-scheduler ingest sitemap-publisher)
   local build_attempt=1
   local build_succeeded=0
   while [[ "$build_attempt" -le "$DOCKER_BUILD_RETRIES" ]]; do
@@ -426,6 +426,10 @@ run_stack() {
   "${compose[@]}" up -d --no-recreate postgres redis
   wait_for_healthy postgres
   wait_for_healthy redis
+  # Prepare schema/bootstrap exactly as API startup does, but run the builder
+  # instead of a web worker. Never activate file-serving before valid XML exists.
+  log "Preparing the persistent sitemap before switching API and gateway."
+  "${compose[@]}" run --rm --no-deps --entrypoint /app/entrypoint.sh sitemap-publisher python manage.py build_sitemap --wait-lock-seconds 30
   # Do not let application dependency traversal recreate data services.
   # Activate the API, then replace the gateway promptly so this first rollout
   # stops using its old statically-resolved API address. Later API/Web container
@@ -435,7 +439,7 @@ run_stack() {
   "${compose[@]}" up -d --no-deps --force-recreate nginx
   wait_for_healthy nginx
 
-  "${compose[@]}" up -d --no-deps web maintenance ingest-scheduler
+  "${compose[@]}" up -d --no-deps web maintenance ingest-scheduler sitemap-publisher
   if [[ "$ENABLE_OBSERVABILITY" == "1" ]]; then
     "${compose[@]}" up -d --no-recreate opensearch opensearch-dashboards opensearch-auth-init \
       opensearch-provisioner vector prometheus grafana
@@ -478,6 +482,11 @@ run_stack() {
   fi
   log "Week cache warming skipped; scheduled/manual ingest warms it after fresh data."
 
+  log "Publishing sitemap after catalog synchronization."
+  "${compose[@]}" run --rm --no-deps sitemap-publisher python manage.py build_sitemap --wait-lock-seconds 30
+  curl -fsS --max-time 5 "http://127.0.0.1:${NGINX_PUBLISH_PORT}/sitemap.xml" \
+    | "${compose[@]}" exec -T api python -c 'import sys; from xml.etree import ElementTree as E; r=E.fromstring(sys.stdin.buffer.read()); assert r.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"; assert len(r) >= 3; print("Public sitemap XML valid:", len(r))'
+  curl -fsSI --max-time 5 "http://127.0.0.1:${NGINX_PUBLISH_PORT}/sitemap.xml" >/dev/null
   curl -fsS "http://127.0.0.1:${API_PUBLISH_PORT}/api/v1/health/ready/" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/healthz" >/dev/null
   curl -fsS "http://127.0.0.1:${NGINX_PUBLISH_PORT}/" >/dev/null

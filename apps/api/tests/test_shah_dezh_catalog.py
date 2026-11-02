@@ -41,7 +41,7 @@ def test_shah_dezh_is_documented_without_publishing_a_technical_hiking_route():
 
 
 @pytest.mark.django_db
-def test_shah_dezh_has_an_indexable_canonical_page_and_sitemap_entry(api_client):
+def test_shah_dezh_has_an_indexable_canonical_page_and_sitemap_entry(api_client, published_sitemap):
     from hawatch.api.v1.serializers import related_routes_for_weather_point
     from hawatch.modules.catalog.catalog import seed_catalog
     from hawatch.modules.forecasts.models import WeatherPoint
@@ -58,6 +58,6 @@ def test_shah_dezh_has_an_indexable_canonical_page_and_sitemap_entry(api_client)
     html = response.content.decode()
     assert NAME in html
     assert f"https://hawatch.ir/points/{SLUG}" in html
-    sitemap = api_client.get("/api/v1/seo/sitemap.xml")
+    sitemap = published_sitemap()
     assert sitemap.status_code == 200
     assert f"https://hawatch.ir/points/{SLUG}</loc>" in sitemap.content.decode()

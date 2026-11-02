@@ -240,14 +240,15 @@ ENABLE_OBSERVABILITY=1 PUBLIC_HOST=SERVER_IP /root/hawatch-deploy.sh
 این فرمان فقط برنچ `main` را دیپلوی می‌کند. deploy تنظیم دریافت provider را
 ۱۰ روز و Redis مشترک را فعال می‌کند؛ نسخهٔ bundle فرانت و SSR از hash ورودی‌های
 فرانت و نسخهٔ فونت/تصویر از hash فایل‌های public ساخته می‌شود؛ انتشار صرفاً بکند
-آدرس فایل‌های فرانت را عوض نمی‌کند. کش هوا مستقل و `week-11` است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
-می‌شوند. migration در startup API انجام می‌شود؛ بعد از سلامت سرویس،
+آدرس فایل‌های فرانت را عوض نمی‌کند. کش هوا مستقل و `week-12` است. کل کاتالوگ‌های بسته پس از build و قبل از جایگزینی سرویس‌های فعال اعتبارسنجی
+می‌شوند. migration/bootstrap ابتدا در مرحلهٔ آماده‌سازی sitemap و سپس به‌صورت
+idempotent در startup API اجرا می‌شوند؛ بعد از سلامت سرویس،
 `sync_catalog --apply` و `apply_route_descent` فقط در صورت تغییر fingerprint اجرا می‌شوند.
 fingerprint موفق در `.git/hawatch-catalog-deploy.sha256` نگهداری می‌شود؛ شکست import
 آن را جلو نمی‌برد و اجرای بعدی دوباره تلاش می‌کند. اولین اجرای این نسخه یک بار
 همگام‌سازی می‌کند. اجرای دوبارهٔ فرود بدون تغییر، revision هوا را باطل نمی‌کند.
 `warm_week_cache` در دیپلوی اجرا نمی‌شود؛ فقط ingest موفق/partial آن را اجرا می‌کند.
-در گذار از کش قبلی به `week-11` پاسخ‌ها یک بار هنگام درخواست از DB ساخته می‌شوند؛
+در گذار از کش قبلی به `week-12` پاسخ‌ها یک بار هنگام درخواست از DB ساخته می‌شوند؛
 انتشارهای ظاهری بعدی همان کش را مصرف می‌کنند. تغییر قرارداد سریال‌شده باید
 `WEEK_CACHE_SCHEMA` را افزایش دهد؛ تغییر هوا/catalog همچنان revision را عوض می‌کند.
 Redis در انتشار عادی حفظ می‌شود، اما با تنظیم فعلیِ بدون persistence، ری‌استارت
@@ -282,6 +283,30 @@ ssh hawatch 'export HAWATCH_STAGE_ENV_FILE=/root/hawatch-stage.env; docker compo
 باقی می‌مانند و سرویسی اجرا نمی‌کنند.
 
 ## گرم‌سازی یک‌باره از لوکال
+
+### انتشار مستقل sitemap
+
+در deploy ابتدا با image جدید، migration/bootstrap و `build_sitemap` اجرا
+می‌شود؛ اگر XML معتبر ساخته نشود، جایگزینی API/gateway شروع نمی‌شود. بعد از
+sync موفق catalog، فایل دوباره ساخته و GET/HEAD عمومی gateway بررسی می‌شوند.
+publisher سپس مستقل هر پنج دقیقه و با علامت Redis زودتر کار می‌کند. اجرای عادی
+deploy همچنان provider هواشناسی را فراخوانی نمی‌کند. volume اختصاصی
+`hawatch_seo_public` با تعویض کانتینر حفظ می‌شود؛ API و Nginx فقط دسترسی خواندن دارند.
+
+بازسازی دستیِ اختیاری با دادهٔ موجود (بدون دریافت هوا):
+
+```bash
+docker compose --env-file .env -f infra/compose/compose.yaml run --rm --no-deps sitemap-publisher python manage.py build_sitemap --wait-lock-seconds 30
+docker compose --env-file .env -f infra/compose/compose.yaml logs --tail 50 sitemap-publisher
+```
+
+پیش‌فرض API دو worker از نوع sync با یک thread برای هر worker است؛ مقدار صریح
+`GUNICORN_WORKERS` در `.env` اولویت دارد و خودکار بازنویسی نمی‌شود. افزایش worker
+جایگزین رفع query سنگین نیست. استیج و قرارداد routing عمومی تغییر نکرده‌اند.
+CDN باید فقط پاسخ موفق `/sitemap.xml` را با هدر مبدأ (حداکثر ۳۰۰ ثانیه) cache کند؛
+تغییر پنل CDN یا purge سراسری جزو این deploy نیست.
+
+### کش هفته
 
 پس از دیپلوی، برای ساخت کش هفته از داده‌های موجود دیتابیس (بدون دریافت از provider و بدون پاک‌کردن Redis):
 

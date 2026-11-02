@@ -35,7 +35,7 @@ def test_tarom_village_is_documented_and_point_only(filename, slug, name, latitu
 @pytest.mark.django_db
 @pytest.mark.parametrize("filename,slug,name,latitude,longitude,elevation", VILLAGES)
 def test_tarom_village_has_an_indexable_page_and_sitemap_entry(
-    api_client, filename, slug, name, latitude, longitude, elevation
+    api_client, filename, slug, name, latitude, longitude, elevation, published_sitemap
 ):
     seed_catalog(catalog_file=filename, raise_on_conflict=True)
     point = WeatherPoint.objects.get(slug=slug)
@@ -50,6 +50,6 @@ def test_tarom_village_has_an_indexable_page_and_sitemap_entry(
     html = response.content.decode()
     assert name in html
     assert f"https://hawatch.ir/points/{slug}" in html
-    sitemap = api_client.get("/api/v1/seo/sitemap.xml")
+    sitemap = published_sitemap()
     assert sitemap.status_code == 200
     assert f"https://hawatch.ir/points/{slug}</loc>" in sitemap.content.decode()

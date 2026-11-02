@@ -5,7 +5,7 @@ def test_production_week_deploy_enables_shared_cache_and_matching_asset_versions
     root=Path(__file__).resolve().parents[3]
     compose=(root/'infra/compose/compose.yaml').read_text()
     script=(root/'scripts/deploy.sh').read_text()
-    assert compose.count('REDIS_URL: redis://redis:6379/0')==2
+    assert compose.count('REDIS_URL: redis://redis:6379/0')==3
     assert compose.count('OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-10}')==2
     assert 'VITE_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}' in compose
     assert compose.count('HAWATCH_ASSET_VERSION: ${HAWATCH_ASSET_VERSION:-local}')==2
@@ -18,6 +18,20 @@ def test_production_week_deploy_enables_shared_cache_and_matching_asset_versions
     assert 'manage.py warm_week_cache' not in script
     assert 'ingest manage.py ingest_open_meteo --wait-lock-seconds 900' in script
     assert script.index("load_packaged_catalogs") < script.index("Starting the new release")
+
+
+def test_sitemap_and_api_concurrency_have_explicit_separate_owners():
+    root = Path(__file__).resolve().parents[3]
+    compose = (root / 'infra/compose/compose.yaml').read_text()
+    entrypoint = (root / 'apps/api/entrypoint.sh').read_text()
+    gateway = (root / 'infra/nginx/nginx.conf').read_text()
+    stage_gateway = (root / 'infra/nginx/stage.conf').read_text()
+    assert 'GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}' in compose
+    assert '--worker-class sync' in entrypoint and '--threads 1' in entrypoint
+    assert compose.count('hawatch_seo_public:/var/lib/hawatch-seo:ro') == 2
+    assert 'command: ["python", "manage.py", "run_sitemap_publisher"]' in compose
+    assert gateway.count('alias /var/lib/hawatch-seo/sitemap.xml;') == 2
+    assert 'alias /var/lib/hawatch-seo/sitemap.xml' not in stage_gateway
 
 
 import os
@@ -57,18 +71,45 @@ fail(){ exit 1; }
 wait_for_healthy(){ :; }
 wait_for_running(){ :; }
 get_env_value(){ :; }
-curl(){ printf '%s\n' '<main data-seo-initial="true"></main>'; }
+curl(){
+ if [[ "$*" == *'/sitemap.xml'* ]]; then
+   printf '%s\n' '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url/><url/><url/></urlset>'
+ else
+   printf '%s\n' '<main data-seo-initial="true"></main>'
+ fi
+}
 docker(){
  printf '%s\n' "$*" >> "$COMMAND_LOG"
+ if [[ "$*" == *'E.fromstring(sys.stdin.buffer.read())'* ]]; then
+   python3 -c 'import sys; from xml.etree import ElementTree as E; r=E.fromstring(sys.stdin.buffer.read()); assert len(r) >= 3'
+ fi
  if [[ "$*" == *'tests/test_ssr_attribution.py'* && "${FAIL_SSR:-0}" == 1 ]]; then return 1; fi
  if [[ "$*" == *'sync_catalog --apply'* && "${FAIL_SYNC:-0}" == 1 ]]; then return 1; fi
+ if [[ "$*" == *'manage.py build_sitemap'* && "${FAIL_SITEMAP:-0}" == 1 ]]; then return 1; fi
 }
 """ + function + '\nrun_stack\n'
-    def run(fail=False,skip_catalog=False,fail_ssr=False):
+    def run(fail=False,skip_catalog=False,fail_ssr=False,fail_sitemap=False):
         commands.write_text('')
-        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'FAIL_SSR':str(int(fail_ssr)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
+        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'FAIL_SSR':str(int(fail_ssr)),'FAIL_SITEMAP':str(int(fail_sitemap)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
         return result, commands.read_text()
     return repo,fixture,commit,run
+
+
+def test_missing_initial_sitemap_blocks_api_and_gateway_replacement(tmp_path):
+    _, _, _, run = _deployment_harness(tmp_path)
+    result, commands = run(fail_sitemap=True)
+    assert result.returncode != 0
+    assert 'manage.py build_sitemap' in commands
+    assert 'up -d --no-deps api' not in commands
+    assert 'up -d --no-deps --force-recreate nginx' not in commands
+
+
+def test_sitemap_is_ready_before_api_and_rebuilt_after_catalog_sync(tmp_path):
+    _, _, _, run = _deployment_harness(tmp_path)
+    result, commands = run()
+    assert result.returncode == 0, result.stderr
+    assert commands.index('manage.py build_sitemap') < commands.index('up -d --no-deps api')
+    assert commands.rindex('manage.py build_sitemap') > commands.index('sync_catalog --apply')
 
 
 def test_ssr_failure_blocks_release_before_services_or_catalog_are_changed(tmp_path):

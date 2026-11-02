@@ -33,7 +33,7 @@ def test_katale_khor_is_one_documented_cave_entrance_without_a_hiking_route():
 
 
 @pytest.mark.django_db
-def test_katale_khor_has_an_indexable_canonical_page_and_sitemap_entry(api_client):
+def test_katale_khor_has_an_indexable_canonical_page_and_sitemap_entry(api_client, published_sitemap):
     seed_catalog(catalog_file=CATALOG, raise_on_conflict=True)
     point = WeatherPoint.objects.get(slug=SLUG)
     assert point.is_active and point.seo_indexable and point.ingest_enabled
@@ -48,6 +48,6 @@ def test_katale_khor_has_an_indexable_canonical_page_and_sitemap_entry(api_clien
     assert "آب‌وهوای غار کتله‌خور؛ دما، باد و بارش | هواچ" in response.content.decode()
     assert "آب‌وهوای عارضهٔ شاخص" not in response.content.decode()
     assert f"https://hawatch.ir/points/{SLUG}" in response.content.decode()
-    sitemap = api_client.get("/api/v1/seo/sitemap.xml")
+    sitemap = published_sitemap()
     assert sitemap.status_code == 200
     assert f"https://hawatch.ir/points/{SLUG}</loc>" in sitemap.content.decode()

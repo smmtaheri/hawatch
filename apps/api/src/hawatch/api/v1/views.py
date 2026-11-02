@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from datetime import timedelta, timezone as dt_timezone
+from datetime import timedelta
 
 from django.core.paginator import EmptyPage, Paginator
 from django.db import connection
-from django.db.models import Case, Count, IntegerField, Max, OuterRef, Prefetch, Subquery, When
+from django.db.models import Case, Count, IntegerField, Prefetch, When
 from django.http import HttpResponse
 from django.utils import timezone as dj_timezone
 from rest_framework.decorators import api_view
@@ -37,7 +37,6 @@ from hawatch.common.time import (
 from hawatch.common.observability import metrics_authorized, metrics_view, set_health
 from hawatch.modules.catalog.runtime import (
     DESTINATIONS_PAGE_SIZE,
-    destination_catalog_timestamp_points,
     ordered_publicly_visible_destinations,
     publicly_visible_destinations,
     publicly_visible_weather_points,
@@ -48,6 +47,8 @@ from hawatch.modules.forecasts.models import ForecastSnapshot, ForecastRecord, W
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.integrations.weather.ingest import snapshot_freshness
 from hawatch.modules.accounts.services import decorate_forecast_payload, resolve_forecast_access
+from hawatch.modules.catalog.sitemap import read_sitemap_status
+from hawatch.modules.catalog.sitemap_http import sitemap_response
 
 
 @api_view(["GET"])
@@ -122,6 +123,7 @@ def health_status(request):
                 "postgis_version": postgis_version,
                 "catalog": catalog,
                 "forecast": forecast,
+                "sitemap": read_sitemap_status(),
             }
         )
     except Exception:
@@ -540,104 +542,5 @@ def robots_txt(_request):
     return response
 
 
-@api_view(["GET"])
-def sitemap_xml(_request):
-    from django.utils.html import escape
-
-    from django.conf import settings
-
-    base = settings.PUBLIC_SITE_ORIGIN
-    successful_forecast_statuses = (
-        ForecastSnapshot.Status.SUCCESS,
-        ForecastSnapshot.Status.PARTIAL,
-    )
-
-    # ForecastRecord.generated_at is written only when normalized hourly data
-    # is persisted for a point.  Looking at records (rather than an ingest
-    # attempt or the latest global snapshot) means a failed/empty point batch
-    # cannot move its sitemap timestamp.
-    point_forecast_lastmod = (
-        ForecastRecord.objects.filter(
-            weather_point_id=OuterRef("pk"),
-            data_mode="live",
-            provider="open-meteo",
-            snapshot__status__in=successful_forecast_statuses,
-        )
-        .order_by("-generated_at", "-pk")
-        .values("generated_at")[:1]
-    )
-    point_rows = list(
-        publicly_visible_weather_points()
-        .filter(seo_indexable=True)
-        .annotate(forecast_updated_at=Subquery(point_forecast_lastmod))
-        .order_by("slug")
-        .values("slug", "updated_at", "forecast_updated_at")
-    )
-    route_forecast_lastmod = (
-        ForecastRecord.objects.filter(
-            weather_point__route_links__route_id=OuterRef("pk"),
-            data_mode="live",
-            provider="open-meteo",
-            snapshot__status__in=successful_forecast_statuses,
-        )
-        .order_by("-generated_at", "-pk")
-        .values("generated_at")[:1]
-    )
-    route_rows = list(
-        Route.objects.filter(is_active=True)
-        .annotate(points_updated_at=Max("points__weather_point__updated_at"))
-        .annotate(forecast_updated_at=Subquery(route_forecast_lastmod))
-        .order_by("slug")
-        .values("slug", "updated_at", "points_updated_at", "forecast_updated_at")
-    )
-    # The destinations hub renders catalog identity/order only; forecast
-    # refreshes must not make this URL look changed.  Include retired primary
-    # rows because sync keeps them as tombstones and timestamps their
-    # deactivation, so removing a destination is observable.
-    destination_rows = destination_catalog_timestamp_points().values("updated_at")
-
-    def latest_timestamp(*values):
-        available = [value for value in values if value is not None]
-        return max(available) if available else None
-
-    destination_lastmod = latest_timestamp(*(row["updated_at"] for row in destination_rows))
-
-    def entry(url: str, updated_at=None) -> str:
-        lastmod = (
-            f"<lastmod>{updated_at.astimezone(dt_timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')}</lastmod>"
-            if updated_at is not None
-            else ""
-        )
-        return f"<url><loc>{escape(url)}</loc>{lastmod}</url>"
-
-    urls = [
-        entry(f"{base}/"),
-        entry(f"{base}/destinations", destination_lastmod),
-        entry(f"{base}/routes"),
-        *(
-            entry(
-                f"{base}/points/{row['slug']}",
-                latest_timestamp(row["updated_at"], row["forecast_updated_at"]),
-            )
-            for row in point_rows
-        ),
-        *(
-            entry(
-                f"{base}/routes/{row['slug']}",
-                latest_timestamp(
-                    row["updated_at"],
-                    row["points_updated_at"],
-                    row["forecast_updated_at"],
-                ),
-            )
-            for row in route_rows
-        ),
-    ]
-    xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    xml.extend(urls)
-    xml.append("</urlset>")
-    response = HttpResponse("".join(xml), content_type="application/xml; charset=utf-8")
-    # Keep CDN storage possible, but require revalidation so a successful
-    # forecast write cannot leave an old lastmod cached for a full day.
-    response["Cache-Control"] = "public, no-cache, must-revalidate"
-    return response
+def sitemap_xml(request):
+    return sitemap_response(request)

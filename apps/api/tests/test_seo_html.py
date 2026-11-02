@@ -200,7 +200,7 @@ def test_point_html_is_catalog_driven_and_query_is_noindex(api_client, seo_catal
     assert 'rel="canonical" href="https://hawatch.ir/points/seo-test-ridge"' in trailing_response.content.decode()
 
 
-def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_client, seo_catalog):
+def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_client, seo_catalog, published_sitemap):
     point = WeatherPoint.objects.create(
         slug="seo-test-trailhead",
         name="مبدأ فنی آزمایشی",
@@ -234,7 +234,7 @@ def test_non_indexable_point_stays_in_app_but_is_noindex_and_out_of_sitemap(api_
     # index page itself is intentionally retired and redirects to Home.
     catalog = api_client.get("/api/v1/catalog-index/").json()
     assert any(item["slug"] == point.slug for item in catalog["points"])
-    sitemap = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
+    sitemap = published_sitemap().content.decode()
     assert f"/points/{point.slug}" not in sitemap
 
 
@@ -418,8 +418,8 @@ def test_point_index_redirect_and_route_hub_are_crawlable(api_client, seo_catalo
     assert 'rel="canonical" href="https://hawatch.ir/routes"' in query_response.content.decode()
 
 
-def test_public_sitemap_includes_canonical_hubs_not_legacy_or_pagination_urls(api_client, db):
-    body = api_client.get("/api/v1/seo/sitemap.xml").content.decode()
+def test_public_sitemap_includes_canonical_hubs_not_legacy_or_pagination_urls(api_client, db, published_sitemap):
+    body = published_sitemap().content.decode()
     assert "<loc>https://hawatch.ir/points</loc>" not in body
     assert body.count("<loc>https://hawatch.ir/routes</loc>") == 1
     assert "<loc>https://hawatch.ir/destinations</loc>" in body

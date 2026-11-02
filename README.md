@@ -8,8 +8,13 @@
 
 - frontend: `apps/web` — React + TypeScript + Vite
 - backend: `apps/api` — Django + Django REST Framework + PostGIS
-- local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، ingest one-shot، scheduler شش‌ساعته و maintenance سبک
+- local/pilot stack: `infra/compose/compose.yaml` — web production، api، postgres، Redis، ingest one-shot، scheduler شش‌ساعته، publisher مستقل sitemap و maintenance سبک
 - gateway: Nginx روی port قابل‌تنظیم `NGINX_PUBLISH_PORT` (پیش‌فرض `80`) برای health check و proxy وب/API
+
+سایت‌مپ عمومی فایل معتبرِ ازپیش‌تولیدشده روی volume پایدار است؛ Nginx بدون
+درگیرکردن API آن را سرو می‌کند. بازسازی پنج‌دقیقه‌ای و علامت Redis پس از تغییر
+داده، آخرین XML سالم را اتمیک جایگزین می‌کنند. قرارداد SEO و راه‌اندازی در
+[docs/seo.md](docs/seo.md) و [docs/deployment.md](docs/deployment.md) مستند است.
 
 مسیر `/login?returnTo=…` و لایهٔ responsive ورود در دسترس است: ورود عادی روی همان صفحه به‌صورت overlay باز می‌شود (mobile تمام‌صفحه و desktop dialog). login موقت allowlist و کد ثابت را فقط از env سرور می‌خواند و session امن Django می‌سازد؛ OTP واقعی هنوز جایگزین نشده است. سیاست روزهای forecast و طرح‌های دسترسی از Django Admin مدیریت می‌شوند؛ جزئیات در [`docs/page-specs/login-behavior.md`](docs/page-specs/login-behavior.md) است.
 

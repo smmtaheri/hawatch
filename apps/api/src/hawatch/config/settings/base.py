@@ -138,7 +138,12 @@ DEMO_DATA_ENABLED = env_bool("DEMO_DATA_ENABLED", True)
 DEMO_SEED_VERSION = env("DEMO_SEED_VERSION", "hawatch-demo-v1")
 HAWATCH_SCHEMA_VERSION = "1"
 PUBLIC_SITE_ORIGIN = env("HAWATCH_PUBLIC_ORIGIN", "https://hawatch.ir").rstrip("/")
+SITEMAP_ROOT = Path(env("HAWATCH_SITEMAP_ROOT", "/var/lib/hawatch-seo"))
+SITEMAP_REFRESH_SECONDS = max(30, int(env("SITEMAP_REFRESH_SECONDS", "300")))
+SITEMAP_QUERY_TIMEOUT_MS = max(100, int(env("SITEMAP_QUERY_TIMEOUT_MS", "5000")))
 REDIS_URL = os.environ.get("REDIS_URL", "")
+SHARED_HTTP_METRICS = env_bool("HAWATCH_SHARED_HTTP_METRICS", True)
+HTTP_METRICS_REDIS_KEY = env("HAWATCH_HTTP_METRICS_KEY", "hawatch:http-metrics:v1")
 # Proxies are operator-managed and encrypted in PostgreSQL.  The deploy script
 # creates this key when absent; leaving it empty is safe until a proxy is active.
 WEATHER_PROXY_ENCRYPTION_KEY = os.environ.get("WEATHER_PROXY_ENCRYPTION_KEY", "")
@@ -214,7 +219,8 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 # Public, revisioned week payloads only. Auth/session responses never use this cache.
-CACHES = {"default": {"BACKEND": "django.core.cache.backends.redis.RedisCache", "LOCATION": REDIS_URL}} if REDIS_URL else {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-week"}}
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.redis.RedisCache", "LOCATION": REDIS_URL,
+                       "OPTIONS": {"socket_connect_timeout": 1, "socket_timeout": 1}}} if REDIS_URL else {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-week"}}
 
 HAWATCH_ASSET_VERSION = env("HAWATCH_ASSET_VERSION", "")
 HAWATCH_FRONTEND_ASSETS_ROOT = env("HAWATCH_FRONTEND_ASSETS_ROOT", "")

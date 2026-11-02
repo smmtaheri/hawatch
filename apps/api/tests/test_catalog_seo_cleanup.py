@@ -40,7 +40,7 @@ def test_chalon_pass_uses_named_waypoint_not_a_track_point_beside_the_summit():
 
 
 @pytest.mark.django_db
-def test_catalog_cleanup_preserves_route_chains_and_exposes_real_destination_links(api_client):
+def test_catalog_cleanup_preserves_route_chains_and_exposes_real_destination_links(api_client, published_sitemap):
     ensure_catalog("hawatch-test-demo-v1")
 
     assert not validate_database_catalog(strict=True)
@@ -60,7 +60,7 @@ def test_catalog_cleanup_preserves_route_chains_and_exposes_real_destination_lin
         assert f'href="/points/{point_slug}"' in api_client.get(f"/routes/{route_slug}").content.decode()
         assert route_slug in {row["slug"] for row in related_routes_for_weather_point(point)}
 
-    response = api_client.get("/api/v1/seo/sitemap.xml")
+    response = published_sitemap()
     assert response.status_code == 200
     sitemap = response.content.decode()
     for slug in ("shahvars-east", "sisangan-waterfall"):

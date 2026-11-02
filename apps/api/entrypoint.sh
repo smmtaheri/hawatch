@@ -46,10 +46,17 @@ else
   fi
 fi
 
+if [ "$#" -gt 0 ]; then
+  log_info "startup.command_started"
+  exec "$@"
+fi
+
 log_info "startup.api_started"
 exec gunicorn hawatch.config.wsgi:application \
   --bind 0.0.0.0:8000 \
-  --workers "${GUNICORN_WORKERS:-1}" \
+  --workers "${GUNICORN_WORKERS:-2}" \
+  --worker-class sync \
+  --threads 1 \
   --timeout 60 \
   --graceful-timeout 30 \
   --access-logfile - \

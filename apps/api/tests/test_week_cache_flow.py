@@ -8,7 +8,7 @@ from django.core.management import call_command
 from django.utils import timezone
 from rest_framework.test import APIClient
 from hawatch.api.v1.week_interest import fixed_points, payload_ttl, touch_page, warm_targets
-from hawatch.api.v1.week_views import cached_week
+from hawatch.api.v1.week_views import WEEK_CACHE_SCHEMA, cached_week
 from hawatch.api.v1.week_cache import invalidate_week_cache, revision
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.routes.models import WeekCacheInterest, Route
@@ -82,7 +82,7 @@ def test_compressed_redis_payload_and_new_data_revision(catalog,settings,django_
     with patch('hawatch.api.v1.week_views.build_week',return_value=payload) as build:
         cold,status=cached_week('point','tochal',today)
         assert status=='MISS'
-        key=f'week-11:{revision()}:point:tochal:{today}'
+        key=f'{WEEK_CACHE_SCHEMA}:{revision()}:point:tochal:{today}'
         packed=cache.get(key)
         assert len(packed[0])<len(cold[0])/10 and zlib.decompress(packed[0])==cold[0]
         assert cached_week('point','tochal',today)==(cold,'HIT')

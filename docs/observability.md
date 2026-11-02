@@ -16,7 +16,9 @@
 
 ## profile کم‌هزینه
 
-Compose به‌صورت عادی فقط PostgreSQL، API، web، ingest one-shot، `ingest-scheduler` و maintenance سبک را اجرا می‌کند. OpenSearch، Dashboards، Vector، Prometheus و Grafana همگی در profile `observability` هستند:
+Compose به‌صورت عادی PostgreSQL، Redis، API، web، ingest one-shot،
+`ingest-scheduler`، `sitemap-publisher` و maintenance سبک را اجرا می‌کند.
+OpenSearch، Dashboards، Vector، Prometheus و Grafana همگی در profile `observability` هستند:
 
 ```bash
 docker compose --env-file .env -f infra/compose/compose.yaml up -d
@@ -63,7 +65,24 @@ command در maintenance روزانه اجرا می‌شود تا نوبت‌ه�
 
 توابع `record_ingest_run`، `record_ingest_points`، `record_ingest_retry` و `record_ingest_duration` در `apps/api/src/hawatch/common/observability.py` برای adapter واقعی provider آماده‌اند و در seed دمو به‌جای ingest metric جعلی ثبت نمی‌شوند.
 
-registry متریک‌های counter/histogram داخل process است؛ gaugeهای catalog و freshness از DB هنگام scrape خوانده می‌شوند. برای pilot، status endpoint منبع قابل‌اعتماد وضعیت ingest بین processهاست. در صورت فعال‌سازی observability کامل و نیاز به counterهای دائمی، registry مشترک یا multiprocess باید در milestone بعدی اضافه شود.
+سه متریک HTTP (request/error/duration) در Redis بین workerها مشترک‌اند؛ هدر
+`X-Hawatch-HTTP-Metrics-Scope` در پاسخ metrics، `shared-redis` یا fallback محدود به
+`process` را مشخص می‌کند. قطع Redis پاسخ کاربران را fail نمی‌کند؛ retry اتصال
+محدود و circuit breaker دارد. ری‌استارت/eviction Redis شمارنده‌ها را reset می‌کند؛
+این‌ها دفتر حساب دائمی نیستند. سایر counterها process-local و gaugeهای catalog
+و freshness از DB هنگام scrape خوانده می‌شوند. چرخش فایل JSONL با قفل بین‌پردازشی
+و بازکردن مجدد inode از ازدست‌رفتن لاگ هنگام rotation چند worker جلوگیری می‌کند.
+
+بخش `sitemap` در health/status محافظت‌شده شامل زمان آخرین تلاش و بررسی موفق،
+آخرین تغییر محتوا، تعداد URLها، hash و مدت ساخت است. `check_stale=true` یعنی
+بیش از سه دورهٔ بازسازی از آخرین موفقیت گذشته است؛ این وضعیت حتی اگر XML قبلی
+هنوز 200 باشد نیازمند بررسی publisher است. `sitemap.jsonl` روی volume لاگ حفظ
+می‌شود. access log JSON در Nginx نیز زمان کل/upstream، status، bytes و شناسهٔ
+gateway و upstream را دارد؛ query string، کوکی و Authorization ثبت نمی‌شوند.
+`client_ip` در این لاگ، peer شبکهٔ gateway است و پشت CDN الزاماً IP کاربر نیست.
+لاگ API و publisher روی volume پایدار است؛ access log gateway روی stdout و تابع
+retention کانتینر است، بنابراین برای نگهداری آن پس از حذف کانتینر باید قبل از
+تعویض export شود یا جمع‌آوری بیرونی لاگ فعال باشد.
 
 ## secret و اجرای محلی
 
@@ -94,7 +113,9 @@ docker compose --env-file .env -f infra/compose/compose.yaml --profile observabi
 - Grafana: `http://localhost:${GRAFANA_PUBLISH_PORT}`، پیش‌فرض `3000`
 - OpenSearch Dashboards: `http://localhost:${OPENSEARCH_DASHBOARDS_PUBLISH_PORT}`، پیش‌فرض `5601`
 
-PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. Redis همچنان optional و فقط با profile `cache` است. OpenSearch، Dashboards، Vector، Prometheus و Grafana نیز فقط با profile `observability` اجرا می‌شوند.
+PostgreSQL، Redis، OpenSearch، Prometheus و Vector host port ندارند. Redis در stack
+عادی همراه `sitemap-publisher` فعال است. OpenSearch، Dashboards، Vector، Prometheus
+و Grafana فقط با profile `observability` اجرا می‌شوند.
 برای اجرای هم‌زمان یک checkout دیگر، فقط `API_PUBLISH_PORT`، `WEB_PUBLISH_PORT` و `VITE_API_BASE_URL` را در `.env` تغییر بده؛ port پیش‌فرض featureهای فعلی همان ۸۰۰۰ و ۵۱۷۳ است.
 
 برای اجرای دستی retention یا مشاهدهٔ نتیجه:

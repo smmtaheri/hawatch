@@ -2,8 +2,8 @@
 
 The API deliberately exposes Prometheus' text format without adding a runtime
 dependency. Database-derived gauges are scrape-accurate; request and provider
-hook counters are process-local and should be replaced with a shared or
-multiprocess registry when live ingestion is introduced.
+hook counters use shared Redis for HTTP aggregation and local fallback when
+Redis is unavailable. Forecast inventory remains database-derived.
 """
 
 from __future__ import annotations
@@ -22,6 +22,7 @@ from typing import Iterable
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
+from hawatch.common import shared_http_metrics
 
 
 _context: contextvars.ContextVar[dict[str, str]] = contextvars.ContextVar(
@@ -74,11 +75,36 @@ class JsonFormatter(logging.Formatter):
 
 
 class SafeTimedRotatingFileHandler(logging.handlers.TimedRotatingFileHandler):
-    """Create the log directory before the stdlib handler opens the file."""
+    """Serialize append/rotation across workers and reopen another writer's file."""
 
     def __init__(self, filename, *args, **kwargs):
         Path(filename).parent.mkdir(parents=True, exist_ok=True)
         super().__init__(filename, *args, **kwargs)
+
+    def emit(self, record):
+        import fcntl
+
+        try:
+            # The separate lock inode survives rotations and is not a rotated
+            # *.jsonl.* file targeted by retention. Open after fork, per emit.
+            with Path(self.baseFilename).with_suffix(".lock").open("a") as lock:
+                fcntl.flock(lock, fcntl.LOCK_EX)
+                try:
+                    stat = os.stat(self.baseFilename)
+                except FileNotFoundError:
+                    stat = None
+                if self.stream is not None:
+                    opened = os.fstat(self.stream.fileno())
+                    if stat is None or (stat.st_dev, stat.st_ino) != (opened.st_dev, opened.st_ino):
+                        self.stream.close()
+                        self.stream = None
+                # A peer already rotated this period; don't rotate its new
+                # file again using this process's outdated rolloverAt.
+                if stat is not None and stat.st_mtime >= self.rolloverAt:
+                    self.rolloverAt = self.computeRollover(int(stat.st_mtime))
+                super().emit(record)
+        except Exception:
+            self.handleError(record)
 
 
 class _Metric:
@@ -94,6 +120,7 @@ class _Metric:
 class MetricsRegistry:
     def __init__(self) -> None:
         self._metrics: OrderedDict[str, _Metric] = OrderedDict()
+        self.http_scope = "process"
 
     def counter(self, name: str, help_text: str) -> None:
         self._metrics[name] = _Metric(name, "counter", help_text)
@@ -109,6 +136,8 @@ class MetricsRegistry:
         return tuple(sorted((key, str(value)) for key, value in (labels or {}).items()))
 
     def inc(self, name: str, value: float = 1, labels: dict[str, object] | None = None) -> None:
+        if name in shared_http_metrics.NAMES:
+            shared_http_metrics.increment(name, value, labels)
         metric = self._metrics[name]
         key = self._key(labels)
         metric.values[key] = metric.values.get(key, 0) + value
@@ -119,6 +148,8 @@ class MetricsRegistry:
 
     def observe(self, name: str, value: float, labels: dict[str, object] | None = None) -> None:
         metric = self._metrics[name]
+        if name in shared_http_metrics.NAMES:
+            shared_http_metrics.observe(name, value, labels, metric.buckets)
         key = self._key(labels)
         counts, total, count = metric.histograms.setdefault(key, ([0.0] * len(metric.buckets), 0.0, 0.0))
         for index, bucket in enumerate(metric.buckets):
@@ -128,9 +159,15 @@ class MetricsRegistry:
 
     def render(self) -> str:
         lines: list[str] = []
+        shared = shared_http_metrics.snapshot()
+        self.http_scope = "shared-redis" if shared is not None else "process"
         for metric in self._metrics.values():
             lines.append(f"# HELP {metric.name} {metric.help_text}")
             lines.append(f"# TYPE {metric.name} {metric.kind}")
+            if shared is not None and metric.name in shared_http_metrics.NAMES:
+                allowed = {metric.name, metric.name + "_bucket", metric.name + "_sum", metric.name + "_count"}
+                lines.extend(f"{name}{_labels(labels)} {value:g}" for name, labels, value in shared if name in allowed)
+                continue
             if metric.kind == "histogram":
                 for key, (counts, total, count) in metric.histograms.items():
                     labels = dict(key)
@@ -350,4 +387,6 @@ def metrics_view(request):
     if not metrics_authorized(request):
         return JsonResponse({"detail": "Metrics authentication required."}, status=401)
     collect_database_metrics()
-    return HttpResponse(metrics.render(), content_type="text/plain; version=0.0.4; charset=utf-8")
+    response = HttpResponse(metrics.render(), content_type="text/plain; version=0.0.4; charset=utf-8")
+    response["X-Hawatch-HTTP-Metrics-Scope"] = metrics.http_scope
+    return response

@@ -208,11 +208,35 @@ revalidation دیده می‌شوند؛ کش queryدار نباید HTML کان�
 - `/robots.txt` و `/api/v1/seo/robots.txt` را اصلاً cache نکنید. هدر
   `Cache-Control: no-store, no-cache, must-revalidate, max-age=0` مبدأ باید
   عبور کند؛ قانون cache خودکار برای پسوند `.txt` نباید آن را override کند.
-- `/sitemap.xml` عمومی و پویاست؛ cache کوتاه (حداکثر چند دقیقه) یا revalidation
-  فعال بگذارید و آدرس کامل sitemap را نگه دارید.
+- `/sitemap.xml` فایل عمومیِ ازپیش‌تولیدشده است؛ هدر
+  `public, max-age=60, s-maxage=300` را رعایت کنید و خطاهای آن را cache نکنید.
+  CDN فقط نسخهٔ موفق را حداکثر پنج دقیقه نگه دارد؛ قانون مستقل برای همین URL
+  تعریف شود، نه همهٔ XMLها یا APIها. تنظیم پنل CDN خودکار انجام نمی‌شود.
 
 gateway فعلی cache داخلی ندارد و هدرهای cache Django را عبور می‌دهد؛ این قواعد
 برای CDN بیرونیِ production است و به deploy یا تغییر catalog وابسته نیست.
+
+## انتشار پایدار sitemap
+
+سرویس مستقل `sitemap-publisher` هر پنج دقیقه XML را از snapshot سازگار DB
+می‌سازد؛ یک aggregation برای آخرین forecastها جایگزین subquery به‌ازای هر مسیر
+شده است. عضویت URLها و سیاست `lastmod` تغییر نکرده‌اند. پس از commit تغییر
+catalog/forecast، Redis فقط علامت بازسازی زودتر می‌دهد (بررسی هر ۱۵ ثانیه، فاصلهٔ
+تلاش‌ها حداقل ۳۰ ثانیه). Redis منبع حقیقت یا تنها محل XML نیست؛ قطع یا eviction
+آن مانع بازسازی دوره‌ای نمی‌شود و تغییرهای bulk نیز حداکثر پنج دقیقه بعد دیده می‌شوند.
+
+فایل معتبر پس از کنترل namespace، URLهای canonical، تکرار و محدودیت حجم/تعداد،
+با rename اتمیک در volume پایدار `hawatch_seo_public` جایگزین می‌شود. قفل تک‌نویسنده،
+timeout هر query (پیش‌فرض ۵ ثانیه) و نگهداری نسخهٔ معتبر قبلی از انتشار ناقص
+جلوگیری می‌کنند. شکست DB، Redis یا builder فایل سالم قبلی را حذف نمی‌کند.
+Nginx هر دو `/sitemap.xml` و `/api/v1/seo/sitemap.xml` را از همان فایل می‌دهد؛
+خواندن HTTP هیچ query یا بازسازی‌ای آغاز نمی‌کند. GET، HEAD، ETag و 304 پشتیبانی
+می‌شوند. نبود فایل، سریعاً 503 با `no-store` و `Retry-After: 60` می‌دهد.
+
+با تنظیمات پیش‌فرض، تغییر catalog معمولاً زودتر و حداکثر حدود ۱۰ دقیقه پس از
+commit از CDN دیده می‌شود (۵ دقیقه بازسازی + ۵ دقیقه cache؛ به شرط سلامت publisher).
+`robots.txt`، HTML/SSR، canonical، noindex، pagination و کش آب‌وهوا مستقل و بدون
+تغییر باقی می‌مانند. استیج همچنان خصوصی/noindex و sitemap آن مسدود است.
 
 ## بررسی محلی پس از build
 

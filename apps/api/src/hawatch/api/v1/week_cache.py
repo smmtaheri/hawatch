@@ -21,6 +21,8 @@ def revision():
         return "uncached"
 
 def invalidate_week_cache(**kwargs):
+    from hawatch.modules.catalog.sitemap_refresh import request_sitemap_refresh
+    request_sitemap_refresh()
     def change():
         try:
             cache.set(REVISION_KEY, uuid4().hex, None)

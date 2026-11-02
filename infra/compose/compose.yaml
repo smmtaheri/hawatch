@@ -57,7 +57,7 @@ services:
       OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-10}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-0}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
-      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-1}
+      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
       HAWATCH_SERVICE_NAME: hawatch-api
       HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
       HAWATCH_LOG_DIR: /var/log/hawatch
@@ -71,6 +71,7 @@ services:
       - ../../apps/api:/app
       - hawatch_staticfiles:/app/staticfiles
       - hawatch_logs:/var/log/hawatch
+      - hawatch_seo_public:/var/lib/hawatch-seo:ro
       - hawatch_frontend_assets:/var/lib/hawatch-frontend:ro
     depends_on:
       postgres:
@@ -181,6 +182,7 @@ services:
       - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ../nginx/public-pages.inc:/etc/nginx/public-pages.inc:ro
       - hawatch_staticfiles:/usr/share/nginx/html/django-static:ro
+      - hawatch_seo_public:/var/lib/hawatch-seo:ro
     depends_on:
       web:
         condition: service_healthy
@@ -423,11 +425,37 @@ services:
     logging: *hawatch-container-logging
     restart: unless-stopped
 
+  sitemap-publisher:
+    build:
+      context: ../../apps/api
+      dockerfile: Dockerfile
+    entrypoint: []
+    command: ["python", "manage.py", "run_sitemap_publisher"]
+    env_file: [../../.env]
+    environment:
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-hawatch.config.settings.production}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      REDIS_URL: redis://redis:6379/0
+      HAWATCH_LOG_FILE: /var/log/hawatch/sitemap.jsonl
+      HAWATCH_SERVICE_NAME: hawatch-sitemap
+      HAWATCH_SITEMAP_ROOT: /var/lib/hawatch-seo
+    volumes:
+      - ../../apps/api:/app
+      - hawatch_seo_public:/var/lib/hawatch-seo
+      - hawatch_staticfiles:/app/staticfiles
+      - hawatch_logs:/var/log/hawatch
+    depends_on:
+      postgres: {condition: service_healthy}
+    logging: *hawatch-container-logging
+    restart: unless-stopped
+
 volumes:
   hawatch_pgdata:
   hawatch_staticfiles:
   hawatch_frontend_assets:
   hawatch_logs:
+  hawatch_seo_public:
   hawatch_opensearch:
   hawatch_vector_data:
   hawatch_prometheus:
