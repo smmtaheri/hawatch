@@ -1,0 +1,121 @@
+{
+  "catalog_version": "hawatch-kolougan-waterfall-v1",
+  "primary_point": "kolougan-waterfall",
+  "weather_points": {
+    "kolougan-waterfall": {
+      "name": "آبشار کلوگان",
+      "page_name": "آبشار کلوگان شمیرانات",
+      "short_label": "آبشار کلوگان",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "category": "آبشارهای تهران",
+      "region": "کلوگان · رودبار قصران · شمیرانات",
+      "aliases": ["آبشار گلوکان", "Kalugan Waterfall", "Kolougan Waterfall"],
+      "identity_summary": "آبشار کلوگان در درهٔ فرعی رودخانهٔ کلوگانِ شمیرانات؛ با روستای کلوگان و قلهٔ کلوگان یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-khlwgn-100870810",
+        "https://decovel.com/page/klugan-waterfall",
+        "https://kuhnavardi.com/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%DA%A9%D9%84%D9%88%DA%AF%D8%A7%D9%86/",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.886980&longitude=51.567862"
+      ],
+      "latitude": 35.886980,
+      "longitude": 51.567862,
+      "elevation_m": 2066,
+      "status": "provisional",
+      "elevation_source": "مختصات آبشار از waypoint ترک Wikiloc؛ ارتفاع ۲۰۶۶ متر از Open-Meteo GLO-90 در همین مختصات، نه ارتفاع GPS.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای آبشار کلوگان؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار کلوگان در شمیرانات؛ دما، باد، بارش و وضعیت ساعتی منطقه را ببینید."
+      }
+    },
+    "kolougan-father-spring": {
+      "name": "چشمهٔ پدر در مسیر آبشار کلوگان",
+      "page_name": "چشمهٔ پدر در مسیر آبشار کلوگان",
+      "short_label": "چشمهٔ پدر",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "region": "کلوگان · رودبار قصران · شمیرانات",
+      "aliases": [],
+      "identity_summary": "چشمهٔ پدر، waypoint مشخص روی پاکوب پیادهٔ روستای کلوگان به آبشار؛ عارضهٔ میانی مسیر است، نه مقصد مستقل.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/abshr-khlwgn-100870810",
+        "https://kuhnavardi.com/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%DA%A9%D9%84%D9%88%DA%AF%D8%A7%D9%86/",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.871461&longitude=51.549091"
+      ],
+      "latitude": 35.871461,
+      "longitude": 51.549091,
+      "elevation_m": 1835,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint چشمهٔ پدر در ترک و گزارش مسیر؛ ارتفاع ۱۸۳۵ متر از Open-Meteo GLO-90.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": ["kalugan-village"],
+  "routes": {
+    "village-to-waterfall": {
+      "slug": "kalugan-village-to-waterfall",
+      "title": "روستای کلوگان تا آبشار کلوگان",
+      "subtitle": "پاکوب پیاده در امتداد رودخانه و چشمهٔ پدر تا آبشار",
+      "trail_label": "مسیر پیادهٔ آبشار کلوگان",
+      "origin": "روستای کلوگان",
+      "target_label": "آبشار کلوگان",
+      "region": "کلوگان · رودبار قصران · شمیرانات",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["kalugan-village", "kolougan-father-spring", "kolougan-waterfall"],
+      "distance_km": 4.01,
+      "ascent_m": 180,
+      "one_way_minutes": 100,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-pedestrian-cut+independent-route-reports-v1",
+        "version": "kolougan-waterfall-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/abshr-khlwgn-100870810",
+          "https://decovel.com/page/klugan-waterfall",
+          "https://kuhnavardi.com/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%DA%A9%D9%84%D9%88%DA%AF%D8%A7%D9%86/"
+        ],
+        "evidence_tracks": ["tracks/kolougan-waterfall/abshr-khlwgn.gpx"],
+        "cumulative_minutes": {
+          "kalugan-village": 0,
+          "kolougan-father-spring": 25,
+          "kolougan-waterfall": 100
+        },
+        "notes": ["زمان یک‌طرفه با توجه به پاکوب، ثبت ترک و گزارش مستقلِ حدود یک‌ونیم ساعت برآورد شده است."]
+      },
+      "public_note": "زمان تقریبی یک‌طرفه برای پیاده‌روی در پاکوب دره است. مسیر از روستای کلوگان آغاز می‌شود و از چشمهٔ پدر می‌گذرد؛ برای ورود خودرو به روستا به محدودیت‌های محلی توجه کنید.",
+      "public_point_notes": {"kolougan-father-spring": "چشمهٔ پدر عارضهٔ میانی مسیر است؛ وضعیت آب آن ممکن است فصلی باشد."}
+    }
+  },
+  "point": {
+    "slug": "kolougan-waterfall",
+    "tile_name": "آبشار کلوگان",
+    "name": "آبشار کلوگان",
+    "short_category": "آبشار",
+    "category": "آبشارهای تهران",
+    "category_key": "waterfall",
+    "region": "کلوگان · شمیرانات",
+    "elevation_m": 2066,
+    "latitude": 35.886980,
+    "longitude": 51.567862,
+    "image": "/images/home-scene.png",
+    "image_alt": "آبشار کلوگان در شمیرانات",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["آبشار گلوکان", "Kalugan Waterfall"]
+  },
+  "internal_note": "فقط مسیر پیادهٔ روستا تا آبشار از ترک استفاده شده است؛ مسیر خودرویی وارد route نشده. مختصات مبدأ از WeatherPoint موجود kalugan-village مشترک است. فایل GPX در tracks/ محلی و خارج از Git باقی می‌ماند."
+}

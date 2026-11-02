@@ -1,0 +1,146 @@
+{
+  "catalog_version": "hawatch-barf-kermo-v1",
+  "primary_point": "barf-kermo-peak",
+  "weather_points": {
+    "barf-kermo-peak": {
+      "name": "قلهٔ برف‌کرمو",
+      "page_name": "قلهٔ برف‌کرمو دنا",
+      "short_label": "برف‌کرمو",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های دنا",
+      "region": "دنا · سی‌سخت · کهگیلویه و بویراحمد",
+      "aliases": ["برف کرمو", "قله برف کرمو", "Barf Kermo Peak"],
+      "identity_summary": "قلهٔ برف‌کرمو، نخستین قلهٔ شرقی خط‌الرأس دنا در جنوب‌شرقی گردنهٔ بیژن؛ با قله‌های برف‌کاغذی و نمک یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/brf-khrmw-z-rshth-khwh-dn-wlyn-qlh-shrqy-dn-swd-z-grdnh-byjn-17-mrdd-404-barf-kermoo-peak-225912180",
+        "https://tabiatdost.com/2133/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81-%DA%A9%D8%B1%D9%85%D9%88/",
+        "https://mojekooh.com/barf-karmo-peak-guide/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.864648&longitude=51.550355"
+      ],
+      "latitude": 30.864648,
+      "longitude": 51.550355,
+      "elevation_m": 4100,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint قله در ترک Wikiloc؛ ارتفاع ۴۱۰۰ متر از Open-Meteo GLO-90 در همان مختصات، نه ارتفاع GPS.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ برف‌کرمو؛ پیش‌بینی دنا | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ برف‌کرمو در خط‌الرأس شرقی دنا؛ دما، باد، بارش و وضعیت ساعتی را ببینید."
+      }
+    },
+    "bijan-pass-trailhead": {
+      "name": "پارکینگ گردنهٔ بیژن برای صعود برف‌کرمو",
+      "page_name": "پارکینگ گردنهٔ بیژن برای صعود برف‌کرمو",
+      "short_label": "گردنهٔ بیژن",
+      "place_type": "parking",
+      "category_key": "landmark",
+      "region": "دنا · سی‌سخت · کهگیلویه و بویراحمد",
+      "aliases": [],
+      "identity_summary": "نقطهٔ شروع پیاده‌روی پاکوب شرقی دنا در پارکینگ گردنهٔ بیژن؛ بخش جاده‌ای تا گردنه در زمان و مسافت Route نیست.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/brf-khrmw-z-rshth-khwh-dn-wlyn-qlh-shrqy-dn-swd-z-grdnh-byjn-17-mrdd-404-barf-kermoo-peak-225912180",
+        "https://mojekooh.com/barf-karmo-peak-guide/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.878022&longitude=51.526460"
+      ],
+      "latitude": 30.878022,
+      "longitude": 51.526460,
+      "elevation_m": 3198,
+      "status": "provisional",
+      "elevation_source": "مختصات پارکینگ waypoint ترک؛ ارتفاع ۳۱۹۸ متر از Open-Meteo GLO-90.",
+      "climate": "alpine"
+    },
+    "barf-kermo-snow-bowl": {
+      "name": "کاسهٔ برف‌کرمو",
+      "page_name": "کاسهٔ برف‌کرمو",
+      "short_label": "کاسهٔ برف‌کرمو",
+      "place_type": "valley",
+      "category_key": "landmark",
+      "region": "دنا · سی‌سخت · کهگیلویه و بویراحمد",
+      "aliases": [],
+      "identity_summary": "کاسهٔ مسطح زیر قلهٔ برف‌کرمو، محل استراحت و کمپِ گزارش‌شده در مسیر گردنهٔ بیژن؛ landmark واقعی میان مبدأ و قله.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/brf-khrmw-z-rshth-khwh-dn-wlyn-qlh-shrqy-dn-swd-z-grdnh-byjn-17-mrdd-404-barf-kermoo-peak-225912180",
+        "https://tabiatdost.com/2133/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81-%DA%A9%D8%B1%D9%85%D9%88/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.862413&longitude=51.545412"
+      ],
+      "latitude": 30.862413,
+      "longitude": 51.545412,
+      "elevation_m": 3906,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint کاسهٔ برف‌کرمو در ترک؛ ارتفاع ۳۹۰۶ متر از Open-Meteo GLO-90.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "bijan-pass-to-peak": {
+      "slug": "bijan-pass-to-barf-kermo",
+      "title": "گردنهٔ بیژن تا قلهٔ برف‌کرمو",
+      "subtitle": "پاکوب قله از گردنه، از میان کاسهٔ برف‌کرمو",
+      "trail_label": "صعود برف‌کرمو از گردنهٔ بیژن",
+      "origin": "پارکینگ گردنهٔ بیژن",
+      "target_label": "قلهٔ برف‌کرمو",
+      "region": "دنا · سی‌سخت · کهگیلویه و بویراحمد",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["bijan-pass-trailhead", "barf-kermo-snow-bowl", "barf-kermo-peak"],
+      "distance_km": 3.69,
+      "ascent_m": 880,
+      "one_way_minutes": 285,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-pedestrian-cut+independent-mountaineering-reports-v1",
+        "version": "barf-kermo-bijan-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/brf-khrmw-z-rshth-khwh-dn-wlyn-qlh-shrqy-dn-swd-z-grdnh-byjn-17-mrdd-404-barf-kermoo-peak-225912180",
+          "https://tabiatdost.com/2133/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4-%D8%B5%D8%B9%D9%88%D8%AF-%D9%82%D9%84%D9%87-%D8%A8%D8%B1%D9%81-%DA%A9%D8%B1%D9%85%D9%88/",
+          "https://mojekooh.com/barf-karmo-peak-guide/"
+        ],
+        "evidence_tracks": ["tracks/barf-kermo/brf-khrmw-z-rshth-khwh-dn-wlyn-qlh-shrqy-dn-swd-z-grdnh-byjn.gpx"],
+        "cumulative_minutes": {
+          "bijan-pass-trailhead": 0,
+          "barf-kermo-snow-bowl": 240,
+          "barf-kermo-peak": 285
+        },
+        "notes": ["گزارش‌های مستقل برای رسیدن به کاسه حدود ۴ ساعت و برای صعود از کاسه تا قله حدود ۴۵ دقیقه ثبت کرده‌اند؛ ترک دانلودی تا نخستین قله حدود ۶ ساعت طول دارد، بنابراین ETA میانی ۴ ساعت و ۴۵ دقیقه با عدم‌قطعیت ۹۰ دقیقه در نظر گرفته شده است."]
+      },
+      "public_note": "زمان تقریبی یک‌طرفه از گردنهٔ بیژن است. مسیر از پاکوب مشخص به کاسهٔ برف‌کرمو و سپس یال نهایی قله می‌رسد؛ ارتفاع زیاد و شرایط برف می‌تواند زمان را تغییر دهد.",
+      "public_point_notes": {"barf-kermo-snow-bowl": "کاسهٔ برف‌کرمو landmark میانی ثبت‌شده در مسیر است."}
+    }
+  },
+  "point": {
+    "slug": "barf-kermo-peak",
+    "tile_name": "قلهٔ برف‌کرمو",
+    "name": "قلهٔ برف‌کرمو",
+    "short_category": "قله",
+    "category": "قله‌های دنا",
+    "category_key": "mountain",
+    "region": "دنا · سی‌سخت",
+    "elevation_m": 4100,
+    "latitude": 30.864648,
+    "longitude": 51.550355,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ برف‌کرمو در رشته‌کوه دنا",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["برف کرمو", "Barf Kermo Peak"]
+  },
+  "internal_note": "GPX مسیر برگشت هم دارد؛ فقط بخش رفت از waypoint پارکینگ گردنهٔ بیژن تا نخستین رسیدن به قله استفاده شده. ارتفاع‌ها از DEM هستند و مقادیر GPS وارد catalog نشده‌اند."
+}

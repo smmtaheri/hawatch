@@ -1,0 +1,201 @@
+{
+  "catalog_version": "hawatch-hg-hk-points-v1",
+  "primary_point": "boz-sina-peak",
+  "weather_points": {
+    "boz-sina-peak": {
+      "name": "قلهٔ بوزسینه",
+      "page_name": "قلهٔ بوزسینه",
+      "short_label": "بوزسینه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": ["قله بوزسینا", "قله بزسینا", "Boz Sina Peak", "Buz Sina"],
+      "identity_summary": "قلهٔ بوزسینه در منطقهٔ مرگور، جنوب‌غربی ارومیه؛ این ورودی فقط پیش‌بینی نقطهٔ قله را ارائه می‌کند و مسیر صعود عمومی برایش تعریف نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/bwzsynh-45351673",
+        "https://soltansafar.com/UrmiaAttractions/Attraction691.html",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.114990,
+      "longitude": 44.879295,
+      "elevation_m": 3452,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۴۵۲ متر از Open-Meteo GLO-90 DEM در مختصات waypoint قلهٔ ترک؛ مقدار ثبت GPS در ترک ۳۴۸۴ متر است و اختلاف زیر ۱۰۰ متر در gate بررسی شده است.",
+      "climate": "high_alpine",
+      "region": "مرگور · آذربایجان غربی",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ بوزسینه؛ پیش‌بینی ارومیه | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ بوزسینه در منطقهٔ مرگور؛ دما، باد، بارش و وضعیت ساعتی قله."
+      }
+    },
+    "zomorod-waterfall": {
+      "name": "آبشار زمرد حویق",
+      "page_name": "آبشار زمرد حویق",
+      "short_label": "زمرد حویق",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار زمرد", "آبشار زمرد تالش", "Zomorod Waterfall", "Zomorrod Waterfall"],
+      "identity_summary": "آبشار زمرد در حوالی حویقِ شهرستان تالش، استان گیلان؛ این ورودی پیش‌بینی نقطهٔ آبشار است و GPX دانلودشده به‌دلیل امتداد مختلط برای تعریف مسیر عمومی استفاده نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N5238971183",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D8%B2%D9%85%D8%B1%D8%AF%D8%8C-%D8%AA%D8%A7%D9%84%D8%B4/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 38.114330,
+      "longitude": 48.819790,
+      "elevation_m": 254,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۵۴ متر از Open-Meteo GLO-90 DEM در مختصات عارضهٔ آبشارِ OpenStreetMap.",
+      "climate": "forest_fog",
+      "region": "حویق · گیلان",
+      "seo": {
+        "title": "آب‌وهوای آبشار زمرد حویق؛ دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار زمرد حویق در تالش؛ دما، باد، بارش و وضعیت ساعتی منطقه."
+      }
+    },
+    "azarek-gorge": {
+      "name": "تنگهٔ آزارک",
+      "page_name": "تنگهٔ آزارک رامسر",
+      "short_label": "تنگهٔ آزارک",
+      "place_type": "valley",
+      "category_key": "gorge",
+      "aliases": ["تنگه آزارک", "تنگهٔ ازارک", "Azarak Gorge"],
+      "identity_summary": "تنگهٔ آزارک در حوضهٔ رودخانهٔ آزارک، حوالی رامسر و اربه‌کله؛ این ورودی فقط نقطهٔ پیش‌بینی عارضه است و ترک دریافت‌شده برای زنجیرهٔ مسیر عمومی به کار نرفته است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-tngh-zrkh-224539434",
+        "https://baamardom.ir/158115/%D8%B3%D9%81%D8%B1%DB%8C-%D9%BE%D8%B1%D9%87%DB%8C%D8%AC%D8%A7%D9%86-%D8%A8%D9%87-%D8%AA%D9%86%DA%AF%D9%87-%D8%A2%D8%B2%D8%A7%D8%B1%DA%A9-%D8%B1%D8%A7%D9%85%D8%B3%D8%B1-%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.848225,
+      "longitude": 50.656198,
+      "elevation_m": 303,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۰۳ متر از Open-Meteo GLO-90 DEM در مختصات حوضچهٔ انتهایی waypoint شده در ترک.",
+      "climate": "forest_fog",
+      "region": "رامسر · مازندران",
+      "seo": {
+        "title": "آب‌وهوای تنگهٔ آزارک رامسر؛ دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تنگهٔ آزارک رامسر؛ دما، باد، بارش و وضعیت ساعتی منطقه."
+      }
+    },
+    "shah-lulak-waterfall": {
+      "name": "آبشار شاه‌لولاک",
+      "page_name": "آبشار شاه‌لولاک چرمهین",
+      "short_label": "شاه‌لولاک",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["آبشار شاه لولاک", "آبشار شاهلولاک", "Shah Lulak Waterfall"],
+      "identity_summary": "آبشار شاه‌لولاک در نزدیکی چرمهین، شهرستان لنجان، استان اصفهان؛ صفحه به‌صورت مقصد نقطه‌ای و بدون مسیر عمومی منتشر می‌شود.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N3571221209",
+        "https://irantripadviser.ir/attraction.php?id=2379",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 32.300240,
+      "longitude": 51.154760,
+      "elevation_m": 2168,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۱۶۸ متر از Open-Meteo GLO-90 DEM در مختصات عارضهٔ آبشارِ OpenStreetMap.",
+      "climate": "alpine",
+      "region": "چرمهین · اصفهان",
+      "seo": {
+        "title": "آب‌وهوای آبشار شاه‌لولاک؛ پیش‌بینی چرمهین | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار شاه‌لولاک چرمهین؛ دما، باد، بارش و وضعیت ساعتی منطقه."
+      }
+    },
+    "palang-dareh-waterfall": {
+      "name": "آبشار پلنگ‌درهٔ شیرگاه",
+      "page_name": "آبشار و جنگل پلنگ‌درهٔ شیرگاه",
+      "short_label": "پلنگ‌دره",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": ["جنگل پلنگ‌دره", "آبشار پلنگ دره", "Palang Dareh Waterfall"],
+      "identity_summary": "آبشار پلنگ‌دره در جنگل‌های اطراف شیرگاه، سوادکوه شمالی، مازندران؛ مختصات صفحه روی خود آبشار است و مسیر دسترسیِ جاده‌ای به‌عنوان hiking route منتشر نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/N6002678597",
+        "https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D9%BE%D9%84%D9%86%DA%AF-%D8%AF%D8%B1%D9%87%D8%8C-%D8%B4%DB%8C%D8%B1%DA%AF%D8%A7%D9%87/",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 36.276330,
+      "longitude": 52.948150,
+      "elevation_m": 317,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۳۱۷ متر از Open-Meteo GLO-90 DEM در مختصات عارضهٔ آبشارِ OpenStreetMap.",
+      "climate": "forest_fog",
+      "region": "شیرگاه · مازندران",
+      "seo": {
+        "title": "آب‌وهوای آبشار پلنگ‌دره شیرگاه؛ دما و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای آبشار و جنگل پلنگ‌درهٔ شیرگاه؛ دما، باد، بارش و وضعیت ساعتی."
+      }
+    },
+    "almagol-wetland": {
+      "name": "تالاب آلماگل",
+      "page_name": "تالاب آلماگل گلستان",
+      "short_label": "آلماگل",
+      "place_type": "lake",
+      "category_key": "lake",
+      "aliases": ["تالاب الماگل", "دریاچهٔ آلماگل", "Alma Gol Lake", "Ulmagol Lake"],
+      "identity_summary": "تالاب آلماگل از تالاب‌های بین‌المللی ثبت‌شدهٔ رامسر در شمال استان گلستان؛ صفحهٔ نقطه‌ای بر مرکز پهنهٔ آب OpenStreetMap متمرکز است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://mapcarta.com/W267055718",
+        "https://rsis.ramsar.org/ris/49",
+        "https://open-meteo.com/en/docs"
+      ],
+      "latitude": 37.430500,
+      "longitude": 54.646100,
+      "elevation_m": 2,
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲ متر از Open-Meteo GLO-90 DEM در نقطهٔ مرکزی پهنهٔ آب OpenStreetMap.",
+      "climate": "meadow",
+      "region": "گنبد کاووس · گلستان",
+      "seo": {
+        "title": "آب‌وهوای تالاب آلماگل؛ پیش‌بینی گلستان | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب آلماگل گلستان؛ دما، باد، بارش و وضعیت ساعتی تالاب."
+      }
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "boz-sina-peak",
+    "tile_name": "قلهٔ بوزسینه",
+    "name": "قلهٔ بوزسینه",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان غربی",
+    "category_key": "mountain",
+    "region": "مرگور · آذربایجان غربی",
+    "elevation_m": 3452,
+    "latitude": 37.114990,
+    "longitude": 44.879295,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ بوزسینه در منطقهٔ مرگور آذربایجان غربی",
+    "climate": "high_alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["قله بوزسینا", "قله بزسینا", "Boz Sina Peak", "Buz Sina"]
+  },
+  "internal_note": "شش WeatherPoint نقطه‌محور هستند و routes عمداً خالی است. فایل‌های دانلودشده برای بوزسینه، آبشار زمرد و تنگهٔ آزارک برای ساخت Route عمومی معیارهای مسیر را کامل ندارند؛ از آن‌ها فقط برای رسیدن به مختصات نامزد استفاده شده است. تمام GPXها و manifestها محلی و gitignored می‌مانند و نباید commit، image یا server شوند. ارتفاع‌ها پیش از import با Open-Meteo GLO-90 DEM cross-check و forecast gate اعتبارسنجی می‌شوند."
+}

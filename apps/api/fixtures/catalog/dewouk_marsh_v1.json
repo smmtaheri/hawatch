@@ -1,0 +1,149 @@
+{
+  "catalog_version": "hawatch-dewouk-marsh-v1",
+  "primary_point": "dewouk-marsh",
+  "weather_points": {
+    "dewouk-marsh": {
+      "name": "مرداب دیوک",
+      "page_name": "مرداب دیوک کلاردشت",
+      "short_label": "مرداب دیوک",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "category": "مرداب‌های مازندران",
+      "region": "پیمبور · کلاردشت · مازندران",
+      "aliases": ["مرداب دریوک", "مرداب دیورک", "Dewouk Marsh", "Daryouk Marsh"],
+      "identity_summary": "مرداب دیوک (دریوک/دیورک) در جنگل‌های نزدیک پیمبورِ کلاردشت؛ با دریاچهٔ دریوک نمارستاق یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-mrdb-drywkh-mnsb-pydh-rwy-239107392",
+        "https://irantripadviser.ir/attraction.php?id=133",
+        "https://rezarahnavard.blogfa.com/post/14",
+        "https://mykonos.ir/post/%D9%85%D8%A7%D8%B2%DB%8C%DA%86%D8%A7%D9%84-%DA%A9%D8%AC%D8%A7%D8%B3%D8%AA%D8%9F-%D8%AA%D9%85%D8%A7%D8%B4%D8%A7%DB%8C-%D8%A7%D9%82%DB%8C%D8%A7%D9%86%D9%88%D8%B3-5374",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.595893&longitude=51.207378"
+      ],
+      "latitude": 36.595893,
+      "longitude": 51.207378,
+      "elevation_m": 1358,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint دریاچهٔ انتهای ترک Wikiloc؛ ارتفاع ۱۳۵۸ متر از Open-Meteo GLO-90 در همان مختصات، نه ارتفاع GPS.",
+      "climate": "forest_fog",
+      "seo": {
+        "title": "آب‌وهوای مرداب دیوک؛ پیش‌بینی کلاردشت | هواچ",
+        "description": "پیش‌بینی آب‌وهوای مرداب دیوک در جنگل‌های کلاردشت؛ دما، باد، بارش و وضعیت ساعتی منطقه را ببینید."
+      }
+    },
+    "dewouk-trailhead": {
+      "name": "پارکینگ انتهای جادهٔ پیمبور برای مرداب دیوک",
+      "page_name": "پارکینگ انتهای جادهٔ پیمبور برای مرداب دیوک",
+      "short_label": "پارکینگ پیمبور",
+      "place_type": "parking",
+      "category_key": "landmark",
+      "region": "پیمبور · کلاردشت · مازندران",
+      "aliases": [],
+      "identity_summary": "پارکینگ مبدأ پیاده‌روی جنگلی از انتهای جادهٔ پیمبور؛ جادهٔ خاکی و مسیرهای آفرودی پس از آن جزو Route پیاده نیستند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-mrdb-drywkh-mnsb-pydh-rwy-239107392",
+        "https://irantripadviser.ir/attraction.php?id=133",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.574700&longitude=51.205822"
+      ],
+      "latitude": 36.574700,
+      "longitude": 51.205822,
+      "elevation_m": 1348,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint پارکینگ شروع ترک؛ ارتفاع ۱۳۴۸ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog"
+    },
+    "dewouk-route-spring": {
+      "name": "چشمهٔ بالای مرداب دیوک",
+      "page_name": "چشمهٔ بالای مرداب دیوک",
+      "short_label": "چشمهٔ مسیر",
+      "place_type": "spring",
+      "category_key": "landmark",
+      "region": "پیمبور · کلاردشت · مازندران",
+      "aliases": [],
+      "identity_summary": "چشمهٔ واقعی بالای مرداب در پاکوب پیمبور؛ در مسیر ثبت‌شده waypoint دارد و گزارش مستقل آن را در همان مسیر و پیش از مرداب مشخص می‌کند.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/msyr-mrdb-drywkh-mnsb-pydh-rwy-239107392",
+        "https://rezarahnavard.blogfa.com/post/14",
+        "https://irantripadviser.ir/attraction.php?id=133",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.593162&longitude=51.211273"
+      ],
+      "latitude": 36.593162,
+      "longitude": 51.211273,
+      "elevation_m": 1362,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint چشمه در ترک؛ ارتفاع ۱۳۶۲ متر از Open-Meteo GLO-90.",
+      "climate": "forest_fog"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "parking-to-marsh": {
+      "slug": "pimbour-parking-to-dewouk-marsh",
+      "title": "پارکینگ پیمبور تا مرداب دیوک",
+      "subtitle": "پاکوب جنگلی از چشمهٔ بالای مرداب تا حاشیهٔ مرداب",
+      "trail_label": "مسیر پیادهٔ مرداب دیوک",
+      "origin": "پارکینگ انتهای جادهٔ پیمبور",
+      "target_label": "مرداب دیوک",
+      "region": "پیمبور · کلاردشت · مازندران",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["dewouk-trailhead", "dewouk-route-spring", "dewouk-marsh"],
+      "distance_km": 3.66,
+      "ascent_m": 188,
+      "one_way_minutes": 75,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-pedestrian-cut+independent-route-reports-v1",
+        "version": "dewouk-marsh-shortcut-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 30,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/msyr-mrdb-drywkh-mnsb-pydh-rwy-239107392",
+          "https://rezarahnavard.blogfa.com/post/14",
+          "https://irantripadviser.ir/attraction.php?id=133",
+          "https://mykonos.ir/post/%D9%85%D8%A7%D8%B2%DB%8C%DA%86%D8%A7%D9%84-%DA%A9%D8%AC%D8%A7%D8%B3%D8%AA%D8%9F-%D8%AA%D9%85%D8%A7%D8%B4%D8%A7%DB%8C-%D8%A7%D9%82%DB%8C%D8%A7%D9%86%D9%88%D8%B3-5374"
+        ],
+        "evidence_tracks": ["tracks/dewouk-marsh/msyr-mrdb-drywkh-mnsb-pydh-rwy.gpx"],
+        "cumulative_minutes": {
+          "dewouk-trailhead": 0,
+          "dewouk-route-spring": 60,
+          "dewouk-marsh": 75
+        },
+        "notes": ["ترک پیادهٔ میانبر به طول ۳٫۶۶ کیلومتر مبناست؛ گزارش مستقل مسیر طول مشابه و وجود چشمه پیش از مرداب را تأیید می‌کند. ممکن است چشمه فصلی خشک باشد."]
+      },
+      "public_note": "زمان تقریبی یک‌طرفه از پارکینگ انتهای جادهٔ پیمبور است. مسیر پاکوب جنگلی است؛ از خودروهای آفرودی فقط تا مسیر جداگانهٔ آن‌ها استفاده شده و وارد محاسبهٔ مسیر پیاده نشده است. به حاشیهٔ مرداب نزدیک شوید و روی پوشش گیاهی آن قدم نگذارید.",
+      "public_point_notes": {"dewouk-route-spring": "چشمه در waypoint ترک و گزارش مستقل ثبت شده و ممکن است فصلی خشک باشد."}
+    }
+  },
+  "point": {
+    "slug": "dewouk-marsh",
+    "tile_name": "مرداب دیوک",
+    "name": "مرداب دیوک",
+    "short_category": "مرداب",
+    "category": "مرداب‌های مازندران",
+    "category_key": "marsh",
+    "region": "پیمبور · کلاردشت",
+    "elevation_m": 1358,
+    "latitude": 36.595893,
+    "longitude": 51.207378,
+    "image": "/images/home-scene.png",
+    "image_alt": "مرداب دیوک در جنگل‌های کلاردشت",
+    "climate": "forest_fog",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["مرداب دریوک", "مرداب دیورک"]
+  },
+  "internal_note": "از میان ترک‌های ثبت‌شده فقط قطعهٔ پیاده از پارکینگ تا اولین رسیدن به مرداب استفاده شده است. مسیر طولانی‌تر و آفرودی اطراف مرداب به‌عنوان hiking Route ترکیب نشده. مختصات مقصد از waypoint Lake در انتهای قطعه است؛ ارتفاع GPX استفاده نشده است."
+}

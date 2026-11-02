@@ -1,0 +1,144 @@
+{
+  "catalog_version": "hawatch-chehel-mor-shahidan-v1",
+  "primary_point": "chehel-mor-shahidan",
+  "weather_points": {
+    "chehel-mor-shahidan": {
+      "name": "قلهٔ چهل‌مر شهیدان",
+      "page_name": "قلهٔ چهل‌مر شهیدان ارومیه",
+      "short_label": "چهل‌مر شهیدان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "category": "قله‌های آذربایجان غربی",
+      "region": "جرمی · ترگور · ارومیه · آذربایجان غربی",
+      "aliases": ["چهل مرد شهیدان", "قلهٔ شهیدان", "Chehel Mor Shahidan"],
+      "identity_summary": "قلهٔ چهل‌مر شهیدان در غرب روستای ییلاقی جرمی، در منطقهٔ ترگور ارومیه؛ با آرامگاه میانی و قله‌های هم‌نام دیگر یکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chhl-mr-shhydn-139847347",
+        "https://www.tasnimnews.ir/fa/news/1398/06/17/2092355/%D9%82%D9%84%D9%87-%D9%85%D8%B1%D8%AA%D9%81%D8%B9-%DA%86%D9%87%D9%84-%D9%85%D8%B1%D8%AF-%D8%B4%D9%87%DB%8C%D8%AF-%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%BA%D8%B1%D8%A8%DB%8C-%D8%B5%D8%A7%D8%AD%D8%A8-%D8%AE%D8%B7-%D8%A7%D9%84%D8%B1%D8%A3%D8%B3-%D8%B4%D9%85%D8%A7%D9%84%DB%8C-%D9%80-%D8%AC%D9%86%D9%88%D8%A8%DB%8C-%D8%AA%D8%B5%D8%A7%D9%88%DB%8C%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.401941&longitude=44.664328"
+      ],
+      "latitude": 37.401941,
+      "longitude": 44.664328,
+      "elevation_m": 3517,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint قله در ترک Wikiloc؛ ارتفاع ۳۵۱۷ متر از Open-Meteo GLO-90 در همان مختصات. منابع محلی ارتفاع‌های متفاوتی گزارش می‌کنند؛ مقدار اینجا فقط DEM مختصات canonical است.",
+      "climate": "alpine",
+      "seo": {
+        "title": "آب‌وهوای قلهٔ چهل‌مر شهیدان؛ پیش‌بینی ارومیه | هواچ",
+        "description": "پیش‌بینی آب‌وهوای قلهٔ چهل‌مر شهیدان در ترگور ارومیه؛ دما، باد، بارش و وضعیت ساعتی را ببینید."
+      }
+    },
+    "jermi-trailhead": {
+      "name": "پای‌کار قلهٔ چهل‌مر شهیدان در جرمی",
+      "page_name": "پای‌کار قلهٔ چهل‌مر شهیدان در جرمی",
+      "short_label": "پای‌کار جرمی",
+      "place_type": "trailhead",
+      "category_key": "landmark",
+      "region": "جرمی · ترگور · ارومیه · آذربایجان غربی",
+      "aliases": [],
+      "identity_summary": "نقطهٔ شروع ترک صعود ثبت‌شده در محدودهٔ ییلاق جرمی؛ روستای جرمی در گزارش مستقل مبدأ صعود معرفی شده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "descriptive",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chhl-mr-shhydn-139847347",
+        "https://www.tasnimnews.ir/fa/news/1398/06/17/2092355/%D9%82%D9%84%D9%87-%D9%85%D8%B1%D8%AA%D9%81%D8%B9-%DA%86%D9%87%D9%84-%D9%85%D8%B1%D8%AF-%D8%B4%D9%87%DB%8C%D8%AF-%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%BA%D8%B1%D8%A8%DB%8C-%D8%B5%D8%A7%D8%AD%D8%A8-%D8%AE%D8%B7-%D8%A7%D9%84%D8%B1%D8%A3%D8%B3-%D8%B4%D9%85%D8%A7%D9%84%DB%8C-%D9%80-%D8%AC%D9%86%D9%88%D8%A8%DB%8C-%D8%AA%D8%B5%D8%A7%D9%88%DB%8C%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.422228&longitude=44.725385"
+      ],
+      "latitude": 37.422228,
+      "longitude": 44.725385,
+      "elevation_m": 1892,
+      "status": "provisional",
+      "elevation_source": "مختصات آغاز track؛ ارتفاع ۱۸۹۲ متر از Open-Meteo GLO-90.",
+      "climate": "alpine"
+    },
+    "chehel-mor-memorial": {
+      "name": "مزار شهدای چهل‌مر شهیدان",
+      "page_name": "مزار شهدای چهل‌مر شهیدان",
+      "short_label": "مزار شهیدان",
+      "place_type": "landmark",
+      "category_key": "landmark",
+      "region": "جرمی · ترگور · ارومیه · آذربایجان غربی",
+      "aliases": [],
+      "identity_summary": "مزار واقعیِ شهدای روایت‌شده در گزارش مسیر، waypoint میانی ثبت‌شده پیش از قلهٔ چهل‌مر شهیدان.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/mountaineering-trails/chhl-mr-shhydn-139847347",
+        "https://www.tasnimnews.ir/fa/news/1398/06/17/2092355/%D9%82%D9%84%D9%87-%D9%85%D8%B1%D8%AA%D9%81%D8%B9-%DA%86%D9%87%D9%84-%D9%85%D8%B1%D8%AF-%D8%B4%D9%87%DB%8C%D8%AF-%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%BA%D8%B1%D8%A8%DB%8C-%D8%B5%D8%A7%D8%AD%D8%A8-%D8%AE%D8%B7-%D8%A7%D9%84%D8%B1%D8%A3%D8%B3-%D8%B4%D9%85%D8%A7%D9%84%DB%8C-%D9%80-%D8%AC%D9%86%D9%88%D8%A8%DB%8C-%D8%AA%D8%B5%D8%A7%D9%88%DB%8C%D8%B1",
+        "https://api.open-meteo.com/v1/elevation?latitude=37.405450&longitude=44.667025"
+      ],
+      "latitude": 37.405450,
+      "longitude": 44.667025,
+      "elevation_m": 3473,
+      "status": "provisional",
+      "elevation_source": "مختصات waypoint مزار در ترک و گزارش مستقل مسیر؛ ارتفاع ۳۴۷۳ متر از Open-Meteo GLO-90.",
+      "climate": "alpine"
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "jermi-to-summit": {
+      "slug": "jermi-to-chehel-mor-shahidan",
+      "title": "جرمی تا قلهٔ چهل‌مر شهیدان",
+      "subtitle": "مسیر مالروِ یال تا مزار شهیدان و قله",
+      "trail_label": "صعود قلهٔ چهل‌مر شهیدان از جرمی",
+      "origin": "پای‌کار جرمی",
+      "target_label": "قلهٔ چهل‌مر شهیدان",
+      "region": "جرمی · ترگور · ارومیه · آذربایجان غربی",
+      "featured": true,
+      "sort_order": 1,
+      "points": ["jermi-trailhead", "chehel-mor-memorial", "chehel-mor-shahidan"],
+      "distance_km": 7.50,
+      "ascent_m": 1694,
+      "one_way_minutes": 375,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-pedestrian-cut+independent-mountaineering-report-v1",
+        "version": "chehel-mor-shahidan-jermi-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 90,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/chhl-mr-shhydn-139847347",
+          "https://www.tasnimnews.ir/fa/news/1398/06/17/2092355/%D9%82%D9%84%D9%87-%D9%85%D8%B1%D8%AA%D9%81%D8%B9-%DA%86%D9%87%D9%84-%D9%85%D8%B1%D8%AF-%D8%B4%D9%87%DB%8C%D8%AF-%D8%A2%D8%B0%D8%B1%D8%A8%D8%A7%DB%8C%D8%AC%D8%A7%D9%86-%D8%BA%D8%B1%D8%A8%DB%8C-%D8%B5%D8%A7%D8%AD%D8%A8-%D8%AE%D8%B7-%D8%A7%D9%84%D8%B1%D8%A3%D8%B3-%D8%B4%D9%85%D8%A7%D9%84%DB%8C-%D9%80-%D8%AC%D9%86%D9%88%D8%A8%DB%8C-%D8%AA%D8%B5%D8%A7%D9%88%DB%8C%D8%B1"
+        ],
+        "evidence_tracks": ["tracks/chehel-mor-shahidan/chhl-mr-shhydn.gpx"],
+        "cumulative_minutes": {
+          "jermi-trailhead": 0,
+          "chehel-mor-memorial": 345,
+          "chehel-mor-shahidan": 375
+        },
+        "notes": ["زمان از track ثبت‌شده و توصیف مستقلِ مسیر بسیار پرشیب برآورد شده؛ اختلاف ارتفاع گزارش‌ها و تغییر سرعت گروهی، عدم‌قطعیت را بالا می‌برد."]
+      },
+      "public_note": "زمان تقریبی یک‌طرفه از جرمی است. مسیر مالرو از یال سنگلاخی و مرتفع می‌گذرد؛ زمان و شرایط در ارتفاع بالا به سرعت گروه و وضعیت هوا وابسته است.",
+      "public_point_notes": {"chehel-mor-memorial": "مزار، عارضهٔ واقعی و waypoint ثبت‌شده در مسیر پیش از قله است."}
+    }
+  },
+  "point": {
+    "slug": "chehel-mor-shahidan",
+    "tile_name": "قلهٔ چهل‌مر شهیدان",
+    "name": "قلهٔ چهل‌مر شهیدان",
+    "short_category": "قله",
+    "category": "قله‌های آذربایجان غربی",
+    "category_key": "mountain",
+    "region": "جرمی · ترگور · ارومیه",
+    "elevation_m": 3517,
+    "latitude": 37.401941,
+    "longitude": 44.664328,
+    "image": "/images/home-scene.png",
+    "image_alt": "قلهٔ چهل‌مر شهیدان در ترگور ارومیه",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["چهل مرد شهیدان", "قلهٔ شهیدان"]
+  },
+  "internal_note": "Track یک رفت‌وبرگشت است؛ فقط برش پای‌کار جرمی تا نخستین رسیدن به قله مبنای route است. زمان ثبت‌شدهٔ همین برش ۳۷۴ دقیقه است و به ۳۷۵ دقیقه گرد شده؛ عدم‌قطعیت ۹۰ دقیقه به علت اختلاف سرعت گروه‌ها و شرایط ارتفاعی ثبت شده است. ارتفاع DEM در نقطهٔ قله ۳۵۱۷ متر است، درحالی‌که گزارش‌های قدیمی‌تر مقدار بالاتری داده‌اند؛ مقدار GPS در کاتالوگ استفاده نشده است."
+}
