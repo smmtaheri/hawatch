@@ -69,6 +69,25 @@ describe("GA4 configuration and page-view coordination", () => {
     expect(sanitizeAnalyticsReferrer("javascript:alert(1)", "https://hawatch.ir")).toBe("");
   });
 
+  it.each([
+    ["autumn-2026-11-02", "123456789"],
+    ["2026-11-02", "12345678901234567890"],
+    ["پاییز-۱۴۰۵-۰۸-۱۱", "campaign_123"],
+  ])("preserves campaign dates and IDs: %s / %s", (campaign, id) => {
+    const location = new URL(analyticsPageLocation("https://hawatch.ir", "/", new URLSearchParams({
+      utm_campaign: campaign, utm_id: id,
+    }).toString()));
+    expect(location.searchParams.get("utm_campaign")).toBe(campaign);
+    expect(location.searchParams.get("utm_id")).toBe(id);
+  });
+
+  it.each(["user@example.com", "09123456789", "۰۹۱۲۳۴۵۶۷۸۹", "+98 912 345 6789", "+1 (202) 555-0123", "phone=2025550123", "token=secret", "bad\nlabel", "a".repeat(101)])(
+    "still drops explicit contact, credential and invalid campaign values: %s", (value) => {
+      const location = new URL(analyticsPageLocation("https://hawatch.ir", "/", new URLSearchParams({utm_source: value}).toString()));
+      expect(location.searchParams.has("utm_source")).toBe(false);
+    },
+  );
+
   it("uses the landing UTM/referrer once, then clean internal URLs and virtual referrers", () => {
     const initialPage = createInitialPageContext(
       "https://hawatch.ir",

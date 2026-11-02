@@ -79,12 +79,18 @@ export type InitialPageContext = {
 
 function campaignValue(value: string): string | null {
   const trimmed = value.trim();
-  if (!trimmed || trimmed.length > 100 || /[\u0000-\u001f\u007f]/.test(trimmed)) return null;
-  // Campaign tags are operator-supplied labels, not a channel for personal or
-  // credential data. If the existing title scrubber would alter a value, drop
-  // it instead of sending a partially-redacted campaign label.
-  const safe = sanitizeAnalyticsTitle(trimmed);
-  return safe === trimmed ? safe : null;
+  if (!trimmed || trimmed.length > 100 || /[\u0000-\u001f\u007f]/.test(value)) return null;
+  // Campaign IDs and date-based labels are legitimate numbers. The free-text
+  // title scrubber cannot distinguish them from phones; reject only explicit
+  // contact/credential forms here instead of silently dropping those labels.
+  const digits = trimmed.replace(/[۰-۹٠-٩]/g, (digit) => String(
+    "۰۱۲۳۴۵۶۷۸۹".includes(digit) ? "۰۱۲۳۴۵۶۷۸۹".indexOf(digit) : "٠١٢٣٤٥٦٧٨٩".indexOf(digit),
+  ));
+  if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(trimmed)) return null;
+  if (/\b(?:token|access_token|refresh_token|password|email|phone)\s*[:=]/i.test(trimmed)) return null;
+  if (/(?:^|[^0-9])(?:0|98|0098)9(?:[\s().-]*[0-9]){9}(?![0-9])/.test(digits)) return null;
+  if (/\+(?:[\s().-]*[0-9]){8,15}(?![0-9])/.test(digits)) return null;
+  return trimmed;
 }
 
 /** Keep only standard campaign tags on the initial public page URL. */
