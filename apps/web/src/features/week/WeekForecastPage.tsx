@@ -22,7 +22,7 @@ export function WeekForecastPage({kind}:{kind:'point'|'route'}){
  const [data,setData]=useState<Week|null>(null),[error,setError]=useState(''),[routesOpen,setRoutesOpen]=useState(false),[missing,setMissing]=useState(false);
  const root=useRef<HTMLDivElement>(null),runtime=useRef<ReturnType<typeof createForecastRuntime>|null>(null);
  const dataSubject=data?.subject.slug===slug?data.subject:undefined;
- usePageTitle(dataSubject?.name||dataSubject?.title,{robots:dataSubject?.seo_indexable===false?'noindex,follow':undefined,title:(dataSubject as any)?.seo_title,description:(dataSubject as any)?.seo_description});
+ usePageTitle(dataSubject?.name||dataSubject?.title,{robots:dataSubject?.seo_indexable===false?'noindex,follow':undefined,title:(dataSubject as any)?.seo_title,description:(dataSubject as any)?.seo_description,analyticsReady:Boolean(dataSubject)});
  // Restore detail entry scrolling after the weekly renderer has mounted its hero.
  // Subject identity stays stable during polling and selection changes.
  useEffect(()=>{

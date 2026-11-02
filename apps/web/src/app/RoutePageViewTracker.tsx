@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 import { notifyGa4Navigation } from "../lib/ga4";
 
 export function RoutePageViewTracker({
-  onPathname = notifyGa4Navigation,
+  onLocation = notifyGa4Navigation,
 }: {
-  onPathname?: (pathname: string) => void;
+  onLocation?: (pathname: string, search: string) => void;
 }) {
-  const { pathname } = useLocation();
-  useEffect(() => onPathname(pathname), [onPathname, pathname]);
+  const { pathname, search } = useLocation();
+  useEffect(() => onLocation(pathname, search), [onLocation, pathname, search]);
   return null;
 }

@@ -32,12 +32,15 @@ page view نیست. مسیر فقط بعد از آماده‌شدن عنوان R
 مستقیم عنوان آماده را از قبل دارد؛ صفحهٔ نقطه/مسیر در ناوبری SPA تا دریافت نام
 واقعی همان مقصد صبر می‌کند. بازکردن مستقیم، refresh و هر انتقال واقعی مسیر از
 جمله Back/Forward یک page view می‌سازند. تکرار effect در React StrictMode و
-تغییر query/filter با coordinator هر مسیر حذف می‌شود. عنوان از `document.title`
-همان لحظهٔ آماده‌شدن و URL فقط از origin و pathname عمومی ساخته می‌شود؛ query،
-hash و referrer بیرونی مرورگر هرگز فرستاده نمی‌شوند. ایمیل، شماره و عبارت‌های
-credential-like نیز از title ارسالی حذف می‌شوند. برای پیمایش داخلی در GA، فقط
-pathname عمومی صفحهٔ قبلی به‌عنوان referrer مجازی استفاده می‌شود؛ referrer بیرونی
-در بازدید اول خالی است.
+تغییر query/filter با coordinator هر مسیر حذف می‌شود. در اولین page view، URL از
+origin و pathname عمومی به‌علاوهٔ فقط پارامترهای استاندارد و allowlist‌شدهٔ UTM
+ساخته می‌شود؛ سایر queryها و hash هرگز فرستاده نمی‌شوند. مقدار UTM خالی، بیش از
+۱۰۰ نویسه، دارای کنترل‌کاراکتر یا شبیه ایمیل، شماره یا credential حذف می‌شود.
+Referrer بیرونیِ بارگذاری اول فقط به origin محدود می‌شود تا منبع ورود حفظ شود،
+بدون ارسال مسیر یا query احتمالیِ شخصی؛ referrer هم‌دامنه فقط از مسیر عمومی و
+بدون query/hash ساخته می‌شود. page viewهای بعدی URL پاک و مسیر قبلی داخلی را به
+عنوان referrer مجازی می‌گیرند. عنوان از `document.title` همان لحظهٔ آماده‌شدن
+خوانده می‌شود و ایمیل، شماره و عبارت‌های credential-like از آن حذف می‌شوند.
 
 در Google tag روی GA Signals و ad personalization سیگنال خاموش‌اند. کد
 `send_page_view: false` را به `config` می‌دهد و `page_view` را دستی ثبت می‌کند.
@@ -62,9 +65,11 @@ Google برای page view دستی در SPA هم‌راستاست.
 1. در سرور، خط `GA4_MEASUREMENT_ID=G-B9F7GYQ0X8` را به `.env` اضافه و deploy
    عادی کد را اجرا کنید؛ این متغیر را در فایل‌های frontend یا HTML ثابت نگذارید.
 2. در Chrome DevTools → Network، فیلتر `gtag/js` را بزنید و صفحهٔ عمومی را
-   باز کنید. باید حداکثر یک بار `gtag/js?id=G-B9F7GYQ0X8` بارگیری شود؛ درخواست‌های
-   `collect` باید `en=page_view` و `dl` تمیز بدون `?`/`#` داشته باشند. اولین
-   `dr` خالی و referrerهای بعدی فقط URL داخلیِ بدون query باشند.
+   با یک UTM آزمایشی باز کنید. باید حداکثر یک بار `gtag/js?id=G-B9F7GYQ0X8`
+   بارگیری شود؛ درخواست `collect` اول باید `en=page_view`، `dl` شامل فقط UTMهای
+   مجاز و `dr` برابر origin منبع بیرونی (در صورت وجود) داشته باشد. queryهای
+   planner، hash و مسیر/query referrer بیرونی نباید در payload باشند. page viewهای
+   SPA باید `dl` بدون query و `dr` برابر مسیر عمومی قبلیِ بدون query باشند.
 3. برای DebugView، از **Tag Assistant → Troubleshoot tag** حالت debug را فقط
    برای مرورگر خودت فعال کن و در GA4 **Admin → DebugView** برو. DebugView باید
    برای خانه → مقصدها → نقطه → مسیر، و نیز Back/Forward یک `page_view` با

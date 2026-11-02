@@ -5,9 +5,14 @@ import { describe, expect, it } from "vitest";
 import { RoutePageViewTracker } from "../src/app/RoutePageViewTracker";
 import {
   createPageViewCoordinator,
+  createInitialPageContext,
+  analyticsPageLocation,
+  ga4ConfigOptions,
   handleGa4ScriptFailure,
   publicAnalyticsPath,
+  sanitizeAnalyticsReferrer,
   sanitizeAnalyticsTitle,
+  sendGa4PageView,
   shouldEnableGa4,
 } from "../src/lib/ga4";
 
@@ -44,6 +49,77 @@ describe("GA4 configuration and page-view coordination", () => {
   it("removes email, phone, and credential-like values from a title", () => {
     expect(sanitizeAnalyticsTitle("قله user@example.com تلفن 09123456789 token=secret"))
       .toBe("قله تلفن");
+  });
+
+  it("keeps only safe, standard UTM values on the initial public URL", () => {
+    expect(analyticsPageLocation(
+      "https://hawatch.ir",
+      "/points/tochal/",
+      "?utm_source=tracking_test&utm_medium=social&utm_campaign=autumn&date=2026-11-02&token=secret&utm_term=user%40example.com&utm_content=09123456789&utm_id=token%3Dsecret",
+    )).toBe("https://hawatch.ir/points/tochal?utm_source=tracking_test&utm_medium=social&utm_campaign=autumn");
+    expect(analyticsPageLocation("https://hawatch.ir", "/admin/private", "?utm_source=tracking_test"))
+      .toBe("https://hawatch.ir/");
+  });
+
+  it("reduces external referrers to their origin and same-site referrers to a clean public path", () => {
+    expect(sanitizeAnalyticsReferrer("https://search.example/results?q=private#section", "https://hawatch.ir"))
+      .toBe("https://search.example/");
+    expect(sanitizeAnalyticsReferrer("https://hawatch.ir/points/tochal?token=secret#private", "https://hawatch.ir"))
+      .toBe("https://hawatch.ir/points/tochal");
+    expect(sanitizeAnalyticsReferrer("javascript:alert(1)", "https://hawatch.ir")).toBe("");
+  });
+
+  it("uses the landing UTM/referrer once, then clean internal URLs and virtual referrers", () => {
+    const initialPage = createInitialPageContext(
+      "https://hawatch.ir",
+      "/points/tochal",
+      "?utm_source=tracking_test&utm_medium=campaign&date=2026-11-02",
+      "https://search.example/query?q=private",
+    );
+    const sent: Array<{ path: string; title: string; generation: number; pageLocation: string; pageReferrer: string }> = [];
+    const coordinator = createPageViewCoordinator((page) => sent.push(page), {
+      origin: "https://hawatch.ir",
+      initialPage,
+    });
+
+    coordinator.navigate("/points/tochal", "?utm_source=tracking_test&utm_medium=campaign&date=2026-11-02");
+    coordinator.titleReady("/points/tochal", "آب‌وهوای توچال | هواچ");
+    coordinator.navigate("/points/tochal", "?date=2026-11-03"); // planner-only query update
+    coordinator.navigate("/routes/tochal-darband", "?date=2026-11-03");
+    coordinator.titleReady("/routes/tochal-darband", "مسیر دربند تا توچال | هواچ");
+
+    expect(sent).toHaveLength(2);
+    expect(sent[0]).toMatchObject({
+      pageLocation: "https://hawatch.ir/points/tochal?utm_source=tracking_test&utm_medium=campaign",
+      pageReferrer: "https://search.example/",
+    });
+    expect(sent[1]).toMatchObject({
+      pageLocation: "https://hawatch.ir/routes/tochal-darband",
+      pageReferrer: "https://hawatch.ir/points/tochal",
+    });
+  });
+
+  it("uses the production-tested GA commands with page location/referrer and no automatic view", () => {
+    const commands: unknown[][] = [];
+    const gtag = (...args: unknown[]) => commands.push(args);
+    const page = {
+      path: "/points/tochal",
+      title: "توچال user@example.com | هواچ",
+      generation: 1,
+      pageLocation: "https://hawatch.ir/points/tochal?utm_source=tracking_test",
+      pageReferrer: "https://search.example/",
+    };
+
+    sendGa4PageView(gtag, "G-B9F7GYQ0X8", page);
+
+    expect(commands).toEqual([
+      ["config", "G-B9F7GYQ0X8", ga4ConfigOptions(page.pageLocation, page.pageReferrer)],
+      ["event", "page_view", {
+        page_title: "توچال | هواچ",
+        page_location: page.pageLocation,
+        page_referrer: page.pageReferrer,
+      }],
+    ]);
   });
 
   it("sends one view per public route transition, waits for the matching title, and ignores query-only state", () => {
@@ -107,7 +183,7 @@ describe("GA4 configuration and page-view coordination", () => {
       }, [location.pathname]);
       return (
         <>
-          <RoutePageViewTracker onPathname={coordinator.navigate} />
+          <RoutePageViewTracker onLocation={coordinator.navigate} />
           <button onClick={() => navigate("/destinations")}>destinations</button>
           <button onClick={() => navigate("?date=2030-01-01&period=night")}>change filter</button>
           <button onClick={() => navigate("/points/tochal")}>point</button>

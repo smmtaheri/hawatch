@@ -18,6 +18,17 @@ const PAGE_PATHS = [
   /^\/points\/[a-z0-9-]+\/?$/,
   /^\/routes\/[a-z0-9-]+\/?$/,
 ];
+const CAMPAIGN_PARAMETERS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_id",
+  "utm_term",
+  "utm_content",
+  "utm_source_platform",
+  "utm_creative_format",
+  "utm_marketing_tactic",
+];
 
 export function publicAnalyticsPath(pathname: string): string | null {
   if (!PAGE_PATHS.some((pattern) => pattern.test(pathname))) return null;
@@ -52,31 +63,128 @@ export function sanitizeAnalyticsTitle(title: string): string {
     .slice(0, 200);
 }
 
-type PageView = {
+export type PageView = {
   path: string;
   title: string;
   generation: number;
+  pageLocation: string;
+  pageReferrer: string;
 };
+
+export type InitialPageContext = {
+  path: string | null;
+  pageLocation: string;
+  pageReferrer: string;
+};
+
+function campaignValue(value: string): string | null {
+  const trimmed = value.trim();
+  if (!trimmed || trimmed.length > 100 || /[\u0000-\u001f\u007f]/.test(trimmed)) return null;
+  // Campaign tags are operator-supplied labels, not a channel for personal or
+  // credential data. If the existing title scrubber would alter a value, drop
+  // it instead of sending a partially-redacted campaign label.
+  const safe = sanitizeAnalyticsTitle(trimmed);
+  return safe === trimmed ? safe : null;
+}
+
+/** Keep only standard campaign tags on the initial public page URL. */
+export function analyticsPageLocation(origin: string, pathname: string, search = ""): string {
+  const path = publicAnalyticsPath(pathname);
+  if (!path) return new URL("/", origin).toString();
+  const url = new URL(path, origin);
+  const query = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
+  for (const key of CAMPAIGN_PARAMETERS) {
+    const value = campaignValue(query.getAll(key)[0] ?? "");
+    if (value) url.searchParams.set(key, value);
+  }
+  return url.toString();
+}
+
+/** Keep an external referral source at origin granularity to avoid leaking URL data. */
+export function sanitizeAnalyticsReferrer(referrer: string, siteOrigin: string): string {
+  try {
+    const source = new URL(referrer);
+    const site = new URL(siteOrigin);
+    if (!["http:", "https:"].includes(source.protocol) || source.username || source.password) return "";
+    if (source.origin === site.origin) {
+      const path = publicAnalyticsPath(source.pathname);
+      return path ? `${site.origin}${path}` : "";
+    }
+    return `${source.origin}/`;
+  } catch {
+    return "";
+  }
+}
+
+export function createInitialPageContext(
+  origin: string,
+  pathname: string,
+  search: string,
+  documentReferrer: string,
+): InitialPageContext {
+  const path = publicAnalyticsPath(pathname);
+  return {
+    path,
+    pageLocation: analyticsPageLocation(origin, path ?? "/", path ? search : ""),
+    pageReferrer: path ? sanitizeAnalyticsReferrer(documentReferrer, origin) : "",
+  };
+}
+
+export function ga4ConfigOptions(pageLocation: string, pageReferrer: string) {
+  return {
+    send_page_view: false,
+    page_location: pageLocation,
+    page_referrer: pageReferrer,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  };
+}
+
+/** The same tested command builder is used for initial config and SPA views. */
+export function sendGa4PageView(gtag: Gtag, id: string, page: PageView): void {
+  gtag("config", id, ga4ConfigOptions(page.pageLocation, page.pageReferrer));
+  gtag("event", "page_view", {
+    page_title: sanitizeAnalyticsTitle(page.title),
+    page_location: page.pageLocation,
+    page_referrer: page.pageReferrer,
+  });
+}
 
 /**
  * Coordinates React Router and the asynchronously-updated document title.
  * A route transition is counted once only after that route's title is ready.
  */
-export function createPageViewCoordinator(send: (page: PageView) => void) {
+export function createPageViewCoordinator(
+  send: (page: PageView) => void,
+  options: { origin?: string; initialPage?: InitialPageContext } = {},
+) {
+  const origin = options.origin ?? "https://hawatch.ir";
+  let initialPagePending = Boolean(options.initialPage?.path);
   let activePath: string | null = null;
   let titleReadyPath: string | null = null;
   let titleReady = "";
   let generation = 0;
   let sentGeneration = -1;
+  let previousPublicLocation = "";
 
   function flush() {
     if (!activePath || titleReadyPath !== activePath || sentGeneration === generation) return;
     sentGeneration = generation;
-    send({ path: activePath, title: titleReady, generation });
+    const isInitialPage = initialPagePending && options.initialPage?.path === activePath;
+    const pageLocation = isInitialPage
+      ? options.initialPage!.pageLocation
+      : analyticsPageLocation(origin, activePath);
+    const pageReferrer = isInitialPage
+      ? options.initialPage!.pageReferrer
+      : previousPublicLocation;
+    send({ path: activePath, title: titleReady, generation, pageLocation, pageReferrer });
+    initialPagePending = false;
+    // Subsequent virtual referrers deliberately omit landing UTMs and planner state.
+    previousPublicLocation = `${origin}${activePath}`;
   }
 
   return {
-    navigate(pathname: string) {
+    navigate(pathname: string, _search = "") {
       const path = publicAnalyticsPath(pathname);
       if (!path) {
         if (activePath !== null) generation += 1;
@@ -126,11 +234,6 @@ function ga4Enabled(id = measurementId()): boolean {
 }
 
 let configuredMeasurementId: string | null = null;
-let previousPublicLocation = "";
-
-function safeLocation(path: string): string {
-  return `${window.location.origin}${path}`;
-}
 
 function queueGtag(..._args: unknown[]) {
   window.dataLayer?.push(arguments);
@@ -152,30 +255,13 @@ function sendPageView(page: PageView) {
   if (!id || window.__hawatchGa4State === "failed" || typeof window.gtag !== "function") return;
 
   try {
-    const pageLocation = safeLocation(page.path);
-    const pageReferrer = previousPublicLocation;
-    // Keep Google tag's defaults aligned to the clean route before the manual
-    // event. This prevents query strings (planner/auth state) and the external
-    // document.referrer from being inferred by the tag.
-    window.gtag("config", id, {
-      send_page_view: false,
-      page_location: pageLocation,
-      page_referrer: pageReferrer,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-    });
-    window.gtag("event", "page_view", {
-      page_title: page.title,
-      page_location: pageLocation,
-      page_referrer: pageReferrer,
-    });
-    previousPublicLocation = pageLocation;
+    sendGa4PageView(window.gtag, id, page);
   } catch {
     // Analytics is optional; never let a third-party integration affect UI.
   }
 }
 
-const pageViewCoordinator = createPageViewCoordinator(sendPageView);
+let pageViewCoordinator = createPageViewCoordinator(sendPageView);
 
 export function initializeGa4(): void {
   const id = measurementId();
@@ -183,16 +269,20 @@ export function initializeGa4(): void {
 
   try {
     configuredMeasurementId = id;
+    const initialPage = createInitialPageContext(
+      window.location.origin,
+      window.location.pathname,
+      window.location.search,
+      document.referrer,
+    );
+    pageViewCoordinator = createPageViewCoordinator(sendPageView, {
+      origin: window.location.origin,
+      initialPage,
+    });
     window.dataLayer = window.dataLayer ?? [];
     window.gtag = queueGtag;
     window.gtag("js", new Date());
-    window.gtag("config", id, {
-      send_page_view: false,
-      page_location: safeLocation(publicAnalyticsPath(window.location.pathname) ?? "/"),
-      page_referrer: "",
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-    });
+    window.gtag("config", id, ga4ConfigOptions(initialPage.pageLocation, initialPage.pageReferrer));
 
     const existingScript = document.querySelector<HTMLScriptElement>(
       `script[src^="https://www.googletagmanager.com/gtag/js?id=${id}"]`,
@@ -213,9 +303,9 @@ export function initializeGa4(): void {
   }
 }
 
-export function notifyGa4Navigation(pathname: string): void {
+export function notifyGa4Navigation(pathname: string, search = ""): void {
   if (!ga4Enabled()) return;
-  pageViewCoordinator.navigate(pathname);
+  pageViewCoordinator.navigate(pathname, search);
 }
 
 export function notifyGa4TitleReady(pathname: string, title: string): void {
