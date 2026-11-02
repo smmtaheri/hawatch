@@ -21,7 +21,7 @@ API هنگام start:
 2. migration اجرا می‌کند
 3. اگر `DEMO_DATA_ENABLED=true` باشد، `seed_demo_data` را idempotent اجرا می‌کند
 4. اگر `DEMO_DATA_ENABLED=false` باشد و `HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY=true` (پیش‌فرض)، فقط وقتی catalog زنده خالی است `bootstrap_live_catalog_if_empty` را اجرا می‌کند — بدون sync/prune در هر restart و بدون فراخوانی Open-Meteo
-5. یک worker gunicorn را روی `:8000` بالا می‌آورد
+5. Gunicorn را روی `:8000` با سه worker از نوع gthread و دو thread برای هر worker بالا می‌آورد؛ ظرفیت production در Compose ثابت است.
 6. web به‌صورت static production با Nginx روی `:5173` سرو می‌شود
 
 ## آدرس‌ها و پورت‌ها

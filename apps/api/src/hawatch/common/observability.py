@@ -13,6 +13,7 @@ import json
 import logging
 import logging.handlers
 import os
+import threading
 import time
 import uuid
 from collections import OrderedDict
@@ -119,17 +120,21 @@ class _Metric:
 
 class MetricsRegistry:
     def __init__(self) -> None:
+        self._lock = threading.RLock()
         self._metrics: OrderedDict[str, _Metric] = OrderedDict()
         self.http_scope = "process"
 
     def counter(self, name: str, help_text: str) -> None:
-        self._metrics[name] = _Metric(name, "counter", help_text)
+        with self._lock:
+            self._metrics[name] = _Metric(name, "counter", help_text)
 
     def gauge(self, name: str, help_text: str) -> None:
-        self._metrics[name] = _Metric(name, "gauge", help_text)
+        with self._lock:
+            self._metrics[name] = _Metric(name, "gauge", help_text)
 
     def histogram(self, name: str, help_text: str, buckets: Iterable[float]) -> None:
-        self._metrics[name] = _Metric(name, "histogram", help_text, tuple(buckets))
+        with self._lock:
+            self._metrics[name] = _Metric(name, "histogram", help_text, tuple(buckets))
 
     @staticmethod
     def _key(labels: dict[str, object] | None) -> tuple[tuple[str, str], ...]:
@@ -138,28 +143,36 @@ class MetricsRegistry:
     def inc(self, name: str, value: float = 1, labels: dict[str, object] | None = None) -> None:
         if name in shared_http_metrics.NAMES:
             shared_http_metrics.increment(name, value, labels)
-        metric = self._metrics[name]
-        key = self._key(labels)
-        metric.values[key] = metric.values.get(key, 0) + value
+        with self._lock:
+            metric = self._metrics[name]
+            key = self._key(labels)
+            metric.values[key] = metric.values.get(key, 0) + value
 
     def set(self, name: str, value: float, labels: dict[str, object] | None = None) -> None:
-        metric = self._metrics[name]
-        metric.values[self._key(labels)] = value
+        with self._lock:
+            metric = self._metrics[name]
+            metric.values[self._key(labels)] = value
 
     def observe(self, name: str, value: float, labels: dict[str, object] | None = None) -> None:
         metric = self._metrics[name]
         if name in shared_http_metrics.NAMES:
             shared_http_metrics.observe(name, value, labels, metric.buckets)
-        key = self._key(labels)
-        counts, total, count = metric.histograms.setdefault(key, ([0.0] * len(metric.buckets), 0.0, 0.0))
-        for index, bucket in enumerate(metric.buckets):
-            if value <= bucket:
-                counts[index] += 1
-        metric.histograms[key] = (counts, total + value, count + 1)
+        with self._lock:
+            key = self._key(labels)
+            counts, total, count = metric.histograms.setdefault(key, ([0.0] * len(metric.buckets), 0.0, 0.0))
+            for index, bucket in enumerate(metric.buckets):
+                if value <= bucket:
+                    counts[index] += 1
+            metric.histograms[key] = (counts, total + value, count + 1)
 
     def render(self) -> str:
-        lines: list[str] = []
+        # Never hold the local registry lock during optional Redis I/O.
         shared = shared_http_metrics.snapshot()
+        with self._lock:
+            return self._render(shared)
+
+    def _render(self, shared) -> str:
+        lines: list[str] = []
         self.http_scope = "shared-redis" if shared is not None else "process"
         for metric in self._metrics.values():
             lines.append(f"# HELP {metric.name} {metric.help_text}")

@@ -57,7 +57,9 @@ services:
       OPEN_METEO_FORECAST_DAYS: ${OPEN_METEO_FORECAST_DAYS:-10}
       OPEN_METEO_PAST_DAYS: ${OPEN_METEO_PAST_DAYS:-0}
       FORECAST_STALE_AFTER_HOURS: ${FORECAST_STALE_AFTER_HOURS:-7}
-      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
+      # Versioned production capacity: legacy .env/shell values cannot change it.
+      GUNICORN_WORKERS: "3"
+      GUNICORN_THREADS: "2"
       HAWATCH_SERVICE_NAME: hawatch-api
       HAWATCH_ENVIRONMENT: ${HAWATCH_ENVIRONMENT:-local}
       HAWATCH_LOG_DIR: /var/log/hawatch

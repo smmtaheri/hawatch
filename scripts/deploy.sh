@@ -391,6 +391,9 @@ run_stack() {
   done
   [[ "$build_succeeded" -eq 1 ]] || fail "Release image build failed; existing containers were not stopped. Check Docker Hub connectivity and retry."
 
+  log "Validating the candidate Gunicorn worker/thread configuration."
+  "${compose[@]}" run --rm --no-deps api --check-gunicorn
+
   # Render every public page shape in the candidate image before replacing
   # services. These tests use isolated settings and require no DB or provider.
   log "Validating SSR rendering before replacing running services."

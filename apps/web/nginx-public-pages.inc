@@ -6,6 +6,7 @@ location = /points/ { return 301 https://hawatch.ir/; }
 location = / {
     proxy_pass http://hawatch_api;
     proxy_http_version 1.1;
+    proxy_set_header Connection "";
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -19,6 +20,7 @@ location = / {
 location ~ ^/(?:destinations/page/[0-9]+|points/[-A-Za-z0-9_]+|routes/[-A-Za-z0-9_]+|routes/page/[0-9]+|destinations|routes)/?$ {
     proxy_pass http://hawatch_api;
     proxy_http_version 1.1;
+    proxy_set_header Connection "";
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

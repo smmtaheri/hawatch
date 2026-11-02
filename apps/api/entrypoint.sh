@@ -1,6 +1,33 @@
 #!/bin/sh
 set -eu
 
+run_gunicorn() {
+  workers="${GUNICORN_WORKERS:-3}"
+  threads="${GUNICORN_THREADS:-2}"
+  for count in "$workers" "$threads"; do
+    case "$count" in
+      ''|*[!0-9]*) printf '%s\n' 'Gunicorn workers/threads must be positive integers.' >&2; exit 1 ;;
+    esac
+    [ "$count" -gt 0 ] || { printf '%s\n' 'Gunicorn workers/threads must be positive integers.' >&2; exit 1; }
+  done
+  exec gunicorn hawatch.config.wsgi:application \
+    --bind 0.0.0.0:8000 \
+    --workers "$workers" \
+    --worker-class gthread \
+    --threads "$threads" \
+    --keep-alive 5 \
+    --timeout 60 \
+    --graceful-timeout 30 \
+    --access-logfile - \
+    --error-logfile - "$@"
+}
+
+# Exercise the exact serving arguments in a candidate image without waiting
+# for PostgreSQL, running migrations or starting a listening worker.
+if [ "${1:-}" = "--check-gunicorn" ]; then
+  run_gunicorn --check-config
+fi
+
 HOST="${POSTGRES_HOST:-postgres}"
 PORT="${POSTGRES_PORT:-5432}"
 USER="${POSTGRES_USER:-hawatch}"
@@ -52,12 +79,4 @@ if [ "$#" -gt 0 ]; then
 fi
 
 log_info "startup.api_started"
-exec gunicorn hawatch.config.wsgi:application \
-  --bind 0.0.0.0:8000 \
-  --workers "${GUNICORN_WORKERS:-2}" \
-  --worker-class sync \
-  --threads 1 \
-  --timeout 60 \
-  --graceful-timeout 30 \
-  --access-logfile - \
-  --error-logfile -
+run_gunicorn

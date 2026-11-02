@@ -1,4 +1,5 @@
 import logging
+from concurrent.futures import ThreadPoolExecutor
 import multiprocessing
 import os
 import time
@@ -93,3 +94,28 @@ def test_redis_metrics_failure_falls_back_without_raising(monkeypatch):
         registry.inc("hawatch_http_requests_total")
         assert "hawatch_http_requests_total 1" in registry.render()
         assert registry.http_scope == "process"
+
+
+def test_threaded_metric_updates_and_scrapes_preserve_exact_counts():
+    registry = MetricsRegistry()
+    registry.counter("threaded_counter", "test")
+    registry.histogram("threaded_duration", "test", (1, 2))
+
+    def update(index):
+        for _ in range(200):
+            registry.inc("threaded_counter")
+            registry.observe("threaded_duration", 1)
+            registry.inc("threaded_counter", labels={"worker": index})
+
+    def scrape():
+        for _ in range(200):
+            assert "# TYPE threaded_counter counter" in registry.render()
+
+    with ThreadPoolExecutor(max_workers=9) as pool:
+        futures = [pool.submit(update, i) for i in range(8)] + [pool.submit(scrape)]
+        for future in futures:
+            future.result()
+    rendered = registry.render().splitlines()
+    assert "threaded_counter 1600" in rendered
+    assert "threaded_duration_count 1600" in rendered
+    assert "threaded_duration_sum 1600" in rendered

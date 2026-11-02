@@ -103,7 +103,7 @@ function generatedTs() {
 }
 
 function proxyLocation(upstream) {
-  const settings = `    proxy_pass ${upstream};\n    proxy_http_version 1.1;\n    proxy_set_header Host $host;\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    proxy_set_header X-Forwarded-Proto $hawatch_forwarded_proto;\n    proxy_connect_timeout 3s;\n    proxy_read_timeout 30s;\n    proxy_send_timeout 30s;\n    proxy_next_upstream error timeout http_502 http_503 http_504;`;
+  const settings = `    proxy_pass ${upstream};\n    proxy_http_version 1.1;\n    proxy_set_header Connection "";\n    proxy_set_header Host $host;\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    proxy_set_header X-Forwarded-Proto $hawatch_forwarded_proto;\n    proxy_connect_timeout 3s;\n    proxy_read_timeout 30s;\n    proxy_send_timeout 30s;\n    proxy_next_upstream error timeout http_502 http_503 http_504;`;
   return `location = / {\n${settings}\n}\n\nlocation ~ ${nginxLocationPattern()} {\n${settings}\n}`;
 }
 

@@ -26,8 +26,8 @@ def test_sitemap_and_api_concurrency_have_explicit_separate_owners():
     entrypoint = (root / 'apps/api/entrypoint.sh').read_text()
     gateway = (root / 'infra/nginx/nginx.conf').read_text()
     stage_gateway = (root / 'infra/nginx/stage.conf').read_text()
-    assert 'GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}' in compose
-    assert '--worker-class sync' in entrypoint and '--threads 1' in entrypoint
+    assert 'GUNICORN_WORKERS: "3"' in compose and 'GUNICORN_THREADS: "2"' in compose
+    assert '--worker-class gthread' in entrypoint and '--threads "$threads"' in entrypoint
     assert compose.count('hawatch_seo_public:/var/lib/hawatch-seo:ro') == 2
     assert 'command: ["python", "manage.py", "run_sitemap_publisher"]' in compose
     assert gateway.count('alias /var/lib/hawatch-seo/sitemap.xml;') == 2
@@ -86,11 +86,12 @@ docker(){
  if [[ "$*" == *'tests/test_ssr_attribution.py'* && "${FAIL_SSR:-0}" == 1 ]]; then return 1; fi
  if [[ "$*" == *'sync_catalog --apply'* && "${FAIL_SYNC:-0}" == 1 ]]; then return 1; fi
  if [[ "$*" == *'manage.py build_sitemap'* && "${FAIL_SITEMAP:-0}" == 1 ]]; then return 1; fi
+ if [[ "$*" == *'api --check-gunicorn'* && "${FAIL_GUNICORN:-0}" == 1 ]]; then return 1; fi
 }
 """ + function + '\nrun_stack\n'
-    def run(fail=False,skip_catalog=False,fail_ssr=False,fail_sitemap=False):
+    def run(fail=False,skip_catalog=False,fail_ssr=False,fail_sitemap=False,fail_gunicorn=False):
         commands.write_text('')
-        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'FAIL_SSR':str(int(fail_ssr)),'FAIL_SITEMAP':str(int(fail_sitemap)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
+        result=subprocess.run(['bash','-c',harness],env={**os.environ,'REPO_DIR':str(repo),'COMMAND_LOG':str(commands),'FAIL_SYNC':str(int(fail)),'FAIL_SSR':str(int(fail_ssr)),'FAIL_SITEMAP':str(int(fail_sitemap)),'FAIL_GUNICORN':str(int(fail_gunicorn)),'HAWATCH_SKIP_CATALOG_SYNC':str(int(skip_catalog))},capture_output=True,text=True)
         return result, commands.read_text()
     return repo,fixture,commit,run
 
@@ -102,6 +103,15 @@ def test_missing_initial_sitemap_blocks_api_and_gateway_replacement(tmp_path):
     assert 'manage.py build_sitemap' in commands
     assert 'up -d --no-deps api' not in commands
     assert 'up -d --no-deps --force-recreate nginx' not in commands
+
+
+def test_invalid_gunicorn_configuration_blocks_service_replacement(tmp_path):
+    _, _, _, run = _deployment_harness(tmp_path)
+    result, commands = run(fail_gunicorn=True)
+    assert result.returncode != 0
+    assert 'api --check-gunicorn' in commands
+    assert 'up -d' not in commands
+    assert 'sync_catalog --apply' not in commands
 
 
 def test_sitemap_is_ready_before_api_and_rebuilt_after_catalog_sync(tmp_path):

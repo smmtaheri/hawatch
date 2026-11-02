@@ -5,7 +5,7 @@
 ## سرویس‌های پیش‌فرض
 
 - `postgres` — `postgis/postgis:16-3.5` با volume نام‌دار `hawatch_pgdata`
-- `api` — Django/DRF با یک worker روی `:8000`
+- `api` — Django/DRF با ۳ worker از نوع gthread و ۲ thread برای هر worker روی `:8000`؛ ظرفیت در Compose ثابت است.
 - `web` — build استاتیک Nginx روی `:5173`
 - `nginx` — gateway سبک روی port قابل‌تنظیم (پیش‌فرض `:80`)؛ proxy وب/API و endpoint داخلی `healthz`
 - `ingest` — management command یک‌باره برای اجرای دستی یا ingest اولیه؛ deploy script قبل از ingest اولیه image آن را جداگانه build می‌کند چون این سرویس detached بالا نمی‌آید

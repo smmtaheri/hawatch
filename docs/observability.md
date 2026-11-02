@@ -72,6 +72,9 @@ command در maintenance روزانه اجرا می‌شود تا نوبت‌ه�
 این‌ها دفتر حساب دائمی نیستند. سایر counterها process-local و gaugeهای catalog
 و freshness از DB هنگام scrape خوانده می‌شوند. چرخش فایل JSONL با قفل بین‌پردازشی
 و بازکردن مجدد inode از ازدست‌رفتن لاگ هنگام rotation چند worker جلوگیری می‌کند.
+رجیستری process-local نیز با قفل درون‌پردازشی از نوشتن/خواندن هم‌زمان threadها
+محافظت می‌شود؛ تماس Redis خارج از این قفل است تا handlerها به‌خاطر metrics
+پشت یک تماس شبکه صف نشوند.
 
 بخش `sitemap` در health/status محافظت‌شده شامل زمان آخرین تلاش و بررسی موفق،
 آخرین تغییر محتوا، تعداد URLها، hash و مدت ساخت است. `check_stale=true` یعنی

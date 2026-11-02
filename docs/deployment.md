@@ -300,8 +300,30 @@ docker compose --env-file .env -f infra/compose/compose.yaml run --rm --no-deps 
 docker compose --env-file .env -f infra/compose/compose.yaml logs --tail 50 sitemap-publisher
 ```
 
-پیش‌فرض API دو worker از نوع sync با یک thread برای هر worker است؛ مقدار صریح
-`GUNICORN_WORKERS` در `.env` اولویت دارد و خودکار بازنویسی نمی‌شود. افزایش worker
+API production در Compose روی **۳ worker از نوع gthread، هرکدام ۲ thread** ثابت
+است؛ ظرفیت اجرای هم‌زمان حداکثر ۶ handler است، نه شش پردازش موازی CPU.
+`GUNICORN_WORKERS` و `GUNICORN_THREADS` قدیمی در `.env` یا shell این سیاست را
+عوض نمی‌کنند. تغییر ظرفیت production باید صریحاً در همان Compose version شود.
+پیش از جایگزینی سرویس‌ها، deploy با `--check-gunicorn` آرگومان‌های واقعی startup
+را بدون migration یا اجرای worker بررسی می‌کند. مقدار keep-alive در Gunicorn
+پنج ثانیه است؛ Nginx برای API و SSR از HTTP/1.1 و هدر Connection خالی استفاده
+می‌کند. poolهای ۱۶تایی Nginx، اتصال‌های بیکارند و تعداد worker/thread را تعیین
+یا هم‌زمانی را به ۱۶ محدود نمی‌کنند. timeout و سیاست کش قبلی حفظ شده‌اند.
+
+بعد از اجرای معمول `deploy-hawatch`، از سیستم محلی بررسی کنید:
+
+```bash
+ssh hawatch 'docker top hawatch-api -eo pid,ppid,args'
+curl -fsS https://hawatch.ir/healthz
+curl -fsS https://hawatch.ir/api/v1/health/ready/
+curl -fsSI https://hawatch.ir/sitemap.xml
+```
+
+در خروجی processها یک master و سه worker با آرگومان‌های `--workers 3`،
+`--worker-class gthread` و `--threads 2` دیده می‌شود. threadهای pool هنگام
+درخواست ساخته می‌شوند؛ شمارش threadهای یک کانتینر بیکار معیار ظرفیت نیست.
+در gthread، مقدار `--timeout 60` ناظرِ زنده‌بودن worker است، نه سقف قطعی زمان
+هر درخواست؛ timeoutهای Nginx همچنان مستقل اعمال می‌شوند. افزایش worker
 جایگزین رفع query سنگین نیست. استیج و قرارداد routing عمومی تغییر نکرده‌اند.
 CDN باید فقط پاسخ موفق `/sitemap.xml` را با هدر مبدأ (حداکثر ۳۰۰ ثانیه) cache کند؛
 تغییر پنل CDN یا purge سراسری جزو این deploy نیست.
