@@ -28,25 +28,23 @@ def test_dasht_havij_is_an_independent_indexable_destination():
     assert "rizan-hoyej-meadow" not in CATALOG.read_text()
 
 
-def test_promotion_preserves_existing_route_chains_and_metrics():
+def test_promotion_preserves_existing_route_chains_and_metrics(assert_profile_distance):
     catalog = json.loads(CATALOG.read_text())
     expected = {
-        "afjeh-hoyej-rizan": (["afjeh", "dasht-havij", "rizan"], 6.44, 1590),
+        "afjeh-hoyej-rizan": (["afjeh", "dasht-havij", "rizan"], 1590),
         "andar-person-rizan": (
             ["afjeh", "dasht-havij", "rizan-andar", "rizan-person", "rizan"],
-            10.48,
             1738,
         ),
         "afjeh-hoyej-person": (
             ["afjeh", "dasht-havij", "rizan-andar", "rizan-person"],
-            6.26,
             1103,
         ),
     }
-    for slug, (points, distance, ascent) in expected.items():
+    for slug, (points, ascent) in expected.items():
         route = catalog["routes"][slug]
         assert route["points"] == points
-        assert route["distance_km"] == distance
+        assert_profile_distance(route)
         assert route["ascent_m"] == ascent
         assert "dasht-havij" in route["public_point_notes"]
         assert route["timing_status"] == "estimated"

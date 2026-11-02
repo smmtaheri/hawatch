@@ -23,18 +23,13 @@ from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.tochal import load_tochal_catalog, seed_tochal_catalog
 from hawatch.modules.forecasts.models import ForecastPointResolution, ForecastRecord, ForecastSnapshot, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
+from hawatch.common.time import now_tehran
 
 
 SHARED_SLUGS = ("tochal", "goleband-tochal", "tochal-hotel", "tochal-station-7")
 
-EXACT_POINTS = {
-    "pas-ghaleh-shemiran": (35.8361950, 51.4233411, 1936),
-    "barfchal-tochal": (35.8744485, 51.4373690, 3680),
-    "goleband-tochal": (35.8809109, 51.4221380, 3860),
-    "tochal": (35.8843493, 51.4198766, 3955),
-    "ahar-village": (35.9353996, 51.4635292, 2140),
-    "shakarab-ahar": (35.9282559, 51.4269378, 2400),
-}
+EXACT_POINTS = {slug: (row["latitude"], row["longitude"], row["elevation_m"])
+                for slug, row in load_tochal_catalog()["weather_points"].items()}
 
 TEST_POINT_COORDINATES = {
     "sarband-tehran": (35.8280442, 51.4266129),
@@ -52,7 +47,7 @@ def _sample_hourly(
     latitude: float = 35.85,
     longitude: float = 51.43,
 ) -> dict:
-    start = datetime(2026, 8, 27, 0, 0)
+    start = now_tehran().replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None)
     times = [(start + timedelta(hours=offset)).strftime("%Y-%m-%dT%H:%M") for offset in range(hours)]
     return {
         "latitude": latitude,
@@ -194,7 +189,7 @@ def test_tochal_catalog_exact_values_shared_identity_and_no_duplicates():
     # No obsolete demo Tochal route points from old fixtures.
     obsolete = {"darband", "amiri-shelter", "loop-pass", "welenjak", "station-7-5", "kolakchal", "dehbahar"}
     assert not RoutePoint.objects.filter(route__target_weather_point__slug="tochal", slug__in=obsolete).exists()
-    assert WeatherPoint.objects.get(slug="tochal").elevation_m == 3955
+    assert WeatherPoint.objects.get(slug="tochal").elevation_m == catalog["weather_points"]["tochal"]["elevation_m"]
 
 
 @override_settings(OPEN_METEO_PAST_DAYS=0)
@@ -437,7 +432,7 @@ def test_api_never_calls_provider_and_exposes_snowfall(monkeypatch, api_client):
 
     response = api_client.get(
         "/api/v1/points/tochal/forecast/",
-        {"date": "2026-08-27", "period": "morning"},
+        {"date": now_tehran().date().isoformat(), "period": "morning"},
     )
     assert response.status_code == 200
     body = response.json()

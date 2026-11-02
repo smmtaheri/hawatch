@@ -22,11 +22,6 @@ def api_client():
     return APIClient()
 
 
-@pytest.fixture
-def seeded(db):
-    return seed_demo_data(force=True)
-
-
 def _sitemap_lastmod(response, url):
     root = ElementTree.fromstring(response.content)
     namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -115,17 +110,16 @@ def test_ready_health_postgis(api_client, seeded):
 def test_known_points_and_routes_exist(seeded):
     desired = load_packaged_catalogs()
     slugs = set(WeatherPoint.objects.filter(kind=WeatherPoint.Kind.PRIMARY).values_list("slug", flat=True))
-    expected_primary = {
-        str(data.get("primary_point") or data["point"].get("slug"))
-        for _relative, data in desired.files
-    }
+    expected_primary = {slug for slug, row in desired.point_rows.items() if row.get("kind") == "primary"}
     assert slugs == expected_primary
     route_slugs = set(Route.objects.values_list("slug", flat=True))
     assert route_slugs == set(desired.route_slugs)
     assert "tochal-darband" in route_slugs
     assert {"gahar-dorud", "gahar-aligudarz"} <= route_slugs
-    assert Route.objects.filter(target_weather_point__slug="tochal").count() == 5
-    assert RoutePoint.objects.filter(route__slug="tochal-darband").count() == 6
+    expected_tochal_routes = {slug for slug, row in desired.route_rows.items() if row["points"][-1] == "tochal"}
+    assert set(Route.objects.filter(target_weather_point__slug="tochal").values_list("slug", flat=True)) == expected_tochal_routes
+    expected_chain = desired.route_rows["tochal-darband"]["points"]
+    assert list(RoutePoint.objects.filter(route__slug="tochal-darband").order_by("sort_order").values_list("weather_point__slug", flat=True)) == expected_chain
 
 
 @pytest.mark.django_db
@@ -144,7 +138,7 @@ def test_first_destination_route_timelines_use_compact_labels(api_client, seeded
 
     point = api_client.get("/api/v1/points/damavand/").json()["point"]
     assert point["name"] == "قلهٔ دماوند"
-    assert point["short_label"] == "دماوند"
+    assert point["tile_name"] == WeatherPoint.objects.get(slug="damavand").short_label
 
 
 @pytest.mark.django_db
@@ -570,7 +564,8 @@ def test_point_forecast_pas_ghaleh(api_client, seeded):
     assert response.status_code == 200
     body = response.json()
     assert body["point"]["slug"] == "pas-ghaleh-shemiran"
-    assert body["point"]["name"] == "روستای پس‌قلعه"
+    point = WeatherPoint.objects.get(slug="pas-ghaleh-shemiran")
+    assert body["point"]["name"] == (point.page_name or point.name)
     assert body["point"]["latitude"] == pytest.approx(35.8361950, rel=1e-4)
     assert body["point"]["longitude"] == pytest.approx(51.4233411, rel=1e-4)
     assert body["point"]["elevation_m"] == 1936

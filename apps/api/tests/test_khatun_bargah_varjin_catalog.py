@@ -47,7 +47,7 @@ def test_khatun_bargah_excludes_road_and_technical_ridge():
     assert catalog["weather_points"]["khatun-bargah"]["elevation_m"] == 3820
 
 
-def test_varjin_shared_pass_and_honest_lavasan_direction():
+def test_varjin_shared_pass_and_honest_lavasan_direction(assert_profile_distance):
     catalog = json.loads((ROOT / "varjin_v1.json").read_text())
     routes = catalog["routes"]
     assert routes["kalugan"]["points"][0] == "kalugan-village"
@@ -58,8 +58,9 @@ def test_varjin_shared_pass_and_honest_lavasan_direction():
     assert "NOT on original outbound" in routes["lavasan"]["internal_note"]
     assert "do not use descent timestamps" in routes["lavasan"]["internal_note"]
     assert "شاخهٔ رفت" in routes["lavasan"]["public_note"]
-    for key, expected in {"lavasan": (5.80, 1150, 225), "kalugan": (6.60, 1209, 240),
-                           "rahatabad": (6.31, 658, 195)}.items():
+    for key, expected in {"lavasan": (1150, 225), "kalugan": (1209, 240),
+                           "rahatabad": (658, 195)}.items():
         route = routes[key]
-        assert (route["distance_km"], route["ascent_m"], route["one_way_minutes"]) == expected
+        assert_profile_distance(route)
+        assert (route["ascent_m"], route["one_way_minutes"]) == expected
     assert catalog["weather_points"]["varjin-peak"]["elevation_m"] == 2945

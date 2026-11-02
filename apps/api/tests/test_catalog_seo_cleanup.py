@@ -4,7 +4,8 @@ from pathlib import Path
 import pytest
 
 from hawatch.api.v1.serializers import related_routes_for_weather_point
-from hawatch.modules.catalog.seed import ensure_catalog
+from hawatch.modules.catalog.catalog import seed_catalog
+from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.catalog.validation import (
     validate_catalog_document,
     validate_database_catalog,
@@ -41,7 +42,23 @@ def test_chalon_pass_uses_named_waypoint_not_a_track_point_beside_the_summit():
 
 @pytest.mark.django_db
 def test_catalog_cleanup_preserves_route_chains_and_exposes_real_destination_links(api_client, published_sitemap):
-    ensure_catalog("hawatch-test-demo-v1")
+    # This regression owns these chains, not every destination later onboarded.
+    # Import their transitive shared-point owners in the real loader's order.
+    desired = load_packaged_catalogs()
+    required = {"shahvars-east", "sisangan-waterfall", "doshakh-shelter",
+                "shirabad-third-waterfall", "siah-kaman-chalon-pass"}
+    selected = set()
+    while True:
+        previous = set(required)
+        for path, document in desired.files:
+            if required.intersection(document["weather_points"]):
+                selected.add(path)
+                required.update(document.get("shared_weather_points") or [])
+        if previous == required:
+            break
+    for path, _ in desired.files:
+        if path in selected:
+            seed_catalog(catalog_file=path)
 
     assert not validate_database_catalog(strict=True)
     assert not validate_indexable_link_graph()

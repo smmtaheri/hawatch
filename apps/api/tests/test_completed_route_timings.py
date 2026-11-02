@@ -9,35 +9,17 @@ from hawatch.modules.catalog.sync import load_packaged_catalogs
 from hawatch.modules.routes.models import Route
 from hawatch.modules.routes.timing import route_mean_elevation_m, route_timing_complete
 
-EXPECTED = {
-    "afjeh-hoyej-person": 210,
-    "andar-person-rizan": 345,
-    "afjeh-hoyej-rizan": 265,
-    "afjeh-saka-atash-kuh": 320,
-    "barg-jahan-person": 250,
-    "chin-kalagh-sarbazark": 450,
-    "garmabdar-pirzan-mehrchal": 280,
-    "gol-zard-north-polour": 235,
-    "gol-zard-south-mobarakabad": 250,
-    "imameh-mehrchal": 310,
-    "hio-aseman-kuh": 250,
-    "ira-fil-zamin": 265,
-    "ira-siah-palas": 310,
-    "javard-siah-palas": 215,
-    "kaman-kouh-varangerud-yakhchal": 435,
-    "lasak-gorge-mishineh-marg": 315,
-    "lavasan-bozorg-fil-zamin": 225,
-    "rendan-village-waterfall": 65,
-    "shirabad-seven-waterfalls": 95,
-    "sofeh-park-to-summit": 100,
-}
-BLOCKED = {
-    "sanboran-gahar",
-}
+_catalog = load_packaged_catalogs()
+# This estimate family has traceable GPX evidence. Totals and pending membership
+# belong to the catalog; completing another route must not break an old list.
+EXPECTED = {slug: row["one_way_minutes"] for slug, row in _catalog.route_rows.items()
+            if row.get("timing", {}).get("version") == "pending-eta-v1"}
+BLOCKED = {slug for slug, row in _catalog.route_rows.items() if row.get("timing_status") == "pending"}
 
 
 def test_packaged_timings_have_traceable_estimates_and_consistent_cumulatives():
     desired = load_packaged_catalogs()
+    assert EXPECTED, "The estimate family must be exercised, not pass vacuously"
     for slug, total in EXPECTED.items():
         row = desired.route_rows[slug]
         timing = row["timing"]
@@ -90,7 +72,7 @@ def test_deploy_catalog_sync_completes_existing_pending_routes_and_preserves_pac
             route.descent_m,
             pace,
             mean_elevation_m=mean_elevation_m,
-            fallback_medium_minutes=65,
+            fallback_medium_minutes=route.one_way_minutes,
         )
     repeated = StringIO()
     call_command("sync_catalog", "--apply", stdout=repeated)

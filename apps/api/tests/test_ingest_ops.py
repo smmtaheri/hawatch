@@ -28,7 +28,7 @@ from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot, W
 def _sample_hourly(*, hours: int = 6) -> dict:
     from datetime import datetime
 
-    start = datetime(2026, 8, 27, 0, 0)
+    start = now_tehran().replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None)
     times = [(start + timedelta(hours=i)).strftime("%Y-%m-%dT%H:%M") for i in range(hours)]
     return {
         "latitude": 35.85,
@@ -80,7 +80,7 @@ def _fail_batch(point_ids: list[str], *, status_code: int = 500) -> dict:
 
 
 @pytest.mark.django_db(transaction=True)
-def test_legacy_route_point_association_backfill():
+def test_legacy_route_point_association_backfill(legacy_migration_database):
     """Prove 0009 copies WeatherPoint.route_point → RoutePoint.weather_point before drop."""
     executor = MigrationExecutor(connection)
     executor.loader.build_graph()
@@ -208,9 +208,7 @@ def test_legacy_route_point_association_backfill():
     field_names = {field.name for field in FinalWeatherPoint._meta.local_fields}
     assert "route_point" not in field_names
 
-    # Return test DB to leaf migrations for subsequent tests in this process.
-    executor.loader.build_graph()
-    executor.migrate(executor.loader.graph.leaf_nodes())
+    # The fixture drops this historical DB and restores the untouched test DB.
 
 
 @pytest.mark.django_db
@@ -325,9 +323,10 @@ def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_err
     second = persist_ingest(weather_points=[summit], batch_results=[updated_batch])
     new_rows = ForecastRecord.objects.filter(weather_point=summit, data_mode="live")
     assert second.pk != first.pk
-    assert new_rows.count() == 3
-    assert set(new_rows.values_list("id", flat=True)) < old_ids
-    assert set(new_rows.values_list("temperature_c", flat=True)) == {12}
+    # A short provider body updates its hours, but cannot erase usable tail data.
+    assert new_rows.count() == len(old_ids)
+    assert set(new_rows.values_list("id", flat=True)) == old_ids
+    assert list(new_rows.order_by("forecast_at").values_list("temperature_c", flat=True)) == [12, 12, 12, -5]
     current_ids = set(new_rows.values_list("id", flat=True))
 
     snapshot_count = ForecastSnapshot.objects.count()
@@ -347,11 +346,12 @@ def test_live_forecast_upsert_keeps_one_row_per_point_and_preserves_on_write_err
     ) == current_ids
     assert set(
         ForecastRecord.objects.filter(weather_point=summit, data_mode="live").values_list("temperature_c", flat=True)
-    ) == {12}
+    ) == {12, -5}
 
 
 @pytest.mark.django_db
-def test_ingest_keeps_previous_local_day_without_refetching_it():
+@pytest.mark.parametrize("full_window", [False, True])
+def test_ingest_preserves_previous_days_and_only_trims_after_full_coverage(full_window):
     seed_tochal_catalog()
     summit = WeatherPoint.objects.get(slug="tochal")
     today = now_tehran().date()
@@ -366,6 +366,9 @@ def test_ingest_keeps_previous_local_day_without_refetching_it():
         f"{today.isoformat()}T12:00",
         f"{(today + timedelta(days=1)).isoformat()}T12:00",
     ]
+    if full_window:
+        start = now_tehran().replace(hour=0, minute=0, second=0, microsecond=0)
+        current_window = [(start + timedelta(hours=hour)).strftime("%Y-%m-%dT%H:%M") for hour in range(8 * 24)]
     persist_ingest(
         weather_points=[summit],
         batch_results=[_ok_batch_at(["tochal"], current_window)],
@@ -376,7 +379,13 @@ def test_ingest_keeps_previous_local_day_without_refetching_it():
         .order_by("forecast_at")
         .values_list("forecast_at", flat=True)
     )
-    assert [now_tehran(value).date() for value in rows] == [today - timedelta(days=1), today, today + timedelta(days=1)]
+    dates = {now_tehran(value).date() for value in rows}
+    assert today - timedelta(days=1) in dates
+    if full_window:
+        assert today - timedelta(days=2) not in dates
+        assert {today + timedelta(days=offset) for offset in range(8)} <= dates
+    else:
+        assert dates == {today - timedelta(days=2), today - timedelta(days=1), today, today + timedelta(days=1)}
 
 
 def test_retry_transport_status_zero_and_limits():

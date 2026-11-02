@@ -14,18 +14,12 @@ from hawatch.common.observability import (
     record_ingest_run,
 )
 from hawatch.jobs.retention import cleanup_log_files
-from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.forecasts.models import ForecastRecord, ForecastSnapshot
 
 
 @pytest.fixture
 def api_client():
     return APIClient()
-
-
-@pytest.fixture
-def seeded(db):
-    return seed_demo_data(force=True)
 
 
 @pytest.mark.django_db

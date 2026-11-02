@@ -7,6 +7,8 @@ from hawatch.api.v1.serializers import related_routes_for_weather_point
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.validation import validate_catalog_document
 from hawatch.modules.forecasts.models import WeatherPoint
+from hawatch.modules.catalog.identity import place_type_label
+from hawatch.common.time import to_fa_digits
 
 
 CATALOG = "catalog/katale-khor_v1.json"
@@ -46,7 +48,7 @@ def test_katale_khor_has_an_indexable_canonical_page_and_sitemap_entry(api_clien
     assert response["X-Robots-Tag"] == "index,follow"
     assert NAME in response.content.decode()
     assert "آب‌وهوای غار کتله‌خور؛ دما، باد و بارش | هواچ" in response.content.decode()
-    assert "آب‌وهوای عارضهٔ شاخص" not in response.content.decode()
+    assert f"پیش‌بینی آب‌وهوای {place_type_label(point.place_type)} {NAME} در ارتفاع {to_fa_digits(point.elevation_m)} متر" in response.content.decode()
     assert f"https://hawatch.ir/points/{SLUG}" in response.content.decode()
     sitemap = published_sitemap()
     assert sitemap.status_code == 200

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-def test_abbasabad_has_one_lake_forest_identity_and_a_complete_hiking_route():
+def test_abbasabad_has_one_lake_forest_identity_and_a_complete_hiking_route(assert_profile_distance):
     catalog = json.loads(
         (Path(__file__).parents[1] / "fixtures/catalog/abbasabad_behshahr_v1.json").read_text()
     )
@@ -20,5 +20,6 @@ def test_abbasabad_has_one_lake_forest_identity_and_a_complete_hiking_route():
     assert times == [0, 50, 100]
     assert route["one_way_minutes"] == times[-1]
     assert route["timing_status"] == "estimated"
-    assert route["distance_km"] == 4.6 and route["ascent_m"] == 316
+    assert_profile_distance(route)
+    assert route["ascent_m"] == 316
     assert len(catalog["weather_points"]) == 3

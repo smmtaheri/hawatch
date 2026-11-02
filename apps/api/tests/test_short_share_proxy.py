@@ -11,6 +11,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 from uuid import uuid4
 import pytest
 
+pytestmark = pytest.mark.real_clock
+
 
 @pytest.mark.parametrize('surface',['gateway','web'])
 def test_short_link_preserves_public_host_and_redirect(surface,tmp_path):

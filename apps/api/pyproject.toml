@@ -17,14 +17,17 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+  "freezegun>=1.5.5,<2",
   "pytest>=8.4.0",
   "pytest-django>=4.11.0",
+  "pytest-xdist>=3.8,<4",
 ]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "hawatch.config.settings.test"
 pythonpath = ["src"]
 testpaths = ["tests"]
+markers = ["real_clock: OS/process integration that requires the real wall clock"]
 # The API Compose service runs in production mode. Keep the ordinary
 # `docker compose … exec api pytest` command isolated from that runtime
 # configuration as well as from its live database and provider settings.

@@ -5,18 +5,18 @@ import pytest
 from django.contrib.gis.geos import Point
 from django.test import RequestFactory, override_settings
 
-from hawatch.modules.catalog.seed import ensure_catalog
-from hawatch.modules.catalog.runtime import publicly_visible_destinations
+from hawatch.modules.catalog.runtime import DESTINATIONS_PAGE_SIZE, publicly_visible_destinations
+from hawatch.modules.catalog.internal_links import related_public_villages
 from hawatch.modules.catalog.seo_pages import _render
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
 
 @pytest.fixture
-def seo_catalog(db):
+def seo_catalog(loaded_catalog):
     """SEO HTML only needs catalog identities, not generated forecast records."""
 
-    return ensure_catalog("hawatch-test-demo-v1")
+    return loaded_catalog
 
 
 def test_home_has_semantic_initial_html_and_clean_canonical(api_client, seo_catalog):
@@ -301,7 +301,10 @@ def test_point_html_localizes_place_type_and_links_only_real_routes(api_client, 
 
     destination_body = api_client.get("/points/tochal").content.decode()
     assert 'id="seo-related-villages"' in destination_body
-    assert 'href="/points/tochal-velenjak-village"' in destination_body
+    villages = related_public_villages(WeatherPoint.objects.get(slug="tochal"))
+    assert villages.exists()
+    for village in villages:
+        assert f'href="/points/{village.slug}"' in destination_body
 
     point = WeatherPoint.objects.create(
         slug="seo-test-summit",
@@ -410,7 +413,11 @@ def test_point_index_redirect_and_route_hub_are_crawlable(api_client, seo_catalo
     assert 'rel="canonical" href="https://hawatch.ir/routes"' in route_body
     assert 'name="robots" content="index,follow"' in route_body
     assert "<h1>همهٔ مسیرها</h1>" in route_body
-    assert 'href="/routes/tochal-darband"' in route_body
+    # The hub is paginated: a later catalog addition may move Tochal off page 1.
+    first_page = Route.objects.filter(is_active=True).order_by("region", "sort_order", "slug")[:DESTINATIONS_PAGE_SIZE]
+    for route in first_page:
+        assert f'href="/routes/{route.slug}"' in route_body
+    assert 'href="/routes/page/2"' in route_body
 
     query_response = api_client.get("/routes?query=توچال")
     assert query_response.status_code == 200

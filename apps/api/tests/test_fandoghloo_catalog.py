@@ -40,14 +40,14 @@ def test_fandoghloo_routes_have_real_intermediates_and_complete_moving_eta():
         assert all("استراحت" not in CATALOG["weather_points"][slug]["name"] for slug in route["points"])
 
 
-def test_fandoghloo_trims_driving_and_reuses_shared_walking_points():
+def test_fandoghloo_trims_driving_and_reuses_shared_walking_points(assert_profile_distance):
     long = CATALOG["routes"]["mehdi-posti-meshe-suyi-giladeh"]
     short = CATALOG["routes"]["giladeh-meshe-suyi"]
     assert long["points"][0] == "mehdi-posti"
-    assert long["distance_km"] == 14.56
+    assert_profile_distance(long)
     assert "خودرو" in long["timing"]["notes"][0]
     assert short["points"] == list(reversed(long["points"][-3:]))
-    assert short["distance_km"] == 5.7
+    assert_profile_distance(short)
     assert short["ascent_m"] > long["ascent_m"]
     assert CATALOG["weather_points"]["meshe-suyi"]["category_key"] == "hot_spring"
     assert "آبگرم علی‌داشی" in CATALOG["weather_points"]["meshe-suyi"]["aliases"]

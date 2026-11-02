@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-def test_shirabad_catalog_has_searchable_destinations_and_one_hiking_route():
+def test_shirabad_catalog_has_searchable_destinations_and_one_hiking_route(assert_profile_distance):
     fixture = Path(__file__).parents[1] / "fixtures/catalog/shirabad_waterfalls_v1.json"
     catalog = json.loads(fixture.read_text(encoding="utf-8"))
 
@@ -21,7 +21,7 @@ def test_shirabad_catalog_has_searchable_destinations_and_one_hiking_route():
     assert route["points"][-1] == "shirabad-seven-waterfalls"
     assert "shirabad-waterfall" in route["points"]
     assert "shirabad-div-sepid-cave" in route["points"]
-    assert route["distance_km"] == 3.22
+    assert_profile_distance(route)
     assert route["ascent_m"] == 256
     assert route["timing_status"] == "estimated"
     assert route["one_way_minutes"] == 95

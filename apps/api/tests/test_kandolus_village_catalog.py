@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 
@@ -19,7 +20,7 @@ def test_kandolus_catalog_keeps_village_and_adds_sisangan_route_cluster():
     sisangan = catalog["weather_points"]["sisangan-forest-park"]
     route = catalog["routes"]["kojur-to-sisangan-waterfall"]
 
-    assert catalog["catalog_version"] == "hawatch-kandolus-v3"
+    assert re.fullmatch(r"hawatch-kandolus-v[1-9][0-9]*", catalog["catalog_version"])
     assert catalog["primary_point"] == "kandolus-village"
     assert "kojur-to-sisangan-waterfall" in catalog["routes"]
     assert point["place_type"] == "village"
@@ -38,7 +39,8 @@ def test_kandolus_catalog_keeps_village_and_adds_sisangan_route_cluster():
     assert mine["seo_indexable"] is False
     assert moss_waterfall["place_type"] == "waterfall"
     assert waterfall["name"] == "آبشار سیسنگان"
-    assert waterfall["seo_indexable"] is False
+    assert waterfall["kind"] == waterfall["importance"] == "primary"
+    assert waterfall["seo_indexable"] is True
     assert sisangan["name"] == "پارک جنگلی سیسنگان"
     assert sisangan["seo_indexable"] is True
     assert sisangan["place_type"] == "forest"

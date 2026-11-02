@@ -9,6 +9,8 @@ from uuid import uuid4
 
 import pytest
 
+pytestmark = pytest.mark.real_clock
+
 
 NGINX_IMAGE = "nginx:1.27.5-alpine"
 

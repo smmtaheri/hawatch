@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone as utc_timezone
 from unittest.mock import patch
 
 import pytest
+from django.conf import settings
 from django.test import override_settings
 from rest_framework.test import APIClient
 
@@ -28,7 +29,7 @@ from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.routes.models import Route, RoutePoint
 
 
-REFERENCE_DATE = datetime.now(tz=timezone()).date()
+REFERENCE_DATE = datetime.fromisoformat(settings.TEST_REFERENCE_INSTANT).date()
 
 
 def tehran_datetime(*, day_offset=0, hour=0, minute=0):
@@ -47,7 +48,7 @@ def api_client():
 
 
 @pytest.fixture
-def seeded(db, monkeypatch):
+def seeded(loaded_catalog, monkeypatch):
     # Keep the generated forecast window deterministic. The API itself uses
     # the real Tehran clock; only this test fixture freezes the clock so the
     # calendar dates below do not expire as the suite is run on later days.

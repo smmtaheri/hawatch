@@ -3,7 +3,13 @@ import { cleanup } from "@testing-library/react";
 import { afterEach, beforeEach, vi } from "vitest";
 
 import { clearDayCache } from "../src/lib/dayCache";
+// Freeze Date only: UI waits, performance.now and animation timers stay real.
+const TEST_NOW = new Date("2026-10-09T07:30:00+03:30");
+vi.useFakeTimers({toFake:["Date"]});
+vi.setSystemTime(TEST_NOW);
 beforeEach(() => {
+ vi.useFakeTimers({toFake:["Date"]});
+ vi.setSystemTime(TEST_NOW);
  clearDayCache();
  Object.defineProperty(window, "scrollTo", {configurable:true, value:vi.fn()});
  Object.defineProperty(HTMLDialogElement.prototype, "showModal", {configurable:true, value:function(this:HTMLDialogElement){this.setAttribute("open", "");}});
@@ -11,4 +17,5 @@ beforeEach(() => {
 });
 afterEach(() => {
   cleanup();
+  vi.useRealTimers();
 });

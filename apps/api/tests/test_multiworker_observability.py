@@ -11,6 +11,8 @@ from django.test import override_settings
 from hawatch.common.observability import MetricsRegistry, SafeTimedRotatingFileHandler
 from hawatch.common import shared_http_metrics
 
+pytestmark = pytest.mark.real_clock
+
 
 def _write_logs(path, barrier, prefix):
     handler = SafeTimedRotatingFileHandler(path, when="midnight", utc=True, backupCount=6)
@@ -27,7 +29,8 @@ def test_two_workers_rotate_shared_log_without_losing_records(tmp_path):
     path.write_text("previous-day\n")
     old = time.time() - 86400
     os.utime(path, (old, old))
-    context = multiprocessing.get_context("fork")
+    # pytest-xdist has background threads; fork can inherit their locked state.
+    context = multiprocessing.get_context("spawn")
     barrier = context.Barrier(2)
     children = [context.Process(target=_write_logs, args=(str(path), barrier, name)) for name in ("a", "b")]
     try:
@@ -48,11 +51,12 @@ def test_two_workers_rotate_shared_log_without_losing_records(tmp_path):
                 child.join(5)
 
 
-def _metric_worker():
-    registry = MetricsRegistry()
-    registry.counter("hawatch_http_requests_total", "test")
-    for _ in range(100):
-        registry.inc("hawatch_http_requests_total", labels={"method": "GET", "route": "test", "status": 200})
+def _metric_worker(url, key):
+    with override_settings(REDIS_URL=url, SHARED_HTTP_METRICS=True, HTTP_METRICS_REDIS_KEY=key):
+        registry = MetricsRegistry()
+        registry.counter("hawatch_http_requests_total", "test")
+        for _ in range(100):
+            registry.inc("hawatch_http_requests_total", labels={"method": "GET", "route": "test", "status": 200})
 
 
 def test_http_counters_aggregate_across_processes():
@@ -62,8 +66,8 @@ def test_http_counters_aggregate_across_processes():
     key = "hawatch:test:metrics:" + uuid4().hex
     with override_settings(REDIS_URL=url, SHARED_HTTP_METRICS=True, HTTP_METRICS_REDIS_KEY=key):
         shared_http_metrics._retry_after = 0
-        context = multiprocessing.get_context("fork")
-        children = [context.Process(target=_metric_worker) for _ in range(2)]
+        context = multiprocessing.get_context("spawn")
+        children = [context.Process(target=_metric_worker, args=(url, key)) for _ in range(2)]
         try:
             for child in children:
                 child.start()

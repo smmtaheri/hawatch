@@ -54,7 +54,7 @@ def test_related_routes_require_active_route(api_client, tochal):
 
 
 @pytest.mark.django_db
-def test_ingest_ignores_unlinked_non_indexable_point(tochal):
+def test_ingest_keeps_enabled_point_independent_of_seo_or_route_membership(tochal):
     orphan = WeatherPoint.objects.create(
         slug="orphan-point",
         name="نقطهٔ یتیم",
@@ -74,15 +74,16 @@ def test_ingest_ignores_unlinked_non_indexable_point(tochal):
         fixture_managed=False,
         seo_indexable=False,
     )
-    assert orphan.slug not in list(ingestible_weather_points().values_list("slug", flat=True))
+    assert orphan.slug in set(ingestible_weather_points().values_list("slug", flat=True))
+    WeatherPoint.objects.filter(pk=orphan.pk).update(ingest_enabled=False)
+    assert orphan.slug not in set(ingestible_weather_points().values_list("slug", flat=True))
 
 
 @pytest.mark.django_db
 def test_ingest_keeps_active_indexable_point_when_its_routes_are_inactive(tochal):
     point = WeatherPoint.objects.get(slug="sarband-tehran")
     Route.objects.filter(points__weather_point=point).update(is_active=False)
-    # All public Points are now indexable by policy, so ingest does not depend
-    # on at least one active Route for this point.
+    # Ingest is controlled by active/ingest_enabled, not SEO or route membership.
     assert point.slug in list(ingestible_weather_points().values_list("slug", flat=True))
 
     Route.objects.filter(points__weather_point=point).update(is_active=True)

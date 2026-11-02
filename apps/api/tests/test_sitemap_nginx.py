@@ -10,6 +10,8 @@ from uuid import uuid4
 
 import pytest
 
+pytestmark = pytest.mark.real_clock
+
 
 def docker(*args, check=True):
     return subprocess.run(["docker", *args], check=check, capture_output=True, text=True, timeout=25)

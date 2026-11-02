@@ -9,17 +9,14 @@ import pytest
 from hawatch.modules.catalog.catalog import seed_catalog
 from hawatch.modules.catalog.seed import seed_demo_data
 from hawatch.modules.catalog.tochal import seed_tochal_catalog
+from hawatch.modules.catalog.tochal import load_tochal_catalog
 from hawatch.modules.forecasts.models import WeatherPoint
+from hawatch.common.time import now_tehran
 
 
 @pytest.fixture
 def api_client():
     return APIClient()
-
-
-@pytest.fixture
-def seeded(db):
-    return seed_demo_data(force=True)
 
 
 @pytest.mark.django_db
@@ -29,7 +26,7 @@ def test_primary_point_is_the_only_canonical_profile():
 
     assert point.kind == WeatherPoint.Kind.PRIMARY
     assert point.seo_indexable is True
-    assert point.elevation_m == 3955
+    assert point.elevation_m == load_tochal_catalog()["weather_points"]["tochal"]["elevation_m"]
     assert not WeatherPoint.objects.filter(slug__startswith="dest:").exists()
     assert not WeatherPoint.objects.filter(slug__startswith="route:").exists()
 
@@ -64,7 +61,7 @@ def test_active_route_point_uses_its_own_canonical_href(api_client):
     seed_demo_data(force=True)
     response = api_client.get(
         "/api/v1/points/sarband-tehran/forecast/",
-        {"date": "2026-08-28", "period": "morning"},
+        {"date": now_tehran().date().isoformat(), "period": "morning"},
     )
 
     assert response.status_code == 200
@@ -89,7 +86,7 @@ def test_search_has_one_result_for_primary_point(api_client, seeded):
 def test_route_planner_period_exposes_step_and_hourly_slots(api_client, seeded):
     body = api_client.get(
         "/api/v1/routes/tochal-darband/forecast/",
-        {"date": "2026-08-28", "period": "morning", "start_time": "06:00"},
+        {"date": now_tehran().date().isoformat(), "period": "morning", "start_time": "06:00"},
     ).json()
     period = body["period"]
 
@@ -101,7 +98,7 @@ def test_route_planner_period_exposes_step_and_hourly_slots(api_client, seeded):
 
     night = api_client.get(
         "/api/v1/routes/tochal-darband/forecast/",
-        {"date": "2026-08-28", "period": "night", "start_time": "20:00"},
+        {"date": now_tehran().date().isoformat(), "period": "night", "start_time": "20:00"},
     ).json()["period"]
     assert night["planner_end_minutes"] == 1440
     assert night["planner_last_start_minutes"] == 1380

@@ -5,7 +5,6 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 
 from hawatch.modules.analytics.models import PageViewEvent
-from hawatch.modules.catalog.seed import seed_demo_data
 
 
 def assert_private_no_store(response):
@@ -18,11 +17,6 @@ def assert_private_no_store(response):
 @pytest.fixture
 def api_client():
     return APIClient()
-
-
-@pytest.fixture
-def seeded(db):
-    return seed_demo_data(force=True)
 
 
 @pytest.mark.django_db

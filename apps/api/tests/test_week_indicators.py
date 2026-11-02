@@ -109,6 +109,7 @@ def test_cached_hourly_assessments_are_reused_for_every_resolution():
 
 
 @pytest.mark.parametrize("kind", ["point", "route"])
+@pytest.mark.django_db
 @override_settings(CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}})
 def test_old_heat_metric_binding_is_not_reused_from_week_cache(kind):
     today=START.date()

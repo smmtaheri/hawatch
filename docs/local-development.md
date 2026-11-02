@@ -118,11 +118,43 @@ docker compose -f infra/compose/compose.yaml config
 
 pytest روی میزبان بدون GDAL/PostGIS معمولاً fail می‌شود؛ تست backend را داخل container اجرا کنید.
 
+تست‌ها همیشه از `hawatch.config.settings.test` استفاده می‌کنند: provider خارجی
+غیرفعال است، ساعت تقویمی هر تست روی یک زمان مرجع مستقل شروع می‌شود و کش و
+شمارنده‌ها بین تست‌ها مشترک نیستند. timerهای elapsed/performance واقعی‌اند؛
+آزمون‌های OS/process با marker `real_clock` زمان واقعی دارند. Redis محیط runtime
+به pytest ارث نمی‌رسد؛ پاک‌سازی کش تست نباید Redis سایت را پاک کند.
+
+برای اجرای کامل و سریع‌تر بکند با دیتابیس‌های مستقل هر worker:
+
+```bash
+cd apps/api
+uv run pytest -n 4 --strict-markers --strict-config
+```
+
+تست‌های اسکریپت‌ها جدا هستند و از ریشهٔ repository اجرا می‌شوند:
+
+```bash
+uv run --project apps/api pytest scripts
+```
+
+تست‌های Redis بین‌پردازشی فقط با `HAWATCH_TEST_REDIS_URL` به یک Redis **اختصاصی
+و دورریختنیِ تست** وصل می‌شوند؛ هرگز URL Redis سایت را برای این متغیر نگذارید.
+تست مهاجرت تاریخی یک DB موقت با نام `hawatch_legacy_test_*` می‌سازد، فقط forward
+اجرا می‌کند و در پایان همان DB را حذف می‌کند؛ schema دیتابیس اصلی تست عقب برده
+نمی‌شود. کاربر PostgreSQL تست باید اجازهٔ ساخت دیتابیس داشته باشد.
+
 تنظیمات pytest، catalog کامل را برای تست‌های جست‌وجو و API وارد می‌کند اما
 Forecast دمو را فقط برای نقاط زنجیرهٔ مسیرهای توچال و گهر می‌سازد؛ این نقاط تمام
 endpointهای forecast مورد استفادهٔ suite را پوشش می‌دهند و از ساخت ده‌ها هزار
 رکورد تکراری برای تست‌های بدون نیاز جلوگیری می‌کنند. تنظیم فوق فقط در
 `hawatch.config.settings.test` فعال است و روی runtime یا ingest واقعی اثری ندارد.
+
+fixture مشترک، کاتالوگ جاری را یک‌بار با importer واقعی می‌سازد و آن تراکنش را
+rollback می‌کند؛ سپس برای هر تست کپی مستقل ردیف‌ها و forecast تازه ایجاد می‌شود.
+تست‌های خود importer/sync همچنان مسیر واقعی import را اجرا می‌کنند. انتظارهای
+نام/ارتفاع، زنجیره، زمان‌بندی و عضویت از catalog فعلی و مسافت از پروفایل بازبینی‌شده
+می‌آیند؛ invariants مثل canonical یکتا، زنجیرهٔ پیوسته، زمان صعودی، حفظ داده در
+پاسخ ناقص و نبود لینک ساختگی همچنان مستقل و سخت‌گیرانه بررسی می‌شوند.
 
 ## خارج از scope این milestone
 

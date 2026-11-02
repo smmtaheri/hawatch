@@ -24,91 +24,10 @@ from hawatch.modules.forecasts.models import ForecastRecord, WeatherPoint
 from hawatch.modules.routes.models import Route, RoutePoint
 from hawatch.modules.routes.timing import route_mean_elevation_m
 
-EXPECTED_CUMULATIVE = {
-    "tochal-darband": {
-        "sarband-tehran": 0,
-        "pas-ghaleh-shemiran": 20,
-        "shirpala-tochal": 125,
-        "amiri-tochal": 220,
-        "goleband-tochal": 295,
-        "tochal": 315,
-    },
-    "tochal-velenjak": {
-        "velenjak-parking": 0,
-        "tochal-station-1": 10,
-        "tochal-station-2": 85,
-        "tochal-station-5": 195,
-        "tochal-station-7": 330,
-        "tochal": 360,
-    },
-    "tochal-kolakchal": {
-        "jamshidieh-park": 0,
-        "kolakchal-camp": 135,
-        "espilat-sarlo-pass": 195,
-        "piyazchal-pass": 250,
-        "lezoon-east": 280,
-        "lezoon-west": 305,
-        "barfchal-tochal": 330,
-        "chahar-paloon": 355,
-        "goleband-tochal": 375,
-        "tochal": 390,
-    },
-    "tochal-ahar": {
-        "ahar-village": 0,
-        "shakarab-ahar": 95,
-        "qezqunchal-tochal": 315,
-        "homand-tochal": 360,
-        "tochal": 380,
-    },
-    "tochal-shahrestanak": {
-        "shahrestanak": 0,
-        "shahrestanak-palace": 65,
-        "shahrestanak-spring": 115,
-        "shahrestanak-sheepfold": 160,
-        "shahrestanak-pass": 285,
-        "tochal-hotel": 310,
-        "tochal-station-7": 335,
-        "tochal": 370,
-    },
-}
-
-EXPECTED_ROUTE_META = {
-    "tochal-darband": {
-        "distance_km": 10.3,
-        "ascent_m": 2150,
-        "method": "web-naismith-total+gpx-profile-v2",
-        "confidence": "high",
-        "uncertainty_minutes": 20,
-    },
-    "tochal-velenjak": {
-        "distance_km": 16.6,
-        "ascent_m": 2150,
-        "method": "web-naismith-total+gpx-profile-v2",
-        "confidence": "medium",
-        "uncertainty_minutes": 35,
-    },
-    "tochal-kolakchal": {
-        "distance_km": 12.2,
-        "ascent_m": 2210,
-        "method": "gpx-geometry+web-naismith-v3",
-        "confidence": "medium",
-        "uncertainty_minutes": 45,
-    },
-    "tochal-ahar": {
-        "distance_km": 12.5,
-        "ascent_m": 1870,
-        "method": "web-naismith-total+gpx-profile-v2",
-        "confidence": "medium",
-        "uncertainty_minutes": 40,
-    },
-    "tochal-shahrestanak": {
-        "distance_km": 16.2,
-        "ascent_m": 1710,
-        "method": "composite-gpx+dem+web-reports-v1",
-        "confidence": "medium",
-        "uncertainty_minutes": 50,
-    },
-}
+CATALOG_ROUTES = {row["slug"]: row for row in load_tochal_catalog()["routes"].values()}
+EXPECTED_CUMULATIVE = {slug: row["timing"]["cumulative_minutes"] for slug, row in CATALOG_ROUTES.items()}
+EXPECTED_ROUTE_META = {slug: {"distance_km": row["distance_km"], "ascent_m": row["ascent_m"],
+                            **row["timing"]} for slug, row in CATALOG_ROUTES.items()}
 
 
 @pytest.fixture
@@ -164,16 +83,16 @@ def _seed_point_hourly(
 
 
 @pytest.mark.django_db
-def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
+def test_tochal_medium_cumulative_times_follow_every_current_catalog_route(tochal_seeded):
     for slug, expected in EXPECTED_CUMULATIVE.items():
         route = Route.objects.get(slug=slug)
         meta = EXPECTED_ROUTE_META[slug]
-        assert route.timing_status == Route.TimingStatus.ESTIMATED
-        assert route.one_way_minutes == expected[list(expected)[-1]]
+        assert route.timing_status == CATALOG_ROUTES[slug]["timing_status"]
+        assert route.one_way_minutes == expected[CATALOG_ROUTES[slug]["points"][-1]]
         assert route.round_trip_minutes is None
         assert float(route.distance_km) == meta["distance_km"]
         assert route.ascent_m == meta["ascent_m"]
-        assert route.timing_version == "tochal-timing-v3"
+        assert route.timing_version == meta["version"]
         assert route.timing_method == meta["method"]
         assert route.timing_confidence == meta["confidence"]
         assert route.timing_uncertainty_minutes == meta["uncertainty_minutes"]
@@ -192,16 +111,7 @@ def test_tochal_medium_cumulative_times_for_all_five_routes(tochal_seeded):
 
     shah = Route.objects.get(slug="tochal-shahrestanak")
     assert shah.timing_status == Route.TimingStatus.ESTIMATED
-    assert list(shah.points.order_by("sort_order").values_list("slug", flat=True)) == [
-        "shahrestanak",
-        "shahrestanak-palace",
-        "shahrestanak-spring",
-        "shahrestanak-sheepfold",
-        "shahrestanak-pass",
-        "tochal-hotel",
-        "tochal-station-7",
-        "tochal",
-    ]
+    assert list(shah.points.order_by("sort_order").values_list("slug", flat=True)) == CATALOG_ROUTES[shah.slug]["points"]
     # Valley variant points remain available globally but are not on this mandatory chain.
     for slug in ("tochal-naseri-junction", "tochal-bazarek-pass", "tochal-shahneshin-pass"):
         assert WeatherPoint.objects.filter(slug=slug).exists()

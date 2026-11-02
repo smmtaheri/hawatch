@@ -65,7 +65,7 @@ def test_siahsang_alamkuh_is_classified_as_an_independent_summit():
     assert category_key_for_point("", identity["place_type"]) == "mountain"
 
 
-def test_sabalan_shabil_has_contextual_page_name_and_keeps_route_name_short():
+def test_canonical_identity_does_not_create_a_second_name_from_legacy_page_name():
     identity = metadata_for_point(
         "shabil",
         {
@@ -79,7 +79,7 @@ def test_sabalan_shabil_has_contextual_page_name_and_keeps_route_name_short():
     )
 
     assert identity["name"] == "شابیل"
-    assert identity["page_name"] == "شابیل سبلان"
+    assert identity["page_name"] == identity["name"]
     assert identity["short_label"] == "شابیل"
 
 

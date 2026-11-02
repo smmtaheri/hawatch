@@ -10,10 +10,15 @@ from .base import *  # noqa: F403
 DEBUG = False
 DEMO_DATA_ENABLED = True
 DEMO_SEED_VERSION = "hawatch-test-demo-v1"
+TEST_REFERENCE_INSTANT = "2026-10-09T07:30:00+03:30"
 OPEN_METEO_BASE_URL = "http://open-meteo.invalid"
 WEATHER_PROXY_ENCRYPTION_KEY = "hawatch-test-weather-proxy-key"
 METRICS_REQUIRE_AUTH = False
 SHARED_HTTP_METRICS = False
+# pytest is also invoked inside the production API container. Its inherited
+# REDIS_URL must never make test cleanup flush the runtime cache.
+REDIS_URL = ""
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-pytest"}}
 HAWATCH_ENVIRONMENT = "test"
 OBSERVABILITY_ENVIRONMENT = "test"
 HAWATCH_LOG_DIR = Path(os.environ.get("HAWATCH_TEST_LOG_DIR", "/tmp/hawatch-test-logs"))
