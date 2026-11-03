@@ -2,6 +2,67 @@
   "schema_version": "route-metrics-2",
   "routes": [
     {
+      "slug": "shahbaz-north",
+      "descent_m": 1,
+      "chain": ["shahbaz-abdollah-trailhead", "shahbaz-north-shelter", "shahbaz"],
+      "cumulative_distance_m": [0, 4601, 6308],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "4bd02c95a4af5463681d29293879e26d671e78c0a9a9af15dab185c7182950a5",
+        "source_url": "https://www.wikiloc.com/mountaineering-trails/shahbaz-summit-qlh-shhbz-7495664",
+        "coverage": "uphill-origin-to-first-summit-excluding-descent-loop",
+        "reference_only_elevation": true,
+        "direction": "forward",
+        "analysis_distance_km": 6.308,
+        "analysis_ascent_m": 1273,
+        "origin_gap_m": 0,
+        "target_gap_m": 0.216,
+        "landmark_gaps_m": [0, 0.11, 0.216],
+        "max_step_m": 15.51
+      }
+    },
+    {
+      "slug": "derak-ehsan",
+      "descent_m": 63,
+      "chain": ["derak-ehsan-trailhead", "derak-ghadiriyeh-shelter", "derak-amiriyeh-shelter", "derak"],
+      "cumulative_distance_m": [0, 4308, 8435, 11270],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "7287dd01601d70c9a116881420f7ae0012f5cbcd3b1042a7effb1a876e85b253",
+        "source_url": "https://www.wikiloc.com/hiking-trails/qlh-drkh-z-smt-gdyryh-gwsfnd-sr-tyrmh-1403-derak-peak-msyr-qlh-drkh-shyrz-177283197",
+        "coverage": "ehsan-trailhead-to-photographed-summit-sign",
+        "reference_only_elevation": true,
+        "direction": "forward",
+        "analysis_distance_km": 11.27,
+        "analysis_ascent_m": 1258,
+        "origin_gap_m": 0,
+        "target_gap_m": 2.233,
+        "landmark_gaps_m": [0, 0.39, 1.07, 2.233],
+        "max_step_m": 19.55
+      }
+    },
+    {
+      "slug": "zardlimeh-badam-shirin",
+      "descent_m": 301,
+      "chain": ["badam-shirin", "gavshir", "zardlimeh-waterfall"],
+      "cumulative_distance_m": [0, 729, 4429],
+      "evidence": {
+        "method": "gpx-50m-5sample-v1",
+        "source_sha256": "8f327743e91341757ef514d1c9186ecbe1221539bfa3f951077aaaedd0ffd1d6",
+        "source_url": "https://www.wikiloc.com/hiking-trails/abshr-zrd-lymhz-msyr-bdm-shyryn-238113383",
+        "coverage": "badam-shirin-to-photographed-waterfall-visitor-bank-not-crest",
+        "reference_only_elevation": true,
+        "direction": "forward",
+        "analysis_distance_km": 4.429,
+        "analysis_ascent_m": 295,
+        "origin_gap_m": 0,
+        "target_gap_m": 154.109,
+        "landmark_gaps_m": [0, 0.3, 154.109],
+        "max_step_m": 10.29,
+        "note": "Canonical coordinate remains at the waterfall; GPX ends at its visitor bank. Do not infer a river crossing or add distance to the crest."
+      }
+    },
+    {
       "slug": "abak-meygun",
       "descent_m": 0,
       "chain": [

@@ -1014,7 +1014,11 @@
       ],
       "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
       "route_followup": {
-        "status": "awaiting_gpx",
+        "status": "published",
+        "local_track_dir": "tracks/shahbaz/",
+        "route_slugs": [
+          "shahbaz-north"
+        ],
         "track_url": "https://www.wikiloc.com/mountaineering-trails/shahbaz-summit-qlh-shhbz-7495664",
         "chain": [
           "امامزاده عبدالله سورانه",
@@ -1025,21 +1029,28 @@
           "https://shazandmg.blogfa.com/page/shahbaz.aspx",
           "https://surane.blogfa.com/post/28"
         ],
-        "note": "فقط یک ترک برای مسیر اصلی؛ نه کراس‌چک. هندسه، جهت و بخش‌های فصلی پس از دانلود بررسی می‌شوند."
+        "note": "ترک دریافت و تحلیل شد؛ فقط شاخهٔ رفت از پای‌کار امامزاده و جان‌پناه تا قله با timing کامل و forecast منتشر شد. برگشت از درهٔ برفی وارد فاصله یا زمان صعود نشده است."
       },
       "history": [
         {
           "at": "2026-11-03T16:16:14.531328+00:00",
           "previous_status": "in_progress",
           "previous_note": "مختصات قله از waypoint نام‌دار تأیید شد؛ forecast مستقل از مسیر منتشر می‌شود. مسیر تکمیلی امامزاده عبداللهِ سورانه → جان‌پناه شهباز → قله، پس از دریافت GPX بررسی می‌شود."
+        },
+        {
+          "at": "2026-11-03T16:43:51.337275+00:00",
+          "previous_status": "published",
+          "previous_note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود."
         }
       ],
       "hawatch_slugs": [
         "shahbaz"
       ],
-      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "verified_at": "2026-11-03T16:43:51.337275+00:00",
       "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
-      "route_slugs": []
+      "route_slugs": [
+        "shahbaz-north"
+      ]
     },
     {
       "id": "HG-niasar-waterfall",
@@ -1061,7 +1072,8 @@
       ],
       "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
       "route_followup": {
-        "status": "awaiting_gpx",
+        "status": "needs_route_evidence",
+        "local_track_dir": "tracks/niasar-waterfall/",
         "track_url": "https://www.wikiloc.com/hiking-trails/bshr-nysr-sfhn-1404-3-11-216231897",
         "chain": [
           "پارکینگ آبشار نیاسر",
@@ -1072,19 +1084,24 @@
           "https://kashancth.ir/niasarpart",
           "https://irantripadviser.ir/attraction.php?id=915"
         ],
-        "note": "ترک کوتاهِ خود آبشار با waypoint حمام و پارکینگ؛ جهت و استقلال نقاط نزدیک پس از دانلود کنترل شود."
+        "note": "GPX دریافت و بررسی شد: حمام در اندیس ۱۲، آبشار ۲۴ و پارکینگ ۶۵ است؛ در جهت معکوس، آبشار پیش از حمام قرار دارد. مبدأ اولیه کمتر از ۲۵ متر با حمام فاصله دارد و نقطهٔ مستقل نیست. زنجیرهٔ اولیهٔ پیشنهادی پارکینگ→حمام→آبشار تأیید نشد؛ انحراف فرضی یا waypoint ساختگی اضافه نشده است. خود مقصد و forecast فعال‌اند؛ فایل local-only برای بررسی بعدی حفظ شد."
       },
       "history": [
         {
           "at": "2026-11-03T16:16:14.531328+00:00",
           "previous_status": "in_progress",
           "previous_note": "مختصات خود آبشار از OSM تأیید شد. طبق تصمیم ۳ نوامبر، پیاده‌دسترس بودن مانع انتشار point-only نیست. نامزد مسیر کوتاه پارکینگ → حمام صفوی → آبشار: Wikiloc 216231897؛ تحلیل GPX پس از دانلود و مستقل از انتشار آب‌وهواست."
+        },
+        {
+          "at": "2026-11-03T16:43:51.337275+00:00",
+          "previous_status": "published",
+          "previous_note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود."
         }
       ],
       "hawatch_slugs": [
         "niasar-waterfall"
       ],
-      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "verified_at": "2026-11-03T16:43:51.337275+00:00",
       "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
       "route_slugs": []
     },
@@ -1172,7 +1189,11 @@
       ],
       "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
       "route_followup": {
-        "status": "awaiting_gpx",
+        "status": "published",
+        "local_track_dir": "tracks/derak/",
+        "route_slugs": [
+          "derak-ehsan"
+        ],
         "track_url": "https://www.wikiloc.com/hiking-trails/qlh-drkh-z-smt-gdyryh-gwsfnd-sr-tyrmh-1403-derak-peak-msyr-qlh-drkh-shyrz-177283197",
         "chain": [
           "میدان و مدرسهٔ احسان",
@@ -1183,21 +1204,28 @@
           "https://radepagroup.com/19042/صعود-به-قله-دراک-2/",
           "https://koohnavard.blogfa.com/post/28"
         ],
-        "note": "ترک پیادهٔ صعود یک‌طرفه با شرح و waypointهای روشن؛ عنوان دشوار به‌تنهایی دلیل رد نیست."
+        "note": "مسیر احسان→غدیریه→امیریه→قله با timing و forecast منتشر شد. عکس مکان‌دار تابلوی خوانای قله، خطای ۲۸۲ متری پین قبلی Wikimedia را روشن کرد؛ همان slug دراک حفظ و مختصات و DEM اصلاح شدند. ترک رفت، نه ۲۳ کیلومتر رفت‌وبرگشت، مبنای مسافت است."
       },
       "history": [
         {
           "at": "2026-11-03T16:16:14.531328+00:00",
           "previous_status": "in_progress",
           "previous_note": "مختصات رأس دراک از Wikimedia و گزارش باشگاه ردپا تطبیق یافت؛ forecast مستقل از Route است. مسیر تکمیلی احسان → جان‌پناه غدیریه → قله پس از دریافت GPX بررسی می‌شود."
+        },
+        {
+          "at": "2026-11-03T16:43:51.337275+00:00",
+          "previous_status": "published",
+          "previous_note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود."
         }
       ],
       "hawatch_slugs": [
         "derak"
       ],
-      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "verified_at": "2026-11-03T16:43:51.337275+00:00",
       "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
-      "route_slugs": []
+      "route_slugs": [
+        "derak-ehsan"
+      ]
     },
     {
       "id": "HG-zarlimeh-waterfall",
@@ -1219,7 +1247,11 @@
       ],
       "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
       "route_followup": {
-        "status": "awaiting_gpx",
+        "status": "published",
+        "local_track_dir": "tracks/zardlimeh-waterfall/",
+        "route_slugs": [
+          "zardlimeh-badam-shirin"
+        ],
         "track_url": "https://www.wikiloc.com/hiking-trails/abshr-zrd-lymhz-msyr-bdm-shyryn-238113383",
         "chain": [
           "روستای بادام‌شیرین",
@@ -1230,21 +1262,28 @@
           "https://lastsecond.ir/attractions/11040-badam-shirin-village",
           "https://manooshsemirom.blogfa.com/post/41"
         ],
-        "note": "مسیر پیاده از بادام‌شیرین؛ اتصال دقیق به آبشار و نیاز به عبور از بازفت/جره در GPX و منابع پیش از انتشار Route بررسی شود؛ ترک خودرو یا مسیر اکتشافی پیشنهاد نشده است."
+        "note": "بادام‌شیرین→گاوشیر→محل بازدید پای آبشار با timing و forecast منتشر شد. عکس‌های پای آبشار و پیوستگی ۷۶۹ نمونه بررسی شدند؛ endpoint با pin مرجع خود آبشار ۱۵۴ متر فاصله دارد. crossing، جره یا اتصال فرضی به رأس آبشار وارد geometry، مسافت یا زمان نشده است."
       },
       "history": [
         {
           "at": "2026-11-03T16:16:14.531328+00:00",
           "previous_status": "in_progress",
           "previous_note": "املای منبع «زرلیمه» به آبشار زردلیمهٔ دیناران اشاره دارد؛ نام و مختصات OSM با گزارش میدانی تطبیق یافت. Route شرط انتشار نیست. نامزد مسیر بادام‌شیرین → روستای گاوشیر → آبشار (Wikiloc 238113383) برای بررسی GPX نگه‌داری شده است؛ املای اصلی منبع در sources حفظ شد."
+        },
+        {
+          "at": "2026-11-03T16:43:51.337275+00:00",
+          "previous_status": "published",
+          "previous_note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود."
         }
       ],
       "hawatch_slugs": [
         "zardlimeh-waterfall"
       ],
-      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "verified_at": "2026-11-03T16:43:51.337275+00:00",
       "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
-      "route_slugs": []
+      "route_slugs": [
+        "zardlimeh-badam-shirin"
+      ]
     },
     {
       "id": "HK-144",

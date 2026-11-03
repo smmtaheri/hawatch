@@ -306,9 +306,9 @@
 
 | ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | صفحهٔ هواچ | وضعیت/اقدام بعدی |
 | ---: | --- | --- | --- | --- | --- | --- |
-| 1 | `HK-42` | شهباز | مرکزی | P1 | [shahbaz](https://hawatch.ir/points/shahbaz) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 1 | `HK-42` | شهباز | مرکزی | P1 | [shahbaz](https://hawatch.ir/points/shahbaz) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیر: [shahbaz-north](https://hawatch.ir/routes/shahbaz-north) |
 | 2 | `HK-434` | پیست اسکی شمشک | در فهرست منبع مشخص نشده | P1 | [shemshak-ski](https://hawatch.ir/points/shemshak-ski) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
-| 3 | `HK-211` | دراک | فارس | P1 | [derak](https://hawatch.ir/points/derak) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 3 | `HK-211` | دراک | فارس | P1 | [derak](https://hawatch.ir/points/derak) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیر: [derak-ehsan](https://hawatch.ir/routes/derak-ehsan) |
 | 4 | `HK-144` | ملکوه | خراسان رضوی | P1 | [molkooh](https://hawatch.ir/points/molkooh) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
 | 5 | `HK-93` | قلهٔ بزقوش | آذربایجان شرقی | P2 | [bozghush](https://hawatch.ir/points/bozghush) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [bozghush-north](https://hawatch.ir/routes/bozghush-north) |
 | 6 | `HK-71` | قلهٔ سلطان سنجر | آذربایجان شرقی | P2 | [sultan-sanjar-peak](https://hawatch.ir/points/sultan-sanjar-peak) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [majidabad-to-sultan-sanjar](https://hawatch.ir/routes/majidabad-to-sultan-sanjar) |

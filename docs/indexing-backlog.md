@@ -36,8 +36,9 @@ URLها canonical و قابل‌کپی‌اند. پانزده URL که کارب�
 صف حذف شدند. پیش از افزودن مقصدهای تازهٔ هواگشت، صف شامل ۸۹۹ URL بود: ۲ Hub،
 ۵۳۸ مقصد اصلی، ۲۶۷ مسیر و ۹۲ نقطهٔ پشتیبان. با افزودن چهار مقصد تازهٔ هواگشت و
 دو مقصدِ بدون مسیرِ شمشک و لتیان، خروج شمشک پس از تأیید کاربر و افزودن هشت
-مقصد دیگر در ۳ نوامبر، صف جاری ۹۱۲ URL است: ۲ Hub، ۵۵۱ مقصد اصلی،
-۲۶۷ مسیر و ۹۲ نقطهٔ پشتیبان. پارک نبکاها پس
+مقصد دیگر در ۳ نوامبر، صف ۹۱۲ URL شد. با انتشار سه مسیر شهباز، دراک و
+بادام‌شیرین–زردلیمه و دو روستای بادام‌شیرین و گاوشیر، صف جاری ۹۱۷ URL است:
+۲ Hub، ۵۵۱ مقصد اصلی، ۲۷۰ مسیر و ۹۴ نقطهٔ پشتیبان. پارک نبکاها پس
 از رفع خطای قبلی، در بررسی زندهٔ ۲۸ اکتبر از CDN پاسخ 200 گرفت و در sitemap بود؛
 بنابراین به صف درخواست ایندکس برگشت. این بررسی انتشار را تأیید می‌کند، نه
 ایندکس‌شدن در گوگل را. ترتیب صف P0، سپس ۱۰ مقصد منتخب و ۱۵ مقصد افزوده‌شدهٔ P1،
@@ -147,8 +148,10 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - آبشار دره عشق — <https://hawatch.ir/points/darreh-eshq-waterfall>
 - آبشار زردلیمه — <https://hawatch.ir/points/zardlimeh-waterfall>
 
-طبق تصمیم کاربر، انتشار آب‌وهوای مقصد مستقل از Route است. این هشت مقصد فعلاً
-point-only هستند؛ مسیرهای تکمیلی پس از دریافت و بررسی GPX جداگانه اضافه می‌شوند.
+طبق تصمیم کاربر، انتشار آب‌وهوای مقصد مستقل از Route است. این هشت مقصد ابتدا
+point-only منتشر شدند؛ پس از دریافت و بررسی GPX، مسیر شهباز، دراک و زردلیمه
+اضافه شد و پنج مقصد دیگر فعلاً بدون مسیرند. مسیر نیاسر به‌دلیل ترتیب واقعی
+نقاط در GPX تأیید نشد؛ خود مقصد و پیش‌بینی آن فعال‌اند.
 نام «زرلیمه» در منبع، با حفظ alias، به نام رایج زردلیمه اصلاح شد. URLهای بالا
 پس از کنترل پاسخ عمومی، canonical و پیش‌بینی به صف افزوده شدند؛ هر هشت URL
 در sitemap عمومی نیز دیده شدند. ایندکس‌شدن آن‌ها هنوز تأیید نشده است.
@@ -165,6 +168,12 @@ point-only هستند؛ مسیرهای تکمیلی پس از دریافت و ب
 دشت لوت و چالهٔ ملک‌محمد (چشم لوت) را کاربر در ۲۳ اکتبر ۲۰۲۶ به‌عنوان ایندکس‌شده
 تأیید کرد. کاربر همچنین در ۲۸ اکتبر ایندکس‌شدن [ریگ یلان](https://hawatch.ir/points/rig-e-yalan)
 و [مرداب دیوک](https://hawatch.ir/points/dewouk-marsh) را تأیید کرد؛ این چهار URL از صف جاری حذف شدند.
+
+### P2 — مسیرهای افزوده‌شده در ۳ نوامبر ۲۰۲۶
+
+- صعود شمالی شهباز از امامزاده عبدالله — <https://hawatch.ir/routes/shahbaz-north>
+- میدان احسان تا قلهٔ دراک — <https://hawatch.ir/routes/derak-ehsan>
+- بادام‌شیرین تا آبشار زردلیمه — <https://hawatch.ir/routes/zardlimeh-badam-shirin>
 
 ### P2 — مسیرهای افزوده‌شده در ۲۳ و ۲۸ اکتبر ۲۰۲۶
 
@@ -939,7 +948,7 @@ point-only هستند؛ مسیرهای تکمیلی پس از دریافت و ب
 - https://hawatch.ir/routes/ziarat-forest-naharkhoran
 - https://hawatch.ir/routes/zingalo-madan
 
-### P3 — نقطه‌های پشتیبانِ indexable (۹۲؛ الفبایی)
+### P3 — نقطه‌های پشتیبانِ indexable (۹۴؛ الفبایی)
 
 - https://hawatch.ir/points/abbas-ali-kamar-posht-village
 - https://hawatch.ir/points/abr-village
@@ -947,6 +956,7 @@ point-only هستند؛ مسیرهای تکمیلی پس از دریافت و ب
 - https://hawatch.ir/points/alamkuh-vandarbon
 - https://hawatch.ir/points/amiri-tochal
 - https://hawatch.ir/points/arfa-deh
+- https://hawatch.ir/points/badam-shirin
 - https://hawatch.ir/points/balqis-qaravolkhaneh-village
 - https://hawatch.ir/points/barfchal-tochal
 - https://hawatch.ir/points/bel-shelter
@@ -966,6 +976,7 @@ point-only هستند؛ مسیرهای تکمیلی پس از دریافت و ب
 - https://hawatch.ir/points/gahar-aligudarz-lake-shore
 - https://hawatch.ir/points/gahar-aligudarz-lake-view
 - https://hawatch.ir/points/gahar-dorud-lake-shore
+- https://hawatch.ir/points/gavshir
 - https://hawatch.ir/points/hazar-ardikan-start
 - https://hawatch.ir/points/hazar-babzangi-start
 - https://hawatch.ir/points/hazar-rayen-shelter
