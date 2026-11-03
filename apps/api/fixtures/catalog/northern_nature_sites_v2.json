@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-northern-nature-sites-v1",
+  "catalog_version": "hawatch-northern-nature-sites-v2",
   "primary_point": "javarem-forest",
   "weather_points": {
     "javarem-forest": {
@@ -154,6 +154,56 @@
       "elevation_source": "ارتفاع 913 متر از Open-Meteo GLO-90 DEM در مختصات همین نقطه؛ بررسی ۲۰۲۶-۱۰-۱۷.",
       "image": "/images/home-scene.png",
       "image_alt": "دریاچهٔ ولشت در مرزن‌آباد · چالوس · مازندران",
+      "is_active": true,
+      "is_popular": false,
+      "routes": {}
+    },
+    "estil-lagoon": {
+      "name": "تالاب استیل",
+      "page_name": "تالاب استیل آستارا",
+      "short_label": "تالاب استیل",
+      "place_type": "lake",
+      "category_key": "marsh",
+      "short_category": "تالاب",
+      "category": "تالاب‌های گیلان",
+      "region": "عباس‌آباد · آستارا · گیلان",
+      "latitude": 38.3627778,
+      "longitude": 48.8516667,
+      "elevation_m": -24,
+      "climate": "lake_valley",
+      "aliases": [
+        "تالاب استیل آستارا",
+        "تالاب استیل عباس‌آباد",
+        "تالاب هَستل",
+        "دریاچه استیل",
+        "Estil Wetland",
+        "Estil Lagoon",
+        "Hestel Wetland"
+      ],
+      "identity_summary": "تالاب استیل در نزدیکی عباس‌آباد و محور آستارا–رشت قرار دارد. نقطهٔ پیش‌بینی روی راه عمومیِ کنار پهنه انتخاب شده و نمایندهٔ محدودهٔ تالاب است، نه مرکز آب.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/steel-lagoon",
+        "https://www.openstreetmap.org/way/120487999",
+        "https://visitiran.ir/en/attraction/Estil--Wetland--in--Astara",
+        "https://tripyar.com/iran/gilan/astara/attractions/ecotourism/springs-waterfalls-and-lagoons/estil-lagoon-astara.html",
+        "https://www.wikiloc.com/car-trails/esteel-lagoon-tlb-styl-8186017",
+        "https://api.open-meteo.com/v1/elevation?latitude=38.3627778&longitude=48.8516667",
+        "https://open-meteo.com/en/docs"
+      ],
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۴- متر از Open-Meteo GLO-90 DEM در مختصات راه عمومی کنار تالاب؛ بررسی ۲۰۲۶-۱۱-۰۳.",
+      "seo": {
+        "title": "آب‌وهوای تالاب استیل آستارا؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای تالاب استیل در نزدیکی آستارا؛ دما، باد و بارش را برای محدودهٔ کنار تالاب ببینید.",
+        "content": "تالاب استیل در نزدیکی عباس‌آباد و در مسیر آستارا–رشت قرار دارد. نقطهٔ این پیش‌بینی نمایندهٔ بخش کنار جادهٔ تالاب است؛ آب‌گرفتگی تالاب و وضعیت محلی ممکن است در طول سال تغییر کند."
+      },
+      "tile_name": "تالاب استیل",
+      "image": "/images/home-scene.png",
+      "image_alt": "تالاب استیل در آستارا · گیلان",
       "is_active": true,
       "is_popular": false,
       "routes": {}

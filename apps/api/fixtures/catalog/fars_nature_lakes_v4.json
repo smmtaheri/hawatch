@@ -1,5 +1,5 @@
 {
-  "catalog_version": "hawatch-fars-nature-lakes-v3",
+  "catalog_version": "hawatch-fars-nature-lakes-v4",
   "primary_point": "bostanak-canyon",
   "weather_points": {
     "bostanak-canyon": {
@@ -348,6 +348,55 @@
         "description": "پیش‌بینی آب‌وهوای تالاب‌های کمجان در دشت سیلابی رود کر، استان فارس؛ دما، باد و بارش را پیش از بازدید ببینید.",
         "content": "تالاب‌های کمجان از پهنه‌های ارزشمند تالابی فارس و بخشی از مجموعهٔ بختگان و تشک هستند. آب‌گرفتگی و گسترهٔ تالاب با فصل و شرایط آب تغییر می‌کند؛ این صفحه پیش‌بینی یک نقطهٔ نماینده را نمایش می‌دهد."
       },
+      "routes": {}
+    },
+    "kaftar-lake": {
+      "name": "دریاچهٔ کافتر",
+      "page_name": "دریاچهٔ کافتر فارس",
+      "short_label": "کافتر",
+      "place_type": "lake",
+      "category_key": "lake",
+      "short_category": "دریاچه",
+      "category": "دریاچه‌های فارس",
+      "region": "خنجشت · اقلید · فارس",
+      "latitude": 30.5286167,
+      "longitude": 52.7721833,
+      "elevation_m": 2319,
+      "climate": "lake_valley",
+      "aliases": [
+        "تالاب کافتر",
+        "دریاچهٔ شادکام",
+        "تالاب شادکام",
+        "آبگیر کافتر",
+        "Kaftar Lake",
+        "Kaftar Wetland",
+        "Shadkam Lake"
+      ],
+      "identity_summary": "دریاچهٔ کافتر یا شادکام در شرق روستای کافترِ اقلید است. نقطهٔ پیش‌بینی روی راه gravel جنوبیِ کنار پهنه و در موقعیت ثبت‌شدهٔ پایش پرندگان قرار دارد؛ نمایندهٔ اطراف دریاچه است، نه نقطه‌ای در آب. پهنه ممکن است فصلی خشک یا یخ‌زده باشد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/kaftar-lake",
+        "https://www.openstreetmap.org/way/546169775",
+        "https://www.wiwo.org/iranreport2009.pdf",
+        "https://www.irandeserts.com/article/تالاب-کافتر-شادکام/",
+        "https://api.open-meteo.com/v1/elevation?latitude=30.5286167&longitude=52.7721833",
+        "https://open-meteo.com/en/docs"
+      ],
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۲۳۱۹ متر از Open-Meteo GLO-90 DEM در مختصات نقطهٔ جادهٔ جنوبیِ کافتر؛ بررسی ۲۰۲۶-۱۱-۰۳.",
+      "seo": {
+        "title": "آب‌وهوای دریاچهٔ کافتر؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای دریاچهٔ کافتر یا شادکام در اقلید فارس؛ دما، باد و بارش را برای محدودهٔ کنار دریاچه ببینید.",
+        "content": "دریاچهٔ کافتر، که با نام شادکام هم شناخته می‌شود، در شرق روستای کافتر در شهرستان اقلید قرار دارد. نقطهٔ این پیش‌بینی در راه جنوبیِ کنار دریاچه است؛ وضعیت آب‌گرفتگی دریاچه می‌تواند با فصل تغییر کند."
+      },
+      "tile_name": "دریاچهٔ کافتر",
+      "image": "/images/home-scene.png",
+      "image_alt": "دریاچهٔ کافتر در اقلید فارس",
+      "is_active": true,
+      "is_popular": false,
       "routes": {}
     }
   },

@@ -1,0 +1,80 @@
+{
+  "catalog_version": "hawatch-eshtehard-desert-v1",
+  "primary_point": "eshtehard-desert",
+  "weather_points": {
+    "eshtehard-desert": {
+      "name": "کویر اشتهارد",
+      "page_name": "کویر اشتهارد و تپه‌های رنگی",
+      "short_label": "کویر اشتهارد",
+      "place_type": "desert",
+      "category_key": "desert",
+      "short_category": "کویر",
+      "category": "کویرها و عوارض طبیعی البرز",
+      "region": "شمال اشتهارد · البرز",
+      "latitude": 35.8169521,
+      "longitude": 50.4438667,
+      "elevation_m": 1142,
+      "climate": "desert",
+      "aliases": [
+        "کویر قارپوزآباد",
+        "قشلاق حسین‌خانی",
+        "تپه‌های رنگی اشتهارد",
+        "کوه‌های رنگی اشتهارد",
+        "Eshtehard Desert",
+        "Qarpuzabad Desert"
+      ],
+      "identity_summary": "کویر اشتهارد پهنه‌ای گسترده با دق نمکی، تپه‌های رنگی و حاشیه‌های فصلی است. نقطهٔ پیش‌بینی روی جادهٔ عمومی اشتهارد–نظرآباد در بخش شمالی پهنه قرار دارد و نمایندهٔ آب‌وهوای محدودهٔ بیابانی است؛ مختصات، مرکز دق یا غار نمکی نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/eshtehard-desert",
+        "https://www.openstreetmap.org/way/322066588",
+        "https://fa.tripyar.com/iran/البرز/اشتهارد/گردشگری/اکوتوریسم/دشت-و-بیابان-گردی/کویر-اشتهارد.html",
+        "https://www.irandeserts.com/article/کویر-اشتهارد-کویر-قارپوزآباد/",
+        "https://www.wikiloc.com/car-trails/tphhy-rngy-shthrd-114773017",
+        "https://api.open-meteo.com/v1/elevation?latitude=35.8169521&longitude=50.4438667",
+        "https://open-meteo.com/en/docs"
+      ],
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۱۴۲ متر از Open-Meteo GLO-90 DEM در مختصات جادهٔ عمومی اشتهارد–نظرآباد؛ بررسی ۲۰۲۶-۱۱-۰۳.",
+      "seo": {
+        "title": "آب‌وهوای کویر اشتهارد؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای کویر اشتهارد و محدودهٔ تپه‌های رنگی در البرز؛ دما، باد و بارش را پیش از بازدید ببینید.",
+        "content": "کویر اشتهارد یا قارپوزآباد در شمال شهرستان اشتهارد گسترده شده و دق نمکی و تپه‌های رنگی دارد. نقطهٔ پیش‌بینی هواچ روی جادهٔ عمومی اشتهارد–نظرآباد است و وضعیت کل پهنهٔ کویر را به‌طور یکسان نشان نمی‌دهد."
+      },
+      "tile_name": "کویر اشتهارد",
+      "image": "/images/home-scene.png",
+      "image_alt": "پهنهٔ کویر اشتهارد در استان البرز",
+      "is_active": true,
+      "is_popular": false,
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "eshtehard-desert",
+    "tile_name": "کویر اشتهارد",
+    "name": "کویر اشتهارد",
+    "short_category": "کویر",
+    "category": "کویرها و عوارض طبیعی البرز",
+    "category_key": "desert",
+    "region": "شمال اشتهارد · البرز",
+    "latitude": 35.8169521,
+    "longitude": 50.4438667,
+    "elevation_m": 1142,
+    "image": "/images/home-scene.png",
+    "image_alt": "پهنهٔ کویر اشتهارد در استان البرز",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "کویر قارپوزآباد",
+      "قشلاق حسین‌خانی",
+      "تپه‌های رنگی اشتهارد",
+      "Eshtehard Desert"
+    ]
+  }
+}

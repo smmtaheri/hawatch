@@ -1,0 +1,82 @@
+{
+  "catalog_version": "hawatch-touran-gateway-v1",
+  "primary_point": "qaleh-bala",
+  "weather_points": {
+    "qaleh-bala": {
+      "name": "روستای قلعه‌بالا",
+      "page_name": "روستای قلعه‌بالا؛ دروازهٔ گردشگری توران",
+      "short_label": "قلعه‌بالا",
+      "place_type": "village",
+      "category_key": "village",
+      "short_category": "روستای گردشگری",
+      "category": "روستاهای سمنان",
+      "region": "بیارجمند · شاهرود · سمنان",
+      "latitude": 36.00387286,
+      "longitude": 56.00189922,
+      "elevation_m": 1229,
+      "climate": "desert",
+      "aliases": [
+        "قلعه بالا",
+        "روستای قلعه بالا",
+        "قلعه‌بالا بیارجمند",
+        "روستای هدف گردشگری قلعه‌بالا",
+        "Qaleh Bala",
+        "Qaleh-ye Bala",
+        "Ghaleh Bala"
+      ],
+      "identity_summary": "روستای قلعه‌بالا در بیارجمند، یکی از ورودی‌های گردشگری و دروازهٔ شناخته‌شدهٔ جنوبیِ ذخیره‌گاه توران است. این صفحه پیش‌بینی را برای خود آبادی نشان می‌دهد، نه برای همهٔ پهنهٔ وسیع خارتوران یا داخل پارک ملی.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/Khar-Turan-Desert",
+        "https://www.openstreetmap.org/way/132674343",
+        "https://www.irangaah.ir/villages/shahroud/biarjomand/ghaleh-bala",
+        "https://qalehbala.com/fa",
+        "https://www.wikiloc.com/car-trails/byrjmnd-bh-rwsty-qlh-bl-ghale-bala-tourist-village-271247146",
+        "https://api.open-meteo.com/v1/elevation?latitude=36.00387286&longitude=56.00189922",
+        "https://open-meteo.com/en/docs"
+      ],
+      "status": "provisional",
+      "elevation_source": "ارتفاع ۱۲۲۹ متر از Open-Meteo GLO-90 DEM در مختصات مرکز آبادی؛ بررسی ۲۰۲۶-۱۱-۰۳.",
+      "seo": {
+        "title": "آب‌وهوای روستای قلعه‌بالا و توران؛ دما، باد و بارش | هواچ",
+        "description": "پیش‌بینی آب‌وهوای روستای قلعه‌بالا در بیارجمند، دروازهٔ گردشگری توران؛ دما، باد و بارش را برای محدودهٔ آبادی ببینید.",
+        "content": "قلعه‌بالا روستایی گردشگری در بیارجمندِ استان سمنان و در مجاورت ذخیره‌گاه زیست‌کرهٔ توران است. پیش‌بینی این صفحه برای خود روستا است و جایگزین پیش‌بینی جداگانهٔ نقاط دورتر داخل منطقهٔ حفاظت‌شده نیست."
+      },
+      "tile_name": "روستای قلعه‌بالا",
+      "image": "/images/home-scene.png",
+      "image_alt": "روستای قلعه‌بالا در بیارجمند سمنان",
+      "is_active": true,
+      "is_popular": false,
+      "routes": {}
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "qaleh-bala",
+    "tile_name": "روستای قلعه‌بالا",
+    "name": "روستای قلعه‌بالا",
+    "short_category": "روستای گردشگری",
+    "category": "روستاهای سمنان",
+    "category_key": "village",
+    "region": "بیارجمند · شاهرود · سمنان",
+    "latitude": 36.00387286,
+    "longitude": 56.00189922,
+    "elevation_m": 1229,
+    "image": "/images/home-scene.png",
+    "image_alt": "روستای قلعه‌بالا در بیارجمند سمنان",
+    "climate": "desert",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": [
+      "قلعه بالا",
+      "روستای قلعه بالا",
+      "قلعه‌بالا بیارجمند",
+      "Qaleh Bala",
+      "Ghaleh Bala"
+    ]
+  }
+}

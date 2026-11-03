@@ -1,11 +1,20 @@
 # بک‌لاگ پوشش مقصدهای هواگشت در هواچ
 
-تاریخ بررسی: ۱۴۰۵/۰۷/۲۵ (۱۷ اکتبر ۲۰۲۶)
+تاریخ مبنای موجودی‌برداری: ۱۴۰۵/۰۷/۲۵ (۱۷ اکتبر ۲۰۲۶)؛ آخرین به‌روزرسانی: ۱۴۰۵/۰۸/۱۲ (۳ نوامبر ۲۰۲۶)
 
-این سند فقط موجودی‌برداری و اولویت‌بندی است؛ هیچ WeatherPoint یا Route جدیدی
-ایجاد نشده است. مبنا، فهرست sitemap و مقصدهای عمومی هواگشت
+این سند موجودی‌برداری اولیه و پیگیری افزودنی‌های بعدی را ثبت می‌کند. مبنا، فهرست sitemap و مقصدهای عمومی هواگشت
 ([صفحهٔ اصلی](https://havagasht.com/) · [sitemap](https://havagasht.com/sitemap.xml))
-و کاتالوگ زندهٔ هواچ است که فقط به‌صورت read-only خوانده شد.
+و کاتالوگ زندهٔ هواچ است.
+
+## پیگیری مقصدهای مهمِ اضافه‌شده در ۳ نوامبر ۲۰۲۶
+
+- **کویر اشتهارد** به‌صورت نقطهٔ پیش‌بینی کنار جادهٔ عمومی اشتهارد–نظرآباد منتشر شد؛ مختصات، مرکز پهنهٔ نمکی یا غار نمکی نیست. صفحه: [کویر اشتهارد](https://hawatch.ir/points/eshtehard-desert).
+- **دریاچهٔ کافتر** به‌صورت نقطهٔ قابل‌دسترسی در جادهٔ جنوبیِ کنار دریاچه منتشر شد؛ نقطه در آب قرار ندارد. صفحه: [دریاچهٔ کافتر](https://hawatch.ir/points/kaftar-lake).
+- **تالاب استیل** به‌صورت نقطهٔ نمایندهٔ کنار تالاب و نزدیک راه عمومی منتشر شد. صفحه: [تالاب استیل](https://hawatch.ir/points/estil-lagoon).
+- **کویر خار توران** یک پهنهٔ حفاظت‌شده و گسترده است؛ به‌جای نسبت‌دادن یک نقطهٔ آب‌وهوا به کل آن، دروازهٔ گردشگری شناخته‌شدهٔ آن یعنی **روستای قلعه‌بالا** به‌صورت point-only منتشر شد: [قلعه‌بالا](https://hawatch.ir/points/qaleh-bala).
+- **ریگ‌جن** از قبل با نقطهٔ [بیشهٔ دو باغ](https://hawatch.ir/points/bishe-do-bagh) و مسیر [الله‌آباد تا بیشهٔ دو باغ](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh) پوشش دارد؛ نقطهٔ تکراری برای کل بیابان اضافه نشد.
+
+هیچ Route تازه‌ای در این نوبت اضافه نشد: ترک‌های پیدا‌شده برای اشتهارد و دریاچه‌ها خودرویی/دوچرخه‌ای بودند و ترک منتهی به ایستگاه محیط‌بانی توران، مسیر عمومیِ پیادهٔ تأییدشده محسوب نشد. همهٔ چهار صفحهٔ تازه با forecast معتبر بررسی شدند.
 
 ## پیگیری افزودنی‌های ۱۷ اکتبر ۲۰۲۶
 
@@ -276,7 +285,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | آبشار نشترود | `nashtrod_waterfall` | نداریم | — | — |
 | سد امیرکبیر | `amirkabir-dam` | موجود | [سد امیرکبیر](https://hawatch.ir/points/amir-kabir-dam) | — |
 | سد طالقان | `taleghan-dam` | موجود | [سد طالقان](https://hawatch.ir/points/taleghan-dam) | — |
-| کویر اشتهارد | `eshtehard-desert` | نداریم | — | — |
+| کویر اشتهارد | `eshtehard-desert` | افزوده شد؛ point-only | [کویر اشتهارد](https://hawatch.ir/points/eshtehard-desert) | — |
 
 ### ایلام
 
@@ -426,8 +435,8 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | تنگه زندان | `tangeh-zendan` | نداریم | — | — |
 | جنگل ابر | `abr-jungle` | موجود | [جنگل ابر](https://hawatch.ir/points/jangal-abr) | — |
 | جنگل فینسک | `finesk-jungle` | نداریم | — | — |
-| کویر خار توران | `Khar-Turan-Desert` | نداریم | — | — |
-| کویر ریگ جن | `Rig-e-Jen-Desert` | نداریم | — | خیلی بالا (17) |
+| کویر خار توران | `Khar-Turan-Desert` | با دروازهٔ گردشگری قلعه‌بالا؛ point-only | [روستای قلعه‌بالا](https://hawatch.ir/points/qaleh-bala) | — |
+| کویر ریگ جن | `Rig-e-Jen-Desert` | پوشش موجود؛ نقطه و مسیر مرتبط | [بیشهٔ دو باغ](https://hawatch.ir/points/bishe-do-bagh) · [مسیر الله‌آباد تا بیشهٔ دو باغ](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh) | خیلی بالا (17) |
 
 ### سیستان و بلوچستان
 
@@ -452,7 +461,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | دریاچه بختگان | `bakhtegan-lake` | موجود | [دریاچهٔ بختگان](https://hawatch.ir/points/bakhtegan-lake) | — |
 | دریاچه پریشان | `parishan-lake` | موجود | [دریاچهٔ پریشان](https://hawatch.ir/points/parishan-lake) | خیلی بالا (15) |
 | دریاچه طشک | `tashk-lake` | موجود | [دریاچهٔ طشک](https://hawatch.ir/points/tashk-lake) | خیلی بالا (16) |
-| دریاچه کافتر | `kaftar-lake` | نداریم | — | — |
+| دریاچه کافتر | `kaftar-lake` | افزوده شد؛ point-only | [دریاچهٔ کافتر](https://hawatch.ir/points/kaftar-lake) | — |
 | دریاچه مهارلو | `maharlu-lake` | موجود | [دریاچهٔ مهارلو](https://hawatch.ir/points/maharloo-lake) | — |
 
 ### قزوین
@@ -535,7 +544,7 @@ GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛
 | پارک جنگلی بی بی یانلو | `bibiyanlou-forestpark` | نداریم | — | — |
 | پارک جنگلی درنیکا | `dornika-forestpark` | نداریم | — | — |
 | پارک جنگلی سراوان | `saravan-forestpark` | موجود؛ افزوده شد | [پارک جنگلی سراوان](https://hawatch.ir/points/saravan-forest) | — |
-| تالاب استیل | `steel-lagoon` | نداریم | — | — |
+| تالاب استیل | `steel-lagoon` | افزوده شد؛ point-only | [تالاب استیل](https://hawatch.ir/points/estil-lagoon) | — |
 | تالاب انزلی | `anzali-lagoon` | موجود؛ افزوده شد | [تالاب انزلی](https://hawatch.ir/points/anzali-lagoon) | — |
 | جنگل جواهردشت | `javaherdasht-jungle` | نداریم | — | — |
 | جنگل خلیان | `khalian-jungle` | نداریم | — | — |

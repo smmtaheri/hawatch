@@ -32,9 +32,14 @@ redirect/status یا حذف عمدی، مورد جداگانه و حل‌نشد�
 
 ## صف جاری
 
-URLها canonical و قابل‌کپی‌اند. نه URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
-صف حذف شدند؛ پس از انتشارهای جدید، صف شامل ۹۰۴ URL است: ۲ Hub، ۵۴۳ مقصد اصلی، ۲۶۷ مسیر و ۹۲ نقطهٔ
-پشتیبان. پارک نبکاها پس از رفع خطای قبلی، در بررسی زندهٔ ۲۸ اکتبر از CDN پاسخ 200 گرفت و در sitemap بود؛ بنابراین به صف درخواست ایندکس برگشت. این بررسی انتشار را تأیید می‌کند، نه ایندکس‌شدن در گوگل را. ترتیب صف P0، سپس ۱۵ مقصد منتخب و ۱۵ مقصد افزوده‌شدهٔ P1، بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
+URLها canonical و قابل‌کپی‌اند. چهارده URL که کاربر ایندکس‌شدنشان را تأیید کرد، از
+صف حذف شدند. پیش از افزودن مقصدهای تازهٔ هواگشت، صف شامل ۸۹۹ URL بود: ۲ Hub،
+۵۳۸ مقصد اصلی، ۲۶۷ مسیر و ۹۲ نقطهٔ پشتیبان. با افزودن چهار مقصد تازه، صف جاری
+۹۰۳ URL است: ۲ Hub، ۵۴۲ مقصد اصلی، ۲۶۷ مسیر و ۹۲ نقطهٔ پشتیبان. پارک نبکاها پس
+از رفع خطای قبلی، در بررسی زندهٔ ۲۸ اکتبر از CDN پاسخ 200 گرفت و در sitemap بود؛
+بنابراین به صف درخواست ایندکس برگشت. این بررسی انتشار را تأیید می‌کند، نه
+ایندکس‌شدن در گوگل را. ترتیب صف P0، سپس ۱۰ مقصد منتخب و ۱۵ مقصد افزوده‌شدهٔ P1،
+بقیهٔ P1، P2 و P3 است؛ داخل هر گروه
 الفبایی، مگر مقصدهای منتخب که اولویت محصولی دارند. پس از
 دریافت گزارش تازهٔ Search Console، موردی که از قبل ایندکس شده از صف حذف می‌شود؛
 URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنترل canonical/status به صف افزوده شدند.
@@ -44,23 +49,18 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 - https://hawatch.ir/destinations
 - https://hawatch.ir/routes
 
-### P1 — ۱۵ مقصد منتخبِ باقی‌مانده
+### P1 — ۱۰ مقصد منتخبِ باقی‌مانده
 
-1. جزیرهٔ شیدور — <https://hawatch.ir/points/shidvar-island>
-2. جزیرهٔ هرمز — <https://hawatch.ir/points/hormuz-island>
-3. دریاچهٔ برم فیروز — <https://hawatch.ir/points/barm-firuz-lake>
-4. ساحل درک — <https://hawatch.ir/points/darak-beach>
-5. کوه‌های مریخی چابهار — <https://hawatch.ir/points/chabahar-martian-mountains>
-6. دریاچهٔ قوری‌گل — <https://hawatch.ir/points/quri-gol-lake>
-7. آبشار اول اخلمد — <https://hawatch.ir/points/akhlamad-waterfall>
-8. تنگهٔ براق — <https://hawatch.ir/points/tang-boraq>
-9. دریاچهٔ مهارلو — <https://hawatch.ir/points/maharloo-lake>
-10. دریاچهٔ پریشان کازرون — <https://hawatch.ir/points/parishan-lake>
-11. تالاب کمجان — <https://hawatch.ir/points/kamjan-wetland>
-12. ساحل بریس — <https://hawatch.ir/points/beris-beach>
-13. خلیج گواتر چابهار — <https://hawatch.ir/points/gwatar-bay>
-14. جزایر ناز قشم — <https://hawatch.ir/points/naz-islands>
-15. جزیرهٔ هندورابی — <https://hawatch.ir/points/hendurabi-island>
+1. دریاچهٔ قوری‌گل — <https://hawatch.ir/points/quri-gol-lake>
+2. آبشار اول اخلمد — <https://hawatch.ir/points/akhlamad-waterfall>
+3. تنگهٔ براق — <https://hawatch.ir/points/tang-boraq>
+4. دریاچهٔ مهارلو — <https://hawatch.ir/points/maharloo-lake>
+5. دریاچهٔ پریشان کازرون — <https://hawatch.ir/points/parishan-lake>
+6. تالاب کمجان — <https://hawatch.ir/points/kamjan-wetland>
+7. ساحل بریس — <https://hawatch.ir/points/beris-beach>
+8. خلیج گواتر چابهار — <https://hawatch.ir/points/gwatar-bay>
+9. جزایر ناز قشم — <https://hawatch.ir/points/naz-islands>
+10. جزیرهٔ هندورابی — <https://hawatch.ir/points/hendurabi-island>
 
 ### P1 — هشت مقصد افزوده‌شده در ۲۳ اکتبر ۲۰۲۶
 
@@ -102,8 +102,26 @@ URLهای تازهٔ زیر پس از انتشار عمومی موفق و کنت
 در بررسی ۲ نوامبر پس از ۲۵ ثانیه timeout شد؛ بنابراین حضور مقصدهای تازه در sitemap
 و canonical همهٔ صفحه‌ها باید پیش از درخواست ایندکس دوباره کنترل شود.
 
+### P1 — چهار مقصد تازهٔ هواگشت (۳ نوامبر ۲۰۲۶)
+
+- کویر اشتهارد — <https://hawatch.ir/points/eshtehard-desert>
+- روستای قلعه‌بالا، دروازهٔ گردشگری توران — <https://hawatch.ir/points/qaleh-bala>
+- دریاچهٔ کافتر — <https://hawatch.ir/points/kaftar-lake>
+- تالاب استیل — <https://hawatch.ir/points/estil-lagoon>
+
+هر چهار صفحه point-only هستند، در آزمون زنده پاسخ HTTP 200 و forecast معتبر
+داشتند و در sitemap دیده شدند؛ ایندکس‌شدن آن‌ها هنوز از سوی کاربر تأیید نشده است.
+
 ایندکس‌شدن [دریاچهٔ تمی](https://hawatch.ir/points/temi-lake) را کاربر در ۲ نوامبر
 ۲۰۲۶ تأیید کرد؛ این URL از صف جاری حذف شده است.
+
+کاربر در ۳ نوامبر ۲۰۲۶ ایندکس‌شدن پنج مقصد منتخب را تأیید کرد؛
+[جزیرهٔ شیدور](https://hawatch.ir/points/shidvar-island)،
+[جزیرهٔ هرمز](https://hawatch.ir/points/hormuz-island)،
+[دریاچهٔ برم فیروز](https://hawatch.ir/points/barm-firuz-lake)،
+[ساحل درک](https://hawatch.ir/points/darak-beach) و
+[کوه‌های مریخی چابهار](https://hawatch.ir/points/chabahar-martian-mountains)
+از صف جاری حذف شدند.
 
 ### P1 — شش مقصد دشت لوتِ باقی‌مانده در صف (۲۳ و ۲۸ اکتبر ۲۰۲۶)
 
