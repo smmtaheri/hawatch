@@ -1,0 +1,54 @@
+{
+  "catalog_version": "hawatch-latian-dam-catalog-v1",
+  "primary_point": "latian-dam",
+  "weather_points": {
+    "latian-dam": {
+      "name": "سد لتیان",
+      "page_name": "سد لتیان",
+      "short_label": "سد لتیان",
+      "place_type": "landmark",
+      "category_key": "dam",
+      "category": "سد",
+      "region": "لواسان · شمیرانات · تهران",
+      "aliases": ["سد لاتیان", "دریاچه سد لتیان", "دریاچهٔ سد لتیان", "Latian Dam", "Latyan Dam"],
+      "identity_summary": "سد لتیان روی رودخانهٔ جاجرود در جنوب‌شرق لواسان؛ مختصات نمایندهٔ خود سازهٔ سد در OpenStreetMap است، نه مرکز دریاچه یا شهر لواسان. دسترسی جاده‌ای مستقل از مسیر کوه‌پیمایی است؛ ثبت پیش‌بینی به معنی مجازبودن ورود عمومی به محوطهٔ تأسیسات سد نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/latian-dam",
+        "https://www.openstreetmap.org/way/157207765",
+        "https://mapcarta.com/12482636",
+        "https://en.wikipedia.org/wiki/Latyan_Dam",
+        "https://letsgotrip.ir/latyan-dam/"
+      ],
+      "latitude": 35.79006,
+      "longitude": 51.67867,
+      "elevation_m": 1602,
+      "status": "provisional",
+      "elevation_source": "مختصات سازهٔ سد از OpenStreetMap way 157207765 / Mapcarta؛ ارتفاع زمین از Open-Meteo GLO-90 DEM در همین مختصات، ۱۶۰۲ متر؛ بررسی ۲۰۲۶-۱۱-۰۳. این مقدار تراز لحظه‌ای آب یا ارتفاع بدنهٔ سد نیست.",
+      "climate": "lake_valley"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "latian-dam",
+    "tile_name": "سد لتیان",
+    "name": "سد لتیان",
+    "short_category": "سد",
+    "category": "سد",
+    "category_key": "dam",
+    "region": "لواسان · شمیرانات · تهران",
+    "latitude": 35.79006,
+    "longitude": 51.67867,
+    "elevation_m": 1602,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "climate": "lake_valley",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["سد لاتیان", "دریاچه سد لتیان", "دریاچهٔ سد لتیان", "Latian Dam", "Latyan Dam"]
+  }
+}

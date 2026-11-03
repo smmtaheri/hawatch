@@ -1,0 +1,59 @@
+{
+  "catalog_version": "hawatch-shemshak-ski-catalog-v1",
+  "primary_point": "shemshak-ski",
+  "shared_weather_points": ["abak-shemshak-trailhead"],
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": ["shemshak-ski", "abak-shemshak-trailhead"],
+      "reason": "نقطهٔ نمایندهٔ مجموعهٔ اسکی در مختصات راهنمای Ski of Persia، حدود ۹۹ متر جنوب پای‌کار پیادهٔ آبک است. پیست مقصد مستقل اسکی است؛ رکورد پای‌کار آبک یک waypoint فنی و noindex روی مسیر کوه‌پیمایی جداگانه است. مختصات و هویت پای‌کار موجود تغییر نمی‌کند."
+    }
+  ],
+  "weather_points": {
+    "shemshak-ski": {
+      "name": "پیست اسکی شمشک",
+      "page_name": "پیست اسکی شمشک",
+      "short_label": "پیست شمشک",
+      "place_type": "landmark",
+      "category_key": "ski",
+      "category": "پیست اسکی",
+      "region": "شمشک · رودبار قصران · تهران",
+      "aliases": ["پیست شمشک", "پیست بین‌المللی شمشک", "Shemshak Ski Resort", "Shemshak Ski"],
+      "identity_summary": "مجموعهٔ اسکی شمشک در رودبار قصران؛ نقطهٔ نماینده در بخش پایهٔ پیست و دسترسی جاده‌ای آن است، نه قله یا بالاترین ایستگاه. پیش‌بینی برای همین مختصات و ارتفاع است و وضعیت بازبودن پیست را اعلام نمی‌کند. با مبدأ کوه‌پیمایی آبک و روستای سپیدستان متفاوت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/",
+        "https://skiofpersia.com/en/resort/shemshak/",
+        "https://visitiran.ir/fa/attraction/پیست-اسکی-شمشک"
+      ],
+      "latitude": 36.008362,
+      "longitude": 51.493692,
+      "elevation_m": 2528,
+      "status": "provisional",
+      "elevation_source": "مختصات بخش پایه از راهنمای Ski of Persia؛ ارتفاع زمین از Open-Meteo GLO-90 DEM در همین مختصات، ۲۵۲۸ متر؛ بررسی ۲۰۲۶-۱۱-۰۳. ارتفاع بالاترین ایستگاه مبنای این نقطه نیست.",
+      "climate": "alpine"
+    }
+  },
+  "routes": {},
+  "point": {
+    "slug": "shemshak-ski",
+    "tile_name": "پیست شمشک",
+    "name": "پیست اسکی شمشک",
+    "short_category": "پیست اسکی",
+    "category": "پیست اسکی",
+    "category_key": "ski",
+    "region": "شمشک · رودبار قصران · تهران",
+    "latitude": 36.008362,
+    "longitude": 51.493692,
+    "elevation_m": 2528,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای طبیعت هواچ",
+    "climate": "alpine",
+    "is_popular": false,
+    "is_active": true,
+    "seo_indexable": true,
+    "aliases": ["پیست شمشک", "پیست بین‌المللی شمشک", "Shemshak Ski Resort", "Shemshak Ski"]
+  }
+}

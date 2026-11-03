@@ -33,6 +33,38 @@ import در دیتابیس ذخیره می‌شوند و برای اضافه‌�
 
 ## روال سریع پیش‌فرض برای افزودن نقطه
 
+### انتخاب مقصد از صف و ثبت پایان کار
+
+برای هر کار مربوط به هواکوه یا هواگشت، ابتدا
+[صف یکپارچهٔ مقصدها](catalog-queue.md) و ledger آن در
+`docs/catalog-queue.json` را بخوانید. نامزد تازه را از `queued` و به‌ترتیب
+priority/rank بردارید؛ با شروع کار، وضعیت همان شناسه را `in_progress` کنید.
+`needs_review`، `catalog_only` و `existing_point` کارهای تعیین هویت/تطبیق/ارتقا
+هستند و نباید به‌عنوان مقصد قطعاً غایب معرفی شوند. ترکِ دریافت‌شده یا
+پیش‌نویسِ دارای fixture تا تأیید انتشار، مقصد اضافه‌شده محسوب نمی‌شود.
+
+بعد از انتشار موفق و بررسی URL عمومی، snapshot فقط‌خواندنی تازه از کاتالوگ
+بگیرید و همان شناسهٔ صف را با slug واقعی ببندید:
+
+```bash
+python3 scripts/catalog_queue.py --snapshot-live hawatch > /tmp/hawatch-live-catalog.json
+python3 scripts/catalog_queue.py --complete <queue-id> --slug <canonical-slug> \
+  --live-snapshot /tmp/hawatch-live-catalog.json
+python3 scripts/catalog_queue.py --check
+```
+
+این فرمان‌ها فقط JSON و نماهای مستندات صف را تغییر می‌دهند؛ snapshot از جدول‌های
+نقطه/مسیر و با session دیتابیس read-only گرفته می‌شود و شامل حساب، کوکی یا env
+نیست. آن را در مسیر موقت محلی نگه دارید. برای تغییر اولویت، ادغام alias، پوشش
+مرتبط یا وضعیت کار، ledger را ویرایش و `--render` و `--check` اجرا کنید. فایل‌های
+`havakouh-backlog.md` و `havagasht-backlog.md` نماهای تولیدشده‌اند و مستقیم ویرایش
+نمی‌شوند. آیتم منتشرشده در آرشیو موجودها می‌ماند و از صف افزودن کم می‌شود؛ حذف
+سابقه باعث پیشنهاد دوبارهٔ همان مقصد خواهد شد. مقصدی که قبلاً بدون Route منتشر
+شده دوباره به صف ساخت مقصد برنمی‌گردد؛ بررسی Route و
+[صف ایندکس گوگل](indexing-backlog.md) جداگانه به‌روز می‌شوند.
+
+### اجرای افزودن
+
 برای یک افزودن معمولی و افزایشی، این روال کافی است؛ کارهای release یا audit
 کامل را به این مسیر اضافه نکنید:
 
@@ -943,6 +975,10 @@ Destination نیستند و تمام URLها از الگوی `/points/{slug}` پ
 9. پس از تأیید URL عمومی، تمام Point/Routeهای فعال و indexable از این انتشار در
    [`indexing-backlog.md`](indexing-backlog.md) ثبت شده باشند؛ URLهای `noindex`
    و Routeهای غیرفعال اضافه نشده باشند.
+10. اگر مقصد از هواکوه/هواگشت است، همان شناسه در ledger
+    [`catalog-queue.json`](catalog-queue.json) با شاهد کاتالوگ زنده از صف افزودن
+    خارج شده و `catalog_queue.py --check` موفق باشد؛ وضعیت صرفاً دانلودشده یا
+    fixture-only به‌اشتباه «منتشرشده» ثبت نشود.
 
 ## حل خطاهای رایج
 

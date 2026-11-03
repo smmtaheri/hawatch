@@ -12,6 +12,14 @@
 - هر کار مربوط به افزودن نقطه، WeatherPoint، Route یا RoutePoint باید از
   `docs/catalog-onboarding.md` و `docs/catalog-and-weather-validation.md` شروع
   شود؛ این دو سند مرجع اجباری workflow هستند و باید کامل خوانده شوند.
+- برای انتخاب مقصد از هواکوه/هواگشت، ابتدا `docs/catalog-queue.md` و ledger
+  آن در `docs/catalog-queue.json` بررسی شود؛ مقصد تازه فقط از `queued` و به‌ترتیب
+  priority/rank برداشته و با شروع کار `in_progress` شود. بعد از انتشار و تأیید
+  کاتالوگ زنده، همان شناسه به وضعیت موجود منتقل شود تا از صف افزودن کم شود؛
+  دریافت GPX یا وجود fixture به‌تنهایی پایان کار نیست. دو فایل `havakouh-backlog.md`
+  و `havagasht-backlog.md` نماهای تولیدشده‌اند؛ بعد از تغییر ledger، فرمان‌های
+  `python3 scripts/catalog_queue.py --render` و `--check` اجرا شوند. وضعیت Route
+  و صف ایندکس گوگل مستقل از صف افزودن مقصد نگهداری شوند.
 - برای قرارداد یکپارچهٔ هویت، نام‌گذاری، validator و اجرای مرحله‌به‌مرحلهٔ
   local/server، `docs/catalog-contribution.md` نیز باید بعد از دو سند بالا
   کامل خوانده شود. slugهای قدیمی compatibility یا redirect ندارند و هر نقطهٔ

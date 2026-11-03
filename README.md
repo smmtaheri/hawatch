@@ -147,6 +147,10 @@ ssh root@NEW_SERVER "chmod 600 /root/hawatch/.env && sed -i 's/202.133.89.120/NE
 
 ## افزودن نقطه و اعتبارسنجی weather
 
+انتخاب مقصدهای بعدی هواکوه/هواگشت از [صف یکپارچهٔ مقصدها](docs/catalog-queue.md)
+انجام می‌شود. ترتیب، وضعیت‌ها و تعداد باقی‌مانده از یک ledger تولید می‌شوند؛
+با هر انتشار موفق، همان آیتم از صف افزودن خارج می‌شود و سابقه‌اش حفظ می‌شود.
+
 راهنمای workflow در [`docs/catalog-onboarding.md`](docs/catalog-onboarding.md)
 است. برای افزودن معمولی و افزایشی نقطه، بک‌آپ دیتابیس، migration، restart یا
 sync کل catalogها لازم نیست. `routes: {}` فقط برای مقصد غیرکوهی مجاز است که

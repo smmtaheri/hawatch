@@ -1,666 +1,349 @@
-# بک‌لاگ پوشش مقصدهای هواگشت در هواچ
-
-تاریخ مبنای موجودی‌برداری: ۱۴۰۵/۰۷/۲۵ (۱۷ اکتبر ۲۰۲۶)؛ آخرین به‌روزرسانی: ۱۴۰۵/۰۸/۱۲ (۳ نوامبر ۲۰۲۶)
-
-این سند موجودی‌برداری اولیه و پیگیری افزودنی‌های بعدی را ثبت می‌کند. مبنا، فهرست sitemap و مقصدهای عمومی هواگشت
-([صفحهٔ اصلی](https://havagasht.com/) · [sitemap](https://havagasht.com/sitemap.xml))
-و کاتالوگ زندهٔ هواچ است.
-
-## پیگیری مقصدهای مهمِ اضافه‌شده در ۳ نوامبر ۲۰۲۶
-
-- **کویر اشتهارد** به‌صورت نقطهٔ پیش‌بینی کنار جادهٔ عمومی اشتهارد–نظرآباد منتشر شد؛ مختصات، مرکز پهنهٔ نمکی یا غار نمکی نیست. صفحه: [کویر اشتهارد](https://hawatch.ir/points/eshtehard-desert).
-- **دریاچهٔ کافتر** به‌صورت نقطهٔ قابل‌دسترسی در جادهٔ جنوبیِ کنار دریاچه منتشر شد؛ نقطه در آب قرار ندارد. صفحه: [دریاچهٔ کافتر](https://hawatch.ir/points/kaftar-lake).
-- **تالاب استیل** به‌صورت نقطهٔ نمایندهٔ کنار تالاب و نزدیک راه عمومی منتشر شد. صفحه: [تالاب استیل](https://hawatch.ir/points/estil-lagoon).
-- **کویر خار توران** یک پهنهٔ حفاظت‌شده و گسترده است؛ به‌جای نسبت‌دادن یک نقطهٔ آب‌وهوا به کل آن، دروازهٔ گردشگری شناخته‌شدهٔ آن یعنی **روستای قلعه‌بالا** به‌صورت point-only منتشر شد: [قلعه‌بالا](https://hawatch.ir/points/qaleh-bala).
-- **ریگ‌جن** از قبل با نقطهٔ [بیشهٔ دو باغ](https://hawatch.ir/points/bishe-do-bagh) و مسیر [الله‌آباد تا بیشهٔ دو باغ](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh) پوشش دارد؛ نقطهٔ تکراری برای کل بیابان اضافه نشد.
-
-هیچ Route تازه‌ای در این نوبت اضافه نشد: ترک‌های پیدا‌شده برای اشتهارد و دریاچه‌ها خودرویی/دوچرخه‌ای بودند و ترک منتهی به ایستگاه محیط‌بانی توران، مسیر عمومیِ پیادهٔ تأییدشده محسوب نشد. همهٔ چهار صفحهٔ تازه با forecast معتبر بررسی شدند.
-
-## پیگیری افزودنی‌های ۱۷ اکتبر ۲۰۲۶
-
-پنج مقصد `javarem-forest`، `saravan-forest`، `anzali-lagoon`، `valasht-lake`
-و `matinabad-desert` با import افزایشی و forecast واقعی منتشر شدند. کاراکال
-از قبل با canonical `karakal-desert` موجود بود؛ «نداریم» در تطبیق اولیه برای
-این مورد اشتباه بود. شمارش بخش بعد snapshot بررسی اولیه است و پس از افزودنی‌ها
-و اصلاح تطبیق، آمار زنده محسوب نمی‌شود؛ وضعیت شش ردیف مربوطه در فهرست اصلاح شد.
-
-- جوارم: [هویت و مختصات پارک](https://mapcarta.com/N4732183050)،
-  [دسترسی خودرویی و جادهٔ داخل پارک](https://lastsecond.ir/attractions/11290-javarem-forest-park).
-  ترک‌های روستای جوارم تا بورخانی مربوط به پیمایش دیگری‌اند؛ Route عمومی انتخاب نشد.
-- سراوان: [مختصات و دسترسی](https://climbers.ir/tourist-attractions/90-%D9%BE%D8%A7%D8%B1%DA%A9-%D8%AC%D9%86%DA%AF%D9%84%DB%8C-%D8%B3%D8%B1%D8%A7%D9%88%D8%A7%D9%86)،
-  [گزارش ورود سواری کنار مرداب](https://www.wikiloc.com/hiking-trails/1402-7-13-mrdb-w-prkh-jngly-srwn-149206188).
-  این ردّ ۶٫۳ کیلومتری با زمان حرکت ۲۳ دقیقه برای ساخت Route پیاده پذیرفته نشد.
-- انزلی: [مختصات بخش شرقی تالاب](https://mapcarta.com/N4363534189)،
-  [دسترسی از اسکله‌های انزلی](https://www.karnaval.ir/things-to-do/anzali-lagoon).
-  بازدید آبی با قایق است؛ Route پیاده برای آن تعریف نمی‌شود.
-- ولشت: [مختصات](https://mapcarta.com/12362590)،
-  [دسترسی خودرویی رایج](https://www.karnaval.ir/things-to-do/valasht-lake-marzanabad).
-  جادهٔ دسترسی به‌عنوان Route پیاده ثبت نشد.
-- متین‌آباد: [مجموعهٔ گردشگری](https://matinabad.com/)،
-  [نقشهٔ اکوکمپ](https://lastsecond.ir/blog/10185-deserts-near-tehran).
-  نقطه در محدودهٔ اکوکمپ با دسترسی سواری است؛ ترک شتر، دوچرخه و خودرو Route پیاده نیست.
-
-پیگیری مسیرهای دانلودشده: Route شوی با ترک و waypointهای نام‌دارِ تطبیق‌شده، شواهد مستقل و forecast معتبر در دیتابیس زنده منتشر شد. معیار فعلی کاربر دشواری، شیب تند یا دست‌به‌سنگ معمولی را به‌تنهایی دلیل حذف نمی‌داند؛ صخره‌نوردی/یخچال فنی و مسیر نامطمئن همچنان قابل انتشار نیستند.
-
-### انتشارهای ۲۳ اکتبر ۲۰۲۶
-
-- تنگهٔ رغز: [صفحهٔ نقطه](https://hawatch.ir/points/raghez-gorge) و
-  [مسیر پیاده تا سرچشمه](https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head)
-  فعال شد. مسیر فقط از پای‌کار پیاده تا سرچشمه است؛ دره‌نوردی فنی پایین‌دست
-  شامل این Route نیست.
-- بیشهٔ دو باغ ریگ‌جن: [صفحهٔ نقطه](https://hawatch.ir/points/bishe-do-bagh) و
-  [مسیر الله‌آباد تا بیشهٔ دو باغ](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh)
-  فعال شد. پیمایش دورافتاده و دشوار است؛ آب کافی، GPS و راهنمای آشنا لازم است
-  و چاه میانی آب آشامیدنی ندارد.
-- قلهٔ گنو و قلهٔ یخچال همدان در پیگیری هواکوه منتشر شدند؛
-  [گنو](https://hawatch.ir/points/geno-peak) و
-  [یخچال](https://hawatch.ir/points/yakhchal-peak).
-
-### تعیین تکلیف بستهٔ ۱۰ مقصدی، ۲۳ اکتبر ۲۰۲۶
-
-چهار مقصد تازه با commit `472ab78` اضافه و فعال شدند: گنو، تنگهٔ رغز، قلهٔ
-یخچال همدان و بیشهٔ دو باغ. سه مورد دیگر از فهرست آن بسته از قبل در کاتالوگ
-زنده بودند: [آسیاب‌خرابه](https://hawatch.ir/points/asiab-kharabeh-waterfall)
-(نقطهٔ مستقل)، [اخلمد](https://hawatch.ir/points/akhlamad-waterfall) با مسیر
-پارکینگ تا آبشار اول، و [گزو](https://hawatch.ir/points/gazo-waterfall) با مسیر
-پیادهٔ ۰٫۹۷ کیلومتری. از سه نامزد باقی‌مانده، [سه‌شاخ بزرگ](https://hawatch.ir/points/se-shakh-bozorg)
-قبلاً منتشر شد و [پلوار](https://hawatch.ir/points/pulvar-peak) اکنون با مسیر
-بیدستان تا قله اضافه شده است؛ فقط کوه‌شاه خراسان جنوبی مانده. در نتیجه از ۱۰
-مورد، ۹ مورد در سایت هستند و ۱ مورد باقی است.
-
-| مقصد | بررسی مسیر و تصمیم |
-| --- | --- |
-| شوی | Route زنده: کمپ سرتنگ → آبشار سنگ‌مار → آبشار دوقلو → آبشار شوی؛ [ترک پیادهٔ ۱۳۲۶۹۸۵۹۵](https://www.wikiloc.com/hiking-trails/abshr-shwy-z-smt-dzfwl-w-shhywn-132698595)، حدود ۳٫۱ کیلومتر یک‌طرفه، Easy، TrailRank 72. waypointهای میانی با عوارض نام‌دار تطبیق شدند؛ [توصیف مستقل مسیر کوتاه سرتنگ](https://dezhpol-news.blogfa.com/post/4330) نیز حدود ۴۵ دقیقه پیاده‌روی را گزارش می‌کند. صفحه هشدار عبور از آب/سنگ و دسترسی جاده‌ای ناهموار دارد. |
-| پیران | فایل [ترک کوتاه ۱۷۹۲۱۸۷۵۲](https://www.wikiloc.com/hiking-trails/waterfall-piran-179218752) حدود ۱٫۲۸ کیلومتر از پارکینگ تا آبشار است. [منبع دسترسی](https://www.irandeserts.com/article/%D8%A2%D8%A8%D8%B4%D8%A7%D8%B1-%D9%BE%DB%8C%D8%B1%D8%A7%D9%86%D8%8C-%D8%B3%D8%B1%D9%BE%D9%84-%D8%B0%D9%87%D8%A7%D8%A8/) مسیر را تا آبشار توصیف می‌کند، اما [گزارش دیگر](https://irantripadviser.ir/attraction.php?id=295) از تخریب پس از زلزله و مسدودشدن حدود ۵۰ متر پایانی با سنگ‌های بزرگ می‌گوید. دشواری به‌تنهایی مانع نیست؛ تا تأیید وضعیت فعلی همان بخش و عارضهٔ میانی مستند، Route منتشر نشود. |
-| گزو | Route زنده از امامزادهٔ سه‌تن‌برار تا آبشار، ۰٫۹۷ کیلومتر یک‌طرفه است؛ بخش جادهٔ خودرو از ترک مبنا حذف شده. مسیر سراشیبی تند است و هشدار پرتگاه/طناب ثابت و نامناسب‌بودن برای کم‌تجربه‌ها در صفحه آمده؛ سختی یا دست‌به‌سنگ معمول به‌تنهایی دلیل حذف نیست. |
-
-### انتشارهای ۲۰ اکتبر ۲۰۲۶
-
-- آبشار آب‌پری: [صفحهٔ زنده](https://hawatch.ir/points/ab-pari-waterfall)؛ نقطهٔ OSM کنار جادهٔ رویان–بلده، بدون Route پیاده.
-- دریاچهٔ پریشان: [صفحهٔ زنده](https://hawatch.ir/points/parishan-lake)؛ نقطهٔ نمایندهٔ پهنه، point-only.
-- دریاچهٔ طشک: [صفحهٔ زنده](https://hawatch.ir/points/tashk-lake)؛ با بختگان یکی نیست، point-only.
-- تالاب آلاگل: [صفحهٔ زنده](https://hawatch.ir/points/alagol-lake)؛ نقطهٔ نمایندهٔ خود تالاب، point-only.
-- اسکلیم: ترک محلی شامل پارکینگ، گذرهای رودخانه و waypoint چشم‌انداز/آبشار است، اما در مختصات ثبت‌شده فاصلهٔ سلول پیش‌بینی Open-Meteo حدود ۶٫۰ کیلومتر و از سقف ۵٫۲۵ کیلومتر بیشتر است؛ تا یافتن مختصات مستند جایگزین، منتشر نشود.
-| گنو | نتیجهٔ تاریخیِ ۲۰ اکتبر با انتشار ۲۳ اکتبر جایگزین شد: [قلهٔ گنو](https://hawatch.ir/points/geno-peak) و [مسیر جنوبی پای‌کار جادهٔ ایستگاه تا نصیری](https://hawatch.ir/routes/geno-south-nasiri-ascent) فعال‌اند؛ مسیر دشوار و دارای بخش دست‌به‌سنگ است. |
-
-GPXها فقط در `tracks/<point-slug>/` محلی بررسی می‌شوند؛ نه commit و نه سرور.
-
-### بازبینی انتشار کامل، ۱۸ اکتبر ۲۰۲۶
-
-- فایل‌های قشم/هرمزگان، طبیعت شمال، متین‌آباد و شوی با دیتابیس زنده تطبیق شدند:
-  ۱۳ WeatherPoint از قبل فعال و دارای forecast هستند. این fixtureها برای حفظ
-  دادهٔ منتشرشده در دیپلوی کامل نسخه‌دار می‌شوند، نه برای ساخت دوبارهٔ مقصدها.
-- در بازبینی ۱۸ اکتبر، گنو هنوز در دیتابیس زنده نبود. فایل آن به
-  [`drafts/catalog/geno_peak_v1.json`](drafts/catalog/geno_peak_v1.json) منتقل شد
-  تا ضمن حفظ در Git، جزو ورودی خودکار production نباشد. اجازهٔ قبلی کاربر برای
-  انتشار گنو بدون مسیر محفوظ است، ولی gate هواشناسی فعلی رد شد: ارتفاع catalog
-  و DEM هر دو ۲۳۲۶ مترند، اما سلول `land` برابر ۵٫۸۶۳ کیلومتر از مختصات دور است
-  و از سقف آن زمانِ ۵٫۲۵ کیلومتر عبور می‌کرد؛ آن بررسی read-only بود و در آن
-  import انجام نشد. در انتشار ۲۳ اکتبر، نقطه با waypoint قلهٔ نصیری در ترک
-  تطبیق داده شد (۲۷٫۴۲۳۲۷۶، ۵۶٫۱۵۳۲۳۳؛ ارتفاع ۲۳۴۴ متر). gate جدید اختلاف DEM
-  برابر ۷۷ متر و فاصلهٔ grid برابر ۴٫۴۰۳ کیلومتر را تأیید کرد؛ سپس Route جنوبی
-  و نقطه منتشر شدند. انتشار به سقف موقت ۶ کیلومتر متکی نبود.
-- رد مسیرهای پیران/گزو/گنو در یادداشت تاریخی بالا با معیار قدیمی «مناسب مبتدی»
-  نوشته شده است. طبق قاعدهٔ فعلی، سختی، شیب تند و دست‌به‌سنگِ معمول به‌تنهایی
-  دلیل رد نیستند؛ پیش از ادامه باید با شواهد مسیر بازبینی شوند. این به معنی
-  تأیید خودکار آن ترک‌ها یا ساخت Route جدید در این انتشار نیست.
-
-## خلاصهٔ تطبیق اولیه؛ پیش از افزودنی‌های بالا
-
-- ۳۱۰ صفحهٔ مقصد در sitemap هواگشت (به‌علاوهٔ صفحهٔ اصلی).
-- ۳۰۰ عنوان متمایز؛ ۱۰ ورودی اضافه، عنوان تکراری با slug جدا هستند.
-- در هواچ ۶۸ عنوان/مقصد متمایز، با تطبیق نام فارسی و نوع عارضه، مقصد متناظر دارند؛
-  این‌ها در مجموع ۷۳ URL از هواگشت را پوشش می‌دهند (به‌علت چند صفحهٔ تکراری).
-- ۲۳۲ عنوان متمایز هواگشت هنوز صفحهٔ متناظر در کاتالوگ زندهٔ هواچ ندارند.
-- تطبیق بر مبنای نام، aliasهای ثبت‌شده و سازگاری نوع عارضه انجام شده؛ هم‌مکانیِ
-  روستا و آبشار یا کوه و آبشار به‌تنهایی «موجود» حساب نشده است. موارد اختلاف
-  استان یا چند گزینهٔ هم‌نام باید پیش از onboarding بازبینی شوند.
-- صفحهٔ اصلی هواگشت مقصد «پارک جنگلی جوارم» را بین پربازدیدها آورده؛ در کاتالوگ
-  زندهٔ هواچ همتای مستقلی برای آن پیدا نشد.
-- ۲۰ مورد اولویت خیلی بالا در این سند انتخاب تحریریه‌ای بر اساس شناخته‌شدگی،
-  تمایز جغرافیایی و ارزش صفحهٔ هواشناسی است؛ این رتبه‌بندی آمار حجم جست‌وجو نیست.
-
-### جمع‌بندی استان‌ها
-
-| استان | صفحه‌های هواگشت | همتای موجود | بدون همتا |
-| --- | ---: | ---: | ---: |
-| آذربایجان شرقی | 16 | 2 | 14 |
-| آذربایجان غربی | 9 | 1 | 8 |
-| اردبیل | 11 | 2 | 9 |
-| اصفهان | 15 | 8 | 7 |
-| البرز | 11 | 4 | 7 |
-| ایلام | 8 | 0 | 8 |
-| بوشهر | 4 | 0 | 4 |
-| تهران | 38 | 9 | 29 |
-| چهارمحال وبختیاری | 13 | 2 | 11 |
-| خراسان جنوبی | 5 | 2 | 3 |
-| خراسان رضوی | 7 | 1 | 6 |
-| خراسان شمالی | 6 | 0 | 6 |
-| خوزستان | 9 | 1 | 8 |
-| زنجان | 3 | 0 | 3 |
-| سمنان | 8 | 2 | 6 |
-| سیستان و بلوچستان | 4 | 1 | 3 |
-| فارس | 12 | 5 | 7 |
-| قزوین | 5 | 1 | 4 |
-| قم | 3 | 1 | 2 |
-| کردستان | 4 | 1 | 3 |
-| کرمان | 8 | 1 | 7 |
-| کرمانشاه | 2 | 0 | 2 |
-| کهگیلویه وبویراحمد | 2 | 0 | 2 |
-| گلستان | 8 | 4 | 4 |
-| گیلان | 19 | 5 | 14 |
-| لرستان | 10 | 4 | 6 |
-| مازندران | 62 | 14 | 48 |
-| مرکزی | 2 | 1 | 1 |
-| هرمزگان | 1 | 1 | 0 |
-| همدان | 3 | 0 | 3 |
-| یزد | 2 | 0 | 2 |
-
-## ۲۰ مقصد پیشنهادی برای شروع
-
-| اولویت | مقصد | استان | slug هواگشت |
-| ---: | --- | --- | --- |
-| 1 | آبشار آسیاب خرابه | آذربایجان شرقی | asiab-kharabeh-waterfall |
-| 2 | دریاچه قوری گل | آذربایجان شرقی | quri-gol-lake |
-| 3 | جنگل فندوقلو | اردبیل | fandoghlou-jungle |
-| 4 | پارک جنگلی جوارم | مازندران | javarem-forestpark |
-| 5 | آبشار اخلمد | خراسان رضوی | akhlamad |
-| 6 | آبشار شوی | خوزستان | shevi-waterfall |
-| 7 | آبشار پیران | کرمانشاه | piran_waterfall |
-| 8 | تالاب انزلی | گیلان | anzali-lagoon |
-| 9 | پارک جنگلی سراوان | گیلان | saravan-forestpark |
-| 10 | دریاچه ولشت | مازندران | valasht-lake |
-| 11 | دره زمان | مازندران | zaman-valley |
-| 12 | اسکلیم رود | مازندران | askylym-waterfall |
-| 13 | آبشار گزو | مازندران | gazo_waterfall |
-| 14 | آبشار آب پری | مازندران | ab_pary-waterfall |
-| 15 | دریاچه پریشان | فارس | parishan-lake |
-| 16 | دریاچه طشک | فارس | tashk-lake |
-| 17 | کویر ریگ جن | سمنان | Rig-e-Jen-Desert |
-| 18 | کویر لوت | کرمان | lut-Desert |
-| 19 | دریاچه آلاگل | گلستان | alagol-lake |
-| 20 | تنگه رغز | فارس | tange-reghez |
-
-## ورودی‌های تکراری در sitemap
-
-این موارد را پیش از هر افزودنی deduplicate یا از نظر مکان بررسی کنیم:
-
-- آبشار پونه زار: `poneh_zar_waterfall` (اصفهان)، `poneh-zar-waterfall` (همدان)
-- آبشار خور: `khor-waterfall` (البرز)، `khur-waterfall` (البرز)
-- آبشار ایگل: `igol-waterfall` (تهران)، `igle-waterfall` (تهران)، `igel_watrfall` (تهران)
-- آبشار شکرآب: `shekarab-waterfall` (تهران)، `shekarab_waterfall` (تهران)
-- آبشار دره عشق: `darreh-eshq-waterfall` (چهارمحال وبختیاری)، `dare_eshgh_waterfall` (چهارمحال وبختیاری)
-- آبشار اخلمد: `akhlamad` (خراسان رضوی)، `akhlamad_waterfall` (خراسان رضوی)
-- آبشار شوی: `shevi-waterfall` (خوزستان)، `shevi_waterfall` (خوزستان)
-- آبشار مارگون: `margun-waterfall` (فارس)، `margon-waterfall` (فارس)، `margon_waterfall` (فارس)
-
-## فهرست کامل مقصدها
-
-هر slug عیناً از sitemap/فهرست عمومی استخراج شده است. «موجود» یعنی مقصدِ هم‌نوع
-و قابل‌تشخیص در کاتالوگ زندهٔ هواچ پیدا شده؛ لینک ستون چهارم به canonical موجود
-در هواچ می‌رود. خط تیره یعنی مقصد مستقل متناظر نداریم.
-
-### آذربایجان شرقی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آسیاب خرابه | `asiab-kharabeh-waterfall` | موجود | [آبشار آسیاب‌خرابه](https://hawatch.ir/points/asiab-kharabeh-waterfall) | خیلی بالا (1) |
-| آبشار آغویه | `aghuyeh-waterfall` | نداریم | — | — |
-| آبشار اسب فروشان | `asbforushan-waterfall` | نداریم | — | — |
-| آبشار اسکندر | `eskandar-waterfall` | نداریم | — | — |
-| آبشار بلوکان | `bolukan-waterfall` | نداریم | — | — |
-| آبشار ترلان | `tarlan-waterfall` | نداریم | — | — |
-| آبشار دره دار انداش | `darre-dar-andash-waterfall` | نداریم | — | — |
-| آبشار سرکند دیزج | `sarkand-dizaj-waterfall` | نداریم | — | — |
-| آبشار عیش آباد | `eyshabad-waterfall` | نداریم | — | — |
-| آبشار گل آخور | `gol_akhor_waterfall` | نداریم | — | — |
-| آبشار گل خور | `golkhor_waterfall` | نداریم | — | — |
-| آبشار ماهاران | `maharan-waterfall` | نداریم | — | — |
-| آبشار هرگلان | `hargolan-waterfall` | نداریم | — | — |
-| پارک جنگلی مکیدی | `makidi-forestpark` | موجود | [پارک جنگلی مکیدی](https://hawatch.ir/points/makidi-forest) | — |
-| جنگل ارسباران | `arasbaran-jungle` | موجود | [جنگل ارسباران](https://hawatch.ir/points/arasbaran-forest) | — |
-| دریاچه قوری گل | `quri-gol-lake` | موجود | [دریاچهٔ قوری‌گل](https://hawatch.ir/points/quri-gol-lake) | خیلی بالا (2) |
-
-### آذربایجان غربی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار بدلان | `badalan-waterfall` | نداریم | — | — |
-| آبشار خرپاپ | `kharpap-waterfall` | نداریم | — | — |
-| آبشار دره خورخوره | `darreh-khorkhoreh-waterfall` | نداریم | — | — |
-| آبشار رزگه | `razgeh-waterfall` | نداریم | — | — |
-| دریاچه ارومیه | `urmia-lake` | موجود | [دریاچهٔ ارومیه](https://hawatch.ir/points/urmia-lake) | — |
-| سد ارس | `aras-dam` | نداریم | — | — |
-| سد حسنلو | `hasanlou-dam` | نداریم | — | — |
-| سد زرینه رود | `zarineh-roud-dam` | نداریم | — | — |
-| سد مهاباد | `mahabad-dam` | نداریم | — | — |
-
-### اردبیل
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار توتلو | `tutalu-wterfall` | نداریم | — | — |
-| آبشار دره سجاد | `darreh-sajjad-waterfall` | نداریم | — | — |
-| آبشار دیز | `diez_waterfall` | نداریم | — | — |
-| آبشار سجن | `sejen-waterfall` | نداریم | — | — |
-| آبشار سردابه | `sardabeh_waterfall` | نداریم | — | — |
-| آبشار گورگور | `gor_gor_waterfall` | موجود | [آبشار گورگور آلوارس](https://hawatch.ir/points/gorgor-waterfall) | — |
-| آبشار نره گل | `nareh_gel_waterfall` | نداریم | — | — |
-| آبشار نوده | `nodeh-waterfall` | نداریم | — | — |
-| پارک جنگلی مشگین شهر | `meshginshahr-forestpark` | نداریم | — | — |
-| جنگل فندوقلو | `fandoghlou-jungle` | نداریم | — | خیلی بالا (3) |
-| دریاچه نئور | `neor-lake` | موجود | [دریاچهٔ نئور](https://hawatch.ir/points/neor-lake) | — |
-
-### اصفهان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آب ملخ | `ab-malakh-waterfall` | موجود | [آبشار آب‌ملخ](https://hawatch.ir/points/ab-malakh-waterfall) | — |
-| آبشار پونه زار | `poneh_zar_waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار خفر | `khafar_waterfall` | نداریم | — | — |
-| آبشار سمیرم | `semirom_waterfall` | موجود | [آبشار سمیرم](https://hawatch.ir/points/semirom-waterfall) | — |
-| آبشار شاه لولاک | `shahlolak-waterfall` | نداریم | — | — |
-| آبشار طامه | `tameh_waterfall` | نداریم | — | — |
-| آبشار نیاسر | `niasar_waterfall` | نداریم | — | — |
-| سد زاینده رود | `zayandeh-roud-dam` | موجود | [دریاچهٔ سد زاینده‌رود](https://hawatch.ir/points/zayandehrud-lake) | — |
-| کلوت شهداد | `shahdad-kalout` | موجود | [کلوت‌های شهداد](https://hawatch.ir/points/shahdad-kaluts) | — |
-| کویر ابوزیدآباد | `abozeydabad-desert` | موجود | [کویر ابوزیدآباد](https://hawatch.ir/points/abuzeydabad) | — |
-| کویر خور و بیابانک | `Khor-and-Biabanak-Desert` | نداریم | — | — |
-| کویر متین آباد | `Matinabad-Desert` | موجود؛ افزوده شد | [کویر متین‌آباد](https://hawatch.ir/points/matinabad-desert) | — |
-| کویر مرنجاب | `maranjab-desert` | موجود | [کویر مرنجاب](https://hawatch.ir/points/maranjab) | — |
-| کویر مصر | `mesr-desert` | موجود | [کویر مصر](https://hawatch.ir/points/mesr-desert) | — |
-| کویر ورزنه | `varzaneh-desert` | موجود | [کویر ورزنه](https://hawatch.ir/points/varzaneh-desert) | — |
-
-### البرز
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آسکان | `askan-waterfall` | نداریم | — | — |
-| آبشار ارگنه | `arangeh-waterwall` | نداریم | — | — |
-| آبشار پیچ آدران | `pich-aderan-waterfall` | نداریم | — | — |
-| آبشار چاران | `charan-waterfall` | نداریم | — | — |
-| آبشار خور | `khor-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار خور](https://hawatch.ir/points/khour-waterfall) | — |
-| آبشار خور | `khur-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار خور](https://hawatch.ir/points/khour-waterfall) | — |
-| آبشار کرکبود | `karkabod_waterfall` | نداریم | — | — |
-| آبشار نشترود | `nashtrod_waterfall` | نداریم | — | — |
-| سد امیرکبیر | `amirkabir-dam` | موجود | [سد امیرکبیر](https://hawatch.ir/points/amir-kabir-dam) | — |
-| سد طالقان | `taleghan-dam` | موجود | [سد طالقان](https://hawatch.ir/points/taleghan-dam) | — |
-| کویر اشتهارد | `eshtehard-desert` | افزوده شد؛ point-only | [کویر اشتهارد](https://hawatch.ir/points/eshtehard-desert) | — |
-
-### ایلام
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار اما | `ama-waterfall` | نداریم | — | — |
-| آبشار بشارت | `basharat-waterfall` | نداریم | — | — |
-| آبشار بلین | `belin-waterfall` | نداریم | — | — |
-| آبشار تختان | `takhtan-waterfall` | نداریم | — | — |
-| آبشار چغا کبود | `chagha-kabud-waterfall` | نداریم | — | — |
-| آبشار چم او | `chemo_waterfall` | نداریم | — | — |
-| آبشارماهوته | `mahote_waterfall` | نداریم | — | — |
-| پارک جنگلی چغاسبز | `chaghasabz-forestpark` | نداریم | — | — |
-
-### بوشهر
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار تل سرکوه | `tale-sarkuh-waterwall` | نداریم | — | — |
-| آبشار زیر راه | `zir-rah-waterfall` | نداریم | — | — |
-| آبشار فاریاب پشتکوه | `faryabe-posht-kuh-waterfall` | نداریم | — | — |
-| جنگل گلوبردکان ریز | `galobardekan-jungle` | نداریم | — | — |
-
-### تهران
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آینه ورزان | `ayeneh-varzan-waterfall` | نداریم | — | — |
-| آبشار امامزاده داود | `emamzade_davod_waterfall` | نداریم | — | — |
-| آبشار امامزاده داوود | `emamzadeh-davud-waterfall` | نداریم | — | — |
-| آبشار ایگل | `igol-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار ایگل](https://hawatch.ir/points/igel-waterfall) | — |
-| آبشار ایگل | `igle-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار ایگل](https://hawatch.ir/points/igel-waterfall) | — |
-| آبشار ایگل | `igel_watrfall` | موجود؛ عنوان تکراری در sitemap | [آبشار ایگل](https://hawatch.ir/points/igel-waterfall) | — |
-| آبشار برگ جهان | `barg-jahan` | نداریم | — | — |
-| آبشار بند عبدالله | `bande-abdollah` | نداریم | — | — |
-| آبشار تالون | `taloun-waterfall` | نداریم | — | — |
-| آبشار چال مگس | `chal-magas-waterfall` | موجود | [آبشار چال‌مگس](https://hawatch.ir/points/chal-mags-darabad) | — |
-| آبشار دوقلو | `dogholo_waterfall` | نداریم | — | — |
-| آبشار رندان | `rendan-waterfall` | موجود | [آبشار رندان](https://hawatch.ir/points/rendan-waterfall) | — |
-| آبشار سنگان | `sangan-waterfall` | موجود | [آبشار سنگان](https://hawatch.ir/points/sangan-waterfall) | — |
-| آبشار سوتک | `sotak_waterfall` | نداریم | — | — |
-| آبشار سوستون | `Sevestun_Waterfall` | نداریم | — | — |
-| آبشار شکرآب | `shekarab-waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار شکرآب | `shekarab_waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار کلوگان | `kolougan-waterfall` | نداریم | — | — |
-| آبشار کمرد | `kamard-waterfall` | موجود | [آبشار کمرد](https://hawatch.ir/points/kamard-waterfall) | — |
-| آبشار لالون | `lalun_waterfall` | نداریم | — | — |
-| آبشار یخی | `yakhi_waterfall` | نداریم | — | — |
-| پارک جنگلی افرا | `afra-forestpark` | نداریم | — | — |
-| پارک جنگلی پردیسان | `pardisan-forestpark` | نداریم | — | — |
-| پارک جنگلی تلو | `tello-forestpark` | نداریم | — | — |
-| پارک جنگلی توسکا | `toska-forestpark` | نداریم | — | — |
-| پارک جنگلی چیتگر | `cjitgar-forestpark` | نداریم | — | — |
-| پارک جنگلی خجیر | `khojir-forestpark` | نداریم | — | — |
-| پارک جنگلی خرگوش دره | `khargoshdare-forestpark` | نداریم | — | — |
-| پارک جنگلی سرخه حصار | `sorkhehesar-forestpark` | نداریم | — | — |
-| پارک جنگلی سوهانک | `sohanak-forestpark` | نداریم | — | — |
-| پارک جنگلی کوهسار | `koohsar-forestpark` | نداریم | — | — |
-| پارک جنگلی لتمال | `latmal-forestprk` | نداریم | — | — |
-| پارک جنگلی لویزان | `lavizan-forestpark` | نداریم | — | — |
-| جنگل کارا | `kara-jungle` | نداریم | — | — |
-| دره حصارک | `hesarak-valley` | نداریم | — | — |
-| دریاچه تار | `tar-lake` | موجود | [دریاچهٔ تار](https://hawatch.ir/points/tar-lake) | — |
-| سد لتیان | `latian-dam` | نداریم | — | — |
-| گلابدره | `golabdareh` | موجود | [پارک گلابدره](https://hawatch.ir/points/golabdarreh-park) | — |
-
-### چهارمحال وبختیاری
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آتشگاه | `atashgah-waterfall` | موجود | [آبشار آتشگاه](https://hawatch.ir/points/atashgah-waterfall) | — |
-| آبشار برنجگان | `berenjgan-waterfall` | نداریم | — | — |
-| آبشار بهشت آباد | `behesht-abad` | نداریم | — | — |
-| آبشار پیر غار | `pir-ghar-waterfall` | نداریم | — | — |
-| آبشار تونل کوهرنگ | `tunel-kuhrang` | نداریم | — | — |
-| آبشار دره سبزرود | `darreh-sabz-rud-waterfall` | نداریم | — | — |
-| آبشار دره عشق | `darreh-eshq-waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار دره عشق | `dare_eshgh_waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار زرلیمه | `zarlimeh-waterfall` | نداریم | — | — |
-| آبشار کردیت | `kerdit-waterfall` | نداریم | — | — |
-| آبشار گنده گاو | `gondeh-gav-waterfall` | نداریم | — | — |
-| پارک جنگلی کوهستان آشتیان | `kouhestan-ashtiyan` | نداریم | — | — |
-| تالاب چغاخور | `choghakhor-lagoon` | موجود | [تالاب چغاخور](https://hawatch.ir/points/choghakhor-wetland) | — |
-
-### خراسان جنوبی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار چارده | `chardeh-waterfall` | نداریم | — | — |
-| کویر حلوان | `desert` | موجود | [کویر حلوان](https://hawatch.ir/points/halvan-desert) | — |
-| کویر زردگاه | `Zardgah-Desert` | نداریم | — | — |
-| کویر طبس | `tabas-desert` | نداریم | — | — |
-| کویر کال جنی | `kal-jeni-desert` | موجود | [کال جنی](https://hawatch.ir/points/kal-jeni) | — |
-
-### خراسان رضوی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آبقد | `abqad-waterfall` | نداریم | — | — |
-| آبشار آبگرم | `abgarm-waterfall` | نداریم | — | — |
-| آبشار اخلمد | `akhlamad` | موجود؛ canonical مشترک با ردیف بعد | [آبشار اول اخلمد](https://hawatch.ir/points/akhlamad-waterfall) | خیلی بالا (5) |
-| آبشار اخلمد | `akhlamad_waterfall` | موجود؛ تکراری و ادغام‌شده با canonical ردیف قبل | [آبشار اول اخلمد](https://hawatch.ir/points/akhlamad-waterfall) | خیلی بالا (5) |
-| آبشار ارتکند | `ortkand` | نداریم | — | — |
-| آبشار ارزنه | `arzaneh-waterfall` | نداریم | — | — |
-| دریاچه بزنگان | `bazangan-lake` | موجود | [دریاچهٔ بزنگان](https://hawatch.ir/points/bazangan-lake) | — |
-
-### خراسان شمالی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار اسطرخی | `estarkhi` | نداریم | — | — |
-| آبشار اسفجیر | `esfajir` | نداریم | — | — |
-| آبشار ایزی | `izi-waterfall` | نداریم | — | — |
-| آبشار توی | `teni-waterfall` | نداریم | — | — |
-| آبشار حمید | `hamid-waterfall` | نداریم | — | — |
-| پارک جنگلی باباامان | `babaaman-forestpark` | نداریم | — | — |
-
-### خوزستان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آرپناه | `arpanah-waterfall` | نداریم | — | — |
-| آبشار باباروزبهان | `baba-ruzbahan-waterfall` | نداریم | — | — |
-| آبشار تنگ کرد | `tange-kord-waterfall` | نداریم | — | — |
-| آبشار شوشتر | `shushtar-waterfall` | نداریم | — | — |
-| آبشار شوی | `shevi-waterfall` | نداریم؛ عنوان تکراری در sitemap | — | خیلی بالا (6) |
-| آبشار شوی | `shevi_waterfall` | نداریم؛ عنوان تکراری در sitemap | — | خیلی بالا (6) |
-| دریاچه تمی | `temi-lake` | نداریم | — | — |
-| سد دز | `dez-dam` | موجود | [دریاچهٔ شهیون (سد دز)](https://hawatch.ir/points/shahyoun-lake) | — |
-| سد کرخه | `karkheh-dam` | نداریم | — | — |
-
-### زنجان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار ماغلاوا | `maghlava-waterfall` | نداریم | — | — |
-| آبشار هشترخان | `hashtarkhan-waterfall` | نداریم | — | — |
-| سد تهم | `taham-dam` | نداریم | — | — |
-
-### سمنان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آلوچال | `alu-chal-waterfall` | موجود | [آبشار آلوچال](https://hawatch.ir/points/aluchal-waterfall) | — |
-| آبشار روزیه | `ruzyeh-waterfall` | نداریم | — | — |
-| آبشار مجن | `mojen` | نداریم | — | — |
-| تنگه زندان | `tangeh-zendan` | نداریم | — | — |
-| جنگل ابر | `abr-jungle` | موجود | [جنگل ابر](https://hawatch.ir/points/jangal-abr) | — |
-| جنگل فینسک | `finesk-jungle` | نداریم | — | — |
-| کویر خار توران | `Khar-Turan-Desert` | با دروازهٔ گردشگری قلعه‌بالا؛ point-only | [روستای قلعه‌بالا](https://hawatch.ir/points/qaleh-bala) | — |
-| کویر ریگ جن | `Rig-e-Jen-Desert` | پوشش موجود؛ نقطه و مسیر مرتبط | [بیشهٔ دو باغ](https://hawatch.ir/points/bishe-do-bagh) · [مسیر الله‌آباد تا بیشهٔ دو باغ](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh) | خیلی بالا (17) |
-
-### سیستان و بلوچستان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آبند ساربوک | `abande-sarbuk-waterfall` | نداریم | — | — |
-| آبشار اسفند | `osepen-waterfall` | نداریم | — | — |
-| آبشار سراب بزمان | `sarab-bezman-waterfall` | نداریم | — | — |
-| دریاچه هامون | `hamoun-lake` | موجود | [تالاب هامون](https://hawatch.ir/points/hamun-sistan) | — |
-
-### فارس
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار قلات | `qalat-waterfall` | نداریم | — | — |
-| آبشار مارگون | `margun-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار مارگون](https://hawatch.ir/points/margoon-waterfall) | — |
-| آبشار مارگون | `margon-waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار مارگون](https://hawatch.ir/points/margoon-waterfall) | — |
-| آبشار مارگون | `margon_waterfall` | موجود؛ عنوان تکراری در sitemap | [آبشار مارگون](https://hawatch.ir/points/margoon-waterfall) | — |
-| آبشار هرایجان | `harayjan-waterfall` | نداریم | — | — |
-| آبشار هفت آسیاب | `haft-asiyab-waterfall` | نداریم | — | — |
-| تنگه رغز | `tange-reghez` | نداریم | — | خیلی بالا (20) |
-| دریاچه بختگان | `bakhtegan-lake` | موجود | [دریاچهٔ بختگان](https://hawatch.ir/points/bakhtegan-lake) | — |
-| دریاچه پریشان | `parishan-lake` | موجود | [دریاچهٔ پریشان](https://hawatch.ir/points/parishan-lake) | خیلی بالا (15) |
-| دریاچه طشک | `tashk-lake` | موجود | [دریاچهٔ طشک](https://hawatch.ir/points/tashk-lake) | خیلی بالا (16) |
-| دریاچه کافتر | `kaftar-lake` | افزوده شد؛ point-only | [دریاچهٔ کافتر](https://hawatch.ir/points/kaftar-lake) | — |
-| دریاچه مهارلو | `maharlu-lake` | موجود | [دریاچهٔ مهارلو](https://hawatch.ir/points/maharloo-lake) | — |
-
-### قزوین
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار دومانچال | `dumanchal-waterfall` | نداریم | — | — |
-| آبشار کهنه باغستان | `kohneh-baghestan-waterfall` | نداریم | — | — |
-| آبشار گرمارود | `garmarud-waterfall` | نداریم | — | — |
-| پارک جنگلی باراجین | `barajin-forestpark` | نداریم | — | — |
-| دریاچه اوان | `ovan-lake` | موجود | [دریاچهٔ اوان](https://hawatch.ir/points/ovan-lake) | — |
-
-### قم
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار فرود | `fordu-waterfall` | نداریم | — | — |
-| دریاچه حوض سلطان | `hoz-soltan` | موجود | [دریاچهٔ حوض سلطان](https://hawatch.ir/points/hoz-soltan) | — |
-| دریاچه نمک | `namak-lake` | نداریم | — | — |
-
-### کردستان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار بل | `bel-waterfall` | نداریم | — | — |
-| آبشار سنگین آباد | `sangin-abad-waterfall` | نداریم | — | — |
-| آبشار گویله | `goyleh-waterfall` | نداریم | — | — |
-| دریاچه زریبار | `zeribar-lake` | موجود | [دریاچهٔ زریوار](https://hawatch.ir/points/zarivar-lake) | — |
-
-### کرمان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آبسر | `absor-waterfall` | نداریم | — | — |
-| آبشار آستانه | `astaneh-waterfall` | نداریم | — | — |
-| آبشار اردیکان | `ordikan-waterfall` | نداریم | — | — |
-| آبشار بنگان | `bangan-waterfall` | نداریم | — | — |
-| آبشار تلخه چار | `talkheh-char-waterfall` | نداریم | — | — |
-| آبشار راین | `rain_waterfall` | موجود | [آبشار راین](https://hawatch.ir/points/rayen-waterfall) | — |
-| آبشار وروار | `vrvar_waterfall` | نداریم | — | — |
-| کویر لوت | `lut-Desert` | نداریم | — | خیلی بالا (18) |
-
-### کرمانشاه
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار پاطاق | `pataq-waterfall` | نداریم | — | — |
-| آبشار پیران | `piran_waterfall` | نداریم | — | خیلی بالا (7) |
-
-### کهگیلویه وبویراحمد
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار کمر دوغ | `kamar_dogh` | نداریم | — | — |
-| آبشار کوه گل | `kouh_gel_wateafall` | نداریم | — | — |
-
-### گلستان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار شیرآباد | `shirabad_waterfall` | موجود؛ چند گزینهٔ هم‌نام، نیازمند بازبینی | [هفت آبشار شیرآباد](https://hawatch.ir/points/shirabad-seven-waterfalls) | — |
-| آبشار لولوم | `lolom_waterfall` | نداریم | — | — |
-| آبشار لوه | `lowe_waterfall` | موجود | [آبشار لوه](https://hawatch.ir/points/loveh-waterfall) | — |
-| تالاب آلماگل | `almagol-lagoon` | نداریم | — | — |
-| جنگل افراتخت | `afratakht-jungle` | نداریم | — | — |
-| جنگل اولنگ | `olang-jungle` | موجود | [جنگل اولنگ](https://hawatch.ir/points/olang-forest) | — |
-| جنگل ناهارخوران | `nahar-khoran-jungle` | موجود | [پارک جنگلی ناهارخوران](https://hawatch.ir/points/naharkhoran-forest) | — |
-| دریاچه آلاگل | `alagol-lake` | موجود | [تالاب آلاگل](https://hawatch.ir/points/alagol-lake) | خیلی بالا (19) |
-
-### گیلان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار زمرد | `zomorod-waterfall` | نداریم | — | — |
-| آبشار کبودوال | `kabodval_watrfall` | موجود | [آبشار کبودوال](https://hawatch.ir/points/kaboudval-waterfall) | — |
-| آبشار لاتون | `laton_waterfall` | موجود | [آبشار لاتون](https://hawatch.ir/points/laton-waterfall) | — |
-| آبشار لونک | `lonak_waterfall` | نداریم | — | — |
-| آبشار ویسادار | `visadar-waterfall` | موجود | [آبشار ویسادار](https://hawatch.ir/points/visadar-waterfall) | — |
-| پارک جنگلی بلوردکان | `bolordakan-forestpark` | نداریم | — | — |
-| پارک جنگلی بی بی یانلو | `bibiyanlou-forestpark` | نداریم | — | — |
-| پارک جنگلی درنیکا | `dornika-forestpark` | نداریم | — | — |
-| پارک جنگلی سراوان | `saravan-forestpark` | موجود؛ افزوده شد | [پارک جنگلی سراوان](https://hawatch.ir/points/saravan-forest) | — |
-| تالاب استیل | `steel-lagoon` | افزوده شد؛ point-only | [تالاب استیل](https://hawatch.ir/points/estil-lagoon) | — |
-| تالاب انزلی | `anzali-lagoon` | موجود؛ افزوده شد | [تالاب انزلی](https://hawatch.ir/points/anzali-lagoon) | — |
-| جنگل جواهردشت | `javaherdasht-jungle` | نداریم | — | — |
-| جنگل خلیان | `khalian-jungle` | نداریم | — | — |
-| جنگل دیلمان | `deylaman-jungle` | نداریم | — | — |
-| جنگل سیاهکل | `siahkal-jungle` | نداریم | — | — |
-| جنگل شفت | `shaft-jungle` | نداریم | — | — |
-| جنگل گیسوم | `gisoum-jungle` | موجود | [جنگل گیسوم](https://hawatch.ir/points/gisoom-forest) | — |
-| جنگل مزدچال | `mazdchal-jungle` | نداریم | — | — |
-| سد سفیدرود | `sefid-roud-dam` | موجود | [دریاچهٔ سد سفیدرود](https://hawatch.ir/points/sefidrud-reservoir) | — |
-
-### لرستان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آب سفید | `َab_sefid_waterfall` | موجود | [آبشار آب‌سفید](https://hawatch.ir/points/ab-sefid-waterfall) | — |
-| آبشار افرینه | `afrine_waterfall` | نداریم | — | — |
-| آبشار بیشه | `bishe_waterfall` | موجود | [آبشار بیشه](https://hawatch.ir/points/bisheh-waterfall) | — |
-| آبشار چکان | `chakan_waterfall` | نداریم | — | — |
-| آبشار نوژیان | `nozhiyan-waterfall` | موجود | [آبشار نوژیان](https://hawatch.ir/points/nozhian-waterfall) | — |
-| آبشار وارک | `warak_waterfall` | نداریم | — | — |
-| پارک جنگلی شورآب | `shorab-forestpark` | نداریم | — | — |
-| پارک جنگلی مخمل کوه | `makhmalkouh-forestpark` | نداریم | — | — |
-| تالاب بیشه دالان | `bisheh-dalan-lagoon` | نداریم | — | — |
-| دریاچه گهر | `gahar-lake` | موجود | [دریاچهٔ گهر](https://hawatch.ir/points/gahar) | — |
-
-### مازندران
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار آب پری | `ab_pary-waterfall` | موجود | [آبشار آب‌پری](https://hawatch.ir/points/ab-pari-waterfall) | خیلی بالا (14) |
-| آبشار آّب مراد | `ab_morad_waterfall` | نداریم | — | — |
-| آبشار آزارک | `azarak-waterfall` | نداریم | — | — |
-| آبشار آکد | `aked_waterfall` | نداریم | — | — |
-| آبشار ترا | `tara_waterfall` | نداریم | — | — |
-| آبشار دیناسرا | `dinasara_waterfall` | نداریم | — | — |
-| آبشار سنگ درکا | `sangdarka-waterfall` | نداریم | — | — |
-| آبشار سنگ نو | `sang_no_waterfall` | نداریم | — | — |
-| آبشار سیاسرت | `siasart_waterfall` | نداریم | — | — |
-| آبشار شاهاندشت | `shahandasht_waterfall` | موجود | [آبشار شاهاندشت](https://hawatch.ir/points/shahandasht-waterfall) | — |
-| آبشار گزو | `gazo_waterfall` | موجود | [آبشار گزو](https://hawatch.ir/points/gazo-waterfall) | خیلی بالا (13) |
-| آبشار ماخر | `makher_waterfall` | نداریم | — | — |
-| آبشار میج | `mij_waterfall` | نداریم | — | — |
-| آبشار هریجان | `herijan_waterfall` | موجود | [آبشار هریجان](https://hawatch.ir/points/harijan-waterfall) | — |
-| آبشار ورسک | `varsak_waterfall` | موجود | [آبشار ورسک](https://hawatch.ir/points/veresk-waterfall) | — |
-| اسکلیم رود | `askylym-waterfall` | نداریم | — | خیلی بالا (12) |
-| پارک جنگلی اندارگلی | `36.341633, 52.896077` | نداریم | — | — |
-| پارک جنگلی بز چفت | `bozcheft-forestpark` | نداریم | — | — |
-| پارک جنگلی جوارم | `javarem-forestpark` | موجود؛ افزوده شد | [پارک جنگلی جوارم](https://hawatch.ir/points/javarem-forest) | — |
-| پارک جنگلی خرماچال | `khormachal-forestpark` | نداریم | — | — |
-| پارک جنگلی فین | `fian-forestpark` | نداریم | — | — |
-| پارک جنگلی کشپل | `kashpel-forestpark` | نداریم | — | — |
-| پارک جنگلی مندی | `mandi-forestpark` | نداریم | — | — |
-| پارک جنگلی میرزا کوچک خان | `mirza-kouchak-khan-forestpark` | نداریم | — | — |
-| پارک جنگلی نور | `nur-forestpark` | نداریم | — | — |
-| پارک جنگلی هلومسر | `halumsar-forestpark` | نداریم | — | — |
-| پارک جنگلی واز | `vaz-forestpark` | نداریم | — | — |
-| جنگل اروست | `orost-jungle` | نداریم | — | — |
-| جنگل ازارسی | `azarsi-jungle` | نداریم | — | — |
-| جنگل افراچال | `afrachal-jungle` | نداریم | — | — |
-| جنگل الیمستان | `alimestan-jungle` | موجود | [جنگل الیمستان](https://hawatch.ir/points/alimestan) | — |
-| جنگل انجیلی | `anjeeli-jungle` | نداریم | — | — |
-| جنگل ایزدشهر | `izadshahr-jungle` | نداریم | — | — |
-| جنگل بلیران | `baliran-jungle` | موجود | [جنگل بلیران](https://hawatch.ir/points/beliran-forest) | — |
-| جنگل بولا | `bula-jungle` | نداریم | — | — |
-| جنگل بونده | `boondeh-jungle` | نداریم | — | — |
-| جنگل پلنگ دره | `palang-dareh` | نداریم | — | — |
-| جنگل خلارت | `khalart-jungle` | نداریم | — | — |
-| جنگل دالخانی | `dalkhani-jungle` | موجود | [جنگل دالخانی](https://hawatch.ir/points/dalkhani-forest) | — |
-| جنگل راش سنگده | `rash-jungle` | موجود | [جنگل راش سنگده](https://hawatch.ir/points/sangdeh-beech-forest) | — |
-| جنگل سنگ درکا | `sangdarka-jungle` | نداریم | — | — |
-| جنگل سوته | `soote-jungle` | نداریم | — | — |
-| جنگل سینوا | `sinava-jungle` | نداریم | — | — |
-| جنگل شیخ رجه | `sheykhraje-jungle` | نداریم | — | — |
-| جنگل عالم کلا | `alamkala-jungle` | نداریم | — | — |
-| جنگل فیلبند | `filband-jungle` | نداریم | — | — |
-| جنگل کرچنگ | `karchang-jungle` | نداریم | — | — |
-| جنگل کلاراستاق | `kelarstagh-jungle` | نداریم | — | — |
-| جنگل گلبند | `golband-jungle` | نداریم | — | — |
-| جنگل لفور | `lafour-jungle` | موجود | [جنگل لفور](https://hawatch.ir/points/lafour-forest) | — |
-| جنگل نسوم | `nasom-jungle` | نداریم | — | — |
-| جنگل ویسر | `veysar-jungle` | نداریم | — | — |
-| دره زمان | `zaman-valley` | موجود | [درهٔ زمان پلور](https://hawatch.ir/points/zaman-valley) | خیلی بالا (11) |
-| دریاچه ارواح | `arvah-lake` | موجود | [دریاچهٔ ارواح](https://hawatch.ir/points/ghost-lake) | — |
-| دریاچه الندان | `alendan-lake` | موجود | [دریاچهٔ الندان](https://hawatch.ir/points/alendan-lake) | — |
-| دریاچه لفور | `lafour-lake` | موجود | [سد لفور](https://hawatch.ir/points/lafour-dam) | — |
-| دریاچه ولشت | `valasht-lake` | موجود؛ افزوده شد | [دریاچهٔ ولشت](https://hawatch.ir/points/valasht-lake) | — |
-| دشت آزو | `azo-field` | نداریم | — | — |
-| دشت لار | `lar-field` | موجود | [دشت لار](https://hawatch.ir/points/lar-plain) | — |
-| سد لار | `lar-dam` | موجود | [سد لار](https://hawatch.ir/points/lar-dam) | — |
-| مرداب دیوک | `dorouk` | نداریم | — | — |
-| هفت آبشار (تیرکن) | `haft-abshar` | موجود | [هفت آبشار تیرکن](https://hawatch.ir/points/haft-abshar-tirken) | — |
-
-### مرکزی
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار قطره باران | `ghatreh_baran-waterfall` | نداریم | — | — |
-| دریاچه میقان | `meyghan-lake` | موجود | [تالاب میقان](https://hawatch.ir/points/miqan-wetland) | — |
-
-### هرمزگان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| جنگل حرا | `harra-jungle` | موجود | [جنگل حرا قشم](https://hawatch.ir/points/hara-mangrove) | — |
-
-### همدان
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار پونه زار | `poneh-zar-waterfall` | نداریم؛ عنوان تکراری در sitemap | — | — |
-| آبشار گنجنامه | `Ganjnameh_Waterfall` | نداریم | — | — |
-| تالاب آقگل | `aqgol-lagoon` | نداریم | — | — |
-
-### یزد
-
-| مقصد در هواگشت | slug هواگشت | وضعیت در هواچ | مقصد هواچ | اولویت |
-| --- | --- | --- | --- | --- |
-| آبشار درگاهان | `dargahan_waterfall` | نداریم | — | — |
-| کویر کاراکال یزد | `Karakal-Desert` | موجود؛ اصلاح تطبیق | [کویر کاراکال بافق](https://hawatch.ir/points/karakal-desert) | — |
+# صف مقصدهای هواگشت در هواچ
+
+نمای تولیدشده از [صف یکپارچه](catalog-queue.md)؛ مبنای کاتالوگ زنده `2026-11-03T14:52:41.059150+00:00`. برای ویرایش، [ledger](catalog-queue.json) را تغییر دهید و `python3 scripts/catalog_queue.py --render` اجرا کنید.
+
+فهرست زندهٔ منبع: [هواگشت](https://havagasht.com/)؛ 310 شناسهٔ منبع، 0 ورودی خارج از دامنهٔ ایران و 299 ردیف یکتای داخلی پس از ادغام تکراری‌ها. تعداد URLهای sitemap با تعداد مقصدها یکی نیست. اختلاف استان یا املای منبع در یادداشت ردیف حفظ شده است.
+
+[تاریخچه و شواهد پیش از مرتب‌سازی](archive/havagasht-backlog-before-queue-2026-11-03.md)
+
+| وضعیت | تعداد |
+| --- | ---: |
+| صف افزودن | 169 |
+| درحال‌کار | 0 |
+| نیازمند تعیین هویت/تطبیق | 17 |
+| fixture موجود؛ انتشار تأیید نشده | 0 |
+| نقطهٔ موجود؛ بررسی ارتقای مقصد | 3 |
+| صفحهٔ مستقل موجود | 106 |
+| پوشش مرتبط/نام دیگر؛ افزودن تکراری لازم نیست | 4 |
+
+## صف افزودن (169)
+
+| ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | وضعیت/اقدام بعدی |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | `HG-darreh-eshq-waterfall` | [آبشار دره عشق](https://havagasht.com/darreh-eshq-waterfall) | چهارمحال وبختیاری | P1 | مقصد شناخته‌شدهٔ طبیعت‌گردی چهارمحال؛ تکمیل پوشش آبشارهای زاگرس. پیش از انتشار، gate هویت، مسیر و weather اجرا شود. ردیف/URL تکراری منبع در همین شناسه ادغام شده است |
+| 2 | `HG-finesk-jungle` | [جنگل فینسک](https://havagasht.com/finesk-jungle) | سمنان | P1 | در بررسی ۲۰۲۶-۱۱-۰۳ جادهٔ آسفالته تا روستای فینسک تأیید شد، نه تا مختصات مستقل خود جنگل. مختصات روستا نباید با عنوان جنگل منتشر شود؛ برای انتشار جنگل، موقعیت واقعی و دسترسی نهایی/Route بررسی‌شده لازم است. گزارش محلی: https://semnanturist.blogfa.com/post/25 ؛ شرح پیمایش از روستا به پهنهٔ جنگلی: https://es.wikiloc.com/rutas-senderismo/qlh-fynskh-271182704 |
+| 3 | `HG-niasar-waterfall` | [آبشار نیاسر](https://havagasht.com/niasar_waterfall) | اصفهان | P1 | در بررسی ۲۰۲۶-۱۱-۰۳، دسترسی نهایی به خود آبشار از چهارطاقی با پیاده‌روی و پله تأیید شد؛ طبق قرارداد فعلی بدون Route و GPX بررسی‌شده منتشر نشود. منبع: https://letsgotrip.ir/niaser-waterfall/ |
+| 4 | `HG-zarlimeh-waterfall` | [آبشار زرلیمه](https://havagasht.com/zarlimeh-waterfall) | چهارمحال وبختیاری | P1 | تکمیل مقصد مستقلِ شناخته‌شدهٔ آبشار زرلیمه در زاگرس. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 5 | `HG-karkabod-waterfall` | [آبشار کرکبود](https://havagasht.com/karkabod_waterfall) | البرز | P1 | در بررسی ۲۰۲۶-۱۱-۰۳ دسترسی نهایی از روستای کرکبود به آبشار، پیاده و دارای پله است؛ طبق قرارداد فعلی Route و GPX بررسی‌شده پیش‌نیاز انتشار است. منبع: https://irantripadviser.ir/article.php?id=4 |
+| 6 | `HG-ganjnameh-waterfall` | [آبشار گنجنامه](https://havagasht.com/Ganjnameh_Waterfall) | همدان | P1 | خود آبشار گنجنامه مقصد مستقل است؛ پارکینگ مبدأ الوند جای آن را نمی‌گیرد. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 7 | `HG-lonak-waterfall` | [آبشار لونک](https://havagasht.com/lonak_waterfall) | گیلان | P1 | آبشار لونک؛ تنوع مقصدهای جنگلی گیلان. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 8 | `HG-nur-forestpark` | [پارک جنگلی نور](https://havagasht.com/nur-forestpark) | مازندران | P1 | پارک جنگلی نور؛ مقصد شناخته‌شدهٔ جلگه‌ای و متفاوت از قلهٔ نور. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 9 | `HG-chakan-waterfall` | [آبشار چکان](https://havagasht.com/chakan_waterfall) | لرستان | P1 | آبشار چکان؛ تکمیل آبشارهای شاخص لرستان. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 10 | `HG-warak-waterfall` | [آبشار وارک](https://havagasht.com/warak_waterfall) | لرستان | P1 | آبشار وارک؛ مقصد مستقل از آبشارهای موجود لرستان. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 11 | `HG-deylaman-jungle` | [جنگل دیلمان](https://havagasht.com/deylaman-jungle) | گیلان | P1 | جنگل دیلمان؛ تنوع مقصدهای جنگلی پاییزی گیلان. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 12 | `HG-tunel-kuhrang` | [آبشار تونل کوهرنگ](https://havagasht.com/tunel-kuhrang) | چهارمحال وبختیاری | P1 | آبشار تونل کوهرنگ؛ مقصد شناخته‌شده با ارزش پایش شرایط فصلی. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 13 | `HG-karkheh-dam` | [سد کرخه](https://havagasht.com/karkheh-dam) | خوزستان | P1 | سد کرخه؛ تنوع مقصدهای آبی جنوب‌غرب ایران. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 14 | `HG-mojen` | [آبشار مجن](https://havagasht.com/mojen) | سمنان | P1 | آبشار مجن؛ تکمیل مقصد مستقل منطقهٔ شاهرود. پیش از انتشار، gate هویت، مسیر و weather اجرا شود |
+| 15 | `HG-asbforushan-waterfall` | [آبشار اسب فروشان](https://havagasht.com/asbforushan-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 16 | `HG-eskandar-waterfall` | [آبشار اسکندر](https://havagasht.com/eskandar-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 17 | `HG-bolukan-waterfall` | [آبشار بلوکان](https://havagasht.com/bolukan-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 18 | `HG-tarlan-waterfall` | [آبشار ترلان](https://havagasht.com/tarlan-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 19 | `HG-darre-dar-andash-waterfall` | [آبشار دره دار انداش](https://havagasht.com/darre-dar-andash-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 20 | `HG-sarkand-dizaj-waterfall` | [آبشار سرکند دیزج](https://havagasht.com/sarkand-dizaj-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 21 | `HG-eyshabad-waterfall` | [آبشار عیش آباد](https://havagasht.com/eyshabad-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 22 | `HG-maharan-waterfall` | [آبشار ماهاران](https://havagasht.com/maharan-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 23 | `HG-hargolan-waterfall` | [آبشار هرگلان](https://havagasht.com/hargolan-waterfall) | آذربایجان شرقی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 24 | `HG-badalan-waterfall` | [آبشار بدلان](https://havagasht.com/badalan-waterfall) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 25 | `HG-kharpap-waterfall` | [آبشار خرپاپ](https://havagasht.com/kharpap-waterfall) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 26 | `HG-darreh-khorkhoreh-waterfall` | [آبشار دره خورخوره](https://havagasht.com/darreh-khorkhoreh-waterfall) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 27 | `HG-razgeh-waterfall` | [آبشار رزگه](https://havagasht.com/razgeh-waterfall) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 28 | `HG-aras-dam` | [سد ارس](https://havagasht.com/aras-dam) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 29 | `HG-hasanlou-dam` | [سد حسنلو](https://havagasht.com/hasanlou-dam) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 30 | `HG-zarineh-roud-dam` | [سد زرینه رود](https://havagasht.com/zarineh-roud-dam) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 31 | `HG-mahabad-dam` | [سد مهاباد](https://havagasht.com/mahabad-dam) | آذربایجان غربی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 32 | `HG-tutalu-wterfall` | [آبشار توتلو](https://havagasht.com/tutalu-wterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 33 | `HG-darreh-sajjad-waterfall` | [آبشار دره سجاد](https://havagasht.com/darreh-sajjad-waterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 34 | `HG-diez-waterfall` | [آبشار دیز](https://havagasht.com/diez_waterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 35 | `HG-sejen-waterfall` | [آبشار سجن](https://havagasht.com/sejen-waterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 36 | `HG-nareh-gel-waterfall` | [آبشار نره گل](https://havagasht.com/nareh_gel_waterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 37 | `HG-nodeh-waterfall` | [آبشار نوده](https://havagasht.com/nodeh-waterfall) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 38 | `HG-meshginshahr-forestpark` | [پارک جنگلی مشگین شهر](https://havagasht.com/meshginshahr-forestpark) | اردبیل | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 39 | `HG-khafar-waterfall` | [آبشار خفر](https://havagasht.com/khafar_waterfall) | اصفهان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 40 | `HG-tameh-waterfall` | [آبشار طامه](https://havagasht.com/tameh_waterfall) | اصفهان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 41 | `HG-askan-waterfall` | [آبشار آسکان](https://havagasht.com/askan-waterfall) | البرز | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 42 | `HG-arangeh-waterwall` | [آبشار ارگنه](https://havagasht.com/arangeh-waterwall) | البرز | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 43 | `HG-pich-aderan-waterfall` | [آبشار پیچ آدران](https://havagasht.com/pich-aderan-waterfall) | البرز | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 44 | `HG-charan-waterfall` | [آبشار چاران](https://havagasht.com/charan-waterfall) | البرز | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 45 | `HG-nashtrod-waterfall` | [آبشار نشترود](https://havagasht.com/nashtrod_waterfall) | البرز | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 46 | `HG-ama-waterfall` | [آبشار اما](https://havagasht.com/ama-waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 47 | `HG-basharat-waterfall` | [آبشار بشارت](https://havagasht.com/basharat-waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 48 | `HG-belin-waterfall` | [آبشار بلین](https://havagasht.com/belin-waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 49 | `HG-takhtan-waterfall` | [آبشار تختان](https://havagasht.com/takhtan-waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 50 | `HG-chagha-kabud-waterfall` | [آبشار چغا کبود](https://havagasht.com/chagha-kabud-waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 51 | `HG-chemo-waterfall` | [آبشار چم او](https://havagasht.com/chemo_waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 52 | `HG-mahote-waterfall` | [آبشارماهوته](https://havagasht.com/mahote_waterfall) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 53 | `HG-chaghasabz-forestpark` | [پارک جنگلی چغاسبز](https://havagasht.com/chaghasabz-forestpark) | ایلام | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 54 | `HG-tale-sarkuh-waterwall` | [آبشار تل سرکوه](https://havagasht.com/tale-sarkuh-waterwall) | بوشهر | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 55 | `HG-zir-rah-waterfall` | [آبشار زیر راه](https://havagasht.com/zir-rah-waterfall) | بوشهر | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 56 | `HG-faryabe-posht-kuh-waterfall` | [آبشار فاریاب پشتکوه](https://havagasht.com/faryabe-posht-kuh-waterfall) | بوشهر | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 57 | `HG-galobardekan-jungle` | [جنگل گلوبردکان ریز](https://havagasht.com/galobardekan-jungle) | بوشهر | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 58 | `HG-barg-jahan` | [آبشار برگ جهان](https://havagasht.com/barg-jahan) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 59 | `HG-bande-abdollah` | [آبشار بند عبدالله](https://havagasht.com/bande-abdollah) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 60 | `HG-taloun-waterfall` | [آبشار تالون](https://havagasht.com/taloun-waterfall) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 61 | `HG-dogholo-waterfall` | [آبشار دوقلو](https://havagasht.com/dogholo_waterfall) | تهران | P2 | آبشار دوقلوی منبع در تهران است؛ دوقلوی شوی در خوزستان همتای آن نیست |
+| 62 | `HG-sotak-waterfall` | [آبشار سوتک](https://havagasht.com/sotak_waterfall) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 63 | `HG-yakhi-waterfall` | [آبشار یخی](https://havagasht.com/yakhi_waterfall) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 64 | `HG-afra-forestpark` | [پارک جنگلی افرا](https://havagasht.com/afra-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 65 | `HG-pardisan-forestpark` | [پارک جنگلی پردیسان](https://havagasht.com/pardisan-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 66 | `HG-tello-forestpark` | [پارک جنگلی تلو](https://havagasht.com/tello-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 67 | `HG-toska-forestpark` | [پارک جنگلی توسکا](https://havagasht.com/toska-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 68 | `HG-cjitgar-forestpark` | [پارک جنگلی چیتگر](https://havagasht.com/cjitgar-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 69 | `HG-khojir-forestpark` | [پارک جنگلی خجیر](https://havagasht.com/khojir-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 70 | `HG-khargoshdare-forestpark` | [پارک جنگلی خرگوش دره](https://havagasht.com/khargoshdare-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 71 | `HG-sorkhehesar-forestpark` | [پارک جنگلی سرخه حصار](https://havagasht.com/sorkhehesar-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 72 | `HG-sohanak-forestpark` | [پارک جنگلی سوهانک](https://havagasht.com/sohanak-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 73 | `HG-latmal-forestprk` | [پارک جنگلی لتمال](https://havagasht.com/latmal-forestprk) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 74 | `HG-lavizan-forestpark` | [پارک جنگلی لویزان](https://havagasht.com/lavizan-forestpark) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 75 | `HG-hesarak-valley` | [دره حصارک](https://havagasht.com/hesarak-valley) | تهران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 76 | `HG-berenjgan-waterfall` | [آبشار برنجگان](https://havagasht.com/berenjgan-waterfall) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 77 | `HG-behesht-abad` | [آبشار بهشت آباد](https://havagasht.com/behesht-abad) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 78 | `HG-pir-ghar-waterfall` | [آبشار پیر غار](https://havagasht.com/pir-ghar-waterfall) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 79 | `HG-darreh-sabz-rud-waterfall` | [آبشار دره سبزرود](https://havagasht.com/darreh-sabz-rud-waterfall) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 80 | `HG-kerdit-waterfall` | [آبشار کردیت](https://havagasht.com/kerdit-waterfall) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 81 | `HG-gondeh-gav-waterfall` | [آبشار گنده گاو](https://havagasht.com/gondeh-gav-waterfall) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 82 | `HG-kouhestan-ashtiyan` | [پارک جنگلی کوهستان آشتیان](https://havagasht.com/kouhestan-ashtiyan) | چهارمحال وبختیاری | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 83 | `HG-chardeh-waterfall` | [آبشار چارده](https://havagasht.com/chardeh-waterfall) | خراسان جنوبی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 84 | `HG-zardgah-desert` | [کویر زردگاه](https://havagasht.com/Zardgah-Desert) | خراسان جنوبی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 85 | `HG-abgarm-waterfall` | [آبشار آبگرم](https://havagasht.com/abgarm-waterfall) | خراسان رضوی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 86 | `HG-arzaneh-waterfall` | [آبشار ارزنه](https://havagasht.com/arzaneh-waterfall) | خراسان رضوی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 87 | `HG-estarkhi` | [آبشار اسطرخی](https://havagasht.com/estarkhi) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 88 | `HG-esfajir` | [آبشار اسفجیر](https://havagasht.com/esfajir) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 89 | `HG-izi-waterfall` | [آبشار ایزی](https://havagasht.com/izi-waterfall) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 90 | `HG-teni-waterfall` | [آبشار توی](https://havagasht.com/teni-waterfall) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 91 | `HG-hamid-waterfall` | [آبشار حمید](https://havagasht.com/hamid-waterfall) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 92 | `HG-babaaman-forestpark` | [پارک جنگلی باباامان](https://havagasht.com/babaaman-forestpark) | خراسان شمالی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 93 | `HG-arpanah-waterfall` | [آبشار آرپناه](https://havagasht.com/arpanah-waterfall) | خوزستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 94 | `HG-baba-ruzbahan-waterfall` | [آبشار باباروزبهان](https://havagasht.com/baba-ruzbahan-waterfall) | خوزستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 95 | `HG-tange-kord-waterfall` | [آبشار تنگ کرد](https://havagasht.com/tange-kord-waterfall) | خوزستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 96 | `HG-shushtar-waterfall` | [آبشار شوشتر](https://havagasht.com/shushtar-waterfall) | خوزستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 97 | `HG-maghlava-waterfall` | [آبشار ماغلاوا](https://havagasht.com/maghlava-waterfall) | زنجان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 98 | `HG-hashtarkhan-waterfall` | [آبشار هشترخان](https://havagasht.com/hashtarkhan-waterfall) | زنجان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 99 | `HG-taham-dam` | [سد تهم](https://havagasht.com/taham-dam) | زنجان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 100 | `HG-ruzyeh-waterfall` | [آبشار روزیه](https://havagasht.com/ruzyeh-waterfall) | سمنان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 101 | `HG-tangeh-zendan` | [تنگه زندان](https://havagasht.com/tangeh-zendan) | سمنان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 102 | `HG-abande-sarbuk-waterfall` | [آبشار آبند ساربوک](https://havagasht.com/abande-sarbuk-waterfall) | سیستان و بلوچستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 103 | `HG-osepen-waterfall` | [آبشار اسفند](https://havagasht.com/osepen-waterfall) | سیستان و بلوچستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 104 | `HG-sarab-bezman-waterfall` | [آبشار سراب بزمان](https://havagasht.com/sarab-bezman-waterfall) | سیستان و بلوچستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 105 | `HG-qalat-waterfall` | [آبشار قلات](https://havagasht.com/qalat-waterfall) | فارس | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 106 | `HG-haft-asiyab-waterfall` | [آبشار هفت آسیاب](https://havagasht.com/haft-asiyab-waterfall) | فارس | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 107 | `HG-dumanchal-waterfall` | [آبشار دومانچال](https://havagasht.com/dumanchal-waterfall) | قزوین | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 108 | `HG-kohneh-baghestan-waterfall` | [آبشار کهنه باغستان](https://havagasht.com/kohneh-baghestan-waterfall) | قزوین | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 109 | `HG-garmarud-waterfall` | [آبشار گرمارود](https://havagasht.com/garmarud-waterfall) | قزوین | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 110 | `HG-barajin-forestpark` | [پارک جنگلی باراجین](https://havagasht.com/barajin-forestpark) | قزوین | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 111 | `HG-fordu-waterfall` | [آبشار فرود](https://havagasht.com/fordu-waterfall) | قم | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 112 | `HG-bel-waterfall` | [آبشار بل](https://havagasht.com/bel-waterfall) | کردستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 113 | `HG-sangin-abad-waterfall` | [آبشار سنگین آباد](https://havagasht.com/sangin-abad-waterfall) | کردستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 114 | `HG-goyleh-waterfall` | [آبشار گویله](https://havagasht.com/goyleh-waterfall) | کردستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 115 | `HG-absor-waterfall` | [آبشار آبسر](https://havagasht.com/absor-waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 116 | `HG-astaneh-waterfall` | [آبشار آستانه](https://havagasht.com/astaneh-waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 117 | `HG-ordikan-waterfall` | [آبشار اردیکان](https://havagasht.com/ordikan-waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 118 | `HG-bangan-waterfall` | [آبشار بنگان](https://havagasht.com/bangan-waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 119 | `HG-talkheh-char-waterfall` | [آبشار تلخه چار](https://havagasht.com/talkheh-char-waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 120 | `HG-vrvar-waterfall` | [آبشار وروار](https://havagasht.com/vrvar_waterfall) | کرمان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 121 | `HG-pataq-waterfall` | [آبشار پاطاق](https://havagasht.com/pataq-waterfall) | کرمانشاه | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 122 | `HG-kamar-dogh` | [آبشار کمر دوغ](https://havagasht.com/kamar_dogh) | کهگیلویه وبویراحمد | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 123 | `HG-kouh-gel-wateafall` | [آبشار کوه گل](https://havagasht.com/kouh_gel_wateafall) | کهگیلویه وبویراحمد | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 124 | `HG-lolom-waterfall` | [آبشار لولوم](https://havagasht.com/lolom_waterfall) | گلستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 125 | `HG-afratakht-jungle` | [جنگل افراتخت](https://havagasht.com/afratakht-jungle) | گلستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 126 | `HG-bolordakan-forestpark` | [پارک جنگلی بلوردکان](https://havagasht.com/bolordakan-forestpark) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 127 | `HG-bibiyanlou-forestpark` | [پارک جنگلی بی بی یانلو](https://havagasht.com/bibiyanlou-forestpark) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 128 | `HG-dornika-forestpark` | [پارک جنگلی درنیکا](https://havagasht.com/dornika-forestpark) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 129 | `HG-siahkal-jungle` | [جنگل سیاهکل](https://havagasht.com/siahkal-jungle) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 130 | `HG-shaft-jungle` | [جنگل شفت](https://havagasht.com/shaft-jungle) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 131 | `HG-mazdchal-jungle` | [جنگل مزدچال](https://havagasht.com/mazdchal-jungle) | گیلان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 132 | `HG-afrine-waterfall` | [آبشار افرینه](https://havagasht.com/afrine_waterfall) | لرستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 133 | `HG-shorab-forestpark` | [پارک جنگلی شورآب](https://havagasht.com/shorab-forestpark) | لرستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 134 | `HG-bisheh-dalan-lagoon` | [تالاب بیشه دالان](https://havagasht.com/bisheh-dalan-lagoon) | لرستان | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 135 | `HG-ab-morad-waterfall` | [آبشار آّب مراد](https://havagasht.com/ab_morad_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 136 | `HG-aked-waterfall` | [آبشار آکد](https://havagasht.com/aked_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 137 | `HG-tara-waterfall` | [آبشار ترا](https://havagasht.com/tara_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 138 | `HG-dinasara-waterfall` | [آبشار دیناسرا](https://havagasht.com/dinasara_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 139 | `HG-sangdarka-waterfall` | [آبشار سنگ درکا](https://havagasht.com/sangdarka-waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 140 | `HG-sang-no-waterfall` | [آبشار سنگ نو](https://havagasht.com/sang_no_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 141 | `HG-siasart-waterfall` | [آبشار سیاسرت](https://havagasht.com/siasart_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 142 | `HG-makher-waterfall` | [آبشار ماخر](https://havagasht.com/makher_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 143 | `HG-mij-waterfall` | [آبشار میج](https://havagasht.com/mij_waterfall) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 144 | `HG-bozcheft-forestpark` | [پارک جنگلی بز چفت](https://havagasht.com/bozcheft-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 145 | `HG-khormachal-forestpark` | [پارک جنگلی خرماچال](https://havagasht.com/khormachal-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 146 | `HG-fian-forestpark` | [پارک جنگلی فین](https://havagasht.com/fian-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 147 | `HG-kashpel-forestpark` | [پارک جنگلی کشپل](https://havagasht.com/kashpel-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 148 | `HG-mandi-forestpark` | [پارک جنگلی مندی](https://havagasht.com/mandi-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 149 | `HG-mirza-kouchak-khan-forestpark` | [پارک جنگلی میرزا کوچک خان](https://havagasht.com/mirza-kouchak-khan-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 150 | `HG-halumsar-forestpark` | [پارک جنگلی هلومسر](https://havagasht.com/halumsar-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 151 | `HG-vaz-forestpark` | [پارک جنگلی واز](https://havagasht.com/vaz-forestpark) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 152 | `HG-orost-jungle` | [جنگل اروست](https://havagasht.com/orost-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 153 | `HG-azarsi-jungle` | [جنگل ازارسی](https://havagasht.com/azarsi-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 154 | `HG-afrachal-jungle` | [جنگل افراچال](https://havagasht.com/afrachal-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 155 | `HG-anjeeli-jungle` | [جنگل انجیلی](https://havagasht.com/anjeeli-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 156 | `HG-izadshahr-jungle` | [جنگل ایزدشهر](https://havagasht.com/izadshahr-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 157 | `HG-boondeh-jungle` | [جنگل بونده](https://havagasht.com/boondeh-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 158 | `HG-khalart-jungle` | [جنگل خلارت](https://havagasht.com/khalart-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 159 | `HG-sangdarka-jungle` | [جنگل سنگ درکا](https://havagasht.com/sangdarka-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 160 | `HG-soote-jungle` | [جنگل سوته](https://havagasht.com/soote-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 161 | `HG-sinava-jungle` | [جنگل سینوا](https://havagasht.com/sinava-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 162 | `HG-sheykhraje-jungle` | [جنگل شیخ رجه](https://havagasht.com/sheykhraje-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 163 | `HG-alamkala-jungle` | [جنگل عالم کلا](https://havagasht.com/alamkala-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 164 | `HG-karchang-jungle` | [جنگل کرچنگ](https://havagasht.com/karchang-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 165 | `HG-kelarstagh-jungle` | [جنگل کلاراستاق](https://havagasht.com/kelarstagh-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 166 | `HG-golband-jungle` | [جنگل گلبند](https://havagasht.com/golband-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 167 | `HG-nasom-jungle` | [جنگل نسوم](https://havagasht.com/nasom-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 168 | `HG-veysar-jungle` | [جنگل ویسر](https://havagasht.com/veysar-jungle) | مازندران | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+| 169 | `HG-ghatreh-baran-waterfall` | [آبشار قطره باران](https://havagasht.com/ghatreh_baran-waterfall) | مرکزی | P2 | پیش از شروع، هویت/مختصات و همتای مکانی در کل کاتالوگ کنترل و نتیجهٔ بررسی مسیر ثبت شود |
+
+## درحال‌کار (0)
+
+موردی ثبت نشده است.
+
+## نیازمند تعیین هویت/تطبیق (17)
+
+| ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | وضعیت/اقدام بعدی |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | `HG-golkhor-waterfall` | [آبشار گل خور](https://havagasht.com/golkhor_waterfall) | آذربایجان شرقی | P3 | ممکن است گل‌خور صورت املایی گل‌آخور باشد؛ تا تطبیق مختصات منبع، نه مقصد تازه بسازید و نه آن را قطعی موجود بشمارید؛ همتاهای نیازمند تطبیق: [gol-akhur-waterfall](https://hawatch.ir/points/gol-akhur-waterfall) |
+| 2 | `HG-poneh-zar-waterfall` | [آبشار پونه زار](https://havagasht.com/poneh_zar_waterfall) | اصفهان · همدان | P3 | دو URL هم‌نام پونه‌زار در استان‌های اصفهان و همدان فهرست شده‌اند؛ اختلاف استان منبع باید با موقعیت آبشار رفع شود. ردیف/URL تکراری منبع در همین شناسه ادغام شده است |
+| 3 | `HG-shahdad-kalout` | [کلوت شهداد](https://havagasht.com/shahdad-kalout) | اصفهان | P3 | منبع کلوت شهداد را زیر اصفهان آورده؛ کلوت‌های شهداد موجود در کرمان است. اختلاف استان منبع بررسی شود؛ همتاهای نیازمند تطبیق: [shahdad-kaluts](https://hawatch.ir/points/shahdad-kaluts) |
+| 4 | `HG-khor-and-biabanak-desert` | [کویر خور و بیابانک](https://havagasht.com/Khor-and-Biabanak-Desert) | اصفهان | P3 | خور و بیابانک پهنهٔ وسیع است؛ مصر و فرحزاد موجودند. پیش از افزودن، مکان نمایندهٔ مستقل و بدون هم‌پوشانی تعیین شود؛ همتاهای نیازمند تطبیق: [mesr-desert](https://hawatch.ir/points/mesr-desert) |
+| 5 | `HG-emamzade-davod-waterfall` | [آبشار امامزاده داود](https://havagasht.com/emamzade_davod_waterfall) | تهران | P3 | دو املای داود/داوود یک گروه بررسی‌اند؛ وجود روستا به معنی ثبت خود آبشار نیست. موقعیت آبشار از سکونتگاه جدا شود. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ نام‌های منبع: آبشار امامزاده داود، آبشار امامزاده داوود؛ همتاهای نیازمند تطبیق: [imamzadeh-davoud-village](https://hawatch.ir/points/imamzadeh-davoud-village) |
+| 6 | `HG-koohsar-forestpark` | [پارک جنگلی کوهسار](https://havagasht.com/koohsar-forestpark) | تهران | P3 | مبدأ/پارکینگ کوهسار موجود است؛ برای پارک، استقلال یا reuse همان نقطه با تطبیق موقعیت تصمیم‌گیری شود؛ همتاهای نیازمند تطبیق: [band-eish-koohsar-trailhead](https://hawatch.ir/points/band-eish-koohsar-trailhead) |
+| 7 | `HG-tabas-desert` | [کویر طبس](https://havagasht.com/tabas-desert) | خراسان جنوبی | P3 | کویر طبس عنوان منطقه‌ای است؛ حلوان و کال‌جنی موجودند. موقعیت مستقل منبع مشخص شود؛ همتاهای نیازمند تطبیق: [halvan-desert](https://hawatch.ir/points/halvan-desert) · [kal-jeni](https://hawatch.ir/points/kal-jeni) |
+| 8 | `HG-alu-chal-waterfall` | [آبشار آلوچال](https://havagasht.com/alu-chal-waterfall) | سمنان | P3 | منبع آلوچال را سمنان فهرست کرده و کاتالوگ موجود گلستان نوشته است؛ تطبیق موقعیت لازم است؛ همتاهای نیازمند تطبیق: [aluchal-waterfall](https://hawatch.ir/points/aluchal-waterfall) |
+| 9 | `HG-harayjan-waterfall` | [آبشار هرایجان](https://havagasht.com/harayjan-waterfall) | فارس | P3 | شباهت املایی نزدیک با نقطهٔ موجود؛ قبل از معرفی مقصد تازه، هویت و مختصات تطبیق داده شود؛ همتاهای نیازمند تطبیق: [harijan-waterfall](https://hawatch.ir/points/harijan-waterfall) |
+| 10 | `HG-kabodval-watrfall` | [آبشار کبودوال](https://havagasht.com/kabodval_watrfall) | گیلان | P3 | منبع کبودوال را زیر گیلان آورده؛ نقطهٔ موجود در علی‌آباد کتول گلستان است. خطای استان منبع با موقعیت آن کنترل شود؛ همتاهای نیازمند تطبیق: [kaboudval-waterfall](https://hawatch.ir/points/kaboudval-waterfall) |
+| 11 | `HG-javaherdasht-jungle` | [جنگل جواهردشت](https://havagasht.com/javaherdasht-jungle) | گیلان | P3 | روستای جواهردشت موجود است؛ آن را بدون تطبیق موقعیت با جنگل هم‌نام یکی نگیرید؛ همتاهای نیازمند تطبیق: [somamous-javaherdasht](https://hawatch.ir/points/somamous-javaherdasht) |
+| 12 | `HG-khalian-jungle` | [جنگل خلیان](https://havagasht.com/khalian-jungle) | گیلان | P3 | روستای خلیان اسالم موجود است؛ موقعیت نمایندهٔ جنگل منبع هنوز تطبیق نشده است؛ همتاهای نیازمند تطبیق: [khelian-village](https://hawatch.ir/points/khelian-village) |
+| 13 | `HG-makhmalkouh-forestpark` | [پارک جنگلی مخمل کوه](https://havagasht.com/makhmalkouh-forestpark) | لرستان | P3 | مخمل‌کوه موجود یک عارضهٔ کوهستانی است؛ مکان نمایندهٔ پارک جنگلی باید با آن تطبیق داده شود؛ همتاهای نیازمند تطبیق: [makhmal-kuh](https://hawatch.ir/points/makhmal-kuh) |
+| 14 | `HG-azarak-waterfall` | [آبشار آزارک](https://havagasht.com/azarak-waterfall) | مازندران | P3 | صفحهٔ فعلی مربوط به تنگهٔ آزارک است؛ وجود تنگه ثبت خود آبشار را ثابت نمی‌کند. مختصات دو عارضه تطبیق داده شود؛ همتاهای نیازمند تطبیق: [azarek-gorge](https://hawatch.ir/points/azarek-gorge) |
+| 15 | `HG-36-341633-52-896077` | [پارک جنگلی اندارگلی](https://havagasht.com/36.341633,%2052.896077) | مازندران | P3 | شناسهٔ منبع به‌جای slug یک جفت مختصات است؛ هویت/URL پارک جنگلی اندارگلی باید تأیید شود |
+| 16 | `HG-bula-jungle` | [جنگل بولا](https://havagasht.com/bula-jungle) | مازندران | P3 | آبشار اوبن در محدودهٔ بولا موجود است؛ محل دقیق نمایندهٔ جنگل منبع و نیاز به مقصد جدا بررسی شود؛ همتاهای نیازمند تطبیق: [oben-waterfall](https://hawatch.ir/points/oben-waterfall) |
+| 17 | `HG-filband-jungle` | [جنگل فیلبند](https://havagasht.com/filband-jungle) | مازندران | P3 | روستای فیلبند و قله‌های اطراف موجودند؛ جای دقیق جنگلِ منبع مشخص شود، نه اینکه روستا جنگل فرض شود؛ همتاهای نیازمند تطبیق: [filband-village](https://hawatch.ir/points/filband-village) |
+
+## fixture موجود؛ انتشار تأیید نشده (0)
+
+موردی ثبت نشده است.
+
+## نقطهٔ موجود؛ بررسی ارتقای مقصد (3)
+
+| ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | صفحهٔ هواچ | وضعیت/اقدام بعدی |
+| ---: | --- | --- | --- | --- | --- | --- |
+| 1 | `HG-sevestun-waterfall` | [آبشار سوستون](https://havagasht.com/Sevestun_Waterfall) | تهران | P2 | [atash-kuh-soston-waterfall](https://hawatch.ir/points/atash-kuh-soston-waterfall) | نقطه فعال موجود است ولی صفحهٔ مستقل noindex است؛ پیش از ساخت رکورد تازه، امکان ارتقای همان هویت بررسی شود |
+| 2 | `HG-kara-jungle` | [جنگل کارا](https://havagasht.com/kara-jungle) | تهران | P2 | [chin-kalagh-kara-forest](https://hawatch.ir/points/chin-kalagh-kara-forest) | نقطه فعال موجود است ولی صفحهٔ مستقل noindex است؛ پیش از ساخت رکورد تازه، امکان ارتقای همان هویت بررسی شود |
+| 3 | `HG-azo-field` | [دشت آزو](https://havagasht.com/azo-field) | مازندران | P2 | [pashure-azo-plain](https://hawatch.ir/points/pashure-azo-plain) | نقطه فعال موجود است ولی صفحهٔ مستقل noindex است؛ پیش از ساخت رکورد تازه، امکان ارتقای همان هویت بررسی شود |
+
+## صفحهٔ مستقل موجود (106)
+
+| ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | صفحهٔ هواچ | وضعیت/اقدام بعدی |
+| ---: | --- | --- | --- | --- | --- | --- |
+| 1 | `HG-latian-dam` | [سد لتیان](https://havagasht.com/latian-dam) | تهران | P1 | [latian-dam](https://hawatch.ir/points/latian-dam) | ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 2 | `HG-asiab-kharabeh-waterfall` | [آبشار آسیاب‌خرابه](https://havagasht.com/asiab-kharabeh-waterfall) | آذربایجان شرقی | P2 | [asiab-kharabeh-waterfall](https://hawatch.ir/points/asiab-kharabeh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 3 | `HG-aghuyeh-waterfall` | [آبشار آغویه](https://havagasht.com/aghuyeh-waterfall) | آذربایجان شرقی | P2 | [aghviyeh-waterfall](https://hawatch.ir/points/aghviyeh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 4 | `HG-gol-akhor-waterfall` | [آبشار گل‌آخور](https://havagasht.com/gol_akhor_waterfall) | آذربایجان شرقی | P2 | [gol-akhur-waterfall](https://hawatch.ir/points/gol-akhur-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 5 | `HG-makidi-forestpark` | [پارک جنگلی مکیدی](https://havagasht.com/makidi-forestpark) | آذربایجان شرقی | P2 | [makidi-forest](https://hawatch.ir/points/makidi-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 6 | `HG-arasbaran-jungle` | [جنگل ارسباران](https://havagasht.com/arasbaran-jungle) | آذربایجان شرقی | P2 | [arasbaran-forest](https://hawatch.ir/points/arasbaran-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 7 | `HG-quri-gol-lake` | [دریاچهٔ قوری‌گل](https://havagasht.com/quri-gol-lake) | آذربایجان شرقی | P2 | [quri-gol-lake](https://hawatch.ir/points/quri-gol-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 8 | `HG-urmia-lake` | [دریاچهٔ ارومیه](https://havagasht.com/urmia-lake) | آذربایجان غربی | P2 | [urmia-lake](https://hawatch.ir/points/urmia-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 9 | `HG-sardabeh-waterfall` | [آبشار سردابه](https://havagasht.com/sardabeh_waterfall) | اردبیل | P2 | [sardabeh-waterfall](https://hawatch.ir/points/sardabeh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 10 | `HG-gor-gor-waterfall` | [آبشار گورگور آلوارس](https://havagasht.com/gor_gor_waterfall) | اردبیل | P2 | [gorgor-waterfall](https://hawatch.ir/points/gorgor-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 11 | `HG-neor-lake` | [دریاچهٔ نئور](https://havagasht.com/neor-lake) | اردبیل | P2 | [neor-lake](https://hawatch.ir/points/neor-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 12 | `HG-ab-malakh-waterfall` | [آبشار آب‌ملخ](https://havagasht.com/ab-malakh-waterfall) | اصفهان | P2 | [ab-malakh-waterfall](https://hawatch.ir/points/ab-malakh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 13 | `HG-semirom-waterfall` | [آبشار سمیرم](https://havagasht.com/semirom_waterfall) | اصفهان | P2 | [semirom-waterfall](https://hawatch.ir/points/semirom-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 14 | `HG-shahlolak-waterfall` | [آبشار شاه‌لولاک](https://havagasht.com/shahlolak-waterfall) | اصفهان | P2 | [shah-lulak-waterfall](https://hawatch.ir/points/shah-lulak-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 15 | `HG-zayandeh-roud-dam` | [دریاچهٔ سد زاینده‌رود](https://havagasht.com/zayandeh-roud-dam) | اصفهان | P2 | [zayandehrud-lake](https://hawatch.ir/points/zayandehrud-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 16 | `HG-abozeydabad-desert` | [کویر ابوزیدآباد](https://havagasht.com/abozeydabad-desert) | اصفهان | P2 | [abuzeydabad](https://hawatch.ir/points/abuzeydabad) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 17 | `HG-matinabad-desert` | [کویر متین‌آباد](https://havagasht.com/Matinabad-Desert) | اصفهان | P2 | [matinabad-desert](https://hawatch.ir/points/matinabad-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 18 | `HG-maranjab-desert` | [کویر مرنجاب](https://havagasht.com/maranjab-desert) | اصفهان | P2 | [maranjab](https://hawatch.ir/points/maranjab) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 19 | `HG-mesr-desert` | [کویر مصر](https://havagasht.com/mesr-desert) | اصفهان | P2 | [mesr-desert](https://hawatch.ir/points/mesr-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [mesr-farahzad](https://hawatch.ir/routes/mesr-farahzad) |
+| 20 | `HG-varzaneh-desert` | [کویر ورزنه](https://havagasht.com/varzaneh-desert) | اصفهان | P2 | [varzaneh-desert](https://hawatch.ir/points/varzaneh-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 21 | `HG-khor-waterfall` | [آبشار خور](https://havagasht.com/khor-waterfall) | البرز | P2 | [khour-waterfall](https://hawatch.ir/points/khour-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 22 | `HG-amirkabir-dam` | [سد امیرکبیر](https://havagasht.com/amirkabir-dam) | البرز | P2 | [amir-kabir-dam](https://hawatch.ir/points/amir-kabir-dam) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 23 | `HG-taleghan-dam` | [سد طالقان](https://havagasht.com/taleghan-dam) | البرز | P2 | [taleghan-dam](https://hawatch.ir/points/taleghan-dam) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 24 | `HG-eshtehard-desert` | [کویر اشتهارد](https://havagasht.com/eshtehard-desert) | البرز | P2 | [eshtehard-desert](https://hawatch.ir/points/eshtehard-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 25 | `HG-ayeneh-varzan-waterfall` | [آبشار آینه‌ورزان](https://havagasht.com/ayeneh-varzan-waterfall) | تهران | P2 | [zarrinkuh-aynehvarzan-waterfall](https://hawatch.ir/points/zarrinkuh-aynehvarzan-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 26 | `HG-igol-waterfall` | [آبشار ایگل](https://havagasht.com/igol-waterfall) | تهران | P2 | [igel-waterfall](https://hawatch.ir/points/igel-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد. ردیف/URL تکراری منبع در همین شناسه ادغام شده است. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیر: [igel-waterfall](https://hawatch.ir/routes/igel-waterfall) |
+| 27 | `HG-chal-magas-waterfall` | [آبشار چال‌مگس](https://havagasht.com/chal-magas-waterfall) | تهران | P2 | [chal-mags-darabad](https://hawatch.ir/points/chal-mags-darabad) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 28 | `HG-rendan-waterfall` | [آبشار رندان](https://havagasht.com/rendan-waterfall) | تهران | P2 | [rendan-waterfall](https://hawatch.ir/points/rendan-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [rendan-village-waterfall](https://hawatch.ir/routes/rendan-village-waterfall) |
+| 29 | `HG-sangan-waterfall` | [آبشار سنگان](https://havagasht.com/sangan-waterfall) | تهران | P2 | [sangan-waterfall](https://hawatch.ir/points/sangan-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 30 | `HG-shekarab-waterfall` | [آبشار شکرآب آهار](https://havagasht.com/shekarab-waterfall) | تهران | P2 | [shakarab-ahar](https://hawatch.ir/points/shakarab-ahar) | آبشار شکرآب آهار فعال و indexable است؛ place_type قدیمی landmark آن را مقصد غایب نمی‌کند. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 31 | `HG-kolougan-waterfall` | [آبشار کلوگان](https://havagasht.com/kolougan-waterfall) | تهران | P2 | [kolougan-waterfall](https://hawatch.ir/points/kolougan-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [kalugan-village-to-waterfall](https://hawatch.ir/routes/kalugan-village-to-waterfall) |
+| 32 | `HG-kamard-waterfall` | [آبشار کمرد](https://havagasht.com/kamard-waterfall) | تهران | P2 | [kamard-waterfall](https://hawatch.ir/points/kamard-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 33 | `HG-lalun-waterfall` | [آبشار لالون](https://havagasht.com/lalun_waterfall) | تهران | P2 | [kholeno-lalon-waterfall](https://hawatch.ir/points/kholeno-lalon-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 34 | `HG-tar-lake` | [دریاچهٔ تار](https://havagasht.com/tar-lake) | تهران | P2 | [tar-lake](https://hawatch.ir/points/tar-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 35 | `HG-golabdareh` | [پارک گلابدره](https://havagasht.com/golabdareh) | تهران | P2 | [golabdarreh-park](https://hawatch.ir/points/golabdarreh-park) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 36 | `HG-atashgah-waterfall` | [آبشار آتشگاه](https://havagasht.com/atashgah-waterfall) | چهارمحال وبختیاری | P2 | [atashgah-waterfall](https://hawatch.ir/points/atashgah-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 37 | `HG-choghakhor-lagoon` | [تالاب چغاخور](https://havagasht.com/choghakhor-lagoon) | چهارمحال وبختیاری | P2 | [choghakhor-wetland](https://hawatch.ir/points/choghakhor-wetland) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 38 | `HG-desert` | [کویر حلوان](https://havagasht.com/desert) | خراسان جنوبی | P2 | [halvan-desert](https://hawatch.ir/points/halvan-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 39 | `HG-kal-jeni-desert` | [کال جنی](https://havagasht.com/kal-jeni-desert) | خراسان جنوبی | P2 | [kal-jeni](https://hawatch.ir/points/kal-jeni) | عنوان کویر کال‌جنی منبع با عارضهٔ کال‌جنی طبس تطبیق دارد؛ نوع عمومی landmark مانع تطبیق هویت نیست؛ مسیر: [kal-jeni-trailhead](https://hawatch.ir/routes/kal-jeni-trailhead) |
+| 40 | `HG-abqad-waterfall` | [آبشار آبقد](https://havagasht.com/abqad-waterfall) | خراسان رضوی | P2 | [abqad-waterfall](https://hawatch.ir/points/abqad-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 41 | `HG-akhlamad` | [آبشار اول اخلمد](https://havagasht.com/akhlamad) | خراسان رضوی | P2 | [akhlamad-waterfall](https://hawatch.ir/points/akhlamad-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیر: [akhlamad-parking-to-first-waterfall](https://hawatch.ir/routes/akhlamad-parking-to-first-waterfall) |
+| 42 | `HG-ortkand` | [آبشار ارتکند](https://havagasht.com/ortkand) | خراسان رضوی | P2 | [ortakand-waterfall](https://hawatch.ir/points/ortakand-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 43 | `HG-bazangan-lake` | [دریاچهٔ بزنگان](https://havagasht.com/bazangan-lake) | خراسان رضوی | P2 | [bazangan-lake](https://hawatch.ir/points/bazangan-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 44 | `HG-shevi-waterfall` | [آبشار شوی](https://havagasht.com/shevi-waterfall) | خوزستان | P2 | [shevi-waterfall](https://hawatch.ir/points/shevi-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیر: [sartang-to-shevi-waterfall](https://hawatch.ir/routes/sartang-to-shevi-waterfall) |
+| 45 | `HG-temi-lake` | [دریاچهٔ تمی](https://havagasht.com/temi-lake) | خوزستان | P2 | [temi-lake](https://hawatch.ir/points/temi-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 46 | `HG-dez-dam` | [دریاچهٔ شهیون (سد دز)](https://havagasht.com/dez-dam) | خوزستان | P2 | [shahyoun-lake](https://hawatch.ir/points/shahyoun-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 47 | `HG-abr-jungle` | [جنگل ابر](https://havagasht.com/abr-jungle) | سمنان | P2 | [jangal-abr](https://hawatch.ir/points/jangal-abr) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [jangal-abr-abr-to-forest](https://hawatch.ir/routes/jangal-abr-abr-to-forest) · [jangal-abr-shirinabad-to-forest](https://hawatch.ir/routes/jangal-abr-shirinabad-to-forest) |
+| 48 | `HG-hamoun-lake` | [تالاب هامون](https://havagasht.com/hamoun-lake) | سیستان و بلوچستان | P2 | [hamun-sistan](https://hawatch.ir/points/hamun-sistan) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 49 | `HG-margun-waterfall` | [آبشار مارگون](https://havagasht.com/margun-waterfall) | فارس | P2 | [margoon-waterfall](https://hawatch.ir/points/margoon-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد. ردیف/URL تکراری منبع در همین شناسه ادغام شده است. ردیف/URL تکراری منبع در همین شناسه ادغام شده است؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 50 | `HG-tange-reghez` | [تنگهٔ رغز](https://havagasht.com/tange-reghez) | فارس | P2 | [raghez-gorge](https://hawatch.ir/points/raghez-gorge) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [tang-e-raghez-approach-to-canyon-head](https://hawatch.ir/routes/tang-e-raghez-approach-to-canyon-head) |
+| 51 | `HG-bakhtegan-lake` | [دریاچهٔ بختگان](https://havagasht.com/bakhtegan-lake) | فارس | P2 | [bakhtegan-lake](https://hawatch.ir/points/bakhtegan-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 52 | `HG-parishan-lake` | [دریاچهٔ پریشان](https://havagasht.com/parishan-lake) | فارس | P2 | [parishan-lake](https://hawatch.ir/points/parishan-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 53 | `HG-tashk-lake` | [دریاچهٔ طَشک](https://havagasht.com/tashk-lake) | فارس | P2 | [tashk-lake](https://hawatch.ir/points/tashk-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 54 | `HG-kaftar-lake` | [دریاچهٔ کافتر](https://havagasht.com/kaftar-lake) | فارس | P2 | [kaftar-lake](https://hawatch.ir/points/kaftar-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 55 | `HG-maharlu-lake` | [دریاچهٔ مهارلو](https://havagasht.com/maharlu-lake) | فارس | P2 | [maharloo-lake](https://hawatch.ir/points/maharloo-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 56 | `HG-ovan-lake` | [دریاچهٔ اوان](https://havagasht.com/ovan-lake) | قزوین | P2 | [ovan-lake](https://hawatch.ir/points/ovan-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 57 | `HG-hoz-soltan` | [دریاچهٔ حوض سلطان](https://havagasht.com/hoz-soltan) | قم | P2 | [hoz-soltan](https://hawatch.ir/points/hoz-soltan) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 58 | `HG-namak-lake` | [دریاچهٔ نمک قم](https://havagasht.com/namak-lake) | قم | P2 | [namak-lake-qom](https://hawatch.ir/points/namak-lake-qom) | دریاچهٔ نمکِ استان قم با صفحهٔ مستقل دریاچهٔ نمک قم تطبیق دارد؛ حوض سلطان مقصد دیگری است؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 59 | `HG-zeribar-lake` | [دریاچهٔ زریوار](https://havagasht.com/zeribar-lake) | کردستان | P2 | [zarivar-lake](https://hawatch.ir/points/zarivar-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 60 | `HG-rain-waterfall` | [آبشار راین](https://havagasht.com/rain_waterfall) | کرمان | P2 | [rayen-waterfall](https://hawatch.ir/points/rayen-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 61 | `HG-lut-desert` | [دشت لوت](https://havagasht.com/lut-Desert) | کرمان | P2 | [lut-desert](https://hawatch.ir/points/lut-desert) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 62 | `HG-piran-waterfall` | [آبشار پیران](https://havagasht.com/piran_waterfall) | کرمانشاه | P2 | [piran-waterfall](https://hawatch.ir/points/piran-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 63 | `HG-lowe-waterfall` | [آبشار لوه](https://havagasht.com/lowe_waterfall) | گلستان | P2 | [loveh-waterfall](https://hawatch.ir/points/loveh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 64 | `HG-almagol-lagoon` | [تالاب آلماگل](https://havagasht.com/almagol-lagoon) | گلستان | P2 | [almagol-wetland](https://hawatch.ir/points/almagol-wetland) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 65 | `HG-olang-jungle` | [جنگل اولنگ](https://havagasht.com/olang-jungle) | گلستان | P2 | [olang-forest](https://hawatch.ir/points/olang-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 66 | `HG-nahar-khoran-jungle` | [پارک جنگلی ناهارخوران](https://havagasht.com/nahar-khoran-jungle) | گلستان | P2 | [naharkhoran-forest](https://hawatch.ir/points/naharkhoran-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [ziarat-forest-naharkhoran](https://hawatch.ir/routes/ziarat-forest-naharkhoran) |
+| 67 | `HG-alagol-lake` | [تالاب آلاگل](https://havagasht.com/alagol-lake) | گلستان | P2 | [alagol-lake](https://hawatch.ir/points/alagol-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 68 | `HG-zomorod-waterfall` | [آبشار زمرد حویق](https://havagasht.com/zomorod-waterfall) | گیلان | P2 | [zomorod-waterfall](https://hawatch.ir/points/zomorod-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 69 | `HG-laton-waterfall` | [آبشار لاتون](https://havagasht.com/laton_waterfall) | گیلان | P2 | [laton-waterfall](https://hawatch.ir/points/laton-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [laton-kuteh-kumeh](https://hawatch.ir/routes/laton-kuteh-kumeh) · [suha-spinas-laton](https://hawatch.ir/routes/suha-spinas-laton) |
+| 70 | `HG-visadar-waterfall` | [آبشار ویسادار](https://havagasht.com/visadar-waterfall) | گیلان | P2 | [visadar-waterfall](https://hawatch.ir/points/visadar-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 71 | `HG-saravan-forestpark` | [پارک جنگلی سراوان](https://havagasht.com/saravan-forestpark) | گیلان | P2 | [saravan-forest](https://hawatch.ir/points/saravan-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 72 | `HG-steel-lagoon` | [تالاب استیل](https://havagasht.com/steel-lagoon) | گیلان | P2 | [estil-lagoon](https://hawatch.ir/points/estil-lagoon) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 73 | `HG-anzali-lagoon` | [تالاب انزلی](https://havagasht.com/anzali-lagoon) | گیلان | P2 | [anzali-lagoon](https://hawatch.ir/points/anzali-lagoon) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 74 | `HG-gisoum-jungle` | [جنگل گیسوم](https://havagasht.com/gisoum-jungle) | گیلان | P2 | [gisoom-forest](https://hawatch.ir/points/gisoom-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 75 | `HG-sefid-roud-dam` | [دریاچهٔ سد سفیدرود](https://havagasht.com/sefid-roud-dam) | گیلان | P2 | [sefidrud-reservoir](https://hawatch.ir/points/sefidrud-reservoir) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 76 | `HG-ab-sefid-waterfall` | [آبشار آب‌سفید](https://havagasht.com/%D9%8Eab_sefid_waterfall) | لرستان | P2 | [ab-sefid-waterfall](https://hawatch.ir/points/ab-sefid-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 77 | `HG-bishe-waterfall` | [آبشار بیشه](https://havagasht.com/bishe_waterfall) | لرستان | P2 | [bisheh-waterfall](https://hawatch.ir/points/bisheh-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 78 | `HG-nozhiyan-waterfall` | [آبشار نوژیان](https://havagasht.com/nozhiyan-waterfall) | لرستان | P2 | [nozhian-waterfall](https://hawatch.ir/points/nozhian-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 79 | `HG-gahar-lake` | [دریاچهٔ گهر](https://havagasht.com/gahar-lake) | لرستان | P2 | [gahar](https://hawatch.ir/points/gahar) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [sanboran-gahar](https://hawatch.ir/routes/sanboran-gahar) |
+| 80 | `HG-ab-pary-waterfall` | [آبشار آب‌پری](https://havagasht.com/ab_pary-waterfall) | مازندران | P2 | [ab-pari-waterfall](https://hawatch.ir/points/ab-pari-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 81 | `HG-shahandasht-waterfall` | [آبشار شاهاندشت](https://havagasht.com/shahandasht_waterfall) | مازندران | P2 | [shahandasht-waterfall](https://hawatch.ir/points/shahandasht-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 82 | `HG-gazo-waterfall` | [آبشار گزو](https://havagasht.com/gazo_waterfall) | مازندران | P2 | [gazo-waterfall](https://hawatch.ir/points/gazo-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [imamzadeh-gazo-to-waterfall](https://hawatch.ir/routes/imamzadeh-gazo-to-waterfall) |
+| 83 | `HG-herijan-waterfall` | [آبشار هریجان](https://havagasht.com/herijan_waterfall) | مازندران | P2 | [harijan-waterfall](https://hawatch.ir/points/harijan-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 84 | `HG-varsak-waterfall` | [آبشار ورسک](https://havagasht.com/varsak_waterfall) | مازندران | P2 | [veresk-waterfall](https://hawatch.ir/points/veresk-waterfall) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 85 | `HG-askylym-waterfall` | [آبشار اسکلیم](https://havagasht.com/askylym-waterfall) | مازندران | P2 | [eskelim](https://hawatch.ir/points/eskelim) | اسکلیم‌رود با مقصد canonical آبشار اسکلیم و مسیر موجود تطبیق دارد؛ یادداشت gate قدیمی وضعیت فعلی نیست؛ مسیر: [eskelim-parking-to-waterfall](https://hawatch.ir/routes/eskelim-parking-to-waterfall) |
+| 86 | `HG-javarem-forestpark` | [پارک جنگلی جوارم](https://havagasht.com/javarem-forestpark) | مازندران | P2 | [javarem-forest](https://hawatch.ir/points/javarem-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 87 | `HG-alimestan-jungle` | [جنگل الیمستان](https://havagasht.com/alimestan-jungle) | مازندران | P2 | [alimestan](https://hawatch.ir/points/alimestan) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 88 | `HG-baliran-jungle` | [جنگل بلیران](https://havagasht.com/baliran-jungle) | مازندران | P2 | [beliran-forest](https://hawatch.ir/points/beliran-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 89 | `HG-dalkhani-jungle` | [جنگل دالخانی](https://havagasht.com/dalkhani-jungle) | مازندران | P2 | [dalkhani-forest](https://hawatch.ir/points/dalkhani-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 90 | `HG-rash-jungle` | [جنگل راش سنگده](https://havagasht.com/rash-jungle) | مازندران | P2 | [sangdeh-beech-forest](https://hawatch.ir/points/sangdeh-beech-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 91 | `HG-lafour-jungle` | [جنگل لفور](https://havagasht.com/lafour-jungle) | مازندران | P2 | [lafour-forest](https://hawatch.ir/points/lafour-forest) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 92 | `HG-zaman-valley` | [درهٔ زمان پلور](https://havagasht.com/zaman-valley) | مازندران | P2 | [zaman-valley](https://hawatch.ir/points/zaman-valley) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 93 | `HG-arvah-lake` | [دریاچهٔ ارواح](https://havagasht.com/arvah-lake) | مازندران | P2 | [ghost-lake](https://hawatch.ir/points/ghost-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 94 | `HG-alendan-lake` | [دریاچهٔ الندان](https://havagasht.com/alendan-lake) | مازندران | P2 | [alendan-lake](https://hawatch.ir/points/alendan-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 95 | `HG-lafour-lake` | [سد لفور](https://havagasht.com/lafour-lake) | مازندران | P2 | [lafour-dam](https://hawatch.ir/points/lafour-dam) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 96 | `HG-valasht-lake` | [دریاچهٔ ولشت](https://havagasht.com/valasht-lake) | مازندران | P2 | [valasht-lake](https://hawatch.ir/points/valasht-lake) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 97 | `HG-lar-field` | [دشت لار](https://havagasht.com/lar-field) | مازندران | P2 | [lar-plain](https://hawatch.ir/points/lar-plain) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 98 | `HG-lar-dam` | [سد لار](https://havagasht.com/lar-dam) | مازندران | P2 | [lar-dam](https://hawatch.ir/points/lar-dam) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 99 | `HG-dorouk` | [مرداب دیوک](https://havagasht.com/dorouk) | مازندران | P2 | [dewouk-marsh](https://hawatch.ir/points/dewouk-marsh) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیر: [pimbour-parking-to-dewouk-marsh](https://hawatch.ir/routes/pimbour-parking-to-dewouk-marsh) |
+| 100 | `HG-haft-abshar` | [هفت آبشار تیرکن](https://havagasht.com/haft-abshar) | مازندران | P2 | [haft-abshar-tirken](https://hawatch.ir/points/haft-abshar-tirken) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 101 | `HG-meyghan-lake` | [تالاب میقان](https://havagasht.com/meyghan-lake) | مرکزی | P2 | [miqan-wetland](https://hawatch.ir/points/miqan-wetland) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 102 | `HG-harra-jungle` | [جنگل حرا قشم](https://havagasht.com/harra-jungle) | هرمزگان | P2 | [hara-mangrove](https://hawatch.ir/points/hara-mangrove) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 103 | `HG-aqgol-lagoon` | [تالاب آق‌گل](https://havagasht.com/aqgol-lagoon) | همدان | P2 | [agh-gol-wetland](https://hawatch.ir/points/agh-gol-wetland) | رکورد canonical فعال در کاتالوگ زنده تطبیق داده شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 104 | `HG-dargahan-waterfall` | [درهٔ گاهان تفت](https://havagasht.com/dargahan_waterfall) | یزد | P2 | [dareh-gahan](https://hawatch.ir/points/dareh-gahan) | identity_summary نقطهٔ دره‌گاهان صریحاً مختصات روی آبشار فصلی را ثبت کرده و alias آبشار درگاهان دارد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 105 | `HG-karakal-desert` | [کویر کاراکال بافق](https://havagasht.com/Karakal-Desert) | یزد | P2 | [karakal-desert](https://hawatch.ir/points/karakal-desert) | صفحهٔ کاراکال بافق از قبل موجود است؛ پسوند یزد عنوان منبع مقصد جدا نیست؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+| 106 | `HG-fandoghlou-jungle` | [جنگل فندقلو نمین](https://havagasht.com/fandoghlou-jungle) | اردبیل | P3 | [fandoghloo-namin](https://hawatch.ir/points/fandoghloo-namin) | فندوقلو/فندقلو شکل‌های املایی یک جنگل در نمین اردبیل‌اند؛ صفحهٔ canonical و مسیرهای موجود تأیید شد؛ مسیرِ منتهی به این نقطه در snapshot ثبت نشده است. |
+
+## پوشش مرتبط/نام دیگر؛ افزودن تکراری لازم نیست (4)
+
+| ردیف | شناسه | مقصد | منطقهٔ منبع | اولویت | صفحهٔ هواچ | وضعیت/اقدام بعدی |
+| ---: | --- | --- | --- | --- | --- | --- |
+| 1 | `HG-khar-turan-desert` | [کویر خار توران](https://havagasht.com/Khar-Turan-Desert) | سمنان | P2 | [qaleh-bala](https://hawatch.ir/points/qaleh-bala) | پوشش مرتبط فقط دروازهٔ گردشگری قلعه‌بالاست؛ مرکز و همهٔ پهنهٔ توران در این نقطه پیش‌بینی نمی‌شوند؛ پوشش مرتبط فقط دروازهٔ گردشگری قلعه‌بالاست؛ مرکز و همهٔ پهنهٔ توران در این نقطه پیش‌بینی نمی‌شوند. |
+| 2 | `HG-rig-e-jen-desert` | [کویر ریگ جن](https://havagasht.com/Rig-e-Jen-Desert) | سمنان | P2 | [bishe-do-bagh](https://hawatch.ir/points/bishe-do-bagh) | پوشش فعلی بیشهٔ دو باغ و مسیر الله‌آباد است؛ این پوشش به معنی ثبت مرکز یا تمام پهنهٔ ریگ‌جن نیست؛ مسیر: [rig-jen-allahabad-to-bishe-do-bagh](https://hawatch.ir/routes/rig-jen-allahabad-to-bishe-do-bagh)؛ پوشش فعلی بیشهٔ دو باغ و مسیر الله‌آباد است؛ این پوشش به معنی ثبت مرکز یا تمام پهنهٔ ریگ‌جن نیست. |
+| 3 | `HG-shirabad-waterfall` | [آبشار شیرآباد](https://havagasht.com/shirabad_waterfall) | گلستان | P2 | [shirabad-waterfall](https://hawatch.ir/points/shirabad-waterfall) · [shirabad-seven-waterfalls](https://hawatch.ir/points/shirabad-seven-waterfalls) | آبشار شیرآباد و مجموعهٔ هفت آبشار صفحات موجود دارند؛ بدون تعیین آبشار مستقلِ دیگری مقصد تکراری نسازیم؛ مسیر: [shirabad-seven-waterfalls](https://hawatch.ir/routes/shirabad-seven-waterfalls)؛ آبشار شیرآباد و مجموعهٔ هفت آبشار صفحات موجود دارند؛ بدون تعیین آبشار مستقلِ دیگری مقصد تکراری نسازیم. |
+| 4 | `HG-palang-dareh` | [جنگل پلنگ دره](https://havagasht.com/palang-dareh) | مازندران | P2 | [palang-dareh-waterfall](https://hawatch.ir/points/palang-dareh-waterfall) | صفحهٔ فعلی روی آبشار پلنگ‌درهٔ شیرگاه قرار دارد و alias جنگل پلنگ‌دره دارد؛ کل جنگل یک forecast یکنواخت محسوب نمی‌شود؛ صفحهٔ فعلی روی آبشار پلنگ‌درهٔ شیرگاه قرار دارد و alias جنگل پلنگ‌دره دارد؛ کل جنگل یک forecast یکنواخت محسوب نمی‌شود. |
