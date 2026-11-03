@@ -924,7 +924,7 @@
       "region": "چهارمحال وبختیاری",
       "priority": "P1",
       "rank": 10,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havagasht",
@@ -945,8 +945,21 @@
           "url": "https://havagasht.com/dare_eshgh_waterfall"
         }
       ],
-      "note": "مقصد شناخته‌شدهٔ طبیعت‌گردی چهارمحال؛ تکمیل پوشش آبشارهای زاگرس. پیش از انتشار، gate هویت، مسیر و weather اجرا شود. ردیف/URL تکراری منبع در همین شناسه ادغام شده است.",
-      "legacy_names": []
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "legacy_names": [],
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات خود آبشار ناغان از OSM تأیید شد، نه pin قدیمی کنار روستا. طبق تصمیم ۳ نوامبر Route شرط انتشار نیست. ترک 266473877 شاخه‌های اکتشافیِ خطرناک و بن‌بست دارد و برای دانلود پیشنهاد نمی‌شود؛ فعلاً point-only. ردیف تکراری منبع در همین شناسه ادغام شده است."
+        }
+      ],
+      "hawatch_slugs": [
+        "darreh-eshq-waterfall"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HG-finesk-jungle",
@@ -954,7 +967,7 @@
       "region": "سمنان",
       "priority": "P1",
       "rank": 20,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havagasht",
@@ -966,7 +979,20 @@
           "url": "https://havagasht.com/finesk-jungle"
         }
       ],
-      "note": "در بررسی ۲۰۲۶-۱۱-۰۳ جادهٔ آسفالته تا روستای فینسک تأیید شد، نه تا مختصات مستقل خود جنگل. مختصات روستا نباید با عنوان جنگل منتشر شود؛ برای انتشار جنگل، موقعیت واقعی و دسترسی نهایی/Route بررسی‌شده لازم است. گزارش محلی: https://semnanturist.blogfa.com/post/25 ؛ شرح پیمایش از روستا به پهنهٔ جنگلی: https://es.wikiloc.com/rutas-senderismo/qlh-fynskh-271182704"
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "pin اختصاصی جنگل از geo.position و JSON-LD یلدامدتور 2636 استخراج شد؛ با روستا یا قلهٔ فینسک یکی نیست. طبق تصمیم ۳ نوامبر، Route شرط انتشار آب‌وهوا نیست. ترک‌های عمومی بررسی شدند اما زنجیرهٔ میانیِ نام‌دار هنوز تأیید نشده؛ فعلاً point-only."
+        }
+      ],
+      "hawatch_slugs": [
+        "finesk-forest"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HK-42",
@@ -974,7 +1000,7 @@
       "region": "مرکزی",
       "priority": "P1",
       "rank": 30,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havakouh",
@@ -986,7 +1012,34 @@
           "url": "https://havakouh.com/get-summits/28?province=true"
         }
       ],
-      "note": "شهباز؛ تکمیل قلهٔ شاخص استان مرکزی و تنوع جغرافیایی صف. پیش از انتشار، gate هویت، مسیر و weather اجرا شود."
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "route_followup": {
+        "status": "awaiting_gpx",
+        "track_url": "https://www.wikiloc.com/mountaineering-trails/shahbaz-summit-qlh-shhbz-7495664",
+        "chain": [
+          "امامزاده عبدالله سورانه",
+          "جان‌پناه شهباز",
+          "قلهٔ شهباز"
+        ],
+        "source_urls": [
+          "https://shazandmg.blogfa.com/page/shahbaz.aspx",
+          "https://surane.blogfa.com/post/28"
+        ],
+        "note": "فقط یک ترک برای مسیر اصلی؛ نه کراس‌چک. هندسه، جهت و بخش‌های فصلی پس از دانلود بررسی می‌شوند."
+      },
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات قله از waypoint نام‌دار تأیید شد؛ forecast مستقل از مسیر منتشر می‌شود. مسیر تکمیلی امامزاده عبداللهِ سورانه → جان‌پناه شهباز → قله، پس از دریافت GPX بررسی می‌شود."
+        }
+      ],
+      "hawatch_slugs": [
+        "shahbaz"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HG-niasar-waterfall",
@@ -994,7 +1047,7 @@
       "region": "اصفهان",
       "priority": "P1",
       "rank": 40,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havagasht",
@@ -1006,7 +1059,34 @@
           "url": "https://havagasht.com/niasar_waterfall"
         }
       ],
-      "note": "در بررسی ۲۰۲۶-۱۱-۰۳، دسترسی نهایی به خود آبشار از چهارطاقی با پیاده‌روی و پله تأیید شد؛ طبق قرارداد فعلی بدون Route و GPX بررسی‌شده منتشر نشود. منبع: https://letsgotrip.ir/niaser-waterfall/"
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "route_followup": {
+        "status": "awaiting_gpx",
+        "track_url": "https://www.wikiloc.com/hiking-trails/bshr-nysr-sfhn-1404-3-11-216231897",
+        "chain": [
+          "پارکینگ آبشار نیاسر",
+          "حمام صفوی نیاسر",
+          "آبشار نیاسر"
+        ],
+        "source_urls": [
+          "https://kashancth.ir/niasarpart",
+          "https://irantripadviser.ir/attraction.php?id=915"
+        ],
+        "note": "ترک کوتاهِ خود آبشار با waypoint حمام و پارکینگ؛ جهت و استقلال نقاط نزدیک پس از دانلود کنترل شود."
+      },
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات خود آبشار از OSM تأیید شد. طبق تصمیم ۳ نوامبر، پیاده‌دسترس بودن مانع انتشار point-only نیست. نامزد مسیر کوتاه پارکینگ → حمام صفوی → آبشار: Wikiloc 216231897؛ تحلیل GPX پس از دانلود و مستقل از انتشار آب‌وهواست."
+        }
+      ],
+      "hawatch_slugs": [
+        "niasar-waterfall"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HK-434",
@@ -1078,7 +1158,7 @@
       "region": "فارس",
       "priority": "P1",
       "rank": 70,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havakouh",
@@ -1090,15 +1170,42 @@
           "url": "https://havakouh.com/get-summits/17?province=true"
         }
       ],
-      "note": "دراک؛ مقصد شناخته‌شدهٔ کوه‌پیمایی نزدیک شیراز و تنوع منطقه‌ای. پیش از انتشار، gate هویت، مسیر و weather اجرا شود."
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "route_followup": {
+        "status": "awaiting_gpx",
+        "track_url": "https://www.wikiloc.com/hiking-trails/qlh-drkh-z-smt-gdyryh-gwsfnd-sr-tyrmh-1403-derak-peak-msyr-qlh-drkh-shyrz-177283197",
+        "chain": [
+          "میدان و مدرسهٔ احسان",
+          "جان‌پناه غدیریه",
+          "قلهٔ دراک"
+        ],
+        "source_urls": [
+          "https://radepagroup.com/19042/صعود-به-قله-دراک-2/",
+          "https://koohnavard.blogfa.com/post/28"
+        ],
+        "note": "ترک پیادهٔ صعود یک‌طرفه با شرح و waypointهای روشن؛ عنوان دشوار به‌تنهایی دلیل رد نیست."
+      },
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات رأس دراک از Wikimedia و گزارش باشگاه ردپا تطبیق یافت؛ forecast مستقل از Route است. مسیر تکمیلی احسان → جان‌پناه غدیریه → قله پس از دریافت GPX بررسی می‌شود."
+        }
+      ],
+      "hawatch_slugs": [
+        "derak"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HG-zarlimeh-waterfall",
-      "name": "آبشار زرلیمه",
+      "name": "آبشار زردلیمه",
       "region": "چهارمحال وبختیاری",
       "priority": "P1",
       "rank": 80,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havagasht",
@@ -1110,7 +1217,34 @@
           "url": "https://havagasht.com/zarlimeh-waterfall"
         }
       ],
-      "note": "تکمیل مقصد مستقلِ شناخته‌شدهٔ آبشار زرلیمه در زاگرس. پیش از انتشار، gate هویت، مسیر و weather اجرا شود."
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "route_followup": {
+        "status": "awaiting_gpx",
+        "track_url": "https://www.wikiloc.com/hiking-trails/abshr-zrd-lymhz-msyr-bdm-shyryn-238113383",
+        "chain": [
+          "روستای بادام‌شیرین",
+          "روستای گاوشیر",
+          "آبشار زردلیمه"
+        ],
+        "source_urls": [
+          "https://lastsecond.ir/attractions/11040-badam-shirin-village",
+          "https://manooshsemirom.blogfa.com/post/41"
+        ],
+        "note": "مسیر پیاده از بادام‌شیرین؛ اتصال دقیق به آبشار و نیاز به عبور از بازفت/جره در GPX و منابع پیش از انتشار Route بررسی شود؛ ترک خودرو یا مسیر اکتشافی پیشنهاد نشده است."
+      },
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "املای منبع «زرلیمه» به آبشار زردلیمهٔ دیناران اشاره دارد؛ نام و مختصات OSM با گزارش میدانی تطبیق یافت. Route شرط انتشار نیست. نامزد مسیر بادام‌شیرین → روستای گاوشیر → آبشار (Wikiloc 238113383) برای بررسی GPX نگه‌داری شده است؛ املای اصلی منبع در sources حفظ شد."
+        }
+      ],
+      "hawatch_slugs": [
+        "zardlimeh-waterfall"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HK-144",
@@ -1118,7 +1252,7 @@
       "region": "خراسان رضوی",
       "priority": "P1",
       "rank": 90,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havakouh",
@@ -1130,7 +1264,20 @@
           "url": "https://havakouh.com/get-summits/11?province=true"
         }
       ],
-      "note": "ملکوه؛ تکمیل مقصد شاخص کوه‌پیمایی خراسان رضوی. پیش از انتشار، gate هویت، مسیر و weather اجرا شود."
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات قلهٔ ملکوه با World Ribus و مرجع قله تطبیق یافت. Route شرط انتشار نیست. دربارهٔ فنی/طناب‌محور بودن مسیر جنوبی شواهد متعارض وجود دارد؛ فعلاً فقط forecast نقطه و بدون درخواست دانلود ترک فنی منتشر شود."
+        }
+      ],
+      "hawatch_slugs": [
+        "molkooh"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HG-karkabod-waterfall",
@@ -1138,7 +1285,7 @@
       "region": "البرز",
       "priority": "P1",
       "rank": 100,
-      "status": "queued",
+      "status": "published",
       "sources": [
         {
           "site": "havagasht",
@@ -1150,7 +1297,20 @@
           "url": "https://havagasht.com/karkabod_waterfall"
         }
       ],
-      "note": "در بررسی ۲۰۲۶-۱۱-۰۳ دسترسی نهایی از روستای کرکبود به آبشار، پیاده و دارای پله است؛ طبق قرارداد فعلی Route و GPX بررسی‌شده پیش‌نیاز انتشار است. منبع: https://irantripadviser.ir/article.php?id=4"
+      "note": "ثبت نقطه در کاتالوگ زنده تأیید شد؛ وضعیت مسیرها مستقل از صف افزودن مقصد پیگیری می‌شود.",
+      "history": [
+        {
+          "at": "2026-11-03T16:16:14.531328+00:00",
+          "previous_status": "in_progress",
+          "previous_note": "مختصات خود آبشار از OSM تأیید شد. طبق تصمیم ۳ نوامبر، Route شرط انتشار نیست. ترک‌های کوتاه یا فاقد landmark میانی نام‌دار بودند یا با فعالیت دوچرخه ثبت شده‌اند؛ ترک قلهٔ سات نیز جای Route خود آبشار را نمی‌گیرد؛ فعلاً point-only."
+        }
+      ],
+      "hawatch_slugs": [
+        "karkabod-waterfall"
+      ],
+      "verified_at": "2026-11-03T16:16:14.531328+00:00",
+      "match_basis": "تطبیق صریح مسئول افزودن با رکورد فعال snapshot فقط‌خواندنی production",
+      "route_slugs": []
     },
     {
       "id": "HK-237",
