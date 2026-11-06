@@ -1,0 +1,201 @@
+{
+  "catalog_version": "hawatch-shah-keykhosrow-v1",
+  "primary_point": "shah-keykhosrow",
+  "point": {
+    "name": "قلهٔ شاه‌کیخسرو",
+    "page_name": "قلهٔ شاه‌کیخسرو",
+    "short_label": "قلهٔ شاه‌کیخسرو",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "aliases": [
+      "شاه کیخسرو",
+      "شاه‌کیخسرو",
+      "شاه زنده"
+    ],
+    "identity_summary": "قلهٔ شاه‌کیخسرو در استان مرکزی؛ مختصات waypoint قله با گزارش GPS کانون کوهنوردان اراک تطبیق دارد. ارتفاع تقریبی ۲۹۶۶ متر از SRTM30m ثبت شده است.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+      "https://mountaineeringclub.blogfa.com/post/337",
+      "https://api.opentopodata.org/v1/srtm30m?locations=34.157498,49.2747",
+      "https://lovemount.blogfa.com/post/57"
+    ],
+    "latitude": 34.157498,
+    "longitude": 49.2747,
+    "elevation_m": 2966,
+    "status": "provisional",
+    "elevation_source": "SRTM30m در مختصات GPX: 2966 متر؛ ارتفاع تقریبی و منبع‌دار است. اختلاف ۱۵۵ متری با GLO90 طبق تأیید صریح کاربر در ۲۰۲۶-۱۱-۰۶ پذیرفته شد.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ شاه‌کیخسرو",
+    "short_category": "قله",
+    "category": "قله",
+    "region": "مرکزی · اراک · شاه‌کیخسرو",
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "is_active": true,
+    "slug": "shah-keykhosrow",
+    "is_popular": false,
+    "popular_order": 0
+  },
+  "weather_points": {
+    "alraj": {
+      "name": "روستای الرج",
+      "page_name": "روستای الرج",
+      "short_label": "روستای الرج",
+      "place_type": "village",
+      "category_key": "village",
+      "aliases": [
+        "الرج",
+        "الرگ",
+        "Alraj"
+      ],
+      "identity_summary": "روستای الرج، مبدأ پیادهٔ مسیر شاه‌کیخسرو؛ مختصات از شروع GPX در بافت روستا است و مبدأ فنی جدا ساخته نشده است.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+        "https://mountaineeringclub.blogfa.com/post/337",
+        "https://api.opentopodata.org/v1/srtm30m?locations=34.120219,49.315144",
+        "https://lovemount.blogfa.com/post/57"
+      ],
+      "latitude": 34.120219,
+      "longitude": 49.315144,
+      "elevation_m": 1998,
+      "status": "provisional",
+      "elevation_source": "SRTM30m در مختصات GPX: 1998 متر؛ ارتفاع تقریبی و منبع‌دار است.",
+      "climate": "alpine",
+      "tile_name": "روستای الرج",
+      "short_category": "روستا",
+      "category": "روستا",
+      "region": "مرکزی · اراک · شاه‌کیخسرو",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true
+    },
+    "shah-keykhosrow-cave": {
+      "name": "غار شاه‌کیخسرو",
+      "page_name": "غار شاه‌کیخسرو",
+      "short_label": "غار شاه‌کیخسرو",
+      "place_type": "landmark",
+      "category_key": "cave",
+      "aliases": [
+        "غار کیخسرو",
+        "غار شاه کیخسرو"
+      ],
+      "identity_summary": "دهانهٔ غار شاه‌کیخسرو در نزدیکی قله؛ مختصات از waypoint غار در GPX است. مسیر تا ورودی غار است و شامل پیمایش فنی داخل غار نمی‌شود.",
+      "importance": "support",
+      "kind": "route_point",
+      "seo_indexable": false,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+        "https://mountaineeringclub.blogfa.com/post/337",
+        "https://api.opentopodata.org/v1/srtm30m?locations=34.154966,49.276143",
+        "https://lovemount.blogfa.com/post/57"
+      ],
+      "latitude": 34.154966,
+      "longitude": 49.276143,
+      "elevation_m": 2926,
+      "status": "provisional",
+      "elevation_source": "SRTM30m در مختصات GPX: 2926 متر؛ ارتفاع تقریبی و منبع‌دار است.",
+      "climate": "alpine",
+      "tile_name": "غار شاه‌کیخسرو",
+      "short_category": "غار",
+      "category": "غار",
+      "region": "مرکزی · اراک · شاه‌کیخسرو",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true
+    },
+    "shah-keykhosrow": {
+      "name": "قلهٔ شاه‌کیخسرو",
+      "page_name": "قلهٔ شاه‌کیخسرو",
+      "short_label": "قلهٔ شاه‌کیخسرو",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "شاه کیخسرو",
+        "شاه‌کیخسرو",
+        "شاه زنده"
+      ],
+      "identity_summary": "قلهٔ شاه‌کیخسرو در استان مرکزی؛ مختصات waypoint قله با گزارش GPS کانون کوهنوردان اراک تطبیق دارد. ارتفاع تقریبی ۲۹۶۶ متر از SRTM30m ثبت شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+        "https://mountaineeringclub.blogfa.com/post/337",
+        "https://api.opentopodata.org/v1/srtm30m?locations=34.157498,49.2747",
+        "https://lovemount.blogfa.com/post/57"
+      ],
+      "latitude": 34.157498,
+      "longitude": 49.2747,
+      "elevation_m": 2966,
+      "status": "provisional",
+      "elevation_source": "SRTM30m در مختصات GPX: 2966 متر؛ ارتفاع تقریبی و منبع‌دار است. اختلاف ۱۵۵ متری با GLO90 طبق تأیید صریح کاربر در ۲۰۲۶-۱۱-۰۶ پذیرفته شد.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ شاه‌کیخسرو",
+      "short_category": "قله",
+      "category": "قله",
+      "region": "مرکزی · اراک · شاه‌کیخسرو",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true
+    }
+  },
+  "shared_weather_points": [],
+  "routes": {
+    "alraj": {
+      "slug": "shah-keykhosrow-alraj",
+      "title": "روستای الرج تا قلهٔ شاه‌کیخسرو",
+      "subtitle": "روستای الرج ← دهانهٔ غار شاه‌کیخسرو ← قلهٔ شاه‌کیخسرو",
+      "trail_label": "صعود از روستای الرج",
+      "origin": "روستای الرج",
+      "target_label": "قلهٔ شاه‌کیخسرو",
+      "region": "مرکزی · اراک",
+      "sort_order": 1,
+      "featured": true,
+      "points": [
+        "alraj",
+        "shah-keykhosrow-cave",
+        "shah-keykhosrow"
+      ],
+      "distance_km": 7.51,
+      "ascent_m": 971,
+      "descent_m": 3,
+      "one_way_minutes": 240,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+srtm-profile+web-v1",
+        "version": "shah-keykhosrow-timing-v1",
+        "confidence": "medium",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+          "https://mountaineeringclub.blogfa.com/post/337"
+        ],
+        "cumulative_minutes": {
+          "alraj": 0,
+          "shah-keykhosrow-cave": 225,
+          "shah-keykhosrow": 240
+        }
+      },
+      "public_note": "مسیر صعود از الرج، شیب‌دار و در نزدیکی قله دارای دست‌به‌سنگ است. زمان یک‌طرفه تخمینی است. مسیر فقط از کنار دهانهٔ غار می‌گذرد و شامل پیمایش فنی داخل غار نمی‌شود. آب موردنیاز را از روستا همراه ببرید.",
+      "internal_note": "GPX2517 points; outbound indices0..1349:7.5059km; max step19.96m; origin gap1.28m,cave1.89m,target0.22m. Cave at7.122km precedes summit. Outbound moving198min/elapsed276min; timestamps recorded. GPX50m/MA5 gain915m reference only. Independent SRTM100m/MA5 gain971m/loss3m with source endpoint elevations1998/2966m. ETA240±60min estimated. User explicitly waived only summit155m GLO90 disagreement; provider hourly/grid checks still required."
+    }
+  },
+  "elevation_review": {
+    "point_slug": "shah-keykhosrow",
+    "catalog_elevation_m": 2966,
+    "glo90_elevation_m": 2811,
+    "delta_m": 155,
+    "decision": "Explicit user instruction accepts this documented discrepancy for this summit; standard policy for other points unchanged.",
+    "authorized_at": "2026-11-06T16:22:56.471185+00:00"
+  }
+}

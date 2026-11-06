@@ -1,0 +1,446 @@
+{
+  "checked_at": "2026-11-06T16:24:59.761546+00:00",
+  "scope": "Publish Shah Keykhosrow and Alraj hiking route with explicit user-approved elevation exception.",
+  "authorization": {
+    "instruction": "اختلاف ارتفاع رو بذار کنار اشکال نداره.. اضافه ش کن با مسیرش.. یه ارتفاع معقول و نزدیکی رو بزن براش",
+    "applies_to": "shah-keykhosrow summit only",
+    "selected_elevation_m": 2966,
+    "source": "OpenTopoData SRTM30m at named summit waypoint",
+    "glo90_elevation_m": 2811,
+    "known_discrepancy_m": 155,
+    "global_default_delta_m": 100,
+    "global_policy_changed": false
+  },
+  "weather_validation": {
+    "command": "python3 scripts/validate_open_meteo_catalog.py --catalog apps/api/fixtures/catalog/shah_keykhosrow_v1.json --max-elevation-delta-m 160 --json",
+    "report": {
+      "catalog": "apps/api/fixtures/catalog/shah_keykhosrow_v1.json",
+      "catalog_version": "hawatch-shah-keykhosrow-v1",
+      "errors": [],
+      "warnings": [],
+      "points": [
+        {
+          "slug": "alraj",
+          "name": "روستای الرج",
+          "latitude": 34.120219,
+          "longitude": 49.315144,
+          "catalog_elevation_m": 1998,
+          "status": "provisional",
+          "dem_elevation_m": 2012.0,
+          "cell_selection": "nearest",
+          "provider_latitude": 34.122887,
+          "provider_longitude": 49.31415,
+          "provider_elevation_m": 1998.0,
+          "provider_distance_km": 0.31,
+          "hour_count": 24,
+          "missing_hourly_fields": [],
+          "hourly_length_mismatches": [],
+          "dem_delta_m": -14.0,
+          "elevation_status": "catalog"
+        },
+        {
+          "slug": "shah-keykhosrow-cave",
+          "name": "غار شاه‌کیخسرو",
+          "latitude": 34.154966,
+          "longitude": 49.276143,
+          "catalog_elevation_m": 2926,
+          "status": "provisional",
+          "dem_elevation_m": 2915.0,
+          "cell_selection": "nearest",
+          "provider_latitude": 34.13377,
+          "provider_longitude": 49.25248,
+          "provider_elevation_m": 2926.0,
+          "provider_distance_km": 3.209,
+          "hour_count": 24,
+          "missing_hourly_fields": [],
+          "hourly_length_mismatches": [],
+          "dem_delta_m": 11.0,
+          "elevation_status": "catalog"
+        },
+        {
+          "slug": "shah-keykhosrow",
+          "name": "قلهٔ شاه‌کیخسرو",
+          "latitude": 34.157498,
+          "longitude": 49.2747,
+          "catalog_elevation_m": 2966,
+          "status": "provisional",
+          "dem_elevation_m": 2811.0,
+          "cell_selection": "nearest",
+          "provider_latitude": 34.13377,
+          "provider_longitude": 49.25248,
+          "provider_elevation_m": 2966.0,
+          "provider_distance_km": 3.338,
+          "hour_count": 24,
+          "missing_hourly_fields": [],
+          "hourly_length_mismatches": [],
+          "dem_delta_m": 155.0,
+          "elevation_status": "catalog"
+        }
+      ],
+      "summary": {
+        "point_count": 3,
+        "provider_checked": 3,
+        "unresolved_elevation_count": 0,
+        "error_count": 0,
+        "warning_count": 0,
+        "pass": true
+      }
+    },
+    "checks_retained": [
+      "WGS84",
+      "DEM available",
+      "provider elevation",
+      "grid distance <=6km",
+      "valid hourly fields for every point"
+    ],
+    "note": "Maximum160m used only for this3-point batch; assert exactly one >100m discrepancy, shah-keykhosrow155m. Other points retain normal100m requirement. Wrapper lacks a per-run threshold option, so documented manual seed/check/ingest/preflight sequence was used."
+  },
+  "identity": {
+    "summit": [
+      34.157498,
+      49.2747
+    ],
+    "cave_entrance": [
+      34.154966,
+      49.276143
+    ],
+    "origin_village": [
+      34.120219,
+      49.315144
+    ],
+    "nearest_existing_point_distance_m": [
+      12571,
+      12375,
+      11608
+    ],
+    "independent_route_source": "https://mountaineeringclub.blogfa.com/post/337",
+    "cave_source": "https://lovemount.blogfa.com/post/57",
+    "track_source": "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261",
+    "cave_model_note": "Deployed validator lacks place_type cave; landmark with category_key cave preserves the feature identity and cave icon without code deployment."
+  },
+  "route": {
+    "slug": "shah-keykhosrow-alraj",
+    "chain": [
+      "alraj",
+      "shah-keykhosrow-cave",
+      "shah-keykhosrow"
+    ],
+    "distance_km": 7.51,
+    "ascent_m": 971,
+    "max_outbound_step_m": 19.96,
+    "target_gap_m": 0.222,
+    "cave_gap_m": 1.893,
+    "profile": {
+      "method": "SRTM30m at nearest GPX samples every100m; centered5-point mean; endpoints anchored to source catalog1998/2966m",
+      "ascent_m": 970.75,
+      "descent_m": 2.75,
+      "sample_count": 77,
+      "sample_indices": [
+        0,
+        18,
+        36,
+        54,
+        71,
+        89,
+        107,
+        125,
+        143,
+        161,
+        178,
+        196,
+        214,
+        232,
+        249,
+        267,
+        285,
+        302,
+        320,
+        337,
+        355,
+        373,
+        390,
+        408,
+        426,
+        443,
+        461,
+        479,
+        497,
+        514,
+        532,
+        550,
+        568,
+        586,
+        604,
+        622,
+        640,
+        658,
+        677,
+        695,
+        714,
+        733,
+        752,
+        771,
+        789,
+        808,
+        827,
+        846,
+        865,
+        884,
+        902,
+        922,
+        941,
+        959,
+        977,
+        995,
+        1013,
+        1028,
+        1043,
+        1057,
+        1074,
+        1092,
+        1110,
+        1128,
+        1147,
+        1165,
+        1184,
+        1202,
+        1220,
+        1239,
+        1258,
+        1276,
+        1294,
+        1312,
+        1330,
+        1348,
+        1349
+      ],
+      "source_elevations_m": [
+        1998.0,
+        2012.0,
+        2025.0,
+        2024.0,
+        2036.0,
+        2040.0,
+        2043.0,
+        2043.0,
+        2051.0,
+        2070.0,
+        2073.0,
+        2086.0,
+        2094.0,
+        2090.0,
+        2092.0,
+        2108.0,
+        2113.0,
+        2119.0,
+        2135.0,
+        2150.0,
+        2151.0,
+        2166.0,
+        2163.0,
+        2170.0,
+        2185.0,
+        2185.0,
+        2190.0,
+        2196.0,
+        2210.0,
+        2219.0,
+        2228.0,
+        2237.0,
+        2230.0,
+        2243.0,
+        2251.0,
+        2268.0,
+        2293.0,
+        2313.0,
+        2333.0,
+        2359.0,
+        2375.0,
+        2406.0,
+        2432.0,
+        2466.0,
+        2491.0,
+        2519.0,
+        2554.0,
+        2590.0,
+        2616.0,
+        2643.0,
+        2682.0,
+        2717.0,
+        2734.0,
+        2734.0,
+        2720.0,
+        2725.0,
+        2730.0,
+        2748.0,
+        2747.0,
+        2743.0,
+        2734.0,
+        2747.0,
+        2754.0,
+        2764.0,
+        2791.0,
+        2811.0,
+        2836.0,
+        2850.0,
+        2867.0,
+        2871.0,
+        2917.0,
+        2943.0,
+        2962.0,
+        2969.0,
+        2973.0,
+        2967.0,
+        2966.0
+      ]
+    },
+    "track_review": {
+      "author": null,
+      "catalog_applied": false,
+      "coverage": null,
+      "cut": {
+        "direction": "forward",
+        "origin_gap_m": null,
+        "origin_index": 0,
+        "reversed_for_analysis": false,
+        "target_gap_m": 0.222,
+        "target_index": 1349
+      },
+      "distance_km": 7.51,
+      "filename": "shah-keykhosrow-alraj-to-summit-219883261.gpx",
+      "gpx_elevation_reference_only": true,
+      "license_status": "unverified",
+      "methods": {
+        "ascent": "resample every 50.0 m, centered 5-sample moving average, sum positive deltas; GPX ele reference-only",
+        "distance": "haversine R=6371000.0",
+        "moving_pause_rule": "exclude segment when dt>=45.0s and displacement<=10.0m; only when timestamp_quality=recorded"
+      },
+      "moving_minutes_estimate": 198.15,
+      "net_elevation_change_m": 909.3,
+      "point_count_cut": 1350,
+      "point_count_raw": 2517,
+      "recorded_elapsed_minutes": 275.62,
+      "robust_smoothed_ascent_m": 915.1,
+      "route_point_comparisons": [
+        {
+          "along_track_distance_m": 0.0,
+          "elapsed_minutes": 0.0,
+          "moving_minutes": null,
+          "nearest_distance_m": 1.28,
+          "nearest_index": 0,
+          "slug": "alraj",
+          "track_elevation_m": 2006.776
+        },
+        {
+          "along_track_distance_m": 7122.45,
+          "elapsed_minutes": 267.55,
+          "moving_minutes": 191.28,
+          "nearest_distance_m": 1.89,
+          "nearest_index": 1280,
+          "slug": "shah-keykhosrow-cave",
+          "track_elevation_m": 2913.58
+        },
+        {
+          "along_track_distance_m": 7505.91,
+          "elapsed_minutes": 275.62,
+          "moving_minutes": 198.15,
+          "nearest_distance_m": 0.22,
+          "nearest_index": 1349,
+          "slug": "shah-keykhosrow",
+          "track_elevation_m": 2936.946
+        }
+      ],
+      "route_slug": "shah-keykhosrow-alraj",
+      "timestamp_quality": "recorded",
+      "timestamp_time_diagnostic": null,
+      "wikiloc_url": "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261"
+    },
+    "technical_review": "Ordinary hiking with summit scrambling; route passes cave entrance and does not include technical cave interior. Return excluded from metrics.",
+    "timing": "Catalog240±60min estimated; real recorded outbound moving198min/elapsed276min; runtime uses central distance/ascent pace estimator."
+  },
+  "publication": {
+    "status": "published",
+    "exit_code": 0,
+    "ingest_snapshot": 842,
+    "forecast_freshness": "ready",
+    "strict_preflight_points": [
+      "shah-keykhosrow",
+      "shah-keykhosrow-cave",
+      "alraj"
+    ],
+    "all_preflights_pass": true
+  },
+  "google_index_status": "unconfirmed",
+  "canonical_checks": [
+    {
+      "url": "https://hawatch.ir/points/shah-keykhosrow",
+      "status": 200,
+      "canonical": [
+        "https://hawatch.ir/points/shah-keykhosrow"
+      ]
+    },
+    {
+      "url": "https://hawatch.ir/routes/shah-keykhosrow-alraj",
+      "status": 200,
+      "canonical": [
+        "https://hawatch.ir/routes/shah-keykhosrow-alraj"
+      ]
+    }
+  ],
+  "public_forecast_checks": {
+    "route_public_status": 200,
+    "canonical": [
+      "https://hawatch.ir/routes/shah-keykhosrow-alraj"
+    ],
+    "in_sitemap": true,
+    "api": [
+      {
+        "speed": "slow",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          700,
+          720
+        ],
+        "duration_minutes": 300,
+        "timing_confidence": "medium",
+        "timing_uncertainty_minutes": 60
+      },
+      {
+        "speed": "medium",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          595,
+          605
+        ],
+        "duration_minutes": 185,
+        "timing_confidence": "medium",
+        "timing_uncertainty_minutes": 60
+      },
+      {
+        "speed": "fast",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          525,
+          530
+        ],
+        "duration_minutes": 110,
+        "timing_confidence": "medium",
+        "timing_uncertainty_minutes": 60
+      }
+    ]
+  },
+  "sitemap_checks": {
+    "summit_in_sitemap": true,
+    "route_in_sitemap": true,
+    "village_in_sitemap": false,
+    "cave_in_sitemap": false
+  },
+  "screen_checks": "design/screens/shah-keykhosrow-route-2026-11-06/verification.json",
+  "indexing_backlog_total": 1253
+}

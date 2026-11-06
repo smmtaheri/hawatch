@@ -203,7 +203,6 @@
       "pass": false
     }
   },
-  "shah_keykhosrow_draft": "docs/drafts/catalog/shah_keykhosrow_20261106_v1.json",
   "public_checks": {
     "route_public_status": 200,
     "canonical": [
@@ -268,5 +267,11 @@
     "new_route_added": true,
     "google_status": "unconfirmed",
     "backlog_total": 1251
+  },
+  "shah_keykhosrow_draft_at_time_of_review": "docs/drafts/catalog/shah_keykhosrow_20261106_v1.json",
+  "subsequent_user_authorized_publication": {
+    "catalog": "apps/api/fixtures/catalog/shah_keykhosrow_v1.json",
+    "report": "docs/research/shah-keykhosrow-authorized-publication-2026-11-06.json",
+    "reason": "Later user explicitly accepted the summit elevation discrepancy; previous blocked outcome remains a historical record."
   }
 }
