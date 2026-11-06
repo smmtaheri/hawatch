@@ -14,7 +14,8 @@ from rest_framework.response import Response
 from hawatch.modules.forecasts.models import WeatherPoint
 from hawatch.modules.routes.models import Route
 
-from .models import PageViewEvent
+from .models import PageViewEvent, VisitSession
+from .attribution import TOKEN, NAVIGATIONS, attribution, public_path
 
 
 _TOKEN_RE = re.compile(r"^[A-Za-z0-9_-]{16,128}$")
@@ -39,7 +40,9 @@ def _valid_page(page_type: str, slug: str) -> bool:
 
 
 def _rate_limited(visitor_hash: str) -> bool:
-    limit = int(getattr(settings, "ANALYTICS_RATE_LIMIT_PER_MINUTE", _DEFAULT_RATE_LIMIT))
+    limit = int(
+        getattr(settings, "ANALYTICS_RATE_LIMIT_PER_MINUTE", _DEFAULT_RATE_LIMIT)
+    )
     key = f"hawatch:analytics:rate:{visitor_hash}"
     try:
         if cache.add(key, 1, timeout=60):
@@ -63,7 +66,9 @@ def page_view_event(request):
         raise ValidationError("بدنهٔ درخواست بیش از حد بزرگ است.")
 
     django_user = getattr(getattr(request, "_request", None), "user", None)
-    if getattr(request.user, "is_staff", False) or getattr(django_user, "is_staff", False):
+    if getattr(request.user, "is_staff", False) or getattr(
+        django_user, "is_staff", False
+    ):
         return Response({"accepted": False, "ignored": "staff"})
     if _BOT_RE.search(request.META.get("HTTP_USER_AGENT", "")):
         return Response({"accepted": False, "ignored": "bot"})
@@ -75,7 +80,11 @@ def page_view_event(request):
     slug = payload.get("slug")
     visitor_id = payload.get("visitor_id")
     navigation_id = payload.get("navigation_id")
-    if page_type not in {PageViewEvent.PageType.POINT, PageViewEvent.PageType.ROUTE}:
+    if not isinstance(page_type, str) or page_type not in {
+        PageViewEvent.PageType.POINT,
+        PageViewEvent.PageType.ROUTE,
+        "entry",
+    }:
         raise ValidationError("نوع صفحه نامعتبر است.")
     if not isinstance(slug, str) or not _SLUG_RE.fullmatch(slug):
         raise ValidationError("شناسهٔ صفحه نامعتبر است.")
@@ -83,19 +92,48 @@ def page_view_event(request):
         raise ValidationError("شناسهٔ بازدیدکننده نامعتبر است.")
     if not isinstance(navigation_id, str) or not _TOKEN_RE.fullmatch(navigation_id):
         raise ValidationError("شناسهٔ پیمایش نامعتبر است.")
-    if not _valid_page(page_type, slug):
+    if page_type != "entry" and not _valid_page(page_type, slug):
         raise NotFound("این صفحه وجود ندارد.")
 
     visitor_hash = _visitor_digest(visitor_id)
     if _rate_limited(visitor_hash):
         return Response({"accepted": False, "rate_limited": True}, status=429)
+    context = payload.get("attribution")
+    context = context if isinstance(context, dict) else {}
+    enabled = getattr(settings, "ANALYTICS_ATTRIBUTION_ENABLED", True)
+    session_id = context.get("session_id")
+    has_context = (
+        enabled and isinstance(session_id, str) and TOKEN.fullmatch(session_id)
+    )
+    if page_type == "entry" and (
+        not has_context or not public_path(context.get("landing_path"))
+    ):
+        return Response({"accepted": False, "ignored": "entry_without_context"})
     try:
         with transaction.atomic():
+            session = None
+            if has_context:
+                session, _ = VisitSession.objects.get_or_create(
+                    visitor_hash=visitor_hash,
+                    session_hash=_visitor_digest(session_id),
+                    defaults=attribution(context),
+                )
+            if page_type == "entry":
+                return Response({"accepted": True}, status=201)
             PageViewEvent.objects.create(
                 page_type=page_type,
                 page_slug=slug,
                 visitor_hash=visitor_hash,
                 navigation_id=navigation_id,
+                session=session,
+                previous_path=public_path(context.get("previous_path"))
+                if enabled
+                else "",
+                navigation_source=context.get("navigation_source")
+                if enabled
+                and isinstance(context.get("navigation_source"), str)
+                and context.get("navigation_source") in NAVIGATIONS
+                else "unknown",
             )
     except IntegrityError:
         return Response({"accepted": False, "duplicate": True})

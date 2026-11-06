@@ -1,43 +1,32 @@
 {% extends "admin/base_site.html" %}
 {% block content %}
+<style>
+.analytics-controls{display:flex;flex-wrap:wrap;gap:12px;padding:16px}.analytics-controls .field{display:flex;flex-direction:column;gap:4px;max-width:100%}.analytics-controls input,.analytics-controls select{box-sizing:border-box;max-width:100%;min-height:32px}.analytics-summary{display:flex;flex-wrap:wrap;gap:24px;padding:16px}.analytics-table{max-width:100%;overflow:auto}.analytics-bar{display:inline-block;height:8px;background:var(--primary);min-width:1px}.analytics-chart{width:120px;max-width:100%}.analytics-notice{padding:12px;border-inline-start:3px solid var(--primary)}
+</style>
 <div id="content-main">
-  <form method="get" class="module aligned">
-    <label>نوع صفحه
-      <select name="type">
-        <option value="all" {% if selected_type == "all" %}selected{% endif %}>همه</option>
-        <option value="point" {% if selected_type == "point" %}selected{% endif %}>Point</option>
-        <option value="route" {% if selected_type == "route" %}selected{% endif %}>Route</option>
-      </select>
-    </label>
-    <label>بازه
-      <select name="range">
-        {% for key, label in ranges.items %}<option value="{{ key }}" {% if selected_range == key %}selected{% endif %}>{{ label }}</option>{% endfor %}
-      </select>
-    </label>
-    <label>مرتب‌سازی بر اساس
-      <select name="metric">
-        <option value="page_views" {% if selected_metric == "page_views" %}selected{% endif %}>Page View</option>
-        <option value="unique_visitors" {% if selected_metric == "unique_visitors" %}selected{% endif %}>بازدیدکنندهٔ یکتا</option>
-      </select>
-    </label>
-    <label>ترتیب
-      <select name="order">
-        <option value="desc" {% if selected_order == "desc" %}selected{% endif %}>نزولی</option>
-        <option value="asc" {% if selected_order == "asc" %}selected{% endif %}>صعودی</option>
-      </select>
-    </label>
-    <button type="submit" class="button">اعمال</button>
+  <form method="get" class="module analytics-controls">
+    {{ form.non_field_errors }}
+    {% for field in form %}{% if field.is_hidden %}{{ field }}{% else %}<div class="field">{{ field.label_tag }}{{ field }}{{ field.errors }}</div>{% endif %}{% endfor %}
+    <div><button type="submit" class="button">اعمال</button> <a href="?range=24h">پاک‌کردن فیلترها</a></div>
   </form>
-
-  <h2>خلاصهٔ بازه‌ها</h2>
-  {% if has_historical_aggregates %}<p class="help">داده‌های خام فقط ۳۰ روز نگهداری می‌شوند. اعداد «کل زمان» شامل تجمیع‌های ماهانه‌اند و Unique Visitor تاریخی به‌دلیل جمع distinct ماه‌ها تقریبی است.</p>{% endif %}
-  <table class="adminlist"><thead><tr><th>بازه</th><th>Page View</th><th>بازدیدکنندهٔ یکتا</th></tr></thead><tbody>
-    {% for summary in summary_rows %}<tr><td>{{ summary.label }}</td><td>{{ summary.page_views }}</td><td>{{ summary.unique_visitors }}</td></tr>{% endfor %}
-  </tbody></table>
-
-  <h2>صفحات ({{ selected_range_label }})</h2>
-  <table id="result_list" class="adminlist"><thead><tr><th>نوع</th><th>نام فارسی</th><th>slug</th><th>Page View</th><th>بازدیدکنندهٔ یکتا</th></tr></thead><tbody>
-    {% for row in rows %}<tr><td>{{ row.page_type_label }}</td><td>{{ row.name }}</td><td>{{ row.slug }}</td><td>{{ row.page_views }}</td><td>{{ row.unique_visitors }}</td></tr>{% empty %}<tr><td colspan="5">صفحه‌ای پیدا نشد.</td></tr>{% endfor %}
-  </tbody></table>
+  {% if summary %}
+  <p>بازه: {% if start %}{{ start|date:"Y-m-d H:i:s" }}{% else %}ابتدای تاریخچهٔ موجود{% endif %} تا {{ end|date:"Y-m-d H:i:s" }} — ساعت تهران. پایان بازه در صفحه‌بندی و خروجی ثابت است.</p>
+  <div class="module analytics-summary">
+    <div>{% if is_entries %}ورود به کل سایت{% else %}بازدید صفحه (Page View){% endif %}: <strong>{{ summary.page_views }}</strong></div>
+    <div>بازدیدکنندهٔ یکتا: <strong>{{ summary.unique_visitors }}</strong></div>
+    <div>نوبت بازدید: <strong>{{ summary.sessions }}</strong></div>
+  </div>
+  <p class="help">هر بازدیدکننده در کل بازه یک‌بار در «یکتا» حساب می‌شود؛ جمع یکتای ردیف‌ها لزوماً با یکتای کل برابر نیست. نوبت بازدید با شناسهٔ مرورگری و وقفهٔ ۳۰ دقیقه‌ای تخمین زده می‌شود.</p>
+  {% if coverage %}<p class="help">تاریخچهٔ دقیقِ قابل اتکا از {{ coverage.detailed_since|date:"Y-m-d H:i" }}؛ ثبت منابع ورود از {{ coverage.attribution_since|date:"Y-m-d H:i" }}. دادهٔ ثبت‌نشدهٔ گذشته بازسازی نمی‌شود.</p>{% endif %}
+  {% if partial_history %}<p class="analytics-notice">این بازه از مرز تاریخچهٔ دقیق قدیمی‌تر است؛ داده‌های حذف‌شدهٔ گذشته موجود نیستند. اعداد را پوشش کامل این بازه فرض نکنید.</p>{% endif %}
+  {% if has_historical_aggregates %}<p class="help">تاریخچهٔ ماهانهٔ قدیمی فقط در «کل زمان» بدون فیلتر منبع/ناوبری اضافه می‌شود؛ یکتای تاریخی تقریبی و فاقد شمارش نوبت است. در تفکیک‌های دیگر جدا نمایش داده می‌شود.</p>{% endif %}
+  <p><a class="button" href="?{{ query_string }}&amp;export=csv">خروجی CSV همین گزارش</a> · برای جزئیات روی نام گروه کلیک کنید.</p>
+  <h2>تفکیک بر اساس {{ group_label }}</h2>
+  <div class="analytics-table"><table id="result_list"><thead><tr><th>گروه</th><th>تعداد بازدید / ورود</th><th>بازدیدکنندهٔ یکتا</th><th>نوبت بازدید</th><th>نمودار تعداد</th></tr></thead><tbody>
+  {% for row in rows %}<tr><td>{% if row.detail_url %}<a href="{{ row.detail_url }}">{{ row.label }}</a>{% else %}{{ row.label }}{% endif %}{% if row.page_slug %}<br><small>{{ row.page_type }} · {{ row.page_slug }}</small>{% endif %}</td><td>{{ row.page_views }}</td><td>{{ row.unique_visitors }}</td><td>{{ row.sessions }}</td><td><div class="analytics-chart"><span class="analytics-bar" style="width:{{ row.bar_pct }}%" aria-hidden="true"></span></div></td></tr>{% empty %}<tr><td colspan="5">داده‌ای با این فیلترها وجود ندارد.</td></tr>{% endfor %}
+  {% if legacy_row %}<tr><td>{{ legacy_row.label }}</td><td>{{ legacy_row.page_views }}</td><td>{{ legacy_row.unique_visitors }} (تقریبی)</td><td>موجود نیست</td><td></td></tr>{% endif %}
+  </tbody></table></div>
+  <p class="paginator">{% if page_obj.has_previous %}<a href="?{{ query_string }}&amp;page={{ page_obj.previous_page_number }}">قبلی</a>{% endif %} صفحهٔ {{ page_obj.number }} از {{ page_obj.paginator.num_pages }} {% if page_obj.has_next %}<a href="?{{ query_string }}&amp;page={{ page_obj.next_page_number }}">بعدی</a>{% endif %}</p>
+  {% endif %}
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, useNavigationType } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
-import { trackPageView } from "../api/client";
+import { createInternalNavigationTracker } from "../lib/internalAnalytics";
 import { HomePage } from "../pages/HomePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { RoutePageViewTracker } from "./RoutePageViewTracker";
@@ -24,7 +24,9 @@ export function App() {
 
 export function AppRoutes() {
   const location = useLocation();
-  const trackedNavigationRef = useRef<string | null>(null);
+  const navigationType = useNavigationType();
+  const analytics = useRef<ReturnType<typeof createInternalNavigationTracker> | null>(null);
+  if (!analytics.current) analytics.current = createInternalNavigationTracker();
   useLayoutEffect(() => {
     startPageLoad(location.pathname);
     prepareForecastPage(location.pathname);
@@ -55,13 +57,8 @@ export function AppRoutes() {
   };
 
   useEffect(() => {
-    const match = location.pathname.match(/^\/(points|routes)\/([^/]+)\/?$/);
-    if (!match) return;
-    const fingerprint = location.pathname;
-    if (trackedNavigationRef.current === fingerprint) return;
-    trackedNavigationRef.current = fingerprint;
-    trackPageView(match[1] === "points" ? "point" : "route", match[2]);
-  }, [location.pathname]);
+    analytics.current?.visit(location.pathname, navigationType);
+  }, [location.pathname, navigationType]);
 
   return (
     <>

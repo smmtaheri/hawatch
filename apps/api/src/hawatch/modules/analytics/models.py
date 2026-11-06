@@ -2,6 +2,37 @@ from django.db import models
 from django.utils import timezone
 
 
+class VisitSession(models.Model):
+    visitor_hash = models.CharField(max_length=64)
+    session_hash = models.CharField(max_length=64)
+    started_at = models.DateTimeField(default=timezone.now, db_index=True)
+    source = models.CharField(max_length=24, default="unknown", db_index=True)
+    source_evidence = models.CharField(max_length=12, default="none")
+    utm_source = models.CharField(max_length=100, blank=True)
+    medium = models.CharField(max_length=100, blank=True)
+    campaign = models.CharField(max_length=100, blank=True)
+    referrer_host = models.CharField(max_length=200, blank=True)
+    landing_path = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["visitor_hash", "session_hash"], name="uniq_analytics_session"
+            )
+        ]
+        indexes = [
+            models.Index(
+                fields=["source", "started_at"], name="analytics_source_time_idx"
+            )
+        ]
+
+
+class AnalyticsCoverage(models.Model):
+    # Singleton, initialized during migration; never guess historical attribution.
+    detailed_since = models.DateTimeField()
+    attribution_since = models.DateTimeField()
+
+
 class PageViewEvent(models.Model):
     class PageType(models.TextChoices):
         POINT = "point", "Point"
@@ -9,12 +40,21 @@ class PageViewEvent(models.Model):
 
     page_type = models.CharField(max_length=8, choices=PageType.choices)
     page_slug = models.SlugField(max_length=96)
-    # HMAC digest of a first-party random visitor token. The raw token is
-    # never sent to or persisted by the API.
+    # HMAC digest of a first-party random visitor token. The API receives
+    # the anonymous token but never persists its raw value.
     visitor_hash = models.CharField(max_length=64)
-    # Generated once per SPA history entry so retries are idempotent.
+    # Stable for retries/effects of one navigation occurrence, including POP.
     navigation_id = models.CharField(max_length=64)
     occurred_at = models.DateTimeField(default=timezone.now, db_index=True)
+    session = models.ForeignKey(
+        VisitSession,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="events",
+    )
+    previous_path = models.CharField(max_length=200, blank=True)
+    navigation_source = models.CharField(max_length=24, default="unknown")
 
     class Meta:
         constraints = [
@@ -28,7 +68,10 @@ class PageViewEvent(models.Model):
                 fields=["page_type", "page_slug", "occurred_at"],
                 name="analytics_page_period_idx",
             ),
-            models.Index(fields=["visitor_hash", "occurred_at"], name="analytics_visitor_time_idx"),
+            models.Index(
+                fields=["visitor_hash", "occurred_at"],
+                name="analytics_visitor_time_idx",
+            ),
         ]
 
     def __str__(self) -> str:
@@ -54,7 +97,10 @@ class MonthlyPageViewAggregate(models.Model):
             )
         ]
         indexes = [
-            models.Index(fields=["month_start", "page_type", "page_slug"], name="analytics_month_page_idx"),
+            models.Index(
+                fields=["month_start", "page_type", "page_slug"],
+                name="analytics_month_page_idx",
+            ),
         ]
 
     def __str__(self) -> str:

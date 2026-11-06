@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-11-06T18:01:58Z",
+  "environment": "local disposable PostGIS with synthetic data; no production changes",
+  "viewports": [
+    {
+      "title": "گزارش بازدید و منابع ورود | مدیریت وب‌گاه Django",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "bodyWidth": 1425,
+      "dir": "rtl",
+      "fields": 16,
+      "summary": "بازدید صفحه (Page View): 3\nبازدیدکنندهٔ یکتا: 1\nنوبت بازدید: 1",
+      "table": "گروه\tتعداد بازدید / ورود\tبازدیدکنندهٔ یکتا\tنوبت بازدید\tنمودار تعداد\nگوگل\t3\t1\t1\t",
+      "viewport": "desktop"
+    },
+    {
+      "title": "گزارش بازدید و منابع ورود | مدیریت وب‌گاه Django",
+      "width": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "dir": "rtl",
+      "fields": 16,
+      "summary": "بازدید صفحه (Page View): 3\nبازدیدکنندهٔ یکتا: 1\nنوبت بازدید: 1",
+      "table": "گروه\tتعداد بازدید / ورود\tبازدیدکنندهٔ یکتا\tنوبت بازدید\tنمودار تعداد\nگوگل\t3\t1\t1\t",
+      "viewport": "mobile"
+    }
+  ],
+  "report_checks": [
+    {
+      "query": "?range=days&days=24&source=google&group=time",
+      "status": 200,
+      "cache": "private, no-store, max-age=0, no-cache, must-revalidate",
+      "robots": "noindex,nofollow",
+      "contentType": "text/html; charset=utf-8",
+      "hasData": true
+    },
+    {
+      "query": "?scope=entries&range=7d&group=source",
+      "status": 200,
+      "cache": "private, no-store, max-age=0, no-cache, must-revalidate",
+      "robots": "noindex,nofollow",
+      "contentType": "text/html; charset=utf-8",
+      "hasData": true
+    },
+    {
+      "query": "?range=30d&group=source&export=csv",
+      "status": 200,
+      "cache": "private, no-store, max-age=0, no-cache, must-revalidate",
+      "robots": "noindex,nofollow",
+      "contentType": "text/csv; charset=utf-8",
+      "hasData": true
+    }
+  ]
+}

@@ -157,3 +157,16 @@ def test_home_html_embeds_the_ranked_first_paint_data(client, catalog):
     assert [point["slug"] for point in data["popular_points"][:2]] == ["damavand", "tochal"]
     assert data["catalog_counts"]["points"] > 0
     assert isinstance(data["catalog_counts"]["routes"], int)
+
+
+@pytest.mark.django_db
+@override_settings(DEMO_DATA_ENABLED=False)
+def test_repeated_clicks_across_sessions_and_days_cannot_outvote_two_visitors(catalog):
+    for n in range(100):
+        record_visit(
+            page_type="point", slug="tochal", visitor=1,
+            navigation=1000 + n, days_ago=n % 6,
+        )
+    record_visit(page_type="point", slug="damavand", visitor=2, navigation=2001)
+    record_visit(page_type="point", slug="damavand", visitor=3, navigation=2002)
+    assert home_catalog_data()["popular_points"][0]["slug"] == "damavand"

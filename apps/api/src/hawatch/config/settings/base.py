@@ -31,6 +31,9 @@ LANGUAGE_CODE = "fa"
 USE_I18N = True
 USE_TZ = True
 
+ANALYTICS_ATTRIBUTION_ENABLED = env_bool("ANALYTICS_ATTRIBUTION_ENABLED", True)
+ANALYTICS_REPORT_TIMEOUT_MS = max(100, min(30000, int(env("ANALYTICS_REPORT_TIMEOUT_MS", "3000"))))
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

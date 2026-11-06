@@ -6,13 +6,13 @@ from hawatch.modules.analytics.retention import aggregate_and_cleanup_page_views
 
 
 class Command(BaseCommand):
-    help = "Aggregate monthly analytics and delete raw page-view events older than 30 days."
+    help = "Report retained exact analytics history; historical monthly totals remain unchanged."
 
     def add_arguments(self, parser):
         parser.add_argument(
             "--dry-run",
             action="store_true",
-            help="Report eligible monthly aggregates and deletions without changing the database.",
+            help="Report the non-destructive history retention policy.",
         )
 
     def handle(self, *args, **options):

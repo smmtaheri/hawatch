@@ -40,3 +40,22 @@ describe("internal analytics", () => {
     expect(() => trackPageView("point", "tochal")).not.toThrow();
   });
 });
+
+it("reuses an in-memory anonymous visitor if persistent storage is blocked", () => {
+  const fetchMock = vi.fn<typeof fetch>(() => Promise.resolve(new Response(null, { status: 201 })));
+  vi.stubGlobal("fetch", fetchMock);
+  const get = vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => { throw new Error("blocked"); });
+  trackPageView("point", "tochal");trackPageView("point", "tochal");
+  expect(JSON.parse(String(fetchMock.mock.calls[0]![1]?.body)).visitor_id).toBe(JSON.parse(String(fetchMock.mock.calls[1]![1]?.body)).visitor_id);
+  get.mockRestore();vi.unstubAllGlobals();
+});
+
+it("keeps the legacy page view if optional attribution exceeds the API body limit", () => {
+  const fetchMock = vi.fn<typeof fetch>(() => Promise.resolve(new Response(null, { status: 201 })));
+  vi.stubGlobal("fetch", fetchMock);
+  trackPageView("point", "tochal", undefined, {campaign: "ت".repeat(3000)});
+  const body=String(fetchMock.mock.calls[0]![1]?.body);
+  expect(new TextEncoder().encode(body).length).toBeLessThan(2048);
+  expect(JSON.parse(body)).not.toHaveProperty("attribution");
+  vi.unstubAllGlobals();window.localStorage.clear();
+});

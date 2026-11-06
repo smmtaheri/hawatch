@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { markSearchNavigation } from "../lib/internalAnalytics";
 import { api } from "../api/client";
 import { searchCatalogIndex } from "../lib/catalogSearch";
 import { normalizeSearchText, searchMatchRange } from "../lib/searchText";
@@ -152,6 +153,7 @@ export const SearchCombobox = forwardRef<
           if (e.key === "Enter") {
             e.preventDefault();
             if (open && active >= 0 && results[active]) {
+              markSearchNavigation(results[active].href);
               navigate(results[active].href);
               setOpen(false);
             } else submit();
@@ -226,7 +228,10 @@ export const SearchCombobox = forwardRef<
                         role="option"
                         aria-selected={index === active}
                         onMouseEnter={() => setActive(index)}
-                        onClick={() => setOpen(false)}
+                        onClick={(event) => {
+                          if (!event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) markSearchNavigation(item.href);
+                          setOpen(false);
+                        }}
                       >
                         {type === "route" ? (
                           <DesignIcon

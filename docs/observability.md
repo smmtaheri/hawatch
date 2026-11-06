@@ -11,8 +11,8 @@
 - Vector فقط volumeی را می‌بیند که API و maintenance برای logهای Hawatch روی آن می‌نویسند و فقط همان JSONLها را به indexهای `hawatch-logs-YYYY.MM.DD` در OpenSearch می‌فرستد.
 - OpenSearch و OpenSearch Dashboards برای جست‌وجوی log provision می‌شوند. OpenSearch host port ندارد و OSD فقط port قابل‌تنظیم `OPENSEARCH_DASHBOARDS_PUBLISH_PORT` دارد. اتصال داخلی OSD با کاربر service جداگانه و password قوی `OPENSEARCH_DASHBOARDS_SERVICE_PASSWORD` انجام می‌شود؛ login خود OSD همچنان به credentialهای OpenSearch نیاز دارد.
 - `maintenance` هر `RETENTION_INTERVAL_SECONDS` یک‌بار `cleanup_retention` و
-  `cleanup_analytics_retention` را اجرا می‌کند. دومی بررسی روزانهٔ idempotent
-  دارد و eventهای analytics را پس از ۳۰ روز به aggregate ماهانه تبدیل می‌کند.
+  `cleanup_analytics_retention` را اجرا می‌کند. دومی برای سازگاری باقی مانده و
+  تعداد eventهای نگه‌داری‌شده را بدون حذف یا تجمیع دوباره گزارش می‌کند.
 
 ## profile کم‌هزینه
 
@@ -36,10 +36,13 @@ status از PostgreSQL خوانده می‌شود و تعداد نقطه، مس�
 
 مقدار `HAWATCH_RETENTION_DAYS` عمداً بین ۱ و ۷ محدود است و مقدار پیش‌فرض آن ۷ روز است.
 
-Retention analytics مستقل از این مقدار است: event خام ۳۰ روز نگهداری می‌شود و
-سپس با `cleanup_analytics_retention` به شمارندهٔ ماهانه تبدیل و حذف می‌شود. این
-command در maintenance روزانه اجرا می‌شود تا نوبت‌های عقب‌افتاده را هم پوشش دهد؛
-تجمیع ماهانه در Admin با برچسب تقریبی Unique Visitor نمایش داده می‌شود.
+Retention analytics مستقل از این مقدار است: از قابلیت گزارش منابع ورود، event
+خام و نشست ناشناس حفظ می‌شوند تا گزارش N روز دلخواه و یکتای واقعی بازه ممکن
+باشد. `cleanup_analytics_retention` غیرتخریبی است؛ رشد حجم این جدول‌ها باید پایش
+شود. تجمیع‌های ماهانهٔ قدیمی تغییر نمی‌کنند و فقط در گزارش کل زمانِ بدون فیلتر
+منبع/ناوبری، با برچسب یکتای تقریبی نمایش داده می‌شوند. دادهٔ حذف‌شدهٔ گذشته
+قابل بازسازی نیست؛ مرز پوشش دقیق در گزارش مشخص است. قرارداد کامل در
+[`analytics.md`](analytics.md) آمده است.
 
 - `ForecastRecord` فعلی (hourly) بر اساس `generated_at` پاک می‌شود؛ رکوردهای متصل به آخرین snapshot قابل‌استفاده برای fallback حفظ می‌شوند. این policy با دادهٔ demo و live یکسان اعمال می‌شود.
 - `ForecastSnapshot` فعلی raw JSON و metadata هر ingest را نگه می‌دارد و بر اساس `generated_at` پاک می‌شود؛ آخرین snapshot قابل‌استفاده استثنای fallback است. `ForecastAssessment` اگر در آینده اضافه شود، command آن را با timestamp استاندارد تشخیص می‌دهد.

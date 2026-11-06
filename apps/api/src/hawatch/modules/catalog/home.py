@@ -26,9 +26,10 @@ HOME_POPULAR_DESTINATION_COUNT = 4
 def home_catalog_data() -> dict:
     """Return home cards ranked by unique destination visitors in seven days.
 
-    The window follows the analytics UI: today and the six preceding Tehran
-    calendar dates. Ties retain the curated home order, then use the slug for
-    deterministic results. Only independent, indexable destinations count;
+    The existing ranking window is today and the six preceding Tehran
+    calendar dates, independent of admin report filters. Ties retain the curated
+    home order, then use the slug for deterministic results. Only independent,
+    indexable destinations count;
     route pages and technical route waypoints are excluded.
     """
 

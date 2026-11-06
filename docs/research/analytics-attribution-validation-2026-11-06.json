@@ -1,0 +1,122 @@
+{
+  "date": "2026-11-06",
+  "scope": "Internal source/session attribution and private rolling/custom analytics reports; unique visitor home ranking preserved",
+  "frontend": {
+    "baseline_tests_passed": 260,
+    "final_tests_passed": 267,
+    "production_typecheck_and_build": "passed",
+    "bundle_comparison": {
+      "before": {
+        "hawatch.js": {
+          "gzip_bytes": 115059,
+          "sha256": "6822823a95b06ab495d1ec77be40b530b8a9f207c49603348e41374d16865a23"
+        },
+        "hawatch.css": {
+          "gzip_bytes": 20459,
+          "sha256": "e6780874c7e4ebb45a4b7d12cbe9d0b50229e7da953fedf8d1afa8f73029775b"
+        }
+      },
+      "after": {
+        "hawatch.js": {
+          "gzip_bytes": 115716,
+          "sha256": "c9362350f446ebf8f1bd311c8a0187f3b79c74fe1ce6496da1767c3bc3f6b09d"
+        },
+        "hawatch.css": {
+          "gzip_bytes": 20459,
+          "sha256": "e6780874c7e4ebb45a4b7d12cbe9d0b50229e7da953fedf8d1afa8f73029775b"
+        }
+      }
+    }
+  },
+  "backend": {
+    "selected_regression_suite": {
+      "passed": 105,
+      "scope": [
+        "analytics",
+        "attribution",
+        "retention",
+        "home popularity",
+        "SSR",
+        "robots",
+        "page load"
+      ]
+    },
+    "final_attribution_suite": {
+      "passed": 19,
+      "includes": [
+        "additive migration preserves existing events and monthly totals",
+        "malformed optional metadata",
+        "rolling boundaries",
+        "distinct visitors",
+        "entries",
+        "historical coverage",
+        "private CSV",
+        "shared link UTM"
+      ]
+    },
+    "final_admin_list_check": {
+      "passed": 1
+    },
+    "django_system_check": "passed",
+    "makemigrations_check": "no changes detected",
+    "full_backend_suite": "Interrupted after 121 passing tests in 574 seconds, with no failures reported; unrelated catalog-heavy tests were slow. The selected regression and final attribution suites completed separately."
+  },
+  "report_benchmark": {
+    "environment": "local disposable PostGIS, synthetic rows; indicative timing, not production benchmark",
+    "events": 50003,
+    "sessions": 1001,
+    "results": [
+      {
+        "query": "range=24h&group=page",
+        "elapsed_ms": 69.63,
+        "sql_queries": 6,
+        "page_views_or_entries": 1683,
+        "unique_visitors": 601
+      },
+      {
+        "query": "range=7d&group=source",
+        "elapsed_ms": 135.45,
+        "sql_queries": 5,
+        "page_views_or_entries": 11763,
+        "unique_visitors": 1001
+      },
+      {
+        "query": "range=days&days=24&source=google&group=time",
+        "elapsed_ms": 168.66,
+        "sql_queries": 5,
+        "page_views_or_entries": 10019,
+        "unique_visitors": 251
+      },
+      {
+        "query": "range=30d&group=navigation",
+        "elapsed_ms": 595.7,
+        "sql_queries": 5,
+        "page_views_or_entries": 50003,
+        "unique_visitors": 1001
+      },
+      {
+        "query": "scope=entries&range=30d&group=source",
+        "elapsed_ms": 38.65,
+        "sql_queries": 5,
+        "page_views_or_entries": 1001,
+        "unique_visitors": 1001
+      },
+      {
+        "query": "range=all&group=page&export=csv",
+        "elapsed_ms": 324.02,
+        "sql_queries": 8,
+        "page_views_or_entries": 50003,
+        "unique_visitors": 1001
+      }
+    ]
+  },
+  "visual_verification": "design/screens/analytics-attribution-2026-11-06/verification.json",
+  "production_changes": "none; commit/push only; deployment and analytics.0003 migration remain separate",
+  "limits": [
+    "Browser identity is anonymous, not proof of an individual; storage reset or another browser creates a new identity.",
+    "Missing app/browser referrer is not guessed; social links should use UTM.",
+    "Past deleted events and unrecorded sources cannot be reconstructed.",
+    "Exact event history is now retained; database growth requires monitoring.",
+    "Synthetic benchmark is local and is not a production latency guarantee."
+  ]
+}

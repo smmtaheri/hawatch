@@ -53,6 +53,13 @@ def open_share(request, code):
     expired = plan.date < today
     params = {"date": (today if expired else plan.date).isoformat(), "start_time": f"{plan.start_hour:02}:00", "speed": plan.speed}
     if expired: params["past_program"] = "1"
+    # Preserve only explicit campaign labels on incoming shared links. Never
+    # overwrite the stored planner or copy arbitrary/private query parameters.
+    from hawatch.modules.analytics.attribution import campaign_label
+    for key in ("utm_source", "utm_medium", "utm_campaign"):
+        value = campaign_label(request.GET.get(key))
+        if value:
+            params[key] = value
     response = HttpResponseRedirect(f"/routes/{plan.route.slug}?{urlencode(params)}")
     response["Cache-Control"] = "no-store"
     response["X-Robots-Tag"] = "noindex, nofollow"

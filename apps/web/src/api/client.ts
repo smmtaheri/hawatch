@@ -36,6 +36,7 @@ let catalogSearchIndexCache: { payload: CatalogSearchIndex; cachedAt: number } |
 let catalogSearchIndexRequest: Promise<CatalogSearchIndex> | null = null;
 const CATALOG_SEARCH_INDEX_BROWSER_TTL_MS = 55_000;
 
+let memoryVisitor: string | undefined;
 function visitorToken(): string {
   try {
     const existing = window.localStorage.getItem(ANALYTICS_VISITOR_KEY);
@@ -44,18 +45,25 @@ function visitorToken(): string {
     window.localStorage.setItem(ANALYTICS_VISITOR_KEY, token);
     return token;
   } catch {
-    // Private browsing or blocked storage: this navigation remains anonymous.
-    return randomToken();
+    // Keep one anonymous identity in memory when persistent storage is blocked.
+    return memoryVisitor ??= randomToken();
   }
 }
 
 /** Fire-and-forget first-party page-view tracking; failures never affect UI. */
-export function trackPageView(pageType: "point" | "route", slug: string, navigationId?: string): void {
+export function trackPageView(pageType: "point" | "route" | "entry", slug: string, navigationId?: string, attribution?: Record<string, string>): void {
   try {
+    const payload = { page_type: pageType, slug, visitor_id: visitorToken(), navigation_id: navigationId ?? randomToken(), ...(attribution ? { attribution } : {}) };
+    let body = JSON.stringify(payload);
+    if (new TextEncoder().encode(body).length > 2000) {
+      // Drop optional metadata rather than lose a core page view on the 2KB API limit.
+      delete payload.attribution;
+      body = JSON.stringify(payload);
+    }
     void fetch(apiUrl("analytics/pageview/").toString(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page_type: pageType, slug, visitor_id: visitorToken(), navigation_id: navigationId ?? randomToken() }),
+      body,
       keepalive: true,
     }).catch(() => undefined);
   } catch {

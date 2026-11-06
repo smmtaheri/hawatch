@@ -9,6 +9,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { captureInitialSeoContent } from "./lib/initialSeoContent";
 import { App } from "./app/App";
+import { initializeInternalAnalytics } from "./lib/internalAnalytics";
 import { initializeGa4 } from "./lib/ga4";
 import { prepareForecastPage } from "./api/weekForecast";
 import { ThemeProvider } from "./app/theme";
@@ -17,6 +18,7 @@ window.__hawatchPageLoad?.appReady?.();
 captureInitialSeoContent();
 prepareForecastPage(window.location.pathname);
 initializeGa4();
+initializeInternalAnalytics();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
