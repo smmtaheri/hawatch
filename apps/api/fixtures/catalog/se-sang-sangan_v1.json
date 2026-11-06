@@ -1,0 +1,68 @@
+{
+  "catalog_version": "hawatch-se-sang-sangan-v1",
+  "primary_point": "se-sang-sangan",
+  "point": {
+    "slug": "se-sang-sangan",
+    "tile_name": "سه‌سنگ سنگان",
+    "name": "قلهٔ سه‌سنگ سنگان",
+    "short_category": "قله",
+    "category": "قله · سنگان–مورود",
+    "category_key": "mountain",
+    "region": "البرز مرکزی · سنگان–مورود",
+    "latitude": 35.9571502,
+    "longitude": 51.2246215,
+    "elevation_m": 3528,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "alpine",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "سه سنگ سنگان",
+      "سیاه سنگ سنگان",
+      "قله سیاه‌سنگ مورود",
+      "Se Sang Sangan"
+    ]
+  },
+  "weather_points": {
+    "se-sang-sangan": {
+      "name": "قلهٔ سه‌سنگ سنگان",
+      "page_name": "قلهٔ سه‌سنگ سنگان",
+      "short_label": "سه‌سنگ سنگان",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "سه سنگ سنگان",
+        "سیاه سنگ سنگان",
+        "قله سیاه‌سنگ مورود",
+        "Se Sang Sangan"
+      ],
+      "identity_summary": "قلهٔ سه‌سنگ یا سیاه‌سنگ در خط‌الرأس غربی توچال، بین سنگان و مورود؛ نشان نام‌دار OSM با ارتفاع ۳۵۴۰م و گزارش‌های صعود تطبیق دارد. از سه‌سنگ دوخواهران و سه‌چال دیزین متمایز است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/5?province=true",
+        "https://www.openstreetmap.org/node/5731964528",
+        "https://www.wikiloc.com/mountaineering-trails/swd-khtlrsy-bh-qll-pshtbnd-sngwn-sh-sng-syh-sng-w-sngn-mwrkh-1404-02-26-213772866",
+        "https://mountaindream.ir/صعود-قلل-منطقه-خوزنکلا"
+      ],
+      "latitude": 35.9571502,
+      "longitude": 51.2246215,
+      "elevation_m": 3528,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات رأس ۳۵۲۸ متر؛ نشان نام‌دار OSM ارتفاع ۳۵۴۰ متر دارد (اختلاف ۱۲ متر).",
+      "climate": "alpine",
+      "tile_name": "سه‌سنگ سنگان",
+      "short_category": "قله",
+      "category": "قله · سنگان–مورود",
+      "region": "البرز مرکزی · سنگان–مورود",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ"
+    }
+  },
+  "routes": {}
+}

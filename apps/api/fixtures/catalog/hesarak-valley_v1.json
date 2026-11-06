@@ -1,0 +1,68 @@
+{
+  "catalog_version": "hawatch-hesarak-valley-v1",
+  "primary_point": "hesarak-valley",
+  "point": {
+    "slug": "hesarak-valley",
+    "tile_name": "درهٔ حصارک",
+    "name": "درهٔ حصارک تهران",
+    "short_category": "دره",
+    "category": "دره",
+    "category_key": "valley",
+    "region": "تهران · حصارک · دامنهٔ بندعیش",
+    "latitude": 35.813995,
+    "longitude": 51.307888,
+    "elevation_m": 2032,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "alpine",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "دره حصارک",
+      "دره حصارک بندعیش",
+      "دره حصارک شهران",
+      "Hesarak Valley Tehran"
+    ]
+  },
+  "weather_points": {
+    "hesarak-valley": {
+      "name": "درهٔ حصارک تهران",
+      "page_name": "درهٔ حصارک تهران",
+      "short_label": "درهٔ حصارک",
+      "place_type": "valley",
+      "category_key": "valley",
+      "aliases": [
+        "دره حصارک",
+        "دره حصارک بندعیش",
+        "دره حصارک شهران",
+        "Hesarak Valley Tehran"
+      ],
+      "identity_summary": "درهٔ حصارک در مسیر جنوبی بندعیش، شمال‌غرب تهران؛ نقطهٔ نماینده در بستر رودخانه و منطبق با GPX و آبراههٔ نام‌دار نقشه است. پیش‌بینی برای همین بخش دره است، نه کل دره یا قله؛ با حصارک جماران متفاوت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/hesarak-valley",
+        "https://mojekooh.com/قله-بند-عیش/",
+        "https://www.wikiloc.com/hiking-trails/qlh-bnd-ysh-z-hsrkh-210027386",
+        "https://www.openstreetmap.org/way/496874441"
+      ],
+      "latitude": 35.813995,
+      "longitude": 51.307888,
+      "elevation_m": 2032,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات waypoint بستر رودخانه: ۲۰۳۲ متر؛ ارتفاع GPX حدود ۲۰۳۰ متر فقط شاهد مقایسه‌ای است.",
+      "climate": "alpine",
+      "tile_name": "درهٔ حصارک",
+      "short_category": "دره",
+      "category": "دره",
+      "region": "تهران · حصارک · دامنهٔ بندعیش",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ"
+    }
+  },
+  "routes": {}
+}

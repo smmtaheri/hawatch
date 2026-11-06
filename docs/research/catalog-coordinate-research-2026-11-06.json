@@ -1,0 +1,139 @@
+{
+  "reviewed_at": "2026-11-06T07:51:06.590915+00:00",
+  "scope": "ده مقصد منتخب؛ پیگیری درخواست کاربر برای یافتن مختصات و انتشار point-only",
+  "items": [
+    {
+      "queue_id": "HK-338",
+      "name": "قلهٔ سه‌سنگ سنگان",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/se-sang-sangan",
+      "latitude": 35.9571502,
+      "longitude": 51.2246215,
+      "elevation_m": 3528,
+      "provider_grid_distance_km": 2.873,
+      "provider_hourly_samples_checked": 24,
+      "routes": {},
+      "source_urls": [
+        "https://havakouh.com/get-summits/5?province=true",
+        "https://www.openstreetmap.org/node/5731964528",
+        "https://www.wikiloc.com/mountaineering-trails/swd-khtlrsy-bh-qll-pshtbnd-sngwn-sh-sng-syh-sng-w-sngn-mwrkh-1404-02-26-213772866",
+        "https://mountaindream.ir/صعود-قلل-منطقه-خوزنکلا"
+      ],
+      "identity_summary": "قلهٔ سه‌سنگ یا سیاه‌سنگ در خط‌الرأس غربی توچال، بین سنگان و مورود؛ نشان نام‌دار OSM با ارتفاع ۳۵۴۰م و گزارش‌های صعود تطبیق دارد. از سه‌سنگ دوخواهران و سه‌چال دیزین متمایز است.",
+      "verified_live_snapshot_at": "2026-11-06T07:49:38.947009+00:00",
+      "verification": "API active/indexable + forecast ready; desktop 1440px/mobile 390px RTL with no document horizontal overflow",
+      "fixture": "apps/api/fixtures/catalog/se-sang-sangan_v1.json"
+    },
+    {
+      "queue_id": "HG-hesarak-valley",
+      "name": "درهٔ حصارک تهران",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/hesarak-valley",
+      "latitude": 35.813995,
+      "longitude": 51.307888,
+      "elevation_m": 2032,
+      "provider_grid_distance_km": 2.131,
+      "provider_hourly_samples_checked": 24,
+      "routes": {},
+      "source_urls": [
+        "https://havagasht.com/hesarak-valley",
+        "https://mojekooh.com/قله-بند-عیش/",
+        "https://www.wikiloc.com/hiking-trails/qlh-bnd-ysh-z-hsrkh-210027386",
+        "https://www.openstreetmap.org/way/496874441"
+      ],
+      "identity_summary": "درهٔ حصارک در مسیر جنوبی بندعیش، شمال‌غرب تهران؛ نقطهٔ نماینده در بستر رودخانه و منطبق با GPX و آبراههٔ نام‌دار نقشه است. پیش‌بینی برای همین بخش دره است، نه کل دره یا قله؛ با حصارک جماران متفاوت است.",
+      "verified_live_snapshot_at": "2026-11-06T07:49:38.947009+00:00",
+      "verification": "API active/indexable + forecast ready; desktop 1440px/mobile 390px RTL with no document horizontal overflow",
+      "fixture": "apps/api/fixtures/catalog/hesarak-valley_v1.json"
+    },
+    {
+      "queue_id": "HK-207",
+      "name": "زرنج",
+      "result": "needs_review",
+      "summary": "گزارش انجمن کوهنوردان مراغه و waypoint رأس در ترک‌های 211129303 و 175636470 هویت زرنج/زیریش را تأیید می‌کنند، اما مختصات عددی رأس در صفحات عمومی قابل استخراج نبود و دانلود GPX نیازمند ورود است. دریافت waypoint رأس از یکی از این فایل‌ها لازم است؛ مبدأ/قلهٔ هم‌نام زنجان استفاده نمی‌شود.",
+      "source_urls": [
+        "https://maragheh-alpineclub.blogfa.com/?p=2",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-211129303",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-w-drh-hy-trf-175636470"
+      ]
+    },
+    {
+      "queue_id": "HK-336",
+      "name": "کورج",
+      "result": "needs_review",
+      "summary": "بررسی تازه دو نشان OSM را تأیید کرد: غربی 36.1078174,50.9370538 با DEM=3484م و شرقی 36.1073919,50.9554378 با DEM=3419م؛ هر دو برچسب 3420 دارند. ترک 213755127 دو رأس کورج۱/۲ را جدا کرده و گزارش 186314912 از نصب تابلوی کورج بر سنگ‌بنک می‌گوید. صرف نزدیکی ارتفاع، تعارض هویت را رفع نمی‌کند؛ waypoint عددیِ رأس منتخب برای تطبیق نهایی لازم است.",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/11776090434",
+        "https://www.openstreetmap.org/node/9062071539",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ywnkh-qlh-hft-nwh-khwrj-1-khwrj-2-213755127",
+        "https://www.wikiloc.com/hiking-trails/qlh-khkhrwd-w-qlh-sng-bnkh-z-khchyrh-186314912"
+      ]
+    },
+    {
+      "queue_id": "HK-145",
+      "name": "الله بند",
+      "result": "needs_review",
+      "summary": "گزارش مستقل و ترک 272837514، الله‌بند کوچک/الوبند (~3359م) و بزرگ (~3640م) را تفکیک می‌کنند. نشان OSM 11877703174 و صفحهٔ waypoint gd8w5t مربوط به بزرگ در 36.0038042,51.4171623 هستند و برای کوچک استفاده نمی‌شوند. waypoint کوچک در 175606192 هم صریح است اما مختصات عددی آن در صفحهٔ عمومی نیست؛ GPX یکی از ترک‌های نام‌دار کوچک لازم است.",
+      "source_urls": [
+        "https://mountaindream.ir/allah-band-mountain",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrd-w-qlh-llh-bnd-khwchkh-w-bzrg-175606192",
+        "https://www.wikiloc.com/mountaineering-trails/swd-khtlrsy-bh-qll-zrd-lwbnd-llh-bnd-khwchkh-llh-bnd-bzrg-sychl-mwrkh-1405-04-15-272837514",
+        "https://www.openstreetmap.org/node/11877703174"
+      ]
+    },
+    {
+      "queue_id": "HK-256",
+      "name": "نظرگاه سبزوار",
+      "result": "needs_review",
+      "summary": "ترک‌های 172647603 و 266701228 رأس نظرگاهِ ساروق/سبزوار را به‌صراحت علامت دارند. مختصات دقیقه‌ای گزارش قدیمی برای رأس دقیق کافی نیست؛ لینک gholleh به طول 48.785 نیز خارج از سبزوار است و کنار گذاشته شد. مختصات waypoint رأس از GPX لازم است تا تعارض DEM قبلی رفع شود.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jbhh-shmly-nzrgh-172647603",
+        "https://www.wikiloc.com/hiking-trails/qlh-nzrgh-sbzwr-266701228",
+        "https://ecotourismsource.blogfa.com/post/11/"
+      ]
+    },
+    {
+      "queue_id": "HG-teni-waterfall",
+      "name": "آبشار توی",
+      "result": "needs_review",
+      "summary": "علاوه بر ترک آفرودی 176328211 با waypoint «اولین آبشار» در حدود 1406م، ترک 264215463 آبشار را در حدود 1399م مشخص می‌کند؛ هویت آبشار پایین‌دست قابل پیگیری است. مختصات عددی waypoint در صفحات عمومی نیست؛ GPX برای استخراج pin لازم است. ترک آفرود صرفاً شاهد مختصات است و Route پیاده ساخته نمی‌شود؛ مختصات فشرده/حدسی قبلی کنار می‌ماند.",
+      "source_urls": [
+        "https://www.wikiloc.com/offroading-trails/abshr-twy-sfryn-176328211",
+        "https://www.wikiloc.com/hiking-trails/abshr-twy-264215463",
+        "https://www.wikiloc.com/hiking-trails/bshr-twy-21318463"
+      ]
+    },
+    {
+      "queue_id": "HG-osepen-waterfall",
+      "name": "آبشار اسفند",
+      "result": "needs_review",
+      "summary": "معرفی آبشار اسفند دلگان نام محلی پورآب و ارتباط با رودخانهٔ روستا را تأیید می‌کند. بررسی نقشهٔ عمومی اطراف pin قبلی هیچ نشان صریحِ آبشار نداد؛ مختصات روستا به آبشار نسبت داده نشد. همچنان pin GPSدار خود آبشار یا عکس دارای مختصات لازم است.",
+      "source_urls": [
+        "https://fa.tripyar.com/iran/سیستان-و-بلوچستان/دلگان/گردشگری/اکوتوریسم/چشمه-ها-آبشارها-تالاب-ها/آبشار-اسفند-دلگان.html",
+        "https://irantripadviser.ir/attraction.php?id=640"
+      ]
+    },
+    {
+      "queue_id": "HG-haft-asiyab-waterfall",
+      "name": "آبشار هفت آسیاب",
+      "result": "needs_review",
+      "summary": "گزارش بازدید میراث فرهنگی و معرفی محلی، آبشار طبیعی در منطقهٔ هفت‌آسیاب افزر را تأیید می‌کنند. در نقشهٔ بررسی‌شده فقط نشان روستا در 28.3837646,52.9914947 پیدا شد، نه خود آبشار؛ سرآسیاب شهر قیر و هفت‌آسیاب ایلام مقصدهای دیگری‌اند. pin داخل تفرجگاه/خود آبشار لازم است.",
+      "source_urls": [
+        "https://asgharali.blogfa.com/1391/10",
+        "https://www.sarkhat.com/fa/news/147628082/",
+        "https://havagasht.com/haft-asiyab-waterfall"
+      ]
+    },
+    {
+      "queue_id": "HG-afratakht-jungle",
+      "name": "جنگل افراتخت",
+      "result": "needs_review",
+      "summary": "معرفی گردشگری گلستان و گزارش گروه اهل قلم گرگان، جنگل/ذخیره‌گاه سرخدار افراتخته را تأیید می‌کنند. ترک ابر به افراتخته 286402319 نقاط نام‌دار مسیر دارد، اما تعلق آن‌ها به ذخیره‌گاه روشن نیست. بررسی OSM محدوده هیچ landmark نام‌دار مناسب برای نمایندگی ذخیره‌گاه نداد؛ روستا یا نقطهٔ تقریبی جایگزین نمی‌شود.",
+      "source_urls": [
+        "https://tourism-golestan.com/location/aliabadkatul/",
+        "https://ahleghalamgorgan.blogfa.com/?p=2",
+        "https://www.wikiloc.com/hiking-trails/br-bh-frtkhth-286402319"
+      ]
+    }
+  ]
+}
