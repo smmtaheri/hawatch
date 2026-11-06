@@ -1,0 +1,70 @@
+{
+  "catalog_version": "hawatch-esfand-waterfall-v1",
+  "primary_point": "esfand-waterfall",
+  "point": {
+    "slug": "esfand-waterfall",
+    "tile_name": "آبشار اسفند",
+    "name": "آبشار اسفند دلگان",
+    "short_category": "آبشار",
+    "category": "آبشار",
+    "category_key": "waterfall",
+    "region": "سیستان‌وبلوچستان · دلگان",
+    "latitude": 26.8724756,
+    "longitude": 59.0669069,
+    "elevation_m": 536,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "desert",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "آبشار اسفند",
+      "آبشار پورا",
+      "آبشار پورآب",
+      "آبشار پوراب",
+      "Esfand Waterfall"
+    ]
+  },
+  "weather_points": {
+    "esfand-waterfall": {
+      "name": "آبشار اسفند دلگان",
+      "page_name": "آبشار اسفند دلگان",
+      "short_label": "آبشار اسفند",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": [
+        "آبشار اسفند",
+        "آبشار پورا",
+        "آبشار پورآب",
+        "آبشار پوراب",
+        "Esfand Waterfall"
+      ],
+      "identity_summary": "آبشار اسفند/پورآب در رودخانهٔ محدودهٔ روستای اسفند دلگان؛ نشان اختصاصی آبشار در نقشه بر شکست بستر رودخانه منطبق است. نقطهٔ روستا یا مرکز آبادی انتخاب نشده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/osepen-waterfall",
+        "https://www.google.com/maps?cid=1257945229411803152",
+        "https://mohamadjahangiri.blogfa.com/",
+        "https://fa.tripyar.com/iran/سیستان-و-بلوچستان/دلگان/گردشگری/اکوتوریسم/چشمه-ها-آبشارها-تالاب-ها/آبشار-اسفند-دلگان.html"
+      ],
+      "latitude": 26.8724756,
+      "longitude": 59.0669069,
+      "elevation_m": 536,
+      "status": "provisional",
+      "elevation_source": "ارتفاع موقت از Open-Meteo GLO-90 DEM در مختصات نشان مستقل عارضه: 536 متر؛ نیازمند gate پیش از import.",
+      "climate": "desert",
+      "tile_name": "آبشار اسفند",
+      "short_category": "آبشار",
+      "category": "آبشار",
+      "region": "سیستان‌وبلوچستان · دلگان",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ"
+    }
+  },
+  "routes": {}
+}

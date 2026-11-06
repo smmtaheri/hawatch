@@ -1,0 +1,68 @@
+{
+  "catalog_version": "hawatch-afratakhteh-forest-v1",
+  "primary_point": "afratakhteh-forest",
+  "point": {
+    "slug": "afratakhteh-forest",
+    "tile_name": "جنگل افراتخته",
+    "name": "جنگل افراتخته",
+    "short_category": "جنگل",
+    "category": "جنگل",
+    "category_key": "forest",
+    "region": "گلستان · علی‌آباد کتول · افراتخته",
+    "latitude": 36.788695,
+    "longitude": 54.9540767,
+    "elevation_m": 1736,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "forest_fog",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "جنگل افراتخت",
+      "جنگل سرخدار افراتخته",
+      "ذخیره‌گاه افراتخته",
+      "Afratakhteh Forest"
+    ]
+  },
+  "weather_points": {
+    "afratakhteh-forest": {
+      "name": "جنگل افراتخته",
+      "page_name": "جنگل افراتخته",
+      "short_label": "جنگل افراتخته",
+      "place_type": "forest",
+      "category_key": "forest",
+      "aliases": [
+        "جنگل افراتخت",
+        "جنگل سرخدار افراتخته",
+        "ذخیره‌گاه افراتخته",
+        "Afratakhteh Forest"
+      ],
+      "identity_summary": "جنگل افراتخته در جنوب‌شرقی علی‌آباد کتول؛ نقطهٔ نماینده، نشان مستقل جنگل در بخش جنگلی غرب روستا است، نه مرکز آبادی. پیش‌بینی مربوط به همین نقطهٔ جنگلی است و تمام ذخیره‌گاه را نمایندگی نمی‌کند.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havagasht.com/afratakht-jungle",
+        "https://www.google.com/maps?cid=730963171160490963",
+        "https://tourism-golestan.com/location/aliabadkatul/",
+        "https://sadeghijahan.blogfa.com/post/10"
+      ],
+      "latitude": 36.788695,
+      "longitude": 54.9540767,
+      "elevation_m": 1736,
+      "status": "provisional",
+      "elevation_source": "ارتفاع موقت از Open-Meteo GLO-90 DEM در مختصات نشان مستقل عارضه: 1736 متر؛ نیازمند gate پیش از import.",
+      "climate": "forest_fog",
+      "tile_name": "جنگل افراتخته",
+      "short_category": "جنگل",
+      "category": "جنگل",
+      "region": "گلستان · علی‌آباد کتول · افراتخته",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ"
+    }
+  },
+  "routes": {}
+}

@@ -1,0 +1,132 @@
+{
+  "reviewed_at": "2026-11-06T12:28:48.773364+00:00",
+  "scope": "پیگیری هشت مقصد باقی‌مانده از ده مورد منتخب؛ دو انتشار تازه و شش مورد نیازمند رفع ابهام مختصات",
+  "method": "Public source reports, OSM, named Google Maps POIs and satellite review; no village/trailhead substitution, no invented hiking routes. Wikiloc public/browser pages did not provide downloadable coordinates in this session.",
+  "items": [
+    {
+      "queue_id": "HK-207",
+      "name": "زرنج",
+      "result": "needs_review",
+      "summary": "نشان Google Maps زرنج در 37.3279172,46.3457403 بررسی شد: DEM=1591م، حدود 459م پایین‌تر از ارتفاع مرجع 2050م است؛ این نشان به‌عنوان رأس پذیرفته نشد. waypoint رأس در ترک‌های نام‌دار لازم است.",
+      "source_urls": [
+        "https://maragheh-alpineclub.blogfa.com/?p=2",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-211129303",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-w-drh-hy-trf-175636470"
+      ]
+    },
+    {
+      "queue_id": "HK-336",
+      "name": "کورج",
+      "result": "needs_review",
+      "summary": "بررسی تازه دو نشان OSM را تأیید کرد: غربی 36.1078174,50.9370538 با DEM=3484م و شرقی 36.1073919,50.9554378 با DEM=3419م؛ هر دو برچسب 3420 دارند. ترک 213755127 دو رأس کورج۱/۲ را جدا کرده و گزارش 186314912 از نصب تابلوی کورج بر سنگ‌بنک می‌گوید. صرف نزدیکی ارتفاع، تعارض هویت را رفع نمی‌کند؛ waypoint عددیِ رأس منتخب برای تطبیق نهایی لازم است.",
+      "source_urls": [
+        "https://www.openstreetmap.org/node/11776090434",
+        "https://www.openstreetmap.org/node/9062071539",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ywnkh-qlh-hft-nwh-khwrj-1-khwrj-2-213755127",
+        "https://www.wikiloc.com/hiking-trails/qlh-khkhrwd-w-qlh-sng-bnkh-z-khchyrh-186314912"
+      ]
+    },
+    {
+      "queue_id": "HK-145",
+      "name": "الله بند",
+      "result": "needs_review",
+      "summary": "گزارش مستقیم نیما اسماعیلی، الله‌بند کوچک از آهار را 3365م و ترک 15032875 معرفی می‌کند؛ لینک دانلود به Wikiloc است و مختصات رأس در گزارش نیست. نشان Google Maps در 36.00276,51.41695 مربوط به الله‌بند بزرگ است و جایگزین کوچک نمی‌شود.",
+      "source_urls": [
+        "https://mountaindream.ir/allah-band-mountain",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrd-w-qlh-llh-bnd-khwchkh-w-bzrg-175606192",
+        "https://www.wikiloc.com/mountaineering-trails/swd-khtlrsy-bh-qll-zrd-lwbnd-llh-bnd-khwchkh-llh-bnd-bzrg-sychl-mwrkh-1405-04-15-272837514",
+        "https://www.openstreetmap.org/node/11877703174",
+        "http://kuhnavardi.com/قله-الله-بند-کوچک-از-آهار/"
+      ]
+    },
+    {
+      "queue_id": "HK-256",
+      "name": "نظرگاه سبزوار",
+      "result": "needs_review",
+      "summary": "نشان Nazargah Mountain در 36.4013534,57.3016289 با DEM=2606م حدود 254م پایین‌تر از مرجع 2860م است و رأس تأیید نشد. نشان دیگر «قله نظرگاه» در 37.264946,57.6175028 خارج از منطقهٔ ساروق سبزوار است. waypoint رأس در ترک‌های ساروق لازم است.",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jbhh-shmly-nzrgh-172647603",
+        "https://www.wikiloc.com/hiking-trails/qlh-nzrgh-sbzwr-266701228",
+        "https://ecotourismsource.blogfa.com/post/11/"
+      ]
+    },
+    {
+      "queue_id": "HG-teni-waterfall",
+      "name": "آبشار توی",
+      "result": "needs_review",
+      "summary": "نشان آبشار توی در 37.1927749,57.0683621 با DEM=1545م حدود 139–146م با waypoint اولین آبشار (1399–1406م) اختلاف دارد؛ تطبیق قطعی نیست. مختصات فشردهٔ IranDeserts نیز مبهم و ناسازگار است؛ pin عددی waypoint خود آبشار لازم است.",
+      "source_urls": [
+        "https://www.wikiloc.com/offroading-trails/abshr-twy-sfryn-176328211",
+        "https://www.wikiloc.com/hiking-trails/abshr-twy-264215463",
+        "https://www.wikiloc.com/hiking-trails/bshr-twy-21318463"
+      ]
+    },
+    {
+      "queue_id": "HG-osepen-waterfall",
+      "name": "آبشار اسفند دلگان",
+      "result": "published",
+      "summary": "آبشار اسفند/پورآب در رودخانهٔ محدودهٔ روستای اسفند دلگان؛ نشان اختصاصی آبشار در نقشه بر شکست بستر رودخانه منطبق است. نقطهٔ روستا یا مرکز آبادی انتخاب نشده است.",
+      "source_urls": [
+        "https://havagasht.com/osepen-waterfall",
+        "https://www.google.com/maps?cid=1257945229411803152",
+        "https://mohamadjahangiri.blogfa.com/",
+        "https://fa.tripyar.com/iran/سیستان-و-بلوچستان/دلگان/گردشگری/اکوتوریسم/چشمه-ها-آبشارها-تالاب-ها/آبشار-اسفند-دلگان.html"
+      ],
+      "canonical_url": "https://hawatch.ir/points/esfand-waterfall",
+      "latitude": 26.8724756,
+      "longitude": 59.0669069,
+      "elevation_m": 536,
+      "provider_grid_distance_km": 2.069,
+      "provider_hourly_samples_checked": 24,
+      "routes": {},
+      "verified_live_snapshot_at": "2026-11-06T12:28:05.837092+00:00",
+      "fixture": "apps/api/fixtures/catalog/esfand-waterfall_v1.json",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T15:57:16.960289+03:30"
+      },
+      "verification": "Public 200; independent canonical; index,follow; listed in sitemap; local strict validation; Open-Meteo/DEM gate, targeted ingest and post-import strict database preflight passed. See design/screens/catalog-point-only-2026-11-06-round2/verification.json for mobile/desktop checks."
+    },
+    {
+      "queue_id": "HG-haft-asiyab-waterfall",
+      "name": "آبشار هفت آسیاب",
+      "result": "needs_review",
+      "summary": "جست‌وجوی اختصاصی افزر/قیر همچنان نشان روستای هفت‌آسیاب را در 28.3836158,52.99117 برگرداند، نه خود آبشار. نشان آبشار هفت‌آسیاب ایلام در 33.034843,47.57427 نیز نامرتبط است. نقطهٔ GPSدار داخل تفرجگاه آبشار افزر لازم است.",
+      "source_urls": [
+        "https://asgharali.blogfa.com/1391/10",
+        "https://www.sarkhat.com/fa/news/147628082/",
+        "https://havagasht.com/haft-asiyab-waterfall"
+      ]
+    },
+    {
+      "queue_id": "HG-afratakht-jungle",
+      "name": "جنگل افراتخته",
+      "result": "published",
+      "summary": "جنگل افراتخته در جنوب‌شرقی علی‌آباد کتول؛ نقطهٔ نماینده، نشان مستقل جنگل در بخش جنگلی غرب روستا است، نه مرکز آبادی. پیش‌بینی مربوط به همین نقطهٔ جنگلی است و تمام ذخیره‌گاه را نمایندگی نمی‌کند.",
+      "source_urls": [
+        "https://havagasht.com/afratakht-jungle",
+        "https://www.google.com/maps?cid=730963171160490963",
+        "https://tourism-golestan.com/location/aliabadkatul/",
+        "https://sadeghijahan.blogfa.com/post/10"
+      ],
+      "canonical_url": "https://hawatch.ir/points/afratakhteh-forest",
+      "latitude": 36.788695,
+      "longitude": 54.9540767,
+      "elevation_m": 1736,
+      "provider_grid_distance_km": 2.058,
+      "provider_hourly_samples_checked": 24,
+      "routes": {},
+      "verified_live_snapshot_at": "2026-11-06T12:28:05.837092+00:00",
+      "fixture": "apps/api/fixtures/catalog/afratakhteh-forest_v1.json",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T15:57:16.960289+03:30"
+      },
+      "verification": "Public 200; independent canonical; index,follow; listed in sitemap; local strict validation; Open-Meteo/DEM gate, targeted ingest and post-import strict database preflight passed. See design/screens/catalog-point-only-2026-11-06-round2/verification.json for mobile/desktop checks."
+    }
+  ]
+}
