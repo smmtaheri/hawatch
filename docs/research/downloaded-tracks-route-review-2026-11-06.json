@@ -1,0 +1,272 @@
+{
+  "checked_at": "2026-11-06T16:02:23.748772+00:00",
+  "published_route": "https://hawatch.ir/routes/tangchal-niloufar",
+  "target_point": "https://hawatch.ir/points/tngchal-hk306",
+  "new_points": 0,
+  "new_routes": 1,
+  "route_ownership": "Canonical tngchal-hk306 definition moved from untracked 20261105 mountain batch into tangchal_v1.json; no second definition. Other mountain-batch rows preserved.",
+  "route_independent_source": "https://alpclub.ir/report/Araghchin/99",
+  "track_source": "https://www.wikiloc.com/mountaineering-trails/rqchyn-tng-chl-w-dw-gnbdn-95373545",
+  "screen_checks": "design/screens/tangchal-route-2026-11-06/verification.json",
+  "gpx_review": {
+    "tangchal": {
+      "author": null,
+      "catalog_applied": false,
+      "coverage": "raw indices 0 through first closest canonical target; return excluded",
+      "cut": {
+        "direction": "forward",
+        "origin_gap_m": null,
+        "origin_index": 0,
+        "reversed_for_analysis": false,
+        "target_gap_m": 5.155,
+        "target_index": 698
+      },
+      "distance_km": 4.49,
+      "filename": "tangchal-niloufar-khoshkchal-to-summit-2022-roundtrip.gpx",
+      "gpx_elevation_reference_only": true,
+      "license_status": "unverified",
+      "methods": {
+        "ascent": "resample every 50.0 m, centered 5-sample moving average, sum positive deltas; GPX ele reference-only",
+        "distance": "haversine R=6371000.0",
+        "moving_pause_rule": "exclude segment when dt>=45.0s and displacement<=10.0m; only when timestamp_quality=recorded"
+      },
+      "moving_minutes_estimate": null,
+      "net_elevation_change_m": 973.7,
+      "point_count_cut": 699,
+      "point_count_raw": 969,
+      "recorded_elapsed_minutes": null,
+      "robust_smoothed_ascent_m": 973.7,
+      "route_point_comparisons": [
+        {
+          "along_track_distance_m": 39.27,
+          "elapsed_minutes": null,
+          "moving_minutes": null,
+          "nearest_distance_m": 9.61,
+          "nearest_index": 5,
+          "slug": "niloufar-park-kashanak",
+          "track_elevation_m": 1777.76
+        },
+        {
+          "along_track_distance_m": 2736.87,
+          "elapsed_minutes": null,
+          "moving_minutes": null,
+          "nearest_distance_m": 2.04,
+          "nearest_index": 472,
+          "slug": "khoshkchal",
+          "track_elevation_m": 2370.958
+        },
+        {
+          "along_track_distance_m": 4489.26,
+          "elapsed_minutes": null,
+          "moving_minutes": null,
+          "nearest_distance_m": 5.15,
+          "nearest_index": 698,
+          "slug": "tngchal-hk306",
+          "track_elevation_m": 2763.721
+        }
+      ],
+      "route_slug": "tangchal-niloufar",
+      "timestamp_quality": "recorded_with_gaps_not_eta",
+      "timestamp_time_diagnostic": "timestamp_quality=recorded_with_gaps_not_eta; recorded_elapsed_minutes and moving_minutes_estimate are null because timestamps are not treated as recorded moving time",
+      "wikiloc_url": "https://www.wikiloc.com/mountaineering-trails/rqchyn-tng-chl-w-dw-gnbdn-95373545"
+    },
+    "shah_keykhosrow": {
+      "author": null,
+      "catalog_applied": false,
+      "coverage": null,
+      "cut": {
+        "direction": "forward",
+        "origin_gap_m": null,
+        "origin_index": 0,
+        "reversed_for_analysis": false,
+        "target_gap_m": 0.222,
+        "target_index": 1349
+      },
+      "distance_km": 7.51,
+      "filename": "shah-keykhosrow-alraj-to-summit-219883261.gpx",
+      "gpx_elevation_reference_only": true,
+      "license_status": "unverified",
+      "methods": {
+        "ascent": "resample every 50.0 m, centered 5-sample moving average, sum positive deltas; GPX ele reference-only",
+        "distance": "haversine R=6371000.0",
+        "moving_pause_rule": "exclude segment when dt>=45.0s and displacement<=10.0m; only when timestamp_quality=recorded"
+      },
+      "moving_minutes_estimate": 198.15,
+      "net_elevation_change_m": 909.3,
+      "point_count_cut": 1350,
+      "point_count_raw": 2517,
+      "recorded_elapsed_minutes": 275.62,
+      "robust_smoothed_ascent_m": 915.1,
+      "route_point_comparisons": [],
+      "route_slug": "shah-keykhosrow-alraj",
+      "timestamp_quality": "recorded",
+      "timestamp_time_diagnostic": null,
+      "wikiloc_url": "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261"
+    }
+  },
+  "continuity_review": {
+    "outbound_max_step_m": 227,
+    "second_outbound_gap_m": 222,
+    "return_excluded_max_gap_m": 1412,
+    "decision": "Accepted outbound footpath corridor to existing Tangchal; pauses/recording gaps preclude recorded ETA. Independent Alpclub ascent report confirms park and ridge route. Return not used for distance, ascent or ETA."
+  },
+  "dem_profile_summary": {
+    "ascent_m": 950.5,
+    "descent_m": 0,
+    "method": "GLO90 every200m, centered3-sample average; independently corroborates GPX ascent973.7m."
+  },
+  "timing": {
+    "catalog_base_minutes": 195,
+    "catalog_cumulative_minutes": [
+      0,
+      120,
+      195
+    ],
+    "uncertainty_minutes": 60,
+    "confidence": "low",
+    "public_medium_minutes": 165,
+    "note": "Existing central runtime estimator uses route distance/ascent and rescales catalog segment proportions; validated 07:00→08:40→09:45 for medium speed. No ETA inferred from gapped timestamps."
+  },
+  "shah_abad_identity": "Generic Summit labels do not settle Shah Abad alias; keep HK-404 needs_review.",
+  "shah_keykhosrow_gate": {
+    "catalog": "docs/drafts/catalog/shah_keykhosrow_20261106_v1.json",
+    "catalog_version": "shah-keykhosrow-draft-v1",
+    "errors": [
+      "shah-keykhosrow: catalog/DEM elevation delta is 155 m, limit=100 m; correct the catalog elevation before import"
+    ],
+    "warnings": [],
+    "points": [
+      {
+        "slug": "alraj",
+        "name": "روستای الرج",
+        "latitude": 34.120219,
+        "longitude": 49.315144,
+        "catalog_elevation_m": 1998,
+        "status": "provisional",
+        "dem_elevation_m": 2012.0,
+        "cell_selection": "nearest",
+        "provider_latitude": 34.122887,
+        "provider_longitude": 49.31415,
+        "provider_elevation_m": 1998.0,
+        "provider_distance_km": 0.31,
+        "hour_count": 24,
+        "missing_hourly_fields": [],
+        "hourly_length_mismatches": [],
+        "dem_delta_m": -14.0,
+        "elevation_status": "catalog"
+      },
+      {
+        "slug": "shah-keykhosrow-cave",
+        "name": "غار شاه‌کیخسرو",
+        "latitude": 34.154966,
+        "longitude": 49.276143,
+        "catalog_elevation_m": 2926,
+        "status": "provisional",
+        "dem_elevation_m": 2915.0,
+        "cell_selection": "nearest",
+        "provider_latitude": 34.13377,
+        "provider_longitude": 49.25248,
+        "provider_elevation_m": 2926.0,
+        "provider_distance_km": 3.209,
+        "hour_count": 24,
+        "missing_hourly_fields": [],
+        "hourly_length_mismatches": [],
+        "dem_delta_m": 11.0,
+        "elevation_status": "catalog"
+      },
+      {
+        "slug": "shah-keykhosrow",
+        "name": "قلهٔ شاه‌کیخسرو",
+        "latitude": 34.157498,
+        "longitude": 49.2747,
+        "catalog_elevation_m": 2966,
+        "status": "provisional",
+        "dem_elevation_m": 2811.0,
+        "cell_selection": "nearest",
+        "provider_latitude": 34.13377,
+        "provider_longitude": 49.25248,
+        "provider_elevation_m": 2966.0,
+        "provider_distance_km": 3.338,
+        "hour_count": 24,
+        "missing_hourly_fields": [],
+        "hourly_length_mismatches": [],
+        "dem_delta_m": 155.0,
+        "elevation_status": "catalog"
+      }
+    ],
+    "summary": {
+      "point_count": 3,
+      "provider_checked": 3,
+      "unresolved_elevation_count": 0,
+      "error_count": 1,
+      "warning_count": 0,
+      "pass": false
+    }
+  },
+  "shah_keykhosrow_draft": "docs/drafts/catalog/shah_keykhosrow_20261106_v1.json",
+  "public_checks": {
+    "route_public_status": 200,
+    "canonical": [
+      "https://hawatch.ir/routes/tangchal-niloufar"
+    ],
+    "in_sitemap": true,
+    "api": [
+      {
+        "speed": "slow",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          580,
+          680
+        ],
+        "duration_minutes": 260,
+        "timing_confidence": "low",
+        "timing_uncertainty_minutes": 60
+      },
+      {
+        "speed": "medium",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          520,
+          585
+        ],
+        "duration_minutes": 165,
+        "timing_confidence": "low",
+        "timing_uncertainty_minutes": 60
+      },
+      {
+        "speed": "fast",
+        "api_status": 200,
+        "freshness": "ready",
+        "arrival_minutes": [
+          420,
+          480,
+          515
+        ],
+        "duration_minutes": 95,
+        "timing_confidence": "low",
+        "timing_uncertainty_minutes": 60
+      }
+    ]
+  },
+  "publish_workflow": {
+    "exit_code": 0,
+    "ingest_snapshot": 841,
+    "freshness": "ready",
+    "strict_preflight_pass": true
+  },
+  "downloads": {
+    "moved_unique_tracks": 2,
+    "exact_duplicate_tracks": 0,
+    "remaining_download_tracks": 0,
+    "raw_gpx_and_manifests": "local-only ignored; no server copies or redistribution"
+  },
+  "indexing": {
+    "new_route_added": true,
+    "google_status": "unconfirmed",
+    "backlog_total": 1251
+  }
+}

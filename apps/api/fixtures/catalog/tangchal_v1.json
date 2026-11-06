@@ -1,0 +1,116 @@
+{
+  "catalog_version": "hawatch-tangchal-v1",
+  "primary_point": "tngchal-hk306",
+  "point": {
+    "name": "قلهٔ تنگچال",
+    "page_name": "قلهٔ تنگچال",
+    "short_label": "قلهٔ تنگچال",
+    "place_type": "summit",
+    "category_key": "mountain",
+    "aliases": [
+      "تنگچال"
+    ],
+    "identity_summary": "مختصات مستقل قلهٔ تنگچال در تهران از تطبیق منابع نام‌دار و جغرافیایی ثبت‌شده در پروندهٔ مقصد انتخاب شده است.",
+    "importance": "primary",
+    "kind": "primary",
+    "seo_indexable": true,
+    "name_status": "established",
+    "source_urls": [
+      "https://havakouh.com/get-summits/8?province=true",
+      "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625"
+    ],
+    "latitude": 35.846343,
+    "longitude": 51.47143,
+    "elevation_m": 2745,
+    "status": "provisional",
+    "elevation_source": "ارتفاع منبع ثبت‌شده 2745م؛ کنترل Open-Meteo GLO-90 در مختصات نقطه 2756م، اختلاف -11م.",
+    "climate": "alpine",
+    "tile_name": "قلهٔ تنگچال",
+    "short_category": "قله",
+    "category": "قلهٔ کوهستانی",
+    "region": "تهران",
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت تهران در هواچ",
+    "slug": "tngchal-hk306",
+    "is_active": true,
+    "is_popular": false,
+    "popular_order": 0
+  },
+  "weather_points": {
+    "tngchal-hk306": {
+      "name": "قلهٔ تنگچال",
+      "page_name": "قلهٔ تنگچال",
+      "short_label": "قلهٔ تنگچال",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "تنگچال"
+      ],
+      "identity_summary": "مختصات مستقل قلهٔ تنگچال در تهران از تطبیق منابع نام‌دار و جغرافیایی ثبت‌شده در پروندهٔ مقصد انتخاب شده است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/8?province=true",
+        "https://www.wikiloc.com/hiking-trails/qlh-rqchyn-199076625"
+      ],
+      "latitude": 35.846343,
+      "longitude": 51.47143,
+      "elevation_m": 2745,
+      "status": "provisional",
+      "elevation_source": "ارتفاع منبع ثبت‌شده 2745م؛ کنترل Open-Meteo GLO-90 در مختصات نقطه 2756م، اختلاف -11م.",
+      "climate": "alpine",
+      "tile_name": "قلهٔ تنگچال",
+      "short_category": "قله",
+      "category": "قلهٔ کوهستانی",
+      "region": "تهران",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت تهران در هواچ"
+    }
+  },
+  "shared_weather_points": [
+    "niloufar-park-kashanak",
+    "khoshkchal"
+  ],
+  "routes": {
+    "niloufar": {
+      "slug": "tangchal-niloufar",
+      "title": "پارک نیلوفر تا قلهٔ تنگچال",
+      "subtitle": "پارک نیلوفر کاشانک ← تختی خشکچال ← قلهٔ تنگچال",
+      "trail_label": "صعود از پارک نیلوفر",
+      "origin": "پارک نیلوفر کاشانک",
+      "target_label": "قلهٔ تنگچال",
+      "region": "کاشانک · شمال تهران",
+      "featured": true,
+      "sort_order": 1,
+      "points": [
+        "niloufar-park-kashanak",
+        "khoshkchal",
+        "tngchal-hk306"
+      ],
+      "distance_km": 4.49,
+      "ascent_m": 974,
+      "descent_m": 0,
+      "one_way_minutes": 195,
+      "timing_status": "estimated",
+      "timing": {
+        "method": "gpx-outbound+web-naismith-v1",
+        "version": "tangchal-timing-v1",
+        "confidence": "low",
+        "uncertainty_minutes": 60,
+        "source_urls": [
+          "https://www.wikiloc.com/mountaineering-trails/rqchyn-tng-chl-w-dw-gnbdn-95373545",
+          "https://alpclub.ir/report/Araghchin/99"
+        ],
+        "cumulative_minutes": {
+          "niloufar-park-kashanak": 0,
+          "khoshkchal": 120,
+          "tngchal-hk306": 195
+        }
+      },
+      "public_note": "زمان صعود یک‌طرفه تخمینی است. مسیر شیب‌دار و در بخش بالایی سنگلاخی است؛ در برف و یخ به تجربه و تجهیزات متناسب نیاز دارد. در مسیر آب آشامیدنی مطمئن در دسترس فرض نکنید.",
+      "internal_note": "Reviewed 2026-11-06: hiking/snow walking confirmed by Alpclub report, not technical rope climbing despite Wikiloc activity label. GPX969 points; cut0..698 at5.15m from existing Tangchal; Niloufar9.61m/Khoshkchal2.04m on outbound. Two outbound recording gaps227m/222m on ridge corridor; timestamps not used for ETA. Return1.412km gap excluded. Distance4.489km; GPX50m/MA5 gain973.7m. ETA195±60min, low confidence; no fabricated Araghchin visit or Shah Abad alias. Coordinates and existing summit name preserved."
+    }
+  }
+}
