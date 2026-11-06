@@ -1,0 +1,162 @@
+{
+  "catalog_version": "hawatch-next10-261106-v1",
+  "primary_point": "padar-oshnavieh",
+  "point": {
+    "slug": "padar-oshnavieh",
+    "tile_name": "پادار اشنویه",
+    "name": "قلهٔ پادار اشنویه",
+    "short_category": "قله",
+    "category": "قله",
+    "category_key": "mountain",
+    "region": "آذربایجان غربی · اشنویه",
+    "latitude": 37.11,
+    "longitude": 45.2361111,
+    "elevation_m": 2270,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "alpine",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "پادار",
+      "کوه پادار",
+      "Padar"
+    ]
+  },
+  "weather_points": {
+    "padar-oshnavieh": {
+      "name": "قلهٔ پادار اشنویه",
+      "page_name": "قلهٔ پادار اشنویه",
+      "short_label": "پادار اشنویه",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "پادار",
+        "کوه پادار",
+        "Padar"
+      ],
+      "identity_summary": "قلهٔ پادار در محدودهٔ اشنویه؛ مختصات نشان نام‌دار کوه پادار با گزارش صعود گروه چیای اشنویه تطبیق دارد. این نقطه محلهٔ هم‌نام ارومیه نیست.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/2?province=true",
+        "https://t.me/s/chiya_ngo?before=3570",
+        "https://www.google.com/maps?cid=9765575304948353169"
+      ],
+      "latitude": 37.11,
+      "longitude": 45.2361111,
+      "elevation_m": 2270,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات مستند نقطه: 2270 متر؛ ارتفاع سطح مدل مبنای پیش‌بینی این صفحه است.",
+      "climate": "alpine",
+      "tile_name": "پادار اشنویه",
+      "short_category": "قله",
+      "category": "قله",
+      "region": "آذربایجان غربی · اشنویه",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "قلهٔ پادار در محدودهٔ اشنویه؛ مختصات نشان نام‌دار کوه پادار با گزارش صعود گروه چیای اشنویه تطبیق دارد. این نقطه محلهٔ هم‌نام ارومیه نیست.",
+        "content": "قلهٔ پادار در محدودهٔ اشنویه؛ مختصات نشان نام‌دار کوه پادار با گزارش صعود گروه چیای اشنویه تطبیق دارد. این نقطه محلهٔ هم‌نام ارومیه نیست."
+      }
+    },
+    "joopar": {
+      "name": "جوپار",
+      "page_name": "جوپار",
+      "short_label": "جوپار",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "کوهستان جوپار",
+        "رشته‌کوه جوپار"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ کوهستان جوپار در مختصات قلهٔ سه‌شاخ بزرگ؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام کوهستان. قلهٔ مبنا صفحهٔ مستقل دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/21?province=true",
+        "https://hawatch.ir/points/se-shakh-bozorg",
+        "https://www.wikiloc.com/hiking-trails/qlh-sh-shkh-bzrg-4135-khrmn-jwpr-404-6-21-231338962",
+        "https://denaesfahan.blogfa.com/post/4"
+      ],
+      "latitude": 29.931761,
+      "longitude": 57.159142,
+      "elevation_m": 4014,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات مستند نقطه: 4014 متر؛ ارتفاع سطح مدل مبنای پیش‌بینی این صفحه است.",
+      "climate": "alpine",
+      "tile_name": "جوپار",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "کرمان · ماهان · جوپار",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ کوهستان جوپار در مختصات قلهٔ سه‌شاخ بزرگ؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام کوهستان. قلهٔ مبنا صفحهٔ مستقل دارد.",
+        "content": "نقطهٔ نمایندهٔ کوهستان جوپار در مختصات قلهٔ سه‌شاخ بزرگ؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام کوهستان. قلهٔ مبنا صفحهٔ مستقل دارد."
+      }
+    },
+    "valash": {
+      "name": "قلهٔ ولاش شرقی",
+      "page_name": "قلهٔ ولاش شرقی",
+      "short_label": "ولاش شرقی",
+      "place_type": "summit",
+      "category_key": "mountain",
+      "aliases": [
+        "ولاش",
+        "والاش",
+        "ولاش شرقی"
+      ],
+      "identity_summary": "رأس شرقیِ نام‌دار ولاش در جنوب خط‌الرأس گرین؛ مختصات از نشان قلهٔ ولاش شرقی است. این نقطه با قلهٔ گرین/بازگیر در حدود ۱۲ کیلومتری شمال و رأس غربی ولاش متفاوت است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/26?province=true",
+        "https://www.openstreetmap.org/node/8704753581",
+        "https://sooud.blogfa.com/post/232",
+        "https://t.me/s/Koochzagros?before=1734"
+      ],
+      "latitude": 33.8523621,
+      "longitude": 48.4834494,
+      "elevation_m": 3567,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات مستند نقطه: 3567 متر؛ ارتفاع سطح مدل مبنای پیش‌بینی این صفحه است.",
+      "climate": "alpine",
+      "tile_name": "ولاش شرقی",
+      "short_category": "قله",
+      "category": "قله",
+      "region": "لرستان · گرین · ولاش",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "رأس شرقیِ نام‌دار ولاش در جنوب خط‌الرأس گرین؛ مختصات از نشان قلهٔ ولاش شرقی است. این نقطه با قلهٔ گرین/بازگیر در حدود ۱۲ کیلومتری شمال و رأس غربی ولاش متفاوت است.",
+        "content": "رأس شرقیِ نام‌دار ولاش در جنوب خط‌الرأس گرین؛ مختصات از نشان قلهٔ ولاش شرقی است. این نقطه با قلهٔ گرین/بازگیر در حدود ۱۲ کیلومتری شمال و رأس غربی ولاش متفاوت است."
+      }
+    }
+  },
+  "shared_weather_points": [
+    "se-shakh-bozorg"
+  ],
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": [
+        "joopar",
+        "se-shakh-bozorg"
+      ],
+      "relationship": "area_representative",
+      "reason": "طبق قرارداد صریح کاربر، جوپار یک Point عادی با نقطهٔ شاخص سه‌شاخ بزرگ است؛ مختصات نماینده عمداً مشترک است و میانگین پهنه نیست."
+    }
+  ],
+  "routes": {}
+}

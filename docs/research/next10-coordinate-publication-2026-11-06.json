@@ -1,0 +1,270 @@
+{
+  "checked_at": "2026-11-06T15:42:24.910417+00:00",
+  "scope": "Next ten unresolved entries by priority/rank, after user deferred Haft Asiab Fars",
+  "deferred": {
+    "id": "HG-haft-asiyab-waterfall",
+    "name": "آبشار هفت آسیاب فارس",
+    "status": "parked",
+    "reason": "User explicitly deferred this destination."
+  },
+  "remaining": [
+    {
+      "id": "HK-404",
+      "note": "نامزد شاه‌آباد در OSM فقط حدود ۱۴ متر با tngchal-hk306 زنده فاصله دارد؛ ساخت قلهٔ دوم مجاز نیست. ترک 95373545 با نام هر دو قله پیدا شد؛ GPX و waypointهای نام‌دار برای تشخیص نام دیگر/خطای مختصات لازم است.",
+      "sources": [
+        "https://www.openstreetmap.org/node/11518590623",
+        "https://www.wikiloc.com/mountaineering-trails/rqchyn-tng-chl-w-dw-gnbdn-95373545"
+      ]
+    },
+    {
+      "id": "HK-381",
+      "note": "ارتفاع منبع هواکوه ۳۲۴۰ متر و alias نیزانه/neizaneh بررسی شد؛ جست‌وجوی نام و عوارض OSM هنوز مختصات مستقل منطبق با چهارمحال نداده است. pin نام‌دار یا گزارش صعود محلی لازم است.",
+      "sources": [
+        "https://havakouh.com/get-summits/9?province=true"
+      ]
+    },
+    {
+      "id": "HK-288",
+      "note": "ترک‌های قلهٔ دیش در دوردانهٔ کازرون فارس پیدا شد، اما استان منبع هواکوه خوزستان است. تا تأیید خطای استان یا هویت قلهٔ خوزستان، این دو را یکی نگیریم.",
+      "sources": [
+        "https://fr.wikiloc.com/itineraires-alpinisme/qlh-dysh-w-chshmh-hshmy-133078559",
+        "https://nb.wikiloc.com/orientering-loeyper/msyr-rft-w-brgsht-qlh-dysh-132289385"
+      ]
+    },
+    {
+      "id": "HK-385",
+      "note": "نشان واقعی قلهٔ شاهزاده عبدالله در 32.482879,49.4629969 از زیارتگاه‌ها جدا شد؛ ارتفاع OSM ۲۵۵۰ و SRTM30m برابر ۲۵۳۷ در برابر GLO90 برابر ۲۴۲۲ متر است. اختلاف ۱۱۵ متر از gate بیشتر است؛ تا رفع اختلاف ارتفاع/تأیید GPS منتشر نشود.",
+      "sources": [
+        "https://www.openstreetmap.org/node/7263355508",
+        "https://api.opentopodata.org/v1/srtm30m?locations=32.482879,49.4629969"
+      ]
+    },
+    {
+      "id": "HK-183",
+      "note": "مختصات گزارش کانون کوهنوردان اراک با نشان OSM در 34.157577,49.274786 تطبیق دارد؛ SRTM30m برابر ۲۹۶۵ و GLO90 برابر ۲۸۱۱ متر است؛ اختلاف ۱۵۴م از gate بیشتر است. ترک 219883261 برای بررسی GPS قله/ارتفاع مناسب است؛ فعلاً import متوقف.",
+      "sources": [
+        "https://mountaineeringclub.blogfa.com/post/337",
+        "https://www.openstreetmap.org/node/5261840485",
+        "https://www.wikiloc.com/hiking-trails/shh-khykhsrw-219883261"
+      ]
+    },
+    {
+      "id": "HG-tarlan-waterfall",
+      "note": "جست‌وجوی دوباره و عوارض آبشار OSM هنوز نشان خود آبشار ترلان آذربایجان شرقی را نداده است. آبادی هم‌نام مرکزی و فهرست‌های بازنشرشده شاهد مختصات آبشار نیستند؛ pin یا ترک بازدید لازم است.",
+      "sources": [
+        "https://havagasht.com/tarlan-waterfall"
+      ]
+    },
+    {
+      "id": "HG-tutalu-wterfall",
+      "note": "گزارش محلی، توتلو را نزدیک منامن/منامین در جنوب هشجین خلخال معرفی می‌کند؛ این پیشرفت هویت است، نه مختصات خود آبشار. نتیجه‌های آبشارهای هم‌نام/نامرتبط و مرکز روستا پذیرفته نشدند؛ pin یا ترک بازدید لازم است.",
+      "sources": [
+        "https://havagasht.com/tutalu-wterfall",
+        "https://avaykhak.blogfa.com/category/5?p=2",
+        "https://telegram.me/s/atagroup?q=%23آبشارهای_اردبیل"
+      ]
+    }
+  ],
+  "rejected_evidence": [
+    {
+      "url": "https://www.wikiloc.com/mountaineering-trails/qlh-wlsh-gryn-46522593",
+      "reason": "Public comment disputes that this track reaches the summit; not used for coordinates or route."
+    },
+    {
+      "candidate": "old Valash candidate beside Garrin",
+      "reason": "Rejected duplicate; documented named eastern Valash is approximately 11.9 km south of existing Garrin."
+    }
+  ],
+  "publication": "Three points published; seven remain needs_review; no routes imported",
+  "google_index_status": "Unconfirmed; public 200 and ingest do not prove Google indexing",
+  "published": [
+    {
+      "id": "HK-253",
+      "slug": "padar-oshnavieh",
+      "name": "قلهٔ پادار اشنویه",
+      "tile": "پادار اشنویه",
+      "lat": 37.11,
+      "lon": 45.2361111,
+      "elev": 2270,
+      "region": "آذربایجان غربی · اشنویه",
+      "aliases": [
+        "پادار",
+        "کوه پادار",
+        "Padar"
+      ],
+      "summary": "قلهٔ پادار در محدودهٔ اشنویه؛ مختصات نشان نام‌دار کوه پادار با گزارش صعود گروه چیای اشنویه تطبیق دارد. این نقطه محلهٔ هم‌نام ارومیه نیست.",
+      "sources": [
+        "https://havakouh.com/get-summits/2?province=true",
+        "https://t.me/s/chiya_ngo?before=3570",
+        "https://www.google.com/maps?cid=9765575304948353169"
+      ]
+    },
+    {
+      "id": "HK-109",
+      "slug": "joopar",
+      "name": "جوپار",
+      "tile": "جوپار",
+      "lat": 29.931761,
+      "lon": 57.159142,
+      "elev": 4014,
+      "region": "کرمان · ماهان · جوپار",
+      "aliases": [
+        "کوهستان جوپار",
+        "رشته‌کوه جوپار"
+      ],
+      "summary": "نقطهٔ نمایندهٔ کوهستان جوپار در مختصات قلهٔ سه‌شاخ بزرگ؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام کوهستان. قلهٔ مبنا صفحهٔ مستقل دارد.",
+      "sources": [
+        "https://havakouh.com/get-summits/21?province=true",
+        "https://hawatch.ir/points/se-shakh-bozorg",
+        "https://www.wikiloc.com/hiking-trails/qlh-sh-shkh-bzrg-4135-khrmn-jwpr-404-6-21-231338962",
+        "https://denaesfahan.blogfa.com/post/4"
+      ]
+    },
+    {
+      "id": "HK-111",
+      "slug": "valash",
+      "name": "قلهٔ ولاش شرقی",
+      "tile": "ولاش شرقی",
+      "lat": 33.8523621,
+      "lon": 48.4834494,
+      "elev": 3567,
+      "region": "لرستان · گرین · ولاش",
+      "aliases": [
+        "ولاش",
+        "والاش",
+        "ولاش شرقی"
+      ],
+      "summary": "رأس شرقیِ نام‌دار ولاش در جنوب خط‌الرأس گرین؛ مختصات از نشان قلهٔ ولاش شرقی است. این نقطه با قلهٔ گرین/بازگیر در حدود ۱۲ کیلومتری شمال و رأس غربی ولاش متفاوت است.",
+      "sources": [
+        "https://havakouh.com/get-summits/26?province=true",
+        "https://www.openstreetmap.org/node/8704753581",
+        "https://sooud.blogfa.com/post/232",
+        "https://t.me/s/Koochzagros?before=1734"
+      ]
+    }
+  ],
+  "public_checks": [
+    {
+      "slug": "padar-oshnavieh",
+      "status": 200,
+      "url": "https://hawatch.ir/points/padar-oshnavieh",
+      "canonical": [
+        "https://hawatch.ir/points/padar-oshnavieh"
+      ],
+      "api_status": 200,
+      "body_has_noindex": false,
+      "api_freshness": null,
+      "in_sitemap": true
+    },
+    {
+      "slug": "joopar",
+      "status": 200,
+      "url": "https://hawatch.ir/points/joopar",
+      "canonical": [
+        "https://hawatch.ir/points/joopar"
+      ],
+      "api_status": 200,
+      "body_has_noindex": false,
+      "api_freshness": null,
+      "in_sitemap": true
+    },
+    {
+      "slug": "valash",
+      "status": 200,
+      "url": "https://hawatch.ir/points/valash",
+      "canonical": [
+        "https://hawatch.ir/points/valash"
+      ],
+      "api_status": 200,
+      "body_has_noindex": false,
+      "api_freshness": null,
+      "in_sitemap": true
+    }
+  ],
+  "blocked_gate": {
+    "catalog": "/tmp/hawatch-next10-20261106/blocked-elevation-draft.json",
+    "catalog_version": "blocked-dem-review-261106",
+    "errors": [
+      "shahzadeh-abdollah: catalog/DEM elevation delta is 115 m, limit=100 m; correct the catalog elevation before import",
+      "shah-keykhosrow: catalog/DEM elevation delta is 154 m, limit=100 m; correct the catalog elevation before import"
+    ],
+    "warnings": [],
+    "points": [
+      {
+        "slug": "shahzadeh-abdollah",
+        "name": "قلهٔ شاهزاده عبدالله",
+        "latitude": 32.482879,
+        "longitude": 49.4629969,
+        "catalog_elevation_m": 2537,
+        "status": "provisional",
+        "dem_elevation_m": 2422.0,
+        "cell_selection": "nearest",
+        "provider_latitude": 32.490955,
+        "provider_longitude": 49.43905,
+        "provider_elevation_m": 2537.0,
+        "provider_distance_km": 2.419,
+        "hour_count": 24,
+        "missing_hourly_fields": [],
+        "hourly_length_mismatches": [],
+        "dem_delta_m": 115.0,
+        "elevation_status": "catalog"
+      },
+      {
+        "slug": "shah-keykhosrow",
+        "name": "قلهٔ شاه‌کیخسرو",
+        "latitude": 34.157577,
+        "longitude": 49.274786,
+        "catalog_elevation_m": 2965,
+        "status": "provisional",
+        "dem_elevation_m": 2811.0,
+        "cell_selection": "nearest",
+        "provider_latitude": 34.13377,
+        "provider_longitude": 49.25248,
+        "provider_elevation_m": 2965.0,
+        "provider_distance_km": 3.35,
+        "hour_count": 24,
+        "missing_hourly_fields": [],
+        "hourly_length_mismatches": [],
+        "dem_delta_m": 154.0,
+        "elevation_status": "catalog"
+      }
+    ],
+    "summary": {
+      "point_count": 2,
+      "provider_checked": 2,
+      "unresolved_elevation_count": 0,
+      "error_count": 2,
+      "warning_count": 0,
+      "pass": false
+    }
+  },
+  "extra_preflights": [
+    {
+      "slug": "joopar",
+      "exit_code": 0,
+      "output": "{\n  \"errors\": [],\n  \"point_slug\": \"joopar\",\n  \"require_forecast\": true,\n  \"summary\": {\n    \"error_count\": 0,\n    \"ingestible_point_count\": 1,\n    \"pass\": true,\n    \"point_count\": 1,\n    \"provider_checked_point_count\": 1,\n    \"route_count\": 0,\n    \"timed_route_count\": 0,\n    \"warning_count\": 0\n  },\n  \"warnings\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "slug": "valash",
+      "exit_code": 0,
+      "output": "{\n  \"errors\": [],\n  \"point_slug\": \"valash\",\n  \"require_forecast\": true,\n  \"summary\": {\n    \"error_count\": 0,\n    \"ingestible_point_count\": 1,\n    \"pass\": true,\n    \"point_count\": 1,\n    \"provider_checked_point_count\": 1,\n    \"route_count\": 0,\n    \"timed_route_count\": 0,\n    \"warning_count\": 0\n  },\n  \"warnings\": []\n}\n",
+      "stderr": ""
+    }
+  ],
+  "visual_checks": "design/screens/catalog-next10-points-2026-11-06/verification.json",
+  "indexing_backlog_total": 1250,
+  "publish_workflow": {
+    "exit_code": 0,
+    "catalog_version": "hawatch-next10-261106-v1",
+    "ingest_snapshot": 840,
+    "ingest_freshness": "ready",
+    "primary_preflight": {
+      "point": "padar-oshnavieh",
+      "errors": 0,
+      "warnings": 0,
+      "pass": true
+    },
+    "routes_added": 0
+  }
+}
