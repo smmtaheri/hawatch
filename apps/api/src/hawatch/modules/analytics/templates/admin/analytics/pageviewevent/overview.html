@@ -10,16 +10,14 @@
     <div><button type="submit" class="button">اعمال</button> <a href="?range=24h">پاک‌کردن فیلترها</a></div>
   </form>
   {% if summary %}
-  <p>بازه: {% if start %}{{ start|date:"Y-m-d H:i:s" }}{% else %}ابتدای تاریخچهٔ موجود{% endif %} تا {{ end|date:"Y-m-d H:i:s" }} — ساعت تهران. پایان بازه در صفحه‌بندی و خروجی ثابت است.</p>
   <div class="module analytics-summary">
     <div>{% if is_entries %}ورود به کل سایت{% else %}بازدید صفحه (Page View){% endif %}: <strong>{{ summary.page_views }}</strong></div>
     <div>بازدیدکنندهٔ یکتا: <strong>{{ summary.unique_visitors }}</strong></div>
     <div>نوبت بازدید: <strong>{{ summary.sessions }}</strong></div>
   </div>
+  <p>بازه: {% if start %}{{ start|date:"Y-m-d H:i:s" }}{% else %}ابتدای تاریخچهٔ موجود{% endif %} تا {{ end|date:"Y-m-d H:i:s" }} — ساعت تهران.</p>
   <p class="help">هر بازدیدکننده در کل بازه یک‌بار در «یکتا» حساب می‌شود؛ جمع یکتای ردیف‌ها لزوماً با یکتای کل برابر نیست. نوبت بازدید با شناسهٔ مرورگری و وقفهٔ ۳۰ دقیقه‌ای تخمین زده می‌شود.</p>
-  {% if coverage %}<p class="help">تاریخچهٔ دقیقِ قابل اتکا از {{ coverage.detailed_since|date:"Y-m-d H:i" }}؛ ثبت منابع ورود از {{ coverage.attribution_since|date:"Y-m-d H:i" }}. دادهٔ ثبت‌نشدهٔ گذشته بازسازی نمی‌شود.</p>{% endif %}
   {% if partial_history %}<p class="analytics-notice">این بازه از مرز تاریخچهٔ دقیق قدیمی‌تر است؛ داده‌های حذف‌شدهٔ گذشته موجود نیستند. اعداد را پوشش کامل این بازه فرض نکنید.</p>{% endif %}
-  {% if has_historical_aggregates %}<p class="help">تاریخچهٔ ماهانهٔ قدیمی فقط در «کل زمان» بدون فیلتر منبع/ناوبری اضافه می‌شود؛ یکتای تاریخی تقریبی و فاقد شمارش نوبت است. در تفکیک‌های دیگر جدا نمایش داده می‌شود.</p>{% endif %}
   <p><a class="button" href="?{{ query_string }}&amp;export=csv">خروجی CSV همین گزارش</a> · برای جزئیات روی نام گروه کلیک کنید.</p>
   <h2>تفکیک بر اساس {{ group_label }}</h2>
   <div class="analytics-table"><table id="result_list"><thead><tr><th>گروه</th><th>تعداد بازدید / ورود</th><th>بازدیدکنندهٔ یکتا</th><th>نوبت بازدید</th><th>نمودار تعداد</th></tr></thead><tbody>

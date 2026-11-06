@@ -1,0 +1,21 @@
+{
+  "data": "Synthetic report; local template with public admin assets; no production changes",
+  "checks": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "summaryTop": 491,
+      "rangeTop": 582,
+      "viewport": "desktop"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "summaryTop": 1278.796875,
+      "rangeTop": 1422.796875,
+      "viewport": "mobile"
+    }
+  ]
+}
