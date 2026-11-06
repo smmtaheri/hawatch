@@ -8,6 +8,12 @@
 - هر تغییر برای mobile و desktop باید جداگانه بررسی شود.
 - overflow افقی در کل صفحه ممنوع است؛ مخصوصاً در کارت‌های نقطه، روزها، مسیرها و داده‌های ساعتی.
 - frontend نباید مستقیماً به provider هواشناسی یا database وصل شود؛ فقط از API داخلی استفاده کند.
+- موجودیت‌های مقصد فقط Point و Route هستند؛ برای پهنه، کوهستان، جنگل یا کویر
+  موجودیت و مسیر عمومی سومی مثل `/mountains/` نسازید. پهنه نیز یک WeatherPoint
+  عادی با صفحهٔ `/points/<slug>` و مختصات نقطهٔ شاخصِ مستند است.
+- برای پهنهٔ نماینده طبق درخواست صریح کاربر، هم‌مکانی با قلهٔ مبنا مجاز است؛
+  زوج پهنه/قله با `relationship: area_representative` و دلیل روشن در
+  `reviewed_nearby_point_pairs` ثبت شود. این استثنا مجوز duplicate عادی نیست.
 - قبل از implementation، README، مستندات مرتبط و screenshotهای مرجع خوانده شوند.
 - هر کار مربوط به افزودن نقطه، WeatherPoint، Route یا RoutePoint باید از
   `docs/catalog-onboarding.md` و `docs/catalog-and-weather-validation.md` شروع

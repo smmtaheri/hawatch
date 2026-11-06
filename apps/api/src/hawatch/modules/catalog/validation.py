@@ -96,6 +96,11 @@ def validate_catalog_document(data: dict[str, Any]) -> list[CatalogIssue]:
             issues.append(_issue("error", "reviewed-nearby-points", "a reviewed nearby-point pair references a missing point"))
         if not isinstance(reason, str) or not reason.strip():
             issues.append(_issue("error", "reviewed-nearby-points", "a reviewed nearby-point pair needs a curator reason"))
+        relationship = pair.get("relationship")
+        if relationship is not None:
+            area = point_rows.get(slugs[0], {})
+            if relationship != "area_representative" or area.get("place_type") != "landmark" or area.get("kind") != "primary" or slugs[1] not in shared:
+                issues.append(_issue("error", "area-representative", "a colocated area needs a primary landmark point and an existing shared representative"))
     primary_slug = str(data.get("primary_point") or profile.get("slug") or "")
     if primary_slug not in point_slugs:
         issues.append(_issue("error", "primary-point", f"primary point is missing: {primary_slug!r}"))
@@ -255,6 +260,30 @@ def _reviewed_nearby_point_pairs() -> frozenset[frozenset[str]]:
     return frozenset(pairs)
 
 
+@lru_cache
+def _colocated_area_representatives() -> frozenset[tuple[str, str]]:
+    """Explicit area Point -> existing summit Point mappings, not new entities."""
+    pairs = set()
+    for path in (Path(settings.FIXTURES_DIR) / "catalog").glob("*_v*.json"):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for pair in data.get("reviewed_nearby_point_pairs") or []:
+            if pair.get("relationship") == "area_representative" and pair.get("reason"):
+                slugs = pair.get("slugs", [])
+                if len(slugs) == 2:
+                    pairs.add(tuple(slugs))
+    return frozenset(pairs)
+
+
+def _is_colocated_area_representative(first, second) -> bool:
+    declared = _colocated_area_representatives()
+    return any(
+        (area.slug, summit.slug) in declared
+        and area.place_type == "landmark" and area.kind == "primary"
+        and summit.place_type == "summit"
+        for area, summit in ((first, second), (second, first))
+    )
+
+
 def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
     from hawatch.modules.forecasts.models import WeatherPoint
     from hawatch.modules.routes.models import Route
@@ -284,7 +313,7 @@ def validate_database_catalog(*, strict: bool = False) -> list[CatalogIssue]:
     for index, first in enumerate(points):
         for second in points[index + 1 :]:
             distance = _distance_m(first, second)
-            if distance < 25:
+            if distance < 25 and not _is_colocated_area_representative(first, second):
                 issues.append(_issue("error", "near-duplicate-point", f"points {first.slug} and {second.slug} are {distance:.1f}m apart; merge them before publish"))
             elif distance < 100 and frozenset((first.slug, second.slug)) not in reviewed_pairs:
                 issues.append(_issue("warning", "near-point", f"points {first.slug} and {second.slug} are {distance:.1f}m apart; curator review required"))

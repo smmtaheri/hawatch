@@ -1,0 +1,297 @@
+{
+  "catalog_version": "hawatch-area-points-261106-v1",
+  "primary_point": "dena",
+  "point": {
+    "slug": "dena",
+    "tile_name": "دنا",
+    "name": "دنا",
+    "short_category": "کوهستان",
+    "category": "کوهستان",
+    "category_key": "mountain",
+    "region": "کهگیلویه و بویراحمد · دنا",
+    "latitude": 30.95118,
+    "longitude": 51.43613,
+    "elevation_m": 4397,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "alpine",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "دنا",
+      "کوهستان دنا",
+      "رشته‌کوه دنا"
+    ]
+  },
+  "weather_points": {
+    "dena": {
+      "name": "دنا",
+      "page_name": "دنا",
+      "short_label": "دنا",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "دنا",
+        "کوهستان دنا",
+        "رشته‌کوه دنا"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ دنا در مختصات قلهٔ قاش‌مستان؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/23?province=true",
+        "https://hawatch.ir/points/qash-mastan",
+        "https://www.wikiloc.com/hiking-trails/msyr-swd-bh-qlh-qshmstn-dn-177869110",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-grwh-khwhnwrdy-rhyn-lbrz-1402-03-12-136682462",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-qsh-mstn-dn-msyr-khykhsrw-78327420",
+        "https://www.wikiloc.com/hiking-trails/qlh-qsh-mstn-dn-byjn-3-w-qlh-bn-rwd-swd-z-msyr-khykhsrw-w-fr-139931765",
+        "https://en.wikipedia.org/wiki/List_of_Iranian_four-thousanders"
+      ],
+      "latitude": 30.95118,
+      "longitude": 51.43613,
+      "elevation_m": 4397,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نقطهٔ شاخص قاش‌مستان: 4397 متر؛ نقطهٔ پهنه طبق درخواست صریح کاربر با قلهٔ مبنا هم‌مکان است.",
+      "climate": "alpine",
+      "tile_name": "دنا",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "کهگیلویه و بویراحمد · دنا",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ دنا در مختصات قلهٔ قاش‌مستان؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+        "content": "نقطهٔ نمایندهٔ دنا در مختصات قلهٔ قاش‌مستان؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد."
+      }
+    },
+    "sahand": {
+      "name": "سهند",
+      "page_name": "سهند",
+      "short_label": "سهند",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "سهند",
+        "کوهستان سهند",
+        "رشته‌کوه سهند"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ سهند در مختصات قلهٔ کمال سهند؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/1?province=true",
+        "https://hawatch.ir/points/kamal-sahand",
+        "https://climbers.ir/tourist-attractions/188-%D9%82%D9%84%D9%87-%DA%A9%D9%85%D8%A7%D9%84",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-adhrbyjn-shrqy-rshth-khwh-shnd-216902986",
+        "https://www.wikiloc.com/hiking-trails/qlh-khml-bm-rshth-khwh-shnd-3725-mtr-164643769",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-kml-shnd-25581940",
+        "https://www.gholleh.com/peakszoom.aspx?lat=37.7294379&lon=46.5003277&peak-name=%D9%82%D9%88%D8%B4+%DA%AF%D9%84%DB%8C+%D8%AF%D8%A7%D8%BA%DB%8C%28%DA%A9%D9%85%D8%A7%D9%84%29&pkidentifier=268"
+      ],
+      "latitude": 37.7299,
+      "longitude": 46.49993,
+      "elevation_m": 3684,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نقطهٔ شاخص کمال سهند: 3684 متر؛ نقطهٔ پهنه طبق درخواست صریح کاربر با قلهٔ مبنا هم‌مکان است.",
+      "climate": "alpine",
+      "tile_name": "سهند",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "آذربایجان شرقی · سهند",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ سهند در مختصات قلهٔ کمال سهند؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+        "content": "نقطهٔ نمایندهٔ سهند در مختصات قلهٔ کمال سهند؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد."
+      }
+    },
+    "zardkuh": {
+      "name": "زردکوه",
+      "page_name": "زردکوه",
+      "short_label": "زردکوه",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "زردکوه",
+        "کوهستان زردکوه",
+        "رشته‌کوه زردکوه"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ زردکوه در مختصات قلهٔ کلونچین؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/9?province=true",
+        "https://hawatch.ir/points/kolonchin",
+        "https://www.wikiloc.com/mountaineering-trails/clonchin-peak-qlh-khlwnchyn-83463551",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-z-msyr-khwl-khdng-bm-stn-chhrmhl-w-bkhtyry-241646069",
+        "https://www.wikiloc.com/hiking-trails/qlh-4220-mtry-khlwnchyn-zrdkhwh-grwh-hwzwy-afq-79729799",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-khlwnchyn-zrdkhwh-qll-symrgy-405-5-30-kouloonchi-peak-at-281255487",
+        "https://www.wikiloc.com/hiking-trails/qlh-khlwnchyn-223520985",
+        "https://www.wikiloc.com/hiking-trails/msyr-yl-khrsn-bh-qlh-khrsn-w-qlh-khlwnchyn-w-brgsht-z-khwl-khdng-51280301",
+        "https://www.wikiloc.com/hiking-trails/swd-zmstnh-qlh-khlwnchyn-z-msyr-pnh-gh-khlwnchyn-251334951",
+        "https://lastsecond.ir/itineraries/s998723-chahrmahal-isfahan-ansari-99",
+        "https://mojekooh.com/kloonchin-climbing-guide/"
+      ],
+      "latitude": 32.36499,
+      "longitude": 50.07736,
+      "elevation_m": 4122,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نقطهٔ شاخص کلونچین: 4122 متر؛ نقطهٔ پهنه طبق درخواست صریح کاربر با قلهٔ مبنا هم‌مکان است.",
+      "climate": "alpine",
+      "tile_name": "زردکوه",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "چهارمحال و بختیاری · زردکوه",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ زردکوه در مختصات قلهٔ کلونچین؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+        "content": "نقطهٔ نمایندهٔ زردکوه در مختصات قلهٔ کلونچین؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد."
+      }
+    },
+    "oshtorankuh": {
+      "name": "اشترانکوه",
+      "page_name": "اشترانکوه",
+      "short_label": "اشترانکوه",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "اشترانکوه",
+        "کوهستان اشترانکوه",
+        "رشته‌کوه اشترانکوه"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ اشترانکوه در مختصات قلهٔ سنبران؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/26?province=true",
+        "https://hawatch.ir/points/sanboran",
+        "https://fa.wikipedia.org/wiki/سن‌بران",
+        "https://www.wikiloc.com/hiking-trails/qlh-snbrn-shtrn-khwh-136309838",
+        "https://www.wikiloc.com/hiking-trails/swd-bh-qlh-snbrn-alp-yrn-y-bm-stn-lrstn-74934263"
+      ],
+      "latitude": 33.34022,
+      "longitude": 49.30443,
+      "elevation_m": 4055,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نقطهٔ شاخص سنبران: 4055 متر؛ نقطهٔ پهنه طبق درخواست صریح کاربر با قلهٔ مبنا هم‌مکان است.",
+      "climate": "alpine",
+      "tile_name": "اشترانکوه",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "لرستان · اشترانکوه",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ اشترانکوه در مختصات قلهٔ سنبران؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+        "content": "نقطهٔ نمایندهٔ اشترانکوه در مختصات قلهٔ سنبران؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد."
+      }
+    },
+    "kabirkuh": {
+      "name": "کبیرکوه",
+      "page_name": "کبیرکوه",
+      "short_label": "کبیرکوه",
+      "place_type": "landmark",
+      "category_key": "mountain",
+      "aliases": [
+        "کبیرکوه",
+        "کوهستان کبیرکوه",
+        "رشته‌کوه کبیرکوه"
+      ],
+      "identity_summary": "نقطهٔ نمایندهٔ کبیرکوه در مختصات قلهٔ کان‌صیفی؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://havakouh.com/get-summits/6?province=true",
+        "https://hawatch.ir/points/kan-seifi",
+        "https://www.wikiloc.com/hiking-trails/khn-syfy-khbyrkhwh-z-msyr-shmly-30172899",
+        "https://www.wikiloc.com/hiking-trails/kan-saifi-jenobi-153248303",
+        "https://ansari244.blogfa.com/post/12",
+        "https://mapcarta.com/N6364525494",
+        "https://decovel.com/page/kan-seifi-peak"
+      ],
+      "latitude": 33.393304,
+      "longitude": 46.781001,
+      "elevation_m": 2791,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نقطهٔ شاخص کان‌صیفی: 2791 متر؛ نقطهٔ پهنه طبق درخواست صریح کاربر با قلهٔ مبنا هم‌مکان است.",
+      "climate": "alpine",
+      "tile_name": "کبیرکوه",
+      "short_category": "کوهستان",
+      "category": "کوهستان",
+      "region": "ایلام · کبیرکوه",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "seo": {
+        "description": "نقطهٔ نمایندهٔ کبیرکوه در مختصات قلهٔ کان‌صیفی؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد.",
+        "content": "نقطهٔ نمایندهٔ کبیرکوه در مختصات قلهٔ کان‌صیفی؛ پیش‌بینی و ارتفاع این صفحه مربوط به همین نقطهٔ شاخص است، نه میانگین تمام پهنه. قلهٔ مبنا صفحهٔ مستقل خود را دارد."
+      }
+    }
+  },
+  "shared_weather_points": [
+    "qash-mastan",
+    "kamal-sahand",
+    "kolonchin",
+    "sanboran",
+    "kan-seifi"
+  ],
+  "reviewed_nearby_point_pairs": [
+    {
+      "slugs": [
+        "dena",
+        "qash-mastan"
+      ],
+      "relationship": "area_representative",
+      "reason": "درخواست صریح کاربر در ۲۰۲۶-۱۱-۰۶: دنا یک Point عادی با نقطهٔ شاخص قاش‌مستان است. هویت پهنه و قله جداست؛ مختصات نماینده عمداً مشترک است و موجودیت/مسیر عمومی سوم ساخته نمی‌شود."
+    },
+    {
+      "slugs": [
+        "sahand",
+        "kamal-sahand"
+      ],
+      "relationship": "area_representative",
+      "reason": "درخواست صریح کاربر در ۲۰۲۶-۱۱-۰۶: سهند یک Point عادی با نقطهٔ شاخص کمال سهند است. هویت پهنه و قله جداست؛ مختصات نماینده عمداً مشترک است و موجودیت/مسیر عمومی سوم ساخته نمی‌شود."
+    },
+    {
+      "slugs": [
+        "zardkuh",
+        "kolonchin"
+      ],
+      "relationship": "area_representative",
+      "reason": "درخواست صریح کاربر در ۲۰۲۶-۱۱-۰۶: زردکوه یک Point عادی با نقطهٔ شاخص کلونچین است. هویت پهنه و قله جداست؛ مختصات نماینده عمداً مشترک است و موجودیت/مسیر عمومی سوم ساخته نمی‌شود."
+    },
+    {
+      "slugs": [
+        "oshtorankuh",
+        "sanboran"
+      ],
+      "relationship": "area_representative",
+      "reason": "درخواست صریح کاربر در ۲۰۲۶-۱۱-۰۶: اشترانکوه یک Point عادی با نقطهٔ شاخص سنبران است. هویت پهنه و قله جداست؛ مختصات نماینده عمداً مشترک است و موجودیت/مسیر عمومی سوم ساخته نمی‌شود."
+    },
+    {
+      "slugs": [
+        "kabirkuh",
+        "kan-seifi"
+      ],
+      "relationship": "area_representative",
+      "reason": "درخواست صریح کاربر در ۲۰۲۶-۱۱-۰۶: کبیرکوه یک Point عادی با نقطهٔ شاخص کان‌صیفی است. هویت پهنه و قله جداست؛ مختصات نماینده عمداً مشترک است و موجودیت/مسیر عمومی سوم ساخته نمی‌شود."
+    }
+  ],
+  "routes": {}
+}
