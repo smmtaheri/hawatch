@@ -1,0 +1,182 @@
+{
+  "reviewed_at": "2026-11-06T14:17:34.671822+00:00",
+  "scope": "پنج مقصد با waypoint فایل‌های GPX دانلودشدهٔ کاربر تکمیل و منتشر شدند؛ از ده مورد منتخب اکنون نه مورد منتشر و هفت‌آسیاب افزر نیازمند مختصات است.",
+  "fixture": "apps/api/fixtures/catalog/gpx_resolved_20261106_v1.json",
+  "track_handling": {
+    "files_moved": 5,
+    "exact_duplicates_removed": 0,
+    "remaining_loose_track_files_in_downloads": 0,
+    "additional_track_archives_found": 0,
+    "telegram_track_files_found": 0,
+    "storage": "tracks/<point-slug>/; original GPX preserved byte-for-byte, SHA-256 recorded in ignored local manifests; no GPX or manifests shipped to Git/server/images",
+    "public_routes_created": 0
+  },
+  "items": [
+    {
+      "queue_id": "HK-207",
+      "name": "قلهٔ زرنج مراغه",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/zaranj-maragheh",
+      "latitude": 37.300546,
+      "longitude": 46.313044,
+      "elevation_m": 2003,
+      "gpx_waypoint_elevation_m": 2014.7,
+      "gpx_dem_delta_m": 11.7,
+      "identity_summary": "قلهٔ زرنج در محدودهٔ مراغه؛ مختصات waypoint رأس در GPX صعود با گزارش انجمن مراغه تطبیق دارد. از شهر زرنج افغانستان و نشان نادرست نقشه در شمال‌شرق این رأس متمایز است.",
+      "source_urls": [
+        "https://havakouh.com/get-summits/1?province=true",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-211129303",
+        "https://maragheh-alpineclub.blogfa.com/?p=2",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrnj-w-drh-hy-trf-175636470"
+      ],
+      "provider_grid_distance_km": 1.086,
+      "provider_hourly_samples_checked": 24,
+      "nearest_gpx_track_sample_to_named_waypoint_m": 0.21,
+      "verified_live_snapshot_at": "2026-11-06T14:14:29.380990+00:00",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T17:43:54.371464+03:30"
+      },
+      "routes": {},
+      "verification": "Strict local validator, provider/DEM gate, atomic import, targeted ingest, strict per-point database preflight; public 200, independent canonical, index,follow and sitemap presence verified. Mobile 390px and desktop 1440px RTL with no document horizontal overflow."
+    },
+    {
+      "queue_id": "HK-336",
+      "name": "قلهٔ کورج یک",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/kourej",
+      "latitude": 36.107815,
+      "longitude": 50.937005,
+      "elevation_m": 3484,
+      "gpx_waypoint_elevation_m": 3489.9,
+      "gpx_dem_delta_m": 5.9,
+      "identity_summary": "رأس غربی و مرتفع‌تر کورج در طالقان؛ waypoint «قله کورج اول» با نشان غربی OSM منطبق است. رأس شرقی کورج ۲ مستقل است و مختصات آن برای این صفحه استفاده نمی‌شود.",
+      "source_urls": [
+        "https://havakouh.com/get-summits/5?province=true",
+        "https://www.wikiloc.com/mountaineering-trails/qlh-ywnkh-qlh-hft-nwh-khwrj-1-khwrj-2-213755127",
+        "https://www.openstreetmap.org/node/11776090434",
+        "https://www.openstreetmap.org/node/9062071539",
+        "https://www.wikiloc.com/hiking-trails/qlh-khkhrwd-w-qlh-sng-bnkh-z-khchyrh-186314912"
+      ],
+      "provider_grid_distance_km": 2.666,
+      "provider_hourly_samples_checked": 24,
+      "nearest_gpx_track_sample_to_named_waypoint_m": 2.42,
+      "verified_live_snapshot_at": "2026-11-06T14:14:29.380990+00:00",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T17:43:54.371464+03:30"
+      },
+      "routes": {},
+      "verification": "Strict local validator, provider/DEM gate, atomic import, targeted ingest, strict per-point database preflight; public 200, independent canonical, index,follow and sitemap presence verified. Mobile 390px and desktop 1440px RTL with no document horizontal overflow."
+    },
+    {
+      "queue_id": "HK-145",
+      "name": "قلهٔ الله‌بند کوچک",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/allah-band-small",
+      "latitude": 35.991938,
+      "longitude": 51.413114,
+      "elevation_m": 3327,
+      "gpx_waypoint_elevation_m": 3352.1,
+      "gpx_dem_delta_m": 25.1,
+      "identity_summary": "قلهٔ الله‌بند کوچک یا الوبند در شمال آهار؛ waypoint «قله اول الله بند کوچک» انتخاب شده است. با الله‌بند بزرگ در شمال این نقطه فرق دارد؛ دو رأس نزدیک کوچک یک مقصدند.",
+      "source_urls": [
+        "https://havakouh.com/get-summits/8?province=true",
+        "https://www.wikiloc.com/hiking-trails/qlh-zrd-w-qlh-llh-bnd-khwchkh-w-bzrg-175606192",
+        "https://mountaindream.ir/allah-band-mountain",
+        "https://www.wikiloc.com/mountaineering-trails/swd-khtlrsy-bh-qll-zrd-lwbnd-llh-bnd-khwchkh-llh-bnd-bzrg-sychl-mwrkh-1405-04-15-272837514",
+        "https://www.openstreetmap.org/node/11877703174",
+        "http://kuhnavardi.com/قله-الله-بند-کوچک-از-آهار/"
+      ],
+      "provider_grid_distance_km": 1.319,
+      "provider_hourly_samples_checked": 24,
+      "nearest_gpx_track_sample_to_named_waypoint_m": 1.78,
+      "verified_live_snapshot_at": "2026-11-06T14:14:29.380990+00:00",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T17:43:54.371464+03:30"
+      },
+      "routes": {},
+      "verification": "Strict local validator, provider/DEM gate, atomic import, targeted ingest, strict per-point database preflight; public 200, independent canonical, index,follow and sitemap presence verified. Mobile 390px and desktop 1440px RTL with no document horizontal overflow."
+    },
+    {
+      "queue_id": "HK-256",
+      "name": "قلهٔ نظرگاه سبزوار",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/nazargah-sabzevar",
+      "latitude": 36.401068,
+      "longitude": 57.307132,
+      "elevation_m": 2808,
+      "gpx_waypoint_elevation_m": 2802.2,
+      "gpx_dem_delta_m": 5.8,
+      "identity_summary": "قلهٔ نظرگاه در شمال روستای ساروق سبزوار؛ مختصات waypoint نام‌دار رأس از GPX صعود استخراج شده و با DEM سازگار است. نشان کم‌ارتفاع غربی نقشه و نظرگاه خراسان شمالی استفاده نشده‌اند.",
+      "source_urls": [
+        "https://havakouh.com/get-summits/11?province=true",
+        "https://www.wikiloc.com/hiking-trails/qlh-nzrgh-sbzwr-266701228",
+        "https://www.wikiloc.com/hiking-trails/jbhh-shmly-nzrgh-172647603",
+        "https://ecotourismsource.blogfa.com/post/11/"
+      ],
+      "provider_grid_distance_km": 1.985,
+      "provider_hourly_samples_checked": 24,
+      "nearest_gpx_track_sample_to_named_waypoint_m": 0.75,
+      "verified_live_snapshot_at": "2026-11-06T14:14:29.380990+00:00",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T17:43:54.371464+03:30"
+      },
+      "routes": {},
+      "verification": "Strict local validator, provider/DEM gate, atomic import, targeted ingest, strict per-point database preflight; public 200, independent canonical, index,follow and sitemap presence verified. Mobile 390px and desktop 1440px RTL with no document horizontal overflow."
+    },
+    {
+      "queue_id": "HG-teni-waterfall",
+      "name": "آبشار توی اسفراین",
+      "result": "published",
+      "canonical_url": "https://hawatch.ir/points/tuy-waterfall",
+      "latitude": 37.191256,
+      "longitude": 57.068411,
+      "elevation_m": 1495,
+      "gpx_waypoint_elevation_m": 1398.7,
+      "gpx_dem_delta_m": 96.3,
+      "identity_summary": "آبشار توی در درهٔ شمال روستای توی اسفراین؛ مختصات waypoint «ابشار» از GPX منتخب است. پیش‌بینی برای همین آبشار است، نه مرکز روستا یا تمام آبشارهای بالادست.",
+      "source_urls": [
+        "https://havagasht.com/teni-waterfall",
+        "https://www.wikiloc.com/hiking-trails/abshr-twy-264215463",
+        "https://www.wikiloc.com/offroading-trails/abshr-twy-sfryn-176328211",
+        "https://www.wikiloc.com/hiking-trails/bshr-twy-21318463"
+      ],
+      "provider_grid_distance_km": 1.379,
+      "provider_hourly_samples_checked": 24,
+      "nearest_gpx_track_sample_to_named_waypoint_m": 0.11,
+      "verified_live_snapshot_at": "2026-11-06T14:14:29.380990+00:00",
+      "forecast_meta": {
+        "freshness": "ready",
+        "data_mode": "live",
+        "provider": "open-meteo",
+        "generated_at": "2026-11-06T17:43:54.371464+03:30"
+      },
+      "routes": {},
+      "verification": "Strict local validator, provider/DEM gate, atomic import, targeted ingest, strict per-point database preflight; public 200, independent canonical, index,follow and sitemap presence verified. Mobile 390px and desktop 1440px RTL with no document horizontal overflow."
+    }
+  ],
+  "remaining": [
+    {
+      "queue_id": "HG-haft-asiyab-waterfall",
+      "name": "آبشار هفت آسیاب",
+      "result": "needs_review",
+      "summary": "جست‌وجوی اختصاصی افزر/قیر همچنان نشان روستای هفت‌آسیاب را در 28.3836158,52.99117 برگرداند، نه خود آبشار. نشان آبشار هفت‌آسیاب ایلام در 33.034843,47.57427 نیز نامرتبط است. نقطهٔ GPSدار داخل تفرجگاه آبشار افزر لازم است.",
+      "source_urls": [
+        "https://asgharali.blogfa.com/1391/10",
+        "https://www.sarkhat.com/fa/news/147628082/",
+        "https://havagasht.com/haft-asiyab-waterfall"
+      ]
+    }
+  ]
+}
