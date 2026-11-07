@@ -6,14 +6,20 @@ API request handlers must never call this module. Use management commands / jobs
 from __future__ import annotations
 
 import time
+import logging
 from dataclasses import dataclass
 from typing import Any, Sequence
+from datetime import datetime
 from urllib.parse import urlencode
 
 from django.conf import settings
+from django.utils import timezone as dj_timezone
 
 from hawatch.common.observability import record_ingest_retry
 from hawatch.integrations.weather.transport import WeatherHttpTransport
+from hawatch.integrations.weather.rate_limit import WeatherQuotaUnavailable, retry_after_seconds, quota_retry_delay
+
+log = logging.getLogger(__name__)
 
 HOURLY_VARIABLES = [
     "temperature_2m",
@@ -32,7 +38,7 @@ HOURLY_VARIABLES = [
     "wind_gusts_10m",
 ]
 
-DEFAULT_BATCH_SIZE = 100
+DEFAULT_BATCH_SIZE = 25
 DEFAULT_FORECAST_DAYS = 10
 # Ten days cover the eight selectable starts plus normal route arrival tails.
 # Retained prior ingestion records supply historical hazard context.
@@ -76,6 +82,7 @@ class BatchResult:
     attempts: int = 1
     cell_selection: str = DEFAULT_CELL_SELECTION
     models: str = DEFAULT_MODELS
+    received_at: datetime | None = None
 
 
 class OpenMeteoProvider:
@@ -93,17 +100,26 @@ class OpenMeteoProvider:
         opener=None,
         sleeper=None,
         requester=None,
+        rate_limiter=None,
     ) -> None:
         self.base_url = _forecast_endpoint(
             base_url or getattr(settings, "OPEN_METEO_BASE_URL", "https://api.open-meteo.com/v1/forecast")
         )
-        self.batch_size = batch_size or int(getattr(settings, "OPEN_METEO_BATCH_SIZE", DEFAULT_BATCH_SIZE))
+        # Older deployments can retain batch_size=100 in .env. Never let those
+        # values silently restore large requests after this rollout.
+        self.batch_size = min(DEFAULT_BATCH_SIZE, batch_size if batch_size is not None else int(
+            getattr(settings, "OPEN_METEO_BATCH_SIZE", DEFAULT_BATCH_SIZE)))
+        if self.batch_size <= 0:
+            raise ValueError("Weather batch size must be positive")
         self.forecast_days = forecast_days or int(getattr(settings, "OPEN_METEO_FORECAST_DAYS", DEFAULT_FORECAST_DAYS))
         self.past_days = past_days if past_days is not None else int(getattr(settings, "OPEN_METEO_PAST_DAYS", DEFAULT_PAST_DAYS))
         self.timeout_seconds = timeout_seconds
         self.max_retries = max(0, max_retries)
         self._sleeper = sleeper or time.sleep
-        self._transport = WeatherHttpTransport(opener=opener, requester=requester)
+        self.stop_reason = ""
+        self._attempt_number = 1
+        self._retry_after = None
+        self._transport = WeatherHttpTransport(opener=opener, requester=requester, rate_limiter=rate_limiter)
 
     def split_batches(self, points: Sequence[ProviderPoint]) -> list[list[ProviderPoint]]:
         size = max(1, self.batch_size)
@@ -147,7 +163,9 @@ class OpenMeteoProvider:
             url,
             timeout=self.timeout_seconds,
             user_agent=USER_AGENT,
+            attempt=self._attempt_number,
         )
+        self._retry_after = response.retry_after
         return response.status_code, response.payload
 
     def fetch_batch(
@@ -173,23 +191,45 @@ class OpenMeteoProvider:
         attempts = 0
         status = 0
         payload: Any = {"transport_error": "not attempted"}
+        if self.stop_reason:
+            return BatchResult(list(points), 0, {"request_deferred": self.stop_reason},
+                               include_elevation, url, 0, cell_selection, models)
         while attempts <= self.max_retries:
+            self._attempt_number = attempts + 1
+            self._retry_after = None
+            try:
+                status, payload = self._once(url)
+            except WeatherQuotaUnavailable:
+                self.stop_reason = "quota_coordinator_unavailable"
+                payload = {"request_deferred": self.stop_reason}
+                status = 0
+                break
             attempts += 1
-            status, payload = self._once(url)
             if status == 200:
                 break
             retryable = status in RETRYABLE_STATUS or status == 0
             if not retryable or attempts > self.max_retries:
+                if status == 429:
+                    # Do not turn quota exhaustion into a new model/proxy storm.
+                    self.stop_reason = "provider_rate_limited"
                 break
-            retry_after = None
+            retry_after = self._retry_after
             if isinstance(payload, dict):
-                retry_after = payload.get("retry_after") or payload.get("Retry-After")
-            delay = float(retry_after) if retry_after is not None else BASE_BACKOFF_SECONDS * (2 ** (attempts - 1))
+                retry_after = max((v for v in [retry_after, retry_after_seconds(payload.get("retry_after")),
+                                               retry_after_seconds(payload.get("Retry-After"))] if v is not None), default=None)
+            delay = (quota_retry_delay(payload, retry_after, retry=attempts - 1) if status == 429
+                     else retry_after if retry_after is not None
+                     else BASE_BACKOFF_SECONDS * (2 ** (attempts - 1)))
             record_ingest_retry(
                 "transport" if status == 0 else f"http_{status}",
                 provider="open-meteo",
             )
-            self._sleeper(min(delay, 30.0))
+            self._sleeper(delay if status == 429 or retry_after is not None else min(delay, 30.0))
+        if self.stop_reason:
+            log.warning("Weather collection deferred; preserving previous forecasts", extra={
+                "event": "weather.collection_deferred", "reason": self.stop_reason,
+                "point_count": len(points), "attempts": attempts,
+            })
         return BatchResult(
             points=list(points),
             status_code=status,
@@ -199,6 +239,7 @@ class OpenMeteoProvider:
             attempts=attempts,
             cell_selection=cell_selection,
             models=models,
+            received_at=dj_timezone.now() if status == 200 else None,
         )
 
     def fetch_all(self, points: Sequence[ProviderPoint], *, models: str = DEFAULT_MODELS) -> list[BatchResult]:

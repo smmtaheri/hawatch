@@ -21,6 +21,7 @@ services:
       POSTGRES_DB: hawatch_stage
       POSTGRES_USER: hawatch_stage
       REDIS_URL: redis://stage-redis:6379/0
+      OPEN_METEO_RATE_LIMIT_REDIS_URL: redis://stage-weather-quota:6379/0
       OPEN_METEO_FORECAST_DAYS: "10"
       DEMO_DATA_ENABLED: "false"
       HAWATCH_BOOTSTRAP_LIVE_CATALOG_IF_EMPTY: "false"
@@ -102,6 +103,17 @@ services:
       timeout: 3s
       retries: 30
     restart: unless-stopped
+  stage-weather-quota:
+    image: redis:7.4.2
+    command: ["redis-server", "--maxmemory", "32mb", "--maxmemory-policy", "noeviction", "--save", "", "--appendonly", "yes", "--appendfsync", "always"]
+    networks: [stage]
+    volumes: ["stage-weather-quota:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
   stage-scheduler:
     image: hawatch-stage-api:${HAWATCH_STAGE_IMAGE_TAG:-latest}
     env_file: ["${HAWATCH_STAGE_ENV_FILE:?Set absolute stage env path}"]
@@ -111,16 +123,19 @@ services:
       POSTGRES_DB: hawatch_stage
       POSTGRES_USER: hawatch_stage
       REDIS_URL: redis://stage-redis:6379/0
+      OPEN_METEO_RATE_LIMIT_REDIS_URL: redis://stage-weather-quota:6379/0
       OPEN_METEO_FORECAST_DAYS: "10"
     entrypoint: ["python"]
     command: ["-m", "hawatch.jobs.ingest_scheduler"]
     networks: [stage]
     depends_on:
       stage-api: {condition: service_healthy}
+      stage-weather-quota: {condition: service_healthy}
     restart: unless-stopped
 networks:
   stage: {}
 volumes:
   stage-logs: {}
   stage-db: {}
+  stage-weather-quota: {}
   stage-frontend-assets: {}

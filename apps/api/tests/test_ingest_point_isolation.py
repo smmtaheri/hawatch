@@ -179,3 +179,80 @@ def test_misaligned_batch_never_reassigns_provider_items(points):
     assert persist(points, [payload(15)]).pk == previous.pk
     assert ForecastSnapshot.objects.filter(status="failed").exists()
     assert set(ForecastRecord.objects.values_list("temperature_c", flat=True)) == {5}
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize("status,body", [(429, {"reason":"Minutely API request limit exceeded"}),
+                                       (0, {"request_deferred":"quota_coordinator_unavailable"})])
+def test_quota_failure_preserves_old_point_without_model_fallback(points, status, body):
+    previous = persist(points, [payload(), payload()])
+    class Provider(OpenMeteoProvider):
+        def fetch_all(self, requested, *, models="best_match"):
+            assert models == "best_match", "Quota errors must not trigger a model switch"
+            return [BatchResult([requested[0]],200,[payload(12)],True,"https://example.invalid"),
+                    BatchResult([requested[1]],status,body,True,"https://example.invalid")]
+    provider=Provider()
+    current=ingest_weather_points(points,provider=provider)
+    assert current.point_count == 1 and current.status == "partial"
+    assert provider.updated_point_count == 1 and provider.collection_status == "partial"
+    assert ForecastRecord.objects.filter(weather_point=points[1],snapshot=previous).count() == 6
+
+
+@pytest.mark.django_db
+def test_total_quota_failure_reports_zero_updates_when_old_snapshot_returned(points):
+    previous = persist(points,[payload(),payload()])
+    class Provider(OpenMeteoProvider):
+        def fetch_all(self,requested,*,models="best_match"):
+            assert models == "best_match"
+            return [BatchResult(list(requested),429,{},True,"https://example.invalid",attempts=4)]
+    provider=Provider()
+    returned=ingest_weather_points(points,provider=provider)
+    assert returned.pk == previous.pk
+    assert provider.updated_point_count == 0 and provider.collection_status == "failed"
+
+
+@pytest.mark.django_db
+def test_long_collection_does_not_pretend_early_batches_were_received_at_finish(points):
+    from django.utils import timezone
+    collected=timezone.now()-timedelta(hours=8)
+    current=persist_ingest(weather_points=points[:1],batch_results=[{
+        "point_ids":[points[0].slug],"status_code":200,"payload":[payload()],
+        "received_at":collected.isoformat(),"elevation_requested":True,
+    }])
+    row=ForecastRecord.objects.get(weather_point=points[0],forecast_at=current.valid_from)
+    assert row.generated_at == collected
+    assert row.freshness == "stale"
+    assert current.generated_at > row.generated_at
+
+
+@pytest.mark.django_db
+def test_missing_and_old_points_enter_collection_before_recent_points(points,monkeypatch):
+    from django.utils import timezone
+    from hawatch.integrations.weather import ingest
+    persist(points,[payload(),payload()])
+    ForecastRecord.objects.filter(weather_point=points[1]).update(generated_at=timezone.now()-timedelta(days=1))
+    missing=WeatherPoint.objects.create(slug="zzz-new",name="new",location=points[0].location,
+                                      elevation_m=4000,data_mode="live")
+    seen=[]
+    monkeypatch.setattr(ingest,"ingest_weather_points",lambda selected,**kwargs:seen.extend(p.pk for p in selected))
+    ingest.ingest_active_catalog()
+    assert seen == [missing.pk,points[1].pk,points[0].pk]
+
+
+@pytest.mark.django_db
+def test_identical_collection_is_unchanged_instead_of_failed(points, monkeypatch):
+    from hawatch.integrations.weather import ingest
+    failed_counts=[]
+    monkeypatch.setattr(ingest,"record_ingest_points",lambda count,status,**kwargs:failed_counts.append((count,status)))
+
+    class Provider(OpenMeteoProvider):
+        def fetch_all(self, requested, *, models="best_match"):
+            return [BatchResult(list(requested),200,[payload() for _ in requested],True,"https://example.invalid")]
+
+    provider=Provider()
+    previous=ingest_weather_points(points,provider=provider)
+    failed_counts.clear()
+    current=ingest_weather_points(points,provider=provider)
+    assert current.pk == previous.pk
+    assert provider.collection_status == "unchanged" and provider.updated_point_count == 0
+    assert failed_counts == []

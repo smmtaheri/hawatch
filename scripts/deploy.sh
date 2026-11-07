@@ -246,6 +246,8 @@ configure_env() {
   # Keep the live provider window aligned with the product contract on existing
   # servers too; older .env files may still contain the former past_days=1.
   set_env_value OPEN_METEO_FORECAST_DAYS 10
+  set_env_value OPEN_METEO_BATCH_SIZE 25
+  set_env_value OPEN_METEO_RATE_LIMIT_REDIS_URL redis://weather-quota:6379/0
   set_env_value REDIS_URL redis://redis:6379/0
   # Frontend changes version bundles; public files have an independent namespace.
   # Backend-only releases keep every frontend URL stable.
@@ -427,8 +429,10 @@ run_stack() {
   # Existing data services retain their container identity and in-memory cache.
   # --no-recreate also permits bootstrapping missing services on a fresh host.
   "${compose[@]}" up -d --no-recreate postgres redis
+  "${compose[@]}" up -d --no-recreate weather-quota
   wait_for_healthy postgres
   wait_for_healthy redis
+  wait_for_healthy weather-quota
   # Prepare schema/bootstrap exactly as API startup does, but run the builder
   # instead of a web worker. Never activate file-serving before valid XML exists.
   log "Preparing the persistent sitemap before switching API and gateway."

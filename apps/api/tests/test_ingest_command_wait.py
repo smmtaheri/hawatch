@@ -30,3 +30,11 @@ def test_provider_errors_are_not_retried_or_hidden():
             call_command('ingest_open_meteo',wait_lock_seconds=10)
     assert ingest.call_count==1
     sleep.assert_not_called()
+
+
+def test_failed_collection_retaining_old_success_does_not_warm_cache():
+    snapshot=SimpleNamespace(pk=1,status='success',freshness='fresh',point_count=1,catalog_version='test',checksum='abc')
+    with patch(f'{COMMAND}.OpenMeteoProvider') as provider, patch(f'{COMMAND}.ingest_active_catalog',return_value=snapshot), patch('django.core.management.call_command') as warm:
+        provider.return_value.collection_status='failed'
+        call_command('ingest_open_meteo')
+    warm.assert_not_called()

@@ -12,7 +12,7 @@ def test_stage_stack_isolated_from_production_services_and_uses_live_database():
     services_section = compose.split("services:\n", 1)[1].split("\nnetworks:\n", 1)[0]
     services = re.findall(r"^  ([a-z][a-z0-9-]*):\s*$", services_section, re.MULTILINE)
 
-    assert set(services) == {"stage-api","stage-web","stage-gateway","stage-postgres","stage-redis","stage-scheduler"}
+    assert set(services) == {"stage-api","stage-web","stage-gateway","stage-postgres","stage-redis","stage-weather-quota","stage-scheduler"}
     assert "HAWATCH_PRODUCTION_ENV_FILE" not in compose
     assert "POSTGRES_HOST: stage-postgres" in compose
     assert "POSTGRES_DB: hawatch_stage" in compose

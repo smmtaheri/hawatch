@@ -299,7 +299,7 @@ def test_bounded_retry_on_429_and_transport():
     assert result.status_code == 200
     assert result.attempts == 3
     assert len(sleeps) == 2
-    assert all(delay <= 30 for delay in sleeps)
+    assert sleeps == [65, 120]
 
 
 @pytest.mark.django_db

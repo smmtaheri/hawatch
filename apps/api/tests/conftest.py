@@ -8,6 +8,7 @@ from django.core.management.color import no_style
 from django.db import connection, transaction
 from freezegun import freeze_time
 from rest_framework.test import APIClient
+from rest_framework.throttling import SimpleRateThrottle
 
 from django.conf import settings
 from hawatch.modules.catalog.seed import ensure_catalog, ensure_forecasts
@@ -33,6 +34,9 @@ def isolated_test_clock(request, monkeypatch):
             with monkeypatch.context() as elapsed:
                 for name, function in _ELAPSED_CLOCKS.items():
                     elapsed.setattr(time, name, function)
+                # Freezegun replaces the builtin time.time class attribute with
+                # a Python function; keep it static so DRF does not bind self.
+                elapsed.setattr(SimpleRateThrottle, "timer", staticmethod(time.time))
                 yield clock
 
 

@@ -59,6 +59,17 @@ docker compose --env-file .env -f infra/compose/compose.yaml up -d
 docker compose --env-file .env -f infra/compose/compose.yaml run --rm ingest
 ```
 
+دریافت هوا batchهای حداکثر ۲۵تایی دارد. همهٔ فرایندهای runtime، retry و مدل
+پشتیبان از یک صف وزنی با حداقل فاصلهٔ ۱۰ ثانیه و سقف‌های ۳۰۰/دقیقه،
+۴۵۰۰/ساعت و ۹۰۰۰/روز عبور می‌کنند. وضعیت سهمیه در سرویس داخلی و پایدار
+`weather-quota` نگه‌داری می‌شود؛ Redis کش پاسخ‌های سایت مستقل است.
+با افزایش نقاط، زمان اجرا بیشتر می‌شود؛ مهلت ثابت ۱۵ دقیقه وجود ندارد.
+در کمبود سهمیه، صف تا آزادشدن پنجره منتظر می‌ماند. اگر ظرفیت چهار نوبت روزانه
+کافی نباشد، رویداد `weather.quota_capacity` ثبت می‌شود؛ برای حفظ تناوب شش‌ساعته
+در آن مقیاس باید سهمیهٔ واقعی provider افزایش یابد.
+جزئیات خطاها، پروکسی و رفتار کش در
+[`docs/architecture/weather-data-pipeline.md`](docs/architecture/weather-data-pipeline.md) است.
+
 برای cadence شش‌ساعته، `FORECAST_STALE_AFTER_HOURS` را حداقل `7` نگه دارید؛ deploy script اگر این مقدار در `.env` وجود نداشته باشد مقدار ۷ را می‌گذارد.
 
 درخواست‌های provider هواشناسی از proxyهای SOCKS5 فعال در مدل `WeatherProxy` با

@@ -434,7 +434,7 @@ def test_retry_http_429_then_success_and_non_retryable_400():
     result = provider.fetch_batch([ProviderPoint("a", 35.0, 51.0, 100)], include_elevation=True)
     assert result.status_code == 200
     assert result.attempts == 3
-    assert sleeps == [0.25, 0.25]
+    assert sleeps == [65, 120]
 
     sleeps.clear()
     calls["n"] = 0

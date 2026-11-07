@@ -95,6 +95,9 @@ class Command(BaseCommand):
             )
         )
 
-        if snapshot.status in ("success", "partial"):
+        collection_status = provider.__dict__.get("collection_status", snapshot.status)
+        if collection_status not in ("success", "partial"):
+            self.stdout.write(f"Collection status={collection_status}; previous forecast snapshot retained.")
+        if collection_status in ("success", "partial"):
             from django.core.management import call_command
             call_command("warm_week_cache")

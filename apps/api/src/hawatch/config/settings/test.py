@@ -18,6 +18,8 @@ SHARED_HTTP_METRICS = False
 # pytest is also invoked inside the production API container. Its inherited
 # REDIS_URL must never make test cleanup flush the runtime cache.
 REDIS_URL = ""
+OPEN_METEO_RATE_LIMIT_ENABLED = False
+OPEN_METEO_RATE_LIMIT_REDIS_URL = ""
 CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "hawatch-pytest"}}
 HAWATCH_ENVIRONMENT = "test"
 OBSERVABILITY_ENVIRONMENT = "test"

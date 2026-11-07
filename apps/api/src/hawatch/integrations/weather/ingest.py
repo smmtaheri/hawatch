@@ -4,16 +4,18 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import time
 from collections import Counter
 from contextlib import contextmanager
 from dataclasses import replace
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from threading import Lock
 from typing import Iterator, Sequence
 
 from django.conf import settings
 from django.db import connection, transaction
+from django.db.models import F, Max, Q
 from django.utils import timezone as dj_timezone
 
 from hawatch.common.time import hour_bucket, localize_dt, now_tehran
@@ -33,6 +35,7 @@ from hawatch.integrations.weather.providers.open_meteo import (
     OpenMeteoProvider,
     ProviderPoint,
 )
+from hawatch.integrations.weather.rate_limit import request_weight
 from hawatch.modules.forecasts.models import (
     ForecastPointResolution,
     ForecastRecord,
@@ -44,6 +47,7 @@ LIVE_SEED_VERSION = "open-meteo-live"
 RAW_RETENTION_DAYS = 7
 INGEST_LOCK_KEY = 0x48415741  # "HAWA"
 _PROCESS_INGEST_LOCK = Lock()
+log = logging.getLogger(__name__)
 
 
 class IngestLockError(RuntimeError):
@@ -211,6 +215,8 @@ def persist_ingest(
         .first()
     )
     if existing:
+        provider.updated_point_count = 0
+        provider.collection_status = "unchanged"
         existing.freshness = ForecastSnapshot.Freshness.READY
         existing.save(update_fields=["freshness"])
         mark_stale_snapshots()
@@ -227,7 +233,6 @@ def persist_ingest(
     full_week_coverage_by_point: dict[str, bool] = {}
     valid_from = None
     valid_to = None
-    bucket = hour_bucket(now_tehran())
 
     for batch in batch_results:
         status_code = int(batch.get("status_code") or 0)
@@ -235,6 +240,12 @@ def persist_ingest(
         items = response_items(payload)
         point_ids = batch.get("point_ids") or []
         elevation_requested = bool(batch.get("elevation_requested"))
+        collected_at = generated_at
+        if batch.get("received_at"):
+            collected_at = datetime.fromisoformat(batch["received_at"])
+            if collected_at.tzinfo is None:
+                collected_at = collected_at.replace(tzinfo=timezone.utc)
+            collected_at = min(collected_at, generated_at)
         if status_code != 200 or len(items) != len(point_ids):
             failed_batches += 1
             continue
@@ -253,7 +264,7 @@ def persist_ingest(
                 continue
             point_rows = _usable_rows(
                 raw_point, latitude=weather_point.location.y,
-                longitude=weather_point.location.x, generated_at=generated_at,
+                longitude=weather_point.location.x, generated_at=collected_at,
             )
             if not point_rows or point_id in successful_point_ids:
                 batch_failed = batch_failed or not point_rows
@@ -292,8 +303,8 @@ def persist_ingest(
                         forecast_at=row["forecast_at"],
                         valid_from=row["valid_from"],
                         valid_to=row["valid_to"],
-                        generated_at=generated_at,
-                        hour_bucket=bucket,
+                        generated_at=collected_at,
+                        hour_bucket=hour_bucket(now_tehran(collected_at)),
                         temperature_c=row["temperature_c"],
                         apparent_temperature_c=row["apparent_temperature_c"],
                         wmo_code=row["wmo_code"],
@@ -315,7 +326,8 @@ def persist_ingest(
                         freezing_level_m=row["freezing_level_m"],
                         cloud_base_m=row["cloud_base_m"],
                         severity=row["severity"],
-                        freshness=ForecastRecord.Freshness.READY,
+                        freshness=(ForecastRecord.Freshness.READY if collected_at >= generated_at - _stale_after()
+                                   else ForecastRecord.Freshness.STALE),
                         data_mode="live",
                         source="open-meteo-forecast",
                         seed_version=LIVE_SEED_VERSION,
@@ -326,6 +338,9 @@ def persist_ingest(
         failed_batches += int(batch_failed)
         rejected_resolution_batches += int(resolution_rejected)
 
+    provider.updated_point_count = len(successful_point_ids)
+    provider.collection_status = ("success" if len(successful_point_ids) == len(weather_points)
+                                  else "partial" if successful_point_ids else "failed")
     if not successful_point_ids:
         # Total failure: keep previous usable data; record a failed audit snapshot only.
         ForecastSnapshot.objects.create(
@@ -493,6 +508,19 @@ def ingest_weather_points(
 
     def _run() -> ForecastSnapshot:
         provider_points = weather_points_to_provider_points(points)
+        estimated_calls = (request_weight(provider.build_url(provider_points[:1], include_elevation=False))
+                           * len(provider_points)) if provider_points else 0
+        log.info("Forecast collection started", extra={
+            "event": "weather.collection_started", "point_count": len(points),
+            "batch_size": provider.batch_size, "estimated_primary_calls": round(estimated_calls, 3),
+            "daily_call_budget": settings.OPEN_METEO_CALLS_PER_DAY,
+        })
+        if estimated_calls * 4 > settings.OPEN_METEO_CALLS_PER_DAY:
+            log.warning("Six-hour cadence exceeds configured daily weather quota; collection will wait", extra={
+                "event": "weather.quota_capacity", "point_count": len(points),
+                "estimated_six_hourly_daily_calls": round(estimated_calls * 4, 3),
+                "daily_call_budget": settings.OPEN_METEO_CALLS_PER_DAY,
+            })
         results = provider.fetch_all(provider_points)
         # Land/elevation matching can select a remote grid cell. Retry only
         # rejected points using the nearest cell, keeping the catalog elevation
@@ -520,11 +548,20 @@ def ingest_weather_points(
             for point, item in zip(result.points, items, strict=True):
                 if _usable_rows(item, latitude=point.latitude, longitude=point.longitude, generated_at=checked_at):
                     successful_ids.add(point.id)
+        # A model switch cannot repair quota exhaustion. Also keep completed
+        # batches when the shared coordinator fails halfway through a run.
+        quota_blocked_ids = {
+            point.id for result in results
+            if result.status_code == 429 or (
+                isinstance(result.payload, dict) and result.payload.get("request_deferred")
+            ) for point in result.points
+        }
         fallback_points = [
             replace(point, cell_selection="nearest")
-            for point in provider_points if point.id not in successful_ids
+            for point in provider_points
+            if point.id not in successful_ids and point.id not in quota_blocked_ids
         ]
-        if fallback_points:
+        if fallback_points and not getattr(provider, "stop_reason", ""):
             results.extend(provider.fetch_all(fallback_points, models=FALLBACK_MODELS))
         serialized = []
         for result in results:
@@ -538,6 +575,7 @@ def ingest_weather_points(
                     "models": result.models,
                     "url": result.url,
                     "attempts": result.attempts,
+                    "received_at": result.received_at.isoformat() if result.received_at else None,
                 }
             )
         return persist_ingest(
@@ -559,12 +597,23 @@ def ingest_weather_points(
         raise
     finally:
         record_ingest_duration(time.monotonic() - started, provider="open-meteo")
-    record_ingest_run(snapshot.status, provider="open-meteo")
-    if snapshot.point_count:
-        record_ingest_points(snapshot.point_count, "success", provider="open-meteo")
-    failed_points = max(0, snapshot.requested_point_count - snapshot.point_count)
+    updated = provider.__dict__.get("updated_point_count", snapshot.point_count)
+    collection_status = provider.__dict__.get("collection_status", snapshot.status)
+    record_ingest_run(collection_status, provider="open-meteo")
+    if updated:
+        record_ingest_points(updated, "success", provider="open-meteo")
+    unchanged = len(points) if collection_status == "unchanged" else 0
+    failed_points = max(0, len(points) - updated - unchanged)
     if failed_points:
         record_ingest_points(failed_points, "failed", provider="open-meteo")
+    log.info("Forecast collection finished", extra={
+        "event": "weather.collection_finished", "snapshot_id": snapshot.pk,
+        "status": collection_status, "requested_points": len(points),
+        "updated_points": updated, "failed_points": failed_points,
+        "unchanged_points": unchanged,
+        "deferred_reason": getattr(provider, "stop_reason", ""),
+        "elapsed_seconds": round(time.monotonic() - started, 3),
+    })
     return snapshot
 
 
@@ -576,7 +625,9 @@ def ingest_active_catalog(
     """Ingest active DB WeatherPoints (database is runtime source of truth)."""
     from hawatch.modules.catalog.runtime import compute_db_catalog_revision, ingestible_weather_points
 
-    points = list(ingestible_weather_points(slugs=slugs))
+    points = list(ingestible_weather_points(slugs=slugs).annotate(
+        _latest_weather=Max("forecasts__generated_at", filter=Q(forecasts__data_mode="live")),
+    ).order_by(F("_latest_weather").asc(nulls_first=True), "slug"))
     if not points:
         raise ValueError("No ingestible live WeatherPoints found in the database")
     revision = compute_db_catalog_revision()
