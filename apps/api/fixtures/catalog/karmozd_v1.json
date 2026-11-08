@@ -1,0 +1,111 @@
+{
+  "catalog_version": "hawatch-karmozd-v1",
+  "primary_point": "karmozd-forest",
+  "point": {
+    "tile_name": "جنگل کارمزد",
+    "name": "جنگل کارمزد",
+    "short_category": "جنگل",
+    "category": "جنگل",
+    "category_key": "forest",
+    "region": "مازندران · سوادکوه · کارمزد",
+    "latitude": 36.097497,
+    "longitude": 52.874944,
+    "elevation_m": 1474,
+    "image": "/images/home-scene.png",
+    "image_alt": "نمای عمومی طبیعت در هواچ",
+    "climate": "forest_fog",
+    "popular_order": 0,
+    "is_popular": false,
+    "seo_indexable": true,
+    "is_active": true,
+    "aliases": [
+      "جنگل کارمزد سوادکوه",
+      "جنگل های کارمزد",
+      "جنگل‌های کارمزد",
+      "Karmozd Forest"
+    ],
+    "slug": "karmozd-forest"
+  },
+  "weather_points": {
+    "karmozd-forest": {
+      "name": "جنگل کارمزد",
+      "page_name": "جنگل کارمزد",
+      "short_label": "جنگل کارمزد",
+      "place_type": "forest",
+      "category_key": "forest",
+      "aliases": [
+        "جنگل کارمزد سوادکوه",
+        "جنگل های کارمزد",
+        "جنگل‌های کارمزد",
+        "Karmozd Forest"
+      ],
+      "identity_summary": "جنگل کارمزد در سوادکوه؛ مبنای پیش‌بینی، نشان نام‌دار «جنگل کارمزد» در بخش جنگلی غرب روستاست، نه مرکز روستا. پیش‌بینی مربوط به همین نقطهٔ شاخص است، نه تمام پهنهٔ جنگل.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/jngl-khrmzd-172990142#wp-172990143",
+        "https://www.seamoon.tours/location/jangal-karmard-savadkuh",
+        "https://karmozd90.blogfa.com/1391/01"
+      ],
+      "latitude": 36.097497,
+      "longitude": 52.874944,
+      "elevation_m": 1474,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نشان نام‌دار عارضه، ۸ نوامبر ۲۰۲۶: 1474 متر؛ ارتفاع دستگاه GPS منبع ارتفاع کاتالوگ نیست.",
+      "climate": "forest_fog",
+      "tile_name": "جنگل کارمزد",
+      "short_category": "جنگل",
+      "category": "جنگل",
+      "region": "مازندران · سوادکوه · کارمزد",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "is_popular": false,
+      "popular_order": 0
+    },
+    "karmozd-waterfall": {
+      "name": "آبشار دوقلو کارمزد",
+      "page_name": "آبشار دوقلو کارمزد",
+      "short_label": "آبشار دوقلو کارمزد",
+      "place_type": "waterfall",
+      "category_key": "waterfall",
+      "aliases": [
+        "آبشار کارمزد",
+        "آبشار کارمزد سوادکوه",
+        "آبشار دوقلوی کارمزد",
+        "آبشار دو قلوی کارمزد",
+        "آبشار دوقلو سوادکوه",
+        "Karmozd Twin Waterfall"
+      ],
+      "identity_summary": "آبشار دوقلو کارمزد در جنگل‌های شمال روستای کارمزد سوادکوه؛ نشان آبشار در گزارش پیمایش با نقشهٔ مستقل تطبیق داده شده و از آبشار گزو متمایز است.",
+      "importance": "primary",
+      "kind": "primary",
+      "seo_indexable": true,
+      "name_status": "established",
+      "source_urls": [
+        "https://www.wikiloc.com/hiking-trails/karmozd-shir-gahabshr-dwqlw-khrmzd-w-abshr-gzw-bh-shyrgh-234539297#wp-234539305",
+        "https://irantripadviser.ir/attraction.php?id=2673",
+        "https://www.seamoon.tours/location/abshar-dogholoo-savadkuh"
+      ],
+      "latitude": 36.135855,
+      "longitude": 52.881338,
+      "elevation_m": 1311,
+      "status": "provisional",
+      "elevation_source": "Open-Meteo GLO-90 DEM در مختصات نشان نام‌دار عارضه، ۸ نوامبر ۲۰۲۶: 1311 متر؛ ارتفاع دستگاه GPS منبع ارتفاع کاتالوگ نیست.",
+      "climate": "forest_fog",
+      "tile_name": "آبشار دوقلو کارمزد",
+      "short_category": "آبشار",
+      "category": "آبشار",
+      "region": "مازندران · سوادکوه · کارمزد",
+      "image": "/images/home-scene.png",
+      "image_alt": "نمای عمومی طبیعت در هواچ",
+      "is_active": true,
+      "is_popular": false,
+      "popular_order": 0
+    }
+  },
+  "routes": {},
+  "internal_note": "افزودن مستقیم به درخواست کاربر در ۸ نوامبر ۲۰۲۶، خارج از صف هواکوه/هواگشت. روستا با دو مقصد مستقل جنگل و آبشار هم‌نام است؛ پسوندهای forest و waterfall رفع ابهام واقعی‌اند. مختصات جنگل از waypoint نام‌دار 172990143 و آبشار از waypoint نام‌دار 234539305 است؛ pin آبشار در ایران‌تریپ 36.135937,52.881563 حدود ۲۲ متر فاصله دارد. pin گردِ سیمون برای جنگل جایگزین waypoint دقیق نشده است. ترک 234539297 برای تطبیق موقعیت است و هیچ مسافت، صعود یا مسیر پیاده‌ای از آن منتشر نشده است. هر دو مقصد point-only هستند."
+}

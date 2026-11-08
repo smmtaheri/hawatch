@@ -1,0 +1,332 @@
+{
+  "checked_at": "2026-11-08T16:21:43.324533+00:00",
+  "requested_by": "User explicitly requested checking and adding Karmozd forest and waterfall, with public site links.",
+  "scope": "Two independent point-only destinations; no routes, deploy, restart, CDN or DNS changes.",
+  "fixture": "apps/api/fixtures/catalog/karmozd_v1.json",
+  "catalog_version": "hawatch-karmozd-v1",
+  "before": {
+    "local_name_alias_search": "No matches in all catalog fixtures and catalog queue.",
+    "live_name_alias_search": "No active or inactive name/alias/slug matches; read-only DB transaction.",
+    "spatial_duplicate_check": "Nearest live and fixture point is more than 2.5km from waterfall and 6.1km from forest; no duplicate or <100m review needed."
+  },
+  "identity": [
+    {
+      "slug": "karmozd-forest",
+      "name": "جنگل کارمزد",
+      "latitude": 36.097497,
+      "longitude": 52.874944,
+      "elevation_m": 1474,
+      "coordinate_source": "https://www.wikiloc.com/hiking-trails/jngl-khrmzd-172990142#wp-172990143",
+      "evidence": "Exact GeoCoordinates in public waypoint JSON-LD; visible waypoint heading جنگل کارمزد. Representative named point west of Karmozd village, not village coordinates or an arbitrary centroid.",
+      "source_retrieval": "Public page text via web search; public rendered HTML via r.jina.ai because direct Wikiloc HTTP returned403.",
+      "other_sources": [
+        "https://www.seamoon.tours/location/jangal-karmard-savadkuh",
+        "https://karmozd90.blogfa.com/1391/01"
+      ],
+      "coordinate_rejection": "Seamoon uses a rounded nearby forest pin (36.085,52.883); it was not substituted for the named precise waypoint."
+    },
+    {
+      "slug": "karmozd-waterfall",
+      "name": "آبشار دوقلو کارمزد",
+      "latitude": 36.135855,
+      "longitude": 52.881338,
+      "elevation_m": 1311,
+      "coordinate_source": "https://www.wikiloc.com/hiking-trails/karmozd-shir-gahabshr-dwqlw-khrmzd-w-abshr-gzw-bh-shyrgh-234539297#wp-234539305",
+      "evidence": "Exact public waypoint JSON-LD paired with visible heading آبشار دوقلو; independent Iran Trip Adviser attraction2673 map center36.135937,52.881563 is approximately22m away. Gazo waterfall is about3km away and remains a separate existing destination.",
+      "other_sources": [
+        "https://irantripadviser.ir/attraction.php?id=2673",
+        "https://www.seamoon.tours/location/abshar-dogholoo-savadkuh"
+      ],
+      "route_note": "Long mixed access track used solely for named coordinate cross-check, never distance/ascent/ETA or public hiking route."
+    }
+  ],
+  "validation": {
+    "strict_catalog_document": "passed via the validate_catalog Command.handle in an isolated local settings context; existing local virtualenv launcher is broken and full manage.py startup lacks Redis dependency. No dependency or application changes made.",
+    "provider_gate": {
+      "pass": true,
+      "errors": 0,
+      "warnings": 0,
+      "points": 2,
+      "forecast_hours_each": 24,
+      "catalog_dem_delta_m": [
+        0,
+        0
+      ],
+      "grid_distance_km": [
+        3.836,
+        1.021
+      ]
+    },
+    "publication": "publish_catalog.py --apply completed atomic import and targeted ingest; snapshot851,success,2/2 updated,0 failed. BestMatch via activeproxy; no429.",
+    "preflight": {
+      "karmozd-forest": "pass=True errors=0 warnings=0 require-forecast strict",
+      "karmozd-waterfall": "pass=True errors=0 warnings=0 require-forecast strict"
+    }
+  },
+  "public_checks": [
+    {
+      "url": "https://hawatch.ir/points/karmozd-forest",
+      "status": 200,
+      "final_url": "https://hawatch.ir/points/karmozd-forest",
+      "title": [
+        "آب‌وهوای جنگل کارمزد؛ دما، باد و بارش | هواچ"
+      ],
+      "h1": [
+        "آب‌وهوای جنگل کارمزد"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://hawatch.ir/points/karmozd-forest\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"index,follow\" />"
+      ],
+      "links": {
+        "karmozd-forest": true,
+        "karmozd-waterfall": false
+      }
+    },
+    {
+      "url": "https://hawatch.ir/points/karmozd-waterfall",
+      "status": 200,
+      "final_url": "https://hawatch.ir/points/karmozd-waterfall",
+      "title": [
+        "آب‌وهوای آبشار دوقلو کارمزد؛ دما، باد و بارش | هواچ"
+      ],
+      "h1": [
+        "آب‌وهوای آبشار دوقلو کارمزد"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://hawatch.ir/points/karmozd-waterfall\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"index,follow\" />"
+      ],
+      "links": {
+        "karmozd-forest": false,
+        "karmozd-waterfall": true
+      }
+    },
+    {
+      "url": "https://hawatch.ir/api/v1/points/karmozd-forest/forecast/week/",
+      "status": 200,
+      "final_url": "https://hawatch.ir/api/v1/points/karmozd-forest/forecast/week/",
+      "keys": [
+        "schema_version",
+        "kind",
+        "timezone",
+        "days",
+        "range_start",
+        "range_end",
+        "cache_max_age_seconds",
+        "stale_after_hours",
+        "subject",
+        "related_routes",
+        "related_routes_title",
+        "related_destinations",
+        "related_destinations_title",
+        "intervals",
+        "attribution",
+        "last_generated_at",
+        "data_mode",
+        "catalog_signature"
+      ],
+      "subject": {
+        "slug": "karmozd-forest",
+        "tile_name": "جنگل کارمزد",
+        "name": "جنگل کارمزد",
+        "short_category": "جنگل",
+        "category": "جنگل",
+        "category_key": "forest",
+        "place_type": "forest",
+        "region": "مازندران · سوادکوه · کارمزد",
+        "elevation_m": 1474,
+        "elevation_label": "۱۴۷۴ متر",
+        "latitude": 36.097497,
+        "longitude": 52.874944,
+        "image": "/images/home-scene.png",
+        "image_alt": "نمای عمومی طبیعت در هواچ",
+        "href": "/points/karmozd-forest",
+        "is_popular": false,
+        "popular_order": 0,
+        "seo_indexable": true,
+        "data_mode": "live",
+        "weather_point_slug": "karmozd-forest",
+        "seo_title": "آب‌وهوای جنگل کارمزد؛ دما، باد و بارش | هواچ",
+        "seo_description": "پیش‌بینی آب‌وهوای جنگل کارمزد در ارتفاع ۱۴۷۴ متر در مازندران · سوادکوه · کارمزد؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."
+      },
+      "freshness": null,
+      "days": 8
+    },
+    {
+      "url": "https://hawatch.ir/api/v1/points/karmozd-waterfall/forecast/week/",
+      "status": 200,
+      "final_url": "https://hawatch.ir/api/v1/points/karmozd-waterfall/forecast/week/",
+      "keys": [
+        "schema_version",
+        "kind",
+        "timezone",
+        "days",
+        "range_start",
+        "range_end",
+        "cache_max_age_seconds",
+        "stale_after_hours",
+        "subject",
+        "related_routes",
+        "related_routes_title",
+        "related_destinations",
+        "related_destinations_title",
+        "intervals",
+        "attribution",
+        "last_generated_at",
+        "data_mode",
+        "catalog_signature"
+      ],
+      "subject": {
+        "slug": "karmozd-waterfall",
+        "tile_name": "آبشار دوقلو کارمزد",
+        "name": "آبشار دوقلو کارمزد",
+        "short_category": "آبشار",
+        "category": "آبشار",
+        "category_key": "waterfall",
+        "place_type": "waterfall",
+        "region": "مازندران · سوادکوه · کارمزد",
+        "elevation_m": 1311,
+        "elevation_label": "۱۳۱۱ متر",
+        "latitude": 36.135855,
+        "longitude": 52.881338,
+        "image": "/images/home-scene.png",
+        "image_alt": "نمای عمومی طبیعت در هواچ",
+        "href": "/points/karmozd-waterfall",
+        "is_popular": false,
+        "popular_order": 0,
+        "seo_indexable": true,
+        "data_mode": "live",
+        "weather_point_slug": "karmozd-waterfall",
+        "seo_title": "آب‌وهوای آبشار دوقلو کارمزد؛ دما، باد و بارش | هواچ",
+        "seo_description": "پیش‌بینی آب‌وهوای آبشار دوقلو کارمزد در ارتفاع ۱۳۱۱ متر در مازندران · سوادکوه · کارمزد؛ دما، باد، تندباد، بارش، برف و وضعیت ساعتی."
+      },
+      "freshness": null,
+      "days": 8
+    },
+    {
+      "url": "https://hawatch.ir/sitemap.xml",
+      "status": 200,
+      "final_url": "https://hawatch.ir/sitemap.xml",
+      "title": [],
+      "h1": [],
+      "canonical": [],
+      "robots": [],
+      "links": {
+        "karmozd-forest": true,
+        "karmozd-waterfall": true
+      }
+    },
+    {
+      "url": "https://hawatch.ir/destinations",
+      "status": 200,
+      "final_url": "https://hawatch.ir/destinations",
+      "title": [
+        "مقصدهای اصلی هواچ | قله‌ها، دریاچه‌ها و مسیرها"
+      ],
+      "h1": [
+        "مقصدهای اصلی هواچ"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://hawatch.ir/destinations\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"index,follow\" />"
+      ],
+      "links": {
+        "karmozd-forest": false,
+        "karmozd-waterfall": false
+      }
+    }
+  ],
+  "discoverability": {
+    "points_search_query_کارمزد": [
+      "karmozd-forest",
+      "karmozd-waterfall"
+    ],
+    "destinations_query_کارمزد": [
+      "karmozd-waterfall",
+      "karmozd-forest"
+    ],
+    "sitemap": "Both canonical URLs found. Default destination hub is paginated; search-filtered API confirms both primary destinations."
+  },
+  "browser_checks": {
+    "results": [
+      {
+        "slug": "karmozd-forest",
+        "device": "desktop",
+        "title": "آب‌وهوای جنگل کارمزد؛ دما، باد و بارش | هواچ",
+        "h1": "آب‌وهوای جنگل کارمزد",
+        "overflow": false,
+        "columns": 8,
+        "metrics": 4,
+        "height": 1000,
+        "canonical": "https://hawatch.ir/points/karmozd-forest",
+        "screenshot": "/tmp/hawatch-karmozd-forest-desktop.png"
+      },
+      {
+        "slug": "karmozd-waterfall",
+        "device": "desktop",
+        "title": "آب‌وهوای آبشار دوقلو کارمزد؛ دما، باد و بارش | هواچ",
+        "h1": "آب‌وهوای آبشار دوقلو کارمزد",
+        "overflow": false,
+        "columns": 8,
+        "metrics": 4,
+        "height": 1000,
+        "canonical": "https://hawatch.ir/points/karmozd-waterfall",
+        "screenshot": "/tmp/hawatch-karmozd-waterfall-desktop.png"
+      },
+      {
+        "slug": "karmozd-forest",
+        "device": "mobile",
+        "title": "آب‌وهوای جنگل کارمزد؛ دما، باد و بارش | هواچ",
+        "h1": "آب‌وهوای جنگل کارمزد",
+        "overflow": false,
+        "columns": 8,
+        "metrics": 4,
+        "height": 1117,
+        "canonical": "https://hawatch.ir/points/karmozd-forest",
+        "screenshot": "/tmp/hawatch-karmozd-forest-mobile.png"
+      },
+      {
+        "slug": "karmozd-waterfall",
+        "device": "mobile",
+        "title": "آب‌وهوای آبشار دوقلو کارمزد؛ دما، باد و بارش | هواچ",
+        "h1": "آب‌وهوای آبشار دوقلو کارمزد",
+        "overflow": false,
+        "columns": 8,
+        "metrics": 4,
+        "height": 1117,
+        "canonical": "https://hawatch.ir/points/karmozd-waterfall",
+        "screenshot": "/tmp/hawatch-karmozd-waterfall-mobile.png"
+      }
+    ],
+    "errors": [],
+    "desktop_layout_followup": {
+      "reason": "Initial full-page CDP capture had a screenshot-origin offset; a fresh viewport capture and layout metrics confirmed normal layout.",
+      "viewport": 1440,
+      "innerWidth": 1440,
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "scrollX": 0,
+      "shell_left": 80,
+      "shell_width": 1280,
+      "baseline_comparison": "Same correct layout metrics on existing Tochal page.",
+      "screenshot": "/tmp/hawatch-layout-karmozd-waterfall.png"
+    }
+  },
+  "indexing": {
+    "backlog": "Both canonical URLs added to P1; no existing confirmed/indexed status changed.",
+    "google_index_status": "unconfirmed"
+  },
+  "tracks": {
+    "routes_created": 0,
+    "gpx_downloaded": 0,
+    "files_sent_to_server": 0,
+    "relevant_downloaded_tracks_found": 0
+  }
+}
