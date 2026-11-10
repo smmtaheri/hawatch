@@ -47,6 +47,27 @@ python scripts/generate_favicons.py
 بررسی شوند: HTTP ۲۰۰، Content-Type تصویری، بدنهٔ تصویر واقعی و نبود محدودیت
 Googlebot. بررسی محلی جای بررسی پس از deploy را نمی‌گیرد.
 
+آدرس‌های قدیمی زیر، با و بدون پوشهٔ `v2/`، در Nginx فرانت با 301 مستقیم به
+آیکون‌های ثابت فعلی می‌روند؛ query قدیمی به مقصد منتقل نمی‌شود:
+
+- `/brand/favicon.ico` → `/favicon.ico`
+- `/brand/favicon.svg` و `/brand/favicon-{16,32,48}.png` → `/favicon.png`
+- `/brand/apple-touch-icon.png` → `/apple-touch-icon.png`
+
+هدر Location نسبی است تا HTTPS پشت CDN به HTTP تبدیل نشود. redirect و فایل‌های
+ثابت فعلی `Cache-Control: public, max-age=3600, must-revalidate` دارند. فایل‌های
+اصلی روی دیسک و مسیرهای نسخه‌دار immutable در `/static-public/` حفظ می‌شوند.
+این قواعد در web اجرا می‌شوند؛ gateway درخواست این URLها را به web می‌فرستد.
+
+پس از انتشار، فقط کش URLهای قدیمی بالا در همهٔ variantهای CDN پاک شود؛ اگر فایل
+ثابت جدید تغییر کرده، کش همان URL نیز پاک شود. پاک‌سازی کل سایت لازم نیست.
+GET و HEAD آدرس قدیمی، بدون دنبال‌کردن redirect، باید 301 با Location صحیح
+بدهند و مقصد با یک hop به تصویر واقعی 200 برسد. دسترسی عمومی و دسترسی origin
+جدا بررسی شوند؛ 200 قدیمی روی CDN با 301 مبدأ، نشانهٔ باقی‌ماندن نسخهٔ edge است.
+پاک‌سازی CDN، کش و پردازش favicon گوگل را فوراً تازه نمی‌کند. برای تازه‌سازی،
+می‌توان صفحهٔ خانه را در URL Inspection دوباره درخواست کرد؛ زمان نمایش نتیجه
+تضمینی نیست. [مرجع گوگل](https://developers.google.com/search/docs/appearance/favicon-in-search)
+
 بازسازی دارایی‌ها از منبع SVG، بدون تغییر تصاویر اصلی:
 
 ```bash
